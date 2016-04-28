@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.activities;
 
 import java.util.List;
@@ -47,8 +48,8 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
    */
   @Override
   @SuppressWarnings("unchecked")
-  public IStatus _run(ActivityParameters activityParams_p) {
-    IContext context = (IContext) activityParams_p.getParameter(TRANSPOSER_CONTEXT).getValue();
+  public IStatus _run(ActivityParameters activityParams) {
+    IContext context = (IContext) activityParams.getParameter(TRANSPOSER_CONTEXT).getValue();
 
     computeDifferences(context);
 
@@ -58,27 +59,27 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
   /**
    * @param selection_p
    */
-  public void computeDifferences(IContext context_p) {
+  public void computeDifferences(IContext context) {
 
-    IEditableModelScope sourceScope = (IEditableModelScope) context_p.get(ITransitionConstants.MERGE_REFERENCE_SCOPE);
-    IEditableModelScope targetScope = (IEditableModelScope) context_p.get(ITransitionConstants.MERGE_TARGET_SCOPE);
+    IEditableModelScope sourceScope = (IEditableModelScope) context.get(ITransitionConstants.MERGE_REFERENCE_SCOPE);
+    IEditableModelScope targetScope = (IEditableModelScope) context.get(ITransitionConstants.MERGE_TARGET_SCOPE);
 
     // Defining comparison with target as TARGET and source as REFERENCE
     IComparison comparison = createComparison(sourceScope, targetScope);
 
-    context_p.put(ITransitionConstants.MERGE_COMPARISON, comparison);
+    context.put(ITransitionConstants.MERGE_COMPARISON, comparison);
 
     // Computing differences
-    comparison.compute(createMatchPolicy(context_p), createDiffPolicy(context_p), createMergePolicy(context_p), null);
+    comparison.compute(createMatchPolicy(context), createDiffPolicy(context), createMergePolicy(context), null);
 
     // Getting differences to merge: all the presences in source
     List<IDifference> toAnalyseFromSource = comparison.getDifferences(Role.REFERENCE);
     List<IDifference> toAnalyseFromTarget = comparison.getDifferences(Role.TARGET);
 
-    context_p.put(ITransitionConstants.MERGE_REFERENCE_DIFFERENCES, toAnalyseFromSource);
-    context_p.put(ITransitionConstants.MERGE_TARGET_DIFFERENCES, toAnalyseFromTarget);
+    context.put(ITransitionConstants.MERGE_REFERENCE_DIFFERENCES, toAnalyseFromSource);
+    context.put(ITransitionConstants.MERGE_TARGET_DIFFERENCES, toAnalyseFromTarget);
 
-    if (displayLog(context_p)) {
+    if (displayLog(context)) {
 
       // Logging
       LogHelper.getInstance().debug(NLS.bind("Differences from {0}", Role.REFERENCE.toString()), Messages.Activity_ComputingDifferenceActivity);
@@ -96,39 +97,39 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
   }
 
   /**
-   * @param context_p
+   * @param context
    * @return
    */
-  protected boolean displayLog(IContext context_p) {
+  protected boolean displayLog(IContext context) {
     return true;
   }
 
   /**
-   * @param context_p
+   * @param context
    * @return
    */
-  protected IMergePolicy createMergePolicy(IContext context_p) {
-    return new ExtMergePolicy(context_p);
+  protected IMergePolicy createMergePolicy(IContext context) {
+    return new ExtMergePolicy(context);
   }
 
   /**
-   * @param context_p
+   * @param context
    * @return
    */
-  protected IDiffPolicy createDiffPolicy(IContext context_p) {
-    IDiffPolicy policy = new ExtDiffPolicy(context_p);
+  protected IDiffPolicy createDiffPolicy(IContext context) {
+    IDiffPolicy policy = new ExtDiffPolicy(context);
     return policy;
   }
 
-  protected IComparison createComparison(IEditableModelScope sourceScope_p, IEditableModelScope targetScope_p) {
-    return new ExtendedComparison(targetScope_p, sourceScope_p);
+  protected IComparison createComparison(IEditableModelScope sourceScope, IEditableModelScope targetScope) {
+    return new ExtendedComparison(targetScope, sourceScope);
   }
 
   /**
    * @return
    */
-  protected IMatchPolicy createMatchPolicy(IContext context_p) {
-    IMatchPolicy policy = new TraceabilityHandlerMatchPolicy(context_p);
+  protected IMatchPolicy createMatchPolicy(IContext context) {
+    IMatchPolicy policy = new TraceabilityHandlerMatchPolicy(context);
     return policy;
   }
 

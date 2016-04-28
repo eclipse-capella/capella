@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.cs.delegates;
 
 import java.util.ArrayList;
@@ -34,33 +35,33 @@ private static BlockArchitectureHelper instance;
 		return instance;
 	}
 	
-	public Object doSwitch(BlockArchitecture element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(BlockArchitecture element, EStructuralFeature feature) {
 		
 		Object ret = null;
 		
-		if (feature_p.equals(CsPackage.Literals.BLOCK_ARCHITECTURE__ALLOCATED_ARCHITECTURES)) {
-			ret = getAllocatedArchitectures(element_p);
+		if (feature.equals(CsPackage.Literals.BLOCK_ARCHITECTURE__ALLOCATED_ARCHITECTURES)) {
+			ret = getAllocatedArchitectures(element);
 		}
-		else if (feature_p.equals(CsPackage.Literals.BLOCK_ARCHITECTURE__ALLOCATING_ARCHITECTURES)) {
-			ret = getAllocatingArchitectures(element_p);
+		else if (feature.equals(CsPackage.Literals.BLOCK_ARCHITECTURE__ALLOCATING_ARCHITECTURES)) {
+			ret = getAllocatingArchitectures(element);
 		}
-		else if (feature_p.equals(CsPackage.Literals.BLOCK_ARCHITECTURE__PROVISIONED_ARCHITECTURE_ALLOCATIONS)) {
-			ret = getProvisionedArchitectureAllocations(element_p);
+		else if (feature.equals(CsPackage.Literals.BLOCK_ARCHITECTURE__PROVISIONED_ARCHITECTURE_ALLOCATIONS)) {
+			ret = getProvisionedArchitectureAllocations(element);
 		}
-		else if (feature_p.equals(CsPackage.Literals.BLOCK_ARCHITECTURE__PROVISIONING_ARCHITECTURE_ALLOCATIONS)) {
-			ret = getProvisioningArchitectureAllocations(element_p);
+		else if (feature.equals(CsPackage.Literals.BLOCK_ARCHITECTURE__PROVISIONING_ARCHITECTURE_ALLOCATIONS)) {
+			ret = getProvisioningArchitectureAllocations(element);
 		} 
 
 		// no helper found... searching in super classes...
 		if(null == ret) {
-			ret = StructureHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = StructureHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;
 	}
 	
-	protected List<ArchitectureAllocation> getProvisionedArchitectureAllocations(BlockArchitecture element_p) {
-		List<AbstractTrace> traces = element_p.getOutgoingTraces();
+	protected List<ArchitectureAllocation> getProvisionedArchitectureAllocations(BlockArchitecture element) {
+		List<AbstractTrace> traces = element.getOutgoingTraces();
 		List <ArchitectureAllocation> ret = new ArrayList<ArchitectureAllocation>();
 		
 		for (AbstractTrace trace : traces) {
@@ -73,8 +74,8 @@ private static BlockArchitectureHelper instance;
 		return ret;
 	}
 	
-	protected List<ArchitectureAllocation> getProvisioningArchitectureAllocations(BlockArchitecture element_p) {
-		List<AbstractTrace> traces = element_p.getIncomingTraces();
+	protected List<ArchitectureAllocation> getProvisioningArchitectureAllocations(BlockArchitecture element) {
+		List<AbstractTrace> traces = element.getIncomingTraces();
 		List <ArchitectureAllocation> ret = new ArrayList<ArchitectureAllocation>();
 		
 		for (AbstractTrace trace : traces) {
@@ -87,8 +88,8 @@ private static BlockArchitectureHelper instance;
 		return ret;
 	}
 	
-	protected List<BlockArchitecture> getAllocatedArchitectures(BlockArchitecture element_p){
-		List <ArchitectureAllocation> allocs = element_p.getProvisionedArchitectureAllocations();
+	protected List<BlockArchitecture> getAllocatedArchitectures(BlockArchitecture element){
+		List <ArchitectureAllocation> allocs = element.getProvisionedArchitectureAllocations();
 		List <BlockArchitecture> ret = new ArrayList<BlockArchitecture>();
 
 		for (ArchitectureAllocation architectureAllocation : allocs) {
@@ -98,8 +99,8 @@ private static BlockArchitectureHelper instance;
 		return ret;
 	}
 
-	protected List <BlockArchitecture> getAllocatingArchitectures(BlockArchitecture element_p) {
-		List <ArchitectureAllocation> allocs = element_p.getProvisioningArchitectureAllocations();
+	protected List <BlockArchitecture> getAllocatingArchitectures(BlockArchitecture element) {
+		List <ArchitectureAllocation> allocs = element.getProvisioningArchitectureAllocations();
 		List <BlockArchitecture> ret = new ArrayList<BlockArchitecture>();
 
 		for (ArchitectureAllocation architectureAllocation : allocs) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,7 @@ public class Rule_TJ_PA_07 extends AbstractRulesOnTransitionTest {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		IEclipsePreferences preferences = new InstanceScope()
+		IEclipsePreferences preferences = InstanceScope.INSTANCE
 				.getNode(IProjectionPreferences.PREFS_PROJECTION_ID);
 		preferences.putBoolean(
 				IProjectionPreferences.PREFS_INTERFACE_PROJECTION, true);

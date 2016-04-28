@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.epbs;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -30,29 +31,29 @@ import org.polarsys.capella.core.data.helpers.epbs.delegates.PhysicalArtifactRea
 
 public class EPBSArchitectureHelper implements IHelper {
 
-	public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
+	public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 		Object ret = null;
 
-		if (object_p instanceof EPBSArchitecture) {
-			ret = EpbsArchitectureHelper.getInstance().doSwitch((EPBSArchitecture) object_p, feature_p);
+		if (object instanceof EPBSArchitecture) {
+			ret = EpbsArchitectureHelper.getInstance().doSwitch((EPBSArchitecture) object, feature);
 		}
-		else if (object_p instanceof ConfigurationItem) {
-			ret = ConfigurationItemHelper.getInstance().doSwitch((ConfigurationItem) object_p, feature_p);
+		else if (object instanceof ConfigurationItem) {
+			ret = ConfigurationItemHelper.getInstance().doSwitch((ConfigurationItem) object, feature);
 		}
-    else if (object_p instanceof EPBSContext) {
-      ret = EPBSContextHelper.getInstance().doSwitch((EPBSContext) object_p, feature_p);
+    else if (object instanceof EPBSContext) {
+      ret = EPBSContextHelper.getInstance().doSwitch((EPBSContext) object, feature);
     }
-		else if (object_p instanceof PhysicalArtifactRealization) {
-			ret = PhysicalArtifactRealizationHelper.getInstance().doSwitch((PhysicalArtifactRealization)object_p, feature_p);
+		else if (object instanceof PhysicalArtifactRealization) {
+			ret = PhysicalArtifactRealizationHelper.getInstance().doSwitch((PhysicalArtifactRealization)object, feature);
 		}
-		else if (object_p instanceof PhysicalArchitectureRealization) {
-			ret = PhysicalArchitectureRealizationHelper.getInstance().doSwitch((PhysicalArchitectureRealization)object_p, feature_p);
+		else if (object instanceof PhysicalArchitectureRealization) {
+			ret = PhysicalArchitectureRealizationHelper.getInstance().doSwitch((PhysicalArchitectureRealization)object, feature);
 		}
-		else if (object_p instanceof Structure) {
-			ret = StructureHelper.getInstance().doSwitch((Structure) object_p, feature_p);
+		else if (object instanceof Structure) {
+			ret = StructureHelper.getInstance().doSwitch((Structure) object, feature);
 		}
 
-		if(null != ret || feature_p.getUpperBound() == 1)
+		if(null != ret || feature.getUpperBound() == 1)
 			return ret;
 
 		throw new HelperNotFoundException();

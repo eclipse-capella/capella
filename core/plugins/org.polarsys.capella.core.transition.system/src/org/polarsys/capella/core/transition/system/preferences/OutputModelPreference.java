@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.preferences;
 
 import org.eclipse.core.resources.IFile;
@@ -28,13 +29,13 @@ public class OutputModelPreference extends PropertyPreference {
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
 
-    if ((newValue_p == null) || (newValue_p.toString().length() == 0)) {
+    if ((newValue == null) || (newValue.toString().length() == 0)) {
       return new Status(IStatus.WARNING, getId(), null);
     }
 
-    String pathValue = newValue_p.toString();
+    String pathValue = newValue.toString();
     IPath path = new Path(pathValue);
     IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
     if (!file.isAccessible() || !file.exists() || file.isPhantom()) {

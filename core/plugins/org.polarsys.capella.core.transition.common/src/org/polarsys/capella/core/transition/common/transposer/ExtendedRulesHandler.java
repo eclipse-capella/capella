@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.transposer;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -28,27 +29,27 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.runtime.RuntimePurpo
 public class ExtendedRulesHandler extends GenericRulesHandler {
 
   /**
-   * @param purpose_p
-   * @param mappingId_p
+   * @param purpose
+   * @param mappingId
    * @throws NonExistingPurposeException
    */
-  public ExtendedRulesHandler(String purpose_p, String mappingId_p) throws NonExistingPurposeException {
-    super(purpose_p, mappingId_p);
+  public ExtendedRulesHandler(String purpose, String mappingId) throws NonExistingPurposeException {
+    super(purpose, mappingId);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean apply(Object object_p, boolean complete_p, IProgressMonitor monitor_p) throws RuleExecutionException {
+  public boolean apply(Object object, boolean complete, IProgressMonitor monitor) throws RuleExecutionException {
     //register an attribute in the current context
-    getContext().put(ITransitionConstants.TRANSPOSER_APPLY_IS_COMPLETE, Boolean.valueOf(complete_p));
-    return super.apply(object_p, complete_p, monitor_p);
+    getContext().put(ITransitionConstants.TRANSPOSER_APPLY_IS_COMPLETE, Boolean.valueOf(complete));
+    return super.apply(object, complete, monitor);
   }
 
   @Override
-  protected RuntimePurpose createRuntimePurpose(String purpose_p, String mappingId_p) {
-    return ExtendedPurposeRegistry.getInstance().getRegisteredPurpose(purpose_p, mappingId_p);
+  protected RuntimePurpose createRuntimePurpose(String purpose, String mappingId) {
+    return ExtendedPurposeRegistry.getInstance().getRegisteredPurpose(purpose, mappingId);
   }
 
 }

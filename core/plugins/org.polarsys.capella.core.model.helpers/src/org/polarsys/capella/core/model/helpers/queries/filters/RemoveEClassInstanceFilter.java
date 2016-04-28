@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers.queries.filters;
 
 import org.eclipse.emf.ecore.EClass;
@@ -21,12 +22,12 @@ public class RemoveEClassInstanceFilter implements IQueryFilter {
 
   protected EClass theClass;
 
-  public RemoveEClassInstanceFilter(EClass class_p) {
-    theClass = class_p;
+  public RemoveEClassInstanceFilter(EClass eClass) {
+    this.theClass = eClass;
   }
 
   @Override
-  public boolean keepElement(Object element, IQueryContext context_p) {
+  public boolean keepElement(Object element, IQueryContext context) {
     if (theClass.isInstance(element)) {
       return false;
     }

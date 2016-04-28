@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.activities;
 
 import org.eclipse.core.runtime.IStatus;
@@ -31,9 +32,9 @@ public class PostTransformationActivity extends AbstractActivity implements ITra
    * {@inheritDoc}
    */
   @Override
-  protected IStatus _run(ActivityParameters activityParams_p) {
+  protected IStatus _run(ActivityParameters activityParams) {
 
-    IContext context = getContext(activityParams_p);
+    IContext context = getContext(activityParams);
 
     //Notify listeners that transformation ends
     NotifyHandlerHelper.getInstance(context).notify(ITransitionConstants.NOTIFY__END_TRANSFORMATION, INotifyChangeEvent.DEFAULT, context);

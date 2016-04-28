@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -28,15 +29,15 @@ public class MergeLinkExt {
 
   /**
    * Finds the elements linked to the source element by a refinement relationship
-   * @param sourceElement_p The source element
+   * @param sourceElement The source element
    * @return The list of refinement elements
    */
   public static List<ModelElement> findMergeElements(
-  	  CapellaElement sourceElement_p) {
+  	  CapellaElement sourceElement) {
     List<ModelElement> elementList = new ArrayList<ModelElement>();
     
     EList<AbstractTrace> sourceLinkList = 
-      sourceElement_p.getOutgoingTraces();
+      sourceElement.getOutgoingTraces();
     
     for (AbstractTrace mergeLink : sourceLinkList) {
       if (mergeLink instanceof MergeLink) {
@@ -51,12 +52,12 @@ public class MergeLinkExt {
 
   /**
    * Retrieves the merged link of an element which are source links.
-   * @param element_p The element to be tested
+   * @param element The element to be tested
    * @return The list of {@link MergeLink} to be searched
    */
-  public static MergeLink findSourceMergedLink(CapellaElement element_p) {
-    //List<AbstractTrace> traces = element_p.getOutgoingTraces();
-    List<AbstractTrace> traces = element_p.getIncomingTraces();
+  public static MergeLink findSourceMergedLink(CapellaElement element) {
+    //List<AbstractTrace> traces = element.getOutgoingTraces();
+    List<AbstractTrace> traces = element.getIncomingTraces();
     AbstractTrace link = null;
     int i = 0;
     boolean found = false;
@@ -74,11 +75,11 @@ public class MergeLinkExt {
 
   /**
    * Retrieves the merged link of an element which are target links.
-   * @param element_p The element to be tested
+   * @param element The element to be tested
    * @return The list of {@link MergeLink} to be searched
    */
-  public static MergeLink findTargetMergedLink(CapellaElement element_p) {
-    EList<AbstractTrace> traces = element_p.getOutgoingTraces();
+  public static MergeLink findTargetMergedLink(CapellaElement element) {
+    EList<AbstractTrace> traces = element.getOutgoingTraces();
     AbstractTrace link = null;
     int i = 0;
     boolean found = false;

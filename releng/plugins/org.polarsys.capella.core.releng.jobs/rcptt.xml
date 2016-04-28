@@ -38,7 +38,7 @@
 			<arg value="${test-location}" />
 
 			<arg value="-suites" />      
-			<arg value="ActivityExplorer" />
+			<arg value="AllTests" />
 
 			<arg value="-testOptions" />      
 			<arg value="testExecTimeout=300;execTimeout=3600" />

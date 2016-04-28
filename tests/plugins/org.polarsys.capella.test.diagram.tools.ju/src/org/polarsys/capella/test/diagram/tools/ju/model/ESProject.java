@@ -39,9 +39,12 @@ public abstract class ESProject extends AbstractDiagramTestCase {
   public static String SA__OPERATIONAL_ANALYSIS_REALIZATION_TO_OPERATIONAL_ANALYSIS = "9152a433-c8d9-474a-90a2-3a9fa30319f8";  //$NON-NLS-1$ 
   public static String LA = "95fb59a4-c70d-4620-9844-e557ba603194";  //$NON-NLS-1$ 
   public static String LA__LOGICAL_FUNCTIONS = "5ad27e81-a208-4e0b-91b9-63121daabb20";  //$NON-NLS-1$ 
+  public static String LA__ROOT_LF__FUNCTIONALEXCHANGE_2 = "5bbfb786-71d3-4a5c-88d0-5245513f4561";  //$NON-NLS-1$ 
   public static String LA__CAPABILITIES = "120e51a0-63a1-44fe-9f3d-69c1651b2461";  //$NON-NLS-1$ 
   public static String LA__CAPABILITIES__CAPABILITYREALIZATION_1 = "a8143c88-483c-45b5-86b1-31b493a464e8";  //$NON-NLS-1$ 
   public static String LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_1 = "e8bd0bc4-3c55-46cc-b119-a18c2db3a444";  //$NON-NLS-1$ 
+  public static String LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_1__LA_1 = "2858335e-e69e-43de-99e5-914927e0f860";  //$NON-NLS-1$ 
+  public static String LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_1__LA_2 = "bc347bb0-929b-46c2-87bc-70d3701c83e3";  //$NON-NLS-1$
   public static String LA__INTERFACES = "86f2a43b-51da-4e0e-8a05-d4bc1a268bab";  //$NON-NLS-1$ 
   public static String LA__DATA = "cb66e407-43cc-4629-991e-a8eea7b74dd2";  //$NON-NLS-1$ 
   public static String LA__LOGICAL_CONTEXT = "4a127589-987f-4cc0-a790-945f2a1c939c";  //$NON-NLS-1$ 

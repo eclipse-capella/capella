@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.interaction.services;
 
 import java.util.ArrayList;
@@ -35,13 +36,13 @@ import org.polarsys.capella.common.data.modellingcore.TraceableElement;
  */
 public class ScenarioExt {
   /**
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static List<MessageEnd> getOwnedMessagesEnds(Scenario scenario_p) {
+  public static List<MessageEnd> getOwnedMessagesEnds(Scenario scenario) {
     List<MessageEnd> ownedMsgEnd = new ArrayList<MessageEnd>();
 
-    for (InteractionFragment abs : scenario_p.getOwnedInteractionFragments()) {
+    for (InteractionFragment abs : scenario.getOwnedInteractionFragments()) {
       if (abs instanceof MessageEnd) {
         ownedMsgEnd.add((MessageEnd)abs);
       }
@@ -53,13 +54,13 @@ public class ScenarioExt {
   /**
    * This method retrieves all the receipt events from the given Scenario.
    * 
-   * @param currentElement_p
+   * @param currentElement
    * @return List<EventReceiptOperation>
    */
-  public static List<EventReceiptOperation> getOwnedEventReceiptOperation(Scenario currentElement_p) {
+  public static List<EventReceiptOperation> getOwnedEventReceiptOperation(Scenario currentElement) {
     List<EventReceiptOperation> result = new ArrayList<EventReceiptOperation>();
 
-    for (Event evt : currentElement_p.getOwnedEvents()) {
+    for (Event evt : currentElement.getOwnedEvents()) {
       if (evt instanceof EventReceiptOperation) {
         result.add((EventReceiptOperation) evt);
       }
@@ -71,13 +72,13 @@ public class ScenarioExt {
   /**
    * This method retrieves all the sent events from the given Scenario.
    * 
-   * @param currentElement_p
+   * @param currentElement
    * @return List<EventSentOperation>
    */
-  public static List<EventSentOperation> getOwnedEventSentOperation(Scenario currentElement_p) {
+  public static List<EventSentOperation> getOwnedEventSentOperation(Scenario currentElement) {
     List<EventSentOperation> result = new ArrayList<EventSentOperation>();
 
-    for (Event evt : currentElement_p.getOwnedEvents()) {
+    for (Event evt : currentElement.getOwnedEvents()) {
       if (evt instanceof EventSentOperation) {
         result.add((EventSentOperation) evt);
       }
@@ -106,13 +107,13 @@ public class ScenarioExt {
   /**
    * Check and return is a {@link TraceableElement} has at least
    * one outgoing {@link Trace} of a given type.  
-   * @param te_p the target {@link TraceableElement}
-   * @param TraceType_p the type of {@link Trace} to check
+   * @param te the target {@link TraceableElement}
+   * @param TraceType the type of {@link Trace} to check
    * @return the first {@link Trace} found, <code>null</code> otherwise
    */
-  public static TraceableElement hasLinkOftype(TraceableElement te_p, EClass traceType_p) {
+  public static TraceableElement hasLinkOftype(TraceableElement te, EClass traceType) {
     
-    List<TraceableElement> list = hasLinkOftype(te_p, traceType_p,
+    List<TraceableElement> list = hasLinkOftype(te, traceType,
       ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES,
       ModellingcorePackage.Literals.ABSTRACT_TRACE__TARGET_ELEMENT
     );
@@ -122,18 +123,18 @@ public class ScenarioExt {
 
   /**
    * Return list of target {@link TraceableElement} linked to/from a given {@link TraceableElement}
-   * @param te_p the target {@link TraceableElement}
-   * @param TraceType_p the type of {@link Trace} to check
+   * @param te the target {@link TraceableElement}
+   * @param TraceType the type of {@link Trace} to check
    * @return a {@link List} containing the matching {@link Trace}s found, an empty one otherwise
    */
   @SuppressWarnings("unchecked")
-  public static List<TraceableElement> hasLinkOftype(TraceableElement te_p, EClass traceType_p, EStructuralFeature feature1_p, EStructuralFeature feature2_p) {
+  public static List<TraceableElement> hasLinkOftype(TraceableElement te, EClass traceType, EStructuralFeature feature1, EStructuralFeature feature2) {
     
     List<TraceableElement> result = new ArrayList<TraceableElement>();
     
-    for (EObject at : (Collection<EObject>) te_p.eGet(feature1_p)) {
-      if (at.eClass() == traceType_p ) {
-        result.add((TraceableElement) ((AbstractTrace) at).eGet(feature2_p));
+    for (EObject at : (Collection<EObject>) te.eGet(feature1)) {
+      if (at.eClass() == traceType ) {
+        result.add((TraceableElement) ((AbstractTrace) at).eGet(feature2));
       }
     }
     

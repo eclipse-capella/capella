@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers.queries;
 
 import java.util.ArrayList;
@@ -26,17 +27,17 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 public class GetAllSubDefinedComponents extends AbstractQuery {
 
   @Override
-  public List<Object> execute(Object input_p, IQueryContext context_p) throws QueryException {
-    BlockArchitecture block = (BlockArchitecture) input_p;
+  public List<Object> execute(Object input, IQueryContext context) throws QueryException {
+    BlockArchitecture block = (BlockArchitecture) input;
     return (List) getAllSubDefinedComponents(block);
   }
 
-  public List<Component> getAllSubDefinedComponents(BlockArchitecture architecture_p) {
+  public List<Component> getAllSubDefinedComponents(BlockArchitecture architecture) {
     List<Component> comps = new ArrayList<Component>();
     LinkedList<Component> subs = new LinkedList<Component>();
     List<Component> internal = new ArrayList<Component>();
 
-    subs.addAll(ComponentExt.getSubDefinedComponents(architecture_p));
+    subs.addAll(ComponentExt.getSubDefinedComponents(architecture));
     while (subs.size() > 0) {
       Component sub = subs.removeFirst();
       comps.add(sub);

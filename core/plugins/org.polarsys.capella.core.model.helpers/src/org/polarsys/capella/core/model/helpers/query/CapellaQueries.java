@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers.query;
 
 import org.polarsys.capella.core.model.helpers.query.impl.GetElementsQueries;
@@ -18,15 +19,15 @@ import org.polarsys.capella.core.model.helpers.query.impl.RootQueries;
  * @version 0.1.0
  */
 public class CapellaQueries implements ICapellaQueries {
-  private static CapellaQueries __instance = null;
-  private IRootQueries _rootQueries = null;
-  private IGetElementsQueries _getElementsQueries = null;
+  private static CapellaQueries instance = null;
+  private IRootQueries rootQueries = null;
+  private IGetElementsQueries getElementsQueries = null;
 
   public static CapellaQueries getInstance() {
-    if (null == __instance) {
-      __instance = new CapellaQueries();
+    if (null == instance) {
+      instance = new CapellaQueries();
     }
-    return __instance;
+    return instance;
   }
 
   /**
@@ -35,16 +36,16 @@ public class CapellaQueries implements ICapellaQueries {
    * @see org.polarsys.capella.core.model.helpers.query.ICapellaQueries#getRootQueries()
    */
   public IRootQueries getRootQueries() {
-    if (null == _rootQueries) {
-      _rootQueries = new RootQueries();
+    if (null == rootQueries) {
+      rootQueries = new RootQueries();
     }
-    return _rootQueries;
+    return rootQueries;
   }
   
   public IGetElementsQueries getGetElementsQueries() {
-    if (null == _getElementsQueries) {
-      _getElementsQueries = new GetElementsQueries();
+    if (null == getElementsQueries) {
+      getElementsQueries = new GetElementsQueries();
     }
-    return _getElementsQueries;
+    return getElementsQueries;
   }
 }

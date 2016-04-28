@@ -40,6 +40,7 @@ public interface IFilterNameConstants {
   String FILTER_CDB_HIDE_DERIVED_PROPERTIES = "Hide Derived Properties"; //$NON-NLS-1$
   String FILTER_CDB_HIDE_TECHNICALS_INTERFACES = "Hide Technical Interfaces"; //$NON-NLS-1$
   String FILTER_CDB_HIDE_ROLE_NAMES = "Hide Role Names"; //$NON-NLS-1$
+  String FILTER_CDB_SHOW_MODIFIERS = "Show Modifiers"; //$NON-NLS-1$
 
   // CDI filters - Contextual Component Detailed Interfaces
   String FILTER_CDI_HIDE_INTERFACE_CONTENTS = "Hide Interface contents"; //$NON-NLS-1$
@@ -55,6 +56,7 @@ public interface IFilterNameConstants {
   String FILTER_CDI_HIDE_COMMUNICATION_LINKS = "Hide Communication Links"; //$NON-NLS-1$
   String FILTER_CDI_HIDE_GENERALIZATION_LINKS = "Hide Generalization Links"; //$NON-NLS-1$LS-1$
   String FILTER_CDI_HIDE_TECHNICALS_INTERFACES = "Hide Technical Interfaces"; //$NON-NLS-1$
+  String FILTER_CDI_SHOW_MODIFIERS = "Show Modifiers"; //$NON-NLS-1$
 
   // filter id
   String FILTER_CDI_HIDE_IMPLEMENTATION_LINKS_ID = "Hide Implmentation links"; //$NON-NLS-1$
@@ -184,6 +186,7 @@ public interface IFilterNameConstants {
   String FILTER_IDB_HIDE_TECHNICALS_INTERFACES = "Hide Technical Interfaces"; //$NON-NLS-1$
   String FILTER_IDB_HIDE_DELEGATED_COMMUNICATION_LINKS = "Hide Delegated Communication Links"; //$NON-NLS-1$
   String FILTER_IDB_HIDE_DELEGATED_USE_IMPLEMENTATION_LINKS = "Hide Delegated Use/Implementation/Require/Provide Links"; //$NON-NLS-1$
+  String FILTER_IDB_SHOW_MODIFIERS = "Show Modifiers"; //$NON-NLS-1$
 
   // filter id
   String FILTER_IDB_HIDE_IMPLEMENTATION_LINKS_ID = "Hide Implmentation links"; //$NON-NLS-1$

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,19 +38,19 @@ public class Capability_participatingActors implements IQuery {
    * current.participatingActors
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (object_p instanceof AbstractCapability) {
-      if (object_p instanceof Capability) {
-        Capability cap = (Capability) object_p;
+    if (object instanceof AbstractCapability) {
+      if (object instanceof Capability) {
+        Capability cap = (Capability) object;
         for (ActorCapabilityInvolvement involment : cap.getInvolvedActors()) {
           Actor actor = involment.getActor();
           if (null != actor) {
             result.add(actor);
           }
         }
-      } else if (object_p instanceof CapabilityRealization) {
-        CapabilityRealization capReal = (CapabilityRealization) object_p;
+      } else if (object instanceof CapabilityRealization) {
+        CapabilityRealization capReal = (CapabilityRealization) object;
         for (ActorCapabilityRealizationInvolvement involment : capReal.getInvolvedActors()) {
           InvolvedElement involved = involment.getInvolved();
           if (null != involved && involved instanceof Actor) {

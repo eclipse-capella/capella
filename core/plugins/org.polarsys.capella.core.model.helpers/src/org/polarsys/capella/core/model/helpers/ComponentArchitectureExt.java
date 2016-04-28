@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -28,12 +29,12 @@ public class ComponentArchitectureExt {
    * Gets all the components contained in a component architecture
    * 
    * 
-   * @param componentArchitecture_p the parent component architecture
+   * @param componentArchitecture the parent component architecture
    * @return list of components
    */
-  static public List<Component> getComponentsFromComponentArchitecture(ComponentArchitecture componentArchitecture_p) {
+  static public List<Component> getComponentsFromComponentArchitecture(ComponentArchitecture componentArchitecture) {
     List<Component> list = new ArrayList<Component>();
-    for (Object obj : componentArchitecture_p.eContents()) {
+    for (Object obj : componentArchitecture.eContents()) {
       if (obj instanceof Component) {
         list.add((Component) obj);
       } else if (obj instanceof Structure) {

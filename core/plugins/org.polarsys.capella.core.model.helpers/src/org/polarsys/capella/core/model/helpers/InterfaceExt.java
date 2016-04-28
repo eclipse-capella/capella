@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -65,18 +66,18 @@ import org.polarsys.capella.common.queries.debug.QueryDebugger;
  */
 public class InterfaceExt {
 
-  public static ExchangeItemAllocation addExchangeItem(Interface itf_p, ExchangeItem item_p) {
-    return addExchangeItem(itf_p, item_p, CommunicationLinkProtocol.UNSET, CommunicationLinkProtocol.UNSET);
+  public static ExchangeItemAllocation addExchangeItem(Interface itf, ExchangeItem item) {
+    return addExchangeItem(itf, item, CommunicationLinkProtocol.UNSET, CommunicationLinkProtocol.UNSET);
   }
 
-  public static ExchangeItemAllocation addExchangeItem(Interface itf_p, ExchangeItem item_p, CommunicationLinkProtocol sendProtocol,
+  public static ExchangeItemAllocation addExchangeItem(Interface itf, ExchangeItem item, CommunicationLinkProtocol sendProtocol,
       CommunicationLinkProtocol receiveProtocol) {
-    if (null != item_p) {
+    if (null != item) {
       ExchangeItemAllocation allocation = CsFactory.eINSTANCE.createExchangeItemAllocation();
       allocation.setSendProtocol(sendProtocol);
       allocation.setReceiveProtocol(receiveProtocol);
-      allocation.setAllocatedItem(item_p);
-      itf_p.getOwnedExchangeItemAllocations().add(allocation);
+      allocation.setAllocatedItem(item);
+      itf.getOwnedExchangeItemAllocations().add(allocation);
       CapellaElementExt.creationService(allocation);
       return allocation;
     }
@@ -87,29 +88,29 @@ public class InterfaceExt {
    * @param context a Capella Element
    * @return all the interface contained in the current and previous architectures
    */
-  public static Collection<Interface> getAllInterfaces(EObject context_p) {
+  public static Collection<Interface> getAllInterfaces(EObject context) {
     // OLD CODE
     Collection<Interface> returnedInterfaces = new ArrayList<Interface>();
-    for (BlockArchitecture aBlockArchitecture : BlockArchitectureExt.getRootAndPreviousBlockArchitectures(context_p)) {
+    for (BlockArchitecture aBlockArchitecture : BlockArchitectureExt.getRootAndPreviousBlockArchitectures(context)) {
       for (EObject aInterface : EObjectExt.getAll(aBlockArchitecture, CsPackage.Literals.INTERFACE)) {
         returnedInterfaces.add((Interface) aInterface);
       }
     }
     // NEW CODE
-    returnedInterfaces = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_INTERFACES, context_p, returnedInterfaces);
+    returnedInterfaces = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_INTERFACES, context, returnedInterfaces);
     // END CODE REFACTOR
     return returnedInterfaces;
   }
 
   /**
    * return all super interfaces for the parameter abstract interface
-   * @param interf_p
+   * @param interf
    * @return
    */
-  public static Collection<? extends Interface> getAllSuperGeneralizableElements(Interface interf_p) {
+  public static Collection<? extends Interface> getAllSuperGeneralizableElements(Interface interf) {
     Collection<Interface> result = new HashSet<Interface>();
-    result.add(interf_p);
-    for (GeneralizableElement ge : GeneralizableElementExt.getAllSuperGeneralizableElements(interf_p)) {
+    result.add(interf);
+    for (GeneralizableElement ge : GeneralizableElementExt.getAllSuperGeneralizableElements(interf)) {
       if (ge instanceof Interface) {
         Interface ai = (Interface) ge;
         result.add(ai);
@@ -133,12 +134,12 @@ public class InterfaceExt {
 
   /**
    * This method retrieves the implementer actors.
-   * @param interf_p the interface whose implementer actors will be retrieved
+   * @param interf the interface whose implementer actors will be retrieved
    * @return List<Actor> the implementer actors
    */
-  public static List<Actor> getImplementerActors(Interface interf_p) {
+  public static List<Actor> getImplementerActors(Interface interf) {
     List<Actor> implementerActors = new ArrayList<Actor>();
-    List<Component> implementerComponents = interf_p.getImplementorComponents();
+    List<Component> implementerComponents = interf.getImplementorComponents();
     for (Component cpnt : implementerComponents) {
       if (cpnt instanceof Actor) {
         implementerActors.add((Actor) cpnt);
@@ -149,12 +150,12 @@ public class InterfaceExt {
 
   /**
    * This method retrieves the implementer epbs components.
-   * @param interf_p the interface whose implementer epbs components will be retrieved
+   * @param interf the interface whose implementer epbs components will be retrieved
    * @return List<PhysicalComponent> the implementer epbs components
    */
-  public static List<ConfigurationItem> getImplementerEPBSComponents(Interface interf_p) {
+  public static List<ConfigurationItem> getImplementerEPBSComponents(Interface interf) {
     List<ConfigurationItem> implementerEPBSComponents = new ArrayList<ConfigurationItem>();
-    List<Component> implementerComponents = interf_p.getImplementorComponents();
+    List<Component> implementerComponents = interf.getImplementorComponents();
     for (Component cpnt : implementerComponents) {
       if (cpnt instanceof ConfigurationItem) {
         implementerEPBSComponents.add((ConfigurationItem) cpnt);
@@ -165,12 +166,12 @@ public class InterfaceExt {
 
   /**
    * This method retrieves the implementer logical components.
-   * @param interf_p the interface whose implementer logical components will be retrieved
+   * @param interf the interface whose implementer logical components will be retrieved
    * @return List<LogicalComponent> the implementer logical components
    */
-  public static List<LogicalComponent> getImplementerLogicalComponents(Interface interf_p) {
+  public static List<LogicalComponent> getImplementerLogicalComponents(Interface interf) {
     List<LogicalComponent> implementerLogicalComponents = new ArrayList<LogicalComponent>();
-    List<Component> implementerComponents = interf_p.getImplementorComponents();
+    List<Component> implementerComponents = interf.getImplementorComponents();
     for (Component cpnt : implementerComponents) {
       if (cpnt instanceof LogicalComponent) {
         implementerLogicalComponents.add((LogicalComponent) cpnt);
@@ -181,12 +182,12 @@ public class InterfaceExt {
 
   /**
    * This method retrieves the implementer physical components.
-   * @param interf_p the interface whose implementer physical components will be retrieved
+   * @param interf the interface whose implementer physical components will be retrieved
    * @return List<PhysicalComponent> the implementer physical components
    */
-  public static List<PhysicalComponent> getImplementerPhysicalComponents(Interface interf_p) {
+  public static List<PhysicalComponent> getImplementerPhysicalComponents(Interface interf) {
     List<PhysicalComponent> implementerPhysicalComponents = new ArrayList<PhysicalComponent>();
-    List<Component> implementerComponents = interf_p.getImplementorComponents();
+    List<Component> implementerComponents = interf.getImplementorComponents();
     for (Component cpnt : implementerComponents) {
       if (cpnt instanceof PhysicalComponent) {
         implementerPhysicalComponents.add((PhysicalComponent) cpnt);
@@ -198,12 +199,12 @@ public class InterfaceExt {
   /**
    * @see #getInterfaceDependencies(Interface)
    */
-  public static Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> getInterfaceDependencies2(Interface interface_p) {
+  public static Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> getInterfaceDependencies2(Interface interface1) {
 
     Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> result =
         new HashMap<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>>();
 
-    for (AbstractExchangeItem anOperation : interface_p.getExchangeItems()) {
+    for (AbstractExchangeItem anOperation : interface1.getExchangeItems()) {
       if (anOperation instanceof ExchangeItem) {
         ExchangeItem item = (ExchangeItem) anOperation;
         addToResultMap(item, ExchangeItemExt.getExchangeItemDependencies2(item), result);
@@ -212,7 +213,7 @@ public class InterfaceExt {
 
     // superInterfaces
     Map<AbstractDependenciesPkg, Collection<EObject>> map = null;
-    for (Generalization aGeneralization : interface_p.getSuperGeneralizations()) {
+    for (Generalization aGeneralization : interface1.getSuperGeneralizations()) {
       map = new HashMap<AbstractDependenciesPkg, Collection<EObject>>();
       AbstractDependenciesPkgExt.checkDependenciesAndAddToResult(map, aGeneralization.getSuper());
       addToResultMap(aGeneralization, map, result);
@@ -221,23 +222,23 @@ public class InterfaceExt {
   }
 
   /** for internal use */
-  private static void addToResultMap(EObject tgt_p, Map<AbstractDependenciesPkg, Collection<EObject>> map_p,
-      Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> result_p) {
+  private static void addToResultMap(EObject tgt, Map<AbstractDependenciesPkg, Collection<EObject>> map,
+      Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> result) {
 
     Couple<EObject, Collection<EObject>> couple = null;
 
     Set<Couple<EObject, Collection<EObject>>> col = null;
 
-    if (null != map_p) {
-      for (AbstractDependenciesPkg pkg : map_p.keySet()) {
+    if (null != map) {
+      for (AbstractDependenciesPkg pkg : map.keySet()) {
 
-        if (!result_p.containsKey(pkg)) {
+        if (!result.containsKey(pkg)) {
           col = new HashSet<Couple<EObject, Collection<EObject>>>();
-          result_p.put(pkg, col);
+          result.put(pkg, col);
         }
 
-        couple = new Couple<EObject, Collection<EObject>>(tgt_p, map_p.get(pkg));
-        result_p.get(pkg).add(couple);
+        couple = new Couple<EObject, Collection<EObject>>(tgt, map.get(pkg));
+        result.get(pkg).add(couple);
       }
 
     }
@@ -246,21 +247,21 @@ public class InterfaceExt {
   }
 
   /**
-   * @param interface_p
+   * @param interface1
    * @return all dependent packages of the interface
    */
-  public static Collection<AbstractDependenciesPkg> getInterfaceDependencies(Interface interface_p) {
-    return getInterfaceDependencies2(interface_p).keySet();
+  public static Collection<AbstractDependenciesPkg> getInterfaceDependencies(Interface interface1) {
+    return getInterfaceDependencies2(interface1).keySet();
   }
 
   /**
    * This method returns the interface package of the current interface
    */
-  public static InterfacePkg getOwnerInterfacePkg(Interface interf_p) {
-    if (interf_p.eContainer() instanceof Interface) {
-      return getOwnerInterfacePkg((Interface) interf_p.eContainer());
-    } else if (interf_p.eContainer() instanceof InterfacePkg) {
-      return (InterfacePkg) interf_p.eContainer();
+  public static InterfacePkg getOwnerInterfacePkg(Interface interf) {
+    if (interf.eContainer() instanceof Interface) {
+      return getOwnerInterfacePkg((Interface) interf.eContainer());
+    } else if (interf.eContainer() instanceof InterfacePkg) {
+      return (InterfacePkg) interf.eContainer();
     }
 
     return null;
@@ -268,12 +269,12 @@ public class InterfaceExt {
 
   /**
    * This method retrieves standardPorts that provide the given interface.
-   * @param interf_p
+   * @param interf
    * @return
    */
-  public static List<ComponentPort> getProvidedByComponentPorts(Interface interf_p) {
+  public static List<ComponentPort> getProvidedByComponentPorts(Interface interf) {
     List<ComponentPort> result = new ArrayList<ComponentPort>();
-    for (Object objectRef : EObjectExt.getReferencers(interf_p, InformationPackage.Literals.PORT__PROVIDED_INTERFACES)) {
+    for (Object objectRef : EObjectExt.getReferencers(interf, InformationPackage.Literals.PORT__PROVIDED_INTERFACES)) {
       if (objectRef instanceof ComponentPort) {
         result.add((ComponentPort) objectRef);
       }
@@ -286,9 +287,9 @@ public class InterfaceExt {
    * @param itf_p
    * @return
    */
-  public static List<ComponentPort> getProvidedByPorts(Interface interf_p) {
+  public static List<ComponentPort> getProvidedByPorts(Interface interf) {
     List<ComponentPort> result = new ArrayList<ComponentPort>();
-    for (Object objectRef : EObjectExt.getReferencers(interf_p, InformationPackage.Literals.PORT__PROVIDED_INTERFACES)) {
+    for (Object objectRef : EObjectExt.getReferencers(interf, InformationPackage.Literals.PORT__PROVIDED_INTERFACES)) {
       if (objectRef instanceof ComponentPort) {
         result.add((ComponentPort) objectRef);
       }
@@ -300,9 +301,9 @@ public class InterfaceExt {
    * Return Components that implements the Interface given in parameter through Provider Port . return all super interfaces for the parameter abstract
    * interface. note that interf_p will be included into the list result.add(interf_p);
    */
-  public static List<Component> getProviderComponent(Interface itf_p) {
+  public static List<Component> getProviderComponent(Interface itf) {
     List<Component> result = new ArrayList<Component>();
-    for (Object objectRef : EObjectExt.getReferencers(itf_p, InformationPackage.Literals.PORT__PROVIDED_INTERFACES)) {
+    for (Object objectRef : EObjectExt.getReferencers(itf, InformationPackage.Literals.PORT__PROVIDED_INTERFACES)) {
       if (objectRef instanceof Port) {
         EObject objContainer = ((Port) objectRef).eContainer();
         if (objContainer instanceof Component) {
@@ -316,17 +317,17 @@ public class InterfaceExt {
   /**
    * Return Components that Uses/Implements/Provides/Requires the given Interface
    */
-  public static Collection<Component> getRelatedComponents(Interface itf_p) {
+  public static Collection<Component> getRelatedComponents(Interface itf) {
     Set<Component> result = new HashSet<Component>();
 
-    result.addAll(itf_p.getImplementorComponents());
-    result.addAll(itf_p.getUserComponents());
+    result.addAll(itf.getImplementorComponents());
+    result.addAll(itf.getUserComponents());
 
     List<EReference> refs = new ArrayList<EReference>();
     refs.add(InformationPackage.Literals.PORT__REQUIRED_INTERFACES);
     refs.add(InformationPackage.Literals.PORT__PROVIDED_INTERFACES);
 
-    for (Object objectRef : EObjectExt.getReferencers(itf_p, refs)) {
+    for (Object objectRef : EObjectExt.getReferencers(itf, refs)) {
       if (objectRef instanceof Port) {
         EObject objContainer = ((Port) objectRef).eContainer();
         if (objContainer instanceof Component) {
@@ -341,9 +342,9 @@ public class InterfaceExt {
   /**
    * Return Components that Uses the Interface given in parameter through Require Port.
    */
-  public static List<Component> getRequireComponent(Interface itf_p) {
+  public static List<Component> getRequireComponent(Interface itf) {
     List<Component> result = new ArrayList<Component>();
-    for (Object objectRef : EObjectExt.getReferencers(itf_p, InformationPackage.Literals.PORT__REQUIRED_INTERFACES)) {
+    for (Object objectRef : EObjectExt.getReferencers(itf, InformationPackage.Literals.PORT__REQUIRED_INTERFACES)) {
       if (objectRef instanceof Port) {
         EObject objContainer = ((Port) objectRef).eContainer();
         if (objContainer instanceof Component) {
@@ -356,12 +357,12 @@ public class InterfaceExt {
 
   /**
    * This method retrieves standardPorts that require the given interface.
-   * @param interf_p
+   * @param interf
    * @return
    */
-  public static List<ComponentPort> getRequiredByComponentPorts(Interface interf_p) {
+  public static List<ComponentPort> getRequiredByComponentPorts(Interface interf) {
     List<ComponentPort> result = new ArrayList<ComponentPort>();
-    for (Object objectRef : EObjectExt.getReferencers(interf_p, InformationPackage.Literals.PORT__REQUIRED_INTERFACES)) {
+    for (Object objectRef : EObjectExt.getReferencers(interf, InformationPackage.Literals.PORT__REQUIRED_INTERFACES)) {
       if (objectRef instanceof ComponentPort) {
         result.add((ComponentPort) objectRef);
       }
@@ -374,9 +375,9 @@ public class InterfaceExt {
    * @param itf_p
    * @return
    */
-  public static List<ComponentPort> getRequiredByPorts(Interface interf_p) {
+  public static List<ComponentPort> getRequiredByPorts(Interface interf) {
     List<ComponentPort> result = new ArrayList<ComponentPort>();
-    for (Object objectRef : EObjectExt.getReferencers(interf_p, InformationPackage.Literals.PORT__REQUIRED_INTERFACES)) {
+    for (Object objectRef : EObjectExt.getReferencers(interf, InformationPackage.Literals.PORT__REQUIRED_INTERFACES)) {
       if (objectRef instanceof ComponentPort) {
         result.add((ComponentPort) objectRef);
       }
@@ -387,11 +388,11 @@ public class InterfaceExt {
   /**
    * This method returns the root interface package of the current interface
    */
-  public static InterfacePkg getRootOwnerInterfacePkg(Interface interf_p) {
-    if (interf_p.eContainer() instanceof Interface) {
-      return getRootOwnerInterfacePkg((Interface) interf_p.eContainer());
-    } else if (interf_p.eContainer() instanceof InterfacePkg) {
-      return InterfacePkgExt.getRootInterfacePkg((InterfacePkg) interf_p.eContainer());
+  public static InterfacePkg getRootOwnerInterfacePkg(Interface interf) {
+    if (interf.eContainer() instanceof Interface) {
+      return getRootOwnerInterfacePkg((Interface) interf.eContainer());
+    } else if (interf.eContainer() instanceof InterfacePkg) {
+      return InterfacePkgExt.getRootInterfacePkg((InterfacePkg) interf.eContainer());
     }
 
     return null;
@@ -399,12 +400,12 @@ public class InterfaceExt {
 
   /**
    * This method retrieves the user actors.
-   * @param interf_p the interface whose user actors will be retrieved
+   * @param interf the interface whose user actors will be retrieved
    * @return List<Actor> the user actors
    */
-  public static List<Actor> getUserActors(Interface interf_p) {
+  public static List<Actor> getUserActors(Interface interf) {
     List<Actor> userActors = new ArrayList<Actor>();
-    List<Component> userComponents = interf_p.getUserComponents();
+    List<Component> userComponents = interf.getUserComponents();
     for (Component cpnt : userComponents) {
       if (cpnt instanceof Actor) {
         userActors.add((Actor) cpnt);
@@ -415,12 +416,12 @@ public class InterfaceExt {
 
   /**
    * This method retrieves the user epbs components.
-   * @param interf_p the interface whose user epbs components will be retrieved
+   * @param interf the interface whose user epbs components will be retrieved
    * @return List<PhysicalComponent> the user epbs components
    */
-  public static List<ConfigurationItem> getUserEPBSComponents(Interface interf_p) {
+  public static List<ConfigurationItem> getUserEPBSComponents(Interface interf) {
     List<ConfigurationItem> userEPBSComponents = new ArrayList<ConfigurationItem>();
-    List<Component> userComponents = interf_p.getUserComponents();
+    List<Component> userComponents = interf.getUserComponents();
     for (Component cpnt : userComponents) {
       if (cpnt instanceof ConfigurationItem) {
         userEPBSComponents.add((ConfigurationItem) cpnt);
@@ -431,12 +432,12 @@ public class InterfaceExt {
 
   /**
    * This method retrieves the user logical components.
-   * @param interf_p the interface whose user logical components will be retrieved
+   * @param interf the interface whose user logical components will be retrieved
    * @return List<LogicalComponent> the user logical components
    */
-  public static List<LogicalComponent> getUserLogicalComponents(Interface interf_p) {
+  public static List<LogicalComponent> getUserLogicalComponents(Interface interf) {
     List<LogicalComponent> userLogicalComponents = new ArrayList<LogicalComponent>();
-    List<Component> userComponents = interf_p.getUserComponents();
+    List<Component> userComponents = interf.getUserComponents();
     for (Component cpnt : userComponents) {
       if (cpnt instanceof LogicalComponent) {
         userLogicalComponents.add((LogicalComponent) cpnt);
@@ -447,12 +448,12 @@ public class InterfaceExt {
 
   /**
    * This method retrieves the user physical components.
-   * @param interf_p the interface whose user physical components will be retrieved
+   * @param interf the interface whose user physical components will be retrieved
    * @return List<PhysicalComponent> the user physical components
    */
-  public static List<PhysicalComponent> getUserPhysicalComponents(Interface interf_p) {
+  public static List<PhysicalComponent> getUserPhysicalComponents(Interface interf) {
     List<PhysicalComponent> userPhysicalComponents = new ArrayList<PhysicalComponent>();
-    List<Component> userComponents = interf_p.getUserComponents();
+    List<Component> userComponents = interf.getUserComponents();
     for (Component cpnt : userComponents) {
       if (cpnt instanceof PhysicalComponent) {
         userPhysicalComponents.add((PhysicalComponent) cpnt);
@@ -488,12 +489,12 @@ public class InterfaceExt {
     return availableElements;
   }
 
-  public static Interface getInterfaceFromLink(Relationship element_p) {
-    if (null != element_p) {
-      if (element_p instanceof InterfaceImplementation) {
-        return ((InterfaceImplementation) element_p).getImplementedInterface();
-      } else if (element_p instanceof InterfaceUse) {
-        return ((InterfaceUse) element_p).getUsedInterface();
+  public static Interface getInterfaceFromLink(Relationship element) {
+    if (null != element) {
+      if (element instanceof InterfaceImplementation) {
+        return ((InterfaceImplementation) element).getImplementedInterface();
+      } else if (element instanceof InterfaceUse) {
+        return ((InterfaceUse) element).getUsedInterface();
       }
     }
     return null;
@@ -501,11 +502,11 @@ public class InterfaceExt {
 
   /**
    * Return true if given interface is provided by any element
-   * @param interf_p
+   * @param interf
    * @return
    */
-  public static boolean isProvidedByComponentPorts(Interface interf_p) {
-    for (Object objectRef : EObjectExt.getReferencers(interf_p, InformationPackage.Literals.PORT__PROVIDED_INTERFACES)) {
+  public static boolean isProvidedByComponentPorts(Interface interf) {
+    for (Object objectRef : EObjectExt.getReferencers(interf, InformationPackage.Literals.PORT__PROVIDED_INTERFACES)) {
       if (objectRef instanceof ComponentPort) {
         return true;
       }
@@ -515,11 +516,11 @@ public class InterfaceExt {
 
   /**
    * Return true if given interface is required by any element
-   * @param interf_p
+   * @param interf
    * @return
    */
-  public static boolean isRequiredByComponentPorts(Interface interf_p) {
-    for (Object objectRef : EObjectExt.getReferencers(interf_p, InformationPackage.Literals.PORT__REQUIRED_INTERFACES)) {
+  public static boolean isRequiredByComponentPorts(Interface interf) {
+    for (Object objectRef : EObjectExt.getReferencers(interf, InformationPackage.Literals.PORT__REQUIRED_INTERFACES)) {
       if (objectRef instanceof ComponentPort) {
         return true;
       }
@@ -527,36 +528,36 @@ public class InterfaceExt {
     return false;
   }
 
-  public static EObject getTargetElementFromLink(EObject element_p) {
-    if (null != element_p) {
-      if (element_p instanceof InterfaceImplementation) {
-        return ((InterfaceImplementation) element_p).getImplementedInterface();
-      } else if (element_p instanceof InterfaceUse) {
-        return ((InterfaceUse) element_p).getUsedInterface();
-      } else if (element_p instanceof SystemComponentCapabilityRealizationInvolvement) {
-        return ((SystemComponentCapabilityRealizationInvolvement) element_p).getInvolved();
-      } else if (element_p instanceof ActorCapabilityRealizationInvolvement) {
-        return ((ActorCapabilityRealizationInvolvement) element_p).getInvolved();
-      } else if (element_p instanceof AbstractCapabilityExtend) {
-        return ((AbstractCapabilityExtend) element_p).getExtended();
-      } else if (element_p instanceof AbstractCapabilityInclude) {
-        return ((AbstractCapabilityInclude) element_p).getIncluded();
-      } else if (element_p instanceof AbstractCapabilityGeneralization) {
-        return ((AbstractCapabilityGeneralization) element_p).getSuper();
-      } else if (element_p instanceof Generalization) {
-        return ((Generalization) element_p).getSuper();
+  public static EObject getTargetElementFromLink(EObject element) {
+    if (null != element) {
+      if (element instanceof InterfaceImplementation) {
+        return ((InterfaceImplementation) element).getImplementedInterface();
+      } else if (element instanceof InterfaceUse) {
+        return ((InterfaceUse) element).getUsedInterface();
+      } else if (element instanceof SystemComponentCapabilityRealizationInvolvement) {
+        return ((SystemComponentCapabilityRealizationInvolvement) element).getInvolved();
+      } else if (element instanceof ActorCapabilityRealizationInvolvement) {
+        return ((ActorCapabilityRealizationInvolvement) element).getInvolved();
+      } else if (element instanceof AbstractCapabilityExtend) {
+        return ((AbstractCapabilityExtend) element).getExtended();
+      } else if (element instanceof AbstractCapabilityInclude) {
+        return ((AbstractCapabilityInclude) element).getIncluded();
+      } else if (element instanceof AbstractCapabilityGeneralization) {
+        return ((AbstractCapabilityGeneralization) element).getSuper();
+      } else if (element instanceof Generalization) {
+        return ((Generalization) element).getSuper();
       }
     }
     return null;
   }
 
   /**
-   * @param interfasse_p
+   * @param interfasse
    * @return
    */
-  public static Collection<AbstractExchangeItem> getAllExchangeItems(Interface interfasse_p) {
+  public static Collection<AbstractExchangeItem> getAllExchangeItems(Interface interfasse) {
     Set<AbstractExchangeItem> interfaceExchangeItems = new HashSet<AbstractExchangeItem>();
-    for (ExchangeItem exchangeItem2 : interfasse_p.getExchangeItems()) {
+    for (ExchangeItem exchangeItem2 : interfasse.getExchangeItems()) {
       AbstractExchangeItem exchangeItem = exchangeItem2;
       interfaceExchangeItems.add(exchangeItem);
     }

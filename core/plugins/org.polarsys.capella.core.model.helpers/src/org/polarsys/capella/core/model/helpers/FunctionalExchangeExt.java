@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import org.eclipse.emf.ecore.EObject;
@@ -29,43 +30,43 @@ import org.polarsys.capella.common.data.activity.ActivityNode;
  */
 public class FunctionalExchangeExt {
 
-  public static AbstractFunction getSourceFunction(FunctionalExchange exchange_p) {
-    return FunctionExt.getRelatedFunction(exchange_p.getSource());
+  public static AbstractFunction getSourceFunction(FunctionalExchange exchange) {
+    return FunctionExt.getRelatedFunction(exchange.getSource());
   }
 
-  public static AbstractFunction getTargetFunction(FunctionalExchange exchange_p) {
-    return FunctionExt.getRelatedFunction(exchange_p.getTarget());
+  public static AbstractFunction getTargetFunction(FunctionalExchange exchange) {
+    return FunctionExt.getRelatedFunction(exchange.getTarget());
   }
 
   /**
    * Create a functional exchange between both activityNodes.
    * and create port if not used as parameters and required (not on OA)
-   * @param sourceNode_p
-   * @param targetNode_p
+   * @param sourceNode
+   * @param targetNode
    * @return
    */
-  public static FunctionalExchange createFunctionalExchange(ActivityNode sourceNode_p, ActivityNode targetNode_p) {
-    ActivityNode sourceNode = sourceNode_p;
-    ActivityNode targetNode = targetNode_p;
+  public static FunctionalExchange createFunctionalExchange(ActivityNode sourceNode, ActivityNode targetNode) {
+    ActivityNode exchangeSourceNode = sourceNode;
+    ActivityNode exchangeTargetNode = targetNode;
 
-    AbstractFunction sourceFunction = FunctionExt.getRelatedFunction(sourceNode_p);
-    AbstractFunction targetFunction = FunctionExt.getRelatedFunction(targetNode_p);
+    AbstractFunction sourceFunction = FunctionExt.getRelatedFunction(sourceNode);
+    AbstractFunction targetFunction = FunctionExt.getRelatedFunction(targetNode);
 
-    if (!((sourceNode_p instanceof FunctionPort) || (sourceNode_p instanceof OperationalActivity))) {
-      sourceNode = FaFactory.eINSTANCE.createFunctionOutputPort();
-      sourceFunction.getOutputs().add((FunctionOutputPort) sourceNode);
-      CapellaElementExt.creationService(sourceNode);
+    if (!((sourceNode instanceof FunctionPort) || (sourceNode instanceof OperationalActivity))) {
+      exchangeSourceNode = FaFactory.eINSTANCE.createFunctionOutputPort();
+      sourceFunction.getOutputs().add((FunctionOutputPort) exchangeSourceNode);
+      CapellaElementExt.creationService(exchangeSourceNode);
     }
 
-    if (!((targetNode_p instanceof FunctionPort) || (targetNode_p instanceof OperationalActivity))) {
-      targetNode = FaFactory.eINSTANCE.createFunctionInputPort();
-      targetFunction.getInputs().add((FunctionInputPort) targetNode);
-      CapellaElementExt.creationService(targetNode);
+    if (!((targetNode instanceof FunctionPort) || (targetNode instanceof OperationalActivity))) {
+      exchangeTargetNode = FaFactory.eINSTANCE.createFunctionInputPort();
+      targetFunction.getInputs().add((FunctionInputPort) exchangeTargetNode);
+      CapellaElementExt.creationService(exchangeTargetNode);
     }
 
     FunctionalExchange exchange = FaFactory.eINSTANCE.createFunctionalExchange();
-    exchange.setSource(sourceNode);
-    exchange.setTarget(targetNode);
+    exchange.setSource(exchangeSourceNode);
+    exchange.setTarget(exchangeTargetNode);
     FunctionalExchangeExt.attachToDefaultContainer(exchange);
     CapellaElementExt.creationService(exchange);
 
@@ -74,13 +75,13 @@ public class FunctionalExchangeExt {
 
   /**
    * Attach the given component exchange to the given abstract functional block
-   * @param exchange_p
-   * @param container_p
+   * @param exchange
+   * @param container
    * @return
    */
-  public static boolean attachTo(FunctionalExchange exchange_p, AbstractFunction container_p) {
-    if ((container_p != null) && !container_p.equals(exchange_p.eContainer())) {
-      (container_p).getOwnedFunctionalExchanges().add(exchange_p);
+  public static boolean attachTo(FunctionalExchange exchange, AbstractFunction container) {
+    if ((container != null) && !container.equals(exchange.eContainer())) {
+      (container).getOwnedFunctionalExchanges().add(exchange);
       return true;
     }
     return false;
@@ -88,11 +89,11 @@ public class FunctionalExchangeExt {
 
   /**
    * Move the given component exchange to common ancestor
-   * @param exchange_p
+   * @param exchange
    * @return whether the component exchange has been moved
    */
-  public static boolean attachToDefaultContainer(FunctionalExchange exchange_p) {
-    return attachTo(exchange_p, getDefaultContainer(exchange_p));
+  public static boolean attachToDefaultContainer(FunctionalExchange exchange) {
+    return attachTo(exchange, getDefaultContainer(exchange));
   }
 
   /**
@@ -101,13 +102,13 @@ public class FunctionalExchangeExt {
    * @param targetPart_p a part or a component
    * @return a not null element
    */
-  public static AbstractFunction getDefaultContainer(AbstractFunction sourceFunction_p, AbstractFunction targetFunction_p) {
-    EObject container = EcoreUtil2.getCommonAncestor(sourceFunction_p, targetFunction_p);
+  public static AbstractFunction getDefaultContainer(AbstractFunction sourceFunction, AbstractFunction targetFunction) {
+    EObject container = EcoreUtil2.getCommonAncestor(sourceFunction, targetFunction);
     if ((container != null) && !(container instanceof AbstractFunction)) {
       container = EcoreUtil2.getFirstContainer(container, FaPackage.Literals.ABSTRACT_FUNCTION);
     }
     if ((container == null) || !(container instanceof AbstractFunction)) {
-      container = BlockArchitectureExt.getRootFunction(BlockArchitectureExt.getRootBlockArchitecture(sourceFunction_p));
+      container = BlockArchitectureExt.getRootFunction(BlockArchitectureExt.getRootBlockArchitecture(sourceFunction));
     }
     return (AbstractFunction) container;
   }
@@ -115,12 +116,12 @@ public class FunctionalExchangeExt {
   /**
    * The best container is the common ancestor of source/target parts.
    * if no parts, we use common ancestor of components (which can happen in OA or if user has deleted parts)
-   * @param exchange_p
+   * @param exchange
    * @return a not null element
    */
-  public static AbstractFunction getDefaultContainer(FunctionalExchange exchange_p) {
-    AbstractFunction source = getSourceFunction(exchange_p);
-    AbstractFunction target = getTargetFunction(exchange_p);
+  public static AbstractFunction getDefaultContainer(FunctionalExchange exchange) {
+    AbstractFunction source = getSourceFunction(exchange);
+    AbstractFunction target = getTargetFunction(exchange);
     return getDefaultContainer(source, target);
   }
 }

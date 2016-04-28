@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -47,32 +48,32 @@ public class CapabilityRealizationExt {
   /**
    * This method adds an involved component.
    *
-   * @param capability_p the capability in which the component will be involved in
-   * @param component_p the involved component
+   * @param capability the capability in which the component will be involved in
+   * @param component the involved component
    */
-  public static void addInvolvedComponent(CapabilityRealization capability_p, Component component_p) {
-    if (component_p instanceof AbstractActor) {
-      addInvolvedActor(capability_p, (AbstractActor) component_p);
-    } else if (component_p instanceof SystemComponent) {
-      addInvolvedSystemComponent(capability_p, (SystemComponent) component_p);
+  public static void addInvolvedComponent(CapabilityRealization capability, Component component) {
+    if (component instanceof AbstractActor) {
+      addInvolvedActor(capability, (AbstractActor) component);
+    } else if (component instanceof SystemComponent) {
+      addInvolvedSystemComponent(capability, (SystemComponent) component);
     }
   }
 
   /**
    * This method adds an involved actor.
    *
-   * @param capabilityRealization_p the capability realization in which the actor will be involved in
-   * @param actor_p the involved actor
+   * @param capabilityRealization the capability realization in which the actor will be involved in
+   * @param actor the involved actor
    */
-  public static void addInvolvedActor(CapabilityRealization capabilityRealization_p, AbstractActor actor_p) {
-    if ((capabilityRealization_p != null) && (actor_p != null)) {
-      if (!getInvolvedActors(capabilityRealization_p).contains(actor_p)) {
+  public static void addInvolvedActor(CapabilityRealization capabilityRealization, AbstractActor actor) {
+    if ((capabilityRealization != null) && (actor != null)) {
+      if (!getInvolvedActors(capabilityRealization).contains(actor)) {
         ActorCapabilityRealizationInvolvement involvementLnk = CsFactory.eINSTANCE.createActorCapabilityRealizationInvolvement();
 
-        capabilityRealization_p.getOwnedActorCapabilityRealizations().add(involvementLnk);
+        capabilityRealization.getOwnedActorCapabilityRealizations().add(involvementLnk);
 
-        involvementLnk.setInvolver(capabilityRealization_p);
-        involvementLnk.setInvolved(actor_p);
+        involvementLnk.setInvolver(capabilityRealization);
+        involvementLnk.setInvolved(actor);
       }
     }
   }
@@ -80,44 +81,44 @@ public class CapabilityRealizationExt {
   /**
    * This method adds an involved component.
    *
-   * @param capabilityRealization_p the capability realization in which the component will be involved in
-   * @param systemComponent_p the involved component
+   * @param capabilityRealization the capability realization in which the component will be involved in
+   * @param systemComponent the involved component
    */
-  public static void addInvolvedSystemComponent(CapabilityRealization capabilityRealization_p, SystemComponent systemComponent_p) {
-    if ((capabilityRealization_p != null) && (systemComponent_p != null)) {
-      if (!getInvolvedSystemComponents(capabilityRealization_p).contains(systemComponent_p)) {
+  public static void addInvolvedSystemComponent(CapabilityRealization capabilityRealization, SystemComponent systemComponent) {
+    if ((capabilityRealization != null) && (systemComponent != null)) {
+      if (!getInvolvedSystemComponents(capabilityRealization).contains(systemComponent)) {
         SystemComponentCapabilityRealizationInvolvement involvementLnk = CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement();
     
-        capabilityRealization_p.getOwnedSystemComponentCapabilityRealizations().add(involvementLnk);
+        capabilityRealization.getOwnedSystemComponentCapabilityRealizations().add(involvementLnk);
 
-        involvementLnk.setInvolver(capabilityRealization_p);
-        involvementLnk.setInvolved(systemComponent_p);
+        involvementLnk.setInvolver(capabilityRealization);
+        involvementLnk.setInvolved(systemComponent);
       }
     }
   }
 
   /**
    * This method removes an involved component.
-   * @param capability_p the capability in which the component will not be involved in
-   * @param component_p the non involved component
+   * @param capability the capability in which the component will not be involved in
+   * @param component the non involved component
    */
-  public static void removeInvolvedComponent(CapabilityRealization capability_p, Component component_p) {
-    if (component_p instanceof AbstractActor) {
-      removeInvolvedActor(capability_p, (AbstractActor) component_p);
-    } else if (component_p instanceof SystemComponent) {
-      removeInvolvedSystemComponent(capability_p, (SystemComponent) component_p);
+  public static void removeInvolvedComponent(CapabilityRealization capability, Component component) {
+    if (component instanceof AbstractActor) {
+      removeInvolvedActor(capability, (AbstractActor) component);
+    } else if (component instanceof SystemComponent) {
+      removeInvolvedSystemComponent(capability, (SystemComponent) component);
     }
   }
 
   /**
    * This method removes an involved actor.
-   * @param capability_p the capability in which the actor will not be involved in
-   * @param actor_p the non involved actor
+   * @param capability the capability in which the actor will not be involved in
+   * @param actor the non involved actor
    */
-  public static void removeInvolvedActor(CapabilityRealization capability_p, AbstractActor actor_p) {
+  public static void removeInvolvedActor(CapabilityRealization capability, AbstractActor actor) {
     ActorCapabilityRealizationInvolvement actorCapabilityInvolvement = null;
-    for (ActorCapabilityRealizationInvolvement involvement : capability_p.getInvolvedActors()) {
-      if (involvement.getInvolved().equals(actor_p)) {
+    for (ActorCapabilityRealizationInvolvement involvement : capability.getInvolvedActors()) {
+      if (involvement.getInvolved().equals(actor)) {
         actorCapabilityInvolvement = involvement;
       }
     }
@@ -129,13 +130,13 @@ public class CapabilityRealizationExt {
 
   /**
    * This method removes an involved system component.
-   * @param capability_p the capability in which the system component will not be involved in
-   * @param systemComponent_p the non involved system component
+   * @param capability the capability in which the system component will not be involved in
+   * @param systemComponent the non involved system component
    */
-  public static void removeInvolvedSystemComponent(CapabilityRealization capability_p, SystemComponent systemComponent_p) {
+  public static void removeInvolvedSystemComponent(CapabilityRealization capability, SystemComponent systemComponent) {
     SystemComponentCapabilityRealizationInvolvement systemComponentCapabilityInvolvement = null;
-    for (SystemComponentCapabilityRealizationInvolvement involvement : capability_p.getInvolvedSystemComponents()) {
-      if (involvement.getInvolved().equals(systemComponent_p)) {
+    for (SystemComponentCapabilityRealizationInvolvement involvement : capability.getInvolvedSystemComponents()) {
+      if (involvement.getInvolved().equals(systemComponent)) {
         systemComponentCapabilityInvolvement = involvement;
       }
     }
@@ -147,12 +148,12 @@ public class CapabilityRealizationExt {
 
   /**
    * This method retrieves the involved logical components.
-   * @param capability_p The capability realization whose contributing logical components will be retrieved
+   * @param capability The capability realization whose contributing logical components will be retrieved
    * @return The contributing logical components
    */
-  public static List<LogicalComponent> getInvolvedLogicalComponents(CapabilityRealization capability_p) {
+  public static List<LogicalComponent> getInvolvedLogicalComponents(CapabilityRealization capability) {
     List<LogicalComponent> contributingComponents = new ArrayList<LogicalComponent>();
-    List<SystemComponent> cpntSet = getInvolvedSystemComponents(capability_p);
+    List<SystemComponent> cpntSet = getInvolvedSystemComponents(capability);
     for (SystemComponent cpnt : cpntSet) {
       if (cpnt instanceof LogicalComponent) {
         contributingComponents.add((LogicalComponent) cpnt);
@@ -163,12 +164,12 @@ public class CapabilityRealizationExt {
 
   /**
    * This method retrieves the involved physical components.
-   * @param capability_p The capability realization whose contributing physical components will be retrieved
+   * @param capability The capability realization whose contributing physical components will be retrieved
    * @return The contributing physical components
    */
-  public static List<PhysicalComponent> getInvolvedPhysicalComponents(CapabilityRealization capability_p) {
+  public static List<PhysicalComponent> getInvolvedPhysicalComponents(CapabilityRealization capability) {
     List<PhysicalComponent> contributingComponents = new ArrayList<PhysicalComponent>();
-    List<SystemComponent> cpntSet = getInvolvedSystemComponents(capability_p);
+    List<SystemComponent> cpntSet = getInvolvedSystemComponents(capability);
     for (SystemComponent cpnt : cpntSet) {
       if (cpnt instanceof PhysicalComponent) {
         contributingComponents.add((PhysicalComponent) cpnt);
@@ -179,12 +180,12 @@ public class CapabilityRealizationExt {
 
   /**
    * This method retrieves the involved configuration items.
-   * @param capability_p The capability realization whose contributing configuration items will be retrieved
+   * @param capability The capability realization whose contributing configuration items will be retrieved
    * @return The contributing configuration items
    */
-  public static List<ConfigurationItem> getInvolvedConfigurationItems(CapabilityRealization capability_p) {
+  public static List<ConfigurationItem> getInvolvedConfigurationItems(CapabilityRealization capability) {
     List<ConfigurationItem> contributingComponents = new ArrayList<ConfigurationItem>();
-    List<SystemComponent> cpntSet = getInvolvedSystemComponents(capability_p);
+    List<SystemComponent> cpntSet = getInvolvedSystemComponents(capability);
     for (SystemComponent cpnt : cpntSet) {
       if (cpnt instanceof ConfigurationItem) {
         contributingComponents.add((ConfigurationItem) cpnt);
@@ -195,12 +196,12 @@ public class CapabilityRealizationExt {
 
   /**
    * This method retrieves the involved components.
-   * @param capability_p The capability whose contributing system components will be retrieved
+   * @param capability The capability whose contributing system components will be retrieved
    * @return The contributing system components.
    */
-  public static List<SystemComponent> getInvolvedSystemComponents(CapabilityRealization capability_p) {
+  public static List<SystemComponent> getInvolvedSystemComponents(CapabilityRealization capability) {
     List<SystemComponent> contributingComponents = new ArrayList<SystemComponent>();
-    List<SystemComponentCapabilityRealizationInvolvement> contributionSet = capability_p.getInvolvedSystemComponents();
+    List<SystemComponentCapabilityRealizationInvolvement> contributionSet = capability.getInvolvedSystemComponents();
     for (SystemComponentCapabilityRealizationInvolvement contrib : contributionSet) {
       contributingComponents.add((SystemComponent) contrib.getInvolved());
     }
@@ -209,12 +210,12 @@ public class CapabilityRealizationExt {
 
   /**
    * This method retrieves the involved actors.
-   * @param capability_p the capability whose contributing actors will be retrieved
+   * @param capability the capability whose contributing actors will be retrieved
    * @return the contributing actors
    */
-  public static List<AbstractActor> getInvolvedActors(CapabilityRealization capability_p) {
+  public static List<AbstractActor> getInvolvedActors(CapabilityRealization capability) {
     List<AbstractActor> contributingComponents = new ArrayList<AbstractActor>();
-    List<ActorCapabilityRealizationInvolvement> contributionSet = capability_p.getInvolvedActors();
+    List<ActorCapabilityRealizationInvolvement> contributionSet = capability.getInvolvedActors();
     for (ActorCapabilityRealizationInvolvement contrib : contributionSet) {
       InvolvedElement elt = contrib.getInvolved();
       if (elt instanceof AbstractActor) {
@@ -226,14 +227,14 @@ public class CapabilityRealizationExt {
 
   /**
    * This method retrieves the involved components.
-   * @param capability_p the capability whose contributing components will be retrieved
+   * @param capability the capability whose contributing components will be retrieved
    * @return the contributing components
    */
-  public static List<Component> getInvolvedComponents(CapabilityRealization capability_p) {
+  public static List<Component> getInvolvedComponents(CapabilityRealization capability) {
     List<Component> involvedComponents = new ArrayList<Component>();
 
-    involvedComponents.addAll(getInvolvedActors(capability_p));
-    involvedComponents.addAll(getInvolvedSystemComponents(capability_p));
+    involvedComponents.addAll(getInvolvedActors(capability));
+    involvedComponents.addAll(getInvolvedSystemComponents(capability));
 
     return involvedComponents;
   }
@@ -241,10 +242,10 @@ public class CapabilityRealizationExt {
   /**
    * Return list of upper CapabilityRealization linked by RefinementLink from  CapabilityRealization given in parameter
    */
-  public static List<CapabilityRealization> getParentsCapabilityRealizationLinked(CapabilityRealization srcCapa_p) {
+  public static List<CapabilityRealization> getParentsCapabilityRealizationLinked(CapabilityRealization srcCapa) {
 	  List<CapabilityRealization> upperCapaList = new ArrayList<CapabilityRealization>();
 
-	  for (CapellaElement upperCapa : RefinementLinkExt.getRefinementRelatedTargetElements(srcCapa_p, InteractionPackage.Literals.ABSTRACT_CAPABILITY)) {
+	  for (CapellaElement upperCapa : RefinementLinkExt.getRefinementRelatedTargetElements(srcCapa, InteractionPackage.Literals.ABSTRACT_CAPABILITY)) {
 		  if (upperCapa instanceof CapabilityRealization) {
 			  upperCapaList.add((CapabilityRealization) upperCapa);
 			  upperCapaList.addAll(CapabilityRealizationExt.getParentsCapabilityRealizationLinked((CapabilityRealization) upperCapa));  
@@ -253,11 +254,11 @@ public class CapabilityRealizationExt {
 	  return upperCapaList;
   }
 
-  public static List<LogicalComponent> retrieveLcInvolvedByUpperCapabilityRealization(AbstractCapability currentCapa_p) {
+  public static List<LogicalComponent> retrieveLcInvolvedByUpperCapabilityRealization(AbstractCapability currentCapa) {
 	  List<LogicalComponent> involvedLcByUpperCapa = new ArrayList<LogicalComponent>();
 
-	  if (currentCapa_p != null) {
-		  for (CapabilityRealization upperCapa : CapabilityRealizationExt.getParentsCapabilityRealizationLinked((CapabilityRealization) currentCapa_p)) {
+	  if (currentCapa != null) {
+		  for (CapabilityRealization upperCapa : CapabilityRealizationExt.getParentsCapabilityRealizationLinked((CapabilityRealization) currentCapa)) {
 			  for (LogicalComponent currentLc : CapabilityRealizationExt.getInvolvedLogicalComponents(upperCapa)) {
 				  if (!involvedLcByUpperCapa.contains(currentLc))
 					  involvedLcByUpperCapa.add(currentLc);
@@ -267,11 +268,11 @@ public class CapabilityRealizationExt {
 	  return involvedLcByUpperCapa;
   }
 
-  public static List<PhysicalComponent> retrievePcInvolvedByUpperCapabilityRealization(AbstractCapability currentCapa_p) {
+  public static List<PhysicalComponent> retrievePcInvolvedByUpperCapabilityRealization(AbstractCapability currentCapa) {
     List<PhysicalComponent> involvedPcByUpperCapa = new ArrayList<PhysicalComponent>();
 
-    if (currentCapa_p != null) {
-      for (CapabilityRealization upperCapa : CapabilityRealizationExt.getParentsCapabilityRealizationLinked((CapabilityRealization) currentCapa_p)) {
+    if (currentCapa != null) {
+      for (CapabilityRealization upperCapa : CapabilityRealizationExt.getParentsCapabilityRealizationLinked((CapabilityRealization) currentCapa)) {
         for (PhysicalComponent currentPc : CapabilityRealizationExt.getInvolvedPhysicalComponents(upperCapa)) {
           if (!involvedPcByUpperCapa.contains(currentPc))
             involvedPcByUpperCapa.add(currentPc);
@@ -325,14 +326,14 @@ public class CapabilityRealizationExt {
   
   /**
    * This method retrieves all the capability realizations from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return List<CapabilityRealization>
    */
-  public static List<CapabilityRealization> getAllCapabilityRealizationOfOneLayer(CapellaElement currentElement_p) {
+  public static List<CapabilityRealization> getAllCapabilityRealizationOfOneLayer(CapellaElement currentElement) {
 	List<CapabilityRealization> capabilityRealizationsList = new ArrayList<CapabilityRealization>();
-	if(null == currentElement_p) return capabilityRealizationsList;
+	if(null == currentElement) return capabilityRealizationsList;
 	
-    BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(currentElement_p);
+    BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(currentElement);
     if (null != arch) {
     	Set<EObject> capabilityRealizationsSet = EObjectExt.getAll(arch, LaPackage.Literals.CAPABILITY_REALIZATION);
         for (EObject obj : capabilityRealizationsSet) {

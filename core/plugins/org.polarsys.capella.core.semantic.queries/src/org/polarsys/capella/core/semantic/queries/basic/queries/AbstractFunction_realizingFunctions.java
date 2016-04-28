@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,10 +32,10 @@ public class AbstractFunction_realizingFunctions implements IQuery {
    * current.inFunctionRealisations.allocatingFunction
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (object_p instanceof AbstractFunction) {
-      AbstractFunction af = (AbstractFunction) object_p;
+    if (object instanceof AbstractFunction) {
+      AbstractFunction af = (AbstractFunction) object;
       for (FunctionRealization functionRealisation : af.getInFunctionRealizations()) {
         AbstractFunction allocatingFunction = functionRealisation.getAllocatingFunction();
         if (allocatingFunction != null) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,38 +42,41 @@ import org.polarsys.capella.core.tiger.impl.TransfoEngine;
  */
 public class CommonScenarioHelper {
 
-  /**
+  private CommonScenarioHelper() {
+  }
+
+/**
    * Retrieve the operation related to the given scenario element_p
-   * @param element_p
+   * @param element
    * @return
    */
-  public static AbstractEventOperation getOperation(EObject element_p, ITransfo transfo_p) {
+  public static AbstractEventOperation getOperation(EObject element, ITransfo transfo) {
 
     AbstractEventOperation operation = null;
-    if (element_p instanceof SequenceMessage) {
-      operation = ((SequenceMessage) element_p).getInvokedOperation();
+    if (element instanceof SequenceMessage) {
+      operation = ((SequenceMessage) element).getInvokedOperation();
     }
-    if (element_p instanceof EventSentOperation) {
-      operation = ((EventSentOperation) element_p).getOperation();
+    if (element instanceof EventSentOperation) {
+      operation = ((EventSentOperation) element).getOperation();
     }
-    if (element_p instanceof EventReceiptOperation) {
-      operation = ((EventReceiptOperation) element_p).getOperation();
+    if (element instanceof EventReceiptOperation) {
+      operation = ((EventReceiptOperation) element).getOperation();
     }
 
-    if (element_p instanceof AbstractEnd) {
-      return getOperation(((AbstractEnd) element_p).getEvent(), transfo_p);
+    if (element instanceof AbstractEnd) {
+      return getOperation(((AbstractEnd) element).getEvent(), transfo);
     }
 
     return operation;
   }
 
-  public static InstanceRole getOppositeCoveredIR(AbstractEnd end_p) {
+  public static InstanceRole getOppositeCoveredIR(AbstractEnd end) {
     MessageEnd messageEnd = null;
-    if (end_p instanceof ExecutionEnd) {
-      messageEnd = (MessageEnd) ((ExecutionEnd) end_p).getExecution().getStart();
+    if (end instanceof ExecutionEnd) {
+      messageEnd = (MessageEnd) ((ExecutionEnd) end).getExecution().getStart();
 
-    } else if (end_p instanceof MessageEnd) {
-      messageEnd = (MessageEnd) end_p;
+    } else if (end instanceof MessageEnd) {
+      messageEnd = (MessageEnd) end;
     }
 
     if (messageEnd != null) {
@@ -93,14 +96,14 @@ public class CommonScenarioHelper {
   }
 
   /**
-   * @param exec_p
+   * @param exec
    */
-  public static InstanceRole getOppositeCoveredIR(Execution exec_p) {
-    return getOppositeCoveredIR((MessageEnd) exec_p.getStart());
+  public static InstanceRole getOppositeCoveredIR(Execution exec) {
+    return getOppositeCoveredIR((MessageEnd) exec.getStart());
   }
 
-  public static String getTitle(ITransfo transfo_p) {
-    Object source = transfo_p.get(TransfoEngine.TRANSFO_SOURCE);
+  public static String getTitle(ITransfo transfo) {
+    Object source = transfo.get(TransfoEngine.TRANSFO_SOURCE);
     if (source instanceof EObject) {
       return NLS.bind(Messages.Rule_InstanceRole_TransitionTitleDetailled, EObjectLabelProviderHelper.getText((EObject) source));
     }
@@ -138,32 +141,32 @@ public class CommonScenarioHelper {
   }
 
   /**
-   * @param element_p
-   * @param sequenceMessageExchangedItems_p
-   * @param transfo_p
+   * @param element
+   * @param reference
+   * @param transfo
    */
-  public static void attachToBestAndValidElements(EObject element_p, EReference reference_p, Collection<EObject> objects, ITransfo transfo_p) {
+  public static void attachToBestAndValidElements(EObject element, EReference reference, Collection<EObject> objects, ITransfo transfo) {
 
-    if ((element_p == null) || !TigerRelationshipHelper.isApplicable(element_p.eClass(), reference_p)) {
+    if ((element == null) || !TigerRelationshipHelper.isApplicable(element.eClass(), reference)) {
       return;
     }
 
-    for (EObject targetElement : Query.retrieveTransformedElements(element_p, transfo_p)) {
-      if (TigerRelationshipHelper.isApplicable(targetElement.eClass(), reference_p)) {
+    for (EObject targetElement : Query.retrieveTransformedElements(element, transfo)) {
+      if (TigerRelationshipHelper.isApplicable(targetElement.eClass(), reference)) {
 
-        Object resultTarget = targetElement.eGet(reference_p);
+        Object resultTarget = targetElement.eGet(reference);
 
-        for (EObject sourceElement : TigerRelationshipHelper.retrieveReferenceAsList(element_p, reference_p)) {
-          for (EObject bestElement : TigerRelationshipHelper.retrieveBestElements(targetElement, sourceElement, (EClass) reference_p.getEType(), transfo_p)) {
+        for (EObject sourceElement : TigerRelationshipHelper.retrieveReferenceAsList(element, reference)) {
+          for (EObject bestElement : TigerRelationshipHelper.retrieveBestElements(targetElement, sourceElement, (EClass) reference.getEType(), transfo)) {
             if (!objects.contains(bestElement)) {
               continue;
             }
-            if (reference_p.isMany() || (resultTarget == null)
-                || ((resultTarget != null) && (resultTarget.equals(sourceElement) || resultTarget.equals(bestElement)))) {
+            if (reference.isMany() || (resultTarget == null)
+                || (resultTarget.equals(sourceElement) || resultTarget.equals(bestElement))) {
               if (bestElement != sourceElement) {
-                TigerRelationshipHelper.detachElementByRel(targetElement, sourceElement, reference_p);
+                TigerRelationshipHelper.detachElementByRel(targetElement, sourceElement, reference);
               }
-              TigerRelationshipHelper.attachElementByRel(targetElement, bestElement, reference_p);
+              TigerRelationshipHelper.attachElementByRel(targetElement, bestElement, reference);
             }
           }
         }

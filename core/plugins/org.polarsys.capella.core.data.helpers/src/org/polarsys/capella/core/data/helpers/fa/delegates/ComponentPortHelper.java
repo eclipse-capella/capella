@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.delegates;
 
 import java.util.ArrayList;
@@ -51,34 +52,34 @@ public class ComponentPortHelper {
     return instance;
   }
 
-  public Object doSwitch(ComponentPort element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(ComponentPort element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(FaPackage.Literals.COMPONENT_PORT__COMPONENT_EXCHANGES)) {
-      ret = getComponentExchanges(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.COMPONENT_PORT__ALLOCATED_FUNCTION_PORTS)) {
-      ret = getAllocatedFunctionPorts(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.COMPONENT_PORT__DELEGATED_COMPONENT_PORTS)) {
-      ret = getDelegatedComponentPorts(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.COMPONENT_PORT__DELEGATING_COMPONENT_PORTS)) {
-      ret = getDelegatingComponentPorts(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.COMPONENT_PORT__ALLOCATING_PHYSICAL_PORTS)) {
-      ret = getAllocatingPhysicalPorts(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.COMPONENT_PORT__REALIZED_COMPONENT_PORTS)) {
-      ret = getRealizedComponentPorts(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.COMPONENT_PORT__REALIZING_COMPONENT_PORTS)) {
-      ret = getRealizingComponentPorts(element_p);
+    if (feature.equals(FaPackage.Literals.COMPONENT_PORT__COMPONENT_EXCHANGES)) {
+      ret = getComponentExchanges(element);
+    } else if (feature.equals(FaPackage.Literals.COMPONENT_PORT__ALLOCATED_FUNCTION_PORTS)) {
+      ret = getAllocatedFunctionPorts(element);
+    } else if (feature.equals(FaPackage.Literals.COMPONENT_PORT__DELEGATED_COMPONENT_PORTS)) {
+      ret = getDelegatedComponentPorts(element);
+    } else if (feature.equals(FaPackage.Literals.COMPONENT_PORT__DELEGATING_COMPONENT_PORTS)) {
+      ret = getDelegatingComponentPorts(element);
+    } else if (feature.equals(FaPackage.Literals.COMPONENT_PORT__ALLOCATING_PHYSICAL_PORTS)) {
+      ret = getAllocatingPhysicalPorts(element);
+    } else if (feature.equals(FaPackage.Literals.COMPONENT_PORT__REALIZED_COMPONENT_PORTS)) {
+      ret = getRealizedComponentPorts(element);
+    } else if (feature.equals(FaPackage.Literals.COMPONENT_PORT__REALIZING_COMPONENT_PORTS)) {
+      ret = getRealizingComponentPorts(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = PortHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = PortHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = InformationsExchangerHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = InformationsExchangerHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = PartitionHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = PartitionHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
@@ -87,15 +88,15 @@ public class ComponentPortHelper {
   /**
    * Returns all abstract connections linked to the component port
    */
-  protected List<ComponentExchange> getComponentExchanges(ComponentPort element_p) {
+  protected List<ComponentExchange> getComponentExchanges(ComponentPort element) {
     // linked hash set allows to keep ordering !
     HashSet<ComponentExchange> ret = new LinkedHashSet<ComponentExchange>();
-    for (AbstractInformationFlow trace : element_p.getInformationFlows()) {
+    for (AbstractInformationFlow trace : element.getInformationFlows()) {
       if (trace instanceof ComponentExchange) {
         ret.add((ComponentExchange) trace);
       }
     }
-    for (ComponentExchangeEnd end : FunctionalExt.getRelatedComponentExchangeEnds(element_p)) {
+    for (ComponentExchangeEnd end : FunctionalExt.getRelatedComponentExchangeEnds(element)) {
       EObject owner = end.eContainer();
       if (owner instanceof ComponentExchange) {
         ret.add((ComponentExchange) owner);
@@ -104,9 +105,9 @@ public class ComponentPortHelper {
     return new ArrayList<ComponentExchange>(ret);
   }
 
-  protected List<FunctionPort> getAllocatedFunctionPorts(ComponentPort element_p) {
+  protected List<FunctionPort> getAllocatedFunctionPorts(ComponentPort element) {
     List <FunctionPort> ret = new ArrayList<FunctionPort>();
-    for (PortAllocation portAllocation : element_p.getOutgoingPortAllocations()) {
+    for (PortAllocation portAllocation : element.getOutgoingPortAllocations()) {
       Port port = portAllocation.getAllocatedPort();
       if (port instanceof FunctionPort){
         ret.add((FunctionPort) port);
@@ -115,9 +116,9 @@ public class ComponentPortHelper {
     return ret;
   }
 
-  protected List<ComponentPort> getDelegatedComponentPorts(ComponentPort element_p) {
+  protected List<ComponentPort> getDelegatedComponentPorts(ComponentPort element) {
     List <ComponentPort> ret = new ArrayList<ComponentPort>();
-    for (AbstractInformationFlow informationFlow : element_p.getOutgoingInformationFlows()) {
+    for (AbstractInformationFlow informationFlow : element.getOutgoingInformationFlows()) {
       if (informationFlow instanceof ComponentExchange) {
         if (ComponentExchangeKind.DELEGATION.equals(((ComponentExchange) informationFlow).getKind())) {
           InformationsExchanger informationsExchanger = informationFlow.getTarget();
@@ -130,9 +131,9 @@ public class ComponentPortHelper {
     return ret;
   }
 
-  protected List<ComponentPort> getDelegatingComponentPorts(ComponentPort element_p) {
+  protected List<ComponentPort> getDelegatingComponentPorts(ComponentPort element) {
     List <ComponentPort> ret = new ArrayList<ComponentPort>();
-    for (AbstractInformationFlow informationFlow : element_p.getIncomingInformationFlows()) {
+    for (AbstractInformationFlow informationFlow : element.getIncomingInformationFlows()) {
       if (informationFlow instanceof ComponentExchange) {
         if (ComponentExchangeKind.DELEGATION.equals(((ComponentExchange) informationFlow).getKind())) {
           InformationsExchanger informationsExchanger = informationFlow.getSource();
@@ -145,9 +146,9 @@ public class ComponentPortHelper {
     return ret;
   }
 
-  protected List<PhysicalPort> getAllocatingPhysicalPorts(ComponentPort element_p) {
+  protected List<PhysicalPort> getAllocatingPhysicalPorts(ComponentPort element) {
     List <PhysicalPort> result = new ArrayList<PhysicalPort>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentPortAllocation) {
         Port port = ((ComponentPortAllocation) trace).getAllocatingPort();
         if (port instanceof PhysicalPort){
@@ -158,9 +159,9 @@ public class ComponentPortHelper {
     return result;
   }
 
-  protected List<ComponentPort> getRealizedComponentPorts(ComponentPort element_p) {
+  protected List<ComponentPort> getRealizedComponentPorts(ComponentPort element) {
     List <ComponentPort> result = new ArrayList<ComponentPort>();
-    for (PortRealization portAllocation : element_p.getOutgoingPortRealizations()) {
+    for (PortRealization portAllocation : element.getOutgoingPortRealizations()) {
       Port port = portAllocation.getRealizedPort();
       if (port instanceof ComponentPort && !result.contains(port)){
         result.add((ComponentPort) port);
@@ -169,9 +170,9 @@ public class ComponentPortHelper {
     return result;
   }
 
-  protected List<ComponentPort> getRealizingComponentPorts(ComponentPort element_p) {
+  protected List<ComponentPort> getRealizingComponentPorts(ComponentPort element) {
     List <ComponentPort> result = new ArrayList<ComponentPort>();
-    for (PortRealization portAllocation : element_p.getIncomingPortRealizations()) {
+    for (PortRealization portAllocation : element.getIncomingPortRealizations()) {
       Port port = portAllocation.getRealizingPort();
       if (port instanceof ComponentPort && !result.contains(port)){
         result.add((ComponentPort) port);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.notify;
 
 import java.util.Collection;
@@ -28,46 +29,46 @@ public class DefaultNotifyHandler implements INotifyHandler {
   /**
    * {@inheritDoc}
    */
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
 
     return Status.OK_STATUS;
   }
 
-  protected HashMapSet<String, INotifyListener> getAllListeners(String kind_p, IContext context_p) {
+  protected HashMapSet<String, INotifyListener> getAllListeners(String kind, IContext context) {
     HashMapSet<String, INotifyListener> scope = null;
-    if (!context_p.exists(NOTIFY_SCOPE)) {
+    if (!context.exists(NOTIFY_SCOPE)) {
       scope = new HashMapSet<String, INotifyListener>();
-      context_p.put(NOTIFY_SCOPE, scope);
+      context.put(NOTIFY_SCOPE, scope);
     }
 
-    scope = (HashMapSet<String, INotifyListener>) context_p.get(NOTIFY_SCOPE);
+    scope = (HashMapSet<String, INotifyListener>) context.get(NOTIFY_SCOPE);
     return scope;
   }
 
-  protected Collection<INotifyListener> getListeners(String kind_p, IContext context_p) {
-    return getAllListeners(kind_p, context_p).get(kind_p);
+  protected Collection<INotifyListener> getListeners(String kind, IContext context) {
+    return getAllListeners(kind, context).get(kind);
   }
 
   /**
    * {@inheritDoc}
    */
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     return Status.OK_STATUS;
   }
 
   /**
    * {@inheritDoc}
    */
-  public void addListener(String kind_p, INotifyListener listener_p, IContext context_p) {
-    getAllListeners(kind_p, context_p).put(kind_p, listener_p);
+  public void addListener(String kind, INotifyListener listener, IContext context) {
+    getAllListeners(kind, context).put(kind, listener);
   }
 
   /**
    * {@inheritDoc}
    */
-  public void notify(String kind_p, INotifyChangeEvent event_p, IContext context_p) {
-    for (INotifyListener listener : getListeners(kind_p, context_p)) {
-      listener.notifyChanged(event_p, context_p);
+  public void notify(String kind, INotifyChangeEvent event, IContext context) {
+    for (INotifyListener listener : getListeners(kind, context)) {
+      listener.notifyChanged(event, context);
     }
   }
 

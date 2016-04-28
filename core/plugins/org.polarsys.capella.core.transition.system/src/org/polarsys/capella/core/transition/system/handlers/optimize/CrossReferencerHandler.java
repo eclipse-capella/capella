@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.handlers.optimize;
 
 import java.util.Collection;
@@ -37,10 +38,10 @@ public class CrossReferencerHandler implements IHandler {
    */
   @SuppressWarnings("unchecked")
   @Override
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     isEnabled = CrossReferencerHelper.resolutionEnabled();
     if (isEnabled) {
-      EcoreUtil.resolveAll(TransactionHelper.getEditingDomain((Collection<? extends EObject>) context_p.get(ITransitionConstants.TRANSITION_SOURCES)).getResourceSet());
+      EcoreUtil.resolveAll(TransactionHelper.getEditingDomain((Collection<? extends EObject>) context.get(ITransitionConstants.TRANSITION_SOURCES)).getResourceSet());
     }
     CrossReferencerHelper.enableResolution(false);
     return Status.OK_STATUS;
@@ -50,7 +51,7 @@ public class CrossReferencerHandler implements IHandler {
    * {@inheritDoc}
    */
   @Override
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
     CrossReferencerHelper.enableResolution(isEnabled);
     return Status.OK_STATUS;
   }

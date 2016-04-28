@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.launcher;
 
 import java.util.Collection;
@@ -43,8 +44,8 @@ public class ActivitiesLauncher {
     private String array[];
     private int pos = 0;
 
-    public StringArrayIterator(String array_p[]) {
-      array = array_p;
+    public StringArrayIterator(String array[]) {
+      this.array = array;
     }
 
     public boolean hasNext() {
@@ -86,11 +87,11 @@ public class ActivitiesLauncher {
     //Nothing here
   }
 
-  protected void addOverrides(String idOverrided_p, String idOverriding_p) {
+  protected void addOverrides(String idOverrided, String idOverriding) {
     if (_mapOverrides == null) {
       _mapOverrides = new HashMap<String, String>();
     }
-    _mapOverrides.put(idOverrided_p, idOverriding_p);
+    _mapOverrides.put(idOverrided, idOverriding);
   }
 
   /**
@@ -119,19 +120,19 @@ public class ActivitiesLauncher {
     return new ExtendedCadenceLauncher() {
 
       @Override
-      protected String getStatusMessage(String workflowName_p, String workflowElementName_p) {
+      protected String getStatusMessage(String workflowName, String workflowElementName) {
         return getName();
       }
 
       @Override
-      protected String getTaskName(String workflowName_p, String workflowElementName_p) {
+      protected String getTaskName(String workflowName, String workflowElementName) {
         return getName();
       }
 
     };
   }
 
-  public void launch(Collection<Object> selection_p, String purpose_p, String mappingId_p, IProgressMonitor monitor_p) {
+  public void launch(Collection<Object> selection, String purpose, String mappingId, IProgressMonitor monitor) {
 
   }
 
@@ -139,41 +140,41 @@ public class ActivitiesLauncher {
     return ICommonConstants.EMPTY_STRING;
   }
 
-  protected String[] getWorkflowElements(String workflowId_p) {
+  protected String[] getWorkflowElements(String workflowId) {
     return new String[0];
   }
 
-  protected String[] getFinalWorkflowElements(String workflowId_p) {
+  protected String[] getFinalWorkflowElements(String workflowId) {
     return new String[0];
   }
 
-  protected WorkflowActivityParameter getParameter(String workflowId_p, String workflowElement_p) {
+  protected WorkflowActivityParameter getParameter(String workflowId, String workflowElement) {
     WorkflowActivityParameter parameter = new WorkflowActivityParameter();
     return parameter;
   }
 
-  protected SharedWorkflowActivityParameter getSharedParameter(String workflowId_p) {
+  protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
     return new SharedWorkflowActivityParameter();
   }
 
-  protected Iterator<String> iteratorWorkflowElements(String workflowId_p) {
-    return new StringArrayIterator(getWorkflowElements(workflowId_p));
+  protected Iterator<String> iteratorWorkflowElements(String workflowId) {
+    return new StringArrayIterator(getWorkflowElements(workflowId));
   }
 
-  protected Iterator<String> iteratorFinalWorkflowElements(String workflowId_p) {
-    return new StringArrayIterator(getFinalWorkflowElements(workflowId_p));
+  protected Iterator<String> iteratorFinalWorkflowElements(String workflowId) {
+    return new StringArrayIterator(getFinalWorkflowElements(workflowId));
   }
 
-  protected void triggerActivities(Collection<Object> selection_p, String workflowId_p, IProgressMonitor monitor_p) {
+  protected void triggerActivities(Collection<Object> selection, String workflowId, IProgressMonitor monitor) {
     try {
-      SharedWorkflowActivityParameter sharedParameter = getSharedParameter(workflowId_p);
+      SharedWorkflowActivityParameter sharedParameter = getSharedParameter(workflowId);
 
-      for (Iterator<String> iter = iteratorWorkflowElements(workflowId_p); iter.hasNext();) {
+      for (Iterator<String> iter = iteratorWorkflowElements(workflowId); iter.hasNext();) {
         String workflowElement = iter.next();
-        WorkflowActivityParameter parameter = getParameter(workflowId_p, workflowElement);
+        WorkflowActivityParameter parameter = getParameter(workflowId, workflowElement);
         WorkflowActivityParameter compoundParameter = addSharedParameter(parameter, sharedParameter);
-        IStatus status = triggerActivities(compoundParameter, workflowId_p, workflowElement, monitor_p);
-        checkStatus(monitor_p, status);
+        IStatus status = triggerActivities(compoundParameter, workflowId, workflowElement, monitor);
+        checkStatus(monitor, status);
       }
 
     } catch (OperationCanceledException e) {
@@ -186,16 +187,16 @@ public class ActivitiesLauncher {
       throw new TransitionException(e);
 
     } finally {
-      SharedWorkflowActivityParameter sharedParameter = getSharedParameter(workflowId_p);
+      SharedWorkflowActivityParameter sharedParameter = getSharedParameter(workflowId);
 
       try {
 
-        for (Iterator<String> iter = iteratorFinalWorkflowElements(workflowId_p); iter.hasNext();) {
+        for (Iterator<String> iter = iteratorFinalWorkflowElements(workflowId); iter.hasNext();) {
           String workflowElement = iter.next();
-          WorkflowActivityParameter parameter = getParameter(workflowId_p, workflowElement);
+          WorkflowActivityParameter parameter = getParameter(workflowId, workflowElement);
           WorkflowActivityParameter compoundParameter = addSharedParameter(parameter, sharedParameter);
-          IStatus status = triggerActivities(compoundParameter, workflowId_p, workflowElement, monitor_p);
-          checkStatus(monitor_p, status);
+          IStatus status = triggerActivities(compoundParameter, workflowId, workflowElement, monitor);
+          checkStatus(monitor, status);
         }
 
       } catch (OperationCanceledException e) {
@@ -212,67 +213,67 @@ public class ActivitiesLauncher {
   }
 
   /**
-   * @param parameter_p
-   * @param sharedParameter_p
+   * @param parameter
+   * @param sharedParameter
    */
-  protected WorkflowActivityParameter addSharedParameter(WorkflowActivityParameter parameter_p, SharedWorkflowActivityParameter sharedParameter_p) {
-    if (sharedParameter_p != null) {
-      for (String idActivities : parameter_p.getActivitiesID()) {
-        ActivityParameters ps = sharedParameter_p.getActivityParameters(idActivities);
+  protected WorkflowActivityParameter addSharedParameter(WorkflowActivityParameter parameter, SharedWorkflowActivityParameter sharedParameter) {
+    if (sharedParameter != null) {
+      for (String idActivities : parameter.getActivitiesID()) {
+        ActivityParameters ps = sharedParameter.getActivityParameters(idActivities);
         for (GenericParameter<?> a : ps.getParameters()) {
-          parameter_p.addParameter(idActivities, a);
+          parameter.addParameter(idActivities, a);
         }
       }
-      return parameter_p;
+      return parameter;
     }
-    return parameter_p;
+    return parameter;
   }
 
   /**
    * @param selection_p
-   * @param monitor_p
+   * @param monitor
    */
-  protected IStatus triggerActivities(WorkflowActivityParameter activities_p, String workflowId_p, String workflowElement_p, IProgressMonitor monitor_p) {
+  protected IStatus triggerActivities(WorkflowActivityParameter activities, String workflowId, String workflowElement, IProgressMonitor monitor) {
     try {
-      return cadence(workflowId_p, workflowElement_p, activities_p, monitor_p);
+      return cadence(workflowId, workflowElement, activities, monitor);
     } catch (Exception e) {
       throw new TransitionException(e);
     }
   }
 
   public IStatus cadence(final String workflow_id, final String workflowElement_id, final WorkflowActivityParameter workflowActivityParameters,
-      final IProgressMonitor monitor_p) throws Exception {
-    IStatus result = _cadenceLauncher.cadence(workflow_id, workflowElement_id, workflowActivityParameters, monitor_p);
+      final IProgressMonitor monitor) throws Exception {
+    IStatus result = _cadenceLauncher.cadence(workflow_id, workflowElement_id, workflowActivityParameters, monitor);
     if (result.matches(IStatus.CANCEL) || result.matches(IStatus.ERROR)) {
-      monitor_p.setCanceled(true);
+      monitor.setCanceled(true);
     }
     return result;
   }
 
   /**
-   * @param monitor_p
-   * @param status_p 
+   * @param monitor
+   * @param status 
    */
-  protected void checkStatus(IProgressMonitor monitor_p, IStatus status_p) throws Exception {
-    if (monitor_p.isCanceled()) {
-      if ((status_p != null) && status_p.matches(IStatus.ERROR)) {
-        throw new TransitionException(status_p);
+  protected void checkStatus(IProgressMonitor monitor, IStatus status) throws Exception {
+    if (monitor.isCanceled()) {
+      if ((status != null) && status.matches(IStatus.ERROR)) {
+        throw new TransitionException(status);
       }
-      throw new OperationCanceledException(status_p == null ? "" : status_p.getMessage());
+      throw new OperationCanceledException(status == null ? "" : status.getMessage());
     }
   }
 
   /**
-   * @param id_p
+   * @param id
    * @return
    */
-  protected String getActivity(String id_p) {
+  protected String getActivity(String id) {
     if (_mapOverrides != null) {
-      if (_mapOverrides.containsKey(id_p)) {
-        return getActivity(_mapOverrides.get(id_p));
+      if (_mapOverrides.containsKey(id)) {
+        return getActivity(_mapOverrides.get(id));
       }
     }
-    return id_p;
+    return id;
   }
 
   /**

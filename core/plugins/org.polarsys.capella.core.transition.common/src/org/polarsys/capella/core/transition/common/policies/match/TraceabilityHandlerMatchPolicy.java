@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.policies.match;
 
 import java.util.ArrayList;
@@ -30,18 +31,18 @@ public class TraceabilityHandlerMatchPolicy extends ContextMatchPolicy {
    * Constructor
    * @param a non-null mapping of corresponding elements whose further modifications will impact this policy
    */
-  public TraceabilityHandlerMatchPolicy(IContext context_p) {
-    super(context_p);
+  public TraceabilityHandlerMatchPolicy(IContext context) {
+    super(context);
   }
 
   /**
    * Some elements should not be matched even if they are traced to an element from the model source.
-   * @param element_p
-   * @param scope_p
-   * @param context_p
+   * @param element
+   * @param scope
+   * @param context
    * @return
    */
-  public boolean isMatchable(EObject element_p, IModelScope scope_p, IContext context_p) {
+  public boolean isMatchable(EObject element, IModelScope scope, IContext context) {
     return true;
   }
 
@@ -50,7 +51,7 @@ public class TraceabilityHandlerMatchPolicy extends ContextMatchPolicy {
    *      org.polarsys.capella.common.consonance.scopes.IModelScope)
    */
   @Override
-  public Comparable<?> getMatchID(EObject element_p, IModelScope scope_p) {
+  public Comparable<?> getMatchID(EObject element, IModelScope scope) {
     Collection<EObject> bounds = new ArrayList<EObject>();
 
     IContext context = getContext();
@@ -59,7 +60,7 @@ public class TraceabilityHandlerMatchPolicy extends ContextMatchPolicy {
     ITraceabilityHandler targetHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
     ITraceabilityHandler handler = null;
 
-    if (scope_p instanceof ITargetModelScope) {
+    if (scope instanceof ITargetModelScope) {
       handler = targetHandler;
     } else {
       handler = sourceHandler;
@@ -69,21 +70,21 @@ public class TraceabilityHandlerMatchPolicy extends ContextMatchPolicy {
 
     if (handler instanceof ITraceabilityTraceHandler) {
       ITraceabilityTraceHandler tHandler = (ITraceabilityTraceHandler) handler;
-      if (tHandler.isTrace(element_p, context)) {
-        return "TRACE-TO-" + tHandler.getSourceElement(element_p, context);
+      if (tHandler.isTrace(element, context)) {
+        return "TRACE-TO-" + tHandler.getSourceElement(element, context);
       }
     }
 
-    if (isMatchable(element_p, scope_p, context)) {
+    if (isMatchable(element, scope, context)) {
 
-      bounds = handler.retrieveSourceElements(element_p, context);
+      bounds = handler.retrieveSourceElements(element, context);
 
       if (bounds.size() > 0) {
         EObject commonSource = bounds.iterator().next();
 
         //To '''support''' (for now) some SID linked to elements, we need to retrieve the same id from the transformed scope and the target scope.
-        if (scope_p instanceof ITargetModelScope) {
-          Collection<EObject> transformedElements = ((ITargetModelScope) scope_p).retrieveTransformedElementsFromTarget(element_p);
+        if (scope instanceof ITargetModelScope) {
+          Collection<EObject> transformedElements = ((ITargetModelScope) scope).retrieveTransformedElementsFromTarget(element);
           //Retrieve the same id than the common transformed element of sourceElements.
           if (transformedElements.size() > 0) {
             bounds = sourceHandler.retrieveSourceElements(transformedElements.iterator().next(), context);
@@ -98,10 +99,10 @@ public class TraceabilityHandlerMatchPolicy extends ContextMatchPolicy {
       }
 
     } else {
-      return "UNMATCHABLE-ELEMENT-" + handler.getId(element_p, context);
+      return "UNMATCHABLE-ELEMENT-" + handler.getId(element, context);
     }
 
-    System.out.println("ID = " + handler.getId(element_p, context) + " " + element_p);
-    return handler.getId(element_p, context);
+    System.out.println("ID = " + handler.getId(element, context) + " " + element);
+    return handler.getId(element, context);
   }
 }

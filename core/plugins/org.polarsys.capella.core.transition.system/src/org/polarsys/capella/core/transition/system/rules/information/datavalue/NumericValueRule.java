@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.information.datavalue;
 
 import java.util.ArrayList;
@@ -37,21 +38,21 @@ public class NumericValueRule extends DataValueRule {
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    NumericValue element = (NumericValue) source_p;
-    result_p.add(element.getUnit());
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    NumericValue element = (NumericValue) source;
+    result.add(element.getUnit());
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, DatavaluePackage.Literals.NUMERIC_VALUE__UNIT, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, DatavaluePackage.Literals.NUMERIC_VALUE__UNIT, context);
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, DatavaluePackage.Literals.NUMERIC_VALUE__UNIT));
+  protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
+    super.premicesRelated(element, needed);
+    needed.addAll(createDefaultPrecedencePremices(element, DatavaluePackage.Literals.NUMERIC_VALUE__UNIT));
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.la.delegates;
 
 import java.util.ArrayList;
@@ -42,36 +43,36 @@ public class CapabilityRealizationHelper {
 		return instance;
 	}
 
-	public Object doSwitch(CapabilityRealization element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(CapabilityRealization element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS)) {
-			ret = getInvolvedSystemComponents(element_p);
-		} else if (feature_p.equals(LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_ACTORS)) {
-			ret = getInvolvedActors(element_p);
-		} else if (feature_p.equals(LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS)) {
-			ret = getParticitpatingSystemComponents(element_p);
-		} else if (feature_p.equals(LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS)) {
-			ret = getParticitpatingActors(element_p);
-    } else if (feature_p.equals(LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES)) {
-      ret = getRealizedCapabilities(element_p);
-    } else if (feature_p.equals(LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS)) {
-      ret = getRealizedCapabilityRealizations(element_p);
-    } else if (feature_p.equals(LaPackage.Literals.CAPABILITY_REALIZATION__REALIZING_CAPABILITY_REALIZATIONS)) {
-      ret = getRealizingCapabilityRealizations(element_p);
+		if (feature.equals(LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS)) {
+			ret = getInvolvedSystemComponents(element);
+		} else if (feature.equals(LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_ACTORS)) {
+			ret = getInvolvedActors(element);
+		} else if (feature.equals(LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS)) {
+			ret = getParticitpatingSystemComponents(element);
+		} else if (feature.equals(LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS)) {
+			ret = getParticitpatingActors(element);
+    } else if (feature.equals(LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES)) {
+      ret = getRealizedCapabilities(element);
+    } else if (feature.equals(LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS)) {
+      ret = getRealizedCapabilityRealizations(element);
+    } else if (feature.equals(LaPackage.Literals.CAPABILITY_REALIZATION__REALIZING_CAPABILITY_REALIZATIONS)) {
+      ret = getRealizingCapabilityRealizations(element);
 		}
 
 		// no helper found... searching in super classes...
 		if(null == ret) {
-			ret = AbstractCapabilityHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = AbstractCapabilityHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;
 	}
 
-	protected List<SystemComponentCapabilityRealizationInvolvement> getInvolvedSystemComponents(CapabilityRealization element_p) {
+	protected List<SystemComponentCapabilityRealizationInvolvement> getInvolvedSystemComponents(CapabilityRealization element) {
 		List <SystemComponentCapabilityRealizationInvolvement> ret = new ArrayList<SystemComponentCapabilityRealizationInvolvement>();
-		for (Involvement involvement : element_p.getInvolvedInvolvements()) {
+		for (Involvement involvement : element.getInvolvedInvolvements()) {
 			if (involvement instanceof SystemComponentCapabilityRealizationInvolvement) {
 				ret.add((SystemComponentCapabilityRealizationInvolvement) involvement);
 			}
@@ -79,9 +80,9 @@ public class CapabilityRealizationHelper {
 		return ret;
 	}
 
-	protected List<ActorCapabilityRealizationInvolvement> getInvolvedActors(CapabilityRealization element_p) {
+	protected List<ActorCapabilityRealizationInvolvement> getInvolvedActors(CapabilityRealization element) {
 		List <ActorCapabilityRealizationInvolvement> ret = new ArrayList<ActorCapabilityRealizationInvolvement>();
-		for (Involvement involvement : element_p.getInvolvedInvolvements()) {
+		for (Involvement involvement : element.getInvolvedInvolvements()) {
 			if (involvement instanceof ActorCapabilityRealizationInvolvement) {
 				ret.add((ActorCapabilityRealizationInvolvement) involvement);
 			}
@@ -89,9 +90,9 @@ public class CapabilityRealizationHelper {
 		return ret;
 	}
 
-	protected List<SystemComponent> getParticitpatingSystemComponents(CapabilityRealization element_p) {
+	protected List<SystemComponent> getParticitpatingSystemComponents(CapabilityRealization element) {
 		List<SystemComponent> ret = new ArrayList<SystemComponent>();
-		for (SystemComponentCapabilityRealizationInvolvement involvement : element_p.getInvolvedSystemComponents()) {
+		for (SystemComponentCapabilityRealizationInvolvement involvement : element.getInvolvedSystemComponents()) {
 			InvolvedElement comp = involvement.getInvolved();
 			if(null != comp && comp instanceof SystemComponent) {
 				ret.add((SystemComponent) comp);
@@ -100,9 +101,9 @@ public class CapabilityRealizationHelper {
 		return ret;
 	}
 
-	protected List<AbstractActor> getParticitpatingActors(CapabilityRealization element_p) {
+	protected List<AbstractActor> getParticitpatingActors(CapabilityRealization element) {
 		List<AbstractActor> ret = new ArrayList<AbstractActor>();
-		for (ActorCapabilityRealizationInvolvement involvement : element_p.getInvolvedActors()) {
+		for (ActorCapabilityRealizationInvolvement involvement : element.getInvolvedActors()) {
 			InvolvedElement comp = involvement.getInvolved();
 			if(null != comp && comp instanceof AbstractActor) {
 				ret.add((AbstractActor) comp);
@@ -111,9 +112,9 @@ public class CapabilityRealizationHelper {
 		return ret;
 	}
 
-  protected List<Capability> getRealizedCapabilities(CapabilityRealization element_p) {
+  protected List<Capability> getRealizedCapabilities(CapabilityRealization element) {
     List <Capability> ret = new ArrayList<Capability>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof AbstractCapabilityRealization){
         AbstractCapability capability = ((AbstractCapabilityRealization) trace).getRealizedCapability();
         if (capability instanceof Capability) {
@@ -124,9 +125,9 @@ public class CapabilityRealizationHelper {
     return ret;
   }
 
-  protected List<CapabilityRealization> getRealizedCapabilityRealizations(CapabilityRealization element_p) {
+  protected List<CapabilityRealization> getRealizedCapabilityRealizations(CapabilityRealization element) {
     List <CapabilityRealization> ret = new ArrayList<CapabilityRealization>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof AbstractCapabilityRealization){
         AbstractCapability capability = ((AbstractCapabilityRealization) trace).getRealizedCapability();
         if (capability instanceof CapabilityRealization) {
@@ -137,9 +138,9 @@ public class CapabilityRealizationHelper {
     return ret;
   }
 
-  protected List<CapabilityRealization> getRealizingCapabilityRealizations(CapabilityRealization element_p) {
+  protected List<CapabilityRealization> getRealizingCapabilityRealizations(CapabilityRealization element) {
     List <CapabilityRealization> ret = new ArrayList<CapabilityRealization>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof AbstractCapabilityRealization){
         AbstractCapability capability = ((AbstractCapabilityRealization) trace).getRealizingCapability();
         if (capability instanceof CapabilityRealization) {

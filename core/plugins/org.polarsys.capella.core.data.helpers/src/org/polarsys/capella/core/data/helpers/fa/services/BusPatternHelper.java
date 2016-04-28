@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.services;
 
 import java.util.HashSet;
@@ -41,8 +42,8 @@ public abstract class BusPatternHelper extends PatternHelper {
 
 	@SuppressWarnings("unused")
 	@Override
-	public Set<EObject> getAvailable(EObject from_p) {
-		if (from_p == null)
+	public Set<EObject> getAvailable(EObject from) {
+		if (from == null)
 			return null;
 		Map<EClass, EndDescription> endsMap = getEndsMap();
 		EClass busEClass = getBusEClass();
@@ -50,11 +51,11 @@ public abstract class BusPatternHelper extends PatternHelper {
 		if (endsMap == null || busEClass == null)
 			return null;
 		Set<EObject> available = new HashSet<EObject>();
-		if (busEClass.isSuperTypeOf(from_p.eClass())) {
+		if (busEClass.isSuperTypeOf(from.eClass())) {
 			return available;
 		}
 		for (EClass endEClass : endsEClass) {
-			if (busEClass.isSuperTypeOf(from_p.eClass())) {
+			if (busEClass.isSuperTypeOf(from.eClass())) {
 				return available;
 			}
 		}
@@ -64,8 +65,8 @@ public abstract class BusPatternHelper extends PatternHelper {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Set<EObject> getCurrent(EObject from_p) {
-		if (from_p == null)
+	public Set<EObject> getCurrent(EObject from) {
+		if (from == null)
 			return null;
 		Set<EObject> current = new HashSet<EObject>();
 		Map<EClass, EndDescription> endsMap = getEndsMap();
@@ -73,7 +74,7 @@ public abstract class BusPatternHelper extends PatternHelper {
 		Set<EClass> endsEClass = endsMap.keySet();
 		if (endsMap == null || busEClass == null)
 			return null;
-		if (busEClass.isSuperTypeOf(from_p.eClass())) {
+		if (busEClass.isSuperTypeOf(from.eClass())) {
 			for (EClass endEClass : endsEClass) {
 				EndDescription desc = endsMap.get(endEClass);
 				String endName = desc.getEndName();
@@ -82,12 +83,12 @@ public abstract class BusPatternHelper extends PatternHelper {
 					for (EReference ref : references) {
 						if (ref.getName().compareTo(endName) == 0) {
 							if (ref.isMany()) {
-								EList<EObject> many = (EList<EObject>) from_p.eGet(ref, true /* resolve */);
+								EList<EObject> many = (EList<EObject>) from.eGet(ref, true /* resolve */);
 								if (many != null && many.isEmpty())
 									current.addAll(many);
 								return current;
 							}
-							EObject single = (EObject) from_p.eGet(ref, true /* resolve */);
+							EObject single = (EObject) from.eGet(ref, true /* resolve */);
 							if (single != null)
 								current.add(single);
 							return current;
@@ -105,12 +106,12 @@ public abstract class BusPatternHelper extends PatternHelper {
 				for (EReference ref : references) {
 					if (ref.getName().compareTo(busName) == 0) {
 						if (ref.isMany()) {
-							EList<EObject> many = (EList<EObject>) from_p.eGet(ref, true /* resolve */);
+							EList<EObject> many = (EList<EObject>) from.eGet(ref, true /* resolve */);
 							if (many != null && many.isEmpty())
 								current.addAll(many);
 							return current;
 						}
-						EObject single = (EObject) from_p.eGet(ref, true /* resolve */);
+						EObject single = (EObject) from.eGet(ref, true /* resolve */);
 						if (single != null)
 							current.add(single);
 						return current;
@@ -130,8 +131,8 @@ public abstract class BusPatternHelper extends PatternHelper {
 	 *         {@link #validateBusPattern(EObject, Set)} returns false
 	 */
 	@Override
-	public boolean validatePattern(Set<EObject> objects_p) {
-		if (objects_p == null || objects_p.isEmpty())
+	public boolean validatePattern(Set<EObject> objects) {
+		if (objects == null || objects.isEmpty())
 			return false;
 
 		return false;
@@ -142,7 +143,7 @@ public abstract class BusPatternHelper extends PatternHelper {
 	 * {@link #validatePattern(Set)} returns true.
 	 */
 	@Override
-	public boolean validateDisconnection(Set<EObject> list_p) {
+	public boolean validateDisconnection(Set<EObject> list) {
 		return false;
 	}
 
@@ -151,7 +152,7 @@ public abstract class BusPatternHelper extends PatternHelper {
 	 * Pattern. IE {@link #validatePattern(Set)} returns false.
 	 */
 	@Override
-	public boolean validateConnection(Set<EObject> list_p) {
+	public boolean validateConnection(Set<EObject> list) {
 		return false;
 	}
 }

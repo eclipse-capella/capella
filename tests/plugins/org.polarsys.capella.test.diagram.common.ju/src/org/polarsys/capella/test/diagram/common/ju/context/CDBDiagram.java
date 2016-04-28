@@ -15,6 +15,7 @@ import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConsta
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 
 public class CDBDiagram extends DiagramContext {
@@ -35,6 +36,10 @@ public class CDBDiagram extends DiagramContext {
 
   public void createClass(String id) {
     new CreateContainerTool(this, IToolNameConstants.TOOL_CDB_CREATE_CLASS, getDiagramId(), id).run();
+  }
+
+  public void createAssociation(String classSourceId, String classTargetId, String id) {
+    new CreateDEdgeTool(this, IToolNameConstants.TOOL_CDB_CREATE_ASSOCIATION, classSourceId, classTargetId, id).run();
   }
 
   public void removeType(String... ids) {

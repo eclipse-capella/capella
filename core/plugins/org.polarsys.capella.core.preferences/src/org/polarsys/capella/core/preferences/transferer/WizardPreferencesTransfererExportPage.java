@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -309,7 +309,7 @@ public class WizardPreferencesTransfererExportPage extends WizardPreferencesPage
           fos = new FileOutputStream(exportFile);
         } catch (FileNotFoundException e) {
           WorkbenchPlugin.log(e.getMessage(), e);
-          MessageDialog.open(MessageDialog.ERROR, getControl().getShell(), new String(), e.getLocalizedMessage(), SWT.SHEET);
+          MessageDialog.open(MessageDialog.ERROR, getControl().getShell(), "", e.getLocalizedMessage(), SWT.SHEET);
           return false;
         }
         IPreferencesService service = Platform.getPreferencesService();
@@ -317,7 +317,7 @@ public class WizardPreferencesTransfererExportPage extends WizardPreferencesPage
           service.exportPreferences(service.getRootNode(), transfers, fos);
         } catch (CoreException e) {
           WorkbenchPlugin.log(e.getMessage(), e);
-          MessageDialog.open(MessageDialog.ERROR, getControl().getShell(), new String(), e.getLocalizedMessage(), SWT.SHEET);
+          MessageDialog.open(MessageDialog.ERROR, getControl().getShell(), "", e.getLocalizedMessage(), SWT.SHEET);
           return false;
         }
       }
@@ -327,7 +327,7 @@ public class WizardPreferencesTransfererExportPage extends WizardPreferencesPage
           fos.close();
         } catch (IOException e) {
           WorkbenchPlugin.log(e.getMessage(), e);
-          MessageDialog.open(MessageDialog.ERROR, getControl().getShell(), new String(), e.getLocalizedMessage(), SWT.SHEET);
+          MessageDialog.open(MessageDialog.ERROR, getControl().getShell(), "", e.getLocalizedMessage(), SWT.SHEET);
           return false;
         }
       }
@@ -363,12 +363,6 @@ public class WizardPreferencesTransfererExportPage extends WizardPreferencesPage
     return true;
   }
 
-  @Override
-  protected void saveWidgetValues() {
-    super.saveWidgetValues();
-
-  }
-
   /**
    * Handle all events and enablements for widgets in this page
    * @param e Event
@@ -378,9 +372,7 @@ public class WizardPreferencesTransfererExportPage extends WizardPreferencesPage
     Widget source = e.widget;
     if ((source instanceof Button)) {
       handleDestinationBrowseButtonPressed();
-
     }
-
   }
 
   /**
@@ -399,7 +391,7 @@ public class WizardPreferencesTransfererExportPage extends WizardPreferencesPage
 
       if ((this.getWizard() != null) && (this.getWizard() instanceof CapellaImportExportPreferences)) {
         CapellaImportExportPreferences wizard = (CapellaImportExportPreferences) this.getWizard();
-        wizard.setPageCompleted((selectedFileName != null) && !selectedFileName.isEmpty());
+        wizard.setPageCompleted(!selectedFileName.isEmpty());
         updatePageCompletion();
       }
 
@@ -415,13 +407,13 @@ public class WizardPreferencesTransfererExportPage extends WizardPreferencesPage
           new ProjectScope(configProject).getNode(Activator.PLUGIN_ID).flush();
           configProject.refreshLocal(IResource.DEPTH_INFINITE, null);
           project.refreshLocal(IResource.DEPTH_INFINITE, null);
-        } catch (BackingStoreException exception_p) {
+        } catch (BackingStoreException exception) {
           StringBuilder loggerMessage = new StringBuilder("WizardPreferencesTransfererExportPage.performFinish(..) _ "); //$NON-NLS-1$
-          __logger.warn(loggerMessage.toString(), exception_p);
+          __logger.warn(loggerMessage.toString(), exception);
           return super.finish();
-        } catch (CoreException exception_p) {
+        } catch (CoreException exception) {
           StringBuilder loggerMessage = new StringBuilder("WizardPreferencesTransfererExportPage.performFinish(..) _ "); //$NON-NLS-1$
-          __logger.warn(loggerMessage.toString(), exception_p);
+          __logger.warn(loggerMessage.toString(), exception);
         }
       }
     }
@@ -454,12 +446,12 @@ public class WizardPreferencesTransfererExportPage extends WizardPreferencesPage
   }
 
   @Override
-  protected void addDestinationItem(String value_p) {
-    super.addDestinationItem(value_p);
-    setDestinationValue(value_p);
+  protected void addDestinationItem(String value) {
+    super.addDestinationItem(value);
+    setDestinationValue(value);
 
     CapellaImportExportPreferences wizard = (CapellaImportExportPreferences) this.getWizard();
-    wizard.setPageCompleted((value_p != null) && !value_p.isEmpty());
+    wizard.setPageCompleted((value != null) && !value.isEmpty());
 
     updatePageCompletion();
   }

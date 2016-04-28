@@ -279,13 +279,13 @@ public class PartExt {
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
   public static Collection<Part> getFirstPartAncestors(Part currentPart) {
-    LinkedList<Part> parents_p = new LinkedList<Part>();
-    parents_p.addAll((Collection) PartExt.getDeployingElements(currentPart));
+    LinkedList<Part> parents = new LinkedList<Part>();
+    parents.addAll((Collection) PartExt.getDeployingElements(currentPart));
     Component directParent = ComponentExt.getDirectParent(currentPart);
     if (null != directParent) {
-      parents_p.addAll((Collection) directParent.getRepresentingPartitions());
+      parents.addAll((Collection) directParent.getRepresentingPartitions());
     }
-    return parents_p;
+    return parents;
   }
 
 }

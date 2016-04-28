@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.information.delegates;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -32,33 +33,33 @@ public class ExchangeItemRealizationHelper {
 		return instance;
 	}
 
-	public Object doSwitch(ExchangeItemRealization element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(ExchangeItemRealization element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION__REALIZED_ITEM)) {
-			ret = getRealizedItem(element_p);
+		if (feature.equals(InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION__REALIZED_ITEM)) {
+			ret = getRealizedItem(element);
 		}
-		else if (feature_p.equals(InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION__REALIZING_OPERATION)) {
-			ret = getRealizingOperation(element_p);
+		else if (feature.equals(InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION__REALIZING_OPERATION)) {
+			ret = getRealizingOperation(element);
 		} 
 
     // no helper found... searching in super classes...
     if(null == ret) {
-      ret = AllocationHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AllocationHelper.getInstance().doSwitch(element, feature);
     }
 
 		return ret;
 	}
 
-	protected AbstractExchangeItem getRealizedItem(ExchangeItemRealization element_p) {
-		TraceableElement ret = element_p.getTargetElement();
+	protected AbstractExchangeItem getRealizedItem(ExchangeItemRealization element) {
+		TraceableElement ret = element.getTargetElement();
 		if( ret instanceof AbstractExchangeItem)
 			return (AbstractExchangeItem) ret;
 		return null;
 	}
 
-	protected Operation getRealizingOperation(ExchangeItemRealization element_p) {
-		TraceableElement ret = element_p.getSourceElement();
+	protected Operation getRealizingOperation(ExchangeItemRealization element) {
+		TraceableElement ret = element.getSourceElement();
 		if (ret instanceof Operation)
 			return (Operation) ret;
 		return null;

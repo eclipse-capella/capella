@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.cs;
 
 import java.util.List;
@@ -50,28 +51,28 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public abstract class ComponentPkgRule extends AbstractCapellaElementRule {
 
   @Override
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
-    if (!(element_p.eContainer() instanceof BlockArchitecture)) {
-      super.retrieveContainer(element_p, result_p, context_p);
+  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
+    if (!(element.eContainer() instanceof BlockArchitecture)) {
+      super.retrieveContainer(element, result, context);
     }
   }
 
   @Override
-  protected EObject getBestContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject container = element_p.eContainer();
+  protected EObject getBestContainer(EObject element, EObject result, IContext context) {
+    EObject container = element.eContainer();
     if (container != null) {
       EObject parent = container;
       while (parent != null) {
 
         ISelectionContext sContext =
-            SelectionContextHandlerHelper.getHandler(context_p).getSelectionContext(context_p, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION,
-                element_p, result_p);
+            SelectionContextHandlerHelper.getHandler(context).getSelectionContext(context, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION,
+                element, result);
 
         EObject targetContainer =
-            TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(parent, context_p,
+            TransformationHandlerHelper.getInstance(context).getBestTracedElement(parent, context,
                 new EClassSelectionContext(sContext, CsPackage.Literals.COMPONENT));
         if (targetContainer == null) {
-          targetContainer = TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(parent, context_p, sContext);
+          targetContainer = TransformationHandlerHelper.getInstance(context).getBestTracedElement(parent, context, sContext);
         }
         if (targetContainer != null) {
           return targetContainer;
@@ -80,21 +81,21 @@ public abstract class ComponentPkgRule extends AbstractCapellaElementRule {
       }
     }
 
-    return super.getBestContainer(element_p, result_p, context_p);
+    return super.getBestContainer(element, result, context);
   }
 
   @Override
-  protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element_p, result_p);
+        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
+            element, result);
 
-    if (result_p instanceof ActorPkg) {
+    if (result instanceof ActorPkg) {
       return BlockArchitectureExt.getActorPkg(target);
-    } else if (result_p instanceof LogicalActorPkg) {
+    } else if (result instanceof LogicalActorPkg) {
       return BlockArchitectureExt.getActorPkg(target);
-    } else if (result_p instanceof PhysicalActorPkg) {
+    } else if (result instanceof PhysicalActorPkg) {
       return BlockArchitectureExt.getActorPkg(target);
     }
 
@@ -102,52 +103,52 @@ public abstract class ComponentPkgRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
 
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
+    if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
 
-      if (source_p instanceof EntityPkg) {
-        EntityPkg sourceElement = (EntityPkg) source_p;
-        result_p.addAll(sourceElement.getOwnedEntityPkgs());
-        result_p.addAll(sourceElement.getOwnedEntities());
-        ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedEntityPkgs(), context_p);
-        ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedEntities(), context_p);
+      if (source instanceof EntityPkg) {
+        EntityPkg sourceElement = (EntityPkg) source;
+        result.addAll(sourceElement.getOwnedEntityPkgs());
+        result.addAll(sourceElement.getOwnedEntities());
+        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedEntityPkgs(), context);
+        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedEntities(), context);
 
-      } else if (source_p instanceof ActorPkg) {
-        ActorPkg sourceElement = (ActorPkg) source_p;
-        result_p.addAll(sourceElement.getOwnedActorPkgs());
-        result_p.addAll(sourceElement.getOwnedActors());
-        ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedActorPkgs(), context_p);
-        ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedActors(), context_p);
+      } else if (source instanceof ActorPkg) {
+        ActorPkg sourceElement = (ActorPkg) source;
+        result.addAll(sourceElement.getOwnedActorPkgs());
+        result.addAll(sourceElement.getOwnedActors());
+        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedActorPkgs(), context);
+        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedActors(), context);
 
-      } else if (source_p instanceof LogicalActorPkg) {
-        LogicalActorPkg sourceElement = (LogicalActorPkg) source_p;
-        result_p.addAll(sourceElement.getOwnedLogicalActorPkgs());
-        result_p.addAll(sourceElement.getOwnedLogicalActors());
-        ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedLogicalActorPkgs(), context_p);
-        ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedLogicalActors(), context_p);
+      } else if (source instanceof LogicalActorPkg) {
+        LogicalActorPkg sourceElement = (LogicalActorPkg) source;
+        result.addAll(sourceElement.getOwnedLogicalActorPkgs());
+        result.addAll(sourceElement.getOwnedLogicalActors());
+        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedLogicalActorPkgs(), context);
+        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedLogicalActors(), context);
 
-      } else if (source_p instanceof LogicalComponentPkg) {
-        LogicalComponentPkg sourceElement = (LogicalComponentPkg) source_p;
-        result_p.addAll(sourceElement.getOwnedLogicalComponentPkgs());
-        result_p.addAll(sourceElement.getOwnedLogicalComponents());
-        ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedLogicalComponentPkgs(), context_p);
-        ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedLogicalComponents(), context_p);
+      } else if (source instanceof LogicalComponentPkg) {
+        LogicalComponentPkg sourceElement = (LogicalComponentPkg) source;
+        result.addAll(sourceElement.getOwnedLogicalComponentPkgs());
+        result.addAll(sourceElement.getOwnedLogicalComponents());
+        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedLogicalComponentPkgs(), context);
+        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedLogicalComponents(), context);
 
-      } else if (source_p instanceof PhysicalActorPkg) {
-        PhysicalActorPkg sourceElement = (PhysicalActorPkg) source_p;
-        result_p.addAll(sourceElement.getOwnedPhysicalActorPkgs());
-        result_p.addAll(sourceElement.getOwnedPhysicalActors());
-        ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedPhysicalActorPkgs(), context_p);
-        ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedPhysicalActors(), context_p);
+      } else if (source instanceof PhysicalActorPkg) {
+        PhysicalActorPkg sourceElement = (PhysicalActorPkg) source;
+        result.addAll(sourceElement.getOwnedPhysicalActorPkgs());
+        result.addAll(sourceElement.getOwnedPhysicalActors());
+        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedPhysicalActorPkgs(), context);
+        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedPhysicalActors(), context);
 
-      } else if (source_p instanceof PhysicalComponentPkg) {
-        PhysicalComponentPkg sourceElement = (PhysicalComponentPkg) source_p;
-        result_p.addAll(sourceElement.getOwnedPhysicalComponentPkgs());
-        result_p.addAll(sourceElement.getOwnedComponents());
-        ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedPhysicalComponentPkgs(), context_p);
-        ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedComponents(), context_p);
+      } else if (source instanceof PhysicalComponentPkg) {
+        PhysicalComponentPkg sourceElement = (PhysicalComponentPkg) source;
+        result.addAll(sourceElement.getOwnedPhysicalComponentPkgs());
+        result.addAll(sourceElement.getOwnedComponents());
+        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedPhysicalComponentPkgs(), context);
+        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedComponents(), context);
 
       }
 
@@ -155,33 +156,33 @@ public abstract class ComponentPkgRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected EStructuralFeature getTargetContainementFeature(EObject element_p, EObject result_p, EObject container_p, IContext context_p) {
-    EClass targetType = getTargetType(element_p, context_p);
+  protected EStructuralFeature getTargetContainementFeature(EObject element, EObject result, EObject container, IContext context) {
+    EClass targetType = getTargetType(element, context);
 
-    if (container_p instanceof EntityPkg) {
+    if (container instanceof EntityPkg) {
       if (OaPackage.Literals.ENTITY_PKG.isSuperTypeOf(targetType)) {
         return OaPackage.Literals.ENTITY_PKG__OWNED_ENTITY_PKGS;
       }
 
-    } else if (container_p instanceof Entity) {
+    } else if (container instanceof Entity) {
       //Nothing
 
-    } else if (container_p instanceof SystemAnalysis) {
+    } else if (container instanceof SystemAnalysis) {
       if (CtxPackage.Literals.ACTOR_PKG.isSuperTypeOf(targetType)) {
         return CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG;
 
       }
 
-    } else if (container_p instanceof ActorPkg) {
+    } else if (container instanceof ActorPkg) {
       if (CtxPackage.Literals.ACTOR_PKG.isSuperTypeOf(targetType)) {
         return CtxPackage.Literals.ACTOR_PKG__OWNED_ACTOR_PKGS;
 
       }
 
-    } else if (container_p instanceof org.polarsys.capella.core.data.ctx.System) {
+    } else if (container instanceof org.polarsys.capella.core.data.ctx.System) {
       //Nothing
 
-    } else if (container_p instanceof LogicalArchitecture) {
+    } else if (container instanceof LogicalArchitecture) {
       if (LaPackage.Literals.LOGICAL_ACTOR_PKG.isSuperTypeOf(targetType)) {
         return LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG;
 
@@ -190,22 +191,22 @@ public abstract class ComponentPkgRule extends AbstractCapellaElementRule {
 
       }
 
-    } else if (container_p instanceof LogicalActorPkg) {
+    } else if (container instanceof LogicalActorPkg) {
       if (LaPackage.Literals.LOGICAL_ACTOR_PKG.isSuperTypeOf(targetType)) {
         return LaPackage.Literals.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS;
       }
 
-    } else if (container_p instanceof LogicalComponentPkg) {
+    } else if (container instanceof LogicalComponentPkg) {
       if (LaPackage.Literals.LOGICAL_COMPONENT_PKG.isSuperTypeOf(targetType)) {
         return LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS;
       }
 
-    } else if (container_p instanceof LogicalComponent) {
+    } else if (container instanceof LogicalComponent) {
       if (LaPackage.Literals.LOGICAL_COMPONENT_PKG.isSuperTypeOf(targetType)) {
         return LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS;
       }
 
-    } else if (container_p instanceof PhysicalArchitecture) {
+    } else if (container instanceof PhysicalArchitecture) {
       if (PaPackage.Literals.PHYSICAL_ACTOR_PKG.isSuperTypeOf(targetType)) {
         return PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG;
 
@@ -214,22 +215,22 @@ public abstract class ComponentPkgRule extends AbstractCapellaElementRule {
 
       }
 
-    } else if (container_p instanceof PhysicalActorPkg) {
+    } else if (container instanceof PhysicalActorPkg) {
       if (PaPackage.Literals.PHYSICAL_ACTOR_PKG.isSuperTypeOf(targetType)) {
         return PaPackage.Literals.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS;
       }
 
-    } else if (container_p instanceof PhysicalComponentPkg) {
+    } else if (container instanceof PhysicalComponentPkg) {
       if (PaPackage.Literals.PHYSICAL_COMPONENT_PKG.isSuperTypeOf(targetType)) {
         return PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS;
       }
 
-    } else if (container_p instanceof PhysicalComponent) {
+    } else if (container instanceof PhysicalComponent) {
       if (PaPackage.Literals.PHYSICAL_COMPONENT_PKG.isSuperTypeOf(targetType)) {
         return PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENT_PKGS;
       }
 
     }
-    return element_p.eContainingFeature();
+    return element.eContainingFeature();
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.interaction.delegates;
 
 import java.util.ArrayList;
@@ -40,32 +41,32 @@ public class ScenarioHelper {
     return instance;
   }
 
-  public Object doSwitch(Scenario element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(Scenario element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(InteractionPackage.Literals.SCENARIO__CONTAINED_FUNCTIONS)) {
-      ret = getContainedFunctions(element_p);
-    } else if (feature_p.equals(InteractionPackage.Literals.SCENARIO__CONTAINED_PARTS)) {
-      ret = getContainedParts(element_p);
-    } else if (feature_p.equals(InteractionPackage.Literals.SCENARIO__REFERENCED_SCENARIOS)) {
-      ret = getReferencedScenarios(element_p);
-    } else if (feature_p.equals(InteractionPackage.Literals.SCENARIO__REALIZED_SCENARIOS)) {
-      ret = getRealizedScenarios(element_p);
-    } else if (feature_p.equals(InteractionPackage.Literals.SCENARIO__REALIZING_SCENARIOS)) {
-      ret = getRealizingScenarios(element_p);
+    if (feature.equals(InteractionPackage.Literals.SCENARIO__CONTAINED_FUNCTIONS)) {
+      ret = getContainedFunctions(element);
+    } else if (feature.equals(InteractionPackage.Literals.SCENARIO__CONTAINED_PARTS)) {
+      ret = getContainedParts(element);
+    } else if (feature.equals(InteractionPackage.Literals.SCENARIO__REFERENCED_SCENARIOS)) {
+      ret = getReferencedScenarios(element);
+    } else if (feature.equals(InteractionPackage.Literals.SCENARIO__REALIZED_SCENARIOS)) {
+      ret = getRealizedScenarios(element);
+    } else if (feature.equals(InteractionPackage.Literals.SCENARIO__REALIZING_SCENARIOS)) {
+      ret = getRealizingScenarios(element);
     }
 
     // no helper found... searching in super classes...
     if (ret == null) {
-      ret = NamespaceHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = NamespaceHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<AbstractFunction> getContainedFunctions(Scenario element_p) {
+  protected List<AbstractFunction> getContainedFunctions(Scenario element) {
     List<AbstractFunction> res = new ArrayList<AbstractFunction>();
-    for (InstanceRole instanceRole : element_p.getOwnedInstanceRoles()) {
+    for (InstanceRole instanceRole : element.getOwnedInstanceRoles()) {
       AbstractInstance inst = instanceRole.getRepresentedInstance();
       if (inst instanceof AbstractFunction) {
         res.add((AbstractFunction) inst);
@@ -74,9 +75,9 @@ public class ScenarioHelper {
     return res;
   }
 
-  protected List<Part> getContainedParts(Scenario element_p) {
+  protected List<Part> getContainedParts(Scenario element) {
     List<Part> res = new ArrayList<Part>();
-    for (InstanceRole instanceRole : element_p.getOwnedInstanceRoles()) {
+    for (InstanceRole instanceRole : element.getOwnedInstanceRoles()) {
       AbstractInstance inst = instanceRole.getRepresentedInstance();
       if (inst instanceof Part) {
         res.add((Part) inst);
@@ -85,9 +86,9 @@ public class ScenarioHelper {
     return res;
   }
 
-  protected List<Scenario> getReferencedScenarios(Scenario element_p) {
+  protected List<Scenario> getReferencedScenarios(Scenario element) {
     List<Scenario> res = new ArrayList<Scenario>();
-    for (TimeLapse timeLapse : element_p.getOwnedTimeLapses()) {
+    for (TimeLapse timeLapse : element.getOwnedTimeLapses()) {
       if (timeLapse instanceof InteractionUse) {
         Scenario sc = ((InteractionUse) timeLapse).getReferencedScenario();
         if (null != sc) {
@@ -98,9 +99,9 @@ public class ScenarioHelper {
     return res;
   }
 
-  protected List<Scenario> getRealizedScenarios(Scenario element_p) {
+  protected List<Scenario> getRealizedScenarios(Scenario element) {
     List<Scenario> res = new ArrayList<Scenario>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof ScenarioRealization) {
         Scenario sc = ((ScenarioRealization) trace).getRealizedScenario();
         if (null != sc) {
@@ -111,9 +112,9 @@ public class ScenarioHelper {
     return res;
   }
 
-  protected List<Scenario> getRealizingScenarios(Scenario element_p) {
+  protected List<Scenario> getRealizingScenarios(Scenario element) {
     List<Scenario> res = new ArrayList<Scenario>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ScenarioRealization) {
         Scenario sc = ((ScenarioRealization) trace).getRealizingScenario();
         if (null != sc) {

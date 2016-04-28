@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.traceability;
 
 import java.util.ArrayList;
@@ -25,73 +26,73 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class TwoSideTraceabilityHandler implements ITraceabilityHandler2 {
 
-  private String _identifier;
+  private String identifier;
 
-  private String _identifierFm;
-  private String _identifierBm;
+  private String identifierFm;
+  private String identifierBm;
 
   public String getIdentifier() {
-    return _identifier;
+    return identifier;
   }
 
   private static final String FORWARD_MAPPINGS = "Fm"; //$NON-NLS-1$
 
   private static final String BACKWARD_MAPPINGS = "Bm"; //$NON-NLS-1$
 
-  public TwoSideTraceabilityHandler(String identifier_p) {
-    _identifier = getClass().getName() + identifier_p;
-    _identifierFm = FORWARD_MAPPINGS + getIdentifier();
-    _identifierBm = BACKWARD_MAPPINGS + getIdentifier();
+  public TwoSideTraceabilityHandler(String identifier) {
+    this.identifier = getClass().getName() + identifier;
+    this.identifierFm = FORWARD_MAPPINGS + getIdentifier();
+    this.identifierBm = BACKWARD_MAPPINGS + getIdentifier();
   }
 
   protected String getForwardMappingKey() {
-    return _identifierFm;
+    return identifierFm;
   }
 
   protected String getBackwardMappingKey() {
-    return _identifierBm;
+    return identifierBm;
   }
 
-  protected MappingTraceability getForwardMappings(EObject source_p, IContext context_p) {
-    return getMappings(source_p, context_p, getForwardMappingKey());
+  protected MappingTraceability getForwardMappings(EObject source, IContext context) {
+    return getMappings(source, context, getForwardMappingKey());
   }
 
-  protected MappingTraceability getBackwardMappings(EObject source_p, IContext context_p) {
-    return getMappings(source_p, context_p, getBackwardMappingKey());
+  protected MappingTraceability getBackwardMappings(EObject source, IContext context) {
+    return getMappings(source, context, getBackwardMappingKey());
   }
 
-  protected MappingTraceability createMappingTraceability(EObject source_p, IContext context_p, String key) {
+  protected MappingTraceability createMappingTraceability(EObject source, IContext context, String key) {
     return new MappingTraceability();
   }
 
-  protected MappingTraceability getMappings(EObject source_p, IContext context_p, String key_p) {
-    MappingTraceability map = (MappingTraceability) context_p.get(key_p);
+  protected MappingTraceability getMappings(EObject source, IContext context, String key) {
+    MappingTraceability map = (MappingTraceability) context.get(key);
     if (map == null) {
-      map = createMappingTraceability(source_p, context_p, key_p);
-      context_p.put(key_p, map);
+      map = createMappingTraceability(source, context, key);
+      context.put(key, map);
     }
     return map;
   }
 
-  protected void addMappings(EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
-    addMapping(getForwardMappings(sourceElement_p, context_p), sourceElement_p, targetElement_p, context_p);
-    addMapping(getBackwardMappings(sourceElement_p, context_p), sourceElement_p, targetElement_p, context_p);
+  protected void addMappings(EObject sourceElement, EObject targetElement, IContext context) {
+    addMapping(getForwardMappings(sourceElement, context), sourceElement, targetElement, context);
+    addMapping(getBackwardMappings(sourceElement, context), sourceElement, targetElement, context);
   }
 
-  protected void removeMapping(MappingTraceability map_p, EObject obj_p, IContext context_p) {
-    map_p.remove(obj_p);
+  protected void removeMapping(MappingTraceability map, EObject obj, IContext context) {
+    map.remove(obj);
   }
 
-  protected void addMapping(MappingTraceability map, EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
+  protected void addMapping(MappingTraceability map, EObject sourceElement, EObject targetElement, IContext context) {
 
-    if (map.equals(context_p.get(getForwardMappingKey()))) {
-      if ((sourceElement_p != null) && (targetElement_p != null)) {
-        map.put(sourceElement_p, targetElement_p);
+    if (map.equals(context.get(getForwardMappingKey()))) {
+      if ((sourceElement != null) && (targetElement != null)) {
+        map.put(sourceElement, targetElement);
       }
 
     } else {
-      if ((sourceElement_p != null) && (targetElement_p != null)) {
-        map.put(targetElement_p, sourceElement_p);
+      if ((sourceElement != null) && (targetElement != null)) {
+        map.put(targetElement, sourceElement);
       }
     }
   }
@@ -99,36 +100,36 @@ public class TwoSideTraceabilityHandler implements ITraceabilityHandler2 {
   /**
    * {@inheritDoc}
    */
-  public void attachTraceability(EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
+  public void attachTraceability(EObject sourceElement, EObject targetElement, IContext context) {
     //Nothing yet
   }
 
-  protected Collection<EObject> retrieveRelatedElements(EObject source_p, IContext context_p, MappingTraceability maps_p) {
+  protected Collection<EObject> retrieveRelatedElements(EObject source, IContext context, MappingTraceability maps) {
     ArrayList<EObject> result = new ArrayList<EObject>();
-    if (maps_p.contains(source_p)) {
-      Collection<EObject> mapped = maps_p.get(source_p);
+    if (maps.contains(source)) {
+      Collection<EObject> mapped = maps.get(source);
       result.addAll(mapped);
     }
     return result;
   }
 
-  public Collection<EObject> retrieveTracedElements(EObject source_p, IContext context_p) {
-    return retrieveRelatedElements(source_p, context_p, getForwardMappings(source_p, context_p));
+  public Collection<EObject> retrieveTracedElements(EObject source, IContext context) {
+    return retrieveRelatedElements(source, context, getForwardMappings(source, context));
   }
 
-  public Collection<EObject> retrieveSourceElements(EObject source_p, IContext context_p) {
-    return retrieveRelatedElements(source_p, context_p, getBackwardMappings(source_p, context_p));
-  }
-
-  @Deprecated
-  public boolean isTraced(EObject element_p, IContext context_p) {
-    return retrieveTracedElements(element_p, context_p).size() > 0;
+  public Collection<EObject> retrieveSourceElements(EObject source, IContext context) {
+    return retrieveRelatedElements(source, context, getBackwardMappings(source, context));
   }
 
   @Deprecated
-  public Collection<EObject> retrieveTracedElements(EObject source_p, IContext context_p, EClass clazz) {
+  public boolean isTraced(EObject element, IContext context) {
+    return retrieveTracedElements(element, context).size() > 0;
+  }
+
+  @Deprecated
+  public Collection<EObject> retrieveTracedElements(EObject source, IContext context, EClass clazz) {
     ArrayList<EObject> result = new ArrayList<EObject>();
-    for (EObject obj : retrieveTracedElements(source_p, context_p)) {
+    for (EObject obj : retrieveTracedElements(source, context)) {
       if (clazz.isInstance(obj)) {
         result.add(obj);
       }
@@ -137,15 +138,15 @@ public class TwoSideTraceabilityHandler implements ITraceabilityHandler2 {
   }
 
   @Deprecated
-  public String getId(EObject element_p, IContext context_p) {
-    return SessionHandlerHelper.getInstance(context_p).getId(element_p, context_p);
+  public String getId(EObject element, IContext context) {
+    return SessionHandlerHelper.getInstance(context).getId(element, context);
   }
 
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     return Status.OK_STATUS;
   }
 
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
     return Status.OK_STATUS;
   }
 

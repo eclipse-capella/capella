@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.information;
 
 import java.util.ArrayList;
@@ -41,32 +42,32 @@ public class UnionRule extends ClassRule {
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    Union element = (Union) source_p;
-    result_p.add(element.getDefaultProperty());
-    result_p.add(element.getDiscriminant());
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    Union element = (Union) source;
+    result.add(element.getDefaultProperty());
+    result.add(element.getDiscriminant());
 
-    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context_p);
-    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getDiscriminant(), context_p);
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getDefaultProperty(), context_p);
+    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context);
+    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getDiscriminant(), context);
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getDefaultProperty(), context);
     }
 
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, InformationPackage.Literals.UNION__DEFAULT_PROPERTY, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, InformationPackage.Literals.UNION__DISCRIMINANT, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, InformationPackage.Literals.UNION__DEFAULT_PROPERTY, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, InformationPackage.Literals.UNION__DISCRIMINANT, context);
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, InformationPackage.Literals.UNION__DEFAULT_PROPERTY));
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, InformationPackage.Literals.UNION__DISCRIMINANT));
+  protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
+    super.premicesRelated(element, needed);
+    needed.addAll(createDefaultPrecedencePremices(element, InformationPackage.Literals.UNION__DEFAULT_PROPERTY));
+    needed.addAll(createDefaultPrecedencePremices(element, InformationPackage.Literals.UNION__DISCRIMINANT));
   }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.log;
 
 import java.util.ArrayList;
@@ -40,30 +41,30 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class DefaultLogHandler implements ILogHandler {
 
-  protected Logger _logger;
+  protected Logger logger;
 
   protected List<TransitionMessage> logs;
 
   String reportComponent;
 
-  public DefaultLogHandler(String reportComponent_p) {
-    reportComponent = reportComponent_p;
+  public DefaultLogHandler(String reportComponent) {
+    this.reportComponent = reportComponent;
   }
 
   protected class TransitionMessage extends EmbeddedMessage {
 
     String priority;
 
-    public TransitionMessage(String message_p, String priority_p, String info_p) {
-      super(message_p, info_p);
-      priority = priority_p;
-      setSource(info_p);
+    public TransitionMessage(String message, String priority, String info) {
+      super(message, info);
+      this.priority = priority;
+      setSource(info);
     }
 
-    public TransitionMessage(String message_p, String priority_p, Object affectedObjects_p, String info_p) {
-      super(message_p, info_p, affectedObjects_p);
-      priority = priority_p;
-      setSource(info_p);
+    public TransitionMessage(String message, String priority, Object affectedObjects, String info) {
+      super(message, info, affectedObjects);
+      this.priority = priority;
+      setSource(info);
     }
 
   }
@@ -71,8 +72,8 @@ public class DefaultLogHandler implements ILogHandler {
   /**
    * {@inheritDoc}
    */
-  public IStatus init(IContext context_p) {
-    _logger = ReportManagerRegistry.getInstance().subscribe(reportComponent);
+  public IStatus init(IContext context) {
+    logger = ReportManagerRegistry.getInstance().subscribe(reportComponent);
     logs = new ArrayList<DefaultLogHandler.TransitionMessage>();
     return Status.OK_STATUS;
   }
@@ -88,55 +89,55 @@ public class DefaultLogHandler implements ILogHandler {
   /**
    * {@inheritDoc}
    */
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
     flush();
     logs = null;
     return Status.OK_STATUS;
   }
 
-  protected TransitionMessage createEmbeddedMessage(String message_p, String priority_p, Object relatedObjects_p, String source_p) {
-    return new TransitionMessage(message_p, priority_p, relatedObjects_p, source_p);
+  protected TransitionMessage createEmbeddedMessage(String message, String priority, Object relatedObjects, String source) {
+    return new TransitionMessage(message, priority, relatedObjects, source);
   }
 
-  protected TransitionMessage createEmbeddedMessage(String message_p, String priority_p, String source_p) {
-    return new TransitionMessage(message_p, priority_p, source_p);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  public void log(String message_p, String priority_p, Object relatedObjects_p, String source_p) {
-    TransitionMessage message = createEmbeddedMessage(message_p, priority_p, relatedObjects_p, source_p);
-    logs.add(message);
+  protected TransitionMessage createEmbeddedMessage(String message, String priority, String source) {
+    return new TransitionMessage(message, priority, source);
   }
 
   /**
    * {@inheritDoc}
    */
-  public void log(String message_p, String priority_p, String source_p) {
-    TransitionMessage message = createEmbeddedMessage(message_p, priority_p, source_p);
-    logs.add(message);
+  public void log(String message, String priority, Object relatedObjects, String source) {
+    TransitionMessage transitionMessage = createEmbeddedMessage(message, priority, relatedObjects, source);
+    logs.add(transitionMessage);
   }
 
   /**
    * {@inheritDoc}
    */
-  public void log(String message_p, IStatus status_p, Object relatedObjects_p, String source_p) {
-    String priority = toPriority(status_p);
-    log(message_p, priority, relatedObjects_p, source_p);
-  }
-
-  public void log(String message_p, IStatus status_p, String source_p) {
-    String priority = toPriority(status_p);
-    log(message_p, priority, source_p);
+  public void log(String message, String priority, String source) {
+    TransitionMessage transitionMessage = createEmbeddedMessage(message, priority, source);
+    logs.add(transitionMessage);
   }
 
   /**
-   * @param severity_p
+   * {@inheritDoc}
+   */
+  public void log(String message, IStatus status, Object relatedObjects, String source) {
+    String priority = toPriority(status);
+    log(message, priority, relatedObjects, source);
+  }
+
+  public void log(String message, IStatus status, String source) {
+    String priority = toPriority(status);
+    log(message, priority, source);
+  }
+
+  /**
+   * @param status
    * @return
    */
-  protected String toPriority(IStatus status_p) {
-    switch (status_p.getSeverity()) {
+  protected String toPriority(IStatus status) {
+    switch (status.getSeverity()) {
       case IStatus.OK:
         return ReportManagerConstants.LOG_LEVEL_INFO;
       case IStatus.CANCEL:
@@ -152,138 +153,138 @@ public class DefaultLogHandler implements ILogHandler {
     }
   }
 
-  protected void log(TransitionMessage message_p) {
-    _logger.log(Level.toLevel(message_p.priority), message_p);
+  protected void log(TransitionMessage message) {
+    logger.log(Level.toLevel(message.priority), message);
   }
 
   /**
    * {@inheritDoc}
    */
-  public void debug(String message_p, Object relatedObjects_p, String source_p) {
+  public void debug(String message, Object relatedObjects, String source) {
     if (hasDebug()) {
-      log(message_p, ReportManagerConstants.LOG_LEVEL_DEBUG, relatedObjects_p, source_p);
+      log(message, ReportManagerConstants.LOG_LEVEL_DEBUG, relatedObjects, source);
     }
   }
 
   /**
    * {@inheritDoc}
    */
-  public void debug(String message_p, String source_p) {
+  public void debug(String message, String source) {
     if (hasDebug()) {
-      log(message_p, ReportManagerConstants.LOG_LEVEL_DEBUG, source_p);
+      log(message, ReportManagerConstants.LOG_LEVEL_DEBUG, source);
     }
   }
 
   /**
    * {@inheritDoc}
    */
-  public void info(String message_p, Object relatedObjects_p, String source_p) {
+  public void info(String message, Object relatedObjects, String source) {
     if (hasInfo()) {
-      log(message_p, ReportManagerConstants.LOG_LEVEL_INFO, relatedObjects_p, source_p);
+      log(message, ReportManagerConstants.LOG_LEVEL_INFO, relatedObjects, source);
     }
   }
 
   /**
    * {@inheritDoc}
    */
-  public void info(String message_p, String source_p) {
+  public void info(String message, String source) {
     if (hasInfo()) {
-      log(message_p, ReportManagerConstants.LOG_LEVEL_INFO, source_p);
+      log(message, ReportManagerConstants.LOG_LEVEL_INFO, source);
     }
   }
 
   /**
    * {@inheritDoc}
    */
-  public void warn(String message_p, Object relatedObjects_p, String source_p) {
+  public void warn(String message, Object relatedObjects, String source) {
     if (hasWarn()) {
-      log(message_p, ReportManagerConstants.LOG_LEVEL_WARN, relatedObjects_p, source_p);
+      log(message, ReportManagerConstants.LOG_LEVEL_WARN, relatedObjects, source);
     }
   }
 
   /**
    * {@inheritDoc}
    */
-  public void warn(String message_p, String source_p) {
+  public void warn(String message, String source) {
     if (hasWarn()) {
-      log(message_p, ReportManagerConstants.LOG_LEVEL_WARN, source_p);
+      log(message, ReportManagerConstants.LOG_LEVEL_WARN, source);
     }
   }
 
   /**
    * {@inheritDoc}
    */
-  public void error(String message_p, Object relatedObjects_p, String source_p) {
+  public void error(String message, Object relatedObjects, String source) {
     if (hasError()) {
-      log(message_p, ReportManagerConstants.LOG_LEVEL_ERROR, relatedObjects_p, source_p);
+      log(message, ReportManagerConstants.LOG_LEVEL_ERROR, relatedObjects, source);
     }
   }
 
   /**
    * {@inheritDoc}
    */
-  public void error(String message_p, String source_p) {
+  public void error(String message, String source) {
     if (hasError()) {
-      log(message_p, ReportManagerConstants.LOG_LEVEL_ERROR, source_p);
+      log(message, ReportManagerConstants.LOG_LEVEL_ERROR, source);
     }
   }
 
   /**
    * {@inheritDoc}
    */
-  public void fatal(String message_p, Object relatedObjects_p, String source_p) {
+  public void fatal(String message, Object relatedObjects, String source) {
     if (hasFatal()) {
-      log(message_p, ReportManagerConstants.LOG_LEVEL_FATAL, relatedObjects_p, source_p);
+      log(message, ReportManagerConstants.LOG_LEVEL_FATAL, relatedObjects, source);
     }
   }
 
   /**
    * {@inheritDoc}
    */
-  public void fatal(String message_p, String source_p) {
+  public void fatal(String message, String source) {
     if (hasFatal()) {
-      log(message_p, ReportManagerConstants.LOG_LEVEL_FATAL, source_p);
+      log(message, ReportManagerConstants.LOG_LEVEL_FATAL, source);
     }
   }
 
   /**
    * {@inheritDoc}
    */
-  public String getText(Object object_p) {
-    if (object_p != null) {
+  public String getText(Object object) {
+    if (object != null) {
 
-      if (object_p instanceof EClass) {
-        return ((EClass) object_p).getName();
+      if (object instanceof EClass) {
+        return ((EClass) object).getName();
 
-      } else if (object_p instanceof EObject) {
-        return EObjectLabelProviderHelper.getText((EObject) object_p);
+      } else if (object instanceof EObject) {
+        return EObjectLabelProviderHelper.getText((EObject) object);
 
-      } else if (object_p instanceof DiffModelViewer) {
-        return getViewerText((DiffModelViewer) object_p);
+      } else if (object instanceof DiffModelViewer) {
+        return getViewerText((DiffModelViewer) object);
 
       }
 
-      return object_p.toString();
+      return object.toString();
     }
     return "null";
   }
 
   /**
-   * @param object_p
+   * @param view
    * @return
    */
   protected String getViewerText(DiffModelViewer view) {
-    IDifference diff_p = view.getRelatedDiff();
-    DiffScope diffScope_p = view.getScopeDiff();
+    IDifference diff = view.getRelatedDiff();
+    DiffScope diffScope = view.getScopeDiff();
     String _textDiff = ""; //$NON-NLS-1$
     EObject me = null;
     EObject diffelt = null;
 
     // Difference on Reference of element
-    if (diff_p instanceof IReferenceValuePresence) {
-      IReferenceValuePresence rvp = (IReferenceValuePresence) diff_p;
+    if (diff instanceof IReferenceValuePresence) {
+      IReferenceValuePresence rvp = (IReferenceValuePresence) diff;
 
-      if (diffScope_p == DiffScope.Source) {
+      if (diffScope == DiffScope.Source) {
         diffelt = rvp.getValue().get(Role.REFERENCE);
 
         String ordering = rvp.isOrder() ? "of order " : ""; //$NON-NLS-1$ //$NON-NLS-2$
@@ -351,8 +352,8 @@ public class DefaultLogHandler implements ILogHandler {
     }
 
     // Difference on Presence of new element
-    if (diff_p instanceof IElementPresence) {
-      IElementPresence ep = (IElementPresence) diff_p;
+    if (diff instanceof IElementPresence) {
+      IElementPresence ep = (IElementPresence) diff;
 
       diffelt = ep.getElement();
 
@@ -363,8 +364,8 @@ public class DefaultLogHandler implements ILogHandler {
     }
 
     // Difference on Attribute of an element
-    if (diff_p instanceof IAttributeValuePresence) {
-      IAttributeValuePresence avp = (IAttributeValuePresence) diff_p;
+    if (diff instanceof IAttributeValuePresence) {
+      IAttributeValuePresence avp = (IAttributeValuePresence) diff;
 
       diffelt = avp.getElementMatch().get(Role.REFERENCE);
       String ordering = avp.isOrder() ? "of order " : ""; //$NON-NLS-1$ //$NON-NLS-2$
@@ -397,89 +398,89 @@ public class DefaultLogHandler implements ILogHandler {
   }
 
   /**
-   * @param meMatch_p
+   * @param object
    * @return
    */
-  protected String getReadableText(EObject object_p) {
-    return getText(object_p);
+  protected String getReadableText(EObject object) {
+    return getText(object);
   }
 
   /**
    * {@inheritDoc}
    */
   public boolean hasDebug() {
-    if (_logger == null) {
+    if (logger == null) {
       return false;
     }
-    Level level = _logger.getLevel();
+    Level level = logger.getLevel();
     if (level == null) {
       return false;
     }
-    return Level.DEBUG.isGreaterOrEqual(_logger.getLevel());
+    return Level.DEBUG.isGreaterOrEqual(logger.getLevel());
   }
 
   /**
    * {@inheritDoc}
    */
   public boolean hasInfo() {
-    if (_logger == null) {
+    if (logger == null) {
       return false;
     }
-    Level level = _logger.getLevel();
+    Level level = logger.getLevel();
     if (level == null) {
       return false;
     }
-    return Level.INFO.isGreaterOrEqual(_logger.getLevel());
+    return Level.INFO.isGreaterOrEqual(logger.getLevel());
   }
 
   /**
    * {@inheritDoc}
    */
   public boolean hasWarn() {
-    if (_logger == null) {
+    if (logger == null) {
       return false;
     }
-    Level level = _logger.getLevel();
+    Level level = logger.getLevel();
     if (level == null) {
       return false;
     }
-    return Level.WARN.isGreaterOrEqual(_logger.getLevel());
+    return Level.WARN.isGreaterOrEqual(logger.getLevel());
   }
 
   /**
    * {@inheritDoc}
    */
   public boolean hasError() {
-    if (_logger == null) {
+    if (logger == null) {
       return false;
     }
-    Level level = _logger.getLevel();
+    Level level = logger.getLevel();
     if (level == null) {
       return true;
     }
-    return Level.ERROR.isGreaterOrEqual(_logger.getLevel());
+    return Level.ERROR.isGreaterOrEqual(logger.getLevel());
   }
 
   /**
    * {@inheritDoc}
    */
   public boolean hasFatal() {
-    if (_logger == null) {
+    if (logger == null) {
       return false;
     }
-    Level level = _logger.getLevel();
+    Level level = logger.getLevel();
     if (level == null) {
       return true;
     }
-    return Level.FATAL.isGreaterOrEqual(_logger.getLevel());
+    return Level.FATAL.isGreaterOrEqual(logger.getLevel());
   }
 
   /**
    * {@inheritDoc}
    */
-  public void setLevel(Level level_p) {
-    if (_logger != null) {
-      _logger.setLevel(level_p);
+  public void setLevel(Level level) {
+    if (logger != null) {
+      logger.setLevel(level);
     }
   }
 
@@ -487,8 +488,8 @@ public class DefaultLogHandler implements ILogHandler {
    * {@inheritDoc}
    */
   @Override
-  public String getIdentifier(EObject me_p) {
-    return me_p.eClass().getName();
+  public String getIdentifier(EObject me) {
+    return me.eClass().getName();
   }
 
 }

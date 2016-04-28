@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.services;
 
 import java.util.ArrayList;
@@ -133,14 +134,14 @@ public class FunctionalExt {
    * 
    * @return as specified above.
    */
-  public static final boolean isEmpty(ExchangeLink functionalLink_p) {
-    if ((functionalLink_p.getExchanges() != null) && !(functionalLink_p.getExchanges().isEmpty())) {
+  public static final boolean isEmpty(ExchangeLink functionalLink) {
+    if ((functionalLink.getExchanges() != null) && !(functionalLink.getExchanges().isEmpty())) {
       return false;
     }
-    if ((functionalLink_p.getSources() != null) && !functionalLink_p.getSources().isEmpty()) {
+    if ((functionalLink.getSources() != null) && !functionalLink.getSources().isEmpty()) {
       return false;
     }
-    if ((functionalLink_p.getDestinations() != null) && !functionalLink_p.getDestinations().isEmpty()) {
+    if ((functionalLink.getDestinations() != null) && !functionalLink.getDestinations().isEmpty()) {
       return false;
     }
     return true;
@@ -156,8 +157,8 @@ public class FunctionalExt {
    * 
    * @return as specified above.
    */
-  public static final boolean isEmpty(ExchangeSpecification exchange_p) {
-    return (exchange_p.getSource() == null) || (exchange_p.getTarget() == null);
+  public static final boolean isEmpty(ExchangeSpecification exchange) {
+    return (exchange.getSource() == null) || (exchange.getTarget() == null);
   }
 
   /**
@@ -174,16 +175,16 @@ public class FunctionalExt {
    * 
    * @return as specified above.
    */
-  public static final boolean isLevelCoherent(ExchangeLink functionalLink_p) {
-    if (isEmpty(functionalLink_p)) {
+  public static final boolean isLevelCoherent(ExchangeLink functionalLink) {
+    if (isEmpty(functionalLink)) {
       return true;
     }
     Set<EObject> temp = new HashSet<EObject>();
-    temp.add(functionalLink_p);
-    temp.addAll(functionalLink_p.getExchanges());
-    temp.addAll(functionalLink_p.getDestinations());
-    temp.addAll(functionalLink_p.getSources());
-    EObject previous = functionalLink_p;
+    temp.add(functionalLink);
+    temp.addAll(functionalLink.getExchanges());
+    temp.addAll(functionalLink.getDestinations());
+    temp.addAll(functionalLink.getSources());
+    EObject previous = functionalLink;
     for (EObject eObj : temp) {
       EObject currCont = eObj.eContainer();
       if (currCont != null) {
@@ -210,34 +211,35 @@ public class FunctionalExt {
   }
 
   /**
-   * @param port_p
+   * @param port
    * @return
    */
-  public static Collection<FunctionalExchange> getFunctionalExchanges(ComponentPort port_p) {
+  public static Collection<FunctionalExchange> getFunctionalExchanges(ComponentPort port) {
     Collection<FunctionalExchange> exchanges = new HashSet<FunctionalExchange>();
-    for (ComponentExchange componentExchange : port_p.getComponentExchanges()) {
+    for (ComponentExchange componentExchange : port.getComponentExchanges()) {
       exchanges.addAll(componentExchange.getAllocatedFunctionalExchanges());
     }
     return exchanges;
   }
 
   /**
-   * @param port_p
+   * @param exchange
+   * @param source
    * @return
    */
-  public static InformationsExchanger getOtherBound(ExchangeSpecification exchange_p, InformationsExchanger source) {
-    if (exchange_p.getSource() == source) {
-      return exchange_p.getTarget();
+  public static InformationsExchanger getOtherBound(ExchangeSpecification exchange, InformationsExchanger source) {
+    if (exchange.getSource() == source) {
+      return exchange.getTarget();
     }
-    return exchange_p.getSource();
+    return exchange.getSource();
   }
 
-  public static Collection<ComponentExchangeEnd> getRelatedComponentExchangeEnds(Part element_p) {
+  public static Collection<ComponentExchangeEnd> getRelatedComponentExchangeEnds(Part element) {
     Collection<ComponentExchangeEnd> result = new ArrayList<ComponentExchangeEnd>();
     List<EReference> refs = new ArrayList<EReference>();
     refs.add(FaPackage.Literals.COMPONENT_EXCHANGE_END__PART);
 
-    for (Object objectRef : EObjectExt.getReferencers(element_p, refs)) {
+    for (Object objectRef : EObjectExt.getReferencers(element, refs)) {
       if (!result.contains(objectRef)) {
         result.add((ComponentExchangeEnd) objectRef);
       }
@@ -245,12 +247,12 @@ public class FunctionalExt {
     return result;
   }
 
-  public static Collection<ComponentExchangeEnd> getRelatedComponentExchangeEnds(Port element_p) {
+  public static Collection<ComponentExchangeEnd> getRelatedComponentExchangeEnds(Port element) {
     Collection<ComponentExchangeEnd> result = new ArrayList<ComponentExchangeEnd>();
     List<EReference> refs = new ArrayList<EReference>();
     refs.add(FaPackage.Literals.COMPONENT_EXCHANGE_END__PORT);
 
-    for (Object objectRef : EObjectExt.getReferencers(element_p, refs)) {
+    for (Object objectRef : EObjectExt.getReferencers(element, refs)) {
       if (!result.contains(objectRef)) {
         result.add((ComponentExchangeEnd) objectRef);
       }

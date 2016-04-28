@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.activities;
 
 import java.util.Collection;
@@ -44,18 +45,18 @@ public abstract class AbstractActivity implements IActivity {
   }
 
   /**
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
-  protected IStatus preRun(IContext context_p, ActivityParameters activityParams_p) {
+  protected IStatus preRun(IContext context, ActivityParameters activityParams) {
 
     IStatus status = Status.OK_STATUS;
-    for (Object handler : ExtensionHelper.collectActivityExtendersFromExtensions(context_p, ISchemaConstants.EXTENSION_ID, getActivityIdentifier())) {
+    for (Object handler : ExtensionHelper.collectActivityExtendersFromExtensions(context, ISchemaConstants.EXTENSION_ID, getActivityIdentifier())) {
       if (handler instanceof IActivityExtender) {
         IActivityExtender activityExtender = (IActivityExtender) handler;
-        activityExtender.init(context_p);
-        status = activityExtender.preActivity(context_p, getActivityIdentifier(), activityParams_p);
+        activityExtender.init(context);
+        status = activityExtender.preActivity(context, getActivityIdentifier(), activityParams);
         if (!checkStatus(status)) {
           return status;
         }
@@ -65,13 +66,13 @@ public abstract class AbstractActivity implements IActivity {
     return status;
   }
 
-  protected IStatus postRun(IContext context_p, ActivityParameters activityParams_p) {
+  protected IStatus postRun(IContext context, ActivityParameters activityParams) {
 
     IStatus status = Status.OK_STATUS;
-    for (Object handler : ExtensionHelper.collectActivityExtendersFromExtensions(context_p, ISchemaConstants.EXTENSION_ID, getActivityIdentifier())) {
+    for (Object handler : ExtensionHelper.collectActivityExtendersFromExtensions(context, ISchemaConstants.EXTENSION_ID, getActivityIdentifier())) {
       if (handler instanceof IActivityExtender) {
         IActivityExtender activityExtender = (IActivityExtender) handler;
-        status = activityExtender.postActivity(context_p, getActivityIdentifier(), activityParams_p);
+        status = activityExtender.postActivity(context, getActivityIdentifier(), activityParams);
         if (!checkStatus(status)) {
           return status;
         }
@@ -84,28 +85,28 @@ public abstract class AbstractActivity implements IActivity {
   /**
    * {@inheritDoc}
    */
-  public IStatus run(ActivityParameters activityParams_p) {
+  public IStatus run(ActivityParameters activityParams) {
 
-    IContext context = (IContext) activityParams_p.getParameter(ITransposerWorkflow.TRANSPOSER_CONTEXT).getValue();
+    IContext context = (IContext) activityParams.getParameter(ITransposerWorkflow.TRANSPOSER_CONTEXT).getValue();
 
     IStatus status = Status.OK_STATUS;
 
-    status = preRun(context, activityParams_p);
+    status = preRun(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = _run(activityParams_p);
+    status = _run(activityParams);
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = postRun(context, activityParams_p);
+    status = postRun(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = verificationRun(context, activityParams_p);
+    status = verificationRun(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
@@ -114,18 +115,18 @@ public abstract class AbstractActivity implements IActivity {
   }
 
   /**
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
-  protected IStatus verificationRun(IContext context_p, ActivityParameters activityParams_p) {
+  protected IStatus verificationRun(IContext context, ActivityParameters activityParams) {
     return Status.OK_STATUS;
   }
 
-  protected abstract IStatus _run(ActivityParameters activityParams_p);
+  protected abstract IStatus _run(ActivityParameters activityParams);
 
-  protected IContext getContext(ActivityParameters activityParams_p) {
-    IContext context = (IContext) activityParams_p.getParameter(ITransposerWorkflow.TRANSPOSER_CONTEXT).getValue();
+  protected IContext getContext(ActivityParameters activityParams) {
+    IContext context = (IContext) activityParams.getParameter(ITransposerWorkflow.TRANSPOSER_CONTEXT).getValue();
     return context;
   }
 
@@ -139,18 +140,18 @@ public abstract class AbstractActivity implements IActivity {
   /**
    * {@inheritDoc}
    */
-  public Map<String, ParameterError<?>> validateParameters(ActivityParameters valuedParameters_p) {
+  public Map<String, ParameterError<?>> validateParameters(ActivityParameters valuedParameters) {
     return null;
   }
 
   /**
    * If an handler is defined in parameters for the given handlerId, use it
    * @param optionsHandler_p
-   * @param activityParams_p
+   * @param activityParams
    * @return
    */
-  protected IHandler loadHandlerFromParameters(String handlerId_p, ActivityParameters activityParams_p) {
-    GenericParameter<?> parameter = activityParams_p.getParameter(handlerId_p);
+  protected IHandler loadHandlerFromParameters(String handlerId, ActivityParameters activityParams) {
+    GenericParameter<?> parameter = activityParams.getParameter(handlerId);
     if (parameter != null) {
       if (IHandler.class.isAssignableFrom(parameter.getParameterType())) {
         return (IHandler) parameter.getValue();
@@ -162,11 +163,11 @@ public abstract class AbstractActivity implements IActivity {
   /**
    * If an handler is defined in parameters for the given handlerId, use it
    * @param optionsHandler_p
-   * @param activityParams_p
+   * @param activityParams
    * @return
    */
-  protected String loadStringFromParameters(String stringId_p, ActivityParameters activityParams_p) {
-    GenericParameter<?> parameter = activityParams_p.getParameter(stringId_p);
+  protected String loadStringFromParameters(String stringId, ActivityParameters activityParams) {
+    GenericParameter<?> parameter = activityParams.getParameter(stringId);
     if (parameter != null) {
       if (String.class.isAssignableFrom(parameter.getParameterType())) {
         return (String) parameter.getValue();
@@ -177,23 +178,23 @@ public abstract class AbstractActivity implements IActivity {
 
   /**
    * Returns if the given status prevent next activities of transition
-   * @param status_p
+   * @param status
    * @return
    */
-  protected boolean checkStatus(IStatus status_p) {
-    return !(status_p.matches(IStatus.CANCEL) || status_p.matches(IStatus.ERROR));
+  protected boolean checkStatus(IStatus status) {
+    return !(status.matches(IStatus.CANCEL) || status.matches(IStatus.ERROR));
   }
 
   /**
    * Ensure that all given string_p are registered in the context
-   * @param context_p
-   * @param strings_p
+   * @param context
+   * @param strings
    * @return
    */
-  protected IStatus checkParameters(IContext context_p, String[] strings_p) {
-    if (strings_p != null) {
-      for (String string : strings_p) {
-        if (!context_p.exists(string) || (context_p.get(string) == null)) {
+  protected IStatus checkParameters(IContext context, String[] strings) {
+    if (strings != null) {
+      for (String string : strings) {
+        if (!context.exists(string) || (context.get(string) == null)) {
           return new Status(IStatus.ERROR, Messages.Activity_Transition, NLS.bind("Parameter ''{0}'' must be defined", string));
         }
       }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.capellaHelpers;
 
 import java.util.Collection;
@@ -66,9 +67,9 @@ public class HashMapSet<K, V> {
     return new InternalHashSet();
   }
 
-  public HashMapSet(Comparator<V> comparator_p) {
+  public HashMapSet(Comparator<V> comparator) {
     super();
-    this.comparator = comparator_p;
+    this.comparator = comparator;
     isOrdonned = true;
   }
 
@@ -97,64 +98,64 @@ public class HashMapSet<K, V> {
   }
 
   @SuppressWarnings("unchecked")
-  public Collection<V> get(K obj_p) {
-    if (map.get(obj_p) == null) {
+  public Collection<V> get(K obj) {
+    if (map.get(obj) == null) {
       return createInternalSet();
-    } else if (!(map.get(obj_p) instanceof InternalSet)) {
+    } else if (!(map.get(obj) instanceof InternalSet)) {
       Collection<V> a = createInternalSet();
-      a.add((V) map.get(obj_p));
-      map.put(obj_p, a);
+      a.add((V) map.get(obj));
+      map.put(obj, a);
       return a;
     }
 
-    return (Collection<V>) map.get(obj_p);
+    return (Collection<V>) map.get(obj);
   }
 
-  public boolean contains(K obj_p) {
-    return get(obj_p).size() != 0;
+  public boolean contains(K obj) {
+    return get(obj).size() != 0;
   }
 
-  public void remove(K obj_p) {
-    if (map.get(obj_p) != null) {
-      map.remove(obj_p);
+  public void remove(K obj) {
+    if (map.get(obj) != null) {
+      map.remove(obj);
     }
   }
 
-  public void remove(K obj_p, V arg1_p) {
-    if (map.get(obj_p) != null) {
-      if (map.get(obj_p).equals(arg1_p)) {
-        map.remove(obj_p);
-      } else if (map.get(obj_p) instanceof Collection) {
-        Collection<V> a = ((Collection<V>) map.get(obj_p));
-        a.remove(arg1_p);
+  public void remove(K obj, V arg1) {
+    if (map.get(obj) != null) {
+      if (map.get(obj).equals(arg1)) {
+        map.remove(obj);
+      } else if (map.get(obj) instanceof Collection) {
+        Collection<V> a = ((Collection<V>) map.get(obj));
+        a.remove(arg1);
 
         if (a.size() == 0) {
-          map.remove(obj_p);
+          map.remove(obj);
         } else if (a.size() == 1) {
-          map.remove(obj_p);
-          put(obj_p, arg1_p);
+          map.remove(obj);
+          put(obj, arg1);
         }
       }
     }
   }
 
   @SuppressWarnings("unchecked")
-  public void put(K arg0_p, V arg1_p) {
-    if (map.get(arg0_p) == null) {
-      map.put(arg0_p, arg1_p);
+  public void put(K arg0, V arg1) {
+    if (map.get(arg0) == null) {
+      map.put(arg0, arg1);
     } else {
-      if (!(map.get(arg0_p) instanceof InternalSet)) {
+      if (!(map.get(arg0) instanceof InternalSet)) {
         Collection<V> a = createInternalSet();
-        a.add((V) map.get(arg0_p));
-        map.put(arg0_p, a);
+        a.add((V) map.get(arg0));
+        map.put(arg0, a);
       }
-      ((Collection) map.get(arg0_p)).add(arg1_p);
+      ((Collection) map.get(arg0)).add(arg1);
     }
   }
 
-  public void putAll(K arg0_p, List<V> arg1_p) {
-    for (V v : arg1_p) {
-      put(arg0_p, v);
+  public void putAll(K arg0, List<V> arg1) {
+    for (V v : arg1) {
+      put(arg0, v);
     }
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.transposer;
 
 import java.util.Collections;
@@ -44,7 +45,7 @@ public class ExtendedCadenceLauncher {
   }
 
   public IStatus cadence(final String workflow_id, final String workflowElement_id, final WorkflowActivityParameter workflowActivityParameters,
-      final IProgressMonitor monitor_p) throws Exception {
+      final IProgressMonitor monitor) throws Exception {
 
     MultiStatus result = new MultiStatus("org.polarsys.kitalpha.cadence.core", 0, getStatusMessage(workflow_id, workflowElement_id), null) {
 
@@ -85,21 +86,21 @@ public class ExtendedCadenceLauncher {
       candidateSize = 0;
     }
 
-    if (monitor_p != null) {
+    if (monitor != null) {
       IConfigurationElement workflow = CadenceExtensions.getWorkflow(workflow_id); // get worlkflow element
       IConfigurationElement workflowElement = CadenceExtensions.getWorkflowElement(workflow_id, workflowElement_id); // get worlkflow element
 
       String workflowName = workflow == null ? workflow_id : workflow.getAttribute(CadenceExtensions.ATT_NAME);
       String workflowElementName = workflowElement == null ? workflowElement_id : workflowElement.getAttribute(CadenceExtensions.ATT_NAME);
 
-      monitor_p.beginTask(getTaskName(workflowName, workflowElementName), candidateSize);
+      monitor.beginTask(getTaskName(workflowName, workflowElementName), candidateSize);
     }
 
     if ((candidateSize <= 1) || ((candidateSize > 1) && isMultiple)) {
 
       for (String activityID : activitiesID) {
         ActivityParameters activityParameters = workflowActivityParameters.getActivityParameters(activityID);
-        IStatus status = cadence(workflow_id, workflowElement_id, activityID, activityParameters, monitor_p);
+        IStatus status = cadence(workflow_id, workflowElement_id, activityID, activityParameters, monitor);
         if (status == null) {
           //  Activator.getDefault().getLog().log(new Status(IStatus.WARNING, Activator.PLUGIN_ID, "Activity : " + activityID + " has returned a null status."));
         } else if (status.matches(IStatus.CANCEL) || status.matches(IStatus.ERROR)) {
@@ -109,31 +110,31 @@ public class ExtendedCadenceLauncher {
         } else {
           result.add(status);
         }
-        if (monitor_p != null) {
-          monitor_p.worked(1);
+        if (monitor != null) {
+          monitor.worked(1);
         }
       }
     } else {
       throw new Exception("the workflowElement " + workflowElement_id + " is not multiple."); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
-    if (monitor_p != null) {
-      monitor_p.done();
+    if (monitor != null) {
+      monitor.done();
     }
 
     return result;
   }
 
   /**
-   * @param workflowName_p
-   * @param workflowElementName_p
+   * @param workflowName
+   * @param workflowElementName
    * @return
    */
-  protected String getTaskName(String workflowName_p, String workflowElementName_p) {
-    return "Cadence " + workflowName_p + " : " + workflowElementName_p;
+  protected String getTaskName(String workflowName, String workflowElementName) {
+    return "Cadence " + workflowName + " : " + workflowElementName;
   }
 
-  protected String getStatusMessage(String workflowName_p, String workflowElementName_p) {
+  protected String getStatusMessage(String workflowName, String workflowElementName) {
     return "Cadence activities";
   }
 
@@ -143,7 +144,7 @@ public class ExtendedCadenceLauncher {
   }
 
   public IStatus cadence(final String workflow_id, final String workflowElement_id, final String activityElement_id,
-      final ActivityParameters activityParameters, IProgressMonitor monitor_p) {
+      final ActivityParameters activityParameters, IProgressMonitor monitor) {
 
     IConfigurationElement workflowElement = CadenceExtensions.getWorkflowElement(workflow_id, workflowElement_id); // get worlkflow element
     IConfigurationElement activityElement = CadenceExtensions.getActivityConfigElement(activityElement_id);// get activity candidate
@@ -152,9 +153,9 @@ public class ExtendedCadenceLauncher {
       throw new RuntimeException(NLS.bind("Activity ''{0}'' is not registered.", activityElement_id));
     }
 
-    if (monitor_p != null) {
+    if (monitor != null) {
       String activityName = activityElement.getAttribute(CadenceExtensions.ATT_NAME);
-      monitor_p.subTask(activityName);
+      monitor.subTask(activityName);
     }
 
     IStatus status = cadence(workflowElement, activityElement, activityParameters); // if is good candidate run it

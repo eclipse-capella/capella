@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.interaction.services;
 
 import java.util.ArrayList;
@@ -101,13 +102,13 @@ public class SequenceMessageExt {
 
   /**
    * 
-   * @param list_p
+   * @param list
    * @return
    */
-  public static List<SequenceMessage> reverse(List<SequenceMessage> list_p) {
+  public static List<SequenceMessage> reverse(List<SequenceMessage> list) {
     List<SequenceMessage> reversedList = new ArrayList<SequenceMessage>();
 
-    ListIterator<SequenceMessage> iterator = list_p.listIterator(list_p.size());
+    ListIterator<SequenceMessage> iterator = list.listIterator(list.size());
     while (iterator.hasPrevious()) {
       reversedList.add(iterator.previous());
     }
@@ -133,24 +134,24 @@ public class SequenceMessageExt {
   /**
    * Returns the 'calling' or 'reply' branch related to the given sequence message.
    * 
-   * @param msg_p
+   * @param sequenceMessage1
    * @return
    */
-  public static SequenceMessage getOppositeSequenceMessage(SequenceMessage msg_p) {
+  public static SequenceMessage getOppositeSequenceMessage(SequenceMessage sequenceMessage1) {
 
     boolean flag = false;
     List<SequenceMessage> setPortionMessage = new ArrayList<SequenceMessage>();
     Stack<SequenceMessage> stack = new Stack<SequenceMessage>();
 
-    if (msg_p != null) {
+    if (sequenceMessage1 != null) {
       /** On messages of type 'destroy' there is no processing */
-      if (!msg_p.getKind().equals(MessageKind.CREATE) &&
-          !msg_p.getKind().equals(MessageKind.DELETE) &&
-          !msg_p.getKind().equals(MessageKind.ASYNCHRONOUS_CALL))
+      if (!sequenceMessage1.getKind().equals(MessageKind.CREATE) &&
+          !sequenceMessage1.getKind().equals(MessageKind.DELETE) &&
+          !sequenceMessage1.getKind().equals(MessageKind.ASYNCHRONOUS_CALL))
       {
-        Scenario sc = (Scenario) msg_p.eContainer();
+        Scenario sc = (Scenario) sequenceMessage1.eContainer();
         if (sc != null) {
-          if (msg_p.getKind().equals(MessageKind.REPLY)) {
+          if (sequenceMessage1.getKind().equals(MessageKind.REPLY)) {
             /** If this is a REPLY message => the CALLING branch is present in the upper portion of the messages */
             flag = false;
             for (Iterator<MessageEnd> it = ScenarioExt.getOwnedMessagesEnds(sc).iterator(); it.hasNext() && !flag;) {
@@ -158,7 +159,7 @@ public class SequenceMessageExt {
               if (msgEnd != null) {
                 SequenceMessage msg = msgEnd.getMessage();
                 if (msg != null) {
-                  if (!msg.equals(msg_p)) {
+                  if (!msg.equals(sequenceMessage1)) {
                     setPortionMessage.add(msg);
                   }
                   else flag = true;
@@ -179,7 +180,7 @@ public class SequenceMessageExt {
                   if (flag) {
                     setPortionMessage.add(msg);
                   }
-                  else if (msg.equals(msg_p)) {
+                  else if (msg.equals(sequenceMessage1)) {
                     flag = true;
                   }
                 }
@@ -192,7 +193,7 @@ public class SequenceMessageExt {
                 !msg.getKind().equals(MessageKind.DELETE) &&
                 !msg.getKind().equals(MessageKind.ASYNCHRONOUS_CALL))
             {
-              if (msg_p.getKind().equals(MessageKind.REPLY)) {
+              if (sequenceMessage1.getKind().equals(MessageKind.REPLY)) {
                 /**
                  * Treatment: research branch 'toGo'
                  * If current message type return: Pushes current message

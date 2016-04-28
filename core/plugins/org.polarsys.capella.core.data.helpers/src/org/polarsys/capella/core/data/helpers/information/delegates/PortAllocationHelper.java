@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.information.delegates;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -31,33 +32,33 @@ public class PortAllocationHelper {
 		return instance;
 	}
 
-	public Object doSwitch(PortAllocation element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(PortAllocation element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(InformationPackage.Literals.PORT_ALLOCATION__ALLOCATED_PORT)) {
-			ret = getAllocatedPort(element_p);
+		if (feature.equals(InformationPackage.Literals.PORT_ALLOCATION__ALLOCATED_PORT)) {
+			ret = getAllocatedPort(element);
 		}
-		else if (feature_p.equals(InformationPackage.Literals.PORT_ALLOCATION__ALLOCATING_PORT)) {
-			ret = getAllocatingPort(element_p);
+		else if (feature.equals(InformationPackage.Literals.PORT_ALLOCATION__ALLOCATING_PORT)) {
+			ret = getAllocatingPort(element);
 		} 
 
 		// no helper found... searching in super classes...
 		if(null == ret) {
-			ret = AllocationHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = AllocationHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;
 	}
 
-	protected Port getAllocatingPort(PortAllocation element_p) {
-		TraceableElement ret = element_p.getSourceElement();
+	protected Port getAllocatingPort(PortAllocation element) {
+		TraceableElement ret = element.getSourceElement();
 		if(null != ret && ret instanceof Port)
 			return (Port) ret;
 		return null;
 	}
 
-	protected Port getAllocatedPort(PortAllocation element_p) {
-		TraceableElement ret = element_p.getTargetElement();
+	protected Port getAllocatedPort(PortAllocation element) {
+		TraceableElement ret = element.getTargetElement();
 		if(null != ret && ret instanceof Port)
 			return (Port) ret;
 		return null;

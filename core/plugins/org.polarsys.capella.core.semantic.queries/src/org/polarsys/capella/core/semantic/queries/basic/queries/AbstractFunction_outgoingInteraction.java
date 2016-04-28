@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,23 +40,23 @@ public class AbstractFunction_outgoingInteraction implements IQuery {
    * 
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (object_p instanceof OperationalActivity) {
-      getOutGoingExchagnes(object_p, result);
-    }else if (object_p instanceof SystemFunction || object_p instanceof LogicalFunction || object_p instanceof PhysicalFunction ) {
-      getOutGoingExchagnes(object_p, result);
+    if (object instanceof OperationalActivity) {
+      getOutGoingExchagnes(object, result);
+    }else if (object instanceof SystemFunction || object instanceof LogicalFunction || object instanceof PhysicalFunction ) {
+      getOutGoingExchagnes(object, result);
     }
     
     return result;
   }
 
   /**
-   * @param object_p
+   * @param object
    * @param result
    */
-  private void getOutGoingExchagnes(Object object_p, List<Object> result) {
-    List<FunctionalExchange> outGoingExchange = FunctionExt.getOutGoingExchange((AbstractFunction) object_p);
+  private void getOutGoingExchagnes(Object object, List<Object> result) {
+    List<FunctionalExchange> outGoingExchange = FunctionExt.getOutGoingExchange((AbstractFunction) object);
     if(!outGoingExchange.isEmpty())
       result.addAll(outGoingExchange);
   }

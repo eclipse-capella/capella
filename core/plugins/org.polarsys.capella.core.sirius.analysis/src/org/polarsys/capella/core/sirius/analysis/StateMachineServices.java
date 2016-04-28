@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -81,8 +81,6 @@ import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideSMTransitions;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
 
-//import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.ContextItem;
-
 /**
  * Services for States machines.
  */
@@ -143,29 +141,32 @@ public class StateMachineServices {
    * @return String
    */
   public String displayCharX(EObject context, EObject colomn) {
-    if ((null != context) && (null != colomn)) {
-      if (context instanceof AbstractCapability) {
-        AbstractCapability cap = (AbstractCapability) context;
-        if (cap.getAvailableInStates().contains(colomn)) {
-          return CHAR_X;
-        }
-      } else if (context instanceof AbstractFunction) {
-        AbstractFunction cap = (AbstractFunction) context;
-        if (cap.getAvailableInStates().contains(colomn)) {
-          return CHAR_X;
-        }
-      } else if (context instanceof FunctionalChain) {
-        FunctionalChain cap = (FunctionalChain) context;
-        if (cap.getAvailableInStates().contains(colomn)) {
-          return CHAR_X;
-        }
-      } else if (context instanceof IState) {
-        IState state = (IState) context;
-        if (state.getReferencedStates().contains(colomn)) {
-          return CHAR_X;
-        }
+    if (null == context || null == colomn) {
+      return ICommonConstants.EMPTY_STRING;
+    }
+    if (context instanceof AbstractCapability) {
+      AbstractCapability cap = (AbstractCapability) context;
+      if (cap.getAvailableInStates().contains(colomn)) {
+        return CHAR_X;
       }
-
+    }
+    if (context instanceof AbstractFunction) {
+      AbstractFunction cap = (AbstractFunction) context;
+      if (cap.getAvailableInStates().contains(colomn)) {
+        return CHAR_X;
+      }
+    }
+    if (context instanceof FunctionalChain) {
+      FunctionalChain cap = (FunctionalChain) context;
+      if (cap.getAvailableInStates().contains(colomn)) {
+        return CHAR_X;
+      }
+    }
+    if (context instanceof IState) {
+      IState state = (IState) context;
+      if (state.getReferencedStates().contains(colomn)) {
+        return CHAR_X;
+      }
     }
     return ICommonConstants.EMPTY_STRING;
   }
@@ -242,9 +243,7 @@ public class StateMachineServices {
    * @return
    */
   public List<EObject> getAllFunctionsActiveInStates(EObject context, State ele) {
-    List<EObject> referencers = new ArrayList<EObject>();
-    referencers = EObjectExt.getReferencers(ele, FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES);
-
+    List<EObject> referencers = EObjectExt.getReferencers(ele, FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES);
     return referencers;
   }
 
@@ -256,9 +255,7 @@ public class StateMachineServices {
    * @return
    */
   public List<EObject> getAllCapabilitiesActiveInStates(EObject context, State ele) {
-    List<EObject> referencers = new ArrayList<EObject>();
-    referencers = EObjectExt.getReferencers(ele, InteractionPackage.Literals.ABSTRACT_CAPABILITY__AVAILABLE_IN_STATES);
-
+    List<EObject> referencers = EObjectExt.getReferencers(ele, InteractionPackage.Literals.ABSTRACT_CAPABILITY__AVAILABLE_IN_STATES);
     return referencers;
   }
 
@@ -270,9 +267,7 @@ public class StateMachineServices {
    * @return
    */
   public List<EObject> getAllFunctionalChainsActiveInStates(EObject context, State ele) {
-    List<EObject> referencers = new ArrayList<EObject>();
-    referencers = EObjectExt.getReferencers(ele, FaPackage.Literals.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES);
-
+    List<EObject> referencers = EObjectExt.getReferencers(ele, FaPackage.Literals.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES);
     return referencers;
   }
 
@@ -746,8 +741,9 @@ public class StateMachineServices {
   public boolean canCreateMode(EObject context, EObject containerView) {
     Region testedRegion = getRegionFromView(containerView);
     if (testedRegion != null) {
-      if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed())
+      if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
         return MoveHelper.getInstance().canMoveModeState(CapellacommonFactory.eINSTANCE.createMode(), testedRegion);
+      }
 
       for (IState st : getStatesOfRegion(testedRegion)) {
         if ((st instanceof State) && !(st instanceof Mode) && !(st instanceof FinalState)) {
@@ -867,7 +863,7 @@ public class StateMachineServices {
     if (view instanceof DDiagram) {
       DDiagram diagram = (DDiagram) view;
       for (DEdge edge : diagram.getEdges()) {
-        if ((edge.getTarget() != null) && (edge.getTarget() instanceof StateTransition)) {
+        if (edge.getTarget() instanceof StateTransition) {
           returnedList.add(edge);
         }
       }
@@ -876,12 +872,12 @@ public class StateMachineServices {
       DNodeContainer currentContainer = (DNodeContainer) view;
 
       for (DEdge edge : currentContainer.getIncomingEdges()) {
-        if ((edge.getTarget() != null) && (edge.getTarget() instanceof StateTransition)) {
+        if (edge.getTarget() instanceof StateTransition) {
           returnedList.add(edge);
         }
       }
       for (DEdge edge : currentContainer.getOutgoingEdges()) {
-        if ((edge.getTarget() != null) && (edge.getTarget() instanceof StateTransition)) {
+        if (edge.getTarget() instanceof StateTransition) {
           returnedList.add(edge);
         }
       }
@@ -950,7 +946,7 @@ public class StateMachineServices {
     if (view instanceof DDiagram) {
       DDiagram diagram = (DDiagram) view;
       for (AbstractDNode aContainer : diagram.getContainers()) {
-        if ((aContainer.getTarget() != null) && (aContainer.getTarget() instanceof IState)) {
+        if (aContainer.getTarget() instanceof IState) {
           returnedList.add(aContainer);
         }
       }
@@ -958,7 +954,7 @@ public class StateMachineServices {
     if (view instanceof DNodeContainer) {
       DNodeContainer currentContainer = (DNodeContainer) view;
       for (AbstractDNode aContainer : currentContainer.getContainers()) {
-        if ((aContainer.getTarget() != null) && (aContainer.getTarget() instanceof IState)) {
+        if (aContainer.getTarget() instanceof IState) {
           returnedList.add(aContainer);
         }
       }
@@ -971,7 +967,7 @@ public class StateMachineServices {
     if (view instanceof DDiagram) {
       DDiagram diagram = (DDiagram) view;
       for (AbstractDNode node : diagram.getNodes()) {
-        if ((node.getTarget() != null) && (node.getTarget() instanceof IState)) {
+        if (node.getTarget() instanceof IState) {
           returnedList.add(node);
         }
       }
@@ -979,7 +975,7 @@ public class StateMachineServices {
     if (view instanceof DNodeContainer) {
       DNodeContainer currentContainer = (DNodeContainer) view;
       for (AbstractDNode node : currentContainer.getNodes()) {
-        if ((node.getTarget() != null) && (node.getTarget() instanceof IState)) {
+        if (node.getTarget() instanceof IState) {
           returnedList.add(node);
         }
       }
@@ -1011,10 +1007,8 @@ public class StateMachineServices {
     List<IState> stateAndModeList = new ArrayList<IState>();
 
     EObject target = current.getTarget();
-    if (current instanceof DDiagram) {
-      if (target instanceof Region) {
-        stateAndModeList.addAll(getInvolvedStatesRecursively(target));
-      }
+    if (current instanceof DDiagram && target instanceof Region) {
+      stateAndModeList.addAll(getInvolvedStatesRecursively(target));
     }
     IState currentState = null;
 
@@ -1039,13 +1033,11 @@ public class StateMachineServices {
     EObject target = current.getTarget();
 
     // click on the diagram (default region)
-    if (current instanceof DDiagram) {
-      if (target instanceof Region) {
-        Region defaultRegion = (Region) target;
-        for (StateTransition trans : defaultRegion.getOwnedTransitions()) {
-          transitionList.add(trans);
+    if (current instanceof DDiagram && target instanceof Region) {
+      Region defaultRegion = (Region) target;
+      for (StateTransition trans : defaultRegion.getOwnedTransitions()) {
+        transitionList.add(trans);
 
-        }
       }
     }
     // click on state or mode
@@ -1232,10 +1224,11 @@ public class StateMachineServices {
   }
 
   public StateMachine getOwningStateMachine(EObject e) {
-    while ((e instanceof IState) || (e instanceof StateTransition) || (e instanceof Region)) {
-      e = e.eContainer();
-      if (e instanceof StateMachine) {
-        StateMachine sm = (StateMachine) e;
+    EObject object = e;
+    while ((object instanceof IState) || (object instanceof StateTransition) || (object instanceof Region)) {
+      object = object.eContainer();
+      if (object instanceof StateMachine) {
+        StateMachine sm = (StateMachine) object;
         return sm;
       }
     }

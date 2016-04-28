@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.delegates;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -31,32 +32,32 @@ public class FunctionalExchangeRealizationHelper {
     return instance;
   }
 
-  public Object doSwitch(FunctionalExchangeRealization element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(FunctionalExchangeRealization element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZING_FUNCTIONAL_EXCHANGE)) {
-      ret = getRealizingFunctionalExchange(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZED_FUNCTIONAL_EXCHANGE)) {
-      ret = getRealizedFunctionalExchange(element_p);
+    if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZING_FUNCTIONAL_EXCHANGE)) {
+      ret = getRealizingFunctionalExchange(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZED_FUNCTIONAL_EXCHANGE)) {
+      ret = getRealizedFunctionalExchange(element);
     }
 
     // no helper found... searching in super classes...
     if (ret == null) {
-      ret = AllocationHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AllocationHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected FunctionalExchange getRealizingFunctionalExchange(FunctionalExchangeRealization element_p) {
-    TraceableElement ret = element_p.getSourceElement();
+  protected FunctionalExchange getRealizingFunctionalExchange(FunctionalExchangeRealization element) {
+    TraceableElement ret = element.getSourceElement();
     if (null != ret && ret instanceof FunctionalExchange)
       return (FunctionalExchange) ret;
     return null;
   }
 
-  protected FunctionalExchange getRealizedFunctionalExchange(FunctionalExchangeRealization element_p) {
-    TraceableElement ret = element_p.getTargetElement();
+  protected FunctionalExchange getRealizedFunctionalExchange(FunctionalExchangeRealization element) {
+    TraceableElement ret = element.getTargetElement();
     if (null != ret && ret instanceof FunctionalExchange)
       return (FunctionalExchange) ret;
     return null;

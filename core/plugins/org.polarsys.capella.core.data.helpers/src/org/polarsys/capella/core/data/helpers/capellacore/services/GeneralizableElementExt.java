@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.capellacore.services;
 
 import java.util.ArrayList;
@@ -26,16 +27,16 @@ public class GeneralizableElementExt {
 
   /**
    * This method removes an inherited classifier.
-   * @param classifier_p The classifier.
-   * @param superClassifier_p The parent classifier.
+   * @param generalizableElement The classifier.
+   * @param superGeneralizableElement The parent classifier.
    */
-  public static void removeSuperGeneralizableElement(GeneralizableElement generalizableElement_p, GeneralizableElement superGeneralizableElement_p) {
-    if ((generalizableElement_p != null) && (superGeneralizableElement_p != null)) {
+  public static void removeSuperGeneralizableElement(GeneralizableElement generalizableElement, GeneralizableElement superGeneralizableElement) {
+    if ((generalizableElement != null) && (superGeneralizableElement != null)) {
       Generalization generalization = null;
-      ListIterator<Generalization> it = generalizableElement_p.getSuperGeneralizations().listIterator();
+      ListIterator<Generalization> it = generalizableElement.getSuperGeneralizations().listIterator();
       while (it.hasNext()) {
         Generalization gen = it.next();
-        if (gen.getSuper().equals(superGeneralizableElement_p)) {
+        if (gen.getSuper().equals(superGeneralizableElement)) {
           generalization = gen;
         }
       }
@@ -63,29 +64,29 @@ public class GeneralizableElementExt {
 
   /**
    * Gets the list of super interfaces of the current interface
-   * @param generalizableElement_p the current classifier
+   * @param generalizableElement the current classifier
    * @return list of classifiers
    */
-  static public List<GeneralizableElement> getAllSuperGeneralizableElements(GeneralizableElement generalizableElement_p) {
+  static public List<GeneralizableElement> getAllSuperGeneralizableElements(GeneralizableElement generalizableElement) {
     List<GeneralizableElement> superGeneralizableElements = new ArrayList<GeneralizableElement>();
-    if (null != generalizableElement_p) {
-      getAllSuperGeneralizableElements2(generalizableElement_p, superGeneralizableElements);
+    if (null != generalizableElement) {
+      getAllSuperGeneralizableElements2(generalizableElement, superGeneralizableElements);
     }
     return superGeneralizableElements;
   }
 
   /**
    * Gets the list of super interfaces of the current interface
-   * @param generalizableElement_p the current classifier
+   * @param generalizableElement1 the current classifier
    * @return list of classifiers
    */
-  static private void getAllSuperGeneralizableElements2(GeneralizableElement generalizableElement_p, List<GeneralizableElement> list_p) {
-    for (GeneralizableElement generalizableElement : generalizableElement_p.getSuper()) {
+  static private void getAllSuperGeneralizableElements2(GeneralizableElement generalizableElement1, List<GeneralizableElement> list) {
+    for (GeneralizableElement generalizableElement : generalizableElement1.getSuper()) {
       if (
-          !list_p.contains(generalizableElement)
+          !list.contains(generalizableElement)
       ) {
-        list_p.add(generalizableElement);
-        getAllSuperGeneralizableElements2(generalizableElement, list_p);
+        list.add(generalizableElement);
+        getAllSuperGeneralizableElements2(generalizableElement, list);
       }
     }
     
@@ -94,26 +95,26 @@ public class GeneralizableElementExt {
   
   /**
    * This method retrieves recursively all the inheriting generalizable elements.
-   * @param generalizableElement_p The generalizable element.
+   * @param generalizableElement The generalizable element.
    * @return the inheriting generalizable elements list.
    */
-  public static List<GeneralizableElement> getAllSubGeneralizableElements(GeneralizableElement generalizableElement_p) {
+  public static List<GeneralizableElement> getAllSubGeneralizableElements(GeneralizableElement generalizableElement) {
     List<GeneralizableElement> subGeneralizableElements = new ArrayList<GeneralizableElement>();
     
-    if (null != generalizableElement_p) {
-      getAllSubGeneralizableElements2(generalizableElement_p, subGeneralizableElements);
+    if (null != generalizableElement) {
+      getAllSubGeneralizableElements2(generalizableElement, subGeneralizableElements);
     }
     
     return subGeneralizableElements;
   }
 
-  private static void getAllSubGeneralizableElements2(GeneralizableElement generalizableElement_p, List<GeneralizableElement> list_p) {
-      for (GeneralizableElement generalizableElement : generalizableElement_p.getSub()) {
+  private static void getAllSubGeneralizableElements2(GeneralizableElement generalizableElement1, List<GeneralizableElement> list) {
+      for (GeneralizableElement generalizableElement : generalizableElement1.getSub()) {
         if (
-            !list_p.contains(generalizableElement) 
+            !list.contains(generalizableElement) 
         ) {
-          list_p.add(generalizableElement);
-          getAllSubGeneralizableElements2(generalizableElement, list_p);
+          list.add(generalizableElement);
+          getAllSubGeneralizableElements2(generalizableElement, list);
         }
       }
       return;
@@ -121,28 +122,28 @@ public class GeneralizableElementExt {
 
   /**
    * This method adds an inherited generalizable element.
-   * @param generalizableElement_p The generalizable element.
-   * @param superGeneralizableElement_p The parent generalizable element.
+   * @param generalizableElement The generalizable element.
+   * @param superGeneralizableElement The parent generalizable element.
    */
-  public static void addSuperGeneralizableElement(GeneralizableElement generalizableElement_p, GeneralizableElement superGeneralizableElement_p) {
-    if ((generalizableElement_p != null) && (superGeneralizableElement_p != null)) {
+  public static void addSuperGeneralizableElement(GeneralizableElement generalizableElement, GeneralizableElement superGeneralizableElement) {
+    if ((generalizableElement != null) && (superGeneralizableElement != null)) {
       Generalization generalization = CapellacoreFactory.eINSTANCE.createGeneralization();
-      generalizableElement_p.getOwnedGeneralizations().add(generalization);
-      generalization.setSub(generalizableElement_p);
-      generalization.setSuper(superGeneralizableElement_p);
+      generalizableElement.getOwnedGeneralizations().add(generalization);
+      generalization.setSub(generalizableElement);
+      generalization.setSuper(superGeneralizableElement);
     }
   }
 
   /**
    * This method returns the root super classifiers of the given classifier
-   * @param classifier_p the classifier
+   * @param classifier the classifier
    * @return the root super types
    */
-  static public List<GeneralizableElement> getRootSupertypes(GeneralizableElement classifier_p) {
+  static public List<GeneralizableElement> getRootSupertypes(GeneralizableElement classifier) {
     List<GeneralizableElement> list = new ArrayList<GeneralizableElement>();
-    if (null != classifier_p) {
+    if (null != classifier) {
       // Gets the super classifiers of the current element
-      for (Generalization generalization : classifier_p.getSuperGeneralizations()) {
+      for (Generalization generalization : classifier.getSuperGeneralizations()) {
         // handles the current super classifier
         GeneralizableElement superCls = generalization.getSuper();
         if (null != superCls) {
@@ -150,7 +151,7 @@ public class GeneralizableElementExt {
           // Gets its own super types
           List<GeneralizableElement> supertypes = superCls.getSuper();
           if (null == supertypes || supertypes.size() == 0) {
-            // If there is no super type for this one, then it is a root super type of <code>classifier_p</code>
+            // If there is no super type for this one, then it is a root super type of <code>classifier</code>
             list.add(superCls);
           } else {
             // Else, processes recursively its super types to find the root super types
@@ -161,7 +162,7 @@ public class GeneralizableElementExt {
     }
     if (list.size() == 0) {
       // The current type is the root type because it generalizes "nobody"
-      list.add(classifier_p);
+      list.add(classifier);
     }
     return list;
   }

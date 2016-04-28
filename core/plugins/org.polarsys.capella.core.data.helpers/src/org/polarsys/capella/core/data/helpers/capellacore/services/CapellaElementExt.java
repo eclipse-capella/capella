@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.capellacore.services;
 
 import java.util.ArrayList;
@@ -23,14 +24,14 @@ public class CapellaElementExt {
    * Apply a subtraction
    * 
    * 
-   * @param dataDefListExisting2_p
-   * @param dataDefListExisting_p
+   * @param dataDefListExisting2
+   * @param dataDefListExisting
    * @return
    */
-  public static List<CapellaElement> setSubtraction(List<? extends CapellaElement> dataDefListExisting2_p, List<? extends CapellaElement> dataDefListExisting_p) {
+  public static List<CapellaElement> setSubtraction(List<? extends CapellaElement> dataDefListExisting2, List<? extends CapellaElement> dataDefListExisting) {
     List<CapellaElement> listResult = new ArrayList<CapellaElement>();
-    for (CapellaElement eltA : dataDefListExisting2_p) {
-      if (!(dataDefListExisting_p.contains(eltA))) {
+    for (CapellaElement eltA : dataDefListExisting2) {
+      if (!(dataDefListExisting.contains(eltA))) {
         listResult.add(eltA);
       }
     }

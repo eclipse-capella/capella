@@ -15,6 +15,7 @@
         <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
       </buildLocations>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_THW2wFn1EeSlpue7JHXw9A" url="${eclipse.download.prefix}/releases/mars"/>
+      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_PNs0gAxOEeaCAfvvTMv4pQ" url="${site_Kitalpha_CTK}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_hldPEFqlEeSQoMAm1P90CA" url="${site_Kitalpha_SDK}"/>
       <components xsi:type="buildstep:Feature" xmi:id="_QvPv4Fn1EeSlpue7JHXw9A" id="org.polarsys.capella.core.egf.feature"/>
     </steps>

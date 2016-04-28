@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.interaction.delegates;
 
 import org.eclipse.emf.ecore.EObject;
@@ -35,24 +36,24 @@ public class FragmentEndHelper {
 		return instance;
 	}
 
-	public Object doSwitch(FragmentEnd element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(FragmentEnd element, EStructuralFeature feature) {
 		Object ret = null;
 
-    if (feature_p.equals(InteractionPackage.Literals.FRAGMENT_END__ABSTRACT_FRAGMENT)) {
-      ret = getAbstractFragment(element_p);
+    if (feature.equals(InteractionPackage.Literals.FRAGMENT_END__ABSTRACT_FRAGMENT)) {
+      ret = getAbstractFragment(element);
     }
 
 		// no helper found... searching in super classes...
 		if (null == ret) {
-			ret = NamedElementHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = NamedElementHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;
 	}
 
-  protected AbstractFragment getAbstractFragment(FragmentEnd element_p) {
-    if (element_p != null) {
-      EObject owner = element_p.eContainer();
+  protected AbstractFragment getAbstractFragment(FragmentEnd element) {
+    if (element != null) {
+      EObject owner = element.eContainer();
       if (owner instanceof InteractionOperand) {
         owner = owner.eContainer();
       }
@@ -62,8 +63,8 @@ public class FragmentEndHelper {
       if (owner instanceof Scenario) {
         for (TimeLapse timelapse : ((Scenario) owner).getOwnedTimeLapses()) {
           if ((timelapse instanceof AbstractFragment) &&
-              (element_p.equals(timelapse.getStart())
-            || element_p.equals(timelapse.getFinish())))
+              (element.equals(timelapse.getStart())
+            || element.equals(timelapse.getFinish())))
           {
             return (AbstractFragment) timelapse;
           }

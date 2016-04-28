@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.merge;
 
 import java.util.List;
@@ -46,30 +47,30 @@ public class ExtendedComparison extends EComparisonImpl {
 
     /**
      * Constructor
-     * @param role_p either TARGET or REFERENCE
+     * @param role either TARGET or REFERENCE
      */
-    public FixedUnidirectionalComparisonCopier(Role role_p) {
-      super(role_p);
+    public FixedUnidirectionalComparisonCopier(Role role) {
+      super(role);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public EObject copy(EObject element_p) {
+    public EObject copy(EObject element) {
       if (_mergePolicy instanceof IMergePolicy2) {
-        if (!((IMergePolicy2) _mergePolicy).copy(element_p)) {
-          return element_p;
+        if (!((IMergePolicy2) _mergePolicy).copy(element)) {
+          return element;
         }
       }
-      return super.copy(element_p);
+      return super.copy(element);
     }
 
     @Override
-    protected void copyReference(EReference reference_p, EObject source_p, EObject destination_p) {
+    protected void copyReference(EReference reference, EObject source, EObject destination) {
       // This implementation assumes that values need only be added
 
-      List<EObject> sourceValues = _sourceScope.get(source_p, reference_p);
+      List<EObject> sourceValues = _sourceScope.get(source, reference);
 
       for (EObject sourceValue : sourceValues) {
         IMatch valueMatch = _mapping.getMatchFor(sourceValue, _sourceRole);
@@ -79,28 +80,28 @@ public class ExtendedComparison extends EComparisonImpl {
           // by a ref presence diff so it must be copied
           boolean mustCopy = getCompletedMatches().contains(valueMatch) ||
           // Being a containment means there is an implicit opposite
-                             ((reference_p.getEOpposite() == null) && !reference_p.isContainment());
+                             ((reference.getEOpposite() == null) && !reference.isContainment());
           if (!mustCopy) {
             // Otherwise, check if it is actually handled by a ref presence diff
             // (it may not be because the opposite ref may not be covered by the diff policy)
-            IMatch holderMatch = _mapping.getMatchFor(source_p, _sourceRole);
+            IMatch holderMatch = _mapping.getMatchFor(source, _sourceRole);
             if (holderMatch != null) {
-              mustCopy = holderMatch.getReferenceValueDifference(reference_p, valueMatch) == null;
+              mustCopy = holderMatch.getReferenceValueDifference(reference, valueMatch) == null;
             }
           }
-          if (mustCopy && reference_p.isContainment()) {
+          if (mustCopy && reference.isContainment()) {
             mustCopy = valueMatch.getOwnershipDifference(_sourceRole.opposite()) == null;
           }
           if (mustCopy) {
             EObject destinationValue = valueMatch.get(_sourceRole.opposite());
             if (destinationValue != null) {
-              _destinationScope.add(destination_p, reference_p, destinationValue);
+              _destinationScope.add(destination, reference, destinationValue);
             }
           } // Else handled by a ref presence diff
         } else {
           // Value out of scope: keep as is if no side effect due to bidirectionality or containment
-          if (useOriginalReferences && (reference_p.getEOpposite() == null) && !reference_p.isContainment() && !reference_p.isContainer()) {
-            _destinationScope.add(destination_p, reference_p, sourceValue);
+          if (useOriginalReferences && (reference.getEOpposite() == null) && !reference.isContainment() && !reference.isContainer()) {
+            _destinationScope.add(destination, reference, sourceValue);
           }
         }
       }
@@ -108,12 +109,12 @@ public class ExtendedComparison extends EComparisonImpl {
 
   }
 
-  public ExtendedComparison(IEditableModelScope targetScope_p, IEditableModelScope referenceScope_p) {
-    this(targetScope_p, referenceScope_p, null);
+  public ExtendedComparison(IEditableModelScope targetScope, IEditableModelScope referenceScope) {
+    this(targetScope, referenceScope, null);
   }
 
-  public ExtendedComparison(IEditableModelScope targetScope_p, IEditableModelScope referenceScope_p, IEditableModelScope ancestorScope_p) {
-    super(targetScope_p, referenceScope_p, ancestorScope_p);
+  public ExtendedComparison(IEditableModelScope targetScope, IEditableModelScope referenceScope, IEditableModelScope ancestorScope) {
+    super(targetScope, referenceScope, ancestorScope);
 
     setMapping(new EMappingImpl() {
       private BidirectionalComparisonCopier _copier = new BidirectionalComparisonCopier() {
@@ -121,18 +122,18 @@ public class ExtendedComparison extends EComparisonImpl {
         private UnidirectionalComparisonCopier _targetToReferenceCopier = new FixedUnidirectionalComparisonCopier(Role.TARGET);
 
         @Override
-        public EObject completeMatch(IMapping.Editable mapping_p, IMatch partialMatch_p) {
-          assert partialMatch_p.isPartial();
-          Role sourceRole = partialMatch_p.getUncoveredRole().opposite();
+        public EObject completeMatch(IMapping.Editable mapping, IMatch partialMatch) {
+          assert partialMatch.isPartial();
+          Role sourceRole = partialMatch.getUncoveredRole().opposite();
           UnidirectionalComparisonCopier involvedCopier = (sourceRole == Role.REFERENCE) ? _referenceToTargetCopier : _targetToReferenceCopier;
-          EObject result = involvedCopier.completeMatch(partialMatch_p, mapping_p.getComparison());
+          EObject result = involvedCopier.completeMatch(partialMatch, mapping.getComparison());
           return result;
         }
 
         @Override
-        public void completeReferences(IMapping.Editable mapping_p, Role role_p) {
-          UnidirectionalComparisonCopier involvedCopier = (role_p == Role.TARGET) ? _referenceToTargetCopier : _targetToReferenceCopier;
-          involvedCopier.completeReferences(mapping_p.getComparison());
+        public void completeReferences(IMapping.Editable mapping, Role role) {
+          UnidirectionalComparisonCopier involvedCopier = (role == Role.TARGET) ? _referenceToTargetCopier : _targetToReferenceCopier;
+          involvedCopier.completeReferences(mapping.getComparison());
         }
       };
 
@@ -140,16 +141,16 @@ public class ExtendedComparison extends EComparisonImpl {
        * {@inheritDoc}
        */
       @Override
-      public EObject completeMatch(IMatch partialMatch_p) {
-        return _copier.completeMatch(this, partialMatch_p);
+      public EObject completeMatch(IMatch partialMatch) {
+        return _copier.completeMatch(this, partialMatch);
       }
 
       /**
        * {@inheritDoc}
        */
       @Override
-      public void completeReferences(Role role_p) {
-        _copier.completeReferences(this, role_p);
+      public void completeReferences(Role role) {
+        _copier.completeReferences(this, role);
       }
     });
   }
@@ -158,26 +159,26 @@ public class ExtendedComparison extends EComparisonImpl {
    * {@inheritDoc}
    */
   @Override
-  protected IExpensiveOperation getDiffOperation(IDiffPolicy diffPolicy_p, IMergePolicy mergePolicy_p) {
-    return new DiffOperation(this, diffPolicy_p, mergePolicy_p) {
+  protected IExpensiveOperation getDiffOperation(IDiffPolicy iDiffPolicy1, IMergePolicy mergePolicy) {
+    return new DiffOperation(this, iDiffPolicy1, mergePolicy) {
       /**
        * Create the differences related to the given reference for the given match
-       * @param match_p a non-null, non-partial match
-       * @param reference_p a non-null, non-container reference
+       * @param match a non-null, non-partial match
+       * @param reference a non-null, non-container reference
        */
       @Override
-      protected void createReferenceDifferences(IMatch match_p, EReference reference_p) {
-        assert (match_p != null) && !match_p.isPartial() && (reference_p != null);
-        assert !reference_p.isContainer();
+      protected void createReferenceDifferences(IMatch match, EReference reference) {
+        assert (match != null) && !match.isPartial() && (reference != null);
+        assert !reference.isContainer();
         // Get reference values in different roles
         IEditableModelScope targetScope = getComparison().getScope(Role.TARGET);
         IEditableModelScope referenceScope = getComparison().getScope(Role.REFERENCE);
-        EObject targetElement = match_p.get(Role.TARGET);
-        EObject referenceElement = match_p.get(Role.REFERENCE);
-        List<EObject> targetValues = targetScope.get(targetElement, reference_p);
-        List<EObject> referenceValues = referenceScope.get(referenceElement, reference_p);
+        EObject targetElement = match.get(Role.TARGET);
+        EObject referenceElement = match.get(Role.REFERENCE);
+        List<EObject> targetValues = targetScope.get(targetElement, reference);
+        List<EObject> referenceValues = referenceScope.get(referenceElement, reference);
         List<EObject> remainingReferenceValues = new FArrayList<EObject>(referenceValues, IEqualityTester.BY_REFERENCE);
-        boolean checkOrder = reference_p.isMany() && getDiffPolicy().considerOrdered(reference_p);
+        boolean checkOrder = reference.isMany() && getDiffPolicy().considerOrdered(reference);
         int maxIndex = -1;
         // Check which ones match
         List<IMatch> isolatedTargetMatches = new FArrayList<IMatch>();
@@ -195,7 +196,7 @@ public class ExtendedComparison extends EComparisonImpl {
               if (checkOrder && !isIsolated) {
                 if (index < maxIndex) {
                   // Ordering difference
-                  createReferenceOrderDifference(match_p, reference_p, targetValueMatch);
+                  createReferenceOrderDifference(match, reference, targetValueMatch);
                   checkOrder = false;
                 } else {
                   maxIndex = index;
@@ -225,18 +226,18 @@ public class ExtendedComparison extends EComparisonImpl {
         // Create differences for isolated values
         for (IMatch isolatedTargetMatch : isolatedTargetMatches) {
           if (diffPolicy instanceof IDiffPolicy2) {
-            if (((IDiffPolicy2) diffPolicy).coverMatchOnReference(isolatedTargetMatch, reference_p)) {
-              createReferenceValueDifference(match_p, reference_p, isolatedTargetMatch, Role.TARGET, false);
+            if (((IDiffPolicy2) diffPolicy).coverMatchOnReference(isolatedTargetMatch, reference)) {
+              createReferenceValueDifference(match, reference, isolatedTargetMatch, Role.TARGET, false);
             }
           } else if (diffPolicy.coverMatch(isolatedTargetMatch)) {
-            createReferenceValueDifference(match_p, reference_p, isolatedTargetMatch, Role.TARGET, false);
+            createReferenceValueDifference(match, reference, isolatedTargetMatch, Role.TARGET, false);
           }
         }
         for (IMatch isolatedReferenceMatch : isolatedReferenceMatches) {
-          if (((IDiffPolicy2) diffPolicy).coverMatchOnReference(isolatedReferenceMatch, reference_p)) {
-            createReferenceValueDifference(match_p, reference_p, isolatedReferenceMatch, Role.REFERENCE, false);
+          if (((IDiffPolicy2) diffPolicy).coverMatchOnReference(isolatedReferenceMatch, reference)) {
+            createReferenceValueDifference(match, reference, isolatedReferenceMatch, Role.REFERENCE, false);
           } else if (diffPolicy.coverMatch(isolatedReferenceMatch)) {
-            createReferenceValueDifference(match_p, reference_p, isolatedReferenceMatch, Role.REFERENCE, false);
+            createReferenceValueDifference(match, reference, isolatedReferenceMatch, Role.REFERENCE, false);
           }
         }
       }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.capellamodeller.delegates;
 
 import java.util.ArrayList;
@@ -39,34 +40,34 @@ public class SystemEngineeringHelper {
     return instance;
   }
 
-  public Object doSwitch(SystemEngineering element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(SystemEngineering element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_OPERATIONAL_ANALYSIS)) {
-      ret = getContainedOperationalAnalysis(element_p);
-    } else if (feature_p.equals(CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_SYSTEM_ANALYSIS)) {
-      ret = getContainedSystemAnalysis(element_p);
-    } else if (feature_p.equals(CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_LOGICAL_ARCHITECTURES)) {
-      ret = getContainedLogicalArchitectures(element_p);
-    } else if (feature_p.equals(CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_PHYSICAL_ARCHITECTURES)) {
-      ret = getContainedPhysicalArchitectures(element_p);
-    } else if (feature_p.equals(CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_EPBS_ARCHITECTURES)) {
-      ret = getContainedEPBSArchitectures(element_p);
-    } else if (feature_p.equals(CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_SHARED_PKGS)) {
-      ret = getContainedSharedPkgs(element_p);
+    if (feature.equals(CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_OPERATIONAL_ANALYSIS)) {
+      ret = getContainedOperationalAnalysis(element);
+    } else if (feature.equals(CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_SYSTEM_ANALYSIS)) {
+      ret = getContainedSystemAnalysis(element);
+    } else if (feature.equals(CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_LOGICAL_ARCHITECTURES)) {
+      ret = getContainedLogicalArchitectures(element);
+    } else if (feature.equals(CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_PHYSICAL_ARCHITECTURES)) {
+      ret = getContainedPhysicalArchitectures(element);
+    } else if (feature.equals(CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_EPBS_ARCHITECTURES)) {
+      ret = getContainedEPBSArchitectures(element);
+    } else if (feature.equals(CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_SHARED_PKGS)) {
+      ret = getContainedSharedPkgs(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = StructureHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = StructureHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<OperationalAnalysis> getContainedOperationalAnalysis(SystemEngineering element_p) {
+  protected List<OperationalAnalysis> getContainedOperationalAnalysis(SystemEngineering element) {
     List<OperationalAnalysis> res = new ArrayList<OperationalAnalysis>();
-    for (ModellingArchitecture architecture : element_p.getOwnedArchitectures()) {
+    for (ModellingArchitecture architecture : element.getOwnedArchitectures()) {
       if (architecture instanceof OperationalAnalysis) {
         res.add((OperationalAnalysis) architecture);
       }
@@ -74,9 +75,9 @@ public class SystemEngineeringHelper {
     return res;
   }
 
-  protected List<SystemAnalysis> getContainedSystemAnalysis(SystemEngineering element_p) {
+  protected List<SystemAnalysis> getContainedSystemAnalysis(SystemEngineering element) {
     List<SystemAnalysis> res = new ArrayList<SystemAnalysis>();
-    for (ModellingArchitecture architecture : element_p.getOwnedArchitectures()) {
+    for (ModellingArchitecture architecture : element.getOwnedArchitectures()) {
       if (architecture instanceof SystemAnalysis) {
         res.add((SystemAnalysis) architecture);
       }
@@ -84,9 +85,9 @@ public class SystemEngineeringHelper {
     return res;
   }
 
-  protected List<LogicalArchitecture> getContainedLogicalArchitectures(SystemEngineering element_p) {
+  protected List<LogicalArchitecture> getContainedLogicalArchitectures(SystemEngineering element) {
     List<LogicalArchitecture> res = new ArrayList<LogicalArchitecture>();
-    for (ModellingArchitecture architecture : element_p.getOwnedArchitectures()) {
+    for (ModellingArchitecture architecture : element.getOwnedArchitectures()) {
       if (architecture instanceof LogicalArchitecture) {
         res.add((LogicalArchitecture) architecture);
       }
@@ -94,9 +95,9 @@ public class SystemEngineeringHelper {
     return res;
   }
 
-  protected List<PhysicalArchitecture> getContainedPhysicalArchitectures(SystemEngineering element_p) {
+  protected List<PhysicalArchitecture> getContainedPhysicalArchitectures(SystemEngineering element) {
     List<PhysicalArchitecture> res = new ArrayList<PhysicalArchitecture>();
-    for (ModellingArchitecture architecture : element_p.getOwnedArchitectures()) {
+    for (ModellingArchitecture architecture : element.getOwnedArchitectures()) {
       if (architecture instanceof PhysicalArchitecture) {
         res.add((PhysicalArchitecture) architecture);
       }
@@ -104,9 +105,9 @@ public class SystemEngineeringHelper {
     return res;
   }
 
-  protected List<EPBSArchitecture> getContainedEPBSArchitectures(SystemEngineering element_p) {
+  protected List<EPBSArchitecture> getContainedEPBSArchitectures(SystemEngineering element) {
     List<EPBSArchitecture> res = new ArrayList<EPBSArchitecture>();
-    for (ModellingArchitecture architecture : element_p.getOwnedArchitectures()) {
+    for (ModellingArchitecture architecture : element.getOwnedArchitectures()) {
       if (architecture instanceof EPBSArchitecture) {
         res.add((EPBSArchitecture) architecture);
       }
@@ -114,9 +115,9 @@ public class SystemEngineeringHelper {
     return res;
   }
 
-  protected List<SharedPkg> getContainedSharedPkgs(SystemEngineering element_p) {
+  protected List<SharedPkg> getContainedSharedPkgs(SystemEngineering element) {
     List<SharedPkg> res = new ArrayList<SharedPkg>();
-    for (ModellingArchitecture architecture : element_p.getOwnedArchitectures()) {
+    for (ModellingArchitecture architecture : element.getOwnedArchitectures()) {
       if (architecture instanceof SharedPkg) {
         res.add((SharedPkg) architecture);
       }

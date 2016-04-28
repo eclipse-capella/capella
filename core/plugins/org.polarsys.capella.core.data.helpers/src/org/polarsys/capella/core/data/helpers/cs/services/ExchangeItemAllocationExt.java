@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.cs.services;
 
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
@@ -27,8 +28,8 @@ public class ExchangeItemAllocationExt {
     alloc.setReceiveProtocol(ExchangeMechanismExt.getProtocol(mechanism, false));
   }
 
-  public static void changeExchangeItem(ExchangeItemAllocation alloc, ExchangeItem new_p) {
-    alloc.setAllocatedItem(new_p);
-    changeExchangeItemMechanism(alloc, new_p.getExchangeMechanism());
+  public static void changeExchangeItem(ExchangeItemAllocation alloc, ExchangeItem exchangeItem1) {
+    alloc.setAllocatedItem(exchangeItem1);
+    changeExchangeItemMechanism(alloc, exchangeItem1.getExchangeMechanism());
   }
 }

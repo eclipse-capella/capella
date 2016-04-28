@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -466,12 +465,11 @@ public class InformationServices {
       }
     }
 
-    Set<String> types = typeToMulElesMap.keySet();
     boolean first = true;
-    for (String type : types) {
+    for (Entry<String, List<MultiplicityElement>> typeToMulEles : typeToMulElesMap.entrySet()) {
       // direction, name, Type and cardinality
       boolean atLeastOneMulEleIsNamed = false;
-      List<MultiplicityElement> retrievedMulEles = typeToMulElesMap.get(type);
+      List<MultiplicityElement> retrievedMulEles = typeToMulEles.getValue();
       // If one of the multiplicityElement is named, avoid unNamed Element
       // if non is named, return the Type once (instead of multiple
       // unNamed types)
@@ -483,14 +481,14 @@ public class InformationServices {
         if (atLeastOneMulEleIsNamed && !mulEleName.equals(ICommonConstants.EMPTY_STRING)) {
           first = setQualifier(sb, qualifier, first);
           // direction, name, type and Cardinality
-          parameterToStringReturnAndException(sb, retrievedMulEle, type, mulEleName, false, true, true, false);
+          parameterToStringReturnAndException(sb, retrievedMulEle, typeToMulEles.getKey(), mulEleName, false, true, true, false);
         }
       }
       // since only one type is selected from may be multiple unNamed
       // Types, there is no need of cardinality
       if (!atLeastOneMulEleIsNamed) {
         first = setQualifier(sb, qualifier, first);
-        parameterToStringReturnAndException(sb, null, type, ICommonConstants.EMPTY_STRING, false, true, true, false);
+        parameterToStringReturnAndException(sb, null, typeToMulEles.getKey(), ICommonConstants.EMPTY_STRING, false, true, true, false);
       }
     }
   }
@@ -729,21 +727,21 @@ public class InformationServices {
    * @return the String
    */
   public String computeLabelWithoutType(ExchangeItemElement element) {
-    String result = PropertyNamingHelper.multiplicityToStringDisplay(element) + " " + element.getName(); //$NON-NLS-1$
+    StringBuilder result = new StringBuilder(PropertyNamingHelper.multiplicityToStringDisplay(element) + " " + element.getName()); //$NON-NLS-1$
     EList<Property> referencedProperties = element.getReferencedProperties();
     if (!referencedProperties.isEmpty()) {
-      result = result + " {"; //$NON-NLS-1$
+      result.append(" {"); //$NON-NLS-1$
       Iterator<Property> iterator = referencedProperties.iterator();
       while (iterator.hasNext()) {
         Property property = iterator.next();
-        result = result + property.getName();
+        result.append(property.getName());
         if (iterator.hasNext()) {
-          result = result + COMMA_WITH_SPACE;
+          result.append(COMMA_WITH_SPACE);
         }
       }
-      result = result + "}"; //$NON-NLS-1$
+      result.append("}"); //$NON-NLS-1$
     }
-    return result;
+    return result.toString();
   }
 
   private Property getOthers(Property property, Collection<Property> properties) {
@@ -851,17 +849,17 @@ public class InformationServices {
    * @return : customized lable for unionProperty
    */
   private String computeUnionPropertyLabelWithQualifier(UnionProperty property) {
-    String result = ICommonConstants.EMPTY_STRING;
+    StringBuilder result = new StringBuilder();
     EList<DataValue> qualifier = property.getQualifier();
     if ((qualifier != null) && (qualifier.size() > 0)) {
-      result += " { "; //$NON-NLS-1$
+      result.append(" { "); //$NON-NLS-1$
       for (int i = 0; i < (qualifier.size() - 1); i++) {
-        result += EObjectLabelProviderHelper.getText(qualifier.get(i)) + COMMA_WITH_SPACE;
+        result.append(EObjectLabelProviderHelper.getText(qualifier.get(i)) + COMMA_WITH_SPACE);
       }
-      result += EObjectLabelProviderHelper.getText(qualifier.get(qualifier.size() - 1));
-      result += " }"; //$NON-NLS-1$
+      result.append(EObjectLabelProviderHelper.getText(qualifier.get(qualifier.size() - 1)));
+      result.append(" }"); //$NON-NLS-1$
     }
-    return result;
+    return result.toString();
   }
 
   /**
@@ -2368,7 +2366,16 @@ public class InformationServices {
   public boolean isHideRoleNameEnable(EObject assocation, EObject view) {
     return isDiagramFilterEnable(assocation, view, IMappingNameConstants.HIDE_ROLE_NAMES);
   }
-
+  
+  /**
+   * @used in common.odesign Return true if "Show Modifiers is true"
+   * @param assocation
+   * @param view
+   * @return
+   */
+  public boolean isShowModifiersEnable (EObject obj, EObject view) {
+    return isDiagramFilterEnable(obj, view, IMappingNameConstants.SHOW_MODIFIERS);
+  }
   /**
    * @used in common.odesign Return true if given filter is true
    * @param assocation
@@ -2442,6 +2449,15 @@ public class InformationServices {
             && (asso.getNavigableMembers().contains(pro) || !(asso.getNavigableMembers().size() == 1))) {
           beginLabel.append(pro.getName());
         }
+        // Show Modifiers suffix
+        if (isShowModifiersEnable(context, view)){
+        	if (pro.isOrdered()){
+        		beginLabel.append(" {ordered}");				  
+        	}
+        	if (!pro.isUnique()){
+        		beginLabel.append(" {nonUnique}");
+        	}
+        }
       }
     }
     return beginLabel.toString();
@@ -2469,7 +2485,7 @@ public class InformationServices {
     }
     return centerLabel;
   }
-
+  
   /**
    * Return association end label
    * 
@@ -2490,6 +2506,7 @@ public class InformationServices {
       Association asso = (Association) association;
       boolean hideRoleLabelEnable = isHideRoleLabelEnable(context, view);
       boolean hideRoleNameEnable = isHideRoleNameEnable(context, view);
+      
       // multiplicity
       String multiplicityToString = multiplicityToString(pro);
       endLabel.append(multiplicityToString);
@@ -2498,16 +2515,25 @@ public class InformationServices {
       }
       // prefix
       if (!hideRoleLabelEnable) {
-        endLabel.append(PropertyNamingHelper.prefixPropertyLabel(pro));
-        // isDerived
-        if (pro.isIsDerived()) {
-          endLabel.append(ICommonConstants.SLASH_CHARACTER);
-        }
-        // role name (consider only if filter is disable)
-        if (!hideRoleNameEnable
-            && (asso.getNavigableMembers().contains(pro) || !(asso.getNavigableMembers().size() == 1))) {
-          endLabel.append(pro.getName());
-        }
+    	  endLabel.append(PropertyNamingHelper.prefixPropertyLabel(pro));
+    	  // isDerived
+    	  if (pro.isIsDerived()) {
+    		  endLabel.append(ICommonConstants.SLASH_CHARACTER);
+    	  }
+    	  // role name (consider only if filter is disable)
+    	  if (!hideRoleNameEnable
+    			  && (asso.getNavigableMembers().contains(pro) || !(asso.getNavigableMembers().size() == 1))) {
+    		  endLabel.append(pro.getName());
+    	  }
+          // Show Modifiers
+    	  if (isShowModifiersEnable(context, view)){
+    		  if (pro.isOrdered()){
+    			  endLabel.append(" {ordered}");				  
+    		  }
+    		  if (!pro.isUnique()){
+    			  endLabel.append(" {nonUnique}");
+    		  }	  
+    	  }
       }
     }
     return endLabel.toString();
@@ -2758,16 +2784,18 @@ public class InformationServices {
 
     // Create Edge if needed
     //
-    for (EObject selectedElement : selectedElements) {
-      // when sourceView is Component
-      if ((selectedElement instanceof SystemComponentCapabilityRealizationInvolvement)
-          || (selectedElement instanceof ActorCapabilityRealizationInvolvement)
-          || (selectedElement instanceof AbstractCapabilityExtend)
-          || (selectedElement instanceof AbstractCapabilityInclude)
-          || (selectedElement instanceof AbstractCapabilityGeneralization)
-          || (selectedElement instanceof Generalization)) {
-        // create edge view and target if needed
-        createEdgeViewWithTargetViewIfNeeded(sourceView, diagram, selectedElement);
+    if (selectedElements != null) {
+      for (EObject selectedElement : selectedElements) {
+        // when sourceView is Component
+        if ((selectedElement instanceof SystemComponentCapabilityRealizationInvolvement)
+            || (selectedElement instanceof ActorCapabilityRealizationInvolvement)
+            || (selectedElement instanceof AbstractCapabilityExtend)
+            || (selectedElement instanceof AbstractCapabilityInclude)
+            || (selectedElement instanceof AbstractCapabilityGeneralization)
+            || (selectedElement instanceof Generalization)) {
+          // create edge view and target if needed
+          createEdgeViewWithTargetViewIfNeeded(sourceView, diagram, selectedElement);
+        }
       }
     }
   }
@@ -2935,21 +2963,18 @@ public class InformationServices {
       return CapellaServices.getService().getEObjectLabelProviderHelper(context);
     }
 
-    // result
-    String result = ICommonConstants.EMPTY_STRING;
     // reverse the list to get the right order to display
     Collections.reverse(resultList);
     // insert special character "::"
-    LinkedList<String> list = new LinkedList<String>();
-    list.addAll(resultList);
-    for (String string : list) {
-      if (list.getLast().equals(string)) {
-        result = result + string;
-      } else {
-        result = result + string + "::"; //$NON-NLS-1$
+    StringBuilder result = new StringBuilder();
+    Iterator<String> itResultList = resultList.iterator();
+    while(itResultList.hasNext()) {
+      result.append(itResultList.next());
+      if (itResultList.hasNext()) {
+        result.append("::");
       }
     }
-    return result;
+    return result.toString();
   }
 
   /**
@@ -3270,10 +3295,9 @@ public class InformationServices {
   boolean isPrimitiveDependency(AbstractDependenciesPkg src, AbstractDependenciesPkg tar) {
     if (src instanceof DataPkg) {
       return DataPkgExt.isPrimitiveDependency((DataPkg) src, tar);
-    } else {
-      // InterfacePkg
-      return InterfacePkgExt.isPrimitiveDependency((InterfacePkg) src, tar);
     }
+    // InterfacePkg
+    return InterfacePkgExt.isPrimitiveDependency((InterfacePkg) src, tar);
   }
 
   /**
@@ -3407,5 +3431,40 @@ public class InformationServices {
     DDiagramElement tarPkg = (DDiagramElement) DiagramServices.getDiagramServices().getDiagramElement(diagram, tar);
     return ((srcPkg != null) && (tarPkg != null));
   }
+  
+  /**
+   * 
+   * @param context
+   * @param view
+   * @return
+   */
+  public String modifiersSuffix (EObject context, EObject view){
+      String str="";
+	  if (isShowModifiersEnable(context, view)){
+		  if (context instanceof Property){
+			  Property prop=(Property) context;
+			  if (prop.isOrdered()){
+				  str+=" {ordered}";				  
+			  }
+			  if (!prop.isUnique()){
+				  str+=" {nonUnique}";
+			  }	  
+		  }
+		  if (context instanceof ExchangeItemElement){
+			  ExchangeItemElement eie=(ExchangeItemElement) context;
+			  if (eie.isOrdered()){
+				  str+=" {ordered}";				  
+			  }
+			  if (!eie.isUnique()){
+				  str+=" {nonUnique}";
+			  }	  
+			  if (!eie.isComposite()){
+				  str+=" {nonComposite}";
+			  }	  
+		  }
+	  }
+	  return str;
+  }
+
 
 }

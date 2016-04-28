@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.handlers.traceability;
 
 import java.util.ArrayList;
@@ -34,22 +35,22 @@ public class SIDTraceabilityHandler extends LinkTraceabilityHandler {
    */
   public static final EAttribute PROPERTY_SID = ModellingcorePackage.Literals.MODEL_ELEMENT__SID;
 
-  public EAttribute getAttribute(IContext context_p) {
+  public EAttribute getAttribute(IContext context) {
     return PROPERTY_SID;
   }
 
-  public SIDTraceabilityHandler(String identifier_p) {
-    super(identifier_p);
+  public SIDTraceabilityHandler(String identifier) {
+    super(identifier);
   }
 
   @Override
-  protected List<EObject> getSourceAttachments(EObject targetElement_p, IContext context_p) {
+  protected List<EObject> getSourceAttachments(EObject targetElement, IContext context) {
     List<EObject> elements = new ArrayList<EObject>();
 
     EObject result = null;
-    if (targetElement_p instanceof CapellaElement) {
-      for (String id : getSourceIds(targetElement_p, context_p)) {
-        result = SessionHandlerHelper.getInstance(context_p).getEObjectFromId(id, context_p);
+    if (targetElement instanceof CapellaElement) {
+      for (String id : getSourceIds(targetElement, context)) {
+        result = SessionHandlerHelper.getInstance(context).getEObjectFromId(id, context);
         if (result != null) {
           elements.add(result);
         }
@@ -59,12 +60,12 @@ public class SIDTraceabilityHandler extends LinkTraceabilityHandler {
     return elements;
   }
 
-  protected List<String> getSourceIds(EObject targetElement_p, IContext context_p) {
+  protected List<String> getSourceIds(EObject targetElement, IContext context) {
     List<String> ids = new ArrayList<String>();
 
-    if (targetElement_p instanceof CapellaElement) {
-      EAttribute attribute = getAttribute(context_p);
-      String propertyValue = (String) targetElement_p.eGet(attribute);
+    if (targetElement instanceof CapellaElement) {
+      EAttribute attribute = getAttribute(context);
+      String propertyValue = (String) targetElement.eGet(attribute);
       propertyValue = propertyValue == null ? ICommonConstants.EMPTY_STRING : propertyValue;
       String values[] = propertyValue.split(";");
       for (String value : values) {
@@ -77,33 +78,33 @@ public class SIDTraceabilityHandler extends LinkTraceabilityHandler {
   }
 
   @Override
-  public void attachTraceability(EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
+  public void attachTraceability(EObject sourceElement, EObject targetElement, IContext context) {
 
-    if (targetElement_p != null) { // we allow transformation one to nothing
-      createAttachment(sourceElement_p, targetElement_p, context_p);
+    if (targetElement != null) { // we allow transformation one to nothing
+      createAttachment(sourceElement, targetElement, context);
     }
   }
 
-  protected void createAttachment(EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
-    EAttribute attribute = getAttribute(context_p);
+  protected void createAttachment(EObject sourceElement, EObject targetElement, IContext context) {
+    EAttribute attribute = getAttribute(context);
 
-    String propertyValue = (String) targetElement_p.eGet(attribute);
+    String propertyValue = (String) targetElement.eGet(attribute);
     List<String> values = new ArrayList<String>();
     if ((propertyValue != null) && (propertyValue.length() > 0)) {
       values.addAll(Arrays.asList(propertyValue.split(";")));
     }
 
     //Retrieve SID from sourceElement or ID if none
-    List<String> ids = getSourceIds(sourceElement_p, context_p);
+    List<String> ids = getSourceIds(sourceElement, context);
     if (ids.size() == 0) {
-      String id = SessionHandlerHelper.getInstance(context_p).getId(sourceElement_p, context_p);
+      String id = SessionHandlerHelper.getInstance(context).getId(sourceElement, context);
       ids.add(id);
-      if (sourceElement_p.eGet(attribute) == null) {
-        sourceElement_p.eSet(attribute, id);
+      if (sourceElement.eGet(attribute) == null) {
+        sourceElement.eSet(attribute, id);
       }
     }
 
-    addMappings(sourceElement_p, targetElement_p, context_p);
+    addMappings(sourceElement, targetElement, context);
 
     for (String id : ids) {
       if (!values.contains(id)) {
@@ -126,7 +127,7 @@ public class SIDTraceabilityHandler extends LinkTraceabilityHandler {
       }
     }
 
-    targetElement_p.eSet(attribute, result);
+    targetElement.eSet(attribute, result);
 
   }
 

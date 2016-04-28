@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.la.delegates;
 
 import java.util.ArrayList;
@@ -41,32 +42,32 @@ public class LogicalActorHelper {
     return instance;
   }
 
-  public Object doSwitch(LogicalActor element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(LogicalActor element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(LaPackage.Literals.LOGICAL_ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS)) {
-      ret = getParticipationInCapabilityRealizations(element_p);
-    } else if (feature_p.equals(LaPackage.Literals.LOGICAL_ACTOR__SYSTEM_ACTOR_REALIZATIONS)) {
-      ret = getSystemActorRealizations(element_p);
-    } else if (feature_p.equals(LaPackage.Literals.LOGICAL_ACTOR__ALLOCATED_LOGICAL_FUNCTIONS)) {
-      ret = getAllocatedLogicalFunctions(element_p);
-    } else if (feature_p.equals(LaPackage.Literals.LOGICAL_ACTOR__REALIZING_PHYSICAL_ACTORS)) {
-      ret = getRealizingPhysicalActors(element_p);
-    } else if (feature_p.equals(LaPackage.Literals.LOGICAL_ACTOR__REALIZED_SYSTEM_ACTORS)) {
-      ret = getRealizedSystemActors(element_p);
+    if (feature.equals(LaPackage.Literals.LOGICAL_ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS)) {
+      ret = getParticipationInCapabilityRealizations(element);
+    } else if (feature.equals(LaPackage.Literals.LOGICAL_ACTOR__SYSTEM_ACTOR_REALIZATIONS)) {
+      ret = getSystemActorRealizations(element);
+    } else if (feature.equals(LaPackage.Literals.LOGICAL_ACTOR__ALLOCATED_LOGICAL_FUNCTIONS)) {
+      ret = getAllocatedLogicalFunctions(element);
+    } else if (feature.equals(LaPackage.Literals.LOGICAL_ACTOR__REALIZING_PHYSICAL_ACTORS)) {
+      ret = getRealizingPhysicalActors(element);
+    } else if (feature.equals(LaPackage.Literals.LOGICAL_ACTOR__REALIZED_SYSTEM_ACTORS)) {
+      ret = getRealizedSystemActors(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = AbstractActorHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractActorHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<ActorCapabilityRealizationInvolvement> getParticipationInCapabilityRealizations(LogicalActor element_p) {
+  protected List<ActorCapabilityRealizationInvolvement> getParticipationInCapabilityRealizations(LogicalActor element) {
     List<ActorCapabilityRealizationInvolvement> ret = new ArrayList<ActorCapabilityRealizationInvolvement>();
-    for (CapabilityRealizationInvolvement involvement : element_p.getInvolvingCapabilityRealizationInvolvements()) {
+    for (CapabilityRealizationInvolvement involvement : element.getInvolvingCapabilityRealizationInvolvements()) {
       if (involvement instanceof ActorCapabilityRealizationInvolvement) {
         ret.add((ActorCapabilityRealizationInvolvement) involvement);
       }
@@ -74,9 +75,9 @@ public class LogicalActorHelper {
     return ret;
   }
 
-  protected List<SystemActorRealization> getSystemActorRealizations(LogicalActor element_p) {
+  protected List<SystemActorRealization> getSystemActorRealizations(LogicalActor element) {
     List<SystemActorRealization> ret = new ArrayList<SystemActorRealization>();
-    for (ComponentAllocation componentAllocation : element_p.getProvisionedComponentAllocations()) {
+    for (ComponentAllocation componentAllocation : element.getProvisionedComponentAllocations()) {
       if (componentAllocation instanceof SystemActorRealization) {
         ret.add((SystemActorRealization) componentAllocation);
       }
@@ -84,9 +85,9 @@ public class LogicalActorHelper {
     return ret;
   }
 
-  protected List<LogicalFunction> getAllocatedLogicalFunctions(LogicalActor element_p) {
+  protected List<LogicalFunction> getAllocatedLogicalFunctions(LogicalActor element) {
     List<LogicalFunction> ret = new ArrayList<LogicalFunction>();
-    for (AbstractFunction function : element_p.getAllocatedFunctions()) {
+    for (AbstractFunction function : element.getAllocatedFunctions()) {
       if (function instanceof LogicalFunction) {
         ret.add((LogicalFunction) function);
       }
@@ -94,9 +95,9 @@ public class LogicalActorHelper {
     return ret;
   }
 
-  protected List<PhysicalActor> getRealizingPhysicalActors(LogicalActor element_p) {
+  protected List<PhysicalActor> getRealizingPhysicalActors(LogicalActor element) {
     List<PhysicalActor> ret = new ArrayList<PhysicalActor>();
-    for (Component cpnt : element_p.getAllocatingComponents()) {
+    for (Component cpnt : element.getAllocatingComponents()) {
       if (cpnt instanceof PhysicalActor) {
         ret.add((PhysicalActor) cpnt);
       }
@@ -104,9 +105,9 @@ public class LogicalActorHelper {
     return ret;
   }
 
-  protected List<Actor> getRealizedSystemActors(LogicalActor element_p) {
+  protected List<Actor> getRealizedSystemActors(LogicalActor element) {
     List<Actor> ret = new ArrayList<Actor>();
-    for (Component cpnt : element_p.getAllocatedComponents()) {
+    for (Component cpnt : element.getAllocatedComponents()) {
       if (cpnt instanceof Actor) {
         ret.add((Actor) cpnt);
       }

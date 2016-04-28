@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.information.delegates;
 
 import java.util.ArrayList;
@@ -35,32 +36,32 @@ public class PortHelper {
 		return instance;
 	}
 	
-	public Object doSwitch(Port element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(Port element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(InformationPackage.Literals.PORT__INCOMING_PORT_REALIZATIONS)) {
-			ret = getIncomingPortRealizations(element_p);
+		if (feature.equals(InformationPackage.Literals.PORT__INCOMING_PORT_REALIZATIONS)) {
+			ret = getIncomingPortRealizations(element);
 		}
-		else if (feature_p.equals(InformationPackage.Literals.PORT__OUTGOING_PORT_REALIZATIONS)) {
-			ret = getOutgoingPortRealizations(element_p);
+		else if (feature.equals(InformationPackage.Literals.PORT__OUTGOING_PORT_REALIZATIONS)) {
+			ret = getOutgoingPortRealizations(element);
 		}
-		else if (feature_p.equals(InformationPackage.Literals.PORT__INCOMING_PORT_ALLOCATIONS)) {
-			ret = getIncomingPortAllocations(element_p);
+		else if (feature.equals(InformationPackage.Literals.PORT__INCOMING_PORT_ALLOCATIONS)) {
+			ret = getIncomingPortAllocations(element);
 		}
-		else if (feature_p.equals(InformationPackage.Literals.PORT__OUTGOING_PORT_ALLOCATIONS)) {
-			ret = getOutgoingPortAllocations(element_p);
+		else if (feature.equals(InformationPackage.Literals.PORT__OUTGOING_PORT_ALLOCATIONS)) {
+			ret = getOutgoingPortAllocations(element);
 		}
 
 		// no helper found... searching in super classes...
 		if(null == ret) {
-			ret = NamedElementHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = NamedElementHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;
 	}
 
-	protected List<PortAllocation> getIncomingPortAllocations(Port element_p){
-		List<AbstractTrace> traces = element_p.getIncomingTraces();
+	protected List<PortAllocation> getIncomingPortAllocations(Port element){
+		List<AbstractTrace> traces = element.getIncomingTraces();
 		List<PortAllocation> ret = new ArrayList<PortAllocation>();
 		
 		for (AbstractTrace trace : traces) {
@@ -72,8 +73,8 @@ public class PortHelper {
 		return ret;
 	}
 	
-	protected List<PortAllocation> getOutgoingPortAllocations(Port element_p){
-		List<AbstractTrace> traces = element_p.getOutgoingTraces();
+	protected List<PortAllocation> getOutgoingPortAllocations(Port element){
+		List<AbstractTrace> traces = element.getOutgoingTraces();
 		List<PortAllocation> ret = new ArrayList<PortAllocation>();
 		
 		for (AbstractTrace trace : traces) {
@@ -85,8 +86,8 @@ public class PortHelper {
 		return ret;
 	}
 	
-	protected List<PortRealization> getIncomingPortRealizations(Port element_p){
-		List<AbstractTrace> traces = element_p.getIncomingTraces();
+	protected List<PortRealization> getIncomingPortRealizations(Port element){
+		List<AbstractTrace> traces = element.getIncomingTraces();
 		List<PortRealization> ret = new ArrayList<PortRealization>();
 		
 		for (AbstractTrace trace : traces) {
@@ -98,8 +99,8 @@ public class PortHelper {
 		return ret;
 	}
 	
-	protected List<PortRealization> getOutgoingPortRealizations(Port element_p){
-		List<AbstractTrace> traces = element_p.getOutgoingTraces();
+	protected List<PortRealization> getOutgoingPortRealizations(Port element){
+		List<AbstractTrace> traces = element.getOutgoingTraces();
 		List<PortRealization> ret = new ArrayList<PortRealization>();
 		
 		for (AbstractTrace trace : traces) {

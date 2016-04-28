@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -49,15 +50,19 @@ import org.polarsys.capella.core.data.oa.Entity;
  */
 public class ComponentExchangeExt {
 
+	
+	private ComponentExchangeExt() {
+	}
+	  
   /**
    * Return source port of the connection (mono Part mode)
-   * @param connection_p
+   * @param connection
    * @return Part
    * @deprecated use the derived reference available on component exchanges
    */
   @Deprecated
-  public static Port getSourcePort(ComponentExchange connection_p) {
-    InformationsExchanger source = connection_p.getSource();
+  public static Port getSourcePort(ComponentExchange connection) {
+    InformationsExchanger source = connection.getSource();
     if (source instanceof ComponentExchangeEnd) {
       return ((ComponentExchangeEnd) source).getPort();
     } else if (source instanceof Port) {
@@ -67,15 +72,15 @@ public class ComponentExchangeExt {
     return null;
   }
 
-  /**
+/**
    * Return target port of the connection (mono Part mode)
-   * @param connection_p
+   * @param connection
    * @return
    * @deprecated use the derived reference available on component exchanges
    */
   @Deprecated
-  public static Port getTargetPort(ComponentExchange connection_p) {
-    InformationsExchanger target = connection_p.getTarget();
+  public static Port getTargetPort(ComponentExchange connection) {
+    InformationsExchanger target = connection.getTarget();
     if (target instanceof ComponentExchangeEnd) {
       return ((ComponentExchangeEnd) target).getPort();
     } else if (target instanceof Port) {
@@ -88,13 +93,13 @@ public class ComponentExchangeExt {
   /**
    * Returns source Part of the connection (MultiPart mode) if component exchange is not linked to a part, returns null. (don't returns the first representing
    * partition of connected source component)
-   * @param connection_p
+   * @param connection
    * @return
    * @deprecated use the derived reference available on component exchanges
    */
   @Deprecated
-  public static Part getSourcePart(ComponentExchange connection_p) {
-    InformationsExchanger source = connection_p.getSource();
+  public static Part getSourcePart(ComponentExchange connection) {
+    InformationsExchanger source = connection.getSource();
     if (source instanceof ComponentExchangeEnd) {
       return (Part) ((ComponentExchangeEnd) source).getPart();
     } else if (source instanceof Part) {
@@ -108,12 +113,12 @@ public class ComponentExchangeExt {
    * Returns source Parts of the connection If component exchange is related to one part, returns a singleton of related part. If component exchange is related
    * to a component, returns representing parts of the component
    */
-  public static Collection<Part> getSourceParts(ComponentExchange connection_p) {
-    Part part = getSourcePart(connection_p);
+  public static Collection<Part> getSourceParts(ComponentExchange connection) {
+    Part part = getSourcePart(connection);
     if (part != null) {
       return Collections.singletonList(part);
     }
-    Component sourceComponent = getSourceComponent(connection_p);
+    Component sourceComponent = getSourceComponent(connection);
     if (sourceComponent != null) {
       return ComponentExt.getRepresentingParts(sourceComponent);
     }
@@ -124,23 +129,23 @@ public class ComponentExchangeExt {
    * Returns source Parts of the connection If component exchange is related to one part, returns a singleton of related part. If component exchange is related
    * to a component, returns representing parts of the component
    */
-  public static Collection<? extends EObject> getSourcePartsAndEntities(ComponentExchange connection_p) {
-    if (connection_p.getSource() instanceof Entity) {
-      return Collections.singletonList(connection_p.getSource());
+  public static Collection<? extends EObject> getSourcePartsAndEntities(ComponentExchange connection) {
+    if (connection.getSource() instanceof Entity) {
+      return Collections.singletonList(connection.getSource());
     }
-    return getSourceParts(connection_p);
+    return getSourceParts(connection);
   }
 
   /**
    * Return target Part of the connection (MultiPart mode) if component exchange is not linked to a part, returns null. (don't returns the first representing
    * partition of connected target component)
-   * @param connection_p
+   * @param connection
    * @return
    * @deprecated use the derived reference available on component exchanges
    */
   @Deprecated
-  public static Part getTargetPart(ComponentExchange connection_p) {
-    InformationsExchanger target = connection_p.getTarget();
+  public static Part getTargetPart(ComponentExchange connection) {
+    InformationsExchanger target = connection.getTarget();
     if (target instanceof ComponentExchangeEnd) {
       return (Part) ((ComponentExchangeEnd) target).getPart();
     } else if (target instanceof Part) {
@@ -153,12 +158,12 @@ public class ComponentExchangeExt {
    * Returns target Parts of the connection If component exchange is related to one part, returns a singleton of related part. If component exchange is related
    * to a component, returns representing parts of the component
    */
-  public static Collection<Part> getTargetParts(ComponentExchange connection_p) {
-    Part part = getTargetPart(connection_p);
+  public static Collection<Part> getTargetParts(ComponentExchange connection) {
+    Part part = getTargetPart(connection);
     if (part != null) {
       return Collections.singletonList(part);
     }
-    Component targetComponent = getTargetComponent(connection_p);
+    Component targetComponent = getTargetComponent(connection);
     if (targetComponent != null) {
       return ComponentExt.getRepresentingParts(targetComponent);
     }
@@ -169,23 +174,23 @@ public class ComponentExchangeExt {
    * Returns target Parts of the connection If component exchange is related to one part, returns a singleton of related part. If component exchange is related
    * to a component, returns representing parts of the component
    */
-  public static Collection<? extends EObject> getTargetPartsAndEntities(ComponentExchange connection_p) {
-    if (connection_p.getTarget() instanceof Entity) {
-      return Collections.singletonList(connection_p.getTarget());
+  public static Collection<? extends EObject> getTargetPartsAndEntities(ComponentExchange connection) {
+    if (connection.getTarget() instanceof Entity) {
+      return Collections.singletonList(connection.getTarget());
     }
-    return getTargetParts(connection_p);
+    return getTargetParts(connection);
   }
 
   /**
    * Return opposite source port of the connection
-   * @param connection_p
+   * @param connection
    * @param port
    * @return Port
    */
-  public static Port getOppositePort(ComponentExchange connection_p, Port port) {
-    Port sourcePort = getSourcePort(connection_p);
+  public static Port getOppositePort(ComponentExchange connection, Port port) {
+    Port sourcePort = getSourcePort(connection);
     if ((null != sourcePort) && sourcePort.equals(port)) {
-      return getTargetPort(connection_p);
+      return getTargetPort(connection);
     }
 
     return sourcePort;
@@ -193,11 +198,11 @@ public class ComponentExchangeExt {
 
   /**
    * Return best source element of the Connection
-   * @param connection_p
+   * @param connection
    * @return ModelElement
    */
-  public static Component getSourceComponent(ComponentExchange connection_p) {
-    InformationsExchanger source = connection_p.getSource();
+  public static Component getSourceComponent(ComponentExchange connection) {
+    InformationsExchanger source = connection.getSource();
     // connection end
     if (source instanceof ComponentExchangeEnd) {
       Partition part = ((ComponentExchangeEnd) source).getPart();
@@ -211,11 +216,9 @@ public class ComponentExchangeExt {
     // part
     else if (source instanceof Part) {
       Part part = (Part) source;
-      if (null != part) {
-        AbstractType abstractType = part.getType();
-        if ((null != abstractType) && (abstractType instanceof Component)) {
-          return (Component) abstractType;
-        }
+      AbstractType abstractType = part.getType();
+      if ((null != abstractType) && (abstractType instanceof Component)) {
+        return (Component) abstractType;
       }
     }
     // component port
@@ -242,11 +245,11 @@ public class ComponentExchangeExt {
 
   /**
    * Return best target element of the Connection
-   * @param connection_p
+   * @param connection
    * @return ModelElement
    */
-  public static Component getTargetComponent(ComponentExchange connection_p) {
-    InformationsExchanger target = connection_p.getTarget();
+  public static Component getTargetComponent(ComponentExchange connection) {
+    InformationsExchanger target = connection.getTarget();
     // connection end
     if (target instanceof ComponentExchangeEnd) {
       Partition part = ((ComponentExchangeEnd) target).getPart();
@@ -260,11 +263,9 @@ public class ComponentExchangeExt {
     // part
     else if (target instanceof Part) {
       Part part = (Part) target;
-      if (null != part) {
-        AbstractType abstractType = part.getType();
-        if ((null != abstractType) && (abstractType instanceof Component)) {
-          return (Component) abstractType;
-        }
+      AbstractType abstractType = part.getType();
+      if ((null != abstractType) && (abstractType instanceof Component)) {
+        return (Component) abstractType;
       }
     }
     // component port
@@ -292,36 +293,36 @@ public class ComponentExchangeExt {
 
   /**
    * Returns whether the connection is valid (no null bounds) and linked to an actor
-   * @param object_p
+   * @param connection
    * @return
    */
-  public static boolean isLinkToAnActor(ComponentExchange connection_p) {
-    Component source = getSourceComponent(connection_p);
-    Component target = getTargetComponent(connection_p);
+  public static boolean isLinkToAnActor(ComponentExchange connection) {
+    Component source = getSourceComponent(connection);
+    Component target = getTargetComponent(connection);
     return (source != null) && (target != null) && ((source instanceof AbstractActor) || (target instanceof AbstractActor));
   }
 
   /**
    * Returns whether the connection is valid (no null bounds) and not linked to an actor
-   * @param object_p
+   * @param connection
    * @return
    */
-  public static boolean isNotLinkToAnActor(ComponentExchange connection_p) {
-    Component source = getSourceComponent(connection_p);
-    Component target = getTargetComponent(connection_p);
+  public static boolean isNotLinkToAnActor(ComponentExchange connection) {
+    Component source = getSourceComponent(connection);
+    Component target = getTargetComponent(connection);
     return (source != null) && (target != null) && !((source instanceof AbstractActor) || (target instanceof AbstractActor));
   }
 
   /**
    * Return filtered list of Connection by kinds
-   * @param Objects_p
-   * @param kinds_p
+   * @param objects
+   * @param kinds1
    * @return list of Objects
    */
-  public static List<Object> filteredComponentExchangesBykind(List<Object> Objects_p, ComponentExchangeKind[] kinds_p) {
+  public static List<Object> filteredComponentExchangesBykind(List<Object> objects, ComponentExchangeKind[] kinds1) {
     List<Object> results = new ArrayList<Object>();
-    List<ComponentExchangeKind> kinds = Arrays.asList(kinds_p);
-    for (Object object : Objects_p) {
+    List<ComponentExchangeKind> kinds = Arrays.asList(kinds1);
+    for (Object object : objects) {
       if (object instanceof ComponentExchange) {
         ComponentExchangeKind currentKind = ((ComponentExchange) object).getKind();
         if (kinds.contains(currentKind)) {
@@ -334,48 +335,48 @@ public class ComponentExchangeExt {
 
   /**
    * Create a componentExchange from both parts. create ports if unset or use given ports.
-   * @param sourcePart_p
-   * @param sourcePort_p
-   * @param targetPart_p
-   * @param targetPort_p
-   * @param kind_p
+   * @param sourcePart
+   * @param sourcePort
+   * @param targetPart
+   * @param targetPort
+   * @param kind
    * @return
    */
-  public static ComponentExchange createComponentExchange(Part sourcePart_p, ComponentPort sourcePort_p, Part targetPart_p, ComponentPort targetPort_p,
-      ComponentExchangeKind kind_p, ComponentPortKind sourceKind_p, OrientationPortKind sourceOrientation_p, ComponentPortKind targetKind_p,
-      OrientationPortKind targetOrientation_p, boolean isMultipart_p) {
+  public static ComponentExchange createComponentExchange(Part sourcePart, ComponentPort sourcePort, Part targetPart, ComponentPort targetPort,
+      ComponentExchangeKind kind, ComponentPortKind sourceKind1, OrientationPortKind sourceOrientation, ComponentPortKind targetKind1,
+      OrientationPortKind targetOrientation, boolean isMultipart1) {
 
-    boolean isMultipart = isMultipart_p;
-    ComponentPort portSource = sourcePort_p;
+    boolean isMultipart = isMultipart1;
+    ComponentPort portSource = sourcePort;
     if (portSource == null) {
-      Component component = (Component) sourcePart_p.getAbstractType();
+      Component component = (Component) sourcePart.getAbstractType();
       portSource = FaFactory.eINSTANCE.createComponentPort();
-      portSource.setKind(sourceKind_p);
-      portSource.setOrientation(sourceOrientation_p);
+      portSource.setKind(sourceKind1);
+      portSource.setOrientation(sourceOrientation);
       component.getOwnedFeatures().add(portSource);
       CapellaElementExt.creationService(portSource);
     }
 
-    ComponentPort portTarget = targetPort_p;
+    ComponentPort portTarget = targetPort;
     if (portTarget == null) {
-      Component component = (Component) targetPart_p.getAbstractType();
+      Component component = (Component) targetPart.getAbstractType();
       portTarget = FaFactory.eINSTANCE.createComponentPort();
-      portTarget.setKind(targetKind_p);
-      portTarget.setOrientation(targetOrientation_p);
+      portTarget.setKind(targetKind1);
+      portTarget.setOrientation(targetOrientation);
       component.getOwnedFeatures().add(portTarget);
       CapellaElementExt.creationService(portTarget);
     }
 
     ComponentExchange componentExchange = FaFactory.eINSTANCE.createComponentExchange();
-    componentExchange.setKind(kind_p);
-    attachTo(componentExchange, getDefaultContainer(sourcePart_p, targetPart_p));
+    componentExchange.setKind(kind);
+    attachTo(componentExchange, getDefaultContainer(sourcePart, targetPart));
 
-    if ((!isMultipart) || (kind_p == ComponentExchangeKind.DELEGATION)) {
+    if ((!isMultipart) || (kind == ComponentExchangeKind.DELEGATION)) {
       componentExchange.setSource(portSource);
     } else {
       ComponentExchangeEnd end = FaFactory.eINSTANCE.createComponentExchangeEnd();
       end.setPort(portSource);
-      end.setPart(sourcePart_p);
+      end.setPart(sourcePart);
       componentExchange.getOwnedComponentExchangeEnds().add(end);
       componentExchange.setSource(end);
     }
@@ -385,7 +386,7 @@ public class ComponentExchangeExt {
     } else {
       ComponentExchangeEnd end = FaFactory.eINSTANCE.createComponentExchangeEnd();
       end.setPort(portTarget);
-      end.setPart(targetPart_p);
+      end.setPart(targetPart);
       componentExchange.getOwnedComponentExchangeEnds().add(end);
       componentExchange.setTarget(end);
     }
@@ -396,16 +397,16 @@ public class ComponentExchangeExt {
 
   /**
    * Attach the given component exchange to the given abstract functional block
-   * @param exchange_p
-   * @param container_p
+   * @param exchange
+   * @param container
    * @return
    */
-  public static boolean attachTo(ComponentExchange exchange_p, AbstractFunctionalBlock container_p) {
-    if ((container_p != null) && !container_p.equals(exchange_p.eContainer())) {
-      if ((container_p instanceof Entity) && (exchange_p instanceof CommunicationMean)) {
-        ((Entity) container_p).getOwnedCommunicationMeans().add((CommunicationMean) exchange_p);
+  public static boolean attachTo(ComponentExchange exchange, AbstractFunctionalBlock container) {
+    if ((container != null) && !container.equals(exchange.eContainer())) {
+      if ((container instanceof Entity) && (exchange instanceof CommunicationMean)) {
+        ((Entity) container).getOwnedCommunicationMeans().add((CommunicationMean) exchange);
       } else {
-        (container_p).getOwnedComponentExchanges().add(exchange_p);
+        (container).getOwnedComponentExchanges().add(exchange);
       }
       return true;
     }
@@ -414,26 +415,26 @@ public class ComponentExchangeExt {
 
   /**
    * Move the given component exchange to common ancestor
-   * @param exchange_p
+   * @param exchange
    * @return whether the component exchange has been moved
    */
-  public static boolean attachToDefaultContainer(ComponentExchange exchange_p) {
-    return attachTo(exchange_p, getDefaultContainer(exchange_p));
+  public static boolean attachToDefaultContainer(ComponentExchange exchange) {
+    return attachTo(exchange, getDefaultContainer(exchange));
   }
 
   /**
    * Return the best container between both given elements
-   * @param sourcePart_p a part or a component
-   * @param targetPart_p a part or a component
+   * @param sourcePart a part or a component
+   * @param targetPart a part or a component
    * @return a not null element
    */
-  public static AbstractFunctionalBlock getDefaultContainer(CapellaElement sourcePart_p, CapellaElement targetPart_p) {
-    EObject container = ComponentExt.getFirstCommonComponentAncestor(sourcePart_p, targetPart_p);
+  public static AbstractFunctionalBlock getDefaultContainer(CapellaElement sourcePart, CapellaElement targetPart) {
+    EObject container = ComponentExt.getFirstCommonComponentAncestor(sourcePart, targetPart);
     if ((container != null) && !(container instanceof AbstractFunctionalBlock)) {
       container = EcoreUtil2.getFirstContainer(container, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK);
     }
     if ((container == null) || !(container instanceof AbstractFunctionalBlock)) {
-      container = BlockArchitectureExt.getContext(ComponentExt.getRootBlockArchitecture(sourcePart_p));
+      container = BlockArchitectureExt.getContext(ComponentExt.getRootBlockArchitecture(sourcePart));
     }
     return (AbstractFunctionalBlock) container;
   }
@@ -441,18 +442,18 @@ public class ComponentExchangeExt {
   /**
    * The best container is the common ancestor of source/target parts. if no parts, we use common ancestor of components (which can happen in OA or if user has
    * deleted parts)
-   * @param exchange_p
+   * @param exchange
    * @return a not null element
    */
-  public static AbstractFunctionalBlock getDefaultContainer(ComponentExchange exchange_p) {
-    CapellaElement source = ComponentExchangeExt.getSourceComponent(exchange_p);
-    Collection<Part> parts = ComponentExchangeExt.getSourceParts(exchange_p);
+  public static AbstractFunctionalBlock getDefaultContainer(ComponentExchange exchange) {
+    CapellaElement source = ComponentExchangeExt.getSourceComponent(exchange);
+    Collection<Part> parts = ComponentExchangeExt.getSourceParts(exchange);
     if (!parts.isEmpty()) {
       source = parts.iterator().next();
     }
 
-    CapellaElement target = ComponentExchangeExt.getTargetComponent(exchange_p);
-    parts = ComponentExchangeExt.getTargetParts(exchange_p);
+    CapellaElement target = ComponentExchangeExt.getTargetComponent(exchange);
+    parts = ComponentExchangeExt.getTargetParts(exchange);
     if (!parts.isEmpty()) {
       target = parts.iterator().next();
     }
@@ -462,18 +463,18 @@ public class ComponentExchangeExt {
 
   /**
    * The best container for storing a category for the given exchange
-   * @param exchange_p
+   * @param exchange
    * @return
    */
-  public static AbstractFunctionalBlock getDefaultContainerForCategory(ComponentExchange exchange_p) {
-    CapellaElement source = ComponentExchangeExt.getSourceComponent(exchange_p);
-    Collection<Part> parts = ComponentExchangeExt.getSourceParts(exchange_p);
+  public static AbstractFunctionalBlock getDefaultContainerForCategory(ComponentExchange exchange) {
+    CapellaElement source = ComponentExchangeExt.getSourceComponent(exchange);
+    Collection<Part> parts = ComponentExchangeExt.getSourceParts(exchange);
     if (!parts.isEmpty()) {
       source = parts.iterator().next();
     }
 
-    CapellaElement target = ComponentExchangeExt.getTargetComponent(exchange_p);
-    parts = ComponentExchangeExt.getTargetParts(exchange_p);
+    CapellaElement target = ComponentExchangeExt.getTargetComponent(exchange);
+    parts = ComponentExchangeExt.getTargetParts(exchange);
     if (!parts.isEmpty()) {
       target = parts.iterator().next();
     }
@@ -483,36 +484,36 @@ public class ComponentExchangeExt {
 
   /**
    * Return the best container for storing a category for an exchange between both given elements
-   * @param sourcePart_p
-   * @param targetPart_p
+   * @param sourcePart
+   * @param targetPart
    * @return
    */
-  public static AbstractFunctionalBlock getDefaultContainerForCategory(CapellaElement sourcePart_p, CapellaElement targetPart_p) {
-    EObject container = ComponentExt.getFirstCommonComponentAncestor(sourcePart_p, targetPart_p);
+  public static AbstractFunctionalBlock getDefaultContainerForCategory(CapellaElement sourcePart, CapellaElement targetPart) {
+    EObject container = ComponentExt.getFirstCommonComponentAncestor(sourcePart, targetPart);
     if ((container != null) && !(container instanceof AbstractFunctionalBlock)) {
       container =
           EcoreUtil2.getFirstContainer(container,
               Arrays.asList(FaPackage.eINSTANCE.getAbstractFunctionalBlock(), FaPackage.eINSTANCE.getAbstractFunctionalStructure()));
     }
     if ((container == null) || !(container instanceof AbstractFunctionalBlock)) {
-      container = BlockArchitectureExt.getContext(ComponentExt.getRootBlockArchitecture(sourcePart_p));
+      container = BlockArchitectureExt.getContext(ComponentExt.getRootBlockArchitecture(sourcePart));
     }
     return (AbstractFunctionalBlock) container;
   }
 
-  public static Collection<? extends ComponentExchange> getDelegatedComponentExchanges(ComponentPort port, ComponentExchange delegation_p) {
+  public static Collection<? extends ComponentExchange> getDelegatedComponentExchanges(ComponentPort port, ComponentExchange delegation) {
     Port cp = null;
-    if (delegation_p.getSourcePort().equals(port)) {
-      cp = delegation_p.getTargetPort();
+    if (delegation.getSourcePort().equals(port)) {
+      cp = delegation.getTargetPort();
     } else {
-      cp = delegation_p.getSourcePort();
+      cp = delegation.getSourcePort();
     }
 
     List<ComponentExchange> result = new ArrayList<ComponentExchange>();
     if (cp instanceof ComponentPort) {
       // The "pivot" port is available, find the ports that are not from the delegation.
       for (ComponentExchange ce : ((ComponentPort) cp).getComponentExchanges()) {
-        if (ce != delegation_p) {
+        if (!ce.equals(delegation)) {
           if (ce.getKind().equals(ComponentExchangeKind.DELEGATION)) {
             result.addAll(getDelegatedComponentExchanges((ComponentPort) cp, ce));
           } else {
@@ -526,26 +527,26 @@ public class ComponentExchangeExt {
 
   /**
    * Get every port allocations between ports of given exchanges.
-   * @param cExchange_p
-   * @param fExchange_p
+   * @param cExchange
+   * @param fExchange
    * @return a list of port allocations.
    */
-  private static List<PortAllocation> getPortAllocations(ComponentExchange cExchange_p, FunctionalExchange fExchange_p) {
+  private static List<PortAllocation> getPortAllocations(ComponentExchange cExchange, FunctionalExchange fExchange) {
     List<PortAllocation> portAllocations = new ArrayList<PortAllocation>();
     // Get all ports allocations associated to the component exchange ports (source and target).
     List<PortAllocation> portAllocationsToCheck = new ArrayList<PortAllocation>();
-    Port sourceComponentPort = cExchange_p.getSourcePort();
+    Port sourceComponentPort = cExchange.getSourcePort();
     if (null != sourceComponentPort) {
       // Check for null value (this can occur with projectApproach=ReusableComponents).
       portAllocationsToCheck.addAll(sourceComponentPort.getOutgoingPortAllocations());
     }
-    Port targetComponentPort = cExchange_p.getTargetPort();
+    Port targetComponentPort = cExchange.getTargetPort();
     if (null != targetComponentPort) {
       portAllocationsToCheck.addAll(targetComponentPort.getOutgoingPortAllocations());
     }
     // Keep only port allocations associated to a port of the given functional exchange.
     for (PortAllocation portAllocation : portAllocationsToCheck) {
-      if (portAllocation.getTargetElement().equals(fExchange_p.getSource()) || portAllocation.getTargetElement().equals(fExchange_p.getTarget())) {
+      if (portAllocation.getTargetElement().equals(fExchange.getSource()) || portAllocation.getTargetElement().equals(fExchange.getTarget())) {
         portAllocations.add(portAllocation);
       }
     }
@@ -554,27 +555,25 @@ public class ComponentExchangeExt {
 
   /**
    * Returns whether the given component exchange is a Delegation
-   * @param exchange_p
+   * @param exchange
    * @return
    */
-  public static boolean isDelegation(ComponentExchange exchange_p) {
-    return exchange_p.getKind() == ComponentExchangeKind.DELEGATION;
+  public static boolean isDelegation(ComponentExchange exchange) {
+    return exchange.getKind() == ComponentExchangeKind.DELEGATION;
   }
 
   /**
    * Return valid FE available for allocation
-   * @param element_p
+   * @param element
    * @return
    */
-  public static List<CapellaElement> getValidFEAvailableForAllocation(ComponentExchange element_p) {
+  public static List<CapellaElement> getValidFEAvailableForAllocation(ComponentExchange element) {
     List<CapellaElement> result = new ArrayList<CapellaElement>(1);
-    // Source{Component}
     AbstractFunctionalBlock source = null;
-    // Target{Component}
     AbstractFunctionalBlock target = null;
 
-    Port sourcePort = ComponentExchangeExt.getSourcePort(element_p);
-    Port targetPort = ComponentExchangeExt.getTargetPort(element_p);
+    Port sourcePort = ComponentExchangeExt.getSourcePort(element);
+    Port targetPort = ComponentExchangeExt.getTargetPort(element);
 
     // toSource: target port should not be IN, source port should not be OUT
     // toTarget: source port should not be IN, target port should not be OUT
@@ -593,12 +592,12 @@ public class ComponentExchangeExt {
         compSourceWithTarget
             && ((targetPort == null) || ((targetPort instanceof ComponentPort) && (!(((ComponentPort) targetPort).getOrientation() == OrientationPortKind.OUT))));
 
-    InformationsExchanger informationsExchangerSource = element_p.getSource();
-    InformationsExchanger informationsExchangerTarget = element_p.getTarget();
+    InformationsExchanger informationsExchangerSource = element.getSource();
+    InformationsExchanger informationsExchangerTarget = element.getTarget();
 
     if ((informationsExchangerSource != null) && (informationsExchangerTarget != null)) {
-      source = ComponentExchangeExt.getSourceComponent(element_p);
-      target = ComponentExchangeExt.getTargetComponent(element_p);
+      source = ComponentExchangeExt.getSourceComponent(element);
+      target = ComponentExchangeExt.getTargetComponent(element);
 
       if (toTarget) {
         // add all available functional Exchanges from source to target
@@ -628,21 +627,21 @@ public class ComponentExchangeExt {
    * <li>If the source component "contains" the target function and the target component "contains" the source function, the allocation 2 is done.</li>
    * </ol>
    * If both allocations are realizable, the first one is done.
-   * @param cExchange_p the ComponentExchange using ports to allocate,
-   * @param fExchange_p the FunctionalExchange using ports to be allocated.
+   * @param cExchange the ComponentExchange using ports to allocate,
+   * @param fExchange the FunctionalExchange using ports to be allocated.
    */
-  public static void synchronizePortAllocations(ComponentExchange cExchange_p, FunctionalExchange fExchange_p) {
+  public static void synchronizePortAllocations(ComponentExchange cExchange, FunctionalExchange fExchange) {
 
-    Port sourceComponentPort = ComponentExchangeExt.getSourcePort(cExchange_p);
-    Port targetComponentPort = ComponentExchangeExt.getTargetPort(cExchange_p);
+    Port sourceComponentPort = ComponentExchangeExt.getSourcePort(cExchange);
+    Port targetComponentPort = ComponentExchangeExt.getTargetPort(cExchange);
 
     if ((sourceComponentPort != null) && (targetComponentPort != null) && (sourceComponentPort instanceof InformationsExchanger)
         && (targetComponentPort instanceof InformationsExchanger)) {
-      Component sourceComponent = ComponentExchangeExt.getSourceComponent(cExchange_p);
-      Component targetComponent = ComponentExchangeExt.getTargetComponent(cExchange_p);
+      Component sourceComponent = ComponentExchangeExt.getSourceComponent(cExchange);
+      Component targetComponent = ComponentExchangeExt.getTargetComponent(cExchange);
 
-      AbstractFunction sourceFunction = FunctionalExchangeExt.getSourceFunction(fExchange_p);
-      AbstractFunction targetFunction = FunctionalExchangeExt.getTargetFunction(fExchange_p);
+      AbstractFunction sourceFunction = FunctionalExchangeExt.getSourceFunction(fExchange);
+      AbstractFunction targetFunction = FunctionalExchangeExt.getTargetFunction(fExchange);
 
       // Get all nested components (as displayed in diagrams) of the source component .
       List<Component> sourceComponentAndSubComponents = ComponentExt.getAllSubUsedAndDeployedComponents(sourceComponent);
@@ -658,58 +657,58 @@ public class ComponentExchangeExt {
           && !Collections.disjoint(targetComponentAndSubComponents, targetFunctionAllocatingComponents)) {
         // Source component "contains" source function and target component "contains" target function :
         // Allocations : Source component port -> source function port + Target component port -> target function port.
-        synchronizeAllocations((InformationsExchanger) sourceComponentPort, fExchange_p.getSource());
-        synchronizeAllocations((InformationsExchanger) targetComponentPort, fExchange_p.getTarget());
+        synchronizeAllocations((InformationsExchanger) sourceComponentPort, fExchange.getSource());
+        synchronizeAllocations((InformationsExchanger) targetComponentPort, fExchange.getTarget());
       } else if (!Collections.disjoint(sourceComponentAndSubComponents, targetFunctionAllocatingComponents)
                  && !Collections.disjoint(targetComponentAndSubComponents, sourceFunctionAllocatingComponents)) {
         // Source component "contains" target function and target component "contains" source function.
         // Allocations : Source component port -> target function port + Target component port -> source function port.
-        synchronizeAllocations((InformationsExchanger) sourceComponentPort, fExchange_p.getTarget());
-        synchronizeAllocations((InformationsExchanger) targetComponentPort, fExchange_p.getSource());
+        synchronizeAllocations((InformationsExchanger) sourceComponentPort, fExchange.getTarget());
+        synchronizeAllocations((InformationsExchanger) targetComponentPort, fExchange.getSource());
       }
     }
   }
 
   /**
    * Get ports allocations betw
-   * @param cExchange_p
-   * @param fExchange_p
-   * @param forceCleaning_p TODO it seems that this parameter is always set to true (else in the two unsynchronizeAllocations methods which seem not used).
+   * @param cExchange
+   * @param fExchange
+   * @param forceCleaning TODO it seems that this parameter is always set to true (else in the two unsynchronizeAllocations methods which seem not used).
    * @return
    */
-  public static List<? extends ModelElement> evaluateImpactsOfUnsynchronizeAllocations(ComponentExchange cExchange_p, FunctionalExchange fExchange_p,
-      boolean forceCleaning_p) {
-    if (forceCleaning_p) {
-      return getPortAllocations(cExchange_p, fExchange_p);
+  public static List<? extends ModelElement> evaluateImpactsOfUnsynchronizeAllocations(ComponentExchange cExchange, FunctionalExchange fExchange,
+      boolean forceCleaning) {
+    if (forceCleaning) {
+      return getPortAllocations(cExchange, fExchange);
     }
 
     List<ModelElement> result = new ArrayList<ModelElement>();
-    if (getExchangesFrom(cExchange_p, fExchange_p.getSource()).isEmpty()) {
-      result.addAll(unsynchronizeAllocations(cExchange_p.getSource(), fExchange_p.getSource()));
+    if (getExchangesFrom(cExchange, fExchange.getSource()).isEmpty()) {
+      result.addAll(unsynchronizeAllocations(cExchange.getSource(), fExchange.getSource()));
     }
-    if (getExchangesFrom(cExchange_p, fExchange_p.getTarget()).isEmpty()) {
-      result.addAll(unsynchronizeAllocations(cExchange_p.getTarget(), fExchange_p.getTarget()));
+    if (getExchangesFrom(cExchange, fExchange.getTarget()).isEmpty()) {
+      result.addAll(unsynchronizeAllocations(cExchange.getTarget(), fExchange.getTarget()));
     }
     return result;
   }
 
   /**
-   * @param cPort_p
-   * @param fPort_p
+   * @param cPort
+   * @param fPort
    */
-  private static void synchronizeAllocations(InformationsExchanger cPort_p, ActivityNode fPort_p) {
-    if (cPort_p instanceof ComponentPort) {
-      PortExt.attachPort((ComponentPort) cPort_p, fPort_p);
+  private static void synchronizeAllocations(InformationsExchanger cPort, ActivityNode fPort) {
+    if (cPort instanceof ComponentPort) {
+      PortExt.attachPort((ComponentPort) cPort, fPort);
     }
   }
 
   /**
-   * @param cPort_p
-   * @param fPort_p
+   * @param cPort
+   * @param fPort
    */
-  private static List<ModelElement> unsynchronizeAllocations(InformationsExchanger cPort_p, ActivityNode fPort_p) {
+  private static List<ModelElement> unsynchronizeAllocations(InformationsExchanger cPort, ActivityNode fPort) {
     List<ModelElement> result = new ArrayList<ModelElement>();
-    PortAllocation allocation = getPortAllocation(cPort_p, fPort_p);
+    PortAllocation allocation = getPortAllocation(cPort, fPort);
     if (null != allocation) {
       result.add(allocation);
     }
@@ -718,17 +717,17 @@ public class ComponentExchangeExt {
 
   /**
    * Retrieves all the functional exchanges related to the given component exchange and the given function port
-   * @param cExchange_p
-   * @param fPort_p
+   * @param cExchange
+   * @param fPort
    * @return
    */
-  private static List<FunctionalExchange> getExchangesFrom(ComponentExchange cExchange_p, ActivityNode fPort_p) {
+  private static List<FunctionalExchange> getExchangesFrom(ComponentExchange cExchange, ActivityNode fPort) {
     List<FunctionalExchange> result = new ArrayList<FunctionalExchange>();
-    if (null != fPort_p) {
-      for (FunctionalExchange exchange : cExchange_p.getAllocatedFunctionalExchanges()) {
+    if (null != fPort) {
+      for (FunctionalExchange exchange : cExchange.getAllocatedFunctionalExchanges()) {
         ActivityNode nodeSource = exchange.getSource();
         ActivityNode nodeTarget = exchange.getTarget();
-        if (fPort_p.equals(nodeSource) || fPort_p.equals(nodeTarget)) {
+        if (fPort.equals(nodeSource) || fPort.equals(nodeTarget)) {
           result.add(exchange);
         }
       }
@@ -739,13 +738,13 @@ public class ComponentExchangeExt {
 
   /**
    * Verifies if a port allocation from a component port to a function port already exist
-   * @param cPort_p
-   * @param fPort_p
+   * @param cPort
+   * @param fPort
    */
-  private static PortAllocation getPortAllocation(InformationsExchanger cPort_p, ActivityNode fPort_p) {
-    if (cPort_p instanceof ComponentPort) {
-      for (PortAllocation portAllocation : ((ComponentPort) cPort_p).getOutgoingPortAllocations()) {
-        if (fPort_p.equals(portAllocation.getTargetElement())) {
+  private static PortAllocation getPortAllocation(InformationsExchanger cPort, ActivityNode fPort) {
+    if (cPort instanceof ComponentPort) {
+      for (PortAllocation portAllocation : ((ComponentPort) cPort).getOutgoingPortAllocations()) {
+        if (fPort.equals(portAllocation.getTargetElement())) {
           return portAllocation;
         }
       }
@@ -754,22 +753,22 @@ public class ComponentExchangeExt {
   }
 
   /**
-   * @param sourcePart_p
-   * @param ce_p
+   * @param sourcePart
+   * @param ce
    */
-  public static ComponentPort getAttachingPort(Part sourcePart_p, ComponentExchange ce_p) {
-    Port componentExcSource = ce_p.getSourcePort();
+  public static ComponentPort getAttachingPort(Part sourcePart, ComponentExchange ce) {
+    Port componentExcSource = ce.getSourcePort();
     if (componentExcSource instanceof ComponentPort) {
       Component sourceComponent = (Component) componentExcSource.eContainer();
-      if (ComponentExt.getRepresentingParts(sourceComponent).contains(sourcePart_p)) {
+      if (ComponentExt.getRepresentingParts(sourceComponent).contains(sourcePart)) {
         return (ComponentPort) componentExcSource;
       }
 
     }
-    Port componentExcTarget = ce_p.getTargetPort();
+    Port componentExcTarget = ce.getTargetPort();
     if (componentExcTarget instanceof ComponentPort) {
       Component targetComponent = (Component) componentExcTarget.eContainer();
-      if (ComponentExt.getRepresentingParts(targetComponent).contains(sourcePart_p)) {
+      if (ComponentExt.getRepresentingParts(targetComponent).contains(sourcePart)) {
         //
       }
       return (ComponentPort) componentExcTarget;

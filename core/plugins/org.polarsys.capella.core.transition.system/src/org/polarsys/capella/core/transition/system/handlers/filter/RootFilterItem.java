@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.handlers.filter;
 
 import org.eclipse.emf.diffmerge.api.Role;
@@ -27,11 +28,11 @@ public class RootFilterItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isMergeable(IDifference difference_p, Role role_p, IContext context_p) {
+  public boolean isMergeable(IDifference difference, Role role, IContext context) {
 
     // Filter SystemEngineering differences
-    if (difference_p instanceof IValuePresence) {
-      IValuePresence presence = (IValuePresence) difference_p;
+    if (difference instanceof IValuePresence) {
+      IValuePresence presence = (IValuePresence) difference;
       if (presence.getElementMatch().get(Role.REFERENCE) instanceof SystemEngineering) {
         return false;
       }

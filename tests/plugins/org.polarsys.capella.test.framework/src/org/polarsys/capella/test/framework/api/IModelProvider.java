@@ -12,6 +12,7 @@ package org.polarsys.capella.test.framework.api;
 
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
@@ -29,6 +30,8 @@ public interface IModelProvider {
   Session getSessionForTestModel(String relativeModelPath, BasicTestArtefact artefact);
 
   CapellaModel getTestModel(String relativeModelPath, BasicTestCase basicTestCase);
+
+  IFile getAirdFileForLoadedModel(String relativeModelPath);
 
   String getProjectSuffix();
 

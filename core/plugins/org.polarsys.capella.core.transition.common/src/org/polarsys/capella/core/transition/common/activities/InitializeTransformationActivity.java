@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.activities;
 
 import java.util.Collection;
@@ -50,10 +51,10 @@ public abstract class InitializeTransformationActivity extends AbstractActivity 
    * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters)
    */
   @Override
-  public IStatus _run(ActivityParameters activityParams_p) {
-    IContext context = (IContext) activityParams_p.getParameter(ITransposerWorkflow.TRANSPOSER_CONTEXT).getValue();
+  public IStatus _run(ActivityParameters activityParams) {
+    IContext context = (IContext) activityParams.getParameter(ITransposerWorkflow.TRANSPOSER_CONTEXT).getValue();
 
-    initializeTransformation(context, activityParams_p);
+    initializeTransformation(context, activityParams);
 
     // Workarounded log. It not truly exact but make a log before the transition :)
     LogHelper.getInstance().debug(NLS.bind("Start activity ''{0}''", "Transformation"), Messages.Activity_Transition); //$NON-NLS-1$
@@ -66,17 +67,17 @@ public abstract class InitializeTransformationActivity extends AbstractActivity 
 
   /**
    * Initialize the transformation traceability handler and set it into context via TRANSFORMATION_HANDLER
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
-  protected IStatus initializeTraceabilityTransformationHandler(IContext context_p, ActivityParameters activityParams_p) {
-    IHandler handler = loadHandlerFromParameters(ITransitionConstants.TRACEABILITY_TRANSFORMATION_HANDLER, activityParams_p);
+  protected IStatus initializeTraceabilityTransformationHandler(IContext context, ActivityParameters activityParams) {
+    IHandler handler = loadHandlerFromParameters(ITransitionConstants.TRACEABILITY_TRANSFORMATION_HANDLER, activityParams);
     if (handler == null) {
       handler = createDefaultTraceabilityTransformationHandler();
     }
-    context_p.put(ITransitionConstants.TRACEABILITY_TRANSFORMATION_HANDLER, handler);
-    handler.init(context_p);
+    context.put(ITransitionConstants.TRACEABILITY_TRANSFORMATION_HANDLER, handler);
+    handler.init(context);
     return Status.OK_STATUS;
   }
 
@@ -90,48 +91,48 @@ public abstract class InitializeTransformationActivity extends AbstractActivity 
 
   /**
    * Should initialize TRANSFORMATION_SOURCE, TRANSFORMATION_SOURCE_CONTAINER, TRANSFORMATION_TARGET_CONTAINER, TRANSFORMATION_SCOPE
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
-  protected IStatus initializeTransformation(IContext context_p, ActivityParameters activityParams_p) {
+  protected IStatus initializeTransformation(IContext context, ActivityParameters activityParams) {
     IStatus status = Status.OK_STATUS;
 
-    status = initializeTraceabilityTransformationHandler(context_p, activityParams_p);
+    status = initializeTraceabilityTransformationHandler(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = checkParameters(context_p, new String[] { ITransitionConstants.TRACEABILITY_TRANSFORMATION_HANDLER });
+    status = checkParameters(context, new String[] { ITransitionConstants.TRACEABILITY_TRANSFORMATION_HANDLER });
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = initializeSource(context_p, activityParams_p);
+    status = initializeSource(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
 
     status =
-        checkParameters(context_p, new String[] { ITransitionConstants.SCOPE_SOURCES, ITransitionConstants.TRANSFORMATION_SOURCES,
+        checkParameters(context, new String[] { ITransitionConstants.SCOPE_SOURCES, ITransitionConstants.TRANSFORMATION_SOURCES,
                                                  ITransitionConstants.TRANSFORMATION_SOURCE_ROOT });
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = initializeTarget(context_p, activityParams_p);
+    status = initializeTarget(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = checkParameters(context_p, new String[] { ITransitionConstants.TRANSFORMATION_TARGET_ROOT });
+    status = checkParameters(context, new String[] { ITransitionConstants.TRANSFORMATION_TARGET_ROOT });
     if (!checkStatus(status)) {
       return status;
     }
 
-    context_p.put(ITransitionConstants.TRACEABILITY_HANDLER, context_p.get(ITransitionConstants.TRACEABILITY_TRANSFORMATION_HANDLER));
+    context.put(ITransitionConstants.TRACEABILITY_HANDLER, context.get(ITransitionConstants.TRACEABILITY_TRANSFORMATION_HANDLER));
 
-    status = checkParameters(context_p, new String[] { ITransitionConstants.TRACEABILITY_HANDLER });
+    status = checkParameters(context, new String[] { ITransitionConstants.TRACEABILITY_HANDLER });
     if (!checkStatus(status)) {
       return status;
     }
@@ -140,12 +141,12 @@ public abstract class InitializeTransformationActivity extends AbstractActivity 
   }
 
   @Override
-  protected IStatus verificationRun(IContext context_p, ActivityParameters activityParams_p) {
+  protected IStatus verificationRun(IContext context, ActivityParameters activityParams) {
 
     //!!! TRACEABILITY_HANDLER must be TRACEABILITY_TRANSFORMATION_HANDLER before triggering transformation !!!
-    context_p.put(ITransitionConstants.TRACEABILITY_HANDLER, context_p.get(ITransitionConstants.TRACEABILITY_TRANSFORMATION_HANDLER));
+    context.put(ITransitionConstants.TRACEABILITY_HANDLER, context.get(ITransitionConstants.TRACEABILITY_TRANSFORMATION_HANDLER));
 
-    return super.verificationRun(context_p, activityParams_p);
+    return super.verificationRun(context, activityParams);
 
   }
 
@@ -153,14 +154,14 @@ public abstract class InitializeTransformationActivity extends AbstractActivity 
    * In a common transition, 
    * TRANSFORMATION_TARGET_ROOT = createTargetTransformationContainer(TRANSITION_TARGET_RESOURCE)
    */
-  protected IStatus initializeTarget(IContext context_p, ActivityParameters activityParams_p) {
+  protected IStatus initializeTarget(IContext context, ActivityParameters activityParams) {
     // Retrieve the target of the transformation, also known as the source of the merge
-    EObject target = createTargetTransformationContainer((Resource) context_p.get(ITransitionConstants.TRANSITION_TARGET_RESOURCE), context_p);
-    context_p.put(ITransitionConstants.TRANSFORMATION_TARGET_ROOT, target);
+    EObject target = createTargetTransformationContainer((Resource) context.get(ITransitionConstants.TRANSITION_TARGET_RESOURCE), context);
+    context.put(ITransitionConstants.TRANSFORMATION_TARGET_ROOT, target);
     return Status.OK_STATUS;
   }
 
-  protected abstract EObject createTargetTransformationContainer(Resource source_p, IContext context_p);
+  protected abstract EObject createTargetTransformationContainer(Resource source, IContext context);
 
   /**
    * SCOPE_SOURCES = TRANSITION_SOURCES
@@ -170,18 +171,18 @@ public abstract class InitializeTransformationActivity extends AbstractActivity 
    * INITIAL_SOURCE_SCOPE = TRANSITION_SOURCES
    * SOURCE_SCOPE = INITIAL_SOURCE_SCOPE
    */
-  protected IStatus initializeSource(IContext context_p, ActivityParameters activityParams_p) {
+  protected IStatus initializeSource(IContext context, ActivityParameters activityParams) {
     // Retrieve the source of the transformation
-    Collection<EObject> selection = (Collection<EObject>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
+    Collection<EObject> selection = (Collection<EObject>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     if (selection.size() > 0) {
-      context_p.put(ITransitionConstants.SCOPE_SOURCES, context_p.get(ITransitionConstants.TRANSITION_SOURCES));
-      context_p.put(ITransitionConstants.TRANSFORMATION_SOURCES, context_p.get(ITransitionConstants.TRANSITION_SOURCES));
-      context_p.put(ITransitionConstants.TRANSFORMATION_SOURCE_ROOT, context_p.get(ITransitionConstants.TRANSITION_SOURCE_ROOT));
+      context.put(ITransitionConstants.SCOPE_SOURCES, context.get(ITransitionConstants.TRANSITION_SOURCES));
+      context.put(ITransitionConstants.TRANSFORMATION_SOURCES, context.get(ITransitionConstants.TRANSITION_SOURCES));
+      context.put(ITransitionConstants.TRANSFORMATION_SOURCE_ROOT, context.get(ITransitionConstants.TRANSITION_SOURCE_ROOT));
     }
 
     //Add on source scope
-    ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.INITIAL_SOURCE_SCOPE, selection, context_p);
-    ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, selection, context_p);
+    ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.INITIAL_SOURCE_SCOPE, selection, context);
+    ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, selection, context);
 
     return Status.OK_STATUS;
   }

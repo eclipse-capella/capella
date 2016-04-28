@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.core;
 
 import java.util.List;
@@ -32,29 +33,29 @@ public class EnumerationPropertyTypeRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element_p, result_p);
+        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
+            element, result);
     return BlockArchitectureExt.getDataPkg(target);
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    EnumerationPropertyType element = (EnumerationPropertyType) source_p;
-    result_p.addAll(element.getOwnedLiterals());
-    result_p.addAll(element.getOwnedEnumerationPropertyTypes());
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    EnumerationPropertyType element = (EnumerationPropertyType) source;
+    result.addAll(element.getOwnedLiterals());
+    result.addAll(element.getOwnedEnumerationPropertyTypes());
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
   }
 
   @Override
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
+  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
     //Nothing here
   }
 

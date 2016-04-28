@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.epbs.delegates;
 
 import java.util.ArrayList;
@@ -38,29 +39,29 @@ public class EpbsArchitectureHelper {
     return instance;
   }
 
-  public Object doSwitch(EPBSArchitecture element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(EPBSArchitecture element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(EpbsPackage.Literals.EPBS_ARCHITECTURE__ALLOCATED_PHYSICAL_ARCHITECTURE_REALIZATIONS)) {
-      ret = getAllocatedPhysicalArchitectureRealizations(element_p);
-    } else if (feature_p.equals(EpbsPackage.Literals.EPBS_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG)) {
-      ret = getContainedCapabilityRealizationPkg(element_p);
-    } else if (feature_p.equals(EpbsPackage.Literals.EPBS_ARCHITECTURE__ALLOCATED_PHYSICAL_ARCHITECTURES)) {
-      ret = getAllocatedPhysicalArchitectures(element_p);
+    if (feature.equals(EpbsPackage.Literals.EPBS_ARCHITECTURE__ALLOCATED_PHYSICAL_ARCHITECTURE_REALIZATIONS)) {
+      ret = getAllocatedPhysicalArchitectureRealizations(element);
+    } else if (feature.equals(EpbsPackage.Literals.EPBS_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG)) {
+      ret = getContainedCapabilityRealizationPkg(element);
+    } else if (feature.equals(EpbsPackage.Literals.EPBS_ARCHITECTURE__ALLOCATED_PHYSICAL_ARCHITECTURES)) {
+      ret = getAllocatedPhysicalArchitectures(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = BlockArchitectureHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = BlockArchitectureHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<PhysicalArchitectureRealization> getAllocatedPhysicalArchitectureRealizations(EPBSArchitecture element_p) {
+  protected List<PhysicalArchitectureRealization> getAllocatedPhysicalArchitectureRealizations(EPBSArchitecture element) {
     List<PhysicalArchitectureRealization> ret = new ArrayList<PhysicalArchitectureRealization>();
 
-    for (ArchitectureAllocation architectureAllocation : element_p.getProvisionedArchitectureAllocations()) {
+    for (ArchitectureAllocation architectureAllocation : element.getProvisionedArchitectureAllocations()) {
       if (architectureAllocation instanceof PhysicalArchitectureRealization) {
         ret.add((PhysicalArchitectureRealization) architectureAllocation);
       }
@@ -68,17 +69,17 @@ public class EpbsArchitectureHelper {
     return ret;
   }
 
-  protected CapabilityRealizationPkg getContainedCapabilityRealizationPkg(EPBSArchitecture element_p) {
-    AbstractCapabilityPkg abstractCapabilityPkg = element_p.getOwnedAbstractCapabilityPkg();
+  protected CapabilityRealizationPkg getContainedCapabilityRealizationPkg(EPBSArchitecture element) {
+    AbstractCapabilityPkg abstractCapabilityPkg = element.getOwnedAbstractCapabilityPkg();
     if (abstractCapabilityPkg instanceof CapabilityRealizationPkg) {
       return (CapabilityRealizationPkg) abstractCapabilityPkg;
     }
     return null;
   }
 
-  protected List<PhysicalArchitecture> getAllocatedPhysicalArchitectures(EPBSArchitecture element_p){
+  protected List<PhysicalArchitecture> getAllocatedPhysicalArchitectures(EPBSArchitecture element){
     List <PhysicalArchitecture> ret = new ArrayList<PhysicalArchitecture>();
-    for (BlockArchitecture architecture : element_p.getAllocatedArchitectures()) {
+    for (BlockArchitecture architecture : element.getAllocatedArchitectures()) {
       if (architecture instanceof PhysicalArchitecture) {
         ret.add((PhysicalArchitecture) architecture);
       }

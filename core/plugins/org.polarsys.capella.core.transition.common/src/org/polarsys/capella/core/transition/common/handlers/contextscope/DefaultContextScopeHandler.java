@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.contextscope;
 
 import java.util.Collection;
@@ -30,22 +31,20 @@ public class DefaultContextScopeHandler implements IContextScopeHandler {
   /**
    * {@inheritDoc}
    */
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     return Status.OK_STATUS;
   }
 
   /**
    * {@inheritDoc}
    */
-  public IStatus dispose(IContext context_p) {
-    for (Object key : context_p.getKeys()) {
-      if ((key instanceof String) && (key != null)) {
-        if (((String) key).startsWith(REFERENCE_COMPONENT_SCOPE)) {
-          Object value = context_p.get(key);
-          if ((value != null) && (value instanceof Collection)) {
-            if (!((Collection<?>) value).isEmpty()) {
-              ((Collection<?>) context_p.get(key)).clear();
-            }
+  public IStatus dispose(IContext context) {
+    for (Object key : context.getKeys()) {
+      if ((key instanceof String) && ((String) key).startsWith(REFERENCE_COMPONENT_SCOPE)) {
+        Object value = context.get(key);
+        if ((value != null) && (value instanceof Collection)) {
+          if (!((Collection<?>) value).isEmpty()) {
+            ((Collection<?>) context.get(key)).clear();
           }
         }
       }
@@ -53,16 +52,16 @@ public class DefaultContextScopeHandler implements IContextScopeHandler {
     return Status.OK_STATUS;
   }
 
-  protected String getScopeId(String id_p) {
-    return REFERENCE_COMPONENT_SCOPE + "_" + id_p;
+  protected String getScopeId(String id) {
+    return REFERENCE_COMPONENT_SCOPE + "_" + id;
   }
 
-  protected Collection<EObject> getScope(String scopeId_p, IContext context_p) {
-    String id = getScopeId(scopeId_p);
-    Object scope = context_p.get(id);
+  protected Collection<EObject> getScope(String scopeId, IContext context) {
+    String id = getScopeId(scopeId);
+    Object scope = context.get(id);
     if (scope == null) {
       scope = new HashSet<EObject>();
-      context_p.put(id, scope);
+      context.put(id, scope);
     }
     return (Collection<EObject>) scope;
   }
@@ -70,72 +69,72 @@ public class DefaultContextScopeHandler implements IContextScopeHandler {
   /**
    * {@inheritDoc}
    */
-  public void add(String scopeId_p, EObject object_p, IContext context_p) {
+  public void add(String scopeId, EObject object, IContext context) {
 
-    if (valid(scopeId_p, object_p, context_p)) {
-      getScope(scopeId_p, context_p).add(object_p);
+    if (valid(scopeId, object, context)) {
+      getScope(scopeId, context).add(object);
     }
   }
 
   /**
    * {@inheritDoc}
    */
-  public void addAll(String scopeId_p, Collection<? extends EObject> objects_p, IContext context_p) {
-    if (objects_p != null) {
-      for (EObject object : objects_p) {
-        if (valid(scopeId_p, object, context_p)) {
-          getScope(scopeId_p, context_p).add(object);
+  public void addAll(String scopeId, Collection<? extends EObject> objects, IContext context) {
+    if (objects != null) {
+      for (EObject object : objects) {
+        if (valid(scopeId, object, context)) {
+          getScope(scopeId, context).add(object);
         }
       }
     }
   }
 
   /**
-   * @param scopeId_p
-   * @param object_p
-   * @param context_p
+   * @param scopeId
+   * @param object
+   * @param context
    * @return
    */
-  protected boolean valid(String scopeId_p, EObject object_p, IContext context_p) {
+  protected boolean valid(String scopeId, EObject object, IContext context) {
     return true;
   }
 
   /**
    * {@inheritDoc}
    */
-  public boolean contains(String scopeId_p, EObject object_p, IContext context_p) {
-    return getScope(scopeId_p, context_p).contains(object_p);
+  public boolean contains(String scopeId, EObject object, IContext context) {
+    return getScope(scopeId, context).contains(object);
   }
 
   /**
    * {@inheritDoc}
    */
-  public void remove(String scopeId_p, EObject object_p, IContext context_p) {
-    getScope(scopeId_p, context_p).remove(object_p);
+  public void remove(String scopeId, EObject object, IContext context) {
+    getScope(scopeId, context).remove(object);
   }
 
   /**
    * {@inheritDoc}
    */
-  public Iterator<EObject> get(String scopeId_p, IContext context_p) {
-    return getScope(scopeId_p, context_p).iterator();
+  public Iterator<EObject> get(String scopeId, IContext context) {
+    return getScope(scopeId, context).iterator();
   }
 
   /**
    * {@inheritDoc}
    */
-  public void clear(String scopeId_p, IContext context_p) {
-    getScope(scopeId_p, context_p).clear();
+  public void clear(String scopeId, IContext context) {
+    getScope(scopeId, context).clear();
   }
 
   /**
    * {@inheritDoc}
    */
-  public void removeAll(String scopeId_p, Collection<? extends EObject> objects_p, IContext context_p) {
-    if (objects_p != null) {
-      for (EObject object : objects_p) {
-        if (valid(scopeId_p, object, context_p)) {
-          getScope(scopeId_p, context_p).remove(object);
+  public void removeAll(String scopeId, Collection<? extends EObject> objects, IContext context) {
+    if (objects != null) {
+      for (EObject object : objects) {
+        if (valid(scopeId, object, context)) {
+          getScope(scopeId, context).remove(object);
         }
       }
     }
@@ -144,8 +143,8 @@ public class DefaultContextScopeHandler implements IContextScopeHandler {
   /**
    * {@inheritDoc}
    */
-  public Collection<EObject> getCollection(String scopeId_p, IContext context_p) {
-    return getScope(scopeId_p, context_p);
+  public Collection<EObject> getCollection(String scopeId, IContext context) {
+    return getScope(scopeId, context);
   }
 
 }

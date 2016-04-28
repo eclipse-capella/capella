@@ -96,6 +96,7 @@ BooleanReference.gif
 BooleanSymbolicValue.gif
 BooleanType.gif
 BooleanValueReferenceLink.gif
+BracketEdgeStyle.gif
 CallAction.gif
 Capability.gif
 CapabilityAspect.gif
@@ -137,6 +138,7 @@ CommunicationLinkReceive.gif
 CommunicationLinkSend.gif
 CommunicationLinkTransmit.gif
 CommunicationLinkWrite.gif
+CommunicationMean.gif
 CommunicationModelFile.gif
 CommunityOfInterest.gif
 CommunityOfInterestComposition.gif
@@ -148,17 +150,18 @@ ComponentExchange.gif
 ComponentExchangeRealisation.gif
 ComponentFunctionalAllocation.gif
 ComponentInstance.gif
+ComponentInstanceNodePC.gif
 ComponentInstancePkg.gif
 ComponentPort_WB.gif
 Concept.gif
 ConceptCompliance.gif
 ConceptPkg.gif
 ConfigurationItemPkg.gif
-Connection.gif
 Connector.gif
 ConnectorEnd.gif
 Constraint.gif
 ConstraintDuration.gif
+ContainedIn.png
 ContextArchitecture.gif
 ContextArchitectureRealisation.gif
 ContextInterfaceRealisation.gif
@@ -169,6 +172,7 @@ CreationEvent.gif
 CSCI.gif
 CsModelFile.gif
 CtxModelFile.gif
+DAnalysis.gif
 DataAllocation.gif
 DataContext.gif
 DataDefinition.gif
@@ -272,10 +276,12 @@ FunctionalCapabilityDiagram.gif
 FunctionalChain.gif
 FunctionalChainInvolvement.gif
 FunctionalChainPkg.gif
+FunctionalChainReference.gif
 FunctionalChain_WB.gif
 FunctionalDestination.gif
 FunctionalExchange.gif
 FunctionalExchangeRealisation.gif
+FunctionalExchange_OA.gif
 FunctionalExchange_WB.gif
 FunctionalLink.gif
 FunctionAllocation.gif
@@ -462,6 +468,7 @@ PhysicalFunctionPkg.gif
 PhysicalGlobalArchitectureDiagram.gif
 PhysicalInterface.gif
 PhysicalInterfacePkg.gif
+PhysicalLink.gif
 PhysicalLocalArchitectureDiagram.gif
 PhysicalNode.gif
 PhysicalObject.gif
@@ -470,6 +477,7 @@ PhysicalPart.gif
 PhysicalPartition.gif
 PhysicalPath.gif
 PhysicalPathInvolvement.gif
+PhysicalPathReference.gif
 PhysicalPort.gif
 PhysicalQuantity.gif
 PhysicalRealizationDiagram.gif
@@ -497,6 +505,10 @@ PropertyMinCardReference.gif
 PropertyReferenceLink.gif
 Provide.gif
 Pseudostate.gif
+Pseudostate_deepHistory.gif
+Pseudostate_entryPoint.gif
+Pseudostate_exitPoint.gif
+Pseudostate_shallowHistory.gif
 Realisation.gif
 ReferenceModelFile.gif
 RefinementLink.gif
@@ -578,4 +590,5 @@ UnlimitedNaturalType.gif
 Use.gif
 ValuePkg.gif
 XiModelFile.gif
+
 

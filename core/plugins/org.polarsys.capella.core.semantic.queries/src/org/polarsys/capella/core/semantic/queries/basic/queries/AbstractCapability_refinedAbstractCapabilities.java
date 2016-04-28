@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,17 +25,19 @@ import org.polarsys.capella.common.helpers.query.IQuery;
 public class AbstractCapability_refinedAbstractCapabilities implements IQuery {
 
 
-	/** 
-	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
-	 */
-	public List<Object> compute(Object object_p) {
-	  List<Object> result = new ArrayList<Object>();
-	  if (object_p instanceof AbstractCapability) {
-	    AbstractCapability capa = (AbstractCapability) object_p;
-	    List<CapellaElement> refinementRelatedSourceElements = RefinementLinkExt.getRefinementRelatedSourceElements(capa, InteractionPackage.Literals.ABSTRACT_CAPABILITY);
-		if (!refinementRelatedSourceElements.isEmpty())
-			result.addAll(refinementRelatedSourceElements);	
-	  }
-	  return result;
-	}
+  /**
+   * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
+   */
+  @Override
+  public List<Object> compute(Object object) {
+    List<Object> result = new ArrayList<Object>();
+    if (object instanceof AbstractCapability) {
+      AbstractCapability capa = (AbstractCapability) object;
+      List<CapellaElement> refinementRelatedSourceElements =
+          RefinementLinkExt.getRefinementRelatedSourceElements(capa, InteractionPackage.Literals.ABSTRACT_CAPABILITY);
+      if (!refinementRelatedSourceElements.isEmpty())
+        result.addAll(refinementRelatedSourceElements);
+    }
+    return result;
+  }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.information;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class PropertyRule extends MultiplicityElementRule {
   }
 
   @Override
-  protected boolean isOrderedContainment(EObject element_p) {
+  protected boolean isOrderedContainment(EObject element) {
     return true;
   }
 
@@ -55,32 +56,32 @@ public class PropertyRule extends MultiplicityElementRule {
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    Property element = (Property) source_p;
-    result_p.add(element.getAssociation());
-    result_p.add(element.getType());
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    Property element = (Property) source;
+    result.add(element.getAssociation());
+    result.add(element.getType());
 
-    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context_p);
-    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getAssociation(), context_p);
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getType(), context_p);
+    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context);
+    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getAssociation(), context);
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getType(), context);
 
     }
 
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE,
-        context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE,
+        context);
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE));
+  protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
+    super.premicesRelated(element, needed);
+    needed.addAll(createDefaultPrecedencePremices(element, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE));
 
   }
 }

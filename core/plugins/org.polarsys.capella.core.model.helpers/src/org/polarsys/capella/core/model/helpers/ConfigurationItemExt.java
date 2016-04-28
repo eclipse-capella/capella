@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ListIterator;
@@ -29,14 +30,14 @@ public class ConfigurationItemExt {
    * Checks whether the ConfigurationItem has implemented the PhysicalComponent
    * 
    * 
-   * @param configItem_p the ConfigurationItem
-   * @param pc_p the PhysicalComponent
+   * @param configItem the ConfigurationItem
+   * @param pc the PhysicalComponent
    * @return true if the ConfigurationItem has implemented the PhysicalComponent
    */
-  static public boolean hasImplementedPC(ConfigurationItem configItem_p, PhysicalComponent pc_p) {
+  static public boolean hasImplementedPC(ConfigurationItem configItem, PhysicalComponent pc) {
     boolean flag = false;
-    for (Component cpnt : configItem_p.getAllocatedComponents()) {
-      if (cpnt.equals(pc_p)) {
+    for (Component cpnt : configItem.getAllocatedComponents()) {
+      if (cpnt.equals(pc)) {
         flag = true;
         break;
       }
@@ -48,14 +49,14 @@ public class ConfigurationItemExt {
    * Checks whether the ConfigurationItem has implemented the PhysicalComponent
    * 
    * 
-   * @param configItem_p the ConfigurationItem
-   * @param pc_p the PhysicalComponent
+   * @param configItem the ConfigurationItem
+   * @param apa the PhysicalComponent
    * @return true if the ConfigurationItem has implemented the PhysicalComponent
    */
-  static public boolean hasImplementedAbstractPhysicalArtifacts(ConfigurationItem configItem_p, AbstractPhysicalArtifact apa_p) {
+  static public boolean hasImplementedAbstractPhysicalArtifacts(ConfigurationItem configItem, AbstractPhysicalArtifact apa) {
     boolean flag = false;
-    for (AbstractPhysicalArtifact cpnt : configItem_p.getAllocatedPhysicalArtifacts()) {
-      if (cpnt.equals(apa_p)) {
+    for (AbstractPhysicalArtifact cpnt : configItem.getAllocatedPhysicalArtifacts()) {
+      if (cpnt.equals(apa)) {
         flag = true;
         break;
       }
@@ -65,34 +66,34 @@ public class ConfigurationItemExt {
 	/**
 	 * This method adds a physical component implementation.
 	 * 
-	 * @param epbsComponent_p component implementing
-	 * @param physicalComponent_p component to be implemented
+	 * @param epbsComponent component implementing
+	 * @param physicalComponent component to be implemented
 	 */
-	public static void addImplementedPhysicalComponent(ConfigurationItem epbsComponent_p, PhysicalComponent physicalComponent_p) {
+	public static void addImplementedPhysicalComponent(ConfigurationItem epbsComponent, PhysicalComponent physicalComponent) {
 		PhysicalArtifactRealization impl = EpbsFactory.eINSTANCE.createPhysicalArtifactRealization();
-		impl.setSourceElement(epbsComponent_p);
-		impl.setTargetElement(physicalComponent_p);
-		epbsComponent_p.getOwnedPhysicalArtifactRealizations().add(impl);
+		impl.setSourceElement(epbsComponent);
+		impl.setTargetElement(physicalComponent);
+		epbsComponent.getOwnedPhysicalArtifactRealizations().add(impl);
 	}
 
   /**
    * This method removes a physical component implementation.
    * 
-   * @param configurationItem_p the configuration item who implements the physical component
-   * @param physicalComponent_p the implemented physical component
+   * @param configurationItem the configuration item who implements the physical component
+   * @param physicalComponent the implemented physical component
    */
-  public static void removeImplementedPhysicalComponent(ConfigurationItem configurationItem_p, PhysicalComponent physicalComponent_p) {
+  public static void removeImplementedPhysicalComponent(ConfigurationItem configurationItem, PhysicalComponent physicalComponent) {
 	  PhysicalArtifactRealization implementLink = null;
-    ListIterator<PhysicalArtifactRealization> it = configurationItem_p.getOwnedPhysicalArtifactRealizations().listIterator();
+    ListIterator<PhysicalArtifactRealization> it = configurationItem.getOwnedPhysicalArtifactRealizations().listIterator();
     while (it.hasNext()) {
     	PhysicalArtifactRealization lnk = it.next();
-      if (lnk.getTargetElement().equals(physicalComponent_p)) {
+      if (lnk.getTargetElement().equals(physicalComponent)) {
         implementLink = lnk;
       }
     }
 
     if (implementLink != null) {
-      configurationItem_p.getOwnedPhysicalArtifactRealizations().remove(implementLink);
+      configurationItem.getOwnedPhysicalArtifactRealizations().remove(implementLink);
       implementLink.destroy();
     }
   }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.session;
 
 import java.util.Collection;
@@ -36,27 +37,27 @@ public class DefaultSessionHandler implements ISessionHandler {
   /**
    * {@inheritDoc}
    */
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     return Status.OK_STATUS;
   }
 
   /**
    * {@inheritDoc}
    */
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
     return Status.OK_STATUS;
   }
 
-  public EObject getEObjectFromId(String id_p, IContext context_p) {
+  public EObject getEObjectFromId(String id, IContext context) {
 
     EObject element = null;
 
-    if (id_p != null) {
+    if (id != null) {
 
-      Iterator<Resource> resources = getRelatedResources(context_p).iterator();
+      Iterator<Resource> resources = getRelatedResources(context).iterator();
       while (resources.hasNext() && (element == null)) {
         Resource resource = resources.next();
-        element = resource.getEObject(id_p);
+        element = resource.getEObject(id);
       }
     }
 
@@ -64,8 +65,8 @@ public class DefaultSessionHandler implements ISessionHandler {
   }
 
   @SuppressWarnings("unchecked")
-  protected Collection<Resource> getRelatedResources(IContext context_p) {
-    EObject root = ((EObject) context_p.get(ITransitionConstants.TRANSITION_SOURCE_ROOT));
+  protected Collection<Resource> getRelatedResources(IContext context) {
+    EObject root = ((EObject) context.get(ITransitionConstants.TRANSITION_SOURCE_ROOT));
 
     //if session is opened, return all defined resources from session
     if (root != null) {
@@ -116,20 +117,20 @@ public class DefaultSessionHandler implements ISessionHandler {
   /**
    * {@inheritDoc}
    */
-  public String getId(EObject element_p, IContext context_p) {
-    if (element_p == null) {
+  public String getId(EObject element, IContext context) {
+    if (element == null) {
       return null;
     }
-    EAttribute attribute = element_p.eClass().getEIDAttribute();
+    EAttribute attribute = element.eClass().getEIDAttribute();
     if (attribute != null) {
-      String id = (String) element_p.eGet(attribute);
+      String id = (String) element.eGet(attribute);
       if (id != null) {
         return id;
       }
     }
-    if (element_p.eResource() != null) {
-      return element_p.eResource().getURIFragment(element_p);
+    if (element.eResource() != null) {
+      return element.eResource().getURIFragment(element);
     }
-    return EcoreUtil.getID(element_p);
+    return EcoreUtil.getID(element);
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.traceability;
 
 import java.util.ArrayList;
@@ -28,33 +29,33 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class CompoundTraceabilityHandler implements ITraceabilityHandler, ITraceabilityTraceHandler {
 
-  private ITraceabilityConfiguration _configuration;
+  private ITraceabilityConfiguration configuration;
 
   /**
    * @return the configuration
    */
   public ITraceabilityConfiguration getConfiguration() {
-    return _configuration;
+    return configuration;
   }
 
-  public CompoundTraceabilityHandler(ITraceabilityConfiguration configuration_p) {
-    _configuration = configuration_p;
+  public CompoundTraceabilityHandler(ITraceabilityConfiguration configuration) {
+    this.configuration = configuration;
   }
 
   /**
    * {@inheritDoc}
    */
-  public IStatus init(IContext context_p) {
-    _configuration.init(context_p);
+  public IStatus init(IContext context) {
+    configuration.init(context);
     return Status.OK_STATUS;
   }
 
   /**
    * {@inheritDoc}
    */
-  public IStatus dispose(IContext context_p) {
-    if (_configuration != null) {
-      _configuration.dispose(context_p);
+  public IStatus dispose(IContext context) {
+    if (configuration != null) {
+      configuration.dispose(context);
     }
     return Status.OK_STATUS;
   }
@@ -62,11 +63,11 @@ public class CompoundTraceabilityHandler implements ITraceabilityHandler, ITrace
   /**
    * {@inheritDoc}
    */
-  public void attachTraceability(EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
-    if (_configuration != null) {
-      for (ITraceabilityHandler handler : _configuration.getDefinedHandlers(context_p)) {
-        if (_configuration.useHandlerForAttachment(sourceElement_p, targetElement_p, handler, context_p)) {
-          handler.attachTraceability(sourceElement_p, targetElement_p, context_p);
+  public void attachTraceability(EObject sourceElement, EObject targetElement, IContext context) {
+    if (configuration != null) {
+      for (ITraceabilityHandler handler : configuration.getDefinedHandlers(context)) {
+        if (configuration.useHandlerForAttachment(sourceElement, targetElement, handler, context)) {
+          handler.attachTraceability(sourceElement, targetElement, context);
         }
       }
     }
@@ -75,14 +76,14 @@ public class CompoundTraceabilityHandler implements ITraceabilityHandler, ITrace
   /**
    * {@inheritDoc}
    */
-  public Collection<EObject> retrieveTracedElements(EObject source_p, IContext context_p) {
-    context_p.put(ITransitionConstants.TRACEABILITY_HANDLER, this);
+  public Collection<EObject> retrieveTracedElements(EObject source, IContext context) {
+    context.put(ITransitionConstants.TRACEABILITY_HANDLER, this);
 
     ArrayList<EObject> result = new ArrayList<EObject>();
-    if (_configuration != null) {
-      for (ITraceabilityHandler handler : _configuration.getDefinedHandlers(context_p)) {
-        if (_configuration.useHandlerForTracedElements(source_p, handler, context_p)) {
-          Collection<EObject> elements = handler.retrieveTracedElements(source_p, context_p);
+    if (configuration != null) {
+      for (ITraceabilityHandler handler : configuration.getDefinedHandlers(context)) {
+        if (configuration.useHandlerForTracedElements(source, handler, context)) {
+          Collection<EObject> elements = handler.retrieveTracedElements(source, context);
 
           if ((elements != null) && !elements.isEmpty()) {
             for (EObject object : elements) {
@@ -100,14 +101,14 @@ public class CompoundTraceabilityHandler implements ITraceabilityHandler, ITrace
   /**
    * {@inheritDoc}
    */
-  public Collection<EObject> retrieveSourceElements(EObject source_p, IContext context_p) {
-    context_p.put(ITransitionConstants.TRACEABILITY_HANDLER, this);
+  public Collection<EObject> retrieveSourceElements(EObject source, IContext context) {
+    context.put(ITransitionConstants.TRACEABILITY_HANDLER, this);
 
     ArrayList<EObject> result = new ArrayList<EObject>();
-    if (_configuration != null) {
-      for (ITraceabilityHandler handler : _configuration.getDefinedHandlers(context_p)) {
-        if (_configuration.useHandlerForSourceElements(source_p, handler, context_p)) {
-          Collection<EObject> elements = handler.retrieveSourceElements(source_p, context_p);
+    if (configuration != null) {
+      for (ITraceabilityHandler handler : configuration.getDefinedHandlers(context)) {
+        if (configuration.useHandlerForSourceElements(source, handler, context)) {
+          Collection<EObject> elements = handler.retrieveSourceElements(source, context);
 
           if ((elements != null) && !elements.isEmpty()) {
             for (EObject object : elements) {
@@ -124,9 +125,9 @@ public class CompoundTraceabilityHandler implements ITraceabilityHandler, ITrace
   }
 
   @Deprecated
-  public Collection<EObject> retrieveTracedElements(EObject source_p, IContext context_p, EClass clazz) {
+  public Collection<EObject> retrieveTracedElements(EObject source, IContext context, EClass clazz) {
     ArrayList<EObject> result = new ArrayList<EObject>();
-    for (EObject obj : retrieveTracedElements(source_p, context_p)) {
+    for (EObject obj : retrieveTracedElements(source, context)) {
       if (clazz.isInstance(obj)) {
         result.add(obj);
       }
@@ -139,18 +140,18 @@ public class CompoundTraceabilityHandler implements ITraceabilityHandler, ITrace
    * @deprecated
    */
   @Deprecated
-  public boolean isTraced(EObject element_p, IContext context_p) {
-    return !retrieveTracedElements(element_p, context_p).isEmpty();
+  public boolean isTraced(EObject element, IContext context) {
+    return !retrieveTracedElements(element, context).isEmpty();
   }
 
   /**
    * {@inheritDoc}
    */
   @Deprecated
-  public String getId(EObject element_p, IContext context_p) {
-    if (_configuration != null) {
-      for (ITraceabilityHandler handler : _configuration.getDefinedHandlers(context_p)) {
-        String id = handler.getId(element_p, context_p);
+  public String getId(EObject element, IContext context) {
+    if (configuration != null) {
+      for (ITraceabilityHandler handler : configuration.getDefinedHandlers(context)) {
+        String id = handler.getId(element, context);
         if (id != null) {
           return id;
         }
@@ -162,13 +163,13 @@ public class CompoundTraceabilityHandler implements ITraceabilityHandler, ITrace
   /**
    * {@inheritDoc}
    */
-  public boolean isTrace(EObject element_p, IContext context_p) {
+  public boolean isTrace(EObject element, IContext context) {
 
-    if (_configuration != null) {
-      for (ITraceabilityHandler handler : _configuration.getDefinedHandlers(context_p)) {
+    if (configuration != null) {
+      for (ITraceabilityHandler handler : configuration.getDefinedHandlers(context)) {
         if (handler instanceof ITraceabilityTraceHandler) {
           ITraceabilityTraceHandler tHandler = (ITraceabilityTraceHandler) handler;
-          if (tHandler.isTrace(element_p, context_p)) {
+          if (tHandler.isTrace(element, context)) {
             return true;
           }
         }
@@ -180,13 +181,13 @@ public class CompoundTraceabilityHandler implements ITraceabilityHandler, ITrace
   /**
    * {@inheritDoc}
    */
-  public EObject getSourceElement(EObject trace_p, IContext context_p) {
+  public EObject getSourceElement(EObject trace, IContext context) {
 
-    if (_configuration != null) {
-      for (ITraceabilityHandler handler : _configuration.getDefinedHandlers(context_p)) {
+    if (configuration != null) {
+      for (ITraceabilityHandler handler : configuration.getDefinedHandlers(context)) {
         if (handler instanceof ITraceabilityTraceHandler) {
           ITraceabilityTraceHandler tHandler = (ITraceabilityTraceHandler) handler;
-          EObject result = tHandler.getSourceElement(trace_p, context_p);
+          EObject result = tHandler.getSourceElement(trace, context);
           if (result != null) {
             return result;
           }
@@ -199,13 +200,13 @@ public class CompoundTraceabilityHandler implements ITraceabilityHandler, ITrace
   /**
    * {@inheritDoc}
    */
-  public EObject getTargetElement(EObject trace_p, IContext context_p) {
+  public EObject getTargetElement(EObject trace, IContext context) {
 
-    if (_configuration != null) {
-      for (ITraceabilityHandler handler : _configuration.getDefinedHandlers(context_p)) {
+    if (configuration != null) {
+      for (ITraceabilityHandler handler : configuration.getDefinedHandlers(context)) {
         if (handler instanceof ITraceabilityTraceHandler) {
           ITraceabilityTraceHandler tHandler = (ITraceabilityTraceHandler) handler;
-          EObject result = tHandler.getTargetElement(trace_p, context_p);
+          EObject result = tHandler.getTargetElement(trace, context);
           if (result != null) {
             return result;
           }

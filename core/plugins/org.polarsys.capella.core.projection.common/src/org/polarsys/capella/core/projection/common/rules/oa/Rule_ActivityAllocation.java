@@ -46,8 +46,8 @@ import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 public class Rule_ActivityAllocation extends Rule_ComponentFunctionalAllocation {
 
   /**
-   * @param sourceType_p
-   * @param targetType_p
+   * @param sourceType
+   * @param targetType
    */
   public Rule_ActivityAllocation() {
     super(OaPackage.Literals.ACTIVITY_ALLOCATION, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION);
@@ -61,34 +61,33 @@ public class Rule_ActivityAllocation extends Rule_ComponentFunctionalAllocation 
    * {@inheritDoc}
    */
   @Override
-  protected Collection<EObject> transformElement(EObject element_p, IContext context_p) {
-    return createComponentFunctionalAllocations(element_p, context_p);
+  protected Collection<EObject> transformElement(EObject element, IContext context) {
+    return createComponentFunctionalAllocations(element, context);
   }
 
   /**
-   * @param element_p
+   * @param element
    */
-  private Collection<EObject> createComponentFunctionalAllocations(EObject element_p, IContext context_p) {
+  private Collection<EObject> createComponentFunctionalAllocations(EObject element, IContext context) {
 
-    ActivityAllocation allocation = (ActivityAllocation) element_p;
+    ActivityAllocation allocation = (ActivityAllocation) element;
     List<ComponentFunctionalAllocation> result = new ArrayList<ComponentFunctionalAllocation>();
 
     //Retrieve previously created transitioned allocations (in cases of update, some allocations can be created but not yet used)
     int nbAllocations = 0;
-    for (EObject tAllocation : Query.retrieveTransformedElements(allocation, context_p.getTransfo(), getTargetType())) {
+    for (EObject tAllocation : Query.retrieveTransformedElements(allocation, context.getTransfo(), getTargetType())) {
       if (tAllocation.eContainer() == null) {
         nbAllocations++;
       }
     }
 
-
-    Set<AbstractFunctionalBlock> entities = retrieveComponentsToAllocate(allocation, context_p);
+    Set<AbstractFunctionalBlock> entities = retrieveComponentsToAllocate(allocation, context);
     int nbEntities = entities.size();
 
     //Create the correct number of links
     if (nbEntities - nbAllocations > 0) {
       for (int i = 0; i < nbEntities - nbAllocations; i++) {
-        ComponentFunctionalAllocation allocationTransformated = (ComponentFunctionalAllocation) super.transformDirectElement(allocation, context_p);
+        ComponentFunctionalAllocation allocationTransformated = (ComponentFunctionalAllocation) super.transformDirectElement(allocation, context);
         result.add(allocationTransformated);
       }
     }
@@ -172,14 +171,14 @@ public class Rule_ActivityAllocation extends Rule_ComponentFunctionalAllocation 
           }
         }
 
-        if (transitioneds.size() > 0 && role != null) {
+        if (transitioneds.size() > 0) {
 
           for (EObject transitionedElement : Query.retrieveTransformedElements(allocation, context_p.getTransfo(), getTargetType())) {
             if (transitionedElement instanceof ComponentFunctionalAllocation) {
               ComponentFunctionalAllocation transitionedAllocation = (ComponentFunctionalAllocation) transitionedElement;
               AbstractFunctionalBlock block = transitionedAllocation.getBlock();
               EObject target = transitionedAllocation.getTargetElement();
-              if (transitioneds.contains(block) && target == t) {
+              if (transitioneds.contains(block) && target.equals(t)) {
                 entities.remove(block);
               }
             }

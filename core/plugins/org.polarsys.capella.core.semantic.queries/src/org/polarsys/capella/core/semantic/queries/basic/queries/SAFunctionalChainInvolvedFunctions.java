@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
@@ -42,13 +43,13 @@ public class SAFunctionalChainInvolvedFunctions  extends FunctionalChain_enacted
 	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
 	 */
   @Override
-	public List<Object> compute(Object object_p) {
+	public List<Object> compute(Object object) {
 		List<Object> result = new ArrayList<Object>();
-		if (object_p instanceof FunctionalChain && !(object_p instanceof OperationalProcess)) {
+		if (object instanceof FunctionalChain && !(object instanceof OperationalProcess)) {
 			// make sure that the functional chain is from sa level
-			BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture((EObject) object_p);
+			BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture((EObject) object);
 			if (null != arch && arch instanceof SystemAnalysis) {
-				List<Object> compute = super.compute(object_p);
+				List<Object> compute = super.compute(object);
 				if(!compute.isEmpty())
 					result.addAll(compute);
 			}

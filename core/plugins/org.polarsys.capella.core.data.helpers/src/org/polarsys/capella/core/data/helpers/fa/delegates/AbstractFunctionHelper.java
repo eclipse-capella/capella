@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.delegates;
 
 import java.util.ArrayList;
@@ -57,59 +58,59 @@ public class AbstractFunctionHelper {
     return instance;
   }
 
-  public Object doSwitch(AbstractFunction element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(AbstractFunction element, EStructuralFeature feature) {
 
     Object ret = null;
 
-    if (feature_p.equals(FaPackage.Literals.ABSTRACT_FUNCTION__ALLOCATION_BLOCKS)) {
-      ret = getAllocationBlocks(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.ABSTRACT_FUNCTION__COMPONENT_FUNCTIONAL_ALLOCATIONS)) {
-      ret = getComponentFunctionalAllocations(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.ABSTRACT_FUNCTION__OUT_FUNCTION_REALIZATIONS)) {
-      ret = getOutFunctionRealizations(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.ABSTRACT_FUNCTION__IN_FUNCTION_REALIZATIONS)) {
-      ret = getInFunctionRealizations(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.ABSTRACT_FUNCTION__INVOLVING_CAPABILITIES)) {
-      ret = getInvolvingCapabilities(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.ABSTRACT_FUNCTION__INVOLVING_CAPABILITY_REALIZATIONS)) {
-      ret = getInvolvingCapabilityRealizations(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.ABSTRACT_FUNCTION__INVOLVING_FUNCTIONAL_CHAINS)) {
-      ret = getInvolvingFunctionalChains(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.ABSTRACT_FUNCTION__LINKED_FUNCTION_SPECIFICATION)) {
-      ret = getLinkedFunctionSpecification(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.ABSTRACT_FUNCTION__LINKED_STATE_MACHINE)) {
-      ret = getLinkedStateMachine(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.ABSTRACT_FUNCTION__SUB_FUNCTIONS)) {
-      ret = getSubFunctions(element_p);
-    } else if (feature_p.equals(ActivityPackage.Literals.ACTIVITY_NODE__INCOMING)) {
-      ret = getIncomingEdges(element_p, feature_p);
-    } else if (feature_p.equals(ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING)) {
-      ret = getOutgoingEdges(element_p, feature_p);
+    if (feature.equals(FaPackage.Literals.ABSTRACT_FUNCTION__ALLOCATION_BLOCKS)) {
+      ret = getAllocationBlocks(element);
+    } else if (feature.equals(FaPackage.Literals.ABSTRACT_FUNCTION__COMPONENT_FUNCTIONAL_ALLOCATIONS)) {
+      ret = getComponentFunctionalAllocations(element);
+    } else if (feature.equals(FaPackage.Literals.ABSTRACT_FUNCTION__OUT_FUNCTION_REALIZATIONS)) {
+      ret = getOutFunctionRealizations(element);
+    } else if (feature.equals(FaPackage.Literals.ABSTRACT_FUNCTION__IN_FUNCTION_REALIZATIONS)) {
+      ret = getInFunctionRealizations(element);
+    } else if (feature.equals(FaPackage.Literals.ABSTRACT_FUNCTION__INVOLVING_CAPABILITIES)) {
+      ret = getInvolvingCapabilities(element);
+    } else if (feature.equals(FaPackage.Literals.ABSTRACT_FUNCTION__INVOLVING_CAPABILITY_REALIZATIONS)) {
+      ret = getInvolvingCapabilityRealizations(element);
+    } else if (feature.equals(FaPackage.Literals.ABSTRACT_FUNCTION__INVOLVING_FUNCTIONAL_CHAINS)) {
+      ret = getInvolvingFunctionalChains(element);
+    } else if (feature.equals(FaPackage.Literals.ABSTRACT_FUNCTION__LINKED_FUNCTION_SPECIFICATION)) {
+      ret = getLinkedFunctionSpecification(element);
+    } else if (feature.equals(FaPackage.Literals.ABSTRACT_FUNCTION__LINKED_STATE_MACHINE)) {
+      ret = getLinkedStateMachine(element);
+    } else if (feature.equals(FaPackage.Literals.ABSTRACT_FUNCTION__SUB_FUNCTIONS)) {
+      ret = getSubFunctions(element);
+    } else if (feature.equals(ActivityPackage.Literals.ACTIVITY_NODE__INCOMING)) {
+      ret = getIncomingEdges(element, feature);
+    } else if (feature.equals(ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING)) {
+      ret = getOutgoingEdges(element, feature);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = InvolvedElementHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = InvolvedElementHelper.getInstance().doSwitch(element, feature);
     }
     if (ret == null) {
-      ret = AbstractInstanceHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractInstanceHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = ActivityNodeHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = ActivityNodeHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = AbstractTypeHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractTypeHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = NamespaceHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = NamespaceHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<FunctionRealization> getInFunctionRealizations(AbstractFunction element_p) {
+  protected List<FunctionRealization> getInFunctionRealizations(AbstractFunction element) {
     List<FunctionRealization> ret = new ArrayList<FunctionRealization>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof FunctionRealization) {
         ret.add((FunctionRealization) trace);
       }
@@ -117,9 +118,9 @@ public class AbstractFunctionHelper {
     return ret;
   }
 
-  protected List<FunctionRealization> getOutFunctionRealizations(AbstractFunction element_p) {
+  protected List<FunctionRealization> getOutFunctionRealizations(AbstractFunction element) {
     List<FunctionRealization> ret = new ArrayList<FunctionRealization>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof FunctionRealization) {
         ret.add((FunctionRealization) trace);
       }
@@ -127,9 +128,9 @@ public class AbstractFunctionHelper {
     return ret;
   }
 
-  protected List<ComponentFunctionalAllocation> getComponentFunctionalAllocations(AbstractFunction element_p) {
+  protected List<ComponentFunctionalAllocation> getComponentFunctionalAllocations(AbstractFunction element) {
     List<ComponentFunctionalAllocation> ret = new ArrayList<ComponentFunctionalAllocation>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentFunctionalAllocation) {
         ret.add((ComponentFunctionalAllocation) trace);
       }
@@ -137,9 +138,9 @@ public class AbstractFunctionHelper {
     return ret;
   }
 
-  protected List<AbstractFunctionalBlock> getAllocationBlocks(AbstractFunction element_p) {
+  protected List<AbstractFunctionalBlock> getAllocationBlocks(AbstractFunction element) {
     List<AbstractFunctionalBlock> ret = new ArrayList<AbstractFunctionalBlock>();
-    for (ComponentFunctionalAllocation alloc : element_p.getComponentFunctionalAllocations()) {
+    for (ComponentFunctionalAllocation alloc : element.getComponentFunctionalAllocations()) {
       AbstractFunctionalBlock block = alloc.getBlock();
       if (null != block)
         ret.add(block);
@@ -147,9 +148,9 @@ public class AbstractFunctionHelper {
     return ret;
   }
 
-  protected List<Capability> getInvolvingCapabilities(AbstractFunction element_p) {
+  protected List<Capability> getInvolvingCapabilities(AbstractFunction element) {
     List<Capability> ret = new ArrayList<Capability>();
-    for (Involvement inv : element_p.getInvolvingInvolvements()) {
+    for (Involvement inv : element.getInvolvingInvolvements()) {
       if (inv instanceof AbstractFunctionAbstractCapabilityInvolvement) {
         AbstractCapability cap = ((AbstractFunctionAbstractCapabilityInvolvement) inv).getCapability();
         if (cap instanceof Capability) {
@@ -160,9 +161,9 @@ public class AbstractFunctionHelper {
     return ret;
   }
 
-  protected List<CapabilityRealization> getInvolvingCapabilityRealizations(AbstractFunction element_p) {
+  protected List<CapabilityRealization> getInvolvingCapabilityRealizations(AbstractFunction element) {
     List<CapabilityRealization> ret = new ArrayList<CapabilityRealization>();
-    for (Involvement inv : element_p.getInvolvingInvolvements()) {
+    for (Involvement inv : element.getInvolvingInvolvements()) {
       if (inv instanceof AbstractFunctionAbstractCapabilityInvolvement) {
         AbstractCapability cap = ((AbstractFunctionAbstractCapabilityInvolvement) inv).getCapability();
         if (cap instanceof CapabilityRealization) {
@@ -173,13 +174,13 @@ public class AbstractFunctionHelper {
     return ret;
   }
 
-  protected List<AbstractFunction> getSubFunctions(AbstractFunction element_p) {
-    return (List<AbstractFunction>) FunctionExt.getFirstLevelAbstractFunctions(element_p);
+  protected List<AbstractFunction> getSubFunctions(AbstractFunction element) {
+    return (List<AbstractFunction>) FunctionExt.getFirstLevelAbstractFunctions(element);
   }
 
-  protected List<FunctionalChain> getInvolvingFunctionalChains(AbstractFunction element_p) {
+  protected List<FunctionalChain> getInvolvingFunctionalChains(AbstractFunction element) {
     List<FunctionalChain> result = new ArrayList<FunctionalChain>();
-    for (Involvement involvement : element_p.getInvolvingInvolvements()) {
+    for (Involvement involvement : element.getInvolvingInvolvements()) {
       if(involvement instanceof FunctionalChainInvolvement){
         InvolverElement fc = involvement.getInvolver();
         if (fc instanceof FunctionalChain && !result.contains(fc)){
@@ -190,16 +191,16 @@ public class AbstractFunctionHelper {
     return result;
   }
 
-  protected FunctionSpecification getLinkedFunctionSpecification(AbstractFunction element_p){
-    AbstractBehavior behavior = element_p.getBehavior();
+  protected FunctionSpecification getLinkedFunctionSpecification(AbstractFunction element){
+    AbstractBehavior behavior = element.getBehavior();
     if(null != behavior && behavior instanceof FunctionSpecification){
       return (FunctionSpecification) behavior;
     }
     return null;
   }
 
-  protected StateMachine getLinkedStateMachine(AbstractFunction element_p){
-    AbstractBehavior behavior = element_p.getBehavior();
+  protected StateMachine getLinkedStateMachine(AbstractFunction element){
+    AbstractBehavior behavior = element.getBehavior();
     if(null != behavior && behavior instanceof StateMachine){
       return (StateMachine) behavior;
     }
@@ -207,14 +208,14 @@ public class AbstractFunctionHelper {
   }
 
   @SuppressWarnings("unchecked")
-  protected List<ActivityEdge> getIncomingEdges(AbstractFunction element_p, EStructuralFeature feature_p) {
+  protected List<ActivityEdge> getIncomingEdges(AbstractFunction element, EStructuralFeature feature) {
     List<ActivityEdge> res = new ArrayList<ActivityEdge>();
 
-    if (element_p.getInputs().isEmpty()) {
-      res.addAll((Collection<? extends ActivityEdge>) ActivityNodeHelper.getInstance().doSwitch(element_p, feature_p));
+    if (element.getInputs().isEmpty()) {
+      res.addAll((Collection<? extends ActivityEdge>) ActivityNodeHelper.getInstance().doSwitch(element, feature));
     } else {
-      for (InputPin inputPin : element_p.getInputs()) {
-        res.addAll((Collection<? extends ActivityEdge>) ActivityNodeHelper.getInstance().doSwitch(inputPin, feature_p));
+      for (InputPin inputPin : element.getInputs()) {
+        res.addAll((Collection<? extends ActivityEdge>) ActivityNodeHelper.getInstance().doSwitch(inputPin, feature));
       }
     }
 
@@ -222,14 +223,14 @@ public class AbstractFunctionHelper {
   }
 
   @SuppressWarnings("unchecked")
-  protected List<ActivityEdge> getOutgoingEdges(AbstractFunction element_p, EStructuralFeature feature_p) {
+  protected List<ActivityEdge> getOutgoingEdges(AbstractFunction element, EStructuralFeature feature) {
     List<ActivityEdge> res = new ArrayList<ActivityEdge>();
 
-    if (element_p.getOutputs().isEmpty()) {
-      res.addAll((Collection<? extends ActivityEdge>) ActivityNodeHelper.getInstance().doSwitch(element_p, feature_p));
+    if (element.getOutputs().isEmpty()) {
+      res.addAll((Collection<? extends ActivityEdge>) ActivityNodeHelper.getInstance().doSwitch(element, feature));
     } else {
-      for (OutputPin outputPin : element_p.getOutputs()) {
-        res.addAll((Collection<? extends ActivityEdge>) ActivityNodeHelper.getInstance().doSwitch(outputPin, feature_p));
+      for (OutputPin outputPin : element.getOutputs()) {
+        res.addAll((Collection<? extends ActivityEdge>) ActivityNodeHelper.getInstance().doSwitch(outputPin, feature));
       }
     }
 

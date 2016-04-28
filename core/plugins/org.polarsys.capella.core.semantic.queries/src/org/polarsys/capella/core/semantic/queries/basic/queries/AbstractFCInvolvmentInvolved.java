@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,10 +35,10 @@ abstract public class AbstractFCInvolvmentInvolved implements IQuery {
    * current.getEnactedFunctions
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>(1);
-    if (object_p instanceof FunctionalChainInvolvement) {
-      FunctionalChainInvolvement chain = (FunctionalChainInvolvement) object_p;
+    if (object instanceof FunctionalChainInvolvement) {
+      FunctionalChainInvolvement chain = (FunctionalChainInvolvement) object;
       InvolvedElement involved = chain.getInvolved();
       if (null != involved && isInstaceOf(involved)) {
     	 result.add(involved);

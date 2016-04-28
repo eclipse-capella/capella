@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.delegates;
 
 import java.util.ArrayList;
@@ -49,52 +50,52 @@ public class FunctionalExchangeHelper {
     return instance;
   }
 
-  public Object doSwitch(FunctionalExchange element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(FunctionalExchange element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__INVOLVING_FUNCTIONAL_CHAINS)) {
-      ret = getInvolvingFunctionalChains(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__ALLOCATING_COMPONENT_EXCHANGES)) {
-      ret = getComponentExchanges(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__INCOMING_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_REALIZATIONS)) {
-      ret = getIncomingComponentExchangeFunctionalExchangeAllocations(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__INCOMING_FUNCTIONAL_EXCHANGE_REALIZATIONS)) {
-      ret = getIncomingFunctionalExchangeRealizations(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__OUTGOING_FUNCTIONAL_EXCHANGE_REALIZATIONS)) {
-      ret = getOutgoingFunctionalExchangeRealizations(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__SOURCE_FUNCTION_OUTPUT_PORT)) {
-      ret = getSourceFunctionOutputPort(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__TARGET_FUNCTION_INPUT_PORT)) {
-      ret = getTargetFunctionInputPort(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__REALIZED_FUNCTIONAL_EXCHANGES)) {
-      ret = getRealizedFunctionalExchanges(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__REALIZING_FUNCTIONAL_EXCHANGES)) {
-      ret = getRealizingFunctionalExchanges(element_p);
+    if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__INVOLVING_FUNCTIONAL_CHAINS)) {
+      ret = getInvolvingFunctionalChains(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__ALLOCATING_COMPONENT_EXCHANGES)) {
+      ret = getComponentExchanges(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__INCOMING_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_REALIZATIONS)) {
+      ret = getIncomingComponentExchangeFunctionalExchangeAllocations(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__INCOMING_FUNCTIONAL_EXCHANGE_REALIZATIONS)) {
+      ret = getIncomingFunctionalExchangeRealizations(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__OUTGOING_FUNCTIONAL_EXCHANGE_REALIZATIONS)) {
+      ret = getOutgoingFunctionalExchangeRealizations(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__SOURCE_FUNCTION_OUTPUT_PORT)) {
+      ret = getSourceFunctionOutputPort(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__TARGET_FUNCTION_INPUT_PORT)) {
+      ret = getTargetFunctionInputPort(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__REALIZED_FUNCTIONAL_EXCHANGES)) {
+      ret = getRealizedFunctionalExchanges(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__REALIZING_FUNCTIONAL_EXCHANGES)) {
+      ret = getRealizingFunctionalExchanges(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = NamedElementHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = NamedElementHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = AbstractTypeHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractTypeHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = InvolvedElementHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = InvolvedElementHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = RelationshipHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = RelationshipHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = AbstractEventOperationHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractEventOperationHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<FunctionalChain> getInvolvingFunctionalChains(FunctionalExchange element_p) {
+  protected List<FunctionalChain> getInvolvingFunctionalChains(FunctionalExchange element) {
     List<FunctionalChain> ret = new ArrayList<FunctionalChain>();
-    for (Involvement involvement : element_p.getInvolvingInvolvements()) {
+    for (Involvement involvement : element.getInvolvingInvolvements()) {
       if (involvement instanceof FunctionalChainInvolvement) {
         InvolverElement fc = involvement.getInvolver();
         if ((null != fc) && (fc instanceof FunctionalChain)) {
@@ -105,9 +106,9 @@ public class FunctionalExchangeHelper {
     return ret;
   }
 
-  protected List<ComponentExchange> getComponentExchanges(FunctionalExchange element_p) {
+  protected List<ComponentExchange> getComponentExchanges(FunctionalExchange element) {
     List<ComponentExchange> ret = new ArrayList<ComponentExchange>();
-    for (ComponentExchangeFunctionalExchangeAllocation item : element_p.getIncomingComponentExchangeFunctionalExchangeRealizations()) {
+    for (ComponentExchangeFunctionalExchangeAllocation item : element.getIncomingComponentExchangeFunctionalExchangeRealizations()) {
       if (item.getAllocatingComponentExchange() != null) {
         ret.add(item.getAllocatingComponentExchange());
       }
@@ -115,9 +116,9 @@ public class FunctionalExchangeHelper {
     return ret;
   }
 
-  protected List<ComponentExchangeFunctionalExchangeAllocation> getIncomingComponentExchangeFunctionalExchangeAllocations(FunctionalExchange element_p) {
+  protected List<ComponentExchangeFunctionalExchangeAllocation> getIncomingComponentExchangeFunctionalExchangeAllocations(FunctionalExchange element) {
     List<ComponentExchangeFunctionalExchangeAllocation> ret = new ArrayList<ComponentExchangeFunctionalExchangeAllocation>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentExchangeFunctionalExchangeAllocation) {
         ret.add((ComponentExchangeFunctionalExchangeAllocation) trace);
       }
@@ -125,9 +126,9 @@ public class FunctionalExchangeHelper {
     return ret;
   }
 
-  protected List<FunctionalExchangeRealization> getIncomingFunctionalExchangeRealizations(FunctionalExchange element_p) {
+  protected List<FunctionalExchangeRealization> getIncomingFunctionalExchangeRealizations(FunctionalExchange element) {
     List<FunctionalExchangeRealization> ret = new ArrayList<FunctionalExchangeRealization>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof FunctionalExchangeRealization) {
         ret.add((FunctionalExchangeRealization) trace);
       }
@@ -135,9 +136,9 @@ public class FunctionalExchangeHelper {
     return ret;
   }
 
-  protected List<FunctionalExchangeRealization> getOutgoingFunctionalExchangeRealizations(FunctionalExchange element_p) {
+  protected List<FunctionalExchangeRealization> getOutgoingFunctionalExchangeRealizations(FunctionalExchange element) {
     List<FunctionalExchangeRealization> ret = new ArrayList<FunctionalExchangeRealization>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof FunctionalExchangeRealization) {
         ret.add((FunctionalExchangeRealization) trace);
       }
@@ -145,25 +146,25 @@ public class FunctionalExchangeHelper {
     return ret;
   }
 
-  protected FunctionOutputPort getSourceFunctionOutputPort(FunctionalExchange element_p) {
-    ActivityNode activityNode = element_p.getSource();
+  protected FunctionOutputPort getSourceFunctionOutputPort(FunctionalExchange element) {
+    ActivityNode activityNode = element.getSource();
     if (activityNode instanceof FunctionOutputPort) {
       return (FunctionOutputPort) activityNode;
     }
     return null;
   }
 
-  protected FunctionInputPort getTargetFunctionInputPort(FunctionalExchange element_p) {
-    ActivityNode activityNode = element_p.getTarget();
+  protected FunctionInputPort getTargetFunctionInputPort(FunctionalExchange element) {
+    ActivityNode activityNode = element.getTarget();
     if (activityNode instanceof FunctionInputPort) {
       return (FunctionInputPort) activityNode;
     }
     return null;
   }
 
-  protected List<FunctionalExchange> getRealizedFunctionalExchanges(FunctionalExchange element_p) {
+  protected List<FunctionalExchange> getRealizedFunctionalExchanges(FunctionalExchange element) {
     List<FunctionalExchange> ret = new ArrayList<FunctionalExchange>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof FunctionalExchangeRealization) {
         TraceableElement tgt = trace.getTargetElement();
         if (tgt instanceof FunctionalExchange) {
@@ -174,9 +175,9 @@ public class FunctionalExchangeHelper {
     return ret;
   }
 
-  protected List<FunctionalExchange> getRealizingFunctionalExchanges(FunctionalExchange element_p) {
+  protected List<FunctionalExchange> getRealizingFunctionalExchanges(FunctionalExchange element) {
     List<FunctionalExchange> ret = new ArrayList<FunctionalExchange>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof FunctionalExchangeRealization) {
         TraceableElement src = trace.getSourceElement();
         if (src instanceof FunctionalExchange) {

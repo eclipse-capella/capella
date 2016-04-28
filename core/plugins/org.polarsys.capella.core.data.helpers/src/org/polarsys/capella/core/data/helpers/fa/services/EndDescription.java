@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.services;
 
 import org.eclipse.emf.ecore.EClass;
@@ -20,39 +21,39 @@ public class EndDescription {
 	/**
 	 * The End's EClass.
 	 */
-	private EClass _eClass;
+	private EClass eClass;
 
 	/**
 	 * The bus role name (as seen from end).
 	 */
-	private String _busName;
+	private String busName;
 
 	/**
 	 * The end feature name (as seen from bus).
 	 */
-	private String _endName;
+	private String endName;
 
 	public EClass get_eClass() {
-		return _eClass;
+		return eClass;
 	}
 
 	public void set_eClass(EClass class1) {
-		_eClass = class1;
+	  this.eClass = class1;
 	}
 
 	public String getBusName() {
-		return _busName;
+		return busName;
 	}
 
 	public void setBusName(String name) {
-		_busName = name;
+	  this.busName = name;
 	}
 
 	public String getEndName() {
-		return _endName;
+		return endName;
 	}
 
 	public void setEndName(String name) {
-		_endName = name;
+	  this.endName = name;
 	}
 }

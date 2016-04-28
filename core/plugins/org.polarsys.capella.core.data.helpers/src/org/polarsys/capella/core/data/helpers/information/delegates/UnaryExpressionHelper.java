@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.information.delegates;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -30,26 +31,26 @@ public class UnaryExpressionHelper {
     return instance;
   }
 
-  public Object doSwitch(UnaryExpression element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(UnaryExpression element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(DatavaluePackage.Literals.ABSTRACT_EXPRESSION_VALUE__EXPRESSION)) {
-      return ret = getExpression(element_p);
+    if (feature.equals(DatavaluePackage.Literals.ABSTRACT_EXPRESSION_VALUE__EXPRESSION)) {
+      return ret = getExpression(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = AbstractExpressionValueHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractExpressionValueHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected String getExpression(UnaryExpression element_p) {
+  protected String getExpression(UnaryExpression element) {
     // If operator is the UNSET one, we directly use the unparsed expression.
-    if (UnaryOperator.UNSET.equals(element_p.getOperator())) {
-      return element_p.getUnparsedExpression();
+    if (UnaryOperator.UNSET.equals(element.getOperator())) {
+      return element.getUnparsedExpression();
     }
-    return DataValueNamingHelper.getValue(element_p, null, true);
+    return DataValueNamingHelper.getValue(element, null, true);
   }
 }

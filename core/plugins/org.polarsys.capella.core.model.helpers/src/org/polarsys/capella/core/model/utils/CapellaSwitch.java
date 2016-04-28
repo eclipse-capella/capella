@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.utils;
 
 import org.eclipse.emf.ecore.EObject;
@@ -59,8 +60,8 @@ public class CapellaSwitch<T> {
     this(null);
   }
   
-  public CapellaSwitch(T defaultResult_p){
-    defaultResult = defaultResult_p;
+  public CapellaSwitch(T defaultResult){
+    this.defaultResult = defaultResult;
   }
   
   public T doSwitch(EObject e){
@@ -118,87 +119,87 @@ public class CapellaSwitch<T> {
   }
 
   /**
-   * @param modellingcore_p the modellingcore to set
+   * @param modellingcore the modellingcore to set
    */
-  public void setModellingcore(ModellingcoreSwitch<? extends T> modellingcore_p) {
-    modellingcore = modellingcore_p;
+  public void setModellingcore(ModellingcoreSwitch<? extends T> modellingcore) {
+    this.modellingcore = modellingcore;
   }
 
   /**
-   * @param capellacore_p the capellacore to set
+   * @param capellacore the capellacore to set
    */
-  public void setCapellacore(CapellacoreSwitch<? extends T> capellacore_p) {
-    capellacore = capellacore_p;
+  public void setCapellacore(CapellacoreSwitch<? extends T> capellacore) {
+    this.capellacore = capellacore;
   }
 
   /**
-   * @param capellacommon_p the capellacommon to set
+   * @param capellacommon the capellacommon to set
    */
-  public void setCapellacommon(CapellacommonSwitch<? extends T> capellacommon_p) {
-    capellacommon = capellacommon_p;
+  public void setCapellacommon(CapellacommonSwitch<? extends T> capellacommon) {
+    this.capellacommon = capellacommon;
   }
 
   /**
-   * @param information_p the information to set
+   * @param information the information to set
    */
-  public void setInformation(InformationSwitch<? extends T> information_p) {
-    information = information_p;
+  public void setInformation(InformationSwitch<? extends T> information) {
+    this.information = information;
   }
 
   /**
-   * @param la_p the la to set
+   * @param la the la to set
    */
-  public void setLa(LaSwitch<? extends T> la_p) {
-    la = la_p;
+  public void setLa(LaSwitch<? extends T> la) {
+    this.la = la;
   }
 
   /**
-   * @param fa_p the fa to set
+   * @param fa the fa to set
    */
-  public void setFa(FaSwitch<? extends T> fa_p) {
-    fa = fa_p;
+  public void setFa(FaSwitch<? extends T> fa) {
+    this.fa = fa;
   }
 
   /**
-   * @param cs_p the cs to set
+   * @param cs the cs to set
    */
-  public void setCs(CsSwitch<? extends T> cs_p) {
-    cs = cs_p;
+  public void setCs(CsSwitch<? extends T> cs) {
+    this.cs = cs;
   }
 
   /**
-   * @param ctx_p the ctx to set
+   * @param ctx the ctx to set
    */
-  public void setCtx(CtxSwitch<? extends T> ctx_p) {
-    ctx = ctx_p;
+  public void setCtx(CtxSwitch<? extends T> ctx) {
+    this.ctx = ctx;
   }
 
   /**
-   * @param epbs_p the epbs to set
+   * @param epbs the epbs to set
    */
-  public void setEpbs(EpbsSwitch<? extends T> epbs_p) {
-    epbs = epbs_p;
+  public void setEpbs(EpbsSwitch<? extends T> epbs) {
+    this.epbs = epbs;
   }
 
   /**
-   * @param interaction_p the interaction to set
+   * @param interaction the interaction to set
    */
-  public void setInteraction(InteractionSwitch<? extends T> interaction_p) {
-    interaction = interaction_p;
+  public void setInteraction(InteractionSwitch<? extends T> interaction) {
+    this.interaction = interaction;
   }
   
   /**
-   * @param pa_p the pa to set
+   * @param pa the pa to set
    */
-  public void setPa(PaSwitch<? extends T> pa_p) {
-    pa = pa_p;
+  public void setPa(PaSwitch<? extends T> pa) {
+    this.pa = pa;
   }
   
   /**
-   * @param datavalue_p the datavalue to set
+   * @param datavalue the datavalue to set
    */
-  public void setDatavalue(DatavalueSwitch<? extends T> datavalue_p) {
-    datavalue = datavalue_p;
+  public void setDatavalue(DatavalueSwitch<? extends T> datavalue) {
+    this.datavalue = datavalue;
   }
   
 }

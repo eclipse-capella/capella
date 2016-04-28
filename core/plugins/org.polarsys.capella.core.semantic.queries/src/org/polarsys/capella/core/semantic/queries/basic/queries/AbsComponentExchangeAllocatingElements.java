@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,36 +34,35 @@ public abstract class AbsComponentExchangeAllocatingElements implements IQuery {
     // do nothing
 	}
 
-	/** 
-	 *  
-	 * current.functionalExchanges
-	 * 
-	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
-	 */
-	public List<Object> compute(Object object_p) {
-		List<Object> result = new ArrayList<Object>();
-		if (object_p instanceof ComponentExchange && !(object_p instanceof CommunicationMean)) {
-		  // Component Exchange
-		  ComponentExchange exchange = (ComponentExchange) object_p;
-		  	// collect component exchange allocation links
-			EList<AbstractTrace> traces = exchange.getIncomingTraces();
-			for (AbstractTrace trace : traces) {
-				if (trace instanceof ComponentExchangeAllocation) {
-					// get source element
-					TraceableElement element = trace.getSourceElement();
-					if (element != null && isValidInstanceOf(element)) {
-						result.add(element);						
-					}
-				}
-			}
-		}
-        return result;
-	}
+  /**
+   * current.functionalExchanges
+   * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
+   */
+  @Override
+  public List<Object> compute(Object object) {
+    List<Object> result = new ArrayList<Object>();
+    if (object instanceof ComponentExchange && !(object instanceof CommunicationMean)) {
+      // Component Exchange
+      ComponentExchange exchange = (ComponentExchange) object;
+      // collect component exchange allocation links
+      EList<AbstractTrace> traces = exchange.getIncomingTraces();
+      for (AbstractTrace trace : traces) {
+        if (trace instanceof ComponentExchangeAllocation) {
+          // get source element
+          TraceableElement element = trace.getSourceElement();
+          if (element != null && isValidInstanceOf(element)) {
+            result.add(element);
+          }
+        }
+      }
+    }
+    return result;
+  }
 	
 	/**
 	 * filter the valid instance type
-	 * @param element_p
+	 * @param element
 	 * @return
 	 */
-	abstract public boolean isValidInstanceOf(EObject element_p);
+	abstract public boolean isValidInstanceOf(EObject element);
 }

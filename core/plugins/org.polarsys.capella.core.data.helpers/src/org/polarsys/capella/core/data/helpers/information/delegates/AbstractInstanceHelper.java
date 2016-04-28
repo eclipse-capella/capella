@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.information.delegates;
 
 import java.util.ArrayList;
@@ -35,16 +36,16 @@ public class AbstractInstanceHelper {
 		return instance;
 	}
 
-	public Object doSwitch(AbstractInstance element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(AbstractInstance element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(InformationPackage.Literals.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES)) {
-			ret = getRepresentingInstanceRoles(element_p);
+		if (feature.equals(InformationPackage.Literals.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES)) {
+			ret = getRepresentingInstanceRoles(element);
 		}
 
 		// no helper found... searching in super classes...
 		if(null == ret) {
-			ret = PropertyHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = PropertyHelper.getInstance().doSwitch(element, feature);
 		}		
 
 		return ret;
@@ -53,9 +54,9 @@ public class AbstractInstanceHelper {
 	/**
 	 * 
 	 */
-	protected List<InstanceRole> getRepresentingInstanceRoles(AbstractInstance element_p) {
+	protected List<InstanceRole> getRepresentingInstanceRoles(AbstractInstance element) {
 		List <InstanceRole> ret = new ArrayList <InstanceRole>();
-    for (EObject obj : EObjectExt.getReferencers(element_p, InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE)) {
+    for (EObject obj : EObjectExt.getReferencers(element, InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE)) {
       if (obj instanceof InstanceRole) {
 				ret.add((InstanceRole) obj);
 			}

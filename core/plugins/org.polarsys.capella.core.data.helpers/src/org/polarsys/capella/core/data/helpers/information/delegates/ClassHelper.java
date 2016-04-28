@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.information.delegates;
 
 import java.util.ArrayList;
@@ -45,18 +46,18 @@ public class ClassHelper {
   /**
    *
    */
-	public Object doSwitch(Class element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(Class element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(InformationPackage.Literals.CLASS__REALIZED_CLASSES)) {
-      ret = getRealizedClasses(element_p);
-    } else if (feature_p.equals(InformationPackage.Literals.CLASS__REALIZING_CLASSES)) {
-      ret = getRealizingClasses(element_p);
+		if (feature.equals(InformationPackage.Literals.CLASS__REALIZED_CLASSES)) {
+      ret = getRealizedClasses(element);
+    } else if (feature.equals(InformationPackage.Literals.CLASS__REALIZING_CLASSES)) {
+      ret = getRealizingClasses(element);
     }
 
 		// no helper found... searching in super classes...
 		if(null == ret) {
-			ret = GeneralClassHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = GeneralClassHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;
@@ -65,9 +66,9 @@ public class ClassHelper {
   /**
    *
    */
-  protected List<Class> getRealizedClasses(Class element_p) {
+  protected List<Class> getRealizedClasses(Class element) {
     List <Class> ret = new ArrayList <Class>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof InformationRealization) {
         TraceableElement elt = trace.getTargetElement();
         if (elt instanceof Class) {
@@ -81,9 +82,9 @@ public class ClassHelper {
   /**
    *
    */
-  protected List<Class> getRealizingClasses(Class element_p) {
+  protected List<Class> getRealizingClasses(Class element) {
     List <Class> ret = new ArrayList <Class>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof InformationRealization) {
         TraceableElement elt = trace.getSourceElement();
         if (elt instanceof Class) {

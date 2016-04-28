@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.utils.saxparser;
 
 import java.io.StringReader;
@@ -34,24 +35,24 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class WriteCapellaElementDescriptionSAXParser {
 
-  protected Logger _logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.VALIDATION);
-  protected StringBuilder __description;
-  protected StringBuilder _currentElementDescription;
+  protected Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.VALIDATION);
+  protected StringBuilder description;
+  protected StringBuilder currentElementDescription;
 
   public WriteCapellaElementDescriptionSAXParser() {
-    __description = null;
-    _currentElementDescription = null;
+    description = null;
+    currentElementDescription = null;
   }
 
-  protected String getName(EObject object_p) {
-    if (null != object_p) {
-      return CapellaElementExt.getName(object_p);
+  protected String getName(EObject object) {
+    if (null != object) {
+      return CapellaElementExt.getName(object);
     }
     return null;
   }
 
-  protected boolean managedObject(EObject object_p) {
-    return (object_p instanceof CapellaElement);
+  protected boolean managedObject(EObject object) {
+    return (object instanceof CapellaElement);
   }
 
   public boolean updateDescription(List<EObject> modelElements) {
@@ -60,15 +61,15 @@ public class WriteCapellaElementDescriptionSAXParser {
       EObject object = iterator.next();
       if (object instanceof CapellaElement) {
         final CapellaElement capellaElement = (CapellaElement) object;
-        String description = capellaElement.getDescription();
-        if ((null != description) && !description.isEmpty()) {
-          _currentElementDescription = new StringBuilder();
+        String elementDescription = capellaElement.getDescription();
+        if ((null != elementDescription) && !elementDescription.isEmpty()) {
+          currentElementDescription = new StringBuilder();
           // for each description, start from scratch
-          __description = new StringBuilder();
-          description = SaxParserHelper.escapeSpecialCharacter(description);
-          _currentElementDescription.append(IConstantValidation.ROOT_NODE);
-          _currentElementDescription.append(description);
-          _currentElementDescription.append(IConstantValidation.ROOT_NODE_END);
+          description = new StringBuilder();
+          elementDescription = SaxParserHelper.escapeSpecialCharacter(elementDescription);
+          currentElementDescription.append(IConstantValidation.ROOT_NODE);
+          currentElementDescription.append(elementDescription);
+          currentElementDescription.append(IConstantValidation.ROOT_NODE_END);
           SAXParser saxParser = null;
           StringReader reader = null;
           try {
@@ -102,7 +103,7 @@ public class WriteCapellaElementDescriptionSAXParser {
                 // example: <p> value1 <a href="hvalue"> value2 </a></p>
                 // so need to add the value to the result before starting new element
                 if (valueToAdd) {
-                  __description.append(elementValue.toString());
+                  description.append(elementValue.toString());
                   valueToAdd = false;
                 }
                 elementValue = new StringBuilder(0);
@@ -114,13 +115,13 @@ public class WriteCapellaElementDescriptionSAXParser {
                 }
 
                 // '<'
-                __description.append(IConstantValidation.LESS_THAN);
+                description.append(IConstantValidation.LESS_THAN);
                 // element name
-                __description.append(qName);
+                description.append(qName);
                 if (attributes.getLength() == 0) {
                   // close tab ">" if no attributes
                   // empty line correction in description after publication
-                  __description.append(IConstantValidation.GREATER_THAN);
+                  description.append(IConstantValidation.GREATER_THAN);
                 } else {
                   // fore all attributes
                   for (int i = 0; i < attributes.getLength(); i++) {
@@ -139,15 +140,15 @@ public class WriteCapellaElementDescriptionSAXParser {
                       }
                     }
                     // add other attribute
-                    __description.append(IConstantValidation.SPACE);
-                    __description.append(attName);
-                    __description.append(IConstantValidation.EQUAL);
-                    __description.append(IConstantValidation.DOUBLE_QUOTES);
-                    __description.append(attValue);
-                    __description.append(IConstantValidation.DOUBLE_QUOTES);
+                    description.append(IConstantValidation.SPACE);
+                    description.append(attName);
+                    description.append(IConstantValidation.EQUAL);
+                    description.append(IConstantValidation.DOUBLE_QUOTES);
+                    description.append(attValue);
+                    description.append(IConstantValidation.DOUBLE_QUOTES);
                   }
                   // close start Element
-                  __description.append(IConstantValidation.GREATER_THAN);
+                  description.append(IConstantValidation.GREATER_THAN);
                 }
               }
 
@@ -159,7 +160,7 @@ public class WriteCapellaElementDescriptionSAXParser {
 
                 // break element
                 if (qName.equals(IConstantValidation.XHTML_BREAK_ELEMENT)) {
-                  __description.append(IConstantValidation.XHTML_BREAK_ELEMENT_END);
+                  description.append(IConstantValidation.XHTML_BREAK_ELEMENT_END);
                   return;
                 }
 
@@ -176,7 +177,7 @@ public class WriteCapellaElementDescriptionSAXParser {
                       if (managedObject(elementFound)) {
                         flag = true;
                         // add the name of the capella element or diagram
-                        __description.append(name);
+                        description.append(name);
                       }
                     }
                     // element treated so re-initialize
@@ -184,15 +185,15 @@ public class WriteCapellaElementDescriptionSAXParser {
                   }
                   if (!flag) {
                     // add the current value
-                    __description.append(value);
+                    description.append(value);
                   }
                 }
 
                 // end tab
                 //
-                __description.append(IConstantValidation.CLOSE_TAB_PREFIX);
-                __description.append(qName);
-                __description.append(IConstantValidation.GREATER_THAN);
+                description.append(IConstantValidation.CLOSE_TAB_PREFIX);
+                description.append(qName);
+                description.append(IConstantValidation.GREATER_THAN);
 
                 // empty the element value
                 elementValue = new StringBuilder(0);
@@ -204,12 +205,12 @@ public class WriteCapellaElementDescriptionSAXParser {
 
             // input Source
             InputSource is = new InputSource();
-            reader = new StringReader(_currentElementDescription.toString());
+            reader = new StringReader(currentElementDescription.toString());
             is.setCharacterStream(reader);
             saxParser.parse(is, handler);
 
-          } catch (Exception exception_p) {
-            _logger.error("Exception while quick fix : " + exception_p.toString()); //$NON-NLS-1$
+          } catch (Exception exception) {
+            logger.error("Exception while quick fix : " + exception.toString()); //$NON-NLS-1$
             return false;
           } finally {
             // reset parser and reader
@@ -217,7 +218,7 @@ public class WriteCapellaElementDescriptionSAXParser {
             saxParser.reset();
           }
           // remove root
-          String result = __description.toString().replaceAll(IConstantValidation.ROOT_NODE, ICommonConstants.EMPTY_STRING);
+          String result = description.toString().replaceAll(IConstantValidation.ROOT_NODE, ICommonConstants.EMPTY_STRING);
           // remove root_end
           result = result.replaceAll(IConstantValidation.ROOT_NODE_END, ICommonConstants.EMPTY_STRING);
           // set description

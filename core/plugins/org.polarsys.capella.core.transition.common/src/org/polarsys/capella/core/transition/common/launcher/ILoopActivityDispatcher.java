@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.launcher;
 
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -17,6 +18,6 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public interface ILoopActivityDispatcher {
 
-  boolean loop(IContext context_p, String workflowId_p);
+  boolean loop(IContext context, String workflowId);
 
 }

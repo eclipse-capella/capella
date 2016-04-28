@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.interaction.services;
 
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
@@ -27,13 +28,13 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
 public class ExecutionEndExt {
 
   /**
-   * @param msg_p
+   * @param executionEnd1
    * @return the corresponding sequence message
    */
-  public static SequenceMessage getMessage(ExecutionEnd msg_p) {
+  public static SequenceMessage getMessage(ExecutionEnd executionEnd1) {
     SequenceMessage msg = null;
 
-    Execution exec = msg_p.getExecution();
+    Execution exec = executionEnd1.getExecution();
     if (exec != null) {
       InteractionFragment end = exec.getStart();
       if ((end != null) && (end instanceof MessageEnd)) {
@@ -46,13 +47,13 @@ public class ExecutionEndExt {
 
   /**
    * Returns the operation of the execution end
-   * @param msg_p
+   * @param msg
    * @return the operation
    */
-  public static AbstractEventOperation getOperation(ExecutionEnd msg_p) {
+  public static AbstractEventOperation getOperation(ExecutionEnd msg) {
     AbstractEventOperation op = null;
 
-    Execution exec = msg_p.getExecution();
+    Execution exec = msg.getExecution();
     if (exec != null) {
       InteractionFragment end = exec.getStart();
       if (end instanceof MessageEnd) {

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.polarsys.kitalpha.model.common.scrutiny.scrutinize">
+      <scrutiny
+            id="org.polarsys.capella.model.detachment.propertyvalue.scrutiny"
+            name="Property values and Property Groups">
+         <class
+               scrutinize="org.polarsys.capella.detachment.propertyvalues.scrutinizers.PropertyValuesScrutinizer">
+         </class>
+         <class
+               scrutinize="org.polarsys.capella.detachment.propertyvalues.scrutinizers.PropertyGroupScrutinizer">
+         </class>
+         <class
+               scrutinize="org.polarsys.capella.detachment.propertyvalues.scrutinizers.PropertyValuePackageScrutinizer">
+         </class>
+      </scrutiny>
+   </extension>
+   <extension
+         point="org.polarsys.kitalpha.model.detachment.ui.page">
+      <page
+            class="org.polarsys.capella.detachment.propertyvalues.ui.page.PropertyValuesFormPage"
+            id="org.polarsys.capella.model.detachment.propertyvalue.page"
+            scrutinizeId="org.polarsys.capella.model.detachment.propertyvalue.scrutiny"
+            title="Property Values">
+      </page>
+   </extension>
+   <extension
+         point="org.polarsys.kitalpha.model.common.commands.definition">
+      <command
+            class="org.polarsys.capella.detachment.propertyvalue.command.PropertyValuesDeleteCommand"
+            id="org.polarsys.capella.model.detachment.propertyvalue.delete.command"
+            priority="780"
+            scrutinizeId="org.polarsys.capella.model.detachment.propertyvalue.scrutiny"
+            workflow="DETACHMENT">
+      </command>
+   </extension>
+
+</plugin>

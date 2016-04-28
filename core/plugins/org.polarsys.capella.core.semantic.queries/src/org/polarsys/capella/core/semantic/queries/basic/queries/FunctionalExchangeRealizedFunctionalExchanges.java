@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -30,9 +31,9 @@ public class FunctionalExchangeRealizedFunctionalExchanges extends AbsFunctional
 
  
 	@Override
-	public boolean isValidArchitectureLavel(BlockArchitecture arch_p) {
+	public boolean isValidArchitectureLavel(BlockArchitecture arch) {
 		// get realized interaction if current functional exchange is in (logical or physical level)
-		if (null != arch_p && arch_p instanceof LogicalArchitecture || arch_p instanceof PhysicalArchitecture) {
+		if (null != arch && arch instanceof LogicalArchitecture || arch instanceof PhysicalArchitecture) {
 
 			return true;
 		}

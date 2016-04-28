@@ -36,6 +36,11 @@ public class AutoOpen extends BasicTestCase {
   @Override
   public void test() throws Exception {
     // Hypothesis: project already imported in workspace (by setUp()), but session not open.
+    // Try to close Session if already open.
+    Session oldSession = SessionHelper.getSession(getAirdFileForLoadedModel(TEST_PROJECT_NAME));
+    if (oldSession != null && oldSession.isOpen()) {
+      GuiActions.closeSession(oldSession);
+    }
     
     // Open session using Capella's OpenSessionAction.
     IFile airdFile = getAirdFileForLoadedModel(TEST_PROJECT_NAME);

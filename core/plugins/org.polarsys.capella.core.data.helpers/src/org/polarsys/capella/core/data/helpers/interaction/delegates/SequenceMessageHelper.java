@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.interaction.delegates;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -38,39 +39,39 @@ public class SequenceMessageHelper {
 		return instance;
 	}
 
-	public Object doSwitch(SequenceMessage element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(SequenceMessage element, EStructuralFeature feature) {
 		Object ret = null;
 
-    if (feature_p.equals(InteractionPackage.Literals.SEQUENCE_MESSAGE__INVOKED_OPERATION)) {
-      ret = getInvokedOperation(element_p);
-    } else if (feature_p.equals(InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_PART)) {
-      ret = getSendingPart(element_p);
-    } else if (feature_p.equals(InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_PART)) {
-      ret = getReceivingPart(element_p);
-    } else if (feature_p.equals(InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_FUNCTION)) {
-      ret = getSendingFunction(element_p);
-    } else if (feature_p.equals(InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_FUNCTION)) {
-      ret = getReceivingFunction(element_p);
+    if (feature.equals(InteractionPackage.Literals.SEQUENCE_MESSAGE__INVOKED_OPERATION)) {
+      ret = getInvokedOperation(element);
+    } else if (feature.equals(InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_PART)) {
+      ret = getSendingPart(element);
+    } else if (feature.equals(InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_PART)) {
+      ret = getReceivingPart(element);
+    } else if (feature.equals(InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_FUNCTION)) {
+      ret = getSendingFunction(element);
+    } else if (feature.equals(InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_FUNCTION)) {
+      ret = getReceivingFunction(element);
     }
 
 		// no helper found... searching in super classes...
 		if (null == ret) {
-			ret = NamedElementHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = NamedElementHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;
 	}
 
-  protected AbstractEventOperation getInvokedOperation(SequenceMessage element_p) {
-    if (element_p != null) {
-      MessageEnd receiver = element_p.getReceivingEnd();
+  protected AbstractEventOperation getInvokedOperation(SequenceMessage element) {
+    if (element != null) {
+      MessageEnd receiver = element.getReceivingEnd();
       if (receiver != null) {
         Event evt = receiver.getEvent();
         if (evt instanceof EventReceiptOperation) {
           return ((EventReceiptOperation) evt).getOperation();
         }
       }
-      MessageEnd sender = element_p.getSendingEnd();
+      MessageEnd sender = element.getSendingEnd();
       if (sender != null) {
         Event evt = sender.getEvent();
         if (evt instanceof EventSentOperation) {
@@ -81,8 +82,8 @@ public class SequenceMessageHelper {
     return null;
   }
 
-  protected Part getSendingPart(SequenceMessage element_p) {
-    MessageEnd sender = element_p.getSendingEnd();
+  protected Part getSendingPart(SequenceMessage element) {
+    MessageEnd sender = element.getSendingEnd();
     if (sender != null) {
       InstanceRole role = sender.getCovered();
       if (null != role) {
@@ -95,8 +96,8 @@ public class SequenceMessageHelper {
     return null;
   }
 
-  protected Part getReceivingPart(SequenceMessage element_p) {
-    MessageEnd sender = element_p.getReceivingEnd();
+  protected Part getReceivingPart(SequenceMessage element) {
+    MessageEnd sender = element.getReceivingEnd();
     if (sender != null) {
       InstanceRole role = sender.getCovered();
       if (null != role) {
@@ -109,8 +110,8 @@ public class SequenceMessageHelper {
     return null;
   }
 
-  protected AbstractFunction getSendingFunction(SequenceMessage element_p) {
-    MessageEnd sender = element_p.getSendingEnd();
+  protected AbstractFunction getSendingFunction(SequenceMessage element) {
+    MessageEnd sender = element.getSendingEnd();
     if (sender != null) {
       InstanceRole role = sender.getCovered();
       if (null != role) {
@@ -123,8 +124,8 @@ public class SequenceMessageHelper {
     return null;
   }
 
-  protected AbstractFunction getReceivingFunction(SequenceMessage element_p) {
-    MessageEnd sender = element_p.getReceivingEnd();
+  protected AbstractFunction getReceivingFunction(SequenceMessage element) {
+    MessageEnd sender = element.getReceivingEnd();
     if (sender != null) {
       InstanceRole role = sender.getCovered();
       if (null != role) {

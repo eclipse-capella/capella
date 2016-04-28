@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -59,31 +60,31 @@ public class DataTypeExt {
   /**
    * @see #getDataTypeDependencies(DataType)
    */
-  public static Map<AbstractDependenciesPkg, Collection<EObject>> getDataTypeDependencies2(DataType dataType_p) {
+  public static Map<AbstractDependenciesPkg, Collection<EObject>> getDataTypeDependencies2(DataType dataType) {
 
     Map<AbstractDependenciesPkg, Collection<EObject>> result = new HashMap<AbstractDependenciesPkg, Collection<EObject>>();
 
     // superDataTypes
-    for (Generalization aGeneralization : dataType_p.getSuperGeneralizations()) {
+    for (Generalization aGeneralization : dataType.getSuperGeneralizations()) {
       AbstractDependenciesPkgExt.checkDependenciesAndAddToResult(result, aGeneralization.getSuper());
     }
     return result;
   }
 
   /**
-   * @param dataType_p
+   * @param dataType
    * @return all dependent packages of the collection
    */
-  public static Collection<AbstractDependenciesPkg> getDataTypeDependencies(DataType dataType_p) {
-    return getDataTypeDependencies2(dataType_p).keySet();
+  public static Collection<AbstractDependenciesPkg> getDataTypeDependencies(DataType dataType) {
+    return getDataTypeDependencies2(dataType).keySet();
   }
 
   /**
    * Return all data Values contained in DataType
-   * @param currentDataType_p
+   * @param currentDataType
    * @return list of dataValues
    */
-  public static List<DataValue> getAllDataValuesFromDataType(DataType currentDataType_p) {
+  public static List<DataValue> getAllDataValuesFromDataType(DataType currentDataType) {
     // result
     List<DataValue> result = new ArrayList<DataValue>(1);
     // map of EObject and Values as List of EReference
@@ -91,27 +92,27 @@ public class DataTypeExt {
     List<EReference> referenceElement = new ArrayList<EReference>(1);
     // add corresponding references
     referenceElement.add(DatavaluePackage.Literals.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES);
-    if (currentDataType_p instanceof BooleanType) {
+    if (currentDataType instanceof BooleanType) {
       referenceElement.add(DatatypePackage.Literals.BOOLEAN_TYPE__OWNED_DEFAULT_VALUE);
       referenceElement.add(DatatypePackage.Literals.BOOLEAN_TYPE__OWNED_LITERALS);
-    } else if (currentDataType_p instanceof Enumeration) {
+    } else if (currentDataType instanceof Enumeration) {
       referenceElement.add(DatatypePackage.Literals.ENUMERATION__OWNED_LITERALS);
       referenceElement.add(DatatypePackage.Literals.ENUMERATION__OWNED_DEFAULT_VALUE);
       referenceElement.add(DatatypePackage.Literals.ENUMERATION__OWNED_NULL_VALUE);
       referenceElement.add(DatatypePackage.Literals.ENUMERATION__OWNED_MIN_VALUE);
       referenceElement.add(DatatypePackage.Literals.ENUMERATION__OWNED_MAX_VALUE);
-    } else if ((currentDataType_p instanceof NumericType) || (currentDataType_p instanceof PhysicalQuantity)) {
+    } else if ((currentDataType instanceof NumericType) || (currentDataType instanceof PhysicalQuantity)) {
       referenceElement.add(DatatypePackage.Literals.NUMERIC_TYPE__OWNED_DEFAULT_VALUE);
       referenceElement.add(DatatypePackage.Literals.NUMERIC_TYPE__OWNED_NULL_VALUE);
       referenceElement.add(DatatypePackage.Literals.NUMERIC_TYPE__OWNED_MIN_VALUE);
       referenceElement.add(DatatypePackage.Literals.NUMERIC_TYPE__OWNED_MAX_VALUE);
-    } else if (currentDataType_p instanceof StringType) {
+    } else if (currentDataType instanceof StringType) {
       referenceElement.add(DatatypePackage.Literals.STRING_TYPE__OWNED_DEFAULT_VALUE);
       referenceElement.add(DatatypePackage.Literals.STRING_TYPE__OWNED_NULL_VALUE);
       referenceElement.add(DatatypePackage.Literals.STRING_TYPE__OWNED_MIN_LENGTH);
       referenceElement.add(DatatypePackage.Literals.STRING_TYPE__OWNED_MAX_LENGTH);
     }
-    mapOfDataTypeWithFeatures.put(currentDataType_p, referenceElement);
+    mapOfDataTypeWithFeatures.put(currentDataType, referenceElement);
     // retrieve all dataValues
     result.addAll(DataValueExt.getDataValuesFromMapOfEObjectAndEReferences(mapOfDataTypeWithFeatures));
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.information;
 
 import java.util.ArrayList;
@@ -39,38 +40,38 @@ public class PortAllocationRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
     // Nothing here
   }
 
   @Override
-  public IStatus transformRequired(EObject source_p, IContext context_p) {
-    IStatus result = super.transformRequired(source_p, context_p);
+  public IStatus transformRequired(EObject source, IContext context) {
+    IStatus result = super.transformRequired(source, context);
 
     if (result.isOK()) {
-      Allocation element = (Allocation) source_p;
+      Allocation element = (Allocation) source;
       EObject sourceElement = element.getSourceElement();
       EObject targetElement = element.getTargetElement();
 
-      result = TransformationHandlerHelper.getInstance(context_p).checkTransformRequired(element, context_p, sourceElement, targetElement);
+      result = TransformationHandlerHelper.getInstance(context).checkTransformRequired(element, context, sourceElement, targetElement);
     }
     return result;
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    Allocation element = (Allocation) element_p;
-    needed_p.addAll(createDefaultPrecedencePremices(element, ModellingcorePackage.Literals.ABSTRACT_TRACE__SOURCE_ELEMENT));
-    needed_p.addAll(createDefaultPrecedencePremices(element, ModellingcorePackage.Literals.ABSTRACT_TRACE__TARGET_ELEMENT));
+  protected void premicesRelated(EObject eObject1, ArrayList<IPremise> needed) {
+    super.premicesRelated(eObject1, needed);
+    Allocation element = (Allocation) eObject1;
+    needed.addAll(createDefaultPrecedencePremices(element, ModellingcorePackage.Literals.ABSTRACT_TRACE__SOURCE_ELEMENT));
+    needed.addAll(createDefaultPrecedencePremices(element, ModellingcorePackage.Literals.ABSTRACT_TRACE__TARGET_ELEMENT));
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, ModellingcorePackage.Literals.ABSTRACT_TRACE__SOURCE_ELEMENT, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, ModellingcorePackage.Literals.ABSTRACT_TRACE__TARGET_ELEMENT, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, ModellingcorePackage.Literals.ABSTRACT_TRACE__SOURCE_ELEMENT, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, ModellingcorePackage.Literals.ABSTRACT_TRACE__TARGET_ELEMENT, context);
   }
 
 }

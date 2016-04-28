@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules;
 
 import java.util.ArrayList;
@@ -41,27 +42,27 @@ public abstract class AbstractCapellaElementRule extends AbstractUpdateRule {
   }
 
   /**
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * @param element
+   * @param result
+   * @param context
    */
   @Override
-  protected void updateElement(EObject element_p, EObject result_p, IContext context_p) {
-    super.updateElement(element_p, result_p, context_p);
+  protected void updateElement(EObject element, EObject result, IContext context) {
+    super.updateElement(element, result, context);
   }
 
   @Override
-  public EClass getTargetType(EObject element_p, IContext context_p) {
-    return element_p.eClass();
+  public EClass getTargetType(EObject element, IContext context) {
+    return element.eClass();
   }
 
   @Override
-  protected EObject transformDirectElement(EObject element_p, IContext context_p) {
-    EObject result = super.transformDirectElement(element_p, context_p);
+  protected EObject transformDirectElement(EObject element, IContext context) {
+    EObject result = super.transformDirectElement(element, context);
 
     //Theoretically, this should not be performed here, but log message requires a valid name
-    if ((element_p instanceof AbstractNamedElement) && (result instanceof AbstractNamedElement)) {
-      ((AbstractNamedElement) result).setName(((AbstractNamedElement) element_p).getName());
+    if ((element instanceof AbstractNamedElement) && (result instanceof AbstractNamedElement)) {
+      ((AbstractNamedElement) result).setName(((AbstractNamedElement) element).getName());
     }
     return result;
   }
@@ -71,17 +72,17 @@ public abstract class AbstractCapellaElementRule extends AbstractUpdateRule {
    */
   @SuppressWarnings({ "rawtypes", "unchecked" })
   @Override
-  protected void premicesContainement(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesContainement(element_p, needed_p);
+  protected void premicesContainement(EObject element, ArrayList<IPremise> needed) {
+    super.premicesContainement(element, needed);
 
-    if (isOrderedContainment(element_p)) {
+    if (isOrderedContainment(element)) {
       //Add previous element in the containingFeature list if ordered
-      if ((element_p.eContainingFeature() != null) && element_p.eContainingFeature().isOrdered()) {
-        Object parentList = element_p.eContainer().eGet(element_p.eContainingFeature());
+      if ((element.eContainingFeature() != null) && element.eContainingFeature().isOrdered()) {
+        Object parentList = element.eContainer().eGet(element.eContainingFeature());
         if ((parentList != null) && (parentList instanceof EList)) {
-          int index = ((EList) parentList).indexOf(element_p);
+          int index = ((EList) parentList).indexOf(element);
           if (index > 0) {
-            needed_p.addAll(createDefaultCriticalPremices((Collection) Collections.singleton(((EList) parentList).get(index - 1)), "previous")); //$NON-NLS-1$
+            needed.addAll(createDefaultCriticalPremices((Collection) Collections.singleton(((EList) parentList).get(index - 1)), "previous")); //$NON-NLS-1$
           }
         }
       }
@@ -89,8 +90,8 @@ public abstract class AbstractCapellaElementRule extends AbstractUpdateRule {
 
   }
 
-  protected boolean isOrderedContainment(EObject element_p) {
-    return ((element_p.eContainingFeature() != null) && (element_p.eContainingFeature().isOrdered()));
+  protected boolean isOrderedContainment(EObject element) {
+    return ((element.eContainingFeature() != null) && (element.eContainingFeature().isOrdered()));
   }
 
   /**
@@ -105,29 +106,29 @@ public abstract class AbstractCapellaElementRule extends AbstractUpdateRule {
    * {@inheritDoc}
    */
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS));
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES));
+  protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
+    super.premicesRelated(element, needed);
+    needed.addAll(createDefaultPrecedencePremices(element, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS));
+    needed.addAll(createDefaultPrecedencePremices(element, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES));
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p,
-        CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES,
-        context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result,
+        CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES,
+        context);
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
 
-    if (source_p instanceof CapellaElement) {
-      CapellaElement element = (CapellaElement) source_p;
+    if (source instanceof CapellaElement) {
+      CapellaElement element = (CapellaElement) source;
       //property values are now retrieved with IScopeRetriever
-      result_p.addAll(element.getConstraints());
+      result.addAll(element.getConstraints());
     }
   }
 

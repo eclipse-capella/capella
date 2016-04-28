@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.la.delegates;
 
 import java.util.ArrayList;
@@ -41,33 +42,33 @@ public class LaArchitectureHelper {
     return instance;
   }
 
-  public Object doSwitch(LogicalArchitecture element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(LogicalArchitecture element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(LaPackage.Literals.LOGICAL_ARCHITECTURE__ALLOCATED_SYSTEM_ANALYSIS_REALIZATIONS)) {
-      ret = getAllocatedSystemAnalysisRealizations(element_p);
-    } else if (feature_p.equals(LaPackage.Literals.LOGICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG)) {
-      ret = getContainedCapabilityRealizationPkg(element_p);
-    } else if (feature_p.equals(LaPackage.Literals.LOGICAL_ARCHITECTURE__CONTAINED_LOGICAL_FUNCTION_PKG)) {
-      ret = getContainedLogicalFunctionPkg(element_p);
-    } else if (feature_p.equals(LaPackage.Literals.LOGICAL_ARCHITECTURE__ALLOCATED_SYSTEM_ANALYSES)) {
-      ret = getAllocatedSystemAnalyses(element_p);
-    } else if (feature_p.equals(LaPackage.Literals.LOGICAL_ARCHITECTURE__ALLOCATING_PHYSICAL_ARCHITECTURES)) {
-      ret = getAllocatingPhysicalArchitectures(element_p);
+    if (feature.equals(LaPackage.Literals.LOGICAL_ARCHITECTURE__ALLOCATED_SYSTEM_ANALYSIS_REALIZATIONS)) {
+      ret = getAllocatedSystemAnalysisRealizations(element);
+    } else if (feature.equals(LaPackage.Literals.LOGICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG)) {
+      ret = getContainedCapabilityRealizationPkg(element);
+    } else if (feature.equals(LaPackage.Literals.LOGICAL_ARCHITECTURE__CONTAINED_LOGICAL_FUNCTION_PKG)) {
+      ret = getContainedLogicalFunctionPkg(element);
+    } else if (feature.equals(LaPackage.Literals.LOGICAL_ARCHITECTURE__ALLOCATED_SYSTEM_ANALYSES)) {
+      ret = getAllocatedSystemAnalyses(element);
+    } else if (feature.equals(LaPackage.Literals.LOGICAL_ARCHITECTURE__ALLOCATING_PHYSICAL_ARCHITECTURES)) {
+      ret = getAllocatingPhysicalArchitectures(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = BlockArchitectureHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = BlockArchitectureHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<SystemAnalysisRealization> getAllocatedSystemAnalysisRealizations(LogicalArchitecture element_p) {
+  protected List<SystemAnalysisRealization> getAllocatedSystemAnalysisRealizations(LogicalArchitecture element) {
     List<SystemAnalysisRealization> ret = new ArrayList<SystemAnalysisRealization>();
 
-    for (ArchitectureAllocation architectureAllocation : element_p.getProvisionedArchitectureAllocations()) {
+    for (ArchitectureAllocation architectureAllocation : element.getProvisionedArchitectureAllocations()) {
       if (architectureAllocation instanceof SystemAnalysisRealization) {
         ret.add((SystemAnalysisRealization) architectureAllocation);
       }
@@ -75,25 +76,25 @@ public class LaArchitectureHelper {
     return ret;
   }
 
-  protected CapabilityRealizationPkg getContainedCapabilityRealizationPkg(LogicalArchitecture element_p) {
-    AbstractCapabilityPkg abstractCapabilityPkg = element_p.getOwnedAbstractCapabilityPkg();
+  protected CapabilityRealizationPkg getContainedCapabilityRealizationPkg(LogicalArchitecture element) {
+    AbstractCapabilityPkg abstractCapabilityPkg = element.getOwnedAbstractCapabilityPkg();
     if (abstractCapabilityPkg instanceof CapabilityRealizationPkg) {
       return (CapabilityRealizationPkg) abstractCapabilityPkg;
     }
     return null;
   }
 
-  protected LogicalFunctionPkg getContainedLogicalFunctionPkg(LogicalArchitecture element_p) {
-    FunctionPkg functionPkg = element_p.getOwnedFunctionPkg();
+  protected LogicalFunctionPkg getContainedLogicalFunctionPkg(LogicalArchitecture element) {
+    FunctionPkg functionPkg = element.getOwnedFunctionPkg();
     if (functionPkg instanceof LogicalFunctionPkg) {
       return (LogicalFunctionPkg) functionPkg;
     }
     return null;
   }
 
-  protected List<SystemAnalysis> getAllocatedSystemAnalyses(LogicalArchitecture element_p){
+  protected List<SystemAnalysis> getAllocatedSystemAnalyses(LogicalArchitecture element){
     List <SystemAnalysis> ret = new ArrayList<SystemAnalysis>();
-    for (BlockArchitecture architecture : element_p.getAllocatedArchitectures()) {
+    for (BlockArchitecture architecture : element.getAllocatedArchitectures()) {
       if (architecture instanceof SystemAnalysis) {
         ret.add((SystemAnalysis) architecture);
       }
@@ -101,9 +102,9 @@ public class LaArchitectureHelper {
     return ret;
   }
 
-  protected List <PhysicalArchitecture> getAllocatingPhysicalArchitectures(LogicalArchitecture element_p) {
+  protected List <PhysicalArchitecture> getAllocatingPhysicalArchitectures(LogicalArchitecture element) {
     List <PhysicalArchitecture> ret = new ArrayList<PhysicalArchitecture>();
-    for (BlockArchitecture architecture : element_p.getAllocatingArchitectures()) {
+    for (BlockArchitecture architecture : element.getAllocatingArchitectures()) {
       if (architecture instanceof PhysicalArchitecture) {
         ret.add((PhysicalArchitecture) architecture);
       }

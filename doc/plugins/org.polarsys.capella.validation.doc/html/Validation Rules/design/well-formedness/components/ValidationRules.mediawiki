@@ -3,39 +3,35 @@
             
 <br>         
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_01 - Partitions cycles check 
 |-
 | colspan="2"|This validation rule ensures that a partition of an element cannot have a partition typed by this element. Thus it avoids"partitions cycles". 
 |}     
 <br>    
-
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_02 - Role Allocation 
 |-
 | colspan="2"|This rule checks the role allocations consistency between roles and entities.  
 |}     
 <br>    
-
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_03 - Physical Path Involved Links check  
 |-
 | colspan="2"|This rule checks that a PhysicalPath is valid.   
 |}     
 <br>    
-
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_04 - Check multiple deployment 
 |-
 | colspan="2"|This rule depends on the Preference option "Multiple deployment allowed". If this option is set to false, the rule checks that a Behavior Physical Component is not deployed on more than one Node Physical Component.  
 |}     
 <br> 
-
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_05 - Part type accessibility check 
 |-
 | colspan="2"|This rule ensures that a part is typed by an accessible Component.    
@@ -43,7 +39,7 @@
 <br>  
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_06 - Component Parts type level check 
 |-
 | colspan="2"|This rule ensures that each parts of a component have the same level (i.e context, logical, physical,...) that the component itself.   
@@ -51,7 +47,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_07 - Contexts Abstract Actor Parts Check 
 |-
 | colspan="2"|This rule checks that a Component Context cannot have a part typed by an abstract type.   
@@ -59,7 +55,7 @@
 <br>  
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_08 - Part typed 
 |-
 | colspan="2"|This rule ensures that a part has always a type.    
@@ -67,7 +63,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_09 - Component allocated functions types check 
 |-
 | colspan="2"|This rule checks that a Component allocates only leaf Functions of its own level.    
@@ -75,7 +71,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_10 - Actors Part Locations Check 
 |-
 | colspan="2"|This rule checks the parts locations for actors and root components.   
@@ -83,7 +79,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_11 - Component Functional Allocation 
 |-
 | colspan="2"|This rule checks the allocation level consistency between functions and components to avoid allocations of system functions in logical architecture. 
@@ -91,7 +87,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_12 - Function Allocation Unicity
 |-
 | colspan="2"|This rule checks that a function is allocated to only one component (including Actor) 
@@ -99,7 +95,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_13 - Component Exchange Functional Exchanges Realization
 |-
 | colspan="2"|This rule checks that the Functional Exchanges allocated to a Component Exchange come from the same level. 
@@ -107,7 +103,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_14 - Component Port Allocation 
 |-
 | colspan="2"|This rule checks Ports Allocations consistency. 
@@ -115,7 +111,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_15 - Function Allocation Consistency 
 |-
 | colspan="2"|This rule checks that only leaf functions are allocated. 
@@ -123,7 +119,7 @@
 <br>
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_16 - Component Exchange encapsulation problem check 
 |-
 | colspan="2"|This rule raises a warning if a Component Exchange is linked between two internal components. These components can be directly connected, only if the ports are delegated throughout the owning components which are connected by another Component Exchange. 
@@ -131,7 +127,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_17 - Physical Component deployment check 
 |-
 | colspan="2"|This rule ensures that a node physical component is not deployed on a behavior physical component. 
@@ -139,7 +135,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_18 - Component Exchange location check 
 |-
 | colspan="2"|This rule ensures that Component Exchange is located in the common ancestor between its source/target elements. 
@@ -147,7 +143,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_19 - Physical Link location check 
 |-
 | colspan="2"|This rule ensures that Physical Link is located in the common ancestor between its source/target elements. 
@@ -155,7 +151,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_20 - Physical Component Function Allocation check 
 |-
 | colspan="2"|This rule ensures that Physical Component of nature NODE does not allocate any Function. 
@@ -163,7 +159,7 @@
 <br>
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_21 - Containement check for node and behaviour 
 |-
 | colspan="2"|This rule ensures that NodePC is not contained in BehaviourPC and BehaviourPC is not contained in NodePC. NodePC=Physical Component of nature NODE BehaviourPC=Physical Component of nature BEHAVIOUR. 
@@ -171,7 +167,7 @@
 <br>
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_22 - NodeDeployment In BehaviourPC 
 |-
 | colspan="2"|This rule ensures that NodePC is not deployed in BehaviourPC. NodePC=Physical Component of nature NODE BehaviourPC=Physical Component of nature BEHAVIOUR. 
@@ -179,7 +175,7 @@
 <br>
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_23 - NodeDeployment In PhysicalActor 
 |-
 | colspan="2"|This rule ensures that NodePC is not deployed in PhysicalActor. NodePC=Physical Component of nature NODE . 
@@ -187,7 +183,7 @@
 <br>
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_24 - Physical Path involvement check involved element 
 |-
 | colspan="2"|This rule checks that a Physical Path Involvement only involves an Part, a Physical Link or a Physical Path.  
@@ -195,7 +191,7 @@
 <br> 
 	
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_25 - Physical Path involvement check involver element 
 |-
 | colspan="2"|This rule checks that a Physical Path Involvement involver is its owning Physical Path.  
@@ -203,7 +199,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_26 - Root Physical Component Ports Check 
 |-
 | colspan="2"|This rule ensures that the Root Physical Component has no physical ports. 
@@ -211,7 +207,7 @@
 <br>
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_27 - Functional Exchange Component Exchange Allocation Unicity 
 |-
 | colspan="2"|This rule checks that a functional exchange is allocated to only one component exchange. 
@@ -219,7 +215,7 @@
 <br>
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_28 - Delegation out of place check 
 |-
 | colspan="2"|This rule check that Component Exchange of kind Delegation if not out of place and useless. It also make sure if Delegation source and target are not null. 
@@ -227,7 +223,7 @@
 <br>
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_29 - Component Exchange Functional Exchange consistency 
 |-
 | colspan="2"|This rule ensures that Component Exchange allocates valid functional exchanges (regarding ports directions). 
@@ -235,7 +231,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_30 - PhysicalPort on BehaviourPC 
 |-
 | colspan="2"|This rule ensures that PhysicalPort is not contained in BehaviourPC. BehaviourPC=Physical Component of nature BEHAVIOUR. 
@@ -243,7 +239,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_31 - ComponentPort on NodePC  
 |-
 | colspan="2"|This rule ensures that ComponentPort is not contained in NodePC. NodePC=Physical Component of nature NODE.
@@ -251,7 +247,7 @@
 <br> 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/error.gif|ERROR]]
+!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_32 - Component Exchange with out port on NodePC 
 |-
 | colspan="2"|This rule ensures that ComponentExchange with out port sourceEnd or target end is not NodePC. NodePC=Physical Component of nature NODE.
@@ -260,7 +256,7 @@
 
 
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_33 - PhysicalPath allocated CE
 |-
 | colspan="2"|This rule checks that a PhysicalPath should allocated component exchage between its path. 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
@@ -37,10 +38,10 @@ public class ComponenExchangeRealizedCommunicationMean implements IQuery{
    *  
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (object_p instanceof ComponentExchange && !(object_p instanceof CommunicationMean)) {
-      ComponentExchange compExchange = (ComponentExchange) object_p;
+    if (object instanceof ComponentExchange && !(object instanceof CommunicationMean)) {
+      ComponentExchange compExchange = (ComponentExchange) object;
       
       // get outGoing Component Exchange realization link
       EList<ComponentExchangeRealization> ouComingCompExcRealization = compExchange.getOutgoingComponentExchangeRealizations();

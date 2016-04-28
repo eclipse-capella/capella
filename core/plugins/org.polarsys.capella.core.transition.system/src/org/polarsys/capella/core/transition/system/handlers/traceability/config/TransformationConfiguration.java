@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.handlers.traceability.config;
 
 import org.eclipse.emf.ecore.EObject;
@@ -27,16 +28,16 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class TransformationConfiguration extends ExtendedTraceabilityConfiguration {
 
   @Override
-  protected String getExtensionIdentifier(IContext context_p) {
+  protected String getExtensionIdentifier(IContext context) {
     return ISchemaConstants.TRANSFORMATION_TRACEABILITY_CONFIGURATION;
   }
 
   @Override
-  protected void initHandlers(IContext fContext_p) {
-    addHandler(fContext_p, new ReconciliationTraceabilityHandler(getIdentifier(fContext_p)) {
+  protected void initHandlers(IContext fContext) {
+    addHandler(fContext, new ReconciliationTraceabilityHandler(getIdentifier(fContext)) {
 
       @Override
-      protected void initializeComponent(Component source_p, Component target_p, IContext context_p, LevelMappingTraceability map_p) {
+      protected void initializeComponent(Component source, Component target, IContext context, LevelMappingTraceability map) {
         //Nothing here, we don't want to play with matching though stateMachines size while transformation
       }
 
@@ -44,26 +45,26 @@ public class TransformationConfiguration extends ExtendedTraceabilityConfigurati
        * {@inheritDoc}
        */
       @Override
-      protected void initializeRootMappings(IContext context_p) {
-        super.initializeRootMappings(context_p);
-        EObject source = (EObject) context_p.get(ITransitionConstants.TRANSFORMATION_SOURCE_ROOT);
-        EObject target = (EObject) context_p.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
-        addMappings(source, target, context_p);
+      protected void initializeRootMappings(IContext context) {
+        super.initializeRootMappings(context);
+        EObject source = (EObject) context.get(ITransitionConstants.TRANSFORMATION_SOURCE_ROOT);
+        EObject target = (EObject) context.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
+        addMappings(source, target, context);
       }
 
     });
 
-    addHandler(fContext_p, new SIDTraceabilityHandler(getIdentifier(fContext_p)) {
+    addHandler(fContext, new SIDTraceabilityHandler(getIdentifier(fContext)) {
 
       /**
        * {@inheritDoc}
        */
       @Override
-      protected void initializeRootMappings(IContext context_p) {
-        super.initializeRootMappings(context_p);
-        EObject source = (EObject) context_p.get(ITransitionConstants.TRANSFORMATION_SOURCE_ROOT);
-        EObject target = (EObject) context_p.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
-        initializeMappings(source, target, context_p);
+      protected void initializeRootMappings(IContext context) {
+        super.initializeRootMappings(context);
+        EObject source = (EObject) context.get(ITransitionConstants.TRANSFORMATION_SOURCE_ROOT);
+        EObject target = (EObject) context.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
+        initializeMappings(source, target, context);
       }
 
     });
@@ -74,12 +75,12 @@ public class TransformationConfiguration extends ExtendedTraceabilityConfigurati
    * {@inheritDoc}
    */
   @Override
-  public boolean useHandlerForAttachment(EObject source_p, EObject target_p, ITraceabilityHandler handler_p, IContext context_p) {
+  public boolean useHandlerForAttachment(EObject source, EObject target, ITraceabilityHandler handler, IContext context) {
 
-    boolean result = super.useHandlerForAttachment(source_p, target_p, handler_p, context_p);
+    boolean result = super.useHandlerForAttachment(source, target, handler, context);
     if (result) {
       //We disable Reconciliation for attachment
-      if (handler_p instanceof ReconciliationTraceabilityHandler) {
+      if (handler instanceof ReconciliationTraceabilityHandler) {
         result = false;
       }
     }

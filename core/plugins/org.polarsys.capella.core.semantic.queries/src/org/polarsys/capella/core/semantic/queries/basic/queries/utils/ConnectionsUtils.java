@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,13 +33,12 @@ public class ConnectionsUtils {
 
   /**
    * Gets the communication means on which the given functional exchange have been allocated to
-   * @param functionalExchange_p the functional exchange
+   * @param functionalExchange the functional exchange
    * @return a list of <code>CommunicationMean</code> instances
    */
-  public static List<CommunicationMean> getRelatedCommunicationMeans(FunctionalExchange functionalExchange_p) {
+  public static List<CommunicationMean> getRelatedCommunicationMeans(FunctionalExchange functionalExchange) {
     List<CommunicationMean> returnValue = new ArrayList<CommunicationMean>();
-    // functionalExchange_p.gets
-    ActivityNode source = functionalExchange_p.getSource();
+    ActivityNode source = functionalExchange.getSource();
     if (source instanceof OperationalActivity) {
       OperationalActivity oa = (OperationalActivity) source;
       EList<AbstractFunctionalBlock> allocationBlocks = oa.getAllocationBlocks();
@@ -50,7 +49,7 @@ public class ConnectionsUtils {
           Entity entity = (Entity) next;
           List<CommunicationMean> outgoingCommunicationMeans = getOutgoingCommunicationMeans(entity);
           for (CommunicationMean commMean : outgoingCommunicationMeans) {
-            if (commMean.getAllocatedFunctionalExchanges().contains(functionalExchange_p)) {
+            if (commMean.getAllocatedFunctionalExchanges().contains(functionalExchange)) {
               returnValue.add(commMean);
             }
           }
@@ -62,16 +61,16 @@ public class ConnectionsUtils {
 
   /**
    * Gets the outgoing communication means of an Operational Entity
-   * @param entity_p the operational entity
+   * @param entity the operational entity
    * @return a list of <code>CommunicationMean</code> instances
    */
-  private static List<CommunicationMean> getOutgoingCommunicationMeans(Entity entity_p) {
+  private static List<CommunicationMean> getOutgoingCommunicationMeans(Entity entity) {
     List<CommunicationMean> result = new ArrayList<CommunicationMean>();
     // FIXME There is no helper to get the communication mean from an entity
     // so, for now, does a little recursion over the whole package
-    EObject container = entity_p.eContainer();
+    EObject container = entity.eContainer();
     while ((null != container) && !(container instanceof EntityPkg)) {
-      container = entity_p.eContainer();
+      container = entity.eContainer();
     }
     if (null != container) {
       EntityPkg entityPackage = (EntityPkg) container;
@@ -80,7 +79,7 @@ public class ConnectionsUtils {
         EObject next = allContents.next();
         if (next instanceof CommunicationMean) {
           CommunicationMean comMean = (CommunicationMean) next;
-          if (comMean.getSource() == entity_p) {
+          if (comMean.getSource() == entity) {
             result.add(comMean);
           }
         }

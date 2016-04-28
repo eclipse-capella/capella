@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.activities;
 
 import java.util.Collection;
@@ -46,8 +47,8 @@ public class DifferencesMergingActivity extends AbstractActivity implements ITra
    * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters)
    */
   @Override
-  public IStatus _run(ActivityParameters activityParams_p) {
-    IContext context = (IContext) activityParams_p.getParameter(TRANSPOSER_CONTEXT).getValue();
+  public IStatus _run(ActivityParameters activityParams) {
+    IContext context = (IContext) activityParams.getParameter(TRANSPOSER_CONTEXT).getValue();
 
     performMerge(context);
 
@@ -57,13 +58,13 @@ public class DifferencesMergingActivity extends AbstractActivity implements ITra
   /**
    * @param selection_p
    */
-  public void performMerge(IContext context_p) {
+  public void performMerge(IContext context) {
 
-    Collection<IDifference> toMergeFromReference = (Collection<IDifference>) context_p.get(ITransitionConstants.MERGE_REFERENCE_DIFFERENCES_TO_MERGE);
-    Collection<IDifference> toMergeFromTarget = (Collection<IDifference>) context_p.get(ITransitionConstants.MERGE_TARGET_DIFFERENCES_TO_MERGE);
+    Collection<IDifference> toMergeFromReference = (Collection<IDifference>) context.get(ITransitionConstants.MERGE_REFERENCE_DIFFERENCES_TO_MERGE);
+    Collection<IDifference> toMergeFromTarget = (Collection<IDifference>) context.get(ITransitionConstants.MERGE_TARGET_DIFFERENCES_TO_MERGE);
 
     // Defining comparison with target as TARGET and source as REFERENCE
-    IComparison comparison = (IComparison) context_p.get(ITransitionConstants.MERGE_COMPARISON);
+    IComparison comparison = (IComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
 
     boolean shouldSave = false;
 
@@ -77,7 +78,7 @@ public class DifferencesMergingActivity extends AbstractActivity implements ITra
 
       // Logging
       for (IDifference diff : merged) {
-        displayLog(diff, DiffScope.Source, context_p);
+        displayLog(diff, DiffScope.Source, context);
       }
 
       shouldSave = true;
@@ -95,7 +96,7 @@ public class DifferencesMergingActivity extends AbstractActivity implements ITra
 
       // Logging
       for (IDifference diff : merged) {
-        displayLog(diff, DiffScope.Target, context_p);
+        displayLog(diff, DiffScope.Target, context);
       }
 
       shouldSave = true;
@@ -103,23 +104,23 @@ public class DifferencesMergingActivity extends AbstractActivity implements ITra
       LogHelper.getInstance().debug(" - No merge from target needed", Messages.Activity_MergingDifferenceActivity);
     }
 
-    context_p.put(ITransitionConstants.SAVE_REQUIRED, shouldSave);
+    context.put(ITransitionConstants.SAVE_REQUIRED, shouldSave);
 
   }
 
-  private void displayLog(IDifference diff_p, DiffScope diffscope_p, IContext context_p) {
-    IDiffModelViewer diffModelViewer = IDiffModelViewerFactory.eINSTANCE.createDiffModelViewer(diff_p, diffscope_p, FilterAction.TARGET, context_p, false);
+  private void displayLog(IDifference diff, DiffScope diffscope, IContext context) {
+    IDiffModelViewer diffModelViewer = IDiffModelViewerFactory.eINSTANCE.createDiffModelViewer(diff, diffscope, FilterAction.TARGET, context, false);
     EObject me = diffModelViewer.getSemanticElementDiff();
     Object[] listObject = null;
     if (me != null) {
-      context_p.put(ITransitionConstants.TRACEABILITY_HANDLER, context_p.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER));
-      Collection<EObject> sourceObject = TraceabilityHandlerHelper.getInstance(context_p).retrieveSourceElements(me, context_p);
+      context.put(ITransitionConstants.TRACEABILITY_HANDLER, context.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER));
+      Collection<EObject> sourceObject = TraceabilityHandlerHelper.getInstance(context).retrieveSourceElements(me, context);
 
       if (sourceObject != null) {
         EObject targetObject = null;
 
-        if (diff_p instanceof IElementRelativeDifference) {
-          IElementRelativeDifference techdiff = (IElementRelativeDifference) diff_p;
+        if (diff instanceof IElementRelativeDifference) {
+          IElementRelativeDifference techdiff = (IElementRelativeDifference) diff;
           targetObject = techdiff.getElementMatch().get(Role.TARGET);
         }
 

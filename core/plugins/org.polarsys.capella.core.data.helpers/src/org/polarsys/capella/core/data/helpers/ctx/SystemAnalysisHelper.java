@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.ctx;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -53,65 +54,65 @@ import org.polarsys.capella.core.data.helpers.ctx.delegates.SystemMissionInvolve
 
 public class SystemAnalysisHelper implements IHelper {
 
-	public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
+	public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 		Object ret = null;
 		
-		if (object_p instanceof SystemAnalysis) {
-			ret = SysAnalysisHelper.getInstance().doSwitch((SystemAnalysis) object_p, feature_p);
+		if (object instanceof SystemAnalysis) {
+			ret = SysAnalysisHelper.getInstance().doSwitch((SystemAnalysis) object, feature);
 		}
-		else if (object_p instanceof Capability) {
-			ret = CapabilityHelper.getInstance().doSwitch((Capability) object_p, feature_p); 
+		else if (object instanceof Capability) {
+			ret = CapabilityHelper.getInstance().doSwitch((Capability) object, feature); 
 		}
-		else  if (object_p instanceof Mission) {
-			ret = MissionHelper.getInstance().doSwitch((Mission) object_p, feature_p);
+		else  if (object instanceof Mission) {
+			ret = MissionHelper.getInstance().doSwitch((Mission) object, feature);
 		}
-		else if (object_p instanceof Actor) {
-			ret = ActorHelper.getInstance().doSwitch((Actor) object_p, feature_p);
+		else if (object instanceof Actor) {
+			ret = ActorHelper.getInstance().doSwitch((Actor) object, feature);
 		}
-		else if (object_p instanceof SystemContext) {
-			ret = SystemContextHelper.getInstance().doSwitch((SystemContext) object_p, feature_p);
+		else if (object instanceof SystemContext) {
+			ret = SystemContextHelper.getInstance().doSwitch((SystemContext) object, feature);
 		}
-		else if (object_p instanceof System) {
-			ret = SystemHelper.getInstance().doSwitch((System) object_p, feature_p); 
+		else if (object instanceof System) {
+			ret = SystemHelper.getInstance().doSwitch((System) object, feature); 
 		}
-		else if (object_p instanceof SystemFunction) {
-			ret = SystemFunctionHelper.getInstance().doSwitch((SystemFunction) object_p, feature_p); 
+		else if (object instanceof SystemFunction) {
+			ret = SystemFunctionHelper.getInstance().doSwitch((SystemFunction) object, feature); 
 		}
-    else if (object_p instanceof OperationalActorRealization) {
-      ret = OperationalActorRealizationHelper.getInstance().doSwitch((OperationalActorRealization) object_p, feature_p);
+    else if (object instanceof OperationalActorRealization) {
+      ret = OperationalActorRealizationHelper.getInstance().doSwitch((OperationalActorRealization) object, feature);
     }
-		else if (object_p instanceof OperationalAnalysisRealization) {
-			ret = OperationalAnalysisRealizationHelper.getInstance().doSwitch((OperationalAnalysisRealization) object_p, feature_p);
+		else if (object instanceof OperationalAnalysisRealization) {
+			ret = OperationalAnalysisRealizationHelper.getInstance().doSwitch((OperationalAnalysisRealization) object, feature);
 		}
-		else if (object_p instanceof OperationalEntityRealization) {
-			ret = OperationalEntityRealizationHelper.getInstance().doSwitch((OperationalEntityRealization) object_p, feature_p);
+		else if (object instanceof OperationalEntityRealization) {
+			ret = OperationalEntityRealizationHelper.getInstance().doSwitch((OperationalEntityRealization) object, feature);
 		}
-		else if (object_p instanceof SystemCapabilityInvolvement) {
-			ret = SystemCapabilityInvolvementHelper.getInstance().doSwitch((SystemCapabilityInvolvement) object_p, feature_p);
+		else if (object instanceof SystemCapabilityInvolvement) {
+			ret = SystemCapabilityInvolvementHelper.getInstance().doSwitch((SystemCapabilityInvolvement) object, feature);
 		}
-		else if (object_p instanceof SystemMissionInvolvement) {
-			ret = SystemMissionInvolvementHelper.getInstance().doSwitch((SystemMissionInvolvement) object_p, feature_p);
+		else if (object instanceof SystemMissionInvolvement) {
+			ret = SystemMissionInvolvementHelper.getInstance().doSwitch((SystemMissionInvolvement) object, feature);
 		}
-		else if (object_p instanceof Structure) {
-			ret = StructureHelper.getInstance().doSwitch((Structure) object_p, feature_p);
+		else if (object instanceof Structure) {
+			ret = StructureHelper.getInstance().doSwitch((Structure) object, feature);
 		}
-		else if (object_p instanceof ActorCapabilityInvolvement) {
-			ret = ActorCapabilityInvolvementHelper.getInstance().doSwitch((ActorCapabilityInvolvement) object_p, feature_p);
+		else if (object instanceof ActorCapabilityInvolvement) {
+			ret = ActorCapabilityInvolvementHelper.getInstance().doSwitch((ActorCapabilityInvolvement) object, feature);
 		}
-		else if (object_p instanceof ActorMissionInvolvement) {
-			ret = ActorMissionInvolvementHelper.getInstance().doSwitch((ActorMissionInvolvement) object_p, feature_p);
+		else if (object instanceof ActorMissionInvolvement) {
+			ret = ActorMissionInvolvementHelper.getInstance().doSwitch((ActorMissionInvolvement) object, feature);
 		}
-    else if (object_p instanceof CapabilityExploitation) {
-      ret = RelationshipHelper.getInstance().doSwitch((CapabilityExploitation) object_p, feature_p);
+    else if (object instanceof CapabilityExploitation) {
+      ret = RelationshipHelper.getInstance().doSwitch((CapabilityExploitation) object, feature);
     }
-    else if (object_p instanceof SystemCommunication) {
-      ret = RelationshipHelper.getInstance().doSwitch((SystemCommunication) object_p, feature_p);
+    else if (object instanceof SystemCommunication) {
+      ret = RelationshipHelper.getInstance().doSwitch((SystemCommunication) object, feature);
     }
-    else if (object_p instanceof SystemCommunicationHook) {
-      ret = NamedElementHelper.getInstance().doSwitch((SystemCommunicationHook) object_p, feature_p);
+    else if (object instanceof SystemCommunicationHook) {
+      ret = NamedElementHelper.getInstance().doSwitch((SystemCommunicationHook) object, feature);
     }
 
-		if(null != ret || feature_p.getUpperBound() == 1)
+		if(null != ret || feature.getUpperBound() == 1)
 			return ret;
 
 		throw new HelperNotFoundException();

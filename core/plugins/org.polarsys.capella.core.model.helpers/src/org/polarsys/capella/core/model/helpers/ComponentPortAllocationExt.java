@@ -55,11 +55,11 @@ public class ComponentPortAllocationExt {
 
   /**
    * Return target port of the connection (mono Part mode)
-   * @param connection_p
+   * @param connection
    * @return
    */
-  public static Port getTargetPort(ComponentPortAllocation connection_p) {
-    TraceableElement target = connection_p.getTargetElement();
+  public static Port getTargetPort(ComponentPortAllocation connection) {
+    TraceableElement target = connection.getTargetElement();
     if (target instanceof ComponentPortAllocationEnd) {
       return ((ComponentPortAllocationEnd) target).getPort();
     } else if (target instanceof Port) {
@@ -207,12 +207,8 @@ public class ComponentPortAllocationExt {
         return (Component) eContainer;
       }
     } else if (source instanceof Component) {
-      Component eContainer = (Component) source;
-      if ((null != eContainer)) {
-        return eContainer;
-      }
+      return (Component) source;
     }
-
     return null;
   }
 
@@ -255,10 +251,7 @@ public class ComponentPortAllocationExt {
         return (Component) eContainer;
       }
     } else if (target instanceof Component) {
-      Component eContainer = (Component) target;
-      if ((null != eContainer)) {
-        return eContainer;
-      }
+       return (Component) target;
     }
 
     return null;

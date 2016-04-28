@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.filter;
 
 import java.util.ArrayList;
@@ -73,40 +74,40 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
 
   /**
    * For each differences, initialize a DiffViewer
-   * @param context_p
-   * @param diffs_p
-   * @param scope_p
+   * @param context
+   * @param diffs
+   * @param role1
    */
-  protected void initialize(IContext context_p, Collection<IDifference> diffs_p, Role scope_p) {
+  protected void initialize(IContext context, Collection<IDifference> diffs, Role role1) {
 
-    for (IDifference diff : diffs_p) {
-      if (isMergeable(diff, scope_p, context_p)) {
+    for (IDifference diff : diffs) {
+      if (isMergeable(diff, role1, context)) {
         DiffScope scope = DiffScope.Source;
-        if (scope_p == Role.TARGET) {
+        if (role1 == Role.TARGET) {
           scope = DiffScope.Target;
         }
 
-        FilterAction role = getDefaultAction(diff, scope_p, context_p);
+        FilterAction role = getDefaultAction(diff, role1, context);
 
-        IDiffModelViewer view = IDiffModelViewerFactory.eINSTANCE.createDiffModelViewer(diff, scope, role, context_p, isReadOnly(diff, scope_p, context_p));
-        if (isDisplayable(diff, scope_p, context_p)) {
-          getViewsToDisplay(context_p).add(view);
+        IDiffModelViewer view = IDiffModelViewerFactory.eINSTANCE.createDiffModelViewer(diff, scope, role, context, isReadOnly(diff, role1, context));
+        if (isDisplayable(diff, role1, context)) {
+          getViewsToDisplay(context).add(view);
         }
-        getViewsToMerge(context_p).put(diff, view);
+        getViewsToMerge(context).put(diff, view);
       }
     }
 
   }
 
   /**
-   * @param diff_p
+   * @param diff
    * @return
    */
-  protected boolean isReadOnly(IDifference diff_p, Role role_p, IContext context_p) {
+  protected boolean isReadOnly(IDifference diff, Role role, IContext context) {
 
     if (filterItems != null) {
       for (IFilterItem item : filterItems) {
-        if (item.isReadOnly(diff_p, role_p, context_p)) {
+        if (item.isReadOnly(diff, role, context)) {
           return true;
         }
       }
@@ -116,11 +117,11 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
   }
 
   /**
-   * @param context_p
+   * @param context
    */
-  private void compute(IContext context_p) {
-    HashMapSet<IDifference, IDifference> set = getRequiringDifferences(context_p);
-    for (IDifference difference : getViewsToMerge(context_p).keySet()) {
+  private void compute(IContext context) {
+    HashMapSet<IDifference, IDifference> set = getRequiringDifferences(context);
+    for (IDifference difference : getViewsToMerge(context).keySet()) {
       if (difference instanceof IMergeableDifference) {
         IMergeableDifference mDiff = (IMergeableDifference) difference;
         for (IMergeableDifference diff : mDiff.getDirectRequiresDependencies(Role.TARGET)) {
@@ -132,17 +133,17 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
 
   /**
    * Proceed to uncheck all differences which requires a already uncheck difference
-   * @param context_p
-   * @param diffs_p
-   * @param scope_p
+   * @param context
+   * @param diffs
+   * @param scope
    */
-  protected void finitialize(IContext context_p, Collection<IDifference> diffs_p, Role scope_p) {
+  protected void finitialize(IContext context, Collection<IDifference> diffs, Role scope) {
 
-    for (IDifference diff : diffs_p) {
-      IDiffModelViewer view = getViewsToMerge(context_p).get(diff);
+    for (IDifference diff : diffs) {
+      IDiffModelViewer view = getViewsToMerge(context).get(diff);
       if (view != null) {
         if (view.getActionDiff() == FilterAction.NO_ACTION) {
-          uncheck(context_p, view, true, view, true);
+          uncheck(context, view, true, view, true);
         }
       }
     }
@@ -152,21 +153,21 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
   /**
    * {@inheritDoc}
    */
-  public void addFilterItem(IFilterItem filter_p, IContext context_p) {
+  public void addFilterItem(IFilterItem filter, IContext context) {
     if (filterItems == null) {
       filterItems = new LinkedList<IFilterItem>();
     }
-    filterItems.add(filter_p);
+    filterItems.add(filter);
   }
 
-  public IStatus processDifferences(IContext context_p, Collection<IDifference> diffSource_p, Collection<IDifference> diffTarget_p) {
+  public IStatus processDifferences(IContext context, Collection<IDifference> diffSource, Collection<IDifference> diffTarget) {
 
-    initialize(context_p, diffSource_p, Role.REFERENCE);
-    initialize(context_p, diffTarget_p, Role.TARGET);
+    initialize(context, diffSource, Role.REFERENCE);
+    initialize(context, diffTarget, Role.TARGET);
 
-    compute(context_p);
-    finitialize(context_p, diffSource_p, Role.REFERENCE);
-    finitialize(context_p, diffTarget_p, Role.TARGET);
+    compute(context);
+    finitialize(context, diffSource, Role.REFERENCE);
+    finitialize(context, diffTarget, Role.TARGET);
 
     return Status.OK_STATUS;
   }
@@ -174,34 +175,34 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
   /**
    * {@inheritDoc}
    */
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     return Status.OK_STATUS;
   }
 
   /**
    * {@inheritDoc}
    */
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
     if (filterItems != null) {
       filterItems.clear();
       filterItems = null;
     }
-    if (context_p.exists(VIEWS_TO_MERGE)) {
-      ((HashMap) context_p.get(VIEWS_TO_MERGE)).clear();
+    if (context.exists(VIEWS_TO_MERGE)) {
+      ((HashMap) context.get(VIEWS_TO_MERGE)).clear();
     }
-    if (context_p.exists(REQUIRING_DIFFERENCES)) {
-      ((HashMapSet) context_p.get(REQUIRING_DIFFERENCES)).clear();
+    if (context.exists(REQUIRING_DIFFERENCES)) {
+      ((HashMapSet) context.get(REQUIRING_DIFFERENCES)).clear();
     }
-    if (context_p.exists(VIEWS_TO_DISPLAY)) {
-      ((Collection) context_p.get(VIEWS_TO_DISPLAY)).clear();
+    if (context.exists(VIEWS_TO_DISPLAY)) {
+      ((Collection) context.get(VIEWS_TO_DISPLAY)).clear();
     }
 
     return Status.OK_STATUS;
   }
 
-  public Role getMergeDestination(IContext context_p, IDifference difference_p, Role scope_p) {
-    if (getViewsToMerge(context_p).containsKey(difference_p)) {
-      FilterAction action = getViewsToMerge(context_p).get(difference_p).getActionDiff();
+  public Role getMergeDestination(IContext context, IDifference difference, Role scope) {
+    if (getViewsToMerge(context).containsKey(difference)) {
+      FilterAction action = getViewsToMerge(context).get(difference).getActionDiff();
 
       if (action == FilterAction.NO_ACTION) {
         return null;
@@ -219,25 +220,25 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
 
   /**
    * Returns whether the difference from the given scope should be filtered (not merged, not visible)
-   * @param diff_p
+   * @param diff
    * @param scope_p
    * @return
    */
-  public boolean isMergeable(IDifference diff_p, Role role_p, IContext context_p) {
+  public boolean isMergeable(IDifference diff, Role role, IContext context) {
     if (filterItems != null) {
       for (IFilterItem item : filterItems) {
-        if (!item.isMergeable(diff_p, role_p, context_p)) {
+        if (!item.isMergeable(diff, role, context)) {
           return false;
 
-        } else if (diff_p instanceof IAttributeValuePresence) {
-          IAttributeValuePresence aDiff = (IAttributeValuePresence) diff_p;
-          if (!item.isMergeable(aDiff.getFeature(), context_p)) {
+        } else if (diff instanceof IAttributeValuePresence) {
+          IAttributeValuePresence aDiff = (IAttributeValuePresence) diff;
+          if (!item.isMergeable(aDiff.getFeature(), context)) {
             return false;
           }
 
-        } else if (diff_p instanceof IReferenceValuePresence) {
-          IReferenceValuePresence aDiff = (IReferenceValuePresence) diff_p;
-          if (!item.isMergeable(aDiff.getFeature(), context_p)) {
+        } else if (diff instanceof IReferenceValuePresence) {
+          IReferenceValuePresence aDiff = (IReferenceValuePresence) diff;
+          if (!item.isMergeable(aDiff.getFeature(), context)) {
             return false;
           }
         }
@@ -247,14 +248,14 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
   }
 
   /**
-   * @param diff_p
-   * @param scope_p
+   * @param diff
+   * @param scope
    * @return
    */
-  public boolean isDisplayable(IDifference diff_p, Role scope_p, IContext context_p) {
+  public boolean isDisplayable(IDifference diff, Role scope, IContext context) {
     if (filterItems != null) {
       for (IFilterItem item : filterItems) {
-        if (!item.isDisplayable(diff_p, scope_p, context_p)) {
+        if (!item.isDisplayable(diff, scope, context)) {
           return false;
         }
       }
@@ -264,16 +265,16 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
 
   /**
    * Returns whether the difference from the given scope should be filtered (not merged, not visible)
-   * @param diff_p
+   * @param diff
    * @param scope_p
    * @return
    */
-  public FilterAction getDefaultAction(IDifference diff_p, Role role_p, IContext context_p) {
+  public FilterAction getDefaultAction(IDifference diff, Role role1, IContext context) {
     FilterAction roleResult = null;
 
     if (filterItems != null) {
       for (IFilterItem item : filterItems) {
-        FilterAction role = item.getDestinationRole(diff_p, role_p, context_p);
+        FilterAction role = item.getDestinationRole(diff, role1, context);
         if (role != null) {
           if (role == FilterAction.NO_ACTION) {
             if ((roleResult == null) || (roleResult != FilterAction.NO_ACTION)) {
@@ -296,42 +297,42 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
   /**
    * {@inheritDoc}
    */
-  public Collection<IFilterItem> getFilterItems(IContext context_p) {
+  public Collection<IFilterItem> getFilterItems(IContext context) {
     return Collections.unmodifiableCollection(filterItems);
   }
 
   /**
    * {@inheritDoc}
    */
-  public void uncheck(IContext context_p, IDiffModelViewer diff_p) {
-    uncheck(context_p, diff_p, false, diff_p, false);
+  public void uncheck(IContext context, IDiffModelViewer diff) {
+    uncheck(context, diff, false, diff, false);
   }
 
-  public void uncheck(IContext context_p, IDiffModelViewer diff_p, boolean force_p, IDiffModelViewer source_p, boolean isInitialization_p) {
-    diff_p.setRoot(source_p.getRoot());
+  public void uncheck(IContext context, IDiffModelViewer diff, boolean force, IDiffModelViewer source, boolean isInitialization) {
+    diff.setRoot(source.getRoot());
     FilterAction diffaction = FilterAction.NO_ACTION;
-    if (diff_p.getDefaultActionDiff() == null) {
+    if (diff.getDefaultActionDiff() == null) {
       diffaction = null;
     }
-    if (!force_p && (diff_p.getActionDiff() == diffaction)) {
+    if (!force && (diff.getActionDiff() == diffaction)) {
       return;
     }
 
     Collection<IDiffModelViewer> map = new HashSet<IDiffModelViewer>();
 
-    IMergeableDifference sDiff = (IMergeableDifference) diff_p.getRelatedDiff();
-    diff_p.setActionDiff(diffaction);
+    IMergeableDifference sDiff = (IMergeableDifference) diff.getRelatedDiff();
+    diff.setActionDiff(diffaction);
 
-    if (isInitialization_p) {
-      diff_p.setDefaultActionDiff(diffaction);
+    if (isInitialization) {
+      diff.setDefaultActionDiff(diffaction);
     }
     //We disable all differences which require the given difference
     //Disable/Enable also all differences with 'explicit dependencies'
 
-    HashMapSet<IDifference, IDifference> set = getRequiringDifferences(context_p);
+    HashMapSet<IDifference, IDifference> set = getRequiringDifferences(context);
     if (set != null) {
       for (IDifference difference : set.get(sDiff)) {
-        IDiffModelViewer view = getViewsToMerge(context_p).get(difference);
+        IDiffModelViewer view = getViewsToMerge(context).get(difference);
         if (view != null) {
           map.add(view);
         }
@@ -340,50 +341,50 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
 
     for (IDiffModelViewer diffa : map) {
       if (diffa.getActionDiff() != diffaction) {
-        uncheck(context_p, diffa, force_p, source_p, isInitialization_p);
+        uncheck(context, diffa, force, source, isInitialization);
       }
     }
 
   }
 
-  public void check(IContext context_p, IDiffModelViewer diff_p) {
-    check(context_p, diff_p, false, diff_p, false);
+  public void check(IContext context, IDiffModelViewer diff) {
+    check(context, diff, false, diff, false);
   }
 
   /**
    * {@inheritDoc}
    */
-  public void check(IContext context_p, IDiffModelViewer diff_p, boolean force_p, IDiffModelViewer source_p, boolean isInitialization_p) {
-    diff_p.setRoot(source_p.getRoot());
+  public void check(IContext context, IDiffModelViewer diff, boolean force, IDiffModelViewer source, boolean isInitialization) {
+    diff.setRoot(source.getRoot());
     FilterAction diffaction = FilterAction.NO_ACTION;
     diffaction = FilterAction.TARGET;
-    if (!force_p && (diff_p.getActionDiff() == diffaction)) {
+    if (!force && (diff.getActionDiff() == diffaction)) {
       return;
     }
 
     Collection<IDiffModelViewer> map = new HashSet<IDiffModelViewer>();
 
-    IMergeableDifference sDiff = (IMergeableDifference) diff_p.getRelatedDiff();
-    diff_p.setActionDiff(diffaction);
+    IMergeableDifference sDiff = (IMergeableDifference) diff.getRelatedDiff();
+    diff.setActionDiff(diffaction);
 
-    if (isInitialization_p) {
-      diff_p.setDefaultActionDiff(diffaction);
+    if (isInitialization) {
+      diff.setDefaultActionDiff(diffaction);
     }
     //We enable all differences which require the given difference
     //and enable all differences required by the given difference
 
     //Disable/Enable also all differences with 'explicit dependencies'
-    HashMapSet<IDifference, IDifference> set = getRequiringDifferences(context_p);
+    HashMapSet<IDifference, IDifference> set = getRequiringDifferences(context);
     if (set != null) {
       for (IDifference difference : set.get(sDiff)) {
-        IDiffModelViewer view = getViewsToMerge(context_p).get(difference);
+        IDiffModelViewer view = getViewsToMerge(context).get(difference);
         if (view != null) {
           map.add(view);
         }
       }
     }
     for (IMergeableDifference difference : sDiff.getDirectRequiresDependencies(Role.TARGET)) {
-      IDiffModelViewer view = getViewsToMerge(context_p).get(difference);
+      IDiffModelViewer view = getViewsToMerge(context).get(difference);
       if (view != null) {
         map.add(view);
       }
@@ -391,7 +392,7 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
 
     for (IDiffModelViewer diffa : map) {
       if (diffa.getActionDiff() != diffaction) {
-        check(context_p, diffa, force_p, source_p, isInitialization_p);
+        check(context, diffa, force, source, isInitialization);
       }
     }
   }

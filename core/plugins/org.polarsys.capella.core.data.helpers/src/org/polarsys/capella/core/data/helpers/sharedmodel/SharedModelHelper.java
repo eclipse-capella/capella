@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.sharedmodel;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -21,17 +22,17 @@ import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 
 public class SharedModelHelper implements IHelper {
 
-	public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
+	public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 		Object ret = null;
 
-		if (object_p instanceof SharedPkg) {
-      ret = StructureHelper.getInstance().doSwitch((SharedPkg) object_p, feature_p);
+		if (object instanceof SharedPkg) {
+      ret = StructureHelper.getInstance().doSwitch((SharedPkg) object, feature);
     }
-		else if (object_p instanceof GenericPkg) {
-      ret = StructureHelper.getInstance().doSwitch((GenericPkg) object_p, feature_p);
+		else if (object instanceof GenericPkg) {
+      ret = StructureHelper.getInstance().doSwitch((GenericPkg) object, feature);
     }
 
-		if (null != ret || feature_p.getUpperBound() == 1)
+		if (null != ret || feature.getUpperBound() == 1)
 			return ret;
 
 		throw new HelperNotFoundException();

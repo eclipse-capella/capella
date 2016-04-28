@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.capellacore.delegates;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -26,15 +27,15 @@ public class ConstraintHelper {
 		return instance;
 	}
 
-	public Object doSwitch(Constraint element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(Constraint element, EStructuralFeature feature) {
 		Object ret = null;
 
 		// no helper found... searching in super classes...
 		if (null == ret) {
-		  ret = NamedElementHelper.getInstance().doSwitch(element_p, feature_p);
+		  ret = NamedElementHelper.getInstance().doSwitch(element, feature);
 		}
 		if(null == ret) {
-			ret = AbstractConstraintHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = AbstractConstraintHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;

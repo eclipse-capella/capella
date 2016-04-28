@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,9 +38,9 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class DiagramTransitionTraceability implements IDiagramTraceability {
 
-  public static final String ALLOCATING_DIAGRAMS = "INITIALIZATION_REALIZING"; //$NON-NLS-1$
+  public static final String allocating_diagrams = "INITIALIZATION_REALIZING"; //$NON-NLS-1$
 
-  public static final String ALLOCATED_DIAGRAMS = "INITIALIZATION_REALIZED"; //$NON-NLS-1$
+  public static final String allocated_diagrams = "INITIALIZATION_REALIZED"; //$NON-NLS-1$
 
   private IContext context;
 
@@ -61,10 +61,10 @@ public class DiagramTransitionTraceability implements IDiagramTraceability {
     return context;
   }
 
-  public boolean isRealizingable(DRepresentation realizing_p) {
+  public boolean isRealizingable(DRepresentation realizing) {
 
     IDiagramHandler handler = getHandler();
-    RepresentationDescription sourceDescription = DiagramHelper.getService().getDescription(realizing_p);
+    RepresentationDescription sourceDescription = DiagramHelper.getService().getDescription(realizing);
 
     if ((handler == null) || (sourceDescription == null)) {
       return false;
@@ -74,7 +74,7 @@ public class DiagramTransitionTraceability implements IDiagramTraceability {
       return false;
     }
 
-    if (!handler.backCovers(getContext(), realizing_p)) {
+    if (!handler.backCovers(getContext(), realizing)) {
       return false;
     }
 
@@ -85,17 +85,14 @@ public class DiagramTransitionTraceability implements IDiagramTraceability {
    * {@inheritDoc}
    */
   @Override
-  public boolean isRealizable(DRepresentation realized_p, DRepresentation realizing_p) {
-    Session session = DiagramHelper.getService().getSession(realized_p);
+  public boolean isRealizable(DRepresentation realized, DRepresentation realizing) {
+    Session session = DiagramHelper.getService().getSession(realized);
 
     IDiagramHandler handler = getHandler();
-    if (handler == null) {
-      return false;
-    }
 
     //description should be compatible
-    RepresentationDescription sourceDescription = DiagramHelper.getService().getDescription(realized_p);
-    RepresentationDescription targetDescription = DiagramHelper.getService().getDescription(realizing_p);
+    RepresentationDescription sourceDescription = DiagramHelper.getService().getDescription(realized);
+    RepresentationDescription targetDescription = DiagramHelper.getService().getDescription(realizing);
     if ((sourceDescription == null) || (targetDescription == null)) {
       return false;
     }
@@ -104,7 +101,7 @@ public class DiagramTransitionTraceability implements IDiagramTraceability {
       return false;
     }
 
-    if (!handler.covers(context, realized_p)) {
+    if (!handler.covers(context, realized)) {
       return false;
     }
 
@@ -112,7 +109,7 @@ public class DiagramTransitionTraceability implements IDiagramTraceability {
       return false;
     }
 
-    if (!handler.backCovers(context, realizing_p)) {
+    if (!handler.backCovers(context, realizing)) {
       return false;
     }
 
@@ -125,8 +122,8 @@ public class DiagramTransitionTraceability implements IDiagramTraceability {
     }
 
     //architecture should be compatible too
-    EObject sourceTarget = ((DSemanticDecorator) realized_p).getTarget();
-    EObject targetTarget = ((DSemanticDecorator) realizing_p).getTarget();
+    EObject sourceTarget = ((DSemanticDecorator) realized).getTarget();
+    EObject targetTarget = ((DSemanticDecorator) realizing).getTarget();
     if ((sourceTarget == null) || (targetTarget == null)) {
       return false;
     }
@@ -145,25 +142,25 @@ public class DiagramTransitionTraceability implements IDiagramTraceability {
   }
 
   @Override
-  public Collection<DRepresentation> getRealizingRepresentations(DRepresentation representation_p) {
-    return getDiagrams(representation_p, ALLOCATING_DIAGRAMS);
+  public Collection<DRepresentation> getRealizingRepresentations(DRepresentation representation) {
+    return getDiagrams(representation, allocating_diagrams);
   }
 
   @Override
-  public Collection<DRepresentation> getRealizedRepresentations(DRepresentation representation_p) {
-    return getDiagrams(representation_p, ALLOCATED_DIAGRAMS);
+  public Collection<DRepresentation> getRealizedRepresentations(DRepresentation representation) {
+    return getDiagrams(representation, allocated_diagrams);
   }
 
-  protected Collection<DRepresentation> getDiagrams(DRepresentation representation_p, String annotationId_p) {
+  protected Collection<DRepresentation> getDiagrams(DRepresentation representation, String annotationId) {
     Collection<DRepresentation> diagrams = new ArrayList<DRepresentation>();
 
-    DAnnotation annotation = RepresentationHelper.getAnnotation(annotationId_p, representation_p);
+    DAnnotation annotation = RepresentationHelper.getAnnotation(annotationId, representation);
     if (annotation == null) {
       //Avoid any checkout
       return diagrams;
     }
 
-    Session session = DiagramHelper.getService().getSession(representation_p);
+    Session session = DiagramHelper.getService().getSession(representation);
     if (session != null) {
       for (Resource resource : session.getAllSessionResources()) {
         if (annotation.getDetails() != null) {
@@ -173,10 +170,9 @@ public class DiagramTransitionTraceability implements IDiagramTraceability {
                 continue;
               }
               EObject element = resource.getEObject(value);
-              if ((element != null) && !(element.eIsProxy()) && (element instanceof DRepresentation)) {
-                if (!diagrams.contains(element)) {
+              if (element != null && !element.eIsProxy() && (element instanceof DRepresentation) 
+            		  && !diagrams.contains(element)) {
                   diagrams.add((DRepresentation) element);
-                }
               }
             } catch (Exception e) {
               //Nothing to worry here
@@ -192,19 +188,19 @@ public class DiagramTransitionTraceability implements IDiagramTraceability {
    * {@inheritDoc}
    */
   @Override
-  public IStatus addRealizingRepresentation(DRepresentation realized_p, DRepresentation realizing_p) {
-    addAnnotation(realized_p, realizing_p, ALLOCATING_DIAGRAMS);
-    addAnnotation(realizing_p, realized_p, ALLOCATED_DIAGRAMS);
+  public IStatus addRealizingRepresentation(DRepresentation realized, DRepresentation realizing) {
+    addAnnotation(realized, realizing, allocating_diagrams);
+    addAnnotation(realizing, realized, allocated_diagrams);
     return Status.OK_STATUS;
   }
 
-  protected IStatus addAnnotation(DRepresentation realized_p, DRepresentation realizing_p, String annotationId_p) {
-    DAnnotation annotation = RepresentationHelper.getAnnotation(annotationId_p, realized_p);
+  protected IStatus addAnnotation(DRepresentation realized, DRepresentation realizing, String annotationId) {
+    DAnnotation annotation = RepresentationHelper.getAnnotation(annotationId, realized);
     if (annotation == null) {
-      annotation = RepresentationHelper.createAnnotation(annotationId_p, realized_p);
+      annotation = RepresentationHelper.createAnnotation(annotationId, realized);
     }
 
-    String id = realizing_p.eResource().getURIFragment(realizing_p);
+    String id = realizing.eResource().getURIFragment(realizing);
     for (String value : annotation.getDetails().values()) {
       if ((value != null) && value.equals(id)) {
         return Status.OK_STATUS;

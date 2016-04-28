@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.ctx.services;
 
 import java.util.ArrayList;
@@ -32,22 +33,22 @@ public class ActorExt {
 	/**
 	 * This method removes an involved actor.
 	 * 
-	 * @param actor_p
+	 * @param actor
 	 *            the actor in which the capability will not be involved to
-	 * @param capabilityUseCase_p
+	 * @param capabilityUseCase
 	 *            the non involved capability
 	 */
-	public static void removeInvolvedCapability(Actor actor_p, AbstractCapability capabilityUseCase_p) {
+	public static void removeInvolvedCapability(Actor actor, AbstractCapability capabilityUseCase) {
 		ActorCapabilityInvolvement actorCapabilityInvolvement = null;
-		ListIterator<ActorCapabilityInvolvement> it = actor_p.getParticipationsInCapabilities().listIterator();
+		ListIterator<ActorCapabilityInvolvement> it = actor.getParticipationsInCapabilities().listIterator();
 		while (it.hasNext()) {
 			ActorCapabilityInvolvement inv = it.next();
-			if (inv.getCapability().equals(capabilityUseCase_p)) {
+			if (inv.getCapability().equals(capabilityUseCase)) {
 				actorCapabilityInvolvement = inv;
 			}
 		}
 		if (actorCapabilityInvolvement != null) {
-			((Capability) capabilityUseCase_p.eContainer()).getOwnedActorCapabilityInvolvements().remove(actorCapabilityInvolvement);
+			((Capability) capabilityUseCase.eContainer()).getOwnedActorCapabilityInvolvements().remove(actorCapabilityInvolvement);
 			actorCapabilityInvolvement.destroy();
 		}
 	}
@@ -55,14 +56,14 @@ public class ActorExt {
 	/**
 	 * This method retrieves the involved capabilities.
 	 * 
-	 * @param actor_p
+	 * @param actor
 	 *            the actor whose involved capabilities will be retrieved
 	 * @return the involved capabilities
 	 */
-	public static List<Capability> getInvolvedCapabilities(Actor actor_p) {
+	public static List<Capability> getInvolvedCapabilities(Actor actor) {
 		List<Capability> involvedCapabilities = new ArrayList<Capability>();
 
-		for (ActorCapabilityInvolvement actorCapabilityInvolvement : actor_p.getParticipationsInCapabilities()) {
+		for (ActorCapabilityInvolvement actorCapabilityInvolvement : actor.getParticipationsInCapabilities()) {
 			Capability capabilitySpecificationUseCase = actorCapabilityInvolvement.getCapability();
 			if (capabilitySpecificationUseCase != null) {
 				involvedCapabilities.add(capabilitySpecificationUseCase);
@@ -76,17 +77,17 @@ public class ActorExt {
 	/**
 	 * This method adds an involved capability.
 	 * 
-	 * @param actor_p
+	 * @param actor
 	 *            the actor in which the capability will be involved to
-	 * @param capabilityUseCase_p
+	 * @param capabilityUseCase
 	 *            the involved capability
 	 */
-	public static void addInvolvedCapabilityUseCase(Actor actor_p, Capability capabilityUseCase_p) {
-		if ((actor_p != null) && (capabilityUseCase_p != null)) {
+	public static void addInvolvedCapabilityUseCase(Actor actor, Capability capabilityUseCase) {
+		if ((actor != null) && (capabilityUseCase != null)) {
 			ActorCapabilityInvolvement capabilityInv = CtxFactory.eINSTANCE.createActorCapabilityInvolvement();
-			capabilityInv.setInvolved(actor_p);
-			capabilityInv.setInvolver(capabilityUseCase_p);
-			((Capability) capabilityUseCase_p.eContainer()).getOwnedActorCapabilityInvolvements().add(capabilityInv);
+			capabilityInv.setInvolved(actor);
+			capabilityInv.setInvolver(capabilityUseCase);
+			((Capability) capabilityUseCase.eContainer()).getOwnedActorCapabilityInvolvements().add(capabilityInv);
 		}
 	}
 
@@ -95,17 +96,17 @@ public class ActorExt {
 	 * This method checks whether the actor interacts with the CapabilityUseCase
 	 * 
 	 * 
-	 * @param actor_p
+	 * @param actor
 	 *            the interacting actor
-	 * @param capabilityUseCase_p
+	 * @param capabilityUseCase
 	 *            the CapabilityUseCase
 	 * @return true if the actor interacts with the CapabilityUseCase
 	 */
-	static public boolean isInteracting(Actor actor_p, AbstractCapability capabilityUseCase_p) {
+	static public boolean isInteracting(Actor actor, AbstractCapability capabilityUseCase) {
 		boolean isInteracting = false;
 
-		for (ActorCapabilityInvolvement actorCapabilityInvolvement : actor_p.getParticipationsInCapabilities()) {
-			if (actorCapabilityInvolvement.getCapability().equals(capabilityUseCase_p)) {
+		for (ActorCapabilityInvolvement actorCapabilityInvolvement : actor.getParticipationsInCapabilities()) {
+			if (actorCapabilityInvolvement.getCapability().equals(capabilityUseCase)) {
 				isInteracting = true;
 				break;
 			}
@@ -118,17 +119,17 @@ public class ActorExt {
 	 * This method checks whether the actor interacts with the Mission
 	 * 
 	 * 
-	 * @param actor_p
+	 * @param actor
 	 *            the interacting actor
-	 * @param mission_p
+	 * @param mission
 	 *            the Mission
 	 * @return true if the actor interacts with the Mission
 	 */
-	static public boolean isInteracting(Actor actor_p, Mission mission_p) {
+	static public boolean isInteracting(Actor actor, Mission mission) {
 		boolean isInteracting = false;
 
-		for (ActorMissionInvolvement actorMissionInvolvement : mission_p.getInvolvedActors()) {
-			if (actorMissionInvolvement.getActor().equals(actor_p)) {
+		for (ActorMissionInvolvement actorMissionInvolvement : mission.getInvolvedActors()) {
+			if (actorMissionInvolvement.getActor().equals(actor)) {
 				isInteracting = true;
 				break;
 			}

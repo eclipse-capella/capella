@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -49,13 +50,13 @@ public class InterfacePkgExt {
 
   /**
    * Gets the root component of the current interface package
-   * @param interfacePkg_p the interface package
+   * @param interfacePkg the interface package
    * @return the component
    */
-  static public Component getRootComponent(InterfacePkg interfacePkg_p) {
+  static public Component getRootComponent(InterfacePkg interfacePkg) {
     Component comp = null;
-    if (null != interfacePkg_p) {
-      Object container = interfacePkg_p.eContainer();
+    if (null != interfacePkg) {
+      Object container = interfacePkg.eContainer();
 
       if (container instanceof InterfacePkg) {
         comp = getRootComponent((InterfacePkg) container);
@@ -70,18 +71,18 @@ public class InterfacePkgExt {
 
   /**
    * Gets all the interfaces from the Parent Hierarchy of the interface package
-   * @param interfacePkg_p the InterfacePkg
+   * @param interfacePkg the InterfacePkg
    * @return list of interfaces
    */
-  static public List<Interface> getOwnedInterfacesFromParentHierarchy(InterfacePkg interfacePkg_p) {
+  static public List<Interface> getOwnedInterfacesFromParentHierarchy(InterfacePkg interfacePkg) {
     List<Interface> list = new ArrayList<Interface>(1);
-    if (null != interfacePkg_p) {
-      BlockArchitecture compArch = getRootBlockArchitecture(interfacePkg_p);
+    if (null != interfacePkg) {
+      BlockArchitecture compArch = getRootBlockArchitecture(interfacePkg);
       if (null != compArch) {
         list.addAll(getAllInterfaces(compArch.getOwnedInterfacePkg()));
         list.addAll(getOwnedInterfacesFromBlockArchitectureParent(compArch));
       }
-      Component parentComp = getRootComponent(interfacePkg_p);
+      Component parentComp = getRootComponent(interfacePkg);
       if (null != parentComp) {
         list.addAll(getAllInterfaces(parentComp.getOwnedInterfacePkg()));
         list.addAll(getOwnedInterfacesFromComponentParent(parentComp));
@@ -92,17 +93,17 @@ public class InterfacePkgExt {
 
   /**
    * Gets all the interfaces from the parent component and its hierarchy
-   * @param component_p the Parent Component
+   * @param component the Parent Component
    * @return list of interfaces
    */
-  static public List<Interface> getOwnedInterfacesFromComponentParent(Component component_p) {
-    return getOwnedInterfacesFromComponentParent(component_p, false);
+  static public List<Interface> getOwnedInterfacesFromComponentParent(Component component) {
+    return getOwnedInterfacesFromComponentParent(component, false);
   }
 
-  static public List<Interface> getOwnedInterfacesFromComponentParent(Component component_p, boolean isLayerVisibilityRequired_p) {
+  static public List<Interface> getOwnedInterfacesFromComponentParent(Component component, boolean isLayerVisibilityRequired) {
     List<Interface> list = new ArrayList<Interface>(1);
-    Object container = component_p.eContainer();
-    if (isLayerVisibilityRequired_p) {
+    Object container = component.eContainer();
+    if (isLayerVisibilityRequired) {
       if (container instanceof System) {
         return list;// return if System has come in the recursion level
       } else if (container instanceof SystemEngineering) {
@@ -111,36 +112,36 @@ public class InterfacePkgExt {
     }
     if (container instanceof Component) {
       list.addAll(getAllInterfaces(((Component) container).getOwnedInterfacePkg()));
-      list.addAll(getOwnedInterfacesFromComponentParent((Component) container, isLayerVisibilityRequired_p));
+      list.addAll(getOwnedInterfacesFromComponentParent((Component) container, isLayerVisibilityRequired));
     } else if (container instanceof BlockArchitecture) {
       list.addAll(getAllInterfaces(((BlockArchitecture) container).getOwnedInterfacePkg()));
-      list.addAll(getOwnedInterfacesFromBlockArchitectureParent((BlockArchitecture) container, isLayerVisibilityRequired_p));
+      list.addAll(getOwnedInterfacesFromBlockArchitectureParent((BlockArchitecture) container, isLayerVisibilityRequired));
     }
     return list;
   }
 
   /**
    * Gets all the interfaces from the parent component architecture and its hierarchy
-   * @param compArch_p the Parent ComponentArchitecture
+   * @param compArch the Parent ComponentArchitecture
    * @return list of interfaces
    */
-  static public List<Interface> getOwnedInterfacesFromComponentArchitectureParent(ComponentArchitecture compArch_p) {
-    return getOwnedInterfacesFromComponentArchitectureParent(compArch_p, false);
+  static public List<Interface> getOwnedInterfacesFromComponentArchitectureParent(ComponentArchitecture compArch) {
+    return getOwnedInterfacesFromComponentArchitectureParent(compArch, false);
   }
 
   /**
    * Gets all the interfaces from the parent block architecture and its hierarchy
-   * @param compArch_p the Parent BlockArchitecture
+   * @param compArch the Parent BlockArchitecture
    * @return list of interfaces
    */
-  static public List<Interface> getOwnedInterfacesFromBlockArchitectureParent(BlockArchitecture compArch_p) {
-    return getOwnedInterfacesFromBlockArchitectureParent(compArch_p, false);
+  static public List<Interface> getOwnedInterfacesFromBlockArchitectureParent(BlockArchitecture compArch) {
+    return getOwnedInterfacesFromBlockArchitectureParent(compArch, false);
   }
 
-  static public List<Interface> getOwnedInterfacesFromComponentArchitectureParent(ComponentArchitecture compArch_p, boolean isLayerVisibilityRequired_p) {
+  static public List<Interface> getOwnedInterfacesFromComponentArchitectureParent(ComponentArchitecture compArch, boolean isLayerVisibilityRequired) {
     List<Interface> list = new ArrayList<Interface>(1);
-    Object container = compArch_p.eContainer();
-    if (isLayerVisibilityRequired_p) {
+    Object container = compArch.eContainer();
+    if (isLayerVisibilityRequired) {
       if (container instanceof System) {
         return list;// return if System has come in the recursion level
       } else if (container instanceof SystemEngineering) {
@@ -151,18 +152,18 @@ public class InterfacePkgExt {
       if (container instanceof LogicalComponent) {
         list.addAll(getAllInterfaces(((LogicalComponent) container).getOwnedInterfacePkg()));
       }
-      list.addAll(getOwnedInterfacesFromComponentParent((Component) container, isLayerVisibilityRequired_p));
+      list.addAll(getOwnedInterfacesFromComponentParent((Component) container, isLayerVisibilityRequired));
     } else if (container instanceof ComponentArchitecture) {
       list.addAll(getAllInterfaces(((ComponentArchitecture) container).getOwnedInterfacePkg()));
-      list.addAll(getOwnedInterfacesFromComponentArchitectureParent((ComponentArchitecture) container, isLayerVisibilityRequired_p));
+      list.addAll(getOwnedInterfacesFromComponentArchitectureParent((ComponentArchitecture) container, isLayerVisibilityRequired));
     }
     return list;
   }
 
-  static public List<Interface> getOwnedInterfacesFromBlockArchitectureParent(BlockArchitecture compArch_p, boolean isLayerVisibilityRequired_p) {
+  static public List<Interface> getOwnedInterfacesFromBlockArchitectureParent(BlockArchitecture compArch, boolean isLayerVisibilityRequired) {
     List<Interface> list = new ArrayList<Interface>(1);
-    Object container = compArch_p.eContainer();
-    if (isLayerVisibilityRequired_p) {
+    Object container = compArch.eContainer();
+    if (isLayerVisibilityRequired) {
       if (container instanceof System) {
         return list;// return if System has come in the recursion level
       } else if (container instanceof SystemEngineering) {
@@ -171,23 +172,23 @@ public class InterfacePkgExt {
     }
     if (container instanceof Component) {
       list.addAll(getAllInterfaces(((Component) container).getOwnedInterfacePkg()));
-      list.addAll(getOwnedInterfacesFromComponentParent((Component) container, isLayerVisibilityRequired_p));
+      list.addAll(getOwnedInterfacesFromComponentParent((Component) container, isLayerVisibilityRequired));
     } else if (container instanceof BlockArchitecture) {
       list.addAll(getAllInterfaces(((BlockArchitecture) container).getOwnedInterfacePkg()));
-      list.addAll(getOwnedInterfacesFromBlockArchitectureParent((BlockArchitecture) container, isLayerVisibilityRequired_p));
+      list.addAll(getOwnedInterfacesFromBlockArchitectureParent((BlockArchitecture) container, isLayerVisibilityRequired));
     }
     return list;
   }
 
   /**
    * Gets the root component architecture of the current interface package
-   * @param interfacePkg_p the interface package
+   * @param interfacePkg the interface package
    * @return the component architecture
    */
-  static public ComponentArchitecture getRootComponentArchitecture(InterfacePkg interfacePkg_p) {
+  static public ComponentArchitecture getRootComponentArchitecture(InterfacePkg interfacePkg) {
     ComponentArchitecture compArchitecture = null;
-    if (null != interfacePkg_p) {
-      Object container = interfacePkg_p.eContainer();
+    if (null != interfacePkg) {
+      Object container = interfacePkg.eContainer();
 
       if (container instanceof ComponentArchitecture) {
         compArchitecture = (ComponentArchitecture) container;
@@ -203,13 +204,13 @@ public class InterfacePkgExt {
   }
 
   /**
-   * @param modelElement_p : any 'ModelElement'
+   * @param modelElement : any 'ModelElement'
    * @return : 'BlockArchitecture', value can also be null
    */
-  public static BlockArchitecture getRootBlockArchitecture(ModelElement modelElement_p) {
+  public static BlockArchitecture getRootBlockArchitecture(ModelElement modelElement) {
     BlockArchitecture arch = null;
-    if (modelElement_p != null) {
-      EObject container = modelElement_p.eContainer();
+    if (modelElement != null) {
+      EObject container = modelElement.eContainer();
       if (container instanceof BlockArchitecture) {
         return (BlockArchitecture) container;
       } else if (container instanceof Component) {
@@ -230,27 +231,27 @@ public class InterfacePkgExt {
 
   /**
    * Gets the Root Interface Package of the signal package
-   * @param interfacePkg_p the interface package
+   * @param interfacePkg the interface package
    * @return the interface package
    */
-  static public InterfacePkg getRootInterfacePkg(InterfacePkg interfacePkg_p) {
-    if (interfacePkg_p.eContainer() instanceof InterfacePkg) {
-      return getRootInterfacePkg((InterfacePkg) interfacePkg_p.eContainer());
+  static public InterfacePkg getRootInterfacePkg(InterfacePkg interfacePkg) {
+    if (interfacePkg.eContainer() instanceof InterfacePkg) {
+      return getRootInterfacePkg((InterfacePkg) interfacePkg.eContainer());
     }
-    return interfacePkg_p;
+    return interfacePkg;
   }
 
   /**
    * Gets recursively all the interfaces in the interface package
-   * @param interfacePkg_p the interface package
+   * @param interfacePkg the interface package
    * @return list of all the interfaces
    */
-  static public List<Interface> getAllInterfaces(InterfacePkg interfacePkg_p) {
+  static public List<Interface> getAllInterfaces(InterfacePkg interfacePkg) {
     List<Interface> interfaceList = new ArrayList<Interface>();
 
-    if (interfacePkg_p != null) {
-      interfaceList.addAll(interfacePkg_p.getOwnedInterfaces());
-      for (InterfacePkg subInterfacePkg : interfacePkg_p.getOwnedInterfacePkgs()) {
+    if (interfacePkg != null) {
+      interfaceList.addAll(interfacePkg.getOwnedInterfaces());
+      for (InterfacePkg subInterfacePkg : interfacePkg.getOwnedInterfacePkgs()) {
         interfaceList.addAll(getAllInterfaces(subInterfacePkg));
       }
     }
@@ -259,57 +260,57 @@ public class InterfacePkgExt {
   }
 
   /**
-   * Gets all the interfaces in <code>interfacePkg_p</code> and all its sub packages. Checks whether <code>component_p</code> already uses the interface, if
-   * used flag is true, or checks if <code>component_p</code> already implements this interface.
-   * @param interfacePkg_p the Interface Package
-   * @param component_p the component to be checked for use or implementation
-   * @param usedFlag_p flag for "used" or "implemented"
+   * Gets all the interfaces in <code>interfacePkg</code> and all its sub packages. Checks whether <code>component</code> already uses the interface, if
+   * used flag is true, or checks if <code>component</code> already implements this interface.
+   * @param interfacePkg the Interface Package
+   * @param component the component to be checked for use or implementation
+   * @param usedFlag flag for "used" or "implemented"
    * @return list of interfaces
    */
-  static public List<Interface> getAllInterfacesFiltered(InterfacePkg interfacePkg_p, Component component_p, boolean usedFlag_p) {
+  static public List<Interface> getAllInterfacesFiltered(InterfacePkg interfacePkg, Component component, boolean usedFlag) {
     List<Interface> interfaceList = new ArrayList<Interface>();
-    if (interfacePkg_p != null) {
-      for (Interface inter : interfacePkg_p.getOwnedInterfaces()) {
-        if (null != component_p) {
-          if (usedFlag_p) {
-            if (ComponentExt.isUsingInterface(component_p, inter)) {
+    if (interfacePkg != null) {
+      for (Interface inter : interfacePkg.getOwnedInterfaces()) {
+        if (null != component) {
+          if (usedFlag) {
+            if (ComponentExt.isUsingInterface(component, inter)) {
               continue;
             }
           } else {
-            if (ComponentExt.isImplementingInterface(component_p, inter)) {
+            if (ComponentExt.isImplementingInterface(component, inter)) {
               continue;
             }
           }
         }
         interfaceList.add(inter);
       }
-      for (InterfacePkg subInterfacePkg : interfacePkg_p.getOwnedInterfacePkgs()) {
-        interfaceList.addAll(getAllInterfacesFiltered(subInterfacePkg, component_p, usedFlag_p));
+      for (InterfacePkg subInterfacePkg : interfacePkg.getOwnedInterfacePkgs()) {
+        interfaceList.addAll(getAllInterfacesFiltered(subInterfacePkg, component, usedFlag));
       }
     }
     return interfaceList;
   }
 
   /**
-   * Gets all the interfaces in <code>interfacePkg_p</code> and all its sub packages. Checks whether <code>component_p</code> already uses the interface, if
-   * used flag is true, or checks if <code>component_p</code> already implements this interface.
-   * @param genericPkg_p the Interface Package
-   * @param component_p the component to be checked for use or implementation
-   * @param usedFlag_p flag for "used" or "implemented"
+   * Gets all the interfaces in <code>interfacePkg_p</code> and all its sub packages. Checks whether <code>component</code> already uses the interface, if
+   * used flag is true, or checks if <code>component</code> already implements this interface.
+   * @param genericPkg the Interface Package
+   * @param component the component to be checked for use or implementation
+   * @param usedFlag flag for "used" or "implemented"
    * @return list of interfaces
    */
-  static public List<Interface> getAllInterfacesFiltered(GenericPkg genericPkg_p, Component component_p, boolean usedFlag_p) {
+  static public List<Interface> getAllInterfacesFiltered(GenericPkg genericPkg, Component component, boolean usedFlag) {
     List<Interface> interfaceList = new ArrayList<Interface>();
-    if (genericPkg_p != null) {
-      GenericPkgExt.getAllInterfaces(genericPkg_p);
-      for (Interface inter : GenericPkgExt.getAllInterfaces(genericPkg_p)) {
-        if (null != component_p) {
-          if (usedFlag_p) {
-            if (ComponentExt.isUsingInterface(component_p, inter)) {
+    if (genericPkg != null) {
+      GenericPkgExt.getAllInterfaces(genericPkg);
+      for (Interface inter : GenericPkgExt.getAllInterfaces(genericPkg)) {
+        if (null != component) {
+          if (usedFlag) {
+            if (ComponentExt.isUsingInterface(component, inter)) {
               continue;
             }
           } else {
-            if (ComponentExt.isImplementingInterface(component_p, inter)) {
+            if (ComponentExt.isImplementingInterface(component, inter)) {
               continue;
             }
           }
@@ -321,32 +322,32 @@ public class InterfacePkgExt {
   }
 
   /**
-   * @param context_p
-   * @return all InterfacePkgs which are in the same architecture as context_p or in previous architecture
+   * @param context
+   * @return all InterfacePkgs which are in the same architecture as context or in previous architecture
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  public static List<InterfacePkg> getAllInterfacePkgs(EObject context_p) {
+  public static List<InterfacePkg> getAllInterfacePkgs(EObject context) {
     // OLD CODE
     List<InterfacePkg> returnedList = new ArrayList<InterfacePkg>();
-    for (BlockArchitecture anArchitecture : BlockArchitectureExt.getRootAndPreviousBlockArchitectures(context_p)) {
+    for (BlockArchitecture anArchitecture : BlockArchitectureExt.getRootAndPreviousBlockArchitectures(context)) {
       for (EObject aInterfacePkg : EObjectExt.getAll(anArchitecture, CsPackage.Literals.INTERFACE_PKG)) {
         returnedList.add((InterfacePkg) aInterfacePkg);
       }
     }
     // NEW CODE
-    returnedList = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_INTERFACE_PCKS, context_p, returnedList);
+    returnedList = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_INTERFACE_PCKS, context, returnedList);
     // END CODE REFACTOR
     return returnedList;
   }
 
   /**
-   * @param interfacePkg_p current Interface Package
-   * @return recursively all sub Interface Packages of interfacePkg_p
+   * @param interfacePkg current Interface Package
+   * @return recursively all sub Interface Packages of interfacePkg
    */
-  public static List<InterfacePkg> getRecursiveSubInterfacePkgs(InterfacePkg interfacePkg_p) {
+  public static List<InterfacePkg> getRecursiveSubInterfacePkgs(InterfacePkg interfacePkg) {
     List<InterfacePkg> returnedList = new ArrayList<InterfacePkg>();
-    returnedList.addAll(interfacePkg_p.getOwnedInterfacePkgs());
-    for (InterfacePkg aSubPkg : interfacePkg_p.getOwnedInterfacePkgs()) {
+    returnedList.addAll(interfacePkg.getOwnedInterfacePkgs());
+    for (InterfacePkg aSubPkg : interfacePkg.getOwnedInterfacePkgs()) {
       returnedList.addAll(getRecursiveSubInterfacePkgs(aSubPkg));
     }
     return returnedList;
@@ -355,14 +356,14 @@ public class InterfacePkgExt {
   /**
    * @see #getInterfacePkgDependenciesHierarchy(InterfacePkg, int)
    */
-  public static Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> getInterfacePkgDependenciesHierarchy2(InterfacePkg interfacePkg_p) {
+  public static Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> getInterfacePkgDependenciesHierarchy2(InterfacePkg interfacePkg) {
 
     Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> result =
         new HashMap<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>>();
 
     Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> tmp = null;
 
-    for (Interface anInterface : interfacePkg_p.getOwnedInterfaces()) {
+    for (Interface anInterface : interfacePkg.getOwnedInterfaces()) {
 
       tmp = InterfaceExt.getInterfaceDependencies2(anInterface);
 
@@ -376,12 +377,12 @@ public class InterfacePkgExt {
     }
 
     // ExchangeItem
-    for (AbstractExchangeItem anExchangeItem : interfacePkg_p.getOwnedExchangeItems()) {
+    for (AbstractExchangeItem anExchangeItem : interfacePkg.getOwnedExchangeItems()) {
       addToResultMap(anExchangeItem, ExchangeItemExt.getExchangeItemDependencies2(anExchangeItem), result);
     }
 
     // sub dependencies
-    for (InterfacePkg aSubPkg : interfacePkg_p.getOwnedInterfacePkgs()) {
+    for (InterfacePkg aSubPkg : interfacePkg.getOwnedInterfacePkgs()) {
       tmp = getInterfacePkgDependenciesHierarchy2(aSubPkg);
       for (AbstractDependenciesPkg pkg : tmp.keySet()) {
         if (result.containsKey(pkg)) {
@@ -396,23 +397,23 @@ public class InterfacePkgExt {
   }
 
   /** for internal use */
-  private static void addToResultMap(EObject tgt_p, Map<AbstractDependenciesPkg, Collection<EObject>> map_p,
-      Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> result_p) {
+  private static void addToResultMap(EObject tgt, Map<AbstractDependenciesPkg, Collection<EObject>> map,
+      Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> result) {
 
     Couple<EObject, Collection<EObject>> couple = null;
 
     Set<Couple<EObject, Collection<EObject>>> col = null;
 
-    if (null != map_p) {
-      for (AbstractDependenciesPkg pkg : map_p.keySet()) {
+    if (null != map) {
+      for (AbstractDependenciesPkg pkg : map.keySet()) {
 
-        if (!result_p.containsKey(pkg)) {
+        if (!result.containsKey(pkg)) {
           col = new HashSet<Couple<EObject, Collection<EObject>>>();
-          result_p.put(pkg, col);
+          result.put(pkg, col);
         }
 
-        couple = new Couple<EObject, Collection<EObject>>(tgt_p, map_p.get(pkg));
-        result_p.get(pkg).add(couple);
+        couple = new Couple<EObject, Collection<EObject>>(tgt, map.get(pkg));
+        result.get(pkg).add(couple);
       }
 
     }
@@ -420,22 +421,22 @@ public class InterfacePkgExt {
     return;
   }
 
-  private static Collection<AbstractDependenciesPkg> getInterfacePkgDependenciesHierarchy(InterfacePkg interfacePkg_p, int hierarchy) {
+  private static Collection<AbstractDependenciesPkg> getInterfacePkgDependenciesHierarchy(InterfacePkg interfacePkg, int hierarchy) {
     Collection<AbstractDependenciesPkg> dependencies = new HashSet<AbstractDependenciesPkg>(); // dependencies
-    Collection<AbstractDependenciesPkg> dependenciesHierarchy = new HashSet<AbstractDependenciesPkg>(); // dependencies of interfacePkg_p ancestors
+    Collection<AbstractDependenciesPkg> dependenciesHierarchy = new HashSet<AbstractDependenciesPkg>(); // dependencies of interfacePkg ancestors
 
-    for (Interface anInterface : interfacePkg_p.getOwnedInterfaces()) {
+    for (Interface anInterface : interfacePkg.getOwnedInterfaces()) {
       dependencies.addAll(InterfaceExt.getInterfaceDependencies(anInterface));
     }
     // ExchangeItem
-    for (ExchangeItem anExchangeItem : interfacePkg_p.getOwnedExchangeItems()) {
+    for (ExchangeItem anExchangeItem : interfacePkg.getOwnedExchangeItems()) {
       dependencies.addAll(ExchangeItemExt.getExchangeItemDependencies(anExchangeItem));
     }
     // Retrieving the dependencies for the ancestors.
     for (AbstractDependenciesPkg aPackage : dependencies) {
       int i = hierarchy;
       AbstractDependenciesPkg dependentPackage = aPackage;
-      AbstractDependenciesPkg currentPackage = interfacePkg_p;
+      AbstractDependenciesPkg currentPackage = interfacePkg;
       while ((i > 0) && (dependentPackage.eContainer() instanceof InterfacePkg)
              && (!(EcoreUtil.isAncestor(dependentPackage.eContainer(), currentPackage) || EcoreUtil.isAncestor(currentPackage, dependentPackage.eContainer())))) {
         dependentPackage = (AbstractDependenciesPkg) dependentPackage.eContainer();
@@ -452,22 +453,22 @@ public class InterfacePkgExt {
       }
     }
     // Retrieving the dependencies of sub-packages.
-    for (InterfacePkg aSubPkg : interfacePkg_p.getOwnedInterfacePkgs()) {
+    for (InterfacePkg aSubPkg : interfacePkg.getOwnedInterfacePkgs()) {
       dependenciesHierarchy.addAll(getInterfacePkgDependenciesHierarchy(aSubPkg, hierarchy + 1));
     }
     return dependenciesHierarchy;
   }
 
   /**
-   * @param interfacePkg_p
-   * @return all the packages that depends on interfacePkg_p
+   * @param interfacePkg
+   * @return all the packages that depends on interfacePkg
    */
-  public static Collection<AbstractDependenciesPkg> getInterfacePkgDependencies(InterfacePkg interfacePkg_p) {
+  public static Collection<AbstractDependenciesPkg> getInterfacePkgDependencies(InterfacePkg interfacePkg) {
     Collection<AbstractDependenciesPkg> returnedDependencies = new HashSet<AbstractDependenciesPkg>();
-    if (interfacePkg_p.eContainer() instanceof InterfacePkg) {
-      return getInterfacePkgDependenciesHierarchy(interfacePkg_p, 0);
+    if (interfacePkg.eContainer() instanceof InterfacePkg) {
+      return getInterfacePkgDependenciesHierarchy(interfacePkg, 0);
     }
-    for (AbstractDependenciesPkg aDependentPackage : getInterfacePkgDependenciesHierarchy(interfacePkg_p, 0)) {
+    for (AbstractDependenciesPkg aDependentPackage : getInterfacePkgDependenciesHierarchy(interfacePkg, 0)) {
       AbstractDependenciesPkg currentDependentPkg = aDependentPackage;
       returnedDependencies.add(currentDependentPkg);
       while (aDependentPackage.eContainer() instanceof InterfacePkg) {
@@ -479,11 +480,11 @@ public class InterfacePkgExt {
   }
 
   /**
-   * @param sourceElement_p
+   * @param sourceElement
    * @return
    */
-  public static boolean isInInterfacePkg(AbstractExchangeItem sourceElement_p) {
-    EObject container = sourceElement_p.eContainer();
+  public static boolean isInInterfacePkg(AbstractExchangeItem sourceElement) {
+    EObject container = sourceElement.eContainer();
     while (container != null) {
       if (container instanceof InterfacePkg) {
         return true;
@@ -495,21 +496,21 @@ public class InterfacePkgExt {
   
   /**
 	 * Check if the dependency between an interface package and a package is primitive
-	 * @param src_p
-	 * @param tar_p
+	 * @param src
+	 * @param tar
 	 * @return
 	 */
-	public static boolean isPrimitiveDependency(InterfacePkg src_p,
-			AbstractDependenciesPkg tar_p) {
-		for (Interface anInterface : src_p.getOwnedInterfaces()) {
+	public static boolean isPrimitiveDependency(InterfacePkg src,
+			AbstractDependenciesPkg tar) {
+		for (Interface anInterface : src.getOwnedInterfaces()) {
 			if (InterfaceExt.getInterfaceDependencies(anInterface).contains(
-					tar_p))
+					tar))
 				return true;
 		}
 		// ExchangeItem
-		for (ExchangeItem anExchangeItem : src_p.getOwnedExchangeItems()) {
+		for (ExchangeItem anExchangeItem : src.getOwnedExchangeItems()) {
 			if (ExchangeItemExt.getExchangeItemDependencies(anExchangeItem)
-					.contains(tar_p))
+					.contains(tar))
 				return true;
 		}
 
@@ -518,19 +519,19 @@ public class InterfacePkgExt {
 
 	/**
 	 * Get all the dependencies of a package, including ancestor's dependencies
-	 * @param interfacePkg_p
+	 * @param interfacePkg
 	 * @return
 	 */
 	public static Collection<AbstractDependenciesPkg> getInterfacePkgDependenciesHierarchy(
-			InterfacePkg interfacePkg_p) {
+			InterfacePkg interfacePkg) {
 		Collection<AbstractDependenciesPkg> dependencies = new HashSet<AbstractDependenciesPkg>(); // dependencies
 
-		for (Interface anInterface : interfacePkg_p.getOwnedInterfaces()) {
+		for (Interface anInterface : interfacePkg.getOwnedInterfaces()) {
 			dependencies.addAll(InterfaceExt
 					.getInterfaceDependencies(anInterface));
 		}
 		// ExchangeItem
-		for (ExchangeItem anExchangeItem : interfacePkg_p
+		for (ExchangeItem anExchangeItem : interfacePkg
 				.getOwnedExchangeItems()) {
 			dependencies.addAll(ExchangeItemExt
 					.getExchangeItemDependencies(anExchangeItem));
@@ -538,7 +539,7 @@ public class InterfacePkgExt {
 		// Retrieving the dependencies for the ancestors.
 		for (AbstractDependenciesPkg aPackage : dependencies) {
 			AbstractDependenciesPkg dependentPackage = aPackage;
-			AbstractDependenciesPkg currentPackage = interfacePkg_p;
+			AbstractDependenciesPkg currentPackage = interfacePkg;
 			while ((dependentPackage instanceof AbstractDependenciesPkg)
 					&& (!(EcoreUtil
 							.isAncestor(dependentPackage, currentPackage) || EcoreUtil
@@ -554,7 +555,7 @@ public class InterfacePkgExt {
 			}
 		}
 		// Retrieving the dependencies of sub-packages.
-		for (InterfacePkg aSubPkg : interfacePkg_p.getOwnedInterfacePkgs()) {
+		for (InterfacePkg aSubPkg : interfacePkg.getOwnedInterfacePkgs()) {
 			dependencies.addAll(getInterfacePkgDependenciesHierarchy(aSubPkg));
 		}
 		return dependencies;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.la.delegates;
 
 import java.util.ArrayList;
@@ -42,32 +43,32 @@ public class LogicalComponentHelper {
     return instance;
   }
 
-  public Object doSwitch(LogicalComponent element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(LogicalComponent element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(LaPackage.Literals.LOGICAL_COMPONENT__SUB_LOGICAL_COMPONENTS)) {
-      ret = getSubLogicalComponents(element_p);
-    } else if (feature_p.equals(LaPackage.Literals.LOGICAL_COMPONENT__SYSTEM_REALIZATIONS)) {
-      ret = getSystemRealizations(element_p);
-    } else if (feature_p.equals(LaPackage.Literals.LOGICAL_COMPONENT__ALLOCATED_LOGICAL_FUNCTIONS)) {
-      ret = getAllocatedLogicalFunctions(element_p);
-    } else if (feature_p.equals(LaPackage.Literals.LOGICAL_COMPONENT__REALIZING_PHYSICAL_COMPONENTS)) {
-      ret = getRealizingPhysicalComponents(element_p);
-    } else if (feature_p.equals(LaPackage.Literals.LOGICAL_COMPONENT__REALIZED_SYSTEMS)) {
-      ret = getRealizedSystems(element_p);
+    if (feature.equals(LaPackage.Literals.LOGICAL_COMPONENT__SUB_LOGICAL_COMPONENTS)) {
+      ret = getSubLogicalComponents(element);
+    } else if (feature.equals(LaPackage.Literals.LOGICAL_COMPONENT__SYSTEM_REALIZATIONS)) {
+      ret = getSystemRealizations(element);
+    } else if (feature.equals(LaPackage.Literals.LOGICAL_COMPONENT__ALLOCATED_LOGICAL_FUNCTIONS)) {
+      ret = getAllocatedLogicalFunctions(element);
+    } else if (feature.equals(LaPackage.Literals.LOGICAL_COMPONENT__REALIZING_PHYSICAL_COMPONENTS)) {
+      ret = getRealizingPhysicalComponents(element);
+    } else if (feature.equals(LaPackage.Literals.LOGICAL_COMPONENT__REALIZED_SYSTEMS)) {
+      ret = getRealizedSystems(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = SystemComponentHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = SystemComponentHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<SystemRealization> getSystemRealizations(LogicalComponent element_p) {
+  protected List<SystemRealization> getSystemRealizations(LogicalComponent element) {
     List<SystemRealization> ret = new ArrayList<SystemRealization>();
-    for (ComponentAllocation componentAllocation : element_p.getProvisionedComponentAllocations()) {
+    for (ComponentAllocation componentAllocation : element.getProvisionedComponentAllocations()) {
       if (componentAllocation instanceof SystemRealization) {
         ret.add((SystemRealization) componentAllocation);
       }
@@ -75,9 +76,9 @@ public class LogicalComponentHelper {
     return ret;
   }
 
-  protected List<LogicalComponent> getSubLogicalComponents(LogicalComponent element_p) {
+  protected List<LogicalComponent> getSubLogicalComponents(LogicalComponent element) {
     List<LogicalComponent> ret = new ArrayList<LogicalComponent>();
-    for (Partition thePartition : element_p.getOwnedPartitions()) {
+    for (Partition thePartition : element.getOwnedPartitions()) {
       Type representedElement = thePartition.getType();
       if (representedElement instanceof LogicalComponent) {
         ret.add((LogicalComponent) representedElement);
@@ -86,9 +87,9 @@ public class LogicalComponentHelper {
     return ret;
   }
 
-  protected List<LogicalFunction> getAllocatedLogicalFunctions(LogicalComponent element_p) {
+  protected List<LogicalFunction> getAllocatedLogicalFunctions(LogicalComponent element) {
     List<LogicalFunction> ret = new ArrayList<LogicalFunction>();
-    for (AbstractFunction function : element_p.getAllocatedFunctions()) {
+    for (AbstractFunction function : element.getAllocatedFunctions()) {
       if (function instanceof LogicalFunction) {
         ret.add((LogicalFunction) function);
       }
@@ -96,9 +97,9 @@ public class LogicalComponentHelper {
     return ret;
   }
 
-  protected List<PhysicalComponent> getRealizingPhysicalComponents(LogicalComponent element_p) {
+  protected List<PhysicalComponent> getRealizingPhysicalComponents(LogicalComponent element) {
     List<PhysicalComponent> ret = new ArrayList<PhysicalComponent>();
-    for (Component cpnt : element_p.getAllocatingComponents()) {
+    for (Component cpnt : element.getAllocatingComponents()) {
       if (cpnt instanceof PhysicalComponent) {
         ret.add((PhysicalComponent) cpnt);
       }
@@ -106,9 +107,9 @@ public class LogicalComponentHelper {
     return ret;
   }
 
-  protected List<System> getRealizedSystems(LogicalComponent element_p) {
+  protected List<System> getRealizedSystems(LogicalComponent element) {
     List<System> ret = new ArrayList<System>();
-    for (Component cpnt : element_p.getAllocatedComponents()) {
+    for (Component cpnt : element.getAllocatedComponents()) {
       if (cpnt instanceof System) {
         ret.add((System) cpnt);
       }
