@@ -15,6 +15,8 @@ import java.util.Collections;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.e4.core.contexts.ContextInjectionFactory;
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
@@ -63,34 +65,30 @@ import org.polarsys.capella.common.ui.toolkit.widgets.filter.PatternFilter;
  */
 public class SelectListRenderer extends AbstractRenderer {
 
-  private TreeAndListViewer _viewer;
+  private TreeAndListViewer viewer;
 
-  protected ToolBarManager _toolbarManager;
-
-  protected MenuManager _popupManager;
-
-  protected IStructuredSelection _selection;
-
+  protected ToolBarManager toolbarManager;
+  private ToolbarPopulator toolbarPopulator = null;
+  private ToolbarPopulator popupPopulator = null;
+  protected MenuManager popupManager;
+  protected IStructuredSelection selection;
+  private ILabelProvider labelProvider;
+  private DataViewerLabelProvider dataLabelProvider;
+  
+ 
   /**
    * @return the viewer
    */
   protected TreeAndListViewer getViewer() {
-    return _viewer;
+    return viewer;
   }
-
-  private ILabelProvider _labelProvider;
-
-  private DataViewerLabelProvider _dataLabelProvider;
-
-  private ToolbarPopulator _toolbarPopulator = null;
-  private ToolbarPopulator _popupPopulator = null;
 
   /**
    * {@inheritDoc}
    */
   @Override
   public void performRender(Composite parent, IRendererContext rendererContext) {
-    _labelProvider = createLabelProvider(rendererContext);
+    labelProvider = createLabelProvider(rendererContext);
 
     Composite prt = new Composite(parent, SWT.NONE);
     prt.setLayout(createMainLayout());
@@ -99,29 +97,31 @@ public class SelectListRenderer extends AbstractRenderer {
     createTreeViewer(prt, rendererContext);
 
     // Populate toolbar and set selection to getViewer()
+    IEclipseContext context = PlatformUI.getWorkbench().getService(IEclipseContext.class);
     if (!getToolbarLocation().isEmpty()) {
-      _toolbarPopulator =
-          new ToolbarPopulator(_toolbarManager, getToolbarLocation(), rendererContext, this, getViewer().getClientViewer(), PlatformUI.getWorkbench()
+      toolbarPopulator =
+          new ToolbarPopulator(toolbarManager, getToolbarLocation(), rendererContext, this, getViewer().getClientViewer(), PlatformUI.getWorkbench()
               .getActiveWorkbenchWindow());
-      _toolbarPopulator.populate();
+      ContextInjectionFactory.inject(toolbarPopulator, context);
+      toolbarPopulator.populate();
     }
 
     // Populate contextMenu and set selection to getViewer()
     if (!getPopupLocation().isEmpty()) {
-      _popupPopulator =
-          new ToolbarPopulator(_popupManager, getPopupLocation(), rendererContext, this, getViewer().getClientViewer(), PlatformUI.getWorkbench()
+      popupPopulator =
+          new ToolbarPopulator(popupManager, getPopupLocation(), rendererContext, this, getViewer().getClientViewer(), PlatformUI.getWorkbench()
               .getActiveWorkbenchWindow());
-      _popupPopulator.populate();
+      ContextInjectionFactory.inject(toolbarPopulator, context);
+      popupPopulator.populate();
 
       // Register the contextMenu on the view
-      Menu menu = _popupManager.createContextMenu(getViewer().getClientViewer().getControl());
+      Menu menu = popupManager.createContextMenu(getViewer().getClientViewer().getControl());
       getViewer().getClientViewer().getControl().setMenu(menu);
     }
 
-    if (_dataLabelProvider != null) {
-      _dataLabelProvider.setViewer(getViewer().getClientViewer());
+    if (dataLabelProvider != null) {
+      dataLabelProvider.setViewer(getViewer().getClientViewer());
     }
-
   }
 
   protected void initializeControls(final Composite parent, final IRendererContext context) {
@@ -130,13 +130,12 @@ public class SelectListRenderer extends AbstractRenderer {
       ToolBar toolbar = new ToolBar(parent, SWT.VERTICAL);
       toolbar.setLayout(createLayout());
       toolbar.setLayoutData(createToolbarLayoutData());
-      _toolbarManager = new ToolBarManager(toolbar);
+      toolbarManager = new ToolBarManager(toolbar);
     }
 
     if (!getPopupLocation().isEmpty()) {
-      _popupManager = new MenuManager();
+      popupManager = new MenuManager();
     }
-
   }
 
   protected String getPopupLocation() {
@@ -148,7 +147,7 @@ public class SelectListRenderer extends AbstractRenderer {
   }
 
   protected ILabelProvider createLabelProvider(final IRendererContext rendererContext) {
-    _dataLabelProvider = new DataViewerLabelProvider(rendererContext.getLabelProvider()) {
+    dataLabelProvider = new DataViewerLabelProvider(rendererContext.getLabelProvider()) {
 
       /**
        * {@inheritDoc}
@@ -160,7 +159,7 @@ public class SelectListRenderer extends AbstractRenderer {
 
     };
 
-    return new DefaultLabelProvider(_dataLabelProvider) {
+    return new DefaultLabelProvider(dataLabelProvider) {
       @Override
       public Color getBackground(Object element) {
         // Do nothing.
@@ -348,7 +347,7 @@ public class SelectListRenderer extends AbstractRenderer {
     int style = SWT.NONE;
 
     // Create a TreeAndListViewer.
-    _viewer = new TreeAndListViewer(parent, isMultipleSelection(), style) {
+    viewer = new TreeAndListViewer(parent, isMultipleSelection(), style) {
       /**
        * Overridden to set the viewer in the label provider at creation time.
        * @see org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer#doClientViewer(org.eclipse.swt.widgets.Composite)
@@ -387,10 +386,10 @@ public class SelectListRenderer extends AbstractRenderer {
 
     };
 
-    _viewer.getControl().setLayout(createLayout());
-    _viewer.getControl().setLayoutData(createLayoutData());
+    viewer.getControl().setLayout(createLayout());
+    viewer.getControl().setLayoutData(createLayoutData());
 
-    final TreeViewer clientViewer = _viewer.getClientViewer();
+    final TreeViewer clientViewer = viewer.getClientViewer();
     // Add a selection listener to update widgets according to the selection.
     ISelectionChangedListener viewerSelectionChangedListener = new ISelectionChangedListener() {
       /**
@@ -398,11 +397,9 @@ public class SelectListRenderer extends AbstractRenderer {
        */
       public void selectionChanged(SelectionChangedEvent event) {
         // Handle the selection itself.
-        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-        _selection = selection;
-        selectionChange(selection, context);
+    	  selection = (IStructuredSelection) event.getSelection();
+    	  selectionChange(selection, context);
       }
-
     };
 
     clientViewer.addSelectionChangedListener(viewerSelectionChangedListener);
@@ -422,7 +419,7 @@ public class SelectListRenderer extends AbstractRenderer {
     clientViewer.addDoubleClickListener(viewerDoubleClickListener);
 
     clientViewer.setContentProvider(createContentProvider(context));
-    clientViewer.setLabelProvider(_labelProvider);
+    clientViewer.setLabelProvider(labelProvider);
   }
 
   /**
@@ -485,8 +482,8 @@ public class SelectListRenderer extends AbstractRenderer {
   protected void reloadInput(IProperty property, IRendererContext propertyContext) {
     Object input = createInput(property, propertyContext);
 
-    if ((_viewer != null) && (_viewer.getClientViewer().getContentProvider() != null)) {
-      if (reloadInputRequired(input, _viewer.getClientViewer().getInput())) {
+    if ((viewer != null) && (viewer.getClientViewer().getContentProvider() != null)) {
+      if (reloadInputRequired(input, viewer.getClientViewer().getInput())) {
         setInput(input, propertyContext);
       }
     }
@@ -496,10 +493,10 @@ public class SelectListRenderer extends AbstractRenderer {
    * @param input
    */
   private void setInput(Object input, IRendererContext propertyContext) {
-    _viewer.setInput(input);
-    IContentProvider provider = _viewer.getClientViewer().getContentProvider();
+    viewer.setInput(input);
+    IContentProvider provider = viewer.getClientViewer().getContentProvider();
     if (provider != null) {
-      provider.inputChanged(_viewer.getClientViewer(), null, input);
+      provider.inputChanged(viewer.getClientViewer(), null, input);
     }
   }
 
@@ -529,7 +526,6 @@ public class SelectListRenderer extends AbstractRenderer {
         return false;
       }
     }
-
     return true;
   }
 
@@ -570,7 +566,7 @@ public class SelectListRenderer extends AbstractRenderer {
   }
 
   public IStructuredSelection getSelection() {
-    return _selection;
+    return selection;
   }
 
   @Override
@@ -585,18 +581,17 @@ public class SelectListRenderer extends AbstractRenderer {
   public void dispose(IRendererContext context) {
     super.dispose(context);
 
-    if (_toolbarPopulator != null) {
-      _toolbarPopulator.dispose();
-      _toolbarPopulator = null;
+    if (toolbarPopulator != null) {
+      toolbarPopulator.dispose();
+      toolbarPopulator = null;
     }
-    if (_popupPopulator != null) {
-      _popupPopulator.dispose();
-      _popupPopulator = null;
+    if (popupPopulator != null) {
+      popupPopulator.dispose();
+      popupPopulator = null;
     }
-    if (_popupManager != null) {
-      _popupManager.dispose();
-      _popupManager = null;
+    if (popupManager != null) {
+      popupManager.dispose();
+      popupManager = null;
     }
   }
-
 }
