@@ -79,9 +79,9 @@ public class SiriusUiCallBack implements UICallBack {
      * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#askForDetailName(java.lang.String,
      *      java.lang.String, java.lang.String)
      */
-//    public String askForDetailName(String defaultName, String representationDescriptionName, String representationDescriptionDoc) throws InterruptedException {
-//        return defaultCallBack.askForDetailName(defaultName, representationDescriptionName, representationDescriptionDoc);
-//    }
+    public String askForDetailName(String defaultName, String representationDescriptionName, String representationDescriptionDoc) throws InterruptedException {
+        return defaultCallBack.askForDetailName(defaultName, representationDescriptionName, representationDescriptionDoc);
+    }
 
     /**
      * {@inheritDoc}

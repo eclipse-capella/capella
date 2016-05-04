@@ -2737,7 +2737,7 @@
                   <parameters name="context" value="&lt;% $container %>"/>
                   <parameters name="scope" value="&lt;%eContainer (&quot;ModellingArchitecture&quot;).ownedRolePkg.ownedRoles + getAllComponents($containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance.filter(&quot;Part&quot;))[abstractType.filter(&quot;AbstractActor&quot;).nSize() == 0]%>"/>
                   <parameters name="initialSelection" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance  %>"/>
-                  <parameters name="wizardMessage"/>
+                  <parameters name="wizardMessage" value=""/>
                   <parameters name="resultVariable" value="result"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:For" expression="&lt;% $result %>">
@@ -4181,7 +4181,7 @@
                   <parameters name="context" value="&lt;% $container %>"/>
                   <parameters name="scope" value="&lt;% eContainer (&quot;ModellingArchitecture&quot;).ownedFunctionPkg.eAllContents.filter (&quot;OperationalActivity&quot;) %>"/>
                   <parameters name="initialSelection" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance  %>"/>
-                  <parameters name="wizardMessage"/>
+                  <parameters name="wizardMessage" value=""/>
                   <parameters name="resultVariable" value="result"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:For" expression="&lt;% $result %>">

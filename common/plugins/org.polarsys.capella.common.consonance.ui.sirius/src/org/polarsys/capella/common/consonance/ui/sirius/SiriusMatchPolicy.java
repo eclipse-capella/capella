@@ -21,7 +21,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -88,8 +88,8 @@ public class SiriusMatchPolicy extends GMFMatchPolicy {
   @Override
   protected String getUniqueName(EObject element, IModelScope scope, boolean inScopeOnly) {
     String result = null;
-    if (element instanceof DRepresentationContainer) {
-      Viewpoint viewpoint = ((DRepresentationContainer)element).getViewpoint();
+    if (element instanceof DView) {
+      Viewpoint viewpoint = ((DView) element).getViewpoint();
       if (viewpoint != null)
         result = viewpoint.getName();
     } else if (element instanceof DRepresentation) {

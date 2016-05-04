@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.step.crud;
 
-import junit.framework.Assert;
-
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -20,6 +18,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.junit.Assert;
 import org.polarsys.capella.common.ef.command.AbstractCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;

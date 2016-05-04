@@ -10,10 +10,9 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.step.crud;
 
-import junit.framework.Assert;
-
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.junit.Assert;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractTestStep;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;

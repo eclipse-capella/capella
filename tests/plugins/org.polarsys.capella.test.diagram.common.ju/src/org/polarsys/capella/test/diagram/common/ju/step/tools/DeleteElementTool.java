@@ -12,14 +12,13 @@ package org.polarsys.capella.test.diagram.common.ju.step.tools;
 
 import java.util.List;
 
-import junit.framework.Assert;
-
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.junit.Assert;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.Messages;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.factory.ToolWrapperFactory;

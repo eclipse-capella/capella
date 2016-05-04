@@ -12,12 +12,11 @@ package org.polarsys.capella.test.diagram.common.ju.step.filters;
 
 import java.text.MessageFormat;
 
-import junit.framework.Assert;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.junit.Assert;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.AbstractDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.FilterOnDiagramHelper;

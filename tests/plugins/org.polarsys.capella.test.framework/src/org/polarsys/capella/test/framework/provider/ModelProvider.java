@@ -14,14 +14,13 @@ import java.io.File;
 import java.util.List;
 import java.util.Set;
 
-import junit.framework.Assert;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.junit.Assert;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.libraries.model.CapellaModel;

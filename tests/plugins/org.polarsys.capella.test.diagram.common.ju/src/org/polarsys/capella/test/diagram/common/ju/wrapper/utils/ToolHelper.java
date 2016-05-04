@@ -15,8 +15,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import junit.framework.Assert;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -28,6 +26,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
+import org.junit.Assert;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 /**
