@@ -42,104 +42,101 @@ import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
  */
 public class ToolbarPopulator implements ISelectionListener, PropertyChangeListener, IDisposable {
 
-	@Inject
-	IEclipseContext context;
-	
-	String location;
-	IRenderer renderer;
-	IServiceLocator parent;
-	IServiceLocator locator;
-	ISelectionProvider provider;
-	IRendererContext rendererContext;
-	ContributionManager contributionManager;
+  @Inject
+  IEclipseContext context;
+  
+  String location;
+  IRenderer renderer;
+  IServiceLocator parent;
+  IServiceLocator locator;
+  ISelectionProvider provider;
+  IRendererContext rendererContext;
+  ContributionManager contributionManager;
 
-	/**
-	 * @param contributionManager
-	 * @param location
-	 * @param rendererContext
-	 * @param renderer
-	 * @param provider
-	 * @param parent
-	 */
-	public ToolbarPopulator(ContributionManager contributionManager, String location, IRendererContext rendererContext,
-			IRenderer renderer, ISelectionProvider provider, IServiceLocator parent) {
-		this.contributionManager = contributionManager;
-		this.location = location;
-		this.provider = provider;
-		this.parent = parent;
+  /**
+   * @param contributionManager
+   * @param location
+   * @param rendererContext
+   * @param renderer
+   * @param provider
+   * @param parent
+   */
+  public ToolbarPopulator(ContributionManager contributionManager, String location, IRendererContext rendererContext,
+      IRenderer renderer, ISelectionProvider provider, IServiceLocator parent) {
+    this.contributionManager = contributionManager;
+    this.location = location;
+    this.provider = provider;
+    this.parent = parent;
+    this.renderer = renderer;
+    this.rendererContext = rendererContext;
+  }
+  
+  @SuppressWarnings("restriction")
+  public void populate() {
+    if ((location == null) || (location.isEmpty())) {
+      return;
+    }
 
-		this.renderer = renderer;
-		this.rendererContext = rendererContext;
-	}
-	
-	@SuppressWarnings("restriction")
-	public void populate() {
-		if ((location == null) || (location.isEmpty())) {
-			return;
-		}
+    // We can avoid internal uses by providing ours implementations, but its
+    // convenient for now.
 
-		// We can avoid internal uses by providing ours implementations, but its
-		// convenient for now.
+    IServiceLocator parentLocator = this.parent;
+    ServiceLocator locator = new ServiceLocator(parentLocator, null, this);
+    locator.setContext(context);
+    this.locator = locator;
 
-		IServiceLocator parentLocator = this.parent;
-		ServiceLocator locator = new ServiceLocator(parentLocator, null, this);
-		locator.setContext(context);
-		this.locator = locator;
+    SourceSelectionService newService = new RendererSelectionService(rendererContext, renderer, provider);
+    newService.addSelectionListener(this);
+    locator.registerService(ISelectionService.class, newService);
 
-		SourceSelectionService newService = new RendererSelectionService(rendererContext, renderer, provider);
-		newService.addSelectionListener(this);
-		locator.registerService(ISelectionService.class, newService);
+    IEvaluationService parentService = (IEvaluationService) parentLocator.getService(IEvaluationService.class);
+    locator.registerService(IEvaluationService.class, parentService);
+    parentService.addSourceProvider(newService);
+    locator.registerService(ISourceProvider.class, newService);
 
-		IEvaluationService parentService = (IEvaluationService) parentLocator.getService(IEvaluationService.class);
-		locator.registerService(IEvaluationService.class, parentService);
-		parentService.addSourceProvider(newService);
-		locator.registerService(ISourceProvider.class, newService);
+    IHandlerService handlerService = new SlavePopulatorHandlerService(
+        (IHandlerService) parentLocator.getService(IHandlerService.class), locator);
+    locator.registerService(IHandlerService.class, handlerService);
 
-		IHandlerService handlerService = new SlavePopulatorHandlerService(
-				(IHandlerService) parentLocator.getService(IHandlerService.class), locator);
-		locator.registerService(IHandlerService.class, handlerService);
+    IMenuService menuService = (IMenuService) parentLocator.getService(IMenuService.class);
+    menuService = new SlavePopulatorMenuService((IMenuService) menuService, locator, null);
+    locator.registerService(IMenuService.class, menuService);
+    menuService.populateContributionManager(contributionManager, location);
+    selectionChanged(null, StructuredSelection.EMPTY);
+  }
+  
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+    contributionManager.update(true);
+    for (IContributionItem item : contributionManager.getItems()) {
+      item.isEnabled();
+    }
+  }
 
-		IMenuService menuService = (IMenuService) parentLocator.getService(IMenuService.class);
-		menuService = new SlavePopulatorMenuService((IMenuService) menuService, locator, null);
-		locator.registerService(IMenuService.class, menuService);
-		menuService.populateContributionManager(contributionManager, location);
-		selectionChanged(null, StructuredSelection.EMPTY);
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void update(PropertyChangedEvent event) {
+    ISelectionService service = (ISelectionService) locator.getService(ISelectionService.class);
+    ISelectionChangedListener sChanged = (ISelectionChangedListener) service;
+    sChanged.selectionChanged(new SelectionChangedEvent(provider, provider.getSelection()));
+  }
 
-		rendererContext.getPropertyContext().registerListener(this);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-		contributionManager.update(true);
-		for (IContributionItem item : contributionManager.getItems()) {
-			item.isEnabled();
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void update(PropertyChangedEvent event) {
-		ISelectionService service = (ISelectionService) locator.getService(ISelectionService.class);
-		ISelectionChangedListener sChanged = (ISelectionChangedListener) service;
-		sChanged.selectionChanged(new SelectionChangedEvent(provider, provider.getSelection()));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void dispose() {
-		if ((parent != null) && (locator != null)) {
-			ISourceProvider provider = (ISourceProvider) locator.getService(ISourceProvider.class);
-			IEvaluationService parentService = (IEvaluationService) parent.getService(IEvaluationService.class);
-			if (provider != null) {
-				parentService.removeSourceProvider(provider);
-			}
-		}
-	}
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void dispose() {
+    if ((parent != null) && (locator != null)) {
+      ISourceProvider provider = (ISourceProvider) locator.getService(ISourceProvider.class);
+      IEvaluationService parentService = (IEvaluationService) parent.getService(IEvaluationService.class);
+      if (provider != null) {
+        parentService.removeSourceProvider(provider);
+      }
+    }
+  }
 }

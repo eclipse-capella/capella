@@ -111,7 +111,7 @@ public class SelectListRenderer extends AbstractRenderer {
       popupPopulator =
           new ToolbarPopulator(popupManager, getPopupLocation(), rendererContext, this, getViewer().getClientViewer(), PlatformUI.getWorkbench()
               .getActiveWorkbenchWindow());
-      ContextInjectionFactory.inject(toolbarPopulator, context);
+      ContextInjectionFactory.inject(popupPopulator, context);
       popupPopulator.populate();
 
       // Register the contextMenu on the view
@@ -397,8 +397,8 @@ public class SelectListRenderer extends AbstractRenderer {
        */
       public void selectionChanged(SelectionChangedEvent event) {
         // Handle the selection itself.
-    	  selection = (IStructuredSelection) event.getSelection();
-    	  selectionChange(selection, context);
+        selection = (IStructuredSelection) event.getSelection();
+        selectionChange(selection, context);
       }
     };
 

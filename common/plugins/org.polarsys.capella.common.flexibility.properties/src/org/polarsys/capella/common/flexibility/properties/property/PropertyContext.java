@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.polarsys.capella.common.flexibility.properties.PropertyChangeListener;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangedEvent;
@@ -30,45 +31,64 @@ import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContex
  */
 public class PropertyContext implements IPropertyContext {
 
+  /**
+   * This is the key to register a listener which is not mapped to a property.
+   */
+  private static final String GLOBAL_LISTENER = "global_listener";
+
+  Object source;
+  boolean shouldNotify;
+
   IProperties properties;
-
-  Object _source;
-
   HashMap<IProperty, Object> propertyValues;
-
-  Collection<PropertyChangeListener> listeners = new LinkedList<PropertyChangeListener>();
+  Map<String, LinkedList<PropertyChangeListener>> listenersMap;
 
   public PropertyContext(IProperties properties) {
     this.properties = properties;
-    propertyValues = new HashMap<IProperty, Object>();
     shouldNotify = true;
+    propertyValues = new HashMap<IProperty, Object>();
+    listenersMap = new HashMap<String, LinkedList<PropertyChangeListener>>();
   }
 
   public PropertyContext(IProperties properties, Object source) {
     this(properties);
-    _source = source;
+    this.source = source;
   }
 
   public Object getSource() {
-    return _source;
+    return source;
   }
 
   public void setSource(Object source) {
-    _source = source;
+    this.source = source;
     propertyValues.clear();
 
-    for (IProperty pro : getProperties().getAllItems()) {
-      notifyListeners(pro);
+    for (IProperty property : getProperties().getAllItems()) {
+      notifyListeners(property);
     }
   }
-
-  boolean shouldNotify;
 
   public void notifyListeners(IProperty property) {
 
     PropertyChangedEvent event = new PropertyChangedEvent(property, this);
 
-    for (PropertyChangeListener listener : listeners) {
+    // Temporary listeners list
+    List<PropertyChangeListener> propertyChangeListener = new LinkedList<PropertyChangeListener>();
+
+    // Get the listeners of the property
+    LinkedList<PropertyChangeListener> propetyListeners = listenersMap.get(property.getId());
+    if (propetyListeners != null) {
+      propertyChangeListener.addAll(propetyListeners);
+    }
+
+    // Get the global listeners
+    LinkedList<PropertyChangeListener> globalListeners = listenersMap.get(GLOBAL_LISTENER);
+    if (globalListeners != null) {
+      propertyChangeListener.addAll(globalListeners);
+    }
+
+    // Notify listeners
+    for (PropertyChangeListener listener : propertyChangeListener) {
       listener.update(event);
     }
 
@@ -95,10 +115,6 @@ public class PropertyContext implements IPropertyContext {
     for (IProperty prop : updated) {
       notifyListeners(prop);
     }
-  }
-
-  public void registerListener(PropertyChangeListener listener) {
-    listeners.add(listener);
   }
 
   /**
@@ -195,25 +211,39 @@ public class PropertyContext implements IPropertyContext {
         }
       }
     }
-
   }
 
   /**
    * {@inheritDoc}
    */
   public void unregisterListener(PropertyChangeListener listener) {
-    listeners.remove(listener);
+    for(List<PropertyChangeListener> listenersList : listenersMap.values()){
+        listenersList.remove(listener);
+    }
   }
 
   public Collection<Object> getSourceAsList() {
     return getSourceAsList(null);
   }
 
+  public void registerListener(PropertyChangeListener listener) {
+    registerListener(GLOBAL_LISTENER, listener);
+  }
+
   /**
    * {@inheritDoc}
    */
   public void registerListener(PropertyChangeListener listener, IProperty property) {
-    registerListener(listener);
+    registerListener(property.getId(), listener);
+  }
+
+  private void registerListener(String id, PropertyChangeListener listener) {
+    LinkedList<PropertyChangeListener> listenersList = listenersMap.get(id);
+    if(listenersList == null){
+      listenersList = new LinkedList<PropertyChangeListener>();
+      listenersMap.put(id, listenersList);
+    }
+    listenersList.add(listener);
   }
 
   /**
@@ -235,5 +265,4 @@ public class PropertyContext implements IPropertyContext {
     }
     return sources;
   }
-
 }
