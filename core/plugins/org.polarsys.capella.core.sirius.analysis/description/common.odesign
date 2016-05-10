@@ -4037,152 +4037,89 @@
               </style>
             </conditionnalStyles>
           </borderedNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </style>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;System&quot;) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;Entity&quot;) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;Entity&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;Entity&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;LogicalComponent&quot;) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;LogicalComponent&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;LogicalComponent&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (current.filter(&quot;AbstractActor&quot;).nSize() > 0) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (current.filter(&quot;AbstractActor&quot;).nSize() > 0) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (current.filter(&quot;AbstractActor&quot;).nSize() > 0) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (filter(&quot;ConfigurationItem&quot;).nSize() > 0) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (filter(&quot;ConfigurationItem&quot;).nSize() > 0) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (filter(&quot;ConfigurationItem&quot;).nSize() > 0) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;NODE&quot;) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
               <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;NODE&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
               <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;NODE&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
               <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;BEHAVIOR&quot;) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;BEHAVIOR&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;BEHAVIOR&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
         </containerMappings>
         <containerMappings name="CCDI_ExchangeItem" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" createElements="false" domainClass="ExchangeItem" childrenPresentation="List">
@@ -5596,161 +5533,89 @@
               </style>
             </conditionnalStyles>
           </borderedNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </style>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;System&quot;) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;Entity&quot;) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;Entity&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;Entity&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;LogicalComponent&quot;) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;LogicalComponent&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;LogicalComponent&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (current.filter(&quot;AbstractActor&quot;).nSize() > 0) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (current.filter(&quot;AbstractActor&quot;).nSize() > 0) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (current.filter(&quot;AbstractActor&quot;).nSize() > 0) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (filter(&quot;ConfigurationItem&quot;).nSize() > 0) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (filter(&quot;ConfigurationItem&quot;).nSize() > 0) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (filter(&quot;ConfigurationItem&quot;).nSize() > 0) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;NODE&quot;) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Class_Border_Brown']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
               <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;NODE&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Class_Border_Brown']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
+              <labelFormat>bold</labelFormat>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;NODE&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Class_Border_Brown']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
+              <labelFormat>bold</labelFormat>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;BEHAVIOR&quot;) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;BEHAVIOR&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;BEHAVIOR&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
         </containerMappings>
         <toolSections name="External Interfaces">
@@ -7257,164 +7122,89 @@
               </style>
             </conditionnalStyles>
           </borderedNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </style>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;System&quot;) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;Entity&quot;) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;Entity&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;Entity&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;LogicalComponent&quot;) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;LogicalComponent&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;LogicalComponent&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (current.filter(&quot;AbstractActor&quot;).nSize() > 0) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (current.filter(&quot;AbstractActor&quot;).nSize() > 0) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (current.filter(&quot;AbstractActor&quot;).nSize() > 0) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (filter(&quot;ConfigurationItem&quot;).nSize() > 0) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (filter(&quot;ConfigurationItem&quot;).nSize() > 0) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (filter(&quot;ConfigurationItem&quot;).nSize() > 0) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;NODE&quot;) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Class_Border_Brown']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
               <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;NODE&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Class_Border_Brown']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
+              <labelFormat>bold</labelFormat>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;NODE&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Class_Border_Brown']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
+              <labelFormat>bold</labelFormat>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;BEHAVIOR&quot;) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;BEHAVIOR&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;BEHAVIOR&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
         </containerMappings>
         <toolSections name="Internal Interfaces">
@@ -8894,168 +8684,89 @@
               </style>
             </conditionnalStyles>
           </borderedNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </style>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;System&quot;) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;Entity&quot;) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;Entity&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;Entity&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;LogicalComponent&quot;) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;LogicalComponent&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;LogicalComponent&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (current.filter(&quot;AbstractActor&quot;).nSize() > 0) &amp;&amp; (current == $container) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (current.filter(&quot;AbstractActor&quot;).nSize() > 0) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (current.filter(&quot;AbstractActor&quot;).nSize() > 0) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (filter(&quot;ConfigurationItem&quot;).nSize() > 0) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (filter(&quot;ConfigurationItem&quot;).nSize() > 0) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (filter(&quot;ConfigurationItem&quot;).nSize() > 0) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;NODE&quot;) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
               <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;NODE&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
+              <labelFormat>bold</labelFormat>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;NODE&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
+              <labelFormat>bold</labelFormat>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;BEHAVIOR&quot;) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;BEHAVIOR&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (nature == &quot;BEHAVIOR&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (current == $container)%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (isAbstract==false) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (isAbstract==true) %>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
         </containerMappings>
         <containerMappings name="IDB_ExchangeItem" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" createElements="false" documentation="domainClass is AbstractNamedElement since Dnd check if domainClass is compatible" domainClass="ExchangeItem" childrenPresentation="List">
@@ -12750,24 +12461,16 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%representedInstance.abstractType.filter(&quot;AbstractActor&quot;).nSize > 0%>">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%representedInstance.abstractType.filter(&quot;Component&quot;).nSize > 0 &amp;&amp; isNodeComponent() %>">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Class_Border_Brown']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%representedInstance.abstractType.filter(&quot;Component&quot;).nSize > 0 &amp;&amp; ! isInternalLCForInstanceRole () %>">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%representedInstance.abstractType.filter(&quot;Component&quot;).nSize > 0 &amp;&amp; isInternalLCForInstanceRole () %>">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
         </nodeMappings>
         <nodeMappings xsi:type="description_2:InstanceRoleMapping" name="hideSequenceLabel" semanticCandidatesExpression="ocl:Set {}" domainClass="EObject"/>
@@ -14813,18 +14516,16 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%representedInstance.abstractType.filter(&quot;Component&quot;).nSize > 0 &amp;&amp; isNodeComponent() %>">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Class_Border_Brown']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%representedInstance.abstractType.filter(&quot;AbstractActor&quot;).nSize > 0%>">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%representedInstance.abstractType.filter(&quot;Component&quot;).nSize > 0 &amp;&amp; ! isInternalLCForInstanceRole () %>">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%representedInstance.abstractType.filter(&quot;Component&quot;).nSize > 0 &amp;&amp; isInternalLCForInstanceRole () %>">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
         </nodeMappings>
         <nodeMappings xsi:type="description_2:InstanceRoleMapping" name="hideSequenceLabelDF" semanticCandidatesExpression="ocl:Set {}" domainClass="EObject">
@@ -18247,13 +17948,18 @@
     <entries xsi:type="description:UserFixedColor" red="150" green="177" blue="218" name="_CAP_Component_Blue"/>
     <entries xsi:type="description:UserFixedColor" red="195" green="230" blue="255" name="_CAP_Component_Blue_min"/>
     <entries xsi:type="description:UserFixedColor" red="74" green="74" blue="151" name="_CAP_Component_Border_Blue"/>
+    <entries xsi:type="description:UserFixedColor" red="74" green="74" blue="151" name="_CAP_Component_Label_Blue"/>
     <entries xsi:type="description:UserFixedColor" red="197" green="255" blue="166" name="_CAP_xDFB_Function_Green"/>
     <entries xsi:type="description:UserFixedColor" red="244" green="255" blue="224" name="_CAP_xDFB_Function_Green_min"/>
     <entries xsi:type="description:UserFixedColor" red="9" green="92" blue="46" name="_CAP_Function_Border_Green"/>
     <entries xsi:type="description:UserFixedColor" red="198" green="230" blue="255" name="_CAP_Actor_Blue"/>
     <entries xsi:type="description:UserFixedColor" red="218" green="253" blue="255" name="_CAP_Actor_Blue_min"/>
+    <entries xsi:type="description:UserFixedColor" red="74" green="74" blue="151" name="_CAP_Actor_Border_Blue"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_Actor_Blue_label"/>
     <entries xsi:type="description:UserFixedColor" red="255" green="252" blue="183" name="_CAP_Node_Yellow"/>
     <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="220" name="_CAP_Node_Yellow_min"/>
+    <entries xsi:type="description:UserFixedColor" red="123" green="105" blue="79" name="_CAP_Node_Yellow_Border"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_Node_Yellow_Label"/>
     <entries xsi:type="description:UserFixedColor" red="255" green="244" blue="119" name="_CAP_PhysicalPort_Yellow"/>
     <entries xsi:type="description:UserFixedColor" red="197" green="255" blue="166" name="_CAP_xAB_Function_Green"/>
     <entries xsi:type="description:UserFixedColor" red="240" green="221" blue="221" name="_CAP_Interface_Pink"/>
@@ -18269,7 +17975,11 @@
     <entries xsi:type="description:UserFixedColor" red="247" green="218" blue="116" name="_CAP_Activity_Orange"/>
     <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="197" name="_CAP_Activity_Orange_min"/>
     <entries xsi:type="description:UserFixedColor" red="91" green="64" blue="64" name="_CAP_Activity_Border_Orange"/>
+    <entries xsi:type="description:UserFixedColor" red="91" green="64" blue="64" name="_CAP_Activity_Label_Orange"/>
     <entries xsi:type="description:UserFixedColor" red="221" green="221" blue="200" name="_CAP_Entity_Gray"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="255" name="_CAP_Entity_Gray_min"/>
+    <entries xsi:type="description:UserFixedColor" red="69" green="69" blue="69" name="_CAP_Entity_Gray_border"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_Entity_Gray_label"/>
     <entries xsi:type="description:UserFixedColor" red="124" green="61" blue="61" name="_CAP_Interface_Border_Reddish"/>
     <entries xsi:type="description:UserFixedColor" red="250" green="250" blue="250" name="_CAP_InterfaceDataPackage_LightGray"/>
     <entries xsi:type="description:UserFixedColor" red="246" green="235" blue="235" name="_CAP_ExchangeItem_Pinkkish"/>
@@ -18277,6 +17987,7 @@
     <entries xsi:type="description:UserFixedColor" red="203" green="174" blue="200" name="_CAP_OperationalRole_Purple"/>
     <entries xsi:type="description:UserFixedColor" red="242" green="242" blue="242" name="_CAP_CombinedFragment_Gray"/>
     <entries xsi:type="description:UserFixedColor" red="242" green="238" blue="225" name="_CAP_ConfigurationItem_Gray"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="255" name="_CAP_ConfigurationItem_Gray_min"/>
     <entries xsi:type="description:UserFixedColor" red="148" green="199" blue="97" name="_CAP_FCinFCD_Green"/>
   </userColorsPalettes>
 </description:Group>
