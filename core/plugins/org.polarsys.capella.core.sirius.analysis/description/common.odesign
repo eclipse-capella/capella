@@ -60,7 +60,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%filter(&quot;ChoicePseudoState&quot;).nSize() > 0 &amp;&amp; isReferencedState ($view.eContainer.target)%>">
-            <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color2']" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW" widthComputationExpression="5" heightComputationExpression="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color9']">
+            <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ChoicePseudoState_Border_Gray']" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW" widthComputationExpression="5" heightComputationExpression="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ChoicePseudoState_Color']">
               <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -94,7 +94,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%filter(&quot;ChoicePseudoState&quot;).nSize() > 0%>">
-            <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color2']" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW" widthComputationExpression="5" heightComputationExpression="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color9']">
+            <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ChoicePseudoState_Border_Gray']" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW" widthComputationExpression="5" heightComputationExpression="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ChoicePseudoState_Color']">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
@@ -142,7 +142,7 @@
           </conditionnalStyles>
         </nodeMappings>
         <edgeMappings name="SM_Transition" label="" preconditionExpression="&lt;%  mustDisplayTransition ($sourceView, $targetView) %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;% self() %>" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@subNodeMappings[name='SM_InnerModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@subContainerMappings[name='SM_InnerModeState_Container'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_ExitPoint']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@subNodeMappings[name='SM_InnerModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@subContainerMappings[name='SM_InnerModeState_Container'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_ExitPoint']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="StateTransition" useDomainElement="true" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20source%20transition'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20target%20transition']">
-          <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" centeredSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_ExitPoint']" centeredTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_ExitPoint']">
+          <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_StateTransition_Color']" centeredSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_ExitPoint']" centeredTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_ExitPoint']">
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%getStateTransitionLabel()%>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
@@ -176,7 +176,7 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%filter(&quot;ChoicePseudoState&quot;).nSize() > 0 &amp;&amp; isReferencedState ($view.eContainer.target)%>">
-              <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color2']" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW" widthComputationExpression="5" heightComputationExpression="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color9']">
+              <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ChoicePseudoState_Border_Gray']" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW" widthComputationExpression="5" heightComputationExpression="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ChoicePseudoState_Color']">
                 <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
@@ -210,7 +210,7 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%filter(&quot;ChoicePseudoState&quot;).nSize() > 0%>">
-              <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color2']" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW" widthComputationExpression="5" heightComputationExpression="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color9']">
+              <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ChoicePseudoState_Border_Gray']" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW" widthComputationExpression="5" heightComputationExpression="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ChoicePseudoState_Color']">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
@@ -246,9 +246,10 @@
             </conditionnalStyles>
           </subNodeMappings>
           <subContainerMappings name="SM_InnerModeState_Container" detailDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Modes%20%26%20States%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Modes%20%26%20States']" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="&lt;% ownedRegions.involvedStates[(filter(&quot;Mode&quot;) + filter(&quot;State&quot;)).nSize() > 0 &amp;&amp;  filter(&quot;FinalState&quot;).nSize() == 0] %>" domainClass="IState" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@borderedNodeMappings[name='ModeState_Activity'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_ExitPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@borderedNodeMappings[name='ModeState_Entry'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@borderedNodeMappings[name='ModeState_Exit']" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20PseudoState%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram']" reusedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@subNodeMappings[name='SM_InnerModeState']" reusedContainerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@subContainerMappings[name='SM_InnerModeState_Container']">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" roundedCorner="true" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color4']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color4']">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" roundedCorner="true" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Mode_Gray']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;%(filter(&quot;Mode&quot;)).nSize() > 0 &amp;&amp; isReferencedState ($view.eContainer.target)%>">
               <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" roundedCorner="true" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Mode_Gray']">
@@ -281,9 +282,10 @@
               </style>
             </conditionnalStyles>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" roundedCorner="true" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color4']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color4']">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" roundedCorner="true" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Mode_Gray']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%(filter(&quot;Mode&quot;)).nSize() > 0 &amp;&amp; isReferencedState ($view.eContainer.target)%>">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" roundedCorner="true" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Mode_Gray']">
@@ -986,7 +988,7 @@
             </endLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (! navigableMembers.nContains(getAssociationSource())) &amp;&amp; (navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -999,7 +1001,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (navigableMembers.nContains(getAssociationSource())) &amp;&amp; (! navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1012,7 +1014,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;ASSOCIATION&quot;)  &amp;&amp; (navigableMembers.nSize() == 2) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="InputArrow">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrow">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1025,7 +1027,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;AGGREGATION&quot;) &amp;&amp;  (navigableMembers.nSize() == 0)  %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" targetArrow="Diamond">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" targetArrow="Diamond">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1038,7 +1040,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%(getAssociationTarget().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;AGGREGATION&quot;) &amp;&amp; (! navigableMembers.nContains(getAssociationSource())) &amp;&amp; (navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" targetArrow="InputArrowWithDiamond">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" targetArrow="InputArrowWithDiamond">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1051,7 +1053,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;AGGREGATION&quot;) &amp;&amp; (navigableMembers.nContains(getAssociationSource())) &amp;&amp; (! navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="InputArrowWithDiamond" targetArrow="NoDecoration">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrowWithDiamond" targetArrow="NoDecoration">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1064,7 +1066,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;AGGREGATION&quot;)  &amp;&amp; (navigableMembers.nSize() == 2) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="InputArrow" targetArrow="InputArrowWithDiamond">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrow" targetArrow="InputArrowWithDiamond">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1077,7 +1079,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;COMPOSITION&quot;) &amp;&amp;  (navigableMembers.nSize() == 0)  %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" targetArrow="Diamond">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" targetArrow="Diamond">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1090,7 +1092,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;COMPOSITION&quot;) &amp;&amp; (! navigableMembers.nContains(getAssociationSource())) &amp;&amp; (navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" targetArrow="InputArrowWithFillDiamond">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" targetArrow="InputArrowWithFillDiamond">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1103,7 +1105,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;COMPOSITION&quot;) &amp;&amp; (navigableMembers.nContains(getAssociationSource())) &amp;&amp; (! navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="InputArrowWithDiamond" targetArrow="FillDiamond">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrowWithDiamond" targetArrow="FillDiamond">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1116,7 +1118,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%  (getAssociationTarget().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;COMPOSITION&quot;)  &amp;&amp; (navigableMembers.nSize() == 2) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="InputArrow" targetArrow="InputArrowWithFillDiamond">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrow" targetArrow="InputArrowWithFillDiamond">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1129,7 +1131,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%  (getAssociationTarget().aggregationKind == &quot;AGGREGATION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp;  (navigableMembers.nSize() == 0)  %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="Diamond" targetArrow="NoDecoration">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="Diamond" targetArrow="NoDecoration">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1142,7 +1144,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%  (getAssociationTarget().aggregationKind == &quot;AGGREGATION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (! navigableMembers.nContains(getAssociationSource())) &amp;&amp; (navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="Diamond">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="Diamond">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1155,7 +1157,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;AGGREGATION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (navigableMembers.nContains(getAssociationSource())) &amp;&amp; (! navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="InputArrowWithDiamond" targetArrow="NoDecoration">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrowWithDiamond" targetArrow="NoDecoration">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1168,7 +1170,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;AGGREGATION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (navigableMembers.nSize() == 2) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="InputArrowWithDiamond">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrowWithDiamond">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1181,7 +1183,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%  (getAssociationTarget().aggregationKind == &quot;COMPOSITION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp;  (navigableMembers.nSize() == 0)  %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="FillDiamond" targetArrow="NoDecoration">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="FillDiamond" targetArrow="NoDecoration">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1194,7 +1196,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;COMPOSITION&quot;)  &amp;&amp; (getAssociationSource().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (! navigableMembers.nContains(getAssociationSource())) &amp;&amp; (navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="FillDiamond">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="FillDiamond">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1207,7 +1209,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;COMPOSITION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (navigableMembers.nContains(getAssociationSource())) &amp;&amp; (! navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="InputArrowWithFillDiamond" targetArrow="NoDecoration">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrowWithFillDiamond" targetArrow="NoDecoration">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1220,7 +1222,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;COMPOSITION&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;ASSOCIATION&quot;) &amp;&amp; (navigableMembers.nSize() == 2) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="InputArrowWithFillDiamond">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrowWithFillDiamond">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1233,7 +1235,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;UNSET&quot;)  &amp;&amp; (getAssociationSource().aggregationKind != &quot;UNSET&quot;) &amp;&amp; (! navigableMembers.nContains(getAssociationSource())) &amp;&amp; (navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1246,7 +1248,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;UNSET&quot;)  &amp;&amp; (getAssociationSource().aggregationKind != &quot;UNSET&quot;) &amp;&amp; (navigableMembers.nContains(getAssociationSource())) &amp;&amp; (! navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="InputArrow" targetArrow="NoDecoration">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrow" targetArrow="NoDecoration">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1259,7 +1261,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;UNSET&quot;)  &amp;&amp; (getAssociationSource().aggregationKind != &quot;UNSET&quot;)  &amp;&amp; (navigableMembers.nSize() == 2) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="InputArrow">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrow">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1272,7 +1274,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind != &quot;UNSET&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;UNSET&quot;) &amp;&amp; (navigableMembers.nContains(getAssociationSource())) &amp;&amp; (! navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="InputArrow" targetArrow="NoDecoration">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrow" targetArrow="NoDecoration">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1285,7 +1287,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind != &quot;UNSET&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;UNSET&quot;)  &amp;&amp; (! navigableMembers.nContains(getAssociationSource())) &amp;&amp; (navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1298,7 +1300,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind != &quot;UNSET&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;UNSET&quot;)  &amp;&amp; (navigableMembers.nSize() == 2) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="InputArrow">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrow">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1311,7 +1313,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;UNSET&quot;)  &amp;&amp; (getAssociationSource().aggregationKind == &quot;UNSET&quot;) &amp;&amp; (! navigableMembers.nContains(getAssociationSource())) &amp;&amp; (navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1324,7 +1326,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;UNSET&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;UNSET&quot;) &amp;&amp; (navigableMembers.nContains(getAssociationSource())) &amp;&amp; (! navigableMembers.nContains(getAssociationTarget())) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="InputArrow" targetArrow="NoDecoration">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrow" targetArrow="NoDecoration">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1337,7 +1339,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% (getAssociationTarget().aggregationKind == &quot;UNSET&quot;) &amp;&amp; (getAssociationSource().aggregationKind == &quot;UNSET&quot;) &amp;&amp; (navigableMembers.nSize() == 2) %>">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" sourceArrow="InputArrow">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrow">
               <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getAssociationBeginRoleLabel(current, getAssociationSource(), $view)%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1672,15 +1674,17 @@
             </conditionnalStyles>
           </subNodeMappings>
           <subNodeMappings name="DT_SubDataValue" preconditionExpression="&lt;%eContainer().isA(&quot;Class&quot;)%>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:ownedDataValues" domainClass="DataValue">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%getDatavalueLabel()%>" labelAlignment="LEFT" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color13']">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%getDatavalueLabel()%>" labelAlignment="LEFT" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;%isAbstract()==true%>">
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%getDatavalueLabel()%>" labelAlignment="LEFT" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color13']">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%getDatavalueLabel()%>" labelAlignment="LEFT" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </conditionnalStyles>
           </subNodeMappings>
@@ -1742,15 +1746,17 @@
         </containerMappings>
         <containerMappings name="DT_Collection" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" domainClass="Collection" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DataValue%20Into%20Class']" reusedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class']/@subNodeMappings[name='DT_Operation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class']/@subNodeMappings[name='DT_SubDataValue']" childrenPresentation="List">
           <subNodeMappings name="DT_SubDataValue" preconditionExpression="&lt;%eContainer().isA(&quot;Collection&quot;)%>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="&lt;%ownedDataValues+ownedMinCard+ownedMaxCard%>" domainClass="DataValue">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%getDatavalueLabel()%>" labelAlignment="LEFT" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color13']">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%getDatavalueLabel()%>" labelAlignment="LEFT" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;%isAbstract()==true%>">
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%getDatavalueLabel()%>" labelAlignment="LEFT" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color13']">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%getDatavalueLabel()%>" labelAlignment="LEFT" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </conditionnalStyles>
           </subNodeMappings>
@@ -12352,11 +12358,7 @@
           <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="default execution" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% self %>" synchronizationLock="true" domainClass="interaction.InstanceRole" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution']/@borderedNodeMappings[name='InteractionState%20Mapping']" startingEndFinderExpression="&lt;% self %>" finishingEndFinderExpression="&lt;% self %>">
             <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="Execution" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% getExecutionsFromInstanceRoleOrParentExecution () %>" synchronizationLock="true" domainClass="interaction.Execution" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution']" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
               <borderedNodeMappings xsi:type="description_2:StateMapping" name="InteractionState Mapping" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% getInteractionStatesOnExecution () %>" domainClass="interaction.StateFragment" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
-                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;% relatedAbstractFunction.name%>" labelPosition="node" resizeKind="NSEW" width="10" height="3">
-                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
-                </style>
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" showIcon="false" labelExpression="&lt;% relatedAbstractFunction.name%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
                 <conditionnalStyles predicateExpression="&lt;% relatedAbstractState != null &amp;&amp; relatedAbstractState.filter(&quot;Mode&quot;).nSize() > 0 %>">
                   <style xsi:type="style:EllipseNodeDescription" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_StateMode_Border_Gray']" showIcon="false" labelExpression="&lt;% relatedAbstractState.name %>" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Mode_Gray']" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="3">
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -12368,38 +12370,33 @@
                   </style>
                 </conditionnalStyles>
                 <conditionnalStyles predicateExpression="&lt;% relatedAbstractFunction != null &amp;&amp; relatedAbstractFunction.kind == &quot;DUPLICATE&quot; %>">
-                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xBD_ControlNode']">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <color xsi:type="description:UserFixedColor" href="context.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color_controlNode']"/>
                   </style>
                 </conditionnalStyles>
                 <conditionnalStyles predicateExpression="&lt;% relatedAbstractFunction != null &amp;&amp; relatedAbstractFunction.kind == &quot;GATHER&quot; %>">
-                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xBD_ControlNode']">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <color xsi:type="description:UserFixedColor" href="context.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color_controlNode']"/>
                   </style>
                 </conditionnalStyles>
                 <conditionnalStyles predicateExpression="&lt;% relatedAbstractFunction != null &amp;&amp; relatedAbstractFunction.kind == &quot;ROUTE&quot; %>">
-                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_ROUTE.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_ROUTE.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xBD_ControlNode']">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <color xsi:type="description:UserFixedColor" href="context.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color_controlNode']"/>
                   </style>
                 </conditionnalStyles>
                 <conditionnalStyles predicateExpression="&lt;% relatedAbstractFunction != null &amp;&amp; relatedAbstractFunction.kind == &quot;SELECT&quot; %>">
-                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xBD_ControlNode']">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <color xsi:type="description:UserFixedColor" href="context.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color_controlNode']"/>
                   </style>
                 </conditionnalStyles>
                 <conditionnalStyles predicateExpression="&lt;% relatedAbstractFunction != null &amp;&amp; relatedAbstractFunction.kind == &quot;SPLIT&quot; %>">
-                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xBD_ControlNode']">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <color xsi:type="description:UserFixedColor" href="context.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color_controlNode']"/>
                   </style>
                 </conditionnalStyles>
               </borderedNodeMappings>
@@ -14418,7 +14415,7 @@
           <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="default execution DF" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% self %>" synchronizationLock="true" domainClass="interaction.InstanceRole" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF']/@borderedNodeMappings[name='InteractionStateFunction']" startingEndFinderExpression="&lt;% self %>" finishingEndFinderExpression="&lt;% self %>">
             <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="Execution DF" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% getExecutionsFromInstanceRoleOrParentExecution () %>" synchronizationLock="true" domainClass="interaction.Execution" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF']" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
               <borderedNodeMappings xsi:type="description_2:StateMapping" name="InteractionStateFunction" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% getInteractionStatesOnExecution () %>" domainClass="interaction.StateFragment" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
-                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']" showIcon="false" labelExpression="&lt;% relatedAbstractFunction.name%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" showIcon="false" labelExpression="&lt;% relatedAbstractFunction.name%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
                 <conditionnalStyles predicateExpression="&lt;% relatedAbstractState != null &amp;&amp; relatedAbstractState.filter(&quot;Mode&quot;).nSize() > 0 %>">
                   <style xsi:type="style:EllipseNodeDescription" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_StateMode_Border_Gray']" showIcon="false" labelExpression="&lt;% relatedAbstractState.name %>" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Mode_Gray']" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="3">
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -14430,38 +14427,33 @@
                   </style>
                 </conditionnalStyles>
                 <conditionnalStyles predicateExpression="&lt;% relatedAbstractFunction != null &amp;&amp; relatedAbstractFunction.kind == &quot;DUPLICATE&quot; %>">
-                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xBD_ControlNode']">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <color xsi:type="description:UserFixedColor" href="context.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color_controlNode']"/>
                   </style>
                 </conditionnalStyles>
                 <conditionnalStyles predicateExpression="&lt;% relatedAbstractFunction != null &amp;&amp; relatedAbstractFunction.kind == &quot;GATHER&quot; %>">
-                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xBD_ControlNode']">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <color xsi:type="description:UserFixedColor" href="context.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color_controlNode']"/>
                   </style>
                 </conditionnalStyles>
                 <conditionnalStyles predicateExpression="&lt;% relatedAbstractFunction != null &amp;&amp; relatedAbstractFunction.kind == &quot;ROUTE&quot; %>">
-                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_ROUTE.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_ROUTE.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xBD_ControlNode']">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <color xsi:type="description:UserFixedColor" href="context.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color_controlNode']"/>
                   </style>
                 </conditionnalStyles>
                 <conditionnalStyles predicateExpression="&lt;% relatedAbstractFunction != null &amp;&amp; relatedAbstractFunction.kind == &quot;SELECT&quot; %>">
-                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xBD_ControlNode']">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <color xsi:type="description:UserFixedColor" href="context.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color_controlNode']"/>
                   </style>
                 </conditionnalStyles>
                 <conditionnalStyles predicateExpression="&lt;% relatedAbstractFunction != null &amp;&amp; relatedAbstractFunction.kind == &quot;SPLIT&quot; %>">
-                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;% relatedAbstractFunction.name%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xBD_ControlNode']">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <color xsi:type="description:UserFixedColor" href="context.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color_controlNode']"/>
                   </style>
                 </conditionnalStyles>
               </borderedNodeMappings>
@@ -14478,7 +14470,7 @@
                 </style>
               </conditionnalStyles>
               <conditionnalStyles predicateExpression="&lt;% isFunctionalExecution () %>">
-                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']" labelExpression="" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']" resizeKind="NSEW" width="1" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" labelExpression="" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" resizeKind="NSEW" width="1" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
               </conditionnalStyles>
               <conditionnalStyles predicateExpression="&lt;%covered.representedInstance.abstractType.filter(&quot;Component&quot;).nSize > 0 &amp;&amp; ! isInternalLCForExecution()  %>">
                 <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" showIcon="false" labelExpression="" resizeKind="NSEW" width="1" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
@@ -16255,18 +16247,16 @@
             <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="Execution FS" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% getExecutionsFromInstanceRoleOrParentExecution () %>" synchronizationLock="true" domainClass="interaction.Execution" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='Execution%20FS']" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
               <borderedNodeMappings xsi:type="description_2:StateMapping" name="InteractionState Mapping FS" semanticCandidatesExpression="&lt;% getInteractionStatesOnExecution () %>" domainClass="interaction.StateFragment" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
                 <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
-                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;% relatedAbstractFunction.name%>" labelPosition="node" resizeKind="NSEW" width="10" height="3">
-                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" showIcon="false" labelExpression="&lt;% relatedAbstractFunction.name%>" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']">
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
                 </style>
                 <conditionnalStyles predicateExpression="&lt;% relatedAbstractState != null &amp;&amp; relatedAbstractState.filter(&quot;Mode&quot;).nSize() > 0 %>">
-                  <style xsi:type="style:EllipseNodeDescription" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color2']" showIcon="false" labelExpression="&lt;% relatedAbstractState.name %>" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Mode_Gray']" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="3">
+                  <style xsi:type="style:EllipseNodeDescription" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_StateMode_Border_Gray']" showIcon="false" labelExpression="&lt;% relatedAbstractState.name %>" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Mode_Gray']" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="3">
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   </style>
                 </conditionnalStyles>
                 <conditionnalStyles predicateExpression="&lt;% relatedAbstractState != null &amp;&amp; relatedAbstractState.filter(&quot;Mode&quot;).nSize() == 0 %>">
-                  <style xsi:type="style:EllipseNodeDescription" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color2']" showIcon="false" labelExpression="&lt;% relatedAbstractState.name %>" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_State_Gray']" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="3">
+                  <style xsi:type="style:EllipseNodeDescription" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_StateMode_Border_Gray']" showIcon="false" labelExpression="&lt;% relatedAbstractState.name %>" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_State_Gray']" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="3">
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   </style>
                 </conditionnalStyles>
@@ -16289,11 +16279,9 @@
                   </style>
                 </conditionnalStyles>
               </borderedNodeMappings>
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']" showIcon="false" labelExpression="" resizeKind="NSEW" width="1" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </style>
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" showIcon="false" labelExpression="" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Label_Green']" resizeKind="NSEW" width="1" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
               <conditionnalStyles predicateExpression="&lt;% covered.representedInstance.filter(&quot;AbstractFunction&quot;).kind == &quot;FUNCTION&quot; %>">
-                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']" showIcon="false" labelExpression="" hideLabelByDefault="true" resizeKind="NSEW" width="1" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']">
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" showIcon="false" labelExpression="" hideLabelByDefault="true" resizeKind="NSEW" width="1" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']">
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
               </conditionnalStyles>
@@ -16316,23 +16304,15 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']">
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          </style>
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Label_Green']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
           <conditionnalStyles predicateExpression="&lt;% representedInstance.componentFunctionalAllocations.block .filter(&quot;AbstractActor&quot;).nSize != 0 %>">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;% !(representedInstance.isControlNode) &amp;&amp; !(representedInstance.isAllLeavesFunctionActorALlocated)%>">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Label_Green']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%representedInstance.isAllLeavesFunctionActorALlocated%>">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
         </nodeMappings>
         <nodeMappings xsi:type="description_2:InstanceRoleMapping" name="hideSequenceLabel FS" semanticCandidatesExpression="ocl:Set {}" domainClass="EObject"/>
@@ -17329,14 +17309,13 @@
       <layout xsi:type="description_1:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="Default" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']">
         <nodeMappings name="FC_AbstractFunction" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']" semanticCandidatesExpression="&lt;%ownedFunctionalChainInvolvements[involved.filter(&quot;AbstractFunction&quot;)]%>" semanticElements="&lt;%current + involved%>" synchronizationLock="true" domainClass="FunctionalChainInvolvement">
-          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']" labelExpression="&lt;%involved.name%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" labelExpression="&lt;%involved.name%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
           <conditionnalStyles predicateExpression="false">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%involved.name%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%involved.name%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xBD_ControlNode']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:UserFixedColor" href="context.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color_controlNode']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="false">
@@ -17388,7 +17367,7 @@
           </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="FC_FunctionalChain" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']" semanticCandidatesExpression="&lt;%ownedFunctionalChainInvolvements[involved.filter(&quot;FunctionalChain&quot;)]%>" semanticElements="&lt;%current + involved%>" synchronizationLock="true" domainClass="FunctionalChainReference">
-          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']" labelExpression="&lt;%involved.name%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_FCinFCD_Green']">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" labelExpression="&lt;%involved.name%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_FCinFCD_Green']">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%involved.isA(&quot;OperationalProcess&quot;)%>">
@@ -17398,8 +17377,8 @@
           </conditionnalStyles>
         </nodeMappings>
         <edgeMappings name="FC_Exchange" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']" semanticCandidatesExpression="&lt;%ownedFunctionalChainInvolvements[involved.filter(&quot;FunctionalExchange&quot;)]%>" semanticElements="&lt;%current + involved%>" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_FunctionalChain']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_FunctionalChain']" targetFinderExpression="&lt;%nextFunctionalChainInvolvements[involved.filter(&quot;AbstractFunction&quot;) || involved.filter(&quot;FunctionalChain&quot;)].nFirst()%>" sourceFinderExpression="&lt;%getPreviousInvolvements()[involved.filter(&quot;AbstractFunction&quot;) || involved.filter(&quot;FunctionalChain&quot;)].nFirst()%>" domainClass="FunctionalChainInvolvement" useDomainElement="true">
-          <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']">
-            <centerLabelStyleDescription labelExpression="&lt;%getFCInvolvmentLabel ($diagram) %>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
+          <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']">
+            <centerLabelStyleDescription labelExpression="&lt;%getFCInvolvmentLabel ($diagram) %>" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%involved.isInOperationalAnalysis()%>">
             <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']">
@@ -17932,26 +17911,18 @@
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.data.information.util.PropertyNamingHelper"/>
   </ownedViewpoints>
   <userColorsPalettes name="Migration Palette">
-    <entries xsi:type="description:UserFixedColor" red="238" green="221" blue="251" name="color1"/>
-    <entries xsi:type="description:UserFixedColor" red="12" green="12" blue="12" name="color2"/>
-    <entries xsi:type="description:UserFixedColor" red="58" green="58" blue="58" name="color3"/>
-    <entries xsi:type="description:UserFixedColor" red="217" green="231" blue="255" name="color4"/>
-    <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="color5"/>
-    <entries xsi:type="description:UserFixedColor" red="128" green="64" blue="0" name="color6"/>
-    <entries xsi:type="description:UserFixedColor" red="152" green="168" blue="191" name="color7"/>
-    <entries xsi:type="description:UserFixedColor" red="192" green="192" blue="192" name="color8"/>
-    <entries xsi:type="description:UserFixedColor" red="168" green="168" blue="168" name="color9"/>
-    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="255" name="color10"/>
-    <entries xsi:type="description:UserFixedColor" red="209" green="160" blue="162" name="color11"/>
-    <entries xsi:type="description:UserFixedColor" red="238" green="220" blue="218" name="color12"/>
-    <entries xsi:type="description:UserFixedColor" red="248" green="248" blue="248" name="color13"/>
     <entries xsi:type="description:UserFixedColor" red="150" green="177" blue="218" name="_CAP_Component_Blue"/>
     <entries xsi:type="description:UserFixedColor" red="195" green="230" blue="255" name="_CAP_Component_Blue_min"/>
     <entries xsi:type="description:UserFixedColor" red="74" green="74" blue="151" name="_CAP_Component_Border_Blue"/>
     <entries xsi:type="description:UserFixedColor" red="74" green="74" blue="151" name="_CAP_Component_Label_Blue"/>
     <entries xsi:type="description:UserFixedColor" red="197" green="255" blue="166" name="_CAP_xDFB_Function_Green"/>
+    <entries xsi:type="description:UserFixedColor" red="77" green="137" blue="20" name="_CAP_xDFB_Function_Border_Green"/>
     <entries xsi:type="description:UserFixedColor" red="244" green="255" blue="224" name="_CAP_xDFB_Function_Green_min"/>
-    <entries xsi:type="description:UserFixedColor" red="9" green="92" blue="46" name="_CAP_Function_Border_Green"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_xDFB_Function_Green_Label"/>
+    <entries xsi:type="description:UserFixedColor" red="9" green="92" blue="46" name="_CAP_xAB_Function_Border_Green"/>
+    <entries xsi:type="description:UserFixedColor" red="197" green="255" blue="166" name="_CAP_xAB_Function_Green"/>
+    <entries xsi:type="description:UserFixedColor" red="9" green="92" blue="46" name="_CAP_xAB_Function_Label_Green"/>
+    <entries xsi:type="description:UserFixedColor" red="223" green="223" blue="223" name="_CAP_xBD_ControlNode"/>
     <entries xsi:type="description:UserFixedColor" red="198" green="230" blue="255" name="_CAP_Actor_Blue"/>
     <entries xsi:type="description:UserFixedColor" red="218" green="253" blue="255" name="_CAP_Actor_Blue_min"/>
     <entries xsi:type="description:UserFixedColor" red="74" green="74" blue="151" name="_CAP_Actor_Border_Blue"/>
@@ -17961,23 +17932,27 @@
     <entries xsi:type="description:UserFixedColor" red="123" green="105" blue="79" name="_CAP_Node_Yellow_Border"/>
     <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_Node_Yellow_Label"/>
     <entries xsi:type="description:UserFixedColor" red="255" green="244" blue="119" name="_CAP_PhysicalPort_Yellow"/>
-    <entries xsi:type="description:UserFixedColor" red="197" green="255" blue="166" name="_CAP_xAB_Function_Green"/>
     <entries xsi:type="description:UserFixedColor" red="240" green="221" blue="221" name="_CAP_Interface_Pink"/>
     <entries xsi:type="description:UserFixedColor" red="232" green="224" blue="210" name="_CAP_Class_Brown"/>
+    <entries xsi:type="description:UserFixedColor" red="123" green="105" blue="79" name="_CAP_Class_Border_Brown"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_Association_Color"/>
     <entries xsi:type="description:UserFixedColor" red="232" green="224" blue="210" name="_CAP_Datatype_LightBrown"/>
     <entries xsi:type="description:UserFixedColor" red="103" green="103" blue="103" name="_CAP_Datatype_Border_Gray"/>
     <entries xsi:type="description:UserFixedColor" red="225" green="223" blue="215" name="_CAP_Datatype_Gray"/>
-    <entries xsi:type="description:UserFixedColor" red="123" green="105" blue="79" name="_CAP_Class_Border_Brown"/>
     <entries xsi:type="description:UserFixedColor" red="254" green="253" blue="250" name="_CAP_Value_LightBrown"/>
     <entries xsi:type="description:UserFixedColor" red="228" green="228" blue="228" name="_CAP_State_Gray"/>
     <entries xsi:type="description:UserFixedColor" red="165" green="182" blue="180" name="_CAP_Mode_Gray"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_StateTransition_Color"/>
     <entries xsi:type="description:UserFixedColor" red="117" green="117" blue="117" name="_CAP_StateMode_Border_Gray"/>
+    <entries xsi:type="description:UserFixedColor" red="168" green="168" blue="168" name="_CAP_ChoicePseudoState_Color"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_ChoicePseudoState_Border_Gray"/>
     <entries xsi:type="description:UserFixedColor" red="247" green="218" blue="116" name="_CAP_Activity_Orange"/>
     <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="197" name="_CAP_Activity_Orange_min"/>
     <entries xsi:type="description:UserFixedColor" red="91" green="64" blue="64" name="_CAP_Activity_Border_Orange"/>
-    <entries xsi:type="description:UserFixedColor" red="91" green="64" blue="64" name="_CAP_Activity_Label_Orange"/>
+    <entries xsi:type="description:UserFixedColor" red="91" green="64" blue="64" name="_CAP_xAB_Activity_Label_Orange"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_xDF_Activity_Label_Orange"/>
     <entries xsi:type="description:UserFixedColor" red="221" green="221" blue="200" name="_CAP_Entity_Gray"/>
-    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="255" name="_CAP_Entity_Gray_min"/>
+    <entries xsi:type="description:UserFixedColor" red="249" green="248" blue="245" name="_CAP_Entity_Gray_min"/>
     <entries xsi:type="description:UserFixedColor" red="69" green="69" blue="69" name="_CAP_Entity_Gray_border"/>
     <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_Entity_Gray_label"/>
     <entries xsi:type="description:UserFixedColor" red="124" green="61" blue="61" name="_CAP_Interface_Border_Reddish"/>
@@ -17987,7 +17962,7 @@
     <entries xsi:type="description:UserFixedColor" red="203" green="174" blue="200" name="_CAP_OperationalRole_Purple"/>
     <entries xsi:type="description:UserFixedColor" red="242" green="242" blue="242" name="_CAP_CombinedFragment_Gray"/>
     <entries xsi:type="description:UserFixedColor" red="242" green="238" blue="225" name="_CAP_ConfigurationItem_Gray"/>
-    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="255" name="_CAP_ConfigurationItem_Gray_min"/>
+    <entries xsi:type="description:UserFixedColor" red="249" green="248" blue="245" name="_CAP_ConfigurationItem_Gray_min"/>
     <entries xsi:type="description:UserFixedColor" red="148" green="199" blue="97" name="_CAP_FCinFCD_Green"/>
   </userColorsPalettes>
 </description:Group>
