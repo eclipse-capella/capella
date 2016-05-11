@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,9 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-
+import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaValidateAction;
 
 /**
@@ -25,8 +27,8 @@ public class CapellaValidateComlineAction extends CapellaValidateAction {
 
   private Resource resourceToValidate;
 
-  public void setSelectedObjects(List<EObject> selectedObjects_) {
-    selectedObjects = selectedObjects_;
+  public void setSelectedObjects(List<EObject> selectedObjects) {
+    this.selectedObjects = selectedObjects;
   }
 
   /**
@@ -34,33 +36,36 @@ public class CapellaValidateComlineAction extends CapellaValidateAction {
    */
   @Override
   public void run() {
-
-    // works fine
-    Diagnostic diagnostic = super.validate(new NullProgressMonitor());
-    handleDiagnostic(diagnostic);
-
+    if(isSetEditingDomain()){
+      // works fine
+      Diagnostic diagnostic = super.validate(new NullProgressMonitor());
+      handleDiagnostic(diagnostic);
+    }
+  }
+  
+  private boolean isSetEditingDomain(){
+    if(domain == null && !selectedObjects.isEmpty()){
+      ExecutionManager executionManager = TransactionHelper.getExecutionManager(selectedObjects);
+      domain = executionManager != null ? executionManager.getEditingDomain() : TransactionUtil.getEditingDomain(selectedObjects.get(0));      
+    }
+    return domain != null;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected void handleDiagnostic(Diagnostic diagnostic_p) {
-    String outputFolder = "";
-    List<?> data = diagnostic_p.getData();
-    String message = diagnostic_p.getMessage();
-
-    // createMarkers
-    for (Diagnostic childDiagnostic : diagnostic_p.getChildren()) {
+  protected void handleDiagnostic(Diagnostic diagnostic) {
+    // Create markers
+    for (Diagnostic childDiagnostic : diagnostic.getChildren()) {
       eclipseResourcesUtil.createMarkers(resourceToValidate, childDiagnostic);
     }
   }
 
   /**
-   * @param airdSemanticModel_p
+   * @param airdSemanticModel
    */
-  public void setResource(Resource airdSemanticModel_p) {
-    resourceToValidate = airdSemanticModel_p;
-
+  public void setResource(Resource airdSemanticModel) {
+    resourceToValidate = airdSemanticModel;
   }
 }
