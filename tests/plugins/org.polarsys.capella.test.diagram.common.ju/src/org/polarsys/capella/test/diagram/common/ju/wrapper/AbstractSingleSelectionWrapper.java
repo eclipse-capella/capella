@@ -65,13 +65,13 @@ public abstract class AbstractSingleSelectionWrapper extends AbstractCommonToolW
     return ret;
   }
 
-  protected void changeCmdContext(Command cmd_p) {
-    Assert.isNotNull(cmd_p);
+  protected void changeCmdContext(Command cmd) {
+    Assert.isNotNull(cmd);
 
     EObject container = (EObject) _arguments.get(ArgumentType.CONTAINER_VIEW);
     EObject semanticContainer = (EObject) _arguments.get(ArgumentType.CONTAINER);
 
-    SiriusCommand vpc = (SiriusCommand) cmd_p;
+    SiriusCommand vpc = (SiriusCommand) cmd;
 
     // On a second hand, we modify the command context
     final IInterpreter interpreter = InterpreterUtil.getInterpreter(semanticContainer);
