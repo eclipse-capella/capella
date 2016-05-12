@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -1077,13 +1077,6 @@
       </command>
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
-            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.FixCustomFeaturesHandler"
-            id="org.polarsys.capella.core.platform.sirius.ui.navigator.fixCustomFeaturesCommand"
-            name="%command.fixCustomFeatures.name"
-            description="%command.fixCustomFeatures.description">
-      </command>
-      <command
-            categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
             defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RefreshDiagramsCommandHandler"
             id="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
             name="%command.refreshDiagrams"
@@ -1164,33 +1157,7 @@
                </with>
             </visibleWhen>
          </command>
-          <command
-               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.fixCustomFeaturesCommand"
-               icon="icons/viewpoint.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.navigator.fixCustomFeatures"
-               label="%command.fixCustomFeatures.name"
-               style="push">
-            <visibleWhen checkEnabled="true">
-               <with variable="activeMenuSelection">
-                  <and>
-                     <iterate>
-                        <and>
-                           <instanceof
-                                 value="org.eclipse.core.resources.IFile">
-                           </instanceof>
-                           <test
-                                 forcePluginActivation="true"
-                                 property="org.eclipse.core.resources.extension"
-                                 value="aird">
-                           </test>
-                        </and>
-                     </iterate>
-                     <count value="1">
-                     </count>
-                  </and>
-               </with>
-            </visibleWhen>
-         </command>
+          
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
                icon="icons/viewpoint.gif"

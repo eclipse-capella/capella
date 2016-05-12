@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -144,6 +144,14 @@
       <migrationContribution
             class="org.polarsys.capella.core.data.migration.contribution.BackupResourceContribution">
       </migrationContribution>
+      
+      
+      <migrationContribution 
+            class="org.polarsys.capella.core.data.migration.capella.HoldingResourceRemovalContribution">
+      </migrationContribution>
+      <migrationContribution 
+            class="org.polarsys.capella.core.data.migration.capella.EOppositeMigrationContribution">
+      </migrationContribution>
    </extension>
    
    
@@ -158,6 +166,7 @@
       <migrationContributor
             class="org.polarsys.capella.core.data.migration.repair.RepairSiriusMigrationContributor">
       </migrationContributor>
+      
    </extension>
    
    
@@ -165,12 +174,9 @@
    <extension
          point="org.polarsys.capella.core.data.migration.migrationContributions">
 
-      <migrationContribution class="org.polarsys.capella.core.data.migration.capella.RPLSuffixContribution" />
-      <migrationContribution class="org.polarsys.capella.core.data.migration.capella.HoldingResourceRemovalContribution" />
-      <migrationContribution class="org.polarsys.capella.core.data.migration.capella.GradientBackgroundColorContribution" />
-      <migrationContribution class="org.polarsys.capella.core.data.migration.capella.StateEventContribution" />
-      <migrationContribution class="org.polarsys.capella.core.data.migration.capella.EOppositeMigrationContribution" />
-
+      <migrationContribution 
+            class="org.polarsys.capella.core.data.migration.aird.FixCustomFeaturesContribution">
+      </migrationContribution>
    </extension>
    
    
