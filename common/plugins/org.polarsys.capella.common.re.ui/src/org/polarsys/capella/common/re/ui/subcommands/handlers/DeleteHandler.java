@@ -20,9 +20,7 @@ import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.handlers.HandlerUtil;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
-import org.polarsys.capella.common.flexibility.wizards.schema.IRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.ui.util.ExecutionEventUtil;
 import org.polarsys.capella.common.re.CatalogElementLink;
@@ -39,18 +37,16 @@ public class DeleteHandler extends SubCommandHandler {
    */
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
-    ISelection selection = HandlerUtil.getCurrentSelection(event);
-    IRenderer renderer = ExecutionEventUtil.getRenderer(event);
+    ISelection selection = getSelection(event);
     IRendererContext context = ExecutionEventUtil.getRendererContext(event);
-
-    Collection<Object> selectiona =
-        ((selection == null) || (selection.isEmpty())) ? context.getPropertyContext().getSourceAsList() : ((IStructuredSelection) selection).toList();
-
-    IProperty property = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE);
-    Collection<EObject> currentValue = (Collection<EObject>) context.getPropertyContext().getCurrentValue(property);
-    delete(currentValue, selectiona);
-    context.getPropertyContext().setCurrentValue(property, currentValue);
-
+    if (selection != null && selection instanceof IStructuredSelection) {
+      Collection<Object> selectiona = ((selection == null) || (selection.isEmpty()))
+          ? context.getPropertyContext().getSourceAsList() : ((IStructuredSelection) selection).toList();
+      IProperty property = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE);
+      Collection<EObject> currentValue = (Collection<EObject>) context.getPropertyContext().getCurrentValue(property);
+      delete(currentValue, selectiona);
+      context.getPropertyContext().setCurrentValue(property, currentValue);
+    }
     return null;
   }
 
@@ -64,46 +60,31 @@ public class DeleteHandler extends SubCommandHandler {
 
   @Override
   public void setEnabled(Object evaluationContext) {
-    Object variable = ((IEvaluationContext) evaluationContext).getDefaultVariable();
-
-    if (!(variable instanceof Collection)) {
+    Collection<Object> selectedObjects = getSelectedObjects((IEvaluationContext) evaluationContext);
+    if (selectedObjects.isEmpty()) {
       setBaseEnabled(false);
     } else {
-      Collection selection = (Collection) variable;
-      if (selection.isEmpty()) {
+      if (selectedObjects.iterator().next() instanceof CatalogElementLink) {
+        setBaseEnabled(true);
+        super.setEnabled(evaluationContext);
+        return;
+      }
+      IRendererContext rendererContext = ExecutionEventUtil.getRendererContext((IEvaluationContext) evaluationContext);
+      if (rendererContext == null) {
         setBaseEnabled(false);
       } else {
-        if (selection.iterator().next() instanceof CatalogElementLink) {
+        IContext context = (IContext) rendererContext.getPropertyContext().getSource();
+        Collection scopeElements = (Collection) rendererContext.getPropertyContext().getCurrentValue(
+            rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
 
-          setBaseEnabled(true);
-          super.setEnabled(evaluationContext);
-          return;
-
-        }
-
-        IRendererContext rendererContext = ExecutionEventUtil.getRendererContext((IEvaluationContext) evaluationContext);
-        if (rendererContext == null) {
-
-          setBaseEnabled(false);
-        } else {
-
-          IContext context = (IContext) rendererContext.getPropertyContext().getSource();
-          Collection scopeElements =
-              (Collection) rendererContext.getPropertyContext().getCurrentValue(
-                  rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
-
-          Collection<Object> values = new HashSet<Object>(selection);
-          if (values != null) {
-            if (scopeElements != null) {
-              values.removeAll(scopeElements);
-            }
-            setBaseEnabled(values.isEmpty());
+        Collection<Object> values = new HashSet<Object>(selectedObjects);
+        if (values != null) {
+          if (scopeElements != null) {
+            values.removeAll(scopeElements);
           }
+          setBaseEnabled(values.isEmpty());
         }
-
       }
     }
-
-    super.setEnabled(evaluationContext);
   }
 }

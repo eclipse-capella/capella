@@ -13,9 +13,9 @@ package org.polarsys.capella.common.flexibility.wizards.ui.util;
 
 import javax.inject.Inject;
 
+import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.jface.action.ContributionManager;
-import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -24,6 +24,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.ISourceProvider;
+import org.eclipse.ui.ISources;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.internal.services.ServiceLocator;
@@ -98,10 +99,9 @@ public class ToolbarPopulator implements ISelectionListener, PropertyChangeListe
         (IHandlerService) parentLocator.getService(IHandlerService.class), locator);
     locator.registerService(IHandlerService.class, handlerService);
 
-    IMenuService menuService = (IMenuService) parentLocator.getService(IMenuService.class);
-    menuService = new SlavePopulatorMenuService((IMenuService) menuService, locator, null);
-    locator.registerService(IMenuService.class, menuService);
-    menuService.populateContributionManager(contributionManager, location);
+    IMenuService  menuService = parentLocator.getService(IMenuService.class);
+    IMenuService slaveMenuService = new SlavePopulatorMenuService((IMenuService) menuService, locator, null);
+    slaveMenuService.populateContributionManager(contributionManager, location);
     selectionChanged(null, StructuredSelection.EMPTY);
   }
   
@@ -110,9 +110,15 @@ public class ToolbarPopulator implements ISelectionListener, PropertyChangeListe
    */
   @Override
   public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-    contributionManager.update(true);
-    for (IContributionItem item : contributionManager.getItems()) {
-      item.isEnabled();
+    IEvaluationContext currentState = ((IHandlerService) context.get(IHandlerService.class)).getCurrentState();
+    currentState.addVariable(ISources.ACTIVE_CURRENT_SELECTION_NAME, selection);
+
+    // This is to update the enablement state of the tool items in the toolbar
+    {
+      ISourceProvider provider = (ISourceProvider) locator.getService(ISourceProvider.class);
+      IEvaluationService parentService = (IEvaluationService) this.parent.getService(IEvaluationService.class);
+      parentService.removeSourceProvider(provider);
+      parentService.addSourceProvider(provider);
     }
   }
 

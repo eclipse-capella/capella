@@ -30,9 +30,8 @@ public class BrowseScopeHandler extends SelectionCommandHandler {
    */
   @Override
   public void setEnabled(Object evaluationContext) {
-    Object variable = ((IEvaluationContext) evaluationContext).getDefaultVariable();
-    setBaseEnabled(((variable instanceof Collection) && (!((Collection) variable).isEmpty())));
+    Collection<Object> selectedObjects = getSelectedObjects((IEvaluationContext)evaluationContext);
+    setBaseEnabled(!selectedObjects.isEmpty());
     super.setEnabled(evaluationContext);
   }
-
 }

@@ -47,60 +47,60 @@ public class SelectionCommandHandler extends SubCommandHandler {
    */
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
-    ISelection selection = HandlerUtil.getCurrentSelection(event);
-    IRenderer renderer = ExecutionEventUtil.getRenderer(event);
-    IRendererContext context = ExecutionEventUtil.getRendererContext(event);
-
-    String scope = getScope();
-    String propertyId = scope;
-
-    if ((scope == null) || scope.isEmpty()) {
-      return null;
-    }
-    IProperties delegatedProperties = new PropertiesLoader().getProperties(scope);
-
-    Object source = getPropertySource(selection, context);
-    IPropertyContext delegatedContext = new PropertyContext(delegatedProperties, source);
-
-    final IProperty delegatedProperty = delegatedProperties.getProperty(propertyId);
-
-    IRenderers delegatedRenderers = new RenderersLoader().getRenderers(delegatedContext.getProperties());
-    IRendererContext delegatedRendererContext = new RendererContext(delegatedRenderers, delegatedContext);
-
-    delegatedContext.setCurrentValue(delegatedProperty, delegatedContext.getCurrentValue(delegatedProperty));
-
-    // initialize(selection, renderer, context, delegatedRendererContext, delegatedProperty);
-    // Instantiates and initializes the wizard
-    FlatPropertyWizard wizard = new FlatPropertyWizard(delegatedContext, delegatedRendererContext) {
-
-      @Override
-      protected String getTitle() {
-        return delegatedProperty.getName();
+    ISelection selection = getSelection(event);
+    if(selection != null && selection instanceof IStructuredSelection){
+      IRendererContext context = ExecutionEventUtil.getRendererContext(event);
+      
+      String scope = getScope();
+      String propertyId = scope;
+      
+      if ((scope == null) || scope.isEmpty()) {
+        return null;
       }
-
-      @Override
-      protected String getDescription() {
-        return delegatedProperty.getDescription();
+      IProperties delegatedProperties = new PropertiesLoader().getProperties(scope);
+      
+      Object source = getPropertySource(selection, context);
+      IPropertyContext delegatedContext = new PropertyContext(delegatedProperties, source);
+      
+      final IProperty delegatedProperty = delegatedProperties.getProperty(propertyId);
+      
+      IRenderers delegatedRenderers = new RenderersLoader().getRenderers(delegatedContext.getProperties());
+      IRendererContext delegatedRendererContext = new RendererContext(delegatedRenderers, delegatedContext);
+      
+      delegatedContext.setCurrentValue(delegatedProperty, delegatedContext.getCurrentValue(delegatedProperty));
+      
+      // initialize(selection, renderer, context, delegatedRendererContext, delegatedProperty);
+      // Instantiates and initializes the wizard
+      FlatPropertyWizard wizard = new FlatPropertyWizard(delegatedContext, delegatedRendererContext) {
+        
+        @Override
+        protected String getTitle() {
+          return delegatedProperty.getName();
+        }
+        
+        @Override
+        protected String getDescription() {
+          return delegatedProperty.getDescription();
+        }
+      };
+      
+      // Instantiates the wizard container with the wizard and opens it
+      PropertyDialog dialog = new PropertyDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), wizard);
+      dialog.setHelpAvailable(false);
+      dialog.create();
+      int result = dialog.open();
+      
+      if (result == Window.OK) {
+        //Store the result of dialog as current value
+        IProperty property = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE);
+        Object currentValue = delegatedContext.getCurrentValue(delegatedProperty);
+        
+        Collection values = (Collection) context.getPropertyContext().getCurrentValue(property);
+        fillValue(values, (Collection) currentValue);
+        
+        context.getPropertyContext().setCurrentValue(property, values);
       }
-    };
-
-    // Instantiates the wizard container with the wizard and opens it
-    PropertyDialog dialog = new PropertyDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), wizard);
-    dialog.setHelpAvailable(false);
-    dialog.create();
-    int result = dialog.open();
-
-    if (result == Window.OK) {
-      //Store the result of dialog as current value
-      IProperty property = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE);
-      Object currentValue = delegatedContext.getCurrentValue(delegatedProperty);
-
-      Collection values = (Collection) context.getPropertyContext().getCurrentValue(property);
-      fillValue(values, (Collection) currentValue);
-
-      context.getPropertyContext().setCurrentValue(property, values);
     }
-
     return null;
   }
 
@@ -132,15 +132,5 @@ public class SelectionCommandHandler extends SubCommandHandler {
    */
   protected String getScope() {
     return "";
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void setEnabled(Object evaluationContext) {
-
-    super.setEnabled(evaluationContext);
-
   }
 }
