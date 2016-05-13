@@ -212,19 +212,19 @@ Not all elements in the design phase of a System have the same maturity (some ar
 
  
 |} 
-Â 
+�
 
  
-Â 
+�
 
  
-Â· '''Related concepts'''
+� '''Related concepts'''
 
  
 Definition in the glossary
 
  
-Â·Â '''Related documentation'''
+��'''Related documentation'''
 
  
 Work Instruction â€“ Define Configuration Items

@@ -183,7 +183,7 @@ By default this field in read-only, so that hyperlinks can be navigated. To star
 One or several Property Values related to the current Element. These Property Values might be located right under the current Element or anywhere else in the Model.
 
  
-The &quot;browse&quot; button allows associating an already existing Property Value (not necessarily located under the current Element). The Â«crossÂ» button allows removing the association between the selected Property Value and the current Element. This action does not delete the Property Value itself.
+The &quot;browse&quot; button allows associating an already existing Property Value (not necessarily located under the current Element). The �cross� button allows removing the association between the selected Property Value and the current Element. This action does not delete the Property Value itself.
 
  
 | 
@@ -199,7 +199,7 @@ The &quot;browse&quot; button allows associating an already existing Property Va
 One or several Property Value Groups related to the current Element. These Property Values Group and the Property Values they contain might be located right under the current Element or anywhere else in the Model.
 
  
-The &quot;browse&quot; button allows associating an already existing Property Group (not necessarily located under the current Element). The Â«crossÂ» button allows removing the association between the selected Property Value and the current Element. This action does not delete the Property Value itself.
+The &quot;browse&quot; button allows associating an already existing Property Group (not necessarily located under the current Element). The �cross� button allows removing the association between the selected Property Value and the current Element. This action does not delete the Property Value itself.
 
  
 | 
