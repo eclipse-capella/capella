@@ -229,7 +229,7 @@ public class GuiActions {
   public static void renameModelFile(IFile modelFile, final String newName) {
 
     // Replace default command by a dummy one (we do not want to display the rename dialog)
-    ICommandService commandService = PlatformUI.getWorkbench().getService(ICommandService.class);
+    ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
     Command command = commandService.getCommand("org.eclipse.ltk.ui.refactoring.commands.renameResource");
     command.undefine();
 
