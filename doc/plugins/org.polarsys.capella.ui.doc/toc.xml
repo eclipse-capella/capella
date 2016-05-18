@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -11,7 +11,263 @@
        Thales - initial API and implementation
 -->
 <toc label="User Interface" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution" sort="true">
-   <topic label="User Interface">
-      <anchor id="contribution"/>
+   <topic label="Overview">
+   <topic href="html/01. Overview/1.1. Introduction to Capella.html" label="Introduction to Capella">
+		<topic href="html/01. Overview/1.1. Introduction to Capella.html#Overview" label="Overview"></topic>
+		<topic href="html/01. Overview/1.1. Introduction to Capella.html#System_and_Software_Architecture_Definition_in_a_Tool" label="System and Software Architecture Definition in a Tool"></topic>
+		<topic href="html/01. Overview/1.1. Introduction to Capella.html#A_Methodological_Guide_in_a_Tool" label="A Methodological Guide in a Tool"></topic>
+	</topic>
+	<topic href="html/01. Overview/1.2. Ecosystem.html" label="Capella Ecosystem">
+		<topic href="html/01. Overview/1.2. Ecosystem.html#Capella_Tool_Suite" label="Capella Tool Suite"></topic>
+	</topic>
+      <anchor id="Overview"/>
+   </topic>
+   <topic label="Workbench Basics">
+   <topic href="html/02. Workbench Basics/2.1. Definitions.html" label="Capella Workbench Concepts">
+		<topic href="html/02. Workbench Basics/2.1. Definitions.html#Resources" label="Resources"></topic>
+		<topic href="html/02. Workbench Basics/2.1. Definitions.html#Projects" label="Projects"></topic>
+		<topic href="html/02. Workbench Basics/2.1. Definitions.html#Workspaces" label="Workspaces"></topic>
+		<topic href="html/02. Workbench Basics/2.1. Definitions.html#Perspectives" label="Perspectives"></topic>
+		<topic href="html/02. Workbench Basics/2.1. Definitions.html#Views" label="Views"></topic>
+		<topic href="html/02. Workbench Basics/2.1. Definitions.html#Editors" label="Editors"></topic>
+	</topic>
+	<topic href="html/02. Workbench Basics/2.2. Understanding the difference between Models Projects and Workspaces.html" label="Understanding the Differences Between Models, Projects and Workspaces">
+		<topic href="html/02. Workbench Basics/2.2. Understanding the difference between Models Projects and Workspaces.html#Capella_Model" label="Capella Model"></topic>
+		<topic href="html/02. Workbench Basics/2.2. Understanding the difference between Models Projects and Workspaces.html#Capella_Project" label="Capella Project"></topic>
+		<topic href="html/02. Workbench Basics/2.2. Understanding the difference between Models Projects and Workspaces.html#Eclipse_Workspace" label="Eclipse Workspace"></topic>
+	</topic>
+      <anchor id="Workbench Basics"/>
+   </topic>
+     <topic label="First steps with Capella">
+     <topic href="html/03. First steps with Capella/3.1. Starting Capella.html" label="Starting Capella"></topic>
+     <topic href="html/03. First steps with Capella/3.2. How to create a new Capella Project.html" label="How to Create a New Capella Project?"></topic>
+     <topic href="html/03. First steps with Capella/3.3. How to import an existing Capella Project.html" label="How to Import an Existing Project in a Workspace?"></topic>
+     <topic href="html/03. First steps with Capella/3.4. How to copy or export a Capella Project.html" label="How to Copy or Export a Capella Project?">
+		<topic href="html/03. First steps with Capella/3.4. How to copy or export a Capella Project.html#Copying_a_Project" label="Copying a Project"></topic>
+		<topic href="html/03. First steps with Capella/3.4. How to copy or export a Capella Project.html#Exporting_a_Capella_Project" label="Exporting a Capella Project"></topic>
+	</topic>
+	<topic href="html/03. First steps with Capella/3.5. How to migrate Capella projects.html" label="How to Migrate Capella Project"></topic>
+	<topic href="html/03. First steps with Capella/3.6. How to detach viewpoints.html" label="How to Detach Viewpoints from Capella Project?">
+		<topic href="html/03. First steps with Capella/3.6. How to detach viewpoints.html#The_Viewpoints_are_Available_and_Installed_in_the_Source_Version" label="The Viewpoints are Available and Installed in the Source Version"></topic>
+		<topic href="html/03. First steps with Capella/3.6. How to detach viewpoints.html#The_viewpoints_are_not_available_and_installed_in_the_source_version" label="The viewpoints are not available and installed in the source version"></topic>
+	</topic>
+	<topic href="html/03. First steps with Capella/3.7. How to rename a Capella Project.html" label="How to rename a Capella Project?"></topic>
+      <anchor id="First steps with Capella"/>
+   </topic>
+     <topic label="User Interface">
+     <topic href="html/04. User Interface/4.01. Capella Perspective.html" label="Capella Perspective Overview"></topic>
+     <topic href="html/04. User Interface/4.02. Tips and Tricks.html" label="Workbench Manipulation - Tips and Tricks">
+		<topic href="html/04. User Interface/4.02. Tips and Tricks.html#Rearranging_Parts" label="Rearranging Parts"></topic>
+		<topic href="html/04. User Interface/4.02. Tips and Tricks.html#Maximizing_and_Minimizing_Parts" label="Maximizing and Minimizing Parts"></topic>
+		<topic href="html/04. User Interface/4.02. Tips and Tricks.html#View_Manipulations" label="View Manipulations"></topic>
+		<topic href="html/04. User Interface/4.02. Tips and Tricks.html#Perspective_Manipulation" label="Perspective Manipulation"></topic>
+	</topic>
+	<topic href="html/04. User Interface/4.03. Activity Browser.html" label="Capella Overview / Activity Browser"></topic>
+	<topic href="html/04. User Interface/4.04. Project Explorer.html" label="Capella Project Explorer">
+		<topic href="html/04. User Interface/4.04. Project Explorer.html#Opening.2C_Visualizing_and_Closing_a_Model" label="Opening, Visualizing and Closing a Model"></topic>
+		<topic href="html/04. User Interface/4.04. Project Explorer.html#Customizing_the_Content_of_the_Project_Explorer" label="Customizing the Content of the Project Explorer"></topic>
+		<topic href="html/04. User Interface/4.04. Project Explorer.html#Commands_of_the_Contextual_Menu" label="Commands of the Contextual Menu"></topic>
+		<topic href="html/04. User Interface/4.04. Project Explorer.html#Synchronization_with_other_Views" label="Synchronization with other Views"></topic>
+		<topic href="html/04. User Interface/4.04. Project Explorer.html#Search_Field" label="Search Field"></topic>
+	</topic>
+	<topic href="html/04. User Interface/4.05. Diagram Editor.html" label="Capella Diagram Editor">
+		<topic href="html/04. User Interface/4.05. Diagram Editor.html#Introduction" label="Introduction"></topic>
+		<topic href="html/04. User Interface/4.05. Diagram Editor.html#Diagram_Palettes" label="Diagram Palettes"></topic>
+		<topic href="html/04. User Interface/4.05. Diagram Editor.html#Diagram_Toolbar" label="Diagram Toolbar"></topic>
+		<topic href="html/04. User Interface/4.05. Diagram Editor.html#Diagram_Element_Toolbar" label="Diagram Element Toolbar"></topic>
+		<topic href="html/04. User Interface/4.05. Diagram Editor.html#Matrixes" label="Matrixes"></topic>
+	</topic>
+	<topic href="html/04. User Interface/4.06. Properties View.html" label="Capella Properties View">
+		<topic href="html/04. User Interface/4.06. Properties View.html#Introduction" label="Introduction"></topic>
+		<topic href="html/04. User Interface/4.06. Properties View.html#Capella_Section_.28Semantic_Properties.29" label="Capella Section (Semantic Properties)"></topic>
+		<topic href="html/04. User Interface/4.06. Properties View.html#Description_Section" label="Description Section"></topic>
+		<topic href="html/04. User Interface/4.06. Properties View.html#Extensions_Section" label="Extensions Section"></topic>
+		<topic href="html/04. User Interface/4.06. Properties View.html#Management_Section" label="Management Section"></topic>
+	</topic>
+	<topic href="html/04. User Interface/4.07. Semantic Browser.html" label="Semantic Browser">
+		<topic href="html/04. User Interface/4.07. Semantic Browser.html#View" label="View"></topic>
+		<topic href="html/04. User Interface/4.07. Semantic Browser.html#Display_Options" label="Display Options"></topic>
+		<topic href="html/04. User Interface/4.07. Semantic Browser.html#Actions" label="Actions"></topic>
+	</topic>
+	<topic href="html/04. User Interface/4.08. Information View.html" label="Information View">
+		<topic href="html/04. User Interface/4.08. Information View.html#Categorization" label="Categorization"></topic>
+		<topic href="html/04. User Interface/4.08. Information View.html#Deleting_Elements" label="Deleting Elements"></topic>
+		<topic href="html/04. User Interface/4.08. Information View.html#Filters" label="Filters"></topic>
+		<topic href="html/04. User Interface/4.08. Information View.html#Export" label="Export"></topic>
+	</topic>
+	<topic href="html/04. User Interface/4.09. Outline.html" label="Outline View"></topic>
+	<topic href="html/04. User Interface/4.10. Change Recorder View.html" label="Change Recorder View"></topic>
+	<topic href="html/04. User Interface/4.11. FastLinker.html" label="Fast Linker View">
+		<topic href="html/04. User Interface/4.11. FastLinker.html#Introduction" label="Introduction"></topic>
+		<topic href="html/04. User Interface/4.11. FastLinker.html#How_to_Put_a_Model_Element_in_the_Fast_Linker.3F" label="How to Put a Model Element in the Fast Linker?"></topic>
+		<topic href="html/04. User Interface/4.11. FastLinker.html#Link_Creation_Procedure" label="Link Creation Procedure"></topic>
+		<topic href="html/04. User Interface/4.11. FastLinker.html#Additional_Features" label="Additional Features"></topic>
+		<topic href="html/04. User Interface/4.11. FastLinker.html#Multiple_Selection" label="Multiple Selection"></topic>
+	</topic>
+      <anchor id="User Interface"/>
+   </topic>
+   <topic label="Diagram Management">
+   <topic href="html/05. Diagram Management/5.1. Diagram concepts.html" label="Diagram Concepts">
+		<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Diagram_Refreshing_Strategies" label="Diagram Refreshing Strategies"></topic>
+		<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Blank_and_Contextual_Diagrams.2C_Contextual_Diagram_Elements" label="Blank and Contextual Diagrams, Contextual Diagram Elements">
+			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Blank_Diagrams" label="Blank Diagrams"></topic>
+			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Contextual_Diagrams" label="Contextual Diagrams"></topic>
+			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Contextual_Diagram_Elements" label="Contextual Diagram Elements"></topic>
+		</topic>
+		<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Layout_Management" label="Layout Management">
+			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Pin_.2F_Unpin_Diagram_Elements" label="Pin / Unpin Diagram Elements"></topic>
+			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Arrange_All_Bordered_Nodes" label="Arrange All Bordered Nodes"></topic>
+		</topic>
+	</topic>
+	<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html" label="Advanced Management of Diagrams">
+		<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html#SYNCHRONIZED_AND_UNSYNCHRONIZED_DIAGRAMS:_AN_EXAMPLE" label="Synchronized and Unsynchronized Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html#Removing_hidden_elements_from_diagrams" label="Removing Hidden Elements from Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html#Example" label="Example"></topic>
+	</topic>
+	<topic href="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html" label="The Diagram Business Copy-Paste">
+		<topic href="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html#Example_of_Logical_Architecture_Diagram" label="Example of Logical Architecture Diagram"></topic>
+		<topic href="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html#Example:_Component_External_Interfaces_Diagram" label="Example: Component External Interfaces Diagram"></topic>
+	</topic>
+	<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html" label="Typology of Capella Diagrams">
+		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#Class_Diagrams" label="Class Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#State_and_Mode_Diagrams" label="State and Mode Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#Breakdown_Diagrams" label="Breakdown Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#Dataflow_Diagrams" label="Dataflow Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#Architecture_Diagrams" label="Architecture Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#Interface_Diagrams" label="Interface Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#Scenarios" label="Scenarios"></topic>
+	</topic>
+	<topic href="html/05. Diagram Management/5.5. Creation of Functional Chains and Physical Paths.html" label="Creation of Functional Chains and Physical Paths">
+		<topic href="html/05. Diagram Management/5.5. Creation of Functional Chains and Physical Paths.html#Functional_Chains_and_Operational_Processes" label="Functional Chains and Operational Processes"></topic>
+		<topic href="html/05. Diagram Management/5.5. Creation of Functional Chains and Physical Paths.html#Physical_Paths" label="Physical Paths"></topic>
+	</topic>
+	<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html" label="Diagrams Tips and Tricks">
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Setting_Default_Style_for_Links:_Oblique_or_Rectilinear" label="Setting Default Style for Links: Oblique or Rectilinear"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Uniform_Distribution_Tools" label="Uniform Distribution Tools"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Reset_Origin" label="Reset Origin"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Select_All" label="Select All"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Auto_Size" label="Auto Size"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Make_Same_Width_.2F_Height" label="Make Same Width / Height"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Grid_Visible" label="Grid Visible"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Snap_to_Grid" label="Snap to Grid"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Snap_to_Shapes" label="Snap to Shapes">
+			<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#snape_to_shapes_with_inner_nodes" label="snape to shapes with inner nodes"></topic>
+		</topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Copy_.2F_Paste_Layout" label="Copy / Paste Layout"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Selection" label="Selection">
+			<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Left_to_right" label="Left to right"></topic>
+			<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Right_to_Left" label="Right to Left"></topic>
+		</topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Copy_Paste_Of_Notes" label="Copy Paste Of Notes"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Create_Several_Elements_in_Row" label="Create Several Elements in Row"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Quick_Search" label="Quick Search"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Export_as_Images" label="Export as Images"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Compound_Move_Of_Edge_With_Label_And_Connected_Ports" label="Compound Move Of Edge With Label And Connected Ports"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Hide_Container_Border" label="Hide Container Border"></topic>
+	</topic>
+	<topic href="html/05. Diagram Management/Allocating Functions on Components.html" label="Allocating Functions on Components">
+    <topic href="html/05. Diagram Management/Allocating Functions on Components.html#Allocating_Leaves_Functions" label="Allocating Leaves Functions">
+    </topic>
+    <topic href="html/05. Diagram Management/Allocating Functions on Components.html#Insert.2FRemove_Allocated_Functions" label="Insert/ Remove Allocated Functions">
+    <topic href="html/05. Diagram Management/Allocating Functions on Components.html#Represent_Allocated_Functions_on_parent_Components" label="Represent Allocated Functions on parent Components">
+    </topic>
+    <topic href="html/05. Diagram Management/Allocating Functions on Components.html#Represent_parent_Functions_allocation" label="Represent parent Functions allocation">
+    </topic>
+    </topic>
+	</topic>
+      <anchor id="Diagram Management"/>
+   </topic>
+    <topic label="Modelling Wizards and Accelerators">
+    <topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html" label="Modeling Accelerators">
+		<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Component_and_Functional_Exchanges" label="Component and Functional Exchanges">
+			<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Illustration" label="Illustration"></topic>
+		</topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Physical_Links_and_Component_Exchanges" label="Physical Links and Component Exchanges">
+			<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Illustration_2" label="Illustration"></topic>
+		</topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Exchange_Item_Propagation_to_Ports" label="Exchange Item Propagation to Ports">
+			<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Illustration_3" label="Illustration"></topic>
+		</topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Port_Realization_According_to_Realizations_Between_Functional_Exchanges" label="Port Realization According to Realizations Between Functional Exchanges">
+			<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Illustration_4" label="Illustration"></topic>
+		</topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Port_Realization_According_to_Realizations_Between_Component_Exchanges" label="Port Realization According to Realizations Between Component Exchanges">
+			<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Illustration_5" label="Illustration"></topic>
+		</topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Synchronization_of_Interface_Use_.2F_Implement_.2F_Provide_.2F_Require_Links" label="Synchronization of Interface Use / Implement / Provide / Require Links">
+			<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Illustration_between_System_Analysis_and_Logical_Architecture" label="Illustration between System Analysis and Logical Architecture"></topic>
+			<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Note_for_the_case_of_a_synchronization_from_Logical_Components_to_Physical_Components" label="Note for the case of a synchronization from Logical Components to Physical Components"></topic>
+		</topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Interface_Generation_from_Allocated_Functions" label="Interface Generation from Allocated Functions">
+			<topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html#Illustration_6" label="Illustration"></topic>
+		</topic>
+	</topic>
+	<topic href="html/07. Modelling Wizards and Accelerators/7.2. Contextual Allocations.html" label="Contextual Allocations">
+		<topic href="html/07. Modelling Wizards and Accelerators/7.2. Contextual Allocations.html#Example:_Allocation_of_Activities_and_Functions_to_Entities.2C_Actors.2C_Components" label="Example: Allocation of Activities and Functions to Entities, Actors, Components"></topic>
+	</topic>
+	<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html" label="Wizards">
+		<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Requirement_Manager" label="Requirement Manager"></topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Generic_Traceability_Wizard" label="Generic Traceability Wizard"></topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Logical_Component_Breakdown_Decomposition_Wizard" label="Logical Component Breakdown Decomposition Wizard">
+			<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Use_case" label="Use case"></topic>
+		</topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Sequence_Message_Creation_Wizard_for_Interface_Scenario" label="Sequence Message Creation Wizard for Interface Scenario">
+			<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Use_case_context" label="Use case context"></topic>
+			<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Reuse_mode" label="Reuse mode"></topic>
+			<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Create_mode" label="Create mode"></topic>
+		</topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Function_Port_and_Exchange_Item_Allocation_Wizard" label="Function Port and Exchange Item Allocation Wizard">
+			<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Principles" label="Principles"></topic>
+			<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Source_Engineering_Phase_.28SEP.29" label="Source Engineering Phase (SEP)"></topic>
+			<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Target_Engineering_Phase_.28TEP.29" label="Target Engineering Phase (TEP)"></topic>
+			<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Features" label="Features"></topic>
+			<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Validation_Rules_and_Resolutions" label="Validation Rules and Resolutions"></topic>
+		</topic>
+	</topic>
+	<topic href="html/07. Modelling Wizards and Accelerators/7.5. Categories Management.html" label="Categories Management">
+		<topic href="html/07. Modelling Wizards and Accelerators/7.5. Categories Management.html#Example:_Creating_a_Component_Exchange_Category_from_a_Selection_of_Component_Exchanges" label="Example: Creating a Component Exchange Category from a Selection of Component Exchanges"></topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.5. Categories Management.html#Example:_Updating_a_Physical_Link_Category_from_a_Selection_of_Physical_Links" label="Example: Updating a Physical Link Category from a Selection of Physical Links"></topic>
+	</topic>
+      <anchor id="Modelling Wizards and Accelerators"/>
+   </topic>
+    <topic label="Model Analysis">
+    <topic href="html/12. Model Analysis/12.1. Model Validation.html" label="Model Validation">
+		<topic href="html/12. Model Analysis/12.1. Model Validation.html#Topology_of_Validation_Rules" label="Topology of Validation Rules">
+			<topic href="html/12. Model Analysis/12.1. Model Validation.html#Structural_conformance_to_core_model" label="Structural conformance to core model"></topic>
+			<topic href="html/12. Model Analysis/12.1. Model Validation.html#Integrity" label="Integrity"></topic>
+			<topic href="html/12. Model Analysis/12.1. Model Validation.html#Quality" label="Quality"></topic>
+			<topic href="html/12. Model Analysis/12.1. Model Validation.html#Design" label="Design"></topic>
+		</topic>
+		<topic href="html/12. Model Analysis/12.1. Model Validation.html#Usage_and_Validation_Scopes" label="Usage and Validation Scopes"></topic>
+		<topic href="html/12. Model Analysis/12.1. Model Validation.html#Validation_Results" label="Validation Results"></topic>
+		<topic href="html/12. Model Analysis/12.1. Model Validation.html#Example_of_Quick_Fix" label="Example of Quick Fix"></topic>
+	</topic>
+	<topic href="html/12. Model Analysis/12.2. Impact Analysis.html" label="Impact Analysis"></topic>
+	<topic href="html/12. Model Analysis/12.3. Metrics Computation.html" label="Metrics Computation"></topic>
+	<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html" label="Progress Monitoring">
+		<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html#Steps_for_Creating_Project-Specific_Progress_Status" label="Steps for Creating Project-Specific Progress Status"></topic>
+		<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html#Setting_Progress_Status_on_Elements" label="Setting Progress Status on Elements">
+			<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html#Propagate_Progress_Status_to_all_Capella_Elements" label="Propagate Progress Status to all Capella Elements"></topic>
+			<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html#Propagate_Progress_Status_to_Sub_Representations" label="Propagate Progress Status to Sub Representations"></topic>
+		</topic>
+		<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html#Clear_Progress_Status_on_Elements" label="Clear Progress Status on Elements"></topic>
+		<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html#Visualization_of_Progress_Monitoring_Information" label="Visualization of Progress Monitoring Information"></topic>
+	</topic>
+      <anchor id="Model Analysis"/>
+   </topic>
+    <topic label="Search and Replace">
+    <topic href="html/20. Search &amp; Replace/20.1. Basic Search and Replace.html" label="Basic Search &amp; Replace">
+		<topic href="html/20. Search &amp; Replace/20.1. Basic Search and Replace.html#Overview" label="Overview"></topic>
+		<topic href="html/20. Search &amp; Replace/20.1. Basic Search and Replace.html#Search_Options" label="Search Options">
+			<topic href="html/20. Search &amp; Replace/20.1. Basic Search and Replace.html#Model_Element_Scope_Options" label="Model Element Scope Options"></topic>
+			<topic href="html/20. Search &amp; Replace/20.1. Basic Search and Replace.html#Find_Pattern_Options" label="Find Pattern Options"></topic>
+			<topic href="html/20. Search &amp; Replace/20.1. Basic Search and Replace.html#Model_Scope_Options" label="Model Scope Options"></topic>
+			<topic href="html/20. Search &amp; Replace/20.1. Basic Search and Replace.html#Replace_Impact_Preview" label="Replace Impact Preview"></topic>
+		</topic>
+		<topic href="html/20. Search &amp; Replace/20.1. Basic Search and Replace.html#Replace_Options" label="Replace Options">
+			<topic href="html/20. Search &amp; Replace/20.1. Basic Search and Replace.html#Update_hyperlinks" label="Update hyperlinks"></topic>
+		</topic>
+	</topic>
+      <anchor id="Search and Replace"/>
    </topic>
 </toc>

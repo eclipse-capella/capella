@@ -52,7 +52,7 @@ Capella projects use by default Workspace preferences.
 <br>
 
  
-[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_m3c126a56.png|674x437px]]
+[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_m3c126a56.png|900x437px]]
 
  
 '''Fig.1:''' Setting Workspace preferences
@@ -73,7 +73,7 @@ Capella projects use by default Workspace preferences.
 Workspace preferences can be exported using the Export wizard. Right click in the Capella Project Explorer and choose ''Export''.
 
  
-[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_658237e5.png|618x540px]]
+[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_658237e5.png|900x540px]]
 
  
 '''Fig.''' Lauching the export wizard
@@ -86,7 +86,7 @@ Workspace preferences can be exported using the Export wizard. Right click in th
 In the export page choose ''Preferences'' and click ''Next.''
 
  
-[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_m427c425e.png|470x550px]]
+[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_m427c425e.png|700x550px]]
 
  
 '''Fig.''' Export Preferences Wizard
@@ -121,7 +121,7 @@ Validation preferences can be exported only if there are different from the defa
 Preferences can be imported using the Import wizard. Right click in the Capella Project Explorer and choose ''Import''.
 
  
-[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_19779b8b.png|604x472px]]
+[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_19779b8b.png|650x300px]]
 
  
 '''Fig.''' Launching the import wizard
@@ -616,7 +616,7 @@ Capella Configuration Projects can be used to externalize preferences settings, 
 Capella Configuration Projects can be created by right clicking in the Capella project explorer and choosing &quot;Capella Configuration Project&quot; menu.
 
  
-[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_271afec5.png|625x469px]]
+[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_271afec5.png|900x400px]]
 
  
 '''Fig.''': Capella Configuration Project creation wizard
@@ -634,7 +634,7 @@ Capella Configuration Project is used to store a specific configuration of prefe
 Referencing a Capella Configuration Project is done by right clicking on a Capella project, choosing ''properties'' and selecting projects to reference in ''Capella Project References'' option.
 
  
-[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_73841760.png|633x442px]]
+[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_73841760.png|900x450px]]
 
  
 '''Fig.''': Referencing Capella Configuration project
