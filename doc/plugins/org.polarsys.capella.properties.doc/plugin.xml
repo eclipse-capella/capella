@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -16,138 +16,6 @@
          point="org.eclipse.help.toc">
       <toc
             file="toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.01. Actor-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.02. Constraint-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.03. DecisionFunction-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.10. FunctionOutputPort-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.11. FunctionalChain-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.12. COTSCI-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.13. FunctionalExchange-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.14. HWCI-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.15. InteractionUse-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.16. InterfaceCI-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.17. JoinFunction-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.18. LogicalActor-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.19. LogicalArchitecture-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.20. LogicalComponent-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.21. LogicalFunction-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.22. MergeFunction-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.23. CSCI-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.24. Mission-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.25. Mode-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.26. NDICI-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.27. OperationalActivity-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.28. OperationalActor-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.29. OperationalAnalysis-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.30. OperationalCapability-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.31. OperationalProcess-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.32. Physical Link-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.33. PhysicalActor-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.34. Capability-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.35. PhysicalArchitecture-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.36. PhysicalComponent-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.37. PhysicalFunction-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.38. PhysicalPath-toc.xml"
-            primary="false">
-      </toc>
-	  <toc
-            file="html/18. Model Editors/18.39. PhysicalPort-toc.xml"
             primary="false">
       </toc>
 	  

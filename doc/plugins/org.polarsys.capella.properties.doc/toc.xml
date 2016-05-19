@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -12,6 +12,39 @@
 -->
 <toc label="Properties" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution" sort="true">
    <topic label="Properties">
+   <topic href="html/18. Model Editors/18.01. Actor.html" label="System Actor Editor"></topic>
+   <topic href="html/18. Model Editors/18.02. Constraint.html" label="Constraint Editor"></topic>
+   <topic href="html/18. Model Editors/18.03. DecisionFunction.html" label="Decision Function Editor"></topic>^
+   <topic href="html/18. Model Editors/18.10. FunctionOutputPort.html" label="Function Output Port Editor"></topic>
+   <topic href="html/18. Model Editors/18.11. FunctionalChain.html" label="Functional Chain Editor"></topic>
+   <topic href="html/18. Model Editors/18.12. COTSCI.html" label="COTS CI Editor"></topic>
+   <topic href="html/18. Model Editors/18.13. FunctionalExchange.html" label="Functional Exchange / Operational Interaction Editor"></topic>
+   <topic href="html/18. Model Editors/18.14. HWCI.html" label="HWCI Editor"></topic>
+   <topic href="html/18. Model Editors/18.15. InteractionUse.html" label="Scenario Reference Editor"></topic>
+   <topic href="html/18. Model Editors/18.16. InterfaceCI.html" label="Interface CI Editor"></topic>
+   <topic href="html/18. Model Editors/18.17. JoinFunction.html" label="Join Function Editor"></topic>
+   <topic href="html/18. Model Editors/18.18. LogicalActor.html" label="Logical Actor Editor"></topic>
+   <topic href="html/18. Model Editors/18.19. LogicalArchitecture.html" label="Logical Architecture Editor"></topic>
+   <topic href="html/18. Model Editors/18.20. LogicalComponent.html" label="Logical Component Editor"></topic>
+   <topic href="html/18. Model Editors/18.21. LogicalFunction.html" label="Logical Function Editor"></topic>
+   <topic href="html/18. Model Editors/18.22. MergeFunction.html" label="Merge Function Editor"></topic>
+   <topic href="html/18. Model Editors/18.23. CSCI.html" label="CSCI Editor"></topic>
+   <topic href="html/18. Model Editors/18.24. Mission.html" label="Mission Editor"></topic>
+   <topic href="html/18. Model Editors/18.25. Mode.html" label="Mode Editor"></topic>
+   <topic href="html/18. Model Editors/18.26. NDICI.html" label="NDI CI Editor"></topic>
+   <topic href="html/18. Model Editors/18.27. OperationalActivity.html" label="Operational Activity Editor"></topic>
+   <topic href="html/18. Model Editors/18.28. OperationalActor.html" label="Operational Actor Editor"></topic>
+   <topic href="html/18. Model Editors/18.29. OperationalAnalysis.html" label="Operational Analysis Editor"></topic>
+   <topic href="html/18. Model Editors/18.30. OperationalCapability.html" label="Operational Capability Editor"></topic>
+   <topic href="html/18. Model Editors/18.31. OperationalProcess.html" label="Operational Process Editor"></topic>
+   <topic href="html/18. Model Editors/18.32. Physical Link.html" label="Physical Link Editor"></topic>
+   <topic href="html/18. Model Editors/18.33. PhysicalActor.html" label="Physical Actor Editor"></topic>
+   <topic href="html/18. Model Editors/18.34. Capability.html" label="System Capability Editor"></topic>
+   <topic href="html/18. Model Editors/18.35. PhysicalArchitecture.html" label="Physical Architecture Editor"></topic>
+   <topic href="html/18. Model Editors/18.36. PhysicalComponent.html" label="Physical Component Editor"></topic>
+   <topic href="html/18. Model Editors/18.37. PhysicalFunction.html" label="Physical Function Editor"></topic>
+   <topic href="html/18. Model Editors/18.38. PhysicalPath.html" label="Physical Path Editor"></topic>
+   <topic href="html/18. Model Editors/18.39. PhysicalPort.html" label="Physical Port Editor"></topic>
       <anchor id="contribution"/>
    </topic>
 </toc>
