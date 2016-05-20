@@ -42,7 +42,7 @@
 	  <resource
 	        domain="AF"
 	        id="org.polarsys.capella.core.viewpoint"
-	        tags="vp, stateReadOnly"
+	        tags="vp, stateReadOnly, stateHidden"
 	        name="Capella viewpoint"
 	        path="/org.polarsys.capella.core.af.integration/model/capella.vp#capella"/>
    </extension>
