@@ -233,6 +233,8 @@
         <featureNames>org.polarsys.kitalpha.emde.source.feature</featureNames>
         <featureNames>org.polarsys.kitalpha.model.detachment.feature</featureNames>
         <featureNames>org.polarsys.kitalpha.model.detachment.source.feature</featureNames>
+        <featureNames>org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature</featureNames>
+        <featureNames>org.polarsys.kitalpha.model.detachment.contrib.viewpoints.source.feature</featureNames>
         <featureNames>org.polarsys.kitalpha.patterns.feature</featureNames>
         <featureNames>org.polarsys.kitalpha.patterns.source.feature</featureNames>
         <featureNames>org.eclipse.emf.diffmerge.sdk.feature</featureNames>
