@@ -13,7 +13,7 @@ Capella provides a mechanism to disable commands categories and user profile man
 The visibility of several commands can be controlled using the commands preferences page.
 
  
-[[Image:Images/6.4.%20Commands%20preferences_html_m67bd7302.png|514x412px]]
+[[Image:Images/6.4.%20Commands%20preferences_html_m67bd7302.png|600x500px]]
 
  
 '''Figure 1''': Preference dialog showing Commands configurability preference page.
@@ -30,7 +30,7 @@ When the user disable one or more commands, displayed on the above dialog, this 
 <br>
 
  
-[[Image:Images/6.4.%20Commands%20preferences_html_509bf49a.png|452x455px]]
+[[Image:Images/6.4.%20Commands%20preferences_html_509bf49a.png|600x500px]]
 
  
 '''Figure 2''': the Functional transition, Data, and Capability was deactivated in the command preference dialog.

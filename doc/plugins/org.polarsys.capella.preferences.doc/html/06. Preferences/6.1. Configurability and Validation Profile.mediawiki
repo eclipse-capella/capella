@@ -574,7 +574,7 @@ Capella 				Project specific preferences will 				'''override''' 				Workspace p
 <br>
 
  
-[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_m5ee4e886.png|642x438px]]
+[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_m5ee4e886.png|800x438px]]
 
  
 '''Fig.2:''' Setting Capella Project specific preferences
@@ -693,13 +693,9 @@ Exported preferences (Validation profiles) can be stored into a Capella Configur
  
 <br>
 <br>
-
- 
 <br>
 <br>
-
- 
-[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_m5d2e3203.png|662x381px]]
+[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_m5d2e3203.png|662x450px]]
 
  
 '''Fig.''': storing exported validation preferences to a Capella Configuration Project
