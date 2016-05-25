@@ -1001,7 +1001,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="MSM_Transition" label="" preconditionExpression="&lt;%  mustDisplayTransition ($sourceView, $targetView) %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;% self() %>" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_ExitPoint']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_ExitPoint']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="StateTransition" useDomainElement="true" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20source%20transition'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20target%20transition']">
+        <edgeMappings name="MSM_Transition" label="" preconditionExpression="&lt;%  mustDisplayTransition ($sourceView, $targetView) %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;% self() %>" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_ExitPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_ExitPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="StateTransition" useDomainElement="true" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20source%20transition'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20target%20transition']">
           <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color5']" centeredSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_ExitPoint']" centeredTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_ExitPoint']">
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%getStateTransitionLabel()%>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1140,13 +1140,13 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Region" name="Region" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Region" name="Region" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']" extraMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize > 0 %>">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% self.eContainer() %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer %>">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
@@ -1492,7 +1492,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Transition between the source and target States or Modes" name="Transition" precondition="&lt;% canCreateTransition($preSource, $preTarget) %>" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@edgeMappings[name='MSM_Transition']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/StateTransition.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Transition between the source and target States or Modes" name="Transition" precondition="&lt;% canCreateTransitionMSM($preSource, $preTarget) %>" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@edgeMappings[name='MSM_Transition']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/StateTransition.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -1502,11 +1502,25 @@
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="StateTransition" referenceName="ownedTransitions" variableName="transition">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression=""/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$transition%>"/>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $source.filter(&quot;Region&quot;).nSize > 0 %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $source.eContainer %>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$transition%>"/>
+                  </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$target%>">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$transition%>"/>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $source.filter(&quot;Region&quot;).nSize == 0 %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$transition%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $target.filter(&quot;Region&quot;).nSize > 0 %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $target.eContainer %>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$transition%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $target.filter(&quot;Region&quot;).nSize == 0 %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$target%>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$transition%>"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1552,7 +1566,7 @@
             </initialOperation>
             <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect source transition" precondition="&lt;% canCreateTransition($target, $element.source) %>" reconnectionKind="RECONNECT_SOURCE">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect source transition" precondition="&lt;% canCreateTransitionMSM($target, $element.source) %>" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -1560,12 +1574,19 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$target%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$element%>"/>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize > 0 %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer %>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$element%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize == 0 %>">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$element%>"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect target transition" precondition="&lt;% canCreateTransition($element.source, $target) %>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect target transition" precondition="&lt;% canCreateTransitionMSM($element.source, $target) %>">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -1573,7 +1594,14 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$target%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$element%>"/>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize > 0 %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer %>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$element%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize == 0 %>">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$element%>"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
