@@ -12,11 +12,10 @@
 package org.polarsys.capella.common.menu.dynamic;
 
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.swt.widgets.Shell;
-
-import org.polarsys.kitalpha.emde.model.Element;
 
 /**
  * Base class to implement action dealing with a model element.
@@ -25,7 +24,7 @@ public abstract class AbstractModelElementAction extends AbstractNavigatorAction
   /**
    * Managed model element.
    */
-  private Element _modelElement;
+  private EObject _modelElement;
 
   /**
    * Constructor.
@@ -43,8 +42,8 @@ public abstract class AbstractModelElementAction extends AbstractNavigatorAction
    */
   @Override
   public void setSelectedElement(Object object) {
-    if (object instanceof Element) {
-      _modelElement = (Element) object;
+    if (object instanceof EObject) {
+      _modelElement = (EObject) object;
     }
   }
 
@@ -52,7 +51,7 @@ public abstract class AbstractModelElementAction extends AbstractNavigatorAction
    * Get the editing model element.
    * @return the modelElement
    */
-  public Element getModelElement() {
+  public EObject getModelElement() {
     return _modelElement;
   }
 
