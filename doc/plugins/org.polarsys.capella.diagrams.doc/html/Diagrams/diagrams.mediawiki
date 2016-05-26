@@ -2227,6 +2227,10 @@
 | [[Image:Images/icons/full/obj16/State.gif]] 
 | 		Creates a new State 	
 |-
+| 	Region 	
+| [[Image:Images/icons/full/obj16/Region.gif]] 
+| 		Creates a new Region 	
+|-
 | 	State/Mode 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 
