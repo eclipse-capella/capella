@@ -13,8 +13,8 @@ package org.polarsys.capella.core.sirius.analysis;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.IState;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState;
 import org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.capellacommon.ForkPseudoState;
 import org.polarsys.capella.core.data.capellacommon.InitialPseudoState;
 import org.polarsys.capella.core.data.capellacommon.JoinPseudoState;
 import org.polarsys.capella.core.data.capellacommon.Region;
+import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacommon.TerminatePseudoState;
 
 /**
@@ -44,19 +45,37 @@ public class ModeStateMachineServices {
     return _service;
   }
 
+  public EObject moveRegionMSM(EObject context, Region newRegion, Region selectedRegion) {
+
+    EObject container = selectedRegion.eContainer();
+    if (container instanceof State) {
+      State state = (State) container;
+      state.getOwnedRegions().remove(newRegion);
+      int index = state.getOwnedRegions().indexOf(selectedRegion) + 1;
+      state.getOwnedRegions().add(index, newRegion);
+    }
+
+    return context;
+  }
+
   public Region getRegionForTransitionMSM(EObject context, DDiagramElement delement) {
-    Region region = null;
 
     EObject target = delement.getTarget();
+
+    // if select a region of a mode/state
     if (target instanceof Region) {
       return (Region) target.eContainer().eContainer();
     }
 
-    EObject container = delement.eContainer();
-    if (container instanceof DSemanticDecorator) {
-      region = (Region) ((DSemanticDecorator) container).getTarget();
+    // if select a mode/state
+    if (target instanceof IState) {
+      EObject container = target.eContainer();
+      if (container instanceof Region) {
+        return (Region) container;
+      }
     }
-    return region;
+
+    return null;
   }
 
   public boolean canCreateTransitionMSM(EObject context, EObject sourceElement, EObject targetElement) {
@@ -105,7 +124,11 @@ public class ModeStateMachineServices {
       return false;
     }
 
+    // cannot create a transition between states located on different regions of the same parent state
+    if (EcoreUtil2.getCommonAncestor(source, target) instanceof IState) {
+      return false;
+    }
+
     return true;
   }
-
 }
