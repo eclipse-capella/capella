@@ -36,7 +36,7 @@ Optionally, another folder displaying diagrams sorted by resources is available.
 Clicking on &ldquo;Customize View&rdquo; opens a dialog where &ldquo;Representations per category&rdquo; can be hidden.
 
  
-<center>[[Image:Images/4.04.%20Project%20Explorer_html_29fa7af3.png|362x353px]]</center>
+<center>[[Image:Images/4.04_Project_Explorer2.png|400x350px]]</center>
 
  
 <br>
@@ -52,7 +52,7 @@ Clicking on &ldquo;Customize View&rdquo; opens a dialog where &ldquo;Representat
 On an opened AIRD file, the contextual menu allows to close the model, activate or deactivate viewpoints.
 
  
-<center>[[Image:Images/4.04.%20Project%20Explorer_html_m2437a528.png|358x523px]]</center>
+<center>[[Image:Images/4.04_Project_Explorer1.png|500x523px]]</center>
 
  
 Saving the model can be performed from the toolbar or using the CTRL+S shortcut.
@@ -69,7 +69,7 @@ The * character in 				front of the project explorer View title indicates the mo
 
  
 |}  
-<center>[[Image:Images/4.04.%20Project%20Explorer_html_2a59bdef.png|300x214px]]</center>
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_2a59bdef.png|300x270px]]</center>
 
  
 <br>
@@ -81,7 +81,7 @@ The * character in 				front of the project explorer View title indicates the mo
 It is possible to filter some of the elements displayed in the hierarchical view of the model. This can be particularly useful for hiding &ldquo;technical&rdquo; model elements such as transformation links, etc.
 
  
-<center>[[Image:Images/4.04.%20Project%20Explorer_html_3a7d651e.png|348x122px]]</center>
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_3a7d651e.png|348x150px]]</center>
 
  
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_dd6dd4d.png|239x420px]]</center>
@@ -104,7 +104,7 @@ In the hierarchical view of the model, a contextual menu allows launching all ki
 The functionality of each of these applicative commands is described in other sections of this documentation.
 
  
-<center>[[Image:Images/4.04.%20Project%20Explorer_html_5ec4b59f.png|479x436px]]</center>
+<center>[[Image:Images/4.04_Project_Explorer3.png|530x436px]]</center>
 
 
 The &ldquo;Sort Content&rdquo; command alphabetically sorts the children of an element taking into account capitalized letters and spaces in element name.
@@ -113,28 +113,30 @@ The &ldquo;Sort Content&rdquo; command alphabetically sorts the children of an e
 The &ldquo;Sort Selection&rdquo; command sorts the list of selected elements which have the same parent and the same type.
 
 
-<center>[[Image:Images/4.04.%20Project%20Explorer_Sort%20Selection.png|627x324px]]</center>
+<center>[[Image:Images/4.04.%20Project%20Explorer_Sort%20Selection.png|500x250px]]</center>
 
  
 The &ldquo;Add Capella Element&rdquo; command creates new semantic elements.
 
  
-<center>[[Image:Images/4.04.%20Project%20Explorer_html_m2bcc91e2.png|627x324px]]</center>
+<center>[[Image:Images/4.04_Project_Explorer4.png|550x250px]]</center>
 
  
 The &ldquo;New Diagram / Table&rdquo; command creates new diagrams or matrices.
 
  
-<center>[[Image:Images/4.04.%20Project%20Explorer_html_40cc432b.png|627x194px]]</center>
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_40cc432b.png|570x150px]]</center>
 
  
 The &ldquo;Go To&rdquo; command provides a quick navigation shortcut towards related elements. For example, the type of a property, the allocated functions of a component, etc.
 
  
-<center>[[Image:Images/4.04.%20Project%20Explorer_html_eb48749.png|416x137px]]</center>
+<center>[[Image:Images/4.04_Project_Explorer5.png|600x150px]]</center>
 
- 
-<center>[[Image:Images/4.04.%20Project%20Explorer_html_632d88ac.png|434x102px]]</center>
+<br>
+<br>
+
+<center>[[Image:Images/4.04_Project_Explorer6.png|600x200px]]</center>
 
  
 The contextual menu on a diagram allows to rename or clone an existing diagram (a new diagram is initiated with the same content and layout, which can be very helpful).

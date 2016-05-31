@@ -4,7 +4,7 @@
 The Activity Browser provides a methodological access to all key activities in Capella. The Activity Browser is displayed automatically each time a Capella model is opened. It can also be launched with the contextual menu.
 
  
-[[Image:Images/4.03.%20Activity%20Browser_html_2a49622d.png|462x253px]]
+[[Image:Images/4.03.%20Activity%20Browser_html_2a49622d.png|400x253px]]
 
  
 <br>

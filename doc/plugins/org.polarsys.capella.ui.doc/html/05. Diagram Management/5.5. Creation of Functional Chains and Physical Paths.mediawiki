@@ -22,7 +22,7 @@ On an existing dataflow diagram, select all the Functional Exchanges contributin
 <br>
 
  
-[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_3267dbc1.png|1038x382px]]
+[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_3267dbc1.png|900x300px]]
 
  
 Using the contextual menu on this multiple selection, click on Functional Chain / Create a Functional Chain
@@ -31,7 +31,7 @@ Using the contextual menu on this multiple selection, click on Functional Chain 
 A new Functional Chain is created and displayed.
 
  
-[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_3e1821f9.png|1050x218px]]
+[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_3e1821f9.png|900x200px]]
 
  
 If you want to edit a Functional Chain, you have to create a Functional Chain Description diagram. You can create this diagram from a Navigate command in the contextual menu from a Functional Chain.
@@ -59,13 +59,13 @@ On the following diagram, the tools of the palette have been used to include a n
 [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m447a782f.png|146x259px]]
 
  
-[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_mdab6cc9.png|938x248px]]
+[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_mdab6cc9.png|900x200px]]
 
  
 On the dataflow diagram, the result is the following.
 
  
-[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_6efdb628.png|1040x247px]]
+[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_6efdb628.png|900x200px]]
 
  
 <br>

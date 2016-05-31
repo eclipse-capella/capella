@@ -24,7 +24,7 @@ To enable &ldquo;allow the reuse of components through parts&rdquo; check the co
 <br>
 
  
-[[Image:Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_19372ef5.png|764x438px]]
+[[Image:Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_19372ef5.png|764x500px]]
 
  
 '''Fig'''. Enabling the selection of component reuse option on projects.
@@ -74,7 +74,7 @@ Once a model has 				been started with one of these two alternatives, it require
 When a new project is created, the model structure is automatically initialized. This page of the wizard allows specifying whether the default model structure should include Operational Analysis and EPBS Architecture.
 
  
-[[Image:Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_1c3d37be.png|296x246px]]
+[[Image:Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_1c3d37be.png|450x370px]]
 
          
 {| border="1"
@@ -97,7 +97,7 @@ The following page proposes the list of available Viewpoints. Capella diagrams a
 Clicking on Finish will create the basic model structure.
 
  
-[[Image:Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_m156d26b.png|464x528px]]
+[[Image:Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_m156d26b.png|650x370px]]
 
  
 The Capella Overview is automatically displayed.

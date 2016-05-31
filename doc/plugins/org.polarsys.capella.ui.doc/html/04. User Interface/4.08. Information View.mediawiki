@@ -4,7 +4,7 @@
 The Information view displays information that provides feedback to a set of Capella treatments (validation, transitions, etc.). To open the Information view select Window-&gt;Show View-&gt;Information View from the Capella menu.
 
  
-[[Image:Images/4.08.%20Information%20View_html_3f913b29.png|963x255px]]
+[[Image:Images/4.08_Information_View.png|800x220px]]
 
          
 {| border="1"
