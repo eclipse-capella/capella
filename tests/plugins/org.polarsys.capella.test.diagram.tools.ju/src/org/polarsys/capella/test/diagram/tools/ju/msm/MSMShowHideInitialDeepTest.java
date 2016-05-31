@@ -32,7 +32,7 @@ public class MSMShowHideInitialDeepTest extends EmptyProject {
 	diagram.createState(diagram.getDiagramId(), GenericModel.STATE_1);
 	diagram.createRegion(GenericModel.STATE_1, GenericModel.REGION_1);
 	diagram.createRegion(GenericModel.STATE_1, GenericModel.REGION_2);
-	diagram.createInitial(GenericModel.REGION_1, GenericModel.STATE_2);
+	diagram.createInitial(diagram.getDiagramId(), GenericModel.STATE_2);
 	diagram.createInitial(GenericModel.REGION_2, GenericModel.STATE_3);
 
 	diagram.hideStateMode (GenericModel.REGION_2, GenericModel.STATE_3);

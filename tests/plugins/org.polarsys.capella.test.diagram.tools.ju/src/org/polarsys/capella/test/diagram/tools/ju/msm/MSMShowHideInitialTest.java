@@ -27,8 +27,7 @@ public class MSMShowHideInitialTest extends EmptyProject {
 	MSMDiagram diagram= MSMDiagram.createDiagram(context, EmptyProject.SA__SYSTEM__SYSTEM_STATE_MACHINE__DEFAULT_REGION);
 
 	MSMDiagram.setUnsynchronized(diagram);
-	//TODO: difference with InitialDeepTest?
-	diagram.createState(EmptyProject.SA__SYSTEM__SYSTEM_STATE_MACHINE__DEFAULT_REGION, GenericModel.STATE_1);
+
 	diagram.createState(diagram.getDiagramId(), GenericModel.STATE_1);
 	diagram.createRegion(GenericModel.STATE_1, GenericModel.REGION_1);
 	diagram.createRegion(GenericModel.STATE_1, GenericModel.REGION_2);

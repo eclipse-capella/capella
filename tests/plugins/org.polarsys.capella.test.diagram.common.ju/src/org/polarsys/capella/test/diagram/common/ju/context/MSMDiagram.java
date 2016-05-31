@@ -20,6 +20,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.SetUnsynchronizedStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 
 public class MSMDiagram extends DiagramContext {
@@ -77,43 +78,43 @@ public class MSMDiagram extends DiagramContext {
   }
 
   public void createChoice (String idContainer, String id) {
-	  new CreateContainerTool(this, IToolNameConstants.TOOL_MSM_CREATE_CHOICE, idContainer, id).run();
+	  new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_CHOICE, idContainer, id).run();
   }
   
   public void createFinal (String idContainer, String id) {
-	  new CreateContainerTool(this, IToolNameConstants.TOOL_MSM_CREATE_FINAL, idContainer, id).run();
+	  new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_FINAL, idContainer, id).run();
   }
   
   public void createFork (String idContainer, String id) {
-	  new CreateContainerTool(this, IToolNameConstants.TOOL_MSM_CREATE_FORK, idContainer, id).run();
+	  new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_FORK, idContainer, id).run();
   }
   
   public void createInitial (String idContainer, String id) {
-	  new CreateContainerTool(this, IToolNameConstants.TOOL_MSM_CREATE_INITIAL, idContainer, id).run();
+	  new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_INITIAL, idContainer, id).run();
   }
   
   public void createJoin (String idContainer, String id) {
-	  new CreateContainerTool(this, IToolNameConstants.TOOL_MSM_CREATE_JOIN, idContainer, id).run();
+	  new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_JOIN, idContainer, id).run();
   }
   
   public void createTerminate (String idContainer, String id) {
-	  new CreateContainerTool(this, IToolNameConstants.TOOL_MSM_CREATE_TERMINATE, idContainer, id).run();
+	  new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_TERMINATE, idContainer, id).run();
   }
 
   public void createDeepHistory (String idContainer, String id) {
-	  new CreateContainerTool(this, IToolNameConstants.TOOL_MSM_CREATE_DEEP_HISTORY, idContainer, id).run();
+	  new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_DEEP_HISTORY, idContainer, id).run();
   }
   
   public void createShallowHistory (String idContainer, String id) {
-	  new CreateContainerTool(this, IToolNameConstants.TOOL_MSM_CREATE_SHALLOW_HISTORY, idContainer, id).run();
+	  new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_SHALLOW_HISTORY, idContainer, id).run();
   }
   
   public void createEntryPoint (String idContainer, String id) {
-	  new CreateContainerTool(this, IToolNameConstants.TOOL_MSM_CREATE_ENTRY_POINT, idContainer, id).run();
+	  new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_ENTRY_POINT, idContainer, id).run();
   }
   
   public void createExitPoint (String idContainer, String id) {
-	  new CreateContainerTool(this, IToolNameConstants.TOOL_MSM_CREATE_EXIT_POINT, idContainer, id).run();
+	  new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_EXIT_POINT, idContainer, id).run();
   }
   
   public void createTransition(String idSource, String idTarget, String id) {
