@@ -999,7 +999,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="MSM_ModeState_Container" detailDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Mode%20State%20Machine%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Mode%20State%20Machine']" preconditionExpression="&lt;%(filter(&quot;Mode&quot;) + filter(&quot;State&quot;)).nSize() > 0 &amp;&amp;  filter(&quot;FinalState&quot;).nSize() == 0 %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:involvedStates" domainClass="IState" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer']" childrenPresentation="VerticalStack">
+        <containerMappings name="MSM_ModeState_Container" detailDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Mode%20State%20Machine%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Mode%20State%20Machine']" preconditionExpression="&lt;%(filter(&quot;Mode&quot;) + filter(&quot;State&quot;)).nSize() > 0 &amp;&amp;  filter(&quot;FinalState&quot;).nSize() == 0 %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:involvedStates" domainClass="IState" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Region%20from%20Diagram']" childrenPresentation="VerticalStack">
           <borderedNodeMappings name="MSM_EntryPoint" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="&lt;%getEntryPoints()%>" domainClass="EntryPointPseudoState" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer']">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelAlignment="RIGHT" sizeComputationExpression="2" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Pseudostate_entryPoint.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1012,23 +1012,23 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
-          <subContainerMappings name="MSM_Activities" preconditionExpression="&lt;% doActivity != null || entry != null || exit != null %>" semanticCandidatesExpression="var:self" domainClass="IState" childrenPresentation="List">
-            <subNodeMappings name="MSM_DoActivity" semanticCandidatesExpression="feature:doActivity" domainClass="AbstractFunction">
-              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="do /  &lt;% name %>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+          <subContainerMappings name="MSM_Activities" preconditionExpression="&lt;% doActivity != null || entry != null || exit != null %>" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="IState" childrenPresentation="List">
+            <subNodeMappings name="MSM_DoActivity" semanticCandidatesExpression="feature:doActivity" synchronizationLock="true" domainClass="AbstractEvent">
+              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression=" do /  &lt;% name %>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="MSM_Entry" semanticCandidatesExpression="feature:entry" domainClass="AbstractFunction">
-              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="entry / &lt;% name %>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+            <subNodeMappings name="MSM_Entry" semanticCandidatesExpression="feature:entry" synchronizationLock="true" domainClass="AbstractEvent">
+              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression=" entry / &lt;% name %>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="MSM_Exit" semanticCandidatesExpression="feature:exit" domainClass="AbstractFunction">
-              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="exit / &lt;% name %>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+            <subNodeMappings name="MSM_Exit" semanticCandidatesExpression="feature:exit" synchronizationLock="true" domainClass="AbstractEvent">
+              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression=" exit / &lt;% name %>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1051,19 +1051,19 @@
               </style>
             </conditionnalStyles>
           </subContainerMappings>
-          <subContainerMappings name="MSM_Region" semanticCandidatesExpression="feature:ownedRegions" domainClass="Region" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram']" reusedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" reusedContainerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" hideLabelByDefault="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color4']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color4']">
+          <subContainerMappings name="MSM_Region" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:ownedRegions" synchronizationLock="true" domainClass="Region" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Region%20from%20Diagram']" reusedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" reusedContainerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" showIcon="false" labelExpression=" [&lt;% name %>]" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color4']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color4']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;%($container.filter(&quot;Mode&quot;)).nSize() > 0%>">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" hideLabelByDefault="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray']">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" showIcon="false" labelExpression=" [&lt;% name %>]" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%($container.filter(&quot;State&quot;)).nSize() > 0%>">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" hideLabelByDefault="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_State_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_State_Gray']">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" showIcon="false" labelExpression=" [&lt;% name %>]" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_State_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_State_Gray']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
@@ -1144,7 +1144,11 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize == 0 %>">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% moveRegionMSM($instance, null) %>">
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $elementView.getDiagramContainer().forceRefresh %>"/>
+                      </subModelOperations>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize > 0 %>">
@@ -1237,9 +1241,9 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% getRegionForInsertion ($containerView) %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% getRegionForInsertionMSM ($containerView) %>">
                     <subModelOperations xsi:type="tool_1:For" expression="&lt;% $selectedStates %>">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% getRegionForInsertion ($containerView) %>">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% getRegionForInsertionMSM ($containerView) %>">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involvedStates" valueExpression="&lt;% $i %>"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
                           <subModelOperations xsi:type="tool_1:SetValue" featureName="referencedStates" valueExpression="&lt;% $i %>"/>
@@ -1247,7 +1251,7 @@
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:For" expression="&lt;% eContainer(&quot;ModellingBlock&quot;).eAllContents.filter (&quot;IState&quot;) - $selectedStates %>" iteratorName="j">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% getRegionForInsertion ($containerView) %>">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% getRegionForInsertionMSM ($containerView) %>">
                         <subModelOperations xsi:type="tool_1:Unset" featureName="involvedStates" elementExpression="&lt;% $j %>"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
                           <subModelOperations xsi:type="tool_1:Unset" featureName="referencedStates" elementExpression="&lt;% $j %>"/>
@@ -1692,7 +1696,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D ModeState from Diagram" precondition="&lt;% $element.isValidDndSMModeState($oldContainer, $newViewContainer)%>" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D ModeState from Diagram" precondition="&lt;% $element.isValidDndSMModeState($oldContainer, $newViewContainer)%>" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -1701,9 +1705,18 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element.dndSMModeState($newContainerView)%>"/>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Region from Diagram" precondition="&lt;% true %>" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element.dndRegion($newContainerView) %>"/>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
         <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;% $container.ownedRegions.nFirst() != $view.target %>">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']/@conditionnalStyles.0/@style //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']/@conditionnalStyles.1/@style //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']/@style" attributeName="borderLineStyle" value="dash"/>
           </vsmElementCustomizations>
         </customization>

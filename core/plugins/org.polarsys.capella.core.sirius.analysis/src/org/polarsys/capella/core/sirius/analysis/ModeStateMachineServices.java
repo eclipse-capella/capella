@@ -12,7 +12,11 @@ package org.polarsys.capella.core.sirius.analysis;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.polarsys.capella.common.data.modellingcore.IState;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState;
@@ -47,13 +51,14 @@ public class ModeStateMachineServices {
 
   public EObject moveRegionMSM(EObject context, Region newRegion, Region selectedRegion) {
 
-    EObject container = selectedRegion.eContainer();
-    if (container instanceof State) {
-      State state = (State) container;
-      state.getOwnedRegions().remove(newRegion);
-      int index = state.getOwnedRegions().indexOf(selectedRegion) + 1;
-      state.getOwnedRegions().add(index, newRegion);
+    EObject container = newRegion.eContainer();
+    State state = (State) container;
+    state.getOwnedRegions().remove(newRegion);
+    int index = 0;
+    if (selectedRegion != null) {
+      index = state.getOwnedRegions().indexOf(selectedRegion) + 1;
     }
+    state.getOwnedRegions().add(index, newRegion);
 
     return context;
   }
@@ -130,5 +135,19 @@ public class ModeStateMachineServices {
     }
 
     return true;
+  }
+  
+  public Region getRegionForInsertionMSM(EObject context, EObject delement) {
+    Region region = null;
+
+    if (delement instanceof DDiagram) {
+      region = (Region) ((DSemanticDiagram) delement).getTarget();
+    } else if (delement instanceof DDiagramElementContainer) {
+      EObject target = ((DNodeContainer) delement).getTarget();
+      if (target instanceof Region) {
+        return (Region) target;
+      }
+    }
+    return region;
   }
 }
