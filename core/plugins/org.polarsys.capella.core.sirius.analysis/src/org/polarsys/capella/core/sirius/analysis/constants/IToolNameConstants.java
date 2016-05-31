@@ -837,6 +837,41 @@ public interface IToolNameConstants {
   String TOOL_MS_DND_STATES_DROM_DIAGRAM = "D&D ModeState from Diagram"; //$NON-NLS-1$
   String TOOL_MS_DND_PSEUDOSTATES_DROM_DIAGRAM = "D&D PseudoState from Diagram"; //$NON-NLS-1$
 
+  // M&S fools - Modes and States
+  String TOOL_MSM_CREATE_MODE = "Mode"; //$NON-NLS-1$
+  String TOOL_MSM_CREATE_STATE = "State"; //$NON-NLS-1$
+  String TOOL_MSM_CREATE_REGION = "Region"; //$NON-NLS-1$
+  String TOOL_MSM_REUSE_MODE_STATE = "Reuse Mode/State"; //$NON-NLS-1$
+  String TOOL_MSM_CREATE_INITIAL = "Initial"; //$NON-NLS-1$
+  String TOOL_MSM_CREATE_JOIN = "Join"; //$NON-NLS-1$
+  String TOOL_MSM_CREATE_CHOICE = "Choice"; //$NON-NLS-1$
+  String TOOL_MSM_CREATE_FORK = "Fork"; //$NON-NLS-1$
+  String TOOL_MSM_CREATE_TERMINATE = "Terminate"; //$NON-NLS-1$
+  String TOOL_MSM_CREATE_FINAL = "Final"; //$NON-NLS-1$
+  String TOOL_MSM_CREATE_DEEP_HISTORY = "DeepHistory"; //$NON-NLS-1$
+  String TOOL_MSM_CREATE_SHALLOW_HISTORY = "ShallowHistory"; //$NON-NLS-1$
+  String TOOL_MSM_CREATE_ENTRY_POINT = "EntryPoint"; //$NON-NLS-1$
+  String TOOL_MSM_CREATE_EXIT_POINT = "ExitPoint"; //$NON-NLS-1$
+  String TOOL_MSM_CREATE_TRANSISTION = "Transition"; //$NON-NLS-1$
+  String TOOL_MSM_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
+  String TOOL_MSM_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
+  String TOOL_MSM_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
+  // Unsynchronized
+  String TOOL_MSM_INSERT_REMOVE_MODE_STATE = "State/Mode"; //$NON-NLS-1$
+  String TOOL_MSM_INSERT_REMOVE_TRANSITION = "Transition"; //$NON-NLS-1$
+
+  // Accelerators
+  String TOOL_MSM_INITIALIZATION_FROM_EXISTING_DIAGRAM = "Initialization from existing diagram"; //$NON-NLS-1$
+  // tools id
+  String TOOL_MSM_INSERT_MODE_STATE = "Insert Mode/State"; //$NON-NLS-1$
+  String TOOL_MSM_SHOW_HIDE_MODE_STATE = "ShowHide ModeState"; //$NON-NLS-1$
+  String TOOL_MSM_SHOW_HIDE_TRANSITION = "ShowHide Transition"; //$NON-NLS-1$
+  String TOOL_MSM_RECONNECT_TARGET_TRANSISTION = "Reconnect target transition"; //$NON-NLS-1$
+  String TOOL_MSM_RECONNECT_SOURCE_TRANSISTION = "Reconnect source transition"; //$NON-NLS-1$
+  String TOOL_MSM_DND_STATES_DROM_DIAGRAM = "D&D ModeState from Diagram"; //$NON-NLS-1$
+  String TOOL_MSM_DND_PSEUDOSTATES_DROM_DIAGRAM = "D&D PseudoState from Diagram"; //$NON-NLS-1$
+
+  
   // OAB tools - Operational Architecture Blank
   // Entities
   String TOOL_OAB_CREATE_OE = "Operational Entity"; //$NON-NLS-1$

@@ -1182,7 +1182,7 @@
                   <parameters name="initialSelection" value="&lt;%$visibleStates%>"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($selectedStates == &quot;WIZARD_CANCELED&quot;) %>">
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="ShowHideStates" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideStates">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="ShowHideMSMStates" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideMSMStates">
                     <parameters name="view" value="&lt;%$elementView%>"/>
                     <parameters name="selected states" value="&lt;%$selectedStates%>"/>
                     <parameters name="visible states" value="&lt;%$visibleStates%>"/>
@@ -1212,7 +1212,7 @@
                   <parameters name="initialSelection" value="&lt;%$visibleTransitions%>"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($selectedTransitions == &quot;WIZARD_CANCELED&quot;) %>">
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="ShowHideTransitions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideTransitions">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="ShowHideMSMTransitions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideMSMTransitions">
                     <parameters name="view" value="&lt;%$elementView%>"/>
                     <parameters name="selected transitions" value="&lt;%$selectedTransitions%>"/>
                     <parameters name="visible transitions" value="&lt;%$visibleTransitions%>"/>

@@ -10,13 +10,23 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.IState;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState;
@@ -25,9 +35,14 @@ import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.ForkPseudoState;
 import org.polarsys.capella.core.data.capellacommon.InitialPseudoState;
 import org.polarsys.capella.core.data.capellacommon.JoinPseudoState;
+import org.polarsys.capella.core.data.capellacommon.Pseudostate;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacommon.TerminatePseudoState;
+import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
+import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideMSMStateMode;
+import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideMSMTransitions;
 
 /**
  * Services for Mode State machine diagram.
@@ -35,19 +50,52 @@ import org.polarsys.capella.core.data.capellacommon.TerminatePseudoState;
 public class ModeStateMachineServices {
 
   /** A shared instance. */
-  private static StateMachineServices _service;
+  private static ModeStateMachineServices _service;
 
   /**
    * returns a shared instance of this services.
    * 
    * @return a shared instance of this services.
    */
-  public static StateMachineServices getService() {
+  public static ModeStateMachineServices getService() {
     if (_service == null) {
-      _service = new StateMachineServices();
+      _service = new ModeStateMachineServices();
     }
     return _service;
   }
+  public EObject showHideStatesInStateAndModeDiag(DSemanticDecorator view, List<State> selectedStates,
+	      List<State> visibleStates, List<AbstractDNode> visibleStateViews) {
+
+	    DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(view);
+	    DDiagramContents content = new DDiagramContents(diagram);
+
+	    Set<EObject> toBeRemoved = new HashSet<EObject>();
+
+	    ShowHideMSMStateMode shHide = new ShowHideMSMStateMode(content);
+
+	    DiagramContext diagramContext = new ShowHideMSMStateMode(content).new DiagramContext();
+
+	    // store context
+	    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER, view.getTarget()/*.eContainer()*/);
+	    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER_VIEW, view);
+
+	    for (IState state : selectedStates) {
+	      shHide.show(state, diagramContext);
+	    }
+
+	    for (AbstractDNode node : visibleStateViews) {
+	      if (!selectedStates.contains(node.getTarget())) {
+	        toBeRemoved.add(node.getTarget());
+	      }
+	    }
+
+	    // remove views
+	    for (EObject aView : toBeRemoved) {
+	      shHide.hide(aView, diagramContext);
+	    }
+
+	    return view;
+	  }
 
   public EObject moveRegionMSM(EObject context, Region newRegion, Region selectedRegion) {
 
@@ -150,4 +198,93 @@ public class ModeStateMachineServices {
     }
     return region;
   }
+    public EObject showHideStatesInMSMDiag(DSemanticDecorator view, List<State> selectedStates,
+      List<State> visibleStates, List<AbstractDNode> visibleStateViews) {
+
+    DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(view);
+    DDiagramContents content = new DDiagramContents(diagram);
+
+    Set<EObject> toBeRemoved = new HashSet<EObject>();
+
+    ShowHideMSMStateMode shHide = new ShowHideMSMStateMode(content);
+
+    DiagramContext diagramContext = new ShowHideMSMStateMode(content).new DiagramContext();
+
+    // store context
+    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER, view.getTarget());
+    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER_VIEW, view);
+
+    for (IState state : selectedStates) {
+      shHide.show(state, diagramContext);
+    }
+
+    for (AbstractDNode node : visibleStateViews) {
+      if (!selectedStates.contains(node.getTarget())) {
+        toBeRemoved.add(node.getTarget());
+      }
+    }
+
+    // remove views
+    for (EObject aView : toBeRemoved) {
+      shHide.hide(aView, diagramContext);
+    }
+
+    return view;
+  }
+
+  public EObject showHideMSMTransitions(DSemanticDecorator view, List<StateTransition> selectedTransitions,
+      List<StateTransition> visibleTransitions, List<DEdge> visibleTransitionViews) {
+
+    DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(view);
+    DDiagramContents content = new DDiagramContents(diagram);
+
+    Set<EObject> toBeRemoved = new HashSet<EObject>();
+
+    ShowHideMSMStateMode shHide = new ShowHideMSMTransitions(content);
+    DiagramContext diagramContext = shHide.new DiagramContext();
+
+    // store context
+    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER, view.getTarget());
+    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER_VIEW, view);
+
+    for (StateTransition trans : selectedTransitions) {
+      shHide.show(trans, diagramContext);
+    }
+
+    for (DEdge edge : visibleTransitionViews) {
+      if (!selectedTransitions.contains(edge.getTarget())) {
+        toBeRemoved.add(edge.getTarget());
+      }
+    }
+    // remove views
+    for (EObject aView : toBeRemoved) {
+      shHide.hide(aView, diagramContext);
+    }
+
+    return view;
+  }
+  
+  public ContainerMapping getMappingMSMStateMode(State state, DDiagram diagram) {
+	    String mappingName = null;
+	    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_STATE_MACHINE_DIAGRAM_NAME)) {
+	      mappingName = IMappingNameConstants.MSM_MODE_STATE_MAPPING_NAME;
+	    }
+	    return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
+	  }
+
+  public NodeMapping getMappingMSMPseudostate(Pseudostate pseudoState, DDiagram diagram) {
+	    String mappingName = null;
+	    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_STATE_MACHINE_DIAGRAM_NAME)) {
+	      mappingName = IMappingNameConstants.MSM_PSEUDOSTATE_MAPPING_NAME;
+	    }
+	    return DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
+	  }
+
+	  public EdgeMapping getMappingMSMTransition(StateTransition function, DDiagram diagram) {
+	    String mappingName = null;
+	    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_STATE_MACHINE_DIAGRAM_NAME)) {
+	      mappingName = IMappingNameConstants.MSM_TRANSITION_MAPPING_NAME;
+	    }
+	    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
+	  }
 }

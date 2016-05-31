@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
-import org.polarsys.capella.core.sirius.analysis.StateMachineServices;
+import org.polarsys.capella.core.sirius.analysis.ModeStateMachineServices;
 
 /**
  */
-public class ShowHideTransitions extends AbstractExternalJavaAction {
+public class ShowHideMSMTransitions extends AbstractExternalJavaAction {
 
   public static final String ELEMENT_VIEW = "view"; //$NON-NLS-1$
   public static final String SELECTED_TRANSITIONS = "selected transitions"; //$NON-NLS-1$
@@ -52,7 +52,7 @@ public class ShowHideTransitions extends AbstractExternalJavaAction {
     if (visibleTransitionViews == null) {
       visibleTransitionViews = new ArrayList<DEdge>();
     }
-    StateMachineServices.getService().showHideSMTransitions(view, selectedTransitions, visibleTransitions, visibleTransitionViews);
+    ModeStateMachineServices.getService().showHideMSMTransitions(view, selectedTransitions, visibleTransitions, visibleTransitionViews);
   }
 
 }

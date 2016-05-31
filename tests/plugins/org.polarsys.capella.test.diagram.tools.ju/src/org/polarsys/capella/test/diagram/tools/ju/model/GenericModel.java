@@ -104,6 +104,16 @@ public class GenericModel {
   public static String STATE_3 = "State 3";
   public static String STATE_4 = "State 4";
 
+  public static String MODE_1 = "Mode 1";
+  public static String MODE_2 = "Mode 2";
+  public static String MODE_3 = "Mode 3";
+  public static String MODE_4 = "Mode 4";
+
+  public static String REGION_1 = "Region 1";
+  public static String REGION_2= "Region 2";
+  public static String REGION_3 = "Region 3";
+  public static String REGION_4 = "Region 4";
+
   public static String LC_1 = "LC 1";
   public static String LC_2 = "LC 2";
   public static String LC_2_1 = "LC 2_1";

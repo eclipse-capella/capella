@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.core.data.capellacommon.State;
-import org.polarsys.capella.core.sirius.analysis.StateMachineServices;
+import org.polarsys.capella.core.sirius.analysis.ModeStateMachineServices;
 
 /**
  */
-public class ShowHideStates extends AbstractExternalJavaAction {
+public class ShowHideMSMStates extends AbstractExternalJavaAction {
 
   public static final String ELEMENT_VIEW = "view"; //$NON-NLS-1$
   public static final String SELECTED_STATES = "selected states"; //$NON-NLS-1$
@@ -52,7 +52,7 @@ public class ShowHideStates extends AbstractExternalJavaAction {
     if (visibleStateViews == null) {
       visibleStateViews = new ArrayList<AbstractDNode>();
     }
-    StateMachineServices.getService().showHideStatesInStateAndModeDiag(view, selectedStates, visibleStates, visibleStateViews);
+    ModeStateMachineServices.getService().showHideStatesInStateAndModeDiag(view, selectedStates, visibleStates, visibleStateViews);
   }
 
 }
