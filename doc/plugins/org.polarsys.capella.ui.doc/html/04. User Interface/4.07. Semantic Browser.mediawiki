@@ -6,7 +6,7 @@
 The objective of the Semantic Browser is to provide a summary of all meaningful relationships for one given element.
 
  
-[[Image:Images/4.07.%20Semantic%20Browser_html_m2d24d060.png|1005x361px]]
+[[Image:Images/4.07.%20Semantic%20Browser_html_m2d24d060.png|900x300px]]
 
  
 <br>
@@ -62,7 +62,7 @@ If this option is toggled, all pattern instances related to the current element 
 By default, the Semantic Browser works in the &ldquo;expanded mode&rdquo; which means that tree nodes are all expanded (children are visible). If this option is toggled, the Semantic Browser switches to the &ldquo;collapsed mode&rdquo;. In that case, all category nodes are not expanded by default and the Semantic Browser will remember which categories have been manually expanded and keep them expanded for future display (until they are manually collapsed). This option is useful when the user want to focus on particular relationships when dealing with complex models.
 
  
-[[Image:Images/4.07.%20Semantic%20Browser_html_508676fd.png|1015x265px]]
+[[Image:Images/4.07.%20Semantic%20Browser_html_508676fd.png|900x230px]]
 
  
 == Actions ==
@@ -70,7 +70,7 @@ By default, the Semantic Browser works in the &ldquo;expanded mode&rdquo; which 
 Double-clicking on an element in the Semantic Browser opens the editor of this element. F8, F9, F10 keys allow selecting the current element in other Views. All other applicative commands are still available through the contextual menu.
 
  
-[[Image:Images/4.07.%20Semantic%20Browser_html_19afb6d3.png|704x305px]]
+[[Image:Images/4.07_Semantic_Browser.png|900x280px]]
 
  
 Finally, opening a diagram from the Semantic Browser is also possible. In that case, the focus in the Diagram Editor is set on the current element.

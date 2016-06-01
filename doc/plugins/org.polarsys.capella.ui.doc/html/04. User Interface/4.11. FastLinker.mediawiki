@@ -17,7 +17,7 @@ There are several ways to send elements in the Fast Linker:
 * Drag &amp; Drop from viewers (Capella Project Explorer, 	Semantic Browser),
 * Contextual menu (Viewers and Diagrams), with the &ldquo;Send to Fast 	Linker View&rdquo; command,
  
-[[Image:Images/4.11.%20FastLinker_html_44c9048d.png|329x164px]]
+[[Image:Images/4.11_Fast_Linker_1.png|450x130px]]
 
  
 * F6 shortcut (Viewers and Diagrams).
@@ -30,19 +30,19 @@ The following things happen when the user put an element in the Fast Linker:
 * If the Fast Linker is empty, it checks whether this element can be 	part of a link (as source or target),
 ** If no link is possible, the Fast Linker rejects the model element,
 ** If at least one link is possible, the Fast Linker accepts the model 		element and it becomes visible in the Fast Linker view,
-*
+
 * If the Fast Linker already contains one element, it gets the links 	between both elements (whatever which is source or target),
 ** If no link is possible, the Fast Linker rejects the model element 		(the first model element is leaved untouched),
 ** If one link is possible, it is created,
 ** If several links are possible, a menu is displayed to allow the 		user to make a choice:
-*
+
  
-[[Image:Images/4.11.%20FastLinker_html_m77521b19.png|300x277px]]
+[[Image:Images/4.11_Fast_Linker_Link-Creation_Procedure1.png|400x200px]]
 
  
 * Once a link is created, a message is added in the Information View:
  
-[[Image:Images/4.11.%20FastLinker_html_m302607fc.png|380x186px]]
+[[Image:Images/4.11_Fast_Linker_Link-Creation_Procedure2.png|400x60px]]
 
  
 * If a model element is once again put in the Fast Linker, the 	procedure restarts as if the Fast Linker was empty.
@@ -57,8 +57,8 @@ The Fast Linker offers some features to ease its usage:
 ** There is two ways to pin an element:
 *** Select it in the Fast Linker view and then click on the pin 			button,
 *** Use the drop down menu of the pin button and select the element to 			pin:
-**
-*
+
+
  
 [[Image:Images/4.11.%20FastLinker_html_m3bb8b649.png|242x223px]]
 

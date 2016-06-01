@@ -231,7 +231,7 @@ When this preference is active, new diagrams behavior will be to align the borde
 This behavior can be modify on an existing diagram via the Snap To Grid options in the Rulers and Grid tab of the diagram Properties view.,
 
  
-[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m217db488.gif|319x167px]]
+[[Image:Images/5.6_diagrams_Tips_and_Tricks3.png|450x200px]]
 
  
 '''Figure 28: Snap to grid option'''
@@ -256,7 +256,7 @@ Restore defaults in 				the Rulers and Grid Tab will automatically initialize th
 Snap to shapes options aims to ease diagram elements alignment at the creation or during a drag and drop of existing element.
 
  
-[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_47f32841.gif|412x360px]]
+[[Image:Images/5.6_diagrams_Tips_and_Tricks1.png|550x350px]]
 
  
 '''Figure 29: Snap to Shapes in Sirius preference for new diagrams'''
@@ -265,7 +265,7 @@ Snap to shapes options aims to ease diagram elements alignment at the creation o
 When this preference is active, new diagrams will display a line to compare alignment with other existing elements (borders and centers). This preference is set to initialize the Snap To Shapes properties in the Rulers and Grid tab of the diagram Property View. This property activates or deactivates this behavior in real time in the editor.
 
  
-[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_6f217e35.gif|301x160px]]
+[[Image:Images/5.6_diagrams_Tips_and_Tricks2.png|450x200px]]
 
  
 '''Figure 30: Snap To Shapes option for current diagram'''

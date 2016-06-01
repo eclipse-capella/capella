@@ -7,16 +7,16 @@ The Properties View is the place where the characteristics of each Capella eleme
 
  
 <br>
-<br>
 
  
-[[Image:Images/4.06.%20Properties%20View_html_685fadcb.png|555x320px]]
+[[Image:Images/4.06_Properties_View1.png|650x570px]]
 
+<br>
  
 '''Capella Editors are also available as dialogs''', accessed with a double-click on any element. The content is exactly the same as in the Properties Views.
 
  
-[[Image:Images/4.06.%20Properties%20View_html_2468c0f3.png|553x336px]]
+[[Image:Images/4.06_Properties_View2.png|600x400px]]
 
  
 Capella editors contain 4 sections: semantic properties, description, extensions, management.
@@ -27,7 +27,7 @@ Capella editors contain 4 sections: semantic properties, description, extensions
 This section displays the most important semantic information about the current element. It also allows defining relationships between elements.
 
  
-[[Image:Images/4.06.%20Properties%20View_html_2939276.png|553x193px]]
+[[Image:Images/4.06_Properties_View3.png|600x300px]]
 
  
 == Description Section ==
@@ -73,7 +73,7 @@ The Extensions section allows defining which Property Values apply to the curren
 For example, one could imagine storing all the non functional properties of all elements in thematic packages (safety, performance, human factors, etc.) instead of having these properties spread all over the model.
 
  
-[[Image:Images/4.06.%20Properties%20View_html_m6b8df94e.png|553x156px]]
+[[Image:Images/4.06_Properties_View_Extensions.png|900x230px]]
 
  
 Capella properties are also available in dialog boxes, using a double-click on elements in the diagrams. The Capella properties are a simplified version of the Eclipse ones.

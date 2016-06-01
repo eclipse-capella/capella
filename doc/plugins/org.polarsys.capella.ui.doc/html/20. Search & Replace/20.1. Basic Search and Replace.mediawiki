@@ -9,7 +9,7 @@ Capella provides contextual search &amp; replace on model elements. Several opti
 To open the Search &amp; Replace window dialog, select a Capella element in Capella Project Explorer and click on''''' Ctrl+Shift+F'''''. You can also use the contextual &ldquo;Search and Replace&rdquo; menu or the magnifying glass toolbar menu.
 
  
-[[Image:Images/20.1.%20Basic%20Search%20&%20Replace_html_m55039b91.png|1243x784px]]
+[[Image:Images/20.1.%20Basic%20Search%20&%20Replace_html_m55039b91.png|900x520px]]
 
  
 '''Fig.''' Search &amp; Replace contextual and toolbar menus.
@@ -69,7 +69,7 @@ Search can be performed on the selection displayed in the tree (i.e. with &ldquo
 Search &amp; Replace window provides a Preview impact feature that enables to compute impacted elements for a specific find pattern. Impacted elements are displayed in a new window. It also reports impacted elements metrics in the main dialog.
 
  
-[[Image:Images/20.1.%20Basic%20Search%20&%20Replace_html_m7a0d8e38.png|945x762px]]
+[[Image:Images/20.1.%20Basic%20Search%20&%20Replace_html_m7a0d8e38.png|900x700px]]
 
  
 '''Fig. '''Computing impacted elements with &ldquo;Preview impact&rdquo; button

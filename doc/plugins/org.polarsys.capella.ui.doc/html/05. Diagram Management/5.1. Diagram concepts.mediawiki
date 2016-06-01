@@ -76,13 +76,13 @@ Example of elements in Physical Architecture: A Functional Chain goes through th
 Using the Properties View of the diagram, the Functional Chain FC1 is set as a contextual element for the current diagram (several elements could be set as contextual). At this stage, the new diagram only contains two pieces of the Functional Chain and does not even display the Functional Chain.
 
  
-[[Image:Images/5.1.%20Diagram%20concepts_html_44f68dc3.png|792x640px]]
+[[Image:Images/5.1_Contextual_Diagram_Elements.png|950x500px]]
 
  
 The result is seen in the Properties View.
 
  
-[[Image:Images/5.1.%20Diagram%20concepts_html_3638aa88.png|498x66px]]
+[[Image:Images/5.1_Contextual_Diagram_Elements2.png|600x50px]]
 
  
 The next refresh [[Image:Images/5.1.%20Diagram%20concepts_html_35899bf3.png|39x28px]] on the diagram automatically creates the missing pieces of the Functional Chain. Any semantic change of the Functional Chain (addition of steps, etc.) will automatically be taken into account in this diagram.
@@ -121,7 +121,7 @@ When no diagram element is selected, the diagram toolbar contains a button for d
 In addition to the standard automatic layout, this specific action allows to arrange the edges so that they are as short as possible. This action moves the ports of a node / container when necessary. It is useful when the position of the nodes and containers has already been defined and edges still need a better layout.
 
  
-[[Image:Images/5.1.%20Diagram%20concepts_html_m12b23fb.png|1127x321px]]
+[[Image:Images/5.1.%20Diagram%20concepts_html_m12b23fb.png|900x250px]]
 
  
 <br>

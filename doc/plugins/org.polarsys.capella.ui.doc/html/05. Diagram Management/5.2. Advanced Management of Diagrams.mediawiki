@@ -18,7 +18,7 @@ Synchronized/Unsynchronized Diagrams, Insert/Remove tools, Show/Hide wizard. The
 Using the Type Insert/Remove tool, selection of the Class &ldquo;''PictureRequest''&rdquo;
 
  
-[[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_m1f9a28ae.png|153x74px]]<br>
+[[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_m1f9a28ae.png|170x70px]]<br>
 <br>
 <br>
 
@@ -96,13 +96,13 @@ They 				are less relevant for Contextual Diagrams, which are usually 				based 
 '''We now set the diagram Synchronized'''. The diagram palette is back to its original state, meaning the Properties Insert/Remove tool for example is not present anymore.
 
  
-[[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_m12e8ea27.png|221x104px]]
+[[Image:Images/5.5_Advanced_Management.png|400x220px]]
 
  
 After a Refresh, all Properties of both classes are displayed. And any new Property added by any mean (editors for example) will be automatically displayed after a Refresh of the diagram.
 
  
-[[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_m5ff89f63.png|242x134px]]
+[[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_m5ff89f63.png|300x160px]]
 
  
 Here is a non-exhaustive list of elements in different diagrams that are likely to appear automatically when the diagram is Synchronized: Function Ports, Component Ports, Properties of Classes, Exchange Item Allocations of Interfaces, any existing relationship between two elements on a diagram, Deployed Components, etc.
@@ -111,14 +111,14 @@ Here is a non-exhaustive list of elements in different diagrams that are likely 
 Using the '''Show/Hide wizard''', selection of the Properties &ldquo;''hResolution''&rdquo; and &ldquo;''vResolution''&rdquo; of &ldquo;''PictureRequest''&rdquo;.
 
  
-[[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_26d60da9.png|223x206px]]
+[[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_26d60da9.png|350x300px]]
 
  
 <br>
 <br>
 
  
-[[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_7ea48f9f.png|312x130px]]
+[[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_7ea48f9f.png|300x160px]]
 
  
 <br>
@@ -224,7 +224,7 @@ Let us now launch the contextual command on Logical System element.
 If we launch the command with &ldquo;Unsynchronize diagrams&rdquo; checked, LC1 and C1 will be removed from diagram.
 
  
-[[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_5ad072f.png|1035x681px]]
+[[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_5ad072f.png|868x550px]]
 
  
 <br>
@@ -238,7 +238,7 @@ But if we launch it with &ldquo;Unsynchronize diagrams&rdquo; unchecked, only C1
 <br>
 
  
-[[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_93bd649.png|1035x681px]]
+[[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_93bd649.png|868x550px]]
 
  
 <br>

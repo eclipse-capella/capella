@@ -50,13 +50,13 @@ We have seen that whenever components are copy/pasted, their function allocation
 Let us consider a Component Internal Interfaces diagram. In the figure below, the select component is being copy/pasted.
 
  
-[[Image:Images/5.3.%20Diagram%20Business%20Copy%20Paste_html_m597582b4.png|279x162px]]
+[[Image:Images/5.3.%20Diagram%20Business%20Copy%20Paste_html_m597582b4.png|500x300px]]
 
  
 The resulting diagram is as follows.
 
  
-[[Image:Images/5.3.%20Diagram%20Business%20Copy%20Paste_html_m5e9522c.png|332x197px]]
+[[Image:Images/5.3.%20Diagram%20Business%20Copy%20Paste_html_m5e9522c.png|500x300px]]
 
  
 We can notice that the Interface Use / Require and Interface Implementation / Provide relations have been duplicated and are linked to the original interfaces. This is again a specific business rule which aims at obtaining the expected result in one step.

@@ -79,7 +79,7 @@ Elements from the referenced library are accessible from elements in the Project
 The transfer dialog display both elements coming from the current Project and elements from the Library.
 
  
-[[Image:Images/9.2.%20Basic%20Use%20Case_html_71e0fc21.png|681x284px]]
+[[Image:Images/9.2.%20Basic%20Use%20Case_html_71e0fc21.png|750x350px]]
 
  
 Once the allocation is performed, the result can be seen in the Semantic Browser.
