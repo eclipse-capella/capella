@@ -16,9 +16,9 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.transition.common.ExtensionHelper;
 import org.polarsys.capella.core.transition.common.constants.ISchemaConstants;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -35,7 +35,9 @@ public abstract class ExtendedTraceabilityConfiguration extends TraceabilityConf
    * @param context
    */
   protected void loadConfigurations(IContext context, String identifier) {
-    for (Object object : ExtensionHelper.collectFromExtensions(context, ISchemaConstants.EXTENSION_ID, identifier)) {
+    for (Object object : ExtensionHelper.collectFromExtensions(context, ISchemaConstants.EXTENSION_ID, identifier,
+        (String) context.get(ITransitionConstants.TRANSPOSER_PURPOSE),
+        (String) context.get(ITransitionConstants.TRANSPOSER_MAPPING))) {
       if (object instanceof ITraceabilityConfiguration) {
         addConfiguration(context, (ITraceabilityConfiguration) object);
       }
@@ -98,7 +100,8 @@ public abstract class ExtendedTraceabilityConfiguration extends TraceabilityConf
    * {@inheritDoc}
    */
   @Override
-  public boolean useHandlerForAttachment(EObject source, EObject target, ITraceabilityHandler handler, IContext context) {
+  public boolean useHandlerForAttachment(EObject source, EObject target, ITraceabilityHandler handler,
+      IContext context) {
     boolean result = super.useHandlerForAttachment(source, target, handler, context);
 
     if (result) {

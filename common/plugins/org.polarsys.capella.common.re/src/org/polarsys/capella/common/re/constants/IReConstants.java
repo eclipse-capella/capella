@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,17 +70,24 @@ public class IReConstants {
   public static final String PROPERTY__TARGET_NAME = "targetName";
 
   // Virtual links are:
-  // When we create a replica from a rec, we create for all elements of the rec a link, that we will reconnect further to the
+  // When we create a replica from a rec, we create for all elements of the
+  // rec a link, that we will reconnect further to the
   // element of the replica created while diffmerge.
-  // When attached to the source element (of the rec), the link is located in the VIRTUAL_LINKS.
-  // On diffmerge, when the link is linked to the element of the rpl, the link is located in the VIRTUAL_LINKS_2. Since it is a real link, it should not be
+  // When attached to the source element (of the rec), the link is located in
+  // the VIRTUAL_LINKS.
+  // On diffmerge, when the link is linked to the element of the rpl, the link
+  // is located in the VIRTUAL_LINKS_2. Since it is a real link, it should not
+  // be
   // removed
   // except if a CANCEL is triggered.
-  // At the end of the operation, VIRTUAL_LINKS_2 is copied into VIRTUAL_LINKS_3, list of links which should not be deleted at the FinalizationActivity.
+  // At the end of the operation, VIRTUAL_LINKS_2 is copied into
+  // VIRTUAL_LINKS_3, list of links which should not be deleted at the
+  // FinalizationActivity.
 
   // All links created while using tooling
   public static final String CREATED_LINKS = "CREATED_LINKS";
-  // All links of a RPL towards semantic elements of the REC. updated while diffmerge process
+  // All links of a RPL towards semantic elements of the REC. updated while
+  // diffmerge process
   public static final String VIRTUAL_LINKS = "VIRTUAL_LINKS";
   // All links to keep after tooling. Some links will be deleted
   public static final String CREATED_LINKS_TO_KEEP = "CREATED_LINKS_TO_KEEP";
@@ -97,10 +104,19 @@ public class IReConstants {
 
   public static final String RELATED_ELEMENTS_SCOPE_HANDLER = "RELATED_ELEMENTS_SCOPE_HANDLER";
   public static final String SHARED_ELEMENTS_SCOPE_HANDLER = "SHARED_ELEMENTS_SCOPE_HANDLER";
+  public static final String VALID_SHARED_ELEMENTS_SCOPE_HANDLER = "VALID_SHARED_ELEMENTS_SCOPE_HANDLER";
   public static final String DEPENDENCIES_SCOPE_HANDLER = "DEPENDENCIES_SCOPE_HANDLER";
   public static final Object SCOPE_COMPUTATION_SCOPE_HANDLER = "SCOPE_COMPUTATION_SCOPE_HANDLER";
   public static final Object SCOPE_COMPLEMENTARY_COMPUTATION_SCOPE_HANDLER = "SCOPE_COMPLEMENTARY_COMPUTATION_SCOPE_HANDLER";
   public static final Object ORIGINAL_SUFFIX = "ORIGINAL_SUFFIX";
+
+  public static final String RE_MAPPING = "org.polarsys.capella.common.re"; //$NON-NLS-1$
+  public static final String RE_PURPOSE__SHARED_ELEMENTS = "org.polarsys.capella.common.re.sharedElements"; //$NON-NLS-1$
+  public static final String RE_PURPOSE__VALID_SHARED_ELEMENTS = "org.polarsys.capella.common.re.validSharedElements"; //$NON-NLS-1$
+  public static final String RE_PURPOSE__DEPENDENCIES = "org.polarsys.capella.common.re.dependencies";
+  public static final String RE_PURPOSE__RELATED_ELEMENTS = "org.polarsys.capella.common.re.relatedElements";
+  public static final String RE_PURPOSE__SCOPE_ELEMENTS = "org.polarsys.capella.common.re.scopeElements";
+  public static final String RE_PURPOSE__COMPLEMENTARY_SCOPE_ELEMENTS = "org.polarsys.capella.common.re.complementaryScopeElements";
 
   public static boolean ENABLE_SUB_INSTANCIATION() {
     return false;

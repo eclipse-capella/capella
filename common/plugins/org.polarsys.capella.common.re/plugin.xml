@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -1037,6 +1037,56 @@
                id="http://www.polarsys.org/capella/common/re/1.0.0">
          </domain>
       </handlers>
+      <handlers
+            id="org.polarsys.capella.common.re.sharedElements"
+            mapping="org.polarsys.capella.common.re"
+            purpose="org.polarsys.capella.common.re.sharedElements">
+         <scopeRetriever
+               class="org.polarsys.capella.common.re.handlers.scope.SharedElementsScopeRetriever"
+               id="org.polarsys.capella.common.re.handlers.scope.SharedElementsScopeRetriever">
+         </scopeRetriever>
+      </handlers>
+      <handlers
+            id="org.polarsys.capella.common.re.validSharedElements"
+            mapping="org.polarsys.capella.common.re"
+            purpose="org.polarsys.capella.common.re.validSharedElements">
+         <scopeFilter
+               class="org.polarsys.capella.common.re.handlers.scope.LibraryValidSharedElementsFilter"
+               id="org.polarsys.capella.common.re.handlers.scope.LibraryInvalidSharedElementsFilter">
+         </scopeFilter>
+      </handlers>
+      <handlers
+            id="org.polarsys.capella.common.re.dependencies"
+            mapping="org.polarsys.capella.common.re"
+            purpose="org.polarsys.capella.common.re.dependencies">
+         <scopeRetriever
+               class="org.polarsys.capella.core.transition.common.handlers.scope.RuleRequiredElementsScopeRetriever"
+               id="org.polarsys.capella.core.transition.common.handlers.scope.RuleRequiredElementsScopeRetriever">
+         </scopeRetriever>
+      </handlers>
+      <handlers
+            id="org.polarsys.capella.common.re.scopeElements"
+            mapping="org.polarsys.capella.common.re"
+            purpose="org.polarsys.capella.common.re.scopeElements">
+         <scopeRetriever
+               class="org.polarsys.capella.common.re.handlers.scope.ContainmentScopeRetriever"
+               id="org.polarsys.capella.common.re.handlers.scope.ContainmentScopeRetriever">
+         </scopeRetriever>
+      </handlers>
+      <handlers
+            id="org.polarsys.capella.common.re.relatedElements"
+            mapping="org.polarsys.capella.common.re"
+            purpose="org.polarsys.capella.common.re.relatedElements">
+         <scopeRetriever
+               class="org.polarsys.capella.common.re.handlers.scope.ReferencerScopeRetriever"
+               id="org.polarsys.capella.common.re.handlers.scope.ReferencerScopeRetriever">
+         </scopeRetriever>
+         <scopeFilter
+               class="org.polarsys.capella.common.re.handlers.scope.CatalogElementLinkFilter"
+               id="org.polarsys.capella.common.re.handlers.scope.CatalogElementLinkFilter">
+         </scopeFilter>
+      </handlers>
+      
    </extension>   
           
    <extension

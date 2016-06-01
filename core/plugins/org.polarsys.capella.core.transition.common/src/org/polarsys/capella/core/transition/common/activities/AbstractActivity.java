@@ -17,18 +17,18 @@ import java.util.Map;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.osgi.util.NLS;
-
+import org.polarsys.capella.core.transition.common.ExtensionHelper;
+import org.polarsys.capella.core.transition.common.constants.ISchemaConstants;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.constants.ITransitionSteps;
+import org.polarsys.capella.core.transition.common.constants.Messages;
+import org.polarsys.capella.core.transition.common.handlers.IHandler;
+import org.polarsys.capella.core.transition.common.handlers.activity.IActivityExtender;
 import org.polarsys.kitalpha.cadence.core.api.IActivity;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.cadence.core.api.parameter.DeclaredParameter;
 import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ParameterError;
-import org.polarsys.capella.core.transition.common.ExtensionHelper;
-import org.polarsys.capella.core.transition.common.constants.ISchemaConstants;
-import org.polarsys.capella.core.transition.common.constants.ITransitionSteps;
-import org.polarsys.capella.core.transition.common.constants.Messages;
-import org.polarsys.capella.core.transition.common.handlers.IHandler;
-import org.polarsys.capella.core.transition.common.handlers.activity.IActivityExtender;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -52,7 +52,9 @@ public abstract class AbstractActivity implements IActivity {
   protected IStatus preRun(IContext context, ActivityParameters activityParams) {
 
     IStatus status = Status.OK_STATUS;
-    for (Object handler : ExtensionHelper.collectActivityExtendersFromExtensions(context, ISchemaConstants.EXTENSION_ID, getActivityIdentifier())) {
+    for (Object handler : ExtensionHelper.collectActivityExtendersFromExtensions(context, ISchemaConstants.EXTENSION_ID,
+        getActivityIdentifier(), (String) context.get(ITransitionConstants.TRANSPOSER_PURPOSE),
+        (String) context.get(ITransitionConstants.TRANSPOSER_MAPPING))) {
       if (handler instanceof IActivityExtender) {
         IActivityExtender activityExtender = (IActivityExtender) handler;
         activityExtender.init(context);
@@ -69,7 +71,9 @@ public abstract class AbstractActivity implements IActivity {
   protected IStatus postRun(IContext context, ActivityParameters activityParams) {
 
     IStatus status = Status.OK_STATUS;
-    for (Object handler : ExtensionHelper.collectActivityExtendersFromExtensions(context, ISchemaConstants.EXTENSION_ID, getActivityIdentifier())) {
+    for (Object handler : ExtensionHelper.collectActivityExtendersFromExtensions(context, ISchemaConstants.EXTENSION_ID,
+        getActivityIdentifier(), (String) context.get(ITransitionConstants.TRANSPOSER_PURPOSE),
+        (String) context.get(ITransitionConstants.TRANSPOSER_MAPPING))) {
       if (handler instanceof IActivityExtender) {
         IActivityExtender activityExtender = (IActivityExtender) handler;
         status = activityExtender.postActivity(context, getActivityIdentifier(), activityParams);
@@ -146,6 +150,7 @@ public abstract class AbstractActivity implements IActivity {
 
   /**
    * If an handler is defined in parameters for the given handlerId, use it
+   * 
    * @param optionsHandler_p
    * @param activityParams
    * @return
@@ -162,6 +167,7 @@ public abstract class AbstractActivity implements IActivity {
 
   /**
    * If an handler is defined in parameters for the given handlerId, use it
+   * 
    * @param optionsHandler_p
    * @param activityParams
    * @return
@@ -178,6 +184,7 @@ public abstract class AbstractActivity implements IActivity {
 
   /**
    * Returns if the given status prevent next activities of transition
+   * 
    * @param status
    * @return
    */
@@ -187,6 +194,7 @@ public abstract class AbstractActivity implements IActivity {
 
   /**
    * Ensure that all given string_p are registered in the context
+   * 
    * @param context
    * @param strings
    * @return
@@ -195,7 +203,8 @@ public abstract class AbstractActivity implements IActivity {
     if (strings != null) {
       for (String string : strings) {
         if (!context.exists(string) || (context.get(string) == null)) {
-          return new Status(IStatus.ERROR, Messages.Activity_Transition, NLS.bind("Parameter ''{0}'' must be defined", string));
+          return new Status(IStatus.ERROR, Messages.Activity_Transition,
+              NLS.bind("Parameter ''{0}'' must be defined", string));
         }
       }
     }
