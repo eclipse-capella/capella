@@ -1,0 +1,2 @@
+Capella from bugzilla/000382/changeViewpointLifecycle branch
+with Basic Mass viewpoint and provided dropins

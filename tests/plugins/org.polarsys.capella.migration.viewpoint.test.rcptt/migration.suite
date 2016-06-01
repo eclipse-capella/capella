@@ -1,0 +1,21 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: migration
+Element-Type: testsuite
+Element-Version: 2.0
+Id: _8f5gkCaDEeaTGait5rgtLw
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 5/30/16 6:31 PM
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_R5BuACZHEeaTGait5rgtLw	// kind: 'test' name: 'migration1' path: 'migration/migration1.test'
+_VmfE8CZMEeaTGait5rgtLw	// kind: 'test' name: 'migration2' path: 'migration/migration2.test'
+_FilHACZNEeaTGait5rgtLw	// kind: 'test' name: 'migration3' path: 'migration/migration3.test'
+_3yCS0CZNEeaTGait5rgtLw	// kind: 'test' name: 'migration4' path: 'migration/migration4.test'
+_qAKMcCZPEeaTGait5rgtLw	// kind: 'test' name: 'migration5' path: 'migration/migration5.test'
+_6MdF0CZYEeaTGait5rgtLw	// kind: 'test' name: 'migration6' path: 'migration/migration6.test'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--
