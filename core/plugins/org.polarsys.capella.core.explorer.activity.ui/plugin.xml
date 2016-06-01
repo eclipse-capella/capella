@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -196,10 +196,20 @@
                </Description>
             </Activity>
             <Activity
+                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.oa.NewModeStateMachineDiagramAdapter"
+                  id="org.polarsys.capella.core.explorer.activity.ui.oa.mode.state.machine"
+                  image="icons/full/ctool/mode-state-diagram.png"
+                  index="2"
+                  name="%AbstractCapellaArchitectureActivityExplorerPage_NewModeStateMachineDiagram_Title">
+               <Description>
+                  Description body text
+               </Description>
+            </Activity>
+            <Activity
                   class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.oa.NewStateMachineDiagramAdapter"
                   id="org.polarsys.capella.core.explorer.activity.ui.oa.modes.states.machine"
                   image="icons/full/ctool/mode-state-diagram.png"
-                  index="2"
+                  index="3"
                   name="%AbstractCapellaArchitectureActivityExplorerPage_NewStateMachinDiagram_Title">
                <Description>
                   
@@ -209,7 +219,7 @@
                   class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.oa.NewStateModeFunctionsMatrixAdapter"
                   id="org.polarsys.capella.core.explorer.activity.ui.oa.modes.states.matrix"
                   image="icons/full/ctool/matrix.png"
-                  index="3"
+                  index="4"
                   name="%AbstractCapellaArchitectureActivityExplorerPage_NewStateModeFunctionsMatrix_Title">
                <Description>
                   
@@ -473,10 +483,20 @@
                </Description>
             </Activity>
             <Activity
+                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.sa.NewModeStateMachineDiagramAdapter"
+                  id="org.polarsys.capella.core.explorer.activity.ui.sa.mode.state.machine"
+                  image="icons/full/ctool/mode-state-diagram.png"
+                  index="2"
+                  name="%AbstractCapellaArchitectureActivityExplorerPage_NewModeStateMachineDiagram_Title">
+               <Description>
+                  Description body text
+               </Description>
+            </Activity>
+            <Activity
                   class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.sa.NewStateMachineDiagramAdapter"
                   id="org.polarsys.capella.core.explorer.activity.ui.sa.modes.states.machine"
                   image="icons/full/ctool/mode-state-diagram.png"
-                  index="2"
+                  index="3"
                   name="%AbstractCapellaArchitectureActivityExplorerPage_NewStateMachinDiagram_Title">
                <Description>
                   
@@ -486,7 +506,7 @@
                   class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.sa.NewStateModeFunctionsMatrixAdapter"
                   id="org.polarsys.capella.core.explorer.activity.ui.sa.modes.states.matrix"
                   image="icons/full/ctool/matrix.png"
-                  index="3"
+                  index="4"
                   name="%AbstractCapellaArchitectureActivityExplorerPage_NewStateModeFunctionsMatrix_Title">
                <Description>
                   
@@ -747,10 +767,20 @@
                </Description>
             </Activity>
             <Activity
+                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.la.NewModeStateMachineDiagramAdapter"
+                  id="org.polarsys.capella.core.explorer.activity.ui.la.mode.state.machine"
+                  image="icons/full/ctool/mode-state-diagram.png"
+                  index="2"
+                  name="%AbstractCapellaArchitectureActivityExplorerPage_NewModeStateMachineDiagram_Title">
+               <Description>
+                  Description body text
+               </Description>
+            </Activity>
+            <Activity
                   class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.la.NewStateMachineDiagramAdapter"
                   id="org.polarsys.capella.core.explorer.activity.ui.la.modes.states.machine"
                   image="icons/full/ctool/mode-state-diagram.png"
-                  index="2"
+                  index="3"
                   name="%AbstractCapellaArchitectureActivityExplorerPage_NewStateMachinDiagram_Title">
                <Description>
                   
@@ -760,7 +790,7 @@
                   class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.la.NewStateModeFunctionsMatrixAdapter"
                   id="org.polarsys.capella.core.explorer.activity.ui.la.modes.states.matrix"
                   image="icons/full/ctool/matrix.png"
-                  index="3"
+                  index="4"
                   name="%AbstractCapellaArchitectureActivityExplorerPage_NewStateModeFunctionsMatrix_Title">
                <Description>
                   
@@ -1022,10 +1052,20 @@
                </Description>
             </Activity>
             <Activity
+                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.pa.NewModeStateMachineDiagramAdapter"
+                  id="org.polarsys.capella.core.explorer.activity.ui.pa.mode.state.machine"
+                  image="icons/full/ctool/mode-state-diagram.png"
+                  index="2"
+                  name="%AbstractCapellaArchitectureActivityExplorerPage_NewModeStateMachineDiagram_Title">
+               <Description>
+                  Description body text
+               </Description>
+            </Activity>
+            <Activity
                   class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.pa.NewStateMachineDiagramAdapter"
                   id="org.polarsys.capella.core.explorer.activity.ui.pa.modes.states.machine"
                   image="icons/full/ctool/mode-state-diagram.png"
-                  index="2"
+                  index="3"
                   name="%AbstractCapellaArchitectureActivityExplorerPage_NewStateMachinDiagram_Title">
                <Description>
                   
@@ -1035,7 +1075,7 @@
                   class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.pa.NewStateModeFunctionsMatrixAdapter"
                   id="org.polarsys.capella.core.explorer.activity.ui.pa.modes.states.matrix"
                   image="icons/full/ctool/matrix.png"
-                  index="3"
+                  index="4"
                   name="%AbstractCapellaArchitectureActivityExplorerPage_NewStateModeFunctionsMatrix_Title">
                <Description>
                   

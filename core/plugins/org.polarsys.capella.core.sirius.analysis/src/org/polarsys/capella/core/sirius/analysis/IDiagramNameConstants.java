@@ -28,6 +28,7 @@ public interface IDiagramNameConstants extends DiagramDescriptionConstants {
   String INTERFACE_DIAGRAM_NAME = "Interface Diagram"; //$NON-NLS-1$
   String INTERFACES_CAPABILITIES_AND_SCENARIOS_DIAGRAM_NAME = "Interfaces - Capabilities and Scenarios"; //$NON-NLS-1$
   String INTERFACES_CAPABILITIES_DIAGRAM_NAME = "Interfaces - Capabilities"; //$NON-NLS-1$
+  String MODE_STATE_DIAGRAM_NAME = "Mode State Machine"; //$NON-NLS-1$
   String MODES_AND_STATES_DIAGRAM_NAME = "Modes & States"; //$NON-NLS-1$
   String MODES_STATE_MACHINE_DIAGRAM_NAME = "Mode State Machine"; //$NON-NLS-1$
   String PACKAGE_DEPENDENCIES_DIAGRAM_NAME = "Package Dependencies"; //$NON-NLS-1$
