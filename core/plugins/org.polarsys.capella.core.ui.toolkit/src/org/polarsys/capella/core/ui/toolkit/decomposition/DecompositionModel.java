@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.jface.resource.ImageRegistry;
 
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.model.helpers.RefinementLinkExt;
 
@@ -93,21 +94,21 @@ public class DecompositionModel {
 
   protected boolean hideTechnicalInterfaces = true;
   
-  private List<DecompositionItem> _decompositionItemRemoved;
+  private List<DecompositionItem> decompositionItemRemoved;
 
-  private List<Decomposition> _decompositions;
+  private List<Decomposition> decompositions;
 
 //  private String _fieldNameLiteral;
 
-  private ImageRegistry _imgRegistry;
+  private ImageRegistry imgRegistry;
 
-  private List<DecompositionModelListener> _listenersList;
+  private List<DecompositionModelListener> listenersList;
 
 //  private CapellaElementStore _capellaElementStore;
 
-  private List<DecompositionComponent> _reusableComponents;
+  private List<DecompositionComponent> reusableComponents;
 
-  private DecompositionComponent _sourceComponent;
+  private DecompositionComponent sourceComponent;
 
   /**
    * Constructor
@@ -115,18 +116,18 @@ public class DecompositionModel {
   protected DecompositionModel() {
     setSourceComponent(null);
     setDecompositions(new ArrayList<Decomposition>(1));
-    _listenersList = new ArrayList<DecompositionModelListener>(1);
+    listenersList = new ArrayList<DecompositionModelListener>(1);
     setReusableComponents(new ArrayList<DecompositionComponent>(1));
-    _decompositionItemRemoved = new ArrayList<DecompositionItem>();
+    decompositionItemRemoved = new ArrayList<DecompositionItem>();
   }
 
   /**
    * Constructor
-   * @param sourceComponent_p the source component for the model
+   * @param sourceComponent the source component for the model
    */
-  public DecompositionModel(DecompositionComponent sourceComponent_p) {
+  public DecompositionModel(DecompositionComponent sourceComponent) {
     this();
-    setSourceComponent(sourceComponent_p);
+    setSourceComponent(sourceComponent);
   }
 
   public boolean doesHideTechnicalInterfaces() {
@@ -139,66 +140,66 @@ public class DecompositionModel {
   
   /**
    * Adds a new Decomposition
-   * @param decomposition_p the Decomposition
+   * @param decomposition the Decomposition
    * @return true if the decomposition is successfully added
    */
-  public boolean addDecomposition(Decomposition decomposition_p) {
-    decomposition_p.setDecompositionModel(this);
-    decomposition_p.setValue(Decomposition.DUMMY_VALUE);
-    _decompositions.add(decomposition_p);
-    fireDecompositionAdded(decomposition_p);
+  public boolean addDecomposition(Decomposition decomposition) {
+    decomposition.setDecompositionModel(this);
+    decomposition.setValue(Decomposition.DUMMY_VALUE);
+    decompositions.add(decomposition);
+    fireDecompositionAdded(decomposition);
     return true;
   }
 
-  public boolean addDecomposition(Decomposition decomposition_p, boolean alreadyCreated_p) {
-    decomposition_p.setDecompositionModel(this);
-    _decompositions.add(decomposition_p);
+  public boolean addDecomposition(Decomposition decomposition, boolean alreadyCreated) {
+    decomposition.setDecompositionModel(this);
+    decompositions.add(decomposition);
     return true;
   }
 
   /**
    * Adds a new Decomposition
-   * @param name_p the name of the decomposition
+   * @param name the name of the decomposition
    * @return true if the decomposition is successfully added
    */
-  public boolean addDecomposition(String name_p) {
+  public boolean addDecomposition(String name) {
     Decomposition decomposition = new Decomposition();
-    decomposition.setName(name_p);
+    decomposition.setName(name);
     return addDecomposition(decomposition);
   }
 
   public void addDecompositionItemRemoved(DecompositionItem decItem) {
-    _decompositionItemRemoved.add(decItem);
+    decompositionItemRemoved.add(decItem);
 
   }
 
   /**
    * Adds a DecompositionModelListener to the listener list
-   * @param listener_p the DecompositionModelListener
+   * @param listener the DecompositionModelListener
    */
-  public void addDecompositionModelListener(DecompositionModelListener listener_p) {
-    _listenersList.add(listener_p);
+  public void addDecompositionModelListener(DecompositionModelListener listener) {
+    listenersList.add(listener);
   }
 
   /**
    * Adds a new target component to the decomposition
-   * @param decomposition_p the decomposition onto which target component to be added
-   * @param targetComp_p the target component
+   * @param decomposition the decomposition onto which target component to be added
+   * @param targetComp the target component
    * @return true if the target component can be added
    */
-  public boolean addNewTargetComponent(Decomposition decomposition_p, DecompositionComponent targetComp_p) {
+  public boolean addNewTargetComponent(Decomposition decomposition, DecompositionComponent targetComp) {
 
-    decomposition_p.addTargetComponent(targetComp_p);
-    fireTargetComponentAdded((_decompositions.size() == 1) ? null : decomposition_p, targetComp_p);
-    setPathForNewTargetComponent(targetComp_p);
+    decomposition.addTargetComponent(targetComp);
+    fireTargetComponentAdded((decompositions.size() == 1) ? null : decomposition, targetComp);
+    setPathForNewTargetComponent(targetComp);
     return true;
   }
 
   /**
-   * @param comp_p
+   * @param comp
    */
-  public void addReusedComponent(DecompositionComponent comp_p) {
-    _reusableComponents.add(comp_p);
+  public void addReusedComponent(DecompositionComponent comp) {
+    reusableComponents.add(comp);
   }
 
   /**
@@ -225,20 +226,20 @@ public class DecompositionModel {
   /**
    * Attach a service on new target Interface
    */
-  public boolean attachService(DecompositionComponent component_p, DecompositionItemService itemSce_p, DecompositionItem item_p) {
+  public boolean attachService(DecompositionComponent component, DecompositionItemService itemSce, DecompositionItem item) {
 
     // Get and Remove External Interface should contains the ItemService delegated
-    List<DecompositionItem> itfWithScesFoundList = getItemInterfaceListContainSce(component_p.getItems(), itemSce_p, INTERFACE_KIND.External);
+    List<DecompositionItem> itfWithScesFoundList = getItemInterfaceListContainSce(component.getItems(), itemSce, INTERFACE_KIND.External);
     for (DecompositionItem currentItf : itfWithScesFoundList) {
-      detachInterface(component_p, currentItf);
+      detachInterface(component, currentItf);
     }
 
-    DecompositionItem decItem = new DecompositionItem(getUniqName(component_p.getItems()), null, DecompositionItem.UNASSIGNED);
-    decItem.setInterfaceUsage(itemSce_p.isUsed());
-    decItem.addServiceItems(itemSce_p);
-    decItem.addOriginInterfaces(item_p.getValue());
-    itemSce_p.setParentDecompositionItem(decItem);
-    return attachInterface(component_p, decItem);
+    DecompositionItem decItem = new DecompositionItem(getUniqName(component.getItems()), null, DecompositionItem.UNASSIGNED);
+    decItem.setInterfaceUsage(itemSce.isUsed());
+    decItem.addServiceItems(itemSce);
+    decItem.addOriginInterfaces(item.getValue());
+    itemSce.setParentDecompositionItem(decItem);
+    return attachInterface(component, decItem);
   }
 
   /**
@@ -247,8 +248,8 @@ public class DecompositionModel {
    * @param copy
    * @return
    */
-  public boolean attachService(DecompositionItem itf_p, DecompositionItemService sce_p) {
-    return attachService(itf_p, sce_p, itf_p);
+  public boolean attachService(DecompositionItem itf, DecompositionItemService sce) {
+    return attachService(itf, sce, itf);
   }
 
   /**
@@ -257,36 +258,36 @@ public class DecompositionModel {
    * @param copy
    * @return
    */
-  public boolean attachService(DecompositionItem itf_p, DecompositionItemService sce_p, DecompositionItem item_p) {
+  public boolean attachService(DecompositionItem itf, DecompositionItemService sce, DecompositionItem item) {
 
     // Get and Remove External Interface should contains the ItemService delegated
-    List<DecompositionItem> itfWithScesFoundList = getItemInterfaceListContainSce(itf_p.getParentComponent().getItems(), sce_p, INTERFACE_KIND.External);
+    List<DecompositionItem> itfWithScesFoundList = getItemInterfaceListContainSce(itf.getParentComponent().getItems(), sce, INTERFACE_KIND.External);
     for (DecompositionItem currentItf : itfWithScesFoundList) {
-      detachInterface(itf_p.getParentComponent(), currentItf);
+      detachInterface(itf.getParentComponent(), currentItf);
     }
 
-    itf_p.addServiceItems(sce_p);
-    itf_p.addOriginInterfaces(item_p.getValue());
-    sce_p.setParentDecompositionItem(itf_p);
-    fireInterfaceAttached(itf_p.getParentComponent(), itf_p);
-    refreshStatus(itf_p.getParentComponent().getParentDecomposition(), itf_p.isInterfaceUsage());
+    itf.addServiceItems(sce);
+    itf.addOriginInterfaces(item.getValue());
+    sce.setParentDecompositionItem(itf);
+    fireInterfaceAttached(itf.getParentComponent(), itf);
+    refreshStatus(itf.getParentComponent().getParentDecomposition(), itf.isInterfaceUsage());
     return true;
   }
 
-  private boolean checkServiceDelegated(DecompositionItemService itemSce_p, List<DecompositionItem> itemListItf_p, boolean isUsed_p) {
-    for (DecompositionItem itemItf : itemListItf_p) {
-      if (itemItf.isInterfaceUsage() == isUsed_p) {
-        for (DecompositionItemService itemSce : itemItf.getServiceItems()) {
-          if (itemSce_p.getValue() == itemSce.getValue()) {
+  private boolean checkServiceDelegated(DecompositionItemService itemSce, List<DecompositionItem> itemListItf, boolean isUsed) {
+    for (DecompositionItem itemItf : itemListItf) {
+      if (itemItf.isInterfaceUsage() == isUsed) {
+        for (DecompositionItemService serviceItem : itemItf.getServiceItems()) {
+          if (checkEqualDecompositionItemService(itemSce, serviceItem)) {
             return true;
           }
 
           // Check equality between Operation by Refinement link
           List<CapellaElement> listMelo =
-              RefinementLinkExt.getRefinementRelatedTargetElements((CapellaElement) itemSce.getValue(), InformationPackage.Literals.OPERATION);
+              RefinementLinkExt.getRefinementRelatedTargetElements((CapellaElement) serviceItem.getValue(), InformationPackage.Literals.OPERATION);
           if (listMelo.size() != 0) {
             CapellaElement opOrigin = listMelo.get(0);
-            if (opOrigin == itemSce_p.getValue()) {
+            if (opOrigin == itemSce.getValue()) {
               return true;
             }
           }
@@ -294,6 +295,14 @@ public class DecompositionModel {
       }
     }
     return false;
+  }
+
+  private boolean checkEqualDecompositionItemService(DecompositionItemService itemSce1,
+      DecompositionItemService itemSce2) {
+    //If the DecompositionItemService represents an ExchangeItemAllocation, check the equality of there allocated items
+    if (itemSce1.getValue() instanceof ExchangeItemAllocation && itemSce2.getValue() instanceof ExchangeItemAllocation)
+      return ((ExchangeItemAllocation)itemSce1.getValue()).getAllocatedItem() == ((ExchangeItemAllocation)itemSce2.getValue()).getAllocatedItem();
+    return itemSce1.getValue() == itemSce2.getValue();
   }
 
   /**
@@ -311,23 +320,23 @@ public class DecompositionModel {
   /**
    * Detaches an interface from the target component
    * @param sourceComponent_p the component from which the interface is detached
-   * @param item_p the item
+   * @param item the item
    * @return true if the interface is successfully detached
    */
-  public boolean detachInterface(DecompositionComponent component_p, DecompositionItem item_p) {
-    component_p.removeItem(item_p);
-    fireInterfaceDetached(component_p, item_p);
-    refreshStatus(component_p.getParentDecomposition(), item_p.isInterfaceUsage());
+  public boolean detachInterface(DecompositionComponent component, DecompositionItem item) {
+    component.removeItem(item);
+    fireInterfaceDetached(component, item);
+    refreshStatus(component.getParentDecomposition(), item.isInterfaceUsage());
     return true;
   }
 
-  public boolean detachService(DecompositionItem itemItf_p, DecompositionItemService itemSce_p) {
+  public boolean detachService(DecompositionItem itemItf, DecompositionItemService itemSce) {
 
-    DecompositionComponent component = itemItf_p.getParentComponent();
-    itemItf_p.removeItem(itemSce_p);
+    DecompositionComponent component = itemItf.getParentComponent();
+    itemItf.removeItem(itemSce);
 
-    fireInterfaceAttached(component, itemItf_p);
-    refreshStatus(component.getParentDecomposition(), itemItf_p.isInterfaceUsage());
+    fireInterfaceAttached(component, itemItf);
+    refreshStatus(component.getParentDecomposition(), itemItf.isInterfaceUsage());
     return true;
 
   }
@@ -354,62 +363,62 @@ public class DecompositionModel {
 
   /**
    * Fires TargetComponentRemoved Event for all the components
-   * @param decomposition_p the decomposition from which all the target components have to be removed
+   * @param decomposition the decomposition from which all the target components have to be removed
    * @return true if the operation is successful
    */
-  protected boolean fireAllTargetComponentRemoved(Decomposition decomposition_p) {
+  protected boolean fireAllTargetComponentRemoved(Decomposition decomposition) {
     DecompositionModelEvent event =
-        new DecompositionModelEvent(getSourceComponent(), null, decomposition_p, null, DecompositionModelEvent.TARGET_COMPONENT_ALL_REMOVED);
+        new DecompositionModelEvent(getSourceComponent(), null, decomposition, null, DecompositionModelEvent.TARGET_COMPONENT_ALL_REMOVED);
     fireModelChanged(event);
     return event.isOperationSuccess();
   }
 
   /**
    * Fires DecompositionAdded Event
-   * @param newDecomposition_p the new decomposition
+   * @param newDecomposition the new decomposition
    * @return true if the operation is successful
    */
-  protected boolean fireDecompositionAdded(Decomposition newDecomposition_p) {
+  protected boolean fireDecompositionAdded(Decomposition newDecomposition) {
     DecompositionModelEvent event =
-        new DecompositionModelEvent(getSourceComponent(), null, newDecomposition_p, null, DecompositionModelEvent.DECOMPOSITION_ADDED);
+        new DecompositionModelEvent(getSourceComponent(), null, newDecomposition, null, DecompositionModelEvent.DECOMPOSITION_ADDED);
     fireModelChanged(event);
     return event.isOperationSuccess();
   }
 
   /**
    * Fires DecompositionRemoved Event
-   * @param decomposition_p the decomposition to be removed
+   * @param decomposition the decomposition to be removed
    * @return true if the operation is successful
    */
-  protected boolean fireDecompositionRemoved(Decomposition decomposition_p) {
+  protected boolean fireDecompositionRemoved(Decomposition decomposition) {
     DecompositionModelEvent event =
-        new DecompositionModelEvent(getSourceComponent(), null, decomposition_p, null, DecompositionModelEvent.DECOMPOSITION_REMOVED);
+        new DecompositionModelEvent(getSourceComponent(), null, decomposition, null, DecompositionModelEvent.DECOMPOSITION_REMOVED);
     fireModelChanged(event);
     return event.isOperationSuccess();
   }
 
   /**
    * Fires DecompositionRenamed Event
-   * @param decomposition_p the decomposition to be renamed
-   * @param newName_p the new name of the decomposition
+   * @param decomposition the decomposition to be renamed
+   * @param newName the new name of the decomposition
    * @return true if the operation is successful
    */
-  protected boolean fireDecompositionRenamed(Decomposition decomposition_p, String newName_p) {
+  protected boolean fireDecompositionRenamed(Decomposition decomposition, String newName) {
     DecompositionModelEvent event =
-        new DecompositionModelEvent(getSourceComponent(), null, decomposition_p, newName_p, DecompositionModelEvent.DECOMPOSITION_RENAMED);
+        new DecompositionModelEvent(getSourceComponent(), null, decomposition, newName, DecompositionModelEvent.DECOMPOSITION_RENAMED);
     fireModelChanged(event);
     return event.isOperationSuccess();
   }
 
   /**
    * Fires InterfaceAttached Event
-   * @param targetComponent_p the target component to which the interface has to be attached
-   * @param DecompositionItem_p wrapper for the interface
+   * @param targetComponent the target component to which the interface has to be attached
+   * @param decompositionItem wrapper for the interface
    * @return true if the operation is successful
    */
-  protected boolean fireInterfaceAttached(DecompositionComponent targetComponent_p, DecompositionItem DecompositionItem_p) {
+  protected boolean fireInterfaceAttached(DecompositionComponent targetComponent, DecompositionItem decompositionItem) {
     DecompositionModelEvent event =
-        new DecompositionModelEvent(getSourceComponent(), targetComponent_p, null, DecompositionItem_p,
+        new DecompositionModelEvent(getSourceComponent(), targetComponent, null, decompositionItem,
             DecompositionModelEvent.TARGET_COMPONENT_INTERFACE_ATTACHED);
     fireModelChanged(event);
     return event.isOperationSuccess();
@@ -417,13 +426,13 @@ public class DecompositionModel {
 
   /**
    * Fires InterfaceDetached Event
-   * @param targetComponent_p the target component from which the interface has to be removed
-   * @param DecompositionItem_p wrapper for the interface
+   * @param targetComponent the target component from which the interface has to be removed
+   * @param decompositionItem wrapper for the interface
    * @return true if the operation is successful
    */
-  protected boolean fireInterfaceDetached(DecompositionComponent targetComponent_p, DecompositionItem DecompositionItem_p) {
+  protected boolean fireInterfaceDetached(DecompositionComponent targetComponent, DecompositionItem decompositionItem) {
     DecompositionModelEvent event =
-        new DecompositionModelEvent(getSourceComponent(), targetComponent_p, null, DecompositionItem_p,
+        new DecompositionModelEvent(getSourceComponent(), targetComponent, null, decompositionItem,
             DecompositionModelEvent.TARGET_COMPONENT_INTERFACE_DETACHED);
     fireModelChanged(event);
     return event.isOperationSuccess();
@@ -441,54 +450,54 @@ public class DecompositionModel {
 
   /**
    * Fires TargetComponentAdded Event
-   * @param decomposition_p the decomposition onto which the target component is added
-   * @param comp_p the target component
+   * @param decomposition the decomposition onto which the target component is added
+   * @param comp the target component
    * @return true if the operation is successful
    */
-  protected boolean fireTargetComponentAdded(Decomposition decomposition_p, DecompositionComponent comp_p) {
+  protected boolean fireTargetComponentAdded(Decomposition decomposition, DecompositionComponent comp) {
     DecompositionModelEvent event =
-        new DecompositionModelEvent(getSourceComponent(), comp_p, decomposition_p, null, DecompositionModelEvent.TARGET_COMPONENT_ADDED);
+        new DecompositionModelEvent(getSourceComponent(), comp, decomposition, null, DecompositionModelEvent.TARGET_COMPONENT_ADDED);
     fireModelChanged(event);
     return event.isOperationSuccess();
   }
 
   /**
    * Fires TargetComponentRemoved Event
-   * @param decomposition_p the decomposition from which the target component is removed
-   * @param targetComp_p the target component
+   * @param decomposition the decomposition from which the target component is removed
+   * @param targetComp the target component
    * @return true if the operation is successful
    */
-  protected boolean fireTargetComponentRemoved(Decomposition decomposition_p, DecompositionComponent targetComp_p) {
+  protected boolean fireTargetComponentRemoved(Decomposition decomposition, DecompositionComponent targetComp) {
     DecompositionModelEvent event =
-        new DecompositionModelEvent(getSourceComponent(), targetComp_p, decomposition_p, null, DecompositionModelEvent.TARGET_COMPONENT_REMOVED);
+        new DecompositionModelEvent(getSourceComponent(), targetComp, decomposition, null, DecompositionModelEvent.TARGET_COMPONENT_REMOVED);
     fireModelChanged(event);
     return event.isOperationSuccess();
   }
 
   /**
    * Fires TargetComponentRenamedEvent
-   * @param targetComp_p the target component to be renamed
-   * @param newName_p the new name
+   * @param targetComp the target component to be renamed
+   * @param newName the new name
    * @return true if the operation is successful
    */
-  protected boolean fireTargetComponentRenamed(DecompositionComponent targetComp_p, String newName_p) {
+  protected boolean fireTargetComponentRenamed(DecompositionComponent targetComp, String newName) {
     DecompositionModelEvent event =
-        new DecompositionModelEvent(getSourceComponent(), targetComp_p, null, newName_p, DecompositionModelEvent.TARGET_COMPONENT_RENAMED);
+        new DecompositionModelEvent(getSourceComponent(), targetComp, null, newName, DecompositionModelEvent.TARGET_COMPONENT_RENAMED);
     fireModelChanged(event);
     return event.isOperationSuccess();
   }
 
   /**
    * Gets the assignment count of a {@link DecompositionItem} in a {@link Decomposition}
-   * @param item_p the {@link DecompositionItem}
-   * @param decomp_p the {@link Decomposition}
+   * @param decompositionItem the {@link DecompositionItem}
+   * @param decomp the {@link Decomposition}
    * @return the count of assignment
    */
-  public int getAssignmentCount(DecompositionItem item_p, Decomposition decomp_p) {
+  public int getAssignmentCount(DecompositionItem decompositionItem, Decomposition decomp) {
     int count = 0;
-    for (DecompositionComponent comp : decomp_p.getTargetComponents()) {
+    for (DecompositionComponent comp : decomp.getTargetComponents()) {
       for (DecompositionItem item : comp.getItems()) {
-        if (item.equals(item_p)) {
+        if (item.equals(decompositionItem)) {
           count++;
         }
       }
@@ -497,10 +506,10 @@ public class DecompositionModel {
     // Add assignment count for delegated Operation
     if (count == 0) {
       // Only Case when Interface assignment count is 'UnAssigned'
-      for (DecompositionItemService itemSce : item_p.getServiceItems()) {
+      for (DecompositionItemService itemSce : decompositionItem.getServiceItems()) {
         boolean assigned = false;
-        for (DecompositionComponent comp : decomp_p.getTargetComponents()) {
-          if (checkServiceDelegated(itemSce, comp.getItems(), item_p.isInterfaceUsage())) {
+        for (DecompositionComponent comp : decomp.getTargetComponents()) {
+          if (checkServiceDelegated(itemSce, comp.getItems(), decompositionItem.isInterfaceUsage())) {
             assigned = true;
           }
         }
@@ -508,7 +517,7 @@ public class DecompositionModel {
           return count;
         }
       }
-      if (item_p.getServiceItems().isEmpty()) {
+      if (decompositionItem.getServiceItems().isEmpty()) {
         return count;
       }
 
@@ -519,14 +528,14 @@ public class DecompositionModel {
   }
 
   public List<DecompositionItem> getDecompositionItemRemoved() {
-    return _decompositionItemRemoved;
+    return decompositionItemRemoved;
   }
 
   /**
    * @return the decompositions
    */
   public List<Decomposition> getDecompositions() {
-    return _decompositions;
+    return decompositions;
   }
 
 
@@ -534,20 +543,20 @@ public class DecompositionModel {
    * @return the imgRegistry
    */
   public ImageRegistry getImgRegistry() {
-    return _imgRegistry;
+    return imgRegistry;
   }
 
-  private List<DecompositionItem> getItemInterfaceListContainSce(List<DecompositionItem> decompositionItems_p, DecompositionItemService itemSce_p,
-      INTERFACE_KIND itfKind_p) {
+  private List<DecompositionItem> getItemInterfaceListContainSce(List<DecompositionItem> decompositionItems, DecompositionItemService itemSce,
+      INTERFACE_KIND itfKind) {
     List<DecompositionItem> itemItfContainSc = new ArrayList<DecompositionItem>();
-    for (DecompositionItem currentItf : decompositionItems_p) {
-      if (itfKind_p == INTERFACE_KIND.Internal) {
+    for (DecompositionItem currentItf : decompositionItems) {
+      if (itfKind == INTERFACE_KIND.Internal) {
         // Filtering on Internal Interface
-        if (currentItf.isInternal() && isServiceDefinedInDecompositionItem(currentItf.getServiceItems(), itemSce_p)) {
+        if (currentItf.isInternal() && isServiceDefinedInDecompositionItem(currentItf.getServiceItems(), itemSce)) {
           itemItfContainSc.add(currentItf);
         }
-      } else if (itfKind_p == INTERFACE_KIND.External) {
-        if (!currentItf.isInternal() && isServiceDefinedInDecompositionItem(currentItf.getServiceItems(), itemSce_p)) {
+      } else if (itfKind == INTERFACE_KIND.External) {
+        if (!currentItf.isInternal() && isServiceDefinedInDecompositionItem(currentItf.getServiceItems(), itemSce)) {
           itemItfContainSc.add(currentItf);
         }
       }
@@ -559,21 +568,21 @@ public class DecompositionModel {
    * @return the listeners
    */
   public List<DecompositionModelListener> getListeners() {
-    return _listenersList;
+    return listenersList;
   }
 
   /**
    * @return the reusedComponents
    */
   public List<DecompositionComponent> getReusableComponents() {
-    return _reusableComponents;
+    return reusableComponents;
   }
 
   /**
    * @return the sourceData
    */
   public DecompositionComponent getSourceComponent() {
-    return _sourceComponent;
+    return sourceComponent;
   }
 
   // /////////////////////////////////////////////////////////////////////////////////
@@ -581,12 +590,12 @@ public class DecompositionModel {
   // /////////////////////////////////////////////
   // ///////////////////////////////////////////////////////////////////////////////
 
-  private String getUniqName(List<DecompositionItem> itemsList_p) {
+  private String getUniqName(List<DecompositionItem> itemsList) {
     String uniqName, prefixName = "Interface"; //$NON-NLS-1$
     int i = -1;
     List<String> nameList = new ArrayList<String>();
 
-    for (DecompositionItem itemItf : itemsList_p) {
+    for (DecompositionItem itemItf : itemsList) {
       int pos = itemItf.getName().lastIndexOf(" [Refined]"); //$NON-NLS-1$
       if (pos != -1) {
         // Suppress suffix name information
@@ -609,8 +618,8 @@ public class DecompositionModel {
    * @param targetComp_p
    * @return
    */
-  private DecompositionComponent getWrappedReusedComponent(Object value_p) {
-    DecompositionModelEvent event = new DecompositionModelEvent(getSourceComponent(), null, null, value_p, DecompositionModelEvent.TARGET_COMPONENT_REUSED);
+  private DecompositionComponent getWrappedReusedComponent(Object value) {
+    DecompositionModelEvent event = new DecompositionModelEvent(getSourceComponent(), null, null, value, DecompositionModelEvent.TARGET_COMPONENT_REUSED);
     fireModelChanged(event);
     return event.getReusedComponent();
 
@@ -618,12 +627,12 @@ public class DecompositionModel {
 
   /**
    * Checks whether detach is allowed on an item
-   * @param data_p the item selected
+   * @param data the item selected
    * @return true if the item can be detached
    */
-  public boolean isDetachAllowed(Object data_p) {
-    if (data_p instanceof DecompositionItem) {
-      DecompositionItem item = (DecompositionItem) data_p;
+  public boolean isDetachAllowed(Object data) {
+    if (data instanceof DecompositionItem) {
+      DecompositionItem item = (DecompositionItem) data;
       if (item.getParentComponent().isReusedComponent()) {
         return false;
       }
@@ -634,38 +643,38 @@ public class DecompositionModel {
 
   /**
    * Checks whether drag is allowed on an item
-   * @param source_p the item being dragged
+   * @param source the item being dragged
    * @return true if the source can be dragged
    */
-  public boolean isDragAllowed(Object source_p) {
+  public boolean isDragAllowed(Object source) {
     boolean flag = false;
-    if (source_p == null) {
+    if (source == null) {
       return false;
     }
-    if (source_p instanceof DecompositionItem) {
+    if (source instanceof DecompositionItem) {
       flag = true;
-      if (((DecompositionItem) source_p).getParentComponent().isReusedComponent()) {
+      if (((DecompositionItem) source).getParentComponent().isReusedComponent()) {
         flag = false;
       }
-    } else if (source_p instanceof DecompositionItemService) {
+    } else if (source instanceof DecompositionItemService) {
       // Add test for Allow Service Drag only for delegated operation
-      flag = isOperationDelegated((DecompositionItemService) source_p);
+      flag = isOperationDelegated((DecompositionItemService) source);
     }
     return flag;
   }
 
   /**
    * Checks whether drop is allowed on the component
-   * @param target_p the target component
+   * @param target the target component
    * @return true if drop is allowed on the component
    */
-  public boolean isDropAllowed(Object target_p) {
-    if (target_p == null) {
+  public boolean isDropAllowed(Object target) {
+    if (target == null) {
       return false;
     }
-    if (target_p instanceof DecompositionComponent) {
+    if (target instanceof DecompositionComponent) {
       return true;
-    } else if (target_p instanceof DecompositionItem) { // Allow the drop sce into interface
+    } else if (target instanceof DecompositionItem) { // Allow the drop sce into interface
       return true;
     }
 
@@ -674,50 +683,50 @@ public class DecompositionModel {
 
   /**
    * Checks if the node already contains the item, and returns the possibility of dropping the item
-   * @param node_p the node on which the item is to be dropped
-   * @param item_p the item to be dropped
+   * @param node the node on which the item is to be dropped
+   * @param item the item to be dropped
    * @return true if the node does not already contain the item
    */
-  public boolean isDropPossible(Object node_p, Object item_p) {
-    if (null == node_p) {
+  public boolean isDropPossible(Object node, Object item) {
+    if (null == node) {
       return false;
     }
 
-    if ((node_p instanceof DecompositionComponent) && (item_p instanceof DecompositionItem)) {
+    if ((node instanceof DecompositionComponent) && (item instanceof DecompositionItem)) {
       // Case : Drop Interface under target Component
-      DecompositionComponent comp = (DecompositionComponent) node_p;
-      DecompositionItem itemItf = (DecompositionItem) item_p;
+      DecompositionComponent comp = (DecompositionComponent) node;
+      DecompositionItem itemItf = (DecompositionItem) item;
       // (Adding a check to the existing Rule)
       // drop interface which can be used and implemented by same component
       List<DecompositionItem> items = comp.getItems();
       for (DecompositionItem decompositionItem : items) {
-        if (decompositionItem.equals(item_p)) {
-          if (decompositionItem.isInterfaceUsage() && ((DecompositionItem) item_p).isInterfaceUsage()) {
+        if (decompositionItem.equals(item)) {
+          if (decompositionItem.isInterfaceUsage() && ((DecompositionItem) item).isInterfaceUsage()) {
             return false;
           }
-          if (!decompositionItem.isInterfaceUsage() && !((DecompositionItem) item_p).isInterfaceUsage()) {
+          if (!decompositionItem.isInterfaceUsage() && !((DecompositionItem) item).isInterfaceUsage()) {
             return false;
           }
         }
       }
       return !checkServicesDelegated(itemItf, comp.getItems()) && !comp.isReusedComponent();
 
-    } else if (item_p instanceof DecompositionItemService) {
+    } else if (item instanceof DecompositionItemService) {
       // Case : Drop Service
-      if (node_p instanceof DecompositionItem) {
+      if (node instanceof DecompositionItem) {
         // Towards target Interface
-        DecompositionItem itemItf = (DecompositionItem) node_p;
-        DecompositionItemService itemSce = (DecompositionItemService) item_p;
+        DecompositionItem itemItf = (DecompositionItem) node;
+        DecompositionItemService itemSce = (DecompositionItemService) item;
 
         // Target Internal interface check && Service not already defined in current target Internal Interface or another Internal Interface under owner
         // Component target
         return itemItf.isInternal() && (itemItf.isInterfaceUsage() == itemSce.isUsed())
                && (getItemInterfaceListContainSce(itemItf.getParentComponent().getItems(), itemSce, INTERFACE_KIND.Internal).size() == 0);
 
-      } else if (node_p instanceof DecompositionComponent) {
+      } else if (node instanceof DecompositionComponent) {
         // Towards target Component
-        DecompositionComponent itemComponent = (DecompositionComponent) node_p;
-        DecompositionItemService itemSce = (DecompositionItemService) item_p;
+        DecompositionComponent itemComponent = (DecompositionComponent) node;
+        DecompositionItemService itemSce = (DecompositionItemService) item;
 
         // Check Service not already defined in another Internal Interface under target Component
         return getItemInterfaceListContainSce(itemComponent.getItems(), itemSce, INTERFACE_KIND.Internal).size() == 0;
@@ -729,15 +738,15 @@ public class DecompositionModel {
   /**
    * Return true if 'ItemService' given in parameter is delegated Return false if 'ItemService' given in parameter is operation added manually
    */
-  private boolean isOperationDelegated(DecompositionItemService itemSce_p) {
+  private boolean isOperationDelegated(DecompositionItemService itemSce) {
     boolean flag = true;
-    CapellaElement op = (CapellaElement) itemSce_p.getValue();
+    CapellaElement op = (CapellaElement) itemSce.getValue();
 
     // Check traceability link on operation existing
     if (RefinementLinkExt.getRefinementRelatedTargetElements(op, InformationPackage.Literals.OPERATION).size() == 0) {
       List<CapellaElement> listOp = new ArrayList<CapellaElement>();
       // Check operation coming from Interface(s) used/realized by source Component
-      for (DecompositionItem decItemSrc : _sourceComponent.getItems()) {
+      for (DecompositionItem decItemSrc : sourceComponent.getItems()) {
         for (DecompositionItemService itemSceSrc : decItemSrc.getServiceItems()) {
           listOp.add((CapellaElement) itemSceSrc.getValue());
         }
@@ -751,15 +760,15 @@ public class DecompositionModel {
 
   /**
    * Checks whether removal of the target is allowed
-   * @param target_p the component to be removed
+   * @param target the component to be removed
    * @return true if the target can be removed
    */
-  public boolean isRemoveAllowed(Object target_p) {
-    if (target_p instanceof DecompositionComponent) {
+  public boolean isRemoveAllowed(Object target) {
+    if (target instanceof DecompositionComponent) {
       return true;
-    } else if (target_p instanceof DecompositionItem) {
+    } else if (target instanceof DecompositionItem) {
       // Add check for allow remove internal interface
-      if (((DecompositionItem) target_p).isInternal()) {
+      if (((DecompositionItem) target).isInternal()) {
         return true;
       }
     }
@@ -768,11 +777,11 @@ public class DecompositionModel {
 
   /**
    * Checks whether renaming is allowed on the target
-   * @param target_p the target to be renamed
+   * @param target the target to be renamed
    * @return true if the target can be renamed
    */
-  public boolean isRenameAllowed(Object target_p) {
-    if (target_p instanceof DecompositionComponent) {
+  public boolean isRenameAllowed(Object target) {
+    if (target instanceof DecompositionComponent) {
       return true;
     }
     return false;
@@ -781,9 +790,9 @@ public class DecompositionModel {
   /**
    * Check if ItemService list contain the ItemService element given in parameter
    */
-  private boolean isServiceDefinedInDecompositionItem(List<DecompositionItemService> serviceItems_p, DecompositionItemService itemSce_p) {
-    for (DecompositionItemService currentItemSce : serviceItems_p) {
-      if (currentItemSce.getValue() == itemSce_p.getValue()) {
+  private boolean isServiceDefinedInDecompositionItem(List<DecompositionItemService> serviceItems, DecompositionItemService itemSce) {
+    for (DecompositionItemService currentItemSce : serviceItems) {
+      if (checkEqualDecompositionItemService(currentItemSce, itemSce)) {
         return true;
       }
 
@@ -792,7 +801,7 @@ public class DecompositionModel {
           RefinementLinkExt.getRefinementRelatedTargetElements((CapellaElement) currentItemSce.getValue(), InformationPackage.Literals.OPERATION);
       if (listMelo.size() != 0) {
         CapellaElement opOrigin = listMelo.get(0);
-        if (opOrigin == itemSce_p.getValue()) {
+        if (opOrigin == itemSce.getValue()) {
           return true;
         }
       }
@@ -803,9 +812,9 @@ public class DecompositionModel {
   /**
    * @param string_p
    */
-  public boolean isValidName(String name_p) {
-    for (Decomposition decomp : _decompositions) {
-      if (decomp.getName().equals(name_p)) {
+  public boolean isValidName(String name) {
+    for (Decomposition decomp : decompositions) {
+      if (decomp.getName().equals(name)) {
         return false;
       }
     }
@@ -814,23 +823,23 @@ public class DecompositionModel {
 
   /**
    * Refreshes the status of the items for a selected decomposition
-   * @param decomposition_p the selected decomposition
+   * @param decomposition the selected decomposition
    */
-  public void refreshStatus(Decomposition decomposition_p) {
-    for (DecompositionItem item : _sourceComponent.getItems()) {
-      int count = getAssignmentCount(item, decomposition_p);
+  public void refreshStatus(Decomposition decomposition) {
+    for (DecompositionItem item : sourceComponent.getItems()) {
+      int count = getAssignmentCount(item, decomposition);
       setStatus(item, count);
     }
   }
 
   /**
    * Refreshes the status of the items for a selected decomposition
-   * @param decomposition_p the selected decomposition
+   * @param decomposition the selected decomposition
    */
-  public void refreshStatus(Decomposition decomposition_p, boolean isUsed_p) {
-    for (DecompositionItem item : _sourceComponent.getItems()) {
-      if (item.isInterfaceUsage() == isUsed_p) {
-        int count = getAssignmentCount(item, decomposition_p);
+  public void refreshStatus(Decomposition decomposition, boolean isUsed) {
+    for (DecompositionItem item : sourceComponent.getItems()) {
+      if (item.isInterfaceUsage() == isUsed) {
+        int count = getAssignmentCount(item, decomposition);
         setStatus(item, count);
       }
     }
@@ -841,7 +850,7 @@ public class DecompositionModel {
    * Refreshes the status of the model for synthesis check
    */
   public void refreshStatusForSynthesisCheck() {
-    for (DecompositionItem item : _sourceComponent.getItems()) {
+    for (DecompositionItem item : sourceComponent.getItems()) {
       item.clearMessages();
       for (Decomposition decomp : getDecompositions()) {
         int count = getAssignmentCount(item, decomp);
@@ -880,76 +889,76 @@ public class DecompositionModel {
    * @return true if all the decompositions are successfully removed
    */
   public boolean removeAllDecomposition() {
-    _decompositions.clear();
+    decompositions.clear();
     fireAllDecompositionRemoved();
     return true;
   }
 
   /**
    * Removes all the decompositions from the decomposition
-   * @param decomposition_p the Decomposition
+   * @param decomposition the Decomposition
    * @return true if all the target components are removed
    */
-  public boolean removeAllTargetComponents(Decomposition decomposition_p) {
-    decomposition_p.removeAllTargetComponents();
-    _reusableComponents.clear();
-    fireAllTargetComponentRemoved(decomposition_p);
-    refreshStatus(decomposition_p);
+  public boolean removeAllTargetComponents(Decomposition decomposition) {
+    decomposition.removeAllTargetComponents();
+    reusableComponents.clear();
+    fireAllTargetComponentRemoved(decomposition);
+    refreshStatus(decomposition);
     return true;
   }
 
   /**
    * Removes a Decomposition
-   * @param decomposition_p the Decomposition
+   * @param decomposition the Decomposition
    * @return true if the decomposition is successfully removed
    */
-  public boolean removeDecomposition(Decomposition decomposition_p) {
-    _decompositions.remove(decomposition_p);
-    fireDecompositionRemoved(decomposition_p);
+  public boolean removeDecomposition(Decomposition decomposition) {
+    decompositions.remove(decomposition);
+    fireDecompositionRemoved(decomposition);
     return true;
   }
 
   /**
    * Removes a DecompositionModelListener from the listener list
-   * @param listener_p the DecompositionModelListener
+   * @param listener the DecompositionModelListener
    */
-  public void removeDecompositionModelListener(DecompositionModelListener listener_p) {
-    _listenersList.remove(listener_p);
+  public void removeDecompositionModelListener(DecompositionModelListener listener) {
+    listenersList.remove(listener);
   }
 
   /**
-   * @param comp_p
+   * @param comp
    */
-  public void removeReusedComponent(DecompositionComponent comp_p) {
-    _reusableComponents.remove(comp_p);
+  public void removeReusedComponent(DecompositionComponent comp) {
+    reusableComponents.remove(comp);
   }
 
   /**
    * Removes a target component from the decomposition
-   * @param decomposition_p the Decomposition
-   * @param targetComp_p the target
+   * @param decomposition the Decomposition
+   * @param targetComp the target
    * @return true if the target component is removed
    */
-  public boolean removeTargetComponent(Decomposition decomposition_p, DecompositionComponent targetComp_p) {
-    decomposition_p.removeTargetComponent(targetComp_p);
-    if (targetComp_p.isReusedComponent()) {
-      removeReusedComponent(targetComp_p);
+  public boolean removeTargetComponent(Decomposition decomposition, DecompositionComponent targetComp) {
+    decomposition.removeTargetComponent(targetComp);
+    if (targetComp.isReusedComponent()) {
+      removeReusedComponent(targetComp);
     }
-    fireTargetComponentRemoved(decomposition_p, targetComp_p);
-    refreshStatus(targetComp_p.getParentDecomposition());
+    fireTargetComponentRemoved(decomposition, targetComp);
+    refreshStatus(targetComp.getParentDecomposition());
     return true;
   }
 
   /**
    * Renames a Decomposition
-   * @param decomposition_p the Decomposition
-   * @param name_p the new name for the decomposition
+   * @param decomposition the Decomposition
+   * @param name the new name for the decomposition
    * @return true if the decomposition is successfully renamed
    */
-  public boolean renameDecomposition(Decomposition decomposition_p, String name_p) {
-    decomposition_p.setName(name_p);
-    fireDecompositionRenamed(decomposition_p, name_p);
-    for (DecompositionComponent comp : decomposition_p.getTargetComponents()) {
+  public boolean renameDecomposition(Decomposition decomposition, String name) {
+    decomposition.setName(name);
+    fireDecompositionRenamed(decomposition, name);
+    for (DecompositionComponent comp : decomposition.getTargetComponents()) {
       setPathForNewTargetComponent(comp);
     }
     return true;
@@ -957,96 +966,96 @@ public class DecompositionModel {
 
   /**
    * Renames a target component
-   * @param targetComp_p the target component to be renamed
-   * @param newName_p the new name for the target component
+   * @param targetComp the target component to be renamed
+   * @param newName the new name for the target component
    * @return true if the target component is successfully renamed
    */
-  public boolean renameTargetComponent(DecompositionComponent targetComp_p, String newName_p) {
-    targetComp_p.setName(newName_p);
-    fireTargetComponentRenamed(targetComp_p, newName_p);
+  public boolean renameTargetComponent(DecompositionComponent targetComp, String newName) {
+    targetComp.setName(newName);
+    fireTargetComponentRenamed(targetComp, newName);
     return true;
   }
 
   /**
    * Adds a new reusable target component to the decomposition
-   * @param decomposition_p the decomposition onto which target component to be added
+   * @param decomposition the decomposition onto which target component to be added
    * @param targetComp_p the target component
    * @return true if the target component can be added
    */
-  public boolean reuseTargetComponent(Decomposition decomposition_p, Object value_p) {
-    for (DecompositionComponent comp : decomposition_p.getTargetComponents()) {
-      if (value_p.equals(comp.getReusedTarget())) {
+  public boolean reuseTargetComponent(Decomposition decomposition, Object value) {
+    for (DecompositionComponent comp : decomposition.getTargetComponents()) {
+      if (value.equals(comp.getReusedTarget())) {
         return false;
       }
     }
-    DecompositionComponent shortcutComp = getWrappedReusedComponent(value_p);
-    decomposition_p.addTargetComponent(shortcutComp);
+    DecompositionComponent shortcutComp = getWrappedReusedComponent(value);
+    decomposition.addTargetComponent(shortcutComp);
     addReusedComponent(shortcutComp);
-    fireTargetComponentAdded((_decompositions.size() == 1) ? null : decomposition_p, shortcutComp);
-    refreshStatus(decomposition_p);
+    fireTargetComponentAdded((decompositions.size() == 1) ? null : decomposition, shortcutComp);
+    refreshStatus(decomposition);
     return true;
   }
 
   /**
    * Setter for decomposition list
-   * @param decompositions_p the decompositions to set
+   * @param decompositions the decompositions to set
    */
-  protected void setDecompositions(List<Decomposition> decompositions_p) {
-    _decompositions = decompositions_p;
+  protected void setDecompositions(List<Decomposition> decompositions) {
+    this.decompositions = decompositions;
   }
 
   /**
-   * @param imgRegistry_p the imgRegistry to set
+   * @param imgRegistry the imgRegistry to set
    */
-  public void setImgRegistry(ImageRegistry imgRegistry_p) {
-    _imgRegistry = imgRegistry_p;
+  public void setImgRegistry(ImageRegistry imgRegistry) {
+    this.imgRegistry = imgRegistry;
   }
 
-  public void setPathForNewTargetComponent(DecompositionComponent targetComponent_p) {
-    if (null != targetComponent_p) {
-      if (!targetComponent_p.isReusedComponent()) {
+  public void setPathForNewTargetComponent(DecompositionComponent targetComponent) {
+    if (null != targetComponent) {
+      if (!targetComponent.isReusedComponent()) {
         StringBuilder builder = new StringBuilder(getSourceComponent().getPath());
         builder.append("::"); //$NON-NLS-1$
         if (getDecompositions().size() > 1) {
-          builder.append(targetComponent_p.getParentDecomposition().getName());
+          builder.append(targetComponent.getParentDecomposition().getName());
           builder.append("::"); //$NON-NLS-1$
         }
-        builder.append(targetComponent_p.getName());
-        targetComponent_p.setPath(builder.toString());
+        builder.append(targetComponent.getName());
+        targetComponent.setPath(builder.toString());
       }
     }
   }
 
   /**
-   * @param reusedComponents_p the reusedComponents to set
+   * @param reusedComponents the reusedComponents to set
    */
-  public void setReusableComponents(List<DecompositionComponent> reusedComponents_p) {
-    _reusableComponents = reusedComponents_p;
+  public void setReusableComponents(List<DecompositionComponent> reusedComponents) {
+    this.reusableComponents = reusedComponents;
   }
 
   /**
    * Setter for source component
-   * @param sourceData_p the sourceData to set
+   * @param sourceData the sourceData to set
    */
-  protected void setSourceComponent(DecompositionComponent sourceData_p) {
-    _sourceComponent = sourceData_p;
+  protected void setSourceComponent(DecompositionComponent sourceData) {
+    sourceComponent = sourceData;
   }
 
   /**
    * Sets the status of an item based on assignment count
-   * @param item_p the {@link DecompositionItem}
-   * @param count_p the assignment count
+   * @param item the {@link DecompositionItem}
+   * @param count the assignment count
    */
-  public void setStatus(DecompositionItem item_p, int count_p) {
-    if (count_p == 0) {
-      item_p.setStatus(DecompositionItem.UNASSIGNED);
-      item_p.setStatusMessage(Messages.getString("LCDecomp.interface.unassigned.tooltip")); //$NON-NLS-1$
-    } else if (count_p == 1) {
-      item_p.setStatus(DecompositionItem.ASSIGNED);
-      item_p.setStatusMessage(Messages.getString("LCDecomp.interface.assigned.tooltip")); //$NON-NLS-1$
-    } else if (count_p > 1) {
-      item_p.setStatus(DecompositionItem.AMBIGUOUS);
-      item_p.setStatusMessage(Messages.getString("LCDecomp.interface.ambiguous.tooltip")); //$NON-NLS-1$
+  public void setStatus(DecompositionItem item, int count) {
+    if (count == 0) {
+      item.setStatus(DecompositionItem.UNASSIGNED);
+      item.setStatusMessage(Messages.getString("LCDecomp.interface.unassigned.tooltip")); //$NON-NLS-1$
+    } else if (count == 1) {
+      item.setStatus(DecompositionItem.ASSIGNED);
+      item.setStatusMessage(Messages.getString("LCDecomp.interface.assigned.tooltip")); //$NON-NLS-1$
+    } else if (count > 1) {
+      item.setStatus(DecompositionItem.AMBIGUOUS);
+      item.setStatusMessage(Messages.getString("LCDecomp.interface.ambiguous.tooltip")); //$NON-NLS-1$
     }
   }
 
