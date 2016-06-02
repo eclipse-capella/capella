@@ -69,16 +69,6 @@
                   id="org.polarsys.capella.core.data.migration.project"
                   icon="icons/full/etools16/capella_migrate.gif">
                 <visibleWhen checkEnabled="true">
-                <with variable="selection">
-                    <iterate
-                          ifEmpty="false">
-                            <and>
-                                <test property="org.polarsys.capella.core.data.migration.MigrationEnablementTester" forcePluginActivation="true"
-                                   value="org.polarsys.capella.core.data.migration.project">
-                                </test>
-                            </and>
-                    </iterate>
-                </with>
                 </visibleWhen> 
             </command>
             <command
@@ -86,16 +76,6 @@
                   id="org.polarsys.capella.core.data.migration.model"
                   icon="icons/full/etools16/capella_migrate.gif">
                 <visibleWhen checkEnabled="true">
-                <with variable="selection">
-                    <iterate
-                          ifEmpty="false">
-                            <and>
-                                <test property="org.polarsys.capella.core.data.migration.MigrationEnablementTester" forcePluginActivation="true"
-                                   value="org.polarsys.capella.core.data.migration.project">
-                                </test>
-                            </and>
-                    </iterate>
-                </with>
                 </visibleWhen> 
             </command>
             <command
@@ -103,16 +83,6 @@
                   id="org.polarsys.capella.core.data.migration.aird"
                   icon="icons/full/etools16/capella_migrate.gif">
                 <visibleWhen checkEnabled="true">
-                <with variable="selection">
-                    <iterate
-                          ifEmpty="false">
-                            <and>
-                                <test property="org.polarsys.capella.core.data.migration.MigrationEnablementTester" forcePluginActivation="true"
-                                   value="org.polarsys.capella.core.data.migration.project">
-                                </test>
-                            </and>
-                    </iterate>
-                </with>
                 </visibleWhen> 
             </command>
             
@@ -121,16 +91,6 @@
       </menuContribution>
    </extension>
    
-   <extension
-         point="org.eclipse.core.expressions.propertyTesters">
-      <propertyTester
-            class="org.polarsys.capella.core.data.migration.MigrationEnablementTester"
-            id="org.polarsys.capella.core.data.migration.MigrationEnablementTester"
-            namespace="org.polarsys.capella.core.data.migration"
-            properties="MigrationEnablementTester"
-            type="org.eclipse.core.resources.IResource">
-      </propertyTester>
-   </extension>
    
    <!-- Contributions that should not be removed between versions -->
    <extension
