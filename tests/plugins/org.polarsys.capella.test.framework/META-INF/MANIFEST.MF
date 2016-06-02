@@ -18,7 +18,8 @@ Require-Bundle: com.google.guava;visibility:=reexport,
  org.polarsys.capella.core.platform.sirius.ui.project;visibility:=reexport,
  org.polarsys.capella.core.sirius.analysis;visibility:=reexport,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
- org.polarsys.capella.core.explorer.activity.ui
+ org.polarsys.capella.core.explorer.activity.ui,
+ org.polarsys.kitalpha.ad.integration.sirius
 Export-Package: org.polarsys.capella.test.framework,
  org.polarsys.capella.test.framework.actions.headless,
  org.polarsys.capella.test.framework.api,
