@@ -32,24 +32,24 @@ public class MSMShowHideTransition2ModesTest extends EmptyProject {
 
 	MSMDiagram diagram= MSMDiagram.createDiagram(context, EmptyProject.SA__SYSTEM__SYSTEM_STATE_MACHINE__DEFAULT_REGION);
 
-	MSMDiagram.setUnsynchronized(diagram);
-
-	diagram.createState(diagram.getDiagramId(), GenericModel.MODE_1);
+	diagram.createMode(diagram.getDiagramId(), GenericModel.MODE_1);
 	diagram.createRegion(GenericModel.MODE_1, GenericModel.REGION_1);
-	diagram.createState(GenericModel.REGION_1, GenericModel.MODE_2);
+	diagram.createMode(GenericModel.REGION_1, GenericModel.MODE_2);
 	diagram.createRegion(GenericModel.MODE_2, GenericModel.REGION_2);
 
-	diagram.createState(diagram.getDiagramId(), GenericModel.MODE_3);
+	diagram.createMode(diagram.getDiagramId(), GenericModel.MODE_3);
 	diagram.createRegion(GenericModel.MODE_3, GenericModel.REGION_3);
-	diagram.createRegion(GenericModel.REGION_3, GenericModel.REGION_4);
+	diagram.createRegion(GenericModel.MODE_3, GenericModel.REGION_4);
 
 	diagram.createTransition(GenericModel.REGION_2, GenericModel.REGION_4, transition);
+
+	MSMDiagram.setUnsynchronized(diagram);
+
+	diagram.hideTransition(diagram.getDiagramId(), transition);
+	diagram.showTransition(diagram.getDiagramId(), transition);
 	
-	diagram.hideTransition(GenericModel.REGION_1, transition);
-	diagram.showTransition(GenericModel.REGION_1, transition);
-	
-	diagram.hideStateMode (GenericModel.REGION_1, GenericModel.MODE_3);
-	diagram.showStateMode (GenericModel.REGION_2, GenericModel.MODE_3);
+	diagram.hideStateMode (diagram.getDiagramId(), GenericModel.MODE_3);
+	diagram.showStateMode (diagram.getDiagramId(), GenericModel.MODE_3);
 	}
 
 

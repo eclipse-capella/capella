@@ -857,8 +857,8 @@ public interface IToolNameConstants {
   String TOOL_MSM_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_MSM_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
   // Unsynchronized
-  String TOOL_MSM_INSERT_REMOVE_MODE_STATE = "State/Mode"; //$NON-NLS-1$
-  String TOOL_MSM_INSERT_REMOVE_TRANSITION = "Transition"; //$NON-NLS-1$
+  String TOOL_MSM_INSERT_REMOVE_MODE_STATE = "ShowHide ModeState"; //$NON-NLS-1$
+  String TOOL_MSM_INSERT_REMOVE_TRANSITION = "ShowHide Transition"; //$NON-NLS-1$
 
   // Accelerators
   String TOOL_MSM_INITIALIZATION_FROM_EXISTING_DIAGRAM = "Initialization from existing diagram"; //$NON-NLS-1$

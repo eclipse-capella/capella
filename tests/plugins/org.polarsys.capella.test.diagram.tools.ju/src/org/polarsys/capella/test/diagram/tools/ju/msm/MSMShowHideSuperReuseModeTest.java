@@ -40,13 +40,11 @@ public class MSMShowHideSuperReuseModeTest extends EmptyProject {
 
 	diagram.createState(diagram.getDiagramId(), GenericModel.STATE_3);
 	diagram.createRegion(GenericModel.STATE_3, GenericModel.REGION_3);
-	diagram.createRegion(GenericModel.REGION_3, GenericModel.REGION_4);
+	diagram.createRegion(GenericModel.STATE_3, GenericModel.REGION_4);
 
 	diagram.createTransition(GenericModel.REGION_2, GenericModel.REGION_4, transition);
 	
-	//TODO add a reuse state here
-	diagram.insertReuseModeState(GenericModel.REGION_1, GenericModel.STATE_3);
-	diagram.removeReuseModeState(GenericModel.REGION_1, GenericModel.STATE_3);
+	diagram.insertReuseModeState(GenericModel.REGION_2, GenericModel.STATE_3);
 	}
 
 }
