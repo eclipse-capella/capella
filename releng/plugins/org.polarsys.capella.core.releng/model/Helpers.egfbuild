@@ -18,11 +18,20 @@
     <steps xsi:type="buildstep:InstallStep" xmi:id="_M-34IKBpEeKMQb8Rddw1Vg" name="Install Eclipse Basics" description="" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
       <updateSiteUrls>${primary_eclipseUpdateSite}</updateSiteUrls>
       <featureNames>org.eclipse.emf.sdk</featureNames>
-      <featureNames>org.eclipse.emf.query.sdk</featureNames>
-      <featureNames>org.eclipse.emf.transaction.sdk</featureNames>
-      <featureNames>org.eclipse.emf.validation.sdk</featureNames>
       <featureNames>org.eclipse.gef.sdk</featureNames>
       <featureNames>org.eclipse.gmf.runtime.sdk</featureNames>
+      <featureNames>org.eclipse.emf.transaction</featureNames>
+      <featureNames>org.eclipse.emf.validation</featureNames>
+      <featureNames>org.eclipse.emf.query</featureNames>
+      <featureNames>org.eclipse.emf.workspace</featureNames>
+      <featureNames>org.eclipse.emf.transaction.source</featureNames>
+      <featureNames>org.eclipse.emf.workspace.source</featureNames>
+      <featureNames>org.eclipse.emf.validation.ocl</featureNames>
+      <featureNames>org.eclipse.emf.validation.source</featureNames>
+      <featureNames>org.eclipse.emf.validation.ocl.source</featureNames>
+      <featureNames>org.eclipse.emf.query.ocl</featureNames>
+      <featureNames>org.eclipse.emf.query.source</featureNames>
+      <featureNames>org.eclipse.emf.query.ocl.source</featureNames>
     </steps>
     <steps xsi:type="buildcore:ReuseStep" xmi:id="_ZCQuQKEpEeKMQb8Rddw1Vg" name="FinalizeTP" reusedStep="_xh-N4KG3EeKjzsUfibKjCg"/>
   </steps>
