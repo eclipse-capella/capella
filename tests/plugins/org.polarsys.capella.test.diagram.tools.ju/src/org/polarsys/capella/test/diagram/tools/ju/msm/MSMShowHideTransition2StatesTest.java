@@ -46,7 +46,7 @@ public class MSMShowHideTransition2StatesTest extends EmptyProject {
 	diagram.hideTransition(diagram.getDiagramId(), transition);
 	diagram.showTransition(diagram.getDiagramId(), transition);
 	
-	diagram.hideStateMode (diagram.getDiagramId(), GenericModel.MODE_3);
-	diagram.showStateMode (diagram.getDiagramId(), GenericModel.MODE_3);
+	diagram.hideStateMode (diagram.getDiagramId(), GenericModel.STATE_3);
+	diagram.showStateMode (diagram.getDiagramId(), GenericModel.STATE_3);
 	}
 }
