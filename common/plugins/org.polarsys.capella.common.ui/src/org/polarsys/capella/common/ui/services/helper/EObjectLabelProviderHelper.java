@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ItemProviderDecorator;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
@@ -153,6 +154,8 @@ public class EObjectLabelProviderHelper {
     IItemLabelProvider provider = (IItemLabelProvider) editingDomain.getAdapterFactory().adapt(object, IItemLabelProvider.class);
     if (provider instanceof ItemProviderAdapter) {
       label = getMetaclassLabel(object.eClass(), (ItemProviderAdapter) provider);
+    } else if (provider instanceof ItemProviderDecorator) {
+      label = object.eClass().getName();
     }
     if (addBrackets) {
       label = METACLASS_DISPLAY_PREFIX + label + METACLASS_DISPLAY_SUFFIX;
