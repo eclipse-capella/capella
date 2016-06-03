@@ -27,7 +27,6 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.core.af.integration.Activator;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.data.migration.contribution.AbstractMigrationContribution;
-import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
 import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
 
@@ -41,7 +40,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
 
 	@Override
 	public IStatus preMigrationExecute(IResource fileToMigrate, MigrationContext context, boolean checkVersion) {
-		if (CapellaResourceHelper.isCapellaResource(fileToMigrate, true)) {
+		if (MetadataHelper.isMetadataResource(fileToMigrate)) {
 			// check all used VP are available (we suppose they are coming with migration tooling)
 			ResourceSet resourceSet = new ResourceSetImpl();
 			resourceSet.getLoadOptions().put(GMFResource.OPTION_ABORT_ON_ERROR, Boolean.TRUE);

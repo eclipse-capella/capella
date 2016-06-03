@@ -53,8 +53,8 @@
    </extension>
    <extension
          point="org.polarsys.capella.core.data.migration.migrationContributors">
-      <migrationContributor
-         class="org.polarsys.capella.core.af.integration.migration.MetadataCreationContributor"/>
+      <!--migrationContributor
+         class="org.polarsys.capella.core.af.integration.migration.MetadataCreationContributor"/-->
       <migrationContributor
          class="org.polarsys.capella.core.af.integration.migration.MetadataUpdateContributor"/>
       <migrationContributor
