@@ -12,10 +12,9 @@ package org.polarsys.capella.test.diagram.common.ju.step.crud;
 
 import java.util.ArrayList;
 
-import junit.framework.Assert;
-
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.junit.Assert;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.AbstractDiagramStep;

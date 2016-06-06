@@ -19,7 +19,6 @@ import java.util.LinkedList;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -33,6 +32,8 @@ public class DefaultScopeHandler implements IScopeHandler {
 
   Collection<IScopeRetriever> childsRetrievers;
 
+  protected boolean excluding = true;
+
   public Collection<EObject> retrieveElements(EObject source, IContext context) {
     Collection<EObject> elements = new LinkedList<EObject>();
     if (childsRetrievers != null) {
@@ -44,6 +45,18 @@ public class DefaultScopeHandler implements IScopeHandler {
       }
     }
     return elements;
+  }
+
+  protected boolean isExclusing() {
+    return excluding;
+  }
+
+  /**
+   * Set the filtering mode : If set to true (default) (the first filter is false, implies the elements is excluded)
+   * otherwise, filtering is including (the first filter is true, implies the elements is included)
+   */
+  public void setFilterExcluding(boolean excluding) {
+    this.excluding = excluding;
   }
 
   public boolean isInScope(EObject element, IContext context) {
@@ -64,6 +77,7 @@ public class DefaultScopeHandler implements IScopeHandler {
 
   /**
    * Perform a go to deep to retrieve the scope
+   * 
    * @param bootstrap
    * @param context
    * @param ruleHandler
@@ -133,14 +147,28 @@ public class DefaultScopeHandler implements IScopeHandler {
    * @return
    */
   public boolean isValidScopeElement(EObject element, IContext context) {
+
+    // If Filtering is excluding (first filter is false, implies the elements is excluded)
+    if (excluding) {
+      if (childsFilters != null) {
+        for (IScopeFilter filter : childsFilters) {
+          if (!filter.isValidScopeElement(element, context)) {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
+    // If Filtering is including (first filter is true, implies the elements is included)
     if (childsFilters != null) {
       for (IScopeFilter filter : childsFilters) {
-        if (!filter.isValidScopeElement(element, context)) {
-          return false;
+        if (filter.isValidScopeElement(element, context)) {
+          return true;
         }
       }
     }
-    return true;
+    return false;
   }
 
   /**

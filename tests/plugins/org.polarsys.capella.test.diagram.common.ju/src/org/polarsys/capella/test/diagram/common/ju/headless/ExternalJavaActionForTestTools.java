@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,7 @@ final public class ExternalJavaActionForTestTools {
   private boolean _isRegistryHacked;
 
   /** for internal use */
-  private final String EXTID_TAG = "tmp"; //$NON-NLS-1$
+  private static final String EXTID_TAG = "tmp"; //$NON-NLS-1$
   private static final String OLD_JAVAEXT_LOC = "org.polarsys.capella.core.sirius.analysis.actions.extensions"; //$NON-NLS-1$
   private static final String NEW_JAVAEXT_LOC = "org.polarsys.capella.test.diagram.common.ju.headless.actions"; //$NON-NLS-1$
 
@@ -60,7 +60,7 @@ final public class ExternalJavaActionForTestTools {
       // Do nothing
     }
 
-    private static Map<String, String> newMap() {
+    protected static Map<String, String> newMap() {
       Map<String, String> map = new HashMap<String, String>();
       // Select Elements from Transfer Wizard
       map.put(OLD_JAVAEXT_LOC + ICommonConstants.POINT_CHARACTER + "SelectElementsFromTransferWizard", //$NON-NLS-1$
@@ -128,9 +128,9 @@ final public class ExternalJavaActionForTestTools {
       return map;
     }
 
-    private IContributor contributor;
-    private String uniqueIdentifier;
-    private Map<String, String> map;
+    private final IContributor contributor;
+    private final String uniqueIdentifier;
+    private final Map<String, String> map;
   }
 
   /** this plugin contributor; useful */
@@ -176,6 +176,9 @@ final public class ExternalJavaActionForTestTools {
 
     ExternalJavaActionExtReader reader = null;
 
+    // Clear ExternalJavaActionProvider before modifying Extension Point (this to avoid ConcurrentModificationExceptions)
+    ExternalJavaActionProvider.INSTANCE.clearRegistry();
+    
     boolean mustBeTreated;
     for (IExtension extension : extensions) {
       // cache for all contributions that we must remove and activate once again
@@ -229,7 +232,6 @@ final public class ExternalJavaActionForTestTools {
     }
 
     // Let's clear the ExternalJavaAction in order to force its reloading
-    ExternalJavaActionProvider.INSTANCE.clearRegistry();
     new ExternalJavaActionRegistryListener().init();
   }
 

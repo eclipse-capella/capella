@@ -57,7 +57,7 @@ The difference between Completeness and Coverage can appear subtle. Completeness
 It is possible to launch contextually the validation command on any Capella element.
 
  
-[[Image:Images/12.1.%20Model%20Validation_html_48b94bdc.png|363x366px]]
+[[Image:Images/12.1.%20Model%20Validation_html_48b94bdc.png|400x550px]]
 
  
 Setting a specific objective when validating the model requires both:
@@ -69,7 +69,7 @@ Setting a specific objective when validating the model requires both:
 Activating / deactivating a rule or a rule category is possible from the Preferences window, under the section Model Validation / Constraints / Capella.
 
  
-[[Image:Images/12.1.%20Model%20Validation_html_mf186e68.png|668x474px]]
+[[Image:Images/12.1.%20Model%20Validation_html_mf186e68.png|800x300px]]
 
  
 <br>
@@ -94,7 +94,7 @@ Some of the rules come with Quick Fixes (automated actions allowing easily solvi
 <br>
 
  
-[[Image:Images/12.1.%20Model%20Validation_html_7e7d7622.png|1129x222px]]
+[[Image:Images/12.1.%20Model%20Validation_html_7e7d7622.png|950x150px]]
 
  
 <br>
@@ -123,7 +123,7 @@ The html export of the Information View looks like the following example.
 For example, rule DCOM_3 checks that all leaf Function are correctly allocated to one Component (System, Actor, Logical Component, etc.).
 
  
-[[Image:Images/12.1.%20Model%20Validation_html_f42b8bc.png|1278x231px]]
+[[Image:Images/12.1.%20Model%20Validation_html_f42b8bc.png|950x150px]]
 
  
 The associated Quick Fix simply consists in opening the contextual allocation dialog.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,19 +32,25 @@ import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
-import org.polarsys.capella.core.data.ctx.SystemFunction;
-import org.polarsys.capella.core.data.la.LogicalFunction;
-import org.polarsys.capella.core.data.oa.OperationalActivity;
-import org.polarsys.capella.core.data.pa.PhysicalFunction;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 public class FixCustomFeaturesHelper {
 
-  private static final RGBValues LIGHT_ORANGE = createRGBValues(252, 233, 79);
-  private static final RGBValues DARK_ORANGE = createRGBValues(252, 175, 62);
-  private static final RGBValues LIGHT_GREEN = createRGBValues(204, 242, 166);
-  private static final RGBValues DARK_GREEN = createRGBValues(138, 226, 52);
+  private static final RGBValues LIGHT_ORANGE_RC = createRGBValues(252, 233, 79);
+  private static final RGBValues DARK_ORANGE_RC = createRGBValues(252, 175, 62);
+  private static final RGBValues LIGHT_GREEN_RC = createRGBValues(204, 242, 166);
+  private static final RGBValues DARK_GREEN_RC = createRGBValues(138, 226, 52);
+  private static final RGBValues LIGHT_BLUE_RC = createRGBValues(194, 239, 255);
+  private static final RGBValues DARK_BLUE_RC = createRGBValues(114, 159, 207);
+
+  private static final RGBValues LIGHT_ORANGE_0_8 = createRGBValues(255, 255, 255);
+  private static final RGBValues DARK_ORANGE_0_8 = createRGBValues(247, 218, 116);
+  private static final RGBValues LIGHT_GREEN_0_8 = createRGBValues(255, 255, 255);
+  private static final RGBValues DARK_GREEN_0_8 = createRGBValues(222, 255, 204);
+  private static final RGBValues LIGHT_BLUE_0_8 = createRGBValues(255, 255, 255);
+  private static final RGBValues DARK_BLUE_0_8 = createRGBValues(198, 230, 255);
 
   private static final Logger _logger = ReportManagerRegistry.getInstance().subscribe("Fix Custom Features"); //$NON-NLS-1$
 
@@ -56,8 +62,8 @@ public class FixCustomFeaturesHelper {
    */
   public static Set<DDiagram> removeCustomFeaturesIfNecessary(Resource resource) {
     // Only handle AirdResource
-    if (resource != null && CapellaResourceHelper.isAirdResource(resource.getURI())) {
-      _logger.info("Start processing "+resource.getURI().lastSegment());
+    if ((resource != null) && CapellaResourceHelper.isAirdResource(resource.getURI())) {
+      _logger.info("Start processing " + resource.getURI().lastSegment());
       Map<DDiagram, Integer> diagramToModifiedObjectCount = new HashMap<DDiagram, Integer>();
       long start = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();
       Iterator<EObject> it = resource.getAllContents();
@@ -65,22 +71,26 @@ public class FixCustomFeaturesHelper {
         EObject obj = it.next();
         if (isStyleWithCustomForegroundBackground(obj)) {
           // This is a style with custom foregroundColor/ backgroundColor,
-          // check if backgroundColor is red="204" green="242" blue="166"
-          // and foregroundColor is red="138" green="226" blue="52" OR backgroundColor is red="252" green="233"
-          // blue="79"
-          // and foregroundColor is red="252" green="175" blue="62",
-          // remove all custom features expect borderColor and borderSize
+          // check if backgroundColor remove all custom features except borderColor and borderSize
           FlatContainerStyle style = (FlatContainerStyle) obj;
           RGBValues backgroundColor = style.getBackgroundColor();
           RGBValues foregroundColor = style.getForegroundColor();
-          if ((isExpectedColor(LIGHT_GREEN, backgroundColor) && isExpectedColor(DARK_GREEN, foregroundColor))
-              || (isExpectedColor(LIGHT_ORANGE, backgroundColor) && isExpectedColor(DARK_ORANGE, foregroundColor))) {
+
+          if ((isExpectedColor(LIGHT_GREEN_RC, backgroundColor) && isExpectedColor(DARK_GREEN_RC, foregroundColor))
+              || (isExpectedColor(LIGHT_ORANGE_RC, backgroundColor) && isExpectedColor(DARK_ORANGE_RC, foregroundColor))
+              || (isExpectedColor(LIGHT_BLUE_RC, backgroundColor) && isExpectedColor(DARK_BLUE_RC, foregroundColor))
+              || (isExpectedColor(LIGHT_GREEN_0_8, backgroundColor) && isExpectedColor(DARK_GREEN_0_8, foregroundColor))
+              || (isExpectedColor(LIGHT_ORANGE_0_8, backgroundColor) && isExpectedColor(DARK_ORANGE_0_8,
+                  foregroundColor))
+              || (isExpectedColor(LIGHT_BLUE_0_8, backgroundColor) && isExpectedColor(DARK_BLUE_0_8, foregroundColor))) {
             retainBorderColorAndBorderSize(style, diagramToModifiedObjectCount);
           }
         } else if (isSquareWithCustomColor(obj)) {
           Square square = (Square) obj;
           RGBValues color = square.getColor();
-          if (isExpectedColor(DARK_GREEN, color) || isExpectedColor(DARK_ORANGE, color)) {
+          if (isExpectedColor(DARK_GREEN_RC, color) || isExpectedColor(DARK_ORANGE_RC, color)
+              || isExpectedColor(DARK_BLUE_RC, color) || isExpectedColor(DARK_GREEN_0_8, color)
+              || isExpectedColor(DARK_ORANGE_0_8, color) || isExpectedColor(DARK_BLUE_0_8, color)) {
             retainBorderColorAndBorderSize(square, diagramToModifiedObjectCount);
           }
         }
@@ -97,11 +107,11 @@ public class FixCustomFeaturesHelper {
         _logger.info("-----");
         _logger.info("Total modified objects: " + totalModifiedObjectCount);
         _logger.info("Total modified diagrams: " + diagramToModifiedObjectCount.keySet().size());
-        _logger.info("Fix custom color took: " + (stop - start) / 1000000 + " ms");
-      }else{
-        _logger.info("Nothing to fix in "+resource.getURI().lastSegment());
+        _logger.info("Fix custom color took: " + ((stop - start) / 1000000) + " ms");
+      } else {
+        _logger.info("Nothing to fix in " + resource.getURI().lastSegment());
       }
-      _logger.info("End processing "+resource.getURI().lastSegment());
+      _logger.info("End processing " + resource.getURI().lastSegment());
       _logger.info("-----------------------------------------------------------");
       return diagramToModifiedObjectCount.keySet();
     }
@@ -133,37 +143,25 @@ public class FixCustomFeaturesHelper {
   }
 
   private static boolean isSquareWithCustomColor(EObject candidate) {
-    return candidate instanceof Square
+    return (candidate instanceof Square)
         && ((Square) candidate).getCustomFeatures().contains(DiagramPackage.Literals.SQUARE__COLOR.getName())
-        && candidate.eContainer() instanceof DNode
-        && (((DNode) candidate.eContainer()).getTarget() instanceof PhysicalFunction
-            || ((DNode) candidate.eContainer()).getTarget() instanceof LogicalFunction
-            || ((DNode) candidate.eContainer()).getTarget() instanceof SystemFunction || ((DNode) candidate
-              .eContainer()).getTarget() instanceof OperationalActivity);
+        && (candidate.eContainer() instanceof DNode)
+        && ((((DNode) candidate.eContainer()).getTarget() instanceof AbstractFunction));
   }
 
   private static boolean isStyleWithCustomForegroundBackground(EObject candidate) {
-    return candidate instanceof FlatContainerStyle
+    return (candidate instanceof FlatContainerStyle)
         && ((FlatContainerStyle) candidate).getCustomFeatures().contains(
             DiagramPackage.Literals.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR.getName())
         && ((FlatContainerStyle) candidate).getCustomFeatures().contains(
             DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR.getName())
-        && candidate.eContainer() instanceof DNodeContainer
-        && (((DNodeContainer) candidate.eContainer()).getTarget() instanceof SystemFunction
-            || ((DNodeContainer) candidate.eContainer()).getTarget() instanceof LogicalFunction || ((DNodeContainer) candidate
-              .eContainer()).getTarget() instanceof OperationalActivity);
-
+        && (candidate.eContainer() instanceof DNodeContainer)
+        && (((DNodeContainer) candidate.eContainer()).getTarget() instanceof AbstractFunction);
   }
 
-  /**
-   * 
-   * @param expectedColor
-   * @param actualColor
-   * @return
-   */
   private static boolean isExpectedColor(RGBValues expectedColor, RGBValues actualColor) {
-    return actualColor != null && expectedColor.getRed() == actualColor.getRed() && expectedColor.getGreen() == actualColor.getGreen()
-        && expectedColor.getBlue() == actualColor.getBlue();
+    return (actualColor != null) && (expectedColor.getRed() == actualColor.getRed())
+        && (expectedColor.getGreen() == actualColor.getGreen()) && (expectedColor.getBlue() == actualColor.getBlue());
   }
 
   private static RGBValues createRGBValues(int red, int green, int blue) {

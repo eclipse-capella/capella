@@ -169,7 +169,7 @@ If the user wants 				to hide a calculated element on a contextual diagram, he m
 Focus on 16: It is possible to customize the presentation of elements shown in diagrams using external images. The first step is to import image resources in the current Eclipse project. This can be achieved easily using a drag and drop in Windows.
 
  
-[[Image:Images/4.05.%20Diagram%20Editor_html_m61b99006.png|412x190px]]
+[[Image:Images/4.05_Diagram_Editor.png|550x300px]]
 
  
 The next step is to select in the diagram the model element to be customized and click on the &ldquo;Insert image tool&rdquo; of the toolbar. A dialog appears, allowing to chose among the images already present in the workspace:
@@ -200,6 +200,6 @@ The result can be the following:
 The Diagram View is also used for Simple and Cross Tables. A CSV export tool is provided for these tables, allowing for example to retrieving allocation matrices in Excel.
 
  
-[[Image:Images/4.05.%20Diagram%20Editor_html_m4ecd8e82.png|400x336px]]
+[[Image:Images/4.05.%20Diagram%20Editor_html_m4ecd8e82.png|700x550px]]
 
    

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,7 +53,6 @@ import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.helpers.move.MoveHelper;
-import org.polarsys.kitalpha.emde.model.Element;
 import org.polarsys.kitalpha.emde.model.ElementExtension;
 
 /**
@@ -89,7 +88,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    */
   @SuppressWarnings("unchecked")
   protected Collection<CommandParameter> getFilteredNewChildDescriptors(EditingDomain editingDomain,
-      Element modelElement) {
+      EObject modelElement) {
     Map<EObjectCouple, CommandParameter> filteredNewChildDescriptors = new HashMap<EObjectCouple, CommandParameter>();
 
     Collection<CommandParameter> newChildDescriptors = (Collection<CommandParameter>) editingDomain
@@ -128,7 +127,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    */
   @Override
   public Collection<IContributionItem> getStructuralDynamicActions() {
-    Element modelElement = getModelElement();
+    EObject modelElement = getModelElement();
     EditingDomain editingDomain = TransactionHelper.getEditingDomain(modelElement);
     Collection<CommandParameter> newChildDescriptors = getFilteredNewChildDescriptors(editingDomain, modelElement);
     return generateCreateChildActions(newChildDescriptors, editingDomain, new AbstractCondition() {
@@ -144,7 +143,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    */
   @Override
   public Collection<IContributionItem> getPropertyValueDynamicActions() {
-    Element modelElement = getModelElement();
+    EObject modelElement = getModelElement();
     EditingDomain editingDomain = TransactionHelper.getEditingDomain(modelElement);
     Collection<CommandParameter> newChildDescriptors = getFilteredNewChildDescriptors(editingDomain, modelElement);
     return generateCreateChildActions(newChildDescriptors, editingDomain, new AbstractCondition() {
@@ -162,7 +161,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    */
   @Override
   public Collection<IContributionItem> getExtensionDynamicActions() {
-    Element modelElement = getModelElement();
+    EObject modelElement = getModelElement();
     EditingDomain editingDomain = TransactionHelper.getEditingDomain(modelElement);
     Collection<CommandParameter> newChildDescriptors = getFilteredNewChildDescriptors(editingDomain, modelElement);
     return generateCreateChildActions(newChildDescriptors, editingDomain, new AbstractCondition() {
@@ -178,7 +177,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    */
   @Override
   public Collection<IContributionItem> getNonStructuralDynamicActions() {
-    Element modelElement = getModelElement();
+    EObject modelElement = getModelElement();
     EditingDomain editingDomain = TransactionHelper.getEditingDomain(modelElement);
     Collection<CommandParameter> newChildDescriptors = getFilteredNewChildDescriptors(editingDomain, modelElement);
     return generateCreateChildActions(newChildDescriptors, editingDomain, new AbstractCondition() {

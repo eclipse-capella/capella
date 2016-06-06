@@ -33,5 +33,4 @@ public class DeleteChildrenHandler extends DeleteHandler {
       currentValue.remove(obj);
     }
   }
-
 }

@@ -1,30 +1,24 @@
       
 = > Validation Rules > capella.category > transition > justification > epbs =
             
-{| border="1"
+<br> 
+   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/error.gif|ERROR]]
+|   TJ_EPBS_01 - Physical Architecture Realization 
 |-
-|[[Image:Images/error.gif|ERROR]]
-|  
-|-
-|This rule checks the realization consistency between physical architecture and EPBS architecture. 
-|-
-|- 
+| colspan="2" |This rule checks the realization consistency between physical architecture and EPBS architecture. 
 |}            
-{| border="1"
+<br> 
+   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TJ_EPBS_02 - Capability realization refinement check 3 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that a Capability Realization in PhysicalArchitecture layer is refined toward a CapabilityRealization in EPBS layer. 
-|-
-|- 
+| colspan="2" |This rule checks that a Capability Realization in PhysicalArchitecture layer is refined toward a CapabilityRealization in EPBS layer. 
 |}            
-{| border="1"
+<br> 
+   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TJ_EPBS_03 - Configuration Physical Artifacts Realization check 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that a Configuration Item realizes at least one Physical Artifact. 
-|-
-|- 
+| colspan="2" |This rule checks that a Configuration Item realizes at least one Physical Artifact. 
 |}   

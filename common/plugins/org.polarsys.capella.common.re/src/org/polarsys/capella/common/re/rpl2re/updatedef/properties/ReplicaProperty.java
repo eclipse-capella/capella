@@ -11,16 +11,15 @@
 package org.polarsys.capella.common.re.rpl2re.updatedef.properties;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.flexibility.properties.property.AbstractProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.constants.IReConstants;
+import org.polarsys.capella.common.re.constants.Messages;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -33,32 +32,40 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context) {
+  public Object getValue(IPropertyContext propertyContext) {
     try {
 
-      IContext ctx = (IContext) context.getSource();
-      CatalogElement replica = (CatalogElement) ctx.get("RPL");
+      IContext context = (IContext) propertyContext.getSource();
+      CatalogElement replica = (CatalogElement) context.get("RPL");
 
       if (replica == null) {
 
         CatalogElement source =
-            (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
-        Collection<CatalogElement> selectedElements = ReplicableElementHandlerHelper.getInstance(ctx).getIndirectlySelectedReplicableElements(ctx);
+            (CatalogElement) propertyContext.getCurrentValue(propertyContext.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
+        Collection<CatalogElement> selectedElements = ReplicableElementHandlerHelper.getInstance(context).getIndirectlySelectedReplicableElements(context);
 
-        Collection<Object> selection = (Collection<Object>) ctx.get(ITransitionConstants.TRANSITION_SOURCES);
+        Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
         if (selection.size() > 0) {
-          Iterator<EObject> it = (Iterator) selectedElements.iterator();
-          while (it.hasNext()) {
-            EObject r = it.next();
-            if (r instanceof CatalogElement) {
-              if (source.equals(((CatalogElement) r).getOrigin())) {
-                replica = (CatalogElement) r;
+          // for all selected elements of type CatalogElement (RPLs)
+          for (Object element : selectedElements) {
+            if (element instanceof CatalogElement) {
+              CatalogElement rpl = (CatalogElement) element;
+              // if the origin of the selected RPL is the right REC
+              if (source.equals(rpl.getOrigin())) {
+                // return this RPL
+                if (replica == null) {
+                  replica = rpl;
+                // but if there is another RPL found
+                } else if (replica != rpl) {
+                  // it is not possible to update a REC with several RPLs at the same time
+                  return null;
+                }
               }
             }
           }
         }
 
-        ctx.put("RPL", replica);
+        context.put("RPL", replica);
       }
 
       return replica;
@@ -80,9 +87,9 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value, IPropertyContext context) {
-    IContext ctx = (IContext) context.getSource();
-    CatalogElement element = (CatalogElement) ctx.get("RPL");
+  public Object toType(Object value, IPropertyContext propertyContext) {
+    IContext context = (IContext) propertyContext.getSource();
+    CatalogElement element = (CatalogElement) context.get("RPL");
     if (value instanceof String) {
       element.setName((String) value);
       return element;
@@ -102,6 +109,11 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
    */
   @Override
   public IStatus validate(Object newValue, IPropertyContext context) {
+    
+    if (newValue == null) {
+      return new Status(Status.ERROR, "unknown", Status.ERROR, Messages.Update_REC_from_RPL_only_one, null);
+    }
+    
     return Status.OK_STATUS;
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.polarsys.capella.common.platform.sirius.customisation.uicallback;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -19,16 +20,17 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.TypedVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * A new callBack to do the same thing that the original callBack except for the
@@ -64,9 +66,21 @@ public class SiriusUiCallBack implements UICallBack {
      * 
      * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#askForDetailName(java.lang.String,
      *      java.lang.String)
+     * @deprecated
      */
+    @Deprecated
     public String askForDetailName(String defaultName, String representationDescription) throws InterruptedException {
         return defaultCallBack.askForDetailName(defaultName, representationDescription);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#askForDetailName(java.lang.String,
+     *      java.lang.String, java.lang.String)
+     */
+    public String askForDetailName(String defaultName, String representationDescriptionName, String representationDescriptionDoc) throws InterruptedException {
+        return defaultCallBack.askForDetailName(defaultName, representationDescriptionName, representationDescriptionDoc);
     }
 
     /**
@@ -99,6 +113,15 @@ public class SiriusUiCallBack implements UICallBack {
      */
     public Collection<EObject> askForVariableValues(EObject model, SelectModelElementVariable variable) throws InterruptedException {
         return defaultCallBack.askForVariableValues(model, variable);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#askForTypedVariable(java.util.List, java.util.List)
+     */
+    public List<String> askForTypedVariable(List<TypedVariable> typedVariableList, List<String> defaultValues) throws InterruptedException {
+        return defaultCallBack.askForTypedVariable(typedVariableList, defaultValues);
     }
 
     /**

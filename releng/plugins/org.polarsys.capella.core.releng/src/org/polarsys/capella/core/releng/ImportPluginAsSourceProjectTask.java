@@ -85,7 +85,6 @@ public class ImportPluginAsSourceProjectTask implements ITaskProduction {
 				return result;
 			}
 		};
-		job.setImportDescriptions(new HashMap());
 		job.setAlternateSource(null);
 		job.setPluginsInUse(false);
 		job.setRule(ResourcesPlugin.getWorkspace().getRoot());

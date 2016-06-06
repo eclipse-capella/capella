@@ -69,7 +69,9 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /*
    * (non-Javadoc)
-   * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters)
+   * 
+   * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.
+   * ActivityParameters)
    */
   @Override
   public IStatus _run(ActivityParameters activityParams) {
@@ -84,6 +86,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * Should initialize RESOURCE_SET, MERGE_CONTEXT, RULE_HANDLER
+   * 
    * @param context
    * @param activityParams
    * @return
@@ -108,9 +111,8 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
       return status;
     }
 
-    status =
-        checkParameters(context, new String[] { ITransitionConstants.TRANSITION_SOURCE_ROOT, ITransitionConstants.TRANSITION_SOURCE_RESOURCE,
-                                                 ITransitionConstants.TRANSITION_SOURCE_EDITING_DOMAIN });
+    status = checkParameters(context, new String[] { ITransitionConstants.TRANSITION_SOURCE_ROOT,
+        ITransitionConstants.TRANSITION_SOURCE_RESOURCE, ITransitionConstants.TRANSITION_SOURCE_EDITING_DOMAIN });
     if (!checkStatus(status)) {
       return status;
     }
@@ -214,9 +216,8 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
       return status;
     }
 
-    status =
-        checkParameters(context, new String[] { ITransitionConstants.TRANSITION_TARGET_ROOT, ITransitionConstants.TRANSITION_TARGET_RESOURCE,
-                                                 ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN });
+    status = checkParameters(context, new String[] { ITransitionConstants.TRANSITION_TARGET_ROOT,
+        ITransitionConstants.TRANSITION_TARGET_RESOURCE, ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN });
     if (!checkStatus(status)) {
       return status;
     }
@@ -265,6 +266,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * TRANSITION_SOURCES must be initialized
+   * 
    * @param context
    * @param activityParams
    * @return
@@ -294,6 +296,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * Create default transformation traceability handler for common transition
+   * 
    * @return
    */
   protected IHandler createDefaultTraceabilityTargetHandler() {
@@ -301,12 +304,11 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
   }
 
   /**
-   * Initialize TRANSITION_SOURCE_ROOT and TRANSITION_SOURCE_RESOURCE and TRANSITION_SOURCE_EDITING_DOMAIN according to selection
+   * Initialize TRANSITION_SOURCE_ROOT and TRANSITION_SOURCE_RESOURCE and TRANSITION_SOURCE_EDITING_DOMAIN according to
+   * selection
    * 
-   * in a common transition, 
-   * TRANSITION_SOURCE_ROOT = TRANSITION_SOURCES.get(0)
-   * TRANSITION_SOURCE_RESOURCE = TRANSITION_SOURCE_ROOT.eResource
-   * TRANSITION_SOURCE_EDITING_DOMAIN = editingDomain(TRANSITION_SOURCE_RESOURCE)
+   * in a common transition, TRANSITION_SOURCE_ROOT = TRANSITION_SOURCES.get(0) TRANSITION_SOURCE_RESOURCE =
+   * TRANSITION_SOURCE_ROOT.eResource TRANSITION_SOURCE_EDITING_DOMAIN = editingDomain(TRANSITION_SOURCE_RESOURCE)
    */
   protected IStatus initializeSource(IContext context, ActivityParameters activityParams) {
     Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
@@ -327,7 +329,9 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
   }
 
   /**
-   * Initialize TRANSITION_TARGET_ROOT and TRANSITION_TARGET_RESOURCE and TRANSITION_TARGET_EDITING_DOMAIN  according to selection
+   * Initialize TRANSITION_TARGET_ROOT and TRANSITION_TARGET_RESOURCE and TRANSITION_TARGET_EDITING_DOMAIN according to
+   * selection
+   * 
    * @param context
    * @param activityParams
    */
@@ -335,6 +339,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * Initialize the Notify handler and set it into context via ITransitionConstants.NOTIFY_HANDLER
+   * 
    * @param context
    * @param activityParams
    * @return
@@ -352,6 +357,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * Create default options handler for common transition
+   * 
    * @return
    */
   protected IHandler createDefaultNotifyHandler() {
@@ -360,6 +366,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * Initialize the Options handler and set it into context via ITransitionConstants.OPTIONS_HANDLER
+   * 
    * @param context
    * @param activityParams
    * @return
@@ -383,6 +390,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * Create default options handler for common transition
+   * 
    * @return
    */
   protected IHandler createDefaultOptionsHandler() {
@@ -395,6 +403,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * Initialize the Attachment handler and set it into context via ATTACHMENT_HANDLER
+   * 
    * @param context
    * @param activityParams
    * @return
@@ -411,6 +420,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * Create default attachment handler for common transition
+   * 
    * @return
    */
   protected IHandler createDefaultAttachmentHandler() {
@@ -440,8 +450,10 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
    * @param handler
    * @param activityParams
    */
-  protected void initializeSelectionContextHandlers(IContext context, CompoundSelectionContextHandler handler, ActivityParameters activityParams) {
-    handler.addSelectionContext(context, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION, new TransformationSelectionContext());
+  protected void initializeSelectionContextHandlers(IContext context, CompoundSelectionContextHandler handler,
+      ActivityParameters activityParams) {
+    handler.addSelectionContext(context, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION,
+        new TransformationSelectionContext());
   }
 
   /**
@@ -453,6 +465,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * Initialize the Scope handler and set it into context via SCOPE_HANDLER
+   * 
    * @param context
    * @param activityParams
    * @return
@@ -488,13 +501,16 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
    * @param compoundScopeRetriever1
    * @param activityParams
    */
-  protected IStatus initializeScopeRetrieverHandlers(IContext iContext1, CompoundScopeRetriever compoundScopeRetriever1, ActivityParameters activityParams) {
-    //Add a scope retriever based on IRuleScope implementations
-    compoundScopeRetriever1.addScopeRetriever(new RuleRelatedElementsScopeRetriever(), iContext1);
+  protected IStatus initializeScopeRetrieverHandlers(IContext context, CompoundScopeRetriever scope,
+      ActivityParameters activityParams) {
+    // Add a scope retriever based on IRuleScope implementations
+    scope.addScopeRetriever(new RuleRelatedElementsScopeRetriever(), context);
 
-    for (Object handler : ExtensionHelper.collectFromExtensions(iContext1, ISchemaConstants.EXTENSION_ID, ISchemaConstants.SCOPE_RETRIEVER)) {
+    for (Object handler : ExtensionHelper.collectFromExtensions(context, ISchemaConstants.EXTENSION_ID,
+        ISchemaConstants.SCOPE_RETRIEVER, (String) context.get(ITransitionConstants.TRANSPOSER_PURPOSE),
+        (String) context.get(ITransitionConstants.TRANSPOSER_MAPPING))) {
       if (handler instanceof IScopeRetriever) {
-        compoundScopeRetriever1.addScopeRetriever((IScopeRetriever) handler, iContext1);
+        scope.addScopeRetriever((IScopeRetriever) handler, context);
       }
     }
 
@@ -503,15 +519,20 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * Initialize scope filters
+   * 
    * @param context
    * @param compoundScopeFilter1
    * @param activityParams
    * @return
    */
-  protected IStatus initializeScopeFilterHandlers(IContext context, CompoundScopeFilter compoundScopeFilter1, ActivityParameters activityParams) {
-    for (Object handler : ExtensionHelper.collectFromExtensions(context, ISchemaConstants.EXTENSION_ID, ISchemaConstants.SCOPE_FILTER)) {
+  protected IStatus initializeScopeFilterHandlers(IContext context, CompoundScopeFilter scope,
+      ActivityParameters activityParams) {
+
+    for (Object handler : ExtensionHelper.collectFromExtensions(context, ISchemaConstants.EXTENSION_ID,
+        ISchemaConstants.SCOPE_FILTER, (String) context.get(ITransitionConstants.TRANSPOSER_PURPOSE),
+        (String) context.get(ITransitionConstants.TRANSPOSER_MAPPING))) {
       if (handler instanceof IScopeFilter) {
-        compoundScopeFilter1.addScopeFilter((IScopeFilter) handler, context);
+        scope.addScopeFilter((IScopeFilter) handler, context);
       }
     }
     return Status.OK_STATUS;
@@ -519,6 +540,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * Create default scope handler for common transition
+   * 
    * @return
    */
   protected IHandler createDefaultContextScopeHandler() {
@@ -527,6 +549,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * Create default scope handler for common transition
+   * 
    * @return
    */
   protected IHandler createDefaultScopeHandler() {
@@ -535,6 +558,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * Initialize the Transformation handler and set it into context via TRANSFORMATION_HANDLER
+   * 
    * @param context
    * @param activityParams
    * @return
@@ -551,6 +575,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * Create default transformation handler for common transition
+   * 
    * @return
    */
   protected IHandler createDefaultTransformationHandler() {
@@ -574,6 +599,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
 
   /**
    * Create default session handler for common transition
+   * 
    * @return
    */
   protected IHandler createDefaultSessionHandler() {

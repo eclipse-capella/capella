@@ -60,10 +60,8 @@ public class PostDiffMergeActivity extends AbstractActivity implements ITranspos
       EObject rootObject = (EObject) root;
       if (rootObject.eContainer() == null) {
         ArrayList<EObject> toDelete = new ArrayList<EObject>();
-        if (rootObject != null) {
-          for (EObject o : rootObject.eContents()) {
-            toDelete.add(o);
-          }
+        for (EObject o : rootObject.eContents()) {
+          toDelete.add(o);
         }
         AttachmentHelper.getInstance(context).removeElements(toDelete, context);
       }

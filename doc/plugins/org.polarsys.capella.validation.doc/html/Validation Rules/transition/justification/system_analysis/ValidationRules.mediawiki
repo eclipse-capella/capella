@@ -1,30 +1,24 @@
       
 = > Validation Rules > capella.category > transition > justification > system_analysis =
             
-{| border="1"
+<br> 
+   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TJ_SA_01 - Operational Activity Realization 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that an Operational Activity is realized by at least one System Function. 
-|-
-|- 
+| colspan="2" |This rule checks that an Operational Activity is realized by at least one System Function. 
 |}            
-{| border="1"
+<br> 
+   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TJ_SA_02 - System Actor to Entity Realization 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule ensures that an Actor Realizes at least one Entity. 
-|-
-|- 
+| colspan="2" |This rule ensures that an Actor Realizes at least one Entity. 
 |}            
-{| border="1"
+<br> 
+   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TJ_SA_03 - Entity Realized by System Actor 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that an Entity is realized by at least one System Actor. 
-|-
-|- 
+| colspan="2" |This rule checks that an Entity is realized by at least one System Actor. 
 |}   

@@ -14,10 +14,11 @@ package org.polarsys.capella.common.flexibility.wizards.ui;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.dialogs.TitleAreaDialog;
+import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.widgets.Composite;
-
 import org.polarsys.capella.common.flexibility.properties.PropertyChangeListener;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangedEvent;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperties;
@@ -31,35 +32,36 @@ import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
  */
 public class PropertyWizardPage extends WizardPage implements PropertyChangeListener {
 
-  protected IPropertyContext _context;
+  protected IPropertyContext context;
 
-  protected IRendererContext _renderers;
+  protected IRendererContext renderers;
 
-  protected IStatus _lastStatus;
+  protected IStatus lastStatus;
 
-  protected IProperty _lastProperty;
+  protected IProperty lastProperty;
 
   /**
    * @return the context
    */
   protected IPropertyContext getContext() {
-    return _context;
+    return context;
   }
 
   /**
    * @return the renderers
    */
   protected IRendererContext getRendererContext() {
-    return _renderers;
+    return renderers;
   }
 
   public PropertyWizardPage(String pageName, IPropertyContext context, IRendererContext renderers) {
     super(pageName);
-    this._context = context;
-    this._renderers = renderers;
+    this.context = context;
+    this.renderers = renderers;
 
     IPropertyContext ctx = getContext();
     ctx.registerListener(this);
+    setImageDescriptor(JFaceResources.getImageRegistry().getDescriptor(TitleAreaDialog.DLG_IMG_TITLE_BANNER));
   }
 
   /**
@@ -75,12 +77,12 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
           try {
             renderer.dispose(getRendererContext());
           } catch (Exception e) {
-            //Nothing here
+            // Nothing here
           }
         }
       }
     } catch (Exception e) {
-      //Nothing here
+      // Nothing here
     }
 
     super.dispose();
@@ -94,7 +96,7 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
   }
 
   /**
-   * {@inheritDoc} 
+   * {@inheritDoc}
    */
   public void createControl(Composite parent) {
     ILabelProvider labelProvider = getLabelProvider();
@@ -105,29 +107,29 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
   }
 
   protected void applyToStatusLine() {
-    if (_lastStatus != null) {
-      String message = _lastStatus.getMessage();
+    if (lastStatus != null) {
+      String message = lastStatus.getMessage();
       if ((message == null) || (message.length() == 0)) {
         setErrorMessage(null);
         setMessage(getDescription());
 
       } else {
-        switch (_lastStatus.getSeverity()) {
-          case IStatus.OK:
-            setErrorMessage(null);
-            setMessage(getDescription());
+        switch (lastStatus.getSeverity()) {
+        case IStatus.OK:
+          setErrorMessage(null);
+          setMessage(getDescription());
           break;
-          case IStatus.WARNING:
-            setErrorMessage(null);
-            setMessage(message, IMessageProvider.WARNING);
+        case IStatus.WARNING:
+          setErrorMessage(null);
+          setMessage(message, IMessageProvider.WARNING);
           break;
-          case IStatus.INFO:
-            setErrorMessage(null);
-            setMessage(message, IMessageProvider.INFORMATION);
+        case IStatus.INFO:
+          setErrorMessage(null);
+          setMessage(message, IMessageProvider.INFORMATION);
           break;
-          default:
-            setErrorMessage(null);
-            setMessage(message, IMessageProvider.ERROR);
+        default:
+          setErrorMessage(null);
+          setMessage(message, IMessageProvider.ERROR);
           break;
         }
       }
@@ -136,10 +138,10 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
 
   @Override
   public boolean isPageComplete() {
-    if (_lastStatus == null) {
+    if (lastStatus == null) {
       return true;
     }
-    boolean isError = _lastStatus.matches(IStatus.ERROR);
+    boolean isError = lastStatus.matches(IStatus.ERROR);
     return !isError;
   }
 
@@ -147,8 +149,8 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
     IPropertyContext context = getContext();
 
     int level = IStatus.OK;
-    _lastStatus = Status.OK_STATUS;
-    _lastProperty = null;
+    lastStatus = Status.OK_STATUS;
+    lastProperty = null;
 
     if (context != null) {
       IProperties properties = context.getProperties();
@@ -157,8 +159,8 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
           IStatus status = item.validate(context.getCurrentValue(item), context);
           if ((status != null) && !status.isOK() && (level < status.getSeverity())) {
             level = status.getSeverity();
-            _lastStatus = status;
-            _lastProperty = item;
+            lastStatus = status;
+            lastProperty = item;
           }
         }
       }
@@ -173,5 +175,4 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
     applyToStatusLine();
     setPageComplete(isPageComplete());
   }
-
 }

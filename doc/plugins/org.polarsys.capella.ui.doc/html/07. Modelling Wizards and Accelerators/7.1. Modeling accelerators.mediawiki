@@ -89,13 +89,13 @@ The Semantic Browser shows the Component Exchanges are correctly allocated to th
 Model before generation: Exchange Items are referenced by the Functional Exchange but not by the input and output Function Ports.
 
  
-[[Image:Images/7.1.%20Modeling%20accelerators_html_m7eccf2be.png|554x357px]]
+[[Image:Images/7.1.%20Modeling%20accelerators_html_m7eccf2be.png|700x500px]]
 
  
 Model after propagation: The Exchange Items referenced by the Functional Exchange have been added as references from the input and output Function Ports.
 
  
-[[Image:Images/7.1.%20Modeling%20accelerators_html_1a7918c9.png|554x179px]]
+[[Image:Images/7.1.%20Modeling%20accelerators_html_1a7918c9.png|600x200px]]
 
  
 <br>

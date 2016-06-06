@@ -24,7 +24,7 @@ The REC definition dialog appears, including the new elements
 Click on OK to validate the new REC content and check the result in the Semantic Browser for example.
 
  
-[[Image:Images/8.3.%20Update%20REC-RPL_html_57991499.png|627x181px]]
+[[Image:Images/8.3.%20Update%20REC-RPL_html_57991499.png|750x200px]]
 
  
 == Update of a RPL from its REC ==

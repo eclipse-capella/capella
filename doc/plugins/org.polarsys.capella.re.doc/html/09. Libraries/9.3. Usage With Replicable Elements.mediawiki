@@ -6,7 +6,7 @@
 Create a library
 
  
-[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_mf56c06f.png|446x196px]]
+[[Image:Images/9.3_Usage_with_Replicable_Elements.png|500x196px]]
 
  
 In the Logical Architecture, create some elements and create a REC from them.
@@ -46,7 +46,7 @@ Ensure your library is saved.
 Create a new Capella Project and add reference to this library
 
  
-[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_53d980d6.png|627x101px]]
+[[Image:Images/9.3_Usage_with_Replicable_Elements2.png|550x101px]]
 
  
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_70371d33.png|627x42px]]

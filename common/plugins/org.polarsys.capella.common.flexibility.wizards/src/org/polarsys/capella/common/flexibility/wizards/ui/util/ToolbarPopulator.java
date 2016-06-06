@@ -11,8 +11,11 @@
 
 package org.polarsys.capella.common.flexibility.wizards.ui.util;
 
+import javax.inject.Inject;
+
+import org.eclipse.core.expressions.IEvaluationContext;
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.jface.action.ContributionManager;
-import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -21,9 +24,9 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.ISourceProvider;
+import org.eclipse.ui.ISources;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.IHandlerService;
-import org.eclipse.ui.internal.menus.InternalMenuService;
 import org.eclipse.ui.internal.services.ServiceLocator;
 import org.eclipse.ui.menus.IMenuService;
 import org.eclipse.ui.services.IDisposable;
@@ -35,18 +38,21 @@ import org.polarsys.capella.common.flexibility.wizards.schema.IRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 
 /**
- * This class is intended to be used to populate a ContributionManager for the given ISelectionProvider instead of global selection.
+ * This class is intended to be used to populate a ContributionManager for the
+ * given ISelectionProvider instead of global selection.
  */
 public class ToolbarPopulator implements ISelectionListener, PropertyChangeListener, IDisposable {
 
-  ContributionManager _contributionManager;
-  String _location;
-  ISelectionProvider _provider;
-  IServiceLocator _parent;
-  IServiceLocator _locator;
-
-  IRendererContext _rendererContext;
-  IRenderer _renderer;
+  @Inject
+  IEclipseContext context;
+  
+  String location;
+  IRenderer renderer;
+  IServiceLocator parent;
+  IServiceLocator locator;
+  ISelectionProvider provider;
+  IRendererContext rendererContext;
+  ContributionManager contributionManager;
 
   /**
    * @param contributionManager
@@ -56,29 +62,31 @@ public class ToolbarPopulator implements ISelectionListener, PropertyChangeListe
    * @param provider
    * @param parent
    */
-  public ToolbarPopulator(ContributionManager contributionManager, String location, IRendererContext rendererContext, IRenderer renderer,
-      ISelectionProvider provider, IServiceLocator parent) {
-    _contributionManager = contributionManager;
-    _location = location;
-    _provider = provider;
-    _parent = parent;
-
-    _renderer = renderer;
-    _rendererContext = rendererContext;
+  public ToolbarPopulator(ContributionManager contributionManager, String location, IRendererContext rendererContext,
+      IRenderer renderer, ISelectionProvider provider, IServiceLocator parent) {
+    this.contributionManager = contributionManager;
+    this.location = location;
+    this.provider = provider;
+    this.parent = parent;
+    this.renderer = renderer;
+    this.rendererContext = rendererContext;
   }
-
+  
+  @SuppressWarnings("restriction")
   public void populate() {
-    if ((_location == null) || (_location.isEmpty())) {
+    if ((location == null) || (location.isEmpty())) {
       return;
     }
 
-    // We can avoid internal uses by providing ours implementations, but its convenient for now.
+    // We can avoid internal uses by providing ours implementations, but its
+    // convenient for now.
 
-    IServiceLocator parentLocator = _parent;
+    IServiceLocator parentLocator = this.parent;
     ServiceLocator locator = new ServiceLocator(parentLocator, null, this);
-    _locator = locator;
+    locator.setContext(context);
+    this.locator = locator;
 
-    SourceSelectionService newService = new RendererSelectionService(_rendererContext, _renderer, _provider);
+    SourceSelectionService newService = new RendererSelectionService(rendererContext, renderer, provider);
     newService.addSelectionListener(this);
     locator.registerService(ISelectionService.class, newService);
 
@@ -87,26 +95,30 @@ public class ToolbarPopulator implements ISelectionListener, PropertyChangeListe
     parentService.addSourceProvider(newService);
     locator.registerService(ISourceProvider.class, newService);
 
-    IHandlerService handlerService = new SlavePopulatorHandlerService((IHandlerService) parentLocator.getService(IHandlerService.class), locator);
+    IHandlerService handlerService = new SlavePopulatorHandlerService(
+        (IHandlerService) parentLocator.getService(IHandlerService.class), locator);
     locator.registerService(IHandlerService.class, handlerService);
 
-    IMenuService menuService = (IMenuService) parentLocator.getService(IMenuService.class);
-    menuService = new SlavePopulatorMenuService((InternalMenuService) menuService, locator, null);
-    locator.registerService(IMenuService.class, menuService);
-    menuService.populateContributionManager(_contributionManager, _location);
+    IMenuService  menuService = parentLocator.getService(IMenuService.class);
+    IMenuService slaveMenuService = new SlavePopulatorMenuService((IMenuService) menuService, locator, null);
+    slaveMenuService.populateContributionManager(contributionManager, location);
     selectionChanged(null, StructuredSelection.EMPTY);
-
-    _rendererContext.getPropertyContext().registerListener(this);
   }
-
+  
   /**
    * {@inheritDoc}
    */
   @Override
   public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-    _contributionManager.update(true);
-    for (IContributionItem item : _contributionManager.getItems()) {
-      item.isEnabled();
+    IEvaluationContext currentState = ((IHandlerService) context.get(IHandlerService.class)).getCurrentState();
+    currentState.addVariable(ISources.ACTIVE_CURRENT_SELECTION_NAME, selection);
+
+    // This is to update the enablement state of the tool items in the toolbar
+    {
+      ISourceProvider provider = (ISourceProvider) locator.getService(ISourceProvider.class);
+      IEvaluationService parentService = (IEvaluationService) this.parent.getService(IEvaluationService.class);
+      parentService.removeSourceProvider(provider);
+      parentService.addSourceProvider(provider);
     }
   }
 
@@ -115,9 +127,9 @@ public class ToolbarPopulator implements ISelectionListener, PropertyChangeListe
    */
   @Override
   public void update(PropertyChangedEvent event) {
-    ISelectionService service = (ISelectionService) _locator.getService(ISelectionService.class);
+    ISelectionService service = (ISelectionService) locator.getService(ISelectionService.class);
     ISelectionChangedListener sChanged = (ISelectionChangedListener) service;
-    sChanged.selectionChanged(new SelectionChangedEvent(_provider, _provider.getSelection()));
+    sChanged.selectionChanged(new SelectionChangedEvent(provider, provider.getSelection()));
   }
 
   /**
@@ -125,13 +137,12 @@ public class ToolbarPopulator implements ISelectionListener, PropertyChangeListe
    */
   @Override
   public void dispose() {
-    if ((_parent != null) && (_locator != null)) {
-      ISourceProvider provider = (ISourceProvider) _locator.getService(ISourceProvider.class);
-      IEvaluationService parentService = (IEvaluationService) _parent.getService(IEvaluationService.class);
+    if ((parent != null) && (locator != null)) {
+      ISourceProvider provider = (ISourceProvider) locator.getService(ISourceProvider.class);
+      IEvaluationService parentService = (IEvaluationService) parent.getService(IEvaluationService.class);
       if (provider != null) {
         parentService.removeSourceProvider(provider);
       }
     }
   }
-
 }

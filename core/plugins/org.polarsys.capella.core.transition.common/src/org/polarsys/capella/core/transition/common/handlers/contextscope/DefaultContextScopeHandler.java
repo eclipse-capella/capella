@@ -40,13 +40,11 @@ public class DefaultContextScopeHandler implements IContextScopeHandler {
    */
   public IStatus dispose(IContext context) {
     for (Object key : context.getKeys()) {
-      if ((key instanceof String) && (key != null)) {
-        if (((String) key).startsWith(REFERENCE_COMPONENT_SCOPE)) {
-          Object value = context.get(key);
-          if ((value != null) && (value instanceof Collection)) {
-            if (!((Collection<?>) value).isEmpty()) {
-              ((Collection<?>) context.get(key)).clear();
-            }
+      if ((key instanceof String) && ((String) key).startsWith(REFERENCE_COMPONENT_SCOPE)) {
+        Object value = context.get(key);
+        if ((value != null) && (value instanceof Collection)) {
+          if (!((Collection<?>) value).isEmpty()) {
+            ((Collection<?>) context.get(key)).clear();
           }
         }
       }

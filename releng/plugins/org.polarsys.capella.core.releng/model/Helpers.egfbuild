@@ -4,7 +4,7 @@
     <steps xsi:type="buildfile:ZipStep" xmi:id="_TdR2UV1yEeGnJaeCI-TkHw" name="ZipArchiveArtifact" description="" baseDir="${product}" destinationFilePath="${publish}/${archiveName}-${buildVersion}-${os}-${ws}-${arch}-${eclipseCodeName}.zip"/>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_kj5YgJfiEeSD685w18qp-w" name="TarArchiveArtifact">
-    <steps xsi:type="buildstep:AntStep" xmi:id="_mB7cwJfiEeSD685w18qp-w" name="TarArchiveArtifact" targetName="${os}_${ws}_${arch}_TarArchiveTask" xml="&lt;target name=&quot;${os}_${ws}_${arch}_TarArchiveTask&quot;>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;!-- linux eclipse executable -->&#xD;&#xA;&#x9;&lt;chmod perm=&quot;+x&quot; type=&quot;file&quot;>&#xD;&#xA;&#x9;&#x9;&lt;fileset dir=&quot;${product}/capella/eclipse&quot; erroronmissingdir=&quot;false&quot;>&#xD;&#xA;&#x9;&#x9;&#x9;&lt;include name=&quot;eclipse&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;/fileset>&#xD;&#xA;&#x9;&lt;/chmod>&#xD;&#xA;&#x9;&lt;!-- macosx eclipse executable -->&#xD;&#xA;&#x9;&lt;chmod perm=&quot;+x&quot; type=&quot;file&quot;>&#xD;&#xA;&#x9;&#x9;&lt;fileset dir=&quot;${product}/capella/eclipse/Eclipse.app/Contents/MacOS&quot; erroronmissingdir=&quot;false&quot;>&#xD;&#xA;&#x9;&#x9;&#x9;&lt;include name=&quot;eclipse&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;/fileset>&#xD;&#xA;&#x9;&lt;/chmod>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;tar destfile=&quot;${publish}/${archiveName}-${buildVersion}-${os}-${ws}-${arch}-${eclipseCodeName}.tar.gz&quot; basedir=&quot;${product}&quot; compression=&quot;gzip&quot; />&#xD;&#xA;&#xD;&#xA;&lt;/target>"/>
+    <steps xsi:type="buildstep:AntStep" xmi:id="_mB7cwJfiEeSD685w18qp-w" name="TarArchiveArtifact" targetName="${os}_${ws}_${arch}_TarArchiveTask" xml="&lt;target name=&quot;${os}_${ws}_${arch}_TarArchiveTask&quot;>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;!-- linux eclipse executable -->&#xD;&#xA;&#x9;&lt;chmod perm=&quot;+x&quot; type=&quot;file&quot;>&#xD;&#xA;&#x9;&#x9;&lt;fileset dir=&quot;${product}/capella/eclipse&quot; erroronmissingdir=&quot;false&quot;>&#xD;&#xA;&#x9;&#x9;&#x9;&lt;include name=&quot;eclipse&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;/fileset>&#xD;&#xA;&#x9;&lt;/chmod>&#xD;&#xA;&#x9;&lt;!-- macosx eclipse executable -->&#xD;&#xA;&#x9;&lt;chmod perm=&quot;+x&quot; type=&quot;file&quot;>&#xD;&#xA;&#x9;&#x9;&lt;fileset dir=&quot;${product}/capella/eclipse/Eclipse.app/Contents/MacOS&quot; erroronmissingdir=&quot;false&quot;>&#xD;&#xA;&#x9;&#x9;&#x9;&lt;include name=&quot;eclipse&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;/fileset>&#xD;&#xA;&#x9;&lt;/chmod>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;tar destfile=&quot;${publish}/${archiveName}-${buildVersion}-${os}-${ws}-${arch}-${eclipseCodeName}.tar.gz&quot; basedir=&quot;${product}&quot; compression=&quot;gzip&quot; longfile=&quot;gnu&quot;/>&#xD;&#xA;&#xD;&#xA;&lt;/target>"/>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_NGDOgF1yEeGnJaeCI-TkHw" name="PrepareCleanTP">
     <steps xsi:type="buildfile:DeleteStep" xmi:id="_RKR90E2sEeGhsO9pPJ3cDA" name="Delete product">
@@ -17,25 +17,31 @@
     </steps>
     <steps xsi:type="buildstep:InstallStep" xmi:id="_M-34IKBpEeKMQb8Rddw1Vg" name="Install Eclipse Basics" description="" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
       <updateSiteUrls>${primary_eclipseUpdateSite}</updateSiteUrls>
-      <updateSiteUrls>${secondary_eclipseUpdateSite}</updateSiteUrls>
       <featureNames>org.eclipse.emf.sdk</featureNames>
-      <featureNames>org.eclipse.emf.query.sdk</featureNames>
-      <featureNames>org.eclipse.emf.transaction.sdk</featureNames>
-      <featureNames>org.eclipse.emf.validation.sdk</featureNames>
       <featureNames>org.eclipse.gef.sdk</featureNames>
       <featureNames>org.eclipse.gmf.runtime.sdk</featureNames>
+      <featureNames>org.eclipse.emf.transaction</featureNames>
+      <featureNames>org.eclipse.emf.validation</featureNames>
+      <featureNames>org.eclipse.emf.query</featureNames>
+      <featureNames>org.eclipse.emf.workspace</featureNames>
+      <featureNames>org.eclipse.emf.transaction.source</featureNames>
+      <featureNames>org.eclipse.emf.workspace.source</featureNames>
+      <featureNames>org.eclipse.emf.validation.ocl</featureNames>
+      <featureNames>org.eclipse.emf.validation.source</featureNames>
+      <featureNames>org.eclipse.emf.validation.ocl.source</featureNames>
+      <featureNames>org.eclipse.emf.query.ocl</featureNames>
+      <featureNames>org.eclipse.emf.query.source</featureNames>
+      <featureNames>org.eclipse.emf.query.ocl.source</featureNames>
     </steps>
     <steps xsi:type="buildcore:ReuseStep" xmi:id="_ZCQuQKEpEeKMQb8Rddw1Vg" name="FinalizeTP" reusedStep="_xh-N4KG3EeKjzsUfibKjCg"/>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_xh-N4KG3EeKjzsUfibKjCg" name="FinalizeTP">
     <properties xmi:id="_P5DYAl4qEeGjYKPu-vkVIA" key="resourcesDir" value="${relengDir}/../../../resources/${eclipseCodeName}" type="INLINED"/>
     <steps xsi:type="buildcore:StepContainer" xmi:id="__Fm_AKEoEeKMQb8Rddw1Vg" name="UpdateEclipseINI">
-      <steps xsi:type="buildfile:DeleteStep" xmi:id="_R8q_4E2zEeGhsO9pPJ3cDA" name="Remove eclipse.exe and eclipse.ini">
-        <filePaths>${product}/capella/eclipse/eclipse.exe</filePaths>
+      <steps xsi:type="buildfile:DeleteStep" xmi:id="_R8q_4E2zEeGhsO9pPJ3cDA" name="Remove eclipse.ini">
         <filePaths>${product}/capella/eclipse/eclipse.ini</filePaths>
       </steps>
-      <steps xsi:type="buildfile:CopyStep" xmi:id="_j81ZsE2zEeGhsO9pPJ3cDA" name="Copy capella.exe and capella.ini" destinationFolderPath="${product}/capella/eclipse">
-        <filePaths>${resourcesDir}/${os}-${arch}/eclipse.exe</filePaths>
+      <steps xsi:type="buildfile:CopyStep" xmi:id="_j81ZsE2zEeGhsO9pPJ3cDA" name="Copy capella.ini" destinationFolderPath="${product}/capella/eclipse">
         <filePaths>${resourcesDir}/${os}-${arch}/eclipse.ini</filePaths>
       </steps>
     </steps>
@@ -56,7 +62,7 @@
     <steps xsi:type="buildfile:DeleteStep" xmi:id="_34NbYZMKEeKKWIqJCUuOog" name="delete TP" description="">
       <additionalParameters xmi:id="_34NbYpMKEeKKWIqJCUuOog" key="dir" value="${usedTP}"/>
     </steps>
-    <steps xsi:type="buildstep:AntStep" xmi:id="_vi-ucLELEeSLhv0uZvTdTQ" name="Download CapellaTP" targetName="DownloadCapellaTP" xml="&lt;target name=&quot;DownloadCapellaTP&quot;>&#xD;&#xA;&#x9; &lt;dirname property=&quot;dir&quot; file=&quot;${usedTP}.ts&quot;/>&#xD;&#xA;&#x9; &lt;mkdir dir=&quot;${dir}&quot; />&#xD;&#xA;&#xD;&#xA;&#x9;&lt;get &#xD;&#xA;&#x9;&#x9;src=&quot;${hudson.job.url}/buildTimestamp?format=yyyy-MM-dd_HH-mm-ss&quot; &#xD;&#xA;&#x9;&#x9;dest=&quot;${usedTP}.ts&quot;/>&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&lt;loadfile srcfile=&quot;${usedTP}.ts&quot; property=&quot;ts&quot;/>&#xD;&#xA;&#x9;&lt;echo>${usedTP} timestamp: ${ts}&lt;/echo>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;get &#xD;&#xA;&#x9;&#x9;src=&quot;${hudson.job.url}/artifact/result/publish/capella-${capella.version}.${ts}-linux-gtk-x86_64-juno.tar.gz&quot;&#xD;&#xA;&#x9;&#x9;dest=&quot;${usedTP}.tar.gz&quot;/>&#xD;&#xA;&#xD;&#xA;&lt;gunzip src=&quot;${usedTP}.tar.gz&quot;/>&#xD;&#xA;&lt;untar src=&quot;${usedTP}.tar&quot; dest=&quot;${usedTP}&quot;/>&#xD;&#xA;&#xD;&#xA;&lt;/target> &#xD;&#xA;"/>
+    <steps xsi:type="buildstep:AntStep" xmi:id="_vi-ucLELEeSLhv0uZvTdTQ" name="Download CapellaTP" targetName="DownloadCapellaTP" xml="&lt;target name=&quot;DownloadCapellaTP&quot;>&#xD;&#xA;&#x9; &lt;dirname property=&quot;dir&quot; file=&quot;${usedTP}.ts&quot;/>&#xD;&#xA;&#x9; &lt;mkdir dir=&quot;${dir}&quot; />&#xD;&#xA;&#xD;&#xA;&#x9;&lt;get &#xD;&#xA;&#x9;&#x9;src=&quot;${hudson.job.url}/buildTimestamp?format=yyyy-MM-dd_HH-mm-ss&quot; &#xD;&#xA;&#x9;&#x9;dest=&quot;${usedTP}.ts&quot;/>&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&lt;loadfile srcfile=&quot;${usedTP}.ts&quot; property=&quot;ts&quot;/>&#xD;&#xA;&#x9;&lt;echo>${usedTP} timestamp: ${ts}&lt;/echo>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;get &#xD;&#xA;&#x9;&#x9;src=&quot;${hudson.job.url}/artifact/result/publish/capella-${capella.version}.${ts}-linux-gtk-x86_64-${eclipseCodeName}.tar.gz&quot;&#xD;&#xA;&#x9;&#x9;dest=&quot;${usedTP}.tar.gz&quot;/>&#xD;&#xA;&#xD;&#xA;&lt;gunzip src=&quot;${usedTP}.tar.gz&quot;/>&#xD;&#xA;&lt;untar src=&quot;${usedTP}.tar&quot; dest=&quot;${usedTP}&quot;/>&#xD;&#xA;&#xD;&#xA;&lt;/target> &#xD;&#xA;"/>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_ZHUroJMLEeKKWIqJCUuOog" name="TestSuites">
     <steps xsi:type="buildstep:BuildStep" xmi:id="_fdrJtJMLEeKKWIqJCUuOog" name="Import Test Plugins">

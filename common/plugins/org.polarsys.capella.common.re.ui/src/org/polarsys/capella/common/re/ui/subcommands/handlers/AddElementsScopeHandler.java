@@ -32,17 +32,18 @@ public class AddElementsScopeHandler extends SubCommandHandler {
 
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
-    ISelection selection = HandlerUtil.getCurrentSelection(event);
-    IRendererContext context = ExecutionEventUtil.getRendererContext(event);
-    IProperty sourceScope = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE);
+    ISelection selection = getSelection(event);
+    if (selection != null && selection instanceof IStructuredSelection) {
+      IRendererContext context = ExecutionEventUtil.getRendererContext(event);
+      IProperty sourceScope = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE);
 
-    Collection scopeElements = (Collection) context.getPropertyContext().getCurrentValue(sourceScope);
-    if (scopeElements != null) {
-      Collection values = ((IStructuredSelection) selection).toList();
-      scopeElements.addAll(values);
-      context.getPropertyContext().setCurrentValue(sourceScope, scopeElements);
+      Collection scopeElements = (Collection) context.getPropertyContext().getCurrentValue(sourceScope);
+      if (scopeElements != null) {
+        Collection values = ((IStructuredSelection) selection).toList();
+        scopeElements.addAll(values);
+        context.getPropertyContext().setCurrentValue(sourceScope, scopeElements);
+      }
     }
-
     return null;
   }
 
@@ -51,38 +52,25 @@ public class AddElementsScopeHandler extends SubCommandHandler {
    */
   @Override
   public void setEnabled(Object evaluationContext) {
-
-    Object variable = ((IEvaluationContext) evaluationContext).getDefaultVariable();
-
-    if (!(variable instanceof Collection)) {
+    Collection<Object> selectedObjects = getSelectedObjects((IEvaluationContext) evaluationContext);
+    if (selectedObjects.isEmpty()) {
       setBaseEnabled(false);
     } else {
-      Collection selection = (Collection) variable;
-      if (selection.isEmpty()) {
+      IRendererContext rendererContext = ExecutionEventUtil.getRendererContext((IEvaluationContext) evaluationContext);
+      if (rendererContext == null) {
         setBaseEnabled(false);
       } else {
+        Collection scopeElements = (Collection) rendererContext.getPropertyContext().getCurrentValue(
+            rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
 
-        IRendererContext rendererContext = ExecutionEventUtil.getRendererContext((IEvaluationContext) evaluationContext);
-        if (rendererContext == null) {
-          setBaseEnabled(false);
-        } else {
-
-          Collection scopeElements =
-              (Collection) rendererContext.getPropertyContext().getCurrentValue(
-                  rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
-
-          Collection<Object> values = new HashSet<Object>(selection);
-          if (values != null) {
-            if (scopeElements != null) {
-              values.removeAll(scopeElements);
-            }
-            setBaseEnabled(!values.isEmpty());
+        Collection<Object> values = new HashSet<Object>(selectedObjects);
+        if (values != null) {
+          if (scopeElements != null) {
+            values.removeAll(scopeElements);
           }
+          setBaseEnabled(!values.isEmpty());
         }
       }
     }
-    super.setEnabled(evaluationContext);
-
   }
-
 }

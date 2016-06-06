@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,11 +12,10 @@ package org.polarsys.capella.core.menu.dynamic;
 
 import java.util.Collection;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.swt.widgets.Shell;
-
-import org.polarsys.kitalpha.emde.model.Element;
 import org.polarsys.capella.common.menu.dynamic.AbstractModelElementAction;
 
 /**
@@ -37,7 +36,7 @@ public abstract class DynamicModelElementAction extends AbstractModelElementActi
    */
   @Override
   protected Class<?> getModelElementClass() {
-    return Element.class;
+    return EObject.class;
   }
 
   /**

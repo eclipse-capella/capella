@@ -11,7 +11,6 @@
 package org.polarsys.capella.common.re.ui.subcommands.handlers;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -39,40 +38,31 @@ public class SelectionDependenciesScopeHandler extends SelectionCommandHandler {
   @Override
   public void setEnabled(Object evaluationContext) {
     IEvaluationContext context = (IEvaluationContext) evaluationContext;
+    Collection<Object> selectedObjects = getSelectedObjects(context);
     IRendererContext rendererContext = ExecutionEventUtil.getRendererContext(context);
-    Object variable = ((IEvaluationContext) evaluationContext).getDefaultVariable();
 
-    if (!(variable instanceof List)) {
+    if (selectedObjects.isEmpty()) {
       setBaseEnabled(false);
     } else {
-      List selection = (List) variable;
-      if (selection.isEmpty()) {
+      if (rendererContext == null) {
         setBaseEnabled(false);
       } else {
 
-        if (rendererContext == null) {
+        String scope = getScope();
+        String propertyId = scope;
+
+        if ((scope == null) || scope.isEmpty()) {
           setBaseEnabled(false);
         } else {
 
-          String scope = getScope();
-          String propertyId = scope;
-
-          if ((scope == null) || scope.isEmpty()) {
-            setBaseEnabled(false);
-          } else {
-
-            IProperties delegatedProperties = new PropertiesLoader().getProperties(scope);
-            Object source = getPropertySource(new StructuredSelection(selection), rendererContext);
-            IPropertyContext delegatedContext = new PropertyContext(delegatedProperties, source);
-            IProperty property = delegatedProperties.getProperty(propertyId);
-            Object current = delegatedContext.getCurrentValue(property);
-            setBaseEnabled((current instanceof Collection) && !((Collection) current).isEmpty());
-          }
-
+          IProperties delegatedProperties = new PropertiesLoader().getProperties(scope);
+          Object source = getPropertySource(new StructuredSelection(selectedObjects), rendererContext);
+          IPropertyContext delegatedContext = new PropertyContext(delegatedProperties, source);
+          IProperty property = delegatedProperties.getProperty(propertyId);
+          Object current = delegatedContext.getCurrentValue(property);
+          setBaseEnabled((current instanceof Collection) && !((Collection) current).isEmpty());
         }
       }
     }
-    super.setEnabled(evaluationContext);
   }
-
 }

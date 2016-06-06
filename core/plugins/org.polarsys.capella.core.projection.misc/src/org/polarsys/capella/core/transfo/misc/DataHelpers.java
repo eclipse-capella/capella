@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,13 +18,15 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 public class DataHelpers {
 
+	private DataHelpers(){
+	}
 	/**
-	 *  Check if elt2_p element is belong to Data package and same layer than elt1_p 
+	 *  Check if elt2 element is belong to Data package and same layer than elt1 
 	 */
-	public static boolean isBelongToSameDataPkgLayer(ModelElement elt1_p, ModelElement elt2_p) {
-		if (elt1_p instanceof CapellaElement && elt2_p instanceof CapellaElement) {
-			if (null != elt2_p && EcoreUtil2.isContainedBy(elt2_p, InformationPackage.Literals.DATA_PKG) 
-				&& CapellaLayerCheckingExt.getLayersName((CapellaElement) elt1_p) == CapellaLayerCheckingExt.getLayersName((CapellaElement)elt2_p)) {
+	public static boolean isBelongToSameDataPkgLayer(ModelElement elt1, ModelElement elt2) {
+		if (elt1 instanceof CapellaElement && elt2 instanceof CapellaElement) {
+			if (EcoreUtil2.isContainedBy(elt2, InformationPackage.Literals.DATA_PKG) 
+				&& CapellaLayerCheckingExt.getLayersName((CapellaElement) elt1) == CapellaLayerCheckingExt.getLayersName((CapellaElement)elt2)) {
 				return true;
 			}
 		}

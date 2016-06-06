@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,21 +14,17 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
-import org.polarsys.capella.core.data.information.Class;
-import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemElement;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datatype.NumericType;
 import org.polarsys.capella.core.data.information.datatype.NumericTypeKind;
 import org.polarsys.capella.core.data.information.datavalue.NumericValue;
 import org.polarsys.capella.core.data.information.util.PropertyNamingHelper;
-import org.polarsys.capella.core.data.oa.Role;
-import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
  * Check Property untyped
  */
-public class PropertyMaximumCardinalityIsNatural extends AbstractValidationRule {
+public class PropertyMaximumCardinalityIsNatural extends AbstractCardinalityRule {
   /**
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
@@ -58,11 +54,6 @@ public class PropertyMaximumCardinalityIsNatural extends AbstractValidationRule 
     }
 
     return ctx.createSuccessStatus();
-  }
-
-  private boolean isValidType(EObject eObj) {
-    return eObj instanceof Property && eObj.eContainer() instanceof Class || eObj instanceof Role
-        || eObj instanceof ExchangeItem;
   }
 
   private boolean isNatural(NumericValue value) {

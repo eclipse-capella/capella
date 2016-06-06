@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,6 @@ package org.polarsys.capella.test.recrpl.ju.testsuites.main;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import junit.framework.Test;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -28,6 +26,7 @@ import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_Containment;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_ContainmentPart;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_InvalidCatalogElementLink;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SharedElements_ExchangeItems;
+import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SharedElements_ExternalResource;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SharedElements_Interface;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SimpleCase;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_WithSuffix;
@@ -42,18 +41,20 @@ import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_Containment;
 import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_RemoveElement;
 import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_RenameElementWithSuffix;
 
+import junit.framework.Test;
+
 public class RecRplTestSuite extends BasicTestSuite {
 
-	/**
-	 * Returns the suite. This is required to unary launch this test.
-	 */
-	public static Test suite() {
-		return new RecRplTestSuite();
-	}
+  /**
+   * Returns the suite. This is required to unary launch this test.
+   */
+  public static Test suite() {
+    return new RecRplTestSuite();
+  }
 
-	@Override
-	protected List<BasicTestArtefact> getTests() {
-		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+  @Override
+  protected List<BasicTestArtefact> getTests() {
+    List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new CatalogPkgName());
     tests.add(new CreateREC_ComponentFunctionalAllocation());
     tests.add(new CreateREC_ContainedInCatalog());
@@ -66,6 +67,7 @@ public class RecRplTestSuite extends BasicTestSuite {
     tests.add(new CreateRPL_InvalidCatalogElementLink());
     tests.add(new CreateRPL_onREC());
     tests.add(new CreateRPL_SharedElements_ExchangeItems());
+    tests.add(new CreateRPL_SharedElements_ExternalResource());
     tests.add(new CreateRPL_SharedElements_Interface());
     tests.add(new CreateRPL_SimpleCase());
     tests.add(new CreateRPL_WithSuffix());
@@ -78,11 +80,11 @@ public class RecRplTestSuite extends BasicTestSuite {
     tests.add(new UpdateRPL_Containment());
     tests.add(new UpdateRPL_RemoveElement());
     tests.add(new UpdateRPL_RenameElementWithSuffix());
-		return tests;
-	}
+    return tests;
+  }
 
-	@Override
-	public List<String> getRequiredTestModels() {
-		return null;
-	}
+  @Override
+  public List<String> getRequiredTestModels() {
+    return null;
+  }
 }

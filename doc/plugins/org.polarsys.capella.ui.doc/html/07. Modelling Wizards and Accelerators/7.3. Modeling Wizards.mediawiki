@@ -24,7 +24,7 @@ However, in certain 				cases (for example at the very beginning of a project), 
 '''Capella offers lightweight requirement management capabilities'''. Allocation is performed through matrices or using the dedicated wizard. On any element, using the contextual menu, select the Requirements Manager as shown belowopen the requirement allocation dialog.
 
  
-[[Image:Images/7.3.%20Modeling%20Wizards_html_m2823bc7.png|490x434px]]
+[[Image:Images/7.3_Wizard_Requirement_Manager.png|600x550px]]
 
  
 A double pane dialog appears, proposing all requirements.
@@ -319,11 +319,9 @@ Capella Function Port and EI Allocation tool provides means manage Function / Po
 With this tool a user can perform Exchange item allocation from one or several functions located in the source engineering phase to other functions in the following engineering phase, by launching a dedicated wizard via the &ldquo;Function Port and EI Traceability Wizard&rdquo; command of the contextual menu (see the following figure).
 
  
-<br>
-<br>
 
  
-[[Image:Images/7.3.%20Modeling%20Wizards_html_5cde59bb.png|470x407px]]
+[[Image:Images/7.3_Modeling%20Wizard_Principles.png|470x500px]]
 
  
 === Source Engineering Phase (SEP) ===
@@ -331,8 +329,9 @@ With this tool a user can perform Exchange item allocation from one or several f
  
 The left pane of the following wizard represent all elements to be refined / enriched between the source architecture (SEP) and the target Architecture (TEP).
 
+<br>
  
-[[Image:Images/7.3.%20Modeling%20Wizards_html_md5d81bf.png|314x296px]]
+[[Image:Images/7.3.%20Modeling%20Wizards_html_md5d81bf.png|500x450px]]
 
  
 In the above figure, the Function &ldquo;LogicalFunction 1&rdquo; has one Port &ldquo;FOP1&rdquo; which exposes the Exchange Item &ldquo;ExchangeItem1&rdquo;.
@@ -348,7 +347,7 @@ In the above figure, the Function &ldquo;LogicalFunction 1&rdquo; has one Port &
 The right pane contains all the TEP elements contributing to the realization of the SEP elements.
 
  
-[[Image:Images/7.3.%20Modeling%20Wizards_html_m7cfae2ea.png|348x294px]]
+[[Image:Images/7.3.%20Modeling%20Wizards_html_m7cfae2ea.png|500x450px]]
 
  
 In the above figure, the Function &ldquo;PhysicalFunction 1&rdquo; gets a new Exchange Item provided by &ldquo;LogicalFunction 1&rdquo;.
@@ -376,10 +375,10 @@ Creation of elements in the TEP (Right pane of the wizard)
   
 * '''Creation of Traceability link'''
   
-[[Image:Images/7.3.%20Modeling%20Wizards_html_d1af40e.png|276x253px]]
+[[Image:Images/7.3_Modeling%20Wizard_Features1.png|550x550px]]
 
   
-[[Image:Images/7.3.%20Modeling%20Wizards_html_m7817c5f8.png|276x262px]]
+[[Image:Images/7.3_Modeling%20Wizard_Features2.png|570x520px]]
 
  
 <br>

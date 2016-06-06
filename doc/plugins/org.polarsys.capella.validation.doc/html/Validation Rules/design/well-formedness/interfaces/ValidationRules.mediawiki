@@ -1,165 +1,137 @@
       
 = > Validation Rules > capella.category > design > well-formedness > interfaces =
             
-{| border="1"
+<br>
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+| DWF_I_01 - ExchangeItemParameter kind consistency 
 |-
-|[[Image:Images/error.gif|ERROR]]
-|  
-|-
-|This rule checks whether the ExchangeItemElements of an ExchangeItem are consistent with applied exchange mechanism: - Elements of an ExchangeItem with exchange mechanism OPERATION must be of kind PARAMETER - For all other exchange mechanisms, elements must be of kind TYPE 
-|-
-|- 
+| colspan="2"| This rule checks whether the ExchangeItemElements of an ExchangeItem are consistent with applied exchange mechanism: - Elements of an ExchangeItem with exchange mechanism OPERATION must be of kind PARAMETER - For all other exchange mechanisms, elements must be of kind TYPE 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+| DWF_I_03 - ExchangeItemElement Direction check 
 |-
-|[[Image:Images/error.gif|ERROR]]
-|  
-|-
-|This rule checks that a component uses and implements only interface from valid architecture. 
-|-
-|- 
+| colspan="2"| This rule checks that a component uses and implements only interface from valid architecture. 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+| DWF_I_04 - Components must implements/uses accessible interfaces 
 |-
-|[[Image:Images/error.gif|ERROR]]
-|  
-|-
-|This rule checks that the component cannot have the same kind of communication link targeting to the same exchange item with the same protocol. 
-|-
-|- 
+| colspan="2"| This rule checks that the component cannot have the same kind of communication link targeting to the same exchange item with the same protocol. 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|  DWF_I_05 - No Equivalent Component Communication Links 
 |-
-|[[Image:Images/error.gif|ERROR]]
-|  
-|-
-|This rule checks that no Interface is located in EPBS. 
-|-
-|- 
+| colspan="2"| This rule checks that no Interface is located in EPBS. 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+| DWF_I_06 - Interface location check
 |-
-|[[Image:Images/error.gif|ERROR]]
-|  
-|-
-|This rule checks that a component uses/implements interfaces from the same level or from an upper level. 
-|-
-|- 
+| colspan="2"| This rule checks that a component uses/implements interfaces from the same level or from an upper level. 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|  DWF_I_07 - Interface location level 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that a Component port requires/provides the interfaces of its own level. 
-|-
-|- 
+| colspan="2"| This rule checks that a Component port requires/provides the interfaces of its own level. 
 |}            
-{| border="1"
+<br>
+ {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|  DWF_I_08 - Component port required and provided interface check 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that a CommunicationLink kind is only used with  a specific CommunicatinLink protocol. 
-|-
-|- 
+| colspan="2"| This rule checks that a CommunicationLink kind is only used with  a specific CommunicatinLink protocol. 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+ !|[[Image:../../../../Images/warning.gif|WARNING]]
+|  DWF_I_09 - CommunicationLink kind and ExchangeItem kind 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that a CommunicationLink protocol are only used with a specific CommunicatinLink kind. 
-|-
-|- 
+| colspan="2"| This rule checks that a CommunicationLink protocol are only used with a specific CommunicatinLink kind. 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+ !|[[Image:../../../../Images/error.gif|ERROR]]
+|   DWF_I_10 - CommunicationLink protocol and ExchangeItem kind  
 |-
-|[[Image:Images/error.gif|ERROR]]
-|  
-|-
-|This rule checks that a ExchangeItemAllocation AllocatedItem value is not null. 
-|-
-|- 
+| colspan="2"| This rule checks that a ExchangeItemAllocation AllocatedItem value is not null. 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+ !|[[Image:../../../../Images/warning.gif|WARNING]]
+|    DWF_I_11 - ExchangeItemAllocation AllocatedItem Check   
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule ensures that an ExchangeItemAllocation from given layer should not allocate element of lower Architecture layer.  Exmaple: If an ExchangeItemAllocation is on SystemArchitecture layer. It should not allocate any element from Logical or Physical Layer. 
-|-
-|- 
+| colspan="2"| This rule ensures that an ExchangeItemAllocation from given layer should not allocate element of lower Architecture layer.  Exmaple: If an ExchangeItemAllocation is on SystemArchitecture layer. It should not allocate any element from Logical or Physical Layer. 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+ !|[[Image:../../../../Images/warning.gif|WARNING]]
+|     DWF_I_12 - Exchange item allocation layer consistency    
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks if a component is linked to interfaces and exchange items which are defined in a unavailable location (for instance a component should not be linked to an inner interface of another component) 
-|-
-|- 
+| colspan="2"| This rule checks if a component is linked to interfaces and exchange items which are defined in a unavailable location (for instance a component should not be linked to an inner interface of another component) 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+ !|[[Image:../../../../Images/warning.gif|WARNING]]
+|    DWF_I_13 - Interface and Exchange item location check 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that an existing technical interface between two Components represent all the Communication Links with the same direction between those two components. 
-|-
-|- 
+| colspan="2"| This rule checks that an existing technical interface between two Components represent all the Communication Links with the same direction between those two components. 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+ !|[[Image:../../../../Images/warning.gif|WARNING]]
+|    DWF_I_14 - Technical interface represent all communication links    
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that for each Exchange Item Allocation of a technical Interface, there is a Communication Link associated to it. 
-|-
-|- 
+| colspan="2"| This rule checks that for each Exchange Item Allocation of a technical Interface, there is a Communication Link associated to it. 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
+ !|[[Image:../../../../Images/warning.gif|WARNING]]
+|    DWF_I_15 - Exchange Item Allocation For Technical Interface Has Communication Link
 |-
-|This rule checks that technical interfaces are not provided or required 
-|-
-|- 
+| colspan="2"|This rule checks that for each Exchange Item Allocation of a technical Interface, there is a Communication 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+ !|[[Image:../../../../Images/warning.gif|WARNING]]
+|  DWF_I_16 - Technical interfaces are not provided or required 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that there is at most one technical Interfaces by couple of component (direction is meaningful). 
-|-
-|- 
+| colspan="2"| This rule checks that technical interfaces are not provided or required 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+ !|[[Image:../../../../Images/warning.gif|WARNING]]
+|     DWF_I_17 - At most one technical interface between two components 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that a technical interfaces should not be used by more than one component. 
-|-
-|- 
+| colspan="2"| This rule checks that there is at most one technical Interfaces by couple of component (direction is meaningful). 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+ !|[[Image:../../../../Images/warning.gif|WARNING]]
+|    DWF_I_18 - Technical interfaces should not be used by more than one component    
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that a technical interfaces should not be implemented by more than one component 
-|-
-|- 
+| colspan="2"| This rule checks that a technical interfaces should not be used by more than one component. 
 |}            
-{| border="1"
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+ !|[[Image:../../../../Images/warning.gif|WARNING]]
+|    DWF_I_19 - Technical interfaces should not be implemented by more than one component    
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
+| colspan="2"| This rule checks that a technical interfaces should not be implemented by more than one component 
+|}            
+<br> 
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+ !|[[Image:../../../../Images/warning.gif|WARNING]]
+|    DWF_I_20 - Interface does not contain similar Exchange Item Allocation     
 |-
-|This rule checks that an interface does not contain similar Exchange Item Allocation (that target the same Exchange Item and have same protocols). 
-|-
-|- 
+| colspan="2"| This rule checks that an interface does not contain similar Exchange Item Allocation (that target the same Exchange Item and have same protocols). 
 |}   

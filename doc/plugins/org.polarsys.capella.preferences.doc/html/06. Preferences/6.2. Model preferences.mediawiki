@@ -4,7 +4,7 @@
 Preferences are available from the Window / Preferences menu. A section is dedicated to Capella.
 
  
-[[Image:Images/6.2.%20Model%20preferences_html_1f594e63.png|334x361px]]
+[[Image:Images/6.2.%20Model%20preferences_html_1f594e63.png|250x300px]]
 
  
 [[Image:Images/6.2.%20Model%20preferences_html_mcdd659.png|627x522px]]
@@ -16,7 +16,7 @@ Preferences are available from the Window / Preferences menu. A section is dedic
  
 == General ==
  
-[[Image:Images/6.2.%20Model%20preferences_html_3594092.png|627x192px]]
+[[Image:Images/6.2.%20Model%20preferences_html_3594092.png|400x192px]]
 
  
 The &ldquo;Check model version at load time&rdquo; provides a security when opening a model. It checks whether the model has been produced with the current version and thus '''whether it needs to be migrated or not'''. '''The drawback of activating this check is that the opening of models takes twice as long'''.
@@ -61,7 +61,7 @@ The following figure illustrates the prompted dialog when deleting the System Ac
 On the sub section Model of Capella preferences, it is possible to specify global behavior regarding the management of specific elements.
 
  
-[[Image:Images/6.2.%20Model%20preferences_html_m2492a832.png|859x474px]]
+[[Image:Images/6.2.%20Model%20preferences_html_m2492a832.png|700x474px]]
 
  
 When &ldquo;'''Multiple inheritance allowed'''&rdquo; is activated, a Class can inherit from several other Classes. Otherwise, it can only have one inheritance ancestor.
@@ -82,7 +82,7 @@ When &ldquo;'''Delete related associations when a class becomes primitive'''&rdq
  
 == Overview ==
  
-[[Image:Images/6.2.%20Model%20preferences_html_m4d003fe.png|466x126px]]
+[[Image:Images/6.2.%20Model%20preferences_html_m4d003fe.png|450x250px]]
 
  
 Both options allow choosing whether activities related to Functional Analysis and Interface Engineering should be displayed or not (See MDE in Thales / Modeling Approaches / Modeling Strategies).
@@ -91,7 +91,7 @@ Both options allow choosing whether activities related to Functional Analysis an
 The sub sections of the Overview Preferences allow specifying individually which sections have to be displayed for each engineering phase.
 
  
-[[Image:Images/6.2.%20Model%20preferences_html_2ceba136.png|748x450px]]
+[[Image:Images/6.2.%20Model%20preferences_html_2ceba136.png|700x450px]]
 
  
 == Project Explorer ==
@@ -108,7 +108,7 @@ When the &ldquo;'''Project'''&rdquo; option is activated, the semantic element &
 By default, this option should be deactivated.
 
  
-[[Image:Images/6.2.%20Model%20preferences_html_mc875712.png|360x270px]]
+[[Image:Images/6.2.%20Model%20preferences_html_mc875712.png|250x200px]]
 
  
 == Refinement ==

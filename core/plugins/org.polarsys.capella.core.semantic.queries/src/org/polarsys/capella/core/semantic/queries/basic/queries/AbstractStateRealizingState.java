@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,16 +29,16 @@ public  class AbstractStateRealizingState extends AbstractStateRealizingStateAnd
    * @see org.polarsys.capella.core.semantic.queries.basic.queries.AbstractStateRealizationStateAndMode#getTargetOrSourceElement(org.polarsys.capella.core.data.capellacommon.AbstractStateRealization)
    */
   @Override
-  public TraceableElement getTargetOrSourceElement(AbstractStateRealization realization_p) {
-    return realization_p.getSourceElement();
+  public TraceableElement getTargetOrSourceElement(AbstractStateRealization realization) {
+    return realization.getSourceElement();
   }
 
   /**
    * @see org.polarsys.capella.core.semantic.queries.basic.queries.AbstractStateRealizationStateAndMode#isValidElement(org.polarsys.capella.core.data.capellacommon.AbstractState)
    */
   @Override
-  public boolean isValidElement(IState abstractState_p) {
-    if (abstractState_p != null && !(abstractState_p instanceof Mode)) {
+  public boolean isValidElement(IState abstractState) {
+    if (abstractState != null && !(abstractState instanceof Mode)) {
       return true;
     }
     

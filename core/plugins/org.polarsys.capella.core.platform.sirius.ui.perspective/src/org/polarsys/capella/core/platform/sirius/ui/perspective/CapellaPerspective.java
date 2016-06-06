@@ -77,7 +77,7 @@ public class CapellaPerspective implements IPerspectiveFactory {
   public void createInitialLayout(IPageLayout layout_p) {
     // Allow editors.
     layout_p.setEditorAreaVisible(true);
-    layout_p.createPlaceholderFolder(CENTER_AREA, IPageLayout.LEFT, 1.00f, IPageLayout.ID_EDITOR_AREA);
+    layout_p.createPlaceholderFolder(CENTER_AREA, IPageLayout.LEFT, 0.99f, IPageLayout.ID_EDITOR_AREA);
 
     IFolderLayout topLeft = layout_p.createFolder(TOPLEFT_AREA, IPageLayout.LEFT, (IPageLayout.DEFAULT_VIEW_RATIO / 2), IPageLayout.ID_EDITOR_AREA);
     topLeft.addView(CAPELLA_PROJECT_EXPLORER_ID);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import java.util.Map.Entry;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
-import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.ITransitionSteps;
 import org.polarsys.capella.core.transition.common.handlers.activity.IActivityExtender;
@@ -30,6 +29,24 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  * An activiry extender to run a test before the end of the transition (and so on before disposing all handlers)
  */
 public class RecRplCommandManager implements IActivityExtender {
+
+  public interface CheckContext {
+    public void checkContext(IContext context, String activityIdentifier);
+  }
+
+  protected static Map<String, Object> properties = new HashMap<String, Object>();
+
+  protected static IContext context;
+
+  protected static IActivityExtender checker;
+
+  public static IActivityExtender getChecker() {
+    return checker;
+  }
+
+  public static void setChecker(IActivityExtender checker) {
+    RecRplCommandManager.checker = checker;
+  }
 
   /**
    * {@inheritDoc}
@@ -52,49 +69,43 @@ public class RecRplCommandManager implements IActivityExtender {
    */
   @Override
   public IStatus preActivity(IContext context, String activityIdentifier, ActivityParameters activityParams) {
-    if ("DifferencesFilteringActivity".equals(activityIdentifier)) {
-    	//throw new UnsupportedOperationException();
-//      if (_currentTest != null) {
-//        _currentTest.filteringTest(context);
-//      }
+    if (checker != null) {
+      checker.preActivity(context, activityIdentifier, activityParams);
     }
     return Status.OK_STATUS;
-  } 
-  
-  protected static Map<String, Object> properties = new HashMap<String, Object>();
-//  protected static String propertyName = null;
-//  protected static Object value = null;
-  protected static IContext context;
-  
+  }
+
   public static void push(String propertyName, Object value) {
     properties.put(propertyName, value);
   }
-  
+
   public static IContext getContext() {
-  	return context;
+    return context;
   }
-  
+
   /**
    * {@inheritDoc}
    */
   @Override
-  public IStatus postActivity(IContext contextParameter, String activityIdentifier, ActivityParameters activityParams) {  	
-  	if (ITransitionSteps.INITIALIZE_TRANSITION.equals(activityIdentifier)) {
-      IPropertyContext propertyContext =
-          ((DefaultOptionsHandler) OptionsHandlerHelper.getInstance(contextParameter)).getPropertyContext(contextParameter,
-              (String) contextParameter.get(ITransitionConstants.OPTIONS_SCOPE));
+  public IStatus postActivity(IContext contextParameter, String activityIdentifier, ActivityParameters activityParams) {
+    if (ITransitionSteps.INITIALIZE_TRANSITION.equals(activityIdentifier)) {
+      IPropertyContext propertyContext = ((DefaultOptionsHandler) OptionsHandlerHelper.getInstance(contextParameter))
+          .getPropertyContext(contextParameter, (String) contextParameter.get(ITransitionConstants.OPTIONS_SCOPE));
       for (Entry<String, Object> entry : properties.entrySet()) {
         propertyContext.setCurrentValue(propertyContext.getProperties().getProperty(entry.getKey()), entry.getValue());
       }
-    } 
-  	if ("FinalizeTransitionActivity".equals(activityIdentifier)) {
-  		context = contextParameter;
-  		System.out.println(ReplicableElementHandlerHelper.getInstance(getContext()));  		
-  	}
+    }
+    if ("FinalizeTransitionActivity".equals(activityIdentifier)) {
+      context = contextParameter;
+    }
+
+    if (checker != null) {
+      checker.postActivity(contextParameter, activityIdentifier, activityParams);
+    }
     return Status.OK_STATUS;
   }
 
-	public static void clear() {
-	  properties.clear();
-	}
+  public static void clear() {
+    properties.clear();
+  }
 }

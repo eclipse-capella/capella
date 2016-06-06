@@ -100,14 +100,11 @@ public interface ITransitionConstants {
   // Log variable
   static final String DEFAULT_REPORT_COMPONENT = IReportManagerDefaultComponents.DEFAULT;
 
-  static final String TRANSPOSER_APPLY_REQUIRED = "T_A_R";
-
-  //Handlers for incomplete rules
-  static final String TRANSPOSER_APPLY_IS_COMPLETE = "T_I_C";
+  // Handlers for incomplete rules
   static final String INCOMPLETE_ELEMENTS = "INCOMPLETE_ELEMENTS";
 
   static final String INITIAL_SOURCE_SCOPE = "IIS_S";
-  static final String SOURCE_SCOPE = "S_S";
+  static final String SOURCE_SCOPE = "SOURCE_SCOPE";
   static final String CONTEXT_SCOPE_HANDLER = "C_S_H";
 
   static final String SELECTION_CONTEXTS_HANDLER = "S_C_H";
@@ -117,6 +114,10 @@ public interface ITransitionConstants {
   static final String NOTIFY__END_TRANSFORMATION = "NOTIFY__END_TRANSFORMATION";
 
   static final String TRANSPOSER_INSTANCE = "TRANSPOSER_INSTANCE";
+  static final String TRANSPOSER_PURPOSE = "TRANSPOSER_PURPOSE";
+  static final String TRANSPOSER_MAPPING = "TRANSPOSER_MAPPING";
+  static final String TRANSPOSER_APPLY_IS_COMPLETE = "TRANSPOSER_APPLY_IS_COMPLETE";
+  static final String TRANSPOSER_APPLY_REQUIRED = "TRANSPOSER_APPLY_REQUIRED";
 
   static final String SCOPE_SOURCES = "SCOPE_SOURCES";
 

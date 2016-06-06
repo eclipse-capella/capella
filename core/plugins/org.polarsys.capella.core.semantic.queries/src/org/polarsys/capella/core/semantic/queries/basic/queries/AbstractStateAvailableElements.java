@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,11 +38,11 @@ public class AbstractStateAvailableElements implements IQuery {
   /**
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (object_p instanceof State) {
+    if (object instanceof State) {
       // Note that Mode is sub type of State
-      State state = (State) object_p;
+      State state = (State) object;
       // get the inverse of the current state
       Collection<Setting> inverseReferences = CapellaElementExt.getInverseReferencesOfEObject(state);
       for (Setting setting : inverseReferences) {

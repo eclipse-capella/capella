@@ -53,7 +53,7 @@ A short headline about the role of the current Element.
 
  
 | 
-The list of Interfaces directly implemented (i.e. not through Component Ports) by the current Component. Â Interfaces aggregate Exchange items (Operations, Events, Flows, Shared Data).
+The list of Interfaces directly implemented (i.e. not through Component Ports) by the current Component. �Interfaces aggregate Exchange items (Operations, Events, Flows, Shared Data).
 
  
 ''Note: Unless having a good reason to do so, Implemented Interfaces shall not be used when strictly following the Arcadia methodology.''
@@ -69,7 +69,7 @@ The list of Interfaces directly implemented (i.e. not through Component Ports) b
 
  
 | 
-The list of Interfaces directly used (i.e. not through Component Ports) by the current Component. Â Interfaces aggregate Exchange items (Operations, Events, Flows, Shared Data).
+The list of Interfaces directly used (i.e. not through Component Ports) by the current Component. �Interfaces aggregate Exchange items (Operations, Events, Flows, Shared Data).
 
  
 ''Note: Unless having a good reason to do so, Implemented Interfaces shall not be used when strictly following the Arcadia methodology.''
@@ -218,6 +218,6 @@ Not all elements in the design phase of a System have the same maturity (some ar
 
  
 |} 
-Â 
+�
 
    

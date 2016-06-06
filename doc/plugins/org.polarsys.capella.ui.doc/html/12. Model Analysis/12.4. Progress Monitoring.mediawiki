@@ -29,7 +29,7 @@ It is recommended to hide again the ''Project'' element in the project explorer 
 To tag elements with a given progress status, use from the contextual menu of any element the command Progress Monitoring -> Set Progress.
  
  
-<center>[[Image:Images/12.4.%20Progress%20Monitoring_html_72c054c1.png|1013x578px]]</center>
+<center>[[Image:Images/12.4.%20Progress%20Monitoring_html_72c054c1.png|900x458px]]</center>
 
   === Propagate Progress Status to only Business Elements ===
 
@@ -116,6 +116,6 @@ The number of elements and representations (diagrams and tables) impacted are lo
 From this dialog, it is possible to export the results as CSV files.
 
  
-<center>[[Image:Images/12.4.%20Progress%20Monitoring_html_27a38b50.png|1442x212px]]</center>
+<center>[[Image:Images/12.4.%20Progress%20Monitoring_html_27a38b50.png|950x120px]]</center>
 
    

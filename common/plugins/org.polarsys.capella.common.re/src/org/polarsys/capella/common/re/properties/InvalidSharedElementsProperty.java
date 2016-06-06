@@ -21,11 +21,8 @@ import org.polarsys.capella.common.flexibility.properties.property.AbstractPrope
 import org.polarsys.capella.common.flexibility.properties.schema.ICompoundProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
-import org.polarsys.capella.common.libraries.IModel;
-import org.polarsys.capella.common.libraries.ILibraryManager;
-import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
-import org.polarsys.capella.common.re.CatalogElementPkg;
 import org.polarsys.capella.common.re.constants.IReConstants;
+import org.polarsys.capella.common.re.handlers.scope.DependenciesHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -40,34 +37,20 @@ public class InvalidSharedElementsProperty extends AbstractProperty implements I
   public Object getValue(IPropertyContext context) {
 
     IContext ctx = (IContext) context.getSource();
-    if (!ctx.exists(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS) || (ctx.get(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS) == null)) {
-      Collection<EObject> scopeElements = (Collection) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__SHARED_ELEMENTS));
+    if (!ctx.exists(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS)
+        || (ctx.get(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS) == null)) {
+      Collection<EObject> scopeElements = (Collection) context
+          .getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__SHARED_ELEMENTS));
 
       if (scopeElements == null) {
         ctx.put(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS, Collections.emptyList());
       } else {
-
-        Collection<EObject> result = new HashSet<EObject>();
-        CatalogElementPkg pkg = (CatalogElementPkg) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_TARGET));
-        if (pkg != null) {
-
-          IModel targetModel = ILibraryManager.INSTANCE.getModel(pkg);
-          if (targetModel != null) {
-            Collection<IModel> referencedLibraries = LibraryManagerExt.getAllReferences(targetModel);
-            if (targetModel != null) {
-              for (Object object : scopeElements) {
-                if (object instanceof EObject) {
-                  IModel sourceModel = ILibraryManager.INSTANCE.getModel((EObject) object);
-                  if (!targetModel.equals(sourceModel) && !referencedLibraries.contains(sourceModel)) {
-                    result.add((EObject) object);
-                  }
-                }
-              }
-            }
-          }
-        }
-
-        ctx.put(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS, new HashSet<Object>(result));
+        Collection<EObject> elements = new HashSet<EObject>();
+        elements.addAll(scopeElements);
+        Collection<EObject> validElements = DependenciesHandlerHelper.getInstance(ctx)
+            .getValidSharedElements(scopeElements, scopeElements, ctx);
+        elements.removeAll(validElements);
+        ctx.put(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS, new HashSet<Object>((Collection) elements));
       }
     }
 

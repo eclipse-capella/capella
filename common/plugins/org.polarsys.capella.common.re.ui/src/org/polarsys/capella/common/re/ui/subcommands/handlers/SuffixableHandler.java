@@ -18,8 +18,8 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.handlers.HandlerUtil;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.ui.util.ExecutionEventUtil;
@@ -38,67 +38,51 @@ public class SuffixableHandler extends SubCommandHandler {
    */
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
-    IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelection(event);
-    IRendererContext rcontext = ExecutionEventUtil.getRendererContext(event);
-    IContext context = (IContext) rcontext.getPropertyContext().getSource();
-
-    for (Object selectedItem : selection.toList()) {
-      AttributesHandlerHelper.getInstance(context).setManualSuffixable((EObject) selectedItem,
-          !AttributesHandlerHelper.getInstance(context).isSuffixable(selectedItem, context), context);
+    ISelection selection = getSelection(event);
+    if(selection != null && selection instanceof IStructuredSelection){
+      IStructuredSelection structuredSelection = (IStructuredSelection)selection;
+      IRendererContext rcontext = ExecutionEventUtil.getRendererContext(event);
+      IContext context = (IContext) rcontext.getPropertyContext().getSource();
+      
+      for (Object selectedItem : structuredSelection.toList()) {
+        AttributesHandlerHelper.getInstance(context).setManualSuffixable((EObject) selectedItem,
+            !AttributesHandlerHelper.getInstance(context).isSuffixable(selectedItem, context), context);
+      }
+      IProperty property = rcontext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIXES);
+      rcontext.getPropertyContext().setCurrentValue(property, rcontext.getPropertyContext().getCurrentValue(property));      
     }
-
-    IProperty property = rcontext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIXES);
-    rcontext.getPropertyContext().setCurrentValue(property, rcontext.getPropertyContext().getCurrentValue(property));
     return null;
   }
 
   @Override
   public void setEnabled(Object evaluationContext) {
-    Object variable = ((IEvaluationContext) evaluationContext).getDefaultVariable();
-
-    if (!(variable instanceof Collection)) {
+    Collection<Object> selectedObjects = getSelectedObjects((IEvaluationContext) evaluationContext);
+    if (selectedObjects.isEmpty()) {
       setBaseEnabled(false);
     } else {
-      Collection selection = (Collection) variable;
-      if (selection.isEmpty()) {
+      if (selectedObjects.iterator().next() instanceof CatalogElementLink) {
+        setBaseEnabled(true);
+        super.setEnabled(evaluationContext);
+        return;
+      }
+
+      IRendererContext rendererContext = ExecutionEventUtil.getRendererContext((IEvaluationContext) evaluationContext);
+      if (rendererContext == null) {
         setBaseEnabled(false);
       } else {
-        if (selection.iterator().next() instanceof CatalogElementLink) {
 
-          setBaseEnabled(true);
-          super.setEnabled(evaluationContext);
-          return;
+        Collection scopeElements =
+            (Collection) rendererContext.getPropertyContext().getCurrentValue(
+                rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
 
-        }
-
-        IRendererContext rendererContext = ExecutionEventUtil.getRendererContext((IEvaluationContext) evaluationContext);
-        if (rendererContext == null) {
-          setBaseEnabled(false);
-        } else {
-
-          IContext context = (IContext) rendererContext.getPropertyContext().getSource();
-          //if (IReConstants.COMMAND__UPDATE_CURRENT_REPLICA_FROM_REPLICA.equals(context.get(IReConstants.COMMAND__CURRENT_VALUE))
-          //    || IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(context.get(IReConstants.COMMAND__CURRENT_VALUE))) {
-          // setBaseEnabled(false);
-
-          //} else {
-          Collection scopeElements =
-              (Collection) rendererContext.getPropertyContext().getCurrentValue(
-                  rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
-
-          Collection<Object> values = new HashSet<Object>(selection);
-          if (values != null) {
-            if (scopeElements != null) {
-              values.removeAll(scopeElements);
-            }
-            setBaseEnabled(values.isEmpty());
+        Collection<Object> values = new HashSet<Object>(selectedObjects);
+        if (values != null) {
+          if (scopeElements != null) {
+            values.removeAll(scopeElements);
           }
-
+          setBaseEnabled(values.isEmpty());
         }
-        //}
       }
     }
-
-    super.setEnabled(evaluationContext);
   }
 }

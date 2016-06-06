@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,12 +29,12 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 public class TraceabilityByLinksHandler extends CapellaTraceabilityHandler {
 
   @Override
-  public void createAttachment(EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
+  public void createAttachment(EObject sourceElement, EObject targetElement, IContext context) {
     AbstractTrace link;
     try {
-      link = TigerRelationshipHelper.createTransfoLink(sourceElement_p, targetElement_p, context_p.getTransfo());
+      link = TigerRelationshipHelper.createTransfoLink(sourceElement, targetElement, context.getTransfo());
 
-      EObject container = getAvailableTraceContainer(sourceElement_p, targetElement_p, context_p);
+      EObject container = getAvailableTraceContainer(sourceElement, targetElement, context);
       if (container != null && container instanceof Namespace) {
         ((Namespace) container).getOwnedTraces().add((TransfoLink) link);
       }
@@ -44,17 +44,17 @@ public class TraceabilityByLinksHandler extends CapellaTraceabilityHandler {
   }
 
   /**
-   * @param sourceElement_p
-   * @param targetElement_p
-   * @param context_p
+   * @param sourceElement
+   * @param targetElement
+   * @param context
    * @return
    */
-  protected EObject getAvailableTraceContainer(EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
+  protected EObject getAvailableTraceContainer(EObject sourceElement, EObject targetElement, IContext context) {
     Namespace namespace = null;
-    EObject currentChoice = targetElement_p;
+    EObject currentChoice = targetElement;
     //Retrieve a namespace according to transformed source and source's containers.
     while (currentChoice != null && namespace == null) {
-      if (currentChoice != null && currentChoice instanceof Namespace) {
+      if (currentChoice instanceof Namespace) {
         namespace = (Namespace) currentChoice;
       } else {
         currentChoice = currentChoice.eContainer();
@@ -64,41 +64,41 @@ public class TraceabilityByLinksHandler extends CapellaTraceabilityHandler {
   }
 
   @SuppressWarnings("unchecked")
-  public List<EObject> retrieveTracedElements(EObject source_p, IContext context_p) {
-    return (List<EObject>) Query.retrieveTransformedElements(source_p, context_p.getTransfo());
+  public List<EObject> retrieveTracedElements(EObject source, IContext context) {
+    return (List<EObject>) Query.retrieveTransformedElements(source, context.getTransfo());
   }
 
   @SuppressWarnings("unchecked")
-  public List<EObject> retrieveTracedElements(EObject source_p, IContext context_p, EClass clazz_p) {
-    return (List<EObject>) Query.retrieveTransformedElements(source_p, context_p.getTransfo(), clazz_p);
+  public List<EObject> retrieveTracedElements(EObject source, IContext context, EClass clazz) {
+    return (List<EObject>) Query.retrieveTransformedElements(source, context.getTransfo(), clazz);
   }
 
   /**
    * {@inheritDoc}
    */
   @SuppressWarnings("unchecked")
-  public List<EObject> retrieveSourceElements(EObject source_p, IContext context_p) {
-    return (List<EObject>) Query.retrieveSourceElements(source_p, context_p.getTransfo(), null);
+  public List<EObject> retrieveSourceElements(EObject source, IContext context) {
+    return (List<EObject>) Query.retrieveSourceElements(source, context.getTransfo(), null);
   }
 
-  protected boolean isValidLink(AbstractTrace trace_p, IContext context_p) {
-    return !isTrace(trace_p, context_p);
+  protected boolean isValidLink(AbstractTrace trace, IContext context) {
+    return !isTrace(trace, context);
   }
 
-  public boolean isTrace(EObject element_p, IContext context_p) {
-    return element_p instanceof TransfoLink;
+  public boolean isTrace(EObject element, IContext context) {
+    return element instanceof TransfoLink;
   }
 
-  public EObject getTargetElement(EObject trace_p, IContext context_p) {
-    if (trace_p instanceof TransfoLink) {
-      return ((TransfoLink) trace_p).getSourceElement();
+  public EObject getTargetElement(EObject trace, IContext context) {
+    if (trace instanceof TransfoLink) {
+      return ((TransfoLink) trace).getSourceElement();
     }
     return null;
   }
 
-  public EObject getSourceElement(EObject trace_p, IContext context_p) {
-    if (trace_p instanceof TransfoLink) {
-      return ((TransfoLink) trace_p).getTargetElement();
+  public EObject getSourceElement(EObject trace, IContext context) {
+    if (trace instanceof TransfoLink) {
+      return ((TransfoLink) trace).getTargetElement();
     }
     return null;
   }
@@ -106,21 +106,21 @@ public class TraceabilityByLinksHandler extends CapellaTraceabilityHandler {
   /**
    * {@inheritDoc}
    */
-  public boolean isTraced(EObject element_p, IContext context_p) {
-    return retrieveTracedElements(element_p, context_p).size() > 0;
+  public boolean isTraced(EObject element, IContext context) {
+    return retrieveTracedElements(element, context).size() > 0;
   }
 
   /**
    * {@inheritDoc}
    */
-  public void init(IContext context_p) {
+  public void init(IContext context) {
     //Nothing here
   }
 
   /**
    * {@inheritDoc}
    */
-  public void dispose(IContext context_p) {
+  public void dispose(IContext context) {
     //Nothing here
   }
 

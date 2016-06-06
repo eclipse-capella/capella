@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
@@ -39,26 +40,26 @@ public class Component_implementedFunctions implements IQuery {
    * current.allocatedFunctions
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
 
-    if (object_p instanceof OperationalActor) {
-		OperationalActor operationalActor = (OperationalActor) object_p;
+    if (object instanceof OperationalActor) {
+		OperationalActor operationalActor = (OperationalActor) object;
 		EList<OperationalActivity> allocatedFunctions = operationalActor.getAllocatedOperationalActivities();
 		if (!allocatedFunctions.isEmpty()) {
 	        result.addAll(allocatedFunctions);        
 	      }
 		
 	}else
-    if (object_p instanceof Component) {
-      Component lc = (Component) object_p;
+    if (object instanceof Component) {
+      Component lc = (Component) object;
       EList<AbstractFunction> allocatedFunctions = lc.getAllocatedFunctions();
       if (!allocatedFunctions.isEmpty()) {
         result.addAll(allocatedFunctions);        
       }
     }
-    else if (object_p instanceof Role) {
-      Role role = (Role) object_p;
+    else if (object instanceof Role) {
+      Role role = (Role) object;
       EList<ActivityAllocation> activityAllocations = role.getActivityAllocations();
       for (ActivityAllocation activityAllocation : activityAllocations) {
         OperationalActivity activity = activityAllocation.getActivity();

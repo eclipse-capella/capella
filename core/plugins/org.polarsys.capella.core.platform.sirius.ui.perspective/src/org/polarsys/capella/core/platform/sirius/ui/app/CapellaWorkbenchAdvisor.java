@@ -182,7 +182,7 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
     OperationHistoryFactory.getOperationHistory().setLimit(workspaceUndoContext, 0);
     // Set Capella version env property based on the version of the plug-in that provides the Capella product i.e this current plug-in.
     // Don't use Capella Feature version as it is also used in persistence of semantic models to get something working for both 1.x & 2.x releases.
-    String bundleVersion = (Platform.getProduct().getDefiningBundle().getHeaders().get("Bundle-version")); //$NON-NLS-1$
+    String bundleVersion = ((String) Platform.getProduct().getDefiningBundle().getHeaders().get("Bundle-version")); //$NON-NLS-1$
     System.setProperty(CAPELLA_VERSION_TAG, bundleVersion.substring(0, 5));
     System.setProperty(BUILD_ID_TAG, bundleVersion.substring(6));
 

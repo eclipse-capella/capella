@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import org.eclipse.emf.ecore.EObject;
@@ -26,8 +27,8 @@ public class ComponentExchangeAllocatingPhysicalLink extends AbsComponentExchang
 	}
 
 	@Override
-	public boolean isValidInstanceOf(EObject element_p) {
-		if (null != element_p && element_p instanceof PhysicalLink) {
+	public boolean isValidInstanceOf(EObject element) {
+		if (null != element && element instanceof PhysicalLink) {
 			return true;
 		}
 		return false;

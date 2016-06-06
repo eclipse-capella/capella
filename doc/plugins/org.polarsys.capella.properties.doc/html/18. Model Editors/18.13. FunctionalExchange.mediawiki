@@ -85,13 +85,13 @@ One or several Exchange Categories the current Functional Exchange falls in (ass
 One or several Functional Exchanges / Operational Interactions from which the current Functional Exchange is a refinement:
 
  
-Â· If the current Functional Exchange belongs to System Analysis, Realized Exchanges are Operational Interactions
+� If the current Functional Exchange belongs to System Analysis, Realized Exchanges are Operational Interactions
 
  
-Â· If the current Functional Exchange belongs to Logical Architecture, Realized Exchanges are Functional Exchanges belonging to System Analysis
+� If the current Functional Exchange belongs to Logical Architecture, Realized Exchanges are Functional Exchanges belonging to System Analysis
 
  
-Â· If the current Functional Exchange belongs to Physical Architecture, Realized Exchanges are Functional Exchanges belonging to Logical Architecture
+� If the current Functional Exchange belongs to Physical Architecture, Realized Exchanges are Functional Exchanges belonging to Logical Architecture
 
  
 &#91;WARNING&#93; If the current element is an Operational Interaction, no Realized Exchanges should be set.

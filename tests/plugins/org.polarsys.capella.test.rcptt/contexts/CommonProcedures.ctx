@@ -1,0 +1,27 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CommonProcedures
+Element-Type: context
+Element-Version: 2.0
+Id: _0keAwAMFEeaSHsy4D5kUow
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 4/15/16 2:36 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Iterate through all tab folders and find the one with the active tab given as input
+proc "find-tab-folder" [val activePage] {
+  loop [val index [int 0]] {
+    let [val folder [get-tab-folder -index $index]] {
+      let [val folderActivePage [$folder | get-property activePage -raw]] {
+        if [$folderActivePage | eq $activePage] {
+          $folder //returning result
+        } -else { recur [$index | plus 1] }
+      }
+    }
+  }
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

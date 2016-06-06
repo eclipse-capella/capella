@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -11,7 +11,17 @@
        Thales - initial API and implementation
 -->
 <toc label="Command Line Support" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution" sort="true">
-   <topic label="Command Line Support">
+   <topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html" label="Command Line Support">
+		 <topic label="Overview">
+      <topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#Overview" label="Overview"></topic>
+      </topic>
+		<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#Command_Line_Application_Examples" label="Command Line Application Examples">
+			<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#Model_Validation" label="Model Validation"></topic>
+			<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#HTML_Production" label="HTML Production"></topic>
+			<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#XML_Export" label="XML Export"></topic>
+			<topic href="html/19. Command Line Support/19.1. Core Mechanism and Applications.html#Export_as_ZIP" label="Export as ZIP"></topic>
+	</topic>
       <anchor id="contribution"/>
+     
    </topic>
 </toc>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,12 +48,12 @@ public abstract class AbstractComponentFilteredComponentExchange implements IQue
    * current.componentPorts.outgoingFlows
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
     
     // get component exchanges for (AbstractActor, System, LC, PC)
-    if (isValidComponentForComponentExchanges(object_p)) {
-      Component comp = (Component) object_p;
+    if (isValidComponentForComponentExchanges(object)) {
+      Component comp = (Component) object;
       // collect owned component ports 
       for (ComponentPort port : ComponentExt.getOwnedComponentPort(comp)) {
     	// collect component exchanges 
@@ -99,14 +99,14 @@ public abstract class AbstractComponentFilteredComponentExchange implements IQue
   /**
    * check for valid exchanges that can have component exchanges
    * 
-   * @param object_p
+   * @param object
    * @return
    */
-  public boolean isValidComponentForComponentExchanges(Object object_p) {
-    return object_p instanceof AbstractActor ||
-        object_p instanceof org.polarsys.capella.core.data.ctx.System ||
-        object_p instanceof LogicalComponent ||
-        object_p instanceof PhysicalComponent;
+  public boolean isValidComponentForComponentExchanges(Object object) {
+    return object instanceof AbstractActor ||
+        object instanceof org.polarsys.capella.core.data.ctx.System ||
+        object instanceof LogicalComponent ||
+        object instanceof PhysicalComponent;
   }
   
   /**
@@ -114,24 +114,24 @@ public abstract class AbstractComponentFilteredComponentExchange implements IQue
    * should be implemented by sub class
    * @returns list of ports
    */
-  abstract public List<Port> getRelatedPorts(ComponentExchange connection_p); 
+  abstract public List<Port> getRelatedPorts(ComponentExchange connection); 
   
   /**
    * 
    * should be implemented by sub class
    * @returns list of parts
    */
-  abstract public List<Part> getRelatedParts(ComponentExchange connection_p);
+  abstract public List<Part> getRelatedParts(ComponentExchange connection);
   
   /**
    * Return owned Partitionable elements of current element
-   * @param object_p
+   * @param object
    * @return list of 
    */
-  public List<Partition> getOwnedPartitionableElements(Object object_p) {
+  public List<Partition> getOwnedPartitionableElements(Object object) {
     List<Partition> ownedPartitions =  new ArrayList<Partition>(0);
-    if (null !=  object_p && object_p instanceof PartitionableElement) {
-      PartitionableElement element = (PartitionableElement) object_p;
+    if (null !=  object && object instanceof PartitionableElement) {
+      PartitionableElement element = (PartitionableElement) object;
       ownedPartitions.addAll(element.getOwnedPartitions());
     } 
     

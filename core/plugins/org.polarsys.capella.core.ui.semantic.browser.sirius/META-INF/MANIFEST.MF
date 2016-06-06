@@ -5,7 +5,6 @@ Bundle-SymbolicName: org.polarsys.capella.core.ui.semantic.browser.sirius;single
 Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.ui.semantic.browser.sirius.Activator
 Bundle-Vendor: %providerName
-Bundle-localization: plugin
 Require-Bundle: org.polarsys.capella.core.ui.semantic.browser;visibility:=reexport,
  org.polarsys.capella.core.services;visibility:=reexport,
  org.eclipse.sirius.common.ui;visibility:=reexport,
@@ -15,5 +14,5 @@ Require-Bundle: org.polarsys.capella.core.ui.semantic.browser;visibility:=reexpo
  org.polarsys.capella.common.ui.services,
  org.polarsys.capella.core.model.preferences
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Localization: plugin

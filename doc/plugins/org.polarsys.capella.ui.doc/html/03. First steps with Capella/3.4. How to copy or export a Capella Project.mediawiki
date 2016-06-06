@@ -9,7 +9,7 @@ It is possible to copy an existing Project. First, make sure the model(s) contai
 Using the contextual menu on the Project, select &ldquo;Copy&rdquo;.
 
  
-[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_124dd150.png|336x243px]]
+[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_124dd150.png|300x243px]]
 
  
 Using the contextual menu on the Project Explorer, select &ldquo;Paste&rdquo;. A dialog requests a new name for the copied Project. It is possible at this stage to specify a location for the Project copy. By default, it will be copied in the current Workspace.
@@ -18,7 +18,7 @@ Using the contextual menu on the Project Explorer, select &ldquo;Paste&rdquo;. A
 [[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_66c97782.png|336x176px]]
 
  
-[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_m3e0740fc.png|219x348px]]
+[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_m3e0740fc.png|230x200px]]
 
          
 {| border="1"
@@ -43,13 +43,13 @@ Exporting a Project is the best way to package all the resources of a Model.
 Using the contextual menu from the Project Explorer, select &ldquo;Export&rdquo;.
 
  
-[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_5a54683d.png|385x447px]]
+[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_5a54683d.png|330x300px]]
 
  
 A dialog opens. Select &ldquo;General / Archive File&rdquo;.
 
  
-[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_156e45ae.png|305x348px]]
+[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_156e45ae.png|350x348px]]
 
  
 In the following dialog, give a name and a path to the Project archive and select all of its content.

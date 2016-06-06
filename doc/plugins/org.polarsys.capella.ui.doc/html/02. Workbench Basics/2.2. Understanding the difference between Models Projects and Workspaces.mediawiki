@@ -38,19 +38,18 @@ All Eclipse resources are managed in Projects. Projects map to directories on th
 Most of the time in Capella, a Project contains only one Model. A Capella Project thus contains all the resources for a given project (for example fragments when the model is fragmented, images, etc.).
 
  
-[[Image:Images/2.2.%20Understanding%20the%20difference%20between%20Models%20Projects%20and%20Workspaces_html_m7438dc9.png|361x354px]]
+[[Image:Images/2.2.%20Understanding%20the%20difference%20between%20Models%20Projects%20and%20Workspaces_html_m7438dc9.png|400x354px]]
 
- 
 Using the contextual menu on the Project element, one can display the properties of the Project, including its physical location on the file system.
 
  
-[[Image:Images/2.2.%20Understanding%20the%20difference%20between%20Models%20Projects%20and%20Workspaces_html_32efc2f5.png|610x104px]]
+[[Image:Images/2.2.%20Understanding%20the%20difference%20between%20Models%20Projects%20and%20Workspaces_html_32efc2f5.png|610x300px]]
 
  
 Project directory on the file system:
 
  
-[[Image:Images/2.2.%20Understanding%20the%20difference%20between%20Models%20Projects%20and%20Workspaces_html_7bdda0fe.png|492x211px]]
+[[Image:Images/2.2.%20Understanding%20the%20difference%20between%20Models%20Projects%20and%20Workspaces_html_7bdda0fe.png|550x170px]]
 
  
 == Eclipse Workspace ==

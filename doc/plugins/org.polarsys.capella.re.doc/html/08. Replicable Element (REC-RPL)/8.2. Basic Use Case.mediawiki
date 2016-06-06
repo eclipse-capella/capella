@@ -182,7 +182,7 @@ By default, all RPL elements (new elements) will be located in standard containe
 It is possible to create on-the-fly new elements in the right tree, using the contextual menu and rename them by pressing F2.
 
  
-[[Image:Images/8.2.%20Basic%20Use%20Case_html_6681992b.png|557x127px]]
+[[Image:Images/8.2_Basic_Use_Case.png|500x180px]]
 
  
 Close the dialog. Another dialog summarizes the operations which will be performed.
@@ -221,7 +221,7 @@ The Semantic Browser display RPL- and REC-related information:
 The Semantic Browser also shows the Functional Exchange &ldquo;fe2&rdquo;, part of the RPL, is also carrying the Exchange Items EI1 and EI2, even though these two Exchange Items were not included in the REC.
 
  
-[[Image:Images/8.2.%20Basic%20Use%20Case_html_5877aab1.png|955x193px]]
+[[Image:Images/8.2.%20Basic%20Use%20Case_html_5877aab1.png|850x200px]]
 
  
 It is now possible to use this RPL in the model. For example, by connecting it also to other elements

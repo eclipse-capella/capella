@@ -47,74 +47,70 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
 
   @SuppressWarnings({ "unchecked", "rawtypes" })
   public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
-    int EXCHANGE_CATEGORY = 1;
-    int COMPONENT_CATEGORY = 2;
-    int PHYSICAL_CATEGORY = 3;
-    int EXCHANGES_FUNCTIONALCHAINS = 4;
-    int PHYSICAL_LINKS__PHYSICAL_PATHS = 5;
+    int exchange_category = 1;
+    int component_category = 2;
+    int physical_category = 3;
+    int exchanges_functionalchains = 4;
+    int physical_links__physical_paths = 5;
+    
+    final String type = "type";
 
     AbstractDNode context = (AbstractDNode) parameters.get(CONTEXT);
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context);
     DDiagramContents content = new DDiagramContents(currentDiagram);
 
-    int categoryType = EXCHANGE_CATEGORY;
-    if ("COMPONENT_CATEGORY".equals(parameters.get("type"))) { //$NON-NLS-1$ //$NON-NLS-2$
-      categoryType = COMPONENT_CATEGORY;
+    int categoryType = exchange_category;
+    if ("COMPONENT_CATEGORY".equals(parameters.get(type))) { //$NON-NLS-1$ //$NON-NLS-2$
+      categoryType = component_category;
 
-    } else if ("PHYSICAL_CATEGORY".equals(parameters.get("type"))) { //$NON-NLS-1$ //$NON-NLS-2$
-      categoryType = PHYSICAL_CATEGORY;
+    } else if ("PHYSICAL_CATEGORY".equals(parameters.get(type))) { //$NON-NLS-1$ //$NON-NLS-2$
+      categoryType = physical_category;
 
-    } else if ("EXCHANGES_FUNCTIONALCHAINS".equals(parameters.get("type"))) { //$NON-NLS-1$ //$NON-NLS-2$
-      categoryType = EXCHANGES_FUNCTIONALCHAINS;
+    } else if ("EXCHANGES_FUNCTIONALCHAINS".equals(parameters.get(type))) { //$NON-NLS-1$ //$NON-NLS-2$
+      categoryType = exchanges_functionalchains;
 
-    } else if ("PHYSICAL_LINKS__PHYSICAL_PATHS".equals(parameters.get("type"))) {
-      categoryType = PHYSICAL_LINKS__PHYSICAL_PATHS;
+    } else if ("PHYSICAL_LINKS__PHYSICAL_PATHS".equals(parameters.get(type))) {
+      categoryType = physical_links__physical_paths;
     }
 
     Map<? extends EObject, Collection<? extends EObject>> scope = null;
     Map<? extends EObject, Collection<? extends EObject>> initialSelection = null;
 
     // Scope
-    if (categoryType == COMPONENT_CATEGORY) {
+    if (categoryType == component_category) {
       scope = (Map) ABServices.getService().getABShowHideComponentCategoriesScope(context);
 
-    } else if (categoryType == PHYSICAL_CATEGORY) {
+    } else if (categoryType == physical_category) {
       scope = (Map) ABServices.getService().getABShowHidePhysicalCategoriesScope(context);
 
-    } else if (categoryType == EXCHANGES_FUNCTIONALCHAINS) {
+    } else if (categoryType == exchanges_functionalchains) {
       scope = (Map) FunctionalChainServices.getFunctionalChainServices().getFCDInvolveFunctionalExchangeAndFunctionalChainScope((DNode) context);
 
-    } else if (categoryType == PHYSICAL_LINKS__PHYSICAL_PATHS) {
+    } else if (categoryType == physical_links__physical_paths) {
       scope = (Map) PhysicalServices.getService().getPPDInvolvePhysicalLinkAndPhysicalPathScope((DNode) context);
 
     } else {
       scope = (Map) FaServices.getFaServices().getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(context, content);
     }
-
-    if (null == scope) {
       scope = (Map) new HashMapSet<ExchangeCategory, AbstractFunction>();
-    }
 
     // Initial selection
-    if (categoryType == COMPONENT_CATEGORY) {
+    if (categoryType == component_category) {
       initialSelection = (Map) ABServices.getService().getABShowHideComponentCategoriesInitialSelection(context);
 
-    } else if (categoryType == PHYSICAL_CATEGORY) {
+    } else if (categoryType == physical_category) {
       initialSelection = (Map) ABServices.getService().getABShowHidePhysicalCategoriesInitialSelection(context);
 
-    } else if (categoryType == EXCHANGES_FUNCTIONALCHAINS) {
+    } else if (categoryType == exchanges_functionalchains) {
       initialSelection = (Map) FunctionalChainServices.getFunctionalChainServices().getFCDInvolveFunctionalExchangeAndFunctionalChainInitialSelection(context);
 
-    } else if (categoryType == PHYSICAL_LINKS__PHYSICAL_PATHS) {
+    } else if (categoryType == physical_links__physical_paths) {
       initialSelection = (Map) PhysicalServices.getService().getInvolvePhysicalLinkAndPhysicalPathInitialSelection(context);
 
     } else {
       initialSelection = (Map) FaServices.getFaServices().getCategoriesAndFunctionsInitialSelectionInDataFlowBlank((DNodeContainer) context, content);
     }
-
-    if (null == initialSelection) {
       initialSelection = (Map) new HashMapSet<ExchangeCategory, AbstractFunction>();
-    }
 
     String wizardMessage = (String) parameters.get(WIZARD_MESSAGE);
     String resultVariable = (String) parameters.get(RESULT_VARIABLE);
@@ -132,17 +128,17 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
 
     if (Window.OK == dialog.open()) {
 
-      if (categoryType == COMPONENT_CATEGORY) {
+      if (categoryType == component_category) {
         ABServices.getService().showABComponentCategories(context, new HashMapSet(scope), new HashMapSet(initialSelection), new HashMapSet(dialog.getResult()));
 
-      } else if (categoryType == PHYSICAL_CATEGORY) {
+      } else if (categoryType == physical_category) {
         ABServices.getService().showABPhysicalCategories(context, new HashMapSet(scope), new HashMapSet(initialSelection), new HashMapSet(dialog.getResult()));
 
-      } else if (categoryType == EXCHANGES_FUNCTIONALCHAINS) {
+      } else if (categoryType == exchanges_functionalchains) {
         FunctionalChainServices.getFunctionalChainServices().involvedFCDFunctionalExchangeFunctionalChain(context, new HashMapSet(scope), new HashMapSet(initialSelection),
             new HashMapSet(dialog.getResult()));
 
-      } else if (categoryType == PHYSICAL_LINKS__PHYSICAL_PATHS) {
+      } else if (categoryType == physical_links__physical_paths) {
         PhysicalServices.getService().involvedPPDPhysicalLinkPhysicalPath(context, new HashMapSet(scope), new HashMapSet(initialSelection), new HashMapSet(dialog.getResult()));
 
       } else {

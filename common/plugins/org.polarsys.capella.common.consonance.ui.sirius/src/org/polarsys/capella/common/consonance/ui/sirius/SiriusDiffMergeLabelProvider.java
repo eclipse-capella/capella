@@ -21,8 +21,8 @@ import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -96,8 +96,8 @@ public class SiriusDiffMergeLabelProvider extends GMFDiffMergeLabelProvider {
         result = getText(models.get(0));
       else
         result = super.getText(analysis);
-    } else if (element instanceof DRepresentationContainer) {
-      DRepresentationContainer representationContainer = (DRepresentationContainer)element;
+    } else if (element instanceof DView) {
+      DView representationContainer = (DView) element;
       Viewpoint viewpoint = representationContainer.getViewpoint();
       if (viewpoint != null) {
         result = viewpoint.getLabel();

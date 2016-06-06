@@ -22,9 +22,10 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
-
+import org.polarsys.capella.core.transition.common.Activator;
 import org.polarsys.capella.core.transition.common.ExtensionHelper;
 import org.polarsys.capella.core.transition.common.constants.ISchemaConstants;
+import org.polarsys.capella.core.transition.common.context.TransitionContext;
 import org.polarsys.kitalpha.transposer.transformation.emf.TransposerEMFPlugin;
 import org.polarsys.kitalpha.transposer.transformation.emf.util.EmfDomainHelper;
 
@@ -35,7 +36,7 @@ public class DomainHelper extends EmfDomainHelper {
 
   private HashMap<String, EPackage> packages;
 
-  /** 
+  /**
    * @see org.polarsys.kitalpha.transposer.transformation.emf.util.EmfDomainHelper#getAnalysisSources(java.util.Collection)
    */
   @Override
@@ -68,10 +69,11 @@ public class DomainHelper extends EmfDomainHelper {
           }
 
         } catch (Exception e3) {
-          //Nothing more
+          // Nothing more
         }
       }
-      TransposerEMFPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, TransposerEMFPlugin.PLUGIN_ID, "No Domain Class called : " + name, e)); //$NON-NLS-1$
+      Activator.getDefault().getLog()
+          .log(new Status(IStatus.ERROR, TransposerEMFPlugin.PLUGIN_ID, "No Domain Class called : " + name, e)); //$NON-NLS-1$
     }
 
     return null;
@@ -79,6 +81,7 @@ public class DomainHelper extends EmfDomainHelper {
 
   /**
    * Return an optimized list of EPackage to check
+   * 
    * @param pkgName
    * @return
    */
@@ -121,14 +124,17 @@ public class DomainHelper extends EmfDomainHelper {
   protected Set<EPackage> getEPackages() {
     Set<EPackage> ePackages = new LinkedHashSet<EPackage>();
 
-    for (String handler : ExtensionHelper.collectStringFromExtensions(null, ISchemaConstants.EXTENSION_ID, ISchemaConstants.DOMAIN)) {
+    // We may restrict Domain on purpose and mapping but it's not yet possible (there is no context in
+    // this class instantiation) and not critical
+    for (String handler : ExtensionHelper.collectDomainFromExtensions(TransitionContext.EMPTY_CONTEXT,
+        ISchemaConstants.HANDLERS__PURPOSE__ALL_PURPOSES, ISchemaConstants.HANDLERS__MAPPING__ALL_MAPPINGS)) {
       try {
         EPackage pkg = EPackage.Registry.INSTANCE.getEPackage(handler);
         if (pkg != null) {
           ePackages.add(pkg);
         }
       } catch (Exception e) {
-        //Nothing here
+        // Nothing here
       }
     }
 

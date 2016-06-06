@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -15,8 +15,8 @@
          point="org.polarsys.capella.core.transition.handlers">
       <handlers
             id="org.polarsys.capella.common.re"
-            mapping="org.polarsys.capella.common.re"
-            purpose="org.polarsys.capella.common.re">
+            purpose="org.polarsys.capella.common.re"
+            mapping="all">
          <activityExtender
                activityIdentifier="FinalizeTransitionActivity"
                id="org.polarsys.capella.common.re.testActivity"
@@ -32,6 +32,43 @@
                id="org.polarsys.capella.common.re.testActivity"
                class="org.polarsys.capella.test.recrpl.ju.RecRplCommandManager">
          </activityExtender>
+         
+         
       </handlers>
+         
+         
+      <handlers
+            id="org.polarsys.capella.common.re.validSharedElements"
+            mapping="org.polarsys.capella.common.re"
+            purpose="org.polarsys.capella.common.re.validSharedElements">
+         
+         <!-- CreateRPL_SharedElements_ExternalResource -->
+         <scopeFilter
+               id="org.polarsys.capella.test.recrpl.ju.handlers.scope.FirstInclusionFilter" 
+               class="org.polarsys.capella.test.recrpl.ju.handlers.scope.FirstInclusionFilter">
+         </scopeFilter>
+         <scopeFilter
+               id="org.polarsys.capella.test.recrpl.ju.handlers.scope.SecondInclusionFilter" 
+               class="org.polarsys.capella.test.recrpl.ju.handlers.scope.SecondInclusionFilter">
+         </scopeFilter>
+      </handlers>
+      
+      
+      <handlers
+            id="org.polarsys.capella.common.re.sharedElements"
+            mapping="org.polarsys.capella.common.re"
+            purpose="org.polarsys.capella.common.re.sharedElements">
+            
+         <!-- CreateRPL_SharedElements_ExternalResource -->
+         <scopeRetriever
+               id="org.polarsys.capella.test.recrpl.ju.handlers.scope.ExternalInclusionRetriever" 
+               class="org.polarsys.capella.test.recrpl.ju.handlers.scope.ExternalInclusionRetriever">
+         </scopeRetriever>
+         
+      </handlers>
+      
+         
+      
+      
    </extension>
 </plugin>

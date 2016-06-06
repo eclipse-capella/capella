@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,24 +37,24 @@ public class AbstractFunction_AllocationBlock {
   /**
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> getAllocationBlock(Object object_p) {
-    return getAllocationBlocks(object_p);
+  public List<Object> getAllocationBlock(Object object) {
+    return getAllocationBlocks(object);
   }
 
   /**
-   * @param object_p
+   * @param object
    * @return
    */
-  public List<Object> getAllocationBlocks(Object object_p) {
+  public List<Object> getAllocationBlocks(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (object_p instanceof AbstractFunction) {
-      AbstractFunction sf = (AbstractFunction) object_p;
+    if (object instanceof AbstractFunction) {
+      AbstractFunction sf = (AbstractFunction) object;
       result.addAll(sf.getAllocationBlocks());
     }
     // On top of what is done before, you have to check the entities where roles are allocated for
     // operational activities:
-    if (object_p instanceof OperationalActivity) {
-      OperationalActivity oa = (OperationalActivity) object_p;
+    if (object instanceof OperationalActivity) {
+      OperationalActivity oa = (OperationalActivity) object;
       
       // look for inverse reference : activity allocation
       Collection<Setting> inverseReferences = CapellaElementExt.getInverseReferencesOfEObject(oa);

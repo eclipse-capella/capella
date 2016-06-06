@@ -72,7 +72,7 @@ FALSE
 One or several Physical Actors from which the current Actor is a specialization.
 
  
-''Note 1: Â At this stage in the tool inheritance relationships between Actors are not fully exploited. <br> Note 2: Unless having a good reason to do so, inheritance shall not be used when strictly following the Arcadia methodology.''
+''Note 1: �At this stage in the tool inheritance relationships between Actors are not fully exploited. <br> Note 2: Unless having a good reason to do so, inheritance shall not be used when strictly following the Arcadia methodology.''
 
  
 | 
@@ -85,7 +85,7 @@ One or several Physical Actors from which the current Actor is a specialization.
 
  
 | 
-The list of Interfaces directly implemented (i.e. not through Component Ports) by the current Actor. Â Interfaces aggregate Exchange items (Operations, Events, Flows, Shared Data).
+The list of Interfaces directly implemented (i.e. not through Component Ports) by the current Actor. �Interfaces aggregate Exchange items (Operations, Events, Flows, Shared Data).
 
  
 ''Note: Unless having a good reason to do so, Implemented Interfaces shall not be used when strictly following the Arcadia methodology.''
@@ -101,7 +101,7 @@ The list of Interfaces directly implemented (i.e. not through Component Ports) b
 
  
 | 
-The list of Interfaces directly use (i.e. not through Component Ports) by the current Actor. Â Interfaces aggregate Exchange items (Operations, Events, Flows, Shared Data).
+The list of Interfaces directly use (i.e. not through Component Ports) by the current Actor. �Interfaces aggregate Exchange items (Operations, Events, Flows, Shared Data).
 
  
 ''Note: Unless having a good reason to do so, Used Interfaces shall not be used when strictly following the Arcadia methodology.''
@@ -263,6 +263,6 @@ Not all elements in the design phase of a System have the same maturity (some ar
 
  
 |} 
-Â 
+�
 
    

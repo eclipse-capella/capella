@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,7 +57,6 @@ import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -108,9 +107,8 @@ public class DiagramActionsProvider implements IActionsProvider {
 	      if (resE.getURI().toString().equals("capella://dynamic")) { //$NON-NLS-1$
 	        if (resE.getContents().size() > 0) {
 	          return (DAnalysis) resE.getContents().get(0);
-	        } else {
-	          res = resE;
 	        }
+	        res = resE;
 	      }
 	    }
 
@@ -176,7 +174,7 @@ public class DiagramActionsProvider implements IActionsProvider {
       }
 
       for (Viewpoint v : vs) {
-        DRepresentationContainer rep = ViewpointFactory.eINSTANCE.createDRepresentationContainer();
+        DView rep = ViewpointFactory.eINSTANCE.createDView();
         rep.setViewpoint(v);
         ana.getOwnedViews().add(rep);
       }
@@ -270,16 +268,13 @@ public class DiagramActionsProvider implements IActionsProvider {
 
         //Retrieve an already existing representation if any
         for (DView view : analysis.getOwnedViews()) {
-          if (view instanceof DRepresentationContainer) {
-            DRepresentationContainer c = (DRepresentationContainer) view;
-            if (c.getViewpoint().equals(v)) {
-              for (DRepresentation aaa : c.getOwnedRepresentations()) {
-                if (aaa instanceof DDiagram) {
-                  DDiagram diagram = (DDiagram) aaa;
-                  if (diagram.getDescription().equals(desc)) {
-                    representation = diagram;
-                    break;
-                  }
+          if (view.getViewpoint().equals(v)) {
+            for (DRepresentation aaa : view.getOwnedRepresentations()) {
+              if (aaa instanceof DDiagram) {
+                DDiagram diagram = (DDiagram) aaa;
+                if (diagram.getDescription().equals(desc)) {
+                  representation = diagram;
+                  break;
                 }
               }
             }
@@ -530,9 +525,8 @@ public class DiagramActionsProvider implements IActionsProvider {
           for (DAnalysis analysis : analysises) {
 
             for (Viewpoint viewpoint : viewpoints.values()) {
-
               if (isMissing(viewpoint, analysis)) {
-                DRepresentationContainer rep = ViewpointFactory.eINSTANCE.createDRepresentationContainer();
+                DView rep = ViewpointFactory.eINSTANCE.createDView();
                 rep.setViewpoint(viewpoint);
                 analysis.getOwnedViews().add(rep);
 
@@ -546,9 +540,7 @@ public class DiagramActionsProvider implements IActionsProvider {
                 hasProceed = true;
                 nbProceed++;
               }
-
             }
-
           }
 
           if (!hasProceed) {
@@ -1153,6 +1145,5 @@ public class DiagramActionsProvider implements IActionsProvider {
       }
       return nbFix != 0;
     }
-  };
-
+  }
 }

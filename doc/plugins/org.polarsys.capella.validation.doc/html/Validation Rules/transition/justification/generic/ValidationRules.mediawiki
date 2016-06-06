@@ -1,48 +1,38 @@
       
 = > Validation Rules > capella.category > transition > justification > generic =
             
-{| border="1"
+<br> 
+   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TJ_G_01 - Component Port Realization 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that an Component Port is realized by at least one Component Port. 
-|-
-|- 
+| colspan="2" |This rule checks that an Component Port is realized by at least one Component Port. 
 |}            
-{| border="1"
+<br> 
+   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|  TJ_G_02 - ComponentExchange realization 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that a Component Exchange is realized by at least one Component Exchange 
-|-
-|- 
+| colspan="2" |This rule checks that a Component Exchange is realized by at least one Component Exchange 
 |}            
-{| border="1"
+<br> 
+   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|  TJ_G_03 - Functional Exchange Realization 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that a Functional Exchange is realized by at least one Functional Exchange. 
-|-
-|- 
+| colspan="2" |This rule checks that a Functional Exchange is realized by at least one Functional Exchange. 
 |}            
-{| border="1"
+<br> 
+   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TJ_G_04 - Functional Exchange Transitioned 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that a Functional Exchange is transitioned from the upper Level. 
-|-
-|- 
+| colspan="2" |This rule checks that a Functional Exchange is transitioned from the upper Level. 
 |}            
-{| border="1"
+<br> 
+   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TJ_G_05 - Trace source and target naming 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule ensures that abstract trace's source and target element names are same. 
-|-
-|- 
+| colspan="2" |This rule ensures that abstract trace's source and target element names are same. 
 |}   

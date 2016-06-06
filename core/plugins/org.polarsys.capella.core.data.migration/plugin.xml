@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -69,16 +69,6 @@
                   id="org.polarsys.capella.core.data.migration.project"
                   icon="icons/full/etools16/capella_migrate.gif">
                 <visibleWhen checkEnabled="true">
-                <with variable="selection">
-                    <iterate
-                          ifEmpty="false">
-                            <and>
-                                <test property="org.polarsys.capella.core.data.migration.MigrationEnablementTester" forcePluginActivation="true"
-                                   value="org.polarsys.capella.core.data.migration.project">
-                                </test>
-                            </and>
-                    </iterate>
-                </with>
                 </visibleWhen> 
             </command>
             <command
@@ -86,16 +76,6 @@
                   id="org.polarsys.capella.core.data.migration.model"
                   icon="icons/full/etools16/capella_migrate.gif">
                 <visibleWhen checkEnabled="true">
-                <with variable="selection">
-                    <iterate
-                          ifEmpty="false">
-                            <and>
-                                <test property="org.polarsys.capella.core.data.migration.MigrationEnablementTester" forcePluginActivation="true"
-                                   value="org.polarsys.capella.core.data.migration.project">
-                                </test>
-                            </and>
-                    </iterate>
-                </with>
                 </visibleWhen> 
             </command>
             <command
@@ -103,16 +83,6 @@
                   id="org.polarsys.capella.core.data.migration.aird"
                   icon="icons/full/etools16/capella_migrate.gif">
                 <visibleWhen checkEnabled="true">
-                <with variable="selection">
-                    <iterate
-                          ifEmpty="false">
-                            <and>
-                                <test property="org.polarsys.capella.core.data.migration.MigrationEnablementTester" forcePluginActivation="true"
-                                   value="org.polarsys.capella.core.data.migration.project">
-                                </test>
-                            </and>
-                    </iterate>
-                </with>
                 </visibleWhen> 
             </command>
             
@@ -121,16 +91,6 @@
       </menuContribution>
    </extension>
    
-   <extension
-         point="org.eclipse.core.expressions.propertyTesters">
-      <propertyTester
-            class="org.polarsys.capella.core.data.migration.MigrationEnablementTester"
-            id="org.polarsys.capella.core.data.migration.MigrationEnablementTester"
-            namespace="org.polarsys.capella.core.data.migration"
-            properties="MigrationEnablementTester"
-            type="org.eclipse.core.resources.IResource">
-      </propertyTester>
-   </extension>
    
    <!-- Contributions that should not be removed between versions -->
    <extension
@@ -143,6 +103,14 @@
       </migrationContribution>
       <migrationContribution
             class="org.polarsys.capella.core.data.migration.contribution.BackupResourceContribution">
+      </migrationContribution>
+      
+      
+      <migrationContribution 
+            class="org.polarsys.capella.core.data.migration.capella.HoldingResourceRemovalContribution">
+      </migrationContribution>
+      <migrationContribution 
+            class="org.polarsys.capella.core.data.migration.capella.EOppositeMigrationContribution">
       </migrationContribution>
    </extension>
    
@@ -158,6 +126,7 @@
       <migrationContributor
             class="org.polarsys.capella.core.data.migration.repair.RepairSiriusMigrationContributor">
       </migrationContributor>
+      
    </extension>
    
    
@@ -165,12 +134,9 @@
    <extension
          point="org.polarsys.capella.core.data.migration.migrationContributions">
 
-      <migrationContribution class="org.polarsys.capella.core.data.migration.capella.RPLSuffixContribution" />
-      <migrationContribution class="org.polarsys.capella.core.data.migration.capella.HoldingResourceRemovalContribution" />
-      <migrationContribution class="org.polarsys.capella.core.data.migration.capella.GradientBackgroundColorContribution" />
-      <migrationContribution class="org.polarsys.capella.core.data.migration.capella.StateEventContribution" />
-      <migrationContribution class="org.polarsys.capella.core.data.migration.capella.EOppositeMigrationContribution" />
-
+      <migrationContribution 
+            class="org.polarsys.capella.core.data.migration.aird.FixCustomFeaturesContribution">
+      </migrationContribution>
    </extension>
    
    

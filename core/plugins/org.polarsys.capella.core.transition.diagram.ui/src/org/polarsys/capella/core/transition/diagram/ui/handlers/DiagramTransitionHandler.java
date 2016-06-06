@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.expressions.EvaluationContext;
+import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -30,7 +31,7 @@ public class DiagramTransitionHandler extends AbstractRunnableHandler {
   @Override
   protected IRunnableWithProgress createRunnable(ExecutionEvent event_p) {
     List<DDiagram> diagrams = getSelection(event_p, DDiagram.class);
-    final EvaluationContext evaluationContext = (EvaluationContext) event_p.getApplicationContext();
+    final IEvaluationContext evaluationContext = (IEvaluationContext) event_p.getApplicationContext();
 
     return new DiagramTransitionRunnable(diagrams) {
 

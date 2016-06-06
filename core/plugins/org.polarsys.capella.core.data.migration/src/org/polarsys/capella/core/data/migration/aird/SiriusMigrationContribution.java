@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,8 +20,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.UnresolvedReferenceException;
 import org.eclipse.emf.ecore.xmi.XMIException;
+import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.core.data.migration.Activator;
@@ -81,31 +81,37 @@ public class SiriusMigrationContribution extends AbstractMigrationContribution {
   }
 
   @Override
-  public boolean ignoreSetFeatureValue(EObject peekObject, EStructuralFeature feature, Object value, int position, XMLResource resource,
-      MigrationContext context) {
+  public String getQName(EObject peekObject, String typeQName, EStructuralFeature feature, Resource resource,
+      XMLHelper helper, MigrationContext context) {
+    if ("viewpoint:DRepresentationContainer".equals(typeQName)) {
+      return "viewpoint:DView";
+    }
+    return super.getQName(peekObject, typeQName, feature, resource, helper, context);
+  }
 
-    if (XMLTypePackage.Literals.ANY_TYPE.equals(peekObject.eClass()) && "initialized".equals(feature.getName())) {
-      return true;
-    }
-    if (XMLTypePackage.Literals.ANY_TYPE.equals(peekObject.eClass()) && "diagramSet".equals(feature.getName())) {
-      return true;
-    }
+  @Override
+  public boolean ignoreSetFeatureValue(EObject peekObject, EStructuralFeature feature, Object value, int position,
+      XMLResource resource, MigrationContext context) {
     return super.ignoreSetFeatureValue(peekObject, feature, value, position, resource, context);
   }
 
   @Override
-  public void endElement(EObject peekEObject, Attributes attribs, String uri, String localName, String name, Resource resource, MigrationContext context) {
-    RepresentationsFileMigrationService.getInstance().postXMLEndElement(peekEObject, attribs, uri, name, name, getLoadedVersion(resource));
+  public void endElement(EObject peekEObject, Attributes attribs, String uri, String localName, String name,
+      Resource resource, MigrationContext context) {
+    RepresentationsFileMigrationService.getInstance().postXMLEndElement(peekEObject, attribs, uri, name, name,
+        getLoadedVersion(resource));
   }
 
   @Override
-  public Object getValue(EObject peekObject, EStructuralFeature feature, Object value, int position, Resource resource, MigrationContext context) {
+  public Object getValue(EObject peekObject, EStructuralFeature feature, Object value, int position, Resource resource,
+      MigrationContext context) {
     String version = getLoadedVersion(resource);
     return RepresentationsFileMigrationService.getInstance().getValue(peekObject, feature, value, version);
   }
 
   @Override
-  public EStructuralFeature getFeature(EObject peekObject, EStructuralFeature feature, Resource resource, MigrationContext context) {
+  public EStructuralFeature getFeature(EObject peekObject, EStructuralFeature feature, Resource resource,
+      MigrationContext context) {
     String version = getLoadedVersion(resource);
     return RepresentationsFileMigrationService.getInstance().getAffiliation(peekObject.eClass(), feature, version);
   }

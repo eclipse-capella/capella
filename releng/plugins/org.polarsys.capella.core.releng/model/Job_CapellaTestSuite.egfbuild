@@ -6,6 +6,7 @@
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_8w87QOnxEeWL_q5RF2Gh7A" name="RunCapellaTestSuites">
     <properties xmi:id="_ASPhsEHPEeG_UKzFyZlgCA" key="launch_configs" value="org.polarsys.capella.test.suites.ju/launch_configs"/>
+    <properties xmi:id="_v-IB4C1YEeWyY5IVKvheiA" key="eclipseCodeName" value="mars" type="INLINED"/>
     <steps xsi:type="buildcore:ReuseStep" xmi:id="_CwJ_YOXmEeW5-KghTjb63g" name="Install Jacoco">
       <reusedStep xsi:type="buildcore:StepContainer" href="Helpers.egfbuild#_aY7c8OXlEeW5-KghTjb63g"/>
     </steps>

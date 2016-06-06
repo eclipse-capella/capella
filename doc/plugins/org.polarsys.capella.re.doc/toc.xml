@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -11,7 +11,50 @@
        Thales - initial API and implementation
 -->
 <toc label="Replicable Elements and Libraries" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution" sort="true">
-   <topic label="Replicable Elements and Libraries">
-      <anchor id="contribution"/>
+   <topic label="Replicable Elements">
+   <topic href="html/08. Replicable Element (REC-RPL)/8.1. Introduction.html" label="Introduction">
+		<topic href="html/08. Replicable Element (REC-RPL)/8.1. Introduction.html#Definitions" label="Definitions"></topic>
+		<topic href="html/08. Replicable Element (REC-RPL)/8.1. Introduction.html#Examples" label="Examples"></topic>
+	</topic>
+	<topic href="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case.html" label="Basic REC-RPL Use Case">
+		<topic href="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case.html#Creation_of_a_REC" label="Creation of a REC"></topic>
+		<topic href="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case.html#Instantiation_of_a_REC" label="Instantiation of a REC"></topic>
+		<topic href="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case.html#Copy-Paste_Layout" label="Copy-Paste Layout"></topic>
+	</topic>
+	<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html" label="Updates Between REC and RPL">
+		<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html#Update_of_a_REC_from_its_SOURCE" label="Update of a REC from its SOURCE"></topic>
+		<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html#Update_of_a_RPL_from_its_REC" label="Update of a RPL from its REC"></topic>
+		<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html#Update_of_a_REC_from_its_RPL" label="Update of a REC from its RPL"></topic>
+	</topic>
+	<topic href="html/08. Replicable Element (REC-RPL)/8.4. RPL Deletion.html" label="Deletion of RPL">
+		<topic href="html/08. Replicable Element (REC-RPL)/8.4. RPL Deletion.html#Delete_RPL_and_Related_Model_Elements" label="Delete RPL and Related Model Elements"></topic>
+		<topic href="html/08. Replicable Element (REC-RPL)/8.4. RPL Deletion.html#Delete_RPL_and_Preserve_Related_Model_Elements" label="Delete RPL and Preserve Related Model Elements"></topic>
+	</topic>
+	<topic href="html/08. Replicable Element (REC-RPL)/8.5. RPL Validation.html" label="Validation of RPL">
+		<topic href="html/08. Replicable Element (REC-RPL)/8.5. RPL Validation.html#Compliancy_of_RPL" label="Compliancy of RPL"></topic>
+	</topic>
+	<topic href="html/08. Replicable Element (REC-RPL)/8.6. Advanced Features.html" label="REC-RPL Advanced Features">
+		<topic href="html/08. Replicable Element (REC-RPL)/8.6. Advanced Features.html#Management_of_Composition_of_REC-RPL" label="Management of Composition of REC-RPL"></topic>
+		<topic href="html/08. Replicable Element (REC-RPL)/8.6. Advanced Features.html#Promotion_of_a_REC_to_a_Library" label="Promotion of a REC to a Library"></topic>
+	</topic>
+      <anchor id="re"/>
+   </topic>
+    <topic label="Libraries">
+    <topic href="html/09. Libraries/9.1. Introduction.html" label="Introduction">
+		<topic href="html/09. Libraries/9.1. Introduction.html#Concepts" label="Concepts"></topic>
+	</topic>
+	<topic href="html/09. Libraries/9.2. Basic Use Case.html" label="Basic Use Case">
+		<topic href="html/09. Libraries/9.2. Basic Use Case.html#Creation_of_a_Library" label="Creation of a Library"></topic>
+		<topic href="html/09. Libraries/9.2. Basic Use Case.html#Referencing_a_Library" label="Referencing a Library"></topic>
+		<topic href="html/09. Libraries/9.2. Basic Use Case.html#Using_Library_Elements_from_a_Project" label="Using Library Elements from a Project"></topic>
+	</topic>
+	<topic href="html/09. Libraries/9.3. Usage With Replicable Elements.html" label="Usage with Replicable Elements">
+		<topic href="html/09. Libraries/9.3. Usage With Replicable Elements.html#Concepts" label="Concepts"></topic>
+	</topic>
+	<topic href="html/09. Libraries/9.4. Usage Restrictions.html" label="Usage Restrictions">
+		<topic href="html/09. Libraries/9.4. Usage Restrictions.html#Libraries_Usage_Restriction" label="Libraries Usage Restriction"></topic>
+		<topic href="html/09. Libraries/9.4. Usage Restrictions.html#Nominal_Case_vs_Downgraded_Case" label="Nominal Case vs Downgraded Case"></topic>
+	</topic>
+      <anchor id="lib"/>
    </topic>
 </toc>

@@ -92,7 +92,7 @@ One or several System Capabilities from which the current System Capability is a
 
  
 | 
-The list of System Functions which are particularly relevant in the context of the current System Capability. This list is automatically populated when System functions are created on dataflow diagrams owned by the current Capability. The list can also be enriched manually. Â 
+The list of System Functions which are particularly relevant in the context of the current System Capability. This list is automatically populated when System functions are created on dataflow diagrams owned by the current Capability. The list can also be enriched manually. �
 
  
 | 
@@ -277,19 +277,19 @@ Not all elements in the design phase of a System have the same maturity (some ar
 
  
 |} 
-Â 
+�
 
  
-Â 
+�
 
  
-Â· '''Related concepts'''
+� '''Related concepts'''
 
  
 Definition in the glossary
 
  
-Â·Â '''Related documentation'''
+��'''Related documentation'''
 
  
 Work Instruction â€“ Define Actors, Missions and Capabilities

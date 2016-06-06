@@ -111,14 +111,15 @@ public class TransposerLauncher extends ActivitiesLauncher {
   protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
     SharedWorkflowActivityParameter parameter = super.getSharedParameter(workflowId);
 
-    parameter.addSharedParameter(new GenericParameter<IContext>(ITransposerWorkflow.TRANSPOSER_CONTEXT, _transposer.getContext(),
-        "Context used during rules execution")); //$NON-NLS-1$
+    parameter.addSharedParameter(new GenericParameter<IContext>(ITransposerWorkflow.TRANSPOSER_CONTEXT,
+        _transposer.getContext(), "Context used during rules execution")); //$NON-NLS-1$
 
     return parameter;
   }
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.action.Action#run()
    */
   public void run(Collection<Object> selection1, boolean save, IProgressMonitor monitor) {
@@ -134,8 +135,11 @@ public class TransposerLauncher extends ActivitiesLauncher {
       initializeLogHandler();
 
       _transposer = createTransposer(purpose, mappingId);
+
       _transposer.getContext().put(ITransitionConstants.TRANSPOSER_INSTANCE, _transposer);
       _transposer.getContext().put(ITransitionConstants.TRANSPOSER_SELECTION, selection);
+      _transposer.getContext().put(ITransitionConstants.TRANSPOSER_PURPOSE, purpose);
+      _transposer.getContext().put(ITransitionConstants.TRANSPOSER_MAPPING, mappingId);
       _transposer.getContext().put(ITransposerWorkflow.TRANSPOSER_ANALYSIS_SOURCES, new ArrayList<Object>());
 
       triggerActivities(selection, getWorkflow(), monitor);

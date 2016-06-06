@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,9 +37,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
-import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -54,7 +52,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
+import org.polarsys.capella.common.ef.domain.AbstractEditingDomainResourceSetListenerImpl;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
@@ -75,7 +73,7 @@ import org.polarsys.capella.core.model.handler.pre.condition.IFileModificationPr
  * If the resources are not writable, an {@link AbortedTransactionException} is thrown in order to roll back the
  * transaction.
  */
-public class FileModificationPreCommitListener extends ResourceSetListenerImpl implements IEditingDomainListener,
+public class FileModificationPreCommitListener extends AbstractEditingDomainResourceSetListenerImpl implements
     SessionManagerListener {
   private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(
       IReportManagerDefaultComponents.UI);
@@ -514,22 +512,6 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
    */
   public void setDisableValidateEdit(boolean disableValidateEdit) {
     _disableValidateEdit = disableValidateEdit;
-  }
-
-  /**
-   * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#createdEditingDomain(EditingDomain)
-   */
-  @Override
-  public void createdEditingDomain(EditingDomain editingDomain) {
-    ((TransactionalEditingDomain) editingDomain).addResourceSetListener(this);
-  }
-
-  /**
-   * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#disposedEditingDomain(EditingDomain)
-   */
-  @Override
-  public void disposedEditingDomain(EditingDomain editingDomain) {
-    ((TransactionalEditingDomain) editingDomain).removeResourceSetListener(this);
   }
 
   /**

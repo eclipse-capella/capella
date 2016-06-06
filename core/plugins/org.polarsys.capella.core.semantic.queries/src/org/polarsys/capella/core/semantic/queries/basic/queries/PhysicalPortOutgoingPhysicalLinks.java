@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import org.polarsys.capella.core.data.cs.PhysicalLink;
@@ -30,7 +31,7 @@ public class PhysicalPortOutgoingPhysicalLinks extends  AbstractPhysicalPortPhys
    * @see org.polarsys.capella.core.semantic.queries.basic.queries.AbstractPhysicalPortPhysicalLinks#getSourcePortFromLink(org.polarsys.capella.core.data.pa.PhysicalLink)
    */
   @Override
-  public Port getSourcePortFromLink(PhysicalLink link_p) {
-    return PhysicalLinkExt.getTargetPort(link_p);
+  public Port getSourcePortFromLink(PhysicalLink link) {
+    return PhysicalLinkExt.getTargetPort(link);
   }
 }

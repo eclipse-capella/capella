@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -101,7 +101,7 @@ public class PhysicalServices {
     return __service;
   }
 
-  private static final Integer THICK_EDGE_PHYSICAL_PATH = new Integer(4);
+  private static final Integer THICK_EDGE_PHYSICAL_PATH = Integer.valueOf(4);
   private static final String INCOMPLETE_PHYSICAL_PATH_LABEL = "incomplete"; //$NON-NLS-1$
   private static final String INVALID_PHYSICAL_PATH_LABEL = "invalid"; //$NON-NLS-1$
 
@@ -114,20 +114,16 @@ public class PhysicalServices {
    */
   public Collection<EObject> getPhysicalPathSources(PhysicalPath path) {
     // a link is not oriented, so return both bounds
-    HashSet<EObject> result = new HashSet<EObject>();
+    Set<EObject> result = new HashSet<EObject>();
 
     for (PhysicalPathInvolvement anInvolvement : PhysicalPathExt.getFlatInvolvementsOf(path,
         CsPackage.Literals.PHYSICAL_LINK)) {
       PhysicalLink currentExchange = (PhysicalLink) anInvolvement.getInvolved();
       if ((currentExchange != null) && !currentExchange.eIsProxy()) {
         EObject source = PhysicalLinkExt.getSourcePort(currentExchange);
-        if (result != null) {
-          result.add(source);
-        }
+        result.add(source);
         EObject target = PhysicalLinkExt.getTargetPort(currentExchange);
-        if (result != null) {
-          result.add(target);
-        }
+        result.add(target);
       }
     }
 

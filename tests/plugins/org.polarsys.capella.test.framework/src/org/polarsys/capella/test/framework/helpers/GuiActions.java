@@ -17,10 +17,7 @@ import java.util.List;
 
 import org.eclipse.amalgam.explorer.activity.ui.ActivityExplorerActivator;
 import org.eclipse.amalgam.explorer.activity.ui.api.preferences.PreferenceConstants;
-import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.Command;
-import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -41,7 +38,6 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.RenameResourceAction;
 import org.eclipse.ui.commands.ICommandService;
-import org.eclipse.ui.handlers.IHandlerActivation;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.progress.UIJob;
 import org.polarsys.capella.core.explorer.activity.ui.actions.OpenActivityExplorerAction;
@@ -50,9 +46,9 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortSelect
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.platform.sirius.ui.project.NewProjectWizard;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
+import org.polarsys.capella.test.framework.actions.headless.HeadlessCloseSessionAction;
 import org.polarsys.capella.test.framework.actions.headless.HeadlessNewProjectWizard;
 import org.polarsys.capella.test.framework.actions.headless.HeadlessWizardDialog;
-import org.polarsys.capella.test.framework.actions.headless.HeadlessCloseSessionAction;
 
 /**
  * An API gathering together launchers for GUI capella actions. All these actions are headless (they do not block on GUI
@@ -100,14 +96,14 @@ public class GuiActions {
 
   }
 
-	/**
-	 * Open a session by using the capella action @see OpenSessionAction.
-	 * 
-	 * @param airdFile
-	 *            the aird file
-	 * @param openActivityExplorer
-	 *            Open the ActivityExplorer on open session
-	 */
+  /**
+   * Open a session by using the capella action @see OpenSessionAction.
+   * 
+   * @param airdFile
+   *          the aird file
+   * @param openActivityExplorer
+   *          Open the ActivityExplorer on open session
+   */
   public static void openSession(IFile airdFile, boolean openActivityExplorer) {
     // Set the corresponding preference to the expected value
     boolean originalPrefValue = ActivityExplorerActivator.getDefault().getPreferenceStore()
@@ -232,33 +228,22 @@ public class GuiActions {
 
   public static void renameModelFile(IFile modelFile, final String newName) {
 
-    IHandlerService handlerService = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
+    // Replace default command by a dummy one (we do not want to display the rename dialog)
+    ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
+    Command command = commandService.getCommand("org.eclipse.ltk.ui.refactoring.commands.renameResource");
+    command.undefine();
 
-    // Replace default handler by a dummy one (we do not want to display the rename dialog)
-    // See LTKLauncher.LTK_RENAME_ID (private)
-    String renameResourceCommandID = "org.eclipse.ltk.ui.refactoring.commands.renameResource";
-    IHandlerActivation dummyHandlerActivation = handlerService.activateHandler(renameResourceCommandID,
-        new AbstractHandler() {
-          @Override
-          public Object execute(ExecutionEvent event) throws ExecutionException {
-            return null;
-          }
-        });
-    try {
-      // Execute the rename action
-      RenameResourceAction renameAction = new RenameResourceAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow()) {
-        @Override
-        protected String queryNewResourceName(final IResource resource) {
-          return newName;
-        }
-      };
-      IStructuredSelection selection = new StructuredSelection(modelFile);
-      renameAction.selectionChanged(selection);
-      renameAction.run();
-    } finally {
-      // Deactivate dummy handler
-      handlerService.deactivateHandler(dummyHandlerActivation);
-    }
+    // Execute the rename action
+    RenameResourceAction renameAction = new RenameResourceAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow()) {
+      @Override
+      protected String queryNewResourceName(final IResource resource) {
+        return newName;
+      }
+    };
+    IStructuredSelection selection = new StructuredSelection(modelFile);
+    renameAction.selectionChanged(selection);
+    renameAction.run();
+
   }
 
   /**

@@ -186,6 +186,6 @@ Not all elements in the design phase of a System have the same maturity (some ar
 
  
 |} 
-Â 
+�
 
    

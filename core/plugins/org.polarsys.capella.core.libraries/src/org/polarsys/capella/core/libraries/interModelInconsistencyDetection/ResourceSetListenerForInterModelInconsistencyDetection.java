@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materiTals
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,11 +22,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
-import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
 import org.polarsys.capella.common.libraries.Activator;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -42,7 +40,7 @@ import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin
  * 
  * @author Erwan Brottier
  */
-public class ResourceSetListenerForInterModelInconsistencyDetection extends ResourceSetListenerImpl implements IEditingDomainListener {
+public class ResourceSetListenerForInterModelInconsistencyDetection extends ResourceSetListenerImpl {
 
 	protected DependencyChecker linkChecker;
 
@@ -107,17 +105,6 @@ public class ResourceSetListenerForInterModelInconsistencyDetection extends Reso
 		for (DependencyViolation dependencyViolation : linkChecker.getDependencyViolations())
 			Logger.getLogger(IReportManagerDefaultComponents.DEFAULT).debug(dependencyViolation.getDescription());
 		throw new RollbackException(new Status(IStatus.CANCEL, Activator.PLUGIN_ID, message));
-	}
-
-	@Override
-	public void createdEditingDomain(EditingDomain editingDomain) {
-		// nothing to do since we don't use the extension point (this listener is
-		// binded by a session listener)
-	}
-
-	@Override
-	public void disposedEditingDomain(EditingDomain editingDomain) {
-		// nothing to do since the editing domain remove listeners itself when disposing.
 	}
 
 }
