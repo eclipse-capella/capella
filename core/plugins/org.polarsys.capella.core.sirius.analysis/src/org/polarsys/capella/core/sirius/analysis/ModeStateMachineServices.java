@@ -14,6 +14,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -26,9 +27,11 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.IState;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState;
 import org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
@@ -63,6 +66,38 @@ public class ModeStateMachineServices {
     }
     return _service;
   }
+  
+  public String getRegionLabel(Region region, DDiagram diagram) {
+    return isDiagramFilterEnable(diagram, IMappingNameConstants.HIDE_REGION_NAMES) ? "" : " [" + EObjectLabelProviderHelper.getText(region) + "]";
+  }
+  
+  public String getEntryExitPointLabel(Pseudostate pseudostate, DDiagram diagram) {
+    
+    if (isDiagramFilterEnable(diagram, IMappingNameConstants.DISPLAY_REGION_NAME_ON_ENTRY_EXIT_POINTS)) {
+      EList<Region> regions = pseudostate.getInvolverRegions();
+      if (!regions.isEmpty()) {
+        Region region = regions.get(0);
+        return EObjectLabelProviderHelper.getText(pseudostate) + " (" + EObjectLabelProviderHelper.getText(region) + ")";
+      }
+    }
+    
+    return EObjectLabelProviderHelper.getText(pseudostate);
+  }
+  
+  private boolean isDiagramFilterEnable(DDiagram diagram, String filterName) {
+    if (diagram != null) {
+      EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
+      for (FilterDescription filterDescription : activatedFilters) {
+        // if given filter is enable return true
+        if ((null != filterDescription) && filterDescription.getName().equalsIgnoreCase(filterName)) {
+          return true;
+        }
+      }
+    }
+    
+    return false;
+  }
+  
   public EObject showHideStatesInStateAndModeDiag(DSemanticDecorator view, List<State> selectedStates,
 	      List<State> visibleStates, List<AbstractDNode> visibleStateViews) {
 
