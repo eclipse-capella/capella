@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.data.fa.provider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -29,6 +30,24 @@ public class FunctionalExchangeItemProviderDecorator extends
 	public FunctionalExchangeItemProviderDecorator(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
+
+  @Override
+  public String getText(Object object) {
+    String text = super.getText(object);
+
+    for (IItemLabelProvider labelProvider : getDelegatedDecorators((EObject) object)) {
+      String position = getDecoratorPosition(labelProvider);
+      if (DECORATOR_POSITION_PREFIX.equals(position)) {
+        text = labelProvider.getText(object) + text;
+      } else if (DECORATOR_POSITION_SUFFIX.equals(position)) {
+        text = text + labelProvider.getText(object);
+      } else if (DECORATOR_POSITION_OVERRIDES.equals(position)) {
+        text = labelProvider.getText(object);
+      }
+    }
+
+    return text;
+  }
 
 	@Override
 	public Object getImage(Object object) {
