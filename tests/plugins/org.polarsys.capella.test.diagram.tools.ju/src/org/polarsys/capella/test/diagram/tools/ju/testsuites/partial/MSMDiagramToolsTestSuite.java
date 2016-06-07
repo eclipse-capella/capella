@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.msm.MSMDragAndDropStates;
+import org.polarsys.capella.test.diagram.tools.ju.msm.MSMFunctionalExchangeActionLabelTest;
 import org.polarsys.capella.test.diagram.tools.ju.msm.MSMShowHideHierarchy1ModesStatesTest;
 import org.polarsys.capella.test.diagram.tools.ju.msm.MSMShowHideHierarchy2ModesTest;
 import org.polarsys.capella.test.diagram.tools.ju.msm.MSMShowHideHierarchy2StatesTest;
@@ -53,6 +54,7 @@ public class MSMDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new MSMShowHideSuperReuseModeTest());
     tests.add(new MSMShowHideTransition2ModesTest());
     tests.add(new MSMShowHideTransition2StatesTest());
+    tests.add(new MSMFunctionalExchangeActionLabelTest());
     
     return tests;
   }

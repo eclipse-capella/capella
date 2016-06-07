@@ -158,6 +158,20 @@ public class XABDiagram extends DiagramContext {
     new CreateDEdgeTool(this, name, idSource, idTarget, id).run();
   }
 
+  public void createFunctionalExchange(String idSource, String idTarget, String id) {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAB_CREATE_INTERACTION;
+    } else if (type == Type.SA) {
+      name = IToolNameConstants.TOOL_SAB_CREATE_FUNCTIONAL_EXCHANGE;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_CREATE_FUNCTIONAL_EXCHANGE;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PAB_CREATE_FUNCTIONAL_EXCHANGE;
+    }
+    new CreateDEdgeTool(this, name, idSource, idTarget, id).run();
+  }
+  
   public void createPhysicalLink(String idSource, String idTarget, String id) {
     String name = null;
     if (type == Type.SA) {
