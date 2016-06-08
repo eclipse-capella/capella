@@ -13,8 +13,10 @@ package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.diagram.tools.ju.msm.MSMDisplayRegionNameOnEntryExitPointsFilterTest;
 import org.polarsys.capella.test.diagram.tools.ju.msm.MSMDragAndDropStates;
 import org.polarsys.capella.test.diagram.tools.ju.msm.MSMFunctionalExchangeActionLabelTest;
+import org.polarsys.capella.test.diagram.tools.ju.msm.MSMHideRegionNamesFilterTest;
 import org.polarsys.capella.test.diagram.tools.ju.msm.MSMShowHideHierarchy1ModesStatesTest;
 import org.polarsys.capella.test.diagram.tools.ju.msm.MSMShowHideHierarchy2ModesTest;
 import org.polarsys.capella.test.diagram.tools.ju.msm.MSMShowHideHierarchy2StatesTest;
@@ -55,6 +57,8 @@ public class MSMDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new MSMShowHideTransition2ModesTest());
     tests.add(new MSMShowHideTransition2StatesTest());
     tests.add(new MSMFunctionalExchangeActionLabelTest());
+    tests.add(new MSMHideRegionNamesFilterTest());
+    tests.add(new MSMDisplayRegionNameOnEntryExitPointsFilterTest());
     
     return tests;
   }

@@ -109,12 +109,12 @@ public class MSMDiagram extends DiagramContext {
 	  new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_SHALLOW_HISTORY, idContainer, id).run();
   }
   
-  public void createEntryPoint (String idContainer, String id) {
-	  new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_ENTRY_POINT, idContainer, id).run();
+  public void createEntryPoint (String idTargetContainer, String idContainer, String id) {
+	  new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_ENTRY_POINT, idTargetContainer, idContainer, id).run();
   }
   
-  public void createExitPoint (String idContainer, String id) {
-	  new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_EXIT_POINT, idContainer, id).run();
+  public void createExitPoint (String idTargetContainer, String idContainer, String id) {
+	  new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_EXIT_POINT, idTargetContainer, idContainer, id).run();
   }
   
   public void createTransition(String idSource, String idTarget, String id) {

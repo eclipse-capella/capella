@@ -116,6 +116,13 @@ public class GenericModel {
   public static String REGION_3 = "Region 3";
   public static String REGION_4 = "Region 4";
 
+  public static String ENTRY_POINT_1 = "Entry Point 1";
+  public static String ENTRY_POINT_2 = "Entry Point 2";
+  public static String ENTRY_POINT_3 = "Entry Point 3";
+  public static String EXIT_POINT_1 = "Exit Point 1";
+  public static String EXIT_POINT_2 = "Exit Point 2";
+  public static String EXIT_POINT_3 = "Exit Point 3";
+  
   public static String LC_1 = "LC 1";
   public static String LC_2 = "LC 2";
   public static String LC_2_1 = "LC 2_1";
