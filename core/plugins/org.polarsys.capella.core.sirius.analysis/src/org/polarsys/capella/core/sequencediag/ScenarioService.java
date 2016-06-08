@@ -29,6 +29,7 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
@@ -78,7 +79,6 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
-import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
 import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
@@ -464,7 +464,7 @@ public class ScenarioService {
     if ("".equals(fe.getName()) || (null == fe.getName())) { //$NON-NLS-1$
       return "<undefined>"; //$NON-NLS-1$
     }
-    return fe.getName();
+    return EObjectLabelProviderHelper.getText(fe);
   }
 
   public static String getShowCEEIParams(AbstractEventOperation op, List<? extends AbstractExchangeItem> eiOnMessage) {

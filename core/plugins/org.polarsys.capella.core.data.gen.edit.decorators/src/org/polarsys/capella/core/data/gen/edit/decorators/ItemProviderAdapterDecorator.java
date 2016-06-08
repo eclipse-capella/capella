@@ -51,6 +51,24 @@ public class ItemProviderAdapterDecorator extends ItemProviderDecorator implemen
     super(adapterFactory);
   }
 
+  @Override
+  public String getText(Object object) {
+    String text = super.getText(object);
+
+    for (IItemLabelProvider labelProvider : getDelegatedDecorators((EObject) object)) {
+      String position = getDecoratorPosition(labelProvider);
+      if (DECORATOR_POSITION_PREFIX.equals(position)) {
+        text = labelProvider.getText(object) + text;
+      } else if (DECORATOR_POSITION_SUFFIX.equals(position)) {
+        text = text + labelProvider.getText(object);
+      } else if (DECORATOR_POSITION_OVERRIDES.equals(position)) {
+        text = labelProvider.getText(object);
+      }
+    }
+
+    return text;
+  }
+
   /**
    *
    */

@@ -50,6 +50,12 @@
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
+        class="org.polarsys.capella.core.data.interaction.provider.InteractionItemProviderDecoratorAdapterFactory"
+        supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
+        uri="http://www.polarsys.org/capella/core/interaction/1.0.0"/>
+   </extension>
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
         class="org.polarsys.capella.core.data.la.provider.LaItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
         uri="http://www.polarsys.org/capella/core/la/1.0.0"/>

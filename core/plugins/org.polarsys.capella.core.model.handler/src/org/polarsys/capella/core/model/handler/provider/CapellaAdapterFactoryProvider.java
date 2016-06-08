@@ -30,7 +30,7 @@ import org.polarsys.capella.core.data.information.communication.provider.Communi
 import org.polarsys.capella.core.data.information.datatype.provider.DatatypeItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.information.datavalue.provider.DatavalueItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.information.provider.InformationItemProviderAdapterFactory;
-import org.polarsys.capella.core.data.interaction.provider.InteractionItemProviderAdapterFactory;
+import org.polarsys.capella.core.data.interaction.provider.InteractionItemProviderDecoratorAdapterFactory;
 import org.polarsys.capella.core.data.la.provider.LaItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.oa.provider.OaItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.pa.deployment.provider.DeploymentItemProviderAdapterFactory;
@@ -91,6 +91,7 @@ public class CapellaAdapterFactoryProvider implements IAdapterFactoryProvider {
 
     // decorators
     adapterFactory.addAdapterFactory(new FaItemProviderDecoratorAdapterFactory());
+    adapterFactory.addAdapterFactory(new InteractionItemProviderDecoratorAdapterFactory());
 
     adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new CapellamodellerItemProviderAdapterFactory());
@@ -110,7 +111,7 @@ public class CapellaAdapterFactoryProvider implements IAdapterFactoryProvider {
     adapterFactory.addAdapterFactory(new DatavalueItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new CsItemProviderAdapterFactory());
     //adapterFactory.addAdapterFactory(new FaItemProviderAdapterFactory());
-    adapterFactory.addAdapterFactory(new InteractionItemProviderAdapterFactory());
+    //adapterFactory.addAdapterFactory(new InteractionItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new ModellingcoreItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new ActivityItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new BehaviorItemProviderAdapterFactory());
