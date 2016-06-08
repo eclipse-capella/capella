@@ -92,6 +92,8 @@ public class GenericModel {
   public static String FUNCTION_1_3 = "Function 1_3";
   public static String FUNCTION_1_4 = "Function 1_4";
 
+  public static String FUNCTIONAL_EXCHANGE_1 = "Function 1";
+  
   public static String COMPONENT_PORT_1 = "COMPONENT_PORT_1";
   public static String COMPONENT_PORT_2 = "COMPONENT_PORT_2";
   public static String COMPONENT_PORT_3 = "COMPONENT_PORT_3";
