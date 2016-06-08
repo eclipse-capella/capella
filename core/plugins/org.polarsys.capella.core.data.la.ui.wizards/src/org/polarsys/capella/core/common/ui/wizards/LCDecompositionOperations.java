@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,49 +68,50 @@ import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionModelList
  */
 public class LCDecompositionOperations implements DecompositionModelListener {
 
-  private static final Logger _logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  private static final Logger _logger = ReportManagerRegistry.getInstance().subscribe(
+      IReportManagerDefaultComponents.UI);
   private LCDecompositionController _controller;
 
   /**
    * @see org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionModelListener#decompositionChanged(org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionModelEvent)
    */
-  public void decompositionChanged(DecompositionModelEvent event_p) {
-    switch (event_p.getEventType()) {
+  public void decompositionChanged(DecompositionModelEvent event) {
+    switch (event.getEventType()) {
     case DecompositionModelEvent.DECOMPOSITION_ADDED:
-      addNewDecomposition(event_p);
+      addNewDecomposition(event);
       break;
     case DecompositionModelEvent.DECOMPOSITION_ALL_REMOVED:
-      removeAllDecompositions(event_p);
+      removeAllDecompositions(event);
       break;
     case DecompositionModelEvent.DECOMPOSITION_REMOVED:
-      removeDecomposition(event_p);
+      removeDecomposition(event);
       break;
     case DecompositionModelEvent.DECOMPOSITION_RENAMED:
-      renameDecomposition(event_p);
+      renameDecomposition(event);
       break;
     case DecompositionModelEvent.TARGET_COMPONENT_ADDED:
-      addNewTargetComponent(event_p);
+      addNewTargetComponent(event);
       break;
     case DecompositionModelEvent.TARGET_COMPONENT_REMOVED:
-      removeTargetComponent(event_p);
+      removeTargetComponent(event);
       break;
     case DecompositionModelEvent.TARGET_COMPONENT_ALL_REMOVED:
-      removeAllTargetComponents(event_p);
+      removeAllTargetComponents(event);
       break;
     case DecompositionModelEvent.TARGET_COMPONENT_RENAMED:
-      renameTargetComponent(event_p);
+      renameTargetComponent(event);
       break;
     case DecompositionModelEvent.TARGET_COMPONENT_REUSED:
-      wrapReusedTargetComponent(event_p);
+      wrapReusedTargetComponent(event);
       break;
     case DecompositionModelEvent.TARGET_COMPONENT_INTERFACE_ATTACHED:
-      attachInterface(event_p);
+      attachInterface(event);
       break;
     case DecompositionModelEvent.TARGET_COMPONENT_INTERFACE_DETACHED:
-      detachInterface(event_p);
+      detachInterface(event);
       break;
     case DecompositionModelEvent.DECOMPOSITION_FINISHED:
-      finishDecomposition(event_p);
+      finishDecomposition(event);
       break;
     default:
       break;
@@ -118,12 +119,12 @@ public class LCDecompositionOperations implements DecompositionModelListener {
   }
 
   /**
-   * @param event_p
+   * @param event
    */
-  private void wrapReusedTargetComponent(DecompositionModelEvent event_p) {
+  private void wrapReusedTargetComponent(DecompositionModelEvent event) {
     try {
       DecompositionComponent shortcutComp = new DecompositionComponent();
-      Object obj = event_p.getCurrentData();
+      Object obj = event.getCurrentData();
       if (obj instanceof LogicalComponent) {
         LogicalComponent comp = (LogicalComponent) obj;
         shortcutComp.setName(comp.getName());
@@ -134,12 +135,12 @@ public class LCDecompositionOperations implements DecompositionModelListener {
         shortcutComp.setItems(_controller.getWrappedInterfaces(comp, false));
         shortcutComp.setReusedTarget(comp);
         shortcutComp.setPath(_controller.getElementPath(comp));
-        event_p.setReusedComponent(shortcutComp);
+        event.setReusedComponent(shortcutComp);
       }
 
-    } catch (java.lang.Exception exception_p) {
-      _logger.debug(new EmbeddedMessage(exception_p.getMessage(), IReportManagerDefaultComponents.UI));
-      event_p.setReusedComponent(null);
+    } catch (java.lang.Exception exception) {
+      _logger.debug(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI));
+      event.setReusedComponent(null);
     }
 
   }
@@ -147,313 +148,252 @@ public class LCDecompositionOperations implements DecompositionModelListener {
   /**
    * Detaches an interface from a sub logical component
    * 
-   * @param event_p
+   * @param event
    *          the DecompositionModelEvent
    */
-  private void detachInterface(DecompositionModelEvent event_p) {
+  private void detachInterface(DecompositionModelEvent event) {
     try {
       // Do the necessary if the operation has to be carried out before finish
       _controller.triggerView();
-      event_p.setOperationSuccess(true);
-    } catch (java.lang.Exception exception_p) {
-      _logger.debug(new EmbeddedMessage(exception_p.getMessage(), IReportManagerDefaultComponents.UI));
-      event_p.setOperationSuccess(false);
+      event.setOperationSuccess(true);
+    } catch (java.lang.Exception exception) {
+      _logger.debug(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI));
+      event.setOperationSuccess(false);
     }
   }
 
   /**
    * Attaches an interface to a sub logical component
    * 
-   * @param event_p
+   * @param event
    *          the DecompositionModelEvent
    */
-  private void attachInterface(DecompositionModelEvent event_p) {
+  private void attachInterface(DecompositionModelEvent event) {
     try {
       // Do the necessary if the operation has to be carried out before finish
       _controller.triggerView();
-      event_p.setOperationSuccess(true);
-    } catch (java.lang.Exception exception_p) {
-      _logger.debug(new EmbeddedMessage(exception_p.getMessage(), IReportManagerDefaultComponents.UI));
-      event_p.setOperationSuccess(false);
+      event.setOperationSuccess(true);
+    } catch (java.lang.Exception exception) {
+      _logger.debug(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI));
+      event.setOperationSuccess(false);
     }
   }
 
   /**
    * Adds a new sub logical component
    * 
-   * @param event_p
+   * @param event
    *          the DecompositionModelEvent
    */
-  public void addNewTargetComponent(final DecompositionModelEvent event_p) {
+  public void addNewTargetComponent(final DecompositionModelEvent event) {
     try {
       // Do the necessary if the operation has to be carried out before finish
       _controller.triggerView();
-      event_p.setOperationSuccess(true);
-    } catch (java.lang.Exception exception_p) {
-      _logger.debug(new EmbeddedMessage(exception_p.getMessage(), IReportManagerDefaultComponents.UI));
-      exception_p.printStackTrace();
-      event_p.setOperationSuccess(false);
+      event.setOperationSuccess(true);
+    } catch (java.lang.Exception exception) {
+      _logger.debug(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI));
+      exception.printStackTrace();
+      event.setOperationSuccess(false);
     }
   }
 
   /**
    * Renames a target sub logical component
    * 
-   * @param event_p
+   * @param event
    *          the DecompositionModelEvent
    */
-  private void renameTargetComponent(DecompositionModelEvent event_p) {
+  private void renameTargetComponent(DecompositionModelEvent event) {
     try {
       // Do the necessary if the operation has to be carried out before finish
       _controller.triggerView();
-      event_p.setOperationSuccess(true);
-    } catch (java.lang.Exception exception_p) {
-      _logger.debug(new EmbeddedMessage(exception_p.getMessage(), IReportManagerDefaultComponents.UI));
-      event_p.setOperationSuccess(false);
+      event.setOperationSuccess(true);
+    } catch (java.lang.Exception exception) {
+      _logger.debug(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI));
+      event.setOperationSuccess(false);
     }
   }
 
   /**
    * Removes all sub logical components
    * 
-   * @param event_p
+   * @param event
    *          the DecompositionModelEvent
    */
-  private void removeAllTargetComponents(DecompositionModelEvent event_p) {
+  private void removeAllTargetComponents(DecompositionModelEvent event) {
     try {
       // Do the necessary if the operation has to be carried out before finish
       _controller.triggerView();
-      event_p.setOperationSuccess(true);
-    } catch (java.lang.Exception exception_p) {
-      _logger.debug(new EmbeddedMessage(exception_p.getMessage(), IReportManagerDefaultComponents.UI));
-      event_p.setOperationSuccess(false);
+      event.setOperationSuccess(true);
+    } catch (java.lang.Exception exception) {
+      _logger.debug(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI));
+      event.setOperationSuccess(false);
     }
   }
 
   /**
    * Removes a sub logical component
    * 
-   * @param event_p
+   * @param event
    *          the DecompositionModelEvent
    */
-  private void removeTargetComponent(final DecompositionModelEvent event_p) {
+  private void removeTargetComponent(final DecompositionModelEvent event) {
     try {
       _controller.setUserHasDeletedSubComponent(true);
       _controller.triggerView();
-      event_p.setOperationSuccess(true);
-    } catch (java.lang.Exception exception_p) {
-      _logger.debug(new EmbeddedMessage(exception_p.getMessage(), IReportManagerDefaultComponents.UI));
-      event_p.setOperationSuccess(false);
+      event.setOperationSuccess(true);
+    } catch (java.lang.Exception exception) {
+      _logger.debug(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI));
+      event.setOperationSuccess(false);
     }
   }
 
   /**
    * Adds a new decomposition
    * 
-   * @param event_p
+   * @param event
    *          the DecompositionModelEvent
    */
-  public void addNewDecomposition(DecompositionModelEvent event_p) {
+  public void addNewDecomposition(DecompositionModelEvent event) {
     try {
       // Do the necessary if the operation has to be carried out before finish
       _controller.triggerView();
-      event_p.setOperationSuccess(true);
-    } catch (java.lang.Exception exception_p) {
-      _logger.debug(new EmbeddedMessage(exception_p.getMessage(), IReportManagerDefaultComponents.UI));
-      event_p.setOperationSuccess(false);
+      event.setOperationSuccess(true);
+    } catch (java.lang.Exception exception) {
+      _logger.debug(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI));
+      event.setOperationSuccess(false);
     }
   }
 
   /**
    * Renames a decomposition
    * 
-   * @param event_p
+   * @param event
    *          the DecompositionModelEvent
    */
-  private void renameDecomposition(DecompositionModelEvent event_p) {
+  private void renameDecomposition(DecompositionModelEvent event) {
     try {
       // Do the necessary if the operation has to be carried out before finish
       _controller.triggerView();
-      event_p.setOperationSuccess(true);
-    } catch (java.lang.Exception exception_p) {
-      _logger.debug(new EmbeddedMessage(exception_p.getMessage(), IReportManagerDefaultComponents.UI));
-      event_p.setOperationSuccess(false);
+      event.setOperationSuccess(true);
+    } catch (java.lang.Exception exception) {
+      _logger.debug(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI));
+      event.setOperationSuccess(false);
     }
   }
 
   /**
    * Removes a decomposition
    * 
-   * @param event_p
+   * @param event
    *          the DecompositionModelEvent
    */
-  private void removeDecomposition(DecompositionModelEvent event_p) {
+  private void removeDecomposition(DecompositionModelEvent event) {
     try {
       // Do the necessary if the operation has to be carried out before finish
       _controller.triggerView();
-      event_p.setOperationSuccess(true);
-    } catch (java.lang.Exception exception_p) {
-      _logger.warn(new EmbeddedMessage(exception_p.getMessage(), IReportManagerDefaultComponents.UI));
-      event_p.setOperationSuccess(false);
+      event.setOperationSuccess(true);
+    } catch (java.lang.Exception exception) {
+      _logger.warn(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI));
+      event.setOperationSuccess(false);
     }
   }
 
   /**
    * Removes all decompositions
    * 
-   * @param event_p
+   * @param event
    *          the DecompositionModelEvent
    */
-  private void removeAllDecompositions(DecompositionModelEvent event_p) {
+  private void removeAllDecompositions(DecompositionModelEvent event) {
     try {
       // Do the necessary if the operation has to be carried out before finish
       _controller.triggerView();
-      event_p.setOperationSuccess(true);
-    } catch (java.lang.Exception exception_p) {
-      _logger.debug(new EmbeddedMessage(exception_p.getMessage(), IReportManagerDefaultComponents.UI));
-      event_p.setOperationSuccess(false);
+      event.setOperationSuccess(true);
+    } catch (java.lang.Exception exception) {
+      _logger.debug(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI));
+      event.setOperationSuccess(false);
     }
   }
 
   /**
    * Finishes the decomposition of the Logical Component
    * 
-   * @param event_p
+   * @param event
    *          the DecompositionModelEvent
    */
-  private void finishDecomposition(DecompositionModelEvent event_p) {
+  private void finishDecomposition(DecompositionModelEvent event) {
     try {
-      DecompositionModel model = (DecompositionModel) event_p.getSource();
+      final DecompositionModel model = (DecompositionModel) event.getSource();
       DecompositionComponent sourceComponent = model.getSourceComponent();
       final LogicalComponent sourceLC = (LogicalComponent) sourceComponent.getValue();
       if (model.getDecompositions().size() == 1) {
         addSubLCs(model.getDecompositions().get(0), sourceLC);
       }
 
-      // REMOVE LCs
-      // If the lc to be deleted has only one part
-      // delete both part and LC
-      // if the lc to be deleted has more than one part
-      // delete only part
-      EList<LogicalComponent> subLogicalComponents = sourceLC.getSubLogicalComponents();
-      EList<LogicalComponent> targetLcs = new BasicEList<LogicalComponent>();
-      Decomposition decompositionFirst = model.getDecompositions().get(0);
-      List<DecompositionComponent> targetComponents = decompositionFirst.getTargetComponents();
-      for (DecompositionComponent decompositionComponent : targetComponents) {
-        LogicalComponent lc2 = (LogicalComponent) decompositionComponent.getValue();
-        targetLcs.add(lc2);
+      AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+        public void run() {
+          List<DecompositionComponent> targetComponents = removeLCs(model, sourceLC);
+          removeInterfaces(targetComponents);
+        }
+      };
+
+      TransactionHelper.getExecutionManager(sourceLC).execute(command);
+      event.setOperationSuccess(true);
+    } catch (java.lang.Exception exception) {
+      _logger.debug(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI));
+      exception.printStackTrace();
+      event.setOperationSuccess(false);
+    }
+  }
+
+  // REMOVE Interfaces
+  //
+  private void removeInterfaces(List<DecompositionComponent> targetComponents) {
+    for (DecompositionComponent decompositionComponent : targetComponents) {
+      // map of <Interface , Link>
+      Map<EObject, EObject> usedAndImpInterfaces = new HashMap<EObject, EObject>();
+      // implemented interface
+      EList<InterfaceImplementation> ownedInterfaceImplementations = ((LogicalComponent) decompositionComponent
+          .getValue()).getOwnedInterfaceImplementations();
+      for (InterfaceImplementation interfaceImplementation : ownedInterfaceImplementations) {
+        usedAndImpInterfaces.put(interfaceImplementation, interfaceImplementation.getImplementedInterface());
       }
-      boolean isReused = false;
-      List<LogicalComponent> lcsTORemove = new ArrayList<LogicalComponent>();
-
-      for (LogicalComponent lc1 : subLogicalComponents) {
-        // if lc has more than one abstract type (part)
-        if (lc1.getAbstractTypedElements().size() > 1) {
-          isReused = true;
-        }
-
-        if (!isMultipartDriven(sourceLC)) { // should change to delete part and component option
-          // remove both lc1 and part
-          //
-          if (!targetLcs.contains(lc1) && !isReused) {
-            // remove part
-            List<AbstractTypedElement> abstractTypedElements = lc1.getAbstractTypedElements();
-            for (AbstractTypedElement abstractTypedElement : abstractTypedElements) {
-              abstractTypedElement.destroy();
-            }
-
-            // remove lc1
-            EObject container = lc1.eContainer();
-            if (container instanceof LogicalComponent) {
-              // collect all the logical components which has to be removed
-              lcsTORemove.add(lc1);
-            }
-          }
-          // remove only part : because lc1 is used else were in model
-          //
-          if (!targetLcs.contains(lc1) && isReused) {
-            List<AbstractTypedElement> abstractTypedElements = lc1.getAbstractTypedElements();
-            for (AbstractTypedElement abstractTypedElement : abstractTypedElements) {
-              EObject container = abstractTypedElement.eContainer();
-              if (null != container) {
-                if (container.equals(sourceLC)) {
-                  abstractTypedElement.destroy();
-                }
-              }
-            }
-          }
-
-          // Remove the Logical Component
-          //
-          for (LogicalComponent logicalComponent : lcsTORemove) {
-            EObject container = logicalComponent.eContainer();
-            if (null != container) {
-              if (container instanceof LogicalComponent) {
-                LogicalComponent containerLC = (LogicalComponent) container;
-                containerLC.getOwnedLogicalComponents().remove(logicalComponent);
-              } else if (container instanceof LogicalComponentPkg) {
-                LogicalComponentPkg containerLC = (LogicalComponentPkg) container;
-                containerLC.getOwnedLogicalComponents().remove(logicalComponent);
-              }
-            }
-          }
-
-        } else {
-
-          // remove only part
-          //
-          if (!targetLcs.contains(lc1) && !isReused) {
-            // remove part
-            List<AbstractTypedElement> abstractTypedElements = lc1.getAbstractTypedElements();
-            for (AbstractTypedElement abstractTypedElement : abstractTypedElements) {
-              abstractTypedElement.destroy();
-            }
-          }
-          // remove only part owned by sourceLC
-          if (!targetLcs.contains(lc1) && isReused) {
-            List<AbstractTypedElement> abstractTypedElements = lc1.getAbstractTypedElements();
-            for (AbstractTypedElement abstractTypedElement : abstractTypedElements) {
-              EObject container = abstractTypedElement.eContainer();
-              if (null != container) {
-                if (abstractTypedElement.eContainer().equals(sourceLC)) {
-                  abstractTypedElement.destroy();
-                }
-              }
-            }
-          }
-
-        }
-        isReused = false;
+      // used interface
+      EList<InterfaceUse> ownedInterfaceUses = ((LogicalComponent) decompositionComponent.getValue())
+          .getOwnedInterfaceUses();
+      for (InterfaceUse interfaceUse : ownedInterfaceUses) {
+        usedAndImpInterfaces.put(interfaceUse, interfaceUse.getUsedInterface());
       }
 
-      // REMOVE Interfaces
-      //
-      for (DecompositionComponent decompositionComponent : targetComponents) {
-        // map of <Interface , Link>
-        Map<EObject, EObject> usedAndImpInterfaces = new HashMap<EObject, EObject>();
-        // implemented interface
-        EList<InterfaceImplementation> ownedInterfaceImplementations = ((LogicalComponent) decompositionComponent.getValue()).getOwnedInterfaceImplementations();
-        for (InterfaceImplementation interfaceImplementation : ownedInterfaceImplementations) {
-          usedAndImpInterfaces.put(interfaceImplementation, interfaceImplementation.getImplementedInterface());
+      List<DecompositionItem> items = decompositionComponent.getItems();
+      List<Interface> interfaces = new ArrayList<Interface>();
+      for (DecompositionItem decompositionItem : items) {
+        Object value = decompositionItem.getValue();
+        if (value != null && value instanceof Interface) {
+          interfaces.add((Interface) value);
         }
-        // used interface
-        EList<InterfaceUse> ownedInterfaceUses = ((LogicalComponent) decompositionComponent.getValue()).getOwnedInterfaceUses();
-        for (InterfaceUse interfaceUse : ownedInterfaceUses) {
-          usedAndImpInterfaces.put(interfaceUse, interfaceUse.getUsedInterface());
-        }
-
-        List<DecompositionItem> items = decompositionComponent.getItems();
-        List<Interface> interfaces = new ArrayList<Interface>();
-        for (DecompositionItem decompositionItem : items) {
-          Object value = decompositionItem.getValue();
-          if (value != null && value instanceof Interface) {
-            interfaces.add((Interface) value);
+      }
+      // if no children interface left in parent 'decompositionComponent'
+      if ((items == null) || items.isEmpty()) {
+        // delete all
+        for (EObject eObject : usedAndImpInterfaces.keySet()) {
+          Object valueme = decompositionComponent.getValue();
+          // delete the interface link from lc
+          if (valueme instanceof LogicalComponent) {
+            LogicalComponent lc = (LogicalComponent) valueme;
+            if (eObject instanceof InterfaceUse) {
+              lc.getOwnedInterfaceUses().remove(eObject);
+            }
+            if (eObject instanceof InterfaceImplementation) {
+              lc.getOwnedInterfaceImplementations().remove(eObject);
+            }
           }
         }
-        // if no children interface left in parent 'decompositionComponent'
-        if ((items == null) || items.isEmpty()) {
-          // delete all
-          for (EObject eObject : usedAndImpInterfaces.keySet()) {
+      } else {
+        // delete if not in wizard
+        for (EObject eObject : usedAndImpInterfaces.keySet()) {
+          if (!interfaces.contains(usedAndImpInterfaces.get(eObject))) {
             Object valueme = decompositionComponent.getValue();
             // delete the interface link from lc
             if (valueme instanceof LogicalComponent) {
@@ -466,73 +406,150 @@ public class LCDecompositionOperations implements DecompositionModelListener {
               }
             }
           }
-        } else {
-          // delete if not in wizard
-          for (EObject eObject : usedAndImpInterfaces.keySet()) {
-            if (!interfaces.contains(usedAndImpInterfaces.get(eObject))) {
-              Object valueme = decompositionComponent.getValue();
-              // delete the interface link from lc
-              if (valueme instanceof LogicalComponent) {
-                LogicalComponent lc = (LogicalComponent) valueme;
-                if (eObject instanceof InterfaceUse) {
-                  lc.getOwnedInterfaceUses().remove(eObject);
-                }
-                if (eObject instanceof InterfaceImplementation) {
-                  lc.getOwnedInterfaceImplementations().remove(eObject);
-                }
+        }
+      }
+    }
+  }
+
+  // REMOVE LCs
+  // If the lc to be deleted has only one part
+  // delete both part and LC
+  // if the lc to be deleted has more than one part
+  // delete only part
+  private List<DecompositionComponent> removeLCs(DecompositionModel model, final LogicalComponent sourceLC) {
+    EList<LogicalComponent> subLogicalComponents = sourceLC.getSubLogicalComponents();
+    EList<LogicalComponent> targetLcs = new BasicEList<LogicalComponent>();
+    Decomposition decompositionFirst = model.getDecompositions().get(0);
+    List<DecompositionComponent> targetComponents = decompositionFirst.getTargetComponents();
+    for (DecompositionComponent decompositionComponent : targetComponents) {
+      LogicalComponent lc2 = (LogicalComponent) decompositionComponent.getValue();
+      targetLcs.add(lc2);
+    }
+    boolean isReused = false;
+    List<LogicalComponent> lcsTORemove = new ArrayList<LogicalComponent>();
+
+    for (LogicalComponent lc1 : subLogicalComponents) {
+      // if lc has more than one abstract type (part)
+      if (lc1.getAbstractTypedElements().size() > 1) {
+        isReused = true;
+      }
+
+      if (!isMultipartDriven(sourceLC)) { // should change to delete part and component option
+        // remove both lc1 and part
+        //
+        if (!targetLcs.contains(lc1) && !isReused) {
+          // remove part
+          List<AbstractTypedElement> abstractTypedElements = lc1.getAbstractTypedElements();
+          for (AbstractTypedElement abstractTypedElement : abstractTypedElements) {
+            abstractTypedElement.destroy();
+          }
+
+          // remove lc1
+          EObject container = lc1.eContainer();
+          if (container instanceof LogicalComponent) {
+            // collect all the logical components which has to be removed
+            lcsTORemove.add(lc1);
+          }
+        }
+        // remove only part : because lc1 is used else were in model
+        //
+        if (!targetLcs.contains(lc1) && isReused) {
+          List<AbstractTypedElement> abstractTypedElements = lc1.getAbstractTypedElements();
+          for (AbstractTypedElement abstractTypedElement : abstractTypedElements) {
+            EObject container = abstractTypedElement.eContainer();
+            if (null != container) {
+              if (container.equals(sourceLC)) {
+                abstractTypedElement.destroy();
               }
             }
           }
         }
-      }
 
-      event_p.setOperationSuccess(true);
-    } catch (java.lang.Exception exception_p) {
-      _logger.debug(new EmbeddedMessage(exception_p.getMessage(), IReportManagerDefaultComponents.UI));
-      exception_p.printStackTrace();
-      event_p.setOperationSuccess(false);
+        // Remove the Logical Component
+        //
+        for (LogicalComponent logicalComponent : lcsTORemove) {
+          EObject container = logicalComponent.eContainer();
+          if (null != container) {
+            if (container instanceof LogicalComponent) {
+              LogicalComponent containerLC = (LogicalComponent) container;
+              containerLC.getOwnedLogicalComponents().remove(logicalComponent);
+            } else if (container instanceof LogicalComponentPkg) {
+              LogicalComponentPkg containerLC = (LogicalComponentPkg) container;
+              containerLC.getOwnedLogicalComponents().remove(logicalComponent);
+            }
+          }
+        }
+
+      } else {
+
+        // remove only part
+        //
+        if (!targetLcs.contains(lc1) && !isReused) {
+          // remove part
+          List<AbstractTypedElement> abstractTypedElements = lc1.getAbstractTypedElements();
+          for (AbstractTypedElement abstractTypedElement : abstractTypedElements) {
+            abstractTypedElement.destroy();
+          }
+        }
+        // remove only part owned by sourceLC
+        if (!targetLcs.contains(lc1) && isReused) {
+          List<AbstractTypedElement> abstractTypedElements = lc1.getAbstractTypedElements();
+          for (AbstractTypedElement abstractTypedElement : abstractTypedElements) {
+            EObject container = abstractTypedElement.eContainer();
+            if (null != container) {
+              if (abstractTypedElement.eContainer().equals(sourceLC)) {
+                abstractTypedElement.destroy();
+              }
+            }
+          }
+        }
+
+      }
+      isReused = false;
     }
+    return targetComponents;
   }
 
   /**
    * Adds sub lcs to the source logical component (In case of single decomposition)
    * 
-   * @param decomposition_p
+   * @param decomposition
    *          the Decomposition
-   * @param sourceComponent_p
+   * @param sourceComponent
    *          the source LC
    */
-  private void addSubLCs(final Decomposition decomposition_p, final LogicalComponent sourceComponent_p) {
+  private void addSubLCs(final Decomposition decomposition, final LogicalComponent sourceComponent) {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       public void run() {
-        addTargetComponents(decomposition_p, sourceComponent_p, null, false);
+        addTargetComponents(decomposition, sourceComponent, null, false);
       }
 
       @Override
       public String getName() {
-        return sourceComponent_p.getName();
+        return sourceComponent.getName();
       }
     };
-    TransactionHelper.getExecutionManager(sourceComponent_p).execute(command);
+    TransactionHelper.getExecutionManager(sourceComponent).execute(command);
   }
 
   /**
    * Adds LC Decompositions to the source logical component (In case of multiple decomposition)
    * 
-   * @param decompositions_p
+   * @param decompositions
    *          the list of decompositions
-   * @param sourceComponent_p
+   * @param sourceComponent
    *          the source component
    */
   @SuppressWarnings("unused")
-  private void addLCDcmpsToLogicalComponent(final List<Decomposition> decompositions_p, final LogicalComponent sourceComponent_p) {
+  private void addLCDcmpsToLogicalComponent(final List<Decomposition> decompositions,
+      final LogicalComponent sourceComponent) {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       public void run() {
-        List<LogicalComponent> ll = sourceComponent_p.getSubLogicalComponents();
+        List<LogicalComponent> ll = sourceComponent.getSubLogicalComponents();
 
-        sourceComponent_p.getSubLogicalComponents().remove(ll);
+        sourceComponent.getSubLogicalComponents().remove(ll);
 
-        for (Decomposition decomp : decompositions_p) {
+        for (Decomposition decomp : decompositions) {
           Object value = decomp.getValue();
           LogicalArchitecture arch = null;
 
@@ -544,74 +561,77 @@ public class LCDecompositionOperations implements DecompositionModelListener {
           }
           arch.setName(decomp.getName());// in case of rename
 
-          if (!sourceComponent_p.getOwnedLogicalArchitectures().contains(arch)) {
-            sourceComponent_p.getOwnedLogicalArchitectures().add(arch);
+          if (!sourceComponent.getOwnedLogicalArchitectures().contains(arch)) {
+            sourceComponent.getOwnedLogicalArchitectures().add(arch);
           }
 
           // add all the target components
           addTargetComponents(decomp, null, arch, true);
         }
         // removes the decompositions removed from the view
-        sourceComponent_p.getOwnedLogicalArchitectures().remove(getRemovedDecompositions(sourceComponent_p, decompositions_p));
+        sourceComponent.getOwnedLogicalArchitectures()
+            .remove(getRemovedDecompositions(sourceComponent, decompositions));
 
-        moveAbstractCapabilityPkg(sourceComponent_p.getOwnedLogicalArchitectures().get(0), sourceComponent_p.getOwnedAbstractCapabilityPkg());
+        moveAbstractCapabilityPkg(sourceComponent.getOwnedLogicalArchitectures().get(0),
+            sourceComponent.getOwnedAbstractCapabilityPkg());
 
-        sourceComponent_p.setOwnedAbstractCapabilityPkg(null);
+        sourceComponent.setOwnedAbstractCapabilityPkg(null);
       }
 
       @Override
       public String getName() {
-        return sourceComponent_p.getName();
+        return sourceComponent.getName();
       }
     };
-    TransactionHelper.getExecutionManager(sourceComponent_p).execute(command);
+    TransactionHelper.getExecutionManager(sourceComponent).execute(command);
   }
 
   /**
    * Moving an AspectPkg to LogicalArchitecture
    * 
-   * @param arch_p
+   * @param arch
    *          the logical architecture
-   * @param aspectPkg_p
+   * @param aspectPkg
    *          the aspect package
    */
-  void moveAbstractCapabilityPkg(LogicalArchitecture arch_p, AbstractCapabilityPkg aspectPkg_p) {
-    if ((null == arch_p) || (null == aspectPkg_p)) {
+  void moveAbstractCapabilityPkg(LogicalArchitecture arch, AbstractCapabilityPkg aspectPkg) {
+    if ((null == arch) || (null == aspectPkg)) {
       return;
     }
-    arch_p.setOwnedAbstractCapabilityPkg(aspectPkg_p);
+    arch.setOwnedAbstractCapabilityPkg(aspectPkg);
   }
 
   /**
    * Moving an AspectPkg to LogicalComponent
    * 
-   * @param cpnt_p
+   * @param cpnt
    *          the logical component
-   * @param aspectPkg_p
+   * @param aspectPkg
    *          the aspect package
    */
-  void moveAbstractCapabilityPkg(LogicalComponent cpnt_p, AbstractCapabilityPkg aspectPkg_p) {
-    if ((null == cpnt_p) || (null == aspectPkg_p)) {
+  void moveAbstractCapabilityPkg(LogicalComponent cpnt, AbstractCapabilityPkg aspectPkg) {
+    if ((null == cpnt) || (null == aspectPkg)) {
       return;
     }
-    cpnt_p.setOwnedAbstractCapabilityPkg(aspectPkg_p);
+    cpnt.setOwnedAbstractCapabilityPkg(aspectPkg);
   }
 
   /**
    * Adds Target Components for a decomposition either subLCs or LCs to alternative decomposition.
    * 
-   * @param decomposition_p
+   * @param decomposition
    *          the decomposition
-   * @param sourceComponent_p
+   * @param sourceComponent
    *          the Source LogicalComponent to add subLCs (in case of single level decomposition)
-   * @param logArch_p
+   * @param logArch
    *          the LogicalArchitecture (in case of multi level decomposition)
-   * @param isAlternateDecomposition_p
+   * @param isAlternateDecomposition
    *          flag to indicate whether it is single level or multi level decomposition
    */
-  void addTargetComponents(Decomposition decomposition_p, LogicalComponent sourceComponent_p, LogicalArchitecture logArch_p, boolean isAlternateDecomposition_p) {
+  void addTargetComponents(Decomposition decomposition, LogicalComponent sourceComponent, LogicalArchitecture logArch,
+      boolean isAlternateDecomposition) {
 
-    for (DecompositionComponent comp : decomposition_p.getTargetComponents()) {
+    for (DecompositionComponent comp : decomposition.getTargetComponents()) {
       // do the REUSE SHORTCUT HERE
       if (comp.isReusedComponent()) {
         LogicalComponent value = (LogicalComponent) comp.getValue();
@@ -619,11 +639,11 @@ public class LCDecompositionOperations implements DecompositionModelListener {
         LogicalComponent target = (LogicalComponent) comp.getReusedTarget();
         if (comp.isTrigger()) {
           if (null != value) {
-            addComponentInstanceToLC2(sourceComponent_p, value, comp, true);
+            addComponentInstanceToLC2(sourceComponent, value, comp, true);
           }
         } else {
           if (null != value) {
-            addComponentInstanceToLC2(sourceComponent_p, value, comp, false);
+            addComponentInstanceToLC2(sourceComponent, value, comp, false);
           }
         }
       } else {
@@ -643,12 +663,12 @@ public class LCDecompositionOperations implements DecompositionModelListener {
           }
         }
 
-        if (!isAlternateDecomposition_p) {
-          // if lc is not in a breakdown structure of sourceComponent_p
-          if (!sourceComponent_p.getSubLogicalComponents().contains(lc)) {
-            // add lc in breakdown structure of sourceComponent_p
-            addComponentInstanceToLC(sourceComponent_p, lc);
-            sourceComponent_p.getOwnedLogicalComponents().add(lc);
+        if (!isAlternateDecomposition) {
+          // if lc is not in a breakdown structure of sourceComponent
+          if (!sourceComponent.getSubLogicalComponents().contains(lc)) {
+            // add lc in breakdown structure of sourceComponent
+            addComponentInstanceToLC(sourceComponent, lc);
+            sourceComponent.getOwnedLogicalComponents().add(lc);
           }
         }
         List<DecompositionItem> interfaceItems = new ArrayList<DecompositionItem>();
@@ -692,8 +712,8 @@ public class LCDecompositionOperations implements DecompositionModelListener {
       CapellaElementExt.creationService(clone);
     }
     for (CommunicationLink link : toBeRemoved) {
-      new CapellaDeleteCommand(ExecutionManagerRegistry.getInstance().getExecutionManager(TransactionHelper.getEditingDomain(link)), Collections.singleton(link), true, false,
-          false).execute();
+      new CapellaDeleteCommand(ExecutionManagerRegistry.getInstance().getExecutionManager(
+          TransactionHelper.getEditingDomain(link)), Collections.singleton(link), true, false, false).execute();
     }
   }
 
@@ -713,7 +733,8 @@ public class LCDecompositionOperations implements DecompositionModelListener {
     }
   }
 
-  private void updateExchangeItems(DecompositionItem itemItf, List<ExchangeItemAllocation> operationsAvailable, Interface itf) {
+  private void updateExchangeItems(DecompositionItem itemItf, List<ExchangeItemAllocation> operationsAvailable,
+      Interface itf) {
     for (DecompositionItemService itemSce : itemItf.getServiceItems()) {
       ExchangeItemAllocation opOrigin = null, opCopy = null;
       ExchangeItemAllocation op = (ExchangeItemAllocation) itemSce.getValue();
@@ -727,7 +748,8 @@ public class LCDecompositionOperations implements DecompositionModelListener {
       } else {
         // Case : Operation already exist in Interface - Get origin Operation with traceability link
         opCopy = op;
-        List<CapellaElement> listMelo = RefinementLinkExt.getRefinementRelatedTargetElements(opCopy, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION);
+        List<CapellaElement> listMelo = RefinementLinkExt.getRefinementRelatedTargetElements(opCopy,
+            CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION);
         if (listMelo.size() != 0) {
           opOrigin = (ExchangeItemAllocation) listMelo.get(0);
         } else if (!isRefinementTraceExist(opCopy)) {
@@ -751,9 +773,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
     return false;
   }
 
-  private boolean isRefinementTraceExist(TraceableElement from_p, TraceableElement to_p) {
-    for (AbstractTrace lnk : to_p.getIncomingTraces()) {
-      if ((lnk instanceof RefinementLink) && lnk.getSourceElement().equals(from_p)) {
+  private boolean isRefinementTraceExist(TraceableElement from, TraceableElement to) {
+    for (AbstractTrace lnk : to.getIncomingTraces()) {
+      if ((lnk instanceof RefinementLink) && lnk.getSourceElement().equals(from)) {
         return true;
       }
     }
@@ -811,11 +833,11 @@ public class LCDecompositionOperations implements DecompositionModelListener {
     }
   }
 
-  private void updateExchangeItemProperties(ExchangeItemAllocation opCopy_p, ExchangeItemAllocation opOrigin_p) {
-    opCopy_p.setName(opOrigin_p.getName());
-    cloneNotes(opOrigin_p, opCopy_p);
-    opCopy_p.setReceiveProtocol(opOrigin_p.getReceiveProtocol());
-    opCopy_p.setSendProtocol(opOrigin_p.getSendProtocol());
+  private void updateExchangeItemProperties(ExchangeItemAllocation opCopy, ExchangeItemAllocation opOrigin) {
+    opCopy.setName(opOrigin.getName());
+    cloneNotes(opOrigin, opCopy);
+    opCopy.setReceiveProtocol(opOrigin.getReceiveProtocol());
+    opCopy.setSendProtocol(opOrigin.getSendProtocol());
   }
 
   /**
@@ -834,76 +856,77 @@ public class LCDecompositionOperations implements DecompositionModelListener {
   /**
    * Creates and adds a ComponentInstance to the AbstractLogicalComponent
    * 
-   * @param component_p
+   * @param component
    *          the {@link AbstractLogicalComponent} (either {@link LogicalComponent} or {@link LogicalComponentShortcut}
    */
-  void addComponentInstanceToLC(LogicalComponent component_p) {
+  void addComponentInstanceToLC(LogicalComponent component) {
     // Builds the component instance and attaches it to its package.
-    Part instance = CsFactory.eINSTANCE.createPart(component_p.getName());
+    Part instance = CsFactory.eINSTANCE.createPart(component.getName());
     // ownedpartition replaced by ownedfeature
-    component_p.getOwnedFeatures().add(instance);
-    instance.setAbstractType(component_p);
+    component.getOwnedFeatures().add(instance);
+    instance.setAbstractType(component);
   }
 
   /**
    * Creates and adds a ComponentInstance to the AbstractLogicalComponent
    * 
-   * @param component_p
+   * @param component
    *          the {@link AbstractLogicalComponent} (either {@link LogicalComponent} or {@link LogicalComponentShortcut}
    */
-  void addComponentInstanceToLC(LogicalComponent parent, LogicalComponent component_p) {
+  void addComponentInstanceToLC(LogicalComponent parent, LogicalComponent component) {
     // Builds the component instance and attaches it to its package.
-    Part instance = CsFactory.eINSTANCE.createPart(component_p.getName());
+    Part instance = CsFactory.eINSTANCE.createPart(component.getName());
     parent.getOwnedFeatures().add(instance);
-    instance.setAbstractType(component_p);
+    instance.setAbstractType(component);
   }
 
   /**
    * Creates and adds a ComponentInstance to the AbstractLogicalComponent
    * 
-   * @param component_p
+   * @param component
    *          the {@link AbstractLogicalComponent} (either {@link LogicalComponent} or {@link LogicalComponentShortcut}
    */
-  void addComponentInstanceToLC2(LogicalComponent parent, LogicalComponent component_p, DecompositionComponent comp, boolean compName) {
+  void addComponentInstanceToLC2(LogicalComponent parent, LogicalComponent component, DecompositionComponent comp,
+      boolean compName) {
     // Builds the component instance and attaches it to its package.
 
     Part partInstance = null;
-    if ((component_p.getAbstractTypedElements() != null) && !component_p.getAbstractTypedElements().isEmpty()) {
+    if ((component.getAbstractTypedElements() != null) && !component.getAbstractTypedElements().isEmpty()) {
       if (compName) {
         partInstance = CsFactory.eINSTANCE.createPart(comp.getName());
-        EList<AbstractTypedElement> abstractTypedElements = component_p.getAbstractTypedElements();
+        EList<AbstractTypedElement> abstractTypedElements = component.getAbstractTypedElements();
         for (AbstractTypedElement abstractTypedElement : abstractTypedElements) {
           abstractTypedElement.setName(comp.getName());
         }
       } else {
-        partInstance = CsFactory.eINSTANCE.createPart(component_p.getAbstractTypedElements().get(0).getName());
+        partInstance = CsFactory.eINSTANCE.createPart(component.getAbstractTypedElements().get(0).getName());
       }
     } else {
       if (compName) {
         partInstance = CsFactory.eINSTANCE.createPart(comp.getName());
       } else {
-        partInstance = CsFactory.eINSTANCE.createPart(component_p.getName());
+        partInstance = CsFactory.eINSTANCE.createPart(component.getName());
       }
     }
 
     parent.getOwnedFeatures().add(partInstance);
-    partInstance.setAbstractType(component_p);
+    partInstance.setAbstractType(component);
   }
 
   /**
    * Gets the list of target components removed in case of single decomposition
    * 
-   * @param sourceComp_p
+   * @param sourceComp
    *          the source component
-   * @param decomposition_p
+   * @param decomposition
    *          the decomposition
    * @return list of removed target SubLCs
    */
-  List<LogicalComponent> getRemovedTargetComponents(LogicalComponent sourceComp_p, Decomposition decomposition_p) {
+  List<LogicalComponent> getRemovedTargetComponents(LogicalComponent sourceComp, Decomposition decomposition) {
     List<LogicalComponent> removedComponents = new ArrayList<LogicalComponent>(1);
-    for (LogicalComponent lc : sourceComp_p.getSubLogicalComponents()) {
+    for (LogicalComponent lc : sourceComp.getSubLogicalComponents()) {
       boolean flag = true;
-      for (DecompositionComponent comp : decomposition_p.getTargetComponents()) {
+      for (DecompositionComponent comp : decomposition.getTargetComponents()) {
         Object obj = comp.getValue();
         if ((obj != null) && obj.equals(lc)) {
           flag = false;
@@ -920,17 +943,17 @@ public class LCDecompositionOperations implements DecompositionModelListener {
   /**
    * Gets the list of LogicalArchitectures removed from the model
    * 
-   * @param sourceComp_p
+   * @param sourceComp
    *          the source LC
-   * @param decompositions_p
+   * @param decompositions
    *          list of decompositions in the model
    * @return the list of removed LogicalArchitectures
    */
-  List<LogicalArchitecture> getRemovedDecompositions(LogicalComponent sourceComp_p, List<Decomposition> decompositions_p) {
+  List<LogicalArchitecture> getRemovedDecompositions(LogicalComponent sourceComp, List<Decomposition> decompositions) {
     List<LogicalArchitecture> removedComponents = new ArrayList<LogicalArchitecture>(1);
-    for (LogicalArchitecture arch : sourceComp_p.getOwnedLogicalArchitectures()) {
+    for (LogicalArchitecture arch : sourceComp.getOwnedLogicalArchitectures()) {
       boolean flag = true;
-      for (Decomposition decomp : decompositions_p) {
+      for (Decomposition decomp : decompositions) {
         if ((decomp.getValue() != null) && decomp.getValue().equals(arch)) {
           flag = false;
           break;
@@ -946,15 +969,15 @@ public class LCDecompositionOperations implements DecompositionModelListener {
   /**
    * Gets the list of LCs removed from the model (but available with the LogicalArchitecture).
    * 
-   * @param decomposition_p
+   * @param decomposition
    *          the decomposition
    * @return list of LCs removed
    */
-  List<LogicalComponent> getRemovedLCsFromDecomposition(Decomposition decomposition_p) {
+  List<LogicalComponent> getRemovedLCsFromDecomposition(Decomposition decomposition) {
     List<LogicalComponent> removedComponents = new ArrayList<LogicalComponent>(1);
-    LogicalArchitecture logArch = (LogicalArchitecture) decomposition_p.getValue();
+    LogicalArchitecture logArch = (LogicalArchitecture) decomposition.getValue();
     boolean flag = true;
-    for (DecompositionComponent comp : decomposition_p.getTargetComponents()) {
+    for (DecompositionComponent comp : decomposition.getTargetComponents()) {
       Object obj = comp.getValue();
       if ((obj != null) && obj.equals(logArch.getOwnedLogicalComponent())) {
         flag = false;
@@ -1059,26 +1082,26 @@ public class LCDecompositionOperations implements DecompositionModelListener {
   /*
    * Remove Internal Interface when all owned Operation is delegated kind
    */
-  private void cleanInternalInterface(Interface interface_p, boolean cleanAll_p) {
+  private void cleanInternalInterface(Interface anInterface, boolean cleanAll) {
     // Check if the Interface is internal (Refinement link toward Package)
-    if (RefinementLinkExt.getRefinementRelatedTargetElements(interface_p, CsPackage.Literals.INTERFACE).size() != 0) {
+    if (RefinementLinkExt.getRefinementRelatedTargetElements(anInterface, CsPackage.Literals.INTERFACE).size() != 0) {
       ArrayList<ExchangeItemAllocation> listOpToRemove = new ArrayList<ExchangeItemAllocation>();
-      for (ExchangeItemAllocation currentOp : interface_p.getOwnedExchangeItemAllocations()) {
-        if (cleanAll_p || isRefinementTraceExist(currentOp)) {
+      for (ExchangeItemAllocation currentOp : anInterface.getOwnedExchangeItemAllocations()) {
+        if (cleanAll || isRefinementTraceExist(currentOp)) {
           listOpToRemove.add(currentOp);
         }
       }
       for (ExchangeItemAllocation operation : listOpToRemove) {
         // Remove traceability link and Operation
         CapellaElementExt.cleanTraces(operation);
-        interface_p.getOwnedExchangeItemAllocations().remove(operation);
+        anInterface.getOwnedExchangeItemAllocations().remove(operation);
       }
 
-      if (cleanAll_p || (interface_p.getOwnedExchangeItemAllocations().size() == 0)) {
+      if (cleanAll || (anInterface.getOwnedExchangeItemAllocations().size() == 0)) {
         // Internal Interface is empty : Remove it
-        CapellaElementExt.cleanTraces(interface_p);
-        InterfacePkg pkg = (InterfacePkg) interface_p.eContainer();
-        pkg.getOwnedInterfaces().remove(interface_p);
+        CapellaElementExt.cleanTraces(anInterface);
+        InterfacePkg pkg = (InterfacePkg) anInterface.eContainer();
+        pkg.getOwnedInterfaces().remove(anInterface);
       }
     }
   }
@@ -1122,14 +1145,14 @@ public class LCDecompositionOperations implements DecompositionModelListener {
   }
 
   /**
-   * @param controller_p
+   * @param controller
    *          the controller to set
    */
-  public void setController(LCDecompositionController controller_p) {
-    _controller = controller_p;
+  public void setController(LCDecompositionController controller) {
+    _controller = controller;
   }
 
-  private boolean isMultipartDriven(ModelElement element_p) {
-    return TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(element_p));
+  private boolean isMultipartDriven(ModelElement element) {
+    return TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(element));
   }
 }
