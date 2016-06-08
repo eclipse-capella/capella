@@ -42,6 +42,8 @@ public interface IMappingNameConstants {
   String MSM_DOACTIVITY_MAPPING_NAME = "MSM_DoActivity"; //$NON-NLS-1$
   String MSM_ENTRY_MAPPING_NAME = "MSM_Entry"; //$NON-NLS-1$
   String MSM_EXIT_MAPPING_NAME = "MSM_Exit"; //$NON-NLS-1$
+  String HIDE_REGION_NAMES = "HideRegionNames";//$NON-NLS-1$
+  String DISPLAY_REGION_NAME_ON_ENTRY_EXIT_POINTS = "DisplayRegionNameOnEntryExitPoints";//$NON-NLS-1$
   
   /**
    * Entity Architecture
