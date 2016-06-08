@@ -12,6 +12,7 @@ Export-Package: org.polarsys.capella.core.data.capellamodeller.provider,
  org.polarsys.capella.core.data.gen.edit.decorators,
  org.polarsys.capella.core.data.information.communication.provider,
  org.polarsys.capella.core.data.information.provider,
+ org.polarsys.capella.core.data.interaction.provider,
  org.polarsys.capella.core.data.la.provider,
  org.polarsys.capella.core.data.oa.provider,
  org.polarsys.capella.core.data.pa.provider

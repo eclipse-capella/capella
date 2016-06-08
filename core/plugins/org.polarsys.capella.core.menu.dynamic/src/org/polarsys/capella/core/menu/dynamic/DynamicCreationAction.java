@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,14 +20,18 @@ import java.util.TreeSet;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.IChangeNotifier;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ItemProviderDecorator;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -329,8 +333,15 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    * @return
    */
   protected ItemProviderAdapter getItemProvider(EObject object) {
-    return (ItemProviderAdapter) CapellaAdapterFactoryProvider.getInstance().getAdapterFactory()
-        .adapt(object, IItemLabelProvider.class);
+    AdapterFactory adapterFactory = CapellaAdapterFactoryProvider.getInstance().getAdapterFactory();
+    Adapter adapter = adapterFactory.adapt(object, IItemLabelProvider.class);
+    if (adapter instanceof ItemProviderDecorator) {
+      IChangeNotifier notifier = ((ItemProviderDecorator) adapter).getDecoratedItemProvider();
+      if (notifier instanceof ItemProviderAdapter) {
+        return (ItemProviderAdapter) notifier;
+      }
+    }
+    return (ItemProviderAdapter) adapter;
   }
 
   /**
