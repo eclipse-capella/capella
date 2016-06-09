@@ -24,8 +24,10 @@ import org.polarsys.capella.test.semantic.queries.ju.testcases.AbstractFunction_
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AvailableForTypeClassExistTest;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaElement_applied_property_value_groups;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaElement_applied_property_values;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.EntryExitPoint_ParentRegionTest;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PropertyValueGroup_applying_valued_element;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PropertyValue_applying_valued_element;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.State_OwnedEntryExitPointsTest;
 
 public class SemanticQueriesTestSuite extends BasicTestSuite {
 
@@ -40,6 +42,8 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new CapellaElement_applied_property_values());
     tests.add(new PropertyValue_applying_valued_element());
     tests.add(new PropertyValueGroup_applying_valued_element());
+    tests.add(new EntryExitPoint_ParentRegionTest());
+    tests.add(new State_OwnedEntryExitPointsTest());
     return tests;
   }
   
