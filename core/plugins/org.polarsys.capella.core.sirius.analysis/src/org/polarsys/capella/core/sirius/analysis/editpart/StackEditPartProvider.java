@@ -17,9 +17,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 import org.polarsys.capella.core.data.capellacommon.Region;
-import org.polarsys.capella.core.data.capellacommon.State;
 
 /**
  * Specific Edit Part Provider for regions
@@ -43,13 +41,6 @@ public class StackEditPartProvider extends AbstractEditPartProvider {
         if (String.valueOf(DNodeContainerViewNodeContainerCompartment2EditPart.VISUAL_ID).equals(type)) {
           return StackCompartment2EditPart.class;
 
-        }
-
-      } else if (resolvedSemanticElement != null && resolvedSemanticElement instanceof DNodeContainer
-          && ((DNodeContainer) resolvedSemanticElement).getTarget() instanceof State) {
-
-        if (String.valueOf(DNodeContainerViewNodeContainerCompartmentEditPart.VISUAL_ID).equals(type)) {
-          return StackCompartmentEditPart.class;
         }
 
       }
