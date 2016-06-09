@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.queries;singleton:=true
-Bundle-Version: 1.0.2.qualifier
+Bundle-Version: 1.0.3.qualifier
 Bundle-Activator: org.polarsys.capella.common.queries.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.apache.commons.lang,
@@ -10,7 +10,7 @@ Require-Bundle: org.apache.commons.lang,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore,
  org.polarsys.capella.common.tools.report
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.queries,
  org.polarsys.capella.common.queries.debug,
