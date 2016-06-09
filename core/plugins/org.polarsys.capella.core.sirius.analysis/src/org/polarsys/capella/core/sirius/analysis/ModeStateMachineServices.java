@@ -207,7 +207,11 @@ public class ModeStateMachineServices {
             .size() != 0))) {
       return false;
     }
-
+    
+    //self connecting transition
+    if (source.equals(target) && !(source instanceof Pseudostate)) {
+      return true;
+    }
     if (EcoreUtil.isAncestor(source, target) || EcoreUtil.isAncestor(target, source)) {
       return false;
     }
