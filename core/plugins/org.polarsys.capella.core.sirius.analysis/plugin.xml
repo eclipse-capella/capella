@@ -198,6 +198,17 @@
         </Priority>
      </editpartProvider>
   </extension>
+  
+  <extension
+        point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+     <editpartProvider
+           class="org.polarsys.capella.core.sirius.analysis.editpart.StackEditPartProvider">
+        <Priority
+              name="Highest">
+        </Priority>
+     </editpartProvider>
+  </extension>
+  
  <extension
        point="org.eclipse.ui.menus">
     <menuContribution
