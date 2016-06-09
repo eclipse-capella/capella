@@ -306,7 +306,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      */
     // private HoldingResource _holdingResource;
 
-    List<IEditingDomainListener> _editingDomainListeners = null;
+    List<IEditingDomainListener> editingDomainListeners = null;
 
     /**
      * Constructor.
@@ -375,16 +375,19 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
     }
 
     private List<IEditingDomainListener> getEditingDomainListeners() {
-      if (null == _editingDomainListeners) {
-        _editingDomainListeners = new ArrayList<IEditingDomainListener>();
+      if (null == editingDomainListeners) {
+        editingDomainListeners = new ArrayList<IEditingDomainListener>();
         IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(
             "org.polarsys.capella.common.ef", "editingDomainListener");
         for (IConfigurationElement configurationElement : configurationElements) {
-          _editingDomainListeners.add((IEditingDomainListener) ExtensionPointHelper.createInstance(
-              configurationElement, "class"));
+          IEditingDomainListener instance = (IEditingDomainListener) ExtensionPointHelper.createInstance(
+              configurationElement, "class");
+          if(instance != null){
+            editingDomainListeners.add(instance);            
+          }
         }
       }
-      return _editingDomainListeners;
+      return editingDomainListeners;
     }
 
     /**
@@ -488,21 +491,21 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
     /**
      * Editing domain.
      */
-    private EditingDomain _editingDomain;
+    private EditingDomain editingDomain;
     
     /**
      * General purpose cross referencer.
      */
-    private SemanticCrossReferencer _crossReferencer;
+    private SemanticCrossReferencer crossReferencer;
     /**
      * Data notifier.
      */
-    private DataNotifier _dataNotifier;
+    private DataNotifier dataNotifier;
     /**
      * Is loading a resource ?
      */
-    private volatile int _ResourcesLoading = 0;
-    private volatile boolean _ForceResourcesLoading = false;
+    private volatile int resourcesLoading = 0;
+    private volatile boolean forceResourcesLoading = false;
 
     /**
      * Constructor.
@@ -518,12 +521,12 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
       // Also load general purpose cross referencer.
       loadCrossReferencers(getEditingDomain());
       // Add general cross referencing cross referencer.
-      if (null != _crossReferencer) {
-        eAdapters().add(_crossReferencer);
+      if (null != crossReferencer) {
+        eAdapters().add(crossReferencer);
       }
       // Add the famous and useful data notifier.
-      _dataNotifier = new DataNotifier(getEditingDomain());
-      eAdapters().add(_dataNotifier);
+      dataNotifier = new DataNotifier(getEditingDomain());
+      eAdapters().add(dataNotifier);
     }
 
     /**
@@ -532,13 +535,13 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
     @Override
     public Resource getResource(URI uri, boolean loadOnDemand) {
       if (loadOnDemand) {
-        _ResourcesLoading++;
+        resourcesLoading++;
       }
       try {
         return super.getResource(uri, loadOnDemand);
       } finally {
         if (loadOnDemand) {
-          _ResourcesLoading--;
+          resourcesLoading--;
         }
       }
     }
@@ -549,7 +552,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * @return
      */
     protected SemanticCrossReferencer getCrossReferencer() {
-      return _crossReferencer;
+      return crossReferencer;
     }
 
     /**
@@ -558,7 +561,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * @return the dataNotifier
      */
     DataNotifier getDataNotifier() {
-      return _dataNotifier;
+      return dataNotifier;
     }
 
     /**
@@ -566,7 +569,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * @see org.eclipse.emf.edit.domain.IEditingDomainProvider#getEditingDomain()
      */
     public EditingDomain getEditingDomain() {
-      return _editingDomain;
+      return editingDomain;
     }
 
     /**
@@ -575,7 +578,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * @return <code>true</code> means yes.
      */
     public boolean isResourceLoading() {
-      return _ForceResourcesLoading || (_ResourcesLoading > 0);
+      return forceResourcesLoading || (resourcesLoading > 0);
     }
 
     /**
@@ -584,7 +587,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * @return <code>true</code> means yes.
      */
     public boolean setForceResourceLoading(boolean forceResourceLoading) {
-      return _ForceResourcesLoading = forceResourceLoading;
+      return this.forceResourcesLoading = forceResourceLoading;
     }
 
     /**
@@ -595,7 +598,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
       if (null != semanticEditingDomainProviders) {
         ICrossReferencerProvider provider = semanticEditingDomainProviders.getCrossReferencerProvider();
         if (null != provider) {
-          _crossReferencer = provider.getCrossReferencer(editingDomain);
+          crossReferencer = provider.getCrossReferencer(editingDomain);
         }
       }
     }
@@ -606,7 +609,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * @param editingDomain
      */
     protected void setEditingDomain(EditingDomain editingDomain) {
-      _editingDomain = editingDomain;
+      this.editingDomain = editingDomain;
     }
 
     /**
@@ -622,7 +625,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
     }
   }
 
-  private ISemanticEditingDomainProviders _semanticEditingDomainProviders;
+  private ISemanticEditingDomainProviders semanticEditingDomainProviders;
 
   /**
    * Default constructor.
@@ -672,7 +675,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
    * @return <code>null</code> if not contributed.
    */
   protected ISemanticEditingDomainProviders getSemanticEditingDomainProviders() {
-    return _semanticEditingDomainProviders;
+    return semanticEditingDomainProviders;
   }
 
   /**
@@ -684,7 +687,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
         "org.polarsys.capella.common.platform.sirius.ted", "semanticEditingDomainProviders"); //$NON-NLS-1$ //$NON-NLS-2$
     // Loop over contributed SemanticEditingDomain providers, must be only one.
     if (configurationElements.length > 0) {
-      _semanticEditingDomainProviders = (ISemanticEditingDomainProviders) ExtensionPointHelper.createInstance(
+      semanticEditingDomainProviders = (ISemanticEditingDomainProviders) ExtensionPointHelper.createInstance(
           configurationElements[0], ExtensionPointHelper.ATT_CLASS);
     }
   }
