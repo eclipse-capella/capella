@@ -66,24 +66,26 @@ public class ModeStateMachineServices {
     }
     return _service;
   }
-  
+
   public String getRegionLabel(Region region, DDiagram diagram) {
-    return isDiagramFilterEnable(diagram, IMappingNameConstants.HIDE_REGION_NAMES) ? "" : " [" + EObjectLabelProviderHelper.getText(region) + "]";
+    return isDiagramFilterEnable(diagram, IMappingNameConstants.HIDE_REGION_NAMES) ? ""
+        : " [" + EObjectLabelProviderHelper.getText(region) + "]";
   }
-  
+
   public String getEntryExitPointLabel(Pseudostate pseudostate, DDiagram diagram) {
-    
+
     if (isDiagramFilterEnable(diagram, IMappingNameConstants.DISPLAY_REGION_NAME_ON_ENTRY_EXIT_POINTS)) {
       EList<Region> regions = pseudostate.getInvolverRegions();
       if (!regions.isEmpty()) {
         Region region = regions.get(0);
-        return EObjectLabelProviderHelper.getText(pseudostate) + " (" + EObjectLabelProviderHelper.getText(region) + ")";
+        return EObjectLabelProviderHelper.getText(pseudostate) + " (" + EObjectLabelProviderHelper.getText(region)
+            + ")";
       }
     }
-    
+
     return EObjectLabelProviderHelper.getText(pseudostate);
   }
-  
+
   private boolean isDiagramFilterEnable(DDiagram diagram, String filterName) {
     if (diagram != null) {
       EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
@@ -94,43 +96,43 @@ public class ModeStateMachineServices {
         }
       }
     }
-    
+
     return false;
   }
-  
+
   public EObject showHideStatesInStateAndModeDiag(DSemanticDecorator view, List<State> selectedStates,
-	      List<State> visibleStates, List<AbstractDNode> visibleStateViews) {
+      List<State> visibleStates, List<AbstractDNode> visibleStateViews) {
 
-	    DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(view);
-	    DDiagramContents content = new DDiagramContents(diagram);
+    DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(view);
+    DDiagramContents content = new DDiagramContents(diagram);
 
-	    Set<EObject> toBeRemoved = new HashSet<EObject>();
+    Set<EObject> toBeRemoved = new HashSet<EObject>();
 
-	    ShowHideMSMStateMode shHide = new ShowHideMSMStateMode(content);
+    ShowHideMSMStateMode shHide = new ShowHideMSMStateMode(content);
 
-	    DiagramContext diagramContext = new ShowHideMSMStateMode(content).new DiagramContext();
+    DiagramContext diagramContext = new ShowHideMSMStateMode(content).new DiagramContext();
 
-	    // store context
-	    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER, view.getTarget()/*.eContainer()*/);
-	    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER_VIEW, view);
+    // store context
+    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER, view.getTarget()/* .eContainer() */);
+    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER_VIEW, view);
 
-	    for (IState state : selectedStates) {
-	      shHide.show(state, diagramContext);
-	    }
+    for (IState state : selectedStates) {
+      shHide.show(state, diagramContext);
+    }
 
-	    for (AbstractDNode node : visibleStateViews) {
-	      if (!selectedStates.contains(node.getTarget())) {
-	        toBeRemoved.add(node.getTarget());
-	      }
-	    }
+    for (AbstractDNode node : visibleStateViews) {
+      if (!selectedStates.contains(node.getTarget())) {
+        toBeRemoved.add(node.getTarget());
+      }
+    }
 
-	    // remove views
-	    for (EObject aView : toBeRemoved) {
-	      shHide.hide(aView, diagramContext);
-	    }
+    // remove views
+    for (EObject aView : toBeRemoved) {
+      shHide.hide(aView, diagramContext);
+    }
 
-	    return view;
-	  }
+    return view;
+  }
 
   public EObject moveRegionMSM(EObject context, Region newRegion, Region selectedRegion) {
 
@@ -146,20 +148,12 @@ public class ModeStateMachineServices {
     return context;
   }
 
-  public Region getRegionForTransitionMSM(EObject context, DDiagramElement delement) {
+  public Region getRegionForTransitionMSM(EObject context, DDiagramElement sourceView) {
 
-    EObject target = delement.getTarget();
-
-    // if select a region of a mode/state
-    if (target instanceof Region) {
-      return (Region) target.eContainer().eContainer();
-    }
-
-    // if select a mode/state
-    if (target instanceof IState) {
-      EObject container = target.eContainer();
-      if (container instanceof Region) {
-        return (Region) container;
+    EObject containerView = sourceView.eContainer();
+    if (containerView instanceof DSemanticDecorator) {
+      if (((DSemanticDecorator) containerView).getTarget() instanceof Region) {
+        return (Region) ((DSemanticDecorator) containerView).getTarget();
       }
     }
 
@@ -197,18 +191,18 @@ public class ModeStateMachineServices {
       return false;
     }
 
-    if (((target instanceof ExitPointPseudoState) && !(StateMachineServices.getService().isInSameOrSubRegion(target,
-        source)))
-        || ((source instanceof EntryPointPseudoState) && !StateMachineServices.getService().isInSameOrSubRegion(source,
-            target))
-        || ((source instanceof JoinPseudoState) && (StateMachineServices.getService().getSourcingTransition(source)
-            .size() != 0))
-        || ((target instanceof ForkPseudoState) && (StateMachineServices.getService().getTargettingTransition(target)
-            .size() != 0))) {
+    if (((target instanceof ExitPointPseudoState)
+        && !(StateMachineServices.getService().isInSameOrSubRegion(target, source)))
+        || ((source instanceof EntryPointPseudoState)
+            && !StateMachineServices.getService().isInSameOrSubRegion(source, target))
+        || ((source instanceof JoinPseudoState)
+            && (StateMachineServices.getService().getSourcingTransition(source).size() != 0))
+        || ((target instanceof ForkPseudoState)
+            && (StateMachineServices.getService().getTargettingTransition(target).size() != 0))) {
       return false;
     }
-    
-    //self connecting transition
+
+    // self connecting transition
     if (source.equals(target) && !(source instanceof Pseudostate)) {
       return true;
     }
@@ -223,7 +217,7 @@ public class ModeStateMachineServices {
 
     return true;
   }
-  
+
   public Region getRegionForInsertionMSM(EObject context, EObject delement) {
     Region region = null;
 
@@ -237,8 +231,9 @@ public class ModeStateMachineServices {
     }
     return region;
   }
-    public EObject showHideStatesInMSMDiag(DSemanticDecorator view, List<State> selectedStates,
-      List<State> visibleStates, List<AbstractDNode> visibleStateViews) {
+
+  public EObject showHideStatesInMSMDiag(DSemanticDecorator view, List<State> selectedStates, List<State> visibleStates,
+      List<AbstractDNode> visibleStateViews) {
 
     DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(view);
     DDiagramContents content = new DDiagramContents(diagram);
@@ -302,28 +297,28 @@ public class ModeStateMachineServices {
 
     return view;
   }
-  
+
   public ContainerMapping getMappingMSMStateMode(State state, DDiagram diagram) {
-	    String mappingName = null;
-	    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_STATE_MACHINE_DIAGRAM_NAME)) {
-	      mappingName = IMappingNameConstants.MSM_MODE_STATE_MAPPING_NAME;
-	    }
-	    return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
-	  }
+    String mappingName = null;
+    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_STATE_MACHINE_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.MSM_MODE_STATE_MAPPING_NAME;
+    }
+    return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
+  }
 
   public NodeMapping getMappingMSMPseudostate(Pseudostate pseudoState, DDiagram diagram) {
-	    String mappingName = null;
-	    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_STATE_MACHINE_DIAGRAM_NAME)) {
-	      mappingName = IMappingNameConstants.MSM_PSEUDOSTATE_MAPPING_NAME;
-	    }
-	    return DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
-	  }
+    String mappingName = null;
+    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_STATE_MACHINE_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.MSM_PSEUDOSTATE_MAPPING_NAME;
+    }
+    return DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
+  }
 
-	  public EdgeMapping getMappingMSMTransition(StateTransition function, DDiagram diagram) {
-	    String mappingName = null;
-	    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_STATE_MACHINE_DIAGRAM_NAME)) {
-	      mappingName = IMappingNameConstants.MSM_TRANSITION_MAPPING_NAME;
-	    }
-	    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
-	  }
+  public EdgeMapping getMappingMSMTransition(StateTransition function, DDiagram diagram) {
+    String mappingName = null;
+    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_STATE_MACHINE_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.MSM_TRANSITION_MAPPING_NAME;
+    }
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
+  }
 }

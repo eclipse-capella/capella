@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,11 +54,11 @@ public class StateSection extends AbstractStateSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    activityField = new SimpleSemanticField(main, Messages.getString("State.Activity"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
-    activityField.setDisplayedInWizard(displayedInWizard);
-
     entryField = new SimpleSemanticField(main, Messages.getString("State.Entry"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
     entryField.setDisplayedInWizard(displayedInWizard);
+
+    activityField = new SimpleSemanticField(main, Messages.getString("State.Activity"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
+    activityField.setDisplayedInWizard(displayedInWizard);
 
     exitField = new SimpleSemanticField(main, Messages.getString("State.Exit"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
     exitField.setDisplayedInWizard(displayedInWizard);
@@ -86,8 +86,8 @@ public class StateSection extends AbstractStateSection {
   public void loadData(CapellaElement capellaElement) {
     super.loadData(capellaElement);
 
-    activityField.loadData(capellaElement, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
     entryField.loadData(capellaElement, CapellacommonPackage.Literals.STATE__ENTRY);
+    activityField.loadData(capellaElement, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
     exitField.loadData(capellaElement, CapellacommonPackage.Literals.STATE__EXIT);
 
     functionsField.loadData(capellaElement, FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES);
@@ -110,8 +110,8 @@ public class StateSection extends AbstractStateSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(activityField);
     fields.add(entryField);
+    fields.add(activityField);
     fields.add(exitField);
     fields.add(functionsField);
 

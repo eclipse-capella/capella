@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -399,9 +399,9 @@ public class StateMachineServices {
           if ((type instanceof DeepHistoryPseudoState) && !hasDeepHystoryPseudoState) {
             result.add((IState) type);
           }
-          if (((referenceState == null) || (referenceState.eClass() == type.eClass()))
-              && !(type instanceof Pseudostate)
-              && (type instanceof State ? MoveHelper.getInstance().canMoveModeState((State) type, currentRegion) : true)) {
+          if (((referenceState == null) || (referenceState.eClass() == type.eClass())) && !(type instanceof Pseudostate)
+              && (type instanceof State ? MoveHelper.getInstance().canMoveModeState((State) type, currentRegion)
+                  : true)) {
             result.add((IState) type);
           }
         }
@@ -726,8 +726,8 @@ public class StateMachineServices {
     }
     if (current != null) {
       if (current instanceof DDiagramElement) {
-        for (DSemanticDecorator child : DiagramServices.getDiagramServices().getDiagramElements(
-            (DDiagramElement) current)) {
+        for (DSemanticDecorator child : DiagramServices.getDiagramServices()
+            .getDiagramElements((DDiagramElement) current)) {
           if ((child.getTarget() != null) && child.getTarget().equals(targetElement.getTarget())) {
             valid = false;
           }
@@ -1320,8 +1320,8 @@ public class StateMachineServices {
     if ((targetContainerView instanceof DSemanticDecorator) && (semanticToDrop instanceof AbstractState)) {
       Region newRegion = getRegionFromView(targetContainerView);
       if (newRegion != null) {
-        if (!isReferencedState((AbstractState) semanticToDrop, oldContainer) && semanticToDrop instanceof State ? MoveHelper
-            .getInstance().canMoveModeState((State) semanticToDrop, newRegion) : true) {
+        if (!isReferencedState((AbstractState) semanticToDrop, oldContainer) && semanticToDrop instanceof State
+            ? MoveHelper.getInstance().canMoveModeState((State) semanticToDrop, newRegion) : true) {
           return true;
         }
       }
