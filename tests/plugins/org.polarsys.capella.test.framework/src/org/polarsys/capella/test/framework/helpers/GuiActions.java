@@ -182,8 +182,10 @@ public class GuiActions {
    */
   public static void flushASyncGuiThread() {
     try {
-      Display.getCurrent().update();
-      while (Display.getCurrent().readAndDispatch()) {
+      Display display = Display.getDefault();
+      display.update();
+      // Consume all pending work for the UI Thread
+      while (display.readAndDispatch()) {
         // do nothing
       }
     } catch (Exception e) {
