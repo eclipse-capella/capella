@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" name="General" version="10.1.0.201507271600">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" name="General" version="11.0.0.201601261200">
   <ownedViewpoints name="Common" modelFileExtension="melodymodeller" icon="">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer']" name="Modes &amp; States" label="Modes and States" titleExpression="[M&amp;S] &lt;%current.name%>" domainClass="Region">
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
@@ -1242,46 +1242,6 @@
                     <parameters name="visible transition views" value="&lt;%$visibleTransitionViews%>"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Reuse Mode/State" name="Insert Mode/State" label="Reuse Mode/State" precondition="&lt;% $container.eContainer.filter (&quot;StateMachine&quot;).nSize == 0 %>" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Insert.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $container %>">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select state mode" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                  <parameters name="context" value="&lt;% $containerView %>"/>
-                  <parameters name="scope" value="&lt;% getReferencableStates () %>"/>
-                  <parameters name="resultVariable" value="selectedStates"/>
-                  <parameters name="wizardMessage" value="Select Types to show in &lt;%$container.name%>."/>
-                  <parameters name="initialSelection" value="&lt;% $container.getInitialSelectionSM ()%>"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $selectedStates != &quot;WIZARD_CANCELED&quot; %>">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;IState&quot;).nSize > 0 &amp;&amp; ownedRegions.nSize () == 0%>">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% getRegionForInsertionMSM ($containerView) %>">
-                    <subModelOperations xsi:type="tool_1:For" expression="&lt;% $selectedStates %>">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% getRegionForInsertionMSM ($containerView) %>">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="involvedStates" valueExpression="&lt;% $i %>"/>
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
-                          <subModelOperations xsi:type="tool_1:SetValue" featureName="referencedStates" valueExpression="&lt;% $i %>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:For" expression="&lt;% eContainer(&quot;ModellingBlock&quot;).eAllContents.filter (&quot;IState&quot;) - $selectedStates %>" iteratorName="j">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% getRegionForInsertionMSM ($containerView) %>">
-                        <subModelOperations xsi:type="tool_1:Unset" featureName="involvedStates" elementExpression="&lt;% $j %>"/>
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
-                          <subModelOperations xsi:type="tool_1:Unset" featureName="referencedStates" elementExpression="&lt;% $j %>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
