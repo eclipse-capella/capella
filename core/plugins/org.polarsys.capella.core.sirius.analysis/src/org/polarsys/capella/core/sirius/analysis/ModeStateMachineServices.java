@@ -152,11 +152,13 @@ public class ModeStateMachineServices {
 
     EObject containerView = sourceView.eContainer();
     if (containerView instanceof DSemanticDecorator) {
-      if (((DSemanticDecorator) containerView).getTarget() instanceof Region) {
-        return (Region) ((DSemanticDecorator) containerView).getTarget();
+      EObject target = ((DSemanticDecorator) containerView).getTarget();
+      if (target instanceof Region) {
+        return (Region) target;
+      }else if(target instanceof State && context instanceof Pseudostate && context.eContainer() instanceof Region){
+        return (Region)context.eContainer();
       }
     }
-
     return null;
   }
 
