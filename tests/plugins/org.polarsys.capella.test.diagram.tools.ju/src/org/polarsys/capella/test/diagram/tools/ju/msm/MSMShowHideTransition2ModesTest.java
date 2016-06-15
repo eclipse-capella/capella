@@ -41,7 +41,7 @@ public class MSMShowHideTransition2ModesTest extends EmptyProject {
 	diagram.createRegion(GenericModel.MODE_3, GenericModel.REGION_3);
 	diagram.createRegion(GenericModel.MODE_3, GenericModel.REGION_4);
 
-	diagram.createTransition(GenericModel.REGION_2, GenericModel.REGION_4, transition);
+	diagram.createTransition(GenericModel.MODE_2, GenericModel.MODE_3, transition);
 
 	MSMDiagram.setUnsynchronized(diagram);
 

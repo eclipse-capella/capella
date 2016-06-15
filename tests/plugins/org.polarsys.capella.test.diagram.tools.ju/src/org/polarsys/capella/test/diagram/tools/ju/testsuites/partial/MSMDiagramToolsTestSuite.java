@@ -23,7 +23,6 @@ import org.polarsys.capella.test.diagram.tools.ju.msm.MSMShowHideHierarchy2State
 import org.polarsys.capella.test.diagram.tools.ju.msm.MSMShowHideHierarchy3StatesTest;
 import org.polarsys.capella.test.diagram.tools.ju.msm.MSMShowHideInitialDeepTest;
 import org.polarsys.capella.test.diagram.tools.ju.msm.MSMShowHideInitialTest;
-import org.polarsys.capella.test.diagram.tools.ju.msm.MSMShowHideSuperReuseModeTest;
 import org.polarsys.capella.test.diagram.tools.ju.msm.MSMShowHideTransition2ModesTest;
 import org.polarsys.capella.test.diagram.tools.ju.msm.MSMShowHideTransition2StatesTest;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
@@ -53,7 +52,6 @@ public class MSMDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new MSMShowHideHierarchy3StatesTest());
     tests.add(new MSMShowHideInitialDeepTest());
     tests.add(new MSMShowHideInitialTest());
-    tests.add(new MSMShowHideSuperReuseModeTest());
     tests.add(new MSMShowHideTransition2ModesTest());
     tests.add(new MSMShowHideTransition2StatesTest());
     tests.add(new MSMFunctionalExchangeActionLabelTest());

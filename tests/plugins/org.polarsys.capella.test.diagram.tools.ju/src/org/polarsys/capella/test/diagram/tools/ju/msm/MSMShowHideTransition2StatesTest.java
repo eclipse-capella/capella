@@ -41,7 +41,7 @@ public class MSMShowHideTransition2StatesTest extends EmptyProject {
 	diagram.createRegion(GenericModel.STATE_3, GenericModel.REGION_3);
 	diagram.createRegion(GenericModel.STATE_3, GenericModel.REGION_4);
 
-	diagram.createTransition(GenericModel.REGION_2, GenericModel.REGION_4, transition);
+	diagram.createTransition(GenericModel.STATE_2, GenericModel.STATE_3, transition);
 	
 	diagram.hideTransition(diagram.getDiagramId(), transition);
 	diagram.showTransition(diagram.getDiagramId(), transition);
