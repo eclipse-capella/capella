@@ -1,0 +1,19 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: PatternTestSuite
+Element-Type: testsuite
+Element-Version: 2.0
+Id: _3m4JoJ5vEeWnS4S9Sm9aNg
+Runtime-Version: 2.0.0.201506042314
+Save-Time: 12/10/15 10:36 AM
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_KqPLQJ2_EeWnS4S9Sm9aNg	// kind: 'test' name: 'Create & Apply Pattern' path: 'Create & Apply Pattern.test'
+_SHTVkJ3GEeWnS4S9Sm9aNg	// kind: 'test' name: 'ManagePatternInstances' path: 'ManagePatternInstances.test'
+_KgQIkJ5eEeWnS4S9Sm9aNg	// kind: 'test' name: 'Conformitycheck' path: 'Conformitycheck.test'
+_iKkbAJ8dEeWsu4Oc5kgCpQ	// kind: 'test' name: 'Cross-Project pattern Test' path: 'Cross-Project pattern Test.test'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

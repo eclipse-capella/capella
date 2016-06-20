@@ -1,0 +1,21 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: Close and Reopen Catalog
+Element-Type: context
+Element-Version: 2.0
+Id: _bRuT8J5ZEeWnS4S9Sm9aNg
+Runtime-Version: 2.0.0.201506042314
+Save-Time: 12/9/15 5:31 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+get-view "Capella Project Explorer" | get-tree | select "patternProject/patternProject.patterns" 
+    | get-menu "Close Catalog" | click
+get-window "Modeling Patterns" | get-button OK | click 
+get-view "Capella Project Explorer" | get-tree | select "patternProject/patternProject.patterns" 
+    | get-menu "Open Catalog" | click
+get-window "Browse Catalogs" | get-button Finish | click
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
