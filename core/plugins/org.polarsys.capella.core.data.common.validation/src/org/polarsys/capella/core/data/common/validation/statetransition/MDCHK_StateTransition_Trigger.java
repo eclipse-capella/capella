@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,20 +28,21 @@ import org.polarsys.capella.core.libraries.extendedqueries.capellacommon.GetAvai
 public class MDCHK_StateTransition_Trigger extends AbstractModelConstraint {
 
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EList<AbstractEvent> triggers = ((StateTransition) ctx_p.getTarget()).getTriggers();
+  public IStatus validate(IValidationContext ctx) {
+    StateTransition validationTarget = (StateTransition) ctx.getTarget();
+    EList<AbstractEvent> triggers = validationTarget.getTriggers();
     QueryContext context = new QueryContext();
     context.putValue(QueryConstants.ECLASS_PARAMETER, CapellacommonPackage.Literals.STATE_TRANSITION);
-    List<Object> elements = GetAvailable_StateTransitionTrigger.getAvailableElements(ctx_p.getTarget(), context);
+    List<CapellaElement> elements = GetAvailable_StateTransitionTrigger.getAvailableElements(validationTarget, context);
     List<CapellaElement> libElements = GetAvailable_StateTransitionTrigger__Lib
-        .getAvailableElements((CapellaElement) ctx_p.getTarget());
+        .getAvailableElements(validationTarget);
     elements.addAll(libElements);
     for (AbstractEvent trigger : triggers) {
       if (!elements.contains(trigger)) {
-        return ctx_p.createFailureStatus(new Object[] { ((StateTransition) ctx_p.getTarget()).getTarget().getName(),
+        return ctx.createFailureStatus(new Object[] { validationTarget.getTarget().getName(),
             trigger });
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

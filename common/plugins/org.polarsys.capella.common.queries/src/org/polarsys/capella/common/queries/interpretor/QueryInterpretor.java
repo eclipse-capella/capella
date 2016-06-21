@@ -35,6 +35,7 @@ import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.internal.IPrivateQueryContext;
 import org.polarsys.capella.common.queries.internal.NoneValue;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.common.queries.queryContext.QueryContextConstants;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -109,7 +110,9 @@ public class QueryInterpretor {
 		List<Object> result = new ArrayList<Object>(subResult);
 
 		if (theContext.getExecutionLevel() == 0) {
-			for (IQueryFilter filter : filters) {
+			// Add source element in the context to be used by filters
+		  theContext.putValue(QueryContextConstants.SOURCE_ELEMENT_PARAMETER, semanticsObject);
+		  for (IQueryFilter filter : filters) {
 				result = executeFilter(result, filter, context);
 			}
 			FormatedLogger.addTextLn("Filtering ...", Log.QUERY_INTERPRETOR); //$NON-NLS-1$

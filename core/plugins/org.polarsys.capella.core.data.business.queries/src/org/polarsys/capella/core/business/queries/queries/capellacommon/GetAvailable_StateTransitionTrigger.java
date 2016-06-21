@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,14 +39,13 @@ public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
 
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
-    List<Object> availableElements = getAvailableElements(input, context);
-    CapellaElement inputElement = (CapellaElement) input;
+    List<CapellaElement> availableElements = getAvailableElements(input, context);
     List<CapellaElement> currentElements = QueryInterpretor.executeQuery("GetCurrent_StateTransitionTrigger", input, context);//$NON-NLS-1$
     availableElements.removeAll(currentElements);
-    return availableElements;
+    return (List) availableElements;
   }
 
-  public static List<Object> getAvailableElements(Object input, IQueryContext context) {
+  public static List<CapellaElement> getAvailableElements(Object input, IQueryContext context) {
     CapellaElement inputElement = (CapellaElement) input;
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(inputElement);
@@ -68,7 +67,7 @@ public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
       }
     }
 
-    return (List) availableElements;
+    return availableElements;
   }
 
   /**
