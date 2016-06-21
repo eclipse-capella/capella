@@ -11,7 +11,7 @@ The Activity Browser provides a methodological access to all key activities in C
 <br>
 
  
-[[Image:Images/4.03.%20Activity%20Browser_html_6ba230e7.png|514x415px]]
+[[Image:Images/4.03_Activity_Browser.png|700x500px]]
 
  
 Clicking on one of the five items opens the corresponding tab, here the Functional Analysis.

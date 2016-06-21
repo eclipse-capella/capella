@@ -115,75 +115,7 @@ As indicated in the message, if the purpose of the comparison is to merge models
 
  
 == Configuration and Features of the Diff/Merge Tool ==
- 
-=== SVN preferences ===
- 
-This subsection is only for users who have models under SVN control.
-
- 
-A new preference entry has been added in the SVN preferences named '''&lsquo;Diff Merge for Capella&rsquo;'''
-
- 
-<br>
-<br>
-
- 
-[[Image:Images/21.1.%20Model%20DiffMerge_html_m3e423a6f.png|604x352px]]
-
- 
-<br>
-<br>
-
- 
-Select the CapellaDiffMerge.exe file on the file system. Then choose '''&lsquo;Apply&rsquo;'''.
-
- 
-<br>
-
- 
-<br>
-<br>
-
- 
-The SVN Merge category shall be updated:
-
- 
-<br>
-<br>
-
- 
-[[Image:Images/21.1.%20Model%20DiffMerge_html_m241953bf.png|604x333px]]
-
- 
-<br>
-<br>
-
- 
-[[Image:Images/21.1.%20Model%20DiffMerge_html_m38d61362.jpg|37x40px]]<br>
-<br>
-
- 
-The fields &ldquo;Diff program arguments&rdquo; and &ldquo;Merge program arguments&rdquo; have to be filled manually for each file extension (&ldquo;aird&rdquo;, &ldquo;airdfragment&rdquo;, &ldquo;melodyfragment&rdquo;, &ldquo;melodymodeller&rdquo; and &ldquo;pattern&rdquo;):
-
- 
-* Diff 	program arguments: -svn -base &quot;${base}&quot; -local &quot;${mine}&quot; 	 -repo &quot;${theirs}&quot;
-* Merge 	program arguments: -svn -base &ldquo;${base}&quot; -local &quot;${mine}&quot; 	 -repo &quot;${theirs}&quot; -merge -out &quot;${merged}&quot;
- 
-<br>
-<br>
-
- 
-[[Image:Images/21.1.%20Model%20DiffMerge_html_4e8b8361.png|433x259px]]
-
- 
-<br>
-<br>
-
- 
-<br>
-<br>
-
- 
+  
 === User interface of the Diff/Merge Tool ===
  
 When started, the diff/merge tool displays a progress dialog. Computing the differences between models takes time according to the size of the models and the number of differences between them. Click the &ldquo;Run in background&rdquo; button in order to keep working with Capella while the differences are being computed in parallel.
@@ -371,15 +303,6 @@ The Diff/Merge tool can be started in Capella using the &lsquo;Compare With&rsqu
 
  
 [[Image:Images/21.1.%20Model%20DiffMerge_html_m4a2563eb.png|301x100px]]
-
- 
-Alternatively, the standalone Diff/Merge tool can be called independently. On startup, it requires the selection of the two or three (with ancestor) files to compare.
-
- 
-[[Image:Images/21.1.%20Model%20DiffMerge_html_m64e99670.png|222x144px]]
-
- 
-[[Image:Images/21.1.%20Model%20DiffMerge_html_m610d0270.png|365x295px]]
 
  
 === Resolve differences ===
