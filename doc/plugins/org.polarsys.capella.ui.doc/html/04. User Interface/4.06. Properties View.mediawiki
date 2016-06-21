@@ -32,37 +32,10 @@ This section displays the most important semantic information about the current 
  
 == Description Section ==
  
-The Descriptions section allows editing html descriptions for model elements.
+The Descriptions section allows editing text descriptions for model elements.
 
  
-[[Image:Images/4.06.%20Properties%20View_html_m602830a9.png|553x290px]]
-
- 
-By default the Description field is in read mode, so that hypertext links can be navigated. To start editing the Description, click on the Edit button.
-
- 
-[[Image:Images/4.06.%20Properties%20View_html_6e4a98ee.png|554x97px]]
-
- 
-Insertion of hypertext links to other model elements, existing diagrams or URLs are possible using the dedicated button of the toolbar.
-
- 
-[[Image:Images/4.06.%20Properties%20View_html_3563deb8.png|553x98px]]
-
- 
-To get mode editing options, open the Description is a dedicated Editor. To do so, click on the second button of the toolbar. A new Editor will open.
-
- 
-[[Image:Images/4.06.%20Properties%20View_html_3a2738b6.png|553x99px]]
-
- 
-[[Image:Images/4.06.%20Properties%20View_html_598f5164.png|553x203px]]
-
- 
-Clicking on diagram hyperlinks opens the referenced diagram.
-
- 
-[[Image:Images/4.06.%20Properties%20View_html_35d5a95e.png|488x497px]]
+[[Image:Images/4.06_Description_Section.png|800x240px]]
 
  
 == Extensions Section ==
