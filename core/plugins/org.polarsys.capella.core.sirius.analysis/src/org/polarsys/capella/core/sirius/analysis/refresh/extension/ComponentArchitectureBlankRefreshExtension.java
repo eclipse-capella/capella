@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,21 +58,21 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
-  public void beforeRefresh(DDiagram diagram_p) {
+  public void beforeRefresh(DDiagram diagram) {
 
-    Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(diagram_p);
+    Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(diagram);
 
     // -------------------------------------
     // Change target of diagram to the related part
     // -------------------------------------
 
-    updateTargetDiagram(diagram_p, !contextualElements.isEmpty());
+    updateTargetDiagram(diagram, !contextualElements.isEmpty());
 
     // -------------------------------------
     // Show in diagram related contextual elements
     // -------------------------------------
 
-    DDiagramContents context = FaServices.getFaServices().getDDiagramContents(diagram_p);
+    DDiagramContents context = FaServices.getFaServices().getDDiagramContents(diagram);
 
     try {
       CsServices.getService().showABContextualElements(context, contextualElements);
@@ -86,7 +86,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     // -------------------------------------
 
     try {
-      reorderElements(diagram_p);
+      reorderElements(diagram);
 
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnReordering, e);
@@ -125,16 +125,17 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
   }
 
   /**
-   * @param diagram_p
+   * @param diagram
+   * @param hasContextualElements
    */
-  protected void updateTargetDiagram(DDiagram diagram_p, boolean hasContextualElements) {
+  protected void updateTargetDiagram(DDiagram diagram, boolean hasContextualElements) {
 
-    if (!IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagram_p.getDescription().getName())) {
+    if (!IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       // In architecture blank,
       // in one part mode or when diagram is applied to one part, the part should be displayed
 
       // getting the root of the diagram
-      EObject root = ((DSemanticDecorator) diagram_p).getTarget();
+      EObject root = ((DSemanticDecorator) diagram).getTarget();
 
       // create a default part if none
       if (root instanceof Component) {
@@ -149,7 +150,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
         if (!CsServices.getService().isMultipartMode((Part) root)) {
           EObject type = CsServices.getService().getComponentType((Part) root);
           if ((type != null) && (type instanceof Component)) {
-            ((DSemanticDiagram) diagram_p).setTarget(type);
+            ((DSemanticDiagram) diagram).setTarget(type);
           }
         }
       }
@@ -158,31 +159,30 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
       // Show the root element in SAB-LAB
       // -------------------------------------
 
-      if ((root instanceof ModelElement) && !(root instanceof Component) && (diagram_p.getOwnedDiagramElements().size() == 0)) {
+      if ((root instanceof ModelElement) && !(root instanceof Component) && (diagram.getOwnedDiagramElements().size() == 0)) {
         if (!CsServices.getService().isMultipartMode((ModelElement) root)
-            && diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)
-            && !DiagramServices.getDiagramServices().isOnDiagram(diagram_p, root) && (!hasContextualElements)) {
+            && diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)
+            && !DiagramServices.getDiagramServices().isOnDiagram(diagram, root) && (!hasContextualElements)) {
           // Instantiate the container in the diagram for the component
-          ContainerMapping componentMapping = FaServices.getFaServices().getMappingABComponent(root, diagram_p);
-          DiagramServices.getDiagramServices().createContainer(componentMapping, root, diagram_p, diagram_p);
+          ContainerMapping componentMapping = FaServices.getFaServices().getMappingABComponent(root, diagram);
+          DiagramServices.getDiagramServices().createContainer(componentMapping, root, diagram, diagram);
 
-        } else if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)
-            && !DiagramServices.getDiagramServices().isOnDiagram(diagram_p, root)) {
+        } else if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)
+            && !DiagramServices.getDiagramServices().isOnDiagram(diagram, root)) {
           // Instantiate the container in the diagram for the component
-          ContainerMapping componentMapping = FaServices.getFaServices().getMappingABComponent(root, diagram_p);
-          DiagramServices.getDiagramServices().createContainer(componentMapping, root, diagram_p, diagram_p);
+          ContainerMapping componentMapping = FaServices.getFaServices().getMappingABComponent(root, diagram);
+          DiagramServices.getDiagramServices().createContainer(componentMapping, root, diagram, diagram);
         }
       }
-
     }
   }
 
   /**
    * 
    */
-  protected void updateComponentCategories(DDiagramContents context_p) {
+  protected void updateComponentCategories(DDiagramContents context) {
 
-    DDiagram diagram = context_p.getDDiagram();
+    DDiagram diagram = context.getDDiagram();
 
     if (diagram.isSynchronized()) {
       ABServices service = ABServices.getService();
@@ -191,24 +191,23 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
       // Switch to component categories
       EdgeMapping edgeMapping = service.getMappingABComponentCategory(diagram);
       if (edgeMapping != null) {
-        for (DDiagramElement element : context_p.getDiagramElements(edgeMapping)) {
+        for (DDiagramElement element : context.getDiagramElements(edgeMapping)) {
           if ((element.getTarget() != null) && (element.getTarget() instanceof ComponentExchangeCategory)) {
             categories.add(element.getTarget());
           }
         }
 
-        ABServices.getService().switchABComponentCategories(context_p, (DSemanticDecorator) context_p.getDDiagram(), categories);
+        ABServices.getService().switchABComponentCategories(context, (DSemanticDecorator) context.getDDiagram(), categories);
       }
 
     } else {
-      ABServices.getService().updateABComponentCategories(context_p);
+      ABServices.getService().updateABComponentCategories(context);
     }
-
   }
 
-  protected void updateFunctionalExchangeCategories(DDiagramContents context_p) {
+  protected void updateFunctionalExchangeCategories(DDiagramContents context) {
 
-    DDiagram diagram = context_p.getDDiagram();
+    DDiagram diagram = context.getDDiagram();
 
     if (diagram.isSynchronized()) {
       FaServices service = FaServices.getFaServices();
@@ -217,27 +216,26 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
       // Switch to FE categories
       EdgeMapping edgeMapping = service.getMappingFECategory(diagram);
       if (edgeMapping != null) {
-        for (DDiagramElement element : context_p.getDiagramElements(edgeMapping)) {
+        for (DDiagramElement element : context.getDiagramElements(edgeMapping)) {
           if ((element.getTarget() != null) && (element.getTarget() instanceof ExchangeCategory)) {
             categories.add(element.getTarget());
           }
         }
 
-        FaServices.getFaServices().switchFECategories(context_p, (DSemanticDecorator) context_p.getDDiagram(), categories);
+        FaServices.getFaServices().switchFECategories(context, (DSemanticDecorator) context.getDDiagram(), categories);
       }
 
     } else {
-      FaServices.getFaServices().updateFECategories(context_p);
+      FaServices.getFaServices().updateFECategories(context);
     }
-
   }
 
   /**
    * 
    */
-  protected void updatePhysicalCategories(DDiagramContents context_p) {
+  protected void updatePhysicalCategories(DDiagramContents context) {
 
-    DDiagram diagram = context_p.getDDiagram();
+    DDiagram diagram = context.getDDiagram();
 
     if (diagram.isSynchronized()) {
       ABServices service = ABServices.getService();
@@ -246,56 +244,55 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
       // Switch to physical categories
       EdgeMapping edgeMapping = service.getMappingABPhysicalCategory(diagram);
       if (edgeMapping != null) {
-        for (DDiagramElement element : context_p.getDiagramElements(edgeMapping)) {
+        for (DDiagramElement element : context.getDiagramElements(edgeMapping)) {
           if ((element.getTarget() != null) && (element.getTarget() instanceof PhysicalLinkCategory)) {
             categories.add(element.getTarget());
           }
         }
 
-        ABServices.getService().switchABPhysicalCategories(context_p, (DSemanticDecorator) context_p.getDDiagram(), categories, false);
+        ABServices.getService().switchABPhysicalCategories(context, (DSemanticDecorator) context.getDDiagram(), categories, false);
       }
 
     } else {
-      ABServices.getService().updateABPhysicalCategories(context_p);
+      ABServices.getService().updateABPhysicalCategories(context);
     }
-
   }
 
   @Override
-  public void reorderElements(DDiagram diagram_p) {
+  public void reorderElements(DDiagram diagram) {
 
-    DDiagramContents content = new DDiagramContents(diagram_p) {
+    DDiagramContents content = new DDiagramContents(diagram) {
 
       @Override
-      public Collection<EObject> getParents(EObject object_p, EObject context_p) {
-        LinkedList<EObject> parents_p = new LinkedList<EObject>();
-        if (object_p instanceof Part) {
-          Part part = (Part) object_p;
-          parents_p.addAll(PartExt.getDeployingElements(part));
-          parents_p.add(CsServices.getService().getParentContainer(part));
+      public Collection<EObject> getParents(EObject object, EObject context) {
+        LinkedList<EObject> parents = new LinkedList<EObject>();
+        if (object instanceof Part) {
+          Part part = (Part) object;
+          parents.addAll(PartExt.getDeployingElements(part));
+          parents.add(CsServices.getService().getParentContainer(part));
+          parents.remove(context);
         }
-        return parents_p;
+        return parents;
       }
-
     };
-
-    HashMapSet<AbstractType, DNodeContainer> typeViews = new HashMapSet<AbstractType, DNodeContainer>(); // all
-                                                                                                         // displayed
-                                                                                                         // elements in
-                                                                                                         // the diagram
-    HashMapSet<Partition, DNodeContainer> partViews = new HashMapSet<Partition, DNodeContainer>(); // all displayed
-                                                                                                   // elements in the
-                                                                                                   // diagram
-    Set<DNodeContainer> toBeMoved = new HashSet<DNodeContainer>(); // diagram elements to be moved
+    
+    // All displayed elements in the diagram
+    HashMapSet<AbstractType, DNodeContainer> typeViews = new HashMapSet<AbstractType, DNodeContainer>(); 
+    
+    // All displayed elements in the diagram
+    HashMapSet<Partition, DNodeContainer> partViews = new HashMapSet<Partition, DNodeContainer>();
+    
+    // Diagram elements to be moved
+    Set<DNodeContainer> toBeMoved = new HashSet<DNodeContainer>();
 
     // Retrieve all mappings to be moved
-    List<AbstractNodeMapping> mappingsToMove = getListOfMappingsToMove(diagram_p);
+    List<AbstractNodeMapping> mappingsToMove = getListOfMappingsToMove(diagram);
 
     // get all displayed parts in the diagram
-    for (AbstractDNode aContainer : diagram_p.getContainers()) {
+    for (AbstractDNode aContainer : diagram.getContainers()) {
 
       if (mappingsToMove.contains(aContainer.getDiagramElementMapping())) {
-        if (isReorderable(diagram_p, aContainer) && (aContainer instanceof DNodeContainer)) {
+        if (isReorderable(diagram, aContainer) && (aContainer instanceof DNodeContainer)) {
           if (aContainer.getTarget() instanceof Part) {
             Part currentPart = (Part) aContainer.getTarget();
             AbstractType currentType = CsServices.getService().getComponentType(currentPart);
@@ -383,7 +380,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
           if (typeViews.get(parentElement).size() == 1) {
             // Add the part in the first partView which haven't the part
             for (DNodeContainer container : typeViews.get(parentElement)) {
-              if (!container.getOwnedDiagramElements().contains(aContainer)) {
+              if (!container.getOwnedDiagramElements().contains(aContainer) && !(aContainer == container.eContainer())) {
                 container.getOwnedDiagramElements().add(aContainer);
               }
               isAdded = true;
@@ -426,8 +423,8 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
 
       // If not yet added and there is a partView, add to it. Otherwise, go to parents.
       if (!isAdded && !toBeDeleted) {
-        if (!diagram_p.getOwnedDiagramElements().contains(aContainer)) {
-          diagram_p.getOwnedDiagramElements().add(aContainer);
+        if (!diagram.getOwnedDiagramElements().contains(aContainer)) {
+          diagram.getOwnedDiagramElements().add(aContainer);
         }
       }
 
@@ -443,16 +440,16 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
    * @see org.polarsys.capella.core.sirius.analysis.refresh.extension.AbstractRefreshExtension#getListOfMappingsToMove(org.eclipse.sirius.DDiagram)
    */
   @Override
-  protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram_p) {
+  protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram) {
     List<AbstractNodeMapping> returnedList = new ArrayList<AbstractNodeMapping>();
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.SAB_ACTOR_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.SAB_SYSTEM_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.LAB_LOGICAL_ACTOR_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.PAB_PHYSICAL_ACTOR_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.EAB_CI));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.SAB_ACTOR_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.SAB_SYSTEM_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.LAB_LOGICAL_ACTOR_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.PAB_PHYSICAL_ACTOR_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.EAB_CI));
     return returnedList;
   }
 
@@ -460,10 +457,10 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
    */
   @Override
-  public void postRefresh(DDiagram diagram_p) {
+  public void postRefresh(DDiagram diagram) {
 
     try {
-      FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram_p);
+      FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
     }
@@ -471,25 +468,24 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     try {
       List<String> physicalPathSupportingDiagrams = Arrays.asList(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME,
           IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME);
-      if (physicalPathSupportingDiagrams.contains(diagram_p.getDescription().getName())) {
-        PhysicalServices.getService().updatePhysicalPathStyles(diagram_p);
+      if (physicalPathSupportingDiagrams.contains(diagram.getDescription().getName())) {
+        PhysicalServices.getService().updatePhysicalPathStyles(diagram);
       }
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdatePhysicalPathStyle, e);
     }
   }
 
-  public ContainerMapping getComponentMapping(DDiagram diagram_p) {
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.SAB_ACTOR_MAPPING_NAME);
+  public ContainerMapping getComponentMapping(DDiagram diagram) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.SAB_ACTOR_MAPPING_NAME);
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME);
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME);
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.EPBS_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME);
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.EPBS_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME);
     }
-    return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME);
+    return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME);
   }
-
 }
