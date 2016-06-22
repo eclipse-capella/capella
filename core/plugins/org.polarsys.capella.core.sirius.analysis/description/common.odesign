@@ -1384,54 +1384,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a Entry Pseudo State" name="EntryPoint" precondition="&lt;%canCreateEntryExitPoint($containerView)%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Pseudostate_entryPoint.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;IState&quot;).nSize > 0 &amp;&amp; ownedRegions.nSize () == 0%>">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                  </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EntryPointPseudoState" referenceName="ownedStates">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName(&quot;EntryPoint &quot;)%>"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$instance.eContainer (&quot;Region&quot;) %>">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involvedStates" valueExpression="&lt;% $instance %>"/>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referencedStates" valueExpression="&lt;% $instance %>"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a Exit Pseudo State" name="ExitPoint" precondition="&lt;%canCreateEntryExitPoint($containerView)%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Pseudostate_exitPoint.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;IState&quot;).nSize > 0 &amp;&amp; ownedRegions.nSize () == 0%>">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                  </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ExitPointPseudoState" referenceName="ownedStates">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName(&quot;ExitPoint &quot;)%>"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$instance.eContainer (&quot;Region&quot;) %>">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involvedStates" valueExpression="&lt;% $instance %>"/>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referencedStates" valueExpression="&lt;% $instance %>"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a Deep History Pseudo State" name="DeepHistory" precondition="&lt;% canCreateDeepHistory($containerView) %>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Pseudostate_deepHistory.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>

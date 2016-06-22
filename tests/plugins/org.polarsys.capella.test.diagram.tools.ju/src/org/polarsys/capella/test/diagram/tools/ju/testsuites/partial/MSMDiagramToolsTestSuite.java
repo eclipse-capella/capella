@@ -56,7 +56,7 @@ public class MSMDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new MSMShowHideTransition2StatesTest());
     tests.add(new MSMFunctionalExchangeActionLabelTest());
     tests.add(new MSMHideRegionNamesFilterTest());
-    tests.add(new MSMDisplayRegionNameOnEntryExitPointsFilterTest());
+//    tests.add(new MSMDisplayRegionNameOnEntryExitPointsFilterTest());
     
     return tests;
   }
