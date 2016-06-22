@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -48,6 +49,7 @@ import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeEnd;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
@@ -106,18 +108,18 @@ public class BusinessHelper {
    * Create semantic elements which are implicitly coupled with the given semantic element in the context of its given semantic context and representation
    * context
    */
-  public Collection<EObject> addImplicitElements(EObject element_p, Object context_p, DSemanticDecorator graphicalContext_p) {
+  public Collection<EObject> addImplicitElements(EObject element, Object context, DSemanticDecorator graphicalContext) {
     Collection<EObject> result = new HashSet<EObject>();
-    EObject container = element_p.eContainer();
+    EObject container = element.eContainer();
     EObject graphicalTarget = null;
-    if (graphicalContext_p != null) {
-      graphicalTarget = graphicalContext_p.getTarget();
+    if (graphicalContext != null) {
+      graphicalTarget = graphicalContext.getTarget();
     }
-    if ((container instanceof Component) && (element_p instanceof Component)) {
+    if ((container instanceof Component) && (element instanceof Component)) {
       // Whatever the diagram, the addition of a Component within another one
       // also triggers the creation of a Part if not present
       Component ownerC = (Component) container;
-      Component eltC = (Component) element_p;
+      Component eltC = (Component) element;
       if (eltC.getAbstractTypedElements().isEmpty()) {
         Part addition = createPartFor(eltC);
         ownerC.getOwnedFeatures().add(addition);
@@ -126,23 +128,26 @@ public class BusinessHelper {
         // also requires a deployment link
         if ((graphicalTarget instanceof Part) && (container instanceof PhysicalComponent) && (container.eContainer() instanceof PhysicalComponent)
             && // container is not a root
-            (element_p instanceof PhysicalComponent) && (((PhysicalComponent) container).getNature() == PhysicalComponentNature.NODE)
-            && (((PhysicalComponent) element_p).getNature() == PhysicalComponentNature.BEHAVIOR)) {
+            (element instanceof PhysicalComponent) && (((PhysicalComponent) container).getNature() == PhysicalComponentNature.NODE)
+            && (((PhysicalComponent) element).getNature() == PhysicalComponentNature.BEHAVIOR)) {
           deployPhysicalPartOn(addition, (Part) graphicalTarget);
         }
       }
-    } else if ((element_p instanceof Part) && (graphicalTarget instanceof Part) && (((Part) element_p).getAbstractType() instanceof PhysicalComponent)
+    } else if ((element instanceof Part) && (graphicalTarget instanceof Part) && (((Part) element).getAbstractType() instanceof PhysicalComponent)
                && (((Part) graphicalTarget).getAbstractType() instanceof PhysicalComponent)
-               && (((PhysicalComponent) ((Part) element_p).getAbstractType()).getNature() == PhysicalComponentNature.BEHAVIOR)
+               && (((PhysicalComponent) ((Part) element).getAbstractType()).getNature() == PhysicalComponentNature.BEHAVIOR)
                && (((PhysicalComponent) ((Part) graphicalTarget).getAbstractType()).getNature() == PhysicalComponentNature.NODE)) {
-      deployPhysicalPartOn((Part) element_p, (Part) graphicalTarget);
-    } else if ((element_p instanceof AbstractFunction) && ((context_p instanceof Component) || (graphicalTarget instanceof Part))) {
+      EList<Part> deployingParts = ((Part)element).getDeployingParts();
+      boolean isAllocated = deployingParts.size() > 0;
+      if (!isAllocated)
+        deployPhysicalPartOn((Part) element, (Part) graphicalTarget);
+    } else if ((element instanceof AbstractFunction) && ((context instanceof Component) || (graphicalTarget instanceof Part))) {
       // A function within a component triggers the creation of an allocation
       // if there exists none
-      AbstractFunction function = (AbstractFunction) element_p;
+      AbstractFunction function = (AbstractFunction) element;
       Component component = null;
-      if (context_p instanceof Component) {
-        component = (Component) context_p;
+      if (context instanceof Component) {
+        component = (Component) context;
       } else {
         Part part = (Part) graphicalTarget;
         if (part.getAbstractType() instanceof Component) {
@@ -168,7 +173,9 @@ public class BusinessHelper {
             break;
           }
         }
-        if (mustCreate) {
+        EList<AbstractFunctionalBlock> allocationBlocks = function.getAllocationBlocks();
+        boolean isAllocated = allocationBlocks.size() > 0;
+        if (mustCreate && !isAllocated) {
           ComponentFunctionalAllocation allocation = FaFactory.eINSTANCE.createComponentFunctionalAllocation();
           MiscUtil.setNewId(allocation);
           allocation.setSourceElement(component);
@@ -177,72 +184,72 @@ public class BusinessHelper {
           result.add(allocation);
         }
       }
-    } else if ((element_p instanceof EnumerationLiteral) && (context_p instanceof Enumeration)) {
-      ((EnumerationLiteral) element_p).setAbstractType((AbstractType) context_p);
-    } else if ((element_p instanceof FunctionalChainInvolvement) && (context_p instanceof FunctionalChain)) {
-      ((FunctionalChainInvolvement) element_p).setInvolver((FunctionalChain) context_p);
+    } else if ((element instanceof EnumerationLiteral) && (context instanceof Enumeration)) {
+      ((EnumerationLiteral) element).setAbstractType((AbstractType) context);
+    } else if ((element instanceof FunctionalChainInvolvement) && (context instanceof FunctionalChain)) {
+      ((FunctionalChainInvolvement) element).setInvolver((FunctionalChain) context);
     }
     return result;
   }
 
   /**
    * Deploy the given part on the given location part
-   * @param element_p a non-null part typed by a behavior physical component
-   * @param location_p a non-null part typed by a node physical component
+   * @param element a non-null part typed by a behavior physical component
+   * @param location a non-null part typed by a node physical component
    */
-  private void deployPhysicalPartOn(Part element_p, Part location_p) {
+  private void deployPhysicalPartOn(Part element, Part location) {
     PartDeploymentLink link = DeploymentFactory.eINSTANCE.createPartDeploymentLink();
     MiscUtil.setNewId(link);
-    link.setLocation(location_p);
-    link.setDeployedElement(element_p);
-    location_p.getOwnedDeploymentLinks().add(link);
+    link.setLocation(location);
+    link.setDeployedElement(element);
+    location.getOwnedDeploymentLinks().add(link);
   }
 
   /**
    * Create and return a Part typed by the given non-null type
    */
-  private Part createPartFor(AbstractType type_p) {
+  private Part createPartFor(AbstractType type) {
     Part result = CsFactory.eINSTANCE.createPart();
     MiscUtil.setNewId(result);
-    result.setName(type_p.getName());
+    result.setName(type.getName());
     LiteralNumericValue minCard = DatavalueFactory.eINSTANCE.createLiteralNumericValue("minCard"); //$NON-NLS-1$
     minCard.setValue("1"); //$NON-NLS-1$
     result.setOwnedMinCard(minCard);
     LiteralNumericValue maxCard = DatavalueFactory.eINSTANCE.createLiteralNumericValue("maxCard"); //$NON-NLS-1$
     maxCard.setValue("1"); //$NON-NLS-1$
     result.setOwnedMaxCard(maxCard);
-    result.setAbstractType(type_p);
+    result.setAbstractType(type);
     return result;
   }
 
   /**
    * Return semantic elements which are implicitly coupled with the given semantic element in the context of their given representation context
    */
-  public Set<EObject> getImplicitElements(EObject element_p, Object context_p) {
+  public Set<EObject> getImplicitElements(EObject element, Object context) {
     Set<EObject> result = new HashSet<EObject>();
-    if ((element_p instanceof Part) && !isMultipartAllowed(element_p)) {
+    if ((element instanceof Part) && !isMultipartAllowed(element)) {
       // Whatever the diagram, parts are always coupled with their
       // type if there is a unique part per type
-      result.add(((Part) element_p).getAbstractType());
-    } else if ((element_p instanceof Component) && !isMultipartAllowed(element_p)) {
-      List<AbstractTypedElement> typedElements = ((Component) element_p).getAbstractTypedElements();
+      result.add(((Part) element).getAbstractType());
+    } else if ((element instanceof Component) && !isMultipartAllowed(element)) {
+      List<AbstractTypedElement> typedElements = ((Component) element).getAbstractTypedElements();
       if ((typedElements.size() == 1) && (typedElements.get(0) instanceof Part)) {
         result.add(typedElements.get(0));
       }
-    } else if (element_p instanceof Association) {
+    } else if (element instanceof Association) {
       // Whatever the diagram, Associations are coupled with their
       // navigable members, which they may not own
-      result.addAll(((Association) element_p).getNavigableMembers());
-    } else if (element_p instanceof SequenceMessage) {
+      result.addAll(((Association) element).getNavigableMembers());
+    } else if (element instanceof SequenceMessage) {
       // Whatever the diagram, SequenceMessages are coupled with their ends
-      SequenceMessage msg = (SequenceMessage) element_p;
+      SequenceMessage msg = (SequenceMessage) element;
       result.add(msg.getSendingEnd());
       result.add(msg.getSendingEnd().getEvent());
       result.add(msg.getReceivingEnd());
       result.add(msg.getReceivingEnd().getEvent());
-    } else if (element_p instanceof Execution) {
+    } else if (element instanceof Execution) {
       // Whatever the diagram, Executions are coupled with their ends
-      Execution msg = (Execution) element_p;
+      Execution msg = (Execution) element;
       result.add(msg.getStart());
       if (msg.getStart() instanceof AbstractEnd) {
         result.add(((AbstractEnd) msg.getStart()).getEvent());
@@ -251,10 +258,10 @@ public class BusinessHelper {
       if (msg.getFinish() instanceof AbstractEnd) {
         result.add(((AbstractEnd) msg.getFinish()).getEvent());
       }
-    } else if (element_p instanceof InstanceRole) {
+    } else if (element instanceof InstanceRole) {
       // Whatever the diagram, InstanceRoles are coupled with their
       // represented instance
-      result.add(((InstanceRole) element_p).getRepresentedInstance());
+      result.add(((InstanceRole) element).getRepresentedInstance());
     }
     return result;
   }
@@ -262,10 +269,10 @@ public class BusinessHelper {
   /**
    * Generalization of getImplicitElements to collections
    */
-  public final Set<EObject> getImplicitElements(Collection<? extends EObject> elements_p, Object context_p) {
+  public final Set<EObject> getImplicitElements(Collection<? extends EObject> elements, Object context) {
     Set<EObject> result = new HashSet<EObject>();
-    for (EObject element : elements_p) {
-      result.addAll(getImplicitElements(element, context_p));
+    for (EObject element : elements) {
+      result.addAll(getImplicitElements(element, context));
     }
     return result;
   }
@@ -273,34 +280,34 @@ public class BusinessHelper {
   /**
    * Return whether the given reference with isMany==true has a fixed multiplicity and should therefore not be used for adding elements
    */
-  private boolean hasFixedCardinality(EReference reference_p) {
-    return (CsPackage.eINSTANCE.getPhysicalLink_LinkEnds() == reference_p) || (InformationPackage.eINSTANCE.getAssociation_NavigableMembers() == reference_p);
+  private boolean hasFixedCardinality(EReference reference) {
+    return (CsPackage.eINSTANCE.getPhysicalLink_LinkEnds() == reference) || (InformationPackage.eINSTANCE.getAssociation_NavigableMembers() == reference);
   }
 
   /**
    * Return whether the given element is meaningful when considered within the given set of elements or their children only, i.e., when separated from anything
    * outside those elements.
    */
-  public boolean isMeaningfulWithin(EObject element_p, Collection<? extends EObject> contexts_p) {
+  public boolean isMeaningfulWithin(EObject element, Collection<? extends EObject> contexts) {
     // EnumerationPropertyValues never meaningful for the moment
-    if (element_p instanceof EnumerationPropertyValue) {
+    if (element instanceof EnumerationPropertyValue) {
       return false;
     }
     // Other cases
     Collection<EObject> mustBeIncluded = new ArrayList<EObject>();
-    if (element_p instanceof AbstractTrace) {
+    if (element instanceof AbstractTrace) {
       // Traces and allocations require their source and target to be present
-      AbstractTrace abstractTrace = (AbstractTrace) element_p;
+      AbstractTrace abstractTrace = (AbstractTrace) element;
       mustBeIncluded.add(abstractTrace.getSourceElement());
       mustBeIncluded.add(abstractTrace.getTargetElement());
-    } else if (element_p instanceof FunctionalExchange) {
+    } else if (element instanceof FunctionalExchange) {
       // Same for FunctionalExchange
-      FunctionalExchange exchange = (FunctionalExchange) element_p;
+      FunctionalExchange exchange = (FunctionalExchange) element;
       mustBeIncluded.add(exchange.getSource());
       mustBeIncluded.add(exchange.getTarget());
-    } else if (element_p instanceof ComponentExchange) {
+    } else if (element instanceof ComponentExchange) {
       // For connections, check for the contents of the ends
-      ComponentExchange connection = (ComponentExchange) element_p;
+      ComponentExchange connection = (ComponentExchange) element;
       InformationsExchanger source = connection.getSource();
       if (source instanceof ComponentExchangeEnd) {
         mustBeIncluded.add(((ComponentExchangeEnd) source).getPart());
@@ -315,9 +322,9 @@ public class BusinessHelper {
       } else {
         mustBeIncluded.add(target);
       }
-    } else if (element_p instanceof PhysicalLink) {
+    } else if (element instanceof PhysicalLink) {
       // Same for physical links
-      PhysicalLink physicalLink = (PhysicalLink) element_p;
+      PhysicalLink physicalLink = (PhysicalLink) element;
       for (AbstractPhysicalLinkEnd end : physicalLink.getLinkEnds()) {
         if (end instanceof PhysicalLinkEnd) {
           mustBeIncluded.add(((PhysicalLinkEnd) end).getPart());
@@ -326,26 +333,26 @@ public class BusinessHelper {
           mustBeIncluded.add(end);
         }
       }
-    } else if ((element_p instanceof AbstractDeploymentLink) && !isMultipleDeploymentAllowed(element_p)) {
+    } else if ((element instanceof AbstractDeploymentLink) && !isMultipleDeploymentAllowed(element)) {
       // Deployment links require their target to be present if multiple
       // deployments are not allowed
-      AbstractDeploymentLink link = (AbstractDeploymentLink) element_p;
+      AbstractDeploymentLink link = (AbstractDeploymentLink) element;
       DeployableElement deployed = link.getDeployedElement();
       mustBeIncluded.add(deployed);
-    } else if (element_p instanceof Property) {
+    } else if (element instanceof Property) {
       // For properties typed by non-primitive classes...
-      Property property = (Property) element_p;
+      Property property = (Property) element;
       AbstractType propertyType = property.getAbstractType();
       if (propertyType instanceof org.polarsys.capella.core.data.information.Class) {
     	  org.polarsys.capella.core.data.information.Class propertyClass = (org.polarsys.capella.core.data.information.Class) propertyType;
         EObject propertyContainer = property.eContainer();
-        if (!propertyClass.isIsPrimitive() && contexts_p.contains(propertyContainer)
+        if (!propertyClass.isIsPrimitive() && contexts.contains(propertyContainer)
             && (propertyContainer instanceof org.polarsys.capella.core.data.information.Class)) {
           // ... check if an association is present
           boolean found = false;
           // We can't use the cross-referencer here because the elements may not be
           // attached to the Capella model yet
-          Iterator<? extends EObject> it = contexts_p.iterator();
+          Iterator<? extends EObject> it = contexts.iterator();
           while (!found && it.hasNext()) {
             EObject context = it.next();
             if (context instanceof Association) {
@@ -362,7 +369,7 @@ public class BusinessHelper {
       }
     }
     for (EObject current : mustBeIncluded) {
-      if ((current == null) || !EcoreUtil.isAncestor(contexts_p, current)) {
+      if ((current == null) || !EcoreUtil.isAncestor(contexts, current)) {
         return false;
       }
     }
@@ -372,32 +379,32 @@ public class BusinessHelper {
   /**
    * Return whether it makes sense (according to business criteria) to store the given element at the given location
    */
-  public boolean isMeaningfulStorageFor(StorageLocation loc_p, EObject toStore_p) {
+  public boolean isMeaningfulStorageFor(StorageLocation loc, EObject toStore) {
     // *** True by default
     boolean result = true;
-    EObject container = loc_p.getContainer();
+    EObject container = loc.getContainer();
     // *** Functions
-    if (toStore_p instanceof AbstractFunction) {
+    if (toStore instanceof AbstractFunction) {
       // Functions go in similar functions (system, logical, physical)
       result = ((container instanceof FunctionPkg) || (container instanceof AbstractFunction));
       if (result) {
         BlockArchitecture archi = getBlockArchitecture(container);
-        if (toStore_p instanceof SystemFunction) {
+        if (toStore instanceof SystemFunction) {
           result = archi instanceof SystemAnalysis;
-        } else if (toStore_p instanceof LogicalFunction) {
+        } else if (toStore instanceof LogicalFunction) {
           result = archi instanceof LogicalArchitecture;
-        } else if (toStore_p instanceof PhysicalFunction) {
+        } else if (toStore instanceof PhysicalFunction) {
           result = archi instanceof PhysicalArchitecture;
-        } else if (toStore_p instanceof OperationalActivity) {
+        } else if (toStore instanceof OperationalActivity) {
           result = archi instanceof OperationalAnalysis;
         }
       }
     }
     // *** FunctionalExchanges
-    else if (toStore_p instanceof FunctionalExchange) {
+    else if (toStore instanceof FunctionalExchange) {
       // FunctionalExchanges go in functions which are similar to the
       // source/target's owner
-      FunctionalExchange exchange = (FunctionalExchange) toStore_p;
+      FunctionalExchange exchange = (FunctionalExchange) toStore;
       ActivityNode pin = exchange.getSource();
       if (null == pin) {
         pin = exchange.getTarget();
@@ -410,9 +417,9 @@ public class BusinessHelper {
       }
     }
     // *** Parts of type Component
-    else if ((toStore_p instanceof Part) && (((Part) toStore_p).getAbstractType() instanceof Component)
+    else if ((toStore instanceof Part) && (((Part) toStore).getAbstractType() instanceof Component)
              && ((container instanceof Part) || (container instanceof Component))) {
-      Component toStoreType = (Component) ((Part) toStore_p).getAbstractType();
+      Component toStoreType = (Component) ((Part) toStore).getAbstractType();
       Component containerType = container instanceof Component ? (Component) container : (Component) ((Part) container).getAbstractType();
       result = componentsMatchForStorage(containerType, toStoreType);
     }
@@ -422,18 +429,18 @@ public class BusinessHelper {
   /**
    * Return whether the given non-null components match for storage
    */
-  private boolean componentsMatchForStorage(Component container_p, Component toStore_p) {
-    BlockArchitecture architecture = getBlockArchitecture(container_p);
+  private boolean componentsMatchForStorage(Component container, Component toStore) {
+    BlockArchitecture architecture = getBlockArchitecture(container);
     if (architecture instanceof LogicalArchitecture) {
-      return (toStore_p instanceof LogicalComponent) || (toStore_p instanceof LogicalActor);
+      return (toStore instanceof LogicalComponent) || (toStore instanceof LogicalActor);
     } else if (architecture instanceof PhysicalArchitecture) {
-      return (toStore_p instanceof PhysicalComponent) || (toStore_p instanceof PhysicalActor);
+      return (toStore instanceof PhysicalComponent) || (toStore instanceof PhysicalActor);
     } else if (architecture instanceof SystemAnalysis) {
-      return (toStore_p instanceof SystemComponent) || (toStore_p instanceof Actor);
+      return (toStore instanceof SystemComponent) || (toStore instanceof Actor);
     } else if (architecture instanceof OperationalAnalysis) {
-      return toStore_p instanceof Entity;
+      return toStore instanceof Entity;
     } else if (architecture instanceof EPBSArchitecture) {
-      return toStore_p instanceof ConfigurationItem;
+      return toStore instanceof ConfigurationItem;
     }
     return false;
   }
@@ -441,71 +448,71 @@ public class BusinessHelper {
   /**
    * Return the ComponentArchitecture to which the given potentially null element belongs, if any
    */
-  private BlockArchitecture getBlockArchitecture(EObject element_p) {
-    if (element_p == null) {
+  private BlockArchitecture getBlockArchitecture(EObject element) {
+    if (element == null) {
       return null;
     }
-    if (element_p instanceof BlockArchitecture) {
-      return (BlockArchitecture) element_p;
+    if (element instanceof BlockArchitecture) {
+      return (BlockArchitecture) element;
     }
-    return getBlockArchitecture(element_p.eContainer());
+    return getBlockArchitecture(element.eContainer());
   }
 
   /**
    * Return whether multiparts are allowed (reuse of types)
-   * @param element_p an element that defines a project context
+   * @param element an element that defines a project context
    */
-  private boolean isMultipartAllowed(EObject element_p) {
-    return TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((ModelElement) element_p));
+  private boolean isMultipartAllowed(EObject element) {
+    return TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((ModelElement) element));
   }
 
   /**
    * Return whether multiple deployments are allowed
-   * @param element_p an element that defines a project context
+   * @param element an element that defines a project context
    */
-  private boolean isMultipleDeploymentAllowed(EObject element_p) {
+  private boolean isMultipleDeploymentAllowed(EObject element) {
     return CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed();
   }
 
   /**
    * Return whether the storage location of the given element can be derived from other elements it depends upon
    */
-  public boolean storageCanBeDerived(EObject element_p) {
-    return (element_p instanceof FunctionalExchange) || (element_p instanceof ComponentExchange) || (element_p instanceof PhysicalLink)
-           || ((element_p instanceof Part) && (((Part) element_p).getType() instanceof AbstractActor));
+  public boolean storageCanBeDerived(EObject element) {
+    return (element instanceof FunctionalExchange) || (element instanceof ComponentExchange) || (element instanceof PhysicalLink)
+           || ((element instanceof Part) && (((Part) element).getType() instanceof AbstractActor));
   }
 
   /**
    * Derive the storage location of the given element based on the already defined storage locations for the given additional elements
    */
-  public StorageLocation deriveStorage(EObject element_p, List<? extends StorageLocation> locations_p, List<? extends EObject> peers_p) {
-    assert locations_p.size() == peers_p.size();
+  public StorageLocation deriveStorage(EObject element, List<? extends StorageLocation> locations, List<? extends EObject> peers) {
+    assert locations.size() == peers.size();
     StorageLocation result = null;
     ModelElement container = null;
     EReference containment = null;
 
     // FunctionalExchanges
-    if (element_p instanceof FunctionalExchange) {
-      FunctionalExchange exchange = (FunctionalExchange) element_p;
-      container = deriveLinkStorage(exchange.getSource(), exchange.getTarget(), locations_p, peers_p);
+    if (element instanceof FunctionalExchange) {
+      FunctionalExchange exchange = (FunctionalExchange) element;
+      container = deriveLinkStorage(exchange.getSource(), exchange.getTarget(), locations, peers);
       if (container instanceof AbstractFunction) {
         containment = FaPackage.eINSTANCE.getAbstractFunction_OwnedFunctionalExchanges();
       }
     }
     // Connections
-    else if (element_p instanceof ComponentExchange) {
-      ComponentExchange exchange = (ComponentExchange) element_p;
-      container = deriveLinkStorage(exchange.getSource(), exchange.getTarget(), locations_p, peers_p);
+    else if (element instanceof ComponentExchange) {
+      ComponentExchange exchange = (ComponentExchange) element;
+      container = deriveLinkStorage(exchange.getSource(), exchange.getTarget(), locations, peers);
       if (container instanceof Component) {
         containment = FaPackage.eINSTANCE.getAbstractFunctionalBlock_OwnedComponentExchanges();
       }
     }
     // PhysicalLinks
-    else if (element_p instanceof PhysicalLink) {
-      PhysicalLink exchange = (PhysicalLink) element_p;
+    else if (element instanceof PhysicalLink) {
+      PhysicalLink exchange = (PhysicalLink) element;
       List<? extends EObject> ends = exchange.getLinkEnds();
       if (2 == ends.size()) {
-        container = deriveLinkStorage(ends.get(0), ends.get(1), locations_p, peers_p);
+        container = deriveLinkStorage(ends.get(0), ends.get(1), locations, peers);
         if (container instanceof Component) {
           containment = CsPackage.eINSTANCE.getComponent_OwnedPhysicalLinks();
         }
@@ -521,15 +528,15 @@ public class BusinessHelper {
    * Helper method for deriveStorage: case where storage is derived from the ends of a link/exchange
    * @return the computed storage element, if any
    */
-  private ModelElement deriveLinkStorage(EObject source_p, EObject target_p, List<? extends StorageLocation> locations_p, List<? extends EObject> peers_p) {
+  private ModelElement deriveLinkStorage(EObject source, EObject target, List<? extends StorageLocation> locations, List<? extends EObject> peers) {
     ModelElement result = null;
-    EObject sourceElement = getLinkDerivationReferenceElement(source_p);
-    EObject targetElement = getLinkDerivationReferenceElement(target_p);
+    EObject sourceElement = getLinkDerivationReferenceElement(source);
+    EObject targetElement = getLinkDerivationReferenceElement(target);
     try {
-      int sourceIndex = peers_p.indexOf(sourceElement);
-      int targetIndex = peers_p.indexOf(targetElement);
-      StorageLocation sourceLoc = locations_p.get(sourceIndex);
-      StorageLocation targetLoc = locations_p.get(targetIndex);
+      int sourceIndex = peers.indexOf(sourceElement);
+      int targetIndex = peers.indexOf(targetElement);
+      StorageLocation sourceLoc = locations.get(sourceIndex);
+      StorageLocation targetLoc = locations.get(targetIndex);
       EObject ancestor = MiscUtil.getCommonAncestor(sourceLoc.getContainer(), targetLoc.getContainer());
       if (ancestor instanceof ModelElement) {
         result = (ModelElement) ancestor;
@@ -544,34 +551,34 @@ public class BusinessHelper {
    * From the given non-null end of a link, return the associated element which must be used for deriving a storage for the link
    * @return a non-null element
    */
-  private EObject getLinkDerivationReferenceElement(EObject element_p) {
+  private EObject getLinkDerivationReferenceElement(EObject element) {
     EObject result;
-    if (element_p instanceof ComponentExchangeEnd) {
-      ComponentExchangeEnd end = (ComponentExchangeEnd) element_p;
+    if (element instanceof ComponentExchangeEnd) {
+      ComponentExchangeEnd end = (ComponentExchangeEnd) element;
       if (end.getPart() != null) {
         result = end.getPart();
       } else {
         result = end.getPort();
       }
-    } else if (element_p instanceof PhysicalLinkEnd) {
-      PhysicalLinkEnd end = (PhysicalLinkEnd) element_p;
+    } else if (element instanceof PhysicalLinkEnd) {
+      PhysicalLinkEnd end = (PhysicalLinkEnd) element;
       if (end.getPart() != null) {
         result = end.getPart();
       } else {
         result = end.getPort();
       }
     } else {
-      result = element_p;
+      result = element;
     }
     return result.eContainer();
   }
 
   /**
    * Return whether the given reference must be updated when its values are duplicated, i.e., whether the duplicates must be referenced too
-   * @param reference_p a reference such that QueryUtil.supportsAddition(reference_p)
+   * @param reference a reference such that QueryUtil.supportsAddition(reference)
    */
-  public boolean updateWithDuplicatedValues(EReference reference_p) {
-    return !hasFixedCardinality(reference_p) && !NON_UPDATING_FEATURES.contains(reference_p);
+  public boolean updateWithDuplicatedValues(EReference reference) {
+    return !hasFixedCardinality(reference) && !NON_UPDATING_FEATURES.contains(reference);
   }
 
   /**
