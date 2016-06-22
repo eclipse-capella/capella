@@ -2325,10 +2325,6 @@
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 
 |-
-| 	Reuse Mode/State 	
-| [[Image:Images/icons/full/obj16/Insert.gif]] 
-| 		Reuse Mode/State 	
-|-
 | 	Initial 	
 | [[Image:Images/icons/full/obj16/InitialPseudoState.gif]] 
 | 		Creates an Initial Pseudo State 	
@@ -2352,14 +2348,6 @@
 | 	Final 	
 | [[Image:Images/icons/full/obj16/FinalState.gif]] 
 | 		Creates a Final Pseudo State 	
-|-
-| 	EntryPoint 	
-| [[Image:Images/icons/full/obj16/Pseudostate_entryPoint.gif]] 
-| 		Creates a Entry Pseudo State 	
-|-
-| 	ExitPoint 	
-| [[Image:Images/icons/full/obj16/Pseudostate_exitPoint.gif]] 
-| 		Creates a Exit Pseudo State 	
 |-
 | 	DeepHistory 	
 | [[Image:Images/icons/full/obj16/Pseudostate_deepHistory.gif]] 
