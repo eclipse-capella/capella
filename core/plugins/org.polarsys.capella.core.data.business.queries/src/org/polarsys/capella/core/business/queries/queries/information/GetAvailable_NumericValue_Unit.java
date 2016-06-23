@@ -39,7 +39,7 @@ public class GetAvailable_NumericValue_Unit extends AbstractQuery {
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     CapellaElement capellaElement = (CapellaElement) input;
-    List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+    List<EObject> availableElements = getAvailableElements(capellaElement);
     return (List) availableElements;
   }
 
@@ -62,8 +62,8 @@ public class GetAvailable_NumericValue_Unit extends AbstractQuery {
    * Refer MQRY_PhysicalDimension_DefaultUnit_1
    * </p>
    */
-  public List<CapellaElement> getAvailableElements(CapellaElement element) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+  public List<EObject> getAvailableElements(CapellaElement element) {
+    List<EObject> availableElements = new ArrayList<EObject>();
     SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
     if (systemEngineering == null) {
       return availableElements;

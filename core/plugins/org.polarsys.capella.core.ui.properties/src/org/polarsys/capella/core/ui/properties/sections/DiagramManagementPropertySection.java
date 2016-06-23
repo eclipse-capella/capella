@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.ui.properties.sections;
 
 import java.lang.ref.WeakReference;
@@ -131,8 +132,8 @@ public class DiagramManagementPropertySection extends AbstractSection {
        */
       @SuppressWarnings("synthetic-access")
       @Override
-      protected List<CapellaElement> getAvailableValues() {
-        List<CapellaElement> result = new ArrayList<CapellaElement>(0);
+      protected List<EObject> getAvailableValues() {
+        List<EObject> result = new ArrayList<EObject>(0);
         IBusinessQuery query =
             BusinessQueriesProvider.getInstance().getContribution(CapellacorePackage.Literals.CAPELLA_ELEMENT,
                 CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS);
@@ -147,12 +148,12 @@ public class DiagramManagementPropertySection extends AbstractSection {
        */
       @SuppressWarnings("synthetic-access")
       @Override
-      protected List<CapellaElement> getCurrentValues() {
-        List<CapellaElement> result = new ArrayList<CapellaElement>(0);
+      protected List<EObject> getCurrentValues() {
+        List<EObject> result = new ArrayList<EObject>(0);
 
         String value = RepresentationAnnotationHelper.getProgressStatus(_representation.get());
         if (null != value) {
-          for (CapellaElement element : getAvailableValues()) {
+          for (EObject element : getAvailableValues()) {
             if (value.equals(((AbstractNamedElement) element).getName())) {
               result.add(element);
             }

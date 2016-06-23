@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.cs.properties.sections;
 
 import java.util.ArrayList;
@@ -19,21 +20,19 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
+import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.core.properties.controllers.GeneralizableElementController;
 import org.polarsys.capella.core.data.core.properties.fields.VisibilityKindGroup;
 import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
 import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.CompositionMultipleSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.ContainmentTableField;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  * The Interface section.
@@ -84,8 +83,8 @@ public class InterfaceSection extends NamedElementSection {
        * So several ExchangeItemAllocations will be created.
        */
       @Override
-      protected java.util.List<ModelElement> getAvailableElementsToAdd() {
-        final List<ModelElement> availableElements = new ArrayList<ModelElement>(0);
+      protected java.util.List<EObject> getAvailableElementsToAdd() {
+        final List<EObject> availableElements = new ArrayList<EObject>(0);
         AbstractReadOnlyCommand command = new AbstractReadOnlyCommand() {
           /**
            * {@inheritDoc}

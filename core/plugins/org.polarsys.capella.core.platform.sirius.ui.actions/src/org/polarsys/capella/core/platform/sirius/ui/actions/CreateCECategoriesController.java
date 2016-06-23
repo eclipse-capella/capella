@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.util.Arrays;
@@ -34,11 +35,11 @@ public class CreateCECategoriesController extends CreateCategoriesController {
    * {@inheritDoc}
    */
   @Override
-  public void createAndAttachCategory(List<EObject> selection_p) {
-    super.createAndAttachCategory(selection_p);
+  public void createAndAttachCategory(List<EObject> selection) {
+    super.createAndAttachCategory(selection);
 
     List<EClass> containerEClasses = Arrays.asList(FaPackage.eINSTANCE.getAbstractFunctionalBlock(), FaPackage.eINSTANCE.getAbstractFunctionalStructure());
-    EObject categoryContainer = getBestContainerForCategory(selection_p, containerEClasses);
+    EObject categoryContainer = getBestContainerForCategory(selection, containerEClasses);
     if (isNullOrNotInstanceOf(categoryContainer, containerEClasses)) {
       return;
     }
@@ -61,7 +62,7 @@ public class CreateCECategoriesController extends CreateCategoriesController {
         ((AbstractFunctionalStructure) categoryContainer).getOwnedComponentExchangeCategories().add(exchangeCategory);
       }
 
-      for (EObject ce : selection_p) {
+      for (EObject ce : selection) {
         if (ce instanceof ComponentExchange) {
           exchangeCategory.getExchanges().add((ComponentExchange) ce);
         }
@@ -73,22 +74,22 @@ public class CreateCECategoriesController extends CreateCategoriesController {
   }
 
   /**
-   * @param container_p
+   * @param container
    * @return
    */
   @Override
-  protected EObject createCategory(EObject container_p) {
+  protected EObject createCategory(EObject container) {
     String defaultName;
     EStructuralFeature feature = null;
-    if (container_p instanceof AbstractFunctionalBlock) {
+    if (container instanceof AbstractFunctionalBlock) {
       feature = FaPackage.eINSTANCE.getAbstractFunctionalBlock_OwnedComponentExchangeCategories();
-    } else if (container_p instanceof AbstractFunctionalStructure) {
+    } else if (container instanceof AbstractFunctionalStructure) {
       feature = FaPackage.eINSTANCE.getAbstractFunctionalStructure_OwnedComponentExchangeCategories();
     }
     // create the category
     ComponentExchangeCategory exchangeCategory = FaFactory.eINSTANCE.createComponentExchangeCategory();
     defaultName =
-        EcoreUtil2.getUniqueName(exchangeCategory, container_p, feature, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
+        EcoreUtil2.getUniqueName(exchangeCategory, container, feature, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
             Messages.CreateCECategoriesController_prefix);
     exchangeCategory.setName(defaultName);
     return exchangeCategory;

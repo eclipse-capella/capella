@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
@@ -33,7 +34,7 @@ import org.polarsys.capella.core.ui.toolkit.AbstractCommandActionHandler;
 public class CapellaPasteAction extends AbstractCommandActionHandler {
   /**
    * Constructs the Capella action allowing to paste Capella elements.
-   * @param domain_p The editing domain.
+   * @param domain The editing domain.
    */
   public CapellaPasteAction() {
     super(EMFEditUIPlugin.INSTANCE.getString("_UI_Paste_menu_item"));
@@ -43,9 +44,9 @@ public class CapellaPasteAction extends AbstractCommandActionHandler {
    * @see org.eclipse.emf.edit.ui.action.PasteAction#createCommand(java.util.Collection)
    */
   @Override
-  public Command createCommand(Collection<Object> selection_p) {
-    if (1 == selection_p.size()) {
-      return new CapellaPasteCommand(TransactionHelper.getEditingDomain(filterSelection(selection_p)), getStructuredSelection().iterator().next(), null,
+  public Command createCommand(Collection<Object> selection) {
+    if (1 == selection.size()) {
+      return new CapellaPasteCommand(TransactionHelper.getEditingDomain(filterSelection(selection)), getStructuredSelection().iterator().next(), null,
           CommandParameter.NO_INDEX);
     }
     return UnexecutableCommand.INSTANCE;
@@ -57,9 +58,9 @@ public class CapellaPasteAction extends AbstractCommandActionHandler {
    */
   @SuppressWarnings("unchecked")
   @Override
-  public boolean updateSelection(IStructuredSelection selection_p) {
-    if (!selection_p.isEmpty()) {
-      Object obj = selection_p.iterator().next();
+  public boolean updateSelection(IStructuredSelection selection) {
+    if (!selection.isEmpty()) {
+      Object obj = selection.iterator().next();
       if (obj instanceof EObject) {
         Collection<?> clipboard = null;
         SharedCutPasteClipboard cutClipboard = SharedCutPasteClipboard.getCutClipboard();
@@ -77,18 +78,18 @@ public class CapellaPasteAction extends AbstractCommandActionHandler {
         }
       }
     }
-    return super.updateSelection(selection_p);
+    return super.updateSelection(selection);
   }
 
   /**
-   * @param selectedModelElements_p
-   * @param targetElement_p
+   * @param selectedModelElements
+   * @param targetElement
    * @return
    * Moved. use instead MoveHelper.checkSemanticRules
    */
   @Deprecated
-  public static boolean checkSemanticRules(List<EObject> selectedElements_p, EObject targetElement_p) {
-    return MoveHelper.getInstance().checkSemanticRules(selectedElements_p, targetElement_p).isOK();
+  public static boolean checkSemanticRules(List<EObject> selectedElements, EObject targetElement) {
+    return MoveHelper.getInstance().checkSemanticRules(selectedElements, targetElement).isOK();
   }
 
 }

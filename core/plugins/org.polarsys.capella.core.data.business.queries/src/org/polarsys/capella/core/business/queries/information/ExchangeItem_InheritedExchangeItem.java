@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
@@ -44,10 +45,10 @@ public class ExchangeItem_InheritedExchangeItem extends AbstractClassInheritedCl
 
 	
 	@Override
-	public List<CapellaElement> getAvailableElements(CapellaElement element) {
+	public List<EObject> getAvailableElements(EObject element) {
 		QueryContext context = new QueryContext();
 		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		List<CapellaElement> result = new ArrayList<CapellaElement>();
+		List<EObject> result = new ArrayList<EObject>();
 		if (element instanceof ExchangeItem) {
 			List<CapellaElement> elements = QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__EXCHANGE_ITEM__INHERITED_EXCHANGE_ITEM___LIB, element, context, new RemoveFinalElement());
 			result.addAll(elements);
@@ -56,10 +57,10 @@ public class ExchangeItem_InheritedExchangeItem extends AbstractClassInheritedCl
 		return result;
 	}
 	@Override
-	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+	public List<EObject> getCurrentElements(EObject element, boolean onlyGenerated) {
 		QueryContext context = new QueryContext();
 		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		List<CapellaElement> result = new ArrayList<CapellaElement>();
+		List<EObject> result = new ArrayList<EObject>();
 		if (element instanceof ExchangeItem) {			
 			List<CapellaElement> elements = QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__EXCHANGE_ITEM__INHERITED_EXCHANGE_ITEM, element, context, new RemoveFinalElement());
 			result.addAll(elements);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.commands;
 
 import java.util.ArrayList;
@@ -51,10 +52,10 @@ public class NameCollisionHelper {
    * Clients should however use the static getDefault(),
    * to assure a consistent pattern across the application.
    * 
-   * @param pattern_p
+   * @param pattern
    */
-  public NameCollisionHelper(Pattern pattern_p){
-    _pattern = pattern_p; 
+  public NameCollisionHelper(Pattern pattern){
+    _pattern = pattern; 
   }
   
   public static NameCollisionHelper getDefault(){
@@ -72,11 +73,11 @@ public class NameCollisionHelper {
    * @param candidates A list that may contain elements that conflict with elements in the 'existing' list
    * @return A list of elements that conflict with elements in the 'existing' list. Never null.
    */
-  public Collection<AbstractNamedElement> findConflictingElements(Collection<?> existing_p, Collection<?> candidates_p) {
+  public Collection<AbstractNamedElement> findConflictingElements(Collection<?> existing, Collection<?> candidates) {
     List<AbstractNamedElement> result = new ArrayList<AbstractNamedElement>(0);
-    for (Object candidate : candidates_p) {
+    for (Object candidate : candidates) {
       if (candidate instanceof AbstractNamedElement) {
-        if (isCollide(existing_p, ((AbstractNamedElement) candidate).getName())) {
+        if (isCollide(existing, ((AbstractNamedElement) candidate).getName())) {
           result.add((AbstractNamedElement) candidate);
         }
       }
@@ -86,17 +87,17 @@ public class NameCollisionHelper {
   
   /**
    * Handle naming collision for specified objects.
-   * @param objects_p
-   * @param owner_p
+   * @param objects
+   * @param owner
    */
-  public void handleNamingCollision(Collection<? extends AbstractNamedElement> objects_p, EObject owner_p) {
+  public void handleNamingCollision(Collection<? extends AbstractNamedElement> objects, EObject owner) {
     // Loop over objects to handle.
-    for (AbstractNamedElement element : objects_p) {
+    for (AbstractNamedElement element : objects) {
       if (null != element) {
         String name = element.getName();
         // Flag to indicate if it is the first attempt.
         boolean firstAttempt = true;
-        List<EObject> eContents = owner_p.eContents();
+        List<EObject> eContents = owner.eContents();
         while (isCollide(eContents, name)) {
           Matcher patternMatcher = _pattern.matcher(name);
           if (firstAttempt) {
@@ -120,15 +121,15 @@ public class NameCollisionHelper {
 
   /**
    * Is the given name already present in the list of elements.
-   * @param contents_p a list of model elements
-   * @param name_p
+   * @param contents a list of model elements
+   * @param name
    * @return
    */
-  public boolean isCollide(Collection<?> modelElements_p, String name_p) {
-    for (Object object : modelElements_p) {
+  public boolean isCollide(Collection<?> modelElements, String name) {
+    for (Object object : modelElements) {
       if (object instanceof AbstractNamedElement) {
         AbstractNamedElement element = (AbstractNamedElement) object;
-        if (element.getName() != null && element.getName().equals(name_p))
+        if (element.getName() != null && element.getName().equals(name))
           return true;
       }
     }

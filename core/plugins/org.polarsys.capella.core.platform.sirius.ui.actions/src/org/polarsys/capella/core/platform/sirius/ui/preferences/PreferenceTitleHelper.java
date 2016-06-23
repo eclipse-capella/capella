@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.preferences;
 
 import org.eclipse.emf.ecore.EClass;
@@ -23,8 +24,8 @@ import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryPro
  */
 public class PreferenceTitleHelper {
 
-  public String getPreferenceTitle(EClass clazz_p) {
-    EObject obj = clazz_p.getEPackage().getEFactoryInstance().create(clazz_p);
+  public String getPreferenceTitle(EClass clazz) {
+    EObject obj = clazz.getEPackage().getEFactoryInstance().create(clazz);
     IItemLabelProvider provider = (IItemLabelProvider) CapellaAdapterFactoryProvider.getInstance().getAdapterFactory().adapt(obj, IItemLabelProvider.class);
     if (provider instanceof ItemProviderAdapter) {
       return EObjectLabelProviderHelper.getMetaclassLabel(obj.eClass(), (ItemProviderAdapter) provider);

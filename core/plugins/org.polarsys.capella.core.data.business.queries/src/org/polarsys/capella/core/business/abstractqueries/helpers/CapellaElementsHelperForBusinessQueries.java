@@ -76,9 +76,9 @@ public class CapellaElementsHelperForBusinessQueries {
 	 * @param elements the list
 	 * @return the filtered list
 	 */
-	public static List<CapellaElement> getOnlyDiscreteDatatypes(List<CapellaElement> elements) {
-		List<CapellaElement> onlyDiscreteDatatypes = new ArrayList<CapellaElement>();
-		for (CapellaElement element : elements) {
+	public static List<EObject> getOnlyDiscreteDatatypes(List<EObject> elements) {
+		List<EObject> onlyDiscreteDatatypes = new ArrayList<EObject>();
+		for (EObject element : elements) {
 			if ((element instanceof DataType) && ((DataType) element).isDiscrete()) {
 				onlyDiscreteDatatypes.add(element);
 			}
@@ -222,7 +222,7 @@ public class CapellaElementsHelperForBusinessQueries {
    * @param capellaElement the Capella element
    * @return a list containing instances of <code>CapellaElement</code>
    */
-  public static List<CapellaElement> getCapellaElementsInstancesOf(DataPkg dataPkg, EClass eclass, CapellaElement capellaElement) {
+  public static List<EObject> getCapellaElementsInstancesOf(DataPkg dataPkg, EClass eclass, CapellaElement capellaElement) {
     return getCapellaElementsInstancesOf(dataPkg, (eclass != null) ? Collections.singletonList(eclass) : null, capellaElement);
   }
 
@@ -234,8 +234,8 @@ public class CapellaElementsHelperForBusinessQueries {
    * @param capellaElement the Capella element
    * @return a list containing instances of <code>CapellaElement</code>
    */
-  public static List<CapellaElement> getCapellaElementsInstancesOf(DataPkg dataPkg, List<EClass> eclasses, CapellaElement capellaElement) {
-    List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
+  public static List<EObject> getCapellaElementsInstancesOf(DataPkg dataPkg, List<EClass> eclasses, CapellaElement capellaElement) {
+    List<EObject> returnValue = new ArrayList<EObject>();
     // If the data package is not null
     if (null != dataPkg) {
       // Gets a list of the Capella Elements in the data package
@@ -401,7 +401,7 @@ public class CapellaElementsHelperForBusinessQueries {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     if (null != dataPkg) {
       List<GeneralizableElement> superClassifiers = GeneralizableElementExt.getAllSubGeneralizableElements(dataType);
-      for (CapellaElement capellaElement : DataPkgExt.getAllClassifierFromDataPkg(dataPkg)) {
+      for (EObject capellaElement : DataPkgExt.getAllClassifierFromDataPkg(dataPkg)) {
         if (capellaElement instanceof Classifier) {
           Classifier classifier = (Classifier) capellaElement;
           // Gets the features of the classifier in order to get its properties
@@ -562,7 +562,7 @@ public class CapellaElementsHelperForBusinessQueries {
   public static List<CapellaElement> getApplicablePropertiesForCardinalitiesInLevel(DataPkg dataPkg) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     if (null != dataPkg) {
-      for (CapellaElement capellaElement : DataPkgExt.getAllClassifierFromDataPkg(dataPkg)) {
+      for (EObject capellaElement : DataPkgExt.getAllClassifierFromDataPkg(dataPkg)) {
         if (capellaElement instanceof Classifier) {
           Classifier classifier = (Classifier) capellaElement;
           // Gets the features of the classifier in order to get its properties
@@ -799,7 +799,7 @@ public class CapellaElementsHelperForBusinessQueries {
         return availableElements;
       }
       if (null != dataPkg) {
-        for (CapellaElement capellaElement : DataPkgExt.getAllClassifierFromDataPkg(dataPkg)) {
+        for (EObject capellaElement : DataPkgExt.getAllClassifierFromDataPkg(dataPkg)) {
           if (capellaElement instanceof Classifier) {
             Classifier classifier = (Classifier) capellaElement;
             // Gets the features of the classifier in order to get its properties

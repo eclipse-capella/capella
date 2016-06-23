@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -51,7 +52,7 @@ import org.polarsys.capella.core.model.utils.ListExt;
  * <p>
  * Except the interfaces that are already used by the current LC(Refer MQRY_LogicalComponent_UsedInterfaces_1Ex1)
  * </p>
- * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
+ * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
  */
 
 public class GetAvailable_LogicalComponent_ImplementedInterfaces extends AbstractQuery {
@@ -60,7 +61,7 @@ public class GetAvailable_LogicalComponent_ImplementedInterfaces extends Abstrac
   public List<Object> execute(Object input, IQueryContext context) {
     CapellaElement element = (CapellaElement) input;
     SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+    List<EObject> availableElements = new ArrayList<EObject>();
 
     if (null == systemEngineering) {
       return (List) availableElements;

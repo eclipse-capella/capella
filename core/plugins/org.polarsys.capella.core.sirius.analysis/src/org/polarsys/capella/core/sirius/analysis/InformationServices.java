@@ -191,13 +191,13 @@ public class InformationServices {
    *          the given parameter
    * @return the parameter types
    */
-  public List<CapellaElement> getExchangeItemElementTypes(ExchangeItemElement parameter) {
+  public List<EObject> getExchangeItemElementTypes(ExchangeItemElement parameter) {
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(
         InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT, CapellacorePackage.Literals.TYPED_ELEMENT__TYPE);
     if (query != null) {
       return query.getAvailableElements(parameter);
     }
-    return new ArrayList<CapellaElement>(0);
+    return new ArrayList<EObject>(0);
   }
 
   /**
@@ -207,13 +207,13 @@ public class InformationServices {
    *          the given parameter
    * @return the parameter types
    */
-  public List<CapellaElement> getParameterTypes(Parameter parameter) {
+  public List<EObject> getParameterTypes(Parameter parameter) {
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(InformationPackage.Literals.PARAMETER,
         ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
     if (query != null) {
       return query.getAvailableElements(parameter);
     }
-    return new ArrayList<CapellaElement>(0);
+    return new ArrayList<EObject>(0);
   }
 
   /**
@@ -223,13 +223,13 @@ public class InformationServices {
    *          the given property
    * @return the property types
    */
-  public List<CapellaElement> getPropertyTypes(Property property) {
+  public List<EObject> getPropertyTypes(Property property) {
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(InformationPackage.Literals.PROPERTY,
         ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
     if (query != null) {
       return query.getAvailableElements(property);
     }
-    return new ArrayList<CapellaElement>(0);
+    return new ArrayList<EObject>(0);
   }
 
   /**

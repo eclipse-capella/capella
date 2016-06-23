@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.core.properties.controllers;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class TypedElementController implements ISimpleSemanticFieldController {
     IBusinessQuery query =
         BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
     if (query != null) {
-      List<CapellaElement> list1 = query.getAvailableElements(semanticElement);
+      List<EObject> list1 = query.getAvailableElements(semanticElement);
 
       if (semanticElement.eContainer() instanceof ExchangeItem) {
         // the container is an parameter : every element is acceptable as parameter
@@ -51,7 +52,7 @@ public class TypedElementController implements ISimpleSemanticFieldController {
 
       } else if ((!(semanticElement instanceof Property)) && (!(semanticElement instanceof UnionProperty))) {
         // if property eContainer is not an Association : add to list only Primitive class and all other elements
-        for (CapellaElement capellaElement : list1) {
+        for (EObject capellaElement : list1) {
           if (capellaElement instanceof Class) {
             Class cls = (Class) capellaElement;
             // In the COLLECTIONS SPECIFIC CASE, always add the classes

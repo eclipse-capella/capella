@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,13 +43,13 @@ public class PasteCommandHelper {
     // Avoid to instantiate.
   }
 
-  public static IStatus createPasteCommands(Collection<?> pasteElements_p, CompoundCommand commands_p, EObject owner_p, EStructuralFeature feature_p,
-      EditingDomain domain_p, int index_p, boolean useIndex_p) {
+  public static IStatus createPasteCommands(Collection<?> pasteElements, CompoundCommand commands, EObject owner, EStructuralFeature feature,
+      EditingDomain domain, int index, boolean useIndex) {
     IStatus status = Status.OK_STATUS;
-    EStructuralFeature feature = feature_p;
+    EStructuralFeature feat = feature;
     SharedCopyPasteElements instance = SharedCopyPasteElements.getInstance();
 
-    for (Object pasteElement : pasteElements_p) {
+    for (Object pasteElement : pasteElements) {
       Object originalObject = instance.getOriginalObject(instance.getPasteCopyOfCopiedObject(pasteElement));
       if (null == originalObject) {
         originalObject = instance.getOriginalObject(pasteElement);
@@ -60,13 +60,13 @@ public class PasteCommandHelper {
       }
 
       EStructuralFeature containingFeature = ((EObject) originalObject).eContainingFeature();
-      List<EReference> ownerContainments = owner_p.eClass().getEAllContainments();
+      List<EReference> ownerContainments = owner.eClass().getEAllContainments();
       if (ownerContainments.contains(containingFeature)) {
-        feature = containingFeature;
+        feat = containingFeature;
       }
       boolean append = true;
       // Check original object and the new owner are in the same session.
-      Session session = SessionManager.INSTANCE.getSession(owner_p);
+      Session session = SessionManager.INSTANCE.getSession(owner);
       if ((null != session) && !session.equals(SessionManager.INSTANCE.getSession((EObject) originalObject))) {
         // The paste is in other session so
         // check if the original object is self contained
@@ -77,34 +77,34 @@ public class PasteCommandHelper {
       if (append) {
         Command command = null;
         // Is the feature identified ?
-        if (null != feature) {
+        if (null != feat) {
           // Is a many feature ?
-          if (feature.isMany()) {
+          if (feat.isMany()) {
             // Use AddCommand.
             command =
-                (useIndex_p) ? AddCommand.create(domain_p, owner_p, feature, Collections.singletonList(pasteElement), index_p) : AddCommand.create(domain_p,
-                    owner_p, feature, Collections.singletonList(pasteElement));
+                (useIndex) ? AddCommand.create(domain, owner, feat, Collections.singletonList(pasteElement), index) : AddCommand.create(domain,
+                    owner, feat, Collections.singletonList(pasteElement));
           } else {
             // Not many : use a SetCommand.
             command =
-                (useIndex_p) ? SetCommand.create(domain_p, owner_p, feature, pasteElement, index_p) : SetCommand.create(domain_p, owner_p, feature,
+                (useIndex) ? SetCommand.create(domain, owner, feat, pasteElement, index) : SetCommand.create(domain, owner, feat,
                     pasteElement);
           }
         } else {
           // Unknown feature : EMF will computes automatically the appropriate feature; it seems to handle correctly all type of feature : many or not.
-          command = AddCommand.create(domain_p, owner_p, null, pasteElement);
+          command = AddCommand.create(domain, owner, null, pasteElement);
         }
         if (null != command) {
-          commands_p.append(command);
+          commands.append(command);
         } else {
           // It was not possible to create the command
           status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.CapellaPasteCommand_error_command, null);
-          commands_p.append(UnexecutableCommand.INSTANCE);
+          commands.append(UnexecutableCommand.INSTANCE);
         }
       } else {
         // Different session and no self contained element
         status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.CapellaPasteCommand_error_session, null);
-        commands_p.append(UnexecutableCommand.INSTANCE);
+        commands.append(UnexecutableCommand.INSTANCE);
       }
     }
     return status;

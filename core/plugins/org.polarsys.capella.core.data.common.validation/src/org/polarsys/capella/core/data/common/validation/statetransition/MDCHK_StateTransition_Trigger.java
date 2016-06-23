@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,12 +8,14 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.common.validation.statetransition;
 
 import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
@@ -28,20 +30,20 @@ import org.polarsys.capella.core.libraries.extendedqueries.capellacommon.GetAvai
 public class MDCHK_StateTransition_Trigger extends AbstractModelConstraint {
 
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EList<AbstractEvent> triggers = ((StateTransition) ctx_p.getTarget()).getTriggers();
+  public IStatus validate(IValidationContext ctx) {
+    EList<AbstractEvent> triggers = ((StateTransition) ctx.getTarget()).getTriggers();
     QueryContext context = new QueryContext();
     context.putValue(QueryConstants.ECLASS_PARAMETER, CapellacommonPackage.Literals.STATE_TRANSITION);
-    List<Object> elements = GetAvailable_StateTransitionTrigger.getAvailableElements(ctx_p.getTarget(), context);
-    List<CapellaElement> libElements = GetAvailable_StateTransitionTrigger__Lib
-        .getAvailableElements((CapellaElement) ctx_p.getTarget());
+    List<Object> elements = GetAvailable_StateTransitionTrigger.getAvailableElements(ctx.getTarget(), context);
+    List<EObject> libElements = GetAvailable_StateTransitionTrigger__Lib
+        .getAvailableElements((CapellaElement) ctx.getTarget());
     elements.addAll(libElements);
     for (AbstractEvent trigger : triggers) {
       if (!elements.contains(trigger)) {
-        return ctx_p.createFailureStatus(new Object[] { ((StateTransition) ctx_p.getTarget()).getTarget().getName(),
+        return ctx.createFailureStatus(new Object[] { ((StateTransition) ctx.getTarget()).getTarget().getName(),
             trigger });
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

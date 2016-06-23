@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -27,15 +28,15 @@ public class GetCurrent_PhysicalPort_AllocatedFunctionPorts extends AbstractQuer
 	@Override
 	public List<Object> execute(Object input, IQueryContext context) {
 		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> currentElements = getCurrentElements(capellaElement, false);
+		List<EObject> currentElements = getCurrentElements(capellaElement, false);
 		return (List) currentElements;
 	}
 
 	/** 
-	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement,boolean)
+	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getCurrentElements(EObject,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
+	public List<EObject> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+		List<EObject> currentElements = new ArrayList<EObject>();
 		if (element instanceof Port) {
 			Port elt = (Port) element;
 			EList<PortAllocation> portAllocations = elt.getOutgoingPortAllocations();

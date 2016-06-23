@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
@@ -28,20 +29,20 @@ public class CapellaCutAction extends AbstractCommandActionHandler {
 
   /**
    * Constructs the Capella action allowing to cut Capella elements.
-   * @param domain_p The editing domain.
+   * @param domain The editing domain.
    */
-  public CapellaCutAction(StructuredViewer viewer_p) {
+  public CapellaCutAction(StructuredViewer viewer) {
     super(EMFEditUIPlugin.INSTANCE.getString("_UI_Cut_menu_item"));
-    _viewer = viewer_p;
+    _viewer = viewer;
   }
 
   /**
    * @see org.eclipse.emf.edit.ui.action.PasteAction#createCommand(java.util.Collection)
    */
   @Override
-  public Command createCommand(Collection<Object> selection_p) {
-    CapellaCopyAction.filterSelectedElements(selection_p);
-    Collection<?> list = selection_p;
+  public Command createCommand(Collection<Object> selection) {
+    CapellaCopyAction.filterSelectedElements(selection);
+    Collection<?> list = selection;
     return new CapellaCutCommand(EMFEditUIPlugin.INSTANCE.getString("_UI_Cut_menu_item"), list, _viewer); //$NON-NLS-1$
   }
 

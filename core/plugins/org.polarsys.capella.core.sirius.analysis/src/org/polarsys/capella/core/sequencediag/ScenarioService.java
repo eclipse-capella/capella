@@ -32,7 +32,6 @@ import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.AbstractActor;
@@ -78,7 +77,6 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
-import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
 import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
@@ -1022,8 +1020,8 @@ public class ScenarioService {
   /**
    * Returns the scope of available scenario which can be use in an InteractionUse element
    */
-  public List<CapellaElement> getReferenceScope(Scenario scenario) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+  public List<EObject> getReferenceScope(Scenario scenario) {
+    List<EObject> availableElements = new ArrayList<EObject>();
 
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(
         InteractionPackage.Literals.INTERACTION_USE, InteractionPackage.Literals.INTERACTION_USE__REFERENCED_SCENARIO);

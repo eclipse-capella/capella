@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
@@ -129,29 +130,29 @@ public class AllocationManagementWizardAction extends AbstractTigAction {
 
   /**
    * Perform action : allocation of elements, deployment
-   * @param selectedCapellaElement_p
-   * @param selectedElements_p
+   * @param selectedCapellaElement
+   * @param selectedElements
    */
-  void handleChanges(List<EObject> selectedCapellaElement_p, List<EObject> selectedElements_p) {
-    if (selectedElements_p.isEmpty()) {
+  void handleChanges(List<EObject> selectedCapellaElement, List<EObject> selectedElements) {
+    if (selectedElements.isEmpty()) {
       return;
     }
 
     if (_dataInstance.getAllocationType() == AllocationSelectionType.FUNCTION_ALLOCATION) {
       // note : Function can only be allocated by one Component
-      _actionInstance.allocatingFunctionsToComponent(selectedCapellaElement_p, selectedElements_p.get(0));
+      _actionInstance.allocatingFunctionsToComponent(selectedCapellaElement, selectedElements.get(0));
     } else if (_dataInstance.getAllocationType() == AllocationSelectionType.EXCHANGE_ITEM_ALLOCATION) {
-      _actionInstance.allocatingExchangeItemsToInterfaces(selectedCapellaElement_p, selectedElements_p);
+      _actionInstance.allocatingExchangeItemsToInterfaces(selectedCapellaElement, selectedElements);
       // note : exchange items can be allocated by multiple interfaces
     } else if (_dataInstance.getAllocationType() == AllocationSelectionType.FUNCTIONAL_EXCHANGE_ALLOCATION) {
       // note : Functional Exchange can only allocated by one Component Exchange
-      _actionInstance.allocatingFEsToComponentExchanges(selectedCapellaElement_p, selectedElements_p.get(0));
+      _actionInstance.allocatingFEsToComponentExchanges(selectedCapellaElement, selectedElements.get(0));
     } else if (_dataInstance.getAllocationType() == AllocationSelectionType.COMPONENT_EXCHANGE_ALLOCATION) {
       // note : Component Exchange can only allocated by one Physical link
-      _actionInstance.allocatingCEsToPhysicalLinks(selectedCapellaElement_p, selectedElements_p.get(0));
+      _actionInstance.allocatingCEsToPhysicalLinks(selectedCapellaElement, selectedElements.get(0));
     } else if (_dataInstance.getAllocationType() == AllocationSelectionType.PHYSICAL_PART_DEPLOYMENT) {
       // note : part can only be allocated by one part
-      _actionInstance.allocatingPCPartsToPCPart(selectedCapellaElement_p, selectedElements_p.get(0));
+      _actionInstance.allocatingPCPartsToPCPart(selectedCapellaElement, selectedElements.get(0));
     }
   }
 

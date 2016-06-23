@@ -45,7 +45,7 @@ public class GetAvailable_PhysicalPort_AllocatedComponentPorts extends AbstractQ
 	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 		if (element instanceof PhysicalPort) {
-			List<CapellaElement> currentElements = getCurrentElements(element, false);
+			List<EObject> currentElements = getCurrentElements(element, false);
 			for (EObject port : getRule_MQRY_Port_AllocatedPorts_11((Port) element)) {
 				if (!currentElements.contains(port)) {
 					availableElements.add((CapellaElement) port);
@@ -59,8 +59,8 @@ public class GetAvailable_PhysicalPort_AllocatedComponentPorts extends AbstractQ
 	/** 
 	 * {@inheritDoc}
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
+	public List<EObject> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+		List<EObject> currentElements = new ArrayList<EObject>();
 		if (element instanceof PhysicalPort) {
 			PhysicalPort elt = (PhysicalPort) element;
 			for (AbstractTrace trace : elt.getOutgoingTraces()) {
@@ -78,8 +78,8 @@ public class GetAvailable_PhysicalPort_AllocatedComponentPorts extends AbstractQ
 
 	/** 
 	 */
-	protected List<CapellaElement> getRule_MQRY_Port_AllocatedPorts_11(Port element) {
-		List<CapellaElement> allPorts = new ArrayList<CapellaElement>();
+	protected List<EObject> getRule_MQRY_Port_AllocatedPorts_11(Port element) {
+		List<EObject> allPorts = new ArrayList<EObject>();
 		EObject ownerObj = element.eContainer();
 		if (ownerObj instanceof System) {
 			allPorts.addAll(((System) ownerObj).getContainedComponentPorts());

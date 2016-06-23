@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.preferences;
 
 import org.eclipse.core.resources.ProjectScope;
@@ -73,16 +74,16 @@ public class DeletePreferencePage extends AbstractDefaultPreferencePage {
 
   /**
    * Add delete restrictions preferences.
-   * @param parentGroup_p
+   * @param parentGroup
    */
-  private void addDeleteRestrictionPreferences(Group parentGroup_p) {
+  private void addDeleteRestrictionPreferences(Group parentGroup) {
     IPreferenceStore preferenceStore = doGetPreferenceStore();
 
     int count = 0;
     String preferenceKey = CapellaActionsActivator.getDefault().getPreference(count);
     while (preferenceStore.contains(preferenceKey)) {
-      addField(new PreferenceField(preferenceKey, preferenceStore.getString(CapellaActionsActivator.getDefault().getPreferenceTitle(count)), parentGroup_p),
-          UserProfileModeEnum.Expert, parentGroup_p, ProjectScope.class);
+      addField(new PreferenceField(preferenceKey, preferenceStore.getString(CapellaActionsActivator.getDefault().getPreferenceTitle(count)), parentGroup),
+          UserProfileModeEnum.Expert, parentGroup, ProjectScope.class);
       // Increment to compute the next key.
       count++;
       preferenceKey = CapellaActionsActivator.getDefault().getPreference(count);

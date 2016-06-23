@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
@@ -44,12 +45,12 @@ public class GetAvailable_Enumeration_DomainType extends AbstractQuery {
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     CapellaElement capellaElement = (CapellaElement) input;
-    List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+    List<EObject> availableElements = getAvailableElements(capellaElement);
     return (List) availableElements;
   }
 
-  public List<CapellaElement> getAvailableElements(CapellaElement element) {
-    List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
+  public List<EObject> getAvailableElements(CapellaElement element) {
+    List<EObject> returnValue = new ArrayList<EObject>();
     BlockArchitecture currentBlockArchitecture = DataPkgExt.getRootBlockArchitecture(element);
     SystemEngineering systemEngineering = SystemEngineeringExt.getSystemEngineering(element);
     OperationalAnalysis operationalAnalysis = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering);
@@ -78,7 +79,7 @@ public class GetAvailable_Enumeration_DomainType extends AbstractQuery {
     return returnValue;
   }
 
-  public List<CapellaElement> getDataFromLevel(BlockArchitecture blockArchitecture, CapellaElement capellaElement) {
+  public List<EObject> getDataFromLevel(BlockArchitecture blockArchitecture, CapellaElement capellaElement) {
     if (null != blockArchitecture) {
       DataPkg dataPkg = blockArchitecture.getOwnedDataPkg();
       if (null != dataPkg) {
@@ -101,8 +102,8 @@ public class GetAvailable_Enumeration_DomainType extends AbstractQuery {
 
   /** 
 	 */
-  protected List<CapellaElement> getDataFromComponentHierarchy(CapellaElement element) {
-    List<CapellaElement> allDatas = new ArrayList<CapellaElement>();
+  protected List<EObject> getDataFromComponentHierarchy(CapellaElement element) {
+    List<EObject> allDatas = new ArrayList<EObject>();
     for (Component cpnt : CapellaElementExt.getComponentHierarchy(element)) {
       DataPkg dataPkg = cpnt.getOwnedDataPkg();
       if (null != dataPkg) {
@@ -114,8 +115,8 @@ public class GetAvailable_Enumeration_DomainType extends AbstractQuery {
 
   /** 
 	 */
-  protected List<CapellaElement> getDataFromRealizedComponentsHierarchy(CapellaElement element) {
-    List<CapellaElement> allDatas = new ArrayList<CapellaElement>();
+  protected List<EObject> getDataFromRealizedComponentsHierarchy(CapellaElement element) {
+    List<EObject> allDatas = new ArrayList<EObject>();
     Component currentCpnt = (element instanceof Component) ? (Component) element : null;
     if (null == currentCpnt) {
       currentCpnt = (Component) EcoreUtil2.getFirstContainer(element, CsPackage.Literals.COMPONENT);
@@ -127,7 +128,7 @@ public class GetAvailable_Enumeration_DomainType extends AbstractQuery {
         for (Component cpnt : componentHierarchy) {
           DataPkg dataPkg = cpnt.getOwnedDataPkg();
           if (null != dataPkg) {
-            for (CapellaElement data : getDataFromLevel(dataPkg, element)) {
+            for (EObject data : getDataFromLevel(dataPkg, element)) {
               if (!allDatas.contains(data)) {
                 allDatas.add(data);
               }
@@ -141,8 +142,8 @@ public class GetAvailable_Enumeration_DomainType extends AbstractQuery {
 
   /** 
 	 */
-  protected List<CapellaElement> getTypesFromComponentHierarchy(CapellaElement element) {
-    List<CapellaElement> allDatas = new ArrayList<CapellaElement>();
+  protected List<EObject> getTypesFromComponentHierarchy(CapellaElement element) {
+    List<EObject> allDatas = new ArrayList<EObject>();
     for (Component cpnt : CapellaElementExt.getComponentHierarchy(element)) {
       DataPkg dataPkg = cpnt.getOwnedDataPkg();
       if (null != dataPkg) {
@@ -159,9 +160,9 @@ public class GetAvailable_Enumeration_DomainType extends AbstractQuery {
    * @param list
    * @return : List<CapellaElement>
    */
-  protected List<CapellaElement> filterUnNamedElements(List<CapellaElement> list) {
-    List<CapellaElement> result = new ArrayList<CapellaElement>(1);
-    for (CapellaElement capellaElement : list) {
+  protected List<EObject> filterUnNamedElements(List<EObject> list) {
+    List<EObject> result = new ArrayList<EObject>(1);
+    for (EObject capellaElement : list) {
       if (capellaElement instanceof AbstractNamedElement) {
         String name = ((AbstractNamedElement) capellaElement).getName();
         if ((null != name) && !ICommonConstants.EMPTY_STRING.equals(name)) {
@@ -177,7 +178,7 @@ public class GetAvailable_Enumeration_DomainType extends AbstractQuery {
    * @param elements the list to handle
    * @return the processed list
    */
-  protected List<CapellaElement> removeNonPrimitiveClasses(List<CapellaElement> elements) {
+  protected List<EObject> removeNonPrimitiveClasses(List<EObject> elements) {
     return removePrimitiveOrNonPrimitiveClasses(elements, false);
   }
 
@@ -186,7 +187,7 @@ public class GetAvailable_Enumeration_DomainType extends AbstractQuery {
    * @param elements the list to handle
    * @return the processed list
    */
-  protected List<CapellaElement> removeNonPrimitiveCollections(List<CapellaElement> elements) {
+  protected List<EObject> removeNonPrimitiveCollections(List<EObject> elements) {
     return removePrimitiveOrNonPrimitiveCollections(elements, false);
   }
 
@@ -196,9 +197,9 @@ public class GetAvailable_Enumeration_DomainType extends AbstractQuery {
    * @param removePrimitive <code>true</code> if you want to remove the primitive classes, <code>false</code> if you want to remove the non primitive classes
    * @return the processed list
    */
-  protected List<CapellaElement> removePrimitiveOrNonPrimitiveClasses(List<CapellaElement> elements, boolean removePrimitive) {
-    List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-    for (CapellaElement element : elements) {
+  protected List<EObject> removePrimitiveOrNonPrimitiveClasses(List<EObject> elements, boolean removePrimitive) {
+    List<EObject> returnValue = new ArrayList<EObject>();
+    for (EObject element : elements) {
       if (element instanceof Class) {
         Class currentClass = (Class) element;
         if ((!removePrimitive && currentClass.isIsPrimitive()) || (removePrimitive && !currentClass.isIsPrimitive())) {
@@ -218,9 +219,9 @@ public class GetAvailable_Enumeration_DomainType extends AbstractQuery {
    *          Collections
    * @return the processed list
    */
-  protected List<CapellaElement> removePrimitiveOrNonPrimitiveCollections(List<CapellaElement> elements, boolean removePrimitive) {
-    List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-    for (CapellaElement element : elements) {
+  protected List<EObject> removePrimitiveOrNonPrimitiveCollections(List<EObject> elements, boolean removePrimitive) {
+    List<EObject> returnValue = new ArrayList<EObject>();
+    for (EObject element : elements) {
       if (element instanceof Collection) {
         Collection currentCollection = (Collection) element;
         if ((!removePrimitive && currentCollection.isIsPrimitive()) || (removePrimitive && !currentCollection.isIsPrimitive())) {
@@ -233,8 +234,8 @@ public class GetAvailable_Enumeration_DomainType extends AbstractQuery {
     return returnValue;
   }
 
-  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg, CapellaElement capellaElement) {
-    List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
+  public List<EObject> getDataFromLevel(DataPkg dataPkg, CapellaElement capellaElement) {
+    List<EObject> returnValue = new ArrayList<EObject>();
     returnValue.addAll(CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg, DatatypePackage.Literals.DATA_TYPE, capellaElement));
     return returnValue;
   }

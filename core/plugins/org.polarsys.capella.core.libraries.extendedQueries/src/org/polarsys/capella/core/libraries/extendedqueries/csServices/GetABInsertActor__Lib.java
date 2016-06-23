@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,21 +36,21 @@ import org.polarsys.capella.core.queries.helpers.QueryExt;
 public class GetABInsertActor__Lib extends AbstractQuery {
 
   @Override
-  public List<Object> execute(Object input_p, IQueryContext context_p) throws QueryException {
+  public List<Object> execute(Object input, IQueryContext context) throws QueryException {
     Collection<? extends Component> components = new HashSet<Component>();
-    EObject input = (EObject) input_p;
-    IModel currentProject =  ILibraryManager.INSTANCE.getModel(input);
+    EObject in = (EObject) input;
+    IModel currentProject =  ILibraryManager.INSTANCE.getModel(in);
     Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
     for (IModel library : libraries) {
-      BlockArchitecture architecture = (BlockArchitecture) QueryExt.getCorrespondingElementInLibrary(input, (CapellaModel) library);
+      BlockArchitecture architecture = (BlockArchitecture) QueryExt.getCorrespondingElementInLibrary(in, (CapellaModel) library);
       components.addAll((List) QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_SUB_DEFINED_ACTORS, architecture, new QueryContext()));
     }
-    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture((EObject) input_p);
+    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture((EObject) input);
     if (!TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(architecture))) {
-      Component context = BlockArchitectureExt.getContext(architecture);
-      if ((context != null) && (components != null)) {
+      Component ctx = BlockArchitectureExt.getContext(architecture);
+      if ((ctx != null) && (components != null)) {
         // Remove component from existing part
-        components.removeAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_SUB_USED_COMPONENTS, context, new QueryContext()));
+        components.removeAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_SUB_USED_COMPONENTS, ctx, new QueryContext()));
       }
     }
     return new ArrayList<Object>(components);

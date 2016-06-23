@@ -17,9 +17,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.core.data.capellacore.Classifier;
+import org.polarsys.capella.core.data.capellacore.Feature;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
+import org.polarsys.capella.core.data.capellacore.Structure;
+import org.polarsys.capella.core.data.capellacore.TypedElement;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentArchitecture;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
@@ -27,17 +34,9 @@ import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.capellacore.Classifier;
-import org.polarsys.capella.core.data.capellacore.Feature;
-import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.Structure;
-import org.polarsys.capella.core.data.capellacore.TypedElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.model.utils.ListExt;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  * The Classifier helpers
@@ -49,8 +48,8 @@ public class ClassifierExt {
    * @param classifier the classifier
    * @return list of all the available types (from DataPkg) and Interfaces
    */
-  static public List<CapellaElement> getAllTypes(GeneralizableElement classifier) {
-    List<CapellaElement> list = new ArrayList<CapellaElement>();
+  static public List<EObject> getAllTypes(GeneralizableElement classifier) {
+    List<EObject> list = new ArrayList<EObject>();
     if (null != classifier) {
       Structure structure = (Structure) classifier.eContainer();
 

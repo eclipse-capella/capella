@@ -13,6 +13,7 @@ package org.polarsys.capella.core.business.queries.queries.information;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
@@ -39,7 +40,7 @@ public class GetAvailable_ExchangeItemElement_Type extends AbstractQuery {
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     CapellaElement capellaElement = (CapellaElement) input;
-    List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+    List<EObject> availableElements = getAvailableElements(capellaElement);
     return (List) availableElements;
   }
 
@@ -51,9 +52,9 @@ public class GetAvailable_ExchangeItemElement_Type extends AbstractQuery {
    * Except The current type itself
    * </p>
    */
-  public List<CapellaElement> getAvailableElements(CapellaElement element) {
+  public List<EObject> getAvailableElements(CapellaElement element) {
     SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+    List<EObject> availableElements = new ArrayList<EObject>();
     boolean isParameterFromSharedPkg = false;
     if (null == systemEngineering) {
       SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
@@ -86,8 +87,8 @@ public class GetAvailable_ExchangeItemElement_Type extends AbstractQuery {
     return availableElements;
   }
 
-  private List<CapellaElement> getRule_MQRY_Parameter_Type_11(ExchangeItemElement currenParameter) {
-    List<CapellaElement> allAllocatedDatas = new ArrayList<CapellaElement>();
+  private List<EObject> getRule_MQRY_Parameter_Type_11(ExchangeItemElement currenParameter) {
+    List<EObject> allAllocatedDatas = new ArrayList<EObject>();
     BlockArchitecture block = ComponentExt.getRootBlockArchitecture(currenParameter);
     for (BlockArchitecture current : BlockArchitectureExt.getAllAllocatedArchitectures(block)) {
       DataPkg pkg = DataPkgExt.getDataPkgOfBlockArchitecture(current);
@@ -98,8 +99,8 @@ public class GetAvailable_ExchangeItemElement_Type extends AbstractQuery {
 
   /** 
 	 */
-  private List<CapellaElement> getRule_MQRY_Parameter_Type_12(ExchangeItemElement currentParameter) {
-    List<CapellaElement> allAllocatedDatas = new ArrayList<CapellaElement>();
+  private List<EObject> getRule_MQRY_Parameter_Type_12(ExchangeItemElement currentParameter) {
+    List<EObject> allAllocatedDatas = new ArrayList<EObject>();
     for (Component cpnt : CapellaElementExt.getComponentHierarchy(currentParameter)) {
       DataPkg dataPkg = cpnt.getOwnedDataPkg();
       if (null != dataPkg) {
@@ -109,13 +110,13 @@ public class GetAvailable_ExchangeItemElement_Type extends AbstractQuery {
     return allAllocatedDatas;
   }
 
-  private List<CapellaElement> getRule_MQRY_Parameter_Type_15(ExchangeItemElement currenParameter, SystemEngineering systemEngineering) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+  private List<EObject> getRule_MQRY_Parameter_Type_15(ExchangeItemElement currenParameter, SystemEngineering systemEngineering) {
+    List<EObject> availableElements = new ArrayList<EObject>(1);
     AbstractType type = currenParameter.getType();
     for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
       DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
       if (dataPkg != null) {
-        for (CapellaElement element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
+        for (EObject element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
           if (element.equals(type)) {
             continue;
           }

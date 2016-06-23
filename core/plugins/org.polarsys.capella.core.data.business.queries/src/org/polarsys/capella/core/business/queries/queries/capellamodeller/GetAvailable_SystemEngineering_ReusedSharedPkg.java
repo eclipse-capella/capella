@@ -46,7 +46,7 @@ public class GetAvailable_SystemEngineering_ReusedSharedPkg extends AbstractQuer
 	 * <p>
 	 * Refer MQRY_SystemEngineering_Reused_1
 	 * </p>
-	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
+	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
 	 */
 	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();

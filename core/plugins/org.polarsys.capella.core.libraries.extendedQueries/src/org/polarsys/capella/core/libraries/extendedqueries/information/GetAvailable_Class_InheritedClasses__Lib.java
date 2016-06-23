@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.libraries.extendedqueries.information;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.polarsys.capella.common.libraries.IModel;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
@@ -40,19 +42,19 @@ public class GetAvailable_Class_InheritedClasses__Lib extends AbstractQuery {
 
   public List<Object> execute(Object input, IQueryContext context) {
     CapellaElement capellaElement = (CapellaElement) input;
-    List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+    List<EObject> availableElements = getAvailableElements(capellaElement);
     return (List) availableElements;
   }
 
   /**
-   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getAvailableElements(EObject)
    */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(element_p);
-    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element_p);
-    if (element_p instanceof Class) {
-      final Class currentClass = (Class) element_p;
+  public List<EObject> getAvailableElements(CapellaElement element) {
+    List<EObject> availableElements = new ArrayList<EObject>();
+    BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(element);
+    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element);
+    if (element instanceof Class) {
+      final Class currentClass = (Class) element;
       MultiFilter filter =
           new MultiFilter(new IQueryFilter[] { new RemoveEClassInstanceFilter(InformationPackage.Literals.UNION), new RemoveSubTypesFilter(currentClass),
                                               new KeepClassWithSamePrimitiveStateFilter(currentClass) });

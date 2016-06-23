@@ -119,8 +119,8 @@ public class DataPkgExt {
 
   /**
    */
-  static public List<CapellaElement> getAllClassifierFromDataPkg(DataPkg dataPkg) {
-    List<CapellaElement> list = new ArrayList<CapellaElement>();
+  static public List<EObject> getAllClassifierFromDataPkg(DataPkg dataPkg) {
+    List<EObject> list = new ArrayList<EObject>();
     if (null != dataPkg) {
       list.addAll(DataPkgExt.getAllClasses(dataPkg));
       list.addAll(DataPkgExt.getAllMessages(dataPkg));
@@ -359,8 +359,8 @@ public static List<DataPkg> getAllDataPkgs(EObject context) {
    * @param dataPkg the DataPkg
    * @return list of all data types
    */
-  static public List<CapellaElement> getAllTypesFromDataPkg(DataPkg dataPkg) {
-    List<CapellaElement> list = new ArrayList<CapellaElement>();
+  static public List<EObject> getAllTypesFromDataPkg(DataPkg dataPkg) {
+    List<EObject> list = new ArrayList<EObject>();
     if (null != dataPkg) {
       list.addAll(DataPkgExt.getAllClasses(dataPkg));
       list.addAll(DataPkgExt.getAllCollections(dataPkg));
@@ -375,8 +375,8 @@ public static List<DataPkg> getAllDataPkgs(EObject context) {
    * @param dataPkg the DataPkg
    * @return list of all data types
    */
-  static public List<CapellaElement> getAllTypesFromDataPkgForPropsNParams(DataPkg dataPkg) {
-    List<CapellaElement> list = new ArrayList<CapellaElement>();
+  static public List<EObject> getAllTypesFromDataPkgForPropsNParams(DataPkg dataPkg) {
+    List<EObject> list = new ArrayList<EObject>();
     if (null != dataPkg) {
       list.addAll(DataPkgExt.getAllClasses(dataPkg));
       list.addAll(DataPkgExt.getAllCollections(dataPkg));

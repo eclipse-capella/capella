@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.commands;
 
 import java.util.Collection;
@@ -46,17 +47,17 @@ public class DeleteRepresentationCommand extends RecordingCommand {
 
   /**
    * Constructs the command allowing to delete representations.
-   * @param domain_p
-   * @param representations_p
+   * @param domain
+   * @param representations
    */
-  public DeleteRepresentationCommand(TransactionalEditingDomain domain_p, Collection<DRepresentation> representations_p) {
-    this(domain_p, representations_p, new NullProgressMonitor());
+  public DeleteRepresentationCommand(TransactionalEditingDomain domain, Collection<DRepresentation> representations) {
+    this(domain, representations, new NullProgressMonitor());
   }
 
-  public DeleteRepresentationCommand(TransactionalEditingDomain domain_p, Collection<DRepresentation> representations_p, IProgressMonitor monitor_p) {
-    super(domain_p, Messages.DeleteRepresentationCommand_DeleteRepresentationCommandLabel);
-    _representations = representations_p;
-    _monitor = monitor_p;
+  public DeleteRepresentationCommand(TransactionalEditingDomain domain, Collection<DRepresentation> representations, IProgressMonitor monitor) {
+    super(domain, Messages.DeleteRepresentationCommand_DeleteRepresentationCommandLabel);
+    _representations = representations;
+    _monitor = monitor;
   }
 
   /**
@@ -107,12 +108,12 @@ public class DeleteRepresentationCommand extends RecordingCommand {
   }
 
   // Closes the opened editor about the current representation.
-  private void closeActiveRepresentationEditor(DRepresentation representation_p, Session session_p) {
-    IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session_p);
+  private void closeActiveRepresentationEditor(DRepresentation representation, Session session) {
+    IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
     if (null == editingSession) {
       return;
     }
-    DialectEditor editor = editingSession.getEditor(representation_p);
+    DialectEditor editor = editingSession.getEditor(representation);
     if (editor != null) {
       DialectUIManager.INSTANCE.closeEditor(editor, false);
       // We detach the editor here because sometimes cause of the asyncExec of the closing, the detach could not be done during the dispose of the editor
@@ -122,15 +123,15 @@ public class DeleteRepresentationCommand extends RecordingCommand {
 
   /**
    * Get a session from a representation resource.
-   * @param airdResource_p
+   * @param airdResource
    * @return
    */
-  private Session getSession(Resource airdResource_p) {
+  private Session getSession(Resource airdResource) {
     Session result = null;
     for (Session session : SessionManager.INSTANCE.getSessions()) {
       Collection<Resource> allAnalysisResources = new HashSet<Resource>(session.getReferencedSessionResources());
       allAnalysisResources.add(session.getSessionResource());
-      if (allAnalysisResources.contains(airdResource_p)) {
+      if (allAnalysisResources.contains(airdResource)) {
         result = session;
         break;
       }

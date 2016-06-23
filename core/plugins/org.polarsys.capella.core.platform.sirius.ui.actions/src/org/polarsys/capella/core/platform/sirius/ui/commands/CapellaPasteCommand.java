@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 
 package org.polarsys.capella.core.platform.sirius.ui.commands;
 
@@ -71,17 +72,17 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
    * Constructs the Capella command allowing to paste Capella elements. It generates a new object identifier each time
    * the command is called.
    * 
-   * @param domain_p
+   * @param domain
    *          The editing domain.
-   * @param owner_p
+   * @param owner
    *          The mode object owner.
-   * @param feature_p
+   * @param feature
    *          The feature.
-   * @param index_p
+   * @param index
    *          The command index.
    */
-  public CapellaPasteCommand(EditingDomain domain_p, Object owner_p, Object feature_p, int index_p) {
-    super(domain_p, owner_p, feature_p, index_p);
+  public CapellaPasteCommand(EditingDomain domain, Object owner, Object feature, int index) {
+    super(domain, owner, feature, index);
     ncHelper = NameCollisionHelper.getDefault();
   }
 
@@ -253,18 +254,18 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
   /**
    * Return the property opposite to the given one in the given association, if any
    * 
-   * @param association_p
+   * @param association
    *          a non-null association
-   * @param property_p
+   * @param property
    *          a non-null property
-   * @return a non-null property if the association is bidirectional and property_p is one end
+   * @return a non-null property if the association is bidirectional and property is one end
    */
-  private Property getOppositeEnd(Association association_p, Property property_p) {
+  private Property getOppositeEnd(Association association, Property property) {
     Property result = null;
-    if (association_p.getNavigableMembers().size() == 2) {
+    if (association.getNavigableMembers().size() == 2) {
       // The association is bidirectional
-      List<Property> ends = new ArrayList<Property>(association_p.getNavigableMembers());
-      ends.remove(property_p);
+      List<Property> ends = new ArrayList<Property>(association.getNavigableMembers());
+      ends.remove(property);
       if (ends.size() == 1) {
         // The given property was one of the ends: success
         result = ends.get(0);
@@ -303,16 +304,16 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
   /**
    * Extend the given preparation command for properly pasting the given enumeration literal
    * 
-   * @param enumerationLiteral_p
+   * @param enumerationLiteral
    *          a non-null enumeration literal
-   * @param compoundCommand_p
+   * @param compoundCommand
    *          a non-null command
    */
-  protected void prepareEnumerationLiteralPaste(EnumerationLiteral enumerationLiteral_p, CompoundCommand compoundCommand_p) {
-    EnumerationLiteral copiedEnumerationLiteral = (EnumerationLiteral) _copyHelper.getCopy(enumerationLiteral_p);
+  protected void prepareEnumerationLiteralPaste(EnumerationLiteral enumerationLiteral, CompoundCommand compoundCommand) {
+    EnumerationLiteral copiedEnumerationLiteral = (EnumerationLiteral) _copyHelper.getCopy(enumerationLiteral);
 
     if (owner instanceof Enumeration) {
-      compoundCommand_p.appendAndExecute(SetCommand.create(domain, copiedEnumerationLiteral, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, owner));
+      compoundCommand.appendAndExecute(SetCommand.create(domain, copiedEnumerationLiteral, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, owner));
     }
   }
 
@@ -363,15 +364,15 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
   /**
    * Extend the given preparation command for properly pasting the given association
    * 
-   * @param association_p
+   * @param association
    *          a non-null association
-   * @param compoundCommand_p
+   * @param compoundCommand
    *          a non-null command
    */
   @SuppressWarnings("synthetic-access")
-  protected void prepareAssociationPaste(Association association_p, CompoundCommand compoundCommand_p) {
-    List<Property> navigableMembers = association_p.getNavigableMembers();
-    Association copiedAssociation = (Association) _copyHelper.getCopy(association_p);
+  protected void prepareAssociationPaste(Association association, CompoundCommand compoundCommand) {
+    List<Property> navigableMembers = association.getNavigableMembers();
+    Association copiedAssociation = (Association) _copyHelper.getCopy(association);
     // Loop over properties owned by the association could
     // be in [0,2] range depending on isNavigable relation.
     for (final Property property : navigableMembers) {
@@ -381,28 +382,28 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
         // initial properties.
         copiedAssociation.getNavigableMembers().remove(property);
         // Copy command to duplicate the property.
-        compoundCommand_p.appendAndExecute(domain.createCommand(CopyCommand.class, new CommandParameter(property, null, _copyHelper)));
+        compoundCommand.appendAndExecute(domain.createCommand(CopyCommand.class, new CommandParameter(property, null, _copyHelper)));
         final Property copiedProperty = (Property) _copyHelper.getCopy(property);
         // Distinguish the bidirectional / unidirectional cases
-        if ((association_p.getNavigableMembers().size() == 2) && (_copyHelper.get(property.eContainer()) == null)
-            && (_copyHelper.get(getOppositeEnd(association_p, property).eContainer()) != null)) {
+        if ((association.getNavigableMembers().size() == 2) && (_copyHelper.get(property.eContainer()) == null)
+            && (_copyHelper.get(getOppositeEnd(association, property).eContainer()) != null)) {
           // Only one end of the bidirectional association is being copied:
           // the new association must be unidirectional, hence the navigable
           // member on the non-copied side must belong to the association
           // -> Containment
-          compoundCommand_p.appendAndExecute(AddCommand.create(domain, copiedAssociation, InformationPackage.Literals.ASSOCIATION__OWNED_MEMBERS, copiedProperty));
+          compoundCommand.appendAndExecute(AddCommand.create(domain, copiedAssociation, InformationPackage.Literals.ASSOCIATION__OWNED_MEMBERS, copiedProperty));
           // -> Type
           Object clipboardType = SharedCopyPasteElements.getInstance().getCopyObject(property.getAbstractType());
           AbstractType copiedType = (AbstractType) _copyHelper.get(clipboardType);
-          compoundCommand_p.appendAndExecute(SetCommand.create(domain, copiedProperty, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, copiedType));
+          compoundCommand.appendAndExecute(SetCommand.create(domain, copiedProperty, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, copiedType));
         } else {
           // Don't add the copied property to association as its container is
           // the owner of the initial property.
           final EObject newPropertyOwner = property.eContainer();
           // -> Containment
-          compoundCommand_p.appendAndExecute(AddCommand.create(domain, newPropertyOwner, CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES, copiedProperty));
+          compoundCommand.appendAndExecute(AddCommand.create(domain, newPropertyOwner, CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES, copiedProperty));
           // -> Name
-          compoundCommand_p.appendAndExecute(new CommandWrapper() {
+          compoundCommand.appendAndExecute(new CommandWrapper() {
             /**
              * {@inheritDoc}
              */
@@ -417,7 +418,7 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
             }
           });
           // -> Navigable members
-          compoundCommand_p.appendAndExecute(AddCommand.create(domain, copiedAssociation, InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS, copiedProperty));
+          compoundCommand.appendAndExecute(AddCommand.create(domain, copiedAssociation, InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS, copiedProperty));
         }
       }
     }

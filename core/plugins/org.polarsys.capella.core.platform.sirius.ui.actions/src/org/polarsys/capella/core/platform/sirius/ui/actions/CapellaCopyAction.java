@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.util.ArrayList;
@@ -29,34 +30,34 @@ public class CapellaCopyAction extends AbstractCommandActionHandler {
   private StructuredViewer _viewer;
 
   /**
-   * @param editingDomain_p
+   * @param editingDomain
    */
-  public CapellaCopyAction(StructuredViewer viewer_p) {
+  public CapellaCopyAction(StructuredViewer viewer) {
     super(EMFEditUIPlugin.INSTANCE.getString("_UI_Copy_menu_item"));
-    _viewer = viewer_p;
+    _viewer = viewer;
   }
 
   /**
    * @see org.eclipse.emf.edit.ui.action.CopyAction#createCommand(java.util.Collection)
    */
   @Override
-  public Command createCommand(Collection<Object> selection_p) {
-    filterSelectedElements(selection_p);
-    if (TransactionHelper.getEditingDomain(filterSelection(selection_p)) != null)
-      return new CapellaCopyToClipboardCommand(TransactionHelper.getEditingDomain(filterSelection(selection_p)), selection_p, _viewer);
+  public Command createCommand(Collection<Object> selection) {
+    filterSelectedElements(selection);
+    if (TransactionHelper.getEditingDomain(filterSelection(selection)) != null)
+      return new CapellaCopyToClipboardCommand(TransactionHelper.getEditingDomain(filterSelection(selection)), selection, _viewer);
     return null;
   }
 
   /**
    * Filter out elements that are already included in selection because their container is also included.
    * 
-   * @param selection_p
+   * @param selection
    */
-  static void filterSelectedElements(Collection<?> selection_p) {
+  static void filterSelectedElements(Collection<?> selection) {
     // Filter out on specified selection all elements that are de facto included because their container is also
     // included.
-    ArrayList<Object> temporarySelection = new ArrayList<Object>(selection_p);
-    Iterator<?> iterator = selection_p.iterator();
+    ArrayList<Object> temporarySelection = new ArrayList<Object>(selection);
+    Iterator<?> iterator = selection.iterator();
     while (iterator.hasNext()) {
       Object object = iterator.next();
       if (object instanceof EObject) {

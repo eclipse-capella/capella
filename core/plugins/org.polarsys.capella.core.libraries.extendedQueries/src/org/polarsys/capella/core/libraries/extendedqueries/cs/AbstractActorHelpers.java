@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,12 +39,12 @@ import org.polarsys.capella.core.queries.helpers.QueryExt;
 public class AbstractActorHelpers {
 
   /**
-   * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
    */
-  public static List<CapellaElement> getAvailableElements_Actor_ImplementedInterface(CapellaElement element_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    EObject input = element_p;
-    BlockArchitecture block = BlockArchitectureExt.getRootBlockArchitecture(element_p);
+  public static List<EObject> getAvailableElements_Actor_ImplementedInterface(CapellaElement element) {
+    List<EObject> availableElements = new ArrayList<EObject>();
+    EObject input = element;
+    BlockArchitecture block = BlockArchitectureExt.getRootBlockArchitecture(element);
     IModel currentProject =  ILibraryManager.INSTANCE.getModel(input);
 
     final Component component = (Component) input;
@@ -71,12 +71,12 @@ public class AbstractActorHelpers {
   }
 
   /**
-   * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
    */
-  public static List<CapellaElement> getAvailableElements_Actor_UsedInterface(CapellaElement element_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    EObject input = element_p;
-    BlockArchitecture block = BlockArchitectureExt.getRootBlockArchitecture(element_p);
+  public static List<EObject> getAvailableElements_Actor_UsedInterface(CapellaElement element) {
+    List<EObject> availableElements = new ArrayList<EObject>();
+    EObject input = element;
+    BlockArchitecture block = BlockArchitectureExt.getRootBlockArchitecture(element);
     IModel currentProject =  ILibraryManager.INSTANCE.getModel(input);
 
     final Component component = (Component) input;

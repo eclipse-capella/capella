@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.preferences;
 
 import org.eclipse.core.resources.IProject;
@@ -53,9 +54,9 @@ public class DeletePropertiesPage extends DeletePreferencePage implements IWorkb
    * {@inheritDoc}
    */
   @Override
-  public void setElement(IAdaptable element_p) {
-    if (element_p instanceof IProject) {
-      project = (IProject) element_p;
+  public void setElement(IAdaptable element) {
+    if (element instanceof IProject) {
+      project = (IProject) element;
     }
   }
 }

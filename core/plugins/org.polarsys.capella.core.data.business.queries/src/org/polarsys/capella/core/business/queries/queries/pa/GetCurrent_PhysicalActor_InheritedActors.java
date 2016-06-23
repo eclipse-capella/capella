@@ -13,6 +13,7 @@ package org.polarsys.capella.core.business.queries.queries.pa;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -28,7 +29,7 @@ public class GetCurrent_PhysicalActor_InheritedActors extends AbstractQuery {
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     CapellaElement capellaElement = (CapellaElement) input;
-    List<CapellaElement> currentElements = getCurrentElements(capellaElement, false);
+    List<EObject> currentElements = getCurrentElements(capellaElement, false);
     return (List) currentElements;
   }
 
@@ -40,8 +41,8 @@ public class GetCurrent_PhysicalActor_InheritedActors extends AbstractQuery {
    * Refer MQRY_Actor_Inherited_1
    * </p>
    */
-  public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
+  public List<EObject> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+    List<EObject> currentElements = new ArrayList<EObject>();
     SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
     if (null == systemEngineering) {
       return currentElements;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.preferences;
 
 import org.eclipse.core.resources.ProjectScope;
@@ -29,7 +30,7 @@ import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActiva
 public class ProtectedElementsPreferences extends AbstractPreferencesInitializer implements IProtectedElementsPreferences {
 
   /**
-   * @param pluginID_p
+   * @param pluginID
    */
   public ProtectedElementsPreferences() {
     super(CapellaActionsActivator.PLUGIN_ID);
@@ -43,11 +44,11 @@ public class ProtectedElementsPreferences extends AbstractPreferencesInitializer
 
   /**
    * Get preference representation title for given {@link EClass}
-   * @param class_p
+   * @param class
    * @return
    */
-  protected String getPreferenceTitle(EClass class_p) {
-    return new PreferenceTitleHelper().getPreferenceTitle(class_p);
+  protected String getPreferenceTitle(EClass cls) {
+    return new PreferenceTitleHelper().getPreferenceTitle(cls);
   }
 
   /**
@@ -86,14 +87,14 @@ public class ProtectedElementsPreferences extends AbstractPreferencesInitializer
 
   /**
    * Initialize a default protected element preference with given parameters.
-   * @param preferenceStore_p
-   * @param class_p
-   * @param index_p
+   * @param preferenceStore
+   * @param class
+   * @param index
    */
-  protected void initializeDefaultProtectedElementPreference(EClass class_p, int index_p) {
-    putBoolean(CapellaActionsActivator.getDefault().getPreference(index_p), true, ProjectScope.class);
-    putString(CapellaActionsActivator.getDefault().getPreferenceId(index_p), CapellaActionsActivator.getDefault().getPreferenceValue(class_p), ProjectScope.class);
-    putString(CapellaActionsActivator.getDefault().getPreferenceTitle(index_p), getPreferenceTitle(class_p), DefaultScope.class);
+  protected void initializeDefaultProtectedElementPreference(EClass cls, int index) {
+    putBoolean(CapellaActionsActivator.getDefault().getPreference(index), true, ProjectScope.class);
+    putString(CapellaActionsActivator.getDefault().getPreferenceId(index), CapellaActionsActivator.getDefault().getPreferenceValue(cls), ProjectScope.class);
+    putString(CapellaActionsActivator.getDefault().getPreferenceTitle(index), getPreferenceTitle(cls), DefaultScope.class);
   }
 
 }

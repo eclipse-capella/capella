@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.links.helpers;
 
 import java.lang.reflect.Constructor;
@@ -61,13 +62,13 @@ public class LinksCommandRegistry {
 		public EClass _linkSuperType;
 
 		/**
-		 * @param linkSuperType_p
-		 * @param linkReferenceInSource_p
+		 * @param linkSuperType
+		 * @param linkReferenceInSource
 		 */
-		public CommandScope(EClass linkSuperType_p,
-				EReference linkReferenceInSource_p) {
-			_linkSuperType = linkSuperType_p;
-			_linkReferenceInSource = linkReferenceInSource_p;
+		public CommandScope(EClass linkSuperType,
+				EReference linkReferenceInSource) {
+			_linkSuperType = linkSuperType;
+			_linkReferenceInSource = linkReferenceInSource;
 		}
 
 		/**
@@ -127,20 +128,20 @@ public class LinksCommandRegistry {
 		/**
 		 * Is this scope valid for given link type and link reference in source.
 		 * 
-		 * @param linkType_p
-		 * @param linkReferenceInSource_p
+		 * @param linkType
+		 * @param linkReferenceInSource
 		 * @return
 		 */
-		public boolean isValidFor(EClass linkType_p,
-				EReference linkReferenceInSource_p) {
+		public boolean isValidFor(EClass linkType,
+				EReference linkReferenceInSource) {
 			if (null != _linkSuperType) {
-				if ((null == linkType_p)
-						|| !_linkSuperType.isSuperTypeOf(linkType_p)) {
+				if ((null == linkType)
+						|| !_linkSuperType.isSuperTypeOf(linkType)) {
 					return false;
 				}
 			}
 			if (null != _linkReferenceInSource) {
-				if (_linkReferenceInSource != linkReferenceInSource_p) {
+				if (_linkReferenceInSource != linkReferenceInSource) {
 					return false;
 				}
 			}
@@ -166,14 +167,14 @@ public class LinksCommandRegistry {
 
 	/**
 	 * 
-	 * @param sourceType_p
-	 * @param targetType_p
+	 * @param sourceType
+	 * @param targetType
 	 * @return
 	 */
-	public boolean containsCommandForSourceTargetTypes(EClass sourceType_p,
-			EClass targetType_p) {
-		VPair vPair = CapellaLinksMap.getInstance().getMappingFor(sourceType_p,
-				targetType_p);
+	public boolean containsCommandForSourceTargetTypes(EClass sourceType,
+			EClass targetType) {
+		VPair vPair = CapellaLinksMap.getInstance().getMappingFor(sourceType,
+				targetType);
 		if (null == vPair) {
 			return false;
 		}
@@ -182,33 +183,33 @@ public class LinksCommandRegistry {
 
 	/**
 	 * 
-	 * @param sourceType_p
+	 * @param sourceType
 	 * @return
 	 */
-	public boolean containsCommandForSourceType(EClass sourceType_p) {
+	public boolean containsCommandForSourceType(EClass sourceType) {
 		List<VPair> vPairs = CapellaLinksMap.getInstance()
-				.findMappingsForSourceType(sourceType_p);
+				.findMappingsForSourceType(sourceType);
 		return containsCommandForVPairs(vPairs);
 	}
 
 	/**
 	 * 
-	 * @param targetType_p
+	 * @param targetType
 	 * @return
 	 */
-	public boolean containsCommandForTargetType(EClass targetType_p) {
+	public boolean containsCommandForTargetType(EClass targetType) {
 		List<VPair> vPairs = CapellaLinksMap.getInstance()
-				.findMappingsForTargetType(targetType_p);
+				.findMappingsForTargetType(targetType);
 		return containsCommandForVPairs(vPairs);
 	}
 
 	/**
 	 * 
-	 * @param vPairs_p
+	 * @param vPairs
 	 * @return
 	 */
-	protected boolean containsCommandForVPairs(List<VPair> vPairs_p) {
-		for (VPair vPair : vPairs_p) {
+	protected boolean containsCommandForVPairs(List<VPair> vPairs) {
+		for (VPair vPair : vPairs) {
 			EClass[] linkTypes = vPair.getFirstValue();
 			EReference[] linkReferencesInSource = vPair.getSecondValue();
 			for (int i = 0; (i < linkTypes.length)
@@ -227,31 +228,31 @@ public class LinksCommandRegistry {
 
 	/**
 	 * 
-	 * @param commandToExecute_p
+	 * @param commandToExecute
 	 */
-	public void executeCommand(EObject context_p, final AbstractCreateLinksCommand commandToExecute_p) {
+	public void executeCommand(EObject context, final AbstractCreateLinksCommand commandToExecute) {
 		AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
 			@Override
 			public void run() {
-				commandToExecute_p.execute();
+				commandToExecute.execute();
 			}
 		};
-		TransactionHelper.getExecutionManager(context_p).execute(command);
+		TransactionHelper.getExecutionManager(context).execute(command);
 	}
 
 	/**
 	 * 
-	 * @param linkType_p
-	 * @param linkRef_p
+	 * @param linkType
+	 * @param linkRef
 	 * @return
 	 */
-	private List<Class<?>> findCommandsFor(EClass linkType_p,
-			EReference linkRef_p) {
+	private List<Class<?>> findCommandsFor(EClass linkType,
+			EReference linkRef) {
 		List<Class<?>> commands = new ArrayList<Class<?>>();
 
 		for (Map.Entry<CommandScope, Class<?>> entry : _commandScopeToCommand
 				.entrySet()) {
-			if (entry.getKey().isValidFor(linkType_p, linkRef_p)) {
+			if (entry.getKey().isValidFor(linkType, linkRef)) {
 				commands.add(entry.getValue());
 			}
 		}
@@ -261,20 +262,20 @@ public class LinksCommandRegistry {
 
 	/**
 	 * 
-	 * @param source_p
-	 * @param target_p
+	 * @param source
+	 * @param target
 	 * @return
 	 */
 	public List<AbstractCreateLinksCommand> getExecutableCommands(
-			Collection<EObject> source_p, Collection<EObject> target_p) {
+			Collection<EObject> source, Collection<EObject> target) {
 		// Precondition.
-		if ((null == source_p) || (null == target_p)) {
+		if ((null == source) || (null == target)) {
 			return Collections.emptyList();
 		}
 		List<AbstractCreateLinksCommand> executableCommands = new ArrayList<AbstractCreateLinksCommand>();
 		VPair vPair = CapellaLinksMap.getInstance().getMappingFor(
-				source_p.iterator().next().eClass(),
-				target_p.iterator().next().eClass());
+				source.iterator().next().eClass(),
+				target.iterator().next().eClass());
 		if (null == vPair) {
 			return Collections.emptyList();
 		}
@@ -298,13 +299,13 @@ public class LinksCommandRegistry {
 								.newInstance();
 					}
 
-					commandInstance.setSources((ArrayList) source_p);
-					commandInstance.setTargets((ArrayList) target_p);
+					commandInstance.setSources((ArrayList) source);
+					commandInstance.setTargets((ArrayList) target);
 					if (commandInstance.canExecute()) {
 						executableCommands.add(commandInstance);
 					}
-				} catch (Exception exception_p) {
-					exception_p.printStackTrace();
+				} catch (Exception exception) {
+					exception.printStackTrace();
 				}
 
 			}

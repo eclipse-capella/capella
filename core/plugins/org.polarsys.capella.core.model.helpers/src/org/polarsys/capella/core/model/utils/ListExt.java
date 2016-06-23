@@ -123,12 +123,11 @@ public class ListExt {
   /**
    * Removes the duplicate entries in the list
    * 
-   * 
    * @param list the list with duplicate entries
    * @return list with no duplicates
    */
-  static public List<CapellaElement> removeDuplicates(List<CapellaElement> list) {
-    Set<CapellaElement> set = new HashSet<CapellaElement>(list);
+  static public List<EObject> removeDuplicates(List<EObject> list) {
+    Set<EObject> set = new HashSet<EObject>(list);
     list.clear();
     list.addAll(set);
     return list;

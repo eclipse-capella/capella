@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.libraries.extendedqueries.information;
 
 import java.util.ArrayList;
@@ -37,17 +38,17 @@ public class GetAvailable_BooleanType_DefaultValue__Lib extends AbstractQuery {
   @SuppressWarnings({ "rawtypes", "unchecked" })
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
-    CapellaElement element_p = (CapellaElement) input;
+    CapellaElement element = (CapellaElement) input;
     List<CapellaElement> result = new ArrayList<CapellaElement>();
     // get all data in the root data package of each allocated architectures in libraries
-    BlockArchitecture blockArchitectureInProject = BlockArchitectureExt.getRootBlockArchitecture(element_p);
-    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element_p);
+    BlockArchitecture blockArchitectureInProject = BlockArchitectureExt.getRootBlockArchitecture(element);
+    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element);
     for (IModel library : LibraryManagerExt.getAllActivesReferences(currentProject)) {
       BlockArchitecture blockArchitecture = QueryExt.getCorrespondingBlockArchitectureFromLibrary(blockArchitectureInProject, (CapellaModel) library);
       for (BlockArchitecture currentBlockArchitecture : BlockArchitectureExt.getAllAllocatedArchitectures(blockArchitecture)) {
         DataPkg dataPkg = currentBlockArchitecture.getOwnedDataPkg();
         if (dataPkg != null) {
-          result.addAll(getDataFromLevel(dataPkg, element_p));
+          result.addAll(getDataFromLevel(dataPkg, element));
         }
       }
     }
@@ -55,16 +56,16 @@ public class GetAvailable_BooleanType_DefaultValue__Lib extends AbstractQuery {
     return (List) result;
   }
 
-  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg_p, CapellaElement dataType_p) {
-    if (dataType_p instanceof BooleanType) {
+  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg, CapellaElement dataType) {
+    if (dataType instanceof BooleanType) {
       List<EClass> searchedUntypedEclasses = new ArrayList<EClass>();
-      BooleanType booleanType = (BooleanType) dataType_p;
+      BooleanType booleanType = (BooleanType) dataType;
       searchedUntypedEclasses.add(DatavaluePackage.Literals.BOOLEAN_REFERENCE);
       searchedUntypedEclasses.add(DatavaluePackage.Literals.ABSTRACT_EXPRESSION_VALUE);
-      List<CapellaElement> returnValue = CapellaElementsHelperForBusinessQueries.getDataValuesInstancesOf(dataPkg_p, searchedUntypedEclasses, true, false);
-      returnValue.addAll(CapellaElementsHelperForBusinessQueries.getValuesTypedBy(dataPkg_p, booleanType, false, true,
+      List<CapellaElement> returnValue = CapellaElementsHelperForBusinessQueries.getDataValuesInstancesOf(dataPkg, searchedUntypedEclasses, true, false);
+      returnValue.addAll(CapellaElementsHelperForBusinessQueries.getValuesTypedBy(dataPkg, booleanType, false, true,
           DatavaluePackage.Literals.BOOLEAN_REFERENCE, null));
-      returnValue.addAll(CapellaElementsHelperForBusinessQueries.getPropertiesTypedBy(dataPkg_p, booleanType, false));
+      returnValue.addAll(CapellaElementsHelperForBusinessQueries.getPropertiesTypedBy(dataPkg, booleanType, false));
       return returnValue;
     }
     return Collections.emptyList();

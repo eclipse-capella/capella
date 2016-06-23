@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.commands;
 
 import java.util.Collection;
@@ -30,13 +31,13 @@ public class CapellaCopyToClipboardCommand extends CopyToClipboardCommand {
   private StructuredViewer _viewer;
 
   /**
-   * @param domain_p
-   * @param collection_p
-   * @param viewer_p
+   * @param domain
+   * @param collection
+   * @param viewer
    */
-  public CapellaCopyToClipboardCommand(EditingDomain domain_p, Collection<?> collection_p, StructuredViewer viewer_p) {
-    super(domain_p, collection_p);
-    _viewer = viewer_p;
+  public CapellaCopyToClipboardCommand(EditingDomain domain, Collection<?> collection, StructuredViewer viewer) {
+    super(domain, collection);
+    _viewer = viewer;
   }
 
   @Override

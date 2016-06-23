@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
@@ -46,13 +47,13 @@ import org.polarsys.capella.core.queries.helpers.QueryExt;
  */
 public class AbstractTypeHelpers {
 
-  public static List<CapellaElement> getAvailableElements_Type_InheritedType(CapellaElement element_p, EClass typeClass, String allTypeInstanceQueryIdentifier) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(element_p);
-    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element_p);
+  public static List<EObject> getAvailableElements_Type_InheritedType(CapellaElement element, EClass typeClass, String allTypeInstanceQueryIdentifier) {
+    List<EObject> availableElements = new ArrayList<EObject>();
+    BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(element);
+    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element);
 
-    if (typeClass.isInstance(element_p)) {
-      final GeneralizableElement currentElement = (GeneralizableElement) element_p;
+    if (typeClass.isInstance(element)) {
+      final GeneralizableElement currentElement = (GeneralizableElement) element;
       MultiFilter filter = new MultiFilter(new IQueryFilter[] { new RemoveUnnamedElementFilter(), new RemoveSubTypesFilter(currentElement) });
       java.util.Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
       for (IModel library : libraries) {
@@ -68,25 +69,25 @@ public class AbstractTypeHelpers {
     return availableElements;
   }
 
-  public static List<CapellaElement> getAvailableElements_Type_Type(CapellaElement element_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(element_p);
-    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element_p);
+  public static List<EObject> getAvailableElements_Type_Type(CapellaElement element) {
+    List<EObject> availableElements = new ArrayList<EObject>();
+    BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(element);
+    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element);
 
-    if (element_p instanceof Property) {
+    if (element instanceof Property) {
       java.util.Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
       for (IModel library : libraries) {
         BlockArchitecture correspondingBlock = (BlockArchitecture) QueryExt.getCorrespondingElementInLibrary(currentBlock, (CapellaModel) library);
         for (BlockArchitecture blockArchitecture : BlockArchitectureExt.getAllAllocatedArchitectures(correspondingBlock)) {
           DataPkg dataPkg = blockArchitecture.getOwnedDataPkg();
           if (dataPkg != null) {
-            Association association = PropertyExt.getRegardingAssociation(element_p);
-            List<CapellaElement> returnValue =
+            Association association = PropertyExt.getRegardingAssociation(element);
+            List<EObject> returnValue =
                 CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg, InformationPackage.Literals.CLASS, null);
             returnValue.addAll(CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg, InformationPackage.Literals.COLLECTION, null));
             if (null != association) {
-              if (element_p instanceof Property) {
-                Property prop = (Property) element_p;
+              if (element instanceof Property) {
+                Property prop = (Property) element;
                 AggregationKind aggregationKind = prop.getAggregationKind();
                 if (aggregationKind == AggregationKind.ASSOCIATION) {
                   returnValue.addAll(CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg, CommunicationPackage.Literals.SIGNAL, null));
@@ -97,7 +98,7 @@ public class AbstractTypeHelpers {
               returnValue = removePrimitiveOrNonPrimitiveClasses(returnValue, true);
               returnValue = removePrimitiveOrNonPrimitiveCollections(returnValue, true);
             } else {
-              List<CapellaElement> dataTypes =
+              List<EObject> dataTypes =
                   CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg, DatatypePackage.Literals.DATA_TYPE, null);
               returnValue.addAll(dataTypes);
               returnValue = removePrimitiveOrNonPrimitiveClasses(returnValue, false);
@@ -110,10 +111,10 @@ public class AbstractTypeHelpers {
     }
     availableElements = ListExt.removeDuplicates(availableElements);
     IQueryFilter filter = new RemoveUnnamedElementFilter();
-    List<CapellaElement> result = new ArrayList<CapellaElement>();
-    for (CapellaElement element : availableElements) {
-      if (filter.keepElement(element, null)) {
-        result.add(element);
+    List<EObject> result = new ArrayList<EObject>();
+    for (EObject elt : availableElements) {
+      if (filter.keepElement(elt, null)) {
+        result.add(elt);
       }
     }
     return result;
@@ -121,16 +122,16 @@ public class AbstractTypeHelpers {
 
   /**
    * Allows to remove primitive or non primitive classes from a list
-   * @param elements_p the list
-   * @param removePrimitive_p <code>true</code> if you want to remove the primitive classes, <code>false</code> if you want to remove the non primitive classes
+   * @param elements the list
+   * @param removePrimitive <code>true</code> if you want to remove the primitive classes, <code>false</code> if you want to remove the non primitive classes
    * @return the processed list
    */
-  private static List<CapellaElement> removePrimitiveOrNonPrimitiveClasses(List<CapellaElement> elements_p, boolean removePrimitive_p) {
-    List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-    for (CapellaElement element : elements_p) {
+  private static List<EObject> removePrimitiveOrNonPrimitiveClasses(List<EObject> elements, boolean removePrimitive) {
+    List<EObject> returnValue = new ArrayList<EObject>();
+    for (EObject element : elements) {
       if (element instanceof Class) {
         Class currentClass = (Class) element;
-        if ((!removePrimitive_p && currentClass.isIsPrimitive()) || (removePrimitive_p && !currentClass.isIsPrimitive())) {
+        if ((!removePrimitive && currentClass.isIsPrimitive()) || (removePrimitive && !currentClass.isIsPrimitive())) {
           returnValue.add(currentClass);
         }
       } else {
@@ -142,17 +143,17 @@ public class AbstractTypeHelpers {
 
   /**
    * Allows to remove primitive or non primitive Collections from a list
-   * @param elements_p the list
-   * @param removePrimitive_p <code>true</code> if you want to remove the primitive Collections, <code>false</code> if you want to remove the non primitive
+   * @param elements the list
+   * @param removePrimitive <code>true</code> if you want to remove the primitive Collections, <code>false</code> if you want to remove the non primitive
    *          Collections
    * @return the processed list
    */
-  private static List<CapellaElement> removePrimitiveOrNonPrimitiveCollections(List<CapellaElement> elements_p, boolean removePrimitive_p) {
-    List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-    for (CapellaElement element : elements_p) {
+  private static List<EObject> removePrimitiveOrNonPrimitiveCollections(List<EObject> elements, boolean removePrimitive) {
+    List<EObject> returnValue = new ArrayList<EObject>();
+    for (EObject element : elements) {
       if (element instanceof Collection) {
         Collection currentCollection = (Collection) element;
-        if ((!removePrimitive_p && currentCollection.isIsPrimitive()) || (removePrimitive_p && !currentCollection.isIsPrimitive())) {
+        if ((!removePrimitive && currentCollection.isIsPrimitive()) || (removePrimitive && !currentCollection.isIsPrimitive())) {
           returnValue.add(currentCollection);
         }
       } else {

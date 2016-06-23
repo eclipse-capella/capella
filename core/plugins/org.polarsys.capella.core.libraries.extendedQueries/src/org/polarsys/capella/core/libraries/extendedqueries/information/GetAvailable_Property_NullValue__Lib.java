@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.libraries.extendedqueries.information;
 
 import java.util.ArrayList;
@@ -37,17 +38,17 @@ public class GetAvailable_Property_NullValue__Lib extends AbstractQuery {
   @SuppressWarnings({ "rawtypes", "unchecked" })
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
-    CapellaElement element_p = (CapellaElement) input;
+    CapellaElement element = (CapellaElement) input;
     List<CapellaElement> result = new ArrayList<CapellaElement>();
     // get all data in the root data package of each allocated architectures in libraries
-    BlockArchitecture blockArchitectureInProject = BlockArchitectureExt.getRootBlockArchitecture(element_p);
-    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element_p);
+    BlockArchitecture blockArchitectureInProject = BlockArchitectureExt.getRootBlockArchitecture(element);
+    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element);
     for (IModel library : LibraryManagerExt.getAllActivesReferences(currentProject)) {
       BlockArchitecture blockArchitecture = QueryExt.getCorrespondingBlockArchitectureFromLibrary(blockArchitectureInProject, (CapellaModel) library);
       for (BlockArchitecture currentBlockArchitecture : BlockArchitectureExt.getAllAllocatedArchitectures(blockArchitecture)) {
         DataPkg dataPkg = currentBlockArchitecture.getOwnedDataPkg();
         if (dataPkg != null) {
-          result.addAll(getDataFromLevel(dataPkg, element_p));
+          result.addAll(getDataFromLevel(dataPkg, element));
         }
       }
     }
@@ -55,13 +56,13 @@ public class GetAvailable_Property_NullValue__Lib extends AbstractQuery {
     return (List) result;
   }
 
-  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg_p, CapellaElement capellaElement_p) {
-    if (capellaElement_p instanceof MultiplicityElement) {
+  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg, CapellaElement capellaElement) {
+    if (capellaElement instanceof MultiplicityElement) {
       List<EReference> features = Collections.singletonList(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE);
       List<CapellaElement> returnValue =
-          CapellaElementsHelperForBusinessQueries.getStandardApplicableValuesForMultiplicityElementInLevel(dataPkg_p, (MultiplicityElement) capellaElement_p,
+          CapellaElementsHelperForBusinessQueries.getStandardApplicableValuesForMultiplicityElementInLevel(dataPkg, (MultiplicityElement) capellaElement,
               features);
-      returnValue.addAll(CapellaElementsHelperForBusinessQueries.getPropertiesWithTypeOf(dataPkg_p, capellaElement_p));
+      returnValue.addAll(CapellaElementsHelperForBusinessQueries.getPropertiesWithTypeOf(dataPkg, capellaElement));
       return returnValue;
     }
     return Collections.emptyList();

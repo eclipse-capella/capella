@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.commands;
 
 import java.util.ArrayList;
@@ -71,14 +72,14 @@ public class CapellaCopyCommand extends CommandWrapper {
    * is part of an association. In this case, the association is
    * also copied.
    * 
-   * @param sources_p a non-null collection
+   * @param sources a non-null collection
    * @return a non-null collection
    */
-  public static Collection<?> findCopyClosure(Collection<?> sources_p) {
+  public static Collection<?> findCopyClosure(Collection<?> sources) {
     Collection<Object> result = new ArrayList<Object>();
     // Separate model elements from other objects
     Collection<EObject> elements = new ArrayList<EObject>();
-    for (Object o : sources_p) {
+    for (Object o : sources) {
       if (o instanceof EObject)
         elements.add((EObject)o);
       else

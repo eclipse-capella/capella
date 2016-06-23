@@ -36,7 +36,7 @@ public class GetAvailable_Mode_AvailableInStates extends AbstractQuery {
   }
 
   /**
-   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
    */
   public List<CapellaElement> getAvailableElements(CapellaElement element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
@@ -71,7 +71,7 @@ public class GetAvailable_Mode_AvailableInStates extends AbstractQuery {
   }
 
   /**
-   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
+   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getCurrentElements(EObject,boolean)
    */
   public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
     List<CapellaElement> currentElements = new ArrayList<CapellaElement>();

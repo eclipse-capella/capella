@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,14 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.links.helpers.commands;
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -30,10 +31,10 @@ public abstract class AbstractQueryBasedCommand extends AbstractCreateLinksComma
 
   protected CapellaElement _targetElement;
 
-  public AbstractQueryBasedCommand(String label_p, LinkStyle linkStyle_p, EClass linkType_p, EReference linkRefInSource_p) {
-    super(label_p, linkStyle_p);
-    _linkType = linkType_p;
-    _linkRefInSource = linkRefInSource_p;
+  public AbstractQueryBasedCommand(String label, LinkStyle linkStyle, EClass linkType, EReference linkRefInSource) {
+    super(label, linkStyle);
+    _linkType = linkType;
+    _linkRefInSource = linkRefInSource;
   }
 
   /**
@@ -53,8 +54,8 @@ public abstract class AbstractQueryBasedCommand extends AbstractCreateLinksComma
     if (null == query) {
       return false;
     }
-    List<CapellaElement> availableElements = query.getAvailableElements(_sourceElement);
-    List<CapellaElement> currentElements = query.getCurrentElements(_sourceElement, false);
+    List<EObject> availableElements = query.getAvailableElements(_sourceElement);
+    List<EObject> currentElements = query.getCurrentElements(_sourceElement, false);
     availableElements.removeAll(currentElements);
     // Is target in available elements ?
     if (!availableElements.contains(_targetElement)) {

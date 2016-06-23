@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import org.eclipse.emf.ecore.EClass;
@@ -34,15 +35,15 @@ public class CapellaActionsActivator extends AbstractUIActivator {
   /**
    * Shared instance.
    */
-  private static CapellaActionsActivator __plugin;
+  private static CapellaActionsActivator _plugin;
 
   /**
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
    */
   @Override
-  public void start(BundleContext context_p) throws Exception {
-    super.start(context_p);
-    __plugin = this;
+  public void start(BundleContext context) throws Exception {
+    super.start(context);
+    _plugin = this;
     new DeletePreferences();
     new CapellaValidationPreferencesInitializer();
     new ActionsPreferenceInitializer();
@@ -53,9 +54,9 @@ public class CapellaActionsActivator extends AbstractUIActivator {
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
    */
   @Override
-  public void stop(BundleContext context_p) throws Exception {
-    __plugin = null;
-    super.stop(context_p);
+  public void stop(BundleContext context) throws Exception {
+    _plugin = null;
+    super.stop(context);
   }
 
   /**
@@ -63,20 +64,20 @@ public class CapellaActionsActivator extends AbstractUIActivator {
    * @return
    */
   public static CapellaActionsActivator getDefault() {
-    return __plugin;
+    return _plugin;
   }
 
   /**
    * Is the given metaclass protected ?
-   * @param class_p must be not <code>null</code>.
+   * @param class must be not <code>null</code>.
    * @return <code>true</code> or <code>false</code> if one of them is a protected element.
    */
-  public boolean isMetaclassProtected(EClass class_p) {
+  public boolean isMetaclassProtected(EClass cls) {
 
     boolean result = false;
 
     // Get the string representation from given metaclass.
-    String eClassRepresentation = getPreferenceValue(class_p);
+    String eClassRepresentation = getPreferenceValue(cls);
 
     // Preference index.
     int index = 0;
@@ -103,38 +104,38 @@ public class CapellaActionsActivator extends AbstractUIActivator {
 
   /**
    * Get protected element preference with given index.
-   * @param index_p
+   * @param index
    * @return a not <code>null</code> string.
    */
-  public String getPreference(int index_p) {
-    return new StringBuilder(ProtectedElementsPreferences.PREFERENCE_DELETE_RESTRICTION).append(index_p).toString();
+  public String getPreference(int index) {
+    return new StringBuilder(ProtectedElementsPreferences.PREFERENCE_DELETE_RESTRICTION).append(index).toString();
   }
 
   /**
    * Get protected element title preference with given index.
-   * @param index_p
+   * @param index
    * @return a not <code>null</code> string.
    */
-  public String getPreferenceId(int index_p) {
-    return new StringBuilder(ProtectedElementsPreferences.PREFERENCE_DELETE_RESTRICTION).append(index_p).append("_Id").toString(); //$NON-NLS-1$
+  public String getPreferenceId(int index) {
+    return new StringBuilder(ProtectedElementsPreferences.PREFERENCE_DELETE_RESTRICTION).append(index).append("_Id").toString(); //$NON-NLS-1$
   }
 
   /**
    * Get preference representation value for given {@link EClass}.
-   * @param class_p
+   * @param class
    * @return a not <code>null</code> string.
    */
-  public String getPreferenceValue(EClass class_p) {
-    return class_p.getName();
+  public String getPreferenceValue(EClass cls) {
+    return cls.getName();
   }
 
   /**
    * Get protected element title preference with given index.
-   * @param index_p
+   * @param index
    * @return a not <code>null</code> string.
    */
-  public String getPreferenceTitle(int index_p) {
-    return new StringBuilder(ProtectedElementsPreferences.PREFERENCE_DELETE_RESTRICTION).append(index_p).append("_Title").toString(); //$NON-NLS-1$
+  public String getPreferenceTitle(int index) {
+    return new StringBuilder(ProtectedElementsPreferences.PREFERENCE_DELETE_RESTRICTION).append(index).append("_Title").toString(); //$NON-NLS-1$
   }
 
 }

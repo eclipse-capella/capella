@@ -13,6 +13,7 @@ package org.polarsys.capella.core.business.queries.queries.fa;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
@@ -37,12 +38,12 @@ public class GetAvailable_ComponentPort_ConnectedPorts extends AbstractQuery {
 	@Override
 	public List<Object> execute(Object input, IQueryContext context) {
 		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+		List<EObject> availableElements = getAvailableElements(capellaElement);
 		return (List) availableElements;
 	}
 
-	public List<CapellaElement> getAvailableElements(CapellaElement element) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+	public List<EObject> getAvailableElements(CapellaElement element) {
+		List<EObject> availableElements = new ArrayList<EObject>();
 		if (element instanceof Part) {
 			Part property = (Part) element;
 			availableElements.addAll(getRule_MQRY_StandardPort_ConnectedPorts_11(property));
@@ -57,10 +58,10 @@ public class GetAvailable_ComponentPort_ConnectedPorts extends AbstractQuery {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
 		IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PART, CapellacorePackage.Literals.TYPED_ELEMENT__TYPE);
 		if (query != null) {
-			List<CapellaElement> pcs = query.getAvailableElements(currentPhysicalPart);
-			pcs.add((CapellaElement) currentPhysicalPart.eContainer());
+			List<EObject> pcs = query.getAvailableElements(currentPhysicalPart);
+			pcs.add(currentPhysicalPart.eContainer());
 			List<Partition> allports = new ArrayList<Partition>(1);
-			for (CapellaElement capellaElement : pcs) {
+			for (EObject capellaElement : pcs) {
 				if (capellaElement instanceof PhysicalComponent) {
 					PhysicalComponent pc = (PhysicalComponent) capellaElement;
 					allports.addAll(pc.getOwnedPartitions());
@@ -75,8 +76,8 @@ public class GetAvailable_ComponentPort_ConnectedPorts extends AbstractQuery {
 		return availableElements;
 	}
 
-	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>(1);
+	public List<EObject> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+		List<EObject> currentElements = new ArrayList<EObject>(1);
 		if (element instanceof Part && thePort != null) {
 			for (ComponentExchange connection : thePort.getComponentExchanges()) {
 				currentElements.addAll(FunctionalExt.getRelatedPorts(connection));

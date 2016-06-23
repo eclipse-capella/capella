@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
@@ -40,7 +41,7 @@ public class GetAvailable_DataValue_AbstractType extends AbstractQuery {
     List<Object> parameters = (List<Object>) input;
     CapellaElement element = (CapellaElement) parameters.get(0);
     List<EClass> types = (List<EClass>) parameters.get(1);
-    List<CapellaElement> result = new ArrayList<CapellaElement>();
+    List<EObject> result = new ArrayList<EObject>();
     // GET AVAILABLE ELEMENTS
     // get all data in the root data package of each allocated architectures
     BlockArchitecture currentBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(element);
@@ -55,7 +56,7 @@ public class GetAvailable_DataValue_AbstractType extends AbstractQuery {
       DataPkg dataPkg = cpnt.getOwnedDataPkg();
       if (dataPkg != null) {
         result.addAll(getDataFromLevel(dataPkg, element, types));
-        List<CapellaElement> allTypes = new ArrayList<CapellaElement>();
+        List<EObject> allTypes = new ArrayList<EObject>();
         allTypes.addAll(DataPkgExt.getAllTypesFromDataPkg(dataPkg));
         allTypes = QueryInterpretor.executeFilter(allTypes, new KeepPrimitiveClassInstanceOfSpecificEClassFilter(InformationPackage.Literals.CLASS));
         allTypes = QueryInterpretor.executeFilter(allTypes, new KeepPrimitiveClassInstanceOfSpecificEClassFilter(InformationPackage.Literals.COLLECTION));
@@ -72,7 +73,7 @@ public class GetAvailable_DataValue_AbstractType extends AbstractQuery {
         for (Component cpnt : componentHierarchy) {
           DataPkg dataPkg = cpnt.getOwnedDataPkg();
           if (dataPkg != null) {
-            for (CapellaElement data : getDataFromLevel(dataPkg, element, types)) {
+            for (EObject data : getDataFromLevel(dataPkg, element, types)) {
               if (!result.contains(data)) {
                 result.add(data);
               }
@@ -85,8 +86,8 @@ public class GetAvailable_DataValue_AbstractType extends AbstractQuery {
     return (List) result;
   }
 
-  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg, CapellaElement capellaElement, List<EClass> types) {
-    List<CapellaElement> res = new ArrayList<CapellaElement>();
+  public List<EObject> getDataFromLevel(DataPkg dataPkg, CapellaElement capellaElement, List<EClass> types) {
+    List<EObject> res = new ArrayList<EObject>();
     for (EClass type : types) {
       res.addAll(CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg, type, capellaElement));
     }

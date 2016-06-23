@@ -40,16 +40,16 @@ public class GetAvailable_ConfigurationItem_ImplementedPC extends AbstractQuery 
 	@Override
 	public List<Object> execute(Object input, IQueryContext context) {
 		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+		List<EObject> availableElements = getAvailableElements(capellaElement);
 		return (List) availableElements;
 	}
 
 	/** 
-	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
+	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element) {
+	public List<EObject> getAvailableElements(CapellaElement element) {
 		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+		List<EObject> availableElements = new ArrayList<EObject>();
 		if (null == systemEngineering) {
 			return availableElements;
 		}

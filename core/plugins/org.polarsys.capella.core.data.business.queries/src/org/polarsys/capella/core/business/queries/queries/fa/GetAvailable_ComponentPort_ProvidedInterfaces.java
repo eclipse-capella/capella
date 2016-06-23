@@ -40,8 +40,8 @@ public class GetAvailable_ComponentPort_ProvidedInterfaces extends AbstractQuery
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     CapellaElement element = (CapellaElement) input;
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    List<CapellaElement> tempAvailableElements = new ArrayList<CapellaElement>(1);
+    List<EObject> availableElements = new ArrayList<EObject>(1);
+    List<EObject> tempAvailableElements = new ArrayList<EObject>(1);
 
     SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 

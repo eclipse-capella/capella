@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 
 package org.polarsys.capella.core.platform.sirius.ui.commands;
 
@@ -125,45 +126,45 @@ public class CapellaDeleteCommand extends AbstractCommand {
   /**
    * Show a confirmation dialog? Note: This value only controls whether we show the dialog to confirm the delete. Another dialog may be shown in case the
    * selection contains fragment roots.
-   * @param domain_p
-   * @param selection_p
+   * @param domain
+   * @param selection
    */
   private boolean _confirmDelete;
 
   /**
-   * Equivalent to <code>CapellaDeleteCommand(executionManager_p, selection_p, true)</code>.
-   * @param executionManager_p
-   * @param collection_p
+   * Equivalent to <code>CapellaDeleteCommand(executionManager, selection, true)</code>.
+   * @param executionManager
+   * @param collection
    */
-  public CapellaDeleteCommand(ExecutionManager executionManager_p, Collection<?> selection_p) {
-    this(executionManager_p, selection_p, true);
+  public CapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection) {
+    this(executionManager, selection, true);
   }
 
   /**
    * Equivalent to
-   * <code>CapellaDeleteCommand(executionManager_p, collection_p, ensureTransaction_p, IDeletePreferences.INSTANCE.isConfirmationRequired(), true)</code>.
-   * @param executionManager_p
-   * @param collection_p
+   * <code>CapellaDeleteCommand(executionManager, collection, ensureTransaction, IDeletePreferences.INSTANCE.isConfirmationRequired(), true)</code>.
+   * @param executionManager
+   * @param collection
    */
-  public CapellaDeleteCommand(ExecutionManager executionManager_p, Collection<?> selection_p, boolean ensureTransaction_p) {
-    this(executionManager_p, selection_p, ensureTransaction_p, IDeletePreferences.INSTANCE.isConfirmationRequired(), true);
+  public CapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection, boolean ensureTransaction) {
+    this(executionManager, selection, ensureTransaction, IDeletePreferences.INSTANCE.isConfirmationRequired(), true);
   }
 
   /**
    * Constructor.
-   * @param executionManager_p
-   * @param collection_p
-   * @param ensureTransaction_p Should it be executed against the specified execution manager directly (<code>true</code>) or not (<code>false</code>) ?
-   * @param monitorDelete_p Should the user be asked for confirmation (<code>true</code>) or not (<code>false</code>) ?
-   * @param longOperationEvents_p Should events about this long running operation flow be sent ? <code>true</code> if so, <code>false</code> otherwise.
+   * @param executionManager
+   * @param collection
+   * @param ensureTransaction Should it be executed against the specified execution manager directly (<code>true</code>) or not (<code>false</code>) ?
+   * @param monitorDelete Should the user be asked for confirmation (<code>true</code>) or not (<code>false</code>) ?
+   * @param longOperationEvents Should events about this long running operation flow be sent ? <code>true</code> if so, <code>false</code> otherwise.
    */
-  public CapellaDeleteCommand(ExecutionManager executionManager_p, Collection<?> selection_p, boolean ensureTransaction_p, boolean confirmDelete_p,
-      boolean longOperationEvents_p) {
-    _executionManager = executionManager_p;
-    _ensureTransaction = ensureTransaction_p;
-    _confirmDelete = confirmDelete_p;
-    _sendLongRunningEvents = longOperationEvents_p;
-    _selection = new ArrayList<Object>(selection_p);
+  public CapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection, boolean ensureTransaction, boolean confirmDelete,
+      boolean longOperationEvents) {
+    _executionManager = executionManager;
+    _ensureTransaction = ensureTransaction;
+    _confirmDelete = confirmDelete;
+    _sendLongRunningEvents = longOperationEvents;
+    _selection = new ArrayList<Object>(selection);
   }
 
   /**
@@ -257,9 +258,9 @@ public class CapellaDeleteCommand extends AbstractCommand {
       // Execute deletion within caller transaction.
       try {
         doExecute();
-      } catch (Exception re_p) {
+      } catch (Exception re) {
         CapellaActionsActivator.getDefault().getLog()
-            .log(new Status(IStatus.WARNING, CapellaActionsActivator.getDefault().getPluginId(), re_p.getMessage(), re_p));
+            .log(new Status(IStatus.WARNING, CapellaActionsActivator.getDefault().getPluginId(), re.getMessage(), re));
       }
     }
   }
@@ -361,13 +362,13 @@ public class CapellaDeleteCommand extends AbstractCommand {
 
   /**
    * In case we would delete controlled elements, show a dialog to warn the user.
-   * @param controlledElementsToDelete_p
+   * @param controlledElementsToDelete
    */
-  protected void showAbortDialogForControlledElementsToDelete(final Set<? extends EObject> controlledElementsToDelete_p) {
+  protected void showAbortDialogForControlledElementsToDelete(final Set<? extends EObject> controlledElementsToDelete) {
     PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
       public void run() {
         ImpactAnalysisDialog dialog =
-            new ImpactAnalysisDialog(new ArrayList<EObject>(controlledElementsToDelete_p), Messages.CapellaDeleteCommand_Label,
+            new ImpactAnalysisDialog(new ArrayList<EObject>(controlledElementsToDelete), Messages.CapellaDeleteCommand_Label,
                 Messages.CapellaDeleteCommand_ControlledElementsError_Message, MessageDialog.ERROR,
                 new String[] { org.polarsys.capella.common.ui.toolkit.dialogs.Messages.AbstractViewerDialog_OK_Title }, SWT.COLOR_RED, false);
         dialog.open();
@@ -391,11 +392,11 @@ public class CapellaDeleteCommand extends AbstractCommand {
 
               /**
                * Create a second viewer to display referencing elements related to a deleted element.
-               * @param parent_p
+               * @param parent
                */
-              protected void createReferencingElementViewer(Composite parent_p) {
+              protected void createReferencingElementViewer(Composite parent) {
                 // Create a group to host the referencing elements.
-                Group referencingElementsGroup = new Group(parent_p, SWT.NONE);
+                Group referencingElementsGroup = new Group(parent, SWT.NONE);
                 referencingElementsGroup.setText(Messages.CapellaDeleteCommand_ImpactAnalysis_ReferencingElements_Group_Title);
                 referencingElementsGroup.setToolTipText(Messages.CapellaDeleteCommand_ImpactAnalysis_ReferencingElements_Group_Tooltip);
                 referencingElementsGroup.setLayout(new GridLayout());
@@ -411,8 +412,8 @@ public class CapellaDeleteCommand extends AbstractCommand {
                    * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
                    */
                   @SuppressWarnings("synthetic-access")
-                  public void selectionChanged(SelectionChangedEvent event_p) {
-                    IStructuredSelection ssel = (IStructuredSelection) event_p.getSelection();
+                  public void selectionChanged(SelectionChangedEvent event) {
+                    IStructuredSelection ssel = (IStructuredSelection) event.getSelection();
                     List<?> selectedElements = ssel.toList();
                     Set<EObject> referencingElements = new HashSet<EObject>(0);
                     for (Object currentSelectedElement : selectedElements) {
@@ -433,15 +434,15 @@ public class CapellaDeleteCommand extends AbstractCommand {
                * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractMessageDialogWithViewer#createViewerArea(org.eclipse.swt.widgets.Composite)
                */
               @Override
-              protected void createViewerArea(Composite parent_p) {
+              protected void createViewerArea(Composite parent) {
                 // Since we add a second viewer to display referencing elements for deleted ones.
                 // Let's tweak the UI by the changing the layout data.
-                GridLayout layout = (GridLayout) parent_p.getLayout();
+                GridLayout layout = (GridLayout) parent.getLayout();
                 layout.numColumns = 2;
                 layout.makeColumnsEqualWidth = true;
                 layout.marginWidth = 0; // To have the status bar nicely displayed.
                 // Create a group to host the deleted element viewer.
-                Group deletedElementsGroup = new Group(parent_p, SWT.NONE);
+                Group deletedElementsGroup = new Group(parent, SWT.NONE);
                 deletedElementsGroup.setText(Messages.CapellaDeleteCommand_ImpactAnalysis_DeletedElements_Group_Title);
                 deletedElementsGroup.setToolTipText(Messages.CapellaDeleteCommand_ImpactAnalysis_DeletedElements_Group_Tooltip);
                 deletedElementsGroup.setLayout(new GridLayout());
@@ -449,7 +450,7 @@ public class CapellaDeleteCommand extends AbstractCommand {
                 // Create the viewer area with this group as parent.
                 super.createViewerArea(deletedElementsGroup);
                 // Create a second viewer to display referencing elements related to a deleted element.
-                createReferencingElementViewer(parent_p);
+                createReferencingElementViewer(parent);
                 // Select end-user initial elements to delete and set the focus on this viewer.
                 TreeViewer treeViewer = getViewer();
                 // Set a label provider that allow decorator mechanism.
@@ -496,8 +497,8 @@ public class CapellaDeleteCommand extends AbstractCommand {
    * Sets the delete helper for this command.
    * @see getExpandedSelection()
    */
-  public void setDeleteHelper(IDeleteHelper helper_p) {
-    _deleteHelper = helper_p;
+  public void setDeleteHelper(IDeleteHelper helper) {
+    _deleteHelper = helper;
   }
 
   /**
@@ -556,7 +557,7 @@ public class CapellaDeleteCommand extends AbstractCommand {
                 try {
                   EReference feature = EReference.class.cast(notification.getFeature());
                   handleNotification = feature.isContainment();
-                } catch (ClassCastException cce_p) {
+                } catch (ClassCastException cce) {
                   // Could not tell feature, add notification whatever it might be.
                   handleNotification = true;
                 }
@@ -589,33 +590,33 @@ public class CapellaDeleteCommand extends AbstractCommand {
 
   /**
    * FIXME who's using this? Fill parents to children structure for specified elements.
-   * @param parent_p The parent object.
-   * @param removedElement_p The removed element, child of specified parent one.
-   * @param parentsToChildren_p The resulting parents to children structure.
+   * @param parent The parent object.
+   * @param removedElement The removed element, child of specified parent one.
+   * @param parentsToChildren The resulting parents to children structure.
    */
-  protected void fillStructure(EObject parent_p, EObject removedElement_p, Map<EObject, Set<EObject>> parentsToChildren_p) {
+  protected void fillStructure(EObject parent, EObject removedElement, Map<EObject, Set<EObject>> parentsToChildren) {
     // Precondition.
-    if ((null == parent_p) || (null == removedElement_p) || (null == parentsToChildren_p)) {
+    if ((null == parent) || (null == removedElement) || (null == parentsToChildren)) {
       return;
     }
     // Get children for specified parent.
-    Set<EObject> children = parentsToChildren_p.get(parent_p);
+    Set<EObject> children = parentsToChildren.get(parent);
     // If there is no child at the time, create structure.
     if (null == children) {
       children = new HashSet<EObject>(1);
-      parentsToChildren_p.put(parent_p, children);
+      parentsToChildren.put(parent, children);
     }
     // Add removed element.
-    children.add(removedElement_p);
+    children.add(removedElement);
     // Recursively apply filling to contained children.
-    for (EObject removed : removedElement_p.eContents()) {
-      fillStructure(removedElement_p, removed, parentsToChildren_p);
+    for (EObject removed : removedElement.eContents()) {
+      fillStructure(removedElement, removed, parentsToChildren);
     }
   }
 
   static class DryRun extends CapellaDeleteCommand {
-    public DryRun(ExecutionManager executionManager_p, Collection<?> selection_p) {
-      super(executionManager_p, selection_p);
+    public DryRun(ExecutionManager executionManager, Collection<?> selection) {
+      super(executionManager, selection);
     }
 
     boolean proceed = false;
@@ -636,12 +637,12 @@ public class CapellaDeleteCommand extends AbstractCommand {
    * Simulate deletion of the given selection up to the point where we show a confirmation dialog to the user. Also performs the check on fragment roots. Needed
    * when deleting elements from a diagram editor for some obscure reason.
    * @see CapellaDeleteActionHook
-   * @param manager_p
-   * @param selection_p
+   * @param manager
+   * @param selection
    * @return true if the deletion would proceed. false otherwise.
    */
-  public static boolean confirmDeletion(ExecutionManager manager_p, Collection<?> selection_p) {
-    DryRun dr = new DryRun(manager_p, selection_p);
+  public static boolean confirmDeletion(ExecutionManager manager, Collection<?> selection) {
+    DryRun dr = new DryRun(manager, selection);
     dr.execute();
     return dr.proceed();
   }
