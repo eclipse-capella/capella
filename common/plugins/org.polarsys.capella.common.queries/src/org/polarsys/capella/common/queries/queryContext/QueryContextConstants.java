@@ -14,5 +14,5 @@ package org.polarsys.capella.common.queries.queryContext;
  * Constants to be used as keys in QueryContext Map.
  */
 public class QueryContextConstants {
-  public static final String SOURCE_ELEMENT_PARAMETER = "sourceElement"; //$NON-NLS-1$
+  public static final String QUERY_INPUT_ELEMENT_PARAMETER = "queryInputElement"; //$NON-NLS-1$
 }

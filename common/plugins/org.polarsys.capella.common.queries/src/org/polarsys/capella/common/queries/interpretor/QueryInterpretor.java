@@ -110,8 +110,8 @@ public class QueryInterpretor {
 		List<Object> result = new ArrayList<Object>(subResult);
 
 		if (theContext.getExecutionLevel() == 0) {
-			// Add source element in the context to be used by filters
-		  theContext.putValue(QueryContextConstants.SOURCE_ELEMENT_PARAMETER, semanticsObject);
+		  // Add (or overwrite) query input element in the context to be used by filters
+		  theContext.overwriteValue(QueryContextConstants.QUERY_INPUT_ELEMENT_PARAMETER, semanticsObject);
 		  for (IQueryFilter filter : filters) {
 				result = executeFilter(result, filter, context);
 			}
