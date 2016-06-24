@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -19,6 +19,36 @@
       <comparisonMethod
             factory="org.polarsys.capella.core.compare.CapellaComparisonMethodFactory">
       </comparisonMethod>
+   </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.emf.ecore.xmi"
+            file-extensions="melodymodeller"
+            id="org.polarsys.capella.core.compare.capella.content-type"
+            name="Capella model files"
+            priority="normal">
+      </content-type>
+      <content-type
+            id="org.polarsys.capella.core.compare.capella.content-type"
+            name="Capella model files"
+            priority="normal">
+      </content-type>
+      <content-type
+            id="org.polarsys.capella.core.compare.capella.content-type"
+            name="name"
+            priority="normal">
+      </content-type>
+      <content-type
+            id="org.polarsys.capella.core.compare.content-type"
+            name="name"
+            priority="normal">
+      </content-type>
+      <content-type
+            id="org.polarsys.capella.core.compare.content-type2"
+            name="name"
+            priority="normal">
+      </content-type>
    </extension>
 
 </plugin>
