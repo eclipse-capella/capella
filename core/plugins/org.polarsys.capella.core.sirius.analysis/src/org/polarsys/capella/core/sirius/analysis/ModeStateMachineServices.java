@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.data.modellingcore.IState;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
@@ -43,6 +44,7 @@ import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacommon.TerminatePseudoState;
+import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideMSMStateMode;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideMSMTransitions;
@@ -70,6 +72,16 @@ public class ModeStateMachineServices {
   public String getRegionLabel(Region region, DDiagram diagram) {
     return isDiagramFilterEnable(diagram, IMappingNameConstants.HIDE_REGION_NAMES) ? ""
         : " [" + EObjectLabelProviderHelper.getText(region) + "]";
+  }
+  
+  public String getActivityLabel(AbstractEvent abstractEvent) {
+    
+    if (abstractEvent instanceof FunctionalExchange) {
+      FunctionalExchange fe = (FunctionalExchange) abstractEvent;
+      return EObjectLabelProviderHelper.getText(abstractEvent) + " [-> "+EObjectLabelProviderHelper.getText(fe.getTarget().eContainer())+"]";
+    }
+    
+    return EObjectLabelProviderHelper.getText(abstractEvent);
   }
 
   public String getEntryExitPointLabel(Pseudostate pseudostate, DDiagram diagram) {

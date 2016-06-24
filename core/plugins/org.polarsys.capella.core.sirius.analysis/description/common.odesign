@@ -1015,46 +1015,25 @@
           </borderedNodeMappings>
           <subContainerMappings name="MSM_Activities" preconditionExpression="&lt;% doActivity != null || entry != null || exit != null %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="IState" childrenPresentation="List">
             <subNodeMappings name="MSM_Entry" semanticCandidatesExpression="feature:entry" synchronizationLock="true" domainClass="AbstractEvent">
-              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression=" entry / &lt;% name %>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression=" entry / &lt;% getActivityLabel() %>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
-              <conditionnalStyles predicateExpression="&lt;% (self.filter(&quot;FunctionalExchange&quot;)).nSize() > 0%>">
-                <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression=" entry / &lt;% name %> [-> &lt;% target.eContainer.name %>]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
-                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                </style>
-              </conditionnalStyles>
             </subNodeMappings>
             <subNodeMappings name="MSM_DoActivity" semanticCandidatesExpression="feature:doActivity" synchronizationLock="true" domainClass="AbstractEvent">
-              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression=" do /  &lt;% name %>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression=" do / &lt;% getActivityLabel() %>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
-              <conditionnalStyles predicateExpression="&lt;% (self.filter(&quot;FunctionalExchange&quot;)).nSize() > 0%>">
-                <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression=" do / &lt;% name %> [-> &lt;% target.eContainer.name %>]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
-                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                </style>
-              </conditionnalStyles>
             </subNodeMappings>
             <subNodeMappings name="MSM_Exit" semanticCandidatesExpression="feature:exit" synchronizationLock="true" domainClass="AbstractEvent">
-              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression=" exit / &lt;% name %>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression=" exit / &lt;% getActivityLabel() %>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
-              <conditionnalStyles predicateExpression="&lt;% (self.filter(&quot;FunctionalExchange&quot;)).nSize() > 0%>">
-                <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression=" exit / &lt;% name %> [-> &lt;% target.eContainer.name %>]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
-                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                </style>
-              </conditionnalStyles>
             </subNodeMappings>
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" hideLabelByDefault="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color4']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color4']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
