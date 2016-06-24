@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,15 +58,15 @@ public abstract class TransitionAction extends AbstractHandler implements IActio
     return _activeShell;
   }
 
-  public Object execute(ExecutionEvent event_p) throws ExecutionException {
-    EvaluationContext c = (EvaluationContext) event_p.getApplicationContext();
+  public Object execute(ExecutionEvent event) throws ExecutionException {
+    EvaluationContext c = (EvaluationContext) event.getApplicationContext();
     ISelection s = (ISelection) c.getVariable("selection");
     selectionChanged(null, s);
     run(DEFAULT_ACTION);
-    return event_p;
+    return event;
   }
 
-  protected abstract ICommand createCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p);
+  protected abstract ICommand createCommand(Collection<Object> selection, IProgressMonitor progressMonitor);
 
   /**
    * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
@@ -83,25 +83,28 @@ public abstract class TransitionAction extends AbstractHandler implements IActio
          * @see org.eclipse.jface.operation.IRunnableWithProgress#run(org.eclipse.core.runtime.IProgressMonitor)
          */
         @SuppressWarnings("synthetic-access")
-        public void run(IProgressMonitor progressMonitor_p) throws InvocationTargetException, InterruptedException {
+        public void run(IProgressMonitor progressMonitor) throws InvocationTargetException, InterruptedException {
           String text = "Transition";//$NON-NLS-1$
           if (action != null) {
             text = action.getText();
           }
-          progressMonitor_p.beginTask(text + " processing...", 1); //$NON-NLS-1$
-          ICommand command = createCommand(_selection, progressMonitor_p);
+          progressMonitor.beginTask(text + " processing...", 1); //$NON-NLS-1$
+          ICommand command = createCommand(_selection, progressMonitor);
           if (command != null) {
-            TransactionHelper.getExecutionManager((Collection<? extends EObject>) getSemanticObjects(_selection)).execute(command);
+            ExecutionManager executionManager = TransactionHelper.getExecutionManager((Collection<? extends EObject>) getSemanticObjects(_selection));
+            if (executionManager != null) {
+              executionManager.execute(command);
+            }
           }
-          progressMonitor_p.worked(1);
+          progressMonitor.worked(1);
         }
       };
 
       try {
         // Pb Sirius. Temporary Workaround until fix. Use "false" for the 1st parameter to run the command from the GUI thread.
         new ProgressMonitorDialog(getActiveShell()).run(false, false, runnable);
-      } catch (Exception exception_p) {
-        throw new RuntimeException(exception_p);
+      } catch (Exception exception) {
+        throw new RuntimeException(exception);
       }
 
     } finally {
@@ -113,9 +116,9 @@ public abstract class TransitionAction extends AbstractHandler implements IActio
   }
 
   // FIXME refactor duplicated code
-  public Collection<Object> getSemanticObjects(Collection<Object> elements_p) {
+  public Collection<Object> getSemanticObjects(Collection<Object> elements) {
     Collection<Object> result = new ArrayList<Object>();
-    for (Object object : elements_p) {
+    for (Object object : elements) {
       Object semantic = resolveSemanticObject(object);
       if (semantic != null) {
         result.add(semantic);
@@ -124,15 +127,15 @@ public abstract class TransitionAction extends AbstractHandler implements IActio
     return result;
   }
 
-  public Object resolveSemanticObject(Object object_p) {
+  public Object resolveSemanticObject(Object object) {
     Object semantic = null;
 
-    if (object_p != null) {
-      if (object_p instanceof EObject) {
-        semantic = object_p;
+    if (object != null) {
+      if (object instanceof EObject) {
+        semantic = object;
 
-      } else if (object_p instanceof IAdaptable) {
-        Object adapter = ((IAdaptable) object_p).getAdapter(EObject.class);
+      } else if (object instanceof IAdaptable) {
+        Object adapter = ((IAdaptable) object).getAdapter(EObject.class);
         if (adapter instanceof EObject) {
           semantic = adapter;
         }
@@ -144,11 +147,10 @@ public abstract class TransitionAction extends AbstractHandler implements IActio
   /**
    * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
    */
-  public void selectionChanged(IAction uiAction_p, ISelection selection_p) {
+  public void selectionChanged(IAction uiAction, ISelection selection) {
     Collection<Object> objects = new ArrayList<Object>();
-    if (selection_p instanceof IStructuredSelection) {
-      IStructuredSelection selection = (IStructuredSelection) selection_p;
-      Iterator<Object> selections = selection.iterator();
+    if (selection instanceof IStructuredSelection) {
+      Iterator<Object> selections = ((IStructuredSelection) selection).iterator();
       while (selections.hasNext()) {
         objects.add(selections.next());
       }
@@ -162,5 +164,4 @@ public abstract class TransitionAction extends AbstractHandler implements IActio
   public void setActivePart(IAction action, IWorkbenchPart targetPart) {
     _activeShell = targetPart.getSite().getShell();
   }
-
 }
