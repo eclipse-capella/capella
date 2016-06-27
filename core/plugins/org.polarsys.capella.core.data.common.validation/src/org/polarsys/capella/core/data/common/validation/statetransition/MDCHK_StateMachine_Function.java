@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,8 +36,8 @@ public class MDCHK_StateMachine_Function extends AbstractModelConstraint {
 
   /**/
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    State state = (State) ctx_p.getTarget();
+  public IStatus validate(IValidationContext ctx) {
+    State state = (State) ctx.getTarget();
     EObject eContainer = state.eContainer();
     String[] res = new String[3];
     res[0] = state.getDoActivity() == null ? null : DO_ACTIVITY;
@@ -48,7 +48,7 @@ public class MDCHK_StateMachine_Function extends AbstractModelConstraint {
     elements[1] = state.getEntry() == null ? null : state.getEntry().getName();
     elements[2] = state.getExit() == null ? null : state.getExit().getName();
 
-    while (!(eContainer instanceof Component) && (!(eContainer instanceof Class))) {
+    while (eContainer != null && !(eContainer instanceof Component) && (!(eContainer instanceof Class))) {
       eContainer = eContainer.eContainer();
     }
     if (eContainer instanceof Component) {
@@ -72,14 +72,13 @@ public class MDCHK_StateMachine_Function extends AbstractModelConstraint {
           elements[2] = null;
         }
       }
-      if ((res[0] == res[1]) && (res[1] == res[2]) && (res[2] == null)) {
-        return ctx_p.createSuccessStatus();
-      } else {
-        return ctx_p
-            .createFailureStatus(new Object[] {
-                Joiner.on("/").skipNulls().join(res), Joiner.on("/").skipNulls().join(elements), state.getName(), eContainer }); //$NON-NLS-1$
+      if (res[0] == null && res[1] == null && res[2] == null) {
+        return ctx.createSuccessStatus();
       }
+      return ctx
+          .createFailureStatus(
+              Joiner.on("/").skipNulls().join(res), Joiner.on("/").skipNulls().join(elements), state.getName(), eContainer); //$NON-NLS-1$
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.polarsys.capella.core.model.helpers.RefinementLinkExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 import org.polarsys.capella.common.data.activity.ActivityNode;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 
 /**
  * Checks realization consistency between ports of functional exchanges.
@@ -37,16 +38,15 @@ public class FunctionalExchange_RealizingPortsConsistency extends AbstractValida
   public IStatus validate(IValidationContext ctx) {
     EObject eObj = ctx.getTarget();
     EMFEventType eType = ctx.getEventType();
-    if (eType == EMFEventType.NULL) {
-      if (eObj instanceof FunctionalExchange) {
+    if (eType == EMFEventType.NULL && eObj instanceof FunctionalExchange) {
         FunctionalExchange currentExchange = (FunctionalExchange) eObj;
 
         ActivityNode sourceCurrent = currentExchange.getSource();
         ActivityNode targetCurrent = currentExchange.getTarget();
 
-        if (sourceCurrent != null && sourceCurrent instanceof Port && targetCurrent != null && targetCurrent instanceof Port) {
+        if (sourceCurrent instanceof Port && targetCurrent instanceof Port) {
 
-          List<CapellaElement> previousPhaseElements = RefinementLinkExt.getRelatedTargetElements((CapellaElement) eObj, FaPackage.Literals.FUNCTIONAL_EXCHANGE);
+          List<CapellaElement> previousPhaseElements = RefinementLinkExt.getRelatedTargetElements(currentExchange, FaPackage.Literals.FUNCTIONAL_EXCHANGE);
 
           for (CapellaElement element : previousPhaseElements) {
             FunctionalExchange exc = (FunctionalExchange) element;
@@ -56,20 +56,20 @@ public class FunctionalExchange_RealizingPortsConsistency extends AbstractValida
 
             boolean sourceValid = true;
             boolean targetValid = true;
-            if (sourcePrevious != null && sourcePrevious instanceof Port && targetPrevious != null && targetPrevious instanceof Port) {
+            if (sourcePrevious instanceof Port && targetPrevious instanceof Port) {
               sourceValid = RefinementLinkExt.isLinkedTo((TraceableElement) sourceCurrent, (TraceableElement) sourcePrevious);
               targetValid = RefinementLinkExt.isLinkedTo((TraceableElement) targetCurrent, (TraceableElement) targetPrevious);
             }
 
-            if (sourceValid && targetValid)
+            if (sourceValid && targetValid) {
               return ctx.createSuccessStatus();
+            }
           }
 
           if (previousPhaseElements.size() != 0) {
-            return createFailureStatus(ctx, new Object[] { currentExchange.getName() });
+            return ctx.createFailureStatus(EObjectLabelProviderHelper.getText(currentExchange));
           }
         }
-      }
     }
     return ctx.createSuccessStatus();
 

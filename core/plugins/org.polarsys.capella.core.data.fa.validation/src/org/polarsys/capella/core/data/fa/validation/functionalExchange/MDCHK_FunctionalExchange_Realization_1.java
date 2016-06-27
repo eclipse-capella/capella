@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
 
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
@@ -36,15 +37,15 @@ public class MDCHK_FunctionalExchange_Realization_1 extends AbstractValidationRu
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
     if (eObj instanceof FunctionalExchange) {
       FunctionalExchange functionalExchagne  = (FunctionalExchange) eObj;
       EList<AbstractTrace> incomingTraces = functionalExchagne.getIncomingTraces();
       for (AbstractTrace trace : incomingTraces) {
         TraceableElement sourceElement = trace.getSourceElement();
-        if (sourceElement != null && (trace instanceof FunctionalExchangeRealization) && (sourceElement instanceof FunctionalExchange)) {
-          return ctx_p.createSuccessStatus();
+        if (trace instanceof FunctionalExchangeRealization && sourceElement instanceof FunctionalExchange) {
+          return ctx.createSuccessStatus();
         }
       }
       // get more info for warning/err message
@@ -55,26 +56,28 @@ public class MDCHK_FunctionalExchange_Realization_1 extends AbstractValidationRu
       {
         if(rootBlockArchitecture instanceof PhysicalArchitecture)
         {
-          return ctx_p.createSuccessStatus();
+          return ctx.createSuccessStatus();
         }
         currentArch = rootBlockArchitecture.getName();
         EList<BlockArchitecture> allocatingArchitectures = rootBlockArchitecture.getAllocatingArchitectures();
         Iterator<BlockArchitecture> iterator = allocatingArchitectures.iterator();
+        StringBuilder currentNextSB = new StringBuilder();
         while (iterator.hasNext()) {
           BlockArchitecture blockArchitecture = iterator.next();
-          currentNext = currentNext + blockArchitecture.getName();
+          currentNextSB.append(blockArchitecture.getName());
           if (iterator.hasNext()) {
-            currentNext = currentNext + ", ";  //$NON-NLS-1$
+            currentNextSB.append(", ");  //$NON-NLS-1$
           }
         }
+        currentNext = currentNextSB.toString();
       }
       
       // create failure status
-      return createFailureStatus(ctx_p, new Object[] { functionalExchagne.getName(), currentArch, currentNext});
+      return ctx.createFailureStatus(EObjectLabelProviderHelper.getText(functionalExchagne), currentArch, currentNext);
       
     }
 
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
 }
