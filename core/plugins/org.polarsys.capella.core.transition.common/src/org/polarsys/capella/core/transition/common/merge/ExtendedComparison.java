@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.transition.common.merge;
 
 import java.util.List;
@@ -162,22 +161,26 @@ public class ExtendedComparison extends EComparisonImpl {
   protected IExpensiveOperation getDiffOperation(IDiffPolicy iDiffPolicy1, IMergePolicy mergePolicy) {
     return new DiffOperation(this, iDiffPolicy1, mergePolicy) {
       /**
-       * Create the differences related to the given reference for the given match
+       * Detect the differences related to the given reference for the given match
        * @param match a non-null, non-partial match
        * @param reference a non-null, non-container reference
+       * @param create whether differences must actually be created
+       * @return whether at least one difference was detected
        */
       @Override
-      protected void createReferenceDifferences(IMatch match, EReference reference) {
-        assert (match != null) && !match.isPartial() && (reference != null);
+      protected boolean detectReferenceDifferences(IMatch match, EReference reference, boolean create) {
+        assert match != null && !match.isPartial() && reference != null;
         assert !reference.isContainer();
+        boolean result = false;
         // Get reference values in different roles
-        IEditableModelScope targetScope = getComparison().getScope(Role.TARGET);
-        IEditableModelScope referenceScope = getComparison().getScope(Role.REFERENCE);
+        IFeaturedModelScope targetScope = getComparison().getScope(Role.TARGET);
+        IFeaturedModelScope referenceScope = getComparison().getScope(Role.REFERENCE);
         EObject targetElement = match.get(Role.TARGET);
         EObject referenceElement = match.get(Role.REFERENCE);
         List<EObject> targetValues = targetScope.get(targetElement, reference);
         List<EObject> referenceValues = referenceScope.get(referenceElement, reference);
-        List<EObject> remainingReferenceValues = new FArrayList<EObject>(referenceValues, IEqualityTester.BY_REFERENCE);
+        List<EObject> remainingReferenceValues = new FArrayList<EObject>(
+            referenceValues, IEqualityTester.BY_REFERENCE);
         boolean checkOrder = reference.isMany() && getDiffPolicy().considerOrdered(reference);
         int maxIndex = -1;
         // Check which ones match
@@ -196,52 +199,59 @@ public class ExtendedComparison extends EComparisonImpl {
               if (checkOrder && !isIsolated) {
                 if (index < maxIndex) {
                   // Ordering difference
+                  if (!create)
+                    return true;
                   createReferenceOrderDifference(match, reference, targetValueMatch);
+                  result = true;
                   checkOrder = false;
                 } else {
                   maxIndex = index;
                 }
               }
             }
-            if (isIsolated) {
+            if (isIsolated)
               // None found or not in referenced values: mark as isolated
               isolatedTargetMatches.add(targetValueMatch);
-            } else {
+            else
               remainingReferenceValues.remove(matchReference);
-            }
           }
         }
         // For every remaining value in REFERENCE, get its corresponding isolated match
         // if the value is covered
         List<IMatch> isolatedReferenceMatches = new FArrayList<IMatch>();
         for (EObject remainingReferenceValue : remainingReferenceValues) {
-          IMatch referenceValueMatch = getMapping().getMatchFor(remainingReferenceValue, Role.REFERENCE);
-          if (referenceValueMatch != null) {
-            isolatedReferenceMatches.add(referenceValueMatch);
-          }
+          IMatch referenceValueMatch = getMapping().getMatchFor(
+              remainingReferenceValue, Role.REFERENCE);
+          if (referenceValueMatch != null)
+            isolatedReferenceMatches.add(referenceValueMatch);      
         }
 
         IDiffPolicy diffPolicy = getDiffPolicy();
-
+        
         // Create differences for isolated values
         for (IMatch isolatedTargetMatch : isolatedTargetMatches) {
           if (diffPolicy instanceof IDiffPolicy2) {
             if (((IDiffPolicy2) diffPolicy).coverMatchOnReference(isolatedTargetMatch, reference)) {
               createReferenceValueDifference(match, reference, isolatedTargetMatch, Role.TARGET, false);
+              result = true;
             }
           } else if (diffPolicy.coverMatch(isolatedTargetMatch)) {
             createReferenceValueDifference(match, reference, isolatedTargetMatch, Role.TARGET, false);
+            result = true;
           }
         }
         for (IMatch isolatedReferenceMatch : isolatedReferenceMatches) {
           if (((IDiffPolicy2) diffPolicy).coverMatchOnReference(isolatedReferenceMatch, reference)) {
             createReferenceValueDifference(match, reference, isolatedReferenceMatch, Role.REFERENCE, false);
+            result = true;
           } else if (diffPolicy.coverMatch(isolatedReferenceMatch)) {
             createReferenceValueDifference(match, reference, isolatedReferenceMatch, Role.REFERENCE, false);
+            result = true;
           }
         }
+        
+        return result;
       }
     };
   }
-
 }
