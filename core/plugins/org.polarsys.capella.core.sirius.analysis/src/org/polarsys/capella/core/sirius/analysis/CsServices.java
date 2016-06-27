@@ -5431,7 +5431,7 @@ public class CsServices {
       AbstractEvent effect = transition.getEffect();
       // Effect
       if (effect != null) {
-        result += " / " + effect.getName(); //$NON-NLS-1$
+        result += " / " + EObjectLabelProviderHelper.getText(effect); //$NON-NLS-1$
       }
     }
 

@@ -44,6 +44,8 @@ import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacommon.TerminatePseudoState;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideMSMStateMode;
@@ -78,9 +80,14 @@ public class ModeStateMachineServices {
     
     if (abstractEvent instanceof FunctionalExchange) {
       FunctionalExchange fe = (FunctionalExchange) abstractEvent;
-      return EObjectLabelProviderHelper.getText(abstractEvent) + " [-> "+EObjectLabelProviderHelper.getText(fe.getTarget().eContainer())+"]";
-    }
-    
+      EObject target = fe.getTarget();
+      if (target instanceof FunctionPort) {
+        target = target.eContainer();
+      }
+      if (target instanceof AbstractFunction) {
+        return EObjectLabelProviderHelper.getText(abstractEvent) + " [-> "+EObjectLabelProviderHelper.getText(target)+"]"; 
+      } 
+    }  
     return EObjectLabelProviderHelper.getText(abstractEvent);
   }
 
