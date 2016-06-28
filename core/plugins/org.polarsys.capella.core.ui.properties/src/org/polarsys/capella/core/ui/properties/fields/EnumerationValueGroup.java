@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.ui.properties.fields;
 
 import java.util.ArrayList;
@@ -27,7 +26,6 @@ import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.model.utils.CollectionExt;
 
@@ -66,17 +64,17 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
    * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+  public void loadData(EObject semanticElement, EStructuralFeature semanticFeature) {
     super.loadData(semanticElement, semanticFeature);
 
     loadComboValue();
   }
 
   /**
-   * @see org.polarsys.capella.core.data.core.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement semanticElement) {
+  public void loadData(EObject semanticElement) {
     loadComboValue();
   }
 

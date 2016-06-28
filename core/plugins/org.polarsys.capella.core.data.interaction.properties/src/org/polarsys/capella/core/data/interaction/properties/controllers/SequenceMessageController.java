@@ -12,10 +12,8 @@ package org.polarsys.capella.core.data.interaction.properties.controllers;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.polarsys.capella.core.data.helpers.interaction.services.SequenceMessageExt;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractSimpleEditableSemanticFieldController;
 
 /**
@@ -35,7 +33,7 @@ public abstract class SequenceMessageController extends AbstractSimpleEditableSe
   /**
    * @param semanticElement
    */
-  public static void resetValue(CapellaElement semanticElement) {
+  public static void resetValue(EObject semanticElement) {
     if (semanticElement instanceof SequenceMessage) {
       SequenceMessageExt.resetMessage((SequenceMessage) semanticElement);
       SequenceMessage reply = SequenceMessageExt.getOppositeSequenceMessage((SequenceMessage) semanticElement);
