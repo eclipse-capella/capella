@@ -16,9 +16,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 
 /**
@@ -26,24 +24,24 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
  */
 public abstract class AbstractMultipleSemanticFieldController extends AbstractSemanticFieldController implements IMultipleSemanticFieldController {
   /**
-   * Do the add operation in {@link #writeOpenValues(CapellaElement, EStructuralFeature, List)}
+   * Do the add operation in {@link #writeOpenValues(EObject, EStructuralFeature, List)}
    * @param semanticElement
    * @param semanticFeature
    * @param object
    */
   @SuppressWarnings("unchecked")
-  protected void doAddOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
+  protected void doAddOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
     ((List<EObject>) semanticElement.eGet(semanticFeature)).add(object);
   }
 
   /**
-   * Do the remove operation in {@link #writeOpenValues(CapellaElement, EStructuralFeature, List)}
+   * Do the remove operation in {@link #writeOpenValues(EObject, EStructuralFeature, List)}
    * @param semanticElement
    * @param semanticFeature
    * @param object
    */
   @SuppressWarnings("unchecked")
-  protected void doRemoveOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
+  protected void doRemoveOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
     if ((semanticFeature instanceof EReference) && ((EReference) semanticFeature).isContainment()) {
       AbstractSemanticField.deleteContainmentValue(object);
     } else {
@@ -52,17 +50,16 @@ public abstract class AbstractMultipleSemanticFieldController extends AbstractSe
   }
 
   /**
-   * Get the business query used by {@link #readOpenValues(CapellaElement, EStructuralFeature, boolean)}
+   * Get the business query used by {@link #readOpenValues(EObject, EStructuralFeature, boolean)}
    * @param semanticElement
    * @return could be <code>null</code> if no appropriate query for given element.
    */
-  protected abstract IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement);
+  protected abstract IBusinessQuery getReadOpenValuesQuery(EObject semanticElement);
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#loadData(org.polarsys.capella.core.data.information.datatype.BooleanType,
-   *      org.eclipse.emf.ecore.EReference)
+   * {@inheritDoc}
    */
-  public List<EObject> loadValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+  public List<EObject> loadValues(EObject semanticElement, EStructuralFeature semanticFeature) {
     List<EObject> result = new ArrayList<EObject>();
     List<?> values = (List<?>) semanticElement.eGet(semanticFeature);
     if (null != values) {
@@ -75,9 +72,9 @@ public abstract class AbstractMultipleSemanticFieldController extends AbstractSe
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#readOpenValues()
+   * {@inheritDoc}
    */
-  public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, boolean availableElements) {
+  public List<EObject> readOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, boolean availableElements) {
     // Instantiate a new resulting list to avoid concurrent exceptions.
     List<EObject> result = new ArrayList<EObject>(0);
     // query for 'super'
@@ -95,10 +92,9 @@ public abstract class AbstractMultipleSemanticFieldController extends AbstractSe
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.IMultipleSemanticFieldController#writeOpenValues(org.polarsys.capella.core.data.capellacore.CapellaElement,
-   *      org.eclipse.emf.ecore.EStructuralFeature, java.util.List)
+   * {@inheritDoc}
    */
-  public List<EObject> writeOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, List<EObject> values) {
+  public List<EObject> writeOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, List<EObject> values) {
     List<EObject> result = new ArrayList<EObject>();
     if (null != values) {
       List<EObject> modelCurrentList = readOpenValues(semanticElement, semanticFeature, false);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
@@ -29,23 +30,19 @@ import org.polarsys.capella.core.data.information.datatype.PhysicalQuantity;
 import org.polarsys.capella.core.data.information.datatype.StringType;
 import org.polarsys.capella.core.data.information.datavalue.DataValue;
 import org.polarsys.capella.core.data.information.datavalue.DatavalueFactory;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.controllers.IMultipleEditableSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.fields.EditableSemanticFieldException;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
 /**
  */
 public class UnionPropertyController extends AbstractMultipleSemanticFieldController implements IMultipleEditableSemanticFieldController {
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.IMultipleEditableSemanticFieldController#addValue(org.polarsys.capella.core.data.capellacore.CapellaElement,
-   *      org.eclipse.emf.ecore.EStructuralFeature)
+   * {@inheritDoc}
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  public List<EObject> addValue(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+  public List<EObject> addValue(EObject semanticElement, EStructuralFeature semanticFeature) {
     if (semanticElement instanceof UnionProperty) {
       Union union = (Union) semanticElement.eContainer();
       if (union != null) {
@@ -88,10 +85,10 @@ public class UnionPropertyController extends AbstractMultipleSemanticFieldContro
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.AbstractMultipleSemanticFieldController#getReadOpenValuesQuery(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   * {@inheritDoc}
    */
   @Override
-  protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+  protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
     return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), InformationPackage.Literals.UNION_PROPERTY__QUALIFIER);
   }
 }

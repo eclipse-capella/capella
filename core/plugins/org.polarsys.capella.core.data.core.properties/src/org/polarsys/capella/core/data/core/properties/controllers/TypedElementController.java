@@ -16,7 +16,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.cs.Interface;
@@ -26,18 +26,16 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.UnionProperty;
 import org.polarsys.capella.core.data.information.datavalue.ComplexValue;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.ui.properties.controllers.ISimpleSemanticFieldController;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
 /**
  */
 public class TypedElementController implements ISimpleSemanticFieldController {
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#readOpenValues()
+   * {@inheritDoc}
    */
-  public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+  public List<EObject> readOpenValues(EObject semanticElement, EStructuralFeature semanticFeature) {
     List<EObject> list = new ArrayList<EObject>();
 
     // query for 'abstractType'
@@ -79,18 +77,17 @@ public class TypedElementController implements ISimpleSemanticFieldController {
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#writeOpenValue(org.eclipse.emf.ecore.EObject)
+   * {@inheritDoc}
    */
-  public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
+  public EObject writeOpenValue(EObject semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
     semanticElement.eSet(semanticFeature, value);
     return value;
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#loadData(org.polarsys.capella.core.data.information.datatype.BooleanType,
-   *      org.eclipse.emf.ecore.EReference)
+   * {@inheritDoc}
    */
-  public EObject loadValue(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+  public EObject loadValue(EObject semanticElement, EStructuralFeature semanticFeature) {
     return (EObject) semanticElement.eGet(semanticFeature);
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,16 +55,13 @@ public abstract class StateEventSection extends NamedElementSection {
         ICommonConstants.EMPTY_STRING, new AbstractSimpleEditableSemanticFieldController() {
 
           @Override
-          public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
+          public EObject writeOpenValue(EObject semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
             semanticElement.eSet(semanticFeature, value);
             return value;
           }
 
-          /**
-           * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#editValue()
-           */
           @Override
-          public EObject editValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName) {
+          public EObject editValue(EObject semanticElement, EStructuralFeature semanticFeature, String defaultName) {
             if (semanticElement instanceof StateEvent) {
               Constraint currentValue = (Constraint) semanticElement.eGet(semanticFeature);
               if (currentValue != null) {

@@ -22,25 +22,24 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 
 /**
  */
 public abstract class AbstractSimpleSemanticFieldController extends AbstractSemanticFieldController implements ISimpleSemanticFieldController {
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.ISimpleSemanticFieldController#loadValue(org.polarsys.capella.core.data.capellacore.CapellaElement, org.eclipse.emf.ecore.EStructuralFeature)
+   * {@inheritDoc}
    */
   @Override
-  public EObject loadValue(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+  public EObject loadValue(EObject semanticElement, EStructuralFeature semanticFeature) {
     return (EObject) semanticElement.eGet(semanticFeature);
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#readOpenValues()
+   * {@inheritDoc}
    */
   @Override
-  public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+  public List<EObject> readOpenValues(EObject semanticElement, EStructuralFeature semanticFeature) {
     List<EObject> list = new ArrayList<EObject>();
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), semanticFeature);
     if (null != query) {

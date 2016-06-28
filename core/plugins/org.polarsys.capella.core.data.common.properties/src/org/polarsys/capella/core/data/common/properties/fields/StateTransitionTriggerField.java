@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,6 @@ import org.polarsys.capella.core.data.capellacommon.ChangeEvent;
 import org.polarsys.capella.core.data.capellacommon.StateEvent;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacommon.TimeEvent;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.common.properties.CommonPropertiesPlugin;
 import org.polarsys.capella.core.data.common.properties.IImageKeys;
@@ -77,7 +76,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
 
     _controller = new AbstractMultipleSemanticFieldController() {
       @Override
-      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+      protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
         return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), CapellacommonPackage.eINSTANCE.getStateTransition_Triggers());
       }
     };

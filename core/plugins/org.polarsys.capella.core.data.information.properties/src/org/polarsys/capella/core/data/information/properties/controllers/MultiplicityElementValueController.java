@@ -21,7 +21,6 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Classifier;
 import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
@@ -50,10 +49,10 @@ import org.polarsys.capella.core.ui.properties.fields.EditableSemanticFieldExcep
 public class MultiplicityElementValueController extends AbstractSimpleEditableSemanticFieldController {
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#readOpenValues()
+   * {@inheritDoc}
    */
   @Override
-  public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+  public List<EObject> readOpenValues(EObject semanticElement, EStructuralFeature semanticFeature) {
     List<EObject> list = super.readOpenValues(semanticElement, semanticFeature);
 
     AbstractType abstractType = ((AbstractTypedElement) semanticElement).getAbstractType();
@@ -99,9 +98,9 @@ public class MultiplicityElementValueController extends AbstractSimpleEditableSe
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#writeOpenValue(org.eclipse.emf.ecore.EObject)
+   * {@inheritDoc}
    */
-  public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
+  public EObject writeOpenValue(EObject semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
     DataValue ref = null;
     if (value instanceof Property) {
       AbstractType abstractType = ((Property) value).getAbstractType();
@@ -153,9 +152,9 @@ public class MultiplicityElementValueController extends AbstractSimpleEditableSe
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#editValue()
+   * {@inheritDoc}
    */
-  public EObject editValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName) {
+  public EObject editValue(EObject semanticElement, EStructuralFeature semanticFeature, String defaultName) {
     if (semanticElement instanceof MultiplicityElement && semanticElement instanceof AbstractTypedElement) {
       DataValue currentValue = (DataValue) semanticElement.eGet(semanticFeature);
       if (currentValue != null) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,7 +70,7 @@ public class CombinedFragmentSection extends NamedElementSection {
 
     coveredInstanceRolesWidget = new MultipleSemanticField(main, Messages.getString("CombinedFragmentSection_CoveredInstanceRoles_Label"), getWidgetFactory(), //$NON-NLS-1$
       new IMultipleSemanticFieldController() {
-        public List<EObject> writeOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, List<EObject> values) {
+        public List<EObject> writeOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, List<EObject> values) {
           Set<InstanceRole> minima = AbstractFragmentExt.getMinimalCoveredInstanceRoles((CombinedFragment) semanticElement);
           for (InstanceRole instanceRole : minima) {
       			if (!values.contains(instanceRole)) {
@@ -103,7 +103,7 @@ public class CombinedFragmentSection extends NamedElementSection {
           UIUtil.getInstance().refreshActiveDiagram(null);
           return values;
         }
-        public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, boolean available) {
+        public List<EObject> readOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, boolean available) {
           List<EObject> result = new ArrayList<EObject>();
           if (available) {
             result.addAll(((Scenario) semanticElement.eContainer()).getOwnedInstanceRoles());
@@ -112,7 +112,7 @@ public class CombinedFragmentSection extends NamedElementSection {
           }
           return result;
         }
-        public List<EObject> loadValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+        public List<EObject> loadValues(EObject semanticElement, EStructuralFeature semanticFeature) {
           List<EObject> result = new ArrayList<EObject>();
           result.addAll(AbstractFragmentExt.getCoveredInstanceRoles(
               (FragmentEnd) ((CombinedFragment) semanticElement).getStart(),

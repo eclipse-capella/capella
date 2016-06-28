@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation;
 import org.polarsys.capella.core.data.fa.FaFactory;
@@ -33,19 +32,19 @@ import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSeman
  */
 public class ComponentExchange_AllocatedFunctionalExchangesController extends AbstractMultipleSemanticFieldController {
   /**
-   * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.AbstractMultipleSemanticFieldController#getReadOpenValuesQuery(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   * {@inheritDoc}
    */
   @Override
-  protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+  protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
     return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(),
         FaPackage.Literals.COMPONENT_EXCHANGE__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS);
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.AbstractMultipleSemanticFieldController#loadValues(org.polarsys.capella.core.data.capellacore.CapellaElement, org.eclipse.emf.ecore.EStructuralFeature)
+   * {@inheritDoc}
    */
   @Override
-  public List<EObject> loadValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+  public List<EObject> loadValues(EObject semanticElement, EStructuralFeature semanticFeature) {
     List<EObject> values = new ArrayList<EObject>();
 
     Object lst = semanticElement.eGet(semanticFeature);
@@ -61,13 +60,13 @@ public class ComponentExchange_AllocatedFunctionalExchangesController extends Ab
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.AbstractMultipleSemanticFieldController#doAddOperationInWriteOpenValues(org.polarsys.capella.core.data.capellacore.CapellaElement, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject)
+   * {@inheritDoc}
    */
   @SuppressWarnings("unchecked")
   @Override
-  protected void doAddOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
+  protected void doAddOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
     ComponentExchangeFunctionalExchangeAllocation link = FaFactory.eINSTANCE.createComponentExchangeFunctionalExchangeAllocation();
-    link.setSourceElement(semanticElement);
+    link.setSourceElement((TraceableElement) semanticElement);
     link.setTargetElement((TraceableElement) object);
     ((List<EObject>) semanticElement.eGet(semanticFeature)).add(link);
 
@@ -78,7 +77,7 @@ public class ComponentExchange_AllocatedFunctionalExchangesController extends Ab
   }
 
   /**
-   * Do the remove operation in {@link #writeOpenValues(CapellaElement, EStructuralFeature, List)}
+   * Do the remove operation in {@link #writeOpenValues(EObject, EStructuralFeature, List)}
    * The synchronization of the delegations/allocations is now managed by {@link DeleteHelper} class
    * @param semanticElement
    * @param semanticFeature
@@ -86,7 +85,7 @@ public class ComponentExchange_AllocatedFunctionalExchangesController extends Ab
    */
   @SuppressWarnings("unchecked")
   @Override
-  protected void doRemoveOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
+  protected void doRemoveOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
     EObject linkToRemove = null;
     for (EObject obj : (List<EObject>) semanticElement.eGet(semanticFeature)) {
       if ((obj instanceof ComponentExchangeFunctionalExchangeAllocation)
