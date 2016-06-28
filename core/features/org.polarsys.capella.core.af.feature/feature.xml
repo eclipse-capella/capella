@@ -31,6 +31,7 @@
       <import feature="org.polarsys.kitalpha.ad.feature"/>
       <import feature="org.polarsys.kitalpha.ad.integration.sirius.feature"/>
       <import feature="org.polarsys.kitalpha.ad.integration.emde.feature"/>
+      <import feature="org.polarsys.kitalpha.ad.integration.amalgam.feature"/>
    </requires>
 
    <plugin
