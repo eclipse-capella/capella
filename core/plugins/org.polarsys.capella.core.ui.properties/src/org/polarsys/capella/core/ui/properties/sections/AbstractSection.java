@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -61,7 +61,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   /**
    * Capella element displayed by this section.
    */
-  private CapellaElement _capellaElement;
+  private EObject _capellaElement;
   /**
    * Parent background color.
    */
@@ -245,10 +245,17 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   }
 
   /**
-   * load the form data from given capella element.<br>
+   * load the form data from given Capella element.<br>
    * Default implementation registers an EMF adapter to listen to model changes if displayed in a wizard.
    */
-  public void loadData(CapellaElement capellaElement) {
+  @Override
+  public void loadData(EObject object) {
+    EObject capellaElement = object;
+    if (object instanceof DSemanticDecorator) {
+      DSemanticDecorator dsem = (DSemanticDecorator) object;
+      capellaElement = (CapellaElement) dsem.getTarget();
+    }
+
     // Register as operation history listener the first time capella element is set.
     if (null == _capellaElement) {
       // This operation history listener is used to force refreshes when undo / redo operations are performed.
@@ -264,20 +271,6 @@ public abstract class AbstractSection extends AbstractPropertySection implements
       setEnabled(false);
     } else {
       setEnabled(true);
-    }
-  }
-
-  /**
-   * load the form data from given capella element.<br>
-   * Default implementation registers an EMF adapter to listen to model changes if displayed in a wizard.
-   */
-  @Override
-  public void loadData(EObject object) {
-    if (object instanceof CapellaElement) {
-      loadData((CapellaElement) object);
-    } else if (object instanceof DSemanticDecorator) {
-      DSemanticDecorator dsem = (DSemanticDecorator) object;
-      loadData((CapellaElement) dsem.getTarget());
     }
   }
 

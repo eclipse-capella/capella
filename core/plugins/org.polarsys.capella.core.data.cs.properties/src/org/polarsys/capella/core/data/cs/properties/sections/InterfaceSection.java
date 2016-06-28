@@ -24,7 +24,6 @@ import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.core.properties.controllers.GeneralizableElementController;
 import org.polarsys.capella.core.data.core.properties.fields.VisibilityKindGroup;
@@ -108,7 +107,7 @@ public class InterfaceSection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement capellaElement) {
+  public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
     _visibilityKindGroup.loadData(capellaElement, CapellacorePackage.eINSTANCE.getGeneralClass_Visibility());

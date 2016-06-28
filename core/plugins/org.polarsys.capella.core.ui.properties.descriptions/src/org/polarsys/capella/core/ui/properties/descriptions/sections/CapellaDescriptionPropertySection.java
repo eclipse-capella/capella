@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,20 +77,19 @@ public class CapellaDescriptionPropertySection extends AbstractSection implement
    * {@inheritDoc}
    */
   @Override
-  protected void handleParentBackground(Color color_p, Composite parent_p) {
+  protected void handleParentBackground(Color color, Composite parent) {
     // Do nothing.
   }
 
   /**
-   * load the form data from given melody element.<br>
-   * Default implementation registers an EMF adapter to listen to model changes if displayed in a wizard.
+   * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement melodyElement_p) {
-    super.loadData(melodyElement_p);
+  public void loadData(EObject capellaElement) {
+    super.loadData(capellaElement);
 
     if (null != _descriptionGroup) {
-      _descriptionGroup.loadData(melodyElement_p);
+      _descriptionGroup.loadData(capellaElement);
     }
   }
 
@@ -98,33 +97,33 @@ public class CapellaDescriptionPropertySection extends AbstractSection implement
    * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#setInput(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
    */
   @Override
-  public void setInput(IWorkbenchPart part_p, ISelection selection_p) {
-    if (selection_p instanceof StructuredSelection) {
-      EObject selection = CapellaAdapterHelper.resolveSemanticObject(((StructuredSelection) selection_p).getFirstElement());
-      if (selection instanceof CapellaElement) {
-        if (selection.eClass().equals(CsPackage.eINSTANCE.getPart())) {
-          boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((Part) selection));
+  public void setInput(IWorkbenchPart part, ISelection selection) {
+    if (selection instanceof StructuredSelection) {
+      EObject elt = CapellaAdapterHelper.resolveSemanticObject(((StructuredSelection) selection).getFirstElement());
+      if (elt instanceof CapellaElement) {
+        if (elt.eClass().equals(CsPackage.eINSTANCE.getPart())) {
+          boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((Part) elt));
           if (!allowMultiplePart) {
-            AbstractType type = ((Part) selection).getAbstractType();
+            AbstractType type = ((Part) elt).getAbstractType();
             if ((type != null) && !(type instanceof ConfigurationItem)) {
-              super.setInput(part_p, new StructuredSelection(type));
+              super.setInput(part, new StructuredSelection(type));
               loadData((CapellaElement) type);
               return;
             }
           }
         }
-        loadData((CapellaElement) selection);
+        loadData((CapellaElement) elt);
       }
     }
-    super.setInput(part_p, selection_p);
+    super.setInput(part, selection);
   }
 
   /**
    * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
    */
   @Override
-  public boolean select(Object toTest_p) {
-    EObject eObj = CapellaAdapterHelper.resolveSemanticObject(toTest_p);
+  public boolean select(Object toTest) {
+    EObject eObj = CapellaAdapterHelper.resolveSemanticObject(toTest);
     if (eObj instanceof CapellaElement) {
       return true;
     }
@@ -135,11 +134,11 @@ public class CapellaDescriptionPropertySection extends AbstractSection implement
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
-    super.setEnabled(enabled_p);
+  public void setEnabled(boolean enabled) {
+    super.setEnabled(enabled);
 
     if (null != _descriptionGroup) {
-      _descriptionGroup.setEnabled(enabled_p);
+      _descriptionGroup.setEnabled(enabled);
     }
   }
 

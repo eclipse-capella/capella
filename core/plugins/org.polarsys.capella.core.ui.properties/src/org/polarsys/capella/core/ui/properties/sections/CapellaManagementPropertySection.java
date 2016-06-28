@@ -76,11 +76,10 @@ public class CapellaManagementPropertySection extends AbstractSection implements
   }
 
   /**
-   * load the form data from given capella element.<br>
-   * Default implementation registers an EMF adapter to listen to model changes if displayed in a wizard.
+   * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement capellaElement) {
+  public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
     _visibleInDocGroup.loadData(capellaElement, ModellingcorePackage.eINSTANCE.getPublishableElement_VisibleInDoc());

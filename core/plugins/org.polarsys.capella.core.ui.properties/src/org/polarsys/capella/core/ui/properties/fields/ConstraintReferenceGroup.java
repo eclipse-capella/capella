@@ -127,7 +127,7 @@ public class ConstraintReferenceGroup {
     }
   }
   
-  public void loadData(CapellaElement element){
+  public void loadData(EObject element){
     for (Map.Entry<EReference, AbstractSemanticField> e : fields.entrySet()){
       e.getValue().loadData(element, e.getKey());
     }
