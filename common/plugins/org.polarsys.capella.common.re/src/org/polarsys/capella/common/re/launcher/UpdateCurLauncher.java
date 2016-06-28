@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.rpl2re.activities.DifferencesFilteringActivity;
 import org.polarsys.capella.common.re.rpl2re.activities.InitializeDiffMergeUpdateReActivity;
 import org.polarsys.capella.common.re.rpl2re.activities.InitializeTransitionActivity;
-import org.polarsys.capella.core.transition.common.activities.DifferencesMergingActivity;
 import org.polarsys.capella.core.transition.common.activities.PostDiffMergeActivity;
 import org.polarsys.capella.core.transition.common.launcher.ILoopActivityDispatcher;
 import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParameter;
@@ -50,6 +49,7 @@ public class UpdateCurLauncher extends ReLauncher {
 
   /**
    * Activities to be loaded into the workflow element of cadence "PRE ANALYSIS".
+   * 
    * @return the workflow element associated
    */
   @Override
@@ -65,7 +65,8 @@ public class UpdateCurLauncher extends ReLauncher {
   }
 
   /**
-   *  Activities to be loaded into the workflow element of cadence "POST EXECUTION".
+   * Activities to be loaded into the workflow element of cadence "POST EXECUTION".
+   * 
    * @return the workflow element associated
    */
   @Override
@@ -80,9 +81,6 @@ public class UpdateCurLauncher extends ReLauncher {
 
     // DifferencesFilteringActivity
     parameter.addActivity(getActivity(DifferencesFilteringActivity.ID));
-
-    // DifferencesMergingActivity
-    parameter.addActivity(getActivity(DifferencesMergingActivity.ID));
 
     // MakeTraceabilityActivity
     parameter.addActivity(getActivity(MakeTraceabilityActivity.ID));

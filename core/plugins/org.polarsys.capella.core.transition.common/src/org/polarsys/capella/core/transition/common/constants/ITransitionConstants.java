@@ -40,6 +40,7 @@ public interface ITransitionConstants {
 
   static final String LEVEL_HANDLER = "LEVEL_HANDLER";
 
+  static final String MERGE_DIFFERENCES_HANDLER = "MERGE_DIFFERENCES_HANDLER";
   static final String FILTERING_DIFFERENCES_HANDLER = "FILTERING_DIFFERENCES_HANDLER";
 
   // Transition variables
@@ -120,5 +121,7 @@ public interface ITransitionConstants {
   static final String TRANSPOSER_APPLY_REQUIRED = "TRANSPOSER_APPLY_REQUIRED";
 
   static final String SCOPE_SOURCES = "SCOPE_SOURCES";
+
+  static final String COMMAND_NAME = "COMMAND_NAME";
 
 }

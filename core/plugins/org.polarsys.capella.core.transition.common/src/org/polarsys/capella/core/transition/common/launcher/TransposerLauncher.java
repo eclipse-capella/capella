@@ -139,6 +139,7 @@ public class TransposerLauncher extends ActivitiesLauncher {
       _transposer.getContext().put(ITransitionConstants.TRANSPOSER_INSTANCE, _transposer);
       _transposer.getContext().put(ITransitionConstants.TRANSPOSER_SELECTION, selection);
       _transposer.getContext().put(ITransitionConstants.TRANSPOSER_PURPOSE, purpose);
+      _transposer.getContext().put(ITransitionConstants.COMMAND_NAME, getName());
       _transposer.getContext().put(ITransitionConstants.TRANSPOSER_MAPPING, mappingId);
       _transposer.getContext().put(ITransposerWorkflow.TRANSPOSER_ANALYSIS_SOURCES, new ArrayList<Object>());
 

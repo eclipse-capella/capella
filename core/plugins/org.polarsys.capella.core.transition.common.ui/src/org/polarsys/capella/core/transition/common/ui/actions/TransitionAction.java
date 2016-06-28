@@ -35,6 +35,7 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
+import org.polarsys.capella.core.transition.common.commands.TransitionCommand;
 
 public abstract class TransitionAction extends AbstractHandler implements IActionDelegate {
 
@@ -52,6 +53,7 @@ public abstract class TransitionAction extends AbstractHandler implements IActio
 
   /**
    * Get the active shell.
+   * 
    * @return the activeShell
    */
   protected Shell getActiveShell() {
@@ -79,9 +81,7 @@ public abstract class TransitionAction extends AbstractHandler implements IActio
 
     try {
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
-        /**
-         * @see org.eclipse.jface.operation.IRunnableWithProgress#run(org.eclipse.core.runtime.IProgressMonitor)
-         */
+
         @SuppressWarnings("synthetic-access")
         public void run(IProgressMonitor progressMonitor) throws InvocationTargetException, InterruptedException {
           String text = "Transition";//$NON-NLS-1$
@@ -91,7 +91,11 @@ public abstract class TransitionAction extends AbstractHandler implements IActio
           progressMonitor.beginTask(text + " processing...", 1); //$NON-NLS-1$
           ICommand command = createCommand(_selection, progressMonitor);
           if (command != null) {
-            ExecutionManager executionManager = TransactionHelper.getExecutionManager((Collection<? extends EObject>) getSemanticObjects(_selection));
+            if (command instanceof TransitionCommand) {
+              ((TransitionCommand) command).setName(text);
+            }
+            ExecutionManager executionManager = TransactionHelper
+                .getExecutionManager((Collection<? extends EObject>) getSemanticObjects(_selection));
             if (executionManager != null) {
               executionManager.execute(command);
             }
@@ -101,7 +105,8 @@ public abstract class TransitionAction extends AbstractHandler implements IActio
       };
 
       try {
-        // Pb Sirius. Temporary Workaround until fix. Use "false" for the 1st parameter to run the command from the GUI thread.
+        // Pb Sirius. Temporary Workaround until fix. Use "false" for the 1st parameter to run the command from the GUI
+        // thread.
         new ProgressMonitorDialog(getActiveShell()).run(false, false, runnable);
       } catch (Exception exception) {
         throw new RuntimeException(exception);
@@ -145,7 +150,8 @@ public abstract class TransitionAction extends AbstractHandler implements IActio
   }
 
   /**
-   * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
+   * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
+   *      org.eclipse.jface.viewers.ISelection)
    */
   public void selectionChanged(IAction uiAction, ISelection selection) {
     Collection<Object> objects = new ArrayList<Object>();
