@@ -60,19 +60,19 @@ public class MetadataCreationContributor extends AbstractMigrationContributor {
 			@Override
 			protected void postMigrationExecute(ExecutionManager executionManager, ResourceSet resourceSet, MigrationContext context) throws IOException {
 				// create metadata resource if needed
-				Resource resource = resourceSet.getResource(URI.createPlatformResourceURI(getFile().getFullPath().toString(), false), true);
+//				Resource resource = resourceSet.getResource(URI.createPlatformResourceURI(getFile().getFullPath().toString(), false), true);
 
-				Resource initIntegrationStorage = MetadataHelper.getViewpointMetadata(resourceSet).initMetadataStorage();
-				if (initIntegrationStorage != null) {
-					EObject eObject = resource.getContents().get(0);
-					DAnalysis session = (DAnalysis) eObject;
-					session.getSemanticResources().add(new ResourceDescriptor(initIntegrationStorage.getURI()));
-					
-					// enable capella viewpoint
-					org.polarsys.kitalpha.resourcereuse.model.Resource capellaVp = ViewpointManager.getViewpoint("org.polarsys.capella.core.viewpoint");
-					Version readVersion = ViewpointManager.readVersion(capellaVp);
-					MetadataHelper.getViewpointMetadata(resourceSet).setUsage(capellaVp, readVersion, true);
-				}
+//				Resource initIntegrationStorage = MetadataHelper.getViewpointMetadata(resourceSet).initMetadataStorage();
+//				if (initIntegrationStorage != null) {
+//					EObject eObject = resource.getContents().get(0);
+//					DAnalysis session = (DAnalysis) eObject;
+//					session.getSemanticResources().add(new ResourceDescriptor(initIntegrationStorage.getURI()));
+//					
+//					// enable capella viewpoint
+//					org.polarsys.kitalpha.resourcereuse.model.Resource capellaVp = ViewpointManager.getViewpoint("org.polarsys.capella.core.viewpoint");
+//					Version readVersion = ViewpointManager.readVersion(capellaVp);
+//					MetadataHelper.getViewpointMetadata(resourceSet).setUsage(capellaVp, readVersion, true);
+//				}
 			}
 
 			@Override
