@@ -18,15 +18,20 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
+import org.polarsys.capella.core.transition.common.handlers.merge.DefaultFocusCategoryFilter;
 import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.capella.core.transition.system.handlers.merge.ActorFilter;
+import org.polarsys.capella.core.transition.system.handlers.merge.ComponentExchangeFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.ComponentFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.DataFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.EClassCategoryFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.ExchangeItemFilter;
+import org.polarsys.capella.core.transition.system.handlers.merge.FunctionFilter;
+import org.polarsys.capella.core.transition.system.handlers.merge.FunctionalExchangeFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.InterfaceFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.ManyToOneCategoryFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.OneToManyCategoryFilter;
+import org.polarsys.capella.core.transition.system.handlers.merge.PhysicalLinkFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.PropertyValueFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.RootCategoryFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.StateMachineFilter;
@@ -52,8 +57,7 @@ public class DifferencesComputingActivity extends
     handler.addCategory(new ActorFilter(context), context);
     handler.addCategory(new ComponentFilter(context), context);
 
-    handler.addCategory(new EClassCategoryFilter(context, FaPackage.Literals.ABSTRACT_FUNCTION,
-        CtxPackage.Literals.SYSTEM_FUNCTION, PreferenceConstants.P_F_TEXT), context);
+    handler.addCategory(new FunctionFilter(context), context);
 
     handler.addCategory(new EClassCategoryFilter(context, InteractionPackage.Literals.ABSTRACT_CAPABILITY,
         CtxPackage.Literals.CAPABILITY), context);
@@ -63,9 +67,10 @@ public class DifferencesComputingActivity extends
     handler.addCategory(new ExchangeItemFilter(context), context);
     handler.addCategory(new StateMachineFilter(context), context);
 
-    handler.addCategory(new EClassCategoryFilter(context, FaPackage.Literals.FUNCTIONAL_EXCHANGE), context);
-    handler.addCategory(new EClassCategoryFilter(context, FaPackage.Literals.COMPONENT_EXCHANGE), context);
-    handler.addCategory(new EClassCategoryFilter(context, CsPackage.Literals.PHYSICAL_LINK), context);
+    handler.addCategory(new FunctionalExchangeFilter(context), context);
+    handler.addCategory(new ComponentExchangeFilter(context), context);
+    handler.addCategory(new PhysicalLinkFilter(context), context);
+
     handler.addCategory(new EClassCategoryFilter(context, CsPackage.Literals.PART), context);
 
     handler.addCategory(new EClassCategoryFilter(context, FaPackage.Literals.FUNCTION_PORT,
@@ -87,6 +92,7 @@ public class DifferencesComputingActivity extends
     handler.addCategory(new EClassCategoryFilter(context, EmdePackage.Literals.ELEMENT_EXTENSION, "Viewpoint elements"),
         context);
 
+    handler.addCategory(new DefaultFocusCategoryFilter(context), context);
     handler.addCategory(new RootCategoryFilter(context), context);
     handler.addCategory(new OneToManyCategoryFilter(context), context);
     handler.addCategory(new ManyToOneCategoryFilter(context), context);

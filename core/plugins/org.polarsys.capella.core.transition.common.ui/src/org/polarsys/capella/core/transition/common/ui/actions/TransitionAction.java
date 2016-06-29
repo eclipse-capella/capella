@@ -10,152 +10,31 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.common.ui.actions;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 
-import org.eclipse.core.commands.AbstractHandler;
-import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.expressions.IEvaluationContext;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
-import org.eclipse.ui.IObjectActionDelegate;
-import org.eclipse.ui.IWorkbenchPart;
-import org.polarsys.capella.common.ef.ExecutionManager;
-import org.polarsys.capella.common.ef.command.ICommand;
-import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
-import org.polarsys.capella.core.transition.common.commands.TransitionCommand;
+import org.polarsys.capella.core.transition.common.ui.commands.CommandUIHandler;
 
-public abstract class TransitionAction extends AbstractHandler implements IActionDelegate {
+/**
+ * Deprecated, should use CommandUIHandler instead
+ */
+@Deprecated
+public abstract class TransitionAction extends CommandUIHandler implements IActionDelegate {
 
-  public static IAction DEFAULT_ACTION = null;
-
-  /**
-   * Current _selection.
-   */
   private Collection<Object> _selection;
 
-  /**
-   * Active shell.
-   */
-  private Shell _activeShell;
-
-  /**
-   * Get the active shell.
-   * 
-   * @return the activeShell
-   */
-  protected Shell getActiveShell() {
-    return _activeShell;
-  }
-
-  protected Collection<Object> getSelection(ExecutionEvent event) {
-    IEvaluationContext context = (IEvaluationContext) event.getApplicationContext();
-    Object ae = context.getDefaultVariable();
-    if (ae instanceof Collection) {
-      return (Collection) ae;
-    }
-    return Collections.emptyList();
-  }
-
-  public Object execute(ExecutionEvent event) throws ExecutionException {
-    selectionChanged(null, new StructuredSelection(getSelection(event).toArray()));
-    run(DEFAULT_ACTION);
-    return event;
-  }
-
-  protected abstract ICommand createCommand(Collection<Object> selection, IProgressMonitor progressMonitor);
-
-  /**
-   * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
-   */
   public void run(final IAction action) {
-
-    // Send long running operation events.
-    // Operation is starting.
-    LongRunningListenersRegistry.getInstance().operationStarting(getClass());
-
     try {
-      IRunnableWithProgress runnable = new IRunnableWithProgress() {
-
-        @SuppressWarnings("synthetic-access")
-        public void run(IProgressMonitor progressMonitor) throws InvocationTargetException, InterruptedException {
-          String text = "Transition";//$NON-NLS-1$
-          if (action != null) {
-            text = action.getText();
-          }
-          progressMonitor.beginTask(text + " processing...", 1); //$NON-NLS-1$
-          ICommand command = createCommand(_selection, progressMonitor);
-          if (command != null) {
-            if (command instanceof TransitionCommand) {
-              ((TransitionCommand) command).setName(text);
-            }
-            ExecutionManager executionManager = TransactionHelper
-                .getExecutionManager((Collection<? extends EObject>) getSemanticObjects(_selection));
-            if (executionManager != null) {
-              executionManager.execute(command);
-            }
-          }
-          progressMonitor.worked(1);
-        }
-      };
-
-      try {
-        // Pb Sirius. Temporary Workaround until fix. Use "false" for the 1st parameter to run the command from the GUI
-        // thread.
-        new ProgressMonitorDialog(getActiveShell()).run(false, false, runnable);
-      } catch (Exception exception) {
-        throw new RuntimeException(exception);
-      }
-
-    } finally {
-      // Send long running operation events.
-      // Operation has finished.
-      LongRunningListenersRegistry.getInstance().operationEnded(getClass());
+      execute(_selection);
+    } catch (ExecutionException e) {
+      // Nothing here
     }
-
-  }
-
-  // FIXME refactor duplicated code
-  public Collection<Object> getSemanticObjects(Collection<Object> elements) {
-    Collection<Object> result = new ArrayList<Object>();
-    for (Object object : elements) {
-      Object semantic = resolveSemanticObject(object);
-      if (semantic != null) {
-        result.add(semantic);
-      }
-    }
-    return result;
-  }
-
-  public Object resolveSemanticObject(Object object) {
-    Object semantic = null;
-
-    if (object != null) {
-      if (object instanceof EObject) {
-        semantic = object;
-
-      } else if (object instanceof IAdaptable) {
-        Object adapter = ((IAdaptable) object).getAdapter(EObject.class);
-        if (adapter instanceof EObject) {
-          semantic = adapter;
-        }
-      }
-    }
-    return semantic;
   }
 
   /**
@@ -173,10 +52,4 @@ public abstract class TransitionAction extends AbstractHandler implements IActio
     _selection = objects;
   }
 
-  /**
-   * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
-   */
-  public void setActivePart(IAction action, IWorkbenchPart targetPart) {
-    _activeShell = targetPart.getSite().getShell();
-  }
 }

@@ -29,7 +29,9 @@ public class TraceabilityHandlerMatchPolicy extends ContextMatchPolicy {
 
   /**
    * Constructor
-   * @param a non-null mapping of corresponding elements whose further modifications will impact this policy
+   * 
+   * @param a
+   *          non-null mapping of corresponding elements whose further modifications will impact this policy
    */
   public TraceabilityHandlerMatchPolicy(IContext context) {
     super(context);
@@ -37,6 +39,7 @@ public class TraceabilityHandlerMatchPolicy extends ContextMatchPolicy {
 
   /**
    * Some elements should not be matched even if they are traced to an element from the model source.
+   * 
    * @param element
    * @param scope
    * @param context
@@ -56,8 +59,10 @@ public class TraceabilityHandlerMatchPolicy extends ContextMatchPolicy {
 
     IContext context = getContext();
 
-    ITraceabilityHandler sourceHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
-    ITraceabilityHandler targetHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
+    ITraceabilityHandler sourceHandler = (ITraceabilityHandler) context
+        .get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
+    ITraceabilityHandler targetHandler = (ITraceabilityHandler) context
+        .get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
     ITraceabilityHandler handler = null;
 
     if (scope instanceof ITargetModelScope) {
@@ -82,10 +87,12 @@ public class TraceabilityHandlerMatchPolicy extends ContextMatchPolicy {
       if (bounds.size() > 0) {
         EObject commonSource = bounds.iterator().next();
 
-        //To '''support''' (for now) some SID linked to elements, we need to retrieve the same id from the transformed scope and the target scope.
+        // To '''support''' (for now) some SID linked to elements, we need to retrieve the same id from the transformed
+        // scope and the target scope.
         if (scope instanceof ITargetModelScope) {
-          Collection<EObject> transformedElements = ((ITargetModelScope) scope).retrieveTransformedElementsFromTarget(element);
-          //Retrieve the same id than the common transformed element of sourceElements.
+          Collection<EObject> transformedElements = ((ITargetModelScope) scope)
+              .retrieveTransformedElementsFromTarget(element);
+          // Retrieve the same id than the common transformed element of sourceElements.
           if (transformedElements.size() > 0) {
             bounds = sourceHandler.retrieveSourceElements(transformedElements.iterator().next(), context);
             if (bounds.size() > 0) {

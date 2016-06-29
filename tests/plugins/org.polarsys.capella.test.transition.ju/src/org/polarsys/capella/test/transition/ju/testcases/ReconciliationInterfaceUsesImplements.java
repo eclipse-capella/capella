@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,8 +32,8 @@ public class ReconciliationInterfaceUsesImplements extends ModelReconciliationIn
   }
 
   /**
-   * Perform trnasition to PC without interfaces should : - not recreate interface use/impl to PI1 PI2 - not recreate interface use/impl to I3 I4 - create
-   * use/impl to I6 I4
+   * Perform trnasition to PC without interfaces should : - not recreate interface use/impl to PI1 PI2 - not recreate
+   * interface use/impl to I3 I4 - create use/impl to I6 I4
    */
   protected void LCPCTransition1() {
 
@@ -44,7 +44,8 @@ public class ReconciliationInterfaceUsesImplements extends ModelReconciliationIn
     Component lc1 = shouldExist(LA__LC1);
     Component pc1 = shouldExist(PA__PC1);
 
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc1.implementedInterfaces", "3"), pc1.getOwnedInterfaceImplementations().size() == 3);
+    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc1.implementedInterfaces", "3"),
+        pc1.getOwnedInterfaceImplementations().size() == 3);
     assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc1.usedInterfaces", "3"), pc1.getOwnedInterfaceUses().size() == 3);
 
     Interface i11 = shouldExist(LA__IP1__I11);
@@ -59,28 +60,19 @@ public class ReconciliationInterfaceUsesImplements extends ModelReconciliationIn
     EObject res = null;
 
     // A RealizationLink between InterfaceImplementation1
-    res = mustBeTransitioned(LA__LC1__INTERFACE_IMPLEMENTATION_TO_I11);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__INTERFACE_IMPLEMENTATION_TO_I11", "PA__PC1__INTERFACE_IMPLEMENTATION_TO_PI11"),
-        res == getObject(PA__PC1__INTERFACE_IMPLEMENTATION_TO_PI11));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PI1"), pi11.equals(((InterfaceImplementation) res).getImplementedInterface()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PI1"),
+        pi11.equals(((InterfaceImplementation) getObject(PA__PC1__INTERFACE_IMPLEMENTATION_TO_PI11)).getImplementedInterface()));
 
-    res = mustBeTransitioned(LA__LC1__INTERFACE_USE_TO_I12);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__INTERFACE_USE_TO_I12", "PA__PC1__INTERFACE_USE_TO_PI12"),
-        res == getObject(PA__PC1__INTERFACE_USE_TO_PI12));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PI2"), pi12.equals(((InterfaceUse) res).getUsedInterface()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PI2"), pi12.equals(((InterfaceUse) getObject(PA__PC1__INTERFACE_USE_TO_PI12)).getUsedInterface()));
 
-    res = mustBeTransitioned(LA__LC1__INTERFACE_IMPLEMENTATION_TO_I13);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__INTERFACE_IMPLEMENTATION_TO_I13", "PA__PC1__INTERFACE_IMPLEMENTATION_TO_I13"),
-        res == getObject(PA__PC1__INTERFACE_IMPLEMENTATION_TO_I13));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "I3"), i13.equals(((InterfaceImplementation) res).getImplementedInterface()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "I3"),
+        i13.equals(((InterfaceImplementation) getObject(PA__PC1__INTERFACE_IMPLEMENTATION_TO_I13)).getImplementedInterface()));
 
-    res = mustBeTransitioned(LA__LC1__INTERFACE_USE_TO_I14);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__INTERFACE_USE_TO_I14", "PA__PC1__INTERFACE_USE_TO_I14"),
-        res == getObject(PA__PC1__INTERFACE_USE_TO_I14));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "I4"), i14.equals(((InterfaceUse) res).getUsedInterface()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "I4"), i14.equals(((InterfaceUse) getObject(PA__PC1__INTERFACE_USE_TO_I14)).getUsedInterface()));
 
     res = mustBeTransitioned(LA__LC1__INTERFACE_IMPLEMENTATION_TO_I15);
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "I5"), i15.equals(((InterfaceImplementation) res).getImplementedInterface()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "I5"),
+        i15.equals(((InterfaceImplementation) res).getImplementedInterface()));
 
     res = mustBeTransitioned(LA__LC1__INTERFACE_USE_TO_I16);
     assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "I6"), i16.equals(((InterfaceUse) res).getUsedInterface()));
@@ -96,7 +88,8 @@ public class ReconciliationInterfaceUsesImplements extends ModelReconciliationIn
     Component lc1 = shouldExist(LA__LC1);
     Component pc1 = shouldExist(PA__PC1);
 
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc1.implementedInterfaces", "3"), pc1.getOwnedInterfaceImplementations().size() == 3);
+    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc1.implementedInterfaces", "3"),
+        pc1.getOwnedInterfaceImplementations().size() == 3);
     assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc1.usedInterfaces", "3"), pc1.getOwnedInterfaceUses().size() == 3);
 
     Interface i11 = shouldExist(LA__IP1__I11);
@@ -116,28 +109,19 @@ public class ReconciliationInterfaceUsesImplements extends ModelReconciliationIn
 
     EObject res = null;
 
-    res = mustBeTransitioned(LA__LC1__INTERFACE_IMPLEMENTATION_TO_I11);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__INTERFACE_IMPLEMENTATION_TO_I11", "PA__PC1__INTERFACE_IMPLEMENTATION_TO_PI11"),
-        res == getObject(PA__PC1__INTERFACE_IMPLEMENTATION_TO_PI11));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PI1"), pi11.equals(((InterfaceImplementation) res).getImplementedInterface()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PI1"),
+        pi11.equals(((InterfaceImplementation) getObject(PA__PC1__INTERFACE_IMPLEMENTATION_TO_PI11)).getImplementedInterface()));
 
-    res = mustBeTransitioned(LA__LC1__INTERFACE_USE_TO_I12);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__INTERFACE_USE_TO_I12", "PA__PC1__INTERFACE_USE_TO_PI12"),
-        res == getObject(PA__PC1__INTERFACE_USE_TO_PI12));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PI2"), pi12.equals(((InterfaceUse) res).getUsedInterface()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PI2"), pi12.equals(((InterfaceUse) getObject(PA__PC1__INTERFACE_USE_TO_PI12)).getUsedInterface()));
 
-    res = mustBeTransitioned(LA__LC1__INTERFACE_IMPLEMENTATION_TO_I13);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__INTERFACE_IMPLEMENTATION_TO_I13", "PA__PC1__INTERFACE_IMPLEMENTATION_TO_I13"),
-        res == getObject(PA__PC1__INTERFACE_IMPLEMENTATION_TO_I13));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PI3"), pi13.equals(((InterfaceImplementation) res).getImplementedInterface()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PI3"),
+        pi13.equals(((InterfaceImplementation) getObject(PA__PC1__INTERFACE_IMPLEMENTATION_TO_I13)).getImplementedInterface()));
 
-    res = mustBeTransitioned(LA__LC1__INTERFACE_USE_TO_I14);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__INTERFACE_USE_TO_I14", "PA__PC1__INTERFACE_USE_TO_I14"),
-        res == getObject(PA__PC1__INTERFACE_USE_TO_I14));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PI4"), pi14.equals(((InterfaceUse) res).getUsedInterface()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PI4"), pi14.equals(((InterfaceUse) getObject(PA__PC1__INTERFACE_USE_TO_I14)).getUsedInterface()));
 
     res = mustBeTransitioned(LA__LC1__INTERFACE_IMPLEMENTATION_TO_I15);
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PI5"), pi15.equals(((InterfaceImplementation) res).getImplementedInterface()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PI5"),
+        pi15.equals(((InterfaceImplementation) res).getImplementedInterface()));
 
     res = mustBeTransitioned(LA__LC1__INTERFACE_USE_TO_I16);
     assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PI6"), pi16.equals(((InterfaceUse) res).getUsedInterface()));
@@ -153,8 +137,10 @@ public class ReconciliationInterfaceUsesImplements extends ModelReconciliationIn
     Component pc1 = mustBeTransitioned(LA__LC1);
     Component pc2 = mustBeTransitioned(LA__LC2);
 
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc1.implementedInterfaces", "3"), pc1.getOwnedInterfaceImplementations().size() == 3);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc2.implementedInterfaces", "1"), pc2.getOwnedInterfaceImplementations().size() == 1);
+    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc1.implementedInterfaces", "3"),
+        pc1.getOwnedInterfaceImplementations().size() == 3);
+    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc2.implementedInterfaces", "1"),
+        pc2.getOwnedInterfaceImplementations().size() == 1);
 
     assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc1.usedInterfaces", "3"), pc1.getOwnedInterfaceUses().size() == 3);
     assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc2.usedInterfaces", "1"), pc2.getOwnedInterfaceUses().size() == 1);

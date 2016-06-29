@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,27 +8,27 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.transition.system.topdown.ui.actions.tester;
+package org.polarsys.capella.core.transition.system.topdown.ui.handlers.tester;
 
 import org.eclipse.core.expressions.PropertyTester;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ui.actions.ModelAdaptation;
 import org.polarsys.capella.core.transition.system.topdown.commands.TransitionCommandHelper;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 public class CommandTester extends PropertyTester {
 
   /**
-   * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[], java.lang.Object)
+   * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[],
+   *      java.lang.Object)
    */
   @Override
-  public boolean test(Object object_p, String propertyName_p, Object[] params_p, Object testedValue_p) {
+  public boolean test(Object object, String propertyName, Object[] params, Object testedValue) {
 
-    if (propertyName_p.equals("transitionMode")) { //$NON-NLS-1$ 
-      ModelElement element = ModelAdaptation.adaptToCapella(object_p);
+    if (propertyName.equals("transitionMode")) { //$NON-NLS-1$
+      ModelElement element = ModelAdaptation.adaptToCapella(object);
 
-      if ((element != null) && (testedValue_p instanceof String)) {
-        String value = (String) testedValue_p;
+      if ((element != null) && (testedValue instanceof String)) {
+        String value = (String) testedValue;
 
         if (value.startsWith("transition")) { //$NON-NLS-1$
           value = value.substring(10);

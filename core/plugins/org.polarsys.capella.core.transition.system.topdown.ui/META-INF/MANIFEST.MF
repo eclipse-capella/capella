@@ -14,6 +14,6 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.flexibility.wizards
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.core.transition.system.topdown.ui.actions,
+Export-Package: org.polarsys.capella.core.transition.system.topdown.ui.handlers,
  org.polarsys.capella.core.transition.system.topdown.ui.commands
 Bundle-Localization: plugin

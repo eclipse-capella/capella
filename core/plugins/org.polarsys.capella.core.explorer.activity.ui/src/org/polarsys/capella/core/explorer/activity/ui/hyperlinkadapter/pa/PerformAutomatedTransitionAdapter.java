@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,44 +10,44 @@
  *******************************************************************************/
 package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.pa;
 
+import java.util.Collections;
+
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.AbstractCapellaHyperlinkAdapter;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
-import org.polarsys.capella.core.transition.common.ui.actions.TransitionAction;
-import org.polarsys.capella.core.transition.system.topdown.ui.actions.FunctionalTransitionAction;
+import org.polarsys.capella.core.transition.system.topdown.ui.commands.ITransitionCommandConstants;
+import org.polarsys.capella.core.transition.system.topdown.ui.commands.TransitionUICommandHelper;
 
 /**
  * Perform an automated transition of Logical Functions.
  */
 public class PerformAutomatedTransitionAdapter extends AbstractCapellaHyperlinkAdapter {
-	/**
-	 * Constructor.
-	 */
-	public PerformAutomatedTransitionAdapter() {
-		super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
-	}
+  /**
+   * Constructor.
+   */
+  public PerformAutomatedTransitionAdapter() {
+    super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
+  }
 
-	@Override
-	protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
-	  ModelElement modelElement = getModelElement(rootSemanticModel);
-	  if(modelElement != null){
-	    FunctionalTransitionAction action = new FunctionalTransitionAction();
-		  action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(modelElement));
-		  action.run(TransitionAction.DEFAULT_ACTION);
-		}
-	}
+  @Override
+  protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
+    ModelElement modelElement = getModelElement(rootSemanticModel);
+    if (modelElement != null) {
+      TransitionUICommandHelper.getInstance().executeCommand(ITransitionCommandConstants.FunctionalTransition,
+          Collections.singleton((Object) modelElement));
+    }
+  }
 
-	@Override
-	protected ModelElement getModelElement(EObject rootSemanticModel) {
-	  if(rootSemanticModel instanceof Project){
-	    return ModelQueryHelper.getRootLogicalFunction((Project) rootSemanticModel);
-	  }
-	  return null;
-	}
+  @Override
+  protected ModelElement getModelElement(EObject rootSemanticModel) {
+    if (rootSemanticModel instanceof Project) {
+      return ModelQueryHelper.getRootLogicalFunction((Project) rootSemanticModel);
+    }
+    return null;
+  }
 }
