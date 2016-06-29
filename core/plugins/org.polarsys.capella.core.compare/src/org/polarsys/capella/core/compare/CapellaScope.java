@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -241,15 +241,18 @@ public class CapellaScope extends SiriusScope {
             new Path(platformResourcePath));
       } else {
         // Resource from external file
-        IPath path = new Path(uri.toFileString());
-        IProject proxyProject = CapellaComparePlugin.getDefault().getProxyProject(this, path);
-        if (proxyProject != null) {
-          try {
-            String linkName = makeLinkName(uri);
-            result = proxyProject.getFile(linkName);
-            result.createLink(path, IResource.REPLACE, null);
-          } catch (CoreException e) {
-            // Just proceed
+        String fileString = uri.toFileString();
+        if (fileString != null) {
+          IPath path = new Path(fileString);
+          IProject proxyProject = CapellaComparePlugin.getDefault().getProxyProject(this, path);
+          if (proxyProject != null) {
+            try {
+              String linkName = makeLinkName(uri);
+              result = proxyProject.getFile(linkName);
+              result.createLink(path, IResource.REPLACE, null);
+            } catch (CoreException e) {
+              // Just proceed
+            }
           }
         }
       }
