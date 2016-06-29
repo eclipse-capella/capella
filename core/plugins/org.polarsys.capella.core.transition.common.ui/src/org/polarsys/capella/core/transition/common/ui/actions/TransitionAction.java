@@ -13,12 +13,13 @@ package org.polarsys.capella.core.transition.common.ui.actions;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.expressions.EvaluationContext;
+import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
@@ -27,6 +28,7 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
@@ -60,10 +62,17 @@ public abstract class TransitionAction extends AbstractHandler implements IActio
     return _activeShell;
   }
 
+  protected Collection<Object> getSelection(ExecutionEvent event) {
+    IEvaluationContext context = (IEvaluationContext) event.getApplicationContext();
+    Object ae = context.getDefaultVariable();
+    if (ae instanceof Collection) {
+      return (Collection) ae;
+    }
+    return Collections.emptyList();
+  }
+
   public Object execute(ExecutionEvent event) throws ExecutionException {
-    EvaluationContext c = (EvaluationContext) event.getApplicationContext();
-    ISelection s = (ISelection) c.getVariable("selection");
-    selectionChanged(null, s);
+    selectionChanged(null, new StructuredSelection(getSelection(event).toArray()));
     run(DEFAULT_ACTION);
     return event;
   }

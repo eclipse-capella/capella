@@ -74,6 +74,7 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
 
   /**
    * For each differences, initialize a DiffViewer
+   * 
    * @param context
    * @param diffs
    * @param role1
@@ -89,7 +90,8 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
 
         FilterAction role = getDefaultAction(diff, role1, context);
 
-        IDiffModelViewer view = IDiffModelViewerFactory.eINSTANCE.createDiffModelViewer(diff, scope, role, context, isReadOnly(diff, role1, context));
+        IDiffModelViewer view = IDiffModelViewerFactory.eINSTANCE.createDiffModelViewer(diff, scope, role, context,
+            isReadOnly(diff, role1, context));
         if (isDisplayable(diff, role1, context)) {
           getViewsToDisplay(context).add(view);
         }
@@ -133,6 +135,7 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
 
   /**
    * Proceed to uncheck all differences which requires a already uncheck difference
+   * 
    * @param context
    * @param diffs
    * @param scope
@@ -160,7 +163,8 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
     filterItems.add(filter);
   }
 
-  public IStatus processDifferences(IContext context, Collection<IDifference> diffSource, Collection<IDifference> diffTarget) {
+  public IStatus processDifferences(IContext context, Collection<IDifference> diffSource,
+      Collection<IDifference> diffTarget) {
 
     initialize(context, diffSource, Role.REFERENCE);
     initialize(context, diffTarget, Role.TARGET);
@@ -220,6 +224,7 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
 
   /**
    * Returns whether the difference from the given scope should be filtered (not merged, not visible)
+   * 
    * @param diff
    * @param scope_p
    * @return
@@ -265,6 +270,7 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
 
   /**
    * Returns whether the difference from the given scope should be filtered (not merged, not visible)
+   * 
    * @param diff
    * @param scope_p
    * @return
@@ -298,6 +304,9 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
    * {@inheritDoc}
    */
   public Collection<IFilterItem> getFilterItems(IContext context) {
+    if (filterItems == null) {
+      return Collections.emptyList();
+    }
     return Collections.unmodifiableCollection(filterItems);
   }
 
@@ -308,7 +317,8 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
     uncheck(context, diff, false, diff, false);
   }
 
-  public void uncheck(IContext context, IDiffModelViewer diff, boolean force, IDiffModelViewer source, boolean isInitialization) {
+  public void uncheck(IContext context, IDiffModelViewer diff, boolean force, IDiffModelViewer source,
+      boolean isInitialization) {
     diff.setRoot(source.getRoot());
     FilterAction diffaction = FilterAction.NO_ACTION;
     if (diff.getDefaultActionDiff() == null) {
@@ -326,8 +336,8 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
     if (isInitialization) {
       diff.setDefaultActionDiff(diffaction);
     }
-    //We disable all differences which require the given difference
-    //Disable/Enable also all differences with 'explicit dependencies'
+    // We disable all differences which require the given difference
+    // Disable/Enable also all differences with 'explicit dependencies'
 
     HashMapSet<IDifference, IDifference> set = getRequiringDifferences(context);
     if (set != null) {
@@ -354,7 +364,8 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
   /**
    * {@inheritDoc}
    */
-  public void check(IContext context, IDiffModelViewer diff, boolean force, IDiffModelViewer source, boolean isInitialization) {
+  public void check(IContext context, IDiffModelViewer diff, boolean force, IDiffModelViewer source,
+      boolean isInitialization) {
     diff.setRoot(source.getRoot());
     FilterAction diffaction = FilterAction.NO_ACTION;
     diffaction = FilterAction.TARGET;
@@ -370,10 +381,10 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
     if (isInitialization) {
       diff.setDefaultActionDiff(diffaction);
     }
-    //We enable all differences which require the given difference
-    //and enable all differences required by the given difference
+    // We enable all differences which require the given difference
+    // and enable all differences required by the given difference
 
-    //Disable/Enable also all differences with 'explicit dependencies'
+    // Disable/Enable also all differences with 'explicit dependencies'
     HashMapSet<IDifference, IDifference> set = getRequiringDifferences(context);
     if (set != null) {
       for (IDifference difference : set.get(sDiff)) {
