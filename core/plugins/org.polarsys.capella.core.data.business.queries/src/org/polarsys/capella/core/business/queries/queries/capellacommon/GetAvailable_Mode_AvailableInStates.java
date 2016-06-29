@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,17 +38,15 @@ public class GetAvailable_Mode_AvailableInStates extends AbstractQuery {
   /**
    * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    if (element_p instanceof State) {
-      EObject eContainer = element_p.eContainer();
-      if (eContainer != null) {
-        while (!(eContainer instanceof Component) && !(eContainer instanceof Class)) {
-          eContainer = eContainer.eContainer();
-        }
-        if ((eContainer instanceof Component)) {
-          availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
-        }
+    if (element instanceof State) {
+      EObject eContainer = element.eContainer();
+      while (eContainer != null && !(eContainer instanceof Component || eContainer instanceof Class)) {
+        eContainer = eContainer.eContainer();
+      }
+      if ((eContainer instanceof Component)) {
+        availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
       }
     }
     return availableElements;
@@ -57,15 +55,15 @@ public class GetAvailable_Mode_AvailableInStates extends AbstractQuery {
   /**
    * same level Visibility Layer
    * 
-   * @param state_p
+   * @param component
    */
-  protected List<CapellaElement> getElementsFromComponentAndSubComponents(Component component_p) {
+  protected List<CapellaElement> getElementsFromComponentAndSubComponents(Component component) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    Collection<Component> subComponents = ComponentExt.getAllSubUsedAndDeployedComponents(component_p);
-    subComponents.add(component_p);
+    Collection<Component> subComponents = ComponentExt.getAllSubUsedAndDeployedComponents(component);
+    subComponents.add(component);
 
-    for (Component component : subComponents) {
-      availableElements.addAll(component.getAllocatedFunctions());
+    for (Component subComponent : subComponents) {
+      availableElements.addAll(subComponent.getAllocatedFunctions());
     }
     return availableElements;
   }
@@ -73,10 +71,10 @@ public class GetAvailable_Mode_AvailableInStates extends AbstractQuery {
   /**
    * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
    */
-  public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+  public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
     List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-    if (element_p instanceof State) {
-      for (EObject referencer : EObjectExt.getReferencers(element_p,
+    if (element instanceof State) {
+      for (EObject referencer : EObjectExt.getReferencers(element,
           FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES)) {
         currentElements.add((CapellaElement) referencer);
       }
