@@ -22,11 +22,13 @@ import org.eclipse.emf.diffmerge.api.IMergePolicy;
 import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
-import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.Messages;
+import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
+import org.polarsys.capella.core.transition.common.handlers.merge.DefaultMergeHandler;
+import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.capella.core.transition.common.merge.ExtendedComparison;
 import org.polarsys.capella.core.transition.common.policies.diff.ExtDiffPolicy;
 import org.polarsys.capella.core.transition.common.policies.match.TraceabilityHandlerMatchPolicy;
@@ -44,12 +46,19 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
 
   /*
    * (non-Javadoc)
-   * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters)
+   * 
+   * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.
+   * ActivityParameters)
    */
   @Override
   @SuppressWarnings("unchecked")
   public IStatus _run(ActivityParameters activityParams) {
     IContext context = (IContext) activityParams.getParameter(TRANSPOSER_CONTEXT).getValue();
+
+    IStatus status = initializeMergeHandler(context, activityParams);
+    if (status.matches(IStatus.CANCEL)) {
+      return status;
+    }
 
     computeDifferences(context);
 
@@ -57,7 +66,29 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
   }
 
   /**
-   * @param selection_p
+   * Initialize the Merge handler and set it into context via ITransitionConstants.MERGE_DIFFERENCES_HANDLER
+   */
+  protected IStatus initializeMergeHandler(IContext context, ActivityParameters activityParams) {
+    IHandler handler = loadHandlerFromParameters(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, activityParams);
+    if (handler == null) {
+      handler = new DefaultMergeHandler();
+    }
+    context.put(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, handler);
+    IStatus status = handler.init(context);
+    if ((handler != null) && (handler instanceof IMergeHandler)) {
+      initializeCategoriesHandlers(context, (IMergeHandler) handler, activityParams);
+    }
+
+    return status;
+  }
+
+  protected IStatus initializeCategoriesHandlers(IContext context, IMergeHandler handler,
+      ActivityParameters activityParams) {
+    return Status.OK_STATUS;
+  }
+
+  /**
+   * @param context
    */
   public void computeDifferences(IContext context) {
 
@@ -82,14 +113,18 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
     if (displayLog(context)) {
 
       // Logging
-      LogHelper.getInstance().debug(NLS.bind("Differences from {0}", Role.REFERENCE.toString()), Messages.Activity_ComputingDifferenceActivity);
+      LogHelper.getInstance().debug(NLS.bind("Differences from {0}", Role.REFERENCE.toString()),
+          Messages.Activity_ComputingDifferenceActivity);
       for (IDifference diff : toAnalyseFromSource) {
-        LogHelper.getInstance().debug(NLS.bind(" - {0}", diff.toString()), Messages.Activity_ComputingDifferenceActivity);
+        LogHelper.getInstance().debug(NLS.bind(" - {0}", diff.toString()),
+            Messages.Activity_ComputingDifferenceActivity);
       }
 
-      LogHelper.getInstance().debug(NLS.bind("Differences from {0}", Role.TARGET.toString()), Messages.Activity_ComputingDifferenceActivity);
+      LogHelper.getInstance().debug(NLS.bind("Differences from {0}", Role.TARGET.toString()),
+          Messages.Activity_ComputingDifferenceActivity);
       for (IDifference diff : toAnalyseFromTarget) {
-        LogHelper.getInstance().debug(NLS.bind(" - {0}", diff.toString()), Messages.Activity_ComputingDifferenceActivity);
+        LogHelper.getInstance().debug(NLS.bind(" - {0}", diff.toString()),
+            Messages.Activity_ComputingDifferenceActivity);
       }
 
     }

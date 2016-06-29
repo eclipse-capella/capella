@@ -16,6 +16,7 @@ import java.util.HashSet;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
 import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
 import org.eclipse.emf.diffmerge.impl.policies.DefaultMergePolicy;
 import org.eclipse.emf.ecore.EObject;
@@ -24,6 +25,9 @@ import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.filter.CompoundFilteringItems;
 import org.polarsys.capella.core.transition.common.handlers.filter.FilteringDifferencesHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.filter.IFilterItem;
+import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
+import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
+import org.polarsys.capella.core.transition.common.handlers.merge.MergeHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -94,6 +98,16 @@ public class ExtMergePolicy extends DefaultMergePolicy implements IHandler, IMer
   public IStatus dispose(IContext context) {
     getUnwantedFeatures(context).clear();
     return Status.OK_STATUS;
+  }
+
+  @Override
+  public void setDependencies(IElementPresence presence) {
+    IHandler handler = MergeHandlerHelper.getInstance(context);
+    for (ICategoryItem item : ((IMergeHandler) handler).getCategories(context)) {
+      if (item.covers(presence)) {
+        item.setDependencies(presence);
+      }
+    }
   }
 
 }

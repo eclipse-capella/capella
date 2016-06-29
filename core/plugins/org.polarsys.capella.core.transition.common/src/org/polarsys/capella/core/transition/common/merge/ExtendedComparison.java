@@ -17,6 +17,7 @@ import org.eclipse.emf.diffmerge.api.IMapping;
 import org.eclipse.emf.diffmerge.api.IMatch;
 import org.eclipse.emf.diffmerge.api.IMergePolicy;
 import org.eclipse.emf.diffmerge.api.Role;
+import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
 import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
 import org.eclipse.emf.diffmerge.diffdata.impl.EComparisonImpl;
@@ -160,6 +161,12 @@ public class ExtendedComparison extends EComparisonImpl {
   @Override
   protected IExpensiveOperation getDiffOperation(IDiffPolicy iDiffPolicy1, IMergePolicy mergePolicy) {
     return new DiffOperation(this, iDiffPolicy1, mergePolicy) {
+      
+      protected void setElementPresenceDependencies(IElementPresence presence) {
+        super.setElementPresenceDependencies(presence);
+        ((IMergePolicy2)getMergePolicy()).setDependencies(presence);
+      }
+      
       /**
        * Detect the differences related to the given reference for the given match
        * @param match a non-null, non-partial match

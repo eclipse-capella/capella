@@ -12,20 +12,24 @@
 package org.polarsys.capella.common.re.activities;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.diffmerge.api.IMatchPolicy;
 import org.eclipse.emf.diffmerge.api.IMergePolicy;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
+import org.polarsys.capella.common.re.handlers.merge.AvoidReAttributeCategoryFilter;
+import org.polarsys.capella.common.re.handlers.merge.AvoidUnsynchronizedFeatureCategoryFilter;
 import org.polarsys.capella.common.re.policies.match.ReMatchPolicy;
 import org.polarsys.capella.common.re.policies.merge.ReMergePolicy;
+import org.polarsys.capella.core.transition.common.handlers.merge.DefaultFocusCategoryFilter;
+import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  * 
  */
-public class DifferencesComputingActivity extends org.polarsys.capella.core.transition.common.activities.DifferencesComputingActivity implements
-    ITransposerWorkflow {
+public class DifferencesComputingActivity extends
+    org.polarsys.capella.core.transition.common.activities.DifferencesComputingActivity implements ITransposerWorkflow {
 
   public static final String ID = DifferencesComputingActivity.class.getCanonicalName();
 
@@ -46,9 +50,17 @@ public class DifferencesComputingActivity extends org.polarsys.capella.core.tran
   }
 
   @Override
-  @SuppressWarnings("unchecked")
-  public IStatus _run(ActivityParameters activityParams) {
-    return super._run(activityParams);
+  protected IStatus initializeCategoriesHandlers(IContext context, IMergeHandler handler,
+      ActivityParameters activityParams) {
+    super.initializeCategoriesHandlers(context, handler, activityParams);
+
+    handler.addCategory(new DefaultFocusCategoryFilter(context), context);
+
+    handler.addCategory(new AvoidReAttributeCategoryFilter(context), context);
+
+    handler.addCategory(new AvoidUnsynchronizedFeatureCategoryFilter(context), context);
+
+    return Status.OK_STATUS;
   }
 
 }
