@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,44 +8,31 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.transition.system.topdown.ui.actions;
+package org.polarsys.capella.core.transition.system.topdown.ui.handlers;
 
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.jface.action.IAction;
-
 import org.polarsys.capella.common.ef.command.ICommand;
-import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
-import org.polarsys.capella.core.transition.common.ui.actions.TransitionAction;
+import org.polarsys.capella.core.transition.common.ui.commands.CommandUIHandler;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.core.transition.system.topdown.ui.commands.IntramodelTransitionCommand;
 
 /**
  *
  */
-public class IntramodelTransitionAction extends TransitionAction {
-
-  @Override
-  public void run(final IAction action) {
-    try {
-      LongRunningListenersRegistry.getInstance().operationStarting(getClass());
-      super.run(action);
-    } finally {
-      LongRunningListenersRegistry.getInstance().operationEnded(getClass());
-    }
-  }
+public class IntramodelTransitionHandler extends CommandUIHandler {
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected ICommand createCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p) {
-    return new IntramodelTransitionCommand((Collection) selection_p, progressMonitor_p) {
+  protected ICommand createCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+    return new IntramodelTransitionCommand((Collection) selection, progressMonitor) {
 
       @Override
       protected String getTransitionKind() {
-        return IntramodelTransitionAction.this.getTransitionKind();
+        return IntramodelTransitionHandler.this.getTransitionKind();
       }
 
     };

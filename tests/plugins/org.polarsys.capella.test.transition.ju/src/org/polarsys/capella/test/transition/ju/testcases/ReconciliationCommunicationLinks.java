@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,8 @@ public class ReconciliationCommunicationLinks extends ModelReconciliationCommuni
     LCPCTransition2();
     LCPCTransition3();
     SystemActorTransition();
-    SystemActorTransition(); // retrigger a second time the transition to check same behavior with TransfoLinks between CL
+    SystemActorTransition(); // retrigger a second time the transition to check same behavior with TransfoLinks between
+                             // CL
 
   }
 
@@ -48,21 +49,30 @@ public class ReconciliationCommunicationLinks extends ModelReconciliationCommuni
     assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "actor.communicationLinks", "logicalActor.communicationLinks"),
         (actor.getOwnedCommunicationLinks().size() + 1) == logicalActor.getOwnedCommunicationLinks().size());
 
+    int nbLinksWithTrace = 0;
+
     for (CommunicationLink link : logicalActor.getOwnedCommunicationLinks()) {
 
-      if (link != getObjects(LA__LOGICAL_ACTORS__LA1__LINK_TO_EI4_2).iterator().next()) {
+      if (link.getOutgoingTraces().size() > 0) {
+        nbLinksWithTrace++;
 
-        assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "communicationLink.outgoingTraces", "1"), link.getOutgoingTraces().size() == 1);
-        assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "communicationLink.outgoingTraces", "1"), link.getOutgoingTraces().get(0) instanceof TransfoLink);
+        assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "communicationLink.outgoingTraces", "1"),
+            link.getOutgoingTraces().size() == 1);
 
         TransfoLink stLink = (TransfoLink) link.getOutgoingTraces().get(0);
-        assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "communicationLink.outgoingTraces", "link"), stLink.getTargetElement() instanceof CommunicationLink);
+        assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "communicationLink.outgoingTraces", "link"),
+            stLink.getTargetElement() instanceof CommunicationLink);
         CommunicationLink sLink = (CommunicationLink) stLink.getTargetElement();
-        assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "communicationLink.kind", "communicationLink.kind"), link.getKind() == sLink.getKind());
-        assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "communicationLink.protocol", "communicationLink.protocol"), link.getProtocol() == sLink.getProtocol());
+        assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "communicationLink.kind", "communicationLink.kind"),
+            link.getKind() == sLink.getKind());
+        assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "communicationLink.protocol", "communicationLink.protocol"),
+            link.getProtocol() == sLink.getProtocol());
+
       }
 
     }
+    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "nbLinksWithTrace", "1"), nbLinksWithTrace == 1);
+
   }
 
   protected void LCPCTransition1() {
@@ -85,32 +95,31 @@ public class ReconciliationCommunicationLinks extends ModelReconciliationCommuni
     ExchangeItem i14 = shouldExist(LA__IP1__EI14);
     ExchangeItem i15 = shouldExist(LA__IP1__EI15);
     ExchangeItem i16 = shouldExist(LA__IP1__EI16);
+
     ExchangeItem pi11 = shouldExist(PA__IP1__EI11);
     ExchangeItem pi12 = shouldExist(PA__IP1__EI12);
 
     EObject res = null;
 
-    res = mustBeTransitioned(LA__LC1__LINK_TO_EI11);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__LINK_TO_EI11", "PA__PC1__LINK_TO_EI11"), res == getObject(PA__PC1__LINK_TO_EI11));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI1"), pi11.equals(((CommunicationLink) res).getExchangeItem()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI1"),
+        getObject(PA__IP1__EI11).equals(((CommunicationLink) getObject(PA__PC1__LINK_TO_EI11)).getExchangeItem()));
 
-    res = mustBeTransitioned(LA__LC1__LINK_TO_EI12);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__LINK_TO_EI12", "PA__PC1__LINK_TO_EI12"), res == getObject(PA__PC1__LINK_TO_EI12));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI2"), pi12.equals(((CommunicationLink) res).getExchangeItem()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI2"),
+        getObject(PA__IP1__EI12).equals(((CommunicationLink) getObject(PA__PC1__LINK_TO_EI12)).getExchangeItem()));
 
-    res = mustBeTransitioned(LA__LC1__LINK_TO_EI13);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__LINK_TO_EI13", "PA__PC1__LINK_TO_EI13"), res == getObject(PA__PC1__LINK_TO_EI13));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "EI3"), i13.equals(((CommunicationLink) res).getExchangeItem()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "EI3"),
+        getObject(LA__IP1__EI13).equals(((CommunicationLink) getObject(PA__PC1__LINK_TO_EI13)).getExchangeItem()));
 
-    res = mustBeTransitioned(LA__LC1__LINK_TO_EI14);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__LINK_TO_EI14", "PA__PC1__LINK_TO_EI14"), res == getObject(PA__PC1__LINK_TO_EI14));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "EI4"), i14.equals(((CommunicationLink) res).getExchangeItem()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "EI4"),
+        getObject(LA__IP1__EI14).equals(((CommunicationLink) getObject(PA__PC1__LINK_TO_EI14)).getExchangeItem()));
 
     res = mustBeTransitioned(LA__LC1__LINK_TO_EI15);
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "EI5"), i15.equals(((CommunicationLink) res).getExchangeItem()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "EI5"),
+        getObject(LA__IP1__EI15).equals(((CommunicationLink) res).getExchangeItem()));
 
     res = mustBeTransitioned(LA__LC1__LINK_TO_EI16);
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "EI6"), i16.equals(((CommunicationLink) res).getExchangeItem()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "EI6"),
+        getObject(LA__IP1__EI16).equals(((CommunicationLink) res).getExchangeItem()));
 
   }
 
@@ -145,27 +154,25 @@ public class ReconciliationCommunicationLinks extends ModelReconciliationCommuni
 
     EObject res = null;
 
-    res = mustBeTransitioned(LA__LC1__LINK_TO_EI11);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__LINK_TO_EI11", "PA__PC1__LINK_TO_EI11"), res == getObject(PA__PC1__LINK_TO_EI11));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI1"), pi11.equals(((CommunicationLink) res).getExchangeItem()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI1"),
+        getObject(PA__IP1__EI11).equals(((CommunicationLink) getObject(PA__PC1__LINK_TO_EI11)).getExchangeItem()));
 
-    res = mustBeTransitioned(LA__LC1__LINK_TO_EI12);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__LINK_TO_EI12", "PA__PC1__LINK_TO_EI12"), res == getObject(PA__PC1__LINK_TO_EI12));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI2"), pi12.equals(((CommunicationLink) res).getExchangeItem()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI2"),
+        getObject(PA__IP1__EI12).equals(((CommunicationLink) getObject(PA__PC1__LINK_TO_EI12)).getExchangeItem()));
 
-    res = mustBeTransitioned(LA__LC1__LINK_TO_EI13);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__LINK_TO_EI13", "PA__PC1__LINK_TO_EI13"), res == getObject(PA__PC1__LINK_TO_EI13));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI3"), pi13.equals(((CommunicationLink) res).getExchangeItem()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI3"),
+        pi13.equals(((CommunicationLink) getObject(PA__PC1__LINK_TO_EI13)).getExchangeItem()));
 
-    res = mustBeTransitioned(LA__LC1__LINK_TO_EI14);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "LA__LC1__LINK_TO_EI14", "PA__PC1__LINK_TO_EI14"), res == getObject(PA__PC1__LINK_TO_EI14));
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI4"), pi14.equals(((CommunicationLink) res).getExchangeItem()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI4"),
+        pi14.equals(((CommunicationLink) getObject(PA__PC1__LINK_TO_EI14)).getExchangeItem()));
 
     res = mustBeTransitioned(LA__LC1__LINK_TO_EI15);
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI5"), pi15.equals(((CommunicationLink) res).getExchangeItem()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI5"),
+        pi15.equals(((CommunicationLink) res).getExchangeItem()));
 
     res = mustBeTransitioned(LA__LC1__LINK_TO_EI16);
-    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI6"), pi16.equals(((CommunicationLink) res).getExchangeItem()));
+    assertTrue(NLS.bind(Messages.ShouldBeLinkedTo, "PC1", "PEI6"),
+        pi16.equals(((CommunicationLink) res).getExchangeItem()));
 
   }
 
@@ -178,14 +185,14 @@ public class ReconciliationCommunicationLinks extends ModelReconciliationCommuni
     Component pc1 = mustBeTransitioned(LA__LC1);
     Component pc2 = mustBeTransitioned(LA__LC2);
 
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc1.implementedInterfaces", "3"),
+    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc1.senderItems", "3"),
         CommunicationLinkExt.getExchangeItems(CommunicationLinkExt.getSenderCommunicationLink(pc1)).size() == 3);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc2.implementedInterfaces", "1"),
+    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc2.senderItems", "1"),
         CommunicationLinkExt.getExchangeItems(CommunicationLinkExt.getSenderCommunicationLink(pc2)).size() == 1);
 
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc1.usedInterfaces", "3"),
+    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc1.receiverItems", "3"),
         CommunicationLinkExt.getExchangeItems(CommunicationLinkExt.getReceiverCommunicationLink(pc1)).size() == 3);
-    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc2.usedInterfaces", "1"),
+    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "pc2.receiverItems", "1"),
         CommunicationLinkExt.getExchangeItems(CommunicationLinkExt.getReceiverCommunicationLink(pc2)).size() == 1);
 
   }

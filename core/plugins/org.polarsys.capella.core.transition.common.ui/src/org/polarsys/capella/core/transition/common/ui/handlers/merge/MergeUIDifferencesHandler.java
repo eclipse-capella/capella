@@ -38,15 +38,12 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
   @Override
   public IStatus processDifferences(IContext context, Collection<IDifference> diffSource,
       Collection<IDifference> diffTarget) {
-    super.processDifferences(context, diffSource, diffTarget);
-    return displayDifferences(context, diffSource, diffTarget);
-  }
-
-  protected IStatus displayDifferences(final IContext context, Collection<IDifference> diffSource,
-      Collection<IDifference> diffTarget) {
-
     final EMFDiffNode diffNode = createDiffNode(context);
     initializeCategories(context, diffNode);
+    return displayDifferences(context, diffNode);
+  }
+
+  protected IStatus displayDifferences(final IContext context, final EMFDiffNode diffNode) {
 
     final Integer[] result = new Integer[] { IDialogConstants.OK_ID };
     final Display display = Display.getDefault();
@@ -87,7 +84,6 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
 
   protected void initializeCategories(IContext context, EMFDiffNode diffNode) {
     Set<IDifferenceCategory> category = diffNode.getCategoryManager().getCategories();
-
     for (ICategoryItem item : categories) {
       category.add(new DiffCategoryProxy(context, item));
     }

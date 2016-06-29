@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,22 +12,54 @@ package org.polarsys.capella.core.transition.system.topdown.ui.commands;
 
 import java.util.Collection;
 
+import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.commands.NotEnabledException;
+import org.eclipse.core.commands.NotHandledException;
+import org.eclipse.core.commands.ParameterizedCommand;
+import org.eclipse.core.commands.common.NotDefinedException;
+import org.eclipse.core.expressions.EvaluationContext;
 import org.eclipse.core.runtime.IProgressMonitor;
-
-import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.commands.ICommandService;
+import org.eclipse.ui.handlers.IHandlerService;
 import org.polarsys.capella.common.ef.command.ICommand;
+import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 
 /**
  */
-public class TransitionUICommandHelper extends org.polarsys.capella.core.transition.system.topdown.commands.TransitionCommandHelper {
+public class TransitionUICommandHelper
+    extends org.polarsys.capella.core.transition.system.topdown.commands.TransitionCommandHelper {
 
   public static TransitionUICommandHelper getInstance() {
     return new TransitionUICommandHelper();
   }
 
+  public void executeCommand(String id, Collection<Object> list) {
+    IHandlerService handlerService = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
+    ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
+
+    Command command = commandService.getCommand(id);
+    // Create a ParameterizedCommand with no parameter
+    ParameterizedCommand parameterizedCommand = new ParameterizedCommand(command, null);
+    EvaluationContext context = new EvaluationContext(null, list);
+
+    try {
+      handlerService.executeCommandInContext(parameterizedCommand, null, context);
+    } catch (ExecutionException exception) {
+
+    } catch (NotDefinedException exception) {
+
+    } catch (NotEnabledException exception) {
+
+    } catch (NotHandledException exception) {
+
+    }
+  }
+
   @Override
-  public ICommand getActorTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+  public ICommand getActorTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -37,8 +69,8 @@ public class TransitionUICommandHelper extends org.polarsys.capella.core.transit
   }
 
   @Override
-  public ICommand getDataTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+  public ICommand getDataTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -48,8 +80,8 @@ public class TransitionUICommandHelper extends org.polarsys.capella.core.transit
   }
 
   @Override
-  public ICommand getExchangeItemTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+  public ICommand getExchangeItemTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -59,8 +91,8 @@ public class TransitionUICommandHelper extends org.polarsys.capella.core.transit
   }
 
   @Override
-  public ICommand getFunctionalTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+  public ICommand getFunctionalTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -70,9 +102,9 @@ public class TransitionUICommandHelper extends org.polarsys.capella.core.transit
   }
 
   @Override
-  public ICommand getOCtoSMTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getOCtoSMTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -82,9 +114,9 @@ public class TransitionUICommandHelper extends org.polarsys.capella.core.transit
   }
 
   @Override
-  public ICommand getOAtoSCTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getOAtoSCTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -95,9 +127,9 @@ public class TransitionUICommandHelper extends org.polarsys.capella.core.transit
   }
 
   @Override
-  public ICommand getOAtoSMTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getOAtoSMTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -108,8 +140,8 @@ public class TransitionUICommandHelper extends org.polarsys.capella.core.transit
   }
 
   @Override
-  public ICommand getInterfaceTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+  public ICommand getInterfaceTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -119,9 +151,9 @@ public class TransitionUICommandHelper extends org.polarsys.capella.core.transit
   }
 
   @Override
-  public ICommand getLC2PCTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getLC2PCTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -131,8 +163,8 @@ public class TransitionUICommandHelper extends org.polarsys.capella.core.transit
   }
 
   @Override
-  public ICommand getStateMachineTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+  public ICommand getStateMachineTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -142,9 +174,9 @@ public class TransitionUICommandHelper extends org.polarsys.capella.core.transit
   }
 
   @Override
-  public ICommand getCapabilityTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getCapabilityTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -154,9 +186,9 @@ public class TransitionUICommandHelper extends org.polarsys.capella.core.transit
   }
 
   @Override
-  public ICommand getOE2SystemTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getOE2SystemTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -166,14 +198,14 @@ public class TransitionUICommandHelper extends org.polarsys.capella.core.transit
   }
 
   /**
-   * @param selection_p
-   * @param progressMonitor_p
+   * @param selection
+   * @param progressMonitor
    * @return
    */
   @Override
-  public ICommand getOE2ActorTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getOE2ActorTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -183,14 +215,14 @@ public class TransitionUICommandHelper extends org.polarsys.capella.core.transit
   }
 
   /**
-   * @param selection_p
-   * @param progressMonitor_p
+   * @param selection
+   * @param progressMonitor
    * @return
    */
   @Override
-  public ICommand getPropertyValueTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getPropertyValueTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -200,14 +232,14 @@ public class TransitionUICommandHelper extends org.polarsys.capella.core.transit
   }
 
   /**
-   * @param selection_p
-   * @param progressMonitor_p
+   * @param selection
+   * @param progressMonitor
    * @return
    */
   @Override
-  public ICommand getSystemTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getSystemTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -216,6 +248,6 @@ public class TransitionUICommandHelper extends org.polarsys.capella.core.transit
     };
   }
 
-  //TODO not yet implemented !
+  // TODO not yet implemented !
 
 }

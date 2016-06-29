@@ -13,7 +13,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius,
  org.polarsys.capella.common.flexibility.properties;visibility:=reexport,
  org.eclipse.emf.diffmerge,
- org.polarsys.capella.common.tools.report
+ org.polarsys.capella.common.tools.report,
+ org.eclipse.core.expressions
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.common,

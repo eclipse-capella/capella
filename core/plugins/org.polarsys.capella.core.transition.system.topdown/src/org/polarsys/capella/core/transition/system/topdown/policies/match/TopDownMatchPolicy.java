@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,27 +34,32 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 /**
  * A match policy for diff/merge within pairs of corresponding elements.
  */
-public class TopDownMatchPolicy extends org.polarsys.capella.core.transition.common.policies.match.TraceabilityHandlerMatchPolicy {
+public class TopDownMatchPolicy
+    extends org.polarsys.capella.core.transition.common.policies.match.TraceabilityHandlerMatchPolicy {
 
   /**
    * Constructor
-   * @param a non-null mapping of corresponding elements whose further modifications will impact this policy
+   * 
+   * @param a
+   *          non-null mapping of corresponding elements whose further modifications will impact this policy
    */
-  public TopDownMatchPolicy(IContext context_p2) {
-    super(context_p2);
+  public TopDownMatchPolicy(IContext context2) {
+    super(context2);
   }
 
   @Override
-  public Comparable<?> getMatchID(EObject element_p, IModelScope scope_p) {
+  public Comparable<?> getMatchID(EObject element, IModelScope scope) {
     EObject bound = null;
 
     IContext context = getContext();
 
-    ITraceabilityHandler sourceHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
-    ITraceabilityHandler targetHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
+    ITraceabilityHandler sourceHandler = (ITraceabilityHandler) context
+        .get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
+    ITraceabilityHandler targetHandler = (ITraceabilityHandler) context
+        .get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
     ITraceabilityHandler handler = null;
 
-    if (scope_p instanceof TargetModelScope) {
+    if (scope instanceof TargetModelScope) {
       handler = targetHandler;
 
     } else {
@@ -68,36 +73,38 @@ public class TopDownMatchPolicy extends org.polarsys.capella.core.transition.com
 
     if (handler instanceof ITraceabilityTraceHandler) {
       ITraceabilityTraceHandler tHandler = (ITraceabilityTraceHandler) handler;
-      if (tHandler.isTrace(element_p, context)) {
-        ID = getTraceIdentifier(element_p, context, scope_p, tHandler);
+      if (tHandler.isTrace(element, context)) {
+        ID = getTraceIdentifier(element, context, scope, tHandler);
       }
     }
 
     if (ID == null) {
-      ID = getIdentifier(element_p, context, scope_p, handler);
+      ID = getIdentifier(element, context, scope, handler);
     }
 
     if (ID == null) {
-      ID = handler.getId(element_p, context);
+      ID = handler.getId(element, context);
     }
 
     return ID;
   }
 
   /**
-   * @param element_p
-   * @param context_p
-   * @param scope_p
-   * @param handler_p
+   * @param element
+   * @param context
+   * @param scope
+   * @param handler
    */
-  private String getTraceIdentifier(EObject element_p, IContext context_p, IModelScope scope_p, ITraceabilityTraceHandler handler_p) {
-    IContext context = getContext();
+  private String getTraceIdentifier(EObject element, IContext context, IModelScope scope,
+      ITraceabilityTraceHandler handler) {
+    IContext icontext = getContext();
     String ID = "";
-    EObject target = handler_p.getTargetElement(element_p, context);
-    EObject source = handler_p.getSourceElement(element_p, context);
+    EObject target = handler.getTargetElement(element, icontext);
+    EObject source = handler.getSourceElement(element, icontext);
 
     if ((target != null) && (source != null)) {
-      ID = "TRACE_BETWEEN_" + getMatchID(target, scope_p) + " " + getMatchID(source, scope_p) + " " + element_p.eClass().getName();
+      ID = "TRACE_BETWEEN_" + getMatchID(target, scope) + " " + getMatchID(source, scope) + " "
+          + element.eClass().getName();
 
     }
 
@@ -105,60 +112,60 @@ public class TopDownMatchPolicy extends org.polarsys.capella.core.transition.com
   }
 
   /**
-   * @param element_p
-   * @param context_p
-   * @param scope_p 
-   * @param handler_p
+   * @param element
+   * @param context
+   * @param scope
+   * @param handler
    * @return
    */
-  private String getIdentifier(EObject element_p, IContext context_p, IModelScope scope_p, ITraceabilityHandler handler_p) {
+  private String getIdentifier(EObject element, IContext context, IModelScope scope, ITraceabilityHandler handler) {
 
     String ID = "";
 
-    if (element_p == null) {
+    if (element == null) {
       return ID;
     }
-    if (element_p.eClass() == null) {
+    if (element.eClass() == null) {
       return ID;
     }
 
-    if (!isMatchable(element_p, scope_p, context_p)) {
+    if (!isMatchable(element, scope, context)) {
       ID += "UNMATCHABLE-ELEMENT-";
     }
 
-    //If into an architecture, we add ArchitectureIdentifier
-    BlockArchitecture elementArch = BlockArchitectureExt.getRootBlockArchitecture(element_p);
+    // If into an architecture, we add ArchitectureIdentifier
+    BlockArchitecture elementArch = BlockArchitectureExt.getRootBlockArchitecture(element);
     if (elementArch != null) {
       ID += elementArch.eClass().getName() + "_";
     }
 
-    EObject sourceElement = element_p;
-    String relationBetweenElements = element_p.eClass().getName();
+    EObject sourceElement = element;
+    String relationBetweenElements = element.eClass().getName();
 
-    //Retrieve identifier
-    Collection<EObject> sources = handler_p.retrieveSourceElements(element_p, context_p);
+    // Retrieve identifier
+    Collection<EObject> sources = handler.retrieveSourceElements(element, context);
 
     if (sources.isEmpty()) {
 
-      //Default solution if no traceability
-      if (element_p instanceof FunctionInputPort) {
-        FunctionInputPort port = (FunctionInputPort) element_p;
+      // Default solution if no traceability
+      if (element instanceof FunctionInputPort) {
+        FunctionInputPort port = (FunctionInputPort) element;
         sources = new HashSet<EObject>();
         for (FunctionalExchange exchange : port.getIncomingFunctionalExchanges()) {
-          sources.addAll(handler_p.retrieveSourceElements(exchange, context_p));
+          sources.addAll(handler.retrieveSourceElements(exchange, context));
         }
       }
 
-      if (element_p instanceof FunctionOutputPort) {
-        FunctionOutputPort port = (FunctionOutputPort) element_p;
+      if (element instanceof FunctionOutputPort) {
+        FunctionOutputPort port = (FunctionOutputPort) element;
         sources = new HashSet<EObject>();
         for (FunctionalExchange exchange : port.getOutgoingFunctionalExchanges()) {
-          sources.addAll(handler_p.retrieveSourceElements(exchange, context_p));
+          sources.addAll(handler.retrieveSourceElements(exchange, context));
         }
       }
 
-      if (element_p instanceof ComponentPort) {
-        ComponentPort port = (ComponentPort) element_p;
+      if (element instanceof ComponentPort) {
+        ComponentPort port = (ComponentPort) element;
         sources = new HashSet<EObject>();
         for (ComponentExchange exchange : port.getComponentExchanges()) {
           if (port.equals(ComponentExchangeExt.getSourcePort(exchange))) {
@@ -166,7 +173,7 @@ public class TopDownMatchPolicy extends org.polarsys.capella.core.transition.com
           } else {
             relationBetweenElements = "targetOf";
           }
-          sources.addAll(handler_p.retrieveSourceElements(exchange, context_p));
+          sources.addAll(handler.retrieveSourceElements(exchange, context));
         }
       }
 
@@ -177,33 +184,33 @@ public class TopDownMatchPolicy extends org.polarsys.capella.core.transition.com
     }
 
     if (sourceElement != null) {
-      String sourceElementId = handler_p.getId(sourceElement, context_p);
+      String sourceElementId = handler.getId(sourceElement, context);
 
-      if (!isUnique(element_p)) {
+      if (!isUnique(element)) {
         ID += sourceElementId;
         ID += relationBetweenElements;
         ID += sourceElement.eClass().getName();
       }
     }
 
-    ID += element_p.eClass().getName();
+    ID += element.eClass().getName();
 
     if (sourceElement instanceof ActivityAllocation) {
-      if (element_p instanceof ComponentFunctionalAllocation) {
-        ID += getIdentifier(((ComponentFunctionalAllocation) element_p).getSourceElement(), context_p, scope_p, handler_p);
+      if (element instanceof ComponentFunctionalAllocation) {
+        ID += getIdentifier(((ComponentFunctionalAllocation) element).getSourceElement(), context, scope, handler);
       }
     }
     return ID;
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  protected boolean isUnique(EObject element_p) {
-    //I guess we should remove isBlockArchitecture test. It should be ok in all cases.
-    if (element_p.eContainer() instanceof BlockArchitecture) {
-      return !element_p.eContainingFeature().isMany();
+  protected boolean isUnique(EObject element) {
+    // I guess we should remove isBlockArchitecture test. It should be ok in all cases.
+    if (element.eContainer() instanceof BlockArchitecture) {
+      return !element.eContainingFeature().isMany();
     }
     return false;
   }

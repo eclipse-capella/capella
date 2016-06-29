@@ -32,7 +32,7 @@ public class EObjectCategoryFilter extends CategoryFilter {
     super(context, name, image);
     setActive(true);
     setInFocusMode(true);
-    setVisible(false);
+    setVisible(true);
   }
 
   public EObjectCategoryFilter(IContext context, EClass iconClazz, String name) {
@@ -54,7 +54,7 @@ public class EObjectCategoryFilter extends CategoryFilter {
     }
     setActive(true);
     setInFocusMode(true);
-    setVisible(false);
+    setVisible(true);
   }
 
   protected void adapt(EObject obj) {
