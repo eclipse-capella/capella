@@ -21,6 +21,9 @@ import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
 import org.polarsys.capella.core.transition.common.handlers.merge.DefaultFocusCategoryFilter;
 import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.capella.core.transition.system.handlers.merge.ActorFilter;
+import org.polarsys.capella.core.transition.system.handlers.merge.AttributeDescriptionValueFromSource;
+import org.polarsys.capella.core.transition.system.handlers.merge.AttributeNameValueFromSource;
+import org.polarsys.capella.core.transition.system.handlers.merge.AttributeSummaryValueFromSource;
 import org.polarsys.capella.core.transition.system.handlers.merge.ComponentExchangeFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.ComponentFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.DataFilter;
@@ -92,6 +95,9 @@ public class DifferencesComputingActivity extends
     handler.addCategory(new EClassCategoryFilter(context, EmdePackage.Literals.ELEMENT_EXTENSION, "Viewpoint elements"),
         context);
 
+    handler.addCategory(new AttributeNameValueFromSource(context), context);
+    handler.addCategory(new AttributeSummaryValueFromSource(context), context);
+    handler.addCategory(new AttributeDescriptionValueFromSource(context), context);
     handler.addCategory(new DefaultFocusCategoryFilter(context), context);
     handler.addCategory(new RootCategoryFilter(context), context);
     handler.addCategory(new OneToManyCategoryFilter(context), context);

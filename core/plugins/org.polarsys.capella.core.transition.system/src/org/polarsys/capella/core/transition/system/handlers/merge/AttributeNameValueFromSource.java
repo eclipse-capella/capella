@@ -15,15 +15,16 @@ import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class AttributeNameValueFromSource extends CategoryFilter {
 
   public AttributeNameValueFromSource(IContext context) {
-    super(context, "Focus on Default or empty names", null);
-    setActive(false);
-    setInFocusMode(true);
+    super(context, Messages.AttributeNameValueFromSource, null);
+    setActive(true);
+    setInFocusMode(false);
     setVisible(true);
   }
 
@@ -34,7 +35,7 @@ public class AttributeNameValueFromSource extends CategoryFilter {
       EObject target = ((IAttributeValuePresence) difference).getElementMatch().get(Role.TARGET);
 
       if (source instanceof AbstractNamedElement) {
-        return isUpdatableValue(source, target, ((AbstractNamedElement) target).getName(),
+        return !isUpdatableValue(source, target, ((AbstractNamedElement) target).getName(),
             ((AbstractNamedElement) source).getName());
       }
     }
@@ -49,15 +50,11 @@ public class AttributeNameValueFromSource extends CategoryFilter {
     } else if (oldValue.equals(target.eClass().getName())) {
       return true;
     }
-    if (oldValue.equals("System State Machine")) {
-      return true;
-    }
-    if (oldValue.equals("Default Region")) {
-      return true;
-    }
 
-    // Merge name of element if name is same as EClass of the element
-    if ((oldValue == null) || ((oldValue instanceof String) && (((String) oldValue).length() == 0))) {
+    if (oldValue.equals(NamingConstants.CreateSysAnalysisCmd_system_statemachine_name)) {
+      return true;
+    }
+    if (oldValue.equals(NamingConstants.Region_DefaultRegion)) {
       return true;
     }
     return false;

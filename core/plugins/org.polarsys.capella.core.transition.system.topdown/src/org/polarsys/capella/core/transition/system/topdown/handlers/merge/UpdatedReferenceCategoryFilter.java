@@ -25,7 +25,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.common.MappingPossib
 public class UpdatedReferenceCategoryFilter extends CategoryFilter {
 
   public UpdatedReferenceCategoryFilter(IContext context) {
-    super(context, "Not automatically updated references", null);
+    super(context, Messages.UpdatedReferenceCategoryFilter, null);
     setInFocusMode(false);
     setVisible(true);
     setActive(true);

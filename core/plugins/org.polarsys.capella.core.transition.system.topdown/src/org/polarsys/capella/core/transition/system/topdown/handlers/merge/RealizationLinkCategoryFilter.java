@@ -28,7 +28,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class RealizationLinkCategoryFilter extends CategoryFilter {
 
   public RealizationLinkCategoryFilter(IContext context) {
-    super(context, RealizationLinkCategoryFilter.class.getSimpleName(), null);
+    super(context, Messages.RealizationLinkCategoryFilter, null);
     setInFocusMode(false);
     setVisible(false);
     setActive(true);

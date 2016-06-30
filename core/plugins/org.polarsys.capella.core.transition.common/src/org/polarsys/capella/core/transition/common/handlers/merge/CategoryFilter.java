@@ -100,11 +100,7 @@ public class CategoryFilter implements ICategoryItem {
 
   @Override
   public void setVisible(boolean visible) {
-    if (visible) {
-      this.visible = visible;
-    } else {
-      prefix = "@";
-    }
+    this.visible = visible;
   }
 
   @Override

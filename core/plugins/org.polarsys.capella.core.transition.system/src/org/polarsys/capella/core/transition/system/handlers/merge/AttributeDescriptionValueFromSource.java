@@ -18,10 +18,10 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
-public class AttributeSummaryValueFromSource extends CategoryFilter {
+public class AttributeDescriptionValueFromSource extends CategoryFilter {
 
-  public AttributeSummaryValueFromSource(IContext context) {
-    super(context, Messages.AttributeSummaryValueFromSource, null);
+  public AttributeDescriptionValueFromSource(IContext context) {
+    super(context, Messages.AttributeDescriptionValueFromSource, null);
     setActive(true);
     setInFocusMode(false);
     setVisible(true);
@@ -34,15 +34,14 @@ public class AttributeSummaryValueFromSource extends CategoryFilter {
       EObject target = ((IAttributeValuePresence) difference).getElementMatch().get(Role.TARGET);
 
       if (source instanceof CapellaElement) {
-        return !isUpdatableValue(source, target, ((CapellaElement) target).getSummary(),
-            ((CapellaElement) source).getSummary());
+        return !isUpdatableValue(source, target, ((CapellaElement) target).getDescription(),
+            ((CapellaElement) source).getDescription());
       }
     }
     return false;
   }
 
   public boolean isUpdatableValue(EObject source, EObject target, Object oldValue, Object newValue) {
-    // Merge name of element if name is same as EClass of the element
     if ((oldValue == null) || ((oldValue instanceof String) && (((String) oldValue).length() == 0))) {
       return true;
 

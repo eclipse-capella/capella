@@ -26,7 +26,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class EmptyPackageCategoryFilter extends CategoryFilter {
 
   public EmptyPackageCategoryFilter(IContext context) {
-    super(context, "Empty packages", null);
+    super(context, Messages.EmptyPackageCategoryFilter, null);
     setInFocusMode(false);
     setVisible(true);
     setActive(true);

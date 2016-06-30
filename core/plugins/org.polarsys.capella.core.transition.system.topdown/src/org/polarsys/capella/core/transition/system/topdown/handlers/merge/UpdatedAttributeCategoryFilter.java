@@ -25,7 +25,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.common.MappingPossib
 public class UpdatedAttributeCategoryFilter extends CategoryFilter {
 
   public UpdatedAttributeCategoryFilter(IContext context) {
-    super(context, "Not automatically updated attributes", null);
+    super(context, Messages.UpdatedAttributeCategoryFilter, null);
     setInFocusMode(false);
     setVisible(true);
     setActive(true);
