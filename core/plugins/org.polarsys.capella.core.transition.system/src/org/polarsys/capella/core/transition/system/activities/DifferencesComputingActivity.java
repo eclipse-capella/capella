@@ -34,6 +34,7 @@ import org.polarsys.capella.core.transition.system.handlers.merge.FunctionalExch
 import org.polarsys.capella.core.transition.system.handlers.merge.InterfaceFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.ManyToOneCategoryFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.OneToManyCategoryFilter;
+import org.polarsys.capella.core.transition.system.handlers.merge.PartPropagationCategoryFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.PhysicalLinkFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.PropertyValueFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.RootCategoryFilter;
@@ -98,6 +99,7 @@ public class DifferencesComputingActivity extends
     handler.addCategory(new AttributeNameValueFromSource(context), context);
     handler.addCategory(new AttributeSummaryValueFromSource(context), context);
     handler.addCategory(new AttributeDescriptionValueFromSource(context), context);
+    handler.addCategory(new PartPropagationCategoryFilter(context), context);
     handler.addCategory(new DefaultFocusCategoryFilter(context), context);
     handler.addCategory(new RootCategoryFilter(context), context);
     handler.addCategory(new OneToManyCategoryFilter(context), context);
