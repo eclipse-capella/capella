@@ -78,7 +78,7 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
   @Override
   protected void preRunTest() {
     super.preRunTest();
-    DSemanticDecorator element = getExecutionContext().getView(containerView);
+    DSemanticDecorator element = getContainerView();
     elements = DiagramHelper.getOwnedElements(element);
   }
 
@@ -89,20 +89,27 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
     newElements = null;
   }
 
+  protected DSemanticDecorator getContainerView() {
+    return getExecutionContext().getView(containerView);
+  }
+
+  protected int expectedNewElements() {
+    return 1;
+  }
+
   @Override
   protected void postRunTest() {
     super.postRunTest();
-    DSemanticDecorator element = getExecutionContext().getView(containerView);
+    DSemanticDecorator element = getContainerView();
     newElements = DiagramHelper.getOwnedElements(element);
     newElements.removeAll(elements);
 
-    if (newElements.size() != 1) {
+    if (newElements.size() != expectedNewElements()) {
       assertFalse(true);
     }
     if ((expectedDiagramElementType != null) && !(expectedDiagramElementType.isInstance(newElements.iterator().next()))) {
       assertFalse(true);
     }
-
   }
 
   @Override

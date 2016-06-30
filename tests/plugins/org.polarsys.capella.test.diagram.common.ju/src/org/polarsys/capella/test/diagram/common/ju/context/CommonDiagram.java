@@ -22,6 +22,10 @@ public class CommonDiagram extends DiagramContext {
     super(context, diagram);
   }
 
+  public void createConstraint(String id) {
+    createConstraint(id, getDiagramId());
+  }
+
   public void createConstraint(String id, String containerId) {
     // All diagrams shared the same tool
     String name = IToolNameConstants.TOOL_CC_CREATE_CONSTRAINT;

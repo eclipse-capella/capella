@@ -26,7 +26,8 @@ Export-Package: org.polarsys.capella.test.framework,
  org.polarsys.capella.test.framework.helpers,
  org.polarsys.capella.test.framework.helpers.diffFile,
  org.polarsys.capella.test.framework.helpers.diffModel,
- org.polarsys.capella.test.framework.helpers.log
+ org.polarsys.capella.test.framework.helpers.log,
+ org.polarsys.capella.test.framework.provider
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Activator: org.polarsys.capella.test.framework.CapellaTestFrameworkPlugin
 Bundle-ClassPath: .
