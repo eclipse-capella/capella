@@ -778,7 +778,7 @@ public class DiagramHelper {
   }
 
   public static boolean isDiagramElementFiltered(DDiagramElement element) {
-    return new DDiagramElementQuery(element).isFiltered();
+    return new DDiagramElementQuery(element).isFiltered() || new DDiagramElementQuery(element).isIndirectlyFiltered();
   }
 
   public static FilterDescription getFilterForDiagram(DDiagram diagram, String filterName) {

@@ -21,7 +21,14 @@ public class GenericModel {
   public static String OBJECT_3 = "OBJECT 3";
   public static String OBJECT_4 = "OBJECT 4";
 
+  public static String ACTIVITY_1 = "ACTIVITY 1";
+  public static String ACTIVITY_1_1 = "ACTIVITY 1_1";
+  public static String ACTIVITY_2 = "ACTIVITY 2";
+  public static String ACTIVITY_3 = "ACTIVITY 3";
+  public static String ACTIVITY_4 = "ACTIVITY 4";
+
   public static String ENTITY_1 = "ENTITY 1";
+  public static String ENTITY_1_1 = "ENTITY 1_1";
   public static String ENTITY_2 = "ENTITY 2";
   public static String ENTITY_3 = "ENTITY 3";
   public static String ENTITY_4 = "ENTITY 4";
@@ -83,6 +90,9 @@ public class GenericModel {
   public static String FUNCTION_2 = "Function 2";
   public static String FUNCTION_3 = "Function 3";
   public static String FUNCTION_4 = "Function 4";
+  public static String FUNCTION_5 = "Function 5";
+  public static String FUNCTION_6 = "Function 6";
+  public static String FUNCTION_7 = "Function 7";
 
   public static String FUNCTION_1_1 = "Function 1_1";
   public static String FUNCTION_1_1_1 = "Function 1_1_1";
@@ -105,16 +115,29 @@ public class GenericModel {
   public static String STATE_4 = "State 4";
 
   public static String LC_1 = "LC 1";
+  public static String LC_1_1 = "LC 1_1";
   public static String LC_2 = "LC 2";
   public static String LC_2_1 = "LC 2_1";
   public static String LC_3 = "LC 3";
   public static String LC_4 = "LC 4";
 
   public static String PC_1 = "PC 1";
+  public static String PC_1_1 = "PC 1_1";
   public static String PC_2 = "PC 2";
   public static String PC_2_1 = "PC 2_1";
   public static String PC_3 = "PC 3";
   public static String PC_4 = "PC 4";
+
+  public static String CI_1 = "CI 1";
+  public static String CI_1_1 = "CI 1_1";
+  public static String CI_2 = "CI 2";
+  public static String CI_2_1 = "CI 2_1";
+  public static String CI_3 = "CI 3";
+  public static String CI_4 = "CI 4";
+  public static String CI_5 = "CI 5";
+  public static String CI_6 = "CI 6";
+  public static String CI_7 = "CI 7";
+  public static String CI_8 = "CI 8";
 
   public static String LA_1 = "LA 1";
   public static String LA_2 = "LA 2";
