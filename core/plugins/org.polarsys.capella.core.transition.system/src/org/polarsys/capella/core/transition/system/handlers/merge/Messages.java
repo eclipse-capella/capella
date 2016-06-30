@@ -20,6 +20,7 @@ public class Messages extends NLS {
   public static String ManyToOneCategoryFilter;
   public static String OneToManyCategoryFilter;
   public static String RootCategoryFilter;
+  public static String PartPropagationCategoryFilter;
 
   static {
     // initialize resource bundle
