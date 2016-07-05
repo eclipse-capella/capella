@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.business.queries.capellacommon;
 
 import java.util.ArrayList;
@@ -94,8 +93,8 @@ public abstract class AbstractState_Activities implements IBusinessQuery {
   public List<EObject> getCurrentElements(EObject element, boolean onlyGenerated) {
     List<EObject> currentElements = new ArrayList<EObject>();
     if (element instanceof State) {
-      AbstractEvent evt = ((State) element).getDoActivity();
-      if (evt != null) {
+      List<AbstractEvent> evts = ((State) element).getDoActivity();
+      for (AbstractEvent evt : evts) {
         currentElements.add((CapellaElement) evt);
       }
     }

@@ -40,6 +40,7 @@ import org.polarsys.capella.common.data.modellingcore.PublishableElement;
 import org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl;
 import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.polarsys.capella.core.data.capellacommon.Pseudostate;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
@@ -76,6 +77,7 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getOwnedParameterSet <em>Owned Parameter Set</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getOwnedParameter <em>Owned Parameter</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getOwnedRegions <em>Owned Regions</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getOwnedConnectionPoints <em>Owned Connection Points</em>}</li>
  * </ul>
  * </p>
  *
@@ -398,6 +400,19 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 	 * @ordered
 	 */
 	protected EList<Region> ownedRegions;
+
+
+
+
+	/**
+	 * The cached value of the '{@link #getOwnedConnectionPoints() <em>Owned Connection Points</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedConnectionPoints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Pseudostate> ownedConnectionPoints;
 
 
 
@@ -1010,6 +1025,20 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+
+	public EList<Pseudostate> getOwnedConnectionPoints() {
+
+		if (ownedConnectionPoints == null) {
+			ownedConnectionPoints = new EObjectContainmentEList.Resolving<Pseudostate>(Pseudostate.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS);
+		}
+		return ownedConnectionPoints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -1021,6 +1050,8 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 				return ((InternalEList<?>)getOwnedPropertyValueGroups()).basicRemove(otherEnd, msgs);
 			case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
 				return ((InternalEList<?>)getOwnedRegions()).basicRemove(otherEnd, msgs);
+			case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
+				return ((InternalEList<?>)getOwnedConnectionPoints()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1074,6 +1105,8 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 				return getOwnedParameter();
 			case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
 				return getOwnedRegions();
+			case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
+				return getOwnedConnectionPoints();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1195,6 +1228,10 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 				getOwnedRegions().clear();
 				getOwnedRegions().addAll((Collection<? extends Region>)newValue);
 				return;
+			case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
+				getOwnedConnectionPoints().clear();
+				getOwnedConnectionPoints().addAll((Collection<? extends Pseudostate>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1259,6 +1296,9 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 			case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
 				getOwnedRegions().clear();
 				return;
+			case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
+				getOwnedConnectionPoints().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1313,6 +1353,8 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
 				return ownedRegions != null && !ownedRegions.isEmpty();
+			case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
+				return ownedConnectionPoints != null && !ownedConnectionPoints.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

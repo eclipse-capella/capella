@@ -10,7 +10,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.transition.system;visibility:=reexport,
  org.polarsys.capella.core.model.preferences,
  org.polarsys.capella.core.preferences
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.system.topdown.activities,
  org.polarsys.capella.core.transition.system.topdown.commands,

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.polarsys.capella.core.transition.common.constants.ITransitionConstant
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.core.transition.system.topdown.handlers.transformation.TopDownTransformationHelper;
+import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.data.modellingcore.IState;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -45,13 +46,12 @@ public class AbstractStateRule extends org.polarsys.capella.core.transition.syst
         State element = (State) source_p;
 
         //Transition only already transitioned functions
-        EObject activity = element.getDoActivity();
-        if (activity != null) {
-          if (TopDownTransformationHelper.getInstance(context_p).isTracedInTarget(element.getDoActivity(), context_p)) {
+        List<AbstractEvent> activities = element.getDoActivity();
+        for (AbstractEvent activity : activities) {
+          if (TopDownTransformationHelper.getInstance(context_p).isTracedInTarget(activity, context_p)) {
             result_p.add(activity);
           }
         }
-
       }
 
       if (source_p instanceof IState) {

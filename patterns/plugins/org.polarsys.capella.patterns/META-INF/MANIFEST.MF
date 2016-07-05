@@ -22,11 +22,11 @@ Require-Bundle: org.eclipse.emf.diffmerge.patterns.repositories.catalogs,
  org.eclipse.sirius.diagram
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-Localization: plugin
 Bundle-Name: %pluginName
 Bundle-Activator: org.eclipse.emf.diffmerge.patterns.capella.CapellaPatternsPlugin
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.polarsys.capella.patterns;singleton:=true
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 

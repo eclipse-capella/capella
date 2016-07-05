@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,19 +10,21 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.common.validation.statetransition;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.emf.validation.model.ConstraintStatus;
+import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-
-import com.google.common.base.Joiner;
 
 public class MDCHK_StateMachine_Function extends AbstractModelConstraint {
 
@@ -30,56 +32,59 @@ public class MDCHK_StateMachine_Function extends AbstractModelConstraint {
   private static final String ENTRY = "entry"; //$NON-NLS-1$
   private static final String EXIT = "exit"; //$NON-NLS-1$
 
-  public MDCHK_StateMachine_Function() {
-    // TODO Auto-generated constructor stub
-  }
-
-  /**/
+  /**
+   * {@inheritDoc}
+   */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    State state = (State) ctx_p.getTarget();
-    EObject eContainer = state.eContainer();
-    String[] res = new String[3];
-    res[0] = state.getDoActivity() == null ? null : DO_ACTIVITY;
-    res[1] = state.getEntry() == null ? null : ENTRY;
-    res[2] = state.getExit() == null ? null : EXIT;
-    String[] elements = new String[3];
-    elements[0] = state.getDoActivity() == null ? null : state.getDoActivity().getName();
-    elements[1] = state.getEntry() == null ? null : state.getEntry().getName();
-    elements[2] = state.getExit() == null ? null : state.getExit().getName();
+  public IStatus validate(IValidationContext ctx) {
+    State state = (State) ctx.getTarget();
+    List<IStatus> result  = new ArrayList<IStatus>();
 
+    EObject eContainer = state.eContainer();
     while (!(eContainer instanceof Component) && (!(eContainer instanceof Class))) {
       eContainer = eContainer.eContainer();
     }
     if (eContainer instanceof Component) {
-      Component container = (Component) eContainer;
-      Collection<Component> subComponents = ComponentExt.getAllSubUsedAndDeployedComponents(container);
-      subComponents.add(container);
-      for (Component component : subComponents) {
-        if ((!(state.getDoActivity() instanceof AbstractFunction))
-            || component.getAllocatedFunctions().contains(state.getDoActivity())) {
-          res[0] = null;
-          elements[0] = null;
+      Collection<Component> subComponents = ComponentExt.getAllSubUsedAndDeployedComponents((Component) eContainer);
+      subComponents.add((Component) eContainer);
+
+      for (AbstractEvent activity : state.getDoActivity()) {
+        boolean ok = false;
+        if (activity instanceof AbstractFunction) {
+          for (Component component : subComponents) {
+            ok |= component.getAllocatedFunctions().contains(activity);
+          }
         }
-        if ((!(state.getEntry() instanceof AbstractFunction))
-            || component.getAllocatedFunctions().contains(state.getEntry())) {
-          res[1] = null;
-          elements[1] = null;
-        }
-        if ((!(state.getExit() instanceof AbstractFunction))
-            || component.getAllocatedFunctions().contains(state.getExit())) {
-          res[2] = null;
-          elements[2] = null;
+        if (!ok) {
+          result.add(ctx.createFailureStatus(new Object[] { DO_ACTIVITY, activity.getName(), state.getName(), eContainer }));
         }
       }
-      if ((res[0] == res[1]) && (res[1] == res[2]) && (res[2] == null)) {
-        return ctx_p.createSuccessStatus();
-      } else {
-        return ctx_p
-            .createFailureStatus(new Object[] {
-                Joiner.on("/").skipNulls().join(res), Joiner.on("/").skipNulls().join(elements), state.getName(), eContainer }); //$NON-NLS-1$
+      for (AbstractEvent entry : state.getEntry()) {
+        boolean ok = false;
+        if (entry instanceof AbstractFunction) {
+          for (Component component : subComponents) {
+            ok |= component.getAllocatedFunctions().contains(entry);
+          }
+        }
+        if (!ok) {
+          result.add(ctx.createFailureStatus(new Object[] { ENTRY, entry.getName(), state.getName(), eContainer }));
+        }
+      }
+      for (AbstractEvent exit : state.getExit()) {
+        boolean ok = false;
+        if (exit instanceof AbstractFunction) {
+          for (Component component : subComponents) {
+            ok |= component.getAllocatedFunctions().contains(exit);
+          }
+        }
+        if (!ok) {
+          result.add(ctx.createFailureStatus(new Object[] { EXIT, exit.getName(), state.getName(), eContainer }));
+        }
+      }
+      if (!result.isEmpty()) {
+        return ConstraintStatus.createMultiStatus(ctx, result);
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

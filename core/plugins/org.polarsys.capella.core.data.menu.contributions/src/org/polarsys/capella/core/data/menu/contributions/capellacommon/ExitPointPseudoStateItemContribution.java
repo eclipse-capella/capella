@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,9 +25,7 @@ import org.polarsys.capella.common.menu.dynamic.CreationHelper;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState;
-import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
-import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 
 public class ExitPointPseudoStateItemContribution implements IMDEMenuItemContribution {
@@ -64,10 +62,7 @@ public class ExitPointPseudoStateItemContribution implements IMDEMenuItemContrib
 
   @Override
   public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
-    if ((modelElement_p instanceof Region) && !(modelElement_p.eContainer() instanceof StateMachine)) {
-      return true;
-    }
-    return false;
+    return true;
   }
 
 }

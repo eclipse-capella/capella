@@ -1,6 +1,0 @@
-These followings icons are made available under the terms of the Eclipse Public License v1.0
- which accompanies this distribution, and is available at
- http://www.eclipse.org/legal/epl-v10.html
-
-In this folder, each image named by the following pattern : "Create<ECLASS1>_<FEATURE>_<ECLASS2>.gif"
-is a copy of an image located here : "org.polarsys.capella.core.data.res.edit/icons/full/obj16/<ECLASS2>.gif"

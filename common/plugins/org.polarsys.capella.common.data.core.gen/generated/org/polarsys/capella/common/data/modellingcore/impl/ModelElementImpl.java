@@ -15,22 +15,29 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IAdapterManager;
 import org.eclipse.core.runtime.Platform;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+
 import org.polarsys.capella.common.model.helpers.IHelper;
+
 import org.polarsys.kitalpha.emde.model.impl.ExtensibleElementImpl;
 
 /**
@@ -49,23 +56,29 @@ import org.polarsys.kitalpha.emde.model.impl.ExtensibleElementImpl;
  */
 public abstract class ModelElementImpl extends ExtensibleElementImpl implements ModelElement {
 
-  /**
+	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-  protected static final String ID_EDEFAULT = null;
-  /**
+	protected static final String ID_EDEFAULT = null;
+
+	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-  protected String id = ID_EDEFAULT;
-  /**
+	protected String id = ID_EDEFAULT;
+
+
+
+
+
+	/**
 	 * The default value of the '{@link #getSid() <em>Sid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -74,7 +87,8 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 	 * @ordered
 	 */
 	protected static final String SID_EDEFAULT = null;
-		/**
+
+	/**
 	 * The cached value of the '{@link #getSid() <em>Sid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,7 +97,16 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 	 * @ordered
 	 */
 	protected String sid = SID_EDEFAULT;
-		/**
+
+
+
+
+
+
+
+
+
+	/**
 	 * The cached value of the '{@link #getOwnedConstraints() <em>Owned Constraints</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -92,34 +115,27 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 	 * @ordered
 	 */
 	protected EList<AbstractConstraint> ownedConstraints;
-		/**
-   * @generated NOT
-   */
-  protected ModelElementImpl() {
-    super();
-//    SemanticEditingDomain capellaEditingDomain =
-//        (SemanticEditingDomain) ExecutionManagerRegistry.getInstance().getExecutionManager(TigEfProvider.getExecutionManagerName()).getEditingDomain();
-//    // Don't mess with resource when loading.
-//    if (capellaEditingDomain.getResourceSet().isResourceLoading()) {
-//      return;
-//    }
-//    // Add newly created object to cross referencer resource.
-//    InternalTransaction activeTransaction = capellaEditingDomain.getActiveTransaction();
-//    if ((null != activeTransaction) && (!activeTransaction.isReadOnly()) && (Thread.currentThread() == activeTransaction.getOwner())) {
-//      Resource holdingResource = capellaEditingDomain.getHoldingResource();
-//      // Do not add element if resource is null.
-//      if (null != holdingResource) {
-//        holdingResource.getContents().add(this);
-//      }
-//    }
-  }
 
-  /**
+
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ModelElementImpl() {
+
+		super();
+
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-  @Override
-  protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return ModellingcorePackage.Literals.MODEL_ELEMENT;
 	}
 
@@ -134,11 +150,12 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
     return id;
   }
 
-  /**
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-  public void setId(String newId) {
+
+	public void setId(String newId) {
 
 		String oldId = id;
 		id = newId;
@@ -147,7 +164,12 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 
 	}
 
-  /**
+
+
+
+
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -158,7 +180,8 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 		return sid;
 	}
 
-		/**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -173,11 +196,17 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 
 	}
 
-		/**
+
+
+
+
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-  public EList<AbstractConstraint> getConstraints() {
+
+	public EList<AbstractConstraint> getConstraints() {
 
 
     Object result = null;
@@ -214,7 +243,11 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 		
 	}
 
-  /**
+
+
+
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -228,39 +261,57 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 		return ownedConstraints;
 	}
 
-		/**
+
+
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-  public void destroy() {
+
+	public void destroy() {
 		org.eclipse.emf.ecore.util.EcoreUtil.delete(this);
 	}
 
-  /**
+
+
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-  public String getFullLabel() {
+
+	public String getFullLabel() {
 		return org.polarsys.capella.common.model.label.LabelRetriever.getFullLabel(this);
 	}
 
-  /**
+
+
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-  public String getLabel() {
+
+	public String getLabel() {
 		return org.polarsys.capella.common.model.label.LabelRetriever.getLabel(this);
 	}
 
-  /**
+
+
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-  public boolean hasUnnamedLabel() {
+
+	public boolean hasUnnamedLabel() {
 		return org.polarsys.capella.common.model.label.LabelRetriever.UNNAMED_ELEMENT.equals(this.getLabel());
 	}
 
-  /**
+
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -274,12 +325,12 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
-		/**
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-  @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ModellingcorePackage.MODEL_ELEMENT__ID:
 				return getId();
@@ -293,13 +344,13 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-  /**
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-  @SuppressWarnings("unchecked")
-  @Override
-  public void eSet(int featureID, Object newValue) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ModellingcorePackage.MODEL_ELEMENT__ID:
 				// begin-extension-code
@@ -327,12 +378,13 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 		super.eSet(featureID, newValue);
 	}
 
-  /**
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-  @Override
-  public void eUnset(int featureID) {
+	@Override
+	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ModellingcorePackage.MODEL_ELEMENT__ID:
 				setId(ID_EDEFAULT);
@@ -347,12 +399,14 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 		super.eUnset(featureID);
 	}
 
-  /**
+
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-  @Override
-  public boolean eIsSet(int featureID) {
+	@Override
+	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ModellingcorePackage.MODEL_ELEMENT__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
@@ -366,12 +420,13 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 		return super.eIsSet(featureID);
 	}
 
-  /**
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-  @Override
-  public String toString() {
+	@Override
+	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
@@ -382,4 +437,4 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 		result.append(')');
 		return result.toString();
 	}
-}
+} //ModelElementImpl

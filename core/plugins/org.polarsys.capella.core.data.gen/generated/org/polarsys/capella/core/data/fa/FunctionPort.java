@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.data.fa;
 
 import org.eclipse.emf.common.util.EList;
+import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
 import org.polarsys.capella.core.data.information.Port;
 
@@ -36,7 +37,7 @@ import org.polarsys.capella.core.data.information.Port;
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='' constraints='none'"
  * @generated
  */
-public interface FunctionPort extends Port, TypedElement {
+public interface FunctionPort extends Port, TypedElement, AbstractEvent {
 
 
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,7 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 */
 	public static EpbsFactory init() {
 		try {
-			EpbsFactory theEpbsFactory = (EpbsFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/epbs/1.0.0"); //$NON-NLS-1$ 
+			EpbsFactory theEpbsFactory = (EpbsFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/epbs/1.1.0"); //$NON-NLS-1$ 
 			if (theEpbsFactory != null) {
 				return theEpbsFactory;
 			}

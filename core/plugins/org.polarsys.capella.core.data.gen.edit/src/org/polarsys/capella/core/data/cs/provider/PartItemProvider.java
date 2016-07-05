@@ -8,8 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
-
 package org.polarsys.capella.core.data.cs.provider;
 
 import java.util.Collection;
@@ -1009,6 +1007,30 @@ public class PartItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
                          DatatypeFactory.eINSTANCE.createPhysicalQuantity());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
+                         FaFactory.eINSTANCE.createFunctionInputPort());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
+                         FaFactory.eINSTANCE.createFunctionOutputPort());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

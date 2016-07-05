@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -390,8 +390,10 @@ public class FaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseInputPin(functionInputPort);
 				if (result == null) result = casePort(functionInputPort);
 				if (result == null) result = caseTypedElement(functionInputPort);
+				if (result == null) result = caseAbstractEvent(functionInputPort);
 				if (result == null) result = casePin(functionInputPort);
 				if (result == null) result = caseNamedElement(functionInputPort);
+				if (result == null) result = caseAbstractType(functionInputPort);
 				if (result == null) result = caseObjectNode(functionInputPort);
 				if (result == null) result = caseCapellaElement(functionInputPort);
 				if (result == null) result = caseAbstractTypedElement(functionInputPort);
@@ -412,8 +414,10 @@ public class FaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseOutputPin(functionOutputPort);
 				if (result == null) result = casePort(functionOutputPort);
 				if (result == null) result = caseTypedElement(functionOutputPort);
+				if (result == null) result = caseAbstractEvent(functionOutputPort);
 				if (result == null) result = casePin(functionOutputPort);
 				if (result == null) result = caseNamedElement(functionOutputPort);
+				if (result == null) result = caseAbstractType(functionOutputPort);
 				if (result == null) result = caseObjectNode(functionOutputPort);
 				if (result == null) result = caseCapellaElement(functionOutputPort);
 				if (result == null) result = caseAbstractTypedElement(functionOutputPort);
@@ -584,8 +588,10 @@ public class FaSwitch<T> extends Switch<T> {
 				T result = caseFunctionPort(functionPort);
 				if (result == null) result = casePort(functionPort);
 				if (result == null) result = caseTypedElement(functionPort);
+				if (result == null) result = caseAbstractEvent(functionPort);
 				if (result == null) result = caseNamedElement(functionPort);
 				if (result == null) result = caseAbstractTypedElement(functionPort);
+				if (result == null) result = caseAbstractType(functionPort);
 				if (result == null) result = caseAbstractNamedElement(functionPort);
 				if (result == null) result = caseCapellaElement(functionPort);
 				if (result == null) result = caseTraceableElement(functionPort);

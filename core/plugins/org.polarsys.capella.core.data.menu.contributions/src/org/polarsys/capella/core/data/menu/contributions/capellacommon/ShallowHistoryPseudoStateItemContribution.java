@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,12 +65,14 @@ public class ShallowHistoryPseudoStateItemContribution implements IMDEMenuItemCo
 
   @Override
   public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
-    if (modelElement_p instanceof Region) {
+    if ((modelElement_p instanceof StateMachine) || (modelElement_p instanceof State)) {
+      return false;
+    }
 
+    if (modelElement_p instanceof Region) {
       if (modelElement_p.eContainer() instanceof StateMachine) {
         return false;
       }
-
       Region region = (Region) modelElement_p;
       for (AbstractState s : region.getOwnedStates()) {
         if ((s instanceof ShallowHistoryPseudoState)) {

@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.data.capellacommon.provider;
 
 import java.util.Collection;
@@ -582,6 +581,7 @@ public class StateMachineItemProvider
 			childrenFeatures.add(CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES);
 			childrenFeatures.add(CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS);
 			childrenFeatures.add(CapellacommonPackage.Literals.STATE_MACHINE__OWNED_REGIONS);
+			childrenFeatures.add(CapellacommonPackage.Literals.STATE_MACHINE__OWNED_CONNECTION_POINTS);
 		}
 		return childrenFeatures;
 	}
@@ -659,6 +659,7 @@ public class StateMachineItemProvider
 			case CapellacommonPackage.STATE_MACHINE__OWNED_ENUMERATION_PROPERTY_TYPES:
 			case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUE_GROUPS:
 			case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
+			case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -777,6 +778,114 @@ public class StateMachineItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (CapellacommonPackage.Literals.STATE_MACHINE__OWNED_REGIONS,
                          CapellacommonFactory.eINSTANCE.createRegion());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE_MACHINE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createInitialPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE_MACHINE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createJoinPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE_MACHINE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createForkPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE_MACHINE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createChoicePseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE_MACHINE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createTerminatePseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE_MACHINE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createShallowHistoryPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE_MACHINE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createDeepHistoryPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE_MACHINE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createEntryPointPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE_MACHINE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createExitPointPseudoState());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

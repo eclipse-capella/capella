@@ -19,8 +19,6 @@ import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
  * Return doActivity of given AbstractStateMode
- * 
- *
  */
 public class AbstractStateModeDoActivity implements IQuery {
 
@@ -41,12 +39,11 @@ public class AbstractStateModeDoActivity implements IQuery {
 		List<Object> result = new ArrayList<Object>();
     if (object instanceof State ) {
       State ele = (State) object;
-	     AbstractEvent doActivity = ele.getDoActivity();
-	     if (null != doActivity) {
+	     List<AbstractEvent> doActivities = ele.getDoActivity();
+	     for (AbstractEvent doActivity : doActivities) {
         result.add(doActivity);
       }
 		}
 		return result;
 	}
-	
 }

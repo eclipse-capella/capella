@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,7 +53,7 @@ public interface FaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/fa/1.0.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/fa/1.1.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -4380,13 +4380,22 @@ public interface FaPackage extends EPackage {
 	int FUNCTION_PORT__TYPE = InformationPackage.PORT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_PORT__ABSTRACT_TYPED_ELEMENTS = InformationPackage.PORT_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Represented Component Port</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTION_PORT__REPRESENTED_COMPONENT_PORT = InformationPackage.PORT_FEATURE_COUNT + 2;
+	int FUNCTION_PORT__REPRESENTED_COMPONENT_PORT = InformationPackage.PORT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Allocator Component Ports</b></em>' reference list.
@@ -4395,7 +4404,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTION_PORT__ALLOCATOR_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 3;
+	int FUNCTION_PORT__ALLOCATOR_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Realized Function Ports</b></em>' reference list.
@@ -4404,7 +4413,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTION_PORT__REALIZED_FUNCTION_PORTS = InformationPackage.PORT_FEATURE_COUNT + 4;
+	int FUNCTION_PORT__REALIZED_FUNCTION_PORTS = InformationPackage.PORT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Realizing Function Ports</b></em>' reference list.
@@ -4413,7 +4422,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTION_PORT__REALIZING_FUNCTION_PORTS = InformationPackage.PORT_FEATURE_COUNT + 5;
+	int FUNCTION_PORT__REALIZING_FUNCTION_PORTS = InformationPackage.PORT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Function Port</em>' class.
@@ -4422,7 +4431,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTION_PORT_FEATURE_COUNT = InformationPackage.PORT_FEATURE_COUNT + 6;
+	int FUNCTION_PORT_FEATURE_COUNT = InformationPackage.PORT_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.impl.FunctionInputPortImpl <em>Function Input Port</em>}' class.
@@ -4721,6 +4730,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTION_INPUT_PORT__TYPE = FUNCTION_PORT__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_INPUT_PORT__ABSTRACT_TYPED_ELEMENTS = FUNCTION_PORT__ABSTRACT_TYPED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Represented Component Port</b></em>' reference.
@@ -5199,6 +5217,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTION_OUTPUT_PORT__TYPE = FUNCTION_PORT__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_OUTPUT_PORT__ABSTRACT_TYPED_ELEMENTS = FUNCTION_PORT__ABSTRACT_TYPED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Represented Component Port</b></em>' reference.

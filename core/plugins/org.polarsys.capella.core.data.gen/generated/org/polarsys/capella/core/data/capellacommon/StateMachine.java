@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
  * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.StateMachine#getOwnedRegions <em>Owned Regions</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.StateMachine#getOwnedConnectionPoints <em>Owned Connection Points</em>}</li>
  * </ul>
  *
  * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateMachine()
@@ -56,6 +57,26 @@ public interface StateMachine extends CapellaElement, AbstractBehavior {
 	 */
 
 	EList<Region> getOwnedRegions();
+
+	/**
+	 * Returns the value of the '<em><b>Owned Connection Points</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.Pseudostate}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Connection Points</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Connection Points</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateMachine_OwnedConnectionPoints()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The entry and exit Pseudostates of a composite State. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite States.\r\n[source:UML v2.5]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::StateMachine::connectionPoint' explanation='none' constraints='Order must be computed'"
+	 * @generated
+	 */
+
+	EList<Pseudostate> getOwnedConnectionPoints();
 
 
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,6 +41,7 @@ public class Rule_DWF_SM_08bis extends ValidationRuleTestCase {
   @Override
   protected List<OracleDefinition> getOracleDefinitions() {
     return Arrays.asList(new OracleDefinition[] {
+        new OracleDefinition("83261dac-4b34-49de-947d-b1d9bbbe2c20", 1),
         new OracleDefinition("dfb4bf08-470c-45eb-9528-791c6c5a6c6c", 1), // Mode
         new OracleDefinition("cebfe58e-8049-4dbc-85e2-dff31605c929", 1) }); // Mode 1
   }
