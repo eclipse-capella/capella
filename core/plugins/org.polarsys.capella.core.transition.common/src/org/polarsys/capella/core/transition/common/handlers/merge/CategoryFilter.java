@@ -11,7 +11,8 @@
 package org.polarsys.capella.core.transition.common.handlers.merge;
 
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
+import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -34,10 +35,25 @@ public class CategoryFilter implements ICategoryItem {
 
   protected Image image;
 
+  protected String id;
+
+  public CategoryFilter(IContext context, String id, String name, Image image) {
+    this.context = context;
+    this.image = image;
+    this.name = name;
+    this.id = id;
+  }
+
   public CategoryFilter(IContext context, String name, Image image) {
     this.context = context;
     this.image = image;
     this.name = name;
+    this.id = getClass().getCanonicalName();
+  }
+
+  @Override
+  public String getId() {
+    return id;
   }
 
   @Override
@@ -109,8 +125,13 @@ public class CategoryFilter implements ICategoryItem {
   }
 
   @Override
-  public void setDependencies(IElementPresence difference) {
+  public void setDependencies(IMergeableDifference difference) {
     // Nothing
+  }
+
+  @Override
+  public boolean covers(EStructuralFeature feature) {
+    return false;
   }
 
 }

@@ -15,6 +15,7 @@ import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -33,9 +34,12 @@ public class AttributeDescriptionValueFromSource extends CategoryFilter {
       EObject source = ((IAttributeValuePresence) difference).getElementMatch().get(Role.REFERENCE);
       EObject target = ((IAttributeValuePresence) difference).getElementMatch().get(Role.TARGET);
 
-      if (source instanceof CapellaElement) {
-        return !isUpdatableValue(source, target, ((CapellaElement) target).getDescription(),
-            ((CapellaElement) source).getDescription());
+      if (CapellacorePackage.Literals.CAPELLA_ELEMENT__DESCRIPTION
+          .equals(((IAttributeValuePresence) difference).getFeature())) {
+        if (source instanceof CapellaElement) {
+          return !isUpdatableValue(source, target, ((CapellaElement) target).getDescription(),
+              ((CapellaElement) source).getDescription());
+        }
       }
     }
     return false;

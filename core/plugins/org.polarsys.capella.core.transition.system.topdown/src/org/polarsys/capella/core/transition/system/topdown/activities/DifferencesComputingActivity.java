@@ -10,22 +10,12 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.activities;
 
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.diffmerge.api.IDiffPolicy;
 import org.eclipse.emf.diffmerge.api.IMatchPolicy;
-import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.capella.core.transition.common.handlers.options.OptionsHandlerHelper;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
-import org.polarsys.capella.core.transition.system.topdown.handlers.merge.EmptyPackageCategoryFilter;
-import org.polarsys.capella.core.transition.system.topdown.handlers.merge.OutsideArchitectureCategoryFilter;
-import org.polarsys.capella.core.transition.system.topdown.handlers.merge.RealizationLinkCategoryFilter;
-import org.polarsys.capella.core.transition.system.topdown.handlers.merge.TargetDifferencesCategoryFilter;
-import org.polarsys.capella.core.transition.system.topdown.handlers.merge.UpdatedAttributeCategoryFilter;
-import org.polarsys.capella.core.transition.system.topdown.handlers.merge.UpdatedReferenceCategoryFilter;
 import org.polarsys.capella.core.transition.system.topdown.policies.diff.TopDownDiffPolicy;
 import org.polarsys.capella.core.transition.system.topdown.policies.match.TopDownMatchPolicy;
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -35,21 +25,6 @@ public class DifferencesComputingActivity
     extends org.polarsys.capella.core.transition.system.activities.DifferencesComputingActivity {
 
   public static final String ID = "org.polarsys.capella.core.transition.system.topdown.activities.DifferencesComputingActivity"; //$NON-NLS-1$
-
-  @Override
-  protected IStatus initializeCategoriesHandlers(IContext context, IMergeHandler handler,
-      ActivityParameters activityParams) {
-    super.initializeCategoriesHandlers(context, handler, activityParams);
-
-    handler.addCategory(new TargetDifferencesCategoryFilter(context), context);
-    handler.addCategory(new OutsideArchitectureCategoryFilter(context), context);
-    handler.addCategory(new RealizationLinkCategoryFilter(context), context);
-    handler.addCategory(new EmptyPackageCategoryFilter(context), context);
-    handler.addCategory(new UpdatedAttributeCategoryFilter(context), context);
-    handler.addCategory(new UpdatedReferenceCategoryFilter(context), context);
-
-    return Status.OK_STATUS;
-  }
 
   /**
    * @return

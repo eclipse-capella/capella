@@ -11,11 +11,17 @@
 package org.polarsys.capella.core.transition.common.handlers.merge;
 
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
+import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.validation.model.CategoryManager;
 import org.eclipse.swt.graphics.Image;
 
 public interface ICategoryItem {
+
+  /**
+   * Return the identifier of the rule
+   */
+  String getId();
 
   /**
    * Return whether the given difference belongs to this category in the context of the given diff node
@@ -125,5 +131,10 @@ public interface ICategoryItem {
   /**
    * Modify required and implied dependencies for the given difference
    */
-  public void setDependencies(IElementPresence difference);
+  public void setDependencies(IMergeableDifference difference);
+
+  /**
+   * Returns whether a feature is covered by the filter
+   */
+  boolean covers(EStructuralFeature feature);
 }

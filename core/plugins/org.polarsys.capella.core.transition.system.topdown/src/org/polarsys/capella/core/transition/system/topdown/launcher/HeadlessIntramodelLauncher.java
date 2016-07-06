@@ -22,8 +22,8 @@ import org.polarsys.capella.core.transition.common.context.TransitionContext;
 import org.polarsys.capella.core.transition.common.handlers.log.ILogHandler;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
 import org.polarsys.capella.core.transition.common.launcher.TransitionLauncher;
+import org.polarsys.capella.core.transition.system.activities.DifferencesMergingActivity;
 import org.polarsys.capella.core.transition.system.topdown.activities.DifferencesComputingActivity;
-import org.polarsys.capella.core.transition.system.topdown.activities.DifferencesMergingActivity;
 import org.polarsys.capella.core.transition.system.topdown.activities.InitializeDiffMergeActivity;
 import org.polarsys.capella.core.transition.system.topdown.activities.InitializeTransformationActivity;
 import org.polarsys.capella.core.transition.system.topdown.activities.InitializeTransitionActivity;
@@ -183,7 +183,7 @@ public class HeadlessIntramodelLauncher extends TransitionLauncher {
       // PostDiffMergeActivity
       parameter.addActivity(PostDiffMergeActivity.ID);
 
-      // PostDiffMergeActivity
+      // FinalizeTransitionActivity
       parameter.addActivity(FinalizeTransitionActivity.ID);
 
     }

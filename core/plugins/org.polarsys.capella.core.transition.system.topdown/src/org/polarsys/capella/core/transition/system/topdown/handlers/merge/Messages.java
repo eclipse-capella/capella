@@ -20,6 +20,9 @@ public class Messages extends NLS {
   public static String TargetDifferencesCategoryFilter;
   public static String UpdatedAttributeCategoryFilter;
   public static String UpdatedReferenceCategoryFilter;
+  public static String AppliedPropertyValuesCategoryFilter;
+  public static String ArchitectureLinkCategoryFilter;
+  public static String RemoveRealizedCategoryFilter;
 
   static {
     // initialize resource bundle

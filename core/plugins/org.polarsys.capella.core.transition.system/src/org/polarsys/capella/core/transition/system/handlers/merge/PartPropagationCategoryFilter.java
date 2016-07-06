@@ -34,18 +34,22 @@ public class PartPropagationCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public void setDependencies(IElementPresence difference) {
+  public void setDependencies(IMergeableDifference difference) {
     super.setDependencies(difference);
 
-    ExtendedComparison comparison = (ExtendedComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
-    EObject target = difference.getElementMatch().get(Role.REFERENCE);
-    if (target instanceof Component) {
-      for (Part part : ComponentExt.getRepresentingParts((Component) target)) {
-        IMatch match = comparison.getMapping().getMatchFor(part, Role.REFERENCE);
-        IElementPresence presence = match.getElementPresenceDifference();
-        if (presence != null) {
-          ((IMergeableDifference.Editable) presence).markRequires(difference, Role.TARGET);
-          ((IMergeableDifference.Editable) difference).markRequires(presence, Role.TARGET);
+    if (difference instanceof IElementPresence) {
+      IElementPresence presence = (IElementPresence) difference;
+
+      ExtendedComparison comparison = (ExtendedComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
+      EObject target = presence.getElementMatch().get(Role.REFERENCE);
+      if (target instanceof Component) {
+        for (Part part : ComponentExt.getRepresentingParts((Component) target)) {
+          IMatch match = comparison.getMapping().getMatchFor(part, Role.REFERENCE);
+          IElementPresence matchPresence = match.getElementPresenceDifference();
+          if (matchPresence != null) {
+            ((IMergeableDifference.Editable) matchPresence).markRequires(presence, Role.TARGET);
+            ((IMergeableDifference.Editable) presence).markRequires(matchPresence, Role.TARGET);
+          }
         }
       }
     }

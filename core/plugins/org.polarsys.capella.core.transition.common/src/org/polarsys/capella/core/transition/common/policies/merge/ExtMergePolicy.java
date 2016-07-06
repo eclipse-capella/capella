@@ -16,7 +16,7 @@ import java.util.HashSet;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
+import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
 import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
 import org.eclipse.emf.diffmerge.impl.policies.DefaultMergePolicy;
 import org.eclipse.emf.ecore.EObject;
@@ -75,6 +75,14 @@ public class ExtMergePolicy extends DefaultMergePolicy implements IHandler, IMer
       }
     }
 
+    handler = MergeHandlerHelper.getInstance(context);
+    for (ICategoryItem item : ((IMergeHandler) handler).getCategories(context)) {
+      if (item.isActive() && !item.isInFocusMode() && item.covers(feature)) {
+        getUnwantedFeatures(context).add(feature);
+        return false;
+      }
+    }
+
     return super.copyFeature(feature, scope);
   }
 
@@ -101,11 +109,11 @@ public class ExtMergePolicy extends DefaultMergePolicy implements IHandler, IMer
   }
 
   @Override
-  public void setDependencies(IElementPresence presence) {
+  public void setDependencies(IMergeableDifference difference) {
     IHandler handler = MergeHandlerHelper.getInstance(context);
     for (ICategoryItem item : ((IMergeHandler) handler).getCategories(context)) {
-      if (item.covers(presence)) {
-        item.setDependencies(presence);
+      if (item.covers(difference)) {
+        item.setDependencies(difference);
       }
     }
   }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,8 +18,8 @@ public class ITopDownConstants {
 
   public static final String TARGET_HANGLER = "TARGET_HANGLER"; //$NON-NLS-1$
 
-  //Transformed elements to be stored in the same architecture than source
-  //Transformed elements to be stored in the transformed architecture
+  // Transformed elements to be stored in the same architecture than source
+  // Transformed elements to be stored in the transformed architecture
   public static final String SOURCE_N2_ARCHITECTURE_ELEMENTS = "SOURCE_N2_ARCHITECTURE_ELEMENTS"; //$NON-NLS-1$
   public static final String SOURCE_N1_ARCHITECTURE_ELEMENTS = "SOURCE_N1_ARCHITECTURE_ELEMENTS"; //$NON-NLS-1$
   public static final String SOURCE_ARCHITECTURE_ELEMENTS = "SOURCE_ARCHITECTURE_ELEMENTS"; //$NON-NLS-1$
@@ -31,6 +31,8 @@ public class ITopDownConstants {
   public static final String SELECTION_CONTEXT__TARGET_ARCHITECTURE = "SELECTION_CONTEXT__TARGET_ARCHITECTURE";
 
   public static final String TRANSITION_KIND = "TRANSITION_KIND";
+
+  public static final String TOPDOWN_TRANSFORMATION_HANDLER = "TOPDOWN_TRANSFORMATION_HANDLER";
 
   public static final String OPTIONS_TRANSITION__INTERFACE = "interface.mode";
   public static final Boolean OPTIONS_TRANSITION__INTERFACE_DEFAULT = Boolean.FALSE;
@@ -80,7 +82,7 @@ public class ITopDownConstants {
 
   public static final String OPTIONS_SCOPE = "capella.core.transition.system.topdown";
 
-  /** Properties id for windows>preference wizard*/
+  /** Properties id for windows>preference wizard */
   public static final String OPTIONS_SCOPE__PREFERENCES = "capella.core.transition.system.topdown.preferences";
 
   public static final String CONTEXT_SCOPE__AVOID_DIFF_ELEMENTS = "CONTEXT_SCOPE__AVOID_DIFF_ELEMENT";

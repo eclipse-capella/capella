@@ -12,7 +12,7 @@
 package org.polarsys.capella.core.transition.common.policies.merge;
 
 import org.eclipse.emf.diffmerge.api.IMergePolicy;
-import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
+import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -22,6 +22,6 @@ public interface IMergePolicy2 extends IMergePolicy {
 
   boolean copy(EObject source);
 
-  void setDependencies(IElementPresence presence);
+  void setDependencies(IMergeableDifference difference);
 
 }

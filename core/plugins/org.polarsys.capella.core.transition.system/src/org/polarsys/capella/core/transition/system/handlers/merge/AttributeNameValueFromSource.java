@@ -15,6 +15,7 @@ import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -34,9 +35,12 @@ public class AttributeNameValueFromSource extends CategoryFilter {
       EObject source = ((IAttributeValuePresence) difference).getElementMatch().get(Role.REFERENCE);
       EObject target = ((IAttributeValuePresence) difference).getElementMatch().get(Role.TARGET);
 
-      if (source instanceof AbstractNamedElement) {
-        return !isUpdatableValue(source, target, ((AbstractNamedElement) target).getName(),
-            ((AbstractNamedElement) source).getName());
+      if (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME
+          .equals(((IAttributeValuePresence) difference).getFeature())) {
+        if (source instanceof AbstractNamedElement) {
+          return !isUpdatableValue(source, target, ((AbstractNamedElement) target).getName(),
+              ((AbstractNamedElement) source).getName());
+        }
       }
     }
     return false;

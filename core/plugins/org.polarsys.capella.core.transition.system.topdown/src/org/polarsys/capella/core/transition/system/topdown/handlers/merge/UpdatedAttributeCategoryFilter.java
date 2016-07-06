@@ -22,6 +22,11 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IRule;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.common.MappingPossibility;
 
+/**
+ * This category hides differences of non-automatically updated attributes (which is defined on rules)
+ * 
+ * @see org.polarsys.capella.core.transition.common.rules.IRuleUpdateAttribute
+ */
 public class UpdatedAttributeCategoryFilter extends CategoryFilter {
 
   public UpdatedAttributeCategoryFilter(IContext context) {

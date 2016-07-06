@@ -44,10 +44,8 @@ public class DefaultMergeHandler implements IMergeHandler {
   public IStatus processDifferences(IContext context, Collection<IDifference> differences, Role role) {
     Collection<IDifference> result = new ArrayList<IDifference>();
     for (IDifference difference : differences) {
-      for (ICategoryItem item : categories) {
-        if (item.isActive() && !isFiltered(difference)) {
-          result.add(difference);
-        }
+      if (!isFiltered(difference)) {
+        result.add(difference);
       }
     }
 
@@ -62,10 +60,12 @@ public class DefaultMergeHandler implements IMergeHandler {
     boolean excluded = false;
 
     for (ICategoryItem category : categories) {
-      if (category.isInFocusMode()) {
-        focused = focused || category.covers(difference);
-      } else {
-        excluded = excluded || category.covers(difference);
+      if (category.isActive()) {
+        if (category.isInFocusMode()) {
+          focused = focused || category.covers(difference);
+        } else {
+          excluded = excluded || category.covers(difference);
+        }
       }
     }
     if (excluded)
@@ -92,6 +92,17 @@ public class DefaultMergeHandler implements IMergeHandler {
 
   public Collection<ICategoryItem> getCategories(IContext context) {
     return Collections.unmodifiableCollection(categories);
+  }
+
+  @Override
+  public ICategoryItem getCategory(IContext context, String id) {
+    for (ICategoryItem category : getCategories(context)) {
+      String currentId = category.getId();
+      if (currentId != null && currentId.equals(id)) {
+        return category;
+      }
+    }
+    return null;
   }
 
 }

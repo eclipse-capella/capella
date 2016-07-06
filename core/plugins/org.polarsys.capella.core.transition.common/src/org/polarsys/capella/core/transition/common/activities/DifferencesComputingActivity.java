@@ -25,10 +25,7 @@ import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.Messages;
-import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
-import org.polarsys.capella.core.transition.common.handlers.merge.DefaultMergeHandler;
-import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.capella.core.transition.common.merge.ExtendedComparison;
 import org.polarsys.capella.core.transition.common.policies.diff.ExtDiffPolicy;
 import org.polarsys.capella.core.transition.common.policies.match.TraceabilityHandlerMatchPolicy;
@@ -55,35 +52,8 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
   public IStatus _run(ActivityParameters activityParams) {
     IContext context = (IContext) activityParams.getParameter(TRANSPOSER_CONTEXT).getValue();
 
-    IStatus status = initializeMergeHandler(context, activityParams);
-    if (status.matches(IStatus.CANCEL)) {
-      return status;
-    }
-
     computeDifferences(context);
 
-    return Status.OK_STATUS;
-  }
-
-  /**
-   * Initialize the Merge handler and set it into context via ITransitionConstants.MERGE_DIFFERENCES_HANDLER
-   */
-  protected IStatus initializeMergeHandler(IContext context, ActivityParameters activityParams) {
-    IHandler handler = loadHandlerFromParameters(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, activityParams);
-    if (handler == null) {
-      handler = new DefaultMergeHandler();
-    }
-    context.put(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, handler);
-    IStatus status = handler.init(context);
-    if ((handler != null) && (handler instanceof IMergeHandler)) {
-      initializeCategoriesHandlers(context, (IMergeHandler) handler, activityParams);
-    }
-
-    return status;
-  }
-
-  protected IStatus initializeCategoriesHandlers(IContext context, IMergeHandler handler,
-      ActivityParameters activityParams) {
     return Status.OK_STATUS;
   }
 

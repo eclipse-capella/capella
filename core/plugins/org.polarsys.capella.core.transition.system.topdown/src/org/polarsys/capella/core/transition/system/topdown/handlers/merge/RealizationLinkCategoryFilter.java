@@ -25,10 +25,16 @@ import org.polarsys.capella.core.transition.common.merge.ExtendedComparison;
 import org.polarsys.capella.core.transition.system.topdown.handlers.transformation.TopDownTransformationHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
+/**
+ * This category hides Realization Links. It also adds dependencies to IElementPresence. When we merge an element, we
+ * also merge its Realization Link
+ */
 public class RealizationLinkCategoryFilter extends CategoryFilter {
 
+  public static final String ID = RealizationLinkCategoryFilter.class.getCanonicalName();
+
   public RealizationLinkCategoryFilter(IContext context) {
-    super(context, Messages.RealizationLinkCategoryFilter, null);
+    super(context, ID, Messages.RealizationLinkCategoryFilter, null);
     setInFocusMode(false);
     setVisible(false);
     setActive(true);
@@ -39,18 +45,23 @@ public class RealizationLinkCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public void setDependencies(IElementPresence difference) {
+  public void setDependencies(IMergeableDifference difference) {
     super.setDependencies(difference);
 
-    ExtendedComparison comparison = (ExtendedComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
-    EObject target = difference.getElementMatch().get(Role.REFERENCE);
-    if (target instanceof AbstractTrace) {
-      IMatch match = comparison.getMapping().getMatchFor(((AbstractTrace) target).getSourceElement(), Role.REFERENCE);
-      IElementPresence presence = match.getElementPresenceDifference();
-      if (presence != null) {
-        ((IMergeableDifference.Editable) presence).markRequires(difference, Role.TARGET);
+    if (difference instanceof IElementPresence) {
+      IElementPresence presence = (IElementPresence) difference;
+
+      ExtendedComparison comparison = (ExtendedComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
+      EObject target = presence.getElementMatch().get(Role.REFERENCE);
+      if (target instanceof AbstractTrace) {
+        IMatch match = comparison.getMapping().getMatchFor(((AbstractTrace) target).getSourceElement(), Role.REFERENCE);
+        IElementPresence matchPresence = match.getElementPresenceDifference();
+        if (matchPresence != null) {
+          ((IMergeableDifference.Editable) matchPresence).markRequires(presence, Role.TARGET);
+        }
       }
     }
+
   }
 
   @Override

@@ -23,6 +23,9 @@ import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
+/**
+ * This category hides differences of Packages without children
+ */
 public class EmptyPackageCategoryFilter extends CategoryFilter {
 
   public EmptyPackageCategoryFilter(IContext context) {
@@ -30,11 +33,6 @@ public class EmptyPackageCategoryFilter extends CategoryFilter {
     setInFocusMode(false);
     setVisible(true);
     setActive(true);
-  }
-
-  @Override
-  public void setDependencies(IElementPresence difference) {
-    super.setDependencies(difference);
   }
 
   @Override

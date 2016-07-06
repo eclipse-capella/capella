@@ -26,6 +26,9 @@ import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
+/**
+ * This category hides differences located outside the Target Architecture
+ */
 public class OutsideArchitectureCategoryFilter extends CategoryFilter {
 
   public OutsideArchitectureCategoryFilter(IContext context) {

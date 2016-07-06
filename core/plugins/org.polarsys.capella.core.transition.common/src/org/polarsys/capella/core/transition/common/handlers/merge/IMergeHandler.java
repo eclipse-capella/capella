@@ -34,4 +34,9 @@ public interface IMergeHandler extends IHandler {
    */
   void addCategory(ICategoryItem filter, IContext context);
 
+  /**
+   * Retrieve the given category according to its identifier
+   */
+  ICategoryItem getCategory(IContext context, String id);
+
 }

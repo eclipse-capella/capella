@@ -12,22 +12,28 @@ package org.polarsys.capella.core.transition.system.topdown.handlers.merge;
 
 import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
 import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
+import org.polarsys.capella.core.transition.system.topdown.handlers.transformation.TopDownTransformationHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
- * This category hides any elements from the Target Scope (show only the result of the Transition)
+ * This category hides differences of RealizationLinks towards ModellingArchitectures
  */
-public class TargetDifferencesCategoryFilter extends CategoryFilter {
+public class ArchitectureLinkCategoryFilter extends CategoryFilter {
 
-  public TargetDifferencesCategoryFilter(IContext context) {
-    super(context, Messages.TargetDifferencesCategoryFilter, null);
+  public ArchitectureLinkCategoryFilter(IContext context) {
+    super(context, Messages.ArchitectureLinkCategoryFilter, null);
     setInFocusMode(false);
-    setVisible(true);
+    setVisible(false);
     setActive(true);
+  }
+
+  protected boolean isTrace(EObject element, IContext context) {
+    return TopDownTransformationHelper.getInstance(context).isTrace(element, context);
   }
 
   @Override
@@ -35,14 +41,19 @@ public class TargetDifferencesCategoryFilter extends CategoryFilter {
 
     if (difference instanceof IElementRelativeDifference) {
       IElementRelativeDifference diff = (IElementRelativeDifference) difference;
+
       EObject target = diff.getElementMatch().get(Role.TARGET);
 
-      // We hide elements presence from TARGET
-      if (diff instanceof IElementPresence) {
-        if (target != null) {
-          return true;
-        }
+      if (isTrace(target, context)) {
+        AbstractTrace trace = (AbstractTrace) target;
+        return (trace.getSourceElement() instanceof ModellingArchitecture);
       }
+      target = diff.getElementMatch().get(Role.REFERENCE);
+      if (isTrace(target, context)) {
+        AbstractTrace trace = (AbstractTrace) target;
+        return (trace.getSourceElement() instanceof ModellingArchitecture);
+      }
+
     }
 
     return false;

@@ -13,6 +13,7 @@ package org.polarsys.capella.core.transition.system.handlers.merge;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.eclipse.emf.diffmerge.api.IMatch;
 import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
@@ -34,11 +35,17 @@ public class ManyToOneCategoryFilter extends CategoryFilter {
 
   @Override
   public boolean covers(IDifference difference) {
-    // We merge ElementPresence only if it from source
+    // We exclude the difference if the source element or one of its parent is realized by an element realizing many
+    // elements
 
     if (difference instanceof IElementPresence) {
-      EObject container = ((IElementRelativeDifference) difference).getElementMatch().get(Role.REFERENCE);
-      if (container != null) {
+      IElementPresence current = (IElementPresence) difference;
+
+      while (current != null) {
+        EObject container = ((IElementRelativeDifference) current).getElementMatch().get(Role.REFERENCE);
+        if (container == null) {
+          break;
+        }
 
         ITraceabilityHandler sourceHandler = (ITraceabilityHandler) context
             .get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
@@ -55,6 +62,14 @@ public class ManyToOneCategoryFilter extends CategoryFilter {
 
         if (nbElements.size() > 1) {
           return true;
+        }
+
+        IMatch containerMatch = current.getComparison().getMapping().getMatchFor(container.eContainer(),
+            Role.REFERENCE);
+        if (containerMatch != null) {
+          current = containerMatch.getElementPresenceDifference();
+        } else {
+          current = null;
         }
       }
     }

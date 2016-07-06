@@ -248,6 +248,4 @@ public class TransitionUICommandHelper
     };
   }
 
-  // TODO not yet implemented !
-
 }

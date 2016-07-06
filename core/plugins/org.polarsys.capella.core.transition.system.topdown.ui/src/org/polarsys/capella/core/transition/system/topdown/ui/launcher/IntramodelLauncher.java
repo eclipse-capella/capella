@@ -12,46 +12,21 @@ package org.polarsys.capella.core.transition.system.topdown.ui.launcher;
 
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
+import org.polarsys.capella.core.transition.common.transposer.SharedWorkflowActivityParameter;
 import org.polarsys.capella.core.transition.common.ui.handlers.merge.MergeUIDifferencesHandler;
-import org.polarsys.capella.core.transition.system.topdown.activities.DifferencesComputingActivity;
 import org.polarsys.capella.core.transition.system.topdown.launcher.HeadlessIntramodelLauncher;
 import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
-import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParameter;
 
 public class IntramodelLauncher extends HeadlessIntramodelLauncher {
 
-  private final String MAPPING = "org.polarsys.capella.core.transition.system.topdown"; //$NON-NLS-1$
-
   @Override
-  protected String getMapping() {
-    return MAPPING;
-  }
+  protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
+    SharedWorkflowActivityParameter parameter = super.getSharedParameter(workflowId);
 
-  /**
-   * Activities to load in the workflow element of cadence "PRE ANALYSIS"
-   * 
-   * @return associated workflow element
-   */
-  @Override
-  protected WorkflowActivityParameter buildPreAnalysisActivities() {
-    WorkflowActivityParameter parameter = super.buildPreAnalysisActivities();
-
-    return parameter;
-  }
-
-  /**
-   * Activities to load in the workflow element of cadence "POST EXECUTION"
-   * 
-   * @return associated workflow element
-   */
-  @Override
-  protected WorkflowActivityParameter buildPostExecutionActivities() {
-    WorkflowActivityParameter parameter = super.buildPostExecutionActivities();
-
-    // Add UI Filtering handler
+    // Add UI Merge handler
     GenericParameter<IHandler> param = new GenericParameter<IHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER,
-        new MergeUIDifferencesHandler(), "Transposer Options handler"); //$NON-NLS-1$
-    parameter.addParameter(DifferencesComputingActivity.ID, param);
+        new MergeUIDifferencesHandler(), "Merge UI wizard"); //$NON-NLS-1$
+    parameter.addSharedParameter(param);
 
     return parameter;
   }

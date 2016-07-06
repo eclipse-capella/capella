@@ -16,14 +16,13 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.data.information.ExchangeItemElement;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.IContextScopeHandler;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IPremise;
 
@@ -33,6 +32,7 @@ public class ExchangeItemElementRule extends MultiplicityElementRule {
     registerUpdatedAttribute(InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT__KIND);
     registerUpdatedAttribute(InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT__DIRECTION);
     registerUpdatedAttribute(InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT__COMPOSITE);
+    registerUpdatedReference(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
   }
 
   @Override
@@ -64,14 +64,15 @@ public class ExchangeItemElementRule extends MultiplicityElementRule {
   @Override
   protected void attachRelated(EObject element, EObject result, IContext context) {
     super.attachRelated(element, result, context);
-    AttachmentHelper.getInstance(context).attachTracedElements(element, result, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE,
-        context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result,
+        ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, context);
   }
 
   @Override
   protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
     super.premicesRelated(element, needed);
-    needed.addAll(createDefaultPrecedencePremices(element, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE));
+    needed.addAll(
+        createDefaultPrecedencePremices(element, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE));
   }
 
 }

@@ -1261,36 +1261,6 @@
       </ActivityDeclaration>
    </extension>
    
-   <extension
-         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
-      <ActivityDeclaration
-            ActivityClass="org.polarsys.capella.common.re.re2rpl.activities.DifferencesComputingActivity"
-            Identifier="org.polarsys.capella.common.re.re2rpl.activities.DifferencesComputingActivity"
-            Multiple="false"
-            Name="Differences Computing DiffMerge From Transformation"
-            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
-            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
-         <Description>
-            This activity initialize Transposer for Capella Transformation execution.
-         </Description>
-      </ActivityDeclaration>
-   </extension>
-   
-   <extension
-         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
-      <ActivityDeclaration
-            ActivityClass="org.polarsys.capella.common.re.rpl2re.activities.DifferencesComputingActivity"
-            Identifier="org.polarsys.capella.common.re.rpl2re.activities.DifferencesComputingActivity"
-            Multiple="false"
-            Name="Differences Computing DiffMerge From Transformation"
-            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
-            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
-         <Description>
-            This activity initialize Transposer for Capella Transformation execution.
-         </Description>
-      </ActivityDeclaration>
-   </extension>
-   
    
    <extension
          point="org.polarsys.kitalpha.cadence.core.activity.declaration">
