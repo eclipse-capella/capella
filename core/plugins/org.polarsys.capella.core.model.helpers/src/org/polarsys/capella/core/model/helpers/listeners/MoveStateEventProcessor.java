@@ -23,7 +23,8 @@ public class MoveStateEventProcessor extends MoveElementEventProcessor {
   public void process() {
     // We move outgoing transitions of a state from its old owning region to the new one
     for (EObject clazz : oldValueNotificationMap.keySet()) {
-      if (clazz instanceof AbstractState) {
+      // eContainer can be null (e.g.: during deletions)
+      if (clazz instanceof AbstractState && clazz.eContainer() != null) {
 
         NotificationChainImpl oldNotifChain = oldValueNotificationMap.get(clazz);
         NotificationChainImpl newNotifChain = newValueNotificationMap.get(clazz);
