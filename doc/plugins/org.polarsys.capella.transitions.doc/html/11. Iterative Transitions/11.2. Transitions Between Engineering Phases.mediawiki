@@ -459,14 +459,5 @@ It is possible to modify default propagation behavior for a difference with a cl
 <br>
 <br>
 
- 
-It is possible to choose the type of elements that should be displayed in the difference window. To do so, choose Window / Preferences and then Capella / Transition Log Preferences.
-
- 
-[[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_e1fe161.png|627x618px]]
-
- 
-<br>
-<br>
 
    

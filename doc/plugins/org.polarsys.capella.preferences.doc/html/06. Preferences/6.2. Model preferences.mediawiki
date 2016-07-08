@@ -55,7 +55,15 @@ The following figure illustrates the prompted dialog when deleting the System Ac
  
 [[Image:Images/6.2.%20Model%20preferences_html_597b3feb.png|877x595px]]
 
+
+== Differences Table ==
  
+It is possible to choose the type of elements that should be displayed in the Differences Table window used by REC/RPL tooling and legacy transitions. To do so, choose Window / Preferences and then Capella / Differences Table.
+
+
+[[Image:Images/6.2.%20Model%20preferences_html_Differences_table.png|776x690px]]
+
+
 == Model ==
  
 On the sub section Model of Capella preferences, it is possible to specify global behavior regarding the management of specific elements.

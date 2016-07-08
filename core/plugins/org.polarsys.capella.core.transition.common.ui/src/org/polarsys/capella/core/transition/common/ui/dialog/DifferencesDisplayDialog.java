@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-
 import org.polarsys.capella.core.transition.common.handlers.log.IDiffModelViewer;
 import org.polarsys.capella.core.transition.common.ui.utils.CSVExporter;
 import org.polarsys.capella.core.transition.common.ui.viewer.DiffTreeViewer;
@@ -56,34 +55,35 @@ public class DifferencesDisplayDialog extends Dialog {
 
   /**
     */
-  public DifferencesDisplayDialog(IContext context_p, HashMap<IDifference, IDiffModelViewer> listMerge_p, List<IDiffModelViewer> listDiff_p) {
+  public DifferencesDisplayDialog(IContext context, HashMap<IDifference, IDiffModelViewer> listMerge,
+      List<IDiffModelViewer> listDiff) {
     super(PlatformUI.getWorkbench().getDisplay().getActiveShell());
     setShellStyle(getShellStyle() | SWT.RESIZE);
-    context = context_p;
-
-    this.listDiff = listDiff_p;
-    this.listMerge = listMerge_p;
-    createActions();
+    this.context = context;
+    this.listDiff = listDiff;
+    this.listMerge = listMerge;
   }
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.window.Window#configureShell(org.eclipse.swt.widgets.Shell)
    */
   @Override
   protected void configureShell(Shell newShell) {
-    newShell.setText("Differences Display");
+    newShell.setText(Messages.DifferencesTable_Title);
     newShell.setSize(SHELL_WIDTH, SHELL_HEIGHT);
     super.configureShell(newShell);
   }
 
-  protected DiffTreeViewer createDiffTreeViewer(IContext context_p, Composite parent, HashMap<IDifference, IDiffModelViewer> listMerge_p,
-      List<IDiffModelViewer> listDiff_p) {
-    return new DiffTreeViewer(context_p, parent, listMerge_p, listDiff_p);
+  protected DiffTreeViewer createDiffTreeViewer(IContext context, Composite parent,
+      HashMap<IDifference, IDiffModelViewer> listMerge, List<IDiffModelViewer> listDiff) {
+    return new DiffTreeViewer(context, parent, listMerge, listDiff);
   }
 
   /**
    * Create contents of the application window.
+   * 
    * @param parent
    */
   @Override
@@ -108,7 +108,7 @@ public class DifferencesDisplayDialog extends Dialog {
     Composite compButtons = new Composite(parent, SWT.NONE);
 
     Button saveButton = new Button(compButtons, SWT.PUSH);
-    saveButton.setText("Save as CSV");
+    saveButton.setText(Messages.DifferencesTable_Export);
     saveButton.addSelectionListener(new SelectionListener() {
       public void widgetDefaultSelected(SelectionEvent e) {
       }
@@ -123,7 +123,7 @@ public class DifferencesDisplayDialog extends Dialog {
 
     // Create the Apply button and add a handler
     Button applyButton = new Button(compButtons, SWT.PUSH);
-    applyButton.setText("Apply");
+    applyButton.setText(Messages.DifferencesTable_Apply);
     applyButton.addSelectionListener(new SelectionAdapter() {
       @Override
       public void widgetSelected(SelectionEvent event) {
@@ -134,7 +134,7 @@ public class DifferencesDisplayDialog extends Dialog {
 
     // Create the Cancel button and add a handler
     Button cancelButton = new Button(compButtons, SWT.PUSH);
-    cancelButton.setText("Cancel");
+    cancelButton.setText(Messages.DifferencesTable_Cancel);
     cancelButton.addSelectionListener(new SelectionAdapter() {
       @Override
       public void widgetSelected(SelectionEvent event) {
@@ -167,13 +167,6 @@ public class DifferencesDisplayDialog extends Dialog {
     saveButton.setLayoutData(formData1);
     applyButton.setLayoutData(formData2);
     cancelButton.setLayoutData(formData3);
-  }
-
-  /**
-   * Create the actions.
-   */
-  private void createActions() {
-    // Create the actions
   }
 
 }
