@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup:Project
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
+    xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
+    xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
+    xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
+    xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
+    xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
+    xmlns:workingsets="http://www.eclipse.org/oomph/workingsets/1.0"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/WorkingSets.ecore"
+    name="capella"
+    label="Capella">
+  <setupTask
+      xsi:type="jdt:JRETask"
+      version="JavaSE-1.7"
+      location="${jre.location-1.7}">
+    <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:EclipseIniTask"
+      option="-Xmx"
+      value="1024m"
+      vm="true">
+    <description>Set the heap space needed to work with the projects of ${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:ResourceCreationTask"
+      excludedTriggers="STARTUP MANUAL"
+      content="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;section name=&quot;Workbench&quot;>&#xD;&#xA;&#x9;&lt;section name=&quot;org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart&quot;>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;true&quot; key=&quot;group_libraries&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;false&quot; key=&quot;linkWithEditor&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;2&quot; key=&quot;layout&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;2&quot; key=&quot;rootMode&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;packageExplorer configured=&amp;quot;true&amp;quot; group_libraries=&amp;quot;1&amp;quot; layout=&amp;quot;2&amp;quot; linkWithEditor=&amp;quot;0&amp;quot; rootMode=&amp;quot;2&amp;quot; sortWorkingSets=&amp;quot;false&amp;quot; workingSetName=&amp;quot;&amp;quot;&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;workingSet editPageId=&amp;quot;org.eclipse.jdt.internal.ui.OthersWorkingSet&amp;quot; factoryID=&amp;quot;org.eclipse.ui.internal.WorkingSetFactory&amp;quot; id=&amp;quot;1382792884467_1&amp;quot; label=&amp;quot;Other Projects&amp;quot; name=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;activeWorkingSet workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;allWorkingSets workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/packageExplorer&amp;gt;&quot; key=&quot;memento&quot;/>&#xD;&#xA;&#x9;&lt;/section>&#xD;&#xA;&lt;/section>&#xD;&#xA;"
+      targetURL="${workspace.location|uri}/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml"
+      encoding="UTF-8">
+    <description>Initialize JDT's package explorer to show working sets as its root objects</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      name="eclipse.target.platform"
+      value="Mars"
+      defaultValue="Mars"
+      storageURI="scope://Workspace"/>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      name="polarsys.git.remoteURIs"
+      label="Polarsys Git Repository">
+    <choice
+        value="http://git.polarsys.org/gitroot/@{remoteURI}.git"
+        label="HTTP (read-only, anonymous, direct)"/>
+    <choice
+        value="ssh://${git.user.id|username}@git.polarsys.org/gitroot/@{remoteURI}.git"
+        label="SSH (read-write, direct)">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+    </choice>
+    <choice
+        value="git://git.polarsys.org/gitroot/@{remoteURI}"
+        label="Git (read-only, anonymous, direct)"/>
+    <description>Choose from the available Git URIs</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      name="polarsys.gerrit.remoteURIs"
+      label="Polarsys Gerrit Repository">
+    <choice
+        value="https://git.polarsys.org/r/@{remoteURI}"
+        label="HTTPS (read-only, anonymous, Gerrit)"/>
+    <choice
+        value="ssh://${git.user.id|username}@git.polarsys.org:29418/@{remoteURI}"
+        label="SSH (read-write, Gerrit)">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+    </choice>
+    <choice
+        value="https://${git.user.id|username}@git.polarsys.org/r/@{remoteURI}"
+        label="HTTPS (read-write, Gerrit)">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+    </choice>
+    <description>Choose from the available remote Gerrit URIs</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      name="polarsys.git.gerrit.remoteURIs"
+      label="Polarsys Gerrit or Git Repository">
+    <annotation
+        source="http://www.eclipse.org/oomph/setup/InheritedChoices">
+      <detail
+          key="inherit">
+        <value>polarsys.gerrit.remoteURIs polarsys.git.remoteURIs</value>
+      </detail>
+    </annotation>
+    <choice
+        value="https://git.polarsys.org/r/@{remoteURI}"
+        label="HTTPS (read-only, anonymous, Gerrit)"/>
+    <choice
+        value="ssh://${git.user.id|username}@git.polarsys.org:29418/@{remoteURI}"
+        label="SSH (read-write, Gerrit)">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+    </choice>
+    <choice
+        value="https://${git.user.id|username}@git.polarsys.org/r/@{remoteURI}"
+        label="HTTPS (read-write, Gerrit)">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+    </choice>
+    <choice
+        value="http://git.polarsys.org/gitroot/@{remoteURI}.git"
+        label="HTTP (read-only, anonymous, direct)"/>
+    <choice
+        value="ssh://${git.user.id|username}@git.polarsys.org/gitroot/@{remoteURI}.git"
+        label="SSH (read-write, direct)">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+    </choice>
+    <choice
+        value="git://git.polarsys.org/gitroot/@{remoteURI}"
+        label="Git (read-only, anonymous, direct)"/>
+    <description>Choose from the available Gerrit or Git URIs</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.targlets:TargletTask">
+    <targlet
+        name="Capella Features"
+        activeRepositoryList="${eclipse.target.platform}">
+      <requirement
+          name="org.polarsys.capella.core.advance.feature.feature.group"/>
+      <repositoryList
+          name="Mars">
+        <repository
+            url="https://hudson.polarsys.org/capella/view/Capella-master/job/capella-master/lastSuccessfulBuild/artifact/result/publish/org.polarsys.capella/site.p2"/>
+      </repositoryList>
+    </targlet>
+    <targlet
+        name="Capella Dependencies"
+        activeRepositoryList="${eclipse.target.platform}">
+      <requirement
+          name="org.eclipse.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.gef.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.transaction.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.validation.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.query.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.workspace.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.validation.ocl.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.query.ocl.feature.group"/>
+      <requirement
+          name="org.eclipse.gmf.feature.group"/>
+      <requirement
+          name="org.eclipse.sirius.query.legacy.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.sirius.runtime.feature.group"/>
+      <requirement
+          name="org.eclipse.sirius.runtime.ide.ui.feature.group"/>
+      <requirement
+          name="org.eclipse.sirius.doc.feature.feature.group"/>
+      <requirement
+          name="org.polarsys.kitalpha.emde.ui.feature.feature.group"/>
+      <requirement
+          name="org.polarsys.kitalpha.emde.feature.feature.group"/>
+      <requirement
+          name="org.polarsys.kitalpha.model.detachment.feature.feature.group"/>
+      <requirement
+          name="org.polarsys.kitalpha.patterns.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.diffmerge.sdk.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.amalgam.explorer.activity.feature.group"/>
+      <requirement
+          name="org.eclipse.amalgam.explorer.contextual.feature.group"/>
+      <requirement
+          name="org.eclipse.amalgam.explorer.contextual.core.feature.group"/>
+      <requirement
+          name="org.eclipse.amalgam.explorer.contextual.sirius.feature.group"/>
+      <repositoryList
+          name="Mars">
+        <repository
+            url="http://download.eclipse.org/sirius/updates/stable/4.0.0-S20160526-075916/mars"/>
+        <repository
+            url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
+        <repository
+            url="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
+        <repository
+            url="http://download.eclipse.org/diffmerge/releases/0.7.0/edm-patterns-site"/>
+        <repository
+            url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_runtime-v1.0.x/190/artifact/result/publish/kitalpha_runtime/site.p2"/>
+        <repository
+            url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_SDK-v1.0.x/47/artifact/result/publish/kitalpha_sdk/site.p2"/>
+        <repository
+            url="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.7.0-N20160610-082445/neon"/>
+        <repository
+            url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
+        <repository
+            url="http://download.eclipse.org/releases/mars"/>
+        <repository
+            url="http://download.eclipse.org/cbi/updates/license"/>
+      </repositoryList>
+    </targlet>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.p2:P2Task">
+    <requirement
+        name="org.eclipse.sirius.specifier.feature.group"/>
+    <repository
+        url="http://download.eclipse.org/sirius/updates/releases/4.0.0/neon"/>
+  </setupTask>
+  <project name="Capella Developer"
+      logicalProjectContainer="/">
+    <setupTask
+        xsi:type="git:GitCloneTask"
+        id="git.clone.capella"
+        remoteURI="capella/capella.git">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/InducedChoices">
+        <detail
+            key="inherit">
+          <value>polarsys.git.gerrit.remoteURIs</value>
+        </detail>
+        <detail
+            key="label">
+          <value>${scope.project.label} repository</value>
+        </detail>
+        <detail
+            key="target">
+          <value>remoteURI</value>
+        </detail>
+      </annotation>
+      <description>${scope.project.label}</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup.targlets:TargletTask">
+      <targlet
+          name="Capella Sourcelocator Targlet"
+          activeRepositoryList="${eclipse.target.platform}">
+        <sourceLocator
+            rootFolder="${git.clone.capella.location}"
+            locateNestedProjects="true"/>
+      </targlet>
+    </setupTask>
+    <setupTask
+        xsi:type="setup.workingsets:WorkingSetTask">
+      <workingSet
+          name="Capella Metamodel">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.gen(\..*)?"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella Validation">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.validation(\..*)?"/>
+          <operand
+              xsi:type="workingsets:ExclusionPredicate"
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella Properties">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.properties(\..*)?"/>
+          <operand
+              xsi:type="workingsets:ExclusionPredicate"
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella Quickfix">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.quickfix(\..*)?"/>
+          <operand
+              xsi:type="workingsets:ExclusionPredicate"
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella Transition">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.transition(\..*)?"/>
+          <operand
+              xsi:type="workingsets:ExclusionPredicate"
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Addon%20Developer']/@setupTasks.4/@workingSets.4"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella Sirius">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.sirius(\..*)?"/>
+          <operand
+              xsi:type="workingsets:ExclusionPredicate"
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella Common">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.common(\..*)?"/>
+          <operand
+              xsi:type="workingsets:ExclusionPredicate"
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.7 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.1 //@projects[name='Capella%20Addon%20Developer']/@setupTasks.4/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella Core">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.core(\..*)?"/>
+          <operand
+              xsi:type="workingsets:ExclusionPredicate"
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.1 //@projects[name='Capella%20Addon%20Developer']/@setupTasks.4/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella Features">
+        <predicate
+            xsi:type="predicates:NaturePredicate"
+            nature="org.eclipse.pde.FeatureNature"/>
+      </workingSet>
+      <description>The dynamic working sets for ${scope.project.label}</description>
+    </setupTask>
+    <project
+        name="Capella Metamodel Developer"
+        label="">
+      <setupTask
+          xsi:type="setup.targlets:TargletTask">
+        <targlet
+            name="Capella Metamodel Definitions">
+          <requirement
+              name="org.polarsys.capella.core.data.def"/>
+          <requirement
+              name="org.polarsys.capella.common.data.def"/>
+          <requirement
+              name="org.polarsys.capella.core.egf.feature.feature.group"/>
+        </targlet>
+      </setupTask>
+      <setupTask
+          xsi:type="setup.workingsets:WorkingSetTask">
+        <workingSet
+            name="Capella Metamodel Definitions">
+          <predicate
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.def"/>
+        </workingSet>
+      </setupTask>
+      <stream
+          name="master"/>
+      <description>Select this if you need to make changes to the Capella metamodel definitions</description>
+    </project>
+    <stream
+        name="master"/>
+    <description>Select this to work on the capella source code</description>
+  </project>
+  <project name="Capella Addon Developer">
+    <setupTask
+        xsi:type="git:GitCloneTask"
+        id="git.clone.addon-xhtml"
+        remoteURI="capella/capella-xhtml-docgen.git">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/InducedChoices">
+        <detail
+            key="inherit">
+          <value>polarsys.git.gerrit.remoteURIs</value>
+        </detail>
+        <detail
+            key="label">
+          <value>${scope.project.label} repository</value>
+        </detail>
+        <detail
+            key="target">
+          <value>remoteURI</value>
+        </detail>
+      </annotation>
+      <description>${scope.project.label}</description>
+    </setupTask>
+    <setupTask
+        xsi:type="git:GitCloneTask"
+        id="git.clone.addon-basicvp"
+        remoteURI="capella/capella-basic-vp.git">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/InducedChoices">
+        <detail
+            key="inherit">
+          <value>polarsys.git.gerrit.remoteURIs</value>
+        </detail>
+        <detail
+            key="label">
+          <value>${scope.project.label} repository</value>
+        </detail>
+        <detail
+            key="target">
+          <value>remoteURI</value>
+        </detail>
+      </annotation>
+      <description>${scope.project.label}</description>
+    </setupTask>
+    <setupTask
+        xsi:type="git:GitCloneTask"
+        id="git.clone.addon-ssstransition"
+        remoteURI="capella/capella-sss-transition.git">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/InducedChoices">
+        <detail
+            key="inherit">
+          <value>polarsys.git.gerrit.remoteURIs</value>
+        </detail>
+        <detail
+            key="label">
+          <value>${scope.project.label} repository</value>
+        </detail>
+        <detail
+            key="target">
+          <value>remoteURI</value>
+        </detail>
+      </annotation>
+      <description>${scope.project.label}</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup.targlets:TargletTask">
+      <targlet
+          name="Capella Addons Source Code">
+        <requirement
+            name="org.polarsys.capella.docgen.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.capella.docgen.package.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.capella.vp.mass.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.capella.vp.perfo.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.capella.vp.price.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.capella.transition.system2subsystem.feature.feature.group"/>
+        <sourceLocator
+            rootFolder="${git.clone.addon-xhtml.location}"/>
+        <sourceLocator
+            rootFolder="${git.clone.addon-basicvp.location}"/>
+        <sourceLocator
+            rootFolder="${git.clone.addon-ssstransition.location}"/>
+      </targlet>
+    </setupTask>
+    <setupTask
+        xsi:type="setup.workingsets:WorkingSetTask">
+      <workingSet
+          name="Capella XHTML Docgen">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="org\.polarsys\.capella\.docgen(\..*)?"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella Basic VP - Price">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="org\.polarsys\.capella\.vp\.price(\..*)?"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella Basic VP - Perfo">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="org\.polarsys\.capella\.vp\.perfo(\..*)?"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella Basic VP - Mass">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="org\.polarsys\.capella\.vp\.mass(\..*)?"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella System2Subsystem Transition">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="org\.polarsys\.capella\.transition\.system2subsystem(\..*)?"/>
+        </predicate>
+      </workingSet>
+    </setupTask>
+    <stream
+        name="master"/>
+    <description>Select this work on capella addons source code</description>
+  </project>
+  <logicalProjectContainer
+      xsi:type="setup:ProjectCatalog"
+      href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
+  <description>Always select Capella Target Platform</description>
+</setup:Project>
