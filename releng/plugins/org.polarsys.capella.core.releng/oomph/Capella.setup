@@ -5,13 +5,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
     xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
+    xmlns:mylyn="http://www.eclipse.org/oomph/setup/mylyn/1.0"
     xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
     xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
     xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
     xmlns:workingsets="http://www.eclipse.org/oomph/workingsets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/WorkingSets.ecore"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/mylyn/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Mylyn.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/WorkingSets.ecore"
     name="capella"
     label="Capella">
   <setupTask
@@ -215,8 +216,12 @@
       xsi:type="setup.p2:P2Task">
     <requirement
         name="org.eclipse.sirius.specifier.feature.group"/>
+    <requirement
+        name="org.eclipse.emf.sdk.feature.group"/>
     <repository
         url="http://download.eclipse.org/sirius/updates/releases/4.0.0/neon"/>
+    <repository
+        url="http://download.eclipse.org/releases/neon"/>
   </setupTask>
   <project name="Capella Developer"
       logicalProjectContainer="/">
@@ -250,6 +255,11 @@
             rootFolder="${git.clone.capella.location}"
             locateNestedProjects="true"/>
       </targlet>
+      <targlet
+          name="Capella Tests">
+        <requirement
+            name="org.polarsys.capella.test.feature.feature.group"/>
+      </targlet>
     </setupTask>
     <setupTask
         xsi:type="setup.workingsets:WorkingSetTask">
@@ -260,6 +270,9 @@
           <operand
               xsi:type="predicates:NamePredicate"
               pattern=".*\.gen(\..*)?"/>
+          <operand
+              xsi:type="predicates:RepositoryPredicate"
+              project="org.polarsys.capella.common"/>
         </predicate>
       </workingSet>
       <workingSet
@@ -271,7 +284,10 @@
               pattern=".*\.validation(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9"/>
+          <operand
+              xsi:type="predicates:RepositoryPredicate"
+              project="org.polarsys.capella.common"/>
         </predicate>
       </workingSet>
       <workingSet
@@ -284,6 +300,9 @@
           <operand
               xsi:type="workingsets:ExclusionPredicate"
               excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+          <operand
+              xsi:type="predicates:RepositoryPredicate"
+              project="org.polarsys.capella.common"/>
         </predicate>
       </workingSet>
       <workingSet
@@ -296,6 +315,9 @@
           <operand
               xsi:type="workingsets:ExclusionPredicate"
               excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+          <operand
+              xsi:type="predicates:RepositoryPredicate"
+              project="org.polarsys.capella.common"/>
         </predicate>
       </workingSet>
       <workingSet
@@ -307,7 +329,10 @@
               pattern=".*\.transition(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Addon%20Developer']/@setupTasks.4/@workingSets.4"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9"/>
+          <operand
+              xsi:type="predicates:RepositoryPredicate"
+              project="org.polarsys.capella.common"/>
         </predicate>
       </workingSet>
       <workingSet
@@ -320,6 +345,9 @@
           <operand
               xsi:type="workingsets:ExclusionPredicate"
               excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+          <operand
+              xsi:type="predicates:RepositoryPredicate"
+              project="org.polarsys.capella.common"/>
         </predicate>
       </workingSet>
       <workingSet
@@ -331,7 +359,10 @@
               pattern=".*\.common(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.7 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.1 //@projects[name='Capella%20Addon%20Developer']/@setupTasks.4/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.7 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9"/>
+          <operand
+              xsi:type="predicates:RepositoryPredicate"
+              project="org.polarsys.capella.common"/>
         </predicate>
       </workingSet>
       <workingSet
@@ -343,16 +374,50 @@
               pattern=".*\.core(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.1 //@projects[name='Capella%20Addon%20Developer']/@setupTasks.4/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9"/>
+          <operand
+              xsi:type="predicates:RepositoryPredicate"
+              project="org.polarsys.capella.common"/>
         </predicate>
       </workingSet>
       <workingSet
           name="Capella Features">
         <predicate
-            xsi:type="predicates:NaturePredicate"
-            nature="org.eclipse.pde.FeatureNature"/>
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NaturePredicate"
+              nature="org.eclipse.pde.FeatureNature"/>
+          <operand
+              xsi:type="predicates:RepositoryPredicate"
+              project="org.polarsys.capella.common"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella Tests">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.test(\..*)?"/>
+          <operand
+              xsi:type="workingsets:ExclusionPredicate"
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+          <operand
+              xsi:type="predicates:RepositoryPredicate"
+              project="org.polarsys.capella.common"/>
+        </predicate>
       </workingSet>
       <description>The dynamic working sets for ${scope.project.label}</description>
+    </setupTask>
+    <setupTask
+        xsi:type="mylyn:MylynQueriesTask"
+        repositoryURL="https://bugs.polarsys.org">
+      <query
+          summary="Open Capella Bugs"
+          url="/buglist.cgi?bug_status=UNCONFIRMED&amp;bug_status=CONFIRMED&amp;bug_status=IN_PROGRESS&amp;component=Capella%20Studio&amp;component=Core&amp;component=Detachment&amp;component=Diagram&amp;component=Diff-Merge&amp;component=Documentation&amp;component=Forum&amp;component=General&amp;component=Library&amp;component=ModelValidation&amp;component=Patterns&amp;component=Properties&amp;component=Rec-Rpl&amp;component=Releng&amp;component=Transition&amp;component=UI&amp;component=Website&amp;list_id=21077&amp;product=Capella&amp;query_format=advanced&amp;resolution=---"/>
+      <query
+          summary="Closed Capella Bugs"
+          url="/buglist.cgi?bug_status=RESOLVED&amp;bug_status=VERIFIED&amp;component=Capella%20Studio&amp;component=Core&amp;component=Detachment&amp;component=Diagram&amp;component=Diff-Merge&amp;component=Documentation&amp;component=Forum&amp;component=General&amp;component=Library&amp;component=ModelValidation&amp;component=Patterns&amp;component=Properties&amp;component=Rec-Rpl&amp;component=Releng&amp;component=Transition&amp;component=UI&amp;component=Website&amp;list_id=21077&amp;product=Capella&amp;query_format=advanced&amp;resolution=---"/>
     </setupTask>
     <project
         name="Capella Metamodel Developer"
@@ -521,6 +586,17 @@
               pattern="org\.polarsys\.capella\.transition\.system2subsystem(\..*)?"/>
         </predicate>
       </workingSet>
+    </setupTask>
+    <setupTask
+        xsi:type="mylyn:MylynQueriesTask"
+        repositoryURL="https://bugs.polarsys.org"
+        userID="">
+      <query
+          summary="Open Capella Addon Bugs"
+          url="/buglist.cgi?bug_status=UNCONFIRMED&amp;bug_status=CONFIRMED&amp;bug_status=IN_PROGRESS&amp;classification=Polarsys&amp;component=GenDoc HTML&amp;component=Mass VP&amp;component=Perfo VP&amp;component=Price VP&amp;component=System2Subsystem&amp;component=XML Pivot&amp;product=Capella&amp;query_format=advanced"/>
+      <query
+          summary="Closed Capella Addon Bugs"
+          url="/buglist.cgi?bug_status=RESOLVED&amp;bug_status=VERIFIED&amp;classification=Polarsys&amp;component=GenDoc HTML&amp;component=Mass VP&amp;component=Perfo VP&amp;component=Price VP&amp;component=System2Subsystem&amp;component=XML Pivot&amp;product=Capella&amp;query_format=advanced"/>
     </setupTask>
     <stream
         name="master"/>
