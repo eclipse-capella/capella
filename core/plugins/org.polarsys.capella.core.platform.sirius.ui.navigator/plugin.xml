@@ -447,6 +447,22 @@
             </adapt>
          </filterExpression>
       </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides metadata resources that end with &quot;.afm&quot;"
+            id="capella.project.explorer.filters.metadata"
+            name="*.afm resources">
+         <filterExpression>
+            <adapt
+                  type="org.eclipse.core.resources.IFile">
+               <test
+                     forcePluginActivation="true"
+                     property="org.eclipse.core.resources.extension"
+                     value="afm">
+               </test>
+            </adapt>
+         </filterExpression>
+      </commonFilter>
       <commonFilter 
       		id="capella.project.explorer.filters.parts"
       		name="Part with hidden abstract type"

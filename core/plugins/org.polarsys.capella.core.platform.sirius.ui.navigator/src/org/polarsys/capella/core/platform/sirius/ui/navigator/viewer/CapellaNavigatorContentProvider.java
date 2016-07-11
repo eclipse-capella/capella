@@ -351,7 +351,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
                   }
                 }
               } else if (MetadataHelper.isMetadataResource(childResource)){
-            	others.addAll(0,childResource.getContents());
+            	// We don't want to display metadata node.
               } else {
                 others.addFirst(childResource.getContents());
               }
