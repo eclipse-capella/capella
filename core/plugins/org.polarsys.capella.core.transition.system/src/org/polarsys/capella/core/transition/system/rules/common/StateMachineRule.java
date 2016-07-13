@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
-import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
@@ -60,16 +59,12 @@ public class StateMachineRule extends AbstractCapellaElementRule {
    */
   @Override
   protected EObject getBestContainer(EObject element, EObject result, IContext context) {
+    ISelectionContext sContext = SelectionContextHandlerHelper.getHandler(context).getSelectionContext(context, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION, element, result);
     EObject parent = element.eContainer();
     while (parent != null) {
-      if ((parent instanceof Block) || (parent instanceof org.polarsys.capella.core.data.information.Class)) {
-        ISelectionContext sContext =
-            SelectionContextHandlerHelper.getHandler(context).getSelectionContext(context, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION,
-                element, result);
-        EObject bestTracedElement = TransformationHandlerHelper.getInstance(context).getBestTracedElement(parent, context, sContext);
-        if (bestTracedElement != null) {
-          return bestTracedElement;
-        }
+      EObject bestTracedElement = TransformationHandlerHelper.getInstance(context).getBestTracedElement(parent, context, sContext);
+      if (bestTracedElement != null) {
+        return bestTracedElement;
       }
       parent = parent.eContainer();
     }

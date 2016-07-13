@@ -41,7 +41,7 @@ public class MDCHK_StateMachine_Function extends AbstractModelConstraint {
     List<IStatus> result  = new ArrayList<IStatus>();
 
     EObject eContainer = state.eContainer();
-    while (!(eContainer instanceof Component) && (!(eContainer instanceof Class))) {
+    while ((eContainer != null) && !(eContainer instanceof Component) && !(eContainer instanceof Class)) {
       eContainer = eContainer.eContainer();
     }
     if (eContainer instanceof Component) {

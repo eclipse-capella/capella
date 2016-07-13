@@ -138,6 +138,11 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
 	  public static final String SA__SYSTEM = "a3422c3a-1806-478a-9e52-f6d604d32b76";
 	  public static final String SA__SYSTEM__SYSTEM_STATE_MACHINE = "3c66569f-203b-4dde-b75e-0e6b6ccf37a5";
 	  public static final String SA__SYSTEM__SYSTEM_STATE_MACHINE__DEFAULT_REGION = "7e346ce2-5dc0-4bdd-8d03-4cc2892fe2a2";
+	  public static final String SA__SYSTEM__SYSTEM_STATE_MACHINE__DEFAULT_REGION__STATE_1 = "66148fc9-1ddb-42bb-b2b0-cce827fdbf31";  //$NON-NLS-1$ 
+	  public static final String SA__SYSTEM__SYSTEM_STATE_MACHINE__DEFAULT_REGION__STATE_1__REGION = "e196af96-0421-44a6-8b8d-88f469a568ce";  //$NON-NLS-1$ 
+	  public static final String SA__SYSTEM__SYSTEM_STATE_MACHINE__DEFAULT_REGION__STATE_1__REGION_2 = "80ee32b6-f87d-4e34-abd5-c23651b5b96e";  //$NON-NLS-1$ 
+	  public static final String SA__SYSTEM__SYSTEM_STATE_MACHINE__DEFAULT_REGION__STATE_1__REGION_2__ENTRYPOINT_1 = "69f74e41-228b-4229-b1fb-9191ebbf3444";  //$NON-NLS-1$ 
+	  public static final String SA__SYSTEM__SYSTEM_STATE_MACHINE__DEFAULT_REGION__STATE_1__REGION_2__EXITPOINT_2 = "c459c5af-1acf-4710-a52d-d57b776c8cba";  //$NON-NLS-1$ 
 	  public static final String SA__ACTORS = "62a37131-ca9b-427d-9eab-5436788fc8c4";
 	  public static final String SA__ACTORS__A_1 = "830600e9-7509-49ee-8665-49015d0939b8";
 	  public static final String SA__ACTORS__A_1__COMPONENT_FUNCTIONAL_ALLOCATION_TO_SYSTEMFUNCTION_1 = "6689f25d-8ca1-41cb-8467-0320fcf14f3d";

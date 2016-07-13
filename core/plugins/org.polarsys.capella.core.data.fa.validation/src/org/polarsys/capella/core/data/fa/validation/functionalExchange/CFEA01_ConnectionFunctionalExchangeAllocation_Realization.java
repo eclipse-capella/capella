@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,37 +32,32 @@ public class CFEA01_ConnectionFunctionalExchangeAllocation_Realization extends A
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
 
-    if (eType == EMFEventType.NULL) {
-      if (eObj instanceof ComponentExchangeFunctionalExchangeAllocation) {
-        ComponentExchangeFunctionalExchangeAllocation fci = (ComponentExchangeFunctionalExchangeAllocation)eObj;
+    if (eType == EMFEventType.NULL && eObj instanceof ComponentExchangeFunctionalExchangeAllocation) {
+      ComponentExchangeFunctionalExchangeAllocation fci = (ComponentExchangeFunctionalExchangeAllocation)eObj;
 
-        List<CapellaElement> previousPhaseElements = RefinementLinkExt.getRelatedTargetElements((CapellaElement)eObj, FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION);
+      List<CapellaElement> previousPhaseElements = RefinementLinkExt.getRelatedTargetElements((CapellaElement)eObj, FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION);
 
-        boolean functionValid = false;
-        boolean cptValid = false;
+      boolean functionValid = false;
+      boolean cptValid = false;
 
-        for (CapellaElement element : previousPhaseElements) {
-          ComponentExchangeFunctionalExchangeAllocation exc = (ComponentExchangeFunctionalExchangeAllocation)element;
-          cptValid = RefinementLinkExt.isLinkedTo(fci.getAllocatingComponentExchange(), exc.getAllocatingComponentExchange());
-          functionValid = RefinementLinkExt.isLinkedTo(fci.getAllocatedFunctionalExchange(), exc.getAllocatedFunctionalExchange());
+      for (CapellaElement element : previousPhaseElements) {
+        ComponentExchangeFunctionalExchangeAllocation exc = (ComponentExchangeFunctionalExchangeAllocation)element;
+        cptValid = RefinementLinkExt.isLinkedTo(fci.getAllocatingComponentExchange(), exc.getAllocatingComponentExchange());
+        functionValid = RefinementLinkExt.isLinkedTo(fci.getAllocatedFunctionalExchange(), exc.getAllocatedFunctionalExchange());
 
-          if (functionValid && cptValid) {
-            return ctx_p.createSuccessStatus();
-          }
+        if (functionValid && cptValid) {
+          return ctx.createSuccessStatus();
         }
-
-        if (previousPhaseElements.size()!=0) {
-          return createFailureStatus(ctx_p, new Object[] { CapellaElementExt.getName(fci) });
-        }
-
       }
 
-
+      if (previousPhaseElements.size()!=0) {
+        return ctx.createFailureStatus(CapellaElementExt.getName(fci));
+      }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

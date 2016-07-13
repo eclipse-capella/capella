@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,13 +35,13 @@ public class ShowHideStates extends AbstractExternalJavaAction {
    */
   @Override
   @SuppressWarnings("unchecked")
-  public void execute(Collection<? extends EObject> selections_p, Map<String, Object> parameters_p) {
+  public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 
-    DSemanticDecorator view_p = (DSemanticDecorator) parameters_p.get(ELEMENT_VIEW);
+    DSemanticDecorator view = (DSemanticDecorator) parameters.get(ELEMENT_VIEW);
 
-    List<State> selectedStates = (List<State>) parameters_p.get(SELECTED_STATES);
-    List<State> visibleStates = (List<State>) parameters_p.get(VISIBLE_STATES);
-    List<AbstractDNode> visibleStateViews = (List<AbstractDNode>) parameters_p.get(VISIBLE_STATE_VIEWS);
+    List<State> selectedStates = (List<State>) parameters.get(SELECTED_STATES);
+    List<State> visibleStates = (List<State>) parameters.get(VISIBLE_STATES);
+    List<AbstractDNode> visibleStateViews = (List<AbstractDNode>) parameters.get(VISIBLE_STATE_VIEWS);
 
     if (selectedStates == null) {
       selectedStates = new ArrayList<State>();
@@ -52,7 +52,7 @@ public class ShowHideStates extends AbstractExternalJavaAction {
     if (visibleStateViews == null) {
       visibleStateViews = new ArrayList<AbstractDNode>();
     }
-    StateMachineServices.getService().showHideStatesInStateAndModeDiag(view_p, selectedStates, visibleStates, visibleStateViews);
+    StateMachineServices.getService().showHideStatesInStateAndModeDiag(view, selectedStates, visibleStates, visibleStateViews);
   }
 
 }

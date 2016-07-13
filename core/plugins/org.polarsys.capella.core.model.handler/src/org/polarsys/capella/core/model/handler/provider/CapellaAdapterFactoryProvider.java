@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,12 +25,12 @@ import org.polarsys.capella.core.data.capellamodeller.provider.CapellamodellerIt
 import org.polarsys.capella.core.data.cs.provider.CsItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.ctx.provider.CtxItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.epbs.provider.EpbsItemProviderAdapterFactory;
-import org.polarsys.capella.core.data.fa.provider.FaItemProviderAdapterFactory;
+import org.polarsys.capella.core.data.fa.provider.FaItemProviderDecoratorAdapterFactory;
 import org.polarsys.capella.core.data.information.communication.provider.CommunicationItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.information.datatype.provider.DatatypeItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.information.datavalue.provider.DatavalueItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.information.provider.InformationItemProviderAdapterFactory;
-import org.polarsys.capella.core.data.interaction.provider.InteractionItemProviderAdapterFactory;
+import org.polarsys.capella.core.data.interaction.provider.InteractionItemProviderDecoratorAdapterFactory;
 import org.polarsys.capella.core.data.la.provider.LaItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.oa.provider.OaItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.pa.deployment.provider.DeploymentItemProviderAdapterFactory;
@@ -38,7 +38,6 @@ import org.polarsys.capella.core.data.pa.provider.PaItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.requirement.provider.RequirementItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.sharedmodel.provider.SharedmodelItemProviderAdapterFactory;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionDescriptor;
-import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.EmdeItemProviderAdapterFactory;
 
 /**
@@ -89,6 +88,11 @@ public class CapellaAdapterFactoryProvider implements IAdapterFactoryProvider {
    */
   private AdapterFactory createAdapterFactory() {
     ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+
+    // decorators
+    adapterFactory.addAdapterFactory(new FaItemProviderDecoratorAdapterFactory());
+    adapterFactory.addAdapterFactory(new InteractionItemProviderDecoratorAdapterFactory());
+
     adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new CapellamodellerItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new CapellacoreItemProviderAdapterFactory());
@@ -106,8 +110,8 @@ public class CapellaAdapterFactoryProvider implements IAdapterFactoryProvider {
     adapterFactory.addAdapterFactory(new DatatypeItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new DatavalueItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new CsItemProviderAdapterFactory());
-    adapterFactory.addAdapterFactory(new FaItemProviderAdapterFactory());
-    adapterFactory.addAdapterFactory(new InteractionItemProviderAdapterFactory());
+    //adapterFactory.addAdapterFactory(new FaItemProviderAdapterFactory());
+    //adapterFactory.addAdapterFactory(new InteractionItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new ModellingcoreItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new ActivityItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new BehaviorItemProviderAdapterFactory());

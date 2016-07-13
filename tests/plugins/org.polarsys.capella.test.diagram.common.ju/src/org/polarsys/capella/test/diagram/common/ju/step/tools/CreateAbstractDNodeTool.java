@@ -26,6 +26,7 @@ import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
  */
 public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractToolStep<T> {
   protected String newIdentifier;
+  protected String targetContainerView;
   protected String containerView;
   protected Class<T> expectedDiagramElementType;
 
@@ -39,6 +40,7 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
   public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView,
       Class<T> expectedNodeType) {
     super(context, toolName);
+    this.targetContainerView = containerView;
     this.containerView = containerView;
     this.expectedDiagramElementType = expectedNodeType;
   }
@@ -49,6 +51,13 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
     this.newIdentifier = newIdentifier;
   }
 
+  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String targetContainerView, String containerView,
+      String newIdentifier, Class<T> expectedNodeType) {
+    this(context, toolName, targetContainerView, expectedNodeType);
+    this.newIdentifier = newIdentifier;
+    this.containerView = containerView;
+  }
+  
   public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView, String newIdentifier) {
     this(context, toolName, containerView, newIdentifier, null);
   }
@@ -56,6 +65,7 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
   public CreateAbstractDNodeTool(DiagramContext context, String[] toolIdentifier, String containerView,
       Class<T> expectedNodeType) {
     super(context, toolIdentifier[0], toolIdentifier[1]);
+    this.targetContainerView = containerView;
     this.containerView = containerView;
     this.expectedDiagramElementType = expectedNodeType;
   }
@@ -110,6 +120,7 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
     if ((expectedDiagramElementType != null) && !(expectedDiagramElementType.isInstance(newElements.iterator().next()))) {
       assertFalse(true);
     }
+
   }
 
   @Override
@@ -124,7 +135,7 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
 
   @Override
   protected void initToolArguments() {
-    DSemanticDecorator element = getExecutionContext().getView(containerView);
+    DSemanticDecorator element = getExecutionContext().getView(targetContainerView);
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER, element.getTarget());
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, element);
   }

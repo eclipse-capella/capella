@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.queries;
 
 import java.util.List;
@@ -31,5 +30,7 @@ public interface IQuery {
   public void setExtendedQueryIdentifier(String extendedQueryIdentifier);
 
   public String getExtendedQueryIdentifier();
+
+  public List<String> getExtendingQueryIdentifiers();
 
 }

@@ -1,0 +1,345 @@
+/*******************************************************************************
+ * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.sirius.analysis;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.polarsys.capella.common.data.behavior.AbstractEvent;
+import org.polarsys.capella.common.data.modellingcore.IState;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState;
+import org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState;
+import org.polarsys.capella.core.data.capellacommon.FinalState;
+import org.polarsys.capella.core.data.capellacommon.ForkPseudoState;
+import org.polarsys.capella.core.data.capellacommon.InitialPseudoState;
+import org.polarsys.capella.core.data.capellacommon.JoinPseudoState;
+import org.polarsys.capella.core.data.capellacommon.Pseudostate;
+import org.polarsys.capella.core.data.capellacommon.Region;
+import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.capellacommon.StateTransition;
+import org.polarsys.capella.core.data.capellacommon.TerminatePseudoState;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.FunctionPort;
+import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
+import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideMSMStateMode;
+import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideMSMTransitions;
+
+/**
+ * Services for Mode State machine diagram.
+ */
+public class ModeStateMachineServices {
+
+  /** A shared instance. */
+  private static ModeStateMachineServices _service;
+
+  /**
+   * returns a shared instance of this services.
+   * 
+   * @return a shared instance of this services.
+   */
+  public static ModeStateMachineServices getService() {
+    if (_service == null) {
+      _service = new ModeStateMachineServices();
+    }
+    return _service;
+  }
+
+  public String getRegionLabel(Region region, DDiagram diagram) {
+    return isDiagramFilterEnable(diagram, IMappingNameConstants.HIDE_REGION_NAMES) ? ""
+        : " [" + EObjectLabelProviderHelper.getText(region) + "]";
+  }
+  
+  public String getActivityLabel(AbstractEvent abstractEvent) {
+    
+    if (abstractEvent instanceof FunctionalExchange) {
+      FunctionalExchange fe = (FunctionalExchange) abstractEvent;
+      EObject target = fe.getTarget();
+      if (target instanceof FunctionPort) {
+        target = target.eContainer();
+      }
+      if (target instanceof AbstractFunction) {
+        return EObjectLabelProviderHelper.getText(abstractEvent) + " [-> "+EObjectLabelProviderHelper.getText(target)+"]"; 
+      } 
+    }  
+    return EObjectLabelProviderHelper.getText(abstractEvent);
+  }
+
+  public String getEntryExitPointLabel(Pseudostate pseudostate, DDiagram diagram) {
+
+    if (isDiagramFilterEnable(diagram, IMappingNameConstants.DISPLAY_REGION_NAME_ON_ENTRY_EXIT_POINTS)) {
+      EList<Region> regions = pseudostate.getInvolverRegions();
+      if (!regions.isEmpty()) {
+        Region region = regions.get(0);
+        return EObjectLabelProviderHelper.getText(pseudostate) + " (" + EObjectLabelProviderHelper.getText(region)
+            + ")";
+      }
+    }
+
+    return EObjectLabelProviderHelper.getText(pseudostate);
+  }
+
+  private boolean isDiagramFilterEnable(DDiagram diagram, String filterName) {
+    if (diagram != null) {
+      EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
+      for (FilterDescription filterDescription : activatedFilters) {
+        // if given filter is enable return true
+        if ((null != filterDescription) && filterDescription.getName().equalsIgnoreCase(filterName)) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  public EObject showHideStatesInStateAndModeDiag(DSemanticDecorator view, List<State> selectedStates,
+      List<State> visibleStates, List<AbstractDNode> visibleStateViews) {
+
+    DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(view);
+    DDiagramContents content = new DDiagramContents(diagram);
+
+    Set<EObject> toBeRemoved = new HashSet<EObject>();
+
+    ShowHideMSMStateMode shHide = new ShowHideMSMStateMode(content);
+
+    DiagramContext diagramContext = new ShowHideMSMStateMode(content).new DiagramContext();
+
+    // store context
+    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER, view.getTarget()/* .eContainer() */);
+    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER_VIEW, view);
+
+    for (IState state : selectedStates) {
+      shHide.show(state, diagramContext);
+    }
+
+    for (AbstractDNode node : visibleStateViews) {
+      if (!selectedStates.contains(node.getTarget())) {
+        toBeRemoved.add(node.getTarget());
+      }
+    }
+
+    // remove views
+    for (EObject aView : toBeRemoved) {
+      shHide.hide(aView, diagramContext);
+    }
+
+    return view;
+  }
+
+  public EObject moveRegionMSM(EObject context, Region newRegion, Region selectedRegion) {
+
+    EObject container = newRegion.eContainer();
+    State state = (State) container;
+    state.getOwnedRegions().remove(newRegion);
+    int index = 0;
+    if (selectedRegion != null) {
+      index = state.getOwnedRegions().indexOf(selectedRegion) + 1;
+    }
+    state.getOwnedRegions().add(index, newRegion);
+
+    return context;
+  }
+
+  public Region getRegionForTransitionMSM(EObject context, DDiagramElement sourceView) {
+
+    EObject containerView = sourceView.eContainer();
+    if (containerView instanceof DSemanticDecorator) {
+      EObject target = ((DSemanticDecorator) containerView).getTarget();
+      if (target instanceof Region) {
+        return (Region) target;
+      }else if(target instanceof State && context instanceof Pseudostate && context.eContainer() instanceof Region){
+        return (Region)context.eContainer();
+      }
+    }
+    return null;
+  }
+
+  public boolean canCreateTransitionMSM(EObject context, EObject sourceElement, EObject targetElement) {
+
+    IState source = null;
+    IState target = null;
+
+    if (sourceElement instanceof IState) {
+      source = (IState) sourceElement;
+    } else if (sourceElement instanceof Region) {
+      source = (IState) sourceElement.eContainer();
+    } else {
+      return false;
+    }
+
+    if (targetElement instanceof IState) {
+      target = (IState) targetElement;
+    } else if (targetElement instanceof Region) {
+      target = (IState) targetElement.eContainer();
+    } else {
+      return false;
+    }
+
+    if ((target instanceof InitialPseudoState) || (source instanceof TerminatePseudoState)
+        || (source instanceof FinalState)) {
+      return false;
+    }
+
+    if ((source instanceof InitialPseudoState)
+        && ((target instanceof TerminatePseudoState) || (target instanceof FinalState))) {
+      return false;
+    }
+
+    if (((target instanceof ExitPointPseudoState)
+        && !(StateMachineServices.getService().isInSameOrSubRegion(target, source)))
+        || ((source instanceof EntryPointPseudoState)
+            && !StateMachineServices.getService().isInSameOrSubRegion(source, target))
+        || ((source instanceof JoinPseudoState)
+            && (StateMachineServices.getService().getSourcingTransition(source).size() != 0))
+        || ((target instanceof ForkPseudoState)
+            && (StateMachineServices.getService().getTargettingTransition(target).size() != 0))) {
+      return false;
+    }
+
+    // self connecting transition
+    if (source.equals(target) && !(source instanceof Pseudostate)) {
+      return true;
+    }
+    if (EcoreUtil.isAncestor(source, target) || EcoreUtil.isAncestor(target, source)) {
+      return false;
+    }
+
+    // cannot create a transition between states located on different regions of the same parent state
+    if (EcoreUtil2.getCommonAncestor(source, target) instanceof IState) {
+      return false;
+    }
+
+    return true;
+  }
+
+  public Region getRegionForInsertionMSM(EObject context, EObject delement) {
+    Region region = null;
+
+    if (delement instanceof DDiagram) {
+      region = (Region) ((DSemanticDiagram) delement).getTarget();
+    } else if (delement instanceof DDiagramElementContainer) {
+      EObject target = ((DNodeContainer) delement).getTarget();
+      if (target instanceof Region) {
+        return (Region) target;
+      }
+    }
+    return region;
+  }
+
+  public EObject showHideStatesInMSMDiag(DSemanticDecorator view, List<State> selectedStates, List<State> visibleStates,
+      List<AbstractDNode> visibleStateViews) {
+
+    DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(view);
+    DDiagramContents content = new DDiagramContents(diagram);
+
+    Set<EObject> toBeRemoved = new HashSet<EObject>();
+
+    ShowHideMSMStateMode shHide = new ShowHideMSMStateMode(content);
+
+    DiagramContext diagramContext = new ShowHideMSMStateMode(content).new DiagramContext();
+
+    // store context
+    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER, view.getTarget());
+    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER_VIEW, view);
+
+    for (IState state : selectedStates) {
+      shHide.show(state, diagramContext);
+    }
+
+    for (AbstractDNode node : visibleStateViews) {
+      if (!selectedStates.contains(node.getTarget())) {
+        toBeRemoved.add(node.getTarget());
+      }
+    }
+
+    // remove views
+    for (EObject aView : toBeRemoved) {
+      shHide.hide(aView, diagramContext);
+    }
+
+    return view;
+  }
+
+  public EObject showHideMSMTransitions(DSemanticDecorator view, List<StateTransition> selectedTransitions,
+      List<StateTransition> visibleTransitions, List<DEdge> visibleTransitionViews) {
+
+    DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(view);
+    DDiagramContents content = new DDiagramContents(diagram);
+
+    Set<EObject> toBeRemoved = new HashSet<EObject>();
+
+    ShowHideMSMStateMode shHide = new ShowHideMSMTransitions(content);
+    DiagramContext diagramContext = shHide.new DiagramContext();
+
+    // store context
+    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER, view.getTarget());
+    diagramContext.setVariable(ShowHideMSMStateMode.CONTEXTUAL_CONTAINER_VIEW, view);
+
+    for (StateTransition trans : selectedTransitions) {
+      shHide.show(trans, diagramContext);
+    }
+
+    for (DEdge edge : visibleTransitionViews) {
+      if (!selectedTransitions.contains(edge.getTarget())) {
+        toBeRemoved.add(edge.getTarget());
+      }
+    }
+    // remove views
+    for (EObject aView : toBeRemoved) {
+      shHide.hide(aView, diagramContext);
+    }
+
+    return view;
+  }
+
+  public ContainerMapping getMappingMSMStateMode(State state, DDiagram diagram) {
+    String mappingName = null;
+    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_STATE_MACHINE_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.MSM_MODE_STATE_MAPPING_NAME;
+    }
+    return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
+  }
+
+  public NodeMapping getMappingMSMPseudostate(Pseudostate pseudoState, DDiagram diagram) {
+    String mappingName = null;
+    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_STATE_MACHINE_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.MSM_PSEUDOSTATE_MAPPING_NAME;
+    }
+    return DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
+  }
+
+  public EdgeMapping getMappingMSMTransition(StateTransition function, DDiagram diagram) {
+    String mappingName = null;
+    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_STATE_MACHINE_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.MSM_TRANSITION_MAPPING_NAME;
+    }
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
+  }
+}

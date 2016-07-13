@@ -102,6 +102,8 @@ public class GenericModel {
   public static String FUNCTION_1_3 = "Function 1_3";
   public static String FUNCTION_1_4 = "Function 1_4";
 
+  public static String FUNCTIONAL_EXCHANGE_1 = "Function 1";
+  
   public static String COMPONENT_PORT_1 = "COMPONENT_PORT_1";
   public static String COMPONENT_PORT_2 = "COMPONENT_PORT_2";
   public static String COMPONENT_PORT_3 = "COMPONENT_PORT_3";
@@ -113,6 +115,23 @@ public class GenericModel {
   public static String STATE_2 = "State 2";
   public static String STATE_3 = "State 3";
   public static String STATE_4 = "State 4";
+
+  public static String MODE_1 = "Mode 1";
+  public static String MODE_2 = "Mode 2";
+  public static String MODE_3 = "Mode 3";
+  public static String MODE_4 = "Mode 4";
+
+  public static String REGION_1 = "Region 1";
+  public static String REGION_2= "Region 2";
+  public static String REGION_3 = "Region 3";
+  public static String REGION_4 = "Region 4";
+
+  public static String ENTRY_POINT_1 = "Entry Point 1";
+  public static String ENTRY_POINT_2 = "Entry Point 2";
+  public static String ENTRY_POINT_3 = "Entry Point 3";
+  public static String EXIT_POINT_1 = "Exit Point 1";
+  public static String EXIT_POINT_2 = "Exit Point 2";
+  public static String EXIT_POINT_3 = "Exit Point 3";
 
   public static String LC_1 = "LC 1";
   public static String LC_1_1 = "LC 1_1";

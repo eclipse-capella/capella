@@ -24,6 +24,10 @@ public class CreateNodeTool extends CreateAbstractDNodeTool<DNode> {
   public CreateNodeTool(DiagramContext context, String toolName, String containerView, String newIdentifier) {
     super(context, toolName, containerView, newIdentifier, DNode.class);
   }
+  
+  public CreateNodeTool(DiagramContext context, String toolName, String targetContainerView, String containerView, String newIdentifier) {
+    super(context, toolName, targetContainerView, containerView, newIdentifier, DNode.class);
+  }
 
   @Override
   protected void postRunTest() {

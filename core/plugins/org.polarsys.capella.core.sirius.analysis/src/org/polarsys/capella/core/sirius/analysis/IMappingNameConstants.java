@@ -34,6 +34,17 @@ public interface IMappingNameConstants {
   String MS_INNER_PSEUDOSTATE_MAPPING_NAME = "SM_InnerModeState"; //$NON-NLS-1$
   String MS_TRANSITION_MAPPING_NAME = "SM_Transition"; //$NON-NLS-1$
 
+  String MSM_MODE_STATE_MAPPING_NAME = "MSM_ModeState_Container"; //$NON-NLS-1$
+  String MSM_PSEUDOSTATE_MAPPING_NAME = "MSM_ModeState"; //$NON-NLS-1$
+  String MSM_TRANSITION_MAPPING_NAME = "MSM_Transition"; //$NON-NLS-1$
+  String MSM_REGION_MAPPING_NAME = "MSM_Region"; //$NON-NLS-1$
+  String MSM_ACTIVITIES_MAPPING_NAME = "MSM_Activities"; //$NON-NLS-1$
+  String MSM_DOACTIVITY_MAPPING_NAME = "MSM_DoActivity"; //$NON-NLS-1$
+  String MSM_ENTRY_MAPPING_NAME = "MSM_Entry"; //$NON-NLS-1$
+  String MSM_EXIT_MAPPING_NAME = "MSM_Exit"; //$NON-NLS-1$
+  String HIDE_REGION_NAMES = "HideRegionNames";//$NON-NLS-1$
+  String DISPLAY_REGION_NAME_ON_ENTRY_EXIT_POINTS = "DisplayRegionNameOnEntryExitPoints";//$NON-NLS-1$
+  
   /**
    * Entity Architecture
    */

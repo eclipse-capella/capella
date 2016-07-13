@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,27 +32,29 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class CommonHandler extends AbstractDiagramHandler {
 
   @Override
-  public boolean handles(IContext context_p, RepresentationDescription description_p) {
+  public boolean handles(IContext context, RepresentationDescription description) {
     DiagramHelper service = DiagramHelper.getService();
 
-    if (service.isA(description_p, DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME)) {
+    if (service.isA(description, DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME)) {
       return true;
 
-    } else if (service.isA(description_p, IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME)) {
+    } else if (service.isA(description, IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME)) {
       return true;
 
-    } else if (service.isA(description_p, IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME)) {
+    } else if (service.isA(description, IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME)) {
       return true;
 
-    } else if (service.isA(description_p, IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME)) {
+    } else if (service.isA(description, IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME)) {
       return true;
 
-    } else if (service.isA(description_p, IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
+    } else if (service.isA(description, IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
       return true;
 
-    } else if (service.isA(description_p, IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME)) {
+    } else if (service.isA(description, IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME)) {
       return true;
 
+    } else if (service.isA(description, IDiagramNameConstants.MODES_STATE_MACHINE_DIAGRAM_NAME)) {
+      return true;
     }
 
     return false;
@@ -63,19 +65,19 @@ public class CommonHandler extends AbstractDiagramHandler {
    * {@inheritDoc}
    */
   @Override
-  public boolean covers(IContext context_p, RepresentationDescription description_p) {
-    return handles(context_p, description_p);
+  public boolean covers(IContext context, RepresentationDescription description) {
+    return handles(context, description);
   }
 
   @Override
-  public boolean backCovers(IContext context_p, RepresentationDescription description_p) {
-    return handles(context_p, description_p);
+  public boolean backCovers(IContext context, RepresentationDescription description) {
+    return handles(context, description);
   }
 
   @Override
-  public boolean covers(IContext context_p, DRepresentation representation_p) {
-    if (representation_p instanceof DSemanticDecorator) {
-      EObject target = ((DSemanticDecorator) representation_p).getTarget();
+  public boolean covers(IContext context, DRepresentation representation) {
+    if (representation instanceof DSemanticDecorator) {
+      EObject target = ((DSemanticDecorator) representation).getTarget();
       if ((target != null) && (target instanceof CapellaElement)) {
         return !CapellaLayerCheckingExt.isAOrInPhysicalLayer((CapellaElement) target) && !CapellaLayerCheckingExt.isAOrInEPBSLayer((CapellaElement) target);
       }
@@ -84,9 +86,9 @@ public class CommonHandler extends AbstractDiagramHandler {
   }
 
   @Override
-  public boolean backCovers(IContext context_p, DRepresentation representation_p) {
-    if (representation_p instanceof DSemanticDecorator) {
-      EObject target = ((DSemanticDecorator) representation_p).getTarget();
+  public boolean backCovers(IContext context, DRepresentation representation) {
+    if (representation instanceof DSemanticDecorator) {
+      EObject target = ((DSemanticDecorator) representation).getTarget();
       if ((target != null) && (target instanceof CapellaElement)) {
         return !CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer((CapellaElement) target)
                && !CapellaLayerCheckingExt.isAOrInEPBSLayer((CapellaElement) target);
@@ -99,11 +101,11 @@ public class CommonHandler extends AbstractDiagramHandler {
    * {@inheritDoc}
    */
   @Override
-  public DiagramElementMapping getTargetMapping(IContext context_p, RepresentationDescription sourceDescription_p,
-      RepresentationDescription targetDescription_p, DiagramElementMapping sourceMapping_p, EObject source_p, EObject target_p) {
+  public DiagramElementMapping getTargetMapping(IContext context, RepresentationDescription sourceDescription,
+      RepresentationDescription targetDescription, DiagramElementMapping sourceMapping, EObject source, EObject target) {
 
-    if (sourceDescription_p == targetDescription_p) {
-      return sourceMapping_p;
+    if (sourceDescription == targetDescription) {
+      return sourceMapping;
     }
     return null;
   }
@@ -112,26 +114,29 @@ public class CommonHandler extends AbstractDiagramHandler {
    * {@inheritDoc}
    */
   @Override
-  public RepresentationDescription getTargetDescription(IContext context_p, Session session_p, RepresentationDescription description_p) {
+  public RepresentationDescription getTargetDescription(IContext context, Session session, RepresentationDescription description) {
     DiagramHelper service = DiagramHelper.getService();
 
-    if (service.isA(description_p, DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME)) {
-      return description_p;
+    if (service.isA(description, DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME)) {
+      return description;
 
-    } else if (service.isA(description_p, IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME)) {
-      return description_p;
+    } else if (service.isA(description, IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME)) {
+      return description;
 
-    } else if (service.isA(description_p, IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME)) {
-      return description_p;
+    } else if (service.isA(description, IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME)) {
+      return description;
 
-    } else if (service.isA(description_p, IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME)) {
-      return description_p;
+    } else if (service.isA(description, IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME)) {
+      return description;
 
-    } else if (service.isA(description_p, IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
-      return description_p;
+    } else if (service.isA(description, IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
+      return description;
 
-    } else if (service.isA(description_p, IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME)) {
-      return description_p;
+    } else if (service.isA(description, IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME)) {
+      return description;
+
+    } else if (service.isA(description, IDiagramNameConstants.MODES_STATE_MACHINE_DIAGRAM_NAME)) {
+      return description;
 
     }
 
@@ -142,8 +147,8 @@ public class CommonHandler extends AbstractDiagramHandler {
    * {@inheritDoc}
    */
   @Override
-  public String getTargetName(IContext context_p, DRepresentation diagram_p, RepresentationDescription targetDescription_p) {
-    String name = diagram_p.getName();
+  public String getTargetName(IContext context, DRepresentation diagram, RepresentationDescription targetDescription) {
+    String name = diagram.getName();
     return name;
   }
 
@@ -151,23 +156,23 @@ public class CommonHandler extends AbstractDiagramHandler {
    * {@inheritDoc}
    */
   @Override
-  public EObject getTargetDefaultLocation(IContext context_p, BlockArchitecture root_p, RepresentationDescription description_p) {
+  public EObject getTargetDefaultLocation(IContext context, BlockArchitecture root, RepresentationDescription description) {
 
     //common.odesign
-    if (DiagramHelper.getService().isA(description_p, DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME)) {
-      return BlockArchitectureExt.getDataPkg(root_p);
+    if (DiagramHelper.getService().isA(description, DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME)) {
+      return BlockArchitectureExt.getDataPkg(root);
 
-    } else if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME)) {
-      return BlockArchitectureExt.getFirstComponent(root_p);
+    } else if (DiagramHelper.getService().isA(description, IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME)) {
+      return BlockArchitectureExt.getFirstComponent(root);
 
-    } else if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME)) {
-      return BlockArchitectureExt.getFirstComponent(root_p);
+    } else if (DiagramHelper.getService().isA(description, IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME)) {
+      return BlockArchitectureExt.getFirstComponent(root);
 
-    } else if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME)) {
-      return BlockArchitectureExt.getFirstComponent(root_p);
+    } else if (DiagramHelper.getService().isA(description, IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME)) {
+      return BlockArchitectureExt.getFirstComponent(root);
 
-    } else if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
-      return BlockArchitectureExt.getFirstComponent(root_p);
+    } else if (DiagramHelper.getService().isA(description, IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
+      return BlockArchitectureExt.getFirstComponent(root);
 
     }
 
