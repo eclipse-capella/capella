@@ -29,7 +29,6 @@ import org.eclipse.core.commands.Command;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.NotEnabledException;
 import org.eclipse.core.commands.NotHandledException;
-import org.eclipse.core.commands.Parameterization;
 import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.expressions.EvaluationContext;
@@ -5373,7 +5372,7 @@ public class CsServices {
       EList<AbstractEvent> triggers = transition.getTriggers();
       for (AbstractEvent trigger : triggers) {
         if (trigger != null) {
-          String name = trigger.getName();
+          String name = EObjectLabelProviderHelper.getText(trigger);
           if (trigger instanceof ChangeEvent) {
             ChangeEvent changeEvent = (ChangeEvent) trigger;
             name = "(" + changeEvent.getKind() + ") "; //$NON-NLS-1$ //$NON-NLS-2$
@@ -5417,7 +5416,7 @@ public class CsServices {
       // Effect
       if (effect != null) {
         result.append(" / "); //$NON-NLS-1$
-        result.append(effect.getName()); 
+        result.append(EObjectLabelProviderHelper.getText(effect)); 
       }
     }
     return result.toString();

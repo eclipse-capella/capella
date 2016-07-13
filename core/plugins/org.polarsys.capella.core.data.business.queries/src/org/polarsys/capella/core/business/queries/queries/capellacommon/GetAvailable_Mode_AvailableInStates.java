@@ -42,13 +42,11 @@ public class GetAvailable_Mode_AvailableInStates extends AbstractQuery {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     if (element instanceof State) {
       EObject eContainer = element.eContainer();
-      if (eContainer != null) {
-        while (!(eContainer instanceof Component) && !(eContainer instanceof Class)) {
-          eContainer = eContainer.eContainer();
-        }
-        if ((eContainer instanceof Component)) {
-          availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
-        }
+      while (eContainer != null && !(eContainer instanceof Component || eContainer instanceof Class)) {
+        eContainer = eContainer.eContainer();
+      }
+      if ((eContainer instanceof Component)) {
+        availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
       }
     }
     return availableElements;
@@ -57,15 +55,15 @@ public class GetAvailable_Mode_AvailableInStates extends AbstractQuery {
   /**
    * same level Visibility Layer
    * 
-   * @param state
+   * @param component
    */
   protected List<CapellaElement> getElementsFromComponentAndSubComponents(Component component) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
     Collection<Component> subComponents = ComponentExt.getAllSubUsedAndDeployedComponents(component);
     subComponents.add(component);
 
-    for (Component cpnt : subComponents) {
-      availableElements.addAll(cpnt.getAllocatedFunctions());
+    for (Component subComponent : subComponents) {
+      availableElements.addAll(subComponent.getAllocatedFunctions());
     }
     return availableElements;
   }
@@ -83,5 +81,4 @@ public class GetAvailable_Mode_AvailableInStates extends AbstractQuery {
     }
     return currentElements;
   }
-
 }

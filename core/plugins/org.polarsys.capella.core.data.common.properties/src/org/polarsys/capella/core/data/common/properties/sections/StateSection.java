@@ -101,8 +101,8 @@ public class StateSection extends AbstractStateSection {
   public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
-    activityField.loadData(capellaElement, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
     entryField.loadData(capellaElement, CapellacommonPackage.Literals.STATE__ENTRY);
+    activityField.loadData(capellaElement, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
     exitField.loadData(capellaElement, CapellacommonPackage.Literals.STATE__EXIT);
 
     functionsField.loadData(capellaElement, FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES);
@@ -125,8 +125,8 @@ public class StateSection extends AbstractStateSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(activityField);
     fields.add(entryField);
+    fields.add(activityField);
     fields.add(exitField);
     fields.add(functionsField);
 

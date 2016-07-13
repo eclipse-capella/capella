@@ -8,9 +8,10 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.queries;
 
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  */
@@ -18,10 +19,12 @@ public abstract class AbstractQuery implements IQuery {
 
   private String identifier;
   private String extendedQueryIdentifier;
+  private List<String> extendingQueryIdentifiers;
 
   @Override
   public void setIdentifier(String identifier) {
     this.identifier = identifier;
+    extendingQueryIdentifiers = new ArrayList<String>();
   }
 
   @Override
@@ -37,6 +40,15 @@ public abstract class AbstractQuery implements IQuery {
   @Override
   public String getExtendedQueryIdentifier() {
     return extendedQueryIdentifier;
+  }
+
+  public void addExtendingQueryIdentifier(String extendingQueryIdentifier) {
+    this.extendingQueryIdentifiers.add(extendingQueryIdentifier);
+  }
+
+  @Override
+  public List<String> getExtendingQueryIdentifiers() {
+    return extendingQueryIdentifiers;
   }
 
 }

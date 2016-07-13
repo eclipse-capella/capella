@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,9 @@ public interface IDiagramNameConstants extends DiagramDescriptionConstants {
   String INTERFACE_DIAGRAM_NAME = "Interface Diagram"; //$NON-NLS-1$
   String INTERFACES_CAPABILITIES_AND_SCENARIOS_DIAGRAM_NAME = "Interfaces - Capabilities and Scenarios"; //$NON-NLS-1$
   String INTERFACES_CAPABILITIES_DIAGRAM_NAME = "Interfaces - Capabilities"; //$NON-NLS-1$
+  String MODE_STATE_DIAGRAM_NAME = "Mode State Machine"; //$NON-NLS-1$
   String MODES_AND_STATES_DIAGRAM_NAME = "Modes & States"; //$NON-NLS-1$
+  String MODES_STATE_MACHINE_DIAGRAM_NAME = "Mode State Machine"; //$NON-NLS-1$
   String PACKAGE_DEPENDENCIES_DIAGRAM_NAME = "Package Dependencies"; //$NON-NLS-1$
   String INTERFACE_SCENARIO_DIAGRAM_NAME = "Component Interfaces Scenario"; //$NON-NLS-1$
   String FUNCTIONAL_CHAIN_DIAGRAM_NAME = "Functional Chain Description"; //$NON-NLS-1$
