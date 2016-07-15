@@ -18,6 +18,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.polarsys.capella.detachment.propertyvalue.messages.Messages;
 
 public class ErrorRegExpMessageToolTip extends ToolTip {
 
@@ -43,7 +44,7 @@ public class ErrorRegExpMessageToolTip extends ToolTip {
 		childComposite.setLayout(new GridLayout(1, false));
 		
 		Label errorMessage = new Label(childComposite, SWT.NONE);
-		errorMessage.setText("Regular Expression is not Valid: " + getRegExp()); //$NON-NLS-1$
+		errorMessage.setText(Messages.bind(Messages.Error_RegularExpressionIsNotValide, getRegExp()));
 		
 		errorMessage.setBackground(parent.getDisplay().getSystemColor(SWT.COLOR_INFO_BACKGROUND));
 		errorMessage.setForeground(parent.getDisplay().getSystemColor(SWT.COLOR_INFO_FOREGROUND));

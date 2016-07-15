@@ -1,0 +1,10 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/full/checked.gif - org.eclipse.emf.diffmerge.ui - org.eclipse.emf.diffmerge.ui/icons/full/checked.gif
+/icons/full/unchecked.gif - org.eclipse.emf.diffmerge.ui - org.eclipse.emf.diffmerge.ui/icons/full/unchecked.gif
+/icons/full/collapseall.gif - org.eclipse.emf.diffmerge.ui - org.eclipse.emf.diffmerge.ui/icons/full/collapseall.gif
+/icons/full/expandall.gif - org.eclipse.emf.diffmerge.ui - org.eclipse.emf.diffmerge.ui/icons/full/expandall.gif

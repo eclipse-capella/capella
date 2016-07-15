@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.detachment.propertyvalue.command;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -17,9 +19,8 @@ import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.polarsys.capella.detachment.propertyvalues.scrutinizers.PropertyGroupScrutinizer;
-import org.polarsys.capella.detachment.propertyvalues.scrutinizers.PropertyValuePackageScrutinizer;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.detachment.propertyvalues.scrutinizers.PropertyValuesScrutinizer;
 import org.polarsys.kitalpha.model.common.commands.action.ModelCommand;
 import org.polarsys.kitalpha.model.common.commands.exception.ModelCommandException;
@@ -48,18 +49,10 @@ public class PropertyValuesDeleteCommand extends ModelCommand {
 					Map<EObject, Boolean> result = ((PropertyValuesScrutinizer)finder).getAnalysisResult();
 					deleteProperties(result, monitor);
 				} 
-				if (finder instanceof PropertyGroupScrutinizer) {
-					Map<EObject, Boolean> result = ((PropertyGroupScrutinizer)finder).getAnalysisResult();
-					deleteProperties(result, monitor);
-				}
-				if (finder instanceof PropertyValuePackageScrutinizer) {
-					Map<EObject, Boolean> result = ((PropertyValuePackageScrutinizer)finder).getAnalysisResult();
-					deleteProperties(result, monitor);
-				}
 			}
 			monitor.done();
 		} catch (ModelScrutinyException e) {
-			e.printStackTrace();
+			LOGGER.error("An error was occured at the execution of Property Values detachment Command. See the error log for more details", e);
 		}
 		
 		
@@ -70,13 +63,23 @@ public class PropertyValuesDeleteCommand extends ModelCommand {
 		
 		int size = result.size();
 		monitor.beginTask("Delete Property Values/Groups/Packages", size);
-		for(Entry<EObject, Boolean> e: result.entrySet()){	
+		
+		ExecutionManager executionManager = new ExecutionManager();
+		Collection<Object> elementsToDelete = getElementsToDelete(result);
+		CapellaDeleteCommand deleteCommand = new CapellaDeleteCommand(executionManager, elementsToDelete, false, false, false);
+		if (deleteCommand.canExecute()){
+			deleteCommand.execute();
+		}
+	}
+	
+	private Collection<Object> getElementsToDelete(Map<EObject, Boolean> result){
+		HashSet<Object> toDelete = new HashSet<Object>();
+		for (Entry<EObject, Boolean> e: result.entrySet()) {
 			if (e.getValue()){
-				monitor.subTask("Delete " + e.getKey());
-				EcoreUtil.delete(e.getKey());
-				monitor.subTask(e.getKey() + " deleted");
+				toDelete.add(e.getKey());
 			}
 		}
+		return toDelete;
 	}
 
 }
