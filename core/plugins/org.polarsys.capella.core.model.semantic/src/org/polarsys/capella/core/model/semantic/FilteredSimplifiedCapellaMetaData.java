@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
@@ -43,158 +44,163 @@ public class FilteredSimplifiedCapellaMetaData implements SimplifiedCapellaMetad
   private Set<EPackage> unfilteredEPackages;
   private final SimplifiedCapellaMetadata delegate;
 
-  public FilteredSimplifiedCapellaMetaData(SimplifiedCapellaMetadata delegate_p){
-    delegate = delegate_p;
+  public FilteredSimplifiedCapellaMetaData(SimplifiedCapellaMetadata delegate){
+    this.delegate = delegate;
     reloadFilteredPackagesFromRegistry();
   }
   
   /**
-   * @param feature_p
+   * @param feature
    * @return
    * @see org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata#isNavigable(org.eclipse.emf.ecore.EStructuralFeature)
    */
   @Override
-  public boolean isNavigable(EStructuralFeature feature_p) {
-    return isFiltered(feature_p.getEContainingClass().getEPackage()) ? false : delegate.isNavigable(feature_p);
+  public boolean isNavigable(EStructuralFeature feature) {
+    return isFiltered(feature.getEContainingClass().getEPackage()) ? false : delegate.isNavigable(feature);
   }
 
   /**
-   * @param eReference_p
+   * @param eReference
    * @return
    * @see org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata#isContainment(org.eclipse.emf.ecore.EReference)
    */
   @Override
-  public boolean isContainment(EReference eReference_p) {
-    return delegate.isContainment(eReference_p);
+  public boolean isContainment(EReference eReference) {
+    return delegate.isContainment(eReference);
   }
 
   /**
-   * @param eReference_p
+   * @param eReference
    * @return
    * @see org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata#getContainment(org.eclipse.emf.ecore.EReference)
    */
   @Override
-  public EReference getContainment(EReference eReference_p) {
-    return delegate.getContainment(eReference_p);
+  public EReference getContainment(EReference eReference) {
+    return delegate.getContainment(eReference);
   }
 
   /**
-   * @param eReference_p
-   * @param eContainmentReference_p
+   * @param eReference
+   * @param eContainmentReference
    * @see org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata#setContainment(org.eclipse.emf.ecore.EReference, org.eclipse.emf.ecore.EReference)
    */
   @Override
-  public void setContainment(EReference eReference_p, EReference eContainmentReference_p) {
-    delegate.setContainment(eReference_p, eContainmentReference_p);
+  public void setContainment(EReference eReference, EReference eContainmentReference) {
+    delegate.setContainment(eReference, eContainmentReference);
   }
 
   /**
-   * @param eClassifier_p
+   * @param eClassifier
    * @return
    * @see org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata#isSemantic(org.eclipse.emf.ecore.EClassifier)
    */
   @Override
-  public boolean isSemantic(EClassifier eClassifier_p) {
-    return isFiltered(eClassifier_p.getEPackage()) ? false : delegate.isSemantic(eClassifier_p);
+  public boolean isSemantic(EClassifier eClassifier) {
+    return isFiltered(eClassifier.getEPackage()) ? false : delegate.isSemantic(eClassifier);
   }
 
+  @Override
+  public boolean isSemantic(EStructuralFeature eStructuralFeature) {
+    return isFiltered(((EClass)eStructuralFeature.eContainer()).getEPackage()) ? false : delegate.isSemantic(eStructuralFeature);
+  }
+  
   /**
-   * @param eClassifier_p
-   * @param semantic_p
+   * @param eClassifier
+   * @param semantic
    * @see org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata#setSemantic(org.eclipse.emf.ecore.EClassifier, boolean)
    */
   @Override
-  public void setSemantic(EClassifier eClassifier_p, boolean semantic_p) {
-    delegate.setSemantic(eClassifier_p, semantic_p);
+  public void setSemantic(EClassifier eClassifier, boolean semantic) {
+    delegate.setSemantic(eClassifier, semantic);
   }
 
   /**
-   * @param feature_p
-   * @param navigable_p
+   * @param feature
+   * @param navigable
    * @see org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata#setNavigable(org.eclipse.emf.ecore.EStructuralFeature, boolean)
    */
   @Override
-  public void setNavigable(EStructuralFeature feature_p, boolean navigable_p) {
-    delegate.setNavigable(feature_p, navigable_p);
+  public void setNavigable(EStructuralFeature feature, boolean navigable) {
+    delegate.setNavigable(feature, navigable);
   }
 
   /**
-   * @param ePackage_p
+   * @param ePackage
    * @return
    * @see org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata#getSimplifiedNsPrefix(org.eclipse.emf.ecore.EPackage)
    */
   @Override
-  public String getSimplifiedNsPrefix(EPackage ePackage_p) {
-    return delegate.getSimplifiedNsPrefix(ePackage_p);
+  public String getSimplifiedNsPrefix(EPackage ePackage) {
+    return delegate.getSimplifiedNsPrefix(ePackage);
   }
 
   /**
-   * @param ePackage_p
+   * @param ePackage
    * @return
    * @see org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata#getSimplifiedNsURI(org.eclipse.emf.ecore.EPackage)
    */
   @Override
-  public String getSimplifiedNsURI(EPackage ePackage_p) {
-    return delegate.getSimplifiedNsURI(ePackage_p);
+  public String getSimplifiedNsURI(EPackage ePackage) {
+    return delegate.getSimplifiedNsURI(ePackage);
   }
 
   /**
-   * @param eNamedElement_p
+   * @param eNamedElement
    * @return
    * @see org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata#getSimplifiedName(org.eclipse.emf.ecore.ENamedElement)
    */
   @Override
-  public String getSimplifiedName(ENamedElement eNamedElement_p) {
-    return delegate.getSimplifiedName(eNamedElement_p);
+  public String getSimplifiedName(ENamedElement eNamedElement) {
+    return delegate.getSimplifiedName(eNamedElement);
   }
 
   /**
-   * @param ePackage_p
+   * @param ePackage
    * @return
    * @see org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata#isProcessAnnotations(org.eclipse.emf.ecore.EPackage)
    */
   @Override
-  public boolean isProcessAnnotations(EPackage ePackage_p) {
-    return delegate.isProcessAnnotations(ePackage_p);
+  public boolean isProcessAnnotations(EPackage ePackage) {
+    return delegate.isProcessAnnotations(ePackage);
   }
 
   /**
-   * @param ePackage_p
-   * @param semantic_p
+   * @param ePackage
+   * @param semantic
    * @see org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata#setProcessAnnotations(org.eclipse.emf.ecore.EPackage, boolean)
    */
   @Override
-  public void setProcessAnnotations(EPackage ePackage_p, boolean semantic_p) {
-    delegate.setProcessAnnotations(ePackage_p, semantic_p);
+  public void setProcessAnnotations(EPackage ePackage, boolean semantic) {
+    delegate.setProcessAnnotations(ePackage, semantic);
   }
 
  
   /**
-   * @param feature_p
-   * @param processor_p
+   * @param feature
+   * @param processor
    * @return
    * @see org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata#isExcludeFrom(org.eclipse.emf.ecore.EStructuralFeature, java.lang.String)
    */
   @Override
-  public boolean isExcludeFrom(EStructuralFeature feature_p, String processor_p) {
-    return delegate.isExcludeFrom(feature_p, processor_p);
+  public boolean isExcludeFrom(EStructuralFeature feature, String processor) {
+    return delegate.isExcludeFrom(feature, processor);
   }
   
   
   /**
-   * @param ePackage_p
+   * @param ePackage
    * @return
    */
-  private boolean isFiltered(EPackage ePackage_p) {
-    if (unfilteredEPackages.contains(ePackage_p)){
+  private boolean isFiltered(EPackage ePackage) {
+    if (unfilteredEPackages.contains(ePackage)){
       return false;
     }
     for (String packageFilter : packageFilters){
-      if (ePackage_p.getNsURI().equals(packageFilter)){
+      if (ePackage.getNsURI().equals(packageFilter)){
         return true;
       }
     }
-    unfilteredEPackages.add(ePackage_p);
+    unfilteredEPackages.add(ePackage);
     return false;
   }
  
@@ -210,5 +216,7 @@ public class FilteredSimplifiedCapellaMetaData implements SimplifiedCapellaMetad
       }
     }
   }
+
+
   
 }

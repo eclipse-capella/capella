@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
@@ -49,25 +50,25 @@ public class BasicSimplifiedCapellaMetaData extends AbstractMetaData implements 
 	 * 
 	 * @param annotationMap
 	 */
-	public BasicSimplifiedCapellaMetaData(Map<EModelElement, EAnnotation> map_p){
-	  super(SOURCE_SEMANTIC, map_p);
+	public BasicSimplifiedCapellaMetaData(Map<EModelElement, EAnnotation> map){
+	  super(SOURCE_SEMANTIC, map);
 	}
  
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean isNavigable(EStructuralFeature feature_p) {
-	  return !isProcessAnnotations(feature_p.getEContainingClass().getEPackage()) || getAnnotation(feature_p, false) != null;
+	public boolean isNavigable(EStructuralFeature feature) {
+	  return !isProcessAnnotations(feature.getEContainingClass().getEPackage()) || getAnnotation(feature, false) != null;
 	}
 
 	/**
-   * @param ePackage_p
+   * @param ePackage
    * @return
    */
 	@Override
-  public boolean isProcessAnnotations(EPackage ePackage_p) {
-    return getAnnotation(ePackage_p, false) != null;
+  public boolean isProcessAnnotations(EPackage ePackage) {
+    return getAnnotation(ePackage, false) != null;
   }
 
 	@Override
@@ -80,20 +81,20 @@ public class BasicSimplifiedCapellaMetaData extends AbstractMetaData implements 
 	}
 	
   @Override
-  public boolean isContainment(EReference reference_p){
-	  return getContainment(reference_p) != null;
+  public boolean isContainment(EReference reference){
+	  return getContainment(reference) != null;
 	}
 	
 	@Override
-	public EReference getContainment(EReference reference_p) {
-	  if (reference_p.isContainment()){
-	    return reference_p;
+	public EReference getContainment(EReference reference) {
+	  if (reference.isContainment()){
+	    return reference;
 	  }
-	  EAnnotation ann = getAnnotation(reference_p, false);
+	  EAnnotation ann = getAnnotation(reference, false);
 	  if (ann != null){
 	    String feature = ann.getDetails().get(KEY_DETAILS_FEATURE);
 	    if (feature != null){
-	      EStructuralFeature source = reference_p.getEContainingClass().getEStructuralFeature(feature);
+	      EStructuralFeature source = reference.getEContainingClass().getEStructuralFeature(feature);
 	      if (source instanceof EReference){
 	        if (((EReference) source).isContainment()){
 	          return (EReference) source;
@@ -105,97 +106,102 @@ public class BasicSimplifiedCapellaMetaData extends AbstractMetaData implements 
 	}
   
 	@Override
-	public void setContainment(EReference reference_p, EReference containment_p){
-	  if (!reference_p.isDerived()){
+	public void setContainment(EReference reference, EReference containment){
+	  if (!reference.isDerived()){
 	    throw new IllegalArgumentException("Containment semantics can only be set on a derived reference"); //$NON-NLS-1$
 	  }
-	  if (containment_p == null){
-	    EAnnotation ann = getAnnotation(reference_p, false);
+	  if (containment == null){
+	    EAnnotation ann = getAnnotation(reference, false);
 	    if (ann != null){
 	      ann.getDetails().remove(KEY_DETAILS_FEATURE);
 	    }
 	  } else {
-	    EAnnotation ann = getAnnotation(reference_p, true);
-	    ann.getDetails().put(KEY_DETAILS_FEATURE, containment_p.getName());
+	    EAnnotation ann = getAnnotation(reference, true);
+	    ann.getDetails().put(KEY_DETAILS_FEATURE, containment.getName());
 	  }
 	}
 
 	@Override
-	public void setNavigable(EStructuralFeature feature_p, boolean navigable_p) {
-	  if (navigable_p){
-	    getAnnotation(feature_p, true);
+	public void setNavigable(EStructuralFeature feature, boolean navigable) {
+	  if (navigable){
+	    getAnnotation(feature, true);
 	  } else {
-	    deleteAnnotation(feature_p);
+	    deleteAnnotation(feature);
 	  }
 	}
 
   @Override
-  public void setSemantic(EClassifier classifier_p, boolean semantic_p) {
-    if (semantic_p){
-      getAnnotation(classifier_p, true); // simply demand creating the annotation is sufficient
+  public void setSemantic(EClassifier classifier, boolean semantic) {
+    if (semantic){
+      getAnnotation(classifier, true); // simply demand creating the annotation is sufficient
     } else {
-      deleteAnnotation(classifier_p);
+      deleteAnnotation(classifier);
     }
   }
 
   @Override
-  public boolean isSemantic(EClassifier classifier_p) {
-    return !isProcessAnnotations(classifier_p.getEPackage()) || getAnnotation(classifier_p, false) != null;
+  public boolean isSemantic(EClassifier classifier) {
+    return !isProcessAnnotations(classifier.getEPackage()) || getAnnotation(classifier, false) != null;
   }
  
   @Override
-  public String getSimplifiedNsPrefix(EPackage pack_p){
-    if (pack_p == EcorePackage.eINSTANCE){
-      return pack_p.getNsPrefix();
+  public boolean isSemantic(EStructuralFeature eStructuralFeature) {
+    return !isProcessAnnotations(((EClass)eStructuralFeature.eContainer()).getEPackage()) || getAnnotation(eStructuralFeature, false) != null;
+  }
+  
+  @Override
+  public String getSimplifiedNsPrefix(EPackage pack){
+    if (pack == EcorePackage.eINSTANCE){
+      return pack.getNsPrefix();
     }
       
-    EAnnotation annotation = getAnnotation(pack_p, false);
+    EAnnotation annotation = getAnnotation(pack, false);
     if (annotation != null){
       String annotatedSimplifiedNsPrefix = annotation.getDetails().get(KEY_DETAILS_NS_PREFIX);
       if (annotatedSimplifiedNsPrefix != null){
         return annotatedSimplifiedNsPrefix;
       }
     }
-    return pack_p.getNsPrefix();
+    return pack.getNsPrefix();
   }
     
   @Override
-  public String getSimplifiedNsURI(EPackage pack_p){
+  public String getSimplifiedNsURI(EPackage pack){
       
-    if (pack_p == EcorePackage.eINSTANCE){
-      return pack_p.getNsURI();
+    if (pack == EcorePackage.eINSTANCE){
+      return pack.getNsURI();
     }
       
-    EAnnotation annotation = getAnnotation(pack_p, false);
+    EAnnotation annotation = getAnnotation(pack, false);
     if (annotation != null){
       String annotatedSimplifiedNsURI = annotation.getDetails().get(KEY_DETAILS_NS_URI);
       if (annotatedSimplifiedNsURI != null){
         return annotatedSimplifiedNsURI;
       }
     }
-    return URI.createURI(pack_p.getNsURI()).appendSegment(DEFAULT_SEMANTIC_NS_URI_SUFFIX).toString();
+    return URI.createURI(pack.getNsURI()).appendSegment(DEFAULT_SEMANTIC_NS_URI_SUFFIX).toString();
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public String getSimplifiedName(ENamedElement technical_p) {
+  public String getSimplifiedName(ENamedElement technical) {
     // if desired, we could add an annotation key 'name' to change the name simplified eclass to something
     // different and make use of that key here. for now the name is just the technical name.
-    return technical_p.getName();
+    return technical.getName();
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean isExcludeFrom(EStructuralFeature feature_p, String processor_p) {
+  public boolean isExcludeFrom(EStructuralFeature feature, String processor) {
     boolean result = false;
-    EAnnotation annotation = getAnnotation(feature_p, false);
+    EAnnotation annotation = getAnnotation(feature, false);
     if (annotation != null){
       String value = annotation.getDetails().get(KEY_DETAILS_EXCLUDEFROM);
-      result = value != null && value.equals(processor_p);
+      result = value != null && value.equals(processor);
     }
     return result;
   }

@@ -49,15 +49,17 @@ import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 /**
  * Tools for the Semantic (a.k.a. Simplified) Capella meta model.
  * 
- * The shared instance does not emit any log messages. If you want, you can create your own instance by using one of the static factory methods
- * <code>newXYZInstance(...)</code>, passing a Logger. The tool methods will then log to the given logger, for example, getEAllReferences will log a
- * message for each reference that is invisible in the semantic meta model. To avoid spamming the log, an internal set (per instance) is 
- * maintained to avoid logging a message for a given meta model element more than once.
+ * The shared instance does not emit any log messages. If you want, you can create your own instance by using one of the
+ * static factory methods <code>newXYZInstance(...)</code>, passing a Logger. The tool methods will then log to the
+ * given logger, for example, getEAllReferences will log a message for each reference that is invisible in the semantic
+ * meta model. To avoid spamming the log, an internal set (per instance) is maintained to avoid logging a message for a
+ * given meta model element more than once.
  */
 public class SemanticModelUtil {
 
   /**
    * Annotation source used to indicate semantic epackages, metaclasses and features.
+   * 
    * @Deprecated use SemanticCapellaMetadata.SOURCE_SEMANTIC
    */
   @Deprecated
@@ -65,6 +67,7 @@ public class SemanticModelUtil {
 
   /**
    * Annotation key used to indicate containment semantics.
+   * 
    * @Deprecated use SemanticCapellaMetadata.KEY_FEATURE
    */
   @Deprecated
@@ -78,7 +81,8 @@ public class SemanticModelUtil {
   /*
    * The shared instance.
    */
-  private static final SemanticModelUtil semanticInstance = new SemanticModelUtil(SimplifiedCapellaMetadata.INSTANCE, null);
+  private static final SemanticModelUtil semanticInstance = new SemanticModelUtil(SimplifiedCapellaMetadata.INSTANCE,
+      null);
 
   /*
    * Decides if an EModelElement is visible or not
@@ -89,46 +93,50 @@ public class SemanticModelUtil {
    * Remembers for which element we already sent a debug message to avoid spamming the log.
    */
   private final Set<EModelElement> messageSent;
-  
+
   /*
    * The metadata that backs this instance
    */
   protected final SimplifiedCapellaMetadata metadata;
-  
+
   /**
    * @deprecated use create() instead.
    * @param logger
    * @return
    */
   @Deprecated
-  public static SemanticModelUtil newSemanticInstance(Logger logger){
-	  return create(SimplifiedCapellaMetadata.INSTANCE, logger);
+  public static SemanticModelUtil newSemanticInstance(Logger logger) {
+    return create(SimplifiedCapellaMetadata.INSTANCE, logger);
   }
-  
+
   /**
    * Returns the shared non-logging instance.
    */
   public static SemanticModelUtil getInstance() {
     return semanticInstance;
   }
-  
+
   /**
    * Returns the semantic instance, which always behaves <i>semantically</i>, independent of the value of
    * <code>ISemanticCommonPreferences.isSemanticMode()</code>. if the preference is <code>false</code>
+   * 
    * @Deprecated use getInstance()
    */
   @Deprecated
   public static SemanticModelUtil getSemantic() {
     return semanticInstance;
   }
-  
+
   /**
    * Creates a new instance using supplied metadata and logger.
-   * @param metadata Never null.
-   * @param logger May be null.
+   * 
+   * @param metadata
+   *          Never null.
+   * @param logger
+   *          May be null.
    */
-  public static SemanticModelUtil create(SimplifiedCapellaMetadata metadata, Logger logger){
-	  return new SemanticModelUtil(metadata, logger);
+  public static SemanticModelUtil create(SimplifiedCapellaMetadata metadata, Logger logger) {
+    return new SemanticModelUtil(metadata, logger);
   }
 
   SemanticModelUtil(SimplifiedCapellaMetadata metadata, Logger logger) {
@@ -137,7 +145,7 @@ public class SemanticModelUtil {
       @SuppressWarnings("boxing")
       @Override
       public Boolean caseEStructuralFeature(EStructuralFeature feature) {
-    	  return SemanticModelUtil.this.metadata.isNavigable(feature);
+        return SemanticModelUtil.this.metadata.isNavigable(feature);
       }
 
       @SuppressWarnings("boxing")
@@ -156,82 +164,83 @@ public class SemanticModelUtil {
     this.metadata = metadata;
   }
 
-  /**  
-   * Semantic containments are EReferences that are navigable 
-   * references that either have the containment annotation key set, or
-   * are "normal" containment references.
+  /**
+   * Semantic containments are EReferences that are navigable references that either have the containment annotation key
+   * set, or are "normal" containment references.
    **/
   public final boolean isSemanticContainment(EReference reference) {
-	  return metadata.isContainment(reference);
+    return metadata.isContainment(reference);
   }
 
   /**
-   * Returns the feature that semantically contains the given element. This may look weird, since in semantic mode elements are split into several
-   * 'virtual' containment features in order to obtain strongly typed content subsets. Most importantly in semantic mode this may return an EReference that has
-   * 'containment' set to false!
+   * Returns the feature that semantically contains the given element. This may look weird, since in semantic mode
+   * elements are split into several 'virtual' containment features in order to obtain strongly typed content subsets.
+   * Most importantly in semantic mode this may return an EReference that has 'containment' set to false!
+   * 
    * @see EObject.eContainingFeature()
    * @param element
-   * @throws NoContainmentException if the element has a non-null container and no navigable containment feature can be found
+   * @throws NoContainmentException
+   *           if the element has a non-null container and no navigable containment feature can be found
    */
   public EStructuralFeature eContainingFeature(EObject element) throws NoContainmentException {
 
     // FIXME this will break probably for feature maps
     EStructuralFeature containingFeature = element.eContainingFeature();
-    
-    if (containingFeature == null){
-    	return null;
+
+    if (containingFeature == null) {
+      return null;
     }
-    
-    if (metadata.isNavigable(containingFeature)){
-    	return containingFeature;
+
+    if (metadata.isNavigable(containingFeature)) {
+      return containingFeature;
     }
-    
+
     // the element's containing feature is not navigable so we must now search
     // all "navigable containment" features of the container and its supertypes
     // the element. This will feel a bit weird now..
     containingFeature = null;
     EObject container = element.eContainer();
     if (container != null) {
-    	List<EReference> allContainments = container.eClass().getEAllReferences();
-    	for (EReference candidate : allContainments) {
+      List<EReference> allContainments = container.eClass().getEAllReferences();
+      for (EReference candidate : allContainments) {
 
-    	  if (!container.eIsSet(candidate)){
-    	    continue;
-    	  }
-    	
-    	  // no need to check other containment references
-          if (candidate.isContainment()) {
-            continue;
-          }
-
-          if (!(metadata.isNavigable(candidate) && metadata.isContainment(candidate))){
-        	  continue;
-          }
-          
-          // we don't have to search references whose declared type
-          // incompatible with this element's type
-          if (!candidate.getEReferenceType().isSuperTypeOf(element.eClass())) {
-            continue;
-          }
-
-          // now search
-          if (candidate.isMany()) {
-            if (((List<?>) container.eGet(candidate)).contains(element)) {
-              containingFeature = candidate;
-              break;
-            }
-          } else if (container.eGet(candidate) == element) {
-              containingFeature = candidate;
-              break;
-          }
+        if (!container.eIsSet(candidate)) {
+          continue;
         }
 
-    	if (containingFeature == null) {
-          // None of the container's "annotated containment" features
-          // contains this element.
-          throw new NoContainmentException();
+        // no need to check other containment references
+        if (candidate.isContainment()) {
+          continue;
+        }
+
+        if (!(metadata.isNavigable(candidate) && metadata.isContainment(candidate))) {
+          continue;
+        }
+
+        // we don't have to search references whose declared type
+        // incompatible with this element's type
+        if (!candidate.getEReferenceType().isSuperTypeOf(element.eClass())) {
+          continue;
+        }
+
+        // now search
+        if (candidate.isMany()) {
+          if (((List<?>) container.eGet(candidate)).contains(element)) {
+            containingFeature = candidate;
+            break;
+          }
+        } else if (container.eGet(candidate) == element) {
+          containingFeature = candidate;
+          break;
         }
       }
+
+      if (containingFeature == null) {
+        // None of the container's "annotated containment" features
+        // contains this element.
+        throw new NoContainmentException();
+      }
+    }
     return containingFeature;
   }
 
@@ -255,41 +264,42 @@ public class SemanticModelUtil {
         if (children != null) {
           if (ref.isMany()) {
             for (EObject e : ((List<EObject>) children)) {
-            	if (metadata.isSemantic(e.eClass())){
-            		if (!result.add(e)) {
-            			logDuplicateContainment(element, e, ref);
-            		}
-            	} else {
-            		logNonSemanticClass(e.eClass());
-            	}
+              if (metadata.isSemantic(e.eClass())) {
+                if (!result.add(e)) {
+                  logDuplicateContainment(element, e, ref);
+                }
+              } else {
+                logNonSemanticClass(e.eClass());
+              }
             }
-          } else if (metadata.isSemantic(((EObject) children).eClass())){
-        	  if (!result.add((EObject) children)) {
-        		  logDuplicateContainment(element, (EObject) children, ref);
-        	  }
+          } else if (metadata.isSemantic(((EObject) children).eClass())) {
+            if (!result.add((EObject) children)) {
+              logDuplicateContainment(element, (EObject) children, ref);
+            }
           } else {
-        	  logNonSemanticClass(((EObject) children).eClass());
+            logNonSemanticClass(((EObject) children).eClass());
           }
         }
       } else if (ref.isContainment() && ((logger != null) && logger.isDebugEnabled() && !messageSent.contains(ref))) {
         messageSent.add(ref);
-        logger.debug("[Semantic M2] Filtering non-navigable children: " + LogHelper.makeFeatureDescription(ref)); //$NON-NLS-1$						
+        logger.debug("[Semantic M2] Filtering non-navigable children: " + LogHelper.makeFeatureDescription(ref)); //$NON-NLS-1$
       }
     }
     return new ArrayList<EObject>(result);
   }
 
   /**
- * @param eClass
- */
-private void logNonSemanticClass(EClass eClass) {
-	if (logger != null && logger.isDebugEnabled() && !messageSent.contains(eClass)){
-  	  logger.debug("[Semantic M2] Filtering instances of non-semantic class: " + eClass.getName()); //$NON-NLS-1$
-	}
-}
+   * @param eClass
+   */
+  private void logNonSemanticClass(EClass eClass) {
+    if (logger != null && logger.isDebugEnabled() && !messageSent.contains(eClass)) {
+      logger.debug("[Semantic M2] Filtering instances of non-semantic class: " + eClass.getName()); //$NON-NLS-1$
+    }
+  }
 
-/**
+  /**
    * In semantic mode, non-navigable references are not considered.
+   * 
    * @see EObject.getEAllReferences()
    */
   public List<EReference> getEAllReferences(EClass clazz) {
@@ -307,6 +317,7 @@ private void logNonSemanticClass(EClass eClass) {
 
   /**
    * In semantic mode, non-navigable attributes are not considered.
+   * 
    * @see EObject.getEAllAttributes()
    */
   public List<EAttribute> getEAllAttributes(EClass clazz) {
@@ -324,6 +335,7 @@ private void logNonSemanticClass(EClass eClass) {
 
   /**
    * In semantic mode, non navigable features are not considered.
+   * 
    * @see EObject.getEStructuralFeatures()
    * @param clazz
    * @return
@@ -339,10 +351,13 @@ private void logNonSemanticClass(EClass eClass) {
   }
 
   /**
-   * If semantic mode is disabled, returns true in all cases. If semantic mode is enabled, different rules apply for different types of elements: - An
-   * EClassifier is visible if it is tagged with the 'SEMANTIC' annotation. - An EStructuralFeature is visible if it is tagged with the 'NAVIGABLE' annotation.
-   * - All other types of elements are visible. FIXME spec?
-   * @param element the element to check
+   * If semantic mode is disabled, returns true in all cases. If semantic mode is enabled, different rules apply for
+   * different types of elements: - An EClassifier is visible if it is tagged with the 'SEMANTIC' annotation. - An
+   * EStructuralFeature is visible if it is tagged with the 'NAVIGABLE' annotation. - All other types of elements are
+   * visible. FIXME spec?
+   * 
+   * @param element
+   *          the element to check
    * @return whether the element is visible or not.
    */
   @SuppressWarnings("boxing")
@@ -392,6 +407,34 @@ private void logNonSemanticClass(EClass eClass) {
 
   /**
    * 
+   * @return all semantic classes in Capella meta-model
+   */
+  public List<EStructuralFeature> getAllCapellaSemanticStructuralFeatures() {
+    List<EStructuralFeature> capellaSemanticStructuralFeatures = new ArrayList<EStructuralFeature>();
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(CsPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(CtxPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(EpbsPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(FaPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(InformationPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(InteractionPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(LaPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(CapellacommonPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(CapellacorePackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(CapellamodellerPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(OaPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(PaPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(RequirementPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(SharedmodelPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(ActivityPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(BehaviorPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(ModellingcorePackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(LibrariesPackage.eINSTANCE));
+    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(RePackage.eINSTANCE));
+    return capellaSemanticStructuralFeatures;
+  }
+
+  /**
+   * 
    * @param ePackage
    * @return all semantic classes in a package
    */
@@ -403,10 +446,33 @@ private void logNonSemanticClass(EClass eClass) {
         result.add((EClass) classifer);
       }
     }
-    //Search also in sub-packages
+    // Search also in sub-packages
     List<EPackage> subPackages = ePackage.getESubpackages();
     for (EPackage subPkg : subPackages) {
       result.addAll(getSemanticClasses(subPkg));
+    }
+    return result;
+  }
+
+  /**
+   * 
+   * @param ePackage
+   * @return all semantic structural features in a package
+   */
+  public List<EStructuralFeature> getSemanticStructuralFeatures(EPackage ePackage) {
+    List<EStructuralFeature> result = new ArrayList<EStructuralFeature>();
+    List<EClassifier> classifiers = ePackage.getEClassifiers();
+    for (EClassifier classifer : classifiers) {
+      if (classifer instanceof EClass) {
+        for (EStructuralFeature structuralFeature : ((EClass) classifer).getEStructuralFeatures())
+          if (metadata.isSemantic(structuralFeature))
+            result.add(structuralFeature);
+      }
+    }
+    // Search also in sub-packages
+    List<EPackage> subPackages = ePackage.getESubpackages();
+    for (EPackage subPkg : subPackages) {
+      result.addAll(getSemanticStructuralFeatures(subPkg));
     }
     return result;
   }
