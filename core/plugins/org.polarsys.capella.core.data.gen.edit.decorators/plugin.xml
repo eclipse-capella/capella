@@ -65,4 +65,16 @@
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
         uri="http://www.polarsys.org/capella/core/pa/1.1.0"/>
    </extension>
+  <extension
+        point="org.polarsys.capella.core.model.handler.decoratorAdapterFactory">
+     <decoratorAdapterFactory
+           class="org.polarsys.capella.core.data.fa.provider.FaItemProviderDecoratorAdapterFactory">
+     </decoratorAdapterFactory>
+  </extension>
+  <extension
+        point="org.polarsys.capella.core.model.handler.decoratorAdapterFactory">
+     <decoratorAdapterFactory
+           class="org.polarsys.capella.core.data.interaction.provider.InteractionItemProviderDecoratorAdapterFactory">
+     </decoratorAdapterFactory>
+  </extension>
 </plugin>
