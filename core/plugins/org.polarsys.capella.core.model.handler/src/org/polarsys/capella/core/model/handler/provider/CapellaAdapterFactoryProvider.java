@@ -10,14 +10,17 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.handler.provider;
 
+import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.DecoratorAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.polarsys.capella.common.data.activity.provider.ActivityItemProviderAdapterFactory;
 import org.polarsys.capella.common.data.behavior.provider.BehaviorItemProviderAdapterFactory;
 import org.polarsys.capella.common.data.modellingcore.provider.ModellingcoreItemProviderAdapterFactory;
+import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.IAdapterFactoryProvider;
 import org.polarsys.capella.core.data.capellacommon.provider.CapellacommonItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.capellacore.provider.CapellacoreItemProviderAdapterFactory;
@@ -25,12 +28,10 @@ import org.polarsys.capella.core.data.capellamodeller.provider.CapellamodellerIt
 import org.polarsys.capella.core.data.cs.provider.CsItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.ctx.provider.CtxItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.epbs.provider.EpbsItemProviderAdapterFactory;
-import org.polarsys.capella.core.data.fa.provider.FaItemProviderDecoratorAdapterFactory;
 import org.polarsys.capella.core.data.information.communication.provider.CommunicationItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.information.datatype.provider.DatatypeItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.information.datavalue.provider.DatavalueItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.information.provider.InformationItemProviderAdapterFactory;
-import org.polarsys.capella.core.data.interaction.provider.InteractionItemProviderDecoratorAdapterFactory;
 import org.polarsys.capella.core.data.la.provider.LaItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.oa.provider.OaItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.pa.deployment.provider.DeploymentItemProviderAdapterFactory;
@@ -89,10 +90,16 @@ public class CapellaAdapterFactoryProvider implements IAdapterFactoryProvider {
   private AdapterFactory createAdapterFactory() {
     ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
-    // decorators
-    adapterFactory.addAdapterFactory(new FaItemProviderDecoratorAdapterFactory());
-    adapterFactory.addAdapterFactory(new InteractionItemProviderDecoratorAdapterFactory());
-
+    // add decorators first
+    IConfigurationElement[] contributors = ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.core.model.handler", "decoratorAdapterFactory");
+    for (IConfigurationElement contributorElement : contributors) {
+      DecoratorAdapterFactory decorator =
+        (DecoratorAdapterFactory) ExtensionPointHelper.createInstance(contributorElement, ExtensionPointHelper.ATT_CLASS);
+      if (decorator != null) {
+        adapterFactory.addAdapterFactory(decorator);
+      }
+    }
+    
     adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new CapellamodellerItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new CapellacoreItemProviderAdapterFactory());
