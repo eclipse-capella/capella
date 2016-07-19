@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,72 +51,70 @@ public class DefaultNameConflictConstraint extends AbstractModelConstraint {
   private CapellaSwitch<?> signatureSwitch;
   private CapellaSwitch<?> slotSwitch;
   
-  public DefaultNameConflictConstraint(CapellaSwitch<?> signatureSwitch_p, CapellaSwitch<?> slotSwitch_p) {
-    slotSwitch = slotSwitch_p;
-    signatureSwitch = signatureSwitch_p; 
+  public DefaultNameConflictConstraint(CapellaSwitch<?> signatureSwitch, CapellaSwitch<?> slotSwitch) {
+    this.slotSwitch = slotSwitch;
+    this.signatureSwitch = signatureSwitch; 
   }
   
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-
-    IStatus result = Status.OK_STATUS;
-    EMFEventType eType = ctx_p.getEventType();
-    if (eType == EMFEventType.NULL) {
-      EObject container = ctx_p.getTarget();
-
-      // slot => ( signature => [ children ];
-      Map<Object, Map<Object, List<EObject>>> symbols = new HashMap<Object, Map<Object, List<EObject>>>();
-
-      for (EObject child : container.eContents()) {
-    	  if (child instanceof CommunicationMean) {
-			continue ;
-		}
-        Object slot = slotSwitch.doSwitch(child);
-        Map<Object, List<EObject>> slotEntries = symbols.get(slot);
-        if (slotEntries == null) {
-          slotEntries = new HashMap<Object, List<EObject>>();
-          symbols.put(slot, slotEntries);
-        }
-        Object signature = signatureSwitch.doSwitch(child);
-        
-        if (signature != null && !signature.equals(ICommonConstants.EMPTY_STRING)) {
-          
-          if (signature instanceof String && (((String) signature).equalsIgnoreCase("null"))){ //$NON-NLS-1$
-            continue; 
-          }
-          
-          List<EObject> objectsForSignature = slotEntries.get(signature);
-          if (objectsForSignature == null) {
-            objectsForSignature = new ArrayList<EObject>();
-            slotEntries.put(signature, objectsForSignature);
-          }
-          objectsForSignature.add(child);
-        }
-      }
-
-      List<IStatus> problems = new ArrayList<IStatus>();
-
-      for (Object slot : symbols.keySet()) {
-        Map<Object, List<EObject>> slotEntries = symbols.get(slot);
-        for (Object signature : slotEntries.keySet()) {
-          List<EObject> objectsForSignature = slotEntries.get(signature);
-          if (objectsForSignature.size() > 1) {
-            ctx_p.addResults(objectsForSignature);
-            IStatus status = doCreateFailureStatus(ctx_p, container, objectsForSignature);
-            problems.add(status);
-          }
-        }
-      }
-
-      if (problems.size() > 0) {
-        result = ConstraintStatus.createMultiStatus(ctx_p, problems);
-      }
-
+  public IStatus validate(IValidationContext ctx) {
+    EMFEventType eType = ctx.getEventType();
+    if (eType != EMFEventType.NULL) {
+      return Status.OK_STATUS;
     }
+    IStatus result = Status.OK_STATUS;
+    EObject container = ctx.getTarget();
+    // slot => ( signature => [ children ])
+    Map<Object, Map<Object, List<EObject>>> symbols = new HashMap<Object, Map<Object, List<EObject>>>();
+
+    for (EObject child : container.eContents()) {
+      if (child instanceof CommunicationMean) {
+        continue;
+      }
+      Object slot = slotSwitch.doSwitch(child);
+      Map<Object, List<EObject>> slotEntries = symbols.get(slot);
+      if (slotEntries == null) {
+        slotEntries = new HashMap<Object, List<EObject>>();
+        symbols.put(slot, slotEntries);
+      }
+      Object signature = signatureSwitch.doSwitch(child);
+
+      if (signature != null && !signature.equals(ICommonConstants.EMPTY_STRING)) {
+
+        if (signature instanceof String && (((String) signature).equalsIgnoreCase("null"))) { //$NON-NLS-1$
+          continue;
+        }
+
+        List<EObject> objectsForSignature = slotEntries.get(signature);
+        if (objectsForSignature == null) {
+          objectsForSignature = new ArrayList<EObject>();
+          slotEntries.put(signature, objectsForSignature);
+        }
+        objectsForSignature.add(child);
+      }
+    }
+
+    List<IStatus> problems = new ArrayList<IStatus>();
+
+    for (Map.Entry<Object, Map<Object, List<EObject>>> symbol : symbols.entrySet()) {
+      Map<Object, List<EObject>> slotEntries = symbol.getValue();
+      for (Map.Entry<Object, List<EObject>> slotEntry : slotEntries.entrySet()) {
+        List<EObject> objectsForSignature = slotEntry.getValue();
+        if (objectsForSignature.size() > 1) {
+          ctx.addResults(objectsForSignature);
+          IStatus status = doCreateFailureStatus(ctx, container, objectsForSignature);
+          problems.add(status);
+        }
+      }
+    }
+
+    if (problems.size() > 0) {
+      result = ConstraintStatus.createMultiStatus(ctx, problems);
+    }
+
     return result;
   }
 
-  @SuppressWarnings("boxing")
   protected IStatus doCreateFailureStatus(IValidationContext ctx, EObject container, List<EObject> conflictingChildren){
     
     StringBuilder builder = new StringBuilder();
@@ -124,9 +122,9 @@ public class DefaultNameConflictConstraint extends AbstractModelConstraint {
       builder.append(", "); //$NON-NLS-1$
       builder.append(NamingHelper.getValue(child, null));
     }
-    builder.replace(0, 2, ICommonConstants.EMPTY_STRING);
+    String result = builder.substring(2);
     
-    return ctx.createFailureStatus(NamingHelper.getValue(container, null), conflictingChildren.size(), builder.toString());
+    return ctx.createFailureStatus(NamingHelper.getValue(container, null), conflictingChildren.size(), result);
   }
 
     
