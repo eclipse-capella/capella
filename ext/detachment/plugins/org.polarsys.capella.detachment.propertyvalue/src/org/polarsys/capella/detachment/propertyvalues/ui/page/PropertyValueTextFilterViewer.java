@@ -12,11 +12,10 @@ package org.polarsys.capella.detachment.propertyvalues.ui.page;
 
 import java.util.regex.Pattern;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
-public class PropertyValueFilterViewer extends ViewerFilter {
+public class PropertyValueTextFilterViewer extends ViewerFilter {
 
 	 private String pattern = null;
 	 
@@ -31,13 +30,11 @@ public class PropertyValueFilterViewer extends ViewerFilter {
 	 
 	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
-		
 		if (getPattern() == null || getPattern().isEmpty())
 			return true;
-		String name = PropertyValueHelper.getEObjectName((EObject)element);
+		String name = PropertyValueHelper.getStringAttribute(element, "getName"); //$NON-NLS-1$
+		String path = PropertyValueHelper.getStringAttribute(element, "getFullLabel"); //$NON-NLS-1$
 		Pattern regExpPattern = Pattern.compile(pattern);
-		return regExpPattern.matcher(name).find();
-
+		return regExpPattern.matcher(name).find() || regExpPattern.matcher(path).find();
 	}
-
 }
