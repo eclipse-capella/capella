@@ -15,6 +15,7 @@ import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.context.XBreakdownDiagram;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.diagram.tools.ju.model.GenericModel;
+import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 public class LCBDScenario extends EmptyProject {
 
@@ -24,16 +25,24 @@ public class LCBDScenario extends EmptyProject {
 
     XBreakdownDiagram diagram = XBreakdownDiagram.createCBDiagram(context, LA__LOGICAL_SYSTEM);
 
-    diagram.createComponent(GenericModel.LC_1, 1, ICommonConstants.EMPTY_STRING, diagram.getDiagramId(), diagram.getDiagramId());
-    diagram.createComponent(GenericModel.LC_1_1, 2, ICommonConstants.EMPTY_STRING, GenericModel.LC_1, diagram.getDiagramId());
-    diagram.createComponent(GenericModel.LC_2, 1, ICommonConstants.EMPTY_STRING, diagram.getDiagramId(), diagram.getDiagramId());
+    diagram.createComponent(GenericModel.LC_1, 1, ICommonConstants.EMPTY_STRING, diagram.getDiagramId(),
+        diagram.getDiagramId());
+    diagram.createComponent(GenericModel.LC_1_1, 2, ICommonConstants.EMPTY_STRING, GenericModel.LC_1,
+        diagram.getDiagramId());
+    diagram.createComponent(GenericModel.LC_2, 1, ICommonConstants.EMPTY_STRING, diagram.getDiagramId(),
+        diagram.getDiagramId());
 
     diagram.createCContainedIn(GenericModel.LC_2, GenericModel.LC_1_1);
 
     diagram.createConstraint(GenericModel.CONSTRAINT_1);
     diagram.createConstrainedElement(GenericModel.CONSTRAINT_1, GenericModel.LC_2);
 
-    diagram.createComponent(GenericModel.LC_3, 1, ICommonConstants.EMPTY_STRING, diagram.getDiagramId(), diagram.getDiagramId());
+    diagram.createComponent(GenericModel.LC_3, 1, ICommonConstants.EMPTY_STRING, diagram.getDiagramId(),
+        diagram.getDiagramId());
+
+    // Set the Project multi-parts
+    TestHelper.setReusableComponents(diagram.getSemanticElement(GenericModel.LC_3), true);
+
     diagram.createPart(GenericModel.LC_1, GenericModel.LC_3, diagram.getDiagramId());
   }
 }
