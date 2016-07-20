@@ -15,9 +15,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 /**
  */
@@ -41,23 +39,21 @@ public class EObjectExt2 extends EObjectExt {
    * @return
    */
   public static String formatValues(Collection<?> values, EStructuralFeature feature, String defaultText) {
-    String value = ICommonConstants.EMPTY_STRING;
-
     if (values.isEmpty()) {
-      value = defaultText;
-    } else {
-      int index = 0;
-      for (Object obj : values) {
-        if (obj instanceof EObject) {
-          value += NamingHelper.getValue((EObject) obj, feature);
-        } else {
-          value += defaultText;
-        }
-        if (++index < values.size()) {
-          value += ", "; //$NON-NLS-1$
-        }
+      return defaultText;
+    } 
+    StringBuilder value = new StringBuilder();
+    int index = 0;
+    for (Object obj : values) {
+      if (obj instanceof EObject) {
+        value.append(NamingHelper.getValue((EObject) obj, feature));
+      } else {
+        value.append(defaultText);
+      }
+      if (++index < values.size()) {
+        value.append(", "); //$NON-NLS-1$
       }
     }
-    return value;
+    return value.toString();
   }
 }
