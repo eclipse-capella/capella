@@ -24,4 +24,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.intro,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.application
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

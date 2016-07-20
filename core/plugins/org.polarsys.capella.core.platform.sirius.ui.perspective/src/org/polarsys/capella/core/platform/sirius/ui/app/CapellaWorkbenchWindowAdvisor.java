@@ -37,11 +37,11 @@ import org.polarsys.capella.core.preferences.Activator;
 public class CapellaWorkbenchWindowAdvisor extends IDEWorkbenchWindowAdvisor {
   /**
    * Constructor.
-   * @param wbAdvisor_p
-   * @param configurer_p
+   * @param wbAdvisor
+   * @param configurer
    */
-  public CapellaWorkbenchWindowAdvisor(IDEWorkbenchAdvisor wbAdvisor_p, IWorkbenchWindowConfigurer configurer_p) {
-    super(wbAdvisor_p, configurer_p);
+  public CapellaWorkbenchWindowAdvisor(IDEWorkbenchAdvisor wbAdvisor, IWorkbenchWindowConfigurer configurer) {
+    super(wbAdvisor, configurer);
   }
 
   /**
@@ -99,6 +99,16 @@ public class CapellaWorkbenchWindowAdvisor extends IDEWorkbenchWindowAdvisor {
   @Override
   public void postWindowRestore() throws WorkbenchException {
     super.postWindowRestore();
+    initCapellaPerspective();
+  }
+
+  @Override
+  public void postWindowCreate() {
+    super.postWindowCreate();
+    initCapellaPerspective();
+  }
+  
+  private void initCapellaPerspective() {
     IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
     IWorkbenchWindow window = configurer.getWindow();
     // The active page was set in the super call.
