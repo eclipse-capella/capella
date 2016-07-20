@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -179,7 +179,6 @@ public interface IDNDToolNameConstants {
   // M&S
   String TOOL_MS_DND_CONSTRAINTS_FROM_EXPLORER = "D&D Constraint From Project Explorer"; //$NON-NLS-1$
   String TOOL_MS_DND_MODESTATE_FROM_EXPLORER = "D&D ModeState From Project Explorer"; //$NON-NLS-1$
-  String TOOL_MS_DND_PSEUDOSTATE_FROM_DIAGRAM = "D&D PseudoState from Diagram"; //$NON-NLS-1$
   String TOOL_MS_DND_MODESTATE_FROM_DIAGRAM = "D&D ModeState from Diagram"; //$NON-NLS-1$
 
   // OAB
