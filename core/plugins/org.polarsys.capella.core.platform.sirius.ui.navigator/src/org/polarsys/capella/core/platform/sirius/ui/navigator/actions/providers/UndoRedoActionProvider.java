@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,14 +12,17 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.commands.operations.IOperationHistory;
 import org.eclipse.core.commands.operations.IUndoContext;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.actions.ActionContext;
@@ -51,14 +54,14 @@ public class UndoRedoActionProvider extends CommonActionProvider implements ICom
    * @see org.eclipse.ui.navigator.CommonActionProvider#init(org.eclipse.ui.navigator.ICommonActionExtensionSite)
    */
   @Override
-  public void init(ICommonActionExtensionSite site_p) {
-    super.init(site_p);
+  public void init(ICommonActionExtensionSite site) {
+    super.init(site);
 
-    IWorkbenchPartSite site = ((ICommonViewerWorkbenchSite) site_p.getViewSite()).getSite();
+    IWorkbenchPartSite workbenchPartSite = ((ICommonViewerWorkbenchSite) site.getViewSite()).getSite();
     // Create the undo action handler
-    undoActionHandler = new UndoActionHandler(site, null/*undoContext*/);
+    undoActionHandler = new UndoActionHandler(workbenchPartSite, null/*undoContext*/);
     // Create the redo action handler
-    redoActionHandler = new RedoActionHandler(site, null/*undoContext*/);
+    redoActionHandler = new RedoActionHandler(workbenchPartSite, null/*undoContext*/);
 
     NavigatorEditingDomainDispatcher.registerCommandStackSelectionProvider(this);
     updateActionBars();
@@ -68,18 +71,18 @@ public class UndoRedoActionProvider extends CommonActionProvider implements ICom
    * @see org.eclipse.ui.actions.ActionGroup#fillActionBars(org.eclipse.ui.IActionBars)
    */
   @Override
-  public void fillActionBars(IActionBars actionBars_p) {
-    actionBars_p.setGlobalActionHandler(ActionFactory.UNDO.getId(), undoActionHandler);
-    actionBars_p.setGlobalActionHandler(ActionFactory.REDO.getId(), redoActionHandler);
+  public void fillActionBars(IActionBars actionBars) {
+    actionBars.setGlobalActionHandler(ActionFactory.UNDO.getId(), undoActionHandler);
+    actionBars.setGlobalActionHandler(ActionFactory.REDO.getId(), redoActionHandler);
   }
 
   /**
    * @see org.eclipse.ui.actions.ActionGroup#fillContextMenu(org.eclipse.jface.action.IMenuManager)
    */
   @Override
-  public void fillContextMenu(IMenuManager menu_p) {
-    menu_p.appendToGroup(ICommonMenuConstants.GROUP_EDIT, undoActionHandler);
-    menu_p.appendToGroup(ICommonMenuConstants.GROUP_EDIT, redoActionHandler);
+  public void fillContextMenu(IMenuManager menu) {
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, undoActionHandler);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, redoActionHandler);
   }
 
   /**
@@ -98,7 +101,23 @@ public class UndoRedoActionProvider extends CommonActionProvider implements ICom
       selection = getActionSite().getViewSite().getSelectionProvider().getSelection();
     }
     if (selection instanceof IStructuredSelection) {
-      editingDomain = TransactionHelper.getEditingDomain((Collection) ((IStructuredSelection) selection).toList());
+      IStructuredSelection structuralSel = (IStructuredSelection) selection;
+      //If a representation item is clicked, the editing domain should be retrieved from the corresponding diagram
+      if (structuralSel.size() == 1)
+      {
+        Object selectedElement = structuralSel.getFirstElement();
+        if (selectedElement instanceof RepresentationItemImpl)
+          editingDomain = TransactionHelper.getEditingDomain(((RepresentationItemImpl)selectedElement).getRepresentation());
+      }
+      
+      boolean isEObjectList = true;
+      List selectionList = ((IStructuredSelection) selection).toList();
+      for (Object obj : selectionList)
+        if (!(obj instanceof EObject))
+          isEObjectList = false;
+      //Editing domain can only be retrieved from a list of EObjects
+      if (isEObjectList)
+        editingDomain = TransactionHelper.getEditingDomain((Collection) selectionList);
     }
     if (null != editingDomain) {
       // Get the appropriate undo context.
@@ -131,7 +150,7 @@ public class UndoRedoActionProvider extends CommonActionProvider implements ICom
    * {@inheritDoc}
    */
   @Override
-  public void commandStackSelectionChanged(ISelection selection_p) {
+  public void commandStackSelectionChanged(ISelection selection) {
     updateActionBars();
   }
 }
