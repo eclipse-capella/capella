@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
@@ -35,8 +36,6 @@ import org.eclipse.ui.PlatformUI;
 /**
  * A new callBack to do the same thing that the original callBack except for the
  * notification of the migration (see {@link #notifyUserForMigration()}.
- * 
- * 
  */
 public class SiriusUiCallBack implements UICallBack {
 
@@ -122,6 +121,15 @@ public class SiriusUiCallBack implements UICallBack {
      */
     public List<String> askForTypedVariable(List<TypedVariable> typedVariableList, List<String> defaultValues) throws InterruptedException {
         return defaultCallBack.askForTypedVariable(typedVariableList, defaultValues);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#askSessionReopeningWithResourceVersionMismatch(org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException)
+     */
+    public boolean askSessionReopeningWithResourceVersionMismatch(AirdResourceVersionMismatchException exception) {
+      return defaultCallBack.askSessionReopeningWithResourceVersionMismatch(exception);
     }
 
     /**

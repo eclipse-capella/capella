@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.platform.sirius.ui.commands;
 
 import java.util.Collection;
@@ -30,11 +29,12 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 
 /**
  */
@@ -90,10 +90,14 @@ public class DeleteRepresentationCommand extends RecordingCommand {
         if (null != session) {
           // Closes the related opened editors.
           closeActiveRepresentationEditor(representation, session);
-          // Delete the current representation.
-          if (DialectManager.INSTANCE.deleteRepresentation(representation, session)) {
-            // Notify changes.
-            SessionManager.INSTANCE.notifyRepresentationDeleted(session);
+
+          DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(session, representation);
+          if (descriptor != null) {
+            // Delete the current representation.
+            if (DialectManager.INSTANCE.deleteRepresentation(descriptor, session)) {
+              // Notify changes.
+              SessionManager.INSTANCE.notifyRepresentationDeleted(session);
+            }
           }
         } else {
           StringBuilder loggerMessage = new StringBuilder("DeleteRepresentationAction.DeleteRepresentationCommand.doExecute(..) _ "); //$NON-NLS-1$

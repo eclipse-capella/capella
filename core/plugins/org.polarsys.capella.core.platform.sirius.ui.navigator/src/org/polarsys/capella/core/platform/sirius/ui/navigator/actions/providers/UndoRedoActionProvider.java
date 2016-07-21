@@ -103,11 +103,10 @@ public class UndoRedoActionProvider extends CommonActionProvider implements ICom
     if (selection instanceof IStructuredSelection) {
       IStructuredSelection structuralSel = (IStructuredSelection) selection;
       //If a representation item is clicked, the editing domain should be retrieved from the corresponding diagram
-      if (structuralSel.size() == 1)
-      {
+      if (structuralSel.size() == 1) {
         Object selectedElement = structuralSel.getFirstElement();
         if (selectedElement instanceof RepresentationItemImpl)
-          editingDomain = TransactionHelper.getEditingDomain(((RepresentationItemImpl)selectedElement).getRepresentation());
+          editingDomain = TransactionHelper.getEditingDomain(((RepresentationItemImpl) selectedElement).getDRepresentationDescriptor().getRepresentation());
       }
       
       boolean isEObjectList = true;
