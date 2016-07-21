@@ -22,10 +22,12 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.StringHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 
 /**
@@ -37,11 +39,11 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
   /**
    * The representations to clone.
    */
-  private Collection<DRepresentation> _representations;
+  private Collection<DRepresentationDescriptor> _representationDescriptors;
   /**
    * Cloned representations.
    */
-  private Collection<DRepresentation> _clones;
+  private Collection<DRepresentationDescriptor> _clones;
   /**
    * Clone life cycle listeners.
    */
@@ -53,7 +55,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
    */
   public CapellaCloneDiagramCommand(Collection<DRepresentation> representations) {
     super(Messages.CapellaCloneDiagramCommand_CommandLabel);
-    _representations = representations;
+    _representationDescriptors = RepresentationHelper.getRepresentationDescriptors(representations);
   }
 
   /**
@@ -70,8 +72,8 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
       _listeners.clear();
       _listeners = null;
     }
-    if (null != _representations) {
-      _representations = null;
+    if (null != _representationDescriptors) {
+      _representationDescriptors = null;
     }
   }
 
@@ -144,7 +146,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
   public void execute() {
     // Initialize clones list.
     if (null == _clones) {
-      _clones = new ArrayList<DRepresentation>(0);
+      _clones = new ArrayList<DRepresentationDescriptor>(0);
     } else {
       // Ensure emptiness.
       if (_clones.size() > 0) {
@@ -152,7 +154,8 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
       }
     }
     // Copy all representations.
-    for (DRepresentation representation : _representations) {
+    for (DRepresentationDescriptor descriptor : _representationDescriptors) {
+      DRepresentation representation = descriptor.getRepresentation();
       if (representation instanceof DSemanticDecorator) {
         // Get target semantic element.
         EObject target = ((DSemanticDecorator) representation).getTarget();
@@ -160,8 +163,11 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
         Session session = SessionManager.INSTANCE.getSession(target);
         // Copy representation.
         DRepresentation copyRepresentation = DialectManager.INSTANCE.copyRepresentation(representation, getCloneName(representation, session), session, null);
-        // Retain copied reference.
-        _clones.add(copyRepresentation);
+        DRepresentationDescriptor copyRepresentationDescriptor = RepresentationHelper.getRepresentationDescriptor(session, copyRepresentation);
+        if (copyRepresentationDescriptor != null) {
+          // Retain copied reference.
+          _clones.add(copyRepresentationDescriptor);
+        }
       } else {
         CapellaActionsActivator activator = CapellaActionsActivator.getDefault();
         activator.getLog().log(new Status(IStatus.WARNING, activator.getPluginId(), "Clone is not supported for " + representation.getName())); //$NON-NLS-1$
@@ -219,9 +225,9 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
   @Override
   public void undo() {
     // Delete all cloned representations.
-    for (DRepresentation representation : _clones) {
-      Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
-      DialectManager.INSTANCE.deleteRepresentation(representation, session);
+    for (DRepresentationDescriptor descriptor : _clones) {
+      Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) descriptor.getRepresentation()).getTarget());
+      DialectManager.INSTANCE.deleteRepresentation(descriptor, session);
     }
     // Clean clones collection.
     _clones.clear();
