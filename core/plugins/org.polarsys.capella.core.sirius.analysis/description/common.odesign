@@ -13801,7 +13801,7 @@
                   <parameters name="context" value="&lt;% $container %>"/>
                   <parameters name="scope" value="&lt;% $container.getISScopeInsertComponents() %>"/>
                   <parameters name="initialSelection" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance[abstractType.filter (&quot;Component&quot;).nSize > 0 &amp;&amp; abstractType.filter (&quot;AbstractActor&quot;).nSize == 0]  %>"/>
-                  <parameters name="wizardMessage"/>
+                  <parameters name="wizardMessage" value=""/>
                   <parameters name="resultVariable" value="result"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>">
@@ -13838,7 +13838,7 @@
                   <parameters name="context" value="&lt;% $container %>"/>
                   <parameters name="scope" value="&lt;% $container.getISScopeInsertActors() %>"/>
                   <parameters name="initialSelection" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance[abstractType.filter (&quot;AbstractActor&quot;).nSize > 0]  %>"/>
-                  <parameters name="wizardMessage"/>
+                  <parameters name="wizardMessage" value=""/>
                   <parameters name="resultVariable" value="result"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>">
@@ -13872,7 +13872,7 @@
                   <parameters name="context" value="&lt;% $container %>"/>
                   <parameters name="scope" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).getSharedDataEventForSD() %>"/>
                   <parameters name="initialSelection" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance[abstractType.filter (&quot;ExchangeItem&quot;).nSize > 0]  %>"/>
-                  <parameters name="wizardMessage"/>
+                  <parameters name="wizardMessage" value=""/>
                   <parameters name="resultVariable" value="result"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>">
