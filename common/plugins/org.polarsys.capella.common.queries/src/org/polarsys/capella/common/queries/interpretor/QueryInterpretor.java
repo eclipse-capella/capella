@@ -120,10 +120,10 @@ public class QueryInterpretor {
 		return (List<T>) result;
 	}
 
-  public static <T> List<T> executeQuery(String queryIdentifier, Object semanticsObject_p, IQueryContext context, IQueryFilter filter) {
+  public static <T> List<T> executeQuery(String queryIdentifier, Object semanticsObject, IQueryContext context, IQueryFilter filter) {
     Set<IQueryFilter> filters = getFilters(queryIdentifier);
     if (filter != null) filters.add(filter);
-    return executeQuery(queryIdentifier, semanticsObject_p, context, filters);
+    return executeQuery(queryIdentifier, semanticsObject, context, filters);
   }
 
 	public static <T> List<T> executeQuery(String queryIdentifier, Object semanticsObject, IQueryContext context) {
@@ -204,7 +204,7 @@ public class QueryInterpretor {
   				query.setIdentifier(queryIdentifier);
   				query.setExtendedQueryIdentifier(queryIdentifier2ExtendedQueryIdentifier.get(queryIdentifier));
   				identifier2Query.put(queryIdentifier, query);
-  				queryToId.put(query, new Integer(queryIdCounter++));
+  				queryToId.put(query, Integer.valueOf(queryIdCounter++));
 				}
 			} catch (CoreException exception) {
 				exception.printStackTrace();

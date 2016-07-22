@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.helpers.argumentparser;
 
 import java.util.ArrayList;
@@ -16,6 +15,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.osgi.util.NLS;
 
@@ -44,12 +44,10 @@ public class ArgumentAnalyzer {
    * @param numberOfArgument number of expected data
    */
   public ArgumentAnalyzer(int numberOfArgument) {
-    
     init();
     
     _strictMode = true;
     _unknownFlagAsError = true;
-        
   }
   
   /**
@@ -58,7 +56,6 @@ public class ArgumentAnalyzer {
    * @param strictMode arguments must be given in a specific order and thus, unknown flags are not allowed
    */
   public ArgumentAnalyzer(boolean strictMode) {
-    
    init();
    
    _strictMode = strictMode;
@@ -70,7 +67,6 @@ public class ArgumentAnalyzer {
      // We keep default behavior
      _unknownFlagAsError = _UNKNOWN_FLAG_AS_ERROR_DEFAULT;
    }
-    
   }
   
 
@@ -94,7 +90,6 @@ public class ArgumentAnalyzer {
     }
      
     _unknownFlagAsError = unknowFlagAsError;
-
   }
 
   
@@ -107,7 +102,6 @@ public class ArgumentAnalyzer {
    * @throws ArgumentAnalyzerException
    */
   public void addFlag(String id, String flagName, boolean isMandatory, int nbData) throws ArgumentAnalyzerException {
-
     // Id must be unique
     if ( _flags.keySet().contains(id) ) {
       throw new ArgumentAnalyzerException(NLS.bind(Messages.duplicatedId, id));
@@ -119,8 +113,6 @@ public class ArgumentAnalyzer {
     }
     
     _flags.put(id, new Flag(flagName, isMandatory, nbData));
-
-    return;
   }
   
   /**
@@ -132,7 +124,6 @@ public class ArgumentAnalyzer {
    */
   public void addFlag(String id, Flag flag) throws ArgumentAnalyzerException {
     addFlag(id, flag.getName(), flag.isMandatory(), flag.getNumberOfData());
-    return;
   }
   
   
@@ -142,7 +133,6 @@ public class ArgumentAnalyzer {
    * @throws ArgumentAnalyzerException
    */
   public void parse(String[] arguments) throws ArgumentAnalyzerException {
- 
     // Let's clean older result
     _values.clear();
     
@@ -151,8 +141,6 @@ public class ArgumentAnalyzer {
     } else {
       defaultModeParsing(arguments);
     }
-    
-    return;
   }
   
   /**
@@ -161,7 +149,6 @@ public class ArgumentAnalyzer {
    * @return
    */
   public boolean isArgHasBeenFound(String flagId) throws ArgumentAnalyzerException{
-    
     if (!_flags.containsKey(flagId)) {
       throw new ArgumentAnalyzerException(
           NLS.bind(Messages.unexpectedFlag, flagId)
@@ -180,7 +167,6 @@ public class ArgumentAnalyzer {
    * @throws ArgumentAnalyzerException
    */
   public List<String> getFlagArgs(String flagId) throws ArgumentAnalyzerException {
-    
     List<String> results = null;
     
     if ( isArgHasBeenFound(flagId) ) {
@@ -211,7 +197,6 @@ public class ArgumentAnalyzer {
    * @return the number of occurrence of this flag
    */
   protected int getNumberOfFlagDefinedWithName(String flagName) {
-    
     int result = 0;
     
     for (Flag flag: _flags.values()) {
@@ -229,7 +214,6 @@ public class ArgumentAnalyzer {
    * @return 
    */
   protected boolean isFlagWithNameDefined(String flagName) {
-    
     boolean b= false;
     
     for (Flag flag: _flags.values()) {
@@ -248,12 +232,11 @@ public class ArgumentAnalyzer {
    * @return a {@link List} of flagId which are named flagName
    */
   protected List<String> getFlagIdPerName(String flagName) {
-    
     List<String> result = new ArrayList<String>();
     
-    for (String currentId: _flags.keySet()) {
-      if (_flags.get(currentId).getName().equals(flagName)) {
-        result.add(currentId);
+    for (Entry<String, Flag> entry : _flags.entrySet()) {
+      if (entry.getValue().getName().equals(flagName)) {
+        result.add(entry.getKey());
       }
     }
     
@@ -261,18 +244,12 @@ public class ArgumentAnalyzer {
   }
   
   protected void clearResult() {
-    
     _values.clear();
-    
-    return;
   }
   
   protected void init() {
-    
     _flags = new LinkedHashMap<String, Flag>();
     _values = new LinkedHashMap<String, List<String>>();
-    
-    return;
   }
   
   /**
@@ -281,7 +258,6 @@ public class ArgumentAnalyzer {
    * @throws ArgumentAnalyzerException
    */
   protected void defaultModeParsing(String[] arguments) throws ArgumentAnalyzerException {
-    
     String currentArg = null;
     String currentId = null;
     Flag flag = null;
@@ -327,13 +303,14 @@ public class ArgumentAnalyzer {
     // mandatory flags have been found.
     //
     
-    Iterator<String> it = _flags.keySet().iterator();
+    Iterator<Entry<String, Flag>> it = _flags.entrySet().iterator();
     String currentFlagId = null;
     List<String> missingFlags = new ArrayList<String>();
     
     while (it.hasNext()) {
-      currentFlagId = it.next();
-      flag = _flags.get(currentFlagId);
+      Entry<String, Flag> entry = it.next();
+      currentFlagId = entry.getKey();
+      flag = entry.getValue();
       if (
           flag.isMandatory() == true &&
           _values.containsKey(currentFlagId) == false 
@@ -350,8 +327,6 @@ public class ArgumentAnalyzer {
         )
       );
     }
-    
-    return;
   }
   
   /**
@@ -363,7 +338,7 @@ public class ArgumentAnalyzer {
     
     // We simply parse the ordered list of Flag and arguments must be compliant.
     
-    
+    Entry<String, Flag> entry;
     Flag currentFlag;
     String currentFlagId;
     int idx = 0;
@@ -371,18 +346,19 @@ public class ArgumentAnalyzer {
     
     int foundArg = 0;
     
-    Iterator<String> it = _flags.keySet().iterator();
+    Iterator<Entry<String, Flag>> it = _flags.entrySet().iterator();
     
     while (it.hasNext()) {
-      
+      entry = it.next();
+
       if (idx >= arguments.length) {
         throw new ArgumentAnalyzerException(Messages.strictModeParseFailed);
       }
       
       currentFlagFromCmdLine = arguments[idx];
       
-      currentFlagId = it.next();
-      currentFlag = _flags.get(currentFlagId);
+      currentFlagId = entry.getKey();
+      currentFlag = entry.getValue();
 
       boolean currentMatch = true;
       
@@ -412,8 +388,6 @@ public class ArgumentAnalyzer {
     if (foundArg != _flags.size()) {
       throw new ArgumentAnalyzerException(Messages.strictModeParseFailed);
     }
-    
-    return;
   }
   
   /**
