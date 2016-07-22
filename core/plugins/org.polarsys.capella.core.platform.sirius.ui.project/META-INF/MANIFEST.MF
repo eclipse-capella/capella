@@ -24,7 +24,8 @@ Require-Bundle: org.polarsys.capella.core.sirius.ui;visibility:=reexport,
  org.eclipse.sirius.ext.base,
  org.eclipse.amalgam.explorer.activity.ui,
  org.polarsys.kitalpha.ad.metadata,
- org.polarsys.kitalpha.ad.services
+ org.polarsys.kitalpha.ad.services,
+ org.polarsys.kitalpha.ad.integration.sirius
 Export-Package: org.polarsys.capella.core.platform.sirius.ui.project,
  org.polarsys.capella.core.platform.sirius.ui.project.internal,
  org.polarsys.capella.core.platform.sirius.ui.project.internal.preferences,

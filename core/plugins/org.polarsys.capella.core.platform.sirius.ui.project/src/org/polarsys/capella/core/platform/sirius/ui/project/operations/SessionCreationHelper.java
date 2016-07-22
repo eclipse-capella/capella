@@ -54,6 +54,7 @@ import org.polarsys.capella.core.platform.sirius.ui.project.CapellaNature;
 import org.polarsys.capella.core.platform.sirius.ui.project.Messages;
 import org.polarsys.capella.core.platform.sirius.ui.session.CapellaSessionHelper;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
+import org.polarsys.kitalpha.ad.integration.sirius.SiriusViewpointManager;
 import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
 import org.polarsys.kitalpha.ad.metadata.helpers.ViewpointMetadata;
 import org.polarsys.kitalpha.ad.services.manager.ViewpointActivationException;
@@ -329,6 +330,9 @@ public class SessionCreationHelper {
       ILibraryManager.INSTANCE.getModel(session.getTransactionalEditingDomain());
 
       // 5- Selected Viewpoints handling.
+      // filter sirius viewpoints owned by af viewpoints.
+      SiriusViewpointManager.INSTANCE.filter(session, selectedViewpoints);
+      
       SessionHelper.activateViewpoints(session, selectedViewpoints);
       progress.worked(1);
 
