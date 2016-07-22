@@ -6546,7 +6546,7 @@
                     <subModelOperations xsi:type="tool_1:For" expression="&lt;%$components%>">
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!$container.getContext().ownedFeatures.type.nContains($i)%>">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.getContext()%>">
-                          <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                          <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                             <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;%$i%>"/>
                             <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$part.name==null%>">
                               <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName($i.name+&quot; &quot;) %>"/>
@@ -8140,7 +8140,7 @@
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']" containerViewExpression="&lt;%$containerView%>"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                           <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;%$i%>"/>
                           <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$part.name==null%>">
                             <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName($i.name+&quot; &quot;) %>"/>
@@ -9722,7 +9722,7 @@
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']" containerViewExpression="&lt;%$containerView%>"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                           <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;%$i%>"/>
                           <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$part.name==null%>">
                             <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName($i.name+&quot; &quot;) %>"/>
@@ -13529,7 +13529,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="COTSCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;% $component %>"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;% $component.name %>"/>
                     </subModelOperations>
@@ -13561,7 +13561,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="CSCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;% $component %>"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;% $component.name %>"/>
                     </subModelOperations>
@@ -13593,7 +13593,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="HWCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;% $component %>"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;% $component.name %>"/>
                     </subModelOperations>
@@ -13625,7 +13625,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="InterfaceCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;% $component %>"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;% $component.name %>"/>
                     </subModelOperations>
@@ -13657,7 +13657,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="NDICI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;% $component %>"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;% $component.name %>"/>
                     </subModelOperations>
@@ -13689,7 +13689,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="PrimeItemCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;% $component %>"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;% $component.name %>"/>
                     </subModelOperations>
@@ -13721,7 +13721,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="SystemCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;% $component %>"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;% $component.name %>"/>
                     </subModelOperations>
