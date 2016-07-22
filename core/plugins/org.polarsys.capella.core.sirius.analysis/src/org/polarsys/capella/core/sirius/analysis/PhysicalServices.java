@@ -1205,7 +1205,7 @@ public class PhysicalServices {
         // + if current size is equal to default size of
         // Functional Chain
         if (currentSize.equals(THICK_EDGE_PHYSICAL_PATH) || currentSize.equals(defaultStyleSize)) {
-          if (ShapeUtil.resetEdgeThickStyle(aEdge, new Integer(defaultStyleSize))) {
+          if (ShapeUtil.resetEdgeThickStyle(aEdge, Integer.valueOf(defaultStyleSize))) {
             ShapeUtil.resetEdgeColorStyle(aEdge, ShapeUtil.getDefaultColor(aEdge, desc, desc.getStrokeColor()));
           }
         }

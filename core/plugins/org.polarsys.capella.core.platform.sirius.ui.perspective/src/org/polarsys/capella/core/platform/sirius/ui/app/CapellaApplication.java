@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2003, 2015 IBM Corporation and others.
+ * Copyright (c) 2003, 2016 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,7 +68,7 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
   /**
    * A special return code that will be recognized by the launcher and used to restart the workbench.
    */
-  private static final Integer EXIT_RELAUNCH = new Integer(24);
+  private static final Integer EXIT_RELAUNCH = Integer.valueOf(24);
 
   /**
    * The ID of the application plug-in

@@ -370,7 +370,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
             } else if (EcorePackage.eINSTANCE.getEInt().equals(type)) {
               if (value instanceof String) {
                 try {
-                  object.eSet(feature, new Integer(Integer.parseInt((String) value)));
+                  object.eSet(feature, Integer.valueOf(Integer.parseInt((String) value)));
                 } catch (NumberFormatException ex) {
                   //
                 }

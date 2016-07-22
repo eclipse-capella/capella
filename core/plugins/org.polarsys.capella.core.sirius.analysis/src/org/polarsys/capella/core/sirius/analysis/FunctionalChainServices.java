@@ -579,7 +579,7 @@ public class FunctionalChainServices {
 			 if ((null != currentSize) && (null != defaultStyleSize)) {
 				 // apply style & color : if currentSize is equal to default size + if current size is equal to default size of Functional Chain
 				 if (currentSize.equals(THICK_EDGE_FUNCTIONAL_CHAIN) || currentSize.equals(defaultStyleSize)) {
-					 if (ShapeUtil.resetEdgeThickStyle(aEdge, new Integer(defaultStyleSize))) {
+					 if (ShapeUtil.resetEdgeThickStyle(aEdge, Integer.valueOf(defaultStyleSize))) {
 						 ShapeUtil.resetEdgeColorStyle(aEdge, ShapeUtil.getDefaultColor(aEdge, desc, desc.getStrokeColor()));
 					 }
 				 }
@@ -614,7 +614,7 @@ public class FunctionalChainServices {
 				 if ((null != currentSize) && (null != defaultStyleSize)) {
 					 // apply style & color : if currentSize is equal to default size + if current size is equal to default size of Functional Chain
 					 if (currentSize.equals(THICK_BORDER_SOURCE_FUNCTION) || currentSize.equals(THICK_BORDER_TARGET_FUNCTION) || currentSize.equals(defaultStyleSize)) {
-						 if (ShapeUtil.resetBorderStyle(node, new Integer(desc.getBorderSizeComputationExpression()))) {
+						 if (ShapeUtil.resetBorderStyle(node, Integer.valueOf(desc.getBorderSizeComputationExpression()))) {
 							 if (ShapeUtil.resetBorderColorStyle(node, ShapeUtil.getDefaultColor(node, desc, desc.getBorderColor()))) {
 								 result = true;
 							 }
