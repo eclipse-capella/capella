@@ -175,7 +175,7 @@
                filter="org.polarsys.capella.core.ui.properties.sections.DiagramManagementPropertySection"
                id="org.polarsys.capella.core.ui.properties.section.DiagramManagementPropertySection.navigator">
             <input
-                  type="org.eclipse.sirius.viewpoint.DRepresentation">
+                  type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
             </input>
          </propertySection>
          <propertySection tab="Base"
@@ -183,7 +183,7 @@
                filter="org.polarsys.capella.core.ui.properties.sections.DiagramRepresentationPropertySection"
                id="org.polarsys.capella.core.ui.properties.section.DiagramRepresentationPropertySection.navigator">
             <input
-                  type="org.eclipse.sirius.viewpoint.DRepresentation">
+                  type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
             </input>
          </propertySection>
       </propertySections>

@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.ui.properties.sections;
 
 import java.lang.ref.WeakReference;
@@ -24,6 +23,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.layout.GridData;
@@ -295,7 +295,7 @@ public class DiagramManagementPropertySection extends AbstractSection {
    */
   @Override
   public boolean select(Object toTest) {
-    return (toTest instanceof DRepresentation) || (toTest instanceof IDDiagramEditPart);
+    return (toTest instanceof DRepresentationDescriptor) || (toTest instanceof DRepresentation) || (toTest instanceof IDDiagramEditPart);
   }
 
   /**
@@ -306,6 +306,11 @@ public class DiagramManagementPropertySection extends AbstractSection {
     if (!selection.isEmpty()) {
       if (selection instanceof IStructuredSelection) {
         Object firstElement = ((IStructuredSelection) selection).getFirstElement();
+
+        if (firstElement instanceof DRepresentationDescriptor) {
+          firstElement = ((DRepresentationDescriptor) firstElement).getRepresentation();
+        }
+
         if (firstElement instanceof DRepresentation) {
           _representation = new WeakReference<DRepresentation>((DRepresentation) firstElement);
         } else if (firstElement instanceof IDDiagramEditPart) {
