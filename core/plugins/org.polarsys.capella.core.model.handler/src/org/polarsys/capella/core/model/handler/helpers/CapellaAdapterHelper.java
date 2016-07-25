@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
@@ -24,56 +24,57 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
+ *
  */
 public class CapellaAdapterHelper {
 
   /**
-   * @param object_p
+   * @param object
    */
-  public static EObject resolveSemanticObject(Object object_p) {
-    return resolveSemanticObject(object_p, false);
+  public static EObject resolveSemanticObject(Object object) {
+    return resolveSemanticObject(object, false);
   }
 
   /**
-   * @param object_p
-   * @param onlySemantic_p
+   * @param object
+   * @param onlySemantic
    */
-  public static EObject resolveSemanticObject(Object object_p, boolean onlySemantic_p) {
-    if (object_p instanceof EObject) {
-      return resolveEObject((EObject) object_p, onlySemantic_p);
-    } else if (object_p instanceof IAdaptable) {
-      Object adapter = ((IAdaptable) object_p).getAdapter(EObject.class);
+  public static EObject resolveSemanticObject(Object object, boolean onlySemantic) {
+    if (object instanceof EObject) {
+      return resolveEObject((EObject) object, onlySemantic);
+    } else if (object instanceof IAdaptable) {
+      Object adapter = ((IAdaptable) object).getAdapter(EObject.class);
       if (adapter instanceof EObject) {
-        return resolveEObject((EObject) adapter, onlySemantic_p);
+        return resolveEObject((EObject) adapter, onlySemantic);
       }
     }
     return null;
   }
 
   /**
-   * @param object_p
-   * @param onlySemantic_p
+   * @param object
+   * @param onlySemantic
    */
-  private static EObject resolveEObject(EObject object_p, boolean onlySemantic_p) {
-    if (!onlySemantic_p && (object_p instanceof DRepresentation)) {
-      return object_p;
+  private static EObject resolveEObject(EObject object, boolean onlySemantic) {
+    if (!onlySemantic && (object instanceof DRepresentationDescriptor || object instanceof DRepresentation)) {
+      return (object instanceof DRepresentationDescriptor) ? ((DRepresentationDescriptor) object).getRepresentation() : object;
     }
-    return getBusinessObject(object_p);
+    return getBusinessObject(object);
   }
 
   /**
    * Business level adaptation
-   * @param object_p
+   * @param object
    */
-  private static EObject getBusinessObject(EObject object_p) {
-    if (object_p != null) {
-      if (CapellaResourceHelper.isSemanticElement(object_p)) {
-        return getRelatedSemanticObject(object_p);
+  private static EObject getBusinessObject(EObject object) {
+    if (object != null) {
+      if (CapellaResourceHelper.isSemanticElement(object)) {
+        return getRelatedSemanticObject(object);
       }
 
-      EObject obj = (EObject) Platform.getAdapterManager().getAdapter(object_p, ModelElement.class);
+      EObject obj = (EObject) Platform.getAdapterManager().getAdapter(object, ModelElement.class);
       if (obj == null) {
-        obj = (EObject) Platform.getAdapterManager().loadAdapter(object_p, ModelElement.class.getName());
+        obj = (EObject) Platform.getAdapterManager().loadAdapter(object, ModelElement.class.getName());
       }
       if (null == obj) {
         // can happen when we try to adapt a non semantic element (notes, text, ...)
@@ -89,19 +90,19 @@ public class CapellaAdapterHelper {
   }
 
   /**
-   * @param object_p object to adapt
+   * @param object object to adapt
    * @return adapted object
    */
-  private static EObject getRelatedSemanticObject(EObject object_p) {
-    if (object_p.eClass().equals(CsPackage.eINSTANCE.getPart())) {
-      boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(object_p));
+  private static EObject getRelatedSemanticObject(EObject object) {
+    if (object.eClass().equals(CsPackage.eINSTANCE.getPart())) {
+      boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(object));
       if (!allowMultiplePart) {
-        AbstractType type = ((Part) object_p).getAbstractType();
+        AbstractType type = ((Part) object).getAbstractType();
         if ((type != null) && !(type instanceof ConfigurationItem)) {
           return type;
         }
       }
     }
-    return object_p;
+    return object;
   }
 }
