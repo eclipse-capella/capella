@@ -1,17 +1,21 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju;
 
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.BundleEvent;
+import org.osgi.framework.BundleListener;
 import org.polarsys.capella.test.diagram.common.ju.headless.ExternalJavaActionForTestTools;
 
 /**
@@ -19,49 +23,84 @@ import org.polarsys.capella.test.diagram.common.ju.headless.ExternalJavaActionFo
  */
 public class TestDiagramCommonPlugin extends AbstractUIPlugin {
 
-	// The plug-in ID
-	public static final String PLUGIN_ID = "org.polarsys.capella.test.diagram.common.ju"; //$NON-NLS-1$
+  // The plug-in ID
+  public static final String PLUGIN_ID = "org.polarsys.capella.test.diagram.common.ju"; //$NON-NLS-1$
 
-	// The shared instance
-	private static TestDiagramCommonPlugin plugin;
-	
-	/**
-	 * The constructor
-	 */
-	public TestDiagramCommonPlugin() {
-	}
+  // The shared instance
+  private static TestDiagramCommonPlugin plugin;
 
-	/**
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
-	 */
-	public void start(BundleContext context) throws Exception {
-		super.start(context);
-		plugin = this;
+  private boolean externalJavaActionReseted = false;
 
-		//Modify the extension registry in order to perform test
-    // without any UI "interactions" expected from users.
-    ExternalJavaActionForTestTools.INSTANCE.init();
-	}
+  /**
+   * The constructor
+   */
+  public TestDiagramCommonPlugin() {
+  }
 
-	/**
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
-	 */
-	public void stop(BundleContext context) throws Exception {
-    
-    //Restore the extension registry to its initial state
+  /**
+   * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+   */
+  @Override
+  public void start(BundleContext context) throws Exception {
+    super.start(context);
+    plugin = this;
+
+    Bundle siriusBundle = SiriusPlugin.getDefault().getBundle();
+    addStartedListener(siriusBundle);
+
+    if (siriusBundle.getState() == Bundle.ACTIVE) {
+      resetExternalJavaAction();
+    }
+  }
+
+  /**
+   * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+   */
+  @Override
+  public void stop(BundleContext context) throws Exception {
+
+    // Restore the extension registry to its initial state
     ExternalJavaActionForTestTools.INSTANCE.restore();
 
     plugin = null;
-		super.stop(context);
-	}
+    super.stop(context);
+  }
 
-	/**
-	 * Returns the shared instance
-	 *
-	 * @return the shared instance
-	 */
-	public static TestDiagramCommonPlugin getDefault() {
-		return plugin;
-	}
+  protected void addStartedListener(Bundle bundle) {
+
+    bundle.getBundleContext().addBundleListener(new BundleListener() {
+      @Override
+      public void bundleChanged(BundleEvent event) {
+        switch (event.getType()) {
+        case BundleEvent.STARTED:
+        case BundleEvent.LAZY_ACTIVATION:
+        case BundleEvent.UPDATED:
+          resetExternalJavaAction();
+          break;
+        default:
+          break;
+        }
+      }
+    });
+  }
+
+  /**
+   * Modify the extension registry in order to perform tests without any UI "interactions" expected from users.
+   */
+  protected synchronized void resetExternalJavaAction() {
+    if (!externalJavaActionReseted) {
+      ExternalJavaActionForTestTools.INSTANCE.init();
+      externalJavaActionReseted = true;
+    }
+  }
+
+  /**
+   * Returns the shared instance
+   *
+   * @return the shared instance
+   */
+  public static TestDiagramCommonPlugin getDefault() {
+    return plugin;
+  }
 
 }
