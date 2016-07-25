@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.viewpoint.DRefreshable;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -230,7 +231,14 @@ public class CapellaResourceHelper {
    * Returns whether an object is a semantic element. Such element benefit of all basic tooling provided by capella
    */
   public static boolean isSemanticElement(Object object) {
-    return object instanceof EObject && !(object instanceof DRefreshable);
+    return (object instanceof EObject) && !isSiriusElement(object);
+  }
+
+  /**
+   * Returns whether an object is a Sirius element.
+   */
+  private static boolean isSiriusElement(Object object) {
+    return (object instanceof DRefreshable) || (object instanceof DRepresentationDescriptor);
   }
 
   /**

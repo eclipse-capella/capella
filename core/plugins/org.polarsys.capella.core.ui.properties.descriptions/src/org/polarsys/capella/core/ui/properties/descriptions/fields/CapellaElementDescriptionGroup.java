@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,32 +31,32 @@ import org.polarsys.capella.core.ui.properties.helpers.NotificationHelper;
 public class CapellaElementDescriptionGroup extends ElementDescriptionGroup {
 
   /**
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public CapellaElementDescriptionGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    super(parent_p, widgetFactory_p);
+  public CapellaElementDescriptionGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    super(parent, widgetFactory);
   }
 
   /**
    * Called by the section refresh coming from wherever.
    */
-  public void loadData(EObject element_p) {
-    loadData(element_p, CapellacorePackage.eINSTANCE.getCapellaElement_Description());
+  public void loadData(EObject element) {
+    loadData(element, CapellacorePackage.eINSTANCE.getCapellaElement_Description());
   }
 
   /**
    * Set data value i.e change given object for given feature with specified value.
-   * @param object_p
-   * @param feature_p
-   * @param value_p
+   * @param object
+   * @param feature
+   * @param value
    */
   @Override
-  protected void setDataValue(final EObject object_p, final EStructuralFeature feature_p, final Object value_p) {
-    if (NotificationHelper.isNotificationRequired(object_p, feature_p, value_p)) {
+  protected void setDataValue(final EObject object, final EStructuralFeature feature, final Object value) {
+    if (NotificationHelper.isNotificationRequired(object, feature, value)) {
       AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
         public void run() {
-          object_p.eSet(feature_p, value_p);
+          object.eSet(feature, value);
         }
       };
       executeCommand(command);
@@ -65,25 +65,24 @@ public class CapellaElementDescriptionGroup extends ElementDescriptionGroup {
 
   /**
    * Execute given command.
-   * @param command_p
-   * @param feature_p
+   * @param command
    */
-  protected void executeCommand(final ICommand command_p) {
+  protected void executeCommand(final ICommand command) {
     // Precondition
-    if ((null == command_p)) {
+    if ((null == command)) {
       return;
     }
     // Command to run.
-    ICommand command = command_p;
+    ICommand cmd = command;
     // Encapsulate given command in a new one to enable undo / redo refresh based on getAffectedObjects.
     // AbstractSection call getAffectedObjects() against the command provided by the OperationHistory.
-    if (command_p instanceof AbstractReadWriteCommand) {
-      command = new AbstractReadWriteCommand() {
+    if (command instanceof AbstractReadWriteCommand) {
+      cmd = new AbstractReadWriteCommand() {
         /**
          * @see java.lang.Runnable#run()
          */
         public void run() {
-          command_p.run();
+          command.run();
         }
 
         /**
@@ -123,6 +122,6 @@ public class CapellaElementDescriptionGroup extends ElementDescriptionGroup {
       };
     }
     // Execute it against the TED.
-    TransactionHelper.getExecutionManager(_semanticElement).execute(command);
+    TransactionHelper.getExecutionManager(_semanticElement).execute(cmd);
   }
 }
