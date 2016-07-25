@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -21,11 +22,13 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
+import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -51,8 +54,61 @@ import com.google.common.collect.Iterables;
 public class RepresentationHelper {
 
   /**
+   * Same as {@link #getRepresentations(IStructuredSelection, boolean)} with {@code mustBeDecorator=false}
+   *
+   * @param selection
+   * @return
+   */
+  public static List<DRepresentation> getRepresentations(IStructuredSelection selection) {
+    return getRepresentations(selection, false);
+  }
+
+  /**
+   * Filters representations.
+   *
+   * @param selection
+   * @param mustBeDecorator
+   *          representation must be an instance of {@link DSemanticDecorator}
+   *
+   * @return
+   */
+  public static List<DRepresentation> getRepresentations(IStructuredSelection selection, boolean mustBeDecorator) {
+
+    List<DRepresentation> representations = new ArrayList<DRepresentation>();
+    Iterator<?> iterator = selection.iterator();
+    while (iterator.hasNext()) {
+      Object selectedObject = iterator.next();
+      if (selectedObject instanceof ItemWrapper) {
+        selectedObject = ((ItemWrapper) selectedObject).getWrappedObject();
+      }
+
+      if (selectedObject instanceof DRepresentation) {
+        addRepresentation(mustBeDecorator, representations, (DRepresentation) selectedObject);
+      }
+      if (selectedObject instanceof DRepresentationDescriptor) {
+        addRepresentation(mustBeDecorator, representations,
+            ((DRepresentationDescriptor) selectedObject).getRepresentation());
+      }
+    }
+    return representations;
+  }
+
+  private static void addRepresentation(boolean mustBeDecorator, List<DRepresentation> representations,
+      DRepresentation selectedObject) {
+    if (mustBeDecorator) {
+      if (selectedObject instanceof DSemanticDecorator) {
+        representations.add(selectedObject);
+      }
+    } else {
+      representations.add(selectedObject);
+    }
+  }
+
+  /**
    * Get all representation targeted by specified semantic elements.<br>
-   * Default implementation loops over specified elements and search for all representations in a specified element containment subtree.
+   * Default implementation loops over specified elements and search for all representations in a specified element
+   * containment subtree.
+   *
    * @return a not <code>null</code> collection.
    */
   public static Collection<DRepresentation> getAllRepresentationsTargetedBy(Collection<?> semanticElements) {
@@ -78,7 +134,9 @@ public class RepresentationHelper {
   }
 
   /**
-   * Get all representations where the specified semantic element appears. This method is recursive and get also representation of some related elements.
+   * Get all representations where the specified semantic element appears. This method is recursive and get also
+   * representation of some related elements.
+   *
    * @param semanticElement
    * @param representations
    */
@@ -97,29 +155,35 @@ public class RepresentationHelper {
         // Get DRepresentation related to semanticElement.
         if (ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET.equals(setting.getEStructuralFeature())) {
           DSemanticDecorator decorator = (DSemanticDecorator) setting.getEObject();
-          // TODO Use DiagramHelper.getService().getRepresentation(decorator) (not possible currently because of a cycle in dependencies).
+          // TODO Use DiagramHelper.getService().getRepresentation(decorator) (not possible currently because of a cycle
+          // in dependencies).
           DRepresentation diagram = null;
           if (decorator instanceof DRepresentation) {
             // DRepresentation is referencing directly to the semantic element.
             diagram = (DRepresentation) decorator;
           } else {
-            // An internal element of a representation is referencing the semantic element -> get containing representation.
-            diagram = (DRepresentation) EcoreUtil2.getFirstContainer(decorator, ViewpointPackage.Literals.DREPRESENTATION);
+            // An internal element of a representation is referencing the semantic element -> get containing
+            // representation.
+            diagram = (DRepresentation) EcoreUtil2.getFirstContainer(decorator,
+                ViewpointPackage.Literals.DREPRESENTATION);
           }
           if (null != diagram) {
             // Will be added only if not already present (it's a Set).
             representations.add(diagram);
           }
-        } else if (ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE.equals(setting.getEStructuralFeature())
-                   || InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION.equals(setting.getEStructuralFeature())
-                   || InteractionPackage.Literals.ABSTRACT_END__EVENT.equals(setting.getEStructuralFeature())
-                   || InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END.equals(setting.getEStructuralFeature())
-                   || InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION.equals(setting.getEStructuralFeature())
-                   || InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END.equals(setting.getEStructuralFeature())
-                   || InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE.equals(setting.getEStructuralFeature())
-                   || InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_STATE.equals(setting.getEStructuralFeature())
-                   || InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION.equals(setting.getEStructuralFeature())
-                   || CapellacorePackage.Literals.INVOLVEMENT__INVOLVED.equals(setting.getEStructuralFeature())) {
+        } else if (ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE
+            .equals(setting.getEStructuralFeature())
+            || InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION.equals(setting.getEStructuralFeature())
+            || InteractionPackage.Literals.ABSTRACT_END__EVENT.equals(setting.getEStructuralFeature())
+            || InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END.equals(setting.getEStructuralFeature())
+            || InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION.equals(setting.getEStructuralFeature())
+            || InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END.equals(setting.getEStructuralFeature())
+            || InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE.equals(setting.getEStructuralFeature())
+            || InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_STATE
+                .equals(setting.getEStructuralFeature())
+            || InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION
+                .equals(setting.getEStructuralFeature())
+            || CapellacorePackage.Literals.INVOLVEMENT__INVOLVED.equals(setting.getEStructuralFeature())) {
           // Get representations associated to another semantic element referencing the given semantic element.
           getRelatedRepresentations(setting.getEObject(), representations);
         }
@@ -129,18 +193,20 @@ public class RepresentationHelper {
 
   /**
    * Get all representations where specified semantic element is displayed.
+   *
    * @param semanticElement
    * @param filteringRepresentationDescriptionClass
    * @return a not <code>null</code> collection.
    */
-  public static Collection<DRepresentation> getAllRepresentationsWhereSemanticElementIsDisplayed(EObject semanticElement,
-      RunnableWithBooleanResult filteringCondition) {
+  public static Collection<DRepresentation> getAllRepresentationsWhereSemanticElementIsDisplayed(
+      EObject semanticElement, RunnableWithBooleanResult filteringCondition) {
     // Precondition: we must have a Session.
     Session session = SessionManager.INSTANCE.getSession(semanticElement);
     if (null == session) {
       return Collections.emptySet();
     }
-    // Collect all representations related to the given semantic elements and some other related ones (following specific kind of references).
+    // Collect all representations related to the given semantic elements and some other related ones (following
+    // specific kind of references).
     Set<DRepresentation> unfilteredRepresentations = new HashSet<DRepresentation>();
     getRelatedRepresentations(semanticElement, unfilteredRepresentations);
 
@@ -171,6 +237,7 @@ public class RepresentationHelper {
 
   /**
    * Collect all resources where specified element is involved.
+   *
    * @param semanticRoot
    * @return
    */
@@ -301,16 +368,19 @@ public class RepresentationHelper {
   /**
    * Retrieves the descriptor related to the given representations
    *
-   * @param session the Sirius session
-   * @param representation the representation whose descriptor has to be retrieved
+   * @param session
+   *          the Sirius session
+   * @param representation
+   *          the representation whose descriptor has to be retrieved
    * @return a possibly null descriptor related to the given representation
-   * 
+   *
    * @since Sirius 4.1: introduction of the representation descriptors
    */
   public static DRepresentationDescriptor getRepresentationDescriptor(Session session, DRepresentation representation) {
     if (representation != null && session != null) {
       RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
-      for (DRepresentationDescriptor descriptor :  DialectManager.INSTANCE.getRepresentationDescriptors(description, session)) {
+      for (DRepresentationDescriptor descriptor : DialectManager.INSTANCE.getRepresentationDescriptors(description,
+          session)) {
         if (representation.equals(descriptor.getRepresentation())) {
           return descriptor;
         }
@@ -322,9 +392,10 @@ public class RepresentationHelper {
   /**
    * Retrieves the descriptor related to the given representations
    *
-   * @param representation the representation whose descriptor has to be retrieved
+   * @param representation
+   *          the representation whose descriptor has to be retrieved
    * @return a possibly null descriptor related to the given representation
-   * 
+   *
    * @since Sirius 4.1: introduction of the representation descriptors
    */
   public static DRepresentationDescriptor getRepresentationDescriptor(DRepresentation representation) {
@@ -340,12 +411,14 @@ public class RepresentationHelper {
   /**
    * Retrieves all the descriptors related to the given representations
    *
-   * @param representations the representations whose descriptors have to be retrieved
+   * @param representations
+   *          the representations whose descriptors have to be retrieved
    * @return a possibly empty collection of descriptors related to the given representations
-   * 
+   *
    * @since Sirius 4.1: introduction of the representation descriptors
    */
-  public static Collection<DRepresentationDescriptor> getRepresentationDescriptors(Collection<DRepresentation> representations) {
+  public static Collection<DRepresentationDescriptor> getRepresentationDescriptors(
+      Collection<DRepresentation> representations) {
     Collection<DRepresentationDescriptor> result = new HashSet<DRepresentationDescriptor>();
     for (DRepresentation representation : representations) {
       DRepresentationDescriptor descriptor = getRepresentationDescriptor(representation);
