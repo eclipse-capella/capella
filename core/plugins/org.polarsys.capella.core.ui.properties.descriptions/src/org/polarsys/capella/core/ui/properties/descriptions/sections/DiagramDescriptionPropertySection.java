@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -50,8 +51,8 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent_p, TabbedPropertySheetPage aTabbedPropertySheetPage_p) {
-    super.createControls(parent_p, aTabbedPropertySheetPage_p);
+  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createControls(parent, aTabbedPropertySheetPage);
     // This operation history listener is used to force refreshes when undo / redo operations are performed.
     OperationHistoryFactory.getOperationHistory().addOperationHistoryListener(this);
 
@@ -65,11 +66,11 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
 
   /**
    * Create description widget.
-   * @param widgetFactory_p
-   * @param textGroup_p
+   * @param widgetFactory
+   * @param textGroup
    */
-  protected void createDescriptionWidget(TabbedPropertySheetWidgetFactory widgetFactory_p, Composite parent_p) {
-    _descriptionGroup = new CapellaElementDescriptionGroup(parent_p, widgetFactory_p);
+  protected void createDescriptionWidget(TabbedPropertySheetWidgetFactory widgetFactory, Composite parent) {
+    _descriptionGroup = new CapellaElementDescriptionGroup(parent, widgetFactory);
   }
 
   /**
@@ -94,11 +95,11 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
    * @see org.eclipse.core.commands.operations.IOperationHistoryListener#historyNotification(org.eclipse.core.commands.operations.OperationHistoryEvent)
    */
   @Override
-  public void historyNotification(OperationHistoryEvent event_p) {
+  public void historyNotification(OperationHistoryEvent event) {
     // We only handle undo & redo operations to force a refresh.
-    int eventType = event_p.getEventType();
+    int eventType = event.getEventType();
     if ((OperationHistoryEvent.UNDONE == eventType) || (OperationHistoryEvent.REDONE == eventType)) {
-      IUndoableOperation operation = event_p.getOperation();
+      IUndoableOperation operation = event.getOperation();
       // Take into account the EMF command operation.
       if (operation instanceof EMFCommandOperation) {
         // Get the command.
@@ -148,18 +149,23 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
    * {@inheritDoc}
    */
   @Override
-  public boolean select(Object toTest_p) {
-    return (toTest_p instanceof DRepresentation) || (toTest_p instanceof IDDiagramEditPart);
+  public boolean select(Object toTest) {
+    return (toTest instanceof DRepresentationDescriptor) || (toTest instanceof DRepresentation) || (toTest instanceof IDDiagramEditPart);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setInput(IWorkbenchPart part_p, ISelection selection_p) {
-    if (!selection_p.isEmpty()) {
-      if (selection_p instanceof IStructuredSelection) {
-        Object firstElement = ((IStructuredSelection) selection_p).getFirstElement();
+  public void setInput(IWorkbenchPart part, ISelection selection) {
+    if (!selection.isEmpty()) {
+      if (selection instanceof IStructuredSelection) {
+        Object firstElement = ((IStructuredSelection) selection).getFirstElement();
+
+        if (firstElement instanceof DRepresentationDescriptor) {
+          firstElement = ((DRepresentationDescriptor) firstElement).getRepresentation();
+        }
+
         if (firstElement instanceof DRepresentation) {
           _representation = new WeakReference<DRepresentation>((DRepresentation) firstElement);
         } else if (firstElement instanceof IDDiagramEditPart) {
@@ -177,11 +183,11 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
-    super.setEnabled(enabled_p);
+  public void setEnabled(boolean enabled) {
+    super.setEnabled(enabled);
 
     if (null != _descriptionGroup) {
-      _descriptionGroup.setEnabled(enabled_p);
+      _descriptionGroup.setEnabled(enabled);
     }
   }
 
