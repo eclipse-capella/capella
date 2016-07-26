@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -53,10 +53,13 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
+import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
 
 /**
- * Using the default CreateView tool in odesign remove all extensibility provided by Sirius. We must define a mapping to create instead of
- *         using mapping extensibility. This task create the best view which can be created into the containerView_p view.
+ * Using the default CreateView tool in odesign remove all extensibility provided by Sirius. We must define a mapping to
+ * create instead of using mapping extensibility. This task create the best view which can be created into the
+ * containerView view.
+ *
  * @see Sirius-2531
  */
 public class CreateViewTask extends AbstractCommandTask {
@@ -71,38 +74,40 @@ public class CreateViewTask extends AbstractCommandTask {
 
   protected DSemanticDecorator containerView;
 
-  protected String outVariable;	
+  protected String outVariable;
+
   /**
    * Create a new {@link CreateViewTask}.
-   * @param extPackage the extended package.
-   * @param context the current context.
-   * @param mapping_p the mapping.
-   * @param containerViewExpression_p the container
-   * @param createViewOp the create view operation
-   * @param iRegistry the interpreter registry
+   *
+   * @param context
+   * @param containerView
+   * @param toCreate
+   * @param toolId
+   * @param outVariable
    */
-  public CreateViewTask(EObject context_p, DSemanticDecorator containerView_p, EObject toCreate_p, String toolId_p, String outVariable) {
-    context = context_p;
-    toCreate = toCreate_p;
-    containerView = containerView_p;
-    diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(containerView_p);
-    this.outVariable=outVariable;
-    tool = getTool(diagram, toolId_p);
+  public CreateViewTask(EObject context, DSemanticDecorator containerView, EObject toCreate, String toolId,
+      String outVariable) {
+    this.context = context;
+    this.toCreate = toCreate;
+    this.containerView = containerView;
+    this.diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(containerView);
+    this.outVariable = outVariable;
+    this.tool = getTool(diagram, toolId);
   }
 
   /**
-   * @param diagram_p
-   * @param toolId_p
+   * @param semanticDiagram
+   * @param toolId
    * @return
    */
-  private AbstractToolDescription getTool(DSemanticDiagram diagram_p, String toolId_p) {
+  private AbstractToolDescription getTool(DSemanticDiagram semanticDiagram, String toolId) {
     AbstractToolDescription result = null;
     final Session session = SessionManager.INSTANCE.getSession(diagram.getTarget());
-    final List<AbstractToolDescription> tools =
-        new DiagramComponentizationManager().getAllTools(session.getSelectedViewpoints(false), diagram.getDescription());
+    final List<AbstractToolDescription> tools = new DiagramComponentizationManager()
+        .getAllTools(session.getSelectedViewpoints(false), diagram.getDescription());
 
     for (AbstractToolDescription current : tools) {
-      if (current.getName().equals(toolId_p)) {
+      if (current.getName().equals(toolId)) {
         result = current;
       }
     }
@@ -112,6 +117,7 @@ public class CreateViewTask extends AbstractCommandTask {
 
   /**
    * {@inheritDoc}
+   *
    * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
    */
   public String getLabel() {
@@ -149,17 +155,18 @@ public class CreateViewTask extends AbstractCommandTask {
     return -1;
   }
 
-  protected boolean checkBestInheritance(ContainerMapping best, ContainerMapping currentMapping, EObject createdObj, int previousInheritanceDistance) {
+  protected boolean checkBestInheritance(ContainerMapping best, ContainerMapping currentMapping, EObject createdObj,
+      int previousInheritanceDistance) {
     EClass createdObjEClass = createdObj.eClass();
 
     /*
-     * if the current domainClass mapping is exactly the metaClass of the createdObject, then we have to use it. But what if there two mapping the same
-     * DomainClass?
+     * if the current domainClass mapping is exactly the metaClass of the createdObject, then we have to use it. But
+     * what if there two mapping the same DomainClass?
      */
-    if (createdObjEClass.getName().equals(currentMapping.getDomainClass())) {
+    if (createdObjEClass.getName().equals(getDomainClass(currentMapping))) {
       return true;
     }
-    int currentInheritanceDistance = computeInheritanceDistance(createdObj, currentMapping.getDomainClass());
+    int currentInheritanceDistance = computeInheritanceDistance(createdObj, getDomainClass(currentMapping));
 
     if ((currentInheritanceDistance != -1) && (previousInheritanceDistance > currentInheritanceDistance)) {
       return true;
@@ -168,22 +175,17 @@ public class CreateViewTask extends AbstractCommandTask {
     return false;
   }
 
-  protected DiagramElementMapping getBestMapping(EObject element_p, DiagramElementMapping containerMapping_p) {
+  protected DiagramElementMapping getBestMapping(EObject element, DiagramElementMapping containerMapping) {
     // retrieve all valid mappings
-    Collection<DiagramElementMapping> validMappings = getAllValidMappings(element_p, containerMapping_p);
+    Collection<DiagramElementMapping> validMappings = getAllValidMappings(element, containerMapping);
 
     DiagramElementMapping bestMapping = null;
     int bestIndex = -1;
 
     for (DiagramElementMapping mapping : validMappings) {
-      String domainClass = null;
-      if (mapping instanceof EdgeMapping) {
-        domainClass = ((EdgeMapping) mapping).getDomainClass();
-      } else if (mapping instanceof AbstractNodeMapping) {
-        domainClass = ((AbstractNodeMapping) mapping).getDomainClass();
-      }
+      String domainClass = getDomainClass(mapping);
 
-      int current = computeInheritanceDistance(element_p, domainClass);
+      int current = computeInheritanceDistance(element, domainClass);
       if ((current != -1) && ((bestIndex == -1) || (bestIndex > current))) {
         bestIndex = current;
         bestMapping = mapping;
@@ -194,38 +196,42 @@ public class CreateViewTask extends AbstractCommandTask {
   }
 
   /**
-   * @param element_p
-   * @param containerMapping_p
+   * @param element
+   * @param containerMapping
    * @return
    */
-  protected Collection<DiagramElementMapping> getAllValidMappings(EObject element_p, DiagramElementMapping containerMapping_p) {
+  protected Collection<DiagramElementMapping> getAllValidMappings(EObject element,
+      DiagramElementMapping containerMapping) {
     Collection<DiagramElementMapping> validMappings = new HashSet<DiagramElementMapping>();
 
     final DiagramDescription desc = diagram.getDescription();
     final Session session = SessionManager.INSTANCE.getSession(diagram.getTarget());
 
-    if (containerMapping_p != null) {
-      for (DiagramElementMapping mapping : containerMapping_p.getAllMappings()) {
-        if (isValidMapping(element_p, mapping)) {
+    if (containerMapping != null) {
+      for (DiagramElementMapping mapping : containerMapping.getAllMappings()) {
+        if (isValidMapping(element, mapping)) {
           validMappings.add(mapping);
         }
       }
     }
 
-    for (DiagramElementMapping mapping : new DiagramComponentizationManager().getAllContainerMappings(session.getSelectedViewpoints(false), desc)) {
-      if (isValidMapping(element_p, mapping)) {
+    for (DiagramElementMapping mapping : new DiagramComponentizationManager()
+        .getAllContainerMappings(session.getSelectedViewpoints(false), desc)) {
+      if (isValidMapping(element, mapping)) {
         validMappings.add(mapping);
       }
     }
 
-    for (DiagramElementMapping mapping : new DiagramComponentizationManager().getAllNodeMappings(session.getSelectedViewpoints(false), desc)) {
-      if (isValidMapping(element_p, mapping)) {
+    for (DiagramElementMapping mapping : new DiagramComponentizationManager()
+        .getAllNodeMappings(session.getSelectedViewpoints(false), desc)) {
+      if (isValidMapping(element, mapping)) {
         validMappings.add(mapping);
       }
     }
 
-    for (DiagramElementMapping mapping : new DiagramComponentizationManager().getAllEdgeMappings(session.getSelectedViewpoints(false), desc)) {
-      if (isValidMapping(element_p, mapping)) {
+    for (DiagramElementMapping mapping : new DiagramComponentizationManager()
+        .getAllEdgeMappings(session.getSelectedViewpoints(false), desc)) {
+      if (isValidMapping(element, mapping)) {
         validMappings.add(mapping);
       }
     }
@@ -233,15 +239,17 @@ public class CreateViewTask extends AbstractCommandTask {
   }
 
   /**
-   * @param element_p
-   * @param mapping_p
+   * @param element
+   * @param mapping
    * @return
    */
-  protected boolean isValidMapping(EObject element_p, DiagramElementMapping mapping_p) {
+  protected boolean isValidMapping(EObject element, DiagramElementMapping mapping) {
 
-    if (isDomainValid(element_p, mapping_p) && mapping_p.checkPrecondition(element_p, getDestinationContainer().getTarget(), getDestinationContainer())) {
+    if (isDomainValid(element, mapping)
+        && mapping.checkPrecondition(element, getDestinationContainer().getTarget(), getDestinationContainer())) {
       // Remove mappings from an inactive layer
-      Layer layer = (Layer) EcoreUtil2.getFirstContainer(mapping_p, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER);
+      Layer layer = (Layer) EcoreUtil2.getFirstContainer(mapping,
+          org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER);
       if (layer != null) {
         if (!diagram.getActivatedLayers().contains(layer)) {
           return false;
@@ -251,15 +259,15 @@ public class CreateViewTask extends AbstractCommandTask {
       if (tool != null) {
         if (tool instanceof ContainerCreationDescription) {
           ContainerCreationDescription cTool = (ContainerCreationDescription) tool;
-          return cTool.getContainerMappings().contains(mapping_p);
+          return cTool.getContainerMappings().contains(mapping);
 
         } else if (tool instanceof NodeCreationDescription) {
           NodeCreationDescription cTool = (NodeCreationDescription) tool;
-          return cTool.getNodeMappings().contains(mapping_p);
+          return cTool.getNodeMappings().contains(mapping);
 
         } else if (tool instanceof EdgeCreationDescription) {
           EdgeCreationDescription cTool = (EdgeCreationDescription) tool;
-          return cTool.getEdgeMappings().contains(mapping_p);
+          return cTool.getEdgeMappings().contains(mapping);
         }
 
         // Restrict to mappings
@@ -270,25 +278,20 @@ public class CreateViewTask extends AbstractCommandTask {
   }
 
   /**
-   * @param element_p
-   * @param mapping_p
+   * @param element
+   * @param mapping
    * @return
    */
-  private boolean isDomainValid(EObject element_p, DiagramElementMapping mapping_p) {
-    String domainClass = null;
+  private boolean isDomainValid(EObject element, DiagramElementMapping mapping) {
 
-    if (mapping_p instanceof EdgeMapping) {
-      domainClass = ((EdgeMapping) mapping_p).getDomainClass();
-    } else if (mapping_p instanceof AbstractNodeMapping) {
-      domainClass = ((AbstractNodeMapping) mapping_p).getDomainClass();
-    }
+    String domainClass = getDomainClass(mapping);
 
     if (domainClass != null) {
-      if (domainClass.equals(element_p.eClass().getName())) {
+      if (domainClass.equals(element.eClass().getName())) {
         return true;
       }
 
-      for (EClass parent : element_p.eClass().getEAllSuperTypes()) {
+      for (EClass parent : element.eClass().getEAllSuperTypes()) {
         if (domainClass.equals(parent.getName())) {
           return true;
         }
@@ -298,8 +301,20 @@ public class CreateViewTask extends AbstractCommandTask {
     return false;
   }
 
+  protected String getDomainClass(DiagramElementMapping mapping) {
+    String domainClass = null;
+
+    if (mapping instanceof EdgeMapping) {
+      domainClass = ((EdgeMapping) mapping).getDomainClass();
+    } else if (mapping instanceof AbstractNodeMapping) {
+      domainClass = ((AbstractNodeMapping) mapping).getDomainClass();
+    }
+    return StringUtil.lastSegment(domainClass, '.');
+  }
+
   /**
    * {@inheritDoc}
+   *
    * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
    */
   public void execute() {
@@ -316,14 +331,16 @@ public class CreateViewTask extends AbstractCommandTask {
   }
 
   /**
-   * @param element_p
-   * @param mapping_p
+   * @param element
+   * @param mapping
    */
-  private DDiagramElement createNode(EObject element_p, DiagramElementMapping mapping_p, DragAndDropTarget containerView) {
+  private DDiagramElement createNode(EObject element, DiagramElementMapping mapping, DragAndDropTarget containerView) {
     DDiagramElement newView = null;
-    RefreshIdsHolder refreshId= RefreshIdsHolder.getOrCreateHolder(diagram);
-    AbstractDNodeCandidate candidate = new AbstractDNodeCandidate((AbstractNodeMapping) mapping_p, element_p, containerView, refreshId);
-    final DDiagramElementSynchronizer sync = new DDiagramElementSynchronizer(diagram, InterpreterUtil.getInterpreter(element_p), null) {
+    RefreshIdsHolder refreshId = RefreshIdsHolder.getOrCreateHolder(diagram);
+    AbstractDNodeCandidate candidate = new AbstractDNodeCandidate((AbstractNodeMapping) mapping, element, containerView,
+        refreshId);
+    final DDiagramElementSynchronizer sync = new DDiagramElementSynchronizer(diagram,
+        InterpreterUtil.getInterpreter(element), null) {
       @Override
       public void refresh(final DDiagramElement newNode) {
         if (newNode instanceof DNode) {
@@ -338,24 +355,25 @@ public class CreateViewTask extends AbstractCommandTask {
       }
     };
 
-    Session session = SessionManager.INSTANCE.getSession(element_p);
-    DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, diagram);
+    Session session = SessionManager.INSTANCE.getSession(element);
+    DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session,
+        diagram);
     newView = sync.createNewNode(mappingManager, candidate, false);
     initView(newView);
     return newView;
   }
 
   protected boolean autoPinOnCreateEnabled() {
-    return Platform.getPreferencesService()
-        .getBoolean(SiriusPlugin.ID, SiriusDiagramPreferencesKeys.PREF_AUTO_PIN_ON_CREATE.name(), true, new IScopeContext[0]);
+    return Platform.getPreferencesService().getBoolean(SiriusPlugin.ID,
+        SiriusDiagramPreferencesKeys.PREF_AUTO_PIN_ON_CREATE.name(), true, new IScopeContext[0]);
   }
 
   /**
-   * @param newView_p
+   * @param newView
    */
-  protected void initView(DDiagramElement newView_p) {
-    if (newView_p instanceof DDiagramElementContainer) {
-      DDiagramElementContainer container = (DDiagramElementContainer) newView_p;
+  protected void initView(DDiagramElement newView) {
+    if (newView instanceof DDiagramElementContainer) {
+      DDiagramElementContainer container = (DDiagramElementContainer) newView;
       if (autoPinOnCreateEnabled()) {
         container.getArrangeConstraints().add(ArrangeConstraint.KEEP_LOCATION);
         container.getArrangeConstraints().add(ArrangeConstraint.KEEP_RATIO);
@@ -370,6 +388,7 @@ public class CreateViewTask extends AbstractCommandTask {
 
   /**
    * Return the mapping of the container.
+   *
    * @return the mapping of the container.
    */
   private DiagramElementMapping getViewMapping(DSemanticDecorator element) {
