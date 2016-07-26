@@ -11,6 +11,7 @@
      Thales - initial API and implementation
 -->
 <plugin>
+  <extension-point id="delegatedDecorator" name="Delegated Decorator" schema="schema/delegatedDecorator.exsd"/>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.capellamodeller.provider.CapellamodellerItemProviderDecoratorAdapterFactory"
