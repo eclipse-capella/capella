@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -25,12 +25,14 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.navigator.ILinkHelper;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 
 /**
  * The link helper for the aird diagram (or viewpoints).
@@ -44,11 +46,12 @@ public class AirdDiagramLinkHelper implements ILinkHelper {
   }
 
   /**
-   * @see org.eclipse.ui.navigator.ILinkHelper#activateEditor(org.eclipse.ui.IWorkbenchPage, org.eclipse.jface.viewers.IStructuredSelection)
+   * @see org.eclipse.ui.navigator.ILinkHelper#activateEditor(org.eclipse.ui.IWorkbenchPage,
+   *      org.eclipse.jface.viewers.IStructuredSelection)
    */
-  public void activateEditor(IWorkbenchPage page_p, IStructuredSelection selection_p) {
-    if (!selection_p.isEmpty()) {
-      Object firstElement = selection_p.getFirstElement();
+  public void activateEditor(IWorkbenchPage page, IStructuredSelection selection) {
+    if (!selection.isEmpty()) {
+      Object firstElement = selection.getFirstElement();
       if (firstElement instanceof DSemanticDiagram) {
         DSemanticDiagram semanticDiagram = (DSemanticDiagram) firstElement;
         Session session = SessionManager.INSTANCE.getSession(semanticDiagram.getTarget());
@@ -68,7 +71,7 @@ public class AirdDiagramLinkHelper implements ILinkHelper {
   /**
    * @see org.eclipse.ui.navigator.ILinkHelper#findSelection(org.eclipse.ui.IEditorInput)
    */
-  public IStructuredSelection findSelection(IEditorInput anInput_p) {
+  public IStructuredSelection findSelection(IEditorInput anInput) {
     // Gets the active diagram editor.
     IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
 
@@ -97,8 +100,13 @@ public class AirdDiagramLinkHelper implements ILinkHelper {
         View gmfView = (View) firstElement;
         EObject element = gmfView.getElement();
         if (null != element) {
-          if ((element instanceof DRepresentation) || (element instanceof ModelElement)) {
+          if (element instanceof ModelElement) {
             return new StructuredSelection(element);
+          }
+          if (element instanceof DRepresentation) {
+            DRepresentationDescriptor descriptor = RepresentationHelper
+                .getRepresentationDescriptor((DRepresentation) element);
+            return new StructuredSelection(descriptor);
           }
         }
       }
@@ -106,12 +114,12 @@ public class AirdDiagramLinkHelper implements ILinkHelper {
     return null;
   }
 
-  private DiagramEditPart getDiagramEditPart(GraphicalEditPart editPart_p) {
-    if (editPart_p instanceof DiagramEditPart) {
-      return (DiagramEditPart) editPart_p;
+  private DiagramEditPart getDiagramEditPart(GraphicalEditPart editPart) {
+    if (editPart instanceof DiagramEditPart) {
+      return (DiagramEditPart) editPart;
     }
-    if (null != editPart_p) {
-      GraphicalEditPart parent = (GraphicalEditPart) editPart_p.getParent();
+    if (null != editPart) {
+      GraphicalEditPart parent = (GraphicalEditPart) editPart.getParent();
       return getDiagramEditPart(parent);
     }
     return null;
