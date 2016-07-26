@@ -18,6 +18,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.dialog.RenameDialog;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
@@ -27,7 +28,6 @@ import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.capella.core.sirius.ui.Messages;
-
 
 /**
  * The action allowing to rename representations.
@@ -53,6 +53,10 @@ public class RenameRepresentationAction extends BaseSelectionListenerAction {
       for (Iterator<?> iterator = selection.iterator(); iterator.hasNext();) {
         Object selectedObject = iterator.next();
 
+        if (selectedObject instanceof DRepresentationDescriptor) {
+          selectedObject = ((DRepresentationDescriptor) selectedObject).getRepresentation();
+        }
+
         if (selectedObject instanceof DRepresentation) {
           if (handler.isLockedByOthers((DRepresentation) selectedObject)) {
             return false;
@@ -63,7 +67,7 @@ public class RenameRepresentationAction extends BaseSelectionListenerAction {
 
     return true;
   }
-  
+
   /**
    * @see org.eclipse.jface.action.Action#run()
    */
