@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.platform.sirius.ui.navigator.viewer;
 
 import org.eclipse.core.resources.IFile;
@@ -26,6 +25,7 @@ import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointItem;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
@@ -140,10 +140,10 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
         path = path.substring(1);
       }
       result = path.replaceAll(slash, STATUS_LINE_PATH_SEPARATOR);
-    } else if (element instanceof DRepresentation) {
-      // Adapts the representation into a Capella element (it returns its
-      // Capella container).
-      DRepresentation representation = (DRepresentation) element;
+    } else if (element instanceof DRepresentation || element instanceof DRepresentationDescriptor) {
+      // Adapts the representation into a Capella element (it returns its Capella container).
+      DRepresentation representation = (element instanceof DRepresentationDescriptor) ?
+          ((DRepresentationDescriptor) element).getRepresentation() : (DRepresentation) element;
       Object modelElement = Platform.getAdapterManager().getAdapter(representation, ModelElement.class);
       if (null == modelElement) {
         modelElement = Platform.getAdapterManager().loadAdapter(representation, ModelElement.class.getName());
