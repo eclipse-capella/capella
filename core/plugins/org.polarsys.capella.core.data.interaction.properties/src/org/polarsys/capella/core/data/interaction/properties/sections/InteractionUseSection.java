@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
 import org.polarsys.capella.common.ui.services.UIUtil;
 import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
@@ -29,7 +28,6 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.InteractionUse;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.properties.Messages;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.ui.properties.controllers.IMultipleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.controllers.SimpleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
@@ -61,7 +59,7 @@ public class InteractionUseSection extends NamedElementSection {
     coveredInstanceRolesField = new MultipleSemanticField(main, Messages.getString("InteractionUseSection_CoveredInstanceRoles_Label"), getWidgetFactory(), //$NON-NLS-1$
         new IMultipleSemanticFieldController() {
           @Override
-          public List<EObject> writeOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, List<EObject> values) {
+          public List<EObject> writeOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, List<EObject> values) {
             InteractionFragment start = ((InteractionUse) semanticElement).getStart();
             if (start != null) {
               start.getCoveredInstanceRoles().clear();
@@ -81,7 +79,7 @@ public class InteractionUseSection extends NamedElementSection {
           }
 
           @Override
-          public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, boolean available) {
+          public List<EObject> readOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, boolean available) {
             List<EObject> result = new ArrayList<EObject>();
             if (available) {
               result.addAll(((Scenario) semanticElement.eContainer()).getOwnedInstanceRoles());
@@ -92,7 +90,7 @@ public class InteractionUseSection extends NamedElementSection {
           }
 
           @Override
-          public List<EObject> loadValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+          public List<EObject> loadValues(EObject semanticElement, EStructuralFeature semanticFeature) {
             List<EObject> result = new ArrayList<EObject>();
             result.addAll(((InteractionUse) semanticElement).getStart().getCoveredInstanceRoles());
             return result;
@@ -124,10 +122,10 @@ public class InteractionUseSection extends NamedElementSection {
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement capellaElement) {
+  public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
     coveredInstanceRolesField.loadData(capellaElement, InteractionPackage.eINSTANCE.getInteractionFragment_CoveredInstanceRoles());

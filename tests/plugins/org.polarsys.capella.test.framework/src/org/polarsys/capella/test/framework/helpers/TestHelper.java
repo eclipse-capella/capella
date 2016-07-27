@@ -35,6 +35,8 @@ import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.libraries.model.CapellaLibraryExt;
+import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.ProjectApproach;
 import org.polarsys.capella.test.framework.api.ModelProviderHelper;
 
 import com.google.common.io.Files;
@@ -92,6 +94,23 @@ public class TestHelper {
       Assert.fail(exception.getMessage());
     }
     return project;
+  }
+
+  /**
+   * set a project as multipart or not
+   * 
+   * @param project_p
+   *          the project to update
+   * @param value_p
+   *          true to set as Multipart, otherwise false
+   */
+  public static void setReusableComponents(EObject anyModelElement, boolean value) {
+    Project project = CapellaProjectHelper.getProject(anyModelElement);
+    if (value) {
+      CapellaProjectHelper.setProjectWithApproach(project, ProjectApproach.ReusableComponents);
+    } else {
+      CapellaProjectHelper.setProjectWithApproach(project, ProjectApproach.SingletonComponents);
+    }
   }
 
   /**

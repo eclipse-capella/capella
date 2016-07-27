@@ -18,7 +18,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
@@ -53,6 +52,7 @@ public class AbstractFunctionRule extends AbstractCapellaElementRule {
     super();
     registerUpdatedAttribute(FaPackage.Literals.ABSTRACT_FUNCTION__KIND);
     registerUpdatedAttribute(FaPackage.Literals.ABSTRACT_FUNCTION__CONDITION);
+    registerUpdatedReference(FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES);
   }
 
   @Override
@@ -79,7 +79,8 @@ public class AbstractFunctionRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected EStructuralFeature getTargetContainementFeature(EObject element, EObject result, EObject container, IContext context) {
+  protected EStructuralFeature getTargetContainementFeature(EObject element, EObject result, EObject container,
+      IContext context) {
     EClass targetType = getTargetType(element, context);
 
     if (container instanceof OperationalActivityPkg) {
@@ -146,13 +147,11 @@ public class AbstractFunctionRule extends AbstractCapellaElementRule {
     EObject currentContainer = element.eContainer();
     EObject bestContainer = null;
     while ((currentContainer != null)) {
-      bestContainer =
-          TransformationHandlerHelper.getInstance(context).getBestTracedElement(currentContainer, context, FaPackage.Literals.ABSTRACT_FUNCTION, element,
-              result);
+      bestContainer = TransformationHandlerHelper.getInstance(context).getBestTracedElement(currentContainer, context,
+          FaPackage.Literals.ABSTRACT_FUNCTION, element, result);
       if (bestContainer == null) {
-        bestContainer =
-            TransformationHandlerHelper.getInstance(context).getBestTracedElement(currentContainer, context, FaPackage.Literals.FUNCTION_PKG, element,
-                result);
+        bestContainer = TransformationHandlerHelper.getInstance(context).getBestTracedElement(currentContainer, context,
+            FaPackage.Literals.FUNCTION_PKG, element, result);
       }
 
       if (bestContainer != null) {
@@ -166,9 +165,8 @@ public class AbstractFunctionRule extends AbstractCapellaElementRule {
   @Override
   protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
     EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
-    BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element, result);
+    BlockArchitecture target = (BlockArchitecture) TransformationHandlerHelper.getInstance(context)
+        .getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE, element, result);
     return BlockArchitectureExt.getRootFunction(target);
   }
 
@@ -179,10 +177,13 @@ public class AbstractFunctionRule extends AbstractCapellaElementRule {
 
     if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, element, context)) {
       result.addAll(FunctionExt.getOwnedFunctionPorts(element));
-      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, FunctionExt.getOwnedFunctionPorts(element), context);
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE,
+          FunctionExt.getOwnedFunctionPorts(element), context);
 
-      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, element.getIncoming(), context);
-      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, element.getOutgoing(), context);
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, element.getIncoming(),
+          context);
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, element.getOutgoing(),
+          context);
 
       result.addAll(element.getIncoming());
       result.addAll(element.getOutgoing());
@@ -192,7 +193,8 @@ public class AbstractFunctionRule extends AbstractCapellaElementRule {
   @Override
   protected void attachRelated(EObject element, EObject result, IContext context) {
     super.attachRelated(element, result, context);
-    AttachmentHelper.getInstance(context).attachTracedElements(element, result, FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result,
+        FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES, context);
   }
 
   @Override

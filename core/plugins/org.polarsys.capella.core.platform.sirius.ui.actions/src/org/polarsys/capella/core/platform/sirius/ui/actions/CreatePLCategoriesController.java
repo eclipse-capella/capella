@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.util.Collections;
@@ -31,11 +32,11 @@ public class CreatePLCategoriesController extends CreateCategoriesController {
    * {@inheritDoc}
    */
   @Override
-  public void createAndAttachCategory(List<EObject> selection_p) {
-    super.createAndAttachCategory(selection_p);
+  public void createAndAttachCategory(List<EObject> selection) {
+    super.createAndAttachCategory(selection);
     Component categoryContainer;
 
-    categoryContainer = (Component) getBestContainerForCategory(selection_p, Collections.singletonList(CsPackage.eINSTANCE.getComponent()));
+    categoryContainer = (Component) getBestContainerForCategory(selection, Collections.singletonList(CsPackage.eINSTANCE.getComponent()));
 
     if (isNullOrNotInstanceOf(categoryContainer, Collections.singletonList(CsPackage.eINSTANCE.getComponent()))) {
       return;
@@ -53,7 +54,7 @@ public class CreatePLCategoriesController extends CreateCategoriesController {
       category.setName(categoryName);
       categoryContainer.getOwnedPhysicalLinkCategories().add(category);
 
-      for (EObject fe : selection_p) {
+      for (EObject fe : selection) {
         if (fe instanceof PhysicalLink) {
           category.getLinks().add((PhysicalLink) fe);
         }
@@ -65,11 +66,11 @@ public class CreatePLCategoriesController extends CreateCategoriesController {
   }
 
   @Override
-  protected EObject createCategory(EObject container_p) {
+  protected EObject createCategory(EObject container) {
     PhysicalLinkCategory category = CsFactory.eINSTANCE.createPhysicalLinkCategory();
     EReference feature = CsPackage.eINSTANCE.getComponent_OwnedPhysicalLinkCategories();
     String defaultName =
-        EcoreUtil2.getUniqueName(category, container_p, feature, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
+        EcoreUtil2.getUniqueName(category, container, feature, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
             Messages.CreatePLCategoriesController_prefix);
     category.setName(defaultName);
     return category;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,29 +68,29 @@ public class DecompositionUtil {
 
   /**
    * c'tor
-   * @param decompositionGeneralViewer_p
+   * @param decompositionGeneralViewer
    *          the {@link DecompositionGeneralViewer}
    * @deprecated used only for initializing images, use initializeImages() instead.
    */
-  public DecompositionUtil(DecompositionGeneralViewer decompositionGeneralViewer_p) {
-    this._decompositionGeneralViewer = decompositionGeneralViewer_p;
+  public DecompositionUtil(DecompositionGeneralViewer decompositionGeneralViewer) {
+    this._decompositionGeneralViewer = decompositionGeneralViewer;
     try {
       ImageRegistry imgRegistry = _decompositionGeneralViewer.getDecompositionModel().getImgRegistry();
       _onceUsedImage = imgRegistry.get(DecompositionUtil.INTERFACE_ONCE_ASSIGNED_ID);
       _unUsedImage = imgRegistry.get(DecompositionUtil.INTERFACE_UNASSIGNED_ID);
       _multipleUsedImage = imgRegistry.get(DecompositionUtil.INTERFACE_TWICE_ASSIGNED_ID);
-    } catch (Exception exception_p) {
+    } catch (Exception exception) {
       // ignore
 
     }
   }
 
-  public static void initializeImages(ImageRegistry imageRegistry_p) {
+  public static void initializeImages(ImageRegistry imageRegistry) {
     try {
-      _onceUsedImage = imageRegistry_p.get(DecompositionUtil.INTERFACE_ONCE_ASSIGNED_ID);
-      _unUsedImage = imageRegistry_p.get(DecompositionUtil.INTERFACE_UNASSIGNED_ID);
-      _multipleUsedImage = imageRegistry_p.get(DecompositionUtil.INTERFACE_TWICE_ASSIGNED_ID);
-    } catch (Exception exception_p) {
+      _onceUsedImage = imageRegistry.get(DecompositionUtil.INTERFACE_ONCE_ASSIGNED_ID);
+      _unUsedImage = imageRegistry.get(DecompositionUtil.INTERFACE_UNASSIGNED_ID);
+      _multipleUsedImage = imageRegistry.get(DecompositionUtil.INTERFACE_TWICE_ASSIGNED_ID);
+    } catch (Exception exception) {
       // ignore
 
     }
@@ -98,17 +98,17 @@ public class DecompositionUtil {
 
   /**
    * Gives the name of the Decomposition
-   * @param list_p
+   * @param list
    *          list of Decomposition
    * @return name of the decomposition
    */
   @SuppressWarnings("boxing")
-  public static String getDecompositionName(List<Decomposition> list_p) {
+  public static String getDecompositionName(List<Decomposition> list) {
     String name = Util.ZERO_LENGTH_STRING;
-    if (list_p.size() == 1) {
+    if (list.size() == 1) {
       return name;
     }
-    List<Integer> tmpList = parseDecompositionList(list_p);
+    List<Integer> tmpList = parseDecompositionList(list);
     int index = tmpList.size();
     for (int i = 0; i < tmpList.size(); i++) {
       int x = tmpList.get(i);
@@ -121,12 +121,12 @@ public class DecompositionUtil {
     return name;
   }
 
-  private static List<Integer> parseDecompositionList(List<Decomposition> list_p) {
+  private static List<Integer> parseDecompositionList(List<Decomposition> list) {
     List<Integer> tmp = new ArrayList<Integer>(1);
-    for (Decomposition decomp : list_p) {
+    for (Decomposition decomp : list) {
       if (decomp.getName().indexOf(Messages.getString("LCDecompGeneralViewer.decomposition.name")) != -1) { //$NON-NLS-1$
         int lastIndex = decomp.getName().lastIndexOf(" "); //$NON-NLS-1$
-        Integer integ = new Integer(decomp.getName().substring(lastIndex + 1));
+        Integer integ = Integer.valueOf(decomp.getName().substring(lastIndex + 1));
         if (integ.intValue() != 0)
           tmp.add(integ);
       }
@@ -138,14 +138,14 @@ public class DecompositionUtil {
 
   /**
    * Gives name for the TargetComponent from the list.
-   * @param list_p
+   * @param list
    *          the list of TargetComponents
    * @return name of the TargetComponent
    */
   @SuppressWarnings("boxing")
-  public static String getTargetComponentName(List<DecompositionComponent> list_p) {
+  public static String getTargetComponentName(List<DecompositionComponent> list) {
     String name = Util.ZERO_LENGTH_STRING;
-    List<Integer> tmpList = parseTargetComponentsList(list_p);
+    List<Integer> tmpList = parseTargetComponentsList(list);
     int index = tmpList.size();
     for (int i = 0; i < tmpList.size(); i++) {
       if (tmpList.get(i) > (i + 1)) {
@@ -159,15 +159,15 @@ public class DecompositionUtil {
   }
 
   /**
-   * @param list_p
+   * @param list
    * @return
    */
-  private static List<Integer> parseTargetComponentsList(List<DecompositionComponent> list_p) {
+  private static List<Integer> parseTargetComponentsList(List<DecompositionComponent> list) {
     List<Integer> tmp = new ArrayList<Integer>(1);
-    for (DecompositionComponent comp : list_p) {
+    for (DecompositionComponent comp : list) {
       if (comp.getName().indexOf(Messages.getString("LCDecompGeneralViewer.targetcomponent.name")) != -1) { //$NON-NLS-1$
         int lastIndex = comp.getName().lastIndexOf(" "); //$NON-NLS-1$
-        Integer integ = new Integer(comp.getName().substring(lastIndex + 1));
+        Integer integ = Integer.valueOf(comp.getName().substring(lastIndex + 1));
         tmp.add(integ);
       }
     }
@@ -178,21 +178,21 @@ public class DecompositionUtil {
 
   /**
    * Gets the double click listener for renaming a decomposition on a tab item
-   * @param item_p
+   * @param item
    *          the TabItem to be renamed
    * @return Listener for Mouse Double Click
    */
-  static Listener getRenameDecompListener(final CTabItem item_p) {
+  static Listener getRenameDecompListener(final CTabItem item) {
     if (_renameDecompListener != null)
-      item_p.removeListener(SWT.MouseDoubleClick, _renameDecompListener);
+      item.removeListener(SWT.MouseDoubleClick, _renameDecompListener);
     _renameDecompListener = new Listener() {
 
-      public void handleEvent(Event event_p) {
-        String newName = (String) event_p.data;
-        Decomposition decomposition = (Decomposition) item_p.getData();
+      public void handleEvent(Event event) {
+        String newName = (String) event.data;
+        Decomposition decomposition = (Decomposition) item.getData();
         if (decomposition.getDecompositionModel().renameDecomposition(decomposition, newName)) {
-          item_p.setText(newName);
-          TreeViewer vv = (TreeViewer) item_p.getData(IDecompositionDataConstants.TARGET_TREEVIEWER_DATA);
+          item.setText(newName);
+          TreeViewer vv = (TreeViewer) item.getData(IDecompositionDataConstants.TARGET_TREEVIEWER_DATA);
           vv.setSelection(vv.getSelection());
         }
       }
@@ -203,13 +203,13 @@ public class DecompositionUtil {
   /*
    * Gives listener for showing the status of DecompositionItem
    */
-  static Listener getLabelListener(final TreeViewer viewer_p) {
+  static Listener getLabelListener(final TreeViewer viewer) {
     // Listener for showing status of interfaces
     Listener labelListener = new Listener() {
       Tree tree = null;
 
       public void handleEvent(Event event) {
-        tree = viewer_p.getTree();
+        tree = viewer.getTree();
         Label label = (Label) event.widget;
         Shell shell = label.getShell();
         switch (event.type) {
@@ -236,7 +236,7 @@ public class DecompositionUtil {
   /*
    * Gives listener for tooltips in tableitem
    */
-  static Listener getTreeListener(final TreeViewer viewer_p, final Listener labelListener) {
+  static Listener getTreeListener(final TreeViewer viewer, final Listener labelListener) {
     // Listener for showing status of interfaces
     Listener treeListener = new Listener() {
       Shell tip = null;
@@ -244,7 +244,7 @@ public class DecompositionUtil {
       Tree tree = null;
 
       public void handleEvent(Event event) {
-        tree = viewer_p.getTree();
+        tree = viewer.getTree();
         switch (event.type) {
           case SWT.Dispose:
           case SWT.KeyDown:
@@ -300,18 +300,18 @@ public class DecompositionUtil {
 
   /**
    * This method is used to display light bulbs when a tree item is selected on the tree
-   * @param viewer_p
+   * @param viewer
    *          the tree viewer
    */
-  static void addListenerForSynthesisCheck(final TreeViewer viewer_p) {
-    final Tree tree = viewer_p.getTree();
+  static void addListenerForSynthesisCheck(final TreeViewer viewer) {
+    final Tree tree = viewer.getTree();
 
     tree.addListener(SWT.Selection, new Listener() {
       Shell shell = null;
       Label label = null;
 
       @SuppressWarnings("synthetic-access")
-      public void handleEvent(Event arg0_p) {
+      public void handleEvent(Event arg0) {
 
         Event e = new Event();
         TreeItem item = null;
@@ -382,35 +382,35 @@ public class DecompositionUtil {
    * This method is used to show a ContentProposal on the text field.
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  void addContentProposal(List list_p, final Text text_p) {
+  void addContentProposal(List list, final Text text) {
     char[] autoActivationCharacters = new char[] { '#', '(' };
     try {
       KeyStroke keyStroke = KeyStroke.getInstance("Ctrl+Space"); //$NON-NLS-1$
       ContentProposalAdapter adapter =
-                                       new ContentProposalAdapter(text_p, new TextContentAdapter(), new DecompositionContentProposalProvider(list_p),
+                                       new ContentProposalAdapter(text, new TextContentAdapter(), new DecompositionContentProposalProvider(list),
                                                                   keyStroke, autoActivationCharacters);
       adapter.addContentProposalListener(new IContentProposalListener() {
 
-        public void proposalAccepted(IContentProposal proposal_p) {
-          DecompositionReuseContentProposal proposal = (DecompositionReuseContentProposal) proposal_p;
-          DecompositionComponent comp = proposal.getComponent();
-          text_p.setText(comp.getName());
-          text_p.setData(comp);
+        public void proposalAccepted(IContentProposal proposal) {
+          DecompositionReuseContentProposal prop = (DecompositionReuseContentProposal) proposal;
+          DecompositionComponent comp = prop.getComponent();
+          text.setText(comp.getName());
+          text.setData(comp);
 
         }
 
       });
-    } catch (ParseException exception_p) {
+    } catch (ParseException exception) {
       // do nothing
     }
   }
 
-  public static boolean isValidName(String name_p, Decomposition decomposition_p) {
-    if(name_p == null || name_p.length() == 0) {
+  public static boolean isValidName(String name, Decomposition decomposition) {
+    if(name == null || name.length() == 0) {
       return false;
     }
-    for (DecompositionComponent comp : decomposition_p.getTargetComponents()) {
-      if (comp.getName().equals(name_p)) {
+    for (DecompositionComponent comp : decomposition.getTargetComponents()) {
+      if (comp.getName().equals(name)) {
         return false;
       }
     }

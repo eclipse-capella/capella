@@ -285,7 +285,7 @@
             <enablement>
                <or>
                   <instanceof
-                        value="org.eclipse.sirius.viewpoint.DRepresentation">
+                        value="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
                   </instanceof>
                   <test
                         forcePluginActivation="false"
@@ -333,14 +333,17 @@
                class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.EditCommonActionProvider"
                id="capella.project.explorer.editContributor">
             <enablement>
-            
                <and>
-                  
                   <not>
                      <instanceof
-                           value="org.eclipse.sirius.viewpoint.DRepresentation">
+                           value="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
                      </instanceof>
                   </not>
+                  <not>
+	                  <test 
+							forcePluginActivation="true"
+							property="org.polarsys.capella.core.platform.sirius.ui.navigator.itemWrapperPropertyTester" />
+				  </not>
                   <adapt
                         type="org.eclipse.emf.ecore.EObject">
                   </adapt>
@@ -974,7 +977,8 @@
                      name="org.polarsys.kitalpha.emde.model.Element">
                </objectClass>
                <objectClass
-                     name="org.eclipse.sirius.viewpoint.DRepresentation">
+                     name="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+>>>>>>> refs/remotes/origin/master
                </objectClass>
             </or>
          </enablement>

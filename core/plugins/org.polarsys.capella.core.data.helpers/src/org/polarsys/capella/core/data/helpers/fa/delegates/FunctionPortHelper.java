@@ -8,14 +8,13 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.data.helpers.fa.delegates;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.helpers.modellingcore.delegates.AbstractTypeHelper;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionPort;
@@ -52,6 +51,9 @@ public class FunctionPortHelper {
 		if(null == ret) {
 			ret = PortHelper.getInstance().doSwitch(element, feature);
 		}
+    if(null == ret) {
+      ret = AbstractTypeHelper.getInstance().doSwitch(element, feature);
+    }
 
 		return ret;
 	}

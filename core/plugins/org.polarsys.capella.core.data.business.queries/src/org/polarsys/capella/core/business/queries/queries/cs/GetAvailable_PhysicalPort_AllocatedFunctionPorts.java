@@ -34,17 +34,17 @@ public class GetAvailable_PhysicalPort_AllocatedFunctionPorts extends AbstractQu
 	@Override
 	public List<Object> execute(Object input, IQueryContext context) {
 		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+		List<EObject> availableElements = getAvailableElements(capellaElement);
 		return (List) availableElements;
 	}
 
 	/** 
-	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
+	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+	public List<EObject> getAvailableElements(CapellaElement element) {
+		List<EObject> availableElements = new ArrayList<EObject>();
 		if (element instanceof Port) {
-			List<CapellaElement> currentElements = getCurrentElements(element, false);
+			List<EObject> currentElements = getCurrentElements(element, false);
 			for (EObject port : getRule_MQRY_Port_AllocatedPorts_11((Port) element)) {
 				if (!currentElements.contains(port)) {
 					availableElements.add((CapellaElement) port);
@@ -57,10 +57,10 @@ public class GetAvailable_PhysicalPort_AllocatedFunctionPorts extends AbstractQu
 	}
 
 	/** 
-	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement,boolean)
+	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getCurrentElements(EObject,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
+	public List<EObject> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+		List<EObject> currentElements = new ArrayList<EObject>();
 		if (element instanceof Port) {
 			Port elt = (Port) element;
 			EList<PortAllocation> portAllocations = elt.getOutgoingPortAllocations();
@@ -75,12 +75,12 @@ public class GetAvailable_PhysicalPort_AllocatedFunctionPorts extends AbstractQu
 		return currentElements;
 	}
 
-	protected List<CapellaElement> getRule_MQRY_Port_AllocatedPorts_11(Port element) {
+	protected List<EObject> getRule_MQRY_Port_AllocatedPorts_11(Port element) {
 		EObject ownerObj = element.eContainer();
 		if (!(ownerObj instanceof Component)) {
 			return Collections.emptyList();
 		}
-		List<CapellaElement> resultFunctionPorts = new ArrayList<CapellaElement>();
+		List<EObject> resultFunctionPorts = new ArrayList<EObject>();
 		List<Component> componentsHierarchy = ComponentExt.getAllSubUsedAndDeployedComponents((Component) ownerObj);
 		for (Component component : componentsHierarchy) {
 			for (ComponentFunctionalAllocation alloc : component.getFunctionalAllocations()) {

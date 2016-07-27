@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,15 +27,15 @@ import org.polarsys.capella.core.queries.helpers.QueryExt;
 
 public class GenericGetForLibWithCorrespondingArchitectureElement extends AbstractQuery {
 
-  public List<Object> execute(Object input_p, IQueryContext context_p) throws QueryException {
+  public List<Object> execute(Object input, IQueryContext context) throws QueryException {
     List<Object> result = new ArrayList<Object>();
-    EObject input = (EObject) input_p;
-    IModel currentProject = ILibraryManager.INSTANCE.getModel(input);
+    EObject in = (EObject) input;
+    IModel currentProject = ILibraryManager.INSTANCE.getModel(in);
     Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
     for (IModel library : libraries) {
       if (library instanceof CapellaModel) {
-        EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(input, (CapellaModel) library);
-        result.addAll(QueryInterpretor.executeQuery(getExtendedQueryIdentifier(), correspondingInput, context_p));
+        EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(in, (CapellaModel) library);
+        result.addAll(QueryInterpretor.executeQuery(getExtendedQueryIdentifier(), correspondingInput, context));
       }
     }
     return result;

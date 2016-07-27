@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
@@ -41,7 +42,7 @@ public class GetAvailable_NumericType_DefaultValue extends AbstractQuery {
   public List<Object> execute(Object input, IQueryContext context) {
     // GET THE PARAMETERS AND INITIALIZE RESULTING LIST
     CapellaElement element = (CapellaElement) input;
-    List<CapellaElement> result = new ArrayList<CapellaElement>();
+    List<EObject> result = new ArrayList<EObject>();
     // GET AVAILABLE ELEMENTS
     // get all data in the root data package of each allocated architectures
     BlockArchitecture currentBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(element);
@@ -56,7 +57,7 @@ public class GetAvailable_NumericType_DefaultValue extends AbstractQuery {
       DataPkg dataPkg = cpnt.getOwnedDataPkg();
       if (dataPkg != null) {
         result.addAll(getDataFromLevel(dataPkg, element));
-        List<CapellaElement> allTypes = new ArrayList<CapellaElement>();
+        List<EObject> allTypes = new ArrayList<EObject>();
         allTypes.addAll(DataPkgExt.getAllTypesFromDataPkg(dataPkg));
         allTypes = QueryInterpretor.executeFilter(allTypes, new KeepPrimitiveClassInstanceOfSpecificEClassFilter(InformationPackage.Literals.CLASS));
         allTypes = QueryInterpretor.executeFilter(allTypes, new KeepPrimitiveClassInstanceOfSpecificEClassFilter(InformationPackage.Literals.COLLECTION));

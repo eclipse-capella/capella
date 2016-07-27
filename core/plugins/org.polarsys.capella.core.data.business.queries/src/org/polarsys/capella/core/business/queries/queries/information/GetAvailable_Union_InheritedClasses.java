@@ -13,6 +13,7 @@ package org.polarsys.capella.core.business.queries.queries.information;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -44,23 +45,23 @@ public class GetAvailable_Union_InheritedClasses extends AbstractQuery {
 	}
 
 	/** 
-	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
+	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getAvailableElements(EObject)
 	 */
 	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		List<CapellaElement> abstractAvailableElements = getAbstractAvailableElements(element);
+		List<EObject> abstractAvailableElements = getAbstractAvailableElements(element);
 		if (!abstractAvailableElements.isEmpty()) {
-			for (CapellaElement capellaElement : abstractAvailableElements) {
+			for (EObject capellaElement : abstractAvailableElements) {
 				if (capellaElement instanceof Union) {
-					availableElements.add(capellaElement);
+					availableElements.add((CapellaElement) capellaElement);
 				}
 			}
 		}
 		return availableElements;
 	}
 	
-	public List<CapellaElement> getAbstractAvailableElements(CapellaElement element) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+	public List<EObject> getAbstractAvailableElements(CapellaElement element) {
+		List<EObject> availableElements = new ArrayList<EObject>();
 
 		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		boolean isClassFromSharedPkg = false;

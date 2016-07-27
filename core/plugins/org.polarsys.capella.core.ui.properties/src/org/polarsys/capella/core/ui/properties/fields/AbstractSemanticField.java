@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,7 +44,6 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.ui.properties.helpers.NotificationHelper;
 
@@ -54,7 +53,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   /**
    * Current edited semantic element.
    */
-  protected CapellaElement _semanticElement;
+  protected EObject _semanticElement;
   /**
    * Handle semantic element's feature handled by this field.
    */
@@ -235,7 +234,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
    * @param semanticElement
    * @param semanticFeature
    */
-  public void loadData(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+  public void loadData(EObject semanticElement, EStructuralFeature semanticFeature) {
     _semanticElement = semanticElement;
     _semanticFeature = semanticFeature;
   }
@@ -244,7 +243,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
    * Load the UI representation of given semantic element.
    * @param semanticElement
    */
-  public abstract void loadData(CapellaElement semanticElement);
+  public abstract void loadData(EObject semanticElement);
 
   /**
    * @see org.eclipse.swt.events.FocusListener#focusGained(org.eclipse.swt.events.FocusEvent)
@@ -371,7 +370,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
             } else if (EcorePackage.eINSTANCE.getEInt().equals(type)) {
               if (value instanceof String) {
                 try {
-                  object.eSet(feature, new Integer(Integer.parseInt((String) value)));
+                  object.eSet(feature, Integer.valueOf(Integer.parseInt((String) value)));
                 } catch (NumberFormatException ex) {
                   //
                 }

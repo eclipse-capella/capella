@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
 import org.apache.log4j.Logger;
@@ -21,6 +20,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IViewActionDelegate;
@@ -51,14 +51,14 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
 
   /**
    * Get the first selected element.
-   * @param selection_p
+   * @param selection
    * @return <code>null</code> is returned if no selection or given selection is not {@link IStructuredSelection} instance.
    */
-  protected Object getFirstSelectedElement(ISelection selection_p) {
-    if (selection_p.isEmpty() || !(selection_p instanceof IStructuredSelection)) {
+  protected Object getFirstSelectedElement(ISelection selection) {
+    if (selection.isEmpty() || !(selection instanceof IStructuredSelection)) {
       return null;
     }
-    IStructuredSelection structuredSelection = (IStructuredSelection) selection_p;
+    IStructuredSelection structuredSelection = (IStructuredSelection) selection;
     return structuredSelection.getFirstElement();
   }
 
@@ -74,14 +74,14 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * Be careful, this methods is only called when this actions is contributed through a viewer contribution.
    * @see org.eclipse.ui.IViewActionDelegate#init(org.eclipse.ui.IViewPart)
    */
-  public void init(IViewPart view_p) {
-    _site = view_p.getSite();
+  public void init(IViewPart view) {
+    _site = view.getSite();
   }
 
   /**
    * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
    */
-  public void run(IAction action_p) {
+  public void run(IAction action) {
     if (_ignoreWorkbenchPartSite || (null != _site)) {
       ISelection selection = getSelection();
       if (selection instanceof IStructuredSelection) {
@@ -91,6 +91,10 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
         if (uiSelectedElement instanceof ItemWrapper) {
           uiSelectedElement = ((ItemWrapper) uiSelectedElement).getWrappedObject();
         }
+        if (uiSelectedElement instanceof DRepresentationDescriptor) {
+          uiSelectedElement = ((DRepresentationDescriptor) uiSelectedElement).getRepresentation();
+        }
+
         if (uiSelectedElement instanceof DRepresentation) {
           elementToSelectInCapellaExplorer = uiSelectedElement;
         } else {
@@ -107,9 +111,9 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
 
   /**
    * Set as new selection in the Capella Project Explorer given selection.
-   * @param selection_p
+   * @param selection
    */
-  protected void selectElementInCapellaExplorer(ISelection selection_p) {
+  protected void selectElementInCapellaExplorer(ISelection selection) {
     try {
       IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
       // Get the Capella Explorer.
@@ -118,58 +122,58 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
         // Show it if not found.
         explorerView = (CapellaCommonNavigator) activePage.showView(CapellaCommonNavigator.ID);
       }
-      explorerView.selectReveal(selection_p);
-    } catch (PartInitException exception_p) {
-      __logger.warn(new EmbeddedMessage(exception_p.getMessage(), IReportManagerDefaultComponents.UI), exception_p);
+      explorerView.selectReveal(selection);
+    } catch (PartInitException exception) {
+      __logger.warn(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI), exception);
     }
   }
 
   /**
    * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
    */
-  public void selectionChanged(IAction action_p, ISelection selection_p) {
+  public void selectionChanged(IAction action, ISelection selection) {
     // Do nothing here since we'd prefer getting the selection in a lazy way.
   }
 
   /**
    * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.action.IAction, org.eclipse.ui.IWorkbenchPart)
    */
-  public void setActivePart(IAction action_p, IWorkbenchPart targetPart_p) {
-    _site = targetPart_p.getSite();
+  public void setActivePart(IAction action, IWorkbenchPart targetPart) {
+    _site = targetPart.getSite();
   }
 
   /**
    * For internal usage.
-   * @param site_p
+   * @param site
    */
-  public void setSite(IWorkbenchPartSite site_p) {
-    _site = site_p;
+  public void setSite(IWorkbenchPartSite site) {
+    _site = site;
   }
 
   /**
    * Should ignore or not the workbench part site at runtime.
-   * @param ignore_p
+   * @param ignore
    */
-  public void shouldIgnoreWorkbenchPartSite(boolean ignore_p) {
-    _ignoreWorkbenchPartSite = ignore_p;
+  public void shouldIgnoreWorkbenchPartSite(boolean ignore) {
+    _ignoreWorkbenchPartSite = ignore;
   }
 
   /**
    * Get the semantic element from given selected element.
-   * @param uiSelectedElement_p
+   * @param uiSelectedElement
    * @return a semantic element or a {@link DRepresentation}.
    */
-  public static Object getElement(Object uiSelectedElement_p) {
+  public static Object getElement(Object uiSelectedElement) {
     Object result = null;
     // Precondition.
-    if (null == uiSelectedElement_p) {
+    if (null == uiSelectedElement) {
       return result;
     }
-    if (CapellaResourceHelper.isSemanticElement(uiSelectedElement_p)) {
-      result = uiSelectedElement_p;
+    if (CapellaResourceHelper.isSemanticElement(uiSelectedElement)) {
+      result = uiSelectedElement;
 
-    } else if (uiSelectedElement_p instanceof GraphicalEditPart) {
-      GraphicalEditPart editPart = (GraphicalEditPart) uiSelectedElement_p;
+    } else if (uiSelectedElement instanceof GraphicalEditPart) {
+      GraphicalEditPart editPart = (GraphicalEditPart) uiSelectedElement;
       result = editPart.getModel();
       if (result instanceof View) {
         View view = (View) result;
@@ -179,11 +183,11 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
         DSemanticDecorator semanticDecorator = (DSemanticDecorator) result;
         result = semanticDecorator.getTarget();
       }
-    } else if ((uiSelectedElement_p instanceof DSemanticDecorator) && !(uiSelectedElement_p instanceof DSemanticDiagram)) {
-      DSemanticDecorator semanticDecorator = (DSemanticDecorator) uiSelectedElement_p;
+    } else if ((uiSelectedElement instanceof DSemanticDecorator) && !(uiSelectedElement instanceof DSemanticDiagram)) {
+      DSemanticDecorator semanticDecorator = (DSemanticDecorator) uiSelectedElement;
       result = semanticDecorator.getTarget();
-    } else if (uiSelectedElement_p instanceof EObjectWrapper) {
-      result = ((EObjectWrapper) uiSelectedElement_p).getElement();
+    } else if (uiSelectedElement instanceof EObjectWrapper) {
+      result = ((EObjectWrapper) uiSelectedElement).getElement();
     }
 
     if (result instanceof Part) {

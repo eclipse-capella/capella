@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.util.ArrayList;
@@ -29,20 +30,20 @@ abstract public class UpdateCategoriesController {
 
   /**
    * decides if elements are valid or not for update categories action
-   * @param selection_p
+   * @param selection
    * @return
    */
-  public static boolean isValidSelection(List<EObject> selection_p) {
+  public static boolean isValidSelection(List<EObject> selection) {
     // functionalExchanges
-    if (WizardActionHelper.areAllElementFunctionalExchange(selection_p)) {
+    if (WizardActionHelper.areAllElementFunctionalExchange(selection)) {
       return true;
     }
     // componentExchanges
-    else if (WizardActionHelper.areAllElementsComponentExchanges(selection_p)) {
+    else if (WizardActionHelper.areAllElementsComponentExchanges(selection)) {
       return true;
     }
     // physicalLinks
-    else if (WizardActionHelper.areAllElementsPhysicalLinks(selection_p)) {
+    else if (WizardActionHelper.areAllElementsPhysicalLinks(selection)) {
       return true;
     }
 
@@ -51,13 +52,13 @@ abstract public class UpdateCategoriesController {
 
   /**
    * Return list of elements used for allocation or deployment
-   * @param element_p
-   * @param titleMessage_p
+   * @param element
+   * @param titleMessage
    * @return
    */
-  public List<EObject> getAvailableCategories(List<EObject> element_p) {
+  public List<EObject> getAvailableCategories(List<EObject> element) {
     List<EObject> result = new ArrayList<EObject>();
-    if (element_p == null) {
+    if (element == null) {
       return result;
     }
 
@@ -65,14 +66,14 @@ abstract public class UpdateCategoriesController {
   }
 
   /**
-   * @param selection_p
+   * @param selection
    * @return
    */
-  public static UpdateCategoriesController createUpdateCategoriesController(List<EObject> selection_p) {
-    if (selection_p.isEmpty()) {
+  public static UpdateCategoriesController createUpdateCategoriesController(List<EObject> selection) {
+    if (selection.isEmpty()) {
       return null;
     }
-    EObject first = selection_p.get(0);
+    EObject first = selection.get(0);
     if (first instanceof FunctionalExchange) {
       return new UpdateFECategoriesController();
     }
@@ -96,19 +97,19 @@ abstract public class UpdateCategoriesController {
 
   /**
    * Add a given list of categories and remove another one from the given elements
-   * @param selectedElements_p
-   * @param categoriesToAdd_p
-   * @param categoriesToRemove_p
+   * @param selectedElements
+   * @param categoriesToAdd
+   * @param categoriesToRemove
    */
-  public void updateCategories(List<EObject> selectedElements_p, List<EObject> categoriesToAdd_p, List<EObject> categoriesToRemove_p) {
+  public void updateCategories(List<EObject> selectedElements, List<EObject> categoriesToAdd, List<EObject> categoriesToRemove) {
     return;
   }
 
   /**
-   * @param selection_p
+   * @param selection
    * @return
    */
-  public List<EObject> getCommonCategories(List<EObject> selection_p) {
+  public List<EObject> getCommonCategories(List<EObject> selection) {
     return null;
   }
 

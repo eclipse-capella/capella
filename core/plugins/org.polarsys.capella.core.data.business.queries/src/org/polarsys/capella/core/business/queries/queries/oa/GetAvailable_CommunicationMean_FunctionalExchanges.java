@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.activity.ActivityEdge;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
@@ -39,15 +40,15 @@ public class GetAvailable_CommunicationMean_FunctionalExchanges extends Abstract
 	@Override
 	public List<Object> execute(Object input, IQueryContext context) {
 		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+		List<EObject> availableElements = getAvailableElements(capellaElement);
 		return (List) availableElements;
 	}
 
 	/** 
-	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
+	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+	public List<EObject> getAvailableElements(CapellaElement element) {
+		List<EObject> availableElements = new ArrayList<EObject>();
 		BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element);
 		if (null == arch) {
 			return availableElements;

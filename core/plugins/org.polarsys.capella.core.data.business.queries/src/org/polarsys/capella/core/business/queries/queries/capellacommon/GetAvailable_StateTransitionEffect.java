@@ -50,13 +50,11 @@ public class GetAvailable_StateTransitionEffect extends AbstractQuery {
         }
       }
       EObject eContainer = inputElement.eContainer();
-      if (eContainer != null) {
-        while (!(eContainer instanceof Component) && !(eContainer instanceof Class)) {
-          eContainer = eContainer.eContainer();
-        }
-        if ((eContainer instanceof Component) && (inputElement instanceof StateTransition)) {
-          availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
-        }
+      while (eContainer != null && !(eContainer instanceof Component) && !(eContainer instanceof Class)) {
+        eContainer = eContainer.eContainer();
+      }
+      if ((eContainer instanceof Component) && (inputElement instanceof StateTransition)) {
+        availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
       }
     }
     if (inputElement instanceof StateTransition) {

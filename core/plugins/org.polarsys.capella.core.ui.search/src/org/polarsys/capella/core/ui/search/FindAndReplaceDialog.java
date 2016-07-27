@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -116,32 +116,34 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
   /**
    * Create the dialog.
    * @param parentShell
-   * @param selection_p
-   * @param root_p
+   * @param elements
+   * @param treeViewerExpandLevel
    * @wbp.parser.constructor
    */
-  protected FindAndReplaceDialog(Shell parentShell, Collection<? extends EObject> elements, int treeViewerExpandLevel_p) {
+  protected FindAndReplaceDialog(Shell parentShell, Collection<? extends EObject> elements, int treeViewerExpandLevel) {
     super(parentShell, TransactionHelper.getEditingDomain(elements), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
           org.polarsys.capella.core.ui.search.Messages.FindAndReplaceDialog_title,
-          org.polarsys.capella.core.ui.search.Messages.FindAndReplaceDialog_dialogMessage, elements, true, null, treeViewerExpandLevel_p);
+          org.polarsys.capella.core.ui.search.Messages.FindAndReplaceDialog_dialogMessage, elements, true, null, treeViewerExpandLevel);
 
   }
 
   /**
-   * @param shell_p
-   * @param singletonList_p
-   * @param selection_p
-   * @param i_p
+   * @param shell
+   * @param root
+   * @param modelElementContent
+   * @param selection
+   * @param treeViewerExpandLevel
    */
-  public FindAndReplaceDialog(Shell shell_p, SystemEngineering root_p, HashSet<EObject> modelElementContent_p, ISelection selection_p,
-      int treeViewerExpandLevel_p) {
-    this(shell_p, modelElementContent_p, treeViewerExpandLevel_p);
-    _currentSelection = selection_p;
-    _systemEngineering = root_p;
+  public FindAndReplaceDialog(Shell shell, SystemEngineering root, HashSet<EObject> modelElementContent, ISelection selection,
+      int treeViewerExpandLevel) {
+    this(shell, modelElementContent, treeViewerExpandLevel);
+    _currentSelection = selection;
+    _systemEngineering = root;
   }
 
   /**
-   * Overridden to add accelerators. {@inheritDoc}
+   * Overridden to add accelerators.
+   * {@inheritDoc}
    */
   @Override
   protected void createButtonsForButtonBar(Composite parent) {
@@ -169,10 +171,10 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    * {@inheritDoc}
    */
   @Override
-  protected void doCreateDialogArea(Composite parent_p) {
+  protected void doCreateDialogArea(Composite parent) {
     // add the header
-    _header = new FindAndReplaceHeader(parent_p, SWT.NO_BACKGROUND);
-    super.doCreateDialogArea(parent_p);
+    _header = new FindAndReplaceHeader(parent, SWT.NO_BACKGROUND);
+    super.doCreateDialogArea(parent);
     getViewer().getClientViewer().setSelection(_currentSelection, true);
     getViewer().getClientViewer().getTree().showSelection();
 
@@ -228,14 +230,14 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     _header.getWholeModelRadioButton().addSelectionListener(new SelectionAdapter() {
       @SuppressWarnings("synthetic-access")
       @Override
-      public void widgetSelected(SelectionEvent e_p) {
+      public void widgetSelected(SelectionEvent e) {
         getViewer().setEnabled(false);
       }
     });
     _header.getSelectedElementsRadioBtn().addSelectionListener(new SelectionAdapter() {
       @SuppressWarnings("synthetic-access")
       @Override
-      public void widgetSelected(SelectionEvent e_p) {
+      public void widgetSelected(SelectionEvent e) {
         getViewer().setEnabled(true);
       }
     });
@@ -282,7 +284,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     }
   }
 
-  void handleReplaceAll(Object source_p) {
+  void handleReplaceAll(Object source) {
 
     getUserChoices();
     updateScope();
@@ -332,11 +334,11 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
        * {@inheritDoc}
        */
       @Override
-      protected String getName(EObject object_p) {
-        String result = super.getName(object_p);
+      protected String getName(EObject object) {
+        String result = super.getName(object);
         if ((null == result) || result.isEmpty()) {
-          if (object_p instanceof DRepresentation) {
-            DRepresentation res = (DRepresentation) object_p;
+          if (object instanceof DRepresentation) {
+            DRepresentation res = (DRepresentation) object;
             String repName = res.getName();
             if (null != repName) {
               result = repName;
@@ -350,8 +352,8 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
        * {@inheritDoc}
        */
       @Override
-      protected boolean managedObject(EObject object_p) {
-        return super.managedObject(object_p) || (object_p instanceof DRepresentation);
+      protected boolean managedObject(EObject object) {
+        return super.managedObject(object) || (object instanceof DRepresentation);
       }
     };
     ICommand updateHyperlinksCommand = new AbstractReadWriteCommand() {
@@ -434,37 +436,37 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
 
   /**
    * Answers whether the given String matches the pattern.
-   * @param string_p the String to test
+   * @param string the String to test
    * @return whether the string matches the pattern
    */
-  boolean match(String string_p) {
-    if (null == string_p) {
+  boolean match(String string) {
+    if (null == string) {
       return false;
     }
     if (!_ignoreWildCards) {// if wildcards are used
 
-      return matchWithWildCard(string_p);
+      return matchWithWildCard(string);
     }
     if (_wholeExpression) {
       List<String> findExprList = Arrays.asList(getFindString().split(SPACE));
-      List<String> string_pList = Arrays.asList(string_p.split(SPACE));
+      List<String> string_pList = Arrays.asList(string.split(SPACE));
 
       return matchExpressionList(string_pList, findExprList, _ignoreCase);
     }
-    return _pattern.matcher(string_p).find();
+    return _pattern.matcher(string).find();
   }
 
   /**
-   * @param newFindRegex_p
+   * @param string
    * @return
    */
   @SuppressWarnings("restriction")
-  private boolean matchWithWildCard(String string_p) {
+  private boolean matchWithWildCard(String string) {
     StringMatcher wildCardMatcher = new StringMatcher(getFindString(), _ignoreCase, _ignoreWildCards);
-    return wildCardMatcher.match(string_p);
+    return wildCardMatcher.match(string);
   }
 
-  public static boolean matchExpressionList(List<String> text, List<String> findExpr, boolean ignoreCase_p) {
+  public static boolean matchExpressionList(List<String> text, List<String> findExpr, boolean ignoreCase) {
     if ((null == text) | (null == findExpr)) {
       return false;
     }
@@ -474,10 +476,10 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
       return false;
     }
     for (int i = 0; i < textSize; i++) {
-      if (areEquals(findExpr.get(0), text.get(i), ignoreCase_p)) {
+      if (areEquals(findExpr.get(0), text.get(i), ignoreCase)) {
         List<String> textSubList = text.subList(i + 1, i + findExprSize);
         List<String> fExprSublist = findExpr.subList(1, findExprSize);
-        if (areEquals(fExprSublist, textSubList, ignoreCase_p)) {
+        if (areEquals(fExprSublist, textSubList, ignoreCase)) {
           return true;
         }
       }
@@ -486,16 +488,16 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
   }
 
   /**
-   * @param fExprSublist_p
-   * @param textSubList_p
-   * @param ignoreCase_p
+   * @param l1
+   * @param l2
+   * @param ignoreCase
    * @return
    */
-  private static boolean areEquals(List<String> l1, List<String> l2, boolean ignoreCase_p) {
+  private static boolean areEquals(List<String> l1, List<String> l2, boolean ignoreCase) {
     if (l2.size() != l1.size()) {
       return false;
     }
-    if (ignoreCase_p) {
+    if (ignoreCase) {
       for (int i = 0; i < l2.size(); i++) {
         if (!l1.get(i).equalsIgnoreCase(l2.get(i))) {
           return false;
@@ -508,31 +510,32 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
   }
 
   /**
-   * @param string_p
-   * @param string2_p
-   * @param ignoreCase_p
+   * @param string
+   * @param string2
+   * @param ignoreCase
    * @return
    */
-  private static boolean areEquals(String string_p, String string2_p, boolean ignoreCase_p) {
-    if (ignoreCase_p) {
-      return string2_p.equalsIgnoreCase(string_p);
+  private static boolean areEquals(String string, String string2, boolean ignoreCase) {
+    if (ignoreCase) {
+      return string2.equalsIgnoreCase(string);
     }
-    return string2_p.equals(string_p);
+    return string2.equals(string);
   }
 
   /**
    * reports impacted elements count to the InfoView
+   * @param message
    * @param impactedElements
    */
   private void reportResults(String message, final Set<Element> impactedElements) {
     final int impactedCount = impactedElements.size();
-    final String informationMessage =  NLS.bind(message, new Integer(impactedCount));
+    final String informationMessage =  NLS.bind(message, Integer.valueOf(impactedCount));
     LightMarkerRegistry.getInstance().createMarker(ResourcesPlugin.getWorkspace().getRoot(), new BasicDiagnostic(Messages.FindAndReplaceDialog_1, 0, informationMessage, impactedElements.toArray()));
     try {
       // Show the Information view
       PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(MarkerView.VIEW_ID, null, IWorkbenchPage.VIEW_VISIBLE);
-    } catch (PartInitException exception_p) {
-      MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception_p.getLocalizedMessage(), exception_p));
+    } catch (PartInitException exception) {
+      MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception.getLocalizedMessage(), exception));
     }
   }
 
@@ -540,14 +543,14 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    */
   protected final class PreviewDialogContextMenuFiller extends AbstractContextMenuFiller {
     @Override
-    public void fillMenuManager(IMenuManager contextMenuManager_p, final ISelection selection_p) {
+    public void fillMenuManager(IMenuManager contextMenuManager, final ISelection selection) {
       final LocateInCapellaExplorerAction selectInExplorerAction = new LocateInCapellaExplorerAction() {
         /**
          * {@inheritDoc}
          */
         @Override
         protected ISelection getSelection() {
-          return selection_p;
+          return selection;
         }
       };
 
@@ -566,12 +569,12 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
       selectInExplorerAction.shouldIgnoreWorkbenchPartSite(true);
       action.setText(Messages.ImpactAnalysisAction_ShowInCapellaExplorer_Title);
       action.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
-      selectInExplorerAction.selectionChanged(action, selection_p);
+      selectInExplorerAction.selectionChanged(action, selection);
       if (action.isEnabled()) {
-        contextMenuManager_p.add(action);
+        contextMenuManager.add(action);
       }
 
-      final EObject eObject = (EObject) ((TreeSelection) selection_p).iterator().next();
+      final EObject eObject = (EObject) ((TreeSelection) selection).iterator().next();
 
       final LocateInCapellaExplorerAction selectInSemanticBrowserAction = new LocateInCapellaExplorerAction() {
         /**
@@ -579,7 +582,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
          */
         @Override
         protected ISelection getSelection() {
-          return selection_p;
+          return selection;
         }
       };
 
@@ -614,9 +617,9 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
       selectInSemanticBrowserAction.shouldIgnoreWorkbenchPartSite(true);
       action3.setText(Messages.selectInSemanticBrowser);
       action3.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
-      selectInSemanticBrowserAction.selectionChanged(action3, selection_p);
+      selectInSemanticBrowserAction.selectionChanged(action3, selection);
       if (action3.isEnabled()) {
-        contextMenuManager_p.add(action3);
+        contextMenuManager.add(action3);
       }
 
     }
@@ -627,9 +630,9 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
      * {@inheritDoc}
      */
     @Override
-    public void append(ICommand command_p) {
-      if (null != command_p) {
-        super.append(command_p);
+    public void append(ICommand command) {
+      if (null != command) {
+        super.append(command);
       }
     }
 

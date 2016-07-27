@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.properties.controllers.ComponentExchange_AllocatedFunctionalExchangesController;
@@ -60,7 +59,7 @@ public class ComponentExchangeSection extends NamedElementSection {
                * {@inheritDoc}
                */
               @Override
-              protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+              protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
                 return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(),
                     ModellingcorePackage.eINSTANCE.getAbstractInformationFlow_ConvoyedInformations());
               }
@@ -94,7 +93,7 @@ public class ComponentExchangeSection extends NamedElementSection {
                * {@inheritDoc}
                */
               @Override
-              protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+              protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
                 return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), FaPackage.eINSTANCE.getComponentExchange_Categories());
               }
             });
@@ -107,10 +106,10 @@ public class ComponentExchangeSection extends NamedElementSection {
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement capellaElement) {
+  public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
     componentExchangeKindGroup.loadData(capellaElement, FaPackage.eINSTANCE.getComponentExchange_Kind());

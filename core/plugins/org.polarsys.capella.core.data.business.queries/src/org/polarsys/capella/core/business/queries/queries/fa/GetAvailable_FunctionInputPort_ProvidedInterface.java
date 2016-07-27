@@ -38,7 +38,7 @@ public class GetAvailable_FunctionInputPort_ProvidedInterface extends AbstractQu
 	@Override
 	public List<Object> execute(Object input, IQueryContext context) {
 		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+		List<EObject> availableElements = getAvailableElements(capellaElement);
 		return (List) availableElements;
 	}
 
@@ -60,10 +60,10 @@ public class GetAvailable_FunctionInputPort_ProvidedInterface extends AbstractQu
 	 * <p>
 	 * Refer MQRY_Interface_Inherited_1
 	 * </p>
-	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
+	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+	public List<EObject> getAvailableElements(CapellaElement element) {
+		List<EObject> availableElements = new ArrayList<EObject>();
 		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (element instanceof Port) {
 			Port ele = (Port) element;

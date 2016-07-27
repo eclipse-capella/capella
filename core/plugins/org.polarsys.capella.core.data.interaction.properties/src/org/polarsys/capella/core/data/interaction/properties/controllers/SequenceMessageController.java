@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,23 +12,18 @@ package org.polarsys.capella.core.data.interaction.properties.controllers;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.polarsys.capella.core.data.helpers.interaction.services.SequenceMessageExt;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractSimpleEditableSemanticFieldController;
 
 /**
  */
 public abstract class SequenceMessageController extends AbstractSimpleEditableSemanticFieldController {
   /**
-   * @param semanticElement
-   * @param semanticFeature
-   * 
-   * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.ISimpleEditableSemanticFieldController#loadValue(org.polarsys.capella.core.data.capellacore.CapellaElement, org.eclipse.emf.ecore.EStructuralFeature)
+   * {@inheritDoc}
    */
   @Override
-  public EObject loadValue(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+  public EObject loadValue(EObject semanticElement, EStructuralFeature semanticFeature) {
     if (semanticElement instanceof SequenceMessage) {
       return SequenceMessageExt.getOperation((SequenceMessage) semanticElement);
     }
@@ -38,7 +33,7 @@ public abstract class SequenceMessageController extends AbstractSimpleEditableSe
   /**
    * @param semanticElement
    */
-  public static void resetValue(CapellaElement semanticElement) {
+  public static void resetValue(EObject semanticElement) {
     if (semanticElement instanceof SequenceMessage) {
       SequenceMessageExt.resetMessage((SequenceMessage) semanticElement);
       SequenceMessage reply = SequenceMessageExt.getOppositeSequenceMessage((SequenceMessage) semanticElement);

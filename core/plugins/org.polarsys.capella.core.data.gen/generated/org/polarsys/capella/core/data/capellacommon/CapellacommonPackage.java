@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/common/1.0.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/common/1.1.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -1769,13 +1769,22 @@ public interface CapellacommonPackage extends EPackage {
 	int STATE_MACHINE__OWNED_REGIONS = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Owned Connection Points</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE__OWNED_CONNECTION_POINTS = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>State Machine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_FEATURE_COUNT = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 5;
+	int STATE_MACHINE_FEATURE_COUNT = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.RegionImpl <em>Region</em>}' class.
@@ -2573,13 +2582,22 @@ public interface CapellacommonPackage extends EPackage {
 	int STATE__OWNED_REGIONS = ABSTRACT_STATE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Owned Connection Points</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__OWNED_CONNECTION_POINTS = ABSTRACT_STATE_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Available Abstract Functions</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE__AVAILABLE_ABSTRACT_FUNCTIONS = ABSTRACT_STATE_FEATURE_COUNT + 1;
+	int STATE__AVAILABLE_ABSTRACT_FUNCTIONS = ABSTRACT_STATE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Available Functional Chains</b></em>' reference list.
@@ -2588,7 +2606,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE__AVAILABLE_FUNCTIONAL_CHAINS = ABSTRACT_STATE_FEATURE_COUNT + 2;
+	int STATE__AVAILABLE_FUNCTIONAL_CHAINS = ABSTRACT_STATE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Available Abstract Capabilities</b></em>' reference list.
@@ -2597,34 +2615,34 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE__AVAILABLE_ABSTRACT_CAPABILITIES = ABSTRACT_STATE_FEATURE_COUNT + 3;
+	int STATE__AVAILABLE_ABSTRACT_CAPABILITIES = ABSTRACT_STATE_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Entry</b></em>' reference.
+	 * The feature id for the '<em><b>Entry</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE__ENTRY = ABSTRACT_STATE_FEATURE_COUNT + 4;
+	int STATE__ENTRY = ABSTRACT_STATE_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Do Activity</b></em>' reference.
+	 * The feature id for the '<em><b>Do Activity</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE__DO_ACTIVITY = ABSTRACT_STATE_FEATURE_COUNT + 5;
+	int STATE__DO_ACTIVITY = ABSTRACT_STATE_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Exit</b></em>' reference.
+	 * The feature id for the '<em><b>Exit</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE__EXIT = ABSTRACT_STATE_FEATURE_COUNT + 6;
+	int STATE__EXIT = ABSTRACT_STATE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>State Invariant</b></em>' containment reference.
@@ -2633,7 +2651,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE__STATE_INVARIANT = ABSTRACT_STATE_FEATURE_COUNT + 7;
+	int STATE__STATE_INVARIANT = ABSTRACT_STATE_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>State</em>' class.
@@ -2642,7 +2660,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_FEATURE_COUNT = ABSTRACT_STATE_FEATURE_COUNT + 8;
+	int STATE_FEATURE_COUNT = ABSTRACT_STATE_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.ModeImpl <em>Mode</em>}' class.
@@ -2925,6 +2943,15 @@ public interface CapellacommonPackage extends EPackage {
 	int MODE__OWNED_REGIONS = STATE__OWNED_REGIONS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Connection Points</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE__OWNED_CONNECTION_POINTS = STATE__OWNED_CONNECTION_POINTS;
+
+	/**
 	 * The feature id for the '<em><b>Available Abstract Functions</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2952,7 +2979,7 @@ public interface CapellacommonPackage extends EPackage {
 	int MODE__AVAILABLE_ABSTRACT_CAPABILITIES = STATE__AVAILABLE_ABSTRACT_CAPABILITIES;
 
 	/**
-	 * The feature id for the '<em><b>Entry</b></em>' reference.
+	 * The feature id for the '<em><b>Entry</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2961,7 +2988,7 @@ public interface CapellacommonPackage extends EPackage {
 	int MODE__ENTRY = STATE__ENTRY;
 
 	/**
-	 * The feature id for the '<em><b>Do Activity</b></em>' reference.
+	 * The feature id for the '<em><b>Do Activity</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2970,7 +2997,7 @@ public interface CapellacommonPackage extends EPackage {
 	int MODE__DO_ACTIVITY = STATE__DO_ACTIVITY;
 
 	/**
-	 * The feature id for the '<em><b>Exit</b></em>' reference.
+	 * The feature id for the '<em><b>Exit</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3277,6 +3304,15 @@ public interface CapellacommonPackage extends EPackage {
 	int FINAL_STATE__OWNED_REGIONS = STATE__OWNED_REGIONS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Connection Points</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINAL_STATE__OWNED_CONNECTION_POINTS = STATE__OWNED_CONNECTION_POINTS;
+
+	/**
 	 * The feature id for the '<em><b>Available Abstract Functions</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3304,7 +3340,7 @@ public interface CapellacommonPackage extends EPackage {
 	int FINAL_STATE__AVAILABLE_ABSTRACT_CAPABILITIES = STATE__AVAILABLE_ABSTRACT_CAPABILITIES;
 
 	/**
-	 * The feature id for the '<em><b>Entry</b></em>' reference.
+	 * The feature id for the '<em><b>Entry</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3313,7 +3349,7 @@ public interface CapellacommonPackage extends EPackage {
 	int FINAL_STATE__ENTRY = STATE__ENTRY;
 
 	/**
-	 * The feature id for the '<em><b>Do Activity</b></em>' reference.
+	 * The feature id for the '<em><b>Do Activity</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3322,7 +3358,7 @@ public interface CapellacommonPackage extends EPackage {
 	int FINAL_STATE__DO_ACTIVITY = STATE__DO_ACTIVITY;
 
 	/**
-	 * The feature id for the '<em><b>Exit</b></em>' reference.
+	 * The feature id for the '<em><b>Exit</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8079,6 +8115,17 @@ public interface CapellacommonPackage extends EPackage {
 	EReference getStateMachine_OwnedRegions();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.capellacommon.StateMachine#getOwnedConnectionPoints <em>Owned Connection Points</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Owned Connection Points</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.StateMachine#getOwnedConnectionPoints()
+	 * @see #getStateMachine()
+	 * @generated
+	 */
+	EReference getStateMachine_OwnedConnectionPoints();
+
+	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.capellacommon.Region <em>Region</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8143,6 +8190,17 @@ public interface CapellacommonPackage extends EPackage {
 	EReference getState_OwnedRegions();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.capellacommon.State#getOwnedConnectionPoints <em>Owned Connection Points</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Owned Connection Points</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.State#getOwnedConnectionPoints()
+	 * @see #getState()
+	 * @generated
+	 */
+	EReference getState_OwnedConnectionPoints();
+
+	/**
 	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.capellacommon.State#getAvailableAbstractFunctions <em>Available Abstract Functions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8176,10 +8234,10 @@ public interface CapellacommonPackage extends EPackage {
 	EReference getState_AvailableAbstractCapabilities();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.capellacommon.State#getEntry <em>Entry</em>}'.
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.capellacommon.State#getEntry <em>Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Entry</em>'.
+	 * @return the meta object for the reference list '<em>Entry</em>'.
 	 * @see org.polarsys.capella.core.data.capellacommon.State#getEntry()
 	 * @see #getState()
 	 * @generated
@@ -8187,10 +8245,10 @@ public interface CapellacommonPackage extends EPackage {
 	EReference getState_Entry();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.capellacommon.State#getDoActivity <em>Do Activity</em>}'.
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.capellacommon.State#getDoActivity <em>Do Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Do Activity</em>'.
+	 * @return the meta object for the reference list '<em>Do Activity</em>'.
 	 * @see org.polarsys.capella.core.data.capellacommon.State#getDoActivity()
 	 * @see #getState()
 	 * @generated
@@ -8198,10 +8256,10 @@ public interface CapellacommonPackage extends EPackage {
 	EReference getState_DoActivity();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.capellacommon.State#getExit <em>Exit</em>}'.
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.capellacommon.State#getExit <em>Exit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Exit</em>'.
+	 * @return the meta object for the reference list '<em>Exit</em>'.
 	 * @see org.polarsys.capella.core.data.capellacommon.State#getExit()
 	 * @see #getState()
 	 * @generated
@@ -8876,6 +8934,14 @@ public interface CapellacommonPackage extends EPackage {
 		EReference STATE_MACHINE__OWNED_REGIONS = eINSTANCE.getStateMachine_OwnedRegions();
 
 		/**
+		 * The meta object literal for the '<em><b>Owned Connection Points</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_MACHINE__OWNED_CONNECTION_POINTS = eINSTANCE.getStateMachine_OwnedConnectionPoints();
+
+		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.impl.RegionImpl <em>Region</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -8928,6 +8994,14 @@ public interface CapellacommonPackage extends EPackage {
 		EReference STATE__OWNED_REGIONS = eINSTANCE.getState_OwnedRegions();
 
 		/**
+		 * The meta object literal for the '<em><b>Owned Connection Points</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__OWNED_CONNECTION_POINTS = eINSTANCE.getState_OwnedConnectionPoints();
+
+		/**
 		 * The meta object literal for the '<em><b>Available Abstract Functions</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -8952,7 +9026,7 @@ public interface CapellacommonPackage extends EPackage {
 		EReference STATE__AVAILABLE_ABSTRACT_CAPABILITIES = eINSTANCE.getState_AvailableAbstractCapabilities();
 
 		/**
-		 * The meta object literal for the '<em><b>Entry</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Entry</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -8960,7 +9034,7 @@ public interface CapellacommonPackage extends EPackage {
 		EReference STATE__ENTRY = eINSTANCE.getState_Entry();
 
 		/**
-		 * The meta object literal for the '<em><b>Do Activity</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Do Activity</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -8968,7 +9042,7 @@ public interface CapellacommonPackage extends EPackage {
 		EReference STATE__DO_ACTIVITY = eINSTANCE.getState_DoActivity();
 
 		/**
-		 * The meta object literal for the '<em><b>Exit</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Exit</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

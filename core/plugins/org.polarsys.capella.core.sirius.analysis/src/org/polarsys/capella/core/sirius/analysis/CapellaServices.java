@@ -957,8 +957,8 @@ public class CapellaServices {
     return result;
   }
 
-  public List<CapellaElement> getAvailableFunctionalAllocation(CapellaElement capellaElement) {
-    List<CapellaElement> returnedList = new ArrayList<CapellaElement>();
+  public List<EObject> getAvailableFunctionalAllocation(CapellaElement capellaElement) {
+    List<EObject> returnedList = new ArrayList<EObject>();
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(capellaElement.eClass(),
         FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
     if (query != null) {

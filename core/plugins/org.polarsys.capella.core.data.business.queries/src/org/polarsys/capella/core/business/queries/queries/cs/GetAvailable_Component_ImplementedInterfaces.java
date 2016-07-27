@@ -13,6 +13,7 @@ package org.polarsys.capella.core.business.queries.queries.cs;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -31,7 +32,7 @@ public class GetAvailable_Component_ImplementedInterfaces extends AbstractQuery 
 	@Override
 	public List<Object> execute(Object input, IQueryContext context) {
 		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+		List<EObject> availableElements = getAvailableElements(capellaElement);
 		return (List) availableElements;
 	}
 
@@ -61,11 +62,11 @@ public class GetAvailable_Component_ImplementedInterfaces extends AbstractQuery 
 	 * Except the interfaces that are already used by the current LC(Refer
 	 * MQRY_LogicalComponent_UsedInterfaces_1Ex1)
 	 * </p>
-	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
+	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element) {
+	public List<EObject> getAvailableElements(CapellaElement element) {
 		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+		List<EObject> availableElements = new ArrayList<EObject>();
 		if (null == systemEngineering) {
 			return availableElements;
 		}

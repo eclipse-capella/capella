@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.consonance.ui.sirius;
 
 import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
@@ -21,10 +20,10 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
 
 /**
  * A match policy for Viewpoint elements.
@@ -92,8 +91,10 @@ public class SiriusMatchPolicy extends GMFMatchPolicy {
       Viewpoint viewpoint = ((DView) element).getViewpoint();
       if (viewpoint != null)
         result = viewpoint.getName();
+    } else if (element instanceof DRepresentationDescriptor) {
+      result = ((DRepresentationDescriptor) element).getName();
     } else if (element instanceof DRepresentation) {
-      result = ((DRepresentation)element).getName();
+      result = ((DRepresentation) element).getName();
     } else if (element instanceof AnnotationEntry) {
       AnnotationEntry annotation = (AnnotationEntry)element;
       if (getContainer(element, scope, inScopeOnly) instanceof DDiagram &&

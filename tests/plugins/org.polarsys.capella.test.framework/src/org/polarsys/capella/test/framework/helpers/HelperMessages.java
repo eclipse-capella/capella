@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,13 +17,12 @@ import org.eclipse.osgi.util.NLS;
  */
 public class HelperMessages extends NLS {
 
-//  private static final String BUNDLE_NAME = "org.polarsys.capella.test.framework.helpers.messages"; //$NON-NLS-1$
-//
+  private static final String BUNDLE_NAME = "org.polarsys.capella.test.framework.helpers.messages"; //$NON-NLS-1$
+
   public static String invalidInteger;
   public static String wrongEObjectType;
   public static String wrongEObjectTypeWithInheritance;
-//
-//  //
+
 //  // DiagramHelper Messages
 //  //
 //  public static String failedIsSynchronized;
@@ -47,7 +46,7 @@ public class HelperMessages extends NLS {
 //
 //  public static String failToOpenDDiagram;
   public static String diagramNotContainedInSession;
-//
+
 //  //
 //  // SiriusElementHelper Messages
 //  //
@@ -78,16 +77,16 @@ public class HelperMessages extends NLS {
 //  public static String wrongNoteLineStyle;
 //  public static String noNoteLineStyle;
 //  public static String wrongConnectorStyleRouting;
-//
-//  static {
-//    // initialize resource bundle
-//    NLS.initializeMessages(BUNDLE_NAME, HelperMessages.class);
-//  }
-//
-//  /**
-//   * Constructor.
-//   */
-//  private HelperMessages() {
-//    // Do nothing.
-//  }
+
+  static {
+    // initialize resource bundle
+    NLS.initializeMessages(BUNDLE_NAME, HelperMessages.class);
+  }
+
+  /**
+   * Constructor.
+   */
+  private HelperMessages() {
+    // Do nothing.
+  }
 }

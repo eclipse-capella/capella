@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,11 +37,11 @@ import org.polarsys.capella.core.preferences.Activator;
 public class CapellaWorkbenchWindowAdvisor extends IDEWorkbenchWindowAdvisor {
   /**
    * Constructor.
-   * @param wbAdvisor_p
-   * @param configurer_p
+   * @param wbAdvisor
+   * @param configurer
    */
-  public CapellaWorkbenchWindowAdvisor(IDEWorkbenchAdvisor wbAdvisor_p, IWorkbenchWindowConfigurer configurer_p) {
-    super(wbAdvisor_p, configurer_p);
+  public CapellaWorkbenchWindowAdvisor(IDEWorkbenchAdvisor wbAdvisor, IWorkbenchWindowConfigurer configurer) {
+    super(wbAdvisor, configurer);
   }
 
   /**
@@ -99,6 +99,16 @@ public class CapellaWorkbenchWindowAdvisor extends IDEWorkbenchWindowAdvisor {
   @Override
   public void postWindowRestore() throws WorkbenchException {
     super.postWindowRestore();
+    initCapellaPerspective();
+  }
+
+  @Override
+  public void postWindowCreate() {
+    super.postWindowCreate();
+    initCapellaPerspective();
+  }
+  
+  private void initCapellaPerspective() {
     IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
     IWorkbenchWindow window = configurer.getWindow();
     // The active page was set in the super call.
@@ -107,7 +117,6 @@ public class CapellaWorkbenchWindowAdvisor extends IDEWorkbenchWindowAdvisor {
       public void run() {
         // Hide action sets to clean useless menus and toolbars for end-users.
         activePage.hideActionSet("org.eclipse.ui.edit.text.actionSet.navigation"); //$NON-NLS-1$
-        activePage.hideActionSet("org.eclipse.search.searchActionSet"); //$NON-NLS-1$
         activePage.hideActionSet("org.eclipse.ui.externaltools.ExternalToolsSet"); //$NON-NLS-1$
         activePage.hideActionSet("org.eclipse.ui.edit.text.actionSet.annotationNavigation"); //$NON-NLS-1$
         activePage.hideActionSet("org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"); //$NON-NLS-1$

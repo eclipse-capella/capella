@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.util.ArrayList;
@@ -40,12 +41,12 @@ public class WizardActionHelper {
 
   /**
    * return true if all he element in the list are of type FunctionalExchange, false otherwise
-   * @param elements_p
+   * @param elements
    * @return
    */
-  public static boolean areAllElementFunctionalExchange(List<EObject> elements_p) {
+  public static boolean areAllElementFunctionalExchange(List<EObject> elements) {
     boolean flag = false;
-    for (EObject object : elements_p) {
+    for (EObject object : elements) {
       if (!(object instanceof FunctionalExchange)) {
         return false;
       } else if (object instanceof FunctionalExchange) {
@@ -58,12 +59,12 @@ public class WizardActionHelper {
 
   /**
    * return true if all he element in the list are of type FunctionalExchange, false otherwise
-   * @param elements_p
+   * @param elements
    * @return
    */
-  public static boolean areAllElementsComponentExchanges(List<EObject> elements_p) {
+  public static boolean areAllElementsComponentExchanges(List<EObject> elements) {
     boolean flag = false;
-    for (EObject object : elements_p) {
+    for (EObject object : elements) {
       if (!(object instanceof ComponentExchange)) {
         return false;
       } else if (object instanceof ComponentExchange) {
@@ -75,12 +76,12 @@ public class WizardActionHelper {
   }
 
   /**
-   * @param selection_p
+   * @param selection
    * @return
    */
-  public static boolean areAllElementsPhysicalLinks(List<EObject> elements_p) {
+  public static boolean areAllElementsPhysicalLinks(List<EObject> elements) {
     boolean flag = false;
-    for (EObject object : elements_p) {
+    for (EObject object : elements) {
       if (!(object instanceof PhysicalLink)) {
         return false;
       } else if (object instanceof PhysicalLink) {
@@ -101,13 +102,13 @@ public class WizardActionHelper {
 
   /**
    * Create message box
-   * @param message_p
+   * @param message
    * @param icon_status
    */
-  public static void createMessageBox(Shell shell_p, String message_p, int icon_status) {
-    MessageBox messageBox = new MessageBox(shell_p, icon_status);
+  public static void createMessageBox(Shell shell, String message, int icon_status) {
+    MessageBox messageBox = new MessageBox(shell, icon_status);
     messageBox.setText(Messages.AllocationManagementWizardAction_Title);
-    messageBox.setMessage(message_p);
+    messageBox.setMessage(message);
     messageBox.open();
   }
 }

@@ -51,13 +51,11 @@ public class GetAvailable_AbstractStateProperties extends AbstractQuery {
         }
       }
       EObject eContainer = inputElement.eContainer();
-      if (eContainer != null) {
-        while (!(eContainer instanceof Component) && !(eContainer instanceof Class)) {
-          eContainer = eContainer.eContainer();
-        }
-        if ((eContainer instanceof Component) && (inputElement instanceof State)) {
-          availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
-        }
+      while ((eContainer != null) && !(eContainer instanceof Component) && !(eContainer instanceof Class)) {
+        eContainer = eContainer.eContainer();
+      }
+      if ((eContainer instanceof Component) && (inputElement instanceof State)) {
+        availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
       }
     }
 

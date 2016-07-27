@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,10 +41,10 @@ public class RefinementMerge extends ScenarioRefinement {
   /**
    *
    */
-  public RefinementMerge(Scenario srcDiagram_p, ComponentArchitecture arch_p) {
-    super(srcDiagram_p, arch_p);
+  public RefinementMerge(Scenario srcDiagram, ComponentArchitecture arch) {
+    super(srcDiagram, arch);
 
-    _scenario = srcDiagram_p;
+    _scenario = srcDiagram;
     
     _merge = new ScenarioMergeProcessor();
     _merge.setContext(_scenario);
@@ -55,13 +55,13 @@ public class RefinementMerge extends ScenarioRefinement {
    * @see org.polarsys.capella.core.refinement.scenarios.core.ScenarioRefinement#execute()
    */
   @Override
-  public void execute(IProgressMonitor progressMonitor_p) throws ProcessorException {
+  public void execute(IProgressMonitor progressMonitor) throws ProcessorException {
     if (_merge != null) {
 
       // First of all, we execute the merge operation
       try {
-        _merge.execute(progressMonitor_p);
-      } catch (ProcessorException exception_p) {
+        _merge.execute(progressMonitor);
+      } catch (ProcessorException exception) {
         
         _logger.error(
             new EmbeddedMessage(
@@ -71,7 +71,7 @@ public class RefinementMerge extends ScenarioRefinement {
             )
         );
         
-        throw exception_p;
+        throw exception;
       }
       
       // Let's obtain the result of this operation
@@ -81,7 +81,7 @@ public class RefinementMerge extends ScenarioRefinement {
       setContext(mergeResult);
       
       // On a second hand, we perform the refinement to the physical level
-      super.execute(progressMonitor_p);
+      super.execute(progressMonitor);
 
       // Rename the merged scenario in order to easily identify it 
       String scName = mergeResult.getName();
@@ -94,13 +94,10 @@ public class RefinementMerge extends ScenarioRefinement {
       scName = scName.replace(
           MessageFormat.format(
               ScenarioRefinement.REFINED_SCENARIO_PREFIX,
-              new Integer(0)
+              Integer.valueOf(0)
           ),
           ICommonConstants.EMPTY_STRING
       );
     }
-
-    return;
   }
-
 }

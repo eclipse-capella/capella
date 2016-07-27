@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,9 +13,6 @@ package org.polarsys.capella.core.transition.system.topdown.launcher;
 import java.util.Collection;
 import java.util.Collections;
 
-import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
-import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParameter;
-import org.polarsys.capella.core.transition.common.activities.DifferencesMergingActivity;
 import org.polarsys.capella.core.transition.common.activities.FinalizeTransitionActivity;
 import org.polarsys.capella.core.transition.common.activities.InitializeScopeActivity;
 import org.polarsys.capella.core.transition.common.activities.PostDiffMergeActivity;
@@ -25,13 +22,15 @@ import org.polarsys.capella.core.transition.common.context.TransitionContext;
 import org.polarsys.capella.core.transition.common.handlers.log.ILogHandler;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
 import org.polarsys.capella.core.transition.common.launcher.TransitionLauncher;
+import org.polarsys.capella.core.transition.system.activities.DifferencesMergingActivity;
 import org.polarsys.capella.core.transition.system.topdown.activities.DifferencesComputingActivity;
-import org.polarsys.capella.core.transition.system.topdown.activities.DifferencesFilteringActivity;
 import org.polarsys.capella.core.transition.system.topdown.activities.InitializeDiffMergeActivity;
 import org.polarsys.capella.core.transition.system.topdown.activities.InitializeTransformationActivity;
 import org.polarsys.capella.core.transition.system.topdown.activities.InitializeTransitionActivity;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.core.transition.system.topdown.handlers.log.TopDownLogHandler;
+import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
+import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParameter;
 import org.polarsys.kitalpha.transposer.rules.handler.api.IRulesHandler;
 
 public class HeadlessIntramodelLauncher extends TransitionLauncher {
@@ -121,6 +120,7 @@ public class HeadlessIntramodelLauncher extends TransitionLauncher {
 
   /**
    * Activities to load in the workflow element of cadence "PRE ANALYSIS"
+   * 
    * @return associated workflow element
    */
   @Override
@@ -132,13 +132,14 @@ public class HeadlessIntramodelLauncher extends TransitionLauncher {
       // InitializeTransitionActivity
       parameter.addActivity(InitializeTransitionActivity.ID);
 
-      //Add Rule handler
-      GenericParameter<IRulesHandler> param2 =
-          new GenericParameter<IRulesHandler>(org.polarsys.capella.core.transition.common.activities.InitializeTransitionActivity.PARAMETER_RULE_HANDLER,
-              getTransposer().getRulesHandler(), "Transposer Rule handler"); //$NON-NLS-1$
+      // Add Rule handler
+      GenericParameter<IRulesHandler> param2 = new GenericParameter<IRulesHandler>(
+          org.polarsys.capella.core.transition.common.activities.InitializeTransitionActivity.PARAMETER_RULE_HANDLER,
+          getTransposer().getRulesHandler(), "Transposer Rule handler"); //$NON-NLS-1$
       parameter.addParameter(InitializeTransitionActivity.ID, param2);
 
-      GenericParameter<String> param3 = new GenericParameter<String>(ITransitionConstants.OPTIONS_SCOPE, getOptionScope(), "Option scope"); //$NON-NLS-1$
+      GenericParameter<String> param3 = new GenericParameter<String>(ITransitionConstants.OPTIONS_SCOPE,
+          getOptionScope(), "Option scope"); //$NON-NLS-1$
       parameter.addParameter(InitializeTransitionActivity.ID, param3);
 
       for (GenericParameter<?> paramHeadless : getHeadlessParameters()) {
@@ -158,6 +159,7 @@ public class HeadlessIntramodelLauncher extends TransitionLauncher {
 
   /**
    * Activities to load in the workflow element of cadence "POST EXECUTION"
+   * 
    * @return associated workflow element
    */
   @Override
@@ -175,16 +177,13 @@ public class HeadlessIntramodelLauncher extends TransitionLauncher {
       // DifferencesComputingActivity
       parameter.addActivity(DifferencesComputingActivity.ID);
 
-      // HeadlessDifferencesFilteringActivity
-      parameter.addActivity(DifferencesFilteringActivity.ID);
-
       // DifferencesMergingActivity
       parameter.addActivity(DifferencesMergingActivity.ID);
 
       // PostDiffMergeActivity
       parameter.addActivity(PostDiffMergeActivity.ID);
 
-      // PostDiffMergeActivity
+      // FinalizeTransitionActivity
       parameter.addActivity(FinalizeTransitionActivity.ID);
 
     }

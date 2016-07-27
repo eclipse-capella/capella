@@ -26,10 +26,10 @@ import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.swt.widgets.Display;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.framework.helpers.IFileRequestor;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 
@@ -177,23 +177,8 @@ public abstract class AbstractProvider implements IModelProvider {
     // BEGIN To be delete when the following bug will be solved :
     // Bug 261 - Testability issue due to creation of async GUI jobs during
     // session state changes
-    flushASyncGuiThread();
+    GuiActions.flushASyncGuiThread();
     // END
-  }
-
-  /**
-   * Aims at forcing execution of remaining GUI thread in the pool. Result not guaranted ...
-   */
-  // Should be not use anymore when bug 261 will be solved
-  protected void flushASyncGuiThread() {
-    try {
-      Display.getCurrent().update();
-      while (Display.getCurrent().readAndDispatch()) {
-        // do nothing
-      }
-    } catch (Exception e) {
-      // do nothing
-    }
   }
 
   /**

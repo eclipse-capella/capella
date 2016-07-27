@@ -195,6 +195,6 @@ Elements will be copied into the library and become a REC and initial selected e
 '''This feature is not available yet '''
 
  
-[[Image:Images/8.6.%20Advanced%20Features_html_m2f4cc7f5.jpg|92x92px]][[Image:Images/8.6.%20Advanced%20Features_html_733c5d5d.jpg|92x92px]]
+
 
    

@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.data.capellacommon.provider;
 
 import java.util.Collection;
@@ -55,27 +54,6 @@ public class StateItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IItemPropertyDescriptor entryPropertyDescriptor;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IItemPropertyDescriptor doActivityPropertyDescriptor;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IItemPropertyDescriptor exitPropertyDescriptor;
-
-	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,53 +61,6 @@ public class StateItemProvider
 	 */
 	public StateItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process CapellacommonPackage.Literals.STATE__ENTRY
-			if (entryPropertyDescriptor != null) {
-				Object entryValue = eObject.eGet(CapellacommonPackage.Literals.STATE__ENTRY, true);
-				if (entryValue != null && entryValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) entryValue)) {
-					itemPropertyDescriptors.remove(entryPropertyDescriptor);
-				} else if (entryValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE__ENTRY) != null) {
-					itemPropertyDescriptors.remove(entryPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(entryPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(entryPropertyDescriptor);
-				}
-			}
-			// Process CapellacommonPackage.Literals.STATE__DO_ACTIVITY
-			if (doActivityPropertyDescriptor != null) {
-				Object doActivityValue = eObject.eGet(CapellacommonPackage.Literals.STATE__DO_ACTIVITY, true);
-				if (doActivityValue != null && doActivityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) doActivityValue)) {
-					itemPropertyDescriptors.remove(doActivityPropertyDescriptor);
-				} else if (doActivityValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE__DO_ACTIVITY) != null) {
-					itemPropertyDescriptors.remove(doActivityPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(doActivityPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(doActivityPropertyDescriptor);
-				}
-			}
-			// Process CapellacommonPackage.Literals.STATE__EXIT
-			if (exitPropertyDescriptor != null) {
-				Object exitValue = eObject.eGet(CapellacommonPackage.Literals.STATE__EXIT, true);
-				if (exitValue != null && exitValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) exitValue)) {
-					itemPropertyDescriptors.remove(exitPropertyDescriptor);
-				} else if (exitValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE__EXIT) != null) {
-					itemPropertyDescriptors.remove(exitPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(exitPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(exitPropertyDescriptor);
-				}
-			}
-		}		
 	}
 
 
@@ -245,9 +176,11 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addEntryPropertyDescriptor(Object object) {
+
 		// begin-extension-code
-		entryPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_State_entry_feature"), //$NON-NLS-1$
@@ -259,8 +192,7 @@ public class StateItemProvider
 				 null,
 				 null,
 		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(entryPropertyDescriptor);
+				 null));
 		// end-extension-code
 	}
 
@@ -271,9 +203,11 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addDoActivityPropertyDescriptor(Object object) {
+
 		// begin-extension-code
-		doActivityPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_State_doActivity_feature"), //$NON-NLS-1$
@@ -285,8 +219,7 @@ public class StateItemProvider
 				 null,
 				 null,
 		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(doActivityPropertyDescriptor);
+				 null));
 		// end-extension-code
 	}
 
@@ -297,9 +230,11 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addExitPropertyDescriptor(Object object) {
+
 		// begin-extension-code
-		exitPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_State_exit_feature"), //$NON-NLS-1$
@@ -311,8 +246,7 @@ public class StateItemProvider
 				 null,
 				 null,
 		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(exitPropertyDescriptor);
+				 null));
 		// end-extension-code
 	}
 
@@ -329,6 +263,7 @@ public class StateItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(CapellacommonPackage.Literals.STATE__OWNED_REGIONS);
+			childrenFeatures.add(CapellacommonPackage.Literals.STATE__OWNED_CONNECTION_POINTS);
 			childrenFeatures.add(CapellacommonPackage.Literals.STATE__STATE_INVARIANT);
 		}
 		return childrenFeatures;
@@ -395,6 +330,7 @@ public class StateItemProvider
 
 		switch (notification.getFeatureID(State.class)) {
 			case CapellacommonPackage.STATE__OWNED_REGIONS:
+			case CapellacommonPackage.STATE__OWNED_CONNECTION_POINTS:
 			case CapellacommonPackage.STATE__STATE_INVARIANT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -418,6 +354,114 @@ public class StateItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (CapellacommonPackage.Literals.STATE__OWNED_REGIONS,
                          CapellacommonFactory.eINSTANCE.createRegion());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createInitialPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createJoinPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createForkPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createChoicePseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createTerminatePseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createShallowHistoryPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createDeepHistoryPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createEntryPointPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.STATE__OWNED_CONNECTION_POINTS,
+                         CapellacommonFactory.eINSTANCE.createExitPointPseudoState());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

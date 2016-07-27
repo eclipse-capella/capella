@@ -89,5 +89,4 @@ public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
     }
     return availableElements;
   }
-
 }

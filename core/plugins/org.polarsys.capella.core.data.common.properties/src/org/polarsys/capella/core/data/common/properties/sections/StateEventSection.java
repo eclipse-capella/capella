@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.StateEvent;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.common.properties.Messages;
@@ -55,16 +54,13 @@ public abstract class StateEventSection extends NamedElementSection {
         ICommonConstants.EMPTY_STRING, new AbstractSimpleEditableSemanticFieldController() {
 
           @Override
-          public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
+          public EObject writeOpenValue(EObject semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
             semanticElement.eSet(semanticFeature, value);
             return value;
           }
 
-          /**
-           * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#editValue()
-           */
           @Override
-          public EObject editValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName) {
+          public EObject editValue(EObject semanticElement, EStructuralFeature semanticFeature, String defaultName) {
             if (semanticElement instanceof StateEvent) {
               Constraint currentValue = (Constraint) semanticElement.eGet(semanticFeature);
               if (currentValue != null) {
@@ -102,7 +98,7 @@ public abstract class StateEventSection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement capellaElement) {
+  public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
     _expression.loadData(capellaElement, CapellacommonPackage.Literals.STATE_EVENT__EXPRESSION);

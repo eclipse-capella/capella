@@ -21,10 +21,12 @@ import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.IDBDiagramT
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.LABDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MCBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MSDiagramToolsTestSuite;
+import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MSMDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.PABDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.SABDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.SFDBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.XABDiagramToolsTestSuite;
+import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.XBDiagramToolsTestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -41,6 +43,7 @@ public class DiagramToolsTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new MSDiagramToolsTestSuite());
+    tests.add(new MSMDiagramToolsTestSuite());
     tests.add(new SFDBDiagramToolsTestSuite());
     tests.add(new CDBDiagramToolsTestSuite());
     tests.add(new LABDiagramToolsTestSuite());
@@ -50,6 +53,7 @@ public class DiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new MCBDiagramToolsTestSuite());
     tests.add(new XABDiagramToolsTestSuite());
     tests.add(new ESDiagramToolsTestSuite());
+    tests.add(new XBDiagramToolsTestSuite());
     return tests;
   }
 

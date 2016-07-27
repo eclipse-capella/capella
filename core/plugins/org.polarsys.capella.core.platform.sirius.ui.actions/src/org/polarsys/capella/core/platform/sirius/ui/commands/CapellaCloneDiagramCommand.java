@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,10 +22,12 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.StringHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 
 /**
@@ -37,11 +39,11 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
   /**
    * The representations to clone.
    */
-  private Collection<DRepresentation> _representations;
+  private Collection<DRepresentationDescriptor> _representationDescriptors;
   /**
    * Cloned representations.
    */
-  private Collection<DRepresentation> _clones;
+  private Collection<DRepresentationDescriptor> _clones;
   /**
    * Clone life cycle listeners.
    */
@@ -49,11 +51,11 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
 
   /**
    * Constructor.
-   * @param representations_p
+   * @param representations
    */
-  public CapellaCloneDiagramCommand(Collection<DRepresentation> representations_p) {
+  public CapellaCloneDiagramCommand(Collection<DRepresentation> representations) {
     super(Messages.CapellaCloneDiagramCommand_CommandLabel);
-    _representations = representations_p;
+    _representationDescriptors = RepresentationHelper.getRepresentationDescriptors(representations);
   }
 
   /**
@@ -70,17 +72,17 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
       _listeners.clear();
       _listeners = null;
     }
-    if (null != _representations) {
-      _representations = null;
+    if (null != _representationDescriptors) {
+      _representationDescriptors = null;
     }
   }
 
   /**
    * Add a clone life cycle listener.
-   * @param listener_p
+   * @param listener
    */
-  public void addCloneListener(ICloneListener listener_p) {
-    if (null == listener_p) {
+  public void addCloneListener(ICloneListener listener) {
+    if (null == listener) {
       return;
     }
     // Lazy allocation.
@@ -88,28 +90,28 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
       _listeners = new HashSet<ICloneListener>(1);
     }
     // Add listener.
-    _listeners.add(listener_p);
+    _listeners.add(listener);
   }
 
   /**
    * Remove a registered clone life cycle listener.
-   * @param listener_p
+   * @param listener
    */
-  public void removeCloneListener(ICloneListener listener_p) {
-    if ((null == _listeners) || (null == listener_p)) {
+  public void removeCloneListener(ICloneListener listener) {
+    if ((null == _listeners) || (null == listener)) {
       return;
     }
     // Remove listener.
-    _listeners.remove(listener_p);
+    _listeners.remove(listener);
   }
 
   /**
    * Send clone life cycle event.
-   * @param type_p
-   * @param clone_p
-   * @param session_p
+   * @param type
+   * @param clone
+   * @param session
    */
-  protected void notifyListeners(EventType type_p, DRepresentation clone_p, Session session_p) {
+  protected void notifyListeners(EventType type, DRepresentation clone, Session session) {
     if ((null == _listeners) || _listeners.isEmpty()) {
       return;
     }
@@ -118,14 +120,14 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
     // Call listeners.
     for (ICloneListener listener : listeners) {
       try {
-        if (EventType.ADD.equals(type_p)) {
-          listener.cloneCreated(clone_p, session_p);
-        } else if (EventType.REMOVE.equals(type_p)) {
-          listener.cloneAboutToBeRemoved(clone_p, session_p);
+        if (EventType.ADD.equals(type)) {
+          listener.cloneCreated(clone, session);
+        } else if (EventType.REMOVE.equals(type)) {
+          listener.cloneAboutToBeRemoved(clone, session);
         }
-      } catch (Exception exception_p) {
+      } catch (Exception exception) {
         CapellaActionsActivator activator = CapellaActionsActivator.getDefault();
-        activator.getLog().log(new Status(IStatus.ERROR, activator.getPluginId(), "Unable to notify listeners !", exception_p)); //$NON-NLS-1$
+        activator.getLog().log(new Status(IStatus.ERROR, activator.getPluginId(), "Unable to notify listeners !", exception)); //$NON-NLS-1$
       }
     }
   }
@@ -144,7 +146,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
   public void execute() {
     // Initialize clones list.
     if (null == _clones) {
-      _clones = new ArrayList<DRepresentation>(0);
+      _clones = new ArrayList<DRepresentationDescriptor>(0);
     } else {
       // Ensure emptiness.
       if (_clones.size() > 0) {
@@ -152,7 +154,8 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
       }
     }
     // Copy all representations.
-    for (DRepresentation representation : _representations) {
+    for (DRepresentationDescriptor descriptor : _representationDescriptors) {
+      DRepresentation representation = descriptor.getRepresentation();
       if (representation instanceof DSemanticDecorator) {
         // Get target semantic element.
         EObject target = ((DSemanticDecorator) representation).getTarget();
@@ -160,8 +163,11 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
         Session session = SessionManager.INSTANCE.getSession(target);
         // Copy representation.
         DRepresentation copyRepresentation = DialectManager.INSTANCE.copyRepresentation(representation, getCloneName(representation, session), session, null);
-        // Retain copied reference.
-        _clones.add(copyRepresentation);
+        DRepresentationDescriptor copyRepresentationDescriptor = RepresentationHelper.getRepresentationDescriptor(session, copyRepresentation);
+        if (copyRepresentationDescriptor != null) {
+          // Retain copied reference.
+          _clones.add(copyRepresentationDescriptor);
+        }
       } else {
         CapellaActionsActivator activator = CapellaActionsActivator.getDefault();
         activator.getLog().log(new Status(IStatus.WARNING, activator.getPluginId(), "Clone is not supported for " + representation.getName())); //$NON-NLS-1$
@@ -171,19 +177,19 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
 
   /**
    * Get clone name for specified representation.
-   * @param representation_p
+   * @param representation
    * @return
    */
-  protected String getCloneName(DRepresentation representation_p, Session session_p) {
+  protected String getCloneName(DRepresentation representation, Session session) {
     String message = Messages.CapellaCloneDiagramCommand_CloneName_Prefix;
-    String cloneName = StringHelper.formatMessage(message, new Object[] { ICommonConstants.EMPTY_STRING, representation_p.getName() });
+    String cloneName = StringHelper.formatMessage(message, new Object[] { ICommonConstants.EMPTY_STRING, representation.getName() });
     boolean cloneNameFound = false;
-    Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session_p);
+    Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
     int i = 1;
     while (!cloneNameFound) {
       boolean collision = false;
-      for (DRepresentation representation : allRepresentations) {
-        if (cloneName.equals(representation.getName())) {
+      for (DRepresentation rep : allRepresentations) {
+        if (cloneName.equals(rep.getName())) {
           collision = true;
           break;
         }
@@ -191,7 +197,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
       if (collision) {
         cloneName =
             StringHelper.formatMessage(message, new Object[] { ICommonConstants.EMPTY_STRING + ++i + ICommonConstants.WHITE_SPACE_CHARACTER,
-                                                              representation_p.getName() });
+                                                              representation.getName() });
       }
       cloneNameFound = !collision;
     }
@@ -219,9 +225,9 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
   @Override
   public void undo() {
     // Delete all cloned representations.
-    for (DRepresentation representation : _clones) {
-      Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
-      DialectManager.INSTANCE.deleteRepresentation(representation, session);
+    for (DRepresentationDescriptor descriptor : _clones) {
+      Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) descriptor.getRepresentation()).getTarget());
+      DialectManager.INSTANCE.deleteRepresentation(descriptor, session);
     }
     // Clean clones collection.
     _clones.clear();
@@ -240,16 +246,16 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
   public interface ICloneListener {
     /**
      * Specified clone has just been added to specified session.
-     * @param clone_p
-     * @param session_p
+     * @param clone
+     * @param session
      */
-    void cloneCreated(DRepresentation clone_p, Session session_p);
+    void cloneCreated(DRepresentation clone, Session session);
 
     /**
      * Specified clone is about to be removed from specified session.
-     * @param clone_p
-     * @param session_p
+     * @param clone
+     * @param session
      */
-    void cloneAboutToBeRemoved(DRepresentation clone_p, Session session_p);
+    void cloneAboutToBeRemoved(DRepresentation clone, Session session);
   }
 }

@@ -173,7 +173,7 @@ public class FaServices {
     if ("".equals(fe.getName()) || (null == fe.getName())) { //$NON-NLS-1$
       return "<undefined>"; //$NON-NLS-1$
     }
-    return fe.getName();
+    return EObjectLabelProviderHelper.getText(fe);
   }
 
   /**
@@ -4979,7 +4979,7 @@ public class FaServices {
         }
       }
     } else {
-      result.append(exchange.getName());
+      result.append(EObjectLabelProviderHelper.getText(exchange));
     }
     return decorateString(result.toString(), exchange);
   }
@@ -5038,7 +5038,7 @@ public class FaServices {
     StringBuilder result = new StringBuilder();
     List<? extends AbstractExchangeItem> selectEIList;
     selectEIList = exchange.getExchangedItems();
-    result.append(exchange.getName());
+    result.append(EObjectLabelProviderHelper.getText(exchange));
     result.append(" "); //$NON-NLS-1$
     result.append("["); //$NON-NLS-1$
     int indice = 0;

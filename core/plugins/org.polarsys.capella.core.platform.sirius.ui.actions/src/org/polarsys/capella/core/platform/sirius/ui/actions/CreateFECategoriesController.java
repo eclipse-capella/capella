@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.util.Collections;
@@ -33,11 +34,11 @@ public class CreateFECategoriesController extends CreateCategoriesController {
    * {@inheritDoc}
    */
   @Override
-  public void createAndAttachCategory(List<EObject> selection_p) {
+  public void createAndAttachCategory(List<EObject> selection) {
 
     List<EClass> funcPkgEClass = Collections.singletonList(FaPackage.eINSTANCE.getFunctionPkg());
 
-    EObject categoryContainer = getBestContainerForCategory(selection_p, funcPkgEClass);
+    EObject categoryContainer = getBestContainerForCategory(selection, funcPkgEClass);
 
     if (isNullOrNotInstanceOf(categoryContainer, funcPkgEClass)) {
       return;
@@ -56,7 +57,7 @@ public class CreateFECategoriesController extends CreateCategoriesController {
       String categoryName = inputDialog.getValue();
       exchangeCategory.setName(categoryName);
 
-      for (EObject fe : selection_p) {
+      for (EObject fe : selection) {
         if (fe instanceof FunctionalExchange) {
           exchangeCategory.getExchanges().add((FunctionalExchange) fe);
         }
@@ -68,10 +69,10 @@ public class CreateFECategoriesController extends CreateCategoriesController {
   }
 
   @Override
-  protected ExchangeCategory createCategory(EObject container_p) {
+  protected ExchangeCategory createCategory(EObject container) {
     ExchangeCategory exchangeCategory = FaFactory.eINSTANCE.createExchangeCategory();
     EReference feature = FaPackage.eINSTANCE.getFunctionPkg_OwnedCategories();
-    String defaultName = EcoreUtil2.getUniqueName(exchangeCategory, container_p, feature, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
+    String defaultName = EcoreUtil2.getUniqueName(exchangeCategory, container, feature, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
         Messages.CreateFECategoriesController_prefix);
     exchangeCategory.setName(defaultName);
     return exchangeCategory;

@@ -14,13 +14,13 @@ package org.polarsys.capella.common.re.handlers;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.re.commands.CreateRecCommand;
+import org.polarsys.capella.core.transition.common.commands.CommandHandler;
 
 /**
  */
-public class CreateRecHandler extends AbstractReHandler {
+public class CreateRecHandler extends CommandHandler {
 
   /**
    * {@inheritDoc}

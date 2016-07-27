@@ -11,11 +11,8 @@
 
 package org.polarsys.capella.common.re.activities;
 
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.diffmerge.api.IMatchPolicy;
 import org.eclipse.emf.diffmerge.api.IMergePolicy;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.capella.common.re.policies.match.ReMatchPolicy;
 import org.polarsys.capella.common.re.policies.merge.ReMergePolicy;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
@@ -24,8 +21,8 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 /**
  * 
  */
-public class DifferencesComputingActivity extends org.polarsys.capella.core.transition.common.activities.DifferencesComputingActivity implements
-    ITransposerWorkflow {
+public class DifferencesComputingActivity extends
+    org.polarsys.capella.core.transition.common.activities.DifferencesComputingActivity implements ITransposerWorkflow {
 
   public static final String ID = DifferencesComputingActivity.class.getCanonicalName();
 
@@ -43,12 +40,6 @@ public class DifferencesComputingActivity extends org.polarsys.capella.core.tran
   @Override
   protected IMatchPolicy createMatchPolicy(IContext context) {
     return new ReMatchPolicy(context);
-  }
-
-  @Override
-  @SuppressWarnings("unchecked")
-  public IStatus _run(ActivityParameters activityParams) {
-    return super._run(activityParams);
   }
 
 }

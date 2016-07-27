@@ -142,25 +142,25 @@ public class PhysicalServices {
    * @param context
    * @return
    */
-  public List<CapellaElement> getAvailableComponentsToDeploy(PhysicalComponent context) {
+  public List<EObject> getAvailableComponentsToDeploy(PhysicalComponent context) {
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(PaPackage.Literals.PHYSICAL_COMPONENT,
         CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
     return query.getAvailableElements(context);
   }
 
-  public List<CapellaElement> getAvailableComponentsToDeploy(Part context) {
+  public List<EObject> getAvailableComponentsToDeploy(Part context) {
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PART,
         CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
     return query.getAvailableElements(context);
   }
 
-  public List<CapellaElement> getDeployedComponents(PhysicalComponent context) {
+  public List<EObject> getDeployedComponents(PhysicalComponent context) {
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(PaPackage.Literals.PHYSICAL_COMPONENT,
         CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
     return query.getCurrentElements(context, false);
   }
 
-  public List<CapellaElement> getDeployedComponents(Part context) {
+  public List<EObject> getDeployedComponents(Part context) {
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PART,
         CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
     return query.getCurrentElements(context, false);
@@ -168,7 +168,7 @@ public class PhysicalServices {
 
   public List<Part> getAvailableComponentsToDeploy(Part part, boolean behaviour) {
     List<Part> returnedList = new ArrayList<Part>();
-    for (CapellaElement anElement : getAvailableComponentsToDeploy(part)) {
+    for (EObject anElement : getAvailableComponentsToDeploy(part)) {
       if (anElement instanceof Part) {
         Part aPart = (Part) anElement;
         if ((behaviour && isBehaviour(aPart)) || (!behaviour && isNode(aPart))) {
@@ -181,7 +181,7 @@ public class PhysicalServices {
 
   public List<Part> getDeployedComponents(Part part, boolean behaviour) {
     List<Part> returnedList = new ArrayList<Part>();
-    for (CapellaElement anElement : getDeployedComponents(part)) {
+    for (EObject anElement : getDeployedComponents(part)) {
       if (anElement instanceof Part) {
         Part aPart = (Part) anElement;
         if ((behaviour && isBehaviour(aPart)) || (!behaviour && isNode(aPart))) {
@@ -1205,7 +1205,7 @@ public class PhysicalServices {
         // + if current size is equal to default size of
         // Functional Chain
         if (currentSize.equals(THICK_EDGE_PHYSICAL_PATH) || currentSize.equals(defaultStyleSize)) {
-          if (ShapeUtil.resetEdgeThickStyle(aEdge, new Integer(defaultStyleSize))) {
+          if (ShapeUtil.resetEdgeThickStyle(aEdge, Integer.valueOf(defaultStyleSize))) {
             ShapeUtil.resetEdgeColorStyle(aEdge, ShapeUtil.getDefaultColor(aEdge, desc, desc.getStrokeColor()));
           }
         }

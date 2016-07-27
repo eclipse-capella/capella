@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.polarsys.capella.core.data.interaction.AbstractCapability;
  * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.State#getOwnedRegions <em>Owned Regions</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.State#getOwnedConnectionPoints <em>Owned Connection Points</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.State#getAvailableAbstractFunctions <em>Available Abstract Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.State#getAvailableFunctionalChains <em>Available Functional Chains</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.State#getAvailableAbstractCapabilities <em>Available Abstract Capabilities</em>}</li>
@@ -66,6 +67,32 @@ public interface State extends AbstractState {
 	 */
 
 	EList<Region> getOwnedRegions();
+
+
+
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Owned Connection Points</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.Pseudostate}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Connection Points</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Connection Points</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getState_OwnedConnectionPoints()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The entry and exit Pseudostates of a composite State. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite States.\r\n[source:UML v2.5]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::State::connectionPoint' explanation='none' constraints='Order must be computed'"
+	 * @generated
+	 */
+
+	EList<Pseudostate> getOwnedConnectionPoints();
 
 
 
@@ -146,7 +173,8 @@ public interface State extends AbstractState {
 
 
 	/**
-	 * Returns the value of the '<em><b>Entry</b></em>' reference.
+	 * Returns the value of the '<em><b>Entry</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.common.data.behavior.AbstractEvent}.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -154,39 +182,21 @@ public interface State extends AbstractState {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Entry</em>' reference.
-	 * @see #setEntry(AbstractEvent)
+	 * @return the value of the '<em>Entry</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getState_Entry()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If\r\ndefined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the\r\nstate.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::State::entry' explanation='none' constraints='Multiplicity must be [0..1]'"
 	 * @generated
 	 */
 
-	AbstractEvent getEntry();
+	EList<AbstractEvent> getEntry();
 
 
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacommon.State#getEntry <em>Entry</em>}' reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Entry</em>' reference.
-	 * @see #getEntry()
-	 * @generated
-	 */
-
-	void setEntry(AbstractEvent value);
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Do Activity</b></em>' reference.
+	 * Returns the value of the '<em><b>Do Activity</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.common.data.behavior.AbstractEvent}.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -194,39 +204,21 @@ public interface State extends AbstractState {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Do Activity</em>' reference.
-	 * @see #setDoActivity(AbstractEvent)
+	 * @return the value of the '<em>Do Activity</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getState_DoActivity()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An optional behavior that is executed while being in the state. The execution starts when this state is entered, and stops\r\neither by itself or when the state is exited whichever comes first.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::State::doActivity' explanation='none' constraints='Multiplicity must be [0..1]'"
 	 * @generated
 	 */
 
-	AbstractEvent getDoActivity();
+	EList<AbstractEvent> getDoActivity();
 
 
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacommon.State#getDoActivity <em>Do Activity</em>}' reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Do Activity</em>' reference.
-	 * @see #getDoActivity()
-	 * @generated
-	 */
-
-	void setDoActivity(AbstractEvent value);
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Exit</b></em>' reference.
+	 * Returns the value of the '<em><b>Exit</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.common.data.behavior.AbstractEvent}.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -234,33 +226,14 @@ public interface State extends AbstractState {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exit</em>' reference.
-	 * @see #setExit(AbstractEvent)
+	 * @return the value of the '<em>Exit</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getState_Exit()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An optional behavior that is executed whenever this state is exited regardless of which transition was taken out of the\r\nstate. If defined, exit actions are always executed to completion only after all internal activities and transition actions have\r\ncompleted execution.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::State::exit' explanation='none' constraints='Multiplicity must be [0..1]'"
 	 * @generated
 	 */
 
-	AbstractEvent getExit();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacommon.State#getExit <em>Exit</em>}' reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Exit</em>' reference.
-	 * @see #getExit()
-	 * @generated
-	 */
-
-	void setExit(AbstractEvent value);
-
-
-
+	EList<AbstractEvent> getExit();
 
 
 

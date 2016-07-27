@@ -13,6 +13,7 @@ package org.polarsys.capella.core.business.queries.queries.pa;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -31,14 +32,14 @@ public class GetAvailable_ComponentInstance_Deployers extends AbstractQuery {
 	@Override
 	public List<Object> execute(Object input, IQueryContext context) {
 		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+		List<EObject> availableElements = getAvailableElements(capellaElement);
 		return (List) availableElements;
 	}
 
 	/** 
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+	public List<EObject> getAvailableElements(CapellaElement element) {
+		List<EObject> availableElements = new ArrayList<EObject>();
 		if (element instanceof ComponentInstance) {
 			ComponentInstance pc = (ComponentInstance) element;
 			List<CapellaElement> candidates = getRule_MQRY_PO_Deployers_11(pc);

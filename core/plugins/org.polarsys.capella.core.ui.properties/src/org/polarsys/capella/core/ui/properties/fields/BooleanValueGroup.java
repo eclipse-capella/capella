@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.properties.fields;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -18,8 +19,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 
 /**
  */
@@ -62,7 +61,7 @@ public class BooleanValueGroup extends AbstractSemanticField {
    * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+  public void loadData(EObject semanticElement, EStructuralFeature semanticFeature) {
     super.loadData(semanticElement, semanticFeature);
 
     loadComboValue();
@@ -72,7 +71,7 @@ public class BooleanValueGroup extends AbstractSemanticField {
    * @see org.polarsys.capella.core.data.core.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement semanticElement) {
+  public void loadData(EObject semanticElement) {
     loadComboValue();
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.viewAndController;
 
 import java.util.Collections;
@@ -255,7 +256,7 @@ public class SelectOperationDialogForSharedDataAndEvent extends SelectElementsDi
 
   }
 
-  private List<CapellaElement> getAvailableInterfaces() {
+  private List<EObject> getAvailableInterfaces() {
     IBusinessQuery query =
         BusinessQueriesProvider.getInstance().getContribution(InteractionPackage.Literals.SEQUENCE_MESSAGE,
             InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END);
@@ -383,12 +384,12 @@ public class SelectOperationDialogForSharedDataAndEvent extends SelectElementsDi
     _selectInterfaceButton = new Button(treeViewerPartGroup, SWT.PUSH);
     _selectInterfaceButton.setImage(ToolkitPlugin.getDefault().getImageRegistry().get(ToolkitPlugin.BROWSE_IMAGE_ITEM_ID));
 
-    List<CapellaElement> accessiblesInterfaces = getAvailableInterfaces();
+    List<EObject> accessiblesInterfaces = getAvailableInterfaces();
     // filtering accessible interfaces to select one used/implemented by
     // components
     Interface bestInterface = null;
     boolean multipleBest = false;
-    for (CapellaElement capellaElement : accessiblesInterfaces) {
+    for (EObject capellaElement : accessiblesInterfaces) {
       if (isGoodInterface(capellaElement)) {
         if (bestInterface != null) {
           // second best interface, select it to null
@@ -450,7 +451,7 @@ public class SelectOperationDialogForSharedDataAndEvent extends SelectElementsDi
    * @param capellaElement
    * @return
    */
-  private boolean isGoodInterface(CapellaElement capellaElement) {
+  private boolean isGoodInterface(EObject capellaElement) {
     Interface interf = (Interface) capellaElement;
     AbstractType src = _sourceIR == null ? null : _sourceIR.getRepresentedInstance().getAbstractType();
     AbstractType tgt = _targetIR == null ? null : _targetIR.getRepresentedInstance().getAbstractType();

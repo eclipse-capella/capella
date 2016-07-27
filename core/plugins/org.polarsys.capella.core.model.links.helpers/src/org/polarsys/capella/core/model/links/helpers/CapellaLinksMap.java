@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.links.helpers;
 
 import java.util.ArrayList;
@@ -190,13 +191,13 @@ public class CapellaLinksMap {
 
   /**
    * Find available mappings for given source type.
-   * @param sourceType_p
+   * @param sourceType
    * @return
    */
-  public List<VPair> findMappingsForSourceType(EClass sourceType_p) {
+  public List<VPair> findMappingsForSourceType(EClass sourceType) {
     List<VPair> availableMappings = new ArrayList<VPair>();
     for (Map.Entry<KPair, VPair> entry : getMappings().entrySet()) {
-      if (entry.getKey().getFirstValue() == sourceType_p) {
+      if (entry.getKey().getFirstValue() == sourceType) {
         availableMappings.add(entry.getValue());
       }
     }
@@ -205,13 +206,13 @@ public class CapellaLinksMap {
 
   /**
    * Find available mappings for given target type.
-   * @param targetType_p
+   * @param targetType
    * @return
    */
-  public List<VPair> findMappingsForTargetType(EClass targetType_p) {
+  public List<VPair> findMappingsForTargetType(EClass targetType) {
     List<VPair> availableMappings = new ArrayList<VPair>();
     for (Map.Entry<KPair, VPair> entry : getMappings().entrySet()) {
-      if (entry.getKey().getSecondValue() == targetType_p) {
+      if (entry.getKey().getSecondValue() == targetType) {
         availableMappings.add(entry.getValue());
       }
     }
@@ -220,35 +221,35 @@ public class CapellaLinksMap {
 
   /**
    * Get mapping for given couple (sourceType, targetType).
-   * @param sourceType_p
-   * @param targetType_p
+   * @param sourceType
+   * @param targetType
    * @return a <code>VPair</code> or <code>null</code> if no mapping for this couple.
    */
-  public VPair getMappingFor(EClass sourceType_p, EClass targetType_p) {
-    KPair key = new KPair(sourceType_p, targetType_p);
+  public VPair getMappingFor(EClass sourceType, EClass targetType) {
+    KPair key = new KPair(sourceType, targetType);
     return getMappings().get(key);
   }
 
   /**
    * Add a new mapping to the map. If a mapping already exists with the same (link source type, link target type) couple, the new mapping is added to existing
    * ones.
-   * @param linkSrcType_p
-   * @param linkTgtType_p
-   * @param linkType_p
-   * @param linkRefInSource_p
+   * @param linkSrcType
+   * @param linkTgtType
+   * @param linkType
+   * @param linkRefInSource
    */
-  public void addMapping(EClass linkSrcType_p, EClass linkTgtType_p, EClass linkType_p, EReference linkRefInSource_p) {
+  public void addMapping(EClass linkSrcType, EClass linkTgtType, EClass linkType, EReference linkRefInSource) {
     // Create a key.
-    KPair key = new KPair(linkSrcType_p, linkTgtType_p);
+    KPair key = new KPair(linkSrcType, linkTgtType);
     // Try and get an existing mapping.
     VPair value = getMappings().get(key);
     if (null == value) {
       // No mapping for given key -> add one.
-      getMappings().put(key, new VPair(new EClass[] { linkType_p }, new EReference[] { linkRefInSource_p }));
+      getMappings().put(key, new VPair(new EClass[] { linkType }, new EReference[] { linkRefInSource }));
     } else {
       // A mapping exists for given key -> create a new one with new link type and reference.
-      EClass[] newLinkTypesArray = createNewArray(value.getFirstValue(), linkType_p);
-      EReference[] newLinkRefInSourceArray = createNewArray(value.getSecondValue(), linkRefInSource_p);
+      EClass[] newLinkTypesArray = createNewArray(value.getFirstValue(), linkType);
+      EReference[] newLinkRefInSourceArray = createNewArray(value.getSecondValue(), linkRefInSource);
       getMappings().put(key, new VPair(newLinkTypesArray, newLinkRefInSourceArray));
     }
   }
@@ -256,13 +257,13 @@ public class CapellaLinksMap {
   /**
    * Utility method : create a new array with elements from an existing array + a new element.
    * @param <E>
-   * @param baseArray_p
-   * @param elementToAdd_p
+   * @param baseArray
+   * @param elementToAdd
    * @return
    */
-  public static <E> E[] createNewArray(E[] baseArray_p, E elementToAdd_p) {
-    E[] newArray = Arrays.copyOf(baseArray_p, baseArray_p.length + 1);
-    newArray[baseArray_p.length] = elementToAdd_p;
+  public static <E> E[] createNewArray(E[] baseArray, E elementToAdd) {
+    E[] newArray = Arrays.copyOf(baseArray, baseArray.length + 1);
+    newArray[baseArray.length] = elementToAdd;
     return newArray;
   }
 }

@@ -13,8 +13,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius,
  org.polarsys.capella.common.flexibility.properties;visibility:=reexport,
  org.eclipse.emf.diffmerge,
- org.polarsys.capella.common.tools.report
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+ org.polarsys.capella.common.tools.report,
+ org.eclipse.core.expressions
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.common,
  org.polarsys.capella.core.transition.common.activities,
@@ -30,6 +31,7 @@ Export-Package: org.polarsys.capella.core.transition.common,
  org.polarsys.capella.core.transition.common.handlers.contextscope,
  org.polarsys.capella.core.transition.common.handlers.filter,
  org.polarsys.capella.core.transition.common.handlers.log,
+ org.polarsys.capella.core.transition.common.handlers.merge,
  org.polarsys.capella.core.transition.common.handlers.notify,
  org.polarsys.capella.core.transition.common.handlers.options,
  org.polarsys.capella.core.transition.common.handlers.resolver,

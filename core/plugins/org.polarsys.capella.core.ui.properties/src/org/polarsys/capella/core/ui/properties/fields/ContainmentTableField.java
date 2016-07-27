@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.ui.properties.fields;
 
 import java.util.ArrayList;
@@ -27,7 +28,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -230,7 +230,7 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
    * @return a not <code>null</code>list.
    */
   protected List<? extends EObject> getAvailableElementsToAdd() {
-    final List<ModelElement> availableElements = new ArrayList<ModelElement>(0);
+    final List<EObject> availableElements = new ArrayList<EObject>(0);
     AbstractReadOnlyCommand command = new AbstractReadOnlyCommand() {
       /**
        * {@inheritDoc}

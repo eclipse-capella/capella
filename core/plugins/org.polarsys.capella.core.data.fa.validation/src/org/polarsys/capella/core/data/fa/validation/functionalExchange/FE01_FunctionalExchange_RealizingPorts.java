@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -39,8 +40,7 @@ public class FE01_FunctionalExchange_RealizingPorts extends AbstractValidationRu
   public IStatus validate(IValidationContext ctx) {
     EObject eObj = ctx.getTarget();
     EMFEventType eType = ctx.getEventType();
-    if (eType == EMFEventType.NULL) {
-      if (eObj instanceof FunctionalExchange) {
+    if (eType == EMFEventType.NULL && eObj instanceof FunctionalExchange) {
         FunctionalExchange currentExchange = (FunctionalExchange) eObj;
         
         ActivityNode sourceCurrent = currentExchange.getSource();
@@ -55,23 +55,23 @@ public class FE01_FunctionalExchange_RealizingPorts extends AbstractValidationRu
           ActivityNode targetPrevious = (ActivityNode)getFirstContainer(exc.getTarget(), FaPackage.Literals.ABSTRACT_FUNCTION);
 
           if (PortExt.transitionedPortIsValid(targetCurrent, (TraceableElement)targetPrevious) && 
-              PortExt.transitionedPortIsValid(sourceCurrent, (TraceableElement)sourcePrevious)) 
+              PortExt.transitionedPortIsValid(sourceCurrent, (TraceableElement)sourcePrevious)) {
             return ctx.createSuccessStatus();
+          }
         }
         
-        if (previousPhaseElements.size()!=0) {
-          return createFailureStatus(ctx, new Object[] { currentExchange.getName() });
+        if (previousPhaseElements.size() != 0) {
+          return ctx.createFailureStatus(EObjectLabelProviderHelper.getText(currentExchange));
         }
-      }
     }
     return ctx.createSuccessStatus();
 
   }
 
-  private EObject getFirstContainer(EObject obj_p, EClass clazz_p) {
-    if (clazz_p.isInstance(obj_p)) {
-      return obj_p;
+  private EObject getFirstContainer(EObject obj, EClass clazz) {
+    if (clazz.isInstance(obj)) {
+      return obj;
     }
-    return EcoreUtil2.getFirstContainer(obj_p, clazz_p);
+    return EcoreUtil2.getFirstContainer(obj, clazz);
   }
 }

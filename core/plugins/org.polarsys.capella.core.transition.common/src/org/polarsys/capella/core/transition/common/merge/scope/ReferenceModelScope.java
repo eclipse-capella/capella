@@ -14,7 +14,6 @@ package org.polarsys.capella.core.transition.common.merge.scope;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -24,6 +23,11 @@ public class ReferenceModelScope extends ContextModelScope {
 
   public ReferenceModelScope(Collection<? extends EObject> elements, IContext context) {
     super(elements, context);
+  }
+
+  @Override
+  public Object getOriginator() {
+    return "Result of transition";
   }
 
 }

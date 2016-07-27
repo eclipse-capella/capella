@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 
 package org.polarsys.capella.core.platform.sirius.ui.commands;
 
@@ -31,16 +32,16 @@ public class CapellaCutCommand extends CommandWrapper {
 
   /**
    * Constructs the Capella command allowing to cut Capella elements.
-   * @param label_p The label.
-   * @param domain_p The editing domain.
-   * @param _viewer_p
-   * @param parameters_p The parameters.
-   * @param command_p The command.
+   * @param label The label.
+   * @param domain The editing domain.
+   * @param _viewer
+   * @param parameters The parameters.
+   * @param command The command.
    */
-  public CapellaCutCommand(String label_p, Collection<?> selection_p, StructuredViewer viewer_p) {
-    super(label_p);
-    _selection = selection_p;
-    _viewer = viewer_p;
+  public CapellaCutCommand(String label, Collection<?> selection, StructuredViewer viewer) {
+    super(label);
+    _selection = selection;
+    _viewer = viewer;
   }
 
   /**
@@ -86,13 +87,13 @@ public class CapellaCutCommand extends CommandWrapper {
   }
 
   /**
-   * @param elementsToUpdate_p
+   * @param elementsToUpdate
    */
-  protected void refreshViewer(final Set<Object> elementsToUpdate_p) {
+  protected void refreshViewer(final Set<Object> elementsToUpdate) {
     _viewer.getControl().getDisplay().asyncExec(new Runnable() {
       @SuppressWarnings("synthetic-access")
       public void run() {
-        _viewer.update(elementsToUpdate_p.toArray(), null);
+        _viewer.update(elementsToUpdate.toArray(), null);
       }
     });
   }

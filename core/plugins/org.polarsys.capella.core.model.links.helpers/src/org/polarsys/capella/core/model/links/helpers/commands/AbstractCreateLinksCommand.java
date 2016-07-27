@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.links.helpers.commands;
 
 import java.util.Collection;
@@ -28,9 +29,9 @@ public abstract class AbstractCreateLinksCommand extends AbstractCommand {
 
   protected final LinkStyle _linkStyle;
 
-  public AbstractCreateLinksCommand(String label_p, LinkStyle linkStyle_p) {
-    super(label_p);
-    _linkStyle = linkStyle_p;
+  public AbstractCreateLinksCommand(String label, LinkStyle linkStyle) {
+    super(label);
+    _linkStyle = linkStyle;
   }
 
   /**
@@ -41,10 +42,10 @@ public abstract class AbstractCreateLinksCommand extends AbstractCommand {
   }
 
   /**
-   * @param sources_p the sources to set
+   * @param sources the sources to set
    */
-  public void setSources(Collection<? extends ModelElement> sources_p) {
-    _sources = sources_p;
+  public void setSources(Collection<? extends ModelElement> sources) {
+    _sources = sources;
   }
 
   /**
@@ -63,10 +64,10 @@ public abstract class AbstractCreateLinksCommand extends AbstractCommand {
   }
 
   /**
-   * @param targets_p the targets to set
+   * @param targets the targets to set
    */
-  public void setTargets(Collection<? extends ModelElement> targets_p) {
-    _targets = targets_p;
+  public void setTargets(Collection<? extends ModelElement> targets) {
+    _targets = targets;
   }
 
   /**

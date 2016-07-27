@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,9 +11,9 @@
 package org.polarsys.capella.core.ui.properties.helpers;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 
 public class NamingHelper {
 
@@ -25,7 +25,8 @@ public class NamingHelper {
   public static String getDefaultTitle(EObject currentObject) {
     String title = EObjectLabelProviderHelper.getMetaclassLabel(currentObject, true);
     if (currentObject instanceof AbstractNamedElement) {
-      title = title + ((AbstractNamedElement) currentObject).getName();
+      String name = ((AbstractNamedElement) currentObject).getName();
+      title = title + (name == null ? ICommonConstants.EMPTY_STRING : name);
     }
     return title;
   }
@@ -38,7 +39,8 @@ public class NamingHelper {
   public static String getDefaultMessage(EObject currentObject, String editedPropertyName) {
     String message = "Select " + editedPropertyName; //$NON-NLS-1$
     if (currentObject instanceof AbstractNamedElement) {
-      message = message + " of " + currentObject.eClass().getName() + " \"" + ((AbstractNamedElement) currentObject).getName() + "\"."; //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
+      String name = ((AbstractNamedElement) currentObject).getName();
+      message = message + " of " + currentObject.eClass().getName() + " \"" + (name == null ? ICommonConstants.EMPTY_STRING : name) + "\"."; //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
     }
     return message;
   }

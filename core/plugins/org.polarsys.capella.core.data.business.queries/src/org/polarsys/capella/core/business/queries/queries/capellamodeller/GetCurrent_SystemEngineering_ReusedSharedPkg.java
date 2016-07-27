@@ -13,6 +13,7 @@ package org.polarsys.capella.core.business.queries.queries.capellamodeller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -33,7 +34,7 @@ public class GetCurrent_SystemEngineering_ReusedSharedPkg extends AbstractQuery 
 	 * <p>
 	 * Refer MQRY_SystemEngineering_Reused_1
 	 * </p>
-	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement,boolean)
+	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getCurrentElements(EObject,boolean)
 	 */
 	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();

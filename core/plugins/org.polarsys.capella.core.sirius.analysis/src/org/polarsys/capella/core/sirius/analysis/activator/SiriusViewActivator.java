@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.Set;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.query.legacy.AcceleoInterpreterPlugin;
 import org.eclipse.sirius.query.legacy.preferences.AcceleoPreferenceConstants;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -53,6 +54,11 @@ public class SiriusViewActivator extends AbstractUIPlugin {
     // use java services before specific acceleo files
     IEclipsePreferences preferences = DefaultScope.INSTANCE.getNode(AcceleoInterpreterPlugin.PLUGIN_ID);
     preferences.putBoolean(AcceleoPreferenceConstants.PREF_USE_SPECIFIC_SCRIPTS_FIRST, false);
+    
+    // Modify palette tool name with a custom end user label
+    Messages.ArrangeBorderNodesAction_actionText = CapellaMessages.ArrangeBorderNodesAction_actionText;
+    Messages.ArrangeBorderNodesAction_commandLabel = CapellaMessages.ArrangeBorderNodesAction_commandLabel;
+    Messages.ArrangeBorderNodesAction_toolbarActionText = CapellaMessages.ArrangeBorderNodesAction_toolbarActionText;
   }
 
   /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,12 +8,14 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.libraries.extendedqueries.information;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.common.libraries.IModel;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
@@ -34,7 +36,7 @@ public class GetAvailable_PhysicalQuantity_Unit__Lib extends AbstractQuery {
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     CapellaElement capellaElement = (CapellaElement) input;
-    List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+    List<EObject> availableElements = getAvailableElements(capellaElement);
     return (List) availableElements;
   }
 
@@ -56,14 +58,14 @@ public class GetAvailable_PhysicalQuantity_Unit__Lib extends AbstractQuery {
    * <p>
    * Refer MQRY_PhysicalDimension_DefaultUnit_1
    * </p>
-   * @see org.polarsys.capella.core.business.queries.capellacore.common.ui.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
+   * @see org.polarsys.capella.core.business.queries.capellacore.common.ui.business.queries.IBusinessQuery#getAvailableElements(EObject)
    */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(element_p);
-    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element_p);
-    if (element_p instanceof PhysicalQuantity) {
-      PhysicalQuantity currentElement = (PhysicalQuantity) element_p;
+  public List<EObject> getAvailableElements(CapellaElement element) {
+    List<EObject> availableElements = new ArrayList<EObject>();
+    BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(element);
+    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element);
+    if (element instanceof PhysicalQuantity) {
+      PhysicalQuantity currentElement = (PhysicalQuantity) element;
       java.util.Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
       for (IModel library : libraries) {
         BlockArchitecture correspondingBlock = (BlockArchitecture) QueryExt.getCorrespondingElementInLibrary(currentBlock, (CapellaModel) library);

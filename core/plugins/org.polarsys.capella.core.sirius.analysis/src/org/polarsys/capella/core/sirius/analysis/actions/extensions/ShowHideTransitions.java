@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,13 +35,13 @@ public class ShowHideTransitions extends AbstractExternalJavaAction {
    */
   @Override
   @SuppressWarnings("unchecked")
-  public void execute(Collection<? extends EObject> selections_p, Map<String, Object> parameters_p) {
+  public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 
-    DSemanticDecorator view_p = (DSemanticDecorator) parameters_p.get(ELEMENT_VIEW);
+    DSemanticDecorator view = (DSemanticDecorator) parameters.get(ELEMENT_VIEW);
 
-    List<StateTransition> selectedTransitions = (List<StateTransition>) parameters_p.get(SELECTED_TRANSITIONS);
-    List<StateTransition> visibleTransitions = (List<StateTransition>) parameters_p.get(VISIBLE_TRANSITIONS);
-    List<DEdge> visibleTransitionViews = (List<DEdge>) parameters_p.get(VISIBLE_TRANSITION_VIEWS);
+    List<StateTransition> selectedTransitions = (List<StateTransition>) parameters.get(SELECTED_TRANSITIONS);
+    List<StateTransition> visibleTransitions = (List<StateTransition>) parameters.get(VISIBLE_TRANSITIONS);
+    List<DEdge> visibleTransitionViews = (List<DEdge>) parameters.get(VISIBLE_TRANSITION_VIEWS);
 
     if (selectedTransitions == null) {
       selectedTransitions = new ArrayList<StateTransition>();
@@ -52,7 +52,7 @@ public class ShowHideTransitions extends AbstractExternalJavaAction {
     if (visibleTransitionViews == null) {
       visibleTransitionViews = new ArrayList<DEdge>();
     }
-    StateMachineServices.getService().showHideSMTransitions(view_p, selectedTransitions, visibleTransitions, visibleTransitionViews);
+    StateMachineServices.getService().showHideSMTransitions(view, selectedTransitions, visibleTransitions, visibleTransitionViews);
   }
 
 }

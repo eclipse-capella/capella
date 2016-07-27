@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model;
 
 import java.util.ArrayList;
@@ -366,7 +367,7 @@ public class SelectInvokedOperationModel implements ISelectInvokedOperationModel
     IBusinessQuery query =
         BusinessQueriesProvider.getInstance().getContribution(InteractionPackage.Literals.SEQUENCE_MESSAGE,
             InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END);
-    for (CapellaElement capellaElement : query.getAvailableElements(sourceIR)) {
+    for (EObject capellaElement : query.getAvailableElements(sourceIR)) {
       Interface interface_ = (Interface) capellaElement;
       if (!onlyStructural || interface_.isStructural()) {
         if (!restrictToStaticCommunications || creationAlgos.isGoodInterface(interface_, sourceIR, targetIR)) {

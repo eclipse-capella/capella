@@ -30,7 +30,7 @@ public class GetAvailable_System_RealizedOperationalEntities extends AbstractQue
 	@Override
 	public List<Object> execute(Object input, IQueryContext context) {
 		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+		List<EObject> availableElements = getAvailableElements(capellaElement);
 		return (List) availableElements;
 	}
 
@@ -38,10 +38,10 @@ public class GetAvailable_System_RealizedOperationalEntities extends AbstractQue
 	 * Gets all the entities in the Operational Analysis,
 	 * except the entities that are already realized by the current system.
 	 * Refer MQRY_System_RealizedOperationalEntities_1
-	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(CapellaElement)
+	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+	public List<EObject> getAvailableElements(CapellaElement element) {
+		List<EObject> availableElements = new ArrayList<EObject>();
 		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (null == systemEngineering) {
 			return availableElements;

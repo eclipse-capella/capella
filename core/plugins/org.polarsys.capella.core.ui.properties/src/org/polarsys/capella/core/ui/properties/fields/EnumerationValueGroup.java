@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,14 +22,12 @@ import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.model.utils.CollectionExt;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 
 /**
  */
@@ -66,17 +64,17 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
    * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+  public void loadData(EObject semanticElement, EStructuralFeature semanticFeature) {
     super.loadData(semanticElement, semanticFeature);
 
     loadComboValue();
   }
 
   /**
-   * @see org.polarsys.capella.core.data.core.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement semanticElement) {
+  public void loadData(EObject semanticElement) {
     loadComboValue();
   }
 
@@ -91,7 +89,7 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
       _items.clear();
 
       _items.put(ICommonConstants.EMPTY_STRING, null);
-      for (CapellaElement element : getAvailableValues()) {
+      for (EObject element : getAvailableValues()) {
         if (element instanceof AbstractNamedElement) {
           _items.put(((AbstractNamedElement) element).getName(), element);
         }
@@ -112,7 +110,7 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
    *
    */
   protected int getSelection() {
-    for (CapellaElement element : getCurrentValues()) {
+    for (EObject element : getCurrentValues()) {
       if (element instanceof AbstractNamedElement) {
         String selection = ((AbstractNamedElement) element).getName();
         for (int i = 0; i < _valueField.getItemCount(); i++) {
@@ -128,8 +126,8 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
   /**
    *
    */
-  protected List<CapellaElement> getAvailableValues() {
-    List<CapellaElement> result = new ArrayList<CapellaElement>(0);
+  protected List<EObject> getAvailableValues() {
+    List<EObject> result = new ArrayList<EObject>(0);
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CapellacorePackage.Literals.CAPELLA_ELEMENT, _semanticFeature);
     if (null != query) {
       result.addAll(query.getAvailableElements(_semanticElement));
@@ -140,8 +138,8 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
   /**
    *
    */
-  protected List<CapellaElement> getCurrentValues() {
-    List<CapellaElement> result = new ArrayList<CapellaElement>(0);
+  protected List<EObject> getCurrentValues() {
+    List<EObject> result = new ArrayList<EObject>(0);
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CapellacorePackage.Literals.CAPELLA_ELEMENT, _semanticFeature);
     if (null != query) {
       result.addAll(query.getCurrentElements(_semanticElement, false));

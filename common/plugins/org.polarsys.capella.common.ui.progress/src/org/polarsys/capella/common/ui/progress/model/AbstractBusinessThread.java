@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.ui.progress.model;
 
 import java.util.HashMap;
@@ -44,10 +43,10 @@ public abstract class AbstractBusinessThread
     HashMap<String, Object> info = new HashMap<String, Object>();
     
     for (int i = min; i < max; i+=step) {
-      info.put("Progress", new Integer(i)); //$NON-NLS-1$
-      info.put("Min", new Integer(min)); //$NON-NLS-1$      
-      info.put("Max", new Integer(max)); //$NON-NLS-1$         
-      info.put("Step", new Integer(step)); //$NON-NLS-1$      
+      info.put("Progress", Integer.valueOf(i)); //$NON-NLS-1$
+      info.put("Min", Integer.valueOf(min)); //$NON-NLS-1$      
+      info.put("Max", Integer.valueOf(max)); //$NON-NLS-1$         
+      info.put("Step", Integer.valueOf(step)); //$NON-NLS-1$      
       info.put("Finished", Boolean.FALSE); //$NON-NLS-1$   
             
       doRun(info);

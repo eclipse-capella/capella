@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.commands;
 
 import java.util.Collection;
@@ -36,35 +37,35 @@ public class ComponentExchangeThroughDelegationsCommand extends AbstractFixComma
   }
 
   /**
-   * @param modelElement_p
+   * @param modelElement
    */
-  public ComponentExchangeThroughDelegationsCommand(Collection<ModelElement> selection_p) {
-    this(selection_p, new NullProgressMonitor());
+  public ComponentExchangeThroughDelegationsCommand(Collection<ModelElement> selection) {
+    this(selection, new NullProgressMonitor());
   }
 
   /**
-   * @param modelElement_p
-   * @param progressMonitor_p
+   * @param modelElement
+   * @param progressMonitor
    */
-  public ComponentExchangeThroughDelegationsCommand(Collection<ModelElement> selection_p, IProgressMonitor progressMonitor_p) {
-    super(selection_p, progressMonitor_p);
+  public ComponentExchangeThroughDelegationsCommand(Collection<ModelElement> selection, IProgressMonitor progressMonitor) {
+    super(selection, progressMonitor);
   }
 
   /**
    * Returns a list of model elements on which a transition should be applied
-   * @param modelElement_p
+   * @param modelElement
    * @return
    */
   @Override
-  protected Collection<ModelElement> retrieveModelElements(ModelElement modelElement_p) {
-    return Collections.singleton(modelElement_p);
+  protected Collection<ModelElement> retrieveModelElements(ModelElement modelElement) {
+    return Collections.singleton(modelElement);
   }
 
   @Override
-  protected void process(ModelElement element_p) {
+  protected void process(ModelElement element) {
 
-    if (element_p instanceof ComponentExchange) {
-      ComponentExchange exchange = (ComponentExchange) element_p;
+    if (element instanceof ComponentExchange) {
+      ComponentExchange exchange = (ComponentExchange) element;
       Part sourcePart = ComponentExchangeExt.getSourcePart(exchange);
       Port sourcePort = ComponentExchangeExt.getSourcePort(exchange);
       Part targetPart = ComponentExchangeExt.getTargetPart(exchange);

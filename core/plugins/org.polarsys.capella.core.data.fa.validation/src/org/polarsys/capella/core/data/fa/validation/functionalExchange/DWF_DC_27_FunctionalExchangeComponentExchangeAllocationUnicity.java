@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
@@ -23,26 +24,24 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 public class DWF_DC_27_FunctionalExchangeComponentExchangeAllocationUnicity extends AbstractValidationRule {
 
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
 
-    if (eType == EMFEventType.NULL) {
-      if (eObj instanceof FunctionalExchange) {
-        FunctionalExchange fe = (FunctionalExchange) eObj;
-        int nbIncomingAllocations = 0;
-        EList<AbstractTrace> incomingTraces = fe.getIncomingTraces();
-        for (AbstractTrace trace : incomingTraces) {
-          if (trace instanceof ComponentExchangeFunctionalExchangeAllocation) {
-            nbIncomingAllocations++;
-          }
-        }
-        if (nbIncomingAllocations > 1) {
-          return ctx_p.createFailureStatus(new Object[] { fe.getName() });
+    if (eType == EMFEventType.NULL && eObj instanceof FunctionalExchange) {
+      FunctionalExchange fe = (FunctionalExchange) eObj;
+      int nbIncomingAllocations = 0;
+      EList<AbstractTrace> incomingTraces = fe.getIncomingTraces();
+      for (AbstractTrace trace : incomingTraces) {
+        if (trace instanceof ComponentExchangeFunctionalExchangeAllocation) {
+          nbIncomingAllocations++;
         }
       }
+      if (nbIncomingAllocations > 1) {
+        return ctx.createFailureStatus(EObjectLabelProviderHelper.getText(fe));
+      }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.libraries.extendedqueries.pa;
 
 import java.util.ArrayList;
@@ -37,9 +38,9 @@ public class GetAvailable_PhysicalActor_InheritedActors__Lib extends AbstractQue
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     if (input instanceof PhysicalActor) {
       PhysicalActor currentActor = (PhysicalActor) input;
-      CapellaElement element_p = (CapellaElement) input;
-      BlockArchitecture blockArchitectureInProject = BlockArchitectureExt.getRootBlockArchitecture(element_p);
-      IModel currentProject =  ILibraryManager.INSTANCE.getModel(element_p);
+      CapellaElement element = (CapellaElement) input;
+      BlockArchitecture blockArchitectureInProject = BlockArchitectureExt.getRootBlockArchitecture(element);
+      IModel currentProject =  ILibraryManager.INSTANCE.getModel(element);
       for (IModel library : LibraryManagerExt.getAllActivesReferences(currentProject)) {
         BlockArchitecture currentBlockArchitecture = QueryExt.getCorrespondingBlockArchitectureFromLibrary(blockArchitectureInProject, (CapellaModel) library);
         if (currentBlockArchitecture instanceof PhysicalArchitecture) {

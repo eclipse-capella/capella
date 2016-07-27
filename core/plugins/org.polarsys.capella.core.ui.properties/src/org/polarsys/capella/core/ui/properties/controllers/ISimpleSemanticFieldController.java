@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,8 +15,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-
 /**
  * TODO Please document this interface..
  */
@@ -27,14 +25,14 @@ public interface ISimpleSemanticFieldController {
    * @param semanticFeature
    * @return
    */
-  public EObject loadValue(CapellaElement semanticElement, EStructuralFeature semanticFeature);
+  public EObject loadValue(EObject semanticElement, EStructuralFeature semanticFeature);
 
   /**
    * @param semanticElement
    * @param semanticFeature
    * @return
    */
-  public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature);
+  public List<EObject> readOpenValues(EObject semanticElement, EStructuralFeature semanticFeature);
 
   /**
    * @param semanticElement
@@ -43,5 +41,5 @@ public interface ISimpleSemanticFieldController {
    * @param value
    * @return
    */
-  public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value);
+  public EObject writeOpenValue(EObject semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value);
 }

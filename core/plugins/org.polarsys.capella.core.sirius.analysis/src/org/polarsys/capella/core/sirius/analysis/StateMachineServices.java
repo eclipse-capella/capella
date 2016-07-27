@@ -141,32 +141,29 @@ public class StateMachineServices {
    * @return String
    */
   public String displayCharX(EObject context, EObject colomn) {
-    if (null == context || null == colomn) {
-      return ICommonConstants.EMPTY_STRING;
-    }
-    if (context instanceof AbstractCapability) {
-      AbstractCapability cap = (AbstractCapability) context;
-      if (cap.getAvailableInStates().contains(colomn)) {
-        return CHAR_X;
+    if ((null != context) && (null != colomn)) {
+      if (context instanceof AbstractCapability) {
+        AbstractCapability cap = (AbstractCapability) context;
+        if (cap.getAvailableInStates().contains(colomn)) {
+          return CHAR_X;
+        }
+      } else if (context instanceof AbstractFunction) {
+        AbstractFunction cap = (AbstractFunction) context;
+        if (cap.getAvailableInStates().contains(colomn)) {
+          return CHAR_X;
+        }
+      } else if (context instanceof FunctionalChain) {
+        FunctionalChain cap = (FunctionalChain) context;
+        if (cap.getAvailableInStates().contains(colomn)) {
+          return CHAR_X;
+        }
+      } else if (context instanceof IState) {
+        IState state = (IState) context;
+        if (state.getReferencedStates().contains(colomn)) {
+          return CHAR_X;
+        }
       }
-    }
-    if (context instanceof AbstractFunction) {
-      AbstractFunction cap = (AbstractFunction) context;
-      if (cap.getAvailableInStates().contains(colomn)) {
-        return CHAR_X;
-      }
-    }
-    if (context instanceof FunctionalChain) {
-      FunctionalChain cap = (FunctionalChain) context;
-      if (cap.getAvailableInStates().contains(colomn)) {
-        return CHAR_X;
-      }
-    }
-    if (context instanceof IState) {
-      IState state = (IState) context;
-      if (state.getReferencedStates().contains(colomn)) {
-        return CHAR_X;
-      }
+
     }
     return ICommonConstants.EMPTY_STRING;
   }
@@ -394,9 +391,9 @@ public class StateMachineServices {
           if ((type instanceof DeepHistoryPseudoState) && !hasDeepHystoryPseudoState) {
             result.add((IState) type);
           }
-          if (((referenceState == null) || (referenceState.eClass() == type.eClass()))
-              && !(type instanceof Pseudostate)
-              && (type instanceof State ? MoveHelper.getInstance().canMoveModeState((State) type, currentRegion) : true)) {
+          if (((referenceState == null) || (referenceState.eClass() == type.eClass())) && !(type instanceof Pseudostate)
+              && (type instanceof State ? MoveHelper.getInstance().canMoveModeState((State) type, currentRegion)
+                  : true)) {
             result.add((IState) type);
           }
         }
@@ -721,8 +718,8 @@ public class StateMachineServices {
     }
     if (current != null) {
       if (current instanceof DDiagramElement) {
-        for (DSemanticDecorator child : DiagramServices.getDiagramServices().getDiagramElements(
-            (DDiagramElement) current)) {
+        for (DSemanticDecorator child : DiagramServices.getDiagramServices()
+            .getDiagramElements((DDiagramElement) current)) {
           if ((child.getTarget() != null) && child.getTarget().equals(targetElement.getTarget())) {
             valid = false;
           }
@@ -741,9 +738,8 @@ public class StateMachineServices {
   public boolean canCreateMode(EObject context, EObject containerView) {
     Region testedRegion = getRegionFromView(containerView);
     if (testedRegion != null) {
-      if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
+      if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed())
         return MoveHelper.getInstance().canMoveModeState(CapellacommonFactory.eINSTANCE.createMode(), testedRegion);
-      }
 
       for (IState st : getStatesOfRegion(testedRegion)) {
         if ((st instanceof State) && !(st instanceof Mode) && !(st instanceof FinalState)) {
@@ -863,7 +859,7 @@ public class StateMachineServices {
     if (view instanceof DDiagram) {
       DDiagram diagram = (DDiagram) view;
       for (DEdge edge : diagram.getEdges()) {
-        if (edge.getTarget() instanceof StateTransition) {
+        if ((edge.getTarget() != null) && (edge.getTarget() instanceof StateTransition)) {
           returnedList.add(edge);
         }
       }
@@ -872,12 +868,12 @@ public class StateMachineServices {
       DNodeContainer currentContainer = (DNodeContainer) view;
 
       for (DEdge edge : currentContainer.getIncomingEdges()) {
-        if (edge.getTarget() instanceof StateTransition) {
+        if ((edge.getTarget() != null) && (edge.getTarget() instanceof StateTransition)) {
           returnedList.add(edge);
         }
       }
       for (DEdge edge : currentContainer.getOutgoingEdges()) {
-        if (edge.getTarget() instanceof StateTransition) {
+        if ((edge.getTarget() != null) && (edge.getTarget() instanceof StateTransition)) {
           returnedList.add(edge);
         }
       }
@@ -946,7 +942,7 @@ public class StateMachineServices {
     if (view instanceof DDiagram) {
       DDiagram diagram = (DDiagram) view;
       for (AbstractDNode aContainer : diagram.getContainers()) {
-        if (aContainer.getTarget() instanceof IState) {
+        if ((aContainer.getTarget() != null) && (aContainer.getTarget() instanceof IState)) {
           returnedList.add(aContainer);
         }
       }
@@ -954,7 +950,7 @@ public class StateMachineServices {
     if (view instanceof DNodeContainer) {
       DNodeContainer currentContainer = (DNodeContainer) view;
       for (AbstractDNode aContainer : currentContainer.getContainers()) {
-        if (aContainer.getTarget() instanceof IState) {
+        if ((aContainer.getTarget() != null) && (aContainer.getTarget() instanceof IState)) {
           returnedList.add(aContainer);
         }
       }
@@ -967,7 +963,7 @@ public class StateMachineServices {
     if (view instanceof DDiagram) {
       DDiagram diagram = (DDiagram) view;
       for (AbstractDNode node : diagram.getNodes()) {
-        if (node.getTarget() instanceof IState) {
+        if ((node.getTarget() != null) && (node.getTarget() instanceof IState)) {
           returnedList.add(node);
         }
       }
@@ -975,7 +971,7 @@ public class StateMachineServices {
     if (view instanceof DNodeContainer) {
       DNodeContainer currentContainer = (DNodeContainer) view;
       for (AbstractDNode node : currentContainer.getNodes()) {
-        if (node.getTarget() instanceof IState) {
+        if ((node.getTarget() != null) && (node.getTarget() instanceof IState)) {
           returnedList.add(node);
         }
       }
@@ -1007,8 +1003,10 @@ public class StateMachineServices {
     List<IState> stateAndModeList = new ArrayList<IState>();
 
     EObject target = current.getTarget();
-    if (current instanceof DDiagram && target instanceof Region) {
-      stateAndModeList.addAll(getInvolvedStatesRecursively(target));
+    if (current instanceof DDiagram) {
+      if (target instanceof Region) {
+        stateAndModeList.addAll(getInvolvedStatesRecursively(target));
+      }
     }
     IState currentState = null;
 
@@ -1033,11 +1031,13 @@ public class StateMachineServices {
     EObject target = current.getTarget();
 
     // click on the diagram (default region)
-    if (current instanceof DDiagram && target instanceof Region) {
-      Region defaultRegion = (Region) target;
-      for (StateTransition trans : defaultRegion.getOwnedTransitions()) {
-        transitionList.add(trans);
+    if (current instanceof DDiagram) {
+      if (target instanceof Region) {
+        Region defaultRegion = (Region) target;
+        for (StateTransition trans : defaultRegion.getOwnedTransitions()) {
+          transitionList.add(trans);
 
+        }
       }
     }
     // click on state or mode
@@ -1224,11 +1224,10 @@ public class StateMachineServices {
   }
 
   public StateMachine getOwningStateMachine(EObject e) {
-    EObject object = e;
-    while ((object instanceof IState) || (object instanceof StateTransition) || (object instanceof Region)) {
-      object = object.eContainer();
-      if (object instanceof StateMachine) {
-        StateMachine sm = (StateMachine) object;
+    while ((e instanceof IState) || (e instanceof StateTransition) || (e instanceof Region)) {
+      e = e.eContainer();
+      if (e instanceof StateMachine) {
+        StateMachine sm = (StateMachine) e;
         return sm;
       }
     }
@@ -1313,8 +1312,8 @@ public class StateMachineServices {
     if ((targetContainerView instanceof DSemanticDecorator) && (semanticToDrop instanceof AbstractState)) {
       Region newRegion = getRegionFromView(targetContainerView);
       if (newRegion != null) {
-        if (!isReferencedState((AbstractState) semanticToDrop, oldContainer) && semanticToDrop instanceof State ? MoveHelper
-            .getInstance().canMoveModeState((State) semanticToDrop, newRegion) : true) {
+        if (!isReferencedState((AbstractState) semanticToDrop, oldContainer) && semanticToDrop instanceof State
+            ? MoveHelper.getInstance().canMoveModeState((State) semanticToDrop, newRegion) : true) {
           return true;
         }
       }

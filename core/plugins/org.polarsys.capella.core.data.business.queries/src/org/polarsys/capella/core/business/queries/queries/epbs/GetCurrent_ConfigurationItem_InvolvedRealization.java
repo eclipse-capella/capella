@@ -13,6 +13,7 @@ package org.polarsys.capella.core.business.queries.queries.epbs;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -32,7 +33,7 @@ public class GetCurrent_ConfigurationItem_InvolvedRealization extends AbstractQu
 	}
 
 	/** 
-	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement,boolean)
+	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getCurrentElements(EObject,boolean)
 	 */
 	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);

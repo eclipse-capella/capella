@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
@@ -242,7 +243,7 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    */
   @Override
   public boolean select(Object toTest) {
-    return (toTest instanceof DRepresentation) || (toTest instanceof IDDiagramEditPart);
+    return (toTest instanceof DRepresentationDescriptor) || (toTest instanceof DRepresentation) || (toTest instanceof IDDiagramEditPart);
   }
 
   @Override
@@ -263,6 +264,11 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
 
       if (selection instanceof IStructuredSelection) {
         Object firstElement = ((IStructuredSelection) selection).getFirstElement();
+
+        if (firstElement instanceof DRepresentationDescriptor) {
+          firstElement = ((DRepresentationDescriptor) firstElement).getRepresentation();
+        }
+        
         if (firstElement instanceof DRepresentation) {
           _representation = new WeakReference<DRepresentation>((DRepresentation) firstElement);
         } else if (firstElement instanceof IDDiagramEditPart) {

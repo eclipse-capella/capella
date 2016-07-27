@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,16 +10,15 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.core.properties.fields;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
-import org.polarsys.capella.core.data.core.properties.Messages;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.core.properties.Messages;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 
 /**
@@ -69,10 +68,10 @@ public class KeyValueGroup extends AbstractSemanticField {
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement semanticElement) {
+  public void loadData(EObject semanticElement) {
     loadData(semanticElement, null);
 
     if (null != _semanticElement) {

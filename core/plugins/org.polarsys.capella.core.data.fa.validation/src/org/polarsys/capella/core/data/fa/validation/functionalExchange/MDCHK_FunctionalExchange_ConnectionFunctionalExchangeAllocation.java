@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllo
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 
 /**
  * Checks realization consistency between functional exchanges and component exchanges.
@@ -32,15 +33,12 @@ public class MDCHK_FunctionalExchange_ConnectionFunctionalExchangeAllocation ext
   public IStatus validate(IValidationContext ctx) {
     EObject eObj = ctx.getTarget();
     EMFEventType eType = ctx.getEventType();
-    if (eType == EMFEventType.NULL) {
-      if (eObj instanceof FunctionalExchange) {
-        FunctionalExchange exch = (FunctionalExchange) eObj;
-        for (AbstractTrace trace : exch.getIncomingTraces()) {
-          if (trace instanceof ComponentExchangeFunctionalExchangeAllocation) {
-            if (!(trace.getSourceElement() instanceof ComponentExchange)) {
-              return createFailureStatus(ctx, new Object[] { exch.getName() });
-            }
-          }
+    if (eType == EMFEventType.NULL && eObj instanceof FunctionalExchange) {
+      FunctionalExchange exch = (FunctionalExchange) eObj;
+      for (AbstractTrace trace : exch.getIncomingTraces()) {
+        if (trace instanceof ComponentExchangeFunctionalExchangeAllocation
+            && !(trace.getSourceElement() instanceof ComponentExchange)) {
+          return ctx.createFailureStatus(EObjectLabelProviderHelper.getText(exch));
         }
       }
     }

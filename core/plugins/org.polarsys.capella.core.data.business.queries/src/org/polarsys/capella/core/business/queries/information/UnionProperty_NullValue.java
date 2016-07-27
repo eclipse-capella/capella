@@ -14,12 +14,12 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.QueryConstants;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.information.InformationPackage;
 
 /**
@@ -41,14 +41,14 @@ public class UnionProperty_NullValue extends AbstractMultiplicityElement_NullVal
   }
 
   @Override
-  public List<CapellaElement> getAvailableElements(CapellaElement element) {
+  public List<EObject> getAvailableElements(EObject element) {
     QueryContext context = new QueryContext();
 		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
 		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__PROPERTY__NULL_VALUE___LIB, element, context);
   }
 
   @Override
-  public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+  public List<EObject> getCurrentElements(EObject element, boolean onlyGenerated) {
     QueryContext context = new QueryContext();
 		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
 		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__UNION_PROPERTY__NULL_VALUE, element, context);

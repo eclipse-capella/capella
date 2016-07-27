@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.core.properties.controllers;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.cs.Interface;
@@ -25,25 +26,23 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.UnionProperty;
 import org.polarsys.capella.core.data.information.datavalue.ComplexValue;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.ui.properties.controllers.ISimpleSemanticFieldController;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
 /**
  */
 public class TypedElementController implements ISimpleSemanticFieldController {
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#readOpenValues()
+   * {@inheritDoc}
    */
-  public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+  public List<EObject> readOpenValues(EObject semanticElement, EStructuralFeature semanticFeature) {
     List<EObject> list = new ArrayList<EObject>();
 
     // query for 'abstractType'
     IBusinessQuery query =
         BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
     if (query != null) {
-      List<CapellaElement> list1 = query.getAvailableElements(semanticElement);
+      List<EObject> list1 = query.getAvailableElements(semanticElement);
 
       if (semanticElement.eContainer() instanceof ExchangeItem) {
         // the container is an parameter : every element is acceptable as parameter
@@ -51,7 +50,7 @@ public class TypedElementController implements ISimpleSemanticFieldController {
 
       } else if ((!(semanticElement instanceof Property)) && (!(semanticElement instanceof UnionProperty))) {
         // if property eContainer is not an Association : add to list only Primitive class and all other elements
-        for (CapellaElement capellaElement : list1) {
+        for (EObject capellaElement : list1) {
           if (capellaElement instanceof Class) {
             Class cls = (Class) capellaElement;
             // In the COLLECTIONS SPECIFIC CASE, always add the classes
@@ -78,18 +77,17 @@ public class TypedElementController implements ISimpleSemanticFieldController {
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#writeOpenValue(org.eclipse.emf.ecore.EObject)
+   * {@inheritDoc}
    */
-  public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
+  public EObject writeOpenValue(EObject semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
     semanticElement.eSet(semanticFeature, value);
     return value;
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#loadData(org.polarsys.capella.core.data.information.datatype.BooleanType,
-   *      org.eclipse.emf.ecore.EReference)
+   * {@inheritDoc}
    */
-  public EObject loadValue(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+  public EObject loadValue(EObject semanticElement, EStructuralFeature semanticFeature) {
     return (EObject) semanticElement.eGet(semanticFeature);
   }
 }

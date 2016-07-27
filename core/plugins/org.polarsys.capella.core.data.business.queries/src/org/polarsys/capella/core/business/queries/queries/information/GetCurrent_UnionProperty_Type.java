@@ -41,7 +41,7 @@ public class GetCurrent_UnionProperty_Type extends AbstractQuery {
    * <p>
    * Gets the current type of the Property
    * </p>
-   * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement,boolean)
+   * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getCurrentElements(EObject,boolean)
    */
   public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
     SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);

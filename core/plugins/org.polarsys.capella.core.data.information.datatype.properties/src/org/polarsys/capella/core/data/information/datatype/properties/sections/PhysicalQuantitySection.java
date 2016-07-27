@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,13 +17,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
 import org.polarsys.capella.core.data.information.datatype.DatatypePackage;
 import org.polarsys.capella.core.data.information.datatype.properties.Messages;
 import org.polarsys.capella.core.data.information.datatype.properties.controllers.PhysicalQuantityController;
 import org.polarsys.capella.core.data.information.datatype.properties.controllers.PhysicalQuantityUnitController;
 import org.polarsys.capella.core.data.information.datatype.properties.fields.NumericTypeKindGroup;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.SimpleEditableSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.SimpleSemanticField;
@@ -78,10 +76,10 @@ public class PhysicalQuantitySection extends DataTypeSection {
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement capellaElement) {
+  public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
     numericTypeKindGroup.loadData(capellaElement, DatatypePackage.eINSTANCE.getNumericType_Kind());

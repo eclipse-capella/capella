@@ -443,8 +443,8 @@ public class OAServices {
     return targetOA;
   }
 
-  public List<CapellaElement> getAvailableOperationalActivityAllocations(Role role) {
-    List<CapellaElement> returnedList = new ArrayList<CapellaElement>();
+  public List<EObject> getAvailableOperationalActivityAllocations(Role role) {
+    List<EObject> returnedList = new ArrayList<EObject>();
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(role.eClass(),
         OaPackage.Literals.ROLE__OWNED_ACTIVITY_ALLOCATIONS);
     if (query != null) {

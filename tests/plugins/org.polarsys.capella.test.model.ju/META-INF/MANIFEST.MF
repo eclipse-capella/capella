@@ -2,17 +2,21 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.model.ju
-Bundle-Version: 1.0.2.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-Activator: org.polarsys.capella.test.model.ju.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.polarsys.capella.test.framework;bundle-version="0.8.0",
- org.polarsys.capella.core.model.preferences;bundle-version="0.8.0",
- org.polarsys.capella.core.preferences;bundle-version="0.8.0",
+ org.polarsys.capella.test.framework,
+ org.polarsys.capella.core.model.preferences,
+ org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.data.la.ui.wizards,
  org.polarsys.capella.core.ui.toolkit,
  org.polarsys.capella.core.data.interaction.properties,
- org.polarsys.capella.core.projection.commands
+ org.polarsys.capella.core.projection.commands,
+ org.polarsys.capella.core.platform.sirius.clipboard,
+ org.eclipse.gmf.runtime.notation,
+ org.polarsys.capella.test.diagram.common.ju,
+ org.polarsys.capella.core.data.gen
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %providerName

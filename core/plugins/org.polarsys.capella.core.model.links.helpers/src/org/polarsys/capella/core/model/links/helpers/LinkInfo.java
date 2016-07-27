@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.links.helpers;
 
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
@@ -29,9 +30,9 @@ public class LinkInfo {
 
   public final LinkStyle _linkStyle;
 
-  public LinkInfo(ModelElement sourceElement_p, ModelElement targetElement_p, LinkStyle linkStyle_p) {
-    _sourceElement = sourceElement_p;
-    _targetElement = targetElement_p;
-    _linkStyle = linkStyle_p;
+  public LinkInfo(ModelElement sourceElement, ModelElement targetElement, LinkStyle linkStyle) {
+    _sourceElement = sourceElement;
+    _targetElement = targetElement;
+    _linkStyle = linkStyle;
   }
 }

@@ -11,17 +11,25 @@
 
 package org.polarsys.capella.core.data.helpers.fa.services;
 
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 
 /**
  */
 public class FunctionalAnalysisNamingHelper {
+
+  /**
+   * Utility class: hide default constructor
+   */
+  private FunctionalAnalysisNamingHelper() {
+  }
+  
   /**
    * @param element element whose value is requested
    */
   public static String getValue(FunctionalExchange element) {
     if (element != null) {
-      return element.getName();
+      return EObjectLabelProviderHelper.getText(element);
     }
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$
   }

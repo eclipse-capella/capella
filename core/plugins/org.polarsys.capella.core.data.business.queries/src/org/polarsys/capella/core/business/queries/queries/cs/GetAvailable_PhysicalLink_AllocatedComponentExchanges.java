@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
@@ -46,15 +47,15 @@ public class GetAvailable_PhysicalLink_AllocatedComponentExchanges extends Abstr
 	@Override
 	public List<Object> execute(Object input, IQueryContext context) {
 		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+		List<EObject> availableElements = getAvailableElements(capellaElement);
 		return (List) availableElements;
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+	public List<EObject> getAvailableElements(CapellaElement element) {
+		List<EObject> availableElements = new ArrayList<EObject>();
 		BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element);
 		if (null == arch) {
 			return availableElements;
@@ -66,8 +67,8 @@ public class GetAvailable_PhysicalLink_AllocatedComponentExchanges extends Abstr
 			if (null != sourceComponent && null != targetComponent) {
 				availableElements.addAll(getAvailableExchanges(sourceComponent, targetComponent));
 			}
-			List<CapellaElement> allReadyAllocatedConnection = new ArrayList<CapellaElement>();
-			for (CapellaElement capellaElement : availableElements) {
+			List<EObject> allReadyAllocatedConnection = new ArrayList<EObject>();
+			for (EObject capellaElement : availableElements) {
 				if (capellaElement instanceof ComponentExchange) {
 					ComponentExchange connection = (ComponentExchange) capellaElement;
 					EList<AbstractTrace> incomingTraces = connection.getIncomingTraces();

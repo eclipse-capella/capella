@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,20 +10,17 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.common.validation.statetransition;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
-import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
-import org.polarsys.capella.common.queries.queryContext.QueryContext;
-import org.polarsys.capella.core.business.queries.QueryConstants;
-import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.eclipse.emf.validation.model.ConstraintStatus;
+import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
-
-import com.google.common.base.Joiner;
 
 public class MDCHK_StateMachine_AvailableFunctions extends AbstractModelConstraint {
 
@@ -31,48 +28,33 @@ public class MDCHK_StateMachine_AvailableFunctions extends AbstractModelConstrai
   private static final String ENTRY = "entry"; //$NON-NLS-1$
   private static final String EXIT = "exit"; //$NON-NLS-1$
 
-  public MDCHK_StateMachine_AvailableFunctions() {
-    // TODO Auto-generated constructor stub
-  }
-
-  /**/
+  /**
+   * {@inheritDoc}
+   */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    State state = (State) ctx_p.getTarget();
-    EObject eContainer = state.eContainer();
-    String[] res = new String[3];
-    res[0] = state.getDoActivity() == null ? null : DO_ACTIVITY;
-    res[1] = state.getEntry() == null ? null : ENTRY;
-    res[2] = state.getExit() == null ? null : EXIT;
-    String[] elements = new String[3];
-    elements[0] = state.getDoActivity() == null ? null : state.getDoActivity().getName();
-    elements[1] = state.getEntry() == null ? null : state.getEntry().getName();
-    elements[2] = state.getExit() == null ? null : state.getExit().getName();
+  public IStatus validate(IValidationContext ctx) {
+    State state = (State) ctx.getTarget();
+    List<IStatus> result  = new ArrayList<IStatus>();
+    Collection<AbstractFunction> availableFunctions = state.getAvailableAbstractFunctions();
 
-    QueryContext context = new QueryContext();
-    context.putValue(QueryConstants.GET_CURRENT__MODE__AVAILABLE_IN_STATES,
-        CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_FUNCTIONS);
-
-    Collection<AbstractFunction> availableFunctions = QueryInterpretor.executeQuery(
-        "GetCurrent_Mode_AvailableInStates", state, context);//$NON-NLS-1$
-
-    if (!(state.getDoActivity() instanceof AbstractFunction) || (availableFunctions.contains(state.getDoActivity()))) {
-      res[0] = null;
-      elements[0] = null;
+    for (AbstractEvent activity : state.getDoActivity()) {
+      if (!(activity instanceof AbstractFunction) || !availableFunctions.contains(activity)) {
+        result.add(ctx.createFailureStatus(new Object[] { DO_ACTIVITY, activity.getName(), state.getName() }));
+      }
     }
-    if (!(state.getEntry() instanceof AbstractFunction) || (availableFunctions.contains(state.getEntry()))) {
-      res[1] = null;
-      elements[1] = null;
+    for (AbstractEvent entry : state.getEntry()) {
+      if (!(entry instanceof AbstractFunction) || !availableFunctions.contains(entry)) {
+        result.add(ctx.createFailureStatus(new Object[] { ENTRY, entry.getName(), state.getName() }));
+      }
     }
-    if (!(state.getExit() instanceof AbstractFunction) || (availableFunctions.contains(state.getExit()))) {
-      res[2] = null;
-      elements[2] = null;
+    for (AbstractEvent exit : state.getExit()) {
+      if (!(exit instanceof AbstractFunction) || !availableFunctions.contains(exit)) {
+        result.add(ctx.createFailureStatus(new Object[] { EXIT, exit.getName(), state.getName() }));
+      }
     }
-    if ((res[0] == res[1]) && (res[1] == res[2]) && (res[2] == null)) {
-      return ctx_p.createSuccessStatus();
-    } else {
-      return ctx_p.createFailureStatus(new Object[] {
-          Joiner.on("/").skipNulls().join(res), Joiner.on("/").skipNulls().join(elements), state.getName() }); //$NON-NLS-1$
+    if (!result.isEmpty()) {
+      return ConstraintStatus.createMultiStatus(ctx, result);
     }
+    return ctx.createSuccessStatus();
   }
 }

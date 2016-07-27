@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.0.0-->
+<!--Capella_Version_1.1.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.0.0"
-    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.0.0"
-    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.0.0"
-    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.0.0"
-    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.0.0"
-    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.0.0"
-    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.0.0"
-    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.0.0"
-    xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/1.0.0"
-    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.0.0"
-    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.0.0"
-    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.0.0"
-    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.0.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.0.0"
-    xmlns:org.polarsys.capella.core.data.sharedmodel="http://www.polarsys.org/capella/core/sharedmodel/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.1.0"
+    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.1.0"
+    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.1.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.1.0"
+    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.1.0"
+    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.1.0"
+    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.1.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.1.0"
+    xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/1.1.0"
+    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.1.0"
+    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.1.0"
+    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.1.0"
+    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0"
+    xmlns:org.polarsys.capella.core.data.sharedmodel="http://www.polarsys.org/capella/core/sharedmodel/1.1.0"
     id="33304fc7-cc52-449e-ae4f-c05274c78d32"
     name="SimpleRefinement_TCs">
   <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue" id="81409fb6-96d7-4beb-aa8f-c5c9fe8f8ff2"
@@ -10238,8 +10238,7 @@
     </ownedArchitectures>
   </ownedModelRoots>
   <ownedModelRoots xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering"
-      id="70154b1a-557c-48e2-a05b-01c1248677b9" name="[MBI][PCR] regressionTC1"
-      description="&lt;p>Refining to timer (because of 2_Timer) leads to 3 message ‘i’ ambiguity resolution and can lead to inconsistent scenarios.&lt;/p>&lt;p>First message ‘i’ (dealing with external component 1_Timer) shall be mapped to 1_Timer and not decomposed.&lt;/p>&lt;p>The two other messages are correctly asked for ambiguity resolution and be mapped to internal Timer components (TimeManage).&lt;/p>">
+      id="70154b1a-557c-48e2-a05b-01c1248677b9" name="[MBI][PCR] regressionTC1" description="&lt;p>Refining to timer (because of 2_Timer) leads to 3 message ‘i’ ambiguity resolution and can lead to inconsistent scenarios.&lt;/p>&lt;p>First message ‘i’ (dealing with external component 1_Timer) shall be mapped to 1_Timer and not decomposed.&lt;/p>&lt;p>The two other messages are correctly asked for ambiguity resolution and be mapped to internal Timer components (TimeManage).&lt;/p>">
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.ctx:SystemAnalysis"
         id="6fc58728-b107-4c0f-b240-ebc8428aa652" name="System Analysis">
       <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
@@ -10687,8 +10686,7 @@
     </ownedArchitectures>
   </ownedModelRoots>
   <ownedModelRoots xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering"
-      id="bc881a5c-c3ee-478d-ad75-475393343597" name="[MBI][PCR] regressionTC2"
-      description="&lt;p>Running refinement from system to lc level leads to scenario seq messages  not correctly ordered: check 'Internal' message compared to 'wait' message in root logical level / System analysis scenario&lt;/p>">
+      id="bc881a5c-c3ee-478d-ad75-475393343597" name="[MBI][PCR] regressionTC2" description="&lt;p>Running refinement from system to lc level leads to scenario seq messages  not correctly ordered: check 'Internal' message compared to 'wait' message in root logical level / System analysis scenario&lt;/p>">
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.ctx:SystemAnalysis"
         id="6aaea9dc-1663-4691-9d04-a19959760a19" name="System Analysis">
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"

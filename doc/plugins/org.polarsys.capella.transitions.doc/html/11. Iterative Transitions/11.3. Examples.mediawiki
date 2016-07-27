@@ -22,420 +22,43 @@ It can be described in a Operational Activity Interaction Blank:
 Let&rsquo;s perform the first transition (the System Analysis is considered empty, except default model elements)
 
                   
-{| border="1"
-|-
-| 
-[[Image:Images/11.3.%20Examples_html_368977cf.png|240x106px]]
 
- 
-| 
-[[Image:Images/11.3.%20Examples_html_m5a934b99.png|385x273px]]
+[[Image:Images/11.3_Exemple1.png|1000x530px]]
 
- 
-| 
-[[Image:Images/11.3.%20Examples_html_326554c3.png|399x250px]]
 
- 
-| 
-[[Image:Images/11.3.%20Examples_html_247d099f.png|243x103px]]
-
- 
-|-
-| 
-Perform the '''Transitions &gt; Functional Transition''' on the 			'''Root System Operational Activity''' (on the diagram or in the 			Capella explorer).
-
- 
-[[Image:Images/11.3.%20Examples_html_368977cf.png|240x106px]]
-
- 
-<br>
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_m5a934b99.png|385x273px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_m169da45f.png|400x270px]]
-
-         
-{| border="1"
-|-
-| 
-[[Image:Images/11.3.%20Examples_html_3c78e109.png|48x48px]]
-
- 
-| 
-You have to create a System Data Flow Blank first.
-
- 
-By drag &amp; 							drops, it is possible to build the diagram with the same 							layout at System Analysis
-
- 
-|}  
-| 
-[[Image:Images/11.3.%20Examples_html_247d099f.png|243x103px]]
-
- 
-|} 
 === Adding an Element in the Source ===
                         
-{| border="1"
-|-
-| 
-[[Image:Images/11.3.%20Examples_html_368977cf.png|240x106px]]
+
+[[Image:Images/11.3_Exemple2.png|1000x700px]]
 
  
-| 
-[[Image:Images/11.3.%20Examples_html_m5a934b99.png|385x273px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_m169da45f.png|400x270px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_247d099f.png|243x103px]]
-
- 
-|-
-| 
-Add &lsquo;Assign troops&rsquo; Operational Activity in the 			Operational Analysis
-
- 
-[[Image:Images/11.3.%20Examples_html_m7eb9e010.png|241x123px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_4962d6b9.png|386x279px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_m169da45f.png|400x270px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_247d099f.png|243x103px]]
-
- 
-|-
-| 
-Perform the Transitions &gt; Functional Transition
-
- 
-Perform the '''Transitions &gt; Functional Transition''' on the 			'''Root System Operational Activity''' (on the diagram or in the 			Capella explorer).
-
- 
-[[Image:Images/11.3.%20Examples_html_m7eb9e010.png|241x123px]]
-
- 
-<br>
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_4962d6b9.png|386x279px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_5a8a5910.png|390x259px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_m39b59b42.png|236x120px]]
-
- 
-|} 
 === Removing an Element in the Source ===
                         
-{| border="1"
-|-
-| 
-[[Image:Images/11.3.%20Examples_html_m7eb9e010.png|241x123px]]
+
+[[Image:Images/11.3_Exemple3.png|1000x700px]]
 
  
-| 
-[[Image:Images/11.3.%20Examples_html_4962d6b9.png|386x279px]]
 
- 
-| 
-[[Image:Images/11.3.%20Examples_html_5a8a5910.png|390x259px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_m39b59b42.png|236x120px]]
-
- 
-|-
-| 
-Remove &lsquo;Assign troops&rsquo; Operational Activity in the 			Operational Analysis
-
- 
-[[Image:Images/11.3.%20Examples_html_368977cf.png|240x106px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_m5a934b99.png|385x273px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_5a8a5910.png|390x259px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_m39b59b42.png|236x120px]]
-
- 
-|-
-| 
-Perform the Transitions &gt; Functional Transition
-
- 
-[[Image:Images/11.3.%20Examples_html_368977cf.png|240x106px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_m5a934b99.png|385x273px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_5a8a5910.png|390x259px]]
-
-         
-{| border="1"
-|-
-| 
-[[Image:Images/11.3.%20Examples_html_3c78e109.png|48x48px]]
-
- 
-| 
-As the iterative transition is conservative, the target 							(Logical Architecture) keep the &lsquo;Assign troops&rsquo;
-
- 
-However there is 							not incoming or outgoing traceability link on the &lsquo;Assign 							troops&rsquo; System function
-
- 
-|}  
-| 
-[[Image:Images/11.3.%20Examples_html_m39b59b42.png|236x120px]]
-
- 
-|} 
 === Removing an Element in the Target ===
                         
-{| border="1"
-|-
-| 
-[[Image:Images/11.3.%20Examples_html_m7eb9e010.png|241x123px]]
+
+[[Image:Images/11.3_Exemple4.png|1000x700px]]
 
  
-| 
-[[Image:Images/11.3.%20Examples_html_4962d6b9.png|386x279px]]
 
- 
-| 
-[[Image:Images/11.3.%20Examples_html_5a8a5910.png|390x259px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_m39b59b42.png|236x120px]]
-
- 
-|-
-| 
-Remove &lsquo;Assign troops&rsquo; function in the System Analysis
-
- 
-[[Image:Images/11.3.%20Examples_html_m7eb9e010.png|241x123px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_4962d6b9.png|386x279px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_592d2437.png|384x261px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_247d099f.png|243x103px]]
-
- 
-|-
-| 
-Perform the '''Transitions &gt; Functional Transition''' on the 			'''Root System Operational Activity''' (on the diagram or in the 			Capella explorer).
-
- 
-[[Image:Images/11.3.%20Examples_html_m7eb9e010.png|241x123px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_4962d6b9.png|386x279px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_5a8a5910.png|390x259px]]
-
-         
-{| border="1"
-|-
-| 
-[[Image:Images/11.3.%20Examples_html_3c78e109.png|48x48px]]
-
- 
-| 
-The System 							Function &lsquo;Assign troops&rsquo; is '''re-created'''.
-
- 
-|}  
-| 
-[[Image:Images/11.3.%20Examples_html_m39b59b42.png|236x120px]]
-
- 
-|} 
 === Renaming an Element in the Source ===
                         
-{| border="1"
-|-
-| 
-[[Image:Images/11.3.%20Examples_html_m7eb9e010.png|241x123px]]
+
+[[Image:Images/11.3_Exemple5.png|1000x700px]]
 
  
-| 
-[[Image:Images/11.3.%20Examples_html_4962d6b9.png|386x279px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_5a8a5910.png|390x259px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_m39b59b42.png|236x120px]]
-
- 
-|-
-| 
-Rename &lsquo;Assign troops&rsquo; Operational Activity in the 			Operational Analysis to &lsquo;Assign troops to strategic 			location&rsquo;
-
- 
-[[Image:Images/11.3.%20Examples_html_620700c9.png|290x118px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_355983e.png|381x265px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_5a8a5910.png|390x259px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_m39b59b42.png|236x120px]]
-
- 
-|-
-| 
-Perform the '''Transitions &gt; Functional Transition''' on the 			'''Root System Operational Activity''' (on the diagram or in the 			Capella explorer).
-
- 
-[[Image:Images/11.3.%20Examples_html_620700c9.png|290x118px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_355983e.png|381x265px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_5a8a5910.png|390x259px]]
-
-         
-{| border="1"
-|-
-| 
-[[Image:Images/11.3.%20Examples_html_3c78e109.png|48x48px]]
-
- 
-| 
-The System 							Function &lsquo;Assign troops&rsquo; is''' not renamed''' 							(conservative).
-
- 
-|}  
-| 
-[[Image:Images/11.3.%20Examples_html_m39b59b42.png|236x120px]]
-
- 
-|} 
 === Moving an Element in the Source ===
                         
-{| border="1"
-|-
-| 
-[[Image:Images/11.3.%20Examples_html_m7eb9e010.png|241x123px]]
+
+[[Image:Images/11.3_Exemple6.png|1000x700px]]
 
  
-| 
-[[Image:Images/11.3.%20Examples_html_4962d6b9.png|386x279px]]
 
- 
-| 
-[[Image:Images/11.3.%20Examples_html_5a8a5910.png|390x259px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_m39b59b42.png|236x120px]]
-
- 
-|-
-| 
-Move &lsquo;Assign troops&rsquo; Operational Activity in the 			Operational Analysis to &lsquo;Root Operational Activity&rsquo;
-
- 
-[[Image:Images/11.3.%20Examples_html_m9925ad4.png|248x138px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_37fa2e0.png|417x336px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_5a8a5910.png|390x259px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_m39b59b42.png|236x120px]]
-
- 
-|-
-| 
-Perform the '''Transitions &gt; Functional Transition''' on the 			'''Root System Operational Activity''' (on the diagram or in the 			Capella explorer).
-
- 
-[[Image:Images/11.3.%20Examples_html_m9925ad4.png|248x138px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_37fa2e0.png|417x336px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_5a8a5910.png|390x259px]]
-
-         
-{| border="1"
-|-
-| 
-[[Image:Images/11.3.%20Examples_html_3c78e109.png|48x48px]]
-
- 
-| 
-The System 							Function &lsquo;Assign troops&rsquo; has''' not been moved 							'''(conservative).
-
- 
-|}  
-| 
-[[Image:Images/11.3.%20Examples_html_m39b59b42.png|236x120px]]
-
- 
-|} 
 == Advanced (Linked Elements i.e. Out of Containment) ==
  
 === Overview ===
@@ -463,42 +86,10 @@ The focus is on the transition to Operational Activity allocations to System Fun
 The Operational Activities to System Functions are automatically performs during the Realized by System and System Actor transitions.
 
                   
-{| border="1"
-|-
-| 
-[[Image:Images/11.3.%20Examples_html_m38aebe2c.png|416x327px]]
+
+[[Image:Images/11.3_Performing_The_First_Transition.png|1000x500px]]
 
  
-| 
-[[Image:Images/11.3.%20Examples_html_m602598b5.png|451x344px]]
-
- 
-| 
-<br>
-
- 
-| 
-<br>
-
- 
-|-
-| 
-<br>
-
- 
-| 
-Perform the 			Transitions &gt; '''Realized by System '''on &lsquo;'''High 			command&rsquo;''' and the Transitions &gt; '''System Actor '''on 			&lsquo;'''Soldier&rsquo;'''
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_25c6abb4.png|547x320px]]
-
- 
-| 
-[[Image:Images/11.3.%20Examples_html_376b374e.png|648x254px]]
-
- 
-|} 
 === Update ===
  
 The iterative transition algorithm has the same behavior than described in the previous sections.

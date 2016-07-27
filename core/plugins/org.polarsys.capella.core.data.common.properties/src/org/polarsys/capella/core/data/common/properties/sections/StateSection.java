@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,15 +22,15 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.common.properties.Messages;
 import org.polarsys.capella.core.data.common.properties.controllers.StateController;
 import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.ui.properties.controllers.SimpleSemanticFieldController;
+import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
-import org.polarsys.capella.core.ui.properties.fields.SimpleSemanticField;
 
 /**
  * The State section.
@@ -38,9 +38,9 @@ import org.polarsys.capella.core.ui.properties.fields.SimpleSemanticField;
 public class StateSection extends AbstractStateSection {
 
   private MultipleSemanticField functionsField;
-  private SimpleSemanticField activityField;
-  private SimpleSemanticField entryField;
-  private SimpleSemanticField exitField;
+  private MultipleSemanticField activityField;
+  private MultipleSemanticField entryField;
+  private MultipleSemanticField exitField;
 
   @Override
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
@@ -54,13 +54,28 @@ public class StateSection extends AbstractStateSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    activityField = new SimpleSemanticField(main, Messages.getString("State.Activity"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
+    activityField = new MultipleSemanticField(main, Messages.getString("State.Activity"), getWidgetFactory(), new AbstractMultipleSemanticFieldController() { //$NON-NLS-1$
+      @Override
+      protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
+        return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), CapellacommonPackage.eINSTANCE.getState_DoActivity());
+      }
+    });
     activityField.setDisplayedInWizard(displayedInWizard);
 
-    entryField = new SimpleSemanticField(main, Messages.getString("State.Entry"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
+    entryField = new MultipleSemanticField(main, Messages.getString("State.Entry"), getWidgetFactory(), new AbstractMultipleSemanticFieldController() { //$NON-NLS-1$
+      @Override
+      protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
+        return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), CapellacommonPackage.eINSTANCE.getState_Entry());
+      }
+    });
     entryField.setDisplayedInWizard(displayedInWizard);
 
-    exitField = new SimpleSemanticField(main, Messages.getString("State.Exit"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
+    exitField = new MultipleSemanticField(main, Messages.getString("State.Exit"), getWidgetFactory(), new AbstractMultipleSemanticFieldController() { //$NON-NLS-1$
+      @Override
+      protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
+        return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), CapellacommonPackage.eINSTANCE.getState_Exit());
+      }
+    });
     exitField.setDisplayedInWizard(displayedInWizard);
 
     functionsField = new MultipleSemanticField(main, Messages.getString("State.Functions"), getWidgetFactory(), new StateController()) { //$NON-NLS-1$
@@ -80,14 +95,14 @@ public class StateSection extends AbstractStateSection {
   }
 
   /**
-   * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement capellaElement) {
+  public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
-    activityField.loadData(capellaElement, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
     entryField.loadData(capellaElement, CapellacommonPackage.Literals.STATE__ENTRY);
+    activityField.loadData(capellaElement, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
     exitField.loadData(capellaElement, CapellacommonPackage.Literals.STATE__EXIT);
 
     functionsField.loadData(capellaElement, FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES);
@@ -110,8 +125,8 @@ public class StateSection extends AbstractStateSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(activityField);
     fields.add(entryField);
+    fields.add(activityField);
     fields.add(exitField);
     fields.add(functionsField);
 

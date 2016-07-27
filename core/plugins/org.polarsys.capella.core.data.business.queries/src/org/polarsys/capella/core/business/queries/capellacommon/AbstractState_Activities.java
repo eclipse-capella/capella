@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -46,7 +46,7 @@ public abstract class AbstractState_Activities implements IBusinessQuery {
     }
 
     // remove existing from the availableElements
-    for (CapellaElement elt : getCurrentElements(state, false)) {
+    for (EObject elt : getCurrentElements(state, false)) {
       availableElements.remove(elt);
     }
 
@@ -73,11 +73,11 @@ public abstract class AbstractState_Activities implements IBusinessQuery {
   }
 
   /**
-   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
    */
   @Override
-  public List<CapellaElement> getAvailableElements(CapellaElement element) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+  public List<EObject> getAvailableElements(EObject element) {
+    List<EObject> availableElements = new ArrayList<EObject>();
 
     if (element instanceof State) {
       availableElements.addAll(getRule_MQRY_StateTransition_AvailableEvents_11((State) element));
@@ -87,14 +87,14 @@ public abstract class AbstractState_Activities implements IBusinessQuery {
   }
 
   /**
-   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement, boolean)
+   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getCurrentElements(EObject, boolean)
    */
   @Override
-  public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
+  public List<EObject> getCurrentElements(EObject element, boolean onlyGenerated) {
+    List<EObject> currentElements = new ArrayList<EObject>();
     if (element instanceof State) {
-      AbstractEvent evt = ((State) element).getDoActivity();
-      if (evt != null) {
+      List<AbstractEvent> evts = ((State) element).getDoActivity();
+      for (AbstractEvent evt : evts) {
         currentElements.add((CapellaElement) evt);
       }
     }

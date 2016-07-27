@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,11 +9,13 @@
  *    Thales - initial API and implementation
  *******************************************************************************/
 
+
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.IActionDelegate;
@@ -47,22 +49,22 @@ public class RequirementManagerWizardAction extends AbstractTigAction {
   }
 
   /**
-   * @param selectedCapellaElement_p
-   * @param selectedElements_p
+   * @param selectedCapellaElement
+   * @param selectedElements
    */
-  void handleChanges(CapellaElement selectedCapellaElement_p, List<Object> selectedElements_p) {
+  void handleChanges(CapellaElement selectedCapellaElement, List<Object> selectedElements) {
     List<AbstractTrace> eltsToDestroy = new ArrayList<AbstractTrace>(0);
-    for (AbstractTrace trace : selectedCapellaElement_p.getOutgoingTraces()) {
-      if ((trace instanceof RequirementsTrace) && !selectedElements_p.contains(trace.getTargetElement())) {
+    for (AbstractTrace trace : selectedCapellaElement.getOutgoingTraces()) {
+      if ((trace instanceof RequirementsTrace) && !selectedElements.contains(trace.getTargetElement())) {
         eltsToDestroy.add(trace);
       }
     }
     for (AbstractTrace trace : eltsToDestroy) {
       trace.destroy();
     }
-    for (Object currentElement : selectedElements_p) {
+    for (Object currentElement : selectedElements) {
       boolean alreadyTraced = false;
-      for (AbstractTrace trace : selectedCapellaElement_p.getOutgoingTraces()) {
+      for (AbstractTrace trace : selectedCapellaElement.getOutgoingTraces()) {
         if ((trace instanceof RequirementsTrace) && (trace.getTargetElement() == currentElement)) {
           alreadyTraced = true;
         }
@@ -70,14 +72,14 @@ public class RequirementManagerWizardAction extends AbstractTigAction {
 
       if (!alreadyTraced) {
         Namespace ns = null;
-        if (selectedCapellaElement_p instanceof Namespace) {
-          ns = (Namespace) selectedCapellaElement_p;
+        if (selectedCapellaElement instanceof Namespace) {
+          ns = (Namespace) selectedCapellaElement;
         } else {
-          ns = (Namespace) EcoreUtil2.getFirstContainer(selectedCapellaElement_p, CapellacorePackage.Literals.NAMESPACE);
+          ns = (Namespace) EcoreUtil2.getFirstContainer(selectedCapellaElement, CapellacorePackage.Literals.NAMESPACE);
         }
         if (ns != null) {
           RequirementsTrace trace = RequirementFactory.eINSTANCE.createRequirementsTrace();
-          trace.setSourceElement(selectedCapellaElement_p);
+          trace.setSourceElement(selectedCapellaElement);
           trace.setTargetElement((TraceableElement) currentElement);
           ns.getOwnedTraces().add(trace);
         }
@@ -91,9 +93,9 @@ public class RequirementManagerWizardAction extends AbstractTigAction {
   public void run(IAction action) {
     final CapellaElement selectedCapellaElement = getSelectedElement();
     // Get available elements.
-    final List<CapellaElement> availableElements = new ArrayList<CapellaElement>(0);
+    final List<EObject> availableElements = new ArrayList<EObject>(0);
     // Get current elements.
-    final List<CapellaElement> currentElements = new ArrayList<CapellaElement>(0);
+    final List<EObject> currentElements = new ArrayList<EObject>(0);
     AbstractReadOnlyCommand collectElementsCommand = new AbstractReadOnlyCommand() {
       /**
        * @see java.lang.Runnable#run()

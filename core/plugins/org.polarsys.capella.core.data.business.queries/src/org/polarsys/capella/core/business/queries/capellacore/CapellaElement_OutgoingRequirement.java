@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.business.queries.capellacore;
 
 import java.util.ArrayList;
@@ -45,11 +46,11 @@ import org.polarsys.capella.core.model.utils.ListExt;
 public class CapellaElement_OutgoingRequirement implements IBusinessQuery {
 
   /**
-   * @see org.polarsys.capella.core.business.queries.ui.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
+   * @see org.polarsys.capella.core.business.queries.ui.business.queries.IBusinessQuery#getAvailableElements(EObject)
    */
   @Override
-	public List<CapellaElement> getAvailableElements(CapellaElement element) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+	public List<EObject> getAvailableElements(EObject element) {
+    List<EObject> availableElements = new ArrayList<EObject>();
 
     if ((element instanceof OperationalAnalysis) || EcoreUtil2.isContainedBy(element, OaPackage.Literals.OPERATIONAL_ANALYSIS)) {
       OperationalAnalysis oa =
@@ -136,13 +137,13 @@ public class CapellaElement_OutgoingRequirement implements IBusinessQuery {
   }
 
   /**
-   * @see org.polarsys.capella.core.business.queries.ui.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement, boolean)
+   * @see org.polarsys.capella.core.business.queries.ui.business.queries.IBusinessQuery#getCurrentElements(EObject, boolean)
    */
   @Override
-	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
+	public List<EObject> getCurrentElements(EObject element, boolean onlyGenerated) {
+    List<EObject> currentElements = new ArrayList<EObject>();
 
-    for (AbstractTrace trace : element.getOutgoingTraces()) {
+    for (AbstractTrace trace : ((CapellaElement) element).getOutgoingTraces()) {
       if (trace instanceof RequirementsTrace) {
         currentElements.add((CapellaElement) trace.getTargetElement());
       }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.cs.validation.physicalPath;
 
 import java.util.ArrayList;
@@ -19,15 +20,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 
 public class PhysicalPathComponentExchangeAllocation extends AbstractValidationRule {
   /**
@@ -42,15 +41,15 @@ public class PhysicalPathComponentExchangeAllocation extends AbstractValidationR
 
       if (eObj instanceof PhysicalPath) {
         PhysicalPath chain = (PhysicalPath) eObj;
-        List<CapellaElement> availableList = new ArrayList<CapellaElement>();
-        List<CapellaElement> currentList = new ArrayList<CapellaElement>();
+        List<EObject> availableList = new ArrayList<EObject>();
+        List<EObject> currentList = new ArrayList<EObject>();
         IBusinessQuery query =
             BusinessQueriesProvider.getInstance().getContribution(chain.eClass(),
                 FaPackage.Literals.COMPONENT_EXCHANGE_ALLOCATOR__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS);
         if (query != null) {
           availableList.addAll(query.getAvailableElements(chain));
           currentList.addAll(query.getCurrentElements(chain, false));
-          for (CapellaElement capellaElement : currentList) {
+          for (EObject capellaElement : currentList) {
             if (!availableList.contains(capellaElement)) {
               IStatus createFailureStatus =
                   ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(chain)

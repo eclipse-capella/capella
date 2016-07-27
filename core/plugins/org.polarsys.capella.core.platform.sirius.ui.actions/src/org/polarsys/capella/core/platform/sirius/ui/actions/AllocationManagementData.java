@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
@@ -92,21 +93,21 @@ public class AllocationManagementData {
 
   /**
    * Return list of elements used for allocation or deployment
-   * @param element_p
-   * @param titleMessage_p
+   * @param element
+   * @param titleMessage
    * @return
    */
-  public List<CapellaElement> getCorrespondingData(List<EObject> element_p) {
+  public List<CapellaElement> getCorrespondingData(List<EObject> element) {
     List<CapellaElement> result = new ArrayList<CapellaElement>();
-    if (element_p == null) {
+    if (element == null) {
       return result;
     }
 
-    if (areAllElementFunctions(element_p)) {
-      // collect all non allocated functions from element_p
+    if (areAllElementFunctions(element)) {
+      // collect all non allocated functions from element
       //
       List<EObject> nonAllocatedFunctions = new ArrayList<EObject>(0);
-      for (EObject object : element_p) {
+      for (EObject object : element) {
         if (AbstractFunctionExt.isAbstractFunctionAvailableForAllocation(object)) {
           nonAllocatedFunctions.add(object);
         }
@@ -126,22 +127,22 @@ public class AllocationManagementData {
       //
       return getAllComponentsFromCurrentLayers(nonAllocatedFunctions);
 
-    } else if (areAllElementExchangeItems(element_p)) {
+    } else if (areAllElementExchangeItems(element)) {
       // check if any data available to work on or to apply action
-      if (element_p.isEmpty()) {
+      if (element.isEmpty()) {
         setSourceDataVoid(true);
       }
       // set data message
-      setDataMessage(createDataMessage(element_p, AllocationSelectionType.EXCHANGE_ITEM_ALLOCATION));
+      setDataMessage(createDataMessage(element, AllocationSelectionType.EXCHANGE_ITEM_ALLOCATION));
       // set allocation type
       setAllocationType(AllocationSelectionType.EXCHANGE_ITEM_ALLOCATION);
       // collect all interfaces from all layers and return
-      return getAllInterfacesFromAllLayers(element_p);
+      return getAllInterfacesFromAllLayers(element);
 
-    } else if (WizardActionHelper.areAllElementFunctionalExchange(element_p)) {
-      // collect all non allocated functions from element_p
+    } else if (WizardActionHelper.areAllElementFunctionalExchange(element)) {
+      // collect all non allocated functions from element
       List<EObject> nonAllocatedFunExcs = new ArrayList<EObject>(0);
-      for (EObject object : element_p) {
+      for (EObject object : element) {
         if (AbstractFunctionExt.isFunctionExchangeAvailableForAllocation(object)) {
           nonAllocatedFunExcs.add(object);
         }
@@ -157,10 +158,10 @@ public class AllocationManagementData {
       // collect all connection from same level
       return getAvailableAllocatingComponentExchanges2(nonAllocatedFunExcs);
 
-    } else if (WizardActionHelper.areAllElementsComponentExchanges(element_p)) {
-      // collect all non allocated functions from element_p
+    } else if (WizardActionHelper.areAllElementsComponentExchanges(element)) {
+      // collect all non allocated functions from element
       List<EObject> nonAllocatedCompExcs = new ArrayList<EObject>(0);
-      for (EObject object : element_p) {
+      for (EObject object : element) {
         if (AbstractFunctionExt.isComponentExchangeAvailableForAllocation(object)) {
           nonAllocatedCompExcs.add(object);
         }
@@ -176,10 +177,10 @@ public class AllocationManagementData {
       // collect all connection from same level
       return getAvailableAllocatingPhysicalLinks(nonAllocatedCompExcs);
 
-    } else if (areAllElementPCParts(element_p)) {
-      // collect all non deployed physical components from element_p
+    } else if (areAllElementPCParts(element)) {
+      // collect all non deployed physical components from element
       List<EObject> nonDeployedPCParts = new ArrayList<EObject>(0);
-      for (EObject object : element_p) {
+      for (EObject object : element) {
         if (AbstractFunctionExt.isPCPartAvailableForDeployment(object)) {
           nonDeployedPCParts.add(object);
         }
@@ -200,14 +201,14 @@ public class AllocationManagementData {
   }
 
   /**
-   * @param function_p
+   * @param function
    */
-  private List<CapellaElement> getAllComponentsFromCurrentLayers(List<EObject> element_p) {
+  private List<CapellaElement> getAllComponentsFromCurrentLayers(List<EObject> element) {
     List<CapellaElement> temp = new ArrayList<CapellaElement>(0);
     List<CapellaElement> result = new ArrayList<CapellaElement>(0);
-    if (!element_p.isEmpty() && (element_p.get(0) != null)) {
+    if (!element.isEmpty() && (element.get(0) != null)) {
       // get root architecture
-      BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(element_p.get(0));
+      BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(element.get(0));
       if (null == arch) {
         return result;
       }
@@ -234,12 +235,12 @@ public class AllocationManagementData {
   }
 
   /**
-   * @param capellaElement_p
+   * @param capellaElement
    * @return
    */
-  private boolean isNotNodePhysicalComponent(CapellaElement capellaElement_p) {
-    if (capellaElement_p instanceof PhysicalComponent) {
-      PhysicalComponent comp = (PhysicalComponent) capellaElement_p;
+  private boolean isNotNodePhysicalComponent(CapellaElement capellaElement) {
+    if (capellaElement instanceof PhysicalComponent) {
+      PhysicalComponent comp = (PhysicalComponent) capellaElement;
       if (comp.getNature() == PhysicalComponentNature.NODE) {
         return false;
       }
@@ -249,13 +250,13 @@ public class AllocationManagementData {
 
   /**
    * Return all the interfaces from all the layers
-   * @param element_p
+   * @param element
    * @return
    */
-  private List<CapellaElement> getAllInterfacesFromAllLayers(List<EObject> element_p) {
+  private List<CapellaElement> getAllInterfacesFromAllLayers(List<EObject> element) {
     List<CapellaElement> result = new ArrayList<CapellaElement>(0);
-    if (!element_p.isEmpty()) {
-      SystemEngineering sysEng = SystemEngineeringExt.getSystemEngineering((CapellaElement) element_p.get(0));
+    if (!element.isEmpty()) {
+      SystemEngineering sysEng = SystemEngineeringExt.getSystemEngineering((CapellaElement) element.get(0));
       EList<ModellingArchitecture> architectures = sysEng.getOwnedArchitectures();
       for (ModellingArchitecture modellingArchitecture : architectures) {
         result.addAll(SystemEngineeringExt.getAllInterfaces(modellingArchitecture));
@@ -266,14 +267,14 @@ public class AllocationManagementData {
 
   /**
    * Return all parts from PC layer (except the root and )
-   * @param nonDeployedPCParts_p
+   * @param nonDeployedPCParts
    * @return
    */
-  private List<CapellaElement> getAllPartsFromPCLayers(List<EObject> nonDeployedPCParts_p) {
+  private List<CapellaElement> getAllPartsFromPCLayers(List<EObject> nonDeployedPCParts) {
     List<CapellaElement> components = new ArrayList<CapellaElement>();
     List<CapellaElement> result = new ArrayList<CapellaElement>();
-    if (!nonDeployedPCParts_p.isEmpty()) {
-      BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(nonDeployedPCParts_p.get(0));
+    if (!nonDeployedPCParts.isEmpty()) {
+      BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(nonDeployedPCParts.get(0));
       if ((null != arch) && (arch instanceof PhysicalArchitecture)) {
         BlockArchitectureExt.getAllComponentsFromPA(arch, components);
         if (components.isEmpty()) {
@@ -297,22 +298,22 @@ public class AllocationManagementData {
     }
 
     // remove currents parts
-    result.removeAll(nonDeployedPCParts_p);
+    result.removeAll(nonDeployedPCParts);
 
     return result;
   }
 
   /**
-   * @param nonAllocatedFunExcs_p
+   * @param nonAllocatedFunExcs
    * @return
    */
-  private List<CapellaElement> getAvailableAllocatingComponentExchanges2(List<EObject> nonAllocatedFunExcs_p) {
+  private List<CapellaElement> getAvailableAllocatingComponentExchanges2(List<EObject> nonAllocatedFunExcs) {
     List<CapellaElement> result = new ArrayList<CapellaElement>(0);
-    if (nonAllocatedFunExcs_p.isEmpty()) {
+    if (nonAllocatedFunExcs.isEmpty()) {
       return result;
     }
 
-    EObject object = nonAllocatedFunExcs_p.get(0);
+    EObject object = nonAllocatedFunExcs.get(0);
     if (null != object) {
       BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(object);
       if (null != arch) {
@@ -321,11 +322,11 @@ public class AllocationManagementData {
           IBusinessQuery query =
               BusinessQueriesProvider.getInstance().getContribution(FaPackage.Literals.COMPONENT_EXCHANGE,
                   FaPackage.Literals.COMPONENT_EXCHANGE__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS);
-          List<CapellaElement> compExchanges = query.getAvailableElements(link);
-          for (CapellaElement functionalExchange : compExchanges) {
+          List<EObject> compExchanges = query.getAvailableElements(link);
+          for (EObject functionalExchange : compExchanges) {
             // if availableComponentExhanges for current PhysicalLink is one of the selected component exchange
             // add physical link
-            if (nonAllocatedFunExcs_p.contains(functionalExchange)) {
+            if (nonAllocatedFunExcs.contains(functionalExchange)) {
               result.add(link);
             }
           }
@@ -338,16 +339,16 @@ public class AllocationManagementData {
 
   /**
    * Returns all the physical link available for allocating <to be improved>
-   * @param nonAllocatedCompExcs_p
+   * @param nonAllocatedCompExcs
    * @return
    */
-  private List<CapellaElement> getAvailableAllocatingPhysicalLinks(List<EObject> nonAllocatedCompExcs_p) {
+  private List<CapellaElement> getAvailableAllocatingPhysicalLinks(List<EObject> nonAllocatedCompExcs) {
     List<CapellaElement> result = new ArrayList<CapellaElement>(0);
-    if (nonAllocatedCompExcs_p.isEmpty()) {
+    if (nonAllocatedCompExcs.isEmpty()) {
       return result;
     }
 
-    EObject object = nonAllocatedCompExcs_p.get(0);
+    EObject object = nonAllocatedCompExcs.get(0);
     if (null != object) {
       BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(object);
       if (arch instanceof PhysicalArchitecture) {
@@ -356,11 +357,11 @@ public class AllocationManagementData {
           IBusinessQuery query =
               BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PHYSICAL_LINK,
                   FaPackage.Literals.COMPONENT_EXCHANGE_ALLOCATOR__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS);
-          List<CapellaElement> compExchanges = query.getAvailableElements(link);
-          for (CapellaElement compExchange : compExchanges) {
+          List<EObject> compExchanges = query.getAvailableElements(link);
+          for (EObject compExchange : compExchanges) {
             // if availableComponentExhanges for current PhysicalLink is one of the selected component exchange
             // add physical link
-            if (nonAllocatedCompExcs_p.contains(compExchange)) {
+            if (nonAllocatedCompExcs.contains(compExchange)) {
               result.add(link);
             }
           }
@@ -375,9 +376,9 @@ public class AllocationManagementData {
    * return true if all he element in the list are of type AbstractFunction, false otherwise
    * @return
    */
-  private boolean areAllElementFunctions(List<EObject> elements_p) {
+  private boolean areAllElementFunctions(List<EObject> elements) {
     boolean flag = false;
-    for (EObject object : elements_p) {
+    for (EObject object : elements) {
       if (!(object instanceof AbstractFunction)) {
         return false;
       } else if (object instanceof AbstractFunction) {
@@ -392,9 +393,9 @@ public class AllocationManagementData {
    * return true if all he element in the list are of type PhysicalComponent(!Node), false otherwise
    * @return
    */
-  private boolean areAllElementPCParts(List<EObject> elements_p) {
+  private boolean areAllElementPCParts(List<EObject> elements) {
     boolean flag = false;
-    for (EObject object : elements_p) {
+    for (EObject object : elements) {
       if (!(object instanceof Part)) {
         return false;
       } else if (object instanceof Part) {
@@ -413,9 +414,9 @@ public class AllocationManagementData {
    * return true if all he element in the list are of type ExchangeItem, false otherwise
    * @return
    */
-  private boolean areAllElementExchangeItems(List<EObject> elements_p) {
+  private boolean areAllElementExchangeItems(List<EObject> elements) {
     boolean flag = false;
-    for (EObject object : elements_p) {
+    for (EObject object : elements) {
       if (!(object instanceof ExchangeItem)) {
         return false;
       } else if (object instanceof ExchangeItem) {
@@ -428,12 +429,12 @@ public class AllocationManagementData {
 
   /**
    * allow multiple selection or not
-   * @param elements_p list of element selected
+   * @param elements list of element selected
    * @return
    */
-  public boolean isMultiSelection(List<EObject> elements_p) {
-    if (isValidSelection(elements_p)) {
-      EObject object = elements_p.get(0);
+  public boolean isMultiSelection(List<EObject> elements) {
+    if (isValidSelection(elements)) {
+      EObject object = elements.get(0);
       if (object instanceof ExchangeItem) {
         return true;
       }
@@ -443,28 +444,28 @@ public class AllocationManagementData {
 
   /**
    * decides weather list of elements are valid or not for allocation action
-   * @param elements_p
+   * @param elements
    * @return
    */
-  public boolean isValidSelection(List<EObject> elements_p) {
+  public boolean isValidSelection(List<EObject> elements) {
     // functions
-    if (areAllElementFunctions(elements_p)) {
+    if (areAllElementFunctions(elements)) {
       return true;
     }
     // exchangeItem
-    else if (areAllElementExchangeItems(elements_p)) {
+    else if (areAllElementExchangeItems(elements)) {
       return true;
     }
     // behaviourPcs
-    else if (areAllElementPCParts(elements_p)) {
+    else if (areAllElementPCParts(elements)) {
       return true;
     }
     // functionalExchanges
-    else if (WizardActionHelper.areAllElementFunctionalExchange(elements_p)) {
+    else if (WizardActionHelper.areAllElementFunctionalExchange(elements)) {
       return true;
     }
     // componentExchanges
-    else if (WizardActionHelper.areAllElementsComponentExchanges(elements_p)) {
+    else if (WizardActionHelper.areAllElementsComponentExchanges(elements)) {
       return true;
     }
 
@@ -472,26 +473,26 @@ public class AllocationManagementData {
   }
 
   /**
-   * @param element_p
-   * @param allocationSelectionType_p
+   * @param element
+   * @param allocationSelectionType
    * @return
    */
-  private String createDataMessage(List<EObject> element_p, AllocationSelectionType allocationSelectionType_p) {
+  private String createDataMessage(List<EObject> element, AllocationSelectionType allocationSelectionType) {
 
     String result = ICommonConstants.EMPTY_STRING;
     // plural string s or not
-    String plural = getPluralString(element_p, false);
+    String plural = getPluralString(element, false);
     // list of elements as String
-    String elementsNames = getElementsNames(element_p);
-    if (allocationSelectionType_p == AllocationSelectionType.FUNCTION_ALLOCATION) {
+    String elementsNames = getElementsNames(element);
+    if (allocationSelectionType == AllocationSelectionType.FUNCTION_ALLOCATION) {
       result = NLS.bind(Messages.Allocation_Functions_Selection_Message, new String[] { plural, elementsNames });
-    } else if (allocationSelectionType_p == AllocationSelectionType.EXCHANGE_ITEM_ALLOCATION) {
+    } else if (allocationSelectionType == AllocationSelectionType.EXCHANGE_ITEM_ALLOCATION) {
       result = NLS.bind(Messages.Allocation_ExchangeItems_Selection_Message, new String[] { plural, elementsNames });
-    } else if (allocationSelectionType_p == AllocationSelectionType.PHYSICAL_PART_DEPLOYMENT) {
+    } else if (allocationSelectionType == AllocationSelectionType.PHYSICAL_PART_DEPLOYMENT) {
       result = NLS.bind(Messages.Allocation_PhysicalComponents_Selection_Message, new String[] { plural, elementsNames });
-    } else if (allocationSelectionType_p == AllocationSelectionType.FUNCTIONAL_EXCHANGE_ALLOCATION) {
+    } else if (allocationSelectionType == AllocationSelectionType.FUNCTIONAL_EXCHANGE_ALLOCATION) {
       result = NLS.bind(Messages.Allocation_FunctionalExchagnes_Selection_Message, new String[] { plural, elementsNames });
-    } else if (allocationSelectionType_p == AllocationSelectionType.COMPONENT_EXCHANGE_ALLOCATION) {
+    } else if (allocationSelectionType == AllocationSelectionType.COMPONENT_EXCHANGE_ALLOCATION) {
       result = NLS.bind(Messages.Allocation_ComponentExchagnes_Selection_Message, new String[] { plural, elementsNames });
     }
 
@@ -499,10 +500,10 @@ public class AllocationManagementData {
   }
 
   /**
-   * @param dataMessage_p the dataMessage to set
+   * @param dataMessage the dataMessage to set
    */
-  private void setDataMessage(String dataMessage_p) {
-    _dataMessage = dataMessage_p;
+  private void setDataMessage(String dataMessage) {
+    _dataMessage = dataMessage;
   }
 
   /**
@@ -520,20 +521,20 @@ public class AllocationManagementData {
   }
 
   /**
-   * @param dataType_p the dataType to set
+   * @param dataType the dataType to set
    */
-  private void setAllocationType(AllocationSelectionType dataType_p) {
-    _allocationType = dataType_p;
+  private void setAllocationType(AllocationSelectionType dataType) {
+    _allocationType = dataType;
   }
 
-  public String getPluralString(List<EObject> element_p, boolean withVerb_p) {
+  public String getPluralString(List<EObject> element, boolean withVerb) {
     String plural = "s"; //$NON-NLS-1$
-    return element_p.size() > 1 ? plural : ICommonConstants.EMPTY_STRING;
+    return element.size() > 1 ? plural : ICommonConstants.EMPTY_STRING;
   }
 
-  private String getElementsNames(List<EObject> element_p) {
+  private String getElementsNames(List<EObject> element) {
     String elementsNames = ICommonConstants.EMPTY_STRING;
-    Iterator<EObject> iterator = element_p.iterator();
+    Iterator<EObject> iterator = element.iterator();
     while (iterator.hasNext()) {
       EObject eObject = iterator.next();
       if (eObject instanceof NamedElement) {
@@ -554,9 +555,9 @@ public class AllocationManagementData {
   }
 
   /**
-   * @param sourceDataVoid_p the sourceDataVoid to set
+   * @param sourceDataVoid the sourceDataVoid to set
    */
-  private void setSourceDataVoid(boolean sourceDataVoid_p) {
-    _sourceDataVoid = sourceDataVoid_p;
+  private void setSourceDataVoid(boolean sourceDataVoid) {
+    _sourceDataVoid = sourceDataVoid;
   }
 }

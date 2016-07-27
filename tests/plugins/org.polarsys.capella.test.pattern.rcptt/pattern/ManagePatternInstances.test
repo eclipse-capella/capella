@@ -1,0 +1,218 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _YLlF0J2-EeWnS4S9Sm9aNg,_bRuT8J5ZEeWnS4S9Sm9aNg
+Element-Name: ManagePatternInstances
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _SHTVkJ3GEeWnS4S9Sm9aNg
+Runtime-Version: 2.0.0.201506042314
+Save-Time: 6/15/16 5:26 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+This TestCase test the Instance Management Wizard functionalities.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "patternProject/patternProject.aird" | double-click
+    select [get-item "patternProject/patternProject.aird/patternProject/Logical Architecture/Logical System" 
+        | get-item "\\[LAB\\] Logical System - Logical Architecture Blank" -index 1] | double-click
+}
+with [get-editor "[LAB] Logical System - Logical Architecture Blank" | get-diagram -index 1] {
+    with [get-edit-part -name "[LAB] Logical System - Logical Architecture Blank" | get-edit-part 
+        -name "Logical System" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | get-edit-part -name "Logical System" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+        mouse-move 251 177 button3 -height 221 -width 561
+        mouse-press 251 177 button3 -height 221 -width 561
+        mouse-release 251 177 button3 2097152 -height 221 -width 561
+    }
+    get-menu "Patterns/Manage Instance(s)..." | click
+}
+
+with [get-window "Pattern Instance Management"] {
+    with [get-group "Life-cycle"] {
+        with [get-editbox] {
+            set-text "$name$_instance"
+        }
+        get-button Rename | click
+    }
+    get-button Close | click
+}
+with [get-editor "[LAB] Logical System - Logical Architecture Blank" | get-diagram -index 1 | get-edit-part 
+    -name "[LAB] Logical System - Logical Architecture Blank" | get-edit-part -name "Logical System" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "Logical System_instance" 
+    | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart | get-edit-part 
+    -name "LC B_instance" | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart 
+    | get-figure "1/0"] {
+    get-property backgroundColor | equals "#EDC97A" | verify-true
+    get-property foregroundColor | equals "#4A4A97" | verify-true
+}
+get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Name :"] | get-property text 
+    | equals "Logical System_instance" | verify-true
+with [get-editor "[LAB] Logical System - Logical Architecture Blank" | get-diagram -index 1] {
+    with [get-edit-part -name "[LAB] Logical System - Logical Architecture Blank" | get-edit-part 
+        -name "Logical System" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | get-edit-part -name "Logical System_instance" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+        mouse-move 261 186 button3 -height 221 -width 561
+        mouse-press 261 186 button3 -height 221 -width 561
+        mouse-release 261 186 button3 2097152 -height 221 -width 561
+    }
+    get-menu "Patterns/Manage Instance(s)..." | click
+}
+with [get-window "Pattern Instance Management"] {
+    get-group "Life-cycle" | get-button Fold | click
+    get-window Delete | get-button Yes | click
+}
+get-window "Pattern Instance Management" | get-group "Life-cycle" | get-button Unfold | get-property caption 
+    | equals Unfold | verify-true
+get-window "Pattern Instance Management" | get-button Close | click
+with [get-editor "[LAB] Logical System - Logical Architecture Blank" | get-diagram -index 1] {
+    with [get-edit-part -name "[LAB] Logical System - Logical Architecture Blank"] {
+        mouse-move 273 184 button3 -height 277 -width 596
+        mouse-press 273 184 button3 -height 277 -width 596
+        mouse-release 273 184 button3 2097152 -height 277 -width 596
+    }
+    get-menu "Patterns/Manage Instance(s)..." | click
+}
+get-window "Pattern Instance Management" | get-group "Life-cycle" | get-button Unfold | click
+get-window "Modeling Patterns" | get-button OK | click
+
+get-window "Pattern Instance Management" | get-button Close | click
+with [get-editor "[LAB] Logical System - Logical Architecture Blank" | get-diagram -index 1 | get-edit-part 
+    -name "[LAB] Logical System - Logical Architecture Blank" | get-edit-part -name "Logical System" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "Logical System_instance" 
+    | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart | get-edit-part 
+    -name "LC A_instance" | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart 
+    | get-figure "1/0"] {
+    get-property backgroundColor | equals "#FF00FF" | verify-true
+    get-property foregroundColor | equals "#4A4A97" | verify-true
+}
+with [get-editor "[LAB] Logical System - Logical Architecture Blank" | get-diagram -index 1] {
+    with [get-edit-part -name "[LAB] Logical System - Logical Architecture Blank" | get-edit-part 
+        -name "Logical System" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | get-edit-part -name "Logical System_instance" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+        mouse-move 263 179 button3 -height 221 -width 561
+        mouse-press 263 179 button3 -height 221 -width 561
+        mouse-release 263 179 button3 2097152 -height 221 -width 561
+    }
+    get-menu "Patterns/Manage Instance(s)..." | click
+}
+if [get-window "Pattern Instance Management" | get-group Synchronization | get-button "Show details" 
+    | get-property selected | equals true] {
+with [get-window "Pattern Instance Management"] {
+    get-group Synchronization | get-button "Show details" | uncheck }
+}
+get-window "Pattern Instance Management" | get-group Synchronization | get-button Check | click
+get-window "Pattern Instance Management" | get-group Synchronization | get-editbox -after [get-label "Conformity:"] 
+    | get-property text | equals "2 missing value(s), 0 extra value(s)." | verify-true
+    
+with [get-window "Pattern Instance Management" | get-group Synchronization] {
+    get-button "Show details" | check
+    get-button Check | click
+}
+with [get-window "Pattern Instance Management"] {
+    get-window "Conformity Status" | get-button OK | click
+}
+with [get-window "Pattern Instance Management"] {
+    get-button "Show" | click
+}
+
+get-window "Pattern Instance Management" | get-group Representation | get-editbox -after [get-label "Status:"] 
+    | get-property text | equals Unchanged | verify-true
+with [get-window "Pattern Instance Management"] {
+    get-group Representation | get-button Highlight | click
+    get-button Close | click
+}
+with [get-editor "[LAB] Logical System - Logical Architecture Blank" | get-diagram -index 1] {
+    with [get-edit-part -name "[LAB] Logical System - Logical Architecture Blank" | get-edit-part 
+        -name "Logical System" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | get-edit-part -name "Logical System_instance" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+        mouse-move 516 93 button3 -height 221 -width 561
+        mouse-press 516 93 button3 -height 221 -width 561
+        mouse-release 516 93 button3 2097152 -height 221 -width 561
+    }
+    get-menu "Patterns/Manage Instance(s)..." | click
+}
+with [get-window "Pattern Instance Management"] {
+    get-group Representation | get-button Highlight | click
+    get-button Close | click
+}
+with [get-editor "[LAB] Logical System - Logical Architecture Blank" | get-diagram -index 1] {
+    with [get-edit-part -name "[LAB] Logical System - Logical Architecture Blank" | get-edit-part 
+        -name "Logical System" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | get-edit-part -name "Logical System_instance"] {
+        with [get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+            mouse-move 248 170 button1 -height 221 -width 561
+            mouse-press 248 170 button1 -height 221 -width 561
+            mouse-release 248 170 button1 524288 -height 221 -width 561
+        }
+        activate-direct-edit
+        get-edit-part -className DNodeContainerName2EditPart | activate-direct-edit
+    }
+    commit-direct-edit
+}
+get-view Properties | get-property-tab Style | click
+get-view Properties | get-tree | get-item "Border/Border Color" | get-property "columns[1]" | equals "255,0,0" 
+    | verify-true
+with [get-editor "[LAB] Logical System - Logical Architecture Blank" | get-diagram -index 1] {
+    with [get-edit-part -name "[LAB] Logical System - Logical Architecture Blank" | get-edit-part 
+        -name "Logical System" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | get-edit-part -name "Logical System_instance" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+        mouse-move 476 105 button3 -height 221 -width 561
+        mouse-press 476 105 button3 -height 221 -width 561
+        mouse-release 476 105 button3 2097152 -height 221 -width 561
+    }
+    get-menu "Patterns/Manage Instance(s)..." | click
+}
+with [get-window "Pattern Instance Management"] {
+    get-group Representation | get-button Reset | click
+    get-button Close | click
+}
+with [get-editor "[LAB] Logical System - Logical Architecture Blank" | get-diagram -index 1] {
+    with [get-edit-part -name "[LAB] Logical System - Logical Architecture Blank" | get-edit-part 
+        -name "Logical System" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | get-edit-part -name "Logical System_instance"] {
+        with [get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+            mouse-move 255 167 button1 -height 221 -width 561
+            mouse-press 255 167 button1 -height 221 -width 561
+            mouse-release 255 167 button1 524288 -height 221 -width 561
+        }
+        activate-direct-edit
+        get-edit-part -className DNodeContainerName2EditPart | activate-direct-edit
+    }
+    commit-direct-edit
+}
+get-view Properties | get-property-tab Style | click
+get-view Properties | get-tree | get-item "Border/Border Color" | get-property "columns[1]" | equals "74,74,151" 
+    | verify-true
+get-button "Save All (M1+M2+S)" | click
+
+with [get-editor "[LAB] Logical System - Logical Architecture Blank" | get-diagram -index 1] {
+    with [get-edit-part -name "[LAB] Logical System - Logical Architecture Blank" | get-edit-part 
+        -name "Logical System" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | get-edit-part -name "Logical System_instance" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+        mouse-move 493 147 button3 -height 221 -width 561
+        mouse-press 493 147 button3 -height 221 -width 561
+        mouse-release 493 147 button3 2097152 -height 221 -width 561
+    }
+    get-menu "Patterns/Manage Instance(s)..." | click
+}
+get-window "Pattern Instance Management" | get-button Close | click
+get-view "Capella Project Explorer" | get-tree 
+    | select "patternProject/patternProject.aird/patternProject/Logical Architecture/Logical System/Logical System_instance/LC B_instance" 
+    | get-menu "Patterns/Manage Instance(s)..." | click
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -65,7 +66,7 @@ public class MoveRepresentationAction extends BaseSelectionListenerAction {
   private Session _session;
   private Collection<Resource> _availableTargetResources;
 
-  public void run(IAction action_p) {
+  public void run(IAction action) {
     // Do nothing because this action is not run.
   }
 
@@ -83,20 +84,23 @@ public class MoveRepresentationAction extends BaseSelectionListenerAction {
    * @see org.eclipse.ui.actions.BaseSelectionListenerAction#updateSelection(org.eclipse.jface.viewers.IStructuredSelection)
    */
   @Override
-  public boolean updateSelection(IStructuredSelection selection_p) {
-    if (selection_p.isEmpty()) {
+  public boolean updateSelection(IStructuredSelection selection) {
+    if (selection.isEmpty()) {
       return false;
     }
     boolean enabled = true;
     // Clean previous execution.
     _representationsToMove = new ArrayList<DRepresentation>(0);
     _session = null;
-    Iterator<?> iterator = selection_p.toList().iterator();
+    Iterator<?> iterator = selection.toList().iterator();
     while (iterator.hasNext() && enabled) {
       Object element = iterator.next();
       // Got a representation, store it.
       if (element instanceof ItemWrapper) {
         element = ((ItemWrapper) element).getWrappedObject();
+      }
+      if (element instanceof DRepresentationDescriptor) {
+        element = ((DRepresentationDescriptor) element).getRepresentation();
       }
       if (element instanceof DRepresentation) {
         // Add representation.
@@ -126,12 +130,12 @@ public class MoveRepresentationAction extends BaseSelectionListenerAction {
 
   /**
    * Collect the representations resources.
-   * @param movableRepresentations_p
+   * @param movableRepresentations
    * @return a not <code>null</code> collection.
    */
-  private Collection<Resource> collectRepresentationResources(Collection<DRepresentation> movableRepresentations_p) {
+  private Collection<Resource> collectRepresentationResources(Collection<DRepresentation> movableRepresentations) {
     Collection<Resource> result = new HashSet<Resource>();
-    for (DRepresentation representation : movableRepresentations_p) {
+    for (DRepresentation representation : movableRepresentations) {
       result.add(representation.eResource());
     }
     return result;
@@ -155,15 +159,15 @@ public class MoveRepresentationAction extends BaseSelectionListenerAction {
   /**
    * @see {@link org.eclipse.sirius.ui.tools.internal.views.sessionview.DesignerSessionView#createMoveRepresentationsActions(DAnalysisSession, Collection, DAnalysis)}
    * @param session
-   * @param movableRepresentations
-   * @param targetAnalysis_p
+   * @param representations
+   * @param targetAnalysis
    * @return
    */
-  private Action createMoveRepresentationsActions(final DAnalysisSession session_p, Collection<DRepresentation> movableRepresentations_p,
-      final DAnalysis targetAnalysis_p) {
+  private Action createMoveRepresentationsActions(final DAnalysisSession session, Collection<DRepresentation> representations,
+      final DAnalysis targetAnalysis) {
     ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/forward.gif"); //$NON-NLS-1$
-    final Collection<DRepresentation> movableRepresentations = new ArrayList<DRepresentation>(movableRepresentations_p);
-    return new Action(Messages.MoveRepresentationAction_Title + targetAnalysis_p.eResource().getURI(), descriptor) {
+    final Collection<DRepresentation> movableRepresentations = new ArrayList<DRepresentation>(representations);
+    return new Action(Messages.MoveRepresentationAction_Title + targetAnalysis.eResource().getURI(), descriptor) {
       /**
        * @see org.eclipse.jface.action.Action#run()
        */
@@ -174,14 +178,14 @@ public class MoveRepresentationAction extends BaseSelectionListenerAction {
            * @see java.lang.Runnable#run()
            */
           public void run() {
-            final IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session_p);
+            final IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
             if (uiSession != null) {
               for (final DRepresentation representation : movableRepresentations) {
                 closeOpenedEditor(uiSession, representation);
               }
             }
             for (final DRepresentation representation : movableRepresentations) {
-              session_p.moveRepresentation(targetAnalysis_p, representation);
+              session.moveRepresentation(targetAnalysis, representation);
             }
           }
 
@@ -198,12 +202,12 @@ public class MoveRepresentationAction extends BaseSelectionListenerAction {
 
   /**
    * Fill context sub menu for move diagrams action.
-   * @param structuredSelection_p
+   * @param structuredSelection
    * @return a sub menu manager with all real move actions.
    */
-  public IMenuManager fillContextMenu(IStructuredSelection structuredSelection_p) {
+  public IMenuManager fillContextMenu(IStructuredSelection structuredSelection) {
     IMenuManager subMenuManager = new MenuManager(Messages.RepresentationActionProvider_MovediagramSubMenu_Title, MOVE_DIAGRAMS_MENU_ID);
-    updateSelection(structuredSelection_p);
+    updateSelection(structuredSelection);
     // In this case, check really if the action is compatible with current selection.
     if (isEnabled()) {
       for (IAction containedAction : getMoveActions()) {
@@ -215,11 +219,11 @@ public class MoveRepresentationAction extends BaseSelectionListenerAction {
 
   /**
    * Add a dynamic action
-   * @param menu_p
-   * @param groupId_p
+   * @param menu
+   * @param groupId
    * @param action
    */
-  protected void addAction(IMenuManager menu_p, String groupId_p, IAction action) {
+  protected void addAction(IMenuManager menu, String groupId, IAction action) {
     // Override the action contribution item to force the context menu to be
     // refreshed even if the selected object has not changed.
     ActionContributionItem item = new ActionContributionItem(action) {
@@ -234,10 +238,10 @@ public class MoveRepresentationAction extends BaseSelectionListenerAction {
       }
     };
     // Append the action to a group if provided.
-    if (null != groupId_p) {
-      menu_p.appendToGroup(groupId_p, item);
+    if (null != groupId) {
+      menu.appendToGroup(groupId, item);
     } else {
-      menu_p.add(item);
+      menu.add(item);
     }
   }
 }

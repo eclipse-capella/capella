@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -558,6 +558,15 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getStateMachine_OwnedConnectionPoints() {
+		return (EReference)stateMachineEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRegion() {
 		return regionEClass;
 	}
@@ -612,7 +621,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getState_AvailableAbstractFunctions() {
+	public EReference getState_OwnedConnectionPoints() {
 		return (EReference)stateEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -621,7 +630,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getState_AvailableFunctionalChains() {
+	public EReference getState_AvailableAbstractFunctions() {
 		return (EReference)stateEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -630,7 +639,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getState_AvailableAbstractCapabilities() {
+	public EReference getState_AvailableFunctionalChains() {
 		return (EReference)stateEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -639,7 +648,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getState_Entry() {
+	public EReference getState_AvailableAbstractCapabilities() {
 		return (EReference)stateEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -648,7 +657,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getState_DoActivity() {
+	public EReference getState_Entry() {
 		return (EReference)stateEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -657,7 +666,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getState_Exit() {
+	public EReference getState_DoActivity() {
 		return (EReference)stateEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -666,8 +675,17 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getState_StateInvariant() {
+	public EReference getState_Exit() {
 		return (EReference)stateEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getState_StateInvariant() {
+		return (EReference)stateEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -1158,6 +1176,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 
 		stateMachineEClass = createEClass(STATE_MACHINE);
 		createEReference(stateMachineEClass, STATE_MACHINE__OWNED_REGIONS);
+		createEReference(stateMachineEClass, STATE_MACHINE__OWNED_CONNECTION_POINTS);
 
 		regionEClass = createEClass(REGION);
 		createEReference(regionEClass, REGION__OWNED_STATES);
@@ -1166,6 +1185,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 
 		stateEClass = createEClass(STATE);
 		createEReference(stateEClass, STATE__OWNED_REGIONS);
+		createEReference(stateEClass, STATE__OWNED_CONNECTION_POINTS);
 		createEReference(stateEClass, STATE__AVAILABLE_ABSTRACT_FUNCTIONS);
 		createEReference(stateEClass, STATE__AVAILABLE_FUNCTIONAL_CHAINS);
 		createEReference(stateEClass, STATE__AVAILABLE_ABSTRACT_CAPABILITIES);
@@ -1335,6 +1355,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 
 		initEClass(stateMachineEClass, StateMachine.class, "StateMachine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getStateMachine_OwnedRegions(), this.getRegion(), null, "ownedRegions", null, 0, -1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getStateMachine_OwnedConnectionPoints(), this.getPseudostate(), null, "ownedConnectionPoints", null, 0, -1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(regionEClass, Region.class, "Region", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getRegion_OwnedStates(), this.getAbstractState(), null, "ownedStates", null, 0, -1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1343,12 +1364,13 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 
 		initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getState_OwnedRegions(), this.getRegion(), null, "ownedRegions", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getState_OwnedConnectionPoints(), this.getPseudostate(), null, "ownedConnectionPoints", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getState_AvailableAbstractFunctions(), theFaPackage.getAbstractFunction(), null, "availableAbstractFunctions", null, 0, -1, State.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getState_AvailableFunctionalChains(), theFaPackage.getFunctionalChain(), null, "availableFunctionalChains", null, 0, -1, State.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getState_AvailableAbstractCapabilities(), theInteractionPackage.getAbstractCapability(), null, "availableAbstractCapabilities", null, 0, -1, State.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getState_Entry(), theBehaviorPackage.getAbstractEvent(), null, "entry", null, 0, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getState_DoActivity(), theBehaviorPackage.getAbstractEvent(), null, "doActivity", null, 0, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getState_Exit(), theBehaviorPackage.getAbstractEvent(), null, "exit", null, 0, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getState_Entry(), theBehaviorPackage.getAbstractEvent(), null, "entry", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getState_DoActivity(), theBehaviorPackage.getAbstractEvent(), null, "doActivity", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getState_Exit(), theBehaviorPackage.getAbstractEvent(), null, "exit", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getState_StateInvariant(), theModellingcorePackage.getAbstractConstraint(), null, "stateInvariant", null, 0, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(modeEClass, Mode.class, "Mode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1656,6 +1678,14 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
+		  (getStateMachine_OwnedConnectionPoints(), 
+		   source, 
+		   new String[] {
+			 "description", "The entry and exit Pseudostates of a composite State. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite States.\r\n[source:UML v2.5]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
 		  (regionEClass, 
 		   source, 
 		   new String[] {
@@ -1708,6 +1738,14 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   source, 
 		   new String[] {
 			 "description", "The regions owned directly by the state.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getState_OwnedConnectionPoints(), 
+		   source, 
+		   new String[] {
+			 "description", "The entry and exit Pseudostates of a composite State. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite States.\r\n[source:UML v2.5]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -2263,6 +2301,11 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getStateMachine_OwnedConnectionPoints(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (regionEClass, 
 		   source, 
 		   new String[] {
@@ -2289,6 +2332,11 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   });	
 		addAnnotation
 		  (getState_OwnedRegions(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getState_OwnedConnectionPoints(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -2658,6 +2706,14 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
+		  (getStateMachine_OwnedConnectionPoints(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "uml::StateMachine::connectionPoint", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
 		  (regionEClass, 
 		   source, 
 		   new String[] {
@@ -2704,6 +2760,14 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "uml::State::region", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getState_OwnedConnectionPoints(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "uml::State::connectionPoint", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	

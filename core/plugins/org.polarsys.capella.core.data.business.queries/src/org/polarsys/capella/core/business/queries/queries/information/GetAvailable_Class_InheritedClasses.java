@@ -1,18 +1,20 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.business.queries.queries.information;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.filters.MultiFilter;
@@ -51,13 +53,13 @@ import org.polarsys.capella.core.model.utils.ListExt;
  * <p>
  * Except the current class and the classes in the inheritance hierarchy of the current class
  * </p>
- * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
+ * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
  */
 public class GetAvailable_Class_InheritedClasses extends AbstractQuery {
 
   @Override
   public List<Object> execute(Object inputElement, IQueryContext context) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+    List<EObject> availableElements = new ArrayList<EObject>();
     if (inputElement instanceof Class) {
       Class currentClass = (Class) inputElement;
       SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentClass);

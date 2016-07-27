@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.libraries.extendedqueries.csServices;
 
 import java.util.ArrayList;
@@ -41,36 +42,36 @@ public class GetIBShowHideComponent__Lib extends AbstractQuery {
 
   @Override
   // has been extended to give all the components from this level and superior levels
-  public List<Object> execute(Object input_p, IQueryContext context_p) throws QueryException {
+  public List<Object> execute(Object input, IQueryContext context) throws QueryException {
     List<Object> result = new ArrayList<Object>();
-    EObject target = getIBTarget((DSemanticDecorator) input_p);
+    EObject target = getIBTarget((DSemanticDecorator) input);
     IModel currentProject =  ILibraryManager.INSTANCE.getModel(target);
     Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
     for (IModel library : libraries) {
       EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(target, (CapellaModel) library);
-      result.addAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_COMPONENTS, correspondingInput, context_p, new RemoveActorsFilter()));
+      result.addAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_COMPONENTS, correspondingInput, context, new RemoveActorsFilter()));
     }
     return QueryInterpretor.executeFilter(result, new MultiFilter(new IQueryFilter[] { new RemoveActorsFilter(), new RemoveContextFilter() }));
   }
 
-  private EObject getIBTarget(DSemanticDecorator decorator_p) {
-    if (decorator_p instanceof DDiagram) {
-      if ((decorator_p.getTarget() instanceof AbstractActor) || (decorator_p.getTarget() instanceof System)) {
-        return getParentContainer(decorator_p.getTarget());
+  private EObject getIBTarget(DSemanticDecorator decorator) {
+    if (decorator instanceof DDiagram) {
+      if ((decorator.getTarget() instanceof AbstractActor) || (decorator.getTarget() instanceof System)) {
+        return getParentContainer(decorator.getTarget());
       }
-      for (DDiagramElement element : ((DDiagram) decorator_p).getOwnedDiagramElements()) {
-        if (element.getTarget() == decorator_p.getTarget()) {
-          return getParentContainer(decorator_p.getTarget());
+      for (DDiagramElement element : ((DDiagram) decorator).getOwnedDiagramElements()) {
+        if (element.getTarget() == decorator.getTarget()) {
+          return getParentContainer(decorator.getTarget());
         }
       }
-      return decorator_p.getTarget();
+      return decorator.getTarget();
     }
-    return decorator_p.getTarget();
+    return decorator.getTarget();
   }
 
-  private EObject getParentContainer(EObject current_p) {
-    EObject object = current_p;
-    for (object = current_p.eContainer(); object != null; object = object.eContainer()) {
+  private EObject getParentContainer(EObject current) {
+    EObject object = current;
+    for (object = current.eContainer(); object != null; object = object.eContainer()) {
       if ((object instanceof Component) || (object instanceof BlockArchitecture)) {
         return object;
       }

@@ -13,9 +13,8 @@ package org.polarsys.capella.test.suites.ju;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.business.queries.ju.testSuites.main.BusinessQueryTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.testsuites.DiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.main.DiagramToolsTestSuite;
 import org.polarsys.capella.test.explorer.activity.ju.testsuites.ActivityExplorerTestsSuite;
 import org.polarsys.capella.test.fastlinker.ju.testsuites.FastLinkerTestsSuite;
@@ -28,6 +27,8 @@ import org.polarsys.capella.test.recrpl.ju.testsuites.main.RecRplTestSuite;
 import org.polarsys.capella.test.refinement.ju.testsuites.main.AllRefinementTestSuites;
 import org.polarsys.capella.test.transition.ju.testsuites.main.TransitionTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testsuites.main.ValidationRulesTestSuite;
+
+import junit.framework.Test;
 
 /**
  *
@@ -54,6 +55,7 @@ public class RunInUITestSuite extends BasicTestSuite {
     tests.add(new FastLinkerTestsSuite());
     tests.add(new ActivityExplorerTestsSuite());
     tests.add(new DiagramToolsTestSuite());
+    tests.add(new DiagramFiltersTestSuite());
     tests.add(new RenameModelTestSuite());
     return tests;
   }

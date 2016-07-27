@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@ package org.polarsys.capella.core.data.cs.properties.controllers;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.properties.controllers.AllocatedComponentExchangesController;
@@ -27,7 +26,7 @@ public class PhysicalLinkAllocatedComponentExchangesController extends Allocated
    * {@inheritDoc}
    */
   @Override
-  protected void doAddOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
+  protected void doAddOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
     super.doAddOperationInWriteOpenValues(semanticElement, semanticFeature, object);
 
     if (CapellaModelPreferencesPlugin.getDefault().isSynchronizationOfPhysicalPortToComponentPortOnPhysicalLinkAllowed()
@@ -41,7 +40,7 @@ public class PhysicalLinkAllocatedComponentExchangesController extends Allocated
    * The synchronization of the delegations/allocations is now managed by {@link DeleteHelper} class
    */
   @Override
-  protected void doRemoveOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
+  protected void doRemoveOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
     super.doRemoveOperationInWriteOpenValues(semanticElement, semanticFeature, object);
   }
 }

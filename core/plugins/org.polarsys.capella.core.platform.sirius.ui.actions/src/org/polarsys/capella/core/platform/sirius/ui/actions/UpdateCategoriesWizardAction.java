@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class UpdateCategoriesWizardAction extends AbstractTigAction implements I
   private UpdateCategoriesController _updateCatController;
 
   @Override
-  public void run(IAction action_p) {
+  public void run(IAction action) {
     // // instance of allocation data
     // _dataInstance = UpdateCategoriesData.getInstance();
 
@@ -98,11 +99,11 @@ public class UpdateCategoriesWizardAction extends AbstractTigAction implements I
   }
 
   /**
-   * @param selection_p
-   * @param wizardSelections_p
+   * @param selection
+   * @param wizardSelections
    */
-  protected void handleChanges(List<EObject> selectedElements, List<EObject> categoriesToAdd_p, List<EObject> categoriesToRemove_p) {
-    _updateCatController.updateCategories(selectedElements, categoriesToAdd_p, categoriesToRemove_p);
+  protected void handleChanges(List<EObject> selectedElements, List<EObject> categoriesToAdd, List<EObject> categoriesToRemove) {
+    _updateCatController.updateCategories(selectedElements, categoriesToAdd, categoriesToRemove);
 
   }
 }

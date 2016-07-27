@@ -2297,6 +2297,84 @@
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/M-S_Modes and States.jpg|Sample will be available soon]]    
+== Mode State Machine ==
+                                                                                                                                                                                                                                                                               
+{| border="1"
+|-
+| 	Initialization from existing diagram 	
+| [[Image:Images/icons/full/obj16/DAnalysis.png]] 
+| 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
+|-
+| 	Mode 	
+| [[Image:Images/icons/full/obj16/Mode.gif]] 
+| 		Creates a new Mode 	
+|-
+| 	State 	
+| [[Image:Images/icons/full/obj16/State.gif]] 
+| 		Creates a new State 	
+|-
+| 	Region 	
+| [[Image:Images/icons/full/obj16/Region.gif]] 
+| 		Creates a new Region 	
+|-
+| 	State/Mode 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Transition 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Initial 	
+| [[Image:Images/icons/full/obj16/InitialPseudoState.gif]] 
+| 		Creates an Initial Pseudo State 	
+|-
+| 	Join 	
+| [[Image:Images/icons/full/obj16/JoinPseudoState.gif]] 
+| 		Creates a Join Pseudo State 	
+|-
+| 	Choice 	
+| [[Image:Images/icons/full/obj16/ChoicePseudoState.gif]] 
+| 		Creates a Choice Pseudo State 	
+|-
+| 	Fork 	
+| [[Image:Images/icons/full/obj16/ForkPseudoState.gif]] 
+| 		Creates a Fork Pseudo State 	
+|-
+| 	Terminate 	
+| [[Image:Images/icons/full/obj16/TerminatePseudoState.gif]] 
+| 		Creates a Termintate Pseudo State 	
+|-
+| 	Final 	
+| [[Image:Images/icons/full/obj16/FinalState.gif]] 
+| 		Creates a Final Pseudo State 	
+|-
+| 	DeepHistory 	
+| [[Image:Images/icons/full/obj16/Pseudostate_deepHistory.gif]] 
+| 		Creates a Deep History Pseudo State 	
+|-
+| 	ShallowHistory 	
+| [[Image:Images/icons/full/obj16/Pseudostate_shallowHistory.gif]] 
+| 		Creates a Shallow History Pseudo State 	
+|-
+| 	Transition 	
+| [[Image:Images/icons/full/obj16/StateTransition.gif]] 
+| 		Creates a Transition between the source and target States or Modes 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/MSM_Mode State Machine.jpg|Sample will be available soon]]    
 == Operational Activity Breakdown ==
                                                                             
 {| border="1"

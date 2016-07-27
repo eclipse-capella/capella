@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,20 +48,20 @@ public abstract class ElementDescriptionGroup implements SelectionListener, Focu
   protected Text _descriptionTextField;
 
   /**
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public ElementDescriptionGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
+  public ElementDescriptionGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
     super();
 
-    Group textGroup = new Group(parent_p, SWT.NONE);
-    if (widgetFactory_p != null) {
-      widgetFactory_p.adapt(textGroup);
+    Group textGroup = new Group(parent, SWT.NONE);
+    if (widgetFactory != null) {
+      widgetFactory.adapt(textGroup);
     }
     textGroup.setLayout(new GridLayout());
     textGroup.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-    createDescriptionField(textGroup, widgetFactory_p);
+    createDescriptionField(textGroup, widgetFactory);
 
   }
 
@@ -75,11 +75,11 @@ public abstract class ElementDescriptionGroup implements SelectionListener, Focu
   }
 
   /**
-   * @param textGroup_p
-   * @param widgetFactory_p
+   * @param textGroup
+   * @param widgetFactory
    */
-  private void createDescriptionField(Group textGroup_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    _descriptionTextField = createDescriptionField(textGroup_p);
+  private void createDescriptionField(Group textGroup, TabbedPropertySheetWidgetFactory widgetFactory) {
+    _descriptionTextField = createDescriptionField(textGroup);
     GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
     _descriptionTextField.setLayoutData(gd);
     _descriptionTextField.setEditable(false);
@@ -88,73 +88,73 @@ public abstract class ElementDescriptionGroup implements SelectionListener, Focu
 
   /**
    * This method can be override to provide a customized text widget
-   * @param parent_p
+   * @param parent
    * @return
    */
-  protected Text createDescriptionField(Composite parent_p) {
-    return new Text(parent_p, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+  protected Text createDescriptionField(Composite parent) {
+    return new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
   }
 
   /**
-   * @param enabled_p
+   * @param enabled
    */
-  public void setEnabled(boolean enabled_p) {
+  public void setEnabled(boolean enabled) {
     if ((_descriptionTextField != null) && !_descriptionTextField.isDisposed()) {
-      _descriptionTextField.setEditable(enabled_p);
+      _descriptionTextField.setEditable(enabled);
     }
   }
 
   /**
-   * @param element_p
-   * @param feature_p
+   * @param element
+   * @param feature
    */
-  public void loadData(EObject element_p, EStructuralFeature feature_p) {
-    _semanticElement = element_p;
-    _semanticFeature = feature_p;
+  public void loadData(EObject element, EStructuralFeature feature) {
+    _semanticElement = element;
+    _semanticFeature = feature;
     setTextValue(_descriptionTextField, _semanticElement, _semanticFeature);
   }
 
   /**
    * Set text value.
-   * @param text_p
-   * @param object_p
-   * @param feature_p
+   * @param text
+   * @param object
+   * @param feature
    */
-  protected void setTextValue(Text text_p, EObject object_p, EStructuralFeature feature_p) {
+  protected void setTextValue(Text text, EObject object, EStructuralFeature feature) {
     // Precondition:
-    if ((null == text_p) || (null == object_p) || (null == feature_p)) {
+    if ((null == text) || (null == object) || (null == feature)) {
       return;
     }
-    Object value = object_p.eGet(feature_p);
-    String currentTextValue = text_p.getText();
+    Object value = object.eGet(feature);
+    String currentTextValue = text.getText();
     String newTextValue = (String) ((value instanceof String) ? value : ICommonConstants.EMPTY_STRING);
     // Update the text value if needed.
     if (!currentTextValue.equals(newTextValue) || ICommonConstants.EMPTY_STRING.equals(currentTextValue)) {
-      text_p.setText(newTextValue);
+      text.setText(newTextValue);
     }
   }
 
   /**
    * Set data value i.e change given object for given feature with specified value.
-   * @param object_p
-   * @param feature_p
-   * @param value_p
+   * @param object
+   * @param feature
+   * @param value
    */
-  protected abstract void setDataValue(final EObject object_p, final EStructuralFeature feature_p, final Object value_p);
+  protected abstract void setDataValue(final EObject object, final EStructuralFeature feature, final Object value);
 
   /**
    * Save a description into related element.
-   * @param newDescription_p
+   * @param newDescription
    */
-  public void saveDescription(String newDescription_p) {
-    setDataValue(_semanticElement, _semanticFeature, newDescription_p);
+  public void saveDescription(String newDescription) {
+    setDataValue(_semanticElement, _semanticFeature, newDescription);
   }
 
   /**
    * @see org.eclipse.emf.IRichTextSaveable.runtime.capella.richtext.IEEFRichTextSaveable#save(java.lang.String)
    */
-  public void save(String value_p) {
-    saveDescription(value_p);
+  public void save(String value) {
+    saveDescription(value);
   }
 
   /**
@@ -165,10 +165,10 @@ public abstract class ElementDescriptionGroup implements SelectionListener, Focu
   }
 
   /**
-   * @param textField_p text field to be filled
+   * @param textField text field to be filled
    */
-  protected void fillTextField(Text textField_p) {
-    if (textField_p.equals(_descriptionTextField)) {
+  protected void fillTextField(Text textField) {
+    if (textField.equals(_descriptionTextField)) {
       setDataValue(_semanticElement, _semanticFeature, _descriptionTextField.getText());
     }
   }
@@ -176,16 +176,16 @@ public abstract class ElementDescriptionGroup implements SelectionListener, Focu
   /**
    * @see org.eclipse.swt.events.FocusListener#focusGained(org.eclipse.swt.events.FocusEvent)
    */
-  public void focusGained(final FocusEvent event_p) {
+  public void focusGained(final FocusEvent event) {
     // Do nothing.
   }
 
   /**
    * @see org.eclipse.swt.events.FocusListener#focusLost(org.eclipse.swt.events.FocusEvent)
    */
-  public void focusLost(FocusEvent event_p) {
-    if (event_p != null) {
-      Object source = event_p.getSource();
+  public void focusLost(FocusEvent event) {
+    if (event != null) {
+      Object source = event.getSource();
       if ((source != null) && (source instanceof Text)) {
         fillTextField((Text) source);
       }
@@ -195,9 +195,9 @@ public abstract class ElementDescriptionGroup implements SelectionListener, Focu
   /**
    * @see org.eclipse.swt.events.KeyListener#keyPressed(org.eclipse.swt.events.KeyEvent)
    */
-  public void keyPressed(KeyEvent event_p) {
-    if ((event_p != null) && (event_p.character == SWT.CR)) {
-      Object source = event_p.getSource();
+  public void keyPressed(KeyEvent event) {
+    if ((event != null) && (event.character == SWT.CR)) {
+      Object source = event.getSource();
       if ((source != null) && (source instanceof Text)) {
         fillTextField((Text) source);
       }
@@ -207,21 +207,21 @@ public abstract class ElementDescriptionGroup implements SelectionListener, Focu
   /**
    * @see org.eclipse.swt.events.KeyListener#keyReleased(org.eclipse.swt.events.KeyEvent)
    */
-  public void keyReleased(KeyEvent event_p) {
+  public void keyReleased(KeyEvent event) {
     // Do nothing.
   }
 
   /**
    * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
    */
-  public void widgetSelected(SelectionEvent event_p) {
+  public void widgetSelected(SelectionEvent event) {
 	// Do nothing.
   }
 
   /**
    * @see org.eclipse.swt.events.SelectionListener#widgetDefaultSelected(org.eclipse.swt.events.SelectionEvent)
    */
-  public void widgetDefaultSelected(SelectionEvent event_p) {
+  public void widgetDefaultSelected(SelectionEvent event) {
     // Do nothing.
   }
 }

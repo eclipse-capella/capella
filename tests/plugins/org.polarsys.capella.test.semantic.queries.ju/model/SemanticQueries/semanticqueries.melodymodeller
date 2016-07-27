@@ -2,20 +2,20 @@
 
 <!--Capella_Version_1.1.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.0.0"
-    xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.0.0"
-    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.0.0"
-    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.0.0"
-    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.0.0"
-    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.0.0"
-    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.0.0"
-    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.0.0"
-    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.0.0"
-    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.0.0"
-    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.0.0"
-    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.0.0"
-    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.0.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.1.0"
+    xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.1.0"
+    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.1.0"
+    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.1.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.1.0"
+    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.1.0"
+    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.1.0"
+    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.1.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.1.0"
+    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.1.0"
+    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.1.0"
+    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0"
+    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.1.0"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0"
     id="2cd4b848-b363-455f-a7c8-c5eb4079e32b"
     name="semanticqueries">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="786f4d49-5c42-4da5-8658-e506a110adf7"/>
@@ -319,7 +319,20 @@
         <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
             id="3c66569f-203b-4dde-b75e-0e6b6ccf37a5" name="System State Machine">
           <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
-              id="7e346ce2-5dc0-4bdd-8d03-4cc2892fe2a2" name="Default Region"/>
+              id="7e346ce2-5dc0-4bdd-8d03-4cc2892fe2a2" name="Default Region" involvedStates="#66148fc9-1ddb-42bb-b2b0-cce827fdbf31">
+            <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:State"
+                id="66148fc9-1ddb-42bb-b2b0-cce827fdbf31" name="State 1" referencedStates="#69f74e41-228b-4229-b1fb-9191ebbf3444 #c459c5af-1acf-4710-a52d-d57b776c8cba">
+              <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
+                  id="e196af96-0421-44a6-8b8d-88f469a568ce" name="region"/>
+              <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
+                  id="80ee32b6-f87d-4e34-abd5-c23651b5b96e" name="Region 2" involvedStates="#69f74e41-228b-4229-b1fb-9191ebbf3444 #c459c5af-1acf-4710-a52d-d57b776c8cba">
+                <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:EntryPointPseudoState"
+                    id="69f74e41-228b-4229-b1fb-9191ebbf3444" name="EntryPoint 1"/>
+                <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:ExitPointPseudoState"
+                    id="c459c5af-1acf-4710-a52d-d57b776c8cba" name="ExitPoint 2"/>
+              </ownedRegions>
+            </ownedStates>
+          </ownedRegions>
         </ownedStateMachines>
       </ownedSystem>
       <ownedActorPkg xsi:type="org.polarsys.capella.core.data.ctx:ActorPkg" id="62a37131-ca9b-427d-9eab-5436788fc8c4"

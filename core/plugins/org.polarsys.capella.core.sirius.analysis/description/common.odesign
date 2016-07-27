@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" name="General" version="10.1.0.201507271600">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" name="General" version="11.0.0.201601261200">
   <ownedViewpoints name="Common" modelFileExtension="melodymodeller" icon="">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20PseudoState%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram']" name="Modes &amp; States" label="Modes and States" titleExpression="[M&amp;S] &lt;%current.name%>" domainClass="Region">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer']" name="Modes &amp; States" label="Modes and States" titleExpression="[M&amp;S] &lt;%current.name%>" domainClass="Region">
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
@@ -148,7 +148,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="SM_ModeState_Container" detailDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Modes%20%26%20States%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Modes%20%26%20States']" preconditionExpression="&lt;%(filter(&quot;Mode&quot;) + filter(&quot;State&quot;)).nSize() > 0 &amp;&amp;  filter(&quot;FinalState&quot;).nSize() == 0 %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:involvedStates" domainClass="IState" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@borderedNodeMappings[name='ModeState_Activity'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@borderedNodeMappings[name='ModeState_Entry'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@borderedNodeMappings[name='ModeState_Exit']" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20PseudoState%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram']">
+        <containerMappings name="SM_ModeState_Container" detailDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Modes%20%26%20States%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Modes%20%26%20States']" preconditionExpression="&lt;%(filter(&quot;Mode&quot;) + filter(&quot;State&quot;)).nSize() > 0 &amp;&amp;  filter(&quot;FinalState&quot;).nSize() == 0 %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:involvedStates" domainClass="IState" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@borderedNodeMappings[name='ModeState_Activity'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@borderedNodeMappings[name='ModeState_Entry'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@borderedNodeMappings[name='ModeState_Exit']" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer']">
           <borderedNodeMappings name="SM_EntryPoint" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="&lt;%getEntryPoints()%>" domainClass="EntryPointPseudoState" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer']">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelAlignment="RIGHT" sizeComputationExpression="2" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Pseudostate_entryPoint.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -245,7 +245,7 @@
               </style>
             </conditionnalStyles>
           </subNodeMappings>
-          <subContainerMappings name="SM_InnerModeState_Container" detailDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Modes%20%26%20States%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Modes%20%26%20States']" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="&lt;% ownedRegions.involvedStates[(filter(&quot;Mode&quot;) + filter(&quot;State&quot;)).nSize() > 0 &amp;&amp;  filter(&quot;FinalState&quot;).nSize() == 0] %>" domainClass="IState" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@borderedNodeMappings[name='ModeState_Activity'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_ExitPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@borderedNodeMappings[name='ModeState_Entry'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@borderedNodeMappings[name='ModeState_Exit']" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20PseudoState%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram']" reusedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@subNodeMappings[name='SM_InnerModeState']" reusedContainerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@subContainerMappings[name='SM_InnerModeState_Container']">
+          <subContainerMappings name="SM_InnerModeState_Container" detailDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Modes%20%26%20States%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Modes%20%26%20States']" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="&lt;% ownedRegions.involvedStates[(filter(&quot;Mode&quot;) + filter(&quot;State&quot;)).nSize() > 0 &amp;&amp;  filter(&quot;FinalState&quot;).nSize() == 0] %>" domainClass="IState" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@borderedNodeMappings[name='ModeState_Activity'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_ExitPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@borderedNodeMappings[name='ModeState_Entry'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState']/@borderedNodeMappings[name='ModeState_Exit']" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer']" reusedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@subNodeMappings[name='SM_InnerModeState']" reusedContainerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@subContainerMappings[name='SM_InnerModeState_Container']">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" roundedCorner="true" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Mode_Gray']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -860,15 +860,6 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D PseudoState from Diagram" precondition="&lt;% $element.isValidDndSMModeState($oldContainer, $newViewContainer)%>" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@subNodeMappings[name='SM_InnerModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@nodeMappings[name='SM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@borderedNodeMappings[name='SM_ExitPoint']">
-            <oldContainer name="oldSemanticContainer"/>
-            <newContainer name="newSemanticContainer"/>
-            <element name="element"/>
-            <newViewContainer name="newContainerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element.dndSMModeState($newContainerView)%>"/>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D ModeState from Diagram" precondition="&lt;% $element.isValidDndSMModeState($oldContainer, $newViewContainer)%>" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']/@subContainerMappings[name='SM_InnerModeState_Container'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@containerMappings[name='SM_ModeState_Container']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
@@ -879,6 +870,821 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram']" name="Mode State Machine" label="Mode State Machine [NEW]" titleExpression="[MSM] &lt;%current.name%>" domainClass="Region">
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="HideInternalStates" label="Hide Internal Modes and States">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']" viewConditionExpression="&lt;% self.eContainer.filter(&quot;DDiagram&quot;).nSize() > 0 %>"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="HideRegionNames" label="Hide Region names"/>
+      <defaultLayer name="default" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']">
+        <nodeMappings name="MSM_ModeState" preconditionExpression="&lt;%((filter(&quot;FinalState&quot;) + filter(&quot;Pseudostate&quot;)).nSize() > 0) &amp;&amp; (((eContainer.eContainer.filter(&quot;State&quot;) + eContainer.eContainer.filter(&quot;Mode&quot;)).nSize() == 0) || ((filter(&quot;EntryPointPseudoState&quot;) + filter(&quot;ExitPointPseudoState&quot;)).nSize() == 0))%>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:involvedStates" domainClass="IState">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="1" sizeComputationExpression="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%(filter(&quot;ForkPseudoState&quot;) + filter(&quot;JoinPseudoState&quot;)).nSize() > 0 &amp;&amp; isReferencedState ($view.eContainer.target) %>">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" resizeKind="NSEW" width="1" height="7">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%filter(&quot;ChoicePseudoState&quot;).nSize() > 0 &amp;&amp; isReferencedState ($view.eContainer.target)%>">
+            <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ChoicePseudoState_Border_Gray']" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW" widthComputationExpression="5" heightComputationExpression="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ChoicePseudoState_Color']">
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%filter(&quot;InitialPseudoState&quot;).nSize() > 0 &amp;&amp; isReferencedState ($view.eContainer.target)%>">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/initialState.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%filter(&quot;FinalState&quot;).nSize() > 0 &amp;&amp; isReferencedState ($view.eContainer.target)%>">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/finalState.png.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%filter(&quot;TerminatePseudoState&quot;).nSize() > 0&amp;&amp; isReferencedState ($view.eContainer.target) %>">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/terminateState.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%(filter(&quot;ForkPseudoState&quot;) + filter(&quot;JoinPseudoState&quot;)).nSize() > 0%>">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" resizeKind="NSEW" width="1" height="7">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%filter(&quot;ChoicePseudoState&quot;).nSize() > 0%>">
+            <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ChoicePseudoState_Border_Gray']" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW" widthComputationExpression="5" heightComputationExpression="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ChoicePseudoState_Color']">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%filter(&quot;InitialPseudoState&quot;).nSize() > 0%>">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/initialState.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%filter(&quot;FinalState&quot;).nSize() > 0%>">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/finalState.png.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%filter(&quot;TerminatePseudoState&quot;).nSize() > 0%>">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/terminateState.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%filter(&quot;DeepHistoryPseudoState&quot;).nSize() > 0%>">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Pseudostate_deepHistory.svg">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%filter(&quot;ShallowHistoryPseudoState&quot;).nSize() > 0%>">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Pseudostate_shallowHistory.svg">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%filter(&quot;EntryPointPseudoState&quot;).nSize() > 0%>">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="2" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Pseudostate_entryPoint.svg">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%filter(&quot;ExitPointPseudoState&quot;).nSize() > 0%>">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="2" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Pseudostate_exitPoint.svg">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <edgeMappings name="MSM_Transition" label="" preconditionExpression="&lt;%  mustDisplayTransition ($sourceView, $targetView) %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;% self() %>" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_ExitPoint']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_ExitPoint']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="StateTransition" useDomainElement="true" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20source%20transition'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20target%20transition']">
+          <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_StateTransition_Color']" centeredSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_ExitPoint']" centeredTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_ExitPoint']">
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%getStateTransitionLabel()%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="MSM_ModeState_Container" detailDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Mode%20State%20Machine%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Mode%20State%20Machine']" preconditionExpression="&lt;%(filter(&quot;Mode&quot;) + filter(&quot;State&quot;)).nSize() > 0 &amp;&amp;  filter(&quot;FinalState&quot;).nSize() == 0 %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:involvedStates" domainClass="IState" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Region%20from%20Diagram']" childrenPresentation="VerticalStack">
+          <borderedNodeMappings name="MSM_EntryPoint" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="&lt;%getEntryPoints()%>" domainClass="EntryPointPseudoState" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer']">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;% self.getEntryExitPointLabel($diagram) %>" labelAlignment="RIGHT" sizeComputationExpression="2" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Pseudostate_entryPoint.svg">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="MSM_ExitPoint" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="&lt;%getExitPoints()%>" domainClass="ExitPointPseudoState" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer']">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;% self.getEntryExitPointLabel($diagram) %>" labelAlignment="RIGHT" sizeComputationExpression="2" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Pseudostate_exitPoint.svg">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </borderedNodeMappings>
+          <subContainerMappings name="MSM_Activities" preconditionExpression="&lt;% doActivity != null || entry != null || exit != null %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="IState" childrenPresentation="List">
+            <subNodeMappings name="MSM_Entry" semanticCandidatesExpression="feature:entry" synchronizationLock="true" domainClass="AbstractEvent">
+              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression=" entry / &lt;% getActivityLabel() %>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="MSM_DoActivity" semanticCandidatesExpression="feature:doActivity" synchronizationLock="true" domainClass="AbstractEvent">
+              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression=" do / &lt;% getActivityLabel() %>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="MSM_Exit" semanticCandidatesExpression="feature:exit" synchronizationLock="true" domainClass="AbstractEvent">
+              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression=" exit / &lt;% getActivityLabel() %>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" hideLabelByDefault="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+            <conditionnalStyles predicateExpression="&lt;%($container.filter(&quot;Mode&quot;)).nSize() > 0%>">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" hideLabelByDefault="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray_min']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="&lt;%($container.filter(&quot;State&quot;)).nSize() > 0%>">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" hideLabelByDefault="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_State_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_State_Gray_min']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+          </subContainerMappings>
+          <subContainerMappings name="MSM_Region" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:ownedRegions" synchronizationLock="true" domainClass="Region" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Region%20from%20Diagram']" reusedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" reusedContainerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;% self.getRegionLabel($diagram) %>" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+            <conditionnalStyles predicateExpression="&lt;%($container.filter(&quot;Mode&quot;)).nSize() > 0%>">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;% self.getRegionLabel($diagram) %>" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="&lt;%($container.filter(&quot;State&quot;)).nSize() > 0%>">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;% self.getRegionLabel($diagram) %>" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_State_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_State_Gray']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" roundedCorner="true" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%(filter(&quot;Mode&quot;)).nSize() > 0 &amp;&amp; isReferencedState ($view.eContainer.target)%>">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray_min']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%(filter(&quot;Mode&quot;)).nSize() > 0%>">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_Mode_Gray_min']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%(filter(&quot;State&quot;)).nSize() > 0 &amp;&amp; isReferencedState ($view.eContainer.target) %>">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_State_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_State_Gray_min']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%(filter(&quot;State&quot;)).nSize() > 0%>">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_State_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_MSM_State_Gray_min']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <toolSections name="Modes &amp; States" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.1/@ownedTools[name='DiagramInitialization']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Mode" name="Mode" precondition="&lt;%canCreateMode ($containerView) %>" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Mode.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;IState&quot;).nSize > 0 &amp;&amp; ownedRegions.nSize () == 0%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Mode" referenceName="ownedStates">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new State" name="State" precondition="&lt;%canCreateState ($containerView) %>" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/State.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;IState&quot;).nSize > 0 &amp;&amp; ownedRegions.nSize () == 0%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="State" referenceName="ownedStates">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Region" name="Region" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']" extraMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize == 0 %>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% moveRegionMSM($instance, null) %>">
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $elementView.getDiagramContainer().forceRefresh %>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize > 0 %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer %>">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>">
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% moveRegionMSM($instance, $container) %>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="ShowHide ModeState" label="State/Mode" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <filters precondition="feature:synchronized" elementsToListen="&lt;%current%>">
+              <listeners domainClass="DDiagram" featureName="synchronized"/>
+            </filters>
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleStates" computationExpression="&lt;%$elementView.getAllDisplayedStates%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleStateViews" computationExpression="&lt;%$elementView.getAllDisplayedStateViews%>"/>
+            </elementView>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView%>">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectStates" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="&lt;% $elementView %>"/>
+                  <parameters name="scope" value="&lt;% $elementView.getAvailableStatesAndModesToInsertInStatemachineDiag()%>"/>
+                  <parameters name="resultVariable" value="selectedStates"/>
+                  <parameters name="wizardMessage" value="Select states and modes to show in &lt;%$element.name%>."/>
+                  <parameters name="initialSelection" value="&lt;%$visibleStates%>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($selectedStates == &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="ShowHideMSMStates" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideMSMStates">
+                    <parameters name="view" value="&lt;%$elementView%>"/>
+                    <parameters name="selected states" value="&lt;%$selectedStates%>"/>
+                    <parameters name="visible states" value="&lt;%$visibleStates%>"/>
+                    <parameters name="visible state views" value="&lt;%$visibleStateViews%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="ShowHide Transition" label="Transition" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <filters precondition="feature:synchronized" elementsToListen="&lt;%current%>">
+              <listeners domainClass="DDiagram" featureName="synchronized"/>
+            </filters>
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleTransitions" computationExpression="&lt;%$elementView.getDisplayedTransitions%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleTransitionViews" computationExpression="&lt;%$elementView.getDisplayedTransitionViews%>"/>
+            </elementView>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView%>">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectTransition" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="&lt;% $elementView %>"/>
+                  <parameters name="scope" value="&lt;% $elementView.getAvailableTransitionsToInsertInSM%>"/>
+                  <parameters name="resultVariable" value="selectedTransitions"/>
+                  <parameters name="wizardMessage" value="Select transitions to show in &lt;%$element.name%>."/>
+                  <parameters name="initialSelection" value="&lt;%$visibleTransitions%>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($selectedTransitions == &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="ShowHideMSMTransitions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideMSMTransitions">
+                    <parameters name="view" value="&lt;%$elementView%>"/>
+                    <parameters name="selected transitions" value="&lt;%$selectedTransitions%>"/>
+                    <parameters name="visible transitions" value="&lt;%$visibleTransitions%>"/>
+                    <parameters name="visible transition views" value="&lt;%$visibleTransitionViews%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates an Initial Pseudo State" name="Initial" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InitialPseudoState.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;IState&quot;).nSize > 0 &amp;&amp; ownedRegions.nSize () == 0%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="InitialPseudoState" referenceName="ownedStates">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a Join Pseudo State" name="Join" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/JoinPseudoState.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;IState&quot;).nSize > 0 &amp;&amp; ownedRegions.nSize () == 0%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="JoinPseudoState" referenceName="ownedStates">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName(&quot;Join &quot;)%>"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$instance.eContainer (&quot;Region&quot;) %>">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involvedStates" valueExpression="&lt;% $instance %>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referencedStates" valueExpression="&lt;% $instance %>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a Choice Pseudo State" name="Choice" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ChoicePseudoState.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;IState&quot;).nSize > 0 &amp;&amp; ownedRegions.nSize () == 0%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ChoicePseudoState" referenceName="ownedStates">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName(&quot;Choice &quot;)%>"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$instance.eContainer (&quot;Region&quot;) %>">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involvedStates" valueExpression="&lt;% $instance %>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referencedStates" valueExpression="&lt;% $instance %>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a Fork Pseudo State" name="Fork" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ForkPseudoState.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;IState&quot;).nSize > 0 &amp;&amp; ownedRegions.nSize () == 0%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ForkPseudoState" referenceName="ownedStates">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName(&quot;Fork &quot;)%>"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$instance.eContainer (&quot;Region&quot;) %>">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involvedStates" valueExpression="&lt;% $instance %>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referencedStates" valueExpression="&lt;% $instance %>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a Termintate Pseudo State" name="Terminate" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/TerminatePseudoState.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;IState&quot;).nSize > 0 &amp;&amp; ownedRegions.nSize () == 0%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="TerminatePseudoState" referenceName="ownedStates">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName(&quot;Terminate &quot;)%>"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$instance.eContainer (&quot;Region&quot;) %>">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involvedStates" valueExpression="&lt;% $instance %>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referencedStates" valueExpression="&lt;% $instance %>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a Final Pseudo State" name="Final" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FinalState.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;IState&quot;).nSize > 0 &amp;&amp; ownedRegions.nSize () == 0%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="FinalState" referenceName="ownedStates">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName(&quot;Final &quot;)%>"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$instance.eContainer (&quot;Region&quot;) %>">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involvedStates" valueExpression="&lt;% $instance %>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referencedStates" valueExpression="&lt;% $instance %>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a Entry Pseudo State" name="EntryPoint" precondition="&lt;%canCreateEntryExitPoint($containerView)%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Pseudostate_entryPoint.gif">
+            <filters precondition="&lt;% true %>"/>
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;IState&quot;).nSize > 0 &amp;&amp; ownedRegions.nSize () == 0%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EntryPointPseudoState" referenceName="ownedStates">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName(&quot;EntryPoint &quot;)%>"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$instance.eContainer (&quot;Region&quot;) %>">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involvedStates" valueExpression="&lt;% $instance %>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referencedStates" valueExpression="&lt;% $instance %>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a Exit Pseudo State" name="ExitPoint" precondition="&lt;%canCreateEntryExitPoint($containerView)%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Pseudostate_exitPoint.gif">
+            <filters precondition="&lt;% true %>"/>
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;IState&quot;).nSize > 0 &amp;&amp; ownedRegions.nSize () == 0%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ExitPointPseudoState" referenceName="ownedStates">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName(&quot;ExitPoint &quot;)%>"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$instance.eContainer (&quot;Region&quot;) %>">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involvedStates" valueExpression="&lt;% $instance %>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referencedStates" valueExpression="&lt;% $instance %>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a Deep History Pseudo State" name="DeepHistory" precondition="&lt;% canCreateDeepHistory($containerView) %>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Pseudostate_deepHistory.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;IState&quot;).nSize > 0 &amp;&amp; ownedRegions.nSize () == 0%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="DeepHistoryPseudoState" referenceName="ownedStates">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName(&quot;DeepHistory &quot;)%>"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$instance.eContainer (&quot;Region&quot;) %>">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involvedStates" valueExpression="&lt;% $instance %>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referencedStates" valueExpression="&lt;% $instance %>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a Shallow History Pseudo State" name="ShallowHistory" precondition="&lt;% canCreateShallowHistory($containerView) %>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Pseudostate_shallowHistory.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;IState&quot;).nSize > 0 &amp;&amp; ownedRegions.nSize () == 0%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ShallowHistoryPseudoState" referenceName="ownedStates">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName(&quot;ShallowHistory &quot;)%>"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$instance.eContainer (&quot;Region&quot;) %>">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involvedStates" valueExpression="&lt;% $instance %>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referencedStates" valueExpression="&lt;% $instance %>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Transition between the source and target States or Modes" name="Transition" precondition="&lt;% canCreateTransitionMSM($preSource, $preTarget) %>" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@edgeMappings[name='MSM_Transition']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/StateTransition.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% getRegionForTransitionMSM($sourceView) %>">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="StateTransition" referenceName="ownedTransitions" variableName="transition">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression=""/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $source.filter(&quot;Region&quot;).nSize > 0 %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $source.eContainer %>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$transition%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $source.filter(&quot;Region&quot;).nSize == 0 %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$transition%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $target.filter(&quot;Region&quot;).nSize > 0 %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $target.eContainer %>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$transition%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $target.filter(&quot;Region&quot;).nSize == 0 %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$target%>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$transition%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Mode State Machine Diagram" precondition="&lt;%isInLib()%>" titleExpression="[MSM] &lt;%current.name%>" browseExpression="&lt;%filter(&quot;State&quot;).ownedRegions.nFirst%>" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$containerView.target%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedRegions.nSize() == 0%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$diagramName%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Mode State Machine" browseExpression="&lt;%filter(&quot;State&quot;).ownedRegions.nFirst%>" navigationNameExpression="" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit" forceRefresh="true" inputLabelExpression="feature:name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Transition DirectEdit" forceRefresh="true">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression="&lt;%$0%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
+            <element name="element"/>
+            <elementView name="view"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element %>">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="deleteCapellaElement" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteExternalAction"/>
+              </firstModelOperations>
+            </initialOperation>
+            <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect source transition" precondition="&lt;% canCreateTransitionMSM($target, $element.source) %>" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$target%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize > 0 %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer %>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$element%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize == 0 %>">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$element%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect target transition" precondition="&lt;% canCreateTransitionMSM($element.source, $target) %>">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$target%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize > 0 %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer %>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$element%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize == 0 %>">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$element%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="Constraints">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $containerView.filter(&quot;DDiagram&quot;).nSize() == 1 %>">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="ConstraintElement" precondition="&lt;%!( $preSource.constrainedElements.nContains($preTarget))%>" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$source.filter(&quot;Constraint&quot;).nSize() == 1%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $source.constrainedElements.nSize() == 0%>">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedElements" valueExpression="&lt;%$target%>"/>
+                      <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$target%>" featureName="ownedConstraints"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $source.constrainedElements.nSize() != 0%>">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedElements" valueExpression="&lt;%$target%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="Show/Hide Constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+              <element name="element"/>
+              <elementView name="elementView">
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="constraintsInDiagram" computationExpression="&lt;% getExistingConstraintsFromDiagram($elementView.getDiagramContainer())%>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;% $elementView.eContainer(&quot;DDiagram&quot;) %>"/>
+              </elementView>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView%>">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectedConstraints" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
+                    <parameters name="context" value="&lt;% $elementView%>"/>
+                    <parameters name="scope" value="&lt;% getConstraintToInsertInDiagram() - $constraintsInDiagram%>"/>
+                    <parameters name="initialSelection" value="&lt;%$constraintsInDiagram%>"/>
+                    <parameters name="resultVariable" value="selectedConstraints"/>
+                    <parameters name="wizardMessage" value="Select Constraints to show."/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($selectedConstraints != &quot;WIZARD_CANCELED&quot;)%>">
+                    <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedConstraints%>">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:For" expression="&lt;%$constraintsInDiagram%>">
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%! $selectedConstraints.nContains($i)%>">
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().getNodesAndNodeListElements()[target == $i]%>">
+                          <subModelOperations xsi:type="tool_1:DeleteView"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Constraint From Project Explorer" precondition="&lt;% $element.isA(&quot;Constraint&quot;) &amp;&amp; $element.canBeDropped($newViewContainer) %>" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D ModeState From Project Explorer" precondition="&lt;% $element.canBeDropped($newViewContainer)%>" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_EntryPoint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@borderedNodeMappings[name='MSM_ExitPoint']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D ModeState from Diagram" precondition="&lt;% $element.isValidDndSMModeState($oldContainer, $newViewContainer) &amp;&amp; !$element.isReferencedState ($oldContainer)%>" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element.dndSMModeState($newContainerView)%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Region from Diagram" precondition="&lt;% true %>" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element.dndRegion($newContainerView) %>"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;% $container.ownedRegions.nFirst() != $view.target %>">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']/@conditionnalStyles.0/@style //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']/@conditionnalStyles.1/@style //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']/@style" attributeName="borderLineStyle" value="dash"/>
+          </vsmElementCustomizations>
+        </customization>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Class%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='AbstractExchangeItem%20Into%20AbstractExchangeItemPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Class%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20DataType%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DataType%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='D%26D%20Interface%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='Interface%20Into%20InterfacePkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Enumeration%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Collection%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Collection%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DataPkg%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='InterfacePkg%20Into%20InterfacePkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20BooleanType%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20DataPkg%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='D%26D%20InterfacePkg%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='D%26D%20ExchangeItem%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20DataValue%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DataValue%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Unit%20from%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Unit%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Class Diagram Blank" titleExpression="[CDB] &lt;%current.name%>" domainClass="DataPkg" defaultConcern="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@concerns/@ownedConcernDescriptions.0">
@@ -1635,6 +2441,9 @@
           <targetMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_ExchangeItem']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@nodeMappings[name='CCEI_ExchangeItem']"/>
           <targetMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='CCDI_ExchangeItem']"/>
+          <targetMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']"/>
+          <targetMapping xsi:type="description_1:NodeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']"/>
+          <targetMapping xsi:type="description_1:EdgeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@edgeMappings[name='MSM_Transition']"/>
           <style lineStyle="dot">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -5737,7 +6546,7 @@
                     <subModelOperations xsi:type="tool_1:For" expression="&lt;%$components%>">
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!$container.getContext().ownedFeatures.type.nContains($i)%>">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.getContext()%>">
-                          <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                          <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                             <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;%$i%>"/>
                             <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$part.name==null%>">
                               <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName($i.name+&quot; &quot;) %>"/>
@@ -7331,7 +8140,7 @@
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']" containerViewExpression="&lt;%$containerView%>"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                           <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;%$i%>"/>
                           <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$part.name==null%>">
                             <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName($i.name+&quot; &quot;) %>"/>
@@ -8913,7 +9722,7 @@
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']" containerViewExpression="&lt;%$containerView%>"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                           <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;%$i%>"/>
                           <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$part.name==null%>">
                             <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName($i.name+&quot; &quot;) %>"/>
@@ -12720,7 +13529,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="COTSCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;% $component %>"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;% $component.name %>"/>
                     </subModelOperations>
@@ -12752,7 +13561,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="CSCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;% $component %>"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;% $component.name %>"/>
                     </subModelOperations>
@@ -12784,7 +13593,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="HWCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;% $component %>"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;% $component.name %>"/>
                     </subModelOperations>
@@ -12816,7 +13625,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="InterfaceCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;% $component %>"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;% $component.name %>"/>
                     </subModelOperations>
@@ -12848,7 +13657,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="NDICI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;% $component %>"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;% $component.name %>"/>
                     </subModelOperations>
@@ -12880,7 +13689,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="PrimeItemCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;% $component %>"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;% $component.name %>"/>
                     </subModelOperations>
@@ -12912,7 +13721,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="SystemCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;% $component %>"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;% $component.name %>"/>
                     </subModelOperations>
@@ -17896,6 +18705,7 @@
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sequencediag.ScenarioContraintsService"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.CapellaServices"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.StateMachineServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.ModeStateMachineServices"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.LogicalServices"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.InformationServices"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.ComBdhHelperServiceWrapper"/>
@@ -17920,7 +18730,6 @@
     <entries xsi:type="description:UserFixedColor" red="244" green="255" blue="224" name="_CAP_xDFB_Function_Green_min"/>
     <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_xDFB_Function_Green_Label"/>
     <entries xsi:type="description:UserFixedColor" red="9" green="92" blue="46" name="_CAP_xAB_Function_Border_Green"/>
-    <entries xsi:type="description:UserFixedColor" red="197" green="255" blue="166" name="_CAP_xAB_Function_Green"/>
     <entries xsi:type="description:UserFixedColor" red="9" green="92" blue="46" name="_CAP_xAB_Function_Label_Green"/>
     <entries xsi:type="description:UserFixedColor" red="223" green="223" blue="223" name="_CAP_xBD_ControlNode"/>
     <entries xsi:type="description:UserFixedColor" red="198" green="230" blue="255" name="_CAP_Actor_Blue"/>
@@ -17932,13 +18741,14 @@
     <entries xsi:type="description:UserFixedColor" red="123" green="105" blue="79" name="_CAP_Node_Yellow_Border"/>
     <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_Node_Yellow_Label"/>
     <entries xsi:type="description:UserFixedColor" red="255" green="244" blue="119" name="_CAP_PhysicalPort_Yellow"/>
+    <entries xsi:type="description:UserFixedColor" red="197" green="255" blue="166" name="_CAP_xAB_Function_Green"/>
     <entries xsi:type="description:UserFixedColor" red="240" green="221" blue="221" name="_CAP_Interface_Pink"/>
     <entries xsi:type="description:UserFixedColor" red="232" green="224" blue="210" name="_CAP_Class_Brown"/>
-    <entries xsi:type="description:UserFixedColor" red="123" green="105" blue="79" name="_CAP_Class_Border_Brown"/>
     <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_Association_Color"/>
     <entries xsi:type="description:UserFixedColor" red="232" green="224" blue="210" name="_CAP_Datatype_LightBrown"/>
     <entries xsi:type="description:UserFixedColor" red="103" green="103" blue="103" name="_CAP_Datatype_Border_Gray"/>
     <entries xsi:type="description:UserFixedColor" red="225" green="223" blue="215" name="_CAP_Datatype_Gray"/>
+    <entries xsi:type="description:UserFixedColor" red="123" green="105" blue="79" name="_CAP_Class_Border_Brown"/>
     <entries xsi:type="description:UserFixedColor" red="254" green="253" blue="250" name="_CAP_Value_LightBrown"/>
     <entries xsi:type="description:UserFixedColor" red="228" green="228" blue="228" name="_CAP_State_Gray"/>
     <entries xsi:type="description:UserFixedColor" red="165" green="182" blue="180" name="_CAP_Mode_Gray"/>
@@ -17964,5 +18774,9 @@
     <entries xsi:type="description:UserFixedColor" red="242" green="238" blue="225" name="_CAP_ConfigurationItem_Gray"/>
     <entries xsi:type="description:UserFixedColor" red="249" green="248" blue="245" name="_CAP_ConfigurationItem_Gray_min"/>
     <entries xsi:type="description:UserFixedColor" red="148" green="199" blue="97" name="_CAP_FCinFCD_Green"/>
+    <entries xsi:type="description:UserFixedColor" red="208" green="208" blue="208" name="_CAP_MSM_State_Gray"/>
+    <entries xsi:type="description:UserFixedColor" red="239" green="239" blue="239" name="_CAP_MSM_State_Gray_min"/>
+    <entries xsi:type="description:UserFixedColor" red="195" green="208" blue="208" name="_CAP_MSM_Mode_Gray"/>
+    <entries xsi:type="description:UserFixedColor" red="234" green="239" blue="239" name="_CAP_MSM_Mode_Gray_min"/>
   </userColorsPalettes>
 </description:Group>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.layout.GridData;
@@ -131,8 +132,8 @@ public class DiagramManagementPropertySection extends AbstractSection {
        */
       @SuppressWarnings("synthetic-access")
       @Override
-      protected List<CapellaElement> getAvailableValues() {
-        List<CapellaElement> result = new ArrayList<CapellaElement>(0);
+      protected List<EObject> getAvailableValues() {
+        List<EObject> result = new ArrayList<EObject>(0);
         IBusinessQuery query =
             BusinessQueriesProvider.getInstance().getContribution(CapellacorePackage.Literals.CAPELLA_ELEMENT,
                 CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS);
@@ -147,12 +148,12 @@ public class DiagramManagementPropertySection extends AbstractSection {
        */
       @SuppressWarnings("synthetic-access")
       @Override
-      protected List<CapellaElement> getCurrentValues() {
-        List<CapellaElement> result = new ArrayList<CapellaElement>(0);
+      protected List<EObject> getCurrentValues() {
+        List<EObject> result = new ArrayList<EObject>(0);
 
         String value = RepresentationAnnotationHelper.getProgressStatus(_representation.get());
         if (null != value) {
-          for (CapellaElement element : getAvailableValues()) {
+          for (EObject element : getAvailableValues()) {
             if (value.equals(((AbstractNamedElement) element).getName())) {
               result.add(element);
             }
@@ -294,7 +295,7 @@ public class DiagramManagementPropertySection extends AbstractSection {
    */
   @Override
   public boolean select(Object toTest) {
-    return (toTest instanceof DRepresentation) || (toTest instanceof IDDiagramEditPart);
+    return (toTest instanceof DRepresentationDescriptor) || (toTest instanceof DRepresentation) || (toTest instanceof IDDiagramEditPart);
   }
 
   /**
@@ -305,6 +306,11 @@ public class DiagramManagementPropertySection extends AbstractSection {
     if (!selection.isEmpty()) {
       if (selection instanceof IStructuredSelection) {
         Object firstElement = ((IStructuredSelection) selection).getFirstElement();
+
+        if (firstElement instanceof DRepresentationDescriptor) {
+          firstElement = ((DRepresentationDescriptor) firstElement).getRepresentation();
+        }
+
         if (firstElement instanceof DRepresentation) {
           _representation = new WeakReference<DRepresentation>((DRepresentation) firstElement);
         } else if (firstElement instanceof IDDiagramEditPart) {

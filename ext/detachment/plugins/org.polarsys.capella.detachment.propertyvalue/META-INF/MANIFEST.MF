@@ -10,7 +10,12 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.kitalpha.model.detachment.ui,
  org.eclipse.ui.forms,
  org.polarsys.capella.core.data.gen,
- org.polarsys.kitalpha.model.common.commands
+ org.polarsys.kitalpha.model.common.commands,
+ org.polarsys.capella.core.platform.sirius.ui.actions
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
+Export-Package: org.polarsys.capella.detachment.propertyvalue.command,
+ org.polarsys.capella.detachment.propertyvalue.messages,
+ org.polarsys.capella.detachment.propertyvalues.scrutinizers,
+ org.polarsys.capella.detachment.propertyvalues.ui.page

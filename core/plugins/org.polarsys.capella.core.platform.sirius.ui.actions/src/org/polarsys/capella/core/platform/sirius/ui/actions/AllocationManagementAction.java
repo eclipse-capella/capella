@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.util.List;
@@ -56,15 +57,15 @@ public class AllocationManagementAction {
   }
 
   /**
-   * Action to perform allocation of all the targetElements_p(list of functions) to sourceElement_p(component or role(oa layer))
-   * @param targetElements_p list of functions
-   * @param sourceElement_p a component
+   * Action to perform allocation of all the targetElements(list of functions) to sourceElement(component or role(oa layer))
+   * @param targetElements list of functions
+   * @param sourceElement a component
    */
-  public void allocatingFunctionsToComponent(List<EObject> targetElements_p, EObject sourceElement_p) {
-    if (sourceElement_p != null) {
-      if (sourceElement_p instanceof Component) {
-        Component comp = (Component) sourceElement_p;
-        for (EObject modelElement : targetElements_p) {
+  public void allocatingFunctionsToComponent(List<EObject> targetElements, EObject sourceElement) {
+    if (sourceElement != null) {
+      if (sourceElement instanceof Component) {
+        Component comp = (Component) sourceElement;
+        for (EObject modelElement : targetElements) {
           if (modelElement instanceof AbstractFunction) {
             AbstractFunction function = (AbstractFunction) modelElement;
             // continue only is current function is not allocated by any other component
@@ -82,9 +83,9 @@ public class AllocationManagementAction {
         }
       }
       // functions can also be allocated by roles
-      else if (sourceElement_p instanceof Role) {
-        Role role = (Role) sourceElement_p;
-        for (EObject modelElement : targetElements_p) {
+      else if (sourceElement instanceof Role) {
+        Role role = (Role) sourceElement;
+        for (EObject modelElement : targetElements) {
           if (modelElement instanceof AbstractFunction) {
             AbstractFunction function = (AbstractFunction) modelElement;
             // continue only is current function is not allocated by any other component
@@ -105,17 +106,17 @@ public class AllocationManagementAction {
   }
 
   /**
-   * Action to perform allocation of all the targetElements_p(list of exchangeItems) to sourceElements_p(Interfaces)
-   * @param selectedCapellaElement_p
-   * @param selectedElements_p
+   * Action to perform allocation of all the targetElements(list of exchangeItems) to sourceElements(Interfaces)
+   * @param selectedCapellaElement
+   * @param selectedElements
    */
-  public void allocatingExchangeItemsToInterfaces(List<EObject> targetElements_p, List<EObject> sourceElements_p) {
-    if (!sourceElements_p.isEmpty() && !targetElements_p.isEmpty()) {
-      for (EObject source : sourceElements_p) {
+  public void allocatingExchangeItemsToInterfaces(List<EObject> targetElements, List<EObject> sourceElements) {
+    if (!sourceElements.isEmpty() && !targetElements.isEmpty()) {
+      for (EObject source : sourceElements) {
         if (source instanceof Interface) {
           // interface
           Interface sourceElement = (Interface) source;
-          for (EObject target : targetElements_p) {
+          for (EObject target : targetElements) {
             if (target instanceof ExchangeItem) {
               // exchange item
               ExchangeItem targetElement = (ExchangeItem) target;
@@ -136,14 +137,14 @@ public class AllocationManagementAction {
 
   /**
    * Action to perform deployment of physical component
-   * @param targetElements_p
-   * @param sourceElements_p
+   * @param targetElements
+   * @param sourceElements
    */
-  public void allocatingPCPartsToPCPart(List<EObject> targetElements_p, EObject sourceElement_p) {
-    if (sourceElement_p != null) {
-      if (sourceElement_p instanceof Part) {
-        Part sourcePart = (Part) sourceElement_p;
-        for (EObject modelElement : targetElements_p) {
+  public void allocatingPCPartsToPCPart(List<EObject> targetElements, EObject sourceElement) {
+    if (sourceElement != null) {
+      if (sourceElement instanceof Part) {
+        Part sourcePart = (Part) sourceElement;
+        for (EObject modelElement : targetElements) {
           if (modelElement instanceof Part) {
             Part targetPart = (Part) modelElement;
             // continue only is current function is not allocated by any other component
@@ -167,14 +168,14 @@ public class AllocationManagementAction {
 
   /**
    * Action to perform allocation of functional exchanges.
-   * @param selectedCapellaElement_p
-   * @param object_p
+   * @param selectedCapellaElement
+   * @param object
    */
-  public void allocatingFEsToComponentExchanges(List<EObject> targetElements_p, EObject sourceElement_p) {
-    if (sourceElement_p != null) {
-      if (sourceElement_p instanceof ComponentExchange) {
-        ComponentExchange compExc = (ComponentExchange) sourceElement_p;
-        for (EObject object : targetElements_p) {
+  public void allocatingFEsToComponentExchanges(List<EObject> targetElements, EObject sourceElement) {
+    if (sourceElement != null) {
+      if (sourceElement instanceof ComponentExchange) {
+        ComponentExchange compExc = (ComponentExchange) sourceElement;
+        for (EObject object : targetElements) {
           if (object instanceof FunctionalExchange) {
             FunctionalExchange functExc = (FunctionalExchange) object;
             ComponentExchangeFunctionalExchangeAllocation allocation = FaFactory.eINSTANCE.createComponentExchangeFunctionalExchangeAllocation();
@@ -196,14 +197,14 @@ public class AllocationManagementAction {
 
   /**
    * Action to perform allocation of component Exchanges.
-   * @param selectedCapellaElement_p
-   * @param object_p
+   * @param selectedCapellaElement
+   * @param object
    */
-  public void allocatingCEsToPhysicalLinks(List<EObject> targetElements_p, EObject sourceElement_p) {
-    if (sourceElement_p != null) {
-      if (sourceElement_p instanceof PhysicalLink) {
-        PhysicalLink physicalLink = (PhysicalLink) sourceElement_p;
-        for (EObject object : targetElements_p) {
+  public void allocatingCEsToPhysicalLinks(List<EObject> targetElements, EObject sourceElement) {
+    if (sourceElement != null) {
+      if (sourceElement instanceof PhysicalLink) {
+        PhysicalLink physicalLink = (PhysicalLink) sourceElement;
+        for (EObject object : targetElements) {
           if (object instanceof ComponentExchange) {
             ComponentExchangeAllocation allocation = FaFactory.eINSTANCE.createComponentExchangeAllocation();
             // add allocation to component exchange

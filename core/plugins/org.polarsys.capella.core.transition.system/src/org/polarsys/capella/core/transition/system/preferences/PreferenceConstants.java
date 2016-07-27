@@ -64,6 +64,8 @@ public class PreferenceConstants {
 
   public static final String P_F_TEXT = "Function";
 
+  public static final String P_C_TEXT = "Component";
+
   public static final String P_BC_TEXT = "Behavioral Component";
 
   public static final String P_IC_TEXT = "Implementation Component";

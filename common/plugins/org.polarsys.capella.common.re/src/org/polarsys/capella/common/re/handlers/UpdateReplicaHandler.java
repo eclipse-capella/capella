@@ -14,17 +14,17 @@ package org.polarsys.capella.common.re.handlers;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-
-import org.polarsys.capella.core.transition.common.context.TransitionContext;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.commands.UpdateReplicaCommand;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
+import org.polarsys.capella.core.transition.common.commands.CommandHandler;
+import org.polarsys.capella.core.transition.common.context.TransitionContext;
 
 /**
  */
-public class UpdateReplicaHandler extends AbstractReHandler {
+public class UpdateReplicaHandler extends CommandHandler {
 
   /**
    * {@inheritDoc}
@@ -41,8 +41,8 @@ public class UpdateReplicaHandler extends AbstractReHandler {
   public void setEnabled(Object evaluationContext) {
     super.setEnabled(evaluationContext);
 
-    Collection<CatalogElement> elements =
-        ReplicableElementHandlerHelper.getInstance(TransitionContext.EMPTY_CONTEXT).getIndirectlyReplicableElementsForCommand(TransitionContext.EMPTY_CONTEXT,
+    Collection<CatalogElement> elements = ReplicableElementHandlerHelper.getInstance(TransitionContext.EMPTY_CONTEXT)
+        .getIndirectlyReplicableElementsForCommand(TransitionContext.EMPTY_CONTEXT,
             getInitialSelection(evaluationContext));
 
     if (!elements.isEmpty()) {

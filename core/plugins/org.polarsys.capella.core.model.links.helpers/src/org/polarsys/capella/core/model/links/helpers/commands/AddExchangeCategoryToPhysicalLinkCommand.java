@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.links.helpers.commands;
 
 import java.util.List;
@@ -24,13 +25,13 @@ import org.polarsys.capella.core.model.links.helpers.LinkInfo.LinkStyle;
 public class AddExchangeCategoryToPhysicalLinkCommand extends AbstractQueryBasedCommand {
 
 	  /**
-	   * @param label_p
-	   * @param linkGraphicalRepresentation_p
-	   * @param linkType_p
-	   * @param linkRefInSource_p
+	   * @param label
+	   * @param linkGraphicalRepresentation
+	   * @param linkType
+	   * @param linkRefInSource
 	   */
-	  public AddExchangeCategoryToPhysicalLinkCommand(EClass linkType_p, EReference linkRefInSource_p) {
-	    super("Add Exchange Category to Physical Link", LinkStyle.LINE_DASHED, linkType_p, linkRefInSource_p);
+	  public AddExchangeCategoryToPhysicalLinkCommand(EClass linkType, EReference linkRefInSource) {
+	    super("Add Exchange Category to Physical Link", LinkStyle.LINE_DASHED, linkType, linkRefInSource);
 	  }
 
 	  /**

@@ -48,7 +48,7 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 	@Override
 	public List<Object> execute(Object input, IQueryContext context) {
 		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+		List<EObject> availableElements = getAvailableElements(capellaElement);
 		return (List) availableElements;
 	}
 
@@ -77,12 +77,12 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 	 * <p>
 	 * Refer MQRY_Parameter_Type_1
 	 * </p>
-	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
+	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element) {
+	public List<EObject> getAvailableElements(CapellaElement element) {
 		Classifier classifierToRemove = null;
 		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+		List<EObject> availableElements = new ArrayList<EObject>();
 		boolean isParameterFromSharedPkg = false;
 		if (null == systemEngineering) {
 			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
@@ -126,8 +126,8 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Parameter_Type_11(Parameter currenParameter) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+	private List<EObject> getRule_MQRY_Parameter_Type_11(Parameter currenParameter) {
+		List<EObject> availableElements = new ArrayList<EObject>(1);
 		EObject container = currenParameter.eContainer();
 		if (container instanceof Operation) {
 			Operation operation = (Operation) container;
@@ -138,7 +138,7 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 			if (comp != null) {
 				DataPkg dataPkg = comp.getOwnedDataPkg();
 				if (dataPkg != null) {
-					for (CapellaElement element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
+					for (EObject element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
 						if (element.equals(type))
 							continue;
 						availableElements.add(element);
@@ -149,15 +149,15 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Parameter_Type_12(Parameter currentParameter) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+	private List<EObject> getRule_MQRY_Parameter_Type_12(Parameter currentParameter) {
+		List<EObject> availableElements = new ArrayList<EObject>(1);
 		EObject container = currentParameter.eContainer();
 		if (container instanceof Operation) {
 			Operation operation = (Operation) container;
 			AbstractType type = currentParameter.getType();
 			List<DataPkg> dataPkgList = OperationExt.getDataPkgsFromParentHierarchy(operation);
 			for (DataPkg dataPkg : dataPkgList) {
-				for (CapellaElement element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
+				for (EObject element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
 					if (element.equals(type))
 						continue;
 					availableElements.add(element);
@@ -211,13 +211,13 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Parameter_Type_15(Parameter currenParameter, SystemEngineering systemEngineering) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+	private List<EObject> getRule_MQRY_Parameter_Type_15(Parameter currenParameter, SystemEngineering systemEngineering) {
+		List<EObject> availableElements = new ArrayList<EObject>(1);
 		AbstractType type = currenParameter.getType();
 		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
 			DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
 			if (dataPkg != null) {
-				for (CapellaElement element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
+				for (EObject element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
 					if (element.equals(type))
 						continue;
 					availableElements.add(element);
@@ -267,12 +267,12 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 	 * @param type
 	 * @return
 	 */
-	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch, AbstractType type) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+	private List<EObject> getElementsFromBlockArchitecture(BlockArchitecture arch, AbstractType type) {
+		List<EObject> availableElements = new ArrayList<EObject>(1);
 		if (null != arch) {
 			DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(arch);
 			if (dataPkg != null) {
-				for (CapellaElement element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
+				for (EObject element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
 					if (element.equals(type))
 						continue;
 					availableElements.add(element);
@@ -282,8 +282,8 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Parameter_Type_12_1(Parameter currentParameter) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+	private List<EObject> getRule_MQRY_Parameter_Type_12_1(Parameter currentParameter) {
+		List<EObject> availableElements = new ArrayList<EObject>(1);
 		EObject container = currentParameter.eContainer();
 		if (container instanceof Operation) {
 			Operation operation = (Operation) container;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -2537,6 +2537,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		abstractFunctionEClass.getESuperTypes().add(theBehaviorPackage.getAbstractEvent());
 		functionPortEClass.getESuperTypes().add(theInformationPackage.getPort());
 		functionPortEClass.getESuperTypes().add(theCapellacorePackage.getTypedElement());
+		functionPortEClass.getESuperTypes().add(theBehaviorPackage.getAbstractEvent());
 		componentExchangeEClass.getESuperTypes().add(theBehaviorPackage.getAbstractEvent());
 		componentExchangeEClass.getESuperTypes().add(theInformationPackage.getAbstractEventOperation());
 		componentExchangeEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());

@@ -13,7 +13,6 @@ package org.polarsys.capella.common.data.modellingcore.provider;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -34,11 +33,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
-import org.polarsys.capella.common.model.IDelegatedListener;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.kitalpha.emde.model.edit.provider.ExtensibleElementItemProvider;
-import org.polarsys.kitalpha.emde.model.edit.provider.ExtensionItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.polarsys.capella.common.data.modellingcore.ModelElement} object.
@@ -49,7 +45,7 @@ import org.polarsys.kitalpha.emde.model.edit.provider.ExtensionItemPropertyDescr
 public class ModelElementItemProvider extends ExtensibleElementItemProvider implements IEditingDomainItemProvider,
     IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
-  /**
+	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -80,7 +76,7 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
 		return itemPropertyDescriptors;
 	}
 
-		/**
+  /**
    * This adds a property descriptor for the Id feature. <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated NOT
    */
@@ -92,7 +88,7 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
         false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
   }
 
-  /**
+	/**
 	 * This adds a property descriptor for the Sid feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -119,7 +115,7 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
 		// end-extension-code
 	}
 
-		/**
+	/**
 	 * This adds a property descriptor for the Constraints feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -146,7 +142,7 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
 		// end-extension-code
 	}
 
-		/**
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -163,7 +159,7 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
 		return childrenFeatures;
 	}
 
-		/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -176,7 +172,7 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
 		return super.getChildFeature(object, child);
 	}
 
-		/**
+	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -214,7 +210,7 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
 
 	}
 
-		/**
+	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
@@ -237,7 +233,7 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
 		super.notifyChanged(notification);
 	}
 
-		/**
+	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
@@ -249,7 +245,7 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
-		/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -258,6 +254,7 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
 		return new SharedInitializeCopyCommand(domain, owner, helper);
 	}
+
 
   /**
    * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createItemPropertyDescriptor(org.eclipse.emf.common.notify.AdapterFactory,
@@ -271,5 +268,4 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
     return new ModelElementItemPropertyDescriptor(adapterFactory, resourceLocator, displayName, description, feature, isSettable, multiLine,
         sortChoices, staticImage, category, filterFlags);
   }
-
 }

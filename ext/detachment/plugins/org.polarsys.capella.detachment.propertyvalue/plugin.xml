@@ -19,12 +19,14 @@
          <class
                scrutinize="org.polarsys.capella.detachment.propertyvalues.scrutinizers.PropertyValuesScrutinizer">
          </class>
+         <!--
          <class
                scrutinize="org.polarsys.capella.detachment.propertyvalues.scrutinizers.PropertyGroupScrutinizer">
          </class>
          <class
                scrutinize="org.polarsys.capella.detachment.propertyvalues.scrutinizers.PropertyValuePackageScrutinizer">
          </class>
+         -->
       </scrutiny>
    </extension>
    <extension

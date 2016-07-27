@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.commands;
 
 import java.util.ArrayList;
@@ -54,51 +55,51 @@ public class PortRealizationPropagationCommand extends AbstractFixCommand {
   }
 
   /**
-   * @param modelElement_p
+   * @param modelElement
    */
-  public PortRealizationPropagationCommand(Collection<ModelElement> selection_p) {
-    this(selection_p, new NullProgressMonitor());
+  public PortRealizationPropagationCommand(Collection<ModelElement> selection) {
+    this(selection, new NullProgressMonitor());
   }
 
   /**
-   * @param modelElement_p
-   * @param progressMonitor_p
+   * @param modelElement
+   * @param progressMonitor
    */
-  public PortRealizationPropagationCommand(Collection<ModelElement> selection_p, IProgressMonitor progressMonitor_p) {
-    super(selection_p, progressMonitor_p);
+  public PortRealizationPropagationCommand(Collection<ModelElement> selection, IProgressMonitor progressMonitor) {
+    super(selection, progressMonitor);
   }
 
   /**
    * Returns a list of model elements on which a transition should be applied
-   * @param modelElement_p
+   * @param modelElement
    * @return
    */
   @Override
   @SuppressWarnings("unchecked")
-  protected Collection<ModelElement> retrieveModelElements(ModelElement modelElement_p) {
-    if (modelElement_p instanceof BlockArchitecture) {
-      Collection<?> result = FunctionalExt.getAllFunctionalExchanges((BlockArchitecture) modelElement_p);
+  protected Collection<ModelElement> retrieveModelElements(ModelElement modelElement) {
+    if (modelElement instanceof BlockArchitecture) {
+      Collection<?> result = FunctionalExt.getAllFunctionalExchanges((BlockArchitecture) modelElement);
       return (Collection<ModelElement>) result;
-    } else if (modelElement_p instanceof FunctionalExchange) {
-      return Collections.singleton(modelElement_p);
-    } else if (modelElement_p instanceof AbstractFunction) {
-      Collection<?> result = FunctionExt.getAllOwnedFunctionalExchanges((AbstractFunction) modelElement_p);
+    } else if (modelElement instanceof FunctionalExchange) {
+      return Collections.singleton(modelElement);
+    } else if (modelElement instanceof AbstractFunction) {
+      Collection<?> result = FunctionExt.getAllOwnedFunctionalExchanges((AbstractFunction) modelElement);
       return (Collection<ModelElement>) result;
-    } else if (modelElement_p instanceof ComponentExchange) {
-      return Collections.singleton(modelElement_p);
-    } else if (modelElement_p instanceof Component) {
-      Collection<?> result = ComponentExt.getAllOwnedComponentExchanges((Component) modelElement_p);
+    } else if (modelElement instanceof ComponentExchange) {
+      return Collections.singleton(modelElement);
+    } else if (modelElement instanceof Component) {
+      Collection<?> result = ComponentExt.getAllOwnedComponentExchanges((Component) modelElement);
       return (Collection<ModelElement>) result;
-    } else if (modelElement_p instanceof Part) {
-      return retrieveModelElements(((Part) modelElement_p).getAbstractType());
+    } else if (modelElement instanceof Part) {
+      return retrieveModelElements(((Part) modelElement).getAbstractType());
     }
-    return Collections.singleton(modelElement_p);
+    return Collections.singleton(modelElement);
   }
 
   @Override
-  protected void process(ModelElement element_p) {
-    if (element_p instanceof FunctionalExchange) {
-      FunctionalExchange fe = (FunctionalExchange) element_p;
+  protected void process(ModelElement element) {
+    if (element instanceof FunctionalExchange) {
+      FunctionalExchange fe = (FunctionalExchange) element;
       List<CapellaElement> previousPhaseElements = RefinementLinkExt.getRelatedTargetElements(fe, FaPackage.Literals.FUNCTIONAL_EXCHANGE);
 
       ActivityNode sourceCurrent = fe.getSource();
@@ -120,8 +121,8 @@ public class PortRealizationPropagationCommand extends AbstractFixCommand {
         }
         detachIfUnused((Port) targetCurrent);
       }
-    } else if (element_p instanceof ComponentExchange) {
-      ComponentExchange ce = (ComponentExchange) element_p;
+    } else if (element instanceof ComponentExchange) {
+      ComponentExchange ce = (ComponentExchange) element;
       List<CapellaElement> previousPhaseElements = RefinementLinkExt.getRelatedTargetElements(ce, FaPackage.Literals.COMPONENT_EXCHANGE);
 
       EObject sourceCurrent = ComponentExchangeExt.getSourcePort(ce);
@@ -147,49 +148,49 @@ public class PortRealizationPropagationCommand extends AbstractFixCommand {
   }
 
   /**
-   * @param current_p
-   * @param previous_p
+   * @param current
+   * @param previous
    */
-  private void attachIfNeeded(Port current_p, EObject previous_p) {
-    if ((previous_p != null) && (previous_p instanceof Port)) {
-      if (!RefinementLinkExt.isLinkedTo(current_p, (TraceableElement) previous_p)) {
-        attach(current_p, (TraceableElement) previous_p);
+  private void attachIfNeeded(Port current, EObject previous) {
+    if ((previous != null) && (previous instanceof Port)) {
+      if (!RefinementLinkExt.isLinkedTo(current, (TraceableElement) previous)) {
+        attach(current, (TraceableElement) previous);
       }
     }
   }
 
   /**
-   * @param current_p
-   * @param sourcePrevious_p
+   * @param current
+   * @param sourcePrevious
    */
-  private void attach(Port current_p, TraceableElement previous_p) {
+  private void attach(Port current, TraceableElement previous) {
     PortRealization realization = InformationFactory.eINSTANCE.createPortRealization();
-    realization.setSourceElement(current_p);
-    realization.setTargetElement(previous_p);
-    current_p.getOwnedPortRealizations().add(realization);
+    realization.setSourceElement(current);
+    realization.setTargetElement(previous);
+    current.getOwnedPortRealizations().add(realization);
   }
 
   /**
-   * @param current_p
+   * @param current
    */
-  private void detachIfUnused(Port current_p) {
-    if (current_p != null) {
+  private void detachIfUnused(Port current) {
+    if (current != null) {
       List<CapellaElement> realizedExch = new ArrayList<CapellaElement>();
-      if (current_p instanceof FunctionOutputPort) {
-        for (ActivityEdge edge : ((FunctionOutputPort) current_p).getOutgoing()) {
+      if (current instanceof FunctionOutputPort) {
+        for (ActivityEdge edge : ((FunctionOutputPort) current).getOutgoing()) {
           realizedExch.addAll(RefinementLinkExt.getRelatedTargetElements((CapellaElement) edge, FaPackage.Literals.FUNCTIONAL_EXCHANGE));
         }
-      } else if (current_p instanceof FunctionInputPort) {
-        for (ActivityEdge edge : ((FunctionInputPort) current_p).getIncoming()) {
+      } else if (current instanceof FunctionInputPort) {
+        for (ActivityEdge edge : ((FunctionInputPort) current).getIncoming()) {
           realizedExch.addAll(RefinementLinkExt.getRelatedTargetElements((CapellaElement) edge, FaPackage.Literals.FUNCTIONAL_EXCHANGE));
         }
-      } else if (current_p instanceof ComponentPort) {
-        for (ComponentExchange exch : ((ComponentPort) current_p).getComponentExchanges()) {
+      } else if (current instanceof ComponentPort) {
+        for (ComponentExchange exch : ((ComponentPort) current).getComponentExchanges()) {
           realizedExch.addAll(RefinementLinkExt.getRelatedTargetElements(exch, FaPackage.Literals.COMPONENT_EXCHANGE));
         }
       }
 
-      for (PortRealization rlz : current_p.getOutgoingPortRealizations()) {
+      for (PortRealization rlz : current.getOutgoingPortRealizations()) {
         Port port = rlz.getRealizedPort();
         boolean detachMe = true;
         if (port instanceof FunctionOutputPort) {
@@ -212,26 +213,26 @@ public class PortRealizationPropagationCommand extends AbstractFixCommand {
           }
         }
         if (detachMe) {
-          detach(current_p, port);
+          detach(current, port);
         }
       }
     }
   }
 
   /**
-   * @param currentPort_p
-   * @param realizedPort_p
+   * @param currentPort
+   * @param realizedPort
    */
-  private void detach(Port currentPort_p, Port realizedPort_p) {
-    if ((null != currentPort_p) && (null != realizedPort_p)) {
+  private void detach(Port currentPort, Port realizedPort) {
+    if ((null != currentPort) && (null != realizedPort)) {
       PortRealization rlzToDelete = null;
-      for (PortRealization rlz : currentPort_p.getOutgoingPortRealizations()) {
-        if (realizedPort_p.equals(rlz.getRealizedPort())) {
+      for (PortRealization rlz : currentPort.getOutgoingPortRealizations()) {
+        if (realizedPort.equals(rlz.getRealizedPort())) {
           rlzToDelete = rlz;
         }
       }
       if (null != rlzToDelete) {
-        currentPort_p.getOwnedPortRealizations().remove(rlzToDelete);
+        currentPort.getOwnedPortRealizations().remove(rlzToDelete);
       }
     }
   }

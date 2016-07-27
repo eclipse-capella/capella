@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.util.List;
@@ -31,11 +32,11 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 public abstract class CreateCategoriesController {
   Logger _logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
 
-  public static CreateCategoriesController createCreateCategoriesController(List<EObject> selection_p) {
-    if (selection_p.isEmpty()) {
+  public static CreateCategoriesController createCreateCategoriesController(List<EObject> selection) {
+    if (selection.isEmpty()) {
       return null;
     }
-    EObject first = selection_p.get(0);
+    EObject first = selection.get(0);
     if (first instanceof FunctionalExchange) {
       return new CreateFECategoriesController();
     }
@@ -48,31 +49,31 @@ public abstract class CreateCategoriesController {
     return null;
   }
 
-  public void createAndAttachCategory(List<EObject> selection_p) {
-    if (selection_p.isEmpty()) {
+  public void createAndAttachCategory(List<EObject> selection) {
+    if (selection.isEmpty()) {
       return;
     }
 
   }
 
-  protected EObject createCategory(EObject container_p) {
+  protected EObject createCategory(EObject container) {
     return null;
   }
 
   /**
-   * @param categoryContainer_p
-   * @param asList_p
+   * @param categoryContainer
+   * @param asList
    * @return
    */
-  protected boolean isNullOrNotInstanceOf(EObject elt_p, List<EClass> eClasses_p) {
+  protected boolean isNullOrNotInstanceOf(EObject elt, List<EClass> eClasses) {
     boolean result = false;
-    if (null == elt_p) {
+    if (null == elt) {
       result = true;
-    } else if (eClasses_p.isEmpty()) {
+    } else if (eClasses.isEmpty()) {
       result = false;
     } else {
-      for (EClass eClass : eClasses_p) { // elt is instance of an eclass from the list ?
-        if (eClass.isInstance(elt_p)) {
+      for (EClass eClass : eClasses) { // elt is instance of an eclass from the list ?
+        if (eClass.isInstance(elt)) {
           result = false;
           return result;
         }
@@ -83,25 +84,25 @@ public abstract class CreateCategoriesController {
   }
 
   /**
-   * Computes the best container to store a category for selection_p
-   * @param selection_p
-   * @param expectedContainerType_p
+   * Computes the best container to store a category for selection
+   * @param selection
+   * @param expectedContainerType
    * @return
    */
   /**
    * {@inheritDoc}
    */
-  protected EObject getBestContainerForCategory(List<EObject> selection_p, List<EClass> expectedContainerType_p) {
+  protected EObject getBestContainerForCategory(List<EObject> selection, List<EClass> expectedContainerType) {
     EObject container;
 
-    EObject commonAncestor = EcoreUtil2.getCommonAncestor(selection_p);
-    if (EObjectExt.isInstanceOf(commonAncestor, expectedContainerType_p)) {
+    EObject commonAncestor = EcoreUtil2.getCommonAncestor(selection);
+    if (EObjectExt.isInstanceOf(commonAncestor, expectedContainerType)) {
       container = commonAncestor;
     } else {
-      container = EcoreUtil2.getFirstContainer(commonAncestor, expectedContainerType_p);
+      container = EcoreUtil2.getFirstContainer(commonAncestor, expectedContainerType);
     }
     if (null == container) {// no correct container could be retrieved => return the Context
-      BlockArchitecture currentArch = BlockArchitectureExt.getRootBlockArchitecture(selection_p.get(0));
+      BlockArchitecture currentArch = BlockArchitectureExt.getRootBlockArchitecture(selection.get(0));
       container = BlockArchitectureExt.getContext(currentArch, false);
     }
     return container;

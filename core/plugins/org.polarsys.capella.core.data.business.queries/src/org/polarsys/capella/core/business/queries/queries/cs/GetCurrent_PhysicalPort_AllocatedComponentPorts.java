@@ -13,6 +13,7 @@ package org.polarsys.capella.core.business.queries.queries.cs;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
@@ -27,15 +28,15 @@ public class GetCurrent_PhysicalPort_AllocatedComponentPorts extends AbstractQue
 	@Override
 	public List<Object> execute(Object input, IQueryContext context) {
 		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> currentElements = getCurrentElements(capellaElement, false);
+		List<EObject> currentElements = getCurrentElements(capellaElement, false);
 		return (List) currentElements;
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
+	public List<EObject> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+		List<EObject> currentElements = new ArrayList<EObject>();
 		if (element instanceof PhysicalPort) {
 			PhysicalPort elt = (PhysicalPort) element;
 			for (AbstractTrace trace : elt.getOutgoingTraces()) {

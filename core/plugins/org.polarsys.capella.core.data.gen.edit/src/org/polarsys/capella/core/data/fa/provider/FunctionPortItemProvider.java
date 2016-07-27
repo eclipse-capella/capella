@@ -140,6 +140,7 @@ public class FunctionPortItemProvider
 
 			addAbstractTypePropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
+			addAbstractTypedElementsPropertyDescriptor(object);
 			addRepresentedComponentPortPropertyDescriptor(object);
 			addAllocatorComponentPortsPropertyDescriptor(object);
 			addRealizedFunctionPortsPropertyDescriptor(object);
@@ -200,6 +201,33 @@ public class FunctionPortItemProvider
 		// begin-extension-code
 				 null);
 		itemPropertyDescriptors.add(typePropertyDescriptor);
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Abstract Typed Elements feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAbstractTypedElementsPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AbstractType_abstractTypedElements_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractType_abstractTypedElements_feature", "_UI_AbstractType_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 ModellingcorePackage.Literals.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
 		// end-extension-code
 	}
 

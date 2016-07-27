@@ -13,6 +13,7 @@ package org.polarsys.capella.core.business.queries.queries.interaction;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -33,7 +34,7 @@ public class GetAvailable_SequenceMessage_InvokedOperation extends AbstractQuery
 	}
 
 	/** 
-	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
+	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
 	 */
 	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		SequenceMessage message = (SequenceMessage) element;

@@ -32,7 +32,7 @@ public class GetCurrent_FinalState_AvailableInStates extends AbstractQuery {
 	}
 
 	/** 
-	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
+	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getCurrentElements(EObject,boolean)
 	 */
 	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();

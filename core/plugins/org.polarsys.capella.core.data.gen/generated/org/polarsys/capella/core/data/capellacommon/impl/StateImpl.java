@@ -25,12 +25,14 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.polarsys.capella.core.data.capellacommon.Pseudostate;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -45,6 +47,7 @@ import org.polarsys.capella.core.data.interaction.AbstractCapability;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateImpl#getOwnedRegions <em>Owned Regions</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateImpl#getOwnedConnectionPoints <em>Owned Connection Points</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateImpl#getAvailableAbstractFunctions <em>Available Abstract Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateImpl#getAvailableFunctionalChains <em>Available Functional Chains</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateImpl#getAvailableAbstractCapabilities <em>Available Abstract Capabilities</em>}</li>
@@ -86,42 +89,68 @@ public class StateImpl extends AbstractStateImpl implements State {
 
 
 	/**
-	 * The cached value of the '{@link #getEntry() <em>Entry</em>}' reference.
+	 * The cached value of the '{@link #getOwnedConnectionPoints() <em>Owned Connection Points</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedConnectionPoints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Pseudostate> ownedConnectionPoints;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * The cached value of the '{@link #getEntry() <em>Entry</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getEntry()
 	 * @generated
 	 * @ordered
 	 */
-	protected AbstractEvent entry;
+	protected EList<AbstractEvent> entry;
 
 
 
 
 
 	/**
-	 * The cached value of the '{@link #getDoActivity() <em>Do Activity</em>}' reference.
+	 * The cached value of the '{@link #getDoActivity() <em>Do Activity</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDoActivity()
 	 * @generated
 	 * @ordered
 	 */
-	protected AbstractEvent doActivity;
+	protected EList<AbstractEvent> doActivity;
 
 
 
 
 
 	/**
-	 * The cached value of the '{@link #getExit() <em>Exit</em>}' reference.
+	 * The cached value of the '{@link #getExit() <em>Exit</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getExit()
 	 * @generated
 	 * @ordered
 	 */
-	protected AbstractEvent exit;
+	protected EList<AbstractEvent> exit;
 
 
 
@@ -182,6 +211,20 @@ public class StateImpl extends AbstractStateImpl implements State {
 
 
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<Pseudostate> getOwnedConnectionPoints() {
+
+		if (ownedConnectionPoints == null) {
+			ownedConnectionPoints = new EObjectContainmentEList.Resolving<Pseudostate>(Pseudostate.class, this, CapellacommonPackage.STATE__OWNED_CONNECTION_POINTS);
+		}
+		return ownedConnectionPoints;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -330,15 +373,10 @@ public class StateImpl extends AbstractStateImpl implements State {
 	 * @generated
 	 */
 
-	public AbstractEvent getEntry() {
+	public EList<AbstractEvent> getEntry() {
 
-		if (entry != null && entry.eIsProxy()) {
-			InternalEObject oldEntry = (InternalEObject)entry;
-			entry = (AbstractEvent)eResolveProxy(oldEntry);
-			if (entry != oldEntry) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE__ENTRY, oldEntry, entry));
-			}
+		if (entry == null) {
+			entry = new EObjectResolvingEList<AbstractEvent>(AbstractEvent.class, this, CapellacommonPackage.STATE__ENTRY);
 		}
 		return entry;
 	}
@@ -350,48 +388,10 @@ public class StateImpl extends AbstractStateImpl implements State {
 	 * @generated
 	 */
 
-	public AbstractEvent basicGetEntry() {
+	public EList<AbstractEvent> getDoActivity() {
 
-		return entry;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setEntry(AbstractEvent newEntry) {
-
-		AbstractEvent oldEntry = entry;
-		entry = newEntry;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE__ENTRY, oldEntry, entry));
-
-	}
-
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public AbstractEvent getDoActivity() {
-
-		if (doActivity != null && doActivity.eIsProxy()) {
-			InternalEObject oldDoActivity = (InternalEObject)doActivity;
-			doActivity = (AbstractEvent)eResolveProxy(oldDoActivity);
-			if (doActivity != oldDoActivity) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE__DO_ACTIVITY, oldDoActivity, doActivity));
-			}
+		if (doActivity == null) {
+			doActivity = new EObjectResolvingEList<AbstractEvent>(AbstractEvent.class, this, CapellacommonPackage.STATE__DO_ACTIVITY);
 		}
 		return doActivity;
 	}
@@ -403,84 +403,13 @@ public class StateImpl extends AbstractStateImpl implements State {
 	 * @generated
 	 */
 
-	public AbstractEvent basicGetDoActivity() {
+	public EList<AbstractEvent> getExit() {
 
-		return doActivity;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setDoActivity(AbstractEvent newDoActivity) {
-
-		AbstractEvent oldDoActivity = doActivity;
-		doActivity = newDoActivity;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE__DO_ACTIVITY, oldDoActivity, doActivity));
-
-	}
-
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public AbstractEvent getExit() {
-
-		if (exit != null && exit.eIsProxy()) {
-			InternalEObject oldExit = (InternalEObject)exit;
-			exit = (AbstractEvent)eResolveProxy(oldExit);
-			if (exit != oldExit) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE__EXIT, oldExit, exit));
-			}
+		if (exit == null) {
+			exit = new EObjectResolvingEList<AbstractEvent>(AbstractEvent.class, this, CapellacommonPackage.STATE__EXIT);
 		}
 		return exit;
 	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public AbstractEvent basicGetExit() {
-
-		return exit;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setExit(AbstractEvent newExit) {
-
-		AbstractEvent oldExit = exit;
-		exit = newExit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE__EXIT, oldExit, exit));
-
-	}
-
-
-
-
 
 
 	/**
@@ -577,6 +506,8 @@ public class StateImpl extends AbstractStateImpl implements State {
 		switch (featureID) {
 			case CapellacommonPackage.STATE__OWNED_REGIONS:
 				return ((InternalEList<?>)getOwnedRegions()).basicRemove(otherEnd, msgs);
+			case CapellacommonPackage.STATE__OWNED_CONNECTION_POINTS:
+				return ((InternalEList<?>)getOwnedConnectionPoints()).basicRemove(otherEnd, msgs);
 			case CapellacommonPackage.STATE__STATE_INVARIANT:
 				return basicSetStateInvariant(null, msgs);
 		}
@@ -593,6 +524,8 @@ public class StateImpl extends AbstractStateImpl implements State {
 		switch (featureID) {
 			case CapellacommonPackage.STATE__OWNED_REGIONS:
 				return getOwnedRegions();
+			case CapellacommonPackage.STATE__OWNED_CONNECTION_POINTS:
+				return getOwnedConnectionPoints();
 			case CapellacommonPackage.STATE__AVAILABLE_ABSTRACT_FUNCTIONS:
 				return getAvailableAbstractFunctions();
 			case CapellacommonPackage.STATE__AVAILABLE_FUNCTIONAL_CHAINS:
@@ -600,14 +533,11 @@ public class StateImpl extends AbstractStateImpl implements State {
 			case CapellacommonPackage.STATE__AVAILABLE_ABSTRACT_CAPABILITIES:
 				return getAvailableAbstractCapabilities();
 			case CapellacommonPackage.STATE__ENTRY:
-				if (resolve) return getEntry();
-				return basicGetEntry();
+				return getEntry();
 			case CapellacommonPackage.STATE__DO_ACTIVITY:
-				if (resolve) return getDoActivity();
-				return basicGetDoActivity();
+				return getDoActivity();
 			case CapellacommonPackage.STATE__EXIT:
-				if (resolve) return getExit();
-				return basicGetExit();
+				return getExit();
 			case CapellacommonPackage.STATE__STATE_INVARIANT:
 				if (resolve) return getStateInvariant();
 				return basicGetStateInvariant();
@@ -628,32 +558,21 @@ public class StateImpl extends AbstractStateImpl implements State {
 				getOwnedRegions().clear();
 				getOwnedRegions().addAll((Collection<? extends Region>)newValue);
 				return;
+			case CapellacommonPackage.STATE__OWNED_CONNECTION_POINTS:
+				getOwnedConnectionPoints().clear();
+				getOwnedConnectionPoints().addAll((Collection<? extends Pseudostate>)newValue);
+				return;
 			case CapellacommonPackage.STATE__ENTRY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractEvent) {
-				// end-extension-code
-					setEntry((AbstractEvent)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
+				getEntry().clear();
+				getEntry().addAll((Collection<? extends AbstractEvent>)newValue);
 				return;
 			case CapellacommonPackage.STATE__DO_ACTIVITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractEvent) {
-				// end-extension-code
-					setDoActivity((AbstractEvent)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
+				getDoActivity().clear();
+				getDoActivity().addAll((Collection<? extends AbstractEvent>)newValue);
 				return;
 			case CapellacommonPackage.STATE__EXIT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractEvent) {
-				// end-extension-code
-					setExit((AbstractEvent)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
+				getExit().clear();
+				getExit().addAll((Collection<? extends AbstractEvent>)newValue);
 				return;
 			case CapellacommonPackage.STATE__STATE_INVARIANT:
 				// begin-extension-code
@@ -680,14 +599,17 @@ public class StateImpl extends AbstractStateImpl implements State {
 			case CapellacommonPackage.STATE__OWNED_REGIONS:
 				getOwnedRegions().clear();
 				return;
+			case CapellacommonPackage.STATE__OWNED_CONNECTION_POINTS:
+				getOwnedConnectionPoints().clear();
+				return;
 			case CapellacommonPackage.STATE__ENTRY:
-				setEntry((AbstractEvent)null);
+				getEntry().clear();
 				return;
 			case CapellacommonPackage.STATE__DO_ACTIVITY:
-				setDoActivity((AbstractEvent)null);
+				getDoActivity().clear();
 				return;
 			case CapellacommonPackage.STATE__EXIT:
-				setExit((AbstractEvent)null);
+				getExit().clear();
 				return;
 			case CapellacommonPackage.STATE__STATE_INVARIANT:
 				setStateInvariant((AbstractConstraint)null);
@@ -708,6 +630,8 @@ public class StateImpl extends AbstractStateImpl implements State {
 		switch (featureID) {
 			case CapellacommonPackage.STATE__OWNED_REGIONS:
 				return ownedRegions != null && !ownedRegions.isEmpty();
+			case CapellacommonPackage.STATE__OWNED_CONNECTION_POINTS:
+				return ownedConnectionPoints != null && !ownedConnectionPoints.isEmpty();
 			case CapellacommonPackage.STATE__AVAILABLE_ABSTRACT_FUNCTIONS:
 				return !getAvailableAbstractFunctions().isEmpty();
 			case CapellacommonPackage.STATE__AVAILABLE_FUNCTIONAL_CHAINS:
@@ -715,11 +639,11 @@ public class StateImpl extends AbstractStateImpl implements State {
 			case CapellacommonPackage.STATE__AVAILABLE_ABSTRACT_CAPABILITIES:
 				return !getAvailableAbstractCapabilities().isEmpty();
 			case CapellacommonPackage.STATE__ENTRY:
-				return entry != null;
+				return entry != null && !entry.isEmpty();
 			case CapellacommonPackage.STATE__DO_ACTIVITY:
-				return doActivity != null;
+				return doActivity != null && !doActivity.isEmpty();
 			case CapellacommonPackage.STATE__EXIT:
-				return exit != null;
+				return exit != null && !exit.isEmpty();
 			case CapellacommonPackage.STATE__STATE_INVARIANT:
 				return stateInvariant != null;
 		}

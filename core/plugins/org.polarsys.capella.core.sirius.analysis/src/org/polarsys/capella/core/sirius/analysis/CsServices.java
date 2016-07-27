@@ -26,10 +26,10 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.commands.Command;
-import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.NotEnabledException;
 import org.eclipse.core.commands.NotHandledException;
+import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.expressions.EvaluationContext;
 import org.eclipse.emf.common.util.EList;
@@ -71,6 +71,7 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
+import org.eclipse.ui.handlers.IHandlerService;
 import org.polarsys.capella.common.data.activity.Pin;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
@@ -292,26 +293,27 @@ public class CsServices {
 
     Logger logger = Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM);
 
-    ICommandService commandService = (ICommandService) PlatformUI.getWorkbench()
-        .getService(ICommandService.class);
-    if (commandService == null) {
+    IHandlerService handlerService = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
+    ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
+    if (handlerService == null || commandService == null) {
       logger.error("Cannot access to diagram initialization tool");
       return diagram;
     }
-
-    Command command = commandService.getCommand(TRANSITION_TRACEABILITY_COMMAND);
-    Map<String, Object> params = new HashMap<String, Object>();
 
     if (sourceDiagram == null) {
       logger.error("Cannot retrieve source diagram for diagram initialization");
       return diagram;
     }
-
+    
+    Command command = commandService.getCommand(TRANSITION_TRACEABILITY_COMMAND);
+    // Create a ParameterizedCommand with no parameter
+    ParameterizedCommand parameterizedCommand = new ParameterizedCommand(command, null);
+    
     EvaluationContext context = new EvaluationContext(null, Collections.singleton(sourceDiagram));
     context.addVariable("TARGET_DIAGRAM", diagram);
 
     try {
-      command.executeWithChecks(new ExecutionEvent(command, params, sourceDiagram, context));
+      handlerService.executeCommandInContext(parameterizedCommand, null, context);
     } catch (ExecutionException exception) {
       logger.error("Errors occured while iagram initialization", exception);
 
@@ -3204,7 +3206,7 @@ public class CsServices {
       return false;
     }
 
-    if (source == target) {
+    if (source == null || target == null || source == target) {
       return false;
     }
 
@@ -3215,19 +3217,17 @@ public class CsServices {
     Collection<? extends EObject> semantics = getComponentExchangeByDelegationSemantics(communication);
 
     // We needs to recompute this, sirius make supposition, if no semanticElements, semanticElements = target...
-    if (semantics.size() == 0) {
+    if (semantics.isEmpty()) {
       return false;
     }
 
-    if (source != null) {
-      DDiagram diagram = CapellaServices.getService().getDiagramContainer(source);
-      // check the activation of the filters
-      if (diagram != null) {
-        for (FilterDescription filter : diagram.getActivatedFilters()) {
-          if (IMappingNameConstants.HIDE_CE_BY_DELEGATION.equals(filter.getName())) {
-            if (isFirstFilterActive(filter, diagram)) {
-              return false;
-            }
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(source);
+    // check the activation of the filters
+    if (diagram != null) {
+      for (FilterDescription filter : diagram.getActivatedFilters()) {
+        if (IMappingNameConstants.HIDE_CE_BY_DELEGATION.equals(filter.getName())) {
+          if (isFirstFilterActive(filter, diagram)) {
+            return false;
           }
         }
       }
@@ -5372,7 +5372,7 @@ public class CsServices {
       EList<AbstractEvent> triggers = transition.getTriggers();
       for (AbstractEvent trigger : triggers) {
         if (trigger != null) {
-          String name = trigger.getName();
+          String name = EObjectLabelProviderHelper.getText(trigger);
           if (trigger instanceof ChangeEvent) {
             ChangeEvent changeEvent = (ChangeEvent) trigger;
             name = "(" + changeEvent.getKind() + ") "; //$NON-NLS-1$ //$NON-NLS-2$
@@ -5416,7 +5416,7 @@ public class CsServices {
       // Effect
       if (effect != null) {
         result.append(" / "); //$NON-NLS-1$
-        result.append(effect.getName()); 
+        result.append(EObjectLabelProviderHelper.getText(effect)); 
       }
     }
     return result.toString();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ILightweightLabelDecorator;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.team.core.RepositoryProvider;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
@@ -42,56 +43,57 @@ public class CapellaScmLabelDecorator implements ILightweightLabelDecorator {
   /**
    * @see org.eclipse.jface.viewers.ILightweightLabelDecorator#decorate(java.lang.Object, org.eclipse.jface.viewers.IDecoration)
    */
-  public void decorate(Object element_p, IDecoration decoration_p) {
-    // The plugin.xml (via decorator extension) define the enablement.
+  public void decorate(Object element, IDecoration decoration) {
+    // The plugin.xml (via decorator extension) defines the enable status.
     // Only the NamedElement model element is decorated.
     // Ensure that in checking given object type.
-    if (element_p instanceof NamedElement) {
-      handleNamedElement(decoration_p, (NamedElement) element_p);
-    } else if (element_p instanceof DRepresentation) {
-      handleRespresentation(decoration_p, (DRepresentation) element_p);
+    if (element instanceof NamedElement) {
+      handleNamedElement(decoration, (NamedElement) element);
+    } else if (element instanceof DRepresentation) {
+      handleRespresentation(decoration, (DRepresentation) element);
+    } else if (element instanceof DRepresentationDescriptor) {
+      handleRespresentation(decoration, ((DRepresentationDescriptor) element).getRepresentation());
     }
   }
 
   /**
    * Handle Representation.
-   * @param decoration_p
-   * @param element_p
+   * @param decoration
+   * @param element
    */
-  protected void handleRespresentation(IDecoration decoration_p, DRepresentation element_p) {
-    addScmOverlay(decoration_p, element_p);
+  protected void handleRespresentation(IDecoration decoration, DRepresentation element) {
+    addScmOverlay(decoration, element);
   }
 
   /**
-   * @param element_p
-   * @param decoration_p
+   * @param decoration
    * @param element
    */
-  protected void handleNamedElement(IDecoration decoration_p, NamedElement element_p) {
+  protected void handleNamedElement(IDecoration decoration, NamedElement element) {
     // Add an overlay if given element is the Capella Project or a fragment root object.
     boolean addOverlay = false;
-    if (element_p instanceof Project) {
+    if (element instanceof Project) {
       addOverlay = true;
     } else {
       // Check if given element is controlled in a fragment
       try {
-        addOverlay = AdapterFactoryEditingDomain.isControlled(element_p);
-      } catch (IllegalStateException exception_p) {
+        addOverlay = AdapterFactoryEditingDomain.isControlled(element);
+      } catch (IllegalStateException exception) {
         // may not be able to check if the element is controlled in a collaborative context for example.
       }
     }
     if (addOverlay) {
-      addScmOverlay(decoration_p, element_p);
+      addScmOverlay(decoration, element);
     }
   }
 
   /**
    * Add scm overlay if needed.
-   * @param decoration_p
-   * @param element_p
+   * @param decoration
+   * @param element
    */
-  protected void addScmOverlay(IDecoration decoration_p, EObject element_p) {
-    Resource resource = element_p.eResource();
+  protected void addScmOverlay(IDecoration decoration, EObject element) {
+    Resource resource = element.eResource();
     IFile file = EcoreUtil2.getFile(resource);
     if (null != file) {
       RepositoryProvider scmProvider = RepositoryProvider.getProvider(file.getProject());
@@ -105,7 +107,7 @@ public class CapellaScmLabelDecorator implements ILightweightLabelDecorator {
         } else {
           imageDescriptor = CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SCM_CO);
         }
-        decoration_p.addOverlay(imageDescriptor);
+        decoration.addOverlay(imageDescriptor);
       }
     }
   }
@@ -113,7 +115,7 @@ public class CapellaScmLabelDecorator implements ILightweightLabelDecorator {
   /**
    * @see org.eclipse.jface.viewers.IBaseLabelProvider#addListener(org.eclipse.jface.viewers.ILabelProviderListener)
    */
-  public void addListener(ILabelProviderListener listener_p) {
+  public void addListener(ILabelProviderListener listener) {
     // Do nothing.
   }
 
@@ -127,15 +129,14 @@ public class CapellaScmLabelDecorator implements ILightweightLabelDecorator {
   /**
    * @see org.eclipse.jface.viewers.IBaseLabelProvider#isLabelProperty(java.lang.Object, java.lang.String)
    */
-  public boolean isLabelProperty(Object element_p, String property_p) {
-    // Do nothing.
+  public boolean isLabelProperty(Object element, String property) {
     return false;
   }
 
   /**
    * @see org.eclipse.jface.viewers.IBaseLabelProvider#removeListener(org.eclipse.jface.viewers.ILabelProviderListener)
    */
-  public void removeListener(ILabelProviderListener listener_p) {
+  public void removeListener(ILabelProviderListener listener) {
     // Do nothing.
   }
 }

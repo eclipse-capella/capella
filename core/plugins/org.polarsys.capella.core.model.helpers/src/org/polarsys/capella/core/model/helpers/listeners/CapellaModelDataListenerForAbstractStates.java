@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.model.helpers.listeners;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,8 @@ import org.polarsys.capella.core.data.capellacommon.Region;
  * another
  */
 public class CapellaModelDataListenerForAbstractStates extends CapellaModelDataListener {
+
+  EventProcessor eventProcessor = new MoveStateEventProcessor();
 
   /**
    * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
@@ -48,17 +49,21 @@ public class CapellaModelDataListenerForAbstractStates extends CapellaModelDataL
 
       if (notification.getEventType() == Notification.REMOVE) {
         region.getInvolvedStates().remove(notification.getOldValue());
-        if (region.eContainer() instanceof AbstractState)
+        if (region.eContainer() instanceof AbstractState) {
           ((AbstractState) region.eContainer()).getReferencedStates().remove((IState) notification.getOldValue());
+        }
 
       } else if (notification.getEventType() == Notification.ADD) {
-        region.getInvolvedStates().add((AbstractState) notification.getNewValue());
-        if (region.eContainer() instanceof AbstractState)
+        AbstractState state = (AbstractState) notification.getNewValue();
+        region.getInvolvedStates().add(state);
+        if (region.eContainer() instanceof AbstractState) {
           ((AbstractState) region.eContainer()).getReferencedStates().add((IState) notification.getNewValue());
+        }
       }
 
+      eventProcessor.add(notification);
+      eventProcessor.process();
+      eventProcessor.clearConsumed();
     }
-
   }
-
 }

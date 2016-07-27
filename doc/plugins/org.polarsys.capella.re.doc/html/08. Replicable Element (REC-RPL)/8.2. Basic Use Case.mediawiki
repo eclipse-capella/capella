@@ -247,6 +247,5 @@ On a diagram when the RPL is displayed, paste the layout
 The layout is synchronized between the REC and the RPL
 
  
-[[Image:Images/8.2.%20Basic%20Use%20Case_html_m3dbcc481.png|627x160px]][[Image:Images/8.2.%20Basic%20Use%20Case_html_m2f4cc7f5.jpg|92x92px]][[Image:Images/8.2.%20Basic%20Use%20Case_html_733c5d5d.jpg|92x92px]]
-
+[[Image:Images/8.2.%20Basic%20Use%20Case_html_m3dbcc481.png|627x160px]]
    

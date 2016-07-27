@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.preferences;
 
 import org.eclipse.core.resources.ProjectScope;
@@ -22,7 +23,7 @@ import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActiva
 public class DeletePreferences extends AbstractPreferencesInitializer implements IDeletePreferences {
 
   /**
-   * @param pluginID_p
+   * @param pluginID
    */
   public DeletePreferences() {
     super(CapellaActionsActivator.PLUGIN_ID);
@@ -56,8 +57,8 @@ public class DeletePreferences extends AbstractPreferencesInitializer implements
   /**
    * {@inheritDoc}
    */
-  public boolean isMetaclassProtected(EClass clazz_p) {
-    return CapellaActionsActivator.getDefault().isMetaclassProtected(clazz_p);
+  public boolean isMetaclassProtected(EClass clazz) {
+    return CapellaActionsActivator.getDefault().isMetaclassProtected(clazz);
   }
 
 }

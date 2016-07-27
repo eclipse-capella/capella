@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.test.business.queries.ju;
 
 import java.io.File;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -62,7 +64,7 @@ public class BQTestCaseValidator {
 			if (input == null)
 				declareInputNotFound(oracleResult.getInputId());
 			else {
-				List<CapellaElement> res = null;
+				List<EObject> res = null;
 				if (ident.endsWith("-"+BQTestConstants.GET_AVAILABLE_METHOD_NAME)) { //$NON-NLS-1$
 					testedInputIdsForAvailable.add(oracleResult.getInputId());
 					try {

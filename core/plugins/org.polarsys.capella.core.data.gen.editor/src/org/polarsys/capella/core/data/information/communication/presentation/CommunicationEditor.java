@@ -8,38 +8,18 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
-
 package org.polarsys.capella.core.data.information.communication.presentation;
-
 
 import java.io.IOException;
 import java.io.InputStream;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EventObject;
 import java.util.HashMap;
-import java.util.HashMap;
-import java.util.HashMap;
-import java.util.HashMap;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map;
-import java.util.Map;
-import java.util.Map;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
@@ -50,26 +30,56 @@ import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
-
+import org.eclipse.emf.common.command.BasicCommandStack;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CommandStack;
+import org.eclipse.emf.common.command.CommandStackListener;
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.ui.MarkerHelper;
+import org.eclipse.emf.common.ui.ViewerPane;
+import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
+import org.eclipse.emf.common.ui.viewer.IViewerProvider;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EValidator;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
+import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
+import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
+import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
+import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
+import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
+import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
+import org.eclipse.emf.edit.ui.util.EditUIUtil;
+import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
-
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-
+import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -78,37 +88,25 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
-
 import org.eclipse.swt.SWT;
-
 import org.eclipse.swt.custom.CTabFolder;
-
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.Transfer;
-
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
-
 import org.eclipse.swt.graphics.Point;
-
 import org.eclipse.swt.layout.FillLayout;
-
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
-
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -116,165 +114,46 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
-
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.SaveAsDialog;
-
 import org.eclipse.ui.ide.IGotoMarker;
-
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
-
 import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
-
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
-// begin-capella-code
-import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
-import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-// end-capella-code
-
-import org.eclipse.emf.common.command.BasicCommandStack;
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandStack;
-import org.eclipse.emf.common.command.CommandStackListener;
-
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.ui.MarkerHelper;
-import org.eclipse.emf.common.ui.ViewerPane;
-
-import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
-
-import org.eclipse.emf.common.ui.viewer.IViewerProvider;
-
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.URI;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EValidator;
-
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-
-import org.eclipse.emf.ecore.util.EContentAdapter;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-
-import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
-
-import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
-
-import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
-
-import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
-
-import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
-import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
-import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
-
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
-
-import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
-import org.eclipse.emf.edit.ui.util.EditUIUtil;
-
-import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
-
-import org.polarsys.capella.core.data.information.communication.provider.CommunicationItemProviderAdapterFactory;
-import org.polarsys.capella.core.data.information.communication.provider.CommunicationItemProviderAdapterFactory;
-import org.polarsys.capella.core.data.information.communication.provider.CommunicationItemProviderAdapterFactory;
-import org.polarsys.capella.core.data.information.communication.provider.CommunicationItemProviderAdapterFactory;
-import org.polarsys.capella.core.data.information.communication.provider.CommunicationItemProviderAdapterFactory;
-
-// begin-capella-code
-//import org.polarsys.capella.common.tig.efprovider.TigEfProvider;
-//import org.polarsys.capella.common.tig.ef.ExecutionManager;
-//import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;
-// end-capella-code
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.eclipse.core.runtime.NullProgressMonitor;
-
-import org.eclipse.emf.ecore.resource.Resource;
-
-import org.eclipse.jface.util.IPropertyChangeListener;
-
-import org.eclipse.jface.viewers.StructuredSelection;
-
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
-
 import org.polarsys.capella.common.data.activity.provider.ActivityItemProviderAdapterFactory;
-
 import org.polarsys.capella.common.data.behavior.provider.BehaviorItemProviderAdapterFactory;
-
 import org.polarsys.capella.common.data.modellingcore.provider.ModellingcoreItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.capellacommon.provider.CapellacommonItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.capellacore.provider.CapellacoreItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.capellamodeller.presentation.CapellaModellerEditorPlugin;
-
 import org.polarsys.capella.core.data.capellamodeller.provider.CapellamodellerItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.cs.provider.CsItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.ctx.provider.CtxItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.epbs.provider.EpbsItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.fa.provider.FaItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.information.communication.provider.CommunicationItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.information.datatype.provider.DatatypeItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.information.datavalue.provider.DatavalueItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.information.provider.InformationItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.interaction.provider.InteractionItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.la.provider.LaItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.oa.provider.OaItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.pa.deployment.provider.DeploymentItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.pa.provider.PaItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.requirement.provider.RequirementItemProviderAdapterFactory;
-
 import org.polarsys.capella.core.data.sharedmodel.provider.SharedmodelItemProviderAdapterFactory;
-
 import org.polarsys.kitalpha.emde.extension.ExtendedModel;
 import org.polarsys.kitalpha.emde.extension.ExtensibleModel;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionDescriptor;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionListener;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionManager;
-
 import org.polarsys.kitalpha.emde.model.edit.provider.EmdeItemProviderAdapterFactory;
-
 import org.polarsys.kitalpha.emde.ui.actions.EmdeViewerFilterAction;
 
 
@@ -1129,22 +1008,22 @@ public class CommunicationEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection<EmdeViewerFilterAction> getEmdeViewerFilterActions(Resource resource) {
-		if (resource == null || resource.getContents().isEmpty()) {
+	protected Collection<EmdeViewerFilterAction> getEmdeViewerFilterActions(Resource resource_p) {
+		if (resource_p == null || resource_p.getContents().isEmpty()) {
 			return null;
 		}
 		// Cached extension actions		
-		if (viewerFilterActions.get(resource) != null) {
-			return viewerFilterActions.get(resource);
+		if (viewerFilterActions.get(resource_p) != null) {
+			return viewerFilterActions.get(resource_p);
 		}	
 		// Create new extension actions
 		Collection<EmdeViewerFilterAction> extensionActions = new ArrayList<EmdeViewerFilterAction>();		
-		String extensibleModelURI = resource.getContents().get(0).eClass().getEPackage().getNsURI();
-		ModelExtensionManager helper = ModelExtensionHelper.getInstance(resource);
+		String extensibleModelURI = resource_p.getContents().get(0).eClass().getEPackage().getNsURI();
+		ModelExtensionManager helper = ModelExtensionHelper.getInstance(resource_p);
 		ExtensibleModel extensibleModel = ModelExtensionDescriptor.INSTANCE.getExtensibleModel(extensibleModelURI);
 		if (extensibleModel != null) {		
 			for (ExtendedModel extendedModel : extensibleModel.getAllExtendedModels()) {
-				EmdeViewerFilterAction filterAction = new EmdeViewerFilterAction(resource, extensibleModel, extendedModel) {
+				EmdeViewerFilterAction filterAction = new EmdeViewerFilterAction(resource_p, extensibleModel, extendedModel) {
 					@Override
 					public void run() {
 						ISelection selection = getSelection();
@@ -1170,7 +1049,7 @@ public class CommunicationEditor
 				extensionActions.add(filterAction);
 			}
 		}
-		viewerFilterActions.put(resource, extensionActions);		
+		viewerFilterActions.put(resource_p, extensionActions);		
 		return extensionActions;
 	}	  	
 

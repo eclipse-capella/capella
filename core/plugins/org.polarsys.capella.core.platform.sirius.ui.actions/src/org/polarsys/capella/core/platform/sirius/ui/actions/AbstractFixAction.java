@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
@@ -26,7 +27,7 @@ import org.polarsys.capella.common.ef.command.ICommand;
  */
 public abstract class AbstractFixAction extends AbstractTigAction {
 
-  protected abstract ICommand createCommand(IProgressMonitor progressMonitor_p);
+  protected abstract ICommand createCommand(IProgressMonitor progressMonitor);
 
   /**
    * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
@@ -38,21 +39,21 @@ public abstract class AbstractFixAction extends AbstractTigAction {
        * @see org.eclipse.jface.operation.IRunnableWithProgress#run(org.eclipse.core.runtime.IProgressMonitor)
        */
       @SuppressWarnings("synthetic-access")
-      public void run(IProgressMonitor progressMonitor_p) throws InvocationTargetException, InterruptedException {
-        progressMonitor_p.beginTask(action.getText() + " processing...", 1); //$NON-NLS-1$
-        ICommand command = createCommand(progressMonitor_p);
+      public void run(IProgressMonitor progressMonitor) throws InvocationTargetException, InterruptedException {
+        progressMonitor.beginTask(action.getText() + " processing...", 1); //$NON-NLS-1$
+        ICommand command = createCommand(progressMonitor);
         if (command != null) {
-          progressMonitor_p.setTaskName(command.getName() + " processing..."); //$NON-NLS-1$
+          progressMonitor.setTaskName(command.getName() + " processing..."); //$NON-NLS-1$
           getExecutionManager().execute(command);
         }
-        progressMonitor_p.worked(1);
+        progressMonitor.worked(1);
       }
     };
 
     try {
       new ProgressMonitorDialog(getActiveShell()).run(true, false, runnable);
-    } catch (Exception exception_p) {
-      throw new RuntimeException(exception_p);
+    } catch (Exception exception) {
+      throw new RuntimeException(exception);
     }
 
   }

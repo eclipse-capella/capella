@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.lang.reflect.InvocationTargetException;
@@ -73,19 +74,19 @@ public class CapellaValidateAction extends ValidateAction {
        *      org.eclipse.emf.common.util.Diagnostic)
        */
       @Override
-      public void createMarkers(Resource resource_p, Diagnostic diagnostic_p) {
+      public void createMarkers(Resource resource, Diagnostic diagnostic) {
         // Don't use 'traditional' resource markers. TODO investigate to go back to the traditional ones.
         // Original reasons to switch: CDO and too many workspace notifications (especially in transitions)
 
-        // can't use resource_p, see handleDiagnostics below
-        LightMarkerRegistry.getInstance().createMarker(getFile(_currentResource), diagnostic_p, getMarkerID());
+        // can't use resource, see handleDiagnostics below
+        LightMarkerRegistry.getInstance().createMarker(getFile(_currentResource), diagnostic, getMarkerID());
       }
 
       /**
        * @see org.eclipse.emf.edit.ui.util.EditUIMarkerHelper#deleteMarkers(java.lang.Object, boolean, int)
        */
       @Override
-      public void deleteMarkers(Object object_p, boolean includeSubtypes_p, int depth_p) {
+      public void deleteMarkers(Object object, boolean includeSubtypes, int depth) {
         boolean cleanup = AbstractPreferencesInitializer.getBoolean(ICapellaValidationPreferences.P_CLEAN_PREVIOUS_VALIDATION_RESULTS, false);
         if (cleanup) {
           List<IMarker> markers = new ArrayList<IMarker>(LightMarkerRegistry.getInstance().getMarkers());
@@ -205,11 +206,11 @@ public class CapellaValidateAction extends ValidateAction {
    * @see org.eclipse.emf.edit.ui.action.ValidateAction#handleDiagnostic(org.eclipse.emf.common.util.Diagnostic)
    */
   @Override
-  protected void handleDiagnostic(Diagnostic diagnostic_p) {
+  protected void handleDiagnostic(Diagnostic diagnostic) {
     // This is all about tweaking the default behavior (that picks the first opened resource).
     try {
       // Get diagnostic data.
-      List<?> data = diagnostic_p.getData();
+      List<?> data = diagnostic.getData();
       // Check content availability.
       if ((null != data) && (data.size() > 0)) {
         // Search for a resource holder.
@@ -225,7 +226,7 @@ public class CapellaValidateAction extends ValidateAction {
       }
       // Go for default behavior.
       // Markers will be tagged with current resource at creation time (see constructor).
-      super.handleDiagnostic(diagnostic_p);
+      super.handleDiagnostic(diagnostic);
     } finally {
       // Reset current resource, whatever its value may be.
       _currentResource = null;

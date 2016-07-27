@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
@@ -56,7 +57,7 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
 
   /**
    * Constructor.
-   * @param executionManager_p
+   * @param executionManager
    */
   public CapellaDeleteAction() {
     super(EMFEditUIPlugin.INSTANCE.getString("_UI_Delete_menu_item"));
@@ -68,8 +69,8 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
    * @see org.eclipse.emf.edit.ui.action.DeleteAction#createCommand(java.util.Collection)
    */
   @Override
-  public Command createCommand(Collection<Object> selection_p) {
-    return new CapellaDeleteCommand(TransactionHelper.getExecutionManager(filterSelection(selection_p)), selection_p);
+  public Command createCommand(Collection<Object> selection) {
+    return new CapellaDeleteCommand(TransactionHelper.getExecutionManager(filterSelection(selection)), selection);
   }
 
   /**
@@ -84,8 +85,8 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
    * @see org.eclipse.jface.util.IPropertyChangeListener#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
    */
   @Override
-  public void propertyChange(PropertyChangeEvent event_p) {
-    String property = event_p.getProperty();
+  public void propertyChange(PropertyChangeEvent event) {
+    String property = event.getProperty();
     if (property.startsWith(ProtectedElementsPreferences.PREFERENCE_DELETE_RESTRICTION)) {
       // Re-compute the new state due to preference changes.
       setEnabled(updateSelection(getStructuredSelection()));
@@ -106,17 +107,17 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
        */
       @Override
       @SuppressWarnings("synthetic-access")
-      public void run(IProgressMonitor monitor_p) throws InvocationTargetException, InterruptedException {
-        monitor_p.beginTask(Messages.CapellaDeleteCommand_Label, IProgressMonitor.UNKNOWN);
+      public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+        monitor.beginTask(Messages.CapellaDeleteCommand_Label, IProgressMonitor.UNKNOWN);
         getCommand().execute();
       }
     };
     try {
       // Don't fork the runnable it causes dead locks between this job and the main eclipse decorator one.
       new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell()).run(false, false, runnable);
-    } catch (Exception exception_p) {
+    } catch (Exception exception) {
       // Harsh times.
-      throw new RuntimeException(exception_p);
+      throw new RuntimeException(exception);
     }
   }
 
@@ -126,29 +127,29 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
    */
   @SuppressWarnings("unchecked")
   @Override
-  public boolean updateSelection(IStructuredSelection selection_p) {
+  public boolean updateSelection(IStructuredSelection selection) {
     // Check selected elements are deletable based on preferences.
     List<EObject> selectedElements = getStructuredSelection().toList();
     boolean result = canDelete(selectedElements);
     if (result) {
-      result = super.updateSelection(selection_p);
+      result = super.updateSelection(selection);
     }
     return result;
   }
 
   /**
    * Can delete selected elements ?
-   * @param selectedElement_p must be not <code>null</code>.
+   * @param selectedElement must be not <code>null</code>.
    * @return <code>true</code> or <code>false</code> if one of them is a protected model element.
    * @see ActionsPreferenceInitializer#isMetaclassProtected(org.eclipse.emf.ecore.EClass).
    */
-  public static boolean canDelete(Collection<?> selectedElement_p) {
+  public static boolean canDelete(Collection<?> selectedElement) {
     // Empty selection -> can not delete.
-    if (selectedElement_p.isEmpty()) {
+    if (selectedElement.isEmpty()) {
       return false;
     }
     // Iterate over selected ModelElements to look for protected elements.
-    Iterable<Element> selectedModelElements = Iterables.filter(selectedElement_p, Element.class);
+    Iterable<Element> selectedModelElements = Iterables.filter(selectedElement, Element.class);
     for (Element selectedModelElement : selectedModelElements) {
       // If the model element or its meta-class are protected -> can not delete.
       if (CapellaActionsActivator.getDefault().isMetaclassProtected(selectedModelElement.eClass()) || isElementProtected(selectedModelElement)) {
@@ -160,37 +161,37 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
   }
 
   /**
-   * @param elt_p
+   * @param elt
    * @return
    */
-  protected static boolean isElementProtected(Element elt_p) {
-    if (elt_p instanceof AbstractFunction) {
-      return (EcoreUtil2.isContainedBy(elt_p, OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG) && !EcoreUtil2.isContainedBy(elt_p,
+  protected static boolean isElementProtected(Element elt) {
+    if (elt instanceof AbstractFunction) {
+      return (EcoreUtil2.isContainedBy(elt, OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG) && !EcoreUtil2.isContainedBy(elt,
           OaPackage.Literals.OPERATIONAL_ACTIVITY))
-             || (EcoreUtil2.isContainedBy(elt_p, CtxPackage.Literals.SYSTEM_FUNCTION_PKG) && !EcoreUtil2.isContainedBy(elt_p,
+             || (EcoreUtil2.isContainedBy(elt, CtxPackage.Literals.SYSTEM_FUNCTION_PKG) && !EcoreUtil2.isContainedBy(elt,
                  CtxPackage.Literals.SYSTEM_FUNCTION))
-             || (EcoreUtil2.isContainedBy(elt_p, LaPackage.Literals.LOGICAL_FUNCTION_PKG) && !EcoreUtil2.isContainedBy(elt_p,
+             || (EcoreUtil2.isContainedBy(elt, LaPackage.Literals.LOGICAL_FUNCTION_PKG) && !EcoreUtil2.isContainedBy(elt,
                  LaPackage.Literals.LOGICAL_FUNCTION))
-             || (EcoreUtil2.isContainedBy(elt_p, PaPackage.Literals.PHYSICAL_FUNCTION_PKG) && !EcoreUtil2.isContainedBy(elt_p,
+             || (EcoreUtil2.isContainedBy(elt, PaPackage.Literals.PHYSICAL_FUNCTION_PKG) && !EcoreUtil2.isContainedBy(elt,
                  PaPackage.Literals.PHYSICAL_FUNCTION));
-    } else if (elt_p instanceof LogicalComponent) {
-      return !EcoreUtil2.isContainedBy(elt_p, LaPackage.Literals.LOGICAL_COMPONENT);
-    } else if (elt_p instanceof PhysicalComponent) {
-      return !EcoreUtil2.isContainedBy(elt_p, PaPackage.Literals.PHYSICAL_COMPONENT);
-    } else if (elt_p instanceof ConfigurationItem) {
-      return !EcoreUtil2.isContainedBy(elt_p, EpbsPackage.Literals.CONFIGURATION_ITEM);
-    } else if (elt_p instanceof Part) {
-      AbstractType type = ((Part) elt_p).getAbstractType();
+    } else if (elt instanceof LogicalComponent) {
+      return !EcoreUtil2.isContainedBy(elt, LaPackage.Literals.LOGICAL_COMPONENT);
+    } else if (elt instanceof PhysicalComponent) {
+      return !EcoreUtil2.isContainedBy(elt, PaPackage.Literals.PHYSICAL_COMPONENT);
+    } else if (elt instanceof ConfigurationItem) {
+      return !EcoreUtil2.isContainedBy(elt, EpbsPackage.Literals.CONFIGURATION_ITEM);
+    } else if (elt instanceof Part) {
+      AbstractType type = ((Part) elt).getAbstractType();
       if (type != null) {
         return CapellaActionsActivator.getDefault().isMetaclassProtected(type.eClass()) || isElementProtected(type);
       }
-    } else if (elt_p instanceof SequenceMessage) {
-      SequenceMessage msg = (SequenceMessage) elt_p;
+    } else if (elt instanceof SequenceMessage) {
+      SequenceMessage msg = (SequenceMessage) elt;
       if ((msg.getSendingEnd() == null) || (msg.getReceivingEnd() == null)) {
         return false;
       }
       return (msg.getKind() == MessageKind.SYNCHRONOUS_CALL) || (msg.getKind() == MessageKind.ASYNCHRONOUS_CALL) || (msg.getKind() == MessageKind.REPLY);
-    } else if (elt_p instanceof ModelInformation) {
+    } else if (elt instanceof ModelInformation) {
       return true;
     }
     return false;

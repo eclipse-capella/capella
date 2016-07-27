@@ -93,6 +93,36 @@
    </extension>
    
    
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.re.re2rpl.activities.InitializeDiffMergeUpdateReplicaActivity"
+            Identifier="org.polarsys.capella.core.re.re2rpl.activities.InitializeDiffMergeUpdateReplicaActivity"
+            Multiple="false"
+            Name="Differences Filtering DiffMerge From Transformation"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.re.rpl2re.activities.InitializeDiffMergeUpdateReActivity"
+            Identifier="org.polarsys.capella.core.re.rpl2re.activities.InitializeDiffMergeUpdateReActivity"
+            Multiple="false"
+            Name="Differences Filtering DiffMerge From Transformation"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
    
    <extension
          point="org.polarsys.kitalpha.cadence.core.activity.declaration">

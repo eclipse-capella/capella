@@ -22,7 +22,6 @@ import org.eclipse.emf.diffmerge.api.IMergePolicy;
 import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
-import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.Messages;
@@ -44,7 +43,9 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
 
   /*
    * (non-Javadoc)
-   * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters)
+   * 
+   * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.
+   * ActivityParameters)
    */
   @Override
   @SuppressWarnings("unchecked")
@@ -57,7 +58,7 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
   }
 
   /**
-   * @param selection_p
+   * @param context
    */
   public void computeDifferences(IContext context) {
 
@@ -82,14 +83,18 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
     if (displayLog(context)) {
 
       // Logging
-      LogHelper.getInstance().debug(NLS.bind("Differences from {0}", Role.REFERENCE.toString()), Messages.Activity_ComputingDifferenceActivity);
+      LogHelper.getInstance().debug(NLS.bind("Differences from {0}", Role.REFERENCE.toString()),
+          Messages.Activity_ComputingDifferenceActivity);
       for (IDifference diff : toAnalyseFromSource) {
-        LogHelper.getInstance().debug(NLS.bind(" - {0}", diff.toString()), Messages.Activity_ComputingDifferenceActivity);
+        LogHelper.getInstance().debug(NLS.bind(" - {0}", diff.toString()),
+            Messages.Activity_ComputingDifferenceActivity);
       }
 
-      LogHelper.getInstance().debug(NLS.bind("Differences from {0}", Role.TARGET.toString()), Messages.Activity_ComputingDifferenceActivity);
+      LogHelper.getInstance().debug(NLS.bind("Differences from {0}", Role.TARGET.toString()),
+          Messages.Activity_ComputingDifferenceActivity);
       for (IDifference diff : toAnalyseFromTarget) {
-        LogHelper.getInstance().debug(NLS.bind(" - {0}", diff.toString()), Messages.Activity_ComputingDifferenceActivity);
+        LogHelper.getInstance().debug(NLS.bind(" - {0}", diff.toString()),
+            Messages.Activity_ComputingDifferenceActivity);
       }
 
     }
