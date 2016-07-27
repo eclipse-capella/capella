@@ -23,7 +23,7 @@ The visibility of several commands can be controlled using the commands preferen
 <br>
 
  
-When the user disable one or more commands, displayed on the above dialog, this command will be automatically disabled on Capella Contextual menu, see the fallowing figure.
+When the user disable one or more commands, displayed on the above dialog, this command will be automatically disabled on Capella Contextual menu, see the following figure.
 
  
 <br>

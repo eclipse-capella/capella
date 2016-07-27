@@ -55,12 +55,10 @@ The Fast Linker offers some features to ease its usage:
 * A clear command ([[Image:Images/4.11.%20FastLinker_html_m46b0819d.png|16x16px]]),
 * A pin command ([[Image:Images/4.11.%20FastLinker_html_m6358d111.png|30x17px]]) 	allowing to keep an element in the Fast Linker in order to create 	several links involving it,
 ** There is two ways to pin an element:
-*** Select it in the Fast Linker view and then click on the pin 			button,
-*** Use the drop down menu of the pin button and select the element to 			pin:
-
-
- 
-[[Image:Images/4.11.%20FastLinker_html_m3bb8b649.png|242x223px]]
+*** Select it in the Fast Linker view and then click on the pin button,
+*** Use the drop down menu of the pin button and select the element to pin:<br>[[Image:Images/4.11.%20FastLinker_html_m3bb8b649.png|242x223px]]<br>
+** The pinned element is displayed in bold,
+** The same procedures can be used to unpin a pinned element
 
   
 == Multiple Selection ==

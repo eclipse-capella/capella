@@ -21,7 +21,7 @@ However, in certain 				cases (for example at the very beginning of a project), 
 
  
 |}  
-'''Capella offers lightweight requirement management capabilities'''. Allocation is performed through matrices or using the dedicated wizard. On any element, using the contextual menu, select the Requirements Manager as shown belowopen the requirement allocation dialog.
+'''Capella offers lightweight requirement management capabilities'''. Allocation is performed through matrices or using the dedicated wizard. On any element, using the contextual menu, select the Requirements Manager as shown below to open the requirement allocation dialog.
 
  
 [[Image:Images/7.3_Wizard_Requirement_Manager.png|600x550px]]
@@ -368,14 +368,27 @@ In the above figure, the Function &ldquo;PhysicalFunction 1&rdquo; gets a new Ex
 * When performing drag and drop of Exchange Item allocations from a 	SEP Port to a TEP Port, a traceability link between the two Ports is 	created automatically if it does not exist yet
 * All elements displayed in the wizard can be shown in Capella Explorer 	or Semantic Browser by using a contextual menu &ldquo; Show in 	Capella Explorer&rdquo;
  
-Creation of elements in the TEP (Right pane of the wizard)
 
+===Creation of elements in the TEP (Right pane of the wizard) ===
  
 * '''Elements creation or modification'''
-  
+**The wizard provides a button to create a new Function under an existing one.
+**User can rename directly a source or target element in the wizard.
+**The wizard provides a contextual menu to create a new Input Port under an existing Function (see the following figure).
+**The wizard provides a contextual menu to create a new output Port under an existing Function (see the following figure).
+**By using a contextual menu, the user can delete a Function or create a new Function under an existing one.
+
+
+ 
 * '''Creation of Traceability link'''
-  
-[[Image:Images/7.3_Modeling%20Wizard_Features1.png|550x550px]]
+**The wizard provides mean to manually create traceability between Functions in SEP and TEP.
+**The wizard provides mean to manually create 1-N and N-1 traceability link between Functions in SEP and TEP.
+**User can create a traceability link between selected elements by using two contextual menu commands : “Start link” and “Make link”:
+***User can create a multiple link from TEP to SEP by selecting all source and target elements and using a contextual menu “start link”.<br>[[Image:Images/7.3_Modeling%20Wizard_Features1.png|550x550px]]<br>
+***To create a multiple new links between TEP and SEP, user have to make the following operations :
+****First, user must select one or more elements from the TEP and using the menu entry “Start Link”.
+****Then user can select one or more elements from SEP and select the menu entry “make link” to create one or more link towards others elements of the TEP
+
 
   
 [[Image:Images/7.3_Modeling%20Wizard_Features2.png|570x520px]]

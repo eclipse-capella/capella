@@ -24,7 +24,11 @@ The &ldquo;'''Viewpoint Diagram'''&rdquo; subsection contains a set of preferenc
  
 [[Image:Images/6.3.%20Diagram%20preferences_html_m348d4ffe.png|641x467px]]
 
- 
+Then, you can manage diagrams settings such as diagrams appearances, connection style, general printing settings and rulers & grids options.
+
+
+[[Image:Images/6.3_Diagram preferences.png|637x462px]]
+
 <br>
 <br>
 
