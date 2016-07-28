@@ -60,4 +60,11 @@
       <migrationContributor
          class="org.polarsys.capella.core.af.integration.migration.ViewpointMigrationContributor"/>
    </extension>
+    <extension
+       point="org.eclipse.ui.views">
+      <category
+            id="org.polarsys.capella.vp.views.category"
+            name="%capella.vp.category">
+      </category>
+    </extension>
 </plugin>
