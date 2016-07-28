@@ -14955,7 +14955,7 @@
             <startingEndPredecessor name="startingEndPredecessor"/>
             <finishingEndPredecessor name="finishingEndPredecessor"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:InteractionUseCreationTool" documentation="Create a State Fragment referencing an existing State/Mode of the Target Component/Actor. This tool opens a selection wizard to select an available State/Mode." name="Reference" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@containerMappings[name='InteractionUse']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InteractionUse.gif">
+          <ownedTools xsi:type="tool_2:InteractionUseCreationTool" documentation="Creates a Reference to existing Scenario covering Target Lifelines representing existing Actor Parts." name="Reference" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@containerMappings[name='InteractionUse']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InteractionUse.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -17671,7 +17671,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:InteractionUseCreationTool" documentation="Creates a Reference to existing Scenario covering Target Lifelines representing existing Operational Entities Parts." name="Reference" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@containerMappings[name='InteractionUseFS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InteractionUse.gif">
+          <ownedTools xsi:type="tool_2:InteractionUseCreationTool" documentation="Creates a Reference to existing Scenario covering Target Lifelines representing existing Function Parts." name="Reference" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@containerMappings[name='InteractionUseFS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InteractionUse.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
