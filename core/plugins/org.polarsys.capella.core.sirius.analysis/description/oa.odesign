@@ -4434,7 +4434,7 @@
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:InteractionUseCreationTool" documentation="Creates a Reference to an existing Operational Activity Scenario. Lifelines covered by the Reference box represent Operational Activities also represented in the referenced Scenario." name="Reference" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@containerMappings[name='InteractionUse%20AIS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InteractionUse.gif">
+          <ownedTools xsi:type="tool_2:InteractionUseCreationTool" documentation="Creates a Reference to an existing Operational Activity Scenario covering Target Lifelines representing existing Operational Activity Parts." name="Reference" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@containerMappings[name='InteractionUse%20AIS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InteractionUse.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
