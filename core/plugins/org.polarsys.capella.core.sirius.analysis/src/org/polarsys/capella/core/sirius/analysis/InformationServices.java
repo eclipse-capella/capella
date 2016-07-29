@@ -171,11 +171,13 @@ public class InformationServices {
   /**
    * 
    */
-  private static final String THROWS_WITH_WHITE_SPACE_CHAR = ICommonConstants.WHITE_SPACE_CHARACTER + "throws" + ICommonConstants.WHITE_SPACE_CHARACTER; //$NON-NLS-1$
+  private static final String THROWS_WITH_WHITE_SPACE_CHAR = ICommonConstants.WHITE_SPACE_CHARACTER
+      + "throws" + ICommonConstants.WHITE_SPACE_CHARACTER; //$NON-NLS-1$
   /**
    * 
    */
-  private static final String RETURN_WITH_WHITE_SPACE_CHAR = ICommonConstants.WHITE_SPACE_CHARACTER + "returns" + ICommonConstants.WHITE_SPACE_CHARACTER; //$NON-NLS-1$
+  private static final String RETURN_WITH_WHITE_SPACE_CHAR = ICommonConstants.WHITE_SPACE_CHARACTER
+      + "returns" + ICommonConstants.WHITE_SPACE_CHARACTER; //$NON-NLS-1$
   private static InformationServices service = null;
   public String COMMA_WITH_SPACE = ", "; //$NON-NLS-1$
 
@@ -188,13 +190,14 @@ public class InformationServices {
 
   /**
    * Gets types which can be set by the parameters. used in common.odesign
-   * @param parameter the given parameter
+   * 
+   * @param parameter
+   *          the given parameter
    * @return the parameter types
    */
   public List<CapellaElement> getExchangeItemElementTypes(ExchangeItemElement parameter) {
-    IBusinessQuery query =
-        BusinessQueriesProvider.getInstance().getContribution(InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT,
-            CapellacorePackage.Literals.TYPED_ELEMENT__TYPE);
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(
+        InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT, CapellacorePackage.Literals.TYPED_ELEMENT__TYPE);
     if (query != null) {
       return query.getAvailableElements(parameter);
     }
@@ -203,13 +206,14 @@ public class InformationServices {
 
   /**
    * Gets types which can be set by the parameters.
-   * @param parameter the given parameter
+   * 
+   * @param parameter
+   *          the given parameter
    * @return the parameter types
    */
   public List<CapellaElement> getParameterTypes(Parameter parameter) {
-    IBusinessQuery query =
-        BusinessQueriesProvider.getInstance().getContribution(InformationPackage.Literals.PARAMETER,
-            ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(InformationPackage.Literals.PARAMETER,
+        ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
     if (query != null) {
       return query.getAvailableElements(parameter);
     }
@@ -218,13 +222,14 @@ public class InformationServices {
 
   /**
    * Gets types which can be set by the property.
-   * @param property the given property
+   * 
+   * @param property
+   *          the given property
    * @return the property types
    */
   public List<CapellaElement> getPropertyTypes(Property property) {
-    IBusinessQuery query =
-        BusinessQueriesProvider.getInstance().getContribution(InformationPackage.Literals.PROPERTY,
-            ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(InformationPackage.Literals.PROPERTY,
+        ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
     if (query != null) {
       return query.getAvailableElements(property);
     }
@@ -233,7 +238,9 @@ public class InformationServices {
 
   /**
    * Convert the parameters to a String.
-   * @param eventOperation the current operation
+   * 
+   * @param eventOperation
+   *          the current operation
    * @return a string representing a list of parameter : param1:type1[0..*], param2:type2,
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -279,16 +286,16 @@ public class InformationServices {
         Object directionObj = currentParameter.eGet(directionFeature);
         if (directionObj instanceof ParameterDirection) {
           ParameterDirection direction = (ParameterDirection) directionObj;
-          if ((direction == ParameterDirection.IN) || (direction == ParameterDirection.OUT) || (direction == ParameterDirection.INOUT)
-              || (direction == ParameterDirection.UNSET)) {
+          if ((direction == ParameterDirection.IN) || (direction == ParameterDirection.OUT)
+              || (direction == ParameterDirection.INOUT) || (direction == ParameterDirection.UNSET)) {
             if (first) {
               first = false;
             } else {
               sb.append(COMMA_WITH_SPACE);
             }
             // In, Out, InOut, and UnSet related string
-            sb.append(parameterToString(currentParameter, (AbstractType) currentParameter.eGet(typeFeature), (String) currentParameter.eGet(nameFeature),
-                direction, true, true, true));
+            sb.append(parameterToString(currentParameter, (AbstractType) currentParameter.eGet(typeFeature),
+                (String) currentParameter.eGet(nameFeature), direction, true, true, true));
           } else if (direction == ParameterDirection.RETURN) {
             // return sting
             parameterReturns.add(currentParameter);
@@ -307,11 +314,13 @@ public class InformationServices {
 
     // Return
     if (!parameterReturns.isEmpty()) {
-      parametersToStringReturnAndException(sbReturns, typeFeature, nameFeature, parameterReturns, RETURN_WITH_WHITE_SPACE_CHAR);
+      parametersToStringReturnAndException(sbReturns, typeFeature, nameFeature, parameterReturns,
+          RETURN_WITH_WHITE_SPACE_CHAR);
     }
     // Exception
     if (!parameterExceptions.isEmpty()) {
-      parametersToStringReturnAndException(sbExceptions, typeFeature, nameFeature, parameterExceptions, THROWS_WITH_WHITE_SPACE_CHAR);
+      parametersToStringReturnAndException(sbExceptions, typeFeature, nameFeature, parameterExceptions,
+          THROWS_WITH_WHITE_SPACE_CHAR);
     }
     // Exception of Service
     // retrieve exception if any
@@ -319,7 +328,8 @@ public class InformationServices {
     boolean atLeastOneExcepIsNamed = false;
     if (eventOperation instanceof Service) {
       Service serviceOp = (Service) eventOperation;
-      List<org.polarsys.capella.core.data.information.communication.Exception> thrownExceptions = serviceOp.getThrownExceptions();
+      List<org.polarsys.capella.core.data.information.communication.Exception> thrownExceptions = serviceOp
+          .getThrownExceptions();
       for (org.polarsys.capella.core.data.information.communication.Exception exceptionOp : thrownExceptions) {
         String excEleName = (String) exceptionOp.eGet(nameFeature);
         if (!excEleName.equals(ICommonConstants.EMPTY_STRING)) {
@@ -334,7 +344,8 @@ public class InformationServices {
             sbExceptionsOfOperation.append(COMMA_WITH_SPACE);
           }
           // name and type
-          parameterToStringReturnAndException(sbExceptionsOfOperation, null, exceptionOp.eClass().getName(), exceptionOp.getName(), false, true, true, false);
+          parameterToStringReturnAndException(sbExceptionsOfOperation, null, exceptionOp.eClass().getName(),
+              exceptionOp.getName(), false, true, true, false);
         }
       }
       // since only one exception is selected from may be multiple unNamed
@@ -347,8 +358,8 @@ public class InformationServices {
           sbExceptionsOfOperation.append(COMMA_WITH_SPACE);
         }
         // name and type
-        parameterToStringReturnAndException(sbExceptionsOfOperation, null, CommunicationPackage.Literals.EXCEPTION.getName(), ICommonConstants.EMPTY_STRING,
-            false, true, true, false);
+        parameterToStringReturnAndException(sbExceptionsOfOperation, null,
+            CommunicationPackage.Literals.EXCEPTION.getName(), ICommonConstants.EMPTY_STRING, false, true, true, false);
       }
 
     }
@@ -372,15 +383,21 @@ public class InformationServices {
 
   /**
    * Convert the given parameter to a String.
-   * @param parameter : MultiplicityElement
-   * @param type : Type
-   * @param name : ElementName
-   * @param showName : decide weather to add name in return string
-   * @param showCardinality : decide weather to show cardinality in return string
+   * 
+   * @param parameter
+   *          : MultiplicityElement
+   * @param type
+   *          : Type
+   * @param name
+   *          : ElementName
+   * @param showName
+   *          : decide weather to add name in return string
+   * @param showCardinality
+   *          : decide weather to show cardinality in return string
    * @return : String
    */
-  private String parameterToString(MultiplicityElement parameter, AbstractType type, String name, ParameterDirection direction, boolean showDirection,
-      boolean showName, boolean showCardinality) {
+  private String parameterToString(MultiplicityElement parameter, AbstractType type, String name,
+      ParameterDirection direction, boolean showDirection, boolean showName, boolean showCardinality) {
     StringBuffer sb = new StringBuffer();
     if (showName && (null != parameter)) {
       if (parameter instanceof ExchangeItemElement) {
@@ -418,16 +435,23 @@ public class InformationServices {
   }
 
   /**
-   * Convert the given return and exception kind parameter to string Case 1 : If one of parameter is named, the return sting will avoid unNamed Elements of same
-   * kind Case 2 : If all the parameters if same type are unNamed, return the type only once
-   * @param sb : return string to be stored
-   * @param typeFeature : to retrieve type of an element
-   * @param nameFeature : to retrieve name of an element
-   * @param parameters : multiplicity elements
-   * @param qualifier : return or exception kind qualifier
+   * Convert the given return and exception kind parameter to string Case 1 : If one of parameter is named, the return
+   * sting will avoid unNamed Elements of same kind Case 2 : If all the parameters if same type are unNamed, return the
+   * type only once
+   * 
+   * @param sb
+   *          : return string to be stored
+   * @param typeFeature
+   *          : to retrieve type of an element
+   * @param nameFeature
+   *          : to retrieve name of an element
+   * @param parameters
+   *          : multiplicity elements
+   * @param qualifier
+   *          : return or exception kind qualifier
    */
-  private void parametersToStringReturnAndException(StringBuffer sb, EStructuralFeature typeFeature, EStructuralFeature nameFeature,
-      List<MultiplicityElement> parameters, String qualifier) {
+  private void parametersToStringReturnAndException(StringBuffer sb, EStructuralFeature typeFeature,
+      EStructuralFeature nameFeature, List<MultiplicityElement> parameters, String qualifier) {
     // Collection multiplicityElement of same Type
     Map<String, List<MultiplicityElement>> typeToMulElesMap = new HashMap<String, List<MultiplicityElement>>();
     for (MultiplicityElement currentParameter : parameters) {
@@ -476,6 +500,7 @@ public class InformationServices {
 
   /**
    * add the qualifier string to stringBuffer if first time else add comma
+   * 
    * @param sb
    * @param qualifier
    * @param first
@@ -493,8 +518,8 @@ public class InformationServices {
     return flag;
   }
 
-  private String parameterToStringReturnAndException(StringBuffer sb, MultiplicityElement parameter, String type, String name, boolean showDirection,
-      boolean showName, boolean showType, boolean showCardinality) {
+  private String parameterToStringReturnAndException(StringBuffer sb, MultiplicityElement parameter, String type,
+      String name, boolean showDirection, boolean showName, boolean showType, boolean showCardinality) {
     if (showName) {
       // Direction
       if (showDirection) {
@@ -539,7 +564,8 @@ public class InformationServices {
     String resultMin = getCardValue(parameter.getOwnedMinCard());
     String resultMax = getCardValue(parameter.getOwnedMaxCard());
 
-    if (!((parameter.getOwnedMaxCard() instanceof LiteralNumericValue) && (parameter.getOwnedMinCard() instanceof LiteralNumericValue) && "1".equals(resultMin) && "1".equals(resultMax))) { //$NON-NLS-1$ //$NON-NLS-2$
+    if (!((parameter.getOwnedMaxCard() instanceof LiteralNumericValue)
+        && (parameter.getOwnedMinCard() instanceof LiteralNumericValue) && "1".equals(resultMin) && "1".equals(resultMax))) { //$NON-NLS-1$ //$NON-NLS-2$
       sb.append("["); //$NON-NLS-1$
       sb.append(resultMin);
       sb.append(".."); //$NON-NLS-1$
@@ -550,10 +576,15 @@ public class InformationServices {
 
   /**
    * Reconnect an association. used in common.odesign
-   * @param element the given Association
-   * @param source the given Classifier
-   * @param target the given Classifier
-   * @param property the given Property
+   * 
+   * @param element
+   *          the given Association
+   * @param source
+   *          the given Classifier
+   * @param target
+   *          the given Classifier
+   * @param property
+   *          the given Property
    * @return element
    */
   public EObject reconnectAssociation(EObject element, EObject source, EObject target, EObject property) {
@@ -573,7 +604,8 @@ public class InformationServices {
 
     // If an unionproperty was present or unionproperty is required, make a
     // copy of the current property
-    if ((targetClass instanceof Union) && !(targetProperty instanceof UnionProperty) && association.getNavigableMembers().contains(targetProperty)) {
+    if ((targetClass instanceof Union) && !(targetProperty instanceof UnionProperty)
+        && association.getNavigableMembers().contains(targetProperty)) {
       createdProperty = InformationFactory.eINSTANCE.createUnionProperty();
     } else if (!(targetClass instanceof Union) && (targetProperty instanceof UnionProperty)) {
       createdProperty = InformationFactory.eINSTANCE.createProperty();
@@ -614,6 +646,7 @@ public class InformationServices {
 
   /**
    * convert a multiplicity to a string FIXME duplicate used in common.odesign and context.odesign
+   * 
    * @param element
    * @return
    */
@@ -623,6 +656,7 @@ public class InformationServices {
 
   /**
    * convert a multiplicity to a string used in common.odesign and context.odesign
+   * 
    * @param element
    * @return
    */
@@ -639,7 +673,8 @@ public class InformationServices {
     // rule 1: if min = max display max only (except if min and max equals 1, display void)
     boolean displayNothing = false;
     boolean displayOnlyMax = false;
-    if (minCard.equalsIgnoreCase(maxCard) && !minCard.equals(ICommonConstants.EMPTY_STRING) && !maxCard.equals(ICommonConstants.EMPTY_STRING)) {
+    if (minCard.equalsIgnoreCase(maxCard) && !minCard.equals(ICommonConstants.EMPTY_STRING)
+        && !maxCard.equals(ICommonConstants.EMPTY_STRING)) {
       if (minCard.equalsIgnoreCase("1")) { //$NON-NLS-1$
         displayNothing = true;
       } else {
@@ -670,19 +705,20 @@ public class InformationServices {
       return ICommonConstants.EMPTY_STRING;
     } else if (displayOnlyMax) {
       return "[" //$NON-NLS-1$
-             + maxCard + "]"; //$NON-NLS-1$
+          + maxCard + "]"; //$NON-NLS-1$
     }
 
     return "[" //$NON-NLS-1$
-           + minCard + ".." //$NON-NLS-1$
-           + maxCard + "]"; //$NON-NLS-1$
+        + minCard + ".." //$NON-NLS-1$
+        + maxCard + "]"; //$NON-NLS-1$
 
   }
 
   /**
-   * Return cardValue or cardName depending on the NumericValue if 'numericValue' Type is LiteralNumericValue - return its value if 'numericValue' Type is
-   * AbstractExpression - return its Name if 'numericValue' Type is NumericReference - return its Name [if referencedProperty - calculate cardName as
-   * (OwnerClass name :: referencedPropertyName)
+   * Return cardValue or cardName depending on the NumericValue if 'numericValue' Type is LiteralNumericValue - return
+   * its value if 'numericValue' Type is AbstractExpression - return its Name if 'numericValue' Type is NumericReference
+   * - return its Name [if referencedProperty - calculate cardName as (OwnerClass name :: referencedPropertyName)
+   * 
    * @param numericValue
    * @return cardValue or cardName depending on the NumericValue
    */
@@ -711,7 +747,9 @@ public class InformationServices {
 
   /**
    * compute the ExchangeItemAllocation label.
-   * @param item : ExchangeItemAllocation
+   * 
+   * @param item
+   *          : ExchangeItemAllocation
    * @return String
    */
   public String computeLabel(ExchangeItemAllocation item) {
@@ -730,7 +768,8 @@ public class InformationServices {
       // it will return it !!
       return computeLabel((Port) property);
     }
-    String result = multiplicityToStringDisplay(property) + " " + getSymbolIfPropertyIsDerived(property) + property.getName(); //$NON-NLS-1$
+    String result = multiplicityToStringDisplay(property)
+        + " " + getSymbolIfPropertyIsDerived(property) + property.getName(); //$NON-NLS-1$
     if (property.getType() != null) {
       result += " : " + property.getType().getName(); //$NON-NLS-1$
     }
@@ -749,7 +788,9 @@ public class InformationServices {
 
   /**
    * Compute label.
-   * @param link the given communicationLink
+   * 
+   * @param link
+   *          the given communicationLink
    * @return the String
    */
   public String computeLabel(CommunicationLink link) {
@@ -758,7 +799,9 @@ public class InformationServices {
 
   /**
    * Compute label.
-   * @param element the given exchangeItemElement
+   * 
+   * @param element
+   *          the given exchangeItemElement
    * @return the String
    */
   public String computeLabel(ExchangeItemElement element) {
@@ -771,7 +814,9 @@ public class InformationServices {
 
   /**
    * Compute label without type. used in common.odesign
-   * @param element the given exchangeItemElement
+   * 
+   * @param element
+   *          the given exchangeItemElement
    * @return the String
    */
   public String computeLabelWithoutType(ExchangeItemElement element) {
@@ -803,6 +848,7 @@ public class InformationServices {
 
   /**
    * used in common.odesign
+   * 
    * @param association
    * @return
    */
@@ -821,6 +867,7 @@ public class InformationServices {
 
   /**
    * used in common.odesign
+   * 
    * @param association
    * @return
    */
@@ -833,6 +880,7 @@ public class InformationServices {
 
   /**
    * used in common.odesign
+   * 
    * @param association
    * @return
    */
@@ -861,9 +909,11 @@ public class InformationServices {
     if (AssociationExt.isUnidirectional(association)) {
       associationPkgCandidate = sourceClass.eContainer();
 
-    } else { // the association is bidirectional or has no direction => return the common ancestor of the source and target classes
+    } else { // the association is bidirectional or has no direction => return the common ancestor of the source and
+             // target classes
       EObject commonAncestor = CapellaServices.getService().getCommonAncestor(sourceClass, targeClass);
-      associationPkgCandidate = EcoreUtil2.getFirstContainer(commonAncestor, InformationPackage.Literals.ASSOCIATION_PKG);
+      associationPkgCandidate = EcoreUtil2.getFirstContainer(commonAncestor,
+          InformationPackage.Literals.ASSOCIATION_PKG);
     }
     if (associationPkgCandidate instanceof AssociationPkg) {
       return (AssociationPkg) associationPkgCandidate;
@@ -886,7 +936,9 @@ public class InformationServices {
 
   /**
    * Return Customized label for UnioinProperty
-   * @param property : UnionProperty
+   * 
+   * @param property
+   *          : UnionProperty
    * @return : customized lable for unionProperty
    */
   private String computeUnionPropertyLabelWithQualifier(UnionProperty property) {
@@ -905,6 +957,7 @@ public class InformationServices {
 
   /**
    * used in common.odesign
+   * 
    * @param association
    * @return
    */
@@ -932,7 +985,8 @@ public class InformationServices {
   private AbstractDNode createPropertyView(EObject context, Property property, DDiagram diagram) {
     String mappingName = IMappingNameConstants.CDB_PROPERTY_MAPPING_NAME;
     NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
-    return DiagramServices.getDiagramServices().createDNodeListElement(mapping, property, (DragAndDropTarget) context, diagram);
+    return DiagramServices.getDiagramServices().createDNodeListElement(mapping, property, (DragAndDropTarget) context,
+        diagram);
 
   }
 
@@ -948,7 +1002,8 @@ public class InformationServices {
 
     Map<CapellaElement, AbstractDNode> visibleElements = new HashMap<CapellaElement, AbstractDNode>();
     for (DDiagramElement aNode : DiagramServices.getDiagramServices().getDiagramElements(diagram)) {
-      if ((aNode instanceof AbstractDNode) && (aNode.getTarget() != null) && (aNode.getTarget() instanceof ExchangeItem)) {
+      if ((aNode instanceof AbstractDNode) && (aNode.getTarget() != null)
+          && (aNode.getTarget() instanceof ExchangeItem)) {
         visibleElements.put((CapellaElement) aNode.getTarget(), (AbstractDNode) aNode);
       }
     }
@@ -965,7 +1020,8 @@ public class InformationServices {
     }
     // create elements
     for (CapellaElement aOperation : selectedOperations) {
-      EObject container = CapellaServices.getService().getBestGraphicalContainer(aOperation, diagram, CsPackage.Literals.COMPONENT);
+      EObject container = CapellaServices.getService().getBestGraphicalContainer(aOperation, diagram,
+          CsPackage.Literals.COMPONENT);
       if (!visibleElements.containsKey(aOperation)) {
         createExchangeItemView(container, aOperation, diagram);
       }
@@ -984,19 +1040,23 @@ public class InformationServices {
 
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.IDB_EXCHANGE_ITEM_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(diagram
+        .getDescription().getName())) {
       mappingName = IMappingNameConstants.CCDI_EXCHANGE_ITEM_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
+        .getDescription().getName())) {
       mappingName = IMappingNameConstants.CCEI_EXCHANGE_ITEM_MAPPING_NAME;
       isContainerMapping = false;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
+        .getDescription().getName())) {
       mappingName = IMappingNameConstants.CCII_EXCHANGE_ITEM_MAPPING_NAME;
       isContainerMapping = false;
     }
 
     if (isContainerMapping) {
       ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
-      return DiagramServices.getDiagramServices().createAbstractDNodeContainer(mapping, aOperation, (DragAndDropTarget) context, diagram);
+      return DiagramServices.getDiagramServices().createAbstractDNodeContainer(mapping, aOperation,
+          (DragAndDropTarget) context, diagram);
     }
 
     NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
@@ -1035,7 +1095,8 @@ public class InformationServices {
     Map<CapellaElement, AbstractDNode> visibleElements = new HashMap<CapellaElement, AbstractDNode>();
     for (AbstractDNode aNode : ((DNodeList) context).getOwnedElements()) {
       if ((aNode.getTarget() != null)
-          && ((aNode.getTarget() instanceof Operation) || (aNode.getTarget() instanceof ExchangeItemElement) || (aNode.getTarget() instanceof ExchangeItemAllocation))) {
+          && ((aNode.getTarget() instanceof Operation) || (aNode.getTarget() instanceof ExchangeItemElement) || (aNode
+              .getTarget() instanceof ExchangeItemAllocation))) {
         visibleElements.put((CapellaElement) aNode.getTarget(), aNode);
       }
     }
@@ -1128,6 +1189,7 @@ public class InformationServices {
 
   /**
    * Create DataValue view in respected diagram
+   * 
    * @param context
    * @param dataValue
    * @param diagram
@@ -1146,7 +1208,8 @@ public class InformationServices {
     String dataSubDataValueMappingName = IMappingNameConstants.CDB_SUBDATAVALUE_MAPPING_NAME;
 
     if (DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
-      if ((((DSemanticDecorator) context).getTarget() instanceof NumericType) || (((DSemanticDecorator) context).getTarget() instanceof StringType)
+      if ((((DSemanticDecorator) context).getTarget() instanceof NumericType)
+          || (((DSemanticDecorator) context).getTarget() instanceof StringType)
           || (((DSemanticDecorator) context).getTarget() instanceof PhysicalQuantity)) {
         if (dataValue instanceof DataValue) {
           mappingName = dataTypeContentMappingName;
@@ -1179,7 +1242,8 @@ public class InformationServices {
     }
     NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
     if (context instanceof DNodeList) {
-      return DiagramServices.getDiagramServices().createDNodeListElement(mapping, dataValue, (DragAndDropTarget) context, diagram);
+      return DiagramServices.getDiagramServices().createDNodeListElement(mapping, dataValue,
+          (DragAndDropTarget) context, diagram);
     }
 
     return DiagramServices.getDiagramServices().createNode(mapping, dataValue, (DragAndDropTarget) context, diagram);
@@ -1198,7 +1262,8 @@ public class InformationServices {
       } else if (((DSemanticDecorator) context).getTarget() instanceof ExchangeItem) {
         mappingName = IMappingNameConstants.IDB_EXCHANGE_ITEM_ELEMENT_MAPPING_NAME;
       }
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(diagram
+        .getDescription().getName())) {
       if (((DSemanticDecorator) context).getTarget() instanceof Interface) {
         mappingName = IMappingNameConstants.CCDI_OPERATION_MAPPING_NAME;
       } else if (((DSemanticDecorator) context).getTarget() instanceof ExchangeItem) {
@@ -1212,7 +1277,8 @@ public class InformationServices {
 
     NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
     if (mapping != null) {
-      return DiagramServices.getDiagramServices().createDNodeListElement(mapping, Operation, (DragAndDropTarget) context, diagram);
+      return DiagramServices.getDiagramServices().createDNodeListElement(mapping, Operation,
+          (DragAndDropTarget) context, diagram);
     }
     return null;
   }
@@ -1265,9 +1331,8 @@ public class InformationServices {
       if (views.size() > 0) {
         sourceView = views.iterator().next();
       } else {
-        sourceView =
-            DiagramServices.getDiagramServices().createAbstractDNodeContainer(sourceMapping, source, content.getBestContainer(source),
-                content.getDDiagram());
+        sourceView = DiagramServices.getDiagramServices().createAbstractDNodeContainer(sourceMapping, source,
+            content.getBestContainer(source), content.getDDiagram());
         content.addView((AbstractDNode) sourceView);
       }
     }
@@ -1279,32 +1344,35 @@ public class InformationServices {
       if (views.size() > 0) {
         targetView = views.iterator().next();
       } else {
-        targetView =
-            DiagramServices.getDiagramServices().createAbstractDNodeContainer(targetMapping, target, content.getBestContainer(target),
-                content.getDDiagram());
+        targetView = DiagramServices.getDiagramServices().createAbstractDNodeContainer(targetMapping, target,
+            content.getBestContainer(target), content.getDDiagram());
         content.addView((AbstractDNode) targetView);
       }
     }
 
     // Create the view between both bounds
     if ((sourceView != null) && (targetView != null)) {
-      content.addView(DiagramServices.getDiagramServices().createEdge(mapping, (EdgeTarget) sourceView, (EdgeTarget) targetView, semantic));
+      content.addView(DiagramServices.getDiagramServices().createEdge(mapping, (EdgeTarget) sourceView,
+          (EdgeTarget) targetView, semantic));
     }
   }
 
   @Deprecated
-  public EObject showHideRelationshipInClassDiagramBlank(CapellaElement context, EObject context_view, List<CapellaElement> allSelectedLinksFromWizard) {
+  public EObject showHideRelationshipInClassDiagramBlank(CapellaElement context, EObject context_view,
+      List<CapellaElement> allSelectedLinksFromWizard) {
     return showHideCDBRelationships(context, context_view, allSelectedLinksFromWizard);
   }
 
   /**
    * Show/Hide Relationship in Class Diagram Blank used in common.odesign
+   * 
    * @param context
    * @param context_view
    * @param allSelectedRelationshipFromWizard
    * @return current view
    */
-  public EObject showHideCDBRelationships(CapellaElement context, EObject context_view, List<CapellaElement> allSelectedLinksFromWizard) {
+  public EObject showHideCDBRelationships(CapellaElement context, EObject context_view,
+      List<CapellaElement> allSelectedLinksFromWizard) {
 
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(context_view);
     DDiagramContents content = new DDiagramContents(diagram);
@@ -1312,7 +1380,9 @@ public class InformationServices {
     // remove association from diagram [if unSynchronized]
     for (DEdge existingRelationship : diagram.getEdges()) {
       EObject target = existingRelationship.getTarget();
-      if ((target != null) && (context_view.equals(existingRelationship.getSourceNode()) || context_view.equals(existingRelationship.getTargetNode()))) {
+      if ((target != null)
+          && (context_view.equals(existingRelationship.getSourceNode()) || context_view.equals(existingRelationship
+              .getTargetNode()))) {
         if (!diagram.isSynchronized() || (target instanceof Generalization)) {
           // filter selected relationship in wizard
           if (!allSelectedLinksFromWizard.contains(target) && isValideRelationShip(target, context, content)) {
@@ -1335,6 +1405,7 @@ public class InformationServices {
 
   /**
    * This method is used to exclude a non valid relation ship (like : ExchangeItem,Collection,..)
+   * 
    * @param target
    * @param context
    * @param content
@@ -1345,7 +1416,8 @@ public class InformationServices {
     Collection<DDiagramElement> diagramElements = content.getDiagramElements(target);
 
     // for remove exchange item link
-    if ((diagramElements != null) && !diagramElements.isEmpty() && (context instanceof ExchangeItem) && !(target instanceof Constraint)) {
+    if ((diagramElements != null) && !diagramElements.isEmpty() && (context instanceof ExchangeItem)
+        && !(target instanceof Constraint)) {
       return true;
     }
 
@@ -1388,7 +1460,8 @@ public class InformationServices {
       } else if (element instanceof Interface) {
         mappingName = IMappingNameConstants.CDB_INTERFACE_MAPPING_NAME;
         return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
-      } else if ((element instanceof DataType) && !(element instanceof Enumeration) && !(element instanceof BooleanType)) {
+      } else if ((element instanceof DataType) && !(element instanceof Enumeration)
+          && !(element instanceof BooleanType)) {
         mappingName = IMappingNameConstants.CDB_DATA_TYPE_MAPPING_NAME;
         return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
       } else if (element instanceof Enumeration) {
@@ -1412,15 +1485,20 @@ public class InformationServices {
   private ContainerMapping getMappingCDBType(EObject element, DDiagram diagram) {
     ContainerMapping mapping = null;
     if (element instanceof Class) {
-      mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_CLASS_MAPPING_NAME);
+      mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram,
+          IMappingNameConstants.CDB_CLASS_MAPPING_NAME);
     } else if (element instanceof org.polarsys.capella.core.data.information.Collection) {
-      mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_COLLECTION_MAPPING_NAME);
+      mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram,
+          IMappingNameConstants.CDB_COLLECTION_MAPPING_NAME);
     } else if (element instanceof Enumeration) {
-      mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_ENUMERATION_MAPPING_NAME);
+      mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram,
+          IMappingNameConstants.CDB_ENUMERATION_MAPPING_NAME);
     } else if (element instanceof BooleanType) {
-      mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_BOOLEAN_TYPE_MAPPING_NAME);
+      mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram,
+          IMappingNameConstants.CDB_BOOLEAN_TYPE_MAPPING_NAME);
     } else {
-      mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_DATA_TYPE_MAPPING_NAME);
+      mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram,
+          IMappingNameConstants.CDB_DATA_TYPE_MAPPING_NAME);
     }
     return mapping;
   }
@@ -1450,6 +1528,7 @@ public class InformationServices {
 
   /**
    * used in common.odesign
+   * 
    * @param context
    * @param containerView
    * @return
@@ -1462,8 +1541,8 @@ public class InformationServices {
       // OLD CODE
       returnedPackages = DataPkgExt.getAllDataPkgs(diagram.getTarget());
       // NEW CODE
-      returnedPackages =
-          (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_DATA_PCK_FOR_LIB, diagram.getTarget(), returnedPackages);
+      returnedPackages = (List) QueryDebugger.executeQueryWithInclusionDebug(
+          QueryIdentifierConstants.GET_ALL_DATA_PCK_FOR_LIB, diagram.getTarget(), returnedPackages);
       // END CODE REFACTOR
     } else if (elementView instanceof DNodeContainer) {
       DataPkg currentPkg = (DataPkg) ((DNodeContainer) elementView).getTarget();
@@ -1485,6 +1564,7 @@ public class InformationServices {
 
   /**
    * used in common.odesign
+   * 
    * @param context
    * @param containerView
    * @return
@@ -1497,8 +1577,8 @@ public class InformationServices {
       // OLD CODE
       returnedPackages = InterfacePkgExt.getAllInterfacePkgs(diagram.getTarget());
       // NEW CODE
-      returnedPackages =
-          (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_INTERFACE_PCKS_FOR_LIB, diagram.getTarget(), returnedPackages);
+      returnedPackages = (List) QueryDebugger.executeQueryWithInclusionDebug(
+          QueryIdentifierConstants.GET_ALL_INTERFACE_PCKS_FOR_LIB, diagram.getTarget(), returnedPackages);
       // END CODE REFACTOR
     } else if (elementView instanceof DNodeContainer) {
       InterfacePkg currentPkg = (InterfacePkg) ((DNodeContainer) elementView).getTarget();
@@ -1514,18 +1594,20 @@ public class InformationServices {
 
   /**
    * show the given dataPkg
+   * 
    * @param semantic
    * @param context
    */
   public AbstractDNode showCDBDataPkg(EObject semantic, DDiagramContents context) {
-    ContainerMapping mapping =
-        DiagramServices.getDiagramServices().getContainerMapping(context.getDDiagram(), IMappingNameConstants.CDB_DATA_PKG_MAPPING_NAME);
+    ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(context.getDDiagram(),
+        IMappingNameConstants.CDB_DATA_PKG_MAPPING_NAME);
     DragAndDropTarget container = context.getBestContainer(semantic);
     Collection<DDiagramElement> views = context.getDiagramElements(semantic, mapping, (DSemanticDecorator) container);
     if (views.size() > 0) {
       return (AbstractDNode) views.iterator().next();
     }
-    AbstractDNode result = DiagramServices.getDiagramServices().createContainer(mapping, semantic, container, context.getDDiagram());
+    AbstractDNode result = DiagramServices.getDiagramServices().createContainer(mapping, semantic, container,
+        context.getDDiagram());
     context.addView(result);
     return result;
   }
@@ -1538,7 +1620,8 @@ public class InformationServices {
   public EObject showHideCDBDataPkgs(final EObject elementView, List<DataPkg> selectedPkgs) {
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(elementView);
     DDiagramContents content = new DDiagramContents(diagram);
-    ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_DATA_PKG_MAPPING_NAME);
+    ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.CDB_DATA_PKG_MAPPING_NAME);
 
     Map<DataPkg, DNodeContainer> existingPkgs = new HashMap<DataPkg, DNodeContainer>();
     for (DDiagramElement aContainer : content.getDiagramElements((DSemanticDecorator) elementView, mapping)) {
@@ -1573,6 +1656,7 @@ public class InformationServices {
 
   /**
    * used in common (Package dependencies & CDB)
+   * 
    * @param elementView
    * @param selectedPkgs
    * @return
@@ -1584,18 +1668,20 @@ public class InformationServices {
 
   /**
    * show the given dataPkg
+   * 
    * @param semantic
    * @param context
    */
   public AbstractDNode showCDBInterfacePkg(EObject semantic, DDiagramContents context) {
-    ContainerMapping mapping =
-        DiagramServices.getDiagramServices().getContainerMapping(context.getDDiagram(), IMappingNameConstants.CDB_INTERFACE_PKG_MAPPING_NAME);
+    ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(context.getDDiagram(),
+        IMappingNameConstants.CDB_INTERFACE_PKG_MAPPING_NAME);
     DragAndDropTarget container = context.getBestContainer(semantic);
     Collection<DDiagramElement> views = context.getDiagramElements(semantic, mapping, (DSemanticDecorator) container);
     if (views.size() > 0) {
       return (AbstractDNode) views.iterator().next();
     }
-    AbstractDNode result = DiagramServices.getDiagramServices().createContainer(mapping, semantic, container, context.getDDiagram());
+    AbstractDNode result = DiagramServices.getDiagramServices().createContainer(mapping, semantic, container,
+        context.getDDiagram());
     context.addView(result);
     return result;
   }
@@ -1603,7 +1689,8 @@ public class InformationServices {
   public EObject showHideCDBInterfacePkgs(final EObject elementView, List<InterfacePkg> selectedPkgs) {
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(elementView);
     DDiagramContents content = new DDiagramContents(diagram);
-    ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_INTERFACE_PKG_MAPPING_NAME);
+    ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.CDB_INTERFACE_PKG_MAPPING_NAME);
 
     Map<InterfacePkg, DNodeContainer> existingPkgs = new HashMap<InterfacePkg, DNodeContainer>();
     for (DDiagramElement aContainer : content.getDiagramElements((DSemanticDecorator) elementView, mapping)) {
@@ -1637,6 +1724,7 @@ public class InformationServices {
 
   /**
    * used in common (Package dependencies & CDB)
+   * 
    * @param elementView
    * @param selectedPkgs
    * @return
@@ -1668,7 +1756,8 @@ public class InformationServices {
     }
     for (InterfacePkg aPkg : selectedPkgs) {
       if (!existingPkgs.containsKey(aPkg)) {
-        ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_INTERFACE_PKG_MAPPING_NAME);
+        ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram,
+            IMappingNameConstants.CDB_INTERFACE_PKG_MAPPING_NAME);
         DiagramServices.getDiagramServices().createContainer(mapping, aPkg, diagram, diagram);
       }
     }
@@ -1683,6 +1772,7 @@ public class InformationServices {
 
   /**
    * used in common (Package dependencies)
+   * 
    * @param elementView
    * @param selectedPkgs
    * @param existingPackages
@@ -1742,12 +1832,13 @@ public class InformationServices {
     List<AbstractDependenciesPkg> all = new ArrayList<AbstractDependenciesPkg>(deps);
     all.addAll(inverseDeps);
 
-    TransferTreeListDialog dialog =
-        new TransferTreeListDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), Messages.InformationServices_PackageDependency_Title,
-            NLS.bind(Messages.InformationServices_PackageDependency_Message, subject.getName()), new DependencyLabelProvider(deps, inverseDeps, subject), // two
-                                                                                                                                                              // instances
-                                                                                                                                                              // required
-            new DependencyLabelProvider(deps, inverseDeps, subject)); // or enabled/disabled fonts will mess up
+    TransferTreeListDialog dialog = new TransferTreeListDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+        .getShell(), Messages.InformationServices_PackageDependency_Title, NLS.bind(
+        Messages.InformationServices_PackageDependency_Message, subject.getName()), new DependencyLabelProvider(deps,
+        inverseDeps, subject), // two
+                               // instances
+                               // required
+        new DependencyLabelProvider(deps, inverseDeps, subject)); // or enabled/disabled fonts will mess up
 
     List<AbstractDependenciesPkg> left = new ArrayList<AbstractDependenciesPkg>(); // unselected
     List<AbstractDependenciesPkg> right = new ArrayList<AbstractDependenciesPkg>(); // selected
@@ -1782,6 +1873,7 @@ public class InformationServices {
 
   /**
    * Searches the direct dependencies and inverse dependencies of an AbstractDependenciesPkg.
+   * 
    * @param pkg
    * @return The direct dependencies and inverse dependencies of the argument
    */
@@ -1794,28 +1886,35 @@ public class InformationServices {
 
   /**
    * used in common.odesign
+   * 
    * @param sourcePackage
    * @param targetPackage
    * @return test if we add a dependency between sourcePackage and targetPackage it does not create any cycle
    */
-  public boolean isADependencyAvailable(final EObject context, AbstractDependenciesPkg sourcePackage, AbstractDependenciesPkg targetPackage) {
+  public boolean isADependencyAvailable(final EObject context, AbstractDependenciesPkg sourcePackage,
+      AbstractDependenciesPkg targetPackage) {
     return AbstractDependenciesPkgExt.isADependencyAvailable(sourcePackage, targetPackage);
   }
 
   /**
    * used in common.odesign
+   * 
    * @param sourcePackage
    * @param targetPackage
    * @return test if we add a dependency between sourcePackage and targetPackage it does not create any cycle
    */
   public boolean isADependencyAvailable2(final EObject context, EObject sourceObj, EObject targetObj) {
-    EObject ancestor1 = CapellaServices.getService().getAncestor(sourceObj, CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
-    EObject ancestor2 = CapellaServices.getService().getAncestor(targetObj, CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
-    return AbstractDependenciesPkgExt.isADependencyAvailable((AbstractDependenciesPkg) ancestor1, (AbstractDependenciesPkg) ancestor2);
+    EObject ancestor1 = CapellaServices.getService().getAncestor(sourceObj,
+        CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
+    EObject ancestor2 = CapellaServices.getService().getAncestor(targetObj,
+        CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
+    return AbstractDependenciesPkgExt.isADependencyAvailable((AbstractDependenciesPkg) ancestor1,
+        (AbstractDependenciesPkg) ancestor2);
   }
 
   /**
    * used in common.odesign
+   * 
    * @param elementView
    * @return all the available dataTypes we can insert in the elementView
    */
@@ -1825,9 +1924,8 @@ public class InformationServices {
       // OLD CODE
       Collection<DataType> result = DataTypeExt.getAllDataTypes(((DSemanticDiagram) elementView).getTarget());
       // NEW CODE
-      result =
-          (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_DATA_TYPES_FOR_LIB,
-              ((DSemanticDiagram) elementView).getTarget(), result);
+      result = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_DATA_TYPES_FOR_LIB,
+          ((DSemanticDiagram) elementView).getTarget(), result);
       // END CODE REFACTOR
       return result;
     }
@@ -1842,6 +1940,7 @@ public class InformationServices {
 
   /**
    * used in common.odesign (CDB)
+   * 
    * @param elementView
    * @return all the available classes we can insert in the elementView
    */
@@ -1851,9 +1950,8 @@ public class InformationServices {
       // OLD CODE
       Collection<Class> result = ClassExt.getAllClasses(((DSemanticDiagram) elementView).getTarget());
       // NEW CODE
-      result =
-          (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_CLASSES_FOR_LIB, ((DSemanticDiagram) elementView).getTarget(),
-              result);
+      result = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_CLASSES_FOR_LIB,
+          ((DSemanticDiagram) elementView).getTarget(), result);
       // END CODE REFACTOR
       return result;
     }
@@ -1868,6 +1966,7 @@ public class InformationServices {
 
   /**
    * used in common.odesign (CDB)
+   * 
    * @param elementView
    * @return all the available interfaces we can insert in the containerView
    */
@@ -1877,9 +1976,8 @@ public class InformationServices {
       // OLD CODE
       Collection<Interface> result = InterfaceExt.getAllInterfaces(((DSemanticDiagram) elementView).getTarget());
       // NEW CODE
-      result =
-          (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_INTERFACES_FOR_LIB,
-              ((DSemanticDiagram) elementView).getTarget(), result);
+      result = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_INTERFACES_FOR_LIB,
+          ((DSemanticDiagram) elementView).getTarget(), result);
       // END CODE REFACTOR
       return result;
     }
@@ -1894,6 +1992,7 @@ public class InformationServices {
 
   /**
    * used in common.odesign (CDB)
+   * 
    * @param context
    * @param containerView
    * @return all the available interfaces we can insert in the containerView
@@ -1910,6 +2009,7 @@ public class InformationServices {
 
   /**
    * used in common (CDB)
+   * 
    * @param elementView
    * @return all the available exchange items we can insert in the elementView
    */
@@ -1917,10 +2017,11 @@ public class InformationServices {
   public Collection<AbstractExchangeItem> getAvailableExchangeItemsToInsert(final EObject elementView) {
     if (elementView instanceof DDiagram) {
       // OLD CODE
-      Collection<AbstractExchangeItem> result = ExchangeItemExt.getAllExchangeItems(((DSemanticDiagram) elementView).getTarget());
+      Collection<AbstractExchangeItem> result = ExchangeItemExt.getAllExchangeItems(((DSemanticDiagram) elementView)
+          .getTarget());
       // NEW CODE
-      result =
-          (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_EXCHANGE_ITEMS_FOR_LIB,
+      result = (List) QueryDebugger
+          .executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_EXCHANGE_ITEMS_FOR_LIB,
               ((DSemanticDiagram) elementView).getTarget(), result);
       // END CODE REFACTOR
       return result;
@@ -1936,18 +2037,20 @@ public class InformationServices {
 
   /**
    * used in common (CDB)
+   * 
    * @param elementView
    * @return all the available collections we can insert in the elementView
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  public Collection<org.polarsys.capella.core.data.information.Collection> getAvailableCollectionsToInsert(final EObject elementView) {
+  public Collection<org.polarsys.capella.core.data.information.Collection> getAvailableCollectionsToInsert(
+      final EObject elementView) {
     if (elementView instanceof DDiagram) {
       // OLD CODE
-      Collection<org.polarsys.capella.core.data.information.Collection> result = CollectionExt.getAllCollections(((DSemanticDiagram) elementView).getTarget());
+      Collection<org.polarsys.capella.core.data.information.Collection> result = CollectionExt
+          .getAllCollections(((DSemanticDiagram) elementView).getTarget());
       // NEW CODE
-      result =
-          (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_COLLECTIONS_FOR_LIB,
-              ((DSemanticDiagram) elementView).getTarget(), result);
+      result = (List) QueryDebugger.executeQueryWithInclusionDebug(
+          QueryIdentifierConstants.GET_ALL_COLLECTIONS_FOR_LIB, ((DSemanticDiagram) elementView).getTarget(), result);
       // END CODE REFACTOR
       return result;
     }
@@ -1967,6 +2070,7 @@ public class InformationServices {
 
   /**
    * used in common (CDB)
+   * 
    * @param elementView
    * @param selectedTypes
    * @return
@@ -1978,7 +2082,8 @@ public class InformationServices {
     Map<EObject, AbstractDNode> existingTypes = new HashMap<EObject, AbstractDNode>();
     for (DContainer currentContainer : DiagramServices.getDiagramServices().getAllContainersAndNodeLists(elementView)) {
       AbstractDNode aContainer = (AbstractDNode) currentContainer;
-      if ((aContainer.getTarget() instanceof Class) || (aContainer.getTarget() instanceof org.polarsys.capella.core.data.information.Collection)
+      if ((aContainer.getTarget() instanceof Class)
+          || (aContainer.getTarget() instanceof org.polarsys.capella.core.data.information.Collection)
           || (aContainer.getTarget() instanceof DataType)) {
         existingTypes.put(aContainer.getTarget(), aContainer);
       }
@@ -1999,6 +2104,7 @@ public class InformationServices {
 
   /**
    * show the given dataPkg
+   * 
    * @param semantic
    * @param context
    */
@@ -2009,13 +2115,15 @@ public class InformationServices {
     if (views.size() > 0) {
       return (AbstractDNode) views.iterator().next();
     }
-    AbstractDNode result = DiagramServices.getDiagramServices().createAbstractDNodeContainer(mapping, semantic, container, context.getDDiagram());
+    AbstractDNode result = DiagramServices.getDiagramServices().createAbstractDNodeContainer(mapping, semantic,
+        container, context.getDDiagram());
     context.addView(result);
     return result;
   }
 
   /**
    * show the given dataPkg
+   * 
    * @param semantic
    * @param context
    */
@@ -2026,7 +2134,8 @@ public class InformationServices {
     if (views.size() > 0) {
       return (AbstractDNode) views.iterator().next();
     }
-    AbstractDNode result = DiagramServices.getDiagramServices().createAbstractDNodeContainer(mapping, semantic, container, context.getDDiagram());
+    AbstractDNode result = DiagramServices.getDiagramServices().createAbstractDNodeContainer(mapping, semantic,
+        container, context.getDDiagram());
     context.addView(result);
     return result;
   }
@@ -2037,11 +2146,13 @@ public class InformationServices {
    * @return
    */
   private ContainerMapping getMappingCDBInterface(EObject semantic, DDiagram dDiagram) {
-    return DiagramServices.getDiagramServices().getContainerMapping(dDiagram, IMappingNameConstants.CDB_INTERFACE_MAPPING_NAME);
+    return DiagramServices.getDiagramServices().getContainerMapping(dDiagram,
+        IMappingNameConstants.CDB_INTERFACE_MAPPING_NAME);
   }
 
   /**
    * show the given dataPkg
+   * 
    * @param semantic
    * @param context
    */
@@ -2052,7 +2163,8 @@ public class InformationServices {
     if (views.size() > 0) {
       return (AbstractDNode) views.iterator().next();
     }
-    AbstractDNode result = DiagramServices.getDiagramServices().createNode(mapping, semantic, container, context.getDDiagram());
+    AbstractDNode result = DiagramServices.getDiagramServices().createNode(mapping, semantic, container,
+        context.getDDiagram());
     context.addView(result);
     return result;
   }
@@ -2063,11 +2175,13 @@ public class InformationServices {
    * @return
    */
   private NodeMapping getMappingCDBExchangeItem(EObject semantic, DDiagram dDiagram) {
-    return DiagramServices.getDiagramServices().getNodeMapping(dDiagram, IMappingNameConstants.CDB_INTERFACE_MAPPING_NAME);
+    return DiagramServices.getDiagramServices().getNodeMapping(dDiagram,
+        IMappingNameConstants.CDB_INTERFACE_MAPPING_NAME);
   }
 
   /**
    * used in common (CDB)
+   * 
    * @param diagramelementView
    * @param selectedInterfaces
    * @return
@@ -2098,6 +2212,7 @@ public class InformationServices {
 
   /**
    * used in common (CDB)
+   * 
    * @param elementView
    * @param selectedExchangeItems
    * @return
@@ -2119,7 +2234,8 @@ public class InformationServices {
     }
     for (EObject aType : selectedExchangeItems) {
       if (!existingExchangeItems.containsKey(aType)) {
-        NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CDB_EXCHANGE_ITEM_MAPPING_NAME);
+        NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
+            IMappingNameConstants.CDB_EXCHANGE_ITEM_MAPPING_NAME);
         DiagramServices.getDiagramServices().createNode(mapping, aType, diagram, diagram);
       }
     }
@@ -2138,8 +2254,9 @@ public class InformationServices {
         } else {
           result = "<undefined>"; //$NON-NLS-1$
         }
-        if ((null != protocol) && (protocol != CommunicationLinkProtocol.UNSET) && (protocol != CommunicationLinkProtocol.UNICAST)
-            && (protocol != CommunicationLinkProtocol.SYNCHRONOUS) && (protocol != CommunicationLinkProtocol.READ)) {
+        if ((null != protocol) && (protocol != CommunicationLinkProtocol.UNSET)
+            && (protocol != CommunicationLinkProtocol.UNICAST) && (protocol != CommunicationLinkProtocol.SYNCHRONOUS)
+            && (protocol != CommunicationLinkProtocol.READ)) {
           result = result + " / " + protocol.getName(); //$NON-NLS-1$
         }
       }
@@ -2150,6 +2267,7 @@ public class InformationServices {
 
   /**
    * compute the Interface service label from ExchangeItemAllocation
+   * 
    * @param exchangeItemAllocation
    * @param view
    * @return
@@ -2157,14 +2275,15 @@ public class InformationServices {
   public String getOperationLabel(EObject exchangeItemAllocation, EObject view) {
     String result = ICommonConstants.EMPTY_STRING;
 
-    if ((null != exchangeItemAllocation) && (exchangeItemAllocation instanceof ExchangeItemAllocation) && (null != view)
-        && (view instanceof DSemanticDecorator)) {
+    if ((null != exchangeItemAllocation) && (exchangeItemAllocation instanceof ExchangeItemAllocation)
+        && (null != view) && (view instanceof DSemanticDecorator)) {
       // Type Exchange Item Allocation
       ExchangeItemAllocation allocation = (ExchangeItemAllocation) exchangeItemAllocation;
       // get Diagram
       DDiagram diagram = CapellaServices.getService().getDiagramContainer(view);
       if (diagram == null) {
-        Object oDiagram = CsServices.getService().getInterpreterVariable(exchangeItemAllocation, IInterpreterSiriusVariables.DIAGRAM);
+        Object oDiagram = CsServices.getService().getInterpreterVariable(exchangeItemAllocation,
+            IInterpreterSiriusVariables.DIAGRAM);
         if ((oDiagram != null) && (oDiagram instanceof DDiagram)) {
           diagram = (DDiagram) oDiagram;
         }
@@ -2175,10 +2294,12 @@ public class InformationServices {
         boolean allParameterHide = false;
         boolean onlyOperationParameterHide = false;
         for (FilterDescription filterDescription : activatedFilters) {
-          if ((null != filterDescription) && filterDescription.getName().equalsIgnoreCase(IMappingNameConstants.HIDE_ALL_PARAMETER)) {
+          if ((null != filterDescription)
+              && filterDescription.getName().equalsIgnoreCase(IMappingNameConstants.HIDE_ALL_PARAMETER)) {
             allParameterHide = true;
           }
-          if ((null != filterDescription) && filterDescription.getName().equalsIgnoreCase(IMappingNameConstants.HIDE_OPERATION_PARAMETER)) {
+          if ((null != filterDescription)
+              && filterDescription.getName().equalsIgnoreCase(IMappingNameConstants.HIDE_OPERATION_PARAMETER)) {
             onlyOperationParameterHide = true;
           }
         }
@@ -2264,6 +2385,7 @@ public class InformationServices {
 
   /**
    * convert first letter of the string to Capital letter
+   * 
    * @param context
    * @param toConvert
    * @return converted String
@@ -2276,7 +2398,9 @@ public class InformationServices {
 
   /**
    * [Method used in common.odesign] Returns true if any of the association end is of type primitive
-   * @param context current Association
+   * 
+   * @param context
+   *          current Association
    * @return boolean value
    */
   public boolean hasNonPrimitiveEnds(EObject context) {
@@ -2305,7 +2429,9 @@ public class InformationServices {
 
   /**
    * [Method used in common.odesign] return prefix of the property label
-   * @param context current Property
+   * 
+   * @param context
+   *          current Property
    * @return prefix as string
    */
   public String prefixPropertyLabel(EObject context) {
@@ -2324,8 +2450,11 @@ public class InformationServices {
 
   /**
    * used in common.odesign : ClassDiagram Return customized label for UnionProperty
-   * @param context : an EObject
-   * @param property : an UnionProperty
+   * 
+   * @param context
+   *          : an EObject
+   * @param property
+   *          : an UnionProperty
    * @return : the customized label for UnionProperty
    */
   public String suffixLabelForUnionProperty(EObject context, EObject property) {
@@ -2347,11 +2476,14 @@ public class InformationServices {
 
   /**
    * @param context
-   * @param ele a capella element
-   * @param displayedExchangeItem : exchangeItem displayed in diagram
+   * @param ele
+   *          a capella element
+   * @param displayedExchangeItem
+   *          : exchangeItem displayed in diagram
    * @return list of exchange item
    */
-  public List<EObject> getDisplayedAndLinkedExchangeItems(EObject context, EObject ele, List<ExchangeItem> displayedExchangeItem) {
+  public List<EObject> getDisplayedAndLinkedExchangeItems(EObject context, EObject ele,
+      List<ExchangeItem> displayedExchangeItem) {
     // list of exchange Item
     List<EObject> result = new ArrayList<EObject>(1);
     // all the exchanges linked via communication link owned by given
@@ -2429,7 +2561,8 @@ public class InformationServices {
       // get Diagram
       DDiagram diagram = CapellaServices.getService().getDiagramContainer(view);
       if (diagram == null) {
-        Object oDiagram = CsServices.getService().getInterpreterVariable(assocation, IInterpreterSiriusVariables.DIAGRAM);
+        Object oDiagram = CsServices.getService().getInterpreterVariable(assocation,
+            IInterpreterSiriusVariables.DIAGRAM);
         if ((oDiagram != null) && (oDiagram instanceof DDiagram)) {
           diagram = (DDiagram) oDiagram;
         }
@@ -2451,47 +2584,57 @@ public class InformationServices {
 
   /**
    * Return association begin label
-   * @param context : context
-   * @param property : Property
-   * @param view : current diagram element view
-   * @param showRoleName : decide weather to display the role name
+   * 
+   * @param context
+   *          : context
+   * @param property
+   *          : Property
+   * @param view
+   *          : current diagram element view
+   * @param showRoleName
+   *          : decide weather to display the role name
    * @return
    */
   public String getAssociationBeginRoleLabel(EObject association, EObject context, EObject property, EObject view) {
-	     StringBuffer beginLabel = new StringBuffer();
-	     if ((null != association) && (association instanceof Association) && (null != property) && (property instanceof Property)) {
-	       Property pro = (Property) property;
-	       
-	       Association asso = (Association) association;
-	       boolean hideRoleLabelEnable = isHideRoleLabelEnable(context, view);
-	       boolean hideRoleNameEnable = isHideRoleNameEnable(context, view);
-	     	  
-	         // multiplicity
-	         String multiplicityToString = multiplicityToString(pro);
-	         beginLabel.append(multiplicityToString);
-	         if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
-	         	beginLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
-	         }
-	         // prefix
-	         if (!hideRoleLabelEnable) {
-	           beginLabel.append(prefixPropertyLabel(pro));
-	         // isDerived
-	         if (pro.isIsDerived()) {
-	         	beginLabel.append(ICommonConstants.SLASH_CHARACTER);
-	         }
-	         // role name (consider only if filter is disable)
-	         if (!hideRoleNameEnable && (asso.getNavigableMembers().contains(pro) || !(asso.getNavigableMembers().size()==1))) {
-	         		beginLabel.append(pro.getName());
-	         	}
-	         }
-	       }
-	     return beginLabel.toString();
-	   }
+    StringBuffer beginLabel = new StringBuffer();
+    if ((null != association) && (association instanceof Association) && (null != property)
+        && (property instanceof Property)) {
+      Property pro = (Property) property;
+
+      Association asso = (Association) association;
+      boolean hideRoleLabelEnable = isHideRoleLabelEnable(context, view);
+      boolean hideRoleNameEnable = isHideRoleNameEnable(context, view);
+
+      // multiplicity
+      String multiplicityToString = multiplicityToString(pro);
+      beginLabel.append(multiplicityToString);
+      if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
+        beginLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
+      }
+      // prefix
+      if (!hideRoleLabelEnable) {
+        beginLabel.append(prefixPropertyLabel(pro));
+        // isDerived
+        if (pro.isIsDerived()) {
+          beginLabel.append(ICommonConstants.SLASH_CHARACTER);
+        }
+        // role name (consider only if filter is disable)
+        if (!hideRoleNameEnable
+            && (asso.getNavigableMembers().contains(pro) || !(asso.getNavigableMembers().size() == 1))) {
+          beginLabel.append(pro.getName());
+        }
+      }
+    }
+    return beginLabel.toString();
+  }
 
   /**
    * Return Association Center label
-   * @param association : an Association
-   * @param view : an Association view
+   * 
+   * @param association
+   *          : an Association
+   * @param view
+   *          : an Association view
    * @return : association center label
    */
   public String getAssociationCenterLabel(EObject association, EObject view) {
@@ -2510,43 +2653,50 @@ public class InformationServices {
 
   /**
    * Return association end label
-   * @param context : context
-   * @param property : Property
-   * @param view : current diagram element view
+   * 
+   * @param context
+   *          : context
+   * @param property
+   *          : Property
+   * @param view
+   *          : current diagram element view
    * @return
    */
   public String getAssociationEndRoleLabel(EObject association, EObject context, EObject property, EObject view) {
-	    StringBuffer endLabel = new StringBuffer();
-	    if ((null != association) && (association instanceof Association) && (null != property) && (property instanceof Property)) {
+    StringBuffer endLabel = new StringBuffer();
+    if ((null != association) && (association instanceof Association) && (null != property)
+        && (property instanceof Property)) {
 
-	      Property pro = (Property) property;
-	      Association asso = (Association) association;
-	      boolean hideRoleLabelEnable = isHideRoleLabelEnable(context, view);
-	      boolean hideRoleNameEnable = isHideRoleNameEnable(context, view); 	     
-	        // multiplicity
-	        String multiplicityToString = multiplicityToString(pro);
-	        endLabel.append(multiplicityToString);
-	        if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
-	        	endLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
-	        }
-	 	    // prefix
-	 	    if (!hideRoleLabelEnable) {
-	 	      endLabel.append(prefixPropertyLabel(pro));
-	        // isDerived
-	        if (pro.isIsDerived()) {
-	        	endLabel.append(ICommonConstants.SLASH_CHARACTER);
-	        }
-	        // role name (consider only if filter is disable)
-	         if (!hideRoleNameEnable && (asso.getNavigableMembers().contains(pro) || !(asso.getNavigableMembers().size()==1))) {
-	        		endLabel.append(pro.getName());
-	        	}
-	        }
-	      }
-   return endLabel.toString();
- }
+      Property pro = (Property) property;
+      Association asso = (Association) association;
+      boolean hideRoleLabelEnable = isHideRoleLabelEnable(context, view);
+      boolean hideRoleNameEnable = isHideRoleNameEnable(context, view);
+      // multiplicity
+      String multiplicityToString = multiplicityToString(pro);
+      endLabel.append(multiplicityToString);
+      if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
+        endLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
+      }
+      // prefix
+      if (!hideRoleLabelEnable) {
+        endLabel.append(prefixPropertyLabel(pro));
+        // isDerived
+        if (pro.isIsDerived()) {
+          endLabel.append(ICommonConstants.SLASH_CHARACTER);
+        }
+        // role name (consider only if filter is disable)
+        if (!hideRoleNameEnable
+            && (asso.getNavigableMembers().contains(pro) || !(asso.getNavigableMembers().size() == 1))) {
+          endLabel.append(pro.getName());
+        }
+      }
+    }
+    return endLabel.toString();
+  }
 
   /**
-   * Return project explorer label of given element (if element is type NumericType, take into consideration the unit name)
+   * Return project explorer label of given element (if element is type NumericType, take into consideration the unit
+   * name)
    */
   public String getDatavalueLabel(EObject context) {
     String result = ICommonConstants.EMPTY_STRING;
@@ -2667,8 +2817,8 @@ public class InformationServices {
           List<String> mappingCheckList = new ArrayList<String>();
           mappingCheckList.add(IMappingNameConstants.IDB_IMPLEMENTATION_INTERFACE_MAPPING_NAME);
           mappingCheckList.add(IMappingNameConstants.IDB_USE_INTERFACE_MAPPING_NAME);
-          if ((null != sourceNode) && sourceNode.equals(sourceView) && (null != target) && existingElements.contains(target)
-              && isValidActualMapping(representation, mappingCheckList)) {
+          if ((null != sourceNode) && sourceNode.equals(sourceView) && (null != target)
+              && existingElements.contains(target) && isValidActualMapping(representation, mappingCheckList)) {
             // collect the representation to remove
             edges.add(representation);
           }
@@ -2722,17 +2872,20 @@ public class InformationServices {
           }
         } else {
           // create interfaceView
-          ContainerMapping containerMapping = diagramServices.getContainerMapping(diagram, IMappingNameConstants.IDB_INTERFACE_MAPPING_NAME);
+          ContainerMapping containerMapping = diagramServices.getContainerMapping(diagram,
+              IMappingNameConstants.IDB_INTERFACE_MAPPING_NAME);
           if (null != containerMapping) {
             // before refresh will rearrange the targetElement created
-            targetVeiw = diagramServices.createAbstractDNodeContainer(containerMapping, targetElement, diagram, diagram);
+            targetVeiw = diagramServices
+                .createAbstractDNodeContainer(containerMapping, targetElement, diagram, diagram);
           }
         }
         // create Edge
         if ((null != targetVeiw) && (sourceView instanceof EdgeTarget) && (targetVeiw instanceof EdgeTarget)) {
           // check if edge exist
           if (!diagramServices.isEdgeOnDiagram((EdgeTarget) sourceView, (EdgeTarget) targetVeiw, sourceTarget)) {
-            List<EdgeMapping> edgeMappings = getEdgeMappingFromGivenDiagram(sourceTarget, diagram, providedLink, requiredLink);
+            List<EdgeMapping> edgeMappings = getEdgeMappingFromGivenDiagram(sourceTarget, diagram, providedLink,
+                requiredLink);
             for (EdgeMapping edgeMapping2 : edgeMappings) {
               diagramServices.createEdge(edgeMapping2, (EdgeTarget) sourceView, (EdgeTarget) targetVeiw, sourceTarget);
             }
@@ -2744,6 +2897,7 @@ public class InformationServices {
 
   /**
    * Create Edge view and target view if needed in the diagram
+   * 
    * @param sourceView
    * @param diagram
    * @param link
@@ -2782,8 +2936,11 @@ public class InformationServices {
 
   /**
    * return true if actual mapping found for current representation
-   * @param representation : an edge
-   * @param mappingToCheck : list of valid mapping
+   * 
+   * @param representation
+   *          : an edge
+   * @param mappingToCheck
+   *          : list of valid mapping
    * @return
    */
   private boolean isValidActualMapping(DEdge representation, List<String> mappingToCheck) {
@@ -2801,6 +2958,7 @@ public class InformationServices {
 
   /**
    * return existing interface from diagram
+   * 
    * @param context
    * @return
    */
@@ -2823,7 +2981,9 @@ public class InformationServices {
   }
 
   /**
-   * Return all the available links from CRB Diagram (i.e involvement, extends, includes, CapReal Generalisation, Actor Generalisation)
+   * Return all the available links from CRB Diagram (i.e involvement, extends, includes, CapReal Generalisation, Actor
+   * Generalisation)
+   * 
    * @param context
    * @return
    */
@@ -2833,12 +2993,14 @@ public class InformationServices {
     if (target instanceof CapabilityRealization) {
       CapabilityRealization element = (CapabilityRealization) target;
       // involvement Systemcomponent
-      EList<SystemComponentCapabilityRealizationInvolvement> systemCapRealInvols = element.getOwnedSystemComponentCapabilityRealizations();
+      EList<SystemComponentCapabilityRealizationInvolvement> systemCapRealInvols = element
+          .getOwnedSystemComponentCapabilityRealizations();
       if (!systemCapRealInvols.isEmpty()) {
         result.addAll(systemCapRealInvols);
       }
       // involvement Actor
-      EList<ActorCapabilityRealizationInvolvement> ownedActorCapabilityRealizations = element.getOwnedActorCapabilityRealizations();
+      EList<ActorCapabilityRealizationInvolvement> ownedActorCapabilityRealizations = element
+          .getOwnedActorCapabilityRealizations();
       if (!ownedActorCapabilityRealizations.isEmpty()) {
         result.addAll(ownedActorCapabilityRealizations);
       }
@@ -2942,8 +3104,8 @@ public class InformationServices {
           mappingCheckList.add(IMappingNameConstants.CRB_INCLIDE_MAPPING);
           mappingCheckList.add(IMappingNameConstants.CRB_CAP_GENERALIZATION_MAPPING);
           mappingCheckList.add(IMappingNameConstants.CRB_ACTOR_GENERALIZATION_MAPPING);
-          if ((null != sourceNode) && sourceNode.equals(sourceView) && (null != target) && existingElements.contains(target)
-              && isValidActualMapping(representation, mappingCheckList)) {
+          if ((null != sourceNode) && sourceNode.equals(sourceView) && (null != target)
+              && existingElements.contains(target) && isValidActualMapping(representation, mappingCheckList)) {
             // collect the representation to remove
             edges.add(representation);
           }
@@ -2962,9 +3124,12 @@ public class InformationServices {
     //
     for (EObject selectedElement : selectedElements) {
       // when sourceView is Component
-      if ((selectedElement instanceof SystemComponentCapabilityRealizationInvolvement) || (selectedElement instanceof ActorCapabilityRealizationInvolvement)
-          || (selectedElement instanceof AbstractCapabilityExtend) || (selectedElement instanceof AbstractCapabilityInclude)
-          || (selectedElement instanceof AbstractCapabilityGeneralization) || (selectedElement instanceof Generalization)) {
+      if ((selectedElement instanceof SystemComponentCapabilityRealizationInvolvement)
+          || (selectedElement instanceof ActorCapabilityRealizationInvolvement)
+          || (selectedElement instanceof AbstractCapabilityExtend)
+          || (selectedElement instanceof AbstractCapabilityInclude)
+          || (selectedElement instanceof AbstractCapabilityGeneralization)
+          || (selectedElement instanceof Generalization)) {
         // create edge view and target if needed
         createEdgeViewWithTargetViewIfNeeded(sourceView, diagram, selectedElement);
       }
@@ -2973,6 +3138,7 @@ public class InformationServices {
 
   /**
    * Return actual mapping based on targetElement(a capella Element) from a Diagram
+   * 
    * @param diagram
    * @param targetElement
    * @return
@@ -2987,7 +3153,8 @@ public class InformationServices {
       if ((targetElement instanceof AbstractActor) || (targetElement instanceof Component)) {
         acturalMapping = diagramServices.getContainerMapping(diagram, IMappingNameConstants.CRB_COMPONENT_MAPPING);
       } else if (targetElement instanceof CapabilityRealization) {
-        acturalMapping = diagramServices.getNodeMapping(diagram, IMappingNameConstants.CRB_CAPABILITY_REALIZATION_MAPPING);
+        acturalMapping = diagramServices.getNodeMapping(diagram,
+            IMappingNameConstants.CRB_CAPABILITY_REALIZATION_MAPPING);
       }
     } else if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
       if (targetElement instanceof Interface) {
@@ -3001,7 +3168,8 @@ public class InformationServices {
   /**
    * get the Generalisation edge mapping from class blank diagram
    */
-  private List<EdgeMapping> getEdgeMappingFromGivenDiagram(EObject element, DDiagram diagram, boolean providedEdge, boolean requiredEdge) {
+  private List<EdgeMapping> getEdgeMappingFromGivenDiagram(EObject element, DDiagram diagram, boolean providedEdge,
+      boolean requiredEdge) {
     List<EdgeMapping> result = new ArrayList<EdgeMapping>();
 
     if ((null == element) || (null == diagram)) {
@@ -3009,31 +3177,43 @@ public class InformationServices {
     }
     // CAPABILITY REALIZATION BLANK Diagram
     if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK)) {
-      if ((element instanceof SystemComponentCapabilityRealizationInvolvement) || (element instanceof ActorCapabilityRealizationInvolvement)) {
-        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CRB_INVOLVEMENT_MAPPING));
+      if ((element instanceof SystemComponentCapabilityRealizationInvolvement)
+          || (element instanceof ActorCapabilityRealizationInvolvement)) {
+        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+            IMappingNameConstants.CRB_INVOLVEMENT_MAPPING));
       } else if (element instanceof AbstractCapabilityExtend) {
-        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CRB_EXTENDS_MAPPING));
+        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+            IMappingNameConstants.CRB_EXTENDS_MAPPING));
       } else if (element instanceof AbstractCapabilityInclude) {
-        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CRB_INCLIDE_MAPPING));
+        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+            IMappingNameConstants.CRB_INCLIDE_MAPPING));
       } else if (element instanceof AbstractCapabilityGeneralization) {
-        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CRB_CAP_GENERALIZATION_MAPPING));
+        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+            IMappingNameConstants.CRB_CAP_GENERALIZATION_MAPPING));
       } else if (element instanceof Generalization) {
-        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CRB_ACTOR_GENERALIZATION_MAPPING));
+        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+            IMappingNameConstants.CRB_ACTOR_GENERALIZATION_MAPPING));
       }
     } else
     // INTERFACES DIAGRAM BLANK
     if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
       if (element instanceof InterfaceImplementation) {
-        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.IDB_IMPLEMENTATION_INTERFACE_MAPPING_NAME));
+        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+            IMappingNameConstants.IDB_IMPLEMENTATION_INTERFACE_MAPPING_NAME));
       } else if (element instanceof InterfaceUse) {
-        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.IDB_USE_INTERFACE_MAPPING_NAME));
+        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+            IMappingNameConstants.IDB_USE_INTERFACE_MAPPING_NAME));
       } else if ((element instanceof ComponentPort) && providedEdge && !requiredEdge) {
-        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.IDB_PROVIDED_INTERFACE_MAPPING_NAME));
+        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+            IMappingNameConstants.IDB_PROVIDED_INTERFACE_MAPPING_NAME));
       } else if ((element instanceof ComponentPort) && requiredEdge && !providedEdge) {
-        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.IDB_REQUIRED_INTERFACE_MAPPING_NAME));
+        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+            IMappingNameConstants.IDB_REQUIRED_INTERFACE_MAPPING_NAME));
       } else if ((element instanceof ComponentPort) && requiredEdge && providedEdge) {
-        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.IDB_PROVIDED_INTERFACE_MAPPING_NAME));
-        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.IDB_REQUIRED_INTERFACE_MAPPING_NAME));
+        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+            IMappingNameConstants.IDB_PROVIDED_INTERFACE_MAPPING_NAME));
+        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+            IMappingNameConstants.IDB_REQUIRED_INTERFACE_MAPPING_NAME));
       }
     }
 
@@ -3070,7 +3250,8 @@ public class InformationServices {
       }
 
       if (contextualElement instanceof Classifier) {
-        contextualRelationships.addAll(CapellaServices.getService().getRelatedAssociations((Classifier) contextualElement));
+        contextualRelationships.addAll(CapellaServices.getService().getRelatedAssociations(
+            (Classifier) contextualElement));
       }
 
       if (contextualElement instanceof GeneralizableElement) {
@@ -3136,13 +3317,15 @@ public class InformationServices {
   }
 
   /**
-   * Return full path in a list for give capella element If @param checkUntileGivenElement : is true calculate full path until @param
-   * dElelementContinerTarget
+   * Return full path in a list for give capella element If @param checkUntileGivenElement : is true calculate full path
+   * until @param dElelementContinerTarget
+   * 
    * @param context
    * @param dElelementContinerTarget
    * @param checkUntileGivenElement
    */
-  private List<String> getFullNameUntilGivenElement(AbstractNamedElement context, EObject dElelementContinerTarget, boolean checkUntileGivenElement) {
+  private List<String> getFullNameUntilGivenElement(AbstractNamedElement context, EObject dElelementContinerTarget,
+      boolean checkUntileGivenElement) {
     List<String> resultList = new ArrayList<String>(0);
 
     // check if full name need to be calculated until some element
@@ -3170,7 +3353,8 @@ public class InformationServices {
     // apply recursive call
     EObject eContainer = context.eContainer();
     if ((null != eContainer) && (eContainer instanceof AbstractNamedElement)) {
-      resultList.addAll(getFullNameUntilGivenElement((AbstractNamedElement) eContainer, dElelementContinerTarget, checkUntileGivenElement));
+      resultList.addAll(getFullNameUntilGivenElement((AbstractNamedElement) eContainer, dElelementContinerTarget,
+          checkUntileGivenElement));
     }
 
     return resultList;
@@ -3178,6 +3362,7 @@ public class InformationServices {
 
   /**
    * return Symbol
+   * 
    * @param context
    * @return
    */
@@ -3232,19 +3417,24 @@ public class InformationServices {
 
   /**
    * check if element is root element in the model
+   * 
    * @param context
    * @return
    */
   private boolean isRoot(AbstractNamedElement context) {
     if (context instanceof org.polarsys.capella.core.data.ctx.System) {
       return true;
-    } else if ((context instanceof LogicalComponent) || (context instanceof PhysicalComponent) || (context instanceof ConfigurationItem)) {
+    } else if ((context instanceof LogicalComponent) || (context instanceof PhysicalComponent)
+        || (context instanceof ConfigurationItem)) {
       return ComponentExt.isComponentRoot(context);
-    } else if ((context instanceof ComponentContext) || (context instanceof ComponentArchitecture) || (context instanceof OperationalAnalysis)) {
+    } else if ((context instanceof ComponentContext) || (context instanceof ComponentArchitecture)
+        || (context instanceof OperationalAnalysis)) {
       return true;
-    } else if ((context instanceof ActorPkg) || (context instanceof AbstractFunctionalStructure) || (context instanceof ConfigurationItemPkg)) {
+    } else if ((context instanceof ActorPkg) || (context instanceof AbstractFunctionalStructure)
+        || (context instanceof ConfigurationItemPkg)) {
       EObject eContainer = context.eContainer();
-      if ((null != eContainer) && ((eContainer instanceof ComponentArchitecture) || (eContainer instanceof OperationalAnalysis))) {
+      if ((null != eContainer)
+          && ((eContainer instanceof ComponentArchitecture) || (eContainer instanceof OperationalAnalysis))) {
         return true;
       }
     }
@@ -3266,6 +3456,7 @@ public class InformationServices {
    * <b>Get all DataValues to insert</b>
    * <p>
    * Get all datavalue content in the selected element used in common.odesign
+   * 
    * @param context
    * @param containerView
    * @return
@@ -3290,7 +3481,8 @@ public class InformationServices {
       // OLD CODE
       List<DataValue> l = DataPkgExt.getDataValues(diagramTarget);
       // NEW CODE
-      l = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_DATA_VALUES_FOR_LIB, diagramTarget, l);
+      l = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_DATA_VALUES_FOR_LIB,
+          diagramTarget, l);
       // END CODE REFACTOR
       result.addAll(l);
     }
@@ -3347,6 +3539,7 @@ public class InformationServices {
    * <b>Return initial selection of the data value for transfer wizard</b>
    * <p>
    * Used in common.odesign
+   * 
    * @param elementView
    * @return return list of dataValues
    */
@@ -3405,174 +3598,167 @@ public class InformationServices {
   public static Object getEILabel(AbstractExchangeItem ei, boolean showExchangeItemsParameters) {
     return ExchangeItemExt.getEILabel(ei, showExchangeItemsParameters);
   }
-  
+
   class DependencyPair {
-		final AbstractDependenciesPkg src;
-		final AbstractDependenciesPkg tar;
+    final AbstractDependenciesPkg src;
+    final AbstractDependenciesPkg tar;
 
-		public DependencyPair(AbstractDependenciesPkg src,
-				AbstractDependenciesPkg tar) {
-			this.src = src;
-			this.tar = tar;
-		}
+    public DependencyPair(AbstractDependenciesPkg src, AbstractDependenciesPkg tar) {
+      this.src = src;
+      this.tar = tar;
+    }
 
-		@Override
-		public boolean equals(Object obj) {
-			return (obj instanceof DependencyPair)
-					&& (src == ((DependencyPair) obj).src && (tar == ((DependencyPair) obj).tar));
-		}
+    @Override
+    public boolean equals(Object obj) {
+      return (obj instanceof DependencyPair)
+          && (src == ((DependencyPair) obj).src && (tar == ((DependencyPair) obj).tar));
+    }
 
-		@Override
-		public int hashCode() {
-			int result = 17;
-			result = (src.hashCode() * result) + tar.hashCode();
-			return result;
-		}
-	}
+    @Override
+    public int hashCode() {
+      int result = 17;
+      result = (src.hashCode() * result) + tar.hashCode();
+      return result;
+    }
+  }
 
-	/**
-	 * Check if the dependency between two packages is a primitive one (cannot
-	 * be deduced from sub-packages' dependencies)
-	 * 
-	 * @param src
-	 *            The depending package
-	 * @param tar
-	 *            The dependent package
-	 * @return
-	 */
-	boolean isPrimitiveDependency(AbstractDependenciesPkg src,
-			AbstractDependenciesPkg tar) {
-		if (src instanceof DataPkg)
-			return DataPkgExt.isPrimitiveDependency((DataPkg) src,
-					(AbstractDependenciesPkg) tar);
-		else
-			// InterfacePkg
-			return InterfacePkgExt.isPrimitiveDependency((InterfacePkg) src,
-					(AbstractDependenciesPkg) tar);
-	}
+  /**
+   * Check if the dependency between two packages is a primitive one (cannot be deduced from sub-packages' dependencies)
+   * 
+   * @param src
+   *          The depending package
+   * @param tar
+   *          The dependent package
+   * @return
+   */
+  boolean isPrimitiveDependency(AbstractDependenciesPkg src, AbstractDependenciesPkg tar) {
+    if (src instanceof DataPkg) {
+      return DataPkgExt.isPrimitiveDependency((DataPkg) src, (AbstractDependenciesPkg) tar);
+    }
+    // InterfacePkg
+    return InterfacePkgExt.isPrimitiveDependency((InterfacePkg) src, (AbstractDependenciesPkg) tar);
+  }
 
-	/**
-	 * Get the dependent packages of a package with the condition that if all child dependencies are displayed already, there's no need to display the parent dependency
-	 * @param pkg
-	 * @param diagram
-	 * @return
-	 */
-	public Collection<AbstractDependenciesPkg> getDependentPackages2(
-			final AbstractDependenciesPkg pkg, final DDiagram diagram) {
-		Collection<AbstractDependenciesPkg> depPkgs = new HashSet<AbstractDependenciesPkg>(); 
-		for (AbstractDependenciesPkg depPkg : AbstractDependenciesPkgExt.getDependencies2(pkg))
-		{
-			if (shouldDisplayed(pkg, depPkg, diagram))
-				depPkgs.add(depPkg);
-		}
-		
-		return depPkgs;
-	}
+  /**
+   * Get the dependent packages of a package with the condition that if all child dependencies are displayed already,
+   * there's no need to display the parent dependency
+   * 
+   * @param pkg
+   * @param diagram
+   * @return
+   */
+  public Collection<AbstractDependenciesPkg> getDependentPackages2(final AbstractDependenciesPkg pkg,
+      final DDiagram diagram) {
+    Collection<AbstractDependenciesPkg> depPkgs = new HashSet<AbstractDependenciesPkg>();
+    Collection<AbstractDependenciesPkg> dependencies = AbstractDependenciesPkgExt.getDependencies2(pkg);
+    for (AbstractDependenciesPkg depPkg : dependencies) {
+      if (shouldDisplayed(pkg, depPkg, diagram))
+        depPkgs.add(depPkg);
+    }
 
-	/**
-	 * Check if a dependency between two packages should be displayed
-	 * @param src
-	 * @param tar
-	 * @param diagram
-	 * @return
-	 */
-	public boolean shouldDisplayed(AbstractDependenciesPkg src,
-			AbstractDependenciesPkg tar, DDiagram diagram) {
-		// If the dependency between two packages is primitive then it should be displayed
-		if (isPrimitiveDependency(src, tar))
-			return true;
+    return depPkgs;
+  }
 
-		List<AbstractDependenciesPkg> src_subPkgs = new ArrayList<AbstractDependenciesPkg>();
-		List<AbstractDependenciesPkg> tar_subPkgs = new ArrayList<AbstractDependenciesPkg>();
-		if (src instanceof DataPkg) {
-			src_subPkgs.addAll(((DataPkg) src).getOwnedDataPkgs());
-		}
-		// InterfacePkg
-		else {
-			src_subPkgs.addAll(((InterfacePkg) src).getOwnedInterfacePkgs());
-		}
+  /**
+   * Check if a dependency between two packages should be displayed
+   * 
+   * @param src
+   * @param tar
+   * @param diagram
+   * @return
+   */
+  public boolean shouldDisplayed(AbstractDependenciesPkg src, AbstractDependenciesPkg tar, DDiagram diagram) {
+    // If the dependency between two packages is primitive then it should be displayed
+    if (isPrimitiveDependency(src, tar))
+      return true;
 
-		if (tar instanceof DataPkg) {
-			tar_subPkgs.addAll(((DataPkg) tar).getOwnedDataPkgs());
-		}
-		// InterfacePkg
-		else {
-			tar_subPkgs.addAll(((InterfacePkg) tar).getOwnedInterfacePkgs());
-		}
+    List<AbstractDependenciesPkg> src_subPkgs = new ArrayList<AbstractDependenciesPkg>();
+    List<AbstractDependenciesPkg> tar_subPkgs = new ArrayList<AbstractDependenciesPkg>();
+    if (src instanceof DataPkg) {
+      src_subPkgs.addAll(((DataPkg) src).getOwnedDataPkgs());
+    }
+    // InterfacePkg
+    else {
+      src_subPkgs.addAll(((InterfacePkg) src).getOwnedInterfacePkgs());
+    }
 
-		//If the source package of the dependency is a leaf package (no child) 
-		if (src_subPkgs.size() == 0) {
-			List<DependencyPair> depPairs = new ArrayList<InformationServices.DependencyPair>();
-			Collection<AbstractDependenciesPkg> depPkgs = AbstractDependenciesPkgExt
-					.getDependencies2(src);
-			for (AbstractDependenciesPkg depPkg : depPkgs)
-				if (tar_subPkgs.contains(depPkg))
-					depPairs.add(new DependencyPair(src, depPkg));
-			
-			for (DependencyPair dep : depPairs) {
-				//For each dependency, if there's a child dependency that should be displayed but not, display the dependency in question
-				if (shouldDisplayed(dep.src, dep.tar, diagram)
-						&& !isDisplayed(dep.src, dep.tar, diagram))
-					return true;
-			}
-		}
-		//If the target package of the dependency is a leaf package (no child) 
-		else if (tar_subPkgs.size() == 0) {
-			List<DependencyPair> depPairs = new ArrayList<InformationServices.DependencyPair>();
+    if (tar instanceof DataPkg) {
+      tar_subPkgs.addAll(((DataPkg) tar).getOwnedDataPkgs());
+    }
+    // InterfacePkg
+    else {
+      tar_subPkgs.addAll(((InterfacePkg) tar).getOwnedInterfacePkgs());
+    }
 
-			for (AbstractDependenciesPkg pkg : src_subPkgs) {
-				Collection<AbstractDependenciesPkg> depPkgs = AbstractDependenciesPkgExt
-						.getDependencies2(pkg);
-				for (AbstractDependenciesPkg depPkg : depPkgs)
-					if (depPkg == tar)
-						depPairs.add(new DependencyPair(pkg, tar));
-			}
+    // If the source package of the dependency is a leaf package (no child)
+    if (src_subPkgs.size() == 0) {
+      List<DependencyPair> depPairs = new ArrayList<InformationServices.DependencyPair>();
+      Collection<AbstractDependenciesPkg> depPkgs = AbstractDependenciesPkgExt.getDependencies2(src);
+      for (AbstractDependenciesPkg depPkg : depPkgs)
+        if (tar_subPkgs.contains(depPkg))
+          depPairs.add(new DependencyPair(src, depPkg));
 
-			for (DependencyPair dep : depPairs) {
-				//For each dependency, if there's a child dependency that should be displayed but not, display the dependency in question
-				if (shouldDisplayed(dep.src, dep.tar, diagram)
-						&& !isDisplayed(dep.src, dep.tar, diagram))
-					return true;
-			}
-		}
-		//Dependency between parent packages
-		else {
-			List<DependencyPair> depPairs = new ArrayList<InformationServices.DependencyPair>();
-			for (AbstractDependenciesPkg pkg : src_subPkgs) {
-				Collection<AbstractDependenciesPkg> depPkgs = AbstractDependenciesPkgExt
-						.getDependencies2(pkg);
-				for (AbstractDependenciesPkg depPkg : depPkgs)
-					if (tar_subPkgs.contains(depPkg))
-						depPairs.add(new DependencyPair(pkg, depPkg));
-			}
+      for (DependencyPair dep : depPairs) {
+        // For each dependency, if there's a child dependency that should be displayed but not, display the dependency
+        // in question
+        if (shouldDisplayed(dep.src, dep.tar, diagram) && !isDisplayed(dep.src, dep.tar, diagram))
+          return true;
+      }
+    }
+    // If the target package of the dependency is a leaf package (no child)
+    else if (tar_subPkgs.size() == 0) {
+      List<DependencyPair> depPairs = new ArrayList<InformationServices.DependencyPair>();
 
-			for (DependencyPair dep : depPairs) {
-				//For each dependency, if there's a child dependency that should be displayed but not, display the dependency in question
-				if (shouldDisplayed(dep.src, tar,
-						diagram) && !isDisplayed(dep.src, tar,
-						diagram) && shouldDisplayed(src, dep.tar,
-								diagram) && !isDisplayed(src, dep.tar,
-										diagram))
-					return true;
-			}
-		}
-		return false;
-	}
+      for (AbstractDependenciesPkg pkg : src_subPkgs) {
+        Collection<AbstractDependenciesPkg> depPkgs = AbstractDependenciesPkgExt.getDependencies2(pkg);
+        for (AbstractDependenciesPkg depPkg : depPkgs)
+          if (depPkg == tar)
+            depPairs.add(new DependencyPair(pkg, tar));
+      }
 
-	/**
-	 * Check if the dependency between two packages is displayed. If one of the package is invisible, the dependency is not displayed
-	 * @param src the source package
-	 * @param tar the target package
-	 * @param diagram
-	 * @return
-	 */
-	public boolean isDisplayed(AbstractDependenciesPkg src,
-			AbstractDependenciesPkg tar, DDiagram diagram) {
-		DDiagramElement srcPkg = (DDiagramElement) DiagramServices
-				.getDiagramServices().getDiagramElement(diagram, src);
-		DDiagramElement tarPkg = (DDiagramElement) DiagramServices
-				.getDiagramServices().getDiagramElement(diagram, tar);
-		return (srcPkg != null && tarPkg != null);
-	}
-  
+      for (DependencyPair dep : depPairs) {
+        // For each dependency, if there's a child dependency that should be displayed but not, display the dependency
+        // in question
+        if (shouldDisplayed(dep.src, dep.tar, diagram) && !isDisplayed(dep.src, dep.tar, diagram))
+          return true;
+      }
+    }
+    // Dependency between parent packages
+    else {
+      List<DependencyPair> depPairs = new ArrayList<InformationServices.DependencyPair>();
+      for (AbstractDependenciesPkg pkg : src_subPkgs) {
+        Collection<AbstractDependenciesPkg> depPkgs = AbstractDependenciesPkgExt.getDependencies2(pkg);
+        for (AbstractDependenciesPkg depPkg : depPkgs)
+          if (tar_subPkgs.contains(depPkg))
+            depPairs.add(new DependencyPair(pkg, depPkg));
+      }
+
+      for (DependencyPair dep : depPairs) {
+        // For each dependency, if there's a child dependency that should be displayed but not, display the dependency
+        // in question
+        if (shouldDisplayed(dep.src, tar, diagram) && !isDisplayed(dep.src, tar, diagram)
+            && shouldDisplayed(src, dep.tar, diagram) && !isDisplayed(src, dep.tar, diagram))
+          return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Check if the dependency between two packages is displayed. If one of the package is invisible, the dependency is
+   * not displayed
+   * 
+   * @param src
+   *          the source package
+   * @param tar
+   *          the target package
+   * @param diagram
+   * @return
+   */
+  public boolean isDisplayed(AbstractDependenciesPkg src, AbstractDependenciesPkg tar, DDiagram diagram) {
+    EObject srcPkg = DiagramServices.getDiagramServices().getDiagramElement(diagram, src);
+    EObject tarPkg = DiagramServices.getDiagramServices().getDiagramElement(diagram, tar);
+    return (srcPkg != null && tarPkg != null);
+  }
+
 }

@@ -16,6 +16,7 @@ import java.util.List;
 import junit.framework.Test;
 
 import org.polarsys.capella.test.diagram.tools.ju.pab.DeleteConstraintLinkTestCase;
+import org.polarsys.capella.test.diagram.tools.ju.pab.DragAndDropPC;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -35,6 +36,7 @@ public class PABDiagramToolsTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new DeleteConstraintLinkTestCase());
+    tests.add(new DragAndDropPC());
     return tests;
   }
 

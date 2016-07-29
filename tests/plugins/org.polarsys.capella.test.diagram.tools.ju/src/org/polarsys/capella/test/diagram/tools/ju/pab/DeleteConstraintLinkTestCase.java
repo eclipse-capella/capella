@@ -12,29 +12,17 @@ package org.polarsys.capella.test.diagram.tools.ju.pab;
 
 import java.util.List;
 
-import junit.framework.Assert;
 import junit.framework.Test;
 
-import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.DeleteElementTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveContainerCreation;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.Messages;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.factory.ToolWrapperFactory;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ToolHelper;
-import org.polarsys.kitalpha.emde.model.Element;
 
 /**
  * Test the deletion of a constraint link in PAB diagram
