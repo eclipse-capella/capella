@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,11 +32,11 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class DefaultAttributeHandler implements IAttributeHandler {
 
-  HashSet<EObject> _suffixable = new HashSet<EObject>();
+  HashSet<EObject> suffixable = new HashSet<EObject>();
 
-  HashSet<EObject> _msuffixable = new HashSet<EObject>();
+  HashSet<EObject> msuffixable = new HashSet<EObject>();
 
-  HashMap<EObject, String> _mNames = new HashMap<EObject, String>();
+  HashMap<EObject, String> mNames = new HashMap<EObject, String>();
 
   /**
    * {@inheritDoc}
@@ -59,51 +59,54 @@ public class DefaultAttributeHandler implements IAttributeHandler {
   }
 
   public boolean hasCustomName(EObject object, IContext context) {
-    return _mNames.containsKey(object);
+    return mNames.containsKey(object);
   }
 
   public Collection<EObject> getCustomNameElements(IContext context) {
-    return _mNames.keySet();
+    return mNames.keySet();
   }
 
   public String getCustomName(EObject object, IContext context) {
-    if (_mNames.containsKey(object)) {
-      return _mNames.get(object);
+    if (mNames.containsKey(object)) {
+      return mNames.get(object);
     }
     return null;
   }
 
   public void setCustomName(EObject object, String value, IContext context) {
-    _mNames.put(object, value);
+    mNames.put(object, value);
   }
 
   public String getCurrentName(EObject object, IContext context, IPropertyContext pContext) {
     String value = "";
-    if (_mNames.containsKey(object)) {
-      return _mNames.get(object);
+    if (mNames.containsKey(object)) {
+      return mNames.get(object);
     }
 
     if (object instanceof CatalogElementLink) {
-      value += getDefaultName(((CatalogElementLink) object).getTarget(), context, pContext);
+      CatalogElementLink catalogElementLink = (CatalogElementLink) object;
+      CatalogElementLink origin = catalogElementLink.getOrigin();
+      
+      value += getDefaultName(catalogElementLink.getTarget(), context, pContext);
 
       // If the element is suffixed, we want to append the suffix of the origin element.
-      if (AttributesHandlerHelper.getInstance(context).isSuffixable(((CatalogElementLink) object).getOrigin().getTarget(), context)) {
+      if (origin != null && AttributesHandlerHelper.getInstance(context).isSuffixable(origin.getTarget(), context)) {
         IProperty property = pContext.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX);
         String suffix = (String) pContext.getCurrentValue(property);
 
         // If element name was ending by original suffix, we remove it before appending the new suffix
-        String originalSuffix = ((CatalogElement) object.eContainer()).getSuffix();
+        String originalSuffix = ((CatalogElement) catalogElementLink.eContainer()).getSuffix();
 
         if (originalSuffix == null) {
           value += suffix;
         } else if (value.endsWith(originalSuffix)) {
           value = value.substring(0, value.length() - originalSuffix.length());
           value += suffix;
-        } else if (ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.CREATED_LINKS, object, context)) {
+        } else if (ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.CREATED_LINKS, catalogElementLink, context)) {
           value += suffix;
         }
         // If element name doesn't have the same name than the source name, we ignore it
-        // String oriName = getDefaultName(((CatalogElementLink) object_p).getOrigin().getTarget(), context_p, pContext_p);
+        // String oriName = getDefaultName(((CatalogElementLink) object).getOrigin().getTarget(), context, pContext);
         // if (value.equals(oriName)) {
         // value += suffix;
         // }
@@ -137,9 +140,9 @@ public class DefaultAttributeHandler implements IAttributeHandler {
       return;
     }
     if (!value) {
-      _suffixable.remove(object);
+      suffixable.remove(object);
     } else {
-      _suffixable.add(object);
+      suffixable.add(object);
     }
 
   }
@@ -152,16 +155,16 @@ public class DefaultAttributeHandler implements IAttributeHandler {
     if (object instanceof CatalogElement) {
       return;
     }
-    _msuffixable.add(object);
+    msuffixable.add(object);
     if (!value) {
-      _suffixable.remove(object);
+      suffixable.remove(object);
     } else {
-      _suffixable.add(object);
+      suffixable.add(object);
     }
   }
 
   public boolean isManualSuffixable(Object object, IContext context) {
-    return _msuffixable.contains(object);
+    return msuffixable.contains(object);
   }
 
   /**
@@ -169,7 +172,7 @@ public class DefaultAttributeHandler implements IAttributeHandler {
    */
   @Override
   public boolean isSuffixable(Object object, IContext context) {
-    return _suffixable.contains(object);
+    return suffixable.contains(object);
   }
 
   /**
@@ -177,8 +180,8 @@ public class DefaultAttributeHandler implements IAttributeHandler {
    */
   @Override
   public void unsetCustomName(EObject element, String value, IContext iContext, IPropertyContext pContext) {
-    if (_mNames.containsKey(element)) {
-      _mNames.remove(element);
+    if (mNames.containsKey(element)) {
+      mNames.remove(element);
     }
   }
 
