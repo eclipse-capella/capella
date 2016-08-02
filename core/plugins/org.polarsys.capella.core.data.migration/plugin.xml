@@ -129,6 +129,12 @@
       
    </extension>
    
+   <extension point="org.polarsys.capella.core.commandline.core.commandline">
+	      <CommandlineExtension
+	            class="org.polarsys.capella.core.data.migration.cmdline.MigrationCommandLine"
+	            id="org.polarsys.capella.migration">
+	      </CommandlineExtension>
+	</extension>
    
    <!-- Contributions that should be removed between versions -->
    <extension
@@ -138,6 +144,7 @@
             class="org.polarsys.capella.core.data.migration.aird.FixCustomFeaturesContribution">
       </migrationContribution>
    </extension>
+   
    
    
 </plugin>
