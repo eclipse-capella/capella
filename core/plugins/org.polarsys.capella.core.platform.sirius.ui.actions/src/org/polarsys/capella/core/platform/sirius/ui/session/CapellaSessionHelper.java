@@ -144,26 +144,25 @@ public class CapellaSessionHelper {
       resource.getContents().get(0);
       // first check if used viewpoints are available with the expected versions
       IStatus result = ViewpointManager.checkViewpointsCompliancy(resourceSet);
- 	  if (!result.isOK())
-	  {
-		reportError(result);
-		return result;
-	  }
-
-	  boolean detectVersion = Activator.getDefault().getPreferenceStore().getBoolean(ICapellaPreferences.PREFERENCE_DETECTION_VERSION);
-      if (detectVersion) {
-        try {
-          EcoreUtil.resolveAll(resourceSet);
-        } catch (Exception exception) {
-          String handleLoadingErrors = handleLoadingErrors(exception);
-          if (handleLoadingErrors == null) {
-            return Status.OK_STATUS; // at the end there is no error.
-          }
-          IStatus status = new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), handleLoadingErrors, exception);
-          reportError(status);
-          return status;
-        }
+      
+      if (!result.isOK())
+      {
+        reportError(result);
+        return result;
       }
+
+      boolean detectVersion = Activator.getDefault().getPreferenceStore().getBoolean(ICapellaPreferences.PREFERENCE_DETECTION_VERSION);
+      if (detectVersion) {
+        EcoreUtil.resolveAll(resourceSet);
+      }
+    } catch (Exception exception) {
+      String handleLoadingErrors = handleLoadingErrors(exception);
+      if (handleLoadingErrors == null) {
+        return Status.OK_STATUS; // at the end there is no error.
+      }
+      IStatus status = new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), handleLoadingErrors, exception);
+      reportError(status);
+      return status;
     } finally {
       // Make sure all loaded resources in the temporary resourceSet are unloaded & removed.
       cleanResourceSet(resourceSet);
