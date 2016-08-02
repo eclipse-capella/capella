@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,17 +11,16 @@
 package org.polarsys.capella.common.extension.migration.egf;
 
 import org.apache.log4j.Logger;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.ui.statushandlers.StatusManager;
 
 /**
  * Base class generator implementation.<br>
  */
 public abstract class AbstractGenerator {
-  /**
-   * Log4j reference logger.
-   */
-  private static final Logger _logger = Logger.getLogger(AbstractGenerator.class.getPackage().getName());
-
+  
   /**
    * Handle a diagnostic
    * @param diagnostic_p
@@ -29,22 +28,23 @@ public abstract class AbstractGenerator {
    *          the displayed message if an error occurs.
    * @return false if an error occurs; true otherwise.
    */
-  protected boolean handleDiagnostic(Diagnostic diagnostic_p, String message_p) {
+  protected boolean handleDiagnostic(Diagnostic diagnostic, String message) {
     boolean result = true;
-    if (Diagnostic.OK != diagnostic_p.getSeverity()) {
-      StringBuffer loggerMessage = new StringBuffer("AbstractGenerator.handleDiagnostic(..) _ "); //$NON-NLS-1$
-      loggerMessage.append(message_p);
+    if (Diagnostic.OK != diagnostic.getSeverity()) {
+      StringBuffer loggerMessage = new StringBuffer(); //$NON-NLS-1$
+      loggerMessage.append(message);
       loggerMessage.append(' ');
-      loggerMessage.append(diagnostic_p.getMessage());
-      for (Diagnostic diagnostic : diagnostic_p.getChildren()) {
-        handleDiagnostic(diagnostic, message_p);
+      loggerMessage.append(diagnostic.getMessage());
+      loggerMessage.append(' ');
+      for (Diagnostic child : diagnostic.getChildren()) {
+        handleDiagnostic(child, message);
       }
-      Throwable exception = diagnostic_p.getException();
+      Throwable exception = diagnostic.getException();
       if (null != exception) {
         loggerMessage.append(exception.getMessage());
-        _logger.fatal(loggerMessage.toString(), exception);
+        Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, loggerMessage.toString(), exception));
       } else {
-        _logger.fatal(loggerMessage.toString());
+    	Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, loggerMessage.toString(), exception));
       }
       result = false;
     }

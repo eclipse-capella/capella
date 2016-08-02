@@ -14,9 +14,9 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.capellacommon.StateTransition;
 
 /**
  * Return Effect related to given StateTransition
@@ -36,12 +36,13 @@ public class StateTransitionEffect implements IQuery {
     List<Object> result = new ArrayList<Object>();
     if (object instanceof StateTransition) {
       // cast
-      StateTransition ele =(StateTransition)object;
+      StateTransition ele = (StateTransition) object;
       // get effect of stateTransition
-      AbstractEvent effect = ele.getEffect();
-      // check null value
-      if (null != effect) {
-        result.add(effect);
+      for (AbstractEvent effect : ele.getEffect()) {
+        // check null value
+        if (null != effect) {
+          result.add(effect);
+        }
       }
     }
     return result;

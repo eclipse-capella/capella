@@ -32,6 +32,7 @@ import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.converter.util.ConverterUtil;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.importer.ModelImporter;
 import org.eclipse.emf.importer.ui.contribution.ModelImporterDescriptor;
 import org.eclipse.emf.importer.ui.contribution.ModelImporterManager;
@@ -312,6 +313,9 @@ public abstract class AbstractGenModelGenerator extends AbstractGenerator {
         Diagnostic diagnostic = modelImporter.checkGenModelFileName();
         result = handleDiagnostic(diagnostic, "Check genmodel file name failed"); //$NON-NLS-1$
         if (result) {
+          //Initialize the resource set
+          modelImporter.getGenModelResourceSet();
+          
           // Compute and adjust packages.
           result = handleEPackages(CodeGenUtil.createMonitor(monitor, 1));
           if (result) {

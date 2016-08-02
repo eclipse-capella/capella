@@ -84,13 +84,6 @@ public class StateTransitionItemProvider
 	protected IItemPropertyDescriptor targetPropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IItemPropertyDescriptor effectPropertyDescriptor;
-
-	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -152,17 +145,6 @@ public class StateTransitionItemProvider
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);				  					
 				} else if (itemPropertyDescriptors.contains(targetPropertyDescriptor) == false) {
 					itemPropertyDescriptors.add(targetPropertyDescriptor);
-				}
-			}
-			// Process CapellacommonPackage.Literals.STATE_TRANSITION__EFFECT
-			if (effectPropertyDescriptor != null) {
-				Object effectValue = eObject.eGet(CapellacommonPackage.Literals.STATE_TRANSITION__EFFECT, true);
-				if (effectValue != null && effectValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) effectValue)) {
-					itemPropertyDescriptors.remove(effectPropertyDescriptor);
-				} else if (effectValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_TRANSITION__EFFECT) != null) {
-					itemPropertyDescriptors.remove(effectPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(effectPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(effectPropertyDescriptor);
 				}
 			}
 		}		
@@ -361,9 +343,11 @@ public class StateTransitionItemProvider
 	 * @generated
 	 */
 	protected void addEffectPropertyDescriptor(Object object) {
+
 		// begin-extension-code
-		effectPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_StateTransition_effect_feature"), //$NON-NLS-1$
@@ -375,8 +359,7 @@ public class StateTransitionItemProvider
 				 null,
 				 null,
 		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(effectPropertyDescriptor);
+				 null));
 		// end-extension-code
 	}
 
