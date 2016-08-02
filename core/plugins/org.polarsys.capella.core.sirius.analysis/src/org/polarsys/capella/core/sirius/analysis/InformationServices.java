@@ -2366,16 +2366,17 @@ public class InformationServices {
   public boolean isHideRoleNameEnable(EObject assocation, EObject view) {
     return isDiagramFilterEnable(assocation, view, IMappingNameConstants.HIDE_ROLE_NAMES);
   }
-  
+
   /**
    * @used in common.odesign Return true if "Show Modifiers is true"
    * @param assocation
    * @param view
    * @return
    */
-  public boolean isShowModifiersEnable (EObject obj, EObject view) {
+  public boolean isShowModifiersEnable(EObject obj, EObject view) {
     return isDiagramFilterEnable(obj, view, IMappingNameConstants.SHOW_MODIFIERS);
   }
+
   /**
    * @used in common.odesign Return true if given filter is true
    * @param assocation
@@ -2450,13 +2451,13 @@ public class InformationServices {
           beginLabel.append(pro.getName());
         }
         // Show Modifiers suffix
-        if (isShowModifiersEnable(context, view)){
-        	if (pro.isOrdered()){
-        		beginLabel.append(" {ordered}");				  
-        	}
-        	if (!pro.isUnique()){
-        		beginLabel.append(" {nonUnique}");
-        	}
+        if (isShowModifiersEnable(context, view)) {
+          if (pro.isOrdered()) {
+            beginLabel.append(" {ordered}");
+          }
+          if (!pro.isUnique()) {
+            beginLabel.append(" {nonUnique}");
+          }
         }
       }
     }
@@ -2485,7 +2486,7 @@ public class InformationServices {
     }
     return centerLabel;
   }
-  
+
   /**
    * Return association end label
    * 
@@ -2506,7 +2507,7 @@ public class InformationServices {
       Association asso = (Association) association;
       boolean hideRoleLabelEnable = isHideRoleLabelEnable(context, view);
       boolean hideRoleNameEnable = isHideRoleNameEnable(context, view);
-      
+
       // multiplicity
       String multiplicityToString = multiplicityToString(pro);
       endLabel.append(multiplicityToString);
@@ -2515,25 +2516,25 @@ public class InformationServices {
       }
       // prefix
       if (!hideRoleLabelEnable) {
-    	  endLabel.append(PropertyNamingHelper.prefixPropertyLabel(pro));
-    	  // isDerived
-    	  if (pro.isIsDerived()) {
-    		  endLabel.append(ICommonConstants.SLASH_CHARACTER);
-    	  }
-    	  // role name (consider only if filter is disable)
-    	  if (!hideRoleNameEnable
-    			  && (asso.getNavigableMembers().contains(pro) || !(asso.getNavigableMembers().size() == 1))) {
-    		  endLabel.append(pro.getName());
-    	  }
-          // Show Modifiers
-    	  if (isShowModifiersEnable(context, view)){
-    		  if (pro.isOrdered()){
-    			  endLabel.append(" {ordered}");				  
-    		  }
-    		  if (!pro.isUnique()){
-    			  endLabel.append(" {nonUnique}");
-    		  }	  
-    	  }
+        endLabel.append(PropertyNamingHelper.prefixPropertyLabel(pro));
+        // isDerived
+        if (pro.isIsDerived()) {
+          endLabel.append(ICommonConstants.SLASH_CHARACTER);
+        }
+        // role name (consider only if filter is disable)
+        if (!hideRoleNameEnable
+            && (asso.getNavigableMembers().contains(pro) || !(asso.getNavigableMembers().size() == 1))) {
+          endLabel.append(pro.getName());
+        }
+        // Show Modifiers
+        if (isShowModifiersEnable(context, view)) {
+          if (pro.isOrdered()) {
+            endLabel.append(" {ordered}");
+          }
+          if (!pro.isUnique()) {
+            endLabel.append(" {nonUnique}");
+          }
+        }
       }
     }
     return endLabel.toString();
@@ -3427,44 +3428,43 @@ public class InformationServices {
    * @return
    */
   public boolean isDisplayed(AbstractDependenciesPkg src, AbstractDependenciesPkg tar, DDiagram diagram) {
-    DDiagramElement srcPkg = (DDiagramElement) DiagramServices.getDiagramServices().getDiagramElement(diagram, src);
-    DDiagramElement tarPkg = (DDiagramElement) DiagramServices.getDiagramServices().getDiagramElement(diagram, tar);
+    EObject srcPkg = DiagramServices.getDiagramServices().getDiagramElement(diagram, src);
+    EObject tarPkg = DiagramServices.getDiagramServices().getDiagramElement(diagram, tar);
     return ((srcPkg != null) && (tarPkg != null));
   }
-  
+
   /**
    * 
    * @param context
    * @param view
    * @return
    */
-  public String modifiersSuffix (EObject context, EObject view){
-      String str="";
-	  if (isShowModifiersEnable(context, view)){
-		  if (context instanceof Property){
-			  Property prop=(Property) context;
-			  if (prop.isOrdered()){
-				  str+=" {ordered}";				  
-			  }
-			  if (!prop.isUnique()){
-				  str+=" {nonUnique}";
-			  }	  
-		  }
-		  if (context instanceof ExchangeItemElement){
-			  ExchangeItemElement eie=(ExchangeItemElement) context;
-			  if (eie.isOrdered()){
-				  str+=" {ordered}";				  
-			  }
-			  if (!eie.isUnique()){
-				  str+=" {nonUnique}";
-			  }	  
-			  if (!eie.isComposite()){
-				  str+=" {nonComposite}";
-			  }	  
-		  }
-	  }
-	  return str;
+  public String modifiersSuffix(EObject context, EObject view) {
+    String str = "";
+    if (isShowModifiersEnable(context, view)) {
+      if (context instanceof Property) {
+        Property prop = (Property) context;
+        if (prop.isOrdered()) {
+          str += " {ordered}";
+        }
+        if (!prop.isUnique()) {
+          str += " {nonUnique}";
+        }
+      }
+      if (context instanceof ExchangeItemElement) {
+        ExchangeItemElement eie = (ExchangeItemElement) context;
+        if (eie.isOrdered()) {
+          str += " {ordered}";
+        }
+        if (!eie.isUnique()) {
+          str += " {nonUnique}";
+        }
+        if (!eie.isComposite()) {
+          str += " {nonComposite}";
+        }
+      }
+    }
+    return str;
   }
-
 
 }
