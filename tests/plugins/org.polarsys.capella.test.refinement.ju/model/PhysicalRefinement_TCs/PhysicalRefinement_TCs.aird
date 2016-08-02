@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_aF-6wETSEeCyQdmewOi7TQ" selectedViews="_aI0MUETSEeCyQdmewOi7TQ _aI99UETSEeCyQdmewOi7TQ _aJHuUETSEeCyQdmewOi7TQ _aJQ4QETSEeCyQdmewOi7TQ _aKAfIETSEeCyQdmewOi7TQ _aKm8EETSEeCyQdmewOi7TQ _TScXwLCrEeKR0an6CER6Bg" version="7.0.0">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_aF-6wETSEeCyQdmewOi7TQ" selectedViews="_aI0MUETSEeCyQdmewOi7TQ _aI99UETSEeCyQdmewOi7TQ _aJHuUETSEeCyQdmewOi7TQ _aJQ4QETSEeCyQdmewOi7TQ _aKAfIETSEeCyQdmewOi7TQ _aKm8EETSEeCyQdmewOi7TQ _TScXwLCrEeKR0an6CER6Bg" version="11.1.0.201606300900">
   <semanticResources>PhysicalRefinement_TCs.melodymodeller</semanticResources>
+  <semanticResources>PhysicalRefinement_TCs.afm</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_aI0MUETSEeCyQdmewOi7TQ">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
   </ownedViews>
