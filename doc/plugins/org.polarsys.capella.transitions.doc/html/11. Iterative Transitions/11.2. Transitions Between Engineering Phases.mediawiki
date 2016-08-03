@@ -438,13 +438,13 @@ In the window, elements are sorted out by types
 
  
 * The column &quot;Type&quot; indicates whether the difference 	concerns the presence of an element &ldquo;Element&rdquo; or the 	modification of a reference on an element &quot;Reference&quot;.
-* The column &quot;Traceability&quot; indicates whether the element is 	traced in target architecture by one (1-1) or many elements (1-N)
-* The column &quot;Scope&quot; indicates whether the difference was 	found on the &ldquo;Source&rdquo; or &ldquo;Target&rdquo; 	architecture
+* The column &quot;Traceability&quot; indicates whether the element is 	traced in target architecture by one (1-1) or many elements (1-N).
+* The column &quot;Scope&quot; indicates whether the difference was 	found on the &ldquo;Source&rdquo; or &ldquo;Target&rdquo; 	architecture.
 * The column &quot;Differences&quot; indicates the title of the 	difference.
 * The column &quot;Action&quot; indicates the type of action planned 	by the transition:
-** &quot;Propagation&quot;: application of the merge of the difference 		in the output architecture
-** &quot;Remove from target&quot;: the difference is removed from the 		output architecture
-*
+** &quot;Propagation&quot;: application of the merge of the difference 		in the output architecture.
+** &quot;Remove from target&quot;: the difference is removed from the 		output architecture.
+
 * The column &quot;Detail&quot; gives the complete detail of the 	difference to investigative purposes very thin.
  
 [[Image:Images/11.2.%20Transitions%20Between%20Engineering%20Phases_html_m61691970.png|759x331px]]

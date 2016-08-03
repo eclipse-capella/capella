@@ -12,19 +12,32 @@
 -->
 <toc label="Preferences" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution" sort="true">
    <topic label="Preferences">
-   <topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html" label="Capella Configurability and Validation Profiles">
-		<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Principles" label="Principles"></topic>
-		<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Workspace_Preferences" label="Workspace Preferences">
-			<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Setting_Workspace_Preferences" label="Setting Workspace Preferences"></topic>
-			<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Importing.2FExporting_Workspace_Preferences_from_workbench" label="Importing/Exporting Workspace Preferences from workbench">
-				<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Exporting_Workspace_Preferences" label="Exporting Workspace Preferences"></topic>
-				<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Exporting_Validation_Preferences" label="Exporting Validation Preferences"></topic>
-				<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Importing_Workspace_Preferences" label="Importing Workspace Preferences"></topic>
-				<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Example_of_export.2Fimport_mechanism" label="Example of export/import mechanism"></topic>
-				<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Initializing_Workspace_Preferences_with_launch_arguments_.28-EPF.29" label="Initializing Workspace Preferences with launch arguments (-EPF)"></topic>
-				<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Example_of_initialization_with_-EPF" label="Example of initialization with -EPF"></topic>
-			</topic>
+      <topic label="Sirius">
+         <topic label="Sirius">
+         <topic href="html/06. Preferences/6.3. Diagram preferences.html" label="Diagram Preferences"></topic>
+         </topic>
+      </topic>
+      <topic label="Capella">
+         <topic label="Capella">   	
+         		<topic href="html/06. Preferences/6.2. Model preferences.html#General" label="General"></topic>
+				<topic href="html/06. Preferences/6.2. Model preferences.html#Delete" label="Delete"></topic>
+				<topic href="html/06. Preferences/6.2. Model preferences.html#Model" label="Model"></topic>
+    <topic href="html/06. Preferences/6.2. Model preferences.html#Model_Change_Recorder" label="Model Change Recorder">
+    </topic>
+    <topic href="html/06. Preferences/6.2. Model preferences.html#Model_Validation" label="Model Validation">
+    </topic>
+				<topic href="html/06. Preferences/6.2. Model preferences.html#Project_Explorer" label="Project Explorer"></topic>
+				<topic href="html/06. Preferences/6.2. Model preferences.html#Refinement" label="Refinement"></topic>
+				<topic href="html/06. Preferences/6.2. Model preferences.html#SCM" label="SCM"></topic>
+    <topic href="html/06. Preferences/6.2. Model preferences.html#Transfert_Viewer" label="Transfert Viewer">
+    </topic>
+    <topic href="html/06. Preferences/6.2. Model preferences.html#Transition_Log_Preferences" label="Transition Log Preferences">
+    </topic>
+				<topic href="html/06. Preferences/6.2. Model preferences.html#Transitions.2FGeneration" label="Transitions/Generation"></topic>
+				<topic href="html/06. Preferences/6.4. Commands preferences.html#Capella_Commands_Preferences" label="Capella Commands Preferences"></topic>
+				<topic href="html/06. Preferences/6.4. Commands preferences.html#Capella_User_Profiles_Management" label="Capella User Profiles Management"></topic>
 		</topic>
+<<<<<<< Upstream, based on origin/master
 		<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Melody_Project_specific_preferences" label="Capella Project specific preferences"></topic>
 		<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Melody_Configuration_Project" label="Capella Configuration Project">
 			<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Creating_Melody_Configuration_Project" label="Creating Capella Configuration Project"></topic>
@@ -51,6 +64,14 @@
 		<topic href="html/06. Preferences/6.4. Commands preferences.html#Capella_Commands_Preferences" label="Capella Commands Preferences"></topic>
 		<topic href="html/06. Preferences/6.4. Commands preferences.html#Capella_User_Profiles_Management" label="Capella User Profiles Management"></topic>
 	</topic>
+=======
+      </topic>
+      <topic label="Activity Explorer">
+         <topic label="Activity Explorer">
+         <topic href="html/06. Preferences/6.1. Activity Explorer.html" label="Activity Explorer"></topic>
+         </topic>
+      </topic>
+>>>>>>> 2614571 [933] Update of documentation 
       <anchor id="contribution"/>
    </topic>
 </toc>

@@ -36,6 +36,29 @@
 		<topic href="html/02. Workbench Basics/2.2. Understanding the difference between Models Projects and Workspaces.html#Capella_Project" label="Capella Project"></topic>
 		<topic href="html/02. Workbench Basics/2.2. Understanding the difference between Models Projects and Workspaces.html#Eclipse_Workspace" label="Eclipse Workspace"></topic>
 	</topic>
+	<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html" label="Capella Configurability and Validation Profiles">
+		<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Principles" label="Principles"></topic>
+		<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Workspace_Preferences" label="Workspace Preferences">
+			<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Setting_Workspace_Preferences" label="Setting Workspace Preferences"></topic>
+			<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Importing.2FExporting_Workspace_Preferences_from_workbench" label="Importing/Exporting Workspace Preferences from workbench">
+				<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Exporting_Workspace_Preferences" label="Exporting Workspace Preferences"></topic>
+				<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Exporting_Validation_Preferences" label="Exporting Validation Preferences"></topic>
+				<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Importing_Workspace_Preferences" label="Importing Workspace Preferences"></topic>
+				<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Example_of_export.2Fimport_mechanism" label="Example of export/import mechanism"></topic>
+				<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Initializing_Workspace_Preferences_with_launch_arguments_.28-EPF.29" label="Initializing Workspace Preferences with launch arguments (-EPF)"></topic>
+				<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Example_of_initialization_with_-EPF" label="Example of initialization with -EPF"></topic>
+			</topic>
+		</topic>
+		<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Melody_Project_specific_preferences" label="Capella Project specific preferences"></topic>
+		<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Melody_Configuration_Project" label="Capella Configuration Project">
+			<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Creating_Melody_Configuration_Project" label="Creating Capella Configuration Project"></topic>
+			<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Referencing_Melody_Configuration_Project" label="Referencing Capella Configuration Project"></topic>
+		</topic>
+		<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Validation_Profiles" label="Validation Profiles">
+			<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Creating_Validation_Profiles" label="Creating Validation Profiles"></topic>
+			<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Using_Validation_Profiles" label="Using Validation Profiles"></topic>
+		</topic>
+	</topic>
       <anchor id="Workbench Basics"/>
    </topic>
      <topic label="First steps with Capella">
@@ -253,6 +276,10 @@
 		<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html#Clear_Progress_Status_on_Elements" label="Clear Progress Status on Elements"></topic>
 		<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html#Visualization_of_Progress_Monitoring_Information" label="Visualization of Progress Monitoring Information"></topic>
 	</topic>
+ <topic label="Acceleo Queries">
+    <topic href="html/12. Model Analysis/12.5 Acceleo Queries.html" label="Acceleo Queries">
+    </topic>
+ </topic>
       <anchor id="Model Analysis"/>
    </topic>
     <topic label="Search and Replace">

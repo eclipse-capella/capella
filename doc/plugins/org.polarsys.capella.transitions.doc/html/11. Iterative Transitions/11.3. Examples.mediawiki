@@ -69,13 +69,12 @@ Let&rsquo;s consider the following situation:
 [[Image:Images/11.3.%20Examples_html_6ac74814.png|634x341px]]
 
  
-The '''High command''' is '''realized by System''' and the '''Soldier''' is a '''System Actor''' (see the contextual menu:
+The '''High command''' is '''realized by System''' and the '''Soldier''' is a '''System Actor''' (see the contextual menu):
 
  
 [[Image:Images/11.3.%20Examples_html_m29c1a900.png|497x48px]]
 
  
-).
 
  
 === Performing the First Transition ===

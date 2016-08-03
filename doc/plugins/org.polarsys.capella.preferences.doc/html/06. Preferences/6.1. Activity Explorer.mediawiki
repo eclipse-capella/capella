@@ -1,0 +1,20 @@
+            
+
+ 
+= Activity Explorer =
+
+ 
+[[Image:Images/6.2.%20Model%20preferences_html_m4d003fe.png|450x250px]]
+
+ 
+Both options allow choosing whether activities related to Functional Analysis and Interface Engineering should be displayed or not (See MDE in Thales / Modeling Approaches / Modeling Strategies).
+
+ 
+The sub sections of the Overview Preferences allow specifying individually which sections have to be displayed for each engineering phase.
+
+ 
+[[Image:Images/6.2.%20Model%20preferences_html_2ceba136.png|700x450px]]
+
+ 
+
+ 
