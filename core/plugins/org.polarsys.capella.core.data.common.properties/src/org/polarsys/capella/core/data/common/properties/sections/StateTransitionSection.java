@@ -22,15 +22,14 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.common.properties.Messages;
+import org.polarsys.capella.core.data.common.properties.controllers.EffectsController;
 import org.polarsys.capella.core.data.common.properties.controllers.StateTransitionRealizationsController;
 import org.polarsys.capella.core.data.common.properties.fields.StateTransitionGroup;
 import org.polarsys.capella.core.data.common.properties.fields.StateTransitionTriggerField;
 import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
-import org.polarsys.capella.core.ui.properties.controllers.SimpleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.ConstraintReferenceGroup;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
-import org.polarsys.capella.core.ui.properties.fields.SimpleSemanticField;
 
 /**
  * The StateTransition section.
@@ -38,7 +37,7 @@ import org.polarsys.capella.core.ui.properties.fields.SimpleSemanticField;
 public class StateTransitionSection extends NamedElementSection {
 
   private StateTransitionGroup _stateTransitionGroup;
-  private SimpleSemanticField _effectField;
+  private MultipleSemanticField _effectField;
   private StateTransitionTriggerField _triggerField;
   private MultipleSemanticField _realizationsField;
   private ConstraintReferenceGroup _guardGroup;
@@ -54,8 +53,8 @@ public class StateTransitionSection extends NamedElementSection {
     _guardGroup.createControls(_rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
 
     _effectField =
-        new SimpleSemanticField(getReferencesGroup(),
-            Messages.getString("StateTransition.Effect.Label"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
+        new MultipleSemanticField(getReferencesGroup(),
+            Messages.getString("StateTransition.Effect.Label"), getWidgetFactory(), new EffectsController()); //$NON-NLS-1$
     _effectField.setDisplayedInWizard(displayedInWizard);
 
     Group triggersGroup = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
