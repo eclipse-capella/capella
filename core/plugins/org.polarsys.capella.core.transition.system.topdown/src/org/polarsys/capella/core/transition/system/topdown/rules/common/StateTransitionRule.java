@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,14 +40,17 @@ public class StateTransitionRule extends org.polarsys.capella.core.transition.sy
     // but we return children
     StateTransition element = (StateTransition) source_p;
 
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element, context_p)) {
+    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element,
+        context_p)) {
 
       // Transition only already transitioned functions
-      EObject effect = element.getEffect();
-      if (effect != null) {
-        if (TopDownTransformationHelper.getInstance(context_p).isTracedInTarget(effect, context_p)) {
-          ContextScopeHandlerHelper.getInstance(context_p).add(ITopDownConstants.CONTEXT_SCOPE__AVOID_DIFF_ELEMENTS, effect, context_p);
-          result_p.add(effect);
+      for (AbstractEvent effect : element.getEffect()) {
+        if (effect != null) {
+          if (TopDownTransformationHelper.getInstance(context_p).isTracedInTarget(effect, context_p)) {
+            ContextScopeHandlerHelper.getInstance(context_p).add(ITopDownConstants.CONTEXT_SCOPE__AVOID_DIFF_ELEMENTS,
+                effect, context_p);
+            result_p.add(effect);
+          }
         }
       }
 
@@ -58,7 +61,8 @@ public class StateTransitionRule extends org.polarsys.capella.core.transition.sy
             result_p.add(trigger);
           }
           if (TopDownTransformationHelper.getInstance(context_p).isTracedInTarget(trigger, context_p)) {
-            ContextScopeHandlerHelper.getInstance(context_p).add(ITopDownConstants.CONTEXT_SCOPE__AVOID_DIFF_ELEMENTS, trigger, context_p);
+            ContextScopeHandlerHelper.getInstance(context_p).add(ITopDownConstants.CONTEXT_SCOPE__AVOID_DIFF_ELEMENTS,
+                trigger, context_p);
 
             result_p.add(trigger);
           }

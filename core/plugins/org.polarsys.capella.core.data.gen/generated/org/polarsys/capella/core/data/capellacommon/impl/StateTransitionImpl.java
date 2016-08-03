@@ -164,14 +164,14 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 
 
 	/**
-	 * The cached value of the '{@link #getEffect() <em>Effect</em>}' reference.
+	 * The cached value of the '{@link #getEffect() <em>Effect</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getEffect()
 	 * @generated
 	 * @ordered
 	 */
-	protected AbstractEvent effect;
+	protected EList<AbstractEvent> effect;
 
 
 
@@ -579,51 +579,13 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 	 * @generated
 	 */
 
-	public AbstractEvent getEffect() {
+	public EList<AbstractEvent> getEffect() {
 
-		if (effect != null && effect.eIsProxy()) {
-			InternalEObject oldEffect = (InternalEObject)effect;
-			effect = (AbstractEvent)eResolveProxy(oldEffect);
-			if (effect != oldEffect) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE_TRANSITION__EFFECT, oldEffect, effect));
-			}
+		if (effect == null) {
+			effect = new EObjectResolvingEList<AbstractEvent>(AbstractEvent.class, this, CapellacommonPackage.STATE_TRANSITION__EFFECT);
 		}
 		return effect;
 	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public AbstractEvent basicGetEffect() {
-
-		return effect;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setEffect(AbstractEvent newEffect) {
-
-		AbstractEvent oldEffect = effect;
-		effect = newEffect;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_TRANSITION__EFFECT, oldEffect, effect));
-
-	}
-
-
-
-
 
 
 	/**
@@ -819,8 +781,7 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 				if (resolve) return getTarget();
 				return basicGetTarget();
 			case CapellacommonPackage.STATE_TRANSITION__EFFECT:
-				if (resolve) return getEffect();
-				return basicGetEffect();
+				return getEffect();
 			case CapellacommonPackage.STATE_TRANSITION__TRIGGERS:
 				return getTriggers();
 			case CapellacommonPackage.STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS:
@@ -897,13 +858,8 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_TRANSITION__EFFECT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractEvent) {
-				// end-extension-code
-					setEffect((AbstractEvent)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
+				getEffect().clear();
+				getEffect().addAll((Collection<? extends AbstractEvent>)newValue);
 				return;
 			case CapellacommonPackage.STATE_TRANSITION__TRIGGERS:
 				getTriggers().clear();
@@ -945,7 +901,7 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 				setTarget((AbstractState)null);
 				return;
 			case CapellacommonPackage.STATE_TRANSITION__EFFECT:
-				setEffect((AbstractEvent)null);
+				getEffect().clear();
 				return;
 			case CapellacommonPackage.STATE_TRANSITION__TRIGGERS:
 				getTriggers().clear();
@@ -980,7 +936,7 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 			case CapellacommonPackage.STATE_TRANSITION__TARGET:
 				return target != null;
 			case CapellacommonPackage.STATE_TRANSITION__EFFECT:
-				return effect != null;
+				return effect != null && !effect.isEmpty();
 			case CapellacommonPackage.STATE_TRANSITION__TRIGGERS:
 				return triggers != null && !triggers.isEmpty();
 			case CapellacommonPackage.STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS:

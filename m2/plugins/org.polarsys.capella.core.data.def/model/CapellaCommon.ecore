@@ -386,7 +386,8 @@
       <eAnnotations source="http://www.polarsys.org/capella/derived"/>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="entry" upperBound="-1" eType="ecore:EClass ../../org.polarsys.capella.common.data.def/model/Behavior.ecore#//AbstractEvent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entry" upperBound="-1"
+        eType="ecore:EClass ../../org.polarsys.capella.common.data.def/model/Behavior.ecore#//AbstractEvent">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If&#xD;&#xA;defined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the&#xD;&#xA;state.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
         <details key="constraints" value="none"/>
@@ -399,7 +400,8 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="doActivity" upperBound="-1" eType="ecore:EClass ../../org.polarsys.capella.common.data.def/model/Behavior.ecore#//AbstractEvent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="doActivity" upperBound="-1"
+        eType="ecore:EClass ../../org.polarsys.capella.common.data.def/model/Behavior.ecore#//AbstractEvent">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="An optional behavior that is executed while being in the state. The execution starts when this state is entered, and stops&#xD;&#xA;either by itself or when the state is exited whichever comes first.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
         <details key="constraints" value="none"/>
@@ -655,7 +657,8 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="effect" eType="ecore:EClass ../../org.polarsys.capella.common.data.def/model/Behavior.ecore#//AbstractEvent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="effect" upperBound="-1"
+        eType="ecore:EClass ../../org.polarsys.capella.common.data.def/model/Behavior.ecore#//AbstractEvent">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="The event to be triggered"/>
         <details key="constraints" value="none"/>

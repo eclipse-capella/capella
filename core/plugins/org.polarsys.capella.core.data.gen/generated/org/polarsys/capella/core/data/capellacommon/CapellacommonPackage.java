@@ -3638,7 +3638,7 @@ public interface CapellacommonPackage extends EPackage {
 	int STATE_TRANSITION__TARGET = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Effect</b></em>' reference.
+	 * The feature id for the '<em><b>Effect</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8439,10 +8439,10 @@ public interface CapellacommonPackage extends EPackage {
 	EReference getStateTransition_Target();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getEffect <em>Effect</em>}'.
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getEffect <em>Effect</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Effect</em>'.
+	 * @return the meta object for the reference list '<em>Effect</em>'.
 	 * @see org.polarsys.capella.core.data.capellacommon.StateTransition#getEffect()
 	 * @see #getStateTransition()
 	 * @generated
@@ -9186,7 +9186,7 @@ public interface CapellacommonPackage extends EPackage {
 		EReference STATE_TRANSITION__TARGET = eINSTANCE.getStateTransition_Target();
 
 		/**
-		 * The meta object literal for the '<em><b>Effect</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Effect</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
