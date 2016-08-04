@@ -5379,6 +5379,7 @@ public class CsServices {
 
       // Trigger
       EList<AbstractEvent> triggers = transition.getTriggers();
+      boolean firstTriggerToDisplay = true;
       for (AbstractEvent trigger : triggers) {
         if (trigger != null) {
           String name = EObjectLabelProviderHelper.getText(trigger);
@@ -5399,10 +5400,9 @@ public class CsServices {
               result.append(trigger.getName());
             }
           }
-          if (trigger != triggers.get(triggers.size() - 1)) {
-            result.append(","); //$NON-NLS-1$
-          } else {
-            result.append(" "); //$NON-NLS-1$
+          if (firstTriggerToDisplay) {
+            firstTriggerToDisplay = false;
+            result.append(", "); //$NON-NLS-1$
           }
         }
       }
@@ -5424,16 +5424,15 @@ public class CsServices {
       if (!transition.getEffect().isEmpty()) {
         result.append(" / "); //$NON-NLS-1$
 
+        boolean firstEffectToDisplay = true;
         for (AbstractEvent effect : transition.getEffect()) {
           if (effect != null) {
             result.append(EObjectLabelProviderHelper.getText(effect));
 
-            if (effect != triggers.get(transition.getEffect().size() - 1)) {
-              result.append(","); //$NON-NLS-1$
-            } else {
-              result.append(" "); //$NON-NLS-1$
+            if (firstEffectToDisplay) {
+              firstEffectToDisplay = false;
+              result.append(", "); //$NON-NLS-1$
             }
-
           }
         }
       }
