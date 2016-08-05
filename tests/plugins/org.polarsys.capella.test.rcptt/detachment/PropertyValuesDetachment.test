@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _thHdYEkPEeaoOLXB8A2oPA
 Runtime-Version: 2.0.2.201511100828
-Save-Time: 7/15/16 9:14 AM
+Save-Time: 8/5/16 3:20 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -97,18 +97,18 @@ get-editor "Detachment" | get-group Filtering | get-button "Property Group" | ge
     | equals "Property Group" | verify-true
 with [get-editor "Detachment" | get-group Filtering | get-button "Property Package"] {
     get-property tooltip | equals "Property Package" | verify-true
-    get-property "image.path" | equals "org.polarsys.capella.detachment.propertyvalue/icons/full/PropertyValuePkg.gif" 
+    get-property "image.path" | equals "org.polarsys.capella.core.data.res.edit/icons/full/obj16/PropertyValuePkg.gif" 
         | verify-true
 }
 with [get-editor "Detachment" | get-group Filtering | get-button "Property Enumeration Type"] {
     get-property tooltip | equals "Property Enumeration Type" | verify-true
     get-property "image.path" 
-        | equals "org.polarsys.capella.detachment.propertyvalue/icons/full/EnumerationPropertyType.gif" | verify-true
+        | equals "org.polarsys.capella.core.data.res.edit/icons/full/obj16/EnumerationPropertyType.gif" | verify-true
 }
 get-editor "Detachment" | get-group Filtering | get-button "Property Values" | get-property "image.path" 
-    | equals "org.polarsys.capella.detachment.propertyvalue/icons/full/BooleanPropertyValue.gif" | verify-true
+    | equals "org.polarsys.capella.core.data.res.edit/icons/full/obj16/BooleanPropertyValue.gif" | verify-true
 get-editor "Detachment" | get-group Filtering | get-button "Property Group" | get-property "image.path" 
-    | equals "org.polarsys.capella.detachment.propertyvalue/icons/full/PropertyValueGroup.gif" | verify-true
+    | equals "org.polarsys.capella.core.data.res.edit/icons/full/obj16/PropertyValueGroup.gif" | verify-true
 with [get-editor "Detachment" | get-button "Expand All"] {
     get-property tooltip | equals "Expand All" | verify-true
     get-property "image.path" | equals "org.polarsys.capella.detachment.propertyvalue/icons/full/expandall.gif" 
@@ -210,10 +210,12 @@ with [get-view Properties | get-tree] {
         | verify-true
     get-item "Applied Property Value Groups" | get-property "values['Property']" 
         | equals "Applied Property Value Groups" | verify-true
-    get-item "Applied Property Value Groups" | get-property "values['Value']" | equals "" | verify-true
+    get-item "Applied Property Value Groups" | get-property "values['Value']" 
+        | equals "" | verify-true
     get-item "Applied Property Value Groups" | get-property "values['Property']" 
         | equals "Applied Property Value Groups" | verify-true
-    get-item "Applied Property Value Groups" | get-property "values['Value']" | equals "" | verify-true
+    get-item "Applied Property Value Groups" | get-property "values['Value']" 
+        | equals "" | verify-true
 }
 get-view "Capella Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Entities/Passenger"

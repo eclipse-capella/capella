@@ -6,7 +6,7 @@ Element-Version: 2.0
 Id: _H2g9YMEUEeWqb6y2_gGIKQ
 Manually-Ordered: true
 Runtime-Version: 2.0.2.201511100828
-Save-Time: 8/4/16 5:51 PM
+Save-Time: 8/5/16 4:32 PM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -18,5 +18,6 @@ _oVQaQMN9EeWBxdbwkOo7Xg	// kind: 'test' name: 'PreferenceModification' path: 'Ac
 _cZR30MN6EeWBxdbwkOo7Xg	// kind: 'test' name: 'ViewPointSelection' path: 'ActivityExplorer/ViewPointSelection.test'
 _m1bcAPyxEeWcsI4k6xXMnQ	// kind: 'test' name: 'FunctionalExchangeWhenAllocationWithoutTarget' path: 'Sequence/FunctionalExchangeWhenAllocationWithoutTarget.test'
 _g6DIAFpOEeaZtZLaGPKybA	// kind: 'test' name: 'CheckAFMFilePresenceAfterMigration' path: 'Migration/CheckAFMFilePresenceAfterMigration.test'
+_thHdYEkPEeaoOLXB8A2oPA	// kind: 'test' name: 'PropertyValuesDetachment' path: 'detachment/PropertyValuesDetachment.test'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--
