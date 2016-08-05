@@ -5391,6 +5391,11 @@ public class CsServices {
             TimeEvent timeEvent = (TimeEvent) trigger;
             name = "(" + timeEvent.getKind() + ") "; //$NON-NLS-1$ //$NON-NLS-2$
           }
+          if (firstTriggerToDisplay) {
+            firstTriggerToDisplay = false;
+          } else {
+            result.append(", "); //$NON-NLS-1$
+          }
           result.append(name);
           if (trigger instanceof StateEvent) {
             Constraint triggerCondition = ((StateEvent) trigger).getExpression();
@@ -5399,10 +5404,6 @@ public class CsServices {
             } else {
               result.append(trigger.getName());
             }
-          }
-          if (firstTriggerToDisplay) {
-            firstTriggerToDisplay = false;
-            result.append(", "); //$NON-NLS-1$
           }
         }
       }
@@ -5427,12 +5428,12 @@ public class CsServices {
         boolean firstEffectToDisplay = true;
         for (AbstractEvent effect : transition.getEffect()) {
           if (effect != null) {
-            result.append(EObjectLabelProviderHelper.getText(effect));
-
             if (firstEffectToDisplay) {
               firstEffectToDisplay = false;
+            } else {
               result.append(", "); //$NON-NLS-1$
             }
+            result.append(EObjectLabelProviderHelper.getText(effect));
           }
         }
       }
