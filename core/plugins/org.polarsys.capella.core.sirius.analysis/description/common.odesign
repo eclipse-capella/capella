@@ -29,19 +29,19 @@
       <defaultLayer name="default" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']">
         <nodeMappings name="SM_ModeState" preconditionExpression="&lt;%(filter(&quot;FinalState&quot;) + filter(&quot;Pseudostate&quot;)).nSize() > 0%>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:involvedStates" domainClass="IState">
           <borderedNodeMappings name="ModeState_Activity" label="ModeState_Label" preconditionExpression="&lt;%(filter(&quot;Mode&quot;) + filter(&quot;State&quot;)).nSize() > 0 &amp;&amp; (doActivity!=null) %>" semanticCandidatesExpression="&lt;%self%>" domainClass="IState">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="do / &lt;%doActivity.name%>" labelAlignment="LEFT" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Blank.gif">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="do / &lt;%doActivity.name.sep(&quot;, &quot;)%>" labelAlignment="LEFT" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Blank.gif">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
           <borderedNodeMappings name="ModeState_Entry" preconditionExpression="&lt;%(filter(&quot;Mode&quot;) + filter(&quot;State&quot;)).nSize() > 0 &amp;&amp; (entry!=null) %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" semanticCandidatesExpression="&lt;%self%>" domainClass="IState">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="entry / &lt;%entry.name%>" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Blank.gif">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="entry / &lt;%entry.name.sep(&quot;, &quot;)%>" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Blank.gif">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
           <borderedNodeMappings name="ModeState_Exit" preconditionExpression="&lt;%(filter(&quot;Mode&quot;) + filter(&quot;State&quot;)).nSize() > 0 &amp;&amp; (exit!=null) %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" semanticCandidatesExpression="&lt;%self%>" domainClass="IState">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="exit / &lt;%exit.name%>" labelAlignment="RIGHT" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Blank.gif">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="exit / &lt;%exit.name.sep(&quot;, &quot;)%>" labelAlignment="RIGHT" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Blank.gif">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
