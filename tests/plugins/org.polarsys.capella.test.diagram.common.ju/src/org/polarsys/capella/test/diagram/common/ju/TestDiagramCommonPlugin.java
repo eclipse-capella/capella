@@ -66,19 +66,21 @@ public class TestDiagramCommonPlugin extends AbstractUIPlugin {
     super.stop(context);
   }
 
-  protected void addStartedListener(Bundle bundle) {
+  protected void addStartedListener(final Bundle bundle) {
 
     bundle.getBundleContext().addBundleListener(new BundleListener() {
       @Override
       public void bundleChanged(BundleEvent event) {
-        switch (event.getType()) {
-        case BundleEvent.STARTED:
-        case BundleEvent.LAZY_ACTIVATION:
-        case BundleEvent.UPDATED:
-          resetExternalJavaAction();
-          break;
-        default:
-          break;
+        if (event.getBundle().equals(bundle)) {
+          switch (event.getType()) {
+          case BundleEvent.STARTED:
+          case BundleEvent.LAZY_ACTIVATION:
+          case BundleEvent.UPDATED:
+            resetExternalJavaAction();
+            break;
+          default:
+            break;
+          }
         }
       }
     });
@@ -96,7 +98,7 @@ public class TestDiagramCommonPlugin extends AbstractUIPlugin {
 
   /**
    * Returns the shared instance
-   *
+   * 
    * @return the shared instance
    */
   public static TestDiagramCommonPlugin getDefault() {
