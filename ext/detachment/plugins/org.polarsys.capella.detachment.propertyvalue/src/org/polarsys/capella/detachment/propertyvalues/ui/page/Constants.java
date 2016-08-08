@@ -80,7 +80,7 @@ public final class Constants {
 		url = FileLocator.find(ICON_BUNDLE, new Path(EL_ICON), null);
 		enumLiteralIcon = ImageDescriptor.createFromURL(url).createImage();
 		
-		url = FileLocator.find(ICON_BUNDLE, new Path("icons/full/collapseall.gif"), null); //$NON-NLS-1$
+		url = FileLocator.find(Activator.getDefault().getBundle(), new Path("icons/full/collapseall.gif"), null); //$NON-NLS-1$
 		collapsAllIcon = ImageDescriptor.createFromURL(url).createImage();
 		
 		url = FileLocator.find(Activator.getDefault().getBundle(), new Path("icons/full/expandall.gif"), null); //$NON-NLS-1$
@@ -130,8 +130,6 @@ public final class Constants {
 	public static final Image getUncheckAllIcon() {
 		return uncheckAllIcon;
 	}
-
-
 
 	//misc
 	public static final String PROPERTY_EMPTY_NAME = "[Unnamed element]";
