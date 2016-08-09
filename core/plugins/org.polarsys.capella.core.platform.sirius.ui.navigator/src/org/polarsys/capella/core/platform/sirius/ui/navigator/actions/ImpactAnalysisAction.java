@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.polarsys.capella.common.ui.toolkit.viewers.AbstractContextMenuFiller;
 import org.polarsys.capella.common.mdsofa.common.helper.StringHelper;
 import org.polarsys.capella.core.ui.toolkit.dialogs.ImpactAnalysisDialog;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
@@ -140,7 +141,7 @@ public class ImpactAnalysisAction extends BaseSelectionListenerAction {
   public boolean selectionChanged(ISelection selection_p) {
     // Re-use the code in LocateInCapellaExplorerAction to get the semantic element in specified selection.
     LocateInCapellaExplorerAction action = createLocateInCapellaExplorerAction();
-    Object element = LocateInCapellaExplorerAction.getElement(action.getFirstSelectedElement(selection_p));
+    EObject element = CapellaAdapterHelper.resolveSemanticObject(action.getFirstSelectedElement(selection_p), true);
     boolean enabled = false;
     if ((null != element) && (CapellaResourceHelper.isSemanticElement(element))) {
       enabled = true;

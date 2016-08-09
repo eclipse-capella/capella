@@ -25,7 +25,6 @@
       </view>
    </extension>
    
-      
    <extension
       point="org.eclipse.ui.navigator.viewer">
    <viewer
