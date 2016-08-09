@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,7 @@ import org.polarsys.capella.common.re.activities.DifferencesComputingActivity;
 import org.polarsys.capella.common.re.activities.FinalizeTransitionActivity;
 import org.polarsys.capella.common.re.activities.InitializeReMgtActivity;
 import org.polarsys.capella.common.re.constants.IReConstants;
-import org.polarsys.capella.common.re.re2rpl.activities.DifferencesFilteringActivity;
+import org.polarsys.capella.common.re.re2rpl.activities.DifferencesFilteringOnlyActivity;
 import org.polarsys.capella.common.re.re2rpl.activities.InitializeDiffMergeUpdateReplicaActivity;
 import org.polarsys.capella.common.re.re2rpl.activities.InitializeTransitionActivity;
 import org.polarsys.capella.core.transition.common.activities.PostDiffMergeActivity;
@@ -25,7 +25,7 @@ import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParamete
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class Rpl2RecConformanceCheckLauncher extends ReLauncher {
-  
+
   private IComparison comparison;
 
   @Override
@@ -44,7 +44,7 @@ public class Rpl2RecConformanceCheckLauncher extends ReLauncher {
     // (see org.polarsys.capella.common.re.policies.match.ReMatchPolicy.getMatchID(EObject, IModelScope))
     return IReConstants.COMMAND__UPDATE_A_REPLICA_FROM_REPLICABLE;
   }
-  
+
   @Override
   protected WorkflowActivityParameter buildInitializationActivities() {
     WorkflowActivityParameter parameter = new WorkflowActivityParameter();
@@ -56,7 +56,7 @@ public class Rpl2RecConformanceCheckLauncher extends ReLauncher {
 
     return parameter;
   }
-  
+
   @Override
   protected WorkflowActivityParameter buildDiffMergeActivities() {
     WorkflowActivityParameter parameter = new WorkflowActivityParameter();
@@ -68,11 +68,11 @@ public class Rpl2RecConformanceCheckLauncher extends ReLauncher {
     parameter.addActivity(getActivity(DifferencesComputingActivity.ID));
 
     // DifferencesFilteringActivity
-    parameter.addActivity(getActivity(DifferencesFilteringActivity.ID));
+    parameter.addActivity(getActivity(DifferencesFilteringOnlyActivity.ID));
 
     return parameter;
   }
-  
+
   @Override
   protected WorkflowActivityParameter buildFinalizationActivities() {
     WorkflowActivityParameter parameter = new WorkflowActivityParameter();
@@ -85,7 +85,7 @@ public class Rpl2RecConformanceCheckLauncher extends ReLauncher {
 
     return parameter;
   }
-  
+
   /**
    * 
    * @return the comparison result which is computed when running the {@link DifferencesComputingActivity}. The
@@ -95,14 +95,14 @@ public class Rpl2RecConformanceCheckLauncher extends ReLauncher {
   public IComparison getComparison() {
     return comparison;
   }
-  
+
   @Override
   protected void dispose() {
     // Get the comparison result before disposing the context
     ExtendedTransposer transposer = getTransposer();
     if (transposer != null) {
       IContext context = transposer.getContext();
-      if (context != null){
+      if (context != null) {
         comparison = (IComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
       }
     }
