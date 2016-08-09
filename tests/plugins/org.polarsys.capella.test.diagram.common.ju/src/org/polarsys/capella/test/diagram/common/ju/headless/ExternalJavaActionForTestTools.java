@@ -47,8 +47,8 @@ final public class ExternalJavaActionForTestTools {
   private static final String NEW_JAVAEXT_LOC = "org.polarsys.capella.test.diagram.common.ju.headless.actions"; //$NON-NLS-1$
 
   /**
-   * id for the extension contribution created by this class Not really nice but it seems that getting extension with their unique identifier does not work
-   * properly
+   * id for the extension contribution created by this class Not really nice but it seems that getting extension with
+   * their unique identifier does not work properly
    */
   public final String CREATED_EXTENSION_ID = "tests.contribution.id" + ICommonConstants.POINT_CHARACTER + EXTID_TAG; //$NON-NLS-1$
 
@@ -85,9 +85,9 @@ final public class ExternalJavaActionForTestTools {
           NEW_JAVAEXT_LOC + ICommonConstants.POINT_CHARACTER + "HeadlessSelectElementsFromCheckBoxWizard" //$NON-NLS-1$
       );
       // Functional chain update
-//      map.put(OLD_JAVAEXT_LOC + ICommonConstants.POINT_CHARACTER + "UpdateFunctionalChain", //$NON-NLS-1$
-//          NEW_JAVAEXT_LOC + ICommonConstants.POINT_CHARACTER + "HeadlessUpdateFunctionalChain" //$NON-NLS-1$
-//      );
+      //      map.put(OLD_JAVAEXT_LOC + ICommonConstants.POINT_CHARACTER + "UpdateFunctionalChain", //$NON-NLS-1$
+      //          NEW_JAVAEXT_LOC + ICommonConstants.POINT_CHARACTER + "HeadlessUpdateFunctionalChain" //$NON-NLS-1$
+      // );
       // AffectMessage
       map.put(OLD_JAVAEXT_LOC + ICommonConstants.POINT_CHARACTER + "AffectToMessageDialogBox", //$NON-NLS-1$
           NEW_JAVAEXT_LOC + ICommonConstants.POINT_CHARACTER + "HeadlessAffectToMessageDialogBox" //$NON-NLS-1$
@@ -154,10 +154,10 @@ final public class ExternalJavaActionForTestTools {
   }
 
   /**
-   * This method find the contribution to the extension point org.eclipse.sirius.externalJavaAction and replace the default class linked to each contribution
-   * with new ones which does not make any call to UI.
+   * This method find the contribution to the extension point org.eclipse.sirius.externalJavaAction and replace the
+   * default class linked to each contribution with new ones which does not make any call to UI.
    */
-  public void init() {
+  public synchronized void init() {
     if (_isRegistryHacked) { // The extension registry has been already modified
       return;
     }
@@ -165,7 +165,8 @@ final public class ExternalJavaActionForTestTools {
     _modifiedExtensionCache = new ArrayList<InternalCache>();
 
     // All contributing extensions to the JAVA_ACTION_EXT_POINT extension point
-    IExtension[] extensions = _registry.getExtensionPoint(ExternalJavaActionExtReader.JAVA_ACTION_EXT_POINT).getExtensions();
+    IExtension[] extensions = _registry.getExtensionPoint(ExternalJavaActionExtReader.JAVA_ACTION_EXT_POINT)
+        .getExtensions();
 
     // cache for all interesting contributions
     // (Key, Value) <==> (id, actionClass)
@@ -176,9 +177,10 @@ final public class ExternalJavaActionForTestTools {
 
     ExternalJavaActionExtReader reader = null;
 
-    // Clear ExternalJavaActionProvider before modifying Extension Point (this to avoid ConcurrentModificationExceptions)
+    // Clear ExternalJavaActionProvider before modifying Extension Point (this to avoid
+    // ConcurrentModificationExceptions)
     ExternalJavaActionProvider.INSTANCE.clearRegistry();
-    
+
     boolean mustBeTreated;
     for (IExtension extension : extensions) {
       // cache for all contributions that we must remove and activate once again
@@ -219,7 +221,8 @@ final public class ExternalJavaActionForTestTools {
         _registry.removeExtension(extension, _key);
 
         // Let's replace needed and unchanged element
-        ByteArrayInputStream is = generateXMLDescStream(cacheToRestore, (null == extensionId ? "" : extensionId) + EXTID_TAG); //$NON-NLS-1$
+        ByteArrayInputStream is = generateXMLDescStream(cacheToRestore,
+            (null == extensionId ? "" : extensionId) + EXTID_TAG); //$NON-NLS-1$
         _registry.addContribution(is, contributor, true, null, null, _key);
       }
 
@@ -238,13 +241,14 @@ final public class ExternalJavaActionForTestTools {
   /**
    * Restore the original extension registry
    */
-  public void restore() {
+  public synchronized void restore() {
     if (!_isRegistryHacked) { // No job to perform
       return;
     }
 
     // First, let's remove our contribution
-    for (IExtension extension : _registry.getExtensionPoint(ExternalJavaActionExtReader.JAVA_ACTION_EXT_POINT).getExtensions()) {
+    for (IExtension extension : _registry.getExtensionPoint(ExternalJavaActionExtReader.JAVA_ACTION_EXT_POINT)
+        .getExtensions()) {
       String uniqueIdentifier = extension.getUniqueIdentifier();
       if ((uniqueIdentifier != null) && uniqueIdentifier.endsWith(EXTID_TAG)) {
         _registry.removeExtension(extension, _key);
@@ -265,16 +269,20 @@ final public class ExternalJavaActionForTestTools {
 
   /**
    * return whether the extension registry has been modified
+   * 
    * @return
    */
-  public boolean isExtensionRegistryModified() {
+  public synchronized boolean isExtensionRegistryModified() {
     return _isRegistryHacked;
   }
 
   /**
    * generate a stream with a plugin.xml format "as" for the JAVA_ACTION_EXT_POINT
-   * @param map (Key, Value) <==> (id, actionClass)
-   * @param id the extension id
+   * 
+   * @param map
+   *          (Key, Value) <==> (id, actionClass)
+   * @param id
+   *          the extension id
    * @return null whether the map is null
    */
   private ByteArrayInputStream generateXMLDescStream(Map<String, String> map, String id) {
@@ -283,13 +291,13 @@ final public class ExternalJavaActionForTestTools {
     if (!map.isEmpty()) {
 
       String buffer = "<plugin><extension point=\"" + //$NON-NLS-1$
-                      ExternalJavaActionExtReader.JAVA_ACTION_EXT_POINT + "\" id=\"" + id + //$NON-NLS-1$
-                      "\">" //$NON-NLS-1$
+          ExternalJavaActionExtReader.JAVA_ACTION_EXT_POINT + "\" id=\"" + id + //$NON-NLS-1$
+          "\">" //$NON-NLS-1$
       ;
 
       for (Map.Entry<String, String> entry : map.entrySet()) {
         buffer += "<javaActions " + ExternalJavaActionExtReader.ID_ATTRIBUTE + "=\"" + entry.getKey() + "\"" + //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                  " " + ExternalJavaActionExtReader.CLASS_ATTRIBUTE + "=\"" + entry.getValue() + "\" />" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            " " + ExternalJavaActionExtReader.CLASS_ATTRIBUTE + "=\"" + entry.getValue() + "\" />" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         ;
       }
 
@@ -304,6 +312,7 @@ final public class ExternalJavaActionForTestTools {
 
   /**
    * Hack on Extension registry in order to grant all permission on this one.
+   * 
    * @return the masterToken whether accessible, null otherwise see org.eclipse.core.internal.registry.osgi.Activator
    */
   private Object getExtRegistryMasterToken() {
