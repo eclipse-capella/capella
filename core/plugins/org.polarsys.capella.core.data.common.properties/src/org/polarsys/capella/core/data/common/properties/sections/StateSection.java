@@ -54,14 +54,6 @@ public class StateSection extends AbstractStateSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    activityField = new MultipleSemanticField(main, Messages.getString("State.Activity"), getWidgetFactory(), new AbstractMultipleSemanticFieldController() { //$NON-NLS-1$
-      @Override
-      protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
-        return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), CapellacommonPackage.eINSTANCE.getState_DoActivity());
-      }
-    });
-    activityField.setDisplayedInWizard(displayedInWizard);
-
     entryField = new MultipleSemanticField(main, Messages.getString("State.Entry"), getWidgetFactory(), new AbstractMultipleSemanticFieldController() { //$NON-NLS-1$
       @Override
       protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
@@ -69,6 +61,14 @@ public class StateSection extends AbstractStateSection {
       }
     });
     entryField.setDisplayedInWizard(displayedInWizard);
+
+    activityField = new MultipleSemanticField(main, Messages.getString("State.Activity"), getWidgetFactory(), new AbstractMultipleSemanticFieldController() { //$NON-NLS-1$
+      @Override
+      protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
+        return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), CapellacommonPackage.eINSTANCE.getState_DoActivity());
+      }
+    });
+    activityField.setDisplayedInWizard(displayedInWizard);
 
     exitField = new MultipleSemanticField(main, Messages.getString("State.Exit"), getWidgetFactory(), new AbstractMultipleSemanticFieldController() { //$NON-NLS-1$
       @Override
