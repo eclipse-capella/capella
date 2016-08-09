@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -15,12 +15,14 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.model.ju.rename.RenameModelTestSuite;
 import org.polarsys.capella.test.model.ju.sortContent.SortContentTestSuite;
 import org.polarsys.capella.test.model.ju.sortSelection.SortSelectionTestSuite;
 import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecompositionWithCommunicationLink;
 import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecompositionWithInternalInterface;
 import org.polarsys.capella.test.model.ju.testcase.dialoglabel.NewDiagramDialogLabel;
 import org.polarsys.capella.test.model.ju.testcases.interfacescenario.message.ISMessage;
+import org.polarsys.capella.test.model.ju.testsuites.partial.DetachTestSuite;
 
 import junit.framework.Test;
 
@@ -42,10 +44,11 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new LCDecompositionWithCommunicationLink());
     tests.add(new LCDecompositionWithInternalInterface());
     tests.add(new ISMessage());
-    // tests.add(new DetachTestSuite());
+    tests.add(new DetachTestSuite());
     tests.add(new SortSelectionTestSuite());
     tests.add(new SortContentTestSuite());
     tests.add(new NewDiagramDialogLabel());
+    tests.add(new RenameModelTestSuite());
     return tests;
   }
 
