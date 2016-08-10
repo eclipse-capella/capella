@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -44,7 +44,7 @@ import org.polarsys.capella.core.ui.metric.MetricMessages;
 import org.polarsys.capella.core.ui.metric.utils.Utils;
 import org.polarsys.capella.core.ui.properties.annotations.RepresentationAnnotationHelper;
 
-class ProgressSetDialog extends Dialog {
+public class ProgressSetDialog extends Dialog {
 
   private Label dlgMessage;
   private Label dlgImage;
@@ -55,13 +55,11 @@ class ProgressSetDialog extends Dialog {
   private EnumerationPropertyLiteral selectedEnumLiteral = null;
 
   public enum PropagateChoice {
-    NO_MODEL_ELEMENTS,
-    ONLY_BUSINESS_ELEMENTS,
-    ALL_CAPELLA_ELEMENTS,
+    NO_MODEL_ELEMENTS, ONLY_BUSINESS_ELEMENTS, ALL_CAPELLA_ELEMENTS,
   }
-  
+
   private PropagateChoice propagateChoiceFiltering = PropagateChoice.ONLY_BUSINESS_ELEMENTS;
-  
+
   private boolean propagateToRepresentation = false;
 
   private boolean useFilterStatus = false;
@@ -69,11 +67,11 @@ class ProgressSetDialog extends Dialog {
   private EnumerationPropertyLiteral filterStatus = null;
 
   private boolean cleanReview = false;
-  
+
   private boolean propagateStatus = true;
 
   private Combo combo;
-  
+
   /**
    * Constructor
    */
@@ -90,25 +88,25 @@ class ProgressSetDialog extends Dialog {
   }
 
   /**
-   * 
+   *
    * @return Indicates whether to apply filtering when setting the status for no Model elements.
    */
   public PropagateChoice getPropagateChoiceWithoutFiltering() {
     return propagateChoiceFiltering;
   }
-  
+
   /**
-   * 
+   *
    * @return Indicates whether to set the propagate the status for referenced graphical representations.
    */
   public boolean isPropagateToRepresentations() {
     return propagateToRepresentation;
   }
-  
+
   public boolean mustPropagateStatus() {
-	return propagateStatus;
+    return propagateStatus;
   }
-  
+
   public boolean mustCleanReview() {
     return cleanReview;
   }
@@ -120,47 +118,47 @@ class ProgressSetDialog extends Dialog {
   public EnumerationPropertyLiteral getFilterStatus() {
     return filterStatus;
   }
-  
+
   private void refreshWizard() {
-    
+
     boolean action = propagateStatus || cleanReview;
     boolean propagateOn = propagateToRepresentation || propagateChoiceFiltering != PropagateChoice.NO_MODEL_ELEMENTS;
-    
+
     // refresh OK button
     if (getButton(OK) != null) {
       getButton(OK).setEnabled(action && propagateOn);
     }
-    
-    // refresh dialog message    
+
+    // refresh dialog message
     if (!action) {
-      
+
       dlgImage.setImage(JFaceResources.getImage(Dialog.DLG_IMG_MESSAGE_ERROR));
       dlgMessage.setText(MetricMessages.progressMonitoring_setAction_dialog_noAction_lbl);
 
     } else if (!propagateOn) {
-      
+
       dlgImage.setImage(JFaceResources.getImage(Dialog.DLG_IMG_MESSAGE_ERROR));
       dlgMessage.setText(MetricMessages.progressMonitoring_setAction_dialog_noPropagateOn_lbl);
 
     } else if (propagateStatus) {
-      
+
       selectedEnumLiteral = (EnumerationPropertyLiteral) combo.getData(String.valueOf(combo.getSelectionIndex()));
       if (selectedEnumLiteral == null) {
         dlgImage.setImage(JFaceResources.getImage(Dialog.DLG_IMG_MESSAGE_WARNING));
         dlgMessage.setText(MetricMessages.progressMonitoring_setAction_dialog_clear_lbl);
       } else {
         dlgImage.setImage(JFaceResources.getImage(Dialog.DLG_IMG_MESSAGE_INFO));
-        dlgMessage.setText(NLS.bind(MetricMessages.progressMonitoring_setAction_dialog_main_lbl,
-            selectedEnumLiteral.getLabel()));
+        dlgMessage.setText(
+            NLS.bind(MetricMessages.progressMonitoring_setAction_dialog_main_lbl, selectedEnumLiteral.getLabel()));
       }
-      
+
     } else {
-      
+
       dlgImage.setImage(null);
       dlgMessage.setText("");
     }
   }
-  
+
   /**
    * {@inheritDoc}
    */
@@ -192,12 +190,12 @@ class ProgressSetDialog extends Dialog {
     propagateComposite.setLayout(new GridLayout(2, false));
     propagateComposite.setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, true, 2, 1));
 
-    //new Label(propagateComposite, SWT.NONE).setText(MetricMessages.progressMonitoring_setAction_dialog_combo_lbl);
+    // new Label(propagateComposite, SWT.NONE).setText(MetricMessages.progressMonitoring_setAction_dialog_combo_lbl);
     Button propagateStatusField = new Button(propagateComposite, SWT.CHECK);
     propagateStatusField.setText(MetricMessages.progressMonitoring_setAction_dialog_combo_lbl);
     propagateStatusField.setToolTipText(MetricMessages.progressMonitoring_setAction_dialog_combo_lbl);
     propagateStatusField.setSelection(propagateStatus);
-    
+
     combo = new Combo(propagateComposite, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.BORDER);
     combo.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
     combo.addModifyListener(new ModifyListener() {
@@ -205,21 +203,20 @@ class ProgressSetDialog extends Dialog {
       @Override
       public void modifyText(ModifyEvent e) {
         refreshWizard();
-      } 
+      }
     });
 
     propagateStatusField.addSelectionListener(new SelectionAdapter() {
-    	@Override
-    	public void widgetSelected(SelectionEvent e) {
-    	  
-    		propagateStatus = ((Button) e.getSource()).getSelection();
-    		combo.setEnabled(propagateStatus);
-    		
-    		refreshWizard();
-    	}
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+
+        propagateStatus = ((Button) e.getSource()).getSelection();
+        combo.setEnabled(propagateStatus);
+
+        refreshWizard();
+      }
     });
 
-    
     Button cleanReviewField = new Button(propagateComposite, SWT.CHECK);
     cleanReviewField.setText(MetricMessages.progressMonitoring_clearReview_button_lbl);
     cleanReviewField.setToolTipText(MetricMessages.progressMonitoring_clearReview_button_tooltip);
@@ -227,57 +224,65 @@ class ProgressSetDialog extends Dialog {
       @Override
       public void widgetSelected(SelectionEvent e) {
         cleanReview = ((Button) e.getSource()).getSelection();
-        
+
         refreshWizard();
       }
     });
 
     Group filterGroup = createFilterGroup(composite);
- 
+
     // Propagate semantic elements without filtering button
     Button propagateNothingWithoutFilteringButton = new Button(filterGroup, SWT.RADIO);
-    propagateNothingWithoutFilteringButton.setText(MetricMessages.progressMonitoring_dialog_propagate_nothing_button_lbl);
-    propagateNothingWithoutFilteringButton.setToolTipText(MetricMessages.progressMonitoring_dialog_propagate_nothing_button_tooltip);
+    propagateNothingWithoutFilteringButton
+        .setText(MetricMessages.progressMonitoring_dialog_propagate_nothing_button_lbl);
+    propagateNothingWithoutFilteringButton
+        .setToolTipText(MetricMessages.progressMonitoring_dialog_propagate_nothing_button_tooltip);
     propagateNothingWithoutFilteringButton.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 2, 1));
     propagateNothingWithoutFilteringButton.setSelection(propagateChoiceFiltering == PropagateChoice.NO_MODEL_ELEMENTS);
     propagateNothingWithoutFilteringButton.addSelectionListener(new SelectionAdapter() {
-      
+
       @Override
       public void widgetSelected(SelectionEvent event) {
         propagateChoiceFiltering = PropagateChoice.NO_MODEL_ELEMENTS;
-        
+
         refreshWizard();
       }
     });
-    
+
     // Propagate semantic elements without filtering button
     Button propagateSemanticWithoutFilteringButton = new Button(filterGroup, SWT.RADIO);
-    propagateSemanticWithoutFilteringButton.setText(MetricMessages.progressMonitoring_dialog_propagate_semantic_button_lbl);
-    propagateSemanticWithoutFilteringButton.setToolTipText(MetricMessages.progressMonitoring_dialog_propagate_semantic_button_tooltip);
+    propagateSemanticWithoutFilteringButton
+        .setText(MetricMessages.progressMonitoring_dialog_propagate_semantic_button_lbl);
+    propagateSemanticWithoutFilteringButton
+        .setToolTipText(MetricMessages.progressMonitoring_dialog_propagate_semantic_button_tooltip);
     propagateSemanticWithoutFilteringButton.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 2, 1));
-    propagateSemanticWithoutFilteringButton.setSelection(propagateChoiceFiltering == PropagateChoice.ONLY_BUSINESS_ELEMENTS);
+    propagateSemanticWithoutFilteringButton
+        .setSelection(propagateChoiceFiltering == PropagateChoice.ONLY_BUSINESS_ELEMENTS);
     propagateSemanticWithoutFilteringButton.addSelectionListener(new SelectionAdapter() {
 
       @Override
       public void widgetSelected(SelectionEvent event) {
         propagateChoiceFiltering = PropagateChoice.ONLY_BUSINESS_ELEMENTS;
-        
+
         refreshWizard();
       }
     });
-    
- // Propagate technical elements without filtering button
+
+    // Propagate technical elements without filtering button
     Button propagateTechnicalWithoutFilteringButton = new Button(filterGroup, SWT.RADIO);
-    propagateTechnicalWithoutFilteringButton.setText(MetricMessages.progressMonitoring_dialog_propagate_technical_button_lbl);
-    propagateTechnicalWithoutFilteringButton.setToolTipText(MetricMessages.progressMonitoring_dialog_propagate_technical_button_tooltip);
+    propagateTechnicalWithoutFilteringButton
+        .setText(MetricMessages.progressMonitoring_dialog_propagate_technical_button_lbl);
+    propagateTechnicalWithoutFilteringButton
+        .setToolTipText(MetricMessages.progressMonitoring_dialog_propagate_technical_button_tooltip);
     propagateTechnicalWithoutFilteringButton.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 2, 1));
-    propagateTechnicalWithoutFilteringButton.setSelection(propagateChoiceFiltering == PropagateChoice.ALL_CAPELLA_ELEMENTS);
+    propagateTechnicalWithoutFilteringButton
+        .setSelection(propagateChoiceFiltering == PropagateChoice.ALL_CAPELLA_ELEMENTS);
     propagateTechnicalWithoutFilteringButton.addSelectionListener(new SelectionAdapter() {
 
       @Override
       public void widgetSelected(SelectionEvent event) {
         propagateChoiceFiltering = PropagateChoice.ALL_CAPELLA_ELEMENTS;
-        
+
         refreshWizard();
       }
     });
@@ -294,7 +299,7 @@ class ProgressSetDialog extends Dialog {
       @Override
       public void widgetSelected(SelectionEvent event) {
         propagateToRepresentation = ((Button) event.getSource()).getSelection();
-        
+
         refreshWizard();
       }
     });
@@ -309,7 +314,8 @@ class ProgressSetDialog extends Dialog {
     comboFilter.addModifyListener(new ModifyListener() {
       @Override
       public void modifyText(ModifyEvent e) {
-        filterStatus = (EnumerationPropertyLiteral) comboFilter.getData(String.valueOf(comboFilter.getSelectionIndex()));
+        filterStatus = (EnumerationPropertyLiteral) comboFilter
+            .getData(String.valueOf(comboFilter.getSelectionIndex()));
       }
     });
 
@@ -325,7 +331,7 @@ class ProgressSetDialog extends Dialog {
     // Ask for the index to select
     int index = getSelectIndex(combo);
     combo.select(index);
-    
+
     fillComboBox(comboFilter);
 
     return super.createContents(parent);
@@ -342,11 +348,11 @@ class ProgressSetDialog extends Dialog {
       combo.setData(String.valueOf(i), enumLiteral);
       i++;
     }
-    
+
     // Add an empty string, at index 0, so that the user is able to unset the status
     combo.add("");
     combo.setData(String.valueOf(i), null);
-    
+
     combo.notifyListeners(SWT.Modify, new Event());
   }
 
@@ -368,7 +374,7 @@ class ProgressSetDialog extends Dialog {
     while (iterator.hasNext() && semanticElement == null) {
       EObject next = iterator.next();
       if (next instanceof CapellaElement) {
-        semanticElement = (CapellaElement) next;
+        semanticElement = next;
       } else if (next instanceof DRepresentation) {
         semanticElement = Utils.getTarget((DRepresentation) next);
       }
@@ -398,8 +404,6 @@ class ProgressSetDialog extends Dialog {
     // Else return 0
     return 0;
   }
-
-  
 
   @Override
   public boolean close() {

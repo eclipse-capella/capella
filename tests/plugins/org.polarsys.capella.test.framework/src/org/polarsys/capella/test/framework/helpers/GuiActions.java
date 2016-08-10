@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -53,14 +53,14 @@ import org.polarsys.capella.test.framework.actions.headless.HeadlessWizardDialog
 /**
  * An API gathering together launchers for GUI capella actions. All these actions are headless (they do not block on GUI
  * windows and does not need user interaction).
- * 
+ *
  * @author Erwan Brottier
  */
 public class GuiActions {
 
   /**
    * Creates a capella project by using the capella wizard @see NewProjectWizard.
-   * 
+   *
    * @param projectName
    *          the name of the project to create
    * @param openActivityExplorer
@@ -72,8 +72,8 @@ public class GuiActions {
     boolean originalPrefValue = ActivityExplorerActivator.getDefault().getPreferenceStore()
         .getBoolean(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER);
     if (originalPrefValue != openActivityExplorer) {
-      ActivityExplorerActivator.getDefault().getPreferenceStore()
-          .setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, openActivityExplorer);
+      ActivityExplorerActivator.getDefault().getPreferenceStore().setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER,
+          openActivityExplorer);
     }
 
     IWorkbenchSite site = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().getActivePart()
@@ -87,8 +87,8 @@ public class GuiActions {
 
     // Reset the original value of the Activity Explorer preference
     if (originalPrefValue != openActivityExplorer) {
-      ActivityExplorerActivator.getDefault().getPreferenceStore()
-          .setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, originalPrefValue);
+      ActivityExplorerActivator.getDefault().getPreferenceStore().setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER,
+          originalPrefValue);
     }
     flushASyncGuiThread();
 
@@ -98,7 +98,7 @@ public class GuiActions {
 
   /**
    * Open a session by using the capella action @see OpenSessionAction.
-   * 
+   *
    * @param airdFile
    *          the aird file
    * @param openActivityExplorer
@@ -109,8 +109,8 @@ public class GuiActions {
     boolean originalPrefValue = ActivityExplorerActivator.getDefault().getPreferenceStore()
         .getBoolean(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER);
     if (originalPrefValue != openActivityExplorer) {
-      ActivityExplorerActivator.getDefault().getPreferenceStore()
-          .setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, openActivityExplorer);
+      ActivityExplorerActivator.getDefault().getPreferenceStore().setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER,
+          openActivityExplorer);
     }
     OpenSessionAction olsa = new OpenSessionAction();
     olsa.setOpenActivityExplorer(openActivityExplorer);
@@ -118,8 +118,8 @@ public class GuiActions {
     olsa.run();
     // Reset the original value of the preference
     if (originalPrefValue != openActivityExplorer) {
-      ActivityExplorerActivator.getDefault().getPreferenceStore()
-          .setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, originalPrefValue);
+      ActivityExplorerActivator.getDefault().getPreferenceStore().setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER,
+          originalPrefValue);
     }
 
     flushASyncGuiThread();
@@ -127,9 +127,9 @@ public class GuiActions {
 
   /**
    * Close several sessions at the same time by using the Capella action
-   * 
+   *
    * @see CloseSessionAction.
-   * 
+   *
    * @param sessions
    *          the list of sessions to close
    */
@@ -156,7 +156,7 @@ public class GuiActions {
 
   /**
    * Close a session by using the capella action @see CloseSessionAction.
-   * 
+   *
    * @param session
    *          the session to close (if session is dirty, it will be saved)
    */
@@ -166,7 +166,7 @@ public class GuiActions {
 
   /**
    * Close a session by using the capella action @see CloseSessionAction.
-   * 
+   *
    * @param session
    *          the session to close (if session is dirty, it will be saved)
    * @param saveSession
@@ -231,7 +231,7 @@ public class GuiActions {
   public static void renameModelFile(IFile modelFile, final String newName) {
 
     // Replace default command by a dummy one (we do not want to display the rename dialog)
-    ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
+    ICommandService commandService = PlatformUI.getWorkbench().getService(ICommandService.class);
     Command command = commandService.getCommand("org.eclipse.ltk.ui.refactoring.commands.renameResource");
     command.undefine();
 
@@ -250,7 +250,7 @@ public class GuiActions {
 
   /**
    * Call the Sort Content action on an element
-   * 
+   *
    * @param elementToSort
    */
   public static void sortContent(EObject elementToSort) {
@@ -262,7 +262,7 @@ public class GuiActions {
 
   /**
    * Call the Sort Selection action on a list of selected elements
-   * 
+   *
    * @param elementsToSort
    */
   public static void sortSelection(List<EObject> elementsToSort) {
@@ -274,7 +274,7 @@ public class GuiActions {
 
   /**
    * Simulate a model detachment. Do NOT perform a model detach, it's just to evaluate detach preconditions.
-   * 
+   *
    * @param airdFile
    * @throws RuntimeException
    *           if one precondition is false
@@ -282,20 +282,21 @@ public class GuiActions {
   public static void lauchDetachModelAction(IFile airdFile) throws RuntimeException, Exception {
     String dettachCommandId = "org.polarsys.kitalpha.model.detachment.ui.command.a";
     executeEclipseCommand(dettachCommandId, airdFile);
+
+    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().closeAllEditors(false);
   }
 
   /**
    * Execute an Eclipse command with the file as current selection
-   * 
+   *
    * @param commandId
    * @param file
    *          is a Capella file
    * @throws Exception
    */
   protected static void executeEclipseCommand(String commandId, IFile file) throws Exception {
-    Command command = ((ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class))
-        .getCommand(commandId);
-    IHandlerService hservice = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
+    Command command = PlatformUI.getWorkbench().getService(ICommandService.class).getCommand(commandId);
+    IHandlerService hservice = PlatformUI.getWorkbench().getService(IHandlerService.class);
 
     setCurrentSelection(file);
 
@@ -306,7 +307,7 @@ public class GuiActions {
 
   /**
    * Open ActivityExplorersession by using the Capella action @see OpenActivityExplorerAction
-   * 
+   *
    * @param airdFile
    *          the aird file
    */
@@ -318,7 +319,7 @@ public class GuiActions {
 
   /**
    * Set current selection on IFile file
-   * 
+   *
    * @param file
    * @throws PartInitException
    */
