@@ -22,7 +22,6 @@ import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecompositi
 import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecompositionWithInternalInterface;
 import org.polarsys.capella.test.model.ju.testcase.dialoglabel.NewDiagramDialogLabel;
 import org.polarsys.capella.test.model.ju.testcases.interfacescenario.message.ISMessage;
-import org.polarsys.capella.test.model.ju.testsuites.partial.DetachTestSuite;
 
 import junit.framework.Test;
 
@@ -44,7 +43,6 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new LCDecompositionWithCommunicationLink());
     tests.add(new LCDecompositionWithInternalInterface());
     tests.add(new ISMessage());
-    tests.add(new DetachTestSuite());
     tests.add(new SortSelectionTestSuite());
     tests.add(new SortContentTestSuite());
     tests.add(new NewDiagramDialogLabel());
