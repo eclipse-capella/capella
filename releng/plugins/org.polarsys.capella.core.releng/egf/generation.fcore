@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -69,6 +69,19 @@
           <methods xmi:id="_jTm0N_PKEeSU3eQEoBs7gw" name="footer" patternFilePath="templates/pattern._jTm0MfPKEeSU3eQEoBs7gw/method._jTm0N_PKEeSU3eQEoBs7gw.pt"/>
           <orchestration xmi:type="pattern:SuperCall" xmi:id="_jTm0OPPKEeSU3eQEoBs7gw"/>
         </elements>
+        <elements xmi:id="_CvKrMGCYEeaiRMSMV0dHpw" name="build.xml_stepContainer"
+            superPattern="platform:/plugin/org.eclipse.egf.portfolio.eclipse.build/egf/Build.fcore#_NSuLMTuJEeGSmpHYBb6SQQ"
+            headerMethod="#_CvKrMmCYEeaiRMSMV0dHpw" conditionMethod="#_CvKrNGCYEeaiRMSMV0dHpw"
+            initMethod="#_CvKrM2CYEeaiRMSMV0dHpw" footerMethod="#_CvKrNmCYEeaiRMSMV0dHpw">
+          <nature xmi:type="jetpattern:JetNature" xmi:id="_CvKrMWCYEeaiRMSMV0dHpw"
+              name="JET"/>
+          <methods xmi:id="_CvKrMmCYEeaiRMSMV0dHpw" name="header" patternFilePath="templates/pattern._CvKrMGCYEeaiRMSMV0dHpw/method._CvKrMmCYEeaiRMSMV0dHpw.pt"/>
+          <methods xmi:id="_CvKrM2CYEeaiRMSMV0dHpw" name="init" patternFilePath="templates/pattern._CvKrMGCYEeaiRMSMV0dHpw/method._CvKrM2CYEeaiRMSMV0dHpw.pt"/>
+          <methods xmi:id="_CvKrNGCYEeaiRMSMV0dHpw" name="preCondition" patternFilePath="templates/pattern._CvKrMGCYEeaiRMSMV0dHpw/method._CvKrNGCYEeaiRMSMV0dHpw.pt"/>
+          <methods xmi:id="_CvKrNWCYEeaiRMSMV0dHpw" name="body" patternFilePath="templates/pattern._CvKrMGCYEeaiRMSMV0dHpw/method._CvKrNWCYEeaiRMSMV0dHpw.pt"/>
+          <methods xmi:id="_CvKrNmCYEeaiRMSMV0dHpw" name="footer" patternFilePath="templates/pattern._CvKrMGCYEeaiRMSMV0dHpw/method._CvKrNmCYEeaiRMSMV0dHpw.pt"/>
+          <orchestration xmi:type="pattern:SuperCall" xmi:id="_CvKrN2CYEeaiRMSMV0dHpw"/>
+        </elements>
       </libraries>
     </viewpoints>
   </viewpointContainer>
@@ -92,6 +105,8 @@
                 replacement="#_yh-PMG5cEeSjRJXhSwqD-A"/>
             <substitutions xmi:id="_PLJbsPPLEeSU3eQEoBs7gw" replacedElement="platform:/plugin/org.eclipse.egf.portfolio.eclipse.build/egf/Build.fcore#_IfGS0I6XEd-e7viTqNBNrA"
                 replacement="#_jTm0MfPKEeSU3eQEoBs7gw"/>
+            <substitutions xmi:id="_KtRKMGCYEeaiRMSMV0dHpw" replacedElement="platform:/plugin/org.eclipse.egf.portfolio.eclipse.build/egf/Build.fcore#_NSuLMTuJEeGSmpHYBb6SQQ"
+                replacement="#_CvKrMGCYEeaiRMSMV0dHpw"/>
           </type>
         </invocationContracts>
       </invocationContractContainer>

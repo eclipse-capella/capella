@@ -34,7 +34,7 @@
       <additionalParameters xmi:id="_71LO0VqmEeSQoMAm1P90CA" key="dir" value="${result}/tp"/>
     </steps>
   </steps>
-  <steps xsi:type="buildcore:StepContainer" xmi:id="__Rn-QIgFEeOdzI3OsQ-7WQ" name="Build All">
+  <steps xsi:type="buildcore:StepContainer" xmi:id="__Rn-QIgFEeOdzI3OsQ-7WQ" name="Build All" description="Build for all platform if necessary">
     <steps xsi:type="buildcore:ReuseStep" xmi:id="_suIi8KYXEeOAGYjKNc8g9w" name="Build UpdSite" reusedStep="_mK9w4KYXEeOAGYjKNc8g9w"/>
     <steps xsi:type="buildcore:ReuseStep" xmi:id="_P5DYBl4qEeGjYKPu-vkVIA" name="Archive Capella MultiOS" reusedStep="_kHh48CRDEeOnIKnzUVrqew"/>
   </steps>
@@ -171,7 +171,7 @@
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_kHh48CRDEeOnIKnzUVrqew" name="Archive Capella MultiOS">
     <properties xmi:id="_mOLkML08EeKw2KoVuTFlrQ" key="archiveName" value="capella" type="INLINED"/>
-    <steps xsi:type="buildcore:StepContainer" xmi:id="_O5Zb4LyIEeK1gbuoK98GJA" name="win32-win32-x86">
+    <steps xsi:type="buildcore:StepContainer" xmi:id="_O5Zb4LyIEeK1gbuoK98GJA" name="win32-win32-x86" description="unless_gerrit">
       <properties xmi:id="_VpXT0LyIEeK1gbuoK98GJA" key="arch" value="x86" type="INLINED"/>
       <properties xmi:id="_VpXT0byIEeK1gbuoK98GJA" key="os" value="win32" type="INLINED"/>
       <properties xmi:id="_VpXT0ryIEeK1gbuoK98GJA" key="ws" value="win32" type="INLINED"/>
@@ -179,7 +179,7 @@
       <steps xsi:type="buildstep:InstallStep" xmi:id="_rib44LyIEeK1gbuoK98GJA" name="Install EPF Richtext win32 src" description="" enabled="false" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_e8S3wbyIEeK1gbuoK98GJA" name="Zip Post-Install MA" reusedStep="_4n2PAJfiEeSD685w18qp-w"/>
     </steps>
-    <steps xsi:type="buildcore:StepContainer" xmi:id="_QX-5wLyIEeK1gbuoK98GJA" name="win32-win32-x86_64">
+    <steps xsi:type="buildcore:StepContainer" xmi:id="_QX-5wLyIEeK1gbuoK98GJA" name="win32-win32-x86_64" description="unless_gerrit">
       <properties xmi:id="_WkWVYLyIEeK1gbuoK98GJA" key="arch" value="x86_64" type="INLINED"/>
       <properties xmi:id="_WkWVYbyIEeK1gbuoK98GJA" key="os" value="win32" type="INLINED"/>
       <properties xmi:id="_WkWVYryIEeK1gbuoK98GJA" key="ws" value="win32" type="INLINED"/>
@@ -187,7 +187,7 @@
       <steps xsi:type="buildstep:InstallStep" xmi:id="_1JBjMLyJEeK1gbuoK98GJA" name="Install EPF Richtext win32 src" description="" enabled="false" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_i3lBkbyIEeK1gbuoK98GJA" name="Zip Post-Install MA" reusedStep="_4n2PAJfiEeSD685w18qp-w"/>
     </steps>
-    <steps xsi:type="buildcore:StepContainer" xmi:id="_9hLeoHn_EeOTFv-zjnXYvg" name="linux-gtk-x86">
+    <steps xsi:type="buildcore:StepContainer" xmi:id="_9hLeoHn_EeOTFv-zjnXYvg" name="linux-gtk-x86" description="unless_gerrit">
       <properties xmi:id="_9hLeoXn_EeOTFv-zjnXYvg" key="arch" value="x86" type="INLINED"/>
       <properties xmi:id="_9hLeonn_EeOTFv-zjnXYvg" key="os" value="linux" type="INLINED"/>
       <properties xmi:id="_9hLeo3n_EeOTFv-zjnXYvg" key="ws" value="gtk" type="INLINED"/>
@@ -203,7 +203,7 @@
       <steps xsi:type="buildstep:InstallStep" xmi:id="_1fErsLyJEeK1gbuoK98GJA" name="Install EPF Richtext linux src" description="" enabled="false" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_jL1aUbyIEeK1gbuoK98GJA" name="Tar Post-Install MA" reusedStep="_68a5sJfiEeSD685w18qp-w"/>
     </steps>
-    <steps xsi:type="buildcore:StepContainer" xmi:id="_RBslILyIEeK1gbuoK98GJA" name="macosx-cocoa-x86_64">
+    <steps xsi:type="buildcore:StepContainer" xmi:id="_RBslILyIEeK1gbuoK98GJA" name="macosx-cocoa-x86_64" description="unless_gerrit">
       <properties xmi:id="_YdJqELyIEeK1gbuoK98GJA" key="arch" value="x86_64" type="INLINED"/>
       <properties xmi:id="_YdJqEbyIEeK1gbuoK98GJA" key="os" value="macosx" type="INLINED"/>
       <properties xmi:id="_YdJqEryIEeK1gbuoK98GJA" key="ws" value="cocoa" type="INLINED"/>
