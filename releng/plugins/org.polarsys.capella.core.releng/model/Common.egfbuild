@@ -1,39 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
 <buildcore:StepContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmlns:buildfile="http://www.eclipse.org/egf/1.0.0/buildfile" xmlns:buildscm="http://www.eclipse.org/egf/1.0.0/buildscm" xmlns:buildstep="http://www.eclipse.org/egf/1.0.2/buildstep" xmi:id="_APlD4D0cEeGbsMS9ntA4kQ" name="Common">
-  <steps xsi:type="buildcore:StepContainer" xmi:id="_snXYMFnzEeSlpue7JHXw9A" name="Build EGF update Site">
-    <steps xsi:type="buildstep:BuildStep" xmi:id="_EWts8Fn1EeSlpue7JHXw9A" name="Build EGF Platform">
-      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_gKunwIIIEeSlQoYFN3Mlmg" folderName="common/plugins">
-        <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
-      </buildLocations>
-      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_h3ymgIIIEeSlQoYFN3Mlmg" folderName="legacy/plugins">
-        <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
-      </buildLocations>
-      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_iA4REIIIEeSlQoYFN3Mlmg" folderName="releng/features">
-        <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
-      </buildLocations>
-      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_iIet4IIIEeSlQoYFN3Mlmg" folderName="releng/plugins">
-        <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
-      </buildLocations>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_THW2wFn1EeSlpue7JHXw9A" url="${eclipse.download.prefix}/releases/mars"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_PNs0gAxOEeaCAfvvTMv4pQ" url="${site_Kitalpha_CTK}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_hldPEFqlEeSQoMAm1P90CA" url="${site_Kitalpha_SDK}"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_QvPv4Fn1EeSlpue7JHXw9A" id="org.polarsys.capella.core.egf.feature"/>
-    </steps>
-    <steps xsi:type="buildstep:PublishStep" xmi:id="_EUyk4Fn2EeSlpue7JHXw9A" name="Publish EGF Platform" component="_QvPv4Fn1EeSlpue7JHXw9A"/>
-    <steps xsi:type="buildstep:BuildStep" xmi:id="_JPYTsFqzEeSQoMAm1P90CA" name="Reset TP" enabled="false" noBuildersInvocation="true">
-      <buildLocations xsi:type="buildstep:RunningPlatformBuildLocation" xmi:id="_JPYTsVqzEeSQoMAm1P90CA"/>
-    </steps>
-    <steps xsi:type="buildstep:CleanStep" xmi:id="_OVaXMFqkEeSQoMAm1P90CA" name="Clean Workspace"/>
-    <steps xsi:type="buildfile:DeleteStep" xmi:id="_Bv62UFqkEeSQoMAm1P90CA" name="Clean Output">
-      <additionalParameters xmi:id="_F2m-4FqkEeSQoMAm1P90CA" key="dir" value="${result}/output"/>
-    </steps>
-    <steps xsi:type="buildfile:DeleteStep" xmi:id="_8fqWQFqmEeSQoMAm1P90CA" name="Clean Temp">
-      <additionalParameters xmi:id="_8fqWQVqmEeSQoMAm1P90CA" key="dir" value="${result}/temp"/>
-    </steps>
-    <steps xsi:type="buildfile:DeleteStep" xmi:id="_71LO0FqmEeSQoMAm1P90CA" name="Clean Tp">
-      <additionalParameters xmi:id="_71LO0VqmEeSQoMAm1P90CA" key="dir" value="${result}/tp"/>
-    </steps>
-  </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="__Rn-QIgFEeOdzI3OsQ-7WQ" name="Build All" description="Build for all platform if necessary">
     <steps xsi:type="buildcore:ReuseStep" xmi:id="_suIi8KYXEeOAGYjKNc8g9w" name="Build UpdSite" reusedStep="_mK9w4KYXEeOAGYjKNc8g9w"/>
     <steps xsi:type="buildcore:ReuseStep" xmi:id="_P5DYBl4qEeGjYKPu-vkVIA" name="Archive Capella MultiOS" reusedStep="_kHh48CRDEeOnIKnzUVrqew"/>
@@ -44,8 +10,7 @@
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_QWqgICEaEeOXhPcQqHU-ig" name="Build Capella">
     <steps xsi:type="buildstep:CleanStep" xmi:id="_skcEgAleEeGYwPEIVo63QA" name="Clean Result" type="Result"/>
-    <steps xsi:type="buildcore:ReuseStep" xmi:id="_xZx-UFnzEeSlpue7JHXw9A" name="Build EFG Update Site" reusedStep="_snXYMFnzEeSlpue7JHXw9A"/>
-    <steps xsi:type="buildstep:BuildStep" xmi:id="_4o96YO9UEeCKw7_91ITV8w" name="Import All Capella Plugins" noBuildersInvocation="true" skipComponentsRegex="(.*\.source)|(org\.polarsys\.capella\.common\.mdsofa\.emf.*)|(org\.polarsys\.capella\.common\.mdsofa\.dsl.*)">
+    <steps xsi:type="buildstep:BuildStep" xmi:id="_4o96YO9UEeCKw7_91ITV8w" name="Import All Capella Plugins">
       <buildLocations xsi:type="buildstep:BuildLocationContainer" xmi:id="_Ee5Z4IIIEeSlQoYFN3Mlmg" name="GIT">
         <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_87RQYIIHEeSlQoYFN3Mlmg" folderName="core/features">
           <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
@@ -89,6 +54,12 @@
         <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_D2OQUYIIEeSlQoYFN3Mlmg" folderName="patterns/plugins">
           <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
         </buildLocations>
+        <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_ZnWwEGUbEeaJxaeVjlOtqQ" folderName="releng/features">
+          <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+        </buildLocations>
+        <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_ZnWwEWUbEeaJxaeVjlOtqQ" folderName="releng/plugins">
+          <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+        </buildLocations>
       </buildLocations>
       <buildLocations xsi:type="buildstep:BuildLocationContainer" xmi:id="_VP88QIIIEeSlQoYFN3Mlmg" name="Update Sites">
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_LwJ3sKBoEeKMQb8Rddw1Vg" url="${site_QueryLegacy}"/>
@@ -97,76 +68,19 @@
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_ypzboC0YEeSpNZCH09tG3Q" url="${site_Patterns}"/>
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_LwJ3sKBoEeKMQb8Rddw1Vg" url="${site_Sirius}"/>
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_P2rDEAlfEeGYwPEIVo63QA" url="${site_Kitalpha_CTK}"/>
+        <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_bf_ssGUbEeaJxaeVjlOtqQ" url="${site_Kitalpha_SDK}"/>
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_v9bQEDXkEeWcHcNqIIHNgA" url="${site_Amalgam}"/>
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_XCyCgKBoEeKMQb8Rddw1Vg" suffix="" url="${primary_eclipseUpdateSite}"/>
       </buildLocations>
-      <components xsi:type="buildstep:Feature" xmi:id="_dAeIsOpFEeKwWpSeYKrUug" id="org.polarsys.capella.common.mdsofa.common.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_0_CCgO6UEeCOPs2PMWw0Bg" id="org.polarsys.capella.core.model.definition.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_0sC48O_wEeC6vvY4iAtS4w" id="org.polarsys.capella.common.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_F7efwO_5EeCIP56Yzwc9FQ" id="org.polarsys.capella.core.advance.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_Mkg-YO_7EeCIP56Yzwc9FQ" id="org.polarsys.capella.core.common.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_XP2fsO_7EeCIP56Yzwc9FQ" id="org.polarsys.capella.core.common.ui.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_1_rZIH_9EeGTdLgtIFdaLw" id="org.polarsys.capella.core.compare.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_XZFUMO_7EeCIP56Yzwc9FQ" id="org.polarsys.capella.core.dashboard.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_4o96dO9UEeCKw7_91ITV8w" id="org.polarsys.capella.core.data.merged.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_YB5nsO_7EeCIP56Yzwc9FQ" id="org.polarsys.capella.core.properties.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_YYPrIO_7EeCIP56Yzwc9FQ" id="org.polarsys.capella.core.transfo.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_Mk7vgA4sEeKgwJaQ4EY32w" id="org.polarsys.capella.core.transition.common.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_g-VuEA4rEeKgwJaQ4EY32w" id="org.polarsys.capella.core.transition.system.topdown.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_muibQO_7EeCIP56Yzwc9FQ" id="org.polarsys.capella.core.ui.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_m5IhsO_7EeCIP56Yzwc9FQ" id="org.polarsys.capella.core.ui.quickfix.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_m_ZhwO_7EeCIP56Yzwc9FQ" id="org.polarsys.capella.core.ui.semantic.browser.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_nKcUIO_7EeCIP56Yzwc9FQ" id="org.polarsys.capella.core.validation.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_Qt-vIO_wEeC6vvY4iAtS4w" id="org.polarsys.capella.shared.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_8yIScO_0EeCIP56Yzwc9FQ" id="org.polarsys.capella.common.advance.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_Rbul8O_wEeC6vvY4iAtS4w" id="org.polarsys.capella.common.base.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_SUW3EO_wEeC6vvY4iAtS4w" id="org.polarsys.capella.common.dependencies.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_R8z5wO_wEeC6vvY4iAtS4w" id="org.polarsys.capella.common.model.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_s61GoC0YEeSpNZCH09tG3Q" id="org.polarsys.capella.patterns.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_N2hU4JZyEeS4v-7NYpWHgw" id="org.polarsys.capella.detachment.version.precondition.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_YMFXYFlTEeaMUafPoPJRnw" id="org.polarsys.capella.detachment.propertyvalue.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_c_rJMJo_EeSestiG7b7wRQ" id="org.polarsys.capella.core.properties.description.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_d0TtsTRnEeWZJ6pwcp_y_g" id="org.polarsys.capella.doc.feature"/>
-    </steps>
-    <steps xsi:type="buildstep:BuildStep" xmi:id="_eLJPQBprEeGlrcaBUX-HTg" name="Reset TP Capella" noBuildersInvocation="true">
-      <buildLocations xsi:type="buildstep:RunningPlatformBuildLocation" xmi:id="_eLJPQRprEeGlrcaBUX-HTg"/>
-    </steps>
-    <steps xsi:type="buildstep:EgfStep" xmi:id="_dd2v0O6XEeCrMKVE_wX9KA" name="Generation" enabled="false">
-      <egfActivities xmi:id="_eGigcO6XEeCrMKVE_wX9KA" uri="platform:/plugin/org.polarsys.capella.common.extension.migration.egf/egf/MDE Extension migration.fcore#_Jz89kO6CEeC_ud9p2zhsbQ"/>
-      <egfActivities xmi:id="_srVFABnYEeGpsNjxhGw8CQ" uri="platform:/plugin/org.polarsys.capella.common.extension.migration.egf/egf/MDE Extension migration.fcore#_CwhWEO6NEeClCb2x_73DSA"/>
-      <egfActivities xmi:id="_f6LBQO6XEeCrMKVE_wX9KA" uri="platform:/plugin/org.polarsys.capella.core.egf/egf/capella.fcore#_nX48kR79EeCtXojRlh5Jjg"/>
-      <egfActivities xmi:id="_5MLxkPAXEeCA5aM-UAfgmw" uri="platform:/plugin/org.polarsys.capella.core.postgeneration.egf/egf/capella_postgeneration.fcore#_P_XnwPATEeCA5aM-UAfgmw"/>
-      <egfActivities xmi:id="_RLvHcPDHEeCWy9GiOChrkQ" uri="platform:/plugin/org.polarsys.capella.core.postgeneration.egf/egf/capella_postgeneration.fcore#_N5vKcPAzEeCsV7GIvIT8ig"/>
-    </steps>
-    <steps xsi:type="buildstep:BuildStep" xmi:id="_ZWa30AlbEeGRT7uzWt0LYA" name="Build All Capella Plugins">
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_xE8HYKBpEeKMQb8Rddw1Vg" url="${site_QueryLegacy}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_ZWa35QlbEeGRT7uzWt0LYA" url="${orbit.download.url}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_TSa0wA7oEeKs5rrFu_4qSg" url="${site_DiffMerge}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_7ZSUQC0YEeSpNZCH09tG3Q" url="${site_Patterns}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_ZWa36QlbEeGRT7uzWt0LYA" url="${site_Sirius}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_Re-doAlfEeGYwPEIVo63QA" url="${site_Kitalpha_CTK}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_19SgwDXkEeWcHcNqIIHNgA" url="${site_Amalgam}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_VgIv4JMfEeO7u6f29_-yFQ" suffix="" url="${primary_eclipseUpdateSite}"/>
+      <components xsi:type="buildstep:Feature" xmi:id="_F7efwO_5EeCIP56Yzwc9FQ" id="org.polarsys.capella.core.feature"/>
+      <components xsi:type="buildstep:Feature" xmi:id="_cMFWoGUbEeaJxaeVjlOtqQ" id="org.polarsys.capella.core.egf.feature"/>
     </steps>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_Xl-doB0rEeK5Ro3AkjuwxQ" name="Publish Update Site">
     <properties xmi:id="_TdiO4B2qEeK5Ro3AkjuwxQ" key="archiveSuffix" value="${buildVersion}-updatesite" type="INLINED"/>
     <steps xsi:type="buildcore:StepContainer" xmi:id="_GzjHMD0cEeGbsMS9ntA4kQ" name="Publish Features">
-      <steps xsi:type="buildstep:PublishStep" xmi:id="_hvdUwGNaEeStx8C8FpsBug" name="org.polarsys.capella.core.model.definition.feature" component="_0_CCgO6UEeCOPs2PMWw0Bg"/>
       <steps xsi:type="buildstep:PublishStep" xmi:id="_BAOtwO_5EeCIP56Yzwc9FQ" name="Publish Capella" description="" component="_F7efwO_5EeCIP56Yzwc9FQ"/>
-      <steps xsi:type="buildstep:PublishStep" xmi:id="_HxX5IH_-EeGTdLgtIFdaLw" name="org.polarsys.capella.core.compare.feature" component="_1_rZIH_9EeGTdLgtIFdaLw"/>
-      <steps xsi:type="buildstep:PublishStep" xmi:id="_O3IjoPAvEeCsV7GIvIT8ig" name="Publish Data Merged" description="" component="_4o96dO9UEeCKw7_91ITV8w"/>
-      <steps xsi:type="buildstep:PublishStep" xmi:id="_jkp5IJo_EeSestiG7b7wRQ" name="Publish Description Properties" component="_c_rJMJo_EeSestiG7b7wRQ"/>
-      <steps xsi:type="buildstep:PublishStep" xmi:id="_Rbzf0PAvEeCsV7GIvIT8ig" name="Publish Shared" description="" component="_Qt-vIO_wEeC6vvY4iAtS4w"/>
-      <steps xsi:type="buildstep:PublishStep" xmi:id="_UMYxEPAvEeCsV7GIvIT8ig" name="Publish Shared Base" component="_Rbul8O_wEeC6vvY4iAtS4w"/>
-      <steps xsi:type="buildstep:PublishStep" xmi:id="_aq_KsC0bEeSpNZCH09tG3Q" name="Publish Patterns Contribution" component="_s61GoC0YEeSpNZCH09tG3Q"/>
-      <steps xsi:type="buildstep:PublishStep" xmi:id="_RrqacJZyEeS4v-7NYpWHgw" name="Publish Detachment Contribution" component="_N2hU4JZyEeS4v-7NYpWHgw"/>
-      <steps xsi:type="buildstep:PublishStep" xmi:id="_jNX6kFlTEeaMUafPoPJRnw" name="Publish Detachment PV Contribution" component="_YMFXYFlTEeaMUafPoPJRnw"/>
-      <steps xsi:type="buildstep:PublishStep" xmi:id="_hS4tYDRnEeWZJ6pwcp_y_g" name="Publish Capella embedded documentation" component="_d0TtsTRnEeWZJ6pwcp_y_g"/>
-    </steps>
-    <steps xsi:type="buildcore:StepContainer" xmi:id="_Y3638IOvEeGEKpWdrghARA" name="Archive Update Site">
-      <steps xsi:type="buildstep:AggregateStep" xmi:id="_aFZ-wIOvEeGEKpWdrghARA" name="Capella Update Site" id="org.polarsys.capella" publishSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q _RrqacJZyEeS4v-7NYpWHgw _jNX6kFlTEeaMUafPoPJRnw _jkp5IJo_EeSestiG7b7wRQ _hS4tYDRnEeWZJ6pwcp_y_g"/>
-      <steps xsi:type="buildfile:ZipStep" xmi:id="_PxpxgIoGEeGSbqNfjJWsgA" name="Archive Capella Update Site" description="" enabled="false" baseDir="${publish}/org.polarsys.capella/site.p2" destinationFilePath="${publish}/capella-${archiveSuffix}.zip"/>
+      <steps xsi:type="buildstep:PublishStep" xmi:id="_d2zMAGUbEeaJxaeVjlOtqQ" name="Publish EGF Platform" component="_cMFWoGUbEeaJxaeVjlOtqQ"/>
     </steps>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_kHh48CRDEeOnIKnzUVrqew" name="Archive Capella MultiOS">
@@ -176,7 +90,6 @@
       <properties xmi:id="_VpXT0byIEeK1gbuoK98GJA" key="os" value="win32" type="INLINED"/>
       <properties xmi:id="_VpXT0ryIEeK1gbuoK98GJA" key="ws" value="win32" type="INLINED"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_e8S3wLyIEeK1gbuoK98GJA" name="Pre-Install MA src" reusedStep="_o0lKULxuEeK1gbuoK98GJA"/>
-      <steps xsi:type="buildstep:InstallStep" xmi:id="_rib44LyIEeK1gbuoK98GJA" name="Install EPF Richtext win32 src" description="" enabled="false" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_e8S3wbyIEeK1gbuoK98GJA" name="Zip Post-Install MA" reusedStep="_4n2PAJfiEeSD685w18qp-w"/>
     </steps>
     <steps xsi:type="buildcore:StepContainer" xmi:id="_QX-5wLyIEeK1gbuoK98GJA" name="win32-win32-x86_64" description="unless_gerrit">
@@ -184,7 +97,6 @@
       <properties xmi:id="_WkWVYbyIEeK1gbuoK98GJA" key="os" value="win32" type="INLINED"/>
       <properties xmi:id="_WkWVYryIEeK1gbuoK98GJA" key="ws" value="win32" type="INLINED"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_i3lBkLyIEeK1gbuoK98GJA" name="Pre-Install MA src" reusedStep="_o0lKULxuEeK1gbuoK98GJA"/>
-      <steps xsi:type="buildstep:InstallStep" xmi:id="_1JBjMLyJEeK1gbuoK98GJA" name="Install EPF Richtext win32 src" description="" enabled="false" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_i3lBkbyIEeK1gbuoK98GJA" name="Zip Post-Install MA" reusedStep="_4n2PAJfiEeSD685w18qp-w"/>
     </steps>
     <steps xsi:type="buildcore:StepContainer" xmi:id="_9hLeoHn_EeOTFv-zjnXYvg" name="linux-gtk-x86" description="unless_gerrit">
@@ -192,7 +104,6 @@
       <properties xmi:id="_9hLeonn_EeOTFv-zjnXYvg" key="os" value="linux" type="INLINED"/>
       <properties xmi:id="_9hLeo3n_EeOTFv-zjnXYvg" key="ws" value="gtk" type="INLINED"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_9hLepHn_EeOTFv-zjnXYvg" name="Pre-Install MA src" reusedStep="_o0lKULxuEeK1gbuoK98GJA"/>
-      <steps xsi:type="buildstep:InstallStep" xmi:id="_9hLepXn_EeOTFv-zjnXYvg" name="Install EPF Richtext linux src" description="" enabled="false" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_9hLepnn_EeOTFv-zjnXYvg" name="Tar Post-Install MA" reusedStep="_68a5sJfiEeSD685w18qp-w"/>
     </steps>
     <steps xsi:type="buildcore:StepContainer" xmi:id="_QrpcoLyIEeK1gbuoK98GJA" name="linux-gtk-x86_64">
@@ -200,7 +111,6 @@
       <properties xmi:id="_XnOusbyIEeK1gbuoK98GJA" key="os" value="linux" type="INLINED"/>
       <properties xmi:id="_XnOusryIEeK1gbuoK98GJA" key="ws" value="gtk" type="INLINED"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_jL1aULyIEeK1gbuoK98GJA" name="Pre-Install MA src" reusedStep="_o0lKULxuEeK1gbuoK98GJA"/>
-      <steps xsi:type="buildstep:InstallStep" xmi:id="_1fErsLyJEeK1gbuoK98GJA" name="Install EPF Richtext linux src" description="" enabled="false" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_jL1aUbyIEeK1gbuoK98GJA" name="Tar Post-Install MA" reusedStep="_68a5sJfiEeSD685w18qp-w"/>
     </steps>
     <steps xsi:type="buildcore:StepContainer" xmi:id="_RBslILyIEeK1gbuoK98GJA" name="macosx-cocoa-x86_64" description="unless_gerrit">
@@ -208,16 +118,16 @@
       <properties xmi:id="_YdJqEbyIEeK1gbuoK98GJA" key="os" value="macosx" type="INLINED"/>
       <properties xmi:id="_YdJqEryIEeK1gbuoK98GJA" key="ws" value="cocoa" type="INLINED"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_jg1Z8LyIEeK1gbuoK98GJA" name="Pre-Install MA src" reusedStep="_o0lKULxuEeK1gbuoK98GJA"/>
-      <steps xsi:type="buildstep:InstallStep" xmi:id="_12584LyJEeK1gbuoK98GJA" name="Install EPF Richtext linux src" description="" enabled="false" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_jg1Z8byIEeK1gbuoK98GJA" name="Tar Post-Install MA" reusedStep="_68a5sJfiEeSD685w18qp-w"/>
     </steps>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_imBWULxuEeK1gbuoK98GJA" name="Reused Installs">
     <steps xsi:type="buildcore:StepContainer" xmi:id="_o0lKULxuEeK1gbuoK98GJA" name="Pre-Install Capella">
-      <steps xsi:type="buildcore:ReuseStep" xmi:id="_SQQb0F1tEeGnJaeCI-TkHw" name="PrepareCleanTP">
-        <reusedStep xsi:type="buildcore:StepContainer" href="Helpers.egfbuild#_NGDOgF1yEeGnJaeCI-TkHw"/>
+      <steps xsi:type="buildfile:DeleteStep" xmi:id="_v_SQ0GUaEeaJxaeVjlOtqQ" name="Delete product">
+        <additionalParameters xmi:id="_v_S34GUaEeaJxaeVjlOtqQ" key="dir" value="${product}"/>
       </steps>
-      <steps xsi:type="buildstep:InstallStep" xmi:id="_Qe9VADz6EeGdSIj2ulwf2Q" name="Install Capella" description="" id="product/capella/eclipse" profile="SDKProfile" resultSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q _RrqacJZyEeS4v-7NYpWHgw _jNX6kFlTEeaMUafPoPJRnw _jkp5IJo_EeSestiG7b7wRQ _hS4tYDRnEeWZJ6pwcp_y_g" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
+      <steps xsi:type="buildstep:InstallStep" xmi:id="_Qe9VADz6EeGdSIj2ulwf2Q" name="Install Capella" description="" id="product/capella/eclipse" profile="SDKProfile" resultSteps="_BAOtwO_5EeCIP56Yzwc9FQ" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
+        <updateSiteUrls>${primary_eclipseUpdateSite}</updateSiteUrls>
         <updateSiteUrls>${site_Kitalpha_CTK}</updateSiteUrls>
         <updateSiteUrls>${orbit.download.url}</updateSiteUrls>
         <updateSiteUrls>${site_QueryLegacy}</updateSiteUrls>
@@ -225,6 +135,22 @@
         <updateSiteUrls>${site_DiffMerge}</updateSiteUrls>
         <updateSiteUrls>${site_Patterns}</updateSiteUrls>
         <updateSiteUrls>${site_Amalgam}</updateSiteUrls>
+        <featureNames>org.eclipse.sdk</featureNames>
+        <featureNames>org.eclipse.emf.sdk</featureNames>
+        <featureNames>org.eclipse.gef.sdk</featureNames>
+        <featureNames>org.eclipse.emf.transaction</featureNames>
+        <featureNames>org.eclipse.emf.validation</featureNames>
+        <featureNames>org.eclipse.emf.query</featureNames>
+        <featureNames>org.eclipse.emf.workspace</featureNames>
+        <featureNames>org.eclipse.emf.transaction.source</featureNames>
+        <featureNames>org.eclipse.emf.workspace.source</featureNames>
+        <featureNames>org.eclipse.emf.validation.ocl</featureNames>
+        <featureNames>org.eclipse.emf.validation.source</featureNames>
+        <featureNames>org.eclipse.emf.validation.ocl.source</featureNames>
+        <featureNames>org.eclipse.emf.query.ocl</featureNames>
+        <featureNames>org.eclipse.emf.query.source</featureNames>
+        <featureNames>org.eclipse.emf.query.ocl.source</featureNames>
+        <featureNames>org.eclipse.gmf</featureNames>
         <featureNames>org.eclipse.sirius.query.legacy.feature.source</featureNames>
         <featureNames>org.eclipse.sirius.runtime.source</featureNames>
         <featureNames>org.eclipse.sirius.runtime.ide.ui.source</featureNames>
@@ -248,6 +174,10 @@
         <featureNames>org.eclipse.amalgam.explorer.contextual</featureNames>
         <featureNames>org.eclipse.amalgam.explorer.contextual.core</featureNames>
         <featureNames>org.eclipse.amalgam.explorer.contextual.sirius</featureNames>
+        <productNames>org.eclipse.platform.ide</productNames>
+      </steps>
+      <steps xsi:type="buildcore:ReuseStep" xmi:id="_v_S342UaEeaJxaeVjlOtqQ" name="FinalizeTP">
+        <reusedStep xsi:type="buildcore:StepContainer" href="Helpers.egfbuild#_xh-N4KG3EeKjzsUfibKjCg"/>
       </steps>
     </steps>
     <steps xsi:type="buildcore:StepContainer" xmi:id="_4n2PAJfiEeSD685w18qp-w" name="Zip Post-Install Capella">

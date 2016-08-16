@@ -10,29 +10,31 @@
        Thales - initial API and implementation
 -->
 <feature
-      id="org.polarsys.capella.shared.feature"
+      id="org.polarsys.capella.detachment.feature"
       label="%featureName"
-      version="1.0.0.qualifier"
+      version="1.1.0.qualifier"
       provider-name="%providerName">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
-   </description>
-
-   <copyright>
+   <copyright url="%licenseURL">
       %copyright
    </copyright>
 
-   <license url="%licenseURL">
+   <license url="">
       %license
    </license>
 
-   <includes
-         id="org.polarsys.capella.common.advance.feature"
-         version="0.0.0"/>
+   <plugin
+         id="org.polarsys.capella.detachment.propertyvalue"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 		 
-   <includes
-         id="org.polarsys.capella.common.base.feature"
-         version="0.0.0"/>
+	<plugin
+         id="org.polarsys.capella.detachment.version.precondition"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>
