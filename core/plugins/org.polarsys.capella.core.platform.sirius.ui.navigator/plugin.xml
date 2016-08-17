@@ -1287,10 +1287,11 @@
                <with
                      variable="activeMenuSelection">
                   <and>
-                     <iterate>
+                  <not>
+                  	<iterate>
                         <or>
                            <instanceof
-                                 value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+                                 value="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
                            </instanceof>
                            <instanceof
                                  value="org.eclipse.sirius.table.metamodel.table.DTableElement">
@@ -1300,6 +1301,7 @@
                      <count
                            value="1">
                      </count>
+                  </not>
                   </and>
                </with>
             </visibleWhen>
