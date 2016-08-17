@@ -164,6 +164,29 @@
     <targlet
         name="Capella Dependencies"
         activeRepositoryList="${eclipse.target.platform}">
+      <annotation
+          source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
+        <detail
+            key="location">
+          <value>${git.clone.capella.location/releng/plugins/org.polarsys.capella.core.releng/oomph/Capella.target}</value>
+        </detail>
+        <detail
+            key="extraUnits">
+          <value>org.eclipse.equinox.executable.feature.group</value>
+        </detail>
+        <detail
+            key="singleLocation">
+          <value>true</value>
+        </detail>
+        <detail
+            key="includeAllPlatforms">
+          <value>false</value>
+        </detail>
+        <detail
+            key="includeSource">
+          <value>true</value>
+        </detail>
+      </annotation>
       <requirement
           name="org.eclipse.sdk.feature.group"/>
       <requirement
