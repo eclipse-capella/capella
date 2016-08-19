@@ -1,0 +1,26 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: InitEnvironmentForPattern
+Element-Type: context
+Element-Version: 2.0
+Id: _56REoGYJEeaVsIgvj-cA7g
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 8/19/16 5:48 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Due to a regression in Patterns, when you close a model, the catalog can not be closed properly
+closeCatalog
+
+// Show Functional Exchanges to be able to see them later
+get-button "View Menu" | click
+get-view "Capella Project Explorer" | get-menu "Customize View..." | click
+with [get-window "Available Customizations"] {
+    get-tab-folder | get-tab-item Filters | click
+    get-table | get-item "Functional Exchanges" | uncheck
+    get-button OK | click
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
