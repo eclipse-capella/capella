@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,23 +27,23 @@ public class PartItemContribution implements IMDEMenuItemContribution {
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
-    if (InformationPackage.Literals.CLASS.isInstance(modelElement_p)) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
+    if (InformationPackage.Literals.CLASS.isInstance(modelElement)) {
       return false;
     }
-    if (InformationPackage.Literals.UNION.isInstance(modelElement_p)) {
+    if (InformationPackage.Literals.UNION.isInstance(modelElement)) {
       return false;
     }
-    if (InformationPackage.Literals.COLLECTION.isInstance(modelElement_p)) {
+    if (InformationPackage.Literals.COLLECTION.isInstance(modelElement)) {
       return false;
     }
-    if (CommunicationPackage.Literals.SIGNAL.isInstance(modelElement_p)) {
+    if (CommunicationPackage.Literals.SIGNAL.isInstance(modelElement)) {
       return false;
     }
-    if (CommunicationPackage.Literals.EXCEPTION.isInstance(modelElement_p)) {
+    if (CommunicationPackage.Literals.EXCEPTION.isInstance(modelElement)) {
       return false;
     }
-    if (CsPackage.Literals.INTERFACE.isInstance(modelElement_p)) {
+    if (CsPackage.Literals.INTERFACE.isInstance(modelElement)) {
       return false;
     }
     return true;
@@ -52,8 +52,8 @@ public class PartItemContribution implements IMDEMenuItemContribution {
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(final EditingDomain editingDomain_p, final ModelElement containerElement_p, final ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
+  public Command executionContribution(final EditingDomain editingDomain, final ModelElement containerElement, final ModelElement createdElement,
+      EStructuralFeature feature) {
     return null;
   }
 

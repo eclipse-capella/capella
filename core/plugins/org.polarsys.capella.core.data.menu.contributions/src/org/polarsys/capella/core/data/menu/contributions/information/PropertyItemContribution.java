@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,12 +23,12 @@ public class PropertyItemContribution extends MultiplicityElementItemContributio
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
 
-    if (InformationPackage.Literals.COLLECTION.isInstance(modelElement_p)) {
+    if (InformationPackage.Literals.COLLECTION.isInstance(modelElement)) {
       return false;
     }
-    if (InformationPackage.Literals.UNION.isInstance(modelElement_p)) {
+    if (InformationPackage.Literals.UNION.isInstance(modelElement)) {
       return false;
     }
 
@@ -39,13 +39,13 @@ public class PropertyItemContribution extends MultiplicityElementItemContributio
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(final EditingDomain editingDomain_p, ModelElement containerElement_p, final ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
+  public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement,
+      EStructuralFeature feature) {
 
-    if (createdElement_p.eClass().equals(InformationPackage.Literals.PROPERTY)) {
+    if (createdElement.eClass().equals(InformationPackage.Literals.PROPERTY)) {
       CompoundCommand cmd = new CompoundCommand();
 
-      cmd.append(getCardinalitiesCommand(editingDomain_p, createdElement_p, _ONE_CARDINALITY, _ONE_CARDINALITY));
+      cmd.append(getCardinalitiesCommand(editingDomain, createdElement, _ONE_CARDINALITY, _ONE_CARDINALITY));
 
       return cmd;
     }

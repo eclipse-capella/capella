@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,51 +30,51 @@ import org.polarsys.capella.core.data.information.datavalue.ValuePart;
  */
 public class DataTypingHelper {
   /**
-   * @param editingDomain_p
-   * @param containerElement_p
-   * @param createdElement_p
-   * @param feature_p
+   * @param editingDomain
+   * @param containerElement
+   * @param createdElement
+   * @param feature
    * @return
    */
-  public static Command getTypingCommand(EditingDomain editingDomain_p, ModelElement containerElement_p, ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
+  public static Command getTypingCommand(EditingDomain editingDomain, ModelElement containerElement, ModelElement createdElement,
+      EStructuralFeature feature) {
 
-    if (createdElement_p instanceof ComplexValue) {
-      if (containerElement_p.eClass().equals(InformationPackage.Literals.CLASS)) {
-        return new SetCommand(editingDomain_p, createdElement_p, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, containerElement_p);
+    if (createdElement instanceof ComplexValue) {
+      if (containerElement.eClass().equals(InformationPackage.Literals.CLASS)) {
+        return new SetCommand(editingDomain, createdElement, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, containerElement);
 
-      } else if (DatavaluePackage.Literals.VALUE_PART.isInstance(containerElement_p)) {
+      } else if (DatavaluePackage.Literals.VALUE_PART.isInstance(containerElement)) {
 
-        Property property = ((ValuePart) containerElement_p).getReferencedProperty();
+        Property property = ((ValuePart) containerElement).getReferencedProperty();
         if (property != null) {
           AbstractType type = property.getAbstractType();
           if (type.eClass().equals(InformationPackage.Literals.CLASS)) {
-            return new SetCommand(editingDomain_p, createdElement_p, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, type);
+            return new SetCommand(editingDomain, createdElement, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, type);
           }
         }
       }
     } else {
-      if (feature_p.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE)
-          || feature_p.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE)
-          || feature_p.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE)
-          || feature_p.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE)
-          || feature_p.equals(DatatypePackage.Literals.NUMERIC_TYPE__OWNED_MIN_VALUE)
-          || feature_p.equals(DatatypePackage.Literals.NUMERIC_TYPE__OWNED_MAX_VALUE)
-          || feature_p.equals(DatatypePackage.Literals.NUMERIC_TYPE__OWNED_NULL_VALUE)
-          || feature_p.equals(DatatypePackage.Literals.NUMERIC_TYPE__OWNED_DEFAULT_VALUE)
-          || feature_p.equals(DatatypePackage.Literals.ENUMERATION__OWNED_MIN_VALUE) || feature_p.equals(DatatypePackage.Literals.ENUMERATION__OWNED_MAX_VALUE)
-          || feature_p.equals(DatatypePackage.Literals.ENUMERATION__OWNED_NULL_VALUE)
-          || feature_p.equals(DatatypePackage.Literals.ENUMERATION__OWNED_DEFAULT_VALUE)
-          || feature_p.equals(DatatypePackage.Literals.STRING_TYPE__OWNED_NULL_VALUE)
-          || feature_p.equals(DatatypePackage.Literals.STRING_TYPE__OWNED_DEFAULT_VALUE)
-          || feature_p.equals(DatatypePackage.Literals.BOOLEAN_TYPE__OWNED_DEFAULT_VALUE)) {
-        if (containerElement_p instanceof TypedElement) {
-          AbstractType type = ((TypedElement) containerElement_p).getAbstractType();
+      if (feature.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE)
+          || feature.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE)
+          || feature.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE)
+          || feature.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE)
+          || feature.equals(DatatypePackage.Literals.NUMERIC_TYPE__OWNED_MIN_VALUE)
+          || feature.equals(DatatypePackage.Literals.NUMERIC_TYPE__OWNED_MAX_VALUE)
+          || feature.equals(DatatypePackage.Literals.NUMERIC_TYPE__OWNED_NULL_VALUE)
+          || feature.equals(DatatypePackage.Literals.NUMERIC_TYPE__OWNED_DEFAULT_VALUE)
+          || feature.equals(DatatypePackage.Literals.ENUMERATION__OWNED_MIN_VALUE) || feature.equals(DatatypePackage.Literals.ENUMERATION__OWNED_MAX_VALUE)
+          || feature.equals(DatatypePackage.Literals.ENUMERATION__OWNED_NULL_VALUE)
+          || feature.equals(DatatypePackage.Literals.ENUMERATION__OWNED_DEFAULT_VALUE)
+          || feature.equals(DatatypePackage.Literals.STRING_TYPE__OWNED_NULL_VALUE)
+          || feature.equals(DatatypePackage.Literals.STRING_TYPE__OWNED_DEFAULT_VALUE)
+          || feature.equals(DatatypePackage.Literals.BOOLEAN_TYPE__OWNED_DEFAULT_VALUE)) {
+        if (containerElement instanceof TypedElement) {
+          AbstractType type = ((TypedElement) containerElement).getAbstractType();
           if (type != null) {
-            return new SetCommand(editingDomain_p, createdElement_p, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, type);
+            return new SetCommand(editingDomain, createdElement, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, type);
           }
         } else {
-          return new SetCommand(editingDomain_p, createdElement_p, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, containerElement_p);
+          return new SetCommand(editingDomain, createdElement, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, containerElement);
         }
       }
     }

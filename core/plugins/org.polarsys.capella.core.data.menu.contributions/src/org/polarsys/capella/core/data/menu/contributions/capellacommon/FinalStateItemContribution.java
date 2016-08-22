@@ -39,8 +39,8 @@ public class FinalStateItemContribution implements IMDEMenuItemContribution {
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
-    if ((modelElement_p instanceof StateMachine) || (modelElement_p instanceof State)) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
+    if ((modelElement instanceof StateMachine) || (modelElement instanceof State)) {
       return false;
     }
     return true;
@@ -49,27 +49,27 @@ public class FinalStateItemContribution implements IMDEMenuItemContribution {
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(final EditingDomain editingDomain_p, ModelElement containerElement_p, final ModelElement createdElement_p, EStructuralFeature feature_p) {
-    if (createdElement_p instanceof FinalState) {
+  public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement, EStructuralFeature feature) {
+    if (createdElement instanceof FinalState) {
       CompoundCommand cmd = new CompoundCommand();
 
       // Creates the region.
-      final Command createRegionCmd = CreateChildCommand.create(editingDomain_p, createdElement_p, new CommandParameter(createdElement_p,
+      final Command createRegionCmd = CreateChildCommand.create(editingDomain, createdElement, new CommandParameter(createdElement,
         CapellacommonPackage.Literals.STATE__OWNED_REGIONS, CapellacommonFactory.eINSTANCE.createRegion("region")), Collections.EMPTY_LIST); //$NON-NLS-1$
       cmd.append(createRegionCmd);
 
-      if (createdElement_p instanceof AbstractNamedElement) {
-	      String name = ((AbstractNamedElement) createdElement_p).getName();
-	      if ((name == null) || name.startsWith(createdElement_p.eClass().getName())) {
-	        return CreationHelper.getNamingCommand(editingDomain_p, (AbstractNamedElement) createdElement_p, containerElement_p, feature_p,
+      if (createdElement instanceof AbstractNamedElement) {
+	      String name = ((AbstractNamedElement) createdElement).getName();
+	      if ((name == null) || name.startsWith(createdElement.eClass().getName())) {
+	        return CreationHelper.getNamingCommand(editingDomain, (AbstractNamedElement) createdElement, containerElement, feature,
 	            NamingConstants.FinalState_Name);
 	      }
       }
       
-      EObject superContainer = containerElement_p.eContainer();
+      EObject superContainer = containerElement.eContainer();
       if (superContainer instanceof State) {
 		State superContainerState = (State) superContainer;
-		cmd.append(new AddCommand(editingDomain_p, superContainerState, ModellingcorePackage.Literals.ISTATE__REFERENCED_STATES, createdElement_p));
+		cmd.append(new AddCommand(editingDomain, superContainerState, ModellingcorePackage.Literals.ISTATE__REFERENCED_STATES, createdElement));
 	  }
 
       return cmd;

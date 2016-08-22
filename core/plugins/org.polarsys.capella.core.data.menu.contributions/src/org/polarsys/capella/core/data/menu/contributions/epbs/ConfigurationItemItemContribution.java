@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,14 +44,14 @@ public class ConfigurationItemItemContribution implements IMDEMenuItemContributi
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(final EditingDomain editingDomain_p, ModelElement containerElement_p, final ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
-    if (createdElement_p instanceof ConfigurationItem) {
+  public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement,
+      EStructuralFeature feature) {
+    if (createdElement instanceof ConfigurationItem) {
       EObject partOwner =
-          (containerElement_p instanceof ConfigurationItem) ? containerElement_p : EcoreUtil2.getFirstContainer(containerElement_p,
+          (containerElement instanceof ConfigurationItem) ? containerElement : EcoreUtil2.getFirstContainer(containerElement,
               EpbsPackage.Literals.CONFIGURATION_ITEM);
       if (partOwner == null) {
-        EObject arch = EcoreUtil2.getFirstContainer(containerElement_p, EpbsPackage.Literals.EPBS_ARCHITECTURE);
+        EObject arch = EcoreUtil2.getFirstContainer(containerElement, EpbsPackage.Literals.EPBS_ARCHITECTURE);
         if (arch != null) {
           partOwner = ((EPBSArchitecture) arch).getOwnedEPBSContext();
         }
@@ -59,13 +59,13 @@ public class ConfigurationItemItemContribution implements IMDEMenuItemContributi
 
       CompoundCommand cmd = new CompoundCommand();
 
-      if (((PartitionableElement) createdElement_p).getRepresentingPartitions().size() == 0) {
+      if (((PartitionableElement) createdElement).getRepresentingPartitions().size() == 0) {
 
         if (partOwner != null) {
 
           // Creates the part.
           final Command createPartCmd =
-              CreateChildCommand.create(editingDomain_p, partOwner, new CommandParameter(createdElement_p,
+              CreateChildCommand.create(editingDomain, partOwner, new CommandParameter(createdElement,
                   CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES, CsFactory.eINSTANCE.createPart()), Collections.EMPTY_LIST);
           cmd.append(createPartCmd);
 
@@ -77,8 +77,8 @@ public class ConfigurationItemItemContribution implements IMDEMenuItemContributi
               if (res.size() == 1) {
                 Object createdPart = res.iterator().next();
                 if (createdPart instanceof EObject) {
-                  return new SetCommand(editingDomain_p, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
-                      ((AbstractNamedElement) createdElement_p).getName());
+                  return new SetCommand(editingDomain, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
+                      ((AbstractNamedElement) createdElement).getName());
                 }
               }
               return new IdentityCommand();
@@ -94,8 +94,8 @@ public class ConfigurationItemItemContribution implements IMDEMenuItemContributi
               if (res.size() == 1) {
                 Object createdPart = res.iterator().next();
                 if (createdPart instanceof EObject) {
-                  return new SetCommand(editingDomain_p, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE,
-                      createdElement_p);
+                  return new SetCommand(editingDomain, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE,
+                      createdElement);
                 }
               }
               return null;
@@ -107,12 +107,12 @@ public class ConfigurationItemItemContribution implements IMDEMenuItemContributi
       }
 
       //Set the name if kind is already set
-      ConfigurationItem item = (ConfigurationItem) createdElement_p;
+      ConfigurationItem item = (ConfigurationItem) createdElement;
       if (item.getKind() != ConfigurationItemKind.UNSET) {
-        if (createdElement_p instanceof AbstractNamedElement) {
-          String name = ((AbstractNamedElement) createdElement_p).getName();
-          if ((name == null) || name.startsWith(createdElement_p.eClass().getName())) {
-            cmd.append(CreationHelper.getNamingCommand(editingDomain_p, (AbstractNamedElement) createdElement_p, containerElement_p, feature_p, item.getKind()
+        if (createdElement instanceof AbstractNamedElement) {
+          String name = ((AbstractNamedElement) createdElement).getName();
+          if ((name == null) || name.startsWith(createdElement.eClass().getName())) {
+            cmd.append(CreationHelper.getNamingCommand(editingDomain, (AbstractNamedElement) createdElement, containerElement, feature, item.getKind()
                 .getName()));
           }
         }
@@ -125,7 +125,7 @@ public class ConfigurationItemItemContribution implements IMDEMenuItemContributi
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     return true;
   }
 

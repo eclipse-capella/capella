@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,23 +24,23 @@ public class CollectionItemContribution extends MultiplicityElementItemContribut
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     return true;
   }
 
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(final EditingDomain editingDomain_p, ModelElement containerElement_p, final ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
+  public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement,
+      EStructuralFeature feature) {
 
-    if (InformationPackage.Literals.COLLECTION.isInstance(createdElement_p)) {
+    if (InformationPackage.Literals.COLLECTION.isInstance(createdElement)) {
       CompoundCommand cmd = new CompoundCommand();
 
-      cmd.append(getCardinalitiesCommand(editingDomain_p, createdElement_p, _ONE_CARDINALITY, _MANY_CARDINALITY));
+      cmd.append(getCardinalitiesCommand(editingDomain, createdElement, _ONE_CARDINALITY, _MANY_CARDINALITY));
 
-      cmd.append(new SetCommand(editingDomain_p, createdElement_p, InformationPackage.Literals.MULTIPLICITY_ELEMENT__MIN_INCLUSIVE, Boolean.TRUE));
-      cmd.append(new SetCommand(editingDomain_p, createdElement_p, InformationPackage.Literals.MULTIPLICITY_ELEMENT__MAX_INCLUSIVE, Boolean.TRUE));
+      cmd.append(new SetCommand(editingDomain, createdElement, InformationPackage.Literals.MULTIPLICITY_ELEMENT__MIN_INCLUSIVE, Boolean.TRUE));
+      cmd.append(new SetCommand(editingDomain, createdElement, InformationPackage.Literals.MULTIPLICITY_ELEMENT__MAX_INCLUSIVE, Boolean.TRUE));
 
       return cmd;
     }

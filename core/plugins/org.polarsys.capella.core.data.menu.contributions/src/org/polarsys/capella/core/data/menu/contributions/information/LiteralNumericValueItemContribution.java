@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,30 +32,30 @@ public class LiteralNumericValueItemContribution extends DataNamingHelperBasedCo
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
   @Override
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
 
-    if (feature_p == ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION){
+    if (feature == ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION){
       return false;
     }
 
-    boolean showMe = !(modelElement_p instanceof AbstractFunction);
+    boolean showMe = !(modelElement instanceof AbstractFunction);
     if (showMe &&
-        (InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH.equals(feature_p) ||
-         InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH.equals(feature_p)))
+        (InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH.equals(feature) ||
+         InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH.equals(feature)))
     {
-      if (modelElement_p instanceof Property) {
-        AbstractType type = ((Property) modelElement_p).getAbstractType();
+      if (modelElement instanceof Property) {
+        AbstractType type = ((Property) modelElement).getAbstractType();
         if (null != type && !(type instanceof StringType)) {
           showMe = false;
         }
       }
     }
 
-    if (feature_p.equals(InformationPackage.Literals.COLLECTION_VALUE__OWNED_ELEMENTS)
-     || feature_p.equals(InformationPackage.Literals.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT))
+    if (feature.equals(InformationPackage.Literals.COLLECTION_VALUE__OWNED_ELEMENTS)
+     || feature.equals(InformationPackage.Literals.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT))
     {
-      if (modelElement_p instanceof CollectionValue) {
-        AbstractType cvType = ((CollectionValue) modelElement_p).getAbstractType();
+      if (modelElement instanceof CollectionValue) {
+        AbstractType cvType = ((CollectionValue) modelElement).getAbstractType();
         if (cvType instanceof Collection) {
           Type cType = ((Collection) cvType).getType(); {
             if (!(cType instanceof NumericType)) {
@@ -66,13 +66,13 @@ public class LiteralNumericValueItemContribution extends DataNamingHelperBasedCo
       }
     }
 
-    if (feature_p.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE)
-     || feature_p.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE)
-     || feature_p.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE)
-     || feature_p.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE))
+    if (feature.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE)
+     || feature.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE)
+     || feature.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE)
+     || feature.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE))
     {
-      if (modelElement_p instanceof Collection) {
-        Type cType = ((Collection) modelElement_p).getType();
+      if (modelElement instanceof Collection) {
+        Type cType = ((Collection) modelElement).getType();
         if (!(cType instanceof NumericType)) {
           showMe = false;
         }

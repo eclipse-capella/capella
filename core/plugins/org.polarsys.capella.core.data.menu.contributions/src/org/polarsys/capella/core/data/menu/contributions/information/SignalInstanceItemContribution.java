@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,21 +29,21 @@ public class SignalInstanceItemContribution implements IMDEMenuItemContribution 
 	/**
 	 * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
 	 */
-	public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+	public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
 		return false;
 	}
 
 	/**
 	 * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
 	 */
-	public Command executionContribution(EditingDomain editingDomain_p, ModelElement containerElement_p, ModelElement createdElement_p, EStructuralFeature feature_p) {
-		if (createdElement_p instanceof SignalInstance) {
-			SignalInstance signalInstance = (SignalInstance) createdElement_p;
+	public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement, ModelElement createdElement, EStructuralFeature feature) {
+		if (createdElement instanceof SignalInstance) {
+			SignalInstance signalInstance = (SignalInstance) createdElement;
 
 			CompoundCommand cmd = new CompoundCommand();
 
-			cmd.append(new SetCommand(editingDomain_p, signalInstance, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, ((AbstractNamedElement) containerElement_p).getName()));
-			cmd.append(new SetCommand(editingDomain_p, signalInstance, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, containerElement_p));
+			cmd.append(new SetCommand(editingDomain, signalInstance, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, ((AbstractNamedElement) containerElement).getName()));
+			cmd.append(new SetCommand(editingDomain, signalInstance, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, containerElement));
 
 			return cmd;
 		}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,15 +29,15 @@ public class FunctionalChainItemContribution implements IMDEMenuItemContribution
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
-    return !(modelElement_p instanceof OperationalActivity) &&
-            !(modelElement_p instanceof OperationalCapability);
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
+    return !(modelElement instanceof OperationalActivity) &&
+            !(modelElement instanceof OperationalCapability);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(EditingDomain editingDomain_p, ModelElement containerElement_p, ModelElement createdElement_p, EStructuralFeature feature_p) {
+  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement, ModelElement createdElement, EStructuralFeature feature) {
 	    return null;
   }
 

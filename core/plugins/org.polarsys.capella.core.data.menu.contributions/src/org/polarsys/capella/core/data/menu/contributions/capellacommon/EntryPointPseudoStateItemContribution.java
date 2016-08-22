@@ -39,21 +39,21 @@ public class EntryPointPseudoStateItemContribution implements IMDEMenuItemContri
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
   @Override
-  public Command executionContribution(final EditingDomain editingDomain_p, ModelElement containerElement_p, final ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
-    if (createdElement_p instanceof EntryPointPseudoState) {
+  public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement,
+      EStructuralFeature feature) {
+    if (createdElement instanceof EntryPointPseudoState) {
       CompoundCommand cmd = new CompoundCommand();
-      if (createdElement_p instanceof AbstractNamedElement) {
-	      String name = ((AbstractNamedElement) createdElement_p).getName();
-	      if ((name == null) || name.startsWith(createdElement_p.eClass().getName())) {
-	        return CreationHelper.getNamingCommand(editingDomain_p, (AbstractNamedElement) createdElement_p, containerElement_p, feature_p,
+      if (createdElement instanceof AbstractNamedElement) {
+	      String name = ((AbstractNamedElement) createdElement).getName();
+	      if ((name == null) || name.startsWith(createdElement.eClass().getName())) {
+	        return CreationHelper.getNamingCommand(editingDomain, (AbstractNamedElement) createdElement, containerElement, feature,
 	            NamingConstants.EntryPointPseudoState_Name);
 	      }
       }
-      EObject superContainer = containerElement_p.eContainer();
+      EObject superContainer = containerElement.eContainer();
       if (superContainer instanceof State) {
         State superContainerState = (State) superContainer;
-        cmd.append(new AddCommand(editingDomain_p, superContainerState, ModellingcorePackage.Literals.ISTATE__REFERENCED_STATES, createdElement_p));
+        cmd.append(new AddCommand(editingDomain, superContainerState, ModellingcorePackage.Literals.ISTATE__REFERENCED_STATES, createdElement));
       }
       return cmd;
     }
@@ -61,7 +61,7 @@ public class EntryPointPseudoStateItemContribution implements IMDEMenuItemContri
   }
 
   @Override
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     return true;
   }
 
