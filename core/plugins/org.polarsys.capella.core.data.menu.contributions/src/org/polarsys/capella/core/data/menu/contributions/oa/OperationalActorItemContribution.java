@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,21 +43,21 @@ public class OperationalActorItemContribution implements IMDEMenuItemContributio
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
-    return !(modelElement_p instanceof OperationalActor);
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
+    return !(modelElement instanceof OperationalActor);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(final EditingDomain editingDomain_p, ModelElement containerElement_p, final ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
-    if (createdElement_p instanceof OperationalActor) {
-      if (((PartitionableElement) createdElement_p).getRepresentingPartitions().size() == 0) {
+  public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement,
+      EStructuralFeature feature) {
+    if (createdElement instanceof OperationalActor) {
+      if (((PartitionableElement) createdElement).getRepresentingPartitions().size() == 0) {
         EObject partOwner =
-            (containerElement_p instanceof Entity) ? containerElement_p : EcoreUtil2.getFirstContainer(containerElement_p, OaPackage.Literals.ENTITY);
+            (containerElement instanceof Entity) ? containerElement : EcoreUtil2.getFirstContainer(containerElement, OaPackage.Literals.ENTITY);
         if (partOwner == null) {
-          EObject pkg = EcoreUtil2.getFirstContainer(containerElement_p, OaPackage.Literals.OPERATIONAL_ANALYSIS);
+          EObject pkg = EcoreUtil2.getFirstContainer(containerElement, OaPackage.Literals.OPERATIONAL_ANALYSIS);
           if (pkg != null) {
             partOwner = ((OperationalAnalysis) pkg).getOwnedOperationalContext();
           }
@@ -68,7 +68,7 @@ public class OperationalActorItemContribution implements IMDEMenuItemContributio
 
           // Creates the part.
           final Command createPartCmd =
-              CreateChildCommand.create(editingDomain_p, partOwner, new CommandParameter(createdElement_p,
+              CreateChildCommand.create(editingDomain, partOwner, new CommandParameter(createdElement,
                   CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES, CsFactory.eINSTANCE.createPart()), Collections.EMPTY_LIST);
           cmd.append(createPartCmd);
 
@@ -80,8 +80,8 @@ public class OperationalActorItemContribution implements IMDEMenuItemContributio
               if (res.size() == 1) {
                 Object createdPart = res.iterator().next();
                 if (createdPart instanceof EObject) {
-                  return new SetCommand(editingDomain_p, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
-                      ((AbstractNamedElement) createdElement_p).getName());
+                  return new SetCommand(editingDomain, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
+                      ((AbstractNamedElement) createdElement).getName());
                 }
               }
               return new IdentityCommand();
@@ -97,8 +97,8 @@ public class OperationalActorItemContribution implements IMDEMenuItemContributio
               if (res.size() == 1) {
                 Object createdPart = res.iterator().next();
                 if (createdPart instanceof EObject) {
-                  return new SetCommand(editingDomain_p, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE,
-                      createdElement_p);
+                  return new SetCommand(editingDomain, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE,
+                      createdElement);
                 }
               }
               return null;

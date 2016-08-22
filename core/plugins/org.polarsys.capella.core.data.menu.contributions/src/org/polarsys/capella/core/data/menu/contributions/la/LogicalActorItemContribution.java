@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,11 +42,11 @@ public class LogicalActorItemContribution implements IMDEMenuItemContribution {
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(final EditingDomain editingDomain_p, ModelElement containerElement_p, final ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
-    if (createdElement_p instanceof LogicalActor) {
-      if (((PartitionableElement) createdElement_p).getRepresentingPartitions().size() == 0) {
-        EObject ctxArch = EcoreUtil2.getFirstContainer(containerElement_p, LaPackage.Literals.LOGICAL_ARCHITECTURE);
+  public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement,
+      EStructuralFeature feature) {
+    if (createdElement instanceof LogicalActor) {
+      if (((PartitionableElement) createdElement).getRepresentingPartitions().size() == 0) {
+        EObject ctxArch = EcoreUtil2.getFirstContainer(containerElement, LaPackage.Literals.LOGICAL_ARCHITECTURE);
         if (ctxArch != null) {
           LogicalContext context = ((LogicalArchitecture) ctxArch).getOwnedLogicalContext();
           if (context != null) {
@@ -54,7 +54,7 @@ public class LogicalActorItemContribution implements IMDEMenuItemContribution {
 
             // Creates the part.
             final Command createPartCmd =
-                CreateChildCommand.create(editingDomain_p, context, new CommandParameter(createdElement_p,
+                CreateChildCommand.create(editingDomain, context, new CommandParameter(createdElement,
                     CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES, CsFactory.eINSTANCE.createPart()), Collections.EMPTY_LIST);
             cmd.append(createPartCmd);
 
@@ -66,8 +66,8 @@ public class LogicalActorItemContribution implements IMDEMenuItemContribution {
                 if (res.size() == 1) {
                   Object createdPart = res.iterator().next();
                   if (createdPart instanceof EObject) {
-                    return new SetCommand(editingDomain_p, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
-                        ((AbstractNamedElement) createdElement_p).getName());
+                    return new SetCommand(editingDomain, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
+                        ((AbstractNamedElement) createdElement).getName());
                   }
                 }
                 return new IdentityCommand();
@@ -83,8 +83,8 @@ public class LogicalActorItemContribution implements IMDEMenuItemContribution {
                 if (res.size() == 1) {
                   Object createdPart = res.iterator().next();
                   if (createdPart instanceof EObject) {
-                    return new SetCommand(editingDomain_p, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE,
-                        createdElement_p);
+                    return new SetCommand(editingDomain, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE,
+                        createdElement);
                   }
                 }
                 return new IdentityCommand();
@@ -109,7 +109,7 @@ public class LogicalActorItemContribution implements IMDEMenuItemContribution {
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     return true;
   }
 }

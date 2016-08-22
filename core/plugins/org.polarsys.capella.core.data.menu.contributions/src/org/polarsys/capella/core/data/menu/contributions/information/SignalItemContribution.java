@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,20 +37,20 @@ public class SignalItemContribution implements IMDEMenuItemContribution {
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     return false;
   }
 
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(final EditingDomain editingDomain_p, ModelElement containerElement_p, final ModelElement createdElement_p, EStructuralFeature feature_p) {
-    if (createdElement_p instanceof Signal) {
+  public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement, EStructuralFeature feature) {
+    if (createdElement instanceof Signal) {
       CompoundCommand cmd = new CompoundCommand();
 
       // Creates the signal instance.
-      final Command createSignalInstanceCmd = CreateChildCommand.create(editingDomain_p, createdElement_p, new CommandParameter(createdElement_p,
-        CommunicationPackage.Literals.SIGNAL__SIGNAL_INSTANCES, CommunicationFactory.eINSTANCE.createSignalInstance(((AbstractNamedElement) createdElement_p).getName())), Collections.EMPTY_LIST);
+      final Command createSignalInstanceCmd = CreateChildCommand.create(editingDomain, createdElement, new CommandParameter(createdElement,
+        CommunicationPackage.Literals.SIGNAL__SIGNAL_INSTANCES, CommunicationFactory.eINSTANCE.createSignalInstance(((AbstractNamedElement) createdElement).getName())), Collections.EMPTY_LIST);
       cmd.append(createSignalInstanceCmd);
 
       // Sets the signal instance type.
@@ -61,7 +61,7 @@ public class SignalItemContribution implements IMDEMenuItemContribution {
           if (res.size() == 1) {
             Object createdObj = res.iterator().next();
             if (createdObj instanceof EObject) {
-              return new SetCommand(editingDomain_p, (EObject) createdObj, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, createdElement_p);
+              return new SetCommand(editingDomain, (EObject) createdObj, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, createdElement);
             }
           }
           return null;

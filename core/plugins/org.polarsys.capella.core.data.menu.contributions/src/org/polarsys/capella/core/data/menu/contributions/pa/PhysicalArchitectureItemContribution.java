@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,12 +29,12 @@ public class PhysicalArchitectureItemContribution implements IMDEMenuItemContrib
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
-    if ((modelElement_p instanceof SystemEngineering)
-      && PaPackage.Literals.PHYSICAL_ARCHITECTURE.equals(cls_p)
-      && CapellacorePackage.Literals.ABSTRACT_MODELLING_STRUCTURE__OWNED_ARCHITECTURES.equals(feature_p))
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
+    if ((modelElement instanceof SystemEngineering)
+      && PaPackage.Literals.PHYSICAL_ARCHITECTURE.equals(cls)
+      && CapellacorePackage.Literals.ABSTRACT_MODELLING_STRUCTURE__OWNED_ARCHITECTURES.equals(feature))
     {
-      return ((SystemEngineering) modelElement_p).getContainedPhysicalArchitectures().isEmpty();
+      return ((SystemEngineering) modelElement).getContainedPhysicalArchitectures().isEmpty();
     }
     return false;
   }
@@ -42,9 +42,9 @@ public class PhysicalArchitectureItemContribution implements IMDEMenuItemContrib
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(EditingDomain editingDomain_p, ModelElement containerElement_p, ModelElement createdElement_p, EStructuralFeature feature_p) {
-    if ((createdElement_p instanceof PhysicalArchitecture) && (containerElement_p instanceof SystemEngineering)) {
-      return PAStructureHelper.getPhysicalArchitectureCreationCmd(editingDomain_p, (SystemEngineering) containerElement_p, (PhysicalArchitecture) createdElement_p);
+  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement, ModelElement createdElement, EStructuralFeature feature) {
+    if ((createdElement instanceof PhysicalArchitecture) && (containerElement instanceof SystemEngineering)) {
+      return PAStructureHelper.getPhysicalArchitectureCreationCmd(editingDomain, (SystemEngineering) containerElement, (PhysicalArchitecture) createdElement);
     }
     return new IdentityCommand();
   }

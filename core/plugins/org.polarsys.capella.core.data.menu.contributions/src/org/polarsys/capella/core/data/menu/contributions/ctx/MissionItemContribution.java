@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,12 +43,12 @@ public class MissionItemContribution implements IMDEMenuItemContribution {
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(final EditingDomain editingDomain_p, ModelElement containerElement_p, final ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
-    if (createdElement_p instanceof Mission) {
-      final Mission mission = (Mission) createdElement_p;
+  public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement,
+      EStructuralFeature feature) {
+    if (createdElement instanceof Mission) {
+      final Mission mission = (Mission) createdElement;
       // Links the mission to the System
-      SystemEngineering sysEng = (SystemEngineering) EcoreUtil2.getFirstContainer(containerElement_p, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
+      SystemEngineering sysEng = (SystemEngineering) EcoreUtil2.getFirstContainer(containerElement, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
       if (sysEng != null) {
         SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);
         if (ca != null) {
@@ -58,7 +58,7 @@ public class MissionItemContribution implements IMDEMenuItemContribution {
 
             // Creates the mission supplier link.
             final Command createLinkCmd =
-                CreateChildCommand.create(editingDomain_p, createdElement_p, new CommandParameter(createdElement_p,
+                CreateChildCommand.create(editingDomain, createdElement, new CommandParameter(createdElement,
                     CtxPackage.Literals.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT, CtxFactory.eINSTANCE.createSystemMissionInvolvement()),
                     Collections.EMPTY_LIST);
             cmd.append(createLinkCmd);
@@ -71,7 +71,7 @@ public class MissionItemContribution implements IMDEMenuItemContribution {
                 if (res.size() == 1) {
                   Object createdObj = res.iterator().next();
                   if (createdObj instanceof EObject) {
-                    return new SetCommand(editingDomain_p, (EObject) createdObj, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED, sys);
+                    return new SetCommand(editingDomain, (EObject) createdObj, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED, sys);
                   }
                 }
                 return new IdentityCommand();
@@ -87,7 +87,7 @@ public class MissionItemContribution implements IMDEMenuItemContribution {
                 if (res.size() == 1) {
                   Object createdObj = res.iterator().next();
                   if (createdObj instanceof EObject) {
-                    return new SetCommand(editingDomain_p, (EObject) createdObj, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, mission);
+                    return new SetCommand(editingDomain, (EObject) createdObj, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, mission);
                   }
                 }
                 return new IdentityCommand();
@@ -113,7 +113,7 @@ public class MissionItemContribution implements IMDEMenuItemContribution {
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     return true;
   }
 }

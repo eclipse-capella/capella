@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,21 +35,21 @@ public class LiteralBooleanValueItemContribution implements IMDEMenuItemContribu
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
   @Override
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
 
-    if (feature_p == ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION){
+    if (feature == ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION){
       return true;
     }
 
     boolean select =
-        DatatypePackage.Literals.BOOLEAN_TYPE.isInstance(modelElement_p) && !isCardMaxReached(modelElement_p, cls_p, feature_p)
-            && !feature_p.equals(DatavaluePackage.Literals.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES)
-            && !feature_p.equals(DatatypePackage.Literals.BOOLEAN_TYPE__OWNED_DEFAULT_VALUE);
+        DatatypePackage.Literals.BOOLEAN_TYPE.isInstance(modelElement) && !isCardMaxReached(modelElement, cls, feature)
+            && !feature.equals(DatavaluePackage.Literals.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES)
+            && !feature.equals(DatatypePackage.Literals.BOOLEAN_TYPE__OWNED_DEFAULT_VALUE);
 
-    if (feature_p.equals(InformationPackage.Literals.COLLECTION_VALUE__OWNED_ELEMENTS)
-        || feature_p.equals(InformationPackage.Literals.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT)) {
-      if (modelElement_p instanceof CollectionValue) {
-        AbstractType cvType = ((CollectionValue) modelElement_p).getAbstractType();
+    if (feature.equals(InformationPackage.Literals.COLLECTION_VALUE__OWNED_ELEMENTS)
+        || feature.equals(InformationPackage.Literals.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT)) {
+      if (modelElement instanceof CollectionValue) {
+        AbstractType cvType = ((CollectionValue) modelElement).getAbstractType();
         if (cvType instanceof Collection) {
           Type cType = ((Collection) cvType).getType();
           {
@@ -61,12 +61,12 @@ public class LiteralBooleanValueItemContribution implements IMDEMenuItemContribu
       }
     }
 
-    if (feature_p.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE)
-        || feature_p.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE)
-        || feature_p.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE)
-        || feature_p.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE)) {
-      if (modelElement_p instanceof Collection) {
-        Type cType = ((Collection) modelElement_p).getType();
+    if (feature.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE)
+        || feature.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE)
+        || feature.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE)
+        || feature.equals(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE)) {
+      if (modelElement instanceof Collection) {
+        Type cType = ((Collection) modelElement).getType();
         if (!(cType instanceof BooleanType)) {
           select = false;
         }
@@ -80,18 +80,18 @@ public class LiteralBooleanValueItemContribution implements IMDEMenuItemContribu
    * This method checks if the current element already have two or more children:<br>
    * a boolean type cannot have more than two LiteralBooleanValues
    * 
-   * @param modelElement_p
-   * @param cls_p
-   * @param feature_p
+   * @param modelElement
+   * @param cls
+   * @param feature
    * @return
    */
   @SuppressWarnings("unchecked")
-  private boolean isCardMaxReached(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
-    Object elts = modelElement_p.eGet(feature_p);
+  private boolean isCardMaxReached(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
+    Object elts = modelElement.eGet(feature);
     if (elts instanceof java.util.Collection<?>) {
       int card = 0;
       for (EObject obj : ((java.util.Collection<? extends EObject>) elts)) {
-        if (obj.eClass().equals(cls_p)) {
+        if (obj.eClass().equals(cls)) {
           card++;
         }
         if (card == 2) {
@@ -106,14 +106,14 @@ public class LiteralBooleanValueItemContribution implements IMDEMenuItemContribu
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
   @Override
-  public Command executionContribution(EditingDomain editingDomain_p, ModelElement containerElement_p, ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
+  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement, ModelElement createdElement,
+      EStructuralFeature feature) {
     CompoundCommand cmd = new CompoundCommand();
 
-    cmd.append(DataNamingHelper.getNamingCommand(editingDomain_p, createdElement_p, feature_p));
+    cmd.append(DataNamingHelper.getNamingCommand(editingDomain, createdElement, feature));
 
-    if (containerElement_p instanceof BooleanType) {
-      cmd.append(new SetCommand(editingDomain_p, createdElement_p, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, containerElement_p));
+    if (containerElement instanceof BooleanType) {
+      cmd.append(new SetCommand(editingDomain, createdElement, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, containerElement));
     }
 
     return cmd;

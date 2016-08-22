@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,14 +33,14 @@ public class ChangeEventItemContribution implements IMDEMenuItemContribution {
   }
 
   @Override
-  public Command executionContribution(EditingDomain editingDomain_p, ModelElement containerElement_p, ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
-    if (createdElement_p instanceof ChangeEvent) {
+  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement, ModelElement createdElement,
+      EStructuralFeature feature) {
+    if (createdElement instanceof ChangeEvent) {
       CompoundCommand cmd = new CompoundCommand();
-      if (containerElement_p instanceof DataPkg) {
+      if (containerElement instanceof DataPkg) {
         // Sets the container region involved states.
-        ((ChangeEvent) createdElement_p).setKind(ChangeEventKind.WHEN);
-        cmd.append(new AddCommand(editingDomain_p, containerElement_p, InformationPackage.Literals.DATA_PKG__OWNED_STATE_EVENTS, createdElement_p));
+        ((ChangeEvent) createdElement).setKind(ChangeEventKind.WHEN);
+        cmd.append(new AddCommand(editingDomain, containerElement, InformationPackage.Literals.DATA_PKG__OWNED_STATE_EVENTS, createdElement));
       }
       return cmd;
     }
@@ -48,7 +48,7 @@ public class ChangeEventItemContribution implements IMDEMenuItemContribution {
   }
 
   @Override
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     return true;
   }
 

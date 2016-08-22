@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,42 +27,42 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
  */
 public class DataNamingHelper {
   /**
-   * @param editingDomain_p
-   * @param createdElement_p
-   * @param feature_p
+   * @param editingDomain
+   * @param createdElement
+   * @param feature
    * @return
    */
-  public static Command getNamingCommand(EditingDomain editingDomain_p, ModelElement createdElement_p, EStructuralFeature feature_p) {
+  public static Command getNamingCommand(EditingDomain editingDomain, ModelElement createdElement, EStructuralFeature feature) {
     String name = null;
 
-    if (InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE.equals(feature_p)
-     || DatatypePackage.Literals.NUMERIC_TYPE__OWNED_MIN_VALUE.equals(feature_p)
-     || DatatypePackage.Literals.ENUMERATION__OWNED_MIN_VALUE.equals(feature_p)
-     || InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE.equals(feature_p)
-     || DatatypePackage.Literals.NUMERIC_TYPE__OWNED_MAX_VALUE.equals(feature_p)
-     || DatatypePackage.Literals.ENUMERATION__OWNED_MAX_VALUE.equals(feature_p)
-     || InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD.equals(feature_p)
-     || InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD.equals(feature_p)
-     || InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH.equals(feature_p)
-     || DatatypePackage.Literals.STRING_TYPE__OWNED_MIN_LENGTH.equals(feature_p)
-     || InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH.equals(feature_p)
-     || DatatypePackage.Literals.STRING_TYPE__OWNED_MAX_LENGTH.equals(feature_p)
-     || InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE.equals(feature_p)
-     || DatatypePackage.Literals.NUMERIC_TYPE__OWNED_NULL_VALUE.equals(feature_p)
-     || DatatypePackage.Literals.STRING_TYPE__OWNED_NULL_VALUE.equals(feature_p)
-     || DatatypePackage.Literals.ENUMERATION__OWNED_NULL_VALUE.equals(feature_p)
-     || InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE.equals(feature_p)
-     || DatatypePackage.Literals.BOOLEAN_TYPE__OWNED_DEFAULT_VALUE.equals(feature_p)
-     || DatatypePackage.Literals.NUMERIC_TYPE__OWNED_DEFAULT_VALUE.equals(feature_p)
-     || DatatypePackage.Literals.STRING_TYPE__OWNED_DEFAULT_VALUE.equals(feature_p)
-     || DatatypePackage.Literals.ENUMERATION__OWNED_DEFAULT_VALUE.equals(feature_p)
-     || DatavaluePackage.Literals.ENUMERATION_LITERAL__DOMAIN_VALUE.equals(feature_p))
+    if (InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE.equals(feature)
+     || DatatypePackage.Literals.NUMERIC_TYPE__OWNED_MIN_VALUE.equals(feature)
+     || DatatypePackage.Literals.ENUMERATION__OWNED_MIN_VALUE.equals(feature)
+     || InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE.equals(feature)
+     || DatatypePackage.Literals.NUMERIC_TYPE__OWNED_MAX_VALUE.equals(feature)
+     || DatatypePackage.Literals.ENUMERATION__OWNED_MAX_VALUE.equals(feature)
+     || InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD.equals(feature)
+     || InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD.equals(feature)
+     || InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH.equals(feature)
+     || DatatypePackage.Literals.STRING_TYPE__OWNED_MIN_LENGTH.equals(feature)
+     || InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH.equals(feature)
+     || DatatypePackage.Literals.STRING_TYPE__OWNED_MAX_LENGTH.equals(feature)
+     || InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE.equals(feature)
+     || DatatypePackage.Literals.NUMERIC_TYPE__OWNED_NULL_VALUE.equals(feature)
+     || DatatypePackage.Literals.STRING_TYPE__OWNED_NULL_VALUE.equals(feature)
+     || DatatypePackage.Literals.ENUMERATION__OWNED_NULL_VALUE.equals(feature)
+     || InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE.equals(feature)
+     || DatatypePackage.Literals.BOOLEAN_TYPE__OWNED_DEFAULT_VALUE.equals(feature)
+     || DatatypePackage.Literals.NUMERIC_TYPE__OWNED_DEFAULT_VALUE.equals(feature)
+     || DatatypePackage.Literals.STRING_TYPE__OWNED_DEFAULT_VALUE.equals(feature)
+     || DatatypePackage.Literals.ENUMERATION__OWNED_DEFAULT_VALUE.equals(feature)
+     || DatavaluePackage.Literals.ENUMERATION_LITERAL__DOMAIN_VALUE.equals(feature))
     {
       name = ICommonConstants.EMPTY_STRING;
     }
 
     if (name != null) {
-      return new SetCommand(editingDomain_p, createdElement_p, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, name);
+      return new SetCommand(editingDomain, createdElement, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, name);
     }
 
     return new IdentityCommand();

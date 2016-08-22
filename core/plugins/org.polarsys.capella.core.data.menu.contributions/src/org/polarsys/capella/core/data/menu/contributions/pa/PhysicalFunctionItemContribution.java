@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,14 +43,14 @@ public class PhysicalFunctionItemContribution extends AbstractFunctionItemContri
    * @see org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution#selectionContribution()
    */
   @Override
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
-    return super.selectionContribution(modelElement_p, cls_p, feature_p)
-        && EcoreUtil2.isContainedBy(modelElement_p, PaPackage.Literals.PHYSICAL_ARCHITECTURE)
-        && ((modelElement_p instanceof PhysicalFunction)
-          || EcoreUtil2.isContainedBy(modelElement_p, PaPackage.Literals.PHYSICAL_FUNCTION)
-          || ((modelElement_p instanceof PhysicalFunctionPkg)
-           && !EcoreUtil2.isContainedBy(modelElement_p, PaPackage.Literals.PHYSICAL_FUNCTION)
-           && ((PhysicalFunctionPkg) modelElement_p).getOwnedPhysicalFunctions().isEmpty()));
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
+    return super.selectionContribution(modelElement, cls, feature)
+        && EcoreUtil2.isContainedBy(modelElement, PaPackage.Literals.PHYSICAL_ARCHITECTURE)
+        && ((modelElement instanceof PhysicalFunction)
+          || EcoreUtil2.isContainedBy(modelElement, PaPackage.Literals.PHYSICAL_FUNCTION)
+          || ((modelElement instanceof PhysicalFunctionPkg)
+           && !EcoreUtil2.isContainedBy(modelElement, PaPackage.Literals.PHYSICAL_FUNCTION)
+           && ((PhysicalFunctionPkg) modelElement).getOwnedPhysicalFunctions().isEmpty()));
   }
 
   /**

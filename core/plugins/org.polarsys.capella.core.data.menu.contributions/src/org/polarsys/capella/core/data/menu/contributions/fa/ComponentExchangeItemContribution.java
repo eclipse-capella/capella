@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,17 +29,17 @@ public class ComponentExchangeItemContribution implements IMDEMenuItemContributi
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(EditingDomain editingDomain_p, ModelElement containerElement_p, ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
-    if (createdElement_p instanceof ComponentExchange) {
-      ComponentExchange exchange = (ComponentExchange) createdElement_p;
-      String name = ((AbstractNamedElement) createdElement_p).getName();
-      if ((name == null) || name.startsWith(createdElement_p.eClass().getName())) {
+  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement, ModelElement createdElement,
+      EStructuralFeature feature) {
+    if (createdElement instanceof ComponentExchange) {
+      ComponentExchange exchange = (ComponentExchange) createdElement;
+      String name = ((AbstractNamedElement) createdElement).getName();
+      if ((name == null) || name.startsWith(createdElement.eClass().getName())) {
         if (exchange.getKind() == ComponentExchangeKind.DELEGATION) {
-          return CreationHelper.getNamingCommand(editingDomain_p, (AbstractNamedElement) createdElement_p, containerElement_p, feature_p,
+          return CreationHelper.getNamingCommand(editingDomain, (AbstractNamedElement) createdElement, containerElement, feature,
               NamingConstants.ComponentExchange_Delegation_ShortName);
         }
-        return CreationHelper.getNamingCommand(editingDomain_p, (AbstractNamedElement) createdElement_p, containerElement_p, feature_p,
+        return CreationHelper.getNamingCommand(editingDomain, (AbstractNamedElement) createdElement, containerElement, feature,
             NamingConstants.ComponentExchange_ShortName);
       }
     }
@@ -56,7 +56,7 @@ public class ComponentExchangeItemContribution implements IMDEMenuItemContributi
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     return false;
   }
 }

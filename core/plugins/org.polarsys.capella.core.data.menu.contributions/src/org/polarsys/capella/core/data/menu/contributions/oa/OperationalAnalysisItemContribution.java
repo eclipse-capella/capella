@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,12 +31,12 @@ public class OperationalAnalysisItemContribution implements IMDEMenuItemContribu
   /**
    * @see org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
-    if ((modelElement_p instanceof SystemEngineering)
-      && OaPackage.Literals.OPERATIONAL_ANALYSIS.equals(cls_p)
-      && CapellacorePackage.Literals.ABSTRACT_MODELLING_STRUCTURE__OWNED_ARCHITECTURES.equals(feature_p))
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
+    if ((modelElement instanceof SystemEngineering)
+      && OaPackage.Literals.OPERATIONAL_ANALYSIS.equals(cls)
+      && CapellacorePackage.Literals.ABSTRACT_MODELLING_STRUCTURE__OWNED_ARCHITECTURES.equals(feature))
     {
-      return ((SystemEngineering) modelElement_p).getContainedOperationalAnalysis().isEmpty();
+      return ((SystemEngineering) modelElement).getContainedOperationalAnalysis().isEmpty();
     }
     return false;
   }
@@ -44,9 +44,9 @@ public class OperationalAnalysisItemContribution implements IMDEMenuItemContribu
   /**
    * @see org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(EditingDomain editingDomain_p, ModelElement containerElement_p, ModelElement createdElement_p, EStructuralFeature feature_p) {
-    if (createdElement_p instanceof OperationalAnalysis) {
-      return OAStructureHelper.getOperationalAnalysisCreationCmd(editingDomain_p, (OperationalAnalysis) createdElement_p);
+  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement, ModelElement createdElement, EStructuralFeature feature) {
+    if (createdElement instanceof OperationalAnalysis) {
+      return OAStructureHelper.getOperationalAnalysisCreationCmd(editingDomain, (OperationalAnalysis) createdElement);
     }
     return new IdentityCommand();
   }

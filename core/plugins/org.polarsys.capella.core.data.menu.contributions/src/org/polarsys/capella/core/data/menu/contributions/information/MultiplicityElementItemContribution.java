@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,13 +32,13 @@ public abstract class MultiplicityElementItemContribution implements IMDEMenuIte
 
   protected static final String _MANY_CARDINALITY = "*"; //$NON-NLS-1$
 
-  protected Command getCardinalitiesCommand(final EditingDomain editingDomain_p, final EObject createdElement_p, final String defaultMinCardinality_p,
-      final String defaultMaxCardinality_p) {
+  protected Command getCardinalitiesCommand(final EditingDomain editingDomain, final EObject createdElement, final String defaultMinCardinality,
+      final String defaultMaxCardinality) {
     CompoundCommand cmd = new CompoundCommand();
 
     // Creates the min cardinality.
     final Command createMinCardCmd =
-        CreateChildCommand.create(editingDomain_p, createdElement_p, new CommandParameter(createdElement_p,
+        CreateChildCommand.create(editingDomain, createdElement, new CommandParameter(createdElement,
             InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD, DatavalueFactory.eINSTANCE.createLiteralNumericValue()), Collections.EMPTY_LIST);
     cmd.append(createMinCardCmd);
 
@@ -50,7 +50,7 @@ public abstract class MultiplicityElementItemContribution implements IMDEMenuIte
         if (res.size() == 1) {
           Object createdObj = res.iterator().next();
           if (createdObj instanceof EObject) {
-            return new SetCommand(editingDomain_p, (EObject) createdObj, DatavaluePackage.Literals.LITERAL_NUMERIC_VALUE__VALUE, defaultMinCardinality_p);
+            return new SetCommand(editingDomain, (EObject) createdObj, DatavaluePackage.Literals.LITERAL_NUMERIC_VALUE__VALUE, defaultMinCardinality);
           }
         }
         return null;
@@ -60,7 +60,7 @@ public abstract class MultiplicityElementItemContribution implements IMDEMenuIte
 
     // Creates the max cardinality.
     final Command createMaxCardCmd =
-        CreateChildCommand.create(editingDomain_p, createdElement_p, new CommandParameter(createdElement_p,
+        CreateChildCommand.create(editingDomain, createdElement, new CommandParameter(createdElement,
             InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD, DatavalueFactory.eINSTANCE.createLiteralNumericValue()), Collections.EMPTY_LIST);
     cmd.append(createMaxCardCmd);
 
@@ -72,7 +72,7 @@ public abstract class MultiplicityElementItemContribution implements IMDEMenuIte
         if (res.size() == 1) {
           Object createdObj = res.iterator().next();
           if (createdObj instanceof EObject) {
-            return new SetCommand(editingDomain_p, (EObject) createdObj, DatavaluePackage.Literals.LITERAL_NUMERIC_VALUE__VALUE, defaultMaxCardinality_p);
+            return new SetCommand(editingDomain, (EObject) createdObj, DatavaluePackage.Literals.LITERAL_NUMERIC_VALUE__VALUE, defaultMaxCardinality);
           }
         }
         return null;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,23 +31,23 @@ public class AbstractPhysicalComponentItemContribution implements IMDEMenuItemCo
 	/**
 	 * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
 	 */
-	public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+	public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
 		return true;
 	}
 
 	/**
 	 * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
 	 */
-	public Command executionContribution(final EditingDomain editingDomain_p, ModelElement containerElement_p, final ModelElement createdElement_p, EStructuralFeature feature_p) {
-		if (createdElement_p instanceof AbstractPhysicalComponent) {
+	public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement, EStructuralFeature feature) {
+		if (createdElement instanceof AbstractPhysicalComponent) {
 			CompoundCommand cmd = new CompoundCommand();
 
-			if (createdElement_p instanceof PhysicalNode) {
-				cmd.append(new SetCommand(editingDomain_p, createdElement_p, PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT__KIND, PhysicalComponentKind.HARDWARE));
-			} else if (createdElement_p instanceof PhysicalComponent) {
-				cmd.append(new SetCommand(editingDomain_p, createdElement_p, PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT__KIND, PhysicalComponentKind.SOFTWARE));
-			} else if (createdElement_p instanceof PhysicalActor) {
-				cmd.append(new SetCommand(editingDomain_p, createdElement_p, PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT__KIND, PhysicalComponentKind.PERSON));
+			if (createdElement instanceof PhysicalNode) {
+				cmd.append(new SetCommand(editingDomain, createdElement, PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT__KIND, PhysicalComponentKind.HARDWARE));
+			} else if (createdElement instanceof PhysicalComponent) {
+				cmd.append(new SetCommand(editingDomain, createdElement, PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT__KIND, PhysicalComponentKind.SOFTWARE));
+			} else if (createdElement instanceof PhysicalActor) {
+				cmd.append(new SetCommand(editingDomain, createdElement, PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT__KIND, PhysicalComponentKind.PERSON));
 			}
 
 			return cmd;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,10 +41,10 @@ public class ScenarioItemContribution implements IMDEMenuItemContribution {
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(final EditingDomain editingDomain_p, ModelElement containerElement_p, final ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
-    if (createdElement_p instanceof Scenario) {
-      Scenario scenario = (Scenario) createdElement_p;
+  public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement,
+      EStructuralFeature feature) {
+    if (createdElement instanceof Scenario) {
+      Scenario scenario = (Scenario) createdElement;
       if (scenario.getKind().equals(ScenarioKind.INTERFACE)) {
         BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(scenario);
         if (arch instanceof SystemAnalysis) {
@@ -72,7 +72,7 @@ public class ScenarioItemContribution implements IMDEMenuItemContribution {
 
                 // Creates the instance role.
                 final Command createInstanceRoleCmd =
-                    CreateChildCommand.create(editingDomain_p, createdElement_p, new CommandParameter(createdElement_p,
+                    CreateChildCommand.create(editingDomain, createdElement, new CommandParameter(createdElement,
                         InteractionPackage.Literals.SCENARIO__OWNED_INSTANCE_ROLES, InteractionFactory.eINSTANCE.createInstanceRole(sys.getName())),
                         Collections.EMPTY_LIST);
                 cmd.append(createInstanceRoleCmd);
@@ -85,7 +85,7 @@ public class ScenarioItemContribution implements IMDEMenuItemContribution {
                     if (res.size() == 1) {
                       Object createdPart = res.iterator().next();
                       if (createdPart instanceof EObject) {
-                        return new SetCommand(editingDomain_p, (EObject) createdPart, InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE, instance);
+                        return new SetCommand(editingDomain, (EObject) createdPart, InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE, instance);
                       }
                     }
                     return null;
@@ -114,7 +114,7 @@ public class ScenarioItemContribution implements IMDEMenuItemContribution {
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     return true;
   }
 }

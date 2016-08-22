@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,32 +29,32 @@ public class ExchangeItemElementItemContribution extends MultiplicityElementItem
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     return true;
   }
 
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(final EditingDomain editingDomain_p, final ModelElement containerElement_p, final ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
-    if (InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT.isInstance(createdElement_p)) {
+  public Command executionContribution(final EditingDomain editingDomain, final ModelElement containerElement, final ModelElement createdElement,
+      EStructuralFeature feature) {
+    if (InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT.isInstance(createdElement)) {
       CompoundCommand cmd = new CompoundCommand();
 
-      cmd.append(getCardinalitiesCommand(editingDomain_p, createdElement_p, _ONE_CARDINALITY, _ONE_CARDINALITY));
+      cmd.append(getCardinalitiesCommand(editingDomain, createdElement, _ONE_CARDINALITY, _ONE_CARDINALITY));
 
       // Set the kind of exchange item element according container
       Command setKindCmd = new CommandWrapper() {
         @Override
         public Command createCommand() {
           ElementKind kind = ElementKind.TYPE;
-          EObject container = containerElement_p;
+          EObject container = containerElement;
           if ((container != null) && (container instanceof ExchangeItem)) {
             ExchangeItem item = (ExchangeItem) container;
             if (item.getExchangeMechanism() == ExchangeMechanism.OPERATION) {
               kind = ElementKind.MEMBER;
             }
-            return new SetCommand(editingDomain_p, createdElement_p, InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT__KIND, kind);
+            return new SetCommand(editingDomain, createdElement, InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT__KIND, kind);
           }
           return null;
         }
@@ -62,7 +62,7 @@ public class ExchangeItemElementItemContribution extends MultiplicityElementItem
       cmd.append(setKindCmd);
 
       // Set the isComposite of exchange item element
-      cmd.append(new SetCommand(editingDomain_p, createdElement_p, InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT__COMPOSITE, Boolean.TRUE));
+      cmd.append(new SetCommand(editingDomain, createdElement, InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT__COMPOSITE, Boolean.TRUE));
 
       return cmd;
     }

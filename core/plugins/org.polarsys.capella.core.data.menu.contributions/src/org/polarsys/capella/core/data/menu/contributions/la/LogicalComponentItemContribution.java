@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,15 +41,15 @@ public class LogicalComponentItemContribution implements IMDEMenuItemContributio
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(final EditingDomain editingDomain_p, ModelElement containerElement_p, final ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
-    if (createdElement_p instanceof LogicalComponent) {
-      if (((PartitionableElement) createdElement_p).getRepresentingPartitions().size() == 0) {
+  public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement,
+      EStructuralFeature feature) {
+    if (createdElement instanceof LogicalComponent) {
+      if (((PartitionableElement) createdElement).getRepresentingPartitions().size() == 0) {
         EObject partOwner =
-            (containerElement_p instanceof LogicalComponent) ? containerElement_p : EcoreUtil2.getFirstContainer(containerElement_p,
+            (containerElement instanceof LogicalComponent) ? containerElement : EcoreUtil2.getFirstContainer(containerElement,
                 LaPackage.Literals.LOGICAL_COMPONENT);
         if (partOwner == null) {
-          EObject arch = EcoreUtil2.getFirstContainer(containerElement_p, LaPackage.Literals.LOGICAL_ARCHITECTURE);
+          EObject arch = EcoreUtil2.getFirstContainer(containerElement, LaPackage.Literals.LOGICAL_ARCHITECTURE);
           if (arch != null) {
             partOwner = ((LogicalArchitecture) arch).getOwnedLogicalContext();
           }
@@ -60,7 +60,7 @@ public class LogicalComponentItemContribution implements IMDEMenuItemContributio
 
           // Creates the part.
           final Command createPartCmd =
-              CreateChildCommand.create(editingDomain_p, partOwner, new CommandParameter(createdElement_p,
+              CreateChildCommand.create(editingDomain, partOwner, new CommandParameter(createdElement,
                   CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES, CsFactory.eINSTANCE.createPart()), Collections.EMPTY_LIST);
           cmd.append(createPartCmd);
 
@@ -72,8 +72,8 @@ public class LogicalComponentItemContribution implements IMDEMenuItemContributio
               if (res.size() == 1) {
                 Object createdPart = res.iterator().next();
                 if (createdPart instanceof EObject) {
-                  return new SetCommand(editingDomain_p, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
-                      ((AbstractNamedElement) createdElement_p).getName());
+                  return new SetCommand(editingDomain, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
+                      ((AbstractNamedElement) createdElement).getName());
                 }
               }
               return new IdentityCommand();
@@ -89,8 +89,8 @@ public class LogicalComponentItemContribution implements IMDEMenuItemContributio
               if (res.size() == 1) {
                 Object createdPart = res.iterator().next();
                 if (createdPart instanceof EObject) {
-                  return new SetCommand(editingDomain_p, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE,
-                      createdElement_p);
+                  return new SetCommand(editingDomain, (EObject) createdPart, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE,
+                      createdElement);
                 }
               }
               return new IdentityCommand();
@@ -115,9 +115,9 @@ public class LogicalComponentItemContribution implements IMDEMenuItemContributio
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
-    if (modelElement_p instanceof LogicalComponent) {
-      LogicalComponent lc = (LogicalComponent) modelElement_p;
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
+    if (modelElement instanceof LogicalComponent) {
+      LogicalComponent lc = (LogicalComponent) modelElement;
       if (!lc.getOwnedLogicalArchitectures().isEmpty()) {
         return false;
       }
