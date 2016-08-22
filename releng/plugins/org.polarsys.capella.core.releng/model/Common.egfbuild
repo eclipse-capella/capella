@@ -120,6 +120,9 @@
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_jg1Z8LyIEeK1gbuoK98GJA" name="Pre-Install MA src" reusedStep="_o0lKULxuEeK1gbuoK98GJA"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_jg1Z8byIEeK1gbuoK98GJA" name="Tar Post-Install MA" reusedStep="_68a5sJfiEeSD685w18qp-w"/>
     </steps>
+    <steps xsi:type="buildfile:MoveStep" xmi:id="_6-6UIGhcEeaVsIgvj-cA7g" description="" destinationFolderPath="${publish}/org.polarsys.capella">
+      <dirPaths>${publish}/org.polarsys.capella.core.feature</dirPaths>
+    </steps>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_imBWULxuEeK1gbuoK98GJA" name="Reused Installs">
     <steps xsi:type="buildcore:StepContainer" xmi:id="_o0lKULxuEeK1gbuoK98GJA" name="Pre-Install Capella">
