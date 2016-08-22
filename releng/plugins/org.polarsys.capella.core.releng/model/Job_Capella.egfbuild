@@ -1,56 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <buildcore:Job xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmlns:buildscm="http://www.eclipse.org/egf/1.0.0/buildscm" xmlns:buildstep="http://www.eclipse.org/egf/1.0.2/buildstep" xmi:id="_P5DYAF4qEeGjYKPu-vkVIA" name="Capella">
   <properties xmi:id="_P5DYAV4qEeGjYKPu-vkVIA" key="product" value="${publish}/product" type="INLINED"/>
-  <steps xsi:type="buildcore:StepContainer" xmi:id="_6PJ4wHn1EeOTFv-zjnXYvg" name="build4Helios" enabled="false">
-    <properties xmi:id="_86zmsHn1EeOTFv-zjnXYvg" key="eclipseCodeName" value="helios" type="INLINED"/>
-    <properties xmi:id="_meNNoJfMEeOUI_87YdVFoQ" key="primary_eclipseUpdateSite" value="${eclipse.download.prefix}/releases/${eclipseCodeName}" type="INLINED"/>
-    <properties xmi:id="_rUAe8JfMEeOUI_87YdVFoQ" key="secondary_eclipseUpdateSite" value="${eclipse.download.prefix}/releases/null" type="INLINED"/>
-    <steps xsi:type="buildcore:ReuseStep" xmi:id="_LfxWIIgGEeOdzI3OsQ-7WQ" name="Build All">
-      <reusedStep xsi:type="buildcore:StepContainer" href="Common.egfbuild#__Rn-QIgFEeOdzI3OsQ-7WQ"/>
-    </steps>
-  </steps>
-  <steps xsi:type="buildcore:StepContainer" xmi:id="_2G97YHn1EeOTFv-zjnXYvg" name="build4Indigo" enabled="false">
-    <properties xmi:id="_-FTq8Hn1EeOTFv-zjnXYvg" key="eclipseCodeName" value="indigo" type="INLINED"/>
-    <steps xsi:type="buildcore:ReuseStep" xmi:id="_WTA2QIgGEeOdzI3OsQ-7WQ" name="Build All">
-      <reusedStep xsi:type="buildcore:StepContainer" href="Common.egfbuild#__Rn-QIgFEeOdzI3OsQ-7WQ"/>
-    </steps>
-  </steps>
-  <steps xsi:type="buildcore:StepContainer" xmi:id="_mEA7QJMGEeOMQMHiDBX4Dw" name="build4Juno3.8.2" enabled="false">
-    <properties xmi:id="_mEA7QZMGEeOMQMHiDBX4Dw" key="eclipseCodeName" value="juno" type="INLINED"/>
-    <properties xmi:id="_MYvj8KVHEeS5S7nktqZoZA" key="capella.dependencies.updatesite" value="file:///home/hudson/genie.polarsys.polarsys.capella/.hudson/jobs/capella-gerrit/git/releng/plugins/org.polarsys.capella.core.releng.jobs/updateSites/${eclipseCodeName}" type="INLINED"/>
-    <properties xmi:id="_oqCyQJMaEeO7u6f29_-yFQ" key="primary_eclipseUpdateSite" value="${eclipse.download.prefix}/eclipse/updates/3.8/R-3.8.2-201301310800" type="INLINED"/>
-    <properties xmi:id="_UBi1gJMgEeO7u6f29_-yFQ" key="secondary_eclipseUpdateSite" value="${eclipse.download.prefix}/releases/${eclipseCodeName}" type="INLINED"/>
-    <properties xmi:id="_OShowHKnEeGQQdxt-QugRg" key="orbit.download.url" value="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
-    <properties xmi:id="_xGI7A3KOEeGk8-zOAaqAYg" key="site_Sirius" value="${eclipse.download.prefix}/sirius/updates/stable/3.1.6-S20160707-102356/${eclipseCodeName}" type="INLINED"/>
-    <steps xsi:type="buildcore:ReuseStep" xmi:id="_mEA7QpMGEeOMQMHiDBX4Dw" name="Build All">
-      <reusedStep xsi:type="buildcore:StepContainer" href="Common.egfbuild#__Rn-QIgFEeOdzI3OsQ-7WQ"/>
-    </steps>
-  </steps>
-  <steps xsi:type="buildcore:StepContainer" xmi:id="_9E4tAIgdEeOdzI3OsQ-7WQ" name="build4Juno" enabled="false">
-    <properties xmi:id="_9E4tAYgdEeOdzI3OsQ-7WQ" key="eclipseCodeName" value="juno" type="INLINED"/>
-    <steps xsi:type="buildcore:ReuseStep" xmi:id="_9E4tAogdEeOdzI3OsQ-7WQ" name="Build All">
-      <reusedStep xsi:type="buildcore:StepContainer" href="Common.egfbuild#__Rn-QIgFEeOdzI3OsQ-7WQ"/>
-    </steps>
-  </steps>
-  <steps xsi:type="buildcore:StepContainer" xmi:id="_GPiesIgeEeOdzI3OsQ-7WQ" name="build4Kepler" enabled="false">
-    <properties xmi:id="_lm-9QIa3EeShOqcuuWprug" key="eclipseCodeName" value="kepler" type="INLINED"/>
-    <properties xmi:id="_lm-9QYa3EeShOqcuuWprug" key="primary_eclipseUpdateSite" value="${eclipse.download.prefix}/releases/${eclipseCodeName}" type="INLINED"/>
-    <properties xmi:id="_lm-9Q4a3EeShOqcuuWprug" key="orbit.download.url" value="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
-    <properties xmi:id="_lm-9RIa3EeShOqcuuWprug" key="site_Sirius" value="${eclipse.download.prefix}/sirius/updates/stable/2.0.1-S20141106-093454/${eclipseCodeName}" type="INLINED"/>
-    <steps xsi:type="buildcore:ReuseStep" xmi:id="_GPiesogeEeOdzI3OsQ-7WQ" name="Build All">
-      <reusedStep xsi:type="buildcore:StepContainer" href="Common.egfbuild#__Rn-QIgFEeOdzI3OsQ-7WQ"/>
-    </steps>
-  </steps>
-  <steps xsi:type="buildcore:StepContainer" xmi:id="_6DMekIHcEeS4z710EcxeGw" name="build4Luna" enabled="false">
-    <properties xmi:id="_6DMekYHcEeS4z710EcxeGw" key="eclipseCodeName" value="luna" type="INLINED"/>
-    <properties xmi:id="_BNrIQIHdEeS4z710EcxeGw" key="primary_eclipseUpdateSite" value="${eclipse.download.prefix}" type="INLINED"/>
-    <properties xmi:id="_BNrIQYHdEeS4z710EcxeGw" key="secondary_eclipseUpdateSite" value="${eclipse.download.prefix}/releases/${eclipseCodeName}" type="INLINED"/>
-    <properties xmi:id="_BNrIQoHdEeS4z710EcxeGw" key="orbit.download.url" value="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
-    <properties xmi:id="_BNrIQ4HdEeS4z710EcxeGw" key="site_Sirius" value="${eclipse.download.prefix}/sirius/updates/stable/3.1.0-S20150612-070236/${eclipseCodeName}" type="INLINED"/>
-    <steps xsi:type="buildcore:ReuseStep" xmi:id="_6DMekoHcEeS4z710EcxeGw" name="Build All">
-      <reusedStep xsi:type="buildcore:StepContainer" href="Common.egfbuild#__Rn-QIgFEeOdzI3OsQ-7WQ"/>
-    </steps>
-  </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_shWXEJyfEeSdafV5Hx9whg" name="build4Mars">
     <properties xmi:id="_shWXEZyfEeSdafV5Hx9whg" key="eclipseCodeName" value="mars" type="INLINED"/>
     <properties xmi:id="_shWXEpyfEeSdafV5Hx9whg" key="primary_eclipseUpdateSite" value="${eclipse.download.prefix}/releases/${eclipseCodeName}" type="INLINED"/>

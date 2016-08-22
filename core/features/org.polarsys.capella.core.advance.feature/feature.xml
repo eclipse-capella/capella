@@ -88,9 +88,25 @@
    <includes
          id="org.polarsys.capella.core.migration.feature"
          version="0.0.0"/>
+	
+	<includes
+         id="org.polarsys.capella.core.compare.feature"
+         version="0.0.0"/>
 
-   <requires>
-      <import feature="org.polarsys.capella.shared.feature"/>
-   </requires>
+   <includes
+      id="org.polarsys.capella.shared.feature"
+      version="0.0.0"/>
+      
+   <includes
+      id="org.polarsys.capella.patterns.feature"
+      version="0.0.0"/>
+      
+   <includes
+      id="org.polarsys.capella.detachment.feature"
+      version="0.0.0"/>
+      
+   <includes
+      id="org.polarsys.capella.doc.feature"
+      version="0.0.0"/>
 
 </feature>

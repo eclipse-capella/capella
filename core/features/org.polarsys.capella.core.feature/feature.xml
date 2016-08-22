@@ -10,29 +10,29 @@
        Thales - initial API and implementation
 -->
 <feature
-      id="org.polarsys.capella.shared.feature"
+      id="org.polarsys.capella.core.feature"
       label="%featureName"
-      version="1.0.0.qualifier"
+      version="1.1.0.qualifier"
       provider-name="%providerName">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description>
+      %description
    </description>
 
    <copyright>
       %copyright
    </copyright>
 
-   <license url="%licenseURL">
+   <license>
       %license
    </license>
 
    <includes
-         id="org.polarsys.capella.common.advance.feature"
+         id="org.polarsys.capella.core.advance.feature"
          version="0.0.0"/>
-		 
+
    <includes
-         id="org.polarsys.capella.common.base.feature"
+         id="org.polarsys.capella.core.properties.description.feature"
          version="0.0.0"/>
 
 </feature>
