@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,8 +31,8 @@ public class TC_DF_11_Resolver extends AbstractCapellaMarkerResolution {
   /**
    * {@inheritDoc}
    */
-  public void run(IMarker marker_p) {
-    List<EObject> elements = getModelElements(marker_p);
+  public void run(IMarker marker) {
+    List<EObject> elements = getModelElements(marker);
     if (!elements.isEmpty()) {
       Object src = elements.get(0);
       Object tgt = elements.get(1);
@@ -40,15 +40,15 @@ public class TC_DF_11_Resolver extends AbstractCapellaMarkerResolution {
         createRealizationLink((FunctionPort) src, (FunctionPort) tgt);
 
         try {
-          marker_p.delete();
-        } catch (CoreException exception_p) {
+          marker.delete();
+        } catch (CoreException exception) {
           // Do nothing
         }
       }
     }
   }
 
-  protected void createRealizationLink(final FunctionPort srcPort_p, final FunctionPort tgtPort_p) {
+  protected void createRealizationLink(final FunctionPort srcPort, final FunctionPort tgtPort) {
     AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
       @Override
       public String getName() {
@@ -56,12 +56,12 @@ public class TC_DF_11_Resolver extends AbstractCapellaMarkerResolution {
       }
       public void run() {
         PortRealization rlz = InformationFactory.eINSTANCE.createPortRealization();
-        rlz.setSourceElement(srcPort_p);
-        rlz.setTargetElement(tgtPort_p);
-        srcPort_p.getOwnedPortRealizations().add(rlz);
+        rlz.setSourceElement(srcPort);
+        rlz.setTargetElement(tgtPort);
+        srcPort.getOwnedPortRealizations().add(rlz);
       }
     };
     // execute the command
-    TransactionHelper.getExecutionManager(srcPort_p).execute(cmd);
+    TransactionHelper.getExecutionManager(srcPort).execute(cmd);
   }
 }

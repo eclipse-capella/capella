@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,7 @@ import org.polarsys.capella.common.ui.services.AbstractUIActivator;
  */
 public class FaQuickFixActivator extends AbstractUIActivator {
   // The shared instance
-  private static FaQuickFixActivator __plugin;
+  private static FaQuickFixActivator plugin;
 
   /**
    * The constructor
@@ -34,7 +34,7 @@ public class FaQuickFixActivator extends AbstractUIActivator {
   @Override
   public void start(BundleContext context) throws Exception {
     super.start(context);
-    __plugin = this;
+    plugin = this;
   }
 
   /**
@@ -42,7 +42,7 @@ public class FaQuickFixActivator extends AbstractUIActivator {
    */
   @Override
   public void stop(BundleContext context) throws Exception {
-    __plugin = null;
+    plugin = null;
     super.stop(context);
   }
 
@@ -51,6 +51,6 @@ public class FaQuickFixActivator extends AbstractUIActivator {
    * @return the shared instance
    */
   public static FaQuickFixActivator getDefault() {
-    return __plugin;
+    return plugin;
   }
 }

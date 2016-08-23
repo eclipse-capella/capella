@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,9 +23,9 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractDeleteComman
 public class I_32_Resolver extends AbstractDeleteCommandResolver {
 
 	@Override
-	public Object getElementToDelete(Object obj_p) {
-		if (obj_p instanceof ComponentExchangeEnd){
-			ComponentExchangeEnd compExed = (ComponentExchangeEnd)obj_p;
+	public Object getElementToDelete(Object obj) {
+		if (obj instanceof ComponentExchangeEnd){
+			ComponentExchangeEnd compExed = (ComponentExchangeEnd)obj;
 			final ComponentExchange compEx = (ComponentExchange)compExed.eContainer();
 			if(compEx.getSource()==compExed){
 				TransactionalEditingDomain domain = TransactionHelper.getExecutionManager(compExed).getEditingDomain();
@@ -43,10 +43,10 @@ public class I_32_Resolver extends AbstractDeleteCommandResolver {
 				   }
 				});			
 			}	
-			return obj_p;
+			return obj;
 		}
-		if (obj_p instanceof PhysicalLinkEnd){
-			final PhysicalLinkEnd phyLE = (PhysicalLinkEnd)obj_p;
+		if (obj instanceof PhysicalLinkEnd){
+			final PhysicalLinkEnd phyLE = (PhysicalLinkEnd)obj;
 			final PhysicalLink phyLi = (PhysicalLink)phyLE.eContainer();
 			if(phyLi.getLinkEnds().contains(phyLE)){
 				TransactionalEditingDomain domain = TransactionHelper.getExecutionManager(phyLE).getEditingDomain();
@@ -57,7 +57,7 @@ public class I_32_Resolver extends AbstractDeleteCommandResolver {
 				   }
 				});							
 			}
-			return obj_p;
+			return obj;
 		}
 		return null;
 	}

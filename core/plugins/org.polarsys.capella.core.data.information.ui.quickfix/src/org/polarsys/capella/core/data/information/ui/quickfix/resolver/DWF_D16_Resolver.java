@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,9 +56,9 @@ public class DWF_D16_Resolver extends AbstractCapellaMarkerResolution {
   /**
    * {@inheritDoc}
    */
-  public void run(IMarker marker_p) {
+  public void run(IMarker marker) {
 
-    DataPkg pkg = (DataPkg) getModelElements(marker_p).get(0);
+    DataPkg pkg = (DataPkg) getModelElements(marker).get(0);
 
     MDCHK_DWF_D16 validator = new MDCHK_DWF_D16();
     Couple<IDirectedGraph<EObject>, List<List<EObject>>> result = validator.findSCC(pkg);
@@ -84,14 +84,14 @@ public class DWF_D16_Resolver extends AbstractCapellaMarkerResolution {
        */
       @SuppressWarnings("synthetic-access")
       @Override
-      public void fillMenuManager(IMenuManager contextMenuManager_p, final ISelection selection_p) {
+      public void fillMenuManager(IMenuManager contextMenuManager, final ISelection selection) {
         final LocateInCapellaExplorerAction selectInExplorerAction = new LocateInCapellaExplorerAction() {
           /**
            * {@inheritDoc}
            */
           @Override
           protected ISelection getSelection() {
-            return selection_p;
+            return selection;
           }
         };
 
@@ -110,12 +110,12 @@ public class DWF_D16_Resolver extends AbstractCapellaMarkerResolution {
         selectInExplorerAction.shouldIgnoreWorkbenchPartSite(true);
         action.setText(Messages.ImpactAnalysisAction_ShowInCapellaExplorer_Title);
         action.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
-        selectInExplorerAction.selectionChanged(action, selection_p);
+        selectInExplorerAction.selectionChanged(action, selection);
         if (action.isEnabled()) {
-          contextMenuManager_p.add(action);
+          contextMenuManager.add(action);
         }
 
-        final EObject eObject = (EObject) ((TreeSelection) selection_p).iterator().next();
+        final EObject eObject = (EObject) ((TreeSelection) selection).iterator().next();
 
         final LocateInCapellaExplorerAction selectInSemanticBrowserAction = new LocateInCapellaExplorerAction() {
           /**
@@ -123,7 +123,7 @@ public class DWF_D16_Resolver extends AbstractCapellaMarkerResolution {
            */
           @Override
           protected ISelection getSelection() {
-            return selection_p;
+            return selection;
           }
         };
 
@@ -158,9 +158,9 @@ public class DWF_D16_Resolver extends AbstractCapellaMarkerResolution {
         selectInSemanticBrowserAction.shouldIgnoreWorkbenchPartSite(true);
         action3.setText(InformationQuickFixMessages.selectInSemanticBrowser);
         action3.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
-        selectInSemanticBrowserAction.selectionChanged(action3, selection_p);
+        selectInSemanticBrowserAction.selectionChanged(action3, selection);
         if (action3.isEnabled()) {
-          contextMenuManager_p.add(action3);
+          contextMenuManager.add(action3);
         }
 
         //
@@ -183,14 +183,14 @@ public class DWF_D16_Resolver extends AbstractCapellaMarkerResolution {
                  */
                 @Override
                 protected ISelection getSelection() {
-                  return selection_p;
+                  return selection;
                 }
 
                 /**
                  * {@inheritDoc}
                  */
                 @Override
-                public void run(IAction action_p) {
+                public void run(IAction action) {
                   Object elementToSelectInCapellaExplorer = referenced;
                   // Keep the double check here, as getSemanticElement can return an element not from the model.
                   if ((elementToSelectInCapellaExplorer instanceof ModelElement)) {
@@ -217,9 +217,9 @@ public class DWF_D16_Resolver extends AbstractCapellaMarkerResolution {
               action2.setText(NLS.bind(InformationQuickFixMessages.goToReferencedElement, new Object[] { ipa.getText(referenced) }));
               action2.setImageDescriptor(InformationQuickFixActivator.getDefault().getImageDescriptor("goto_16.png") //$NON-NLS-1$
                   );
-              selectInExplorerAction.selectionChanged(action2, selection_p);
+              selectInExplorerAction.selectionChanged(action2, selection);
               if (action2.isEnabled()) {
-                contextMenuManager_p.add(action2);
+                contextMenuManager.add(action2);
               }
             }
           }
@@ -242,9 +242,9 @@ public class DWF_D16_Resolver extends AbstractCapellaMarkerResolution {
    * Get a generic item provider.
    * @return an {@link ItemProviderAdapter} if any.
    */
-  private ItemProviderAdapter getItemProvider(EObject object_p) {
-    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(object_p);
-    IItemLabelProvider provider = (IItemLabelProvider) editingDomain.getAdapterFactory().adapt(object_p, IItemLabelProvider.class);
+  private ItemProviderAdapter getItemProvider(EObject object) {
+    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(object);
+    IItemLabelProvider provider = (IItemLabelProvider) editingDomain.getAdapterFactory().adapt(object, IItemLabelProvider.class);
     return (ItemProviderAdapter) provider;
   }
 

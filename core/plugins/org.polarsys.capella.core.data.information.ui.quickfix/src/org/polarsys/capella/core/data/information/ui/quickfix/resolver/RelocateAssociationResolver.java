@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,8 +24,8 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarke
 public class RelocateAssociationResolver extends AbstractCapellaMarkerResolution {
 
   @Override
-  public void run(IMarker marker_p) {
-    List<EObject> modelElements = getModelElements(marker_p);
+  public void run(IMarker marker) {
+    List<EObject> modelElements = getModelElements(marker);
     if (modelElements.isEmpty()) {
       return;
     }
@@ -38,9 +38,9 @@ public class RelocateAssociationResolver extends AbstractCapellaMarkerResolution
         }
       });
       try {
-        marker_p.delete();
-      } catch (CoreException exception_p) {
-        // d nothing
+        marker.delete();
+      } catch (CoreException exception) {
+        // do nothing
       }
     }
   }

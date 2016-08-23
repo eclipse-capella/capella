@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,8 +42,8 @@ public class NonLeafFunctionComponentAllocationRelsover extends
 	/**
 	 * {@inheritDoc}
 	 */
-	public void run(IMarker marker_p) {
-		final Object obj = getModelElements(marker_p).get(0);
+	public void run(IMarker marker) {
+		final Object obj = getModelElements(marker).get(0);
 		final List<AbstractTrace> traceToRemove = new ArrayList<AbstractTrace>(0);
 
 		if (obj instanceof AbstractFunction) {
@@ -78,8 +78,8 @@ public class NonLeafFunctionComponentAllocationRelsover extends
 		// remove the marker if the element is deleted
 		if (flag[0] == true) {
 			try {
-				marker_p.delete();
-			} catch (CoreException exception_p) {
+				marker.delete();
+			} catch (CoreException exception) {
 				// no nothing
 			}
 		}
@@ -136,8 +136,8 @@ public class NonLeafFunctionComponentAllocationRelsover extends
 	        if (marker.exists()){
 	          try {
 	            marker.delete();
-	          } catch (CoreException exception_p) {
-	            StatusManager.getManager().handle(new Status(IStatus.ERROR, PluginActivator.getDefault().getPluginId(), exception_p.getMessage(), exception_p));
+	          } catch (CoreException exception) {
+	            StatusManager.getManager().handle(new Status(IStatus.ERROR, PluginActivator.getDefault().getPluginId(), exception.getMessage(), exception));
 	          }
 	        }
 	      }

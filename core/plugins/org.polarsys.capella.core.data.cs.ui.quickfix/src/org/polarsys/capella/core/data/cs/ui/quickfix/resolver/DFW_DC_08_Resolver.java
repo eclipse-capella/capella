@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,9 +31,9 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarke
  */
 public class DFW_DC_08_Resolver extends AbstractCapellaMarkerResolution {
 
-  public void run(IMarker marker_p) {
+  public void run(IMarker marker) {
 
-    Iterator<EObject> it = getModelElements(marker_p).iterator();
+    Iterator<EObject> it = getModelElements(marker).iterator();
     if (it.hasNext()) {
       EObject first = it.next();
       if (first instanceof TypedElement) {
@@ -42,8 +42,8 @@ public class DFW_DC_08_Resolver extends AbstractCapellaMarkerResolution {
     }
   }
 
-  private void openWizard(TypedElement typedElement_p) {
-    CapellaUIPropertiesPlugin.getDefault().openWizard(typedElement_p);
+  private void openWizard(TypedElement typedElement) {
+    CapellaUIPropertiesPlugin.getDefault().openWizard(typedElement);
   }
 
   @SuppressWarnings("unused")

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,8 +43,8 @@ public class I_34_Resolver extends AbstractCapellaMarkerResolution {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void run(IMarker marker_p) {
-		List<EObject> tgts = getModelElements(marker_p);
+	public void run(IMarker marker) {
+		List<EObject> tgts = getModelElements(marker);
 		SystemEngineering se = (SystemEngineering) tgts.get(0);
 		List<InterModelInconsistency> inconsistencies = new InterModelInconsistencyDetector().getInterModelInconsistencies(se);
 
@@ -58,14 +58,14 @@ public class I_34_Resolver extends AbstractCapellaMarkerResolution {
 				 */
 				@SuppressWarnings("synthetic-access")
 				@Override
-				public void fillMenuManager(IMenuManager contextMenuManager_p, final ISelection selection_p) {
+				public void fillMenuManager(IMenuManager contextMenuManager, final ISelection selection) {
 
-					final EObject selectedEObject = (EObject) ((TreeSelection) selection_p).iterator().next();
+					final EObject selectedEObject = (EObject) ((TreeSelection) selection).iterator().next();
 
 					final LocateInCapellaExplorerAction selectInExplorerDelegate = new LocateInCapellaExplorerAction() {
 						@Override
 						protected ISelection getSelection() {
-							return selection_p;
+							return selection;
 						}
 					};
 					// Ignore workbench part site, since in a dialog, site has no meaning.
@@ -80,15 +80,15 @@ public class I_34_Resolver extends AbstractCapellaMarkerResolution {
 					selectInExplorerAction.setText(Messages.ImpactAnalysisAction_ShowInCapellaExplorer_Title);
 					selectInExplorerAction.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
 
-					selectInExplorerDelegate.selectionChanged(selectInExplorerAction, selection_p);
+					selectInExplorerDelegate.selectionChanged(selectInExplorerAction, selection);
 					if (selectInExplorerAction.isEnabled()) {
-						contextMenuManager_p.add(selectInExplorerAction);
+						contextMenuManager.add(selectInExplorerAction);
 					}
 
 					final LocateInCapellaExplorerAction selectInSemanticBrowserDelegate = new LocateInCapellaExplorerAction() {
 						@Override
 						protected ISelection getSelection() {
-							return selection_p;
+							return selection;
 						}
 					};
 					// Ignore workbench part site, since in a dialog, site has no meaning.
@@ -120,9 +120,9 @@ public class I_34_Resolver extends AbstractCapellaMarkerResolution {
 
 					selectInSemanticBrowserAction.setText(CoreQuickFixMessages.selectInSemanticBrowser);
 					selectInSemanticBrowserAction.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
-					selectInSemanticBrowserDelegate.selectionChanged(selectInSemanticBrowserAction, selection_p);
+					selectInSemanticBrowserDelegate.selectionChanged(selectInSemanticBrowserAction, selection);
 					if (selectInSemanticBrowserAction.isEnabled()) {
-						contextMenuManager_p.add(selectInSemanticBrowserAction);
+						contextMenuManager.add(selectInSemanticBrowserAction);
 					}
 				}
 			});

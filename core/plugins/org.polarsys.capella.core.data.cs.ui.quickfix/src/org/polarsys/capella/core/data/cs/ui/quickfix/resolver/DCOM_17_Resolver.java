@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,11 +62,11 @@ public class DCOM_17_Resolver  extends AbstractCapellaMarkerResolution {
 	  } 
 	  
 	  	/**
-		 * @param components_p
+		 * @param components
 		 */
-		private Set<AbstractExchangeItem> getAllExchangesInterfaceItems(Set<Component> components_p) {
+		private Set<AbstractExchangeItem> getAllExchangesInterfaceItems(Set<Component> components) {
 			Set<AbstractExchangeItem> interfacesExchangeItems = new HashSet<AbstractExchangeItem>();
-			for (Iterator<Component> iterator1 = components_p.iterator(); iterator1.hasNext();) {
+			for (Iterator<Component> iterator1 = components.iterator(); iterator1.hasNext();) {
 				Component containerComponent = iterator1.next();
 				List<Interface> interfaces = (List<Interface>) ComponentExt.getRelatedInterfaces(containerComponent);
 				for (Iterator<Interface> iterator = interfaces.iterator(); iterator.hasNext();) {

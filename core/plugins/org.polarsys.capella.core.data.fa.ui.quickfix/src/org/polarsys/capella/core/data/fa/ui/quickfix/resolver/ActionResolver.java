@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,9 +35,9 @@ public abstract class ActionResolver extends AbstractCapellaMarkerResolution {
 
 	protected abstract AbstractTigAction createAction();
 
-	public void run(IMarker marker_p) {
+	public void run(IMarker marker) {
 
-		List<EObject> tgts = getModelElements(marker_p);
+		List<EObject> tgts = getModelElements(marker);
 		final AtomicReference<Boolean> mustDeleteMarker = new AtomicReference<Boolean>(
 				Boolean.FALSE);
 		AbstractTigAction action = createAction();
@@ -52,7 +52,7 @@ public abstract class ActionResolver extends AbstractCapellaMarkerResolution {
 		// delete marker
 		if (mustDeleteMarker.get().booleanValue()) {
 			try {
-				marker_p.delete();
+				marker.delete();
 			} catch (CoreException e) {
 				StatusManager.getManager().handle(
 						new Status(IStatus.ERROR, PluginActivator.getDefault()

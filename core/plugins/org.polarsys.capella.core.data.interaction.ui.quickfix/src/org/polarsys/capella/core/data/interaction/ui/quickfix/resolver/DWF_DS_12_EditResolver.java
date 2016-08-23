@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,8 +25,8 @@ public class DWF_DS_12_EditResolver extends CapellaElementEditResolver {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean isEditableInstance(EObject value_p) {
-		if (value_p instanceof SequenceMessage) {
+	public boolean isEditableInstance(EObject value) {
+		if (value instanceof SequenceMessage) {
 			return true;
 		}
 		return false;

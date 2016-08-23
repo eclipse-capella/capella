@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,9 +23,9 @@ public class SetComponentPortOrientation extends AbstractReadWriteCommand {
   private ComponentPort port;
   private OrientationPortKind kind;
   
-  public SetComponentPortOrientation(ComponentPort port_p, OrientationPortKind kind_p){
-    port = port_p;
-    kind = kind_p;
+  public SetComponentPortOrientation(ComponentPort port, OrientationPortKind kind){
+    this.port = port;
+    this.kind = kind;
   }
   
   @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,12 +23,12 @@ public class TC_DF_08_Resolver extends AbstractDeleteCommandResolver {
    * {@inheritDoc}
    */
   @Override
-  public Object getElementToDelete(Object obj_p) {
-    if (obj_p instanceof ComponentExchange) {
-      ComponentExchange exchange = (ComponentExchange) obj_p;
+  public Object getElementToDelete(Object obj) {
+    if (obj instanceof ComponentExchange) {
+      ComponentExchange exchange = (ComponentExchange) obj;
       ComponentExchangeKind kind = exchange.getKind();
       if ((null != kind) && kind.equals(ComponentExchangeKind.DELEGATION)) {
-        return obj_p;
+        return obj;
       }
     }
     return null;

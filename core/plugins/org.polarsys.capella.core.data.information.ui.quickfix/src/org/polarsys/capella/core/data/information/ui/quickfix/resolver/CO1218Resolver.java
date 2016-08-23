@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,7 +36,7 @@ import org.polarsys.capella.core.model.helpers.DataPkgExt;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
 /**
- * Consider 'Class_A' with 'property_p' which is typed by non-Primitive type
+ * Consider 'Class_A' with 'property' which is typed by non-Primitive type
  * 'Class_B' The Quick fix action on the warning will create an association
  * between Class_A and Class_B
  * 
@@ -44,20 +44,19 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarke
  */
 public class CO1218Resolver extends AbstractCapellaMarkerResolution {
 
-	protected Logger _logger = ReportManagerRegistry.getInstance().subscribe(
-			IReportManagerDefaultComponents.VALIDATION);
+	protected Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.VALIDATION);
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void run(IMarker marker_p) {
-		List<EObject> modelElements = getModelElements(marker_p);
+	public void run(IMarker marker) {
+		List<EObject> modelElements = getModelElements(marker);
 		if (modelElements.isEmpty())
 			return;
 		if (!(modelElements.get(0) instanceof Property))
 			return;
 		// Property
-		final Property property = (Property) getModelElements(marker_p).get(0);
+		final Property property = (Property) getModelElements(marker).get(0);
 
 		if (null == property.getAssociation()) {
 			final String errorMessage = InformationQuickFixMessages.cO1218_exception_message;
@@ -106,10 +105,10 @@ public class CO1218Resolver extends AbstractCapellaMarkerResolution {
 									// add navigation members to an association
 									association.getNavigableMembers().add(
 											property);
-								} catch (Exception exception_p) {
+								} catch (Exception exception) {
 									// log err message
 									commandRolledBack();
-									_logger.error(new EmbeddedMessage(
+									logger.error(new EmbeddedMessage(
 											errorMessage,
 											IReportManagerDefaultComponents.VALIDATION));
 								}
@@ -141,9 +140,9 @@ public class CO1218Resolver extends AbstractCapellaMarkerResolution {
 	@Override
 	public void run(IMarker[] markers, IProgressMonitor monitor) {
 
-		for (IMarker marker_p : markers) {
+		for (IMarker marker : markers) {
 
-			List<EObject> modelElements = getModelElements(marker_p);
+			List<EObject> modelElements = getModelElements(marker);
 			if (modelElements.isEmpty())
 				return;
 
@@ -201,10 +200,10 @@ public class CO1218Resolver extends AbstractCapellaMarkerResolution {
 										// association
 										association.getNavigableMembers().add(
 												property);
-									} catch (Exception exception_p) {
+									} catch (Exception exception) {
 										// log err message
 										commandRolledBack();
-										_logger.error(new EmbeddedMessage(
+										logger.error(new EmbeddedMessage(
 												errorMessage,
 												IReportManagerDefaultComponents.VALIDATION));
 									}

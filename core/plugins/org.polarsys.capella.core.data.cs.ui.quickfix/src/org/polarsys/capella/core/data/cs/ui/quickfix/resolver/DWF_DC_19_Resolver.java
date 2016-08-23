@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,8 +35,8 @@ public class DWF_DC_19_Resolver extends AbstractCapellaMarkerResolution {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void run(IMarker marker_p) {
-		final List<EObject> modelElements = getModelElements(marker_p);
+	public void run(IMarker marker) {
+		final List<EObject> modelElements = getModelElements(marker);
 
 		if (!modelElements.isEmpty()) {
 			final AtomicReference<Boolean> mustDeleteMarker = new AtomicReference<Boolean>(
@@ -63,14 +63,14 @@ public class DWF_DC_19_Resolver extends AbstractCapellaMarkerResolution {
 			mustDeleteMarker.set(Boolean.TRUE);
 			// Remove the marker if the element is deleted.
 			if (mustDeleteMarker.get().booleanValue()) {
-				if (marker_p.exists()) {
+				if (marker.exists()) {
 					try {
-						marker_p.delete();
-					} catch (CoreException exception_p) {
+						marker.delete();
+					} catch (CoreException exception) {
 						StatusManager.getManager().handle(
 								new Status(IStatus.ERROR, PluginActivator
 										.getDefault().getPluginId(),
-										exception_p.getMessage(), exception_p));
+										exception.getMessage(), exception));
 					}
 				}
 			}

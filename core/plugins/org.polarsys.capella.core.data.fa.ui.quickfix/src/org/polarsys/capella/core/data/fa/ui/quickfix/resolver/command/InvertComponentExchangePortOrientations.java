@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,8 +24,8 @@ public class InvertComponentExchangePortOrientations extends AbstractReadWriteCo
 
   private ComponentExchange exchange;
 
-  public InvertComponentExchangePortOrientations(ComponentExchange exchange_p) {
-    exchange = exchange_p;
+  public InvertComponentExchangePortOrientations(ComponentExchange exchange) {
+    this.exchange = exchange;
   }
 
   public void run() {

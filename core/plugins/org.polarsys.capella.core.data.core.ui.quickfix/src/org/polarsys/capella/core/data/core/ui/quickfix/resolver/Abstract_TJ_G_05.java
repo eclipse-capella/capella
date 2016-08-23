@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,8 +39,8 @@ public abstract class Abstract_TJ_G_05 extends AbstractCapellaMarkerResolution {
   /**
    * {@inheritDoc}
    */
-  public void run(IMarker marker_p) {
-    final List<EObject> modelElements = getModelElements(marker_p);
+  public void run(IMarker marker) {
+    final List<EObject> modelElements = getModelElements(marker);
     final boolean[] flag = { false };
     if (!modelElements.isEmpty()) {
       final EObject obj = modelElements.get(0);
@@ -88,9 +88,9 @@ public abstract class Abstract_TJ_G_05 extends AbstractCapellaMarkerResolution {
       TransactionHelper.getExecutionManager(obj).execute(abstrctCommand);
       if (flag[0]) {
         try {
-          marker_p.delete();
-        } catch (CoreException exception_p) {
-          _logger.error("Exception while deleting marker : " + exception_p.toString()); //$NON-NLS-1$
+          marker.delete();
+        } catch (CoreException exception) {
+          _logger.error("Exception while deleting marker : " + exception.toString()); //$NON-NLS-1$
         }
       }
     }

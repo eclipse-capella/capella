@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,8 +34,8 @@ public class DWF_DS_12_RenameResolver extends AbstractCapellaMarkerResolution {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void run(IMarker marker_p) {
-		List<EObject> modelElements = getModelElements(marker_p);
+	public void run(IMarker marker) {
+		List<EObject> modelElements = getModelElements(marker);
 		EObject modelElement = modelElements.get(0);
 		// Precondition.
 		if (!(modelElement instanceof SequenceMessage)) {
@@ -71,8 +71,8 @@ public class DWF_DS_12_RenameResolver extends AbstractCapellaMarkerResolution {
 		TransactionHelper.getExecutionManager(modelElement).execute(cmd);
 		// Remove the associated marker.
 		try {
-			marker_p.delete();
-		} catch (CoreException exception_p) {
+			marker.delete();
+		} catch (CoreException exception) {
 			// Do nothing
 		}
 

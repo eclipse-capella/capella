@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,8 +27,8 @@ public class DWF_DF_09_Resolver extends AbstractCapellaMarkerResolution {
   /**
    * {@inheritDoc}
    */
-  public void run(IMarker marker_p) {
-    final EObject obj = getModelElements(marker_p).get(0);
+  public void run(IMarker marker) {
+    final EObject obj = getModelElements(marker).get(0);
 
     if (null != obj) {
       AbstractReadWriteCommand abstrctCommand = new AbstractReadWriteCommand() {
@@ -52,8 +52,8 @@ public class DWF_DF_09_Resolver extends AbstractCapellaMarkerResolution {
       // execute the command
       TransactionHelper.getExecutionManager(obj).execute(abstrctCommand);
       try {
-        marker_p.delete();
-      } catch (CoreException exception_p) {
+        marker.delete();
+      } catch (CoreException exception) {
         // Do nothing
       }
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,8 +17,8 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 public class EditComponent extends AbstractReadWriteCommand {
   private Component element;
 
-  public EditComponent(Component element_p) {
-    element = element_p;
+  public EditComponent(Component element) {
+    this.element = element;
   }
 
   @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,8 +32,8 @@ public class TC_DF_14_Resolver extends AbstractCapellaMarkerResolution {
    * {@inheritDoc}
    */
   @Override
-  public void run(IMarker marker_p) {
-    List<EObject> elements = getModelElements(marker_p);
+  public void run(IMarker marker) {
+    List<EObject> elements = getModelElements(marker);
     if (!elements.isEmpty()) {
       Object src = elements.get(0);
       Object tgt = elements.get(1);
@@ -41,15 +41,15 @@ public class TC_DF_14_Resolver extends AbstractCapellaMarkerResolution {
         createRealizationLink((AbstractFunction) src, (AbstractFunction) tgt);
 
         try {
-          marker_p.delete();
-        } catch (CoreException exception_p) {
+          marker.delete();
+        } catch (CoreException exception) {
           // Do nothing
         }
       }
     }
   }
 
-  protected void createRealizationLink(final AbstractFunction srcFct_p, final AbstractFunction tgtFct_p) {
+  protected void createRealizationLink(final AbstractFunction srcFct, final AbstractFunction tgtFct) {
     AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
       @Override
       public String getName() {
@@ -57,12 +57,12 @@ public class TC_DF_14_Resolver extends AbstractCapellaMarkerResolution {
       }
       public void run() {
         FunctionRealization rlz = FaFactory.eINSTANCE.createFunctionRealization();
-        rlz.setSourceElement(srcFct_p);
-        rlz.setTargetElement(tgtFct_p);
-        srcFct_p.getOwnedFunctionRealizations().add(rlz);
+        rlz.setSourceElement(srcFct);
+        rlz.setTargetElement(tgtFct);
+        srcFct.getOwnedFunctionRealizations().add(rlz);
       }
     };
     // execute the command
-    TransactionHelper.getExecutionManager(srcFct_p).execute(cmd);
+    TransactionHelper.getExecutionManager(srcFct).execute(cmd);
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,8 +34,8 @@ public class EditContainterPCOfPhysicalPort extends AbstractCapellaMarkerResolut
   /**
    * {@inheritDoc}
    */
-  public void run(IMarker marker_p) {
-    List<EObject> modelElements = getModelElements(marker_p);
+  public void run(IMarker marker) {
+    List<EObject> modelElements = getModelElements(marker);
     if (!modelElements.isEmpty()) {
       final Object obj = modelElements.get(0);
       if ((null != obj) && (obj instanceof PhysicalPort)) {
@@ -46,8 +46,8 @@ public class EditContainterPCOfPhysicalPort extends AbstractCapellaMarkerResolut
           boolean editElement = CapellaUIPropertiesPlugin.getDefault().openWizard(eContainer);
           if (editElement) {
             try {
-              marker_p.delete();
-            } catch (CoreException exception_p) {
+              marker.delete();
+            } catch (CoreException exception) {
               // no nothing
             }
           }

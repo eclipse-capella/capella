@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,9 +70,9 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
   /**
    * {@inheritDoc}
    */
-  public void run(IMarker marker_p) {
+  public void run(IMarker marker) {
 
-    List<EObject> tgts = getModelElements(marker_p); // The root system Engineering as first element
+    List<EObject> tgts = getModelElements(marker); // The root system Engineering as first element
 
     SystemEngineering se = (SystemEngineering) tgts.get(0);
     Couple<IDirectedGraph<EObject>, Collection<List<EObject>>> result = computeCycles(se);
@@ -99,14 +99,14 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
        */
       @SuppressWarnings("synthetic-access")
       @Override
-      public void fillMenuManager(IMenuManager contextMenuManager_p, final ISelection selection_p) {
+      public void fillMenuManager(IMenuManager contextMenuManager, final ISelection selection) {
 
-        final EObject selectedEObject = (EObject) ((TreeSelection) selection_p).iterator().next();
+        final EObject selectedEObject = (EObject) ((TreeSelection) selection).iterator().next();
 
         final LocateInCapellaExplorerAction selectInExplorerDelegate = new LocateInCapellaExplorerAction() {
           @Override
           protected ISelection getSelection() {
-            return selection_p;
+            return selection;
           }
         };
         // Ignore workbench part site, since in a dialog, site has no meaning.
@@ -121,15 +121,15 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
         selectInExplorerAction.setText(Messages.ImpactAnalysisAction_ShowInCapellaExplorer_Title);
         selectInExplorerAction.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
 
-        selectInExplorerDelegate.selectionChanged(selectInExplorerAction, selection_p);
+        selectInExplorerDelegate.selectionChanged(selectInExplorerAction, selection);
         if (selectInExplorerAction.isEnabled()) {
-          contextMenuManager_p.add(selectInExplorerAction);
+          contextMenuManager.add(selectInExplorerAction);
         }
 
         final LocateInCapellaExplorerAction selectInSemanticBrowserDelegate = new LocateInCapellaExplorerAction() {
           @Override
           protected ISelection getSelection() {
-            return selection_p;
+            return selection;
           }
         };
         // Ignore workbench part site, since in a dialog, site has no meaning.
@@ -161,9 +161,9 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
 
         selectInSemanticBrowserAction.setText(CoreQuickFixMessages.selectInSemanticBrowser);
         selectInSemanticBrowserAction.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
-        selectInSemanticBrowserDelegate.selectionChanged(selectInSemanticBrowserAction, selection_p);
+        selectInSemanticBrowserDelegate.selectionChanged(selectInSemanticBrowserAction, selection);
         if (selectInSemanticBrowserAction.isEnabled()) {
-          contextMenuManager_p.add(selectInSemanticBrowserAction);
+          contextMenuManager.add(selectInSemanticBrowserAction);
         }
 
         //
@@ -179,11 +179,11 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
             final LocateInCapellaExplorerAction delegate = new LocateInCapellaExplorerAction() {
               @Override
               protected ISelection getSelection() {
-                return selection_p;
+                return selection;
               }
 
               @Override
-              public void run(IAction action_p) {
+              public void run(IAction action) {
                 Object elementToSelectInCapellaExplorer = referenced;
                 // Keep the double check here, as getSemanticElement can return error.
                 if ((elementToSelectInCapellaExplorer instanceof ModelElement)) {
@@ -205,9 +205,9 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
             openReferencedElementAction.setText(NLS.bind(CoreQuickFixMessages.goToReferencedElement, new Object[] { ipa.getText(referenced) }));
             openReferencedElementAction.setImageDescriptor(CoreQuickFixActivator.getDefault().getImageDescriptor("goto_16.png") //$NON-NLS-1$
                 );
-            selectInExplorerDelegate.selectionChanged(openReferencedElementAction, selection_p);
+            selectInExplorerDelegate.selectionChanged(openReferencedElementAction, selection);
             if (openReferencedElementAction.isEnabled()) {
-              contextMenuManager_p.add(openReferencedElementAction);
+              contextMenuManager.add(openReferencedElementAction);
             }
           }
         }
@@ -225,34 +225,34 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
 	}
   /**
    * Helper to support the notion that each package depends on all its subpackages.
-   * @param current_p
+   * @param current
    */
-  private void addSubpackageDependencies(BasicDirectedGraph<? super EObject> graph, AbstractDependenciesPkg current_p) {
+  private void addSubpackageDependencies(BasicDirectedGraph<? super EObject> graph, AbstractDependenciesPkg current) {
     List<? extends AbstractDependenciesPkg> subpackages = null;
-    if (current_p instanceof DataPkg) {
-      subpackages = ((DataPkg) current_p).getOwnedDataPkgs();
-    } else if (current_p instanceof InterfacePkg) {
-      subpackages = ((InterfacePkg) current_p).getOwnedInterfacePkgs();
+    if (current instanceof DataPkg) {
+      subpackages = ((DataPkg) current).getOwnedDataPkgs();
+    } else if (current instanceof InterfacePkg) {
+      subpackages = ((InterfacePkg) current).getOwnedInterfacePkgs();
     }
     if (subpackages != null) {
       for (AbstractDependenciesPkg sub : subpackages) {
-        graph.addEdge(current_p, sub);
+        graph.addEdge(current, sub);
         addSubpackageDependencies(graph, sub);
       }
     }
   }
 
   /** for internal use */
-  private AbstractDependenciesPkg getPkg(EObject eobject_p) {
+  private AbstractDependenciesPkg getPkg(EObject eobject) {
 
-    if (eobject_p instanceof AbstractDependenciesPkg) {
-      return (AbstractDependenciesPkg) eobject_p;
+    if (eobject instanceof AbstractDependenciesPkg) {
+      return (AbstractDependenciesPkg) eobject;
     }
 
     AbstractDependenciesPkg adp = null;
 
-    if (null != eobject_p) {
-      adp = (AbstractDependenciesPkg) EcoreUtil2.getFirstContainer(eobject_p, CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
+    if (null != eobject) {
+      adp = (AbstractDependenciesPkg) EcoreUtil2.getFirstContainer(eobject, CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
     }
 
     return adp;
@@ -262,19 +262,19 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
    * Get a generic item provider.
    * @return an {@link ItemProviderAdapter} if any.
    */
-  private ItemProviderAdapter getItemProvider(EObject object_p) {
-    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(object_p);
-    IItemLabelProvider provider = (IItemLabelProvider) editingDomain.getAdapterFactory().adapt(object_p, IItemLabelProvider.class);
+  private ItemProviderAdapter getItemProvider(EObject object) {
+    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(object);
+    IItemLabelProvider provider = (IItemLabelProvider) editingDomain.getAdapterFactory().adapt(object, IItemLabelProvider.class);
     return (ItemProviderAdapter) provider;
   }
 
   /**
-   * @param cycle_p
+   * @param cycle
    */
   @SuppressWarnings("unused")
-  private void debugPrintCycle(List<EObject> cycle_p) {
+  private void debugPrintCycle(List<EObject> cycle) {
     StringBuilder builder = new StringBuilder();
-    for (EObject e : cycle_p) {
+    for (EObject e : cycle) {
       builder.append(((NamedElement) e).getName());
       builder.append(":" + getPkg(e).getName() + ", "); //$NON-NLS-1$ //$NON-NLS-2$
     }
