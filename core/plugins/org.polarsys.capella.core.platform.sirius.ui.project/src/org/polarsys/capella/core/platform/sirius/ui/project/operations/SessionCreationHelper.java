@@ -85,8 +85,8 @@ public class SessionCreationHelper {
     // Builds the .aird filename.
     URI airdResourceURI = buildAirdFileName(eclipseProject, projectName);
     List<IFile> semanticFiles = new ArrayList<IFile>();
-    semanticFiles.add(semanticResource);
     semanticFiles.add(metadataResource);
+    semanticFiles.add(semanticResource);
     return createAirdSession(semanticFiles, airdResourceURI, monitor);
   }
 

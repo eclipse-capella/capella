@@ -138,19 +138,6 @@ public class CapellaSessionHelper {
     resourceSet.getLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.FALSE);
 
     try {
-      // Load the file in a temporary resource and catch loading errors.
-      Resource resource = resourceSet.getResource(uri, true);
-      // load root object to fill the resourceSet with semantic resources
-      resource.getContents().get(0);
-      // first check if used viewpoints are available with the expected versions
-      IStatus result = ViewpointManager.checkViewpointsCompliancy(resourceSet);
-      
-      if (!result.isOK())
-      {
-        reportError(result);
-        return result;
-      }
-
       boolean detectVersion = Activator.getDefault().getPreferenceStore().getBoolean(ICapellaPreferences.PREFERENCE_DETECTION_VERSION);
       if (detectVersion) {
         EcoreUtil.resolveAll(resourceSet);

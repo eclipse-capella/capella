@@ -67,4 +67,10 @@
             name="%capella.vp.category">
       </category>
     </extension>
+    <extension
+          point="org.polarsys.capella.common.ef.editingDomainListener">
+       <editingDomainListener
+             class="org.polarsys.capella.core.af.integration.listener.MetadataCheckListener">
+       </editingDomainListener>
+    </extension>
 </plugin>
