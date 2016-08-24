@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,8 +27,8 @@ import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 public abstract class Abstract_MDCHK_NoteNotEmpty extends AbstractValidationRule {
 
 	@Override
-	public IStatus validate(IValidationContext ctx_p) {
-		EObject eObj = ctx_p.getTarget();
+	public IStatus validate(IValidationContext ctx) {
+		EObject eObj = ctx.getTarget();
 		if (eObj instanceof CapellaElement && isImpactedByCurrentRule(eObj)) {
 			CapellaElement me = (CapellaElement) eObj;
 			String desc = getNoteContent(me);
@@ -38,22 +38,22 @@ public abstract class Abstract_MDCHK_NoteNotEmpty extends AbstractValidationRule
 			) {
 				if (me instanceof AbstractNamedElement) {
 					AbstractNamedElement ne = (AbstractNamedElement) me;
-					return createFailureStatus(ctx_p, new Object[] {me.eClass().getName(), ne.getName()});	
+					return createFailureStatus(ctx, new Object[] {me.eClass().getName(), ne.getName()});	
 				}
-				return createFailureStatus(ctx_p, new Object[] {me.eClass().getName(), ""}); //$NON-NLS-1$
+				return createFailureStatus(ctx, new Object[] {me.eClass().getName(), ""}); //$NON-NLS-1$
 			}
 		}
-		return ctx_p.createSuccessStatus();
+		return ctx.createSuccessStatus();
 	}
 
-	private boolean isImpactedByCurrentRule (EObject eObj_p) {
-		return (eObj_p instanceof FunctionalExchange
-		           || eObj_p instanceof ComponentExchange 
-		           || eObj_p instanceof AbstractFunction
-		           || eObj_p instanceof Component
-		           || eObj_p instanceof AbstractActor);
+	private boolean isImpactedByCurrentRule (EObject eObj) {
+		return (eObj instanceof FunctionalExchange
+		           || eObj instanceof ComponentExchange 
+		           || eObj instanceof AbstractFunction
+		           || eObj instanceof Component
+		           || eObj instanceof AbstractActor);
 	}
 	
-	protected abstract String getNoteContent (CapellaElement me_p);
+	protected abstract String getNoteContent (CapellaElement me);
 
 }

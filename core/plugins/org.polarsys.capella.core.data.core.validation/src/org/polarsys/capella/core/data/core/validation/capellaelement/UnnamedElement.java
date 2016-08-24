@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,10 +29,10 @@ import org.polarsys.capella.common.data.behavior.AbstractEvent;
 public class UnnamedElement extends AbstractValidationRule {
 
   @Override
-  public IStatus validate(IValidationContext ctx_p) 
+  public IStatus validate(IValidationContext ctx) 
   {
     // Get the Target
-    EObject eObj = ctx_p.getTarget();
+    EObject eObj = ctx.getTarget();
     // If the Target is a Named Element
     if(eObj instanceof NamedElement)
     {
@@ -54,11 +54,11 @@ public class UnnamedElement extends AbstractValidationRule {
             currentElementName.equalsIgnoreCase("null")  //$NON-NLS-1$
         ) {
           // Failure
-          return ctx_p.createFailureStatus(new Object[] { eObj.eClass().getName() });
+          return ctx.createFailureStatus(new Object[] { eObj.eClass().getName() });
         }
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
 }

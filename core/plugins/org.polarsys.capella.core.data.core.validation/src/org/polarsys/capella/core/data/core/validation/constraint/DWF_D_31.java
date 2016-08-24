@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,22 +37,22 @@ public class DWF_D_31 extends AbstractValidationRule {
   }
 
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
+  public IStatus validate(IValidationContext ctx) {
     IStatus result = null;
-    Collection<SAXParseException> exceptions = validate(((CapellaElement)ctx_p.getTarget()).getDescription());
+    Collection<SAXParseException> exceptions = validate(((CapellaElement)ctx.getTarget()).getDescription());
     if (exceptions.isEmpty()){
-      result = ctx_p.createSuccessStatus();
+      result = ctx.createSuccessStatus();
     } else {
       // there might be more, but for now just list the first one.
       SAXParseException first = exceptions.iterator().next();
-      Object[] msgParams = new Object[] { ctx_p.getTarget().eClass().getName(), first.getMessage() }; 
-      if (ctx_p.getTarget() instanceof NamedElement){
-        msgParams[0] = ((NamedElement) ctx_p.getTarget()).getName();
+      Object[] msgParams = new Object[] { ctx.getTarget().eClass().getName(), first.getMessage() }; 
+      if (ctx.getTarget() instanceof NamedElement){
+        msgParams[0] = ((NamedElement) ctx.getTarget()).getName();
       }
 
       // like always, use the superclass method to create a failure status
       // or the information view breaks...
-      result = ctx_p.createFailureStatus(msgParams);
+      result = ctx.createFailureStatus(msgParams);
     }
     return result;
   }

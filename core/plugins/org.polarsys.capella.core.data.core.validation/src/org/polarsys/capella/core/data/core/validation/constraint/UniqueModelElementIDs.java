@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,20 +25,20 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 public class UniqueModelElementIDs extends AbstractModelConstraint {
 
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    Map<String, CapellaElement> map = (Map<String, CapellaElement>) ctx_p.getCurrentConstraintData();
+  public IStatus validate(IValidationContext ctx) {
+    Map<String, CapellaElement> map = (Map<String, CapellaElement>) ctx.getCurrentConstraintData();
     if (map == null) {
       map = new HashMap<String, CapellaElement>(1024);
-      ctx_p.putCurrentConstraintData(map);
+      ctx.putCurrentConstraintData(map);
     }
-    CapellaElement target = (CapellaElement) ctx_p.getTarget();
+    CapellaElement target = (CapellaElement) ctx.getTarget();
     String id = target.getId();
     CapellaElement previous = map.put(id, target);
     if ((previous != null) && (previous != target) && (previous.eResource() != target.eResource())) {
       // conflicts for same resource are already handled by the basic EMF validation rules.
-      ctx_p.addResult(previous);
-      return ctx_p.createFailureStatus(id, target.getLabel(), previous.getLabel());
+      ctx.addResult(previous);
+      return ctx.createFailureStatus(id, target.getLabel(), previous.getLabel());
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

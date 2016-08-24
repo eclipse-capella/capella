@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,13 +19,13 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 public class MDCHK_InitialState_Transition extends AbstractValidationRule {
 
 	@Override
-	public IStatus validate(IValidationContext ctx_p) {
-		InitialPseudoState sm = (InitialPseudoState) ctx_p.getTarget();
+	public IStatus validate(IValidationContext ctx) {
+		InitialPseudoState sm = (InitialPseudoState) ctx.getTarget();
 
 		if (sm.getOutgoing().size() > 1) {
-			return createFailureStatus(ctx_p, new Object[] { sm.getName(), sm.eClass().getName()  });
+			return createFailureStatus(ctx, new Object[] { sm.getName(), sm.eClass().getName()  });
 		}
-		return ctx_p.createSuccessStatus();
+		return ctx.createSuccessStatus();
 	}
 
 }

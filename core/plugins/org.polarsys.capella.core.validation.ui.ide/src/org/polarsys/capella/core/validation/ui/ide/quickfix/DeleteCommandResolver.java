@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,15 +21,15 @@ public class DeleteCommandResolver extends AbstractDeleteCommandResolver {
   /**
    * Element to delete.
    */
-  protected final Object _elementToDelete;
+  protected final Object elementToDelete;
 
   /**
-   * @param resolverLabel_p
-   * @param elementToDelete_p
+   * @param resolverLabel
+   * @param elementToDelete
    */
-  public DeleteCommandResolver(String resolverLabel_p, Object elementToDelete_p) {
-    _label = resolverLabel_p;
-    _elementToDelete = elementToDelete_p;
+  public DeleteCommandResolver(String resolverLabel, Object elementToDelete) {
+    label = resolverLabel;
+    this.elementToDelete = elementToDelete;
     setContributorId(org.polarsys.capella.core.ui.toolkit.Activator.PLUGIN_ID);
     setImgKey(DELETE_ICON_PATH);
   }
@@ -38,7 +38,7 @@ public class DeleteCommandResolver extends AbstractDeleteCommandResolver {
    * {@inheritDoc}
    */
   @Override
-  public Object getElementToDelete(Object obj_p) {
-    return _elementToDelete;
+  public Object getElementToDelete(Object obj) {
+    return elementToDelete;
   }
 }
