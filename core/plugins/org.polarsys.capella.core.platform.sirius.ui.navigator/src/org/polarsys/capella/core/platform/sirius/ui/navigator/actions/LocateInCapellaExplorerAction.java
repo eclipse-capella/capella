@@ -39,6 +39,7 @@ import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
 /**
@@ -51,8 +52,10 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
 
   /**
    * Get the first selected element.
+   * 
    * @param selection
-   * @return <code>null</code> is returned if no selection or given selection is not {@link IStructuredSelection} instance.
+   * @return <code>null</code> is returned if no selection or given selection is not {@link IStructuredSelection}
+   *         instance.
    */
   protected Object getFirstSelectedElement(ISelection selection) {
     if (selection.isEmpty() || !(selection instanceof IStructuredSelection)) {
@@ -64,6 +67,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
 
   /**
    * Get the selection.
+   * 
    * @return <code>StructuredSelection.EMPTY</code> if no {@link IWorkbenchPart} is set to this action.
    */
   protected ISelection getSelection() {
@@ -72,6 +76,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
 
   /**
    * Be careful, this methods is only called when this actions is contributed through a viewer contribution.
+   * 
    * @see org.eclipse.ui.IViewActionDelegate#init(org.eclipse.ui.IViewPart)
    */
   public void init(IViewPart view) {
@@ -102,7 +107,9 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
           elementToSelectInCapellaExplorer = getElement(uiSelectedElement);
         }
         // Keep the double check here, as getSemanticElement can return error.
-        if (CapellaResourceHelper.isSemanticElement(elementToSelectInCapellaExplorer) || (elementToSelectInCapellaExplorer instanceof DRepresentation)) {
+        if (CapellaResourceHelper.isSemanticElement(elementToSelectInCapellaExplorer)
+            || (elementToSelectInCapellaExplorer instanceof DRepresentation)
+            || (elementToSelectInCapellaExplorer instanceof DRepresentationDescriptor)) {
           selectElementInCapellaExplorer(new StructuredSelection(elementToSelectInCapellaExplorer));
         }
       }
@@ -111,6 +118,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
 
   /**
    * Set as new selection in the Capella Project Explorer given selection.
+   * 
    * @param selection
    */
   protected void selectElementInCapellaExplorer(ISelection selection) {
@@ -129,14 +137,16 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
   }
 
   /**
-   * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
+   * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
+   *      org.eclipse.jface.viewers.ISelection)
    */
   public void selectionChanged(IAction action, ISelection selection) {
     // Do nothing here since we'd prefer getting the selection in a lazy way.
   }
 
   /**
-   * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.action.IAction, org.eclipse.ui.IWorkbenchPart)
+   * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.action.IAction,
+   *      org.eclipse.ui.IWorkbenchPart)
    */
   public void setActivePart(IAction action, IWorkbenchPart targetPart) {
     _site = targetPart.getSite();
@@ -144,6 +154,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
 
   /**
    * For internal usage.
+   * 
    * @param site
    */
   public void setSite(IWorkbenchPartSite site) {
@@ -152,6 +163,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
 
   /**
    * Should ignore or not the workbench part site at runtime.
+   * 
    * @param ignore
    */
   public void shouldIgnoreWorkbenchPartSite(boolean ignore) {
@@ -160,6 +172,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
 
   /**
    * Get the semantic element from given selected element.
+   * 
    * @param uiSelectedElement
    * @return a semantic element or a {@link DRepresentation}.
    */
@@ -183,6 +196,9 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
         DSemanticDecorator semanticDecorator = (DSemanticDecorator) result;
         result = semanticDecorator.getTarget();
       }
+      if (result instanceof DRepresentation) {
+        result = RepresentationHelper.getRepresentationDescriptor((DRepresentation) result);
+      }
     } else if ((uiSelectedElement instanceof DSemanticDecorator) && !(uiSelectedElement instanceof DSemanticDiagram)) {
       DSemanticDecorator semanticDecorator = (DSemanticDecorator) uiSelectedElement;
       result = semanticDecorator.getTarget();
@@ -191,7 +207,8 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
     }
 
     if (result instanceof Part) {
-      boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((Part) result));
+      boolean allowMultiplePart = TriStateBoolean.True
+          .equals(CapellaProjectHelper.isReusableComponentsDriven((Part) result));
       if (!allowMultiplePart) {
         if (!(((Part) result).getAbstractType() instanceof ConfigurationItem)) {
           result = ((Part) result).getAbstractType();
