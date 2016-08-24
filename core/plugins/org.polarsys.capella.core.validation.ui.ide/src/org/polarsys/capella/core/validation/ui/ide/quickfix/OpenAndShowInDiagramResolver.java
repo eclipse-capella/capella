@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,85 +37,85 @@ public class OpenAndShowInDiagramResolver implements IMarkerResolution2 {
   /**
    * QF's image.
    */
-  private final Image _image;
+  private final Image image;
   /**
    * QF's label.
    */
-  private final String _label;
+  private final String label;
   /**
    * Element to select once the representation is open.
    */
-  private final EObject _modelElementToSelectInDiagram;
+  private final EObject modelElementToSelectInDiagram;
   /**
    * Session.
    */
-  private final Session _session;
+  private final Session session;
   /**
    * Representation to open.
    */
-  private final DRepresentation _targetingRepresentation;
+  private final DRepresentation targetingRepresentation;
 
   /**
    * Constructor.
-   * @param modelElementDiagramTarget_p model element which is associated to the diagram to show.
-   * @param modelElementToSelectInDiagram_p model element to select in the diagram.
+   * @param modelElementDiagramTarget model element which is associated to the diagram to show.
+   * @param modelElementToSelectInDiagram model element to select in the diagram.
    */
-  public OpenAndShowInDiagramResolver(EObject modelElementDiagramTarget_p, EObject modelElementToSelectInDiagram_p) {
+  public OpenAndShowInDiagramResolver(EObject modelElementDiagramTarget, EObject modelElementToSelectInDiagram) {
     // Get session given target ModelElement.
-    _session = SessionManager.INSTANCE.getSession(modelElementDiagramTarget_p);
+    session = SessionManager.INSTANCE.getSession(modelElementDiagramTarget);
     // Find representations associated to target ModelElement.
-    DRepresentation targetingRepresentation = null;
-    if (null != _session) {
-      Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(modelElementDiagramTarget_p, _session);
+    DRepresentation target = null;
+    if (null != session) {
+      Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(modelElementDiagramTarget, session);
       if (!representations.isEmpty()) {
         // Get the first found representation.
-        targetingRepresentation = representations.iterator().next();
+        target = representations.iterator().next();
       }
     } else {
-      targetingRepresentation = null;
+      target = null;
     }
-    _targetingRepresentation = targetingRepresentation;
+    targetingRepresentation = target;
     // Generate QF's label.
-    String representationName = EObjectLabelProviderHelper.getText(_targetingRepresentation);
-    String representationClassName = EObjectLabelProviderHelper.getMetaclassLabel(_targetingRepresentation, false);
-    _label = MessageFormat.format(QUICK_FIX_LABEL_PATTERN, representationName, representationClassName);
+    String representationName = EObjectLabelProviderHelper.getText(targetingRepresentation);
+    String representationClassName = EObjectLabelProviderHelper.getMetaclassLabel(targetingRepresentation, false);
+    label = MessageFormat.format(QUICK_FIX_LABEL_PATTERN, representationName, representationClassName);
 
-    _image = EObjectLabelProviderHelper.getImage(_targetingRepresentation);
-    _modelElementToSelectInDiagram = modelElementToSelectInDiagram_p;
+    image = EObjectLabelProviderHelper.getImage(targetingRepresentation);
+    this.modelElementToSelectInDiagram = modelElementToSelectInDiagram;
   }
 
   /**
    * {@inheritDoc}
    */
   public Image getImage() {
-    return _image;
+    return image;
   }
 
   /**
    * {@inheritDoc}
    */
   public String getLabel() {
-    return _label;
+    return label;
 
   }
 
   /**
    * {@inheritDoc}
    */
-  public void run(IMarker marker_p) {
+  public void run(IMarker marker) {
     // Precondition.
-    if ((null == _session) || (null == _targetingRepresentation)) {
+    if ((null == session) || (null == targetingRepresentation)) {
       // Can't open representation.
       return;
     }
-    DialectUIManager.INSTANCE.openEditor(_session, _targetingRepresentation, new NullProgressMonitor());
+    DialectUIManager.INSTANCE.openEditor(session, targetingRepresentation, new NullProgressMonitor());
     // Precondition.
-    if (null == _modelElementToSelectInDiagram) {
+    if (null == modelElementToSelectInDiagram) {
       // Can't show element in representation.
       return;
     }
     ShowInDiagramAction showInDiagramAction = new ShowInDiagramAction();
-    showInDiagramAction.selectionChanged(new StructuredSelection(_modelElementToSelectInDiagram));
+    showInDiagramAction.selectionChanged(new StructuredSelection(modelElementToSelectInDiagram));
     showInDiagramAction.run();
   }
 

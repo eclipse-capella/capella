@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,14 +22,14 @@ public class MDCHK_ControleNode_Transition extends AbstractValidationRule {
 
 
 	@Override
-	public IStatus validate(IValidationContext ctx_p) {
-		Pseudostate cn = (Pseudostate) ctx_p.getTarget();
+	public IStatus validate(IValidationContext ctx) {
+		Pseudostate cn = (Pseudostate) ctx.getTarget();
 		if (cn instanceof ChoicePseudoState || cn instanceof ForkPseudoState) {
 			if (cn.getIncoming().size() != 1) {
-				return createFailureStatus(ctx_p, new Object[] { cn.getName(), cn.eClass().getName() });
+				return createFailureStatus(ctx, new Object[] { cn.getName(), cn.eClass().getName() });
 			}
 		}
-		return ctx_p.createSuccessStatus();
+		return ctx.createSuccessStatus();
 	}
 
 }

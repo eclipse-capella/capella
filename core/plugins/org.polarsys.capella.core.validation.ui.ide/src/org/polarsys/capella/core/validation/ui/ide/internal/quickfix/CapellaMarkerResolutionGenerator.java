@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,22 +24,22 @@ final public class CapellaMarkerResolutionGenerator implements IMarkerResolution
   
   /**
    * 
-   * @param marker_p
+   * @param marker
    * @return
    */
-  public IMarkerResolution[] getResolutions(IMarker marker_p) {
+  public IMarkerResolution[] getResolutions(IMarker marker) {
     
     IMarkerResolution[] result = null;
     
-    String ruleId = MarkerViewHelper.getRuleID(marker_p, true);
+    String ruleId = MarkerViewHelper.getRuleID(marker, true);
 
     if ( null != ruleId ) {
       result = MarkerResolutionCache.INSTANCE.getResolutionsFor(ruleId);
     } else {
       
       /* Ecore markers don't have rule id's attached. We use the diagnostic source + code as a 'virtual' rule id to find the resolution */
-      if (MarkerViewHelper.isEcore(marker_p)){      
-        Diagnostic diagnostic = MarkerViewHelper.getDiagnostic(marker_p);
+      if (MarkerViewHelper.isEcore(marker)){      
+        Diagnostic diagnostic = MarkerViewHelper.getDiagnostic(marker);
         result = MarkerResolutionCache.INSTANCE.getResolutionsFor(diagnostic.getSource() + "." + diagnostic.getCode());
       } else {
         result = MarkerResolutionCache.NO_RESOLUTIONS;
@@ -52,8 +52,8 @@ final public class CapellaMarkerResolutionGenerator implements IMarkerResolution
   /**
    * {@inheritDoc}
    */
-  public boolean hasResolutions(IMarker marker_p) {
-    IMarkerResolution[] resolutions = getResolutions(marker_p);
+  public boolean hasResolutions(IMarker marker) {
+    IMarkerResolution[] resolutions = getResolutions(marker);
     return (
         ( null != resolutions ) &&
         ( resolutions != MarkerResolutionCache.NO_RESOLUTIONS )

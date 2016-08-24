@@ -27,11 +27,11 @@ import org.polarsys.capella.core.validation.ui.ide.internal.quickfix.MarkerResol
 
 abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolution {
 
-  protected String _label = null;
-  protected String _desc = null;
-  protected String _imgKey = null;
+  protected String label = null;
+  protected String desc = null;
+  protected String imgKey = null;
 
-  protected String _contributorId = null;
+  protected String contributorId = null;
   protected final static String[] noRuleIds = new String[0];
 
   /**
@@ -39,7 +39,7 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
    */
   @Override
   public String getLabel() {
-    return _label;
+    return label;
   }
 
   /**
@@ -47,10 +47,8 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
    */
   @Override
   public String getDescription() {
-    return _desc;
+    return desc;
   }
-
-  // "quickfixAll-repository.png"
 
   /**
    * {@inheritDoc}
@@ -58,8 +56,8 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
   @Override
   public Image getImage() {
 
-    if ((_contributorId != null) && (_imgKey != null)) {
-      ImageDescriptor imgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(_contributorId, _imgKey);
+    if ((contributorId != null) && (imgKey != null)) {
+      ImageDescriptor imgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(contributorId, imgKey);
       return imgDesc.createImage();
     }
 
@@ -68,30 +66,26 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
 
   /** Write accessor on label */
   public final void setLabel(String label) {
-    _label = label;
-    return;
+    this.label = label;
   }
 
   /** Write accessor on description */
   public final void setDescription(String desc) {
-    _desc = desc;
-    return;
+    this.desc = desc;
   }
 
   /** Write accessor on imageKey */
   public final void setImgKey(String key) {
-    _imgKey = key;
-    return;
+    this.imgKey = key;
   }
 
   /** Write accessor on contributorId */
   public final void setContributorId(String id) {
-    _contributorId = id;
-    return;
+    this.contributorId = id;
   }
 
   public final String getContributorId() {
-    return _contributorId;
+    return contributorId;
   }
 
   public List<EObject> getModelElements(IMarker marker) {

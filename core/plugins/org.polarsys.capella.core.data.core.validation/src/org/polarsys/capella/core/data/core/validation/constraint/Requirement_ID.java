@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,10 +27,10 @@ public class Requirement_ID extends AbstractValidationRule {
 
 	
 	@Override
-	public IStatus validate(IValidationContext ctx_p) 
+	public IStatus validate(IValidationContext ctx) 
 	{
 		// Get the target
-		EObject eObj = ctx_p.getTarget();
+		EObject eObj = ctx.getTarget();
 		// If the Target is a SystemEngineering
 		if(eObj instanceof SystemEngineering)
 		{
@@ -73,14 +73,14 @@ public class Requirement_ID extends AbstractValidationRule {
 								&& reqId.contentEquals(currentId))
 						{
 							// Return error
-							return ctx_p.createFailureStatus(new Object[] { currentId, currentReq, req });
+							return ctx.createFailureStatus(new Object[] { currentId, currentReq, req });
 						}
 					}
 				}
 			}
 		}
 		// Return success
-		return ctx_p.createSuccessStatus();
+		return ctx.createSuccessStatus();
 	}
 
 }

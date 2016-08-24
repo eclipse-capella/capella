@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,12 +51,12 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
   /**
    * Label for our combo box
    */
-  protected String _comboLabel;
+  protected String comboLabel;
 
   /**
    * Prefix for each element
    */
-  protected String _elementPrefix;
+  protected String elementPrefix;
 
   /**
    * @see Impact analysis label provider.
@@ -65,28 +65,28 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
     /**
      * Foreground color for referencing elements.
      */
-    private int _foregroundColor;
+    private int foregroundColor;
     /**
      * Viewer that uses this label provider.
      */
-    private TreeViewer _viewer;
+    private TreeViewer viewer;
 
     /**
      * Constructor.
-     * @param adapterFactory_p
-     * @param foregroundColorForReferencingElements_p must be a {@link SWT#COLOR} constant.
+     * @param adapterFactory
+     * @param foregroundColorForReferencingElements must be a {@link SWT#COLOR} constant.
      */
-    public ImpactAnalysisLabelProvider(TreeViewer viewer_p, int foregroundColorForReferencingElements_p) {
+    public ImpactAnalysisLabelProvider(TreeViewer viewer, int foregroundColorForReferencingElements) {
       super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
-      _foregroundColor = foregroundColorForReferencingElements_p;
-      _viewer = viewer_p;
+      foregroundColor = foregroundColorForReferencingElements;
+      this.viewer = viewer;
     }
 
     /**
      * @see org.eclipse.jface.viewers.IColorProvider#getBackground(java.lang.Object)
      */
     @Override
-    public Color getBackground(Object element_p) {
+    public Color getBackground(Object element) {
       return null;
     }
 
@@ -94,12 +94,12 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
      * @see org.eclipse.jface.viewers.IColorProvider#getForeground(java.lang.Object)
      */
     @Override
-    public Color getForeground(Object element_p) {
+    public Color getForeground(Object element) {
       // Select the foreground color for elements that reference the selected one.
-      Object input = _viewer.getInput();
-      if ((input instanceof TreeData) && (((TreeData) input).isValid(element_p))) {
+      Object input = viewer.getInput();
+      if ((input instanceof TreeData) && (((TreeData) input).isValid(element))) {
         Display display = PlatformUI.getWorkbench().getDisplay();
-        return display.getSystemColor(_foregroundColor);
+        return display.getSystemColor(foregroundColor);
       }
       return null;
     }
@@ -108,8 +108,8 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
      * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#getText(java.lang.Object)
      */
     @Override
-    public String getText(Object object_p) {
-      String text = super.getText(object_p);
+    public String getText(Object object) {
+      String text = super.getText(object);
       return text.replace("%20", ICommonConstants.EMPTY_STRING + ICommonConstants.WHITE_SPACE_CHARACTER); //$NON-NLS-1$
     }
   }
@@ -127,21 +127,21 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
 
     /**
      * Constructor.
-     * @param collator_p
+     * @param collator
      */
-    public ImpactAnalysisSorter(Collator collator_p) {
-      super(collator_p);
+    public ImpactAnalysisSorter(Collator collator) {
+      super(collator);
     }
 
     /**
      * @see org.eclipse.jface.viewers.ViewerComparator#compare(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
      */
     @Override
-    public int compare(Viewer viewer_p, Object object1_p, Object object2_p) {
+    public int compare(Viewer viewer, Object object1, Object object2) {
       // Sorter Capella resource before capella fragment.
-      if ((object1_p instanceof Resource) && (object2_p instanceof Resource)) {
-        Resource resource1 = (Resource) object1_p;
-        Resource resource2 = (Resource) object2_p;
+      if ((object1 instanceof Resource) && (object2 instanceof Resource)) {
+        Resource resource1 = (Resource) object1;
+        Resource resource2 = (Resource) object2;
 
         // Preconditions : must be capella resources.
         if (CapellaResourceHelper.isCapellaResource(resource1) && CapellaResourceHelper.isCapellaResource(resource2)) {
@@ -156,7 +156,7 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
           return result;
         }
       }
-      return super.compare(viewer_p, object1_p, object2_p);
+      return super.compare(viewer, object1, object2);
     }
   }
 
@@ -170,51 +170,49 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
   /**
    * Foreground color for referencing elements.
    */
-  protected int _foregroundColorForRelevantElements;
+  protected int foregroundColorForRelevantElements;
 
   /**
    * Elements that reference the selected one.
    */
-  protected List<? extends EObject> _revelantElements;
+  protected List<? extends EObject> revelantElements;
 
   /**
    * Cycles
    */
-  protected Collection<List<EObject>> _cycles;
+  protected Collection<List<EObject>> cycles;
 
-  protected Combo _combo;
+  protected Combo combo;
 
-  public void setCycles(Collection<List<EObject>> cycles_p) {
-    _cycles = cycles_p;
-
-    return;
+  public void setCycles(Collection<List<EObject>> cycles) {
+    this.cycles = cycles;
   }
 
-  public EObjectNavigatorDialog(List<? extends EObject> elements_p, String dialogTitle_p, String dialogMessage_p, String dialogComboLabel_p,
-      String elementPrefix_p) {
-    this(elements_p, dialogTitle_p, dialogMessage_p, dialogComboLabel_p, elementPrefix_p, MessageDialog.INFORMATION,
+  public EObjectNavigatorDialog(List<? extends EObject> elements, String dialogTitle, String dialogMessage, String dialogComboLabel,
+      String elementPrefix) {
+    this(elements, dialogTitle, dialogMessage, dialogComboLabel, elementPrefix, MessageDialog.INFORMATION,
          new String[] { org.polarsys.capella.common.ui.toolkit.dialogs.Messages.AbstractViewerDialog_OK_Title }, DEFAULT_COLOR_FOR_REVELANT_ELEMENTS);
   }
 
-  public EObjectNavigatorDialog(List<? extends EObject> elements_p, String dialogTitle_p, String dialogMessage_p, String dialogComboLabel_p,
-      String elementPrefix_p, int dialogImageType_p, String[] dialogButtonLabels_p, int foregroundColorForReferencingElements_p) {
-    super(PlatformUI.getWorkbench().getDisplay().getActiveShell(), dialogTitle_p, null, dialogMessage_p, dialogImageType_p, dialogButtonLabels_p, 0);
-    _comboLabel = dialogComboLabel_p;
-    _elementPrefix = elementPrefix_p;
-    _revelantElements = elements_p;
-    _foregroundColorForRelevantElements = foregroundColorForReferencingElements_p;
+  public EObjectNavigatorDialog(List<? extends EObject> elements, String dialogTitle, String dialogMessage, String dialogComboLabel,
+      String elementPrefix, int dialogImageType, String[] dialogButtonLabels, int foregroundColorForReferencingElements) {
+    super(PlatformUI.getWorkbench().getDisplay().getActiveShell(), dialogTitle, null, dialogMessage, dialogImageType, dialogButtonLabels, 0);
+    comboLabel = dialogComboLabel;
+    this.elementPrefix = elementPrefix;
+    revelantElements = elements;
+    foregroundColorForRelevantElements = foregroundColorForReferencingElements;
   }
 
-  public EObjectNavigatorDialog(List<? extends EObject> elements_p, String dialogTitle_p, String dialogMessage_p, int dialogImageType_p,
-      String[] dialogButtonLabels_p, int foregroundColorForReferencingElements_p) {
-    this(elements_p, dialogTitle_p, dialogMessage_p, QuickfixMessages.eobjectnavigator_dialog_combo_lbl,
-         QuickfixMessages.eobjectnavigator_dialog_combo_element_prefix, dialogImageType_p, dialogButtonLabels_p, foregroundColorForReferencingElements_p);
+  public EObjectNavigatorDialog(List<? extends EObject> elements, String dialogTitle, String dialogMessage, int dialogImageType,
+      String[] dialogButtonLabels, int foregroundColorForReferencingElements) {
+    this(elements, dialogTitle, dialogMessage, QuickfixMessages.eobjectnavigator_dialog_combo_lbl,
+         QuickfixMessages.eobjectnavigator_dialog_combo_element_prefix, dialogImageType, dialogButtonLabels, foregroundColorForReferencingElements);
   }
 
   @Override
-  protected Control createCustomArea(Composite parent_p) {
+  protected Control createCustomArea(Composite parent) {
     // Create a composing composite.
-    Composite containingComposite = new Composite(parent_p, SWT.NONE);
+    Composite containingComposite = new Composite(parent, SWT.NONE);
     GridLayout layout = new GridLayout(1, true);
 
     containingComposite.setLayout(layout);
@@ -227,37 +225,37 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
     return containingComposite;
   }
 
-  protected void createSelectCycleArea(Composite parent_p) {
+  protected void createSelectCycleArea(Composite parent) {
 
     final int initialSelection = 0;
 
-    Composite comp = new Composite(parent_p, SWT.NONE);
+    Composite comp = new Composite(parent, SWT.NONE);
 
     comp.setLayout(new GridLayout(2, false));
     comp.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
     Label lbl = new Label(comp, SWT.NONE);
-    lbl.setText(_comboLabel);
+    lbl.setText(comboLabel);
 
-    _combo = new Combo(comp, SWT.NONE | SWT.READ_ONLY | SWT.BORDER | SWT.COLOR_WIDGET_BACKGROUND);
+    combo = new Combo(comp, SWT.NONE | SWT.READ_ONLY | SWT.BORDER | SWT.COLOR_WIDGET_BACKGROUND);
 
     GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
-    _combo.setLayoutData(gd);
+    combo.setLayoutData(gd);
 
-    _combo.setData(String.valueOf(initialSelection), _revelantElements);
-    Iterator<List<EObject>> it = _cycles.iterator();
-    for (int i = 0; i < _cycles.size(); i++) {
-      _combo.add(_elementPrefix + ICommonConstants.WHITE_SPACE_CHARACTER + (i + 1));
-      _combo.setData(String.valueOf(i), it.next());
+    combo.setData(String.valueOf(initialSelection), revelantElements);
+    Iterator<List<EObject>> it = cycles.iterator();
+    for (int i = 0; i < cycles.size(); i++) {
+      combo.add(elementPrefix + ICommonConstants.WHITE_SPACE_CHARACTER + (i + 1));
+      combo.setData(String.valueOf(i), it.next());
     }
 
-    _combo.select(initialSelection);
-    _combo.addSelectionListener(new SelectionAdapter() {
+    combo.select(initialSelection);
+    combo.addSelectionListener(new SelectionAdapter() {
       @SuppressWarnings({ "synthetic-access", "unchecked" })
       @Override
       public void widgetSelected(SelectionEvent e) {
-        int idx = _combo.getSelectionIndex();
-        List<EObject> list = (List<EObject>) _combo.getData(String.valueOf(idx));
+        int idx = combo.getSelectionIndex();
+        List<EObject> list = (List<EObject>) combo.getData(String.valueOf(idx));
         getViewer().setInput(new TreeData(list, null));
 
         return;
@@ -271,16 +269,16 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
    * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractMessageDialogWithViewer#createViewer(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected TreeViewer createViewer(Composite parent_p) {
+  protected TreeViewer createViewer(Composite parent) {
     // Create tree viewer.
     // Don't use the status bar of the viewer b
-    TreeAndListViewer treeViewer = new TreeAndListViewer(parent_p, false, IViewerStyle.SHOW_STATUS_BAR) {
+    TreeAndListViewer treeViewer = new TreeAndListViewer(parent, false, IViewerStyle.SHOW_STATUS_BAR) {
       /**
        * @see org.polarsys.capella.common.ui.toolkit.viewers.AbstractRegExpViewer#createControl(org.eclipse.swt.widgets.Composite)
        */
       @Override
-      protected void createControl(Composite parent__p) {
-        super.createControl(parent__p);
+      protected void createControl(Composite parent_) {
+        super.createControl(parent_);
       }
 
     };
@@ -293,7 +291,7 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
 
     TreeViewer viewer = treeViewer.getClientViewer();
     viewer.setContentProvider(new DataContentProvider());
-    viewer.setLabelProvider(new ImpactAnalysisLabelProvider(viewer, _foregroundColorForRelevantElements));
+    viewer.setLabelProvider(new ImpactAnalysisLabelProvider(viewer, foregroundColorForRelevantElements));
     // Set layout data.
     viewer.getTree().setLayoutData(new GridData(GridData.FILL_BOTH));
     viewer.setSorter(new ImpactAnalysisSorter());
@@ -305,15 +303,15 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
    */
   @Override
   protected TreeData getInitialInputData() {
-    return new TreeData(_revelantElements, null);
+    return new TreeData(revelantElements, null);
   }
 
   /**
    * Set a context menu manager filler.
-   * @param filler_p
+   * @param filler
    */
-  public void setContextMenuManagerFiller(AbstractContextMenuFiller filler_p) {
-    _contextMenuManagerFiller = filler_p;
+  public void setContextMenuManagerFiller(AbstractContextMenuFiller filler) {
+    _contextMenuManagerFiller = filler;
   }
 
 }

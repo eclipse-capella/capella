@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,30 +32,30 @@ public class MDCHK_DE_CE_PL_Naming_1 extends Abstract_MDCHK_NamingConflictRule {
 	 * @see org.polarsys.capella.core.data.core.validation.capellaelement.Abstract_MDCHK_NamingConflictRule#isImpactedByCurrentRule(org.eclipse.emf.ecore.EObject)
 	 */
 	@Override
-	protected boolean isImpactedByCurrentRule(EObject eObj_p) {
-		return ((eObj_p instanceof FunctionalExchange) || (eObj_p instanceof ComponentExchange) || (eObj_p instanceof PhysicalLink));
+	protected boolean isImpactedByCurrentRule(EObject eObj) {
+		return ((eObj instanceof FunctionalExchange) || (eObj instanceof ComponentExchange) || (eObj instanceof PhysicalLink));
 	}
 
 	/**
-	 * @param conflictingElements_p
-	 * @param candidate_p
-	 * @param currentElement_p
+	 * @param conflictingElements
+	 * @param candidate
+	 * @param currentElement
 	 * @return
 	 */
 	@Override
-	protected void hasConflictPhysicalLink(Set<AbstractNamedElement> conflictingElements_p, AbstractNamedElement candidate_p, PhysicalLink currentElement_p) {
-		PhysicalPort currentSourcePort = currentElement_p.getSourcePhysicalPort();
-		PhysicalPort currentTargetPort = currentElement_p.getTargetPhysicalPort();
+	protected void hasConflictPhysicalLink(Set<AbstractNamedElement> conflictingElements, AbstractNamedElement candidate, PhysicalLink currentElement) {
+		PhysicalPort currentSourcePort = currentElement.getSourcePhysicalPort();
+		PhysicalPort currentTargetPort = currentElement.getTargetPhysicalPort();
 
-		if (candidate_p instanceof PhysicalLink) {
-			PhysicalLink link = (PhysicalLink) candidate_p;
+		if (candidate instanceof PhysicalLink) {
+			PhysicalLink link = (PhysicalLink) candidate;
 			PhysicalPort candidateSourcePort = link.getSourcePhysicalPort();
 			PhysicalPort candidateTargetPort = link.getTargetPhysicalPort();
 
-			if (link.getName().equals(currentElement_p.getName())) {
+			if (link.getName().equals(currentElement.getName())) {
 				if ((candidateTargetPort != null) && (candidateSourcePort != null)) {
 					if (isRelative(candidateTargetPort.eContainer(), currentTargetPort.eContainer()) && isRelative(candidateSourcePort.eContainer(), currentSourcePort.eContainer())) {
-						conflictingElements_p.add(candidate_p);
+						conflictingElements.add(candidate);
 					}
 				}
 			}
@@ -63,31 +63,31 @@ public class MDCHK_DE_CE_PL_Naming_1 extends Abstract_MDCHK_NamingConflictRule {
 	}
 
 	/**
-	 * @param conflictingElements_p
-	 * @param candidate_p
-	 * @param currentElement_p
+	 * @param conflictingElements
+	 * @param candidate
+	 * @param currentElement
 	 * @return boolean <b>true</b> if exist an conflict <b>false</b> false otherwise
 	 */
 	@Override
-	protected void hasConflictFunctionalExchange(Set<AbstractNamedElement> conflictingElements_p, AbstractNamedElement candidate_p,
-			FunctionalExchange currentElement_p) {
-		ActivityNode currentSourcePort = currentElement_p.getSource();
-		ActivityNode currentTargetPort = currentElement_p.getTarget();
+	protected void hasConflictFunctionalExchange(Set<AbstractNamedElement> conflictingElements, AbstractNamedElement candidate,
+			FunctionalExchange currentElement) {
+		ActivityNode currentSourcePort = currentElement.getSource();
+		ActivityNode currentTargetPort = currentElement.getTarget();
 
-		if (candidate_p instanceof FunctionalExchange) {
-			FunctionalExchange link = (FunctionalExchange) candidate_p;
+		if (candidate instanceof FunctionalExchange) {
+			FunctionalExchange link = (FunctionalExchange) candidate;
 			ActivityNode candidateSourcePort = link.getSource();
 			ActivityNode candidateTargetPort = link.getTarget();
 
-			if (link.getName().equals(currentElement_p.getName())) {
+			if (link.getName().equals(currentElement.getName())) {
 				if ((candidateTargetPort != null) && (candidateSourcePort != null)){
 					if(currentSourcePort instanceof AbstractFunction && currentTargetPort instanceof AbstractFunction){
 						if (isRelative(candidateTargetPort, currentTargetPort) && isRelative(candidateSourcePort, currentSourcePort)) {
-							conflictingElements_p.add(candidate_p);
+							conflictingElements.add(candidate);
 						}
 					}else {
 						if (isRelative(candidateTargetPort.eContainer(), currentTargetPort.eContainer()) && isRelative(candidateSourcePort.eContainer(), currentSourcePort.eContainer())) {
-							conflictingElements_p.add(candidate_p);
+							conflictingElements.add(candidate);
 						}
 					}
 				}
@@ -96,30 +96,30 @@ public class MDCHK_DE_CE_PL_Naming_1 extends Abstract_MDCHK_NamingConflictRule {
 	}
 
 	/**
-	 * @param candidate_p
-	 * @param currentElement_p
+	 * @param candidate
+	 * @param currentElement
 	 * @return
 	 */
 	@Override
-	protected void hasConflictComponentExchange(Set<AbstractNamedElement> conflictingElements_p, AbstractNamedElement candidate_p,
-			ComponentExchange currentElement_p) {
-		Port currentSourcePort = currentElement_p.getSourcePort();
-		Port currentTargetPort = currentElement_p.getTargetPort();
+	protected void hasConflictComponentExchange(Set<AbstractNamedElement> conflictingElements, AbstractNamedElement candidate,
+			ComponentExchange currentElement) {
+		Port currentSourcePort = currentElement.getSourcePort();
+		Port currentTargetPort = currentElement.getTargetPort();
 
-		if (candidate_p instanceof ComponentExchange) {
-			ComponentExchange link = (ComponentExchange) candidate_p;
+		if (candidate instanceof ComponentExchange) {
+			ComponentExchange link = (ComponentExchange) candidate;
 			Port candidateSourcePort = link.getSourcePort();
 			Port candidateTargetPort = link.getTargetPort();
 
-			if (link.getName().equals(currentElement_p.getName())) {
+			if (link.getName().equals(currentElement.getName())) {
 
 				if ((candidateTargetPort != null) && (candidateSourcePort != null)) {
 					if (isRelative(candidateTargetPort.eContainer(), currentTargetPort.eContainer()) && isRelative(candidateSourcePort.eContainer(), currentSourcePort.eContainer())) {
-						conflictingElements_p.add(candidate_p);
+						conflictingElements.add(candidate);
 					}
-				} else if ((currentElement_p.getSource() != null) && (currentElement_p.getTarget() != null)) {
-					if (isRelative(link.getTarget(), currentElement_p.getTarget()) && isRelative(link.getSource(), currentElement_p.getSource())) {
-						conflictingElements_p.add(candidate_p);
+				} else if ((currentElement.getSource() != null) && (currentElement.getTarget() != null)) {
+					if (isRelative(link.getTarget(), currentElement.getTarget()) && isRelative(link.getSource(), currentElement.getSource())) {
+						conflictingElements.add(candidate);
 					}
 				}
 			}

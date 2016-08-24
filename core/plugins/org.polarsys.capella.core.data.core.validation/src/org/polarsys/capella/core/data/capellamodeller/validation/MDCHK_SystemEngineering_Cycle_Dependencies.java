@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -91,24 +91,24 @@ public class MDCHK_SystemEngineering_Cycle_Dependencies extends AbstractValidati
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
+  public IStatus validate(IValidationContext ctx) {
     
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
     Collection<IStatus> statuses = new ArrayList<IStatus>();
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof SystemEngineering) {
         Map<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>> dependencies = getCycleOfDependencies((SystemEngineering) eObj);
         if (null != dependencies && !dependencies.isEmpty()) {
           // There are conflicts
-          IStatus status = ctx_p.createFailureStatus(new Object[] { Integer.valueOf(dependencies.size()) });
+          IStatus status = ctx.createFailureStatus(new Object[] { Integer.valueOf(dependencies.size()) });
           statuses.add(status);
-          return ConstraintStatus.createMultiStatus(ctx_p, statuses);
+          return ConstraintStatus.createMultiStatus(ctx, statuses);
         }
       }
     }
     // No conflict found
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
   public static void handleLibraries(SystemEngineering context, Collection<AbstractDependenciesPkg> allPackages){

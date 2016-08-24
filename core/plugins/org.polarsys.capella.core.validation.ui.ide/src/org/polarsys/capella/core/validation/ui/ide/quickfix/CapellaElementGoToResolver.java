@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,53 +31,53 @@ public class CapellaElementGoToResolver implements IMarkerResolution2 {
   /**
    * QF's image.
    */
-  private final Image _image;
+  private final Image image;
   /**
    * QF's label.
    */
-  private final String _label;
+  private final String label;
   /**
    * Model element to go to.
    */
-  private final EObject _modelElement;
+  private final EObject modelElement;
 
   /**
-   * @param elementToGoToDescription_p
-   * @param modelElement_p
+   * @param elementToGoToDescription
+   * @param modelElement
    */
-  public CapellaElementGoToResolver(String elementToGoToDescription_p, EObject modelElement_p) {
+  public CapellaElementGoToResolver(String elementToGoToDescription, EObject modelElement) {
     // Generate label.
     String modelElementClassName =
-        EObjectLabelProviderHelper.getMetaclassLabel(modelElement_p, false);
-    String modelElementName = EObjectLabelProviderHelper.getText(modelElement_p);
-    _label =
-        MessageFormat.format(QUICK_FIX_LABEL_PATTERN, elementToGoToDescription_p, modelElementName,
+        EObjectLabelProviderHelper.getMetaclassLabel(modelElement, false);
+    String modelElementName = EObjectLabelProviderHelper.getText(modelElement);
+    label =
+        MessageFormat.format(QUICK_FIX_LABEL_PATTERN, elementToGoToDescription, modelElementName,
             modelElementClassName);
     // Image.
-    _image = EObjectLabelProviderHelper.getImage(modelElement_p);
+    image = EObjectLabelProviderHelper.getImage(modelElement);
 
-    _modelElement = modelElement_p;
+    this.modelElement = modelElement;
   }
 
   /**
    * {@inheritDoc}
    */
   public Image getImage() {
-    return _image;
+    return image;
   }
 
   /**
    * {@inheritDoc}
    */
   public String getLabel() {
-    return _label;
+    return label;
   }
 
   /**
    * {@inheritDoc}
    */
-  public void run(IMarker marker_p) {
-    SelectElementAction selectElementAction = new SelectElementAction(_modelElement);
+  public void run(IMarker marker) {
+    SelectElementAction selectElementAction = new SelectElementAction(modelElement);
     selectElementAction.run();
   }
 

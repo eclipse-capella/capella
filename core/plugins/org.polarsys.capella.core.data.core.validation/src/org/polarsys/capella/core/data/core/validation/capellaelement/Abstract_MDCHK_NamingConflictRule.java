@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,9 +77,9 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
   List<AbstractNamedElement> conflictCandidates = new ArrayList<AbstractNamedElement>();
 
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
     if (eType == EMFEventType.NULL) {
       // Do not check "naming conflicts" under scenarios and capabilities
       if ((eObj instanceof CapellaElement) && !((eObj instanceof AbstractCapability) || (eObj instanceof Scenario))) {
@@ -104,7 +104,7 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
                   .equalsIgnoreCase("null") //$NON-NLS-1$
               ))) {
 
-                if (checkTheNamingConflict(ctx_p, statuses, typesAndNames, elt, namedElement, currentElementName)) {
+                if (checkTheNamingConflict(ctx, statuses, typesAndNames, elt, namedElement, currentElementName)) {
                   hasConflict = true;
                 }
               }
@@ -117,17 +117,17 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
         if (hasConflict && !statuses.isEmpty()) {
           // There are conflicts
           // Returns them as a multi-statuses status
-          return ConstraintStatus.createMultiStatus(ctx_p, statuses);
+          return ConstraintStatus.createMultiStatus(ctx, statuses);
         }
       }
     }
     // No conflict found
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
   /**
    * create failure message if any naming conflict
-   * @param ctx_p
+   * @param ctx
    * @param statuses
    * @param hasConflict
    * @param typesAndNames
@@ -136,7 +136,7 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
    * @param currentElementType
    * @return
    */
-  private boolean checkTheNamingConflict(IValidationContext ctx_p, Collection<IStatus> statuses, Map<EClass, List<AbstractNamedElement>> typesAndNames,
+  private boolean checkTheNamingConflict(IValidationContext ctx, Collection<IStatus> statuses, Map<EClass, List<AbstractNamedElement>> typesAndNames,
       CapellaElement elt, AbstractNamedElement currentElement, String currentElementName) {
     boolean hasConflict = false;
 
@@ -176,7 +176,7 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
           String currentConflict = TYPE_PREFIX + abstractNamedElement.eClass().getName() + TYPE_SUFFIX + currentElementName;
           @SuppressWarnings("deprecation")
           IStatus failureStatus =
-              createFailureStatus(ctx_p, new Object[] { elt.getLabel(), TYPE_PREFIX + elt.eClass().getName() + TYPE_SUFFIX, currentConflict });
+              createFailureStatus(ctx, new Object[] { elt.getLabel(), TYPE_PREFIX + elt.eClass().getName() + TYPE_SUFFIX, currentConflict });
           statuses.add(failureStatus);
         }
 
@@ -188,50 +188,50 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
   }
 
   /**
-  * @param currentElementInner_p
-  * @param elementComponentExchange_p
+  * @param currentElementInner
+  * @param elementComponentExchange
   */
-  protected abstract void hasConflictComponentExchange(Set<AbstractNamedElement> conflictingElements_p, AbstractNamedElement currentElementInner_p,
-      ComponentExchange elementComponentExchange_p);
+  protected abstract void hasConflictComponentExchange(Set<AbstractNamedElement> conflictingElements, AbstractNamedElement currentElementInner,
+      ComponentExchange elementComponentExchange);
 
   /**
-   * @param conflictingElements_p
-   * @param currentElementInner_p
-   * @param componentExchange_p
+   * @param conflictingElements
+   * @param currentElementInner
+   * @param componentExchange
    */
-  protected abstract void hasConflictFunctionalExchange(Set<AbstractNamedElement> conflictingElements_p, AbstractNamedElement currentElementInner_p,
-      FunctionalExchange componentExchange_p);
+  protected abstract void hasConflictFunctionalExchange(Set<AbstractNamedElement> conflictingElements, AbstractNamedElement currentElementInner,
+      FunctionalExchange componentExchange);
 
   /**
-   * @param conflictingElements_p
-   * @param currentElementInner_p
-   * @param componentExchange_p
+   * @param conflictingElements
+   * @param currentElementInner
+   * @param componentExchange
    */
-  protected abstract void hasConflictPhysicalLink(Set<AbstractNamedElement> conflictingElements_p, AbstractNamedElement currentElementInner_p,
-      PhysicalLink componentExchange_p);
+  protected abstract void hasConflictPhysicalLink(Set<AbstractNamedElement> conflictingElements, AbstractNamedElement currentElementInner,
+      PhysicalLink componentExchange);
 
   /**
-     * @param currentElement_p
-     * @param existingElementsForTypes_p
+     * @param currentElement
+     * @param existingElementsForTypes
      * @return w
      */
   @SuppressWarnings("boxing")
-  protected boolean hasConflict(AbstractNamedElement currentElement_p, List<AbstractNamedElement> conflictCandidates_p) {
+  protected boolean hasConflict(AbstractNamedElement currentElement, List<AbstractNamedElement> conflictCandidates) {
 
     // update the switch internal state rather than recreating a new one for each element
-    modellingcoreSwitch.setConflictCandidates(conflictCandidates_p);
-    informationSwitch.setConflictCandidates(conflictCandidates_p);
+    modellingcoreSwitch.setConflictCandidates(conflictCandidates);
+    informationSwitch.setConflictCandidates(conflictCandidates);
 
-    Boolean result = capellaSwitch.doSwitch(currentElement_p);
+    Boolean result = capellaSwitch.doSwitch(currentElement);
     return result == null ? false : result;
   }
 
   /**
    * Tells if the given <code>EObject</code> is impacted by the ruleor not
-   * @param eObj_p the <code>EObject</code>
+   * @param eObj the <code>EObject</code>
    * @return <code>true</code> if the given element should be impacted by the rule, <code>false</code> otherwise.
    */
-  protected abstract boolean isImpactedByCurrentRule(EObject eObj_p);
+  protected abstract boolean isImpactedByCurrentRule(EObject eObj);
 
   // checks elements in the information package
   class InformationConflictSwitch extends InformationSwitch<Boolean> {
@@ -244,12 +244,12 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
      * (ignoring case, see ModellingcoreConflictSwitch below)
      * and the number, type and order of owned exchange item elements are identical.
      */
-    public Boolean caseExchangeItem(ExchangeItem exchangeItem_p) {
+    public Boolean caseExchangeItem(ExchangeItem exchangeItem) {
       outer: for (AbstractNamedElement candidate : conflictCandidates) {
         ExchangeItem candidateItem = (ExchangeItem) candidate;
-        if (candidateItem.getName().equalsIgnoreCase(exchangeItem_p.getName())) {
-          if (candidateItem.getOwnedElements().size() == exchangeItem_p.getOwnedElements().size()) {
-            List<ExchangeItemElement> listA = exchangeItem_p.getOwnedElements();
+        if (candidateItem.getName().equalsIgnoreCase(exchangeItem.getName())) {
+          if (candidateItem.getOwnedElements().size() == exchangeItem.getOwnedElements().size()) {
+            List<ExchangeItemElement> listA = exchangeItem.getOwnedElements();
             List<ExchangeItemElement> listZ = candidateItem.getOwnedElements();
             for (int i = 0; i < candidateItem.getOwnedElements().size(); i++) {
               ExchangeItemElement e1 = listA.get(i);
@@ -265,8 +265,8 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
       return Boolean.FALSE;
     }
 
-    public void setConflictCandidates(List<? extends AbstractNamedElement> conflictCandidates_p) {
-      this.conflictCandidates = conflictCandidates_p;
+    public void setConflictCandidates(List<? extends AbstractNamedElement> conflictCandidates) {
+      this.conflictCandidates = conflictCandidates;
     }
   }
 
@@ -280,9 +280,9 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
      *  The general rule for abstract named elements (in the same container):
      *  Name must be different, ignoring case..
      */
-    public Boolean caseAbstractNamedElement(AbstractNamedElement element_p) {
+    public Boolean caseAbstractNamedElement(AbstractNamedElement element) {
       for (AbstractNamedElement existingElement : conflictCandidates) {
-        if ((existingElement.getName() != null) && (element_p.getName() != null) && existingElement.getName().equalsIgnoreCase(element_p.getName())) {
+        if ((existingElement.getName() != null) && (element.getName() != null) && existingElement.getName().equalsIgnoreCase(element.getName())) {
           return Boolean.TRUE;
         }
       }
@@ -290,10 +290,10 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
     }
 
     /**
-     * @param conflictCandidates_p
+     * @param conflictCandidates
      */
-    public void setConflictCandidates(List<? extends AbstractNamedElement> conflictCandidates_p) {
-      this.conflictCandidates = conflictCandidates_p;
+    public void setConflictCandidates(List<? extends AbstractNamedElement> conflictCandidates) {
+      this.conflictCandidates = conflictCandidates;
     }
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,8 +28,8 @@ import org.polarsys.capella.common.data.modellingcore.IState;
 public class MDCHK_State_InvolvedStates extends AbstractValidationRule {
 
 	@Override
-	public IStatus validate(IValidationContext ctx_p) {
-		State sourceState = (State) ctx_p.getTarget();
+	public IStatus validate(IValidationContext ctx) {
+		State sourceState = (State) ctx.getTarget();
 		List<IState> indirectStates = new ArrayList<IState>();
 		for (Region region : sourceState.getOwnedRegions()) {
 			for (IState subState : region.getInvolvedStates()) {
@@ -39,10 +39,10 @@ public class MDCHK_State_InvolvedStates extends AbstractValidationRule {
 		/* compararing both lists */
 		if (indirectStates.containsAll(sourceState.getReferencedStates()) &&
 				sourceState.getReferencedStates().containsAll(indirectStates)) {
-			return ctx_p.createSuccessStatus();
+			return ctx.createSuccessStatus();
 		} 
 		/* error : building the error message */
-		return ctx_p.createFailureStatus(new Object[] {sourceState.getName()});
+		return ctx.createFailureStatus(new Object[] {sourceState.getName()});
 	}
 
 }

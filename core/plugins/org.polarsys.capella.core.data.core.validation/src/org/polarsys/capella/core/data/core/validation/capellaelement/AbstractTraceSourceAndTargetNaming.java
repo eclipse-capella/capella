@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,14 +73,14 @@ public class AbstractTraceSourceAndTargetNaming extends AbstractValidationRule {
 
   /**
    * Return true if element is not Root function or Root Component
-   * @param element_p
+   * @param element
    * @return boolean
    */
-  private boolean isNotRootElement(EObject element_p) {
-    if ((element_p instanceof Component) && ComponentExt.isComponentRoot(element_p)) {
+  private boolean isNotRootElement(EObject element) {
+    if ((element instanceof Component) && ComponentExt.isComponentRoot(element)) {
       return false;
-    } else if (element_p instanceof AbstractFunction) {
-      if (FunctionExt.isRootFunction(element_p)) {
+    } else if (element instanceof AbstractFunction) {
+      if (FunctionExt.isRootFunction(element)) {
         return false;
       }
     }

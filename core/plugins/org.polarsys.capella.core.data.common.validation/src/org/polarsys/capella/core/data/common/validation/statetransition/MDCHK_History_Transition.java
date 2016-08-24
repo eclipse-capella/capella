@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,23 +24,23 @@ public class MDCHK_History_Transition extends AbstractModelConstraint {
   }
 
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
+  public IStatus validate(IValidationContext ctx) {
     boolean isDeep;
-    Pseudostate target = (Pseudostate) ctx_p.getTarget();
+    Pseudostate target = (Pseudostate) ctx.getTarget();
 
     if (target instanceof DeepHistoryPseudoState) {
       isDeep = true;
     } else if (target instanceof ShallowHistoryPseudoState) {
       isDeep = false;
     } else {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
 
     if (target.getOutgoing().size() > 0) {
-      return ctx_p.createFailureStatus(isDeep ? "DeepHistoryState" : "ShallowHistoryState", target.getName()); //$NON-NLS-1$//$NON-NLS-2$
+      return ctx.createFailureStatus(isDeep ? "DeepHistoryState" : "ShallowHistoryState", target.getName()); //$NON-NLS-1$//$NON-NLS-2$
     }
 
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,32 +34,32 @@ public class MDCHK_CapellaElement_Naming_1 extends Abstract_MDCHK_NamingConflict
    * @see org.polarsys.capella.core.data.core.validation.capellaelement.Abstract_MDCHK_NamingConflictRule#isImpactedByCurrentRule(org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected boolean isImpactedByCurrentRule(EObject eObj_p) {
-    return !((eObj_p instanceof FunctionalExchange) || (eObj_p instanceof ComponentExchange) || (eObj_p instanceof Association) || (eObj_p instanceof PhysicalLink));
+  protected boolean isImpactedByCurrentRule(EObject eObj) {
+    return !((eObj instanceof FunctionalExchange) || (eObj instanceof ComponentExchange) || (eObj instanceof Association) || (eObj instanceof PhysicalLink));
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected void hasConflictComponentExchange(Set<AbstractNamedElement> conflictingElements_p, AbstractNamedElement currentElementInner_p,
-      ComponentExchange elementComponentExchange_p) {
+  protected void hasConflictComponentExchange(Set<AbstractNamedElement> conflictingElements, AbstractNamedElement currentElementInner,
+      ComponentExchange elementComponentExchange) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected void hasConflictFunctionalExchange(Set<AbstractNamedElement> conflictingElements_p, AbstractNamedElement currentElementInner_p,
-      FunctionalExchange componentExchange_p) {
+  protected void hasConflictFunctionalExchange(Set<AbstractNamedElement> conflictingElements, AbstractNamedElement currentElementInner,
+      FunctionalExchange componentExchange) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected void hasConflictPhysicalLink(Set<AbstractNamedElement> conflictingElements_p, AbstractNamedElement currentElementInner_p,
-      PhysicalLink componentExchange_p) {
+  protected void hasConflictPhysicalLink(Set<AbstractNamedElement> conflictingElements, AbstractNamedElement currentElementInner,
+      PhysicalLink componentExchange) {
 
   }
 }

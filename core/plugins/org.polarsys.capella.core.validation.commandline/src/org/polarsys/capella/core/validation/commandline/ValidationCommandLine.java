@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -71,8 +71,8 @@ public class ValidationCommandLine extends AbstractCommandLine {
    * {@inheritDoc}
    */
   @Override
-  public void parseContext(IApplicationContext context_p) throws CommandLineException {
-    super.parseContext(context_p);
+  public void parseContext(IApplicationContext context) throws CommandLineException {
+    super.parseContext(context);
   }
 
   @Override
@@ -82,19 +82,19 @@ public class ValidationCommandLine extends AbstractCommandLine {
   }
 
   @Override
-  public void checkArgs(IApplicationContext context_p) throws CommandLineException {
-    super.checkArgs(context_p);
+  public void checkArgs(IApplicationContext context) throws CommandLineException {
+    super.checkArgs(context);
 
   }
 
   @Override
-  public void prepare(IApplicationContext context_p) throws CommandLineException {
-    super.prepare(context_p);
+  public void prepare(IApplicationContext context) throws CommandLineException {
+    super.prepare(context);
 
   }
 
   @Override
-  public boolean execute(IApplicationContext context_p) throws CommandLineException {
+  public boolean execute(IApplicationContext context) throws CommandLineException {
     startFakeWorkbench();
     // load the AIRD
     String fileURI = Messages.resource_prefix + argHelper.getFilePath();
@@ -104,12 +104,12 @@ public class ValidationCommandLine extends AbstractCommandLine {
     boolean status;
     try {
       status = execute(uri, outputFolder);
-    } catch (FileNotFoundException exception_p) {
-      logError(exception_p.getMessage());
-      throw new CommandLineException(exception_p.getMessage());
-    } catch (CoreException exception_p) {
-      logError(exception_p.getMessage());
-      throw new CommandLineException(exception_p.getMessage());
+    } catch (FileNotFoundException exception) {
+      logError(exception.getMessage());
+      throw new CommandLineException(exception.getMessage());
+    } catch (CoreException exception) {
+      logError(exception.getMessage());
+      throw new CommandLineException(exception.getMessage());
     }
     if (status) {
       logInfo("validation report generated to: " + " " + argHelper.getOutputFolder()); //$NON-NLS-1$ //$NON-NLS-2$
@@ -177,16 +177,16 @@ public class ValidationCommandLine extends AbstractCommandLine {
 
   /**
    * Returns list of disabled rule IDs
-   * @param validationRuleSetFile_p
+   * @param validationRuleSetFile
    * @return
    * @throws CoreException
    * @throws FileNotFoundException
    */
-  private static List<String> readRules(String ruleSetFile_p) throws FileNotFoundException, CoreException {
+  private static List<String> readRules(String ruleSetFile) throws FileNotFoundException, CoreException {
     List<String> results = new ArrayList<String>();
 
     // read epf file
-    Path path = new Path(ruleSetFile_p);
+    Path path = new Path(ruleSetFile);
     BufferedInputStream input = new BufferedInputStream(new FileInputStream(path.toFile()));
     IExportedPreferences exportedPrefs = Platform.getPreferencesService().readPreferences(input);
     Preferences instanceNode = exportedPrefs.node("/instance"); //$NON-NLS-1$
@@ -202,53 +202,53 @@ public class ValidationCommandLine extends AbstractCommandLine {
         }
       }
 
-    } catch (BackingStoreException exception_p1) {
+    } catch (BackingStoreException exception1) {
       StringBuilder loggerMessage = new StringBuilder("ValidationCommandLine.readRules(..) _ "); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString(), exception_p1);
+      __logger.warn(loggerMessage.toString(), exception1);
     }
 
     return results;
   }
 
   /**
-   * @param project_p
-   * @param uris_p
+   * @param project
+   * @param uris
    * @throws CoreException
    */
-  private List<EObject> loadEObjects(Project project_p, List<String> uris_p) throws CoreException {
+  private List<EObject> loadEObjects(Project project, List<String> uris) throws CoreException {
     List<EObject> results = new ArrayList<EObject>();
-    for (String uriFragment : uris_p) {
+    for (String uriFragment : uris) {
       String idSegment = getIdSegment(uriFragment);
-      ModelElement element = CapellaQueries.getInstance().getGetElementsQueries().getElementById(project_p, idSegment);
+      ModelElement element = CapellaQueries.getInstance().getGetElementsQueries().getElementById(project, idSegment);
       results.add(element);
     }
     return results;
   }
 
   /**
-   * @param uriFragment_p
+   * @param uriFragment
    * @return
    */
-  private String getIdSegment(String uriFragment_p) {
-    URI uri = URI.createURI(uriFragment_p);
+  private String getIdSegment(String uriFragment) {
+    URI uri = URI.createURI(uriFragment);
     return uri.fragment();
   }
 
-  private List<String> toListOfURIString(String validationContext_p) {
+  private List<String> toListOfURIString(String validationContext) {
     List<String> list = new ArrayList<String>();
-    for (String s : Arrays.asList(validationContext_p.split("\\|"))) { //$NON-NLS-1$
+    for (String s : Arrays.asList(validationContext.split("\\|"))) { //$NON-NLS-1$
       list.add(s.trim());
     }
     return list;
   }
 
   /**
-   * @param uri_p
+   * @param uri
    * @return
    */
-  private Resource loadAirdSemanticModel(URI uri_p) {
+  private Resource loadAirdSemanticModel(URI uri) {
     SessionManager sessionManager = SessionManager.INSTANCE;
-    Session session = sessionManager.getSession(uri_p, new NullProgressMonitor());
+    Session session = sessionManager.getSession(uri, new NullProgressMonitor());
 
     Collection<Resource> resources = session.getSemanticResources();
 
@@ -260,16 +260,16 @@ public class ValidationCommandLine extends AbstractCommandLine {
   }
 
   /**
-   * @param outputFolder_p
+   * @param outputFolder
    */
-  private void storeResultsToFile(String outputFolder_p) {
+  private void storeResultsToFile(String outputFolder) {
     Collection<IMarker> markers = LightMarkerRegistry.getInstance().getMarkers();
     try {
       Collection<IMarker> validationMarkers = filterValidationMarkers(markers);
 
       String result = null;
       result = toHTML(validationMarkers);
-      IFolder folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(outputFolder_p));
+      IFolder folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(outputFolder));
       if (!folder.exists()) {
         folder.create(false, true, new NullProgressMonitor());
       }
@@ -282,7 +282,7 @@ public class ValidationCommandLine extends AbstractCommandLine {
         file.create(outputContent, false, null);
       }
 
-    } catch (CoreException exception_p) {
+    } catch (CoreException exception) {
       StringBuilder loggerMessage = new StringBuilder("ValidationComandlineApp.storeResultsToFile(..) _ "); //$NON-NLS-1$
       __logger.error(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.VALIDATION));
     }
@@ -290,13 +290,13 @@ public class ValidationCommandLine extends AbstractCommandLine {
   }
 
   /**
-   * @param markers_p
+   * @param markers
    * @return
    * @throws CoreException
    */
-  private Collection<IMarker> filterValidationMarkers(Collection<IMarker> markers_p) throws CoreException {
+  private Collection<IMarker> filterValidationMarkers(Collection<IMarker> markers) throws CoreException {
     Collection<IMarker> result = new ArrayList<IMarker>();
-    for (IMarker iMarker : markers_p) {
+    for (IMarker iMarker : markers) {
       if (ICapellaValidationConstants.CAPELLA_MARKER_ID.equals(iMarker.getType())) {
         result.add(iMarker);
       }
@@ -327,11 +327,11 @@ public class ValidationCommandLine extends AbstractCommandLine {
   }
 
   /**
-   * @param markers_p
+   * @param markers
    * @return
    * @throws CoreException
    */
-  private String toHTML(Collection<IMarker> markers_p) throws CoreException {
+  private String toHTML(Collection<IMarker> markers) throws CoreException {
     StringBuilder res = new StringBuilder();
     res.append("<html> \n"); //$NON-NLS-1$
     res.append("<head> \n"); //$NON-NLS-1$
@@ -346,7 +346,7 @@ public class ValidationCommandLine extends AbstractCommandLine {
     res.append("<th> Resource</th> \n");//$NON-NLS-1$
     res.append("<th> Time</th> </tr> \n");//$NON-NLS-1$
     final DateFormat format = DateFormat.getTimeInstance();
-    for (IMarker iMarker : markers_p) {
+    for (IMarker iMarker : markers) {
       res.append("<tr>"); //$NON-NLS-1$
 
       // message
@@ -393,7 +393,7 @@ public class ValidationCommandLine extends AbstractCommandLine {
   }
 
   /**
-   * @param attribute_p
+   * @param attribute
    * @return
    */
   private String getSeverityLabel(Integer severity) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -95,25 +95,25 @@ public class NameConflict extends AbstractDelegatedModelConstraint {
    * {@inheritDoc}
    */
   @Override
-  protected AbstractModelConstraint getDelegateFor(IValidationContext ctx_p) {
-    return delegate.doSwitch(ctx_p.getTarget());
+  protected AbstractModelConstraint getDelegateFor(IValidationContext ctx) {
+    return delegate.doSwitch(ctx.getTarget());
   }
   
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
- 	if (isNotImpactedRule(ctx_p)) {
-	   return ctx_p.createSuccessStatus();
+  public IStatus validate(IValidationContext ctx) {
+ 	if (isNotImpactedRule(ctx)) {
+	   return ctx.createSuccessStatus();
 	}
-    return super.validate(ctx_p);
+    return super.validate(ctx);
   }
 
 
 /**
- * @param ctx_p
+ * @param ctx
  * @return
  */
-	private boolean isNotImpactedRule(IValidationContext ctx_p) {
-		return (ctx_p.getTarget() instanceof CommunicationMean);
+	private boolean isNotImpactedRule(IValidationContext ctx) {
+		return (ctx.getTarget() instanceof CommunicationMean);
 	}
 
 }
