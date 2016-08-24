@@ -28,7 +28,6 @@
 					    value="capella.project.explorer.actions.dynamic">
 				    </test>
 			   </and>
-               
             </enablement>
          
       </actionProvider>
@@ -42,9 +41,9 @@
            id="capella.project.explorer.actions.dynamic"
            name="Other">
         <item
-              description="this selected item allow a user to create a new capella element in the model"
-              id="capella.project.explorer.actions.dynamic"
-              name="ADD CAPELLA ELEMENT">
+           description="this selected item allow a user to create a new capella element in the model"
+           name="%DynamicActionProvider_AddCapellaElement_Title"
+           id="capella.project.explorer.actions.dynamic">
         </item>
      </category>
   </extension>

@@ -1041,6 +1041,7 @@
             sequence="F7">
       </key>
    </extension>
+   
    <extension
          point="org.eclipse.ui.commands">
       <command
@@ -1110,8 +1111,54 @@
             description="%command.removeHiddenElements.description">
       </command>
       
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.commandImages">
+         
+      <image
+            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showInDiagramCommand"
+            icon="icons/showInDiagram.gif">
+      </image>
+         
+         
+         
+         
+         
+         
+      <image
+            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
+            icon="icons/viewpoint.gif">
+      </image>
+      
+      <image
+            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.fixFilters"
+            icon="icons/viewpoint.gif">
+      </image>
+      
+      
+      <image
+            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
+            icon="icons/viewpoint.gif">
+      </image>
+      <image
+            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
+            icon="icons/capella_16.png">
+      </image>
+      <image
+            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementsCommand"
+            icon="icons/capella_16.png">
+      </image>
+      
+      <image
+            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showImpactAnalysisCommand"
+            icon="icons/elcl16/ch_callers.gif">
+      </image>
       
    </extension>
+   
+   
+   
    
    <extension
          point="org.eclipse.ui.menus">
@@ -1119,7 +1166,6 @@
       <menuContribution locationURI="popup:capella.project.explorer#PopupMenu?before=group.show">
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
-               icon="icons/viewpoint.gif"
                id="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
                label="%command.refreshDiagrams"
                style="push">
@@ -1151,7 +1197,6 @@
          </command>
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.fixFilters"
-               icon="icons/viewpoint.gif"
                id="org.polarsys.capella.core.platform.sirius.ui.navigator.fixFilters"
                label="%command.fixFilters"
                style="push">
@@ -1179,7 +1224,6 @@
           
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
-               icon="icons/viewpoint.gif"
                id="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
                label="%command.removeHiddenElements"
                style="push">
@@ -1217,7 +1261,6 @@
             locationURI="popup:org.eclipse.ui.popup.any?after=navigateGroup">
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
-               icon="icons/capella_16.png"
                id="org.polarsys.capella.core.platform.sirius.ui.navigator.LocateInCapellaExplorerActionFromDiagram"
                label="%showInCapellaExplorerAction"
                style="push">
@@ -1245,7 +1288,6 @@
          </command>
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementsCommand"
-               icon="icons/capella_16.png"
                id="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementFromDiagram"
                label="%showSemanticInCapellaExplorerAction"
                style="push">
@@ -1279,7 +1321,6 @@
             locationURI="popup:org.eclipse.ui.popup.any?after=org.polarsys.capella.core.sirius.diagram.editor.wizards">
            <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showImpactAnalysisCommand"
-               icon="icons/elcl16/ch_callers.gif"
                id="%showImpactAnalysis"
                style="push">
             <visibleWhen
@@ -1359,7 +1400,7 @@
                description="create a new table or diagram in Capella"
                enableByDefault="true"
                id="capella.project.explorer.newRepresentationContributor"
-               name="Add Table/ Diagram">
+               name="%NewRepresentationActionProvider_NewRepresentationAction_Title">
          </item>
       </category>
    </extension>

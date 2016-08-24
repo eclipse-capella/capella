@@ -11,18 +11,11 @@
 package org.polarsys.capella.core.preferences;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-import org.apache.log4j.Logger;
-import org.eclipse.core.commands.Command;
-import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -36,26 +29,18 @@ import org.eclipse.core.runtime.dynamichelpers.ExtensionTracker;
 import org.eclipse.core.runtime.dynamichelpers.IExtensionChangeHandler;
 import org.eclipse.core.runtime.dynamichelpers.IExtensionTracker;
 import org.eclipse.core.runtime.preferences.InstanceScope;
-import org.eclipse.jface.fieldassist.IContentProposalProvider;
-import org.eclipse.jface.fieldassist.SimpleContentProposalProvider;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.framework.BundleContext;
-import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
-import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.commands.preferences.internalization.l10n.CustomPreferencesMessages;
 import org.polarsys.capella.core.commands.preferences.model.CategoryPreferences;
 import org.polarsys.capella.core.commands.preferences.model.CategoryPreferencesManager;
-import org.polarsys.capella.core.commands.preferences.properties.ExportPreferencesHandler;
 import org.polarsys.capella.core.commands.preferences.properties.PreferencesHandler;
-import org.polarsys.capella.core.commands.preferences.service.IItemDescriptor;
 import org.polarsys.capella.core.commands.preferences.service.PreferencesItemsRegistry;
 import org.polarsys.capella.core.commands.preferences.service.PropertyStore;
 import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
@@ -67,11 +52,6 @@ import org.polarsys.capella.core.commands.preferences.util.XmlPreferencesConfig;
  * The Preferences activator class controls the plug-in life cycle
  */
 public class Activator extends AbstractUIPlugin {
-
-  /*
-   * 
-   */
-  private static final Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
 
   /*
    * Track extensions for extension points defined in this bundle.
@@ -111,15 +91,7 @@ public class Activator extends AbstractUIPlugin {
 
   private static final String ICONS = "icons/"; //$NON-NLS-1$
 
-  public static Set<String> preferencedCommands = new HashSet<String>(0);
-
-  public IContentProposalProvider proposalContent;
-
   private PreferencesExtensionHandler extensionHandler;
-
-  public IContentProposalProvider getProposalContent() {
-    return proposalContent;
-  }
 
   /**
    * The constructor
@@ -129,6 +101,7 @@ public class Activator extends AbstractUIPlugin {
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
    */
   @Override
@@ -138,8 +111,10 @@ public class Activator extends AbstractUIPlugin {
     extensionHandler = new PreferencesExtensionHandler();
     plugin = this;
     PreferencesItemsRegistry.getInstance().getAllDescriptors();
-
     initializeExtensionsPointProvider();
+
+    CategoryPreferencesManager.getInstance().loadUserProfile();
+    PreferencesHandler.initializePreferenceCommands();
   }
 
   // Overlay preference store for property pages
@@ -165,6 +140,7 @@ public class Activator extends AbstractUIPlugin {
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
    */
   @Override
@@ -173,34 +149,6 @@ public class Activator extends AbstractUIPlugin {
     super.stop(context);
     extensionTracker.close();
     extensionTracker = null;
-  }
-
-  /**
-   * @throws NotDefinedException
-   */
-  public void initializePreferenceCommands() throws NotDefinedException {
-    List<String> commandsNames = new ArrayList<String>();
-    ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);// ActivitySupport().getActiveWorkbenchWindow().getService(ICommandService.class);
-    for (Command command : commandService.getDefinedCommands()) {
-      IItemDescriptor commandDescriptor = PreferencesItemsRegistry.getInstance().getDescriptor(command.getId());
-      if ((commandDescriptor != null) && command.isDefined()) {
-        preferencedCommands.add(command.getId());
-        PreferencesHandler.getInstance(command);
-        commandService.refreshElements(command.getId(), null);
-        commandsNames.add(command.getName());
-      }
-
-      else if (command.getId().equals("org.eclipse.ui.file.export")) {
-        ExportPreferencesHandler.getInstance(command);
-      }
-    }
-
-    String[] prop = new String[commandsNames.size()];
-    for (int i = 0; i < commandsNames.size(); i++) {
-
-      prop[i] = commandsNames.get(i);
-    }
-    proposalContent = new SimpleContentProposalProvider(prop);
   }
 
   /**
@@ -226,7 +174,8 @@ public class Activator extends AbstractUIPlugin {
 
     extensionTracker.registerHandler(extensionHandler, null);
 
-    IExtensionPoint extPoint = Platform.getExtensionRegistry().getExtensionPoint(Activator.PLUGIN_ID, Activator.PREFERENCES_PROVIDERS_EXT_P_NAME);
+    IExtensionPoint extPoint = Platform.getExtensionRegistry().getExtensionPoint(Activator.PLUGIN_ID,
+        Activator.PREFERENCES_PROVIDERS_EXT_P_NAME);
     IExtensionTracker extTracker = Activator.getExtensionTracker();
     if (extTracker != null) {
       extTracker.registerHandler(extensionHandler, ExtensionTracker.createExtensionPointFilter(extPoint));
@@ -238,6 +187,7 @@ public class Activator extends AbstractUIPlugin {
 
   /**
    * Returns the shared instance
+   * 
    * @return the shared instance
    */
   public static Activator getDefault() {
@@ -257,7 +207,8 @@ public class Activator extends AbstractUIPlugin {
   public void loadCategories() {
     if (Platform.isRunning()) {
 
-      IExtensionPoint extPoint = Platform.getExtensionRegistry().getExtensionPoint(Activator.PLUGIN_ID, Activator.PREFERENCES_PROVIDERS_EXT_P_NAME);
+      IExtensionPoint extPoint = Platform.getExtensionRegistry().getExtensionPoint(Activator.PLUGIN_ID,
+          Activator.PREFERENCES_PROVIDERS_EXT_P_NAME);
 
       IExtensionTracker extTracker = Activator.getExtensionTracker();
       if (extTracker != null) {
@@ -272,13 +223,16 @@ public class Activator extends AbstractUIPlugin {
 
   /**
    * <p>
-   * Returns an {@link ImageDescriptor}whose path, relative to the plugin directory's <tt>icons/</tt> directory, is <code>imageFile</code>. If the image
-   * descriptor cannot be created, either because the file does not exist or because of an internal error, then the result is the Eclipse default
-   * "missing image" descriptor.
+   * Returns an {@link ImageDescriptor}whose path, relative to the plugin directory's <tt>icons/</tt> directory, is
+   * <code>imageFile</code>. If the image descriptor cannot be created, either because the file does not exist or
+   * because of an internal error, then the result is the Eclipse default "missing image" descriptor.
    * </p>
    * <p>
-   * <b>Note </b> that the file specified must not have any leading "." or path separators "/" or "\". It is strictly relative to the <tt>icons/</tt> directory.
-   * @param imageFile the name of the image file to retrieve
+   * <b>Note </b> that the file specified must not have any leading "." or path separators "/" or "\". It is strictly
+   * relative to the <tt>icons/</tt> directory.
+   * 
+   * @param imageFile
+   *          the name of the image file to retrieve
    * @return the corresponding image descriptor
    */
   public static ImageDescriptor getImageDescriptor(String imageFile) {
@@ -291,8 +245,11 @@ public class Activator extends AbstractUIPlugin {
 
   /**
    * Creates a localized, parameterized message from the specified pattern and argument keys in the resource bundle.
-   * @param messagePattern resource bundle key of the message pattern
-   * @param args literal values as arguments to the pattern
+   * 
+   * @param messagePattern
+   *          resource bundle key of the message pattern
+   * @param args
+   *          literal values as arguments to the pattern
    * @return the formatted message
    * @see org.eclipse.osgi.util.NLS
    */
@@ -302,8 +259,11 @@ public class Activator extends AbstractUIPlugin {
 
   /**
    * Creates a localized, parameterized message from the specified pattern in the resource bundle.
-   * @param messagePattern the message pattern
-   * @param args objects to substitute into the <tt>{0}</tt>, <tt>{1}</tt>, etc. parameters in the message pattern
+   * 
+   * @param messagePattern
+   *          the message pattern
+   * @param args
+   *          objects to substitute into the <tt>{0}</tt>, <tt>{1}</tt>, etc. parameters in the message pattern
    * @return the formatted message
    * @see org.eclipse.osgi.util.NLS
    */
@@ -319,32 +279,39 @@ public class Activator extends AbstractUIPlugin {
 
   /**
    * <p>
-   * Formats a collection of objects according to the conventions of the locale. For example, in English locales, the result is a comma-separated list with
-   * "and" preceding the last item (no commas if there are only two items).
+   * Formats a collection of objects according to the conventions of the locale. For example, in English locales, the
+   * result is a comma-separated list with "and" preceding the last item (no commas if there are only two items).
    * </p>
    * <p>
-   * The individual elements of the collection are converted to strings using the {@link String#valueOf(java.lang.Object)} method.
+   * The individual elements of the collection are converted to strings using the
+   * {@link String#valueOf(java.lang.Object)} method.
    * </p>
-   * @param items an array of objects to format into a list
-   * @return the list, <code>strings[0]</code> if there is only one element, or <code>""</code> if the array has no elements
+   * 
+   * @param items
+   *          an array of objects to format into a list
+   * @return the list, <code>strings[0]</code> if there is only one element, or <code>""</code> if the array has no
+   *         elements
    */
   public static String formatList(Collection<?> items) {
     switch (items.size()) {
-      case 0:
-        return ""; //$NON-NLS-1$
-      case 1:
-        return String.valueOf(items.iterator().next());
-      case 2:
-        return formatPair(items);
-      default:
-        return formatList2(items);
+    case 0:
+      return ""; //$NON-NLS-1$
+    case 1:
+      return String.valueOf(items.iterator().next());
+    case 2:
+      return formatPair(items);
+    default:
+      return formatList2(items);
     }
   }
 
   /**
    * Helper method to format a list of more than two items.
-   * @param mgr the common core plug-in's resource manager, which is used to retrieve the localized components of a list
-   * @param items the list of items (must be more than two)
+   * 
+   * @param mgr
+   *          the common core plug-in's resource manager, which is used to retrieve the localized components of a list
+   * @param items
+   *          the list of items (must be more than two)
    * @return the list as a string
    * @see #formatList(Collection)
    */
@@ -381,8 +348,11 @@ public class Activator extends AbstractUIPlugin {
 
   /**
    * Helper method to format a two-item list (which in some locales looks different from a list of more than two items).
-   * @param mgr the common core plug-in's resource manager, which is used to retrieve the localized components of a list
-   * @param items the pair of items (must be exactly two)
+   * 
+   * @param mgr
+   *          the common core plug-in's resource manager, which is used to retrieve the localized components of a list
+   * @param items
+   *          the pair of items (must be exactly two)
    * @return the pair as a string
    * @see #formatList(Collection)
    */
@@ -401,26 +371,25 @@ public class Activator extends AbstractUIPlugin {
   }
 
   /**
-   * @param iResource_p
-   * @param propertiesStore_p
+   * @param iResource
+   * @param propertiesStore
    */
-  public void setPropertyStore(IResource iResource_p, IPreferenceStore propertiesStore_p) {
-    propertiesStore.put(iResource_p, propertiesStore_p);
-
+  public void setPropertyStore(IResource iResource, IPreferenceStore propertiesStore) {
+    Activator.propertiesStore.put(iResource, propertiesStore);
   }
 
   /**
-   * @param capellaCommonNavigator_p
+   * @param capellaCommonNavigator
    */
-  public void addProjectsPropertyChangeListener(IPropertyChangeListener capellaCommonNavigator_p) {
+  public void addProjectsPropertyChangeListener(IPropertyChangeListener capellaCommonNavigator) {
 
     IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 
     for (IProject project : projects) {
       if (Activator.getDefault().getPropertyPreferenceStore(project) != null) {
-        getPropertyPreferenceStore(project).addPropertyChangeListener(capellaCommonNavigator_p);
+        getPropertyPreferenceStore(project).addPropertyChangeListener(capellaCommonNavigator);
       } else {
-        PropertyStore.addToGuestListener(capellaCommonNavigator_p);
+        PropertyStore.addToGuestListener(capellaCommonNavigator);
       }
 
     }

@@ -1005,67 +1005,52 @@
 <extension
       point="org.polarsys.capella.core.preferences.capellaPreferences">
    <category
-         description="This commands categories allow a user to perform some transtion of capella elements from sytem to subsytem"
-         name="Transition">
+         description="%topdownTransition_description"
+         name="%topdownTransition_label">
       <item
-            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command2"
-            name="%topdownTransition_Interface_label">
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command2">
       </item>
       <item
-            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command4"
-            name="%topdownTransition_Functional_label">
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command4">
       </item>
       <item
-            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command6"
-            name="%topdownTransition_StateMachine_label">
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command6">
       </item>
       <item
-            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command8"
-            name="%topdownTransition_Data_label">
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command8">
       </item>
       <item
-            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command10"
-            name="%topdownTransition_PropertyValue_label">
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command10">
       </item>
       <item
-            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command12"
-            name="%topdownTransition_ExchangeItem_label">
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command12">
       </item>
       <item
-            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command14"
-            name="%topdownTransition_Actor_label">
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command14">
       </item>
       <item
-            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command16"
-            name="%topdownTransition_System_label">
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command16">
       </item>
       <item
-            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command18"
-            name="%topdownTransition_LC2PC_label">
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command18">
       </item>
       <item
-            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command20"
-            name="%topdownTransition_OE2Actor_label">
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command20">
       </item>
       <item
-            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command22"
-            name="%topdownTransition_OE2System_label">
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command22">
       </item>
       <item
-            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command24"
-            name="%topdownTransition_Capability_label">
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command24">
       </item>
       <item
-            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command26"
-            name="%topdownTransition_OC2SM_label">
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command26">
       </item>
       <item
-            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command28"
-            name="%topdownTransition_OA2SC_label">
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command28">
       </item>
       <item
-            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command30"
-            name="%topdownTransition_OA2SM_label">
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command30">
       </item>
    </category>
 </extension>
