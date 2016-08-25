@@ -14,7 +14,6 @@ import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.osgi.service.prefs.BackingStoreException;
-
 import org.polarsys.capella.core.commands.preferences.properties.PreferencesHandler;
 import org.polarsys.capella.core.commands.preferences.service.IItemDescriptor;
 import org.polarsys.capella.core.commands.preferences.service.PreferencesItemsRegistry;
@@ -44,14 +43,19 @@ public class ConfigurabilityPreferences {
 
       InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).flush();
       instanceScopPrefs.flush();
+
     } catch (BackingStoreException exception) {
       exception.printStackTrace();
     }
+
+    PreferencesHandler.initializePreferenceCommands();
   }
 
   /**
    * Queries whether the specified constraint <code>ID</code> is disabled.
-   * @param id the constraint ID
+   * 
+   * @param id
+   *          the constraint ID
    * @return whether it is disabled
    */
   public static boolean isInstanceScopePreferenceItemEnabled(String id) {
@@ -60,7 +64,9 @@ public class ConfigurabilityPreferences {
 
   /**
    * Queries whether the specified constraint <code>ID</code> is disabled by default.
-   * @param id the constraint ID
+   * 
+   * @param id
+   *          the constraint ID
    * @return whether it is disabled
    */
   public static boolean isItemDisabledByDefault(String id) {
@@ -69,8 +75,11 @@ public class ConfigurabilityPreferences {
 
   /**
    * Sets whether the specified item <code>id</code> is disabled.
-   * @param id the constraint ID
-   * @param disabled whether it is disabled
+   * 
+   * @param id
+   *          the constraint ID
+   * @param disabled
+   *          whether it is disabled
    */
   public static void setItemEnabled(String id, boolean disabled) {
 
@@ -87,15 +96,15 @@ public class ConfigurabilityPreferences {
   }
 
   /**
-	 * 
-	 */
+   * 
+   */
   public static void setItemDisabledDefault(String id, boolean disabled) {
     defaultScopPref.put(id, Boolean.valueOf(disabled).toString());
   }
 
   /**
-	 * 
-	 */
+   * 
+   */
   public static void setInstanceScopePreferenceItem(String id, boolean disabled) {
     instanceScopPrefs.put(id, Boolean.valueOf(disabled).toString());
   }

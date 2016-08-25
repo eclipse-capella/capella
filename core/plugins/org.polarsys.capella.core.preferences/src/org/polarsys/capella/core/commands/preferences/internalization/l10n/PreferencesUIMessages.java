@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,8 @@ import org.eclipse.osgi.util.NLS;
 public class PreferencesUIMessages extends NLS {
 
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.commands.preferences.internalization.l10n.PreferencesUIMessages"; //$NON-NLS-1$
+
+  public static String CommandSelectionContainer_Filtering;
 
   public static String prefs_main_prompt;
   public static String prefs_categories_prompt;

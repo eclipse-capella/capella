@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,13 +18,14 @@ import org.polarsys.capella.core.preferences.commands.exceptions.ItemExistsExcep
 
 /**
  * <p>
- * A centralized registry of {@link IItemDescriptor descriptors} for the items that are available in the commands system.
+ * A centralized registry of {@link IItemDescriptor descriptors} for the items that are available in the commands
+ * system.
  * </p>
  */
 public class PreferencesItemsRegistry {
   /*
-	 * 
-	 */
+   * 
+   */
   private static PreferencesItemsRegistry INSTANCE;
 
   private static IItemDescriptor profileDescriptor;
@@ -38,13 +39,13 @@ public class PreferencesItemsRegistry {
   }
 
   /*
-	 * 
-	 */
+   * 
+   */
   private final Map<String, IItemDescriptor> descriptors = new HashMap<String, IItemDescriptor>();
 
   /*
-	 * 
-	 */
+   * 
+   */
   private volatile IItemListener[] itemListeners;
 
   /**
@@ -56,6 +57,7 @@ public class PreferencesItemsRegistry {
 
   /**
    * Obtains the instance of the constraint registry.
+   * 
    * @return the <i>Singleton</i> instance
    */
   public static PreferencesItemsRegistry getInstance() {
@@ -67,9 +69,15 @@ public class PreferencesItemsRegistry {
     return INSTANCE;
   }
 
+  public boolean isHandled(String commandId) {
+    return descriptors.containsKey(commandId);
+  }
+
   /**
    * Obtains the unique constraint descriptor having the specified ID.
-   * @param id the ID of the constraint descriptor to retrieve (not <code>null</code>)
+   * 
+   * @param id
+   *          the ID of the constraint descriptor to retrieve (not <code>null</code>)
    * @return the matching constraint descriptor, or <code>null</code> if it does not exist
    */
   public IItemDescriptor getDescriptor(String id) {
@@ -77,7 +85,9 @@ public class PreferencesItemsRegistry {
   }
 
   /**
-   * Obtains the descriptors for all registered items, in no particular order. Note that all disabled (for whatever reason) items are included in the result.
+   * Obtains the descriptors for all registered items, in no particular order. Note that all disabled (for whatever
+   * reason) items are included in the result.
+   * 
    * @return the available constraint descriptors, as an unmodifiable collection
    */
   public Collection<IItemDescriptor> getAllDescriptors() {
@@ -88,8 +98,11 @@ public class PreferencesItemsRegistry {
 
   /**
    * Registers a constraint descriptor.
-   * @param descriptor a new constraint descriptor, which must have a unique ID (not <code>null</code>)
-   * @throws ItemExistsException if a different descriptor is already registered under the given <code>descriptor</code>'s ID
+   * 
+   * @param descriptor
+   *          a new constraint descriptor, which must have a unique ID (not <code>null</code>)
+   * @throws ItemExistsException
+   *           if a different descriptor is already registered under the given <code>descriptor</code>'s ID
    */
   public void register(IItemDescriptor descriptor) throws ItemExistsException {
     try {
@@ -112,8 +125,11 @@ public class PreferencesItemsRegistry {
 
   /**
    * Registers a constraint descriptor.
-   * @param descriptor a new constraint descriptor, which must have a unique ID (not <code>null</code>)
-   * @throws ItemExistsException if a different descriptor is already registered under the given <code>descriptor</code>'s ID
+   * 
+   * @param descriptor
+   *          a new constraint descriptor, which must have a unique ID (not <code>null</code>)
+   * @throws ItemExistsException
+   *           if a different descriptor is already registered under the given <code>descriptor</code>'s ID
    */
   public void registerUserProfile(IItemDescriptor descriptor) throws ItemExistsException {
 
@@ -129,8 +145,11 @@ public class PreferencesItemsRegistry {
   }
 
   /**
-   * Unregisters an existing constraint descriptor. This <code>descriptor</code>'s ID will subsequently be available for re-use.
-   * @param descriptor a constraint descriptor (not <code>null</code>)
+   * Unregisters an existing constraint descriptor. This <code>descriptor</code>'s ID will subsequently be available for
+   * re-use.
+   * 
+   * @param descriptor
+   *          a constraint descriptor (not <code>null</code>)
    */
   public void unregister(IItemDescriptor descriptor) {
     assert descriptor != null;
@@ -147,9 +166,12 @@ public class PreferencesItemsRegistry {
   }
 
   /**
-   * Adds an <code>IItemListener</code> to receive constraint change events. This method has no effect if the <code>IItemListener
+   * Adds an <code>IItemListener</code> to receive constraint change events. This method has no effect if the
+   * <code>IItemListener
    * </code> is already registered.
-   * @param listener a new constraint listener
+   * 
+   * @param listener
+   *          a new constraint listener
    * @since 1.1
    */
   public synchronized void addItemListener(IItemListener listener) {
@@ -168,8 +190,11 @@ public class PreferencesItemsRegistry {
   }
 
   /**
-   * Removes the <code>IItemListener</code> from the list of listeners. This method has no effect if the <code>IItemListener</code> is not currently registered.
-   * @param listener a constraint listener
+   * Removes the <code>IItemListener</code> from the list of listeners. This method has no effect if the
+   * <code>IItemListener</code> is not currently registered.
+   * 
+   * @param listener
+   *          a constraint listener
    * @since 1.1
    */
   public synchronized void removeItemListener(IItemListener listener) {
@@ -187,7 +212,9 @@ public class PreferencesItemsRegistry {
 
   /**
    * Computes the index of a specified <code>IItemListener</code> in the array of registered listeners.
-   * @param listener a constraint listener
+   * 
+   * @param listener
+   *          a constraint listener
    * @return the <code>constraint listener</code>'s index, or -1 if it is not in my list
    */
   private int indexOf(IItemListener listener) {
@@ -205,12 +232,14 @@ public class PreferencesItemsRegistry {
   }
 
   /**
-   * Broadcasts the specified <code>ItemChangeEvent</code> to all constraint listeners. This method is used internally by items to send notifications when they
-   * have changed.
+   * Broadcasts the specified <code>ItemChangeEvent</code> to all constraint listeners. This method is used internally
+   * by items to send notifications when they have changed.
    * <p>
    * <b>Note</b> that this method should only be invoked by implementation of of the {@link IItemDescriptor} interface.
    * </p>
-   * @param event a constraint change event to broadcast
+   * 
+   * @param event
+   *          a constraint change event to broadcast
    */
   public void broadcastItemChangeEvent(ItemChangeEvent event) {
     // Check if listeners exist
@@ -230,10 +259,15 @@ public class PreferencesItemsRegistry {
   }
 
   /**
-   * Implements the registration of a constraint. <b>This method requires that the caller synchronize on the <tt>descriptors</tt> map</b>.
-   * @param descriptor a descriptor to register
-   * @return whether the descriptor was added to the registry or not (<code>false</code> in the case the same descriptor was already registered, which is OK)
-   * @throws ItemExistsException if a different descriptor was already registered under the same ID
+   * Implements the registration of a constraint. <b>This method requires that the caller synchronize on the
+   * <tt>descriptors</tt> map</b>.
+   * 
+   * @param descriptor
+   *          a descriptor to register
+   * @return whether the descriptor was added to the registry or not (<code>false</code> in the case the same descriptor
+   *         was already registered, which is OK)
+   * @throws ItemExistsException
+   *           if a different descriptor was already registered under the same ID
    */
   private boolean doRegister(IItemDescriptor descriptor) throws ItemExistsException {
 
@@ -255,8 +289,11 @@ public class PreferencesItemsRegistry {
 
   /**
    * Performs a bulk registration of items for efficiency.
-   * @param items the items to register
-   * @throws ItemExistsException if any constraint's ID is already registered under a different descriptor
+   * 
+   * @param items
+   *          the items to register
+   * @throws ItemExistsException
+   *           if any constraint's ID is already registered under a different descriptor
    */
   void bulkRegister(Collection<? extends IItemDescriptor> items) throws ItemExistsException {
     Collection<IItemDescriptor> registered = new java.util.ArrayList<IItemDescriptor>(items.size());
