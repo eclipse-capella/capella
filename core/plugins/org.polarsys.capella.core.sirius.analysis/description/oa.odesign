@@ -3467,7 +3467,7 @@
               </firstModelOperations>
             </onEventMovedOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:InteractionUseCreationTool" documentation="Creates a Reference to existing Scenario covering Target Lifelines representing existing Operational Entities Parts." name="Reference" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@containerMappings[name='InteractionUse%20OA']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InteractionUse.gif">
+          <ownedTools xsi:type="tool_2:InteractionUseCreationTool" documentation="Creates a Reference to existing Operational Entity Scenario covering Target Lifelines representing existing Operational Entity/Actor/Role Parts." name="Reference" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@containerMappings[name='InteractionUse%20OA']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InteractionUse.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -4434,7 +4434,7 @@
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:InteractionUseCreationTool" documentation="Creates a Reference to an existing Operational Activity Scenario covering Target Lifelines representing existing Operational Activity Parts." name="Reference" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@containerMappings[name='InteractionUse%20AIS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InteractionUse.gif">
+          <ownedTools xsi:type="tool_2:InteractionUseCreationTool" documentation="Creates a Reference to an existing Operational Activity Scenario covering Target Lifelines representing existing Operational Activities." name="Reference" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@containerMappings[name='InteractionUse%20AIS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InteractionUse.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
