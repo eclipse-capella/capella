@@ -34,7 +34,7 @@ public class TargetModelScope extends ContextModelScope implements ITargetModelS
 
   @Override
   public Object getOriginator() {
-    return "Current model";
+    return "Resulting model";
   }
 
   public Collection<EObject> retrieveTransformedElementsFromTarget(EObject targetElement) {

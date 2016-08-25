@@ -124,4 +124,6 @@ public interface ITransitionConstants {
 
   static final String COMMAND_NAME = "COMMAND_NAME";
 
+  static final String IS_ACTIVE = "_isActive";
+  static final String IS_IN_FOCUS_MODE = "_isInFocusMode";
 }

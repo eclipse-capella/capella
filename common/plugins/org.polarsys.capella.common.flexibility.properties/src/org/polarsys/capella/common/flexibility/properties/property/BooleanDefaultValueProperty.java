@@ -32,7 +32,7 @@ public class BooleanDefaultValueProperty extends AbstractProperty implements IDe
   }
 
   public IScopeContext getScope() {
-    return new InstanceScope();
+    return InstanceScope.INSTANCE;
   }
 
   /**

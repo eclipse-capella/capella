@@ -15,8 +15,8 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.diffdata.EComparison;
 import org.eclipse.emf.diffmerge.ui.util.DiffMergeDialog;
 import org.eclipse.emf.diffmerge.ui.viewers.AbstractComparisonViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
@@ -25,6 +25,8 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
+import org.polarsys.capella.core.preferences.Activator;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.DefaultMergeHandler;
 import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
@@ -74,18 +76,42 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
     TransactionalEditingDomain domain = (TransactionalEditingDomain) context
         .get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN);
 
-    MergeEMFDiffNode diffNode = new MergeEMFDiffNode((EComparison) context.get(ITransitionConstants.MERGE_COMPARISON),
-        domain);
+    MergeEMFDiffNode diffNode = new MergeEMFDiffNode(context, domain);
     diffNode.setDefaultIncrementalMode(true);
     diffNode.setDefaultCoverChildren(true);
     diffNode.setDefaultShowImpact(true);
+    diffNode.setLeftRole(Role.REFERENCE);
     return diffNode;
   }
 
   protected void initializeCategories(IContext context, EMFDiffNode diffNode) {
     Set<IDifferenceCategory> category = diffNode.getCategoryManager().getCategories();
-    for (ICategoryItem item : categories) {
-      category.add(new DiffCategoryProxy(context, item));
+    
+    Object purposeValue = context.get(ITransitionConstants.TRANSPOSER_PURPOSE);
+    if (purposeValue instanceof String) {
+      String purpose = (String) purposeValue;
+      ScopedCapellaPreferencesStore scps = ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID);
+
+      for (ICategoryItem item : categories) {
+        category.add(new DiffCategoryProxy(context, item));
+      }
+      
+      for (IDifferenceCategory item : category) {
+        String isActiveKey = MergeCategoryManager.getIsActiveKey(purpose, item, diffNode);
+        scps.setDefault(isActiveKey, item.isActive());
+        if (scps.containsKey(isActiveKey)) {
+          boolean active = scps.getBoolean(isActiveKey);
+          item.setActive(active);
+        }
+        
+        String inFocusModeKey = MergeCategoryManager.getIsInFocusModeKey(purpose, item, diffNode);
+        scps.setDefault(inFocusModeKey, item.isInFocusMode());
+        if (scps.containsKey(inFocusModeKey)) {
+          boolean inFocusMode = scps.getBoolean(inFocusModeKey);
+          item.setInFocusMode(inFocusMode);
+        }
+        
+      }
     }
   }
 
