@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ final public class MarkerResolutionCache {
   public static final IMarkerResolution[] NO_RESOLUTIONS = new IMarkerResolution[0];
   
   /** constraintId<=>AbstractCapellaMarkerResolution map */
-  Map<String, Set<AbstractCapellaMarkerResolution>> _map;
+  Map<String, Set<AbstractCapellaMarkerResolution>> map;
   
   /** AbstractCapellaMarkerResolution<=>constraintId map */
   Map<AbstractCapellaMarkerResolution, Set<String>> resolverRuleMap;
@@ -49,15 +49,15 @@ final public class MarkerResolutionCache {
   
   /**
    * Get the registered marker resolver for this constraint
-   * @param constraintId_p
+   * @param constraintId
    * @return
    */
-  public IMarkerResolution[] getResolutionsFor(String constraintId_p) {
+  public IMarkerResolution[] getResolutionsFor(String constraintId) {
     
     IMarkerResolution[] result = NO_RESOLUTIONS;
     
-    if ( null != constraintId_p && constraintId_p.length() > 0 ) {
-      Set<AbstractCapellaMarkerResolution> set = _map.get(constraintId_p);
+    if ( null != constraintId && constraintId.length() > 0 ) {
+      Set<AbstractCapellaMarkerResolution> set = map.get(constraintId);
       if (null != set) {
         result = set.toArray(
             new AbstractCapellaMarkerResolution[]{}
@@ -76,7 +76,7 @@ final public class MarkerResolutionCache {
   protected void initCache() {
     
     // On a first hand, let's initialize the cache map 
-    _map = new HashMap<String, Set<AbstractCapellaMarkerResolution>>();
+    map = new HashMap<String, Set<AbstractCapellaMarkerResolution>>();
     
     // First of all, let's get all contribution
     Map<AbstractCapellaMarkerResolution, Set<String>> map = CapellaQuickFixExtPointUtil.gettAllAvailableMarkerResolution();
@@ -115,20 +115,20 @@ final public class MarkerResolutionCache {
   }
   
   /** for internal use */
-  private void addToCache(String constraintID_p, AbstractCapellaMarkerResolution markerResolution_p) {
+  private void addToCache(String constraintID, AbstractCapellaMarkerResolution markerResolution) {
     
-    String key = constraintID_p;
+    String key = constraintID;
     
-    if ( null == _map) {
-      _map = new HashMap<String, Set<AbstractCapellaMarkerResolution>>();
+    if ( null == map) {
+      map = new HashMap<String, Set<AbstractCapellaMarkerResolution>>();
     }
     
-    if ( _map.containsKey(key) ) {
-      _map.get(key).add(markerResolution_p);
+    if ( map.containsKey(key) ) {
+      map.get(key).add(markerResolution);
     } else {
       Set<AbstractCapellaMarkerResolution> value = new HashSet<AbstractCapellaMarkerResolution>();
-      value.add(markerResolution_p);
-      _map.put(key, value);
+      value.add(markerResolution);
+      map.put(key, value);
     }
     
     return;
@@ -136,10 +136,10 @@ final public class MarkerResolutionCache {
   
   protected void cleanCache() {
     
-    for (Set<AbstractCapellaMarkerResolution> set: _map.values()) {
+    for (Set<AbstractCapellaMarkerResolution> set: map.values()) {
       set.clear();
     }
-    _map.clear();
+    map.clear();
     
     return;
   }

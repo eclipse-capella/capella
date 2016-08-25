@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,18 +37,18 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
 
   /**
    * QF implementations must override this method to give the element(s) to delete.
-   * @param obj_p
+   * @param obj
    * @return the Object to delete or a Collection of Objects to delete, <code>null</code> or an empty Collection if no element to delete.
    */
-  public abstract Object getElementToDelete(Object obj_p);
+  public abstract Object getElementToDelete(Object obj);
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void run(IMarker marker_p) {
+  public void run(IMarker marker) {
     // Get ModelElement associated to the marker.
-    List<EObject> modelElements = getModelElements(marker_p);
+    List<EObject> modelElements = getModelElements(marker);
     if (modelElements.isEmpty()) {
       return;
     }
@@ -89,8 +89,8 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
     // Remove the marker if the element is deleted.
     if (mustDeleteMarker[0] == true) {
       try {
-        marker_p.delete();
-      } catch (CoreException exception_p) {
+        marker.delete();
+      } catch (CoreException exception) {
         // no nothing
       }
     }
@@ -152,8 +152,8 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
         if (marker.exists()){
           try {
             marker.delete();
-          } catch (CoreException exception_p) {
-            StatusManager.getManager().handle(new Status(IStatus.ERROR, PluginActivator.getDefault().getPluginId(), exception_p.getMessage(), exception_p));
+          } catch (CoreException exception) {
+            StatusManager.getManager().handle(new Status(IStatus.ERROR, PluginActivator.getDefault().getPluginId(), exception.getMessage(), exception));
           }
         }
       }

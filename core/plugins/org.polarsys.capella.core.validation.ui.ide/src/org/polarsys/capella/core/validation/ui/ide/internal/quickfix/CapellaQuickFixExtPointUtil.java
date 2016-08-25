@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -63,16 +63,16 @@ public class CapellaQuickFixExtPointUtil {
   }
   
   /** the constraint Ids */
-  static private Set<String> getConstraintIds(IConfigurationElement[] elts_p) {
+  static private Set<String> getConstraintIds(IConfigurationElement[] elts) {
     
     Set<String> result = new HashSet<String>();
     
-    if ( null == elts_p ) {
+    if ( null == elts ) {
       return result;
     }
     
     String id = null;
-    for (IConfigurationElement elt: elts_p) {
+    for (IConfigurationElement elt: elts) {
       id = elt.getAttribute(ICapellaQuickFixExtPointConstants.RULE_ID_PATTERN_ATT);
       if ( null != id && id.length() > 0 ) {
         result.add(id);

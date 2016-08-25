@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.graphics.Image;
@@ -40,7 +42,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-
 import org.polarsys.capella.core.commands.preferences.internalization.l10n.PreferencesUIMessages;
 import org.polarsys.capella.core.commands.preferences.model.CategoryPreferences;
 import org.polarsys.capella.core.commands.preferences.model.CategoryTreeNode;
@@ -64,55 +65,55 @@ public class CommandSelectionContainer {
   private static final String LOCK_ICON = "icons/lock.gif"; //$NON-NLS-1$
 
   /*
-	 * 
-	 */
+   * 
+   */
   static final String CATEGORIES_PROMPT = PreferencesUIMessages.prefs_categories_prompt;
 
   /*
-	 * 
-	 */
+   * 
+   */
   static final String CONSTRAINTS_PROMPT = PreferencesUIMessages.prefs_constraints_prompt;
 
   /*
-	 * 
-	 */
+   * 
+   */
   static final String NO_SELECTION = PreferencesUIMessages.prefs_no_selection;
 
   /*
-	 * 
-	 */
+   * 
+   */
   static final String NO_CATEGORY_DESCRIPTION = PreferencesUIMessages.prefs_no_description_category;
 
   /*
-	 * 
-	 */
+   * 
+   */
   private CheckboxTreeViewer categoryTree;
 
   /*
-	 * 
-	 */
+   * 
+   */
   private CheckboxTableViewer itemList;
 
   /*
-	 * 
-	 */
+   * 
+   */
   private StyledText detailsArea;
 
   /*
-	 * 
-	 */
+   * 
+   */
 
   private Mediator mediator;
 
   /*
-	 * 
-	 */
+   * 
+   */
 
   private ICategoryTreeNode rootcategory;
 
   /*
-	 * 
-	 */
+   * 
+   */
   private final IItemFilter filter;
 
   /*
@@ -121,8 +122,8 @@ public class CommandSelectionContainer {
   private PreferencesFilter preferenceFilter;
 
   /*
-	 * 
-	 */
+   * 
+   */
   private CategoriesPreferencesFilter categoriesFilter;
 
   /**
@@ -134,7 +135,9 @@ public class CommandSelectionContainer {
 
   /**
    * Initializes me with a constraint filter.
-   * @param filter used to filter the items which are presented in this composite (must not be <code>null</code>)
+   * 
+   * @param filter
+   *          used to filter the items which are presented in this composite (must not be <code>null</code>)
    */
   public CommandSelectionContainer(IItemFilter filter) {
     if (filter == null) {
@@ -283,7 +286,9 @@ public class CommandSelectionContainer {
 
     /**
      * Handles a selection change in the category tree.
-     * @param selection the new selection
+     * 
+     * @param selection
+     *          the new selection
      */
     private void handleCategorySelection(IStructuredSelection selection) {
       if (!selection.isEmpty()) {
@@ -296,7 +301,9 @@ public class CommandSelectionContainer {
 
     /**
      * Selects the specified category in the items list.
-     * @param category the category to select
+     * 
+     * @param category
+     *          the category to select
      */
     private void selectCategory(ICategoryTreeNode category) {
       getItemList().setInput(category);
@@ -306,7 +313,9 @@ public class CommandSelectionContainer {
 
     /**
      * Select, in the table viewer, the currently enabled items.
-     * @param categoryNode the currently selected category node
+     * 
+     * @param categoryNode
+     *          the currently selected category node
      */
     private void selectItems(ICategoryTreeNode categoryNode) {
       getItemList().setCheckedElements(categoryNode.getSelectedItems());
@@ -314,7 +323,9 @@ public class CommandSelectionContainer {
 
     /**
      * Handles a selection change in the items list.
-     * @param selection the new selection
+     * 
+     * @param selection
+     *          the new selection
      */
     private void handleItemSelection(IStructuredSelection selection) {
       if (!selection.isEmpty()) {
@@ -333,7 +344,9 @@ public class CommandSelectionContainer {
 
     /**
      * Sets the details area to show the currently selected <code>category</code>'s category details.
-     * @param category the category in the category tree
+     * 
+     * @param category
+     *          the category in the category tree
      */
     private void setDetails(ICategoryTreeNode category) {
       String description = (category == null) ? null : category.getDescription();
@@ -345,7 +358,8 @@ public class CommandSelectionContainer {
       CategoryPreferences actualCategory = category.getCategory();
       // If we are a mandatory category then we must provide some cue to this fact.
       if ((actualCategory != null) && actualCategory.isMandatory()) {
-        getDetailsArea().setText(MessageFormat.format(PreferencesUIMessages.prefs_mandatory_category, new Object[] { description }));
+        getDetailsArea().setText(
+            MessageFormat.format(PreferencesUIMessages.prefs_mandatory_category, new Object[] { description }));
 
       } else {
         getDetailsArea().setText(description);
@@ -354,7 +368,9 @@ public class CommandSelectionContainer {
 
     /**
      * Sets the details area to show the currently selected <code>constraint</code>'s details.
-     * @param constraint the constraint meta-data
+     * 
+     * @param constraint
+     *          the constraint meta-data
      */
     private void setDetails(IItemNode constraint) {
       // lots of style info
@@ -366,7 +382,9 @@ public class CommandSelectionContainer {
 
   /**
    * Creates the items selection composite on the given parent and filters the composite based on the provided filter.
-   * @param parent parent for the newly created composite
+   * 
+   * @param parent
+   *          parent for the newly created composite
    * @return the resulting constraint selection composite
    */
   public Composite createComposite(Composite parent) {
@@ -375,11 +393,9 @@ public class CommandSelectionContainer {
     parentFormComposite.setFont(parent.getFont());
 
     final Text searchText = new Text(parentFormComposite, SWT.BORDER | SWT.SEARCH);
-
     searchText.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.HORIZONTAL_ALIGN_FILL));
 
-    GUIUtil.addPrompt(searchText, "Enter your filter text ...");
-
+    GUIUtil.addPrompt(searchText, PreferencesUIMessages.CommandSelectionContainer_Filtering);
 
     SashForm topPart = new SashForm(parentFormComposite, SWT.HORIZONTAL);
     createCategoryTree(topPart);
@@ -388,19 +404,35 @@ public class CommandSelectionContainer {
 
     createDetailsArea(parentFormComposite);
 
-    searchText.addKeyListener(new KeyListener() {
+    searchText.addFocusListener(new FocusListener() {
 
       @Override
-      public void keyReleased(KeyEvent e_p) {
-
-      }
-
-      @Override
-      public void keyPressed(KeyEvent e_p) {
+      public void focusLost(FocusEvent e) {
         preferenceFilter.setSearchValue(searchText.getText());
         itemList.refresh();
         categoryTree.refresh();
+      }
 
+      @Override
+      public void focusGained(FocusEvent e) {
+        // Nothing here
+      }
+    });
+
+    searchText.addKeyListener(new KeyListener() {
+
+      @Override
+      public void keyReleased(KeyEvent e) {
+        preferenceFilter.setSearchValue(searchText.getText());
+        itemList.refresh();
+        categoryTree.refresh();
+      }
+
+      @Override
+      public void keyPressed(KeyEvent e) {
+        preferenceFilter.setSearchValue(searchText.getText());
+        itemList.refresh();
+        categoryTree.refresh();
       }
     });
 
@@ -415,8 +447,11 @@ public class CommandSelectionContainer {
   }
 
   /**
-   * Helper method to create the category-tree part of the GUI. The result is a form containing the checkbox tree and a prompt label.
-   * @param parent the parent composite in which to create the tree
+   * Helper method to create the category-tree part of the GUI. The result is a form containing the checkbox tree and a
+   * prompt label.
+   * 
+   * @param parent
+   *          the parent composite in which to create the tree
    * @return the tree part of the GUI (itself a composite form)
    */
   private Control createCategoryTree(Composite parent) {
@@ -474,8 +509,11 @@ public class CommandSelectionContainer {
   }
 
   /**
-   * Helper method to create the constraint-list part of the GUI. The result is a form containing the items list and a prompt label.
-   * @param parent the parent composite in which to create the list
+   * Helper method to create the constraint-list part of the GUI. The result is a form containing the items list and a
+   * prompt label.
+   * 
+   * @param parent
+   *          the parent composite in which to create the list
    * @return the list part of the GUI (itself a composite form)
    */
   private Control createItemList(Composite parent) {
@@ -522,7 +560,9 @@ public class CommandSelectionContainer {
 
   /**
    * Helper method to create the details are of the GUI.
-   * @param parent the parent composite in which to create the details area
+   * 
+   * @param parent
+   *          the parent composite in which to create the details area
    * @return the details text area
    */
   private Control createDetailsArea(Composite parent) {
@@ -535,6 +575,7 @@ public class CommandSelectionContainer {
 
   /**
    * Obtains my category tree.
+   * 
    * @return the tree
    */
   private CheckboxTreeViewer getCategoryTree() {
@@ -543,6 +584,7 @@ public class CommandSelectionContainer {
 
   /**
    * Obtains my item list.
+   * 
    * @return the list
    */
   private CheckboxTableViewer getItemList() {
@@ -551,6 +593,7 @@ public class CommandSelectionContainer {
 
   /**
    * Obtains my details area.
+   * 
    * @return the details text area
    */
   private StyledText getDetailsArea() {
@@ -559,6 +602,7 @@ public class CommandSelectionContainer {
 
   /**
    * Obtains my mediator.
+   * 
    * @return my mediator
    */
   private Mediator getMediator() {
@@ -606,6 +650,7 @@ public class CommandSelectionContainer {
 
   /**
    * Obtains the currently selected category, if any.
+   * 
    * @return the current category
    */
   private CategoryPreferences getCurrentCategorySelection() {
@@ -620,7 +665,9 @@ public class CommandSelectionContainer {
 
   /**
    * Helper method to set the currently enabled categories in the tree. Also sets gray states as appropriate.
-   * @param root the root of the tree model
+   * 
+   * @param root
+   *          the root of the tree model
    */
   private void markEnabledCategories(ICategoryTreeNode root) {
     markEnabledCategories(root.getChildren());

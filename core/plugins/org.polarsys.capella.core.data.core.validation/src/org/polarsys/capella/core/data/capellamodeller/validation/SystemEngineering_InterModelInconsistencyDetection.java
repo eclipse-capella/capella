@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,11 +28,11 @@ public class SystemEngineering_InterModelInconsistencyDetection extends Abstract
 	 * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
 	 */	
 	@Override
-	public IStatus validate(IValidationContext ctx_p) {
-		List<InterModelInconsistency> inconsistencies = new InterModelInconsistencyDetector().getInterModelInconsistencies((SystemEngineering) ctx_p.getTarget());		 
+	public IStatus validate(IValidationContext ctx) {
+		List<InterModelInconsistency> inconsistencies = new InterModelInconsistencyDetector().getInterModelInconsistencies((SystemEngineering) ctx.getTarget());		 
 		if (inconsistencies.size() > 0) {			
-			return ctx_p.createFailureStatus(new Object[] {inconsistencies.size()});
+			return ctx.createFailureStatus(new Object[] {inconsistencies.size()});
 		} else
-			return ctx_p.createSuccessStatus();
+			return ctx.createSuccessStatus();
 	}
 }

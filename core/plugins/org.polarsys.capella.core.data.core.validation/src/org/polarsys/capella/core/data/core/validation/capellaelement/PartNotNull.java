@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,29 +21,29 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 public class PartNotNull extends AbstractValidationRule {
 
 	@Override
-	public IStatus validate(IValidationContext ctx_p) {
-		EObject eObj = ctx_p.getTarget();
+	public IStatus validate(IValidationContext ctx) {
+		EObject eObj = ctx.getTarget();
 		if (eObj instanceof CapellaElement && isImpactedByCurrentRule(eObj)) {
 
 			if(eObj instanceof ComponentExchangeEnd){
 				ComponentExchangeEnd cee = (ComponentExchangeEnd)eObj;
 				if(cee.getPart() == null){
-					return ctx_p.createFailureStatus(new Object[] { insertSpaceBetweenWord(cee.eClass().getName()), cee.getPort()});
+					return ctx.createFailureStatus(new Object[] { insertSpaceBetweenWord(cee.eClass().getName()), cee.getPort()});
 				}
 			}
 			if(eObj instanceof PhysicalLinkEnd){
 				PhysicalLinkEnd ple = (PhysicalLinkEnd)eObj;
 				if(ple.getPart() == null){
-					return ctx_p.createFailureStatus(new Object[] { insertSpaceBetweenWord(ple.eClass().getName()), ple.getPort()});
+					return ctx.createFailureStatus(new Object[] { insertSpaceBetweenWord(ple.eClass().getName()), ple.getPort()});
 				}
 			}
 		}
 		return null;
 	}
 
-	private boolean isImpactedByCurrentRule (EObject eObj_p) {
-		return (eObj_p instanceof ComponentExchangeEnd
-				|| eObj_p instanceof PhysicalLinkEnd);
+	private boolean isImpactedByCurrentRule (EObject eObj) {
+		return (eObj instanceof ComponentExchangeEnd
+				|| eObj instanceof PhysicalLinkEnd);
 	}
 
 	public String insertSpaceBetweenWord(String input) {

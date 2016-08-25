@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,8 +21,8 @@ import org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState;
 public class TC02_Region_History extends AbstractModelConstraint {
 
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    Region target = (Region) ctx_p.getTarget();
+  public IStatus validate(IValidationContext ctx) {
+    Region target = (Region) ctx.getTarget();
 
     int dh = 0;
     int sh = 0;
@@ -36,10 +36,10 @@ public class TC02_Region_History extends AbstractModelConstraint {
       }
 
       if ((dh > 1) || (sh > 1)) {
-        return ctx_p.createFailureStatus(target.getName());
+        return ctx.createFailureStatus(target.getName());
       }
     }
 
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

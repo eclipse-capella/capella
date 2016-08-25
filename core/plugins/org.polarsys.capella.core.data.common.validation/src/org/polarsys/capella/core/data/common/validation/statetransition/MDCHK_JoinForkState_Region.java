@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,15 +37,15 @@ public class MDCHK_JoinForkState_Region extends AbstractModelConstraint {
   private boolean isJoinState;
 
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    Pseudostate state = (Pseudostate) ctx_p.getTarget();
+  public IStatus validate(IValidationContext ctx) {
+    Pseudostate state = (Pseudostate) ctx.getTarget();
 
     if (state instanceof JoinPseudoState) {
       isJoinState = true;
     } else if (state instanceof ForkPseudoState) {
       isJoinState = false;
     } else {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
 
     EList<StateTransition> transitions;
@@ -53,21 +53,21 @@ public class MDCHK_JoinForkState_Region extends AbstractModelConstraint {
 
     if ((transitions == null) || (transitions.size() < 2)) {
       // error but not treated in this rule
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
 
     Collection<AbstractState> statesAffected = Collections2.transform(transitions, new Function<StateTransition, AbstractState>() {
       @SuppressWarnings("synthetic-access")
       @Override
-      public AbstractState apply(StateTransition arg0_p) {
-        return isJoinState ? arg0_p.getSource() : arg0_p.getTarget();
+      public AbstractState apply(StateTransition arg0) {
+        return isJoinState ? arg0.getSource() : arg0.getTarget();
       }
     });
 
     EObject eObject = EcoreUtil2.getCommonAncestor(statesAffected);
     if (!statesAffected.contains(eObject) && (eObject instanceof State)) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
-    return ctx_p.createFailureStatus(new Object[] { state.eClass().getName(), state.getName(), isJoinState ? "incoming" : "outgoing" }); //$NON-NLS-1$//$NON-NLS-2$
+    return ctx.createFailureStatus(new Object[] { state.eClass().getName(), state.getName(), isJoinState ? "incoming" : "outgoing" }); //$NON-NLS-1$//$NON-NLS-2$
   }
 }

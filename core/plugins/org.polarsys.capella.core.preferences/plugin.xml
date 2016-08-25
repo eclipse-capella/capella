@@ -21,7 +21,6 @@
             name="Commands Configurability">
       </page>
       
-	
       <page
             category="org.polarsys.capella.core.commands.preferences.capella.contextual.commands.preferences.page"
             class="org.polarsys.capella.core.commands.preferences.ui.UserProfilePreferencePage"
@@ -343,8 +342,6 @@
          </mapping>
      </transfer>
      
-     
-     
          <transfer
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella.png"
             id="org.polarsys.capella.core.model.preferences.transfer3"
@@ -357,16 +354,6 @@
          </mapping>
      </transfer>
      
-     
-     
-     
    </extension>
    
-  
-  <extension
-        point="org.eclipse.ui.startup">
-     <startup
-           class="org.polarsys.capella.core.preferences.autostatrt.PreferenceBundleAutoStart">
-     </startup>
-  </extension>
 </plugin>

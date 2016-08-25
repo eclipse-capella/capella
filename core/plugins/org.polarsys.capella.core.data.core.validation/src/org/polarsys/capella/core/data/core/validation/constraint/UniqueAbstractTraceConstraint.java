@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,8 +32,8 @@ public class UniqueAbstractTraceConstraint extends AbstractValidationRule {
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    AbstractTrace trace = (AbstractTrace) ctx_p.getTarget();
+  public IStatus validate(IValidationContext ctx) {
+    AbstractTrace trace = (AbstractTrace) ctx.getTarget();
     Collection<AbstractTrace> equivalentTraces = new ArrayList<AbstractTrace>();
     ECrossReferenceAdapter adapter = ECrossReferenceAdapter.getCrossReferenceAdapter(trace);
     if (adapter != null && trace.getSourceElement() != null && trace.getTargetElement() != null){
@@ -48,12 +48,12 @@ public class UniqueAbstractTraceConstraint extends AbstractValidationRule {
     }
     
     if (equivalentTraces.size() > 1){
-      ctx_p.skipCurrentConstraintForAll(equivalentTraces);
+      ctx.skipCurrentConstraintForAll(equivalentTraces);
       Object sparam = trace.getSourceElement() instanceof AbstractNamedElement ? ((AbstractNamedElement) trace.getSourceElement()).getName() : trace.getSourceElement();
       Object tparam = trace.getTargetElement() instanceof AbstractNamedElement ? ((AbstractNamedElement) trace.getTargetElement()).getName() : trace.getTargetElement();
-      return ConstraintStatus.createStatus(ctx_p, equivalentTraces, "Multiple equivalent traces of type ''{0}'' between ''{1}'' and ''{2}''",     //$NON-NLS-1$
+      return ConstraintStatus.createStatus(ctx, equivalentTraces, "Multiple equivalent traces of type ''{0}'' between ''{1}'' and ''{2}''",     //$NON-NLS-1$
         new Object[] {trace.eClass().getName(), sparam, tparam });
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }
