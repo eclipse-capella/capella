@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -342,7 +343,7 @@ public class CsServices {
     Session session = DiagramHelper.getService().getSession(diagram);
 
     for (DView view : session.getOwnedViews()) {
-      for (DRepresentation representation : view.getOwnedRepresentations()) {
+      for (DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
         if (handler.isRealizable(representation, diagram)) {
           if (!scope.contains(representation)) {
             scope.add(representation);

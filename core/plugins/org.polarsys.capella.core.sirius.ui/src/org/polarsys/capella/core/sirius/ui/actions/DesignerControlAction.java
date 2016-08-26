@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,6 +45,7 @@ import org.eclipse.sirius.ui.tools.api.control.SiriusControlHandler;
 import org.eclipse.sirius.ui.tools.api.control.SiriusUncontrolHandler;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -67,6 +68,8 @@ import org.polarsys.capella.core.platform.sirius.ui.preferences.ICapellaPreferen
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.sirius.ui.internal.UncontrolMessageDialog;
 
+import com.google.common.collect.Sets;
+
 /**
  * A specific control action handling representations.
  */
@@ -79,8 +82,8 @@ public class DesignerControlAction extends ControlAction {
      * @param representations_p
      * @param representationsDest_p
      */
-    public CapellaSiriusControlCommand(EObject semanticRoot, URI semanticDest, Set<DRepresentation> representations, URI representationsDest) {
-      super(semanticRoot, semanticDest, representations, representationsDest, new NullProgressMonitor());
+    public CapellaSiriusControlCommand(EObject semanticRoot, URI semanticDest, Set<DRepresentationDescriptor> repDescriptors, URI representationsDest) {
+      super(semanticRoot, semanticDest, repDescriptors, representationsDest, new NullProgressMonitor());
     }
 
     /**
@@ -192,15 +195,15 @@ public class DesignerControlAction extends ControlAction {
      * {@inheritDoc}
      */
     @Override
-    protected Collection<DRepresentation> getRepresentationsToMove(Shell shell, Session session, EObject semanticRoot) throws InterruptedException {
-      Collection<DRepresentation> representations = collectExistingRepresentations(session, semanticRoot);
-      Collection<DRepresentation> representationsToMove = null;
-      if (representations.isEmpty()) {
-        representationsToMove = representations;
+    protected Collection<DRepresentationDescriptor> getRepresentationDescriptorsToMove(Shell shell, Session session, EObject semanticRoot) throws InterruptedException {
+      Collection<DRepresentationDescriptor> repDescriptors = collectExistingRepresentationDescriptors(session, semanticRoot);
+      Collection<DRepresentationDescriptor> repDescriptorsToMove = null;
+      if (repDescriptors.isEmpty()) {
+          repDescriptorsToMove = repDescriptors;
       } else {
-        representationsToMove = askUserWhichRepresentationToSplit(_shell, session, representations);
+          repDescriptorsToMove = askUserWhichRepresentationToSplit(_shell, session, repDescriptors);
       }
-      return representationsToMove;
+      return repDescriptorsToMove;
     }
 
     /**
@@ -213,16 +216,16 @@ public class DesignerControlAction extends ControlAction {
       if (session != null) {
         final URI semanticDest = getControledResourceURI(_shell, semanticRoot);
         if (semanticDest != null) {
-          final Set<DRepresentation> representations = new HashSet<DRepresentation>(0);
+          final Set<DRepresentationDescriptor> repDescriptors = new HashSet<DRepresentationDescriptor>(0);
           try {
-            representations.addAll(getRepresentationsToMove(_shell, session, semanticRoot));
+            repDescriptors.addAll(getRepresentationDescriptorsToMove(_shell, session, semanticRoot));
           } catch (InterruptedException exception_p) {
             StringBuilder loggerMessage = new StringBuilder(".performControl(..) _ "); //$NON-NLS-1$
             __logger.warn(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI));
           }
           Collection<Resource> resources = new HashSet<Resource>(0);
-          for (DRepresentation representation : representations) {
-            resources.add(representation.eResource());
+          for (DRepresentationDescriptor repDescriptor : repDescriptors) {
+            resources.add(repDescriptor.eResource());
           }
           // Collect resources that needs to be updated according to this fragmentation.
           resources.addAll(RepresentationHelper.collectDependentResources(semanticRoot));
@@ -231,13 +234,17 @@ public class DesignerControlAction extends ControlAction {
           // Disable resourceSetSync notification to avoid unload / reload of fragmented resources during the fragmentation.
           setResourceSetSyncNotificationEnabled(session, false);
           try {
-            doExecuteCommand(semanticRoot, resources, new CapellaSiriusControlCommand(semanticRoot, semanticDest, representations, representationDest));
+            doExecuteCommand(semanticRoot, resources, new CapellaSiriusControlCommand(semanticRoot, semanticDest, repDescriptors, representationDest));
           } finally {
             Display.getCurrent().syncExec(new Runnable() {
               public void run() {
                 // Re-enable the notification.
                 setResourceSetSyncNotificationEnabled(session, true);
                 saveSession(semanticRoot);
+                Set<DRepresentation> representations = Sets.newHashSet();
+                for (DRepresentationDescriptor repDesc : repDescriptors) {
+                  representations.add(repDesc.getRepresentation());
+                }
                 SessionHelper.reloadEditors(session, representations);
               }
             });
