@@ -56,7 +56,7 @@ public class HashMapSet<K, V> implements Map<K, Collection<V>> {
   }
 
   @SuppressWarnings("unchecked")
-  public void remove(K obj_p, V arg1_p) {
+  public boolean remove(Object obj_p, Object arg1_p) {
     if (map.get(obj_p) != null) {
       if (!(map.get(obj_p) instanceof Collection)) {
         map.remove(obj_p);
@@ -64,7 +64,10 @@ public class HashMapSet<K, V> implements Map<K, Collection<V>> {
         ((Collection<V>) map.get(obj_p)).remove(arg1_p);
       }
       map.remove(obj_p);
+      
+      return true;
     }
+    return false;
   }
 
   public void putAll(K arg0_p, Collection<V> arg1_p) {
