@@ -14,23 +14,25 @@ import org.eclipse.emf.diffmerge.diffdata.EComparison;
 import org.eclipse.emf.diffmerge.ui.viewers.CategoryManager;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class MergeEMFDiffNode extends EMFDiffNode {
 
   private final CategoryManager _categoryManager;
 
-  public MergeEMFDiffNode(EComparison comparison) {
-    this(comparison, null);
+  public MergeEMFDiffNode(IContext context) {
+    this(context, null);
   }
 
-  public MergeEMFDiffNode(EComparison comparison, EditingDomain domain) {
-    this(comparison, domain, true, true);
+  public MergeEMFDiffNode(IContext context, EditingDomain domain) {
+    this(context, domain, true, true);
   }
 
-  public MergeEMFDiffNode(EComparison comparison, EditingDomain domain, boolean isLeftEditionPossible,
+  public MergeEMFDiffNode(IContext context, EditingDomain domain, boolean isLeftEditionPossible,
       boolean isRightEditionPossible) {
-    super(comparison, domain, isLeftEditionPossible, isRightEditionPossible);
-    _categoryManager = new MergeCategoryManager(this);
+    super((EComparison) context.get(ITransitionConstants.MERGE_COMPARISON), domain, isLeftEditionPossible, isRightEditionPossible);
+    _categoryManager = new MergeCategoryManager(this, context);
   }
 
   @Override

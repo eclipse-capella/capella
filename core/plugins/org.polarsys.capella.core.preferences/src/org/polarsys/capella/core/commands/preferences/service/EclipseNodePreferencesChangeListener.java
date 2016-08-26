@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,20 +60,20 @@ public class EclipseNodePreferencesChangeListener implements IPreferenceChangeLi
   // XXX to verify
   public void enablePreferences() {
 
-    IEclipsePreferences rootNode = new InstanceScope().getNode(Activator.PLUGIN_ID);
+    IEclipsePreferences rootNode = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
 
     PreferenceManager preferenceManager = PlatformUI.getWorkbench().getPreferenceManager();
 
     IPreferenceNode[] nodes = preferenceManager.getRootSubNodes();
     for (IPreferenceNode iPreferenceNode : nodes) {
       if (iPreferenceNode.getId().equals("org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page")) {
-        IEclipsePreferences node = new InstanceScope().getNode(iPreferenceNode.getId());
+        IEclipsePreferences node = InstanceScope.INSTANCE.getNode(iPreferenceNode.getId());
 
         IPreferenceNode[] subNodes = iPreferenceNode.getSubNodes();
 
         for (IPreferenceNode iPreferenceNode2 : subNodes) {
 
-          IEclipsePreferences node2 = new InstanceScope().getNode(iPreferenceNode2.getId());
+          IEclipsePreferences node2 = InstanceScope.INSTANCE.getNode(iPreferenceNode2.getId());
 
           if (iPreferenceNode2.getId().equals("org.polarsys.capella.core.platform.sirius.ui.actions.deletion.page")) {
             IPreferenceNode[] deletNodes = iPreferenceNode2.getSubNodes();

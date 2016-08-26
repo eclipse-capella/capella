@@ -34,7 +34,7 @@ public class PropertyPreference extends AbstractProperty implements IEditablePro
   }
 
   public IScopeContext getScope() {
-    return new InstanceScope();
+    return InstanceScope.INSTANCE;
   }
 
   /**
