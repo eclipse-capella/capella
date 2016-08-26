@@ -1,6 +1,13 @@
-/**
- * Copyright (c) THALES, 2011. All rights reserved.
- */
+/*******************************************************************************
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
 package org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement;
 
 import java.util.ArrayList;
@@ -32,22 +39,22 @@ public class FunctionalChainInvolvement_ExchangeItems extends AbstractValidation
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
+  public IStatus validate(IValidationContext ctx) {
     //
     // Preconditions.
     //
-    EMFEventType eType = ctx_p.getEventType();
+    EMFEventType eType = ctx.getEventType();
     if (EMFEventType.NULL != eType) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
-    EObject eObj = ctx_p.getTarget();
+    EObject eObj = ctx.getTarget();
     if (!(eObj instanceof FunctionalChainInvolvement)) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
     FunctionalChainInvolvement element = (FunctionalChainInvolvement) eObj;
 
     if (!(element.getInvolved() instanceof FunctionalExchange)) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
 
     // Collect invalid ExchangeItems (ExchangeItems referenced by the SequenceMessage but not associated with the invoked operation).
@@ -59,10 +66,10 @@ public class FunctionalChainInvolvement_ExchangeItems extends AbstractValidation
       for (AbstractExchangeItem abstractExchangeItem : invalidExchangeItems) {
         invalidExchangeItemsNames.add(abstractExchangeItem.getName());
       }
-      return ctx_p.createFailureStatus(EObjectLabelProviderHelper.getText(element),
+      return ctx.createFailureStatus(EObjectLabelProviderHelper.getText(element),
           StringUtils.join(invalidExchangeItemsNames, EXCHANGE_ITEMS_NAMES_LIST_SEPARATOR), invalidExchangeItemsNames.size() > 1 ? "are" : "is"); //$NON-NLS-1$//$NON-NLS-2$
     }
 
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

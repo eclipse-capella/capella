@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,29 +31,29 @@ public class SystemActorRealizedByLogicalActor extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
 
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof Actor) {
         Actor actor = (Actor) eObj;
         EList<AbstractTrace> traces = actor.getIncomingTraces();
         if (traces.size() < 1) {
-          return ctx_p.createFailureStatus(actor.getName() + " (" + actor.eClass().getName() + ") is not realized by any Logical Actor."); //$NON-NLS-1$ //$NON-NLS-2$
+          return ctx.createFailureStatus(actor.getName() + " (" + actor.eClass().getName() + ") is not realized by any Logical Actor."); //$NON-NLS-1$ //$NON-NLS-2$
         }
         Iterator<AbstractTrace> iterator = traces.iterator();
         while (iterator.hasNext()) {
           AbstractTrace next = iterator.next();
           if (next instanceof SystemActorRealization) {
-            return ctx_p.createSuccessStatus();
+            return ctx.createSuccessStatus();
           }
         }
         // actor is not realized by any logical actor
-        return ctx_p.createFailureStatus(actor.getName() + " (" + actor.eClass().getName() + ") is not realized by any Logical Actor."); //$NON-NLS-1$ //$NON-NLS-2$
+        return ctx.createFailureStatus(actor.getName() + " (" + actor.eClass().getName() + ") is not realized by any Logical Actor."); //$NON-NLS-1$ //$NON-NLS-2$
       }
     }
 
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

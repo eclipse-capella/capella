@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,7 +68,7 @@ public class EPFValidationAction extends CapellaValidateAction {
   /*
    * Resource hosting the elements of the current diagnostic (see {@link #handleDiagnostic(Diagnostic)}).
    */
-  protected Resource _currentResource;
+  protected Resource currentResource;
 
   /*
    * 
@@ -112,13 +112,13 @@ public class EPFValidationAction extends CapellaValidateAction {
   private HashMap<String, Boolean> oldPreferences;
 
   /**
-   * @param isRootAction_p
-   * @param epf_p
+   * @param isRootAction
+   * @param epf
    */
-  public EPFValidationAction(boolean isRootAction_p, IFile epf_p) {
-    this.isParent = isRootAction_p;
+  public EPFValidationAction(boolean isRootAction, IFile epf) {
+    this.isParent = isRootAction;
     initilizeMarkersResources();
-    setEpf(epf_p);
+    setEpf(epf);
 
     if (null != getEpf()) {
       try {
@@ -318,14 +318,14 @@ public class EPFValidationAction extends CapellaValidateAction {
        *      org.eclipse.emf.common.util.Diagnostic)
        */
       @Override
-      public void createMarkers(Resource resource_p, Diagnostic diagnostic_p) {
+      public void createMarkers(Resource resource, Diagnostic diagnostic) {
         // Don't use 'traditional' resource markers.
         // TODO investigate to go back to the traditional ones.
         // Original reasons to switch: CDO and too many workspace
         // notifications (especially in transitions)
-        // can't use resource_p, see handleDiagnostics below
+        // can't use resource, see handleDiagnostics below
         final String epf = getEpf() == null ? "Default" : getEpf().getName();
-        LightMarkerRegistry.getInstance().createMarker(getFile(_currentResource), diagnostic_p, getMarkerID(), new LightMarkerRegistry.IMarkerModification() {	
+        LightMarkerRegistry.getInstance().createMarker(getFile(currentResource), diagnostic, getMarkerID(), new LightMarkerRegistry.IMarkerModification() {	
           @Override
           public void modify(IMarker marker) {
             try {
@@ -342,7 +342,7 @@ public class EPFValidationAction extends CapellaValidateAction {
        * @see org.eclipse.emf.edit.ui.util.EditUIMarkerHelper#deleteMarkers(java.lang.Object, boolean, int)
        */
       @Override
-      public void deleteMarkers(Object object_p, boolean includeSubtypes_p, int depth_p) {
+      public void deleteMarkers(Object object, boolean includeSubtypes, int depth) {
         boolean cleanup = AbstractPreferencesInitializer.getBoolean(ICapellaValidationPreferences.P_CLEAN_PREVIOUS_VALIDATION_RESULTS, true);
         if (cleanup) {
           List<IMarker> markers = new ArrayList<IMarker>(LightMarkerRegistry.getInstance().getMarkers());
@@ -367,12 +367,12 @@ public class EPFValidationAction extends CapellaValidateAction {
    * @see org.eclipse.emf.edit.ui.action.ValidateAction#handleDiagnostic(org.eclipse.emf.common.util.Diagnostic)
    */
   @Override
-  protected void handleDiagnostic(Diagnostic diagnostic_p) {
+  protected void handleDiagnostic(Diagnostic diagnostic) {
     // This is all about tweaking the default behavior (that picks the first
     // opened resource).
     try {
       // Get diagnostic data.
-      List<?> data = diagnostic_p.getData();
+      List<?> data = diagnostic.getData();
       // Check content availability.
       if ((null != data) && (data.size() > 0)) {
         // Search for a resource holder.
@@ -380,7 +380,7 @@ public class EPFValidationAction extends CapellaValidateAction {
           // That has to be an EObject.
           if (object instanceof EObject) {
             // Retain current resource...
-            _currentResource = ((EObject) object).eResource();
+            currentResource = ((EObject) object).eResource();
             // ... and stop the search.
             break;
           }
@@ -389,10 +389,10 @@ public class EPFValidationAction extends CapellaValidateAction {
       // Go for default behavior.
       // Markers will be tagged with current resource at creation time
       // (see constructor).
-      super.handleDiagnostic(diagnostic_p);
+      super.handleDiagnostic(diagnostic);
     } finally {
       // Reset current resource, whatever its value may be.
-      _currentResource = null;
+      currentResource = null;
       // updateValidationPreferences(false);
     }
   }
@@ -407,8 +407,8 @@ public class EPFValidationAction extends CapellaValidateAction {
   /**
    * @param epf the epf to set
    */
-  public void setEpf(IFile _epf) {
-    this.epf = _epf;
+  public void setEpf(IFile epf) {
+    this.epf = epf;
   }
 
 }

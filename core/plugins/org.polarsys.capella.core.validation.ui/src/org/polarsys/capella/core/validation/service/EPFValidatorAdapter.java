@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,15 +33,15 @@ public class EPFValidatorAdapter extends CapellaValidatorAdapter {
    *      org.eclipse.emf.common.util.DiagnosticChain)
    */
   @Override
-  protected void appendDiagnostics(IStatus status_p, DiagnosticChain diagnostics_p) {
+  protected void appendDiagnostics(IStatus status, DiagnosticChain diagnostics) {
     // Deal recursively with multi status.
-    if (status_p.isMultiStatus()) {
-      IStatus[] children = status_p.getChildren();
+    if (status.isMultiStatus()) {
+      IStatus[] children = status.getChildren();
       for (IStatus element : children) {
-        appendDiagnostics(element, diagnostics_p);
+        appendDiagnostics(element, diagnostics);
       }
-    } else if (status_p instanceof IConstraintStatus) {
-      diagnostics_p.add(new ConstraintStatusDiagnostic((IConstraintStatus) status_p));
+    } else if (status instanceof IConstraintStatus) {
+      diagnostics.add(new ConstraintStatusDiagnostic((IConstraintStatus) status));
     }
 
   }

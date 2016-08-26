@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,19 +29,19 @@ public class ComponentExchange_Location extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
+  public IStatus validate(IValidationContext ctx) {
     // Raise a warning if component exchange is not located in the common ancestor between both component exchange bounds
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
 
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof ComponentExchange) {
         AbstractNamedElement container = ComponentExchangeExt.getDefaultContainer((ComponentExchange) eObj);
         if ((container != null) && !(container.equals(eObj.eContainer()))) {
-          return createFailureStatus(ctx_p, new Object[] { ((ComponentExchange) eObj).getName(), container.getName() });
+          return createFailureStatus(ctx, new Object[] { ((ComponentExchange) eObj).getName(), container.getName() });
         }
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

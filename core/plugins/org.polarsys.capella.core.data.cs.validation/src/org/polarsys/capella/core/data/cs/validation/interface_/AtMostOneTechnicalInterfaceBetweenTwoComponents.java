@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,8 +27,8 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 public class AtMostOneTechnicalInterfaceBetweenTwoComponents extends AbstractValidationRule {
 	
 	@Override
-	public IStatus validate(IValidationContext ctx_p) {	
-      EObject eObj = ctx_p.getTarget();
+	public IStatus validate(IValidationContext ctx) {	
+      EObject eObj = ctx.getTarget();
       if (eObj instanceof Interface) {
     	  Interface interfaze = (Interface) eObj;    	  
     	  if (!interfaze.isStructural()) {
@@ -57,7 +57,7 @@ public class AtMostOneTechnicalInterfaceBetweenTwoComponents extends AbstractVal
 									b.append(", "); //$NON-NLS-1$
 								}
 							}
-    		  		return ctx_p.createFailureStatus(
+    		  		return ctx.createFailureStatus(
     		  				CapellaElementExt.getCapellaExplorerLabel(c1), 
     		  				CapellaElementExt.getCapellaExplorerLabel(c2), 
     		  				b.toString());    		  		
@@ -66,6 +66,6 @@ public class AtMostOneTechnicalInterfaceBetweenTwoComponents extends AbstractVal
     		  }
     	  }
       }        
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
 	}
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,9 +21,9 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 public class PhysicalPortPhysicalLink extends AbstractValidationRule {
 
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
 
     if (eType == EMFEventType.NULL) {
       // check PhysicalPort type
@@ -32,10 +32,10 @@ public class PhysicalPortPhysicalLink extends AbstractValidationRule {
         // if PhysicalPort is not linked to any PhysicalLink
         // return failure status
         if ((null == port.getInvolvedLinks()) || (port.getInvolvedLinks().size() == 0)) {
-          return ctx_p.createFailureStatus(new Object[] { port.getName() });
+          return ctx.createFailureStatus(new Object[] { port.getName() });
         }
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

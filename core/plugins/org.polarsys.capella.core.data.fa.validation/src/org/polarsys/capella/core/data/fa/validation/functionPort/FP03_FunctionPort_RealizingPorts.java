@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,9 +25,9 @@ public class FP03_FunctionPort_RealizingPorts extends FP03_FunctionPort {
    * {@inheritDoc}
    */
   @Override
-  protected boolean validate(IValidationContext ctx_p, AbstractFunction fct1_p, FunctionPort fp1_p, AbstractFunction fct2_p, FunctionPort fp2_p) {
-    if (FunctionExt.getRealizingFunctions(fct1_p).contains(fct2_p)) {
-      if (!FunctionPortExt.getRealizingPorts(fp1_p).contains(fp2_p)) {
+  protected boolean validate(IValidationContext ctx, AbstractFunction fct1, FunctionPort fp1, AbstractFunction fct2, FunctionPort fp2) {
+    if (FunctionExt.getRealizingFunctions(fct1).contains(fct2)) {
+      if (!FunctionPortExt.getRealizingPorts(fp1).contains(fp2)) {
         return false;
       }
     }

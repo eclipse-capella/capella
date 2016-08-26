@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -61,31 +61,31 @@ public class CN01_Connection_RealizingBound extends AbstractValidationRule {
   }
 
   /**
-   * @param exc_p
-   * @param exch_p
+   * @param exc
+   * @param exch
    * @return
    */
-  private boolean isValid(ComponentExchange previous_p, ComponentExchange current_p) {
-    Port sourcePrevious = ComponentExchangeExt.getSourcePort(previous_p);
-    Port sourceCurrent = ComponentExchangeExt.getSourcePort(current_p);
-    Component sourceComponentPrevious = ComponentExchangeExt.getSourceComponent(previous_p);
-    if (ComponentExchangeExt.getSourcePart(previous_p) != null) {
+  private boolean isValid(ComponentExchange previous, ComponentExchange current) {
+    Port sourcePrevious = ComponentExchangeExt.getSourcePort(previous);
+    Port sourceCurrent = ComponentExchangeExt.getSourcePort(current);
+    Component sourceComponentPrevious = ComponentExchangeExt.getSourceComponent(previous);
+    if (ComponentExchangeExt.getSourcePart(previous) != null) {
       sourceComponentPrevious = null; //disable check for component exchange linked to parts
     }
-    Component sourceComponentCurrent = ComponentExchangeExt.getSourceComponent(current_p);
-    if (ComponentExchangeExt.getSourcePart(current_p) != null) {
+    Component sourceComponentCurrent = ComponentExchangeExt.getSourceComponent(current);
+    if (ComponentExchangeExt.getSourcePart(current) != null) {
       sourceComponentCurrent = null; //disable check for component exchange linked to parts
     }
 
-    Port targetPrevious = ComponentExchangeExt.getTargetPort(previous_p);
-    Port targetCurrent = ComponentExchangeExt.getTargetPort(current_p);
-    Component targetComponentPrevious = ComponentExchangeExt.getTargetComponent(previous_p);
-    if (ComponentExchangeExt.getTargetPart(previous_p) != null) {
+    Port targetPrevious = ComponentExchangeExt.getTargetPort(previous);
+    Port targetCurrent = ComponentExchangeExt.getTargetPort(current);
+    Component targetComponentPrevious = ComponentExchangeExt.getTargetComponent(previous);
+    if (ComponentExchangeExt.getTargetPart(previous) != null) {
       targetComponentPrevious = null; //disable check for component exchange linked to parts
     }
 
-    Component targetComponentCurrent = ComponentExchangeExt.getTargetComponent(current_p);
-    if (ComponentExchangeExt.getTargetPart(current_p) != null) {
+    Component targetComponentCurrent = ComponentExchangeExt.getTargetComponent(current);
+    if (ComponentExchangeExt.getTargetPart(current) != null) {
       targetComponentCurrent = null; //disable check for component exchange linked to parts
     }
 
@@ -96,18 +96,18 @@ public class CN01_Connection_RealizingBound extends AbstractValidationRule {
   }
 
   /**
-   * @param sourcePrevious_p
-   * @param sourceCurrent_p
+   * @param sourcePrevious
+   * @param sourceCurrent
    * @return
    */
-  private boolean isValid(Port portPrevious_p, Port portCurrent_p, Component parentPrevious, Component parentCurrent) {
+  private boolean isValid(Port portPrevious, Port portCurrent, Component parentPrevious, Component parentCurrent) {
     boolean sourceValid = true;
-    if ((portPrevious_p != null) && (portCurrent_p != null)) {
-      if ((portPrevious_p instanceof ComponentPort) && (portCurrent_p instanceof ComponentPort)) {
-        sourceValid = PortExt.isTransitionedTo((ComponentPort) portPrevious_p, (ComponentPort) portCurrent_p);
+    if ((portPrevious != null) && (portCurrent != null)) {
+      if ((portPrevious instanceof ComponentPort) && (portCurrent instanceof ComponentPort)) {
+        sourceValid = PortExt.isTransitionedTo((ComponentPort) portPrevious, (ComponentPort) portCurrent);
       }
 
-    } else if (portCurrent_p != null) { //for oa checks, if the previous CM is defined between parents of a transitioned Cps related to current CE, it's ok.
+    } else if (portCurrent != null) { //for oa checks, if the previous CM is defined between parents of a transitioned Cps related to current CE, it's ok.
       if ((parentPrevious != null) && (parentCurrent != null)) {
         Collection<Component> parentsPrevious = ComponentExt.getAllSubUsedComponents(parentPrevious);
         parentsPrevious.addAll(ComponentExt.getComponentAncestors(parentPrevious));

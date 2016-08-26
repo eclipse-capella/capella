@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
  */
 public class DynamicCreateContributionItem extends CompoundContributionItem implements IWorkbenchContribution {
 
-  IServiceLocator _locator = null;
+  IServiceLocator locator = null;
 
   class DynamicProvider extends DynamicActionProvider {
 
@@ -37,18 +37,18 @@ public class DynamicCreateContributionItem extends CompoundContributionItem impl
       initActions(null, null, new ISelectionProvider() {
 
         @Override
-        public void setSelection(ISelection selection_p) {
+        public void setSelection(ISelection selection) {
           // Nothing here
         }
 
         @Override
-        public void removeSelectionChangedListener(ISelectionChangedListener listener_p) {
+        public void removeSelectionChangedListener(ISelectionChangedListener listener) {
           // Nothing here
         }
 
         @Override
         public ISelection getSelection() {
-          ISelectionService selectionService = (ISelectionService) _locator.getService(ISelectionService.class);
+          ISelectionService selectionService = (ISelectionService) locator.getService(ISelectionService.class);
           final ISelection selection = selectionService.getSelection();
           ModelElement element = getSelectedElement(selection);
 
@@ -60,7 +60,7 @@ public class DynamicCreateContributionItem extends CompoundContributionItem impl
         }
 
         @Override
-        public void addSelectionChangedListener(ISelectionChangedListener listener_p) {
+        public void addSelectionChangedListener(ISelectionChangedListener listener) {
           // Nothing here
         }
       });
@@ -89,8 +89,8 @@ public class DynamicCreateContributionItem extends CompoundContributionItem impl
    * {@inheritDoc}
    */
   @Override
-  public void initialize(IServiceLocator serviceLocator_p) {
-    _locator = serviceLocator_p;
+  public void initialize(IServiceLocator serviceLocator) {
+    locator = serviceLocator;
   }
 
   /**

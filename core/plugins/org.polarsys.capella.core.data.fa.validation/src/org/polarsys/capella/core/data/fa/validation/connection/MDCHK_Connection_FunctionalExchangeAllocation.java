@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,9 +35,9 @@ public class MDCHK_Connection_FunctionalExchangeAllocation extends AbstractValid
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
     if (eType == EMFEventType.NULL) {
       // This rule does not applies to physical links
       if (eObj instanceof ComponentExchange && !(eObj instanceof PhysicalLink)) {
@@ -48,26 +48,26 @@ public class MDCHK_Connection_FunctionalExchangeAllocation extends AbstractValid
         for (FunctionalExchange fe : functionalExchanges) {
           BlockArchitecture feLevel = getArchitectureLevel(fe);
           if (null != ceLevel && null != feLevel && feLevel != ceLevel) {
-            statuses.add(ctx_p.createFailureStatus(new Object[] { ce.getName(), ce.eClass().getName(), ceLevel.getName(), fe.getName(), fe.eClass().getName(), feLevel.getName() }));
+            statuses.add(ctx.createFailureStatus(new Object[] { ce.getName(), ce.eClass().getName(), ceLevel.getName(), fe.getName(), fe.eClass().getName(), feLevel.getName() }));
           }
         }
         if (statuses.size() > 0) {
-          return ConstraintStatus.createMultiStatus(ctx_p, statuses);
+          return ConstraintStatus.createMultiStatus(ctx, statuses);
         }
 
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
   /**
    * TODO This method should be somewhere in a generic Capella helper Return the component architecture item above the given capella element
-   * @param element_p the capella element
+   * @param element the capella element
    * @return a <code>ComponentArchitecture</code> instance
    */
-  private static BlockArchitecture getArchitectureLevel(CapellaElement element_p) {
+  private static BlockArchitecture getArchitectureLevel(CapellaElement element) {
     BlockArchitecture returnvalue = null;
-    EObject container = element_p.eContainer();
+    EObject container = element.eContainer();
     if (null != container) {
       while (!(container instanceof BlockArchitecture) && null != container) {
         container = container.eContainer();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,10 +19,10 @@ import org.eclipse.jface.action.IAction;
 public class DynamicActionContributionItem extends ActionContributionItem {
   /**
    * Constructor.
-   * @param action_p
+   * @param action
    */
-  public DynamicActionContributionItem(IAction action_p) {
-    super(action_p);
+  public DynamicActionContributionItem(IAction action) {
+    super(action);
   }
 
   /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,9 +37,9 @@ public class SystemActorRealizationConsistency extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
 
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof Actor) {
@@ -48,7 +48,7 @@ public class SystemActorRealizationConsistency extends AbstractValidationRule {
         EList<AbstractTrace> traces = actor.getOutgoingTraces();
         // if no realization found, no consistency check needed
         if (traces.size() < 1) {
-          return ctx_p.createSuccessStatus();
+          return ctx.createSuccessStatus();
         }
 
         Iterator<AbstractTrace> iterator = traces.iterator();
@@ -58,24 +58,24 @@ public class SystemActorRealizationConsistency extends AbstractValidationRule {
             TraceableElement targetElement = next.getTargetElement();
             // if target is not actor create failure status message
             if ((null == targetElement) || !(targetElement instanceof Entity)) {
-              statuses.add(ctx_p.createFailureStatus(actor.getName() + " (" + actor.eClass().getName() //$NON-NLS-1$
+              statuses.add(ctx.createFailureStatus(actor.getName() + " (" + actor.eClass().getName() //$NON-NLS-1$
                                                      + ") contain realization with inconsistent Target (it should be an Entity or Operational Actor)")); //$NON-NLS-1$
             }
             TraceableElement sourceElement = next.getSourceElement();
             // if target is not actor create failure status message
             if ((null == sourceElement) || !(sourceElement instanceof Actor)) {
-              statuses.add(ctx_p.createFailureStatus(actor.getName() + " (" + actor.eClass().getName() //$NON-NLS-1$
+              statuses.add(ctx.createFailureStatus(actor.getName() + " (" + actor.eClass().getName() //$NON-NLS-1$
                                                      + ") contain realization with inconsistent Source (it should be System Actor)")); //$NON-NLS-1$
             }
           }
         }
         // return list of failure status message if any
         if (statuses.size() > 0) {
-          return ConstraintStatus.createMultiStatus(ctx_p, statuses);
+          return ConstraintStatus.createMultiStatus(ctx, statuses);
         }
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
 
   }
 }

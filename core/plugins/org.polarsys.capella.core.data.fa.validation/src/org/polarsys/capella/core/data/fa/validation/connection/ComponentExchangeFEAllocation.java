@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,9 +34,9 @@ public class ComponentExchangeFEAllocation extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
     if (eType == EMFEventType.NULL) {
       // This rule does not applies to physical links
       if ((eObj instanceof ComponentExchange)) {
@@ -45,13 +45,13 @@ public class ComponentExchangeFEAllocation extends AbstractValidationRule {
         EList<FunctionalExchange> allocatedExchanges = componentExchange.getAllocatedFunctionalExchanges();
         // if no allocated exchanges found, no further check needed
         if (allocatedExchanges.size() < 1) {
-          return ctx_p.createSuccessStatus();
+          return ctx.createSuccessStatus();
         }
         List<CapellaElement> availableExhcnage = ComponentExchangeExt.getValidFEAvailableForAllocation(componentExchange);
         if ((null != availableExhcnage) && (null != allocatedExchanges)) {
           for (FunctionalExchange allocatedExchange : allocatedExchanges) {
             if (!availableExhcnage.contains(allocatedExchange)) {
-              statuses.add(ctx_p.createFailureStatus(componentExchange.getName()
+              statuses.add(ctx.createFailureStatus(componentExchange.getName()
                                                      + " (" + componentExchange.eClass().getName() + ") should not allocate " //$NON-NLS-1$ //$NON-NLS-2$
                                                      + allocatedExchange.getName()
                                                      + " (" + allocatedExchange.eClass().getName() + ") regarding ports directions.")); //$NON-NLS-1$ //$NON-NLS-2$
@@ -61,11 +61,11 @@ public class ComponentExchangeFEAllocation extends AbstractValidationRule {
 
         // return list of failure status message if any
         if (statuses.size() > 0) {
-          return ConstraintStatus.createMultiStatus(ctx_p, statuses);
+          return ConstraintStatus.createMultiStatus(ctx, statuses);
         }
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
 }

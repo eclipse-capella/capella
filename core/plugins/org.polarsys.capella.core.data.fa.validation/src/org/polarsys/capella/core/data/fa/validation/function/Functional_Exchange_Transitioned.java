@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,15 +32,15 @@ public class Functional_Exchange_Transitioned extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
+  public IStatus validate(IValidationContext ctx) {
     // Test values initialization
     boolean targetTest = false;
     boolean sourceTest = false;
-    EObject eObj = ctx_p.getTarget();
+    EObject eObj = ctx.getTarget();
 
     // Don't check the rule in the Operational Analysis level because there is no transition available above this level.
     if (SystemEngineeringExt.findArchitecture(eObj) instanceof OperationalAnalysis) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
 
     if (eObj instanceof FunctionalExchange) {
@@ -81,7 +81,7 @@ public class Functional_Exchange_Transitioned extends AbstractValidationRule {
         // If one of the list is empty => Validation rule is success
         if (outgoingSource.isEmpty() || outgoingTarget.isEmpty()) {
           // Success
-          return ctx_p.createSuccessStatus();
+          return ctx.createSuccessStatus();
         }
         // Get the outgoingTraces
         List<AbstractTrace> outgoingExchanges = functionalExchange.getOutgoingTraces();
@@ -126,16 +126,16 @@ public class Functional_Exchange_Transitioned extends AbstractValidationRule {
       }
       if (sourceTest && targetTest) {
         // If the 2 test are ok => success
-        return ctx_p.createSuccessStatus();
+        return ctx.createSuccessStatus();
       }
       // Warning on the validation rule
       EObject eSource = functionalExchange.getSource();
       EObject eTarget = functionalExchange.getTarget();
-      return ctx_p.createFailureStatus(new Object[] { functionalExchange.getName(), eSource == null ? null : eSource.eContainer(),
+      return ctx.createFailureStatus(new Object[] { functionalExchange.getName(), eSource == null ? null : eSource.eContainer(),
                                                      eTarget == null ? null : eTarget.eContainer() });
     }
 
     // Warning on the validation rule
-    return ctx_p.createFailureStatus(new Object[] {});
+    return ctx.createFailureStatus(new Object[] {});
   }
 }

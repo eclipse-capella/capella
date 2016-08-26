@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,7 @@ public class CapellaValidationUIActivator extends AbstractUIActivator {
   public final static String IMG_ENABLED_VALIDATE = "capella_validate_16.gif"; //$NON-NLS-1$
 
   // The shared instance
-  private static CapellaValidationUIActivator __plugin;
+  private static CapellaValidationUIActivator plugin;
   private EPFValidatorAdapter efpValidatorAdapter;
 
   public EPFValidatorAdapter getEfpValidatorAdapter() {
@@ -44,21 +44,21 @@ public class CapellaValidationUIActivator extends AbstractUIActivator {
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
    */
   @Override
-  public void start(BundleContext context_p) throws Exception {
-    super.start(context_p);
+  public void start(BundleContext context) throws Exception {
+    super.start(context);
     efpValidatorAdapter = new EPFValidatorAdapter();
     // Add a constraints filter, to disable all constraints that are not capella ones, e.g GMF ones.
     // efpValidatorAdapter.getValidator().addConstraintFilter(new EPFConstraintFilter());
-    __plugin = this;
+    plugin = this;
   }
 
   /**
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
    */
   @Override
-  public void stop(BundleContext context_p) throws Exception {
-    __plugin = null;
-    super.stop(context_p);
+  public void stop(BundleContext context) throws Exception {
+    plugin = null;
+    super.stop(context);
   }
 
   /**
@@ -66,7 +66,7 @@ public class CapellaValidationUIActivator extends AbstractUIActivator {
    * @return the shared instance
    */
   public static CapellaValidationUIActivator getDefault() {
-    return __plugin;
+    return plugin;
   }
 
 }
