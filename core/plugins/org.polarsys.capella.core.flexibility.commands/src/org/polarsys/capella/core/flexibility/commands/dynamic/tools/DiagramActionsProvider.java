@@ -36,6 +36,7 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
@@ -269,7 +270,7 @@ public class DiagramActionsProvider implements IActionsProvider {
         //Retrieve an already existing representation if any
         for (DView view : analysis.getOwnedViews()) {
           if (view.getViewpoint().equals(v)) {
-            for (DRepresentation aaa : view.getOwnedRepresentations()) {
+            for (DRepresentation aaa : new DViewQuery(view).getLoadedRepresentations()) {
               if (aaa instanceof DDiagram) {
                 DDiagram diagram = (DDiagram) aaa;
                 if (diagram.getDescription().equals(desc)) {

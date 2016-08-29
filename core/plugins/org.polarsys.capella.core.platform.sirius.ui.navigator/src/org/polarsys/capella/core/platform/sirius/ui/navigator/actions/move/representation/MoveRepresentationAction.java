@@ -17,6 +17,7 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.gmf.runtime.diagram.ui.requests.DuplicateRequest;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
@@ -24,6 +25,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
@@ -185,7 +187,8 @@ public class MoveRepresentationAction extends BaseSelectionListenerAction {
               }
             }
             for (final DRepresentation representation : movableRepresentations) {
-              session.moveRepresentation(targetAnalysis, representation);
+              DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation).getRepresentationDescriptor();
+              session.moveRepresentation(targetAnalysis, representationDescriptor);
             }
           }
 
