@@ -13,17 +13,39 @@ package org.polarsys.capella.core.transition.common.ui.handlers.merge;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.eclipse.emf.diffmerge.api.IMatch;
+import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.eclipse.emf.diffmerge.diffdata.EComparison;
+import org.eclipse.emf.diffmerge.diffdata.EMatch;
+import org.eclipse.emf.diffmerge.ui.diffuidata.ComparisonSelection;
 import org.eclipse.emf.diffmerge.ui.viewers.ComparisonViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
+import org.eclipse.emf.diffmerge.ui.viewers.MergeChoiceData;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.BusyIndicator;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.ToolBar;
+import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.polarsys.capella.core.transition.common.ui.Activator;
 
 public class DiffComparisonViewer extends ComparisonViewer {
 
+  /** The name of the "merge all" image */
+  private static final String CHECKIN_ACTION_ALL = "checkin_action_all.gif";
+  
+  private static boolean mergeAllInProgress = false;
+  
   public DiffComparisonViewer(Composite parent) {
     super(parent);
   }
@@ -70,5 +92,70 @@ public class DiffComparisonViewer extends ComparisonViewer {
     }
     return result;
   }
+  
+  /**
+   * Load needed images
+   */
+  protected void loadImageRegistry() {
+    // Load images
+    ImageRegistry reg = Activator.getDefault().getImageRegistry();
+    ImageDescriptor desc = reg.getDescriptor(CHECKIN_ACTION_ALL);
+    if (desc == null) {
+      Activator.getDefault();
+      desc = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/ctool16/"+CHECKIN_ACTION_ALL);
+      reg.put(CHECKIN_ACTION_ALL, desc.createImage());
+    }
+  }
+  
+  /**
+   * Create the "merge all" tool to the given side in the given tool bar and return it
+   * @param toolbar a non-null tool bar
+   * @param toLeft whether the side is left
+   * @return a potentially null tool item
+   */
+  protected ToolItem createToolMergeAll(ToolBar toolbar) {
+    loadImageRegistry();
+    
+    final ToolItem result = new ToolItem(toolbar, SWT.PUSH);
+    // Image
+    Image mergeAllImage = Activator.getDefault().getImageRegistry().get(CHECKIN_ACTION_ALL);
+    result.setImage(mergeAllImage);
+    // Tool tip
+    result.setToolTipText(Messages.ComparisonViewer_MergeAllTooltip);
+    // Activation
+    result.setEnabled(true);
+    // Selection
+    result.addSelectionListener(new SelectionAdapter() {
+      /**
+       * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       */
+      @Override
+      public void widgetSelected(SelectionEvent event) {
+        IEditableModelScope  scope = getComparison().getScope(getInput().getRoleForSide(true));
+        List<EObject> root = scope.getContents();
+        ComparisonSelection selection = asComparisonSelection(new StructuredSelection(root));
+        mergeAllInProgress = true;
+        merge(false, selection);
+        mergeAllInProgress = false;
+      }
+    });
+    return result;
+  }
+  
+  @Override
+  protected boolean interactionsRequiredForMerge(MergeChoiceData choices_p, EMFDiffNode input_p,
+      List<EMatch> selectedMatches) {
+    if (mergeAllInProgress) {
+      return false;
+    }
+    return super.interactionsRequiredForMerge(choices_p, input_p, selectedMatches);
+  }
 
+  @Override
+  protected void setupToolsDetailsSide(ToolBar toolbar, boolean onLeft) {
+    if (onLeft) {
+      createToolMergeAll(toolbar);
+    }
+    super.setupToolsDetailsSide(toolbar, onLeft);
+  }
 }
