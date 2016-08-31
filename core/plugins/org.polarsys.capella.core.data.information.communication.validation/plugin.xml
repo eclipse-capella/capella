@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0}(CommunicationLink) of kind [{2}] should only have {1}(ExchangeItem) of kind [{3}]
+                  {0} (CommunicationLink) of kind [{1}] should only reference Exchange Item of kind [{2}] (current: {3} (ExchangeItem) [{4}])
                </message>
                <description>
                   This rule checks that a CommunicationLink kind is only used with  a specific CommunicatinLink protocol.
@@ -44,11 +44,11 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_10 - CommunicationLink protocol and  ExchangeItem kind"
+                  name="DWF_I_10 - CommunicationLink protocol and ExchangeItem kind"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0}(CommunicationLink) of kind [{1}] should only have protocol of kind [{2}].
+                  {0} (CommunicationLink) of kind [{1}] should only have protocol of kind [{2}].
                </message>
                <description>
                   This rule checks that a CommunicationLink protocol are only used with a specific CommunicatinLink kind.

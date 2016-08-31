@@ -132,4 +132,16 @@
             markerType="org.polarsys.capella.core.validation.markers">
       </markerResolutionGenerator>
    </extension>
+   
+   <extension
+         point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.cs.ui.quickfix.generator.DWF_I_22_Generator"
+            markerType="org.polarsys.capella.core.validation.markers">
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.cs.ui.quickfix.generator.DWF_I_21_Generator"
+            markerType="org.polarsys.capella.core.validation.markers">
+      </markerResolutionGenerator>
+   </extension>
 </plugin>
