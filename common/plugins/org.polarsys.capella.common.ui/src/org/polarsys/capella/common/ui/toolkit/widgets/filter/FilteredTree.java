@@ -173,7 +173,7 @@ public class FilteredTree extends Composite {
    */
   private static final long SOFT_MAX_EXPAND_TIME = 200;
 
-  private boolean _isAutoFiltering;
+  private boolean isAutoFiltering;
 
   /**
    * The Composite on which the filter controls are created. This is used to set the background color of the filter controls to match the surrounding controls.
@@ -243,7 +243,7 @@ public class FilteredTree extends Composite {
   protected FilteredTree(Composite parent) {
     super(parent, SWT.NONE);
     this.parent = parent;
-    _isAutoFiltering = false;
+    isAutoFiltering = false;
   }
 
   /**
@@ -255,7 +255,7 @@ public class FilteredTree extends Composite {
   public FilteredTree(Composite parent, int treeStyle, PatternFilter filter) {
     super(parent, SWT.NONE);
     this.parent = parent;
-    _isAutoFiltering = false;
+    isAutoFiltering = false;
     init(treeStyle, filter);
   }
 
@@ -418,7 +418,7 @@ public class FilteredTree extends Composite {
         boolean hasItems = getViewer().getTree().getItemCount() > 0;
         if (hasItems && (event.keyCode == SWT.ARROW_DOWN)) {
           treeViewer.getTree().setFocus();
-        } else if ((event.character == SWT.CR) && handle(event, IKeyLookup.CR_NAME) && !isAutoFiltering()) {
+        } else if ((event.character == SWT.CR) && (handle(event, IKeyLookup.CR_NAME) || handle(event, IKeyLookup.NUMPAD_ENTER_NAME)) && !isAutoFiltering()) {
           handleCRKeyStoke();
         }
       }
@@ -750,7 +750,7 @@ public class FilteredTree extends Composite {
    * @return the isAutoFiltering
    */
   protected boolean isAutoFiltering() {
-    return _isAutoFiltering;
+    return isAutoFiltering;
   }
 
   /**
@@ -766,7 +766,7 @@ public class FilteredTree extends Composite {
    * @param isAutoFiltering the isAutoFiltering to set
    */
   protected void setAutoFiltering(boolean isAutoFiltering) {
-    _isAutoFiltering = isAutoFiltering;
+    this.isAutoFiltering = isAutoFiltering;
   }
 
   /**
