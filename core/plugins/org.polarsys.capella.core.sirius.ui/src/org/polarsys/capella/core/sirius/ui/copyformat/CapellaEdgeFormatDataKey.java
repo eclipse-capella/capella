@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.sirius.ui.copylayout;
+package org.polarsys.capella.core.sirius.ui.copyformat;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -22,7 +22,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 /**
  * Specific key for {@link DEdge}.
  */
-public class CapellaEdgeLayoutDataKey extends CapellaDecoratorLayoutDataKey {
+public class CapellaEdgeFormatDataKey extends CapellaDecoratorFormatDataKey {
 
   /**
    * Default constructor.
@@ -30,24 +30,24 @@ public class CapellaEdgeLayoutDataKey extends CapellaDecoratorLayoutDataKey {
    * @param key
    *            The key
    */
-  public CapellaEdgeLayoutDataKey(DEdge decorator_p, AbstractCapellaLayoutDataKey key_p) {
-    super(key_p);
-    if (decorator_p.getSourceNode() != null) {
-      addDecoration(decorator_p.getSourceNode());
+  public CapellaEdgeFormatDataKey(DEdge decorator, AbstractCapellaFormatDataKey key) {
+    super(key);
+    if (decorator.getSourceNode() != null) {
+      addDecoration(decorator.getSourceNode());
     }
-    if (decorator_p.getTargetNode() != null) {
-      addDecoration(decorator_p.getTargetNode());
+    if (decorator.getTargetNode() != null) {
+      addDecoration(decorator.getTargetNode());
     }
     addDecoration(DiagramPackage.Literals.DEDGE);
   }
 
   /**
-   * @param sourceNode_p
+   * @param sourceNode
    */
   @Override
-  protected void addDecoration(EObject object_p) {
-    if ((object_p != null) && (object_p instanceof DSemanticDecorator)) {
-      DSemanticDecorator sourceDecorator = (DSemanticDecorator) object_p;
+  protected void addDecoration(EObject object) {
+    if ((object != null) && (object instanceof DSemanticDecorator)) {
+      DSemanticDecorator sourceDecorator = (DSemanticDecorator) object;
       if (sourceDecorator.getTarget() != null) {
         super.addDecoration(sourceDecorator.getTarget());
       }
@@ -62,7 +62,7 @@ public class CapellaEdgeLayoutDataKey extends CapellaDecoratorLayoutDataKey {
       }
 
     } else {
-      super.addDecoration(object_p);
+      super.addDecoration(object);
     }
   }
 }

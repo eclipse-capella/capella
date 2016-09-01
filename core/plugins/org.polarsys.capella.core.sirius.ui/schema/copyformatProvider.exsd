@@ -3,11 +3,11 @@
 <schema targetNamespace="org.polarsys.capella.core.sirius.ui" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appInfo>
-         <meta.schema plugin="org.polarsys.capella.core.sirius.ui" id="copylayoutProvider" name="Copy Layout Provider"/>
+         <meta.schema plugin="org.polarsys.capella.core.sirius.ui" id="copyformatProvider" name="Copy Format Provider"/>
       </appInfo>
       <documentation>
-         Retrieve all keys which can be used as a layout provider for the given key.
-For instance, if a layout of a Logical Function is not found, layout from its System Function can also be used.
+         Retrieve all keys which can be used as a format provider for the given key.
+For instance, if a format of a Logical Function is not found, format from its System Function can also be used.
       </documentation>
    </annotation>
 
@@ -57,7 +57,7 @@ For instance, if a layout of a Logical Function is not found, layout from its Sy
 AbstractScmSessionAdvisor is provided for SCM implentation.
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn=":org.polarsys.capella.core.sirius.ui.copylayout.keyproviders.IKeyProvider"/>
+                  <meta.attribute kind="java" basedOn=":org.polarsys.capella.core.sirius.ui.copyformat.keyproviders.IKeyProvider"/>
                </appInfo>
             </annotation>
          </attribute>

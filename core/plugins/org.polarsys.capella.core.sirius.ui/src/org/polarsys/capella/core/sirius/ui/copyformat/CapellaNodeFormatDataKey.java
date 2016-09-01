@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,12 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.sirius.ui.copylayout;
+package org.polarsys.capella.core.sirius.ui.copyformat;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.style.SquareDescription;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -25,7 +24,7 @@ import org.polarsys.capella.core.data.fa.ExchangeCategory;
 /**
  * Specific key for {@link DNode}.
  */
-public class CapellaNodeLayoutDataKey extends CapellaDecoratorLayoutDataKey {
+public class CapellaNodeFormatDataKey extends CapellaDecoratorFormatDataKey {
 
   DSemanticDecorator decorator;
 
@@ -42,25 +41,25 @@ public class CapellaNodeLayoutDataKey extends CapellaDecoratorLayoutDataKey {
    * @param key
    *            The key
    */
-  public CapellaNodeLayoutDataKey(DSemanticDecorator decorator_p, AbstractCapellaLayoutDataKey key_p) {
-    super(key_p);
-    decorator = decorator_p;
+  public CapellaNodeFormatDataKey(DSemanticDecorator inputDecorator, AbstractCapellaFormatDataKey key) {
+    super(key);
+    decorator = inputDecorator;
 
     //Add decoration on parent
-    EObject parent = getRelatedParent(decorator_p);
+    EObject parent = getRelatedParent(inputDecorator);
     if (parent != null) {
       addDecoration(parent);
     }
 
-    if ((decorator_p == null) || (decorator_p instanceof AbstractDNode)) {
+    if ((inputDecorator == null) || (inputDecorator instanceof AbstractDNode)) {
       addDecoration(DiagramPackage.Literals.ABSTRACT_DNODE);
     }
-    if ((decorator_p != null) && (decorator_p.getTarget() != null)) {
-      if (decorator_p.getTarget() instanceof ExchangeCategory) {
-        //This should not work with copyLayout between phases
-        addDecoration(((DDiagramElement) decorator_p).getTarget());
-        addDecoration(((DDiagramElement) decorator_p.eContainer()).getTarget());
-        StyleDescription desc = ((DDiagramElement) decorator_p).getStyle().getDescription();
+    if ((inputDecorator != null) && (inputDecorator.getTarget() != null)) {
+      if (inputDecorator.getTarget() instanceof ExchangeCategory) {
+        //This should not work with copyFormat between phases
+        addDecoration(((DDiagramElement) inputDecorator).getTarget());
+        addDecoration(((DDiagramElement) inputDecorator.eContainer()).getTarget());
+        StyleDescription desc = ((DDiagramElement) inputDecorator).getStyle().getDescription();
         if (desc instanceof SquareDescription) {
           SquareDescription sd = (SquareDescription) desc;
           ColorDescription color = sd.getColor();
@@ -72,36 +71,36 @@ public class CapellaNodeLayoutDataKey extends CapellaDecoratorLayoutDataKey {
   }
 
   /**
-   * @param decorator_p
+   * @param decorator
    * @return
    */
-  protected EObject getRelatedParent(DSemanticDecorator decorator_p) {
-    if (decorator_p == null) {
+  protected EObject getRelatedParent(DSemanticDecorator inputDecorator) {
+    if (inputDecorator == null) {
       return null;
     }
-    return decorator_p.eContainer();
+    return inputDecorator.eContainer();
   }
 
   /**
-   * @param sourceNode_p
+   * @param object
    */
   @Override
-  protected void addDecoration(EObject object_p) {
+  protected void addDecoration(EObject object) {
 
-    if (object_p != null) {
+    if (object != null) {
 
-      if (object_p instanceof DSemanticDecorator) {
-        DSemanticDecorator sourceDecorator = (DSemanticDecorator) object_p;
+      if (object instanceof DSemanticDecorator) {
+        DSemanticDecorator sourceDecorator = (DSemanticDecorator) object;
         if (sourceDecorator.getTarget() != null) {
           addDecoration(sourceDecorator.getTarget());
         }
 
       } else {
-        super.addDecoration(object_p);
+        super.addDecoration(object);
       }
 
     } else {
-      super.addDecoration(object_p);
+      super.addDecoration(object);
     }
   }
 }

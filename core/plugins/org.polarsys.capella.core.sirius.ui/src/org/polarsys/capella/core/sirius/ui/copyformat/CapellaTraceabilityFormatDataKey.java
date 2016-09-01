@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.sirius.ui.copylayout;
+package org.polarsys.capella.core.sirius.ui.copyformat;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -27,15 +27,15 @@ import org.polarsys.capella.core.data.information.PortRealization;
 /**
  *
  */
-public class CapellaTraceabilityLayoutDataKey extends CapellaDecoratorLayoutDataKey {
+public class CapellaTraceabilityFormatDataKey extends CapellaDecoratorFormatDataKey {
 
-  public CapellaTraceabilityLayoutDataKey(AbstractCapellaLayoutDataKey key_p, EObject semantic_p) {
-    super(key_p);
+  public CapellaTraceabilityFormatDataKey(AbstractCapellaFormatDataKey key, EObject semantic) {
+    super(key);
 
-    _semantic = semantic_p;
+    _semantic = semantic;
 
-    if (_parent instanceof CapellaDecoratorLayoutDataKey) {
-      for (Object decoration : ((CapellaDecoratorLayoutDataKey) _parent).getDecorations()) {
+    if (_parent instanceof CapellaDecoratorFormatDataKey) {
+      for (Object decoration : ((CapellaDecoratorFormatDataKey) _parent).getDecorations()) {
         if (decoration instanceof EObject) {
           EObject traced = retrieveLinkedEObject(((EObject) decoration));
           //By using this, we remove also mapping association
@@ -88,21 +88,21 @@ public class CapellaTraceabilityLayoutDataKey extends CapellaDecoratorLayoutData
   }
 
   /**
-   * @param trace_p
+   * @param trace
    * @return
    */
-  private boolean isValidTrace(AbstractTrace trace_p) {
-    if ((trace_p.getSourceElement() == null) || (trace_p.getTargetElement() == null)) {
+  private boolean isValidTrace(AbstractTrace trace) {
+    if ((trace.getSourceElement() == null) || (trace.getTargetElement() == null)) {
       return false;
     }
-    if (trace_p.getSourceElement() instanceof Port) {
-      return trace_p instanceof PortRealization;
+    if (trace.getSourceElement() instanceof Port) {
+      return trace instanceof PortRealization;
 
-    } else if (trace_p.getSourceElement() instanceof ComponentExchange) {
-      return trace_p instanceof ComponentExchangeRealization;
+    } else if (trace.getSourceElement() instanceof ComponentExchange) {
+      return trace instanceof ComponentExchangeRealization;
 
-    } else if (trace_p.getSourceElement() instanceof FunctionalExchange) {
-      return trace_p instanceof FunctionalExchangeRealization;
+    } else if (trace.getSourceElement() instanceof FunctionalExchange) {
+      return trace instanceof FunctionalExchangeRealization;
 
     }
 
