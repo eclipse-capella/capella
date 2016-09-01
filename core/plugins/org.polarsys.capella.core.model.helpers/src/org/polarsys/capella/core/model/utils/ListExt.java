@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,18 +11,19 @@
 package org.polarsys.capella.core.model.utils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
 
 /**
  */
@@ -31,15 +32,15 @@ public class ListExt {
   /**
    * Retrieves from the given list the elements named with the given string
    *
-   * @param list_p list of elements
-   * @param name_p string to be used as filter
+   * @param list list of elements
+   * @param name string to be used as filter
    * @return a list of elements named with the given string
    */
-  public static List<EObject> filterByName(List<EObject> list_p, String name_p) {
+  public static List<EObject> filterByName(List<EObject> list, String name) {
     List<EObject> filteredList = new ArrayList<EObject>();
 
-    for (EObject obj : list_p) {
-        if ((obj instanceof NamedElement) && (((NamedElement)obj).getName().equals(name_p))) {
+    for (EObject obj : list) {
+        if ((obj instanceof NamedElement) && (((NamedElement)obj).getName().equals(name))) {
           filteredList.add(obj);
         }
     }
@@ -47,18 +48,31 @@ public class ListExt {
     return filteredList;
   }
 
+  public static <A> String toString(Collection<A> objects, String separator) {
+    String result = "";
+    Iterator<A> iterator = objects.iterator();
+      while (iterator.hasNext()) {
+        A string = iterator.next();
+        result = result + string;
+        if (iterator.hasNext()) {
+          result = result + separator;
+        }
+      }
+    return result;
+  }
+  
   /**
    * Retrieves from the given list the elements named with the given string
    *
-   * @param list_p list of interfaces
-   * @param name_p string to be used as filter
+   * @param list list of interfaces
+   * @param name string to be used as filter
    * @return a list of interfaces named with the given string
    */
-  public static List<Interface> filterInterfacesByName(List<Interface> list_p, String name_p) {
+  public static List<Interface> filterInterfacesByName(List<Interface> list, String name) {
     List<Interface> filteredList = new ArrayList<Interface>();
 
-    for (Interface itf : list_p) {
-        if (itf.getName().equals(name_p)) {
+    for (Interface itf : list) {
+        if (itf.getName().equals(name)) {
           filteredList.add(itf);
         }
     }
@@ -69,15 +83,15 @@ public class ListExt {
   /**
    * Retrieves from the given list the elements named with the given string
    *
-   * @param list_p list of components
-   * @param name_p string to be used as filter
+   * @param list list of components
+   * @param name string to be used as filter
    * @return a list of components named with the given string
    */
-  public static List<Component> filterComponentsByName(List<Component> list_p, String name_p) {
+  public static List<Component> filterComponentsByName(List<Component> list, String name) {
     List<Component> filteredList = new ArrayList<Component>();
 
-    for (Component cpnt : list_p) {
-        if (cpnt.getName().equals(name_p)) {
+    for (Component cpnt : list) {
+        if (cpnt.getName().equals(name)) {
           filteredList.add(cpnt);
         }
     }
@@ -87,15 +101,15 @@ public class ListExt {
 
   /**
    * 
-   * @param list1_p
-   * @param list2_p
+   * @param list1
+   * @param list2
    * @return
    */
-  public static List<CapellaElement> substract(List<CapellaElement> list1_p, List<CapellaElement> list2_p) {
+  public static List<CapellaElement> substract(List<CapellaElement> list1, List<CapellaElement> list2) {
     List<CapellaElement> substractedList = new ArrayList<CapellaElement>();
 
-    for (CapellaElement pc : list1_p) {
-      if (!list2_p.contains(pc)) {
+    for (CapellaElement pc : list1) {
+      if (!list2.contains(pc)) {
         substractedList.add(pc);
       }
     }
@@ -105,13 +119,13 @@ public class ListExt {
 
   /**
    * 
-   * @param list_p
+   * @param list
    * @return
    */
-  public static List<SequenceMessage> reverse(List<SequenceMessage> list_p) {
+  public static List<SequenceMessage> reverse(List<SequenceMessage> list) {
     List<SequenceMessage> reversedList = new ArrayList<SequenceMessage>();
 
-    ListIterator<SequenceMessage> iterator = list_p.listIterator(list_p.size());
+    ListIterator<SequenceMessage> iterator = list.listIterator(list.size());
     while (iterator.hasPrevious()) {
       reversedList.add(iterator.previous());
     }
@@ -135,14 +149,14 @@ public class ListExt {
   
   /**
    * Gives the intersection between two lists and gives the common elements
-   * @param firstList_p
-   * @param secondList_p
+   * @param firstList
+   * @param secondList
    * @return intersection list
    */
-  static public List<Object> getIntersectionList(List<?> firstList_p, List<?> secondList_p) {
+  static public List<Object> getIntersectionList(List<?> firstList, List<?> secondList) {
     List<Object> intersectionList = new ArrayList<Object>(1);
-    for(Object element : firstList_p) {
-      if(secondList_p.contains(element))
+    for(Object element : firstList) {
+      if(secondList.contains(element))
         intersectionList.add(element);
     }
     return intersectionList;
