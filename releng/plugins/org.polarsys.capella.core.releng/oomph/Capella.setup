@@ -240,17 +240,17 @@
       <repositoryList
           name="Mars">
         <repository
-            url="http://download.eclipse.org/sirius/updates/stable/4.1.0-S20160809-110054/mars"/>
+            url="http://download.eclipse.org/sirius/updates/stable/4.1.0-S20160826-110122/mars"/>
         <repository
             url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
         <repository
-            url="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
+            url="https://hudson.eclipse.org/diffmerge/job/buckminster-emf-diffmerge-master/122/artifact/result/publish/org.eclipse.emf.diffmerge.scm.feature/site.p2"/>
         <repository
             url="http://download.eclipse.org/diffmerge/releases/0.7.0/edm-patterns-site"/>
         <repository
-            url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_runtime/lastSuccessfulBuild/artifact/result/publish/kitalpha_runtime/site.p2"/>
+            url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/52/artifact/result/publish/kitalpha_runtime/site.p2"/>
         <repository
-            url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_SDK/lastSuccessfulBuild/artifact/result/publish/kitalpha_sdk/site.p2"/>
+            url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/52/artifact/result/publish/kitalpha_sdk/site.p2"/>
         <repository
             url="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.7.0-N20160610-082445/neon"/>
         <repository
