@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,20 +8,20 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.re.ui.copylayout;
+package org.polarsys.capella.core.re.ui.copyformat;
 
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.core.sirius.ui.copylayout.AbstractCapellaLayoutDataKey;
-import org.polarsys.capella.core.sirius.ui.copylayout.CapellaDecoratorLayoutDataKey;
+import org.polarsys.capella.core.sirius.ui.copyformat.AbstractCapellaFormatDataKey;
+import org.polarsys.capella.core.sirius.ui.copyformat.CapellaDecoratorFormatDataKey;
 
 /**
  *
  */
-public class ReplicableElementLayoutDataKey extends CapellaDecoratorLayoutDataKey {
+public class ReplicableElementFormatDataKey extends CapellaDecoratorFormatDataKey {
 
-  public ReplicableElementLayoutDataKey(AbstractCapellaLayoutDataKey key_p, EObject semantic_p) {
-    super(key_p);
-    _semantic = semantic_p;
+  public ReplicableElementFormatDataKey(AbstractCapellaFormatDataKey key, EObject semantic) {
+    super(key);
+    _semantic = semantic;
   }
 
   @Override

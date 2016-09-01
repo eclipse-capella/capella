@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,20 +8,20 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.sirius.ui.copylayout;
+package org.polarsys.capella.core.sirius.ui.copyformat;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey;
+import org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey;
 import org.polarsys.capella.shared.id.handler.IdManager;
 
 /**
  * Specific key allowing to know the semantic {@link EObject}.
  * 
  */
-public class AbstractCapellaLayoutDataKey implements LayoutDataKey {
+public class AbstractCapellaFormatDataKey implements FormatDataKey {
 
-  public static AbstractCapellaLayoutDataKey INVALID_KEY = null;
+  public static AbstractCapellaFormatDataKey INVALID_KEY = null;
 
   protected EObject _semantic;
 
@@ -35,8 +35,8 @@ public class AbstractCapellaLayoutDataKey implements LayoutDataKey {
    * @param key
    *            The key
    */
-  public AbstractCapellaLayoutDataKey(EObject object_p) {
-    _semantic = object_p;
+  public AbstractCapellaFormatDataKey(EObject object) {
+    _semantic = object;
   }
 
   @Override
@@ -44,23 +44,23 @@ public class AbstractCapellaLayoutDataKey implements LayoutDataKey {
     return getId(getSemantic());
   }
 
-  public String getId(Object object_p) {
-    if (object_p instanceof EObject) {
-      if (object_p instanceof EClass) {
-        return ((EClass) object_p).getName();
+  public String getId(Object object_) {
+    if (object_ instanceof EObject) {
+      if (object_ instanceof EClass) {
+        return ((EClass) object_).getName();
       }
-      String id = IdManager.getInstance().getId((EObject) object_p);
+      String id = IdManager.getInstance().getId((EObject) object_);
       if (id != null) {
         return id;
       }
 
     }
-    return String.valueOf(object_p.toString());
+    return String.valueOf(object_.toString());
   }
 
   @Override
   public boolean equals(Object obj) {
-    return (obj instanceof AbstractCapellaLayoutDataKey) && (hashCode() == obj.hashCode());
+    return (obj instanceof AbstractCapellaFormatDataKey) && (hashCode() == obj.hashCode());
   }
 
   @Override

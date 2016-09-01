@@ -171,9 +171,9 @@
     </extension>
     
    <extension
-         point="org.polarsys.capella.core.sirius.ui.copylayoutProvider">
+         point="org.polarsys.capella.core.sirius.ui.copyformatProvider">
       <keysProvider
-            class="org.polarsys.capella.core.re.ui.copylayout.ReplicableElementKeyProvider">
+            class="org.polarsys.capella.core.re.ui.copyformat.ReplicableElementKeyProvider">
       </keysProvider>
    </extension>
    

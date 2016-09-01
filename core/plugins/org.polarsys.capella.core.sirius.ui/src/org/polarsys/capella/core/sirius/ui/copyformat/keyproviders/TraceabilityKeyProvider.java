@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,14 +8,14 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.sirius.ui.copylayout.keyproviders;
+package org.polarsys.capella.core.sirius.ui.copyformat.keyproviders;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey;
+import org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
@@ -28,8 +28,8 @@ import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.PortRealization;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.sirius.ui.copylayout.AbstractCapellaLayoutDataKey;
-import org.polarsys.capella.core.sirius.ui.copylayout.CapellaTraceabilityLayoutDataKey;
+import org.polarsys.capella.core.sirius.ui.copyformat.AbstractCapellaFormatDataKey;
+import org.polarsys.capella.core.sirius.ui.copyformat.CapellaTraceabilityFormatDataKey;
 
 /**
  * Retrieve for a TraceableElement a key of all its traced elements
@@ -40,15 +40,15 @@ public class TraceabilityKeyProvider implements IKeyProvider {
    * {@inheritDoc}
    */
   @Override
-  public Collection<LayoutDataKey> getKeys(LayoutDataKey key_p) {
-    Collection<LayoutDataKey> keys = new ArrayList<LayoutDataKey>();
+  public Collection<FormatDataKey> getKeys(FormatDataKey key) {
+    Collection<FormatDataKey> keys = new ArrayList<FormatDataKey>();
 
-    if (key_p instanceof AbstractCapellaLayoutDataKey) {
-      AbstractCapellaLayoutDataKey mKey = (AbstractCapellaLayoutDataKey) key_p;
+    if (key instanceof AbstractCapellaFormatDataKey) {
+      AbstractCapellaFormatDataKey mKey = (AbstractCapellaFormatDataKey) key;
       EObject semantic = mKey.getSemantic();
 
       if ((semantic instanceof EClass) || (semantic instanceof ColorDescription)) {
-        keys.add(new CapellaTraceabilityLayoutDataKey(mKey, semantic));
+        keys.add(new CapellaTraceabilityFormatDataKey(mKey, semantic));
       }
 
       if (semantic instanceof TraceableElement) {
@@ -56,18 +56,18 @@ public class TraceabilityKeyProvider implements IKeyProvider {
 
         for (AbstractTrace trace : sourceOfTrace.getOutgoingTraces()) {
           if (isValidTrace(trace)) {
-            keys.add(new CapellaTraceabilityLayoutDataKey(mKey, trace.getTargetElement()));
+            keys.add(new CapellaTraceabilityFormatDataKey(mKey, trace.getTargetElement()));
           }
         }
 
       } else if (semantic instanceof Part) {
-        keys.add(new CapellaTraceabilityLayoutDataKey(mKey, ((Part) semantic).getAbstractType()));
+        keys.add(new CapellaTraceabilityFormatDataKey(mKey, ((Part) semantic).getAbstractType()));
 
         for (AbstractTrace trace : ((TraceableElement) (((Part) semantic).getAbstractType())).getOutgoingTraces()) {
           if (isValidTrace(trace)) {
-            keys.add(new CapellaTraceabilityLayoutDataKey(mKey, trace.getTargetElement()));
+            keys.add(new CapellaTraceabilityFormatDataKey(mKey, trace.getTargetElement()));
             for (Part part : ComponentExt.getRepresentingParts((Component) trace.getTargetElement())) {
-              keys.add(new CapellaTraceabilityLayoutDataKey(mKey, part));
+              keys.add(new CapellaTraceabilityFormatDataKey(mKey, part));
             }
           }
         }
@@ -79,21 +79,21 @@ public class TraceabilityKeyProvider implements IKeyProvider {
   }
 
   /**
-   * @param trace_p
+   * @param trace
    * @return
    */
-  private boolean isValidTrace(AbstractTrace trace_p) {
-    if ((trace_p.getSourceElement() == null) || (trace_p.getTargetElement() == null)) {
+  private boolean isValidTrace(AbstractTrace trace) {
+    if ((trace.getSourceElement() == null) || (trace.getTargetElement() == null)) {
       return false;
     }
-    if (trace_p.getSourceElement() instanceof Port) {
-      return trace_p instanceof PortRealization;
+    if (trace.getSourceElement() instanceof Port) {
+      return trace instanceof PortRealization;
 
-    } else if (trace_p.getSourceElement() instanceof ComponentExchange) {
-      return trace_p instanceof ComponentExchangeRealization;
+    } else if (trace.getSourceElement() instanceof ComponentExchange) {
+      return trace instanceof ComponentExchangeRealization;
 
-    } else if (trace_p.getSourceElement() instanceof FunctionalExchange) {
-      return trace_p instanceof FunctionalExchangeRealization;
+    } else if (trace.getSourceElement() instanceof FunctionalExchange) {
+      return trace instanceof FunctionalExchangeRealization;
 
     }
 
