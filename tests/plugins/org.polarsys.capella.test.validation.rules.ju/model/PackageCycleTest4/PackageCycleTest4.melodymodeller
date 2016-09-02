@@ -15,8 +15,7 @@
     xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0"
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.1.0"
     xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/1.1.0"
-    id="61f72d08-a8d9-4528-8de7-628aab95b748"
+    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/1.1.0" id="61f72d08-a8d9-4528-8de7-628aab95b748"
     name="PackageCycleTest4">
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
       id="e4217f4e-6ec6-40fc-bb87-29f25dd7c696" name="ProgressStatus">

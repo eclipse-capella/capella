@@ -41,6 +41,7 @@ import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegist
 import org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.IUserEnforcedHelper;
+import org.polarsys.capella.core.af.integration.listener.MetadataCheckListener;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.capella.core.platform.sirius.ui.session.CapellaSessionHelper;
@@ -90,7 +91,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
 		}
 
 		ExecutionManager executionManager = ExecutionManagerRegistry.getInstance().addNewManager();
-
+		
 		IProgressMonitor monitor = context.getProgressMonitor();
 		monitor.setTaskName(getName());
 		monitor.beginTask(getName(), 100);
@@ -102,8 +103,13 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
 
 		// Get the resource set.
 		ResourceSet resourceSet = executionManager.getEditingDomain().getResourceSet();
+
+		// Disable checks on metadata
+		MetadataCheckListener.unregister(executionManager.getEditingDomain());
+		
 		// Create a local resource factory and set it as default one.
 		resourceSet.setResourceFactoryRegistry(createLocalResourceFactory(context));
+		
 		// Register the mapping description.
 		registerExtendedMetaData(resourceSet, context);
 
@@ -407,6 +413,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
 	 * This method is not run within TED transactions.
 	 */
 	protected void dispose(ExecutionManager executionManager, ResourceSet resourceSet, MigrationContext context) {
+
 		// Remove the execution manager from the registry.
 		ExecutionManagerRegistry.getInstance().removeManager(executionManager);
 		// Dispose the editing domain that is supposed to clean all the previous stuff !

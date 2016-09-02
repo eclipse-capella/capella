@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.af.integration.migration;
+package org.polarsys.capella.core.data.migration.af;
 
 import java.util.Map;
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,10 +34,12 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
+import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.af.integration.listener.NoMetadataException;
 import org.polarsys.capella.core.platform.sirius.ui.session.CapellaSessionHelper;
 import org.polarsys.capella.core.sirius.ui.Messages;
 import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
@@ -94,13 +96,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
         if (SessionHelper.getSession(selectedFile) != null) {
           continue;
         }
-        // Check model compliancy.
         URI selectedUri = EcoreUtil2.getURI(selectedFile);
-        IStatus checkModelsCompliancyResult = CapellaSessionHelper.checkModelsCompliancy(selectedUri);
-        if (!checkModelsCompliancyResult.isOK()) {
-          failedOpeningSessions.put(selectedFile, checkModelsCompliancyResult);
-          continue;
-        }
         // Get session.
         session = SessionManager.INSTANCE.getSession(selectedUri, monitor);
         if (null == session) {
@@ -135,10 +131,12 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
           openActivityExplorer(session);
         }
       } catch (Exception ex) {
-        IStatus status =
-            new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("An error occured when opening session ({0})", selectedFile), ex); //$NON-NLS-1$
-        failedOpeningSessions.put(selectedFile, status);
-        CapellaSessionHelper.reportError(status);
+          CapellaSessionHelper.reportException(ex);
+//            	
+//        IStatus status =
+//            new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("An error occured when opening session ({0})", selectedFile), ex); //$NON-NLS-1$
+//        failedOpeningSessions.put(selectedFile, status);
+//        CapellaSessionHelper.reportError(status);
 
       } finally {
         // Notify action listeners

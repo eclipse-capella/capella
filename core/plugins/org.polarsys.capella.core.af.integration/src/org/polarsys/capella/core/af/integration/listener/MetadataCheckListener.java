@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.af.integration.listener;
 
-import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -23,25 +23,60 @@ import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
  */
 public class MetadataCheckListener implements IEditingDomainListener {
 
-	/**
-	 * 
-	 */
-	public MetadataCheckListener() {
+	public static boolean enabled = true;
+
+	public static void enable() {
+		MetadataCheckListener.enabled = true;
+	}
+
+	public static boolean isEnabled() {
+		return MetadataCheckListener.enabled;
+	}
+
+	public static void disable() {
+		MetadataCheckListener.enabled = false;
+	}
+
+	public void register(EditingDomain editingDomain) {
+		ResourceSet resourceSet = editingDomain.getResourceSet();
+		Iterator<Adapter> it = resourceSet.eAdapters().iterator();
+		while (it.hasNext()) {
+			Adapter adapter = it.next();
+			if (adapter instanceof MetadataCheckAdapter) {
+				if (((MetadataCheckAdapter) adapter).isForced()) {
+					return;
+				}
+				it.remove();
+			}
+		}
+		resourceSet.eAdapters().add(createAdapter(editingDomain));
+	}
+
+	protected Adapter createAdapter(EditingDomain editingDomain) {
+		return new MetadataCheckAdapter();
+	}
+
+	public static void unregister(EditingDomain editingDomain) {
+		ResourceSet resourceSet = editingDomain.getResourceSet();
+		Iterator<Adapter> it = resourceSet.eAdapters().iterator();
+		while (it.hasNext()) {
+			Adapter adapter = it.next();
+			if (adapter instanceof MetadataCheckAdapter) {
+				it.remove();
+			}
+		}
 	}
 
 	@Override
 	public void createdEditingDomain(EditingDomain editingDomain) {
-		ResourceSet resourceSet = editingDomain.getResourceSet();
-		resourceSet.eAdapters().add(new MetadataCheckAdapter(resourceSet));
+		if (enabled) {
+			register(editingDomain);
+		}
 	}
 
 	@Override
 	public void disposedEditingDomain(EditingDomain editingDomain) {
-		ResourceSet resourceSet = editingDomain.getResourceSet();
-		for (Adapter adapter : new ArrayList<Adapter>(resourceSet.eAdapters())) {
-			if (adapter instanceof MetadataCheckAdapter)
-				resourceSet.eAdapters().remove(adapter);
-		}
+		unregister(editingDomain);
 	}
 
 }
