@@ -64,6 +64,12 @@ public class DWF_I_22_Resolver extends DWF_I_21_Resolver {
     }
     return canResolve;
   }
+  
+  @Override
+  protected String[] getResolvableRuleIds() {
+    return new String[] {"DWF_I_22"};
+  }
+  
   @Override
   protected boolean quickFixAllSimilarEnabled(Collection<IMarker> markers) {
     return true;
