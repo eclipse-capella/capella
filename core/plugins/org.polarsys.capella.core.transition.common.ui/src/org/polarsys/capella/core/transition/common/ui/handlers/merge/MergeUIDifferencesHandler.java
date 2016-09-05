@@ -46,7 +46,6 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
   }
 
   protected IStatus displayDifferences(final IContext context, final EMFDiffNode diffNode) {
-
     final Integer[] result = new Integer[] { IDialogConstants.OK_ID };
     final Display display = Display.getDefault();
     display.syncExec(new Runnable() {
@@ -81,9 +80,11 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
     diffNode.setDefaultCoverChildren(true);
     diffNode.setDefaultShowImpact(true);
     diffNode.setLeftRole(Role.REFERENCE);
+    diffNode.setMergeAllOnLeft(true);
+    diffNode.setMergeAllOnRight(false);
     return diffNode;
   }
-
+  
   protected void initializeCategories(IContext context, EMFDiffNode diffNode) {
     Set<IDifferenceCategory> category = diffNode.getCategoryManager().getCategories();
     

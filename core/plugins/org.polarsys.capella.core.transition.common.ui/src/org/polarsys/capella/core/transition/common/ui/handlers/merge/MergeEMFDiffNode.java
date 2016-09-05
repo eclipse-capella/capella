@@ -21,6 +21,26 @@ public class MergeEMFDiffNode extends EMFDiffNode {
 
   private final CategoryManager _categoryManager;
 
+  private boolean mergeAllOnLeft;
+  
+  private boolean mergeAllOnRight;
+  
+  public boolean isMergeAllOnLeft() {
+    return mergeAllOnLeft;
+  }
+
+  public void setMergeAllOnLeft(boolean mergeAllOnLeft) {
+    this.mergeAllOnLeft = mergeAllOnLeft;
+  }
+
+  public boolean isMergeAllOnRight() {
+    return mergeAllOnRight;
+  }
+
+  public void setMergeAllOnRight(boolean mergeAllOnRight) {
+    this.mergeAllOnRight = mergeAllOnRight;
+  }
+
   public MergeEMFDiffNode(IContext context) {
     this(context, null);
   }
