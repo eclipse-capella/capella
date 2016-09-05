@@ -26,6 +26,8 @@ import org.eclipse.emf.diffmerge.ui.viewers.MergeChoiceData;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.BusyIndicator;
@@ -44,6 +46,8 @@ public class DiffComparisonViewer extends ComparisonViewer {
   /** The name of the "merge all" image */
   private static final String CHECKIN_ACTION_ALL = "checkin_action_all.gif";
   
+  private static final String CHECKOUT_ACTION_ALL = "checkout_action_all.gif";
+
   private static boolean mergeAllInProgress = false;
   
   public DiffComparisonViewer(Composite parent) {
@@ -93,37 +97,33 @@ public class DiffComparisonViewer extends ComparisonViewer {
     return result;
   }
   
-  /**
-   * Load needed images
-   */
-  protected void loadImageRegistry() {
-    // Load images
+
+  protected Image getImage(String key) {
     ImageRegistry reg = Activator.getDefault().getImageRegistry();
-    ImageDescriptor desc = reg.getDescriptor(CHECKIN_ACTION_ALL);
-    if (desc == null) {
-      Activator.getDefault();
-      desc = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/ctool16/"+CHECKIN_ACTION_ALL);
-      reg.put(CHECKIN_ACTION_ALL, desc.createImage());
+    Image image = reg.get(key);
+    if (image == null) {
+      ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/ctool16/"+key);
+      image = desc.createImage();
+      reg.put(key, image);
     }
+    return reg.get(key);
   }
   
   /**
    * Create the "merge all" tool to the given side in the given tool bar and return it
    * @param toolbar a non-null tool bar
-   * @param toLeft whether the side is left
+   * @param onLeft whether the side is left
    * @return a potentially null tool item
    */
-  protected ToolItem createToolMergeAll(ToolBar toolbar) {
-    loadImageRegistry();
-    
+  protected ToolItem createToolMergeAll(ToolBar toolbar, final boolean onLeft) {
     final ToolItem result = new ToolItem(toolbar, SWT.PUSH);
     // Image
-    Image mergeAllImage = Activator.getDefault().getImageRegistry().get(CHECKIN_ACTION_ALL);
-    result.setImage(mergeAllImage);
+    String imageKey = onLeft ? CHECKIN_ACTION_ALL : CHECKOUT_ACTION_ALL;
+    result.setImage(getImage(imageKey));
     // Tool tip
-    result.setToolTipText(Messages.ComparisonViewer_MergeAllTooltip);
+    result.setToolTipText(onLeft ? Messages.ComparisonViewer_MergeAllOnLeftTooltip : Messages.ComparisonViewer_MergeAllOnRightTooltip);
     // Activation
-    result.setEnabled(true);
+    
     // Selection
     result.addSelectionListener(new SelectionAdapter() {
       /**
@@ -139,9 +139,29 @@ public class DiffComparisonViewer extends ComparisonViewer {
         mergeAllInProgress = false;
       }
     });
+    // Activation
+    addPropertyChangeListener(new IPropertyChangeListener() {
+      /**
+       * @see org.eclipse.jface.util.IPropertyChangeListener#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
+       */
+      public void propertyChange(PropertyChangeEvent event_p) {
+        if (PROPERTY_CURRENT_INPUT.equals(event_p.getProperty())) {
+          EMFDiffNode input = getInput();
+          if (input != null) {
+            if (input instanceof MergeEMFDiffNode) {
+              if (onLeft) {
+                result.setEnabled(((MergeEMFDiffNode) input).isMergeAllOnLeft());
+              } else {
+                result.setEnabled(((MergeEMFDiffNode) input).isMergeAllOnRight());
+              }
+            }
+          }
+        }
+      }
+    });
     return result;
   }
-  
+
   @Override
   protected boolean interactionsRequiredForMerge(MergeChoiceData choices_p, EMFDiffNode input_p,
       List<EMatch> selectedMatches) {
@@ -153,9 +173,8 @@ public class DiffComparisonViewer extends ComparisonViewer {
 
   @Override
   protected void setupToolsDetailsSide(ToolBar toolbar, boolean onLeft) {
-    if (onLeft) {
-      createToolMergeAll(toolbar);
-    }
+    createToolMergeAll(toolbar, onLeft);
     super.setupToolsDetailsSide(toolbar, onLeft);
   }
+  
 }

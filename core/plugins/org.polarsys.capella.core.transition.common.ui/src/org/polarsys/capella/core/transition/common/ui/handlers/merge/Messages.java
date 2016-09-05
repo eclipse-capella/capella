@@ -16,7 +16,8 @@ import org.eclipse.osgi.util.NLS;
 @SuppressWarnings("javadoc")
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.transition.common.ui.handlers.merge.messages"; //$NON-NLS-1$
-  public static String ComparisonViewer_MergeAllTooltip;
+  public static String ComparisonViewer_MergeAllOnLeftTooltip;
+  public static String ComparisonViewer_MergeAllOnRightTooltip;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
