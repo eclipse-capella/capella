@@ -39,15 +39,11 @@ public class UpdateRPL_RemoveElement extends Re {
     delete.execute();
 
     // Update a RPL, default behavior
-    // We update the RPL after having removed an element on the REC, functional exchange of the RPL is not removed by default
+    // We update the RPL after having removed an element on the REC, functional exchange of the RPL is removed by default
     updateReplica(Collections.singletonList((EObject) RPL), RPL);
     assertTrue(ReplicableElementExt.getReferencingReplicableElements(getObject(LF1)).size() == 1);
-    mustReference(RPL, FErpl);
-
-    // Update a RPL, check all differences
-    // We check the box to remove the functional exchange, exchange of the RPL is removed
-    updateReplicaCheck(Collections.singletonList((EObject) RPL), RPL);
     mustNotReference(RPL, FErpl);
+
   }
 
 }

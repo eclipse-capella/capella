@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,9 +19,9 @@ import org.polarsys.capella.common.re.ui.handlers.uihead.UIHeadHandler;
 public class CreateReplicaUiLauncher extends CreateReplicaLauncher {
 
   @Override
-  protected SharedWorkflowActivityParameter getSharedParameter(String workflowId_p) {
-    SharedWorkflowActivityParameter parameter = super.getSharedParameter(workflowId_p);
-    new UIHeadHandler().fillParameter(parameter);
+  protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
+    SharedWorkflowActivityParameter parameter = super.getSharedParameter(workflowId);
+    new UIHeadHandler(false).fillParameter(parameter);
     return parameter;
   }
 }

@@ -36,6 +36,7 @@ public class ReTargetScope extends ReScope implements ITargetModelScope {
   public ReTargetScope(CatalogElement element, ITraceabilityHandler handler, Collection<? extends EObject> elements,
       IContext context) {
     super(element, handler, elements, context);
+    setOriginator("Resulting model");
   }
 
   /**

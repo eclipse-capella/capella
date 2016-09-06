@@ -26,7 +26,7 @@ public class ReferenceModelScope extends ContextModelScope {
   }
 
   @Override
-  public Object getOriginator() {
+  protected Object getDefaultOriginator() {
     return "Candidate model";
   }
 

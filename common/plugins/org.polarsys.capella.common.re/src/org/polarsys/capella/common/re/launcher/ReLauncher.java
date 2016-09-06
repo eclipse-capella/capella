@@ -13,6 +13,8 @@ package org.polarsys.capella.common.re.launcher;
 
 import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.handlers.merge.DefaultMergeHandler;
+import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.capella.core.transition.common.launcher.DefaultLauncher;
 import org.polarsys.capella.core.transition.common.transposer.SharedWorkflowActivityParameter;
 import org.polarsys.capella.common.re.constants.IReConstants;
@@ -58,6 +60,9 @@ public abstract class ReLauncher extends DefaultLauncher {
 
     GenericParameter<String> param3 = new GenericParameter<String>(IReConstants.COMMAND__CURRENT_VALUE, getKind(), "Transposer Rule handler"); //$NON-NLS-1$
     parameter.addSharedParameter(param3);
+
+    GenericParameter<IMergeHandler> param4 = new GenericParameter<IMergeHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, new DefaultMergeHandler(true), "Re Merge handler"); //$NON-NLS-1$
+    parameter.addSharedParameter(param4);
 
     return parameter;
   }

@@ -59,10 +59,5 @@ public class UpdateCurLauncher extends org.polarsys.capella.common.re.launcher.U
     addOverrides(org.polarsys.capella.common.re.rpl2re.activities.InitializeDiffMergeUpdateReActivity.ID,
         org.polarsys.capella.core.re.rpl2re.activities.InitializeDiffMergeUpdateReActivity.ID);
 
-    addOverrides(org.polarsys.capella.common.re.re2rpl.activities.DifferencesFilteringActivity.ID,
-        org.polarsys.capella.core.re.re2rpl.activities.DifferencesFilteringActivity.ID);
-
-    addOverrides(org.polarsys.capella.common.re.rpl2re.activities.DifferencesFilteringActivity.ID,
-        org.polarsys.capella.core.re.rpl2re.activities.DifferencesFilteringActivity.ID);
   }
 }

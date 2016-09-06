@@ -22,7 +22,7 @@ public class UpdateReplicaUiLauncher extends UpdateReplicaLauncher {
   @Override
   protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
     SharedWorkflowActivityParameter parameter = super.getSharedParameter(workflowId);
-    new UIHeadHandler().fillParameter(parameter);
+    new UIHeadHandler(true).fillParameter(parameter);
     return parameter;
   }
 }
