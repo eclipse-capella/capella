@@ -17,7 +17,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.WrapLabel;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -25,6 +25,7 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IActionDelegate;
 import org.polarsys.capella.core.platform.sirius.clipboard.Activator;
@@ -40,7 +41,6 @@ import org.polarsys.capella.core.platform.sirius.clipboard.util.SiriusUtil;
 /**
  * Paste action for Capella Diagrams
  */
-// For WrapLabel: upward compatibility
 public class CapellaDiagramPasteAction extends AbstractCopyPasteAction {
 
   // The location of the mouse cursor at right-click
@@ -61,7 +61,7 @@ public class CapellaDiagramPasteAction extends AbstractCopyPasteAction {
    */
   public void run(IAction action_p) {
     Text currentEditingText = getEditingTextWidget();
-    WrapLabel selectedNoteContent = getSelectedNoteContentFigure();
+    WrappingLabel selectedNoteContent = getSelectedNoteContentFigure();
     if (currentEditingText != null) {
       // Pasting while in text edition mode
       currentEditingText.paste();
@@ -108,27 +108,34 @@ public class CapellaDiagramPasteAction extends AbstractCopyPasteAction {
     try {
       monitor_p.beginTask(Messages.CapellaDiagramPasteAction_ProgressMessage, 2);
       // Selection not empty because action enabled
-      List<? extends View> gmfSelection = getCopyPasteSelection();
+      final List<? extends View> gmfSelection = getCopyPasteSelection();
       // Sirius + Capella layer
       monitor_p.worked(1);
-      CapellaDiagramPasteCommand siriusCmd = new CapellaDiagramPasteCommand(gmfSelection);
+      final CapellaDiagramPasteCommand siriusCmd = new CapellaDiagramPasteCommand(gmfSelection);
       _success = MiscUtil.transactionallyExecute(gmfSelection, siriusCmd);
       monitor_p.worked(1);
-      // GMF layer, in a separate command to let Sirius create GMF elements
+      // Set format (layout and/or style) to pasted elements and move them under the mouse cursor
       if (_success) {
-        GraphicalAdjustmentCommand gmfCmd;
-        View target = siriusCmd.getGmfTarget();
-        EObject siriusTarget = LayerUtil.getSiriusElement(target);
-        if (SiriusUtil.layoutIsConstrained(siriusTarget) && mustRefresh()) {
-          // Just refresh the diagram
-          gmfCmd = new GraphicalAdjustmentCommand(target);
-        } else {
-          // Duplicate layout
-          Point relativeLocation = getRelativeLocation();
-          gmfCmd =
-              new GraphicalAdjustmentCommand((List) siriusCmd.getResults(), siriusCmd.getPastedSiriusElementsOrigins(), target, relativeLocation, mustRefresh());
-        }
-        _success = MiscUtil.transactionallyExecute(gmfSelection, gmfCmd);
+        // Keep mouse location
+        final Point relativeLocation = getRelativeLocation();
+        // GraphicalAdjustmentCommand is executed asynchronously to come after the SiriusCanonicalLayoutCommand 
+        Display.getDefault().asyncExec(new Runnable() {
+          @Override
+          public void run() {
+            View target = siriusCmd.getGmfTarget();
+            EObject siriusTarget = LayerUtil.getSiriusElement(target); 
+            GraphicalAdjustmentCommand gmfCmd;
+            if (SiriusUtil.layoutIsConstrained(siriusTarget) && mustRefresh()) {
+              // Just refresh the diagram
+              gmfCmd = new GraphicalAdjustmentCommand(target);
+            } else {
+              // Duplicate layout
+              gmfCmd =
+                  new GraphicalAdjustmentCommand((List) siriusCmd.getResults(), siriusCmd.getPastedSiriusElementsOrigins(), target, relativeLocation, mustRefresh(), mustPasteLayout(), mustPasteStyle());              
+            }
+            _success = MiscUtil.transactionallyExecute(gmfSelection, gmfCmd);
+          }
+        });
       }
     } finally {
       monitor_p.done();
@@ -186,4 +193,20 @@ public class CapellaDiagramPasteAction extends AbstractCopyPasteAction {
     }
   }
 
+  /**
+   * Must paste layout ?
+   * @return <code>true</code> (default behavior)
+   */
+  public boolean mustPasteLayout() {
+    return true;
+  }
+
+  /**
+   * Must paste style ?
+   * @return <code>true</code> (default behavior)
+   */
+  public boolean mustPasteStyle() {
+    return true;
+  }
+  
 }

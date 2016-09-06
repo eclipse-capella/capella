@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,8 +13,10 @@ package org.polarsys.capella.core.platform.sirius.clipboard.util;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.clipboard.core.ClipboardUtil;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -51,6 +53,8 @@ public class CapellaDiagramClipboard {
   // A string representation of the Sirius elements in the GMF copy/paste mechanism
   private String _data;
 
+  // Keep layouts and styles of copied element in the Clipboard
+  private final CapellaDiagramFormatDataManager formatDataManager;
   
   /**
    * Basic constructor
@@ -59,29 +63,55 @@ public class CapellaDiagramClipboard {
     _data = null;
     _gmfElements = new ArrayList<View>();
     _siriusElements = new ArrayList<DSemanticDecorator>();
+    formatDataManager = new CapellaDiagramFormatDataManager();
   }
 
   
   /**
    * The copy operation
-   * @param toCopy_p the GMF views to copy
+   * @param toCopy the GMF views to copy
    */
-  public void copy(List<? extends View> toCopy_p) {
-    assert toCopy_p != null;
+  public void copy(List<? extends View> toCopy) {
+    assert toCopy != null;
     clear();
     // Remember GMF original elements
-    _gmfElements.addAll(toCopy_p);
+    _gmfElements.addAll(toCopy);
     // Remember Sirius original elements
     _siriusElements.addAll(LayerUtil.toSirius(_gmfElements));
     // Use the GMF mechanism to copy the Sirius elements if available
     List<EObject> toSerialize = new ArrayList<EObject>();
-    if (!_siriusElements.isEmpty())
+    if (!_siriusElements.isEmpty()) {
       toSerialize.addAll(_siriusElements);
-    else
+      // Store a copy of layouts and styles
+      for (DSemanticDecorator siriusElement : _siriusElements) {
+        formatDataManager.storeFormatData(LayerUtil.getGraphicalPart(siriusElement));
+      }
+    }
+    else {
       toSerialize.addAll(_gmfElements); // Case of GMF Note
+    }
     _data = ClipboardUtil.copyElementsToString(toSerialize, null, null);
   }
   
+  /**
+   * Apply layout or/and style to the given EditPart. 
+   * @param pastedToCopiedElements Map used to know which format must be applied to the pasted element
+   * @param pastedEditPart
+   * @param applyLayout
+   * @param applyStyle
+   */
+  public void applyFormat(Map<? extends DSemanticDecorator, ? extends DSemanticDecorator> pastedToCopiedElements, IGraphicalEditPart pastedEditPart, boolean applyLayout, boolean applyStyle) {
+    formatDataManager.setPastedToCopiedElement(pastedToCopiedElements);
+    if (applyLayout && applyStyle) {
+      formatDataManager.applyFormat(pastedEditPart);
+    } else if (applyLayout) {
+      formatDataManager.applyLayout(pastedEditPart);
+    } else if (applyStyle) {
+      formatDataManager.applyStyle(pastedEditPart);
+    }
+    formatDataManager.setPastedToCopiedElement(null);
+  }
+
   /**
    * Clear the clipboard, which results in isEmpty() being true
    */
@@ -89,6 +119,7 @@ public class CapellaDiagramClipboard {
     _data = null;
     _siriusElements.clear();
     _gmfElements.clear();
+    formatDataManager.clearFormatData();
   }
   
   /**

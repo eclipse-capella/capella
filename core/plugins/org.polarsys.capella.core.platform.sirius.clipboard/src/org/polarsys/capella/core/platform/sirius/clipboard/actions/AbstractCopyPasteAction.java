@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,12 +14,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.TextCompartmentEditPart;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.WrapLabel;
-import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -35,14 +32,12 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-import org.polarsys.capella.core.platform.sirius.clipboard.util.SiriusUtil;
 import org.polarsys.capella.core.platform.sirius.clipboard.util.LayerUtil;
+import org.polarsys.capella.core.platform.sirius.clipboard.util.SiriusUtil;
 
 /**
  * Common facilities for copy/paste actions in Capella diagrams
  */
-@SuppressWarnings("deprecation")
-// For WrapLabel: upward compatibility
 public abstract class AbstractCopyPasteAction implements IObjectActionDelegate {
 
   // A clipboard which allows for data transfer with the system keyboard,
@@ -57,7 +52,7 @@ public abstract class AbstractCopyPasteAction implements IObjectActionDelegate {
   // The current Text widget for label edition, or null if no label is being edited
   private Text _editingTextWidget;
   // The current compartment figure of a Note being selected, or null if none
-  private WrapLabel _noteContent;
+  private WrappingLabel _noteContent;
 
   /**
    * Basic constructor
@@ -73,17 +68,17 @@ public abstract class AbstractCopyPasteAction implements IObjectActionDelegate {
   /**
    * Set the given String as the new content of the system clipboard
    */
-  protected void copyTextToSystemClipboard(String text_p) {
-    if (text_p != null) {
-      CLIPBOARD.setContents(new Object[] { text_p }, new Transfer[] { TextTransfer.getInstance() });
+  protected void copyTextToSystemClipboard(String text) {
+    if (text != null) {
+      CLIPBOARD.setContents(new Object[] { text }, new Transfer[] { TextTransfer.getInstance() });
     }
   }
 
   /**
    * Simple helper returning the child control of the given composite which has the focus, if any
    */
-  private Control getChildUnderFocus(Composite composite_p) {
-    for (Control child : composite_p.getChildren()) {
+  private Control getChildUnderFocus(Composite composite) {
+    for (Control child : composite.getChildren()) {
       if (!child.isDisposed() && child.isFocusControl()) {
         return child;
       }
@@ -108,7 +103,7 @@ public abstract class AbstractCopyPasteAction implements IObjectActionDelegate {
   /**
    * Return the content compartment of a Note being selected at the last selection change, if any
    */
-  protected WrapLabel getSelectedNoteContentFigure() {
+  protected WrappingLabel getSelectedNoteContentFigure() {
     return _noteContent;
   }
 
@@ -194,52 +189,26 @@ public abstract class AbstractCopyPasteAction implements IObjectActionDelegate {
   }
 
   /**
-   * If current selection is the content compartment of a Note then return it, otherwise return null
-   */
-  /**
-   * @deprecated we do not support GMF note editing.
-   */
-  @Deprecated
-  private WrapLabel lookupSelectedNoteContentFigure() {
-    WrapLabel result = null;
-    if ((_selection != null) && (_selection.size() == 1)) {
-      Object selected = _selection.getFirstElement();
-      if (selected instanceof TextCompartmentEditPart) {
-        TextCompartmentEditPart selectedCompartment = (TextCompartmentEditPart) selected;
-        // Selection is a text compartment: check that there is no
-        // corresponding semantic element
-        if ((selectedCompartment.getModel() instanceof Node) && (((Node) selectedCompartment.getModel()).getElement() == null)) {
-          IFigure selectedFigure = selectedCompartment.getFigure();
-          if (selectedFigure instanceof WrapLabel) {
-            result = (WrapLabel) selectedFigure;
-          }
-        }
-      }
-    }
-    return result;
-  }
-
-  /**
    * @see IActionDelegate#selectionChanged(IAction, ISelection)
    */
-  public void selectionChanged(IAction action_p, ISelection selection_p) {
-    if (selection_p instanceof IStructuredSelection) {
-      _selection = (IStructuredSelection) selection_p;
+  public void selectionChanged(IAction action, ISelection selection) {
+    if (selection instanceof IStructuredSelection) {
+      _selection = (IStructuredSelection) selection;
       _editingTextWidget = lookupEditingTextWidget();
       // _noteContent is set to null because we should not apply copy/past behavior to a GMF note.
       // _noteContent = lookupSelectedNoteContentFigure();
       _noteContent = null;
 
       boolean enabled = isEnabled();
-      if (action_p != null) {
-        action_p.setEnabled(enabled);
+      if (action != null) {
+        action.setEnabled(enabled);
       }
     } else {
       _selection = null;
       _editingTextWidget = null;
       _noteContent = null;
-      if (action_p != null) {
-        action_p.setEnabled(false);
+      if (action != null) {
+        action.setEnabled(false);
       }
     }
   }
@@ -247,18 +216,18 @@ public abstract class AbstractCopyPasteAction implements IObjectActionDelegate {
   /**
    * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
    */
-  public void setActivePart(IAction action_p, IWorkbenchPart targetPart_p) {
-    _shell = targetPart_p.getSite().getShell();
+  public void setActivePart(IAction action, IWorkbenchPart targetPart) {
+    _shell = targetPart.getSite().getShell();
   }
 
   /**
    * Extract relevant GEF elements from selection
    */
-  private List<EditPart> toGef(IStructuredSelection selection_p) {
+  private List<EditPart> toGef(IStructuredSelection selection) {
     List<EditPart> result = new ArrayList<EditPart>();
-    if (selection_p != null) {
+    if (selection != null) {
       @SuppressWarnings("unchecked")
-      Iterator<Object> it = selection_p.iterator();
+      Iterator<Object> it = selection.iterator();
       while (it.hasNext()) {
         Object current = it.next();
         if (current instanceof EditPart) {

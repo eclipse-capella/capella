@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,14 +11,23 @@
 package org.polarsys.capella.core.platform.sirius.clipboard.util;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
 
 
 
@@ -145,5 +154,57 @@ public final class LayerUtil {
     return result;
   }
 
-   
+  /**
+   * Get the EditPart corresponding to the given view in the open editor.
+   * @param selectedElement
+   */
+  public static IGraphicalEditPart getGraphicalPart(DSemanticDecorator view) {
+    // A crossReferencer should be enough to retrieve these elements, but in some buggy case, 2 GMF diagrams for one
+    // DDiagram
+
+    IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+    IGraphicalEditPart graphicalEditPart = null;
+    
+
+    if ((null != activeEditor) && (activeEditor instanceof SiriusDiagramEditor)) {
+      SiriusDiagramEditor diagramEditor = (SiriusDiagramEditor) activeEditor;
+
+      // Get the graphical viewer.
+      IDiagramGraphicalViewer diagramGraphicalViewer = diagramEditor.getDiagramGraphicalViewer();
+
+      // Check it is a Sirius one.
+      if (diagramGraphicalViewer instanceof IDiagramDialectGraphicalViewer) {
+        IDiagramDialectGraphicalViewer dialectViewer = (IDiagramDialectGraphicalViewer) diagramGraphicalViewer;
+
+        // Search all edit parts linked to selected object.
+        List<IGraphicalEditPart> allEditParts = dialectViewer.findEditPartsForElement(view.getTarget(),
+            IGraphicalEditPart.class);
+        // Iterate over retrieved edit parts to remove the ones related to 'label' edit part.
+        for (Iterator<IGraphicalEditPart> iterator = allEditParts.iterator(); iterator.hasNext();) {
+          IGraphicalEditPart editPart = iterator.next();
+          // Filter out label edit part.
+          if (editPart instanceof IDiagramNameEditPart) {
+            iterator.remove();
+          }
+        }
+
+        if (allEditParts.size() == 1) {
+          // Select directly this one.
+          graphicalEditPart = allEditParts.get(0);
+        } else {
+          // Multiple edit parts are found.
+          // In some cases, 2 UI representations can point to the same target e.g an DEdge and a AbstractDNode.
+          // Priority is done to the AbstractDNode vs an DEdge.
+          for (IGraphicalEditPart currentGraphicalEditPart : allEditParts) {
+            if (!(currentGraphicalEditPart instanceof IDiagramEdgeEditPart)) {
+              graphicalEditPart = currentGraphicalEditPart;
+              break;
+            }
+          }
+        }
+      }
+    }
+    
+    return graphicalEditPart;
+  }
 }
