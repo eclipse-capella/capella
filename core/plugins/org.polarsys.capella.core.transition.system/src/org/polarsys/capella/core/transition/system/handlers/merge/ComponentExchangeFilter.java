@@ -13,13 +13,12 @@ package org.polarsys.capella.core.transition.system.handlers.merge;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeCategory;
 import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.transition.system.preferences.PreferenceConstants;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class ComponentExchangeFilter extends EObjectCategoryFilter {
 
   public ComponentExchangeFilter(IContext context) {
-    super(context, FaPackage.Literals.COMPONENT_EXCHANGE, PreferenceConstants.P_CE_TEXT);
+    super(context, FaPackage.Literals.COMPONENT_EXCHANGE);
   }
 
   @Override

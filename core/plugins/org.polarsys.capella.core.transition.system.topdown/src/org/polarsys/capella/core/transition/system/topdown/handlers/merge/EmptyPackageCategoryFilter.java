@@ -29,7 +29,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class EmptyPackageCategoryFilter extends CategoryFilter {
 
   public EmptyPackageCategoryFilter(IContext context) {
-    super(context, Messages.EmptyPackageCategoryFilter, null);
+    super(context, Messages.EmptyPackageCategoryFilter, Messages.ArchitectureLinkCategoryFilter_Description);
     setInFocusMode(false);
     setVisible(true);
     setActive(true);

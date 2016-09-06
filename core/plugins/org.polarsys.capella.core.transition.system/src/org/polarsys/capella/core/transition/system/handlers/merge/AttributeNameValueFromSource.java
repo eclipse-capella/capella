@@ -23,7 +23,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class AttributeNameValueFromSource extends CategoryFilter {
 
   public AttributeNameValueFromSource(IContext context) {
-    super(context, Messages.AttributeNameValueFromSource, null);
+    super(context, Messages.AttributeNameValueFromSource, Messages.AttributeNameValueFromSource_Description);
     setActive(true);
     setInFocusMode(false);
     setVisible(true);

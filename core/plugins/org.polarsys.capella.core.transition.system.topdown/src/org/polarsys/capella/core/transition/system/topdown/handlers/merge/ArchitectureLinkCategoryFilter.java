@@ -26,7 +26,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class ArchitectureLinkCategoryFilter extends CategoryFilter {
 
   public ArchitectureLinkCategoryFilter(IContext context) {
-    super(context, Messages.ArchitectureLinkCategoryFilter, null);
+    super(context, Messages.ArchitectureLinkCategoryFilter, Messages.ArchitectureLinkCategoryFilter_Description);
     setInFocusMode(false);
     setVisible(false);
     setActive(true);

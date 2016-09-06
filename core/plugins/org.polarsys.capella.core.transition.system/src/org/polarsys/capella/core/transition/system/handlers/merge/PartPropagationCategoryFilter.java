@@ -27,7 +27,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class PartPropagationCategoryFilter extends CategoryFilter {
 
   public PartPropagationCategoryFilter(IContext context) {
-    super(context, Messages.PartPropagationCategoryFilter, null);
+    super(context, Messages.PartPropagationCategoryFilter, Messages.PartPropagationCategoryFilter_Description);
     setInFocusMode(true);
     setVisible(false);
     setActive(false);

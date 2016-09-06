@@ -24,7 +24,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class TargetDifferencesCategoryFilter extends CategoryFilter {
 
   public TargetDifferencesCategoryFilter(IContext context) {
-    super(context, Messages.TargetDifferencesCategoryFilter, null);
+    super(context, Messages.TargetDifferencesCategoryFilter, Messages.TargetDifferencesCategoryFilter_Description);
     setInFocusMode(false);
     setVisible(true);
     setActive(true);

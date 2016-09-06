@@ -13,13 +13,12 @@ package org.polarsys.capella.core.transition.system.handlers.merge;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.transition.system.preferences.PreferenceConstants;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class FunctionalExchangeFilter extends EObjectCategoryFilter {
 
   public FunctionalExchangeFilter(IContext context) {
-    super(context, FaPackage.Literals.FUNCTIONAL_EXCHANGE, PreferenceConstants.P_FE_TEXT);
+    super(context, FaPackage.Literals.FUNCTIONAL_EXCHANGE);
   }
 
   @Override
