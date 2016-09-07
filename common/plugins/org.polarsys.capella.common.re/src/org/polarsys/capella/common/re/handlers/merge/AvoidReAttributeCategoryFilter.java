@@ -20,7 +20,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class AvoidReAttributeCategoryFilter extends CategoryFilter {
 
   public AvoidReAttributeCategoryFilter(IContext context) {
-    super(context, AvoidReAttributeCategoryFilter.class.getSimpleName(), null);
+    super(context, Messages.AvoidReAttributeCategoryFilter, Messages.AvoidReAttributeCategoryFilter_Description);
     setInFocusMode(false);
     setActive(true);
     setVisible(false);
@@ -35,6 +35,9 @@ public class AvoidReAttributeCategoryFilter extends CategoryFilter {
           return true;
         }
         if (RePackage.Literals.RE_NAMED_ELEMENT__NAME.equals(((IAttributeValuePresence) diff).getFeature())) {
+          return true;
+        }
+        if (RePackage.Literals.CATALOG_ELEMENT__SUFFIX.equals(((IAttributeValuePresence) diff).getFeature())) {
           return true;
         }
       }

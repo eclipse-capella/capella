@@ -24,7 +24,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class AvoidUnsynchronizedFeatureCategoryFilter extends CategoryFilter {
 
   public AvoidUnsynchronizedFeatureCategoryFilter(IContext context) {
-    super(context, AvoidUnsynchronizedFeatureCategoryFilter.class.getSimpleName(), null);
+    super(context, Messages.AvoidUnsynchronizedFeatureCategoryFilter, Messages.AvoidUnsynchronizedFeatureCategoryFilter_Description);
     setInFocusMode(false);
     setActive(true);
     setVisible(true);

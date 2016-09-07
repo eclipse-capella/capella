@@ -23,7 +23,6 @@ import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.activities.InitializeDiffMergeActivity;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.merge.AvoidMergeUnmodifiableCategoryFilter;
-import org.polarsys.capella.common.re.handlers.merge.FilterFromTargetCategoryFilter;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.capella.common.re.handlers.traceability.ReConfiguration;
 import org.polarsys.capella.common.re.merge.scope.ReSourceScope;
@@ -170,8 +169,6 @@ public class InitializeDiffMergeUpdateReplicaActivity extends InitializeDiffMerg
       ActivityParameters activityParams) {
 
     super.initializeCategoriesHandlers(context, handler, activityParams);
-
-    handler.addCategory(new FilterFromTargetCategoryFilter(context), context);
 
     handler.addCategory(new AvoidMergeUnmodifiableCategoryFilter(context), context);
 
