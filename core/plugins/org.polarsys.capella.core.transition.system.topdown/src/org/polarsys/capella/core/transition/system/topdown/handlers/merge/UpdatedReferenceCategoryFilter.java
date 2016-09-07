@@ -30,7 +30,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.common.MappingPossib
 public class UpdatedReferenceCategoryFilter extends CategoryFilter {
 
   public UpdatedReferenceCategoryFilter(IContext context) {
-    super(context, Messages.UpdatedReferenceCategoryFilter, null);
+    super(context, Messages.UpdatedReferenceCategoryFilter, Messages.UpdatedReferenceCategoryFilter_Description);
     setInFocusMode(false);
     setVisible(true);
     setActive(true);

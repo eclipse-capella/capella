@@ -34,7 +34,7 @@ public class RealizationLinkCategoryFilter extends CategoryFilter {
   public static final String ID = RealizationLinkCategoryFilter.class.getCanonicalName();
 
   public RealizationLinkCategoryFilter(IContext context) {
-    super(context, ID, Messages.RealizationLinkCategoryFilter, null);
+    super(context, ID, Messages.RealizationLinkCategoryFilter, Messages.OutsideArchitectureCategoryFilter_Description, null);
     setInFocusMode(false);
     setVisible(false);
     setActive(true);

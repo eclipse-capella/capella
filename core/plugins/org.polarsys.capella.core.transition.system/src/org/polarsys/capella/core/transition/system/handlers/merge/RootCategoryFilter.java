@@ -20,7 +20,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class RootCategoryFilter extends CategoryFilter {
 
   public RootCategoryFilter(IContext context) {
-    super(context, Messages.RootCategoryFilter, null);
+    super(context, Messages.RootCategoryFilter, Messages.RootCategoryFilter_Description);
     setInFocusMode(false);
     setActive(true);
     setVisible(false);

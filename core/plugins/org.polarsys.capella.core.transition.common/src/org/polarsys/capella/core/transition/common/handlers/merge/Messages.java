@@ -10,20 +10,17 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.common.handlers.merge;
 
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
+import org.eclipse.osgi.util.NLS;
 
-public class DefaultFocusCategoryFilter extends CategoryFilter {
-
-  public DefaultFocusCategoryFilter(IContext context) {
-    super(context, Messages.DefaultFocusCategoryFilter, Messages.DefaultFocusCategoryFilter_Description);
-    setInFocusMode(true);
-    setActive(true);
-    setVisible(false);
+public class Messages extends NLS {
+  private static final String BUNDLE_NAME = "org.polarsys.capella.core.transition.common.handlers.merge.messages"; //$NON-NLS-1$
+  public static String DefaultFocusCategoryFilter;
+  public static String DefaultFocusCategoryFilter_Description;
+  static {
+    // initialize resource bundle
+    NLS.initializeMessages(BUNDLE_NAME, Messages.class);
   }
 
-  @Override
-  public boolean covers(IDifference difference) {
-    return true;
+  private Messages() {
   }
 }

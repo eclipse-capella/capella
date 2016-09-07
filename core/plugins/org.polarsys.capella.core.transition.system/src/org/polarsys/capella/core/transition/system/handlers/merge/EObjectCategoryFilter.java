@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.swt.graphics.Image;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
@@ -28,20 +28,14 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class EObjectCategoryFilter extends CategoryFilter {
 
-  public EObjectCategoryFilter(IContext context, String name, Image image) {
-    super(context, name, image);
-    setActive(true);
-    setInFocusMode(true);
-    setVisible(true);
-  }
-
   public EObjectCategoryFilter(IContext context, EClass iconClazz, String name) {
     this(context, iconClazz);
-    this.name = name;
+    this.name = NLS.bind(Messages.EObjectCategoryFilter, name);
+    this.description = NLS.bind(Messages.EObjectCategoryFilter_Description, name);
   }
 
   public EObjectCategoryFilter(IContext context, EClass iconClazz) {
-    super(context, null, null);
+    super(context, null, null, null, null);
     TransactionalEditingDomain domain = (TransactionalEditingDomain) TransactionUtil
         .getEditingDomain(((EObject) context.get(ITransitionConstants.TRANSITION_SOURCE_ROOT)));
     Resource res = HoldingResourceHelper.getHoldingResource(domain);
@@ -51,10 +45,15 @@ public class EObjectCategoryFilter extends CategoryFilter {
       res.getContents().add(obj);
       this.image = EObjectLabelProviderHelper.getImage(obj);
       this.name = EObjectLabelProviderHelper.getMetaclassLabel(obj, false);
+      this.id = getId() + "." + iconClazz.getName(); //$NON-NLS-1$
     }
     setActive(true);
     setInFocusMode(true);
     setVisible(true);
+  }
+
+  private static String getId(EClass iconClazz) {
+    return iconClazz.getName();
   }
 
   protected void adapt(EObject obj) {

@@ -27,8 +27,8 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class AppliedPropertyValuesCategoryFilter extends CategoryFilter {
 
   public AppliedPropertyValuesCategoryFilter(IContext context) {
-    super(context, Messages.AppliedPropertyValuesCategoryFilter, null);
-    setInFocusMode(false);
+    super(context, Messages.AppliedPropertyValuesCategoryFilter, Messages.AppliedPropertyValuesCategoryFilter_Description);
+    setInFocusMode(false); 
     setVisible(true);
 
     boolean active = (OptionsHandlerHelper.getInstance(context).getBooleanValue(context,
