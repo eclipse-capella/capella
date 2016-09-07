@@ -76,7 +76,6 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
         .get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN);
 
     MergeEMFDiffNode diffNode = new MergeEMFDiffNode(context, domain);
-    diffNode.setDefaultIncrementalMode(true);
     diffNode.setDefaultCoverChildren(true);
     diffNode.setDefaultShowImpact(true);
     diffNode.setLeftRole(Role.REFERENCE);

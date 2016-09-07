@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.polarsys.capella.test.recrpl.ju.testcases;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
@@ -36,16 +38,16 @@ public class UpdateDefREC_RemoveElement extends Re {
     CapellaDeleteCommand delete = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(fe), Arrays.asList(fe), true, false, false);
     delete.execute();
 
-    // Update a REC, default behavior
+    // After updating the REC, the functional exchange is not referenced any more
+    Collection<EObject> expectedReferencedElements = new ArrayList<EObject>(REC.getReferencedElements());
+    expectedReferencedElements.remove(getObject(FUNCTIONALEXCHANGE_1));
+
     // We update the REC according the selected RPL after removing an element on the RPL
     EObject lf1 = ReplicableElementExt.getReferencingElement(RPL, getObject(LF1));
     updateDef(Collections.singletonList(lf1));
-    assertTrue(REC.getOwnedLinks().size() == (RPL.getOwnedLinks().size() + 1));
 
-    // Update a REC, check all differences
-    // We update the REC according the selected RPL, we check the box, after having removed an element on the RPL
-    updateDefCheck(Collections.singletonList(lf1));
-    assertTrue(REC.getOwnedLinks().size() == (RPL.getOwnedLinks().size()));
+    // The REC shouldn't reference the functional exchange any more
+    assertEquals(expectedReferencedElements, REC.getReferencedElements());
   }
 
 }

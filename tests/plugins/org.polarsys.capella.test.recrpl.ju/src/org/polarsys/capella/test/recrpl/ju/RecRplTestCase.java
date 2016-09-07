@@ -41,14 +41,15 @@ import org.polarsys.capella.core.re.commands.DeleteReplicaPreserveRelatedElement
 import org.polarsys.capella.core.re.commands.UpdateCurCommand;
 import org.polarsys.capella.core.re.commands.UpdateDefCommand;
 import org.polarsys.capella.core.re.commands.UpdateReplicaCommand;
-import org.polarsys.capella.core.re.launcher.UpdateDefLauncher;
 import org.polarsys.capella.core.re.launcher.UpdateReplicaLauncher;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
+import org.polarsys.capella.core.transition.common.handlers.merge.DefaultMergeHandler;
+import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
 import org.polarsys.capella.core.transition.common.transposer.SharedWorkflowActivityParameter;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
-import org.polarsys.capella.test.recrpl.ju.handlers.filter.CheckedFilteringHandler;
 import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
+import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  * This class is a generic test case for REC/REPL tests.<br>
@@ -183,8 +184,8 @@ public abstract class RecRplTestCase extends BasicTestCase {
     executeCommand(command);
   }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
-  protected void updateReplicaCheck(Collection<EObject> elements, CatalogElement replica) {
+  protected void updateReplica(Collection<EObject> elements, CatalogElement replica, final Collection<String> disabledCategoryFilters){
+
     ICommand command = new UpdateReplicaCommand((Collection) elements, new NullProgressMonitor()) {
 
       @Override
@@ -194,8 +195,18 @@ public abstract class RecRplTestCase extends BasicTestCase {
           @Override
           protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
             SharedWorkflowActivityParameter param = super.getSharedParameter(workflowId);
-            param.addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.FILTERING_DIFFERENCES_HANDLER, new CheckedFilteringHandler(),
-                workflowId));
+            param.addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, new DefaultMergeHandler(true){
+
+              @Override
+              public void addCategory(ICategoryItem filter, IContext context) {
+                super.addCategory(filter, context);
+                if (disabledCategoryFilters.contains(filter.getId())){
+                  filter.setActive(false);
+                }
+              }
+
+            }, workflowId));
+
             return param;
           }
         };
@@ -204,28 +215,6 @@ public abstract class RecRplTestCase extends BasicTestCase {
     };
 
     RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, replica);
-    executeCommand(command);
-  }
-
-  @SuppressWarnings({ "rawtypes", "unchecked" })
-  protected void updateDefCheck(Collection<EObject> elements) {
-    ICommand command = new UpdateDefCommand((Collection) elements, new NullProgressMonitor()) {
-
-      @Override
-      protected ReLauncher createLauncher() {
-        return new UpdateDefLauncher() {
-
-          @Override
-          protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
-            SharedWorkflowActivityParameter param = super.getSharedParameter(workflowId);
-            param.addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.FILTERING_DIFFERENCES_HANDLER, new CheckedFilteringHandler(),
-                workflowId));
-            return param;
-          }
-        };
-      }
-
-    };
     executeCommand(command);
   }
 

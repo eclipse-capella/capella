@@ -41,6 +41,7 @@ public class ReSourceScope extends ReScope {
    */
   public ReSourceScope(CatalogElement element, ITraceabilityHandler handler, Collection<? extends EObject> elements, IContext context) {
     super(element, handler, elements, context);
+    setOriginator("Candidate model");
   }
 
   @Override

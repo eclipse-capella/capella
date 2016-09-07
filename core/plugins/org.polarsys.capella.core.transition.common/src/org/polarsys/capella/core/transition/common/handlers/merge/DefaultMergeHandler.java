@@ -27,6 +27,15 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class DefaultMergeHandler implements IMergeHandler {
 
   protected Collection<ICategoryItem> categories;
+  protected final boolean processTargetDifferences;
+
+  public DefaultMergeHandler() {
+    this(false);
+  }
+
+  public DefaultMergeHandler(boolean processTargetDifferences){
+    this.processTargetDifferences = processTargetDifferences;
+  }
 
   public void addCategory(ICategoryItem filter, IContext context) {
     if (categories == null) {
@@ -38,6 +47,9 @@ public class DefaultMergeHandler implements IMergeHandler {
   public IStatus processDifferences(IContext context, Collection<IDifference> diffSource,
       Collection<IDifference> diffTarget) {
     processDifferences(context, diffSource, Role.TARGET);
+    if (processTargetDifferences){
+      processDifferences(context, diffTarget, Role.TARGET); // remove deleted elements from target model
+    }
     return Status.OK_STATUS;
   }
 

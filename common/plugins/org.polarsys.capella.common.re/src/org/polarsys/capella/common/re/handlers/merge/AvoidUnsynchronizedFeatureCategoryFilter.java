@@ -27,7 +27,7 @@ public class AvoidUnsynchronizedFeatureCategoryFilter extends CategoryFilter {
     super(context, AvoidUnsynchronizedFeatureCategoryFilter.class.getSimpleName(), null);
     setInFocusMode(false);
     setActive(true);
-    setVisible(false);
+    setVisible(true);
   }
 
   @Override
