@@ -35,6 +35,8 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.IActionBars;
@@ -58,6 +60,11 @@ public class DiffComparisonViewer extends ComparisonViewer {
     super(parent, actionBars);
   }
 
+  protected MenuItem createMenuSupportUndoRedo(Menu menu_p) {
+    //We don't want to create an Undo/Redo menu, we are in a global transaction while the whole process
+    return null;
+  }
+  
   @Override
   protected void inputChanged(final Object input, Object oldInput) {
     super.inputChanged(input, oldInput);

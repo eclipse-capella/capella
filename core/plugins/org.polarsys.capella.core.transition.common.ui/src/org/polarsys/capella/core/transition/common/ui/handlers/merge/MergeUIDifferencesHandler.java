@@ -78,6 +78,7 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
     MergeEMFDiffNode diffNode = new MergeEMFDiffNode(context, domain);
     diffNode.setDefaultCoverChildren(true);
     diffNode.setDefaultShowImpact(true);
+    diffNode.setUndoRedoSupported(false);
     diffNode.setLeftRole(Role.REFERENCE);
     diffNode.setMergeAllOnLeft(true);
     diffNode.setMergeAllOnRight(false);
