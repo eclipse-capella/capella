@@ -16,9 +16,11 @@ import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMes
 public class CompatibilityDefinition extends org.polarsys.capella.core.data.helpers.information.services.LinkCompatibilityDefinition {
 
   public static final CompatibilityDefinition INSTANCE = new CompatibilityDefinition();
-  
+
   public boolean isCompatible(CommunicationInfo comInfo, MessageKind messageKind, boolean withReturn) {
-    return isCompatible(comInfo.mechanism, comInfo.senderProtocol, comInfo.receiverProtocol, messageKind, withReturn);
+    if (comInfo != null && messageKind != null)
+      return isCompatible(comInfo.mechanism, comInfo.senderProtocol, comInfo.receiverProtocol, messageKind, withReturn);
+    return false;
   }
 	
 }
