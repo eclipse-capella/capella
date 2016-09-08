@@ -1319,7 +1319,7 @@
       </menuContribution>
       <menuContribution
             locationURI="popup:org.eclipse.ui.popup.any?after=org.polarsys.capella.core.sirius.diagram.editor.wizards">
-           <command
+              <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showImpactAnalysisCommand"
                id="%showImpactAnalysis"
                style="push">
@@ -1328,12 +1328,19 @@
                <with
                      variable="activeMenuSelection">
                   <and>
-                  <not>
-                  	<iterate>
-                        <or>
-                           <instanceof
-                                 value="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
-                           </instanceof>
+                  	<iterate>                
+                         <or>
+                         		<and>
+                         		<instanceof
+                                 	value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+                           		</instanceof>
+                         		<not>
+                           			<instanceof
+                           				value="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+                           			</instanceof>
+                           		</not>
+                         		</and>
+                           		
                            <instanceof
                                  value="org.eclipse.sirius.table.metamodel.table.DTableElement">
                            </instanceof>
@@ -1342,7 +1349,6 @@
                      <count
                            value="1">
                      </count>
-                  </not>
                   </and>
                </with>
             </visibleWhen>
