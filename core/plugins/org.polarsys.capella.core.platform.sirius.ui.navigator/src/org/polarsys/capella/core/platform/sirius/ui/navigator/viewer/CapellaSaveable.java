@@ -12,9 +12,11 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator.viewer;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.window.IShellProvider;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
@@ -27,6 +29,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.internal.PartSite;
 import org.eclipse.ui.model.IWorkbenchAdapter;
+import org.eclipse.ui.progress.IJobRunnable;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.sirius.ui.SaveSessionAction;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
@@ -63,6 +66,14 @@ public class CapellaSaveable extends SessionSaveable {
       return getSession();
     }
     return super.getAdapter(adapter);
+  }
+
+  @Override
+  public IJobRunnable doSave(IProgressMonitor monitor, IShellProvider shellProvider) throws CoreException {
+    SaveSessionAction saveSessionAction = new SaveSessionAction();
+    saveSessionAction.selectionChanged(new StructuredSelection(getSession()));
+    saveSessionAction.run();
+    return null;
   }
 
   /**
