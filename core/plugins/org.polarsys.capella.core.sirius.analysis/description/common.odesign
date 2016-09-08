@@ -13250,8 +13250,7 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="1" height="40">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Lifeline_Gray_Mid']" showIcon="false" labelExpression="" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="1" height="40">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
@@ -15305,8 +15304,7 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="1" height="40">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Lifeline_Gray_Mid']" showIcon="false" labelExpression="" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="1" height="40">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
@@ -17107,8 +17105,7 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="1" height="40">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Lifeline_Gray_Mid']" showIcon="false" labelExpression="" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="1" height="40">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
@@ -18778,5 +18775,6 @@
     <entries xsi:type="description:UserFixedColor" red="239" green="239" blue="239" name="_CAP_MSM_State_Gray_min"/>
     <entries xsi:type="description:UserFixedColor" red="195" green="208" blue="208" name="_CAP_MSM_Mode_Gray"/>
     <entries xsi:type="description:UserFixedColor" red="234" green="239" blue="239" name="_CAP_MSM_Mode_Gray_min"/>
+    <entries xsi:type="description:UserFixedColor" red="191" green="191" blue="191" name="_CAP_Lifeline_Gray_Mid"/>
   </userColorsPalettes>
 </description:Group>
