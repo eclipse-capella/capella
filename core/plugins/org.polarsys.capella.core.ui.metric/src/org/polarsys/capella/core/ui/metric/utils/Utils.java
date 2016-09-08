@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -80,10 +80,9 @@ public class Utils {
    */
   public static Image getImage(EObject eObject) {
     Image result = null;
-    ItemProviderAdapter itemProvider = getIItemLabelProvider(eObject);
+    IItemLabelProvider itemProvider = getIItemLabelProvider(eObject);
     if (null != itemProvider) {
       result = EObjectLabelProviderHelper.getImageFromObject(itemProvider.getImage(eObject));
-      itemProvider.dispose();
     }
     return result;
   }
@@ -95,10 +94,9 @@ public class Utils {
    */
   public static String getText(EObject eObject) {
     String result = ICommonConstants.EMPTY_STRING;
-    ItemProviderAdapter itemProvider = getIItemLabelProvider(eObject);
+    IItemLabelProvider itemProvider = getIItemLabelProvider(eObject);
     if (null != itemProvider) {
       result = itemProvider.getText(eObject);
-      itemProvider.dispose();
     }
     return result;
   }
@@ -107,10 +105,10 @@ public class Utils {
    * Get a generic item provider.
    * @return an {@link ItemProviderAdapter} if any.
    */
-  private static ItemProviderAdapter getIItemLabelProvider(EObject object) {
-    IItemLabelProvider provider =
+  private static IItemLabelProvider getIItemLabelProvider(EObject object) {
+    return
         (IItemLabelProvider) CapellaAdapterFactoryProvider.getInstance().getAdapterFactory().adapt(object, IItemLabelProvider.class);
-    return (ItemProviderAdapter) provider;
+    
   }
   
   public static EObject getTarget(DRepresentation representation){
