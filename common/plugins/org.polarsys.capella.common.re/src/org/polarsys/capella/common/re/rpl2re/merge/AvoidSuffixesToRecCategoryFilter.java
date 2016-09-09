@@ -29,7 +29,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class AvoidSuffixesToRecCategoryFilter extends CategoryFilter {
 
   public AvoidSuffixesToRecCategoryFilter(IContext context) {
-    super(context, AvoidSuffixesToRecCategoryFilter.class.getSimpleName(), null);
+    super(context, Messages.AvoidSuffixesToRecCategoryFilter, Messages.AvoidSuffixesToRecCategoryFilter_Description);
     setInFocusMode(false);
     setActive(true);
     setVisible(true);
