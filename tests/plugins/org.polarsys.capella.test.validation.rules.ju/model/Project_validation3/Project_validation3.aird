@@ -1361,7 +1361,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_CommunicationLink']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3N3NYHQuEeamAMxs9g9ZYQ" name="Interface 1, ExchangeItem 8, ExchangeItem 6, ExchangeItem 7, ExchangeItem 1, ExchangeItem 2" visible="false" sourceNode="_Qqfx4PuyEeO86Oi0NzUFaQ" targetNode="_Q_dVQPuyEeO86Oi0NzUFaQ">
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3N3NYHQuEeamAMxs9g9ZYQ" name="Interface 1, ExchangeItem 8, ExchangeItem 2, ExchangeItem 6, ExchangeItem 1, ExchangeItem 7" visible="false" sourceNode="_Qqfx4PuyEeO86Oi0NzUFaQ" targetNode="_Q_dVQPuyEeO86Oi0NzUFaQ">
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation3.melodymodeller#53bec638-c860-47b2-baf7-4b2eead040e9"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation3.melodymodeller#53bec638-c860-47b2-baf7-4b2eead040e9"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" xmi:id="_3OITIHQuEeamAMxs9g9ZYQ">
@@ -1421,7 +1421,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3N8s8HQuEeamAMxs9g9ZYQ" name="Interface 1, ExchangeItem 8, ExchangeItem 6, ExchangeItem 7, ExchangeItem 1, ExchangeItem 2" visible="false" sourceNode="_Qqfx4PuyEeO86Oi0NzUFaQ" targetNode="_Q_dVQPuyEeO86Oi0NzUFaQ">
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3N8s8HQuEeamAMxs9g9ZYQ" name="Interface 1, ExchangeItem 8, ExchangeItem 2, ExchangeItem 6, ExchangeItem 1, ExchangeItem 7" visible="false" sourceNode="_Qqfx4PuyEeO86Oi0NzUFaQ" targetNode="_Q_dVQPuyEeO86Oi0NzUFaQ">
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation3.melodymodeller#53bec638-c860-47b2-baf7-4b2eead040e9"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation3.melodymodeller#53bec638-c860-47b2-baf7-4b2eead040e9"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" xmi:id="_3OI6MnQuEeamAMxs9g9ZYQ">
