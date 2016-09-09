@@ -25,9 +25,6 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.osgi.framework.adaptor.BundleClassLoader;
-import org.eclipse.osgi.framework.adaptor.ClassLoaderDelegate;
-import org.eclipse.osgi.internal.loader.BundleLoader;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
@@ -35,6 +32,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.statushandlers.StatusManager;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
@@ -119,12 +118,15 @@ public class SaveSessionAction extends BaseSelectionListenerAction {
     }
   }
 
-  String getBundleId(Object obj) {
-    ClassLoader cl = obj.getClass().getClassLoader();
-    if (cl instanceof BundleClassLoader) {
-      ClassLoaderDelegate delegate = ((BundleClassLoader) cl).getDelegate();
-      if (delegate instanceof BundleLoader)
-        return ((BundleLoader) delegate).getBundle().getSymbolicName();
+  /**
+   * @param obj
+   * @return the bundle containing the object's class or the class's name if it's not contained in a bundle
+   */
+  private String getBundleId(Object obj) {
+    Bundle bundle = FrameworkUtil.getBundle(obj.getClass());
+    if (bundle != null)
+    {
+      return bundle.getSymbolicName();
     }
     return obj.getClass().getCanonicalName();
   }
