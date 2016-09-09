@@ -13,7 +13,7 @@
     <properties xmi:id="_Y092gC0WEeSpNZCH09tG3Q" key="site_Patterns" value="${eclipse.download.prefix}/diffmerge/releases/0.7.0/edm-patterns-site/"/>
     <properties xmi:id="_wKYdYHKOEeGk8-zOAaqAYg" key="site_Kitalpha_CTK" value="https://hudson.polarsys.org/kitalpha/job/Kitalpha_runtime-v1.0.x/190/artifact/result/publish/kitalpha_runtime/site.p2"/>
     <properties xmi:id="_rNt18GaHEeWkG6r98F2org" key="site_Kitalpha_SDK" value="https://hudson.polarsys.org/kitalpha/job/Kitalpha_SDK-v1.0.x/47/artifact/result/publish/kitalpha_sdk/site.p2"/>
-    <properties xmi:id="_ha1JUDXkEeWcHcNqIIHNgA" key="site_Amalgam" value="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.7.0-N20160610-082445/neon"/>
+    <properties xmi:id="_ha1JUDXkEeWcHcNqIIHNgA" key="site_Amalgam" value="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.7.0-N20160909-040426/mars"/>
   </propertyPackages>
   <jobs href="Job_Capella.egfbuild#_P5DYAF4qEeGjYKPu-vkVIA"/>
   <jobs href="Job_CapellaTestSuite.egfbuild#_AkGK4UHIEeG_UKzFyZlgCA"/>
