@@ -14,6 +14,7 @@ import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.ui.EMFDiffMergeUIPlugin;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
 import org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategory;
+import org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategorySet;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -101,6 +102,18 @@ public class DiffCategoryProxy implements IDifferenceCategory {
   @Override
   public void setVisible(boolean visible) {
     item.setVisible(visible);
+  }
+
+  @Override
+  public IDifferenceCategorySet getParent() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public String getID() {
+    // TODO Auto-generated method stub
+    return null;
   }
 
 }
