@@ -11,7 +11,6 @@
 package org.polarsys.capella.core.transition.common.ui.handlers.merge;
 
 import java.util.Collection;
-import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -87,7 +86,7 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
   }
   
   protected void initializeCategories(IContext context, EMFDiffNode diffNode) {
-    Set<IDifferenceCategory> category = diffNode.getCategoryManager().getCategories();
+    Collection<IDifferenceCategory> category = diffNode.getCategoryManager().getCategories();
     
     Object purposeValue = context.get(ITransitionConstants.TRANSPOSER_PURPOSE);
     if (purposeValue instanceof String) {
