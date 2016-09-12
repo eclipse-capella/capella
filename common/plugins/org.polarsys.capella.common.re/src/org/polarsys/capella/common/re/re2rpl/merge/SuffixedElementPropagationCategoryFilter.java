@@ -30,7 +30,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class SuffixedElementPropagationCategoryFilter extends CategoryFilter {
 
   public SuffixedElementPropagationCategoryFilter(IContext context) {
-    super(context, SuffixedElementPropagationCategoryFilter.class.getSimpleName(), null);
+    super(context, Messages.SuffixedElementPropagationCategoryFilter, Messages.SuffixedElementPropagationCategoryFilter_Description);
     setInFocusMode(false);
     setActive(true);
     setVisible(true);

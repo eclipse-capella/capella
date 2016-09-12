@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -78,7 +78,7 @@ public class UpdateRPL_AddElementWithSuffix extends Re {
     assertEquals(((LogicalFunction) RPL_LF3).getName(), LF3name + newSuffix);
 
     // If user disables SuffixedElementPropagationCategoryFilter, all names should be synchronized with suffix
-    updateReplica(Collections.singletonList((EObject) RPL), RPL, Collections.singleton(SuffixedElementPropagationCategoryFilter.class.getCanonicalName()));
+    updateReplica(Collections.singletonList((EObject) RPL), RPL, Collections.singleton(SuffixedElementPropagationCategoryFilter.class.getSimpleName()));
 
     assertEquals(((LogicalFunction) RPL_LF1).getName(), ((LogicalFunction) REC_LF1).getName() + newSuffix);
     assertEquals(((LogicalFunction) RPL_LF2).getName(), ((LogicalFunction) REC_LF2).getName() + newSuffix);
