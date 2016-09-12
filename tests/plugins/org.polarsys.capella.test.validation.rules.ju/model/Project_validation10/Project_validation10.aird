@@ -538,7 +538,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_qC8rQHQuEeamAMxs9g9ZYQ" name="ExchangeItem 2, ExchangeItem 2, ExchangeItem 3" visible="false" sourceNode="_Nnf1URcZEeSW_IEqrg0DgA" targetNode="_NzkicBcZEeSW_IEqrg0DgA">
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_qC8rQHQuEeamAMxs9g9ZYQ" name="ExchangeItem 3, ExchangeItem 2, ExchangeItem 2" visible="false" sourceNode="_Nnf1URcZEeSW_IEqrg0DgA" targetNode="_NzkicBcZEeSW_IEqrg0DgA">
       <target xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="Project_validation10.melodymodeller#dd3e9102-c0ea-4402-9f87-6350ffb9e730"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="Project_validation10.melodymodeller#dd3e9102-c0ea-4402-9f87-6350ffb9e730"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" xmi:id="_qDEnEXQuEeamAMxs9g9ZYQ">
@@ -562,7 +562,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel_DiagramBased']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_qC_HgHQuEeamAMxs9g9ZYQ" name="ExchangeItem 2, ExchangeItem 2, ExchangeItem 3" visible="false" sourceNode="_Nnf1URcZEeSW_IEqrg0DgA" targetNode="_NzkicBcZEeSW_IEqrg0DgA">
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_qC_HgHQuEeamAMxs9g9ZYQ" name="ExchangeItem 3, ExchangeItem 2, ExchangeItem 2" visible="false" sourceNode="_Nnf1URcZEeSW_IEqrg0DgA" targetNode="_NzkicBcZEeSW_IEqrg0DgA">
       <target xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="Project_validation10.melodymodeller#dd3e9102-c0ea-4402-9f87-6350ffb9e730"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="Project_validation10.melodymodeller#dd3e9102-c0ea-4402-9f87-6350ffb9e730"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" xmi:id="_qDFOIHQuEeamAMxs9g9ZYQ">
