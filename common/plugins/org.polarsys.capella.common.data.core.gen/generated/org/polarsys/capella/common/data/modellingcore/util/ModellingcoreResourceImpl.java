@@ -19,6 +19,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.URI;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.ecore.xmi.XMLHelper;
@@ -85,12 +86,18 @@ public class ModellingcoreResourceImpl extends XMIResourceImpl {
 	   * @generated
 	   */
 	  @Override
-	  protected void attachedHelper(EObject eObject_p) {
+	  protected void attachedHelper(EObject eObject) {
 	    // Make sure specified object has its id generated.
-	    if (eObject_p instanceof ModelElement) {
-	      setID(eObject_p, ((ModelElement) eObject_p).getId());
+	    if (null != eObject && null != eObject.eClass()) {
+	      EAttribute attribute = eObject.eClass().getEIDAttribute();
+	      if (attribute != null) {
+	        Object id = eObject.eGet(attribute);
+	        if (id instanceof String) {
+	          setID(eObject, (String)id);
+	        }
+	      }
 	    }
-	    super.attachedHelper(eObject_p);
+	    super.attachedHelper(eObject);
 	  }
       //end-capella-code
       

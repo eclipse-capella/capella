@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,8 +17,8 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLLoad;
 import org.eclipse.emf.ecore.xmi.XMLParserPool;
@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 import org.polarsys.capella.common.data.core.gen.xmi.impl.CapellaXMLSaveImpl;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.kitalpha.emde.xmi.XMIExtensionHelperImpl;
 import org.polarsys.kitalpha.emde.xmi.XMIExtensionLoadImpl;
 
@@ -78,12 +77,18 @@ public class InteractionResourceImpl extends XMIResourceImpl {
 	   * @generated
 	   */
 	  @Override
-	  protected void attachedHelper(EObject eObject_p) {
+	  protected void attachedHelper(EObject eObject) {
 	    // Make sure specified object has its id generated.
-	    if (eObject_p instanceof ModelElement) {
-	      setID(eObject_p, ((ModelElement) eObject_p).getId());
+	    if (null != eObject && null != eObject.eClass()) {
+	      EAttribute attribute = eObject.eClass().getEIDAttribute();
+	      if (attribute != null) {
+	        Object id = eObject.eGet(attribute);
+	        if (id instanceof String) {
+	          setID(eObject, (String)id);
+	        }
+	      }
 	    }
-	    super.attachedHelper(eObject_p);
+	    super.attachedHelper(eObject);
 	  }
       //end-capella-code
       

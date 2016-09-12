@@ -87,12 +87,18 @@ public class <%=genPackage.getResourceClassName()%> extends <%=genPackage.getImp
 	   * @generated
 	   */
 	  @Override
-	  protected void attachedHelper(<%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> eObject_p) {
+	  protected void attachedHelper(<%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> eObject) {
 	    // Make sure specified object has its id generated.
-	    if (eObject_p instanceof <%=genModel.getImportedName("org.polarsys.capella.common.data.modellingcore.ModelElement")%>) {
-	      setID(eObject_p, ((ModelElement) eObject_p).getId());
+	    if (null != eObject && null != eObject.eClass()) {
+	      <%=genModel.getImportedName("org.eclipse.emf.ecore.EAttribute")%> attribute = eObject.eClass().getEIDAttribute();
+	      if (attribute != null) {
+	        Object id = eObject.eGet(attribute);
+	        if (id instanceof <%=genModel.getImportedName("java.lang.String")%>) {
+	          setID(eObject, (<%=genModel.getImportedName("java.lang.String")%>)id);
+	        }
+	      }
 	    }
-	    super.attachedHelper(eObject_p);
+	    super.attachedHelper(eObject);
 	  }
       //end-capella-code
       
