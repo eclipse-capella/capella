@@ -300,8 +300,8 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
 
 					context.getProgressMonitor().worked(1);
 				} catch (Exception exception) {
-					String errMsg = CapellaSessionHelper.handleLoadingErrors(exception);
-					result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, errMsg, exception);
+				  result[0] = CapellaSessionHelper.handleLoadingErrors(exception);
+				  
 				} finally {
 					context.getProgressMonitor().done();
 				}

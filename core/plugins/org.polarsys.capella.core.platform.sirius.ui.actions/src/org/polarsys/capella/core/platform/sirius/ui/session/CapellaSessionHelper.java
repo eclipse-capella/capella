@@ -58,6 +58,7 @@ import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultCompon
 import org.polarsys.capella.core.af.integration.listener.MetadataException;
 import org.polarsys.capella.core.af.integration.listener.NoMetadataException;
 import org.polarsys.capella.core.af.integration.listener.WrongCapellaVersionException;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 import org.polarsys.capella.core.preferences.Activator;
 import org.polarsys.kitalpha.emde.xmi.UnknownEObject;
@@ -163,11 +164,10 @@ public class CapellaSessionHelper {
         }
       }
     } catch (Exception exception) {
-      String handleLoadingErrors = handleLoadingErrors(exception);
-      if (handleLoadingErrors == null) {
+      IStatus status = handleLoadingErrors(exception);
+      if (status == null || status.isOK()) {
         return Status.OK_STATUS; // at the end there is no error.
       }
-      IStatus status = new Status(IStatus.ERROR, pluginId, handleLoadingErrors, exception);
       reportError(status);
       return status;
 
@@ -224,7 +224,7 @@ public class CapellaSessionHelper {
             diagnostics.add(BasicDiagnostic.toDiagnostic(th));
           }
         }
-      } else if ("melodymodeller".equals(resource.getURI().fileExtension())) { //$NON-NLS-1$
+      } else if (CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION.equals(resource.getURI().fileExtension())) { //$NON-NLS-1$
         for (Resource.Diagnostic diagnostic : resource.getWarnings()) {
           if (diagnostic instanceof UnknownEObject) {
             UnknownEObject unknown = (UnknownEObject) diagnostic;
@@ -242,14 +242,17 @@ public class CapellaSessionHelper {
    * @param message
    */
   public static void reportError(IStatus status) {
-    StatusManager.getManager().handle(status, StatusManager.LOG);
-    StatusManager.getManager().handle(status, StatusManager.BLOCK);
+    if (status != null && !status.isOK()) {
+      StatusManager.getManager().handle(status, StatusManager.LOG);
+      StatusManager.getManager().handle(status, StatusManager.BLOCK);
 
-    // Log exception...
-    if (status.getException() != null) {
-      status.getException().printStackTrace();
+      // Log exception...
+      if (status.getException() != null) {
+        status.getException().printStackTrace();
+      }
+      __logger.error(new EmbeddedMessage(status.getMessage(), IReportManagerDefaultComponents.MODEL));
+
     }
-    __logger.error(new EmbeddedMessage(status.getMessage(), IReportManagerDefaultComponents.MODEL));
   }
 
   /**
@@ -275,31 +278,37 @@ public class CapellaSessionHelper {
    * @param exception
    */
   public static void reportException(Exception exception) {
-    String handleLoadingErrors = handleLoadingErrors(exception);
-    if (handleLoadingErrors != null) {
-      IStatus error = new Status(IStatus.ERROR, Activator.PLUGIN_ID, handleLoadingErrors,
-          new RuntimeException(exception));
-      reportError(error);
-    }
-
+    IStatus handleLoadingErrors = handleLoadingErrors(exception);
+    reportError(handleLoadingErrors);
   }
 
   /**
    * @param exception
-   * @return a not <code>null</code> error message.
+   * @return a not <code>null</code> status.
    */
-  public static String handleLoadingErrors(Exception exception) {
-    String errorMsg = null;
+  public static IStatus handleLoadingErrors(Exception loadingException) {
+    Throwable exception = loadingException;
+    String errorMsg = loadingException.getMessage();
+    
     if (exception instanceof RuntimeException) {
-      Throwable cause = ((RuntimeException) exception).getCause();
-      if (cause instanceof FeatureNotFoundException) {
+      if (exception.getCause() != null) {
+        exception = exception.getCause();
+      }
+      if (exception instanceof CoreException) {
+        IStatus status = ((CoreException) exception).getStatus();
+        if (status.getException() != null) {
+          exception = status.getException();
+        }
+      }
+
+      if (exception instanceof FeatureNotFoundException) {
         // we can only get this exception during the migration process.
         // In the usual case (ie no migration) we will get a
         // PackageNotFoundException
         return null;
-      } else if (cause instanceof PackageNotFoundException) {
+      } else if (exception instanceof PackageNotFoundException) {
         // Search for a package not found.
-        PackageNotFoundException notFoundException = (PackageNotFoundException) cause;
+        PackageNotFoundException notFoundException = (PackageNotFoundException) exception;
         String packageNotFound = notFoundException.uri();
         // Find out if it is a Capella Package, if so, extract version
         // number i.e last fragment.
@@ -311,13 +320,13 @@ public class CapellaSessionHelper {
         } else {
           errorMsg = "A metamodel is missing: " + packageNotFound; //$NON-NLS-1$
         }
-      } else if (cause instanceof org.eclipse.emf.ecore.xmi.ClassNotFoundException) {
+      } else if (exception instanceof org.eclipse.emf.ecore.xmi.ClassNotFoundException) {
         if (exception.getMessage().indexOf(".aird,") >= 0) { //$NON-NLS-1$
           errorMsg = Messages.CapellaSessionHelper_Repair_Migrate_Message;
         }
 
-      } else if (cause instanceof UnresolvedReferenceException) {
-        errorMsg = cause.getMessage();
+      } else if (exception instanceof UnresolvedReferenceException) {
+        errorMsg = exception.getMessage();
 
       } else if (exception instanceof NoMetadataException) {
         errorMsg = exception.getMessage();
@@ -339,7 +348,12 @@ public class CapellaSessionHelper {
         errorMsg = Messages.CapellaSessionHelper_UnknownError_Message;
       }
     }
-    return errorMsg;
+    if (errorMsg != null) {
+      //Due to org.eclipse.ui.statushandlers.WorkbenchStatusDialogManager performing modification of 
+      //displayed exception message, status message must be different of the exception message
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, errorMsg, new RuntimeException(exception));
+    }
+    return Status.OK_STATUS;
   }
 
   /**
