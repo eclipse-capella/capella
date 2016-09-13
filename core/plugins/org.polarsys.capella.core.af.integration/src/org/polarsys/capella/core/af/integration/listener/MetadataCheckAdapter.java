@@ -51,12 +51,16 @@ public class MetadataCheckAdapter extends AdapterImpl {
 	protected void checkMetadata(ResourceSet resourceSet, Resource res) {
 		URI uri = res.getURI();
 
-		if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(uri.fileExtension()) && uri.isPlatformResource()) {
-			loadRelativeMetadata(uri, resourceSet);
-			checkNoMetadata(resourceSet);
-			checkMetadataCompliancy(resourceSet);
+		if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(uri.fileExtension()) && uri.isPlatformResource() && CapellaResourceHelper.isCapellaProject(res)) {
+		  doCheckMetadata(resourceSet, uri);
 		}
 	}
+
+  protected void doCheckMetadata(ResourceSet resourceSet, URI uri) {
+    loadRelativeMetadata(uri, resourceSet);
+    checkNoMetadata(resourceSet);
+    checkMetadataCompliancy(resourceSet);
+  }
 
 	protected void loadRelativeMetadata(URI uri, ResourceSet resourceSet) {
 		// trying to load the relative metadata (afm)
