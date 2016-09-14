@@ -4816,19 +4816,19 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;%requiredInterfaces.nSize()>0 &amp;&amp; providedInterfaces.nSize()>0 &amp;&amp; current.kind==&quot;STANDARD&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="3" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%requiredInterfaces.nSize()>0 &amp;&amp; providedInterfaces.nSize()==0 &amp;&amp; current.kind==&quot;STANDARD&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="3" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%requiredInterfaces.nSize()==0 &amp;&amp; providedInterfaces.nSize()>0 &amp;&amp; current.kind==&quot;STANDARD&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="3" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
@@ -6312,19 +6312,19 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;%requiredInterfaces.nSize()>0 &amp;&amp; providedInterfaces.nSize()>0 &amp;&amp; current.kind==&quot;STANDARD&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="3" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%requiredInterfaces.nSize()>0 &amp;&amp; providedInterfaces.nSize()==0 &amp;&amp; current.kind==&quot;STANDARD&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="3" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%requiredInterfaces.nSize()==0 &amp;&amp; providedInterfaces.nSize()>0 &amp;&amp; current.kind==&quot;STANDARD&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="3" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
@@ -7901,19 +7901,19 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;%requiredInterfaces.nSize()>0 &amp;&amp; providedInterfaces.nSize()>0 &amp;&amp; current.kind==&quot;STANDARD&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="3" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%requiredInterfaces.nSize()>0 &amp;&amp; providedInterfaces.nSize()==0 &amp;&amp; current.kind==&quot;STANDARD&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="3" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%requiredInterfaces.nSize()==0 &amp;&amp; providedInterfaces.nSize()>0 &amp;&amp; current.kind==&quot;STANDARD&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="3" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
