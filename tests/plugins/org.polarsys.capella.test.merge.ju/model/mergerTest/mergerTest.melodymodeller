@@ -16,7 +16,8 @@
     xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.1.0"
     xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0"
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0" id="b3672121-3fef-4725-a7ea-7d068a99dee4"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0"
+    id="b3672121-3fef-4725-a7ea-7d068a99dee4"
     name="mergerTest">
   <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue" id="d1f92566-717b-4a80-8279-9c889c7ee8f8"
       key="projectApproach" value="SingletonComponents"/>
