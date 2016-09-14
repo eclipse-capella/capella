@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -323,6 +324,20 @@ public class CapellaResourceHelper {
     } catch (CoreException exception) {
       return false;
     }
+  }
+
+  /**
+   * Returns whether the given resource belongs to a Capella project (project or library)
+   */
+  public static boolean isCapellaProject(Resource resource) {
+    IFile file = WorkspaceSynchronizer.getFile(resource);
+    if (file != null) {
+      IProject project = file.getProject();
+      if (project != null) {
+        return isCapellaProject(project);
+      }
+    }
+    return false;
   }
 
   /**
