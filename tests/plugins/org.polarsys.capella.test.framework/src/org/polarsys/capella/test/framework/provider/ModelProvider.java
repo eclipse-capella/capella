@@ -23,6 +23,7 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.junit.Assert;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.test.framework.api.AbstractProvider;
@@ -128,8 +129,12 @@ public class ModelProvider extends AbstractProvider {
 
     List<EObject> models = root.getModels();
     if (!models.isEmpty()) {
-      EObject semanticElementRoot = models.get(0);
-      semanticResource = semanticElementRoot.eResource();
+      for (EObject model : models)
+        //Exclude AFM's Metadata resource
+        if (model instanceof Project)
+        {
+          semanticResource = model.eResource();
+        }
     }
     return semanticResource;
   }
