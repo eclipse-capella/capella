@@ -149,9 +149,12 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
     // Collect referenced elements according specified referenced feature.
     for (EObject containedElement : containedElements) {
       if (_referencedFeature != null) {
-        EObject target = (EObject) containedElement.eGet(_referencedFeature);
-        if (target != null)
-          referencedElements.add(target);
+        if (containedElement.eClass().getEAllReferences().contains(_referencedFeature)){
+          EObject target = (EObject) containedElement.eGet(_referencedFeature);
+          if (target != null){
+            referencedElements.add(target);
+          }
+        }
       } else {
         referencedElements.add(containedElement);
       }
