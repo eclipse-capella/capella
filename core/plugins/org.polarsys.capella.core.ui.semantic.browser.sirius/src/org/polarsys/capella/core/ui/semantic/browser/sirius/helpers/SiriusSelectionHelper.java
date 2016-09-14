@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,16 +33,16 @@ import org.polarsys.capella.core.ui.semantic.browser.sirius.view.SiriusSemanticB
 public class SiriusSelectionHelper {
   /**
    * Handle selection for specified parameters.
-   * @param part_p
-   * @param selection_p
-   * @param handleSemanticBrowserSelectionEvent_p <code>true</code> means selection coming from the semantic browser itself are handled.
+   * @param part
+   * @param selection
+   * @param handleSemanticBrowserSelectionEvent <code>true</code> means selection coming from the semantic browser itself are handled.
    * @return <code>null</code> means nothing to select.
    */
-  public static Object handleSelection(IWorkbenchPart part_p, ISelection selection_p, boolean handleSemanticBrowserSelectionEvent_p) {
+  public static Object handleSelection(IWorkbenchPart part, ISelection selection, boolean handleSemanticBrowserSelectionEvent) {
     Object result = null;
-    if (!selection_p.isEmpty() && (handleSemanticBrowserSelectionEvent_p || !(part_p instanceof SiriusSemanticBrowserView))) {
-      if (selection_p instanceof IStructuredSelection) {
-        IStructuredSelection selection_l = (IStructuredSelection) selection_p;
+    if (selection != null && !selection.isEmpty() && (handleSemanticBrowserSelectionEvent || !(part instanceof SiriusSemanticBrowserView))) {
+      if (selection instanceof IStructuredSelection) {
+        IStructuredSelection selection_l = (IStructuredSelection) selection;
         Object firstElement = selection_l.getFirstElement();
         if (firstElement instanceof CapellaElement) {
           // Selection of a CapellaElement from a standard EMF editor for instance.
@@ -89,11 +89,11 @@ public class SiriusSelectionHelper {
   /**
    * Handle selection for specified parameters.<br>
    * Default implementation ignores selection coming from the semantic browser itself.
-   * @param part_p
-   * @param selection_p
+   * @param part
+   * @param selection
    * @return <code>null</code> means nothing to select.
    */
-  public static Object handleSelection(IWorkbenchPart part_p, ISelection selection_p) {
-    return handleSelection(part_p, selection_p, false);
+  public static Object handleSelection(IWorkbenchPart part, ISelection selection) {
+    return handleSelection(part, selection, false);
   }
 }
