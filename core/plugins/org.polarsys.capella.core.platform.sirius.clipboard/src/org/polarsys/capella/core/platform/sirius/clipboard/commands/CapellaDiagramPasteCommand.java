@@ -33,11 +33,15 @@ import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.gmf.runtime.emf.clipboard.core.ClipboardUtil;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.Style;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.platform.sirius.clipboard.Messages;
 import org.polarsys.capella.core.platform.sirius.clipboard.util.BusinessHelper;
@@ -68,7 +72,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
   // Whether the user simply copy/pasted without selecting a paste target
   private boolean _isStandbyUsage;
 
-  private boolean _isRemoveStyles;
+  private boolean _isRestoreStyles;
 
   /**
    * Constructor
@@ -83,9 +87,9 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
   /**
    * 
    */
-  public CapellaDiagramPasteCommand(List<? extends View> targets, boolean removeStyles) {
+  public CapellaDiagramPasteCommand(List<? extends View> targets, boolean restoreStyles) {
     assert targets != null;
-    _isRemoveStyles = removeStyles;
+    _isRestoreStyles = restoreStyles;
     _targets = new ArrayList<View>(targets);
     _suffix = null;
     _pastedSiriusElementsMapping = new HashMap<DRepresentationElement, DRepresentationElement>();
@@ -285,16 +289,19 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
         }
       }
 
-      if (_isRemoveStyles) {
-        // We remove the current style
-        SetStyleSwitch style = new SetStyleSwitch();
+      if (_isRestoreStyles) {
+        // We replace the current style
         for (EObject pasted : result) {
-          if (pasted instanceof DStylizable) {
-            style.doSwitch(pasted);
+          if (pasted instanceof DDiagramElement) {
+            DDiagramElement element = (DDiagramElement) pasted;
+            Session session = SessionManager.INSTANCE.getSession(element.getTarget());
+            MappingHelper mappingHelper = new MappingHelper(session.getInterpreter());
+            Style bestStyle = mappingHelper.getBestStyle((element).getDiagramElementMapping(), element.getTarget(), pasted, pasted.eContainer(), element.getParentDiagram());
+            new SetStyleSwitch(bestStyle).doSwitch(pasted);
           }
         }
       }
-
+      
     }
     return result;
   }
