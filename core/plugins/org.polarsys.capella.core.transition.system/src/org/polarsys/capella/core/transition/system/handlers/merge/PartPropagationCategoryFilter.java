@@ -28,6 +28,7 @@ public class PartPropagationCategoryFilter extends CategoryFilter {
 
   public PartPropagationCategoryFilter(IContext context) {
     super(context, Messages.PartPropagationCategoryFilter, Messages.PartPropagationCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(true);
     setVisible(false);
     setActive(false);

@@ -45,8 +45,10 @@ public class EObjectCategoryFilter extends CategoryFilter {
       res.getContents().add(obj);
       this.image = EObjectLabelProviderHelper.getImage(obj);
       this.name = EObjectLabelProviderHelper.getMetaclassLabel(obj, false);
+      this.description = NLS.bind(Messages.EObjectCategoryFilter_Description, this.name);
       this.id = getId() + "." + iconClazz.getName(); //$NON-NLS-1$
     }
+    setCategorySet(ITransitionConstants.CATEGORY_SEMANTIC);
     setActive(true);
     setInFocusMode(true);
     setVisible(true);

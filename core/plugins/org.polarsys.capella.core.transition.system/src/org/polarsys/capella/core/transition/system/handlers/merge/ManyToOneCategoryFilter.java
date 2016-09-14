@@ -28,6 +28,7 @@ public class ManyToOneCategoryFilter extends CategoryFilter {
 
   public ManyToOneCategoryFilter(IContext context) {
     super(context, Messages.ManyToOneCategoryFilter, Messages.ManyToOneCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(false);
     setActive(true);
     setVisible(true);

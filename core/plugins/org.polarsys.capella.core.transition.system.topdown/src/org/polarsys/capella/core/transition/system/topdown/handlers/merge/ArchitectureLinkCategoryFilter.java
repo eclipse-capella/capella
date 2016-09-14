@@ -16,6 +16,7 @@ import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.capella.core.transition.system.topdown.handlers.transformation.TopDownTransformationHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -27,6 +28,7 @@ public class ArchitectureLinkCategoryFilter extends CategoryFilter {
 
   public ArchitectureLinkCategoryFilter(IContext context) {
     super(context, Messages.ArchitectureLinkCategoryFilter, Messages.ArchitectureLinkCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(false);
     setVisible(false);
     setActive(true);

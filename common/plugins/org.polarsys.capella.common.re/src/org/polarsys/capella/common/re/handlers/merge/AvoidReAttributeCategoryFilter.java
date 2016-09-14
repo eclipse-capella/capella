@@ -14,6 +14,7 @@ import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
 import org.polarsys.capella.common.re.RePackage;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -21,6 +22,7 @@ public class AvoidReAttributeCategoryFilter extends CategoryFilter {
 
   public AvoidReAttributeCategoryFilter(IContext context) {
     super(context, Messages.AvoidReAttributeCategoryFilter, Messages.AvoidReAttributeCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(false);
     setActive(true);
     setVisible(false);

@@ -27,6 +27,7 @@ public class OneToManyCategoryFilter extends CategoryFilter {
 
   public OneToManyCategoryFilter(IContext context) {
     super(context, Messages.OneToManyCategoryFilter, Messages.OneToManyCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(false);
     setActive(true);
     setVisible(true);

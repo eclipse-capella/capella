@@ -15,6 +15,7 @@ import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
 import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -25,6 +26,7 @@ public class TargetDifferencesCategoryFilter extends CategoryFilter {
 
   public TargetDifferencesCategoryFilter(IContext context) {
     super(context, Messages.TargetDifferencesCategoryFilter, Messages.TargetDifferencesCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(false);
     setVisible(true);
     setActive(true);

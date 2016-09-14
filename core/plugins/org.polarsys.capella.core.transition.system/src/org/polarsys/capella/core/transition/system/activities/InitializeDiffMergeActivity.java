@@ -82,6 +82,8 @@ public class InitializeDiffMergeActivity extends InitializeDiffMergeFromTransfor
     super.initializeCategoriesHandlers(context, handler, activityParams);
 
     handler.addCategory(new ActorFilter(context), context);
+    
+    handler.addCategory(new ActorFilter(context), context);
     handler.addCategory(new ComponentFilter(context), context);
 
     handler.addCategory(new FunctionFilter(context), context);
