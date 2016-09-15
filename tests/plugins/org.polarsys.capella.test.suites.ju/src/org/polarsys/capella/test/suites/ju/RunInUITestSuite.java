@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.polarsys.capella.test.business.queries.ju.testSuites.main.BusinessQueryTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.testsuites.DiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.misc.ju.testsuites.DiagramMiscTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.main.DiagramToolsTestSuite;
 import org.polarsys.capella.test.explorer.activity.ju.testsuites.ActivityExplorerTestsSuite;
 import org.polarsys.capella.test.fastlinker.ju.testsuites.FastLinkerTestsSuite;
@@ -59,6 +60,7 @@ public class RunInUITestSuite extends BasicTestSuite {
     tests.add(new DiagramFiltersTestSuite());
     tests.add(new MetaAutoLoadTestSuite());
     tests.add(new SetProgressTestSuite());
+    tests.add(new DiagramMiscTestSuite());
     return tests;
   }
 
