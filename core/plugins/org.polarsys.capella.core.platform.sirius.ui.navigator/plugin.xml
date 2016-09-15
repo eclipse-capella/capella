@@ -450,7 +450,7 @@
          </filterExpression>
       </commonFilter>
       <commonFilter
-            activeByDefault="true"
+            activeByDefault="false"
             description="Hides metadata resources that end with &quot;.afm&quot;"
             id="capella.project.explorer.filters.metadata"
             name="*.afm resources">
