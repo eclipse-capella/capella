@@ -110,6 +110,10 @@ public class DefaultMergeHandler implements IMergeHandler {
     return Status.OK_STATUS;
   }
 
+  public Collection<ICategorySet> getCategoriesSet(IContext context) {
+    return Collections.unmodifiableCollection(categorySets);
+  }
+  
   public Collection<ICategoryItem> getCategories(IContext context) {
     return Collections.unmodifiableCollection(categories);
   }

@@ -16,6 +16,10 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.validation.model.CategoryManager;
 import org.eclipse.swt.graphics.Image;
 
+/**
+ * A category of differences to group semantically the differences
+ * It is also used for UI purpose for readability (getImage)
+ */
 public interface ICategoryItem {
 
   /**
@@ -138,7 +142,13 @@ public interface ICategoryItem {
    */
   boolean covers(EStructuralFeature feature);
 
+  /**
+   * Set the category set identifier owning this category
+   */
   void setCategorySet(String setId);
 
+  /**
+   * Return the category set identifier owning this category
+   */
   String getCategorySet();
 }

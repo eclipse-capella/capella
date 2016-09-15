@@ -20,8 +20,7 @@ public interface ICategorySet {
   String getId();
 
   /**
-   * Return an optional image for this category in the context of the given diff node. The image must not be owned by
-   * the category.
+   * Return an optional image for this set of category
    */
   Image getImage();
 

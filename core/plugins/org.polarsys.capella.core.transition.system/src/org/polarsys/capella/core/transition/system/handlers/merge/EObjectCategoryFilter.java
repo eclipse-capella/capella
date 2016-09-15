@@ -54,10 +54,6 @@ public class EObjectCategoryFilter extends CategoryFilter {
     setVisible(true);
   }
 
-  private static String getId(EClass iconClazz) {
-    return iconClazz.getName();
-  }
-
   protected void adapt(EObject obj) {
 
   }

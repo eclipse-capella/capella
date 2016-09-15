@@ -11,7 +11,6 @@
 package org.polarsys.capella.core.transition.common.ui.handlers.merge;
 
 import org.eclipse.emf.diffmerge.diffdata.EComparison;
-import org.eclipse.emf.diffmerge.ui.viewers.CategoryManager;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
@@ -19,7 +18,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class MergeEMFDiffNode extends EMFDiffNode {
 
-  private final CategoryManager _categoryManager;
+  private final MergeCategoryManager _categoryManager;
 
   private boolean mergeAllOnLeft;
   
@@ -56,7 +55,7 @@ public class MergeEMFDiffNode extends EMFDiffNode {
   }
 
   @Override
-  public CategoryManager getCategoryManager() {
+  public MergeCategoryManager getCategoryManager() {
     return _categoryManager;
   }
 

@@ -51,7 +51,7 @@ public class DiffComparisonViewer extends ComparisonViewer {
   private static final String CHECKOUT_ACTION_ALL = "checkout_action_all.gif";
 
   private static boolean mergeAllInProgress = false;
-  
+
   public DiffComparisonViewer(Composite parent) {
     super(parent);
   }
@@ -60,7 +60,7 @@ public class DiffComparisonViewer extends ComparisonViewer {
     super(parent, actionBars);
   }
 
-  protected MenuItem createMenuSupportUndoRedo(Menu menu_p) {
+  protected MenuItem createMenuSupportUndoRedo(Menu menu) {
     //We don't want to create an Undo/Redo menu, we are in a global transaction while the whole process
     return null;
   }
@@ -104,7 +104,6 @@ public class DiffComparisonViewer extends ComparisonViewer {
     return result;
   }
   
-
   protected Image getImage(String key) {
     ImageRegistry reg = Activator.getDefault().getImageRegistry();
     Image image = reg.get(key);
@@ -151,8 +150,8 @@ public class DiffComparisonViewer extends ComparisonViewer {
       /**
        * @see org.eclipse.jface.util.IPropertyChangeListener#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
        */
-      public void propertyChange(PropertyChangeEvent event_p) {
-        if (PROPERTY_CURRENT_INPUT.equals(event_p.getProperty())) {
+      public void propertyChange(PropertyChangeEvent event) {
+        if (PROPERTY_CURRENT_INPUT.equals(event.getProperty())) {
           EMFDiffNode input = getInput();
           if (input != null) {
             if (input instanceof MergeEMFDiffNode) {
@@ -170,12 +169,12 @@ public class DiffComparisonViewer extends ComparisonViewer {
   }
 
   @Override
-  protected boolean interactionsRequiredForMerge(MergeChoiceData choices_p, EMFDiffNode input_p,
+  protected boolean interactionsRequiredForMerge(MergeChoiceData choices, EMFDiffNode input,
       List<EMatch> selectedMatches) {
     if (mergeAllInProgress) {
       return false;
     }
-    return super.interactionsRequiredForMerge(choices_p, input_p, selectedMatches);
+    return super.interactionsRequiredForMerge(choices, input, selectedMatches);
   }
 
   @Override
