@@ -11,7 +11,6 @@
 package org.polarsys.capella.core.transition.common.ui.handlers.merge;
 
 import java.util.Collection;
-import java.util.HashMap;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -20,18 +19,12 @@ import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.ui.util.DiffMergeDialog;
 import org.eclipse.emf.diffmerge.ui.viewers.AbstractComparisonViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
-import org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategory;
-import org.eclipse.emf.diffmerge.ui.viewers.categories.DifferenceCategorySet;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
-import org.polarsys.capella.core.preferences.Activator;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.DefaultMergeHandler;
-import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
-import org.polarsys.capella.core.transition.common.handlers.merge.ICategorySet;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -42,12 +35,11 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
   @Override
   public IStatus processDifferences(IContext context, Collection<IDifference> diffSource,
       Collection<IDifference> diffTarget) {
-    final EMFDiffNode diffNode = createDiffNode(context);
-    initializeCategories(context, diffNode);
+    final MergeEMFDiffNode diffNode = createDiffNode(context);
     return displayDifferences(context, diffNode);
   }
 
-  protected IStatus displayDifferences(final IContext context, final EMFDiffNode diffNode) {
+  protected IStatus displayDifferences(final IContext context, final MergeEMFDiffNode diffNode) {
     final Integer[] result = new Integer[] { IDialogConstants.OK_ID };
     final Display display = Display.getDefault();
     display.syncExec(new Runnable() {
@@ -63,17 +55,25 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
     return Status.OK_STATUS;
   }
 
-  protected DiffMergeDialog createDiffDialog(IContext context, Display display, EMFDiffNode diffNode) {
+  protected DiffMergeDialog createDiffDialog(final IContext context, Display display, final MergeEMFDiffNode diffNode) {
     DiffMergeDialog dialog = new DiffMergeDialog(display.getActiveShell(),
         (String) context.get(ITransitionConstants.COMMAND_NAME), diffNode) {
       protected AbstractComparisonViewer createComparisonViewer(Composite parent) {
-        return new DiffComparisonViewer(parent);
+        return new DiffComparisonViewer(parent) {
+
+          @Override
+          protected void registerCategories(EMFDiffNode node) {
+            super.registerCategories(node);
+            initializeCategories(context, diffNode);
+          }
+
+        };
       }
     };
     return dialog;
   }
 
-  protected EMFDiffNode createDiffNode(IContext context) {
+  protected MergeEMFDiffNode createDiffNode(IContext context) {
     TransactionalEditingDomain domain = (TransactionalEditingDomain) context
         .get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN);
 
@@ -87,49 +87,9 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
     diffNode.setMergeAllOnRight(false);
     return diffNode;
   }
-  
-  protected void initializeCategories(IContext context, EMFDiffNode diffNode) {
-    Collection<IDifferenceCategory> category = diffNode.getCategoryManager().getCategories();
-    
-    Object purposeValue = context.get(ITransitionConstants.TRANSPOSER_PURPOSE);
-    if (purposeValue instanceof String) {
-      String purpose = (String) purposeValue;
-      ScopedCapellaPreferencesStore scps = ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID);
 
-      
-      HashMap<String, DifferenceCategorySet> parents = new HashMap<String, DifferenceCategorySet>();
-      for (ICategorySet item : categorySets) {
-        parents.put(item.getId(), new DifferenceCategorySet(item.getText(), item.getDescription()));
-      }
-      
-      for (ICategoryItem item : categories) {
-        IDifferenceCategory itemCategory = new DiffCategoryProxy(context, item);
-        if (item.getCategorySet() != null) {
-          if (!parents.containsKey(item.getCategorySet())) {
-            parents.put(item.getCategorySet(), new DifferenceCategorySet(item.getCategorySet()));
-          }
-          parents.get(item.getCategorySet()).getChildren().add(itemCategory);
-        }
-        diffNode.getCategoryManager().addCategory(itemCategory);
-      }
-      
-      for (IDifferenceCategory item : category) {
-        String isActiveKey = MergeCategoryManager.getIsActiveKey(purpose, item, diffNode);
-        scps.setDefault(isActiveKey, item.isActive());
-        if (scps.containsKey(isActiveKey)) {
-          boolean active = scps.getBoolean(isActiveKey);
-          item.setActive(active);
-        }
-        
-        String inFocusModeKey = MergeCategoryManager.getIsInFocusModeKey(purpose, item, diffNode);
-        scps.setDefault(inFocusModeKey, item.isInFocusMode());
-        if (scps.containsKey(inFocusModeKey)) {
-          boolean inFocusMode = scps.getBoolean(inFocusModeKey);
-          item.setInFocusMode(inFocusMode);
-        }
-        
-      }
-    }
+  protected void initializeCategories(IContext context, MergeEMFDiffNode diffNode) {
+    diffNode.getCategoryManager().initialize(this);
   }
 
 }
