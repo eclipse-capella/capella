@@ -31,7 +31,7 @@ public class MergeCategoryManager extends CategoryManager {
   IContext context;
 
   HashMap<String, IDifferenceCategorySet> sets = new HashMap<String, IDifferenceCategorySet>();
-  
+
   public MergeCategoryManager(EMFDiffNode node, IContext context) {
     super(node);
     this.context = context;
@@ -66,7 +66,7 @@ public class MergeCategoryManager extends CategoryManager {
       }
       removeCategory(category.getId());
     }
-    IDifferenceCategory itemCategory = new DiffCategoryProxy(context, category);
+    IDifferenceCategory itemCategory = new DiffCategoryProxy(category);
     if (category.getCategorySet() != null) {
       IDifferenceCategorySet set = getCategorySet(category.getCategorySet());
       set.getChildren().add(itemCategory);
@@ -97,8 +97,24 @@ public class MergeCategoryManager extends CategoryManager {
       addCategory(item);
     }
 
-    //Initialize States from Preferences
+    //Store the (real) default configuration
+    setDefaultConfiguration();
+    
+    //Load states from preferences
     initializeFromPreferences();
+  }
+  
+  public void setDefaultConfiguration() {
+    //We are called here two times.
+    //- One time before loading the states stored in the preferences, 
+    //- One time after opening the window, which is not what we want to store in the defaultConfiguration
+    if (!hasDefaultConfiguration()) {
+      super.setDefaultConfiguration();
+    }
+  }
+  
+  protected boolean hasDefaultConfiguration() {
+    return !_defaultConfiguration.isEmpty();
   }
   
   public void initializeFromPreferences() {
@@ -108,19 +124,19 @@ public class MergeCategoryManager extends CategoryManager {
       String purpose = (String) purposeValue;
       ScopedCapellaPreferencesStore scps = ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID);
 
-      for (IDifferenceCategory item : this.getCategories()) {
-        String isActiveKey = getIsActiveKey(purpose, item);
-        scps.setDefault(isActiveKey, item.isActive());
+      for (IDifferenceCategory category : this.getCategories()) {
+        String isActiveKey = getIsActiveKey(purpose, category);
+        scps.setDefault(isActiveKey, category.isActive());
         if (scps.containsKey(isActiveKey)) {
           boolean active = scps.getBoolean(isActiveKey);
-          item.setActive(active);
+          category.setActive(active);
         }
         
-        String inFocusModeKey = getIsInFocusModeKey(purpose, item);
-        scps.setDefault(inFocusModeKey, item.isInFocusMode());
+        String inFocusModeKey = getIsInFocusModeKey(purpose, category);
+        scps.setDefault(inFocusModeKey, category.isInFocusMode());
         if (scps.containsKey(inFocusModeKey)) {
           boolean inFocusMode = scps.getBoolean(inFocusModeKey);
-          item.setInFocusMode(inFocusMode);
+          category.setInFocusMode(inFocusMode);
         }
         
       }
