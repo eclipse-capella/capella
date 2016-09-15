@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.polarsys.capella.core.re.handlers.merge.PartOwnedTypeCategoryFilter;
 import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
+import org.polarsys.capella.core.transition.system.handlers.merge.CapellaClassFilters;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -32,6 +33,8 @@ public class InitializeDiffMergeUpdateReActivity
   protected IStatus initializeCategoriesHandlers(IContext context, IMergeHandler handler,
       ActivityParameters activityParams) {
     super.initializeCategoriesHandlers(context, handler, activityParams);
+
+    CapellaClassFilters.addClassFilters(handler, context);
 
     handler.addCategory(new PartOwnedTypeCategoryFilter(context), context);
     return Status.OK_STATUS;
