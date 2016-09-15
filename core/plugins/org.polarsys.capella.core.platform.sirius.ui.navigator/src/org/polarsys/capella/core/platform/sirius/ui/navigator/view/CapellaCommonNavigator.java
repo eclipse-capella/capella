@@ -14,9 +14,13 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.view;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.action.Action;
@@ -69,6 +73,7 @@ import org.eclipse.ui.part.IPageSite;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree;
@@ -97,7 +102,7 @@ import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 /**
  * The Capella common navigator.
  */
-public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPropertySheetPageContributor, ICommandStackSelectionProvider,
+public class CapellaCommonNavigator extends CommonNavigator implements IEditingDomainProvider, ITabbedPropertySheetPageContributor, ICommandStackSelectionProvider,
     IPropertyChangeListener {
 
   /**
@@ -982,5 +987,30 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
     if (enabled) {
       selectReveal(selection);
     }
+  }
+
+  /**
+   * The returned editing domain depends on the current selection.<br/>
+   * Returns <code>null</code> if the selection contains elements from different sessions (each session have its own editing domain), otherwise the session's editing domain of the selection.</br>
+   * 
+   * {@inheritDoc}
+   */
+  @Override
+  public EditingDomain getEditingDomain() {
+	  ISelection selection = getCommonViewer().getSelection();
+	  if (selection instanceof IStructuredSelection) {
+	    Collection<EObject> selectedElements = new ArrayList<EObject>();
+
+		  Iterator<?> it = ((IStructuredSelection) selection).iterator();
+      while(it.hasNext()) {
+         Object element = it.next();
+         if (element instanceof EObject) {
+           selectedElements.add((EObject) element);
+         }
+      }
+
+		  return TransactionHelper.getEditingDomain(selectedElements);
+	  }
+	  return null;
   }
 }
