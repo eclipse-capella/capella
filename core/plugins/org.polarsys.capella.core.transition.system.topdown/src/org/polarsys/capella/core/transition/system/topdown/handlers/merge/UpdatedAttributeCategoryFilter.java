@@ -31,6 +31,7 @@ public class UpdatedAttributeCategoryFilter extends CategoryFilter {
 
   public UpdatedAttributeCategoryFilter(IContext context) {
     super(context, Messages.UpdatedAttributeCategoryFilter, Messages.UpdatedAttributeCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(false);
     setVisible(true);
     setActive(true);

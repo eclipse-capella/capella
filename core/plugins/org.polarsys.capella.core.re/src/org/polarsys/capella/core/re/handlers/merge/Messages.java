@@ -8,18 +8,14 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.transition.common.handlers.merge;
+package org.polarsys.capella.core.re.handlers.merge;
 
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-  private static final String BUNDLE_NAME = "org.polarsys.capella.core.transition.common.handlers.merge.messages"; //$NON-NLS-1$
-  public static String DefaultFocusCategoryFilter;
-  public static String DefaultFocusCategoryFilter_Description;
-  public static String DefaultMergeHandler_CategoryBusiness_Description;
-  public static String DefaultMergeHandler_CategoryBusiness_Name;
-  public static String DefaultMergeHandler_CategorySemantic_Description;
-  public static String DefaultMergeHandler_CategorySemantic_Name;
+  private static final String BUNDLE_NAME = "org.polarsys.capella.core.re.handlers.merge.messages"; //$NON-NLS-1$
+  public static String PartOwnedTypeCategoryFilter;
+  public static String PartOwnedTypeCategoryFilter_Description;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

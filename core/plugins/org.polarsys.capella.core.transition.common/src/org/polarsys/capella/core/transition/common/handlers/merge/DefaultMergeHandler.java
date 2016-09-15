@@ -26,7 +26,10 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class DefaultMergeHandler implements IMergeHandler {
 
-  protected Collection<ICategoryItem> categories;
+  protected Collection<ICategorySet> categorySets = new LinkedList<ICategorySet>();
+  
+  protected Collection<ICategoryItem> categories = new LinkedList<ICategoryItem>();
+  
   protected final boolean processTargetDifferences;
 
   public DefaultMergeHandler() {
@@ -37,10 +40,11 @@ public class DefaultMergeHandler implements IMergeHandler {
     this.processTargetDifferences = processTargetDifferences;
   }
 
+  public void addCategorySet(ICategorySet set, IContext context) {
+    categorySets.add(set);
+  }
+  
   public void addCategory(ICategoryItem filter, IContext context) {
-    if (categories == null) {
-      categories = new LinkedList<ICategoryItem>();
-    }
     categories.add(filter);
   }
 
@@ -91,6 +95,10 @@ public class DefaultMergeHandler implements IMergeHandler {
 
   public IStatus init(IContext context) {
     categories = new LinkedList<ICategoryItem>();
+
+    addCategorySet(new CategorySet(ITransitionConstants.CATEGORY_BUSINESS, Messages.DefaultMergeHandler_CategoryBusiness_Name, Messages.DefaultMergeHandler_CategoryBusiness_Description), context);
+    addCategorySet(new CategorySet(ITransitionConstants.CATEGORY_SEMANTIC, Messages.DefaultMergeHandler_CategorySemantic_Name, Messages.DefaultMergeHandler_CategorySemantic_Description), context);
+    
     return Status.OK_STATUS;
   }
 

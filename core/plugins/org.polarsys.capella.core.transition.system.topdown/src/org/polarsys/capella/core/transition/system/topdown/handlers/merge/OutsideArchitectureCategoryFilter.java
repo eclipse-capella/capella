@@ -33,6 +33,7 @@ public class OutsideArchitectureCategoryFilter extends CategoryFilter {
 
   public OutsideArchitectureCategoryFilter(IContext context) {
     super(context, Messages.OutsideArchitectureCategoryFilter, Messages.OutsideArchitectureCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(false);
     setVisible(false);
     setActive(true);

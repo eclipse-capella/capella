@@ -126,4 +126,7 @@ public interface ITransitionConstants {
 
   static final String IS_ACTIVE = "_isActive";
   static final String IS_IN_FOCUS_MODE = "_isInFocusMode";
+
+  static final String CATEGORY_SEMANTIC = "category.semantic";
+  static final String CATEGORY_BUSINESS = "category.business";
 }

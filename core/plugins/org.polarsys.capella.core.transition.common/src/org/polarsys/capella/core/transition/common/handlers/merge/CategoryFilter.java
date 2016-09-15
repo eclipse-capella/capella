@@ -28,6 +28,8 @@ public class CategoryFilter implements ICategoryItem {
 
   protected IContext context;
 
+  protected String setId;
+  
   protected String name;
 
   protected String description;
@@ -131,4 +133,14 @@ public class CategoryFilter implements ICategoryItem {
     return false;
   }
 
+  @Override
+  public String getCategorySet() {
+    return setId;
+  }
+
+  @Override
+  public void setCategorySet(String setId) {
+    this.setId=setId;
+  }
+  
 }

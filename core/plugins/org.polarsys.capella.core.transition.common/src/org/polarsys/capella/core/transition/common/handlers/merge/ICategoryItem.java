@@ -137,4 +137,8 @@ public interface ICategoryItem {
    * Returns whether a feature is covered by the filter
    */
   boolean covers(EStructuralFeature feature);
+
+  void setCategorySet(String setId);
+
+  String getCategorySet();
 }

@@ -28,6 +28,7 @@ public class MergeCategoryManager extends CategoryManager {
     this.context = context;
   }
 
+
   @Override
   public boolean isFiltered(IDifference difference) {
     boolean focused = false;

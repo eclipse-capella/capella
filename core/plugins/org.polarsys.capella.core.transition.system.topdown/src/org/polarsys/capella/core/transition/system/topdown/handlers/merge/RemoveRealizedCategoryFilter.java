@@ -37,7 +37,8 @@ public class RemoveRealizedCategoryFilter extends CategoryFilter {
   public static final String ID = RemoveRealizedCategoryFilter.class.getCanonicalName();
 
   public RemoveRealizedCategoryFilter(IContext context) {
-    super(context, ID, Messages.RemoveRealizedCategoryFilter, Messages.OutsideArchitectureCategoryFilter_Description, null);
+    super(context, ID, Messages.RemoveRealizedCategoryFilter, Messages.RemoveRealizedCategoryFilter_Description, null);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(true);
     setVisible(false);
     setActive(false);

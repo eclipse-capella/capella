@@ -14,13 +14,15 @@ import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
 import org.eclipse.emf.diffmerge.api.diff.IReferenceValuePresence;
 import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class PartOwnedTypeCategoryFilter extends CategoryFilter {
 
   public PartOwnedTypeCategoryFilter(IContext context) {
-    super(context, PartOwnedTypeCategoryFilter.class.getSimpleName(), null);
+    super(context, Messages.PartOwnedTypeCategoryFilter, Messages.PartOwnedTypeCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(false);
     setActive(true);
     setVisible(false);

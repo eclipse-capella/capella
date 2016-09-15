@@ -23,6 +23,7 @@ import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.attributes.AttributesHandlerHelper;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -30,6 +31,7 @@ public class AvoidSuffixesToRecCategoryFilter extends CategoryFilter {
 
   public AvoidSuffixesToRecCategoryFilter(IContext context) {
     super(context, Messages.AvoidSuffixesToRecCategoryFilter, Messages.AvoidSuffixesToRecCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(false);
     setActive(true);
     setVisible(true);

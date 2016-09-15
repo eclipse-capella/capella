@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.transition.common.ui.handlers.merge;
 
 import java.util.Collection;
+import java.util.HashMap;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -20,6 +21,7 @@ import org.eclipse.emf.diffmerge.ui.util.DiffMergeDialog;
 import org.eclipse.emf.diffmerge.ui.viewers.AbstractComparisonViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
 import org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategory;
+import org.eclipse.emf.diffmerge.ui.viewers.categories.DifferenceCategorySet;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.widgets.Composite;
@@ -29,6 +31,7 @@ import org.polarsys.capella.core.preferences.Activator;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.DefaultMergeHandler;
 import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
+import org.polarsys.capella.core.transition.common.handlers.merge.ICategorySet;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -93,8 +96,21 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
       String purpose = (String) purposeValue;
       ScopedCapellaPreferencesStore scps = ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID);
 
+      
+      HashMap<String, DifferenceCategorySet> parents = new HashMap<String, DifferenceCategorySet>();
+      for (ICategorySet item : categorySets) {
+        parents.put(item.getId(), new DifferenceCategorySet(item.getText(), item.getDescription()));
+      }
+      
       for (ICategoryItem item : categories) {
-        category.add(new DiffCategoryProxy(context, item));
+        IDifferenceCategory itemCategory = new DiffCategoryProxy(context, item);
+        if (item.getCategorySet() != null) {
+          if (!parents.containsKey(item.getCategorySet())) {
+            parents.put(item.getCategorySet(), new DifferenceCategorySet(item.getCategorySet()));
+          }
+          parents.get(item.getCategorySet()).getChildren().add(itemCategory);
+        }
+        diffNode.getCategoryManager().addCategory(itemCategory);
       }
       
       for (IDifferenceCategory item : category) {

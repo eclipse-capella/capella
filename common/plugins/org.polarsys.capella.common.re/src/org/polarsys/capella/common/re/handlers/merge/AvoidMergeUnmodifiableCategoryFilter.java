@@ -16,6 +16,7 @@ import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
 import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -32,6 +33,7 @@ public class AvoidMergeUnmodifiableCategoryFilter extends CategoryFilter {
 
   public AvoidMergeUnmodifiableCategoryFilter(IContext context) {
     super(context, Messages.AvoidMergeUnmodifiableCategoryFilter, Messages.AvoidMergeUnmodifiableCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(false);
     setActive(true);
     setVisible(false);
