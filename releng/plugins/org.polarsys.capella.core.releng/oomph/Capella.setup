@@ -56,13 +56,6 @@
     <description>Set the heap space needed to work with the projects of ${scope.project.label}</description>
   </setupTask>
   <setupTask
-      xsi:type="setup:EclipseIniTask"
-      option="-Doomph.redirection.capella="
-      value="https://git.polarsys.org/c/capella/capella.git/plain/releng/plugins/org.polarsys.capella.core.releng/oomph/Capella.setup->${git.clone.capella.location|uri}/releng/plugins/org.polarsys.capella.core.releng/oomph/Capella.setup"
-      vm="true">
-    <description>Redirect to local setup file allows testing changes before pushing them back to git</description>
-  </setupTask>
-  <setupTask
       xsi:type="setup:ResourceCreationTask"
       excludedTriggers="STARTUP MANUAL"
       content="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;section name=&quot;Workbench&quot;>&#xD;&#xA;&#x9;&lt;section name=&quot;org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart&quot;>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;true&quot; key=&quot;group_libraries&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;false&quot; key=&quot;linkWithEditor&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;2&quot; key=&quot;layout&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;2&quot; key=&quot;rootMode&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;packageExplorer configured=&amp;quot;true&amp;quot; group_libraries=&amp;quot;1&amp;quot; layout=&amp;quot;2&amp;quot; linkWithEditor=&amp;quot;0&amp;quot; rootMode=&amp;quot;2&amp;quot; sortWorkingSets=&amp;quot;false&amp;quot; workingSetName=&amp;quot;&amp;quot;&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;workingSet editPageId=&amp;quot;org.eclipse.jdt.internal.ui.OthersWorkingSet&amp;quot; factoryID=&amp;quot;org.eclipse.ui.internal.WorkingSetFactory&amp;quot; id=&amp;quot;1382792884467_1&amp;quot; label=&amp;quot;Other Projects&amp;quot; name=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;activeWorkingSet workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;allWorkingSets workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/packageExplorer&amp;gt;&quot; key=&quot;memento&quot;/>&#xD;&#xA;&#x9;&lt;/section>&#xD;&#xA;&lt;/section>&#xD;&#xA;"
@@ -283,6 +276,13 @@
   <project name="Capella Developer"
       logicalProjectContainer="/">
     <setupTask
+        xsi:type="setup:EclipseIniTask"
+        option="-Doomph.redirection.capella="
+        value="https://git.polarsys.org/c/capella/capella.git/plain/releng/plugins/org.polarsys.capella.core.releng/oomph/Capella.setup->${git.clone.capella.location|uri}/releng/plugins/org.polarsys.capella.core.releng/oomph/Capella.setup"
+        vm="true">
+      <description>Redirect to local setup file allows testing changes before pushing them back to git</description>
+    </setupTask>
+    <setupTask
         xsi:type="git:GitCloneTask"
         id="git.clone.capella"
         remoteURI="capella/capella.git">
@@ -347,7 +347,7 @@
               pattern=".*\.validation(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -362,7 +362,7 @@
               pattern=".*\.properties(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -377,7 +377,7 @@
               pattern=".*\.quickfix(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -392,7 +392,7 @@
               pattern=".*\.transition(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -407,7 +407,7 @@
               pattern=".*\.sirius(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -422,7 +422,7 @@
               pattern=".*\.common(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.7 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.7 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -437,7 +437,7 @@
               pattern=".*\.core(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -464,7 +464,7 @@
               pattern=".*\.test(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
