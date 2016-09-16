@@ -259,7 +259,7 @@
         <repository
             url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/67/artifact/result/publish/kitalpha_sdk/site.p2"/>
         <repository
-            url="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.7.0-N20160610-082445/neon"/>
+            url="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20160914-085628/neon"/>
         <repository
             url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
         <repository
