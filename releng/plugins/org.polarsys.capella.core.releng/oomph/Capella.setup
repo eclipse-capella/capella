@@ -244,7 +244,7 @@
         <repository
             url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
         <repository
-            url="https://hudson.eclipse.org/diffmerge/job/buckminster-emf-diffmerge-master/124/artifact/result/publish/org.eclipse.emf.diffmerge.scm.feature/site.p2"/>
+            url="https://hudson.eclipse.org/diffmerge/job/buckminster-emf-diffmerge-master/127/artifact/result/publish/org.eclipse.emf.diffmerge.scm.feature/site.p2"/>
         <repository
             url="http://download.eclipse.org/diffmerge/releases/0.7.0/edm-patterns-site"/>
         <repository
