@@ -128,21 +128,11 @@ public class DiffComparisonViewer extends ComparisonViewer {
     result.setImage(getImage(imageKey));
     // Tool tip
     result.setToolTipText(onLeft ? Messages.ComparisonViewer_MergeAllOnLeftTooltip : Messages.ComparisonViewer_MergeAllOnRightTooltip);
-    // Activation
-    
+
     // Selection
     result.addSelectionListener(new SelectionAdapter() {
-      /**
-       * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-       */
-      @Override
       public void widgetSelected(SelectionEvent event) {
-        IEditableModelScope  scope = getComparison().getScope(getInput().getRoleForSide(true));
-        List<EObject> root = scope.getContents();
-        ComparisonSelection selection = asComparisonSelection(new StructuredSelection(root));
-        mergeAllInProgress = true;
-        merge(false, selection);
-        mergeAllInProgress = false;
+        mergeAll();
       }
     });
     // Activation
@@ -182,5 +172,14 @@ public class DiffComparisonViewer extends ComparisonViewer {
     createToolMergeAll(toolbar, onLeft);
     super.setupToolsDetailsSide(toolbar, onLeft);
   }
-  
+
+  void mergeAll(){
+    IEditableModelScope  scope = getComparison().getScope(getInput().getRoleForSide(true));
+    List<EObject> root = scope.getContents();
+    ComparisonSelection selection = asComparisonSelection(new StructuredSelection(root));
+    mergeAllInProgress = true;
+    merge(false, selection);
+    mergeAllInProgress = false;
+  }
+
 }

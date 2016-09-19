@@ -58,8 +58,12 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
   protected DiffMergeDialog createDiffDialog(final IContext context, Display display, final MergeEMFDiffNode diffNode) {
     DiffMergeDialog dialog = new DiffMergeDialog(display.getActiveShell(),
         (String) context.get(ITransitionConstants.COMMAND_NAME), diffNode) {
+
+      private final static int ID_APPLY_ALL_CHANGES = IDialogConstants.CLIENT_ID + 1;
+      private DiffComparisonViewer viewer;
+
       protected AbstractComparisonViewer createComparisonViewer(Composite parent) {
-        return new DiffComparisonViewer(parent) {
+        viewer = new DiffComparisonViewer(parent) {
 
           @Override
           protected void registerCategories(EMFDiffNode node) {
@@ -68,7 +72,30 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
           }
 
         };
+        return viewer;
       }
+
+      /**
+       * @see org.eclipse.jface.dialogs.Dialog#createButtonsForButtonBar(org.eclipse.swt.widgets.Composite)
+       */
+      @Override
+      protected void createButtonsForButtonBar(Composite parent_p) {
+        boolean editable = _input.isEditionPossible(true) || _input.isEditionPossible(false);
+        if (editable)
+          createButton(parent_p, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, !editable);
+          createButton(parent_p, ID_APPLY_ALL_CHANGES, "Merge All", false);
+          createOKButton(parent_p);
+      }
+
+      protected void buttonPressed(int buttonId) {
+        if (buttonId == ID_APPLY_ALL_CHANGES){
+          viewer.mergeAll();
+          okPressed();
+        } else {
+          super.buttonPressed(buttonId);
+        }
+      }
+
     };
     return dialog;
   }
