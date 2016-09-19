@@ -20,6 +20,8 @@ import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.model.ju.sortContent.SortContentTestSuite;
 import org.polarsys.capella.test.model.ju.sortSelection.SortSelectionTestSuite;
 import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecomposition;
+import org.polarsys.capella.test.model.ju.testcase.copyPasteModel.CopyPasteModelWithAppliedPVGandPV;
+import org.polarsys.capella.test.model.ju.testcase.copyPasteModel.CopyPasteModelWithFunctionalAllocation;
 import org.polarsys.capella.test.model.ju.testcase.dialoglabel.NewDiagramDialogLabel;
 import org.polarsys.capella.test.model.ju.testcases.interfacescenario.message.ISMessage;
 
@@ -38,6 +40,8 @@ public class ModelTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new CopyPasteModelWithAppliedPVGandPV());
+    tests.add(new CopyPasteModelWithFunctionalAllocation());
     tests.add(new LCDecomposition());
     tests.add(new ISMessage());
     // tests.add(new DetachTestSuite());
