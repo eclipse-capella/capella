@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _Eyi9IGYHEeaVsIgvj-cA7g
 Runtime-Version: 2.0.2.201511100828
-Save-Time: 8/19/16 6:08 PM
+Save-Time: 9/20/16 6:16 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -41,10 +41,10 @@ with [get-view "Capella Project Explorer" | get-tree] {
 		| get-property caption | equals LF_A_2 | verify-true
 	get-item "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/Logical Functions/Root Logical Function/" +
 		"FX_BB_2" | get-property caption | equals FX_BB_2 | verify-true
-	get-item "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/Logical System/LC_A : LC_A"
-		| get-property caption | equals "LC_A : LC_A" | verify-true
-	get-item "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/Logical System/LC_B" | get-property
-		"caption" | equals LC_B | verify-true
+	get-item "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/Logical System/LC_A_2 : LC_A_2"
+		| get-property caption | equals "LC_A_2 : LC_A_2" | verify-true
+	get-item "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/Logical System/LC_B_2" | get-property
+		"caption" | equals LC_B_2 | verify-true
 }
 
 // Graphical elements are also recreated
@@ -72,7 +72,7 @@ get-window "Pattern Instance Management" | get-button Close | click
 // When you highlight an instance, its owned graphical elements have a thick red border
 with [get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "[LAB] Logical System" 
     | get-edit-part -name "Logical System" | get-edit-part 
-    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "LC_A" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "LC_A_2" | get-edit-part 
     -className DNodeContainerViewNodeContainerCompartment2EditPart] {
     get-property "element.ownedStyle.borderSize" | equals 3 | verify-true
     get-property "element.ownedStyle.borderColor" | equals "255,0,0" | verify-true
@@ -97,7 +97,7 @@ with [get-window "Pattern Instance Management"] {
 // The border is back to normal
 with [get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "[LAB] Logical System" 
     | get-edit-part -name "Logical System" | get-edit-part 
-    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "LC_A" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "LC_A_2" | get-edit-part 
     -className DNodeContainerViewNodeContainerCompartment2EditPart] {
     get-property "element.ownedStyle.borderSize" | equals 1 | verify-true
     get-property "element.ownedStyle.borderColor" | equals "74,74,151" | verify-true
