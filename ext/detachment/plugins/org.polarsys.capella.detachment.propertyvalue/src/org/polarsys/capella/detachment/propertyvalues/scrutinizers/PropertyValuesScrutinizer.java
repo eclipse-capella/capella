@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
 import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
 import org.polarsys.kitalpha.model.common.scrutiny.interfaces.IScrutinize;
@@ -33,10 +34,24 @@ public class PropertyValuesScrutinizer implements IScrutinize<Map<EObject, Boole
 
 	@Override
 	public void findIn(EObject eObject) {
-		if (isAbstractPropertyValueSubClass(eObject) || eObject instanceof PropertyValueGroup || eObject instanceof PropertyValuePkg || ENUMERATION_PROPERTY_VALUE_TYPE.equals(eObject.eClass().getName())){
+		if (isAbstractPropertyValueSubClass(eObject) || isPropertyValueGroup(eObject) 
+				|| isPropertyValuePkg(eObject) || isPropertyEnum(eObject)){
 			if (canCollected(eObject))
-			propertyValues.put(eObject, false);
+				propertyValues.put(eObject, false);
 		}
+	}
+
+	private boolean isPropertyEnum(EObject eObject) {
+		return ENUMERATION_PROPERTY_VALUE_TYPE.equals(eObject.eClass().getName()) 
+				&& !((EnumerationPropertyType)eObject).getName().equals("ProgressStatus"); //$NON-NLS-1$
+	}
+
+	private boolean isPropertyValuePkg(EObject eObject) {
+		return eObject instanceof PropertyValuePkg;
+	}
+
+	private boolean isPropertyValueGroup(EObject eObject) {
+		return eObject instanceof PropertyValueGroup;
 	}
 
 	private boolean canCollected(EObject eObject) {

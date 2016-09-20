@@ -26,12 +26,10 @@ public class PropertyValueContentProvider implements ITreeContentProvider {
 
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		
 	}
 	
 	@Override
 	public void dispose() {
-		
 	}
 	
 	@Override
@@ -58,28 +56,11 @@ public class PropertyValueContentProvider implements ITreeContentProvider {
 	@Override
 	public Object[] getElements(Object inputElement) {
 		if (inputElement instanceof Collection){
-			return filterCollection(((Collection)inputElement)).toArray();
+			return (((Collection)inputElement)).toArray();
 		}
 		return null;
 	}
 	
-
-	//TODO if we don't want to get duplicated element in the tree. Now, display all.
-	@SuppressWarnings("unchecked")
-	private Collection<Object> filterCollection(Collection inputElement) {
-		/*
-		List<Object> filtredList = new ArrayList<Object>();
-		
-		for (Object pv : inputElement) {
-			if (getParent(pv) == null){
-				filtredList.add(pv);
-			}
-		}
-		
-		return filtredList;
-		*/
-		return inputElement;
-	}
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
