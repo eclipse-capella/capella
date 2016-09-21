@@ -33,7 +33,7 @@ public class UpdateReplicaUiCommand extends UpdateReplicaCommand {
   @Override
   protected void performTransformation(Collection<Object> elements) {
     UpdateReplicaUiLauncher launcher = new UpdateReplicaUiLauncher();
-
+    launcher.setName(getName());
     launcher.run(elements, true, getProgressMonitor());
   }
 }

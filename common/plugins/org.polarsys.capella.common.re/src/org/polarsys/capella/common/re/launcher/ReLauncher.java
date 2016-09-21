@@ -11,14 +11,13 @@
 
 package org.polarsys.capella.common.re.launcher;
 
-import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
+import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.DefaultMergeHandler;
 import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.capella.core.transition.common.launcher.DefaultLauncher;
 import org.polarsys.capella.core.transition.common.transposer.SharedWorkflowActivityParameter;
-import org.polarsys.capella.common.re.constants.IReConstants;
-import org.polarsys.capella.common.re.constants.Messages;
+import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 import org.polarsys.kitalpha.transposer.rules.handler.api.IRulesHandler;
 
 /**
@@ -26,6 +25,8 @@ import org.polarsys.kitalpha.transposer.rules.handler.api.IRulesHandler;
  */
 public abstract class ReLauncher extends DefaultLauncher {
 
+  private String name;
+  
   @Override
   protected String getPurpose() {
     return "org.polarsys.capella.common.re";
@@ -69,7 +70,10 @@ public abstract class ReLauncher extends DefaultLauncher {
 
   @Override
   protected String getName() {
-    return Messages.ReLauncher_Title;
+    return name;
   }
 
+  public void setName(String name) {
+    this.name = name;
+  }
 }

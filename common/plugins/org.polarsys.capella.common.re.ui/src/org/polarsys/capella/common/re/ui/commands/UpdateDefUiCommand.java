@@ -33,6 +33,7 @@ public class UpdateDefUiCommand extends UpdateDefCommand {
   @Override
   protected void performTransformation(Collection<Object> elements) {
     UpdateDefUiLauncher launcher = new UpdateDefUiLauncher();
+    launcher.setName(getName());
     launcher.run(elements, true, getProgressMonitor());
   }
 }

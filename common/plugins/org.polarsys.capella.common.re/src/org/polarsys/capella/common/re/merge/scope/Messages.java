@@ -8,23 +8,24 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.transition.common.ui.handlers.merge;
+package org.polarsys.capella.common.re.merge.scope;
 
 import org.eclipse.osgi.util.NLS;
 
-
-@SuppressWarnings("javadoc")
 public class Messages extends NLS {
-  private static final String BUNDLE_NAME = "org.polarsys.capella.core.transition.common.ui.handlers.merge.messages"; //$NON-NLS-1$
-  public static String ComparisonViewer_MergeAllOnLeftTooltip;
-  public static String ComparisonViewer_MergeAllOnRightTooltip;
-  public static String MergeUIDifferencesHandler_ApplyAllChanges;
+  private static final String BUNDLE_NAME = "org.polarsys.capella.common.re.merge.scope.messages"; //$NON-NLS-1$
+  public static String ReSourceScope_candidateModel;
+  public static String ReSourceScope_REC;
+  public static String ReSourceScope_selectedRPL;
+  public static String ReSourceScope_selection;
+  public static String ReTargetScope_REC;
+  public static String ReTargetScope_resultingModel;
+  public static String ReTargetScope_selectedRPL;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
   }
 
   private Messages() {
-    // Nothing needed
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,25 @@ public class ReSourceScope extends ReScope {
    */
   public ReSourceScope(CatalogElement element, ITraceabilityHandler handler, Collection<? extends EObject> elements, IContext context) {
     super(element, handler, elements, context);
-    setOriginator("Candidate model");
+    
+    // if the command is:
+    String commandValue = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
+    // - Update selected RPL from its REC
+    if (IReConstants.COMMAND__UPDATE_A_REPLICA_FROM_REPLICABLE.equals(commandValue)) {
+      setOriginator(Messages.ReSourceScope_REC);
+    }
+    // - Update REC from selection
+    else if (IReConstants.COMMAND__UPDATE_CURRENT_REPLICA_FROM_REPLICA.equals(commandValue)) {
+      setOriginator(Messages.ReSourceScope_selection);
+    }
+    // - Update REC from selected RPL
+    else if (IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(commandValue)) {
+      setOriginator(Messages.ReSourceScope_selectedRPL);
+    }
+    // else
+    else {
+      setOriginator(Messages.ReSourceScope_candidateModel);
+    }
   }
 
   @Override

@@ -46,7 +46,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class ScopeUIHandler extends ScopeHandler {
 
   @Override
-  public IStatus computeScope(Collection<EObject> bootstrap, IContext context) {
+  public IStatus computeScope(Collection<EObject> bootstrap, final IContext context) {
     String scope = (String) context.get(ITransitionConstants.OPTIONS_SCOPE);
     IPropertyContext ctx = ((IPropertyHandler) OptionsHandlerHelper.getInstance(context)).getPropertyContext(context, scope);
     IRenderers renderers = new RenderersLoader().getRenderers(ctx.getProperties());
@@ -121,10 +121,11 @@ public class ScopeUIHandler extends ScopeHandler {
 
       @Override
       protected String getTitle() {
-        return ScopeUIHandler.this.getTitle();
+    	  return (String)context.get(ITransitionConstants.COMMAND_NAME);
       }
     };
-
+    wizard.setWindowTitle(ScopeUIHandler.this.getTitle());
+    
     // Instantiates the wizard container with the wizard and opens it
     PropertyDialog dialog = new PropertyDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), wizard);
     dialog.setHelpAvailable(false);

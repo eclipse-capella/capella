@@ -141,15 +141,16 @@ public class DiffComparisonViewer extends ComparisonViewer {
        * @see org.eclipse.jface.util.IPropertyChangeListener#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
        */
       public void propertyChange(PropertyChangeEvent event) {
-        if (PROPERTY_CURRENT_INPUT.equals(event.getProperty())) {
+        if (PROPERTY_CURRENT_INPUT.equals(event.getProperty())
+            || PROPERTY_ACTIVATION_MERGE_TO_LEFT.equals(event.getProperty())
+            || PROPERTY_ACTIVATION_MERGE_TO_RIGHT.equals(event.getProperty())) {
           EMFDiffNode input = getInput();
           if (input != null) {
             if (input instanceof MergeEMFDiffNode) {
-              if (onLeft) {
-                result.setEnabled(((MergeEMFDiffNode) input).isMergeAllOnLeft());
-              } else {
-                result.setEnabled(((MergeEMFDiffNode) input).isMergeAllOnRight());
-              }
+              MergeEMFDiffNode mergeInput = (MergeEMFDiffNode) input;
+              
+              // enable merge all button if the other model is editable and there are differences to merge
+              result.setEnabled(mergeInput.isMergeAllEnabled(onLeft));
             }
           }
         }
@@ -157,7 +158,7 @@ public class DiffComparisonViewer extends ComparisonViewer {
     });
     return result;
   }
-
+  
   @Override
   protected boolean interactionsRequiredForMerge(MergeChoiceData choices, EMFDiffNode input,
       List<EMatch> selectedMatches) {
@@ -181,5 +182,4 @@ public class DiffComparisonViewer extends ComparisonViewer {
     merge(false, selection);
     mergeAllInProgress = false;
   }
-
 }

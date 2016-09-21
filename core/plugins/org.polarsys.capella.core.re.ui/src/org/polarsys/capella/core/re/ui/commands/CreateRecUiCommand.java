@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,16 +21,17 @@ import org.polarsys.capella.core.re.ui.launcher.CreateRecUiLauncher;
 public class CreateRecUiCommand extends org.polarsys.capella.core.re.commands.CreateRecCommand {
 
   /**
-   * @param selection_p
-   * @param progressMonitor_p
+   * @param selection
+   * @param progressMonitor
    */
-  public CreateRecUiCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p) {
-    super(selection_p, progressMonitor_p);
+  public CreateRecUiCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+    super(selection, progressMonitor);
   }
 
   @Override
-  protected void performTransformation(Collection<Object> elements_p) {
+  protected void performTransformation(Collection<Object> elements) {
     CreateRecUiLauncher launcher = new CreateRecUiLauncher();
-    launcher.run(elements_p, true, getProgressMonitor());
+    launcher.setName(getName());
+    launcher.run(elements, true, getProgressMonitor());
   }
 }

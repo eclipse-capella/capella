@@ -33,6 +33,12 @@ public class EObjectCategoryFilter extends CategoryFilter {
     this.name = NLS.bind(Messages.EObjectCategoryFilter, name);
     this.description = NLS.bind(Messages.EObjectCategoryFilter_Description, name);
   }
+  
+  public EObjectCategoryFilter(IContext context, EClass iconClazz, String name, String description) {
+    this(context, iconClazz);
+    this.name = NLS.bind(Messages.EObjectCategoryFilter, name);
+    this.description = NLS.bind(Messages.EObjectCategoryFilter_Description, description);
+  }
 
   public EObjectCategoryFilter(IContext context, EClass iconClazz) {
     super(context, null, null, null, null);

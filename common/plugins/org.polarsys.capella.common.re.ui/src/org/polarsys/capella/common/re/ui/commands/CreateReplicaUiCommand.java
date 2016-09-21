@@ -33,6 +33,7 @@ public class CreateReplicaUiCommand extends CreateReplicaCommand {
   @Override
   protected void performTransformation(Collection<Object> elements) {
     CreateReplicaUiLauncher launcher = new CreateReplicaUiLauncher();
+    launcher.setName(getName());
     launcher.run(elements, true, getProgressMonitor());
   }
 }

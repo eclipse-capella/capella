@@ -39,6 +39,7 @@ public abstract class ReCommand extends TransitionCommand {
   @Override
   protected void performTransformation(Collection<Object> elements) {
     ReLauncher launcher = createLauncher();
+    launcher.setName(getName());
     launcher.run(elements, true, getProgressMonitor());
   }
 }

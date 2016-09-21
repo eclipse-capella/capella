@@ -780,14 +780,14 @@
     
     <command id="org.polarsys.capella.common.re.updateCur"
           categoryId="org.polarsys.capella.common.re"
-          description="Update REC from selection"
-          name="Update REC from selection">
+          description="%updateCur"
+          name="%updateCur">
     </command>
     
     <command id="org.polarsys.capella.common.re.updateDef"
           categoryId="org.polarsys.capella.common.re"
-          description="Update REC from selected RPL"
-          name="Update REC from selected RPL">
+          description="%updateDef"
+          name="%updateDef">
     </command>
     
     <command id="org.polarsys.capella.common.re.createReplica"
@@ -798,8 +798,8 @@
     
     <command id="org.polarsys.capella.common.re.updateReplica"
           categoryId="org.polarsys.capella.common.re"
-          description="Update selected RPL from its REC"
-          name="Update selected RPL from its REC">
+          description="%updateReplica"
+          name="%updateReplica">
     </command>
     
     <command id="org.polarsys.capella.common.re.deleteReplicaPreserveRelatedElements"

@@ -33,6 +33,7 @@ public class CreateRecUiCommand extends CreateRecCommand {
   @Override
   protected void performTransformation(Collection<Object> elements) {
     CreateRecUiLauncher launcher = new CreateRecUiLauncher();
+    launcher.setName(getName());
     launcher.run(elements, true, getProgressMonitor());
   }
 }

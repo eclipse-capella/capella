@@ -61,7 +61,7 @@ public class CapellaClassFilters {
         DeploymentPackage.Literals.PART_DEPLOYMENT_LINK, PreferenceConstants.P_DL_TEXT), context);
 
     handler.addCategory(new PropertyValueFilter(context), context);
-    handler.addCategory(new EClassCategoryFilter(context, EmdePackage.Literals.ELEMENT_EXTENSION, "Viewpoint elements"),
+    handler.addCategory(new EClassCategoryFilter(context, EmdePackage.Literals.ELEMENT_EXTENSION, "Viewpoint elements", "Viewpoint"),
         context);
   }
 

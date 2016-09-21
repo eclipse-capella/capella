@@ -35,6 +35,15 @@ public class MergeEMFDiffNode extends EMFDiffNode {
   public boolean isMergeAllOnRight() {
     return mergeAllOnRight;
   }
+  
+  public boolean isMergeAllEnabled(boolean onLeft) {
+	// enable merge all button if the other model is editable and there are differences to merge
+      if (onLeft) {
+        return isMergeAllOnLeft() && isEditable(false) && !isEmpty();
+      } else {
+    	return isMergeAllOnRight() && isEditable(true) && !isEmpty();
+      }
+  }
 
   public void setMergeAllOnRight(boolean mergeAllOnRight) {
     this.mergeAllOnRight = mergeAllOnRight;

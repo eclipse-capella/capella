@@ -18,9 +18,13 @@ import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.ui.util.DiffMergeDialog;
 import org.eclipse.emf.diffmerge.ui.viewers.AbstractComparisonViewer;
+import org.eclipse.emf.diffmerge.ui.viewers.ComparisonViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.PropertyChangeEvent;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
@@ -62,6 +66,20 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
       private final static int ID_APPLY_ALL_CHANGES = IDialogConstants.CLIENT_ID + 1;
       private DiffComparisonViewer viewer;
 
+      /**
+       * @see org.eclipse.jface.dialogs.Dialog#createButtonsForButtonBar(org.eclipse.swt.widgets.Composite)
+       */
+      @Override
+      protected void createButtonsForButtonBar(Composite parent_p) {
+        createButton(parent_p, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+        // add the apply all changes button only if the right model can be editable
+        if (_input.isEditionPossible(false)) {
+          Button applyAllChangesButton = createButton(parent_p, ID_APPLY_ALL_CHANGES, Messages.MergeUIDifferencesHandler_ApplyAllChanges, false);
+          applyAllChangesButton.setEnabled(((MergeEMFDiffNode)_input).isMergeAllEnabled(true));
+        }
+        createOKButton(parent_p);
+      }
+      
       protected AbstractComparisonViewer createComparisonViewer(Composite parent) {
         viewer = new DiffComparisonViewer(parent) {
 
@@ -72,20 +90,24 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
           }
 
         };
+        
+        // the apply all changes button must be enable only if the right model is editable and there are differences to merge
+        viewer.addPropertyChangeListener(new IPropertyChangeListener() {
+          
+          @Override
+          public void propertyChange(PropertyChangeEvent event) {
+            Button applyAllChangesButton = getButton(ID_APPLY_ALL_CHANGES);
+            if (applyAllChangesButton != null && (ComparisonViewer.PROPERTY_CURRENT_INPUT.equals(event.getProperty())
+                || ComparisonViewer.PROPERTY_ACTIVATION_MERGE_TO_LEFT.equals(event.getProperty())
+                || ComparisonViewer.PROPERTY_ACTIVATION_MERGE_TO_RIGHT.equals(event.getProperty()))) {
+              applyAllChangesButton.setEnabled(((MergeEMFDiffNode)_input).isMergeAllEnabled(true));
+            }
+          }
+        });
+        
         return viewer;
       }
 
-      /**
-       * @see org.eclipse.jface.dialogs.Dialog#createButtonsForButtonBar(org.eclipse.swt.widgets.Composite)
-       */
-      @Override
-      protected void createButtonsForButtonBar(Composite parent_p) {
-        boolean editable = _input.isEditionPossible(true) || _input.isEditionPossible(false);
-        if (editable)
-          createButton(parent_p, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, !editable);
-          createButton(parent_p, ID_APPLY_ALL_CHANGES, "Merge All", false);
-          createOKButton(parent_p);
-      }
 
       protected void buttonPressed(int buttonId) {
         if (buttonId == ID_APPLY_ALL_CHANGES){
