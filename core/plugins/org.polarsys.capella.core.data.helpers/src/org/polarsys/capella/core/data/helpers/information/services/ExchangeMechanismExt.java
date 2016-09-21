@@ -14,82 +14,26 @@ package org.polarsys.capella.core.data.helpers.information.services;
 import org.polarsys.capella.core.data.information.ExchangeMechanism;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkProtocol;
+import org.polarsys.capella.core.data.interaction.MessageKind;
 
 /**
  */
 public class ExchangeMechanismExt {
 
   public static CommunicationLinkKind getKind(ExchangeMechanism mechanism, boolean isSender) {
-    CommunicationLinkKind kind = CommunicationLinkKind.PRODUCE;
-
-    if (mechanism == ExchangeMechanism.OPERATION) {
-      if (isSender) {
-        kind = CommunicationLinkKind.CALL;
-      } else {
-        kind = CommunicationLinkKind.EXECUTE;
-      }
-    } else if (mechanism == ExchangeMechanism.EVENT) {
-      if (isSender) {
-        kind = CommunicationLinkKind.SEND;
-      } else {
-        kind = CommunicationLinkKind.RECEIVE;
-      }
-    } else if (mechanism == ExchangeMechanism.FLOW) {
-      if (isSender) {
-        kind = CommunicationLinkKind.PRODUCE;
-      } else {
-        kind = CommunicationLinkKind.CONSUME;
-      }
-    } else if (mechanism == ExchangeMechanism.SHARED_DATA) {
-      if (isSender) {
-        kind = CommunicationLinkKind.WRITE;
-      } else {
-        kind = CommunicationLinkKind.ACCESS;
-      }
-    } else if (mechanism == ExchangeMechanism.UNSET) {
-      if (isSender) {
-        kind = CommunicationLinkKind.TRANSMIT;
-      } else {
-        kind = CommunicationLinkKind.ACQUIRE;
-      }
-    }
-    return kind;
+    return LinkCompatibilityDefinition.INSTANCE.getKind(mechanism, isSender);
   }
 
+  /**
+   * Return the default protocol used for the given mechanism
+   */
   public static CommunicationLinkProtocol getProtocol(ExchangeMechanism mechanism, boolean isSender) {
-    CommunicationLinkProtocol protocol = CommunicationLinkProtocol.UNSET;
-
-    if (mechanism == ExchangeMechanism.OPERATION) {
-      if (isSender) {
-        protocol = CommunicationLinkProtocol.SYNCHRONOUS;
-      } else {
-        protocol = CommunicationLinkProtocol.UNSET;
-      }
-    } else if (mechanism == ExchangeMechanism.EVENT) {
-      if (isSender) {
-        protocol = CommunicationLinkProtocol.UNICAST;
-      } else {
-        protocol = CommunicationLinkProtocol.UNSET;
-      }
-    } else if (mechanism == ExchangeMechanism.FLOW) {
-      if (isSender) {
-        protocol = CommunicationLinkProtocol.UNSET;
-      } else {
-        protocol = CommunicationLinkProtocol.UNSET;
-      }
-    } else if (mechanism == ExchangeMechanism.SHARED_DATA) {
-      if (isSender) {
-        protocol = CommunicationLinkProtocol.UNSET;
-      } else {
-        protocol = CommunicationLinkProtocol.READ;
-      }
-    } else if (mechanism == ExchangeMechanism.UNSET) {
-      if (isSender) {
-        protocol = CommunicationLinkProtocol.UNSET;
-      } else {
-        protocol = CommunicationLinkProtocol.UNSET;
-      }
+    MessageKind kind = MessageKind.SYNCHRONOUS_CALL;
+    boolean withReturn = true;
+    if (mechanism == ExchangeMechanism.EVENT) {
+      kind = MessageKind.ASYNCHRONOUS_CALL;
+      withReturn = false;
     }
-    return protocol;
+    return LinkCompatibilityDefinition.INSTANCE.getCompatibleProtocol(isSender, mechanism, kind, withReturn);
   }
 }

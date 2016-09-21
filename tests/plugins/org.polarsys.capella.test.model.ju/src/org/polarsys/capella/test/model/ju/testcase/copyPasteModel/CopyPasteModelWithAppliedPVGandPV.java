@@ -1,0 +1,120 @@
+/*******************************************************************************
+ * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.test.model.ju.testcase.copyPasteModel;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.EcoreUtil.UnresolvedProxyCrossReferencer;
+import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
+import org.polarsys.capella.core.data.capellacore.IntegerPropertyValue;
+import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.oa.OaFactory;
+import org.polarsys.capella.core.data.oa.OaPackage;
+import org.polarsys.capella.core.data.oa.OperationalActivity;
+import org.polarsys.capella.core.libraries.model.ICapellaModel;
+import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
+import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCopyToClipboardCommand;
+import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaPasteCommand;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
+import org.polarsys.capella.test.framework.api.BasicTestCase;
+import org.polarsys.capella.test.framework.helpers.TestHelper;
+
+public class CopyPasteModelWithAppliedPVGandPV extends BasicTestCase {
+  public static final String MODEL_NAME = "miscmodel"; //$NON-NLS-1$
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList(MODEL_NAME);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void test() throws Exception {
+    //
+    // Test data creation.
+    //
+    ICapellaModel model = getTestModel(MODEL_NAME);
+    Session session = getSessionForTestModel(MODEL_NAME);
+    TransactionalEditingDomain ted = session.getTransactionalEditingDomain();
+    final Project project = ((ICapellaModel) model).getProject(ted);
+    // Create a PropertyValueGroup, a PropertyValue, an OperationalActivity and apply the PVG and the PV to the OA.
+    final String activity1Name = "Activity1";
+
+    final OperationalActivity[] activity1 = {null};
+    
+    ExecutionManager executionManager = TestHelper.getExecutionManager(project);
+    executionManager.execute(new AbstractReadWriteCommand() {
+      @Override
+      public void run() {
+        SystemEngineering systemEngineering = ModelQueryHelper.getSystemEngineering(project);
+        // Create Property Value Group
+        PropertyValueGroup pvg = CapellacoreFactory.eINSTANCE.createPropertyValueGroup("PVG1");
+        systemEngineering.getOwnedPropertyValueGroups().add(pvg);
+
+        // Create a Property Value
+        IntegerPropertyValue ipv = CapellacoreFactory.eINSTANCE.createIntegerPropertyValue("Integer PV1");
+        systemEngineering.getOwnedPropertyValues().add(ipv);
+        
+        // Create an OA and apply PVG and PV on it
+        activity1[0] = OaFactory.eINSTANCE.createOperationalActivity(activity1Name);
+        ModelQueryHelper.getRootOperationalActivity(project).getOwnedFunctions().add(activity1[0]);
+        
+        activity1[0].getAppliedPropertyValueGroups().add(pvg);
+        activity1[0].getAppliedPropertyValues().add(ipv);
+      }
+    });
+
+    //
+    // Copy paste the activity
+    //
+    // Copy
+    CapellaCommonNavigator capellaProjectView = (CapellaCommonNavigator) PlatformUI.getWorkbench()
+        .getActiveWorkbenchWindow().getActivePage().showView(CapellaCommonNavigator.ID);
+    CapellaCopyToClipboardCommand capellaCopyToClipboardCommand = new CapellaCopyToClipboardCommand(ted, Collections.singleton(activity1[0]), capellaProjectView.getCommonViewer());
+    ted.getCommandStack().execute(capellaCopyToClipboardCommand);
+    // Paste
+    OperationalActivity rootOperationalActivity = ModelQueryHelper.getRootOperationalActivity(project);
+    List<EObject> contentBeforePaste = new ArrayList<EObject>(rootOperationalActivity.eContents());
+    CapellaPasteCommand capellaPasteCommand = new CapellaPasteCommand(ted, rootOperationalActivity, null,  CommandParameter.NO_INDEX);
+    ted.getCommandStack().execute(capellaPasteCommand);
+    
+    //
+    // Checks
+    //
+    List<EObject> addedElements = new ArrayList<EObject>(rootOperationalActivity.eContents());
+    addedElements.removeAll(contentBeforePaste);
+    assertTrue("1 additional element of type OperationalActivity is expected in RootOperationalActivity", addedElements.size() == 1);
+    OperationalActivity pastedOA = (OperationalActivity) EcoreUtil.getObjectByType(addedElements, OaPackage.Literals.OPERATIONAL_ACTIVITY);
+    
+    assertTrue("Feature appliedPropertyValueGroups must be empty in copied OA", pastedOA.getAppliedPropertyValueGroups().isEmpty());
+    assertTrue("Feature getAppliedPropertyValues must be empty in copied OA", pastedOA.getAppliedPropertyValues().isEmpty());
+    
+    assertTrue("There must be no unresolved proxies", UnresolvedProxyCrossReferencer.find(project).isEmpty());
+  }
+}

@@ -107,18 +107,18 @@ public class ScenarioExt {
   /**
    * Return functions that can be used as StateFragment for a given component
    */
-  public static Collection<AbstractFunction> getAvailableFunctionsStateFragment(Component component1) {
+  public static Collection<AbstractFunction> getAvailableFunctionsStateFragment(Component component) {
     List<AbstractFunction> result = new ArrayList<AbstractFunction>();
     Collection<AbstractFunction> functions = new java.util.HashSet<AbstractFunction>();
 
     List<Component> baseComponents = new ArrayList<Component>();
-    baseComponents.add(component1);
+    baseComponents.add(component);
     // adding all sub Components
-    baseComponents.addAll(ComponentExt.getAllSubUsedAndDeployedComponents(component1));
+    baseComponents.addAll(ComponentExt.getAllSubUsedAndDeployedComponents(component));
 
-    for (Component component : baseComponents) {
-      List<GeneralizableElement> elements = GeneralizableElementExt.getAllSuperGeneralizableElements(component);
-      elements.add(component);
+    for (Component baseComponent : baseComponents) {
+      List<GeneralizableElement> elements = GeneralizableElementExt.getAllSuperGeneralizableElements(baseComponent);
+      elements.add(baseComponent);
       for (GeneralizableElement element : elements) {
         if (element instanceof AbstractFunctionalBlock) {
           functions.addAll(((AbstractFunctionalBlock) element).getAllocatedFunctions());
@@ -275,7 +275,7 @@ public class ScenarioExt {
 
   /**
    * @param scenario
-   * @param cpnt_p
+   * @param cpnt
    * @return
    */
   public static boolean contains(Scenario scenario, Part part) {
@@ -459,33 +459,33 @@ public class ScenarioExt {
 
   /**
    * This method recursively returns the container of the given scenario
-   * @param namedElement1
+   * @param elt
    * @return CapellaElement
    */
-  private static NamedElement getRecursiveContainer(NamedElement namedElement1) {
-    NamedElement elt = null;
+  private static NamedElement getRecursiveContainer(NamedElement elt) {
+    NamedElement result = null;
 
-    if (namedElement1 != null) {
-      NamedElement container = (NamedElement) namedElement1.eContainer();
+    if (elt != null) {
+      NamedElement container = (NamedElement) elt.eContainer();
 
       if (container instanceof SystemEngineering) {
-        elt = container;
+        result = container;
       } else if (container instanceof LogicalArchitecture) {
-        elt = container;
+        result = container;
       } else if (container instanceof LogicalComponent) {
-        elt = container;
+        result = container;
       } else if (container instanceof PhysicalArchitecture) {
-        elt = container;
+        result = container;
       } else if (container instanceof PhysicalComponent) {
-        elt = container;
+        result = container;
       } else if (container instanceof EPBSArchitecture) {
-        elt = container;
+        result = container;
       } else {
-        elt = getRecursiveContainer(container);
+        result = getRecursiveContainer(container);
       }
     }
 
-    return elt;
+    return result;
   }
 
   /**
@@ -585,6 +585,24 @@ public class ScenarioExt {
     return result;
   }
 
+  public static SequenceMessage getReply(SequenceMessage message) {
+    MessageEnd end = message.getReceivingEnd();
+    List<Execution> allocations = (List) EObjectExt.getReferencers(end, InteractionPackage.Literals.TIME_LAPSE__START);
+    for (Execution obj : allocations) {
+      if (obj.getFinish() != null) {
+        if (obj.getFinish() instanceof MessageEnd) {
+          SequenceMessage messageReply = ((MessageEnd) obj.getFinish()).getMessage();
+          return messageReply;
+        }
+      }
+    }
+    return null;
+  }
+
+  public static boolean hasReply(SequenceMessage message) {
+    return getReply(message) != null;
+  }
+  
   /**
    * Resolves ExchangeItemAllocatons using CommunicationLinks.
    * @param message_p
@@ -772,7 +790,7 @@ public class ScenarioExt {
   /**
    * Returns whether scenario can realize the given scenario2
    * @param scenario
-   * @param eobject_p
+   * @param eobject
    * @return
    */
   public static boolean canRealize(Scenario scenario, Scenario scenario2) {

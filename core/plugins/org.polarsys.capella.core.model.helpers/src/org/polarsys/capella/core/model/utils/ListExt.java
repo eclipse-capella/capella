@@ -12,18 +12,19 @@
 package org.polarsys.capella.core.model.utils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
 
 /**
  */
@@ -48,6 +49,19 @@ public class ListExt {
     return filteredList;
   }
 
+  public static <A> String toString(Collection<A> objects, String separator) {
+    String result = "";
+    Iterator<A> iterator = objects.iterator();
+      while (iterator.hasNext()) {
+        A string = iterator.next();
+        result = result + string;
+        if (iterator.hasNext()) {
+          result = result + separator;
+        }
+      }
+    return result;
+  }
+  
   /**
    * Retrieves from the given list the elements named with the given string
    *

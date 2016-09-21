@@ -16,7 +16,9 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.platform.sirius.clipboard,
  org.eclipse.gmf.runtime.notation,
  org.polarsys.capella.test.diagram.common.ju,
- org.polarsys.capella.core.data.gen
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.core.transition.system.topdown.ui,
+ org.polarsys.capella.core.platform.sirius.ui.navigator
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %providerName

@@ -3444,7 +3444,7 @@
               <finishingEndPredecessor name="messageEndAfter"/>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete capella elements" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete capella elements" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
