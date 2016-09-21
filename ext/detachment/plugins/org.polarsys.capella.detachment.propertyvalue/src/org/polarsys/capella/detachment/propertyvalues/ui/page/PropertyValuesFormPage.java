@@ -17,32 +17,29 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.PatternSyntaxException;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.layout.TreeColumnLayout;
 import org.eclipse.jface.viewers.ColumnWeightData;
+import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.PaintEvent;
-import org.eclipse.swt.events.PaintListener;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.swt.widgets.Tree;
@@ -53,6 +50,10 @@ import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
+import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
+import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
+import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
+import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
 import org.polarsys.capella.detachment.propertyvalue.messages.Messages;
 import org.polarsys.kitalpha.model.common.scrutiny.interfaces.IScrutinize;
 
@@ -87,95 +88,131 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 		GridLayoutFactory.fillDefaults().margins(10, 5).numColumns(1).applyTo(subPageComposite);
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(subPageComposite);
 
-		Group filterGroup = createAndInitGroupFilter(subPageComposite);
-
-		final Label filterinTextgFieldLabel = tk.createLabel(filterGroup, Messages.Label_FilterTextPattern);
-		filterinTextgFieldLabel.pack();
-		createAndInitInputTextFilter(filterGroup);
-		tk.createLabel(filterGroup, Messages.Label_FilterType);
-		createAndInitToolbarFilter(typeFilter, filterGroup);
 		createTreeTableViewer(tk, gridData, subPageComposite);
 		setTreeTableViewerInput();
 	}
+
 
 	@SuppressWarnings("rawtypes")
 	private void setTreeTableViewerInput() {
 		Set<Object> input = new HashSet<Object>();
 		Collection<IScrutinize> scrutinizers = PropertyValueHelper.getScrutinizers(getFinderID());
 		for (IScrutinize iScrutinize : scrutinizers) {
-			input.addAll((((Map<?, ?>) iScrutinize.getAnalysisResult()).keySet()));
+			Map<EObject, Boolean> result = (Map<EObject, Boolean>)iScrutinize.getAnalysisResult();
+			for (Entry<EObject, Boolean> e : result.entrySet()) {
+				EObject key = e.getKey();
+				if (!PropertyValueHelper.lookupSuperHierarchy(key, AbstractPropertyValue.class, PropertyValueGroup.class, PropertyValuePkg.class, EnumerationPropertyType.class)){
+					input.add(key);
+				}
+			}
 		}
 		treeViewer.setInput(input);
 	}
 
 	private void createTreeTableViewer(final FormToolkit tk, GridData gridData, Composite subPageComposite) {
-		
-		ToolBar treeManagementBar = new ToolBar(subPageComposite, SWT.FLAT);
-		GridLayoutFactory.fillDefaults().margins(10, 5).numColumns(1).applyTo(treeManagementBar);
-		GridDataFactory.fillDefaults().grab(true, false).applyTo(treeManagementBar);
-		treeManagementBar.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
-		
-		final ToolItem expandCollapse = new ToolItem(treeManagementBar, SWT.PUSH);
-		expandCollapse.setImage(Constants.getExpandAllIcon());
-		expandCollapse.setToolTipText(Messages.Collapse_expandAll);
-		expandCollapse.addSelectionListener(new SelectionListener() {
-			
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (expandCollapse.getToolTipText().equalsIgnoreCase(Messages.Collapse_expandAll)){
-					expandCollapse.setImage(Constants.getCollapsAllIcon());
-					expandCollapse.setToolTipText(Messages.Collapse_CollapsedAll);
-					treeViewer.expandAll();
-				} else {
-					expandCollapse.setImage(Constants.getExpandAllIcon());
-					expandCollapse.setToolTipText(Messages.Collapse_expandAll);
-					treeViewer.collapseAll();
-				}
-			}
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
-		});
-		
-		final ToolItem deselctAll = new ToolItem(treeManagementBar, SWT.PUSH);
-		deselctAll.setImage(Constants.getCheckAllIcon());
-		deselctAll.setToolTipText(Messages.Checkbox_CheckAll);
-		deselctAll.addSelectionListener(new SelectionListener() {
-			
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (deselctAll.getToolTipText().equalsIgnoreCase(Messages.Checkbox_CheckAll)){
-					deselctAll.setImage(Constants.getUncheckAllIcon());
-					deselctAll.setToolTipText(Messages.Checkbox_UncheckAll);
-					updateResult(true);
-					updateTreeFromResult();
-				} else {
-					deselctAll.setImage(Constants.getCheckAllIcon());
-					deselctAll.setToolTipText(Messages.Checkbox_CheckAll);
-					updateResult(false);
-					updateTreeFromResult();
-				}
-			}
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
+		Composite toolbarsComposite = prepareComposite(tk, subPageComposite);
+		ToolBar treeManagementBar = initializeToolBar(toolbarsComposite);
+		initializeCollapseButton(treeManagementBar);
+		initializeSelectAllButton(treeManagementBar);
+		initializeDeselectAllButton(treeManagementBar);
+		initializePkgFilteringButton(treeManagementBar);
+		initializePgFilteringButton(treeManagementBar);
+		initializePEnumFilteringButton(treeManagementBar);
+		initializePvFilteringButton(treeManagementBar);
+		initializeTextFilteringField(tk, toolbarsComposite, treeManagementBar);
 		Composite treeTableComposite = tk.createComposite(subPageComposite);
 		TreeColumnLayout treeColLayout = new TreeColumnLayout();
 		treeTableComposite.setLayout(treeColLayout);
 		treeTableComposite.setLayoutData(gridData);
+		Tree tree = createTreeViewer(tk, gridData, treeTableComposite);
+		createViewerColumns(treeColLayout, tree);
+		setComparator();
+		setFilters();
+		setTreeProviders();
+		addListeners();
+		treeViewer.setUseHashlookup(true);
+	}
 
-		Tree tree = tk.createTree(treeTableComposite, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CHECK);
+	private void addListeners() {
+		treeViewer.getTree().addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				int detail = e.detail;
+				if (detail == SWT.CHECK) {
+					Widget item = e.item;
+					if (item != null) {
+						TreeItem treeItem = (TreeItem) item;
+						TreeItem parentItem = treeItem.getParentItem();
+						boolean checked = treeItem.getChecked();
+						if (parentItem != null){
+							boolean parentChecked = parentItem.getChecked();
+							if (parentChecked != checked && parentChecked){
+								treeItem.setChecked(parentChecked);
+							} else {
+								updateCkeckbox(item, treeItem, checked);
+							}
+						} else {
+							updateCkeckbox(item, treeItem, checked);
+						}
+					}
+				}
+			}
 
-		treeViewer = new TreeViewer(tree);
-		treeViewer.getTree().setHeaderVisible(true);
-		treeViewer.getTree().setLayoutData(gridData);
+			private void updateCkeckbox(Widget item, TreeItem treeItem, boolean checked) {
+				Object data = item.getData();
+				updateResult(data, checked);
+				checkChildren(treeItem, checked);
+			}
 
+			private void checkChildren(TreeItem treeItem, boolean checked) {
+				TreeItem[] items = treeItem.getItems();
+				if (items != null && items.length > 0){
+					for (TreeItem i : items) {
+						i.setChecked(checked);
+						checkChildren(i, checked);
+					}
+				}
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+		treeViewer.getTree().addListener(SWT.Expand, new Listener() {
+			
+			@Override
+			public void handleEvent(Event event) {
+				updateTree();
+			}
+		});
+	}
+
+	private void setTreeProviders() {
+		PropertyValueContentProvider provider = new PropertyValueContentProvider();
+		treeViewer.setContentProvider(provider);
+		
+		treeViewer.setLabelProvider(new PropertyValueLabelProvider());
+	}
+
+	private void setFilters() {
+		treeViewer.addFilter(textFilter);
+		treeViewer.addFilter(typeFilter);
+	}
+
+	private void setComparator() {
+		ViewerComparator comparator = new ViewerComparator(new PropertiesComparator()) {
+			@SuppressWarnings("unchecked")
+			@Override
+			public int compare(Viewer viewer, Object e1, Object e2) {
+				return getComparator().compare(e1, e2);
+			}
+		};
+
+		treeViewer.setComparator(comparator);
+	}
+
+	private void createViewerColumns(TreeColumnLayout treeColLayout, Tree tree) {
 		// Columns
 		TreeColumn propertiesColumn = new TreeColumn(tree, SWT.LEFT);
 		propertiesColumn.setAlignment(SWT.LEFT);
@@ -188,80 +225,39 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 		treeColLayout.setColumnData(propertyPath, new ColumnWeightData(90, true));
 
 		tree.setLinesVisible(true);
+	}
 
-		ViewerComparator comparator = new ViewerComparator(new PropertiesComparator()) {
-			@SuppressWarnings("unchecked")
-			@Override
-			public int compare(Viewer viewer, Object e1, Object e2) {
-				return getComparator().compare(e1, e2);
-			}
-		};
+	private Tree createTreeViewer(final FormToolkit tk, GridData gridData, Composite treeTableComposite) {
+		Tree tree = tk.createTree(treeTableComposite, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CHECK | SWT.MULTI);
+		treeViewer = new TreeViewer(tree);
+		treeViewer.getTree().setHeaderVisible(true);
+		treeViewer.getTree().setLayoutData(gridData);
+		return tree;
+	}
 
-		treeViewer.setComparator(comparator);
+	private ToolBar initializeToolBar(Composite toolbarsComposite) {
+		ToolBar treeManagementBar = new ToolBar(toolbarsComposite, SWT.FLAT);
+		treeManagementBar.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
+		return treeManagementBar;
+	}
 
-		treeViewer.addFilter(textFilter);
-		treeViewer.addFilter(typeFilter);
+	private Composite prepareComposite(final FormToolkit tk, Composite subPageComposite) {
+		Composite toolbarsComposite = tk.createComposite(subPageComposite);
+		GridLayoutFactory.fillDefaults().margins(0, 0).numColumns(2).equalWidth(false).applyTo(toolbarsComposite);
+		GridDataFactory.fillDefaults().grab(false, false).applyTo(toolbarsComposite);
+		return toolbarsComposite;
+	}
 
-		treeViewer.setContentProvider(new PropertyValueContentProvider());
-
-		treeViewer.setLabelProvider(new PropertyValueLabelProvider());
-
-		treeViewer.getTree().addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				int detail = e.detail;
-				if (detail == SWT.CHECK) {
-					Widget item = e.item;
-					if (item != null) {
-						TreeItem treeItem = (TreeItem) item;
-						boolean checked = treeItem.getChecked();
-						Object data = item.getData();
-						updateResult(data, checked);
-						updateTreeFromResult();
-					}
-				}
-			}
-
-			
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
-			}
-		});
+	private void initializeTextFilteringField(final FormToolkit tk, Composite toolbarsComposite,
+			ToolBar treeManagementBar) {
+		new ToolItem(treeManagementBar, SWT.SEPARATOR | SWT.VERTICAL);
 		
-		treeViewer.setUseHashlookup(true);
-	}
-
-	private Group createAndInitGroupFilter(Composite subPageComposite) {
-		Group filterGroup = new Group(subPageComposite, SWT.SHADOW_ETCHED_IN);
-		filterGroup.setText(Messages.Title_GroupFiltering);
-		GridLayoutFactory.fillDefaults().margins(10, 5).numColumns(2).applyTo(filterGroup);
-		GridDataFactory.fillDefaults().grab(true, false).applyTo(filterGroup);
-		filterGroup.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
-		return filterGroup;
-	}
-
-	private StyledText createAndInitInputTextFilter(Group filterGroup) {
-		final StyledText inputFilter = new StyledText(filterGroup, SWT.SINGLE | SWT.LEFT | SWT.SEARCH);
+		//Text filter
+		final Text inputFilter = tk.createText(toolbarsComposite, "", SWT.SINGLE | SWT.LEFT | SWT.SEARCH);
 		inputFilter.setToolTipText(Messages.Filter_PropertyValue);
-		inputFilter.setMargins(5, 1, 5, 1);
+		inputFilter.setMessage(". = any character, .* = any string"); //$NON-NLS-1$
 		inputFilter.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.HORIZONTAL_ALIGN_FILL));
-		inputFilter.addPaintListener(new PaintListener() {
-
-			@Override
-			public void paintControl(PaintEvent e) {
-				e.gc.setAntialias(SWT.ON);
-				Color blue = Display.getCurrent().getSystemColor(SWT.COLOR_WIDGET_BORDER);
-				e.gc.setAlpha(140);
-				e.gc.setForeground(blue);
-				Rectangle rec = new Rectangle(0, 0, inputFilter.getClientArea().width - 1,
-						inputFilter.getClientArea().height - 1);
-				e.gc.drawRoundRectangle(0, 0, rec.width, rec.height, 3, 3);
-			}
-		});
-
+		
 		inputFilter.addKeyListener(new KeyAdapter() {
 
 			ErrorRegExpMessageToolTip errorToolTip;
@@ -276,7 +272,7 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 					}
 					inputFilter.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_BLACK));
 					textFilter.setPattern(inputFilter.getText());
-					updateTreeFromResult();
+					treeViewer.refresh();
 				} catch (PatternSyntaxException ex) {
 					inputFilter.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_RED));
 					if (errorToolTip == null) {
@@ -290,16 +286,10 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 				}
 			}
 		});
-		return inputFilter;
 	}
 
-	private void createAndInitToolbarFilter(final PropertyValueTypeFilterViewer typeFilter, Group filterGroup) {
-		ToolBar toolbar = new ToolBar(filterGroup, SWT.FLAT);
-		GridLayoutFactory.fillDefaults().margins(10, 5).numColumns(1).applyTo(toolbar);
-		GridDataFactory.fillDefaults().grab(true, false).applyTo(toolbar);
-		toolbar.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
-
-		ToolItem pvItem = new ToolItem(toolbar, SWT.CHECK);
+	private void initializePvFilteringButton(ToolBar treeManagementBar) {
+		ToolItem pvItem = new ToolItem(treeManagementBar, SWT.CHECK);
 		pvItem.setImage(Constants.getPropertyValueIcon());
 		pvItem.setToolTipText("Property Values");
 		pvItem.addListener(SWT.Selection, new Listener() {
@@ -308,8 +298,23 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 				doViewerFilter(event, typeFilter, Constants.PROPERTY_VALUES);
 			}
 		});
+	}
 
-		ToolItem pgItem = new ToolItem(toolbar, SWT.CHECK);
+	private void initializePEnumFilteringButton(ToolBar treeManagementBar) {
+		ToolItem enumTypeItem = new ToolItem(treeManagementBar, SWT.CHECK);
+		enumTypeItem.setImage(Constants.getEnumTypeIcon());
+		enumTypeItem.setToolTipText("Property Enumeration Type");
+		enumTypeItem.addListener(SWT.Selection, new Listener() {
+
+			@Override
+			public void handleEvent(Event event) {
+				doViewerFilter(event, typeFilter, Constants.PROPERTY_ENUMERATION_TYPE);
+			}
+		});
+	}
+
+	private void initializePgFilteringButton(ToolBar treeManagementBar) {
+		ToolItem pgItem = new ToolItem(treeManagementBar, SWT.CHECK);
 		pgItem.setImage(Constants.getPropertyGroupIcon());
 		pgItem.setToolTipText("Property Group");
 		pgItem.addListener(SWT.Selection, new Listener() {
@@ -319,8 +324,13 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 				doViewerFilter(event, typeFilter, Constants.PROPERTY_VALUES_GROUP);
 			}
 		});
+	}
+
+	private void initializePkgFilteringButton(ToolBar treeManagementBar) {
+		new ToolItem(treeManagementBar, SWT.SEPARATOR | SWT.VERTICAL);
 		
-		ToolItem pkgItem = new ToolItem(toolbar, SWT.CHECK);
+		//Filtering tool item
+		ToolItem pkgItem = new ToolItem(treeManagementBar, SWT.CHECK);
 		pkgItem.setImage(Constants.getPropertyPackageIcon());
 		pkgItem.setToolTipText("Property Package");
 		pkgItem.addListener(SWT.Selection, new Listener() {
@@ -330,15 +340,61 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 				doViewerFilter(event, typeFilter, Constants.PROPERTY_VALUES_PACKAGE);
 			}
 		});
+	}
 
-		ToolItem enumTypeItem = new ToolItem(toolbar, SWT.CHECK);
-		enumTypeItem.setImage(Constants.getEnumTypeIcon());
-		enumTypeItem.setToolTipText("Property Enumeration Type");
-		enumTypeItem.addListener(SWT.Selection, new Listener() {
+	private void initializeDeselectAllButton(ToolBar treeManagementBar) {
+		final ToolItem deselctAll = new ToolItem(treeManagementBar, SWT.PUSH);
+		deselctAll.setImage(Constants.getUncheckAllIcon());
+		deselctAll.setToolTipText(Messages.Checkbox_UncheckAll);
+		deselctAll.addSelectionListener(new SelectionAdapter() {
 
 			@Override
-			public void handleEvent(Event event) {
-				doViewerFilter(event, typeFilter, Constants.PROPERTY_ENUMERATION_TYPE);
+			public void widgetSelected(SelectionEvent e) {
+				updateResult(false);
+				TreeItem[] items = treeViewer.getTree().getItems();
+				for (TreeItem treeItem : items) {
+					updateChildren(treeItem, false);
+				}
+			}
+		});
+	}
+
+	private void initializeSelectAllButton(ToolBar treeManagementBar) {
+		new ToolItem(treeManagementBar, SWT.SEPARATOR | SWT.VERTICAL);
+		
+		final ToolItem selctAll = new ToolItem(treeManagementBar, SWT.PUSH);
+		selctAll.setImage(Constants.getCheckAllIcon());
+		selctAll.setToolTipText(Messages.Checkbox_CheckAll);
+		selctAll.addSelectionListener(new SelectionAdapter() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				updateResult(true);
+				TreeItem[] items = treeViewer.getTree().getItems();
+				for (TreeItem treeItem : items) {
+					updateChildren(treeItem, true);
+				}
+			}
+		});
+	}
+
+	private void initializeCollapseButton(ToolBar treeManagementBar) {
+		final ToolItem expandCollapse = new ToolItem(treeManagementBar, SWT.PUSH);
+		expandCollapse.setImage(Constants.getExpandAllIcon());
+		expandCollapse.setToolTipText(Messages.Collapse_expandAll);
+		expandCollapse.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (expandCollapse.getToolTipText().equalsIgnoreCase(Messages.Collapse_expandAll)){
+					expandCollapse.setImage(Constants.getCollapsAllIcon());
+					expandCollapse.setToolTipText(Messages.Collapse_CollapsedAll);
+					treeViewer.expandAll();
+					updateTree();
+				} else {
+					expandCollapse.setImage(Constants.getExpandAllIcon());
+					expandCollapse.setToolTipText(Messages.Collapse_expandAll);
+					treeViewer.collapseAll();
+				}
 			}
 		});
 	}
@@ -352,17 +408,26 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 			maskTypeFilter = maskTypeFilter & ~propertyValueType;
 		}
 		filter.setFilterType(maskTypeFilter);
-		updateTreeFromResult();
+		treeViewer.refresh();
 	}
 	
 	@SuppressWarnings("rawtypes")
 	private void updateResult(Object data, boolean checked) {
-		Collection<IScrutinize> scrutinizers = PropertyValueHelper.getScrutinizers(getFinderID());
-		for (IScrutinize iScrutinize : scrutinizers) {
-			@SuppressWarnings("unchecked")
-			Map<Object, Boolean> analysisResult = (Map<Object, Boolean>) iScrutinize.getAnalysisResult();
-			if (analysisResult.containsKey(data)) {
-				analysisResult.put(data, checked);
+		if (data != null){
+			Collection<IScrutinize> scrutinizers = PropertyValueHelper.getScrutinizers(getFinderID());
+			for (IScrutinize iScrutinize : scrutinizers) {
+				@SuppressWarnings("unchecked")
+				Map<Object, Boolean> analysisResult = (Map<Object, Boolean>) iScrutinize.getAnalysisResult();
+				if (analysisResult.containsKey(data)) {
+					analysisResult.put(data, checked);
+					ITreeContentProvider c = (ITreeContentProvider) treeViewer.getContentProvider();
+					Object[] children = c.getChildren(data);
+					if (children != null && children.length > 0){
+						for (Object d : children) {
+							updateResult(d, checked);
+						}
+					}
+				}
 			}
 		}
 	}
@@ -378,62 +443,39 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 			}
 		}
 	}
-
-	@SuppressWarnings("rawtypes")
-	private void updateTreeFromResult() {
-		Collection<IScrutinize> scrutinizers = PropertyValueHelper.getScrutinizers(getFinderID());
-		for (IScrutinize iScrutinize : scrutinizers) {
-			@SuppressWarnings("unchecked")
-			Map<Object, Boolean> analysisResult = (Map<Object, Boolean>) iScrutinize.getAnalysisResult();
-			for (Entry<Object, Boolean> entry : analysisResult.entrySet()) {
-				updateTree(entry.getKey(), entry.getValue());
+	
+	private void updateChildren(TreeItem treeItem, boolean checked) {
+		if (treeItem != null){
+			treeItem.setChecked(checked);
+			TreeItem[] items = treeItem.getItems();
+			for (TreeItem ti : items) {
+				updateChildren(ti, checked);
 			}
 		}
 	}
 	
-	private void updateTree(Object data, boolean checked) {
+	
+	private void updateTreeCheckbox(TreeItem treeItem) {
+		if (treeItem != null){
+			TreeItem parent = treeItem.getParentItem();
+			if (parent != null){
+				boolean parentChecked = parent.getChecked();
+				if (parentChecked && !treeItem.getChecked())
+					treeItem.setChecked(parentChecked);
+			}
+			TreeItem[] items = treeItem.getItems();
+			for (TreeItem ti : items) {
+				updateTreeCheckbox(ti);
+			}
+		}
+	}
+
+	private void updateTree() {
 		TreeItem[] items = treeViewer.getTree().getItems();
-
-		if (items != null && items.length > 0) {
-			for (TreeItem item : items) {
-				updateTree(item, data, checked);
+		if (items != null && items.length > 0){
+			for (TreeItem treeItem : items) {
+				updateTreeCheckbox(treeItem);
 			}
 		}
-		treeViewer.getTree().redraw();
-		treeViewer.refresh();
 	}
-
-	private void updateTree(TreeItem item, Object data, boolean checked) {
-		if (data != null && item.getData() != null && item.getData().equals(data)) {
-			item.setChecked(checked);
-			updateTreeItemChildren(item, data, checked);
-			updateTreeItemParents(item, data, checked);
-		}
-		
-		TreeItem[] items = item.getItems();
-		for (TreeItem i : items) {
-			updateTree(i, data, checked);
-		}
-	}
-
-	private void updateTreeItemParents(TreeItem treeItem, Object data, boolean checked) {
-		TreeItem parentItem = treeItem.getParentItem();
-		if (parentItem != null) {
-			parentItem.setChecked(checked);
-			parentItem.setGrayed(checked);
-			updateTreeItemParents(parentItem, data, checked);
-		}
-	}
-
-	private void updateTreeItemChildren(TreeItem treeItem, Object data, boolean checked) {
-		TreeItem[] items = treeItem.getItems();
-
-		if (items != null && items.length > 0) {
-			for (TreeItem t : items) {
-					t.setChecked(checked);
-					updateTreeItemChildren(t, data, checked);
-				}
-			}
-	}
-
 }
