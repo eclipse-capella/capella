@@ -18,11 +18,15 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
@@ -194,17 +198,36 @@ public class SiriusSessionFactory implements SessionFactory {
   }
 
   /**
+   * @param uri
+   * @return
+   */
+  protected boolean isCapellaProject(URI uri) {
+    try {
+      IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true)));
+      IProject project = file.getProject();
+      return project.hasNature("org.polarsys.capella.project.nature") || project.hasNature("org.polarsys.capella.library.nature");
+    }
+    catch (CoreException ex) {
+      return false;
+    }
+  }
+
+  /**
    * Creates the AFM metadata resource</br>
    * (This resource will only be created when the aird resource does not exist yet, if the aird resource already exists then a model migration shall be done)
    * 
    * @param domain
    * @param resourceURI
    * @param monitor
-   * @return the created resource
+   * @return the created resource (may be null if the resource does not belong to a Capella project)
    */
   protected Resource createMetadataResource(TransactionalEditingDomain domain, URI resourceURI, IProgressMonitor monitor) {
     SubMonitor progress = SubMonitor.convert(monitor, 4);
     try {
+      if (!isCapellaProject(resourceURI)) {
+        return null;
+      }
+
       URI uri = resourceURI.trimFileExtension().appendFileExtension(ViewpointMetadata.STORAGE_EXTENSION);
 
       progress.beginTask("Create an empty metadata resource", 1);
