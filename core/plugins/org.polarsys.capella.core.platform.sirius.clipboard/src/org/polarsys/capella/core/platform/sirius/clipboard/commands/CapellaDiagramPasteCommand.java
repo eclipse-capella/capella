@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.gmf.runtime.emf.clipboard.core.ClipboardUtil;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
@@ -113,12 +114,14 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
     if ((semanticSource == null) || (semanticTarget == null)) {
       return; // failure: empty result
     }
+        
     List<EObject> semanticOrigins = getSemanticRootsForCopy(CapellaDiagramClipboard.getInstance().getSiriusElements(),
         semanticTarget);
     List<EObject> semanticCopies = pasteCapellaElements(semanticOrigins, semanticSource, semanticTarget);
     if (semanticCopies == null) {
       return; // failure: empty result
     }
+    
     // Sirius layer (GMF layer will be automatically updated)
     List<EObject> rawAllSiriusOrigins = MiscUtil
         .getContentSet(CapellaDiagramClipboard.getInstance().getSiriusElements());
@@ -126,6 +129,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
     for (View target : _targets) {
       EcoreUtil.resolveAll(target);
     }
+    
     EObject siriusTarget = LayerUtil.getSiriusElement(getGmfTarget());
     CapellaDiagramClipboard clipboard = CapellaDiagramClipboard.getInstance();
     if (clipboard.isEmpty() || SiriusUtil.layoutIsConstrained(siriusTarget)) {
@@ -134,6 +138,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
       setResults(Collections.emptyList());
       return;
     }
+
     final String data = clipboard.getSiriusData();
     Collection<EObject> pastedSiriusElements = pasteSiriusElements(data, siriusTarget);
     // Reconcile the Sirius and Capella layers
@@ -275,6 +280,12 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    */
   @SuppressWarnings("unchecked")
   protected Collection<EObject> pasteSiriusElements(final String data, EObject target) {
+
+    if (!(target.eResource() instanceof XMLResource)) {
+      //org.eclipse.gmf.runtime.emf.clipboard.core.IClipboardSupport doesn't support any other resources than XMLResource
+      throw new RuntimeException(Messages.CapellaDiagramPasteAction_Unsupported);
+    }
+    
     Collection<EObject> result = ClipboardUtil.pasteElementsFromString(data, target, null, null);
     if ((result != null) && !result.isEmpty()) {
       // Relocate DEdges in DDiagram instead of target if needed
