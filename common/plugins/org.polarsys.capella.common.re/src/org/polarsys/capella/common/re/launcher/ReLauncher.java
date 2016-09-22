@@ -16,7 +16,6 @@ import org.polarsys.capella.core.transition.common.constants.ITransitionConstant
 import org.polarsys.capella.core.transition.common.handlers.merge.DefaultMergeHandler;
 import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.capella.core.transition.common.launcher.DefaultLauncher;
-import org.polarsys.capella.core.transition.common.transposer.SharedWorkflowActivityParameter;
 import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 import org.polarsys.kitalpha.transposer.rules.handler.api.IRulesHandler;
 
@@ -24,20 +23,24 @@ import org.polarsys.kitalpha.transposer.rules.handler.api.IRulesHandler;
  *
  */
 public abstract class ReLauncher extends DefaultLauncher {
+ 
+  protected void initializeParameters() {
+    super.initializeParameters();
+    
+    addSharedParameter( new GenericParameter<IRulesHandler>(org.polarsys.capella.core.transition.common.activities.InitializeTransitionActivity.PARAMETER_RULE_HANDLER,
+        getTransposer().getRulesHandler(), "Rule handler"));
 
-  private String name;
+    addSharedParameter( new GenericParameter<String>(ITransitionConstants.OPTIONS_SCOPE, getScope(), "Transposer Rule handler")); //$NON-NLS-1$;
+
+    addSharedParameter(new GenericParameter<String>(IReConstants.COMMAND__CURRENT_VALUE, getKind(), "Transposer Rule handler")); //$NON-NLS-1$
+
+    addSharedParameter(new GenericParameter<IMergeHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, new DefaultMergeHandler(true), "Re Merge handler"));
+
+  }
   
   @Override
   protected String getPurpose() {
     return "org.polarsys.capella.common.re";
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected void dispose() {
-    super.dispose();
   }
 
   @Override
@@ -47,33 +50,4 @@ public abstract class ReLauncher extends DefaultLauncher {
 
   protected abstract String getKind();
 
-  @Override
-  protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
-    SharedWorkflowActivityParameter parameter = super.getSharedParameter(workflowId);
-
-    GenericParameter<IRulesHandler> param =
-        new GenericParameter<IRulesHandler>(org.polarsys.capella.core.transition.common.activities.InitializeTransitionActivity.PARAMETER_RULE_HANDLER,
-            getTransposer().getRulesHandler(), "Rule handler"); //$NON-NLS-1$
-    parameter.addSharedParameter(param);
-
-    GenericParameter<String> param2 = new GenericParameter<String>(ITransitionConstants.OPTIONS_SCOPE, getScope(), "Transposer Rule handler"); //$NON-NLS-1$
-    parameter.addSharedParameter(param2);
-
-    GenericParameter<String> param3 = new GenericParameter<String>(IReConstants.COMMAND__CURRENT_VALUE, getKind(), "Transposer Rule handler"); //$NON-NLS-1$
-    parameter.addSharedParameter(param3);
-
-    GenericParameter<IMergeHandler> param4 = new GenericParameter<IMergeHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, new DefaultMergeHandler(true), "Re Merge handler"); //$NON-NLS-1$
-    parameter.addSharedParameter(param4);
-
-    return parameter;
-  }
-
-  @Override
-  protected String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
 }

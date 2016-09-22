@@ -8,30 +8,37 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.re.ui.commands;
+package org.polarsys.capella.core.transition.common.commands;
 
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-
-import org.polarsys.capella.core.re.ui.launcher.CreateReplicaUiLauncher;
+import org.polarsys.capella.core.transition.common.launcher.DefaultLauncher;
 
 /**
+ *
  */
-public class CreateReplicaUiCommand extends org.polarsys.capella.core.re.commands.CreateReplicaCommand {
+public abstract class LauncherCommand extends DefaultCommand {
 
-  /**
-   * @param selection
-   * @param progressMonitor
-   */
-  public CreateReplicaUiCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+  public LauncherCommand(Collection<Object> selection) {
+    super(selection);
+  }
+
+  public LauncherCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
     super(selection, progressMonitor);
   }
-
-  @Override
+  
+  
+  /**
+   * @param elements
+   */
   protected void performTransformation(Collection<Object> elements) {
-    CreateReplicaUiLauncher launcher = new CreateReplicaUiLauncher();
+    DefaultLauncher launcher = createLauncher();
     launcher.setName(getName());
+    launcher.addParameters(getParameters());
     launcher.run(elements, true, getProgressMonitor());
   }
+
+  protected abstract DefaultLauncher createLauncher();
+
 }

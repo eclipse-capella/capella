@@ -16,37 +16,21 @@ import org.polarsys.capella.core.transition.common.constants.ITransitionConstant
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.transposer.SharedWorkflowActivityParameter;
 import org.polarsys.capella.core.transition.common.ui.handlers.merge.MergeUIDifferencesHandler;
-import org.polarsys.capella.core.transition.common.ui.handlers.uihead.IUIHeadHandler;
 import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 
 /**
  *
  */
-public class UIHeadHandler implements IUIHeadHandler {
-
-  private final boolean showDiffMergeUI;
+public class UIHeadHandler extends SharedWorkflowActivityParameter {
 
   public UIHeadHandler(boolean showDiffMergeUI) {
-    this.showDiffMergeUI = showDiffMergeUI;
-  }
+    addSharedParameter(
+        new GenericParameter<IHandler>(ITransitionConstants.SCOPE_HANDLER, new ScopeUIHandler(), "Options handler"));
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void fillParameter(SharedWorkflowActivityParameter parameter) {
-
-    // Add UI Options handler
-    GenericParameter<IHandler> param = new GenericParameter<IHandler>(ITransitionConstants.SCOPE_HANDLER,
-        new ScopeUIHandler(), "Options handler"); //$NON-NLS-1$
-    parameter.addSharedParameter(param);
-
-    if (showDiffMergeUI){
-      param = new GenericParameter<IHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER,
-          new MergeUIDifferencesHandler(), "Filtering differences UI handler"); //$NON-NLS-1$
-      parameter.addSharedParameter(param);
+    if (showDiffMergeUI) {
+      addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER,
+          new MergeUIDifferencesHandler(), "Filtering differences UI handler"));
     }
-
   }
 
 }

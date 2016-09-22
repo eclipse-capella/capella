@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,6 @@ import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.RecCatalog;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.helpers.ReplicableElementExt;
-import org.polarsys.capella.common.re.launcher.ReLauncher;
 import org.polarsys.capella.common.re.queries.CatalogElement_AllUsedElements;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
@@ -41,12 +40,10 @@ import org.polarsys.capella.core.re.commands.DeleteReplicaPreserveRelatedElement
 import org.polarsys.capella.core.re.commands.UpdateCurCommand;
 import org.polarsys.capella.core.re.commands.UpdateDefCommand;
 import org.polarsys.capella.core.re.commands.UpdateReplicaCommand;
-import org.polarsys.capella.core.re.launcher.UpdateReplicaLauncher;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.merge.DefaultMergeHandler;
 import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
-import org.polarsys.capella.core.transition.common.transposer.SharedWorkflowActivityParameter;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -186,16 +183,8 @@ public abstract class RecRplTestCase extends BasicTestCase {
 
   protected void updateReplica(Collection<EObject> elements, CatalogElement replica, final Collection<String> disabledCategoryFilters){
 
-    ICommand command = new UpdateReplicaCommand((Collection) elements, new NullProgressMonitor()) {
-
-      @Override
-      protected ReLauncher createLauncher() {
-        return new UpdateReplicaLauncher() {
-
-          @Override
-          protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
-            SharedWorkflowActivityParameter param = super.getSharedParameter(workflowId);
-            param.addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, new DefaultMergeHandler(true){
+    UpdateReplicaCommand command = new UpdateReplicaCommand((Collection) elements, new NullProgressMonitor());
+    command.addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, new DefaultMergeHandler(true){
 
               @Override
               public void addCategory(ICategoryItem filter, IContext context) {
@@ -205,14 +194,7 @@ public abstract class RecRplTestCase extends BasicTestCase {
                 }
               }
 
-            }, workflowId));
-
-            return param;
-          }
-        };
-      }
-
-    };
+            }, "Merge"));
 
     RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, replica);
     executeCommand(command);
