@@ -344,5 +344,16 @@ Note that the absence of visible differences does not mean that the left and rig
  
 <br>
 <br>
+== Textual Comparison ==
 
-   
+While the recommended comparison method for model and diagram files is using the Diff/Merge tool, 
+it may sometimes be necessary to compare model and diagram files textually. 
+This is possible by selecting the two model or diagram files and choosing &lsquo;Compare With&rsquo; &#61664; &lsquo;Each Other&rsquo; 
+in the Capella Project Explorer popup menu. This will open the Diff/Merge comparison, but this time 
+it is possible to switch to a textual comparison by selecting "Text Compare" in the comparison editor drop-down menu:
+
+[[Image:Images/compare_as_text.png|375x164px]]
+
+== Local File History ==
+
+Capella maintains a local history of file modifications and allows to compare a file with a version from local history. For more information refer to the [[../help/topic/org.eclipse.platform.doc.user/concepts/concepts-17a.htm?cp=0_2_1_8|local history documentation]]
