@@ -24,29 +24,9 @@
          point="org.eclipse.core.contenttype.contentTypes">
       <content-type
             base-type="org.eclipse.emf.ecore.xmi"
-            file-extensions="melodymodeller"
+            file-extensions="melodymodeller,melodyfragment"
             id="org.polarsys.capella.core.compare.capella.content-type"
             name="Capella model files"
-            priority="normal">
-      </content-type>
-      <content-type
-            id="org.polarsys.capella.core.compare.capella.content-type"
-            name="Capella model files"
-            priority="normal">
-      </content-type>
-      <content-type
-            id="org.polarsys.capella.core.compare.capella.content-type"
-            name="name"
-            priority="normal">
-      </content-type>
-      <content-type
-            id="org.polarsys.capella.core.compare.content-type"
-            name="name"
-            priority="normal">
-      </content-type>
-      <content-type
-            id="org.polarsys.capella.core.compare.content-type2"
-            name="name"
             priority="normal">
       </content-type>
    </extension>
