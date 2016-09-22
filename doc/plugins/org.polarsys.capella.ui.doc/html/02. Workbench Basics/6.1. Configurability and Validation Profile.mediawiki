@@ -583,6 +583,19 @@ Capella 				Project specific preferences will 				'''override''' 				Workspace p
 <br>
 <br>
 
+{| border="1"
+|-
+| 
+[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_3c78e109.png|48x48px]]
+
+ 
+| 
+
+Note that the Transitions/Generation preference category has a workspace scope. Thus, it is not possible to configure this preference category for a specific project.
+ 
+|}  
+<br>
+<br>
          
 {| border="1"
 |-
