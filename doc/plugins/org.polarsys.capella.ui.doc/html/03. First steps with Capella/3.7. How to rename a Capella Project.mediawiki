@@ -11,6 +11,7 @@ Then, the following sequence must be respected:
 # On the &ldquo;.melodymodeller&rdquo; file, type F2 (or contextual 	menu &ldquo;Rename&rdquo;): this action will rename the 	&ldquo;.melodymodeller&rdquo; file, the Project root element of the 	model and update all references from the &ldquo;.aird&rdquo; files 	to the &ldquo;.melodymodeller&rdquo; file.
 # On the &ldquo;.aird&rdquo; file, type F2 (or contextual menu 	&ldquo;Rename&rdquo;): this action will rename the &ldquo;.aird&rdquo; 	file.
 # On the &ldquo;.melodyconnector&rdquo; file, type F2 (or contextual 	menu &ldquo;Rename&rdquo;): this action will rename the 	&ldquo;.melodyconnector&rdquo; file.
+# On the &ldquo;.afm&rdquo; file, type F2 (or contextual 	menu &ldquo;Rename&rdquo;): this action will rename the 	&ldquo;.afm&rdquo; file.
  
 <br>
 <br>
