@@ -203,14 +203,18 @@ public class SiriusSessionFactory implements SessionFactory {
    */
   protected boolean isCapellaProject(URI uri) {
     try {
-      IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true)));
-      IProject project = file.getProject();
-      return project.hasNature("org.polarsys.capella.project.nature") || project.hasNature("org.polarsys.capella.library.nature");
+      if (uri.isPlatformResource()) {
+        IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true)));
+        IProject project = file.getProject();
+        return project.hasNature("org.polarsys.capella.project.nature") || project.hasNature("org.polarsys.capella.library.nature");
+      }
+
+    } catch (Exception ex) {
+      //This is not a valid local project
     }
-    catch (CoreException ex) {
-      return false;
-    }
-  }
+
+    return false;
+}
 
   /**
    * Creates the AFM metadata resource</br>
