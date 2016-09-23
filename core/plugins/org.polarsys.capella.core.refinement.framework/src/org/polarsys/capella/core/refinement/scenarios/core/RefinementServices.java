@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,9 +35,9 @@ public class RefinementServices {
   /**
    * 
    */
-  public static List<Part> getReferencerParts(Component component_p) {
+  public static List<Part> getReferencerParts(Component component) {
     List<Part> partSet = new ArrayList<Part>();
-    for (EObject referencer : EObjectExt.getReferencers(component_p, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
+    for (EObject referencer : EObjectExt.getReferencers(component, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
       if (referencer instanceof Part) {
         partSet.add((Part) referencer);
       }
@@ -49,26 +49,26 @@ public class RefinementServices {
    * @returns the current operation if it's not delegated, delegated operation otherwise
    *          (according to the refinement direction: CTX to La / LA to LA / LA to PA)
    */
-  public static AbstractEventOperation getDelegatedOperation(CapellaElement srcElt_p, CapellaElement tgtElt_p, AbstractEventOperation currentOp_p) {
+  public static AbstractEventOperation getDelegatedOperation(CapellaElement srcElt, CapellaElement tgtElt, AbstractEventOperation currentOp) {
     AbstractEventOperation finalOp = null;
-    LAYERSNAME srcLayer = CapellaLayerCheckingExt.getLayersName(srcElt_p);
-    LAYERSNAME tgtLayer = CapellaLayerCheckingExt.getLayersName(tgtElt_p);
+    LAYERSNAME srcLayer = CapellaLayerCheckingExt.getLayersName(srcElt);
+    LAYERSNAME tgtLayer = CapellaLayerCheckingExt.getLayersName(tgtElt);
 
     if (srcLayer.equals(LAYERSNAME.CTX) && tgtLayer.equals(LAYERSNAME.LA)) {
       // 'Ctx To La' Operation refinement case : Search a delegate Operation existing in LA Layer
-      for (AbstractEventOperation traceElt : getDelegatedAndRefinedOperations(currentOp_p, true)) {
+      for (AbstractEventOperation traceElt : getDelegatedAndRefinedOperations(currentOp, true)) {
         if (CapellaLayerCheckingExt.isInLogicalLayer(traceElt))
           finalOp = traceElt;
       }
     } else if (srcLayer.equals(LAYERSNAME.LA) && tgtLayer.equals(LAYERSNAME.LA)) {
       // 'La To La' Operation refinement case : Search a delegate Operation existing in LA Layer
-      for (AbstractEventOperation traceElt : getDelegatedAndRefinedOperations(currentOp_p, true)) {
+      for (AbstractEventOperation traceElt : getDelegatedAndRefinedOperations(currentOp, true)) {
         if (CapellaLayerCheckingExt.isInLogicalLayer(traceElt))
           finalOp = traceElt;
       }
     } else if (srcLayer.equals(LAYERSNAME.LA) && tgtLayer.equals(LAYERSNAME.PA)) {
       // 'La To Pa' Operation refinement case : Search a delegate Operation existing in PA Layer
-      for (AbstractEventOperation traceElt : getDelegatedAndRefinedOperations(currentOp_p, true)) {
+      for (AbstractEventOperation traceElt : getDelegatedAndRefinedOperations(currentOp, true)) {
         if (CapellaLayerCheckingExt.isInPhysicalLayer(traceElt))
           finalOp = traceElt;
       }
@@ -77,40 +77,40 @@ public class RefinementServices {
     if (finalOp != null)
       return finalOp;
 
-    return currentOp_p;
+    return currentOp;
   }
 
-  public static List<AbstractEventOperation> getDelegatedAndRefinedOperations(AbstractEventOperation currentOp_p, boolean reverse_p) {
+  public static List<AbstractEventOperation> getDelegatedAndRefinedOperations(AbstractEventOperation currentOp, boolean reverse) {
     List<AbstractEventOperation> opsDelegated = new ArrayList<AbstractEventOperation>();
 
-    opsDelegated.addAll(getDelegatedOperations(currentOp_p, reverse_p));
-    opsDelegated.addAll(getRefinedOperations(currentOp_p, reverse_p));
+    opsDelegated.addAll(getDelegatedOperations(currentOp, reverse));
+    opsDelegated.addAll(getRefinedOperations(currentOp, reverse));
 
     return opsDelegated;
   }
 
-  protected static List<AbstractEventOperation> getDelegatedOperations(AbstractEventOperation currentOp_p, boolean reverse_p) {
-    return getRelatedElement(currentOp_p, CapellacommonPackage.Literals.TRANSFO_LINK, reverse_p);
+  protected static List<AbstractEventOperation> getDelegatedOperations(AbstractEventOperation currentOp, boolean reverse) {
+    return getRelatedElement(currentOp, CapellacommonPackage.Literals.TRANSFO_LINK, reverse);
   }
 
-  protected static List<AbstractEventOperation> getRefinedOperations(AbstractEventOperation currentOp_p, boolean reverse_p) {
-    return getRelatedElement(currentOp_p, InteractionPackage.Literals.REFINEMENT_LINK, reverse_p);
+  protected static List<AbstractEventOperation> getRefinedOperations(AbstractEventOperation currentOp, boolean reverse) {
+    return getRelatedElement(currentOp, InteractionPackage.Literals.REFINEMENT_LINK, reverse);
   }
 
-  protected static List<AbstractEventOperation> getRelatedElement(TraceableElement src_p, EClass linkMC_p, boolean reverse_p) {
+  protected static List<AbstractEventOperation> getRelatedElement(TraceableElement src, EClass linkMC, boolean reverse) {
     List<AbstractEventOperation> opsDelegated = new ArrayList<AbstractEventOperation>();
-    for (TraceableElement traceElt : getRelatedElement(src_p, InformationPackage.Literals.ABSTRACT_EVENT_OPERATION, linkMC_p, reverse_p)) {
+    for (TraceableElement traceElt : getRelatedElement(src, InformationPackage.Literals.ABSTRACT_EVENT_OPERATION, linkMC, reverse)) {
       opsDelegated.add((AbstractEventOperation) traceElt);
     }
     return opsDelegated;
   }
 
-  protected static List<? extends TraceableElement> getRelatedElement(TraceableElement src_p, EClass tgtMC_p, EClass linkMC_p, boolean reverse_p) {
+  protected static List<? extends TraceableElement> getRelatedElement(TraceableElement src, EClass tgtMC, EClass linkMC, boolean reverse) {
     List<TraceableElement> traceableElts = new ArrayList<TraceableElement>();
-    for (AbstractTrace abstractTrace : reverse_p ? src_p.getIncomingTraces() : src_p.getOutgoingTraces()) {
-      if (abstractTrace.eClass() == linkMC_p) {
-        TraceableElement traceableElt = reverse_p ? abstractTrace.getSourceElement() : abstractTrace.getTargetElement();
-        if (traceableElt != null && (tgtMC_p.equals(traceableElt.eClass()) || tgtMC_p.isSuperTypeOf(traceableElt.eClass())))
+    for (AbstractTrace abstractTrace : reverse ? src.getIncomingTraces() : src.getOutgoingTraces()) {
+      if (abstractTrace.eClass() == linkMC) {
+        TraceableElement traceableElt = reverse ? abstractTrace.getSourceElement() : abstractTrace.getTargetElement();
+        if (traceableElt != null && (tgtMC.equals(traceableElt.eClass()) || tgtMC.isSuperTypeOf(traceableElt.eClass())))
           if (!traceableElts.contains(traceableElt))
             traceableElts.add(traceableElt);
       }

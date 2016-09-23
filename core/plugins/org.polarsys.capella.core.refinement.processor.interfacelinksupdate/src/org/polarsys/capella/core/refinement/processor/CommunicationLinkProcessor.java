@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,10 +35,10 @@ public class CommunicationLinkProcessor extends AbstractInterfaceProcessor {
   /**
    * Constructor
    * 
-   * @param context_p the Element on which the processing will applied
+   * @param context the Element on which the processing will applied
    */
-  public CommunicationLinkProcessor(CapellaElement context_p) {
-    super(context_p);
+  public CommunicationLinkProcessor(CapellaElement context) {
+    super(context);
   }
 
   /**
@@ -52,38 +52,38 @@ public class CommunicationLinkProcessor extends AbstractInterfaceProcessor {
    * @see org.polarsys.capella.core.refinement.processor.AbstractInterfaceProcessor#synchronize(org.polarsys.capella.core.data.la.LogicalComponent)
    */
   @Override
-  protected void synchronize(LogicalComponent component_p) {
-    List<CommunicationLink> communicationLinksToAdd   = InterfaceProcessorHelper.computeCommunicationLinksToAdd(component_p);
-    List<CommunicationLink> communicationLinksToRemove = InterfaceProcessorHelper.computeCommunicationLinksToRemove(component_p, communicationLinksToAdd, LaPackage.Literals.LOGICAL_ARCHITECTURE);
+  protected void synchronize(LogicalComponent component) {
+    List<CommunicationLink> communicationLinksToAdd   = InterfaceProcessorHelper.computeCommunicationLinksToAdd(component);
+    List<CommunicationLink> communicationLinksToRemove = InterfaceProcessorHelper.computeCommunicationLinksToRemove(component, communicationLinksToAdd, LaPackage.Literals.LOGICAL_ARCHITECTURE);
 
     // Add and Remove Communication Links computed
-    InterfaceProcessorHelper.addCommunicationLink(component_p, communicationLinksToAdd, communicationLinksToRemove);
-    InterfaceProcessorHelper.removeCommunicationLink(component_p, communicationLinksToRemove);
+    InterfaceProcessorHelper.addCommunicationLink(component, communicationLinksToAdd, communicationLinksToRemove);
+    InterfaceProcessorHelper.removeCommunicationLink(component, communicationLinksToRemove);
   }
 
   /**
    * @see org.polarsys.capella.core.refinement.processor.AbstractInterfaceProcessor#synchronize(org.polarsys.capella.core.data.pa.PhysicalComponent)
    */
   @Override
-  protected void synchronize(PhysicalComponent component_p) {
-    List<CommunicationLink> communicationLinksToAdd   = InterfaceProcessorHelper.computeCommunicationLinksToAdd(component_p);
-    List<CommunicationLink> communicationLinksToRemove = InterfaceProcessorHelper.computeCommunicationLinksToRemove(component_p, communicationLinksToAdd, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
+  protected void synchronize(PhysicalComponent component) {
+    List<CommunicationLink> communicationLinksToAdd   = InterfaceProcessorHelper.computeCommunicationLinksToAdd(component);
+    List<CommunicationLink> communicationLinksToRemove = InterfaceProcessorHelper.computeCommunicationLinksToRemove(component, communicationLinksToAdd, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
 
     // Add and Remove Communication Links computed
-    InterfaceProcessorHelper.addCommunicationLink(component_p, communicationLinksToAdd, communicationLinksToRemove);
-    InterfaceProcessorHelper.removeCommunicationLink(component_p, communicationLinksToRemove);
+    InterfaceProcessorHelper.addCommunicationLink(component, communicationLinksToAdd, communicationLinksToRemove);
+    InterfaceProcessorHelper.removeCommunicationLink(component, communicationLinksToRemove);
   }
 
   /**
    * @see org.polarsys.capella.core.refinement.processor.AbstractInterfaceProcessor#synchronize(org.polarsys.capella.core.data.epbs.ConfigurationItem)
    */
   @Override
-  protected void synchronize(ConfigurationItem component_p) {
-    List<CommunicationLink> communicationLinksToAdd   = InterfaceProcessorHelper.computeCommunicationLinksToAdd(component_p);
-    List<CommunicationLink> communicationLinksToRemove = InterfaceProcessorHelper.computeCommunicationLinksToRemove(component_p, communicationLinksToAdd, EpbsPackage.Literals.EPBS_ARCHITECTURE);
+  protected void synchronize(ConfigurationItem component) {
+    List<CommunicationLink> communicationLinksToAdd   = InterfaceProcessorHelper.computeCommunicationLinksToAdd(component);
+    List<CommunicationLink> communicationLinksToRemove = InterfaceProcessorHelper.computeCommunicationLinksToRemove(component, communicationLinksToAdd, EpbsPackage.Literals.EPBS_ARCHITECTURE);
 
     // Add and Remove Communication Links computed
-    InterfaceProcessorHelper.addCommunicationLink(component_p, communicationLinksToAdd, communicationLinksToRemove);
-    InterfaceProcessorHelper.removeCommunicationLink(component_p, communicationLinksToRemove);
+    InterfaceProcessorHelper.addCommunicationLink(component, communicationLinksToAdd, communicationLinksToRemove);
+    InterfaceProcessorHelper.removeCommunicationLink(component, communicationLinksToRemove);
   }
 }

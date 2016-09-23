@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,20 +23,20 @@ import org.polarsys.capella.core.refinement.scenarios.core.exceptions.ResolverEx
 public interface IResolver extends IRefinementPlug {
 
 	/**
-	 * @param candidateAbstractInstances_p
-	 * @param srcTree_p
-	 * @param tgtTree_p
-	 * @param srcMsg_p
-	 * @param type_p
+	 * @param candidateAbstractInstances
+	 * @param srcTree
+	 * @param tgtTree
+	 * @param srcMsg
+	 * @param type
 	 * 
 	 * @return List<AbstractInstance>
 	 * 
 	 * @throws ResolverException
 	 */
 	public List<AbstractInstance> resolving(
-	    List<AbstractInstance> candidateAbstractInstances_p,
-	    ScenarioRepresentation srcTree_p,
-      ScenarioRepresentation tgtTree_p,
-	    AbstractEnd srcMsg_p,
-	    COMPONENT_TYPE type_p) throws ResolverException;
+	    List<AbstractInstance> candidateAbstractInstances,
+	    ScenarioRepresentation srcTree,
+      ScenarioRepresentation tgtTree,
+	    AbstractEnd srcMsg,
+	    COMPONENT_TYPE type) throws ResolverException;
 }

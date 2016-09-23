@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -94,11 +94,11 @@ public class InstanceRoleExplorer extends Composite {
   }
   
   /**
-   * @param executionEnd_p
+   * @param executionEnd
    */
-  private void setCurrentInstanceRole(InstanceRole instanceRole_p) {
-    text.setText(instanceRole_p.getName()==null?"null":instanceRole_p.getName());
-    text1.setText(instanceRole_p.getId());
+  private void setCurrentInstanceRole(InstanceRole instanceRole) {
+    text.setText(instanceRole.getName()==null?"null":instanceRole.getName());
+    text1.setText(instanceRole.getId());
   }
 
   /**
@@ -130,10 +130,10 @@ public class InstanceRoleExplorer extends Composite {
   }
 
   /**
-   * @param value_p
+   * @param value
    */
-  public void addInstanceRole(InstanceRole value_p) {
-    list1.add((value_p.getName()==null?"null":value_p.getName()));
-    _instanceRoles.add(value_p);
+  public void addInstanceRole(InstanceRole value) {
+    list1.add((value.getName()==null?"null":value.getName()));
+    _instanceRoles.add(value);
   }
 }

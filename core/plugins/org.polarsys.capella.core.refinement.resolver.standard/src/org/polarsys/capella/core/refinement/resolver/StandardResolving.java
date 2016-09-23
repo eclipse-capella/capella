@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -61,13 +61,13 @@ public class StandardResolving implements IResolver {
    * If this is true, it verifies if the 'Operation' carried by this mapped 'MessageEnd' is owned by
    * the 'Interface' implemented or used by one of the candidates 'Component'.
    */
-  public List<AbstractInstance> resolving(List<AbstractInstance> candidateAbstractInstances_p, ScenarioRepresentation srcTree_p, ScenarioRepresentation tgtTree_p, AbstractEnd srcMsg_p, COMPONENT_TYPE type_p) throws ResolverException {
+  public List<AbstractInstance> resolving(List<AbstractInstance> candidateAbstractInstances, ScenarioRepresentation srcTree, ScenarioRepresentation tgtTree, AbstractEnd srcMsg, COMPONENT_TYPE type) throws ResolverException {
 	  List<AbstractInstance> selectedAbstractInstances = new ArrayList<AbstractInstance>();
 
-	  if ((candidateAbstractInstances_p != null) && (srcMsg_p != null)) {
+	  if ((candidateAbstractInstances != null) && (srcMsg != null)) {
 		  MessageEnd tgtMsg = null;
-		  for (CapellaElement msg : RefinementLinkExt.getRefinementRelatedSourceElements(srcMsg_p, InteractionPackage.Literals.MESSAGE_END)) {
-			  if (CapellaElementExt.areInSameDecompositionAlternative(msg, tgtTree_p.getScenario())) {
+		  for (CapellaElement msg : RefinementLinkExt.getRefinementRelatedSourceElements(srcMsg, InteractionPackage.Literals.MESSAGE_END)) {
+			  if (CapellaElementExt.areInSameDecompositionAlternative(msg, tgtTree.getScenario())) {
 				  tgtMsg = (MessageEnd) msg;
 			  }
 		  }
@@ -80,13 +80,13 @@ public class StandardResolving implements IResolver {
 				  AbstractEventOperation op = MessageEndExt.getOperation(tgtMsg);
 				  List<Part> validParts = new ArrayList<Part>();
 
-				  if (type_p == COMPONENT_TYPE.SENDER) {
+				  if (type == COMPONENT_TYPE.SENDER) {
 				    if (op instanceof AbstractExchangeItem) {
               for (Interface itf : ComponentExt.getAllUsedAndRequiredInterfaces(currentTargetComponent)) {
 				        if (itf.getExchangeItems().contains(op)) { 
 		              for (Component cpnt : getAllUsers(itf)) {
 	                  for (Part part : RefinementServices.getReferencerParts(cpnt)) {
-  		                if (candidateAbstractInstances_p.contains(part)) {
+  		                if (candidateAbstractInstances.contains(part)) {
   		                  validParts.add(part);
   		                }
 	                  }
@@ -95,12 +95,12 @@ public class StandardResolving implements IResolver {
 				      }
 	          }
 				  }
-				  else if (type_p == COMPONENT_TYPE.RECEIVER) {
+				  else if (type == COMPONENT_TYPE.RECEIVER) {
             for (Interface itf : ComponentExt.getAllImplementedAndProvidedInterfaces(currentTargetComponent)) {
               if (itf.getExchangeItems().contains(op)) { 
                 for (Component cpnt : getAllImplementors(itf)) {
                   for (Part part : RefinementServices.getReferencerParts(cpnt)) {
-                    if (candidateAbstractInstances_p.contains(part)) {
+                    if (candidateAbstractInstances.contains(part)) {
                       validParts.add(part);
                     }
                   }
@@ -118,17 +118,17 @@ public class StandardResolving implements IResolver {
 			  }
 			  else {
 				  /** the instance is not related to a component */
-			    selectedAbstractInstances.addAll(candidateAbstractInstances_p);
+			    selectedAbstractInstances.addAll(candidateAbstractInstances);
 			  }
 		  }
 		  else {
 			  /** there is no existing refined message */
-		    selectedAbstractInstances.addAll(candidateAbstractInstances_p);
+		    selectedAbstractInstances.addAll(candidateAbstractInstances);
 		  }
 	  }
 	  else {
 		  /** the given parameters are invalid, no choice is made */
-	    selectedAbstractInstances.addAll(candidateAbstractInstances_p);
+	    selectedAbstractInstances.addAll(candidateAbstractInstances);
 	  }
 
 	  return selectedAbstractInstances;
@@ -139,9 +139,9 @@ public class StandardResolving implements IResolver {
    *  - through a 'use' link<br>
    *  - through a required port
    */
-  private Collection<Component> getAllUsers(Interface interface_p) {
+  private Collection<Component> getAllUsers(Interface itf) {
     Collection<Component> users = new HashSet<Component>();
-    for (Component cpnt : interface_p.getUserComponents()) {
+    for (Component cpnt : itf.getUserComponents()) {
       users.add(cpnt);
       for (GeneralizableElement elt : GeneralizableElementExt.getAllSubGeneralizableElements(cpnt)) {
         if ((elt instanceof Component) && !users.contains(elt)) {
@@ -149,7 +149,7 @@ public class StandardResolving implements IResolver {
         }
       }
     }
-    for (EObject obj : EObjectExt.getReferencers(interface_p, InformationPackage.Literals.PORT__REQUIRED_INTERFACES)) {
+    for (EObject obj : EObjectExt.getReferencers(itf, InformationPackage.Literals.PORT__REQUIRED_INTERFACES)) {
       if (obj instanceof Port) {
         EObject owner = ((Port) obj).eContainer();
         if ((owner instanceof Component) && !users.contains(owner)) {
@@ -165,9 +165,9 @@ public class StandardResolving implements IResolver {
    *  - through an 'implementation' link<br>
    *  - through a provided port
    */
-  private Collection<Component> getAllImplementors(Interface interface_p) {
+  private Collection<Component> getAllImplementors(Interface itf) {
     Collection<Component> implementors = new HashSet<Component>();
-    for (Component cpnt : interface_p.getImplementorComponents()) {
+    for (Component cpnt : itf.getImplementorComponents()) {
       implementors.add(cpnt);
       for (GeneralizableElement elt : GeneralizableElementExt.getAllSubGeneralizableElements(cpnt)) {
         if ((elt instanceof Component) && !implementors.contains(elt)) {
@@ -175,7 +175,7 @@ public class StandardResolving implements IResolver {
         }
       }
     }
-    for (EObject obj : EObjectExt.getReferencers(interface_p, InformationPackage.Literals.PORT__PROVIDED_INTERFACES)) {
+    for (EObject obj : EObjectExt.getReferencers(itf, InformationPackage.Literals.PORT__PROVIDED_INTERFACES)) {
       if (obj instanceof Port) {
         EObject owner = ((Port) obj).eContainer();
         if ((owner instanceof Component) && !implementors.contains(owner)) {

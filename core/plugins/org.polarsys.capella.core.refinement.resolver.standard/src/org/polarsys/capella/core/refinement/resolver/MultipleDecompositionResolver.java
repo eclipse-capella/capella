@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,23 +40,23 @@ public class MultipleDecompositionResolver implements IResolver {
    * This 'Resolver' verifies if the candidate components belongs
    * to the same decomposition hierarchy tree as the scenario.
    * 
-   * @param candidateAbstractInstances_p
-   * @param srcTree_p
-   * @param srcMsg_p
-   * @param type_p
+   * @param candidateAbstractInstances
+   * @param srcTree
+   * @param srcMsg
+   * @param type
    * 
    * @return List<Component>
    * 
    * @throws ResolverException
    */
-  public List<AbstractInstance> resolving(List<AbstractInstance> candidateAbstractInstances_p, ScenarioRepresentation srcTree_p, ScenarioRepresentation tgtTree_p, AbstractEnd srcMsg_p, COMPONENT_TYPE type_p) throws ResolverException {
+  public List<AbstractInstance> resolving(List<AbstractInstance> candidateAbstractInstances, ScenarioRepresentation srcTree, ScenarioRepresentation tgtTree, AbstractEnd srcMsg, COMPONENT_TYPE type) throws ResolverException {
     List<AbstractInstance> filteredAbstractInstances = new ArrayList<AbstractInstance>();
     List<AbstractInstance> selectedAbstractInstances = new ArrayList<AbstractInstance>();
 
-    if ((candidateAbstractInstances_p != null) && (tgtTree_p != null)) {
-      for (AbstractInstance part : candidateAbstractInstances_p) {
+    if ((candidateAbstractInstances != null) && (tgtTree != null)) {
+      for (AbstractInstance part : candidateAbstractInstances) {
         Component cpnt = (Component) part.getAbstractType();
-        if (CapellaElementExt.areInSameDecompositionAlternative(cpnt, tgtTree_p.getScenario())) {
+        if (CapellaElementExt.areInSameDecompositionAlternative(cpnt, tgtTree.getScenario())) {
           filteredAbstractInstances.add(part);
         }
       }
@@ -66,7 +66,7 @@ public class MultipleDecompositionResolver implements IResolver {
       selectedAbstractInstances.addAll(filteredAbstractInstances);
     }
     else {
-      selectedAbstractInstances.addAll(candidateAbstractInstances_p);
+      selectedAbstractInstances.addAll(candidateAbstractInstances);
     }
 
     return selectedAbstractInstances;

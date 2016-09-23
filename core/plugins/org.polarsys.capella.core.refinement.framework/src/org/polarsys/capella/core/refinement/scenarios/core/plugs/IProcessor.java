@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,23 +30,23 @@ public interface IProcessor extends IRefinementPlug {
   /**
    * Sets the element on which the processing will be applied
    * 
-   * @param context_p
+   * @param context
    */
-  public void setContext(ModelElement context_p);
+  public void setContext(ModelElement context);
 
   /**
    * Sets the elements on which the processing will be applied
    * 
-   * @param context_p
+   * @param context
    */
-  public void setContext(List<ModelElement> context_p);
+  public void setContext(List<ModelElement> context);
 
   /**
    * Sets the target element of the processing execution
    * 
-   * @param target_p
+   * @param target
    */
-  public void setTarget(NamedElement target_p);
+  public void setTarget(NamedElement target);
 
   /**
    * @return Retrieves the result of the processing execution
@@ -56,9 +56,9 @@ public interface IProcessor extends IRefinementPlug {
 	/**
 	 * launch the processing execution
 	 * 
-	 * @param progressMonitor_p
+	 * @param progressMonitor
 	 *
 	 * @throws ProcessorException
 	 */
-	public void execute(IProgressMonitor progressMonitor_p) throws ProcessorException;
+	public void execute(IProgressMonitor progressMonitor) throws ProcessorException;
 }

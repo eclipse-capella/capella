@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,23 +32,23 @@ public class SequenceMessageHelper {
   
   /**
    * Check the position of a given {@link InteractionFragment} e.g. is sending or receiving on a {@link SequenceMessage}
-   * @param sm_p the target {@link SequenceMessage}
-   * @param ifrag_p the {@link InteractionFragment}
+   * @param sm the target {@link SequenceMessage}
+   * @param ifrag the {@link InteractionFragment}
    * @return The feature whether found, <code>null</code> otherwise.
    * @throws MergeToolException
    */
-  public static EStructuralFeature returnPositionOn(SequenceMessage sm_p, InteractionFragment ifrag_p) throws MergeToolException {
+  public static EStructuralFeature returnPositionOn(SequenceMessage sm, InteractionFragment ifrag) throws MergeToolException {
     
     EStructuralFeature result = null;
     
-    if (null == sm_p || null == ifrag_p) {
+    if (null == sm || null == ifrag) {
       //TODO more explicit message
       throw new MergeToolException(MergeMessages.genericToolError);
     }
     
     for (EStructuralFeature feature: boundFeaturesList()) {
-      Object target = sm_p.eGet(feature);
-      if ( null != target && target.equals(ifrag_p) ) {
+      Object target = sm.eGet(feature);
+      if ( null != target && target.equals(ifrag) ) {
         result = feature;
         break;
       }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,23 +27,23 @@ public interface IScenarioMerger {
   
   /**
    * Pre treatment operation for merge.
-   * @param sc_p the top-level scenario to merge
+   * @param sc the top-level scenario to merge
    * @return <code>true</code> if no errors have been found, <code>false</code> otherwise 
    */
-  public boolean preTreatment(final Scenario sc_p) throws MergeException;
+  public boolean preTreatment(final Scenario sc) throws MergeException;
   
   /**
    * the merge operation itself 
-   * @param sc_p the top-level scenario to merge
+   * @param sc the top-level scenario to merge
    * @return the merged scenario if process reach its end, <code>null</code> otherwise
    */
-  public Scenario doMerge(final Scenario sc_p) throws MergeException;
+  public Scenario doMerge(final Scenario sc) throws MergeException;
   
   /**
    * Post treatment operation for merge.
-   * @param mergedScenarioResult_p the merged 
+   * @param mergedScenarioResult the merged 
    * @return <code>true</code> if no errors have been found, <code>false</code> otherwise
    */
-  public boolean postTreatment(Scenario mergedScenarioResult_p) throws MergeException;
+  public boolean postTreatment(Scenario mergedScenarioResult) throws MergeException;
   
 }

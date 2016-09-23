@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,7 @@ public abstract class RefinementException extends RuntimeException {
   /**
    * 
    */
-  private IRefinementPlug _plug = null;
+  private IRefinementPlug plug = null;
 
   /**
    * @param string
@@ -33,7 +33,7 @@ public abstract class RefinementException extends RuntimeException {
   public RefinementException(String string, IRefinementPlug plug) {
     super(string);
 
-    _plug = plug;
+    this.plug = plug;
   }
 
   /**
@@ -44,13 +44,13 @@ public abstract class RefinementException extends RuntimeException {
   public RefinementException(String string, IRefinementPlug plug, Throwable throwable) {
     super(string, throwable);
 
-    _plug = plug;
+    this.plug = plug;
   }
 
   /**
    * @return the processor
    */
   public IRefinementPlug getPlug() {
-    return _plug;
+    return plug;
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,28 +52,28 @@ public class SimpleResolver implements IResolver {
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IResolver#resolving(java.util.List,
    *      org.polarsys.capella.core.common.model.MessageEnd, org.polarsys.capella.core.data.helpers.interaction.services.model.helpers.MessageEndExt.COMPONENT_TYPE)
    */
-  public List<AbstractInstance> resolving(List<AbstractInstance> candidateAbstractInstances_p, ScenarioRepresentation srcTree_p, ScenarioRepresentation tgtTree_p, AbstractEnd srcMsg_p, COMPONENT_TYPE type_p)
+  public List<AbstractInstance> resolving(List<AbstractInstance> candidateAbstractInstances, ScenarioRepresentation srcTree, ScenarioRepresentation tgtTree, AbstractEnd srcMsg, COMPONENT_TYPE cpntType)
       throws ResolverException {
     AbstractInstance retrievedAbstractInstance = null;
     List<AbstractInstance> selectedAbstractInstances = new ArrayList<AbstractInstance>();
 
-    if (candidateAbstractInstances_p != null) {
-      if (srcMsg_p instanceof MessageEnd) {
-        SequenceMessage msg = ((MessageEnd) srcMsg_p).getMessage();
+    if (candidateAbstractInstances != null) {
+      if (srcMsg instanceof MessageEnd) {
+        SequenceMessage msg = ((MessageEnd) srcMsg).getMessage();
         if (msg != null) {
           if (msg.getKind() == MessageKind.REPLY) {
             SequenceMessage oppositeMsg = SequenceMessageExt.getOppositeSequenceMessage(msg);
             if (oppositeMsg != null) {
               MessageEnd srcOppositeMsgEnd = null;
-              if (type_p == COMPONENT_TYPE.SENDER) {
+              if (cpntType == COMPONENT_TYPE.SENDER) {
                 srcOppositeMsgEnd = oppositeMsg.getSendingEnd();
               }
-              else if (type_p == COMPONENT_TYPE.RECEIVER) {
+              else if (cpntType == COMPONENT_TYPE.RECEIVER) {
                 srcOppositeMsgEnd = oppositeMsg.getReceivingEnd();
               }
 
               if (srcOppositeMsgEnd != null) {
-                Node<InteractionFragment> srcOppositeMsgEndNode = srcTree_p.getNodeByData(srcOppositeMsgEnd);
+                Node<InteractionFragment> srcOppositeMsgEndNode = srcTree.getNodeByData(srcOppositeMsgEnd);
                 Node<InteractionFragment> tgtOppositeMsgEndNode = srcOppositeMsgEndNode.relatedNode;
 
                 InteractionFragment tgtOppositeMsgEnd = tgtOppositeMsgEndNode.getData();
@@ -91,12 +91,12 @@ public class SimpleResolver implements IResolver {
           }
         }
       }
-      else if (srcMsg_p instanceof ExecutionEnd) {
-        SequenceMessage msg = ExecutionEndExt.getMessage((ExecutionEnd) srcMsg_p);
+      else if (srcMsg instanceof ExecutionEnd) {
+        SequenceMessage msg = ExecutionEndExt.getMessage((ExecutionEnd) srcMsg);
         if (msg != null) {
           MessageEnd srcMsgEnd = msg.getReceivingEnd();
           if (srcMsgEnd != null) {
-            Node<InteractionFragment> srcMsgEndNode = srcTree_p.getNodeByData(srcMsgEnd);
+            Node<InteractionFragment> srcMsgEndNode = srcTree.getNodeByData(srcMsgEnd);
             Node<InteractionFragment> tgtMsgEndNode = srcMsgEndNode.relatedNode;
 
             InteractionFragment tgtMsgEnd = tgtMsgEndNode.getData();
@@ -117,7 +117,7 @@ public class SimpleResolver implements IResolver {
         selectedAbstractInstances.add(retrievedAbstractInstance);
       }
       else {
-        selectedAbstractInstances.addAll(candidateAbstractInstances_p);
+        selectedAbstractInstances.addAll(candidateAbstractInstances);
       }
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,9 +16,9 @@ public interface IValidator {
   /**
    * Checks if the validation rule is valid
    * 
-   * @param page_p
+   * @param page
    */
-  boolean isValid(SelectionPage page_p);
+  boolean isValid(SelectionPage page);
 
   /**
    * Returns an error message

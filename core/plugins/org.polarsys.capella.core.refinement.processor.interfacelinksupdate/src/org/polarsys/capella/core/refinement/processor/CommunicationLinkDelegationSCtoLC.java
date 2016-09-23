@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,16 +36,16 @@ public class CommunicationLinkDelegationSCtoLC {
 
 	protected List<Entry<Component, Component>> pairs = new ArrayList<Entry<Component, Component>>();
 
-	public CommunicationLinkDelegationSCtoLC(LogicalComponent logicalComponent_p) {
-		computeComponentPairsForComponentFromLogicalLevel(logicalComponent_p);
+	public CommunicationLinkDelegationSCtoLC(LogicalComponent logicalComponent) {
+		computeComponentPairsForComponentFromLogicalLevel(logicalComponent);
 	}
 
-	public CommunicationLinkDelegationSCtoLC(LogicalActor logicalActor_p) {
-		computeComponentPairsForComponentFromLogicalLevel(logicalActor_p);
+	public CommunicationLinkDelegationSCtoLC(LogicalActor logicalActor) {
+		computeComponentPairsForComponentFromLogicalLevel(logicalActor);
 	}
 
-	public CommunicationLinkDelegationSCtoLC(LogicalActorPkg logicalActorPck_p) {
-		for (Component logicalActor : ActorPkgExt.getAllActors(logicalActorPck_p)) {
+	public CommunicationLinkDelegationSCtoLC(LogicalActorPkg logicalActorPck) {
+		for (Component logicalActor : ActorPkgExt.getAllActors(logicalActorPck)) {
 			computeComponentPairsForComponentFromLogicalLevel(logicalActor);
 		}
 	}
@@ -54,25 +54,25 @@ public class CommunicationLinkDelegationSCtoLC {
 		computeComponentPairsForComponentFromSystemLevel(systemComponent);
 	}
 
-	public CommunicationLinkDelegationSCtoLC(Actor actor_p) {
-		computeComponentPairsForComponentFromSystemLevel(actor_p);
+	public CommunicationLinkDelegationSCtoLC(Actor actor) {
+		computeComponentPairsForComponentFromSystemLevel(actor);
 	}
 
-	public CommunicationLinkDelegationSCtoLC(ActorPkg actorPck_p) {
-		for (Component actor : ActorPkgExt.getAllActors(actorPck_p)) {
+	public CommunicationLinkDelegationSCtoLC(ActorPkg actorPck) {
+		for (Component actor : ActorPkgExt.getAllActors(actorPck)) {
 			computeComponentPairsForComponentFromSystemLevel(actor);
 		}
 	}
 
-	private void computeComponentPairsForComponentFromLogicalLevel(Component logicalComponent_p) {
-		for (Component sourceComponent : logicalComponent_p.getAllocatedComponents()) {
-			pairs.add(new SimpleEntry<Component, Component>(sourceComponent, logicalComponent_p));
+	private void computeComponentPairsForComponentFromLogicalLevel(Component logicalComponent) {
+		for (Component sourceComponent : logicalComponent.getAllocatedComponents()) {
+			pairs.add(new SimpleEntry<Component, Component>(sourceComponent, logicalComponent));
 		}
 	}
 
-	private void computeComponentPairsForComponentFromSystemLevel(Component systemComponent_p) {
-		for (Component targetComponent : systemComponent_p.getAllocatingComponents()) {
-			pairs.add(new SimpleEntry<Component, Component>(systemComponent_p, targetComponent));
+	private void computeComponentPairsForComponentFromSystemLevel(Component systemComponent) {
+		for (Component targetComponent : systemComponent.getAllocatingComponents()) {
+			pairs.add(new SimpleEntry<Component, Component>(systemComponent, targetComponent));
 		}
 	}
 

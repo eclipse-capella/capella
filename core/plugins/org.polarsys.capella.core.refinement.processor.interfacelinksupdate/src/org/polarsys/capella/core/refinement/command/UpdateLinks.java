@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,66 +38,66 @@ public class UpdateLinks extends StaticRefinement {
 	/**
 	 * Constructor
 	 *
-	 * @param context_p
+	 * @param context
 	 */
-	public UpdateLinks(Component context_p) {
-		this((ModelElement) context_p);
+	public UpdateLinks(Component context) {
+		this((ModelElement) context);
 	}
 
 	/**
 	 * Constructor
 	 * 
-	 * @param context_p
+	 * @param context
 	 */
-	public UpdateLinks(ComponentArchitecture context_p) {
-		this((ModelElement) context_p);
+	public UpdateLinks(ComponentArchitecture context) {
+		this((ModelElement) context);
 	}
 
 	/**
 	 * Constructor
 	 * 
-	 * @param context_p
+	 * @param context
 	 */
-	private UpdateLinks(ModelElement context_p) {
+	private UpdateLinks(ModelElement context) {
 		super();
 
-		setContext(context_p);
+		setContext(context);
 	}
 
 	/**
 	 * Add processors
 	 * 
-	 * @param context_p
+	 * @param context
 	 */
 	@Override
-	public void setContext(ModelElement context_p) {
-		super.setContext(context_p);
+	public void setContext(ModelElement context) {
+		super.setContext(context);
 
-	  if ((context_p instanceof Component) || (context_p instanceof ComponentArchitecture)) {
-			addPlug(new InterfaceUsageAndRequireProcessor((CapellaElement) context_p));
-			addPlug(new InterfaceImplementationAndProvideProcessor((CapellaElement) context_p));
-      addPlug(new CommunicationLinkProcessor((CapellaElement) context_p));
+	  if ((context instanceof Component) || (context instanceof ComponentArchitecture)) {
+			addPlug(new InterfaceUsageAndRequireProcessor((CapellaElement) context));
+			addPlug(new InterfaceImplementationAndProvideProcessor((CapellaElement) context));
+      addPlug(new CommunicationLinkProcessor((CapellaElement) context));
 	  }
 	}
 
   /**
    * Add processors
    * 
-   * @param context_p
+   * @param context
    */
   @Override
-  public void setTarget(NamedElement target_p) {
-    super.setTarget(target_p);
+  public void setTarget(NamedElement target) {
+    super.setTarget(target);
 
-    if ((target_p instanceof Component) || (target_p instanceof ComponentArchitecture)) {
+    if ((target instanceof Component) || (target instanceof ComponentArchitecture)) {
       IProcessor processor = new InterfaceUsageAndRequireProcessor();
-      processor.setTarget(target_p);
+      processor.setTarget(target);
       addPlug(processor);
       processor = new InterfaceImplementationAndProvideProcessor();
-      processor.setTarget(target_p);
+      processor.setTarget(target);
       addPlug(processor);
       processor = new CommunicationLinkProcessor();
-      processor.setTarget(target_p);
+      processor.setTarget(target);
       addPlug(processor);
     }
   }

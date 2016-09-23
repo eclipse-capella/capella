@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class Tree<T> {
 
-  private Node<T> _rootElement = null;
+  private Node<T> rootElement = null;
 
   /**
    * Default constructor.
@@ -38,7 +38,7 @@ public class Tree<T> {
    * @return the root element.
    */
   public Node<T> getRootElement() {
-    return _rootElement;
+    return rootElement;
   }
 
   /**
@@ -48,7 +48,7 @@ public class Tree<T> {
    *            the root element to set.
    */
   public void setRootElement(Node<T> rootElement) {
-    _rootElement = rootElement;
+    this.rootElement = rootElement;
   }
 
   /**
@@ -59,7 +59,7 @@ public class Tree<T> {
    */
   @Override
   public String toString() {
-    return walk(_rootElement).toString();
+    return walk(rootElement).toString();
   }
 
   /**
@@ -91,22 +91,22 @@ public class Tree<T> {
    * without removing the node itself.
    */
   public void unChainCurrentNodeMessage(Node<T> currentNode) {
-    for (Node<T> node : walk(_rootElement)) {
+    for (Node<T> node : walk(rootElement)) {
       if (node == currentNode) {
-        Node<T> nextNode = node._next;
-        Node<T> parentNode = node._parent;
-        Node<T> previousNode = node._previous;
+        Node<T> nextNode = node.next;
+        Node<T> parentNode = node.parent;
+        Node<T> previousNode = node.previous;
 
-        if (previousNode != null) previousNode._next = nextNode;
-        if (nextNode != null) nextNode._previous = previousNode;
+        if (previousNode != null) previousNode.next = nextNode;
+        if (nextNode != null) nextNode.previous = previousNode;
 
-        if ((parentNode!=null) && (parentNode._head==node)) {
-          if (previousNode != null) parentNode._head = previousNode;
-          else parentNode._head = nextNode;
+        if ((parentNode!=null) && (parentNode.head==node)) {
+          if (previousNode != null) parentNode.head = previousNode;
+          else parentNode.head = nextNode;
         }
-        node._next = null;
-        node._previous = null;
-        node._parent = null;
+        node.next = null;
+        node.previous = null;
+        node.parent = null;
 
         return;
       }

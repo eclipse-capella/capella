@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,55 +27,55 @@ import org.polarsys.capella.core.refinement.scenarios.core.exceptions.ProcessorE
  */
 public class SubScenarioRefinement extends ScenarioRefinement {
  
-  private String _scenarioName = null;
-  private Scenario _targetScenario = null;
+  private String scenarioName = null;
+  private Scenario targetScenario = null;
 
 
-  public SubScenarioRefinement(Scenario srcDiagram_p, Scenario tgtDiagram_p) {
-    super(srcDiagram_p, ScenarioExt.getContainer(tgtDiagram_p), isIntraLogicalLayer(srcDiagram_p, tgtDiagram_p), false);
-    _targetScenario = tgtDiagram_p;
+  public SubScenarioRefinement(Scenario srcDiagram, Scenario tgtDiagram) {
+    super(srcDiagram, ScenarioExt.getContainer(tgtDiagram), isIntraLogicalLayer(srcDiagram, tgtDiagram), false);
+    targetScenario = tgtDiagram;
   }
 
-  public SubScenarioRefinement(Scenario srcDiagram_p, ComponentArchitecture arch_p, String scenarioName_p) {
-    super(srcDiagram_p, arch_p, isIntraLogicalLayer(srcDiagram_p, arch_p), false);
-    _scenarioName = scenarioName_p;
+  public SubScenarioRefinement(Scenario srcDiagram, ComponentArchitecture arch, String scenarioName) {
+    super(srcDiagram, arch, isIntraLogicalLayer(srcDiagram, arch), false);
+    this.scenarioName = scenarioName;
   }
 
-  public SubScenarioRefinement(Scenario srcDiagram_, Component component_p, String scenarioName_p) {
-    super(srcDiagram_, component_p, isIntraLogicalLayer(srcDiagram_, component_p), false);
-    _scenarioName = scenarioName_p;
+  public SubScenarioRefinement(Scenario srcDiagram_, Component component, String scenarioName) {
+    super(srcDiagram_, component, isIntraLogicalLayer(srcDiagram_, component), false);
+    this.scenarioName = scenarioName;
   }
 
   /**
    * @see org.polarsys.capella.core.refinement.scenarios.core.ScenarioRefinement#execute()
    */
   @Override
-  public void execute(IProgressMonitor progressMonitor_p) throws ProcessorException {
-    if (_targetScenario == null) {
+  public void execute(IProgressMonitor progressMonitor) throws ProcessorException {
+    if (targetScenario == null) {
       /**
        * Add a new sub-scenario
        */
       StructureSynchronizationProcessor proc = new StructureSynchronizationProcessor(getContext(), getTarget(), true);
-      proc.execute(progressMonitor_p);
+      proc.execute(progressMonitor);
 
-      _targetScenario = (Scenario) proc.getResult();
-      applyNamingRule(_targetScenario, getTarget(), _scenarioName);
+      targetScenario = (Scenario) proc.getResult();
+      applyNamingRule(targetScenario, getTarget(), scenarioName);
     }
     else {
       /**
        * Attach an existing sub-scenario
        */
-      RefinementLinkExt.createRefinementTraceabilityLink(_targetScenario, getContext());
+      RefinementLinkExt.createRefinementTraceabilityLink(targetScenario, getContext());
     }
 
-    forceTargetScenario(_targetScenario);
+    forceTargetScenario(targetScenario);
 
-    super.execute(progressMonitor_p);
+    super.execute(progressMonitor);
   }
   
   
-  private static boolean isIntraLogicalLayer(CapellaElement srcDiagram_p, CapellaElement tgtDiagram_p) {
-    if (CapellaLayerCheckingExt.isInLogicalLayer(srcDiagram_p) && CapellaLayerCheckingExt.isInLogicalLayer(tgtDiagram_p))
+  private static boolean isIntraLogicalLayer(CapellaElement srcDiagram, CapellaElement tgtDiagram) {
+    if (CapellaLayerCheckingExt.isInLogicalLayer(srcDiagram) && CapellaLayerCheckingExt.isInLogicalLayer(tgtDiagram))
       return true;
     
     return false;
