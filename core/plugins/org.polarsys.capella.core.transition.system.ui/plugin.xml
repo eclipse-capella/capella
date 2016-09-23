@@ -11,30 +11,6 @@
        Thales - initial API and implementation
 -->
 <plugin>
-    <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
-            class="org.polarsys.capella.core.transition.system.ui.preferences.TransitionLogPreferencePage"
-            id="org.polarsys.capella.core.transition.system.ui.preferences.TransitionLogPreferencePage"
-            name="%preferencePage">
-      </page>
-   </extension>
-   <extension
-         point="org.eclipse.ui.propertyPages">
-      <page
-            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
-            class="org.polarsys.capella.core.transition.system.ui.preferences.TransitionLogPreferencePage"
-            id="org.polarsys.capella.core.transition.system.ui.preferences.TransitionLogPreferencePage"
-            objectClass="org.eclipse.core.resources.IProject"
-            name="%preferencePage">
-            <enabledWhen>
-                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
-            </enabledWhen>
-            
-      </page>
-   </extension>
-   
    <extension
          point="org.polarsys.capella.common.flexibility.wizards">
          
