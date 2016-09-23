@@ -474,7 +474,9 @@
     </setupTask>
     <setupTask
         xsi:type="mylyn:MylynQueriesTask"
-        repositoryURL="https://bugs.polarsys.org">
+        repositoryURL="https://bugs.polarsys.org"
+        userID="${bugzilla.id}"
+        password="${eclipse.user.password}">
       <query
           summary="Open Capella Bugs"
           url="/buglist.cgi?bug_status=UNCONFIRMED&amp;bug_status=CONFIRMED&amp;bug_status=IN_PROGRESS&amp;component=Capella%20Studio&amp;component=Core&amp;component=Detachment&amp;component=Diagram&amp;component=Diff-Merge&amp;component=Documentation&amp;component=Forum&amp;component=General&amp;component=Library&amp;component=ModelValidation&amp;component=Patterns&amp;component=Properties&amp;component=Rec-Rpl&amp;component=Releng&amp;component=Transition&amp;component=UI&amp;component=Website&amp;list_id=21077&amp;product=Capella&amp;query_format=advanced&amp;resolution=---"/>
@@ -671,7 +673,8 @@
     <setupTask
         xsi:type="mylyn:MylynQueriesTask"
         repositoryURL="https://bugs.polarsys.org"
-        userID="">
+        userID="${bugzilla.id}"
+        password="${eclipse.user.password}">
       <query
           summary="Open Capella Addon Bugs"
           url="/buglist.cgi?bug_status=UNCONFIRMED&amp;bug_status=CONFIRMED&amp;bug_status=IN_PROGRESS&amp;classification=Polarsys&amp;component=GenDoc HTML&amp;component=Mass VP&amp;component=Perfo VP&amp;component=Price VP&amp;component=System2Subsystem&amp;component=XML Pivot&amp;product=Capella&amp;query_format=advanced"/>
