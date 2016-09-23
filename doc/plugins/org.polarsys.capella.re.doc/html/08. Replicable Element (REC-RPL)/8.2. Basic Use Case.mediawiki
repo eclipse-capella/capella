@@ -127,11 +127,7 @@ Notice the message at the bottom of the dialog, selected elements are linked to 
 <br>
 
  
-Close the dialog and check the result. A dialog summarizing the REC creation appears.
-
- 
-[[Image:Images/8.2.%20Basic%20Use%20Case_html_m501a3994.png|627x271px]]
-
+Close the dialog and check the result.
  
 In the Project Explorer, the newly created REC appears. The Semantic Browser also show REC-related information
 
@@ -185,11 +181,7 @@ It is possible to create on-the-fly new elements in the right tree, using the co
 [[Image:Images/8.2_Basic_Use_Case.png|500x180px]]
 
  
-Close the dialog. Another dialog summarizes the operations which will be performed.
-
- 
-[[Image:Images/8.2.%20Basic%20Use%20Case_html_m39a3a01d.png|627x274px]]
-
+Close the dialog.
  
 The new RPL can be seen in the Project Explorer. The type of the RPL is displayed in brackets.
 
