@@ -16,11 +16,13 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.UniqueValidElementsTreeData;
 import org.polarsys.capella.common.ui.toolkit.viewers.transfer.OrderedTransferTreeListViewer;
+import org.polarsys.capella.common.ui.toolkit.viewers.transfer.TransferTreeListViewer;
 
 /**
  * Dialog that displays a {@link OrderedTransferTreeListViewer} and does not accept duplicated elements
@@ -61,5 +63,16 @@ public class OrderedUniqueTransferTreeListDialog extends OrderedTransferTreeList
   @Override
   protected AbstractData createRightViewerData(List<? extends EObject> elements, Object context) {
     return new UniqueValidElementsTreeData(elements, context);
+  }
+  
+  @Override
+  protected TransferTreeListViewer createTransferTreeListViewer(Composite parent) {
+    return new OrderedTransferTreeListViewer(parent, TRANSFER_TREE_STYLE, getLeftViewerStyle(), getRightViewerStyle()) {
+      @Override
+      protected boolean shouldChangeLeftViewer() {
+        // We want to change the left viewer
+        return true;
+      }
+    };
   }
 }
