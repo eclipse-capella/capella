@@ -20,18 +20,30 @@ import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParamete
  */
 public class SharedWorkflowActivityParameter extends WorkflowActivityParameter {
 
-  ActivityParameters _sharedParameters = new ActivityParameters();
+  protected ActivityParameters _sharedParameters = new ActivityParameters();
 
   public void addSharedParameter(GenericParameter<?> parameter) {
-    _sharedParameters.addParameter(parameter);
+    if (_sharedParameters.getParameter(parameter.getName()) == null) {
+      _sharedParameters.addParameter(parameter);
+    }
   }
 
-  /**
-   * {@inheritDoc}
-   */
+  public void merge(SharedWorkflowActivityParameter sharedParameter) {
+    for (String idActivity: sharedParameter.getActivitiesID()) {
+      addParameter(idActivity, sharedParameter.getSpecificActivityParameters(idActivity));
+    }
+    for (GenericParameter<?> parameter : sharedParameter._sharedParameters.getParameters()) {
+      addSharedParameter(parameter);
+    }
+  }
+  
+  protected ActivityParameters getSpecificActivityParameters(String idActivity) {
+    return super.getActivityParameters(idActivity);
+  }
+  
   @Override
-  public ActivityParameters getActivityParameters(String activityID) {
-    ActivityParameters activityParameter = super.getActivityParameters(activityID);
+  public ActivityParameters getActivityParameters(String idActivity) {
+    ActivityParameters activityParameter = super.getActivityParameters(idActivity);
     if (activityParameter == null) {
       activityParameter = new ActivityParameters();
     }

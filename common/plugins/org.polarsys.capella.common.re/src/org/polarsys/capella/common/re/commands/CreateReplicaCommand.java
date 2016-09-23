@@ -14,14 +14,14 @@ package org.polarsys.capella.common.re.commands;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-
 import org.polarsys.capella.common.re.launcher.CreateReplicaLauncher;
 import org.polarsys.capella.common.re.launcher.ReLauncher;
+import org.polarsys.capella.core.transition.common.commands.LauncherCommand;
 
 /**
  *
  */
-public class CreateReplicaCommand extends ReCommand {
+public class CreateReplicaCommand extends LauncherCommand {
 
   /**
    * @param selection

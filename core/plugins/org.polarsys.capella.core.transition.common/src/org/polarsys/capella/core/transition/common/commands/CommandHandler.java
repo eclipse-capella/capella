@@ -85,8 +85,8 @@ public abstract class CommandHandler extends AbstractHandler {
     try {
       LongRunningListenersRegistry.getInstance().operationStarting(getClass());
       ICommand cmd = createCommand(selection, new NullProgressMonitor());
-      if (cmd instanceof TransitionCommand) {
-        ((TransitionCommand) cmd).setName(name);
+      if (cmd instanceof LauncherCommand) {
+        ((LauncherCommand) cmd).setName(name);
       }
       TransactionHelper.getExecutionManager((Collection<? extends EObject>) getSemanticObjects(selection)).execute(cmd);
     } finally {

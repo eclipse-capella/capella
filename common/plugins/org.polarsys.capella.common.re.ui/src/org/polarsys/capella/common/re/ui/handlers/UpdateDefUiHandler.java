@@ -16,10 +16,11 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
 import org.polarsys.capella.common.ef.command.ICommand;
+import org.polarsys.capella.common.re.commands.UpdateDefCommand;
 import org.polarsys.capella.common.re.handlers.UpdateDefHandler;
-import org.polarsys.capella.common.re.ui.commands.UpdateDefUiCommand;
+import org.polarsys.capella.common.re.ui.handlers.uihead.UIHeadHandler;
+import org.polarsys.capella.core.transition.common.commands.DefaultCommand;
 
 /**
  */
@@ -30,9 +31,9 @@ public class UpdateDefUiHandler extends UpdateDefHandler {
    */
   @Override
   protected ICommand createCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
-    return new UpdateDefUiCommand(selection, progressMonitor) {
-
-    };
+    DefaultCommand command = new UpdateDefCommand(selection, progressMonitor);
+    command.addParameters(new UIHeadHandler(true));
+    return command;
   }
 
   @Override

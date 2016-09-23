@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.core.re.ui.launcher.UpdateReplicaUiLauncher;
+import org.polarsys.capella.common.re.ui.handlers.uihead.UIHeadHandler;
+import org.polarsys.capella.core.re.commands.UpdateReplicaCommand;
+import org.polarsys.capella.core.transition.common.commands.DefaultCommand;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
 
@@ -37,8 +39,8 @@ public class DCON_02_Resolver extends AbstractCapellaMarkerResolution{
         public void run() {
           Collection<Object> selection = new ArrayList<Object>();
           selection.add(rpl);
-          UpdateReplicaUiLauncher launcher = new UpdateReplicaUiLauncher();
-          launcher.run(selection, false, new NullProgressMonitor());
+          DefaultCommand command = new UpdateReplicaCommand(selection, new NullProgressMonitor());
+          command.addParameters(new UIHeadHandler(true));
         }
       });
     }
