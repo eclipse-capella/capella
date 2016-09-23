@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,29 +29,29 @@ public class TargetSelectionItem extends SelectionItemNode {
 	/**
 	 * The NamedElement attached to this item.
 	 */
-    private NamedElement _src = null;
-	private NamedElement _data = null;
+  private NamedElement src = null;
+	private NamedElement data = null;
 
 	/**
 	 * Constructor
 	 *
-   * @param src_p
-	 * @param data_p
+   * @param src
+	 * @param data
 	 */
-	public TargetSelectionItem(NamedElement src_p, NamedElement data_p) {
-		_src = src_p;
-		_data = data_p;
+	public TargetSelectionItem(NamedElement src, NamedElement data) {
+		this.src = src;
+		this.data = data;
 	}
 
 	/**
 	 * Constructor
 	 *
-   * @param src_p
-	 * @param data_p
+   * @param src
+	 * @param data
 	 */
-	public TargetSelectionItem(NamedElement src_p, List<NamedElement> data_p) {
-		for (NamedElement msg : data_p) {
-			TargetSelectionItem child = new TargetSelectionItem(src_p, msg);
+	public TargetSelectionItem(NamedElement src, List<NamedElement> data) {
+		for (NamedElement msg : data) {
+			TargetSelectionItem child = new TargetSelectionItem(src, msg);
 			addChild(child);
 		}
 	}
@@ -59,12 +59,12 @@ public class TargetSelectionItem extends SelectionItemNode {
   /**
    * Constructor
    *
-   * @param data_p
+   * @param data
    */
-  public TargetSelectionItem(Map<NamedElement, List<NamedElement>> data_p) {
-    Set<NamedElement> sources = data_p.keySet();
+  public TargetSelectionItem(Map<NamedElement, List<NamedElement>> data) {
+    Set<NamedElement> sources = data.keySet();
     for (NamedElement src : sources) {
-      List<NamedElement> datas = data_p.get(src);
+      List<NamedElement> datas = data.get(src);
       TargetSelectionItem child = new TargetSelectionItem(src, datas);
       child.setSrc(src);
       addChild(child);
@@ -78,37 +78,37 @@ public class TargetSelectionItem extends SelectionItemNode {
 	 */
 	@Override
 	public String getName() {
-		if (_data != null) {
-			if (_data instanceof LogicalArchitecture) {
-			  EObject container = _data.eContainer();
+		if (data != null) {
+			if (data instanceof LogicalArchitecture) {
+			  EObject container = data.eContainer();
 			  if (!(container instanceof System) && !(container instanceof LogicalArchitecturePkg)) {
-			    return ((NamedElement) container).getName() + "." + _data.getName(); //$NON-NLS-1$
+			    return ((NamedElement) container).getName() + "." + data.getName(); //$NON-NLS-1$
 			  }
 			}
-			else if (_data instanceof AbstractTypedElement) {
-        AbstractType type = ((AbstractTypedElement) _data).getAbstractType();
+			else if (data instanceof AbstractTypedElement) {
+        AbstractType type = ((AbstractTypedElement) data).getAbstractType();
         if (type != null) {
-          return _data.getName() + ": " + type.getName(); //$NON-NLS-1$
+          return data.getName() + ": " + type.getName(); //$NON-NLS-1$
         }
-        return _data.getName() + ": <undefined>"; //$NON-NLS-1$
+        return data.getName() + ": <undefined>"; //$NON-NLS-1$
       }
-      return _data.getName();
+      return data.getName();
 		}
-		else if (_src != null) {
-      if (_src instanceof LogicalArchitecture) {
-        EObject container = _src.eContainer();
+		else if (src != null) {
+      if (src instanceof LogicalArchitecture) {
+        EObject container = src.eContainer();
         if (!(container instanceof System) && !(container instanceof LogicalArchitecturePkg)) {
-          return ((NamedElement) container).getName() + "." + _src.getName(); //$NON-NLS-1$
+          return ((NamedElement) container).getName() + "." + src.getName(); //$NON-NLS-1$
         }
       }
-      else if (_src instanceof AbstractTypedElement) {
-        AbstractType type = ((AbstractTypedElement) _src).getAbstractType();
+      else if (src instanceof AbstractTypedElement) {
+        AbstractType type = ((AbstractTypedElement) src).getAbstractType();
         if (type != null) {
-          return _src.getName() + ": " + type.getName(); //$NON-NLS-1$
+          return src.getName() + ": " + type.getName(); //$NON-NLS-1$
         }
-        return _src.getName() + ": <undefined>"; //$NON-NLS-1$
+        return src.getName() + ": <undefined>"; //$NON-NLS-1$
       }
-      return _src.getName();
+      return src.getName();
 		}
 
 		return "<unamed>"; //$NON-NLS-1$
@@ -121,10 +121,10 @@ public class TargetSelectionItem extends SelectionItemNode {
    */
   @Override
   public String getFullName() {
-    if (_data != null)
-      return CapellaElementExt.getFullPathFromModel(_data);
-    else if (_src != null)
-      return CapellaElementExt.getFullPathFromModel(_src);
+    if (data != null)
+      return CapellaElementExt.getFullPathFromModel(data);
+    else if (src != null)
+      return CapellaElementExt.getFullPathFromModel(src);
     return "<unamed>"; //$NON-NLS-1$
   }
 
@@ -135,7 +135,7 @@ public class TargetSelectionItem extends SelectionItemNode {
 	 */
 	@Override
 	public Object getData() {
-		return _data;
+		return data;
 	}
 
   /**
@@ -145,13 +145,13 @@ public class TargetSelectionItem extends SelectionItemNode {
    */
   @Override
   public Object getSrc() {
-    return _src;
+    return src;
   }
 
   /**
    * 
    */
-  public void setSrc(NamedElement src_p) {
-    _src = src_p;
+  public void setSrc(NamedElement src) {
+    this.src = src;
   }
 }

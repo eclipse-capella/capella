@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -136,12 +136,12 @@ public class RefinementPreferencePage extends AbstractDefaultPreferencePage {
    * @see org.eclipse.jface.preference.FieldEditorPreferencePage#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
    */
   @Override
-  public void propertyChange(PropertyChangeEvent event_p) {
-    super.propertyChange(event_p);
+  public void propertyChange(PropertyChangeEvent event) {
+    super.propertyChange(event);
 
-    if ((event_p.getSource() instanceof FieldEditor)
-        && ((FieldEditor) event_p.getSource()).getPreferenceName().equals(IRefinementPreferences.PREFS_MERGE_PRE_VALIDATION_ACTIVATION)) {
-      boolean value = ((Boolean) event_p.getNewValue()).booleanValue();
+    if ((event.getSource() instanceof FieldEditor)
+        && ((FieldEditor) event.getSource()).getPreferenceName().equals(IRefinementPreferences.PREFS_MERGE_PRE_VALIDATION_ACTIVATION)) {
+      boolean value = ((Boolean) event.getNewValue()).booleanValue();
       _dynbutton.setEnabled(value);
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,13 +34,13 @@ public class Node<T> {
    */
   public Node<T> oppositeNode = null;
 
-  protected Node<T> _parent = null;
-  protected Node<T> _previous = null;
-  protected Node<T> _next = null;
-  protected Node<T> _head = null;
+  protected Node<T> parent = null;
+  protected Node<T> previous = null;
+  protected Node<T> next = null;
+  protected Node<T> head = null;
 
-  private T _data = null;
-  private int _level = 0;
+  private T data = null;
+  private int level = 0;
 
   /**
    * Default constructor.
@@ -48,7 +48,7 @@ public class Node<T> {
   public Node(Node<T> parent) {
     super();
     setParent(parent);
-    if (_parent != null) _level = _parent._level + 1;
+    if (this.parent != null) level = this.parent.level + 1;
   }
 
   /**
@@ -69,7 +69,7 @@ public class Node<T> {
    */
   public List<Node<T>> getChildren() {
     List<Node<T>> children = new ArrayList<Node<T>>();
-    for (Node<T> childNode=_head; childNode!=null; childNode=childNode._next) {
+    for (Node<T> childNode=head; childNode!=null; childNode=childNode.next) {
       children.add(childNode);
     }
     return children;
@@ -82,7 +82,7 @@ public class Node<T> {
    */
   public int getNumberOfChildren() {
     int size = 0;
-    for (Node<T> childNode=_head; childNode!=null; childNode=childNode._next) {
+    for (Node<T> childNode=head; childNode!=null; childNode=childNode.next) {
       size++;
     }
     return size;
@@ -97,13 +97,13 @@ public class Node<T> {
   public void addLastChild(Node<T> child) {
     Node<T> lastChild = getLastChildNode();
 
-    if (lastChild!=null) lastChild._next = child;
-    else this._head = child;
+    if (lastChild!=null) lastChild.next = child;
+    else this.head = child;
 
-    child._previous = lastChild;
-    child._next = null;
-    child._parent = this;
-    child._level = _level+1;
+    child.previous = lastChild;
+    child.next = null;
+    child.parent = this;
+    child.level = level+1;
   }
 
   /**
@@ -114,14 +114,14 @@ public class Node<T> {
   public void addFirstChild(Node<T> child) {
     Node<T> firstChild = getFirstChildNode();
 
-    if (firstChild != null) firstChild._previous = child;
+    if (firstChild != null) firstChild.previous = child;
 
-    child._previous = null;
-    child._next = firstChild;
-    child._parent = this;
-    child._level = _level+1;
+    child.previous = null;
+    child.next = firstChild;
+    child.parent = this;
+    child.level = level+1;
 
-    this._head = child;
+    this.head = child;
   }
 
   /**
@@ -139,16 +139,16 @@ public class Node<T> {
    */
   public void addChildAfter(Node<T> child, Node<T> previousNode) {
     if (previousNode != null) {
-      for (Node<T> childNode=_head; childNode!=null; childNode=childNode._next) {
+      for (Node<T> childNode=head; childNode!=null; childNode=childNode.next) {
         if (childNode == previousNode) {
-          Node<T> nextNode = previousNode._next;
+          Node<T> nextNode = previousNode.next;
 
-          child._previous = previousNode;
-          child._next = nextNode;
-          child._parent = this;
-          child._level = _level+1;
-          previousNode._next = child;
-          if (nextNode != null) nextNode._previous = child;
+          child.previous = previousNode;
+          child.next = nextNode;
+          child.parent = this;
+          child.level = level+1;
+          previousNode.next = child;
+          if (nextNode != null) nextNode.previous = child;
         }
       }
     }
@@ -161,56 +161,56 @@ public class Node<T> {
    * @return the parent of the current node
    */
   public Node<T> getParent() {
-    return _parent;
+    return parent;
   }
 
   /**
    * 
    */
   public void setParent(Node<T> parent) {
-    this._parent = parent;
+    this.parent = parent;
   }
 
   /**
    * @return the previous sibling of the current node
    */
   public Node<T> getPreviousNode() {
-    return _previous;
+    return previous;
   }
 
   /**
    * @return the next sibling of the current node
    */
   public Node<T> getNextNode() {
-    return _next;
+    return next;
   }
 
   /**
    * @return the first node of the current node's chained list
    */
   public Node<T> getFirstNode() {
-    return (_previous==null)?this:_previous.getFirstNode();
+    return (previous==null)?this:previous.getFirstNode();
   }
 
   /**
    * @return the last node of the current node's chained list
    */
   public Node<T> getLastNode() {
-    return (_next==null)?this:_next.getLastNode();
+    return (next==null)?this:next.getLastNode();
   }
 
   /**
    * @return the first node of the children node's chained list
    */
   public Node<T> getFirstChildNode() {
-    return _head;
+    return head;
   }
 
   /**
    * @return the last node of the children node's chained list
    */
   public Node<T> getLastChildNode() {
-    return (_head==null)?null:_head.getLastNode();
+    return (head==null)?null:head.getLastNode();
   }
 
   /**
@@ -218,7 +218,7 @@ public class Node<T> {
    * @return 'true' if the 'node' parameter is a child of the current node, and 'false' otherwise
    */
   public boolean isParentOf(Node<T> node) {
-    for (Node<T> childNode=_head; childNode!=null; childNode=childNode._next) {
+    for (Node<T> childNode=head; childNode!=null; childNode=childNode.next) {
       if (childNode==node) return true;
     }
     return false;
@@ -228,28 +228,28 @@ public class Node<T> {
    * 
    */
   public T getData() {
-    return _data;
+    return data;
   }
 
   /**
    * 
    */
   public void setData(T data) {
-    _data = data;
+    this.data = data;
   }
 
   /**
    * 
    */
   public int getLevel() {
-    return _level;
+    return level;
   }
 
   /**
    * 
    */
   public void setLevel(int level) {
-    _level = level;
+    this.level = level;
   }
 
   /**
@@ -272,15 +272,15 @@ public class Node<T> {
   /**
    * @return the first linked owner node
    */
-  public Node<T> getFirstParentInstanceOf(EClass eclass_p) {
+  public Node<T> getFirstParentInstanceOf(EClass eclass) {
     Node<T> returnedNode = null;
 
-    if (((EObject) _data).eClass().isSuperTypeOf(eclass_p)) {
+    if (((EObject) data).eClass().isSuperTypeOf(eclass)) {
       returnedNode = this;
     } else {
       Node<T> parentNode = getParent();
       if (parentNode != null) {
-        returnedNode = parentNode.getFirstParentInstanceOf(eclass_p);
+        returnedNode = parentNode.getFirstParentInstanceOf(eclass);
       }
     }
 
@@ -348,7 +348,7 @@ public class Node<T> {
     if (getData() != null) data = getData().toString();
     sb.append("{").append(data).append(",[");  //$NON-NLS-1$//$NON-NLS-2$
     int i = 0;
-    for (Node<T> childNode=_head; childNode!=null; childNode=childNode._next) {
+    for (Node<T> childNode=head; childNode!=null; childNode=childNode.next) {
       if (i > 0) sb.append(","); //$NON-NLS-1$
       sb.append(childNode.getData().toString());
       i++;

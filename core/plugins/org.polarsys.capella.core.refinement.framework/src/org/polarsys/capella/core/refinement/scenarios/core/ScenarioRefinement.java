@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -94,12 +94,12 @@ public abstract class ScenarioRefinement implements IProcessor {
    */
   protected NamedElement _tgtElement = null;
   protected boolean _isIntraLayerRefinement = false;
-  private boolean _loadAdditionalProcessors = true;
-  private IScheduler _pluggedSchedulers = null;
-  private List<IMapper> _pluggedMappers = null;
-  private List<IProcessor> _pluggedPreprocessors = null;
-  private List<IProcessor> _pluggedPostprocessors = null;
-  private List<IResolver> _pluggedResolvers = null;
+  private boolean loadAdditionalProcessors = true;
+  private IScheduler pluggedSchedulers = null;
+  private List<IMapper> pluggedMappers = null;
+  private List<IProcessor> pluggedPreprocessors = null;
+  private List<IProcessor> pluggedPostprocessors = null;
+  private List<IResolver> pluggedResolvers = null;
 
   /**
    * Constructor
@@ -134,7 +134,7 @@ public abstract class ScenarioRefinement implements IProcessor {
     _srcDiagram = srcDiagram;
     _tgtElement = target;
     _isIntraLayerRefinement = isIntraLayer;
-    _loadAdditionalProcessors = loadAdditionalProcessors;
+    this.loadAdditionalProcessors = loadAdditionalProcessors;
 
     /** */
     addPluggedModules();
@@ -190,11 +190,11 @@ public abstract class ScenarioRefinement implements IProcessor {
       _srcDiagram = (Scenario) context;
 
       /** update preprocessors */
-      for (IProcessor processor : _pluggedPreprocessors) {
+      for (IProcessor processor : pluggedPreprocessors) {
         processor.setContext(context);
       }
       /** update post-processors */
-      for (IProcessor processor : _pluggedPostprocessors) {
+      for (IProcessor processor : pluggedPostprocessors) {
         processor.setContext(context);
       }
     }
@@ -216,11 +216,11 @@ public abstract class ScenarioRefinement implements IProcessor {
     _tgtElement = target;
 
     /** update preprocessors */
-    for (IProcessor processor : _pluggedPreprocessors) {
+    for (IProcessor processor : pluggedPreprocessors) {
       processor.setTarget(target);
     }
     /** update post-processors */
-    for (IProcessor processor : _pluggedPostprocessors) {
+    for (IProcessor processor : pluggedPostprocessors) {
       processor.setTarget(target);
     }
   }
@@ -256,7 +256,7 @@ public abstract class ScenarioRefinement implements IProcessor {
    * @param scheduler
    */
   private void addPlug(IScheduler scheduler) {
-    _pluggedSchedulers = scheduler;
+    pluggedSchedulers = scheduler;
   }
 
   /**
@@ -274,13 +274,13 @@ public abstract class ScenarioRefinement implements IProcessor {
    * @param mapper
    */
   private void addPlug(int order, IMapper mapper) {
-    if (null == _pluggedMappers) {
-      _pluggedMappers = new ArrayList<IMapper>();
+    if (null == pluggedMappers) {
+      pluggedMappers = new ArrayList<IMapper>();
     }
-    if ((order < 0) || (order > _pluggedMappers.size()))
-      _pluggedMappers.add(mapper);
+    if ((order < 0) || (order > pluggedMappers.size()))
+      pluggedMappers.add(mapper);
     else
-      _pluggedMappers.add(order, mapper);
+      pluggedMappers.add(order, mapper);
   }
 
   /**
@@ -289,13 +289,13 @@ public abstract class ScenarioRefinement implements IProcessor {
    * @param resolver
    */
   private void addPlug(int order, IResolver resolver) {
-    if (null == _pluggedResolvers) {
-      _pluggedResolvers = new ArrayList<IResolver>();
+    if (null == pluggedResolvers) {
+      pluggedResolvers = new ArrayList<IResolver>();
     }
-    if ((order < 0) || (order > _pluggedMappers.size()))
-      _pluggedResolvers.add(resolver);
+    if ((order < 0) || (order > pluggedMappers.size()))
+      pluggedResolvers.add(resolver);
     else
-      _pluggedResolvers.add(order, resolver);
+      pluggedResolvers.add(order, resolver);
   }
 
   /**
@@ -307,23 +307,23 @@ public abstract class ScenarioRefinement implements IProcessor {
   private void addPlug(int order, IProcessor processor, IProcessor.ProcessingType type) {
     switch (type) {
       case PREPROCESSING: {
-        if (null == _pluggedPreprocessors) {
-          _pluggedPreprocessors = new ArrayList<IProcessor>();
+        if (null == pluggedPreprocessors) {
+          pluggedPreprocessors = new ArrayList<IProcessor>();
         }
-        if ((order < 0) || (order > _pluggedPreprocessors.size()))
-          _pluggedPreprocessors.add(processor);
+        if ((order < 0) || (order > pluggedPreprocessors.size()))
+          pluggedPreprocessors.add(processor);
         else
-          _pluggedPreprocessors.add(order, processor);
+          pluggedPreprocessors.add(order, processor);
         break;
       }
       case POSTPROCESSING: {
-        if (null == _pluggedPostprocessors) {
-          _pluggedPostprocessors = new ArrayList<IProcessor>();
+        if (null == pluggedPostprocessors) {
+          pluggedPostprocessors = new ArrayList<IProcessor>();
         }
-        if ((order < 0) || (order > _pluggedPostprocessors.size()))
-          _pluggedPostprocessors.add(processor);
+        if ((order < 0) || (order > pluggedPostprocessors.size()))
+          pluggedPostprocessors.add(processor);
         else
-          _pluggedPostprocessors.add(order, processor);
+          pluggedPostprocessors.add(order, processor);
       }
     }
   }
@@ -478,14 +478,14 @@ public abstract class ScenarioRefinement implements IProcessor {
    */
   private void preprocessing(IProgressMonitor progressMonitor) throws ProcessorException {
     try {
-      if (_pluggedPreprocessors != null) {
+      if (pluggedPreprocessors != null) {
         String loggedMsg;
 
         /** Refinement progress initialization */
-        int totalWork = _PRE_POST_PROCESSOR_PROGRESS_STEP * _pluggedPreprocessors.size();
+        int totalWork = _PRE_POST_PROCESSOR_PROGRESS_STEP * pluggedPreprocessors.size();
         progressMonitor.beginTask(Messages.PreProcessing_Progress, totalWork);
 
-        for (IProcessor preProcessor : _pluggedPreprocessors) {
+        for (IProcessor preProcessor : pluggedPreprocessors) {
           preProcessor.execute(progressMonitor);
 
           /** logging */
@@ -511,14 +511,14 @@ public abstract class ScenarioRefinement implements IProcessor {
    */
   private void postprocessing(IProgressMonitor progressMonitor) throws ProcessorException {
     try {
-      if (_pluggedPostprocessors != null) {
+      if (pluggedPostprocessors != null) {
         String loggedMsg;
 
         /** Refinement progress initialization */
-        int totalWork = _PRE_POST_PROCESSOR_PROGRESS_STEP * _pluggedPostprocessors.size();
+        int totalWork = _PRE_POST_PROCESSOR_PROGRESS_STEP * pluggedPostprocessors.size();
         progressMonitor.beginTask(Messages.PostProcessing_Progress, totalWork);
 
-        for (IProcessor postProcessor : _pluggedPostprocessors) {
+        for (IProcessor postProcessor : pluggedPostprocessors) {
           postProcessor.execute(progressMonitor);
 
           /** logging */
@@ -548,7 +548,7 @@ public abstract class ScenarioRefinement implements IProcessor {
      * 2nd Step: The component type will determine the set of components that will potentially be selected as the final target component.
      */
     candidateAbstractInstances = new ArrayList<AbstractInstance>();
-    for (IMapper m : _pluggedMappers) {
+    for (IMapper m : pluggedMappers) {
       for (AbstractInstance candidateCpnt : m.candidateComponents(instRole.getRepresentedInstance(), _isIntraLayerRefinement, decomposedCpnt, tgtElement, srcTree.getScenario(), absMsg)) {
         if (!candidateAbstractInstances.contains(candidateCpnt)) {
           candidateAbstractInstances.add(candidateCpnt);
@@ -560,7 +560,7 @@ public abstract class ScenarioRefinement implements IProcessor {
      * 3rd Step: A set of simple rules can help to automatically select the target component, without any user interaction.
      */
     targetfinalAbstractInstances = new ArrayList<AbstractInstance>();
-    for (IMapper m : _pluggedMappers) {
+    for (IMapper m : pluggedMappers) {
       for (AbstractInstance mappedCpnt : m.componentMapping(type, invokedOperation, candidateAbstractInstances, absMsg)) {
         if (!targetfinalAbstractInstances.contains(mappedCpnt)) {
           targetfinalAbstractInstances.add(mappedCpnt);
@@ -577,7 +577,7 @@ public abstract class ScenarioRefinement implements IProcessor {
         finalAbstractInstance = targetfinalAbstractInstances.get(0);
       }
       else {
-        for (IResolver resolver : _pluggedResolvers) {
+        for (IResolver resolver : pluggedResolvers) {
           targetfinalAbstractInstances = resolver.resolving(targetfinalAbstractInstances, srcTree, tgtTree, absMsg, type);
           if (targetfinalAbstractInstances.size() == 1) {
             finalAbstractInstance = targetfinalAbstractInstances.get(0);
@@ -598,8 +598,8 @@ public abstract class ScenarioRefinement implements IProcessor {
     /**
      * 5th Step: The current message is re-ordered in the target tree.
      */
-    if (_pluggedSchedulers != null) {
-      _pluggedSchedulers.doOrdering(srcTree, tgtTree, finalAbstractInstance, currentSrcNode, tgtElement);
+    if (pluggedSchedulers != null) {
+      pluggedSchedulers.doOrdering(srcTree, tgtTree, finalAbstractInstance, currentSrcNode, tgtElement);
     }
   }
 
@@ -635,8 +635,8 @@ public abstract class ScenarioRefinement implements IProcessor {
    * @param progressMonitor
    */
   private void refine(ScenarioRepresentation srcTree, Scenario tgtDiagram, ScenarioRepresentation tgtTree, Node<InteractionFragment> currentSrcNode, InteractionOperand operand, List<AbstractEnd> unmappedMsg, IProgressMonitor progressMonitor) {
-    if (_pluggedSchedulers != null) {
-      _pluggedSchedulers.doOrdering(srcTree, tgtTree, null, currentSrcNode, null);
+    if (pluggedSchedulers != null) {
+      pluggedSchedulers.doOrdering(srcTree, tgtTree, null, currentSrcNode, null);
     }
   }
 
@@ -651,8 +651,8 @@ public abstract class ScenarioRefinement implements IProcessor {
    */
   private void refine(ScenarioRepresentation srcTree, Scenario tgtDiagram, ScenarioRepresentation tgtTree, Node<InteractionFragment> currentSrcNode, FragmentEnd fragment, List<AbstractEnd> unmappedMsg, IProgressMonitor progressMonitor) {
     if (!_isIntraLayerRefinement || isInteracting(fragment, _tgtElement)) {
-      if (_pluggedSchedulers != null) {
-        _pluggedSchedulers.doOrdering(srcTree, tgtTree, null, currentSrcNode, _tgtElement);
+      if (pluggedSchedulers != null) {
+        pluggedSchedulers.doOrdering(srcTree, tgtTree, null, currentSrcNode, _tgtElement);
       }
     }
   }
@@ -895,7 +895,7 @@ public abstract class ScenarioRefinement implements IProcessor {
     /**
      * add preprocessors
      */
-    if (_loadAdditionalProcessors) {
+    if (loadAdditionalProcessors) {
       List<IConfigurationElement> preprocessorProvider = Arrays.asList(ExtensionPointHelper.getConfigurationElements(REFINEMENT_FRAMEWORK_PLUGIN_ID, PREPROCESSING_EXTENSION_ID));
       Collections.sort(preprocessorProvider, priorityComparator);
       for (IConfigurationElement configurationElement : preprocessorProvider) {
@@ -963,7 +963,7 @@ public abstract class ScenarioRefinement implements IProcessor {
     /**
      * add postprocessors
      */
-    if (_loadAdditionalProcessors) {
+    if (loadAdditionalProcessors) {
       List<IConfigurationElement> postprocessorProvider = Arrays.asList(ExtensionPointHelper.getConfigurationElements(REFINEMENT_FRAMEWORK_PLUGIN_ID, POSTPROCESSING_EXTENSION_ID));
       Collections.sort(postprocessorProvider, priorityComparator);
       for (IConfigurationElement configurationElement : postprocessorProvider) {

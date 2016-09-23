@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,10 +51,10 @@ public class StaticRealizationContributionProcessor extends UpdateRealizationCon
   /**
    * Constructor
    *
-   * @param context_p the {@link NamedElement} on which the processing will be applied
+   * @param context the {@link NamedElement} on which the processing will be applied
    */
-  public StaticRealizationContributionProcessor(NamedElement context_p) {
-    super(Kind.STATIC, context_p);
+  public StaticRealizationContributionProcessor(NamedElement context) {
+    super(Kind.STATIC, context);
   }
 
   /**
@@ -66,15 +66,15 @@ public class StaticRealizationContributionProcessor extends UpdateRealizationCon
 
   /**
    * 
-   * @param currentCapabilityUseCase_p
-   * @param target_p
+   * @param currentCapabilityUseCase
+   * @param target
    */
   @Override
-  protected void updateInvolvements(AbstractCapability currentCapability_p, EClass target_p) {
+  protected void updateInvolvements(AbstractCapability currentCapability, EClass target) {
 	  /**
 	   * collects the 'Components' involved in the current realization
 	   */
-	  List<Component> involvedCpnts = retrieveInvolvedComponents(currentCapability_p);
+	  List<Component> involvedCpnts = retrieveInvolvedComponents(currentCapability);
 
 	  /**
 	   * collects the 'Component' implementing the 'Component' previously collected
@@ -121,8 +121,8 @@ public class StaticRealizationContributionProcessor extends UpdateRealizationCon
 	   * retrieve the realization use case linked to the current realization use case
 	   */
 	  CapabilityRealization updatedUseCase = null;
-	  for (CapellaElement elt : RefinementLinkExt.getRefinementRelatedSourceElements(currentCapability_p, LaPackage.Literals.CAPABILITY_REALIZATION)) {
-		  if (EcoreUtil2.isContainedBy(elt, target_p)) {
+	  for (CapellaElement elt : RefinementLinkExt.getRefinementRelatedSourceElements(currentCapability, LaPackage.Literals.CAPABILITY_REALIZATION)) {
+		  if (EcoreUtil2.isContainedBy(elt, target)) {
 			  updatedUseCase = (CapabilityRealization) elt;
 		  }
 	  }
@@ -167,15 +167,15 @@ public class StaticRealizationContributionProcessor extends UpdateRealizationCon
   }
 
   /**
-   * Retrieves the components involved in the capability 'currentUseCase_p'.
+   * Retrieves the components involved in the capability 'currentUseCase'.
    * 
-   * @param currentUseCase_p
+   * @param currentUseCase
    * @return the involved components
    */
-  private List<Component> retrieveInvolvedComponents(AbstractCapability currentUseCase_p) {
+  private List<Component> retrieveInvolvedComponents(AbstractCapability currentUseCase) {
     List<Component> interactingComponents = new ArrayList<Component>();
 
-    for (Component cpnt : AbstractCapabilityExt.getInvolvedComponents(currentUseCase_p)) {
+    for (Component cpnt : AbstractCapabilityExt.getInvolvedComponents(currentUseCase)) {
       if (!interactingComponents.contains(cpnt)) interactingComponents.add(cpnt);
     }
 

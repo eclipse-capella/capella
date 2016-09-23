@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2002, 2015 Corporation and others.
+ * Copyright (c) 2002, 2016 Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,18 +84,18 @@ public class CapellaCopier extends Copier {
   
   /**
    * Copy a given {@link EObject} with an unique identifier.
-   * @param eObject_p the {@link EObject} to copy.
-   * @param copyRef_p boolean that indicates if should we includes references?
+   * @param eObject the {@link EObject} to copy.
+   * @param copyRef boolean that indicates if should we includes references?
    * @return see description. 
    * @see ModelElement
    */
-  public static EObject copyObject(final EObject eObject_p, final boolean copyRef_p) {
+  public static EObject copyObject(final EObject eObject, final boolean copyRef) {
     
     EObject result = null;
     
     CapellaCopier copier = new CapellaCopier();
-      result = copier.copy(eObject_p);
-      if (copyRef_p) {
+      result = copier.copy(eObject);
+      if (copyRef) {
         copier.copyReferences();
       }
       

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,12 +19,12 @@ import org.polarsys.capella.core.refinement.scenarios.core.datastructures.Tree;
 public interface IScenarioRepresentationListener {
 
   /**
-   * @param modelTree_p
+   * @param modelTree
    */
-  public void scenarioCreated(Tree<InteractionFragment> modelTree_p);
+  public void scenarioCreated(Tree<InteractionFragment> modelTree);
 
   /**
-   * @param modelTree_p
+   * @param modelTree
    */
-  public void scenarioChanged(Tree<InteractionFragment> modelTree_p);
+  public void scenarioChanged(Tree<InteractionFragment> modelTree);
 }

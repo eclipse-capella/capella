@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,14 +29,14 @@ public class GenerateCommunicationLinkDelegationsCommand extends AbstractReadWri
   /**
    * Capella elements to copy.
    */
-  private ModelElement _modelElement = null;
+  private ModelElement modelElement = null;
 
   /**
    * Constructor
-   * @param modelElement_p
+   * @param modelElement
    */
-  public GenerateCommunicationLinkDelegationsCommand(ModelElement modelElement_p) {
-    _modelElement = modelElement_p;
+  public GenerateCommunicationLinkDelegationsCommand(ModelElement modelElement) {
+    this.modelElement = modelElement;
   }
 
   /**
@@ -47,18 +47,18 @@ public class GenerateCommunicationLinkDelegationsCommand extends AbstractReadWri
     // Operation is starting.
     LongRunningListenersRegistry.getInstance().operationStarting(getClass());
     try {
-      if (_modelElement instanceof LogicalComponent) {
-    	  new CommunicationLinkDelegationSCtoLC((LogicalComponent)_modelElement).perform();      
-      } else if (_modelElement instanceof LogicalActor) {
-    	  new CommunicationLinkDelegationSCtoLC((LogicalActor)_modelElement).perform();      
-      } else if (_modelElement instanceof LogicalActorPkg) {
-    	  new CommunicationLinkDelegationSCtoLC((LogicalActorPkg)_modelElement).perform();
-      } else if (_modelElement instanceof System) {
-        new CommunicationLinkDelegationSCtoLC((System)_modelElement).perform();
-      } else if (_modelElement instanceof Actor) {
-          new CommunicationLinkDelegationSCtoLC((Actor)_modelElement).perform();
-      } else if (_modelElement instanceof ActorPkg) {
-          new CommunicationLinkDelegationSCtoLC((ActorPkg)_modelElement).perform();          
+      if (modelElement instanceof LogicalComponent) {
+    	  new CommunicationLinkDelegationSCtoLC((LogicalComponent)modelElement).perform();      
+      } else if (modelElement instanceof LogicalActor) {
+    	  new CommunicationLinkDelegationSCtoLC((LogicalActor)modelElement).perform();      
+      } else if (modelElement instanceof LogicalActorPkg) {
+    	  new CommunicationLinkDelegationSCtoLC((LogicalActorPkg)modelElement).perform();
+      } else if (modelElement instanceof System) {
+        new CommunicationLinkDelegationSCtoLC((System)modelElement).perform();
+      } else if (modelElement instanceof Actor) {
+          new CommunicationLinkDelegationSCtoLC((Actor)modelElement).perform();
+      } else if (modelElement instanceof ActorPkg) {
+          new CommunicationLinkDelegationSCtoLC((ActorPkg)modelElement).perform();          
       }
     } finally {
       // Send long running operation events.

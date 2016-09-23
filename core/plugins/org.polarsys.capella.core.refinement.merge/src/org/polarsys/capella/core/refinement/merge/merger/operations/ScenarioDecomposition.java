@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,12 +44,12 @@ public class ScenarioDecomposition extends AbstractMergerOperation {
   /** accessor */
   public Scenario getTargetScenario() {return _target;}
   /** accessor */
-  public List<List<InteractionFragment>> getStrandsForToReplace(InstanceRole ir_p) throws MergeToolException {
-    if ( null == ir_p || _irs.get(ir_p) == null) {
+  public List<List<InteractionFragment>> getStrandsForToReplace(InstanceRole ir) throws MergeToolException {
+    if ( null == ir || _irs.get(ir) == null) {
       //TODO log, send clearer message
       throw new MergeToolException(MergeMessages.genericInternalError);
     }
-    return _strandsMap.get(ir_p);
+    return _strandsMap.get(ir);
   }
   
   /**

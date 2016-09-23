@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,51 +32,51 @@ public class RefinementTargeted extends ScenarioRefinement {
 
   /**
    * Constructor
-   * @param srcDiagram_p
-   * @param arch_p
+   * @param srcDiagram
+   * @param arch
    */
-  public RefinementTargeted(Scenario srcDiagram_p, ComponentArchitecture arch_p) {
-    super(srcDiagram_p, arch_p, (arch_p.eContainer() instanceof LogicalComponent));
+  public RefinementTargeted(Scenario srcDiagram, ComponentArchitecture arch) {
+    super(srcDiagram, arch, (arch.eContainer() instanceof LogicalComponent));
   }
 
   /**
    * Constructor
-   * @param srcDiagram_p
-   * @param part_p
+   * @param srcDiagram
+   * @param part
    */
-  public RefinementTargeted(Scenario srcDiagram_p, Part part_p) {
-    super(srcDiagram_p, part_p, true);
+  public RefinementTargeted(Scenario srcDiagram, Part part) {
+    super(srcDiagram, part, true);
   }
 
   /**
    * Constructor
-   * @param srcDiagram_p
-   * @param component_p
+   * @param srcDiagram
+   * @param component
    */
-  public RefinementTargeted(Scenario srcDiagram_p, Component component_p) {
-    super(srcDiagram_p, component_p, true);
+  public RefinementTargeted(Scenario srcDiagram, Component component) {
+    super(srcDiagram, component, true);
   }
 
   /**
    * @see org.polarsys.capella.core.refinement.scenarios.core.ScenarioRefinement#execute()
-   * @param progressMonitor_p
+   * @param progressMonitor
    */
   @Override
-  public void execute(IProgressMonitor progressMonitor_p) throws ProcessorException {
-    super.execute(progressMonitor_p);
+  public void execute(IProgressMonitor progressMonitor) throws ProcessorException {
+    super.execute(progressMonitor);
 
     NamedElement tgt = getTarget();
     NamedElement elt = (NamedElement) getResult();
  
     applyNamingRule(elt, tgt);
 
-    processReferencedScenario(progressMonitor_p);
+    processReferencedScenario(progressMonitor);
   }
 
   /**
-   * @param progressMonitor_p
+   * @param progressMonitor
    */
-  protected void processReferencedScenario(IProgressMonitor progressMonitor_p) {
+  protected void processReferencedScenario(IProgressMonitor progressMonitor) {
     for (TimeLapse timeLapse : _srcDiagram.getOwnedTimeLapses()) {
       if ((timeLapse instanceof InteractionUse) &&
           (!_isIntraLayerRefinement || isInteracting((InteractionUse) timeLapse, _tgtElement)))
@@ -92,7 +92,7 @@ public class RefinementTargeted extends ScenarioRefinement {
             ref = new RefinementTargeted(sc, (Part) _tgtElement);
           }
           if ((ref != null) && !sc.equals(_srcDiagram) && sc.getKind().equals(ScenarioKind.INTERFACE)) {
-            ref.execute(progressMonitor_p);
+            ref.execute(progressMonitor);
             Object refinedScenario = ref.getResult();
             if (refinedScenario instanceof Scenario) {
               InteractionUse interactionUse = (InteractionUse) CapellaElementExt.getRefinementSrcElement(timeLapse, InteractionPackage.Literals.INTERACTION_USE, _tgtDiagram);

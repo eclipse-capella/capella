@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,36 +42,36 @@ public abstract class StaticRefinement implements IProcessor {
   /**
    * 
    */
-  private List<IProcessor> _pluggedProcessors = null;
+  private List<IProcessor> pluggedProcessors = null;
 
   /**
    * Constructor
    */
   public StaticRefinement() {
-    _pluggedProcessors = new ArrayList<IProcessor>();
+    pluggedProcessors = new ArrayList<IProcessor>();
   }
 
   /**
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#setContext(org.polarsys.capella.core.common.model.CapellaElement)
    */
-  public void setContext(ModelElement context_p) {
-    _context = context_p;
+  public void setContext(ModelElement context) {
+    _context = context;
   }
 
   /**
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#setContext(java.util.List)
    */
-  public void setContext(List<ModelElement> context_p) {
-    if ((context_p != null) && (context_p.size()>0)) {
-      setContext(context_p.get(0));
+  public void setContext(List<ModelElement> context) {
+    if ((context != null) && (context.size()>0)) {
+      setContext(context.get(0));
     }
   }
 
   /**
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#setTarget(org.polarsys.capella.core.common.model.NamedElement)
    */
-  public void setTarget(NamedElement target_p) {
-    _target = target_p;
+  public void setTarget(NamedElement target) {
+    _target = target;
   }
 
   /**
@@ -95,27 +95,27 @@ public abstract class StaticRefinement implements IProcessor {
    * @param processor
    */
   public void addPlug(int order, IProcessor processor) {
-    if (null == _pluggedProcessors) {
-      _pluggedProcessors = new ArrayList<IProcessor>();
+    if (null == pluggedProcessors) {
+      pluggedProcessors = new ArrayList<IProcessor>();
     }
-    if ((order < 0) || (order > _pluggedProcessors.size()))
-      _pluggedProcessors.add(processor);
+    if ((order < 0) || (order > pluggedProcessors.size()))
+      pluggedProcessors.add(processor);
     else
-      _pluggedProcessors.add(order, processor);
+      pluggedProcessors.add(order, processor);
   }
 
   /**
    * 
    */
-  public void execute(IProgressMonitor progressMonitor_p) throws ProcessorException {
+  public void execute(IProgressMonitor progressMonitor) throws ProcessorException {
     String loggedMsg;
 
     try {
       /**
        * Processing
        */
-      for (IProcessor processor : _pluggedProcessors) {
-        processor.execute(progressMonitor_p);
+      for (IProcessor processor : pluggedProcessors) {
+        processor.execute(progressMonitor);
 
         /** logging */
         Object processorName = processor.getName();

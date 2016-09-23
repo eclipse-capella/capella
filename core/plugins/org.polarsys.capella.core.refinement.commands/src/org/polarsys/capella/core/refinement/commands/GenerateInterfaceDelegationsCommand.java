@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,14 +29,14 @@ public class GenerateInterfaceDelegationsCommand extends AbstractReadWriteComman
   /**
    * Capella elements to copy.
    */
-  private ModelElement _modelElement = null;
+  private ModelElement modelElement = null;
 
   /**
    * Constructor
-   * @param modelElement_p
+   * @param modelElement
    */
-  public GenerateInterfaceDelegationsCommand(ModelElement modelElement_p) {
-    _modelElement = modelElement_p;
+  public GenerateInterfaceDelegationsCommand(ModelElement modelElement) {
+    this.modelElement = modelElement;
   }
 
   /**
@@ -47,18 +47,18 @@ public class GenerateInterfaceDelegationsCommand extends AbstractReadWriteComman
     // Operation is starting.
     LongRunningListenersRegistry.getInstance().operationStarting(getClass());
     try {
-      if (_modelElement instanceof LogicalComponent) {
-    	  new InterfaceDelegationSCtoLC((LogicalComponent)_modelElement).perform();      
-      } else if (_modelElement instanceof LogicalActor) {
-    	  new InterfaceDelegationSCtoLC((LogicalActor)_modelElement).perform();      
-      } else if (_modelElement instanceof LogicalActorPkg) {
-    	  new InterfaceDelegationSCtoLC((LogicalActorPkg)_modelElement).perform();
-      } else if (_modelElement instanceof System) {
-        new InterfaceDelegationSCtoLC((System)_modelElement).perform();
-      } else if (_modelElement instanceof Actor) {
-          new InterfaceDelegationSCtoLC((Actor)_modelElement).perform();
-      } else if (_modelElement instanceof ActorPkg) {
-          new InterfaceDelegationSCtoLC((ActorPkg)_modelElement).perform();          
+      if (modelElement instanceof LogicalComponent) {
+    	  new InterfaceDelegationSCtoLC((LogicalComponent)modelElement).perform();      
+      } else if (modelElement instanceof LogicalActor) {
+    	  new InterfaceDelegationSCtoLC((LogicalActor)modelElement).perform();      
+      } else if (modelElement instanceof LogicalActorPkg) {
+    	  new InterfaceDelegationSCtoLC((LogicalActorPkg)modelElement).perform();
+      } else if (modelElement instanceof System) {
+        new InterfaceDelegationSCtoLC((System)modelElement).perform();
+      } else if (modelElement instanceof Actor) {
+          new InterfaceDelegationSCtoLC((Actor)modelElement).perform();
+      } else if (modelElement instanceof ActorPkg) {
+          new InterfaceDelegationSCtoLC((ActorPkg)modelElement).perform();          
       }
     } finally {
       // Send long running operation events.

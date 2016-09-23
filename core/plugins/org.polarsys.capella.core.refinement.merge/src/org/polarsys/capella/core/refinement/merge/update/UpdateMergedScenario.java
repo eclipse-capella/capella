@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,22 +31,22 @@ public class UpdateMergedScenario {
   
   /**
    * Constructor
-   * @param sc_p the initial scenario
+   * @param sc the initial scenario
    */
-  public UpdateMergedScenario(Scenario sc_p) {
+  public UpdateMergedScenario(Scenario sc) {
 
-    _old = sc_p;
-    _navigator = new MergeNavigator(sc_p);
+    _old = sc;
+    _navigator = new MergeNavigator(sc);
 
   }
 
   /**
    * The update Link operation main entry.
-   * @param new_p the {@link Scenario} to update
+   * @param newScenario the {@link Scenario} to update
    */
-  public void update(Scenario new_p) {
+  public void update(Scenario newScenario) {
 
-    _new = new_p;
+    _new = newScenario;
 
     AbstractTrace trace = hasLinkToNextLayer();
 
@@ -59,16 +59,16 @@ public class UpdateMergedScenario {
 
   /**
    * Perform the update Link operation.
-   * @param trace_p the trace between the old merged scenario and the physical one.
+   * @param trace the trace between the old merged scenario and the physical one.
    */
-  protected void performUpdate(AbstractTrace trace_p) {
+  protected void performUpdate(AbstractTrace trace) {
 
-    Scenario physSc = (Scenario) trace_p.getSourceElement();
+    Scenario physSc = (Scenario) trace.getSourceElement();
 
     //
     // First of all, let's update this Main Link
     //
-    trace_p.setTargetElement(_new);
+    trace.setTargetElement(_new);
 
     //
     // Now, let's check other trace

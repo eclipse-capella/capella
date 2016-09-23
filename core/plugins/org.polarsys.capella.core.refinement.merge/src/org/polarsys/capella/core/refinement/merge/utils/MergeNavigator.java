@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,14 +73,14 @@ public class MergeNavigator {
    * From a given {@link TraceableElement} on a data {@link Scenario}, goes to its upper originator 
    * following its {@link RefinementLink} and thus, goes to its lower represented element
    * through its {@link MergeLink} 
-   * @param Scenario target_p the {@link Scenario} to reach
-   * @param tr_p the source {@link TraceableElement}
+   * @param Scenario target the {@link Scenario} to reach
+   * @param tr the source {@link TraceableElement}
    * @return the list of {@link AbstractTrace} used to reach the target Scenario, an empty one whether not appliable
-   * @throws MergeToolException whether The number of expected link is wrong, or the reached target is not contained into the target_p {@link Scenario}
+   * @throws MergeToolException whether The number of expected link is wrong, or the reached target is not contained into the target {@link Scenario}
    */
-  public List<AbstractTrace> navigateFromDataToTarget(Scenario target_p, TraceableElement trElt_p) throws MergeToolException {
+  public List<AbstractTrace> navigateFromDataToTarget(Scenario target, TraceableElement trElt) throws MergeToolException {
     
-    if ( null == trElt_p ) {
+    if ( null == trElt ) {
       //TODO more explicit message
       throw new MergeToolException(MergeMessages.genericToolError);
     }
@@ -90,12 +90,12 @@ public class MergeNavigator {
     boolean mergeLinkfound = false;
     boolean stop = false;
     
-    TraceableElement current = trElt_p;
+    TraceableElement current = trElt;
     List<AbstractTrace> list = null;
     
     while ( !mergeLinkfound && !stop ) { //RL's up
       
-      if ( LinkUtils.hasIncomingLinksFrom(current, LinkEnum.MERGE_LINK, target_p) ) {
+      if ( LinkUtils.hasIncomingLinksFrom(current, LinkEnum.MERGE_LINK, target) ) {
         mergeLinkfound = true;
       } else {
         
@@ -104,12 +104,12 @@ public class MergeNavigator {
         
         if (
             (
-                trElt_p.eClass() == InteractionPackage.Literals.MESSAGE_END ||
-                trElt_p.eClass() == InteractionPackage.Literals.EXECUTION_END
+                trElt.eClass() == InteractionPackage.Literals.MESSAGE_END ||
+                trElt.eClass() == InteractionPackage.Literals.EXECUTION_END
             ) && (
                 LinkUtils.getIncomingLinks(current, LinkEnum.REFINEMENT_LINK).size() > 1
             ) && (
-                !LinkUtils.hasIncomingLinks(((AbstractEnd) trElt_p).getCovered(), LinkEnum.MERGE_LINK)
+                !LinkUtils.hasIncomingLinks(((AbstractEnd) trElt).getCovered(), LinkEnum.MERGE_LINK)
             )
         ) {
 
@@ -117,12 +117,12 @@ public class MergeNavigator {
           InstanceRole irCurrent = aeCurrent.getCovered();
           AbstractInstance aiCurrent = irCurrent.getRepresentedInstance(); 
           
-          for (TraceableElement trElt: LinkUtils.getIncomingLinkTargets(current, LinkEnum.REFINEMENT_LINK) ) {
-            AbstractEnd ae = (AbstractEnd) trElt;
+          for (TraceableElement elt : LinkUtils.getIncomingLinkTargets(current, LinkEnum.REFINEMENT_LINK) ) {
+            AbstractEnd ae = (AbstractEnd) elt;
             InstanceRole ir = ae.getCovered();
             AbstractInstance ai = ir.getRepresentedInstance();
             if (!ai.equals(aiCurrent)) {
-              current = trElt;
+              current = elt;
               break;
             }
           }
@@ -156,7 +156,7 @@ public class MergeNavigator {
       
       TraceableElement finalTGT = null; 
       
-      list = LinkUtils.getIncomingLinksFrom(current, LinkEnum.MERGE_LINK, target_p);
+      list = LinkUtils.getIncomingLinksFrom(current, LinkEnum.MERGE_LINK, target);
       
       switch (list.size()) {
         case 0: 
@@ -170,7 +170,7 @@ public class MergeNavigator {
             //TODO more explicit message
             throw new MergeToolException(MergeMessages.genericToolError);
       }
-      if ( !ScenarioHelper.isContainedInto(target_p, finalTGT) ) {
+      if ( !ScenarioHelper.isContainedInto(target, finalTGT) ) {
         //TODO more explicit message
         throw new MergeToolException(MergeMessages.genericToolError);
       }
@@ -184,26 +184,26 @@ public class MergeNavigator {
   }
 
   /**
-   * @param eObject_p mainly a {@link Scenario}
+   * @param eObject mainly a {@link Scenario}
    * @return
    */
-  public boolean isContainedIntoTheMergeLayer(EObject eObject_p) {
-    return EcoreUtil2.isContainedBy(eObject_p, _mergeLayer);
+  public boolean isContainedIntoTheMergeLayer(EObject eObject) {
+    return EcoreUtil2.isContainedBy(eObject, _mergeLayer);
   }
 
   /**
-   * @param eObject_p mainly a {@link Scenario}
+   * @param eObject mainly a {@link Scenario}
    * @return
    */
-  public boolean isContainedIntoTheNextLayer(EObject eObject_p) {
-    return EcoreUtil2.isContainedBy(eObject_p, _nextLayer);
+  public boolean isContainedIntoTheNextLayer(EObject eObject) {
+    return EcoreUtil2.isContainedBy(eObject, _nextLayer);
   }
   
-  private final void setLayers(EObject eObject_p) {
-    if (EcoreUtil2.isContainedBy(eObject_p, LaPackage.Literals.LOGICAL_ARCHITECTURE)) {
+  private final void setLayers(EObject eObject) {
+    if (EcoreUtil2.isContainedBy(eObject, LaPackage.Literals.LOGICAL_ARCHITECTURE)) {
       _mergeLayer = LaPackage.Literals.LOGICAL_ARCHITECTURE;
       _nextLayer = PaPackage.Literals.PHYSICAL_ARCHITECTURE;
-    } else if (EcoreUtil2.isContainedBy(eObject_p,  PaPackage.Literals.PHYSICAL_ARCHITECTURE)) {
+    } else if (EcoreUtil2.isContainedBy(eObject,  PaPackage.Literals.PHYSICAL_ARCHITECTURE)) {
       _mergeLayer = PaPackage.Literals.PHYSICAL_ARCHITECTURE;
       _nextLayer = EpbsPackage.Literals.EPBS_ARCHITECTURE;
       

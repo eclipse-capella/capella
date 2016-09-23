@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,10 +40,10 @@ public class DynamicRealizationContributionProcessor extends UpdateRealizationCo
   /**
    * Constructor
    *
-   * @param context_p the {@link NamedElement} on which the processing will be applied
+   * @param context the {@link NamedElement} on which the processing will be applied
    */
-  public DynamicRealizationContributionProcessor(NamedElement context_p) {
-    super(Kind.DYNAMIC, context_p);
+  public DynamicRealizationContributionProcessor(NamedElement context) {
+    super(Kind.DYNAMIC, context);
   }
 
   /**
@@ -55,19 +55,19 @@ public class DynamicRealizationContributionProcessor extends UpdateRealizationCo
 
   /**
    * 
-   * @param currentCapability_p
-   * @param target_p
+   * @param currentCapability
+   * @param target
    */
   @Override
-  protected void updateInvolvements(AbstractCapability currentCapability_p, EClass target_p) {
+  protected void updateInvolvements(AbstractCapability currentCapability, EClass target) {
     AbstractCapability updatedCapability = null;
     List<Component> involvedCpntSet = new ArrayList<Component>();
 
     /**
      * retrieve the realization linked to the current realization
      */
-    for (CapellaElement elt : RefinementLinkExt.getRefinementRelatedSourceElements(currentCapability_p, InteractionPackage.Literals.ABSTRACT_CAPABILITY)) {
-      if (EcoreUtil2.isContainedBy(elt, target_p)) {
+    for (CapellaElement elt : RefinementLinkExt.getRefinementRelatedSourceElements(currentCapability, InteractionPackage.Literals.ABSTRACT_CAPABILITY)) {
+      if (EcoreUtil2.isContainedBy(elt, target)) {
         updatedCapability = (AbstractCapability) elt;
       }
     }

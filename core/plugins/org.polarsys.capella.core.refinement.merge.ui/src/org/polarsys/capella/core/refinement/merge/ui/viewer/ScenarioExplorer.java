@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,37 +85,37 @@ public class ScenarioExplorer extends Composite {
     _instanceRoleExplorer.setLayout(new FillLayout());
   }  
   
-  public void setScenario(Scenario scenario_p) {
-    List<SequenceMessage> messages = scenario_p.getOwnedMessages();
+  public void setScenario(Scenario scenario) {
+    List<SequenceMessage> messages = scenario.getOwnedMessages();
     for (SequenceMessage message : messages) {
       addMessage(message);
     }
     
-    List<InteractionFragment> messageEnds = scenario_p.getOwnedInteractionFragments();
+    List<InteractionFragment> messageEnds = scenario.getOwnedInteractionFragments();
     for (InteractionFragment messageEnd : messageEnds) {
       if (messageEnd instanceof AbstractEnd) {
         addAbstractEnd((AbstractEnd) messageEnd);
       }
     }    
     
-    List<TimeLapse> executions = scenario_p.getOwnedTimeLapses();
+    List<TimeLapse> executions = scenario.getOwnedTimeLapses();
     for (TimeLapse execution : executions) {
       if (execution instanceof Execution) {
         addExecution((Execution) execution);
       }
     }     
     
-    List<InstanceRole> instanceRoles = scenario_p.getOwnedInstanceRoles();
+    List<InstanceRole> instanceRoles = scenario.getOwnedInstanceRoles();
     for (InstanceRole instanceRole : instanceRoles) {
       addInstanceRole(instanceRole);
     }   
 
-    textArea.setText(checkIntegrity(scenario_p));
+    textArea.setText(checkIntegrity(scenario));
   }
   
-  private String checkIntegrity(Scenario scenario_p) {
+  private String checkIntegrity(Scenario scenario) {
 //FIXME merge.ui must be refactored with new merge algorithm 
-//    List<String> errorList = Checker.checkScenarioWithErrors(scenario_p);
+//    List<String> errorList = Checker.checkScenarioWithErrors(scenario);
 //    
     StringBuilder buffer = new StringBuilder();
 //    
@@ -128,18 +128,18 @@ public class ScenarioExplorer extends Composite {
   } 
   
   /**
-   * @param instanceRole_p
+   * @param instanceRole
    */
-  private void addInstanceRole(InstanceRole instanceRole_p) {
-    _instanceRoleExplorer.addInstanceRole(instanceRole_p);
+  private void addInstanceRole(InstanceRole instanceRole) {
+    _instanceRoleExplorer.addInstanceRole(instanceRole);
     
   }
 
   /**
-   * @param execution_p
+   * @param execution
    */
-  private void addExecution(Execution execution_p) {
-    _executionExplorer.addExecution(execution_p); 
+  private void addExecution(Execution execution) {
+    _executionExplorer.addExecution(execution); 
   }
 
   public void addMessage(SequenceMessage value) {

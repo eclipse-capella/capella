@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,52 +39,52 @@ public class BroadcastPatternMapper implements IMapper {
   }
 
 	/**
-	 * @param abstractInstance_p
-	 * @param isIntraLayer_p
-	 * @param decomposedComponent_p
-	 * @param target_p
-	 * @param srcScenario_p
-	 * @param srcAbstractEnd_p
+	 * @param abstractInstance
+	 * @param isIntraLayer
+	 * @param decomposedComponent
+	 * @param target
+	 * @param srcScenario
+	 * @param srcAbstractEnd
 	 */
-	public List<AbstractInstance> candidateComponents(AbstractInstance abstractInstance_p, boolean isIntraLayer_p, Component decomposedComponent_p, NamedElement target_p, Scenario srcScenario_p, AbstractEnd srcAbstractEnd_p)
+	public List<AbstractInstance> candidateComponents(AbstractInstance abstractInstance, boolean isIntraLayer, Component decomposedComponent, NamedElement target, Scenario srcScenario, AbstractEnd srcAbstractEnd)
 	    throws MapperException {
 		List<AbstractInstance> componentSet = new ArrayList<AbstractInstance>();
 
-		if (abstractInstance_p instanceof ExchangeItemInstance) {
-		  componentSet.add(abstractInstance_p);
+		if (abstractInstance instanceof ExchangeItemInstance) {
+		  componentSet.add(abstractInstance);
 		}
 
 		return componentSet;
 	}
 
 	/**
-	 * @param componentType_p
-	 * @param invokedOperation_p
-	 * @param candidateAbstractInstances_p
-	 * @param abstractEnd_p
+	 * @param componentType
+	 * @param invokedOperation
+	 * @param candidateAbstractInstances
+	 * @param abstractEnd
 	 */
-	public List<AbstractInstance> componentMapping(COMPONENT_TYPE componentType_p, AbstractEventOperation invokedOperation_p, List<AbstractInstance> candidateAbstractInstances_p, AbstractEnd abstractEnd_p)
+	public List<AbstractInstance> componentMapping(COMPONENT_TYPE componentType, AbstractEventOperation invokedOperation, List<AbstractInstance> candidateAbstractInstances, AbstractEnd abstractEnd)
 	    throws MapperException {
 		List<AbstractInstance> abstractInstanceSet = new ArrayList<AbstractInstance>();
 
-    if (invokedOperation_p instanceof ExchangeItemAllocation) {
-      for (AbstractInstance abstractInstance : candidateAbstractInstances_p) {
+    if (invokedOperation instanceof ExchangeItemAllocation) {
+      for (AbstractInstance abstractInstance : candidateAbstractInstances) {
         AbstractType type = abstractInstance.getAbstractType();
         if (type instanceof Component) {
           Component cpnt = (Component) type;
-          if (componentType_p == COMPONENT_TYPE.SENDER) {
-            if (hasCallCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p) ||
-                hasSendCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p) ||
-                hasWriteCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p) ||
-                hasProduceCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p))
+          if (componentType == COMPONENT_TYPE.SENDER) {
+            if (hasCallCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation) ||
+                hasSendCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation) ||
+                hasWriteCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation) ||
+                hasProduceCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation))
             {
               abstractInstanceSet.add(abstractInstance);
             }
-          } else if (componentType_p == COMPONENT_TYPE.RECEIVER) {
-            if (hasAccessCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p) ||
-                hasExecuteCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p) ||
-                hasReceiveCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p) ||
-                hasConsumeCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p))
+          } else if (componentType == COMPONENT_TYPE.RECEIVER) {
+            if (hasAccessCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation) ||
+                hasExecuteCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation) ||
+                hasReceiveCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation) ||
+                hasConsumeCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation))
             {
               abstractInstanceSet.add(abstractInstance);
             }
@@ -99,78 +99,78 @@ public class BroadcastPatternMapper implements IMapper {
 	}
 
   /**
-   * @param cpnt_p
-   * @param allocation_p
+   * @param cpnt
+   * @param allocation
    */
-  private boolean hasWriteCommunicationLink(Component cpnt_p, ExchangeItemAllocation allocation_p) {
-    return hasCommunicationLink(cpnt_p, allocation_p, CommunicationLinkKind.WRITE);
+  private boolean hasWriteCommunicationLink(Component cpnt, ExchangeItemAllocation allocation) {
+    return hasCommunicationLink(cpnt, allocation, CommunicationLinkKind.WRITE);
   }
   
   /**
-   * @param cpnt_p
-   * @param allocation_p
+   * @param cpnt
+   * @param allocation
    */
-  private boolean hasAccessCommunicationLink(Component cpnt_p, ExchangeItemAllocation allocation_p) {
-    return hasCommunicationLink(cpnt_p, allocation_p, CommunicationLinkKind.ACCESS);
+  private boolean hasAccessCommunicationLink(Component cpnt, ExchangeItemAllocation allocation) {
+    return hasCommunicationLink(cpnt, allocation, CommunicationLinkKind.ACCESS);
   }
 
   /**
-   * @param cpnt_p
-   * @param allocation_p
+   * @param cpnt
+   * @param allocation
    */
-  private boolean hasSendCommunicationLink(Component cpnt_p, ExchangeItemAllocation allocation_p) {
-    return hasCommunicationLink(cpnt_p, allocation_p, CommunicationLinkKind.SEND);
+  private boolean hasSendCommunicationLink(Component cpnt, ExchangeItemAllocation allocation) {
+    return hasCommunicationLink(cpnt, allocation, CommunicationLinkKind.SEND);
   }
 
   /**
-   * @param cpnt_p
-   * @param allocation_p
+   * @param cpnt
+   * @param allocation
    */
-  private boolean hasReceiveCommunicationLink(Component cpnt_p, ExchangeItemAllocation allocation_p) {
-    return hasCommunicationLink(cpnt_p, allocation_p, CommunicationLinkKind.RECEIVE);
+  private boolean hasReceiveCommunicationLink(Component cpnt, ExchangeItemAllocation allocation) {
+    return hasCommunicationLink(cpnt, allocation, CommunicationLinkKind.RECEIVE);
   }
 
   /**
-   * @param cpnt_p
-   * @param allocation_p
+   * @param cpnt
+   * @param allocation
    */
-  private boolean hasProduceCommunicationLink(Component cpnt_p, ExchangeItemAllocation allocation_p) {
-    return hasCommunicationLink(cpnt_p, allocation_p, CommunicationLinkKind.PRODUCE);
+  private boolean hasProduceCommunicationLink(Component cpnt, ExchangeItemAllocation allocation) {
+    return hasCommunicationLink(cpnt, allocation, CommunicationLinkKind.PRODUCE);
   }
 
   /**
-   * @param cpnt_p
-   * @param allocation_p
+   * @param cpnt
+   * @param allocation
    */
-  private boolean hasConsumeCommunicationLink(Component cpnt_p, ExchangeItemAllocation allocation_p) {
-    return hasCommunicationLink(cpnt_p, allocation_p, CommunicationLinkKind.CONSUME);
+  private boolean hasConsumeCommunicationLink(Component cpnt, ExchangeItemAllocation allocation) {
+    return hasCommunicationLink(cpnt, allocation, CommunicationLinkKind.CONSUME);
   }
 
   /**
-   * @param cpnt_p
-   * @param allocation_p
+   * @param cpnt
+   * @param allocation
    */
-  private boolean hasCallCommunicationLink(Component cpnt_p, ExchangeItemAllocation allocation_p) {
-    return hasCommunicationLink(cpnt_p, allocation_p, CommunicationLinkKind.CALL);
+  private boolean hasCallCommunicationLink(Component cpnt, ExchangeItemAllocation allocation) {
+    return hasCommunicationLink(cpnt, allocation, CommunicationLinkKind.CALL);
   }
 
   /**
-   * @param cpnt_p
-   * @param allocation_p
+   * @param cpnt
+   * @param allocation
    */
-  private boolean hasExecuteCommunicationLink(Component cpnt_p, ExchangeItemAllocation allocation_p) {
-    return hasCommunicationLink(cpnt_p, allocation_p, CommunicationLinkKind.EXECUTE);
+  private boolean hasExecuteCommunicationLink(Component cpnt, ExchangeItemAllocation allocation) {
+    return hasCommunicationLink(cpnt, allocation, CommunicationLinkKind.EXECUTE);
   }
 
   /**
-   * @param cpnt_p
-   * @param allocation_p
-   * @param kind_p
+   * @param cpnt
+   * @param allocation
+   * @param kind
    */
-  private boolean hasCommunicationLink(Component cpnt_p, ExchangeItemAllocation allocation_p, CommunicationLinkKind kind_p) {
-    for (CommunicationLink communicationlink : cpnt_p.getOwnedCommunicationLinks()) {
-      if ((communicationlink.getExchangeItem() == allocation_p.getAllocatedItem())
-        && communicationlink.getKind().equals(kind_p))
+  private boolean hasCommunicationLink(Component cpnt, ExchangeItemAllocation allocation, CommunicationLinkKind kind) {
+    for (CommunicationLink communicationlink : cpnt.getOwnedCommunicationLinks()) {
+      if ((communicationlink.getExchangeItem() == allocation.getAllocatedItem())
+        && communicationlink.getKind().equals(kind))
       {
         return true;
       }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,29 +42,29 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
  */
 public abstract class UpdateRealizationContributionProcessor implements IProcessor {
 
-	protected Kind _kind = Kind.UNDEFINED;
-	protected NamedElement _context = null;
-	protected NamedElement _target = null;
+	protected Kind kind = Kind.UNDEFINED;
+	protected NamedElement context = null;
+	protected NamedElement target = null;
 
 	protected enum Kind {
 		UNDEFINED, STATIC, DYNAMIC
 	}
 
-	public UpdateRealizationContributionProcessor(Kind kind_p) {
-		_kind = kind_p;
+	public UpdateRealizationContributionProcessor(Kind kind) {
+		this.kind = kind;
 	}
 
 	/**
 	 * Constructor
 	 * 
-	 * @param kind_p
-	 * @param context_p
+	 * @param kind
+	 * @param context
 	 *            the {@link NamedElement} on which the processing will be
 	 *            applied
 	 */
-	public UpdateRealizationContributionProcessor(Kind kind_p, NamedElement context_p) {
-		_kind = kind_p;
-		_context = context_p;
+	public UpdateRealizationContributionProcessor(Kind kind, NamedElement context) {
+		this.kind = kind;
+		this.context = context;
 	}
 
 	/**
@@ -77,30 +77,30 @@ public abstract class UpdateRealizationContributionProcessor implements IProcess
 	/**
 	 * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#setContext(java.util.List)
 	 */
-	public void setContext(List<ModelElement> context_p) {
-		if ((context_p != null) && (context_p.size() > 0)) {
-			setContext(context_p.get(0));
+	public void setContext(List<ModelElement> context) {
+		if ((context != null) && (context.size() > 0)) {
+			setContext(context.get(0));
 		}
 	}
 
 	/**
 	 * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#setContext(org.polarsys.capella.core.common.model.CapellaElement)
 	 * 
-	 * @param context_p
+	 * @param context
 	 *            the {@link NamedElement} on which the processing will be
 	 *            applied
 	 */
-	public void setContext(ModelElement context_p) {
-		if (context_p instanceof NamedElement) {
-			_context = (NamedElement) context_p;
+	public void setContext(ModelElement context) {
+		if (context instanceof NamedElement) {
+			context = (NamedElement) context;
 		}
 	}
 
 	/**
 	 * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#setTarget(org.polarsys.capella.core.common.model.NamedElement)
 	 */
-	public void setTarget(NamedElement target_p) {
-		_target = target_p;
+	public void setTarget(NamedElement target) {
+		this.target = target;
 	}
 
 	/**
@@ -123,25 +123,25 @@ public abstract class UpdateRealizationContributionProcessor implements IProcess
 	 * 
 	 * @throws ProcessorException
 	 */
-	public void execute(IProgressMonitor progressMonitor_p) throws ProcessorException {
-		if (_context instanceof LogicalArchitecture) {
-			update((LogicalArchitecture) _context);
-		} else if (_context instanceof LogicalComponent) {
-			update((LogicalComponent) _context);
-		} else if (_context instanceof PhysicalArchitecture) {
-			update((PhysicalArchitecture) _context);
-    } else if (_context instanceof PhysicalComponent) {
-      update((PhysicalComponent) _context);
-		} else if (_context instanceof Capability) {
-			update((Capability) _context);
-		} else if (_context instanceof CapabilityPkg) {
-			update((CapabilityPkg) _context);
-		} else if (_context instanceof CapabilityRealization) {
-			update((CapabilityRealization) _context);
-		} else if (_context instanceof CapabilityRealizationPkg) {
-			update((CapabilityRealizationPkg) _context);
-		} else if (_context instanceof Scenario) {
-			update((Scenario) _context);
+	public void execute(IProgressMonitor progressMonitor) throws ProcessorException {
+		if (context instanceof LogicalArchitecture) {
+			update((LogicalArchitecture) context);
+		} else if (context instanceof LogicalComponent) {
+			update((LogicalComponent) context);
+		} else if (context instanceof PhysicalArchitecture) {
+			update((PhysicalArchitecture) context);
+    } else if (context instanceof PhysicalComponent) {
+      update((PhysicalComponent) context);
+		} else if (context instanceof Capability) {
+			update((Capability) context);
+		} else if (context instanceof CapabilityPkg) {
+			update((CapabilityPkg) context);
+		} else if (context instanceof CapabilityRealization) {
+			update((CapabilityRealization) context);
+		} else if (context instanceof CapabilityRealizationPkg) {
+			update((CapabilityRealizationPkg) context);
+		} else if (context instanceof Scenario) {
+			update((Scenario) context);
 		} else {
 			throw new ProcessorException("Invalid context type.", this); //$NON-NLS-1$
 		}
@@ -151,11 +151,11 @@ public abstract class UpdateRealizationContributionProcessor implements IProcess
 	 * When launched from a {@link BlockArchitecture}, the update is applied on
 	 * all its contained {@link AspectPkg}.
 	 * 
-	 * @param currentElt_p
+	 * @param currentElt
 	 */
-	private void update(BlockArchitecture currentElt_p) {
-		if (currentElt_p != null) {
-			update(currentElt_p.getOwnedAbstractCapabilityPkg());
+	private void update(BlockArchitecture currentElt) {
+		if (currentElt != null) {
+			update(currentElt.getOwnedAbstractCapabilityPkg());
 		}
 	}
 
@@ -163,11 +163,11 @@ public abstract class UpdateRealizationContributionProcessor implements IProcess
 	 * When launched from a {@link LogicalComponent}, the update is applied on
 	 * all its contained {@link AspectPkg}.
 	 * 
-	 * @param currentElt_p
+	 * @param currentElt
 	 */
-	private void update(LogicalComponent currentElt_p) {
-		if (currentElt_p != null) {
-			update(currentElt_p.getOwnedAbstractCapabilityPkg());
+	private void update(LogicalComponent currentElt) {
+		if (currentElt != null) {
+			update(currentElt.getOwnedAbstractCapabilityPkg());
 		}
 	}
 
@@ -175,11 +175,11 @@ public abstract class UpdateRealizationContributionProcessor implements IProcess
    * When launched from a {@link PhysicalComponent}, the update is applied on
    * all its contained {@link AspectPkg}.
    * 
-   * @param currentElt_p
+   * @param currentElt
    */
-  private void update(PhysicalComponent currentElt_p) {
-    if (currentElt_p != null) {
-      update(currentElt_p.getOwnedAbstractCapabilityPkg());
+  private void update(PhysicalComponent currentElt) {
+    if (currentElt != null) {
+      update(currentElt.getOwnedAbstractCapabilityPkg());
     }
   }
 
@@ -187,15 +187,15 @@ public abstract class UpdateRealizationContributionProcessor implements IProcess
 	 * When launched from a {@link AbstractCapabilityPkg}, the update is applied on
 	 * corresponding {@link CapabilityPkg}/{@link CapabilityRealizationPkg}.
 	 * 
-	 * @param currentElt_p
+	 * @param currentElt
 	 */
-	private void update(AbstractCapabilityPkg currentElt_p) {
-		if (currentElt_p != null) {
-			if (currentElt_p instanceof CapabilityPkg) {
-				update((CapabilityPkg) currentElt_p);
+	private void update(AbstractCapabilityPkg currentElt) {
+		if (currentElt != null) {
+			if (currentElt instanceof CapabilityPkg) {
+				update((CapabilityPkg) currentElt);
 			}
-			else if (currentElt_p instanceof CapabilityRealizationPkg) {
-				update((CapabilityRealizationPkg) currentElt_p);
+			else if (currentElt instanceof CapabilityRealizationPkg) {
+				update((CapabilityRealizationPkg) currentElt);
 			}
 		}
 	}
@@ -204,11 +204,11 @@ public abstract class UpdateRealizationContributionProcessor implements IProcess
 	 * When launched from a {@link Capability}, the update is applied on its
 	 * contained {@link CapabilityUseCase}.
 	 * 
-	 * @param currentElt_p
+	 * @param currentElt
 	 */
-	private void update(Capability currentElt_p) {
-		if (currentElt_p != null) {
-			updateInvolvements(currentElt_p, LaPackage.Literals.LOGICAL_ARCHITECTURE);
+	private void update(Capability currentElt) {
+		if (currentElt != null) {
+			updateInvolvements(currentElt, LaPackage.Literals.LOGICAL_ARCHITECTURE);
 		}
 	}
 
@@ -216,14 +216,14 @@ public abstract class UpdateRealizationContributionProcessor implements IProcess
 	 * When launched from a {@link CapabilityPkg}, the update is applied on its
 	 * contained {@link CapabilityPkg} and {@link Capability}.
 	 * 
-	 * @param currentElt_p
+	 * @param currentElt
 	 */
-	private void update(CapabilityPkg currentElt_p) {
-		if (currentElt_p != null) {
-			for (Capability capability : currentElt_p.getOwnedCapabilities()) {
+	private void update(CapabilityPkg currentElt) {
+		if (currentElt != null) {
+			for (Capability capability : currentElt.getOwnedCapabilities()) {
 				update(capability);
 			}
-			for (CapabilityPkg capabilityPkg : currentElt_p.getOwnedCapabilityPkgs()) {
+			for (CapabilityPkg capabilityPkg : currentElt.getOwnedCapabilityPkgs()) {
 				update(capabilityPkg);
 			}
 		}
@@ -233,30 +233,30 @@ public abstract class UpdateRealizationContributionProcessor implements IProcess
 	 * When launched from a {@link CapabilityRealization}, the update is
 	 * applied on its contained {@link CapabilityRealizationUseCase}.
 	 * 
-	 * @param currentElt_p
+	 * @param currentElt
 	 */
-	private void update(CapabilityRealization currentElt_p) {
-		if (currentElt_p != null) {
-			if (_kind == Kind.STATIC) {
-				if (EcoreUtil2.isContainedBy(currentElt_p, LaPackage.Literals.LOGICAL_ARCHITECTURE)) {
-					updateInvolvements(currentElt_p, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
-				} else if (EcoreUtil2.isContainedBy(currentElt_p, PaPackage.Literals.PHYSICAL_ARCHITECTURE)) {
-					updateInvolvements(currentElt_p, EpbsPackage.Literals.EPBS_ARCHITECTURE);
+	private void update(CapabilityRealization currentElt) {
+		if (currentElt != null) {
+			if (kind == Kind.STATIC) {
+				if (EcoreUtil2.isContainedBy(currentElt, LaPackage.Literals.LOGICAL_ARCHITECTURE)) {
+					updateInvolvements(currentElt, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
+				} else if (EcoreUtil2.isContainedBy(currentElt, PaPackage.Literals.PHYSICAL_ARCHITECTURE)) {
+					updateInvolvements(currentElt, EpbsPackage.Literals.EPBS_ARCHITECTURE);
 				}
-			} else if (_kind == Kind.DYNAMIC) {
-			  if (_target instanceof LogicalArchitecture || EcoreUtil2.isContainedBy(_target, LaPackage.Literals.LOGICAL_ARCHITECTURE)) {
-			    if (EcoreUtil2.isContainedBy(currentElt_p, LaPackage.Literals.LOGICAL_ARCHITECTURE)) {
-			      updateInvolvements(currentElt_p, LaPackage.Literals.LOGICAL_ARCHITECTURE);
+			} else if (kind == Kind.DYNAMIC) {
+			  if (target instanceof LogicalArchitecture || EcoreUtil2.isContainedBy(target, LaPackage.Literals.LOGICAL_ARCHITECTURE)) {
+			    if (EcoreUtil2.isContainedBy(currentElt, LaPackage.Literals.LOGICAL_ARCHITECTURE)) {
+			      updateInvolvements(currentElt, LaPackage.Literals.LOGICAL_ARCHITECTURE);
 			    }
-			  } else if (_target instanceof PhysicalArchitecture || EcoreUtil2.isContainedBy(_target, PaPackage.Literals.PHYSICAL_ARCHITECTURE)) {
-			    if (EcoreUtil2.isContainedBy(currentElt_p, LaPackage.Literals.LOGICAL_ARCHITECTURE) ||
-			        EcoreUtil2.isContainedBy(currentElt_p, PaPackage.Literals.PHYSICAL_ARCHITECTURE))
+			  } else if (target instanceof PhysicalArchitecture || EcoreUtil2.isContainedBy(target, PaPackage.Literals.PHYSICAL_ARCHITECTURE)) {
+			    if (EcoreUtil2.isContainedBy(currentElt, LaPackage.Literals.LOGICAL_ARCHITECTURE) ||
+			        EcoreUtil2.isContainedBy(currentElt, PaPackage.Literals.PHYSICAL_ARCHITECTURE))
 			    {
-            updateInvolvements(currentElt_p, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
+            updateInvolvements(currentElt, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
           }
-			  } else if (_target instanceof EPBSArchitecture || EcoreUtil2.isContainedBy(_target, EpbsPackage.Literals.EPBS_ARCHITECTURE)) {
-          if (EcoreUtil2.isContainedBy(currentElt_p, PaPackage.Literals.PHYSICAL_ARCHITECTURE)) {
-            updateInvolvements(currentElt_p, EpbsPackage.Literals.EPBS_ARCHITECTURE);
+			  } else if (target instanceof EPBSArchitecture || EcoreUtil2.isContainedBy(target, EpbsPackage.Literals.EPBS_ARCHITECTURE)) {
+          if (EcoreUtil2.isContainedBy(currentElt, PaPackage.Literals.PHYSICAL_ARCHITECTURE)) {
+            updateInvolvements(currentElt, EpbsPackage.Literals.EPBS_ARCHITECTURE);
           }
         }
 				 
@@ -269,14 +269,14 @@ public abstract class UpdateRealizationContributionProcessor implements IProcess
 	 * applied on its contained {@link CapabilityRealizationPkg} and
 	 * {@link CapabilityRealization}.
 	 * 
-	 * @param currentElt_p
+	 * @param currentElt
 	 */
-	private void update(CapabilityRealizationPkg currentElt_p) {
-		if (currentElt_p != null) {
-			for (CapabilityRealization capability : currentElt_p.getOwnedCapabilityRealizations()) {
+	private void update(CapabilityRealizationPkg currentElt) {
+		if (currentElt != null) {
+			for (CapabilityRealization capability : currentElt.getOwnedCapabilityRealizations()) {
 				update(capability);
 			}
-			for (CapabilityRealizationPkg capabilityPkg : currentElt_p.getOwnedCapabilityRealizationPkgs()) {
+			for (CapabilityRealizationPkg capabilityPkg : currentElt.getOwnedCapabilityRealizationPkgs()) {
 				update(capabilityPkg);
 			}
 		}
@@ -286,11 +286,11 @@ public abstract class UpdateRealizationContributionProcessor implements IProcess
 	 * When launched from a {@link Scenario}, the update is applied on its
 	 * related {@link CapabilityUseCase}/{@link CapabilityRealizationUseCase}.
 	 * 
-	 * @param currentElt_p
+	 * @param currentElt
 	 */
-	private void update(Scenario currentElt_p) {
-		if (currentElt_p != null) {
-			AbstractCapability useCase = ScenarioExt.getRelatedCapability(currentElt_p);
+	private void update(Scenario currentElt) {
+		if (currentElt != null) {
+			AbstractCapability useCase = ScenarioExt.getRelatedCapability(currentElt);
 			if (useCase instanceof Capability) {
 				update((Capability) useCase);
 			} else if (useCase instanceof CapabilityRealization) {
@@ -300,8 +300,8 @@ public abstract class UpdateRealizationContributionProcessor implements IProcess
 	}
 
 	/**
-	 * @param currentCapabilityUseCase_p
-	 * @param target_p
+	 * @param currentCapabilityUseCase
+	 * @param target
 	 */
-	protected abstract void updateInvolvements(AbstractCapability currentCapability_p, EClass target_p);
+	protected abstract void updateInvolvements(AbstractCapability currentCapability, EClass target);
 }

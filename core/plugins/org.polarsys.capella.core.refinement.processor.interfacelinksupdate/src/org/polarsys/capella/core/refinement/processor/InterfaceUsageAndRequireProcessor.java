@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,10 +34,10 @@ public class InterfaceUsageAndRequireProcessor extends AbstractInterfaceProcesso
   /**
    * Constructor
    * 
-   * @param context_p the Element on which the processing will applied
+   * @param context the Element on which the processing will applied
    */
-  public InterfaceUsageAndRequireProcessor(CapellaElement context_p) {
-    super(context_p);
+  public InterfaceUsageAndRequireProcessor(CapellaElement context) {
+    super(context);
   }
 
   /**
@@ -51,7 +51,7 @@ public class InterfaceUsageAndRequireProcessor extends AbstractInterfaceProcesso
    * @see org.polarsys.capella.core.refinement.processor.AbstractInterfaceProcessor#synchronize(org.polarsys.capella.core.data.la.LogicalComponent)
    */
   @Override
-  protected void synchronize(LogicalComponent component_p) {
+  protected void synchronize(LogicalComponent component) {
     //
   }
 
@@ -59,37 +59,37 @@ public class InterfaceUsageAndRequireProcessor extends AbstractInterfaceProcesso
    * @see org.polarsys.capella.core.refinement.processor.AbstractInterfaceProcessor#synchronize(org.polarsys.capella.core.data.pa.PhysicalComponent)
    */
   @Override
-  protected void synchronize(PhysicalComponent component_p) {
-    List<Interface> usedItf       = InterfaceProcessorHelper.computeUsageToAdd(component_p);
-    List<Interface> unUsedItf     = InterfaceProcessorHelper.computeUsageToRemove(component_p, usedItf, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
-    List<Interface> requiredItf   = InterfaceProcessorHelper.computeRequireToAdd(component_p);
-    List<Interface> unrequiredItf = InterfaceProcessorHelper.computeRequireToRemove(component_p, requiredItf, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
+  protected void synchronize(PhysicalComponent component) {
+    List<Interface> usedItf       = InterfaceProcessorHelper.computeUsageToAdd(component);
+    List<Interface> unUsedItf     = InterfaceProcessorHelper.computeUsageToRemove(component, usedItf, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
+    List<Interface> requiredItf   = InterfaceProcessorHelper.computeRequireToAdd(component);
+    List<Interface> unrequiredItf = InterfaceProcessorHelper.computeRequireToRemove(component, requiredItf, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
 
     // Add and Remove Interface Use link computed
-    InterfaceProcessorHelper.addUseInterface(component_p, usedItf, unUsedItf);
-    InterfaceProcessorHelper.removeUseInterface(component_p, unUsedItf);
+    InterfaceProcessorHelper.addUseInterface(component, usedItf, unUsedItf);
+    InterfaceProcessorHelper.removeUseInterface(component, unUsedItf);
     
     // Add and Remove Interface Required computed
-    InterfaceProcessorHelper.addRequireInterface(component_p, requiredItf, unrequiredItf);
-    InterfaceProcessorHelper.removeRequireInterface(component_p, unrequiredItf);
+    InterfaceProcessorHelper.addRequireInterface(component, requiredItf, unrequiredItf);
+    InterfaceProcessorHelper.removeRequireInterface(component, unrequiredItf);
   }
 
   /**
    * @see org.polarsys.capella.core.refinement.processor.AbstractInterfaceProcessor#synchronize(org.polarsys.capella.core.data.epbs.ConfigurationItem)
    */
   @Override
-  protected void synchronize(ConfigurationItem component_p) {
-    List<Interface> usedItf       = InterfaceProcessorHelper.computeUsageToAdd(component_p);
-    List<Interface> unUsedItf     = InterfaceProcessorHelper.computeUsageToRemove(component_p, usedItf, EpbsPackage.Literals.EPBS_ARCHITECTURE);
-    List<Interface> requiredItf   = InterfaceProcessorHelper.computeRequireToAdd(component_p);
-    List<Interface> unrequiredItf = InterfaceProcessorHelper.computeRequireToRemove(component_p, requiredItf, EpbsPackage.Literals.EPBS_ARCHITECTURE);
+  protected void synchronize(ConfigurationItem component) {
+    List<Interface> usedItf       = InterfaceProcessorHelper.computeUsageToAdd(component);
+    List<Interface> unUsedItf     = InterfaceProcessorHelper.computeUsageToRemove(component, usedItf, EpbsPackage.Literals.EPBS_ARCHITECTURE);
+    List<Interface> requiredItf   = InterfaceProcessorHelper.computeRequireToAdd(component);
+    List<Interface> unrequiredItf = InterfaceProcessorHelper.computeRequireToRemove(component, requiredItf, EpbsPackage.Literals.EPBS_ARCHITECTURE);
     
     // Add and Remove Interface Use link computed between CI and Interface
-    InterfaceProcessorHelper.addUseInterface(component_p, usedItf, unUsedItf);
-    InterfaceProcessorHelper.removeUseInterface(component_p, unUsedItf);
+    InterfaceProcessorHelper.addUseInterface(component, usedItf, unUsedItf);
+    InterfaceProcessorHelper.removeUseInterface(component, unUsedItf);
     
     // Add and Remove Interface Required computed between CI and Interface
-    InterfaceProcessorHelper.addRequireInterface(component_p, requiredItf, unrequiredItf);
-    InterfaceProcessorHelper.removeRequireInterface(component_p, unrequiredItf);
+    InterfaceProcessorHelper.addRequireInterface(component, requiredItf, unrequiredItf);
+    InterfaceProcessorHelper.removeRequireInterface(component, unrequiredItf);
   }
 }

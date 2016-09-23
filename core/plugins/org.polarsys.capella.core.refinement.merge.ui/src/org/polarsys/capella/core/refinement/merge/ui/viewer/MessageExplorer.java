@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,17 +79,17 @@ public class MessageExplorer extends Composite {
     createSashForm();
   }
 
-  public void addMessage(SequenceMessage message_p) {
-    list1.add(message_p.getName());
-    _messages.add(message_p);
+  public void addMessage(SequenceMessage message) {
+    list1.add(message.getName());
+    _messages.add(message);
   }
 
-  public void setCurrentMessage(SequenceMessage message_p) {
-    text.setText(message_p.getName());
-    text1.setText(message_p.getId());
-    text2.setText(message_p.getKind().toString());
-    MessageEnd sendingEnd = message_p.getSendingEnd();
-    MessageEnd receivingEnd = message_p.getReceivingEnd();
+  public void setCurrentMessage(SequenceMessage message) {
+    text.setText(message.getName());
+    text1.setText(message.getId());
+    text2.setText(message.getKind().toString());
+    MessageEnd sendingEnd = message.getSendingEnd();
+    MessageEnd receivingEnd = message.getReceivingEnd();
     text3.setText(((sendingEnd.getName()==null?sendingEnd.getCovered().getName():sendingEnd.getName())));
     text4.setText(((receivingEnd.getName()==null?receivingEnd.getCovered().getName():receivingEnd.getName())));
   }
