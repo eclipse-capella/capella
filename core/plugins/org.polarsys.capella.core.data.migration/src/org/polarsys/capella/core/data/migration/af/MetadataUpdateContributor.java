@@ -65,15 +65,12 @@ public class MetadataUpdateContributor extends AbstractMigrationContributor {
 			protected void postMigrationExecute(ExecutionManager executionManager, ResourceSet resourceSet,
 					MigrationContext context) throws IOException {
 				Resource resource = resourceSet.getResource(EcoreUtil2.getURI(getFile()), true);
-
-				Resource initIntegrationStorage = MetadataHelper.getViewpointMetadata(resourceSet)
-						.initMetadataStorage();
-
-				if (initIntegrationStorage != null) {
+				Resource initMetadata = MetadataHelper.initMetadata(resource);
+				if (initMetadata != null) {
 					boolean found = false;
 					EObject eObject = resource.getContents().get(0);
 					DAnalysis session = (DAnalysis) eObject;
-					ResourceDescriptor descriptor = new ResourceDescriptor(initIntegrationStorage.getURI());
+					ResourceDescriptor descriptor = new ResourceDescriptor(initMetadata.getURI());
 					URI descriptorURI = descriptor.getResourceURI();
 					EList<ResourceDescriptor> semanticResources = session.getSemanticResources();
 					for (ResourceDescriptor semanticResource : semanticResources) {
@@ -84,21 +81,8 @@ public class MetadataUpdateContributor extends AbstractMigrationContributor {
 						}
 					}
 					if (!found) {
-						semanticResources.add(new ResourceDescriptor(initIntegrationStorage.getURI()));
+						semanticResources.add(new ResourceDescriptor(initMetadata.getURI()));
 					}
-
-					// enable capella viewpoint
-					org.polarsys.kitalpha.resourcereuse.model.Resource capellaVp = ViewpointManager
-							.getViewpoint("org.polarsys.capella.core.viewpoint");
-					Version readVersion = ViewpointManager.readVersion(capellaVp);
-					MetadataHelper.getViewpointMetadata(resourceSet).setUsage(capellaVp, readVersion, true);
-				}
-
-				Set<org.polarsys.kitalpha.resourcereuse.model.Resource> lookForViewpoints = UsedAFViewpoints
-						.lookUp(resource);
-				for (org.polarsys.kitalpha.resourcereuse.model.Resource res : lookForViewpoints) {
-					Version version = ViewpointManager.readVersion(res);
-					MetadataHelper.getViewpointMetadata(resourceSet).updateVersion(res, version);
 				}
 			}
 
