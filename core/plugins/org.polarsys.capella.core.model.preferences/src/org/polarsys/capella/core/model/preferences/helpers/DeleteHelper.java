@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,8 +22,14 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.core.data.capellacommon.AbstractState;
+import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
+import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.cs.AbstractPathInvolvedElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
@@ -48,18 +54,11 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
-import org.polarsys.capella.core.data.capellacommon.AbstractState;
-import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
-import org.polarsys.capella.core.data.capellacore.InvolvedElement;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.model.handler.command.PreDeleteHandler;
 import org.polarsys.capella.core.model.handler.command.PreDeleteStructureCommand;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  * Helper to compute all deleted semantic elements from a collection of semantic elements to delete applying business delete rules.
@@ -69,27 +68,27 @@ class DeleteHelper {
 
   /**
    * Add elements to delete for {@link Association}.
-   * @param elementsToDelete_p
+   * @param elementsToDelete
    */
-  private static void addElementsForAssociation(Collection<Object> elementsToDelete_p) {
+  private static void addElementsForAssociation(Collection<Object> elementsToDelete) {
     List<Object> elementToAdd = new ArrayList<Object>(0);
-    for (Object elementToDelete : elementsToDelete_p) {
+    for (Object elementToDelete : elementsToDelete) {
       if (elementToDelete instanceof Association) {
         elementToAdd.addAll(((Association) elementToDelete).getNavigableMembers());
       }
     }
     if (!elementToAdd.isEmpty()) {
-      elementsToDelete_p.addAll(elementToAdd);
+      elementsToDelete.addAll(elementToAdd);
     }
   }
 
   /**
    * Add elements to delete for {@link FunctionalChainInvolvement}.
-   * @param elementsToDelete_p
+   * @param elementsToDelete
    */
-  private static void addElementsForFunctionalChainInvolvement(Collection<Object> elementsToDelete_p) {
+  private static void addElementsForFunctionalChainInvolvement(Collection<Object> elementsToDelete) {
     List<Object> elementToAdd = new ArrayList<Object>(0);
-    for (Object elementToDelete : elementsToDelete_p) {
+    for (Object elementToDelete : elementsToDelete) {
       if (elementToDelete instanceof FunctionalChainInvolvement) {
         FunctionalChainInvolvement fcInvolvement = (FunctionalChainInvolvement) elementToDelete;
         InvolvedElement involved = fcInvolvement.getInvolved();
@@ -102,17 +101,17 @@ class DeleteHelper {
       }
     }
     if (!elementToAdd.isEmpty()) {
-      elementsToDelete_p.addAll(elementToAdd);
+      elementsToDelete.addAll(elementToAdd);
     }
   }
 
   /**
    * Add elements to delete for {@link PhysicalPathInvolvement}.
-   * @param elementsToDelete_p
+   * @param elementsToDelete
    */
-  private static void addElementsForPhysicalPathInvolvement(Collection<Object> elementsToDelete_p) {
+  private static void addElementsForPhysicalPathInvolvement(Collection<Object> elementsToDelete) {
     List<Object> elementToAdd = new ArrayList<Object>(0);
-    for (Object elementToDelete : elementsToDelete_p) {
+    for (Object elementToDelete : elementsToDelete) {
       if (elementToDelete instanceof PhysicalPathInvolvement) {
         PhysicalPathInvolvement pathInvolvement = (PhysicalPathInvolvement) elementToDelete;
         AbstractPathInvolvedElement involved = pathInvolvement.getInvolvedElement();
@@ -125,70 +124,70 @@ class DeleteHelper {
       }
     }
     if (!elementToAdd.isEmpty()) {
-      elementsToDelete_p.addAll(elementToAdd);
+      elementsToDelete.addAll(elementToAdd);
     }
   }
 
   /**
    * Add elements that are pointed (referenced by end-user selection.<br>
    * Default RemoveCommand only deletes elements of containment relationships.
-   * @param elementsToDelete_p
+   * @param elementsToDelete
    */
-  public static void addInAdditionSomeReferencedElemensInDelete(Collection<Object> elementsToDelete_p) {
+  public static void addInAdditionSomeReferencedElemensInDelete(Collection<Object> elementsToDelete) {
     // Special case for Physical Path Involvements (we add previous and next involvements if the involved element is a Part).
-    addElementsForPhysicalPathInvolvement(elementsToDelete_p);
+    addElementsForPhysicalPathInvolvement(elementsToDelete);
 
     // special case for state and modes and abstractFunction: sequence diagram deletion
-    addElementsForAbstractState (elementsToDelete_p);
-    addElementsForAbstractFunction (elementsToDelete_p);
+    addElementsForAbstractState (elementsToDelete);
+    addElementsForAbstractFunction (elementsToDelete);
 
     // Special case for functional chain involvements (we add previous and next involvements if the involved element is an AbstractFunction).
-    addElementsForFunctionalChainInvolvement(elementsToDelete_p);
+    addElementsForFunctionalChainInvolvement(elementsToDelete);
     // Special case for association, we add navigable members i.e properties that are not owned by the association but targeted elements.
-    addElementsForAssociation(elementsToDelete_p);
+    addElementsForAssociation(elementsToDelete);
     // Get all elements for a scenario.
-    globalizeElementsForScenario(elementsToDelete_p);
+    globalizeElementsForScenario(elementsToDelete);
     // Special case for property values.
-    addPendingPropertyValues(elementsToDelete_p);
+    addPendingPropertyValues(elementsToDelete);
     // Special case for property value groups.
-    addPendingPropertyValueGroups(elementsToDelete_p);
+    addPendingPropertyValueGroups(elementsToDelete);
     
     
     
   }
 
   private static void addElementsForAbstractFunction(
-		Collection<Object> elementsToDelete_p) {
+		Collection<Object> elementsToDelete) {
 	  List<EObject> elementsToAdd = new ArrayList<EObject>();
-	    for (Object elementToDelete : elementsToDelete_p) {
+	    for (Object elementToDelete : elementsToDelete) {
 	        if (elementToDelete instanceof AbstractFunction) {
 	        	elementsToAdd.addAll(EObjectExt.getReferencers((EObject) elementToDelete, InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION));
 	        }
 	      }
-	    elementsToDelete_p.addAll(elementsToAdd);
+	    elementsToDelete.addAll(elementsToAdd);
 	
 }
 
 private static void addElementsForAbstractState(
-		Collection<Object> elementsToDelete_p) {
+		Collection<Object> elementsToDelete) {
 	List<EObject> elementsToAdd = new ArrayList<EObject>();
-    for (Object elementToDelete : elementsToDelete_p) {
+    for (Object elementToDelete : elementsToDelete) {
       if (elementToDelete instanceof AbstractState) {
     	  elementsToAdd.addAll(EObjectExt.getReferencers((EObject) elementToDelete, InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_STATE));
       }
     }
-    elementsToDelete_p.addAll(elementsToAdd);
+    elementsToDelete.addAll(elementsToAdd);
 }
 
 /**
    * Add pending property values in addition to their elements if necessary.
-   * @param elementsToDelete_p
+   * @param elementsToDelete
    */
-  private static void addPendingPropertyValues(Collection<Object> elementsToDelete_p) {
+  private static void addPendingPropertyValues(Collection<Object> elementsToDelete) {
     // This algorithm is specified by Loic Petit.
     Set<Object> propertyValuesToAddToDeletedElements = new HashSet<Object>(0);
     // Loop over elements to delete.
-    for (Object object : elementsToDelete_p) {
+    for (Object object : elementsToDelete) {
       if (object instanceof CapellaElement) {
         // Get applied property values.
         List<AbstractPropertyValue> appliedPropertyValues = ((CapellaElement) object).getAppliedPropertyValues();
@@ -208,26 +207,26 @@ private static void addElementsForAbstractState(
       }
     }
     if (!propertyValuesToAddToDeletedElements.isEmpty()) {
-      elementsToDelete_p.addAll(propertyValuesToAddToDeletedElements);
+      elementsToDelete.addAll(propertyValuesToAddToDeletedElements);
     }
   }
 
   /**
    * Add pending property value groups in addition to their elements if necessary.
-   * @param elementsToDelete_p
+   * @param elementsToDelete
    */
-  private static void addPendingPropertyValueGroups(Collection<Object> elementsToDelete_p) {
+  private static void addPendingPropertyValueGroups(Collection<Object> elementsToDelete) {
     // This algorithm is specified by Loic Petit.
     Set<Object> propertyValueGroupsToAddToDeletedElements = new HashSet<Object>(0);
     // Loop over elements to delete.
-    for (Object object : elementsToDelete_p) {
+    for (Object object : elementsToDelete) {
       if (object instanceof CapellaElement) {
         // Get applied property values.
         List<PropertyValueGroup> appliedPropertyValueGroups = ((CapellaElement) object).getAppliedPropertyValueGroups();
         // Loop over property value groups to collect only the ones which have only current capella element as involvedElements.
         for (PropertyValueGroup propertyValueGroup : appliedPropertyValueGroups) {
           // StackOverflow deleting property value applied on itself
-          if (!elementsToDelete_p.contains(propertyValueGroup)) {
+          if (!elementsToDelete.contains(propertyValueGroup)) {
             // Is it a pending property value group ? i.e valueElements must contain only current object and involvedElements must be empty.
             List<CapellaElement> valuedElements = propertyValueGroup.getValuedElements();
             if (valuedElements.size() == 1 && valuedElements.contains(object)) {
@@ -243,13 +242,13 @@ private static void addElementsForAbstractState(
       }
     }
     if (!propertyValueGroupsToAddToDeletedElements.isEmpty()) {
-      elementsToDelete_p.addAll(propertyValueGroupsToAddToDeletedElements);
+      elementsToDelete.addAll(propertyValueGroupsToAddToDeletedElements);
     }
   }
 
   @SuppressWarnings("unchecked")
-  public static boolean computeAllDeletedElementsFor(Collection<?> elementsToDelete_p, HashSet<EObject> deletedElements,
-      TransactionalEditingDomain editingDomain_p) {
+  public static boolean computeAllDeletedElementsFor(Collection<?> elementsToDelete, HashSet<EObject> deletedElements,
+      TransactionalEditingDomain editingDomain) {
     // Get a new handler.
     PreDeleteHandler handler = new PreDeleteHandler();
     /*
@@ -259,14 +258,14 @@ private static void addElementsForAbstractState(
      * command (without confirmation) is run to really delete elements.
      */
     boolean preferenceDeleteParts = CapellaModelPreferencesPlugin.getDefault().isDeletePartsAllowed();
-    Collection<Object> elementsToDelete = (Collection<Object>) elementsToDelete_p;
-    elementsToDelete.addAll(getAdditionalElementsForParts(elementsToDelete, preferenceDeleteParts));
+    Collection<Object> eltsToDelete = (Collection<Object>) elementsToDelete;
+    eltsToDelete.addAll(getAdditionalElementsForParts(eltsToDelete, preferenceDeleteParts));
 
     // Add additional elements in elements to delete.
-    addInAdditionSomeReferencedElemensInDelete((Collection<Object>) elementsToDelete_p);
+    addInAdditionSomeReferencedElemensInDelete((Collection<Object>) elementsToDelete);
 
     // Call predeletion command.
-    Command preDeletion = new PreDeleteStructureCommand(editingDomain_p, elementsToDelete_p, preferenceDeleteParts, handler);
+    Command preDeletion = new PreDeleteStructureCommand(editingDomain, elementsToDelete, preferenceDeleteParts, handler);
     if (preDeletion.canExecute()) {
       preDeletion.execute();
     }
@@ -294,7 +293,7 @@ private static void addElementsForAbstractState(
               try {
                 EReference feature = EReference.class.cast(notification.getFeature());
                 handleNotification = feature.isContainment();
-              } catch (ClassCastException cce_p) {
+              } catch (ClassCastException cce) {
                 // Could not tell feature, add notification whatever it might be.
                 handleNotification = true;
               }
@@ -323,16 +322,16 @@ private static void addElementsForAbstractState(
     return modelModified;
   }
 
-  public static Collection<Object> getAdditionalElementsForParts(Collection<Object> elementsToDelete_p, boolean preferenceDeleteParts_p) {
+  public static Collection<Object> getAdditionalElementsForParts(Collection<Object> elementsToDelete, boolean preferenceDeleteParts) {
     Collection<Object> result = new ArrayList<Object>(0);
 
     // Remove type if we are singleton driven or if preference is enabled
-    for (Object elementToDelete : elementsToDelete_p) {
+    for (Object elementToDelete : elementsToDelete) {
       if (elementToDelete instanceof Part) {
         boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((Part) elementToDelete));
-        if (!allowMultiplePart || preferenceDeleteParts_p) {
+        if (!allowMultiplePart || preferenceDeleteParts) {
           AbstractType type = ((Part) elementToDelete).getAbstractType();
-          if ((type != null) && !elementsToDelete_p.contains(type) && !result.contains(type)) {
+          if ((type != null) && !elementsToDelete.contains(type) && !result.contains(type)) {
             result.add(type);
           }
         }
@@ -344,14 +343,14 @@ private static void addElementsForAbstractState(
 
   /**
    * return the other side of the sequence message, the message and the related event
-   * @param interactionFragment_p
+   * @param interactionFragment
    * @return
    */
-  private static Collection<? extends EObject> getAllObjectsFromAbstractEnd(InteractionFragment interactionFragment_p) {
+  private static Collection<? extends EObject> getAllObjectsFromAbstractEnd(InteractionFragment interactionFragment) {
     List<EObject> objectsToDelete = new ArrayList<EObject>();
     List<Event> eventsToDelete = new ArrayList<Event>();
-    if (interactionFragment_p instanceof MessageEnd) {
-      MessageEnd messageEnd = (MessageEnd) interactionFragment_p;
+    if (interactionFragment instanceof MessageEnd) {
+      MessageEnd messageEnd = (MessageEnd) interactionFragment;
       SequenceMessage message = messageEnd.getMessage();
       objectsToDelete.add(messageEnd);
       if (message != null) {
@@ -361,13 +360,13 @@ private static void addElementsForAbstractState(
         if (message.getReceivingEnd() != null && !objectsToDelete.contains(message.getReceivingEnd()))
           objectsToDelete.add(message.getReceivingEnd());
       }
-    } else if (interactionFragment_p instanceof ExecutionEnd) {
-      ExecutionEnd execEnd = (ExecutionEnd) interactionFragment_p;
+    } else if (interactionFragment instanceof ExecutionEnd) {
+      ExecutionEnd execEnd = (ExecutionEnd) interactionFragment;
       objectsToDelete.add(execEnd);
-    } else if (interactionFragment_p instanceof FragmentEnd) {
-      objectsToDelete.add(interactionFragment_p);
-    } else if (interactionFragment_p instanceof InteractionState){
-    	objectsToDelete.add(interactionFragment_p);
+    } else if (interactionFragment instanceof FragmentEnd) {
+      objectsToDelete.add(interactionFragment);
+    } else if (interactionFragment instanceof InteractionState){
+    	objectsToDelete.add(interactionFragment);
     	// new interaction states and stateFragment
     }
 
@@ -384,31 +383,31 @@ private static void addElementsForAbstractState(
   }
 
   /**
-   * @param sourceObject_p
+   * @param sourceObject
    * @return
    */
-  private static Collection<?> getExecutionFromScenarioElement(Collection<?> elementsToDelete_p) {
-    Collection<EObject> result = new ArrayList<EObject>(elementsToDelete_p.size());
-    for (Object sourceObject_p : elementsToDelete_p) {
+  private static Collection<?> getExecutionFromScenarioElement(Collection<?> elementsToDelete) {
+    Collection<EObject> result = new ArrayList<EObject>(elementsToDelete.size());
+    for (Object sourceObject : elementsToDelete) {
       TimeLapse exec = null;
-      Scenario s = (Scenario) ((EObject) sourceObject_p).eContainer();
+      Scenario s = (Scenario) ((EObject) sourceObject).eContainer();
 
-      if (sourceObject_p instanceof AbstractEnd) {
+      if (sourceObject instanceof AbstractEnd) {
         for (TimeLapse exec2 : s.getOwnedTimeLapses()) {
-          if (exec2.getStart() == sourceObject_p)
+          if (exec2.getStart() == sourceObject)
             exec = exec2;
-          if (exec2.getFinish() == sourceObject_p)
+          if (exec2.getFinish() == sourceObject)
             exec = exec2;
         }
       }
       
-      if (sourceObject_p instanceof ConstraintDuration) {
-    	  result.add((EObject) sourceObject_p);
+      if (sourceObject instanceof ConstraintDuration) {
+    	  result.add((EObject) sourceObject);
       }
     	  
 
-      if (sourceObject_p instanceof SequenceMessage) {
-        SequenceMessage sm = (SequenceMessage) sourceObject_p;
+      if (sourceObject instanceof SequenceMessage) {
+        SequenceMessage sm = (SequenceMessage) sourceObject;
         // looking for an execution from a sequence message.
         List<AbstractEnd> messageEnds = new ArrayList<AbstractEnd>(2);
         messageEnds.add(sm.getSendingEnd());
@@ -426,12 +425,12 @@ private static void addElementsForAbstractState(
         }
       }
 
-      if (sourceObject_p instanceof TimeLapse) {
-        exec = (TimeLapse) sourceObject_p;
+      if (sourceObject instanceof TimeLapse) {
+        exec = (TimeLapse) sourceObject;
         result.add(exec);
       }
-      if (sourceObject_p instanceof InstanceRole) {
-        InstanceRole ir = (InstanceRole) sourceObject_p;
+      if (sourceObject instanceof InstanceRole) {
+        InstanceRole ir = (InstanceRole) sourceObject;
         if (!result.contains(ir))
           result.add(ir);
         for (TimeLapse exec2 : s.getOwnedTimeLapses()) {
@@ -459,11 +458,11 @@ private static void addElementsForAbstractState(
     return result;
   }
 
-  private static void globalizeElementsForScenario(Collection<Object> elementsToDelete_p) {
-    Collection<Object> elementsToDelete = elementsToDelete_p;
+  private static void globalizeElementsForScenario(Collection<Object> elementsToDelete) {
+    Collection<Object> eltsToDelete = elementsToDelete;
     Collection<Object> sequenceElements = new ArrayList<Object>();
     Collection<Object> nonSequenceElements = new ArrayList<Object>();
-    for (Object object : elementsToDelete) {
+    for (Object object : eltsToDelete) {
       if (isSequenceDiagramObject(object))
     	  sequenceElements.add(object);
       else 
@@ -473,45 +472,45 @@ private static void addElementsForAbstractState(
     if (sequenceElements.size() != 0) {
       // propagate elementsToDelete to every elements impacted
       Collection<?> executions = getExecutionFromScenarioElement(sequenceElements);
-      elementsToDelete = new ArrayList<Object>();
+      eltsToDelete = new ArrayList<Object>();
       for (Object object : executions) {
         if (object instanceof TimeLapse) {
           TimeLapse exec = (TimeLapse) object;
           for (Object object2 : propagageSequenceDeletion(exec)) {
-            elementsToDelete.add(object2);
+            eltsToDelete.add(object2);
           }
         }
         if (object instanceof ConstraintDuration)
-        	elementsToDelete.add(object);
+        	eltsToDelete.add(object);
         if (object instanceof InstanceRole)
-          elementsToDelete.add(object);
+          eltsToDelete.add(object);
         if (object instanceof SequenceMessage) {
           SequenceMessage sm = (SequenceMessage) object;
           if (sm.getSendingEnd() != null) {
-            elementsToDelete.add(sm.getSendingEnd());
-            elementsToDelete.add(sm.getSendingEnd().getEvent());
+            eltsToDelete.add(sm.getSendingEnd());
+            eltsToDelete.add(sm.getSendingEnd().getEvent());
           }
 
           if (sm.getReceivingEnd() != null) {
-            elementsToDelete.add(sm.getReceivingEnd());
-            elementsToDelete.add(sm.getReceivingEnd().getEvent());
+            eltsToDelete.add(sm.getReceivingEnd());
+            eltsToDelete.add(sm.getReceivingEnd().getEvent());
           }
-          elementsToDelete.add(sm);
+          eltsToDelete.add(sm);
           if (sm.getKind() == MessageKind.CREATE || sm.getKind() == MessageKind.DELETE) {
-            elementsToDelete.add(sm.getSendingEnd().getEvent());
-            elementsToDelete.add(sm.getReceivingEnd().getEvent());
+            eltsToDelete.add(sm.getSendingEnd().getEvent());
+            eltsToDelete.add(sm.getReceivingEnd().getEvent());
           }
         }
         if (object instanceof CombinedFragment) {
           CombinedFragment cf = (CombinedFragment) object;
-          elementsToDelete.addAll(cf.getReferencedOperands());
+          eltsToDelete.addAll(cf.getReferencedOperands());
         }
       }
     }
     
     // adding ConstraintDuration pointing to a deleted element
     List<ConstraintDuration> durationsToDelete = new ArrayList<ConstraintDuration>();
-    for (Object object : elementsToDelete) {
+    for (Object object : eltsToDelete) {
 		if (object instanceof InteractionFragment) {
 			InteractionFragment if_ = (InteractionFragment) object;
 			if (if_.eContainer() instanceof Scenario) {
@@ -523,53 +522,53 @@ private static void addElementsForAbstractState(
 			}			
 		}
 	}
-    elementsToDelete.addAll(durationsToDelete);
+    eltsToDelete.addAll(durationsToDelete);
 
     // cleaning up the content by removing duplicatas
-    Collection<Object> result = new ArrayList<Object>(elementsToDelete.size());
+    Collection<Object> result = new ArrayList<Object>(eltsToDelete.size());
 
     // Reassign resulting collection.
-    elementsToDelete_p.clear();
-    elementsToDelete_p.addAll(nonSequenceElements);
-    for (Object object : elementsToDelete) {
-        if (!elementsToDelete_p.contains(object) && object != null) {
-        	elementsToDelete_p.add(object);
+    elementsToDelete.clear();
+    elementsToDelete.addAll(nonSequenceElements);
+    for (Object object : eltsToDelete) {
+        if (!elementsToDelete.contains(object) && object != null) {
+        	elementsToDelete.add(object);
         }
 	}
-    elementsToDelete_p.addAll(result);
+    elementsToDelete.addAll(result);
     
   }
 
   /**
-   * @param elementsToDelete_p
+   * @param elementsToDelete
    * @return
    */
-  private static boolean isSequenceDiagramObject(Object elementsToDelete_p) {
-    if (elementsToDelete_p instanceof InteractionState)
+  private static boolean isSequenceDiagramObject(Object elementsToDelete) {
+    if (elementsToDelete instanceof InteractionState)
       return false; // no propagation in this case.
-    if (elementsToDelete_p instanceof InteractionOperand)
+    if (elementsToDelete instanceof InteractionOperand)
       return false; // TODO
-    if (elementsToDelete_p instanceof InteractionFragment)
+    if (elementsToDelete instanceof InteractionFragment)
       return true;
-    if (elementsToDelete_p instanceof SequenceMessage)
+    if (elementsToDelete instanceof SequenceMessage)
       return true;
-    if (elementsToDelete_p instanceof TimeLapse)
+    if (elementsToDelete instanceof TimeLapse)
       return true;
-    if (elementsToDelete_p instanceof InstanceRole)
+    if (elementsToDelete instanceof InstanceRole)
       return true;
-    if (elementsToDelete_p instanceof ConstraintDuration)
+    if (elementsToDelete instanceof ConstraintDuration)
         return true;
 
     return false;
   }
 
-  private static List<?> propagageSequenceDeletion(TimeLapse exec_p) {
-    InteractionFragment start = exec_p.getStart();
-    InteractionFragment finish = exec_p.getFinish();
+  private static List<?> propagageSequenceDeletion(TimeLapse exec) {
+    InteractionFragment start = exec.getStart();
+    InteractionFragment finish = exec.getFinish();
 
     List<EObject> objectsToDelete = new ArrayList<EObject>();
 
-    objectsToDelete.add(exec_p);
+    objectsToDelete.add(exec);
     objectsToDelete.addAll(getAllObjectsFromAbstractEnd(start));
     objectsToDelete.addAll(getAllObjectsFromAbstractEnd(finish));
     return objectsToDelete;

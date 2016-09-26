@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EContentsEList.FeatureIterator;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -30,16 +31,16 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
  */
 public class CrossReferencerHelper {
 
-  private static boolean enabled = true;
+  private static boolean enabledResolution = true;
 
   /**
    * Collect all elements that reference (containment relationships are not taken into account) given one.<br>
    * In fact that collects Non Navigable Inverse References for given element.<br>
    * Derived features are ignored too.
-   * @param referencedElement_p
+   * @param referencedElement
    * @return a not <code>null</code> collection.
    */
-  public static List<EObject> getReferencingElements(final EObject referencedElement_p) {
+  public static List<EObject> getReferencingElements(final EObject referencedElement) {
     // Get the execution manager.
     final List<EObject> referencingElements = new ArrayList<EObject>(0);
     // Create a read only command to make sure computation is performed in a transactional way.
@@ -49,21 +50,24 @@ public class CrossReferencerHelper {
        */
       public void run() {
         // Get the cross referencer.
-        ECrossReferenceAdapter crossReferencer = ((SemanticEditingDomain) TransactionHelper.getEditingDomain(referencedElement_p)).getCrossReferencer();
-        referencingElements.addAll(EcoreUtil2.getReferencingElements(referencedElement_p, crossReferencer));
+        ECrossReferenceAdapter crossReferencer = ((SemanticEditingDomain) TransactionHelper.getEditingDomain(referencedElement)).getCrossReferencer();
+        referencingElements.addAll(EcoreUtil2.getReferencingElements(referencedElement, crossReferencer));
       }
     };
     // Run the command.
-    TransactionHelper.getExecutionManager(referencedElement_p).execute(command);
+    ExecutionManager mgr = TransactionHelper.getExecutionManager(referencedElement);
+    if (mgr != null) {
+      mgr.execute(command);
+    }
     return referencingElements;
   }
 
   /**
    * Allows to enable or disable crossReferencer resolution
-   * @param enabled_p
+   * @param enabled
    */
-  public static void enableResolution(boolean enabled_p) {
-    enabled = enabled_p;
+  public static void enableResolution(boolean enabled) {
+    enabledResolution = enabled;
   }
 
   /**
@@ -71,7 +75,7 @@ public class CrossReferencerHelper {
    * @return
    */
   public static boolean resolutionEnabled() {
-    return enabled;
+    return enabledResolution;
   }
 
   /**
