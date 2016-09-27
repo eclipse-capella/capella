@@ -18,6 +18,7 @@ import java.util.LinkedList;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.diffmerge.api.IComparison;
 import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.diffdata.EComparison;
@@ -50,25 +51,46 @@ public class DefaultMergeHandler implements IMergeHandler {
 
   public IStatus processDifferences(IContext context, Collection<IDifference> diffSource,
       Collection<IDifference> diffTarget) {
-    processDifferences(context, diffSource, Role.TARGET);
+
+    Collection<IDifference> differences = diffSource;
+
     if (processTargetDifferences){
-      processDifferences(context, diffTarget, Role.TARGET); // remove deleted elements from target model
+      differences = new ArrayList<IDifference>(differences);
+      differences.addAll(diffTarget);
     }
+
+    EComparison comparison = (EComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
+    mergeDifferences(comparison, filterDifferences(context, differences));
+
     return Status.OK_STATUS;
   }
 
-  public IStatus processDifferences(IContext context, Collection<IDifference> differences, Role role) {
+  /**
+   * Filters the list of detected differences
+   * according to the merge handlers category items.
+   *
+   * @param context the transposer context
+   * @param differences an unfiltered collection of differences
+   * @return the filtered collection of differences
+   */
+  protected Collection<IDifference> filterDifferences(IContext context, Collection<IDifference> differences) {
     Collection<IDifference> result = new ArrayList<IDifference>();
     for (IDifference difference : differences) {
       if (!isFiltered(difference)) {
         result.add(difference);
       }
     }
+    return result;
+  }
 
-    EComparison comparison = (EComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
-    comparison.merge(result, role, true, new NullProgressMonitor());
-
-    return Status.OK_STATUS;
+  /**
+   * Merge the given collection of differences into the target model
+   *
+   * @param comparison the compariton
+   * @param differences a possibly empty collection of differences to merge
+   */
+  protected void mergeDifferences(IComparison comparison, Collection<IDifference> differences){
+    comparison.merge(differences, Role.TARGET, true, new NullProgressMonitor());
   }
 
   public boolean isFiltered(IDifference difference) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,7 @@ public class Rule_DCON_02 extends AbstractRulesOnDesignTest {
 	 */
   protected List<String> getScopeDefinition() {
     return Arrays.asList(new String[] { "dd886920-7aae-4486-a539-a0cde9030288", "67f00b40-b65f-43a6-a244-84a16a8a085b",
-        "39cd1d3a-f734-4cab-9624-95f0a6171773" });
+        "39cd1d3a-f734-4cab-9624-95f0a6171773", "ac3e9f1d-3120-43e2-aa5e-0e9d5f74dacb", "1e0213c0-56cb-4cd5-950a-6bc637a898ea"  });
   }
 
 	/**
@@ -52,7 +52,9 @@ public class Rule_DCON_02 extends AbstractRulesOnDesignTest {
     return Arrays.asList(new OracleDefinition[] { new OracleDefinition("dd886920-7aae-4486-a539-a0cde9030288", 1),
         new OracleDefinition("67f00b40-b65f-43a6-a244-84a16a8a085b", 1),
         new OracleDefinition("eb1ad14d-b1fb-4137-9e04-b14a07495d06", 0),
-        new OracleDefinition("d8835bb7-da4a-421b-be34-89c3e0591b1b", 0)
+        new OracleDefinition("d8835bb7-da4a-421b-be34-89c3e0591b1b", 0),
+        new OracleDefinition("ac3e9f1d-3120-43e2-aa5e-0e9d5f74dacb", 1),
+        new OracleDefinition("1e0213c0-56cb-4cd5-950a-6bc637a898ea", 0)
 
     });
   }

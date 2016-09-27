@@ -34,7 +34,7 @@ public abstract class ReLauncher extends DefaultLauncher {
 
     addSharedParameter(new GenericParameter<String>(IReConstants.COMMAND__CURRENT_VALUE, getKind(), "Transposer Rule handler")); //$NON-NLS-1$
 
-    addSharedParameter(new GenericParameter<IMergeHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, new DefaultMergeHandler(true), "Re Merge handler"));
+    addSharedParameter(new GenericParameter<IMergeHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, createMergeHandler() , "Re Merge handler")); //$NON-NLS-1$
 
   }
   
@@ -49,5 +49,14 @@ public abstract class ReLauncher extends DefaultLauncher {
   protected abstract String getScope();
 
   protected abstract String getKind();
+
+  /**
+   * This default implementation will use a {@code org.polarsys.capella.core.transition.common.handlers.merge.DefaultMergeHandler} which
+   * will process source and target differences. Subclasses may override this for customized behavior.
+   * @return the merge handler to use in this launcher
+   */
+  protected IMergeHandler createMergeHandler(){
+    return new DefaultMergeHandler(true);
+  }
 
 }
