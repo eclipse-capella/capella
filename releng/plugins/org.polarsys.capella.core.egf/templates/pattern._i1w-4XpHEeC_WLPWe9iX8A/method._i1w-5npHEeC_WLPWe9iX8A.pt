@@ -89,7 +89,9 @@ public class <%=genPackage.getResourceClassName()%> extends <%=genPackage.getImp
 	  @Override
 	  protected void attachedHelper(<%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> eObject) {
 	    // Make sure specified object has its id generated.
-	    if (null != eObject && null != eObject.eClass()) {
+	    if (eObject instanceof <%=genModel.getImportedName("org.polarsys.capella.common.data.modellingcore.ModelElement")%>) {
+	      setID(eObject, ((ModelElement) eObject).getId());
+	    } else if (null != eObject && null != eObject.eClass()) {
 	      <%=genModel.getImportedName("org.eclipse.emf.ecore.EAttribute")%> attribute = eObject.eClass().getEIDAttribute();
 	      if (attribute != null) {
 	        Object id = eObject.eGet(attribute);
