@@ -1,77 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
-<!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
-  All rights reserved. This program and the accompanying materials
-  are made available under the terms of the Eclipse Public License v1.0
-  which accompanies this distribution, and is available at
-  http://www.eclipse.org/legal/epl-v10.html
-
-  Contributors:
-       Thales - initial API and implementation
--->
-<toc label="Preferences" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution" sort="true">
-   <topic label="Preferences">
-      <topic label="Sirius">
-         <topic label="Sirius">
-         <topic href="html/06. Preferences/6.3. Diagram preferences.html" label="Diagram Preferences"></topic>
-         </topic>
-      </topic>
-      <topic label="Capella">
-         <topic label="Capella">   	
-         		<topic href="html/06. Preferences/6.2. Model preferences.html#General" label="General"></topic>
-				<topic href="html/06. Preferences/6.2. Model preferences.html#Delete" label="Delete"></topic>
-				<topic href="html/06. Preferences/6.2. Model preferences.html#Model" label="Model"></topic>
-    <topic href="html/06. Preferences/6.2. Model preferences.html#Model_Change_Recorder" label="Model Change Recorder">
-    </topic>
-    <topic href="html/06. Preferences/6.2. Model preferences.html#Model_Validation" label="Model Validation">
-    </topic>
-				<topic href="html/06. Preferences/6.2. Model preferences.html#Project_Explorer" label="Project Explorer"></topic>
-				<topic href="html/06. Preferences/6.2. Model preferences.html#Refinement" label="Refinement"></topic>
-				<topic href="html/06. Preferences/6.2. Model preferences.html#SCM" label="SCM"></topic>
-    <topic href="html/06. Preferences/6.2. Model preferences.html#Transfert_Viewer" label="Transfert Viewer">
-    </topic>
-    <topic href="html/06. Preferences/6.2. Model preferences.html#Transition_Log_Preferences" label="Transition Log Preferences">
-    </topic>
-				<topic href="html/06. Preferences/6.2. Model preferences.html#Transitions.2FGeneration" label="Transitions/Generation"></topic>
-				<topic href="html/06. Preferences/6.4. Commands preferences.html#Capella_Commands_Preferences" label="Capella Commands Preferences"></topic>
-				<topic href="html/06. Preferences/6.4. Commands preferences.html#Capella_User_Profiles_Management" label="Capella User Profiles Management"></topic>
+<!-- Copyright (c) 2006, 2016 THALES GLOBAL SERVICES. All rights reserved. 
+	This program and the accompanying materials are made available under the 
+	terms of the Eclipse Public License v1.0 which accompanies this distribution, 
+	and is available at http://www.eclipse.org/legal/epl-v10.html Contributors: 
+	Thales - initial API and implementation -->
+<toc label="Preferences"
+	link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution"
+	sort="true">
+	<topic label="Preferences">
+		<topic label="Sirius">
+			<topic label="Sirius">
+				<topic href="html/06. Preferences/6.3. Diagram preferences.html"
+					label="Diagram Preferences"></topic>
+			</topic>
 		</topic>
-<<<<<<< Upstream, based on origin/master
-		<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Melody_Project_specific_preferences" label="Capella Project specific preferences"></topic>
-		<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Melody_Configuration_Project" label="Capella Configuration Project">
-			<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Creating_Melody_Configuration_Project" label="Creating Capella Configuration Project"></topic>
-			<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Referencing_Melody_Configuration_Project" label="Referencing Capella Configuration Project"></topic>
+		<topic label="Capella">
+			<topic label="Capella">
+				<topic href="html/06. Preferences/6.2. Model preferences.html#General"
+					label="General"></topic>
+				<topic href="html/06. Preferences/6.2. Model preferences.html#Delete"
+					label="Delete"></topic>
+				<topic href="html/06. Preferences/6.2. Model preferences.html#Model"
+					label="Model"></topic>
+				<topic
+					href="html/06. Preferences/6.2. Model preferences.html#Model_Change_Recorder"
+					label="Model Change Recorder"></topic>
+				<topic
+					href="html/06. Preferences/6.2. Model preferences.html#Model_Validation"
+					label="Model Validation">
+				</topic>
+				<topic
+					href="html/06. Preferences/6.2. Model preferences.html#Project_Explorer"
+					label="Project Explorer"></topic>
+				<topic href="html/06. Preferences/6.2. Model preferences.html#Refinement"
+					label="Refinement"></topic>
+				<topic href="html/06. Preferences/6.2. Model preferences.html#SCM"
+					label="SCM"></topic>
+				<topic
+					href="html/06. Preferences/6.2. Model preferences.html#Transfert_Viewer"
+					label="Transfert Viewer"></topic>
+				<topic
+					href="html/06. Preferences/6.2. Model preferences.html#Transition_Log_Preferences"
+					label="Transition Log Preferences"></topic>
+				<topic
+					href="html/06. Preferences/6.2. Model preferences.html#Transitions.2FGeneration"
+					label="Transitions/Generation"></topic>
+				<topic
+					href="html/06. Preferences/6.4. Commands preferences.html#Capella_Commands_Preferences"
+					label="Capella Commands Preferences"></topic>
+				<topic
+					href="html/06. Preferences/6.4. Commands preferences.html#Capella_User_Profiles_Management"
+					label="Capella User Profiles Management"></topic>
+			</topic>
+			<topic
+				href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Melody_Project_specific_preferences"
+				label="Capella Project specific preferences"></topic>
+			<topic
+				href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Melody_Configuration_Project"
+				label="Capella Configuration Project">
+				<topic
+					href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Creating_Melody_Configuration_Project"
+					label="Creating Capella Configuration Project"></topic>
+				<topic
+					href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Referencing_Melody_Configuration_Project"
+					label="Referencing Capella Configuration Project"></topic>
+			</topic>
+			<topic
+				href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Validation_Profiles"
+				label="Validation Profiles">
+				<topic
+					href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Creating_Validation_Profiles"
+					label="Creating Validation Profiles"></topic>
+				<topic
+					href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Using_Validation_Profiles"
+					label="Using Validation Profiles"></topic>
+			</topic>
+			<topic href="html/06. Preferences/6.2. Model preferences.html"
+			label="Model Preferences">
+			<topic href="html/06. Preferences/6.2. Model preferences.html#General"
+				label="General"></topic>
+			<topic href="html/06. Preferences/6.2. Model preferences.html#Delete"
+				label="Delete"></topic>
+			<topic
+				href="html/06. Preferences/6.2. Model preferences.html#Differences_Table"
+				label="Differences Table"></topic>
+			<topic href="html/06. Preferences/6.2. Model preferences.html#Model"
+				label="Model"></topic>
+			<topic href="html/06. Preferences/6.2. Model preferences.html#Overview"
+				label="Overview"></topic>
+			<topic
+				href="html/06. Preferences/6.2. Model preferences.html#Project_Explorer"
+				label="Project Explorer"></topic>
+			<topic href="html/06. Preferences/6.2. Model preferences.html#Refinement"
+				label="Refinement"></topic>
+			<topic href="html/06. Preferences/6.2. Model preferences.html#SCM"
+				label="SCM"></topic>
+			<topic
+				href="html/06. Preferences/6.2. Model preferences.html#Transitions.2FGeneration"
+				label="Transitions/Generation"></topic>
 		</topic>
-		<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Validation_Profiles" label="Validation Profiles">
-			<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Creating_Validation_Profiles" label="Creating Validation Profiles"></topic>
-			<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Using_Validation_Profiles" label="Using Validation Profiles"></topic>
+		<topic href="html/06. Preferences/6.3. Diagram preferences.html"
+			label="Diagram Preferences"></topic>
+		<topic href="html/06. Preferences/6.4. Commands preferences.html"
+			label="Commands &amp; User Profiles">
+			<topic
+				href="html/06. Preferences/6.4. Commands preferences.html#Capella_Commands_Preferences"
+				label="Capella Commands Preferences"></topic>
+			<topic
+				href="html/06. Preferences/6.4. Commands preferences.html#Capella_User_Profiles_Management"
+				label="Capella User Profiles Management"></topic>
+		</topic>
+		</topic>
+	<topic label="Activity Explorer">
+		<topic label="Activity Explorer">
+			<topic href="html/06. Preferences/6.1. Activity Explorer.html"
+				label="Activity Explorer"></topic>
 		</topic>
 	</topic>
-	<topic href="html/06. Preferences/6.2. Model preferences.html" label="Model Preferences">
-		<topic href="html/06. Preferences/6.2. Model preferences.html#General" label="General"></topic>
-		<topic href="html/06. Preferences/6.2. Model preferences.html#Delete" label="Delete"></topic>
-		<topic href="html/06. Preferences/6.2. Model preferences.html#Differences_Table" label="Differences Table"></topic>
-		<topic href="html/06. Preferences/6.2. Model preferences.html#Model" label="Model"></topic>
-		<topic href="html/06. Preferences/6.2. Model preferences.html#Overview" label="Overview"></topic>
-		<topic href="html/06. Preferences/6.2. Model preferences.html#Project_Explorer" label="Project Explorer"></topic>
-		<topic href="html/06. Preferences/6.2. Model preferences.html#Refinement" label="Refinement"></topic>
-		<topic href="html/06. Preferences/6.2. Model preferences.html#SCM" label="SCM"></topic>
-		<topic href="html/06. Preferences/6.2. Model preferences.html#Transitions.2FGeneration" label="Transitions/Generation"></topic>
 	</topic>
-	<topic href="html/06. Preferences/6.3. Diagram preferences.html" label="Diagram Preferences"></topic>
-	<topic href="html/06. Preferences/6.4. Commands preferences.html" label="Commands &amp; User Profiles">
-		<topic href="html/06. Preferences/6.4. Commands preferences.html#Capella_Commands_Preferences" label="Capella Commands Preferences"></topic>
-		<topic href="html/06. Preferences/6.4. Commands preferences.html#Capella_User_Profiles_Management" label="Capella User Profiles Management"></topic>
-	</topic>
-=======
-      </topic>
-      <topic label="Activity Explorer">
-         <topic label="Activity Explorer">
-         <topic href="html/06. Preferences/6.1. Activity Explorer.html" label="Activity Explorer"></topic>
-         </topic>
-      </topic>
->>>>>>> 2614571 [933] Update of documentation 
-      <anchor id="contribution"/>
-   </topic>
+	<anchor id="contribution" />
 </toc>
