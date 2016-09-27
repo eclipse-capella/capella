@@ -28,7 +28,6 @@ Export-Package:
  org.polarsys.capella.core.re.handlers,
  org.polarsys.capella.core.re.handlers.attachment,
  org.polarsys.capella.core.re.handlers.attributes,
- org.polarsys.capella.core.re.handlers.filters,
  org.polarsys.capella.core.re.handlers.location,
  org.polarsys.capella.core.re.handlers.replicable,
  org.polarsys.capella.core.re.handlers.scope,

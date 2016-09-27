@@ -60,20 +60,6 @@
       </ActivityDeclaration>
    </extension>
    
-   <extension
-         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
-      <ActivityDeclaration
-            ActivityClass="org.polarsys.capella.core.transition.common.activities.DifferencesFilteringActivity"
-            Identifier="org.polarsys.capella.core.transition.common.activities.DifferencesFilteringActivity"
-            Multiple="false"
-            Name="Selection of differences"
-            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
-            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
-         <Description>
-            This activity initialize Transposer for Capella Transformation execution.
-         </Description>
-      </ActivityDeclaration>
-   </extension>
    
    <extension
          point="org.polarsys.kitalpha.cadence.core.activity.declaration">

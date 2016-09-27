@@ -31,7 +31,6 @@ import org.polarsys.capella.common.re.re2rpl.merge.SuffixedElementPropagationCat
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
-import org.polarsys.capella.core.transition.common.handlers.filter.FilteringDifferencesHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.capella.core.transition.common.handlers.options.OptionsHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.traceability.CompoundTraceabilityHandler;
@@ -54,7 +53,6 @@ public class InitializeDiffMergeUpdateReplicaActivity extends InitializeDiffMerg
   public IStatus _run(ActivityParameters activityParams) {
     IContext context = (IContext) activityParams.getParameter(ITransposerWorkflow.TRANSPOSER_CONTEXT).getValue();
 
-    FilteringDifferencesHandlerHelper.getInstance(context).dispose(context);
     ContextScopeHandlerHelper.getInstance(context).clear(IReConstants.SOURCE__ADDED_ELEMENTS, context);
     ContextScopeHandlerHelper.getInstance(context).clear(IReConstants.TARGET__ADDED_ELEMENTS, context);
 
