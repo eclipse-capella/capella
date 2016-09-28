@@ -203,7 +203,8 @@
          <or>
             <with
                   variable="activeMenuSelection">
-                  <iterate>
+                  <iterate
+                        ifEmpty="false">
                      <or>
                         <instanceof
                               value="org.polarsys.kitalpha.emde.model.Element">
@@ -216,7 +217,8 @@
             </with>
             <with
                   variable="selection">
-                  <iterate>
+                  <iterate
+                        ifEmpty="false">
                      <or>
                         <instanceof
                               value="org.polarsys.kitalpha.emde.model.Element">
