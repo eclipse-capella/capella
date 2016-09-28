@@ -139,6 +139,13 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
             clean();
           }
         }
+        for (BrowserHistory.BrowserNavigationHistoryEntry entry : getHistory().getAllNavigationEntries()){
+          if (entry.getRealObject() instanceof EObject){ 
+            if (updated == SessionManager.INSTANCE.getSession((EObject)entry.getRealObject())){
+              entry.invalidate();
+            }
+          }
+        }
         break;
       case SessionListener.CLOSED:
         // Update history to clean dead entries.
