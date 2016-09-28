@@ -339,6 +339,17 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
                 }
               }
             }
+            
+            // If the part is not a deployment part
+            if (anElement.getActualMapping().getName().equals("PAB_PC"))
+            {
+              willBeMoved = false;
+              // It should be moved only if it has a parent view in the diagram
+              for (EObject currentParent : content.getParents(currentPart, currentPart)){
+                if (!typeViews.get(currentParent).isEmpty() && !typeViews.get(currentParent).contains(containerView))
+                  willBeMoved = true;
+              }
+            }
           }
 
           if (willBeMoved) {
