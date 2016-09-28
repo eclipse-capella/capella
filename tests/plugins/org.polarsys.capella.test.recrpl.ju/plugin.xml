@@ -28,7 +28,7 @@
                class="org.polarsys.capella.test.recrpl.ju.RecRplCommandManager">
          </activityExtender>
          <activityExtender
-               activityIdentifier="DifferencesFilteringActivity"
+               activityIdentifier="DifferencesMergingActivity"
                id="org.polarsys.capella.common.re.testActivity"
                class="org.polarsys.capella.test.recrpl.ju.RecRplCommandManager">
          </activityExtender>

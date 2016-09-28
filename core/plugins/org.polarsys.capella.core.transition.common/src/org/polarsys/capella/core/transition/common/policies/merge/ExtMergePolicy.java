@@ -22,9 +22,6 @@ import org.eclipse.emf.diffmerge.impl.policies.DefaultMergePolicy;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
-import org.polarsys.capella.core.transition.common.handlers.filter.CompoundFilteringItems;
-import org.polarsys.capella.core.transition.common.handlers.filter.FilteringDifferencesHandlerHelper;
-import org.polarsys.capella.core.transition.common.handlers.filter.IFilterItem;
 import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
 import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.capella.core.transition.common.handlers.merge.MergeHandlerHelper;
@@ -65,17 +62,7 @@ public class ExtMergePolicy extends DefaultMergePolicy implements IHandler, IMer
       return false;
     }
 
-    IHandler handler = FilteringDifferencesHandlerHelper.getInstance(context);
-    if (handler instanceof CompoundFilteringItems) {
-      for (IFilterItem item : ((CompoundFilteringItems) handler).getFilterItems(context)) {
-        if (!item.isMergeable(feature, context)) {
-          getUnwantedFeatures(context).add(feature);
-          return false;
-        }
-      }
-    }
-
-    handler = MergeHandlerHelper.getInstance(context);
+    IMergeHandler handler = MergeHandlerHelper.getInstance(context);
     for (ICategoryItem item : ((IMergeHandler) handler).getCategories(context)) {
       if (item.isActive() && !item.isInFocusMode() && item.covers(feature)) {
         getUnwantedFeatures(context).add(feature);

@@ -12,7 +12,7 @@
 package org.polarsys.capella.core.transition.common.launcher;
 
 import org.polarsys.capella.core.transition.common.activities.DifferencesComputingActivity;
-import org.polarsys.capella.core.transition.common.activities.DifferencesFilteringActivity;
+import org.polarsys.capella.core.transition.common.activities.DifferencesMergingActivity;
 import org.polarsys.capella.core.transition.common.activities.FinalizeTransitionActivity;
 import org.polarsys.capella.core.transition.common.activities.InitializeDiffMergeFromTransformationActivity;
 import org.polarsys.capella.core.transition.common.activities.InitializeScopeActivity;
@@ -103,7 +103,7 @@ public class TransitionLauncher extends DefaultLauncher {
       parameter.addActivity(getActivity(DifferencesComputingActivity.ID));
 
       // DifferencesFilteringActivity
-      parameter.addActivity(getActivity(DifferencesFilteringActivity.ID));
+      parameter.addActivity(getActivity(DifferencesMergingActivity.ID));
 
       // PostDiffMergeActivity
       parameter.addActivity(getActivity(PostDiffMergeActivity.ID));
