@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -105,45 +105,6 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
   }
 
   /**
-   * Disable non Capella activities : Java , Plugin, development, etc...<br>
-   * End-user can reactivate these disabled activities from preferences.
-   */
-  @SuppressWarnings("unchecked")
-  private void disableNonCapellaActivities() {
-    // Disable development activities (i.e capabilities)
-    IWorkbenchActivitySupport activitySupport = getWorkbenchConfigurer().getWorkbench().getActivitySupport();
-    IActivityManager activityManager = activitySupport.getActivityManager();
-    // Get all enabled activities.
-    Set<String> allEnabledActivities = new HashSet<String>(activityManager.getEnabledActivityIds());
-    Iterator<String> enabledCategories = WorkbenchActivityHelper.getEnabledCategories(activityManager).iterator();
-    // finished is 'true' when equals to 2.
-    int finished = 0;
-    while (enabledCategories.hasNext() && (finished != 2)) {
-      String categoryId = enabledCategories.next();
-      if (CATEGORY_DEVELOPMENT.equals(categoryId)) {
-        ICategory category = activityManager.getCategory(CATEGORY_DEVELOPMENT);
-        Set<Object> developmentActivities = WorkbenchActivityHelper.getActivityIdsForCategory(category);
-        // Remove development activities : Java & PDE.
-        allEnabledActivities.removeAll(developmentActivities);
-        finished++;
-      } else if (CATEGORY_TEAM.equals(categoryId)) {
-        ICategory category = activityManager.getCategory(CATEGORY_TEAM);
-        Set<String> teamActivities = WorkbenchActivityHelper.getActivityIdsForCategory(category);
-        for (String activityId : teamActivities) {
-          // Remove CVS activity.
-          if (CATEGORY_TEAM_CVS.equals(activityId)) {
-            allEnabledActivities.remove(activityId);
-            break;
-          }
-        }
-        finished++;
-      }
-    }
-    // Set Capella allowed activities.
-    activitySupport.setEnabledActivityIds(allEnabledActivities);
-  }
-
-  /**
    * @see org.eclipse.ui.application.WorkbenchAdvisor#getInitialWindowPerspectiveId()
    */
   @Override
@@ -157,20 +118,6 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
   @Override
   public void preStartup() {
     super.preStartup();
-
-    // Disable capabilities during the first start of capella
-    // See https://bugs.polarsys.org/show_bug.cgi?id=155
-    IEclipsePreferences prefs = ConfigurationScope.INSTANCE.getNode(PerspectivePlugin.PLUGIN_ID);
-    String key = "disableCapabilitiesOnStartUp";
-    if (prefs.getBoolean(key, true)) {
-      disableNonCapellaActivities();
-      prefs.putBoolean(key, false);
-      try {
-        prefs.flush();
-      } catch (BackingStoreException e) {
-        PerspectivePlugin.getDefault().getLog().log(new Status(IStatus.ERROR, PerspectivePlugin.PLUGIN_ID, e.getMessage(), e));
-      }
-    }
 
     // Load SiriusEdit
     SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
@@ -188,7 +135,7 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
 
     DelegateWorkbenchAdvisor.INSTANCE.callPreStartup();
 
-    // MSidati : remove all acceleo UI elements from capella( remove all extensions from extensionRegistry).
+    // Remove all acceleo UI elements from capella( remove all extensions from extensionRegistry).
     removeAllAcceleoIntroExtensionPoints();
 
   }
