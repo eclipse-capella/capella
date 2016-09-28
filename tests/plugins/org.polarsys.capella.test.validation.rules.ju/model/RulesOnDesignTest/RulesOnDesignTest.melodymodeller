@@ -22212,6 +22212,39 @@
             source="#67f00b40-b65f-43a6-a244-84a16a8a085b" target="#3a8ad4b0-37bd-40b8-b62e-3a8850039fd7"
             origin="#0dfd7518-27a3-40a0-8f21-28774f28e126"/>
       </ownedElements>
+      <ownedElementPkgs xsi:type="re:CatalogElementPkg" id="9a8aee27-ff98-44a2-8aa5-954b4f9f31bc"
+          name="UnsynchronizedFeatureTests">
+        <ownedElements xsi:type="re:CatalogElement" id="1e0213c0-56cb-4cd5-950a-6bc637a898ea"
+            name="REC7-FunctionWithUnsynchronizedDescription" defaultReplicaCompliancy="#b662f167-eaab-4e00-9e11-79a708d269e7">
+          <ownedLinks xsi:type="re:CatalogElementLink" id="4de1e447-d9ee-4cb0-bdea-f5277c71e927"
+              source="#1e0213c0-56cb-4cd5-950a-6bc637a898ea" target="#6ae9e343-b7cf-4eb4-ac2c-fafc1a7d58e1"
+              suffixed="true">
+            <unsynchronizedFeatures>description</unsynchronizedFeatures>
+          </ownedLinks>
+        </ownedElements>
+        <ownedElements xsi:type="re:CatalogElement" id="c3a9bfbc-d7a8-49a0-92e8-6ff1c41c1b92"
+            name="RPL7" kind="RPL" suffix="" origin="#1e0213c0-56cb-4cd5-950a-6bc637a898ea"
+            currentCompliancy="#b662f167-eaab-4e00-9e11-79a708d269e7" defaultReplicaCompliancy="#b662f167-eaab-4e00-9e11-79a708d269e7">
+          <ownedLinks xsi:type="re:CatalogElementLink" id="6e994cab-44e9-4f43-abcd-3e0540942b80"
+              source="#c3a9bfbc-d7a8-49a0-92e8-6ff1c41c1b92" target="#d5cce3ac-5c74-4ef5-97c6-453c5ba6b2df"
+              origin="#4de1e447-d9ee-4cb0-bdea-f5277c71e927" suffixed="true">
+            <unsynchronizedFeatures>description</unsynchronizedFeatures>
+          </ownedLinks>
+        </ownedElements>
+        <ownedElements xsi:type="re:CatalogElement" id="ac3e9f1d-3120-43e2-aa5e-0e9d5f74dacb"
+            name="REC9-FunctionWithSynchronizedDescription" defaultReplicaCompliancy="#b662f167-eaab-4e00-9e11-79a708d269e7">
+          <ownedLinks xsi:type="re:CatalogElementLink" id="f636a90a-1f7c-4a38-aa2c-7368378ecbf5"
+              source="#ac3e9f1d-3120-43e2-aa5e-0e9d5f74dacb" target="#934d52fa-943c-42c3-b0a2-3a98df48bb07"
+              suffixed="true"/>
+        </ownedElements>
+        <ownedElements xsi:type="re:CatalogElement" id="fba0befa-fe2e-4f2a-b13e-487f7b90300f"
+            name="RPL9-FunctionWithSynchronizedDescription" kind="RPL" suffix="" origin="#ac3e9f1d-3120-43e2-aa5e-0e9d5f74dacb"
+            currentCompliancy="#b662f167-eaab-4e00-9e11-79a708d269e7" defaultReplicaCompliancy="#b662f167-eaab-4e00-9e11-79a708d269e7">
+          <ownedLinks xsi:type="re:CatalogElementLink" id="46521ca2-9ae0-48b5-94cc-1458c24106b9"
+              source="#fba0befa-fe2e-4f2a-b13e-487f7b90300f" target="#157ebf94-fc1c-4bfc-8a13-a5ce9d97737e"
+              origin="#f636a90a-1f7c-4a38-aa2c-7368378ecbf5" suffixed="true"/>
+        </ownedElements>
+      </ownedElementPkgs>
       <ownedCompliancyDefinitionPkg xsi:type="re:CompliancyDefinitionPkg" id="ee376c4a-6160-4270-b44a-a6b7c22a5b9a"
           name="Compliancy Definitions">
         <ownedDefinitions xsi:type="re:CompliancyDefinition" id="b662f167-eaab-4e00-9e11-79a708d269e7"
@@ -22227,7 +22260,16 @@
       <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.la:LogicalFunctionPkg"
           id="5b79e2f5-e751-4be8-86e5-f854b8955ea2" name="Logical Functions">
         <ownedLogicalFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
-            id="8509865e-7d25-4bed-a292-190f8afe9104" name="Root Logical Function"/>
+            id="8509865e-7d25-4bed-a292-190f8afe9104" name="Root Logical Function">
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="6ae9e343-b7cf-4eb4-ac2c-fafc1a7d58e1" name="LogicalFunction 1" description="description"/>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="d5cce3ac-5c74-4ef5-97c6-453c5ba6b2df" name="LogicalFunction 1"/>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="934d52fa-943c-42c3-b0a2-3a98df48bb07" name="LogicalFunction 3" description="a description"/>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="157ebf94-fc1c-4bfc-8a13-a5ce9d97737e" name="LogicalFunction 3"/>
+        </ownedLogicalFunctions>
       </ownedFunctionPkg>
       <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
           id="6f921e46-7799-4757-8ba2-b4c7e7ec9b83" name="Requirements"/>
