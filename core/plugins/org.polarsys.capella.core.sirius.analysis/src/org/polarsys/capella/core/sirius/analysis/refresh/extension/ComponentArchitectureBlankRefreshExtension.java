@@ -267,10 +267,15 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
       public Collection<EObject> getParents(EObject object, EObject context) {
         LinkedList<EObject> parents = new LinkedList<EObject>();
         if (object instanceof Part) {
-          Part part = (Part) object;
-          parents.addAll(PartExt.getDeployingElements(part));
-          parents.add(CsServices.getService().getParentContainer(part));
-          parents.remove(context);
+          if (context instanceof DNodeContainer) {
+            EObject contextPart = ((DNodeContainer)context).getTarget();
+            if (CsServices.getService().isDeployed((DNodeContainer) context)) {
+              parents.addAll(PartExt.getDeployingElements((Part)object));
+            } else {
+              parents.add(CsServices.getService().getParentContainer(object));
+            }
+            parents.remove(contextPart);
+          }
         }
         return parents;
       }
@@ -330,7 +335,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
 
             // It will be moved only if it is not already owned by a parent.
             willBeMoved = true;
-            for (EObject currentParent : content.getParents(currentPart, currentPart)) {
+            for (EObject currentParent : content.getParents(currentPart, anElement)) {
               // case if the actual container is not the same that the actual container of the part
               if (currentParent != null) {
                 if ((currentParent.equals(actualContainer) || currentParent.equals(actualComponentContainer))) {
@@ -340,16 +345,6 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
               }
             }
             
-            // If the part is not a deployment part
-            if (anElement.getActualMapping().getName().equals("PAB_PC"))
-            {
-              willBeMoved = false;
-              // It should be moved only if it has a parent view in the diagram
-              for (EObject currentParent : content.getParents(currentPart, currentPart)){
-                if (!typeViews.get(currentParent).isEmpty() && !typeViews.get(currentParent).contains(containerView))
-                  willBeMoved = true;
-              }
-            }
           }
 
           if (willBeMoved) {
@@ -376,7 +371,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
       boolean toBeDeleted = false;
       boolean isAdded = false;
 
-      parents.addAll(content.getParents(currentPart, currentPart));
+      parents.addAll(content.getParents(currentPart, aContainer));
 
       // If not yet added, browse parts of a parent
       while (!isAdded && !toBeDeleted && !parents.isEmpty()) {
@@ -403,7 +398,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
           if (!isAdded && !toBeDeleted) {
             for (Partition partition : parentElement.getRepresentingPartitions()) {
               if (partition instanceof Part) {
-                parents.addAll(content.getParents(partition, currentPart));
+                parents.addAll(content.getParents(partition, aContainer));
               }
             }
           }
@@ -425,7 +420,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
           }
 
           if (!isAdded && !toBeDeleted) {
-            parents.addAll(content.getParents(parent, currentPart));
+            parents.addAll(content.getParents(parent, aContainer));
           }
 
         }
