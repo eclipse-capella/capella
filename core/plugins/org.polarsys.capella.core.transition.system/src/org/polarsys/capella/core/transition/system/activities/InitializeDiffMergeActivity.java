@@ -19,7 +19,6 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.transition.common.activities.InitializeDiffMergeFromTransformationActivity;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
-import org.polarsys.capella.core.transition.common.handlers.merge.DefaultFocusCategoryFilter;
 import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.CompoundTraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.config.ITraceabilityConfiguration;
@@ -68,7 +67,6 @@ public class InitializeDiffMergeActivity extends InitializeDiffMergeFromTransfor
     handler.addCategory(new AttributeSummaryValueFromSource(context), context);
     handler.addCategory(new AttributeDescriptionValueFromSource(context), context);
     handler.addCategory(new PartPropagationCategoryFilter(context), context);
-    handler.addCategory(new DefaultFocusCategoryFilter(context), context);
     handler.addCategory(new RootCategoryFilter(context), context);
     handler.addCategory(new OneToManyCategoryFilter(context), context);
     handler.addCategory(new ManyToOneCategoryFilter(context), context);

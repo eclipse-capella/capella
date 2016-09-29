@@ -37,27 +37,6 @@ public class MergeCategoryManager extends CategoryManager {
     this.context = context;
   }
 
-  @Override
-  public boolean isFiltered(IDifference difference) {
-    boolean focused = false;
-    boolean excluded = false;
-
-    for (IDifferenceCategory category : _activeCategories) {
-      if (category.isInFocusMode()) {
-        focused = focused || category.covers(difference, _node);
-      } else {
-        excluded = excluded || category.covers(difference, _node);
-      }
-    }
-    if (excluded)
-      return true;
-
-    if (focused)
-      return false;
-
-    return true;
-  }
-
   public boolean addCategory(ICategoryItem category) {
     IDifferenceCategory squatter = getCategory(category.getId());
     if (squatter != null) {

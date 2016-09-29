@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.polarsys.capella.common.re.merge.scope;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.diffmerge.api.IMatch;
 import org.eclipse.emf.diffmerge.api.Role;
@@ -235,6 +236,13 @@ public abstract class ReScope extends ReferenceModelScope implements INotifyList
     }
     return super.remove(source, reference, value);
 
+  }
+
+  @Override
+  protected List<EObject> retains(List<EObject> object) {
+    List<EObject> result = super.retains(object);
+    result.removeAll(ReplicableElementHandlerHelper.getInstance(context).getDeletableElements(context));
+    return result;
   }
   
   /**
