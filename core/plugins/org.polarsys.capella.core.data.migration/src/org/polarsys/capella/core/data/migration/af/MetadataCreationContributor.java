@@ -28,7 +28,6 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
  * @author Thomas Guiu
- *
  */
 public class MetadataCreationContributor extends AbstractMigrationContributor {
 
@@ -62,7 +61,7 @@ public class MetadataCreationContributor extends AbstractMigrationContributor {
 //					session.getSemanticResources().add(new ResourceDescriptor(initIntegrationStorage.getURI()));
 //					
 //					// enable capella viewpoint
-//					org.polarsys.kitalpha.resourcereuse.model.Resource capellaVp = ViewpointManager.getViewpoint("org.polarsys.capella.core.viewpoint");
+//					org.polarsys.kitalpha.resourcereuse.model.Resource capellaVp = ViewpointManager.getViewpoint(AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID);
 //					Version readVersion = ViewpointManager.readVersion(capellaVp);
 //					MetadataHelper.getViewpointMetadata(resourceSet).setUsage(capellaVp, readVersion, true);
 //				}

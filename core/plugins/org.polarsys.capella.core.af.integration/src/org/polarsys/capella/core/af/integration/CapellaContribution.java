@@ -8,7 +8,7 @@
  * Contributors:
  *   Thales Global Services S.A.S - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.data.migration.af;
+package org.polarsys.capella.core.af.integration;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -20,23 +20,19 @@ import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
 
 /**
  * @author Thomas Guiu
- * 
  */
 public class CapellaContribution extends Contribution {
-
 
 	@Override
 	public void update(ResourceSet context) {
 		
 		for (Resource resource : context.getResources()) {
 			if (CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION.equals(resource.getURI().fileExtension())) {
-				org.polarsys.kitalpha.resourcereuse.model.Resource capellaVp = ViewpointManager.getViewpoint("org.polarsys.capella.core.viewpoint");
+				org.polarsys.kitalpha.resourcereuse.model.Resource capellaVp = ViewpointManager.getViewpoint(AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID);
 				Version readVersion = ViewpointManager.readVersion(capellaVp);
 				MetadataHelper.getViewpointMetadata(context).reference(capellaVp, readVersion);
 				return ;
 			}
-				
 		}
 	}
-
 }

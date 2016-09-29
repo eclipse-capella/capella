@@ -137,13 +137,6 @@
       </menuContribution>
    </extension>
    
-   <extension
-         point="org.polarsys.kitalpha.ad.metadata.contribution">
-      <contribution
-            class="org.polarsys.capella.core.data.migration.af.CapellaContribution">
-      </contribution>
-   </extension>
-   
    <!-- Contributions that should not be removed between versions -->
    <extension
          point="org.polarsys.capella.core.data.migration.migrationContributions">

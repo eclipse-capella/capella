@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResource;
 import org.osgi.framework.Version;
 import org.polarsys.capella.common.ef.ExecutionManager;
-import org.polarsys.capella.core.af.integration.Activator;
+import org.polarsys.capella.core.af.integration.AFIntegrationPlugin;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.data.migration.contribution.AbstractMigrationContribution;
 import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
@@ -34,7 +34,6 @@ import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
  * This contribution ensures that all used viewpoints are available
  * 
  * @author Thomas Guiu
- *
  */
 public class ViewpointMigrationContribution extends AbstractMigrationContribution {
 
@@ -45,7 +44,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
 			ResourceSet resourceSet = new ResourceSetImpl();
 			resourceSet.getLoadOptions().put(GMFResource.OPTION_ABORT_ON_ERROR, Boolean.TRUE);
 			resourceSet.getLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
-			 MultiStatus status = new MultiStatus(Activator.getSymbolicName(), IStatus.OK, "Some viewpoints are missing", null);
+			 MultiStatus status = new MultiStatus(AFIntegrationPlugin.getSymbolicName(), IStatus.OK, "Some viewpoints are missing", null);
 			try {
 				// need to load model file into the resourceset
 				Resource resource = resourceSet.getResource(URI.createPlatformResourceURI(fileToMigrate.getFullPath().toString(), false), true);
@@ -54,10 +53,10 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
 				for (String id : viewpointUsages.keySet())
 				{
 					if (ViewpointManager.getViewpoint(id) == null)
-						status.add(new Status(IStatus.ERROR, Activator.getSymbolicName(), "The viewpoint '"+id+"' is missing"));
+						status.add(new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(), "The viewpoint '"+id+"' is missing"));
 				}
 			} catch (Exception e) {
-				status.add( new Status(IStatus.ERROR, Activator.getSymbolicName(), e.getMessage()));
+				status.add( new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(), e.getMessage()));
 			} finally {
 				for (Resource r : resourceSet.getResources()) {
 					r.unload();

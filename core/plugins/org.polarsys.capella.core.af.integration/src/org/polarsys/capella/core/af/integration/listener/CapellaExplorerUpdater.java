@@ -15,7 +15,6 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.navigator.CommonNavigator;
-import org.polarsys.kitalpha.emde.extension.ModelExtensionListener;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionOverallListener;
 
 /**

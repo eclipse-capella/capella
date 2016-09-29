@@ -60,5 +60,10 @@
              class="org.polarsys.capella.core.af.integration.listener.MetadataCheckListener">
        </editingDomainListener>
     </extension>
-    
+    <extension
+         point="org.polarsys.kitalpha.ad.metadata.contribution">
+       <contribution
+             class="org.polarsys.capella.core.af.integration.CapellaContribution">
+       </contribution>
+    </extension>
 </plugin>

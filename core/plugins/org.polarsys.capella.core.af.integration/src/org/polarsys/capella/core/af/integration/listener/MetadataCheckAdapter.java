@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.polarsys.capella.core.af.integration.AFIntegrationPlugin;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
 import org.polarsys.kitalpha.ad.metadata.helpers.ViewpointMetadata;
@@ -89,8 +90,7 @@ public class MetadataCheckAdapter extends AdapterImpl {
 	protected void checkMetadataCompliancy(ResourceSet resourceSet) {
 		IStatus result = ViewpointManager.checkViewpointsCompliancy(resourceSet);
 		if (!result.isOK()) {
-			IStatus capella = ViewpointManager.checkViewpointCompliancy(resourceSet,
-					"org.polarsys.capella.core.viewpoint");
+			IStatus capella = ViewpointManager.checkViewpointCompliancy(resourceSet, AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID);
 			if (!capella.isOK()) {
 				throw new WrongCapellaVersionException(capella);
 			}

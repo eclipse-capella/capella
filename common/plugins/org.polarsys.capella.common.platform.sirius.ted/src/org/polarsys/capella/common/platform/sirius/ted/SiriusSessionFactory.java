@@ -53,10 +53,9 @@ import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
+import org.polarsys.kitalpha.ad.metadata.helpers.Contribution;
 import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
 import org.polarsys.kitalpha.ad.metadata.helpers.ViewpointMetadata;
-import org.polarsys.kitalpha.ad.services.manager.ViewpointActivationException;
-import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
 
 /**
  * This class is a fork of {@link SessionFactoryImpl}.<br>
@@ -237,10 +236,9 @@ public class SiriusSessionFactory implements SessionFactory {
       progress.beginTask("Create an empty metadata resource", 1);
       Resource resource = MetadataHelper.getViewpointMetadata(domain.getResourceSet()).initMetadataStorage(uri);
       progress.worked(1);
-      try {
-        progress.beginTask("Start using Capella viewpoint", 1);
-        ViewpointManager.getInstance(domain.getResourceSet()).startUse("org.polarsys.capella.core.viewpoint");
-      } catch (ViewpointActivationException e) {
+      progress.beginTask("Start using Capella viewpoint", 1);
+      for (Contribution contrib : Contribution.getContributions()) {
+        contrib.update(domain.getResourceSet());
       }
       progress.worked(1);
 

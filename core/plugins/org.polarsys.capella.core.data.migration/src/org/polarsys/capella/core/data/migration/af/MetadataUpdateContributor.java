@@ -11,7 +11,6 @@
 package org.polarsys.capella.core.data.migration.af;
 
 import java.io.IOException;
-import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -23,7 +22,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.osgi.framework.Version;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.af.integration.Messages;
@@ -34,12 +32,9 @@ import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.data.migration.contributor.AbstractMigrationContributor;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
-import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
-import org.polarsys.kitalpha.model.common.scrutiny.contrib.viewpoints.scrutinizes.UsedAFViewpoints;
 
 /**
  * @author Thomas Guiu
- *
  */
 public class MetadataUpdateContributor extends AbstractMigrationContributor {
 
@@ -90,8 +85,6 @@ public class MetadataUpdateContributor extends AbstractMigrationContributor {
 			public XMLResource doCreateResource(URI uri, MigrationContext context) {
 				return null;
 			}
-
 		};
 	}
-
 }
