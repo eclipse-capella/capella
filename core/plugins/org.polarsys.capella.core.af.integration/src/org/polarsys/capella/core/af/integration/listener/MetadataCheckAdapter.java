@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.polarsys.capella.core.af.integration.AFIntegrationPlugin;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
@@ -24,38 +25,43 @@ import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
 
 public class MetadataCheckAdapter extends AdapterImpl {
 
-	private boolean force = false;
+  private boolean force = false;
 
-	public boolean isForced() {
-		return force;
-	}
+  public boolean isForced() {
+    return force;
+  }
 
-	public MetadataCheckAdapter() {
-		this(false);
-	}
+  public MetadataCheckAdapter() {
+    this(false);
+  }
 
-	public MetadataCheckAdapter(boolean force) {
-		this.force = force;
-	}
+  public MetadataCheckAdapter(boolean force) {
+    this.force = force;
+  }
 
-	@Override
-	public void notifyChanged(Notification notification) {
-		Object notifier = notification.getNotifier();
-		if (notifier instanceof ResourceSet && notification.getEventType() == Notification.ADD
-				&& notification.getNewValue() instanceof Resource) {
-			ResourceSet resourceSet = (ResourceSet) notifier;
-			Resource res = (Resource) notification.getNewValue();
-			checkMetadata(resourceSet, res);
-		}
-	}
+  @Override
+  public void notifyChanged(Notification notification) {
+    Object notifier = notification.getNotifier();
+    if (notifier instanceof ResourceSet && notification.getEventType() == Notification.ADD
+        && notification.getNewValue() instanceof Resource) {
 
-	protected void checkMetadata(ResourceSet resourceSet, Resource res) {
-		URI uri = res.getURI();
+      ResourceSet resourceSet = (ResourceSet) notifier;
+      Resource res = (Resource) notification.getNewValue();
+      checkMetadata(resourceSet, res);
+    }
+  }
 
-		if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(uri.fileExtension()) && uri.isPlatformResource() && CapellaResourceHelper.isCapellaProject(res)) {
-		  doCheckMetadata(resourceSet, uri);
-		}
-	}
+  protected void checkMetadata(ResourceSet resourceSet, Resource res) {
+    URI uri = res.getURI();
+
+    if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(uri.fileExtension()) && uri.isPlatformResource()
+        && CapellaResourceHelper.isCapellaProject(res)) {
+      if (sessionExist(uri)) {
+        return;
+      }
+      doCheckMetadata(resourceSet, uri);
+    }
+  }
 
   protected void doCheckMetadata(ResourceSet resourceSet, URI uri) {
     loadRelativeMetadata(uri, resourceSet);
@@ -63,39 +69,43 @@ public class MetadataCheckAdapter extends AdapterImpl {
     checkMetadataCompliancy(resourceSet);
   }
 
-	protected void loadRelativeMetadata(URI uri, ResourceSet resourceSet) {
-		// trying to load the relative metadata (afm)
-		URI afmUri = uri.trimFileExtension().appendFileExtension(ViewpointMetadata.STORAGE_EXTENSION);
-		try {
-			resourceSet.getResource(afmUri, true);
-		} catch (MetadataException e) {
-			throw e;
-		} catch (Exception e) {
-			// resource not found then proxy resource cleanning
-			Resource resource = resourceSet.getResource(afmUri, false);
-			if (resource != null && resource.getContents().isEmpty()) {
-				resource.unload();
-				resourceSet.getResources().remove(resource);
-			}
-		}
-	}
+  protected void loadRelativeMetadata(URI uri, ResourceSet resourceSet) {
+    // trying to load the relative metadata (afm)
+    URI afmUri = uri.trimFileExtension().appendFileExtension(ViewpointMetadata.STORAGE_EXTENSION);
+    try {
+      resourceSet.getResource(afmUri, true);
+    } catch (MetadataException e) {
+      throw e;
+    } catch (Exception e) {
+      // resource not found then proxy resource cleanning
+      Resource resource = resourceSet.getResource(afmUri, false);
+      if (resource != null && resource.getContents().isEmpty()) {
+        resource.unload();
+        resourceSet.getResources().remove(resource);
+      }
+    }
+  }
 
-	protected void checkNoMetadata(ResourceSet resourceSet) {
-		if (!ViewpointManager.getInstance(resourceSet).hasMetadata()) {
-			throw new NoMetadataException(MetadataHelper.getViewpointMetadata(resourceSet)
-					.getExpectedMetadataStorageURI().toPlatformString(true));
-		}
-	}
+  protected void checkNoMetadata(ResourceSet resourceSet) {
+    if (!ViewpointManager.getInstance(resourceSet).hasMetadata()) {
+      throw new NoMetadataException(
+          MetadataHelper.getViewpointMetadata(resourceSet).getExpectedMetadataStorageURI().toPlatformString(true));
+    }
+  }
 
-	protected void checkMetadataCompliancy(ResourceSet resourceSet) {
-		IStatus result = ViewpointManager.checkViewpointsCompliancy(resourceSet);
-		if (!result.isOK()) {
-			IStatus capella = ViewpointManager.checkViewpointCompliancy(resourceSet, AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID);
-			if (!capella.isOK()) {
-				throw new WrongCapellaVersionException(capella);
-			}
-			throw new MetadataException(result);
-		}
-	}
+  protected void checkMetadataCompliancy(ResourceSet resourceSet) {
+    IStatus result = ViewpointManager.checkViewpointsCompliancy(resourceSet);
+    if (!result.isOK()) {
+      IStatus capella = ViewpointManager.checkViewpointCompliancy(resourceSet,
+          AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID);
+      if (!capella.isOK()) {
+        throw new WrongCapellaVersionException(capella);
+      }
+      throw new MetadataException(result);
+    }
+  }
 
+  protected boolean sessionExist(URI uri) {
+    return SessionManager.INSTANCE.getExistingSession(uri) != null;
+  }
 }
