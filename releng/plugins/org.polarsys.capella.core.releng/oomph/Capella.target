@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
-<target name="Generated from Capella Dependencies" sequenceNumber="5">
+<target name="Generated from Capella Dependencies" sequenceNumber="1">
   <locations>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.amalgam.explorer.activity.feature.group" version="0.0.0"/>
@@ -32,6 +32,7 @@
       <repository location="http://download.eclipse.org/releases/mars"/>
       <repository location="http://download.eclipse.org/cbi/updates/license"/>
       <repository location="https://hudson.polarsys.org/capella/view/Capella-master/job/capella-master/lastSuccessfulBuild/artifact/result/publish/org.polarsys.capella/site.p2"/>
+      <repository location="http://dist.springsource.org/snapshot/GRECLIPSE/e4.5/"/>
       <repository location="http://download.eclipse.org/eclipse/updates/4.5"/>
     </location>
   </locations>

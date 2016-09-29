@@ -690,6 +690,108 @@
         name="master"/>
     <description>Select this work on capella addons source code</description>
   </project>
+  <project name="Capella Tools Developer">
+    <setupTask
+        xsi:type="git:GitCloneTask"
+        id="git.clone.tools"
+        remoteURI="capella/capella-tools.git">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/InducedChoices">
+        <detail
+            key="inherit">
+          <value>polarsys.git.gerrit.remoteURIs</value>
+        </detail>
+        <detail
+            key="label">
+          <value>${scope.project.label} repository</value>
+        </detail>
+        <detail
+            key="target">
+          <value>remoteURI</value>
+        </detail>
+      </annotation>
+      <configSections
+          name="core">
+        <properties
+            key="autocrlf"
+            value="false"/>
+      </configSections>
+      <description>${scope.project.label}</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup.targlets:TargletTask">
+      <targlet
+          name="Capella Tools Source Code">
+        <requirement
+            name="org.polarsys.capella.groovy.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.capella.model2ecore.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.capella.ocl.requester.feature.feature.group"/>
+        <sourceLocator
+            rootFolder="${git.clone.tools.location}"
+            locateNestedProjects="true"/>
+      </targlet>
+      <targlet
+          name="Capella Groovy Dependencies"
+          activeRepositoryList="${eclipse.target.platform}">
+        <requirement
+            name="org.codehaus.groovy.eclipse.feature.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.6/"/>
+        </repositoryList>
+        <repositoryList
+            name="Mars">
+          <repository
+              url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.5/"/>
+        </repositoryList>
+      </targlet>
+    </setupTask>
+    <setupTask
+        xsi:type="setup.workingsets:WorkingSetTask">
+      <workingSet
+          name="Capella Groovy">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="org\.polarsys\.capella\.groovy(\..*)?"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella OCL Requestor">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="org\.polarsys\.capella\.ocl\.requester(\..*)?"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella Model2Ecore">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="org\.polarsys\.capella\.model2ecore(\..*)?"/>
+        </predicate>
+      </workingSet>
+    </setupTask>
+    <setupTask
+        xsi:type="setup.p2:P2Task">
+      <requirement
+          name="org.codehaus.groovy.eclipse.feature.feature.group"/>
+      <repository
+          url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.6/"/>
+      <repository
+          url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.5/"/>
+    </setupTask>
+    <stream
+        name="master"/>
+    <description>Select this work on capella addons source code</description>
+  </project>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
       href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
