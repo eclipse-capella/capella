@@ -168,7 +168,7 @@
           source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
         <detail
             key="location">
-          <value>${git.clone.capella.location/releng/plugins/org.polarsys.capella.core.releng/oomph/Capella.target}</value>
+          <value>${java.io.tmpdir/Capella.target}</value>
         </detail>
         <detail
             key="extraUnits">
@@ -484,6 +484,10 @@
           summary="Closed Capella Bugs"
           url="/buglist.cgi?bug_status=RESOLVED&amp;bug_status=VERIFIED&amp;component=Capella%20Studio&amp;component=Core&amp;component=Detachment&amp;component=Diagram&amp;component=Diff-Merge&amp;component=Documentation&amp;component=Forum&amp;component=General&amp;component=Library&amp;component=ModelValidation&amp;component=Patterns&amp;component=Properties&amp;component=Rec-Rpl&amp;component=Releng&amp;component=Transition&amp;component=UI&amp;component=Website&amp;list_id=21077&amp;product=Capella&amp;query_format=advanced&amp;resolution=---"/>
     </setupTask>
+    <setupTask
+        xsi:type="setup:ResourceCopyTask"
+        sourceURL="${java.io.tmpdir|uri}/Capella.target"
+        targetURL="${git.clone.capella.location|uri}/releng/plugins/org.polarsys.capella.core.releng/oomph/Capella.target"/>
     <project
         name="Capella Metamodel Developer"
         label="">
