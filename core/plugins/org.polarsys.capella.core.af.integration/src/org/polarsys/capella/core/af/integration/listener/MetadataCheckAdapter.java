@@ -7,7 +7,7 @@
  *  
  * Contributors:
  *    Thales - initial API and implementation
- ********************************	***********************************************/
+ *******************************************************************************/
 package org.polarsys.capella.core.af.integration.listener;
 
 import org.eclipse.core.runtime.IStatus;
@@ -16,7 +16,6 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.polarsys.capella.core.af.integration.AFIntegrationPlugin;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
@@ -56,9 +55,6 @@ public class MetadataCheckAdapter extends AdapterImpl {
 
     if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(uri.fileExtension()) && uri.isPlatformResource()
         && CapellaResourceHelper.isCapellaProject(res)) {
-      if (sessionExist(uri)) {
-        return;
-      }
       doCheckMetadata(resourceSet, uri);
     }
   }
@@ -103,9 +99,5 @@ public class MetadataCheckAdapter extends AdapterImpl {
       }
       throw new MetadataException(result);
     }
-  }
-
-  protected boolean sessionExist(URI uri) {
-    return SessionManager.INSTANCE.getExistingSession(uri) != null;
   }
 }
