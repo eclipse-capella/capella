@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 
 /**
@@ -30,18 +29,18 @@ public class PreDeleteStructureCommand extends DeleteStructureCommand {
   /**
    * Pre-delete handler.
    */
-  private PreDeleteHandler _handler;
+  private PreDeleteHandler handler;
 
   /**
    * Constructor.
-   * @param editingDomain_p
-   * @param elements_p
-   * @param deleteParts_p
+   * @param editingDomain
+   * @param elements
+   * @param deleteParts
    * @param handler The resulting notifications chain, faking the delete behavior, plus shared data.
    */
-  public PreDeleteStructureCommand(EditingDomain editingDomain_p, Collection<?> elements_p, boolean deleteParts_p, PreDeleteHandler handler_p) {
-    super(editingDomain_p, elements_p, deleteParts_p);
-    _handler = handler_p;
+  public PreDeleteStructureCommand(EditingDomain editingDomain, Collection<?> elements, boolean deleteParts, PreDeleteHandler handler) {
+	  super(editingDomain, elements, deleteParts);
+	  this.handler = handler;
   }
 
   /**
@@ -51,9 +50,9 @@ public class PreDeleteStructureCommand extends DeleteStructureCommand {
   @Override
   protected void doPrepare() {
     // Fake deleting representations according to semantic elements.
-    Collection<? extends EObject> allContainedRepresentationsFor = RepresentationHelper.getAllRepresentationsTargetedBy(_elementsToDelete);
-    append(new PreRemoveCommand((Collection<EObject>) allContainedRepresentationsFor, _handler));
-    append(new PreRemoveCommand((Collection<EObject>) _elementsToDelete, _handler));
+    Collection<? extends EObject> allContainedRepresentationsFor = RepresentationHelper.getAllRepresentationsTargetedBy(getElementsToDelete());
+    append(new PreRemoveCommand((Collection<EObject>) allContainedRepresentationsFor, handler));
+    append(new PreRemoveCommand((Collection<EObject>) getElementsToDelete(), handler));
   }
 
   /**
@@ -61,32 +60,32 @@ public class PreDeleteStructureCommand extends DeleteStructureCommand {
    *      org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected void deletePointingReference(EObject referencingEObject_p, EStructuralFeature feature_p, EObject referenceToDelete_p) {
-    if (feature_p.isMany()) {
-      _handler._notifications.add(PreRemoveCommand.createNotification((InternalEObject) referencingEObject_p, Notification.REMOVE, referenceToDelete_p,
-          feature_p));
+  protected void deletePointingReference(EObject referencingEObject, EStructuralFeature feature, EObject referenceToDelete) {
+    if (feature.isMany()) {
+      handler._notifications.add(PreRemoveCommand.createNotification((InternalEObject) referencingEObject, Notification.REMOVE, referenceToDelete,
+          feature));
     } else {
-      _handler._notifications
-          .add(PreRemoveCommand.createNotification((InternalEObject) referencingEObject_p, Notification.SET, referenceToDelete_p, feature_p));
+      handler._notifications
+          .add(PreRemoveCommand.createNotification((InternalEObject) referencingEObject, Notification.SET, referenceToDelete, feature));
     }
     // Delete specific semantic structure, if any.
-    deleteSemanticStructure(referenceToDelete_p, referencingEObject_p, feature_p);
+    deleteSemanticStructure(referenceToDelete, referencingEObject, feature);
   }
 
   /**
    * @see org.polarsys.capella.core.model.handler.command.DeleteStructureCommand#doDeleteElement(org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected Command doDeleteElement(EObject sourceObject_p) {
-    return new PreDeleteCommand(_editingDomain, Collections.singletonList(sourceObject_p), _handler);
+  protected Command doDeleteElement(EObject sourceObject) {
+    return new PreDeleteCommand(getEditingDomain(), Collections.singletonList(sourceObject), handler);
   }
 
   /**
    * @see org.polarsys.capella.core.model.handler.command.DeleteStructureCommand#doDeleteStructure(org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected Command doDeleteStructure(EObject sourceObject_p) {
-    return new PreDeleteStructureCommand(_editingDomain, Collections.singletonList(sourceObject_p), _deleteParts, _handler);
+  protected Command doDeleteStructure(EObject sourceObject) {
+    return new PreDeleteStructureCommand(getEditingDomain(), Collections.singletonList(sourceObject), deleteParts, handler);
   }
 
   /**

@@ -30,6 +30,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -45,23 +46,22 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.PlatformUI;
-
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
-import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
-import org.polarsys.capella.core.ui.toolkit.dialogs.ConfirmDeleteCapellaElementDialog;
-import org.polarsys.capella.core.ui.toolkit.dialogs.ImpactAnalysisDialog;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.command.DeleteStructureCommand;
 import org.polarsys.capella.core.model.handler.command.IDeleteHelper;
-import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.command.PreDeleteHandler;
 import org.polarsys.capella.core.model.handler.command.PreDeleteStructureCommand;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.IDeletePreferences;
+import org.polarsys.capella.core.ui.toolkit.dialogs.ConfirmDeleteCapellaElementDialog;
+import org.polarsys.capella.core.ui.toolkit.dialogs.ImpactAnalysisDialog;
 
 /**
  * Capella delete command facade.
@@ -117,7 +117,12 @@ public class CapellaDeleteCommand extends AbstractCommand {
    * The execution manager.
    */
   private ExecutionManager _executionManager;
-
+  
+  /**
+   * The editing domain (used when no execution manager is available).
+   */
+  private EditingDomain _editingDomain;
+  
   /**
    * Are we notifying the long running event registry?
    */
@@ -139,6 +144,17 @@ public class CapellaDeleteCommand extends AbstractCommand {
   public CapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection) {
     this(executionManager, selection, true);
   }
+  
+  /**
+   * 
+   * <h2>Warning: This constructor doesn't support execution manager</i></h2><br>
+   * @param editingDomain
+   * @param selection
+   */
+  public CapellaDeleteCommand(EditingDomain editingDomain, Collection<?> selection) {
+	  this(null, selection, false, IDeletePreferences.INSTANCE.isConfirmationRequired(), true);
+    this._editingDomain = editingDomain;
+  }
 
   /**
    * Equivalent to
@@ -153,14 +169,14 @@ public class CapellaDeleteCommand extends AbstractCommand {
   /**
    * Constructor.
    * @param executionManager
-   * @param collection
+   * @param selection
    * @param ensureTransaction Should it be executed against the specified execution manager directly (<code>true</code>) or not (<code>false</code>) ?
    * @param monitorDelete Should the user be asked for confirmation (<code>true</code>) or not (<code>false</code>) ?
    * @param longOperationEvents Should events about this long running operation flow be sent ? <code>true</code> if so, <code>false</code> otherwise.
    */
-  public CapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection, boolean ensureTransaction, boolean confirmDelete,
-      boolean longOperationEvents) {
+  public CapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection, boolean ensureTransaction, boolean confirmDelete, boolean longOperationEvents) {
     _executionManager = executionManager;
+    _editingDomain = (executionManager != null) ? executionManager.getEditingDomain() : null;
     _ensureTransaction = ensureTransaction;
     _confirmDelete = confirmDelete;
     _sendLongRunningEvents = longOperationEvents;
@@ -281,16 +297,15 @@ public class CapellaDeleteCommand extends AbstractCommand {
       }
     }
     try {
-      _realCommand = new DeleteStructureCommand(_executionManager.getEditingDomain(), getExpandedSelection(), isDeletingPartTypesForMultiPartProjects()) {
-        @Override
-        protected void doPrepare() {
-          // Use DeleteRepresentation here since this command handles open representation editors.
-          append(new DeleteRepresentationCommand((TransactionalEditingDomain) _editingDomain,
-              RepresentationHelper.getAllRepresentationsTargetedBy(getExpandedSelection())));
-          super.doPrepare();
-        }
-
-      };
+    	_realCommand = new DeleteStructureCommand(_editingDomain, getExpandedSelection(), isDeletingPartTypesForMultiPartProjects()) {
+    		@Override
+    		protected void doPrepare() {
+    			// Use DeleteRepresentation here since this command handles open representation editors.
+    			append(new DeleteRepresentationCommand((TransactionalEditingDomain) getEditingDomain(),
+    					RepresentationHelper.getAllRepresentationsTargetedBy(getExpandedSelection())));
+    			super.doPrepare();
+    		}
+    	};
       if (_realCommand.canExecute()) {
         _realCommand.execute();
       }
@@ -531,7 +546,7 @@ public class CapellaDeleteCommand extends AbstractCommand {
 
       // Call predeletion command.
       Command preDeletion =
-          new PreDeleteStructureCommand(_executionManager.getEditingDomain(), getExpandedSelection(), isDeletingPartTypesForMultiPartProjects(), handler);
+          new PreDeleteStructureCommand(_editingDomain, getExpandedSelection(), isDeletingPartTypesForMultiPartProjects(), handler);
       if (preDeletion.canExecute()) {
         preDeletion.execute();
       }

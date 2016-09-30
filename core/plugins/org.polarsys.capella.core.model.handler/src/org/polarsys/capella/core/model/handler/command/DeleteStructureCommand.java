@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,48 +25,48 @@ public class DeleteStructureCommand extends DeleteCommand {
   /**
    * Should undefined parts be deleted as well ?
    */
-  protected boolean _deleteParts;
+  protected boolean deleteParts;
 
   /**
    * Constructor.
-   * @param editingDomain_p
-   * @param elements_p
-   * @param deleteParts_p Remove parts that are no longer typed because of the deletion ? <code>true</code> if so, <code>false</code> otherwise.
+   * @param editingDomain
+   * @param elements
+   * @param deleteParts Remove parts that are no longer typed because of the deletion ? <code>true</code> if so, <code>false</code> otherwise.
    */
-  public DeleteStructureCommand(EditingDomain editingDomain_p, Collection<?> elements_p, boolean deleteParts_p) {
-    super(editingDomain_p, elements_p);
-    _deleteParts = deleteParts_p;
-  }
+  public DeleteStructureCommand(EditingDomain editingDomain, Collection<?> elements, boolean deleteParts) {
+	    super(editingDomain, elements);
+	    this.deleteParts = deleteParts;
+	  }
 
   /**
    * @see org.polarsys.capella.core.model.handler.command.DeleteCommand#deletePointingReference(org.eclipse.emf.ecore.EObject,
    *      org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected void deletePointingReference(EObject referencingEObject_p, EStructuralFeature feature_p, EObject referenceToDelete_p) {
-    super.deletePointingReference(referencingEObject_p, feature_p, referenceToDelete_p);
+  protected void deletePointingReference(EObject referencingEObject, EStructuralFeature feature, EObject referenceToDelete) {
+    super.deletePointingReference(referencingEObject, feature, referenceToDelete);
 
     // Delete specific semantic structure, if any.
-    deleteSemanticStructure(referenceToDelete_p, referencingEObject_p, feature_p);
+    deleteSemanticStructure(referenceToDelete, referencingEObject, feature);
   }
 
   /**
    * Handles the deletion of pending semantic elements for specified link (if it makes sense to treat it as a link).
-   * @param linkObject_p
-   * @param sourceObject_p
-   * @param feature_p
+   * @param linkObject
+   * @param sourceObject
+   * @param feature
    */
-  protected void deleteSemanticStructure(EObject linkObject_p, EObject sourceObject_p, EStructuralFeature feature_p) {
+  protected void deleteSemanticStructure(EObject linkObject, EObject sourceObject, EStructuralFeature feature) {
     IDeleteHelper helper = IDeleteHelper.DEFAULT;
 
-    if (helper.isDeleteSemanticStructure(sourceObject_p, linkObject_p, feature_p)) {
-      appendAndExecute(doDeleteStructure(sourceObject_p));
+    if (helper.isDeleteSemanticStructure(sourceObject, linkObject, feature)) {
+      appendAndExecute(doDeleteStructure(sourceObject));
 
-    } else if (helper.isDeleteElement(sourceObject_p, linkObject_p, feature_p)) {
-      appendAndExecute(doDeleteElement(sourceObject_p));
+    } else if (helper.isDeleteElement(sourceObject, linkObject, feature)) {
+      appendAndExecute(doDeleteElement(sourceObject));
     }
 
-    Collection<EObject> additionnalElements = helper.getAdditionalElements(sourceObject_p, linkObject_p, feature_p);
+    Collection<EObject> additionnalElements = helper.getAdditionalElements(sourceObject, linkObject, feature);
     if (additionnalElements != null) {
       for (EObject object : additionnalElements) {
         appendAndExecute(doDeleteStructure(object));
@@ -74,14 +74,13 @@ public class DeleteStructureCommand extends DeleteCommand {
     }
 
     if (runAdditionalCommands()) {
-      Collection<Command> additionnalCommands = helper.getAdditionalCommands(sourceObject_p, linkObject_p, feature_p);
+      Collection<Command> additionnalCommands = helper.getAdditionalCommands(sourceObject, linkObject, feature);
       if (additionnalCommands != null) {
         for (Command object : additionnalCommands) {
           appendAndExecute(object);
         }
       }
     }
-
   }
 
   /**
@@ -93,20 +92,19 @@ public class DeleteStructureCommand extends DeleteCommand {
 
   /**
    * Do return a new delete command targeting specified element.
-   * @param sourceObject_p
+   * @param sourceObject
    * @return
    */
-  protected Command doDeleteElement(EObject sourceObject_p) {
-    return new DeleteCommand(_editingDomain, Collections.singletonList(sourceObject_p));
+  protected Command doDeleteElement(EObject sourceObject) {
+    return new DeleteCommand(getEditingDomain(), Collections.singletonList(sourceObject));
   }
 
   /**
    * Do return a new delete structure command targeting specified element.
-   * @param sourceObject_p
+   * @param sourceObject
    * @return
    */
-  protected Command doDeleteStructure(EObject sourceObject_p) {
-    return new DeleteStructureCommand(_editingDomain, Collections.singletonList(sourceObject_p), _deleteParts);
+  protected Command doDeleteStructure(EObject sourceObject) {
+    return new DeleteStructureCommand(getEditingDomain(), Collections.singletonList(sourceObject), deleteParts);
   }
-
 }

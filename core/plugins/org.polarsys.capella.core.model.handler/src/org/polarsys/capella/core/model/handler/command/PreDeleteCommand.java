@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,17 +26,17 @@ public class PreDeleteCommand extends DeleteCommand {
   /**
    * Pre-delete handler.
    */
-  private PreDeleteHandler _handler;
+  private PreDeleteHandler handler;
 
   /**
    * Constructor.
-   * @param editingDomain_p
-   * @param elements_p
-   * @param handler_p The resulting notifications chain, faking the delete behavior, plus shared data.
+   * @param editingDomain
+   * @param elements
+   * @param handler The resulting notifications chain, faking the delete behavior, plus shared data.
    */
-  public PreDeleteCommand(EditingDomain editingDomain_p, Collection<?> elements_p, PreDeleteHandler handler_p) {
-    super(editingDomain_p, elements_p);
-    _handler = handler_p;
+  public PreDeleteCommand(EditingDomain editingDomain, Collection<?> elements, PreDeleteHandler handler) {
+	  super(editingDomain, elements);
+	  this.handler = handler;
   }
 
   /**
@@ -45,7 +45,7 @@ public class PreDeleteCommand extends DeleteCommand {
   @SuppressWarnings("unchecked")
   @Override
   protected void doPrepare() {
-    append(new PreRemoveCommand((Collection<EObject>) _elementsToDelete, _handler));
+    append(new PreRemoveCommand((Collection<EObject>) getElementsToDelete(), handler));
   }
 
   /**
@@ -53,13 +53,13 @@ public class PreDeleteCommand extends DeleteCommand {
    *      org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected void deletePointingReference(EObject referencingEObject_p, EStructuralFeature feature_p, EObject referenceToDelete_p) {
-    if (feature_p.isMany()) {
-      _handler._notifications.add(PreRemoveCommand.createNotification((InternalEObject) referencingEObject_p, Notification.REMOVE, referenceToDelete_p,
-          feature_p));
+  protected void deletePointingReference(EObject referencingEObject, EStructuralFeature feature, EObject referenceToDelete) {
+    if (feature.isMany()) {
+      handler._notifications.add(PreRemoveCommand.createNotification((InternalEObject) referencingEObject, Notification.REMOVE, referenceToDelete,
+          feature));
     } else {
-      _handler._notifications
-          .add(PreRemoveCommand.createNotification((InternalEObject) referencingEObject_p, Notification.SET, referenceToDelete_p, feature_p));
+      handler._notifications
+          .add(PreRemoveCommand.createNotification((InternalEObject) referencingEObject, Notification.SET, referenceToDelete, feature));
     }
   }
 

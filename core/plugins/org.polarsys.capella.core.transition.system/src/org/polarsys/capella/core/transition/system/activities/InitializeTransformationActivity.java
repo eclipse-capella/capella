@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.transition.system.activities;
 
 import java.util.ArrayList;
@@ -48,7 +47,8 @@ public class InitializeTransformationActivity extends org.polarsys.capella.core.
   }
 
   /**
-   * @param blockArchitecture_p
+   * @param source
+   * @param context
    * @return
    */
   @Override
