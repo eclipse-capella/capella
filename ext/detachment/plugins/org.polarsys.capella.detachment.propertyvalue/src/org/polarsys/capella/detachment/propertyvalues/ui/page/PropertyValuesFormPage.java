@@ -21,7 +21,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.layout.TreeColumnLayout;
+import org.eclipse.jface.viewers.CheckboxTreeViewer;
 import org.eclipse.jface.viewers.ColumnWeightData;
+import org.eclipse.jface.viewers.ICheckStateProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
@@ -31,7 +33,6 @@ import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -50,10 +51,6 @@ import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
-import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
-import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
-import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
-import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
 import org.polarsys.capella.detachment.propertyvalue.messages.Messages;
 import org.polarsys.kitalpha.model.common.scrutiny.interfaces.IScrutinize;
 
@@ -101,7 +98,7 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 			Map<EObject, Boolean> result = (Map<EObject, Boolean>)iScrutinize.getAnalysisResult();
 			for (Entry<EObject, Boolean> e : result.entrySet()) {
 				EObject key = e.getKey();
-				if (!PropertyValueHelper.lookupSuperHierarchy(key, AbstractPropertyValue.class, PropertyValueGroup.class, PropertyValuePkg.class, EnumerationPropertyType.class)){
+				if (!PropertyValueHelper.isChildOfPropertyValue(key)){
 					input.add(key);
 				}
 			}
@@ -134,64 +131,52 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 	}
 
 	private void addListeners() {
-		treeViewer.getTree().addSelectionListener(new SelectionListener() {
+		treeViewer.getTree().addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				int detail = e.detail;
-				if (detail == SWT.CHECK) {
+				if (detail == SWT.CHECK){
 					Widget item = e.item;
-					if (item != null) {
-						TreeItem treeItem = (TreeItem) item;
-						TreeItem parentItem = treeItem.getParentItem();
-						boolean checked = treeItem.getChecked();
-						if (parentItem != null){
-							boolean parentChecked = parentItem.getChecked();
-							if (parentChecked != checked && parentChecked){
-								treeItem.setChecked(parentChecked);
-							} else {
-								updateCkeckbox(item, treeItem, checked);
-							}
-						} else {
-							updateCkeckbox(item, treeItem, checked);
-						}
+					if (item != null){
+						TreeItem treeItem = (TreeItem)item;
+						updateChildren(treeItem, treeItem.getChecked());
+						updateParent(treeItem, treeItem.getChecked());
 					}
 				}
-			}
-
-			private void updateCkeckbox(Widget item, TreeItem treeItem, boolean checked) {
-				Object data = item.getData();
-				updateResult(data, checked);
-				checkChildren(treeItem, checked);
-			}
-
-			private void checkChildren(TreeItem treeItem, boolean checked) {
-				TreeItem[] items = treeItem.getItems();
-				if (items != null && items.length > 0){
-					for (TreeItem i : items) {
-						i.setChecked(checked);
-						checkChildren(i, checked);
-					}
-				}
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 		});
 		treeViewer.getTree().addListener(SWT.Expand, new Listener() {
-			
+
 			@Override
 			public void handleEvent(Event event) {
-				updateTree();
+				Widget item = event.item;
+				if (item != null){
+					TreeItem i = (TreeItem)item;
+					if (i.getChecked()){
+						updateChildren(i, i.getChecked());
+						updateParent(i, i.getChecked());
+					}
+				}
+				treeViewer.refresh();
+			}
+		});
+		
+		((CheckboxTreeViewer)treeViewer).setCheckStateProvider(new ICheckStateProvider() {
+			
+			@Override
+			public boolean isGrayed(Object element) {
+				return false;
+			}
+			
+			@Override
+			public boolean isChecked(Object element) {
+				return getStateOf(element);
 			}
 		});
 	}
 
 	private void setTreeProviders() {
-		PropertyValueContentProvider provider = new PropertyValueContentProvider();
-		treeViewer.setContentProvider(provider);
-		
+		treeViewer.setContentProvider(new PropertyValueContentProvider());
 		treeViewer.setLabelProvider(new PropertyValueLabelProvider());
 	}
 
@@ -229,7 +214,7 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 
 	private Tree createTreeViewer(final FormToolkit tk, GridData gridData, Composite treeTableComposite) {
 		Tree tree = tk.createTree(treeTableComposite, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CHECK | SWT.MULTI);
-		treeViewer = new TreeViewer(tree);
+		treeViewer = new CheckboxTreeViewer(tree);
 		treeViewer.getTree().setHeaderVisible(true);
 		treeViewer.getTree().setLayoutData(gridData);
 		return tree;
@@ -350,9 +335,10 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				updateResult(false);
 				TreeItem[] items = treeViewer.getTree().getItems();
+				updateResult(false);
 				for (TreeItem treeItem : items) {
+					treeItem.setChecked(false);
 					updateChildren(treeItem, false);
 				}
 			}
@@ -369,9 +355,10 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				updateResult(true);
 				TreeItem[] items = treeViewer.getTree().getItems();
+				updateResult(true);
 				for (TreeItem treeItem : items) {
+					treeItem.setChecked(true);
 					updateChildren(treeItem, true);
 				}
 			}
@@ -389,12 +376,13 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 					expandCollapse.setImage(Constants.getCollapsAllIcon());
 					expandCollapse.setToolTipText(Messages.Collapse_CollapsedAll);
 					treeViewer.expandAll();
-					updateTree();
 				} else {
 					expandCollapse.setImage(Constants.getExpandAllIcon());
 					expandCollapse.setToolTipText(Messages.Collapse_expandAll);
 					treeViewer.collapseAll();
 				}
+				//PropertyValueHelper.refreshViewerFromResult(treeViewer, getFinderID());
+				treeViewer.refresh();
 			}
 		});
 	}
@@ -415,17 +403,15 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 	private void updateResult(Object data, boolean checked) {
 		if (data != null){
 			Collection<IScrutinize> scrutinizers = PropertyValueHelper.getScrutinizers(getFinderID());
+			ITreeContentProvider contentProvider = (ITreeContentProvider) treeViewer.getContentProvider();
 			for (IScrutinize iScrutinize : scrutinizers) {
 				@SuppressWarnings("unchecked")
 				Map<Object, Boolean> analysisResult = (Map<Object, Boolean>) iScrutinize.getAnalysisResult();
 				if (analysisResult.containsKey(data)) {
 					analysisResult.put(data, checked);
-					ITreeContentProvider c = (ITreeContentProvider) treeViewer.getContentProvider();
-					Object[] children = c.getChildren(data);
-					if (children != null && children.length > 0){
-						for (Object d : children) {
-							updateResult(d, checked);
-						}
+					Object parent = contentProvider.getParent(data);
+					if (parent != null && analysisResult.containsKey(parent) && !checked){
+						analysisResult.put(parent, checked);
 					}
 				}
 			}
@@ -443,39 +429,47 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 			}
 		}
 	}
-	
-	private void updateChildren(TreeItem treeItem, boolean checked) {
-		if (treeItem != null){
-			treeItem.setChecked(checked);
-			TreeItem[] items = treeItem.getItems();
-			for (TreeItem ti : items) {
-				updateChildren(ti, checked);
-			}
-		}
-	}
-	
-	
-	private void updateTreeCheckbox(TreeItem treeItem) {
-		if (treeItem != null){
+
+	private void updateParent(TreeItem treeItem, boolean state) {
+		if (treeItem != null){ 
 			TreeItem parent = treeItem.getParentItem();
 			if (parent != null){
-				boolean parentChecked = parent.getChecked();
-				if (parentChecked && !treeItem.getChecked())
-					treeItem.setChecked(parentChecked);
-			}
-			TreeItem[] items = treeItem.getItems();
-			for (TreeItem ti : items) {
-				updateTreeCheckbox(ti);
+				boolean parentState = parent.getChecked();
+				Object data = parent.getData();
+				if (data != null && parentState && parentState != state){
+					updateResult(data, state);
+					parent.setChecked(state);
+					updateParent(parent, state);
+				}
 			}
 		}
 	}
 
-	private void updateTree() {
-		TreeItem[] items = treeViewer.getTree().getItems();
-		if (items != null && items.length > 0){
-			for (TreeItem treeItem : items) {
-				updateTreeCheckbox(treeItem);
+	private void updateChildren(TreeItem treeItem, boolean state) {
+		if (treeItem != null){ 
+			TreeItem[] items = treeItem.getItems();
+			Object data = treeItem.getData();
+			if (data != null){
+				updateResult(data, treeItem.getChecked());
+			}
+			if (items != null && items.length != 0){
+				for (TreeItem item : items) {
+					item.setChecked(state);
+					updateChildren(item, state);
+				}
 			}
 		}
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private boolean getStateOf(Object elt) {
+		Collection<IScrutinize> scrutinizers = PropertyValueHelper.getScrutinizers(getFinderID());
+		for (IScrutinize iScrutinize : scrutinizers) {
+			Map<Object, Boolean> analysisResult = (Map<Object, Boolean>) iScrutinize.getAnalysisResult();
+			if (analysisResult.containsKey(elt)){
+				return analysisResult.get(elt);
+			}
+		}
+		return false;
 	}
 }

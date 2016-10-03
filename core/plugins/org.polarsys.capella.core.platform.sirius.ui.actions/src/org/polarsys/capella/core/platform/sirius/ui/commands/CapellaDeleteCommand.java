@@ -150,9 +150,10 @@ public class CapellaDeleteCommand extends AbstractCommand {
    * <h2>Warning: This constructor doesn't support execution manager</i></h2><br>
    * @param editingDomain
    * @param selection
+   * @param confirmDelete
    */
-  public CapellaDeleteCommand(EditingDomain editingDomain, Collection<?> selection) {
-	  this(null, selection, false, IDeletePreferences.INSTANCE.isConfirmationRequired(), true);
+  public CapellaDeleteCommand(EditingDomain editingDomain, Collection<?> selection, boolean confirmDelete) {
+	  this(null, selection, false, confirmDelete, true);
     this._editingDomain = editingDomain;
   }
 

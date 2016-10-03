@@ -28,6 +28,8 @@ public class Messages extends NLS {
 	public static String PvPath;
 	public static String Title_GroupFiltering;
 	public static String Filter_PropertyValue;
+	public static String PVDetachmentCommand_RuntimeError;
+	public static String PVDetachmentCommand_MonitorMessage;
 	
 	
 	static {

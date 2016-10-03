@@ -24,28 +24,12 @@ import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
 import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
 import org.polarsys.capella.detachment.propertyvalue.Activator;
-import org.polarsys.capella.detachment.propertyvalue.messages.Messages;
 import org.polarsys.kitalpha.model.common.scrutiny.analyzer.ModelScrutinyException;
 import org.polarsys.kitalpha.model.common.scrutiny.analyzer.Scrutineer;
 import org.polarsys.kitalpha.model.common.scrutiny.interfaces.IScrutinize;
 import org.polarsys.kitalpha.model.common.scrutiny.registry.ModelScrutinyRegistry.RegistryElement;
 
 public class PropertyValueHelper {
-	
-	/**
-	 * Get a value of an String attribute type by calling its getter
-	 * @param eObject from which invoke the getter
-	 * @param getterName the getter to call
-	 * @return
-	 */
-	public static String getStringAttribute(Object eObject, String getterName) {
-		try {
-			String name = (String) eObject.getClass().getMethod(getterName).invoke(eObject); //$NON-NLS-1$
-			return getName(name); //$NON-NLS-1$
-		} catch (Exception e) {
-			throw new IllegalStateException(Messages.bind(Messages.Error_UnableToInvokeMethod, getterName, eObject.toString()), e);
-		}
-	}
 	
 	
 	@SuppressWarnings("rawtypes")
@@ -60,18 +44,14 @@ public class PropertyValueHelper {
 		return Collections.emptySet();
 	}
 	
-	private static String getName(String name) {
-		return name == null || name.isEmpty()? Constants.PROPERTY_EMPTY_NAME : name;
-	}
-	
 	/**
-	 * Lookup if the hierarchy of the element has the same type (e.ginterface)
+	 * Lookup if the hierarchy of the element has the same type (e.g., interface)
 	 * @param element
 	 * @param clazzes interface to lookup
 	 * @return
 	 */
 	public static boolean lookupSuperHierarchy(Object element, Class<?>... clazzes) {
-		if (element instanceof EObject){
+		if (isPropertyValue(element)){
 			EObject root = EcoreUtil.getRootContainer((EObject) element);
 			EObject eContainer = ((EObject)element).eContainer();
 			if (root != null && eContainer != null && !root.equals(eContainer)){
@@ -88,6 +68,20 @@ public class PropertyValueHelper {
 			
 		}
 		return false;
+	}
+	
+	public static boolean isChildOfPropertyValue(Object elt){
+		return isPropertyValue(elt) && isPropertyValue(((EObject)elt).eContainer());
+	}
+	
+	private static boolean isPropertyValue(Object elt){
+		return (elt instanceof EObject) && (
+				((EObject)elt) instanceof EnumerationPropertyLiteral ||
+				((EObject)elt) instanceof EnumerationPropertyType ||
+				((EObject)elt) instanceof PropertyValuePkg ||
+				((EObject)elt) instanceof PropertyValueGroup ||
+				((EObject)elt) instanceof AbstractPropertyValue
+			);
 	}
 
 	private static boolean isRightType(Class<?>[] interfaces, Class<?>... clazzes) {
@@ -295,5 +289,4 @@ public class PropertyValueHelper {
 		
 		return false;
 	}
-	
 }

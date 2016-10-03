@@ -13,46 +13,20 @@ package org.polarsys.capella.detachment.propertyvalues.ui.page;
 import java.util.Collection;
 import java.util.HashSet;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.viewers.ITreeContentProvider;
-import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
 import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
-public class PropertyValueContentProvider implements ITreeContentProvider {
+public class PropertyValueContentProvider extends AdapterFactoryContentProvider {
 
-	@Override
-	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+	public PropertyValueContentProvider() {
+		super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
 	}
-	
-	@Override
-	public void dispose() {
-	}
-	
-	@Override
-	public boolean hasChildren(Object element) {
-		return  ((element instanceof PropertyValuePkg) 				&& ((!((PropertyValuePkg)element).getOwnedPropertyValueGroups().isEmpty()) 				|| (!((PropertyValuePkg)element).getOwnedPropertyValuePkgs().isEmpty()) 		|| !((PropertyValuePkg)element).getOwnedPropertyValues().isEmpty() || !((PropertyValuePkg)element).getOwnedEnumerationPropertyTypes().isEmpty())) 					||
-				((element instanceof PropertyValueGroup) 			&& ((!((PropertyValueGroup)element).getOwnedPropertyValueGroups().isEmpty()) 			|| !((PropertyValueGroup)element).getOwnedPropertyValues().isEmpty() 			|| !((PropertyValueGroup)element).getOwnedEnumerationPropertyTypes().isEmpty())) 			||
-				((element instanceof AbstractPropertyValue) 		&& ((!((AbstractPropertyValue)element).getOwnedPropertyValueGroups().isEmpty()) 		|| !((AbstractPropertyValue)element).getOwnedPropertyValues().isEmpty() 		|| !((AbstractPropertyValue)element).getOwnedEnumerationPropertyTypes().isEmpty())) 		||
-				((element instanceof EnumerationPropertyType)		&& ((!((EnumerationPropertyType)element).getOwnedPropertyValueGroups().isEmpty()) 		|| (!((EnumerationPropertyType)element).getOwnedPropertyValues().isEmpty()) 	|| !((EnumerationPropertyType)element).getOwnedEnumerationPropertyTypes().isEmpty()		|| !((EnumerationPropertyType)element).getOwnedLiterals().isEmpty())) 	||
-				((element instanceof EnumerationPropertyLiteral)	&& ((!((EnumerationPropertyLiteral)element).getOwnedPropertyValueGroups().isEmpty()) 	|| (!((EnumerationPropertyLiteral)element).getOwnedPropertyValues().isEmpty()) 	|| !((EnumerationPropertyLiteral)element).getOwnedEnumerationPropertyTypes().isEmpty()));
-		
-	}
-	
-	@Override
-	public Object getParent(Object element) {
-		if ((element instanceof EObject) && (((EObject)element).eContainer() instanceof PropertyValuePkg) 
-				|| (((EObject)element).eContainer() instanceof PropertyValueGroup) 
-				|| (((EObject)element).eContainer() instanceof AbstractPropertyValue)
-				|| (((EObject)element).eContainer() instanceof EnumerationPropertyType)
-				|| (((EObject)element).eContainer() instanceof EnumerationPropertyLiteral))
-			return ((EObject)element).eContainer();
-		return null;
-	}
-	
+
 	@Override
 	public Object[] getElements(Object inputElement) {
 		if (inputElement instanceof Collection){
@@ -60,8 +34,8 @@ public class PropertyValueContentProvider implements ITreeContentProvider {
 		}
 		return null;
 	}
-	
 
+	
 	@Override
 	public Object[] getChildren(Object parentElement) {
 		Collection<Object> elt = new HashSet<Object>();
@@ -97,8 +71,6 @@ public class PropertyValueContentProvider implements ITreeContentProvider {
 			elt.addAll(((AbstractPropertyValue)parentElement).getOwnedPropertyValues());
 			elt.addAll(((AbstractPropertyValue)parentElement).getOwnedEnumerationPropertyTypes());
 		}
-		
 		return elt.toArray();
 	}
-
 }
