@@ -21,7 +21,8 @@ Require-Bundle: org.eclipse.ui.navigator,
  org.polarsys.kitalpha.model.common.scrutiny.contrib.viewpoints;visibility:=reexport,
  org.polarsys.kitalpha.ad.metadata;visibility:=reexport,
  org.eclipse.emf.ecore,
- org.eclipse.core.resources
+ org.eclipse.core.resources,
+ org.eclipse.sirius.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.polarsys.capella.core.af.integration,
  org.polarsys.capella.core.af.integration.listener,
