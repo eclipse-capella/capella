@@ -55,7 +55,7 @@ public class EObjectCategoryFilter extends CategoryFilter {
       this.id = getId() + "." + iconClazz.getName(); //$NON-NLS-1$
     }
     setCategorySet(ITransitionConstants.CATEGORY_SEMANTIC);
-    setActive(true);
+    setActive(false);
     setInFocusMode(true);
     setVisible(true);
   }

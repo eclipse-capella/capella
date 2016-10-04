@@ -11,10 +11,9 @@
 
 package org.polarsys.capella.common.consonance.ui.sirius;
 
-import java.util.List;
-
 import org.eclipse.emf.diffmerge.ui.gmf.GMFDiffMergeLabelProvider;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeStyle;
@@ -91,10 +90,10 @@ public class SiriusDiffMergeLabelProvider extends GMFDiffMergeLabelProvider {
     // ****** Viewpoint
     if (element instanceof DAnalysis) {
       DAnalysis analysis = (DAnalysis)element;
-      List<EObject> models = analysis.getModels();
-      if (!models.isEmpty())
-        result = getText(models.get(0));
-      else
+      Resource resource = analysis.eResource();
+      if (resource != null && resource.getURI() != null)
+        result = resource.getURI().lastSegment();
+      if (result == null)
         result = super.getText(analysis);
     } else if (element instanceof DView) {
       DView representationContainer = (DView) element;

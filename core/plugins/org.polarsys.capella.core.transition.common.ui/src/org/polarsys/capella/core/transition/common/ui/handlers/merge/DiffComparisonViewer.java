@@ -20,7 +20,7 @@ import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.eclipse.emf.diffmerge.diffdata.EComparison;
 import org.eclipse.emf.diffmerge.diffdata.EMatch;
 import org.eclipse.emf.diffmerge.ui.diffuidata.ComparisonSelection;
-import org.eclipse.emf.diffmerge.ui.viewers.ComparisonViewer;
+import org.eclipse.emf.diffmerge.ui.viewers.DirectedComparisonViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
 import org.eclipse.emf.diffmerge.ui.viewers.MergeChoiceData;
 import org.eclipse.emf.ecore.EObject;
@@ -43,7 +43,7 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.polarsys.capella.core.transition.common.ui.Activator;
 
-public class DiffComparisonViewer extends ComparisonViewer {
+public class DiffComparisonViewer extends DirectedComparisonViewer {
 
   /** The name of the "merge all" image */
   private static final String CHECKIN_ACTION_ALL = "checkin_action_all.gif";
@@ -179,7 +179,7 @@ public class DiffComparisonViewer extends ComparisonViewer {
     List<EObject> root = scope.getContents();
     ComparisonSelection selection = asComparisonSelection(new StructuredSelection(root));
     mergeAllInProgress = true;
-    merge(false, selection);
+    merge(false, true, selection);
     mergeAllInProgress = false;
   }
 }
