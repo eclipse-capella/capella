@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,6 +41,7 @@ import org.eclipse.jface.preference.PreferenceManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
@@ -64,8 +65,12 @@ import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.preferences.Activator;
 
 public class PreferencesHelper {
+  private PreferencesHelper() {
 
-  private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  }
+
+  private static final Logger __logger = ReportManagerRegistry.getInstance()
+      .subscribe(IReportManagerDefaultComponents.UI);
 
   public static final String CONFUGRATION_PROJECT_NATURE_ID = CapellaResourceHelper.CAPELLA_CONFIGURATION_PROJECT_NATURE;
 
@@ -84,9 +89,9 @@ public class PreferencesHelper {
         return referencedProject;
       }
 
-    } catch (Exception exception_p) {
+    } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("could not found the selected resource"); //$NON-NLS-1$
-      __logger.debug(loggerMessage.toString(), exception_p);
+      __logger.debug(loggerMessage.toString(), exception);
     }
 
     return sourceProject;
@@ -99,11 +104,11 @@ public class PreferencesHelper {
   public static boolean hasConfigurationProject(IProject project) {
     boolean existe = false;
     try {
-      if ((project.getReferencedProjects() != null) && (project.getReferencedProjects().length > 0) && project.getReferencedProjects()[0].isAccessible()
-          && project.getReferencedProjects()[0].isOpen()) {
+      if ((project.getReferencedProjects() != null) && (project.getReferencedProjects().length > 0)
+          && project.getReferencedProjects()[0].isAccessible() && project.getReferencedProjects()[0].isOpen()) {
         existe = project.getReferencedProjects()[0].hasNature(CONFUGRATION_PROJECT_NATURE_ID);
       }
-    } catch (CoreException exception_p) {
+    } catch (CoreException exception) {
       return existe;
     }
 
@@ -118,9 +123,9 @@ public class PreferencesHelper {
 
     try {
       return capellaProject.getReferencedProjects()[0];
-    } catch (CoreException exception_p) {
+    } catch (CoreException exception) {
       StringBuilder loggerMessage = new StringBuilder("PreferencesHelper.getReferencedProjectConfiguration(..) _ "); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString(), exception_p);
+      __logger.warn(loggerMessage.toString(), exception);
     }
     return null;
 
@@ -147,7 +152,8 @@ public class PreferencesHelper {
         capellaProject = getProject(((EObject) a));
       }
 
-    } else if ((activePage != null) && (activePage.getActiveEditor() != null) && (activePage.getActiveEditor().getEditorInput() instanceof URIEditorInput)) {
+    } else if ((activePage != null) && (activePage.getActiveEditor() != null)
+        && (activePage.getActiveEditor().getEditorInput() instanceof URIEditorInput)) {
       URI uri = ((URIEditorInput) activePage.getActiveEditor().getEditorInput()).getURI();
       IFile resourceFile = getFileFromUri(uri);
       if ((null == resourceFile) && (activePage.getActiveEditor().getEditorInput() instanceof SessionEditorInput)) {
@@ -162,7 +168,8 @@ public class PreferencesHelper {
       if (null != resourceFile) {
         capellaProject = resourceFile.getProject();
       }
-    } else if ((activePage != null) && (activePage.getActiveEditor() != null) && (activePage.getActiveEditor().getEditorInput().getName() != null)) {
+    } else if ((activePage != null) && (activePage.getActiveEditor() != null)
+        && (activePage.getActiveEditor().getEditorInput().getName() != null)) {
       capellaProject = getProjectByEditorName(activePage.getActiveEditor().getEditorInput().getName());
     }
 
@@ -170,20 +177,20 @@ public class PreferencesHelper {
   }
 
   /**
-   * @param name_p
+   * @param name
    * @return
    */
-  private static IProject getProjectByEditorName(String name_p) {
+  private static IProject getProjectByEditorName(String name) {
     IProject[] iProjects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
     for (IProject targetProject : iProjects) {
       try {
-        if (targetProject.isOpen() && targetProject.isAccessible() && (CapellaResourceHelper.isCapellaProject(targetProject))
-            && targetProject.getName().equals(name_p)) {
+        if (targetProject.isOpen() && targetProject.isAccessible()
+            && (CapellaResourceHelper.isCapellaProject(targetProject)) && targetProject.getName().equals(name)) {
           return targetProject;
         }
-      } catch (Exception exception_p) {
+      } catch (Exception exception) {
         StringBuilder loggerMessage = new StringBuilder("PreferencesHelper.getProjectByEditorName(..) _ "); //$NON-NLS-1$
-        __logger.error(loggerMessage.toString(), exception_p);
+        __logger.error(loggerMessage.toString(), exception);
       }
     }
     return null;
@@ -192,12 +199,20 @@ public class PreferencesHelper {
 
   /**
    * Return the project where is persisted given EMF object.
-   * @param object_p
+   * 
+   * @param object
    * @return <code>null</code> if given object is not persisted.
    */
-  public static IProject getProject(EObject object_p) {
+  public static IProject getProject(EObject object) {
+
     IProject result = null;
-    Session session = SessionManager.INSTANCE.getSession(object_p);
+    Session session = SessionManager.INSTANCE.getSession(object);
+
+    // Use EObjectQuery as a last resort to find the session for the given object (e.g. object is a diagram)
+    if (session == null) {
+      session = new EObjectQuery(object).getSession();
+    }
+
     if (null != session) {
       Resource sessionResource = session.getSessionResource();
       URI sessionResourceURI = sessionResource.getURI();
@@ -206,8 +221,9 @@ public class PreferencesHelper {
         result = resourceFile.getProject();
       }
     }
+
     if (result == null) {
-      return EcoreUtil2.getProject(object_p);
+      return EcoreUtil2.getProject(object);
     }
 
     return result;
@@ -215,13 +231,15 @@ public class PreferencesHelper {
 
   /**
    * Convert the given EMF URI to an Eclipse file, if applicable
-   * @param uri_p a non-null EMF URI
+   * 
+   * @param uri
+   *          a non-null EMF URI
    * @return a potentially null Eclipse file
    */
-  public static IFile getFileFromUri(URI uri_p) {
+  public static IFile getFileFromUri(URI uri) {
     IFile result = null;
-    if ((null != uri_p) && uri_p.isPlatformResource()) {
-      String platformString = uri_p.toPlatformString(true);
+    if ((null != uri) && uri.isPlatformResource()) {
+      String platformString = uri.toPlatformString(true);
       result = (IFile) ResourcesPlugin.getWorkspace().getRoot().findMember(platformString);
     }
     return result;
@@ -240,9 +258,9 @@ public class PreferencesHelper {
         ScopedCapellaPreferencesStore.getProjectContexts().put(targetProject.getProject(), scope);
         return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
       }
-    } catch (Exception exception_p) {
+    } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("Activator.getProjectScope(..) _ "); //$NON-NLS-1$
-      __logger.error(loggerMessage.toString(), exception_p);
+      __logger.error(loggerMessage.toString(), exception);
 
       return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
     }
@@ -262,9 +280,9 @@ public class PreferencesHelper {
         ScopedCapellaPreferencesStore.getProjectContexts().put(targetProject.getProject(), scope);
         return ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID);
       }
-    } catch (Exception exception_p) {
+    } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("Activator.getProjectScope(..) _ "); //$NON-NLS-1$
-      __logger.error(loggerMessage.toString(), exception_p);
+      __logger.error(loggerMessage.toString(), exception);
 
       return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
     }
@@ -286,9 +304,9 @@ public class PreferencesHelper {
         ScopedCapellaPreferencesStore.getProjectContexts().put(targetProject.getProject(), scope);
         return ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID);
       }
-    } catch (Exception exception_p) {
+    } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("Activator.getProjectScope(..) _ "); //$NON-NLS-1$
-      __logger.error(loggerMessage.toString(), exception_p);
+      __logger.error(loggerMessage.toString(), exception);
 
       return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
     }
@@ -310,9 +328,9 @@ public class PreferencesHelper {
         ScopedCapellaPreferencesStore.getProjectContexts().put(targetProject.getProject(), scope);
         return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
       }
-    } catch (Exception exception_p) {
+    } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("Activator.getProjectScope(..) _ "); //$NON-NLS-1$
-      __logger.error(loggerMessage.toString(), exception_p);
+      __logger.error(loggerMessage.toString(), exception);
 
       return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
     }
@@ -330,13 +348,14 @@ public class PreferencesHelper {
 
     for (IProject targetProject : iProjects) {
       try {
-        if (targetProject.isOpen() && targetProject.isAccessible() && (CapellaResourceHelper.isCapellaProject(targetProject))) {
+        if (targetProject.isOpen() && targetProject.isAccessible()
+            && (CapellaResourceHelper.isCapellaProject(targetProject))) {
           IScopeContext projectScope = ScopedCapellaPreferencesStore.getProjectScope(targetProject);
           scopes.add(new ScopedPreferenceStore(projectScope, Activator.PLUGIN_ID));
         }
-      } catch (Exception exception_p) {
+      } catch (Exception exception) {
         StringBuilder loggerMessage = new StringBuilder("PreferencesHelper.getAllStores(..) _ "); //$NON-NLS-1$
-        __logger.error(loggerMessage.toString(), exception_p);
+        __logger.error(loggerMessage.toString(), exception);
       }
     }
     return scopes;
@@ -348,12 +367,13 @@ public class PreferencesHelper {
    */
   public static boolean isConfigurationProject(IProject targetProject) {
     try {
-      if (targetProject.isOpen() && targetProject.isAccessible() && (targetProject.getNature(PreferencesHelper.CONFUGRATION_PROJECT_NATURE_ID) != null)) {
+      if (targetProject.isOpen() && targetProject.isAccessible()
+          && (targetProject.getNature(PreferencesHelper.CONFUGRATION_PROJECT_NATURE_ID) != null)) {
         return true;
       }
-    } catch (CoreException exception_p) {
+    } catch (CoreException exception) {
       StringBuilder loggerMessage = new StringBuilder("PreferencesHelper.getAllStores(..) _ "); //$NON-NLS-1$
-      __logger.error(loggerMessage.toString(), exception_p);
+      __logger.error(loggerMessage.toString(), exception);
     }
     return false;
   }
@@ -364,22 +384,23 @@ public class PreferencesHelper {
    */
   public static boolean isCapellaProject(IProject targetProject) {
     try {
-      if (targetProject.isOpen() && targetProject.isAccessible() && (CapellaResourceHelper.isCapellaProject(targetProject))) {
+      if (targetProject.isOpen() && targetProject.isAccessible()
+          && (CapellaResourceHelper.isCapellaProject(targetProject))) {
         return true;
       }
-    } catch (Exception exception_p) {
+    } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("PreferencesHelper.getAllStores(..) _ "); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString(), exception_p);
+      __logger.warn(loggerMessage.toString(), exception);
     }
     return false;
   }
 
   /**
-   * @param selectionProvider_p
+   * @param selectionProvider
    * @return
    */
-  public static IProject getCapellaProjectFromSelectedElement(ISelectionProvider selectionProvider_p) {
-    ISelection activeSelection = selectionProvider_p.getSelection();
+  public static IProject getCapellaProjectFromSelectedElement(ISelectionProvider selectionProvider) {
+    ISelection activeSelection = selectionProvider.getSelection();
     IProject capellaProject = null;
     if ((activeSelection != null) && !activeSelection.isEmpty() && (activeSelection instanceof IStructuredSelection)) {
 
@@ -410,12 +431,13 @@ public class PreferencesHelper {
   }
 
   /**
-   * @param selectionProvider_p
+   * @param selectionProvider
    * @return
    */
-  public static List<IFile> retrieveUserDefinedPreferenceFiles(ISelectionProvider selectionProvider_p, final String epf_file_extension) {
+  public static List<IFile> retrieveUserDefinedPreferenceFiles(ISelectionProvider selectionProvider,
+      final String epf_file_extension) {
 
-    IProject project = PreferencesHelper.getCapellaProjectFromSelectedElement(selectionProvider_p);
+    IProject project = PreferencesHelper.getCapellaProjectFromSelectedElement(selectionProvider);
 
     final List<IFile> result = new ArrayList<IFile>();
 
@@ -425,15 +447,18 @@ public class PreferencesHelper {
     try {
       project.accept(new IResourceVisitor() {
         @Override
-        public boolean visit(IResource resource_p) throws CoreException {
-          IProject prj = resource_p != null ? resource_p.getProject() : null;
-          IProject configurationProject = (prj != null) && prj.isOpen() && (prj.getReferencedProjects().length > 0) ? prj.getReferencedProjects()[0] : null;
+        public boolean visit(IResource resource) throws CoreException {
+          IProject prj = resource != null ? resource.getProject() : null;
+          IProject configurationProject = (prj != null) && prj.isOpen() && (prj.getReferencedProjects().length > 0)
+              ? prj.getReferencedProjects()[0] : null;
           if ((null != configurationProject)) {
-            IFolder preferenceFolder =
-                (configurationProject.getProject() != null) && (configurationProject.getProject().getFolder(".settings/") != null) ? configurationProject //$NON-NLS-1$
-                    .getProject().getFolder(".settings/") : null; //$NON-NLS-1$
+            IFolder preferenceFolder = (configurationProject.getProject() != null)
+                && (configurationProject.getProject().getFolder(".settings/") != null) //$NON-NLS-1$
+                    ? configurationProject.getProject().getFolder(".settings/") //$NON-NLS-1$
+                    : null;
             if ((preferenceFolder != null)) {
-              getPreferencesFiles(result, configurationProject.getProject(), configurationProject.getProject().getName(), epf_file_extension);
+              getPreferencesFiles(result, configurationProject.getProject(),
+                  configurationProject.getProject().getName(), epf_file_extension);
               return false;
             }
           }
@@ -441,7 +466,7 @@ public class PreferencesHelper {
         }
       }, IResource.DEPTH_INFINITE, IResource.FILE);
 
-    } catch (CoreException exception_p) {
+    } catch (CoreException exception) {
       // Do nothing.
     }
 
@@ -449,14 +474,15 @@ public class PreferencesHelper {
   }
 
   /**
-   * @param container_p
+   * @param container
    * @param projectName
    * @return List<IFile>
    */
-  static List<IFile> getPreferencesFiles(List<IFile> result, IContainer container_p, String projectName, String epf_file_extension) {
+  static List<IFile> getPreferencesFiles(List<IFile> result, IContainer container, String projectName,
+      String epf_file_extension) {
     try {
-      if (null != container_p) {
-        for (IResource resource : container_p.members()) {
+      if (null != container) {
+        for (IResource resource : container.members()) {
           if (resource instanceof IFile) {
             String ext = resource.getFileExtension();
             if (epf_file_extension.equals(ext)) {
@@ -476,16 +502,19 @@ public class PreferencesHelper {
           }
         }
       }
-    } catch (CoreException exception_p) {
-      exception_p.printStackTrace();
+    } catch (CoreException exception) {
+      exception.printStackTrace();
     }
     return result;
   }
 
   /**
    * Get all the files whose extension is <b>extension</b> and present in <b>folder</b>.
-   * @param folder the IFolder that interest you.
-   * @param extension the file extension. Use "*" for any extension.
+   * 
+   * @param folder
+   *          the IFolder that interest you.
+   * @param extension
+   *          the file extension. Use "*" for any extension.
    * @return all the IFile contained into this folder (with no limit in the level).
    */
   public static List<IFile> getFiles(IFolder folder, String extension) {
@@ -494,17 +523,17 @@ public class PreferencesHelper {
       IResource[] resources = folder.members();
       for (IResource resource : resources) {
         switch (resource.getType()) {
-          case IResource.FILE:
-            String fileExtension = resource.getFileExtension().toLowerCase();
-            if (fileExtension.equals(extension) || fileExtension.equals("*")) { //$NON-NLS-1$
-              result.add((IFile) resource);
-            }
+        case IResource.FILE:
+          String fileExtension = resource.getFileExtension().toLowerCase();
+          if (fileExtension.equals(extension) || fileExtension.equals("*")) { //$NON-NLS-1$
+            result.add((IFile) resource);
+          }
           break;
-          case IResource.FOLDER:
-            IFolder subFolder = (IFolder) resource;
-            result.addAll(getFiles(subFolder, extension));
+        case IResource.FOLDER:
+          IFolder subFolder = (IFolder) resource;
+          result.addAll(getFiles(subFolder, extension));
           break;
-          default:
+        default:
           break;
         }
       }
@@ -524,7 +553,8 @@ public class PreferencesHelper {
       String epfFile = CapellaPreferencesService.getEPFPathFromApplicationArguments();
       if ((epfFile != null) && !epfFile.isEmpty()) {
 
-        restoreAllPreferencesToDefault();// we need to restore default prefs before applying the ones stored in the provided file
+        restoreAllPreferencesToDefault();// we need to restore default prefs before applying the ones stored in the
+                                         // provided file
         FileInputStream fileInStream = new FileInputStream(new File(epfFile));
         service.initializePreferences(fileInStream);
 
@@ -540,6 +570,7 @@ public class PreferencesHelper {
 
   /**
    * Restores all preferences to their default values
+   * 
    * @throws BackingStoreException
    */
   public static void restoreAllPreferencesToDefault() throws BackingStoreException {
@@ -556,8 +587,8 @@ public class PreferencesHelper {
           clearAll(instNode);
           clearAll(configScope);
           clearAll(projectScope);
-        } catch (BackingStoreException exception_p) {
-          __logger.error(exception_p.getMessage());
+        } catch (BackingStoreException exception) {
+          __logger.error(exception.getMessage());
         }
       }
     });
@@ -568,8 +599,8 @@ public class PreferencesHelper {
     node.clear();
     String[] names = node.childrenNames();
     for (String name : names) {
-      //clearAll(node.node(name));
-    	PlatformUI.getPreferenceStore().setToDefault(name);
+      // clearAll(node.node(name));
+      PlatformUI.getPreferenceStore().setToDefault(name);
 
     }
   }
@@ -586,30 +617,30 @@ public class PreferencesHelper {
   }
 
   /**
-   * @param source_p
-   * @param capellaProject_p
-   * @param session_p
+   * @param source
+   * @param capellaProject
+   * @param session
    * @return
    */
-  public static boolean isNonReferencesCapellaProject(Object source_p, Project capellaProject_p, Session session_p) {
+  public static boolean isNonReferencesCapellaProject(Object source, Project capellaProject, Session session) {
     boolean result = false;
 
-    if ((source_p instanceof PropertyStore)) {
-      PropertyStore property = (PropertyStore) source_p;
+    if ((source instanceof PropertyStore)) {
+      PropertyStore property = (PropertyStore) source;
       IResource resource = property.getResource();
       if (resource != null) {
         IProject project = resource.getProject();
         if ((null != project) && isConfigurationProject(project)) {
-          if ((null != capellaProject_p) && (null != session_p) && (null != session_p.getSessionResource())) {
-            IFile resourceFile = getFileFromUri(session_p.getSessionResource().getURI());
+          if ((null != capellaProject) && (null != session) && (null != session.getSessionResource())) {
+            IFile resourceFile = getFileFromUri(session.getSessionResource().getURI());
             if (null != resourceFile) {
               IProject eclipseProject = resourceFile.getProject();
               result = isReferencedProject(project, eclipseProject);
             }
           }
 
-        } else if ((project != null) && (capellaProject_p != null) && (getProject(capellaProject_p) != null)) {
-          return project.equals(getProject(capellaProject_p));
+        } else if ((project != null) && (capellaProject != null) && (getProject(capellaProject) != null)) {
+          return project.equals(getProject(capellaProject));
         }
       }
     } else {
@@ -620,25 +651,25 @@ public class PreferencesHelper {
   }
 
   /**
-   * @param project_p
-   * @param eclipseProject_p
+   * @param project
+   * @param eclipseProject
    * @return
    */
-  private static boolean isReferencedProject(IProject project_p, IProject eclipseProject_p) {
+  private static boolean isReferencedProject(IProject project, IProject eclipseProject) {
 
     boolean existe = false;
     try {
-      if ((eclipseProject_p.getReferencedProjects() != null) && (eclipseProject_p.getReferencedProjects().length > 0)
-          && eclipseProject_p.getReferencedProjects()[0].isAccessible()) {
-        for (IProject referencedProject : eclipseProject_p.getReferencedProjects()) {
-          if (referencedProject.equals(project_p)) {
+      if ((eclipseProject.getReferencedProjects() != null) && (eclipseProject.getReferencedProjects().length > 0)
+          && eclipseProject.getReferencedProjects()[0].isAccessible()) {
+        for (IProject referencedProject : eclipseProject.getReferencedProjects()) {
+          if (referencedProject.equals(project)) {
             existe = true;
             break;
           }
         }
 
       }
-    } catch (CoreException exception_p) {
+    } catch (CoreException exception) {
       return existe;
     }
 
