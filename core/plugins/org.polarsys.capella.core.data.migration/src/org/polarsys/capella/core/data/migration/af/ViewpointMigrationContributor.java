@@ -27,7 +27,7 @@ public class ViewpointMigrationContributor extends AbstractMigrationContributor 
 
 	@Override
 	public String getKind() {
-		return MigrationConstants.MIGRATION_KIND__METADATA;
+		return MigrationConstants.MIGRATION_KIND__CHECK_MISSING_VP;
 	}
 
 	@Override

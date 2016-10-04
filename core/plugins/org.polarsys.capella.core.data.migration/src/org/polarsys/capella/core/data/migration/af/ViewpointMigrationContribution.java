@@ -12,11 +12,11 @@ package org.polarsys.capella.core.data.migration.af;
 
 import java.util.Map;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResource;
 import org.osgi.framework.Version;
 import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.af.integration.AFIntegrationPlugin;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.data.migration.contribution.AbstractMigrationContribution;
@@ -39,17 +40,19 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
 
 	@Override
 	public IStatus preMigrationExecute(IResource fileToMigrate, MigrationContext context, boolean checkVersion) {
-		if (MetadataHelper.isMetadataResource(fileToMigrate)) {
-			// check all used VP are available (we suppose they are coming with migration tooling)
+		if (fileToMigrate instanceof IFile && MetadataHelper.isMetadataResource(fileToMigrate)) {
+
+		  // check all used VP are available (we suppose they are coming with migration tooling)
 			ResourceSet resourceSet = new ResourceSetImpl();
 			resourceSet.getLoadOptions().put(GMFResource.OPTION_ABORT_ON_ERROR, Boolean.TRUE);
 			resourceSet.getLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
-			 MultiStatus status = new MultiStatus(AFIntegrationPlugin.getSymbolicName(), IStatus.OK, "Some viewpoints are missing", null);
+			
+			MultiStatus status = new MultiStatus(AFIntegrationPlugin.getSymbolicName(), IStatus.OK, "Some viewpoints are missing", null);
 			try {
 				// need to load model file into the resourceset
-				Resource resource = resourceSet.getResource(URI.createPlatformResourceURI(fileToMigrate.getFullPath().toString(), false), true);
+				resourceSet.getResource(EcoreUtil2.getURI((IFile) fileToMigrate), true);
 
-				Map<String, Version> viewpointUsages = MetadataHelper.getViewpointMetadata(resourceSet).getViewpointUsages();
+				Map<String, Version> viewpointUsages = MetadataHelper.getViewpointMetadata(resourceSet).getViewpointReferences();
 				for (String id : viewpointUsages.keySet())
 				{
 					if (ViewpointManager.getViewpoint(id) == null)

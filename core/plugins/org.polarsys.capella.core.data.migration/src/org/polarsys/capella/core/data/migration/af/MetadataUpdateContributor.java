@@ -40,7 +40,7 @@ public class MetadataUpdateContributor extends AbstractMigrationContributor {
 
 	@Override
 	public String getKind() {
-		return MigrationConstants.MIGRATION_KIND__DIAGRAM;
+		return MigrationConstants.MIGRATION_KIND__AFM;
 	}
 
 	@Override

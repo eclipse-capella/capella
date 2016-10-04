@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.sirius.ui.tools.internal.actions.repair.RepresentationFilesRepairValidator;
-import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.polarsys.capella.core.data.migration.MigrationConstants;
 import org.polarsys.capella.core.data.migration.MigrationHelpers;
@@ -38,7 +37,6 @@ public class ProjectMigrationHandler extends AbstractMigrationHandler {
     }
     for (Object selected : getSelection((IEvaluationContext) event.getApplicationContext(), IResource.class)) {
       if (selected instanceof IResource && selected instanceof IProject) {
-			IProject project = (IProject) selected;
 			@SuppressWarnings("restriction")
 			IStatus validationStatus = new RepresentationFilesRepairValidator().validate(null);
 			if (validationStatus.isOK()) {

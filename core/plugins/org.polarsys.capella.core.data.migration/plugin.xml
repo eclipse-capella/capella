@@ -191,8 +191,6 @@
    
    <extension
          point="org.polarsys.capella.core.data.migration.migrationContributors">
-      <!--migrationContributor
-         class="org.polarsys.capella.core.data.migration.af.MetadataCreationContributor"/-->
       <migrationContributor
          class="org.polarsys.capella.core.data.migration.af.MetadataUpdateContributor"/>
       <migrationContributor
