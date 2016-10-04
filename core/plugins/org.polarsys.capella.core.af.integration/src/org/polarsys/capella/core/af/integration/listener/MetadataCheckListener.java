@@ -50,6 +50,7 @@ public class MetadataCheckListener implements IEditingDomainListener {
 			}
 		}
 		resourceSet.eAdapters().add(createAdapter(editingDomain));
+		
 	}
 
 	protected Adapter createAdapter(EditingDomain editingDomain) {
