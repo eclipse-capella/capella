@@ -53,7 +53,6 @@ import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
-import org.polarsys.kitalpha.ad.metadata.helpers.Contribution;
 import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
 import org.polarsys.kitalpha.ad.metadata.helpers.ViewpointMetadata;
 
@@ -225,7 +224,7 @@ public class SiriusSessionFactory implements SessionFactory {
    * @return the created resource (may be null if the resource does not belong to a Capella project)
    */
   protected Resource createMetadataResource(TransactionalEditingDomain domain, URI resourceURI, IProgressMonitor monitor) {
-    SubMonitor progress = SubMonitor.convert(monitor, 4);
+    SubMonitor progress = SubMonitor.convert(monitor, 2);
     try {
       if (!isCapellaProject(resourceURI)) {
         return null;
@@ -235,11 +234,6 @@ public class SiriusSessionFactory implements SessionFactory {
 
       progress.beginTask("Create an empty metadata resource", 1);
       Resource resource = MetadataHelper.getViewpointMetadata(domain.getResourceSet()).initMetadataStorage(uri);
-      progress.worked(1);
-      progress.beginTask("Start using Capella viewpoint", 1);
-      for (Contribution contrib : Contribution.getContributions()) {
-        contrib.update(domain.getResourceSet());
-      }
       progress.worked(1);
 
       try {
