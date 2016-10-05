@@ -11,7 +11,9 @@
 
 package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.swt.SWT;
@@ -77,7 +79,12 @@ public class MarkerViewTree extends Tree {
 
   @Override
   public TreeItem[] getSelection() {
-    return this.cachedSelection.toArray(new TreeItem[this.cachedSelection.size()]);
+    //We need to filter out disposed controls to avoid many "Widget is disposed" Eclipse bugs (e.g. Bug 320854)
+    List<TreeItem> tempSelections = new ArrayList<>();
+    for (TreeItem treeItem : cachedSelection)
+      if (treeItem != null && !treeItem.isDisposed())
+        tempSelections.add(treeItem);
+    return tempSelections.toArray(new TreeItem[tempSelections.size()]);
   }
 
   @Override
