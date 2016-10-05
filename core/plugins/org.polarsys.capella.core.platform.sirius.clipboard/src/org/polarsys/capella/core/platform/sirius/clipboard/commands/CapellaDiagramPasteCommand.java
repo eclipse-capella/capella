@@ -39,6 +39,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -144,7 +145,42 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
     // Reconcile the Sirius and Capella layers
     List<EObject> result = reconcileSiriusAndSemanticLayers(pastedSiriusElements, allSiriusOrigins, semanticOrigins,
         semanticCopies);
+    
+    //Resolve incoherences before returning the result
+    for (EObject eObj : result)
+      resolveIncoherences(eObj);
+    
     setResults(result);
+  }
+
+  /**
+   * Resolve incoherences if exist
+   * @param result
+   */
+  private void resolveIncoherences(EObject eObj) {
+    //If a Node references an Edge not coming from that Node, remove the reference
+    if (eObj instanceof DNode)
+    {
+      DNode aNode = (DNode) eObj;
+      //Check incoming edges
+      List<DEdge> incomingEdgesToRemove = new ArrayList<>();
+      for (DEdge anEdge : aNode.getIncomingEdges())
+        if (anEdge.getTargetNode() != aNode)
+          incomingEdgesToRemove.add(anEdge);
+      for (DEdge toRemove : incomingEdgesToRemove)
+        aNode.getIncomingEdges().remove(toRemove);
+      
+      //Check outgoing edges
+      List<DEdge> outgoingEdgesToRemove = new ArrayList<>();
+      for (DEdge anEdge : aNode.getOutgoingEdges())
+        if (anEdge.getSourceNode() != aNode)
+          outgoingEdgesToRemove.add(anEdge);
+      for (DEdge toRemove : outgoingEdgesToRemove)
+        aNode.getOutgoingEdges().remove(toRemove);
+    }
+    
+    for (EObject child : eObj.eContents())
+      resolveIncoherences(child);
   }
 
   /**
