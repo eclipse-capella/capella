@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _P21C4MEUEeWqb6y2_gGIKQ
 Runtime-Version: 2.0.2.201511100828
-Save-Time: 4/15/16 2:30 PM
+Save-Time: 10/7/16 5:54 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -32,8 +32,8 @@ with [get-window "New Capella Project"] {
     get-editbox | set-text P2
     get-button Finish | click
 }
-find-tab-folder "P2 - Activity Explorer" | get-tab-item "P1 - Activity Explorer" | click
-with [get-editor "P1 - Activity Explorer"] {
+find-tab-folder "P2" | get-tab-item "P1" | click
+with [get-editor "P1"] {
     click
     get-tab-folder | get-tab-item "Operational Analysis" | click
     with [get-section "Define Operational Entities and Capabilities"] {
@@ -47,11 +47,11 @@ get-editor "[OCB] Operational Capabilities" | get-diagram -index 1 | get-edit-pa
 
 get-button "Save All (M1+M2+S)" | click
 
-find-tab-folder "[OCB] Operational Capabilities" | get-tab-item "P2 - Activity Explorer" | click
-with [get-editor "P2 - Activity Explorer"] {
+find-tab-folder "[OCB] Operational Capabilities" | get-tab-item "P2" | click
+with [get-editor "P2"] {
     click
     get-tab-folder | get-tab-item "Operational Analysis" | click
 }
-get-editor "P2 - Activity Explorer" | get-section "Diagrams Viewer" | get-tree | get-item "Operational Analysis" 
+get-editor "P2" | get-section "Diagrams Viewer" | get-tree | get-item "Operational Analysis" 
     | get-property childCount | equals 0 | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
