@@ -131,9 +131,4 @@ public final class Constants {
 		return uncheckAllIcon;
 	}
 
-
-
-	//misc
-	public static final String PROPERTY_EMPTY_NAME = "[Unnamed element]";
-
 }

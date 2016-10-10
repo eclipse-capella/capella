@@ -36,13 +36,13 @@ public class PropertyValuesScrutinizer implements IScrutinize<Map<EObject, Boole
 	public void findIn(EObject eObject) {
 		if (isAbstractPropertyValueSubClass(eObject) || isPropertyValueGroup(eObject) 
 				|| isPropertyValuePkg(eObject) || isPropertyEnum(eObject)){
-			if (canCollected(eObject))
+			if (canBeCollected(eObject))
 				propertyValues.put(eObject, false);
 		}
 	}
 
 	private boolean isPropertyEnum(EObject eObject) {
-		return ENUMERATION_PROPERTY_VALUE_TYPE.equals(eObject.eClass().getName()) 
+		return !eObject.eIsProxy() && ENUMERATION_PROPERTY_VALUE_TYPE.equals(eObject.eClass().getName()) 
 				&& !((EnumerationPropertyType)eObject).getName().equals("ProgressStatus"); //$NON-NLS-1$
 	}
 
@@ -54,7 +54,7 @@ public class PropertyValuesScrutinizer implements IScrutinize<Map<EObject, Boole
 		return eObject instanceof PropertyValueGroup;
 	}
 
-	private boolean canCollected(EObject eObject) {
+	private boolean canBeCollected(EObject eObject) {
 		return true;
 	}
 

@@ -18,15 +18,21 @@ import java.util.Map.Entry;
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edit.command.DeleteCommand;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.polarsys.capella.core.model.handler.crossreferencer.CapellaECrossReferenceAdapter;
+import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
+import org.polarsys.capella.detachment.propertyvalue.messages.Messages;
 import org.polarsys.capella.detachment.propertyvalues.scrutinizers.PropertyValuesScrutinizer;
 import org.polarsys.kitalpha.model.common.commands.action.ModelCommand;
 import org.polarsys.kitalpha.model.common.commands.exception.ModelCommandException;
@@ -57,7 +63,7 @@ public class PropertyValuesDeleteCommand extends ModelCommand {
 			}
 			monitor.done();
 		} catch (ModelScrutinyException e) {
-			LOGGER.error("An error was occured at the execution of Property Values detachment Command. See the error log for more details", e);
+			LOGGER.error(Messages.PVDetachmentCommand_RuntimeError, e);
 		}
 	}
 
@@ -81,10 +87,11 @@ public class PropertyValuesDeleteCommand extends ModelCommand {
 				ed = TransactionUtil.getEditingDomain(resource);
 			}
 			
-			monitor.beginTask("Delete Property Values/Groups/Packages", 1);
+			monitor.beginTask(Messages.PVDetachmentCommand_MonitorMessage, 1);
+			installCapellaECrossReferencerAdapter(resource.getResourceSet(), ed);
 			
-			Collection<Object> elementsToDelete = getElementsToDelete(result, null);
-			Command deleteCommand = DeleteCommand.create(ed, elementsToDelete);
+			Collection<Object> elementsToDelete = getElementsToDelete(result);
+			Command deleteCommand = new CapellaDeleteCommand(ed, elementsToDelete, false);
 			if (deleteCommand.canExecute()){
 				ed.getCommandStack().execute(deleteCommand);
 			}
@@ -92,7 +99,24 @@ public class PropertyValuesDeleteCommand extends ModelCommand {
 		}
 	}
 	
-	private Collection<Object> getElementsToDelete(Map<EObject, Boolean> result, Session session){
+	/**
+	 * Install an Capella ECross Referencer on resourceSet of resource if it is not already installed
+	 * @param resource
+	 * @param ed
+	 */
+	private void installCapellaECrossReferencerAdapter(ResourceSet set, EditingDomain ed) {
+		EList<Adapter> eAdapters = set.eAdapters();
+		
+		for (Adapter adapter : eAdapters) {
+			if (adapter instanceof CapellaECrossReferenceAdapter){
+				return;
+			}
+		}
+		ECrossReferenceAdapter adapter = new CapellaECrossReferenceAdapter(ed);
+		eAdapters.add(adapter);
+	}
+
+	private Collection<Object> getElementsToDelete(Map<EObject, Boolean> result){
 		HashSet<Object> toDelete = new HashSet<Object>();
 		for (Entry<EObject, Boolean> e: result.entrySet()) {
 			if (e.getValue()){
@@ -101,5 +125,4 @@ public class PropertyValuesDeleteCommand extends ModelCommand {
 		}
 		return toDelete;
 	}
-	
 }
