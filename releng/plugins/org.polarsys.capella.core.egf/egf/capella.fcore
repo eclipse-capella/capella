@@ -391,6 +391,19 @@
             <methods xmi:id="_tIbsFnpIEeC_WLPWe9iX8A" name="footer" patternFilePath="templates/pattern._tIbsEHpIEeC_WLPWe9iX8A/method._tIbsFnpIEeC_WLPWe9iX8A.pt"/>
             <orchestration xmi:type="pattern:SuperCall" xmi:id="_tIbsF3pIEeC_WLPWe9iX8A"/>
           </elements>
+          <elements xmi:id="_nTDZgI7oEea4BfeimdKRbA" description="This pattern generate the same plugin.xml as parent pattern, we just add default=&quot;true&quot; to editors."
+              name="PluginXML" superPattern="platform:/plugin/org.polarsys.kitalpha.emde.egf/egf/eMDE_EMF_Extension.fcore#_ku6xwF53Ed-F-4obyVR-Ng"
+              headerMethod="#_nTDZgo7oEea4BfeimdKRbA" conditionMethod="#_nTDZhI7oEea4BfeimdKRbA"
+              initMethod="#_nTDZg47oEea4BfeimdKRbA" footerMethod="#_nTDZho7oEea4BfeimdKRbA">
+            <nature xmi:type="jetpattern:JetNature" xmi:id="_nTDZgY7oEea4BfeimdKRbA"
+                name="JET"/>
+            <methods xmi:id="_nTDZgo7oEea4BfeimdKRbA" name="header" patternFilePath="templates/pattern._nTDZgI7oEea4BfeimdKRbA/method._nTDZgo7oEea4BfeimdKRbA.pt"/>
+            <methods xmi:id="_nTDZg47oEea4BfeimdKRbA" name="init" patternFilePath="templates/pattern._nTDZgI7oEea4BfeimdKRbA/method._nTDZg47oEea4BfeimdKRbA.pt"/>
+            <methods xmi:id="_nTDZhI7oEea4BfeimdKRbA" name="preCondition" patternFilePath="templates/pattern._nTDZgI7oEea4BfeimdKRbA/method._nTDZhI7oEea4BfeimdKRbA.pt"/>
+            <methods xmi:id="_nTDZhY7oEea4BfeimdKRbA" name="doGenerate" patternFilePath="templates/pattern._nTDZgI7oEea4BfeimdKRbA/method._nTDZhY7oEea4BfeimdKRbA.pt"/>
+            <methods xmi:id="_nTDZho7oEea4BfeimdKRbA" name="footer" patternFilePath="templates/pattern._nTDZgI7oEea4BfeimdKRbA/method._nTDZho7oEea4BfeimdKRbA.pt"/>
+            <orchestration xmi:type="pattern:SuperCall" xmi:id="_nTDZh47oEea4BfeimdKRbA"/>
+          </elements>
         </libraries>
       </viewpoints>
     </viewpointContainer>
@@ -407,6 +420,8 @@
                   replacement="#_s51PYHpIEeC_WLPWe9iX8A"/>
               <substitutions xmi:id="_ULrosHpKEeC_WLPWe9iX8A" replacedElement="platform:/plugin/org.polarsys.kitalpha.emde.egf/egf/eMDE_EMF_Extension.fcore#_FcCIMF54Ed-F-4obyVR-Ng"
                   replacement="#_tIbsEHpIEeC_WLPWe9iX8A"/>
+              <substitutions xmi:id="_3vz8UI7nEea4BfeimdKRbA" replacedElement="platform:/plugin/org.polarsys.kitalpha.emde.egf/egf/eMDE_EMF_Extension.fcore#_ku6xwF53Ed-F-4obyVR-Ng"
+                  replacement="#_nTDZgI7oEea4BfeimdKRbA"/>
               <substitutions xmi:id="_vhLssJzlEeCD9rwWu7CFoQ" replacedElement="platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_Pk9BYDG0Ed-kc8dEZsdm2w"/>
               <substitutions xmi:id="_pJK3MJzkEeCD9rwWu7CFoQ" replacedElement="platform:/plugin/org.polarsys.kitalpha.emde.egf/egf/eMDE_EMF_Extension.fcore#_2kSV8UkwEd-IffcfNLo3pQ"/>
               <substitutions xmi:id="_35mHUfAiEeC_vsUevVuMOA" replacedElement="platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_Pn8D8DG0Ed-kc8dEZsdm2w"/>
