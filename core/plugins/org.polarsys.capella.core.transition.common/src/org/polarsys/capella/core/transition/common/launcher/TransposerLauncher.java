@@ -109,7 +109,7 @@ public class TransposerLauncher extends ActivitiesLauncher {
    * 
    * @see org.eclipse.jface.action.Action#run()
    */
-  public void run(Collection<Object> selection1, boolean save, IProgressMonitor monitor) {
+  public void run(Collection<?> selection1, boolean save, IProgressMonitor monitor) {
     List<Object> selection = new ArrayList<Object>();
     selection.addAll(selection1);
     launch(selection, getPurpose(), getMapping(), monitor);
@@ -117,7 +117,7 @@ public class TransposerLauncher extends ActivitiesLauncher {
 
   
   @Override
-  public void launch(Collection<Object> selection, String purpose, String mappingId, IProgressMonitor monitor) {
+  public void launch(Collection<?> selection, String purpose, String mappingId, IProgressMonitor monitor) {
 
     try {
       initializeLogHandler();

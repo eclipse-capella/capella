@@ -87,7 +87,7 @@ public class TransitionCommandHelper {
     return new TransitionCommandHelper();
   }
 
-  public ICommand getActorTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getActorTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
     return new IntramodelTransitionCommand(elements_p, monitor_p) {
 
       @Override
@@ -97,7 +97,7 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getDataTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getDataTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
     return new IntramodelTransitionCommand(elements_p, monitor_p) {
 
       @Override
@@ -107,7 +107,7 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getExchangeItemTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getExchangeItemTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
     return new IntramodelTransitionCommand(elements_p, monitor_p) {
 
       @Override
@@ -117,7 +117,7 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getFunctionalTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getFunctionalTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
     return new IntramodelTransitionCommand(elements_p, monitor_p) {
 
       @Override
@@ -127,7 +127,7 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getOCtoSMTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getOCtoSMTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
 
     return new IntramodelTransitionCommand(elements_p, monitor_p) {
 
@@ -138,7 +138,7 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getOAtoSCTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getOAtoSCTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
 
     return new IntramodelTransitionCommand(elements_p, monitor_p) {
 
@@ -150,7 +150,7 @@ public class TransitionCommandHelper {
 
   }
 
-  public ICommand getOAtoSMTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getOAtoSMTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
 
     return new IntramodelTransitionCommand(elements_p, monitor_p) {
 
@@ -162,7 +162,7 @@ public class TransitionCommandHelper {
 
   }
 
-  public ICommand getInterfaceTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getInterfaceTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
     return new IntramodelTransitionCommand(elements_p, monitor_p) {
 
       @Override
@@ -172,7 +172,7 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getLC2PCTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getLC2PCTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
 
     return new IntramodelTransitionCommand(elements_p, monitor_p) {
 
@@ -183,7 +183,7 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getStateMachineTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getStateMachineTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
     return new IntramodelTransitionCommand(elements_p, monitor_p) {
 
       @Override
@@ -193,7 +193,7 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getCapabilityTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getCapabilityTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
 
     return new IntramodelTransitionCommand(elements_p, monitor_p) {
 
@@ -204,7 +204,7 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getOE2SystemTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getOE2SystemTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
 
     return new IntramodelTransitionCommand(elements_p, monitor_p) {
 
@@ -220,7 +220,7 @@ public class TransitionCommandHelper {
    * @param progressMonitor_p
    * @return
    */
-  public ICommand getOE2ActorTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getOE2ActorTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
 
     return new IntramodelTransitionCommand(elements_p, monitor_p) {
 
@@ -236,7 +236,7 @@ public class TransitionCommandHelper {
    * @param progressMonitor_p
    * @return
    */
-  public ICommand getPropertyValueTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getPropertyValueTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
 
     return new IntramodelTransitionCommand(elements_p, monitor_p) {
 
@@ -252,7 +252,7 @@ public class TransitionCommandHelper {
    * @param progressMonitor_p
    * @return
    */
-  public ICommand getSystemTransitionCommand(Collection<Object> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getSystemTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
 
     return new IntramodelTransitionCommand(elements_p, monitor_p) {
 

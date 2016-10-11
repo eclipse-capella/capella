@@ -27,7 +27,7 @@ public class UpdateDefCommand extends LauncherCommand {
    * @param selection
    * @param progressMonitor
    */
-  public UpdateDefCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+  public UpdateDefCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
     super(selection, progressMonitor);
   }
 

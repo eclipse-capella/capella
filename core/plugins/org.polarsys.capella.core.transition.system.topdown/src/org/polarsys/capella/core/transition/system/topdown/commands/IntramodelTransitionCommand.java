@@ -32,7 +32,7 @@ import org.polarsys.capella.core.transition.system.topdown.launcher.HeadlessIntr
  */
 public class IntramodelTransitionCommand extends LauncherCommand {
 
-  public IntramodelTransitionCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+  public IntramodelTransitionCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
     super(selection, progressMonitor);
   }
 

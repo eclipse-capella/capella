@@ -20,11 +20,11 @@ import org.polarsys.capella.core.transition.common.launcher.DefaultLauncher;
  */
 public abstract class LauncherCommand extends DefaultCommand {
 
-  public LauncherCommand(Collection<Object> selection) {
+  public LauncherCommand(Collection<?> selection) {
     super(selection);
   }
 
-  public LauncherCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+  public LauncherCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
     super(selection, progressMonitor);
   }
   
@@ -32,7 +32,7 @@ public abstract class LauncherCommand extends DefaultCommand {
   /**
    * @param elements
    */
-  protected void performTransformation(Collection<Object> elements) {
+  protected void performTransformation(Collection<?> elements) {
     DefaultLauncher launcher = createLauncher();
     launcher.setName(getName());
     launcher.addParameters(getParameters());

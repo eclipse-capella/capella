@@ -30,20 +30,20 @@ public class CreateReplicaUiHandler extends CreateReplicaHandler {
    * {@inheritDoc}
    */
   @Override
-  protected ICommand createCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+  protected ICommand createCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
     DefaultCommand command = new CreateReplicaCommand(selection, progressMonitor);
     command.addParameters(new UIHeadHandler(false));
     return command;
   }
 
   @Override
-  public Object resolveSemanticObject(Object object) {
-    Object semantic = super.resolveSemanticObject(object);
+  public EObject resolveSemanticObject(Object object) {
+    EObject semantic = super.resolveSemanticObject(object);
     if (semantic != null) {
       if (semantic instanceof DSemanticDecorator) {
         Object adapter = ((DSemanticDecorator) semantic).getTarget();
         if (adapter instanceof EObject) {
-          semantic = adapter;
+          semantic = (EObject) adapter;
         }
       }
     }

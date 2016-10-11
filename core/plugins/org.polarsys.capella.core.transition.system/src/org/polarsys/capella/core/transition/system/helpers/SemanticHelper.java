@@ -25,7 +25,7 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
  */
 public class SemanticHelper {
 
-  public static Collection<Object> getSemanticObjects(Collection<Object> elements) {
+  public static Collection<Object> getSemanticObjects(Collection<?> elements) {
     Collection<Object> result = new ArrayList<Object>();
     for (Object object : elements) {
       Object semantic = resolveSemanticObject(object);

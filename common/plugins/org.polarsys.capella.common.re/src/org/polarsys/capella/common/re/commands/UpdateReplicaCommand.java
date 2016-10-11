@@ -27,7 +27,7 @@ public class UpdateReplicaCommand extends LauncherCommand {
    * @param selection
    * @param progressMonitor
    */
-  public UpdateReplicaCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+  public UpdateReplicaCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
     super(selection, progressMonitor);
   }
 

@@ -36,7 +36,7 @@ public class DeleteReplicaAndRelatedElementsCommand extends DefaultCommand {
 	 * @param progressMonitor
 	 */
 	public DeleteReplicaAndRelatedElementsCommand(
-			Collection<Object> selection, IProgressMonitor progressMonitor) {
+			Collection<?> selection, IProgressMonitor progressMonitor) {
 		super(selection, progressMonitor);
 	}
 
@@ -45,7 +45,7 @@ public class DeleteReplicaAndRelatedElementsCommand extends DefaultCommand {
 	    return getClass().getName();
 	  }
 	
-	protected void performTransformation(Collection<Object> source) {
+	protected void performTransformation(Collection<?> source) {
 		
 			HashSet<CatalogElement> elements = new HashSet<CatalogElement>();
 			HashSet<EObject> elements_objects = new HashSet<EObject>();

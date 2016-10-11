@@ -27,7 +27,7 @@ public class UpdateCurCommand extends LauncherCommand {
    * @param selection
    * @param progressMonitor
    */
-  public UpdateCurCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+  public UpdateCurCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
     super(selection, progressMonitor);
   }
 

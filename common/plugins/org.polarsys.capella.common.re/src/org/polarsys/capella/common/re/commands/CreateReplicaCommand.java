@@ -27,7 +27,7 @@ public class CreateReplicaCommand extends LauncherCommand {
    * @param selection
    * @param progressMonitor
    */
-  public CreateReplicaCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+  public CreateReplicaCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
     super(selection, progressMonitor);
   }
 

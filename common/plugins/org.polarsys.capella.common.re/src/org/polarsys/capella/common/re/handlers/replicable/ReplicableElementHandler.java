@@ -259,7 +259,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
 
   public Collection<CatalogElement> getSelectedReplicableElements(IContext context) {
     ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
-    Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
+    Collection<?> selection = (Collection<?>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     for (Object item : selection) {
       if (item instanceof CatalogElement) {
         elements.add((CatalogElement) item);
@@ -270,11 +270,11 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
 
   public Collection<CatalogElement> getIndirectlySelectedReplicableElements(IContext context) {
 
-    Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
+    Collection<?> selection = (Collection<?>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     return getIndirectlyReplicableElements(context, selection);
   }
 
-  public Collection<CatalogElement> getUppestReplicableElement(IContext context, Collection<Object> sources) {
+  public Collection<CatalogElement> getUppestReplicableElement(IContext context, Collection<?> sources) {
     Collection<CatalogElement> result = new ArrayList<CatalogElement>();
     for (Object item : sources) {
       if (item instanceof CatalogElement) {
@@ -285,7 +285,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
     return result;
   }
 
-  public Collection<CatalogElement> getIndirectlyReplicableElementsForCommand(IContext context, Collection<Object> sources) {
+  public Collection<CatalogElement> getIndirectlyReplicableElementsForCommand(IContext context, Collection<?> sources) {
     ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
     for (Object item : sources) {
       if (item instanceof CatalogElement) {
@@ -308,7 +308,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
     return elements;
   }
 
-  public Collection<CatalogElement> getIndirectlyReplicableElements(IContext context, Collection<Object> sources) {
+  public Collection<CatalogElement> getIndirectlyReplicableElements(IContext context, Collection<?> sources) {
     ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
     if (sources == null) {
       return elements;
@@ -344,7 +344,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
    * @param sources
    * @return
    */
-  public Collection<CatalogElement> getLinkingReplicableElements(IContext context, Collection<Object> sources) {
+  public Collection<CatalogElement> getLinkingReplicableElements(IContext context, Collection<?> sources) {
     ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
     for (Object item : sources) {
       if (item instanceof EObject) {
@@ -369,9 +369,9 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
    * @param context
    * @return
    */
-  public Collection<Object> getAllDefinedReplicableElements(IContext context) {
-    ArrayList<Object> elements = new ArrayList<Object>();
-    Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
+  public Collection<CatalogElement> getAllDefinedReplicableElements(IContext context) {
+    ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
+    Collection<?> selection = (Collection<?>) context.get(ITransitionConstants.TRANSITION_SOURCES);
 
     if (!selection.isEmpty()) {
       CatalogElementPkg pkg = ReplicableElementHandlerHelper.getInstance(context).getRootPackage((EObject) selection.iterator().next());
@@ -380,9 +380,9 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
     return elements;
   }
 
-  public Collection<Object> getAllDefinedRecReplicableElements(IContext context) {
-    ArrayList<Object> elements = new ArrayList<Object>();
-    Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
+  public Collection<CatalogElement> getAllDefinedRecReplicableElements(IContext context) {
+    ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
+    Collection<?> selection = (Collection<?>) context.get(ITransitionConstants.TRANSITION_SOURCES);
 
     if (!selection.isEmpty()) {
       CatalogElementPkg pkg = ReplicableElementHandlerHelper.getInstance(context).getRootPackage((EObject) selection.iterator().next());
@@ -426,9 +426,9 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
     return ("REC" + (pkg == null ? "" : pkg.getOwnedElements().size() + 1));
   }
 
-  public String getString(IContext context, Collection<Object> elements) {
+  public String getString(IContext context, Collection<?> elements) {
     String result = "";
-    Iterator<Object> itObject = elements.iterator();
+    Iterator<?> itObject = elements.iterator();
     while (itObject.hasNext()) {
       Object object = itObject.next();
       if (object instanceof EObject) {
@@ -552,7 +552,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
    * @return
    */
   public boolean isDefaultLocation(EObject location, IContext context) {
-    Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
+    Collection<?> selection = (Collection<?>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     EObject defaultLocation = ReplicableElementHandlerHelper.getInstance(context).getRootPackage((EObject) selection.iterator().next());
     return defaultLocation.equals(location) || ((EObjectExt.isContainedBy(location, defaultLocation)));
   }

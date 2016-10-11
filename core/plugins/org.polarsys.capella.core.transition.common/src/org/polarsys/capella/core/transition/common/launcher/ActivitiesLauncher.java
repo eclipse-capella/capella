@@ -136,7 +136,7 @@ public class ActivitiesLauncher {
     };
   }
 
-  public void launch(Collection<Object> selection, String purpose, String mappingId, IProgressMonitor monitor) {
+  public void launch(Collection<?> selection, String purpose, String mappingId, IProgressMonitor monitor) {
 
   }
 
@@ -177,7 +177,7 @@ public class ActivitiesLauncher {
     return new StringArrayIterator(getFinalWorkflowElements(workflowId));
   }
 
-  protected void triggerActivities(Collection<Object> selection, String workflowId, IProgressMonitor monitor) {
+  protected void triggerActivities(Collection<?> selection, String workflowId, IProgressMonitor monitor) {
     try {
 
       for (Iterator<String> iter = iteratorWorkflowElements(workflowId); iter.hasNext();) {

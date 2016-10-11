@@ -24,7 +24,7 @@ import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 public abstract class DefaultCommand extends AbstractReadWriteCommand {
 
   /** current selection */
-  protected Collection<Object> selection = null;
+  protected Collection<?> selection = null;
 
   /** a progress monitor */
   private IProgressMonitor progressMonitor = null;
@@ -53,7 +53,7 @@ public abstract class DefaultCommand extends AbstractReadWriteCommand {
   /**
    * @param modelElement
    */
-  public DefaultCommand(Collection<Object> selection) {
+  public DefaultCommand(Collection<?> selection) {
     this(selection, new NullProgressMonitor());
   }
 
@@ -61,7 +61,7 @@ public abstract class DefaultCommand extends AbstractReadWriteCommand {
    * @param modelElement
    * @param progressMonitor
    */
-  public DefaultCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+  public DefaultCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
     this.selection = selection;
     this.progressMonitor = progressMonitor;
     setName(getClass().getSimpleName());
@@ -108,7 +108,7 @@ public abstract class DefaultCommand extends AbstractReadWriteCommand {
    * @param selection
    * @return
    */
-  protected Collection<Object> retrieveElements(Collection<Object> selection) {
+  protected Collection<Object> retrieveElements(Collection<?> selection) {
     Collection<Object> elements = new ArrayList<Object>();
 
     if (selection != null) {
@@ -124,7 +124,7 @@ public abstract class DefaultCommand extends AbstractReadWriteCommand {
   /**
    * @param elements
    */
-  protected abstract void performTransformation(Collection<Object> elements);
+  protected abstract void performTransformation(Collection<?> elements);
 
   /**
    * @param rootElement

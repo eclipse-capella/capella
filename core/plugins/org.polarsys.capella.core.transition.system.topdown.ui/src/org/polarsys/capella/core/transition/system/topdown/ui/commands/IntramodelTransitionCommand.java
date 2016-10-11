@@ -20,7 +20,7 @@ import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 
 public class IntramodelTransitionCommand extends org.polarsys.capella.core.transition.system.topdown.commands.IntramodelTransitionCommand {
 
-  public IntramodelTransitionCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+  public IntramodelTransitionCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
     super(selection, progressMonitor);
     
     addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER,

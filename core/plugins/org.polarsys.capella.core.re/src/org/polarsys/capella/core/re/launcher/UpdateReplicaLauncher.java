@@ -71,7 +71,7 @@ public class UpdateReplicaLauncher extends org.polarsys.capella.common.re.launch
   }
 
   @Override
-  public void run(Collection<Object> selection_p, boolean save, IProgressMonitor monitor_p) {
+  public void run(Collection<?> selection_p, boolean save, IProgressMonitor monitor_p) {
     HashSet<CatalogElement> elements = new HashSet<CatalogElement>();
     for (Object selected : SemanticHelper.getSemanticObjects(selection_p)) {
       if (selected instanceof EObject) {

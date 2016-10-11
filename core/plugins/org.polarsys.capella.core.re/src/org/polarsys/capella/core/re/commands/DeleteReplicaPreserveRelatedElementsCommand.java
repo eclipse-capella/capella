@@ -34,7 +34,7 @@ public class DeleteReplicaPreserveRelatedElementsCommand extends DefaultCommand 
 	 * @param progressMonitor
 	 */
 	public DeleteReplicaPreserveRelatedElementsCommand(
-			Collection<Object> selection, IProgressMonitor progressMonitor) {
+			Collection<?> selection, IProgressMonitor progressMonitor) {
 		super(selection, progressMonitor);
 	}
 
@@ -44,7 +44,7 @@ public class DeleteReplicaPreserveRelatedElementsCommand extends DefaultCommand 
 	  }
 
 	  
-	protected void performTransformation(Collection<Object> source) {
+	protected void performTransformation(Collection<?> source) {
 	   
 			HashSet<CatalogElement> elements = new HashSet<CatalogElement>();
 			for (Object selected : SemanticHelper.getSemanticObjects(source)) {

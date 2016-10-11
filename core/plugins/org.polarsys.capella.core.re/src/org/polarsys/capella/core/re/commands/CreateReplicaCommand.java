@@ -26,7 +26,7 @@ public class CreateReplicaCommand extends org.polarsys.capella.common.re.command
    * @param _rootElement_p
    * @param progressMonitor_p
    */
-  public CreateReplicaCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p) {
+  public CreateReplicaCommand(Collection<?> selection_p, IProgressMonitor progressMonitor_p) {
     super(selection_p, progressMonitor_p);
   }
 

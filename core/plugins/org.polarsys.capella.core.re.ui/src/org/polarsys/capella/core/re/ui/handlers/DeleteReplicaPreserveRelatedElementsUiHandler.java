@@ -23,7 +23,7 @@ public class DeleteReplicaPreserveRelatedElementsUiHandler extends org.polarsys.
 	   * {@inheritDoc}
 	   */
 	  @Override
-	  protected ICommand createCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+	  protected ICommand createCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
 	    return new org.polarsys.capella.core.re.commands.DeleteReplicaPreserveRelatedElementsCommand(selection, progressMonitor) {
 	      protected boolean isHeadless() {
           return false;
@@ -32,13 +32,13 @@ public class DeleteReplicaPreserveRelatedElementsUiHandler extends org.polarsys.
 	  }
 
 	  @Override
-	  public Object resolveSemanticObject(Object object) {
-	    Object semantic = super.resolveSemanticObject(object);
+	  public EObject resolveSemanticObject(Object object) {
+	    EObject semantic = super.resolveSemanticObject(object);
 	    if (semantic != null) {
 	      if (semantic instanceof DSemanticDecorator) {
 	        Object adapter = ((DSemanticDecorator) semantic).getTarget();
 	        if (adapter instanceof EObject) {
-	          semantic = adapter;
+	          semantic = (EObject) adapter;
 	        }
 	      }
 	    }

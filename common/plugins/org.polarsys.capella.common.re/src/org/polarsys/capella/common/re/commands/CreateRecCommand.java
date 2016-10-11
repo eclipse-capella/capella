@@ -27,7 +27,7 @@ public class CreateRecCommand extends LauncherCommand {
    * @param selection
    * @param progressMonitor
    */
-  public CreateRecCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+  public CreateRecCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
     super(selection, progressMonitor);
   }
 
