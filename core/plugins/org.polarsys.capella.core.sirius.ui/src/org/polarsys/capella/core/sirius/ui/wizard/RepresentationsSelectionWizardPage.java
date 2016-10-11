@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,8 +33,7 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -44,6 +43,7 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.dialogs.ContainerCheckedTreeViewer;
+import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
 /**
  * Wizard to select diagrams from an Aird.
@@ -74,18 +74,18 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
   private Session _root;
 
-  private Collection<DRepresentation> _preselection;
+  private Collection<DRepresentationDescriptor> _preselection;
 
   /**
    * Create a new <code>DescDiagramSelectionWizardPage</code>.
-   * @param root_p the root object
-   * @param representations_p the preselection.
+   * @param root the root object
+   * @param representations the preselection.
    */
-  public RepresentationsSelectionWizardPage(Session root_p, Collection<DRepresentation> representations_p) {
+  public RepresentationsSelectionWizardPage(Session root, Collection<DRepresentationDescriptor> representations) {
     super(PAGE_TITLE);
     setTitle(PAGE_TITLE);
-    _root = root_p;
-    _preselection = representations_p;
+    _root = root;
+    _preselection = representations;
     if (_preselection.size() > 0)
       setPageComplete(true);
     setMessage(SELECT_DIAGRAMS_TO_EXPORT, IMessageProvider.INFORMATION);
@@ -95,10 +95,10 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
    * {@inheritDoc}
    * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
    */
-  public void createControl(Composite parent_p) {
-    initializeDialogUnits(parent_p);
+  public void createControl(Composite parent) {
+    initializeDialogUnits(parent);
 
-    pageComposite = new Composite(parent_p, SWT.NONE);
+    pageComposite = new Composite(parent, SWT.NONE);
     pageComposite.setLayout(new GridLayout());
     pageComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
 
@@ -108,25 +108,27 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
     _treeViewer.expandAll();
     _treeViewer.collapseAll();
     // Check default preselected elements.
-    _treeViewer.setCheckedElements(_preselection.toArray());
     setControl(pageComposite);
+    
+    for (final DRepresentationDescriptor preselected : _preselection) {
+        this._treeViewer.setChecked(preselected, true);
+    }
   }
 
   /**
    * Create the table viewer.
-   * @param parent_p the parent composite.
+   * @param parent the parent composite.
    * @return the table viewer.
    */
   @SuppressWarnings("synthetic-access")
-  private CheckboxTreeViewer createTreeViewer(Composite parent_p) {
-    ContainerCheckedTreeViewer viewer = new DescDiagramSelectionTreeViewer(parent_p, SWT.SINGLE | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER);
+  private CheckboxTreeViewer createTreeViewer(Composite parent) {
+    ContainerCheckedTreeViewer viewer = new DescDiagramSelectionTreeViewer(parent, SWT.SINGLE | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER);
 
     GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
     viewer.getControl().setLayoutData(gridData);
     viewer.getTree().setHeaderVisible(false);
     viewer.getTree().setLinesVisible(false);
-    SiriusDiagramSelectionCheckStateListener listener = new SiriusDiagramSelectionCheckStateListener();
-    viewer.addCheckStateListener(listener);
+    viewer.addCheckStateListener(new SiriusDiagramSelectionCheckStateListener());
 
     viewer.setContentProvider(new SessionContentProvider(_root));
     ComposedAdapterFactory composedAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
@@ -145,7 +147,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
      * @see org.eclipse.jface.viewers.ICheckStateListener#checkStateChanged(org.eclipse.jface.viewers.CheckStateChangedEvent)
      */
     @SuppressWarnings("synthetic-access")
-    public void checkStateChanged(final CheckStateChangedEvent event_p) {
+    public void checkStateChanged(final CheckStateChangedEvent event) {
       int result = checkSelection(getSelectedElements());
       switch (result) {
         case CODE_OK:
@@ -167,12 +169,12 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
   }
 
-  private int checkSelection(Collection<?> selectedItems_p) {
+  private int checkSelection(Collection<?> selectedItems) {
     int result = CODE_OK;
-    if (selectedItems_p.isEmpty()) {
+    if (selectedItems.isEmpty()) {
       result = CODE_NO_SEL;
     } else {
-      final Iterator<?> iterItems = selectedItems_p.iterator();
+      final Iterator<?> iterItems = selectedItems.iterator();
       while (iterItems.hasNext()) {
         Object next = iterItems.next();
         if (!(next instanceof DDiagram)) {
@@ -190,27 +192,27 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
     /**
      * Create a new <code>DescDiagramSelectionTreeViewer</code>.
-     * @param parent_p the parent composite.
+     * @param parent the parent composite.
      */
-    public DescDiagramSelectionTreeViewer(Composite parent_p) {
-      super(parent_p);
+    public DescDiagramSelectionTreeViewer(Composite parent) {
+      super(parent);
     }
 
     /**
      * Create a new <code>DescDiagramSelectionTreeViewer</code>.
-     * @param parent_p the parent composite.
-     * @param style_p the style.
+     * @param parent the parent composite.
+     * @param style the style.
      */
-    public DescDiagramSelectionTreeViewer(Composite parent_p, int style_p) {
-      super(parent_p, style_p);
+    public DescDiagramSelectionTreeViewer(Composite parent, int style) {
+      super(parent, style);
     }
 
     /**
      * Create a new <code>DescDiagramSelectionTreeViewer</code>.
-     * @param tree_p the tree.
+     * @param tree the tree.
      */
-    public DescDiagramSelectionTreeViewer(Tree tree_p) {
-      super(tree_p);
+    public DescDiagramSelectionTreeViewer(Tree tree) {
+      super(tree);
     }
 
     /**
@@ -218,13 +220,13 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
      * @see org.eclipse.ui.dialogs.ContainerCheckedTreeViewer#doCheckStateChanged(java.lang.Object)
      */
     @Override
-    protected void doCheckStateChanged(Object element_p) {
+    protected void doCheckStateChanged(Object element) {
       //
       // Check all diagrams that are under this element.
-      final Widget item = findItem(element_p);
+      final Widget item = findItem(element);
       if (item instanceof TreeItem) {
         final TreeItem treeItem = (TreeItem) item;
-        if (!(element_p instanceof DRepresentation)) {
+        if (!(element instanceof DRepresentationDescriptor)) {
           final boolean result = updateChildrenItems(treeItem, treeItem.getChecked());
           if (result) {
             treeItem.setGrayed(true);
@@ -241,37 +243,37 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
     /**
      * Updates the check / gray state of all parent items
      */
-    private void updateParentItems(TreeItem item_p) {
-      if (item_p != null && !(item_p.getData() instanceof DDiagram)) {
-        final Item[] children = getChildren(item_p);
+    private void updateParentItems(TreeItem item) {
+      if (item != null && !(item.getData() instanceof DRepresentationDescriptor)) {
+        final Item[] children = getChildren(item);
         boolean containsChecked = false;
         for (int i = 0; i < children.length; i++) {
           final TreeItem curr = (TreeItem) children[i];
           containsChecked = containsChecked || curr.getChecked();
         }
-        item_p.setChecked(containsChecked);
-        item_p.setGrayed(containsChecked);
+        item.setChecked(containsChecked);
+        item.setGrayed(containsChecked);
       }
-      if (item_p != null)
-        updateParentItems(item_p.getParentItem());
+      if (item != null)
+        updateParentItems(item.getParentItem());
     }
 
     /**
      * Updates the check state of all created children
      * @return <code>true</code> if an element as been checked.
      */
-    private boolean updateChildrenItems(TreeItem parent_p, boolean state_p) {
+    private boolean updateChildrenItems(TreeItem parent, boolean state) {
       boolean result = false;
-      Item[] children = getChildren(parent_p);
+      Item[] children = getChildren(parent);
       for (int i = 0; i < children.length; i++) {
         TreeItem curr = (TreeItem) children[i];
-        if (curr.getData() instanceof DDiagram && ((curr.getChecked() != state_p) || curr.getGrayed())) {
-          curr.setChecked(state_p);
+        if (curr.getData() instanceof DRepresentationDescriptor && ((curr.getChecked() != state) || curr.getGrayed())) {
+          curr.setChecked(state);
           curr.setGrayed(false);
-          result = result || state_p;
-          result = result || updateChildrenItems(curr, state_p);
-        } else if (curr.getData() != null && ((curr.getChecked() != state_p) || curr.getGrayed())) {
-          boolean childrenResult = updateChildrenItems(curr, state_p);
+          result = result || state;
+          result = result || updateChildrenItems(curr, state);
+        } else if (curr.getData() != null && ((curr.getChecked() != state) || curr.getGrayed())) {
+          boolean childrenResult = updateChildrenItems(curr, state);
           if (childrenResult) {
             curr.setChecked(true);
             curr.setGrayed(true);
@@ -291,9 +293,9 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
    * @return all selected elements.
    */
   @SuppressWarnings("unchecked")
-  public Collection<DRepresentation> getSelectedElements() {
-    Collection<DRepresentation> result = new HashSet<DRepresentation>();
-    Collection<? extends DRepresentation> asList = (Collection<? extends DRepresentation>) Arrays.asList(_treeViewer.getCheckedElements());
+  public Collection<DRepresentationDescriptor> getSelectedElements() {
+    Collection<DRepresentationDescriptor> result = new HashSet<DRepresentationDescriptor>();
+    Collection<? extends DRepresentationDescriptor> asList = (Collection<? extends DRepresentationDescriptor>) Arrays.asList(_treeViewer.getCheckedElements());
     result.addAll(asList);
     result.removeAll(Arrays.asList(_treeViewer.getGrayedElements()));
     return result;
@@ -310,10 +312,10 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
     /**
      * Create a new <code>SemanticDViewContentProvider</code> with the specified analysis.
-     * @param session_p
+     * @param session
      */
-    public SessionContentProvider(Session session_p) {
-      _session = session_p;
+    public SessionContentProvider(Session session) {
+      _session = session;
       AdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
       _semanticProvider = new AdapterFactoryContentProvider(adapterFactory);
     }
@@ -322,38 +324,39 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
      * {@inheritDoc}
      * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
      */
-    public Object[] getChildren(Object parentElement_p) {
+    public Object[] getChildren(Object parentElement) {
       Object[] children = empty;
-      if (parentElement_p instanceof EObject && !(parentElement_p instanceof DDiagram)) {
-        EObject parent = (EObject) parentElement_p;
-        Collection<DRepresentation> representations = this.findRepresentations(parent);
-        Object[] semantic = this._semanticProvider.getChildren(parentElement_p);
+      if (parentElement instanceof Session) {
+    	Session session = (Session) parentElement;
+    	children = SessionHelper.getSemanticResources(session).toArray();
+      } else if (parentElement instanceof Resource) {
+        children = ((Resource) parentElement).getContents().toArray();
+      } else if (parentElement instanceof EObject && !(parentElement instanceof DRepresentationDescriptor)) {
+        EObject parent = (EObject) parentElement;
+        Collection<DRepresentationDescriptor> representations = this.findRepDescriptors(parent);
+        Object[] semantic = this._semanticProvider.getChildren(parentElement);
         semantic = filtersSemanticFromAnotherResource(parent.eResource(), semantic);
         Object[] result = new Object[representations.size() + semantic.length];
         int i = 0;
-        Iterator<DRepresentation> iterRepresentation = representations.iterator();
+        Iterator<DRepresentationDescriptor> iterRepresentation = representations.iterator();
         while (iterRepresentation.hasNext()) {
           result[i++] = iterRepresentation.next();
         }
         System.arraycopy(semantic, 0, result, representations.size(), semantic.length);
         children = result;
-      } else if (parentElement_p instanceof Session) {
-        children = ((Session) parentElement_p).getSemanticResources().toArray();
-      } else if (parentElement_p instanceof Resource) {
-        children = ((Resource) parentElement_p).getContents().toArray();
       }
       return children;
     }
-
-    private Object[] filtersSemanticFromAnotherResource(Resource resource_p, Object[] semantic_p) {
+    
+    private Object[] filtersSemanticFromAnotherResource(Resource resource, Object[] semantic) {
       Collection<Object> filtered = new ArrayList<Object>();
-      for (Object object : semantic_p) {
+      for (Object object : semantic) {
         filtered.add(object);
       }
 
-      for (Object object : semantic_p) {
+      for (Object object : semantic) {
         if (object instanceof EObject && ((EObject) object).eResource() != null) {
-          if (resource_p != ((EObject) object).eResource() && _session.getSemanticResources().contains(((EObject) object).eResource())) {
+          if (resource != ((EObject) object).eResource() && _session.getSemanticResources().contains(((EObject) object).eResource())) {
             filtered.remove(object);
           }
         }
@@ -366,10 +369,10 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
      * {@inheritDoc}
      * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
      */
-    public Object getParent(Object element_p) {
-      if (element_p instanceof EObject) {
-        EObject current = (EObject) element_p;
-        EObject parent = current instanceof DSemanticDiagram ? ((DSemanticDiagram) current).getTarget() : current.eContainer();
+    public Object getParent(Object element) {
+      if (element instanceof EObject) {
+        EObject current = (EObject) element;
+        EObject parent = current instanceof DRepresentationDescriptor ? ((DRepresentationDescriptor) current).getTarget() : current.eContainer();
         return parent;
       }
       return null;
@@ -379,16 +382,16 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
      * {@inheritDoc}
      * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
      */
-    public boolean hasChildren(Object element_p) {
-      return getChildren(element_p).length > 0;
+    public boolean hasChildren(Object element) {
+      return getChildren(element).length > 0;
     }
 
     /**
      * {@inheritDoc}
      * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
      */
-    public Object[] getElements(Object inputElement_p) {
-      return getChildren(inputElement_p);
+    public Object[] getElements(Object inputElement) {
+      return getChildren(inputElement);
     }
 
     /**
@@ -403,19 +406,22 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
      * {@inheritDoc}
      * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
      */
-    public void inputChanged(Viewer viewer_p, Object oldInput_p, Object newInput_p) {
+    public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
       // empty
     }
 
     /**
-     * Return all the diagrams for the specified viewpoint.
-     * @param semanticElement_p the parent semantic element.
+     * Return all the DRepresentationDescriptor for the specified viewpoint.
+     *
+     * @param semanticElement
+     *            the parent semantic element.
      * @return all the diagrams for the specified viewpoint.
      */
-    private Collection<DRepresentation> findRepresentations(EObject semanticElement_p) {
-      if (semanticElement_p == null)
-        return Collections.emptySet();
-      return DialectManager.INSTANCE.getRepresentations(semanticElement_p, _session);
+    private Collection<DRepresentationDescriptor> findRepDescriptors(final EObject semanticElement) {
+        if (semanticElement == null) {
+            return Collections.emptySet();
+        }
+        return DialectManager.INSTANCE.getAllRepresentationDescriptors(_session);
     }
   }
 

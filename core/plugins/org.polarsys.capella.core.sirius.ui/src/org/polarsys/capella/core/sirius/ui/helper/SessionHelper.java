@@ -168,7 +168,7 @@ public class SessionHelper {
 
   /**
    * Get a session for given analysis file.<br>
-   * @param selectedElement_p
+   * @param diagramResourceFile
    * @return <code>null</code> if no session found among all active sessions.
    */
   public static Session getSessionForDiagramFile(IFile diagramResourceFile) {
@@ -308,6 +308,16 @@ public class SessionHelper {
     Collection<Resource> allAnalysisResources = new HashSet<Resource>(session.getReferencedSessionResources());
     allAnalysisResources.add(session.getSessionResource());
     return allAnalysisResources;
+  }
+  
+  public static Collection<Resource> getSemanticResources(Session session) {
+	  List<Resource> resources = new ArrayList<Resource>();
+	  for (Resource resource : session.getSemanticResources()) {
+		  if (CapellaResourceHelper.isCapellaResource(resource)) {
+			  resources.add(resource);
+		  }
+	  }
+	  return resources;
   }
 
   /**

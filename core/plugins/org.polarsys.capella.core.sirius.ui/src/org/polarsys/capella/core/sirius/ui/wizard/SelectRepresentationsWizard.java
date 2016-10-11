@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,7 @@ import java.util.Collection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.sirius.ui.Messages;
 
 /**
@@ -24,7 +24,7 @@ import org.polarsys.capella.core.sirius.ui.Messages;
  */
 public class SelectRepresentationsWizard extends Wizard {
 
-  private Collection<DRepresentation> _representations;
+  private Collection<DRepresentationDescriptor> _representations;
 
   private RepresentationsSelectionWizardPage _selectElementPage;
 
@@ -32,12 +32,20 @@ public class SelectRepresentationsWizard extends Wizard {
 
   /**
    * Constructor.
-   * @param session_p origin session.
-   * @param preselection_p preselected diagrams
+   * @param session origin session.
+   * @param preselection preselected diagrams
    */
-  public SelectRepresentationsWizard(Session session_p, Collection<DRepresentation> preselection_p) {
-    _session = session_p;
-    _representations = preselection_p;
+  public SelectRepresentationsWizard(Session session, Collection<DRepresentationDescriptor> preselection) {
+    _session = session;
+    _representations = preselection;
+  }
+  
+  /**
+   * Initialize the wizard.
+   */
+  public void init() {
+      setWindowTitle(Messages.SelectRepresentationsWizard_Title);
+      setNeedsProgressMonitor(false);
   }
 
   /**
@@ -66,7 +74,7 @@ public class SelectRepresentationsWizard extends Wizard {
   /**
    * @return The representation
    */
-  public Collection<DRepresentation> getSelectedRepresentations() {
+  public Collection<DRepresentationDescriptor> getSelectedRepresentations() {
     return _representations;
   }
 
