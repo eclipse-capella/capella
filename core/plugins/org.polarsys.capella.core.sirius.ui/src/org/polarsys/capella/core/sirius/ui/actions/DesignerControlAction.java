@@ -12,6 +12,7 @@ package org.polarsys.capella.core.sirius.ui.actions;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -35,8 +36,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.window.Window;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.business.api.control.SiriusControlCommand;
 import org.eclipse.sirius.business.api.control.SiriusUncontrolCommand;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
@@ -67,6 +70,7 @@ import org.polarsys.capella.core.model.handler.pre.commit.listener.FileModificat
 import org.polarsys.capella.core.platform.sirius.ui.preferences.ICapellaPreferences;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.sirius.ui.internal.UncontrolMessageDialog;
+import org.polarsys.capella.core.sirius.ui.wizard.SelectRepresentationsWizard;
 
 import com.google.common.collect.Sets;
 
@@ -77,10 +81,10 @@ public class DesignerControlAction extends ControlAction {
   public class CapellaSiriusControlCommand extends SiriusControlCommand {
     /**
      * Constructor.
-     * @param semanticRoot_p
-     * @param semanticDest_p
-     * @param representations_p
-     * @param representationsDest_p
+     * @param semanticRoot
+     * @param semanticDest
+     * @param representations
+     * @param representationsDest
      */
     public CapellaSiriusControlCommand(EObject semanticRoot, URI semanticDest, Set<DRepresentationDescriptor> repDescriptors, URI representationsDest) {
       super(semanticRoot, semanticDest, repDescriptors, representationsDest, new NullProgressMonitor());
@@ -106,8 +110,8 @@ public class DesignerControlAction extends ControlAction {
 
     /**
      * Constructor.
-     * @param semanticRoot_p
-     * @param uncontrolRepresentations_p
+     * @param semanticRoot
+     * @param uncontrolRepresentations
      */
     public CapellaSiriusUncontrolCommand(EObject semanticRoot, boolean uncontrolRepresentations) {
       super(semanticRoot, uncontrolRepresentations, new NullProgressMonitor());
@@ -165,7 +169,7 @@ public class DesignerControlAction extends ControlAction {
     protected Shell _shell;
 
     /**
-     * @param shell_p
+     * @param shell
      */
     public CapellaSiriusControlHandler(Shell shell) {
       _shell = shell;
@@ -206,6 +210,23 @@ public class DesignerControlAction extends ControlAction {
       return repDescriptorsToMove;
     }
 
+    protected Collection<DRepresentationDescriptor> askUserWhichRepresentationToSplit(final Shell shell, final Session session, final Collection<DRepresentationDescriptor> preselection)
+            throws InterruptedException {
+        if (!DialectManager.INSTANCE.getAllRepresentationDescriptors(session).isEmpty()) {
+            final SelectRepresentationsWizard wizard = new SelectRepresentationsWizard(session, preselection);
+            wizard.init();
+            final WizardDialog dialog = new WizardDialog(shell, wizard);
+            dialog.setHelpAvailable(false);
+            dialog.create();
+            if (Window.OK == dialog.open()) {
+                return wizard.getSelectedRepresentations();
+            } else {
+                throw new InterruptedException();
+            }
+        }
+        return Collections.emptySet();
+    }
+    
     /**
      * {@inheritDoc}
      */
@@ -219,7 +240,7 @@ public class DesignerControlAction extends ControlAction {
           final Set<DRepresentationDescriptor> repDescriptors = new HashSet<DRepresentationDescriptor>(0);
           try {
             repDescriptors.addAll(getRepresentationDescriptorsToMove(_shell, session, semanticRoot));
-          } catch (InterruptedException exception_p) {
+          } catch (InterruptedException exception) {
             StringBuilder loggerMessage = new StringBuilder(".performControl(..) _ "); //$NON-NLS-1$
             __logger.warn(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI));
           }
@@ -265,7 +286,7 @@ public class DesignerControlAction extends ControlAction {
 
   public class CapellaSiriusUncontrolHandler extends SiriusUncontrolHandler {
     /**
-     * @param semanticRoot_p
+     * @param semanticRoot
      * @return
      */
     private Resource addUnreferencedRootSemanticResource(final EObject semanticRoot) {
@@ -354,9 +375,9 @@ public class DesignerControlAction extends ControlAction {
   /**
    * Do execute Control/UnControl command within an {@link AbstractNonDirtyingCommand}. Hence these commands are not available for undo/redo.<br>
    * In addition, {@link ResourceSetSync} is manually updated to reflect control( or uncontrol) commands that don't emit EMF notifications.<br>
-   * @param semanticRoot_p
-   * @param representationResources_p
-   * @param realCommand_p
+   * @param semanticRoot
+   * @param representationResources
+   * @param realCommand
    */
   protected void doExecuteCommand(final EObject semanticRoot, final Collection<Resource> representationResources, final Command realCommand) {
     final Map<Resource, ResourceStatus> initialResourceWithStatus = new HashMap<Resource, ResourceStatus>(1);
@@ -364,10 +385,10 @@ public class DesignerControlAction extends ControlAction {
       TransactionHelper.getExecutionManager(semanticRoot).execute(new AbstractNonDirtyingCommand() {
         /**
          * Change resource status for specified parameters.
-         * @param resourceSetSync_p
-         * @param resourceWithStatus_p
-         * @param handleResource_p
-         * @param handleResourceStatus_p
+         * @param resourceSetSync
+         * @param resourceWithStatus
+         * @param handleResource
+         * @param handleResourceStatus
          */
         private void changeResourceSyncStatus(ResourceSetSync resourceSetSync, Map<Resource, ResourceStatus> resourceWithStatus, Resource handleResource,
             ResourceStatus handleResourceStatus) {
@@ -426,7 +447,7 @@ public class DesignerControlAction extends ControlAction {
             // Throws exception if an issue occurs.
             FileModificationPreCommitListener.makeFilesWritable(TransactionHelper.getEditingDomain(semanticRoot), filesToMakeWritable);
             realCommand.execute();
-          } catch (AbortedTransactionException exception_p) {
+          } catch (AbortedTransactionException exception) {
             commandRolledBack();
           }
         }
@@ -439,7 +460,7 @@ public class DesignerControlAction extends ControlAction {
 
   /**
    * Fragment
-   * @param shell__p
+   * @param shell_
    */
   protected void fragment(final Shell shell_) {
     SiriusControlHandler siriusControlHandler = new CapellaSiriusControlHandler(shell_);
@@ -464,7 +485,7 @@ public class DesignerControlAction extends ControlAction {
 
   /**
    * Save session.
-   * @param semanticRoot_p
+   * @param semanticRoot
    */
   protected void saveSession(final EObject semanticRoot) {
     // Force to save the session again to make sure all modifications are saved.
@@ -478,7 +499,7 @@ public class DesignerControlAction extends ControlAction {
 
   /**
    * UnFragment
-   * @param shell__p
+   * @param shell_
    */
   protected void unFragment(final Shell shell_) {
     // Ask the end-user to confirm the uncontrol operation.
@@ -504,7 +525,7 @@ public class DesignerControlAction extends ControlAction {
 
   /**
    * Set whether or not the resourceSetSync related to current TED emits notifications to its clients.
-   * @param notificationEnabled_p
+   * @param notificationEnabled
    */
   protected void setResourceSetSyncNotificationEnabled(Session session, boolean notificationEnabled) {
     ResourceSetSync.getOrInstallResourceSetSync(TransactionHelper.getEditingDomain(session)).setNotificationIsRequired(notificationEnabled);
