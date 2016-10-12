@@ -2211,7 +2211,7 @@
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/MCB_Mission Capabilities Blank.jpg|Sample will be available soon]]    
-== Modes & States ==
+== Modes & States [DEPRECATED] ==
                                                                                                                                                                                                                                                                                
 {| border="1"
 |-

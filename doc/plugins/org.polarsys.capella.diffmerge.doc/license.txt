@@ -6,47 +6,49 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 org.polarsys.capella.doc/html/*/Images
 
-logo_capella_big.png
-
-3.1. Starting Capella_html_15a02c99.png
-3.1. Starting Capella_html_59ef72a4.png
-3.1. Starting Capella_html_m292ffacc.png
-3.1. Starting Capella_html_m39d6061f.png
-3.1. Starting Capella_html_m73a6ba84.png
-3.2. How to create a new Capella Project_html_19372ef5.png
-3.2. How to create a new Capella Project_html_1c3d37be.png
-3.2. How to create a new Capella Project_html_3c78e109.png
-3.2. How to create a new Capella Project_html_7de602d5.png
-3.2. How to create a new Capella Project_html_a409509.png
-3.2. How to create a new Capella Project_html_m156d26b.png
-3.2. How to create a new Capella Project_html_m2f6e72b2.png
-3.2. How to create a new Capella Project_html_m873f5a6.png
-3.3. How to import an existing Capella Project_html_1e9ba319.png
-3.3. How to import an existing Capella Project_html_78863ecb.png
-3.3. How to import an existing Capella Project_html_m2c1e06a6.png
-3.3. How to import an existing Capella Project_html_m43239c7f.png
-3.3. How to import an existing Capella Project_html_m618030b9.png
-3.4. How to copy or export a Capella Project_html_124dd150.png
-3.4. How to copy or export a Capella Project_html_156e45ae.png
-3.4. How to copy or export a Capella Project_html_5a54683d.png
-3.4. How to copy or export a Capella Project_html_66c97782.png
-3.4. How to copy or export a Capella Project_html_723ed3f9.png
-3.4. How to copy or export a Capella Project_html_m2db46078.png
-3.4. How to copy or export a Capella Project_html_m2e64895e.png
-3.4. How to copy or export a Capella Project_html_m3e0740fc.png
-3.5. How to migrate Capella projects_html_3c78e109.png
-3.5. How to migrate Capella projects_html_m381b2efb.png
-3.5. How to migrate Capella projects_html_m55692da5.png
-3.6. How to detach viewpoints_html_187c5aee.png
-3.6. How to detach viewpoints_html_723ed3f9.png
-3.6. How to detach viewpoints_html_m5a4bf1ab.png
-warning.png
-
-2.1. Definitions_html_3c78e109.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_2e93d00b.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_32efc2f5.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_723ed3f9.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_7bdda0fe.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_m7438dc9.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_m78be4302.png
-warning.png
+21.1. Model DiffMerge_html_13763f84.png
+21.1. Model DiffMerge_html_29d2b86f.png
+21.1. Model DiffMerge_html_306f66da.png
+21.1. Model DiffMerge_html_39002cd3.png
+21.1. Model DiffMerge_html_3f155383.png
+21.1. Model DiffMerge_html_45465200.png
+21.1. Model DiffMerge_html_4e8b8361.png
+21.1. Model DiffMerge_html_5b0468f9.png
+21.1. Model DiffMerge_html_6132844d.png
+21.1. Model DiffMerge_html_6268bf2e.png
+21.1. Model DiffMerge_html_6894195c.png
+21.1. Model DiffMerge_html_69cae476.png
+21.1. Model DiffMerge_html_6a675b42.png
+21.1. Model DiffMerge_html_7d047cd2.png
+21.1. Model DiffMerge_html_7eb489c7.png
+21.1. Model DiffMerge_html_bf0aba3.png
+21.1. Model DiffMerge_html_c86e852.png
+21.1. Model DiffMerge_html_m1961c198.png
+21.1. Model DiffMerge_html_m241953bf.png
+21.1. Model DiffMerge_html_m260feba7.png
+21.1. Model DiffMerge_html_m37e3e9e3.png
+21.1. Model DiffMerge_html_m38d61362.jpg
+21.1. Model DiffMerge_html_m3e423a6f.png
+21.1. Model DiffMerge_html_m42c302d5.png
+21.1. Model DiffMerge_html_m43da5a9d.png
+21.1. Model DiffMerge_html_m47d0d5c1.png
+21.1. Model DiffMerge_html_m4a2563eb.png
+21.1. Model DiffMerge_html_m4b50cf8c.png
+21.1. Model DiffMerge_html_m4bef3dd1.png
+21.1. Model DiffMerge_html_m4d91695e.png
+21.1. Model DiffMerge_html_m610d0270.png
+21.1. Model DiffMerge_html_m617a07f2.png
+21.1. Model DiffMerge_html_m64e99670.png
+21.1. Model DiffMerge_html_m7a3a1b12.png
+21.1. Model DiffMerge_html_m7ecf793e.png
+21.1. Model DiffMerge_html_m9cba6ee.png
+21.1. Model DiffMerge_html_ma5d5753.png
+categories_icon.png
+collapse.png
+compare_as_text.png
+expand.png
+mergeall.png
+nextdiff.png
+prevdiff.png
+sort.png
+sync.png

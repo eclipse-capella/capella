@@ -1,12 +1,12 @@
             
-= The DiffMerge tool =
+= Model DiffMerge =
  
 == Overview ==
  
 When working with a SCM (Source Control Management) system such as ClearCase, models may exist in different versions. Comparing and merging different versions of a model is thus a crucial activity. It should be possible to compare a model with a previous version in history or, for effective team working, to compare modifications made by several people and merge them in order to obtain a proper integrated version of the model under work.
 
  
-== Starting the Capella Diff/Merge Tool ==
+== Starting the Diff/Merge Tool ==
  
 Capella provides a diff/merge tool for models that supports comparison between models, visualization of the differences and selective merge (acceptance/refusal) of those differences.
 
@@ -116,7 +116,7 @@ As indicated in the message, if the purpose of the comparison is to merge models
  
 == Configuration and Features of the Diff/Merge Tool ==
   
-=== User interface of the Diff/Merge Tool ===
+=== Main interface ===
  
 When started, the diff/merge tool displays a progress dialog. Computing the differences between models takes time according to the size of the models and the number of differences between them. Click the &ldquo;Run in background&rdquo; button in order to keep working with Capella while the differences are being computed in parallel.
 
@@ -133,7 +133,7 @@ This phase ends with the opening of an editor. The editor presents the differenc
 The editor is composed of 2 horizontal sections and 3 vertical sections.
 
  
-'''Vertical sections'''
+=== Vertical sections === 
 
  
 [[Image:Images/21.1.%20Model%20DiffMerge_html_m4b50cf8c.png|618x425px]]
@@ -159,7 +159,7 @@ The section on the left-hand side is the Synthesis section: it represents the di
 <br>
 
  
-'''Horizontal sections'''
+=== Horizontal sections === 
 
  
 [[Image:Images/21.1.%20Model%20DiffMerge_html_ma5d5753.png|625x368px]]
@@ -179,41 +179,29 @@ For example, if a modified element (in purple) is being clicked in the Synthesis
 <br>
 
  
-'''Tools: top middle/right-hand sections'''
+=== Lock of models ===
 
  
 [[Image:Images/21.1.%20Model%20DiffMerge_html_m617a07f2.png|23x19px]] The lock button prevents any modification to the corresponding model. Consequently, the merge buttons which are usually enabled will be disabled if they involve a modification in that model.
 
+<br>
+<br>
  
-'''Tools: top left-hand section'''
+=== Differences navigation ===
 
- 
-[[Image:Images/21.1.%20Model%20DiffMerge_html_5b88a302.png|126x23px]]
-
- 
 These buttons are respectively meant to:
 
  
-* Expand the tree of the Synthesis 	section. Be careful that this operation may take time on large 	models.
-* Collapse the tree of the Synthesis 	section.
-* Sort the elements of the Synthesis 	section alphabetically.
-* Enable/disable the synchronisation 	between the Synthesis section and the middle and right sections.
- 
+* [[Image:Images/nextdiff.png|18x18px]] fast navigation to the next element that has differences. 
+* [[Image:Images/prevdiff.png|18x18px]] fast navigation to the previous element that has differences.
+* [[Image:Images/expand.png|18x18px]] Expand the tree of the Synthesis 	section. Be careful that this operation may take time on large 	models.
+* [[Image:Images/collapse.png|18x18px]] Collapse the tree of the Synthesis 	section.
+* [[Image:Images/sort.png|18x18px]] Sort the elements of the Synthesis 	section alphabetically.
+* [[Image:Images/sync.png|18x18px]] Enable/disable the synchronisation 	between the Synthesis section and the middle and right sections.
+* [[Image:Images/categories_icon.png|18x18px]] Open Filter and Focus capabilities 
+
+
 Additional features are available via a click on the triangle-shaped button.
-
- 
-[[Image:Images/21.1.%20Model%20DiffMerge_html_6132844d.png|215x243px]]
-
- 
-* &ldquo;Show uncounted elements&rdquo;: 	when active, the Synthesis shows all elements of both models, not 	only those that have differences.
-* &ldquo;Show moved elements twice&rdquo;: 	when an element has a different container in the left and right 	models, the Synthesis section only shows it in its &ldquo;left 	container&rdquo;. When this menu item is active, however, the 	element is also represented in its &ldquo;right container&rdquo;.
-* &ldquo;Count additional left 	elements&rdquo;: when not active, elements which are present on the 	left and not on the right are filtered out.
-* &ldquo;Count additional right 	elements&rdquo;: when not active, elements which are present on the 	right and not on the left are filtered out.
-* &ldquo;Count moves&rdquo;: when not 	active, the fact that elements have different containers in the left 	and right models is ignored.
-* &ldquo;Count attributes and 	references&rdquo;: when not active, differences on attributes and 	references within elements are filtered out.
- 
-Note that when a filter is active, the &ldquo;&#91;filtered&#93;&rdquo; warning appears in the Synthesis view to remind the user that only a subset of the differences is being displayed.
-
  
 * &ldquo;Use custom icons&rdquo;: 	whether the icons of elements are decorated with arrows indicating 	the origin of the differences.
 * &ldquo;Use custom labels&rdquo;: 	whether the name of elements is enriched with characters indicating 	the origin of the differences.
@@ -231,25 +219,26 @@ Note that when a filter is active, the &ldquo;&#91;filtered&#93;&rdquo; warning 
 <br>
 <br>
 
- 
-'''Tools: bottom left-hand section'''
+=== Filter and Focus capabilities === 
 
- 
-[[Image:Images/21.1.%20Model%20DiffMerge_html_m7ecf793e.png|84x21px]]
+The [[Image:Images/categories_icon.png|18x18px]] button, allows to filter/focus displayed differences to ease manipulation.
 
- 
-These buttons support fast navigation to the next/previous element that has differences. Their usage removes the burden of manually unfolding the tree of the Synthesis section and looking for the differences.
+These difference categories can be set to :
+* Normal : Represent elements and differences of the category normally, unless a focus is set on other categories
+* Filtered : Filter out elements and differences of the category
+* Focused : Focus on elements and differences of the category, except those that belong to filtered categories
 
- 
+For tooling such as Transition or REC/RPL, choices are kept between two executions of the tool.
+
 <br>
 <br>
-
  
-Additional features are available via a click on the triangle-shaped button.
+=== Difference Values manipulation === 
 
- 
+Features are available via a click on the triangle-shaped button.
+
+  
 [[Image:Images/21.1.%20Model%20DiffMerge_html_c86e852.png|183x82px]]
-
  
 * &ldquo;Show values on differences&rdquo;: 	when selected, only the values which are different are displayed in 	the Value sections.
 * &ldquo;Show all values&rdquo;: when 	selected, all the values of the current attribute or reference are 	shown in the Value sections. Those that are different are 	highlighted.
@@ -262,15 +251,11 @@ Additional features are available via a click on the triangle-shaped button.
 <br>
 
  
-'''Tools: bottom middle/right-hand sections'''
+=== Differences manipulation === 
 
- 
-[[Image:Images/21.1.%20Model%20DiffMerge_html_m47d0d5c1.png|159x25px]]
-
- 
 Those buttons control how the compared models are being merged. They are grouped into 2 symmetrical groups, one group for each model. The buttons in the groups are automatically enabled and disabled according to the current selection.
 
- 
+* [[Image:Images/mergeall.png|16x16px]] The &ldquo;Copy all to the right/left&rdquo; 	buttons: will propagated all displayed differences to the given panel. (This button is available only on Transition and REC/RPL tooling)
 * [[Image:Images/21.1.%20Model%20DiffMerge_html_5b0468f9.png|22x23px]] The &ldquo;Copy to the right/left&rdquo; 	buttons: given an element or a value which is present in one model 	and not in the other, clicking this button copies the element or 	value and stores it in the model where it is missing.
 * [[Image:Images/21.1.%20Model%20DiffMerge_html_m7a3a1b12.png|21x20px]] The &ldquo;Delete on the left/right&rdquo; 	buttons: given an element or value which is present in one model and 	not in the other, clicking this button deletes the element or value 	in the model where it is present.
 * [[Image:Images/21.1.%20Model%20DiffMerge_html_3f155383.png|20x21px]] The &ldquo;Ignore on the left/right&rdquo; 	buttons: the selected differences are ignored and will not appear 	any longer although they are not merged. By clicking this button, 	the user states that the selected differences are not interesting or 	relevant.
@@ -291,11 +276,12 @@ Similarly to the &ldquo;Copy&rdquo; buttons, the &ldquo;Ignore&rdquo; buttons ma
 [[Image:Images/21.1.%20Model%20DiffMerge_html_6268bf2e.png|441x149px]]
 
  
-<br>
-<br>
+=== Apply button === 
 
- 
-== The Capella Diff/Merge process ==
+* On tooling such as Transition or REC/RPL, a button Apply is available on the bottom of the dialog allowing to propagate automatically additional changes to the target architecture, REC or RPL. It has the same behavior than 'Copy all to the right' button
+
+
+== Capella Diff/Merge process ==
  
 === Starting the Diff/Merge tool ===
  
@@ -341,9 +327,6 @@ Note that the absence of visible differences does not mean that the left and rig
 <br>
 <br>
 
- 
-<br>
-<br>
 == Textual Comparison ==
 
 While the recommended comparison method for model and diagram files is using the Diff/Merge tool, 
@@ -357,3 +340,6 @@ it is possible to switch to a textual comparison by selecting "Text Compare" in 
 == Local File History ==
 
 Capella maintains a local history of file modifications and allows to compare a file with a version from local history. For more information refer to the [[../help/topic/org.eclipse.platform.doc.user/concepts/concepts-17a.htm?cp=0_2_1_8|local history documentation]]
+
+
+

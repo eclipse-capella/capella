@@ -65,7 +65,9 @@
 	</topic>
 	<topic href="html/Diagrams/diagrams.html#Missions_Capabilities_Blank" label="Missions Capabilities Blank">
 	</topic>
-	<topic href="html/Diagrams/diagrams.html#Modes_.26_States" label="Modes &amp; States">
+	<topic href="html/Diagrams/diagrams.html#Modes_.26_States" label="Modes &amp; States [DEPRECATED]">
+	</topic>
+	<topic href="html/Diagrams/diagrams.html#Mode_State_Machine" label="Mode State Machine">
 	</topic>
 	<topic href="html/Diagrams/diagrams.html#Operational_Activity_Breakdown" label="Operational Activity Breakdown">
 	</topic>

@@ -10,7 +10,7 @@
   Contributors:
        Thales - initial API and implementation
 -->
-<toc label="User Interface" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution" sort="true">
+<toc label="User Interface" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#main" sort="true">
    <topic label="Overview">
    <topic href="html/01. Overview/1.1. Introduction to Capella.html" label="Introduction to Capella">
 		<topic href="html/01. Overview/1.1. Introduction to Capella.html#Overview" label="Overview"></topic>
@@ -153,7 +153,7 @@
 	</topic>
 	<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html" label="Typology of Capella Diagrams">
 		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#Class_Diagrams" label="Class Diagrams"></topic>
-		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#State_and_Mode_Diagrams" label="State and Mode Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#State_and_Mode_Diagrams" label="Mode State Diagrams"></topic>
 		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#Breakdown_Diagrams" label="Breakdown Diagrams"></topic>
 		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#Dataflow_Diagrams" label="Dataflow Diagrams"></topic>
 		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#Architecture_Diagrams" label="Architecture Diagrams"></topic>

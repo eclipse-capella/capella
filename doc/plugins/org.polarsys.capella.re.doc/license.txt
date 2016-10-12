@@ -4,49 +4,136 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
-org.polarsys.capella.doc/html/*/Images
+org.polarsys.capella.doc/html/**/Images
 
-logo_capella_big.png
-
-3.1. Starting Capella_html_15a02c99.png
-3.1. Starting Capella_html_59ef72a4.png
-3.1. Starting Capella_html_m292ffacc.png
-3.1. Starting Capella_html_m39d6061f.png
-3.1. Starting Capella_html_m73a6ba84.png
-3.2. How to create a new Capella Project_html_19372ef5.png
-3.2. How to create a new Capella Project_html_1c3d37be.png
-3.2. How to create a new Capella Project_html_3c78e109.png
-3.2. How to create a new Capella Project_html_7de602d5.png
-3.2. How to create a new Capella Project_html_a409509.png
-3.2. How to create a new Capella Project_html_m156d26b.png
-3.2. How to create a new Capella Project_html_m2f6e72b2.png
-3.2. How to create a new Capella Project_html_m873f5a6.png
-3.3. How to import an existing Capella Project_html_1e9ba319.png
-3.3. How to import an existing Capella Project_html_78863ecb.png
-3.3. How to import an existing Capella Project_html_m2c1e06a6.png
-3.3. How to import an existing Capella Project_html_m43239c7f.png
-3.3. How to import an existing Capella Project_html_m618030b9.png
-3.4. How to copy or export a Capella Project_html_124dd150.png
-3.4. How to copy or export a Capella Project_html_156e45ae.png
-3.4. How to copy or export a Capella Project_html_5a54683d.png
-3.4. How to copy or export a Capella Project_html_66c97782.png
-3.4. How to copy or export a Capella Project_html_723ed3f9.png
-3.4. How to copy or export a Capella Project_html_m2db46078.png
-3.4. How to copy or export a Capella Project_html_m2e64895e.png
-3.4. How to copy or export a Capella Project_html_m3e0740fc.png
-3.5. How to migrate Capella projects_html_3c78e109.png
-3.5. How to migrate Capella projects_html_m381b2efb.png
-3.5. How to migrate Capella projects_html_m55692da5.png
-3.6. How to detach viewpoints_html_187c5aee.png
-3.6. How to detach viewpoints_html_723ed3f9.png
-3.6. How to detach viewpoints_html_m5a4bf1ab.png
-warning.png
-
-2.1. Definitions_html_3c78e109.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_2e93d00b.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_32efc2f5.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_723ed3f9.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_7bdda0fe.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_m7438dc9.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_m78be4302.png
-warning.png
+8.1. Introduction_html_3324fafd.png
+8.1. Introduction_html_376a226f.png
+8.1. Introduction_html_4213b083.png
+8.1. Introduction_html_43025a01.png
+8.1. Introduction_html_733c5d5d.jpg
+8.1. Introduction_html_c2765af.png
+8.1. Introduction_html_d0bdda9.png
+8.1. Introduction_html_m1e0a2884.png
+8.1. Introduction_html_m2f4cc7f5.jpg
+8.1. Introduction_html_m5c3968fa.png
+8.1. Introduction_html_m7f6c6090.png
+8.2. Basic Use Case_html_121da960.gif
+8.2. Basic Use Case_html_17699e08.png
+8.2. Basic Use Case_html_2eecec59.png
+8.2. Basic Use Case_html_3464e2e1.png
+8.2. Basic Use Case_html_3f98bee7.png
+8.2. Basic Use Case_html_4627cc64.png
+8.2. Basic Use Case_html_4fd534ab.png
+8.2. Basic Use Case_html_515e8b51.png
+8.2. Basic Use Case_html_56e383b9.png
+8.2. Basic Use Case_html_5877aab1.png
+8.2. Basic Use Case_html_589a1b2e.png
+8.2. Basic Use Case_html_61ca87e6.png
+8.2. Basic Use Case_html_6681992b.png
+8.2. Basic Use Case_html_707f60f9.png
+8.2. Basic Use Case_html_733c5d5d.jpg
+8.2. Basic Use Case_html_78d20a04.gif
+8.2. Basic Use Case_html_c008666.png
+8.2. Basic Use Case_html_m11a06012.png
+8.2. Basic Use Case_html_m24ae884e.gif
+8.2. Basic Use Case_html_m2b5f66f0.gif
+8.2. Basic Use Case_html_m2d869e08.png
+8.2. Basic Use Case_html_m2f4cc7f5.jpg
+8.2. Basic Use Case_html_m35487b8e.png
+8.2. Basic Use Case_html_m3dbcc481.png
+8.2. Basic Use Case_html_m43c6043e.gif
+8.2. Basic Use Case_html_m594eb14d.gif
+8.2. Basic Use Case_html_m62402328.png
+8.2. Basic Use Case_html_m734c92a5.png
+8.2. Basic Use Case_html_m76b1c545.png
+8.2. Basic Use Case_html_mf6bfd89.png
+8.2_Basic_Use_Case.png
+8.3. Update REC-RPL_html_25dc09c.png
+8.3. Update REC-RPL_html_2b539e6f.png
+8.3. Update REC-RPL_html_2e9a447c.png
+8.3. Update REC-RPL_html_4875b314.png
+8.3. Update REC-RPL_html_518bd489.png
+8.3. Update REC-RPL_html_57991499.png
+8.3. Update REC-RPL_html_5cad7f32.png
+8.3. Update REC-RPL_html_733c5d5d.jpg
+8.3. Update REC-RPL_html_m1039a7d0.png
+8.3. Update REC-RPL_html_m2f4cc7f5.jpg
+8.3. Update REC-RPL_html_m2fb5616b.png
+8.3. Update REC-RPL_html_m41eba791.png
+8.3.update_rec_from_rec_merge.png
+8.3.update_rec_from_rec_merge_impact.png
+8.4. RPL Deletion_html_3674b33f.png
+8.4. RPL Deletion_html_68be8879.png
+8.4. RPL Deletion_html_m49c9cef7.png
+8.4. RPL Deletion_html_m4fc14ba4.png
+8.4. RPL Deletion_html_mee7301f.png
+8.5. RPL Validation_html_733c5d5d.jpg
+8.5. RPL Validation_html_m2f4cc7f5.jpg
+8.6. Advanced Features_html_2284e832.png
+8.6. Advanced Features_html_25459aa1.png
+8.6. Advanced Features_html_3cc99ac0.png
+8.6. Advanced Features_html_3dbc82aa.png
+8.6. Advanced Features_html_4822ef4b.png
+8.6. Advanced Features_html_4b18a5c9.png
+8.6. Advanced Features_html_62ca2f9f.png
+8.6. Advanced Features_html_733c5d5d.jpg
+8.6. Advanced Features_html_7759190e.png
+8.6. Advanced Features_html_7b1766c3.png
+8.6. Advanced Features_html_b1a38c3.png
+8.6. Advanced Features_html_c388e3a.png
+8.6. Advanced Features_html_fecc182.png
+8.6. Advanced Features_html_m1d2fb26.png
+8.6. Advanced Features_html_m1e59d7b.png
+8.6. Advanced Features_html_m1eb7c6e0.png
+8.6. Advanced Features_html_m233d6be5.png
+8.6. Advanced Features_html_m2f4cc7f5.jpg
+8.6. Advanced Features_html_m4e31a690.png
+8.6. Advanced Features_html_m52755ad8.png
+8.6. Advanced Features_html_m5a294393.png
+8.6. Advanced Features_html_m5a8a33fd.png
+8.6. Advanced Features_html_m6ec962dc.png
+8.6. Advanced Features_html_m7754385b.png
+8.6. Advanced Features_html_m793c1829.png
+9.1. Introduction_html_65396e1a.png
+9.1. Introduction_html_723ed3f9.png
+9.1. Introduction_html_733c5d5d.jpg
+9.1. Introduction_html_m2f4cc7f5.jpg
+9.2. Basic Use Case_html_306dcc4f.png
+9.2. Basic Use Case_html_3ee7966e.png
+9.2. Basic Use Case_html_491bebef.png
+9.2. Basic Use Case_html_52f4a83e.png
+9.2. Basic Use Case_html_71e0fc21.png
+9.2. Basic Use Case_html_733c5d5d.jpg
+9.2. Basic Use Case_html_m1004a0b5.png
+9.2. Basic Use Case_html_m130884f.png
+9.2. Basic Use Case_html_m2f4cc7f5.jpg
+9.2. Basic Use Case_html_m3dffabd5.png
+9.2. Basic Use Case_html_m3ec8a6b5.png
+9.2. Basic Use Case_html_m47a0445d.png
+9.2. Basic Use Case_html_m54bda30d.png
+9.2. Basic Use Case_html_m67c8a76c.png
+9.2. Basic Use Case_html_m723a4595.png
+9.2. Basic Use Case_html_m74ed6e65.png
+9.2. Basic Use Case_html_m74f004a7.png
+9.3. Usage With Replicable Elements_html_2fad9421.png
+9.3. Usage With Replicable Elements_html_4579c80.png
+9.3. Usage With Replicable Elements_html_4777aa1e.png
+9.3. Usage With Replicable Elements_html_488a3e08.png
+9.3. Usage With Replicable Elements_html_4c273205.png
+9.3. Usage With Replicable Elements_html_4e22fc21.png
+9.3. Usage With Replicable Elements_html_53d980d6.png
+9.3. Usage With Replicable Elements_html_5bc6f.png
+9.3. Usage With Replicable Elements_html_70371d33.png
+9.3. Usage With Replicable Elements_html_733c5d5d.jpg
+9.3. Usage With Replicable Elements_html_7b9ca0f3.png
+9.3. Usage With Replicable Elements_html_7bfa792f.png
+9.3. Usage With Replicable Elements_html_7e54700a.png
+9.3. Usage With Replicable Elements_html_m2f4cc7f5.jpg
+9.3. Usage With Replicable Elements_html_m5ac174b.png
+9.3. Usage With Replicable Elements_html_m756e5c5c.png
+9.3. Usage With Replicable Elements_html_mf56c06f.png
+9.3_Usage_with_Replicable_Elements.png
+9.3_Usage_with_Replicable_Elements2.png
+9.4. Usage Restrictions_html_733c5d5d.jpg
+9.4. Usage Restrictions_html_m2f4cc7f5.jpg
+9.4. Usage Restrictions_html_m9524248.png

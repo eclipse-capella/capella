@@ -70,14 +70,20 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
        * @see org.eclipse.jface.dialogs.Dialog#createButtonsForButtonBar(org.eclipse.swt.widgets.Composite)
        */
       @Override
-      protected void createButtonsForButtonBar(Composite parent_p) {
-        createButton(parent_p, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+      protected void createButtonsForButtonBar(Composite parent) {
+        createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
         // add the apply all changes button only if the right model can be editable
         if (_input.isEditionPossible(false)) {
-          Button applyAllChangesButton = createButton(parent_p, ID_APPLY_ALL_CHANGES, Messages.MergeUIDifferencesHandler_ApplyAllChanges, false);
+          Button applyAllChangesButton = createButton(parent, ID_APPLY_ALL_CHANGES, Messages.MergeUIDifferencesHandler_ApplyAllChanges, false);
           applyAllChangesButton.setEnabled(((MergeEMFDiffNode)_input).isMergeAllEnabled(true));
         }
-        createOKButton(parent_p);
+        
+        createOKButton(parent);
+        
+        Button applyAllChangesButton = getButton(ID_APPLY_ALL_CHANGES);
+        if (applyAllChangesButton != null) {
+          parent.getShell().setDefaultButton(applyAllChangesButton);
+        }
       }
       
       protected AbstractComparisonViewer createComparisonViewer(Composite parent) {
@@ -111,14 +117,16 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
 
       protected void buttonPressed(int buttonId) {
         if (buttonId == ID_APPLY_ALL_CHANGES){
-          viewer.mergeAll();
-          okPressed();
+          if (viewer.mergeAll()) {
+            okPressed();
+          }
         } else {
           super.buttonPressed(buttonId);
         }
       }
 
     };
+    
     return dialog;
   }
 
