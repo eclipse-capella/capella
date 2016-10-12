@@ -156,7 +156,9 @@ public class PreferencesHelper {
         && (activePage.getActiveEditor().getEditorInput() instanceof URIEditorInput)) {
       URI uri = ((URIEditorInput) activePage.getActiveEditor().getEditorInput()).getURI();
       IFile resourceFile = getFileFromUri(uri);
-      if ((null == resourceFile) && (activePage.getActiveEditor().getEditorInput() instanceof SessionEditorInput)) {
+      if ((null == resourceFile) && (activePage.getActiveEditor().getEditorInput() instanceof SessionEditorInput)
+      // to avoid getting resource on a null session
+          && ((SessionEditorInput) activePage.getActiveEditor().getEditorInput()).getStatus().isOK()) {
         // In Capella Team context, the URI is a cdo URI (can't be used to find a local resource file).
         // Get the session from the editor.
         Session session = ((SessionEditorInput) activePage.getActiveEditor().getEditorInput()).getSession();
