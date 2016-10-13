@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.Collections;
 import java.util.List;
 
 import junit.framework.TestCase;
@@ -233,4 +234,10 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
     }
     return IResourceHelpers.getFileOrFolderInTestPlugin(getClass(), pathInPlugin);//$NON-NLS-1$
   }
+
+  @Override
+  public List<String> getRequiredTestModels() {
+    return Collections.emptyList();
+  }
+
 }

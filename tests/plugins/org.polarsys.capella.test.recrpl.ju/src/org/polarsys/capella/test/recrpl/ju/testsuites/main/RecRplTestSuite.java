@@ -83,8 +83,4 @@ public class RecRplTestSuite extends BasicTestSuite {
     return tests;
   }
 
-  @Override
-  public List<String> getRequiredTestModels() {
-    return null;
-  }
 }

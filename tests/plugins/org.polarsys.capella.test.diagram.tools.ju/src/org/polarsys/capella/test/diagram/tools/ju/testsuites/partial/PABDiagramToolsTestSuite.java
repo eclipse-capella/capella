@@ -40,8 +40,4 @@ public class PABDiagramToolsTestSuite extends BasicTestSuite {
     return tests;
   }
 
-  @Override
-  public List<String> getRequiredTestModels() {
-    return null;
-  }
 }

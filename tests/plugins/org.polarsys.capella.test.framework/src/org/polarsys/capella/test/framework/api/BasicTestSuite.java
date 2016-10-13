@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.framework.api;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.List;
 
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
@@ -152,4 +153,10 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
     }
     return IResourceHelpers.getFileOrFolderInTestPlugin(getClass(), pathInPlugin);// $NON-NLS-1$
   }
+
+  @Override
+  public List<String> getRequiredTestModels() {
+    return Collections.emptyList();
+  }
+
 }

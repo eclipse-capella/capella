@@ -20,11 +20,6 @@ import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
 public class AvailableForTypeClassExistTest extends BasicTestCase {
-  
-  @Override
-  public List<String> getRequiredTestModels() {
-    return null;
-  }
 
   @Override
   public void test() throws Exception {

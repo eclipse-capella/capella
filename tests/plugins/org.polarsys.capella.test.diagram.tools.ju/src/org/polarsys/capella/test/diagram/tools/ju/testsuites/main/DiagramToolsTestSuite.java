@@ -57,8 +57,4 @@ public class DiagramToolsTestSuite extends BasicTestSuite {
     return tests;
   }
 
-  @Override
-  public List<String> getRequiredTestModels() {
-    return null;
-  }
 }

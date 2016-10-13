@@ -38,8 +38,4 @@ public class SABDiagramToolsTestSuite extends BasicTestSuite {
     return tests;
   }
 
-  @Override
-  public List<String> getRequiredTestModels() {
-    return null;
-  }
 }

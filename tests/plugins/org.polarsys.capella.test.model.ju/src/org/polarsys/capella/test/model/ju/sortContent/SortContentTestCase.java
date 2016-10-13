@@ -42,11 +42,6 @@ public class SortContentTestCase extends BasicTestCase {
   }
 
   @Override
-  public List<String> getRequiredTestModels() {
-    return null;
-  }
-
-  @Override
   public void test() throws Exception {
     // TODO Auto-generated method stub
   }
