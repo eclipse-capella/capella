@@ -121,4 +121,15 @@
                productId="org.polarsys.capella.core.platform.sirius.ui.perspective.product">
          </statusHandlerProductBinding>
    </extension>
+	<extension
+			point="org.eclipse.ui.services">
+		<sourceProvider
+			provider="org.polarsys.capella.core.platform.sirius.ui.app.CapellaExpressionSourceProvider">
+			<variable
+				name="org.polarsys.capella.core.platform.workbench"
+				priorityLevel="workbench">
+			</variable>
+		</sourceProvider>
+	</extension>
+   
 </plugin>
