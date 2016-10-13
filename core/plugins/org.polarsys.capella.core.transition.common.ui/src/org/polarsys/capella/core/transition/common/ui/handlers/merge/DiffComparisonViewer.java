@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.compare.CompareEditorInput;
 import org.eclipse.emf.diffmerge.api.IMatch;
 import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.eclipse.emf.diffmerge.diffdata.EComparison;
@@ -51,6 +52,8 @@ public class DiffComparisonViewer extends DirectedComparisonViewer {
   private static final String CHECKOUT_ACTION_ALL = "checkout_action_all.gif";
 
   private static boolean mergeAllInProgress = false;
+
+  private static boolean mergeAllSucceed = false;
 
   public DiffComparisonViewer(Composite parent) {
     super(parent);
@@ -153,6 +156,10 @@ public class DiffComparisonViewer extends DirectedComparisonViewer {
               result.setEnabled(mergeInput.isMergeAllEnabled(onLeft));
             }
           }
+        } else if (CompareEditorInput.DIRTY_STATE.equals(event.getProperty())) {
+          if (Boolean.TRUE.equals(event.getNewValue())) {
+            mergeAllSucceed = true;
+          }
         }
       }
     });
@@ -174,12 +181,14 @@ public class DiffComparisonViewer extends DirectedComparisonViewer {
     super.setupToolsDetailsSide(toolbar, onLeft);
   }
 
-  void mergeAll(){
+  boolean mergeAll(){
     IEditableModelScope  scope = getComparison().getScope(getInput().getRoleForSide(true));
     List<EObject> root = scope.getContents();
     ComparisonSelection selection = asComparisonSelection(new StructuredSelection(root));
     mergeAllInProgress = true;
+    mergeAllSucceed = false;
     merge(false, true, selection);
     mergeAllInProgress = false;
+    return mergeAllSucceed;
   }
 }

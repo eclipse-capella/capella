@@ -84,20 +84,8 @@ The focus is on the transition to Operational Activity allocations to System Fun
  
 The Operational Activities to System Functions are automatically performs during the Realized by System and System Actor transitions.
 
-                  
+
 
 [[Image:Images/11.3_Performing_The_First_Transition.png|1000x500px]]
-
- 
-=== Update ===
- 
-The iterative transition algorithm has the same behavior than described in the previous sections.
-
- 
-Renaming, deletion, move are not propagated during update.
-
- 
-<br>
-<br>
 
  

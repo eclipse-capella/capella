@@ -66,4 +66,19 @@ A and B are in the source model. A' and B' are in the target model.
  
 [[Image:Images/11.1.%20Concepts_html_m40e77d1e.png|761x362px]]
 
+
+ 
+== Update ==
+ 
+The iterative transition is using the DiffMerge tooling to display changes between the result of the transition and the targeted architecture.
+
+* On the left panel, a synthesis of modifications which may be propagated to the targeted architecture.
+* On the middle panel, the candidate model resulting of the transition operation
+* On the right side, the target architecture.
+ 
+Additional documentation is available in the section "Model DiffMerge"
+ 
+ 
+<br>
+<br>
    

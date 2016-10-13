@@ -6,7 +6,7 @@
 [[Image:Images/5.4.%20Typologie%20of%20Melody%20Diagrams_html_479f9bb0.png|392x234px]]
 
  
-== State and Mode Diagrams ==
+== Mode State Diagrams ==
  
 [[Image:Images/5.4.%20Typologie%20of%20Melody%20Diagrams_html_m4bdfca4a.png|354x259px]]
 

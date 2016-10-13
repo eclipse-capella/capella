@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<toc label="6.2. Model preferences" link_to="PLUGINS_ROOT/org.polarsys.capella.preferences.doc/toc.xml#contribution" topic="html/06. Preferences/6.2. Model preferences.html">
+<toc topic="html/06. Preferences/6.2. Model preferences.html" label="6.2. Model preferences">
 	<topic href="html/06. Preferences/6.2. Model preferences.html" label="Model Preferences">
 		<topic href="html/06. Preferences/6.2. Model preferences.html#General" label="General"></topic>
 		<topic href="html/06. Preferences/6.2. Model preferences.html#Delete" label="Delete"></topic>
-		<topic href="html/06. Preferences/6.2. Model preferences.html#Differences_Table" label="Differences Table"></topic>
 		<topic href="html/06. Preferences/6.2. Model preferences.html#Model" label="Model"></topic>
-		<topic href="html/06. Preferences/6.2. Model preferences.html#Overview" label="Overview"></topic>
+		<topic href="html/06. Preferences/6.2. Model preferences.html#Model_Change_Recorder" label="Model Change Recorder"></topic>
+		<topic href="html/06. Preferences/6.2. Model preferences.html#Model_Validation" label="Model Validation"></topic>
 		<topic href="html/06. Preferences/6.2. Model preferences.html#Project_Explorer" label="Project Explorer"></topic>
 		<topic href="html/06. Preferences/6.2. Model preferences.html#Refinement" label="Refinement"></topic>
 		<topic href="html/06. Preferences/6.2. Model preferences.html#SCM" label="SCM"></topic>
+		<topic href="html/06. Preferences/6.2. Model preferences.html#Transfert_Viewer" label="Transfert Viewer"></topic>
 		<topic href="html/06. Preferences/6.2. Model preferences.html#Transitions.2FGeneration" label="Transitions/Generation"></topic>
 	</topic>
 </toc>

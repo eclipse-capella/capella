@@ -20,7 +20,8 @@ The REC definition dialog appears, including the new elements
  
 [[Image:Images/8.3.%20Update%20REC-RPL_html_2e9a447c.png|627x801px]]
 
-Click on OK. This will open the merge view. Press 'Apply All Changes' to update the rec to include the previously selected elements.
+Click on OK. This will open the DiffMerge view. Press 'Apply' to update the rec to include all additional changes to the REC (additional information about this dialog is available in the Model DiffMerge section)
+.
 
 [[Image:Images/8.3.update_rec_from_rec_merge.png|912x392]]
 
@@ -48,10 +49,10 @@ The REC instantiation wizard opens and in the left tree, the new elements appear
 [[Image:Images/8.3.%20Update%20REC-RPL_html_m1039a7d0.png|357x409px]]
 
  
-Perform modifications if needed (e.g. choosing specific locations for the new elements, modifying the suffix) and click on OK. This will open the merge dialog. Select 'Apply all changes' to update the RPL or merge selected changes individually. Confirm the following merge impact dialog to perform the update.
+Perform modifications if needed (e.g. choosing specific locations for the new elements, modifying the suffix) and click on OK. This will open the merge dialog. Select 'Apply' to update the RPL with additional changes or merge selected changes individually. Confirm the following merge impact dialog to perform the update.
 
 
-Before Capella 1.0, once the RPL is created, RPL elements with suffix are not synchronized. After Capella 1.0, if the suffix is modified, all elements that are intended to be renamed will be updated to have the name of the corresponding REC element with the new suffix. Similarly, if a REC element was renamed, the corresponding RPL elements will be updated with the new REC name and the current RPL suffix. Also, if an existing element has no suffix but its corresponding REC element was marked as having to be renamed, it will be updated with the RPL suffix.
+If the suffix is modified, all elements that are intended to be renamed will be updated to have the name of the corresponding REC element with the new suffix. Similarly, if a REC element was renamed, the corresponding RPL elements will be updated with the new REC name and the current RPL suffix. Also, if an existing element has no suffix but its corresponding REC element was marked as having to be renamed, it will be updated with the RPL suffix.
  
 Update the diagram to see the result.
 
