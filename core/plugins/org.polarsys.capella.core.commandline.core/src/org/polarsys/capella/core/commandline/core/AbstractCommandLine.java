@@ -521,7 +521,12 @@ public class AbstractCommandLine implements ICommandLine {
     URI fileURI = URI.createFileURI(filePath);
     List<String> segments = new ArrayList<String>(Arrays.asList(fileURI.segments()));
     segments.remove(0);
-    URI uri = URI.createFileURI("").appendSegments(segments.toArray(new String[segments.size()])); //$NON-NLS-1$
+    if (segments.isEmpty())
+      return "";
+    // We should avoid creating a file URI from an empty string because it will make an absolute path
+    URI uri = URI.createFileURI(segments.get(0));
+    for (int i = 1; i < segments.size(); i++)
+      uri = uri.appendSegment(segments.get(i));
     return uri.toFileString();
   }
 
