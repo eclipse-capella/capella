@@ -4,39 +4,45 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.meta.ju.testSuites;
+package org.polarsys.capella.test.platform.ju.testsuites;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.test.framework.api.AutoLoadTestSuite;
+import org.polarsys.capella.test.framework.api.BasicTestArtefact;
+import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.platform.ju.testcases.CapellaPlatformVersionNotNull;
 
 import junit.framework.Test;
 
 /**
- * @author Erwan Brottier
+ *
  */
-public class MetaAutoLoadTestSuite extends AutoLoadTestSuite {
+public class PlatformTestSuite extends BasicTestSuite {
 
   /**
    * Returns the suite. This is required to unary launch this test.
    */
   public static Test suite() {
-    return new MetaAutoLoadTestSuite();
+    return new PlatformTestSuite();
   }
 
+  /**
+   * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
+   */
   @Override
-  protected String getTestCasesRootPackage() {
-    return "org.polarsys.capella.test.meta.ju.testcases"; //$NON-NLS-1$
+  protected List<BasicTestArtefact> getTests() {
+    List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new CapellaPlatformVersionNotNull());
+    return tests;
   }
 
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList(new String[] { "EmptyProject" });
+    return null;
   }
-
 }
