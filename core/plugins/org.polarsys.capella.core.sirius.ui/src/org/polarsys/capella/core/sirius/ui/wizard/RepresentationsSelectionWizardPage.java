@@ -421,7 +421,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
         if (semanticElement == null) {
             return Collections.emptySet();
         }
-        return DialectManager.INSTANCE.getAllRepresentationDescriptors(_session);
+        return DialectManager.INSTANCE.getRepresentationDescriptors(semanticElement, _session);
     }
   }
 
