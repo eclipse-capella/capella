@@ -37,7 +37,8 @@ Require-Bundle: org.eclipse.amalgam.explorer.activity.ui,
  org.eclipse.e4.ui.model.workbench,
  org.polarsys.kitalpha.ad.metadata,
  org.polarsys.kitalpha.ad.services,
- org.polarsys.capella.core.platform.sirius.clipboard
+ org.polarsys.capella.core.platform.sirius.clipboard,
+ com.google.guava
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.platform.sirius.ui.navigator.actions,
