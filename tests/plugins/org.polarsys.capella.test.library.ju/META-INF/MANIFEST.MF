@@ -13,6 +13,5 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.test.libraries.ju,
  org.polarsys.capella.test.libraries.ju.testcases.basic,
- org.polarsys.capella.test.libraries.ju.testsuites,
  org.polarsys.capella.test.libraries.ju.testsuites.main,
  org.polarsys.capella.test.libraries.ju.testsuites.partial

@@ -22,7 +22,7 @@ import org.polarsys.capella.test.fastlinker.ju.testsuites.FastLinkerTestsSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.libraries.ju.testsuites.main.LibrariesTestSuite;
-import org.polarsys.capella.test.meta.ju.testSuites.MetaAutoLoadTestSuite;
+import org.polarsys.capella.test.meta.ju.testSuites.MetaTestSuite;
 import org.polarsys.capella.test.model.ju.testsuites.main.ModelTestSuite;
 import org.polarsys.capella.test.progressmonitoring.ju.testsuites.SetProgressTestSuite;
 import org.polarsys.capella.test.recrpl.ju.testsuites.main.RecRplTestSuite;
@@ -58,7 +58,7 @@ public class RunInUITestSuite extends BasicTestSuite {
     tests.add(new ActivityExplorerTestsSuite());
     tests.add(new DiagramToolsTestSuite());
     tests.add(new DiagramFiltersTestSuite());
-    tests.add(new MetaAutoLoadTestSuite());
+    tests.add(new MetaTestSuite());
     tests.add(new SetProgressTestSuite());
     tests.add(new DiagramMiscTestSuite());
     return tests;

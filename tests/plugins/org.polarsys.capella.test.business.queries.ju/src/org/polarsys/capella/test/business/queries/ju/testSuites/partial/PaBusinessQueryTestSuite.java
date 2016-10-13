@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalActor_FunctionalAllocation;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalActor_ImplementedInterfaces;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalActor_InheritedActors;
@@ -27,6 +25,7 @@ import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.Physi
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_Deployers;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_Deployments;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_ImplementedInterface;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_ImplementedLCS;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_UsedInterface;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComponent_DeployedComponents;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComponent_FunctionalAllocation;
@@ -35,6 +34,8 @@ import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.Physi
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalFunction_FunctionalRealization;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+
+import junit.framework.Test;
 
 /**
  * @author Erwan Brottier
@@ -62,6 +63,7 @@ public class PaBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new PhysicalComp_Deployers());
     tests.add(new PhysicalComp_Deployments());
     tests.add(new PhysicalComp_ImplementedInterface());
+    tests.add(new PhysicalComp_ImplementedLCS());
     tests.add(new PhysicalComp_UsedInterface());
     tests.add(new PhysicalComponent_DeployedComponents());
     tests.add(new PhysicalComponent_FunctionalAllocation());

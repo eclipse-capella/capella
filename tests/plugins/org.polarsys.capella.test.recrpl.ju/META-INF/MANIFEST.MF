@@ -19,5 +19,4 @@ Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.test.recrpl.ju,
  org.polarsys.capella.test.recrpl.ju.model,
  org.polarsys.capella.test.recrpl.ju.testcases,
- org.polarsys.capella.test.recrpl.ju.testsuites,
  org.polarsys.capella.test.recrpl.ju.testsuites.main

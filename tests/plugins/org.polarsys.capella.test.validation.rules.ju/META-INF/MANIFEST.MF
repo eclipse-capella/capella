@@ -41,7 +41,6 @@ Export-Package: org.polarsys.capella.test.validation.rules.ju,
  org.polarsys.capella.test.validation.rules.ju.testcases.tj_la,
  org.polarsys.capella.test.validation.rules.ju.testcases.tj_pa,
  org.polarsys.capella.test.validation.rules.ju.testcases.tj_sa,
- org.polarsys.capella.test.validation.rules.ju.testsuites,
  org.polarsys.capella.test.validation.rules.ju.testsuites.main,
  org.polarsys.capella.test.validation.rules.ju.testsuites.partial
 Bundle-Localization: plugin
