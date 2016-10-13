@@ -1038,7 +1038,6 @@
                </objectClass>
                <objectClass
                      name="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
->>>>>>> refs/remotes/origin/master
                </objectClass>
             </or>
          </enablement>
