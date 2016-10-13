@@ -10,16 +10,14 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.handlers;
 
-import org.polarsys.capella.core.platform.sirius.ui.navigator.helpers.FixCustomFeaturesHelper;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.helpers.FixDAnnotationsHelper;
 
-/**
- *
- */
-public class FixCustomFeaturesHandler extends AbstractFixDiagramsHandler {
+public class FixDAnnotationsHandler extends AbstractFixDiagramsHandler {
 
-  public FixCustomFeaturesHandler() {
-    setDialogConfirmationMessage("Are you sure you want to fix the custom features");
-    setJobName(Messages.FixCustomFeaturesJobName);
-    setFixHelper(new FixCustomFeaturesHelper());
+  public FixDAnnotationsHandler() {
+    setDialogConfirmationMessage("Are you sure you want to fix the annotations on diagrams");
+    setJobName(Messages.FixDAnnotationsJobName);
+    setFixHelper(new FixDAnnotationsHelper());
   }
+
 }
