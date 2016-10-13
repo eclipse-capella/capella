@@ -25,7 +25,6 @@ import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.Physi
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_Deployers;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_Deployments;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_ImplementedInterface;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_ImplementedLCS;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_UsedInterface;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComponent_DeployedComponents;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComponent_FunctionalAllocation;
@@ -63,7 +62,7 @@ public class PaBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new PhysicalComp_Deployers());
     tests.add(new PhysicalComp_Deployments());
     tests.add(new PhysicalComp_ImplementedInterface());
-    tests.add(new PhysicalComp_ImplementedLCS());
+    //tests.add(new PhysicalComp_ImplementedLCS());
     tests.add(new PhysicalComp_UsedInterface());
     tests.add(new PhysicalComponent_DeployedComponents());
     tests.add(new PhysicalComponent_FunctionalAllocation());
