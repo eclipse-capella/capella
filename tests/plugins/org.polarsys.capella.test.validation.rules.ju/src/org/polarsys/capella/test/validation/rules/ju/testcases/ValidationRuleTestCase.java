@@ -11,7 +11,7 @@
 package org.polarsys.capella.test.validation.rules.ju.testcases;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -111,7 +111,11 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
 
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList(getRequiredTestModel());
+    if (getRequiredTestModel() != null) {
+      return Collections.singletonList(getRequiredTestModel());
+    } else {
+      return Collections.emptyList();
+    }
   }
 
   protected List<EObject> getTestScope(ICapellaModel model) {
