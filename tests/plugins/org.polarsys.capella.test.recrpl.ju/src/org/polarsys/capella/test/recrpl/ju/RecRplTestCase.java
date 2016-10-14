@@ -249,7 +249,12 @@ public abstract class RecRplTestCase extends BasicTestCase {
   protected Resource getModelResource() {
     if (modelResource == null) {
       Session session = getSessionForTestModel(getRequiredTestModels().get(0));
-      modelResource = (Resource) session.getSemanticResources().toArray()[0];
+      for (Resource resource : session.getSemanticResources()) {
+        // Exclude AFM's Metadata resource
+        if (resource.getContents().get(0) instanceof Project) {
+          modelResource = resource;
+        }
+      }
     }
     return modelResource;
   }
