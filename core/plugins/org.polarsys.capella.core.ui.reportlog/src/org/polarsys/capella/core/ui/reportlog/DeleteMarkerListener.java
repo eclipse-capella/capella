@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,62 +10,50 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.reportlog;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
-import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
+import org.polarsys.capella.common.ef.domain.AbstractEditingDomainResourceSetListenerImpl;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
-import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
-import org.polarsys.capella.core.model.handler.post.commit.listener.DeleteElementListener;
 
 /**
- * Upon deletion of a model element, this listener deletes all markers 
- * that reference the deleted model element.
+ * Upon deletion of a model element, this listener deletes all markers that reference the deleted model element.
  */
-public class DeleteMarkerListener extends DeleteElementListener {
+public class DeleteMarkerListener extends AbstractEditingDomainResourceSetListenerImpl {
 
-  @Override
-  protected void handleDelete(Set<? extends EObject> deleted_p) {
-    Set<EObject> deleteObjects = new HashSet<EObject>(deleted_p);
-    Iterator<EObject> itDelete = (Iterator<EObject>) deleted_p.iterator();
-    while (itDelete.hasNext()) {
-      for (Iterator<EObject> it = itDelete.next().eAllContents(); it.hasNext();) {
-        deleteObjects.add(it.next());
-      }
-    }
+  public DeleteMarkerListener() {
+    super(NotificationFilter.NOT_TOUCH.and(NotificationFilter.READ.negated().and(new NotificationFilter.Custom() {
+      @Override
+      public boolean matches(Notification notif) {
 
-    Collection<IMarker> markers = LightMarkerRegistry.getInstance().getMarkers();
-    List<IMarker> toDelete = new ArrayList<IMarker>();
-
-    for (IMarker deleted : markers) {
-      boolean isDeletable = false;
-      Collection<EObject> referencedElements = MarkerViewHelper.getModelElementsFromMarker(deleted);
-
-      // if marker references one of deleted element, we remove it
-      for (EObject deleteObject : deleteObjects) {
-        if (referencedElements.contains(deleteObject)) {
-          isDeletable = true;
+        // we look only at remove and set notifications ...
+        switch (notif.getEventType()) {
+        case Notification.REMOVE:
+        case Notification.REMOVE_MANY:
           break;
+        default:
+          return false;
         }
-      }
-      if (isDeletable) {
-        toDelete.add(deleted);
-      }
-    }
 
-    for (IMarker marker : toDelete) {
-      try {
-        marker.delete();
-      } catch (CoreException exception) {
-        ReportLogActivator.getDefault().log(IStatus.ERROR, exception.getMessage(), exception);
+        // ... on containment references
+        if (notif.getFeature() instanceof EReference && ((EReference) notif.getFeature()).isContainment()) {
+          return true;
+        }
+
+        // ... or direct resource contents
+        if (notif.getNotifier() instanceof Resource
+            && notif.getFeatureID(Resource.class) == Resource.RESOURCE__CONTENTS) {
+          return true;
+        }
+
+        return false;
       }
-    }
+    })));
+  }
+  
+  public void resourceSetChanged(ResourceSetChangeEvent event) {
+    LightMarkerRegistry.getInstance().purgeMarkers();
   }
 }
