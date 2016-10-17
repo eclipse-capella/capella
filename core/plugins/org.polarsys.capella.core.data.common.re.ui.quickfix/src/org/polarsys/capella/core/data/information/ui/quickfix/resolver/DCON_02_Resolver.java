@@ -26,7 +26,7 @@ import org.polarsys.capella.core.transition.common.commands.DefaultCommand;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
 
-public class DCON_02_Resolver extends AbstractCapellaMarkerResolution{
+public class DCON_02_Resolver extends AbstractCapellaMarkerResolution {
 
   @Override
   public void run(IMarker marker) {
@@ -40,7 +40,9 @@ public class DCON_02_Resolver extends AbstractCapellaMarkerResolution{
           Collection<Object> selection = new ArrayList<Object>();
           selection.add(rpl);
           DefaultCommand command = new UpdateReplicaCommand(selection, new NullProgressMonitor());
+          command.setName(DCON_02_Resolver.this.getLabel());
           command.addParameters(new UIHeadHandler(true));
+          command.run();
         }
       });
     }
