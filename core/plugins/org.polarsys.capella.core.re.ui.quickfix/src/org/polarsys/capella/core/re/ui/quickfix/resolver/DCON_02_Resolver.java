@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.data.information.ui.quickfix.resolver;
+package org.polarsys.capella.core.re.ui.quickfix.resolver;
 
 import java.util.ArrayList;
 import java.util.Collection;
