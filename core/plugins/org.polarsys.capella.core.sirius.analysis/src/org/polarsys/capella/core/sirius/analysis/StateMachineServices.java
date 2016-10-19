@@ -239,7 +239,7 @@ public class StateMachineServices {
    * @param ele
    * @return
    */
-  public List<EObject> getAllFunctionsActiveInStates(EObject context, State ele) {
+  public List<EObject> getAllFunctionsActiveInStates(EObject context, IState ele) {
     List<EObject> referencers = EObjectExt.getReferencers(ele, FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES);
     return referencers;
   }
@@ -263,7 +263,7 @@ public class StateMachineServices {
    * @param ele
    * @return
    */
-  public List<EObject> getAllFunctionalChainsActiveInStates(EObject context, State ele) {
+  public List<EObject> getAllFunctionalChainsActiveInStates(EObject context, IState ele) {
     List<EObject> referencers = EObjectExt.getReferencers(ele, FaPackage.Literals.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES);
     return referencers;
   }
