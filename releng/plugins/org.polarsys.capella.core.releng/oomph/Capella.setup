@@ -240,7 +240,7 @@
       <repositoryList
           name="Mars">
         <repository
-            url="http://download.eclipse.org/sirius/updates/releases/4.1.0/mars"/>
+            url="http://download.eclipse.org/sirius/updates/stable/4.1.1-S20161018-045017/mars"/>
         <repository
             url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
         <repository
