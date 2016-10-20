@@ -392,7 +392,7 @@ This rule checks that an element doesn&apos;t contain a naming conflict between 
                   {0} (Association Property) of kind ASSOCIATION can only exist, if and only if the target class has or inherits at least one property being a part of key.
                </message>
                <description>
-                  This rule checks that a reference relationship association of  kind ASSOCIATION can only exist, if and only if the target class has or inherits at least one property being a key.
+                  This rule checks that an Association Property of kind ASSOCIATION can only exist, if and only if the target class has or inherits at least one property being a part of key.
                </description>
                <target class="Property">
                </target>
