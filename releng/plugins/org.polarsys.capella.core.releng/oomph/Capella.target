@@ -25,8 +25,8 @@
       <repository location="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
       <repository location="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
       <repository location="http://download.eclipse.org/diffmerge/releases/0.7.0/edm-patterns-site"/>
-      <repository location="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/150/artifact/result/publish/kitalpha_runtime/site.p2"/>
-      <repository location="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/150/artifact/result/publish/kitalpha_sdk/site.p2"/>
+      <repository location="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/175/artifact/result/publish/kitalpha_runtime/site.p2"/>
+      <repository location="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/175/artifact/result/publish/kitalpha_sdk/site.p2"/>
       <repository location="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20161007-040549/mars"/>
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
       <repository location="http://download.eclipse.org/releases/mars"/>
