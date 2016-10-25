@@ -71,6 +71,8 @@ import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectArrangeOperation;
 import org.eclipse.sirius.diagram.ui.internal.refresh.SynchronizeGMFModelCommand;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.format.data.extension.FormatDataManagerRegistry;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistry;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -910,17 +912,17 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     final DiagramEditPart targetEditPart = loadEditParts(tgtDiagram, shell);
 
     //Store layout of source diagram
-    List<org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager> mgrs = LayoutDataManagerRegistry.getSiriusLayoutDataManagers(sourceDiagram);
+    List<SiriusFormatDataManager> mgrs = FormatDataManagerRegistry.getSiriusFormatDataManagers(sourceDiagram);
     if (!mgrs.isEmpty()) {
       try {
-        mgrs.iterator().next().storeLayoutData(sourceEditPart);
+        mgrs.iterator().next().storeFormatData(sourceEditPart);
       } catch (Exception e) {
         //Nothing. if we are not able to store a layout, it's ok.
       }
     }
 
     //Restore layout into target diagram
-    mgrs = LayoutDataManagerRegistry.getSiriusLayoutDataManagers(targetDiagram);
+    mgrs = FormatDataManagerRegistry.getSiriusFormatDataManagers(targetDiagram);
     if (!mgrs.isEmpty()) {
       try {
         mgrs.iterator().next().applyLayout(targetEditPart);
@@ -930,10 +932,10 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     }
 
     //Clear layout of source diagram
-    mgrs = LayoutDataManagerRegistry.getSiriusLayoutDataManagers(sourceDiagram);
+    mgrs = FormatDataManagerRegistry.getSiriusFormatDataManagers(sourceDiagram);
     if (!mgrs.isEmpty()) {
       try {
-        mgrs.iterator().next().clearLayoutData();
+        mgrs.iterator().next().clearFormatData();
       } catch (Exception e) {
         //Nothing. if we are not able to store a layout, it's ok.
       }
