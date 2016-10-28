@@ -67,9 +67,13 @@ public class OpenDiagramStep extends AbstractTestStep<DiagramContext> {
   @Override
   public DiagramContext getResult() {
     if (getExecutionContext() instanceof DiagramContext) {
+      getExecutionContext().putSemanticElement(((DiagramContext)getExecutionContext()).getDiagramId(), diagram);
       return (DiagramContext) getExecutionContext();
     }
-    return new DiagramContext(getExecutionContext(), diagram);
+
+    DiagramContext diagramContext = new DiagramContext(getExecutionContext(), diagram);
+    getExecutionContext().putSemanticElement(diagramContext.getDiagramId(), diagram);
+    return diagramContext;
   }
 
   /**

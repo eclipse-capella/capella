@@ -43,8 +43,10 @@ public class DiagramToolsTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new MSDiagramToolsTestSuite());
-    tests.add(new MSMDiagramToolsTestSuite());
+    // FIXME SFDBDiagramToolsTestSuite should run before MSMDiagramToolsTestSuite, because InitializeFromExistingDiagramTestCase fails 
+    // when it run after MSMShowHideTransition2ModesTestand MSMShowHideTransition2StatesTest
     tests.add(new SFDBDiagramToolsTestSuite());
+    tests.add(new MSMDiagramToolsTestSuite());
     tests.add(new CDBDiagramToolsTestSuite());
     tests.add(new LABDiagramToolsTestSuite());
     tests.add(new IDBDiagramToolsTestSuite());

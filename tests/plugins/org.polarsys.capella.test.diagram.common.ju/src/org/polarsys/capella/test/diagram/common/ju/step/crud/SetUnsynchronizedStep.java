@@ -24,8 +24,9 @@ public class SetUnsynchronizedStep extends AbstractDiagramStep<DiagramContext> {
     this(context, false);
   }
 
-  public SetUnsynchronizedStep(DiagramContext context, boolean synchronized_p) {
+  public SetUnsynchronizedStep(DiagramContext context, boolean _synchronized) {
     super(context);
+    this._synchronized = _synchronized;
   }
 
   @Override

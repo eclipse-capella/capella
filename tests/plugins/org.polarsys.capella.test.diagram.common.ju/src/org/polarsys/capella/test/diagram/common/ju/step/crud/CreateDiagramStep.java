@@ -115,6 +115,8 @@ public class CreateDiagramStep extends AbstractTestStep<DiagramContext> {
    */
   @Override
   public DiagramContext getResult() {
-    return new DiagramContext(getExecutionContext(), diagram);
+    DiagramContext diagramContext = new DiagramContext(getExecutionContext(), diagram);
+    getExecutionContext().putSemanticElement(diagramContext.getDiagramId(), diagram);
+    return diagramContext;
   }
 }

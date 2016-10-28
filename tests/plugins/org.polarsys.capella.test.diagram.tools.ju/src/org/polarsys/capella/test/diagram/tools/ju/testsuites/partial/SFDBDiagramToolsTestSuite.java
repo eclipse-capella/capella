@@ -15,6 +15,7 @@ import java.util.List;
 
 import junit.framework.Test;
 
+import org.polarsys.capella.test.diagram.tools.ju.sdfb.InitializeFromExistingDiagramTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.SwitchCategoryTestCase;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -35,6 +36,7 @@ public class SFDBDiagramToolsTestSuite extends BasicTestSuite {
 	protected List<BasicTestArtefact> getTests() {
 		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new SwitchCategoryTestCase());
+    tests.add(new InitializeFromExistingDiagramTestCase());
 		return tests;
 	}
 
