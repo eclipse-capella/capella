@@ -64,7 +64,10 @@ public class StateMachineRule extends AbstractCapellaElementRule {
     while (parent != null) {
       EObject bestTracedElement = TransformationHandlerHelper.getInstance(context).getBestTracedElement(parent, context, sContext);
       if (bestTracedElement != null) {
-        return bestTracedElement;
+        EStructuralFeature containmentFeature = getTargetContainementFeature(element, result, bestTracedElement, context);
+        if (bestTracedElement.eClass().getEAllStructuralFeatures().contains(containmentFeature)){
+          return bestTracedElement;
+        }
       }
       parent = parent.eContainer();
     }
