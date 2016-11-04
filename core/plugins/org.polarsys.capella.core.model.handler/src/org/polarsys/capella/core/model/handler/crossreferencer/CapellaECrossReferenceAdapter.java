@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,8 +56,8 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterIm
   WeakReference<EditingDomain> _editingDomain;
 
   public CapellaECrossReferenceAdapter(EditingDomain editingDomain) {
-	super();
-	_editingDomain = new WeakReference<EditingDomain>(editingDomain);
+  super();
+  _editingDomain = new WeakReference<EditingDomain>(editingDomain);
   }
 
 /**
@@ -103,13 +103,13 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterIm
    */
   @SuppressWarnings("fallthrough")
   @Override
-  protected void handleContainment(Notification notification_p) {
-    super.handleContainment(notification_p);
-    int eventType = notification_p.getEventType();
+  protected void handleContainment(Notification notification) {
+    super.handleContainment(notification);
+    int eventType = notification.getEventType();
     switch (eventType) {
       case Notification.ADD:
       case Notification.SET:
-        Object newValue = notification_p.getNewValue();
+        Object newValue = notification.getNewValue();
         if (null != newValue) {
           if (newValue instanceof EObject) {
             // When setting/adding an object, we must make sure its references are also adapted against the cross referencer.
@@ -126,17 +126,26 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterIm
       case Notification.REMOVE:
         EObject oldValue = null;
         try {
-          oldValue = EObject.class.cast(notification_p.getOldValue());
+            oldValue = EObject.class.cast(notification.getOldValue());
         } catch (Exception exception_p) {
-          // Do not deal with this value.
+            // Do not deal with this value.
         }
-        if (null != oldValue) {
-          // Free references pointing this element. Call unsetTarget to make sure inverse cross referencer cleans its data accordingly.
-          unsetTarget(oldValue);
+        // The add/remove notification order is not guaranteed in all
+        // execution context. It means that we can have an Add
+        // notification followed by a Remove one whereas it should be the
+        // inverse.
+        // So we have to check before doing the unset that it has not
+        // been added into another reference by checking that it's
+        // container is null.
+        if (null != oldValue && oldValue.eContainer() == null) {
+            // Free references pointing this element. Call unsetTarget
+            // to make sure inverse cross referencer cleans its data
+            // accordingly.
+            unsetTarget(oldValue);
         }
-      break;
+        break;
       case Notification.ADD_MANY:
-        for (Object value : (Collection<?>) notification_p.getNewValue()) {
+        for (Object value : (Collection<?>) notification.getNewValue()) {
           if (value instanceof EObject) {
             // See explanations in ADD, SET case.
             adaptAllEReferences((EObject) value);
