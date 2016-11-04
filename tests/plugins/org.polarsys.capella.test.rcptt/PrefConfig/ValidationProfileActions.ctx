@@ -1,0 +1,85 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ValidationProfileActions
+Element-Type: context
+Element-Version: 2.0
+Id: _ZR3fQKKHEeaAAPJPtfviTA
+Runtime-Version: 2.0.0.201506042314
+Save-Time: 11/4/16 1:08 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+
+proc referenceConfigProject [val capellaProjectName] [val configProjectName]{
+	get-view "Capella Project Explorer" | get-tree | select MelodyProject1 | get-menu Properties | click
+	with [get-window [concat "Properties for " $capellaProjectName] ] {
+	    get-tree | select "Capella Project References"
+	    get-table | get-item $configProjectName | check
+	    get-button OK | click
+	}
+}
+
+proc selectOnlyQualityConstraints {
+	get-preferences-menu | click
+	with [get-window Preferences] {
+	    get-tree | select "Model Validation/Constraints"
+	    with [get-tree -after [get-label "Constraint categories:"]] {
+	        select Capella
+	        get-item Capella | uncheck
+	        get-item "Capella/Quality" | check
+	    }
+	    get-button Apply | click
+	    get-button OK | click
+	}
+}
+
+proc exportEPFFileToConfigProject [val configProjectName] {
+	get-view "Capella Project Explorer" | get-tree | get-menu "Export..." | click
+	with [get-window Export] {
+	    get-tree | select "General" | select "General/Preferences"
+	    get-button "Next >" | click
+	    get-group "" | get-tree | get-item "Model Validation Preferences" | check
+	    get-button "Workspace..." | click	    
+	}
+	
+	with [get-window "Project Selection"] {
+	    with [get-tree] {
+	        select $configProjectName
+	        get-item $configProjectName | check
+	    }
+	    get-button OK | click
+	}
+	get-window Export | get-button Finish | click
+}
+
+proc checkValidationProfile {
+	get-preferences-menu | click
+	with [get-window Preferences] {
+	    get-tree | select "Model Validation/Constraints"
+	    with [get-tree -after [get-label "Constraint categories:"]] {
+	        select Capella | get-item "Capella/Quality" | uncheck
+	        get-item "Capella/Transition" | check
+	        get-item "Capella/Integrity" | check
+	        get-item "Capella/Design" | check
+	    }
+	    get-button Apply | click
+	    get-button OK | click
+	}
+	
+	with [get-view "Capella Project Explorer" | get-tree] {
+	    select "MelodyProject1/MelodyProject1.aird" | get-menu "Open Session" | click
+	    select "MelodyProject1/MelodyProject1.aird/MelodyProject1" | get-menu "Validate Model" | click
+	}
+	get-window "Validation Problems" | get-button OK | click
+	
+	with [get-view Information | get-tree] {
+	    get-column-header Message | click
+	    select "Capella \\(4 items\\)" | double-click
+	    get-item "Capella \\(4 items\\)" | get-property childCount | equals 1 | verify-true
+		get-item "Capella \\(4 items\\)" | get-property "getItems().TreeItem[0].getText()" | contains "Quality" | verify-false
+	}
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

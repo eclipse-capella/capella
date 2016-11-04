@@ -1,0 +1,43 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _roPZoKKHEeaAAPJPtfviTA,_Ez80IKKIEeaAAPJPtfviTA,_ZR3fQKKHEeaAAPJPtfviTA
+Element-Name: ValidationProfiles
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _ZTjhUKKHEeaAAPJPtfviTA
+Runtime-Version: 2.0.0.201506042314
+Save-Time: 11/4/16 1:19 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Export EPF File (Modify Only Validation Rules) to Configuration Project
+Create configurability Projects & MelodyAdvance Project (With a reference to Configurability Project)
+Export EPF file to Configuration
+Check validation profile Exported via EPF file.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Configurability project and Capella project are already created and imported
+// in the workspace
+
+global [val capellaProjectName "MelodyProject1"]
+global [val configProjectName "ConfigProject1"]
+
+// Do a reference from the capella project to the configurability project
+referenceConfigProject $capellaProjectName $configProjectName
+
+// In model validation/constraints, do select only quality constraint
+selectOnlyQualityConstraints
+
+// Export EPF file to the configurability project
+exportEPFFileToConfigProject $configProjectName
+
+// Check Validation Profile previously exported
+checkValidationProfile
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
