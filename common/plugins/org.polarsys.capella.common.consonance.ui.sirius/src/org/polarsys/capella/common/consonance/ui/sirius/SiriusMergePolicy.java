@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
@@ -67,8 +68,9 @@ public class SiriusMergePolicy extends GMFMergePolicy {
 
     // Sirius 4.1: Retrieve the descriptor while merging diagram
     if (element instanceof DRepresentation) {
-      if (scope.getContainer(element) instanceof DView) {
-        for (EObject descriptor : scope.get(scope.getContainer(element),
+      EObject container = scope.getContainer(element);
+      if (container instanceof DView) {
+        for (EObject descriptor : scope.get(container,
             ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS)) {
           if (descriptor instanceof DRepresentationDescriptor) {
             if (element.equals(((DRepresentationDescriptor) descriptor).getRepresentation())) {
@@ -76,6 +78,10 @@ public class SiriusMergePolicy extends GMFMergePolicy {
             }
           }
         }
+      } else if (container == null) {
+        DRepresentationDescriptor descriptor = getDescriptor((DRepresentation)element, scope);
+        if (descriptor != null)
+          group.add(descriptor);
       }
     }
 
@@ -94,5 +100,26 @@ public class SiriusMergePolicy extends GMFMergePolicy {
     extendViewpointAdditionGroup(result, element, scope);
     return result;
   }
-
+  
+  /**
+   * Return the descriptor for the given representation within the given scope, if any
+   * @param representation a non-null representation
+   * @param scope a non-null scope
+   * @return a potentially null descriptor
+   */
+  private DRepresentationDescriptor getDescriptor(
+      DRepresentation representation, IFeaturedModelScope scope) {
+    for (EObject root : scope.getContents()) {
+      if (root instanceof DAnalysis) {
+        for (DView view : ((DAnalysis)root).getOwnedViews()) {
+          for (DRepresentationDescriptor descriptor : view.getOwnedRepresentationDescriptors()) {
+            if (descriptor.getRepresentation() == representation)
+              return descriptor;
+          }
+        }
+      }
+    }
+    return null;
+  }
+  
 }

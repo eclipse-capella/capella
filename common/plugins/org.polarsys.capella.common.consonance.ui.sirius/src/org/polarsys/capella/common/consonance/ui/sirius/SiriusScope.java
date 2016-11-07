@@ -24,6 +24,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
@@ -87,7 +88,7 @@ public class SiriusScope extends GMFScope {
    */
   @Override
   protected boolean isSuitableFor(Resource resource, EObject root) {
-    boolean result = isViewpointResource(resource) && isViewpointElement(root);
+    boolean result = isViewpointResource(resource) == isViewpointElement(root);
     return result;
   }
   
@@ -97,7 +98,7 @@ public class SiriusScope extends GMFScope {
    */
   protected boolean isViewpointElement(EObject element) {
     EPackage pack = element.eClass().getEPackage();
-    return VIEWPOINT_PACKAGES.contains(pack);
+    return VIEWPOINT_PACKAGES.contains(pack) || element instanceof DRepresentation;
   }
   
   /**
