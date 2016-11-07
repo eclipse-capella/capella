@@ -85,18 +85,49 @@ Fragment Capella models to avoid Capella files (*.melodymodeller, *.aird, *.melo
 
 == Adapt Eclipse.ini configuration ==
 
-Adapt Xms, Xmx and XX:MaxPermSize values with model size and platform memory resources (eclipse.ini file). 
+=== JVM Tuning ===
+
+==== Heap Size ====
+
+When a Capella starts, Java Virtual Machine gets some memory from Operating System. Java Virtual Machine or JVM uses this memory for all its need and part of this memory is called Java Heap Memory. Whenever we create object using new operator or by any another means, object is allocated memory from Heap and when object dies or garbage collected, memory goes back to Heap space in Java.
+
+{|
+!style="text-align:left;"| JVM Option
+!style="text-align:left;"| Meaning
+|-
+|Xms
+|Initial java heap size
+|-
+|Xmx
+|Maximum java heap size
+|-
+|XX:MaxPermSize
+|Set maximum size for Permanent Generation
+|}
+
+
+It is a good practice to increase Xms, Xmx and XX:MaxPermSize values with model size and platform memory resources (eclipse.ini file).
 
 [[Image:Images/Perf_REC9.png|750x150px]]<br>
 
 
 ''Notes: another way to launch Capella with more memory is to create a new shortcut of eclipse.exe program and add for instance -vm "C:\orchestra\Sun\Java\jre1.6.0_18\bin\javaw.exe" -clean -vmargs -Xms128m –Xmx1208m -XX:MaxPermSize=128m -XX:+CMSPermGenSweepingEnabled -XX:+CMSClassUnloadingEnabled , adapting the suitable JRE path.''
 
-With Capella Team in 32 bits, when the model contains nested elements on a lot of levels, a StackOverflow exception can occur (see the “Error Log” view). To avoid this, add the following argument at the end of eclipse.ini and importer.ini files.
+==== Stack Size ====
+
+Each thread in the JVM get’s a stack. The stack size will limit the number of threads that you can have. Using a too big stack size will augment the risk to run into an out of memory exception as each thread is allocated more memory than it needs.
+
+{|
+!style="text-align:left;"| JVM Option
+!style="text-align:left;"| Meaning
+|-
+|Xss
+|Stack size for each thread
+|}
+
+In case your model contains nested elements on a lot of levels, a StackOverFlow exception can occur, i.e. when using Capella in 32 bits or in functional transition (see the “Error Log” view), To avoid this, you can increase the stack size by adding the Xss argument at the end of all *.ini files as shown below (Start with a small value and increase it on needs):
 
 -Xss3m
-
-Note: this parameter can be added in a shortcut (for Capella Team client) and in the “Import projects” job configuration of the Capella Team Scheduler, this parameter is not needed with Capella Team in 64 bits because default JVM value is higher.
 
 
 == Create AIRD analysis and isolate table representation ==
