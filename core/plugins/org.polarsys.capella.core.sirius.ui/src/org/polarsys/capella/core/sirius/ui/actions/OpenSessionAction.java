@@ -126,6 +126,10 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
         // Open the editing session.
         IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
         editingSession.open();
+        if (session != null) {
+            // Open the startup representations of opened session
+            org.eclipse.sirius.ui.business.api.session.SessionHelper.openStartupRepresentations(session, new NullProgressMonitor());
+        }
         if (shouldOpenActivityExplorer) {
           // Open Activity Explorer for open sessions.
           openActivityExplorer(session);
