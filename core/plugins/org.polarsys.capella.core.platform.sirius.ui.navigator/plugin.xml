@@ -1157,12 +1157,18 @@
       </command>
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.FixDAnnotationsHandler"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.fixDAnnotationsCommand"
+            name="%command.fixDAnnotations.name"
+            description="%command.fixDAnnotations.description">
+      </command>
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
             defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RefreshDiagramsCommandHandler"
             id="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
             name="%command.refreshDiagrams"
             description="%command.refreshDiagrams.description">
       </command>
-      
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
             defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RemoveHiddenElementsHandler"
@@ -1281,7 +1287,33 @@
                </with>
             </visibleWhen>
          </command>
-          
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.fixDAnnotationsCommand"
+               icon="icons/viewpoint.gif"
+               id="org.polarsys.capella.core.platform.sirius.ui.navigator.fixDAnnotations"
+               label="%command.fixDAnnotations.name"
+               style="push">
+            <visibleWhen checkEnabled="true">
+               <with variable="activeMenuSelection">
+                  <and>
+                     <iterate>
+                        <and>
+                           <instanceof
+                                 value="org.eclipse.core.resources.IFile">
+                           </instanceof>
+                           <test
+                                 forcePluginActivation="true"
+                                 property="org.eclipse.core.resources.extension"
+                                 value="aird">
+                           </test>
+                        </and>
+                     </iterate>
+                     <count value="1">
+                     </count>
+                  </and>
+               </with>
+            </visibleWhen>
+         </command>
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
                id="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
