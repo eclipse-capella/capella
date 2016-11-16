@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,20 +58,20 @@ public class DefaultLocationHandler implements ILocationHandler {
     return null;
   }
 
-  private boolean isInvalidResourceLocation(CatalogElementLink link_p, EObject location, IContext context_p) {
+  private boolean isInvalidResourceLocation(CatalogElementLink link, EObject location, IContext context) {
 
     if (location == null) {
       return true;
     }
-    Collection<EObject> elements = (Collection<EObject>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
-    CatalogElement sourceElement = ReplicableElementHandlerHelper.getInstance(context_p).getSource(context_p);
-    CatalogElement targetElement = ReplicableElementHandlerHelper.getInstance(context_p).getTarget(context_p);
+    Collection<EObject> elements = (Collection<EObject>) context.get(ITransitionConstants.TRANSITION_SOURCES);
+    CatalogElement sourceElement = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
+    CatalogElement targetElement = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
 
     Resource destinationResource = elements.iterator().next().eResource();
 
     // Retrieve if the given Link is from the Source or the Target
     boolean isSource = false;
-    CatalogElement elementSource = link_p.getSource();
+    CatalogElement elementSource = link.getSource();
     if (elementSource == null) {
       return true;
     }
@@ -84,7 +84,7 @@ public class DefaultLocationHandler implements ILocationHandler {
 
     // Retrieve if the selected Resource is for the Source or the Target
     boolean isSelectionForSource = false;
-    String value = (String) context_p.get(IReConstants.COMMAND__CURRENT_VALUE);
+    String value = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
     if (IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(value)) {
       isSelectionForSource = true;
 
@@ -93,8 +93,10 @@ public class DefaultLocationHandler implements ILocationHandler {
     } // when creating a RPL, user can select the REC instead of a real location..., isSelectionForSource should be true in that case
 
     // Change the resource according to selection
-    Resource sourceResource = (sourceElement == null) || (sourceElement.eResource() == null) ? destinationResource : sourceElement.eResource();
-    Resource targetResource = (targetElement == null) || (targetElement.eResource() == null) ? destinationResource : targetElement.eResource();
+    Resource sourceElementResource;
+    Resource targetElementResource;
+    Resource sourceResource = (sourceElement == null) || ((sourceElementResource = sourceElement.eResource()) == null) ? destinationResource : sourceElementResource;
+    Resource targetResource = (targetElement == null) || ((targetElementResource = targetElement.eResource()) == null) ? destinationResource : targetElementResource;
     if (isSelectionForSource) {
       sourceResource = destinationResource;
     } else {
@@ -109,7 +111,6 @@ public class DefaultLocationHandler implements ILocationHandler {
     }
 
     return false;
-
   }
 
   /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -244,6 +244,7 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
       if (reference.isContainment() && !notification_p.isTouch()) {
         // New value objects collection.
         List<EObject> objectsToUpdate = new ArrayList<EObject>(1);
+        Resource notifierResource = notifier_p.eResource();
         switch (notification_p.getEventType()) {
           case Notification.REMOVE:
           case Notification.UNSET:
@@ -251,7 +252,7 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
             if (CapellaResourceHelper.isSemanticElement(oldValue)) {
               EObject removedElement = (EObject) oldValue;
               // Stored the removed object and its current resource to compare with another one in next future.
-              removedElementFromResource_p.put(removedElement, notifier_p.eResource());
+              removedElementFromResource_p.put(removedElement, notifierResource);
             }
             return; // Force to exit this method.
           case Notification.REMOVE_MANY:
@@ -264,7 +265,6 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
             objectsToUpdate.addAll((Collection<? extends EObject>) notification_p.getNewValue());
           break;
         }
-        Resource notifierResource = notifier_p.eResource();
         // Loop over all objects that need an update.
         for (EObject objectToUpdate : objectsToUpdate) {
           // Check if the resource of the object to update is the same as is its new container ?

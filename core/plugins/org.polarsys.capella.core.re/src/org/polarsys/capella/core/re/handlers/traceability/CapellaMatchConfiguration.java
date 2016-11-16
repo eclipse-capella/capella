@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,37 +37,39 @@ public class CapellaMatchConfiguration extends MatchConfiguration {
   }
 
   @Override
-  protected void initHandlers(IContext fContext_p) {
-    addHandler(fContext_p, new MatchTraceabilityHandler((ExtendedComparison) fContext_p.get(ITransitionConstants.MERGE_COMPARISON), getIdentifier(fContext_p)) {
+  protected void initHandlers(IContext context) {
+    addHandler(context, new MatchTraceabilityHandler((ExtendedComparison) context.get(ITransitionConstants.MERGE_COMPARISON), getIdentifier(context)) {
 
       @Override
-      public Collection<EObject> retrieveTracedElements(EObject source_p, IContext context_p) {
-        Collection<EObject> parent = super.retrieveTracedElements(source_p, context_p);
+      public Collection<EObject> retrieveTracedElements(EObject source, IContext iContext) {
+        Collection<EObject> parent = super.retrieveTracedElements(source, iContext);
         if ((parent != null) && !(parent.isEmpty())) {
           return parent;
         }
 
-        Collection<EObject> elements = (Collection<EObject>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
+        Collection<EObject> elements = (Collection<EObject>) iContext.get(ITransitionConstants.TRANSITION_SOURCES);
         if (!elements.isEmpty()) {
-          CatalogElement sourceElement = ReplicableElementHandlerHelper.getInstance(context_p).getSource(context_p);
-          CatalogElement targetElement = ReplicableElementHandlerHelper.getInstance(context_p).getTarget(context_p);
+          CatalogElement sourceElement = ReplicableElementHandlerHelper.getInstance(iContext).getSource(iContext);
+          CatalogElement targetElement = ReplicableElementHandlerHelper.getInstance(iContext).getTarget(iContext);
           if (sourceElement == null) {
-            sourceElement = ReplicableElementHandlerHelper.getInstance(context_p).getInitialSource(context_p);
+            sourceElement = ReplicableElementHandlerHelper.getInstance(iContext).getInitialSource(iContext);
           }
           if (targetElement == null) {
-            targetElement = ReplicableElementHandlerHelper.getInstance(context_p).getInitialTarget(context_p);
+            targetElement = ReplicableElementHandlerHelper.getInstance(iContext).getInitialTarget(iContext);
           }
 
           Resource destinationResource = elements.iterator().next().eResource();
-          Resource sourceResource = (sourceElement == null) || (sourceElement.eResource() == null) ? destinationResource : sourceElement.eResource();
-          Resource targetResource = (targetElement == null) || (targetElement.eResource() == null) ? destinationResource : targetElement.eResource();
+          Resource sourceElementResource;
+          Resource targetElementResource;
+          Resource sourceResource = (sourceElement == null) || ((sourceElementResource = sourceElement.eResource()) == null) ? destinationResource : sourceElementResource;
+          Resource targetResource = (targetElement == null) || ((targetElementResource = targetElement.eResource()) == null) ? destinationResource : targetElementResource;
 
           if ((sourceElement != null) && (targetElement != null) && (sourceResource != targetResource)) {
-            SystemEngineering sourceSE = (SystemEngineering) EcoreUtil2.getFirstContainer(source_p, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
+            SystemEngineering sourceSE = (SystemEngineering) EcoreUtil2.getFirstContainer(source, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
             SystemEngineering destRE = (SystemEngineering) ((Project) destinationResource.getContents().get(0)).getOwnedModelRoots().get(0);
-            if (source_p instanceof BlockArchitecture) {
+            if (source instanceof BlockArchitecture) {
               for (ModellingArchitecture root : destRE.getOwnedArchitectures()) {
-                if (source_p.eClass().isInstance(root)) {
+                if (source.eClass().isInstance(root)) {
                   return Collections.singletonList((EObject) root);
                 }
               }
@@ -75,7 +77,7 @@ public class CapellaMatchConfiguration extends MatchConfiguration {
           }
         }
 
-        return Collections.singletonList(source_p);
+        return Collections.singletonList(source);
       }
 
       @Override

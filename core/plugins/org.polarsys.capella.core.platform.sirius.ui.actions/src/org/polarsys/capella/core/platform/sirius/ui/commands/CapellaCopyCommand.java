@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandWrapper;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.CopyCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -131,10 +132,10 @@ public class CapellaCopyCommand extends CommandWrapper {
   protected void removeResultObjectsFromResource(Collection<?> result){
     for (Object r : result) {
       EObject eObject = (EObject) r;
-      if (null != eObject.eResource()) {
-        eObject.eResource().getContents().remove(eObject);
+      Resource resource = eObject.eResource();
+      if (null != resource) {
+        resource.getContents().remove(eObject);
       }
     }
   }
-
 }

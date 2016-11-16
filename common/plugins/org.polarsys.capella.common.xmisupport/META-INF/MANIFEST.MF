@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.xmisupport
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.8.7.qualifier
 Bundle-Activator: org.polarsys.capella.common.xmisupport.XMISupportActivator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,

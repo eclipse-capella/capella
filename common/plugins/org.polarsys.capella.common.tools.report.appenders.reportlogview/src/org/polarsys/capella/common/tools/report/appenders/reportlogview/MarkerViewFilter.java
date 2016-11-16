@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -200,23 +200,23 @@ public class MarkerViewFilter extends ViewerFilter {
     return result;
     }
     
-    protected IProject getProject(Object selection_p){
+    protected IProject getProject(Object selection){
       IProject result = null;
-      if (selection_p instanceof IResource){
-        result = ((IResource) selection_p).getProject();
-      } else if (selection_p instanceof EObject){
-        Resource resource = ((EObject) selection_p).eResource();
+      if (selection instanceof IResource){
+        result = ((IResource) selection).getProject();
+      } else if (selection instanceof EObject){
+        Resource resource = ((EObject) selection).eResource();
         if (resource != null){
-          URI uri = ((EObject) selection_p).eResource().getURI();
+          URI uri = resource.getURI();
           if (uri != null && uri.isPlatformResource()){
             String platformResourceString = uri.toPlatformString(true);
             result = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformResourceString)).getProject();
           }
         }
-      } else if (selection_p instanceof IAdaptable){
-        IResource resource = (IResource) ((IAdaptable) selection_p).getAdapter(IResource.class);
+      } else if (selection instanceof IAdaptable){
+        IResource resource = (IResource) ((IAdaptable) selection).getAdapter(IResource.class);
         if (resource == null){
-          Platform.getAdapterManager().getAdapter(selection_p, IResource.class);
+          Platform.getAdapterManager().getAdapter(selection, IResource.class);
         }
         if (resource != null){
           result = resource.getProject();
