@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -559,10 +559,10 @@ public class AbstractShowHide implements IShowHide {
             getContent().deferredHide(element);
 
           } else {
-            if (element.getDiagramElementMapping() instanceof EdgeMapping) {
+        	DiagramElementMapping diagramElementMapping = element.getDiagramElementMapping();
+            if (diagramElementMapping instanceof EdgeMapping) {
               DiagramServices.getDiagramServices().removeEdgeView((DEdge) element);
-            }
-            if (element.getDiagramElementMapping() instanceof AbstractNodeMapping) {
+            } else if (diagramElementMapping instanceof AbstractNodeMapping) {
               DiagramServices.getDiagramServices().removeAbstractDNodeView((AbstractDNode) element);
             }
           }
