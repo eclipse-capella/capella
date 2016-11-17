@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -811,6 +812,9 @@ public class DiagramServices {
 
     DiagramElementMapping mapping;
 
+    EClass clazz;
+    
+    
     /**
      * @param diagram_p
      */
@@ -824,6 +828,7 @@ public class DiagramServices {
     public DiagramIterator(DDiagram diagram_p, DiagramElementMapping mapping_p) {
       this(diagram_p);
       mapping = mapping_p;
+      clazz = CapellaServices.getService().getDomainClass(diagram_p, mapping_p);
     }
 
     public DiagramIterator(DDiagramElement diagramElement_p) {
@@ -857,7 +862,7 @@ public class DiagramServices {
       }
 
       DDiagramElement element = elements.getFirst();
-      if (mapping.equals(element.getDiagramElementMapping())) {
+      if (validMapping(mapping, element)) {
         return true;
       }
 
@@ -865,7 +870,7 @@ public class DiagramServices {
       nexts.addAll(elements);
       while (nexts.size() > 0) {
         DDiagramElement next = nexts.removeFirst();
-        if (mapping.equals(next.getDiagramElementMapping())) {
+        if (validMapping(mapping, next)) {
           return true;
         }
         nexts.addAll(getNexts(next));
@@ -897,7 +902,7 @@ public class DiagramServices {
       if (hasNext()) {
         DDiagramElement element = elements.removeFirst();
         elements.addAll(getNexts(element));
-        if ((mapping == null) || mapping.equals(element.getDiagramElementMapping())) {
+        if ((mapping == null) || validMapping(mapping, element)) {
           return element;
         }
         return next();
@@ -912,6 +917,19 @@ public class DiagramServices {
       if (hasNext()) {
         next();
       }
+    }
+
+    public boolean validMapping(DiagramElementMapping mapping, DDiagramElement element) {
+      return isSameDomain(mapping, element) && mapping.equals(element.getDiagramElementMapping());
+    }
+
+    public boolean isSameDomain(DiagramElementMapping mapping, DDiagramElement element) {
+      if (clazz == null) {
+        return true;
+      } else if (clazz.isInstance(element.getTarget())) {
+        return true;
+      }
+      return false;
     }
 
   }
