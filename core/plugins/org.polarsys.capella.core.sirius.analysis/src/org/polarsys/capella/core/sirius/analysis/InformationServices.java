@@ -1055,7 +1055,7 @@ public class InformationServices {
 
     if (isContainerMapping) {
       ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
-      return DiagramServices.getDiagramServices().createAbstractDNodeContainer(mapping, aOperation,
+      return DiagramServices.getDiagramServices().createAbstractDNode(mapping, aOperation,
           (DragAndDropTarget) context, diagram);
     }
 

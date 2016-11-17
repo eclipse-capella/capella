@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.sirius.analysis.ABServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -126,15 +127,15 @@ public class ShowHideABPhysicalCategory extends ShowHideABComponentPortAllocatio
       String key = lastContext.getKey();
       if (SOURCE.equals(key)) {
         // If sourcePin, use ABCategoryPin
-        mapping = ABServices.getService().getMappingABPhysicalCategoryPin(getContent().getDDiagram(), value);
+        mapping = getContent().getMapping(MappingConstantsHelper.getMappingABPhysicalCategoryPin(getContent().getDDiagram(), value));
 
       } else if (TARGET.equals(key)) {
         // If targetPin, use ABCategoryPin
-        mapping = ABServices.getService().getMappingABPhysicalCategoryPin(getContent().getDDiagram(), value);
+        mapping = getContent().getMapping(MappingConstantsHelper.getMappingABPhysicalCategoryPin(getContent().getDDiagram(), value));
 
       } else {
         // Otherwise, use ABCategoryEdge
-        mapping = ABServices.getService().getMappingABPhysicalCategory(getContent().getDDiagram());
+        mapping = getContent().getMapping(MappingConstantsHelper.getMappingABPhysicalCategory(getContent().getDDiagram()));
       }
     }
     return mapping;
@@ -142,11 +143,11 @@ public class ShowHideABPhysicalCategory extends ShowHideABComponentPortAllocatio
 
   @Override
   protected boolean isValidEdgeView(DEdge edge_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p) {
-    DiagramElementMapping categoryMapping = ABServices.getService().getMappingABPhysicalCategory(getContent().getDDiagram());
-
+    
     // Category edge is not oriented, so if we have an inverse edge, we return it, instead of creating another edge
-    if (categoryMapping.equals(edge_p.getActualMapping())) {
-      if (sourceView_p.equals(edge_p.getTargetNode()) && targetView_p.equals(edge_p.getSourceNode())) {
+    if (sourceView_p.equals(edge_p.getTargetNode()) && targetView_p.equals(edge_p.getSourceNode())) {
+      DiagramElementMapping categoryMapping = getContent().getMapping(MappingConstantsHelper.getMappingABPhysicalCategory(getContent().getDDiagram()));
+      if (categoryMapping.equals(edge_p.getActualMapping())) {
         return true;
       }
     }

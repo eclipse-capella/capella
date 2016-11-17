@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -71,6 +71,7 @@ import org.polarsys.capella.core.model.helpers.AbstractCapabilityPkgExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.StateExt;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideSMStateMode;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideSMTransitions;
@@ -1025,43 +1026,33 @@ public class StateMachineServices {
     return transitionList;
   }
 
+  @Deprecated
   public ContainerMapping getMappingSMStateMode(State state, DDiagram diagram_p) {
-    String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.MS_MODE_STATE_MAPPING_NAME;
-    }
+    String mappingName = MappingConstantsHelper.getMappingSMStateMode(state, diagram_p);
     return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, mappingName);
   }
 
+  @Deprecated
   public ContainerMapping getMappingSMInnerStateMode(State state, DDiagram diagram_p) {
-    String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.MS_INNER_MODE_STATE_MAPPING_NAME;
-    }
+    String mappingName = MappingConstantsHelper.getMappingSMInnerStateMode(state, diagram_p);
     return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, mappingName);
   }
 
+  @Deprecated
   public NodeMapping getMappingSMInnerPseudostate(Pseudostate pseudoState, DDiagram diagram_p) {
-    String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.MS_INNER_PSEUDOSTATE_MAPPING_NAME;
-    }
+    String mappingName = MappingConstantsHelper.getMappingSMInnerPseudostate(pseudoState, diagram_p);
     return DiagramServices.getDiagramServices().getNodeMapping(diagram_p, mappingName);
   }
 
+  @Deprecated
   public NodeMapping getMappingSMPseudostate(Pseudostate pseudoState, DDiagram diagram_p) {
-    String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.MS_PSEUDOSTATE_MAPPING_NAME;
-    }
+    String mappingName = MappingConstantsHelper.getMappingSMPseudostate(pseudoState, diagram_p);
     return DiagramServices.getDiagramServices().getNodeMapping(diagram_p, mappingName);
   }
 
+  @Deprecated
   public EdgeMapping getMappingSMTransition(StateTransition function_p, DDiagram diagram_p) {
-    String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.MS_TRANSITION_MAPPING_NAME;
-    }
+    String mappingName = MappingConstantsHelper.getMappingSMTransition(function_p, diagram_p);
     return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, mappingName);
   }
 

@@ -13,6 +13,7 @@ package org.polarsys.capella.core.sirius.analysis;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,6 +26,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -44,6 +46,8 @@ public class DDiagramContents {
    * diagram
    */
   protected DSemanticDiagram _currentDiagram;
+  
+  protected DiagramDescription _currentDescription;
 
   /**
    * diagram elements sorted by target
@@ -54,6 +58,8 @@ public class DDiagramContents {
 
   protected HashSet<DDiagramElement> _elementsToHide = null;
 
+  protected HashMap<String, DiagramElementMapping> _mappings = null;
+  
   public void deferredShow(DDiagramElement element) {
     _elementsToShow.add(element);
     if (_elementsToHide.contains(element)) {
@@ -81,9 +87,9 @@ public class DDiagramContents {
 
   public DDiagramContents(DDiagram diagram) {
     _currentDiagram = (DSemanticDiagram) diagram;
+    _currentDescription = _currentDiagram.getDescription();
     _elementsToShow = new HashSet<DDiagramElement>();
     _elementsToHide = new HashSet<DDiagramElement>();
-
   }
 
   /**
@@ -94,9 +100,14 @@ public class DDiagramContents {
    */
   public DDiagramContents(DDiagramContents diagramContent) {
     this._currentDiagram = diagramContent._currentDiagram;
+    this._currentDescription = diagramContent.getDescription();
     this._elementsTargets = diagramContent._elementsTargets;
     _elementsToShow = new HashSet<DDiagramElement>();
     _elementsToHide = new HashSet<DDiagramElement>();
+  }
+
+  public DiagramDescription getDescription() {
+    return _currentDescription;
   }
 
   /**
@@ -422,7 +433,25 @@ public class DDiagramContents {
   public EObject getElement(EObject object, EObject context) {
     return object;
   }
-
+  
+  public Collection<DiagramElementMapping> getMappings(Collection<String> names) {
+    Collection<DiagramElementMapping> result = new ArrayList<DiagramElementMapping>();
+    for (String name: names) {
+      result.add(getMapping(name));
+    }
+    return result;
+  }
+  
+  public DiagramElementMapping getMapping(String name) {
+    if (_mappings == null) {
+      _mappings = DiagramServices.getDiagramServices().getAllMappingsByName(getDescription());
+    }
+    if (_mappings.containsKey(name)) {
+      return (DiagramElementMapping)_mappings.get(name);
+    }
+    return null;
+  }
+  
   /**
    * @param edge
    * @return

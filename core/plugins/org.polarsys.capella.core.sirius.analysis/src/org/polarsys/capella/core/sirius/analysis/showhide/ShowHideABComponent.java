@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
-import org.polarsys.capella.core.sirius.analysis.FaServices;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -47,11 +47,8 @@ public class ShowHideABComponent extends AbstractShowHide {
    */
   public ShowHideABComponent(DDiagramContents content_p) {
     super(content_p);
-
-    DiagramElementMapping mapping = FaServices.getFaServices().getMappingABDeployedElement(getContent().getDDiagram());
-
+    DiagramElementMapping mapping = getContent().getMapping(MappingConstantsHelper.getMappingABDeployedElement(getContent().getDDiagram()));
     containsDeployment = (mapping != null) && getContent().getDiagramElements(mapping).iterator().hasNext();
-
   }
 
   /**
@@ -180,7 +177,7 @@ public class ShowHideABComponent extends AbstractShowHide {
     DiagramElementMapping mapping = super.getMapping(semantic_p, context_p, relatedViews_p);
 
     if (semantic_p instanceof Entity) {
-      mapping = FaServices.getFaServices().getMappingABComponent(semantic_p, getContent().getDDiagram());
+      mapping =  getContent().getMapping(MappingConstantsHelper.getMappingABComponent(semantic_p, getContent().getDDiagram()));
 
     } else if (semantic_p instanceof Part) {
       Part part = (Part) semantic_p;
@@ -188,13 +185,11 @@ public class ShowHideABComponent extends AbstractShowHide {
         Collection<DSemanticDecorator> targetViews = relatedViews_p.get(CONTAINER);
         if (targetViews.size() != 0) {
           if (PartExt.getDeployingElements((Part) semantic_p).contains((targetViews.iterator().next().getTarget()))) {
-            mapping = FaServices.getFaServices().getMappingABDeployedElement(getContent().getDDiagram());
-            return mapping;
+            return getContent().getMapping(MappingConstantsHelper.getMappingABDeployedElement(getContent().getDDiagram()));
           }
         }
-
       }
-      mapping = FaServices.getFaServices().getMappingABComponent(semantic_p, getContent().getDDiagram());
+      mapping = getContent().getMapping(MappingConstantsHelper.getMappingABComponent(semantic_p, getContent().getDDiagram()));
 
     }
     return mapping;

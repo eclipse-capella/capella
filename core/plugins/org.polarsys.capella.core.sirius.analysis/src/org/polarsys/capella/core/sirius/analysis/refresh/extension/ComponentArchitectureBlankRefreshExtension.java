@@ -28,7 +28,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
-import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
@@ -51,6 +51,7 @@ import org.polarsys.capella.core.sirius.analysis.FunctionalChainServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.PhysicalServices;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension {
@@ -185,11 +186,10 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     DDiagram diagram = context.getDDiagram();
 
     if (diagram.isSynchronized()) {
-      ABServices service = ABServices.getService();
       Collection<EObject> categories = new HashSet<EObject>();
 
       // Switch to component categories
-      EdgeMapping edgeMapping = service.getMappingABComponentCategory(diagram);
+      DiagramElementMapping edgeMapping = context.getMapping(MappingConstantsHelper.getMappingABComponentCategory(context.getDDiagram())); 
       if (edgeMapping != null) {
         for (DDiagramElement element : context.getDiagramElements(edgeMapping)) {
           if ((element.getTarget() != null) && (element.getTarget() instanceof ComponentExchangeCategory)) {
@@ -210,11 +210,10 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     DDiagram diagram = context.getDDiagram();
 
     if (diagram.isSynchronized()) {
-      FaServices service = FaServices.getFaServices();
       Collection<EObject> categories = new HashSet<EObject>();
 
       // Switch to FE categories
-      EdgeMapping edgeMapping = service.getMappingFECategory(diagram);
+      DiagramElementMapping edgeMapping = context.getMapping(MappingConstantsHelper.getMappingFunctionalExchangeCategory(context.getDDiagram())); 
       if (edgeMapping != null) {
         for (DDiagramElement element : context.getDiagramElements(edgeMapping)) {
           if ((element.getTarget() != null) && (element.getTarget() instanceof ExchangeCategory)) {
@@ -238,11 +237,10 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     DDiagram diagram = context.getDDiagram();
 
     if (diagram.isSynchronized()) {
-      ABServices service = ABServices.getService();
       Collection<EObject> categories = new HashSet<EObject>();
 
       // Switch to physical categories
-      EdgeMapping edgeMapping = service.getMappingABPhysicalCategory(diagram);
+      DiagramElementMapping edgeMapping = context.getMapping(MappingConstantsHelper.getMappingABPhysicalCategory(context.getDDiagram())); 
       if (edgeMapping != null) {
         for (DDiagramElement element : context.getDiagramElements(edgeMapping)) {
           if ((element.getTarget() != null) && (element.getTarget() instanceof PhysicalLinkCategory)) {
@@ -476,6 +474,10 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     }
   }
 
+  @Deprecated
+  /**
+   * unused
+   */
   public ContainerMapping getComponentMapping(DDiagram diagram) {
     if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.SAB_ACTOR_MAPPING_NAME);
