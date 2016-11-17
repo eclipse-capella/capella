@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -399,16 +399,7 @@ public class DiagramServices {
   }
 
   public DNode createNode(NodeMapping mapping_p, EObject modelElement_p, DragAndDropTarget container_p, DDiagram diagram_p) {
-    final DDiagram diagram = diagram_p;
-
-    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement_p);
-    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement_p);
-    final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diagram.getDescription(), accessor);
-    diagramSync.setDiagram((DSemanticDiagram) diagram_p);
-    final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
-
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping_p, modelElement_p, container_p);
-    return (DNode) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diagram), nodeCandidate, false);
+    return (DNode)createAbstractDNode(mapping_p, modelElement_p, container_p, diagram_p);
   }
 
   public DNode createBorderedNode(NodeMapping mapping_p, EObject modelElement_p, DragAndDropTarget container_p, DDiagram diagram_p) {
@@ -1350,8 +1341,35 @@ public class DiagramServices {
     return mapping;
   }
 
+  public HashMap<String, DiagramElementMapping> getAllMappingsByName(DiagramDescription description_p) {
+    HashMap<String, DiagramElementMapping> result = new HashMap<String, DiagramElementMapping>();
+
+    for (NodeMapping nodeMapping : description_p.getAllNodeMappings()) {
+      result.put(nodeMapping.getName(), nodeMapping);
+      for (DiagramElementMapping mapping : nodeMapping.getAllMappings()) {
+        result.put(mapping.getName(), mapping);
+      }
+    }
+    for (ContainerMapping nodeMapping : description_p.getAllContainerMappings()) {
+      result.put(nodeMapping.getName(), nodeMapping);
+      for (DiagramElementMapping mapping : nodeMapping.getAllMappings()) {
+        result.put(mapping.getName(), mapping);
+        if ((mapping instanceof DiagramElementMapping)) {
+          for (DiagramElementMapping borderedMapping : ((DiagramElementMapping) mapping).getAllMappings()) {
+            result.put(borderedMapping.getName(), borderedMapping);
+          }
+        }
+      }
+    }
+    for (final EdgeMapping edgeMapping : description_p.getAllEdgeMappings()) {
+      result.put(edgeMapping.getName(), edgeMapping);
+    }
+    return result;
+  }
+  
   private DiagramMappingsManager getMappingManager(final DSemanticDiagram diagram) {
     Session session = SessionManager.INSTANCE.getSession(diagram.getTarget());
     return DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, diagram);
   }
+
 }

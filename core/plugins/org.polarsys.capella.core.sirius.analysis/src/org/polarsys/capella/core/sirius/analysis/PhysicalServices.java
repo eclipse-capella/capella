@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,6 +85,7 @@ import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -590,13 +591,8 @@ public class PhysicalServices {
         displayedPaths.put((PhysicalPath) aNode.getTarget(), aNode);
       }
     }
-    NodeMapping physicalPathMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram_p, IMappingNameConstants.PAB_PHYSICAL_PATH_END);
-    if (null == physicalPathMapping) {
-      physicalPathMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram_p, IMappingNameConstants.SAB_PHYSICAL_PATH_END);
-    }
-    if (null == physicalPathMapping) {
-      physicalPathMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram_p, IMappingNameConstants.LAB_PHYSICAL_PATH_END);
-    }
+    
+    NodeMapping physicalPathMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram_p, MappingConstantsHelper.getMappingPhysicalPath(diagram_p));
     for (PhysicalPath aPath : selectedPaths_p) {
       if (!displayedPaths.containsKey(aPath)) {
         DiagramServices.getDiagramServices().createNode(physicalPathMapping, aPath, diagram_p, diagram_p);
@@ -688,11 +684,9 @@ public class PhysicalServices {
         }
       }
     }
+    
+    CapellaServices.getService().removeElements(linksToRemove);
 
-    // remove the deployed links
-    for (AbstractDeploymentLink abstractDeploymentLink : linksToRemove) {
-      abstractDeploymentLink.destroy();
-    }
     // create the view
     List<Part> deployedComponents = getDeployedComponents(currentPart, isBehaviour_p);
     for (DeployableElement aSelectedElement : selectedElements_p) {
@@ -708,7 +702,7 @@ public class PhysicalServices {
   }
 
   public ContainerMapping getDeploymentMapping(DDiagram diagram_p) {
-    return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME);
+    return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, MappingConstantsHelper.getMappingABDeployedElement(diagram_p));
   }
 
   public boolean isBehaviour(Part part_p) {
@@ -1190,17 +1184,8 @@ public class PhysicalServices {
   }
 
   public EdgeMapping getPhysicalPathInternLinkEdgeMapping(DDiagram diagram_p) {
-    EdgeMapping edgeMapping = null;
-    if (IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagram_p.getDescription().getName())) {
-      edgeMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, IMappingNameConstants.PAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME);
-    }
-    if (IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagram_p.getDescription().getName())) {
-      edgeMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, IMappingNameConstants.SAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME);
-    }
-    if (IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagram_p.getDescription().getName())) {
-      edgeMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, IMappingNameConstants.LAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME);
-    }
-    return edgeMapping;
+    String mappingName = MappingConstantsHelper.getMappingPhysicalPathInternLink(diagram_p);
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, mappingName);
   }
 
   public List<PhysicalPathInvolvement> getPreviousPhysicalPathInvolvements(PhysicalPathInvolvement involvement_p) {
