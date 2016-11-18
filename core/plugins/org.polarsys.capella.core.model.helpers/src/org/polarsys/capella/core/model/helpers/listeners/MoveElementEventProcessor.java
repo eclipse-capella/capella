@@ -14,6 +14,7 @@ package org.polarsys.capella.core.model.helpers.listeners;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -58,8 +59,8 @@ public class MoveElementEventProcessor implements EventProcessor {
    */
   @Override
   public void clearConsumed() {
-    for (EObject clazz : oldValueNotificationMap.keySet()) {
-      clearNotificationChains(oldValueNotificationMap.get(clazz), newValueNotificationMap.get(clazz));
+    for ( Map.Entry<EObject,NotificationChainImpl> entry : oldValueNotificationMap.entrySet()) {
+      clearNotificationChains(entry.getValue(), newValueNotificationMap.get(entry.getKey()));
     }
     clearMaps();
   }
@@ -101,16 +102,16 @@ public class MoveElementEventProcessor implements EventProcessor {
     Set<EObject> toRemoveFromNew = new HashSet<EObject>();
     Set<EObject> toRemoveFromOld = new HashSet<EObject>();
 
-    for (EObject c1 : newValueNotificationMap.keySet()) {
-      NotificationChainImpl chain = newValueNotificationMap.get(c1);
+    for ( Map.Entry<EObject,NotificationChainImpl> entry : newValueNotificationMap.entrySet()) {
+      NotificationChainImpl chain = entry.getValue();
       if ((null == chain) || chain.isEmpty()) {
-        toRemoveFromNew.add(c1);
+        toRemoveFromNew.add(entry.getKey());
       }
     }
-    for (EObject c2 : oldValueNotificationMap.keySet()) {
-      NotificationChainImpl chain = oldValueNotificationMap.get(c2);
+    for (Map.Entry<EObject,NotificationChainImpl> entry : oldValueNotificationMap.entrySet()) {
+      NotificationChainImpl chain = entry.getValue();
       if ((null == chain) || chain.isEmpty()) {
-        toRemoveFromNew.add(c2);
+        toRemoveFromNew.add(entry.getKey());
       }
       for (EObject c : toRemoveFromOld) {
         oldValueNotificationMap.remove(c);

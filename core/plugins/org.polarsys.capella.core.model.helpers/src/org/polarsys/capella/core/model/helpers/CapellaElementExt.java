@@ -315,10 +315,8 @@ public class CapellaElementExt {
    * @return list of missions
    */
   private static List<Mission> getAllMissionsFromSystemAnalysis(SystemAnalysis arch) {
-    List<Mission> list = new ArrayList<Mission>();
     MissionPkg ownedMissionPkg = arch.getOwnedMissionPkg();
-    list = getAllMissionsFromMissionPkg(ownedMissionPkg);
-    return list;
+    return getAllMissionsFromMissionPkg(ownedMissionPkg);
   }
 
   /**
@@ -397,15 +395,13 @@ public class CapellaElementExt {
     return name;
   }
 
-  static public String getName(List<EObject> element) {
-    String a = ICommonConstants.EMPTY_STRING;
-    if (element.size() > 0) {
-      a += getName(element.get(0));
+  static public String getName(List<EObject> elements) {
+    StringBuilder builder = new StringBuilder();
+    for(EObject element : elements){
+      builder.append(getName(element));
+      builder.append(" ");
     }
-    for (int i = 1; i < element.size(); i++) {
-      a += getName(element.get(0));
-    }
-    return a;
+    return builder.toString();
   }
 
   /**

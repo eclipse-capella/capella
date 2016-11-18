@@ -48,7 +48,7 @@ import org.polarsys.capella.core.data.oa.Entity;
 /**
  *
  */
-public class ComponentExchangeExt {
+public final class ComponentExchangeExt {
 
 	
 	private ComponentExchangeExt() {
@@ -234,10 +234,7 @@ public class ComponentExchangeExt {
         return (Component) eContainer;
       }
     } else if (source instanceof Component) {
-      Component eContainer = (Component) source;
-      if ((null != eContainer)) {
-        return eContainer;
-      }
+        return (Component) source;
     }
 
     return null;
@@ -282,10 +279,7 @@ public class ComponentExchangeExt {
         return (Component) eContainer;
       }
     } else if (target instanceof Component) {
-      Component eContainer = (Component) target;
-      if ((null != eContainer)) {
-        return eContainer;
-      }
+        return (Component) target;
     }
 
     return null;

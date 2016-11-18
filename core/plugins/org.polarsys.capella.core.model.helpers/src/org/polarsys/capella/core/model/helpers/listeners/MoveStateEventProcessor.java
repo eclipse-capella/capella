@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers.listeners;
 
+import java.util.Map;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.NotificationChainImpl;
 import org.eclipse.emf.ecore.EObject;
@@ -22,21 +24,21 @@ public class MoveStateEventProcessor extends MoveElementEventProcessor {
   @Override
   public void process() {
     // We move outgoing transitions of a state from its old owning region to the new one
-    for (EObject clazz : oldValueNotificationMap.keySet()) {
+    for (Map.Entry<EObject,NotificationChainImpl> entry : oldValueNotificationMap.entrySet()) {
       // eContainer can be null (e.g.: during deletions)
-      if (clazz instanceof AbstractState && clazz.eContainer() != null) {
+      if (entry.getKey() instanceof AbstractState && entry.getKey().eContainer() != null) {
 
-        NotificationChainImpl oldNotifChain = oldValueNotificationMap.get(clazz);
-        NotificationChainImpl newNotifChain = newValueNotificationMap.get(clazz);
+        NotificationChainImpl oldNotifChain = entry.getValue();
+        NotificationChainImpl newNotifChain = newValueNotificationMap.get(entry.getKey());
         if ((null != newNotifChain) && !newNotifChain.isEmpty()) {
 
-          for (StateTransition transition : ((AbstractState) clazz).getOutgoing()) {
+          for (StateTransition transition : ((AbstractState) entry.getKey()).getOutgoing()) {
             if (transition.eContainer() != null) {
 
               for (int i = 0; i < oldNotifChain.size(); i++) {
                 Notification notification = oldNotifChain.get(i);
                 if (transition.eContainer().equals(notification.getNotifier())) {
-                  ((Region) clazz.eContainer()).getOwnedTransitions().add(transition);
+                  ((Region) entry.getKey().eContainer()).getOwnedTransitions().add(transition);
                 }
               }
             }
@@ -44,7 +46,5 @@ public class MoveStateEventProcessor extends MoveElementEventProcessor {
         }
       }
     }
-
   }
-
 }

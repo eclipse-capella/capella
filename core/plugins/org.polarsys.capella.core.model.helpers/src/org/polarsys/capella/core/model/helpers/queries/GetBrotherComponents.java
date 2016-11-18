@@ -36,16 +36,11 @@ public class GetBrotherComponents extends AbstractQuery {
       if (container != null) {
         Component ownerPart = container;
         for (Partition partition : ownerPart.getOwnedPartitions()) {
-          if (components.contains(partition.getType())) {
-            components.add((Component) partition.getType());
-          } else {
-            components.add((Component) partition.getType());
-          }
+          components.add((Component) partition.getType());
         }
       }
     }
     components.remove(component);
     return new ArrayList<Object>(components);
   }
-
 }
