@@ -865,6 +865,7 @@ public class DiagramServices {
     public DiagramIterator(DDiagramElement diagramElement, DiagramElementMapping mapping) {
       this(diagramElement);
       this.mapping = mapping;
+      clazz = CapellaServices.getService().getDomainClass(diagramElement, mapping);
     }
 
     /**

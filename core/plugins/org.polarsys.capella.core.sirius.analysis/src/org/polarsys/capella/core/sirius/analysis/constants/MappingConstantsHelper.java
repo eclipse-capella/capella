@@ -243,7 +243,13 @@ public class MappingConstantsHelper {
 
     String mappingName = null;
     String description = diagram.getDescription().getName();
-    if (equals(description, IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (equals(description, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.SAB_PHYSICAL_PORT_MAPPING_NAME;
+      
+    } else if (equals(description, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.LAB_PHYSICAL_PORT_MAPPING_NAME;
+      
+    } else if (equals(description, IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_PHYSICAL_PORT_MAPPING_NAME;
     }
 
