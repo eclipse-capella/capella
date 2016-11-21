@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,7 @@ import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.Pseudostate;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
-import org.polarsys.capella.core.sirius.analysis.StateMachineServices;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -119,17 +119,17 @@ public class ShowHideSMStateMode extends AbstractShowHide {
 
     if ((parent instanceof State) && !containerViews.isEmpty()) {
       if ((semantic_p instanceof State)) {
-        mapping = StateMachineServices.getService().getMappingSMInnerStateMode((State) semantic_p, getContent().getDDiagram());
+        mapping = getContent().getMapping(MappingConstantsHelper.getMappingSMInnerStateMode(semantic_p, getContent().getDDiagram()));
       }
       if ((semantic_p instanceof Pseudostate)) {
-        mapping = StateMachineServices.getService().getMappingSMInnerPseudostate((Pseudostate) semantic_p, getContent().getDDiagram());
+        mapping = getContent().getMapping(MappingConstantsHelper.getMappingSMInnerPseudostate(semantic_p, getContent().getDDiagram()));
       }
     } else {
       if (semantic_p instanceof State) {
-        mapping = StateMachineServices.getService().getMappingSMStateMode((State) semantic_p, getContent().getDDiagram());
+        mapping = getContent().getMapping(MappingConstantsHelper.getMappingSMStateMode(semantic_p, getContent().getDDiagram()));
       }
       if (semantic_p instanceof Pseudostate) {
-        mapping = StateMachineServices.getService().getMappingSMPseudostate((Pseudostate) semantic_p, getContent().getDDiagram());
+        mapping = getContent().getMapping(MappingConstantsHelper.getMappingSMPseudostate(semantic_p, getContent().getDDiagram()));
       }
     }
     return mapping;

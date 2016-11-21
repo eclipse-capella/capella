@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -240,13 +240,13 @@ public class RepresentationHelper {
   }
 
   /**
-   * Returns all related capella resources
+   * Returns all related Capella resources
    */
   @SuppressWarnings("unchecked")
-  public static Collection<Resource> getSemanticResources(DRepresentation representation_p) {
+  public static Collection<Resource> getSemanticResources(DRepresentation representation) {
 
-    if ((representation_p != null) && (representation_p instanceof DSemanticDecorator)) {
-      EObject root = ((DSemanticDecorator) representation_p).getTarget();
+    if ((representation != null) && (representation instanceof DSemanticDecorator)) {
+      EObject root = ((DSemanticDecorator) representation).getTarget();
       // if session is opened, return all defined resources from session
       if (root != null) {
         Collection<Resource> resources = new HashSet<Resource>();
@@ -275,8 +275,9 @@ public class RepresentationHelper {
                     if (analysis.getModels() != null) {
                       for (EObject model : analysis.getModels()) {
                         if ((model != null) && !(model.eIsProxy())) {
-                          if ((model.eResource() != null)) {
-                            resources.add(model.eResource());
+                          Resource modelResource = model.eResource();
+                          if ((modelResource != null)) {
+                            resources.add(modelResource);
                           }
                         }
                       }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,12 +31,12 @@ public class BasicXMISupport implements XMISupport {
   /**
    * {@inheritDoc}
    */
-  public String getID(EObject e_p) {
+  public String getID(EObject eObject) {
     String result = null;
-    Resource resource = e_p.eResource();
+    Resource resource = eObject.eResource();
 
     if (resource instanceof XMIResource) {
-      result = ((XMIResource) e_p.eResource()).getID(e_p);
+      result = ((XMIResource)resource).getID(eObject);
     } else if (resource != null) {
       XMIResourceAdapter adapter = _loadedBackends.get(resource);
       if (adapter == null) {
@@ -54,10 +54,10 @@ public class BasicXMISupport implements XMISupport {
         }
       }
       if (adapter != null) {
-        result = adapter.get(e_p);
+        result = adapter.get(eObject);
         if (result == null) {
           result = EcoreUtil.generateUUID();
-          adapter.put(e_p, result);
+          adapter.put(eObject, result);
         }
       }
     }

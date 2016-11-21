@@ -208,6 +208,7 @@ import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilte
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -4680,10 +4681,9 @@ public class CsServices {
   }
 
   /**
-   * @param parent
-   * @param target
-   * @return
+   * Unused
    */
+  @Deprecated
   Couple<DNodeContainer, Boolean> createViewOrGetPart(DragAndDropTarget parent, EObject target) {
     List<DDiagramElement> elements = null;
 
@@ -4706,10 +4706,9 @@ public class CsServices {
   }
 
   /**
-   * @param aNode
-   * @param component
-   * @return
+   * Unused
    */
+  @Deprecated
   Couple<DNodeContainer, Boolean> createViewOrGetDeployedPart(DragAndDropTarget parent, EObject target) {
     List<DDiagramElement> elements = null;
 
@@ -4731,8 +4730,11 @@ public class CsServices {
     return new Couple<DNodeContainer, Boolean>(created, Boolean.TRUE);
   }
 
+  @Deprecated
   public boolean isDeployed(DNodeContainer view) {
-    return view.getMapping().getName().equals(IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME);
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(view);
+    String mappingName = MappingConstantsHelper.getMappingABDeployedElement(diagram);
+    return view.getMapping().getName().equals(mappingName);
   }
 
   public List<EObject> getDeployableLocations(DeployableElement element) {
@@ -4952,6 +4954,7 @@ public class CsServices {
    * @param sourcePort
    * @return
    */
+  @Deprecated
   Couple<DNode, Boolean> createViewOrGetFunctionPort(DNode parent, Pin target) {
     for (DNode node : parent.getOwnedBorderedNodes()) {
       if ((node.getTarget() != null) && node.getTarget().equals(target)) {

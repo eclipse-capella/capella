@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -154,23 +154,24 @@ public class EObjectExt extends EcoreUtil2 {
   }
 
   /**
-   * @param eobjects_p a collection of eobjects from which the resource set will be retrieved
-   * @return if all eobjects belong to the same resource set, this resource set is returned. Otherwise null is returned.
+   * @param eObjects a collection of EObject(s) from which the resource set will be retrieved
+   * @return if all eObjects belong to the same resource set, this resource set is returned. Otherwise null is returned.
    */
-  public static ResourceSet getCommonResourceSet(Collection<? extends EObject> eobjects) {
-    ResourceSet rs = null;
-    for (EObject obj : eobjects) {
-      if (obj.eResource() != null) {
-        if (null == rs) {
-          rs = obj.eResource().getResourceSet();
+  public static ResourceSet getCommonResourceSet(Collection<? extends EObject> eObjects) {
+    ResourceSet resourceSet = null;
+    for (EObject obj : eObjects) {
+      Resource eResource = obj.eResource();
+      if (eResource != null) {
+        if (null == resourceSet) {
+          resourceSet = eResource.getResourceSet();
         } else {
-          if (!rs.equals(obj.eResource().getResourceSet())) {
+          if (!resourceSet.equals(eResource.getResourceSet())) {
             return null;
           }
         }
       }
     }
-    return rs;
+    return resourceSet;
   }
 
   /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -283,17 +283,18 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
       if (reference.isContainment() && !notification.isTouch()) {
         // New value objects collection.
         List<EObject> objectsToUpdate = new ArrayList<EObject>(1);
+        Resource notifierResource = notifier.eResource();
         switch (notification.getEventType()) {
-        case Notification.REMOVE:
-        case Notification.UNSET:
-          Object oldValue = notification.getOldValue();
-          if (CapellaResourceHelper.isSemanticElement(oldValue)) {
-            EObject removedElement = (EObject) oldValue;
-            // Stored the removed object and its current resource to compare with another one in next future.
-            removedElementFromResource.put(removedElement, notifier.eResource());
-          }
-          return; // Force to exit this method.
-        case Notification.REMOVE_MANY:
+          case Notification.REMOVE:
+          case Notification.UNSET:
+            Object oldValue = notification.getOldValue();
+            if (CapellaResourceHelper.isSemanticElement(oldValue)) {
+              EObject removedElement = (EObject) oldValue;
+              // Stored the removed object and its current resource to compare with another one in next future.
+              removedElementFromResource.put(removedElement, notifierResource);
+            }
+            return; // Force to exit this method.
+          case Notification.REMOVE_MANY:
           break;
         case Notification.SET:
         case Notification.ADD:
@@ -303,7 +304,6 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
           objectsToUpdate.addAll((Collection<? extends EObject>) notification.getNewValue());
           break;
         }
-        Resource notifierResource = notifier.eResource();
         // Loop over all objects that need an update.
         for (EObject objectToUpdate : objectsToUpdate) {
           // Check if the resource of the object to update is the same as is its new container ?

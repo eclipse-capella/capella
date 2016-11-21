@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.sirius.analysis.ABServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.FaServices;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -179,21 +180,25 @@ public class ShowHideExchangeCategory extends ShowHideFunctionalExchange {
   @Override
   public DiagramElementMapping getMapping(EObject semantic, DiagramContext context,
       HashMapSet<String, DSemanticDecorator> relatedViews) {
+    
     DiagramElementMapping mapping = super.getMapping(semantic, context, relatedViews);
 
     ContextItemElement lastContext = context.getLast();
     if (lastContext.getValue() instanceof ExchangeCategory) {
       if (SOURCE.equals(lastContext.getKey())) {
         // If sourcePin, use FECategoryPin
-        mapping = FaServices.getFaServices().getMappingFECategoryOutputPin(getContent().getDDiagram());
+        String mappingName = MappingConstantsHelper.getMappingFunctionalExchangeCategoryOutputPin(getContent().getDDiagram());
+        mapping = getContent().getMapping(mappingName);
 
       } else if (TARGET.equals(lastContext.getKey())) {
         // If targetPin, use FECategoryPin
-        mapping = FaServices.getFaServices().getMappingFECategoryInputPin(getContent().getDDiagram());
+        String mappingName = MappingConstantsHelper.getMappingFunctionalExchangeCategoryInputPin(getContent().getDDiagram());
+        mapping = getContent().getMapping(mappingName);
 
       } else {
         // Otherwise, use FECategoryEdge
-        mapping = FaServices.getFaServices().getMappingFECategory(getContent().getDDiagram());
+        String mappingName = MappingConstantsHelper.getMappingFunctionalExchangeCategory(getContent().getDDiagram());
+        mapping = getContent().getMapping(mappingName);
       }
     }
     return mapping;
@@ -201,12 +206,13 @@ public class ShowHideExchangeCategory extends ShowHideFunctionalExchange {
 
   @Override
   protected boolean isValidEdgeView(DEdge edge, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
-    DiagramElementMapping categoryMapping = FaServices.getFaServices().getMappingFECategory(getContent().getDDiagram());
-
+    
     // Category edge is not oriented, so if we have an inverse edge, we return it, instead of creating another edge
-    if (categoryMapping.equals(edge.getActualMapping())) {
-      if (sourceView.equals(edge.getTargetNode()) && targetView.equals(edge.getSourceNode())) {
-        return true;
+    if (sourceView.equals(edge.getTargetNode()) && targetView.equals(edge.getSourceNode())) {
+      String mappingName = MappingConstantsHelper.getMappingFunctionalExchangeCategory(getContent().getDDiagram());
+      DiagramElementMapping categoryMapping = getContent().getMapping(mappingName);
+      if (categoryMapping.equals(edge.getActualMapping())) {
+         return true;
       }
     }
     return super.isValidEdgeView(edge, sourceView, targetView);

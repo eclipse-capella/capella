@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -387,17 +388,7 @@ public class DiagramServices {
   }
 
   public DNode createNode(NodeMapping mapping, EObject modelElement, DragAndDropTarget container, DDiagram diagram) {
-    final DDiagram diag = diagram;
-
-    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement);
-    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
-    final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
-    diagramSync.setDiagram((DSemanticDiagram) diagram);
-    final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
-    RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
-
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
-    return (DNode) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false);
+    return (DNode)createAbstractDNode(mapping, modelElement, container, diagram);
   }
 
   public DNode createBorderedNode(NodeMapping mapping, EObject modelElement, DragAndDropTarget container,
@@ -838,6 +829,9 @@ public class DiagramServices {
 
     DiagramElementMapping mapping;
 
+    EClass clazz;
+    
+    
     /**
      * @param diagram
      */
@@ -851,6 +845,7 @@ public class DiagramServices {
     public DiagramIterator(DDiagram diagram, DiagramElementMapping mapping) {
       this(diagram);
       this.mapping = mapping;
+      clazz = CapellaServices.getService().getDomainClass(diagram, mapping);
     }
 
     public DiagramIterator(DDiagramElement diagramElement) {
@@ -884,7 +879,7 @@ public class DiagramServices {
       }
 
       DDiagramElement element = elements.getFirst();
-      if (mapping.equals(element.getDiagramElementMapping())) {
+      if (validMapping(mapping, element)) {
         return true;
       }
 
@@ -892,7 +887,7 @@ public class DiagramServices {
       nexts.addAll(elements);
       while (nexts.size() > 0) {
         DDiagramElement next = nexts.removeFirst();
-        if (mapping.equals(next.getDiagramElementMapping())) {
+        if (validMapping(mapping, next)) {
           return true;
         }
         nexts.addAll(getNexts(next));
@@ -924,7 +919,7 @@ public class DiagramServices {
       if (hasNext()) {
         DDiagramElement element = elements.removeFirst();
         elements.addAll(getNexts(element));
-        if ((mapping == null) || mapping.equals(element.getDiagramElementMapping())) {
+        if ((mapping == null) || validMapping(mapping, element)) {
           return element;
         }
         return next();
@@ -939,6 +934,19 @@ public class DiagramServices {
       if (hasNext()) {
         next();
       }
+    }
+
+    public boolean validMapping(DiagramElementMapping mapping, DDiagramElement element) {
+      return isSameDomain(mapping, element) && mapping.equals(element.getDiagramElementMapping());
+    }
+
+    public boolean isSameDomain(DiagramElementMapping mapping, DDiagramElement element) {
+      if (clazz == null) {
+        return true;
+      } else if (clazz.isInstance(element.getTarget())) {
+        return true;
+      }
+      return false;
     }
 
   }
@@ -1381,8 +1389,35 @@ public class DiagramServices {
     return mapping;
   }
 
+  public HashMap<String, DiagramElementMapping> getAllMappingsByName(DiagramDescription description_p) {
+    HashMap<String, DiagramElementMapping> result = new HashMap<String, DiagramElementMapping>();
+
+    for (NodeMapping nodeMapping : description_p.getAllNodeMappings()) {
+      result.put(nodeMapping.getName(), nodeMapping);
+      for (DiagramElementMapping mapping : nodeMapping.getAllMappings()) {
+        result.put(mapping.getName(), mapping);
+      }
+    }
+    for (ContainerMapping nodeMapping : description_p.getAllContainerMappings()) {
+      result.put(nodeMapping.getName(), nodeMapping);
+      for (DiagramElementMapping mapping : nodeMapping.getAllMappings()) {
+        result.put(mapping.getName(), mapping);
+        if ((mapping instanceof DiagramElementMapping)) {
+          for (DiagramElementMapping borderedMapping : ((DiagramElementMapping) mapping).getAllMappings()) {
+            result.put(borderedMapping.getName(), borderedMapping);
+          }
+        }
+      }
+    }
+    for (final EdgeMapping edgeMapping : description_p.getAllEdgeMappings()) {
+      result.put(edgeMapping.getName(), edgeMapping);
+    }
+    return result;
+  }
+  
   private DiagramMappingsManager getMappingManager(final DSemanticDiagram diagram) {
     Session session = SessionManager.INSTANCE.getSession(diagram.getTarget());
     return DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, diagram);
   }
+
 }

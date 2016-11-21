@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -201,16 +201,17 @@ public class EcoreUtil2 {
 
   /**
    * Return the project where is persisted given EMF object.
-   * @param object_p
+   * @param eObject
    * @return <code>null</code> if given object is not persisted.
    */
-  public static IProject getProject(EObject object_p) {
+  public static IProject getProject(EObject eObject) {
     IProject result = null;
+    Resource resource;
     // Preconditions.
-    if ((null == object_p) || (object_p.eResource() == null)) {
+    if ((null == eObject) || ((resource = eObject.eResource()) == null)) {
       return result;
     }
-    IFile res = WorkspaceSynchronizer.getFile(object_p.eResource());
+    IFile res = WorkspaceSynchronizer.getFile(resource);
     if (res != null) {
       result = res.getProject();
     }

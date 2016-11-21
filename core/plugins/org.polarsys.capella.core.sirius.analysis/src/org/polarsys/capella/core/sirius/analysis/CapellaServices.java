@@ -51,13 +51,16 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
+import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.query.legacy.ecore.factories.EFactory;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -2576,5 +2579,30 @@ public class CapellaServices {
     }
 
     return result;
+  }
+
+  /**
+   * Returns the EClass of the given domain. 
+   * @param domain : Sirius Domain Class which can be EClassName or prefix:EClassName
+   */
+  public EClass getEClass(EObject context, String domain) {
+    EClass clazz = null;
+    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(context);
+    //We would call accessor.getEClass(domain) but it doesn't exist and EcoreIntrinsicExtender.getEClassesFromName is private
+    try {
+      clazz = accessor.createInstance(domain).eClass();
+    } catch (Exception e) {
+      //Nothing here
+    }
+    return clazz;
+  }
+
+  public EClass getDomainClass(EObject context, DiagramElementMapping mapping) {
+    DiagramElementMappingQuery query  = new DiagramElementMappingQuery(mapping);
+    Option<String> domainClass = query.getDomainClass();
+    if (domainClass.some()) {
+      return getEClass(context, domainClass.get());
+    }
+    return null;
   }
 }

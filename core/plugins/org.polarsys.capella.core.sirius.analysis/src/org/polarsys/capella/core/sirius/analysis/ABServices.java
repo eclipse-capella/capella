@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -90,6 +91,7 @@ import org.polarsys.capella.core.model.helpers.ComponentPortAllocationExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABComponent;
@@ -740,33 +742,32 @@ public class ABServices {
         for (EObject element : ContextualDiagramHelper.getService().getInsertScenariosRelatedElements(scenario,
             sourceArchitecture)) {
           if (element instanceof AbstractFunction) {
-            if (!content.containsView(element,
-                FaServices.getFaServices().getMappingABAbstractFunction((AbstractFunction) element, diagram))) {
+            if (!content.containsView(element, content.getMapping(MappingConstantsHelper.getMappingABAbstractFunction(diagram)))) {
               addElement = true;
               break;
             }
           } else if (element instanceof FunctionalExchange) {
-            if (!content.containsView(element, FaServices.getFaServices().getMappingABFunctionalExchange(diagram))) {
+            if (!content.containsView(element, content.getMapping(MappingConstantsHelper.getMappingABFunctionalExchange(diagram)))) {
               addElement = true;
               break;
             }
           } else if (element instanceof Part) {
-            if (!content.containsView(element, FaServices.getFaServices().getMappingABComponent(element, diagram))) {
+            if (!content.containsView(element, content.getMapping(MappingConstantsHelper.getMappingABComponent(element, diagram)))) {
               addElement = true;
               break;
             }
           } else if (element instanceof Role) {
-            if (!content.containsView(element, FaServices.getFaServices().getMappingABRole((Role) element, diagram))) {
+            if (!content.containsView(element, content.getMapping(MappingConstantsHelper.getMappingABRole(diagram)))) {
               addElement = true;
               break;
             }
           } else if (element instanceof Entity) {
-            if (!content.containsView(element, FaServices.getFaServices().getMappingABComponent(element, diagram))) {
+            if (!content.containsView(element, content.getMapping(MappingConstantsHelper.getMappingABComponent(element, diagram)))) {
               addElement = true;
               break;
             }
           } else if (element instanceof ComponentExchange) {
-            if (!content.containsView(element, FaServices.getFaServices().getMappingABConnection(diagram))) {
+            if (!content.containsView(element, content.getMapping(MappingConstantsHelper.getMappingABConnection(diagram)))) {
               addElement = true;
               break;
             }
@@ -1716,18 +1717,17 @@ public class ABServices {
       sourceViews.add((DDiagramElement) context);
     }
     if (sourceViews.isEmpty()) {
-      for (DDiagramElement element : content.getDiagramElements(
-          FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.ABSTRACT_ACTOR, currentDiagram))) {
+      DiagramElementMapping mapping = content.getMapping(MappingConstantsHelper.getMappingABComponent(CsPackage.Literals.ABSTRACT_ACTOR, currentDiagram));
+      for (DDiagramElement element : content.getDiagramElements(mapping)) {
         sourceViews.add(element);
       }
-      for (DDiagramElement element : content.getDiagramElements(
-          FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.COMPONENT, currentDiagram))) {
+      mapping = content.getMapping(MappingConstantsHelper.getMappingABComponent(CsPackage.Literals.COMPONENT, currentDiagram));
+      for (DDiagramElement element : content.getDiagramElements(mapping)) {
         sourceViews.add(element);
       }
-      if (currentDiagram.getDescription().getName()
-          .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-        for (DDiagramElement element : content
-            .getDiagramElements(FaServices.getFaServices().getMappingABDeployedElement(currentDiagram))) {
+      if (currentDiagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+        mapping = content.getMapping(MappingConstantsHelper.getMappingABDeployedElement(currentDiagram));
+        for (DDiagramElement element : content.getDiagramElements(mapping)) {
           sourceViews.add(element);
         }
       }
@@ -1828,18 +1828,17 @@ public class ABServices {
       sourceViews.add((DDiagramElement) context);
     }
     if (sourceViews.isEmpty()) {
-      for (DDiagramElement element : content.getDiagramElements(
-          FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.ABSTRACT_ACTOR, currentDiagram))) {
+      DiagramElementMapping mapping = content.getMapping(MappingConstantsHelper.getMappingABComponent(CsPackage.Literals.ABSTRACT_ACTOR, currentDiagram));
+      for (DDiagramElement element : content.getDiagramElements(mapping)) {
         sourceViews.add(element);
       }
-      for (DDiagramElement element : content.getDiagramElements(
-          FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.COMPONENT, currentDiagram))) {
+      mapping = content.getMapping(MappingConstantsHelper.getMappingABComponent(CsPackage.Literals.COMPONENT, currentDiagram));
+      for (DDiagramElement element : content.getDiagramElements(mapping)) {
         sourceViews.add(element);
       }
-      if (currentDiagram.getDescription().getName()
-          .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-        for (DDiagramElement element : content
-            .getDiagramElements(FaServices.getFaServices().getMappingABDeployedElement(currentDiagram))) {
+      if (currentDiagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+        mapping = content.getMapping(MappingConstantsHelper.getMappingABDeployedElement(currentDiagram));
+        for (DDiagramElement element : content.getDiagramElements(mapping)) {
           sourceViews.add(element);
         }
       }
@@ -2300,9 +2299,8 @@ public class ABServices {
     HashMapSet<EObject, EObject> result = new HashMapSet<EObject, EObject>();
 
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(context);
-    EdgeMapping edgeMapping = getMappingABPhysicalCategory(diagram);
     DDiagramContents ctx = new DDiagramContents(diagram);
-
+    DiagramElementMapping edgeMapping = ctx.getMapping(MappingConstantsHelper.getMappingABPhysicalCategory(ctx.getDDiagram()));
     DSemanticDecorator sourcePartView = CsServices.getService().getRelatedPartView(context);
 
     for (EObject key : scope.keySet()) {
@@ -2348,9 +2346,8 @@ public class ABServices {
     HashMapSet<EObject, EObject> result = new HashMapSet<EObject, EObject>();
 
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(context);
-    EdgeMapping edgeMapping = getMappingABComponentCategory(diagram);
     DDiagramContents ctx = new DDiagramContents(diagram);
-
+    DiagramElementMapping edgeMapping = ctx.getMapping(MappingConstantsHelper.getMappingABComponentCategory(ctx.getDDiagram()));
     DSemanticDecorator sourcePartView = CsServices.getService().getRelatedPartView(context);
 
     for (EObject key : scope.keySet()) {
@@ -2389,8 +2386,7 @@ public class ABServices {
     if (context instanceof DDiagram) {
       HashSet<EObject> values = new HashSet<EObject>();
       DDiagramContents ctx = new DDiagramContents((DDiagram) context);
-      Iterable<DDiagramElement> diagramElements = ctx
-          .getDiagramElements(FaServices.getFaServices().getMappingABPhysicalLink(ctx.getDDiagram()));
+      Iterable<DDiagramElement> diagramElements = ctx.getDiagramElements(ctx.getMapping(MappingConstantsHelper.getMappingABPhysicalLink(ctx.getDDiagram())));
       for (DDiagramElement element : diagramElements) {
         if ((element.getTarget() != null) && (element.getTarget() instanceof PhysicalLink)) {
           values.addAll(((PhysicalLink) element.getTarget()).getCategories());
@@ -2412,8 +2408,7 @@ public class ABServices {
     if (context instanceof DDiagram) {
       HashSet<EObject> values = new HashSet<EObject>();
       DDiagramContents ctx = new DDiagramContents((DDiagram) context);
-      for (DDiagramElement element : ctx
-          .getDiagramElements(FaServices.getFaServices().getMappingABConnection(ctx.getDDiagram()))) {
+      for (DDiagramElement element : ctx.getDiagramElements(ctx.getMapping(MappingConstantsHelper.getMappingABConnection(ctx.getDDiagram())))) {
         if ((element.getTarget() != null) && (element.getTarget() instanceof ComponentExchange)) {
           values.addAll(((ComponentExchange) element.getTarget()).getCategories());
         }
@@ -2429,7 +2424,9 @@ public class ABServices {
     if (context instanceof DDiagram) {
       HashSet<EObject> values = new HashSet<EObject>();
       DDiagramContents ctx = new DDiagramContents((DDiagram) context);
-      for (DDiagramElement element : ctx.getDiagramElements(getMappingABPhysicalCategory(ctx.getDDiagram()))) {
+      DiagramElementMapping edgeMapping = ctx.getMapping(MappingConstantsHelper.getMappingABPhysicalCategory(ctx.getDDiagram()));
+      
+      for (DDiagramElement element : ctx.getDiagramElements(edgeMapping)) {
         if ((element.getTarget() != null) && (element.getTarget() instanceof CapellaElement)) {
           values.add(element.getTarget());
         }
@@ -2450,7 +2447,8 @@ public class ABServices {
     if (context instanceof DDiagram) {
       HashSet<EObject> values = new HashSet<EObject>();
       DDiagramContents ctx = new DDiagramContents((DDiagram) context);
-      for (DDiagramElement element : ctx.getDiagramElements(getMappingABComponentCategory(ctx.getDDiagram()))) {
+      DiagramElementMapping edgeMapping = ctx.getMapping(MappingConstantsHelper.getMappingABComponentCategory(ctx.getDDiagram()));
+      for (DDiagramElement element : ctx.getDiagramElements(edgeMapping)) {
         if ((element.getTarget() != null) && (element.getTarget() instanceof CapellaElement)) {
           values.add(element.getTarget());
         }
@@ -2649,8 +2647,8 @@ public class ABServices {
     Collection<AbstractDNode> toRemoveNodes = new HashSet<AbstractDNode>();
     Collection<AbstractDNode> toHideNodes = new HashSet<AbstractDNode>();
 
-    EdgeMapping edgeMapping = getMappingABComponentCategory(context.getDDiagram());
-    NodeMapping nodeMapping = getMappingABComponentCategoryPin(context.getDDiagram());
+    DiagramElementMapping edgeMapping = context.getMapping(MappingConstantsHelper.getMappingABComponentCategory(context.getDDiagram())); 
+    DiagramElementMapping nodeMapping = context.getMapping(MappingConstantsHelper.getMappingABComponentCategoryPin(context.getDDiagram())); 
 
     // Retrieve all invalid edges to be removed
     if (edgeMapping != null) {
@@ -2695,7 +2693,7 @@ public class ABServices {
     }
 
     // Retrieve all nodes to be hidden or removed
-    List<NodeMapping> nodeMappings = FaServices.getFaServices().getMappingABPorts(context.getDDiagram());
+    Collection<DiagramElementMapping> nodeMappings = context.getMappings(MappingConstantsHelper.getMappingABPorts(context.getDDiagram()));
     if (!nodeMappings.isEmpty()) {
       Iterable<DDiagramElement> diagElements = context.getDiagramElements(nodeMappings);
       for (DDiagramElement element : diagElements) {
@@ -2759,8 +2757,8 @@ public class ABServices {
     Collection<AbstractDNode> toRemoveNodes = new HashSet<AbstractDNode>();
     Collection<AbstractDNode> toHideNodes = new HashSet<AbstractDNode>();
 
-    EdgeMapping edgeMapping = getMappingABPhysicalCategory(context.getDDiagram());
-    List<NodeMapping> nodeMappings = getMappingABPhysicalCategoryPin(context.getDDiagram());
+    DiagramElementMapping edgeMapping = context.getMapping(MappingConstantsHelper.getMappingABPhysicalCategory(context.getDDiagram()));
+    Collection<DiagramElementMapping> nodeMappings = context.getMappings(MappingConstantsHelper.getMappingABPhysicalCategoryPin(context.getDDiagram()));
 
     if (edgeMapping != null) {
       for (DDiagramElement element : context.getDiagramElements(edgeMapping)) {
@@ -2802,7 +2800,7 @@ public class ABServices {
       }
     }
 
-    nodeMappings = FaServices.getFaServices().getMappingABPorts(context.getDDiagram());
+    nodeMappings = context.getMappings(MappingConstantsHelper.getMappingABPorts(context.getDDiagram()));
     if (!nodeMappings.isEmpty()) {
       for (DDiagramElement element : context.getDiagramElements(nodeMappings)) {
         if (!(element instanceof EdgeTarget)) {
@@ -2961,25 +2959,9 @@ public class ABServices {
    * @param diagram
    * @return
    */
+  @Deprecated
   public EdgeMapping getMappingABComponentCategory(DDiagram diagram) {
-    String mappingName = null;
-
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.OAB_COMPONENT_CATEGORY_MAPPING_NAME;
-    }
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.SAB_COMPONENT_CATEGORY_MAPPING_NAME;
-    }
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.LAB_COMPONENT_CATEGORY_MAPPING_NAME;
-    }
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.PAB_COMPONENT_CATEGORY_MAPPING_NAME;
-    }
+    String mappingName = MappingConstantsHelper.getMappingABComponentCategory(diagram);
     return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
   }
 
@@ -2989,20 +2971,9 @@ public class ABServices {
    * @param diagram
    * @return
    */
+  @Deprecated
   public EdgeMapping getMappingABPhysicalCategory(DDiagram diagram) {
-    String mappingName = null;
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.SAB_PHYSICAL_CATEGORY_MAPPING_NAME;
-    }
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.LAB_PHYSICAL_CATEGORY_MAPPING_NAME;
-    }
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.PAB_PHYSICAL_CATEGORY_MAPPING_NAME;
-    }
+    String mappingName = MappingConstantsHelper.getMappingABPhysicalCategory(diagram);
     return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
   }
 
@@ -3012,20 +2983,9 @@ public class ABServices {
    * @param diagram
    * @return
    */
+  @Deprecated
   public NodeMapping getMappingABComponentCategoryPin(DDiagram diagram) {
-    String mappingName = null;
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.SAB_COMPONENT_CATEGORY_PIN_MAPPING_NAME;
-    }
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.LAB_COMPONENT_CATEGORY_PIN_MAPPING_NAME;
-    }
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.PAB_COMPONENT_CATEGORY_PIN_MAPPING_NAME;
-    }
+    String mappingName = MappingConstantsHelper.getMappingABComponentCategoryPin(diagram);
     return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingName);
   }
 
@@ -3035,20 +2995,9 @@ public class ABServices {
    * @param diagram
    * @return
    */
+  @Deprecated
   public List<NodeMapping> getMappingABPhysicalCategoryPin(DDiagram diagram) {
-    List<String> mappingNames = new ArrayList<String>();
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingNames.add(IMappingNameConstants.SAB_PHYSICAL_CATEGORY_PIN_MAPPING_NAME);
-    }
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingNames.add(IMappingNameConstants.LAB_PHYSICAL_CATEGORY_PIN_NAME);
-    }
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingNames.add(IMappingNameConstants.PAB_PHYSICAL_CATEGORY_PIN_MAPPING_NAME);
-    }
+    List<String> mappingNames = MappingConstantsHelper.getMappingABPhysicalCategoryPin(diagram);
     return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingNames);
   }
 
@@ -3058,20 +3007,9 @@ public class ABServices {
    * @param diagram
    * @return
    */
+  @Deprecated
   public NodeMapping getMappingABPhysicalCategoryPin(DDiagram diagram, EObject semantic) {
-    String mappingName = null;
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.SAB_PHYSICAL_CATEGORY_PIN_MAPPING_NAME;
-    }
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.LAB_PHYSICAL_CATEGORY_PIN_NAME;
-    }
-    if (diagram.getDescription().getName()
-        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.PAB_PHYSICAL_CATEGORY_PIN_MAPPING_NAME;
-    }
+    String mappingName = MappingConstantsHelper.getMappingABPhysicalCategoryPin(diagram, semantic);
     return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingName);
   }
 
