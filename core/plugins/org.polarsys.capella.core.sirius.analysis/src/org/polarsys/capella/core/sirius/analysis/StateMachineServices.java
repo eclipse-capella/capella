@@ -74,6 +74,7 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.StateExt;
 import org.polarsys.capella.core.model.helpers.move.MoveHelper;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideSMStateMode;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideSMTransitions;
@@ -1062,44 +1063,34 @@ public class StateMachineServices {
     return transitionList;
   }
 
-  public ContainerMapping getMappingSMStateMode(State state, DDiagram diagram) {
-    String mappingName = null;
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.MS_MODE_STATE_MAPPING_NAME;
-    }
-    return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
+  @Deprecated
+  public ContainerMapping getMappingSMStateMode(State state, DDiagram diagram_p) {
+    String mappingName = MappingConstantsHelper.getMappingSMStateMode(state, diagram_p);
+    return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, mappingName);
   }
 
-  public ContainerMapping getMappingSMInnerStateMode(State state, DDiagram diagram) {
-    String mappingName = null;
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.MS_INNER_MODE_STATE_MAPPING_NAME;
-    }
-    return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
+  @Deprecated
+  public ContainerMapping getMappingSMInnerStateMode(State state, DDiagram diagram_p) {
+    String mappingName = MappingConstantsHelper.getMappingSMInnerStateMode(state, diagram_p);
+    return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, mappingName);
   }
 
-  public NodeMapping getMappingSMInnerPseudostate(Pseudostate pseudoState, DDiagram diagram) {
-    String mappingName = null;
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.MS_INNER_PSEUDOSTATE_MAPPING_NAME;
-    }
-    return DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
+  @Deprecated
+  public NodeMapping getMappingSMInnerPseudostate(Pseudostate pseudoState, DDiagram diagram_p) {
+    String mappingName = MappingConstantsHelper.getMappingSMInnerPseudostate(pseudoState, diagram_p);
+    return DiagramServices.getDiagramServices().getNodeMapping(diagram_p, mappingName);
   }
 
-  public NodeMapping getMappingSMPseudostate(Pseudostate pseudoState, DDiagram diagram) {
-    String mappingName = null;
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.MS_PSEUDOSTATE_MAPPING_NAME;
-    }
-    return DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
+  @Deprecated
+  public NodeMapping getMappingSMPseudostate(Pseudostate pseudoState, DDiagram diagram_p) {
+    String mappingName = MappingConstantsHelper.getMappingSMPseudostate(pseudoState, diagram_p);
+    return DiagramServices.getDiagramServices().getNodeMapping(diagram_p, mappingName);
   }
 
-  public EdgeMapping getMappingSMTransition(StateTransition function, DDiagram diagram) {
-    String mappingName = null;
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.MS_TRANSITION_MAPPING_NAME;
-    }
-    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
+  @Deprecated
+  public EdgeMapping getMappingSMTransition(StateTransition function_p, DDiagram diagram_p) {
+    String mappingName = MappingConstantsHelper.getMappingSMTransition(function_p, diagram_p);
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, mappingName);
   }
 
   public EObject showHideStatesInStateAndModeDiag(DSemanticDecorator view, List<State> selectedStates,

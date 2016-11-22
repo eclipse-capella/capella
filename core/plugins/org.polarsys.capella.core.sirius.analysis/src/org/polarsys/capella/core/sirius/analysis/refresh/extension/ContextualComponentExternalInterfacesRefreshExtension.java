@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,7 +58,7 @@ public class ContextualComponentExternalInterfacesRefreshExtension extends Abstr
     NodeMapping interfaceMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CCEI_INTERFACE); 
     for (final Interface itf : CsServices.getService().getRelatedInterfaces(component)) {
       if (!elements.containsKey(itf)) {
-        DiagramServices.getDiagramServices().createNode(interfaceMapping, itf, diagram, diagram);
+        DiagramServices.getDiagramServices().createAbstractDNode(interfaceMapping, itf, diagram, diagram);
       }
       // add only user/require components 
       // if there is no impl/provide interface for 'component' 

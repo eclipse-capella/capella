@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.helpers;
 
 import java.text.MessageFormat;
@@ -202,16 +201,17 @@ public class EcoreUtil2 {
 
   /**
    * Return the project where is persisted given EMF object.
-   * @param object
+   * @param eObject
    * @return <code>null</code> if given object is not persisted.
    */
-  public static IProject getProject(EObject object) {
+  public static IProject getProject(EObject eObject) {
     IProject result = null;
+    Resource resource;
     // Preconditions.
-    if ((null == object) || (object.eResource() == null)) {
+    if ((null == eObject) || ((resource = eObject.eResource()) == null)) {
       return result;
     }
-    IFile res = WorkspaceSynchronizer.getFile(object.eResource());
+    IFile res = WorkspaceSynchronizer.getFile(resource);
     if (res != null) {
       result = res.getProject();
     }

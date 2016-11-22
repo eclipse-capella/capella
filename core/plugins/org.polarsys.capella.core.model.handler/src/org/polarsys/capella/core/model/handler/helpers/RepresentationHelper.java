@@ -308,7 +308,7 @@ public class RepresentationHelper {
   }
 
   /**
-   * Returns all related capella resources
+   * Returns all related Capella resources
    */
   @SuppressWarnings("unchecked")
   public static Collection<Resource> getSemanticResources(DRepresentation representation) {
@@ -343,8 +343,9 @@ public class RepresentationHelper {
                     if (analysis.getModels() != null) {
                       for (EObject model : analysis.getModels()) {
                         if ((model != null) && !(model.eIsProxy())) {
-                          if ((model.eResource() != null)) {
-                            resources.add(model.eResource());
+                          Resource modelResource = model.eResource();
+                          if ((modelResource != null)) {
+                            resources.add(modelResource);
                           }
                         }
                       }

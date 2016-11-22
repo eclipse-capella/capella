@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,8 +15,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
@@ -81,7 +81,7 @@ public class ContextualComponentInternalInterfacesRefreshExtension extends Abstr
     NodeMapping interfaceMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram_p, IMappingNameConstants.CCII_INTERFACE);
     for (final Interface itf : interfaces) {
       if (!content.containsView(itf, interfaceMapping)) {
-        DNode node = DiagramServices.getDiagramServices().createNode(interfaceMapping, itf, content.getBestContainer(itf), diagram_p);
+        AbstractDNode node = DiagramServices.getDiagramServices().createAbstractDNode(interfaceMapping, itf, content.getBestContainer(itf), diagram_p);
         content.addView(node);
       }
     }
@@ -91,7 +91,7 @@ public class ContextualComponentInternalInterfacesRefreshExtension extends Abstr
     for (final CommunicationLink link : links) {
       AbstractExchangeItem item = link.getExchangeItem();
       if ((item != null) && !content.containsView(item, exchangeItemMapping)) {
-        DNode node = DiagramServices.getDiagramServices().createNode(exchangeItemMapping, item, content.getBestContainer(item), diagram_p);
+        AbstractDNode node = DiagramServices.getDiagramServices().createAbstractDNode(exchangeItemMapping, item, content.getBestContainer(item), diagram_p);
         content.addView(node);
       }
     }

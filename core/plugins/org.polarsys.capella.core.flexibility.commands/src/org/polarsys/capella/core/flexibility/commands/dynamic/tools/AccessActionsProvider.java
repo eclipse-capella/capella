@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PartInitException;
@@ -519,9 +520,11 @@ public class AccessActionsProvider implements IActionsProvider {
         if (element.getTarget() == null) {
           invalids.add(element);
           String label = element.getName();
+          
+          DiagramElementMapping diagramElementMapping = element.getDiagramElementMapping();
 
-          if (element.getDiagramElementMapping() != null) {
-            if (element.getDiagramElementMapping().eContainingFeature() == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS) {
+          if (diagramElementMapping != null) {
+            if (diagramElementMapping.eContainingFeature() == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS) {
 
               if ((element.eContainer() != null) && (element.eContainer() instanceof DDiagramElement)) {
                 label = ((DDiagramElement) element.eContainer()).getName();
