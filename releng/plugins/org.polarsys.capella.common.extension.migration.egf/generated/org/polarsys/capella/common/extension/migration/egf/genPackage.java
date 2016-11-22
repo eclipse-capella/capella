@@ -1,4 +1,4 @@
-//Generated with EGF 1.2.0.v20140805-0858
+//Generated with EGF 1.4.1.v20161010-1511
 package org.polarsys.capella.common.extension.migration.egf;
 
 import java.util.*;
@@ -40,8 +40,7 @@ public class genPackage {
 			}
 		}
 		if (ctx.useReporter()) {
-			ctx.getReporter().executionFinished(
-					OutputManager.computeExecutionOutput(ctx), ctx);
+			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 	}
 
@@ -55,77 +54,59 @@ public class genPackage {
 			parameterValues.put("genPackage", this.genPackage);
 			String outputWithCallBack = OutputManager.computeLoopOutput(ictx);
 			String loop = OutputManager.computeLoopOutputWithoutCallback(ictx);
-			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx,
-					parameterValues);
+			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx, parameterValues);
 		}
 		return null;
 	}
 
-	protected void method_body(final StringBuffer out, final PatternContext ctx)
-			throws Exception {
+	protected void method_body(final StringBuffer out, final PatternContext ctx) throws Exception {
 		EPackage ecorePackage = genPackage.getEcorePackage();
 		String annotation = null;
 
-		annotation = EcoreUtil.getAnnotation(ecorePackage,
-				"http://www.polarsys.org/kitalpha/dsl/2007/dslfactory",
+		annotation = EcoreUtil.getAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory",
 				"trackResourceModification");
 		if (annotation != null)
-			EcoreUtil.setAnnotation(ecorePackage,
-					"http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
+			EcoreUtil.setAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
 					"trackResourceModification", annotation);
 
-		annotation = EcoreUtil.getAnnotation(ecorePackage,
-				"http://www.polarsys.org/kitalpha/dsl/2007/dslfactory",
+		annotation = EcoreUtil.getAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory",
 				"useUUIDs");
 		if (annotation != null)
-			EcoreUtil.setAnnotation(ecorePackage,
-					"http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
-					"useUUIDs", annotation);
+			EcoreUtil.setAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/emde/1.0.0/extension", "useUUIDs",
+					annotation);
 
-		annotation = EcoreUtil.getAnnotation(ecorePackage,
-				"http://www.polarsys.org/kitalpha/dsl/2007/dslfactory",
+		annotation = EcoreUtil.getAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory",
 				"useIDAttributes");
 		if (annotation != null)
-			EcoreUtil.setAnnotation(ecorePackage,
-					"http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
+			EcoreUtil.setAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
 					"useIDAttributes", annotation);
 
-		annotation = EcoreUtil.getAnnotation(ecorePackage,
-				"http://www.polarsys.org/kitalpha/dsl/2007/dslfactory",
+		annotation = EcoreUtil.getAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory",
 				"extensibleProviderFactory");
 		if (annotation != null) {
-			EcoreUtil.setAnnotation(ecorePackage,
-					"http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
+			EcoreUtil.setAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
 					"extensibleProviderFactory", annotation);
-			genPackage.setExtensibleProviderFactory(Boolean
-					.parseBoolean(annotation));
+			genPackage.setExtensibleProviderFactory(Boolean.parseBoolean(annotation));
 		}
 
-		annotation = EcoreUtil.getAnnotation(ecorePackage,
-				"http://www.polarsys.org/kitalpha/dsl/2007/dslfactory",
+		annotation = EcoreUtil.getAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory",
 				"childCreationExtenders");
 		if (annotation != null) {
-			EcoreUtil.setAnnotation(ecorePackage,
-					"http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
+			EcoreUtil.setAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
 					"childCreationExtenders", annotation);
-			genPackage.setChildCreationExtenders(Boolean
-					.parseBoolean(annotation));
+			genPackage.setChildCreationExtenders(Boolean.parseBoolean(annotation));
 		}
 
-		annotation = EcoreUtil.getAnnotation(ecorePackage,
-				"http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
+		annotation = EcoreUtil.getAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
 				"childCreationExtenders");
 		if (annotation != null) {
-			genPackage.setChildCreationExtenders(Boolean
-					.parseBoolean(annotation));
+			genPackage.setChildCreationExtenders(Boolean.parseBoolean(annotation));
 		}
 
-		annotation = EcoreUtil.getAnnotation(ecorePackage,
-				"http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
+		annotation = EcoreUtil.getAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
 				"extensibleProviderFactory");
 		if (annotation != null) {
-			genPackage.setExtensibleProviderFactory(Boolean
-					.parseBoolean(annotation));
+			genPackage.setExtensibleProviderFactory(Boolean.parseBoolean(annotation));
 		}
 
 		genPackage.eResource().save(Collections.EMPTY_MAP);
@@ -142,8 +123,7 @@ public class genPackage {
 
 	protected org.eclipse.emf.codegen.ecore.genmodel.GenPackage genPackage;
 
-	public void set_genPackage(
-			org.eclipse.emf.codegen.ecore.genmodel.GenPackage genPackage) {
+	public void set_genPackage(org.eclipse.emf.codegen.ecore.genmodel.GenPackage genPackage) {
 		this.genPackage = genPackage;
 	}
 

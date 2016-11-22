@@ -1,4 +1,4 @@
-//Generated with EGF 1.2.0.v20140805-0858
+//Generated with EGF 1.4.1.v20161010-1511
 package org.polarsys.capella.common.tig.model;
 
 import org.eclipse.egf.common.helper.*;
@@ -9,20 +9,17 @@ import org.eclipse.egf.pattern.execution.*;
 import org.eclipse.egf.pattern.query.*;
 
 public class ClassbasicGetGenFeatureTODOoverride
-		extends
-		org.eclipse.egf.emf.pattern.model.call.Class.ClassbasicGetGenFeatureTODOoverride {
+		extends org.eclipse.egf.emf.pattern.model.call.Class.ClassbasicGetGenFeatureTODOoverride {
 	protected static String nl;
 
-	public static synchronized ClassbasicGetGenFeatureTODOoverride create(
-			String lineSeparator) {
+	public static synchronized ClassbasicGetGenFeatureTODOoverride create(String lineSeparator) {
 		nl = lineSeparator;
 		ClassbasicGetGenFeatureTODOoverride result = new ClassbasicGetGenFeatureTODOoverride();
 		nl = null;
 		return result;
 	}
 
-	public final String NL = nl == null ? (System.getProperties()
-			.getProperty("line.separator")) : nl;
+	public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
 	protected final String TEXT_1 = "";
 	protected final String TEXT_2 = NL;
 
@@ -103,8 +100,7 @@ public class ClassbasicGetGenFeatureTODOoverride
 																this.positiveOperationOffsetCorrection = (java.lang.String) positiveOperationOffsetCorrectionParameter;
 
 																if (preCondition(ctx)) {
-																	ctx.setNode(new Node.Container(
-																			currentNode,
+																	ctx.setNode(new Node.Container(currentNode,
 																			getClass()));
 																	orchestration(ctx);
 																}
@@ -125,8 +121,7 @@ public class ClassbasicGetGenFeatureTODOoverride
 		}
 		ctx.setNode(currentNode);
 		if (ctx.useReporter()) {
-			ctx.getReporter().executionFinished(
-					OutputManager.computeExecutionOutput(ctx), ctx);
+			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
 		stringBuffer.append(TEXT_1);
@@ -149,21 +144,15 @@ public class ClassbasicGetGenFeatureTODOoverride
 			parameterValues.put("isInterface", this.isInterface);
 			parameterValues.put("isImplementation", this.isImplementation);
 			parameterValues.put("isGWT", this.isGWT);
-			parameterValues.put("publicStaticFinalFlag",
-					this.publicStaticFinalFlag);
+			parameterValues.put("publicStaticFinalFlag", this.publicStaticFinalFlag);
 			parameterValues.put("singleWildcard", this.singleWildcard);
-			parameterValues.put("negativeOffsetCorrection",
-					this.negativeOffsetCorrection);
-			parameterValues.put("positiveOffsetCorrection",
-					this.positiveOffsetCorrection);
-			parameterValues.put("negativeOperationOffsetCorrection",
-					this.negativeOperationOffsetCorrection);
-			parameterValues.put("positiveOperationOffsetCorrection",
-					this.positiveOperationOffsetCorrection);
+			parameterValues.put("negativeOffsetCorrection", this.negativeOffsetCorrection);
+			parameterValues.put("positiveOffsetCorrection", this.positiveOffsetCorrection);
+			parameterValues.put("negativeOperationOffsetCorrection", this.negativeOperationOffsetCorrection);
+			parameterValues.put("positiveOperationOffsetCorrection", this.positiveOperationOffsetCorrection);
 			String outputWithCallBack = OutputManager.computeLoopOutput(ictx);
 			String loop = OutputManager.computeLoopOutputWithoutCallback(ictx);
-			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx,
-					parameterValues);
+			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx, parameterValues);
 		}
 		return null;
 	}
@@ -180,26 +169,20 @@ public class ClassbasicGetGenFeatureTODOoverride
 		parameters.put("isGWT", this.isGWT);
 		parameters.put("publicStaticFinalFlag", this.publicStaticFinalFlag);
 		parameters.put("singleWildcard", this.singleWildcard);
-		parameters.put("negativeOffsetCorrection",
-				this.negativeOffsetCorrection);
-		parameters.put("positiveOffsetCorrection",
-				this.positiveOffsetCorrection);
-		parameters.put("negativeOperationOffsetCorrection",
-				this.negativeOperationOffsetCorrection);
-		parameters.put("positiveOperationOffsetCorrection",
-				this.positiveOperationOffsetCorrection);
+		parameters.put("negativeOffsetCorrection", this.negativeOffsetCorrection);
+		parameters.put("positiveOffsetCorrection", this.positiveOffsetCorrection);
+		parameters.put("negativeOperationOffsetCorrection", this.negativeOperationOffsetCorrection);
+		parameters.put("positiveOperationOffsetCorrection", this.positiveOperationOffsetCorrection);
 		return parameters;
 	}
 
-	protected void method_doGenerate(final StringBuffer stringBuffer,
-			final PatternContext ctx) throws Exception {
+	protected void method_doGenerate(final StringBuffer stringBuffer, final PatternContext ctx) throws Exception {
 
 		{
 			//<%@ egf:patternCall patternId="platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#LogicalName=org.eclipse.egf.emf.pattern.model.call.Class.Class.getGenFeature.TODO.override" args="genFeature:genFeature,genClass:genClass,genPackage:genPackage,genModel:genModel,isInterface:isInterface,isImplementation:isImplementation,publicStaticFinalFlag:publicStaticFinalFlag,singleWildcard:singleWildcard,negativeOffsetCorrection:negativeOffsetCorrection,positiveOffsetCorrection:positiveOffsetCorrection"%>
 
 			InternalPatternContext ictx = (InternalPatternContext) ctx;
-			new Node.DataLeaf(ictx.getNode(), getClass(), null,
-					stringBuffer.toString());
+			new Node.DataLeaf(ictx.getNode(), getClass(), null, stringBuffer.toString());
 			stringBuffer.setLength(0);
 
 			final Map<String, Object> callParameters = new HashMap<String, Object>();
@@ -211,20 +194,15 @@ public class ClassbasicGetGenFeatureTODOoverride
 			callParameters.put("isImplementation", isImplementation);
 			callParameters.put("publicStaticFinalFlag", publicStaticFinalFlag);
 			callParameters.put("singleWildcard", singleWildcard);
-			callParameters.put("negativeOffsetCorrection",
-					negativeOffsetCorrection);
-			callParameters.put("positiveOffsetCorrection",
-					positiveOffsetCorrection);
-			CallHelper
-					.executeWithParameterInjection(
-							"platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0lbPAWJ-Ed-FqczH3ESmRw",
-							new ExecutionContext((InternalPatternContext) ctx),
-							callParameters);
+			callParameters.put("negativeOffsetCorrection", negativeOffsetCorrection);
+			callParameters.put("positiveOffsetCorrection", positiveOffsetCorrection);
+			CallHelper.executeWithParameterInjection(
+					"platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0lbPAWJ-Ed-FqczH3ESmRw",
+					new ExecutionContext((InternalPatternContext) ctx), callParameters);
 			stringBuffer.setLength(0);
 		}
 
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
-		new Node.DataLeaf(ictx.getNode(), getClass(), "doGenerate",
-				stringBuffer.toString());
+		new Node.DataLeaf(ictx.getNode(), getClass(), "doGenerate", stringBuffer.toString());
 	}
 }

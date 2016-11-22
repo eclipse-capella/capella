@@ -1,4 +1,4 @@
-//Generated with EGF 1.2.0.v20140805-0858
+//Generated with EGF 1.4.1.v20161010-1511
 package org.polarsys.capella.core.model;
 
 import org.eclipse.egf.common.helper.*;
@@ -18,8 +18,7 @@ public class createNamesetID {
 		return result;
 	}
 
-	public final String NL = nl == null ? (System.getProperties()
-			.getProperty("line.separator")) : nl;
+	public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
 	protected final String TEXT_1 = NL + "        String newBusinessId = ";
 	protected final String TEXT_2 = ".createId();";
 	protected final String TEXT_3 = NL + "        ";
@@ -63,8 +62,7 @@ public class createNamesetID {
 		}
 		ctx.setNode(currentNode);
 		if (ctx.useReporter()) {
-			ctx.getReporter().executionFinished(
-					OutputManager.computeExecutionOutput(ctx), ctx);
+			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
 		stringBuffer.append(TEXT_5);
@@ -83,23 +81,20 @@ public class createNamesetID {
 			parameterValues.put("genClass", this.genClass);
 			String outputWithCallBack = OutputManager.computeLoopOutput(ictx);
 			String loop = OutputManager.computeLoopOutputWithoutCallback(ictx);
-			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx,
-					parameterValues);
+			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx, parameterValues);
 		}
 		return null;
 	}
 
 	protected org.eclipse.emf.codegen.ecore.genmodel.GenModel genModel = null;
 
-	public void set_genModel(
-			org.eclipse.emf.codegen.ecore.genmodel.GenModel object) {
+	public void set_genModel(org.eclipse.emf.codegen.ecore.genmodel.GenModel object) {
 		this.genModel = object;
 	}
 
 	protected org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass = null;
 
-	public void set_genClass(
-			org.eclipse.emf.codegen.ecore.genmodel.GenClass object) {
+	public void set_genClass(org.eclipse.emf.codegen.ecore.genmodel.GenClass object) {
 		this.genClass = object;
 	}
 
@@ -110,21 +105,17 @@ public class createNamesetID {
 		return parameters;
 	}
 
-	protected void method_body(final StringBuffer stringBuffer,
-			final PatternContext ctx) throws Exception {
+	protected void method_body(final StringBuffer stringBuffer, final PatternContext ctx) throws Exception {
 
 		//IN: GenClass genClass
 		stringBuffer.append(TEXT_1);
-		stringBuffer
-				.append(genModel
-						.getImportedName("org.polarsys.capella.common.lib.IdGenerator"));
+		stringBuffer.append(genModel.getImportedName("org.polarsys.capella.common.lib.IdGenerator"));
 		stringBuffer.append(TEXT_2);
 		stringBuffer.append(TEXT_3);
 		stringBuffer.append(genClass.getSafeUncapName());
 		stringBuffer.append(TEXT_4);
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
-		new Node.DataLeaf(ictx.getNode(), getClass(), "body",
-				stringBuffer.toString());
+		new Node.DataLeaf(ictx.getNode(), getClass(), "body", stringBuffer.toString());
 	}
 
 	public boolean preCondition(PatternContext ctx) throws Exception {

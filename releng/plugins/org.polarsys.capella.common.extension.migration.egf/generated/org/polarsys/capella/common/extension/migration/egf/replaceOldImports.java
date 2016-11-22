@@ -1,4 +1,4 @@
-//Generated with EGF 1.2.0.v20140805-0858
+//Generated with EGF 1.4.1.v20161010-1511
 package org.polarsys.capella.common.extension.migration.egf;
 
 import java.util.*;
@@ -34,8 +34,7 @@ public class replaceOldImports {
 			}
 		}
 		if (ctx.useReporter()) {
-			ctx.getReporter().executionFinished(
-					OutputManager.computeExecutionOutput(ctx), ctx);
+			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 	}
 
@@ -49,24 +48,18 @@ public class replaceOldImports {
 			parameterValues.put("iFile", this.iFile);
 			String outputWithCallBack = OutputManager.computeLoopOutput(ictx);
 			String loop = OutputManager.computeLoopOutputWithoutCallback(ictx);
-			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx,
-					parameterValues);
+			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx, parameterValues);
 		}
 		return null;
 	}
 
-	protected void method_body(final StringBuffer out, final PatternContext ctx)
-			throws Exception {
-		new org.polarsys.capella.common.extension.migration.egf.FileModificationTask()
-				.doExecute(
-						iFile,
-						"import org.polarsys.capella.common.mdsofa.emf.extension.IChildCreationExtender;",
-						"import org.eclipse.emf.edit.provider.IChildCreationExtender;");
-		new org.polarsys.capella.common.extension.migration.egf.FileModificationTask()
-				.doExecute(
-						iFile,
-						"import org.polarsys.capella.common.mdsofa.emf.extension.ExtensionModelManager;",
-						"import org.polarsys.kitalpha.emde.ui.ExtensionModelManager;");
+	protected void method_body(final StringBuffer out, final PatternContext ctx) throws Exception {
+		new org.polarsys.capella.common.extension.migration.egf.FileModificationTask().doExecute(iFile,
+				"import org.polarsys.capella.common.mdsofa.emf.extension.IChildCreationExtender;",
+				"import org.eclipse.emf.edit.provider.IChildCreationExtender;");
+		new org.polarsys.capella.common.extension.migration.egf.FileModificationTask().doExecute(iFile,
+				"import org.polarsys.capella.common.mdsofa.emf.extension.ExtensionModelManager;",
+				"import org.polarsys.kitalpha.emde.ui.ExtensionModelManager;");
 		//new org.polarsys.capella.common.extension.migration.egf.FileModificationTask().doExecute(iFile, "import org.polarsys.capella.common.mdsofa.emf.xmi.SAXExtensionXMIHandler;", "import org.polarsys.kitalpha.emde.xmi.SAXExtensionXMIHandler;");
 		//new org.polarsys.capella.common.extension.migration.egf.FileModificationTask().doExecute(iFile, "import org.polarsys.capella.common.mdsofa.emf.xmi.XMIExtensionHelperImpl;", "import org.polarsys.kitalpha.emde.xmi.XMIExtensionHelperImpl;");
 		//new org.polarsys.capella.common.extension.migration.egf.FileModificationTask().doExecute(iFile, "import org.polarsys.capella.common.mdsofa.emf.xmi.XMIExtensionLoadImpl;", "import org.polarsys.kitalpha.emde.xmi.XMIExtensionLoadImpl;");
