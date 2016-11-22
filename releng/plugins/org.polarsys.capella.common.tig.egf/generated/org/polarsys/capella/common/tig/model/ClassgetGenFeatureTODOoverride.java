@@ -1,4 +1,4 @@
-//Generated with EGF 1.2.0.v20140805-0858
+//Generated with EGF 1.4.1.v20161010-1511
 package org.polarsys.capella.common.tig.model;
 
 import org.eclipse.egf.common.helper.*;
@@ -9,20 +9,17 @@ import org.eclipse.egf.pattern.execution.*;
 import org.eclipse.egf.pattern.query.*;
 
 public class ClassgetGenFeatureTODOoverride
-		extends
-		org.eclipse.egf.emf.pattern.model.call.Class.ClassgetGenFeatureTODOoverride {
+		extends org.eclipse.egf.emf.pattern.model.call.Class.ClassgetGenFeatureTODOoverride {
 	protected static String nl;
 
-	public static synchronized ClassgetGenFeatureTODOoverride create(
-			String lineSeparator) {
+	public static synchronized ClassgetGenFeatureTODOoverride create(String lineSeparator) {
 		nl = lineSeparator;
 		ClassgetGenFeatureTODOoverride result = new ClassgetGenFeatureTODOoverride();
 		nl = null;
 		return result;
 	}
 
-	public final String NL = nl == null ? (System.getProperties()
-			.getProperty("line.separator")) : nl;
+	public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
 	protected final String TEXT_1 = "\t\t";
 	protected final String TEXT_2 = " eFeature = ";
 	protected final String TEXT_3 = ";" + NL + "\t";
@@ -32,140 +29,99 @@ public class ClassgetGenFeatureTODOoverride
 	protected final String TEXT_7 = " eFeature = (";
 	protected final String TEXT_8 = ");" + NL + "\t\t";
 	protected final String TEXT_9 = NL + "\t\t";
-	protected final String TEXT_10 = " helper = OCL_ENV.createOCLHelper();"
-			+ NL + "\t\thelper.setAttributeContext(";
+	protected final String TEXT_10 = " helper = OCL_ENV.createOCLHelper();" + NL + "\t\thelper.setAttributeContext(";
 	protected final String TEXT_11 = ", eFeature);" + NL + "\t\t" + NL + "\t\t";
-	protected final String TEXT_12 = " ocl = eFeature.getEAnnotation(OCL_ANNOTATION_SOURCE);"
-			+ NL + "\t\tString derive = ocl.getDetails().get(\"derive\");";
+	protected final String TEXT_12 = " ocl = eFeature.getEAnnotation(OCL_ANNOTATION_SOURCE);" + NL
+			+ "\t\tString derive = ocl.getDetails().get(\"derive\");";
 	protected final String TEXT_13 = NL + NL + "\t\ttry {" + NL + "\t\t\t";
-	protected final String TEXT_14 = " = helper.createQuery(derive);" + NL
-			+ "\t\t} catch (";
-	protected final String TEXT_15 = " e) {"
-			+ NL
-			+ "\t\t\tthrow new UnsupportedOperationException(e.getLocalizedMessage());"
-			+ NL + "\t\t}" + NL + "\t}" + NL + "" + NL + "\t";
+	protected final String TEXT_14 = " = helper.createQuery(derive);" + NL + "\t\t} catch (";
+	protected final String TEXT_15 = " e) {" + NL
+			+ "\t\t\tthrow new UnsupportedOperationException(e.getLocalizedMessage());" + NL + "\t\t}" + NL + "\t}" + NL
+			+ "" + NL + "\t";
 	protected final String TEXT_16 = "<";
 	protected final String TEXT_17 = ", ?, ?> query = OCL_ENV.createQuery(";
-	protected final String TEXT_18 = ");" + NL
-			+ "\tObject result = query.evaluate(this);" + NL + "" + NL + "\t";
-	protected final String TEXT_19 = NL + "\ttry {" + NL
-			+ "\t  @SuppressWarnings(\"unchecked\")" + NL + "\t\t";
+	protected final String TEXT_18 = ");" + NL + "\tObject result = query.evaluate(this);" + NL + "" + NL + "\t";
+	protected final String TEXT_19 = NL + "\ttry {" + NL + "\t  @SuppressWarnings(\"unchecked\")" + NL + "\t\t";
 	protected final String TEXT_20 = "<";
 	protected final String TEXT_21 = "> resultAsList = (";
 	protected final String TEXT_22 = "<";
 	protected final String TEXT_23 = ">) result;" + NL + "\t\treturn new ";
 	protected final String TEXT_24 = ".UnmodifiableEList<";
-	protected final String TEXT_25 = ">(this, eFeature, resultAsList.size(), resultAsList.toArray());"
-			+ NL
-			+ "\t} catch (ClassCastException cce_p) {"
-			+ NL
-			+ "\t  cce_p.printStackTrace();"
-			+ NL
-			+ "\t  return org.eclipse.emf.common.util.ECollections.emptyEList();"
-			+ NL + "\t}" + NL + "\t";
+	protected final String TEXT_25 = ">(this, eFeature, resultAsList.size(), resultAsList.toArray());" + NL
+			+ "\t} catch (ClassCastException cce_p) {" + NL + "\t  cce_p.printStackTrace();" + NL
+			+ "\t  return org.eclipse.emf.common.util.ECollections.emptyEList();" + NL + "\t}" + NL + "\t";
 	protected final String TEXT_26 = NL + "\t\treturn ((";
 	protected final String TEXT_27 = ") result).";
 	protected final String TEXT_28 = "();" + NL + "\t";
 	protected final String TEXT_29 = NL + "\ttry {" + NL + "\t\treturn (";
-	protected final String TEXT_30 = ") result;" + NL
-			+ "\t} catch (ClassCastException cce_p) {" + NL
-			+ "\t  cce_p.printStackTrace();" + NL + "\t  return null;" + NL
-			+ "\t}" + NL + "\t";
+	protected final String TEXT_30 = ") result;" + NL + "\t} catch (ClassCastException cce_p) {" + NL
+			+ "\t  cce_p.printStackTrace();" + NL + "\t  return null;" + NL + "\t}" + NL + "\t";
 	protected final String TEXT_31 = NL + "    Object result = null;" + NL
 			+ "    // Helper that can get value for current feature.";
 	protected final String TEXT_32 = NL + "    ";
-	protected final String TEXT_33 = " helper = null;"
-			+ NL
-			+ "    // If current object is adaptable, ask it to get its IHelper."
-			+ NL + "    if (this instanceof ";
-	protected final String TEXT_34 = ") {"
-			+ NL
-			+ "    \thelper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);"
-			+ NL
-			+ "    }"
-			+ NL
-			+ "    if (null == helper) {"
-			+ NL
-			+ "      // No helper found yet."
-			+ NL
+	protected final String TEXT_33 = " helper = null;" + NL
+			+ "    // If current object is adaptable, ask it to get its IHelper." + NL + "    if (this instanceof ";
+	protected final String TEXT_34 = ") {" + NL
+			+ "    \thelper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);" + NL + "    }" + NL
+			+ "    if (null == helper) {" + NL + "      // No helper found yet." + NL
 			+ "      // Ask the platform to get the adapter 'IHelper.class' for current object.";
 	protected final String TEXT_35 = NL + "      ";
 	protected final String TEXT_36 = " adapterManager = ";
-	protected final String TEXT_37 = ".getAdapterManager();"
-			+ NL
-			+ "      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);"
-			+ NL + "    }" + NL + "    if (null == helper) {";
+	protected final String TEXT_37 = ".getAdapterManager();" + NL
+			+ "      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);" + NL + "    }" + NL
+			+ "    if (null == helper) {";
 	protected final String TEXT_38 = NL + "      ";
-	protected final String TEXT_39 = " package_l = eClass().getEPackage();"
-			+ NL
-			+ "      // Get the root package of the owner package."
-			+ NL
+	protected final String TEXT_39 = " package_l = eClass().getEPackage();" + NL
+			+ "      // Get the root package of the owner package." + NL
 			+ "      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);"
 			+ NL
 			+ "      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException(\"No helper retrieved for nsURI \" + rootPackage.getNsURI()); ";
-	protected final String TEXT_40 = NL + "    } " + NL
-			+ "    // A helper is found, let's use it. ";
+	protected final String TEXT_40 = NL + "    } " + NL + "    // A helper is found, let's use it. ";
 	protected final String TEXT_41 = NL + "    ";
 	protected final String TEXT_42 = " annotation = ";
 	protected final String TEXT_43 = ".getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);"
 			+ NL + "    result = helper.getValue(this, ";
 	protected final String TEXT_44 = ", annotation);" + NL + "\t\t";
-	protected final String TEXT_45 = NL + "\t\ttry {" + NL
-			+ "\t\t@SuppressWarnings(\"unchecked\")" + NL + "\t\t";
+	protected final String TEXT_45 = NL + "\t\ttry {" + NL + "\t\t@SuppressWarnings(\"unchecked\")" + NL + "\t\t";
 	protected final String TEXT_46 = "<";
 	protected final String TEXT_47 = "> resultAsList = (";
 	protected final String TEXT_48 = "<";
 	protected final String TEXT_49 = ">) result;" + NL + "\t\treturn new ";
 	protected final String TEXT_50 = ".UnmodifiableEList<";
 	protected final String TEXT_51 = ">(this, ";
-	protected final String TEXT_52 = ", resultAsList.size(), resultAsList.toArray());"
-			+ NL
-			+ "\t\t} catch (ClassCastException cce_p) {"
-			+ NL
-			+ "\t  \tcce_p.printStackTrace();"
-			+ NL
-			+ "\t  \treturn org.eclipse.emf.common.util.ECollections.emptyEList();"
-			+ NL + "\t  }" + NL + "\t\t";
+	protected final String TEXT_52 = ", resultAsList.size(), resultAsList.toArray());" + NL
+			+ "\t\t} catch (ClassCastException cce_p) {" + NL + "\t  \tcce_p.printStackTrace();" + NL
+			+ "\t  \treturn org.eclipse.emf.common.util.ECollections.emptyEList();" + NL + "\t  }" + NL + "\t\t";
 	protected final String TEXT_53 = NL + "\t\t\treturn ((";
 	protected final String TEXT_54 = ") result).";
 	protected final String TEXT_55 = "();" + NL + "\t\t";
 	protected final String TEXT_56 = NL + "\t\ttry {" + NL + "\t\t\treturn (";
-	protected final String TEXT_57 = ") result;" + NL
-			+ "\t  } catch (ClassCastException cce_p) {" + NL
-			+ "\t     cce_p.printStackTrace();" + NL + "\t    return null;"
-			+ NL + "\t  }" + NL + "\t\t";
-	protected final String TEXT_58 = NL
-			+ "\t\t// TODO: implement this method to return the '";
+	protected final String TEXT_57 = ") result;" + NL + "\t  } catch (ClassCastException cce_p) {" + NL
+			+ "\t     cce_p.printStackTrace();" + NL + "\t    return null;" + NL + "\t  }" + NL + "\t\t";
+	protected final String TEXT_58 = NL + "\t\t// TODO: implement this method to return the '";
 	protected final String TEXT_59 = "' ";
-	protected final String TEXT_60 = NL
-			+ "\t\t// Ensure that you remove @generated or mark it @generated NOT"
-			+ NL + "\t\t\t";
+	protected final String TEXT_60 = NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT" + NL
+			+ "\t\t\t";
 	protected final String TEXT_61 = NL
 			+ "\t\t// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting"
-			+ NL
-			+ "\t\t// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.";
+			+ NL + "\t\t// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.";
 	protected final String TEXT_62 = "EcoreEMap";
 	protected final String TEXT_63 = "BasicFeatureMap";
 	protected final String TEXT_64 = "EcoreEList";
 	protected final String TEXT_65 = " should be used." + NL + "\t\t\t";
-	protected final String TEXT_66 = NL
-			+ "\t\tthrow new UnsupportedOperationException();";
-	protected final String TEXT_67 = NL
-			+ "\t\t// TODO: implement this method to return the '";
+	protected final String TEXT_66 = NL + "\t\tthrow new UnsupportedOperationException();";
+	protected final String TEXT_67 = NL + "\t\t// TODO: implement this method to return the '";
 	protected final String TEXT_68 = "' ";
-	protected final String TEXT_69 = NL
-			+ "\t\t// Ensure that you remove @generated or mark it @generated NOT"
-			+ NL + "\t\t\t";
+	protected final String TEXT_69 = NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT" + NL
+			+ "\t\t\t";
 	protected final String TEXT_70 = NL
 			+ "\t\t// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting"
-			+ NL
-			+ "\t\t// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.";
+			+ NL + "\t\t// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.";
 	protected final String TEXT_71 = "EcoreEMap";
 	protected final String TEXT_72 = "BasicFeatureMap";
 	protected final String TEXT_73 = "EcoreEList";
 	protected final String TEXT_74 = " should be used." + NL + "\t\t\t";
-	protected final String TEXT_75 = NL
-			+ "\t\tthrow new UnsupportedOperationException();";
+	protected final String TEXT_75 = NL + "\t\tthrow new UnsupportedOperationException();";
 	protected final String TEXT_76 = NL;
 	protected final String TEXT_77 = NL;
 
@@ -246,8 +202,7 @@ public class ClassgetGenFeatureTODOoverride
 																this.positiveOperationOffsetCorrection = (java.lang.String) positiveOperationOffsetCorrectionParameter;
 
 																if (preCondition(ctx)) {
-																	ctx.setNode(new Node.Container(
-																			currentNode,
+																	ctx.setNode(new Node.Container(currentNode,
 																			getClass()));
 																	orchestration(ctx);
 																}
@@ -268,8 +223,7 @@ public class ClassgetGenFeatureTODOoverride
 		}
 		ctx.setNode(currentNode);
 		if (ctx.useReporter()) {
-			ctx.getReporter().executionFinished(
-					OutputManager.computeExecutionOutput(ctx), ctx);
+			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
 		stringBuffer.append(TEXT_76);
@@ -292,21 +246,15 @@ public class ClassgetGenFeatureTODOoverride
 			parameterValues.put("isInterface", this.isInterface);
 			parameterValues.put("isImplementation", this.isImplementation);
 			parameterValues.put("isGWT", this.isGWT);
-			parameterValues.put("publicStaticFinalFlag",
-					this.publicStaticFinalFlag);
+			parameterValues.put("publicStaticFinalFlag", this.publicStaticFinalFlag);
 			parameterValues.put("singleWildcard", this.singleWildcard);
-			parameterValues.put("negativeOffsetCorrection",
-					this.negativeOffsetCorrection);
-			parameterValues.put("positiveOffsetCorrection",
-					this.positiveOffsetCorrection);
-			parameterValues.put("negativeOperationOffsetCorrection",
-					this.negativeOperationOffsetCorrection);
-			parameterValues.put("positiveOperationOffsetCorrection",
-					this.positiveOperationOffsetCorrection);
+			parameterValues.put("negativeOffsetCorrection", this.negativeOffsetCorrection);
+			parameterValues.put("positiveOffsetCorrection", this.positiveOffsetCorrection);
+			parameterValues.put("negativeOperationOffsetCorrection", this.negativeOperationOffsetCorrection);
+			parameterValues.put("positiveOperationOffsetCorrection", this.positiveOperationOffsetCorrection);
 			String outputWithCallBack = OutputManager.computeLoopOutput(ictx);
 			String loop = OutputManager.computeLoopOutputWithoutCallback(ictx);
-			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx,
-					parameterValues);
+			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx, parameterValues);
 		}
 		return null;
 	}
@@ -329,24 +277,18 @@ public class ClassgetGenFeatureTODOoverride
 		parameters.put("isGWT", this.isGWT);
 		parameters.put("publicStaticFinalFlag", this.publicStaticFinalFlag);
 		parameters.put("singleWildcard", this.singleWildcard);
-		parameters.put("negativeOffsetCorrection",
-				this.negativeOffsetCorrection);
-		parameters.put("positiveOffsetCorrection",
-				this.positiveOffsetCorrection);
-		parameters.put("negativeOperationOffsetCorrection",
-				this.negativeOperationOffsetCorrection);
-		parameters.put("positiveOperationOffsetCorrection",
-				this.positiveOperationOffsetCorrection);
+		parameters.put("negativeOffsetCorrection", this.negativeOffsetCorrection);
+		parameters.put("positiveOffsetCorrection", this.positiveOffsetCorrection);
+		parameters.put("negativeOperationOffsetCorrection", this.negativeOperationOffsetCorrection);
+		parameters.put("positiveOperationOffsetCorrection", this.positiveOperationOffsetCorrection);
 		return parameters;
 	}
 
-	protected void method_doGenerate(final StringBuffer stringBuffer,
-			final PatternContext ctx) throws Exception {
+	protected void method_doGenerate(final StringBuffer stringBuffer, final PatternContext ctx) throws Exception {
 
 		String derive = null;
 		EStructuralFeature eFeature = genFeature.getEcoreFeature();
-		if (genFeature.isDerived() && genFeature.isVolatile()
-				&& !genFeature.isChangeable()
+		if (genFeature.isDerived() && genFeature.isVolatile() && !genFeature.isChangeable()
 				&& genFeature.getEcoreFeature().isTransient()) { // Check if current feature is a derived property.
 			EAnnotation ocl = eFeature.getEAnnotation(oclNsURI);
 			if (ocl != null) {
@@ -356,12 +298,9 @@ public class ClassgetGenFeatureTODOoverride
 				final String expr = genFeature.getSafeName() + "DeriveOCL";
 				if (genFeature.isListType()) { // we will need the feature to create the EcoreEList 
 					stringBuffer.append(TEXT_1);
-					stringBuffer
-							.append(genModel
-									.getImportedName("org.eclipse.emf.ecore.EStructuralFeature"));
+					stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature"));
 					stringBuffer.append(TEXT_2);
-					stringBuffer.append(genFeature
-							.getQualifiedFeatureAccessor());
+					stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
 					stringBuffer.append(TEXT_3);
 				}
 				stringBuffer.append(TEXT_4);
@@ -369,54 +308,41 @@ public class ClassgetGenFeatureTODOoverride
 				stringBuffer.append(TEXT_5);
 				if (!genFeature.isListType()) { // declare locally for OCL initialization only 
 					stringBuffer.append(TEXT_6);
-					stringBuffer
-							.append(genModel
-									.getImportedName("org.eclipse.emf.ecore.EStructuralFeature"));
+					stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature"));
 					stringBuffer.append(TEXT_7);
-					stringBuffer.append(genFeature
-							.getQualifiedFeatureAccessor());
+					stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
 					stringBuffer.append(TEXT_8);
 				}
 				stringBuffer.append(TEXT_9);
-				stringBuffer.append(genModel
-						.getImportedName("org.eclipse.ocl.ecore.OCL.Helper"));
+				stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.ecore.OCL.Helper"));
 				stringBuffer.append(TEXT_10);
-				stringBuffer.append(genFeature.getGenClass()
-						.getQualifiedClassifierAccessor());
+				stringBuffer.append(genFeature.getGenClass().getQualifiedClassifierAccessor());
 				stringBuffer.append(TEXT_11);
-				stringBuffer.append(genModel
-						.getImportedName("org.eclipse.emf.ecore.EAnnotation"));
+				stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EAnnotation"));
 				stringBuffer.append(TEXT_12);
 				stringBuffer.append(genModel.getNonNLS());
 				stringBuffer.append(TEXT_13);
 				stringBuffer.append(expr);
 				stringBuffer.append(TEXT_14);
-				stringBuffer.append(genModel
-						.getImportedName("org.eclipse.ocl.ParserException"));
+				stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.ParserException"));
 				stringBuffer.append(TEXT_15);
-				stringBuffer.append(genModel
-						.getImportedName("org.eclipse.ocl.Query"));
+				stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.Query"));
 				stringBuffer.append(TEXT_16);
-				stringBuffer.append(genModel
-						.getImportedName("org.eclipse.emf.ecore.EClassifier"));
+				stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EClassifier"));
 				stringBuffer.append(TEXT_17);
 				stringBuffer.append(expr);
 				stringBuffer.append(TEXT_18);
 				if (genFeature.isListType()) {
 					stringBuffer.append(TEXT_19);
-					stringBuffer.append(genModel
-							.getImportedName("java.util.Collection"));
+					stringBuffer.append(genModel.getImportedName("java.util.Collection"));
 					stringBuffer.append(TEXT_20);
 					stringBuffer.append(genFeature.getListItemType());
 					stringBuffer.append(TEXT_21);
-					stringBuffer.append(genModel
-							.getImportedName("java.util.Collection"));
+					stringBuffer.append(genModel.getImportedName("java.util.Collection"));
 					stringBuffer.append(TEXT_22);
 					stringBuffer.append(genFeature.getListItemType());
 					stringBuffer.append(TEXT_23);
-					stringBuffer
-							.append(genModel
-									.getImportedName("org.eclipse.emf.ecore.util.EcoreEList"));
+					stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreEList"));
 					stringBuffer.append(TEXT_24);
 					stringBuffer.append(genFeature.getListItemType());
 					stringBuffer.append(TEXT_25);
@@ -433,73 +359,54 @@ public class ClassgetGenFeatureTODOoverride
 				}
 			} else {
 				// Check if the feature has the helper annotation.
-				EAnnotation annotationHelper = eFeature
-						.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+				EAnnotation annotationHelper = eFeature.getEAnnotation(
+						org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
 				if (null != annotationHelper) {
 					// Generate The helper framework code.
 					stringBuffer.append(TEXT_31);
 					stringBuffer.append(TEXT_32);
-					stringBuffer
-							.append(genModel
-									.getImportedName("org.polarsys.capella.common.model.helpers.IHelper"));
+					stringBuffer.append(genModel.getImportedName("org.polarsys.capella.common.model.helpers.IHelper"));
 					stringBuffer.append(TEXT_33);
-					stringBuffer
-							.append(genModel
-									.getImportedName("org.eclipse.core.runtime.IAdaptable"));
+					stringBuffer.append(genModel.getImportedName("org.eclipse.core.runtime.IAdaptable"));
 					stringBuffer.append(TEXT_34);
 					stringBuffer.append(TEXT_35);
-					stringBuffer
-							.append(genModel
-									.getImportedName("org.eclipse.core.runtime.IAdapterManager"));
+					stringBuffer.append(genModel.getImportedName("org.eclipse.core.runtime.IAdapterManager"));
 					stringBuffer.append(TEXT_36);
-					stringBuffer
-							.append(genModel
-									.getImportedName("org.eclipse.core.runtime.Platform"));
+					stringBuffer.append(genModel.getImportedName("org.eclipse.core.runtime.Platform"));
 					stringBuffer.append(TEXT_37);
 					stringBuffer.append(TEXT_38);
-					stringBuffer.append(genModel
-							.getImportedName("org.eclipse.emf.ecore.EPackage"));
+					stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EPackage"));
 					stringBuffer.append(TEXT_39);
 					stringBuffer.append(genModel.getNonNLS());
 					stringBuffer.append(TEXT_40);
 					stringBuffer.append(TEXT_41);
-					stringBuffer
-							.append(genModel
-									.getImportedName("org.eclipse.emf.ecore.EAnnotation"));
+					stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EAnnotation"));
 					stringBuffer.append(TEXT_42);
-					stringBuffer.append(genFeature
-							.getQualifiedFeatureAccessor());
+					stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
 					stringBuffer.append(TEXT_43);
-					stringBuffer.append(genFeature
-							.getQualifiedFeatureAccessor());
+					stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
 					stringBuffer.append(TEXT_44);
 					if (genFeature.isListType()) {
 						stringBuffer.append(TEXT_45);
-						stringBuffer.append(genModel
-								.getImportedName("java.util.Collection"));
+						stringBuffer.append(genModel.getImportedName("java.util.Collection"));
 						stringBuffer.append(TEXT_46);
 						stringBuffer.append(genFeature.getListItemType());
 						stringBuffer.append(TEXT_47);
-						stringBuffer.append(genModel
-								.getImportedName("java.util.Collection"));
+						stringBuffer.append(genModel.getImportedName("java.util.Collection"));
 						stringBuffer.append(TEXT_48);
 						stringBuffer.append(genFeature.getListItemType());
 						stringBuffer.append(TEXT_49);
-						stringBuffer
-								.append(genModel
-										.getImportedName("org.eclipse.emf.ecore.util.EcoreEList"));
+						stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreEList"));
 						stringBuffer.append(TEXT_50);
 						stringBuffer.append(genFeature.getListItemType());
 						stringBuffer.append(TEXT_51);
-						stringBuffer.append(genFeature
-								.getQualifiedFeatureAccessor());
+						stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
 						stringBuffer.append(TEXT_52);
 					} else if (genFeature.isPrimitiveType()) {
 						stringBuffer.append(TEXT_53);
 						stringBuffer.append(genFeature.getObjectType());
 						stringBuffer.append(TEXT_54);
-						stringBuffer.append(genFeature
-								.getPrimitiveValueFunction());
+						stringBuffer.append(genFeature.getPrimitiveValueFunction());
 						stringBuffer.append(TEXT_55);
 					} else {
 						stringBuffer.append(TEXT_56);
@@ -547,7 +454,6 @@ public class ClassgetGenFeatureTODOoverride
 			stringBuffer.append(TEXT_75);
 		}
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
-		new Node.DataLeaf(ictx.getNode(), getClass(), "doGenerate",
-				stringBuffer.toString());
+		new Node.DataLeaf(ictx.getNode(), getClass(), "doGenerate", stringBuffer.toString());
 	}
 }

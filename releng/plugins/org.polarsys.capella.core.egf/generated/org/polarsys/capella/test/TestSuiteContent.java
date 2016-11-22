@@ -1,4 +1,4 @@
-//Generated with EGF 1.2.0.v20140805-0858
+//Generated with EGF 1.4.1.v20161010-1511
 package org.polarsys.capella.test;
 
 import org.eclipse.egf.common.helper.*;
@@ -19,8 +19,7 @@ public class TestSuiteContent {
 		return result;
 	}
 
-	public final String NL = nl == null ? (System.getProperties()
-			.getProperty("line.separator")) : nl;
+	public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
 	protected final String TEXT_1 = "    tests.add(new Test_";
 	protected final String TEXT_2 = "(this));" + NL;
 	protected final String TEXT_3 = NL;
@@ -42,11 +41,9 @@ public class TestSuiteContent {
 		IQuery.ParameterDescription paramDesc = null;
 		Node.Container currentNode = ctx.getNode();
 
-		paramDesc = new IQuery.ParameterDescription("genClass",
-				"http://www.eclipse.org/emf/2002/GenModel#//GenClass");
+		paramDesc = new IQuery.ParameterDescription("genClass", "http://www.eclipse.org/emf/2002/GenModel#//GenClass");
 		queryCtx = new HashMap<String, String>();
-		List<Object> genClassList = QueryHelper.load(ctx,
-				"org.eclipse.egf.pattern.query.EObjectInjectedContextQuery")
+		List<Object> genClassList = QueryHelper.load(ctx, "org.eclipse.egf.pattern.query.EObjectInjectedContextQuery")
 				.execute(paramDesc, queryCtx, ctx);
 
 		for (Object genClassParameter : genClassList) {
@@ -61,8 +58,7 @@ public class TestSuiteContent {
 		}
 		ctx.setNode(currentNode);
 		if (ctx.useReporter()) {
-			ctx.getReporter().executionFinished(
-					OutputManager.computeExecutionOutput(ctx), ctx);
+			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
 		stringBuffer.append(TEXT_3);
@@ -80,8 +76,7 @@ public class TestSuiteContent {
 			parameterValues.put("genClass", this.genClass);
 			String outputWithCallBack = OutputManager.computeLoopOutput(ictx);
 			String loop = OutputManager.computeLoopOutputWithoutCallback(ictx);
-			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx,
-					parameterValues);
+			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx, parameterValues);
 		}
 		return null;
 	}
@@ -94,8 +89,7 @@ public class TestSuiteContent {
 
 	protected org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass = null;
 
-	public void set_genClass(
-			org.eclipse.emf.codegen.ecore.genmodel.GenClass object) {
+	public void set_genClass(org.eclipse.emf.codegen.ecore.genmodel.GenClass object) {
 		this.genClass = object;
 	}
 
@@ -105,15 +99,13 @@ public class TestSuiteContent {
 		return parameters;
 	}
 
-	protected void method_generateContent(final StringBuffer stringBuffer,
-			final PatternContext ctx) throws Exception {
+	protected void method_generateContent(final StringBuffer stringBuffer, final PatternContext ctx) throws Exception {
 
 		stringBuffer.append(TEXT_1);
 		stringBuffer.append(genClass.getEcoreClass().getName());
 		stringBuffer.append(TEXT_2);
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
-		new Node.DataLeaf(ictx.getNode(), getClass(), "generateContent",
-				stringBuffer.toString());
+		new Node.DataLeaf(ictx.getNode(), getClass(), "generateContent", stringBuffer.toString());
 	}
 
 	public boolean preCondition(PatternContext ctx) throws Exception {
@@ -121,8 +113,7 @@ public class TestSuiteContent {
 
 		if (!genClass.isAbstract()) {
 			EClass eclass = genClass.getEcoreClass();
-			EAnnotation annotation = eclass
-					.getEAnnotation("http://www.eclipse.org/emf/2002/GenModel");
+			EAnnotation annotation = eclass.getEAnnotation("http://www.eclipse.org/emf/2002/GenModel");
 			if (annotation != null) {
 				EMap<String, String> details = annotation.getDetails();
 				String value = details.get("documentation");
@@ -134,8 +125,7 @@ public class TestSuiteContent {
 			if (null != eclassCondition) {
 				for (EClass superClass : eclass.getEAllSuperTypes()) {
 					String superClassName = superClass.getName();
-					if ((superClassName != null)
-							&& superClassName.equalsIgnoreCase(eclassCondition)) {
+					if ((superClassName != null) && superClassName.equalsIgnoreCase(eclassCondition)) {
 						return true;
 					}
 				}

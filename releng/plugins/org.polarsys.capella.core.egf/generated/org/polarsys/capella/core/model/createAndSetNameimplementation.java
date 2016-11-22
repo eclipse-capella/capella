@@ -1,4 +1,4 @@
-//Generated with EGF 1.2.0.v20140805-0858
+//Generated with EGF 1.4.1.v20161010-1511
 package org.polarsys.capella.core.model;
 
 import org.eclipse.egf.common.helper.*;
@@ -11,30 +11,21 @@ import org.eclipse.egf.pattern.query.*;
 public class createAndSetNameimplementation {
 	protected static String nl;
 
-	public static synchronized createAndSetNameimplementation create(
-			String lineSeparator) {
+	public static synchronized createAndSetNameimplementation create(String lineSeparator) {
 		nl = lineSeparator;
 		createAndSetNameimplementation result = new createAndSetNameimplementation();
 		nl = null;
 		return result;
 	}
 
-	public final String NL = nl == null ? (System.getProperties()
-			.getProperty("line.separator")) : nl;
+	public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
 	protected final String TEXT_1 = "\t";
-	protected final String TEXT_2 = "\t"
-			+ NL
-			+ "\t/**"
-			+ NL
-			+ "\t * Creates class and sets its name"
-			+ NL
-			+ "\t * (This method comes from a customization of the standard EMF generator)"
-			+ NL + "\t *" + NL
-			+ "\t * @param name_p : default name of created element" + NL
-			+ "\t * @generated" + NL + "\t */" + NL + "\tpublic ";
+	protected final String TEXT_2 = "\t" + NL + "\t/**" + NL + "\t * Creates class and sets its name" + NL
+			+ "\t * (This method comes from a customization of the standard EMF generator)" + NL + "\t *" + NL
+			+ "\t * @param name_p : default name of created element" + NL + "\t * @generated" + NL + "\t */" + NL
+			+ "\tpublic ";
 	protected final String TEXT_3 = " create";
-	protected final String TEXT_4 = "(String name_p)" + NL + "\t{" + NL
-			+ "\t  ";
+	protected final String TEXT_4 = "(String name_p)" + NL + "\t{" + NL + "\t  ";
 	protected final String TEXT_5 = " ";
 	protected final String TEXT_6 = " = create";
 	protected final String TEXT_7 = "();" + NL + "\t\t";
@@ -80,8 +71,7 @@ public class createAndSetNameimplementation {
 		}
 		ctx.setNode(currentNode);
 		if (ctx.useReporter()) {
-			ctx.getReporter().executionFinished(
-					OutputManager.computeExecutionOutput(ctx), ctx);
+			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
 		stringBuffer.append(TEXT_11);
@@ -100,23 +90,20 @@ public class createAndSetNameimplementation {
 			parameterValues.put("namingAttribute", this.namingAttribute);
 			String outputWithCallBack = OutputManager.computeLoopOutput(ictx);
 			String loop = OutputManager.computeLoopOutputWithoutCallback(ictx);
-			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx,
-					parameterValues);
+			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx, parameterValues);
 		}
 		return null;
 	}
 
 	protected org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass = null;
 
-	public void set_genClass(
-			org.eclipse.emf.codegen.ecore.genmodel.GenClass object) {
+	public void set_genClass(org.eclipse.emf.codegen.ecore.genmodel.GenClass object) {
 		this.genClass = object;
 	}
 
 	protected org.eclipse.emf.codegen.ecore.genmodel.GenFeature namingAttribute = null;
 
-	public void set_namingAttribute(
-			org.eclipse.emf.codegen.ecore.genmodel.GenFeature object) {
+	public void set_namingAttribute(org.eclipse.emf.codegen.ecore.genmodel.GenFeature object) {
 		this.namingAttribute = object;
 	}
 
@@ -127,8 +114,7 @@ public class createAndSetNameimplementation {
 		return parameters;
 	}
 
-	protected void method_body(final StringBuffer stringBuffer,
-			final PatternContext ctx) throws Exception {
+	protected void method_body(final StringBuffer stringBuffer, final PatternContext ctx) throws Exception {
 
 		//IN : GenClass genClass
 		stringBuffer.append(TEXT_1);
@@ -155,8 +141,7 @@ public class createAndSetNameimplementation {
 		stringBuffer.append(genClass.getSafeUncapName());
 		stringBuffer.append(TEXT_10);
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
-		new Node.DataLeaf(ictx.getNode(), getClass(), "body",
-				stringBuffer.toString());
+		new Node.DataLeaf(ictx.getNode(), getClass(), "body", stringBuffer.toString());
 	}
 
 	public boolean preCondition(PatternContext ctx) throws Exception {

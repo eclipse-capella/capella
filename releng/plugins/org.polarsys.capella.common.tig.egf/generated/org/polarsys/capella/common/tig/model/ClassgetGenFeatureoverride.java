@@ -1,4 +1,4 @@
-//Generated with EGF 1.2.0.v20140805-0858
+//Generated with EGF 1.4.1.v20161010-1511
 package org.polarsys.capella.common.tig.model;
 
 import org.eclipse.egf.emf.pattern.base.*;
@@ -15,25 +15,21 @@ import org.eclipse.egf.model.pattern.*;
 import org.eclipse.egf.pattern.execution.*;
 import org.eclipse.egf.pattern.query.*;
 
-public class ClassgetGenFeatureoverride extends
-		org.eclipse.egf.emf.pattern.model.call.Class.ClassgetGenFeatureoverride {
+public class ClassgetGenFeatureoverride
+		extends org.eclipse.egf.emf.pattern.model.call.Class.ClassgetGenFeatureoverride {
 	protected static String nl;
 
-	public static synchronized ClassgetGenFeatureoverride create(
-			String lineSeparator) {
+	public static synchronized ClassgetGenFeatureoverride create(String lineSeparator) {
 		nl = lineSeparator;
 		ClassgetGenFeatureoverride result = new ClassgetGenFeatureoverride();
 		nl = null;
 		return result;
 	}
 
-	public final String NL = nl == null ? (System.getProperties()
-			.getProperty("line.separator")) : nl;
+	public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
 	protected final String TEXT_1 = "";
-	protected final String TEXT_2 = NL + "\t/**" + NL
-			+ "\t * <!-- begin-user-doc -->" + NL
-			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
-			+ "\t */";
+	protected final String TEXT_2 = NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL
+			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */";
 	protected final String TEXT_3 = NL;
 	protected final String TEXT_4 = NL + "\t";
 	protected final String TEXT_5 = " ";
@@ -99,8 +95,7 @@ public class ClassgetGenFeatureoverride extends
 	protected final String TEXT_65 = ");";
 	protected final String TEXT_66 = NL + "\t\tif (";
 	protected final String TEXT_67 = " != null && ";
-	protected final String TEXT_68 = ".eIsProxy())" + NL + "\t\t{" + NL
-			+ "\t\t\t";
+	protected final String TEXT_68 = ".eIsProxy())" + NL + "\t\t{" + NL + "\t\t\t";
 	protected final String TEXT_69 = " old";
 	protected final String TEXT_70 = " = (";
 	protected final String TEXT_71 = ")";
@@ -125,8 +120,7 @@ public class ClassgetGenFeatureoverride extends
 	protected final String TEXT_90 = ", ";
 	protected final String TEXT_91 = ".class, null);";
 	protected final String TEXT_92 = NL + "\t\t\t\tif (new";
-	protected final String TEXT_93 = ".eInternalContainer() == null)" + NL
-			+ "\t\t\t\t{";
+	protected final String TEXT_93 = ".eInternalContainer() == null)" + NL + "\t\t\t\t{";
 	protected final String TEXT_94 = NL + "\t\t\t\t\tmsgs = new";
 	protected final String TEXT_95 = ".eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ";
 	protected final String TEXT_96 = ", null, msgs);";
@@ -134,14 +128,11 @@ public class ClassgetGenFeatureoverride extends
 	protected final String TEXT_98 = ".eInverseAdd(this, ";
 	protected final String TEXT_99 = ", ";
 	protected final String TEXT_100 = ".class, msgs);";
-	protected final String TEXT_101 = NL + "\t\t\t\t}" + NL
-			+ "\t\t\t\tif (msgs != null) msgs.dispatch();";
+	protected final String TEXT_101 = NL + "\t\t\t\t}" + NL + "\t\t\t\tif (msgs != null) msgs.dispatch();";
 	protected final String TEXT_102 = NL + "\t\t\t\teVirtualSet(";
 	protected final String TEXT_103 = ", ";
 	protected final String TEXT_104 = ");";
-	protected final String TEXT_105 = NL
-			+ "\t\t\t\tif (eNotificationRequired())" + NL
-			+ "\t\t\t\t\teNotify(new ";
+	protected final String TEXT_105 = NL + "\t\t\t\tif (eNotificationRequired())" + NL + "\t\t\t\t\teNotify(new ";
 	protected final String TEXT_106 = "(this, ";
 	protected final String TEXT_107 = ".RESOLVE, ";
 	protected final String TEXT_108 = ", old";
@@ -294,8 +285,7 @@ public class ClassgetGenFeatureoverride extends
 																this.positiveOperationOffsetCorrection = (java.lang.String) positiveOperationOffsetCorrectionParameter;
 
 																if (preCondition(ctx)) {
-																	ctx.setNode(new Node.Container(
-																			currentNode,
+																	ctx.setNode(new Node.Container(currentNode,
 																			getClass()));
 																	orchestration(ctx);
 																}
@@ -316,8 +306,7 @@ public class ClassgetGenFeatureoverride extends
 		}
 		ctx.setNode(currentNode);
 		if (ctx.useReporter()) {
-			ctx.getReporter().executionFinished(
-					OutputManager.computeExecutionOutput(ctx), ctx);
+			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
 		stringBuffer.append(TEXT_179);
@@ -340,21 +329,15 @@ public class ClassgetGenFeatureoverride extends
 			parameterValues.put("isInterface", this.isInterface);
 			parameterValues.put("isImplementation", this.isImplementation);
 			parameterValues.put("isGWT", this.isGWT);
-			parameterValues.put("publicStaticFinalFlag",
-					this.publicStaticFinalFlag);
+			parameterValues.put("publicStaticFinalFlag", this.publicStaticFinalFlag);
 			parameterValues.put("singleWildcard", this.singleWildcard);
-			parameterValues.put("negativeOffsetCorrection",
-					this.negativeOffsetCorrection);
-			parameterValues.put("positiveOffsetCorrection",
-					this.positiveOffsetCorrection);
-			parameterValues.put("negativeOperationOffsetCorrection",
-					this.negativeOperationOffsetCorrection);
-			parameterValues.put("positiveOperationOffsetCorrection",
-					this.positiveOperationOffsetCorrection);
+			parameterValues.put("negativeOffsetCorrection", this.negativeOffsetCorrection);
+			parameterValues.put("positiveOffsetCorrection", this.positiveOffsetCorrection);
+			parameterValues.put("negativeOperationOffsetCorrection", this.negativeOperationOffsetCorrection);
+			parameterValues.put("positiveOperationOffsetCorrection", this.positiveOperationOffsetCorrection);
 			String outputWithCallBack = OutputManager.computeLoopOutput(ictx);
 			String loop = OutputManager.computeLoopOutputWithoutCallback(ictx);
-			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx,
-					parameterValues);
+			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx, parameterValues);
 		}
 		return null;
 	}
@@ -371,19 +354,14 @@ public class ClassgetGenFeatureoverride extends
 		parameters.put("isGWT", this.isGWT);
 		parameters.put("publicStaticFinalFlag", this.publicStaticFinalFlag);
 		parameters.put("singleWildcard", this.singleWildcard);
-		parameters.put("negativeOffsetCorrection",
-				this.negativeOffsetCorrection);
-		parameters.put("positiveOffsetCorrection",
-				this.positiveOffsetCorrection);
-		parameters.put("negativeOperationOffsetCorrection",
-				this.negativeOperationOffsetCorrection);
-		parameters.put("positiveOperationOffsetCorrection",
-				this.positiveOperationOffsetCorrection);
+		parameters.put("negativeOffsetCorrection", this.negativeOffsetCorrection);
+		parameters.put("positiveOffsetCorrection", this.positiveOffsetCorrection);
+		parameters.put("negativeOperationOffsetCorrection", this.negativeOperationOffsetCorrection);
+		parameters.put("positiveOperationOffsetCorrection", this.positiveOperationOffsetCorrection);
 		return parameters;
 	}
 
-	protected void method_doGenerate(final StringBuffer stringBuffer,
-			final PatternContext ctx) throws Exception {
+	protected void method_doGenerate(final StringBuffer stringBuffer, final PatternContext ctx) throws Exception {
 
 		if (isInterface) {
 			stringBuffer.append(TEXT_1);
@@ -391,8 +369,7 @@ public class ClassgetGenFeatureoverride extends
 				//<%@ egf:patternCall patternId="platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#LogicalName=org.eclipse.egf.emf.pattern.model.call.Class.Class.getGenFeature.javadoc.override" args="genFeature:genFeature,genClass:genClass,genPackage:genPackage,genModel:genModel,isJDK50:isJDK50,isInterface:isInterface,isImplementation:isImplementation,isGWT:isGWT,publicStaticFinalFlag:publicStaticFinalFlag,singleWildcard:singleWildcard,negativeOffsetCorrection:negativeOffsetCorrection,positiveOffsetCorrection:positiveOffsetCorrection,negativeOperationOffsetCorrection:negativeOperationOffsetCorrection,positiveOperationOffsetCorrection:positiveOperationOffsetCorrection"%>
 
 				InternalPatternContext ictx = (InternalPatternContext) ctx;
-				new Node.DataLeaf(ictx.getNode(), getClass(), null,
-						stringBuffer.toString());
+				new Node.DataLeaf(ictx.getNode(), getClass(), null, stringBuffer.toString());
 				stringBuffer.setLength(0);
 
 				final Map<String, Object> callParameters = new HashMap<String, Object>();
@@ -404,23 +381,15 @@ public class ClassgetGenFeatureoverride extends
 				callParameters.put("isInterface", isInterface);
 				callParameters.put("isImplementation", isImplementation);
 				callParameters.put("isGWT", isGWT);
-				callParameters.put("publicStaticFinalFlag",
-						publicStaticFinalFlag);
+				callParameters.put("publicStaticFinalFlag", publicStaticFinalFlag);
 				callParameters.put("singleWildcard", singleWildcard);
-				callParameters.put("negativeOffsetCorrection",
-						negativeOffsetCorrection);
-				callParameters.put("positiveOffsetCorrection",
-						positiveOffsetCorrection);
-				callParameters.put("negativeOperationOffsetCorrection",
-						negativeOperationOffsetCorrection);
-				callParameters.put("positiveOperationOffsetCorrection",
-						positiveOperationOffsetCorrection);
-				CallHelper
-						.executeWithParameterInjection(
-								"platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0kroEGJ-Ed-FqczH3ESmRw",
-								new ExecutionContext(
-										(InternalPatternContext) ctx),
-								callParameters);
+				callParameters.put("negativeOffsetCorrection", negativeOffsetCorrection);
+				callParameters.put("positiveOffsetCorrection", positiveOffsetCorrection);
+				callParameters.put("negativeOperationOffsetCorrection", negativeOperationOffsetCorrection);
+				callParameters.put("positiveOperationOffsetCorrection", positiveOperationOffsetCorrection);
+				CallHelper.executeWithParameterInjection(
+						"platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0kroEGJ-Ed-FqczH3ESmRw",
+						new ExecutionContext((InternalPatternContext) ctx), callParameters);
 				stringBuffer.setLength(0);
 			}
 
@@ -433,8 +402,7 @@ public class ClassgetGenFeatureoverride extends
 					//<%@ egf:patternCall patternId="platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#LogicalName=org.eclipse.egf.emf.pattern.model.call.Class.Class.getGenFeature.annotations.insert" args="genFeature:genFeature,genClass:genClass,genPackage:genPackage,genModel:genModel,isJDK50:isJDK50,isInterface:isInterface,isImplementation:isImplementation,isGWT:isGWT,publicStaticFinalFlag:publicStaticFinalFlag,singleWildcard:singleWildcard,negativeOffsetCorrection:negativeOffsetCorrection,positiveOffsetCorrection:positiveOffsetCorrection,negativeOperationOffsetCorrection:negativeOperationOffsetCorrection,positiveOperationOffsetCorrection:positiveOperationOffsetCorrection"%>
 
 					InternalPatternContext ictx = (InternalPatternContext) ctx;
-					new Node.DataLeaf(ictx.getNode(), getClass(), null,
-							stringBuffer.toString());
+					new Node.DataLeaf(ictx.getNode(), getClass(), null, stringBuffer.toString());
 					stringBuffer.setLength(0);
 
 					final Map<String, Object> callParameters = new HashMap<String, Object>();
@@ -446,23 +414,15 @@ public class ClassgetGenFeatureoverride extends
 					callParameters.put("isInterface", isInterface);
 					callParameters.put("isImplementation", isImplementation);
 					callParameters.put("isGWT", isGWT);
-					callParameters.put("publicStaticFinalFlag",
-							publicStaticFinalFlag);
+					callParameters.put("publicStaticFinalFlag", publicStaticFinalFlag);
 					callParameters.put("singleWildcard", singleWildcard);
-					callParameters.put("negativeOffsetCorrection",
-							negativeOffsetCorrection);
-					callParameters.put("positiveOffsetCorrection",
-							positiveOffsetCorrection);
-					callParameters.put("negativeOperationOffsetCorrection",
-							negativeOperationOffsetCorrection);
-					callParameters.put("positiveOperationOffsetCorrection",
-							positiveOperationOffsetCorrection);
-					CallHelper
-							.executeWithParameterInjection(
-									"platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0lIUFGJ-Ed-FqczH3ESmRw",
-									new ExecutionContext(
-											(InternalPatternContext) ctx),
-									callParameters);
+					callParameters.put("negativeOffsetCorrection", negativeOffsetCorrection);
+					callParameters.put("positiveOffsetCorrection", positiveOffsetCorrection);
+					callParameters.put("negativeOperationOffsetCorrection", negativeOperationOffsetCorrection);
+					callParameters.put("positiveOperationOffsetCorrection", positiveOperationOffsetCorrection);
+					CallHelper.executeWithParameterInjection(
+							"platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0lIUFGJ-Ed-FqczH3ESmRw",
+							new ExecutionContext((InternalPatternContext) ctx), callParameters);
 					stringBuffer.setLength(0);
 				}
 
@@ -476,20 +436,14 @@ public class ClassgetGenFeatureoverride extends
 			stringBuffer.append(TEXT_6);
 		} else {
 			if (genModel.useGenerics()
-					&& ((genFeature.isContainer() || genFeature
-							.isResolveProxies())
-							&& !genFeature.isListType()
-							&& !(genModel.isReflectiveDelegation() && genModel
-									.isDynamicDelegation())
+					&& ((genFeature.isContainer() || genFeature.isResolveProxies()) && !genFeature.isListType()
+							&& !(genModel.isReflectiveDelegation() && genModel.isDynamicDelegation())
 							&& genFeature.isUncheckedCast(genClass)
-							|| genFeature.isListType()
-							&& !genFeature.isFeatureMapType()
-							&& (genModel.isReflectiveDelegation()
-									|| genModel.isVirtualDelegation() || genModel
-										.isDynamicDelegation())
-							|| genFeature.isListDataType()
-							&& genFeature.hasDelegateFeature() || genFeature
-							.isListType() && genFeature.hasSettingDelegate())) {
+							|| genFeature.isListType() && !genFeature.isFeatureMapType()
+									&& (genModel.isReflectiveDelegation() || genModel.isVirtualDelegation()
+											|| genModel.isDynamicDelegation())
+							|| genFeature.isListDataType() && genFeature.hasDelegateFeature()
+							|| genFeature.isListType() && genFeature.hasSettingDelegate())) {
 				stringBuffer.append(TEXT_7);
 			}
 			stringBuffer.append(TEXT_8);
@@ -505,8 +459,7 @@ public class ClassgetGenFeatureoverride extends
 				//<%@ egf:patternCall patternId="platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#LogicalName=org.eclipse.egf.emf.pattern.model.call.Class.Class.getGenFeature.pre.insert" args="genFeature:genFeature,genClass:genClass,genPackage:genPackage,genModel:genModel,isJDK50:isJDK50,isInterface:isInterface,isImplementation:isImplementation,isGWT:isGWT,publicStaticFinalFlag:publicStaticFinalFlag,singleWildcard:singleWildcard,negativeOffsetCorrection:negativeOffsetCorrection,positiveOffsetCorrection:positiveOffsetCorrection,negativeOperationOffsetCorrection:negativeOperationOffsetCorrection,positiveOperationOffsetCorrection:positiveOperationOffsetCorrection"%>
 
 				InternalPatternContext ictx = (InternalPatternContext) ctx;
-				new Node.DataLeaf(ictx.getNode(), getClass(), null,
-						stringBuffer.toString());
+				new Node.DataLeaf(ictx.getNode(), getClass(), null, stringBuffer.toString());
 				stringBuffer.setLength(0);
 
 				final Map<String, Object> callParameters = new HashMap<String, Object>();
@@ -518,29 +471,20 @@ public class ClassgetGenFeatureoverride extends
 				callParameters.put("isInterface", isInterface);
 				callParameters.put("isImplementation", isImplementation);
 				callParameters.put("isGWT", isGWT);
-				callParameters.put("publicStaticFinalFlag",
-						publicStaticFinalFlag);
+				callParameters.put("publicStaticFinalFlag", publicStaticFinalFlag);
 				callParameters.put("singleWildcard", singleWildcard);
-				callParameters.put("negativeOffsetCorrection",
-						negativeOffsetCorrection);
-				callParameters.put("positiveOffsetCorrection",
-						positiveOffsetCorrection);
-				callParameters.put("negativeOperationOffsetCorrection",
-						negativeOperationOffsetCorrection);
-				callParameters.put("positiveOperationOffsetCorrection",
-						positiveOperationOffsetCorrection);
-				CallHelper
-						.executeWithParameterInjection(
-								"platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0lSFDGJ-Ed-FqczH3ESmRw",
-								new ExecutionContext(
-										(InternalPatternContext) ctx),
-								callParameters);
+				callParameters.put("negativeOffsetCorrection", negativeOffsetCorrection);
+				callParameters.put("positiveOffsetCorrection", positiveOffsetCorrection);
+				callParameters.put("negativeOperationOffsetCorrection", negativeOperationOffsetCorrection);
+				callParameters.put("positiveOperationOffsetCorrection", positiveOperationOffsetCorrection);
+				CallHelper.executeWithParameterInjection(
+						"platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0lSFDGJ-Ed-FqczH3ESmRw",
+						new ExecutionContext((InternalPatternContext) ctx), callParameters);
 				stringBuffer.setLength(0);
 			}
 
 			if (genModel.isDynamicDelegation()) {
-				if (genFeature.isDerived() && genFeature.isVolatile()
-						&& !genFeature.isChangeable()
+				if (genFeature.isDerived() && genFeature.isVolatile() && !genFeature.isChangeable()
 						&& genFeature.getEcoreFeature().isTransient()) { // Check if current feature is a derived property.
 					// begin-CDO
 					stringBuffer.append(TEXT_13);
@@ -548,8 +492,7 @@ public class ClassgetGenFeatureoverride extends
 						//<%@ egf:patternCall patternId="platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#LogicalName=org.eclipse.egf.emf.pattern.model.call.Class.Class.getGenFeature.TODO.override" args="genFeature:genFeature,genClass:genClass,genPackage:genPackage,genModel:genModel,isInterface:isInterface,isImplementation:isImplementation,publicStaticFinalFlag:publicStaticFinalFlag,singleWildcard:singleWildcard,negativeOffsetCorrection:negativeOffsetCorrection,positiveOffsetCorrection:positiveOffsetCorrection"%>
 
 						InternalPatternContext ictx = (InternalPatternContext) ctx;
-						new Node.DataLeaf(ictx.getNode(), getClass(), null,
-								stringBuffer.toString());
+						new Node.DataLeaf(ictx.getNode(), getClass(), null, stringBuffer.toString());
 						stringBuffer.setLength(0);
 
 						final Map<String, Object> callParameters = new HashMap<String, Object>();
@@ -558,21 +501,14 @@ public class ClassgetGenFeatureoverride extends
 						callParameters.put("genPackage", genPackage);
 						callParameters.put("genModel", genModel);
 						callParameters.put("isInterface", isInterface);
-						callParameters
-								.put("isImplementation", isImplementation);
-						callParameters.put("publicStaticFinalFlag",
-								publicStaticFinalFlag);
+						callParameters.put("isImplementation", isImplementation);
+						callParameters.put("publicStaticFinalFlag", publicStaticFinalFlag);
 						callParameters.put("singleWildcard", singleWildcard);
-						callParameters.put("negativeOffsetCorrection",
-								negativeOffsetCorrection);
-						callParameters.put("positiveOffsetCorrection",
-								positiveOffsetCorrection);
-						CallHelper
-								.executeWithParameterInjection(
-										"platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0lbPAWJ-Ed-FqczH3ESmRw",
-										new ExecutionContext(
-												(InternalPatternContext) ctx),
-										callParameters);
+						callParameters.put("negativeOffsetCorrection", negativeOffsetCorrection);
+						callParameters.put("positiveOffsetCorrection", positiveOffsetCorrection);
+						CallHelper.executeWithParameterInjection(
+								"platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0lbPAWJ-Ed-FqczH3ESmRw",
+								new ExecutionContext((InternalPatternContext) ctx), callParameters);
 						stringBuffer.setLength(0);
 					}
 
@@ -585,26 +521,21 @@ public class ClassgetGenFeatureoverride extends
 					stringBuffer.append(TEXT_16);
 					stringBuffer.append(genFeature.getObjectType(genClass));
 					stringBuffer.append(TEXT_17);
-					stringBuffer.append(genClass
-							.getQualifiedFeatureID(genFeature));
+					stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
 					stringBuffer.append(TEXT_18);
-					stringBuffer.append(genFeature
-							.getQualifiedFeatureAccessor());
+					stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
 					stringBuffer.append(TEXT_19);
-					stringBuffer.append(!genFeature
-							.isEffectiveSuppressEMFTypes());
+					stringBuffer.append(!genFeature.isEffectiveSuppressEMFTypes());
 					stringBuffer.append(TEXT_20);
 					if (!isJDK50 && genFeature.isPrimitiveType()) {
 						stringBuffer.append(TEXT_21);
-						stringBuffer.append(genFeature
-								.getPrimitiveValueFunction());
+						stringBuffer.append(genFeature.getPrimitiveValueFunction());
 						stringBuffer.append(TEXT_22);
 					}
 					stringBuffer.append(TEXT_23);
 				}
 			} else if (genModel.isReflectiveDelegation()) {
-				if (genFeature.isDerived() && genFeature.isVolatile()
-						&& !genFeature.isChangeable()
+				if (genFeature.isDerived() && genFeature.isVolatile() && !genFeature.isChangeable()
 						&& genFeature.getEcoreFeature().isTransient()) { // Check if current feature is a derived property.
 					// begin-CDO
 					stringBuffer.append(TEXT_24);
@@ -612,8 +543,7 @@ public class ClassgetGenFeatureoverride extends
 						//<%@ egf:patternCall patternId="platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#LogicalName=org.eclipse.egf.emf.pattern.model.call.Class.Class.getGenFeature.TODO.override" args="genFeature:genFeature,genClass:genClass,genPackage:genPackage,genModel:genModel,isInterface:isInterface,isImplementation:isImplementation,publicStaticFinalFlag:publicStaticFinalFlag,singleWildcard:singleWildcard,negativeOffsetCorrection:negativeOffsetCorrection,positiveOffsetCorrection:positiveOffsetCorrection"%>
 
 						InternalPatternContext ictx = (InternalPatternContext) ctx;
-						new Node.DataLeaf(ictx.getNode(), getClass(), null,
-								stringBuffer.toString());
+						new Node.DataLeaf(ictx.getNode(), getClass(), null, stringBuffer.toString());
 						stringBuffer.setLength(0);
 
 						final Map<String, Object> callParameters = new HashMap<String, Object>();
@@ -622,21 +552,14 @@ public class ClassgetGenFeatureoverride extends
 						callParameters.put("genPackage", genPackage);
 						callParameters.put("genModel", genModel);
 						callParameters.put("isInterface", isInterface);
-						callParameters
-								.put("isImplementation", isImplementation);
-						callParameters.put("publicStaticFinalFlag",
-								publicStaticFinalFlag);
+						callParameters.put("isImplementation", isImplementation);
+						callParameters.put("publicStaticFinalFlag", publicStaticFinalFlag);
 						callParameters.put("singleWildcard", singleWildcard);
-						callParameters.put("negativeOffsetCorrection",
-								negativeOffsetCorrection);
-						callParameters.put("positiveOffsetCorrection",
-								positiveOffsetCorrection);
-						CallHelper
-								.executeWithParameterInjection(
-										"platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0lbPAWJ-Ed-FqczH3ESmRw",
-										new ExecutionContext(
-												(InternalPatternContext) ctx),
-										callParameters);
+						callParameters.put("negativeOffsetCorrection", negativeOffsetCorrection);
+						callParameters.put("positiveOffsetCorrection", positiveOffsetCorrection);
+						CallHelper.executeWithParameterInjection(
+								"platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0lbPAWJ-Ed-FqczH3ESmRw",
+								new ExecutionContext((InternalPatternContext) ctx), callParameters);
 						stringBuffer.setLength(0);
 					}
 
@@ -649,13 +572,11 @@ public class ClassgetGenFeatureoverride extends
 					stringBuffer.append(TEXT_27);
 					stringBuffer.append(genFeature.getObjectType(genClass));
 					stringBuffer.append(TEXT_28);
-					stringBuffer.append(genFeature
-							.getQualifiedFeatureAccessor());
+					stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
 					stringBuffer.append(TEXT_29);
 					if (!isJDK50 && genFeature.isPrimitiveType()) {
 						stringBuffer.append(TEXT_30);
-						stringBuffer.append(genFeature
-								.getPrimitiveValueFunction());
+						stringBuffer.append(genFeature.getPrimitiveValueFunction());
 						stringBuffer.append(TEXT_31);
 					}
 					stringBuffer.append(TEXT_32);
@@ -680,16 +601,13 @@ public class ClassgetGenFeatureoverride extends
 				if (genFeature.isListType()) {
 					if (genModel.isVirtualDelegation()) {
 						stringBuffer.append(TEXT_41);
-						stringBuffer.append(genFeature
-								.getImportedType(genClass));
+						stringBuffer.append(genFeature.getImportedType(genClass));
 						stringBuffer.append(TEXT_42);
 						stringBuffer.append(genFeature.getSafeName());
 						stringBuffer.append(TEXT_43);
-						stringBuffer.append(genFeature
-								.getImportedType(genClass));
+						stringBuffer.append(genFeature.getImportedType(genClass));
 						stringBuffer.append(TEXT_44);
-						stringBuffer.append(genClass
-								.getQualifiedFeatureID(genFeature));
+						stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
 						stringBuffer.append(positiveOffsetCorrection);
 						stringBuffer.append(TEXT_45);
 					}
@@ -698,34 +616,28 @@ public class ClassgetGenFeatureoverride extends
 					stringBuffer.append(TEXT_47);
 					if (genModel.isVirtualDelegation()) {
 						stringBuffer.append(TEXT_48);
-						stringBuffer.append(genClass
-								.getQualifiedFeatureID(genFeature));
+						stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
 						stringBuffer.append(positiveOffsetCorrection);
 						stringBuffer.append(TEXT_49);
 						stringBuffer.append(genFeature.getSafeName());
 						stringBuffer.append(TEXT_50);
-						stringBuffer.append(genClass
-								.getListConstructor(genFeature));
+						stringBuffer.append(genClass.getListConstructor(genFeature));
 						stringBuffer.append(TEXT_51);
 					} else {
 						stringBuffer.append(TEXT_52);
 						stringBuffer.append(genFeature.getSafeName());
 						stringBuffer.append(TEXT_53);
-						stringBuffer.append(genClass
-								.getListConstructor(genFeature));
+						stringBuffer.append(genClass.getListConstructor(genFeature));
 						stringBuffer.append(TEXT_54);
 					}
 					stringBuffer.append(TEXT_55);
 					stringBuffer.append(genFeature.getSafeName());
 					stringBuffer
-							.append(genFeature.isMapType()
-									&& genFeature.isEffectiveSuppressEMFTypes() ? ".map()"
-									: "");
+							.append(genFeature.isMapType() && genFeature.isEffectiveSuppressEMFTypes() ? ".map()" : "");
 					stringBuffer.append(TEXT_56);
 				} else if (genFeature.isContainer()) {
 					stringBuffer.append(TEXT_57);
-					stringBuffer.append(genClass
-							.getQualifiedFeatureID(genFeature));
+					stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
 					stringBuffer.append(positiveOffsetCorrection);
 					stringBuffer.append(TEXT_58);
 					stringBuffer.append(genFeature.getImportedType(genClass));
@@ -734,16 +646,13 @@ public class ClassgetGenFeatureoverride extends
 					if (genFeature.isResolveProxies()) {
 						if (genModel.isVirtualDelegation()) {
 							stringBuffer.append(TEXT_60);
-							stringBuffer.append(genFeature
-									.getImportedType(genClass));
+							stringBuffer.append(genFeature.getImportedType(genClass));
 							stringBuffer.append(TEXT_61);
 							stringBuffer.append(genFeature.getSafeName());
 							stringBuffer.append(TEXT_62);
-							stringBuffer.append(genFeature
-									.getImportedType(genClass));
+							stringBuffer.append(genFeature.getImportedType(genClass));
 							stringBuffer.append(TEXT_63);
-							stringBuffer.append(genClass
-									.getQualifiedFeatureID(genFeature));
+							stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
 							stringBuffer.append(positiveOffsetCorrection);
 							if (genFeature.hasEDefault()) {
 								stringBuffer.append(TEXT_64);
@@ -756,22 +665,17 @@ public class ClassgetGenFeatureoverride extends
 						stringBuffer.append(TEXT_67);
 						stringBuffer.append(genFeature.getSafeNameAsEObject());
 						stringBuffer.append(TEXT_68);
-						stringBuffer
-								.append(genModel
-										.getImportedName("org.eclipse.emf.ecore.InternalEObject"));
+						stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.InternalEObject"));
 						stringBuffer.append(TEXT_69);
 						stringBuffer.append(genFeature.getCapName());
 						stringBuffer.append(TEXT_70);
-						stringBuffer
-								.append(genModel
-										.getImportedName("org.eclipse.emf.ecore.InternalEObject"));
+						stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.InternalEObject"));
 						stringBuffer.append(TEXT_71);
 						stringBuffer.append(genFeature.getSafeName());
 						stringBuffer.append(TEXT_72);
 						stringBuffer.append(genFeature.getSafeName());
 						stringBuffer.append(TEXT_73);
-						stringBuffer.append(genFeature
-								.getNonEObjectInternalTypeCast(genClass));
+						stringBuffer.append(genFeature.getNonEObjectInternalTypeCast(genClass));
 						stringBuffer.append(TEXT_74);
 						stringBuffer.append(genFeature.getCapName());
 						stringBuffer.append(TEXT_75);
@@ -781,53 +685,39 @@ public class ClassgetGenFeatureoverride extends
 						stringBuffer.append(TEXT_77);
 						if (genFeature.isEffectiveContains()) {
 							stringBuffer.append(TEXT_78);
-							stringBuffer
-									.append(genModel
-											.getImportedName("org.eclipse.emf.ecore.InternalEObject"));
+							stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.InternalEObject"));
 							stringBuffer.append(TEXT_79);
 							stringBuffer.append(genFeature.getCapName());
 							stringBuffer.append(TEXT_80);
-							stringBuffer
-									.append(genModel
-											.getImportedName("org.eclipse.emf.ecore.InternalEObject"));
+							stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.InternalEObject"));
 							stringBuffer.append(TEXT_81);
 							stringBuffer.append(genFeature.getSafeName());
 							stringBuffer.append(TEXT_82);
 							if (!genFeature.isBidirectional()) {
 								stringBuffer.append(TEXT_83);
-								stringBuffer
-										.append(genModel
-												.getImportedName("org.eclipse.emf.common.notify.NotificationChain"));
+								stringBuffer.append(
+										genModel.getImportedName("org.eclipse.emf.common.notify.NotificationChain"));
 								stringBuffer.append(TEXT_84);
 								stringBuffer.append(genFeature.getCapName());
 								stringBuffer.append(TEXT_85);
-								stringBuffer.append(genClass
-										.getQualifiedFeatureID(genFeature));
+								stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
 								stringBuffer.append(negativeOffsetCorrection);
 								stringBuffer.append(TEXT_86);
 							} else {
-								GenFeature reverseFeature = genFeature
-										.getReverse();
-								GenClass targetClass = reverseFeature
-										.getGenClass();
-								String reverseOffsetCorrection = targetClass
-										.hasOffsetCorrection() ? " + "
-										+ genClass
-												.getOffsetCorrectionField(genFeature)
-										: "";
+								GenFeature reverseFeature = genFeature.getReverse();
+								GenClass targetClass = reverseFeature.getGenClass();
+								String reverseOffsetCorrection = targetClass.hasOffsetCorrection()
+										? " + " + genClass.getOffsetCorrectionField(genFeature) : "";
 								stringBuffer.append(TEXT_87);
-								stringBuffer
-										.append(genModel
-												.getImportedName("org.eclipse.emf.common.notify.NotificationChain"));
+								stringBuffer.append(
+										genModel.getImportedName("org.eclipse.emf.common.notify.NotificationChain"));
 								stringBuffer.append(TEXT_88);
 								stringBuffer.append(genFeature.getCapName());
 								stringBuffer.append(TEXT_89);
-								stringBuffer.append(targetClass
-										.getQualifiedFeatureID(reverseFeature));
+								stringBuffer.append(targetClass.getQualifiedFeatureID(reverseFeature));
 								stringBuffer.append(reverseOffsetCorrection);
 								stringBuffer.append(TEXT_90);
-								stringBuffer.append(targetClass
-										.getRawImportedInterfaceName());
+								stringBuffer.append(targetClass.getRawImportedInterfaceName());
 								stringBuffer.append(TEXT_91);
 							}
 							stringBuffer.append(TEXT_92);
@@ -837,36 +727,27 @@ public class ClassgetGenFeatureoverride extends
 								stringBuffer.append(TEXT_94);
 								stringBuffer.append(genFeature.getCapName());
 								stringBuffer.append(TEXT_95);
-								stringBuffer.append(genClass
-										.getQualifiedFeatureID(genFeature));
+								stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
 								stringBuffer.append(negativeOffsetCorrection);
 								stringBuffer.append(TEXT_96);
 							} else {
-								GenFeature reverseFeature = genFeature
-										.getReverse();
-								GenClass targetClass = reverseFeature
-										.getGenClass();
-								String reverseOffsetCorrection = targetClass
-										.hasOffsetCorrection() ? " + "
-										+ genClass
-												.getOffsetCorrectionField(genFeature)
-										: "";
+								GenFeature reverseFeature = genFeature.getReverse();
+								GenClass targetClass = reverseFeature.getGenClass();
+								String reverseOffsetCorrection = targetClass.hasOffsetCorrection()
+										? " + " + genClass.getOffsetCorrectionField(genFeature) : "";
 								stringBuffer.append(TEXT_97);
 								stringBuffer.append(genFeature.getCapName());
 								stringBuffer.append(TEXT_98);
-								stringBuffer.append(targetClass
-										.getQualifiedFeatureID(reverseFeature));
+								stringBuffer.append(targetClass.getQualifiedFeatureID(reverseFeature));
 								stringBuffer.append(reverseOffsetCorrection);
 								stringBuffer.append(TEXT_99);
-								stringBuffer.append(targetClass
-										.getRawImportedInterfaceName());
+								stringBuffer.append(targetClass.getRawImportedInterfaceName());
 								stringBuffer.append(TEXT_100);
 							}
 							stringBuffer.append(TEXT_101);
 						} else if (genModel.isVirtualDelegation()) {
 							stringBuffer.append(TEXT_102);
-							stringBuffer.append(genClass
-									.getQualifiedFeatureID(genFeature));
+							stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
 							stringBuffer.append(positiveOffsetCorrection);
 							stringBuffer.append(TEXT_103);
 							stringBuffer.append(genFeature.getSafeName());
@@ -875,15 +756,11 @@ public class ClassgetGenFeatureoverride extends
 						if (!genModel.isSuppressNotification()) {
 							stringBuffer.append(TEXT_105);
 							stringBuffer
-									.append(genModel
-											.getImportedName("org.eclipse.emf.ecore.impl.ENotificationImpl"));
+									.append(genModel.getImportedName("org.eclipse.emf.ecore.impl.ENotificationImpl"));
 							stringBuffer.append(TEXT_106);
-							stringBuffer
-									.append(genModel
-											.getImportedName("org.eclipse.emf.common.notify.Notification"));
+							stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.notify.Notification"));
 							stringBuffer.append(TEXT_107);
-							stringBuffer.append(genClass
-									.getQualifiedFeatureID(genFeature));
+							stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
 							stringBuffer.append(positiveOffsetCorrection);
 							stringBuffer.append(TEXT_108);
 							stringBuffer.append(genFeature.getCapName());
@@ -893,15 +770,12 @@ public class ClassgetGenFeatureoverride extends
 						}
 						stringBuffer.append(TEXT_111);
 					}
-					if (!genFeature.isResolveProxies()
-							&& genModel.isVirtualDelegation()
+					if (!genFeature.isResolveProxies() && genModel.isVirtualDelegation()
 							&& !genFeature.isPrimitiveType()) {
 						stringBuffer.append(TEXT_112);
-						stringBuffer.append(genFeature
-								.getImportedType(genClass));
+						stringBuffer.append(genFeature.getImportedType(genClass));
 						stringBuffer.append(TEXT_113);
-						stringBuffer.append(genClass
-								.getQualifiedFeatureID(genFeature));
+						stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
 						stringBuffer.append(positiveOffsetCorrection);
 						if (genFeature.hasEDefault()) {
 							stringBuffer.append(TEXT_114);
@@ -911,8 +785,7 @@ public class ClassgetGenFeatureoverride extends
 					} else if (genClass.isFlag(genFeature)) {
 						if (genFeature.isBooleanType()) {
 							stringBuffer.append(TEXT_116);
-							stringBuffer.append(genClass
-									.getFlagsField(genFeature));
+							stringBuffer.append(genClass.getFlagsField(genFeature));
 							stringBuffer.append(TEXT_117);
 							stringBuffer.append(genFeature.getUpperName());
 							stringBuffer.append(TEXT_118);
@@ -920,8 +793,7 @@ public class ClassgetGenFeatureoverride extends
 							stringBuffer.append(TEXT_119);
 							stringBuffer.append(genFeature.getUpperName());
 							stringBuffer.append(TEXT_120);
-							stringBuffer.append(genClass
-									.getFlagsField(genFeature));
+							stringBuffer.append(genClass.getFlagsField(genFeature));
 							stringBuffer.append(TEXT_121);
 							stringBuffer.append(genFeature.getUpperName());
 							stringBuffer.append(TEXT_122);
@@ -947,85 +819,59 @@ public class ClassgetGenFeatureoverride extends
 					stringBuffer.append(TEXT_130);
 					stringBuffer.append(genFeature.getSafeNameAsEObject());
 					stringBuffer.append(TEXT_131);
-					stringBuffer.append(genFeature
-							.getNonEObjectInternalTypeCast(genClass));
+					stringBuffer.append(genFeature.getNonEObjectInternalTypeCast(genClass));
 					stringBuffer.append(TEXT_132);
-					stringBuffer
-							.append(genModel
-									.getImportedName("org.eclipse.emf.ecore.InternalEObject"));
+					stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.InternalEObject"));
 					stringBuffer.append(TEXT_133);
 					stringBuffer.append(genFeature.getSafeName());
 					stringBuffer.append(TEXT_134);
 					stringBuffer.append(genFeature.getSafeName());
 					stringBuffer.append(TEXT_135);
 				} else if (genFeature.hasDelegateFeature()) {
-					GenFeature delegateFeature = genFeature
-							.getDelegateFeature();
+					GenFeature delegateFeature = genFeature.getDelegateFeature();
 					if (genFeature.isFeatureMapType()) {
-						String featureMapEntryTemplateArgument = isJDK50 ? "<"
-								+ genModel
-										.getImportedName("org.eclipse.emf.ecore.util.FeatureMap")
-								+ ".Entry>"
+						String featureMapEntryTemplateArgument = isJDK50
+								? "<" + genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap") + ".Entry>"
 								: "";
 						if (delegateFeature.isWrappedFeatureMapType()) {
 							stringBuffer.append(TEXT_136);
-							stringBuffer
-									.append(genFeature
-											.getImportedEffectiveFeatureMapWrapperClass());
+							stringBuffer.append(genFeature.getImportedEffectiveFeatureMapWrapperClass());
 							stringBuffer.append(TEXT_137);
-							stringBuffer
-									.append(genModel
-											.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
+							stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
 							stringBuffer.append(TEXT_138);
-							stringBuffer
-									.append(genModel
-											.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
+							stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
 							stringBuffer.append(TEXT_139);
-							stringBuffer.append(delegateFeature
-									.getAccessorName());
+							stringBuffer.append(delegateFeature.getAccessorName());
 							stringBuffer.append(TEXT_140);
-							stringBuffer
-									.append(featureMapEntryTemplateArgument);
+							stringBuffer.append(featureMapEntryTemplateArgument);
 							stringBuffer.append(TEXT_141);
-							stringBuffer.append(genFeature
-									.getQualifiedFeatureAccessor());
+							stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
 							stringBuffer.append(TEXT_142);
 						} else {
 							stringBuffer.append(TEXT_143);
-							stringBuffer
-									.append(genModel
-											.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
+							stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
 							stringBuffer.append(TEXT_144);
-							stringBuffer.append(delegateFeature
-									.getAccessorName());
+							stringBuffer.append(delegateFeature.getAccessorName());
 							stringBuffer.append(TEXT_145);
-							stringBuffer
-									.append(featureMapEntryTemplateArgument);
+							stringBuffer.append(featureMapEntryTemplateArgument);
 							stringBuffer.append(TEXT_146);
-							stringBuffer.append(genFeature
-									.getQualifiedFeatureAccessor());
+							stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
 							stringBuffer.append(TEXT_147);
 						}
 					} else if (genFeature.isListType()) {
 						if (delegateFeature.isWrappedFeatureMapType()) {
 							stringBuffer.append(TEXT_148);
-							stringBuffer
-									.append(genModel
-											.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
+							stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
 							stringBuffer.append(TEXT_149);
-							stringBuffer.append(delegateFeature
-									.getAccessorName());
+							stringBuffer.append(delegateFeature.getAccessorName());
 							stringBuffer.append(TEXT_150);
-							stringBuffer.append(genFeature
-									.getQualifiedFeatureAccessor());
+							stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
 							stringBuffer.append(TEXT_151);
 						} else {
 							stringBuffer.append(TEXT_152);
-							stringBuffer.append(delegateFeature
-									.getAccessorName());
+							stringBuffer.append(delegateFeature.getAccessorName());
 							stringBuffer.append(TEXT_153);
-							stringBuffer.append(genFeature
-									.getQualifiedFeatureAccessor());
+							stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
 							stringBuffer.append(TEXT_154);
 						}
 					} else {
@@ -1035,28 +881,21 @@ public class ClassgetGenFeatureoverride extends
 								stringBuffer.append(TEXT_156);
 							}
 							if (genFeature.getTypeGenDataType() == null
-									|| !genFeature.getTypeGenDataType()
-											.isObjectType()) {
+									|| !genFeature.getTypeGenDataType().isObjectType()) {
 								stringBuffer.append(TEXT_157);
-								stringBuffer.append(genFeature
-										.getObjectType(genClass));
+								stringBuffer.append(genFeature.getObjectType(genClass));
 								stringBuffer.append(TEXT_158);
 							}
 							stringBuffer.append(TEXT_159);
-							stringBuffer
-									.append(genModel
-											.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
+							stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
 							stringBuffer.append(TEXT_160);
-							stringBuffer.append(delegateFeature
-									.getAccessorName());
+							stringBuffer.append(delegateFeature.getAccessorName());
 							stringBuffer.append(TEXT_161);
-							stringBuffer.append(genFeature
-									.getQualifiedFeatureAccessor());
+							stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
 							stringBuffer.append(TEXT_162);
 							if (!isJDK50 && genFeature.isPrimitiveType()) {
 								stringBuffer.append(TEXT_163);
-								stringBuffer.append(genFeature
-										.getPrimitiveValueFunction());
+								stringBuffer.append(genFeature.getPrimitiveValueFunction());
 								stringBuffer.append(TEXT_164);
 							}
 							stringBuffer.append(TEXT_165);
@@ -1066,24 +905,19 @@ public class ClassgetGenFeatureoverride extends
 								stringBuffer.append(TEXT_167);
 							}
 							if (genFeature.getTypeGenDataType() == null
-									|| !genFeature.getTypeGenDataType()
-											.isObjectType()) {
+									|| !genFeature.getTypeGenDataType().isObjectType()) {
 								stringBuffer.append(TEXT_168);
-								stringBuffer.append(genFeature
-										.getObjectType(genClass));
+								stringBuffer.append(genFeature.getObjectType(genClass));
 								stringBuffer.append(TEXT_169);
 							}
 							stringBuffer.append(TEXT_170);
-							stringBuffer.append(delegateFeature
-									.getAccessorName());
+							stringBuffer.append(delegateFeature.getAccessorName());
 							stringBuffer.append(TEXT_171);
-							stringBuffer.append(genFeature
-									.getQualifiedFeatureAccessor());
+							stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
 							stringBuffer.append(TEXT_172);
 							if (!isJDK50 && genFeature.isPrimitiveType()) {
 								stringBuffer.append(TEXT_173);
-								stringBuffer.append(genFeature
-										.getPrimitiveValueFunction());
+								stringBuffer.append(genFeature.getPrimitiveValueFunction());
 								stringBuffer.append(TEXT_174);
 							}
 							stringBuffer.append(TEXT_175);
@@ -1091,17 +925,15 @@ public class ClassgetGenFeatureoverride extends
 					}
 				} else if (genClass.getGetAccessorOperation(genFeature) != null) {
 					stringBuffer.append(TEXT_176);
-					stringBuffer.append(genClass.getGetAccessorOperation(
-							genFeature).getBody(
-							genModel.getIndentation(stringBuffer)));
+					stringBuffer.append(genClass.getGetAccessorOperation(genFeature)
+							.getBody(genModel.getIndentation(stringBuffer)));
 				} else {
 					stringBuffer.append(TEXT_177);
 					{
 						//<%@ egf:patternCall patternId="platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#LogicalName=org.eclipse.egf.emf.pattern.model.call.Class.Class.getGenFeature.TODO.override" args="genFeature:genFeature,genClass:genClass,genPackage:genPackage,genModel:genModel,isJDK50:isJDK50,isInterface:isInterface,isImplementation:isImplementation,isGWT:isGWT,publicStaticFinalFlag:publicStaticFinalFlag,singleWildcard:singleWildcard,negativeOffsetCorrection:negativeOffsetCorrection,positiveOffsetCorrection:positiveOffsetCorrection,negativeOperationOffsetCorrection:negativeOperationOffsetCorrection,positiveOperationOffsetCorrection:positiveOperationOffsetCorrection"%>
 
 						InternalPatternContext ictx = (InternalPatternContext) ctx;
-						new Node.DataLeaf(ictx.getNode(), getClass(), null,
-								stringBuffer.toString());
+						new Node.DataLeaf(ictx.getNode(), getClass(), null, stringBuffer.toString());
 						stringBuffer.setLength(0);
 
 						final Map<String, Object> callParameters = new HashMap<String, Object>();
@@ -1111,26 +943,17 @@ public class ClassgetGenFeatureoverride extends
 						callParameters.put("genModel", genModel);
 						callParameters.put("isJDK50", isJDK50);
 						callParameters.put("isInterface", isInterface);
-						callParameters
-								.put("isImplementation", isImplementation);
+						callParameters.put("isImplementation", isImplementation);
 						callParameters.put("isGWT", isGWT);
-						callParameters.put("publicStaticFinalFlag",
-								publicStaticFinalFlag);
+						callParameters.put("publicStaticFinalFlag", publicStaticFinalFlag);
 						callParameters.put("singleWildcard", singleWildcard);
-						callParameters.put("negativeOffsetCorrection",
-								negativeOffsetCorrection);
-						callParameters.put("positiveOffsetCorrection",
-								positiveOffsetCorrection);
-						callParameters.put("negativeOperationOffsetCorrection",
-								negativeOperationOffsetCorrection);
-						callParameters.put("positiveOperationOffsetCorrection",
-								positiveOperationOffsetCorrection);
-						CallHelper
-								.executeWithParameterInjection(
-										"platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0lbPAWJ-Ed-FqczH3ESmRw",
-										new ExecutionContext(
-												(InternalPatternContext) ctx),
-										callParameters);
+						callParameters.put("negativeOffsetCorrection", negativeOffsetCorrection);
+						callParameters.put("positiveOffsetCorrection", positiveOffsetCorrection);
+						callParameters.put("negativeOperationOffsetCorrection", negativeOperationOffsetCorrection);
+						callParameters.put("positiveOperationOffsetCorrection", positiveOperationOffsetCorrection);
+						CallHelper.executeWithParameterInjection(
+								"platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0lbPAWJ-Ed-FqczH3ESmRw",
+								new ExecutionContext((InternalPatternContext) ctx), callParameters);
 						stringBuffer.setLength(0);
 					}
 
@@ -1140,7 +963,6 @@ public class ClassgetGenFeatureoverride extends
 			stringBuffer.append(TEXT_178);
 		}
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
-		new Node.DataLeaf(ictx.getNode(), getClass(), "doGenerate",
-				stringBuffer.toString());
+		new Node.DataLeaf(ictx.getNode(), getClass(), "doGenerate", stringBuffer.toString());
 	}
 }

@@ -1,4 +1,4 @@
-//Generated with EGF 1.2.0.v20140805-0858
+//Generated with EGF 1.4.1.v20161010-1511
 package org.polarsys.capella.common.tig.model;
 
 import org.eclipse.egf.common.helper.*;
@@ -10,44 +10,35 @@ import org.eclipse.egf.pattern.query.*;
 import org.eclipse.emf.codegen.ecore.genmodel.*;
 
 public class ClassdeclaredFieldGenFeatureinsert
-		extends
-		org.eclipse.egf.emf.pattern.model.call.Class.ClassdeclaredFieldGenFeatureinsert {
+		extends org.eclipse.egf.emf.pattern.model.call.Class.ClassdeclaredFieldGenFeatureinsert {
 	protected static String nl;
 
-	public static synchronized ClassdeclaredFieldGenFeatureinsert create(
-			String lineSeparator) {
+	public static synchronized ClassdeclaredFieldGenFeatureinsert create(String lineSeparator) {
 		nl = lineSeparator;
 		ClassdeclaredFieldGenFeatureinsert result = new ClassdeclaredFieldGenFeatureinsert();
 		nl = null;
 		return result;
 	}
 
-	public final String NL = nl == null ? (System.getProperties()
-			.getProperty("line.separator")) : nl;
-	protected final String TEXT_1 = "\t/**" + NL
-			+ "\t * The parsed OCL expression for the body of the '{@link #";
+	public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
+	protected final String TEXT_1 = "\t/**" + NL + "\t * The parsed OCL expression for the body of the '{@link #";
 	protected final String TEXT_2 = " <em>";
-	protected final String TEXT_3 = "</em>}' operation." + NL
-			+ "\t * <!-- begin-user-doc -->" + NL
+	protected final String TEXT_3 = "</em>}' operation." + NL + "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @see #";
-	protected final String TEXT_4 = NL + "\t * @generated" + NL + "\t */" + NL
-			+ "\tprivate static ";
+	protected final String TEXT_4 = NL + "\t * @generated" + NL + "\t */" + NL + "\tprivate static ";
 	protected final String TEXT_5 = "<";
 	protected final String TEXT_6 = "> ";
 	protected final String TEXT_7 = "BodyOCL;" + NL + "\t";
 	protected final String TEXT_8 = NL + "\t/**" + NL
 			+ "\t * The parsed OCL expression for the derivation of '{@link #";
 	protected final String TEXT_9 = " <em>";
-	protected final String TEXT_10 = "</em>}' property." + NL
-			+ "\t * <!-- begin-user-doc -->" + NL
+	protected final String TEXT_10 = "</em>}' property." + NL + "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @see #";
-	protected final String TEXT_11 = NL + "\t * @generated" + NL + "\t */" + NL
-			+ "\tprivate static ";
+	protected final String TEXT_11 = NL + "\t * @generated" + NL + "\t */" + NL + "\tprivate static ";
 	protected final String TEXT_12 = "<";
 	protected final String TEXT_13 = "> ";
 	protected final String TEXT_14 = "DeriveOCL;" + NL + "\t";
-	protected final String TEXT_15 = NL
-			+ "\tprivate static final String OCL_ANNOTATION_SOURCE = \"";
+	protected final String TEXT_15 = NL + "\tprivate static final String OCL_ANNOTATION_SOURCE = \"";
 	protected final String TEXT_16 = "\";";
 	protected final String TEXT_17 = NL + "\t" + NL + "\tprivate static final ";
 	protected final String TEXT_18 = " OCL_ENV = ";
@@ -133,8 +124,7 @@ public class ClassdeclaredFieldGenFeatureinsert
 																this.positiveOperationOffsetCorrection = (java.lang.String) positiveOperationOffsetCorrectionParameter;
 
 																if (preCondition(ctx)) {
-																	ctx.setNode(new Node.Container(
-																			currentNode,
+																	ctx.setNode(new Node.Container(currentNode,
 																			getClass()));
 																	orchestration(ctx);
 																}
@@ -155,8 +145,7 @@ public class ClassdeclaredFieldGenFeatureinsert
 		}
 		ctx.setNode(currentNode);
 		if (ctx.useReporter()) {
-			ctx.getReporter().executionFinished(
-					OutputManager.computeExecutionOutput(ctx), ctx);
+			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
 		stringBuffer.append(TEXT_21);
@@ -179,21 +168,15 @@ public class ClassdeclaredFieldGenFeatureinsert
 			parameterValues.put("isInterface", this.isInterface);
 			parameterValues.put("isImplementation", this.isImplementation);
 			parameterValues.put("isGWT", this.isGWT);
-			parameterValues.put("publicStaticFinalFlag",
-					this.publicStaticFinalFlag);
+			parameterValues.put("publicStaticFinalFlag", this.publicStaticFinalFlag);
 			parameterValues.put("singleWildcard", this.singleWildcard);
-			parameterValues.put("negativeOffsetCorrection",
-					this.negativeOffsetCorrection);
-			parameterValues.put("positiveOffsetCorrection",
-					this.positiveOffsetCorrection);
-			parameterValues.put("negativeOperationOffsetCorrection",
-					this.negativeOperationOffsetCorrection);
-			parameterValues.put("positiveOperationOffsetCorrection",
-					this.positiveOperationOffsetCorrection);
+			parameterValues.put("negativeOffsetCorrection", this.negativeOffsetCorrection);
+			parameterValues.put("positiveOffsetCorrection", this.positiveOffsetCorrection);
+			parameterValues.put("negativeOperationOffsetCorrection", this.negativeOperationOffsetCorrection);
+			parameterValues.put("positiveOperationOffsetCorrection", this.positiveOperationOffsetCorrection);
 			String outputWithCallBack = OutputManager.computeLoopOutput(ictx);
 			String loop = OutputManager.computeLoopOutputWithoutCallback(ictx);
-			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx,
-					parameterValues);
+			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx, parameterValues);
 		}
 		return null;
 	}
@@ -216,27 +199,20 @@ public class ClassdeclaredFieldGenFeatureinsert
 		parameters.put("isGWT", this.isGWT);
 		parameters.put("publicStaticFinalFlag", this.publicStaticFinalFlag);
 		parameters.put("singleWildcard", this.singleWildcard);
-		parameters.put("negativeOffsetCorrection",
-				this.negativeOffsetCorrection);
-		parameters.put("positiveOffsetCorrection",
-				this.positiveOffsetCorrection);
-		parameters.put("negativeOperationOffsetCorrection",
-				this.negativeOperationOffsetCorrection);
-		parameters.put("positiveOperationOffsetCorrection",
-				this.positiveOperationOffsetCorrection);
+		parameters.put("negativeOffsetCorrection", this.negativeOffsetCorrection);
+		parameters.put("positiveOffsetCorrection", this.positiveOffsetCorrection);
+		parameters.put("negativeOperationOffsetCorrection", this.negativeOperationOffsetCorrection);
+		parameters.put("positiveOperationOffsetCorrection", this.positiveOperationOffsetCorrection);
 		return parameters;
 	}
 
-	protected void method_doGenerate(final StringBuffer stringBuffer,
-			final PatternContext ctx) throws Exception {
+	protected void method_doGenerate(final StringBuffer stringBuffer, final PatternContext ctx) throws Exception {
 
 		if (isImplementation) {
 			boolean hasOCL = false;
-			for (GenOperation genOperation : genClass
-					.getImplementedGenOperations()) {
+			for (GenOperation genOperation : genClass.getImplementedGenOperations()) {
 				String body = null;
-				EAnnotation ocl = genOperation.getEcoreOperation()
-						.getEAnnotation(oclNsURI);
+				EAnnotation ocl = genOperation.getEcoreOperation().getEAnnotation(oclNsURI);
 				if (ocl != null)
 					body = ocl.getDetails().get("body");
 				if (body != null) {
@@ -248,13 +224,9 @@ public class ClassdeclaredFieldGenFeatureinsert
 					stringBuffer.append(TEXT_3);
 					stringBuffer.append(genOperation.getName());
 					stringBuffer.append(TEXT_4);
-					stringBuffer
-							.append(genModel
-									.getImportedName("org.eclipse.ocl.expressions.OCLExpression"));
+					stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.expressions.OCLExpression"));
 					stringBuffer.append(TEXT_5);
-					stringBuffer
-							.append(genModel
-									.getImportedName("org.eclipse.emf.ecore.EClassifier"));
+					stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EClassifier"));
 					stringBuffer.append(TEXT_6);
 					stringBuffer.append(genOperation.getName());
 					stringBuffer.append(TEXT_7);
@@ -263,8 +235,7 @@ public class ClassdeclaredFieldGenFeatureinsert
 
 			for (GenFeature genFeature : genClass.getImplementedGenFeatures()) {
 				String derive = null;
-				EAnnotation ocl = genFeature.getEcoreFeature().getEAnnotation(
-						oclNsURI);
+				EAnnotation ocl = genFeature.getEcoreFeature().getEAnnotation(oclNsURI);
 				if (ocl != null)
 					derive = ocl.getDetails().get("derive");
 				if (derive != null) {
@@ -276,13 +247,9 @@ public class ClassdeclaredFieldGenFeatureinsert
 					stringBuffer.append(TEXT_10);
 					stringBuffer.append(genFeature.getGetAccessor());
 					stringBuffer.append(TEXT_11);
-					stringBuffer
-							.append(genModel
-									.getImportedName("org.eclipse.ocl.expressions.OCLExpression"));
+					stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.expressions.OCLExpression"));
 					stringBuffer.append(TEXT_12);
-					stringBuffer
-							.append(genModel
-									.getImportedName("org.eclipse.emf.ecore.EClassifier"));
+					stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EClassifier"));
 					stringBuffer.append(TEXT_13);
 					stringBuffer.append(genFeature.getSafeName());
 					stringBuffer.append(TEXT_14);
@@ -295,17 +262,14 @@ public class ClassdeclaredFieldGenFeatureinsert
 				stringBuffer.append(TEXT_16);
 				stringBuffer.append(genModel.getNonNLS());
 				stringBuffer.append(TEXT_17);
-				stringBuffer.append(genModel
-						.getImportedName("org.eclipse.ocl.ecore.OCL"));
+				stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.ecore.OCL"));
 				stringBuffer.append(TEXT_18);
-				stringBuffer.append(genModel
-						.getImportedName("org.eclipse.ocl.ecore.OCL"));
+				stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.ecore.OCL"));
 				stringBuffer.append(TEXT_19);
 			}
 		}
 		stringBuffer.append(TEXT_20);
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
-		new Node.DataLeaf(ictx.getNode(), getClass(), "doGenerate",
-				stringBuffer.toString());
+		new Node.DataLeaf(ictx.getNode(), getClass(), "doGenerate", stringBuffer.toString());
 	}
 }
