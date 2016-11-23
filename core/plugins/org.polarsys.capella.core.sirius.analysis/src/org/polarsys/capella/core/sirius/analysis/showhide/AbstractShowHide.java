@@ -855,8 +855,8 @@ public class AbstractShowHide implements IShowHide {
     if ((containerView_p instanceof DDiagram) && (mapping_p.eContainer() instanceof DiagramElementMapping)) {
       return false;
     }
-
-    return true;
+    // Call mapping precondition to know if the Node must be shown.
+    return DiagramServices.getDiagramServices().evaluateNodePrecondition(mapping_p, getContent().getDDiagram(), semantic_p);
   }
 
   /**
@@ -868,8 +868,9 @@ public class AbstractShowHide implements IShowHide {
    * @param edgeMapping_p
    * @return
    */
-  protected boolean mustShow(DSemanticDecorator source_p, DSemanticDecorator target_p, EObject exchange_p, EdgeMapping edgeMapping_p) {
-    return true;
+  protected boolean mustShow(DSemanticDecorator source, DSemanticDecorator target, EObject exchange, EdgeMapping edgeMapping) {
+    // Call mapping precondition to know if the Edge must be shown.
+    return DiagramServices.getDiagramServices().evaluateEdgePrecondition(edgeMapping, getContent().getDDiagram(), exchange, source, target);
   }
 
   /**

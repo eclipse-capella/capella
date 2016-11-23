@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -151,6 +151,10 @@ public class DFServices {
   public boolean isValidDFFunctionalExchangeEdge(EObject context_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p) {
     if (context_p instanceof FunctionalExchange) {
       DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView_p);
+      if (CapellaServices.getService().areInternalEdgePorts(sourceView_p, targetView_p)) {
+        // FE is internal ? Do not display it.
+        return false;
+      }
       return !diagram.isSynchronized() || !FaServices.getFaServices().isACategoryDisplayed(context_p, sourceView_p, targetView_p);
     }
     // Context can be FunctionInputPort while tool creation of Functional Exchange (sirius weird behavior), so we return false in this case.

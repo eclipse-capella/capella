@@ -1405,7 +1405,9 @@ public class FaServices {
   }
 
   /**
-   * used in context, logical, physical
+   * Given a FE and its source and target BorderedNodes, check if an Exchange Category referencing the FE exists between the 2 functions containing the BorderedNodes and is visible.
+   * 
+   * used in context, logical, physical 
    * 
    * @param o
    * @param source
@@ -1417,10 +1419,11 @@ public class FaServices {
     DSemanticDecorator source_d = source;
     DSemanticDecorator target_d = target;
 
-    if (((source_d instanceof DNode) && !(DiagramServices.getDiagramServices().isABorderedNode((DNode) source_d) && ((DNode) source_d).isVisible()))) {
+    // Categories are not supported at OA level (where there are no BorderedNodes).
+    if (((source_d instanceof DNode) && !(DiagramServices.getDiagramServices().isABorderedNode((DNode) source_d)))) {
       return false;
     }
-    if (((target_d instanceof DNode) && !(DiagramServices.getDiagramServices().isABorderedNode((DNode) target_d) && ((DNode) target_d).isVisible()))) {
+    if (((target_d instanceof DNode) && !(DiagramServices.getDiagramServices().isABorderedNode((DNode) target_d)))) {
       return false;
     }
 
