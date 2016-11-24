@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Rcp
+Bundle-SymbolicName: org.polarsys.capella.rcp;singleton:=true
+Bundle-Version: 1.0.0.qualifier

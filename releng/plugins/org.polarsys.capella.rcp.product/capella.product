@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="Capella" uid="org.polarsys.capella.rcp.product" id="org.polarsys.capella.rcp.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.0.0" useFeatures="true" includeLaunchers="true">
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgs>-Dosgi.requiredJavaVersion=1.6
+-Dorg.eclipse.swt.browser.DefaultType=mozilla
+-Xms256m
+-Xmx512m
+-XX:PermSize=128m
+-XX:MaxPermSize=256m
+      </vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
+      <vmArgsWin>
+         <argsX86_64>-Dosgi.requiredJavaVersion=1.6
+-Dorg.eclipse.swt.browser.DefaultType=mozilla
+-Xms512m
+-Xmx2048m
+-XX:PermSize=128m
+-XX:MaxPermSize=256m</argsX86_64>
+      </vmArgsWin>
+   </launcherArgs>
+
+   <windowImages/>
+
+
+   <launcher>
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+      <linux include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</linux>
+      <macos include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</macos>
+      <solaris include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</solaris>
+      <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</windows>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="org.eclipse.amalgam.explorer.activity"/>
+      <feature id="org.eclipse.emf.diffmerge.patterns.sdk.feature"/>
+      <feature id="org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature"/>
+      <feature id="org.eclipse.emf.diffmerge.sdk.feature"/>
+      <feature id="org.eclipse.emf.sdk"/>
+      <feature id="org.eclipse.emf.transaction"/>
+      <feature id="org.eclipse.gmf"/>
+      <feature id="org.eclipse.platform"/>
+      <feature id="org.eclipse.sdk"/>
+      <feature id="org.eclipse.sirius.query.legacy.feature"/>
+      <feature id="org.eclipse.sirius.runtime"/>
+      <feature id="org.eclipse.sirius.runtime.ide.ui"/>
+      <feature id="org.polarsys.capella.rcp.feature"/>
+      <feature id="org.polarsys.kitalpha.ad.feature"/>
+      <feature id="org.polarsys.kitalpha.ad.integration.emde.feature"/>
+      <feature id="org.polarsys.kitalpha.ad.integration.sirius.feature"/>
+      <feature id="org.polarsys.kitalpha.cadence.feature"/>
+      <feature id="org.polarsys.kitalpha.common.feature"/>
+      <feature id="org.polarsys.kitalpha.emde.feature"/>
+      <feature id="org.polarsys.kitalpha.emde.ui.feature"/>
+      <feature id="org.polarsys.kitalpha.model.common.commands.feature"/>
+      <feature id="org.polarsys.kitalpha.model.common.scrutiny.feature"/>
+      <feature id="org.polarsys.kitalpha.model.common.share.feature"/>
+      <feature id="org.polarsys.kitalpha.model.detachment.feature"/>
+      <feature id="org.polarsys.kitalpha.model.detachment.ui.feature"/>
+      <feature id="org.polarsys.kitalpha.patterns.feature"/>
+      <feature id="org.polarsys.kitalpha.report.feature"/>
+      <feature id="org.polarsys.kitalpha.report.ui.feature"/>
+      <feature id="org.polarsys.kitalpha.resourcereuse.feature"/>
+      <feature id="org.polarsys.kitalpha.resourcereuse.ui.feature"/>
+      <feature id="org.polarsys.kitalpha.transposer.feature"/>
+   </features>
+
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+   </configurations>
+
+   <preferencesInfo>
+      <targetfile overwrite="false"/>
+   </preferencesInfo>
+
+   <cssInfo>
+   </cssInfo>
+
+</product>
