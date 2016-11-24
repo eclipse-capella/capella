@@ -26,7 +26,9 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.MessageDialogWithToggle;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
@@ -38,20 +40,31 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.helpers.AbstractFixDiagramHelper;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.helpers.FixDAnnotationsCleanOptionHelper;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
 public abstract class AbstractFixDiagramsHandler extends AbstractDiagramCommandHandler {
   private String dialogConfirmationMessage;
+  private String onlyCleanMessage;
   private String jobName;
   private AbstractFixDiagramHelper fixHelper;
 
   @Override
   public Object execute(ExecutionEvent event_p) throws ExecutionException {
-    if (!MessageDialog.openConfirm(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Confirm",
-        getDialogConfirmationMessage())) {
+    
+    MessageDialogWithToggle messageDialogWithToggle =
+        new MessageDialogWithToggle(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Fix Diagram Confirmation", 
+        		null, this.getDialogConfirmationMessage(), MessageDialog.INFORMATION, new String[] { IDialogConstants.OK_LABEL, IDialogConstants.CANCEL_LABEL },
+            1, getOnlyCleanMessage(), true); //$NON-NLS-1$
+    
+    int returnCode = messageDialogWithToggle.open();
+    boolean fixDAnnotationsConfirmed = (IDialogConstants.OK_ID == returnCode);
+    final boolean onlyCleanOldDAnnotations = messageDialogWithToggle.getToggleState();
+    
+    if(!fixDAnnotationsConfirmed) {
       return null;
     }
-
+  
     final IFile airdFile = (IFile) getSelection().getFirstElement();
     IRunnableWithProgress operation = new IRunnableWithProgress() {
 
@@ -69,7 +82,8 @@ public abstract class AbstractFixDiagramsHandler extends AbstractDiagramCommandH
 
               @Override
               public void run() {
-                modifiedDiagrams.addAll(getFixHelper().fixDiagram(session));
+                modifiedDiagrams.addAll(
+                    ((FixDAnnotationsCleanOptionHelper)getFixHelper()).fixDiagramEventuallyClean(session, onlyCleanOldDAnnotations));
               }
 
             });
@@ -125,4 +139,11 @@ public abstract class AbstractFixDiagramsHandler extends AbstractDiagramCommandH
     this.fixHelper = fixHelper;
   }
 
+  public String getOnlyCleanMessage() {
+    return onlyCleanMessage;
+  }
+
+  public void setOnlyCleanMessage(String onlyCleanMessage) {
+    this.onlyCleanMessage = onlyCleanMessage;
+  }
 }

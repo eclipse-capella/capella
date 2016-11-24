@@ -29,7 +29,7 @@ import com.google.common.collect.ImmutableMap;
 
 public class FixDAnnotationsHelper extends AbstractFixDiagramHelper {
 
-  private static Map<String, String> dAnnotationMigrationMapping = ImmutableMap.of(
+  protected static Map<String, String> dAnnotationMigrationMapping = ImmutableMap.of(
       "http://www.thalesgroup.com/mde/melody/NotVisibleInDoc", IRepresentationAnnotationConstants.NotVisibleInDoc,
       "http://www.thalesgroup.com/mde/melody/NotVisibleInLM", IRepresentationAnnotationConstants.NotVisibleInLM,
       "http://www.thalesgroup.com/mde/melody/ProgressStatus", IRepresentationAnnotationConstants.ProgressStatus,
