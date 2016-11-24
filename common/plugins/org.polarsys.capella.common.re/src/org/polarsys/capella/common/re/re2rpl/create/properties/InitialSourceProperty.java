@@ -27,7 +27,7 @@ public class InitialSourceProperty extends AbstractContextProperty implements IR
    * {@inheritDoc}
    */
   @Override
-  public Collection<Object> getChoiceValues(IPropertyContext context) {
+  public Collection<?> getChoiceValues(IPropertyContext context) {
     IContext ctx = getContext(context);
     return ReplicableElementHandlerHelper.getInstance(ctx).getAllDefinedRecReplicableElements(ctx);
   }

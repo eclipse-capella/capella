@@ -177,11 +177,11 @@ public class DataPkgExt {
    */
   static public Set<Generalization> getAllGeneralization(DataPkg dataPkg) {
     Set<Generalization> generalizations = new HashSet<Generalization>();
+    if (null != dataPkg) {
     List<GeneralizableElement> classifiers = new ArrayList<GeneralizableElement>();
     classifiers.addAll(dataPkg.getOwnedClasses());
     classifiers.addAll(dataPkg.getOwnedCollections());
     classifiers.addAll(dataPkg.getOwnedDataTypes());
-    if (null != dataPkg) {
       for (GeneralizableElement generalizableElement : classifiers) {
         generalizations.addAll(generalizableElement.getOwnedGeneralizations());
       }
@@ -577,25 +577,15 @@ public class DataPkgExt {
   private static void addToResultMap(EObject tgt, Map<AbstractDependenciesPkg, Collection<EObject>> map,
       Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> result) {
 
-    Couple<EObject, Collection<EObject>> couple = null;
-
-    Set<Couple<EObject, Collection<EObject>>> col = null;
-
     if (null != map) {
-      for (AbstractDependenciesPkg pkg : map.keySet()) {
+      for (Map.Entry<AbstractDependenciesPkg,Collection<EObject>> entry : map.entrySet()) {
 
-        if (!result.containsKey(pkg)) {
-          col = new HashSet<Couple<EObject, Collection<EObject>>>();
-          result.put(pkg, col);
+        if (!result.containsKey(entry.getKey())) {
+          result.put(entry.getKey(), new HashSet<Couple<EObject, Collection<EObject>>>());
         }
-
-        couple = new Couple<EObject, Collection<EObject>>(tgt, map.get(pkg));
-        result.get(pkg).add(couple);
+        result.get(entry.getKey()).add(new Couple<EObject, Collection<EObject>>(tgt, entry.getValue()));
       }
-
     }
-
-    return;
   }
 
   /**
@@ -642,11 +632,11 @@ public class DataPkgExt {
 
     for (DataPkg aSubPkg : dataPkg.getOwnedDataPkgs()) {
       tmp = getDataPkgDependenciesHierarchy2(aSubPkg);
-      for (AbstractDependenciesPkg pkg : tmp.keySet()) {
-        if (result.containsKey(pkg)) {
-          result.get(pkg).addAll(tmp.get(pkg));
+      for (Map.Entry<AbstractDependenciesPkg,Collection<Couple<EObject,Collection<EObject>>>> entry : tmp.entrySet()) {
+        if (result.containsKey(entry.getKey())) {
+          result.get(entry.getKey()).addAll(entry.getValue());
         } else {
-          result.put(pkg, tmp.get(pkg));
+          result.put(entry.getKey(), entry.getValue());
         }
       }
     }
@@ -1466,8 +1456,7 @@ public class DataPkgExt {
    */
   public static boolean isBelongToSameDataPkgLayer(ModelElement elt1, ModelElement elt2) {
     if ((elt1 instanceof CapellaElement) && (elt2 instanceof CapellaElement)) {
-      if ((null != elt2)
-          && EcoreUtil2.isContainedBy(elt2, InformationPackage.Literals.DATA_PKG)
+      if (EcoreUtil2.isContainedBy(elt2, InformationPackage.Literals.DATA_PKG)
           && (CapellaLayerCheckingExt.getLayersName((CapellaElement) elt1) == CapellaLayerCheckingExt
               .getLayersName((CapellaElement) elt2))) {
         return true;

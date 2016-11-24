@@ -1,14 +1,15 @@
             
 = The Diagram Business Copy-Paste =
  
-Elements in a diagram can be copied and pasted via the usual CTRL-C and CTRL-V shortcuts, or via the contextual menu which pops up at right click.
+Elements in a diagram can be copied and pasted via the usual CTRL-C and CTRL-V shortcuts, or via the &ldquo;Capella Copy/Paste&rdquo; contextual menu which pops up at right click.
 
  
 This copy/paste mechanism duplicates both the selected elements in the underlying model and their graphical representations. Business rules ensure that the model remains consistent after a paste operation. The business rules both depend on which diagram is being edited and which elements are selected.
 
- 
-Note that a quick paste feature (CTRL-SHIFT-V) is also available. It does not automatically refresh the diagram, which prevents edges from being drawn but saves time. It can be handy to paste elements multiple times and rearrange them by hand before refreshing the diagram (e.g. via the Refresh button in the toolbar).
-
+Also available mechanisms are:
+* &ldquo;Paste with layout only&rdquo;: Pastes original layout but not style,
+* &ldquo;Paste with style only&rdquo;: Pastes original style but not layout,
+* &ldquo;Quick Paste&rdquo; (CTRL-SHIFT-V): Does not refresh the diagram after the paste operation (prevents edges from being drawn but saves time). It can be handy to paste elements multiple times and rearrange them by hand before refreshing the diagram (e.g. via the Refresh button in the toolbar).
  
 == Example of Logical Architecture Diagram ==
  

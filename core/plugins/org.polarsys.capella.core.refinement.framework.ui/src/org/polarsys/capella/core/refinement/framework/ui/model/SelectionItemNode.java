@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,15 +17,15 @@ import java.util.List;
 /**
  */
 public abstract class SelectionItemNode {
-  private boolean _isChecked = false;
-  private SelectionItemNode _parent = null;
-  private List<SelectionItemNode> _children = null;
+  private boolean isChecked = false;
+  private SelectionItemNode parent = null;
+  private List<SelectionItemNode> children = null;
 
   /**
    * Constructor
    */
   public SelectionItemNode() {
-    _children = new ArrayList<SelectionItemNode>();
+    children = new ArrayList<SelectionItemNode>();
   }
 
   /**
@@ -52,28 +52,28 @@ public abstract class SelectionItemNode {
    * @return Returns the children.
    */
   public List<SelectionItemNode> getChildren() {
-    return _children;
+    return children;
   }
 
   /**
    * @return Returns the parent.
    */
   public SelectionItemNode getParent() {
-    return _parent;
+    return parent;
   }
 
   /**
    * @param parent The parent to set.
    */
   public void setParent(SelectionItemNode parent) {
-    _parent = parent;
+    this.parent = parent;
   }
 
   /**
-   * @param checked_p
+   * @param checked
    */
-  public void setIsChecked(boolean checked_p) {
-    _isChecked = checked_p;
+  public void setIsChecked(boolean checked) {
+    isChecked = checked;
   }
 
   /**
@@ -83,8 +83,8 @@ public abstract class SelectionItemNode {
   public boolean hasChildrenChecked() {
     boolean result = false;
 
-    for (SelectionItemNode node : _children) {
-      result |= node._isChecked;
+    for (SelectionItemNode node : children) {
+      result |= node.isChecked;
     }
 
     return result;
@@ -97,8 +97,8 @@ public abstract class SelectionItemNode {
   public boolean hasAllChildrenChecked() {
     boolean result = true;
 
-    for (SelectionItemNode node : _children) {
-      result &= node._isChecked;
+    for (SelectionItemNode node : children) {
+      result &= node.isChecked;
     }
 
     return result;
@@ -108,9 +108,9 @@ public abstract class SelectionItemNode {
    * @param node
    */
   public void addChild(SelectionItemNode node) {
-    if (_children == null)
-      _children = new ArrayList<SelectionItemNode>();
-    _children.add(node);
+    if (children == null)
+      children = new ArrayList<SelectionItemNode>();
+    children.add(node);
     node.setParent(this);
   }
 

@@ -12,6 +12,7 @@ package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -228,16 +229,24 @@ public class MarkerViewHelper {
    * @return A List of EObjects that are attached to the marker. Never null. May be empty.
    */
   public static List<EObject> getModelElementsFromMarker(IMarker marker) {
-    Set<EObject> result = new LinkedHashSet<EObject>(); // preserve order
     Diagnostic diag = getDiagnostic(marker);
-    if (diag != null){
+    if (diag != null && diag.getData() != null) {
+      if (diag.getData().size() == 1) {
+        Object o = diag.getData().get(0);
+        if (o instanceof EObject) {
+          return Collections.singletonList((EObject) o);
+        }
+      }
+      
+      Set<EObject> result = new LinkedHashSet<EObject>(); // preserve order
       for (Object o : diag.getData()){
         if (o instanceof EObject){
           result.add((EObject) o);
         }
       }
+      return new ArrayList<EObject>(result);
     }
-    return new ArrayList<EObject>(result);
+    return Collections.emptyList();
   }
 
   /**

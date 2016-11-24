@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -18,31 +18,51 @@
             objectClass="org.eclipse.gef.EditPart">
          <menu
                id="BusinessCopyPasteMenuSirius"
-               label="Model Copy/Paste"
+               label="Capella Copy/Paste"
                path="additions">
             <groupMarker
                   name="groupCopyPaste">
             </groupMarker>
+            <groupMarker
+                  name="org.polarsys.capella.core.platform.sirius.clipboard.groupMarker1">
+            </groupMarker>
+            <separator
+                  name="groupQuickPaste">
+            </separator>
          </menu>
          <action
                class="org.polarsys.capella.core.platform.sirius.clipboard.actions.CapellaDiagramQuickPasteAction"
                enablesFor="1"
                id="modelpatterns.sirius.clipboard.actionQuickPaste"
-               label="Quick Paste   Ctrl+Shift+V"
+               label="Quick Paste         Ctrl+Shift+V"
+               menubarPath="BusinessCopyPasteMenuSirius/groupQuickPaste">
+         </action>
+         <action
+               class="org.polarsys.capella.core.platform.sirius.clipboard.actions.CapellaDiagramPasteActionStyleOnly"
+               enablesFor="+"
+               id="modelpatterns.sirius.clipboard.actionPasteStyleOnly"
+               label="Paste with style only"
+               menubarPath="BusinessCopyPasteMenuSirius/groupCopyPaste">
+         </action>
+         <action
+               class="org.polarsys.capella.core.platform.sirius.clipboard.actions.CapellaDiagramPasteActionLayoutOnly"
+               enablesFor="+"
+               id="modelpatterns.sirius.clipboard.actionPasteLayoutOnly"
+               label="Paste with layout only"
                menubarPath="BusinessCopyPasteMenuSirius/groupCopyPaste">
          </action>
          <action
                class="org.polarsys.capella.core.platform.sirius.clipboard.actions.CapellaDiagramPasteAction"
                enablesFor="+"
                id="modelpatterns.sirius.clipboard.actionPaste"
-               label="Paste            Ctrl+V"
+               label="Paste                   Ctrl+V"
                menubarPath="BusinessCopyPasteMenuSirius/groupCopyPaste">
          </action>
          <action
                class="org.polarsys.capella.core.platform.sirius.clipboard.actions.CapellaDiagramCopyAction"
                enablesFor="+"
                id="modelpatterns.sirius.clipboard.actionCopy"
-               label="Copy            Ctrl+C"
+               label="Copy                    Ctrl+C"
                menubarPath="BusinessCopyPasteMenuSirius/groupCopyPaste">
          </action>
       </objectContribution>
@@ -95,6 +115,17 @@
             id="org.polarsys.capella.core.platform.sirius.clipboard.copy"
             name="Business copy">
       </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.statusHandlers">
+      <statusHandler
+            class="org.polarsys.capella.core.platform.sirius.clipboard.ClipboardStatusHandler"
+            id="org.polarsys.capella.core.platform.sirius.clipboard.statusHandler">
+         <parameter
+               name="prefix"
+               value="org.polarsys.capella.core.platform.sirius.clipboard">
+         </parameter>
+      </statusHandler>
    </extension>
 
 </plugin>

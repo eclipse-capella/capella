@@ -903,9 +903,9 @@ public class InformationServices {
   }
 
   /**
+   * @param pkg
    * @param context
-   * @param aOperation
-   * @param diagram
+   * @param variableName
    */
   public ExchangeItem createExchangeItem(InterfacePkg pkg, Interface context, String variableName) {
     ExchangeItem item = InformationFactory.eINSTANCE.createExchangeItem();

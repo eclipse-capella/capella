@@ -27,7 +27,8 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class ManyToOneCategoryFilter extends CategoryFilter {
 
   public ManyToOneCategoryFilter(IContext context) {
-    super(context, Messages.ManyToOneCategoryFilter, null);
+    super(context, Messages.ManyToOneCategoryFilter, Messages.ManyToOneCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(false);
     setActive(true);
     setVisible(true);

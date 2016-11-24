@@ -15,6 +15,7 @@ import org.eclipse.emf.diffmerge.api.diff.IReferenceValuePresence;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.capella.core.transition.common.handlers.options.OptionsHandlerHelper;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
@@ -27,8 +28,9 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class AppliedPropertyValuesCategoryFilter extends CategoryFilter {
 
   public AppliedPropertyValuesCategoryFilter(IContext context) {
-    super(context, Messages.AppliedPropertyValuesCategoryFilter, null);
-    setInFocusMode(false);
+    super(context, Messages.AppliedPropertyValuesCategoryFilter, Messages.AppliedPropertyValuesCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
+    setInFocusMode(false); 
     setVisible(true);
 
     boolean active = (OptionsHandlerHelper.getInstance(context).getBooleanValue(context,

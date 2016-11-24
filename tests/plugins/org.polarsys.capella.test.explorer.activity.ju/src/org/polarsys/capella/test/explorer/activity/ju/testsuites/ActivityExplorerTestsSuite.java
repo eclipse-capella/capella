@@ -46,8 +46,4 @@ public class ActivityExplorerTestsSuite extends BasicTestSuite {
     return new ActivityExplorerTestsSuite();
   }
 
-  @Override
-  public List<String> getRequiredTestModels() {
-    return null;
-  }
 }

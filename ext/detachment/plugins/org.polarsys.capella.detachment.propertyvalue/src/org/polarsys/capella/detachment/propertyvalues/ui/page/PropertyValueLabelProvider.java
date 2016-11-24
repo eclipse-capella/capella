@@ -10,36 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.detachment.propertyvalues.ui.page;
 
-import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.swt.graphics.Image;
-import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
-import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
-import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
-import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
-import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
+import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.model.label.LabelRetriever;
+import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
 
-public class PropertyValueLabelProvider implements ITableLabelProvider {
-
-	@Override
-	public void removeListener(ILabelProviderListener listener) {
-		
-	}
-	
-	@Override
-	public boolean isLabelProperty(Object element, String property) {
-		return false;
-	}
-	
-	@Override
-	public void dispose() {
-		
-	}
-	
-	@Override
-	public void addListener(ILabelProviderListener listener) {
-		
-	}
+public class PropertyValueLabelProvider extends CapellaElementLabelProvider {
 	
 	@Override
 	public String getColumnText(Object element, int columnIndex) {
@@ -47,49 +22,17 @@ public class PropertyValueLabelProvider implements ITableLabelProvider {
 		switch (columnIndex){
 		case 0:
 		{
-			return PropertyValueHelper.getStringAttribute(element, "getName"); //$NON-NLS-1$
+			
+			return LabelRetriever.getLabel((EObject)element);
 		}
 		case 1:
 		{
-			return PropertyValueHelper.getStringAttribute(element, "getFullLabel"); //$NON-NLS-1$
+			return LabelRetriever.getFullLabel((EObject)element);
 		}
 		default:
 		{
 			//do nothing
 		}
-		}
-		
-		return null;
-	}
-
-
-	@Override
-	public Image getColumnImage(Object element, int columnIndex) {
-		switch (columnIndex) {
-		case 0:
-
-			if (element instanceof EnumerationPropertyLiteral){
-				return Constants.getEnumLiteralIcon();
-			}
-
-			if (element instanceof EnumerationPropertyType){
-				return Constants.getEnumTypeIcon();
-			}
-
-			if (element instanceof AbstractPropertyValue){
-				return Constants.getPropertyValueIcon();
-			}
-
-			if (element instanceof PropertyValueGroup){
-				return Constants.getPropertyGroupIcon();
-			}
-
-			if (element instanceof PropertyValuePkg){
-				return Constants.getPropertyPackageIcon();
-			}
-
-		default:
-			break;
 		}
 		return null;
 	}

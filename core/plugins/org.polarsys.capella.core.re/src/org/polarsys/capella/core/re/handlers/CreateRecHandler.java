@@ -25,7 +25,7 @@ public class CreateRecHandler extends org.polarsys.capella.common.re.handlers.Cr
    * {@inheritDoc}
    */
   @Override
-  protected ICommand createCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p) {
+  protected ICommand createCommand(Collection<?> selection_p, IProgressMonitor progressMonitor_p) {
     return new CreateRecCommand(selection_p, progressMonitor_p) {
 
     };

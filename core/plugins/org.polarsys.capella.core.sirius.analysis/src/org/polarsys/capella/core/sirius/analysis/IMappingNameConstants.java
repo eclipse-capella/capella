@@ -24,8 +24,11 @@ public interface IMappingNameConstants {
   /**
    * Contextual DataFlow
    */
+  @Deprecated
   String SUB_FUNCTION_MAPPING_NAME = "FunctionUnder"; //$NON-NLS-1$
+  @Deprecated
   String SUB_CONTROL_NODE_MAPPING_NAME = "NodeUnder"; //$NON-NLS-1$
+  @Deprecated
   String INTERNAL_DATA_FLOW_LAYER_NAME = "Internal Data Flow"; //$NON-NLS-1$
 
   String MS_MODE_STATE_MAPPING_NAME = "SM_ModeState_Container"; //$NON-NLS-1$

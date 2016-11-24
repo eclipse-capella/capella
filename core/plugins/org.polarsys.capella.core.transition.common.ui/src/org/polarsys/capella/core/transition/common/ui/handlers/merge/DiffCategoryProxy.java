@@ -14,19 +14,17 @@ import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.ui.EMFDiffMergeUIPlugin;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
 import org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategory;
+import org.eclipse.emf.diffmerge.ui.viewers.categories.AbstractDifferenceCategory;
+import org.eclipse.emf.diffmerge.ui.viewers.categories.AbstractDifferenceCategoryItem;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
-import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
-public class DiffCategoryProxy implements IDifferenceCategory {
+public class DiffCategoryProxy extends AbstractDifferenceCategoryItem implements IDifferenceCategory{
 
   ICategoryItem item;
 
-  IContext context;
-
-  public DiffCategoryProxy(IContext context, ICategoryItem item) {
+  public DiffCategoryProxy(ICategoryItem item) {
     this.item = item;
-    this.context = context;
   }
 
   @Override
@@ -103,4 +101,45 @@ public class DiffCategoryProxy implements IDifferenceCategory {
     item.setVisible(visible);
   }
 
+  @Override
+  public String getID() {
+    return item.getId();
+  }
+
+  @Override
+  public void copyState(IDifferenceCategory peer) {
+    item.setInFocusMode(peer.isInFocusMode());
+    item.setVisible(peer.isVisible());
+    item.setActive(peer.isActive());
+    item.setModifiable(peer.isModifiable());
+  }
+
+  @Override
+  public IDifferenceCategory clone() throws CloneNotSupportedException {
+    return new CategoryState();
+  }
+  
+  private class CategoryState extends AbstractDifferenceCategory {
+    
+    CategoryState() {
+      copyState(DiffCategoryProxy.this);
+    }
+    
+    @Override
+    public String getID() {
+      return DiffCategoryProxy.this.getID();
+    }
+
+    @Override
+    public String getText(EMFDiffNode node) {
+      return DiffCategoryProxy.this.getText(node);
+    }
+    
+    @Override
+    public boolean covers(IDifference difference, EMFDiffNode node) {
+      return false;
+    }
+
+  }
+  
 }

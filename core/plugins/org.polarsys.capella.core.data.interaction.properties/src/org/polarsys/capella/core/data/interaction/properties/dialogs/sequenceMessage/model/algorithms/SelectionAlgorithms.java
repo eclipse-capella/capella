@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,30 +70,36 @@ public class SelectionAlgorithms {
 		for (CommunicationLink link : CommunicationLinkExt
 				.getAllReceiverCommunicationLink(c2)) {
 			ExchangeItem item = link.getExchangeItem();
-			if (!itemsToProcess.contains(item)) {
-				itemsToProcess.add(item);
+			if (item != null)
+			{
+  			if (!itemsToProcess.contains(item)) {
+  				itemsToProcess.add(item);
+  			}
+  			List<CommunicationLink> targetingLinks = item2receivers.get(item);
+  			if (targetingLinks == null) {
+  				targetingLinks = new ArrayList<CommunicationLink>();
+  				item2receivers.put(item, targetingLinks);
+  			}
+  			targetingLinks.add(link);
 			}
-			List<CommunicationLink> targetingLinks = item2receivers.get(item);
-			if (targetingLinks == null) {
-				targetingLinks = new ArrayList<CommunicationLink>();
-				item2receivers.put(item, targetingLinks);
-			}
-			targetingLinks.add(link);
 		}
 		// calculate communications based on senders
 		List<LinkCommunication> res = new ArrayList<LinkCommunication>();
 		for (CommunicationLink senderLink : CommunicationLinkExt
 				.getAllSenderCommunicationLink(c1)) {
 			ExchangeItem item = senderLink.getExchangeItem();
-			itemsToProcess.remove(item);
-			if (item2receivers.containsKey(item)) {
-				for (CommunicationLink receiverLink : item2receivers.get(item)) {
-					res.add(new LinkCommunication(senderLink, item,
-							receiverLink));
-				}
-			} else {
-				res.add(new LinkCommunication(senderLink, item, null));
-			}
+			if (item != null)
+      {
+  			itemsToProcess.remove(item);
+  			if (item2receivers.containsKey(item)) {
+  				for (CommunicationLink receiverLink : item2receivers.get(item)) {
+  					res.add(new LinkCommunication(senderLink, item,
+  							receiverLink));
+  				}
+  			} else {
+  				res.add(new LinkCommunication(senderLink, item, null));
+  			}
+      }
 		}
 		// calculate partial communications with no sender links
 		for (ExchangeItem item : itemsToProcess) {

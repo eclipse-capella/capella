@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,15 +32,15 @@ public class FP04_FunctionPort_AllocatedEI extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof FunctionInputPort) {
         for (Port fip : FunctionPortExt.getRealizingPorts((FunctionInputPort) eObj)) {
           if (fip instanceof FunctionInputPort) {
             if (!haveCommonEI((FunctionInputPort) eObj, (FunctionInputPort) fip)) {
-              return ctx_p.createFailureStatus(new Object[] { ((FunctionInputPort) eObj).getName() });
+              return ctx.createFailureStatus(new Object[] { ((FunctionInputPort) eObj).getName() });
             }
           }
         }
@@ -48,20 +48,20 @@ public class FP04_FunctionPort_AllocatedEI extends AbstractValidationRule {
         for (Port fop : FunctionPortExt.getRealizingPorts((FunctionOutputPort) eObj)) {
           if (fop instanceof FunctionOutputPort) {
             if (!haveCommonEI((FunctionOutputPort) eObj, (FunctionOutputPort) fop)) {
-              return ctx_p.createFailureStatus(new Object[] { ((FunctionOutputPort) eObj).getName() });
+              return ctx.createFailureStatus(new Object[] { ((FunctionOutputPort) eObj).getName() });
             }
           }
         }
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
-  protected boolean haveCommonEI(FunctionInputPort fip1_p, FunctionInputPort fip2_p) {
-    for (ExchangeItem item : fip1_p.getIncomingExchangeItems()) {
-      if (!fip2_p.getIncomingExchangeItems().contains(item)) {
+  protected boolean haveCommonEI(FunctionInputPort fip1, FunctionInputPort fip2) {
+    for (ExchangeItem item : fip1.getIncomingExchangeItems()) {
+      if (!fip2.getIncomingExchangeItems().contains(item)) {
         boolean found = false;
-        for (ExchangeItem ei : fip2_p.getIncomingExchangeItems()) {
+        for (ExchangeItem ei : fip2.getIncomingExchangeItems()) {
           for (AbstractTrace trace : ei.getOutgoingTraces()) {
             if (((trace instanceof ExchangeItemRealization) && item.equals(((ExchangeItemRealization) trace).getRealizedItem()))
              || ((trace instanceof InformationRealization) && item.equals(((InformationRealization) trace).getTargetElement())))
@@ -78,11 +78,11 @@ public class FP04_FunctionPort_AllocatedEI extends AbstractValidationRule {
     return true;
   }
 
-  protected boolean haveCommonEI(FunctionOutputPort fop1_p, FunctionOutputPort fop2_p) {
-    for (ExchangeItem item : fop1_p.getOutgoingExchangeItems()) {
-      if (!fop2_p.getOutgoingExchangeItems().contains(item)) {
+  protected boolean haveCommonEI(FunctionOutputPort fop1, FunctionOutputPort fop2) {
+    for (ExchangeItem item : fop1.getOutgoingExchangeItems()) {
+      if (!fop2.getOutgoingExchangeItems().contains(item)) {
         boolean found = false;
-        for (ExchangeItem ei : fop2_p.getOutgoingExchangeItems()) {
+        for (ExchangeItem ei : fop2.getOutgoingExchangeItems()) {
           for (AbstractTrace trace : ei.getOutgoingTraces()) {
             if (((trace instanceof ExchangeItemRealization) && item.equals(((ExchangeItemRealization) trace).getRealizedItem()))
              || ((trace instanceof InformationRealization) && item.equals(((InformationRealization) trace).getTargetElement())))

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,5 +20,5 @@ public interface IInterModelIntegrityPreferences {
   /**
    * Default value for prevent on the fly inter-model dependency violation
    */
-  public static final Boolean PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION_DEFAULT = Boolean.FALSE;
+  public static final Boolean PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION_DEFAULT = Boolean.TRUE;
 }

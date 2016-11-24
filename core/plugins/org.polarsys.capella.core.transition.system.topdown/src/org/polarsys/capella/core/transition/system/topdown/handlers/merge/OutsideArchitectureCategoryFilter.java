@@ -32,7 +32,8 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class OutsideArchitectureCategoryFilter extends CategoryFilter {
 
   public OutsideArchitectureCategoryFilter(IContext context) {
-    super(context, Messages.OutsideArchitectureCategoryFilter, null);
+    super(context, Messages.OutsideArchitectureCategoryFilter, Messages.OutsideArchitectureCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(false);
     setVisible(false);
     setActive(true);

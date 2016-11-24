@@ -68,21 +68,67 @@
                   commandId="org.polarsys.capella.core.data.migration.project"
                   id="org.polarsys.capella.core.data.migration.project"
                   icon="icons/full/etools16/capella_migrate.gif">
-                <visibleWhen checkEnabled="true">
-                </visibleWhen> 
+               <visibleWhen
+                     checkEnabled="false">
+                  <iterate
+                        ifEmpty="false"
+                        operator="and">
+                     <adapt
+                           type="org.eclipse.core.resources.IProject">
+                        <or>
+                           <test
+                                 property="org.eclipse.core.resources.projectNature"
+                                 value="org.polarsys.capella.project.nature">
+                           </test>
+                           <test
+                                 property="org.eclipse.core.resources.projectNature"
+                                 value="org.polarsys.capella.library.nature">
+                           </test>
+                        </or>
+                     </adapt>
+                  </iterate>
+               </visibleWhen>
             </command>
             <command
                   commandId="org.polarsys.capella.core.data.migration.model"
                   id="org.polarsys.capella.core.data.migration.model"
                   icon="icons/full/etools16/capella_migrate.gif">
-                <visibleWhen checkEnabled="true">
+                <visibleWhen checkEnabled="false">
+                   <iterate
+                         ifEmpty="false"
+                         operator="and">
+                      <adapt
+                            type="org.eclipse.core.resources.IFile">
+                         <or>
+                            <test
+                                  property="org.eclipse.core.resources.extension"
+                                  value="melodymodeller">
+                            </test>
+                            <test
+                                  property="org.eclipse.core.resources.extension"
+                                  value="melodyfragment">
+                            </test>
+                         </or>
+                      </adapt>
+                   </iterate>
                 </visibleWhen> 
             </command>
             <command
                   commandId="org.polarsys.capella.core.data.migration.aird"
                   id="org.polarsys.capella.core.data.migration.aird"
                   icon="icons/full/etools16/capella_migrate.gif">
-                <visibleWhen checkEnabled="true">
+                <visibleWhen checkEnabled="false">
+                   <iterate
+                         ifEmpty="false"
+                         operator="and">
+                      <adapt
+                            type="org.eclipse.core.resources.IFile">
+                         <test
+                               property="org.eclipse.core.resources.extension"
+                               value="aird">
+                         </test>
+                      </adapt>
+                   </iterate>
                 </visibleWhen> 
             </command>
             
@@ -90,7 +136,6 @@
          
       </menuContribution>
    </extension>
-   
    
    <!-- Contributions that should not be removed between versions -->
    <extension
@@ -135,6 +180,24 @@
 	            id="org.polarsys.capella.migration">
 	      </CommandlineExtension>
 	</extension>
+   
+   
+   
+   <extension
+         point="org.polarsys.capella.core.data.migration.migrationContributions">
+	  <migrationContribution
+         class="org.polarsys.capella.core.data.migration.af.ViewpointMigrationContribution"/>         
+   </extension>
+   
+   <extension
+         point="org.polarsys.capella.core.data.migration.migrationContributors">
+      <migrationContributor
+         class="org.polarsys.capella.core.data.migration.af.MetadataUpdateContributor"/>
+      <migrationContributor
+         class="org.polarsys.capella.core.data.migration.af.ViewpointMigrationContributor"/>
+   </extension>
+   
+   
    
    <!-- Contributions that should be removed between versions -->
    <extension

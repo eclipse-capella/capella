@@ -86,4 +86,5 @@ public class DefaultLauncher extends TransposerLauncher {
   protected WorkflowActivityParameter buildInitializationActivities() {
     return new WorkflowActivityParameter();
   }
+
 }

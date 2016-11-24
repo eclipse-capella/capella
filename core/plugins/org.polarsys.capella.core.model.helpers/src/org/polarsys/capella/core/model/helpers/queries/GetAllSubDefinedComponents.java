@@ -35,17 +35,15 @@ public class GetAllSubDefinedComponents extends AbstractQuery {
   public List<Component> getAllSubDefinedComponents(BlockArchitecture architecture) {
     List<Component> comps = new ArrayList<Component>();
     LinkedList<Component> subs = new LinkedList<Component>();
-    List<Component> internal = new ArrayList<Component>();
 
     subs.addAll(ComponentExt.getSubDefinedComponents(architecture));
     while (subs.size() > 0) {
       Component sub = subs.removeFirst();
       comps.add(sub);
-      internal = ComponentExt.getSubDefinedComponents(sub);
+      List<Component> internal = ComponentExt.getSubDefinedComponents(sub);
       comps.addAll(internal);
       subs.addAll(internal);
     }
     return comps;
   }
-
 }

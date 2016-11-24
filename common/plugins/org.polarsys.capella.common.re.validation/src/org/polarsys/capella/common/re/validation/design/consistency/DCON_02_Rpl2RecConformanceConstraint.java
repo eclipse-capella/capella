@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,13 +58,10 @@ public class DCON_02_Rpl2RecConformanceConstraint extends AbstractModelConstrain
     selection.add(rpl);
     Rpl2RecConformanceCheckLauncher launcher = new Rpl2RecConformanceCheckLauncher();
     launcher.run(selection, false, new NullProgressMonitor());
-    IComparison comparison = launcher.getComparison();
-    if (comparison != null) {
-      if (comparison.getNbDifferences() > 0) {
-        // When the target is a REC, we need to set the RPL as target of the created failure status to be able to use it
-        // in the quick-fix, so create always a status with the RPL as target.
-        return createFailureStatus(ctx, rpl, new Object[] { rpl, rpl.getOrigin() });
-      }
+    if (!launcher.isConform()) {
+      // When the target is a REC, we need to set the RPL as target of the created failure status to be able to use it
+      // in the quick-fix, so create always a status with the RPL as target.
+      return createFailureStatus(ctx, rpl, new Object[] { rpl, rpl.getOrigin() });
     }
     return ctx.createSuccessStatus();
   }

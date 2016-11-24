@@ -18,8 +18,7 @@
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.1.0"
     xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0"
     xmlns:org.polarsys.capella.core.data.pa.deployment="http://www.polarsys.org/capella/core/pa/deployment/1.1.0"
-    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/1.1.0"
-    id="7350744c-5196-4b14-bfad-50a9e840be18"
+    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/1.1.0" id="7350744c-5196-4b14-bfad-50a9e840be18"
     name="testOnRules">
   <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue" id="5f092e02-b663-41f4-a89c-9f5acd818430"
       key="projectApproach" value="SingletonComponents"/>

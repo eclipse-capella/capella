@@ -29,7 +29,7 @@
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0}(CommunicationLink) of kind [{2}] should only have {1}(ExchangeItem) of kind [{3}]
+                  {0} (CommunicationLink) of kind [{1}] should only reference Exchange Item of kind [{2}] (current: {3} (ExchangeItem) [{4}])
                </message>
                <description>
                   This rule checks that a CommunicationLink kind is only used with  a specific CommunicatinLink protocol.
@@ -48,7 +48,7 @@
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0}(CommunicationLink) of kind [{1}] should only have protocol of kind [{2}].
+                  {0} (CommunicationLink) of kind [{1}] should only have protocol of kind [{2}].
                </message>
                <description>
                   This rule checks that a CommunicationLink protocol are only used with a specific CommunicatinLink kind.

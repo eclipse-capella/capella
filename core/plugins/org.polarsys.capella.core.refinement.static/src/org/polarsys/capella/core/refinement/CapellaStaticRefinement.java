@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,7 +36,7 @@ public class CapellaStaticRefinement extends StaticRefinement {
   private static final String STATIC_REFINEMENT_EXTENSION_ID = "staticRefinementExtension"; //$NON-NLS-1$
   private Logger _logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
 
-  public CapellaStaticRefinement(NamedElement context_p) {
+  public CapellaStaticRefinement(NamedElement context) {
     super();
 
     Comparator<IConfigurationElement> priorityComparator = new ExtensionPriorityComparator();
@@ -47,11 +47,11 @@ public class CapellaStaticRefinement extends StaticRefinement {
     for (IConfigurationElement configurationElement : staticRefinementProvider) {
       /** logging */
       String loggedMsg = MessageFormat.format("new staticRefinementProvider : \"{0}\".", configurationElement.getAttribute(ExtensionPointHelper.ATT_ID)); //$NON-NLS-1$
-      _logger.debug(new EmbeddedMessage(loggedMsg, IReportManagerDefaultComponents.REFINEMENT, context_p));
+      _logger.debug(new EmbeddedMessage(loggedMsg, IReportManagerDefaultComponents.REFINEMENT, context));
       /** */
       IProcessor processor = (IProcessor) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
       if (processor != null) {
-        processor.setContext(context_p);
+        processor.setContext(context);
 
         addPlug(processor);
       }

@@ -34,15 +34,15 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
  */
 public abstract class CommandHandler extends AbstractHandler {
 
-  protected Collection<Object> getInitialSelection(Object evaluationContext) {
+  protected Collection<?> getInitialSelection(Object evaluationContext) {
     IEvaluationContext context = (IEvaluationContext) evaluationContext;
-    return getSemanticObjects((Collection<Object>) context.getDefaultVariable());
+    return getSemanticObjects((Collection<?>) context.getDefaultVariable());
   }
 
-  public Collection<Object> getSemanticObjects(Collection<Object> elements) {
-    Collection<Object> result = new ArrayList<Object>();
+  public Collection<EObject> getSemanticObjects(Collection<?> elements) {
+    Collection<EObject> result = new ArrayList<EObject>();
     for (Object object : elements) {
-      Object semantic = resolveSemanticObject(object);
+      EObject semantic = resolveSemanticObject(object);
       if (semantic != null) {
         result.add(semantic);
       }
@@ -50,24 +50,24 @@ public abstract class CommandHandler extends AbstractHandler {
     return result;
   }
 
-  public Object resolveSemanticObject(Object object) {
-    Object semantic = null;
+  public EObject resolveSemanticObject(Object object) {
+    EObject semantic = null;
 
     if (object != null) {
       if (object instanceof EObject) {
-        semantic = object;
+        semantic = (EObject) object;
 
       } else if (object instanceof IAdaptable) {
         Object adapter = ((IAdaptable) object).getAdapter(EObject.class);
         if (adapter instanceof EObject) {
-          semantic = adapter;
+          semantic = (EObject) adapter;
         }
       }
     }
     return semantic;
   }
 
-  protected abstract ICommand createCommand(Collection<Object> selection, IProgressMonitor progressMonitor);
+  protected abstract ICommand createCommand(Collection<?> selection, IProgressMonitor progressMonitor);
 
   public Object execute(final ExecutionEvent event) throws ExecutionException {
     try {
@@ -77,16 +77,16 @@ public abstract class CommandHandler extends AbstractHandler {
     }
   }
 
-  public Object execute(Collection<Object> selection) throws ExecutionException {
+  public Object execute(Collection<?> selection) throws ExecutionException {
     return execute(selection, ICommonConstants.EMPTY_STRING);
   }
 
-  public Object execute(Collection<Object> selection, String name) throws ExecutionException {
+  public Object execute(Collection<?> selection, String name) throws ExecutionException {
     try {
       LongRunningListenersRegistry.getInstance().operationStarting(getClass());
       ICommand cmd = createCommand(selection, new NullProgressMonitor());
-      if (cmd instanceof TransitionCommand) {
-        ((TransitionCommand) cmd).setName(name);
+      if (cmd instanceof LauncherCommand) {
+        ((LauncherCommand) cmd).setName(name);
       }
       TransactionHelper.getExecutionManager((Collection<? extends EObject>) getSemanticObjects(selection)).execute(cmd);
     } finally {
@@ -96,11 +96,11 @@ public abstract class CommandHandler extends AbstractHandler {
     return null;
   }
 
-  protected Collection<Object> getSelection(ExecutionEvent event) {
+  protected Collection<?> getSelection(ExecutionEvent event) {
     IEvaluationContext context = (IEvaluationContext) event.getApplicationContext();
     Object selection = context.getDefaultVariable();
     if (selection instanceof Collection) {
-      return (Collection) selection;
+      return (Collection<?>) selection;
     }
     return Collections.emptyList();
   }

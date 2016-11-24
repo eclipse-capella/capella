@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import java.util.EnumSet;
@@ -208,7 +207,7 @@ public class MarkerViewFilter extends ViewerFilter {
       } else if (selection instanceof EObject){
         Resource resource = ((EObject) selection).eResource();
         if (resource != null){
-          URI uri = ((EObject) selection).eResource().getURI();
+          URI uri = resource.getURI();
           if (uri != null && uri.isPlatformResource()){
             String platformResourceString = uri.toPlatformString(true);
             result = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformResourceString)).getProject();

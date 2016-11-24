@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,16 +33,16 @@ public class ME01G_ExchangeItemAllocation extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
 
     if (eObj instanceof ExchangeItemAllocation) {
       List<EObject> objects = RefinementLinkExt.getInvalidAttachedToBestElement(eObj, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM);
       if (objects.size()>0) {
-        return createFailureStatus(ctx_p, new Object[] { ((AbstractNamedElement)eObj.eContainer()).getName(), CapellaElementExt.getName(objects), BlockArchitectureExt.getRootBlockArchitecture(objects.get(0)), BlockArchitectureExt.getRootBlockArchitecture(eObj.eContainer())});
+        return createFailureStatus(ctx, new Object[] { ((AbstractNamedElement)eObj.eContainer()).getName(), CapellaElementExt.getName(objects), BlockArchitectureExt.getRootBlockArchitecture(objects.get(0)), BlockArchitectureExt.getRootBlockArchitecture(eObj.eContainer())});
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
 }

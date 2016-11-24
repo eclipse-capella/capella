@@ -7,7 +7,7 @@ Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.polarsys.capella.common.ui,
  org.polarsys.capella.core.data.business.queries,
- org.polarsys.capella.core.validation,
+ org.polarsys.capella.core.validation;visibility:=reexport,
  org.polarsys.capella.common.queries
 Export-Package: org.polarsys.capella.core.data.cs.validation.component,
  org.polarsys.capella.core.data.cs.validation.componentcontext,

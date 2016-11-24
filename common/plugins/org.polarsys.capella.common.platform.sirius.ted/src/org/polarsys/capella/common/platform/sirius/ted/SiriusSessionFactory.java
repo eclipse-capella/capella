@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,12 +18,17 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
@@ -45,7 +50,11 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl;
+import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
+import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
+import org.polarsys.kitalpha.ad.metadata.helpers.ViewpointMetadata;
 
 /**
  * This class is a fork of {@link SessionFactoryImpl}.<br>
@@ -90,7 +99,7 @@ public class SiriusSessionFactory implements SessionFactory {
     if (alreadyExistingResource) {
       session = loadSessionModelResource(sessionResourceURI, transactionalEditingDomain, monitor);
     } else {
-      session = createSessionResource(sessionResourceURI, transactionalEditingDomain, monitor);
+      session = createSessionResource(sessionResourceURI, transactionalEditingDomain, true, monitor);
     }
     return session;
   }
@@ -120,7 +129,7 @@ public class SiriusSessionFactory implements SessionFactory {
           };
           monitor.worked(2);
         } else {
-          session = createSessionResource(sessionResourceURI, transactionalEditingDomain, new SubProgressMonitor(monitor, 2));
+          session = createSessionResource(sessionResourceURI, transactionalEditingDomain, false, new SubProgressMonitor(monitor, 2));
         }
       }
     } catch (WrappedException e) {
@@ -132,14 +141,20 @@ public class SiriusSessionFactory implements SessionFactory {
     return session;
   }
 
-  protected Session createSessionResource(final URI sessionResourceURI, final TransactionalEditingDomain transactionalEditingDomain, IProgressMonitor monitor)
+  protected Session createSessionResource(URI sessionResourceURI, final TransactionalEditingDomain transactionalEditingDomain, boolean forceMetadataCreation, final IProgressMonitor monitor)
       throws CoreException {
-    Session session = null;
     try {
       monitor.beginTask("Session creation", 2);
       Resource sessionModelResource = new ResourceSetImpl().createResource(sessionResourceURI);
+
+      Resource metadataResource = null;
+      if (forceMetadataCreation) {
+        metadataResource = createMetadataResource(transactionalEditingDomain, sessionResourceURI, monitor);
+      }
+
       DAnalysis analysis = ViewpointFactory.eINSTANCE.createDAnalysis();
       sessionModelResource.getContents().add(analysis);
+
       try {
         sessionModelResource.save(Collections.emptyMap());
       } catch (IOException e) {
@@ -152,7 +167,7 @@ public class SiriusSessionFactory implements SessionFactory {
         throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, "session creation failed: the resource content is empty."));
       }
       analysis = (DAnalysis) sessionModelResource.getContents().get(0);
-      session = new DAnalysisSessionImpl(analysis) {
+      final Session session = new DAnalysisSessionImpl(analysis) {
         @Override
         public Collection<Resource> getSemanticResources() {
           Collection<Resource> semanticResources = new ArrayList<Resource>(super.getSemanticResources());
@@ -160,11 +175,78 @@ public class SiriusSessionFactory implements SessionFactory {
           return Collections.unmodifiableCollection(semanticResources);
         }
       };
+
+      if (metadataResource != null) {
+        final URI metadataResourceURI = metadataResource.getURI();
+        ExecutionManagerRegistry.getInstance().getExecutionManager(transactionalEditingDomain).execute(new AbstractReadWriteCommand() {
+          @Override
+          public void run() {
+            session.addSemanticResource(metadataResourceURI, monitor);
+          }
+        });
+      }
+
       monitor.worked(1);
-    } finally {
+
+      return session;
+    }
+    finally {
       monitor.done();
     }
-    return session;
+  }
+
+  /**
+   * @param uri
+   * @return
+   */
+  protected boolean isCapellaProject(URI uri) {
+    try {
+      if (uri.isPlatformResource()) {
+        IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true)));
+        IProject project = file.getProject();
+        return project.hasNature("org.polarsys.capella.project.nature") || project.hasNature("org.polarsys.capella.library.nature");
+      }
+
+    } catch (Exception ex) {
+      //This is not a valid local project
+    }
+
+    return false;
+}
+
+  /**
+   * Creates the AFM metadata resource</br>
+   * (This resource will only be created when the aird resource does not exist yet, if the aird resource already exists then a model migration shall be done)
+   * 
+   * @param domain
+   * @param resourceURI
+   * @param monitor
+   * @return the created resource (may be null if the resource does not belong to a Capella project)
+   */
+  protected Resource createMetadataResource(TransactionalEditingDomain domain, URI resourceURI, IProgressMonitor monitor) {
+    SubMonitor progress = SubMonitor.convert(monitor, 2);
+    try {
+      if (!isCapellaProject(resourceURI)) {
+        return null;
+      }
+
+      URI uri = resourceURI.trimFileExtension().appendFileExtension(ViewpointMetadata.STORAGE_EXTENSION);
+
+      progress.beginTask("Create an empty metadata resource", 1);
+      Resource resource = MetadataHelper.getViewpointMetadata(domain.getResourceSet()).initMetadataStorage(uri);
+      progress.worked(1);
+
+      try {
+        progress.beginTask("Save metadata model", 1);
+        resource.save(Collections.emptyMap());
+      } catch (Exception e) {
+        // we couldn't do this
+      }
+      progress.worked(1);
+      return resource;
+    } finally {
+      progress.done();
+    }
   }
 
   /**

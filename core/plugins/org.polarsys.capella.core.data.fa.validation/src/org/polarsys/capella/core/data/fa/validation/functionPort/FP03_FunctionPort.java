@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,9 +34,9 @@ public abstract class FP03_FunctionPort extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof FunctionInputPort) {
         FunctionInputPort fip = (FunctionInputPort) eObj;
@@ -46,8 +46,8 @@ public abstract class FP03_FunctionPort extends AbstractValidationRule {
           for (EObject ref : EObjectExt.getReferencers(item, FaPackage.Literals.FUNCTION_INPUT_PORT__INCOMING_EXCHANGE_ITEMS)) {
             if (!ref.equals(fip) && (ref instanceof FunctionInputPort)) {
               AbstractFunction fct_ref = (AbstractFunction) ref.eContainer();
-              if (!validate(ctx_p, fct_fip, fip, fct_ref, (FunctionPort) ref)) {
-                return ConstraintStatus.createStatus(ctx_p, fip, Arrays.asList(fip, ref), getMessagePattern(),
+              if (!validate(ctx, fct_fip, fip, fct_ref, (FunctionPort) ref)) {
+                return ConstraintStatus.createStatus(ctx, fip, Arrays.asList(fip, ref), getMessagePattern(),
                   new Object[]{fip.getName(), fct_fip.getName(), ((FunctionPort) ref).getName(), fct_ref.getName()});
               }
             }
@@ -61,8 +61,8 @@ public abstract class FP03_FunctionPort extends AbstractValidationRule {
           for (EObject ref : EObjectExt.getReferencers(item, FaPackage.Literals.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS)) {
             if (!ref.equals(fop) && (ref instanceof FunctionOutputPort)) {
               AbstractFunction fct_ref = (AbstractFunction) ref.eContainer();
-              if (!validate(ctx_p, fct_fop, fop, fct_ref, (FunctionPort) ref)) {
-                return ConstraintStatus.createStatus(ctx_p, fop, Arrays.asList(fop, ref), getMessagePattern(),
+              if (!validate(ctx, fct_fop, fop, fct_ref, (FunctionPort) ref)) {
+                return ConstraintStatus.createStatus(ctx, fop, Arrays.asList(fop, ref), getMessagePattern(),
                   new Object[]{fop.getName(), fct_fop.getName(), ((FunctionPort) ref).getName(), fct_ref.getName()});
               }
             }
@@ -70,10 +70,10 @@ public abstract class FP03_FunctionPort extends AbstractValidationRule {
         }
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
   protected abstract String getMessagePattern();
 
-  protected abstract boolean validate(IValidationContext ctx_p, AbstractFunction fct1_p, FunctionPort fp1_p, AbstractFunction fct2_p, FunctionPort fp2_p);
+  protected abstract boolean validate(IValidationContext ctx, AbstractFunction fct1, FunctionPort fp1, AbstractFunction fct2, FunctionPort fp2);
 }

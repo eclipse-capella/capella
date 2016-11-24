@@ -91,10 +91,5 @@ public class MultipleModels extends BasicTestCase {
       assertTrue(openAEEditor.getEditorInput().getSession() != createdSession);
     }
   }
-	
-	@Override
-	public List<String> getRequiredTestModels() {
-		// No test model needed -> they will be created during test execution.
-		return null;
-	}
+
 }

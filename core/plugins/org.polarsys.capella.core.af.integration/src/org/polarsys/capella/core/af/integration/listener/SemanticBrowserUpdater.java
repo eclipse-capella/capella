@@ -14,7 +14,6 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart;
-import org.polarsys.kitalpha.emde.extension.ModelExtensionListener;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionOverallListener;
 
 /**

@@ -25,7 +25,7 @@ public class CreateReplicaHandler extends org.polarsys.capella.common.re.handler
    * {@inheritDoc}
    */
   @Override
-  protected ICommand createCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p) {
+  protected ICommand createCommand(Collection<?> selection_p, IProgressMonitor progressMonitor_p) {
     return new CreateReplicaCommand(selection_p, progressMonitor_p) {
 
     };

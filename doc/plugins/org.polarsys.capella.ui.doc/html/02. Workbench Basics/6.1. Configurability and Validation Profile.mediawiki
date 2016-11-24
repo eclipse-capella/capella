@@ -152,181 +152,7 @@ To show how the workspace preference export/import mechanism works let&rsquo;s c
 The following table gives the set of preferences in each step.
 
                                                                                      
-{| border="1"
-|-
-| 
-'''Preferences'''
-
- 
-<br>
-
- 
-|  
-| 
-'''Preferences 				<br>
-''''''exported 				by User 1'''
-
- 
-| 
-'''Modification 				''''''performed 				by User 2'''
-
- 
-| 
-'''Preferences 				<br>
-imported by User 2'''
-
- 
-| 
-'''Remarks'''
-
- 
-|-
-|  
-|-
-| 
-'''MA '''
-
- 
-| 
-delete/Confirm&hellip;
-
- 
-| 
-'''N'''
-
- 
-| 
-'''Y'''
-
- 
-| 
-'''N'''
-
- 
-| 
-We get the same preferences <br>
-that 				we have exported
-
- 
-|-
-| 
-delete/If 				reusing...
-
- 
-| 
-'''N'''
-
- 
-| 
-'''Y'''
-
- 
-| 
-'''N'''
-
- 
-|-
-| 
-Model/Inherit
-
- 
-| 
-'''Y'''
-
- 
-| 
-'''N'''
-
- 
-| 
-'''Y'''
-
- 
-|-
-| 
-Model/deploy
-
- 
-| 
-'''N'''
-
- 
-| 
-'''Y'''
-
- 
-| 
-'''N'''
-
- 
-|-
-|  
-|  
-|  
-|  
-|  
-|  
-|-
-| 
-'''Model Validation'''
-
- 
-| 
-DCOM_14
-
- 
-| 
-'''N'''
-
- 
-| 
-'''N'''
-
- 
-| 
-'''N'''
-
- 
-| 
-Exported 				preferences are different<br>
-from imported ones<sup>(1)</sup>
-
- 
-|-
-| 
-DCOM_15
-
- 
-| 
-'''Y'''
-
- 
-| 
-'''N'''
-
- 
-| 
-'''Y'''
-
- 
-|-
-| 
-DCOM_16
-
- 
-| 
-'''N'''
-
- 
-| 
-'''Y'''
-
- 
-| 
-'''Y'''
-
- 
-|} 
+[[Image:Images/ExportImportEPF.PNG]]
 <br>
 <br>
 
@@ -375,148 +201,8 @@ To show how the workspace initialization with &ndash;EPF argument works let&rsqu
 
  
 The following table gives the preferences in each step
-
                                                                              
-{| border="1"
-|-
-| 
-'''Preferences'''
-
- 
-<br>
-
- 
-|  
-| 
-'''Preferences <br>
-to 					export'''
-
- 
-| 
-'''Preferences 					<br>
-after Import'''
-
- 
-| 
-'''Remarks'''
-
- 
-|-
-|  
-|  
-|  
-|  
-|  
-|-
-| 
-'''MA '''
-
- 
-| 
-delete/Confirm&hellip;
-
- 
-| 
-'''N'''
-
- 
-| 
-'''N'''
-
- 
-| 
-We get the same preferences 					<br>
-that we have exported
-
- 
-|-
-| 
-delete/If 					reusing...
-
- 
-| 
-'''N'''
-
- 
-| 
-'''N'''
-
- 
-|-
-| 
-Model/Inherit
-
- 
-| 
-'''Y'''
-
- 
-| 
-'''Y'''
-
- 
-|-
-| 
-Model/deploy
-
- 
-| 
-'''N'''
-
- 
-| 
-'''N'''
-
- 
-|-
-|  
-|  
-|  
-|  
-|-
-| 
-'''Model Validation'''
-
- 
-| 
-DCOM_14
-
- 
-| 
-'''N'''
-
- 
-| 
-'''N'''
-
- 
-|-
-| 
-DCOM_15
-
- 
-| 
-'''Y'''
-
- 
-| 
-'''Y'''
-
- 
-|-
-| 
-DCOM_16
-
- 
-| 
-'''N'''
-
- 
-| 
-'''N'''
-
- 
-|}  
+[[Image:Images/ExportImportEPF.PNG]]  
 <br>
 <br>
 
@@ -583,6 +269,19 @@ Capella 				Project specific preferences will 				'''override''' 				Workspace p
 <br>
 <br>
 
+{| border="1"
+|-
+| 
+[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_3c78e109.png|48x48px]]
+
+ 
+| 
+
+Note that the Transitions/Generation preference category has a workspace scope. Thus, it is not possible to configure this preference category for a specific project.
+ 
+|}  
+<br>
+<br>
          
 {| border="1"
 |-
@@ -666,7 +365,7 @@ Referencing 				a Capella Configuration Project from a Capella project will 				
 
  
 | 
-For 				'''Capella Team''' 				solution, the only way to apply shared preferences is to 				reference a remote read-only Capella Configuration Project from 				each Capella Team connection project.
+For 				'''Capella Team''' 				solution, the only way to apply shared preferences is to 				reference a shared read-only Capella Configuration Project from 				each Capella Team connection project. Though it is thoroughly possible to have project-scope configuration for connected project, this functionality is not recommended. This could make different clients not to have the same configuration for the same project on the server and may lead to incoherent behaviors.
 
  
 |}  

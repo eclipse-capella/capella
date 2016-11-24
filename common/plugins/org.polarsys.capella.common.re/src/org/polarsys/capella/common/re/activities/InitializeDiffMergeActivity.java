@@ -16,7 +16,6 @@ import org.eclipse.core.runtime.Status;
 import org.polarsys.capella.common.re.handlers.merge.AvoidReAttributeCategoryFilter;
 import org.polarsys.capella.common.re.handlers.merge.AvoidUnsynchronizedFeatureCategoryFilter;
 import org.polarsys.capella.core.transition.common.activities.InitializeDiffMergeFromTransformationActivity;
-import org.polarsys.capella.core.transition.common.handlers.merge.DefaultFocusCategoryFilter;
 import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
@@ -34,8 +33,6 @@ public class InitializeDiffMergeActivity extends InitializeDiffMergeFromTransfor
   protected IStatus initializeCategoriesHandlers(IContext context, IMergeHandler handler,
       ActivityParameters activityParams) {
     super.initializeCategoriesHandlers(context, handler, activityParams);
-
-    handler.addCategory(new DefaultFocusCategoryFilter(context), context);
 
     handler.addCategory(new AvoidReAttributeCategoryFilter(context), context);
 

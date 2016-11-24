@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -34,6 +35,7 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -49,13 +51,16 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
+import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.query.legacy.ecore.factories.EFactory;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -272,7 +277,8 @@ public class CapellaServices {
   }
 
   public EObject forceRefresh(DDiagram diagram) {
-    if (null != diagram) {
+    boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
+    if (null != diagram && !automaticRefresh) {
       // Refreshes the diagram
       DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
     }
@@ -2573,5 +2579,30 @@ public class CapellaServices {
     }
 
     return result;
+  }
+
+  /**
+   * Returns the EClass of the given domain. 
+   * @param domain : Sirius Domain Class which can be EClassName or prefix:EClassName
+   */
+  public EClass getEClass(EObject context, String domain) {
+    EClass clazz = null;
+    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(context);
+    //We would call accessor.getEClass(domain) but it doesn't exist and EcoreIntrinsicExtender.getEClassesFromName is private
+    try {
+      clazz = accessor.createInstance(domain).eClass();
+    } catch (Exception e) {
+      //Nothing here
+    }
+    return clazz;
+  }
+
+  public EClass getDomainClass(EObject context, DiagramElementMapping mapping) {
+    DiagramElementMappingQuery query  = new DiagramElementMappingQuery(mapping);
+    Option<String> domainClass = query.getDomainClass();
+    if (domainClass.some()) {
+      return getEClass(context, domainClass.get());
+    }
+    return null;
   }
 }

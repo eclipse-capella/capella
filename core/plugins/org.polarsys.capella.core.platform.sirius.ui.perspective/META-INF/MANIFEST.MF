@@ -7,12 +7,13 @@ Bundle-Activator: org.polarsys.capella.core.platform.sirius.ui.PerspectivePlugin
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.platform.sirius.ui,
+ org.polarsys.capella.core.platform.sirius.ui.app,
  org.polarsys.capella.core.platform.sirius.ui.perspective
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.ui.ide.application,
- org.eclipse.ui.ide,
+ org.eclipse.ui.ide.application;visibility:=reexport,
+ org.eclipse.ui.ide;visibility:=reexport,
  org.eclipse.help.ui,
  org.eclipse.pde.runtime,
  org.eclipse.sirius.ui,

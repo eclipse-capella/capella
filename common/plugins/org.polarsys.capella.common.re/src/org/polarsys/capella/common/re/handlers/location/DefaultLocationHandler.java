@@ -93,8 +93,10 @@ public class DefaultLocationHandler implements ILocationHandler {
     } // when creating a RPL, user can select the REC instead of a real location..., isSelectionForSource should be true in that case
 
     // Change the resource according to selection
-    Resource sourceResource = (sourceElement == null) || (sourceElement.eResource() == null) ? destinationResource : sourceElement.eResource();
-    Resource targetResource = (targetElement == null) || (targetElement.eResource() == null) ? destinationResource : targetElement.eResource();
+    Resource sourceElementResource;
+    Resource targetElementResource;
+    Resource sourceResource = (sourceElement == null) || ((sourceElementResource = sourceElement.eResource()) == null) ? destinationResource : sourceElementResource;
+    Resource targetResource = (targetElement == null) || ((targetElementResource = targetElement.eResource()) == null) ? destinationResource : targetElementResource;
     if (isSelectionForSource) {
       sourceResource = destinationResource;
     } else {
@@ -109,7 +111,6 @@ public class DefaultLocationHandler implements ILocationHandler {
     }
 
     return false;
-
   }
 
   /**

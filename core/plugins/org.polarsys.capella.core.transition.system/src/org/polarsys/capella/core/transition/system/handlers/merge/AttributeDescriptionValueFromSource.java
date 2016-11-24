@@ -16,13 +16,15 @@ import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class AttributeDescriptionValueFromSource extends CategoryFilter {
 
   public AttributeDescriptionValueFromSource(IContext context) {
-    super(context, Messages.AttributeDescriptionValueFromSource, null);
+    super(context, Messages.AttributeDescriptionValueFromSource, Messages.AttributeDescriptionValueFromSource_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setActive(true);
     setInFocusMode(false);
     setVisible(true);

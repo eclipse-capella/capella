@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,8 +15,6 @@ import java.util.Collections;
 import java.util.HashSet;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
@@ -25,35 +23,27 @@ import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityPkgExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.transition.common.commands.TransitionCommand;
+import org.polarsys.capella.core.transition.common.commands.LauncherCommand;
+import org.polarsys.capella.core.transition.common.launcher.DefaultLauncher;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.core.transition.system.topdown.launcher.HeadlessIntramodelLauncher;
 
 /**
  */
-public class IntramodelTransitionCommand extends TransitionCommand {
+public class IntramodelTransitionCommand extends LauncherCommand {
 
-  /**
-   * @param _rootElement_p
-   * @param progressMonitor_p
-   */
-  public IntramodelTransitionCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p) {
-    super(selection_p, progressMonitor_p);
+  public IntramodelTransitionCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
+    super(selection, progressMonitor);
   }
 
   @Override
   public String getName() {
-    return getClass().getName();
+    return "Capella Transition";
   }
 
   @Override
-  protected void performTransformation(Collection<Object> elements_p) {
-    HeadlessIntramodelLauncher launcher = new HeadlessIntramodelLauncher() {
-
-      @Override
-      protected Collection<GenericParameter<?>> getHeadlessParameters() {
-        return getHeadlessParametersForLauncher();
-      }
+  protected DefaultLauncher createLauncher() {
+    return new HeadlessIntramodelLauncher() {
 
       @Override
       protected String getMapping() {
@@ -66,9 +56,8 @@ public class IntramodelTransitionCommand extends TransitionCommand {
       }
 
     };
-    launcher.run(elements_p, true, getProgressMonitor());
   }
-
+  
   protected String getTransitionMapping() {
 
     String id = "org.polarsys.";
@@ -119,13 +108,10 @@ public class IntramodelTransitionCommand extends TransitionCommand {
     return ITopDownConstants.TRANSITION_TOPDOWN;
   }
 
-  protected Collection<GenericParameter<?>> getHeadlessParametersForLauncher() {
-    return Collections.EMPTY_LIST;
-  }
 
   @Override
-  protected Collection<Object> retrieveRelatedElements(Object rootElement_p) {
-    Object rootElement = rootElement_p;
+  protected Collection<Object> retrieveRelatedElements(Object element) {
+    Object rootElement = element;
 
     if (rootElement instanceof Part) {
       rootElement = ((Part) rootElement).getAbstractType();
@@ -225,4 +211,5 @@ public class IntramodelTransitionCommand extends TransitionCommand {
 
     return Collections.singleton(rootElement);
   }
+
 }

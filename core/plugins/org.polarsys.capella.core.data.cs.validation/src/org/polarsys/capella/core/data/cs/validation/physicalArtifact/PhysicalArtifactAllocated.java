@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,14 +28,14 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 public class PhysicalArtifactAllocated extends AbstractValidationRule {
 
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
     if ((eObj instanceof AbstractPhysicalArtifact) && isInPhysicalLayer(eObj)) {
       AbstractPhysicalArtifact artifact = (AbstractPhysicalArtifact) eObj;
       List<EObject> crossReferenceList =
           EObjectExt.getReferencers(artifact, EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION, ModellingcorePackage.Literals.ABSTRACT_TRACE__TARGET_ELEMENT);
       if (!crossReferenceList.isEmpty()) {
-        return ctx_p.createSuccessStatus();
+        return ctx.createSuccessStatus();
       }
       String name = null;
       if (artifact instanceof PhysicalLink) {
@@ -45,18 +45,18 @@ public class PhysicalArtifactAllocated extends AbstractValidationRule {
       } else if (artifact instanceof PhysicalPort) {
         name = ((PhysicalPort) artifact).getName();
       }
-      return ctx_p.createFailureStatus(name, artifact.eClass().getName());
+      return ctx.createFailureStatus(name, artifact.eClass().getName());
     }
     return null;
   }
 
   /**
-   * @param eObj_p
+   * @param eObj
    * @return
    */
-  private boolean isInPhysicalLayer(EObject eObj_p) {
+  private boolean isInPhysicalLayer(EObject eObj) {
 
-    EObject container = eObj_p.eContainer();
+    EObject container = eObj.eContainer();
     boolean hasContainer = null != container;
     boolean containerIsPhysicalComponent = container instanceof PhysicalComponent;
 

@@ -1093,16 +1093,12 @@ public class CollectionImpl extends ClassifierImpl implements Collection {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public EList<DataType> getIndex() {
+
 		if (index == null) {
-			index = new EObjectResolvingEList<DataType>(DataType.class, this, InformationPackage.COLLECTION__INDEX) {
-			  @Override
-			  protected boolean isUnique() {
-			    return false;
-			  }
-			};
+			index = new EObjectResolvingEList<DataType>(DataType.class, this, InformationPackage.COLLECTION__INDEX);
 		}
 		return index;
 	}

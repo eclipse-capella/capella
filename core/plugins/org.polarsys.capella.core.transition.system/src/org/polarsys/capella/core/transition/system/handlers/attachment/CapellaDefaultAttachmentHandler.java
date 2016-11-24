@@ -66,7 +66,6 @@ public class CapellaDefaultAttachmentHandler extends DefaultAttachmentHandler {
    */
   @Override
   public void removeElements(Collection<EObject> objects, IContext context) {
-
     DeleteStructureCommand command = new DeleteStructureCommand(TransactionHelper.getEditingDomain((Collection) context
         .get(ITransitionConstants.TRANSITION_SOURCES)), objects, true);
     if (command.canExecute()) {

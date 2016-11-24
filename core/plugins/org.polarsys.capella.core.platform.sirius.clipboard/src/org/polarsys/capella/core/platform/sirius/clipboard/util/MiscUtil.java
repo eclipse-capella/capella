@@ -19,6 +19,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
@@ -29,11 +31,14 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.ui.statushandlers.StatusManager;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.core.platform.sirius.clipboard.Activator;
+import org.polarsys.capella.core.platform.sirius.clipboard.Messages;
 
 /**
  * Utility class providing simple reusable services
@@ -53,7 +58,13 @@ public final class MiscUtil {
     try {
       ExecutionManager em = TransactionHelper.getExecutionManager(selection);
       em.execute(cmd);
-    } catch(RuntimeException e) {
+      
+    } catch(Exception e) {
+      String message = Messages.CapellaDiagramPasteAction_Failure;
+      if (e.getMessage() != null) {
+        message = e.getMessage();
+      }
+      StatusManager.getManager().handle(new Status(IStatus.WARNING, Activator.PLUGIN_ID, message, e));
       result = false;
     }
     return result;

@@ -11,7 +11,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.forms,
  org.polarsys.capella.core.data.gen,
  org.polarsys.kitalpha.model.common.commands,
- org.polarsys.capella.core.platform.sirius.ui.actions
+ org.polarsys.capella.core.platform.sirius.ui.actions,
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.core.platform.sirius.ui.navigator,
+ org.polarsys.capella.core.data.gen.edit,
+ org.polarsys.capella.core.ui.toolkit
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName

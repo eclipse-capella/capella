@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,25 +35,25 @@ public class TimeLapseHelper {
   
   /**
    * Return the list of {@link TimeLapse}s of a selected kind contained by a given {@link Scenario}
-   * @param sc_p the target {@link Scenario}
-   * @param eclass_p the type 
+   * @param sc the target {@link Scenario}
+   * @param eclass the type 
    * @return {@link List} of matching TimeLapse, an empty one otherwise.
    * @throws MergeToolException
    */
-  static public List<TimeLapse> getTimeLapseOfType(final Scenario sc_p, final EClass eclass_p) throws MergeToolException {
+  static public List<TimeLapse> getTimeLapseOfType(final Scenario sc, final EClass eclass) throws MergeToolException {
   
     List<TimeLapse> result = new ArrayList<TimeLapse>();
     
     if (
-        null == sc_p ||
-        !InteractionPackage.Literals.TIME_LAPSE.isSuperTypeOf(eclass_p)
+        null == sc ||
+        !InteractionPackage.Literals.TIME_LAPSE.isSuperTypeOf(eclass)
     ) {
       //TODO more explicit message
       throw new MergeToolException(MergeMessages.genericToolError);
     }
     
-    for (TimeLapse tl: sc_p.getOwnedTimeLapses())  {
-      if (tl.eClass().equals(eclass_p)) {
+    for (TimeLapse tl: sc.getOwnedTimeLapses())  {
+      if (tl.eClass().equals(eclass)) {
         result.add(tl);
       }
     }
@@ -64,25 +64,25 @@ public class TimeLapseHelper {
   /**
    * Check if a given {@link InteractionFragment} is used as "bound" of a {@link TimeLapse} contained
    * into a given {@link Scenario}
-   * @param sc_p the target {@link Scenario}
-   * @param ifrag_p the target {@link InteractionFragment}
+   * @param sc the target {@link Scenario}
+   * @param ifrag the target {@link InteractionFragment}
    * @return the matching {@link TimeLapse}, whether exists, <code>null</code> otherwise
    */
-  public static TimeLapse isAnyTimeLapseUseThisIfrag(final Scenario sc_p, final InteractionFragment ifrag_p) throws MergeToolException {
+  public static TimeLapse isAnyTimeLapseUseThisIfrag(final Scenario sc, final InteractionFragment ifrag) throws MergeToolException {
     
     TimeLapse result = null;
     
-    if (!ifrag_p.eContainer().equals(sc_p)) { // The InteractionFragment must be contained into the Scenario
+    if (!ifrag.eContainer().equals(sc)) { // The InteractionFragment must be contained into the Scenario
       //TODO more explicit message
       throw new MergeToolException(MergeMessages.genericToolError);
     }
     
     Object target = null;
-    for (TimeLapse tl: sc_p.getOwnedTimeLapses()) {
+    for (TimeLapse tl: sc.getOwnedTimeLapses()) {
      
       for (EStructuralFeature feature: getBoundFeaturesList()) {
         target = tl.eGet(feature); 
-        if (null!= target && target.equals(ifrag_p)) {
+        if (null!= target && target.equals(ifrag)) {
           result = tl;
           break;
         } 
@@ -99,22 +99,22 @@ public class TimeLapseHelper {
   
   /**
    * Check the position of a given {@link InteractionFragment} e.g. is starting or finishing on a {@link TimeLapse}
-   * @param tl_p the target {@link TimeLapse}
-   * @param ifrag_p the {@link InteractionFragment}
+   * @param tl the target {@link TimeLapse}
+   * @param ifrag the {@link InteractionFragment}
    * @return The feature whether found, <code>null</code> otherwise.
    * @throws MergeToolException
    */
-  public static EStructuralFeature returnPositionOn(TimeLapse tl_p, InteractionFragment ifrag_p) throws MergeToolException {
+  public static EStructuralFeature returnPositionOn(TimeLapse tl, InteractionFragment ifrag) throws MergeToolException {
     
     EStructuralFeature result = null;
     
-    if (null == tl_p || null == ifrag_p) {
+    if (null == tl || null == ifrag) {
       //TODO more explicit message
       throw new MergeToolException(MergeMessages.genericToolError);
     }
     
     for (EStructuralFeature feature: getBoundFeaturesList()) {
-      if (tl_p.eGet(feature).equals(ifrag_p)) {
+      if (tl.eGet(feature).equals(ifrag)) {
         result = feature;
         break;
       }
@@ -126,28 +126,28 @@ public class TimeLapseHelper {
   
   /**
    * return the "owner" of an {@link InteractionOperand}. 
-   * @param io_p the {@link InteractionOperand} to check
+   * @param io the {@link InteractionOperand} to check
    * @return <code>null</code> whether not found, the matching {@link CombinedFragment} otherwise.
    */
-  public static CombinedFragment getCombinedFragment(InteractionOperand io_p) {
+  public static CombinedFragment getCombinedFragment(InteractionOperand io) {
     
     CombinedFragment result = null;
     
     try {
       
-      Scenario scenario = (Scenario) io_p.eContainer();
+      Scenario scenario = (Scenario) io.eContainer();
       CombinedFragment current = null;
 
       List<TimeLapse> combinedFragments = TimeLapseHelper.getTimeLapseOfType(scenario, InteractionPackage.Literals.COMBINED_FRAGMENT);
       for (TimeLapse tl: combinedFragments) {
         current = (CombinedFragment) tl;
-        if (current.getReferencedOperands().contains(io_p)) {
+        if (current.getReferencedOperands().contains(io)) {
           result = current;
           break;
         }
       }
       
-    } catch (MergeToolException exception_p) {
+    } catch (MergeToolException exception) {
       // do nothing
     }
     

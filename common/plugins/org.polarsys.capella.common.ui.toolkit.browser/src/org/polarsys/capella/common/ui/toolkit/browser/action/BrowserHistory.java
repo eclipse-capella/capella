@@ -13,6 +13,7 @@ package org.polarsys.capella.common.ui.toolkit.browser.action;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -26,12 +27,17 @@ public class BrowserHistory {
   /**
    * Browser navigation history entry.
    */
-  protected class BrowserNavigationHistoryEntry {
+  public class BrowserNavigationHistoryEntry {
     /**
      * Weak reference on a model element object.
      */
     private WeakReference<Object> _referencedObject;
 
+    /**
+     * Flag to explicitly mark the entry invalid
+     */
+    private boolean valid = true;
+    
     /**
      * Constructor.
      * @param realObject The underlying object to navigate to.
@@ -48,13 +54,30 @@ public class BrowserHistory {
       return _referencedObject.get();
     }
 
+    /**
+     * A history entry is invalid if it is either not referencing any object, if
+     * it references an EObject which is a proxy, or if the entry was
+     * explicitly marked invalid via {@link #invalidate()}.
+     * 
+     * @return whether the entry is valid or not
+     */
     public boolean isValid() {
-      boolean result = true;
-      Object realObject = getRealObject();
-      if ((null == realObject) || ((realObject instanceof EObject) && ((EObject) realObject).eIsProxy())) {
-        result = false;
+      boolean result = valid;
+      if (result) {
+        Object realObject = getRealObject();
+        if ((null == realObject) || ((realObject instanceof EObject) && ((EObject) realObject).eIsProxy())) {
+          result = false;
+        }
       }
       return result;
+    }
+    
+    /**
+     * Explicitly marks this entry as invalid so that it will be removed during the next
+     * {@link BrowserHistory#update(Object) update}.
+     */
+    public void invalidate(){
+      valid = false;
     }
   }
 
@@ -98,9 +121,16 @@ public class BrowserHistory {
   }
 
   /**
-   * Clean dead entries i.e entries that reference objects which are no longer loaded.
+   * Returns a read-only collection view over all navigation entries in the history
    */
-  private void cleanDeadEntries() {
+  public Collection<BrowserNavigationHistoryEntry> getAllNavigationEntries(){
+    return Collections.unmodifiableCollection(_entries);
+  }
+
+  /**
+   * Clean invalid entries i.e entries that reference objects which are no longer loaded.
+   */
+  private void cleanInvalidEntries() {
     Iterator<BrowserNavigationHistoryEntry> iterator = _entries.iterator();
     int i = 0;
     while (iterator.hasNext()) {
@@ -202,9 +232,7 @@ public class BrowserHistory {
    * @param realObject
    */
   public void update(Object realObject) {
-    // Clean dead entries i.e entries that reference objects which are no
-    // longer loaded.
-    cleanDeadEntries();
+    cleanInvalidEntries();
     if (_shouldDoUpdate && (null != realObject)) {
       // retain backward history only.
       if (_entries.size() == MAX_SIZE) {

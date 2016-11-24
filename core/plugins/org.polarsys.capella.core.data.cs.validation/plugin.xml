@@ -98,6 +98,49 @@
                   This rule checks that a component uses/implements interfaces from the same level or from an upper level.
                </description>
             </constraint>
+            
+            
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.ExchangeItemAllocationProtocol"
+                  id="DWF_I_21"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_21 - Exchange Item Allocation Protocol consistency"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Exchange Item Allocation {0} ({1}) should have ({2}) {3}.
+               </message>
+               <target
+                     class="ExchangeItemAllocation">
+               </target>
+               <description>
+                  This rule checks consistency between the allocated Exchange Item and Acquisition/Transmission protocols of Exchange Item Allocation
+               </description>
+            </constraint>
+            
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.ExchangeItemAllocationProtocolSequence"
+                  id="DWF_I_22"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_22 - Exchange Item Allocation Protocol used on Sequence Diagram consistency"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Exchange Item Allocation {0} ({1}) should have ({2}) {3}, since it is referenced through {4} (Sequence Message) ({5}, {6} return message) in {7} (Scenario)
+               </message>
+               <target
+                     class="ExchangeItemAllocation">
+               </target>
+               <description>
+                  This rule checks consistency between the Acquisition/Transmission protocols of Exchange Item Allocation and its usage through Sequence Message
+               </description>
+            </constraint>
+            
+            
             <constraint
                   class="org.polarsys.capella.core.data.cs.validation.interface_.ExchangeItemAllocationAllocatedItem"
                   id="DWF_I_11"

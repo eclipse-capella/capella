@@ -15,8 +15,7 @@
     xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0"
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.1.0"
     xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/1.1.0"
-    id="fa2c0e54-4cfd-4965-bbd3-eee558e03e9c"
+    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/1.1.0" id="fa2c0e54-4cfd-4965-bbd3-eee558e03e9c"
     name="RulesOnIntegrityTest">
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
       id="8d4bc79a-bdfd-459f-ae3d-0ddbf990ee15" name="ProgressStatus">

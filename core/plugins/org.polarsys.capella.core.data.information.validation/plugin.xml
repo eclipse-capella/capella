@@ -387,14 +387,14 @@ This rule checks that an element doesn&apos;t contain a naming conflict between 
                <target class="AbstractCollectionValue">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.association.AssociationTargetClassPropertyIsKey" id="DWF_D_38" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_38 - Association Target Class Property key value check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.association.AssociationTargetClassPropertyIsKey" id="DWF_D_38" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_38 - Association Target Class Property key value check" severity="ERROR" statusCode="1">
                <message>
-                  {0} (Association) of kind ASSOCIATION can only exist, if and only if the target class has or inherits at least one property being a key.
+                  {0} (Association Property) of kind ASSOCIATION can only exist, if and only if the target class has or inherits at least one property being a part of key.
                </message>
                <description>
-                  This rule checks that a reference relationship association of  kind ASSOCIATION can only exist, if and only if the target class has or inherits at least one property being a key.
+                  This rule checks that an Association Property of kind ASSOCIATION can only exist, if and only if the target class has or inherits at least one property being a part of key.
                </description>
-               <target class="Association">
+               <target class="Property">
                </target>
             </constraint>
             <constraint class="org.polarsys.capella.core.data.information.validation.association.AssociationConsistencyBetweenLayers" id="DWF_D_40" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_40 - Association Consistency between layers" severity="WARNING" statusCode="1">

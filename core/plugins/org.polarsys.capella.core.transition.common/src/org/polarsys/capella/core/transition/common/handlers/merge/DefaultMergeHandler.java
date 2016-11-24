@@ -18,6 +18,7 @@ import java.util.LinkedList;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.diffmerge.api.IComparison;
 import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.diffdata.EComparison;
@@ -26,59 +27,110 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class DefaultMergeHandler implements IMergeHandler {
 
-  protected Collection<ICategoryItem> categories;
+  protected Collection<ICategorySet> categorySets = new LinkedList<ICategorySet>();
+
+  protected Collection<ICategoryItem> categories = new LinkedList<ICategoryItem>();
+
+  protected final boolean processTargetDifferences;
+
+  public DefaultMergeHandler() {
+    this(false);
+  }
+
+  public DefaultMergeHandler(boolean processTargetDifferences) {
+    this.processTargetDifferences = processTargetDifferences;
+  }
+
+  public void addCategorySet(ICategorySet set, IContext context) {
+    categorySets.add(set);
+  }
 
   public void addCategory(ICategoryItem filter, IContext context) {
-    if (categories == null) {
-      categories = new LinkedList<ICategoryItem>();
-    }
     categories.add(filter);
   }
 
   public IStatus processDifferences(IContext context, Collection<IDifference> diffSource,
       Collection<IDifference> diffTarget) {
-    processDifferences(context, diffSource, Role.TARGET);
+
+    Collection<IDifference> differences = diffSource;
+
+    if (processTargetDifferences) {
+      differences = new ArrayList<IDifference>(differences);
+      differences.addAll(diffTarget);
+    }
+
+    EComparison comparison = (EComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
+    mergeDifferences(comparison, filterDifferences(context, differences));
+
     return Status.OK_STATUS;
   }
 
-  public IStatus processDifferences(IContext context, Collection<IDifference> differences, Role role) {
+  /**
+   * Filters the list of detected differences according to the merge handlers category items.
+   *
+   * @param context
+   *          the transposer context
+   * @param differences
+   *          an unfiltered collection of differences
+   * @return the filtered collection of differences
+   */
+  protected Collection<IDifference> filterDifferences(IContext context, Collection<IDifference> differences) {
     Collection<IDifference> result = new ArrayList<IDifference>();
     for (IDifference difference : differences) {
       if (!isFiltered(difference)) {
         result.add(difference);
       }
     }
+    return result;
+  }
 
-    EComparison comparison = (EComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
-    comparison.merge(result, role, true, new NullProgressMonitor());
-
-    return Status.OK_STATUS;
+  /**
+   * Merge the given collection of differences into the target model
+   *
+   * @param comparison
+   *          the compariton
+   * @param differences
+   *          a possibly empty collection of differences to merge
+   */
+  protected void mergeDifferences(IComparison comparison, Collection<IDifference> differences) {
+    comparison.merge(differences, Role.TARGET, true, new NullProgressMonitor());
   }
 
   public boolean isFiltered(IDifference difference) {
-    boolean focused = false;
-    boolean excluded = false;
-
+    boolean globalFocus = false; // At least one category is in focus mode
+    boolean diffFocus = false; // At least one covering category is in focus mode
     for (ICategoryItem category : categories) {
+      
       if (category.isActive()) {
-        if (category.isInFocusMode()) {
-          focused = focused || category.covers(difference);
-        } else {
-          excluded = excluded || category.covers(difference);
+        boolean catFocus = category.isInFocusMode();
+        globalFocus = globalFocus || catFocus;
+        boolean covered = category.covers(difference);
+        if (covered) {
+          // Covered by active category
+          if (!catFocus) {
+            // Covered by category in filtering mode
+            return true;
+          }
+          // Else covered by category in focus mode: proceed
+          diffFocus = true;
         }
       }
     }
-    if (excluded)
-      return true;
+    // Not filtered out by any category
+    return globalFocus && !diffFocus; // All categories in focus mode are non-covering
 
-    if (focused)
-      return false;
-
-    return true;
   }
 
   public IStatus init(IContext context) {
     categories = new LinkedList<ICategoryItem>();
+
+    addCategorySet(new CategorySet(ITransitionConstants.CATEGORY_BUSINESS,
+        Messages.DefaultMergeHandler_CategoryBusiness_Name, Messages.DefaultMergeHandler_CategoryBusiness_Description),
+        context);
+    addCategorySet(new CategorySet(ITransitionConstants.CATEGORY_SEMANTIC,
+        Messages.DefaultMergeHandler_CategorySemantic_Name, Messages.DefaultMergeHandler_CategorySemantic_Description),
+        context);
+
     return Status.OK_STATUS;
   }
 
@@ -88,6 +140,10 @@ public class DefaultMergeHandler implements IMergeHandler {
       categories = null;
     }
     return Status.OK_STATUS;
+  }
+
+  public Collection<ICategorySet> getCategoriesSet(IContext context) {
+    return Collections.unmodifiableCollection(categorySets);
   }
 
   public Collection<ICategoryItem> getCategories(IContext context) {

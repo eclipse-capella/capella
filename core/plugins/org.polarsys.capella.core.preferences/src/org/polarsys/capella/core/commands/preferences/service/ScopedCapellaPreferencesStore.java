@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -76,12 +76,12 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
   /*
 	 * 
 	 */
-  private static final DefaultScope defaultScopPref = new DefaultScope();
+  private static final DefaultScope defaultScopPref = (DefaultScope) DefaultScope.INSTANCE;
 
   /*
 	 * 
 	 */
-  private static final InstanceScope instanceScopPrefs = new InstanceScope();
+  private static final InstanceScope instanceScopPrefs = (InstanceScope) InstanceScope.INSTANCE;
 
   /*
 	 * 
@@ -241,6 +241,16 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
     IProject selectedCapellaProject = PreferencesHelper.getSelectedCapellaProject();
     return getPreferenceFromCustomScopes(inProjectScope, optionName, selectedCapellaProject);
   }
+  
+  /**
+   * @param project
+   * @param optionName
+   * @return
+   */
+  public boolean containsKey(String optionName) {
+    IProject selectedCapellaProject = PreferencesHelper.getSelectedCapellaProject();
+    return containsKey(true, optionName, selectedCapellaProject);
+  }
 
   /**
    * @param project
@@ -266,6 +276,22 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
     return Activator.getDefault().getPreferenceStore().getBoolean(optionName);
   }
 
+  public static boolean containsKey(boolean inProjectScope, String optionName, IProject selectedCapellaProject) {
+    if (inProjectScope && (selectedCapellaProject != null)) {
+      if (PreferencesHelper.hasConfigurationProject(selectedCapellaProject)) {
+        final IProject refProjectConfiguration = PreferencesHelper.getReferencedProjectConfiguration(selectedCapellaProject);
+        if (getValueFromPresistentPropertyStore(refProjectConfiguration, optionName) != null) {
+          return true;
+        }
+      }
+      
+      if (getValueFromPresistentPropertyStore(selectedCapellaProject, optionName) != null) {
+        return true;
+      }
+    }
+    return Activator.getDefault().getPreferenceStore().contains(optionName);
+  }
+  
   /**
    * @param preferenceShowCapellaProjectConcept_p
    * @param contentChild_p
@@ -297,10 +323,10 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
       	}
     }
     	if (getDefaultBoolean(name) == value) {
-    		IEclipsePreferences pref = new InstanceScope().getNode(Activator.PLUGIN_ID);
+    		IEclipsePreferences pref = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
     		pref.remove(name);
     	} else {
-    		IEclipsePreferences pref = new InstanceScope().getNode(Activator.PLUGIN_ID);
+    		IEclipsePreferences pref = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
     		pref.putBoolean(name, value);
     	}
   }
@@ -414,9 +440,9 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
     }
 
     if (getDefaultString(name) == value) {
-      new InstanceScope().getNode(Activator.PLUGIN_ID).remove(name);
+      InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).remove(name);
     } else {
-      new InstanceScope().getNode(Activator.PLUGIN_ID).put(name, value);
+      InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).put(name, value);
     }
 
   }
@@ -450,11 +476,11 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
 
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.eclipse.jface.preference.IPreferenceStore#contains(java.lang.String)
+  /**
+   * Deprecated: unexpected behavior, should use containsKey(String) [Bug 1127] 
    */
   @Override
+  @Deprecated
   public boolean contains(String name) {
     boolean contains = super.contains(name);
     IProject selectedCapellaProject = PreferencesHelper.getSelectedCapellaProject();

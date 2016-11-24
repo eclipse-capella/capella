@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.refinement.scenarios.core.plugs;
 
-
 /**
  */
 public interface IRefinementProgressListener {
@@ -18,23 +17,23 @@ public interface IRefinementProgressListener {
   /**
    * Set the name of the job that will be listened
    *
-   * @param jobName_p
+   * @param jobName
    */
-  public void setJobName(String jobName_p);
+  public void setJobName(String jobName);
 
   /**
    * Set the job duration and show the window
    *
-   * @param finalValue_p
+   * @param finalValue
    */
-  public void setProgressEnd(int finalValue_p);
+  public void setProgressEnd(int finalValue);
 
   /**
    * Notify the job progression
    *
-   * @param stepValue_p
+   * @param stepValue
    */
-  public void notifyProgress(int stepValue_p);
+  public void notifyProgress(int stepValue);
 
   /**
    * Notify that the job is finished and destroy the window

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,6 @@ import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.RecCatalog;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.helpers.ReplicableElementExt;
-import org.polarsys.capella.common.re.launcher.ReLauncher;
 import org.polarsys.capella.common.re.queries.CatalogElement_AllUsedElements;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
@@ -41,14 +40,13 @@ import org.polarsys.capella.core.re.commands.DeleteReplicaPreserveRelatedElement
 import org.polarsys.capella.core.re.commands.UpdateCurCommand;
 import org.polarsys.capella.core.re.commands.UpdateDefCommand;
 import org.polarsys.capella.core.re.commands.UpdateReplicaCommand;
-import org.polarsys.capella.core.re.launcher.UpdateDefLauncher;
-import org.polarsys.capella.core.re.launcher.UpdateReplicaLauncher;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
-import org.polarsys.capella.core.transition.common.transposer.SharedWorkflowActivityParameter;
+import org.polarsys.capella.core.transition.common.handlers.merge.DefaultMergeHandler;
+import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
-import org.polarsys.capella.test.recrpl.ju.handlers.filter.CheckedFilteringHandler;
 import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
+import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  * This class is a generic test case for REC/REPL tests.<br>
@@ -183,49 +181,22 @@ public abstract class RecRplTestCase extends BasicTestCase {
     executeCommand(command);
   }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
-  protected void updateReplicaCheck(Collection<EObject> elements, CatalogElement replica) {
-    ICommand command = new UpdateReplicaCommand((Collection) elements, new NullProgressMonitor()) {
+  protected void updateReplica(Collection<EObject> elements, CatalogElement replica, final Collection<String> disabledCategoryFilters){
 
-      @Override
-      protected ReLauncher createLauncher() {
-        return new UpdateReplicaLauncher() {
+    UpdateReplicaCommand command = new UpdateReplicaCommand((Collection) elements, new NullProgressMonitor());
+    command.addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, new DefaultMergeHandler(true){
 
-          @Override
-          protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
-            SharedWorkflowActivityParameter param = super.getSharedParameter(workflowId);
-            param.addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.FILTERING_DIFFERENCES_HANDLER, new CheckedFilteringHandler(),
-                workflowId));
-            return param;
-          }
-        };
-      }
+              @Override
+              public void addCategory(ICategoryItem filter, IContext context) {
+                super.addCategory(filter, context);
+                if (disabledCategoryFilters.contains(filter.getId())){
+                  filter.setActive(false);
+                }
+              }
 
-    };
+            }, "Merge"));
 
     RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, replica);
-    executeCommand(command);
-  }
-
-  @SuppressWarnings({ "rawtypes", "unchecked" })
-  protected void updateDefCheck(Collection<EObject> elements) {
-    ICommand command = new UpdateDefCommand((Collection) elements, new NullProgressMonitor()) {
-
-      @Override
-      protected ReLauncher createLauncher() {
-        return new UpdateDefLauncher() {
-
-          @Override
-          protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
-            SharedWorkflowActivityParameter param = super.getSharedParameter(workflowId);
-            param.addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.FILTERING_DIFFERENCES_HANDLER, new CheckedFilteringHandler(),
-                workflowId));
-            return param;
-          }
-        };
-      }
-
-    };
     executeCommand(command);
   }
 
@@ -278,7 +249,12 @@ public abstract class RecRplTestCase extends BasicTestCase {
   protected Resource getModelResource() {
     if (modelResource == null) {
       Session session = getSessionForTestModel(getRequiredTestModels().get(0));
-      modelResource = (Resource) session.getSemanticResources().toArray()[0];
+      for (Resource resource : session.getSemanticResources()) {
+        // Exclude AFM's Metadata resource
+        if (resource.getContents().get(0) instanceof Project) {
+          modelResource = resource;
+        }
+      }
     }
     return modelResource;
   }

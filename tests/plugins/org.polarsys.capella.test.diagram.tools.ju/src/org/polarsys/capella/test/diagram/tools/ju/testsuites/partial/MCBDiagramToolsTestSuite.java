@@ -56,8 +56,4 @@ public class MCBDiagramToolsTestSuite extends BasicTestSuite {
     return tests;
   }
 
-  @Override
-  public List<String> getRequiredTestModels() {
-    return null;
-  }
 }

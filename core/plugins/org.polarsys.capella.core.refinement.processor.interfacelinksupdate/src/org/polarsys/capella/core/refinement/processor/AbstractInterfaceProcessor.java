@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,8 +39,8 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
  */
 public abstract class AbstractInterfaceProcessor implements IProcessor {
 
-  private CapellaElement _context = null;
-  private CapellaElement _target = null;
+  private CapellaElement context = null;
+  private CapellaElement target = null;
 
   /**
    * Default constructor
@@ -52,10 +52,10 @@ public abstract class AbstractInterfaceProcessor implements IProcessor {
   /**
    * Constructor
    * 
-   * @param context_p the Element on which the processing will applied
+   * @param context the Element on which the processing will applied
    */
-  public AbstractInterfaceProcessor(CapellaElement context_p) {
-    setContext(context_p);
+  public AbstractInterfaceProcessor(CapellaElement context) {
+    setContext(context);
   }
 
   /**
@@ -68,30 +68,30 @@ public abstract class AbstractInterfaceProcessor implements IProcessor {
   /**
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#setContext(java.util.List)
    */
-  public void setContext(List<ModelElement> context_p) {
-    if ((context_p != null) && (context_p.size()>0)) {
-      setContext(context_p.get(0));
+  public void setContext(List<ModelElement> context) {
+    if ((context != null) && (context.size()>0)) {
+      setContext(context.get(0));
     }
   }
 
   /**
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#setContext(org.polarsys.capella.core.common.model.CapellaElement)
    */
-  public void setContext(ModelElement context_p) {
-    if (context_p instanceof Component) {
-      _context = (Component) context_p;
-    } else if (context_p instanceof ComponentArchitecture) {
-      _context = (ComponentArchitecture) context_p;
-    } else if (context_p instanceof Scenario) {
-      _context = ScenarioExt.getContainer((Scenario) context_p); 
+  public void setContext(ModelElement context) {
+    if (context instanceof Component) {
+      context = (Component) context;
+    } else if (context instanceof ComponentArchitecture) {
+      context = (ComponentArchitecture) context;
+    } else if (context instanceof Scenario) {
+      context = ScenarioExt.getContainer((Scenario) context); 
     }
   }
 
   /**
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#setTarget(org.polarsys.capella.core.common.model.NamedElement)
    */
-  public void setTarget(NamedElement target_p) {
-    _target = target_p;
+  public void setTarget(NamedElement target) {
+    this.target = target;
   }
 
   /**
@@ -103,63 +103,63 @@ public abstract class AbstractInterfaceProcessor implements IProcessor {
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#execute()
    * @throws ProcessorException
    */
-  public void execute(IProgressMonitor progressMonitor_p) throws ProcessorException {
-    if (_target == null) {
-      if (_context instanceof LogicalComponent) {
-        if (!ComponentExt.isComposite((LogicalComponent) _context)) {
-          execute((LogicalComponent) _context);
+  public void execute(IProgressMonitor progressMonitor) throws ProcessorException {
+    if (target == null) {
+      if (context instanceof LogicalComponent) {
+        if (!ComponentExt.isComposite((LogicalComponent) context)) {
+          execute((LogicalComponent) context);
         }
-      } else if (_context instanceof LogicalArchitecture) {
-        for (LogicalComponent lc : SystemEngineeringExt.getAllLogicalComponents(_context)) {
+      } else if (context instanceof LogicalArchitecture) {
+        for (LogicalComponent lc : SystemEngineeringExt.getAllLogicalComponents(context)) {
           if (!ComponentExt.isComposite(lc)) {
             execute(lc);
           }
         }
-      } else if (_context instanceof PhysicalComponent) {
-        execute((PhysicalComponent) _context);
-      } else if (_context instanceof PhysicalArchitecture) {
-        for (PhysicalComponent pc : SystemEngineeringExt.getAllPhysicalComponents(_context)) {
+      } else if (context instanceof PhysicalComponent) {
+        execute((PhysicalComponent) context);
+      } else if (context instanceof PhysicalArchitecture) {
+        for (PhysicalComponent pc : SystemEngineeringExt.getAllPhysicalComponents(context)) {
           execute(pc);
         }
       }
     } else {
-      if (_target instanceof PhysicalComponent) {
-        synchronize((PhysicalComponent) _target);
-      } else if (_target instanceof PhysicalArchitecture) {
-        for (PhysicalComponent pc : SystemEngineeringExt.getAllPhysicalComponents(_target)) {
+      if (target instanceof PhysicalComponent) {
+        synchronize((PhysicalComponent) target);
+      } else if (target instanceof PhysicalArchitecture) {
+        for (PhysicalComponent pc : SystemEngineeringExt.getAllPhysicalComponents(target)) {
           synchronize(pc);
         }
-      } else if (_target instanceof ConfigurationItem) {
-        synchronize((ConfigurationItem) _target);
-      } else if (_target instanceof EPBSArchitecture) {
-        for (ConfigurationItem epbs : SystemEngineeringExt.getAllConfigurationItems(_target)) {
+      } else if (target instanceof ConfigurationItem) {
+        synchronize((ConfigurationItem) target);
+      } else if (target instanceof EPBSArchitecture) {
+        for (ConfigurationItem epbs : SystemEngineeringExt.getAllConfigurationItems(target)) {
           synchronize(epbs);
         }
       }
     }
   }
 
-  protected void execute(System currentElt_p) {
-    for (Component implementorLC : currentElt_p.getAllocatingComponents()) {
+  protected void execute(System currentElt) {
+    for (Component implementorLC : currentElt.getAllocatingComponents()) {
       if (implementorLC instanceof LogicalComponent) {
         synchronize((LogicalComponent) implementorLC);
       }
     }
   }
 
-  protected void execute(LogicalComponent currentElt_p) {
-    for (PhysicalComponent implementorPC : LogicalComponentExt.getImplementors(currentElt_p)) {
+  protected void execute(LogicalComponent currentElt) {
+    for (PhysicalComponent implementorPC : LogicalComponentExt.getImplementors(currentElt)) {
       synchronize(implementorPC);
     }
   }
 
-  protected void execute(PhysicalComponent currentElt_p) {
-    for (ConfigurationItem implementorEPBS : PhysicalComponentExt.getImplementors(currentElt_p)) {
+  protected void execute(PhysicalComponent currentElt) {
+    for (ConfigurationItem implementorEPBS : PhysicalComponentExt.getImplementors(currentElt)) {
       synchronize(implementorEPBS);
     }
   }
 
-  protected abstract void synchronize(LogicalComponent component_p);
-  protected abstract void synchronize(PhysicalComponent component_p);
-  protected abstract void synchronize(ConfigurationItem component_p);
+  protected abstract void synchronize(LogicalComponent component);
+  protected abstract void synchronize(PhysicalComponent component);
+  protected abstract void synchronize(ConfigurationItem component);
 }

@@ -12,7 +12,6 @@
 package org.polarsys.capella.core.transition.common.launcher;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -39,6 +38,11 @@ public class ActivitiesLauncher {
   protected ExtendedCadenceLauncher _cadenceLauncher;
 
   protected HashMap<String, String> _mapOverrides;
+
+  protected SharedWorkflowActivityParameter _parameters = new SharedWorkflowActivityParameter(); 
+  
+  private String name;
+
 
   public class StringArrayIterator implements Iterator<String> {
     private String array[];
@@ -101,19 +105,19 @@ public class ActivitiesLauncher {
     return IReportManagerDefaultComponents.BRIDGE;
   }
 
-  protected Collection<GenericParameter<?>> getHeadlessParameters() {
-    return Collections.EMPTY_LIST;
+  protected String getName() {
+    return name;
   }
 
+  public void setName(String name) {
+    this.name = name;
+  }
+  
   /**
    * 
    */
   protected void processCancel() {
     LogHelper.getInstance().info("Operation has been cancelled", Messages.Activity_Transition);
-  }
-
-  protected String getName() {
-    return Messages.Activity_Transition;
   }
 
   protected ExtendedCadenceLauncher createCadenceLauncher() {
@@ -132,7 +136,7 @@ public class ActivitiesLauncher {
     };
   }
 
-  public void launch(Collection<Object> selection, String purpose, String mappingId, IProgressMonitor monitor) {
+  public void launch(Collection<?> selection, String purpose, String mappingId, IProgressMonitor monitor) {
 
   }
 
@@ -153,10 +157,18 @@ public class ActivitiesLauncher {
     return parameter;
   }
 
-  protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
-    return new SharedWorkflowActivityParameter();
+  public void addParameters(SharedWorkflowActivityParameter parameters) {
+    _parameters.merge(parameters);
   }
-
+  
+  public void addParameter(String idActivity, GenericParameter<?> parameter) {
+    _parameters.addParameter(idActivity, parameter);
+  }
+  
+  public void addSharedParameter(GenericParameter<?> parameter) {
+    _parameters.addSharedParameter(parameter);
+  }
+  
   protected Iterator<String> iteratorWorkflowElements(String workflowId) {
     return new StringArrayIterator(getWorkflowElements(workflowId));
   }
@@ -165,15 +177,14 @@ public class ActivitiesLauncher {
     return new StringArrayIterator(getFinalWorkflowElements(workflowId));
   }
 
-  protected void triggerActivities(Collection<Object> selection, String workflowId, IProgressMonitor monitor) {
+  protected void triggerActivities(Collection<?> selection, String workflowId, IProgressMonitor monitor) {
     try {
-      SharedWorkflowActivityParameter sharedParameter = getSharedParameter(workflowId);
 
       for (Iterator<String> iter = iteratorWorkflowElements(workflowId); iter.hasNext();) {
         String workflowElement = iter.next();
         WorkflowActivityParameter parameter = getParameter(workflowId, workflowElement);
-        WorkflowActivityParameter compoundParameter = addSharedParameter(parameter, sharedParameter);
-        IStatus status = triggerActivities(compoundParameter, workflowId, workflowElement, monitor);
+        mergeParameters(parameter, _parameters);
+        IStatus status = triggerActivities(parameter, workflowId, workflowElement, monitor);
         checkStatus(monitor, status);
       }
 
@@ -187,15 +198,14 @@ public class ActivitiesLauncher {
       throw new TransitionException(e);
 
     } finally {
-      SharedWorkflowActivityParameter sharedParameter = getSharedParameter(workflowId);
-
+      
       try {
 
         for (Iterator<String> iter = iteratorFinalWorkflowElements(workflowId); iter.hasNext();) {
           String workflowElement = iter.next();
           WorkflowActivityParameter parameter = getParameter(workflowId, workflowElement);
-          WorkflowActivityParameter compoundParameter = addSharedParameter(parameter, sharedParameter);
-          IStatus status = triggerActivities(compoundParameter, workflowId, workflowElement, monitor);
+          mergeParameters(parameter, _parameters);
+          IStatus status = triggerActivities(parameter, workflowId, workflowElement, monitor);
           checkStatus(monitor, status);
         }
 
@@ -216,7 +226,7 @@ public class ActivitiesLauncher {
    * @param parameter
    * @param sharedParameter
    */
-  protected WorkflowActivityParameter addSharedParameter(WorkflowActivityParameter parameter, SharedWorkflowActivityParameter sharedParameter) {
+  protected WorkflowActivityParameter mergeParameters(WorkflowActivityParameter parameter, SharedWorkflowActivityParameter sharedParameter) {
     if (sharedParameter != null) {
       for (String idActivities : parameter.getActivitiesID()) {
         ActivityParameters ps = sharedParameter.getActivityParameters(idActivities);
@@ -224,7 +234,6 @@ public class ActivitiesLauncher {
           parameter.addParameter(idActivities, a);
         }
       }
-      return parameter;
     }
     return parameter;
   }
@@ -252,7 +261,7 @@ public class ActivitiesLauncher {
 
   /**
    * @param monitor
-   * @param status 
+   * @param status
    */
   protected void checkStatus(IProgressMonitor monitor, IStatus status) throws Exception {
     if (monitor.isCanceled()) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ public class Rule_DWF_D_38 extends AbstractRulesOnDesignTest {
 	 * @generated
 	 */
 	protected EClass getTargetedEClass() {
-		return InformationPackage.Literals.ASSOCIATION;
+		return InformationPackage.Literals.PROPERTY;
 	}
 
 	/**
@@ -45,12 +45,20 @@ public class Rule_DWF_D_38 extends AbstractRulesOnDesignTest {
 	 */
 	protected List<String> getScopeDefinition() {
 		return Arrays.asList(new String[] {
-				"380071ed-e632-4866-bf8a-0173ee3f0d8b",
-				"0bb9d9b9-e7b6-40d5-8ab0-a30c98d82a51",
-				"86b7958e-02bc-46cb-9478-a36a4d1dbee7",
-				"5d7a570e-e514-4652-a9f5-9806e6ddfedf",
-				"d722fb4b-c7a7-4f79-aa4d-a6b04d5321b3",
-				"2ffb5c3a-9209-470f-88c2-cb02e349af60" });
+				"26874bd4-eb83-472d-9777-40550e405acb",
+				"60587c68-2a8e-4c14-9cf5-b643c06ae0b4",
+				"0768b646-9923-49c5-af01-97da08345f43",
+				"19f98008-4156-4751-9e4e-0ce49ee5cc32",
+				"a81a2c8c-143a-4e96-a05a-483515734bc9",
+				"b0a42627-4e24-4c2a-a8c8-597ae3c41163",
+				"50bd5c8e-eb28-4583-bf7a-2098bc569dc0",
+				"c20ba13e-88be-4aad-814b-1cb4ee7c9094",
+				"cdd105e0-9565-431e-bdc1-1351c2e8a691",
+				"057cf618-964f-4e2e-87d3-6add49a20706",
+				"84983161-5c05-4829-8865-57cb66584716",
+				"f5acf7e6-b934-4b51-97c8-ec91a405fff0",
+				"dc678226-6071-4ab7-b5cf-8a472571ec2b",
+				"bdd61541-a74a-4e29-b532-35b61ceca09e"});
 	}
 
 	/**
@@ -61,9 +69,11 @@ public class Rule_DWF_D_38 extends AbstractRulesOnDesignTest {
 		return Arrays
 				.asList(new OracleDefinition[] {
 						new OracleDefinition(
-								"d722fb4b-c7a7-4f79-aa4d-a6b04d5321b3", 1),
+								"26874bd4-eb83-472d-9777-40550e405acb", 1),
 						new OracleDefinition(
-								"2ffb5c3a-9209-470f-88c2-cb02e349af60", 1) });
+								"60587c68-2a8e-4c14-9cf5-b643c06ae0b4", 1), 
+						new OracleDefinition(
+                "0768b646-9923-49c5-af01-97da08345f43", 1)});
 	}
 
 }

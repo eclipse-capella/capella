@@ -57,6 +57,7 @@ import org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabil
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -531,34 +532,7 @@ public class FunctionalChainServices {
 	}
 
 	public EdgeMapping getInternLinkEdgeMapping(DDiagram diagram) {
-		if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.LDFB_INTERNAL_LINK_MAPPING_NAME);
-		}
-		if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CLDF_INTERNAL_LINK_MAPPING_NAME);
-		}
-		if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.LAB_INTERNAL_LINK_MAPPING_NAME);
-		}
-		if (diagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.PDFB_INTERNAL_LINK_MAPPING_NAME);
-		}
-		if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CPDF_INTERNAL_LINK_MAPPING_NAME);
-		}
-		if (diagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.PAB_INTERNAL_LINK_MAPPING_NAME);
-		}
-		if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.SDFB_INTERNAL_LINK_MAPPING_NAME);
-		}
-		if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CSDF_INTERNAL_LINK_MAPPING_NAME);
-		}
-		if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.SAB_INTERNAL_LINK_MAPPING_NAME);
-		}
-		return null;
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, MappingConstantsHelper.getInternLinkEdgeMapping(diagram));
 	}
 
 	/**

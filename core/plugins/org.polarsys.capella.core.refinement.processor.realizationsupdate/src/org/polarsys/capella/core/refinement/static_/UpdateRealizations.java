@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,28 +36,28 @@ public class UpdateRealizations extends StaticRefinement {
 	/**
 	 * Constructor
 	 * 
-	 * @param context_p
+	 * @param context
 	 */
-	public UpdateRealizations(NamedElement context_p) {
+	public UpdateRealizations(NamedElement context) {
 		super();
 
-		setContext(context_p);
+		setContext(context);
 	}
 
 	/**
 	 * Add processors
 	 * 
-	 * @param context_p
+	 * @param context
 	 */
 	@Override
-	public void setContext(ModelElement context_p) {
-		super.setContext(context_p);
+	public void setContext(ModelElement context) {
+		super.setContext(context);
 
-	    if ((context_p instanceof AbstractCapabilityPkg) ||
-	        (EcoreUtil2.isContainedBy(context_p, CapellacommonPackage.Literals.ABSTRACT_CAPABILITY_PKG)))
+	    if ((context instanceof AbstractCapabilityPkg) ||
+	        (EcoreUtil2.isContainedBy(context, CapellacommonPackage.Literals.ABSTRACT_CAPABILITY_PKG)))
 	    {
-			addPlug(new StaticRealizationContributionProcessor((NamedElement) context_p));
-			addPlug(new DynamicRealizationContributionProcessor((NamedElement) context_p));
+			addPlug(new StaticRealizationContributionProcessor((NamedElement) context));
+			addPlug(new DynamicRealizationContributionProcessor((NamedElement) context));
 	    }
 	}
 

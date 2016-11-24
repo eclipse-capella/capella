@@ -27,8 +27,8 @@ public class IntramodelTransitionHandler extends CommandUIHandler {
    * {@inheritDoc}
    */
   @Override
-  protected ICommand createCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
-    return new IntramodelTransitionCommand((Collection) selection, progressMonitor) {
+  protected ICommand createCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
+    return new IntramodelTransitionCommand(selection, progressMonitor) {
 
       @Override
       protected String getTransitionKind() {

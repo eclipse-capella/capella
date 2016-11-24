@@ -15,14 +15,13 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.common.queries
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.system,
  org.polarsys.capella.core.transition.system.activities,
  org.polarsys.capella.core.transition.system.constants,
  org.polarsys.capella.core.transition.system.domain,
  org.polarsys.capella.core.transition.system.handlers.attachment,
- org.polarsys.capella.core.transition.system.handlers.filter,
  org.polarsys.capella.core.transition.system.handlers.log,
  org.polarsys.capella.core.transition.system.handlers.merge,
  org.polarsys.capella.core.transition.system.handlers.optimize,

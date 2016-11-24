@@ -186,12 +186,13 @@ private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) 
         Resource resource = session.getSessionResource();
         DAnalysis da = (DAnalysis) EcoreUtil.getObjectByType(resource.getContents(),
             ViewpointPackage.Literals.DANALYSIS);
-        Collection<EObject> models = new ArrayList<EObject>();
-        models.addAll(da.getModels());
-        for (DAnalysis refDa : da.getReferencedAnalysis()) {
-          models.addAll(refDa.getModels());
+        Collection<EObject> models = new ArrayList<EObject>(); 
+        if (da != null) {
+          models.addAll(da.getModels());
+          for (DAnalysis refDa : da.getReferencedAnalysis()) {
+            models.addAll(refDa.getModels());
+          }
         }
-
         boolean showProgressAction = false;
         for (EObject model : models) {
           showProgressAction = showProgressAction

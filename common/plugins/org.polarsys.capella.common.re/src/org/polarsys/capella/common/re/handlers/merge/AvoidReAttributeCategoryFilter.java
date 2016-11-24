@@ -14,13 +14,15 @@ import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
 import org.polarsys.capella.common.re.RePackage;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class AvoidReAttributeCategoryFilter extends CategoryFilter {
 
   public AvoidReAttributeCategoryFilter(IContext context) {
-    super(context, AvoidReAttributeCategoryFilter.class.getSimpleName(), null);
+    super(context, Messages.AvoidReAttributeCategoryFilter, Messages.AvoidReAttributeCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(false);
     setActive(true);
     setVisible(false);
@@ -35,6 +37,9 @@ public class AvoidReAttributeCategoryFilter extends CategoryFilter {
           return true;
         }
         if (RePackage.Literals.RE_NAMED_ELEMENT__NAME.equals(((IAttributeValuePresence) diff).getFeature())) {
+          return true;
+        }
+        if (RePackage.Literals.CATALOG_ELEMENT__SUFFIX.equals(((IAttributeValuePresence) diff).getFeature())) {
           return true;
         }
       }

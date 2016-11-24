@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,9 +26,9 @@ public class MDCHK_ComponentPort_Connections extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
 
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof ComponentPort) {
@@ -37,12 +37,12 @@ public class MDCHK_ComponentPort_Connections extends AbstractValidationRule {
         if ((null == port.getComponentExchanges()) || (port.getComponentExchanges().size() == 0)) {
           if ((null == port.getProvidedInterfaces()) || (port.getProvidedInterfaces().size() == 0)) {
             if ((null == port.getRequiredInterfaces()) || (port.getRequiredInterfaces().size() == 0)) {
-              return createFailureStatus(ctx_p, new Object[] { port.getName() });
+              return createFailureStatus(ctx, new Object[] { port.getName() });
             }
           }
         }
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

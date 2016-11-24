@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.xmisupport.internal;
 
 import java.util.Map;
@@ -32,12 +31,12 @@ public class BasicXMISupport implements XMISupport {
   /**
    * {@inheritDoc}
    */
-  public String getID(EObject e) {
+  public String getID(EObject eObject) {
     String result = null;
-    Resource resource = e.eResource();
+    Resource resource = eObject.eResource();
 
     if (resource instanceof XMIResource) {
-      result = ((XMIResource) e.eResource()).getID(e);
+      result = ((XMIResource) resource).getID(eObject);
     } else if (resource != null) {
       XMIResourceAdapter adapter = _loadedBackends.get(resource);
       if (adapter == null) {
@@ -55,10 +54,10 @@ public class BasicXMISupport implements XMISupport {
         }
       }
       if (adapter != null) {
-        result = adapter.get(e);
+        result = adapter.get(eObject);
         if (result == null) {
           result = EcoreUtil.generateUUID();
-          adapter.put(e, result);
+          adapter.put(eObject, result);
         }
       }
     }

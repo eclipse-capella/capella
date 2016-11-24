@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,12 +30,12 @@ public class MDCHK_ComponentPort_PortAllocation extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
     // Precondition.
     if (!(eType == EMFEventType.NULL) || !(eObj instanceof ComponentPort)) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
 
     ComponentPort port = (ComponentPort) eObj;
@@ -47,13 +47,13 @@ public class MDCHK_ComponentPort_PortAllocation extends AbstractValidationRule {
         // Check target Function is nested in source Component.
         Boolean result = PortExt.isRelatedComponentAllocatingRelatedFunction((ComponentPort) sourceElement, (ActivityNode) targetElement);
         if (Boolean.FALSE.equals(result)) {
-          return ctx_p.createFailureStatus(port.getName());
+          return ctx.createFailureStatus(port.getName());
         }
       } else {
-        return ctx_p.createFailureStatus(port.getName());
+        return ctx.createFailureStatus(port.getName());
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
 }

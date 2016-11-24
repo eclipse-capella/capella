@@ -62,11 +62,6 @@ public class RulesCoverageTest extends BasicTestCase {
     Assert.assertTrue(missingRules.size() + " validation rules are not tested: " + missingRules, missingRules.isEmpty()); //$NON-NLS-1$
   }
 
-  @Override
-  public List<String> getRequiredTestModels() {
-    return null;
-  }
-
   public void testRulesCoverageTest() throws Exception {
     test();
   }

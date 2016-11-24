@@ -547,12 +547,14 @@ public class SystemEngineeringExt {
 
   public static List<Interface> getInterfaces(LogicalArchitecture architecture) {
     final Set<Interface> result = new LinkedHashSet<Interface>();
-    for (final SystemAnalysis ctxArchitecture : CollectionExt.filter(((SystemEngineering) architecture.eContainer()).getOwnedArchitectures(),
-        SystemAnalysis.class)) {
-      result.addAll(getInterfaces(ctxArchitecture));
+    if(architecture != null){
+      for (final SystemAnalysis ctxArchitecture : CollectionExt.filter(((SystemEngineering) architecture.eContainer()).getOwnedArchitectures(),
+          SystemAnalysis.class)) {
+        result.addAll(getInterfaces(ctxArchitecture));
+      }
+      result.addAll(architecture.getOwnedInterfacePkg() != null ? getAllInterfaces(architecture) : Collections
+          .<Interface> emptyList());
     }
-    result.addAll((architecture != null) && (architecture.getOwnedInterfacePkg() != null) ? getAllInterfaces(architecture) : Collections
-        .<Interface> emptyList());
     return new ArrayList<Interface>(result);
   }
 
@@ -569,12 +571,14 @@ public class SystemEngineeringExt {
 
   public static List<Interface> getInterfaces(PhysicalArchitecture architecture) {
     final Set<Interface> result = new LinkedHashSet<Interface>();
-    for (final LogicalArchitecture logArchitecture : CollectionExt.filter(((SystemEngineering) architecture.eContainer()).getOwnedArchitectures(),
-        LogicalArchitecture.class)) {
-      result.addAll(getInterfaces(logArchitecture));
+    if(architecture != null){
+      for (final LogicalArchitecture logArchitecture : CollectionExt.filter(((SystemEngineering) architecture.eContainer()).getOwnedArchitectures(),
+          LogicalArchitecture.class)) {
+        result.addAll(getInterfaces(logArchitecture));
+      }
+      result.addAll(architecture.getOwnedInterfacePkg() != null ? getAllInterfaces(architecture) : Collections
+          .<Interface> emptyList());      
     }
-    result.addAll((architecture != null) && (architecture.getOwnedInterfacePkg() != null) ? getAllInterfaces(architecture) : Collections
-        .<Interface> emptyList());
     return new ArrayList<Interface>(result);
   }
 

@@ -95,11 +95,13 @@ public class HoldingResourceHelper {
    * @param newContainer
    */
   public static void ensureMoveElement(EObject element, EObject newContainer) {
-    if ((newContainer != null) && (newContainer.eResource() != null) && (element != null) && (element.eResource() != null)) {
+    Resource newContainerResource;
+    Resource elementResource;
+    if ((newContainer != null) && ((newContainerResource = newContainer.eResource()) != null) && (element != null) && ((elementResource = element.eResource())!= null)) {
       if (HoldingResourceHelper.isHoldByHoldingResource(element)) {
         if (!HoldingResourceHelper.isHoldByHoldingResource(newContainer)) {
-          ((Resource.Internal) element.eResource()).getContents().remove(element);
-          ((Resource.Internal) newContainer.eResource()).attached(element);
+          ((Resource.Internal) elementResource).getContents().remove(element);
+          ((Resource.Internal) newContainerResource).attached(element);
 
           // the elements of the sub-tree shall also be moved
           for (EObject o : element.eContents()) {

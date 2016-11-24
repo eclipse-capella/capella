@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
@@ -33,6 +34,7 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
@@ -237,7 +239,10 @@ public class ExtractRepresentationsWizard extends Wizard {
       }
     }
     for (DRepresentation representation : _representations) {
-      _session.moveRepresentation(slaveAnalysis_p, representation);
+      DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation).getRepresentationDescriptor();
+      if (representationDescriptor != null) {
+        _session.moveRepresentation(slaveAnalysis_p, representationDescriptor);
+      }
     }
   }
 

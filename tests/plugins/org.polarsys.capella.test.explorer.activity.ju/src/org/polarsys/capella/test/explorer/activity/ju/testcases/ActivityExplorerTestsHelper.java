@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.amalgam.explorer.activity.ui.api.editor.ActivityExplorerEditor;
-import org.eclipse.amalgam.explorer.activity.ui.api.editor.Messages;
 import org.eclipse.amalgam.explorer.activity.ui.api.editor.input.ActivityExplorerEditorInput;
 import org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.CommonActivityExplorerPage;
 import org.eclipse.sirius.business.api.session.Session;
@@ -41,7 +40,6 @@ public class ActivityExplorerTestsHelper {
     Assert.assertEquals(session, aeEditorInput.getSession());
     
     // Check editor's title.
-    Assert.assertTrue(activityExplorerEditor.getPartName().contains(Messages.ActivityExplorerEditor_Title_Suffix));
     Assert.assertTrue(activityExplorerEditor.getPartName().contains(testProjectName));
     
     // Minimum 6 tabs (Workflow + one for each viewpoint).

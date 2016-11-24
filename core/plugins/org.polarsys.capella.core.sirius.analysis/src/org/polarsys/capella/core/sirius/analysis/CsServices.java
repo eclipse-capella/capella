@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -209,6 +210,7 @@ import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -342,7 +344,7 @@ public class CsServices {
     Session session = DiagramHelper.getService().getSession(diagram);
 
     for (DView view : session.getOwnedViews()) {
-      for (DRepresentation representation : view.getOwnedRepresentations()) {
+      for (DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
         if (handler.isRealizable(representation, diagram)) {
           if (!scope.contains(representation)) {
             scope.add(representation);
@@ -4667,10 +4669,9 @@ public class CsServices {
   }
 
   /**
-   * @param parent
-   * @param target
-   * @return
+   * Unused
    */
+  @Deprecated
   Couple<DNodeContainer, Boolean> createViewOrGetPart(DragAndDropTarget parent, EObject target) {
     List<DDiagramElement> elements = null;
 
@@ -4693,10 +4694,9 @@ public class CsServices {
   }
 
   /**
-   * @param aNode
-   * @param component
-   * @return
+   * Unused
    */
+  @Deprecated
   Couple<DNodeContainer, Boolean> createViewOrGetDeployedPart(DragAndDropTarget parent, EObject target) {
     List<DDiagramElement> elements = null;
 
@@ -4718,8 +4718,11 @@ public class CsServices {
     return new Couple<DNodeContainer, Boolean>(created, Boolean.TRUE);
   }
 
+  @Deprecated
   public boolean isDeployed(DNodeContainer view) {
-    return view.getMapping().getName().equals(IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME);
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(view);
+    String mappingName = MappingConstantsHelper.getMappingABDeployedElement(diagram);
+    return view.getMapping().getName().equals(mappingName);
   }
 
   public List<EObject> getDeployableLocations(DeployableElement element) {
@@ -4940,6 +4943,7 @@ public class CsServices {
    * @param sourcePort
    * @return
    */
+  @Deprecated
   Couple<DNode, Boolean> createViewOrGetFunctionPort(DNode parent, Pin target) {
     for (DNode node : parent.getOwnedBorderedNodes()) {
       if ((node.getTarget() != null) && node.getTarget().equals(target)) {

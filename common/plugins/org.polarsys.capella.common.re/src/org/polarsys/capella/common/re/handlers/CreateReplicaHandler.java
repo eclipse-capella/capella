@@ -26,7 +26,7 @@ public class CreateReplicaHandler extends CommandHandler {
    * {@inheritDoc}
    */
   @Override
-  protected ICommand createCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+  protected ICommand createCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
     return new CreateReplicaCommand(selection, progressMonitor);
   }
 

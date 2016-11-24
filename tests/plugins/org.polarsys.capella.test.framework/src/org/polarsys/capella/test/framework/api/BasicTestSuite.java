@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.framework.api;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.List;
 
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
@@ -96,7 +97,7 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
   protected void setUp() throws Exception {
     // require test models
     List<String> projectNamesToLoad = getRequiredTestModels();
-    if (projectNamesToLoad != null) {
+    if (projectNamesToLoad != null && !projectNamesToLoad.isEmpty()) {
       ModelProviderHelper.getInstance().getModelProvider().requireTestModel(projectNamesToLoad, this); // $NON-NLS-1$
     }
   }
@@ -108,7 +109,7 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
   protected void tearDown() throws Exception {
     // release test models
     List<String> projectNamesToLoad = getRequiredTestModels();
-    if (projectNamesToLoad != null) {
+    if (projectNamesToLoad != null && !projectNamesToLoad.isEmpty()) {
       for (String modelName : projectNamesToLoad) {
         ModelProviderHelper.getInstance().getModelProvider().releaseTestModel(modelName, this);
       }
@@ -152,4 +153,10 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
     }
     return IResourceHelpers.getFileOrFolderInTestPlugin(getClass(), pathInPlugin);// $NON-NLS-1$
   }
+
+  @Override
+  public List<String> getRequiredTestModels() {
+    return Collections.emptyList();
+  }
+
 }

@@ -5,20 +5,16 @@ Bundle-SymbolicName: org.polarsys.capella.core.platform.sirius.clipboard;singlet
 Bundle-Version: 1.1.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.platform.sirius.clipboard.Activator
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.emf.edit,
- org.eclipse.gef,
+Require-Bundle: org.eclipse.sirius.diagram.sequence,
+ org.eclipse.sirius.diagram.formatdata,
+ org.eclipse.sirius.diagram.layoutdata,
+ org.eclipse.ui.ide,
  org.eclipse.gmf.runtime.notation,
  org.eclipse.gmf.runtime.emf.clipboard.core,
+ org.eclipse.gmf.runtime.diagram.ui.resources.editor,
  org.eclipse.gmf.runtime.diagram.ui,
- org.eclipse.sirius,
- org.eclipse.sirius.diagram,
- org.eclipse.sirius.diagram.sequence,
  org.eclipse.sirius.diagram.ui,
- org.eclipse.sirius.ecore.extender,
- org.polarsys.capella.common.platform.sirius.ted,
- org.polarsys.capella.common.ef,
  org.polarsys.capella.common.ui.services,
- org.polarsys.capella.core.data.gen,
  org.polarsys.capella.core.model.preferences
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

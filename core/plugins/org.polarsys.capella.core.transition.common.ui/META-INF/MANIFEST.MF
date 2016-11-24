@@ -13,18 +13,15 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.diffmerge.ui,
  org.eclipse.core.expressions;bundle-version="3.4.200",
  org.polarsys.capella.common.flexibility.wizards;visibility:=reexport,
- org.polarsys.capella.core.model.handler
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.core.preferences
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.common.ui,
  org.polarsys.capella.core.transition.common.ui.actions,
  org.polarsys.capella.core.transition.common.ui.commands,
- org.polarsys.capella.core.transition.common.ui.dialog,
- org.polarsys.capella.core.transition.common.ui.handlers.filter,
  org.polarsys.capella.core.transition.common.ui.handlers.merge,
  org.polarsys.capella.core.transition.common.ui.handlers.options,
- org.polarsys.capella.core.transition.common.ui.handlers.uihead,
  org.polarsys.capella.core.transition.common.ui.utils,
- org.polarsys.capella.core.transition.common.ui.viewer,
  org.polarsys.capella.core.transition.common.ui.wizard
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

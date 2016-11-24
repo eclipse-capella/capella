@@ -33,7 +33,7 @@ public class MSMDiagram extends DiagramContext {
   }
   
   public static void setSynchronized (MSMDiagram diagram){
-	  diagram.getDiagram().setSynchronized(true);
+    new SetUnsynchronizedStep(diagram, true).run();
   }
   
   public static void setUnsynchronized (MSMDiagram diagram){

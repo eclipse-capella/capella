@@ -14,6 +14,9 @@ import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
 import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
+import org.eclipse.emf.diffmerge.ui.EMFDiffMergeUIPlugin;
+import org.eclipse.emf.diffmerge.ui.EMFDiffMergeUIPlugin.ImageID;
+import org.eclipse.emf.diffmerge.ui.viewers.categories.UnmatchedElementCategory;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -24,7 +27,10 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class TargetDifferencesCategoryFilter extends CategoryFilter {
 
   public TargetDifferencesCategoryFilter(IContext context) {
-    super(context, Messages.TargetDifferencesCategoryFilter, null);
+    super(context, Messages.TargetDifferencesCategoryFilter, Messages.TargetDifferencesCategoryFilter_Description);
+    id = UnmatchedElementCategory.ID_RIGHT;
+    setCategorySet(org.eclipse.emf.diffmerge.ui.Messages.AbstractComparisonViewer_CatSetTextBasic);
+    image = EMFDiffMergeUIPlugin.getDefault().getImage(ImageID.INC_ADD_STAT);
     setInFocusMode(false);
     setVisible(true);
     setActive(true);

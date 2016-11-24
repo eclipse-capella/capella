@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -78,24 +78,24 @@ public class ScenarioRepresentation {
   private static final String REFINEMENT_FRAMEWORK_PLUGIN_ID = "org.polarsys.capella.core.refinement.framework"; //$NON-NLS-1$
 
   private static final String SCENARIO_REPRESENTATION_LISTENER_EXTENSION_ID = "scenarioRepresentationListenerExtension"; //$NON-NLS-1$
-  private Set<CapellaElement> _clonedElements = null;
-  private List<IScenarioRepresentationListener> _listeners = new ArrayList<IScenarioRepresentationListener>();
-  private Logger _logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
-  private Tree<InteractionFragment> _messageTree = null;
+  private Set<CapellaElement> clonedElements = null;
+  private List<IScenarioRepresentationListener> listeners = new ArrayList<IScenarioRepresentationListener>();
+  private Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
+  private Tree<InteractionFragment> messageTree = null;
 
-  private Scenario _scenario = null;
+  private Scenario scenario = null;
 
   /**
    * Constructor.
-   * @param scenario_p
+   * @param scenario
    */
-  public ScenarioRepresentation(Scenario scenario_p) {
-    if (scenario_p != null) {
-      _scenario = scenario_p;
-      _messageTree = new Tree<InteractionFragment>();
+  public ScenarioRepresentation(Scenario scenario) {
+    if (scenario != null) {
+      this.scenario = scenario;
+      messageTree = new Tree<InteractionFragment>();
 
       Node<InteractionFragment> rootNode = new Node<InteractionFragment>(null);
-      _messageTree.setRootElement(rootNode);
+      messageTree.setRootElement(rootNode);
 
       /**
        * add listeners
@@ -107,51 +107,51 @@ public class ScenarioRepresentation {
       for (IConfigurationElement configurationElement : listenerProvider) {
         /** logging */
         String loggedMsg = MessageFormat.format(Messages.NewListenerProvider, configurationElement.getAttribute(ExtensionPointHelper.ATT_ID));
-        _logger.debug(new EmbeddedMessage(loggedMsg, IReportManagerDefaultComponents.REFINEMENT, _scenario));
+        logger.debug(new EmbeddedMessage(loggedMsg, IReportManagerDefaultComponents.REFINEMENT, scenario));
         /** */
         IScenarioRepresentationListener listener =
             (IScenarioRepresentationListener) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
         if (listener != null) {
-          listener.scenarioCreated(_messageTree);
-          _listeners.add(listener);
+          listener.scenarioCreated(messageTree);
+          listeners.add(listener);
         }
       }
 
-      fillTree(scenario_p.getOwnedInteractionFragments(), rootNode);
+      fillTree(scenario.getOwnedInteractionFragments(), rootNode);
     }
   }
 
   /**
    * 
    */
-  public void addChildAfter(Node<InteractionFragment> parent_p, Node<InteractionFragment> child_p, Node<InteractionFragment> previousNode_p) {
-    parent_p.addChildAfter(child_p, previousNode_p);
+  public void addChildAfter(Node<InteractionFragment> parent, Node<InteractionFragment> child, Node<InteractionFragment> previousNode) {
+    parent.addChildAfter(child, previousNode);
     updateListeners();
   }
 
   /**
    * 
    */
-  private void addClonedElement(CapellaElement elt_p) {
-    if (null == _clonedElements) {
-      _clonedElements = new HashSet<CapellaElement>();
+  private void addClonedElement(CapellaElement elt) {
+    if (null == clonedElements) {
+      clonedElements = new HashSet<CapellaElement>();
     }
-    _clonedElements.add(elt_p);
+    clonedElements.add(elt);
   }
 
   /**
    * 
    */
-  public void addFirstChild(Node<AbstractEnd> parent_p, Node<AbstractEnd> child_p) {
-    parent_p.addFirstChild(child_p);
+  public void addFirstChild(Node<AbstractEnd> parent, Node<AbstractEnd> child) {
+    parent.addFirstChild(child);
     updateListeners();
   }
 
   /**
    * 
    */
-  public void addLastChild(Node<InteractionFragment> parent_p, Node<InteractionFragment> child_p) {
-    parent_p.addLastChild(child_p);
+  public void addLastChild(Node<InteractionFragment> parent, Node<InteractionFragment> child) {
+    parent.addLastChild(child);
     updateListeners();
   }
 
@@ -168,8 +168,8 @@ public class ScenarioRepresentation {
    * 
    */
   public void cleanClonedElements() {
-    if (null != _clonedElements) {
-      for (CapellaElement elt : _clonedElements) {
+    if (null != clonedElements) {
+      for (CapellaElement elt : clonedElements) {
         CapellaElementExt.cleanTraces(elt);
         elt.destroy();
       }
@@ -179,31 +179,31 @@ public class ScenarioRepresentation {
   /**
    * This method allows to clone a 'CombinedFragment. Before cloning the element passed as parameter, we check if it is not already itself a clone, or if
    * it is not linked to an element already cloned (via a traceability link). If this is not the case, we clone it.
-   * @param srcFragment_p
+   * @param srcFragment
    * @return the cloned 'CombinedFragment'
    */
-  private CombinedFragment cloneCombinedFragment(CombinedFragment srcFragment_p) {
+  private CombinedFragment cloneCombinedFragment(CombinedFragment srcFragment) {
     CombinedFragment tgtFragment = null;
 
-    if (srcFragment_p != null) {
+    if (srcFragment != null) {
       /** Check if 'SequenceMessage' is on the source side or on the target side */
-      if (srcFragment_p.eContainer().equals(_scenario)) {
-        tgtFragment = srcFragment_p;
+      if (srcFragment.eContainer().equals(scenario)) {
+        tgtFragment = srcFragment;
       } else {
         /** if the 'CombinedFragment' doesn't exist yet on target, we have to create it */
-        List<CapellaElement> lst = RefinementLinkExt.getRefinementRelatedSourceElements(srcFragment_p, InteractionPackage.Literals.COMBINED_FRAGMENT);
+        List<CapellaElement> lst = RefinementLinkExt.getRefinementRelatedSourceElements(srcFragment, InteractionPackage.Literals.COMBINED_FRAGMENT);
         for (CapellaElement elt : lst) {
-          if (elt.eContainer().equals(_scenario)) {
+          if (elt.eContainer().equals(scenario)) {
             tgtFragment = (CombinedFragment) elt;
           }
         }
         if (tgtFragment == null) {
           tgtFragment = InteractionFactory.eINSTANCE.createCombinedFragment();
-          tgtFragment.setName(srcFragment_p.getName());
-          tgtFragment.setOperator(srcFragment_p.getOperator());
+          tgtFragment.setName(srcFragment.getName());
+          tgtFragment.setOperator(srcFragment.getOperator());
 
           /** adding traceability link */
-          RefinementLinkExt.createRefinementTraceabilityLink(tgtFragment, srcFragment_p, _scenario);
+          RefinementLinkExt.createRefinementTraceabilityLink(tgtFragment, srcFragment, scenario);
           /** register combined fragment creation */
           addClonedElement(tgtFragment);
         }
@@ -216,21 +216,21 @@ public class ScenarioRepresentation {
   /**
    * This method allows to clone a 'ExecutionEnd. Before cloning the element passed as parameter, we check if it is not already itself a clone, or if
    * it is not linked to an element already cloned (via a traceability link). If this is not the case, we clone it.
-   * @param srcExecEnd_p
+   * @param srcExecEnd
    * @return the cloned 'ExecutionEnd'
    */
-  private ExecutionEnd cloneExecutionEnd(ExecutionEnd srcExecEnd_p) {
+  private ExecutionEnd cloneExecutionEnd(ExecutionEnd srcExecEnd) {
     ExecutionEnd tgtExecEnd = null;
 
-    if (srcExecEnd_p != null) {
+    if (srcExecEnd != null) {
       /** Check if 'ExecutionEnd' is on the source side or on the target side */ 
-      if (srcExecEnd_p.eContainer().equals(_scenario)) {
-        tgtExecEnd = srcExecEnd_p;
+      if (srcExecEnd.eContainer().equals(scenario)) {
+        tgtExecEnd = srcExecEnd;
       } else {
         /** if the 'ExecutionEnd' doesn't exist yet on target, we have to create it */
-        List<CapellaElement> lst = RefinementLinkExt.getRefinementRelatedSourceElements(srcExecEnd_p, InteractionPackage.Literals.EXECUTION_END);
+        List<CapellaElement> lst = RefinementLinkExt.getRefinementRelatedSourceElements(srcExecEnd, InteractionPackage.Literals.EXECUTION_END);
         for (CapellaElement elt : lst) {
-          if ((elt.eContainer() != null) && elt.eContainer().equals(_scenario)) {
+          if ((elt.eContainer() != null) && elt.eContainer().equals(scenario)) {
             tgtExecEnd = (ExecutionEnd) elt;
           }
         }
@@ -238,11 +238,11 @@ public class ScenarioRepresentation {
           tgtExecEnd = InteractionFactory.eINSTANCE.createExecutionEnd();
           ExecutionEvent execEvt = InteractionFactory.eINSTANCE.createExecutionEvent();
           tgtExecEnd.setEvent(execEvt);
-          _scenario.getOwnedEvents().add(execEvt);
+          scenario.getOwnedEvents().add(execEvt);
 
           /** adding traceability link */
-          RefinementLinkExt.createRefinementTraceabilityLink(tgtExecEnd, srcExecEnd_p, _scenario);
-          RefinementLinkExt.createRefinementTraceabilityLink(execEvt, srcExecEnd_p.getEvent(), _scenario);
+          RefinementLinkExt.createRefinementTraceabilityLink(tgtExecEnd, srcExecEnd, scenario);
+          RefinementLinkExt.createRefinementTraceabilityLink(execEvt, srcExecEnd.getEvent(), scenario);
         }
       }
     }
@@ -251,14 +251,14 @@ public class ScenarioRepresentation {
   }
 
   /**
-   * @param srcTree_p
+   * @param srcTree
    */
-  private void cloneExecutions(ScenarioRepresentation srcTree_p) {
-    List<TimeLapse> srcExecLst = srcTree_p.getScenario().getOwnedTimeLapses();
+  private void cloneExecutions(ScenarioRepresentation srcTree) {
+    List<TimeLapse> srcExecLst = srcTree.getScenario().getOwnedTimeLapses();
     for (TimeLapse srcExec : srcExecLst) {
       Execution tgtExec = null;
       for (CapellaElement exec : RefinementLinkExt.getRefinementRelatedSourceElements(srcExec, InteractionPackage.Literals.EXECUTION)) {
-        if (exec.eContainer().equals(_scenario)) {
+        if (exec.eContainer().equals(scenario)) {
           tgtExec = (Execution) exec;
         }
       }
@@ -269,13 +269,13 @@ public class ScenarioRepresentation {
         AbstractEnd finishMsgEnd = null;
 
         for (CapellaElement msgEnd : RefinementLinkExt.getRefinementRelatedSourceElements(srcExec.getStart(), InteractionPackage.Literals.ABSTRACT_END)) {
-          if (msgEnd.eContainer().equals(_scenario)) {
+          if (msgEnd.eContainer().equals(scenario)) {
             startMsgEnd = (AbstractEnd) msgEnd;
           }
         }
 
         for (CapellaElement msgEnd : RefinementLinkExt.getRefinementRelatedSourceElements(srcExec.getFinish(), InteractionPackage.Literals.ABSTRACT_END)) {
-          if (msgEnd.eContainer().equals(_scenario)) {
+          if (msgEnd.eContainer().equals(scenario)) {
             finishMsgEnd = (AbstractEnd) msgEnd;
           }
         }
@@ -285,10 +285,10 @@ public class ScenarioRepresentation {
           tgtExec.setStart(startMsgEnd);
           tgtExec.setFinish(finishMsgEnd);
 
-          _scenario.getOwnedTimeLapses().add(tgtExec);
+          scenario.getOwnedTimeLapses().add(tgtExec);
 
           /** adding traceability link */
-          RefinementLinkExt.createRefinementTraceabilityLink(tgtExec, srcExec, _scenario);
+          RefinementLinkExt.createRefinementTraceabilityLink(tgtExec, srcExec, scenario);
         }
         else if (startMsgEnd == null) {
           // [Refinement] Scenario containing an asynchronous message into empty Physical/EPBS
@@ -308,38 +308,38 @@ public class ScenarioRepresentation {
    * This method allows to clone a 'FragmentEnd. Before cloning the element passed as parameter, we check if it is not already itself a clone, or if
    * it is not linked to an element already cloned (via a traceability link). If this is not the case, we clone it.
    */
-  private FragmentEnd cloneFragmentEnd(FragmentEnd srcFragmentEnd_p, AbstractFragment tgtFragment_p) {
+  private FragmentEnd cloneFragmentEnd(FragmentEnd srcFragmentEnd, AbstractFragment tgtFragment) {
     FragmentEnd tgtFragmentEnd = null;
 
-    if (srcFragmentEnd_p != null) {
+    if (srcFragmentEnd != null) {
       /** Check if the 'FragmentEnd' is on the source side or on the target side */
-      if (srcFragmentEnd_p.eContainer().equals(_scenario)) {
-        tgtFragmentEnd = srcFragmentEnd_p;
+      if (srcFragmentEnd.eContainer().equals(scenario)) {
+        tgtFragmentEnd = srcFragmentEnd;
       } else {
         /** if the 'FragmentEnd' doesn't exist yet on target, we have to create it */
-        List<CapellaElement> lst = RefinementLinkExt.getRefinementRelatedSourceElements(srcFragmentEnd_p, InteractionPackage.Literals.FRAGMENT_END);
+        List<CapellaElement> lst = RefinementLinkExt.getRefinementRelatedSourceElements(srcFragmentEnd, InteractionPackage.Literals.FRAGMENT_END);
         for (CapellaElement elt : lst) {
-          if ((elt.eContainer() != null) && elt.eContainer().equals(_scenario)) {
+          if ((elt.eContainer() != null) && elt.eContainer().equals(scenario)) {
             tgtFragmentEnd = (FragmentEnd) elt;
           }
         }
         if (tgtFragmentEnd == null) {
           tgtFragmentEnd = InteractionFactory.eINSTANCE.createFragmentEnd();
-          tgtFragmentEnd.setName(srcFragmentEnd_p.getName());
-          FRAGMENT_END_TYPE type = FragmentEndExt.getFragmentEndType(srcFragmentEnd_p);
+          tgtFragmentEnd.setName(srcFragmentEnd.getName());
+          FRAGMENT_END_TYPE type = FragmentEndExt.getFragmentEndType(srcFragmentEnd);
           switch (type) {
             case FINISH:
-              tgtFragment_p.setFinish(tgtFragmentEnd);
+              tgtFragment.setFinish(tgtFragmentEnd);
             break;
             case START:
-              tgtFragment_p.setStart(tgtFragmentEnd);
+              tgtFragment.setStart(tgtFragmentEnd);
             break;
             case UNDEFINED:
             break;
           }
 
           /** adding traceability link */
-          RefinementLinkExt.createRefinementTraceabilityLink(tgtFragmentEnd, srcFragmentEnd_p, _scenario);
+          RefinementLinkExt.createRefinementTraceabilityLink(tgtFragmentEnd, srcFragmentEnd, scenario);
           /** register fragment end creation */
           addClonedElement(tgtFragmentEnd);
         }
@@ -352,25 +352,25 @@ public class ScenarioRepresentation {
   /**
    * This method allows to clone an 'InstanceRole'. Before to clone the element given as parameter, we check if it's not already a clone , or if it's not linked
    * to an element already cloned (through a traceability link). if not, we clone it.
-   * @param srcRole_p
-   * @param component_p
-   * @param tgtElement_p
+   * @param srcRole
+   * @param component
+   * @param tgtElement
    * @return the cloned 'InstanceRole'
    */
-  private InstanceRole cloneInstanceRole(InstanceRole srcRole_p, AbstractInstance abstractInstance_p, NamedElement tgtElement_p) {
+  private InstanceRole cloneInstanceRole(InstanceRole srcRole, AbstractInstance abstractInstance, NamedElement tgtElement) {
     InstanceRole tgtRole = null;
 
-    if (srcRole_p != null) {
+    if (srcRole != null) {
       /** we check if the 'InstanceRole' is on source or target side */
-      if (srcRole_p.eContainer().equals(_scenario)) {
-        tgtRole = srcRole_p;
+      if (srcRole.eContainer().equals(scenario)) {
+        tgtRole = srcRole;
       } else {
-        List<CapellaElement> rolesLst = RefinementLinkExt.getRefinementRelatedSourceElements(srcRole_p, InteractionPackage.Literals.INSTANCE_ROLE);
+        List<CapellaElement> rolesLst = RefinementLinkExt.getRefinementRelatedSourceElements(srcRole, InteractionPackage.Literals.INSTANCE_ROLE);
         for (CapellaElement role : rolesLst) {
           InstanceRole instRole = (InstanceRole) role;
           AbstractInstance cpntInst = instRole.getRepresentedInstance();
-          if (instRole.eContainer().equals(_scenario)) {
-            if ((abstractInstance_p == null) || (cpntInst.equals(abstractInstance_p))) {
+          if (instRole.eContainer().equals(scenario)) {
+            if ((abstractInstance == null) || (cpntInst.equals(abstractInstance))) {
               tgtRole = instRole;
             } else if (cpntInst instanceof SignalInstance) {
               tgtRole = instRole;
@@ -378,26 +378,26 @@ public class ScenarioRepresentation {
           }
         }
         if (tgtRole == null) {
-          for (InstanceRole instRole : _scenario.getOwnedInstanceRoles()) {
+          for (InstanceRole instRole : scenario.getOwnedInstanceRoles()) {
             AbstractInstance cpntInst = instRole.getRepresentedInstance();
-            if ((cpntInst != null) && cpntInst.equals(abstractInstance_p)) {
+            if ((cpntInst != null) && cpntInst.equals(abstractInstance)) {
               tgtRole = instRole;
-              if (!RefinementLinkExt.isLinkedTo(tgtRole, srcRole_p)) {
+              if (!RefinementLinkExt.isLinkedTo(tgtRole, srcRole)) {
                 /** adding traceability link */
-                RefinementLinkExt.createRefinementTraceabilityLink(tgtRole, srcRole_p, _scenario);
+                RefinementLinkExt.createRefinementTraceabilityLink(tgtRole, srcRole, scenario);
               }
             }
           }
         }
 
         /** if the 'InstanceRole' doesn't exist yet on target, we have to create it */
-        if ((tgtRole == null) && (abstractInstance_p != null)) {
+        if ((tgtRole == null) && (abstractInstance != null)) {
           tgtRole = InteractionFactory.eINSTANCE.createInstanceRole();
-          tgtRole.setRepresentedInstance(abstractInstance_p);
-          tgtRole.setName(abstractInstance_p.getName());
+          tgtRole.setRepresentedInstance(abstractInstance);
+          tgtRole.setName(abstractInstance.getName());
 
           /** adding traceability link */
-          RefinementLinkExt.createRefinementTraceabilityLink(tgtRole, srcRole_p, _scenario);
+          RefinementLinkExt.createRefinementTraceabilityLink(tgtRole, srcRole, scenario);
           /** register instance role creation */
           addClonedElement(tgtRole);
         }
@@ -410,25 +410,25 @@ public class ScenarioRepresentation {
   /**
    * This method allows to clone a set of 'InstanceRole'. Before to clone the element given as parameter, we check if it's not already a clone , or if it's not
    * linked to an element already cloned (through a traceability link). if not, we clone it.
-   * @param srcRoles_p
-   * @param component_p
-   * @param tgtElement_p
+   * @param srcRoles
+   * @param component
+   * @param tgtElement
    * @return the cloned 'InstanceRole'
    */
-  private List<InstanceRole> cloneInstanceRoles(List<InstanceRole> srcRoles_p, AbstractInstance abstractInstance_p, NamedElement tgtElement_p) {
+  private List<InstanceRole> cloneInstanceRoles(List<InstanceRole> srcRoles, AbstractInstance abstractInstance, NamedElement tgtElement) {
     List<InstanceRole> tgtRoles = new ArrayList<InstanceRole>();
 
-    for (InstanceRole srcRole_p : srcRoles_p) {
-      if (tgtElement_p instanceof Component) {
-        for (Partition part : ((Component) tgtElement_p).getOwnedPartitions()) {
+    for (InstanceRole srcRole : srcRoles) {
+      if (tgtElement instanceof Component) {
+        for (Partition part : ((Component) tgtElement).getOwnedPartitions()) {
           if (part instanceof Part) {
-            InstanceRole tgtRole = cloneInstanceRole(srcRole_p, part, tgtElement_p);
+            InstanceRole tgtRole = cloneInstanceRole(srcRole, part, tgtElement);
             if (tgtRole != null) {
               if (!tgtRoles.contains(tgtRole)) {
                 tgtRoles.add(tgtRole);
               }
-              if (!_scenario.getOwnedInstanceRoles().contains(tgtRole)) {
-                _scenario.getOwnedInstanceRoles().add(tgtRole);
+              if (!scenario.getOwnedInstanceRoles().contains(tgtRole)) {
+                scenario.getOwnedInstanceRoles().add(tgtRole);
               }
             }
           }
@@ -443,28 +443,28 @@ public class ScenarioRepresentation {
    * This method allows to clone a 'InteractionOperand'. Before cloning the element passed as parameter, we check if it is not already itself a
    * clone, or if it is not linked to an element already cloned (via a traceability link). If this is not the case, we clone it.
    */
-  private InteractionOperand cloneInteractionOperand(InteractionOperand srcOperand_p) {
+  private InteractionOperand cloneInteractionOperand(InteractionOperand srcOperand) {
     InteractionOperand tgtOperand = null;
 
-    if (srcOperand_p != null) {
+    if (srcOperand != null) {
       /** Check if the 'InteractionOperand' is on the source side or on the target side */
-      if (srcOperand_p.eContainer().equals(_scenario)) {
-        tgtOperand = srcOperand_p;
+      if (srcOperand.eContainer().equals(scenario)) {
+        tgtOperand = srcOperand;
       } else {
         /** If the 'InteractionOperand' doesn't exist yet on target, we have to create it */
-        List<CapellaElement> lst = RefinementLinkExt.getRefinementRelatedSourceElements(srcOperand_p, InteractionPackage.Literals.INTERACTION_OPERAND);
+        List<CapellaElement> lst = RefinementLinkExt.getRefinementRelatedSourceElements(srcOperand, InteractionPackage.Literals.INTERACTION_OPERAND);
         for (CapellaElement elt : lst) {
-          if ((elt.eContainer() != null) && elt.eContainer().equals(_scenario)) {
+          if ((elt.eContainer() != null) && elt.eContainer().equals(scenario)) {
             tgtOperand = (InteractionOperand) elt;
           }
         }
         if (tgtOperand == null) {
           tgtOperand = InteractionFactory.eINSTANCE.createInteractionOperand();
-          tgtOperand.setName(srcOperand_p.getName());
-          tgtOperand.setGuard(srcOperand_p.getGuard());
+          tgtOperand.setName(srcOperand.getName());
+          tgtOperand.setGuard(srcOperand.getGuard());
 
           /** adding traceability link */
-          RefinementLinkExt.createRefinementTraceabilityLink(tgtOperand, srcOperand_p, _scenario);
+          RefinementLinkExt.createRefinementTraceabilityLink(tgtOperand, srcOperand, scenario);
           /** register interaction operand creation */
           addClonedElement(tgtOperand);
         }
@@ -477,30 +477,30 @@ public class ScenarioRepresentation {
   /**
    * This method allows to clone a 'InteractionUse'. Before cloning the element passed as parameter, we check if it is not already itself a clone,
    * or if it is not linked to an element already cloned (via a traceability link). If this is not the case, we clone it.
-   * @param srcUse_p
+   * @param srcUse
    * @return the cloned 'InteractionUse'
    */
-  private InteractionUse cloneInteractionUse(InteractionUse srcUse_p) {
+  private InteractionUse cloneInteractionUse(InteractionUse srcUse) {
     InteractionUse tgtUse = null;
 
-    if (srcUse_p != null) {
+    if (srcUse != null) {
       /** Check if 'SequenceMessage' is on the source side or on the target side */
-      if (srcUse_p.eContainer().equals(_scenario)) {
-        tgtUse = srcUse_p;
+      if (srcUse.eContainer().equals(scenario)) {
+        tgtUse = srcUse;
       } else {
         /** if the 'CombinedFragment' doesn't exist yet on target, we have to create it */
-        List<CapellaElement> lst = RefinementLinkExt.getRefinementRelatedSourceElements(srcUse_p, InteractionPackage.Literals.INTERACTION_USE);
+        List<CapellaElement> lst = RefinementLinkExt.getRefinementRelatedSourceElements(srcUse, InteractionPackage.Literals.INTERACTION_USE);
         for (CapellaElement elt : lst) {
-          if (elt.eContainer().equals(_scenario)) {
+          if (elt.eContainer().equals(scenario)) {
             tgtUse = (InteractionUse) elt;
           }
         }
         if (tgtUse == null) {
           tgtUse = InteractionFactory.eINSTANCE.createInteractionUse();
-          tgtUse.setName(srcUse_p.getName());
+          tgtUse.setName(srcUse.getName());
 
           /** adding traceability link */
-          RefinementLinkExt.createRefinementTraceabilityLink(tgtUse, srcUse_p, _scenario);
+          RefinementLinkExt.createRefinementTraceabilityLink(tgtUse, srcUse, scenario);
           /** register combined fragment creation */
           addClonedElement(tgtUse);
         }
@@ -514,56 +514,56 @@ public class ScenarioRepresentation {
    * This method allows to clone a 'MessageEnd'. Before cloning the element passed as parameter, we check if it is not already itself a clone, or
    * if it is not linked to an element already cloned (via a traceability link). If this is not the case, we clone it.
    */
-  private MessageEnd cloneMessageEnd(MessageEnd srcMsgEnd_p, SequenceMessage tgtMsg_p) {
+  private MessageEnd cloneMessageEnd(MessageEnd srcMsgEnd, SequenceMessage tgtMsg) {
     MessageEnd tgtMsgEnd = null;
 
-    if (srcMsgEnd_p != null) {
+    if (srcMsgEnd != null) {
       /** Check if the 'MessageEnd' is on the source side or on the target side */
-      if (srcMsgEnd_p.eContainer().equals(_scenario)) {
-        tgtMsgEnd = srcMsgEnd_p;
+      if (srcMsgEnd.eContainer().equals(scenario)) {
+        tgtMsgEnd = srcMsgEnd;
       } else {
         /** If the 'MessageEnd' doesn't exist yet on target, we have to create it */
-        List<CapellaElement> lst = RefinementLinkExt.getRefinementRelatedSourceElements(srcMsgEnd_p, InteractionPackage.Literals.MESSAGE_END);
+        List<CapellaElement> lst = RefinementLinkExt.getRefinementRelatedSourceElements(srcMsgEnd, InteractionPackage.Literals.MESSAGE_END);
         for (CapellaElement elt : lst) {
-          if ((elt.eContainer() != null) && elt.eContainer().equals(_scenario)) {
+          if ((elt.eContainer() != null) && elt.eContainer().equals(scenario)) {
             tgtMsgEnd = (MessageEnd) elt;
           }
         }
         if (tgtMsgEnd == null) {
           tgtMsgEnd = InteractionFactory.eINSTANCE.createMessageEnd();
-          COMPONENT_TYPE type = MessageEndExt.getMessageEndType(srcMsgEnd_p);
+          COMPONENT_TYPE type = MessageEndExt.getMessageEndType(srcMsgEnd);
           switch (type) {
             case RECEIVER: {
-              tgtMsgEnd.setName(MessageFormat.format(Messages.MessageEndReceiverNamePattern, tgtMsg_p.getName(), tgtMsg_p.getKind()));
-              tgtMsg_p.setReceivingEnd(tgtMsgEnd);
+              tgtMsgEnd.setName(MessageFormat.format(Messages.MessageEndReceiverNamePattern, tgtMsg.getName(), tgtMsg.getKind()));
+              tgtMsg.setReceivingEnd(tgtMsgEnd);
 
-              Event srcEvt = srcMsgEnd_p.getEvent();
+              Event srcEvt = srcMsgEnd.getEvent();
               if (srcEvt != null) {
                 if (srcEvt instanceof EventReceiptOperation) {
                   AbstractEventOperation op = ((EventReceiptOperation) srcEvt).getOperation();
-                  AbstractEventOperation srcOp = getOperation(srcMsgEnd_p, tgtMsg_p, op);
+                  AbstractEventOperation srcOp = getOperation(srcMsgEnd, tgtMsg, op);
                   if (srcOp != null) {
                     EventReceiptOperation rcvOp = InteractionFactory.eINSTANCE.createEventReceiptOperation();
                     rcvOp.setOperation(srcOp);
                     tgtMsgEnd.setEvent(rcvOp);
-                    rcvOp.setName(EcoreUtil2.getUniqueName(rcvOp, _scenario, InteractionPackage.Literals.SCENARIO__OWNED_EVENTS,
-                        ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, MessageFormat.format(Messages.EventReceiptOperationNamePattern, tgtMsg_p
-                            .getName(), tgtMsg_p.getKind())));
-                    _scenario.getOwnedEvents().add(rcvOp);
+                    rcvOp.setName(EcoreUtil2.getUniqueName(rcvOp, scenario, InteractionPackage.Literals.SCENARIO__OWNED_EVENTS,
+                        ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, MessageFormat.format(Messages.EventReceiptOperationNamePattern, tgtMsg
+                            .getName(), tgtMsg.getKind())));
+                    scenario.getOwnedEvents().add(rcvOp);
                     /** adding traceability link */
-                    RefinementLinkExt.createRefinementTraceabilityLink(rcvOp, srcMsgEnd_p.getEvent(), _scenario);
+                    RefinementLinkExt.createRefinementTraceabilityLink(rcvOp, srcMsgEnd.getEvent(), scenario);
                     /** register event creation */
                     addClonedElement(rcvOp);
                   }
                 } else if (srcEvt instanceof CreationEvent) {
                   CreationEvent rcvOp = InteractionFactory.eINSTANCE.createCreationEvent();
                   tgtMsgEnd.setEvent(rcvOp);
-                  rcvOp.setName(EcoreUtil2.getUniqueName(rcvOp, _scenario, InteractionPackage.Literals.SCENARIO__OWNED_EVENTS,
-                      ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, MessageFormat.format(Messages.CreationEventNamePattern, tgtMsg_p.getName(),
-                          tgtMsg_p.getKind())));
-                  _scenario.getOwnedEvents().add(rcvOp);
+                  rcvOp.setName(EcoreUtil2.getUniqueName(rcvOp, scenario, InteractionPackage.Literals.SCENARIO__OWNED_EVENTS,
+                      ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, MessageFormat.format(Messages.CreationEventNamePattern, tgtMsg.getName(),
+                          tgtMsg.getKind())));
+                  scenario.getOwnedEvents().add(rcvOp);
                   /** adding traceability link */
-                  RefinementLinkExt.createRefinementTraceabilityLink(rcvOp, srcMsgEnd_p.getEvent(), _scenario);
+                  RefinementLinkExt.createRefinementTraceabilityLink(rcvOp, srcMsgEnd.getEvent(), scenario);
                   /** register event creation */
                   addClonedElement(rcvOp);
                 }
@@ -571,23 +571,23 @@ public class ScenarioRepresentation {
               break;
             }
             case SENDER: {
-              tgtMsgEnd.setName(MessageFormat.format(Messages.MessageEndSenderNamePattern, tgtMsg_p.getName(), tgtMsg_p.getKind()));
-              EventSentOperation srcEvt = (EventSentOperation) srcMsgEnd_p.getEvent();
+              tgtMsgEnd.setName(MessageFormat.format(Messages.MessageEndSenderNamePattern, tgtMsg.getName(), tgtMsg.getKind()));
+              EventSentOperation srcEvt = (EventSentOperation) srcMsgEnd.getEvent();
               if (srcEvt != null) {
                 EventSentOperation sndOp = InteractionFactory.eINSTANCE.createEventSentOperation();
                 AbstractEventOperation op = srcEvt.getOperation();
-                AbstractEventOperation srcOp = getOperation(srcMsgEnd_p, tgtMsg_p, op);
+                AbstractEventOperation srcOp = getOperation(srcMsgEnd, tgtMsg, op);
                 if (srcOp != null) {
                   sndOp.setOperation(srcOp);
                 }
                 tgtMsgEnd.setEvent(sndOp);
-                tgtMsg_p.setSendingEnd(tgtMsgEnd);
-                sndOp.setName(EcoreUtil2.getUniqueName(sndOp, _scenario, InteractionPackage.Literals.SCENARIO__OWNED_EVENTS,
+                tgtMsg.setSendingEnd(tgtMsgEnd);
+                sndOp.setName(EcoreUtil2.getUniqueName(sndOp, scenario, InteractionPackage.Literals.SCENARIO__OWNED_EVENTS,
                     ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, MessageFormat.format(Messages.EventSentOperationNamePattern,
-                        tgtMsg_p.getName(), tgtMsg_p.getKind())));
-                _scenario.getOwnedEvents().add(sndOp);
+                        tgtMsg.getName(), tgtMsg.getKind())));
+                scenario.getOwnedEvents().add(sndOp);
                 /** adding traceability link */
-                RefinementLinkExt.createRefinementTraceabilityLink(sndOp, srcMsgEnd_p.getEvent(), _scenario);
+                RefinementLinkExt.createRefinementTraceabilityLink(sndOp, srcMsgEnd.getEvent(), scenario);
                 /** register event creation */
                 addClonedElement(sndOp);
               }
@@ -598,7 +598,7 @@ public class ScenarioRepresentation {
           }
 
           /** adding traceability link */
-          RefinementLinkExt.createRefinementTraceabilityLink(tgtMsgEnd, srcMsgEnd_p, _scenario);
+          RefinementLinkExt.createRefinementTraceabilityLink(tgtMsgEnd, srcMsgEnd, scenario);
           /** register message end creation */
           addClonedElement(tgtMsgEnd);
         }
@@ -611,40 +611,40 @@ public class ScenarioRepresentation {
   /**
    * This method allows to clone a node, and its related elements. The new elements ('InstanceRole', 'SequenceMessage' and 'AbstractEnd') are added to the
    * current scenario.
-   * @param srcElt_p
-   * @param component_p
-   * @param tgtElement_p
+   * @param srcElt
+   * @param component
+   * @param tgtElement
    * @return Node<MessageEnd>
    */
-  public Node<InteractionFragment> cloneNode(Node<InteractionFragment> srcElt_p, AbstractInstance part_p, NamedElement tgtElement_p) {
+  public Node<InteractionFragment> cloneNode(Node<InteractionFragment> srcElt, AbstractInstance part, NamedElement tgtElement) {
     Node<InteractionFragment> clonedElt = null;
 
-    if (srcElt_p != null) {
+    if (srcElt != null) {
       clonedElt = new Node<InteractionFragment>(null);
 
-      InteractionFragment interactionFragment = srcElt_p.getData();
+      InteractionFragment interactionFragment = srcElt.getData();
       if (interactionFragment instanceof AbstractEnd) {
         AbstractEnd abstractEnd = (AbstractEnd) interactionFragment;
 
-        if (part_p != null) {
-          InstanceRole tgtRole = cloneInstanceRole(abstractEnd.getCovered(), part_p, tgtElement_p);
+        if (part != null) {
+          InstanceRole tgtRole = cloneInstanceRole(abstractEnd.getCovered(), part, tgtElement);
           if (tgtRole != null) {
-            if (!_scenario.getOwnedInstanceRoles().contains(tgtRole)) {
-              _scenario.getOwnedInstanceRoles().add(tgtRole);
+            if (!scenario.getOwnedInstanceRoles().contains(tgtRole)) {
+              scenario.getOwnedInstanceRoles().add(tgtRole);
             }
 
             if (abstractEnd instanceof MessageEnd) {
               MessageEnd srcMsgEnd = (MessageEnd) abstractEnd;
               SequenceMessage tgtMsg = cloneSequenceMessage(srcMsgEnd.getMessage());
-              if ((tgtMsg != null) && (!_scenario.getOwnedMessages().contains(tgtMsg))) {
-                _scenario.getOwnedMessages().add(tgtMsg);
+              if ((tgtMsg != null) && (!scenario.getOwnedMessages().contains(tgtMsg))) {
+                scenario.getOwnedMessages().add(tgtMsg);
               }
 
               MessageEnd tgtMsgEnd = cloneMessageEnd(srcMsgEnd, tgtMsg);
               if (tgtMsgEnd != null) {
                 tgtMsgEnd.getCoveredInstanceRoles().add(tgtRole);
-                if (!_scenario.getOwnedInteractionFragments().contains(tgtMsgEnd)) {
-                  _scenario.getOwnedInteractionFragments().add(tgtMsgEnd);
+                if (!scenario.getOwnedInteractionFragments().contains(tgtMsgEnd)) {
+                  scenario.getOwnedInteractionFragments().add(tgtMsgEnd);
                 }
               }
               clonedElt.setData(tgtMsgEnd);
@@ -653,8 +653,8 @@ public class ScenarioRepresentation {
               ExecutionEnd tgtExecEnd = cloneExecutionEnd(srcExecEnd);
               if (tgtExecEnd != null) {
                 tgtExecEnd.getCoveredInstanceRoles().add(tgtRole);
-                if (!_scenario.getOwnedInteractionFragments().contains(tgtExecEnd)) {
-                  _scenario.getOwnedInteractionFragments().add(tgtExecEnd);
+                if (!scenario.getOwnedInteractionFragments().contains(tgtExecEnd)) {
+                  scenario.getOwnedInteractionFragments().add(tgtExecEnd);
                 }
               }
               clonedElt.setData(tgtExecEnd);
@@ -671,18 +671,18 @@ public class ScenarioRepresentation {
           tgtFragment = cloneInteractionUse((InteractionUse) srcFragment);
         }
 
-        if ((tgtFragment != null) && (!_scenario.getOwnedTimeLapses().contains(tgtFragment))) {
-          _scenario.getOwnedTimeLapses().add(tgtFragment);
+        if ((tgtFragment != null) && (!scenario.getOwnedTimeLapses().contains(tgtFragment))) {
+          scenario.getOwnedTimeLapses().add(tgtFragment);
         }
 
         FragmentEnd tgtFragmentEnd = cloneFragmentEnd(srcFragmentEnd, tgtFragment);
         if (tgtFragmentEnd != null) {
           if (tgtFragment instanceof InteractionUse) {
-            List<InstanceRole> tgtRoles = cloneInstanceRoles(srcFragmentEnd.getCoveredInstanceRoles(), part_p, tgtElement_p);
+            List<InstanceRole> tgtRoles = cloneInstanceRoles(srcFragmentEnd.getCoveredInstanceRoles(), part, tgtElement);
             tgtFragmentEnd.getCoveredInstanceRoles().addAll(tgtRoles);
           }
-          if (!_scenario.getOwnedInteractionFragments().contains(tgtFragmentEnd)) {
-            _scenario.getOwnedInteractionFragments().add(tgtFragmentEnd);
+          if (!scenario.getOwnedInteractionFragments().contains(tgtFragmentEnd)) {
+            scenario.getOwnedInteractionFragments().add(tgtFragmentEnd);
           }
         }
         clonedElt.setData(tgtFragmentEnd);
@@ -690,17 +690,17 @@ public class ScenarioRepresentation {
         InteractionOperand srcOperand = (InteractionOperand) interactionFragment;
         InteractionOperand tgtOperand = cloneInteractionOperand(srcOperand);
         if (tgtOperand != null) {
-          if (!_scenario.getOwnedInteractionFragments().contains(tgtOperand)) {
-            _scenario.getOwnedInteractionFragments().add(tgtOperand);
+          if (!scenario.getOwnedInteractionFragments().contains(tgtOperand)) {
+            scenario.getOwnedInteractionFragments().add(tgtOperand);
           }
         }
         clonedElt.setData(tgtOperand);
       }
 
-      clonedElt.relatedNode = srcElt_p;
-      srcElt_p.relatedNode = clonedElt;
-      if (srcElt_p.oppositeNode != null) {
-        clonedElt.oppositeNode = srcElt_p.oppositeNode.relatedNode;
+      clonedElt.relatedNode = srcElt;
+      srcElt.relatedNode = clonedElt;
+      if (srcElt.oppositeNode != null) {
+        clonedElt.oppositeNode = srcElt.oppositeNode.relatedNode;
         if (clonedElt.oppositeNode != null) {
           clonedElt.oppositeNode.oppositeNode = clonedElt;
         }
@@ -713,31 +713,31 @@ public class ScenarioRepresentation {
   /**
    * This method allows to clone a 'SequenceMessage'. Before cloning the element passed as parameter, we check if it is not already itself a clone,
    * or if it is not linked to an element already cloned (via a traceability link). If this is not the case, we clone it.
-   * @param srcMsg_p
+   * @param srcMsg
    * @return the cloned 'SequenceMessage'
    */
-  private SequenceMessage cloneSequenceMessage(SequenceMessage srcMsg_p) {
+  private SequenceMessage cloneSequenceMessage(SequenceMessage srcMsg) {
     SequenceMessage tgtMsg = null;
 
-    if (srcMsg_p != null) {
+    if (srcMsg != null) {
       /** Check if 'SequenceMessage' is on the source side or on the target side */
-      if (srcMsg_p.eContainer().equals(_scenario)) {
-        tgtMsg = srcMsg_p;
+      if (srcMsg.eContainer().equals(scenario)) {
+        tgtMsg = srcMsg;
       } else {
         /** if the 'SequenceMessage' doesn't exist yet on target, we have to create it */
-        List<CapellaElement> lst = RefinementLinkExt.getRefinementRelatedSourceElements(srcMsg_p, InteractionPackage.Literals.SEQUENCE_MESSAGE);
+        List<CapellaElement> lst = RefinementLinkExt.getRefinementRelatedSourceElements(srcMsg, InteractionPackage.Literals.SEQUENCE_MESSAGE);
         for (CapellaElement elt : lst) {
-          if (elt.eContainer().equals(_scenario)) {
+          if (elt.eContainer().equals(scenario)) {
             tgtMsg = (SequenceMessage) elt;
           }
         }
         if (tgtMsg == null) {
           tgtMsg = InteractionFactory.eINSTANCE.createSequenceMessage();
-          tgtMsg.setKind(srcMsg_p.getKind());
-          tgtMsg.setName(srcMsg_p.getName());
+          tgtMsg.setKind(srcMsg.getKind());
+          tgtMsg.setName(srcMsg.getName());
 
           /** adding traceability link */
-          RefinementLinkExt.createRefinementTraceabilityLink(tgtMsg, srcMsg_p, _scenario);
+          RefinementLinkExt.createRefinementTraceabilityLink(tgtMsg, srcMsg, scenario);
           /** register message creation */
           addClonedElement(tgtMsg);
         }
@@ -749,11 +749,11 @@ public class ScenarioRepresentation {
 
   /**
    * Export the Node given by parameter to the '_scenario'.
-   * @param currentNode_p
-   * @param list_p
+   * @param currentNode
+   * @param list
    */
-  private void export(Node<InteractionFragment> currentNode_p, List<InteractionFragment> list_p) {
-    for (Node<InteractionFragment> childNode = currentNode_p.getFirstChildNode(); childNode != null; childNode = childNode.getNextNode()) {
+  private void export(Node<InteractionFragment> currentNode, List<InteractionFragment> list) {
+    for (Node<InteractionFragment> childNode = currentNode.getFirstChildNode(); childNode != null; childNode = childNode.getNextNode()) {
       InteractionFragment interactionFragment = childNode.getData();
       if (interactionFragment instanceof MessageEnd) {
         MessageEnd messageEnd = (MessageEnd) interactionFragment;
@@ -761,10 +761,10 @@ public class ScenarioRepresentation {
         if (childNode.oppositeNode.getData() != null) {
           String abstractEndName = messageEnd.getName();
           if (abstractEndName != null) {
-            messageEnd.setName(EcoreUtil2.getUniqueName(messageEnd, _scenario, InteractionPackage.Literals.SCENARIO__OWNED_INTERACTION_FRAGMENTS,
+            messageEnd.setName(EcoreUtil2.getUniqueName(messageEnd, scenario, InteractionPackage.Literals.SCENARIO__OWNED_INTERACTION_FRAGMENTS,
                 ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, messageEnd.getName()));
           }
-          list_p.add(messageEnd);
+          list.add(messageEnd);
         } else {
           SequenceMessage msg = messageEnd.getMessage();
           if (msg != null) {
@@ -782,32 +782,32 @@ public class ScenarioRepresentation {
           messageEnd.destroy();
         }
       } else if (interactionFragment instanceof ExecutionEnd) {
-        list_p.add(interactionFragment);
+        list.add(interactionFragment);
       } else if (interactionFragment instanceof FragmentEnd) {
         if (interactionFragment.eContainer() != null) {
-          list_p.add(interactionFragment);
+          list.add(interactionFragment);
         }
       } else if (interactionFragment instanceof InteractionOperand) {
         if (interactionFragment.eContainer() != null) {
-          list_p.add(interactionFragment);
+          list.add(interactionFragment);
         }
       }
 
-      export(childNode, list_p);
+      export(childNode, list);
     }
   }
 
   /**
    * Export the Tree given by parameter to the '_scenario'.
-   * @param srcTree_p
+   * @param srcTree
    */
-  public void export(ScenarioRepresentation srcTree_p) {
-    if (_scenario != null) {
+  public void export(ScenarioRepresentation srcTree) {
+    if (scenario != null) {
       List<InteractionFragment> newList = new ArrayList<InteractionFragment>();
       export(getRootNode(), newList);
-      _scenario.getOwnedInteractionFragments().clear();
-      _scenario.getOwnedInteractionFragments().addAll(newList);
-      cloneExecutions(srcTree_p);
+      scenario.getOwnedInteractionFragments().clear();
+      scenario.getOwnedInteractionFragments().addAll(newList);
+      cloneExecutions(srcTree);
       fillCombinedFragment();
     }
   }
@@ -818,17 +818,17 @@ public class ScenarioRepresentation {
   private void fillCombinedFragment() {
     List<CombinedFragment> emptyCBToBeRemoved = new ArrayList<CombinedFragment>();
 
-    for (TimeLapse timeLapse : _scenario.getOwnedTimeLapses()) {
+    for (TimeLapse timeLapse : scenario.getOwnedTimeLapses()) {
       if (timeLapse instanceof InteractionUse) {
         InteractionUse tgtInteractionUse = (InteractionUse) timeLapse;
         InteractionUse srcInteractionUse = (InteractionUse) CapellaElementExt.getRefinementTgtElement(tgtInteractionUse, InteractionPackage.Literals.INTERACTION_USE);
         if (srcInteractionUse != null) {
           FragmentEnd srcStart = (FragmentEnd) srcInteractionUse.getStart();
           FragmentEnd srcFinish = (FragmentEnd) srcInteractionUse.getFinish();
-          FragmentEnd tgtStart = (FragmentEnd) CapellaElementExt.getRefinementSrcElement(srcStart, InteractionPackage.Literals.FRAGMENT_END, _scenario);
-          FragmentEnd tgtFinish = (FragmentEnd) CapellaElementExt.getRefinementSrcElement(srcFinish, InteractionPackage.Literals.FRAGMENT_END, _scenario);
+          FragmentEnd tgtStart = (FragmentEnd) CapellaElementExt.getRefinementSrcElement(srcStart, InteractionPackage.Literals.FRAGMENT_END, scenario);
+          FragmentEnd tgtFinish = (FragmentEnd) CapellaElementExt.getRefinementSrcElement(srcFinish, InteractionPackage.Literals.FRAGMENT_END, scenario);
           if ((tgtStart != null) && (tgtFinish != null)) {
-            List<InstanceRole> coveredInstanceRoles = AbstractFragmentExt.getCoveredInstanceRoles(srcInteractionUse, _scenario);
+            List<InstanceRole> coveredInstanceRoles = AbstractFragmentExt.getCoveredInstanceRoles(srcInteractionUse, scenario);
             tgtStart.getCoveredInstanceRoles().clear();
             tgtStart.getCoveredInstanceRoles().addAll(coveredInstanceRoles);
             tgtFinish.getCoveredInstanceRoles().clear();
@@ -836,7 +836,7 @@ public class ScenarioRepresentation {
           }
         }
       } else if (timeLapse instanceof CombinedFragment) {
-        if (AbstractFragmentExt.isEmpty((CombinedFragment) timeLapse, _scenario)) {
+        if (AbstractFragmentExt.isEmpty((CombinedFragment) timeLapse, scenario)) {
           emptyCBToBeRemoved.add((CombinedFragment) timeLapse);
         } else {
           CombinedFragment tgtCombinedFragment = (CombinedFragment) timeLapse;
@@ -844,17 +844,17 @@ public class ScenarioRepresentation {
           if (srcCombinedFragment != null) {
             for (InteractionOperand srcOperand : srcCombinedFragment.getReferencedOperands()) {
               InteractionOperand tgtOperand =
-                  (InteractionOperand) CapellaElementExt.getRefinementSrcElement(srcOperand, InteractionPackage.Literals.INTERACTION_OPERAND, _scenario);
+                  (InteractionOperand) CapellaElementExt.getRefinementSrcElement(srcOperand, InteractionPackage.Literals.INTERACTION_OPERAND, scenario);
               if (tgtOperand != null) {
                 tgtCombinedFragment.getReferencedOperands().add(tgtOperand);
               }
             }
             FragmentEnd srcStart = (FragmentEnd) srcCombinedFragment.getStart();
             FragmentEnd srcFinish = (FragmentEnd) srcCombinedFragment.getFinish();
-            FragmentEnd tgtStart = (FragmentEnd) CapellaElementExt.getRefinementSrcElement(srcStart, InteractionPackage.Literals.FRAGMENT_END, _scenario);
-            FragmentEnd tgtFinish = (FragmentEnd) CapellaElementExt.getRefinementSrcElement(srcFinish, InteractionPackage.Literals.FRAGMENT_END, _scenario);
+            FragmentEnd tgtStart = (FragmentEnd) CapellaElementExt.getRefinementSrcElement(srcStart, InteractionPackage.Literals.FRAGMENT_END, scenario);
+            FragmentEnd tgtFinish = (FragmentEnd) CapellaElementExt.getRefinementSrcElement(srcFinish, InteractionPackage.Literals.FRAGMENT_END, scenario);
             if ((tgtStart != null) && (tgtFinish != null)) {
-              List<InstanceRole> coveredInstanceRoles = AbstractFragmentExt.getCoveredInstanceRoles(tgtStart, tgtFinish, _scenario);
+              List<InstanceRole> coveredInstanceRoles = AbstractFragmentExt.getCoveredInstanceRoles(tgtStart, tgtFinish, scenario);
               for (InteractionOperand operand : tgtCombinedFragment.getReferencedOperands()) {
                 operand.getCoveredInstanceRoles().clear();
                 operand.getCoveredInstanceRoles().addAll(coveredInstanceRoles);
@@ -886,8 +886,8 @@ public class ScenarioRepresentation {
         if (msg != null) {
           MessageKind kind = msg.getKind();
           /** logging */
-          String loggedMsg = MessageFormat.format(Messages.DebugScenarioContent, _scenario.getName(), msg.getName(), kind);
-          _logger.debug(new EmbeddedMessage(loggedMsg, IReportManagerDefaultComponents.REFINEMENT, _scenario));
+          String loggedMsg = MessageFormat.format(Messages.DebugScenarioContent, scenario.getName(), msg.getName(), kind);
+          logger.debug(new EmbeddedMessage(loggedMsg, IReportManagerDefaultComponents.REFINEMENT, scenario));
 
           /** node creation */
           Node<InteractionFragment> childNode = new Node<InteractionFragment>(currentNode, interactionFragment);
@@ -998,7 +998,7 @@ public class ScenarioRepresentation {
    * @return
    */
   private Node<InteractionFragment> getNodeByData(Node<InteractionFragment> currentNode, InteractionFragment nodeData) {
-    for (Node<InteractionFragment> node : _messageTree.walk(currentNode)) {
+    for (Node<InteractionFragment> node : messageTree.walk(currentNode)) {
       if (node.getData() == nodeData) {
         return node;
       }
@@ -1010,11 +1010,11 @@ public class ScenarioRepresentation {
    * In Ctx towards LogicalArchitecture layer or LogicalArchitecture toward PhysicalArchitecture refinement cases, return the operation transitionned. In other
    * case, return the same Operation given in parameter.
    */
-  private AbstractEventOperation getOperation(MessageEnd srcMsgEnd_p, SequenceMessage tgtMsg_p, AbstractEventOperation currentOp_p) {
+  private AbstractEventOperation getOperation(MessageEnd srcMsgEnd, SequenceMessage tgtMsg, AbstractEventOperation currentOp) {
     AbstractEventOperation finalOp = null;
 
-    if (currentOp_p != null) {
-      finalOp = RefinementServices.getDelegatedOperation(srcMsgEnd_p, tgtMsg_p, currentOp_p);
+    if (currentOp != null) {
+      finalOp = RefinementServices.getDelegatedOperation(srcMsgEnd, tgtMsg, currentOp);
     }
 
     return finalOp;
@@ -1024,8 +1024,8 @@ public class ScenarioRepresentation {
    * @return the root node
    */
   public Node<InteractionFragment> getRootNode() {
-    if (_messageTree != null) {
-      return _messageTree.getRootElement();
+    if (messageTree != null) {
+      return messageTree.getRootElement();
     }
     return null;
   }
@@ -1034,23 +1034,23 @@ public class ScenarioRepresentation {
    * @return the scenario represented by this class
    */
   public Scenario getScenario() {
-    return _scenario;
+    return scenario;
   }
 
   /**
    * 
    */
-  private void removeEmptyCombinedFragment(CombinedFragment combinedFragment_p) {
-    for (InteractionOperand operand : AbstractFragmentExt.getOwnedOperands(combinedFragment_p, _scenario)) {
+  private void removeEmptyCombinedFragment(CombinedFragment combinedFragment) {
+    for (InteractionOperand operand : AbstractFragmentExt.getOwnedOperands(combinedFragment, scenario)) {
       CapellaElementExt.cleanTraces(operand);
       operand.destroy();
     }
-    CapellaElementExt.cleanTraces(combinedFragment_p.getStart());
-    combinedFragment_p.getStart().destroy();
-    CapellaElementExt.cleanTraces(combinedFragment_p.getFinish());
-    combinedFragment_p.getFinish().destroy();
-    CapellaElementExt.cleanTraces(combinedFragment_p);
-    combinedFragment_p.destroy();
+    CapellaElementExt.cleanTraces(combinedFragment.getStart());
+    combinedFragment.getStart().destroy();
+    CapellaElementExt.cleanTraces(combinedFragment.getFinish());
+    combinedFragment.getFinish().destroy();
+    CapellaElementExt.cleanTraces(combinedFragment);
+    combinedFragment.destroy();
   }
 
   /**
@@ -1058,8 +1058,8 @@ public class ScenarioRepresentation {
    */
   @Override
   public String toString() {
-    if (_messageTree != null) {
-      return _messageTree.toString();
+    if (messageTree != null) {
+      return messageTree.toString();
     }
     return super.toString();
   }
@@ -1068,8 +1068,8 @@ public class ScenarioRepresentation {
    * @param currentNode
    */
   public void unChainCurrentNodeMessage(Node<InteractionFragment> currentNode) {
-    if (_messageTree != null) {
-      _messageTree.unChainCurrentNodeMessage(currentNode);
+    if (messageTree != null) {
+      messageTree.unChainCurrentNodeMessage(currentNode);
       updateListeners();
     }
   }
@@ -1078,17 +1078,17 @@ public class ScenarioRepresentation {
    * 
    */
   private void updateListeners() {
-    for (IScenarioRepresentationListener listener : _listeners) {
-      listener.scenarioChanged(_messageTree);
+    for (IScenarioRepresentationListener listener : listeners) {
+      listener.scenarioChanged(messageTree);
     }
   }
 
   /**
    * Update the source operation if have been changed still the previous refinement
    */
-  public void updateOperationNode(Node<InteractionFragment> srcNode_p, Node<InteractionFragment> tgtNode_p) {
-    InteractionFragment srcAbstractEnd = srcNode_p.getData();
-    InteractionFragment tgtAbstractEnd = tgtNode_p.getData();
+  public void updateOperationNode(Node<InteractionFragment> srcNode, Node<InteractionFragment> tgtNode) {
+    InteractionFragment srcAbstractEnd = srcNode.getData();
+    InteractionFragment tgtAbstractEnd = tgtNode.getData();
     if ((srcAbstractEnd != null) && (tgtAbstractEnd != null)) {
       if (srcAbstractEnd instanceof MessageEnd) {
         MessageEnd srcMsgEnd = (MessageEnd) srcAbstractEnd;
@@ -1150,8 +1150,8 @@ public class ScenarioRepresentation {
    * 
    */
   public List<Node<InteractionFragment>> walk() {
-    if (_messageTree != null) {
-      return _messageTree.walk(_messageTree.getRootElement());
+    if (messageTree != null) {
+      return messageTree.walk(messageTree.getRootElement());
     }
     return null;
   }
@@ -1159,9 +1159,9 @@ public class ScenarioRepresentation {
   /**
    * Check if the Interface source operation have been changed still the previous refinement
    */
-  // private boolean checkInterfaceReafectation(Node<AbstractEnd> srcNode_p, Node<AbstractEnd> tgtNode_p) {
-  // AbstractEnd srcAbstractEnd = srcNode_p.getData();
-  // AbstractEnd tgtAbstractEnd = tgtNode_p.getData();
+  // private boolean checkInterfaceReafectation(Node<AbstractEnd> srcNode, Node<AbstractEnd> tgtNode) {
+  // AbstractEnd srcAbstractEnd = srcNode.getData();
+  // AbstractEnd tgtAbstractEnd = tgtNode.getData();
   // if (srcAbstractEnd != null) {
   // if (srcAbstractEnd instanceof MessageEnd) {
   // MessageEnd srcMsgEnd = (MessageEnd) srcAbstractEnd;
@@ -1217,9 +1217,9 @@ public class ScenarioRepresentation {
   /**
    *
    */
-  // private void removeRefinementLinkFromNode(Node<AbstractEnd> srcNode_p, Node<AbstractEnd> tgtNode_p) {
-  // AbstractEnd srcAbstractEnd = srcNode_p.getData();
-  // AbstractEnd tgtAbstractEnd = tgtNode_p.getData();
+  // private void removeRefinementLinkFromNode(Node<AbstractEnd> srcNode, Node<AbstractEnd> tgtNode) {
+  // AbstractEnd srcAbstractEnd = srcNode.getData();
+  // AbstractEnd tgtAbstractEnd = tgtNode.getData();
   // if (srcAbstractEnd != null && srcAbstractEnd instanceof MessageEnd) {
   // removeRefinementLinkFromMessageEnd((MessageEnd) srcAbstractEnd, (MessageEnd) tgtAbstractEnd);
   // removeRefinementLinkFromMessageEnd(MessageEndExt.getOppositeMessageEnd((MessageEnd) srcAbstractEnd),
@@ -1241,13 +1241,13 @@ public class ScenarioRepresentation {
   /**
    *
    */
-  // private void removeRefinementLinkFromMessageEnd(MessageEnd srcMsgEnd_p, MessageEnd tgtMsgEnd_p) {
-  // Event srcEvt = srcMsgEnd_p.getEvent();
-  // Event tgtEvt = tgtMsgEnd_p.getEvent();
-  // SequenceMessage srcSeqMsg = srcMsgEnd_p.getMessage();
-  // SequenceMessage tgtSeqMsg = tgtMsgEnd_p.getMessage();
+  // private void removeRefinementLinkFromMessageEnd(MessageEnd srcMsgEnd, MessageEnd tgtMsgEnd) {
+  // Event srcEvt = srcMsgEnd.getEvent();
+  // Event tgtEvt = tgtMsgEnd.getEvent();
+  // SequenceMessage srcSeqMsg = srcMsgEnd.getMessage();
+  // SequenceMessage tgtSeqMsg = tgtMsgEnd.getMessage();
   //
-  // removeRefinementLink(srcMsgEnd_p, tgtMsgEnd_p);
+  // removeRefinementLink(srcMsgEnd, tgtMsgEnd);
   // removeRefinementLink(srcEvt, tgtEvt);
   // removeRefinementLink(srcSeqMsg, tgtSeqMsg);
   // }

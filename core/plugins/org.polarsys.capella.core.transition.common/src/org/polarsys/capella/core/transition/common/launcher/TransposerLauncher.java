@@ -27,7 +27,6 @@ import org.polarsys.capella.core.transition.common.handlers.log.DefaultLogHandle
 import org.polarsys.capella.core.transition.common.handlers.log.ILogHandler;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
 import org.polarsys.capella.core.transition.common.transposer.ExtendedTransposer;
-import org.polarsys.capella.core.transition.common.transposer.SharedWorkflowActivityParameter;
 import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -104,32 +103,21 @@ public class TransposerLauncher extends ActivitiesLauncher {
     _transposer = null;
   }
 
-  /**
-   * @param parameter_p
-   */
-  @Override
-  protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
-    SharedWorkflowActivityParameter parameter = super.getSharedParameter(workflowId);
-
-    parameter.addSharedParameter(new GenericParameter<IContext>(ITransposerWorkflow.TRANSPOSER_CONTEXT,
-        _transposer.getContext(), "Context used during rules execution")); //$NON-NLS-1$
-
-    return parameter;
-  }
 
   /*
    * (non-Javadoc)
    * 
    * @see org.eclipse.jface.action.Action#run()
    */
-  public void run(Collection<Object> selection1, boolean save, IProgressMonitor monitor) {
+  public void run(Collection<?> selection1, boolean save, IProgressMonitor monitor) {
     List<Object> selection = new ArrayList<Object>();
     selection.addAll(selection1);
     launch(selection, getPurpose(), getMapping(), monitor);
   }
 
+  
   @Override
-  public void launch(Collection<Object> selection, String purpose, String mappingId, IProgressMonitor monitor) {
+  public void launch(Collection<?> selection, String purpose, String mappingId, IProgressMonitor monitor) {
 
     try {
       initializeLogHandler();
@@ -143,6 +131,8 @@ public class TransposerLauncher extends ActivitiesLauncher {
       _transposer.getContext().put(ITransitionConstants.TRANSPOSER_MAPPING, mappingId);
       _transposer.getContext().put(ITransposerWorkflow.TRANSPOSER_ANALYSIS_SOURCES, new ArrayList<Object>());
 
+      initializeParameters();
+      
       triggerActivities(selection, getWorkflow(), monitor);
 
     } catch (OperationCanceledException e) {
@@ -162,6 +152,11 @@ public class TransposerLauncher extends ActivitiesLauncher {
     } finally {
       dispose();
     }
+  }
+
+  protected void initializeParameters() {
+    addSharedParameter(new GenericParameter<IContext>(ITransposerWorkflow.TRANSPOSER_CONTEXT,
+        _transposer.getContext(), "Context used during rules execution"));
   }
 
   public class DispatcherArrayIterator implements Iterator<String> {
@@ -188,13 +183,11 @@ public class TransposerLauncher extends ActivitiesLauncher {
     }
 
     public String next() throws NoSuchElementException {
-
       ILoopActivityDispatcher dispatcher = getDispatcher();
       if (dispatcher.loop(getTransposer().getContext(), array[pos])) {
         return array[pos];
       }
       return array[pos++];
-
     }
 
     public void remove() {

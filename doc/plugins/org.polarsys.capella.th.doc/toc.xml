@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Thematic highlights" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#thematic">
+	<topic href="html/Focus on constraints and opaque expressions/Focus on constraints and opaque expressions.html" label="Focus on constraints and opaque expressions"> 
+	</topic>
+	<topic href="html/Focus on state machines/Focus on state machines.html" label="Focus on state machines"> 
+	</topic>
+	<topic href="html/Functionnal Analysis to Interface Engineering/Functionnal Analysis to Interface Engineering.html" label="Functional Analysis to Interface Engineering"> 
+	</topic>
+	<topic href="html/Performance Recommandations/Performance Recommandations.html" label="Performance Recommandations"> 
+	</topic>
+ <anchor id="Thematic Highlights"/>
+</toc>

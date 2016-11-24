@@ -13,17 +13,18 @@ package org.polarsys.capella.common.ui.services.helper;
 import java.util.Collection;
 import java.util.MissingResourceException;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.provider.IChangeNotifier;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ItemProviderDecorator;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
-
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 /**
@@ -144,24 +145,42 @@ public class EObjectLabelProviderHelper {
     if (null == object) {
       return label;
     }
-    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(object);
-    // Precondition.
-    if (null == editingDomain) {
-      return label;
-    }
-    // Adaptation to ItemProviderAdapter returns null due to EMF Edit generated ItemProviderAdapterFactory that do not support this type.
-    // So, we adapt to IItemLabelProvider and then we cast...
-    IItemLabelProvider provider = (IItemLabelProvider) editingDomain.getAdapterFactory().adapt(object, IItemLabelProvider.class);
+    ItemProviderAdapter provider = getItemProvider(object);
     if (provider instanceof ItemProviderAdapter) {
       label = getMetaclassLabel(object.eClass(), (ItemProviderAdapter) provider);
-    } else if (provider instanceof ItemProviderDecorator) {
-      label = object.eClass().getName();
     }
     if (addBrackets) {
       label = METACLASS_DISPLAY_PREFIX + label + METACLASS_DISPLAY_SUFFIX;
     }
     return label;
   }
+  
+  /**
+   * Get the item provider adapter for the given object
+   */
+  public static ItemProviderAdapter getItemProvider(EObject object) {
+    // Precondition.
+    if (null == object) {
+      return null;
+    }
+    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(object);
+    // Precondition.
+    if (null == editingDomain) {
+      return null;
+    }
+
+    // Adaptation to ItemProviderAdapter returns null due to EMF Edit generated ItemProviderAdapterFactory that do not support this type.
+    // So, we adapt to IItemLabelProvider and then we cast...
+    Adapter adapter = editingDomain.getAdapterFactory().adapt(object, IItemLabelProvider.class);
+    if (adapter instanceof ItemProviderDecorator) {
+      IChangeNotifier notifier = ((ItemProviderDecorator) adapter).getDecoratedItemProvider();
+      if (notifier instanceof ItemProviderAdapter) {
+        return (ItemProviderAdapter) notifier;
+      }
+    }
+    return (ItemProviderAdapter) adapter;
+  }
+  
 
   /**
    * Get the metaclass label (emitted by EMF Edit generation) for given object according given editing domain.

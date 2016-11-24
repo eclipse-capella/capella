@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
-import org.polarsys.capella.core.sirius.analysis.FaServices;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -113,7 +113,8 @@ public class ShowHideFunction extends ShowHideABRole {
     DiagramElementMapping mapping = super.getMapping(semantic_p, context_p, relatedViews_p);
 
     if (semantic_p instanceof AbstractFunction) {
-      mapping = FaServices.getFaServices().getMappingFunction((AbstractFunction) semantic_p, getContent().getDDiagram());
+      String mappingName = MappingConstantsHelper.getMappingFunction(getContent().getDDiagram());
+      mapping = getContent().getMapping(mappingName);
     }
 
     return mapping;

@@ -14,7 +14,6 @@ import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.swt.graphics.Image;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class CategoryFilter implements ICategoryItem {
@@ -29,26 +28,26 @@ public class CategoryFilter implements ICategoryItem {
 
   protected IContext context;
 
-  protected String prefix = ICommonConstants.EMPTY_STRING;
-
+  protected String setId;
+  
   protected String name;
 
+  protected String description;
+  
   protected Image image;
 
   protected String id;
 
-  public CategoryFilter(IContext context, String id, String name, Image image) {
+  public CategoryFilter(IContext context, String id, String name, String description, Image image) {
     this.context = context;
     this.image = image;
     this.name = name;
-    this.id = id;
+    this.description = description;
+    this.id = (id == null ? getClass().getSimpleName() : id);
   }
-
-  public CategoryFilter(IContext context, String name, Image image) {
-    this.context = context;
-    this.image = image;
-    this.name = name;
-    this.id = getClass().getCanonicalName();
+  
+  public CategoryFilter(IContext context, String name, String description) {
+    this(context, null, name, description, null);
   }
 
   @Override
@@ -58,7 +57,7 @@ public class CategoryFilter implements ICategoryItem {
 
   @Override
   public String getDescription() {
-    return name;
+    return description;
   }
 
   @Override
@@ -68,7 +67,7 @@ public class CategoryFilter implements ICategoryItem {
 
   @Override
   public String getText() {
-    return prefix + name;
+    return name;
   }
 
   @Override
@@ -134,4 +133,14 @@ public class CategoryFilter implements ICategoryItem {
     return false;
   }
 
+  @Override
+  public String getCategorySet() {
+    return setId;
+  }
+
+  @Override
+  public void setCategorySet(String setId) {
+    this.setId=setId;
+  }
+  
 }

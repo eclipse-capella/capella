@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentPort;
-import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
@@ -28,7 +27,7 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
-import org.polarsys.capella.core.sirius.analysis.FaServices;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -119,10 +118,12 @@ public class ShowHideABComponentExchange extends ShowHideABComponent {
     ContextItemElement lastContext = context_p.getLast();
 
     if (lastContext.getValue() instanceof ComponentPort) {
-      mapping = FaServices.getFaServices().getMappingABComponentPort((Port) lastContext.getValue(), getContent().getDDiagram());
+      String mappingName = MappingConstantsHelper.getMappingABComponentPort(getContent().getDDiagram());
+      mapping = getContent().getMapping(mappingName);
 
     } else if (lastContext.getValue() instanceof ComponentExchange) {
-      mapping = FaServices.getFaServices().getMappingABConnection(getContent().getDDiagram());
+      String mappingName = MappingConstantsHelper.getMappingABConnection(getContent().getDDiagram());
+      mapping = getContent().getMapping(mappingName);
     }
 
     return mapping;

@@ -58,7 +58,7 @@ public class TransitionUICommandHelper
   }
 
   @Override
-  public ICommand getActorTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+  public ICommand getActorTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
     return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
@@ -69,7 +69,7 @@ public class TransitionUICommandHelper
   }
 
   @Override
-  public ICommand getDataTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+  public ICommand getDataTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
     return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
@@ -80,7 +80,7 @@ public class TransitionUICommandHelper
   }
 
   @Override
-  public ICommand getExchangeItemTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+  public ICommand getExchangeItemTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
     return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
@@ -91,7 +91,7 @@ public class TransitionUICommandHelper
   }
 
   @Override
-  public ICommand getFunctionalTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+  public ICommand getFunctionalTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
     return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
@@ -102,7 +102,7 @@ public class TransitionUICommandHelper
   }
 
   @Override
-  public ICommand getOCtoSMTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+  public ICommand getOCtoSMTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
     return new IntramodelTransitionCommand(elements, monitor) {
 
@@ -114,7 +114,7 @@ public class TransitionUICommandHelper
   }
 
   @Override
-  public ICommand getOAtoSCTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+  public ICommand getOAtoSCTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
     return new IntramodelTransitionCommand(elements, monitor) {
 
@@ -127,7 +127,7 @@ public class TransitionUICommandHelper
   }
 
   @Override
-  public ICommand getOAtoSMTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+  public ICommand getOAtoSMTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
     return new IntramodelTransitionCommand(elements, monitor) {
 
@@ -140,7 +140,7 @@ public class TransitionUICommandHelper
   }
 
   @Override
-  public ICommand getInterfaceTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+  public ICommand getInterfaceTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
     return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
@@ -151,7 +151,7 @@ public class TransitionUICommandHelper
   }
 
   @Override
-  public ICommand getLC2PCTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+  public ICommand getLC2PCTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
     return new IntramodelTransitionCommand(elements, monitor) {
 
@@ -163,7 +163,7 @@ public class TransitionUICommandHelper
   }
 
   @Override
-  public ICommand getStateMachineTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+  public ICommand getStateMachineTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
     return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
@@ -174,7 +174,7 @@ public class TransitionUICommandHelper
   }
 
   @Override
-  public ICommand getCapabilityTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+  public ICommand getCapabilityTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
     return new IntramodelTransitionCommand(elements, monitor) {
 
@@ -186,7 +186,7 @@ public class TransitionUICommandHelper
   }
 
   @Override
-  public ICommand getOE2SystemTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+  public ICommand getOE2SystemTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
     return new IntramodelTransitionCommand(elements, monitor) {
 
@@ -203,7 +203,7 @@ public class TransitionUICommandHelper
    * @return
    */
   @Override
-  public ICommand getOE2ActorTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+  public ICommand getOE2ActorTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
     return new IntramodelTransitionCommand(elements, monitor) {
 
@@ -220,7 +220,7 @@ public class TransitionUICommandHelper
    * @return
    */
   @Override
-  public ICommand getPropertyValueTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+  public ICommand getPropertyValueTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
     return new IntramodelTransitionCommand(elements, monitor) {
 
@@ -237,7 +237,7 @@ public class TransitionUICommandHelper
    * @return
    */
   @Override
-  public ICommand getSystemTransitionCommand(Collection<Object> elements, IProgressMonitor monitor) {
+  public ICommand getSystemTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
     return new IntramodelTransitionCommand(elements, monitor) {
 

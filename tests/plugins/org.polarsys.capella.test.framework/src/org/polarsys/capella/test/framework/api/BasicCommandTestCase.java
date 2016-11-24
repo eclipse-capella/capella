@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,7 +57,12 @@ public abstract class BasicCommandTestCase extends BasicTestCase {
   protected Resource getModelResource() {
     if (modelResource == null) {
       Session session = getSessionForTestModel(getRequiredTestModels().get(0));
-      modelResource = (Resource) session.getSemanticResources().toArray()[0];
+      for (Resource resource : session.getSemanticResources()) {
+        // Exclude AFM's Metadata resource
+        if (resource.getContents().get(0) instanceof Project) {
+          modelResource = resource;
+        }
+      }
     }
     return modelResource;
   }

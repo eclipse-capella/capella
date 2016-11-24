@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,31 +20,30 @@ import org.polarsys.capella.core.model.handler.command.DeleteStructureCommand;
 
 /**
  * Utility class for Merge
- *
  */
 public class MergeUtils {
   
   /**
    * Delete an {@link EObject}
-   * @param eObject_p the object to delete
+   * @param eObject the object to delete
    * @see DeleteStructureCommand
    */
-  public static void deleteElement(EObject eObject_p) {
-    if (null != eObject_p) {
-      deleteElements(Collections.singletonList(eObject_p));
+  public static void deleteElement(EObject eObject) {
+    if (null != eObject) {
+      deleteElements(Collections.singletonList(eObject));
     }
   }
   
   /**
    * Delete a list of {@link EObject}
-   * @param eObjects_p the list of object to delete
+   * @param eObjects the list of object to delete
    * @see DeleteStructureCommand
    */
-  public static void deleteElements(List<EObject> eObjects_p) {
-    if ( null != eObjects_p && !eObjects_p.isEmpty() ) {
-      EditingDomain editingDomain = TransactionHelper.getEditingDomain(eObjects_p);
+  public static void deleteElements(List<EObject> eObjects) {
+    if ( null != eObjects && !eObjects.isEmpty() ) {
+      EditingDomain editingDomain = TransactionHelper.getEditingDomain(eObjects);
       if (null != editingDomain) {
-        DeleteStructureCommand cmd = new DeleteStructureCommand(editingDomain, eObjects_p, false);
+        DeleteStructureCommand cmd = new DeleteStructureCommand(editingDomain, eObjects, false);
         cmd.execute();
       }
     }

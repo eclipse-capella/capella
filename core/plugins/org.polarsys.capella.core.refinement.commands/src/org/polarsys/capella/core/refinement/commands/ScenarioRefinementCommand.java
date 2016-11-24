@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,12 +30,12 @@ public class ScenarioRefinementCommand extends AbstractReadWriteCommand {
   /**
    * Currently selected element
    */
-  private ModelElement _selectedElement = null;
+  private ModelElement selectedElement = null;
 
   /**
    * Progress monitor
    */
-  private IProgressMonitor _progressMonitor = null;
+  private IProgressMonitor progressMonitor = null;
 
   /**
    * Logger
@@ -45,12 +45,12 @@ public class ScenarioRefinementCommand extends AbstractReadWriteCommand {
   /**
    * Constructor
    *
-   * @param modelElement_p
-   * @param progressMonitor_p
+   * @param modelElement
+   * @param progressMonitor
    */
-  public ScenarioRefinementCommand(ModelElement modelElement_p, IProgressMonitor progressMonitor_p) {
-    _selectedElement = modelElement_p;
-    _progressMonitor = progressMonitor_p;
+  public ScenarioRefinementCommand(ModelElement modelElement, IProgressMonitor progressMonitor) {
+    this.selectedElement = modelElement;
+    this.progressMonitor = progressMonitor;
   }
 
   /**
@@ -61,15 +61,15 @@ public class ScenarioRefinementCommand extends AbstractReadWriteCommand {
     // Operation is starting.
     LongRunningListenersRegistry.getInstance().operationStarting(getClass());
     try {
-      if (_selectedElement != null) {
-        RefinementMultiple refinement = new RefinementMultiple((NamedElement) _selectedElement);
-        refinement.execute(_progressMonitor);
+      if (selectedElement != null) {
+        RefinementMultiple refinement = new RefinementMultiple((NamedElement) selectedElement);
+        refinement.execute(progressMonitor);
       }
     }
-    catch (ProcessorException exception_p) {
+    catch (ProcessorException exception) {
       _logger.error(
           new EmbeddedMessage(
-              exception_p.getMessage(),
+              exception.getMessage(),
               IReportManagerDefaultComponents.REFINEMENT
           )
       );

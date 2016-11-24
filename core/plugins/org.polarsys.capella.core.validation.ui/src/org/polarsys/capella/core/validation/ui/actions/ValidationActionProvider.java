@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,11 +40,11 @@ public class ValidationActionProvider extends CommonActionProvider {
   /*
    * 
    */
-  private ValidateAction _defaultValidationAction;
+  private ValidateAction defaultValidationAction;
   /*
    * 
    */
-  private List<ValidateAction> _userValidationActions;
+  private List<ValidateAction> userValidationActions;
   /*
    * 
    */
@@ -58,7 +58,7 @@ public class ValidationActionProvider extends CommonActionProvider {
    * Constructs the contribution actions provider.
    */
   public ValidationActionProvider() {
-    _userValidationActions = new ArrayList<ValidateAction>();
+    userValidationActions = new ArrayList<ValidateAction>();
   }
 
   /**
@@ -68,15 +68,15 @@ public class ValidationActionProvider extends CommonActionProvider {
   public void dispose() {
     ISelectionProvider selectionProvider = getActionSite().getViewSite().getSelectionProvider();
 
-    if (null != _defaultValidationAction) {
-      selectionProvider.removeSelectionChangedListener(_defaultValidationAction);
-      _defaultValidationAction = null;
+    if (null != defaultValidationAction) {
+      selectionProvider.removeSelectionChangedListener(defaultValidationAction);
+      defaultValidationAction = null;
     }
 
-    for (ValidateAction action : _userValidationActions) {
+    for (ValidateAction action : userValidationActions) {
       selectionProvider.removeSelectionChangedListener(action);
     }
-    _userValidationActions.clear();
+    userValidationActions.clear();
 
     super.dispose();
   }
@@ -91,10 +91,10 @@ public class ValidationActionProvider extends CommonActionProvider {
    * @see org.eclipse.ui.navigator.CommonActionProvider#init(org.eclipse.ui.navigator.ICommonActionExtensionSite)
    */
   @Override
-  public void init(ICommonActionExtensionSite site_p) {
-    super.init(site_p);
+  public void init(ICommonActionExtensionSite site) {
+    super.init(site);
 
-    commonViewSite = site_p.getViewSite();
+    commonViewSite = site.getViewSite();
     if (!(commonViewSite instanceof ICommonViewerWorkbenchSite)) {
       return;
     }
@@ -103,22 +103,22 @@ public class ValidationActionProvider extends CommonActionProvider {
 
   /**
    * @param isRootAction
-   * @param file_p
-   * @param selectionProvider_p
-   * @param imageDescriptor_p
+   * @param file
+   * @param selectionProvider
+   * @param imageDescriptor
    * @return
    */
-  protected ValidateAction createValidationAction(boolean isRootAction, IFile file_p, ISelectionProvider selectionProvider_p, ImageDescriptor imageDescriptor_p) {
-    ValidateAction validationAction = new EPFValidationAction(isRootAction, file_p);
+  protected ValidateAction createValidationAction(boolean isRootAction, IFile file, ISelectionProvider selectionProvider, ImageDescriptor imageDescriptor) {
+    ValidateAction validationAction = new EPFValidationAction(isRootAction, file);
 
-    validationAction.setImageDescriptor(imageDescriptor_p);
+    validationAction.setImageDescriptor(imageDescriptor);
 
     validationAction.setActiveWorkbenchPart(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart());
-    selectionProvider_p.addSelectionChangedListener(validationAction);
+    selectionProvider.addSelectionChangedListener(validationAction);
     // Set the current selection otherwise at first run, selection is lost.
-    ISelection selection = selectionProvider_p.getSelection();
+    ISelection selection = selectionProvider.getSelection();
     if (!selection.isEmpty()) {
-      validationAction.selectionChanged(new SelectionChangedEvent(selectionProvider_p, selection));
+      validationAction.selectionChanged(new SelectionChangedEvent(selectionProvider, selection));
     }
 
     return validationAction;
@@ -154,20 +154,20 @@ public class ValidationActionProvider extends CommonActionProvider {
    * {@inheritDoc}
    */
   @Override
-  public void fillContextMenu(IMenuManager menu_p) {
+  public void fillContextMenu(IMenuManager menu) {
     initActions();
-    if (_userValidationActions.size() > 0) {
+    if (userValidationActions.size() > 0) {
       IMenuManager menuManager = new MenuManager("Validate Model", imageDescriptor, "ID"); //$NON-NLS-1$ //$NON-NLS-2$
-      menu_p.insertBefore("group.validation", menuManager); //$NON-NLS-1$
-      menuManager.add(_defaultValidationAction);
+      menu.insertBefore("group.validation", menuManager); //$NON-NLS-1$
+      menuManager.add(defaultValidationAction);
       menuManager.add(new Separator());
-      for (ValidateAction action : _userValidationActions) {
+      for (ValidateAction action : userValidationActions) {
         menuManager.add(action);
       }
     } else {
       imageDescriptor = CapellaValidationUIActivator.getDefault().getImageDescriptor(CapellaValidationUIActivator.IMG_ENABLED_VALIDATE);
-      _userValidationActions = new ArrayList<ValidateAction>();
-      menu_p.prependToGroup("group.validation", _defaultValidationAction); //$NON-NLS-1$
+      userValidationActions = new ArrayList<ValidateAction>();
+      menu.prependToGroup("group.validation", defaultValidationAction); //$NON-NLS-1$
 
     }
   }
@@ -178,10 +178,10 @@ public class ValidationActionProvider extends CommonActionProvider {
   private void initActions() {
     ISelectionProvider selectionProvider = commonViewSite.getSelectionProvider();
     imageDescriptor = CapellaValidationUIActivator.getDefault().getImageDescriptor(CapellaValidationUIActivator.IMG_ENABLED_VALIDATE);
-    _userValidationActions = new ArrayList<ValidateAction>();
-    _defaultValidationAction = createDefaultValidation();// ValidationAction(false, null, selectionProvider, imageDescriptor);
+    userValidationActions = new ArrayList<ValidateAction>();
+    defaultValidationAction = createDefaultValidation();// ValidationAction(false, null, selectionProvider, imageDescriptor);
     for (IFile file : PreferencesHelper.retrieveUserDefinedPreferenceFiles(selectionProvider, EPFValidationAction.EPF_EXTNAME)) {
-      _userValidationActions.add(createValidationAction(false, file, selectionProvider, imageDescriptor));
+      userValidationActions.add(createValidationAction(false, file, selectionProvider, imageDescriptor));
     }
   }
 
@@ -189,7 +189,7 @@ public class ValidationActionProvider extends CommonActionProvider {
    * {@inheritDoc}
    */
   @Override
-  public void fillActionBars(IActionBars actionBars_p) {
+  public void fillActionBars(IActionBars actionBars) {
     // Do nothing.
   }
 

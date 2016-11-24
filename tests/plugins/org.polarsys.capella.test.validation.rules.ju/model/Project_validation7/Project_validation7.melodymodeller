@@ -14,8 +14,7 @@
     xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.1.0"
     xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0"
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0"
-    id="d83689e2-dc43-4f46-a258-1965da80978c"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0" id="d83689e2-dc43-4f46-a258-1965da80978c"
     name="Project_validation7">
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
       id="f9ab91b0-d182-408e-a35c-32d95cab826c" name="ProgressStatus">

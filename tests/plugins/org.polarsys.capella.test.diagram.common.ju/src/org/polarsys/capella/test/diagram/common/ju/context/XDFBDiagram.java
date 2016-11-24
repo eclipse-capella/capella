@@ -19,6 +19,7 @@ import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.InitializationFromExistingDiagramTool;
 
 public class XDFBDiagram extends DiagramContext {
 
@@ -81,4 +82,7 @@ public class XDFBDiagram extends DiagramContext {
     new CreateContainerTool(this, name, containerId, id).run();
   }
 
+  public void initializationFromExistingDiagram(DiagramContext existingContext) {
+    new InitializationFromExistingDiagramTool(this, IToolNameConstants.TOOL_SDFB_INITIALIZATION_FROM_EXISTING_DIAGRAM, existingContext).insert(existingContext.getDiagramId());
+  }
 }

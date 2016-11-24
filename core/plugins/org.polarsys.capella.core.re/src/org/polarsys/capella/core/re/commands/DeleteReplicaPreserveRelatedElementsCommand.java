@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,22 +20,22 @@ import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.helpers.ReplicableElementExt;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
-import org.polarsys.capella.core.transition.common.commands.TransitionCommand;
+import org.polarsys.capella.core.transition.common.commands.DefaultCommand;
 import org.polarsys.capella.core.transition.system.helpers.SemanticHelper;
 
 /**
  *  
  *
  */
-public class DeleteReplicaPreserveRelatedElementsCommand extends TransitionCommand {
+public class DeleteReplicaPreserveRelatedElementsCommand extends DefaultCommand {
 
 	/**
-	 * @param selection_p
-	 * @param progressMonitor_p
+	 * @param selection
+	 * @param progressMonitor
 	 */
 	public DeleteReplicaPreserveRelatedElementsCommand(
-			Collection<Object> selection_p, IProgressMonitor progressMonitor_p) {
-		super(selection_p, progressMonitor_p);
+			Collection<?> selection, IProgressMonitor progressMonitor) {
+		super(selection, progressMonitor);
 	}
 
 	@Override
@@ -44,10 +44,10 @@ public class DeleteReplicaPreserveRelatedElementsCommand extends TransitionComma
 	  }
 
 	  
-	protected void performTransformation(Collection<Object> elements_p) {
+	protected void performTransformation(Collection<?> source) {
 	   
 			HashSet<CatalogElement> elements = new HashSet<CatalogElement>();
-			for (Object selected : SemanticHelper.getSemanticObjects(elements_p)) {
+			for (Object selected : SemanticHelper.getSemanticObjects(source)) {
 				if (selected instanceof EObject) {
 					if (selected instanceof CatalogElement && ((CatalogElement) selected).getKind()!=CatalogElementKind.REC) {
 						elements.add((CatalogElement) selected);

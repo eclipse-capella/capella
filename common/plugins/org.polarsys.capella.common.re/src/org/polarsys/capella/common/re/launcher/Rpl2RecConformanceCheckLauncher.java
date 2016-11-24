@@ -10,23 +10,25 @@
  *******************************************************************************/
 package org.polarsys.capella.common.re.launcher;
 
+import java.util.Collection;
+
 import org.eclipse.emf.diffmerge.api.IComparison;
+import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.polarsys.capella.common.re.activities.DifferencesComputingActivity;
 import org.polarsys.capella.common.re.activities.FinalizeTransitionActivity;
 import org.polarsys.capella.common.re.activities.InitializeReMgtActivity;
 import org.polarsys.capella.common.re.constants.IReConstants;
-import org.polarsys.capella.common.re.re2rpl.activities.DifferencesFilteringOnlyActivity;
 import org.polarsys.capella.common.re.re2rpl.activities.InitializeDiffMergeUpdateReplicaActivity;
 import org.polarsys.capella.common.re.re2rpl.activities.InitializeTransitionActivity;
+import org.polarsys.capella.core.transition.common.activities.DifferencesMergingActivity;
 import org.polarsys.capella.core.transition.common.activities.PostDiffMergeActivity;
-import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.common.transposer.ExtendedTransposer;
+import org.polarsys.capella.core.transition.common.handlers.merge.DefaultMergeHandler;
+import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParameter;
-import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class Rpl2RecConformanceCheckLauncher extends ReLauncher {
 
-  private IComparison comparison;
+  private boolean isConform;
 
   @Override
   protected String getMapping() {
@@ -67,8 +69,7 @@ public class Rpl2RecConformanceCheckLauncher extends ReLauncher {
     // DifferencesComputingActivity
     parameter.addActivity(getActivity(DifferencesComputingActivity.ID));
 
-    // DifferencesFilteringActivity
-    parameter.addActivity(getActivity(DifferencesFilteringOnlyActivity.ID));
+    parameter.addActivity(getActivity(DifferencesMergingActivity.ID));
 
     return parameter;
   }
@@ -86,26 +87,17 @@ public class Rpl2RecConformanceCheckLauncher extends ReLauncher {
     return parameter;
   }
 
-  /**
-   * 
-   * @return the comparison result which is computed when running the {@link DifferencesComputingActivity}. The
-   *         comparison is <b>only</b> available after calling
-   *         {@link #launch(java.util.Collection, String, String, org.eclipse.core.runtime.IProgressMonitor)}
-   */
-  public IComparison getComparison() {
-    return comparison;
+  protected IMergeHandler createMergeHandler(){
+    return new DefaultMergeHandler(true){
+
+      @Override
+      protected void mergeDifferences(IComparison comparison, Collection<IDifference> differences) {
+        isConform = differences.isEmpty();
+      }
+    };
   }
 
-  @Override
-  protected void dispose() {
-    // Get the comparison result before disposing the context
-    ExtendedTransposer transposer = getTransposer();
-    if (transposer != null) {
-      IContext context = transposer.getContext();
-      if (context != null) {
-        comparison = (IComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
-      }
-    }
-    super.dispose();
+  public boolean isConform(){
+    return isConform;
   }
 }

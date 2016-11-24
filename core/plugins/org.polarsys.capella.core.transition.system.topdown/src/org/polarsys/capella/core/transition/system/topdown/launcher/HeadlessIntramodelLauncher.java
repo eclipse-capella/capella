@@ -10,9 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.launcher;
 
-import java.util.Collection;
-import java.util.Collections;
-
 import org.polarsys.capella.core.transition.common.activities.FinalizeTransitionActivity;
 import org.polarsys.capella.core.transition.common.activities.InitializeScopeActivity;
 import org.polarsys.capella.core.transition.common.activities.PostDiffMergeActivity;
@@ -109,11 +106,6 @@ public class HeadlessIntramodelLauncher extends TransitionLauncher {
     return getOptionScope();
   }
 
-  @Override
-  protected Collection<GenericParameter<?>> getHeadlessParameters() {
-    return Collections.EMPTY_LIST;
-  }
-
   protected String getOptionScope() {
     return ITopDownConstants.TRANSITION_TOPDOWN;
   }
@@ -142,9 +134,6 @@ public class HeadlessIntramodelLauncher extends TransitionLauncher {
           getOptionScope(), "Option scope"); //$NON-NLS-1$
       parameter.addParameter(InitializeTransitionActivity.ID, param3);
 
-      for (GenericParameter<?> paramHeadless : getHeadlessParameters()) {
-        parameter.addParameter(InitializeTransitionActivity.ID, paramHeadless);
-      }
 
       // InitializeTransformationActivity
       parameter.addActivity(InitializeTransformationActivity.ID);

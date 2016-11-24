@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,16 +38,16 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 public class ActorProjectionProcessor implements IProcessor {
 
-  private ModelElement _context = null;
-  private NamedElement _target = null; // Refinement target (can be either a 'ComponentArchitecture', or a 'LogicalComponent')
+  private ModelElement context = null;
+  private NamedElement target = null; // Refinement target (can be either a 'ComponentArchitecture', or a 'LogicalComponent')
 
-  public void execute(IProgressMonitor progressMonitor_p) throws ProcessorException {
+  public void execute(IProgressMonitor progressMonitor) throws ProcessorException {
 
-    if (((CapellaLayerCheckingExt.isInContextLayer((CapellaElement) _context) || (_context instanceof SystemAnalysis))
-         && CapellaLayerCheckingExt.isInLogicalLayer(_target) || (_target instanceof LogicalArchitecture))
-        || ((CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) _context) || (_context instanceof LogicalArchitecture))
-            && CapellaLayerCheckingExt.isInPhysicalLayer(_target) || (_target instanceof PhysicalArchitecture))) {
-      Scenario scenario = (Scenario) _context;
+    if (((CapellaLayerCheckingExt.isInContextLayer((CapellaElement) context) || (context instanceof SystemAnalysis))
+         && CapellaLayerCheckingExt.isInLogicalLayer(target) || (target instanceof LogicalArchitecture))
+        || ((CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) context) || (context instanceof LogicalArchitecture))
+            && CapellaLayerCheckingExt.isInPhysicalLayer(target) || (target instanceof PhysicalArchitecture))) {
+      Scenario scenario = (Scenario) context;
       List<AbstractActor> listActor = new ArrayList<AbstractActor>();
       for (InteractionFragment interactionFragment : scenario.getOwnedInteractionFragments()) {
         if (interactionFragment instanceof AbstractEnd) {
@@ -73,15 +73,15 @@ public class ActorProjectionProcessor implements IProcessor {
    * Perform the Actor projection 
    * (Interfaces Used/Implemented by the current Actor are also projected)
    */
-  private void performActorProjection(List<AbstractActor> listActor_p) {
-    if (_target instanceof LogicalArchitecture) {
-      for (AbstractActor actor : listActor_p) {
+  private void performActorProjection(List<AbstractActor> listActor) {
+    if (target instanceof LogicalArchitecture) {
+      for (AbstractActor actor : listActor) {
         TransformActorsCtx2La transfActor = new TransformActorsCtx2La();
         transfActor.setContext(actor);
         transfActor.execute();
       }
-    } else if (_target instanceof PhysicalArchitecture) {
-      for (AbstractActor actor : listActor_p) {
+    } else if (target instanceof PhysicalArchitecture) {
+      for (AbstractActor actor : listActor) {
         TransformActorsLa2Pa transfActor = new TransformActorsLa2Pa();
         transfActor.setContext(actor);
         transfActor.execute();
@@ -93,20 +93,20 @@ public class ActorProjectionProcessor implements IProcessor {
     return null;
   }
 
-  public void setContext(ModelElement context_p) {
-    _context = context_p;
+  public void setContext(ModelElement context) {
+    this.context = context;
   }
 
-  public void setContext(List<ModelElement> context_p) {
-    if ((context_p != null) && (context_p.size() > 0)) {
-      setContext(context_p.get(0));
+  public void setContext(List<ModelElement> context) {
+    if ((context != null) && (context.size() > 0)) {
+      setContext(context.get(0));
     }
 
   }
 
-  public void setTarget(NamedElement target_p) {
-    if ((target_p instanceof ComponentArchitecture) || (target_p instanceof LogicalComponent)) {
-      _target = target_p;
+  public void setTarget(NamedElement target) {
+    if ((target instanceof ComponentArchitecture) || (target instanceof LogicalComponent)) {
+      this.target = target;
     }
 
   }

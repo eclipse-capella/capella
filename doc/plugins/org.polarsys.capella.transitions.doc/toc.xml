@@ -19,8 +19,9 @@
 			<topic href="html/11. Iterative Transitions/11.1. Concepts.html#The_Tranformation_Engine" label="The Tranformation Engine"></topic>
 			<topic href="html/11. Iterative Transitions/11.1. Concepts.html#Automated_Changes_Detection" label="Automated Changes Detection"></topic>
 		</topic>
+		<topic href="html/11. Iterative Transitions/11.1. Concepts.html#Update" label="Update"></topic>
 	</topic>
-	<topic href="html/11. Iterative Transitions/11.2. Transitions Between Engineering Phases.html" label="Engineering Phases">
+	<topic href="html/11. Iterative Transitions/11.2. Transitions Between Engineering Phases.html" label="Transitions Between Engineering Phases">
 		<topic href="html/11. Iterative Transitions/11.2. Transitions Between Engineering Phases.html#Overview" label="Overview"></topic>
 		<topic href="html/11. Iterative Transitions/11.2. Transitions Between Engineering Phases.html#Transition_Entry_Points" label="Transition Entry Points">
 			<topic href="html/11. Iterative Transitions/11.2. Transitions Between Engineering Phases.html#Data_Transition" label="Data Transition"></topic>
@@ -37,10 +38,9 @@
 				<topic href="html/11. Iterative Transitions/11.2. Transitions Between Engineering Phases.html#Leaf_Strategy" label="Leaf Strategy"></topic>
 			</topic>
 			<topic href="html/11. Iterative Transitions/11.2. Transitions Between Engineering Phases.html#Port_Transition" label="Port Transition"></topic>
-			<topic href="html/11. Iterative Transitions/11.2. Transitions Between Engineering Phases.html#Gap_Analysis_with_Previous_Iteration_of_the_Transition" label="Gap Analysis with Previous Iteration of the Transition"></topic>
 		</topic>
 	</topic>
-	<topic href="html/11. Iterative Transitions/11.3. Examples.html" label="Some Examples">
+	<topic href="html/11. Iterative Transitions/11.3. Examples.html" label="Examples of Iterative Transitions Between Engineering Phases">
 		<topic href="html/11. Iterative Transitions/11.3. Examples.html#Basics_.28Containment_and_Property_Changes.29" label="Basics (Containment and Property Changes)">
 			<topic href="html/11. Iterative Transitions/11.3. Examples.html#Overview" label="Overview"></topic>
 			<topic href="html/11. Iterative Transitions/11.3. Examples.html#Performing_the_First_Transition" label="Performing the First Transition"></topic>
@@ -53,7 +53,6 @@
 		<topic href="html/11. Iterative Transitions/11.3. Examples.html#Advanced_.28Linked_Elements_i.e._Out_of_Containment.29" label="Advanced (Linked Elements i.e. Out of Containment)">
 			<topic href="html/11. Iterative Transitions/11.3. Examples.html#Overview_2" label="Overview"></topic>
 			<topic href="html/11. Iterative Transitions/11.3. Examples.html#Performing_the_First_Transition_2" label="Performing the First Transition"></topic>
-			<topic href="html/11. Iterative Transitions/11.3. Examples.html#Update" label="Update"></topic>
 		</topic>
 	</topic>
       <anchor id="contribution"/>

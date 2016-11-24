@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,8 +29,8 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 public class ExchangeItemAllocationForTechnicalInterfaceHasCommunicationLink extends AbstractValidationRule {
 	
 	@Override
-	public IStatus validate(IValidationContext ctx_p) {	
-      EObject eObj = ctx_p.getTarget();      
+	public IStatus validate(IValidationContext ctx) {	
+      EObject eObj = ctx.getTarget();      
       if (eObj instanceof ExchangeItemAllocation) {
     	  ExchangeItemAllocation allocation = (ExchangeItemAllocation) eObj;    	  
     	  Interface interfaze = allocation.getAllocatingInterface();
@@ -48,7 +48,7 @@ public class ExchangeItemAllocationForTechnicalInterfaceHasCommunicationLink ext
     					  hasLinkTowardsItem(item, userComponent.getCall(), implementorComponent.getExecute()) ||
     					  hasLinkTowardsItem(item, userComponent.getWrite(), implementorComponent.getAccess());
     			  if (!hasNoError) {
-    				  return ctx_p.createFailureStatus(
+    				  return ctx.createFailureStatus(
     						  CapellaElementExt.getCapellaExplorerLabel(userComponent),
     						  CapellaElementExt.getCapellaExplorerLabel(implementorComponent),
     						  CapellaElementExt.getCapellaExplorerLabel(item),
@@ -57,7 +57,7 @@ public class ExchangeItemAllocationForTechnicalInterfaceHasCommunicationLink ext
     		  }
     	  }
       }        
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
 	} 
 	private boolean hasLinkTowardsItem(ExchangeItem item, List<CommunicationLink> linksFromLeft, List<CommunicationLink> linksFromRight) {
 		return doesLinkListTargetItem(item, linksFromLeft) && doesLinkListTargetItem(item, linksFromRight);

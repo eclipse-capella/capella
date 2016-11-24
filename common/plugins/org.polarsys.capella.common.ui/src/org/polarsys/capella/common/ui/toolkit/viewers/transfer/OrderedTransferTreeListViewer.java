@@ -23,7 +23,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swt.widgets.Widget;
-
+import org.polarsys.capella.common.mdsofa.common.helper.MiscHelper;
 import org.polarsys.capella.common.ui.services.helper.ViewerHelper;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.IMoveableData;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.ListData;
@@ -31,7 +31,6 @@ import org.polarsys.capella.common.ui.toolkit.viewers.data.MultipleValidElements
 import org.polarsys.capella.common.ui.toolkit.viewers.data.MultipleValidElementsTreeData;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.common.ui.toolkit.widgets.handler.SelectionChangedHandler;
-import org.polarsys.capella.common.mdsofa.common.helper.MiscHelper;
 
 /**
  * {@link TransferTreeListViewer} with 2 buttons (Up & Down) to arrange the order of transfered elements.<br>
@@ -90,9 +89,18 @@ public class OrderedTransferTreeListViewer extends TransferTreeListViewer {
       TreeViewer rightViewer = getRightViewer();
       // Update the right viewer.
       // But don't change anything on the left viewer as we want to be able to add many times a same element.
+      if (shouldChangeLeftViewer())
+      {
+        getLeftViewer().getContentProvider().inputChanged(getLeftViewer(), elements, null);
+      }
       rightViewer.getContentProvider().inputChanged(rightViewer, null, elements);
     }
     return changed;
+  }
+
+  protected boolean shouldChangeLeftViewer() {
+    // We do not change the left viewer
+    return false;
   }
 
   /**

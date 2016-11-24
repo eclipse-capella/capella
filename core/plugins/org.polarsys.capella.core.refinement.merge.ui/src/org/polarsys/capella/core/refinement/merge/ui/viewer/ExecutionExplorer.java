@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -103,13 +103,13 @@ public ExecutionExplorer(Composite parent, int style) {
   }
   
   /**
-   * @param executionEnd_p
+   * @param executionEnd
    */
-  private void setCurrentExecution(Execution execution_p) {
-    text.setText(execution_p.getName()==null?"null":execution_p.getName()); //$NON-NLS-1$
-    text1.setText(execution_p.getId());
-    AbstractEnd start = (AbstractEnd) execution_p.getStart();
-    AbstractEnd finish = (AbstractEnd) execution_p.getFinish();
+  private void setCurrentExecution(Execution execution) {
+    text.setText(execution.getName()==null?"null":execution.getName()); //$NON-NLS-1$
+    text1.setText(execution.getId());
+    AbstractEnd start = (AbstractEnd) execution.getStart();
+    AbstractEnd finish = (AbstractEnd) execution.getFinish();
     text2.setText(start.getName()==null?"null":start.getName()); //$NON-NLS-1$
     text3.setText(finish.getName()==null?"null":finish.getName()); //$NON-NLS-1$
     checkBox.setSelection(start.getCovered() == finish.getCovered());
@@ -201,10 +201,10 @@ public ExecutionExplorer(Composite parent, int style) {
   }
 
   /**
-   * @param value_p
+   * @param value
    */
-  public void addExecution(Execution value_p) {
-    list1.add((value_p.getName()==null?"null":value_p.getName())); //$NON-NLS-1$
-    _executions.add(value_p);
+  public void addExecution(Execution value) {
+    list1.add((value.getName()==null?"null":value.getName())); //$NON-NLS-1$
+    _executions.add(value);
   }
 }

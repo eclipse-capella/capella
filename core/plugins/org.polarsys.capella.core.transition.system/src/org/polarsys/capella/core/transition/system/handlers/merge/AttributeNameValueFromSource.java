@@ -17,13 +17,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class AttributeNameValueFromSource extends CategoryFilter {
 
   public AttributeNameValueFromSource(IContext context) {
-    super(context, Messages.AttributeNameValueFromSource, null);
+    super(context, Messages.AttributeNameValueFromSource, Messages.AttributeNameValueFromSource_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setActive(true);
     setInFocusMode(false);
     setVisible(true);

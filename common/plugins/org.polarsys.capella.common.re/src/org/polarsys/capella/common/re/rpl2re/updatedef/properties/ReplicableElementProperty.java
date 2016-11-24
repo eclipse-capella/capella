@@ -118,7 +118,7 @@ public class ReplicableElementProperty extends AbstractProperty implements IEdit
    * {@inheritDoc}
    */
   @Override
-  public Collection<Object> getChoiceValues(IPropertyContext context) {
+  public Collection<?> getChoiceValues(IPropertyContext context) {
     IContext ctx = (IContext) context.getSource();
     return ReplicableElementHandlerHelper.getInstance(ctx).getAllDefinedReplicableElements(ctx);
   }

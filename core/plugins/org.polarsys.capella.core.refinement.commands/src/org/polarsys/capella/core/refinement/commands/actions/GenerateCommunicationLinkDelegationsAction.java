@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,9 +53,9 @@ public class GenerateCommunicationLinkDelegationsAction extends AbstractPartToCo
        * @see org.eclipse.jface.operation.IRunnableWithProgress#run(org.eclipse.core.runtime.IProgressMonitor)
        */
       @SuppressWarnings("synthetic-access")
-      public void run(IProgressMonitor progressMonitor_p) throws InvocationTargetException, InterruptedException {
-        progressMonitor_p.beginTask(PROGRESS_BAR_NAME, IProgressMonitor.UNKNOWN);
-        final IProgressMonitor pm = progressMonitor_p;
+      public void run(IProgressMonitor progressMonitor) throws InvocationTargetException, InterruptedException {
+        progressMonitor.beginTask(PROGRESS_BAR_NAME, IProgressMonitor.UNKNOWN);
+        final IProgressMonitor pm = progressMonitor;
         getExecutionManager().execute(new GenerateCommunicationLinkDelegationsCommand(getSelectedElement()));
         getExecutionManager().execute(new AbstractReadWriteCommand() {
           public void run() {
@@ -86,8 +86,8 @@ public class GenerateCommunicationLinkDelegationsAction extends AbstractPartToCo
 
     try {
       new ProgressMonitorDialog(getActiveShell()).run(false, false, runnable);
-    } catch (Exception exception_p) {
-      throw new RuntimeException(exception_p);
+    } catch (Exception exception) {
+      throw new RuntimeException(exception);
     }
   }
 
@@ -97,10 +97,9 @@ public class GenerateCommunicationLinkDelegationsAction extends AbstractPartToCo
    *      org.eclipse.jface.viewers.ISelection)
    */
   @Override
-  public void selectionChanged(IAction arg0_p, ISelection selection_p) {
-    if (selection_p instanceof StructuredSelection) {
-      StructuredSelection selection = (StructuredSelection) selection_p;
-      Object firstElement = selection.getFirstElement();
+  public void selectionChanged(IAction arg0, ISelection selection) {
+    if (selection instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) selection).getFirstElement();
       if (firstElement instanceof IGraphicalEditPart) {
         IGraphicalEditPart gep = (IGraphicalEditPart) firstElement;
         Object model = gep.getModel();
@@ -115,6 +114,6 @@ public class GenerateCommunicationLinkDelegationsAction extends AbstractPartToCo
       }
     }
     // calls the super implementation
-    super.selectionChanged(arg0_p, selection_p);
+    super.selectionChanged(arg0, selection);
   }
 }

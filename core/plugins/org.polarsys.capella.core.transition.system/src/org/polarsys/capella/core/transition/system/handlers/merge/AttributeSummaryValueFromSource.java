@@ -16,13 +16,15 @@ import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class AttributeSummaryValueFromSource extends CategoryFilter {
 
   public AttributeSummaryValueFromSource(IContext context) {
-    super(context, Messages.AttributeSummaryValueFromSource, null);
+    super(context, Messages.AttributeSummaryValueFromSource, Messages.AttributeSummaryValueFromSource_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setActive(true);
     setInFocusMode(false);
     setVisible(true);
@@ -48,9 +50,6 @@ public class AttributeSummaryValueFromSource extends CategoryFilter {
   public boolean isUpdatableValue(EObject source, EObject target, Object oldValue, Object newValue) {
     // Merge name of element if name is same as EClass of the element
     if ((oldValue == null) || ((oldValue instanceof String) && (((String) oldValue).length() == 0))) {
-      return true;
-
-    } else if (oldValue.equals(target.eClass().getName())) {
       return true;
     }
     return false;

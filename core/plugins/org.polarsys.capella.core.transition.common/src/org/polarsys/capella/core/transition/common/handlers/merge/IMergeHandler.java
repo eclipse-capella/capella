@@ -30,10 +30,20 @@ public interface IMergeHandler extends IHandler {
   Collection<ICategoryItem> getCategories(IContext context);
 
   /**
+   * Returns category sets
+   */
+  Collection<ICategorySet> getCategoriesSet(IContext context);
+  
+  /**
    * Add a category of differences
    */
   void addCategory(ICategoryItem filter, IContext context);
 
+  /**
+   * Add a set of category
+   */
+  void addCategorySet(ICategorySet set, IContext context);
+  
   /**
    * Retrieve the given category according to its identifier
    */

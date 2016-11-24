@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,9 +38,9 @@ public class MDCHK_ComponentPort_All_Interfaces extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
 
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof ComponentPort) {
@@ -51,10 +51,10 @@ public class MDCHK_ComponentPort_All_Interfaces extends AbstractValidationRule {
           ComponentPort standardPort = (ComponentPort) eObj;
           BlockArchitecture blockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(standardPort);
           if (blockArchitecture == null) {
-            return ctx_p.createSuccessStatus();
+            return ctx.createSuccessStatus();
           }
           if (!CapellaLayerCheckingExt.isAOrInPhysicalLayer(standardPort)) {
-            return ctx_p.createSuccessStatus();
+            return ctx.createSuccessStatus();
           }
           // collect all the provided and required interfaces
           List<Interface> allInterface = new ArrayList<Interface>(1);
@@ -64,13 +64,13 @@ public class MDCHK_ComponentPort_All_Interfaces extends AbstractValidationRule {
           // check weather interface provided/required is not of the level other then physical
           for (Interface myInterface : allInterface) {
             if (!EcoreUtil2.isContainedBy(myInterface, blockArchitecture.eClass())) { 
-              return createFailureStatus(ctx_p, new Object[] { standardPort.getName() });
+              return createFailureStatus(ctx, new Object[] { standardPort.getName() });
             }
           }
         } 
  
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

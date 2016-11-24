@@ -41,9 +41,9 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
 /**
  * This listener is used to synchronize names of elements in the Capella model. The following synchronizations are done :
  * <ol>
- * <li>ExchangeItem, FonctionalExchange or ComponentExchange name to corresponding SequenceMessage name (when the operation of an
+ * <li>ExchangeItem, FunctionalExchange or ComponentExchange name to corresponding SequenceMessage name (when the operation of an
  * EventSentOperation/EventReceiveOperation is changed, or the name of a source element is changed,</li>
- * <li>SequenceMessage name to corresponding ExchangeItem, FonctionalExchange or ComponentExchange (when the name of a SequenceMessage is changed).</li>
+ * <li>SequenceMessage name to corresponding ExchangeItem, FunctionalExchange or ComponentExchange (when the name of a SequenceMessage is changed).</li>
  * </ol>
  */
 public class CapellaModelDataListenerForSequenceMessages extends CapellaModelDataListener {
@@ -124,7 +124,7 @@ public class CapellaModelDataListenerForSequenceMessages extends CapellaModelDat
         if (notifier instanceof ExchangeItem) {
           // Renamed element is an ExchangeItem -> get its ExchangeItemAllocations.
           operations = ExchangeItemExt.getRelatedExchangeItemAllocations((ExchangeItem) notifier);
-        } else if (notifier instanceof AbstractEventOperation) {
+        } else if (notifier instanceof AbstractEventOperation && !(notifier instanceof ExchangeItemAllocation)) {
           operations = Collections.singletonList((AbstractEventOperation) notifier);
         }
         // Get SequencesMessages associated with the operations.

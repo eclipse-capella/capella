@@ -367,12 +367,12 @@ public class InterfacePkgExt {
 
       tmp = InterfaceExt.getInterfaceDependencies2(anInterface);
 
-      for (AbstractDependenciesPkg pkg : tmp.keySet()) {
-        if (!result.containsKey(pkg)) {
+      for (Map.Entry<AbstractDependenciesPkg,Collection<Couple<EObject,Collection<EObject>>>> entry : tmp.entrySet()) {
+        if (!result.containsKey(entry.getKey())) {
           Collection<Couple<EObject, Collection<EObject>>> col = new HashSet<Couple<EObject, Collection<EObject>>>();
-          result.put(pkg, col);
+          result.put(entry.getKey(), col);
         }
-        result.get(pkg).addAll(tmp.get(pkg));
+        result.get(entry.getKey()).addAll(entry.getValue());
       }
     }
 
@@ -384,11 +384,11 @@ public class InterfacePkgExt {
     // sub dependencies
     for (InterfacePkg aSubPkg : interfacePkg.getOwnedInterfacePkgs()) {
       tmp = getInterfacePkgDependenciesHierarchy2(aSubPkg);
-      for (AbstractDependenciesPkg pkg : tmp.keySet()) {
-        if (result.containsKey(pkg)) {
-          result.get(pkg).addAll(tmp.get(pkg));
+      for (Map.Entry<AbstractDependenciesPkg,Collection<Couple<EObject,Collection<EObject>>>> entry : tmp.entrySet()) {
+        if (result.containsKey(entry.getKey())) {
+          result.get(entry.getKey()).addAll(entry.getValue());
         } else {
-          result.put(pkg, tmp.get(pkg));
+          result.put(entry.getKey(), entry.getValue());
         }
       }
     }
@@ -401,24 +401,20 @@ public class InterfacePkgExt {
       Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> result) {
 
     Couple<EObject, Collection<EObject>> couple = null;
-
     Set<Couple<EObject, Collection<EObject>>> col = null;
 
     if (null != map) {
-      for (AbstractDependenciesPkg pkg : map.keySet()) {
+      for (Map.Entry<AbstractDependenciesPkg,Collection<EObject>> entry : map.entrySet()) {
 
-        if (!result.containsKey(pkg)) {
+        if (!result.containsKey(entry.getKey())) {
           col = new HashSet<Couple<EObject, Collection<EObject>>>();
-          result.put(pkg, col);
+          result.put(entry.getKey(), col);
         }
 
-        couple = new Couple<EObject, Collection<EObject>>(tgt, map.get(pkg));
-        result.get(pkg).add(couple);
+        couple = new Couple<EObject, Collection<EObject>>(tgt, entry.getValue());
+        result.get(entry.getKey()).add(couple);
       }
-
     }
-
-    return;
   }
 
   private static Collection<AbstractDependenciesPkg> getInterfacePkgDependenciesHierarchy(InterfacePkg interfacePkg, int hierarchy) {

@@ -110,4 +110,26 @@
             splashId="org.polarsys.capella.core.product.splashHandler">
       </splashHandlerProductBinding>
    </extension-->
+   	<extension
+         point="org.eclipse.ui.statusHandlers">
+         <statusHandler
+               class="org.polarsys.capella.core.platform.sirius.ui.app.CapellaStatusHandler"
+               id="org.polarsys.capella.core.platform.sirius.ui.perspective.statusHandler">
+      	</statusHandler>
+         <statusHandlerProductBinding
+               handlerId="org.polarsys.capella.core.platform.sirius.ui.perspective.statusHandler"
+               productId="org.polarsys.capella.core.platform.sirius.ui.perspective.product">
+         </statusHandlerProductBinding>
+   </extension>
+	<extension
+			point="org.eclipse.ui.services">
+		<sourceProvider
+			provider="org.polarsys.capella.core.platform.sirius.ui.app.CapellaExpressionSourceProvider">
+			<variable
+				name="org.polarsys.capella.core.platform.workbench"
+				priorityLevel="workbench">
+			</variable>
+		</sourceProvider>
+	</extension>
+   
 </plugin>

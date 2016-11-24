@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +23,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
@@ -33,7 +35,8 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
  * This class provides a roll-our-own implementation of the Eclipse IMarker API, lacking support for a few essential
  * features of the original API:<br>
  * - Once a marker has been created, clients won't be notified about subsequent changes to the marker.<br>
- * - All marker attributes have to be set upon creation with the help of a callback argument (see createMarker() below).<br>
+ * - All marker attributes have to be set upon creation with the help of a callback argument (see createMarker() below).
+ * <br>
  * This class is thread safe.<br>
  * Listeners are notified on the thread that created/deleted a marker.
  */
@@ -145,13 +148,6 @@ public class LightMarkerRegistry implements IMarkerSource {
       IMarkerModification modification) {
     LightMarker marker = new LightMarker(fileResource, markerType, diagnostic);
 
-    // try {
-    // // also store the rule id directly on the marker
-    // marker.setAttribute(IValidationConstants.TAG_RULE_ID, getRuleId(diagnostic));
-    // } catch (CoreException e) {
-    // e.printStackTrace();
-    // }
-
     if (modification != null) {
       modification.modify(marker);
     }
@@ -161,12 +157,35 @@ public class LightMarkerRegistry implements IMarkerSource {
     return marker;
   }
 
+  public boolean hasMarkers() {
+    return !_registry.isEmpty();
+  }
+
   /**
    * Returns an unmodifiable view of markers stored by this IMarkerSource. Deleting a marker in this view while
    * iterating over its contents will throw a ConcurrentModificationException.
    */
   public Collection<IMarker> getMarkers() {
     return Collections.unmodifiableCollection(_registry);
+  }
+
+  public void purgeMarkers() {
+    Iterator<IMarker> markers = _registry.iterator();
+    while (markers.hasNext()) {
+      IMarker marker = markers.next();
+      if (isPurgeable(marker)) {
+        try {
+          markers.remove();
+          marker.delete();
+        } catch (Exception e) {
+          // Nothing here
+        }
+      }
+    }
+  }
+
+  protected boolean isPurgeable(IMarker marker) {
+    return marker instanceof LightMarker && ((LightMarker) marker).isPurgeable();
   }
 
   /**
@@ -191,9 +210,26 @@ public class LightMarkerRegistry implements IMarkerSource {
       attributes = new HashMap<String, Object>();
       this.resource = resource;
       this.diagnostic = diagnostic;
+
       id = System.nanoTime();
       this.type = markerType;
       creationTime = System.currentTimeMillis();
+    }
+
+    public boolean isPurgeable() {
+      // A marker no-related to any data is kept
+      if (diagnostic.getData().isEmpty()) {
+        return false;
+      }
+      boolean purgeable = false;
+      // If one element is invalid, marker is deleted
+      for (Object o : diagnostic.getData()) {
+        if (o instanceof EObject && ((EObject) o).eResource() == null) {
+          purgeable = true;
+          break;
+        }
+      }
+      return purgeable;
     }
 
     /**
@@ -462,4 +498,5 @@ public class LightMarkerRegistry implements IMarkerSource {
   public void removeListener(IMarkerSourceListener listener) {
     listeners.remove(listener);
   }
+
 }

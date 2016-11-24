@@ -33,7 +33,7 @@ public class BooleanPropertyPreference extends AbstractProperty implements IEdit
   }
 
   public IScopeContext getScope() {
-    return new InstanceScope();
+    return InstanceScope.INSTANCE;
   }
 
   /**

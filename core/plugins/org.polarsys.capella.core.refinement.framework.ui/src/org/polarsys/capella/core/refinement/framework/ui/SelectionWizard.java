@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,19 +26,19 @@ import org.polarsys.capella.core.ui.toolkit.dialogs.CapellaWizardDialog;
  */
 public class SelectionWizard extends Wizard {
 
-  private String _nameLabel;
-  private boolean _isMultipleSelection = false;
-  private boolean _autoSelectChild = false;
-  private boolean _showNameTextField = false;
-  private SelectionItemNode _root = null;
-  private String _pageTitle;
-  private String _pageDescription;
-  private SelectionPage _selectionPage = null;
-  private boolean _selectAllByDefault = false;
-  private boolean _isAmbiguityResolutionPage = false;
-  private String _nameValue = null;
-  private List<SelectionItemNode> _finalSelection = null;
-  private List<IValidator> _validators = null;
+  private String nameLabel;
+  private boolean isMultipleSelection = false;
+  private boolean autoSelectChild = false;
+  private boolean showNameTextField = false;
+  private SelectionItemNode root = null;
+  private String pageTitle;
+  private String pageDescription;
+  private SelectionPage selectionPage = null;
+  private boolean selectAllByDefault = false;
+  private boolean isAmbiguityResolutionPage = false;
+  private String nameValue = null;
+  private List<SelectionItemNode> finalSelection = null;
+  private List<IValidator> validators = null;
 
   /**
    * Constructor
@@ -56,14 +56,14 @@ public class SelectionWizard extends Wizard {
       boolean isMultipleSelection, boolean autoSelectChild, boolean showNameTextField, String nameLabel,
       boolean isAmbiguityResolutionPage) {
     super();
-    _root = root;
-    _nameLabel = nameLabel;
-    _isMultipleSelection = isMultipleSelection;
-    _autoSelectChild = autoSelectChild;
-    _pageTitle = pageTitle;
-    _pageDescription = pageDescription;
-    _showNameTextField = showNameTextField;
-    _isAmbiguityResolutionPage = isAmbiguityResolutionPage;
+    this.root = root;
+    this.nameLabel = nameLabel;
+    this.isMultipleSelection = isMultipleSelection;
+    this.autoSelectChild = autoSelectChild;
+    this.pageTitle = pageTitle;
+    this.pageDescription = pageDescription;
+    this.showNameTextField = showNameTextField;
+    this.isAmbiguityResolutionPage = isAmbiguityResolutionPage;
     setWindowTitle(wizardTitle);
   }
 
@@ -126,7 +126,7 @@ public class SelectionWizard extends Wizard {
    * @param select
    */
   public void selectAllByDefault(boolean select) {
-    _selectAllByDefault = select;
+    selectAllByDefault = select;
   }
 
   /**
@@ -134,9 +134,9 @@ public class SelectionWizard extends Wizard {
    */
   @Override
   public void addPages() {
-    _selectionPage = new SelectionPage(_root, _pageTitle, _pageDescription, _isMultipleSelection, _autoSelectChild,
-        _selectAllByDefault, _showNameTextField, _nameLabel, _isAmbiguityResolutionPage);
-    addPage(_selectionPage);
+    selectionPage = new SelectionPage(root, pageTitle, pageDescription, isMultipleSelection, autoSelectChild,
+        selectAllByDefault, showNameTextField, nameLabel, isAmbiguityResolutionPage);
+    addPage(selectionPage);
   }
 
   /**
@@ -144,8 +144,8 @@ public class SelectionWizard extends Wizard {
    */
   @Override
   public boolean performFinish() {
-    _finalSelection = _selectionPage.getSelection();
-    _nameValue = _selectionPage.getNameValue();
+    finalSelection = selectionPage.getSelection();
+    nameValue = selectionPage.getNameValue();
     return true;
   }
 
@@ -155,8 +155,8 @@ public class SelectionWizard extends Wizard {
    * @return the selected element
    */
   public SelectionItemNode getSelection() {
-    if ((!_isMultipleSelection) && (_finalSelection.size() == 1)) {
-      return _finalSelection.get(0);
+    if ((!isMultipleSelection) && (finalSelection.size() == 1)) {
+      return finalSelection.get(0);
     }
     return null;
   }
@@ -167,7 +167,7 @@ public class SelectionWizard extends Wizard {
    * @return the list of selected elements
    */
   public List<SelectionItemNode> getSelectionList() {
-    return _finalSelection;
+    return finalSelection;
   }
 
   /**
@@ -176,7 +176,7 @@ public class SelectionWizard extends Wizard {
    * @return the value of the name text field
    */
   public String getNameValue() {
-    return _nameValue;
+    return nameValue;
   }
 
   /**
@@ -194,20 +194,20 @@ public class SelectionWizard extends Wizard {
    * @return validators
    */
   public List<IValidator> getValidators() {
-    if (_validators == null) {
-      _validators = new ArrayList<IValidator>();
+    if (validators == null) {
+      validators = new ArrayList<IValidator>();
     }
-    return _validators;
+    return validators;
   }
 
   /**
    * @param validator
    */
   public void addValidator(IValidator validator) {
-    if (_validators == null) {
-      _validators = new ArrayList<IValidator>();
+    if (validators == null) {
+      validators = new ArrayList<IValidator>();
     }
-    _validators.add(validator);
+    validators.add(validator);
   }
 
 }

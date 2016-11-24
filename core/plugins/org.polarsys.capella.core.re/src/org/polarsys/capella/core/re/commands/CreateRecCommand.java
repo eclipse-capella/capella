@@ -26,7 +26,7 @@ public class CreateRecCommand extends org.polarsys.capella.common.re.commands.Cr
    * @param _rootElement_p
    * @param progressMonitor_p
    */
-  public CreateRecCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p) {
+  public CreateRecCommand(Collection<?> selection_p, IProgressMonitor progressMonitor_p) {
     super(selection_p, progressMonitor_p);
   }
 

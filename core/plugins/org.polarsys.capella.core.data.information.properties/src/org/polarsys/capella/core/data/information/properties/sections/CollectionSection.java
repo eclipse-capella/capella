@@ -87,7 +87,7 @@ public class CollectionSection extends MultiplicityElementSection {
        */
       @Override
       protected List<EObject> openTransferDialog(Button button, List<EObject> currentElements, List<EObject> availableElements, String title, String message) {
-        return SelectionDialogHelper.openOrderedTransferDialog(availableElements, currentElements, button.getShell(), title, message);
+        return SelectionDialogHelper.openOrderedUniqueTransferDialog(availableElements, currentElements, button.getShell(), title, message);
       }
     };
     indexField.setDisplayedInWizard(displayedInWizard);

@@ -15,8 +15,7 @@
     xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.1.0"
     xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0"
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0"
-    id="3b054455-7296-4ad5-aca5-3fcccdb6d35a"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0" id="3b054455-7296-4ad5-aca5-3fcccdb6d35a"
     name="Project_validation12">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="2e7d161c-9d9c-41ed-9d67-44f55608570d">
     <ownedReferences xsi:type="libraries:LibraryReference" id="6328b6bb-4c22-42b0-ab64-a3b08b166059"

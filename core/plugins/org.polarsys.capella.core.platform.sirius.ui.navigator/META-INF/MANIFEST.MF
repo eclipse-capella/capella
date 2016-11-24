@@ -35,7 +35,10 @@ Require-Bundle: org.eclipse.amalgam.explorer.activity.ui,
  org.polarsys.capella.core.sirius.analysis,
  org.polarsys.capella.core.ui.properties,
  org.eclipse.e4.ui.model.workbench,
- org.polarsys.kitalpha.ad.metadata
+ org.polarsys.kitalpha.ad.metadata,
+ org.polarsys.kitalpha.ad.services,
+ org.polarsys.capella.core.platform.sirius.clipboard,
+ com.google.guava
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.platform.sirius.ui.navigator.actions,
@@ -49,11 +52,10 @@ Export-Package: org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.platform.sirius.ui.navigator.helpers,
  org.polarsys.capella.core.platform.sirius.ui.navigator.internal,
  org.polarsys.capella.core.platform.sirius.ui.navigator.internal.navigate,
- org.polarsys.capella.core.platform.sirius.ui.navigator.listeners,
  org.polarsys.capella.core.platform.sirius.ui.navigator.preferences,
  org.polarsys.capella.core.platform.sirius.ui.navigator.property,
  org.polarsys.capella.core.platform.sirius.ui.navigator.refresh,
  org.polarsys.capella.core.platform.sirius.ui.navigator.sorter,
  org.polarsys.capella.core.platform.sirius.ui.navigator.view,
  org.polarsys.capella.core.platform.sirius.ui.navigator.viewer
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

@@ -18,16 +18,18 @@ import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class AvoidUnsynchronizedFeatureCategoryFilter extends CategoryFilter {
 
   public AvoidUnsynchronizedFeatureCategoryFilter(IContext context) {
-    super(context, AvoidUnsynchronizedFeatureCategoryFilter.class.getSimpleName(), null);
+    super(context, Messages.AvoidUnsynchronizedFeatureCategoryFilter, Messages.AvoidUnsynchronizedFeatureCategoryFilter_Description);
+    setCategorySet(ITransitionConstants.CATEGORY_BUSINESS);
     setInFocusMode(false);
     setActive(true);
-    setVisible(false);
+    setVisible(true);
   }
 
   @Override

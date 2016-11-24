@@ -16,7 +16,9 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.platform.sirius.clipboard,
  org.eclipse.gmf.runtime.notation,
  org.polarsys.capella.test.diagram.common.ju,
- org.polarsys.capella.core.data.gen
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.core.transition.system.topdown.ui,
+ org.polarsys.capella.core.platform.sirius.ui.navigator
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %providerName
@@ -25,10 +27,14 @@ Export-Package: org.polarsys.capella.test.model.ju,
  org.polarsys.capella.test.model.ju.detach,
  org.polarsys.capella.test.model.ju.model,
  org.polarsys.capella.test.model.ju.rename,
+ org.polarsys.capella.test.model.ju.sortContent,
+ org.polarsys.capella.test.model.ju.sortSelection,
  org.polarsys.capella.test.model.ju.testcase.LCDecomposition,
+ org.polarsys.capella.test.model.ju.testcase.copyPasteLayout,
+ org.polarsys.capella.test.model.ju.testcase.copyPasteModel,
+ org.polarsys.capella.test.model.ju.testcase.dialoglabel,
  org.polarsys.capella.test.model.ju.testcases.delete,
  org.polarsys.capella.test.model.ju.testcases.interfacescenario.message,
  org.polarsys.capella.test.model.ju.testcases.intermodelInconsistencies,
- org.polarsys.capella.test.model.ju.testsuites,
  org.polarsys.capella.test.model.ju.testsuites.main,
  org.polarsys.capella.test.model.ju.testsuites.partial

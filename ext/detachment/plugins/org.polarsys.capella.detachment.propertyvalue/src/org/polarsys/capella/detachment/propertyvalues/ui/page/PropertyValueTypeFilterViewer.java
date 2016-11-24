@@ -31,69 +31,83 @@ public class PropertyValueTypeFilterViewer extends ViewerFilter {
 	
 	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
-		
 		switch (getFilterType()) {
 		case Constants.PV:
 		{
-			return element instanceof AbstractPropertyValue;
+			return element instanceof AbstractPropertyValue || PropertyValueHelper.lookupSuperHierarchy(element, AbstractPropertyValue.class) || PropertyValueHelper.lookupOwnedPropertyValues(element);
 		}
 		case Constants.PVG:
 		{
-			return element instanceof PropertyValueGroup;
+			return element instanceof PropertyValueGroup || PropertyValueHelper.lookupSuperHierarchy(element, PropertyValueGroup.class) || PropertyValueHelper.lookupOwnedPropertyValuesGroup(element);
 		}
 		case Constants.PVP:
 		{
-			return element instanceof PropertyValuePkg;
+			return element instanceof PropertyValuePkg || PropertyValueHelper.lookupSuperHierarchy(element, PropertyValuePkg.class);
 		}
 		case Constants.ET:
 		{
-			return element instanceof EnumerationPropertyType;
+			return element instanceof EnumerationPropertyType || PropertyValueHelper.lookupSuperHierarchy(element, EnumerationPropertyType.class) || PropertyValueHelper.lookupOwnedPropertyValuesEnum(element);
 		}
 		case Constants.PV_PVG:
 		{
-			return element instanceof AbstractPropertyValue || element instanceof PropertyValueGroup;
+			return element instanceof AbstractPropertyValue || element instanceof PropertyValueGroup 
+					|| PropertyValueHelper.lookupSuperHierarchy(element, AbstractPropertyValue.class, PropertyValueGroup.class) ||
+					PropertyValueHelper.lookupOwnedPropertyValues(element) || PropertyValueHelper.lookupOwnedPropertyValuesGroup(element);
 		}
 		case Constants.PV_PVP:
 		{
-			return element instanceof AbstractPropertyValue || element instanceof PropertyValuePkg;
+			return element instanceof AbstractPropertyValue || element instanceof PropertyValuePkg 
+					|| PropertyValueHelper.lookupSuperHierarchy(element, AbstractPropertyValue.class, PropertyValuePkg.class) || PropertyValueHelper.lookupOwnedPropertyValues(element);
 		}
 		case Constants.PVG_PVP:
 		{
-			return element instanceof PropertyValueGroup || element instanceof PropertyValuePkg;
+			return element instanceof PropertyValueGroup || element instanceof PropertyValuePkg 
+					|| PropertyValueHelper.lookupSuperHierarchy(element, PropertyValueGroup.class, PropertyValuePkg.class) || PropertyValueHelper.lookupOwnedPropertyValuesGroup(element);
 		}
 		case Constants.PV_ET:
 		{
-			return element instanceof AbstractPropertyValue || element instanceof EnumerationPropertyType;
+			return element instanceof AbstractPropertyValue || element instanceof EnumerationPropertyType 
+					|| PropertyValueHelper.lookupSuperHierarchy(element, AbstractPropertyValue.class, EnumerationPropertyType.class) 
+					|| PropertyValueHelper.lookupOwnedPropertyValues(element) || PropertyValueHelper.lookupOwnedPropertyValuesEnum(element);
 		}
 		case Constants.PVG_ET:
 		{
-			return element instanceof PropertyValueGroup || element instanceof EnumerationPropertyType;
+			return element instanceof PropertyValueGroup || element instanceof EnumerationPropertyType 
+					|| PropertyValueHelper.lookupSuperHierarchy(element, PropertyValueGroup.class, EnumerationPropertyType.class)
+					|| PropertyValueHelper.lookupOwnedPropertyValuesGroup(element) || PropertyValueHelper.lookupOwnedPropertyValuesEnum(element);
 		}
 		case Constants.PVP_ET:
 		{
-			return element instanceof PropertyValuePkg || element instanceof EnumerationPropertyType;
+			return element instanceof PropertyValuePkg || element instanceof EnumerationPropertyType 
+					|| PropertyValueHelper.lookupSuperHierarchy(element, PropertyValuePkg.class, EnumerationPropertyType.class) || PropertyValueHelper.lookupOwnedPropertyValuesEnum(element);
 		}
 		case Constants.PV_PVG_PVP:
 		{
-			return element instanceof AbstractPropertyValue || element instanceof PropertyValueGroup || element instanceof PropertyValuePkg;
+			return element instanceof AbstractPropertyValue || element instanceof PropertyValueGroup || element instanceof PropertyValuePkg 
+					|| PropertyValueHelper.lookupSuperHierarchy(element, AbstractPropertyValue.class, PropertyValueGroup.class, PropertyValuePkg.class)
+					|| PropertyValueHelper.lookupOwnedPropertyValuesGroup(element)|| PropertyValueHelper.lookupOwnedPropertyValues(element);
 		}
 		case Constants.PV_PVP_ET:
 		{
-			return element instanceof AbstractPropertyValue || element instanceof PropertyValuePkg || element instanceof EnumerationPropertyType;
+			return element instanceof AbstractPropertyValue || element instanceof PropertyValuePkg || element instanceof EnumerationPropertyType 
+					|| PropertyValueHelper.lookupSuperHierarchy(element, AbstractPropertyValue.class, PropertyValuePkg.class, EnumerationPropertyType.class)
+					|| PropertyValueHelper.lookupOwnedPropertyValues(element) || PropertyValueHelper.lookupOwnedPropertyValuesEnum(element);
 		}
 		case Constants.PV_PVG_PVP_ET:
 		{
-			return element instanceof AbstractPropertyValue || element instanceof PropertyValueGroup || element instanceof PropertyValuePkg || element instanceof EnumerationPropertyType;
+			return element instanceof AbstractPropertyValue || element instanceof PropertyValueGroup || element instanceof PropertyValuePkg || element instanceof EnumerationPropertyType
+					|| PropertyValueHelper.lookupSuperHierarchy(element, AbstractPropertyValue.class, PropertyValueGroup.class, PropertyValuePkg.class, EnumerationPropertyType.class)
+					|| PropertyValueHelper.lookupOwnedPropertyValues(element) || PropertyValueHelper.lookupOwnedPropertyValuesEnum(element) || PropertyValueHelper.lookupOwnedPropertyValuesGroup(element);
 		}
 		case Constants.PVG_PVP_ET:
 		{
-			return element instanceof PropertyValueGroup || element instanceof PropertyValuePkg || element instanceof EnumerationPropertyType;
+			return element instanceof PropertyValueGroup || element instanceof PropertyValuePkg || element instanceof EnumerationPropertyType
+					|| PropertyValueHelper.lookupSuperHierarchy(element, PropertyValueGroup.class, PropertyValuePkg.class, EnumerationPropertyType.class)
+					|| PropertyValueHelper.lookupOwnedPropertyValuesGroup(element) || PropertyValueHelper.lookupOwnedPropertyValuesEnum(element);
 		}
 		default:
 			break;
 		}
-		
 		return true;
 	}
-
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -98,8 +98,6 @@ public class ScenarioSubstituteIRs extends AbstractMergerOperation {
     _navigator = new MergeNavigator(
         irToSubstituteMap.get(irToSubstituteMap.keySet().iterator().next()).get(0)
     );
-    
-    return;
   }
   
   
@@ -210,30 +208,22 @@ public class ScenarioSubstituteIRs extends AbstractMergerOperation {
     }
     
     MergeGarbage.INSTANCE.clear();
-   
-    return;
   }
   
-  private void addNewElements(InteractionFragment anchor_p, List<InteractionFragment> strand_p)  throws MergeToolException {
+  private void addNewElements(InteractionFragment fragment, List<InteractionFragment> strand)  throws MergeToolException {
     
-    InteractionFragment anchor = anchor_p;
+    InteractionFragment anchor = fragment;
     
-    for (InteractionFragment ifrag: strand_p) {
+    for (InteractionFragment ifrag: strand) {
       AddElementOnScUtils.getInstance().addIFrag(_target, ifrag, true, anchor);      
       anchor = ifrag;
     }
-    
-    return;
   }
   
-  private void addExistingElements(List<InteractionFragment> strand_p) throws MergeToolException {
+  private void addExistingElements(List<InteractionFragment> strand) throws MergeToolException {
 
-    for (InteractionFragment ifrag: strand_p) {
+    for (InteractionFragment ifrag: strand) {
       AddElementOnScUtils.getInstance().addIFrag(_target, ifrag, false, null);      
     }
-    
-    return;
   }
-  
-  
 }

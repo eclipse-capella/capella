@@ -26,7 +26,7 @@ public class UpdateDefCommand extends org.polarsys.capella.common.re.commands.Up
    * @param _rootElement_p
    * @param progressMonitor_p
    */
-  public UpdateDefCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p) {
+  public UpdateDefCommand(Collection<?> selection_p, IProgressMonitor progressMonitor_p) {
     super(selection_p, progressMonitor_p);
   }
 

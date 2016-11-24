@@ -21,11 +21,10 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -46,28 +45,25 @@ public class FinalizeTransitionActivity extends AbstractActivity implements ITra
 
     boolean shouldSave = Boolean.TRUE.equals(context.get(ITransitionConstants.SAVE_REQUIRED));
 
-    if (shouldSave) {
+    //Maybe with an option of configuration ?
+    //Save if it another resource than the source resource
+    Resource sourceResource = (Resource) context.get(ITransitionConstants.TRANSITION_SOURCE_RESOURCE);
+    Resource targetResource = (Resource) context.get(ITransitionConstants.TRANSITION_TARGET_RESOURCE);
 
-      //Maybe with an option of configuration ?
-      //Save if it another resource than the source resource
-      Resource sourceResource = (Resource) context.get(ITransitionConstants.TRANSITION_SOURCE_RESOURCE);
-      Resource targetResource = (Resource) context.get(ITransitionConstants.TRANSITION_TARGET_RESOURCE);
-
-      if ((targetResource != null) && (targetResource != sourceResource)) {
-        Session session = SessionManager.INSTANCE.getSession(targetResource);
-        if (session != null) {
-          if (session.isOpen()) {
-            session.save(new NullProgressMonitor());
-            LogHelper.getInstance().info(NLS.bind("Session for ''{0}'' has been saved automatically.", targetResource.getURI()), Messages.Activity_Transition);
-          }
-        } else {
-          try {
-            LogHelper.getInstance().info(NLS.bind("Resource ''{0}'' has been saved automatically.", targetResource.getURI()), Messages.Activity_Transition);
-            targetResource.save(Collections.EMPTY_MAP);
-          } catch (IOException exception) {
-            exception.printStackTrace();
-            LogHelper.getInstance().warn(exception.getMessage(), Messages.Activity_Transition);
-          }
+    if (targetResource != sourceResource || shouldSave) {
+      Session session = SessionManager.INSTANCE.getSession(targetResource);
+      if (session != null) {
+        if (session.isOpen()) {
+          session.save(new NullProgressMonitor());
+          LogHelper.getInstance().info(NLS.bind("Session for ''{0}'' has been saved automatically.", targetResource.getURI()), Messages.Activity_Transition);
+        }
+      } else {
+        try {
+          LogHelper.getInstance().info(NLS.bind("Resource ''{0}'' has been saved automatically.", targetResource.getURI()), Messages.Activity_Transition);
+          targetResource.save(Collections.EMPTY_MAP);
+        } catch (IOException exception) {
+          exception.printStackTrace();
+          LogHelper.getInstance().warn(exception.getMessage(), Messages.Activity_Transition);
         }
       }
     }

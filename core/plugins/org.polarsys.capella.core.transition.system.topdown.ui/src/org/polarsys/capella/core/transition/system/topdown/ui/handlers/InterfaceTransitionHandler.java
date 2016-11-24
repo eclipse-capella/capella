@@ -22,7 +22,7 @@ import org.polarsys.capella.common.ef.command.ICommand;
 public class InterfaceTransitionHandler extends IntramodelTransitionHandler {
 
   @Override
-  protected ICommand createCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+  protected ICommand createCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
     return TransitionUICommandHelper.getInstance().getInterfaceTransitionCommand(selection, progressMonitor);
   }
 

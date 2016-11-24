@@ -31,13 +31,16 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.diffmerge.patterns.support.gen,
  org.polarsys.kitalpha.patterns.emde,
  org.polarsys.kitalpha.patterns.emde.gen,
- org.polarsys.capella.core.commandline.core
+ org.polarsys.capella.core.commandline.core,
+ org.polarsys.capella.core.af.integration
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.polarsys.capella.core.data.migration,
+ org.polarsys.capella.core.data.migration.af,
  org.polarsys.capella.core.data.migration.aird,
  org.polarsys.capella.core.data.migration.capella,
+ org.polarsys.capella.core.data.migration.cmdline,
  org.polarsys.capella.core.data.migration.context,
  org.polarsys.capella.core.data.migration.contribution,
  org.polarsys.capella.core.data.migration.contributor,

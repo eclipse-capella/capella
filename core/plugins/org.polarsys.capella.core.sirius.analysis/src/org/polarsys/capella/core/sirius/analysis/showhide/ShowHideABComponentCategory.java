@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.sirius.analysis.ABServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -123,15 +124,15 @@ public class ShowHideABComponentCategory extends ShowHideABComponentExchange {
     if (lastContext.getValue() instanceof ComponentExchangeCategory) {
       if (SOURCE.equals(lastContext.getKey())) {
         // If sourcePin, use ABCategoryPin
-        mapping = ABServices.getService().getMappingABComponentCategoryPin(getContent().getDDiagram());
+        mapping = getContent().getMapping(MappingConstantsHelper.getMappingABComponentCategoryPin(getContent().getDDiagram()));
 
       } else if (TARGET.equals(lastContext.getKey())) {
         // If targetPin, use ABCategoryPin
-        mapping = ABServices.getService().getMappingABComponentCategoryPin(getContent().getDDiagram());
+        mapping = getContent().getMapping(MappingConstantsHelper.getMappingABComponentCategoryPin(getContent().getDDiagram()));
 
       } else {
         // Otherwise, use ABCategoryEdge
-        mapping = ABServices.getService().getMappingABComponentCategory(getContent().getDDiagram());
+        mapping = getContent().getMapping(MappingConstantsHelper.getMappingABComponentCategory(getContent().getDDiagram())); 
       }
     }
     return mapping;
@@ -139,7 +140,7 @@ public class ShowHideABComponentCategory extends ShowHideABComponentExchange {
 
   @Override
   protected boolean isValidEdgeView(DEdge edge_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p) {
-    DiagramElementMapping categoryMapping = ABServices.getService().getMappingABComponentCategory(getContent().getDDiagram());
+    DiagramElementMapping categoryMapping = getContent().getMapping(MappingConstantsHelper.getMappingABComponentCategory(getContent().getDDiagram())); 
 
     // Category edge is not oriented, so if we have an inverse edge, we return it, instead of creating another edge
     if (categoryMapping.equals(edge_p.getActualMapping())) {

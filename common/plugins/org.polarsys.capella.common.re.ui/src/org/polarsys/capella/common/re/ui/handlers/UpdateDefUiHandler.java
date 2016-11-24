@@ -16,10 +16,11 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
 import org.polarsys.capella.common.ef.command.ICommand;
+import org.polarsys.capella.common.re.commands.UpdateDefCommand;
 import org.polarsys.capella.common.re.handlers.UpdateDefHandler;
-import org.polarsys.capella.common.re.ui.commands.UpdateDefUiCommand;
+import org.polarsys.capella.common.re.ui.handlers.uihead.UIHeadHandler;
+import org.polarsys.capella.core.transition.common.commands.DefaultCommand;
 
 /**
  */
@@ -29,20 +30,20 @@ public class UpdateDefUiHandler extends UpdateDefHandler {
    * {@inheritDoc}
    */
   @Override
-  protected ICommand createCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
-    return new UpdateDefUiCommand(selection, progressMonitor) {
-
-    };
+  protected ICommand createCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
+    DefaultCommand command = new UpdateDefCommand(selection, progressMonitor);
+    command.addParameters(new UIHeadHandler(true));
+    return command;
   }
 
   @Override
-  public Object resolveSemanticObject(Object object) {
-    Object semantic = super.resolveSemanticObject(object);
+  public EObject resolveSemanticObject(Object object) {
+    EObject semantic = super.resolveSemanticObject(object);
     if (semantic != null) {
       if (semantic instanceof DSemanticDecorator) {
         Object adapter = ((DSemanticDecorator) semantic).getTarget();
         if (adapter instanceof EObject) {
-          semantic = adapter;
+          semantic = (EObject) adapter;
         }
       }
     }

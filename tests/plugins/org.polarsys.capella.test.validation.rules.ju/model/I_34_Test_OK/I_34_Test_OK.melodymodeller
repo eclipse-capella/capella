@@ -16,8 +16,7 @@
     xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.1.0"
     xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0"
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0"
-    id="611e3daf-8ebd-4816-be65-82a571df60ae"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0" id="611e3daf-8ebd-4816-be65-82a571df60ae"
     name="I_34_Test_OK">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="9ec41b7c-a22a-44f8-abb3-ab92bdb38a20"/>
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"

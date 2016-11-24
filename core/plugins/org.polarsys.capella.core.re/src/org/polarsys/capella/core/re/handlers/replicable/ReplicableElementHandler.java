@@ -61,8 +61,8 @@ public class ReplicableElementHandler extends org.polarsys.capella.common.re.han
   }
 
   @Override
-  public Collection<Object> getAllDefinedReplicableElements(IContext context) {
-    Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
+  public Collection<CatalogElement> getAllDefinedReplicableElements(IContext context) {
+    Collection<?> selection = (Collection<?>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_CATALOG_ELEMENTS_FOR_LIB, selection.iterator().next(), new QueryContext());
   }
 
@@ -76,8 +76,8 @@ public class ReplicableElementHandler extends org.polarsys.capella.common.re.han
   }
 
   @Override
-  public Collection<Object> getAllDefinedRecReplicableElements(IContext context) {
-    Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
+  public Collection<CatalogElement> getAllDefinedRecReplicableElements(IContext context) {
+    Collection<?> selection = (Collection<?>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_CATALOG_ELEMENTS_FOR_LIB, selection.iterator().next(), new QueryContext(),
         new IQueryFilter() {
 
@@ -90,7 +90,7 @@ public class ReplicableElementHandler extends org.polarsys.capella.common.re.han
 
   @Override
   public Collection<Object> getAllDefinedCatalogElementPkgs(IContext context) {
-    Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
+    Collection<?> selection = (Collection<?>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     //Promote is removed from now
     return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_CATALOG_PKGS, selection.iterator().next(), new QueryContext());
   }

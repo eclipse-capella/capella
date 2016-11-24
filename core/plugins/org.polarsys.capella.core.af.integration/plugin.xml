@@ -46,25 +46,27 @@
 	        name="Capella viewpoint"
 	        path="/org.polarsys.capella.core.af.integration/model/capella.vp#capella"/>
    </extension>
-   <extension
-         point="org.polarsys.capella.core.data.migration.migrationContributions">
-	  <migrationContribution
-         class="org.polarsys.capella.core.af.integration.migration.ViewpointMigrationContribution"/>         
-   </extension>
-   <extension
-         point="org.polarsys.capella.core.data.migration.migrationContributors">
-      <!--migrationContributor
-         class="org.polarsys.capella.core.af.integration.migration.MetadataCreationContributor"/-->
-      <migrationContributor
-         class="org.polarsys.capella.core.af.integration.migration.MetadataUpdateContributor"/>
-      <migrationContributor
-         class="org.polarsys.capella.core.af.integration.migration.ViewpointMigrationContributor"/>
-   </extension>
     <extension
        point="org.eclipse.ui.views">
       <category
             id="org.polarsys.capella.vp.views.category"
             name="%capella.vp.category">
       </category>
+    </extension>
+    
+    <extension
+          point="org.polarsys.capella.common.ef.editingDomainListener">
+       <editingDomainListener
+             class="org.polarsys.capella.core.af.integration.listener.MetadataCheckListener">
+       </editingDomainListener>
+       <editingDomainListener
+             class="org.polarsys.capella.core.af.integration.listener.MetadataViewpointUpdater">
+       </editingDomainListener>
+    </extension>
+    <extension
+         point="org.polarsys.kitalpha.ad.metadata.contribution">
+       <contribution
+             class="org.polarsys.capella.core.af.integration.CapellaContribution">
+       </contribution>
     </extension>
 </plugin>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,9 +37,9 @@ public class ScenarioViewer {
   /**
    * 
    */
-  public ScenarioViewer(Scenario scenario_p) {
+  public ScenarioViewer(Scenario scenario) {
     init();
-    setScenario(scenario_p);
+    setScenario(scenario);
   }
   
   private void create_scenarioExplorer() {
@@ -72,8 +72,8 @@ public class ScenarioViewer {
     _mainShell.setVisible(true);
   }
   
-  public void setScenario(Scenario scenario_p) {
-    _scenarioExplorer.setScenario(scenario_p);    
+  public void setScenario(Scenario scenario) {
+    _scenarioExplorer.setScenario(scenario);    
   }
   
 

@@ -53,14 +53,6 @@ The following figure illustrates the prompted dialog when deleting the System Ac
 [[Image:Images/6.2.%20Model%20preferences_html_597b3feb.png|877x595px]]
 
 
-== Differences Table ==
- 
-It is possible to choose the type of elements that should be displayed in the Differences Table window used by REC/RPL tooling and legacy transitions. To do so, choose Window / Preferences and then Capella / Differences Table.
-
-
-[[Image:Images/6.2.%20Model%20preferences_html_Differences_table.png|776x690px]]
-
-
 == Model ==
  
 On the sub section '''Model''' of Capella preferences, it is possible to specify global behavior regarding the management of specific elements.
@@ -173,15 +165,6 @@ On the sub section of '''Capella / Transfert Viewer preferences''', it is possib
 
 If the preference is activated, the tree will be displayed. For significant model, il can be usefull to not display entire trees.
 
-== Transition Log Preferences ==
-
-On the sub section of '''Capella / Transistion Log preferences''', it is possible to choose elements you want to display in transition log ( ex: fonctions, interfaces, data...) . 
-
-[[Image:Images/6.2_Model preferences4.png|500x500px]]
-
-[[Image:Images/6.2_Model preferences7.png|700x250px]]
-
-This transition log shows the transition of interfaces and functions, allowed in the preferences menu.
 
 == Transitions/Generation ==
  

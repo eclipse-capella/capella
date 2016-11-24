@@ -2,14 +2,14 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.refinement.framework.ui
-Bundle-Version: 0.8.3.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.refinement.framework;visibility:=reexport,
  org.polarsys.capella.core.ui.toolkit;visibility:=reexport,
  org.polarsys.capella.core.platform.sirius.ui.navigator
 Export-Package: org.polarsys.capella.core.refinement.framework.ui,
  org.polarsys.capella.core.refinement.framework.ui.model
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Import-Package: org.polarsys.capella.core.platform.sirius.ui.navigator.view

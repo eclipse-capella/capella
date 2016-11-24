@@ -21,7 +21,7 @@ public interface IRestraintProperty extends IProperty {
   /**
    * Returns value of property
    */
-  public Collection<Object> getChoiceValues(IPropertyContext context);
+  public Collection<?> getChoiceValues(IPropertyContext context);
 
   public boolean isMany();
 

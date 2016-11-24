@@ -214,8 +214,12 @@ public class WriteCapellaElementDescriptionSAXParser {
             return false;
           } finally {
             // reset parser and reader
-            reader.close();
-            saxParser.reset();
+            if(reader != null){
+              reader.close();
+            }
+            if(saxParser != null){
+              saxParser.reset();
+            }
           }
           // remove root
           String result = description.toString().replaceAll(IConstantValidation.ROOT_NODE, ICommonConstants.EMPTY_STRING);

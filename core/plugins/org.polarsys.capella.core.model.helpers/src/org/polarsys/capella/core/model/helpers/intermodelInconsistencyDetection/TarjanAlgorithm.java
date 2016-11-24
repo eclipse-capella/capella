@@ -34,6 +34,7 @@ public class TarjanAlgorithm {
 	/** function to get all strongly connected components **/
 	public List<List<Integer>> getSCComponents(HashSet<Integer>[] graph) {
 		V = graph.length;
+		// Do not clone the graph
 		this.graph = graph;
 		low = new int[V];
 		visited = new boolean[V];

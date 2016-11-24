@@ -154,23 +154,24 @@ public class EObjectExt extends EcoreUtil2 {
   }
 
   /**
-   * @param eobjects a collection of eobjects from which the resource set will be retrieved
-   * @return if all eobjects belong to the same resource set, this resource set is returned. Otherwise null is returned.
+   * @param eObjects a collection of EObject(s) from which the resource set will be retrieved
+   * @return if all EObject(s) belong to the same resource set, this resource set is returned. Otherwise null is returned.
    */
-  public static ResourceSet getCommonResourceSet(Collection<? extends EObject> eobjects) {
-    ResourceSet rs = null;
-    for (EObject obj : eobjects) {
-      if (obj.eResource() != null) {
-        if (null == rs) {
-          rs = obj.eResource().getResourceSet();
+  public static ResourceSet getCommonResourceSet(Collection<? extends EObject> eObjects) {
+    ResourceSet resourceSet = null;
+    for (EObject obj : eObjects) {
+      Resource eResource = obj.eResource();
+      if (eResource != null) {
+        if (null == resourceSet) {
+          resourceSet = eResource.getResourceSet();
         } else {
-          if (!rs.equals(obj.eResource().getResourceSet())) {
+          if (!resourceSet.equals(eResource.getResourceSet())) {
             return null;
           }
         }
       }
     }
-    return rs;
+    return resourceSet;
   }
 
   /**

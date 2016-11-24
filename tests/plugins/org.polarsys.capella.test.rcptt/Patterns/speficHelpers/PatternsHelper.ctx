@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _2kJLQGXmEeaVsIgvj-cA7g
 Runtime-Version: 2.0.2.201511100828
-Save-Time: 8/19/16 5:39 PM
+Save-Time: 9/20/16 6:27 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -28,17 +28,18 @@ proc getPatternCreationDialog {
 		// Maybe it can be simplified by selecting directly EditPart with their names
 		with [get-edit-part -name "[LAB] Logical System" | get-edit-part -name "Logical System" | get-edit-part
 			-className DNodeContainerViewNodeContainerCompartmentEditPart] {
-			with [get-edit-part -name LC_A | get-edit-part -className "DNodeContainerViewNodeContainerCompartment2Edi" +
-				"tPart"] {
-				mouse-move 142 15 button1 -height 88 -width 148
-				mouse-press 142 15 button1 -height 88 -width 148
-				mouse-release 142 15 button1 524288 -height 88 -width 148
-				with [get-edit-part -name LF_A | get-edit-part -className SquareEditPart] {
-					mouse-move 43 15 button1 CTRL -height 50 -width 50
-					mouse-press 43 15 button1 CTRL -height 50 -width 50
-					mouse-release 43 15 button1 786432 -height 50 -width 50
-				}
-			}
+			 with [get-edit-part -name "LC_A" | get-edit-part 
+	            -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+	            mouse-move 186 24 button1 CTRL -height 151 -width 241
+	            mouse-press 186 24 button1 CTRL -height 151 -width 241
+	            mouse-release 186 24 button1 786432 -height 151 -width 241
+	            mouse-move 155 36 -mask CTRL -height 151 -width 241
+	            with [get-edit-part -name "LF_A" | get-edit-part -className SquareEditPart] {
+	                mouse-move 56 17 button1 CTRL -height 51 -width 81
+	                mouse-press 56 17 button1 CTRL -height 51 -width 81
+	                mouse-release 56 17 button1 786432 -height 51 -width 81
+	            }
+        	}
 			with [get-edit-part -name LC_B | get-edit-part -className "DNodeContainerViewNodeContainerCompartment2Edi" +
 				"tPart"] {
 				mouse-move 70 18 button1 CTRL -height 101 -width 291

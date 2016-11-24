@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.transition.system.handlers.traceability;
 
 import java.util.ArrayList;
@@ -405,11 +404,9 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
 
       mappingAdd(mapping, new RealizationLinkMapping(CsPackage.Literals.PHYSICAL_PATH, CsPackage.Literals.PHYSICAL_PATH,
           CsPackage.Literals.PHYSICAL_PATH_REALIZATION, CsPackage.Literals.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS));
-
     }
 
     return (Collection<RealizationLinkMapping>) iContext1.get(MAPPING_MAP);
-
   }
 
   /**
@@ -490,9 +487,9 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
   }
 
   /**
+   * @param trace
    * @param link
-   * @param targetElement_p
-   * @param targetElement2_p
+   * @param context
    * @return
    */
   private boolean isValidMapping(AbstractTrace trace, RealizationLinkMapping link, IContext context) {
@@ -510,7 +507,6 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
 
   @Override
   public void attachTraceability(EObject sourceElement, EObject targetElement, IContext context) {
-
     if (targetElement != null) { // we allow transformation one to nothing
       createAttachment(sourceElement, targetElement, context);
     }
@@ -651,8 +647,6 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
           getDefaultOwner(context).getOwnedTraces().add((Trace) realizationLink);
         }
       }
-
     }
-
   }
 }

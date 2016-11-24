@@ -68,16 +68,10 @@ public class UpdateReplicaLauncher extends org.polarsys.capella.common.re.launch
     addOverrides(org.polarsys.capella.common.re.rpl2re.activities.InitializeDiffMergeUpdateReActivity.ID,
         org.polarsys.capella.core.re.rpl2re.activities.InitializeDiffMergeUpdateReActivity.ID);
 
-    addOverrides(org.polarsys.capella.common.re.re2rpl.activities.DifferencesFilteringActivity.ID,
-        org.polarsys.capella.core.re.re2rpl.activities.DifferencesFilteringActivity.ID);
-
-    addOverrides(org.polarsys.capella.common.re.rpl2re.activities.DifferencesFilteringActivity.ID,
-        org.polarsys.capella.core.re.rpl2re.activities.DifferencesFilteringActivity.ID);
-
   }
 
   @Override
-  public void run(Collection<Object> selection_p, boolean save, IProgressMonitor monitor_p) {
+  public void run(Collection<?> selection_p, boolean save, IProgressMonitor monitor_p) {
     HashSet<CatalogElement> elements = new HashSet<CatalogElement>();
     for (Object selected : SemanticHelper.getSemanticObjects(selection_p)) {
       if (selected instanceof EObject) {

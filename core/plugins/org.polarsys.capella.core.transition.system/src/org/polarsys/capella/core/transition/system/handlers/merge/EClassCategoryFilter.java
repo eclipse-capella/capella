@@ -23,7 +23,13 @@ public class EClassCategoryFilter extends EObjectCategoryFilter {
   }
 
   public EClassCategoryFilter(IContext context, EClass clazz, String name) {
-    super(context, clazz);
+    super(context, clazz, name);
+    this.name = name;
+    this.clazz = clazz;
+  }
+  
+  public EClassCategoryFilter(IContext context, EClass clazz, String name, String description) {
+    super(context, clazz, name, description);
     this.name = name;
     this.clazz = clazz;
   }
@@ -34,7 +40,7 @@ public class EClassCategoryFilter extends EObjectCategoryFilter {
   }
 
   public EClassCategoryFilter(IContext context, EClass clazz, EClass iconClazz, String name) {
-    super(context, iconClazz);
+    super(context, iconClazz, name);
     this.clazz = clazz;
     this.name = name;
   }

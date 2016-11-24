@@ -15,7 +15,8 @@
     xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.1.0"
     xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0"
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0" id="3f8ad859-410c-45e2-88af-9a49368644f9"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0"
+    id="3f8ad859-410c-45e2-88af-9a49368644f9"
     name="EmptyProject">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="755718f0-24e1-4028-92bf-78b62bea42d7"/>
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"

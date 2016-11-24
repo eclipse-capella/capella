@@ -24,7 +24,7 @@
          point="org.eclipse.core.contenttype.contentTypes">
       <content-type
             base-type="org.eclipse.emf.ecore.xmi"
-            file-extensions="aird"
+            file-extensions="aird,airdfragment"
             id="org.eclipse.emf.diffmerge.sirius.aird.content-type"
             name="Sirius diagram files"
             priority="normal">

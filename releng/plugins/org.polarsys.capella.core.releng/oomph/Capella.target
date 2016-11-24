@@ -21,17 +21,18 @@
       <unit id="org.polarsys.kitalpha.emde.ui.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.model.detachment.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.patterns.feature.feature.group" version="0.0.0"/>
-      <repository location="http://download.eclipse.org/sirius/updates/stable/4.1.0-S20160809-110054/mars"/>
+      <repository location="http://download.eclipse.org/sirius/updates/releases/4.1.1/mars"/>
       <repository location="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
       <repository location="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
       <repository location="http://download.eclipse.org/diffmerge/releases/0.7.0/edm-patterns-site"/>
-      <repository location="https://hudson.polarsys.org/kitalpha/job/Kitalpha_runtime/lastSuccessfulBuild/artifact/result/publish/kitalpha_runtime/site.p2"/>
-      <repository location="https://hudson.polarsys.org/kitalpha/job/Kitalpha_SDK/lastSuccessfulBuild/artifact/result/publish/kitalpha_sdk/site.p2"/>
-      <repository location="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.7.0-N20160610-082445/neon"/>
+      <repository location="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/198/artifact/result/publish/kitalpha_runtime/site.p2"/>
+      <repository location="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/198/artifact/result/publish/kitalpha_sdk/site.p2"/>
+      <repository location="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20161007-040549/mars"/>
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
       <repository location="http://download.eclipse.org/releases/mars"/>
       <repository location="http://download.eclipse.org/cbi/updates/license"/>
       <repository location="https://hudson.polarsys.org/capella/view/Capella-master/job/capella-master/lastSuccessfulBuild/artifact/result/publish/org.polarsys.capella/site.p2"/>
+      <repository location="http://dist.springsource.org/snapshot/GRECLIPSE/e4.5/"/>
       <repository location="http://download.eclipse.org/eclipse/updates/4.5"/>
     </location>
   </locations>

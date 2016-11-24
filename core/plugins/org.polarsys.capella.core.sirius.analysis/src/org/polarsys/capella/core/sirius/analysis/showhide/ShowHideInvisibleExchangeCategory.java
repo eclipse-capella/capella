@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.sirius.analysis.ABServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
-import org.polarsys.capella.core.sirius.analysis.FaServices;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -48,7 +48,8 @@ public class ShowHideInvisibleExchangeCategory extends ShowHideFunctionalExchang
   }
 
   @Override
-  protected boolean isValidSemanticView(EObject semantic_p, DSemanticDecorator semanticView_p, DiagramContext context_p) {
+  protected boolean isValidSemanticView(EObject semantic_p, DSemanticDecorator semanticView_p,
+      DiagramContext context_p) {
     return super.isValidSemanticView(semantic_p, semanticView_p, context_p);
   }
 
@@ -84,15 +85,18 @@ public class ShowHideInvisibleExchangeCategory extends ShowHideFunctionalExchang
   }
 
   @Override
-  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
+  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p,
+      HashMapSet<String, DSemanticDecorator> relatedViews_p) {
 
     EObject semantic = originCouple_p.getValue();
 
     ContextItemElement lastContext = context_p.getLast();
     // We display all available category, even if there is another view displayed
     if (semantic instanceof ExchangeCategory) {
-      AbstractFunction source = (AbstractFunction) (((Collection) (context_p.getLastVariable(SOURCE_PARTS).getValue()))).iterator().next();
-      AbstractFunction target = (AbstractFunction) (((Collection) (context_p.getLastVariable(TARGET_PARTS).getValue()))).iterator().next();
+      AbstractFunction source = (AbstractFunction) (((Collection) (context_p.getLastVariable(SOURCE_PARTS).getValue())))
+          .iterator().next();
+      AbstractFunction target = (AbstractFunction) (((Collection) (context_p.getLastVariable(TARGET_PARTS).getValue())))
+          .iterator().next();
       ExchangeCategory category = (ExchangeCategory) semantic;
 
       if (SOURCE.equals(lastContext.getKey())) {
@@ -157,22 +161,28 @@ public class ShowHideInvisibleExchangeCategory extends ShowHideFunctionalExchang
   }
 
   @Override
-  public DiagramElementMapping getMapping(EObject semantic_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
+  public DiagramElementMapping getMapping(EObject semantic_p, DiagramContext context_p,
+      HashMapSet<String, DSemanticDecorator> relatedViews_p) {
     DiagramElementMapping mapping = super.getMapping(semantic_p, context_p, relatedViews_p);
 
     ContextItemElement lastContext = context_p.getLast();
     if (lastContext.getValue() instanceof ExchangeCategory) {
       if (SOURCE.equals(lastContext.getKey())) {
         // If sourcePin, use FECategoryPin
-        mapping = FaServices.getFaServices().getMappingFECategoryOutputPin(getContent().getDDiagram());
+        String mappingName = MappingConstantsHelper
+            .getMappingFunctionalExchangeCategoryOutputPin(getContent().getDDiagram());
+        mapping = getContent().getMapping(mappingName);
 
       } else if (TARGET.equals(lastContext.getKey())) {
         // If targetPin, use FECategoryPin
-        mapping = FaServices.getFaServices().getMappingFECategoryInputPin(getContent().getDDiagram());
+        String mappingName = MappingConstantsHelper
+            .getMappingFunctionalExchangeCategoryInputPin(getContent().getDDiagram());
+        mapping = getContent().getMapping(mappingName);
 
       } else {
         // Otherwise, use FECategoryEdge
-        mapping = FaServices.getFaServices().getMappingFECategory(getContent().getDDiagram());
+        String mappingName = MappingConstantsHelper.getMappingFunctionalExchangeCategory(getContent().getDDiagram());
+        mapping = getContent().getMapping(mappingName);
       }
     }
     return mapping;
@@ -180,19 +190,21 @@ public class ShowHideInvisibleExchangeCategory extends ShowHideFunctionalExchang
 
   @Override
   protected boolean isValidEdgeView(DEdge edge_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p) {
-    DiagramElementMapping categoryMapping = FaServices.getFaServices().getMappingFECategory(getContent().getDDiagram());
-
     // Category edge is not oriented, so if we have an inverse edge, we return it, instead of creating another edge
-    if (categoryMapping.equals(edge_p.getActualMapping())) {
-      if (sourceView_p.equals(edge_p.getTargetNode()) && targetView_p.equals(edge_p.getSourceNode())) {
+    if (sourceView_p.equals(edge_p.getTargetNode()) && targetView_p.equals(edge_p.getSourceNode())) {
+      String mappingName = MappingConstantsHelper.getMappingFunctionalExchangeCategory(getContent().getDDiagram());
+      DiagramElementMapping categoryMapping = getContent().getMapping(mappingName);
+      if (categoryMapping.equals(edge_p.getActualMapping())) {
         return true;
       }
     }
+
     return super.isValidEdgeView(edge_p, sourceView_p, targetView_p);
   }
 
   @Override
-  protected Collection<DSemanticDecorator> retrieveDefaultContainer(EObject semantic_p, DiagramContext context_p, Collection<DSemanticDecorator> targetViews_p) {
+  protected Collection<DSemanticDecorator> retrieveDefaultContainer(EObject semantic_p, DiagramContext context_p,
+      Collection<DSemanticDecorator> targetViews_p) {
     return super.retrieveDefaultContainer(semantic_p, context_p, targetViews_p);
   }
 
@@ -230,7 +242,8 @@ public class ShowHideInvisibleExchangeCategory extends ShowHideFunctionalExchang
   }
 
   @Override
-  protected Collection<DDiagramElement> showNodes(DSemanticDecorator containerView_p, EObject semantic_p, DDiagramContents content_p, AbstractNodeMapping mapping_p) {
+  protected Collection<DDiagramElement> showNodes(DSemanticDecorator containerView_p, EObject semantic_p,
+      DDiagramContents content_p, AbstractNodeMapping mapping_p) {
     Collection<DDiagramElement> nodes = super.showNodes(containerView_p, semantic_p, content_p, mapping_p);
     // Reveal all hidden nodes for component ports
     if (semantic_p instanceof FunctionPort) {
@@ -242,8 +255,8 @@ public class ShowHideInvisibleExchangeCategory extends ShowHideFunctionalExchang
   }
 
   @Override
-  protected Collection<DDiagramElement> showEdges(DSemanticDecorator source_p, DSemanticDecorator target_p, EObject exchange_p, DDiagramContents content_p,
-      EdgeMapping edgeMapping_p) {
+  protected Collection<DDiagramElement> showEdges(DSemanticDecorator source_p, DSemanticDecorator target_p,
+      EObject exchange_p, DDiagramContents content_p, EdgeMapping edgeMapping_p) {
     Collection<DDiagramElement> nodes = super.showEdges(source_p, target_p, exchange_p, content_p, edgeMapping_p);
     // Reveal all hidden nodes for component exchanges
     if (exchange_p instanceof FunctionalExchange) {

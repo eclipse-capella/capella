@@ -44,6 +44,10 @@
                separator="true">
          </insertionPoint>
          <insertionPoint
+               name="group.openWith"
+               separator="false">
+         </insertionPoint>
+         <insertionPoint
                name="group.edit"
                separator="true">
          </insertionPoint>
@@ -145,6 +149,7 @@
       <includes>
          <actionExtension pattern="capella.project.explorer.actions.*"/>
          <actionExtension pattern="org.eclipse.ui.navigator.resources.NewActions"/>
+         <actionExtension pattern="org.eclipse.ui.navigator.resources.OpenActions"/>
          <actionExtension pattern="org.eclipse.ui.navigator.resources.PortingActions"/>
          <actionExtension pattern="org.eclipse.ui.navigator.resources.actions.EditActions"/>
          <actionExtension pattern="org.eclipse.ui.navigator.resources.actions.RefactorActions"/>
@@ -293,10 +298,11 @@
                </or>
             </enablement>
          </actionProvider>
+         
          <actionProvider
-               class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.AirdCommonActionProvider"
-               id="capella.project.explorer.airdContributor">
-            <enablement>
+	         class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.AirdCommonActionProvider"
+	         id="capella.project.explorer.airdContributor">
+	      <enablement>
                <and>
                   <instanceof
                         value="org.eclipse.core.resources.IResource">
@@ -308,7 +314,62 @@
                   </test>
                </and>
             </enablement>
-         </actionProvider>
+   		</actionProvider>
+   
+   		<actionProvider
+	         class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.EmptyActionProvider"
+	         id="capella.project.explorer.capellaOpenContributor"
+	         overrides="org.eclipse.ui.navigator.resources.OpenActions"
+	         priority="highest">
+	         <!-- We disable the Open Actions for the given extensions, unless we have activated the Debug Support capability -->
+	      <enablement>
+               <and>
+                  <instanceof
+                        value="org.eclipse.core.resources.IResource">
+                  </instanceof>
+                  <or>
+	                  <test
+	                        forcePluginActivation="true"
+	                        property="org.eclipse.core.resources.extension"
+	                        value="melodymodeller">
+	                  </test>
+	                  <test
+	                        forcePluginActivation="true"
+	                        property="org.eclipse.core.resources.extension"
+	                        value="melodyfragment">
+	                  </test>
+	                  <test
+	                        forcePluginActivation="true"
+	                        property="org.eclipse.core.resources.extension"
+	                        value="aird">
+	                  </test>
+	                  <test
+	                        forcePluginActivation="true"
+	                        property="org.eclipse.core.resources.extension"
+	                        value="airdfragment">
+	                  </test>
+	                  <test
+	                        forcePluginActivation="true"
+	                        property="org.eclipse.core.resources.extension"
+	                        value="afm">
+	                  </test>
+                  </or>
+	              <with variable="org.polarsys.capella.core.platform.workbench">
+                  		<not>
+		                  <test
+		                        forcePluginActivation="true"
+		                        property="org.eclipse.ui.isActivityEnabled"
+		                        args="org.eclipse.debugSupport">
+		                  </test>
+                  		</not>
+	              </with>
+                  
+                  
+               </and>
+            </enablement>
+   		</actionProvider>
+   		
+   		
          <actionProvider
                class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.NewRepresentationActionProvider"
                id="capella.project.explorer.newRepresentationContributor">
@@ -450,7 +511,7 @@
          </filterExpression>
       </commonFilter>
       <commonFilter
-            activeByDefault="true"
+            activeByDefault="false"
             description="Hides metadata resources that end with &quot;.afm&quot;"
             id="capella.project.explorer.filters.metadata"
             name="*.afm resources">
@@ -977,7 +1038,6 @@
                </objectClass>
                <objectClass
                      name="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
->>>>>>> refs/remotes/origin/master
                </objectClass>
             </or>
          </enablement>
@@ -1097,12 +1157,18 @@
       </command>
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.FixDAnnotationsHandler"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.fixDAnnotationsCommand"
+            name="%command.fixDAnnotations.name"
+            description="%command.fixDAnnotations.description">
+      </command>
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
             defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RefreshDiagramsCommandHandler"
             id="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
             name="%command.refreshDiagrams"
             description="%command.refreshDiagrams.description">
       </command>
-      
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
             defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RemoveHiddenElementsHandler"
@@ -1221,7 +1287,33 @@
                </with>
             </visibleWhen>
          </command>
-          
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.fixDAnnotationsCommand"
+               icon="icons/viewpoint.gif"
+               id="org.polarsys.capella.core.platform.sirius.ui.navigator.fixDAnnotations"
+               label="%command.fixDAnnotations.name"
+               style="push">
+            <visibleWhen checkEnabled="true">
+               <with variable="activeMenuSelection">
+                  <and>
+                     <iterate>
+                        <and>
+                           <instanceof
+                                 value="org.eclipse.core.resources.IFile">
+                           </instanceof>
+                           <test
+                                 forcePluginActivation="true"
+                                 property="org.eclipse.core.resources.extension"
+                                 value="aird">
+                           </test>
+                        </and>
+                     </iterate>
+                     <count value="1">
+                     </count>
+                  </and>
+               </with>
+            </visibleWhen>
+         </command>
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
                id="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
@@ -1319,7 +1411,7 @@
       </menuContribution>
       <menuContribution
             locationURI="popup:org.eclipse.ui.popup.any?after=org.polarsys.capella.core.sirius.diagram.editor.wizards">
-           <command
+              <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showImpactAnalysisCommand"
                id="%showImpactAnalysis"
                style="push">
@@ -1328,12 +1420,19 @@
                <with
                      variable="activeMenuSelection">
                   <and>
-                  <not>
-                  	<iterate>
-                        <or>
-                           <instanceof
-                                 value="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
-                           </instanceof>
+                  	<iterate>                
+                         <or>
+                         		<and>
+                         		<instanceof
+                                 	value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+                           		</instanceof>
+                         		<not>
+                           			<instanceof
+                           				value="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+                           			</instanceof>
+                           		</not>
+                         		</and>
+                           		
                            <instanceof
                                  value="org.eclipse.sirius.table.metamodel.table.DTableElement">
                            </instanceof>
@@ -1342,7 +1441,6 @@
                      <count
                            value="1">
                      </count>
-                  </not>
                   </and>
                </with>
             </visibleWhen>
@@ -1403,12 +1501,6 @@
                name="%NewRepresentationActionProvider_NewRepresentationAction_Title">
          </item>
       </category>
-   </extension>
-   <extension
-         point="org.eclipse.sirius.sessionManagerListener">
-      <listener
-            class="org.polarsys.capella.core.platform.sirius.ui.navigator.listeners.SessionCheckingListener">
-      </listener>
    </extension>
    <extension
          point="org.polarsys.capella.common.ef.editingDomainListener">

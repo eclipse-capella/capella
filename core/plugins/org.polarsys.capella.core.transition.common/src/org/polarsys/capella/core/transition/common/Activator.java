@@ -40,7 +40,7 @@ public class Activator extends Plugin {
     // Create the preference store lazily.
     if (preferenceStore == null) {
       String a = "org.polarsys.capella.core.transition.common.ui";
-      preferenceStore = new ScopedPreferenceStore(new InstanceScope(), a);
+      preferenceStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, a);
     }
     return preferenceStore;
   }

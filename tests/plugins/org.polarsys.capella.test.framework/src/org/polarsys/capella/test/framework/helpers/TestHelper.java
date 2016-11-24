@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.junit.Assert;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
@@ -99,9 +101,9 @@ public class TestHelper {
   /**
    * set a project as multipart or not
    * 
-   * @param project_p
+   * @param project
    *          the project to update
-   * @param value_p
+   * @param value
    *          true to set as Multipart, otherwise false
    */
   public static void setReusableComponents(EObject anyModelElement, boolean value) {
@@ -146,7 +148,7 @@ public class TestHelper {
   /**
    * Get the semantic resource linked to given diagram resource (AIRD one).
    * 
-   * @param diagramResource_p
+   * @param diagramResource
    * @return <code>null</code> if not found.
    */
   public static Resource getSemanticResource(Session session) {
@@ -189,5 +191,41 @@ public class TestHelper {
     }
     if (!f.delete())
       throw new FileNotFoundException("Failed to delete file: " + f);
+  }
+
+  /**
+   * Open given diagram resource i.e AIRD one. Note: Even if the method signature suggests that the returned session
+   * will be open, it will NOT. You need to call session.open() manually.
+   *
+   * @param resource
+   */
+  public static Session openOrGetSession(IFile file) {
+    Session result = null;
+
+    try {
+      if ((null == file) || !file.exists()) {
+        throw new Exception("'" + file.getName() + "' doesn't exist"); //$NON-NLS-1$ //$NON-NLS-2$
+      }
+      String fileFullPath = file.getFullPath().toOSString();
+      URI uri = URI.createPlatformResourceURI(fileFullPath, true);
+      Collection<Session> allSessions = SessionManager.INSTANCE.getSessions();
+      for (Session session : allSessions) {
+        for (Resource res : session.getAllSessionResources()) {
+          if (res.getURI().equals(uri)) {
+            return session;
+          }
+        }
+      }
+      if (fileFullPath.endsWith("airfragment")) //$NON-NLS-1$
+        Assert.fail("open Session on '" + fileFullPath + "' is not allowed");//$NON-NLS-1$ //$NON-NLS-2$
+
+      // if there is no opened session, create a new one from the uri.
+      result = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
+
+    } catch (Exception exception) {
+      exception.printStackTrace();
+      Assert.fail(exception.getMessage());
+    }
+    return result;
   }
 }
