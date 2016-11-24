@@ -13,9 +13,11 @@ package org.polarsys.capella.core.sirius.analysis;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
@@ -1680,12 +1682,26 @@ public class ABServices {
       context.setVariable(ShowHideABComponentExchange.SOURCE_PART_VIEWS, Collections.singletonList(context_p));
     }
 
+    // Compute only once relatedPhysicalLinks and abShowHidePhysicalCategoriesScope of a source view
+    Map<EObject, Collection<PhysicalLink>> relatedPhysicalLinksMap = new HashMap<EObject, Collection<PhysicalLink>>();
+    Map<DDiagramElement, HashMapSet<EObject, EObject>> abShowHidePhysicalCategoriesScopeMap = new HashMap<DDiagramElement, HashMapSet<EObject, EObject>>();
+    for (DDiagramElement sourceView : sourceViews) {
+      EObject sourceViewTarget = sourceView.getTarget();
+      if (sourceViewTarget != null) {
+    	EObject source = sourceViewTarget;
+    	Collection<PhysicalLink> relatedPhysicalLinks = getRelatedPhysicalLinks(source);
+
+    	relatedPhysicalLinksMap.put(source, relatedPhysicalLinks);
+    	abShowHidePhysicalCategoriesScopeMap.put(sourceView, getABShowHidePhysicalCategoriesScope(sourceView, relatedPhysicalLinks));
+      }
+    }
+
     // show or hide categorie links
     for (DDiagramElement sourceView : sourceViews) {
       EObject sourceViewTarget = sourceView.getTarget();
       if (sourceViewTarget != null) {
         EObject source = sourceViewTarget;
-        HashMapSet<EObject, EObject> scopeSource = getABShowHidePhysicalCategoriesScope(sourceView);
+        HashMapSet<EObject, EObject> scopeSource = abShowHidePhysicalCategoriesScopeMap.get(sourceView);
         for (EObject key : scopeSource.keySet()) {
 
           if (selectedElements.contains(key)) {
@@ -1706,13 +1722,13 @@ public class ABServices {
       EObject sourceViewTarget = sourceView.getTarget();
       if (sourceViewTarget != null) {
         EObject source = sourceViewTarget;
-        HashMapSet<EObject, EObject> scopeSource = getABShowHidePhysicalCategoriesScope(sourceView);
+        HashMapSet<EObject, EObject> scopeSource = abShowHidePhysicalCategoriesScopeMap.get(sourceView);
 
         // Traverse the categories selected by the user
         for (EObject key : scopeSource.keySet()) {
           PhysicalLinkCategory category = (PhysicalLinkCategory) key;
           if (selectedElements.contains(key)) {
-            for (PhysicalLink exchange : getRelatedPhysicalLinks(source)) {
+            for (PhysicalLink exchange : relatedPhysicalLinksMap.get(source)) {
               if (exchange.getCategories().contains(key)) {
                 displayABPhysicalCategoryPortDelegation(context, category, exchange, (PhysicalPort) PhysicalLinkExt.getSourcePort(exchange), true, categories);
                 displayABPhysicalCategoryPortDelegation(context, category, exchange, (PhysicalPort) PhysicalLinkExt.getTargetPort(exchange), true, categories);
@@ -1720,7 +1736,7 @@ public class ABServices {
               }
             }
           } else if (showPhysicalExchanges) {
-            for (PhysicalLink exchange : getRelatedPhysicalLinks(source)) {
+            for (PhysicalLink exchange : relatedPhysicalLinksMap.get(source)) {
               if (exchange.getCategories().contains(key)) {
                 displayABPhysicalCategoryPortDelegation(context, category, exchange, (PhysicalPort) PhysicalLinkExt.getSourcePort(exchange), false, categories);
                 displayABPhysicalCategoryPortDelegation(context, category, exchange, (PhysicalPort) PhysicalLinkExt.getTargetPort(exchange), false, categories);
@@ -1786,11 +1802,25 @@ public class ABServices {
       context.setVariable(ShowHideABComponentExchange.SOURCE_PART_VIEWS, Collections.singletonList(context_p));
     }
 
+    // Compute only once relatedComponentExchanges and abShowHideComponentCategoriesScope of a source view
+    Map<EObject, Collection<ComponentExchange>> relatedComponentExchangesMap = new HashMap<EObject, Collection<ComponentExchange>>();
+    Map<DDiagramElement, HashMapSet<EObject, EObject>> abShowHideComponentCategoriesScopeMap = new HashMap<DDiagramElement, HashMapSet<EObject,EObject>>();
+    for (DDiagramElement sourceView : sourceViews) {
+      EObject sourceViewTarget = sourceView.getTarget();
+      if (sourceViewTarget != null) {
+    	EObject source = sourceViewTarget;
+    	Collection<ComponentExchange> relatedComponentExchanges = getRelatedComponentExchanges(source);
+    	
+    	relatedComponentExchangesMap.put(source, getRelatedComponentExchanges(source));
+    	abShowHideComponentCategoriesScopeMap.put(sourceView, getABShowHideComponentCategoriesScope(sourceView, relatedComponentExchanges));
+      }
+    }
+    
     for (DDiagramElement sourceView : sourceViews) {
       EObject sourceViewTarget = sourceView.getTarget();
       if (sourceViewTarget != null) {
         EObject source = sourceViewTarget;
-        HashMapSet<EObject, EObject> scopeSource = getABShowHideComponentCategoriesScope(sourceView);
+        HashMapSet<EObject, EObject> scopeSource = abShowHideComponentCategoriesScopeMap.get(sourceView);
         for (EObject key : scopeSource.keySet()) {
 
           if (selectedElements.contains(key)) {
@@ -1810,11 +1840,11 @@ public class ABServices {
       EObject sourceViewTarget = sourceView.getTarget();
       if (sourceViewTarget != null) {
         EObject source = sourceViewTarget;
-        HashMapSet<EObject, EObject> scopeSource = getABShowHideComponentCategoriesScope(sourceView);
+        HashMapSet<EObject, EObject> scopeSource = abShowHideComponentCategoriesScopeMap.get(sourceView);
         for (EObject key : scopeSource.keySet()) {
           ComponentExchangeCategory category = (ComponentExchangeCategory) key;
           if (selectedElements.contains(key)) {
-            for (ComponentExchange exchange : getRelatedComponentExchanges(source)) {
+            for (ComponentExchange exchange : relatedComponentExchangesMap.get(source)) {
               if (exchange.getCategories().contains(key)) {
                 displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), true, categories);
                 displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), true, categories);
@@ -1822,7 +1852,7 @@ public class ABServices {
               }
             }
           } else {
-            for (ComponentExchange exchange : getRelatedComponentExchanges(source)) {
+            for (ComponentExchange exchange : relatedComponentExchangesMap.get(source)) {
               if (exchange.getCategories().contains(key)) {
                 displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), false, categories);
                 displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), false, categories);
@@ -2148,12 +2178,12 @@ public class ABServices {
     return Collections.emptyList();
   }
 
-  public HashMapSet<EObject, EObject> getABShowHidePhysicalCategoriesScope(DSemanticDecorator context_p) {
+  public HashMapSet<EObject, EObject> getABShowHidePhysicalCategoriesScope(DSemanticDecorator context_p, Collection<PhysicalLink> relatedPhysicalLinks) {
     HashMapSet<EObject, EObject> result = new HashMapSet<EObject, EObject>();
     EObject relatedPart = CsServices.getService().getRelatedPart(context_p);
 
     if (relatedPart != null) {
-      for (PhysicalLink exchange : getRelatedPhysicalLinks(relatedPart)) {
+      for (PhysicalLink exchange : relatedPhysicalLinks) {
         for (PhysicalLinkCategory value : exchange.getCategories()) {
           Collection<? extends EObject> sourceParts = PhysicalLinkExt.getSourceParts(exchange);
           Collection<? extends EObject> targetParts = PhysicalLinkExt.getTargetParts(exchange);
@@ -2171,6 +2201,16 @@ public class ABServices {
     }
     return result;
   }
+  
+  public HashMapSet<EObject, EObject> getABShowHidePhysicalCategoriesScope(DSemanticDecorator context) {
+    EObject relatedPart = CsServices.getService().getRelatedPart(context);
+    if (relatedPart != null) {
+  	  Collection<PhysicalLink> relatedPhysicalLinks = getRelatedPhysicalLinks(relatedPart);
+  	  return getABShowHidePhysicalCategoriesScope(context, relatedPhysicalLinks);
+    } else {
+  	  return new HashMapSet<EObject, EObject>();
+    }
+  }
 
   /**
    * Retrieve a map<ExchangeCategory, Collection<Part>> of available category to display from the given source view
@@ -2178,12 +2218,12 @@ public class ABServices {
    * @param context_p
    * @return
    */
-  public HashMapSet<EObject, EObject> getABShowHideComponentCategoriesScope(DSemanticDecorator context_p) {
+  public HashMapSet<EObject, EObject> getABShowHideComponentCategoriesScope(DSemanticDecorator context_p, Collection<ComponentExchange> relatedComponentExchanges) {
     HashMapSet<EObject, EObject> result = new HashMapSet<EObject, EObject>();
     EObject relatedPart = CsServices.getService().getRelatedPart(context_p);
 
     if (relatedPart != null) {
-      for (ComponentExchange exchange : getRelatedComponentExchanges(relatedPart)) {
+      for (ComponentExchange exchange : relatedComponentExchanges) {
         for (ComponentExchangeCategory value : exchange.getCategories()) {
           Collection<? extends EObject> sourceParts = ComponentExchangeExt.getSourcePartsAndEntities(exchange);
           Collection<? extends EObject> targetParts = ComponentExchangeExt.getTargetPartsAndEntities(exchange);
@@ -2202,6 +2242,23 @@ public class ABServices {
     return result;
   }
 
+  /**
+  * Retrieve a map<ExchangeCategory, Collection<Part>> of available category to display from the given source view
+  * 
+  * @param context
+  * @return
+  */
+  @Deprecated
+  public HashMapSet<EObject, EObject> getABShowHideComponentCategoriesScope(DSemanticDecorator context) {
+    EObject relatedPart = CsServices.getService().getRelatedPart(context);
+    if (relatedPart != null) {
+  	  Collection<ComponentExchange> relatedComponentExchanges = getRelatedComponentExchanges(relatedPart);
+  	  return getABShowHideComponentCategoriesScope(context, relatedComponentExchanges);
+    } else {
+    return new HashMapSet<EObject, EObject>();
+    }
+  }
+  
   public HashMapSet<EObject, EObject> getABShowHidePhysicalCategoriesInitialSelection(DSemanticDecorator context_p) {
     HashMapSet<EObject, EObject> scope = getABShowHidePhysicalCategoriesScope(context_p);
     HashMapSet<EObject, EObject> result = new HashMapSet<EObject, EObject>();
