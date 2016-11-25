@@ -97,10 +97,6 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
           uiSelectedElement = ((ItemWrapper) uiSelectedElement).getWrappedObject();
         }
         if (uiSelectedElement instanceof DRepresentationDescriptor) {
-          uiSelectedElement = ((DRepresentationDescriptor) uiSelectedElement).getRepresentation();
-        }
-
-        if (uiSelectedElement instanceof DRepresentation) {
           elementToSelectInCapellaExplorer = uiSelectedElement;
         } else {
           // Get element from given selection.
