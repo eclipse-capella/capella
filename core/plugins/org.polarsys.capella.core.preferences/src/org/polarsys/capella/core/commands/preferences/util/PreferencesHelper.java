@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,6 +41,7 @@ import org.eclipse.jface.preference.PreferenceManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
@@ -192,12 +193,12 @@ public class PreferencesHelper {
 
   /**
    * Return the project where is persisted given EMF object.
-   * @param object_p
+   * @param object
    * @return <code>null</code> if given object is not persisted.
    */
-  public static IProject getProject(EObject object_p) {
+  public static IProject getProject(EObject object) {
     IProject result = null;
-    Session session = SessionManager.INSTANCE.getSession(object_p);
+    Session session = new EObjectQuery(object).getSession();
     if (null != session) {
       Resource sessionResource = session.getSessionResource();
       URI sessionResourceURI = sessionResource.getURI();
@@ -207,7 +208,7 @@ public class PreferencesHelper {
       }
     }
     if (result == null) {
-      return EcoreUtil2.getProject(object_p);
+      return EcoreUtil2.getProject(object);
     }
 
     return result;
