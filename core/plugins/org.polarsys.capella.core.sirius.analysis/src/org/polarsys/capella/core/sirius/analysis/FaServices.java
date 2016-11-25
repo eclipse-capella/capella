@@ -4992,10 +4992,25 @@ public class FaServices {
       context.setVariable(ShowHideABComponentExchange.SOURCE_PART_VIEWS, Collections.singletonList(context_p));
     }
 
+    // Compute only once allExchanges and showHideSubFECategoriesScope of a source view
+    Map<EObject, List<FunctionalExchange>> allExchangesMap = new HashMap<EObject, List<FunctionalExchange>>();
+    Map<EObject, HashMapSet<EObject, Entry<EObject, EObject>>> showHideSubFECategoriesScopeMap = new HashMap<EObject, HashMapSet<EObject,Entry<EObject,EObject>>>();
+	for (DDiagramElement sourceView : sourceViews) {
+      EObject sourceViewTarget = sourceView.getTarget();
+      if ((sourceViewTarget != null) && (sourceViewTarget instanceof AbstractFunction)) {
+        List<FunctionalExchange> allExchanges = FunctionExt.getAllExchanges((AbstractFunction) sourceViewTarget);
+  
+        allExchangesMap.put(sourceViewTarget, allExchanges);
+        showHideSubFECategoriesScopeMap.put(sourceView, getShowHideSubFECategoriesScope(sourceView, allExchanges));
+      } else {
+    	  showHideSubFECategoriesScopeMap.put(sourceView, new HashMapSet<EObject, Map.Entry<EObject, EObject>>());
+      }
+    }
+
     for (DDiagramElement sourceView : sourceViews) {
       EObject sourceViewTarget = sourceView.getTarget();
       if (sourceViewTarget != null) {
-        HashMapSet<EObject, Map.Entry<EObject, EObject>> scopeSource = getShowHideSubFECategoriesScope(sourceView);
+        HashMapSet<EObject, Map.Entry<EObject, EObject>> scopeSource = showHideSubFECategoriesScopeMap.get(sourceView);
         for (EObject key : scopeSource.keySet()) {
           if (selectedElements.contains(key)) {
             for (Map.Entry<EObject, EObject> srcTarMap : scopeSource.get(key)) {
@@ -5015,16 +5030,16 @@ public class FaServices {
     for (DDiagramElement sourceView : sourceViews) {
       EObject sourceViewTarget = sourceView.getTarget();
       if (sourceViewTarget != null) {
-        HashMapSet<EObject, Map.Entry<EObject, EObject>> scopeSource = getShowHideSubFECategoriesScope(sourceView);
+        HashMapSet<EObject, Map.Entry<EObject, EObject>> scopeSource = showHideSubFECategoriesScopeMap.get(sourceView);
         for (EObject key : scopeSource.keySet()) {
           if (selectedElements.contains(key)) {
-            for (FunctionalExchange exchange : FunctionExt.getAllExchanges((AbstractFunction) sourceViewTarget)) {
+            for (FunctionalExchange exchange : allExchangesMap.get(sourceViewTarget)) {
               if (exchange.getCategories().contains(key)) {
                 categories.hide(exchange, context);
               }
             }
           } else {
-            for (FunctionalExchange exchange : FunctionExt.getAllExchanges((AbstractFunction) sourceViewTarget)) {
+            for (FunctionalExchange exchange : allExchangesMap.get(sourceViewTarget)) {
               if (exchange.getCategories().contains(key)) {
                 categories.show(exchange, context);
               }
@@ -5247,26 +5262,26 @@ public class FaServices {
    * @param context_p
    * @return
    */
-  public HashMapSet<EObject, Map.Entry<EObject, EObject>> getShowHideSubFECategoriesScope(DSemanticDecorator context_p) {
+  public HashMapSet<EObject, Map.Entry<EObject, EObject>> getShowHideSubFECategoriesScope(DSemanticDecorator context_p, List<FunctionalExchange> allExchanges) {
     HashMapSet<EObject, Map.Entry<EObject, EObject>> result = new HashMapSet<EObject, Map.Entry<EObject, EObject>>();
-    EObject abstractFunction = context_p.getTarget();
-
-    if (abstractFunction != null && abstractFunction instanceof AbstractFunction) {
-      for (FunctionalExchange fe : FunctionExt.getAllOutgoingExchanges((AbstractFunction) abstractFunction))
-        for (ExchangeCategory value : fe.getCategories()) {
-          Map.Entry<EObject, EObject> srcTar = new AbstractMap.SimpleEntry<EObject, EObject>(FunctionExt.getIncomingAbstractFunction(fe),
-              FunctionExt.getOutGoingAbstractFunction(fe));
-          result.put(value, srcTar);
-        }
-
-      for (FunctionalExchange fe : FunctionExt.getAllIncomingExchanges((AbstractFunction) abstractFunction))
-        for (ExchangeCategory value : fe.getCategories()) {
-          Map.Entry<EObject, EObject> srcTar = new AbstractMap.SimpleEntry<EObject, EObject>(FunctionExt.getIncomingAbstractFunction(fe),
-              FunctionExt.getOutGoingAbstractFunction(fe));
-          result.put(value, srcTar);
-        }
+    for (FunctionalExchange fe : allExchanges) {
+      for (ExchangeCategory value : fe.getCategories()) {
+        Map.Entry<EObject, EObject> srcTar = new AbstractMap.SimpleEntry<EObject, EObject>(
+        FunctionExt.getIncomingAbstractFunction(fe), FunctionExt.getOutGoingAbstractFunction(fe));
+        result.put(value, srcTar);
+      }
     }
     return result;
+  }
+  
+  public HashMapSet<EObject, Map.Entry<EObject, EObject>> getShowHideSubFECategoriesScope(DSemanticDecorator context_p) {
+	  EObject abstractFunction = context_p.getTarget();
+	  if (abstractFunction != null && abstractFunction instanceof AbstractFunction) {
+	    List<FunctionalExchange> allExchanges = FunctionExt.getAllExchanges((AbstractFunction) abstractFunction);
+        return getShowHideSubFECategoriesScope(context_p, allExchanges);
+	  } else {
+        return new HashMapSet<EObject, Map.Entry<EObject, EObject>>();
+	  }
   }
 
   public Collection<EObject> getSwitchFECategoriesScope(DSemanticDecorator context_p) {
