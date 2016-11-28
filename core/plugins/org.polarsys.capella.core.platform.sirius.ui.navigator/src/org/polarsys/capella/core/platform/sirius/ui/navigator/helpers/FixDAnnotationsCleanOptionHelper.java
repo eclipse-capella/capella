@@ -11,7 +11,6 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator.helpers;
 
 import java.lang.management.ManagementFactory;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -94,15 +93,15 @@ public class FixDAnnotationsCleanOptionHelper extends FixDAnnotationsHelper {
 		      int totalModifiedObjectCount = 0;
 		      for (DRepresentation diagram : diagramToModifyObjectCount.keySet()) {
 		        Integer count = diagramToModifyObjectCount.get(diagram);
-		        logInfo(diagram.getName() + ", cleaned of " + count + " Annotation(s)") ;
+		        logInfo(count+" annotation(s) removed from "+ diagram.getName());
 		        totalModifiedObjectCount = totalModifiedObjectCount + count;
 		      }
 		      logInfo("-----");
-		      logInfo("Total deprecated annotations cleaned up : " + totalModifiedObjectCount);
-		      logInfo("Total diagrams modified: " + diagramToModifyObjectCount.keySet().size());
-		      logInfo("Cleaning took: " + (stop - start) / 1000000 + " ms");
+		      logInfo("Total removed annotation(s) : " + totalModifiedObjectCount);
+		      logInfo("Total fixed diagrams : " + diagramToModifyObjectCount.keySet().size());
+		      logInfo("Diagrams fix took : " + (stop - start) / 1000000 + " ms");
 		    } else {
-		      logInfo("Nothing to clean in " + resource.getURI().lastSegment());
+		      logInfo("Nothing to fix in " + resource.getURI().lastSegment());
 		    }
 		    logInfo("End processing " + resource.getURI().lastSegment());
 		    logInfo("-----------------------------------------------------------");

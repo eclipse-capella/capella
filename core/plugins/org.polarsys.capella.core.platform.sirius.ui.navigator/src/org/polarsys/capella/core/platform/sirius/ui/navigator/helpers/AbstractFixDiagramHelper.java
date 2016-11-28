@@ -66,14 +66,14 @@ public abstract class AbstractFixDiagramHelper {
       int totalModifiedObjectCount = 0;
       for (DRepresentation diagram : diagramToModifyObjectCount.keySet()) {
         Integer count = diagramToModifyObjectCount.get(diagram);
-        logInfo("Modified " + count + " object(s) in diagram: " + diagram.getName());
+        logInfo(count + " annotation(s) restored in " + diagram.getName());
         totalModifiedObjectCount = totalModifiedObjectCount + count;
       }
       logInfo("-----");
-      logInfo("Total modified objects: " + totalModifiedObjectCount);
-      logInfo("Total modified diagrams: " + diagramToModifyObjectCount.keySet().size());
+      logInfo("Total restored annotation(s) : " + totalModifiedObjectCount);
+      logInfo("Total fixed diagrams : " + diagramToModifyObjectCount.keySet().size());
 
-      logInfo("Fix diagrams took: " + (stop - start) / 1000000 + " ms");
+      logInfo("Diagrams fix took : " + (stop - start) / 1000000 + " ms");
     } else {
       logInfo("Nothing to fix in " + resource.getURI().lastSegment());
     }

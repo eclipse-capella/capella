@@ -15,8 +15,8 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.helpers.FixDAnnota
 public class FixDAnnotationsHandler extends AbstractFixDiagramsHandler {
 
   public FixDAnnotationsHandler() {
-    setDialogConfirmationMessage("Are you sure you want to fix the annotations on diagrams ?");
-    setOnlyCleanMessage("Clean deprecated diagram annotations instead of migrate them");
+    setDialogConfirmationMessage("Are you sure you want to fix diagram annotations ?");
+    setOnlyCleanMessage("Remove deprecated diagram annotations");
     setJobName(Messages.FixDAnnotationsJobName);
     setFixHelper(new FixDAnnotationsCleanOptionHelper());
   }
