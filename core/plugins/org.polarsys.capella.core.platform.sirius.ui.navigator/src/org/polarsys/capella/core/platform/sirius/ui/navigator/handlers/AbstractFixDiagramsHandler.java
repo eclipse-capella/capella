@@ -55,7 +55,7 @@ public abstract class AbstractFixDiagramsHandler extends AbstractDiagramCommandH
     MessageDialogWithToggle messageDialogWithToggle =
         new MessageDialogWithToggle(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Fix Diagram Confirmation", 
         		null, this.getDialogConfirmationMessage(), MessageDialog.INFORMATION, new String[] { IDialogConstants.OK_LABEL, IDialogConstants.CANCEL_LABEL },
-            1, getOnlyCleanMessage(), true); //$NON-NLS-1$
+            1, getOnlyCleanMessage(), false); //$NON-NLS-1$
     
     int returnCode = messageDialogWithToggle.open();
     boolean fixDAnnotationsConfirmed = (IDialogConstants.OK_ID == returnCode);
