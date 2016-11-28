@@ -466,9 +466,9 @@ public class DiagramServices {
   /**
    * Evaluate precondition of the given node mapping.
    */
-  public boolean evaluateNodePrecondition(AbstractNodeMapping edgeMapping, DDiagram diagram, EObject semantic) {
+  public boolean evaluateNodePrecondition(AbstractNodeMapping nodeMapping, DDiagram diagram, DSemanticDecorator containerView, EObject semantic) {
     IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
-    return new AbstractNodeMappingQuery(edgeMapping).evaluatePrecondition((DSemanticDiagram) diagram, (DragAndDropTarget) diagram, interpreter, semantic);
+    return new AbstractNodeMappingQuery(nodeMapping).evaluatePrecondition((DSemanticDiagram) diagram, (DragAndDropTarget) containerView, interpreter, semantic);
   }
 
   public AbstractDNode createAbstractDNode(AbstractNodeMapping mapping_p, EObject modelElement_p, DragAndDropTarget container_p, DDiagram diagram_p) {

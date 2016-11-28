@@ -856,7 +856,7 @@ public class AbstractShowHide implements IShowHide {
       return false;
     }
     // Call mapping precondition to know if the Node must be shown.
-    return DiagramServices.getDiagramServices().evaluateNodePrecondition(mapping_p, getContent().getDDiagram(), semantic_p);
+    return DiagramServices.getDiagramServices().evaluateNodePrecondition(mapping_p, getContent().getDDiagram(), containerView_p, semantic_p);
   }
 
   /**
