@@ -92,7 +92,16 @@ public class GenericModel {
   public static String FUNCTION_1_3 = "Function 1_3";
   public static String FUNCTION_1_4 = "Function 1_4";
 
-  public static String FUNCTIONAL_EXCHANGE_1 = "Function 1";
+  public static String FUNCTION_INPUT_PORT_1 = "FIP1";
+  public static String FUNCTION_INPUT_PORT_2 = "FIP2";
+  
+  public static String FUNCTION_OUTPUT_PORT_1 = "FOP1";
+  public static String FUNCTION_OUTPUT_PORT_2 = "FOP2";
+  
+  public static String FUNCTIONAL_EXCHANGE_1 = "Functional Exchange 1";
+  public static String FUNCTIONAL_EXCHANGE_2 = "Functional Exchange 2";
+  
+  public static String EXCHANGE_CATEGORY_1 = "Exchange Category 1";
   
   public static String COMPONENT_PORT_1 = "COMPONENT_PORT_1";
   public static String COMPONENT_PORT_2 = "COMPONENT_PORT_2";
