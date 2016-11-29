@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,8 +21,11 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.SwitchTool;
 import org.polarsys.capella.test.diagram.tools.ju.model.SwitchCategory;
 
 /**
- * Test the case when a category is displayed at the parent function level. Then The switch category/functional exchange
- * tool should display the functional exchange of the children functions at the parent function.
+ * Test Show/Hide category. Use the switch tool to:
+ * <ol>
+ * <li> Show the Exchange Category</li>
+ * <li> Hide the Exchange Category</li>
+ * </ol>
  */
 public class SwitchCategoryTestCase extends SwitchCategory {
 
@@ -33,12 +36,25 @@ public class SwitchCategoryTestCase extends SwitchCategory {
 
     DiagramContext diagramContext = new OpenDiagramStep(context, SDFB_ROOT_SYSTEM_FUNCTION).run();
 
+    // Before show category -> FE is displayed, ExchangeCategory is not displayed, 
+    diagramContext.hasView(SA__FUNCTIONPKG__SF__FUNTIONALEXCHANGE1);
+    diagramContext.hasntView(SA__FUNCTIONPKG__CATEGORY1);
+    
+    // Show the ExchangeCategory
+    new SwitchTool(diagramContext, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_EXCH_CATEGORIES)
+        .insert(SA__FUNCTIONPKG__CATEGORY1);
+
+    // After show category -> FE is not displayed, ExchangeCategory is displayed
+    diagramContext.hasntView(SA__FUNCTIONPKG__SF__FUNTIONALEXCHANGE1);
+    diagramContext.hasView(SA__FUNCTIONPKG__CATEGORY1);
+
+    // Hide the ExchangeCategory
     new SwitchTool(diagramContext, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_EXCH_CATEGORIES)
         .remove(SA__FUNCTIONPKG__CATEGORY1);
-
-    diagramContext.hasntView(SA__FUNCTIONPKG__CATEGORY1);
+    
+    // Same state as in the beginning
     diagramContext.hasView(SA__FUNCTIONPKG__SF__FUNTIONALEXCHANGE1);
-
+    diagramContext.hasntView(SA__FUNCTIONPKG__CATEGORY1);
   }
 
   public static Test suite() {

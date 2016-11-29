@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.0.0-->
+<!--Capella_Version_1.0.3-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.0.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.0.0"
@@ -276,13 +276,13 @@
         <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
             id="971c8290-916e-401b-a9d7-21808c3c36bc" targetElement="#5fec4844-aa3b-4abb-b3b8-786e16883405"
             sourceElement="#ee3f305f-31b0-4d2d-a0bc-79835575cb44"/>
+        <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+            id="f8c75043-c2f9-40b5-b7e7-9a3b9012bfcd" targetElement="#21bcc81f-9f70-4a32-8b64-534dad7cdb9e"
+            sourceElement="#ee3f305f-31b0-4d2d-a0bc-79835575cb44"/>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="577a9542-7551-49b0-9278-0d160426208e"
             name="LC 1" abstractType="#1dcff120-300f-4715-a9db-c27c072de035"/>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="a40b9c14-b6b4-48a6-b804-e467480b7d7c"
             name="LC 2" abstractType="#12393140-eda2-4521-9433-8d55a6ae8594"/>
-		<ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-            id="f8c75043-c2f9-40b5-b7e7-9a3b9012bfcd" targetElement="#21bcc81f-9f70-4a32-8b64-534dad7cdb9e"
-            sourceElement="#ee3f305f-31b0-4d2d-a0bc-79835575cb44"/>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
             id="1dcff120-300f-4715-a9db-c27c072de035" name="LC 1">
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"

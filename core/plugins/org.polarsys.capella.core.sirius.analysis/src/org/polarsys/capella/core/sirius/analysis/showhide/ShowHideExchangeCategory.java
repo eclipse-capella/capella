@@ -71,7 +71,7 @@ public class ShowHideExchangeCategory extends ShowHideFunctionalExchange {
         boolean result = true;
         if (result) {
           for (DEdge edge : ((EdgeTarget) view).getIncomingEdges()) {
-            if (edge.isVisible()) {
+            if (getContent().isVisible(edge)) {
               result = false;
               break;
             }
@@ -79,7 +79,7 @@ public class ShowHideExchangeCategory extends ShowHideFunctionalExchange {
         }
         if (result) {
           for (DEdge edge : ((EdgeTarget) view).getOutgoingEdges()) {
-            if (edge.isVisible()) {
+            if (getContent().isVisible(edge)) {
               result = false;
               break;
             }
