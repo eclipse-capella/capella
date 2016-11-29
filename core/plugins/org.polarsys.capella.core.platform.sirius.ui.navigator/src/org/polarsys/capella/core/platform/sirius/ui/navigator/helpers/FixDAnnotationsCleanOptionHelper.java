@@ -71,15 +71,9 @@ public class FixDAnnotationsCleanOptionHelper extends FixDAnnotationsHelper {
 
 		          // Old annotation is present
 		          if (oldAnnotation != null) {
-		        	String newAnnotationID = dAnnotationMigrationMapping.get(oldAnnotation);
-		            DAnnotation newAnnotation = RepresentationHelper.getAnnotation(newAnnotationID, representation);
-		            incrementCounter(diagramToModifyObjectCount, representation);
-		            
-		            if(newAnnotation != null){
-		            	// New annotation found, then remove
-			        	RepresentationHelper.removeAnnotation(oldAnnotationID, representation);
-			            incrementCounter(diagramToModifyObjectCount, representation);
-		            }
+		        	// Remove it
+		        	RepresentationHelper.removeAnnotation(oldAnnotationID, representation);
+			        incrementCounter(diagramToModifyObjectCount, representation);   
 		          }
 		        }
 		      }
