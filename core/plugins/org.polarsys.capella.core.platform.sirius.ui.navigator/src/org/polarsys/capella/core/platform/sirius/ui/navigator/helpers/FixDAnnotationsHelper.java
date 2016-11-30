@@ -41,7 +41,7 @@ public class FixDAnnotationsHelper extends AbstractFixDiagramHelper {
 
   @Override
   protected Map<DRepresentation, Integer> doFixDiagrams(Resource resource) {
-    Map<DRepresentation, Integer> diagramToModifiedObjectCount = new HashMap<DRepresentation, Integer>();
+    Map<DRepresentation, Integer> diagramToModifyObjectCount = new HashMap<DRepresentation, Integer>();
 
     DAnalysis dAnalysis = getFirstDAnalysis(resource);
     for (DView dView : dAnalysis.getOwnedViews()) {
@@ -57,18 +57,17 @@ public class FixDAnnotationsHelper extends AbstractFixDiagramHelper {
 
             if (newAnnotation == null) {
               // No new annotation found, just replace old annotation by new annotation
-              incrementCounter(diagramToModifiedObjectCount, representation);
               oldAnnotation.setSource(newAnnotationID);
             } else {
               // New annotation found, remove old annotation and preserve new one.
               RepresentationHelper.removeAnnotation(oldAnnotationID, representation);
             }
-            incrementCounter(diagramToModifiedObjectCount, representation);
+            incrementCounter(diagramToModifyObjectCount, representation);
           }
         }
       }
     }
-    return diagramToModifiedObjectCount;
+    return diagramToModifyObjectCount;
   }
 
   public DAnalysis getFirstDAnalysis(Resource resource) {
