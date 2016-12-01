@@ -9,7 +9,7 @@
   Contributors:
        Thales - initial API and implementation
 -->
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.polarsys.capella</groupId>
   <artifactId>capella</artifactId>
@@ -18,6 +18,10 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <tycho-version>0.24.0</tycho-version>
+
+	<!-- for junit -->
+    <capella-product-id>org.polarsys.capella.rcp.product</capella-product-id>
+    <tycho.testArgLine>-Xms256m -Xmx1024m</tycho.testArgLine>
   </properties>
 
   <modules>
@@ -291,6 +295,28 @@
 	<module>releng/features/org.polarsys.capella.rcp.feature</module>
     <module>releng/plugins/org.polarsys.capella.rcp</module>
 	<module>releng/plugins/org.polarsys.capella.rcp.product</module>
+	<module>tests/features/org.polarsys.capella.test.feature</module>
+	<module>tests/plugins/org.polarsys.capella.test.business.queries.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.diagram.common.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.diagram.filters.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.diagram.misc.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.diagram.tools.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.explorer.activity.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.fastlinker.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.framework</module>
+	<module>tests/plugins/org.polarsys.capella.test.library.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.merge.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.meta.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.model.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.navigator.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.platform.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.progressmonitoring.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.recrpl.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.refinement.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.semantic.queries.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.suites.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.transition.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.validation.rules.ju</module>
   </modules>
   <build>
     <plugins>
@@ -314,11 +340,11 @@
             </artifact>
           </target>
           <environments>
-            <environment>
+            <!--environment>
               <os>win32</os>
               <ws>win32</ws>
               <arch>x86</arch>
-            </environment>
+            </environment-->
             <environment>
               <os>win32</os>
               <ws>win32</ws>
