@@ -5437,7 +5437,11 @@ public class CsServices {
             } else {
               result.append(", "); //$NON-NLS-1$
             }
-            result.append(EObjectLabelProviderHelper.getText(effect));
+            if (effect instanceof FunctionalExchange) {
+              result.append(
+                  ModeStateMachineServices.getService().getFunctionalExchangeLabel((FunctionalExchange) effect));
+            } else
+              result.append(EObjectLabelProviderHelper.getText(effect));
           }
         }
       }

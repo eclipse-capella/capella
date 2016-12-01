@@ -263,14 +263,8 @@ public class FunctionExt {
 	 */
 	public static List<FunctionalExchange> getAllExchanges(AbstractFunction function) {
 		List<FunctionalExchange> result = new BasicEList<FunctionalExchange>();
-		List<FunctionalExchange> ingoing = getAllIncomingExchanges(function);
-		for (FunctionalExchange activityEdge : ingoing) {
-			result.add((FunctionalExchange) activityEdge);
-		}
-		List<FunctionalExchange> outgoing = getAllOutgoingExchanges(function);
-		for (FunctionalExchange activityEdge : outgoing) {
-			result.add((FunctionalExchange) activityEdge);
-		}
+    result.addAll(getAllIncomingExchanges(function));
+    result.addAll(getAllOutgoingExchanges(function));
 		return result;
 	}
 

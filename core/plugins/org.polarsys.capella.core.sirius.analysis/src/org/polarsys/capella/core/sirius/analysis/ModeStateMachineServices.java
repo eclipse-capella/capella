@@ -75,20 +75,24 @@ public class ModeStateMachineServices {
     return isDiagramFilterEnable(diagram, IMappingNameConstants.HIDE_REGION_NAMES) ? ""
         : " [" + EObjectLabelProviderHelper.getText(region) + "]";
   }
-  
+
   public String getActivityLabel(AbstractEvent abstractEvent) {
-    
+
     if (abstractEvent instanceof FunctionalExchange) {
-      FunctionalExchange fe = (FunctionalExchange) abstractEvent;
-      EObject target = fe.getTarget();
-      if (target instanceof FunctionPort) {
-        target = target.eContainer();
-      }
-      if (target instanceof AbstractFunction) {
-        return EObjectLabelProviderHelper.getText(abstractEvent) + " [-> "+EObjectLabelProviderHelper.getText(target)+"]"; 
-      } 
-    }  
+      return getFunctionalExchangeLabel((FunctionalExchange) abstractEvent);
+    }
     return EObjectLabelProviderHelper.getText(abstractEvent);
+  }
+
+  public String getFunctionalExchangeLabel(FunctionalExchange fe) {
+    EObject target = fe.getTarget();
+    if (target instanceof FunctionPort) {
+      target = target.eContainer();
+    }
+    if (target instanceof AbstractFunction) {
+      return EObjectLabelProviderHelper.getText(fe) + " [-> " + EObjectLabelProviderHelper.getText(target) + "]";
+    }
+    return "";
   }
 
   public String getEntryExitPointLabel(Pseudostate pseudostate, DDiagram diagram) {
@@ -174,8 +178,8 @@ public class ModeStateMachineServices {
       EObject target = ((DSemanticDecorator) containerView).getTarget();
       if (target instanceof Region) {
         return (Region) target;
-      }else if(target instanceof State && context instanceof Pseudostate && context.eContainer() instanceof Region){
-        return (Region)context.eContainer();
+      } else if (target instanceof State && context instanceof Pseudostate && context.eContainer() instanceof Region) {
+        return (Region) context.eContainer();
       }
     }
     return null;

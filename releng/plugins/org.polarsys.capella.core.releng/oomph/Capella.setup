@@ -272,7 +272,7 @@
         <repository
             url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/7/artifact/result/publish/kitalpha_sdk/site.p2"/>
         <repository
-            url="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20161007-040549/mars"/>
+            url="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20161128-035928/mars"/>
         <repository
             url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
         <repository

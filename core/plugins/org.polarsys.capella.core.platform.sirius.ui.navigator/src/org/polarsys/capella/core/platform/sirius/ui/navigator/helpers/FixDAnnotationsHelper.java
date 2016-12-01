@@ -30,7 +30,7 @@ import com.google.common.collect.ImmutableMap;
 
 public class FixDAnnotationsHelper extends AbstractFixDiagramHelper {
 
-  private static Map<String, String> dAnnotationMigrationMapping = ImmutableMap.of(
+  protected static Map<String, String> dAnnotationMigrationMapping = ImmutableMap.of(
       "http://www.thalesgroup.com/mde/melody/NotVisibleInDoc", IRepresentationAnnotationConstants.NotVisibleInDoc,
       "http://www.thalesgroup.com/mde/melody/NotVisibleInLM", IRepresentationAnnotationConstants.NotVisibleInLM,
       "http://www.thalesgroup.com/mde/melody/ProgressStatus", IRepresentationAnnotationConstants.ProgressStatus,
@@ -42,7 +42,7 @@ public class FixDAnnotationsHelper extends AbstractFixDiagramHelper {
 
   @Override
   protected Map<DRepresentation, Integer> doFixDiagrams(Resource resource) {
-    Map<DRepresentation, Integer> diagramToModifiedObjectCount = new HashMap<DRepresentation, Integer>();
+    Map<DRepresentation, Integer> diagramToModifyObjectCount = new HashMap<DRepresentation, Integer>();
 
     DAnalysis dAnalysis = getFirstDAnalysis(resource);
     for (DView dView : dAnalysis.getOwnedViews()) {
@@ -59,18 +59,17 @@ public class FixDAnnotationsHelper extends AbstractFixDiagramHelper {
 
             if (newAnnotation == null) {
               // No new annotation found, just replace old annotation by new annotation
-              incrementCounter(diagramToModifiedObjectCount, representation);
               oldAnnotation.setSource(newAnnotationID);
             } else {
               // New annotation found, remove old annotation and preserve new one.
               RepresentationHelper.removeAnnotation(oldAnnotationID, representation);
             }
-            incrementCounter(diagramToModifiedObjectCount, representation);
+            incrementCounter(diagramToModifyObjectCount, representation);
           }
         }
       }
     }
-    return diagramToModifiedObjectCount;
+    return diagramToModifyObjectCount;
   }
 
   public DAnalysis getFirstDAnalysis(Resource resource) {
