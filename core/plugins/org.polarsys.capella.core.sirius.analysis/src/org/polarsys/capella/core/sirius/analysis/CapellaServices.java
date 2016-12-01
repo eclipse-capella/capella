@@ -1160,6 +1160,16 @@ public class CapellaServices {
   }
 
   /**
+   * Check if given elements are contained in containers which are in the same containment tree (the method is used to know if an edge is internal).
+   * @param sourcePort
+   * @param targetPort
+   * @return
+   */
+  public boolean areInternalEdgePorts(DSemanticDecorator sourcePort, DSemanticDecorator targetPort) {
+    return (EcoreUtil.isAncestor(sourcePort.eContainer(), targetPort.eContainer())) || (EcoreUtil.isAncestor(targetPort.eContainer(), sourcePort.eContainer()));
+  }
+
+  /**
    * used in oa.odesign
    * 
    * @param eObject

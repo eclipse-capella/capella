@@ -206,7 +206,6 @@ public class PreferencesHelper {
    * @return <code>null</code> if given object is not persisted.
    */
   public static IProject getProject(EObject object) {
-
     IProject result = null;
     Session session = SessionManager.INSTANCE.getSession(object);
 

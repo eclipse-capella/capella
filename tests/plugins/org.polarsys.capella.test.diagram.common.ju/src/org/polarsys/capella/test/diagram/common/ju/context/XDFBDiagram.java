@@ -19,6 +19,7 @@ import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InitializationFromExistingDiagramTool;
 
 public class XDFBDiagram extends DiagramContext {
@@ -80,6 +81,24 @@ public class XDFBDiagram extends DiagramContext {
       name = IToolNameConstants.TOOL_PDFB_CREATE_PHYSICAL_FUNCTION;
     }
     new CreateContainerTool(this, name, containerId, id).run();
+  }
+  
+  public void createFunctionalExchange(String id, String sourceViewId, String targetViewId, String newSourceIdentifier, String newTargetIdentifier) {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAIB_CREATE_INTERACTION;
+    } else if (type == Type.SA) {
+      name = IToolNameConstants.TOOL_SDFB_CREATE_FUNCTIONAL_EXCHANGE;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LDFB_CREATE_FUNCTIONAL_EXCHANGE;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PDFB_CREATE_FUNCTIONAL_EXCHANGE;
+    }
+    new CreateDEdgeTool(this, name, sourceViewId, targetViewId, id, newSourceIdentifier, newTargetIdentifier).run();
+  }
+  
+  public void createFunctionalExchange(String id, String sourceViewId, String targetViewId) {
+    createFunctionalExchange(id, sourceViewId, targetViewId, null, null);
   }
 
   public void initializationFromExistingDiagram(DiagramContext existingContext) {

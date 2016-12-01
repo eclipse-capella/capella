@@ -42,7 +42,6 @@ public abstract class AbstractFixDiagramHelper {
     for (Resource resource : session.getAllSessionResources()) {
       res.addAll(fixDiagram(resource));
     }
-
     return res;
   }
 
@@ -51,29 +50,35 @@ public abstract class AbstractFixDiagramHelper {
     long start = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();
 
     // Execute the specific fix
-    Map<DRepresentation, Integer> diagramToModifiedObjectCount = doFixDiagrams(resource);
-
+    Map<DRepresentation, Integer> diagramToModifyObjectCount = doFixDiagrams(resource);
+    
     // Finalize
     long stop = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();
-    if (!diagramToModifiedObjectCount.keySet().isEmpty()) {
+    
+    // Log in info view
+    logInfoView (resource, start, stop, diagramToModifyObjectCount);
+    return diagramToModifyObjectCount.keySet();
+  }
+  
+  private void logInfoView(Resource resource, long start, long stop, Map<DRepresentation, Integer> diagramToModifyObjectCount) {
+    if (!diagramToModifyObjectCount.keySet().isEmpty()) {
       logInfo("-----");
       int totalModifiedObjectCount = 0;
-      for (DRepresentation diagram : diagramToModifiedObjectCount.keySet()) {
-        Integer count = diagramToModifiedObjectCount.get(diagram);
-        logInfo("Modified " + count + " object(s) in diagram: " + diagram.getName());
+      for (DRepresentation diagram : diagramToModifyObjectCount.keySet()) {
+        Integer count = diagramToModifyObjectCount.get(diagram);
+        logInfo(count + " annotation(s) restored in " + diagram.getName());
         totalModifiedObjectCount = totalModifiedObjectCount + count;
       }
       logInfo("-----");
-      logInfo("Total modified objects: " + totalModifiedObjectCount);
-      logInfo("Total modified diagrams: " + diagramToModifiedObjectCount.keySet().size());
+      logInfo("Total restored annotation(s) : " + totalModifiedObjectCount);
+      logInfo("Total fixed diagrams : " + diagramToModifyObjectCount.keySet().size());
 
-      logInfo("Fix diagrams took: " + (stop - start) / 1000000 + " ms");
+      logInfo("Diagrams fix took : " + (stop - start) / 1000000 + " ms");
     } else {
       logInfo("Nothing to fix in " + resource.getURI().lastSegment());
     }
     logInfo("End processing " + resource.getURI().lastSegment());
     logInfo("-----------------------------------------------------------");
-    return diagramToModifiedObjectCount.keySet();
   }
 
   abstract protected Map<DRepresentation, Integer> doFixDiagrams(Resource resource);
@@ -82,15 +87,15 @@ public abstract class AbstractFixDiagramHelper {
     LOGGER.info(logPrefix + " : " + message);
   }
 
-  protected void incrementCounter(Map<DRepresentation, Integer> diagramToModifiedObjectCount,
+  protected void incrementCounter(Map<DRepresentation, Integer> diagramToModifyObjectCount,
       DRepresentation representation) {
     // Put in the map
-    Integer count = diagramToModifiedObjectCount.get(representation);
+    Integer count = diagramToModifyObjectCount.get(representation);
     if (count != null) {
       count = count + 1;
-      diagramToModifiedObjectCount.put(representation, count);
+      diagramToModifyObjectCount.put(representation, count);
     } else {
-      diagramToModifiedObjectCount.put(representation, 1);
+      diagramToModifyObjectCount.put(representation, 1);
     }
   }
 
