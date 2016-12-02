@@ -102,7 +102,7 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
   	for (DDiagramElement elt : diagram.getDiagramElements()) {
   		String objectID = diagramElement2ObjectID.get(elt);
   		if (objectID != null) {
-  			boolean isFiltered = DiagramHelper.isDiagramElementFiltered(elt);
+  			boolean isFiltered = isFiltered(elt);
   			if (!isFiltered && filteredObjetIDs.contains(objectID)) {
   					assertTrue("Object "+objectID+" should be filtered by filter "+filterName+" in diagram "+diagramName+" of project "+projectTestName, false);  //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
   			} else if (isFiltered && !filteredObjetIDs.contains(objectID) && notFiltered.contains(elt)) {
@@ -110,5 +110,8 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
   			}  			
   		}
   	}
+  }
+  protected boolean isFiltered(DDiagramElement elt) {
+    return DiagramHelper.isDiagramElementFiltered(elt);
   }
 }

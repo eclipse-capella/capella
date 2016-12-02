@@ -79,18 +79,29 @@ public class ModeStateMachineServices {
   public String getActivityLabel(AbstractEvent abstractEvent) {
 
     if (abstractEvent instanceof FunctionalExchange) {
-      return getFunctionalExchangeLabel((FunctionalExchange) abstractEvent);
+      return getOutgoingFunctionalExchangeLabel((FunctionalExchange) abstractEvent);
     }
     return EObjectLabelProviderHelper.getText(abstractEvent);
   }
 
-  public String getFunctionalExchangeLabel(FunctionalExchange fe) {
+  public String getOutgoingFunctionalExchangeLabel(FunctionalExchange fe) {
     EObject target = fe.getTarget();
     if (target instanceof FunctionPort) {
       target = target.eContainer();
     }
     if (target instanceof AbstractFunction) {
       return EObjectLabelProviderHelper.getText(fe) + " [-> " + EObjectLabelProviderHelper.getText(target) + "]";
+    }
+    return "";
+  }
+  
+  public String getIncomingFunctionalExchangeLabel(FunctionalExchange fe) {
+    EObject source = fe.getSource();
+    if (source instanceof FunctionPort) {
+      source = source.eContainer();
+    }
+    if (source instanceof AbstractFunction) {
+      return "[" + EObjectLabelProviderHelper.getText(source) + " ->] " + EObjectLabelProviderHelper.getText(fe);
     }
     return "";
   }

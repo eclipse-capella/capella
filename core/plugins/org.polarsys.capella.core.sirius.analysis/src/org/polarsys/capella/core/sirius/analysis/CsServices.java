@@ -5368,6 +5368,17 @@ public class CsServices {
     return exchangeItemsByKinds;
   }
 
+  
+  /**
+   * @used in common.odesign Return true if ShowTriggerFESource filter is on
+   * @param transition
+   * @param view
+   * @return
+   */
+  public boolean isShowTriggerSourceFunctionEnable(EObject transition, EObject view) {
+    return InformationServices.getService().isDiagramFilterEnable(transition, view, IMappingNameConstants.SHOW_TRIGGER_SOURCE_FUNCTION);
+  }
+
   /**
    * @used in common.odesign Return diagram label for state transition : mode and state diagram syntax : <Trigger> [
    *       <Guard>] / <Effect> (Note : if no <Trigger> <TriggerDesecription> is displayed)
@@ -5375,7 +5386,7 @@ public class CsServices {
    *          : StateTransition
    * @return : String
    */
-  public String getStateTransitionLabel(EObject context) {
+  public String getStateTransitionLabel(EObject context, EObject view) {
     StringBuffer result = new StringBuffer();
 
     if ((null != context) && (context instanceof StateTransition)) {
@@ -5386,7 +5397,11 @@ public class CsServices {
       boolean firstTriggerToDisplay = true;
       for (AbstractEvent trigger : triggers) {
         if (trigger != null) {
-          String name = EObjectLabelProviderHelper.getText(trigger);
+          String name = "";
+          if (trigger instanceof FunctionalExchange && isShowTriggerSourceFunctionEnable(context, view)) {
+            name = ModeStateMachineServices.getService().getIncomingFunctionalExchangeLabel((FunctionalExchange) trigger);
+          } else
+            name = EObjectLabelProviderHelper.getText(trigger);
           if (trigger instanceof ChangeEvent) {
             ChangeEvent changeEvent = (ChangeEvent) trigger;
             name = "(" + changeEvent.getKind() + ") "; //$NON-NLS-1$ //$NON-NLS-2$
@@ -5439,7 +5454,7 @@ public class CsServices {
             }
             if (effect instanceof FunctionalExchange) {
               result.append(
-                  ModeStateMachineServices.getService().getFunctionalExchangeLabel((FunctionalExchange) effect));
+                  ModeStateMachineServices.getService().getOutgoingFunctionalExchangeLabel((FunctionalExchange) effect));
             } else
               result.append(EObjectLabelProviderHelper.getText(effect));
           }

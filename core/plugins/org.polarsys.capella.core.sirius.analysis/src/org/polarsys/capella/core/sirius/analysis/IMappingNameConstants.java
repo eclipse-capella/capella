@@ -47,6 +47,7 @@ public interface IMappingNameConstants {
   String MSM_EXIT_MAPPING_NAME = "MSM_Exit"; //$NON-NLS-1$
   String HIDE_REGION_NAMES = "HideRegionNames";//$NON-NLS-1$
   String DISPLAY_REGION_NAME_ON_ENTRY_EXIT_POINTS = "DisplayRegionNameOnEntryExitPoints";//$NON-NLS-1$
+  String SHOW_TRIGGER_SOURCE_FUNCTION = "ShowTriggerFESource";//$NON-NLS-1$
   
   /**
    * Entity Architecture
