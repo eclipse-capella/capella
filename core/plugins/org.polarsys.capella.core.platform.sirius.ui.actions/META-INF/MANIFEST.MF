@@ -2,27 +2,20 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.platform.sirius.ui.actions;singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: com.google.guava,
- org.eclipse.core.runtime,
  org.eclipse.gmf.runtime.diagram.ui;visibility:=reexport,
- org.eclipse.ui,
  org.eclipse.ui.ide;visibility:=reexport,
- org.eclipse.ui.navigator,
  org.eclipse.sirius.diagram;visibility:=reexport,
  org.eclipse.sirius.ui;visibility:=reexport,
- org.polarsys.capella.common.platform.sirius.ted,
  org.polarsys.capella.common.tools.report.appenders.reportlogview;visibility:=reexport,
  org.polarsys.capella.common.ui.services;visibility:=reexport,
- org.polarsys.capella.core.data.gen.edit,
- org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.platform.eclipse.ui.trace,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.ui.toolkit,
  org.eclipse.sirius.diagram.ui,
- org.polarsys.kitalpha.ad.services,
  org.polarsys.capella.core.af.integration
 Export-Package: org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.platform.sirius.ui.commands,

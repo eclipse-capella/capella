@@ -14,11 +14,9 @@ package org.polarsys.capella.core.platform.sirius.ui.actions;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.jface.dialogs.InputDialog;
-import org.eclipse.jface.window.Window;
-import org.eclipse.swt.widgets.Display;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.cs.Component;
@@ -32,25 +30,26 @@ public class CreatePLCategoriesController extends CreateCategoriesController {
    * {@inheritDoc}
    */
   @Override
-  public void createAndAttachCategory(List<EObject> selection) {
-    super.createAndAttachCategory(selection);
-    Component categoryContainer;
+  public void createAndAttachCategory(List<EObject> selection, String categoryNameToUse) {
+    List<EClass> componentEClass = Collections.singletonList(CsPackage.eINSTANCE.getComponent());
+    
+    Component categoryContainer = (Component) getBestContainerForCategory(selection, componentEClass);
 
-    categoryContainer = (Component) getBestContainerForCategory(selection, Collections.singletonList(CsPackage.eINSTANCE.getComponent()));
-
-    if (isNullOrNotInstanceOf(categoryContainer, Collections.singletonList(CsPackage.eINSTANCE.getComponent()))) {
+    if (isNullOrNotInstanceOf(categoryContainer, componentEClass)) {
       return;
     }
     PhysicalLinkCategory category = (PhysicalLinkCategory) createCategory(categoryContainer);
 
-    // get user input: category name
-    InputDialog inputDialog =
-        new InputDialog(Display.getDefault().getActiveShell(), Messages.CreateCategoriesController_create_cat, Messages.CreateCategoriesController_cat_name,
-            category.getName(), null);
-
-    if (Window.OK == inputDialog.open()) {
-
-      String categoryName = inputDialog.getValue();
+    // Get category name
+    String categoryName = null;
+    // Use given name if not null, else ask user
+    if (categoryNameToUse != null) {
+      categoryName = categoryNameToUse;
+    } else {
+      categoryName = askCategoryName(category.getName());
+    }
+    
+    if (categoryName != null) {
       category.setName(categoryName);
       categoryContainer.getOwnedPhysicalLinkCategories().add(category);
 
@@ -60,8 +59,6 @@ public class CreatePLCategoriesController extends CreateCategoriesController {
         }
       }
       logResults(Messages.CreatePLCategoriesController_creation_msg, category);
-    } else {
-      WizardActionHelper.deleteCreatedCategory(category);
     }
   }
 
