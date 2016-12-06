@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.tools.ju.sdfb;
 
+import java.util.Collections;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -19,10 +23,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.intro.IIntroPart;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
-import org.polarsys.capella.core.data.fa.ExchangeCategory;
-import org.polarsys.capella.core.data.fa.FaFactory;
-import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesController;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.context.XDFBDiagram;
@@ -62,7 +64,9 @@ public class UndoOnHideSystemFunction extends EmptyProject {
     AbstractReadWriteCommand createExchangeCategory = new AbstractReadWriteCommand() {
       @Override
       public void run() {
-        createExchangeCategory(context, fe1);
+        List<EObject> feList = Collections.singletonList((EObject) fe1);
+        CreateCategoriesController createCategoryController = CreateCategoriesController.createCreateCategoriesController(feList);
+        createCategoryController.createAndAttachCategory(feList, GenericModel.EXCHANGE_CATEGORY_1);
       }
     };
     context.getExecutionManager().execute(createExchangeCategory);
@@ -81,21 +85,4 @@ public class UndoOnHideSystemFunction extends EmptyProject {
     assertTrue("Functional Exchange must be represented by a DEdge in a diagram", functionalExchangeDEdge instanceof DEdge);
     assertEquals("Only 1 DEdge is expected on the output port", 1, ((DEdge)functionalExchangeDEdge).getSourceNode().getOutgoingEdges().size());
   }
-  
-  /**
-   * Create an ExchangeCategory referencing the given FE.
-   * TODO org.polarsys.capella.core.platform.sirius.ui.actions.CreateFECategoriesController must be refactored to be testable (so this code can be removed).
-   * @param context
-   * @param fe
-   */
-  public void createExchangeCategory(SessionContext context, FunctionalExchange fe) {
-    ExchangeCategory exchangeCategory = FaFactory.eINSTANCE.createExchangeCategory();
-    exchangeCategory.setName(GenericModel.EXCHANGE_CATEGORY_1);
-  
-    FunctionPkg systemFunctionsPackage = (FunctionPkg) context.getSemanticElement(EmptyProject.SA__SYSTEM_FUNCTIONS);
-    systemFunctionsPackage.getOwnedCategories().add(exchangeCategory);
-  
-    exchangeCategory.getExchanges().add((FunctionalExchange) fe);
-  }
-
 }

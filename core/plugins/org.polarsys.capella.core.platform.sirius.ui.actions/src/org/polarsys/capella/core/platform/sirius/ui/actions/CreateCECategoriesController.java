@@ -17,9 +17,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.jface.dialogs.InputDialog;
-import org.eclipse.jface.window.Window;
-import org.eclipse.swt.widgets.Display;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
@@ -35,9 +32,7 @@ public class CreateCECategoriesController extends CreateCategoriesController {
    * {@inheritDoc}
    */
   @Override
-  public void createAndAttachCategory(List<EObject> selection) {
-    super.createAndAttachCategory(selection);
-
+  public void createAndAttachCategory(List<EObject> selection, String categoryNameToUse) {
     List<EClass> containerEClasses = Arrays.asList(FaPackage.eINSTANCE.getAbstractFunctionalBlock(), FaPackage.eINSTANCE.getAbstractFunctionalStructure());
     EObject categoryContainer = getBestContainerForCategory(selection, containerEClasses);
     if (isNullOrNotInstanceOf(categoryContainer, containerEClasses)) {
@@ -46,14 +41,16 @@ public class CreateCECategoriesController extends CreateCategoriesController {
 
     ComponentExchangeCategory exchangeCategory = (ComponentExchangeCategory) createCategory(categoryContainer);
 
-    // get user input: category name
-    InputDialog inputDialog =
-        new InputDialog(Display.getDefault().getActiveShell(), Messages.CreateCategoriesController_create_cat, Messages.CreateCategoriesController_cat_name,
-            exchangeCategory.getName(), null);
-
-    if (Window.OK == inputDialog.open()) {
-
-      String categoryName = inputDialog.getValue();
+    // Get category name
+    String categoryName = null;
+    // Use given name if not null, else ask user
+    if (categoryNameToUse != null) {
+      categoryName = categoryNameToUse;
+    } else {
+      categoryName = askCategoryName(exchangeCategory.getName());
+    }
+    
+    if (categoryName != null) {
       exchangeCategory.setName(categoryName);
       if (categoryContainer instanceof AbstractFunctionalBlock) {
         ((AbstractFunctionalBlock) categoryContainer).getOwnedComponentExchangeCategories().add(exchangeCategory);
@@ -68,8 +65,6 @@ public class CreateCECategoriesController extends CreateCategoriesController {
         }
       }
       logResults(Messages.CreateCECategoriesController_creation_msg, exchangeCategory);
-    } else {// User has canceled the inputDialog => delete the created category
-      WizardActionHelper.deleteCreatedCategory(exchangeCategory);
     }
   }
 
