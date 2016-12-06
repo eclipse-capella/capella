@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+    Copyright (c) 2016 THALES GLOBAL SERVICES.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+      
+    Contributors:
+       Thales - initial API and implementation
+ -->
+
+<plugin>
+   <extension
+         point="org.polarsys.capella.common.flexibility.properties">
+      <properties
+            id="updateconnections.properties">
+         <group
+               description="Select a pair of RPLs whose connections should be synchronized with the corresponding pair of RECs"
+               id="updateconnections.rplselection.group"
+               name="RPL Selection">
+         </group>
+         <group
+               id="updateconnections.connectionmatcher.group"
+               name="Connection Matcher Strategy">
+         </group>
+         <property
+               class="org.polarsys.capella.core.re.updateconnections.ui.properties.CatalogElementSelection"
+               group="updateconnections.rplselection.group"
+               id="RPL_1"
+               name="RPL 1">
+         </property>
+         <property
+               class="org.polarsys.capella.core.re.updateconnections.ui.properties.CatalogElementSelection"
+               group="updateconnections.rplselection.group"
+               id="RPL_2"
+               name="RPL 2">
+         </property>
+         <property
+               class="org.polarsys.capella.core.re.updateconnections.ui.properties.ConnectionMatcherStrategy"
+               description="Selects the strategy which computes connection IDs for diff merge"
+               group="updateconnections.connectionmatcher.group"
+               id="connectionMatcherStrategy"
+               name="connectionMatcherStrategy">
+         </property>
+      </properties>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="org.polarsys.capella.core.re.updateconnections.ui.command"
+            name="Update Connections">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="true"
+            locationURI="popup:org.polarsys.capella.common.re?after=org.polarsys.capella.common.re.deleteReplicaPreserveRelatedElements">
+         <separator
+               name="org.polarsys.capella.core.re.updateconnections.ui.separator"
+               visible="true">
+         </separator>
+         <command
+               commandId="org.polarsys.capella.core.re.updateconnections.ui.command"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.polarsys.capella.common.flexibility.wizards">
+      <bindings
+            properties="updateconnections.properties">
+         <propertyBinding
+               property="RPL_1"
+               renderer="browseImageRenderer">
+         </propertyBinding>
+         <propertyBinding
+               property="RPL_2"
+               renderer="browseImageRenderer">
+         </propertyBinding>
+         <propertyBinding
+               property="connectionMatcherStrategy"
+               renderer="comboRenderer">
+         </propertyBinding>
+         <groupBinding
+               group="updateconnections.rplselection.group"
+               renderer="updateconnections.grouprenderer">
+         </groupBinding>
+         <groupBinding
+               group="updateconnections.connectionmatcher.group"
+               renderer="updateconnections.grouprenderer">
+         </groupBinding>
+      </bindings>
+      <groupRenderer
+            class="org.polarsys.capella.common.flexibility.wizards.group.renderer.CTabGroupRenderer"
+            id="updateconnections.grouprenderer">
+      </groupRenderer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.polarsys.capella.core.re.updateconnections.ui.UpdateConnectionsHandler"
+            commandId="org.polarsys.capella.core.re.updateconnections.ui.command">
+         <activeWhen>
+            <and>
+                <with
+                      variable="activePartId">
+                   <equals
+                         value="capella.project.explorer">
+                   </equals>
+                </with>
+                <test
+                      forcePluginActivation="true"
+                      property="org.polarsys.capella.core.re.updateconnections.ui.tester.isUpdateConnectionsEnabled">
+                </test>
+            </and>
+         </activeWhen>
+      </handler>
+      <handler
+            class="org.polarsys.capella.core.re.updateconnections.ui.UpdateConnectionsSiriusHandler"
+            commandId="org.polarsys.capella.core.re.updateconnections.ui.command">
+         <activeWhen>
+            <and>
+                <with
+                      variable="activePartId">
+                   <equals
+                         value="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
+                   </equals>
+                </with>
+                <test
+                      forcePluginActivation="true"
+                      property="org.polarsys.capella.core.re.updateconnections.ui.tester.isUpdateConnectionsEnabled">
+                </test>
+            </and>
+         </activeWhen>
+
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.polarsys.capella.core.re.updateconnections.ui.tester.RePropertyTester"
+            id="org.polarsys.capella.core.re.updateconnections.ui.propertyTester"
+            namespace="org.polarsys.capella.core.re.updateconnections.ui.tester"
+            properties="isRecCatalogElement,isRecElement,isRplCatalogElement,isRplElement,isUpdateConnectionsEnabled"
+            type="java.lang.Object">
+      </propertyTester>
+   </extension>
+
+</plugin>
