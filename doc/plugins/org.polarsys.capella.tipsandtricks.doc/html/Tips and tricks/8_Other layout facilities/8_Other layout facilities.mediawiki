@@ -1,0 +1,53 @@
+=Connectors layout facilities=
+
+In order to '''facilitate the layout set up of elements on diagrams''', some functionalities exist:  
+
+==Elements Alignement==
+
+If you select several elements, you can align them on the right, middle, left, top...
+
+[[Image:../../Images/Tips20.png]]
+
+==Elements Distribution==
+
+If you select several elements, you can distribute them vertically, horizontally (i.e ensure that there is a gap of the same size between each element in the chosen direction).
+
+[[Image:../../Images/Tips21.png]]
+
+==Layout commands to set edges with connected ports vertical or horizontal  ==
+
+
+The goal of this feature is to '''assist user to set edge selection vertical or horizontal''' in order to help exchange layout. If the edge is connected to "ports", the '''"port" is moved too'''.''
+
+[[Image:../../Images/Tips22.png]]
+
+==Arrange connected ports==
+
+In addition to the standard automatic layout, this specific action allows '''to arrange automatically the edges/ports so that they are as short as possible by preserving routing style'''. This action moves the ports of a node / container when necessary. It is useful when the positions of the nodes and containers have already been defined and edges still need a better layout.
+
+[[Image:../../Images/8_4_Arrange.png]]
+
+<br>
+
+         
+{| border="1"
+|-
+| 
+[[Image:../../Images/InfoIcon.png|48x48px]]
+
+ 
+| 
+Graphical elements have to be unpinned before running this action. To unpin an element, choose "Unpin selected elements on the diagram menu"
+
+ 
+|}  
+<br>
+
+
+==Multi selection for graphical move of ports+exchanges  ==
+
+This feature aims to '''move the group {edge, labels, ports}''' in a single operation when using the '''''F3 shortcut''''' and drag/move the edge.
+
+Moreover, by selecting multiple edges with ports and pressing '''''F3''''' key, you can move them simultaneously:
+
+[[Image:../../Images/Tips23.png]]

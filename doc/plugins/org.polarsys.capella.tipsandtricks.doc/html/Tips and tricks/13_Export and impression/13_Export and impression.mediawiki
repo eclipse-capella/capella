@@ -1,0 +1,30 @@
+=Export and impression=
+==Export as image==
+
+You can '''export a diagram to an image file'''. In order to do that right-click on the diagram and choose the menu '''''Export diagram as image''''' or on the icon present in the tab-bar.
+
+[[Image:../../Images/Tips58.png]]
+
+[[Image:../../Images/Tips59.png]]
+
+You can :
+
+* Select the repository to export it,
+* Choose the format among JPG, PNG, SVG, BMP, GIF.
+* Export it to HTML Format
+
+==Batch image export==
+
+It is possible '''to export all diagrams of a representations file at once'''. 
+
+In order to do that, select your representations file (aird file) and right-click on it. Then choose the menu '''''Export representations as image'''''.
+
+[[Image:../../Images/Tips61.png]]
+
+[[Image:../../Images/Tips60.png]]
+
+You can :
+
+* Select the repository to export them,
+* Choose the format among JPG, PNG, SVG, BMP, GIF.
+* Export it to HTML Format
