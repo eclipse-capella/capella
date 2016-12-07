@@ -1,0 +1,41 @@
+/*******************************************************************************
+ * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *   
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.re.updateconnections.ui;
+
+import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
+import org.eclipse.emf.ecore.EStructuralFeature;
+
+/**
+ * A sample connection matcher that returns the connections 'name' as the match id.
+ */
+public class ByNameMatcher extends ConnectionMatcher {
+
+  // TODO this is a hack to give some context to the user.
+  public String toString() {
+    return Messages.ConnectionMatcher_0;
+  }
+
+  @Override
+  public Object getMatchID(Connection connection, IModelScope scope, UpdateConnectionsMatchPolicy context) {
+
+    Object result = null;
+
+    EStructuralFeature name = connection.getConnection().eClass().getEStructuralFeature("name"); //$NON-NLS-1$
+    if (name != null) {
+      result = connection.getConnection().eGet(name);
+    }
+    if (result == null) {
+      // FIXME Log This, or better, avoid use of this matcher if some connections in the scope have no name
+      result = new Object();
+    }
+    return result;
+  }
+}

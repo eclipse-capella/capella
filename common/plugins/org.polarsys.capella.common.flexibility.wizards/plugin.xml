@@ -72,6 +72,11 @@
             class="org.polarsys.capella.common.flexibility.wizards.renderer.CopyTextRenderer">
       </propertyRenderer>
       
+      <propertyRenderer
+            id="comboRenderer"
+            class="org.polarsys.capella.common.flexibility.wizards.renderer.ComboRenderer">
+      </propertyRenderer>
+
    </extension>
 
 </plugin>

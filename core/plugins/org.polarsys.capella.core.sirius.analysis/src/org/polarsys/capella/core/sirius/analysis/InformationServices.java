@@ -2383,7 +2383,7 @@ public class InformationServices {
    * @param view
    * @return
    */
-  private boolean isDiagramFilterEnable(EObject assocation, EObject view, String filterName) {
+  public boolean isDiagramFilterEnable(EObject assocation, EObject view, String filterName) {
     if (null != view) {
       // get Diagram
       DDiagram diagram = CapellaServices.getService().getDiagramContainer(view);
