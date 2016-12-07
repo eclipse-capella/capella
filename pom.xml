@@ -354,13 +354,13 @@
               <os>linux</os>
               <ws>gtk</ws>
               <arch>x86</arch>
-            </environment>
+            </environment-->
             <environment>
               <os>linux</os>
               <ws>gtk</ws>
               <arch>x86_64</arch>
             </environment>
-            <environment>
+            <!--environment>
               <os>macosx</os>
               <ws>cocoa</ws>
               <arch>x86_64</arch>
