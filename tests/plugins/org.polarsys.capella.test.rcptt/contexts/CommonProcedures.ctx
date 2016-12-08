@@ -5,8 +5,8 @@ Element-Name: CommonProcedures
 Element-Type: context
 Element-Version: 2.0
 Id: _0keAwAMFEeaSHsy4D5kUow
-Runtime-Version: 2.0.2.201511100828
-Save-Time: 4/15/16 2:36 PM
+Runtime-Version: 2.0.0.201506042314
+Save-Time: 12/12/16 10:20 AM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -23,5 +23,31 @@ proc "find-tab-folder" [val activePage] {
       }
     }
   }
+}
+
+proc "create-project" [val projectName] {
+	get-menu "File/New/Capella Project" | click
+	with [get-window "New Capella Project"] {
+	    get-editbox | set-text $projectName
+	    get-button Finish | click
+	}
+	
+	// Check the project is created with the correct sub elements
+	with [get-view "Capella Project Explorer" | get-tree] {
+	    get-item $projectName | get-property caption | equals $projectName | verify-true
+	    get-item $projectName | get-property "getItems().TreeItem[0].getText()" | equals [concat $projectName ".afm"] | verify-true
+	    get-item $projectName | get-property "getItems().TreeItem[1].getText()" | equals [concat $projectName ".aird"] | verify-true
+	    get-item $projectName | get-property "getItems().TreeItem[2].getText()" | equals [concat $projectName ".melodymodeller"] | verify-true
+	}
+}
+
+proc "clean-workspace-before-restart" {
+	delete-file [uri-from-path [concat [get-workspace-location] "/.metadata/.plugins/org.eclipse.core.runtime"]]
+}
+	
+proc "prepare-AUT-after-restart" {
+	// Remove the Welcome screen
+	get-menu "Help/Welcome" | click
+	get-view Welcome | close
 }
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
