@@ -21,12 +21,12 @@
       <unit id="org.polarsys.kitalpha.emde.ui.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.model.detachment.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.patterns.feature.feature.group" version="0.0.0"/>
-      <repository location="http://download.eclipse.org/sirius/updates/releases/4.1.1/mars"/>
+      <repository location="http://download.eclipse.org/sirius/updates/stable/4.1.2-S20161201-045939/mars"/>
       <repository location="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
       <repository location="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
       <repository location="http://download.eclipse.org/diffmerge/releases/0.7.0/edm-patterns-site"/>
-      <repository location="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/198/artifact/result/publish/kitalpha_runtime/site.p2"/>
-      <repository location="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/198/artifact/result/publish/kitalpha_sdk/site.p2"/>
+      <repository location="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/7/artifact/result/publish/kitalpha_runtime/site.p2"/>
+      <repository location="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/7/artifact/result/publish/kitalpha_sdk/site.p2"/>
       <repository location="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20161007-040549/mars"/>
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
       <repository location="http://download.eclipse.org/releases/mars"/>

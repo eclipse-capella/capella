@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,7 @@ public class Messages extends NLS {
 
   public static String CreateCategoriesController_cat_name;
   public static String CreateCategoriesController_create_cat;
+  public static String CreateCategoriesController_EmptyName_Error_Message;
   public static String CreateFECategoriesController_prefix;
   public static String CreateCECategoriesController_prefix;
   public static String CreatePLCategoriesController_prefix;

@@ -1,0 +1,395 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _0ljJcEkPEeaoOLXB8A2oPA,_iVS6gLrkEeaN7OVUoeH44Q
+Element-Name: FragmentedModelDiffMerge
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _s0WTkLfUEea5ZpGbd-RfXw
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 12/6/16 11:46 AM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+- Copy a model with a fragment
+- In the original model, add diagram/scenario/table in the fragment and not in the fragment
+- Compare the two models with diffmerge and merge the modified original model into the copied model
+- Compare again, no differences must be found
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Copy a model with a fragment
+with [get-view "Capella Project Explorer" | get-tree] {
+    select fragmentedModel | key-type "M1+c"
+    key-type "M1+v"
+}
+get-window "Copy Project" | get-button OK | click
+
+// In the original model, add diagram/scenario/table in the fragment and not in the fragment
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "fragmentedModel/fragmentedModel.aird" | double-click
+    select "fragmentedModel/fragmentedModel.aird" | get-menu "Open Activity Explorer" | click
+}
+with [get-editor fragmentedModel] {
+    get-tab-folder | get-tab-item "System Analysis" | click
+    with [get-section "Refine System Functions, describe Functional Exchanges"] {
+        click
+        get-link "[SDFB] Create a new Functional Dataflow Blank diagram" | click
+    }
+}
+get-window "New System Data Flow Blank" | get-button OK | click
+get-window "Analysis Selection" | get-table 
+    | select "platform:\\/resource\\/fragmentedModel\\/fragments\\/SA.airdfragment" | double-click
+with [get-editor "[SDFB] Root System Function"] {
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-release 268 38 button1 524288 -height 389 -width 598
+        mouse-move 597 66 -height 389 -width 598
+    }
+    with [get-palette | get-palette-entry "System Function"] {
+        mouse-move 49 12 button1 -height 23 -width 125
+        mouse-press 49 12 button1 -height 23 -width 125
+        mouse-release 49 12 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 115 119 button1 CTRL -height 389 -width 598
+        mouse-press 115 119 button1 CTRL -height 389 -width 598
+        mouse-release 115 119 button1 786432 -height 389 -width 598
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 351 130 button1 CTRL -height 389 -width 598
+        mouse-press 351 130 button1 CTRL -height 389 -width 598
+        mouse-release 351 130 button1 786432 -height 389 -width 598
+    }
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 586 126 -height 389 -width 598
+    with [get-palette | get-palette-entry "Functional Exchange"] {
+        mouse-move 50 28 button1 -height 37 -width 125
+        mouse-press 50 28 button1 -height 37 -width 125
+        mouse-release 50 28 button1 524288 -height 37 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 305 135 -height 389 -width 598
+        with [get-edit-part -name "SystemFunction 1" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 129 16 button1 -height 68 -width 148
+            mouse-press 129 16 button1 -height 68 -width 148
+            mouse-release 129 16 button1 524288 -height 68 -width 148
+        }
+        with [get-edit-part -name "SystemFunction 2" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 58 24 button1 -height 68 -width 148
+            mouse-press 58 24 button1 -height 68 -width 148
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "[SDFB] Root System Function" | get-edit-part -name "SystemFunction 2" 
+            | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-release 58 24 button1 524288 -height 68 -width 148
+            mouse-hover 58 24 -height 68 -width 148
+        }
+        key-type "M1+s"
+        get-edit-part -name "[SDFB] Root System Function" | mouse-move 405 53 -height 389 -width 598
+    }
+    close
+}
+get-editor "fragmentedModel" | get-section "Refine System Functions, describe Functional Exchanges" 
+    | get-link "[FS] Create a new Functional Scenario" | click
+get-window "New Function Scenario" | get-button OK | click
+get-window "Analysis Selection" | get-table 
+    | select "platform:\\/resource\\/fragmentedModel\\/fragments\\/SA.airdfragment" | double-click
+with [get-editor "[FS] Scenario"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario"] {
+        mouse-release 302 22 button1 524288 -height 365 -width 598
+        mouse-move 300 24 -height 365 -width 598
+        mouse-hover 300 24 -height 365 -width 598
+        mouse-move 563 58 -height 365 -width 598
+    }
+    with [get-palette] {
+        get-palette-entry Functions | mouse-move 15 2 -height 23 -width 125
+        with [get-palette-entry "System Function"] {
+            mouse-move 55 15 button1 -height 23 -width 125
+            mouse-press 55 15 button1 -height 23 -width 125
+            mouse-release 55 15 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario"] {
+        mouse-move 136 125 button1 CTRL -height 365 -width 598
+        mouse-press 136 125 button1 CTRL -height 365 -width 598
+        mouse-release 136 125 button1 786432 -height 365 -width 598
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario"] {
+        mouse-move 361 136 button1 CTRL -height 505 -width 598
+        mouse-press 361 136 button1 CTRL -height 505 -width 598
+        mouse-release 361 136 button1 786432 -height 505 -width 598
+    }
+    get-diagram -index 1 | get-edit-part -name "[FS] Scenario" | mouse-move 581 151 -height 505 -width 598
+    with [get-palette | get-palette-entry "Functional Exchange"] {
+        mouse-move 44 10 button1 -height 37 -width 125
+        mouse-press 44 10 button1 -height 37 -width 125
+        mouse-release 44 10 button1 524288 -height 37 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario"] {
+        mouse-move 179 155 -height 505 -width 598
+        with [get-edit-part -name "SystemFunction 3" | get-edit-part -name "" | get-edit-part 
+            -className SquareEditPart] {
+            mouse-move 1 55 button1 -height 395 -width 10
+            mouse-press 1 55 button1 -height 395 -width 10
+            mouse-release 1 55 button1 524288 -height 395 -width 10
+        }
+        mouse-move 395 159 -height 505 -width 598
+        with [get-edit-part -name "SystemFunction 4" | get-edit-part -name "" | get-edit-part 
+            -className SquareEditPart] {
+            mouse-move 6 57 button1 -height 395 -width 10
+            mouse-press 6 57 button1 -height 395 -width 10
+        }
+    }
+}
+with [get-window "Selection Dialog"] {
+    get-group "Create a new Functional Exchange" | get-editbox -after [get-label "Functional Exchange"] | set-text fze
+    get-button OK | click
+}
+with [get-editor "[FS] Scenario"] {
+    with [get-diagram -index 1] {
+        get-edit-part -name "[FS] Scenario" | mouse-move 335 209 -height 505 -width 598
+        key-type "M1+s"
+        get-edit-part -name "[FS] Scenario" | mouse-move 328 22 -height 505 -width 598
+    }
+    close
+}
+with [get-editor "fragmentedModel" | get-section "Transition From Operational Activities"] {
+    click
+    get-link "Create a System Functions / Operational Activities Traceability Matrix" | click
+}
+get-window "New System Functions - Operational Activities" | get-button OK | click
+get-window "Analysis Selection" | get-table 
+    | select "platform:\\/resource\\/fragmentedModel\\/fragments\\/SA.airdfragment" | double-click
+with [get-editor "New System Functions - Operational Activities"] {
+    with [get-tree] {
+        get-cell 2 1 | mouse up -count 2
+        get-cell 1 1 | click
+        get-cell 1 1 | mouse down -count 2
+        double-click
+        select "SystemFunction 2" | activate-cell-edit -column 1
+        get-editbox | set-focus
+        get-cell 1 1 | mouse up -count 2
+        get-editbox | set-text X
+        apply-cell-edit -deactivate
+        key-type "M1+s"
+    }
+    close
+}
+with [get-editor "fragmentedModel"] {
+    get-tab-folder | get-tab-item "Logical Architecture" | click
+    with [get-section "Refine Logical Functions, describe Functional Exchanges"] {
+        click
+        get-link "[LDFB] Create a new Functional Dataflow Blank diagram" | click
+    }
+}
+get-window "New Logical Data Flow Blank" | get-button OK | click
+get-window "Analysis Selection" | get-table | select "platform:\\/resource\\/fragmentedModel\\/fragmentedModel.aird" 
+    | double-click
+with [get-editor "[LDFB] Root Logical Function"] {
+    with [get-diagram -index 1 | get-edit-part -name "[LDFB] Root Logical Function"] {
+        mouse-release 283 45 button1 524288 -height 389 -width 598
+        mouse-move 592 57 -height 389 -width 598
+    }
+    with [get-palette | get-palette-entry "Logical Function"] {
+        mouse-move 29 15 button1 -height 23 -width 125
+        mouse-press 29 15 button1 -height 23 -width 125
+        mouse-release 29 15 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[LDFB] Root Logical Function"] {
+        mouse-move 131 123 button1 CTRL -height 389 -width 598
+        mouse-press 131 123 button1 CTRL -height 389 -width 598
+        mouse-release 131 123 button1 786432 -height 389 -width 598
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[LDFB] Root Logical Function"] {
+        mouse-move 334 123 button1 CTRL -height 389 -width 598
+        mouse-press 334 123 button1 CTRL -height 389 -width 598
+        mouse-release 334 123 button1 786432 -height 389 -width 598
+    }
+    get-diagram -index 1 | get-edit-part -name "[LDFB] Root Logical Function" | mouse-move 578 111 -height 389 
+        -width 598
+    with [get-palette | get-palette-entry "Functional Exchange"] {
+        mouse-move 44 15 button1 -height 37 -width 125
+        mouse-press 44 15 button1 -height 37 -width 125
+        mouse-release 44 15 button1 524288 -height 37 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[LDFB] Root Logical Function"] {
+        mouse-move 281 133 -height 389 -width 598
+        with [get-edit-part -name "LogicalFunction 1" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 134 16 button1 -height 68 -width 148
+            mouse-press 134 16 button1 -height 68 -width 148
+            mouse-release 134 16 button1 524288 -height 68 -width 148
+        }
+        with [get-edit-part -name "LogicalFunction 2" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 27 21 button1 -height 68 -width 148
+            mouse-press 27 21 button1 -height 68 -width 148
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "[LDFB] Root Logical Function" | get-edit-part -name "LogicalFunction 2"] {
+            get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+                | mouse-release 27 21 button1 524288 -height 68 -width 148
+            get-edit-part -name "FIP 1" | get-target-connection 0 | get-edit-part -className DEdgeNameEditPart 
+                | get-handle MoveHandle | mouse-hover 120 16 -mask CTRL -height 18 -width 134
+        }
+        key-type "M1+s"
+        get-edit-part -name "[LDFB] Root Logical Function" | mouse-move 377 23 -height 389 -width 598
+    }
+    close
+}
+
+get-editor "fragmentedModel" 
+    | get-section "Refine Logical Functions, describe Functional Exchanges" 
+    | get-link "[FS] Create a new Functional Scenario" | click
+with [get-window "New Function Scenario"] {
+    get-editbox -after [get-label "Name:"] | set-text "[FS] Scenario 2"
+    get-button OK | click
+}
+get-window "Analysis Selection" | get-table | select "platform:\\/resource\\/fragmentedModel\\/fragmentedModel.aird" 
+    | double-click
+with [get-editor "[FS] Scenario 2"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario 2"] {
+        mouse-release 260 14 button1 524288 -height 365 -width 598
+        mouse-move 565 42 -height 365 -width 598
+    }
+    with [get-palette | get-palette-entry "Logical Function"] {
+        mouse-move 28 21 -height 23 -width 125
+        mouse-move 59 12 button1 -height 23 -width 125
+        mouse-press 59 12 button1 -height 23 -width 125
+        mouse-release 59 12 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario 2"] {
+        mouse-move 96 116 button1 CTRL -height 365 -width 598
+        mouse-press 96 116 button1 CTRL -height 365 -width 598
+        mouse-release 96 116 button1 786432 -height 365 -width 598
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario 2"] {
+        mouse-move 358 63 button1 CTRL -height 505 -width 598
+        mouse-press 358 63 button1 CTRL -height 505 -width 598
+        mouse-release 358 63 button1 786432 -height 505 -width 598
+    }
+    with [get-palette | get-palette-entry "Functional Exchange"] {
+        mouse-move 74 17 button1 -height 37 -width 125
+        mouse-press 74 17 button1 -height 37 -width 125
+        mouse-release 74 17 button1 524288 -height 37 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Scenario 2"] {
+        mouse-move 151 178 -height 505 -width 598
+        with [get-edit-part -name "LogicalFunction 3" | get-edit-part -name "" | get-edit-part 
+            -className SquareEditPart] {
+            mouse-move 6 75 button1 -height 395 -width 10
+            mouse-press 6 75 button1 -height 395 -width 10
+            mouse-release 6 75 button1 524288 -height 395 -width 10
+        }
+        mouse-move 390 177 -height 505 -width 598
+        with [get-edit-part -name "LogicalFunction 4" | get-edit-part -name "" | get-edit-part 
+            -className SquareEditPart] {
+            mouse-move 6 77 button1 -height 395 -width 10
+            mouse-press 6 77 button1 -height 395 -width 10
+        }
+    }
+}
+with [get-window "Selection Dialog"] {
+    get-group "Create a new Functional Exchange" | get-editbox -after [get-label "Functional Exchange"] | set-text fe
+    get-button OK | click
+}
+with [get-editor "[FS] Scenario 2"] {
+    with [get-diagram -index 1] {
+        get-edit-part -name "[FS] Scenario 2" | mouse-move 439 341 -mask CTRL -height 505 -width 598
+        key-type "M1+s"
+        get-edit-part -name "[FS] Scenario 2" | mouse-move 357 14 -height 505 -width 598
+    }
+    close
+}
+with [get-editor "fragmentedModel"] {
+    get-section "Delegate System Interfaces and create Logical Interfaces" | click
+    with [get-section "Transition from System Functions"] {
+        click
+        get-link "Create Traceability Matrix" | click
+    }
+}
+get-menu "Logical Functions \\/ System Functions" | click
+get-window "New Logical Functions - System Functions" | get-button OK | click
+get-window "Analysis Selection" | get-table | select "platform:\\/resource\\/fragmentedModel\\/fragmentedModel.aird" 
+    | double-click
+with [get-editor "New Logical Functions - System Functions"] {
+    with [get-tree] {
+        get-cell 2 2 | mouse up -count 2
+        get-cell 2 2 | click
+        get-cell 2 2 | mouse down -count 2
+        double-click
+        select "LogicalFunction 3" | activate-cell-edit -column 2
+        get-editbox | set-focus
+        get-cell 2 2 | mouse up -count 2
+        get-editbox | set-text X
+        apply-cell-edit -deactivate
+        key-type "M1+s"
+    }
+    close
+}
+
+// Compare the two models with diffmerge and merge all modified original model in the copied model
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "fragmentedModel/fragmentedModel.aird" | get-menu Close | click
+    select "Copy of fragmentedModel/fragmentedModel.melodymodeller" "fragmentedModel/fragmentedModel.melodymodeller"
+    get-menu "Compare With/Each Other as models" | click
+}
+get-window "EMF Diff/Merge" | get-button Finish | click
+with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
+    with [get-tree] {
+        key-type "M1+a"
+        select "fragmentedModel (50)"
+    }
+    get-button "Copy to the left" | click
+}
+get-window "Merge Operation" | get-button OK | click
+get-window "Merge Operation" | get-button OK | click
+with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
+    get-tree | key-type "M1+s"
+    close
+}
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "Copy of fragmentedModel/fragmentedModel.aird" "fragmentedModel/fragmentedModel.aird"
+    get-menu "Compare With/Each Other as models" | click
+}
+get-window "EMF Diff/Merge" | get-button Finish | click
+with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
+    with [get-tree] {
+        key-type "M1+a"
+        select "fragmentedModel.aird (3)" "[LDFB] Root Logical Function (61)" "[FS] Scenario 2 (96)" "New Logical Functions - System Functions (9)" "SA.airdfragment (3)" "[SDFB] Root System Function (61)" "[FS] Scenario (96)" "New System Functions - Operational Activities (6)"
+    }
+    get-button "Copy to the left" | click
+}
+get-window "Merge Operation" | get-button OK | click
+get-window "Merge Operation" | get-button OK | click
+with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
+    get-tree | key-type "M1+s"
+    close
+}
+
+// Compare again, no differences must be found
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "Copy of fragmentedModel/fragmentedModel.melodymodeller" "fragmentedModel/fragmentedModel.melodymodeller"
+    get-menu "Compare With/Each Other as models" | click
+}
+get-window "EMF Diff/Merge" | get-button Finish | click
+get-window Compare | get-label "There are no differences between the selected inputs." | get-property caption 
+    | equals "There are no differences between the selected inputs." | verify-true
+get-window Compare | get-button OK | click
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "Copy of fragmentedModel/fragmentedModel.aird" "fragmentedModel/fragmentedModel.aird"
+    get-menu "Compare With/Each Other as models" | click
+}
+get-window "EMF Diff/Merge" | get-button Finish | click
+get-window Compare | get-label "There are no differences between the selected inputs." | get-property caption 
+    | equals "There are no differences between the selected inputs." | verify-true
+get-window Compare | get-button OK | click
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

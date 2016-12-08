@@ -47,8 +47,10 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
+import org.eclipse.sirius.diagram.business.api.query.AbstractNodeMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
+import org.eclipse.sirius.diagram.business.api.query.EdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDNodeCandidate;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
@@ -448,8 +450,23 @@ public class DiagramServices {
             .equals(mapping.eContainingFeature());
   }
 
-  public AbstractDNode createAbstractDNode(AbstractNodeMapping mapping, EObject modelElement,
-      DragAndDropTarget container, DDiagram diagram) {
+  /**
+   * Evaluate precondition of the given edge mapping.
+   */
+  public boolean evaluateEdgePrecondition(EdgeMapping edgeMapping, DDiagram diagram, EObject semantic, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
+    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
+    return new EdgeMappingQuery(edgeMapping).evaluatePrecondition((DSemanticDiagram) diagram, (DragAndDropTarget) diagram, interpreter, semantic, sourceView, targetView);
+  }
+  
+  /**
+   * Evaluate precondition of the given node mapping.
+   */
+  public boolean evaluateNodePrecondition(AbstractNodeMapping nodeMapping, DDiagram diagram, DSemanticDecorator containerView, EObject semantic) {
+    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
+    return new AbstractNodeMappingQuery(nodeMapping).evaluatePrecondition((DSemanticDiagram) diagram, (DragAndDropTarget) containerView, interpreter, semantic);
+  }
+
+  public AbstractDNode createAbstractDNode(AbstractNodeMapping mapping, EObject modelElement, DragAndDropTarget container, DDiagram diagram) {
     final DDiagram diag = diagram;
     if (mapping == null) {
       return null;
@@ -463,8 +480,7 @@ public class DiagramServices {
     RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
 
     AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
-    return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate,
-        isBorderedNodeMapping(mapping));
+    return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, isBorderedNodeMapping(mapping));
   }
 
   public DEdge createEdge(EdgeMapping mapping, EdgeTarget sourceView, EdgeTarget targetView, EObject semanticObject) {

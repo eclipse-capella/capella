@@ -15,9 +15,13 @@ import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpart.AbstractEditPartProvider;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.polarsys.capella.core.data.capellacommon.Region;
+import org.polarsys.capella.core.data.capellacommon.State;
 
 /**
  * Specific Edit Part Provider for regions
@@ -41,6 +45,16 @@ public class StackEditPartProvider extends AbstractEditPartProvider {
         if (String.valueOf(DNodeContainerViewNodeContainerCompartment2EditPart.VISUAL_ID).equals(type)) {
           return StackCompartment2EditPart.class;
 
+        }
+
+      }
+
+      else if (resolvedSemanticElement != null && resolvedSemanticElement instanceof DNodeListElement
+          && ((DNodeListElement) resolvedSemanticElement).eContainer() instanceof DNodeList
+          && ((DNodeList) resolvedSemanticElement.eContainer()).getTarget() instanceof State) {
+
+        if (String.valueOf(DNodeListElementEditPart.VISUAL_ID).equals(type)) {
+          return StackDNodeListElementEditPart.class;
         }
 
       }

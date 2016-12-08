@@ -206,14 +206,9 @@ public class PreferencesHelper {
    * @return <code>null</code> if given object is not persisted.
    */
   public static IProject getProject(EObject object) {
-
     IProject result = null;
-    Session session = SessionManager.INSTANCE.getSession(object);
 
-    // Use EObjectQuery as a last resort to find the session for the given object (e.g. object is a diagram)
-    if (session == null) {
-      session = new EObjectQuery(object).getSession();
-    }
+    Session session = new EObjectQuery(object).getSession();
 
     if (null != session) {
       Resource sessionResource = session.getSessionResource();

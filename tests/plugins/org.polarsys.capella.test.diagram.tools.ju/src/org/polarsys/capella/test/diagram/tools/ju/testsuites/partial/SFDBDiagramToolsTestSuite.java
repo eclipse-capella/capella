@@ -15,8 +15,11 @@ import java.util.List;
 
 import junit.framework.Test;
 
+import org.polarsys.capella.test.diagram.tools.ju.sdfb.DnDWithInternalFE;
+import org.polarsys.capella.test.diagram.tools.ju.sdfb.DnDWithInternalFEAndCommonPort;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.InitializeFromExistingDiagramTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.SwitchCategoryTestCase;
+import org.polarsys.capella.test.diagram.tools.ju.sdfb.UndoOnHideSystemFunction;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -34,10 +37,13 @@ public class SFDBDiagramToolsTestSuite extends BasicTestSuite {
    */
 	@Override
 	protected List<BasicTestArtefact> getTests() {
-		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new DnDWithInternalFE());
+    tests.add(new DnDWithInternalFEAndCommonPort());
     tests.add(new SwitchCategoryTestCase());
+    tests.add(new UndoOnHideSystemFunction());
     tests.add(new InitializeFromExistingDiagramTestCase());
-		return tests;
+    return tests;
 	}
 
 }

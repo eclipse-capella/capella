@@ -13,6 +13,7 @@ package org.polarsys.capella.test.suites.ju;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.core.re.updateconnections.tests.UpdateConnectionsTest.UpdateConnectionsTestSuite;
 import org.polarsys.capella.test.business.queries.ju.testSuites.main.BusinessQueryTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.testsuites.DiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.misc.ju.testsuites.DiagramMiscTestSuite;
@@ -61,6 +62,7 @@ public class RunInUITestSuite extends BasicTestSuite {
     tests.add(new MetaTestSuite());
     tests.add(new SetProgressTestSuite());
     tests.add(new DiagramMiscTestSuite());
+    tests.add(new UpdateConnectionsTestSuite());
     return tests;
   }
 
