@@ -216,6 +216,7 @@
     <module>core/plugins/org.polarsys.capella.core.re</module>
     <module>core/plugins/org.polarsys.capella.core.re.ui</module>
     <module>core/plugins/org.polarsys.capella.core.re.ui.quickfix</module>
+    <module>core/plugins/org.polarsys.capella.core.re.updateconnections.ui</module>
     <module>core/plugins/org.polarsys.capella.core.refinement.commands</module>
     <module>core/plugins/org.polarsys.capella.core.refinement.framework</module>
     <module>core/plugins/org.polarsys.capella.core.refinement.framework.ui</module>
@@ -269,6 +270,7 @@
 	<module>core/plugins/org.polarsys.capella.core.explorer.activity.ui</module>
     <module>doc/features/org.polarsys.capella.doc.feature</module>
     <module>doc/plugins/org.polarsys.capella.commandline.doc</module>
+    <module>doc/plugins/org.polarsys.capella.core.re.updateconnections.doc</module>
     <module>doc/plugins/org.polarsys.capella.diffmerge.doc</module>
     <module>doc/plugins/org.polarsys.capella.patterns.doc</module>
     <module>doc/plugins/org.polarsys.capella.preferences.doc</module>
@@ -296,6 +298,7 @@
     <module>releng/plugins/org.polarsys.capella.rcp</module>
 	<module>releng/plugins/org.polarsys.capella.rcp.product</module>
 	<module>tests/features/org.polarsys.capella.test.feature</module>
+	<module>tests/plugins/org.polarsys.capella.core.re.updateconnections.tests</module>
 	<module>tests/plugins/org.polarsys.capella.test.business.queries.ju</module>
 	<module>tests/plugins/org.polarsys.capella.test.diagram.common.ju</module>
 	<module>tests/plugins/org.polarsys.capella.test.diagram.filters.ju</module>
