@@ -98,8 +98,13 @@ public class UpdateConnectionsHandler extends AbstractHandler {
 
     IRendererContext rcontext = new RendererContext(new RenderersLoader().getRenderers(properties), pcontext);
     PropertyWizard wizard = new PropertyWizard(pcontext, rcontext);
+    wizard.setWindowTitle(Messages.UpdateConnectionsHandler_0);
 
-    if (new PropertyDialog(HandlerUtil.getActiveShell(event), wizard).open() == Window.OK) {
+    PropertyDialog propertyDialog = new PropertyDialog(HandlerUtil.getActiveShell(event), wizard);
+    propertyDialog.create();
+    propertyDialog.setTitle(Messages.PropertyDialog_Title);
+
+    if (propertyDialog.open() == Window.OK) {
 
       CatalogElement selectedRPL1 = (CatalogElement) pcontext.getCurrentValue(rpl1);
       CatalogElement selectedRPL2 = (CatalogElement) pcontext.getCurrentValue(rpl2);

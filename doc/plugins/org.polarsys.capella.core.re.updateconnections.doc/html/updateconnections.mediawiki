@@ -2,7 +2,7 @@
 
 == Introduction ==
 
-When a pair of REC elements is connected to each other via Component Exchanges/Functional Exchanges or Physical Links, it is possible to propagate/synchronize these elements (subsequently generalized as 'connections') to a related pair of REPL elements via the "Update Links" command.
+When a pair of REC elements is connected to each other via Component Exchanges/Functional Exchanges or Physical Links, it is possible to propagate/synchronize these elements (subsequently generalized as 'connections') to a related pair of REPL elements via the "Update Connections" command.
 
 == Usage ==
 
