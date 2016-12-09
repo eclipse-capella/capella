@@ -94,13 +94,16 @@ public class UpdateConnectionsHandler extends AbstractHandler {
     Collection<ConnectionMatcher> availableConnectionMatchers = new ArrayList<ConnectionMatcher>();
     availableConnectionMatchers.add(new SingleUsePortsMatcher());
     availableConnectionMatchers.add(new ByNameMatcher());
+    
     cms.setAvailableConnectionMatchers(availableConnectionMatchers);
 
     IRendererContext rcontext = new RendererContext(new RenderersLoader().getRenderers(properties), pcontext);
     PropertyWizard wizard = new PropertyWizard(pcontext, rcontext);
     wizard.setWindowTitle(Messages.UpdateConnectionsHandler_0);
+    wizard.setHelpAvailable(false);
 
     PropertyDialog propertyDialog = new PropertyDialog(HandlerUtil.getActiveShell(event), wizard);
+    propertyDialog.setHelpAvailable(false);
     propertyDialog.create();
     propertyDialog.setTitle(Messages.PropertyDialog_Title);
 

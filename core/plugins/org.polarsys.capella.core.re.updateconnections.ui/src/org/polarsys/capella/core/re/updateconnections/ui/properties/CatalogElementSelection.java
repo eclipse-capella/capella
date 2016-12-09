@@ -12,11 +12,16 @@ package org.polarsys.capella.core.re.updateconnections.ui.properties;
 
 import java.util.Collection;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.flexibility.properties.property.AbstractProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty;
+import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.flexibility.properties.schema.IRestraintProperty;
 import org.polarsys.capella.common.re.CatalogElement;
+import org.polarsys.capella.core.re.updateconnections.ui.UpdateConnectionsUIActivator;
 
 /**
  * Select one of all available catalog elements.
@@ -61,6 +66,19 @@ public class CatalogElementSelection extends AbstractProperty implements IRestra
       return availableCatalogElements.iterator().next();
     }
     return null;
+  }
+
+  @Override
+  public IStatus validate(Object newValue, IPropertyContext context) {
+    EObject value = (EObject)context.getCurrentValue(this);
+    for (IProperty property : context.getProperties().getAllItems()) {
+      if (property instanceof CatalogElementSelection && !this.equals(property)) {
+        if (value.equals(context.getCurrentValue(property))) {
+          return new Status(IStatus.ERROR, UpdateConnectionsUIActivator.PLUGIN_ID, "Selected RPLs must be different");
+        }
+      }
+    }
+   return super.validate(newValue, context);
   }
 
   @Override

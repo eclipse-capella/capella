@@ -2,7 +2,17 @@
 
 == Introduction ==
 
-When a pair of REC elements is connected to each other via Component Exchanges/Functional Exchanges or Physical Links, it is possible to propagate/synchronize these elements (subsequently generalized as 'connections') to a related pair of REPL elements via the "Update Connections" command.
+When a pair of REC elements is connected to each other via Component Exchanges/Functional Exchanges or Physical Links, it is possible to propagate/synchronize these elements (subsequently generalized as 'connections') to a related pair of RPL elements via the "Update Connections" command.
+
+In the sample below, there is 2 REC (Client/Server) and some related RPL. REC have been connected with some connections. RPL doesn't have them.
+
+By selecting one element from both RPL, Client 1 and Server 1, it is possible to propagate connections made through REC elements towards RPL elements. (resp. Client 2, Server 1)
+
+[[Image:Images/model.png|500x535px]]<br>
+
+
+[[Image:Images/result.png|500x670px]]<br>
+
 
 == Usage ==
 
