@@ -12,7 +12,7 @@
 <feature
       id="org.polarsys.capella.rcp.feature"
       label="%featureName"
-      version="1.0.0.qualifier"
+      version="1.1.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.example.com/description">
@@ -36,6 +36,7 @@
       <includes id="org.polarsys.capella.common.mdsofa.common.feature" version="0.0.0"/>
       <includes id="org.polarsys.capella.common.model.feature" version="0.0.0"/>
       <includes id="org.polarsys.capella.common.re.feature" version="0.0.0"/>
+      <includes id="org.polarsys.capella.core.feature" version="0.0.0"/>
       <includes id="org.polarsys.capella.core.advance.feature" version="0.0.0"/>
       <includes id="org.polarsys.capella.core.af.feature" version="0.0.0"/>
       <includes id="org.polarsys.capella.core.common.feature" version="0.0.0"/>

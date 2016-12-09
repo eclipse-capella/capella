@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Capella" uid="org.polarsys.capella.rcp.product" id="org.polarsys.capella.rcp.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.0.0" useFeatures="true" includeLaunchers="true">
+<product name="Capella" uid="org.polarsys.capella.rcp.product" id="org.polarsys.capella.rcp.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.1.0" useFeatures="true" includeLaunchers="true">
+
+   <aboutInfo>
+      <image path="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/CapellaAbout.png"/>
+      <text>
+         %productBlurb
+      </text>
+   </aboutInfo>
 
    <configIni use="default">
    </configIni>
 
    <launcherArgs>
-      <vmArgs>-Dosgi.requiredJavaVersion=1.6
--Dorg.eclipse.swt.browser.DefaultType=mozilla
+      <vmArgs>-Dosgi.requiredJavaVersion=1.8
 -Xms256m
 -Xmx512m
 -XX:PermSize=128m
 -XX:MaxPermSize=256m
       </vmArgs>
+      <vmArgsLin>-Dorg.eclipse.swt.browser.DefaultType=mozilla
+      </vmArgsLin>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
       <vmArgsWin>
-         <argsX86_64>-Dosgi.requiredJavaVersion=1.6
+         <argsX86_64>-Dosgi.requiredJavaVersion=1.8
 -Dorg.eclipse.swt.browser.DefaultType=mozilla
 -Xms512m
 -Xmx2048m
@@ -26,21 +34,32 @@
       </vmArgsWin>
    </launcherArgs>
 
-   <windowImages/>
+   <windowImages i16="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/CapellaAdavance16x16.gif" i32="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella32x32.png" i48="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella48x48.png"/>
 
-
+   <splash
+      location="org.polarsys.capella.core.platform.sirius.ui.perspective"
+      startupProgressRect="1,288,452,15"
+      startupMessageRect="24,200,421,20"
+      startupForegroundColor="000000" />
    <launcher>
       <solaris/>
       <win useIco="false">
-         <bmp/>
+         <bmp
+            winSmallHigh="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella16x16.bmp"
+            winSmallLow="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella16x16_8bits.bmp"
+            winMediumHigh="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella32x32.bmp"
+            winMediumLow="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella32x32_8bits.bmp"
+            winLargeHigh="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella48x48.bmp"
+            winLargeLow="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella48x48_8bits.bmp"/>
       </win>
    </launcher>
 
+
    <vm>
-      <linux include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</linux>
-      <macos include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</macos>
-      <solaris include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</solaris>
-      <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</windows>
+      <linux include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</linux>
+      <macos include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</macos>
+      <solaris include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</solaris>
+      <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</windows>
    </vm>
 
    <plugins>
