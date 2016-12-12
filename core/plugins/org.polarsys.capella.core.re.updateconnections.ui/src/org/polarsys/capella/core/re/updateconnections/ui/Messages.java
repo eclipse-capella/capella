@@ -19,6 +19,7 @@ public class Messages extends NLS {
   public static String ConnectionMatcher_0;
   public static String ConnectionMatcher_1;
   public static String UpdateConnectionsHandler_0;
+  public static String PropertyDialog_Title;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

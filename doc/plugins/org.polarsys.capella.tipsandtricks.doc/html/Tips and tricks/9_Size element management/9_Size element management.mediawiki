@@ -1,0 +1,24 @@
+=Size element management=
+==Duplicate Size==
+
+To have a better looking diagram, it is important that '''elements which have the same role or importance are represented with the same size'''. 
+
+To adjust easily the size of a set of element, it is recommended to use the '''''Make height and width same size tool'''''. To perform this action, the selected elements must contain at least two nodes. This tool will automatically adjust the size of the first selected element to fit with the last selected one.
+
+[[Image:../../Images/Tips27.png]]
+
+[[Image:../../Images/Tips28.png]]
+
+It is possible to make same width/length tool in toolbar and in contextual menu.
+
+[[Image:../../Images/Tips29.png]]
+
+==Autosize==
+
+Auto size tool propose '''to resize all selected elements'''. The size is automatically adjusted in order to '''optimize the space''' to avoid the diagram to be too big but keeps enough space to show all the information (sub elements, labels, etc.) without modifying the original layout.
+
+The Auto size tool is available in the diagram editor toolbar.
+
+[[Image:../../Images/Tips30.png]]
+
+[[Image:../../Images/Tips31.png]]

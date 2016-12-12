@@ -1,0 +1,41 @@
+=Diagram accelerators=
+== CONTEXTUAL to a model element ==
+
+Contextual diagrams are used to put the focus on one specific element. This makes them have specific refresh rules. For more details, please refer to the section Capella Guide > User Manual > Diagram Management > Diagram Concepts > Blank and Contextual Diagrams, Contextual Diagram Elements
+
+==Diagram accelerators==
+From a diagram, Capella provides a few tools called accelerators allowing automated synchronization or generations of model elements. For more details, please refer to the section Capella Guide > User Manual > Modelling Wizards and Accelerators
+
+==Initialize Diagram==
+
+<br>
+
+         
+{| border="1"
+|-
+| 
+[[Image:../../Images/InfoIcon.png|48x48px]]
+
+ 
+| 
+Graphical elements have to be unpinned before running this action. To unpin an element, choose "Unpin selected elements on the diagram menu"
+
+ 
+|}  
+<br>
+
+
+
+The idea is to initialize and then apply layout from diagram template for instance. In order to save time, Capella is able to initialize diagrams from others, not only in a same layer but also between different layers. 
+
+* For example, in the ''System Analysis'', from a ''Function Scenario'', you can initialize an ''Exchange Scenario'' thanks to the '''''Transition''''' functionality:
+
+[[Image:../../Images/Tips9.png]]
+
+[[Image:../../Images/Tips10.png]]
+
+* Another example from the ''System Analysis'' to the ''Logical Architecture'' is that you can also initialize an ''Exchange Scenario'' thanks to the '''''Transition''''' functionality:
+
+[[Image:../../Images/Tips11.png]]
+
+[[Image:../../Images/Tips12.png]]

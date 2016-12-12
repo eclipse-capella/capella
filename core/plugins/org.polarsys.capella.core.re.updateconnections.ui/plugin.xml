@@ -23,17 +23,19 @@
          </group>
          <group
                id="updateconnections.connectionmatcher.group"
-               name="Connection Matcher Strategy">
+               name="Update Strategy">
          </group>
          <property
                class="org.polarsys.capella.core.re.updateconnections.ui.properties.CatalogElementSelection"
                group="updateconnections.rplselection.group"
+               enabled="true"
                id="RPL_1"
                name="RPL 1">
          </property>
          <property
                class="org.polarsys.capella.core.re.updateconnections.ui.properties.CatalogElementSelection"
                group="updateconnections.rplselection.group"
+               enabled="true"
                id="RPL_2"
                name="RPL 2">
          </property>
@@ -41,8 +43,9 @@
                class="org.polarsys.capella.core.re.updateconnections.ui.properties.ConnectionMatcherStrategy"
                description="Selects the strategy which computes connection IDs for diff merge"
                group="updateconnections.connectionmatcher.group"
+               enabled="true"
                id="connectionMatcherStrategy"
-               name="connectionMatcherStrategy">
+               name="Select how connections will be matched">
          </property>
       </properties>
    </extension>
