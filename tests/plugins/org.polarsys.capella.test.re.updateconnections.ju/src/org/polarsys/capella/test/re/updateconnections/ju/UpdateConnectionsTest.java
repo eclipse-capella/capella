@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.re.updateconnections.tests;
+package org.polarsys.capella.test.re.updateconnections.ju;
 
 import java.util.ArrayList;
 import java.util.Arrays;

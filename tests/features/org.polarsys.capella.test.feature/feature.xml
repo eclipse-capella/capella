@@ -175,7 +175,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.polarsys.capella.core.re.updateconnections.tests"
+         id="org.polarsys.capella.test.re.updateconnections.ju"
          download-size="0"
          install-size="0"
          version="0.0.0"

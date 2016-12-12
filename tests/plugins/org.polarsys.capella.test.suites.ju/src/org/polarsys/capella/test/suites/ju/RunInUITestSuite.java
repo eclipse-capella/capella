@@ -13,7 +13,6 @@ package org.polarsys.capella.test.suites.ju;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.re.updateconnections.tests.UpdateConnectionsTest.UpdateConnectionsTestSuite;
 import org.polarsys.capella.test.business.queries.ju.testSuites.main.BusinessQueryTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.testsuites.DiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.misc.ju.testsuites.DiagramMiscTestSuite;
@@ -26,6 +25,7 @@ import org.polarsys.capella.test.libraries.ju.testsuites.main.LibrariesTestSuite
 import org.polarsys.capella.test.meta.ju.testSuites.MetaTestSuite;
 import org.polarsys.capella.test.model.ju.testsuites.main.ModelTestSuite;
 import org.polarsys.capella.test.progressmonitoring.ju.testsuites.SetProgressTestSuite;
+import org.polarsys.capella.test.re.updateconnections.ju.UpdateConnectionsTest.UpdateConnectionsTestSuite;
 import org.polarsys.capella.test.recrpl.ju.testsuites.main.RecRplTestSuite;
 import org.polarsys.capella.test.refinement.ju.testsuites.main.AllRefinementTestSuites;
 import org.polarsys.capella.test.transition.ju.testsuites.main.TransitionTestSuite;
