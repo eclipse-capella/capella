@@ -285,6 +285,7 @@
     <module>doc/plugins/org.polarsys.capella.glossary.doc</module>
     <module>doc/plugins/org.polarsys.capella.validation.doc</module>
     <module>doc/plugins/org.polarsys.capella.th.doc</module>
+    <module>doc/plugins/org.polarsys.capella.tipsandtricks.doc</module>
     <module>ext/detachment/features/org.polarsys.capella.detachment.feature</module>
     <module>ext/detachment/plugins/org.polarsys.capella.detachment.propertyvalue</module>
     <module>ext/detachment/plugins/org.polarsys.capella.detachment.version.precondition</module>
