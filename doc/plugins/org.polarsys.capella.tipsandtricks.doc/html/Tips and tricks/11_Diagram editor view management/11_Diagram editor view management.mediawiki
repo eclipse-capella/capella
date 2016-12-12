@@ -1,0 +1,17 @@
+=Diagram Editor view Management=
+==Reset Origin==
+
+Reset origin tool is useful '''when some elements are not visible''' because their layout is not centered. Reset origin tools will automatically adjust the layout in order to have the origin at the top left of the container or editor. 
+
+[[Image:../../Images/Tips24.png]]
+
+[[Image:../../Images/Tips25.png]]
+
+[[Image:../../Images/Tips26.png]]
+
+
+The origin '''is now on the top left''' of Logical System, which '''results in a better layout for the user.'''
+
+==Zoom on diagram==
+
+The shortcut '''Ctrl + Mouse wheel''' enables the user to '''zoom or zoom out diagram''' if needed. The zoom is done on the mouse location and not on the center of the editor.

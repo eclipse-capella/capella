@@ -81,7 +81,7 @@ public class TextRenderer extends AbstractRenderer {
       disabledColor = defaultColor;
     }
 
-    if (isDescription() && !Boolean.FALSE.equals(context.getParameter("PARAMETER_RENDER_LABEL"))) {
+    if (isDescription() && !Boolean.FALSE.equals(context.getParameter(ICommonConstants.PARAMETER_RENDER_LABEL))) {
       createPartLabel(parent, context.getProperty(this).getName() + ICommonConstants.COLON_CHARACTER, false);
     }
 

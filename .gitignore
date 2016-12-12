@@ -16,7 +16,7 @@ tmp/
 .loadpath
 
 # Maven
-target
+target/
 
 # External tool builders
 .externalToolBuilders/

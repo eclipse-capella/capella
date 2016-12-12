@@ -299,7 +299,6 @@
     <module>releng/plugins/org.polarsys.capella.rcp</module>
 	<module>releng/plugins/org.polarsys.capella.rcp.product</module>
 	<module>tests/features/org.polarsys.capella.test.feature</module>
-	<module>tests/plugins/org.polarsys.capella.core.re.updateconnections.tests</module>
 	<module>tests/plugins/org.polarsys.capella.test.business.queries.ju</module>
 	<module>tests/plugins/org.polarsys.capella.test.diagram.common.ju</module>
 	<module>tests/plugins/org.polarsys.capella.test.diagram.filters.ju</module>
@@ -315,6 +314,7 @@
 	<module>tests/plugins/org.polarsys.capella.test.navigator.ju</module>
 	<module>tests/plugins/org.polarsys.capella.test.platform.ju</module>
 	<module>tests/plugins/org.polarsys.capella.test.progressmonitoring.ju</module>
+	<module>tests/plugins/org.polarsys.capella.test.re.updateconnections.ju</module>
 	<module>tests/plugins/org.polarsys.capella.test.recrpl.ju</module>
 	<module>tests/plugins/org.polarsys.capella.test.refinement.ju</module>
 	<module>tests/plugins/org.polarsys.capella.test.semantic.queries.ju</module>

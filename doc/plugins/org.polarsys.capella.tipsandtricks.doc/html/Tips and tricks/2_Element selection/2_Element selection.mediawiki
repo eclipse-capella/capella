@@ -1,0 +1,34 @@
+=Element Selection =
+
+==Automatic cursor selection of diagram elements==
+
+When a diagram is composed of a lot of elements (components, functions, edges...) it can become fastidious to select some of them to apply them a specific styling or other.
+
+Thats why, two selection modes are realizable thanks to your computer cursor:
+
+
+
+# '''''From the left to the right: '''''it selects automatically all the elements contained in your selection area (Figure 1);
+# '''''From the right to the left: '''''it selects not only automatically all the elements contained in your selection area but also those which cross it (Figure 2);
+
+
+[[Image:../../Images/Tips1.png]]
+
+<center>'''Figure 1: Cursor selection from the left to the right '''</center>
+
+
+[[Image:../../Images/Tips2.png]]
+<center>'''Figure 2: Cursor selection from the right to the left'''</center>
+
+==Connectors selection==
+
+
+
+It can be necessary to '''select all connectors''' to change the routing style or remove bend point for example and select them one by one can quickly become a fastidious task. 
+
+Thus, you can select all diagram connectors in the same time by selecting '''''Select All Connectors''''' on the diagram menu.
+
+[[Image:../../Images/TT7.png]]
+
+
+
