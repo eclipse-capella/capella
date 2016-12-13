@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -72,6 +72,25 @@
                             </target>
                             <description>
                                This rule generates a warning if the the source or target of an Interaction/Functional Exchange is not allocated on a leaf function.
+                            </description>
+                         </constraint>
+                         <constraint
+                               class="org.polarsys.capella.core.data.fa.validation.functionPort.DCOM_21_UnusedExchangeItems"
+                               id="DCOM_21"
+                               isEnabledByDefault="true"
+                               lang="java"
+                               mode="Batch"
+                               name="DCOM_21 - Unused function port Exchange Items"
+                               severity="WARNING"
+                               statusCode="1">
+                            <message>
+                               &quot;{0}&quot; ({1}) conveys &quot;{2}&quot; ({3}) which is not allocated to any associated Functional Exchange.
+                            </message>
+                            <target
+                                  class="FunctionPort">
+                            </target>
+                            <description>
+                               This rule generates a warning if a Function Port conveys an Exchange Item which is not allocated to any connected Functional Exchange.
                             </description>
                          </constraint>
          </constraints> 
