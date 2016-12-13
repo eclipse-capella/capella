@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _ZR3fQKKHEeaAAPJPtfviTA
 Runtime-Version: 2.0.0.201506042314
-Save-Time: 11/4/16 1:08 PM
+Save-Time: 12/12/16 6:14 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -14,7 +14,7 @@ Entry-Name: .ecl.context
 
 
 proc referenceConfigProject [val capellaProjectName] [val configProjectName]{
-	get-view "Capella Project Explorer" | get-tree | select MelodyProject1 | get-menu Properties | click
+	get-view "Capella Project Explorer" | get-tree | select $capellaProjectName | get-menu Properties | click
 	with [get-window [concat "Properties for " $capellaProjectName] ] {
 	    get-tree | select "Capella Project References"
 	    get-table | get-item $configProjectName | check
@@ -29,6 +29,8 @@ proc selectOnlyQualityConstraints {
 	    with [get-tree -after [get-label "Constraint categories:"]] {
 	        select Capella
 	        get-item Capella | uncheck
+	        get-item Capella | check
+        	get-item Capella | uncheck
 	        get-item "Capella/Quality" | check
 	    }
 	    get-button Apply | click
@@ -36,24 +38,515 @@ proc selectOnlyQualityConstraints {
 	}
 }
 
+proc exportEPFFileToDir [val filename] {
+	get-menu "File/Export..." | click
+	with [get-window Export] {
+	    get-tree | select "General" | select "General/Preferences"
+	    get-button "Next >" | click
+	    get-group "" | get-tree | get-item "Model Validation Preferences" | check
+	    get-group "" | get-tree | get-item "Capella Preferences" | check  
+	    
+	    set-dialog-result File $filename
+	    get-window Export | get-button "File System..." | click
+    	get-button Finish | click 
+    	if [get-window | get-text | equals Question] {
+    		get-window Question | get-button Yes | click
+    	}
+	}
+	
+	// Check the file is exported
+	get-file [uri-from-path $filename]  | get exists | verify-true
+}
+
+proc importEPFFileFromDir [val filename] {
+	get-menu "File/Import..." | click
+	with [get-window Import] {
+	    get-tree | select "General" | select "General/Preferences"
+	    get-button "Next >" | click
+	}    
+	set-dialog-result File $filename
+	with [get-window "Import Preferences"] {
+		 get-button "Browse..." | click
+		 get-button Finish | click
+	}	
+}
+
+
 proc exportEPFFileToConfigProject [val configProjectName] {
+
 	get-view "Capella Project Explorer" | get-tree | get-menu "Export..." | click
 	with [get-window Export] {
 	    get-tree | select "General" | select "General/Preferences"
 	    get-button "Next >" | click
 	    get-group "" | get-tree | get-item "Model Validation Preferences" | check
-	    get-button "Workspace..." | click	    
+		get-button "Workspace..." | click	    
 	}
 	
 	with [get-window "Project Selection"] {
+	    get-button "Select All" | click
+	    get-button OK | click
+	}
+	
+	
+	with [get-window Export] {
+	    get-button "Overwrite existing files without warning" | check
+	    get-button Finish | click
+	}
+
+	
+	// For Linux, refresh using Project Explorer since F5 does not work in Capella Explorer ...
+	get-menu "Window/Show View/Other..." | click
+	with [get-window "Show View"] {
+	    get-tree | select "General/Project Explorer"
+	    get-button OK | click
+	}
+	with [get-view "Project Explorer"] {
 	    with [get-tree] {
-	        select $configProjectName
-	        get-item $configProjectName | check
+	        select $configProjectName | get-menu Refresh | click
+	        // Check the epf is present
+	        select [concat $configProjectName "/" $configProjectName "_preferences.epf"]
+	    }
+	    close
+	}
+
+}
+
+
+
+proc selectSomeConstraints_step1 {
+	get-preferences-menu | click
+	with [get-window Preferences] {
+		get-tree | select "Capella/Delete"
+	    with [get-group Delete] {
+	        get-button "Confirm deletions" | uncheck
+	        get-button "If reusing components is allowed, synchronize the deletion of parts when deleting components" | uncheck
+	    }
+	    
+	    get-tree | select "Capella/Model"
+	    get-group "Inheritance Management" | get-button "Multiple inheritance allowed" | check
+	    get-group "Deployment Management" | get-button "Multiple deployment allowed" | uncheck
+	    
+		get-tree | select "Model Validation/Constraints"
+	    get-tree -after [get-label "Constraint categories:"] | select "Capella/Design/Completeness"
+	    with [get-table] {
+	        get-item "DCOM_14 - Implemented interface delegation" | uncheck
+	        get-item "DCOM_15 - Exchange item allocation consistency" | check
+	        get-item "DCOM_16 - Interface Exchange item allocation consistency" | uncheck
 	    }
 	    get-button OK | click
 	}
-	get-window Export | get-button Finish | click
 }
+
+proc selectSomeConstraints_step2 {
+	get-preferences-menu | click
+	with [get-window Preferences] {
+		get-tree | select "Capella/Delete"
+	    with [get-group Delete] {
+	        get-button "Confirm deletions" | check
+	        get-button "If reusing components is allowed, synchronize the deletion of parts when deleting components" | check
+	    }
+	    
+	    get-tree | select "Capella/Model"
+	    get-group "Inheritance Management" | get-button "Multiple inheritance allowed" | uncheck
+	    get-group "Deployment Management" | get-button "Multiple deployment allowed" | check
+	    
+		get-tree | select "Model Validation/Constraints"
+	    get-tree -after [get-label "Constraint categories:"] | select "Capella/Design/Completeness"
+	    with [get-table] {
+	        get-item "DCOM_14 - Implemented interface delegation" | uncheck
+	        get-item "DCOM_15 - Exchange item allocation consistency" | uncheck
+	        get-item "DCOM_16 - Interface Exchange item allocation consistency" | check
+	    }
+	    get-button OK | click
+	}
+}
+
+proc selectSomeConstraints_validation {
+	get-preferences-menu | click
+	with [get-window Preferences] {
+		get-tree | select "Capella/Delete"
+	    with [get-group Delete] {
+	        checkPropertyButtonSelected "Confirm deletions" false
+	        checkPropertyButtonSelected "If reusing components is allowed, synchronize the deletion of parts when deleting components" false
+	    }
+	    
+	    get-tree | select "Capella/Model"
+	    get-group "Inheritance Management" | checkPropertyButtonSelected "Multiple inheritance allowed" true
+	    get-group "Deployment Management" | checkPropertyButtonSelected "Multiple deployment allowed" false
+	    
+		get-tree | select "Model Validation/Constraints"
+	    get-tree -after [get-label "Constraint categories:"] | select "Capella/Design/Completeness"
+	    with [get-table] {
+	        checkPropertyItemSelected "DCOM_14 - Implemented interface delegation" false
+	        checkPropertyItemSelected "DCOM_15 - Exchange item allocation consistency" true
+	        checkPropertyItemSelected "DCOM_16 - Interface Exchange item allocation consistency" true
+	    }
+	    get-button OK | click
+	}
+}
+
+
+proc "checkPropertyButtonSelected" [val propertyName] [val propertyValue] {
+	get-button $propertyName | get-property selected | equals $propertyValue | verify-true    
+}
+
+proc "checkPropertyItemSelected" [val propertyName] [val propertyValue] {
+	get-item $propertyName | get-property checked | equals $propertyValue | verify-true    
+}
+
+
+proc "checkDefaultPreferences" [val projectName] {
+
+	global [val prefWindow ""] true
+
+	// Open the Preference window
+	if [ $projectName | not-eq "" ] {
+		get-view "Capella Project Explorer" | get-tree | select $projectName | get-menu Properties | click
+		
+		global [val prefWindow [concat "Properties for " $projectName]] true
+	} -else {
+		get-preferences-menu | click
+		global [val prefWindow "Preferences"] true
+		
+	}
+
+	// Check Capella Model Preferences
+	get-window $prefWindow | get-tree | select "Capella/Model"
+	with [get-window $prefWindow] {
+	    get-group "Reuse of components" | checkPropertyButtonSelected "Allow reuse of components" false
+	    with [get-group "Inheritance Management"] {
+	        checkPropertyButtonSelected "Multiple inheritance allowed" false
+	        checkPropertyButtonSelected "Component/Actor inheritance allowed in diagram" false
+	    }
+	    get-group "Deployment Management" | checkPropertyButtonSelected "Multiple deployment allowed" false
+	    
+	    get-group "Data Management" | checkPropertyButtonSelected "Delete related associations when a class becomes primitive" true
+	    with [get-group Synchronizations] {
+	        checkPropertyButtonSelected "Synchronize Component Port to Function Port allocation when allocating Functional Exchanges to Component Exchanges" true
+	        checkPropertyButtonSelected "Synchronize Physical Port to Component Port delegation when allocating Component Exchanges to Physical Links" true
+	        checkPropertyButtonSelected "Synchronize Physical Port to Component Port delegation when allocating Component Exchanges to Physical Paths" true
+	    }
+	    get-group "Inter-model integrity" 
+	        | checkPropertyButtonSelected "Prevent on the fly inter-model dependency violation (notice that performances may be impacted)" true
+	    get-group "Modes and States Management" | checkPropertyButtonSelected "Mode/State mixed hierarchy allowed" false
+	}
+	
+	// Check Capella Transitions/Generation Preferences
+	get-window $prefWindow | get-tree | select "Capella/Transitions\\/Generation"
+	with [get-window $prefWindow] {
+	    with [get-group Scope] {
+	        with [get-group "Transit Property Values while transition of Model Elements"] {
+	            checkPropertyButtonSelected "Include applied Property Values" true
+	            checkPropertyButtonSelected "Include owned Property Values" true
+	        }
+	        checkPropertyButtonSelected "Transit Interfaces handled by Components from context/logical layers to physical architecture" false
+	        checkPropertyButtonSelected "Transit allocated Exchange Items while transition of Interfaces, Functions or Components" false
+	        checkPropertyButtonSelected "Transit Datatypes handled by Exchanges items while transition of Exchange Items" false
+	        checkPropertyButtonSelected "Transit State Machines owned by a Component while transition of Components" false
+	        checkPropertyButtonSelected "Transit Functional elements allocated by an Operational Entity or Operational Actor while their transition" true
+	    }
+	    with [get-group "Property Values"] {
+	        checkPropertyButtonSelected "Propagate Property Values application" true
+	        checkPropertyButtonSelected "Include involved elements" false
+	    }
+	    with [get-group "Logical Components to Physical Components"] {
+	        checkPropertyButtonSelected "Propagate logical component breakdown in physical architecture" true
+	        checkPropertyButtonSelected "Propagate only leaf logical component in physical architecture" false
+	    }
+	    with [get-group "Default Component Port, Exchange and Interface generation"] {
+	        checkPropertyButtonSelected "Use STANDARD Component Port rather than FLOW Component Port" false
+	        checkPropertyButtonSelected "Generate Component Port while generating Interfaces" true
+	    }
+	    get-group Log | checkPropertyButtonSelected "Enable log in Information view" true
+	
+		// Quit the window
+		get-button Cancel | click
+	}
+}
+
+
+proc "changePreferences" [val projectName] {
+
+	global [val prefWindow ""] true
+
+	// Open the Preference window
+	if [ $projectName | not-eq "" ] {
+		get-view "Capella Project Explorer" | get-tree | select $projectName | get-menu Properties | click
+		
+		global [val prefWindow [concat "Properties for " $projectName]] true
+	} -else {
+		get-preferences-menu | click
+		global [val prefWindow "Preferences"] true
+		
+	}
+
+	// Check Capella Model Preferences
+	get-window $prefWindow | get-tree | select "Capella/Model"
+	with [get-window $prefWindow] {
+	    get-group "Reuse of components" | get-button "Allow reuse of components" | check
+	    with [get-group "Inheritance Management"] {
+	        get-button "Multiple inheritance allowed" | check
+	        get-button "Component/Actor inheritance allowed in diagram" | check
+	    }
+	    get-group "Deployment Management" | get-button "Multiple deployment allowed"  | check
+	    get-group "Data Management" | get-button "Delete related associations when a class becomes primitive" 
+	         | uncheck
+	    with [get-group Synchronizations] {
+	        get-button "Synchronize Component Port to Function Port allocation when allocating Functional Exchanges to Component Exchanges" 
+	            | uncheck
+	        get-button "Synchronize Physical Port to Component Port delegation when allocating Component Exchanges to Physical Links" 
+	            | uncheck
+	        get-button "Synchronize Physical Port to Component Port delegation when allocating Component Exchanges to Physical Paths" 
+	            | uncheck
+	    }
+	    get-group "Inter-model integrity" 
+	        | get-button "Prevent on the fly inter-model dependency violation (notice that performances may be impacted)" 
+	        | uncheck
+	    get-group "Modes and States Management" | get-button "Mode/State mixed hierarchy allowed" | check
+	}
+	
+	// Check Capella Transitions/Generation Preferences
+	get-window $prefWindow | get-tree | select "Capella/Transitions\\/Generation"
+	with [get-window $prefWindow] {
+	    with [get-group Scope] {
+	        with [get-group "Transit Property Values while transition of Model Elements"] {
+	            get-button "Include applied Property Values" | uncheck
+	            get-button "Include owned Property Values" | uncheck
+	        }
+	        get-button "Transit Interfaces handled by Components from context/logical layers to physical architecture" 
+	            | check
+	        get-button "Transit allocated Exchange Items while transition of Interfaces, Functions or Components" 
+	            | check
+	        get-button "Transit Datatypes handled by Exchanges items while transition of Exchange Items" 
+	            | check
+	        get-button "Transit State Machines owned by a Component while transition of Components" | check
+	        get-button "Transit Functional elements allocated by an Operational Entity or Operational Actor while their transition" 
+	            | uncheck
+	    }
+	    with [get-group "Property Values"] {
+	        get-button "Propagate Property Values application" | uncheck
+	        get-button "Include involved elements" | check
+	    }
+	    with [get-group "Logical Components to Physical Components"] {
+	        get-button "Propagate only leaf logical component in physical architecture" | click
+	    }
+	    with [get-group "Default Component Port, Exchange and Interface generation"] {
+	        get-button "Use STANDARD Component Port rather than FLOW Component Port" | check
+	        get-button "Generate Component Port while generating Interfaces" | uncheck
+	    }
+	    get-group Log | get-button "Enable log in Information view" | uncheck
+	
+		// Quit the window
+		get-button OK | click
+	}
+}
+
+proc "checkChangedPreferences" [val projectName] {
+
+	global [val prefWindow ""] true
+
+	// Open the Preference window
+	if [ $projectName | not-eq "" ] {
+		get-view "Capella Project Explorer" | get-tree | select $projectName | get-menu Properties | click
+		
+		global [val prefWindow [concat "Properties for " $projectName]] true
+	} -else {
+		get-preferences-menu | click
+		global [val prefWindow "Preferences"] true
+		
+	}
+
+	// Check Capella Model Preferences
+	get-window $prefWindow | get-tree | select "Capella/Model"
+	with [get-window $prefWindow] {
+	    get-group "Reuse of components" | get-button "Allow reuse of components" | get-property selected | equals true 
+	        | verify-true
+	    with [get-group "Inheritance Management"] {
+	        get-button "Multiple inheritance allowed" | get-property selected | equals true | verify-true
+	        get-button "Component/Actor inheritance allowed in diagram" | get-property selected | equals true | verify-true
+	    }
+	    get-group "Deployment Management" | get-button "Multiple deployment allowed" | get-property selected | equals true 
+	        | verify-true
+	    get-group "Data Management" | get-button "Delete related associations when a class becomes primitive" 
+	        | get-property selected | equals false | verify-true
+	    with [get-group Synchronizations] {
+	        get-button "Synchronize Component Port to Function Port allocation when allocating Functional Exchanges to Component Exchanges" 
+	            | get-property selected | equals false | verify-true
+	        get-button "Synchronize Physical Port to Component Port delegation when allocating Component Exchanges to Physical Links" 
+	            | get-property selected | equals false | verify-true
+	        get-button "Synchronize Physical Port to Component Port delegation when allocating Component Exchanges to Physical Paths" 
+	            | get-property selected | equals false | verify-true
+	    }
+	    get-group "Inter-model integrity" 
+	        | get-button "Prevent on the fly inter-model dependency violation (notice that performances may be impacted)" 
+	        | get-property selected | equals false | verify-true
+	    get-group "Modes and States Management" | get-button "Mode/State mixed hierarchy allowed" | get-property selected 
+	        | equals true | verify-true
+	}
+	
+	// Check Capella Transitions/Generation Preferences
+	get-window $prefWindow | get-tree | select "Capella/Transitions\\/Generation"
+	with [get-window $prefWindow] {
+	    with [get-group Scope] {
+	        with [get-group "Transit Property Values while transition of Model Elements"] {
+	            get-button "Include applied Property Values" | get-property selected | equals false | verify-true
+	            get-button "Include owned Property Values" | get-property selected | equals false | verify-true
+	        }
+	        get-button "Transit Interfaces handled by Components from context/logical layers to physical architecture" 
+	            | get-property selected | equals true | verify-true
+	        get-button "Transit allocated Exchange Items while transition of Interfaces, Functions or Components" 
+	            | get-property selected | equals true | verify-true
+	        get-button "Transit Datatypes handled by Exchanges items while transition of Exchange Items" 
+	            | get-property selected | equals true | verify-true
+	        get-button "Transit State Machines owned by a Component while transition of Components" | get-property selected 
+	            | equals true | verify-true
+	        get-button "Transit Functional elements allocated by an Operational Entity or Operational Actor while their transition" 
+	            | get-property selected | equals false | verify-true
+	    }
+	    with [get-group "Property Values"] {
+	        get-button "Propagate Property Values application" | get-property selected | equals false | verify-true
+	        get-button "Include involved elements" | get-property selected | equals true | verify-true
+	    }
+	    with [get-group "Logical Components to Physical Components"] {
+	        get-button "Propagate logical component breakdown in physical architecture" | get-property selected 
+	            | equals false | verify-true
+	        get-button "Propagate only leaf logical component in physical architecture" | get-property selected 
+	            | equals true | verify-true
+	    }
+	    with [get-group "Default Component Port, Exchange and Interface generation"] {
+	        get-button "Use STANDARD Component Port rather than FLOW Component Port" | get-property selected | equals true 
+	            | verify-true
+	        get-button "Generate Component Port while generating Interfaces" | get-property selected | equals false 
+	            | verify-true
+	    }
+	    get-group Log | get-button "Enable log in Information view" | get-property selected | equals false | verify-true
+	
+		// Quit the window
+		get-button Cancel | click
+	}
+}
+
+proc "checkUnchangedPreferencesProject1" [val projectName] {
+
+	global [val prefWindow ""] true
+
+	// Open the Preference window
+	if [ $projectName | not-eq "" ] {
+		get-view "Capella Project Explorer" | get-tree | select $projectName | get-menu Properties | click
+		
+		global [val prefWindow [concat "Properties for " $projectName]] true
+	} -else {
+		get-preferences-menu | click
+		global [val prefWindow "Preferences"] true
+		
+	}
+
+	// Check Capella Model Preferences (same as default)
+	get-window $prefWindow | get-tree | select "Capella/Model"
+	with [get-window $prefWindow] {
+	    get-group "Reuse of components" | get-button "Allow reuse of components" | get-property selected | equals false 
+	        | verify-true
+	    with [get-group "Inheritance Management"] {
+	        get-button "Multiple inheritance allowed" | get-property selected | equals false | verify-true
+	        get-button "Component/Actor inheritance allowed in diagram" | get-property selected | equals false | verify-true
+	    }
+	    get-group "Deployment Management" | get-button "Multiple deployment allowed" | get-property selected | equals false 
+	        | verify-true
+	    get-group "Data Management" | get-button "Delete related associations when a class becomes primitive" 
+	        | get-property selected | equals true | verify-true
+	    with [get-group Synchronizations] {
+	        get-button "Synchronize Component Port to Function Port allocation when allocating Functional Exchanges to Component Exchanges" 
+	            | get-property selected | equals true | verify-true
+	        get-button "Synchronize Physical Port to Component Port delegation when allocating Component Exchanges to Physical Links" 
+	            | get-property selected | equals true | verify-true
+	        get-button "Synchronize Physical Port to Component Port delegation when allocating Component Exchanges to Physical Paths" 
+	            | get-property selected | equals true | verify-true
+	    }
+	    get-group "Inter-model integrity" 
+	        | get-button "Prevent on the fly inter-model dependency violation (notice that performances may be impacted)" 
+	        | get-property selected | equals true | verify-true
+	    get-group "Modes and States Management" | get-button "Mode/State mixed hierarchy allowed" | get-property selected 
+	        | equals false | verify-true
+	}
+	
+	// Check Capella Transitions/Generation Preferences  (same as changed one)
+	get-window $prefWindow | get-tree | select "Capella/Transitions\\/Generation"
+	with [get-window $prefWindow] {
+	    with [get-group Scope] {
+	        with [get-group "Transit Property Values while transition of Model Elements"] {
+	            get-button "Include applied Property Values" | get-property selected | equals false | verify-true
+	            get-button "Include owned Property Values" | get-property selected | equals false | verify-true
+	        }
+	        get-button "Transit Interfaces handled by Components from context/logical layers to physical architecture" 
+	            | get-property selected | equals true | verify-true
+	        get-button "Transit allocated Exchange Items while transition of Interfaces, Functions or Components" 
+	            | get-property selected | equals true | verify-true
+	        get-button "Transit Datatypes handled by Exchanges items while transition of Exchange Items" 
+	            | get-property selected | equals true | verify-true
+	        get-button "Transit State Machines owned by a Component while transition of Components" | get-property selected 
+	            | equals true | verify-true
+	        get-button "Transit Functional elements allocated by an Operational Entity or Operational Actor while their transition" 
+	            | get-property selected | equals false | verify-true
+	    }
+	    with [get-group "Property Values"] {
+	        get-button "Propagate Property Values application" | get-property selected | equals false | verify-true
+	        get-button "Include involved elements" | get-property selected | equals true | verify-true
+	    }
+	    // CAUTION this option is the same as the default one !!!
+	    with [get-group "Logical Components to Physical Components"] {
+	        get-button "Propagate logical component breakdown in physical architecture" | get-property selected 
+	            | equals true | verify-true
+	        get-button "Propagate only leaf logical component in physical architecture" | get-property selected 
+	            | equals false | verify-true
+	    }
+	    with [get-group "Default Component Port, Exchange and Interface generation"] {
+	        get-button "Use STANDARD Component Port rather than FLOW Component Port" | get-property selected | equals true 
+	            | verify-true
+	        get-button "Generate Component Port while generating Interfaces" | get-property selected | equals false 
+	            | verify-true
+	    }
+	    get-group Log | get-button "Enable log in Information view" | get-property selected | equals false | verify-true
+	
+		// Quit the window
+		get-button Cancel | click
+	}
+}
+
+
+proc "restoreDefaultPreferences" [val projectName] {
+
+	global [val prefWindow ""] true
+
+	// Open the Preference window
+	if [ $projectName | not-eq "" ] {
+		get-view "Capella Project Explorer" | get-tree | select $projectName | get-menu Properties | click
+		
+		global [val prefWindow [concat "Properties for " $projectName]] true
+	} -else {
+		get-preferences-menu | click
+		global [val prefWindow "Preferences"] true
+		
+	}
+
+	with [get-window $prefWindow] {
+		get-tree | select "Capella/Model"
+	    get-tree | select "Capella/Model"
+	    get-button "Restore Defaults" | click
+	    get-button Apply | click
+	    
+	    get-tree | select "Capella/Transitions\\/Generation"
+	    get-button "Restore Defaults" | click
+	    get-button Apply | click
+	    
+	    get-tree | select "Capella/Delete"
+	    get-button "Restore Defaults" | click
+	    get-button Apply | click
+	    
+	    get-button OK | click
+	
+	}
+}
+
 
 proc checkValidationProfile {
 	get-preferences-menu | click
@@ -69,9 +562,23 @@ proc checkValidationProfile {
 	    get-button OK | click
 	}
 	
+	// Check config ConfigProject1_preferences
 	with [get-view "Capella Project Explorer" | get-tree] {
 	    select "MelodyProject1/MelodyProject1.aird" | get-menu "Open Session" | click
-	    select "MelodyProject1/MelodyProject1.aird/MelodyProject1" | get-menu "Validate Model" | click
+	    select "MelodyProject1/MelodyProject1.aird/MelodyProject1" | get-menu "Validate Model/ConfigProject1_preferences" | click
+	}
+	get-window "Validation Problems" | get-button OK | click
+	
+	with [get-view Information | get-tree] {
+	    get-column-header Message | click
+	    select "Capella \\(26 items\\)" | double-click
+	    get-item "Capella \\(26 items\\)" | get-property childCount | equals 1 | verify-true
+		get-item "Capella \\(26 items\\)" | get-property "getItems().TreeItem[0].getText()" | contains "Quality \\(26 items\\)" | verify-false
+	}
+	
+	// Check config Validate Model
+	with [get-view "Capella Project Explorer" | get-tree] {
+	    select "MelodyProject1/MelodyProject1.aird/MelodyProject1" | get-menu "Validate Model/Validate Model" | click
 	}
 	get-window "Validation Problems" | get-button OK | click
 	
@@ -79,7 +586,7 @@ proc checkValidationProfile {
 	    get-column-header Message | click
 	    select "Capella \\(4 items\\)" | double-click
 	    get-item "Capella \\(4 items\\)" | get-property childCount | equals 1 | verify-true
-		get-item "Capella \\(4 items\\)" | get-property "getItems().TreeItem[0].getText()" | contains "Quality" | verify-false
+		get-item "Capella \\(4 items\\)" | get-property "getItems().TreeItem[0].getText()" | contains "Design \\(4 items\\)" | verify-false
 	}
 }
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

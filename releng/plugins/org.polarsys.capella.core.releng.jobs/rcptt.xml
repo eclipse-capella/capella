@@ -43,6 +43,9 @@
 			<arg value="-testOptions" />      
 			<arg value="testExecTimeout=300;execTimeout=3600" />
 			
+			<arg value="-autArgs" />      
+			<arg value="-EPF;${test-results}/User2Prefs.epf" />
+			
 <!--			<arg value="-autVMArgs" />      
 			<arg value="-Xmx1024m;-XX:MaxPermSize=256m;-javaagent:${jacoco-path}/lib/jacocoagent.jar=destfile=${jacoco-report}" />
 -->
