@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Capella" uid="org.polarsys.capella.rcp.product" id="org.polarsys.capella.rcp.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.1.0" useFeatures="true" includeLaunchers="true">
+<product name="Capella" uid="org.polarsys.capella.rcp.product" id="org.polarsys.capella.rcp.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.1.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
-      <image path="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/CapellaAbout.png"/>
+      <image path="icons/CapellaAbout.png"/>
       <text>
          %productBlurb
       </text>
@@ -34,7 +34,7 @@
       </vmArgsWin>
    </launcherArgs>
 
-   <windowImages i16="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/CapellaAdavance16x16.gif" i32="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella32x32.png" i48="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella48x48.png"/>
+   <windowImages i16="../org.polarsys.capella.rcp/icons/Capella16x16.gif" i32="../org.polarsys.capella.rcp/icons/Capella32x32.png" i48="../org.polarsys.capella.rcp/icons/Capella48x48.png"/>
 
    <splash
       location="org.polarsys.capella.core.platform.sirius.ui.perspective"
