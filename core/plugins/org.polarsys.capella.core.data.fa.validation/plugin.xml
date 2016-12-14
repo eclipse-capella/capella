@@ -93,10 +93,26 @@
                                This rule generates a warning if a Function Port conveys an Exchange Item which is not allocated to any connected Functional Exchange.
                             </description>
                          </constraint>
+                         <constraint
+                               class="org.polarsys.capella.core.data.fa.validation.functionPort.DCOM_22_UnsynchronizedExchangeItems"
+                               id="DCOM_22"
+                               isEnabledByDefault="false"
+                               lang="java"
+                               mode="Batch"
+                               name="DCOM_22 - Unsynchronized Function Port Exchange Items"
+                               severity="WARNING"
+                               statusCode="1">
+                            <message>
+                               &quot;{0}&quot; ({1}) and all its connected Functional Exchanges do not have the exact same Exchange Items.
+                            </message>
+                            <target
+                                  class="FunctionPort">
+                            </target>
+                            <description>
+                               This rule generates a warning if a Function Port and all its connected Functional Exchanges do not have the exact same Exchange Items.
+                            </description>
+                         </constraint>
          </constraints> 
-         
-         
-         
          <constraints categories="capella.category/design/consistency">
          </constraints>
          <constraints categories="capella.category/transition/justification/generic">
