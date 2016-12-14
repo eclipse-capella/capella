@@ -72,7 +72,7 @@
             id="org.polarsys.capella.core.product.splashHandler">
       </splashHandler>
       <splashHandlerProductBinding
-            productId="org.polarsys.capella.core.platform.sirius.ui.perspective.product"
+            productId="org.polarsys.capella.rcp.product"
             splashId="org.polarsys.capella.core.product.splashHandler">
       </splashHandlerProductBinding>
    </extension-->
@@ -84,7 +84,7 @@
       	</statusHandler>
          <statusHandlerProductBinding
                handlerId="org.polarsys.capella.core.platform.sirius.ui.perspective.statusHandler"
-               productId="org.polarsys.capella.core.platform.sirius.ui.perspective.product">
+               productId="org.polarsys.capella.rcp.product">
          </statusHandlerProductBinding>
    </extension>
 	<extension
