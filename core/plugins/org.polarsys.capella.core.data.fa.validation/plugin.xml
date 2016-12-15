@@ -422,6 +422,25 @@ In Case the ComponentExchange is of kind DELEGATION
 - &quot;source port/target Port&quot; can only have orientation &apos;IN/IN&apos; or &apos;OUT/OUT&apos;
                </description>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalExchange.I_35_FunctionalExchangeNameConsistency"
+                  id="I_35"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_35 - Related functional exchanges must have identical names"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Functional Exchange) should have identical names
+               </message>
+               <description>
+                  This rule checks that Functional Exchanges connected to the same source and/or target port have identical names.
+               </description>
+               <target
+                     class="FunctionalExchange">
+               </target>
+            </constraint>
          </constraints>
          <constraints categories="capella.category/design/well-formedness/components">
             <constraint class="org.polarsys.capella.core.data.fa.validation.function.MDCHK_Function_ComponentFunctionAllocation" id="DWF_DC_11" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DC_11 - Component Functional Allocation" severity="ERROR" statusCode="1">
