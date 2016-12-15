@@ -224,7 +224,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements IEditingD
      * {@inheritDoc}
      */
     @Override
-    public void setFilters(ViewerFilter[] filters) {
+    public void setFilters(ViewerFilter... filters) {
       super.setFilters(filters);
       addFilter(getPatternFilter());
     }
@@ -782,9 +782,10 @@ public class CapellaCommonNavigator extends CommonNavigator implements IEditingD
    * @see org.eclipse.ui.navigator.CommonNavigator#getAdapter(java.lang.Class)
    */
   @Override
-  public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+  @SuppressWarnings("unchecked")
+  public <T> T getAdapter(Class<T> adapter) {
     if (IPropertySheetPage.class.equals(adapter)) {
-      return getPropertySheetPage();
+      return (T) getPropertySheetPage();
     }
     return super.getAdapter(adapter);
   }

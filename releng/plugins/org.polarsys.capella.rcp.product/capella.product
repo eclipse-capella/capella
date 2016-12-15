@@ -45,12 +45,12 @@
       <solaris/>
       <win useIco="false">
          <bmp
-            winSmallHigh="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella16x16.bmp"
-            winSmallLow="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella16x16_8bits.bmp"
-            winMediumHigh="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella32x32.bmp"
-            winMediumLow="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella32x32_8bits.bmp"
-            winLargeHigh="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella48x48.bmp"
-            winLargeLow="/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella48x48_8bits.bmp"/>
+            winSmallHigh="../../../core/plugins/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella16x16.bmp"
+            winSmallLow="../../../core/plugins/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella16x16_8bits.bmp"
+            winMediumHigh="../../../core/plugins/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella32x32.bmp"
+            winMediumLow="../../../core/plugins/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella32x32_8bits.bmp"
+            winLargeHigh="../../../core/plugins/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella48x48.bmp"
+            winLargeLow="../../../core/plugins/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella48x48_8bits.bmp"/>
       </win>
    </launcher>
 
