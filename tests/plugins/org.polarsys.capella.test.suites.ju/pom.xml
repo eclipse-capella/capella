@@ -32,9 +32,45 @@
 					<useUIThread>true</useUIThread>
 					<testSuite>org.polarsys.capella.test.suites.ju</testSuite>
 					<testClass>org.polarsys.capella.test.suites.ju.RunInUITestSuite</testClass>
-					<!--testRuntime>p2Installed</testRuntime-->
 				</configuration>
 			</plugin>
+			<!--plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>RunInNotUITestSuite</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<product>${capella-product-id}</product>
+							<application>${capella-application-id}</application>
+							<useUIHarness>false</useUIHarness>
+							<useUIThread>true</useUIThread>
+							<testSuite>org.polarsys.capella.test.suites.ju</testSuite>
+							<testClass>org.polarsys.capella.test.suites.ju.RunInNotUITestSuite</testClass>
+						</configuration>
+					</execution>
+					<execution>
+						<id>RunInUITestSuite</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<product>${capella-product-id}</product>
+							<application>${capella-application-id}</application>
+							<useUIHarness>true</useUIHarness>
+							<useUIThread>true</useUIThread>
+							<testSuite>org.polarsys.capella.test.suites.ju</testSuite>
+							<testClass>org.polarsys.capella.test.suites.ju.RunInUITestSuite</testClass>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin-->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
@@ -53,14 +89,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<!--build> <plugins> <plugin> <groupId>org.eclipse.tycho</groupId> <artifactId>tycho-surefire-plugin</artifactId> 
-		<version>${tycho-version}</version> <executions> <execution> <id>RunInNotUITestSuite</id> 
-		<phase>integration-test</phase> <goals> <goal>test</goal> </goals> <configuration> 
-		<product>${capella-product-id}</product> <testSuite>org.polarsys.capella.test.suites.ju</testSuite> 
-		<testClass>org.polarsys.capella.test.suites.ju.RunInNotUITestSuite</testClass> 
-		</configuration> </execution> <execution> <id>RunInUITestSuite</id> <phase>integration-test</phase> 
-		<goals> <goal>test</goal> </goals> <configuration> <product>${capella-product-id}</product> 
-		<useUIHarness>true</useUIHarness> <testSuite>org.polarsys.capella.test.suites.ju</testSuite> 
-		<testClass>org.polarsys.capella.test.suites.ju.RunInUITestSuite</testClass> 
-		</configuration> </execution> </executions> </plugin> </plugins> </build -->
 </project>
