@@ -55,7 +55,7 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.StringHelper;
-import org.polarsys.capella.common.queries.debug.QueryDebugger;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
@@ -150,8 +150,6 @@ import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConsta
 import org.polarsys.capella.core.model.helpers.AbstractDependenciesPkgExt;
 import org.polarsys.capella.core.model.helpers.AbstractExchangeItemPkgExt;
 import org.polarsys.capella.core.model.helpers.AssociationExt;
-import org.polarsys.capella.core.model.helpers.ClassExt;
-import org.polarsys.capella.core.model.helpers.CollectionExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
 import org.polarsys.capella.core.model.helpers.DataTypeExt;
@@ -198,7 +196,7 @@ public class InformationServices {
     if (query != null) {
       return query.getAvailableElements(parameter);
     }
-    return new ArrayList<CapellaElement>(0);
+    return Collections.emptyList();
   }
 
   /**
@@ -214,7 +212,7 @@ public class InformationServices {
     if (query != null) {
       return query.getAvailableElements(parameter);
     }
-    return new ArrayList<CapellaElement>(0);
+    return Collections.emptyList();
   }
 
   /**
@@ -230,7 +228,7 @@ public class InformationServices {
     if (query != null) {
       return query.getAvailableElements(property);
     }
-    return new ArrayList<CapellaElement>(0);
+    return Collections.emptyList();
   }
 
   /**
@@ -1373,17 +1371,12 @@ public class InformationServices {
    * @param containerView
    * @return
    */
-  @SuppressWarnings({ "unchecked", "rawtypes" })
   public List<DataPkg> getCDBShowHideDataPkgsScope(final EObject elementView) {
-    List<DataPkg> returnedPackages = new ArrayList<DataPkg>();
+    List<DataPkg> returnedPackages = null;
     DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(elementView);
     if (elementView.equals(diagram)) {
-      // OLD CODE
-      returnedPackages = DataPkgExt.getAllDataPkgs(diagram.getTarget());
-      // NEW CODE
-      returnedPackages = (List) QueryDebugger.executeQueryWithInclusionDebug(
-          QueryIdentifierConstants.GET_ALL_DATA_PCK_FOR_LIB, diagram.getTarget(), returnedPackages);
-      // END CODE REFACTOR
+      returnedPackages = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_DATA_PCK_FOR_LIB,
+          diagram.getTarget());
     } else if (elementView instanceof DNodeContainer) {
       DataPkg currentPkg = (DataPkg) ((DNodeContainer) elementView).getTarget();
       returnedPackages = DataPkgExt.getRecursiveSubDataPkgs(currentPkg);
@@ -1409,17 +1402,12 @@ public class InformationServices {
    * @param containerView
    * @return
    */
-  @SuppressWarnings({ "unchecked", "rawtypes" })
   public List<InterfacePkg> getAvailableInterfacePkgsToInsert(final EObject elementView) {
-    List<InterfacePkg> returnedPackages = new ArrayList<InterfacePkg>();
+    List<InterfacePkg> returnedPackages = null;
     DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(elementView);
     if (elementView.equals(diagram)) {
-      // OLD CODE
-      returnedPackages = InterfacePkgExt.getAllInterfacePkgs(diagram.getTarget());
-      // NEW CODE
-      returnedPackages = (List) QueryDebugger.executeQueryWithInclusionDebug(
-          QueryIdentifierConstants.GET_ALL_INTERFACE_PCKS_FOR_LIB, diagram.getTarget(), returnedPackages);
-      // END CODE REFACTOR
+      returnedPackages = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACE_PCKS_FOR_LIB,
+          diagram.getTarget());
     } else if (elementView instanceof DNodeContainer) {
       InterfacePkg currentPkg = (InterfacePkg) ((DNodeContainer) elementView).getTarget();
       returnedPackages = InterfacePkgExt.getRecursiveSubInterfacePkgs(currentPkg);
@@ -1758,16 +1746,10 @@ public class InformationServices {
    * @param elementView
    * @return all the available dataTypes we can insert in the elementView
    */
-  @SuppressWarnings({ "unchecked", "rawtypes" })
   public Collection<DataType> getAvailableDataTypesToInsert(final EObject elementView) {
     if (elementView instanceof DDiagram) {
-      // OLD CODE
-      Collection<DataType> result = DataTypeExt.getAllDataTypes(((DSemanticDiagram) elementView).getTarget());
-      // NEW CODE
-      result = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_DATA_TYPES_FOR_LIB,
-          ((DSemanticDiagram) elementView).getTarget(), result);
-      // END CODE REFACTOR
-      return result;
+      return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_DATA_TYPES_FOR_LIB,
+          ((DSemanticDiagram) elementView).getTarget());
     }
     if (elementView instanceof DNodeContainer) {
       DNodeContainer currentContainer = (DNodeContainer) elementView;
@@ -1775,7 +1757,7 @@ public class InformationServices {
         return DataPkgExt.getAllDataTypes((DataPkg) currentContainer.getTarget());
       }
     }
-    return new ArrayList<DataType>();
+    return Collections.emptyList();
   }
 
   /**
@@ -1784,16 +1766,10 @@ public class InformationServices {
    * @param elementView
    * @return all the available classes we can insert in the elementView
    */
-  @SuppressWarnings({ "unchecked", "rawtypes" })
   public Collection<Class> getAvailableClassesToInsert(final EObject elementView) {
     if (elementView instanceof DDiagram) {
-      // OLD CODE
-      Collection<Class> result = ClassExt.getAllClasses(((DSemanticDiagram) elementView).getTarget());
-      // NEW CODE
-      result = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_CLASSES_FOR_LIB,
-          ((DSemanticDiagram) elementView).getTarget(), result);
-      // END CODE REFACTOR
-      return result;
+      return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_CLASSES_FOR_LIB,
+          ((DSemanticDiagram) elementView).getTarget());
     }
     if (elementView instanceof DNodeContainer) {
       DNodeContainer currentContainer = (DNodeContainer) elementView;
@@ -1801,7 +1777,7 @@ public class InformationServices {
         return DataPkgExt.getAllClasses((DataPkg) currentContainer.getTarget());
       }
     }
-    return new ArrayList<Class>();
+    return Collections.emptyList();
   }
 
   /**
@@ -1810,16 +1786,10 @@ public class InformationServices {
    * @param elementView
    * @return all the available interfaces we can insert in the containerView
    */
-  @SuppressWarnings({ "unchecked", "rawtypes" })
   public Collection<Interface> getAvailableInterfacesToInsert(final EObject elementView) {
     if (elementView instanceof DDiagram) {
-      // OLD CODE
-      Collection<Interface> result = InterfaceExt.getAllInterfaces(((DSemanticDiagram) elementView).getTarget());
-      // NEW CODE
-      result = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_INTERFACES_FOR_LIB,
-          ((DSemanticDiagram) elementView).getTarget(), result);
-      // END CODE REFACTOR
-      return result;
+      return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES_FOR_LIB,
+          ((DSemanticDiagram) elementView).getTarget());
     }
     if (elementView instanceof DNodeContainer) {
       DNodeContainer currentContainer = (DNodeContainer) elementView;
@@ -1827,7 +1797,7 @@ public class InformationServices {
         return InterfacePkgExt.getAllInterfaces((InterfacePkg) currentContainer.getTarget());
       }
     }
-    return new ArrayList<Interface>();
+    return Collections.emptyList();
   }
 
   /**
@@ -1844,7 +1814,7 @@ public class InformationServices {
     if (context instanceof InterfacePkg) {
       return InterfacePkgExt.getAllInterfaces((InterfacePkg) context);
     }
-    return new ArrayList<Interface>();
+    return Collections.emptyList();
   }
 
   /**
@@ -1853,18 +1823,10 @@ public class InformationServices {
    * @param elementView
    * @return all the available exchange items we can insert in the elementView
    */
-  @SuppressWarnings({ "unchecked", "rawtypes" })
   public Collection<AbstractExchangeItem> getAvailableExchangeItemsToInsert(final EObject elementView) {
     if (elementView instanceof DDiagram) {
-      // OLD CODE
-      Collection<AbstractExchangeItem> result = ExchangeItemExt.getAllExchangeItems(((DSemanticDiagram) elementView)
-          .getTarget());
-      // NEW CODE
-      result = (List) QueryDebugger
-          .executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_EXCHANGE_ITEMS_FOR_LIB,
-              ((DSemanticDiagram) elementView).getTarget(), result);
-      // END CODE REFACTOR
-      return result;
+      return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_EXCHANGE_ITEMS_FOR_LIB,
+          ((DSemanticDiagram) elementView).getTarget());
     }
     if (elementView instanceof DNodeContainer) {
       DNodeContainer currentContainer = (DNodeContainer) elementView;
@@ -1872,7 +1834,7 @@ public class InformationServices {
         return AbstractExchangeItemPkgExt.getAllAbstractExchangeItems((DataPkg) currentContainer.getTarget());
       }
     }
-    return new ArrayList<AbstractExchangeItem>();
+    return Collections.emptyList();
   }
 
   /**
@@ -1881,18 +1843,11 @@ public class InformationServices {
    * @param elementView
    * @return all the available collections we can insert in the elementView
    */
-  @SuppressWarnings({ "unchecked", "rawtypes" })
   public Collection<org.polarsys.capella.core.data.information.Collection> getAvailableCollectionsToInsert(
       final EObject elementView) {
     if (elementView instanceof DDiagram) {
-      // OLD CODE
-      Collection<org.polarsys.capella.core.data.information.Collection> result = CollectionExt
-          .getAllCollections(((DSemanticDiagram) elementView).getTarget());
-      // NEW CODE
-      result = (List) QueryDebugger.executeQueryWithInclusionDebug(
-          QueryIdentifierConstants.GET_ALL_COLLECTIONS_FOR_LIB, ((DSemanticDiagram) elementView).getTarget(), result);
-      // END CODE REFACTOR
-      return result;
+      return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_COLLECTIONS_FOR_LIB,
+          ((DSemanticDiagram) elementView).getTarget());
     }
     if (elementView instanceof DNodeContainer) {
       DNodeContainer currentContainer = (DNodeContainer) elementView;
@@ -1900,7 +1855,7 @@ public class InformationServices {
         return DataPkgExt.getAllCollections((DataPkg) currentContainer.getTarget());
       }
     }
-    return new ArrayList<org.polarsys.capella.core.data.information.Collection>();
+    return Collections.emptyList();
   }
 
   @Deprecated
@@ -3126,7 +3081,6 @@ public class InformationServices {
    * @param containerView
    * @return
    */
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   public List<DataValue> getAvailableDataValuesToInsert(final EObject elementView) {
 
     // Initialization
@@ -3143,13 +3097,7 @@ public class InformationServices {
       // Get all dataPkg (consider layers)
       EObject diagramTarget = diagram.getTarget();
       // get all dataVales and add to result list
-      // OLD CODE
-      List<DataValue> l = DataPkgExt.getDataValues(diagramTarget);
-      // NEW CODE
-      l = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_DATA_VALUES_FOR_LIB,
-          diagramTarget, l);
-      // END CODE REFACTOR
-      result.addAll(l);
+      return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_DATA_VALUES_FOR_LIB, diagramTarget);
     }
     /*
      * If DNode Container (assume target as DataPkg)

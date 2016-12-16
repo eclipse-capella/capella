@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,13 +17,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
+import org.polarsys.capella.core.data.capellacore.Classifier;
+import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.DataPkg;
-import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.KeyPart;
 import org.polarsys.capella.core.data.information.Operation;
 import org.polarsys.capella.core.data.information.Parameter;
@@ -32,11 +33,7 @@ import org.polarsys.capella.core.data.information.Service;
 import org.polarsys.capella.core.data.information.communication.Exception;
 import org.polarsys.capella.core.data.information.datavalue.NumericReference;
 import org.polarsys.capella.core.data.information.datavalue.NumericValue;
-import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
-import org.polarsys.capella.core.data.capellacore.Classifier;
-import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
-import org.polarsys.capella.common.queries.debug.QueryDebugger;
 
 /**
  * Class helpers
@@ -52,19 +49,7 @@ public class ClassExt {
    * @return all the classes contained in the current and previous architectures
    */
   public static Collection<Class> getAllClasses(final EObject context) {
-    Collection<Class> returnedClasses = new ArrayList<Class>();
-    // OLD CODE
-    for (BlockArchitecture aBlockArchitecture : BlockArchitectureExt.getRootAndPreviousBlockArchitectures(context)) {
-      for (EObject aClass : EObjectExt.getAll(aBlockArchitecture, InformationPackage.Literals.CLASS)) {
-        returnedClasses.add((Class) aClass);
-      }
-    }
-    // NEW CODE
-    returnedClasses =
-        (List) QueryDebugger.executeQueryWithEqualityDebug(QueryIdentifierConstants.GET_ALL_CLASSES, context,
-            returnedClasses);
-    // END CODE REFACTOR
-    return returnedClasses;
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_CLASSES, context);
   }
 
   /**

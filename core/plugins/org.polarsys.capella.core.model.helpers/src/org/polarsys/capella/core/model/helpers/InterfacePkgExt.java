@@ -20,27 +20,24 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
+import org.polarsys.capella.core.data.capellacore.Classifier;
+import org.polarsys.capella.core.data.capellacore.Structure;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
-import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.helpers.information.services.ExchangeItemExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
-import org.polarsys.capella.core.data.capellacore.Classifier;
-import org.polarsys.capella.core.data.capellacore.Structure;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
-import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.queries.debug.QueryDebugger;
 
 /**
  * InterfacePkg helpers
@@ -321,22 +318,11 @@ public class InterfacePkgExt {
   }
 
   /**
-   * @param context_p
-   * @return all InterfacePkgs which are in the same architecture as context_p or in previous architecture
+   * @param context
+   * @return all InterfacePkgs which are in the same architecture as context or in previous architecture
    */
-  @SuppressWarnings({ "unchecked", "rawtypes" })
-  public static List<InterfacePkg> getAllInterfacePkgs(EObject context_p) {
-    // OLD CODE
-    List<InterfacePkg> returnedList = new ArrayList<InterfacePkg>();
-    for (BlockArchitecture anArchitecture : BlockArchitectureExt.getRootAndPreviousBlockArchitectures(context_p)) {
-      for (EObject aInterfacePkg : EObjectExt.getAll(anArchitecture, CsPackage.Literals.INTERFACE_PKG)) {
-        returnedList.add((InterfacePkg) aInterfacePkg);
-      }
-    }
-    // NEW CODE
-    returnedList = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_INTERFACE_PCKS, context_p, returnedList);
-    // END CODE REFACTOR
-    return returnedList;
+  public static List<InterfacePkg> getAllInterfacePkgs(EObject context) {
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACE_PCKS, context);
   }
 
   /**

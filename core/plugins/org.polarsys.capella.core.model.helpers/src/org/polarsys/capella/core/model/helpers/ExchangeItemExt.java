@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,22 +10,16 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.information.ExchangeItem;
-import org.polarsys.capella.core.data.information.ExchangeItemElement;
-import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.queries.debug.QueryDebugger;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.core.data.information.ExchangeItem;
+import org.polarsys.capella.core.data.information.ExchangeItemElement;
+import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
 
 /**
  */
@@ -35,17 +29,7 @@ public class ExchangeItemExt {
    * @return all the exchange items contained in the current and previous architectures
    */
   public static Collection<AbstractExchangeItem> getAllExchangeItems(final EObject context) {
-    // OLD CODE
-    Collection<AbstractExchangeItem> returnedItems = new ArrayList<AbstractExchangeItem>();
-    for (BlockArchitecture aBlockArchitecture : BlockArchitectureExt.getRootAndPreviousBlockArchitectures(context)) {
-      for (EObject anItem : EObjectExt.getAll(aBlockArchitecture, InformationPackage.Literals.EXCHANGE_ITEM)) {
-        returnedItems.add((ExchangeItem) anItem);
-      }
-    }
-    // NEW CODE
-    returnedItems = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_EXCHANGE_ITEMS, context, returnedItems);
-    // END CODE REFACTOR
-    return returnedItems;
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_EXCHANGE_ITEMS, context);
   }
 
   public static Object getEILabel(AbstractExchangeItem ei_p, boolean showExchangeItemsParameters) {

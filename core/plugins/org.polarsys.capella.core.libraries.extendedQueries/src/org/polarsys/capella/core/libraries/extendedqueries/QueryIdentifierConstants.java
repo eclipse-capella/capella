@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.polarsys.capella.core.libraries.extendedqueries;
 
 import org.polarsys.capella.core.libraries.extendedqueries.csServices.GetCCEIShowHideActors__Lib;
 import org.polarsys.capella.core.libraries.extendedqueries.csServices.GetCCEIShowHideComponent__Lib;
+import org.polarsys.capella.core.libraries.extendedqueries.csServices.GetCCIIShowHideComponent__Lib;
 import org.polarsys.capella.core.libraries.extendedqueries.csServices.GetIBShowHideComponent__Lib;
 import org.polarsys.capella.core.libraries.extendedqueries.interactionServices.GetISScopeInsertActors__Lib;
 import org.polarsys.capella.core.libraries.extendedqueries.interactionServices.GetISScopeInsertComponents__Lib;
@@ -31,6 +32,7 @@ public class QueryIdentifierConstants {
 	  public static final String GET_ALL_EXCHANGE_ITEMS_FOR_LIB = "GetAllExchangeItemsForLib";//$NON-NLS-1$
 	  public static final String GET_AVAILABLE_ARCHITECTURES_FOR_LIB = "GetAvailableArchitecturesForLib";//$NON-NLS-1$
 	  public static final String GET_CCII_INSERT_COMPONENTS_FOR_LIB = "GetCCIIInsertComponent__Lib";//$NON-NLS-1$
+	  public static final String GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB = GetCCIIShowHideComponent__Lib.class.getSimpleName();
 	  public static final String GET_CCEI_SHOW_HIDE_ACTORS_FOR_LIB = GetCCEIShowHideActors__Lib.class.getSimpleName();
 	  public static final String GET_CCEI_SHOW_HIDE_COMPONENTS_FOR_LIB = GetCCEIShowHideComponent__Lib.class.getSimpleName();
 	  public static final String GET_IB_SHOW_HIDE_COMPONENTS_FOR_LIB = GetIBShowHideComponent__Lib.class.getSimpleName();

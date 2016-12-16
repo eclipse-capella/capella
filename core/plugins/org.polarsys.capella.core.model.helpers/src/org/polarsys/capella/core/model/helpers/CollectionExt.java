@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,13 +17,13 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.common.queries.debug.QueryDebugger;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Classifier;
 import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.capellacore.Structure;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
@@ -32,11 +32,9 @@ import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.information.Collection;
 import org.polarsys.capella.core.data.information.DataPkg;
-import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.datatype.DataType;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
@@ -52,17 +50,7 @@ public class CollectionExt {
    * @return all the collections contained in the current and previous architectures
    */
   public static java.util.Collection<Collection> getAllCollections(EObject context) {
-    // OLD CODE
-    java.util.Collection<Collection> returnedCollections = new ArrayList<Collection>();
-    for (BlockArchitecture aBlockArchitecture : BlockArchitectureExt.getRootAndPreviousBlockArchitectures(context)) {
-      for (EObject aCollection : EObjectExt.getAll(aBlockArchitecture, InformationPackage.Literals.COLLECTION)) {
-        returnedCollections.add((Collection) aCollection);
-      }
-    }
-    // NEW CODE
-    returnedCollections = (List) QueryDebugger.executeQueryWithEqualityDebug(QueryIdentifierConstants.GET_ALL_COLLECTIONS, context, returnedCollections);
-    // END CODE REFACTOR
-    return returnedCollections;
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_COLLECTIONS, context);
   }
 
   /**

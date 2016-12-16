@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,14 +21,19 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
+import org.polarsys.capella.core.data.capellacore.Generalization;
+import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsFactory;
-import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
@@ -38,8 +43,8 @@ import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInv
 import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.fa.ComponentPort;
-import org.polarsys.capella.core.data.helpers.information.services.ExchangeItemExt;
 import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
+import org.polarsys.capella.core.data.helpers.information.services.ExchangeItemExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.Port;
@@ -48,17 +53,9 @@ import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
-import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.data.capellacore.Generalization;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.pa.LogicalInterfaceRealization;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
-import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.queries.debug.QueryDebugger;
 
 /**
  * Interface helpers
@@ -87,18 +84,8 @@ public class InterfaceExt {
    * @param context a Capella Element
    * @return all the interface contained in the current and previous architectures
    */
-  public static Collection<Interface> getAllInterfaces(EObject context_p) {
-    // OLD CODE
-    Collection<Interface> returnedInterfaces = new ArrayList<Interface>();
-    for (BlockArchitecture aBlockArchitecture : BlockArchitectureExt.getRootAndPreviousBlockArchitectures(context_p)) {
-      for (EObject aInterface : EObjectExt.getAll(aBlockArchitecture, CsPackage.Literals.INTERFACE)) {
-        returnedInterfaces.add((Interface) aInterface);
-      }
-    }
-    // NEW CODE
-    returnedInterfaces = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_INTERFACES, context_p, returnedInterfaces);
-    // END CODE REFACTOR
-    return returnedInterfaces;
+  public static Collection<Interface> getAllInterfaces(EObject context) {
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES, context);
   }
 
   /**

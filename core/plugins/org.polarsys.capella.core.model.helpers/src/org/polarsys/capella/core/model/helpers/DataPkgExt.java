@@ -26,7 +26,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
-import org.polarsys.capella.common.queries.debug.QueryDebugger;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Classifier;
@@ -192,20 +192,8 @@ public class DataPkgExt {
    * @param context
    * @return all DataPkgs which are in current or previous architectures
    */
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   public static List<DataPkg> getAllDataPkgs(EObject context) {
-    // OLD CODE
-    List<DataPkg> returnedList = new ArrayList<DataPkg>();
-    for (BlockArchitecture anArchitecture : BlockArchitectureExt.getRootAndPreviousBlockArchitectures(context)) {
-      for (EObject aDataPkg : EObjectExt.getAll(anArchitecture, InformationPackage.Literals.DATA_PKG)) {
-        returnedList.add((DataPkg) aDataPkg);
-      }
-    }
-    // NEW CODE
-    returnedList = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_ALL_DATA_PCK,
-        context, returnedList);
-    // END CODE REFACTOR
-    return returnedList;
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_DATA_PCK, context);
   }
 
   /**
@@ -1545,33 +1533,8 @@ public class DataPkgExt {
    * @param listPackages
    * @return
    */
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   public static List<DataValue> getDataValues(EObject semanticsObject) {
-    // OLD CODE
-    List<DataValue> result = new ArrayList<DataValue>(1);
-    List<DataPkg> listPackages = DataPkgExt.getAllDataPkgs(semanticsObject);
-    Iterator<DataPkg> itDataPkg = listPackages.iterator();
-    while (itDataPkg.hasNext()) {
-      DataPkg dataPkg = itDataPkg.next();
-      // get all owned dataValues
-      Iterator<DataValue> itDataValue = dataPkg.getOwnedDataValues().iterator();
-      while (itDataValue.hasNext()) {
-        // add to result
-        result.add(itDataValue.next());
-      }
-      // get all owned dataTypes
-      Iterator<DataType> itDataTypes = dataPkg.getOwnedDataTypes().iterator();
-      while (itDataTypes.hasNext()) {
-        DataType dataType = itDataTypes.next();
-        // get all owned DataValues from DataType and add to result
-        result.addAll(DataTypeExt.getAllDataValuesFromDataType(dataType));
-      }
-    }
-    // NEW CODE
-    result = (List) QueryDebugger.executeQueryWithEqualityDebug(QueryIdentifierConstants.GET_DATA_VALUES,
-        semanticsObject, result);
-    // END CODE REFACTOR
-    return result;
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_DATA_VALUES, semanticsObject);
   }
 
   public static boolean isPredefinedDataType(EObject element) {
