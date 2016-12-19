@@ -264,11 +264,12 @@ public class ActivitiesLauncher {
    * @param status
    */
   protected void checkStatus(IProgressMonitor monitor, IStatus status) throws Exception {
-    if (monitor.isCanceled()) {
-      if ((status != null) && status.matches(IStatus.ERROR)) {
+    if (monitor.isCanceled() && status != null) {
+      if (status.matches(IStatus.ERROR)) {
         throw new TransitionException(status);
+      } else if (status.matches(IStatus.CANCEL)) {
+        throw new OperationCanceledException(status == null ? "" : status.getMessage());
       }
-      throw new OperationCanceledException(status == null ? "" : status.getMessage());
     }
   }
 
