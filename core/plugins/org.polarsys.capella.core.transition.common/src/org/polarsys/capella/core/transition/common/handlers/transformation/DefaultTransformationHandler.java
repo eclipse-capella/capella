@@ -165,11 +165,11 @@ public class DefaultTransformationHandler implements ITransformationHandler {
   /**
    * {@inheritDoc}
    */
-  public EObject getBestTracedElement(EObject root, IContext iContext1, EClass eClass1) {
+  public EObject getBestTracedElement(EObject root, IContext context, EClass eClass) {
     ISelectionContext sContext =
-        SelectionContextHandlerHelper.getHandler(iContext1).getSelectionContext(iContext1, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION);
-    ISelectionContext context = new EClassSelectionContext(sContext, eClass1);
-    return getBestTracedElement(root, iContext1, context);
+        SelectionContextHandlerHelper.getHandler(context).getSelectionContext(context, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION);
+    ISelectionContext classContext = new EClassSelectionContext(sContext, eClass);
+    return getBestTracedElement(root, context, classContext);
   }
 
   /**
@@ -179,7 +179,8 @@ public class DefaultTransformationHandler implements ITransformationHandler {
     ISelectionContext sContext =
         SelectionContextHandlerHelper.getHandler(context).getSelectionContext(context, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION, element,
             result);
-    return getBestTracedElement(root, context, sContext);
+    ISelectionContext classContext = new EClassSelectionContext(sContext, eClass);
+    return getBestTracedElement(root, context, classContext);
   }
 
   /**

@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
@@ -25,6 +26,7 @@ import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FaPackage;
+import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalFunction;
@@ -72,7 +74,8 @@ public class AbstractFunctionRule extends AbstractCapellaElementRule {
 
   @Override
   protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
-    if (BlockArchitectureExt.getRootFunction(BlockArchitectureExt.getRootBlockArchitecture(element)) == element) {
+    if (BlockArchitectureExt.getRootFunction(BlockArchitectureExt.getRootBlockArchitecture(element),
+        false) == element) {
       return;
     }
     super.retrieveContainer(element, result, context);
@@ -153,7 +156,6 @@ public class AbstractFunctionRule extends AbstractCapellaElementRule {
         bestContainer = TransformationHandlerHelper.getInstance(context).getBestTracedElement(currentContainer, context,
             FaPackage.Literals.FUNCTION_PKG, element, result);
       }
-
       if (bestContainer != null) {
         break;
       }
@@ -163,10 +165,30 @@ public class AbstractFunctionRule extends AbstractCapellaElementRule {
   }
 
   @Override
+  protected EObject transformDirectElement(EObject element, IContext context) {
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
+    BlockArchitecture target = (BlockArchitecture) TransformationHandlerHelper.getInstance(context)
+        .getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE);
+    if (element.eContainer() instanceof FunctionPkg && element.eContainer().eContainer() instanceof BlockArchitecture) {
+      AbstractNamedElement result = BlockArchitectureExt.getRootFunction(target, true);
+      if (result != null) {
+        if (!BlockArchitectureExt.isDefaultNameRootFunction((AbstractNamedElement) element)) {
+          ((AbstractNamedElement) result).setName(((AbstractNamedElement) element).getName());
+        }
+        return element;
+      }
+    }
+    return super.transformDirectElement(element, context);
+  }
+
+  @Override
   protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
     EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     BlockArchitecture target = (BlockArchitecture) TransformationHandlerHelper.getInstance(context)
         .getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE, element, result);
+    if (element.eContainer() instanceof FunctionPkg && element.eContainer().eContainer() instanceof BlockArchitecture) {
+      return BlockArchitectureExt.getFunctionPkg(target);
+    }
     return BlockArchitectureExt.getRootFunction(target);
   }
 
