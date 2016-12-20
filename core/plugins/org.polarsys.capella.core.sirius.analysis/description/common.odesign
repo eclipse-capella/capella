@@ -3209,7 +3209,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Data Packages. Removing a Data Package graphical object does not delete this Data Package from the model. This tool does not modify the semantic model. " name="Show/Hide DataPkgs" label="Data Packages" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Data Packages. Removing a Data Package graphical object does not delete this Data Package from the model. This tool does not modify the semantic model. " name="Show/Hide DataPkgs" label="Data Packages" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;%$elementView.getDiagramContainer()%>"/>
@@ -3230,7 +3230,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Types. Removing a Type graphical object does not delete this Type from the model. This tool does not modify the semantic model." name="Insert/Remove Types" label="Types" precondition="&lt;%$elementView.target.isA(&quot;DataPkg&quot;)%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Types. Removing a Type graphical object does not delete this Type from the model. This tool does not modify the semantic model." name="Insert/Remove Types" label="Types" precondition="&lt;%$elementView.target.isA(&quot;DataPkg&quot;)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;%$elementView.getDiagramContainer()%>"/>
@@ -3301,7 +3301,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Data Values" name="Show/Hide DataValues" label="Data Values" precondition="&lt;% !($containerView.getDiagramContainer().isSynchronized() &amp;&amp; ($containerView.isA(&quot;DNodeList&quot;) || $containerView.isA(&quot;DNodeListElement&quot;)))%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Data Values" name="Show/Hide DataValues" label="Data Values" precondition="&lt;% !($containerView.getDiagramContainer().isSynchronized() &amp;&amp; ($containerView.isA(&quot;DNodeList&quot;) || $containerView.isA(&quot;DNodeListElement&quot;)))%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;%$elementView.getParentDiagram()%>"/>
@@ -3322,7 +3322,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="&lt;%isA(&quot;Class&quot;) || isA(&quot;Collection&quot;) || isA(&quot;Signal&quot;) || isA(&quot;Exception&quot;) || isA(&quot;Interface&quot;)  || isA(&quot;DataType&quot;) %>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="&lt;%isA(&quot;Class&quot;) || isA(&quot;Collection&quot;) || isA(&quot;Signal&quot;) || isA(&quot;Exception&quot;) || isA(&quot;Interface&quot;)  || isA(&quot;DataType&quot;) %>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -3402,8 +3402,8 @@
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -3774,7 +3774,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="Excahange Items">
+          <ownedTools xsi:type="tool:ToolGroup" name="Exchange Items">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Exchange Item with a Communication Mechanism set to EVENT." name="Event" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@nodeMappings[name='DT_ExchangeItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ExchangeItemEvent.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
@@ -4025,7 +4025,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Manage Exchange Item Allocations" name="Manage Exchange Item Allocations" label="Manage Exchange Item Allocations" precondition="&lt;%$elementView.target.isA(&quot;Interface&quot;)%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Manage Exchange Item Allocations" name="Manage Exchange Item Allocations" label="Manage Exchange Item Allocations" precondition="&lt;%$elementView.target.isA(&quot;Interface&quot;)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
             <element name="element">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="exchangeItems" computationExpression="feature:exchangeItems"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="exchangeItemAllocations" computationExpression="feature:ownedExchangeItemAllocations"/>
@@ -4069,7 +4069,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Interface Packages" name="Show/Hide InterfacePkgs" label="Interface Packages" precondition="&lt;% $elementView.isA(&quot;DDiagram&quot;) || $elementView.target.isA(&quot;InterfacePkg&quot;)%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Interface Packages" name="Show/Hide InterfacePkgs" label="Interface Packages" precondition="&lt;% $elementView.isA(&quot;DDiagram&quot;) || $elementView.target.isA(&quot;InterfacePkg&quot;)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;%$elementView.getDiagramContainer()%>"/>
@@ -4090,7 +4090,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Interfaces" name="Insert/Remove Interfaces" label="Interfaces" precondition="&lt;% $elementView.isA(&quot;DDiagram&quot;) || $elementView.target.isA(&quot;InterfacePkg&quot;)%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Interfaces" name="Insert/Remove Interfaces" label="Interfaces" precondition="&lt;% $elementView.isA(&quot;DDiagram&quot;) || $elementView.target.isA(&quot;InterfacePkg&quot;)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;%$elementView.getDiagramContainer()%>"/>
@@ -4111,7 +4111,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Exchange Items" name="Insert/Remove ExchangeItems" label="Exchange Items" precondition="&lt;% $elementView.isA(&quot;DDiagram&quot;) || $elementView.target.isA(&quot;AbstractExchangeItemPkg&quot;)%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Exchange Items" name="Insert/Remove ExchangeItems" label="Exchange Items" precondition="&lt;% $elementView.isA(&quot;DDiagram&quot;) || $elementView.target.isA(&quot;AbstractExchangeItemPkg&quot;)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;%$elementView.getDiagramContainer()%>"/>
@@ -4132,7 +4132,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Exchange Item Element Links" name="Show/Hide ExchangeItemElement Link" label="Exchange Item Element Links" precondition="&lt;%isA(&quot;ExchangeItem&quot;) %>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Exchange Item Element Links" name="Show/Hide ExchangeItemElement Link" label="Exchange Item Element Links" precondition="&lt;%isA(&quot;ExchangeItem&quot;) %>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <filters precondition="&lt;%current.isSynchronized()%>" elementsToListen="&lt;%current%>">
               <listeners domainClass="DDiagram" featureName="synchronized"/>
             </filters>
