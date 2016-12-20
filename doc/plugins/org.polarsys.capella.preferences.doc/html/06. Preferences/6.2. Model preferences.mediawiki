@@ -155,9 +155,9 @@ Activating this 				configuration option is mandatory when working with Clearcas
 |}  
 
 
-== Transfert Viewer ==
+== Transfer Viewer ==
 
-On the sub section of '''Capella / Transfert Viewer preferences''', it is possible to allow the automatic build of trees in selection dialogs.
+On the sub section of '''Capella / Transfer Viewer preferences''', it is possible to allow the automatic expansion of trees in selection dialogs from Bowse button in Properties view and also from Insert/Remove tool in diagram Palette.
 
 [[Image:Images/6.2_Model preferences5.png|400x170px]]
 

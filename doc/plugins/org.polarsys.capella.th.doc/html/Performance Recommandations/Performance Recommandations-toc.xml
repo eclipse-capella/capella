@@ -3,7 +3,7 @@
 	<topic href="html/Performance Recommandations/Performance Recommandations.html" label="Capella Performance Recommandations">
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Desynchronize_semantic_browser" label="Desynchronize semantic browser"></topic>
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Desactivate_diagram_automatic_refreshes" label="Desactivate diagram automatic refreshes"></topic>
-		<topic href="html/Performance Recommandations/Performance Recommandations.html#Desactivate_transfert_viewer_automatic_expand" label="Desactivate transfert viewer automatic expand"></topic>
+		<topic href="html/Performance Recommandations/Performance Recommandations.html#Desactivate_transfert_viewer_automatic_expand" label="Desactivate transfer viewer automatic expand"></topic>
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Use_fast_linker_view" label="Use fast linker view"></topic>
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Filter_Project_explorer_model_elements" label="Filter Project explorer model elements"></topic>
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Set_diagram_unsynchronized" label="Set diagram unsynchronized"></topic>

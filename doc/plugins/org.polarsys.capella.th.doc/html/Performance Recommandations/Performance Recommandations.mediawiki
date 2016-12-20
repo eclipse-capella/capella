@@ -22,7 +22,7 @@ When necessary, update representations refreshing them manually with diagram too
 
 
 
-== Desactivate transfert viewer automatic expand ==
+== Desactivate transfer viewer automatic expand ==
 
 In order to avoid the systematic unfolding of element trees, select Window\Preferences\Capella\Transfer Viewer in the main menu and deactivate all choices in “Multiple Selection Dialog” and in “Single Selection Dialog”.
 
