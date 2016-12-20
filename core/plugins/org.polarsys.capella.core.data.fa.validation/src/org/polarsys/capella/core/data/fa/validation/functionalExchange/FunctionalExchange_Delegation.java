@@ -16,12 +16,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
-import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -39,28 +36,21 @@ public class FunctionalExchange_Delegation extends AbstractValidationRule {
       AbstractFunction parentSource = FunctionalExchangeExt.getSourceFunction(fe);
       AbstractFunction parentTarget = FunctionalExchangeExt.getTargetFunction(fe);
 
-      boolean bDelegatedFE = false;
-      if (parentSource.getOwnedFunctions().size() == 0 && parentTarget.getOwnedFunctions().size() == 0) {
-        bDelegatedFE = true;
-      }
-      if (!bDelegatedFE) {
-        return ctx.createFailureStatus(getSourceTargetMessage(fe));
+      if (parentSource != null && parentTarget != null) {
+        boolean bDelegatedFE = false;
+        if (parentSource.getOwnedFunctions().isEmpty() && parentTarget.getOwnedFunctions().isEmpty()) {
+          bDelegatedFE = true;
+        }
+        if (!bDelegatedFE) {
+          return ctx.createFailureStatus(getSourceTargetMessage(fe));
+        }
       }
     }
     return ctx.createSuccessStatus();
   }
 
   private String getMessageNameFor(AbstractFunction af) {
-    if (af instanceof OperationalActivity) {
-      return "Operational Activity";
-    } else if (af instanceof SystemFunction) {
-      return "System Function";
-    } else if (af instanceof LogicalFunction) {
-      return "Logical Function";
-    } else if (af instanceof PhysicalFunction) {
-      return "Physical Function";
-    }
-    return "";
+    return EObjectLabelProviderHelper.getMetaclassLabel(af, false);
   }
 
   private String getMessageNameFor(FunctionalExchange fe) {
@@ -68,7 +58,7 @@ public class FunctionalExchange_Delegation extends AbstractValidationRule {
     if (srcFunc instanceof OperationalActivity) {
       return "Interaction";
     }
-    return "Functional Exchange";
+    return EObjectLabelProviderHelper.getMetaclassLabel(fe, false);
   }
 
   private String getSourceTargetMessage(FunctionalExchange fe) {
@@ -79,12 +69,12 @@ public class FunctionalExchange_Delegation extends AbstractValidationRule {
     if (srcFunc.getOwnedFunctions().size() > 0 && tarFunc.getOwnedFunctions().size() > 0) {
       msg = ("Both source and target of \"" + EObjectLabelProviderHelper.getText(fe) + "\" (" + getMessageNameFor(fe)
           + ") are not delegated to leaf " + getMessageNameFor(srcFunc));
-    }
-    else if (srcFunc.getOwnedFunctions().size() > 0) {
-      msg = ("The source of \"" +  EObjectLabelProviderHelper.getText(fe) + "\" (" + getMessageNameFor(fe) + ") is not delegated to a leaf " + getMessageNameFor(srcFunc));
-    }
-    else {
-      msg = ("The target of \"" +  EObjectLabelProviderHelper.getText(fe) + "\" (" + getMessageNameFor(fe) + ") is not delegated to a leaf " + getMessageNameFor(srcFunc));
+    } else if (srcFunc.getOwnedFunctions().size() > 0) {
+      msg = ("The source of \"" + EObjectLabelProviderHelper.getText(fe) + "\" (" + getMessageNameFor(fe)
+          + ") is not delegated to a leaf " + getMessageNameFor(srcFunc));
+    } else {
+      msg = ("The target of \"" + EObjectLabelProviderHelper.getText(fe) + "\" (" + getMessageNameFor(fe)
+          + ") is not delegated to a leaf " + getMessageNameFor(srcFunc));
     }
     return msg;
   }
