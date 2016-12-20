@@ -34,6 +34,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.crud.RefreshDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.SetContextualElementsStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
 import org.polarsys.capella.test.framework.api.CommonTestMessages;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 /**
  *
@@ -70,7 +71,7 @@ public class DiagramContext extends SessionContext {
   }
 
   @Override
-  protected Map<String, EObject> getSemanticObjectMap() {
+  public Map<String, EObject> getSemanticObjectMap() {
     return _sessionContext.getSemanticObjectMap();
   }
 

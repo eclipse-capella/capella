@@ -16,9 +16,9 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.SwitchTool;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 /**
  * This test case tests the switch category tool on a category between parent functions allocated to a System on an SAB diagram.

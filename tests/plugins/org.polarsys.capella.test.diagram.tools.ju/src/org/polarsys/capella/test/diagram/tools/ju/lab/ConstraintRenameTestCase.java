@@ -17,12 +17,12 @@ import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.test.diagram.common.ju.context.CDBDiagram;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.RenameTool;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ToolHelper;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
-import org.polarsys.capella.test.diagram.tools.ju.model.GenericModel;
+import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.model.GenericModel;
 
 /**
  * This test case tests the rename tool of Constraints in LAB diagram

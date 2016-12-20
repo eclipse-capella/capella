@@ -22,6 +22,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerToo
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class MSMDiagram extends DiagramContext {
 

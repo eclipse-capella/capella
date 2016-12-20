@@ -11,8 +11,8 @@
 package org.polarsys.capella.test.diagram.tools.ju.xab;
 
 import org.polarsys.capella.test.diagram.common.ju.context.PABDiagram;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class ShowHidePhysicalLinks extends ShowHideComponentExchanges {
 

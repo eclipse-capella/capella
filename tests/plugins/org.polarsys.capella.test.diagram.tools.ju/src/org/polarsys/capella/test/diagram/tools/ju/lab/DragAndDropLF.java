@@ -17,9 +17,9 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.DragAndDropTool;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 /*
  * This test case tests the drag and drop of LF from Logical System to LA does not change the shape and the color of LF

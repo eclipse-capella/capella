@@ -15,6 +15,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class PA_ESDiagram extends ESDiagram {
   public PA_ESDiagram(BlockArchitectureExt.Type type, SessionContext context, DDiagram diagram) {

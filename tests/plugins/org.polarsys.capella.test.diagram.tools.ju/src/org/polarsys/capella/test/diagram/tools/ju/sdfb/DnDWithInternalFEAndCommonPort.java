@@ -13,12 +13,12 @@ package org.polarsys.capella.test.diagram.tools.ju.sdfb;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.context.XDFBDiagram;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.DragAndDropTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.ReconnectTool;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
-import org.polarsys.capella.test.diagram.tools.ju.model.GenericModel;
+import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.model.GenericModel;
 
 public class DnDWithInternalFEAndCommonPort extends EmptyProject {
   @Override

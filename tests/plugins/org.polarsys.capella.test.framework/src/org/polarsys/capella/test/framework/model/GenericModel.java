@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.tools.ju.model;
+package org.polarsys.capella.test.framework.model;
 
 /**
  * In many cases, elements that we need to create in a model has common name. This class is used to define naming
@@ -21,6 +21,13 @@ public class GenericModel {
   public static String OBJECT_3 = "OBJECT 3";
   public static String OBJECT_4 = "OBJECT 4";
 
+  public static String FUNCTION_PKG = "FUNCTION_PKG";
+  public static String CAPABILITY_PKG = "CAPABILITY_PKG";
+  public static String ACTOR_PKG = "ACTOR_PKG";
+  public static String INTERFACE_PKG = "INTERFACE_PKG";
+  public static String DATA_PKG = "DATA_PKG";
+  
+  
   public static String ACTIVITY_1 = "ACTIVITY 1";
   public static String ACTIVITY_1_1 = "ACTIVITY 1_1";
   public static String ACTIVITY_2 = "ACTIVITY 2";
@@ -86,6 +93,7 @@ public class GenericModel {
   public static String GENERALIZATION_3 = "GENERALIZATION 3";
   public static String GENERALIZATION_4 = "GENERALIZATION 4";
 
+  
   public static String FUNCTION_1 = "Function 1";
   public static String FUNCTION_2 = "Function 2";
   public static String FUNCTION_3 = "Function 3";
