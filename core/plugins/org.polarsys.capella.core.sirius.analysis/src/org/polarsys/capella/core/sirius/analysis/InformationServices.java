@@ -25,6 +25,7 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
@@ -156,6 +157,7 @@ import org.polarsys.capella.core.model.helpers.DataTypeExt;
 import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
+import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.providers.DependencyLabelProvider;
 
 /**
@@ -1660,13 +1662,18 @@ public class InformationServices {
     List<AbstractDependenciesPkg> all = new ArrayList<AbstractDependenciesPkg>(deps);
     all.addAll(inverseDeps);
 
+    boolean expandLeftViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandLeftViewerContent();
+    boolean expandRightViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandRightViewerContent();
+    int leftViewerExpandLevel = expandLeftViewer ? AbstractTreeViewer.ALL_LEVELS : 0;
+    int rightViewerExpandLevel = expandRightViewer ? AbstractTreeViewer.ALL_LEVELS : 0;
+    
     TransferTreeListDialog dialog = new TransferTreeListDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow()
         .getShell(), Messages.InformationServices_PackageDependency_Title, NLS.bind(
         Messages.InformationServices_PackageDependency_Message, subject.getName()), new DependencyLabelProvider(deps,
         inverseDeps, subject), // two
                                // instances
                                // required
-        new DependencyLabelProvider(deps, inverseDeps, subject)); // or enabled/disabled fonts will mess up
+        new DependencyLabelProvider(deps, inverseDeps, subject), leftViewerExpandLevel, rightViewerExpandLevel); // or enabled/disabled fonts will mess up
 
     List<AbstractDependenciesPkg> left = new ArrayList<AbstractDependenciesPkg>(); // unselected
     List<AbstractDependenciesPkg> right = new ArrayList<AbstractDependenciesPkg>(); // selected

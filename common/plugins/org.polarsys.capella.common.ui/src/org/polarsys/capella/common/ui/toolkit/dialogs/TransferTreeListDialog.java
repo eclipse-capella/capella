@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -370,8 +370,8 @@ public class TransferTreeListDialog extends AbstractViewerDialog {
     List<? extends EObject> elements = _leftInput.getKey();
     TreeData leftInput = new TreeData(elements, _leftInput.getValue());
     _transferViewer.setLeftInput(leftInput);
-    // If one element is provided as input elements, select it.
-    if (elements.size() == 1) {
+    // If one element is provided as input elements and expand to some level is allowed, select it.
+    if (elements.size() == 1 && _leftViewerExpandLevel > 0) {
       // Select it.
       leftViewer.setSelection(new StructuredSelection(elements.get(0)), true);
       // Force the focus on the tree.
