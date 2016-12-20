@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -97,6 +97,10 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
 
   protected EObject mustBeMonoTransitioned(EObject element) {
     return mustBeMultiTransitioned(element, 1).get(0);
+  }
+  
+  protected void mustBeNamed(EObject result, String name) {
+    assertTrue(((AbstractNamedElement)result).getName().equals(name));
   }
 
   protected List<EObject> mustBeMultiTransitioned(String id, int nb) {
@@ -369,4 +373,6 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
 
     return null;
   }
+  
+
 }

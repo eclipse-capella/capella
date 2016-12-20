@@ -175,7 +175,7 @@ public class AbstractFunctionRule extends AbstractCapellaElementRule {
         if (!BlockArchitectureExt.isDefaultNameRootFunction((AbstractNamedElement) element)) {
           ((AbstractNamedElement) result).setName(((AbstractNamedElement) element).getName());
         }
-        return element;
+        return result;
       }
     }
     return super.transformDirectElement(element, context);
