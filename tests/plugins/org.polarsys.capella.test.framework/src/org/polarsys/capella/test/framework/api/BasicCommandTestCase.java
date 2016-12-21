@@ -20,6 +20,8 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 /**
  * This class is a generic test case for tests launching a command.<br>
@@ -33,6 +35,8 @@ public abstract class BasicCommandTestCase extends BasicTestCase {
 
   protected Resource modelResource;
 
+  protected SessionContext context;
+  
   @Override
   public void test() throws Exception {
     final Exception[] t = new Exception[] { null };
@@ -55,14 +59,10 @@ public abstract class BasicCommandTestCase extends BasicTestCase {
   public abstract void performTest() throws Exception;
 
   protected Resource getModelResource() {
-    if (modelResource == null) {
+    if (context == null) {
       Session session = getSessionForTestModel(getRequiredTestModels().get(0));
-      for (Resource resource : session.getSemanticResources()) {
-        // Exclude AFM's Metadata resource
-        if (resource.getContents().get(0) instanceof Project) {
-          modelResource = resource;
-        }
-      }
+      context = new SessionContext(session);
+      modelResource = TestHelper.getSemanticResource(session);
     }
     return modelResource;
   }
@@ -76,7 +76,7 @@ public abstract class BasicCommandTestCase extends BasicTestCase {
   }
 
   protected <T extends EObject> T getObject(String id) {
-    return (T) getModelResource().getEObject(id);
+    return (T) context.getSemanticElement(id);
   }
 
   protected Collection<EObject> getObjects(String... ids_p) {

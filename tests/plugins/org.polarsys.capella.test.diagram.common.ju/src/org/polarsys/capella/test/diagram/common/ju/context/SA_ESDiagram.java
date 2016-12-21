@@ -12,6 +12,7 @@ package org.polarsys.capella.test.diagram.common.ju.context;
 
 import org.eclipse.sirius.diagram.DDiagram;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class SA_ESDiagram extends ESDiagram {
   public SA_ESDiagram(BlockArchitectureExt.Type type, SessionContext context, DDiagram diagram) {

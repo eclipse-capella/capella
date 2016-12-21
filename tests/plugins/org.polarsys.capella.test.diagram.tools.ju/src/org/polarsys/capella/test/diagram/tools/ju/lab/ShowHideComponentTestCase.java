@@ -15,8 +15,8 @@ import junit.framework.Test;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 /**
  * Test the case of removing components and actors in LAB diagram.

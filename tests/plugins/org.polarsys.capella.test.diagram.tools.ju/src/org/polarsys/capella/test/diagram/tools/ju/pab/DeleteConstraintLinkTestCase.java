@@ -19,10 +19,10 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.DeleteElementTool;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 /**
  * Test the deletion of a constraint link in PAB diagram

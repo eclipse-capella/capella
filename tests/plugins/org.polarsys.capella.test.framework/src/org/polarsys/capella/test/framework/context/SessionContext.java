@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.common.ju.context;
+package org.polarsys.capella.test.framework.context;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -40,7 +40,7 @@ public class SessionContext {
   /** Map with needed semantic Object, useful */
   private Map<String, EObject> _semanticObjectMap;
 
-  protected Map<String, EObject> getSemanticObjectMap() {
+  public Map<String, EObject> getSemanticObjectMap() {
     if (null == _semanticObjectMap) {
       _semanticObjectMap = new HashMap<String, EObject>();
     }
@@ -55,6 +55,10 @@ public class SessionContext {
     return result;
   }
 
+  public void removeSemanticElement(String objectIdentifier) {
+    getSemanticObjectMap().remove(objectIdentifier);
+  }
+  
   public void putSemanticElement(String objectIdentifier, EObject object) {
     getSemanticObjectMap().put(objectIdentifier, object);
   }

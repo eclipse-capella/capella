@@ -21,6 +21,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InitializationFromExistingDiagramTool;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class XDFBDiagram extends DiagramContext {
 

@@ -17,6 +17,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class CDBDiagram extends DiagramContext {
 

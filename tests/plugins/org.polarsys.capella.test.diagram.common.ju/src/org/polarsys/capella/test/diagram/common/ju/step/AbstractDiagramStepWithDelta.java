@@ -24,9 +24,9 @@ import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.junit.Assert;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
-import org.polarsys.capella.test.diagram.common.ju.api.AbstractTestStep;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
+import org.polarsys.capella.test.framework.api.step.AbstractTestStep;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 /**
  * This class must not be used. It test only how many elements have been displayed/hidden, not which elements

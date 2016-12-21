@@ -13,11 +13,11 @@ package org.polarsys.capella.test.diagram.common.ju.step.crud;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.junit.Assert;
-import org.polarsys.capella.test.diagram.common.ju.api.AbstractTestStep;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.step.Messages;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
+import org.polarsys.capella.test.framework.api.step.AbstractTestStep;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 /**
  * Test case that open a diagram i.e its editor. choice about refresh included, could be really useful default behavior of this test kept via the default

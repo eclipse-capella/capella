@@ -22,11 +22,11 @@ import org.junit.Assert;
 import org.polarsys.capella.common.ef.command.AbstractCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.test.diagram.common.ju.api.AbstractTestStep;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.headless.selector.HeadlessCapellaAnalysisSelector;
 import org.polarsys.capella.test.diagram.common.ju.step.Messages;
+import org.polarsys.capella.test.framework.api.step.AbstractTestStep;
+import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 /**
