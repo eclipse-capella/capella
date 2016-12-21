@@ -53,6 +53,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.StringHelper;
@@ -67,6 +68,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Classifier;
 import org.polarsys.capella.core.data.capellacore.Constraint;
+import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.cs.AbstractActor;
@@ -2011,7 +2013,79 @@ public class InformationServices {
     }
     return elementView;
   }
+  
+  /**
+   * Semantic Candidates Expression: resolve a list of candidate Associations that could be displayed in the given
+   * diagram.
+   * 
+   * @param diagram
+   * @return
+   */
+  public Collection<EObject> getCDBAssociationSemanticCandidates(DDiagram diagram) {
+    // Use a HashSet to avoid to have twice the same Association. This occurs when an Association has the same class as source and target.
+    Collection<EObject> candidateAssociations = new HashSet<EObject>();
+    for (DDiagramElement dNode : diagram.getDiagramElements()) {
+      if (dNode instanceof AbstractDNode) {
+        EObject target = dNode.getTarget();
+        if (target instanceof AbstractType) {
+          // Get Properties referencing this AbstractType.
+          List<EObject> properties = EObjectExt.getReferencers(target, InformationPackage.Literals.PROPERTY,
+              ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
+          for (EObject property : properties) {
+            // Get Associations referencing this Property.
+            candidateAssociations.addAll(EObjectExt.getReferencers(property, InformationPackage.Literals.ASSOCIATION,
+                InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS));
+            candidateAssociations.addAll(EObjectExt.getReferencers(property, InformationPackage.Literals.ASSOCIATION,
+                InformationPackage.Literals.ASSOCIATION__OWNED_MEMBERS));
+          }
+        }
+      }
+    }
+    return candidateAssociations;
+  }
 
+  /**
+   * Semantic Candidates Expression: resolve a list of candidate Generalizations that could be displayed in the given
+   * diagram.
+   * 
+   * @param diagram
+   * @return
+   */
+  public Collection<Generalization> getCDBGeneralizationSemanticCandidates(DDiagram diagram) {
+    Collection<Generalization> candidateGeneralizations = new ArrayList<Generalization>();
+    for (DDiagramElement dNode : diagram.getDiagramElements()) {
+      if (dNode instanceof AbstractDNode) {
+        EObject target = dNode.getTarget();
+        // Get AbstractNodes with a GeneralizableElement as semantic target.
+        if (target instanceof GeneralizableElement) {
+          // Get all Generalizations in the Generalizable element.
+          candidateGeneralizations.addAll(((GeneralizableElement) target).getOwnedGeneralizations());
+        }
+      }
+    }
+    return candidateGeneralizations;
+  }
+
+  /**
+   * Semantic Candidates Expression: resolve a list of candidate ExchangeItemElements that could be displayed in the given diagram. 
+   * @param diagram
+   * @return
+   */
+  public Collection<ExchangeItemElement> getCDBExchangeItemElementSemanticCandidates(DDiagram diagram) {
+    Collection<ExchangeItemElement> candidateExchangeItemElements = new ArrayList<ExchangeItemElement>();
+    for (DDiagramElement dNode : diagram.getDiagramElements()) {
+      if (dNode instanceof AbstractDNode) {
+        EObject target = dNode.getTarget();
+        // Get AbstractNodes with a ExchangeItem as semantic target.
+        if (target instanceof ExchangeItem) {
+          // Get all ExchangeItemElement in the ExchangeItem element.
+          candidateExchangeItemElements.addAll(((ExchangeItem) target).getOwnedElements());
+        }
+      }
+    }
+    return candidateExchangeItemElements;
+  }
+  
   /**
    * used in common (CDB)
    * 
