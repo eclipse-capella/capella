@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -150,5 +150,16 @@ public class CapellaUIPropertiesPlugin extends AbstractUIActivator {
   public boolean isAllowedExpandSingleViewerContent() {
     return AbstractPreferencesInitializer.getBoolean(ITransfertViewerPreferences.PREFS_EXPAND_SINGLE_VIEWER_CONTENT,
         ITransfertViewerPreferences.PREFS_EXPAND_SINGLE_VIEWER_CONTENT_DEFAULT.booleanValue());
+  }
+  
+  /**
+   * Returns a boolean for either to calculate a custom label for the items in the viewer or to use element name as label. 
+   * 
+   * @link {@link ITransfertViewerPreferences#PREFS_DISABLE_LABEL_COMPUTATION} value <code>true or false</code>
+   * @return boolean value
+   */
+  public boolean isDisableLabelComputation(){
+    return AbstractPreferencesInitializer.getBoolean(ITransfertViewerPreferences.PREFS_DISABLE_LABEL_COMPUTATION,
+        ITransfertViewerPreferences.PREFS_DISABLE_LABEL_COMPUTATION_DEFAULT.booleanValue());
   }
 }

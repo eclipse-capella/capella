@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.polarsys.capella.core.ui.properties.providers;
 import java.text.MessageFormat;
 import java.util.Collection;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -20,6 +21,7 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.graphics.Image;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
@@ -36,6 +38,7 @@ import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
+import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 
 /**
  */
@@ -43,12 +46,14 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
 
   private static String PATTERN1 = " [{0} -> {1}]"; //$NON-NLS-1$
   private static String UNAMED = "<unnamed>"; //$NON-NLS-1$
+  
+  private boolean disableLabelComputation;
 
   /**
    * Default constructor
    */
   public CapellaTransfertViewerLabelProvider() {
-    super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
+    this(null);
   }
 
   /**
@@ -56,6 +61,7 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
    */
   public CapellaTransfertViewerLabelProvider(TransactionalEditingDomain editingDomain) {
     super(editingDomain, CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
+    disableLabelComputation = CapellaUIPropertiesPlugin.getDefault().isDisableLabelComputation();
   }
 
   /**
@@ -77,6 +83,19 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
    */
   @Override
   public String getText(Object object) {
+    if(disableLabelComputation){
+      if(object instanceof AbstractNamedElement){
+        return ((AbstractNamedElement)object).getName();
+      }
+      else if(object instanceof EObject){
+        return "["+((EObject)object).eClass().getName()+"]";
+      }
+        return UNAMED;
+    }
+    return doGetText(object);
+  }
+
+  private String doGetText(Object object) {
     NamedElement sourceElement = null;
     NamedElement targetElement = null;
     String sourceLabel = null;

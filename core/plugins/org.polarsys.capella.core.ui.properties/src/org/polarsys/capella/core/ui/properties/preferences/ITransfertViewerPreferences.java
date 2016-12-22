@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,11 @@ public interface ITransfertViewerPreferences {
    * Whether or not automatically expand single viewer tree content
    */
   public static final String PREFS_EXPAND_SINGLE_VIEWER_CONTENT = "expand.single.viewer.content"; //$NON-NLS-1$
+  
+  /**
+   * Either to calculate a custom label for the items in the viewer or to use element name as label. 
+   */
+  public static final String PREFS_DISABLE_LABEL_COMPUTATION = "disable.label.computation"; //$NON-NLS-1$
 
   /**
    * Default value for automatically expand left viewer tree content preference
@@ -42,4 +47,9 @@ public interface ITransfertViewerPreferences {
    * Default value for automatically expand single viewer tree content preference
    */
   public static final Boolean PREFS_EXPAND_SINGLE_VIEWER_CONTENT_DEFAULT = Boolean.TRUE;
+  
+  /**
+   * Default value for disabling labels computation preference
+   */
+  public static final Boolean PREFS_DISABLE_LABEL_COMPUTATION_DEFAULT = Boolean.FALSE;
 }
