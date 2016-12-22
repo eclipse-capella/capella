@@ -11,10 +11,10 @@
 package org.polarsys.capella.core.business.queries.queries.information;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -48,6 +48,7 @@ import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
 public class GetAvailable_Property_Type extends AbstractQuery {
 
+  @SuppressWarnings({ "unchecked", "rawtypes" })
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     CapellaElement capellaElement = (CapellaElement) input;
@@ -105,23 +106,16 @@ public class GetAvailable_Property_Type extends AbstractQuery {
    * @see org.polarsys.capella.core.business.abstractqueries.CapellaElement_CurrentAndHigherLevelsQuery#getDataFromLevel(org.polarsys.capella.core.data.cs.BlockArchitecture,org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   public List<EObject> getDataFromLevel(DataPkg dataPkg, CapellaElement capellaElement) {
+    List<EObject> returnValue = CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(
+        dataPkg, Arrays.asList(InformationPackage.Literals.CLASS, InformationPackage.Literals.COLLECTION), null);
+
     Association association = getRegardingAssociation(capellaElement);
-    List<EObject> returnValue = CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg, InformationPackage.Literals.CLASS, null);
-    returnValue.addAll(CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg, InformationPackage.Literals.COLLECTION, null));
-    List<EClass> eClasses = new ArrayList<EClass>();
-    eClasses.add(InformationPackage.Literals.CLASS);
-    eClasses.add(InformationPackage.Literals.COLLECTION);
-    returnValue.addAll(getElementsFromDataPkgContainedInComponent(capellaElement, eClasses, capellaElement));
-    eClasses.clear();
     if (null != association) {
       returnValue = addAssociationsSpecificElements(returnValue, association, capellaElement, dataPkg);
       returnValue = removePrimitiveClasses(returnValue);
       returnValue = removePrimitiveCollections(returnValue);
     } else {
-      List<EObject> dataTypes = CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg, DatatypePackage.Literals.DATA_TYPE, null);
-      returnValue.addAll(dataTypes);
-      eClasses.add(DatatypePackage.Literals.DATA_TYPE);
-      returnValue.addAll(getElementsFromDataPkgContainedInComponent(capellaElement, eClasses, capellaElement));
+      returnValue.addAll(CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg, DatatypePackage.Literals.DATA_TYPE, null));
       returnValue = removeNonPrimitiveClasses(returnValue);
       returnValue = removeNonPrimitiveCollections(returnValue);
     }
@@ -135,31 +129,6 @@ public class GetAvailable_Property_Type extends AbstractQuery {
    */
   protected static Association getRegardingAssociation(CapellaElement elem) {
     return PropertyExt.getRegardingAssociation(elem);
-  }
-
-  /**
-   * Returns the Capella Elements instances of the given <code>EClass</code> in the given <code>DataPkg</code>, but avoiding the given capella Element.
-   * Considering only DataPkgs contained in Component
-   * @param capellaElement
-   * @param class
-   * @param capellaElement2
-   * @return
-   */
-  private java.util.Collection<? extends EObject> getElementsFromDataPkgContainedInComponent(CapellaElement capellaElement, List<EClass> classes,
-      CapellaElement capellaElement2) {
-    List<EObject> returnValue = new ArrayList<EObject>(1);
-    List<Component> componentHierarchy = CapellaElementExt.getComponentHierarchy(capellaElement);
-    if (!componentHierarchy.isEmpty()) {
-      for (Component component : componentHierarchy) {
-        List<DataPkg> allDataPkgs = DataPkgExt.getAllDataPkgs(component);
-        for (DataPkg dataPkg : allDataPkgs) {
-          for (EClass eClass : classes) {
-            returnValue.addAll(CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg, eClass, null));
-          }
-        }
-      }
-    }
-    return returnValue;
   }
 
   /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,9 +27,7 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.polarsys.capella.common.queries.debug.QueryDebugger;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
-import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.InvolverElement;
@@ -51,6 +49,7 @@ import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
+import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 
 /**
@@ -116,13 +115,9 @@ public class InteractionServices {
     // }
     // List<Part> parts = new ArrayList<Part>(new InteractionAspectService().getAvailableParts(scenario, partsFilter));
     // parts = QueryInterpretor.executeFilter(parts, new RemoveActorsFilter());
-    List<Part> parts =
-        QueryInterpretor.executeQuery(org.polarsys.capella.core.sirius.analysis.queries.QueryIdentifierConstants.GET_IS_SCOPE_INSERT_COMPONENTS, scenario,
-            new QueryContext());
-    parts =
-        (List) QueryDebugger.executeQueryWithInclusionDebug(
-            org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants.GET_IS_SCOPE_INSERT_COMPONENTS_FOR_LIB, scenario, parts);
-    return parts;
+    return QueryInterpretor.executeQuery(
+        QueryIdentifierConstants.GET_IS_SCOPE_INSERT_COMPONENTS_FOR_LIB,
+        scenario);
   }
 
   // reroutage dans common.odesign :
@@ -130,13 +125,9 @@ public class InteractionServices {
   // par = &lt;% $container.getISScopeInsertActors() %>
   public List<Part> getISScopeInsertActors(Scenario scenario) {
     BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(scenario);
-    List<Part> parts =
-        QueryInterpretor.executeQuery(org.polarsys.capella.core.sirius.analysis.queries.QueryIdentifierConstants.GET_IS_SCOPE_INSERT_ACTORS, architecture,
-            new QueryContext());
-    parts =
-        (List) QueryDebugger.executeQueryWithInclusionDebug(
-            org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants.GET_IS_SCOPE_INSERT_ACTORS_FOR_LIB, architecture, parts);
-    return parts;
+    return QueryInterpretor.executeQuery(
+        QueryIdentifierConstants.GET_IS_SCOPE_INSERT_ACTORS_FOR_LIB,
+        architecture);
   }
 
   /**

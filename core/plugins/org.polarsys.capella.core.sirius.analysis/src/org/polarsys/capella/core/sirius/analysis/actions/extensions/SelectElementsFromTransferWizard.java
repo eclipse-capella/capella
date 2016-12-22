@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
@@ -28,6 +29,7 @@ import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
+import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerLabelProvider;
 
 /**
@@ -61,15 +63,19 @@ public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction
     }
     // Create a transfer dialog.
     TransferTreeListDialog dialog;
+    boolean expandLeftViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandLeftViewerContent();
+    boolean expandRightViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandRightViewerContent();
+    int leftViewerExpandLevel = expandLeftViewer ? AbstractTreeViewer.ALL_LEVELS : 0;
+    int rightViewerExpandLevel = expandRightViewer ? AbstractTreeViewer.ALL_LEVELS : 0;
 
     if ((scope.size() != 0) && (scope.get(0) instanceof InstanceRole)) {
       dialog = new TransferTreeListDialog(getShell(), Messages.SelectElementFromListWizard_Title, wizardMessage,
         new IRDataLabelProvider(TransactionHelper.getEditingDomain(scope)),
-        new IRDataLabelProvider(TransactionHelper.getEditingDomain(scope)));
+        new IRDataLabelProvider(TransactionHelper.getEditingDomain(scope)), leftViewerExpandLevel, rightViewerExpandLevel);
     } else {
       dialog = new TransferTreeListDialog(getShell(), Messages.SelectElementFromListWizard_Title, wizardMessage,
         getCustoLabelProvider(),
-        getCustoLabelProvider());
+        getCustoLabelProvider(), leftViewerExpandLevel, rightViewerExpandLevel);
     }
 
     // Create the list of available elements.
@@ -87,24 +93,24 @@ public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction
   /**
    * Handle specified context.<br>
    * Default implementation returns <code>null</code>.
-   * @param context_p
+   * @param context
    * @return can be <code>null</code>.
    */
-  protected Object handleContext(Object context_p) {
+  protected Object handleContext(Object context) {
     return null;
   }
 
   /**
    * Handle transfer dialog inputs (i.e left and right viewers inputs).
-   * @param initialSelection_p
-   * @param dialog_p
-   * @param availableElements_p
-   * @param context_p
+   * @param initialSelection
+   * @param dialog
+   * @param availableElements
+   * @param context
    */
-  protected void handleTransferDialogInputs(List<EObject> initialSelection_p, TransferTreeListDialog dialog_p, List<EObject> availableElements_p,
-      Object context_p) {
-    dialog_p.setLeftInput(availableElements_p, context_p);
-    dialog_p.setRightInput(initialSelection_p, context_p);
+  protected void handleTransferDialogInputs(List<EObject> initialSelection, TransferTreeListDialog dialog, List<EObject> availableElements,
+      Object context) {
+    dialog.setLeftInput(availableElements, context);
+    dialog.setRightInput(initialSelection, context);
   }
 
   /**
@@ -123,9 +129,9 @@ public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction
      * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#getText(java.lang.Object)
      */
     @Override
-    public String getText(Object object_p) {
-      if (object_p instanceof InstanceRole) {
-        InstanceRole ir = (InstanceRole) object_p;
+    public String getText(Object object) {
+      if (object instanceof InstanceRole) {
+        InstanceRole ir = (InstanceRole) object;
         AbstractInstance i = ir.getRepresentedInstance();
         if (i != null) {
           AbstractType t = i.getAbstractType();
@@ -134,7 +140,7 @@ public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction
           }
         }
       }
-      return super.getText(object_p);
+      return super.getText(object);
     }
   }
 
