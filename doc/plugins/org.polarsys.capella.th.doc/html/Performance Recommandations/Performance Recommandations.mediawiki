@@ -10,9 +10,9 @@ However, with big models and diagrams, performing all the requests might introdu
 
 
 
-== Desactivate diagram automatic refreshes ==
+== Deactivate diagram automatic refreshes ==
 
-Rely on manual refreshing of diagrams instead of on automatic one. In Capella main menu, select Window\Preferences\Sirus and deactivate “Do refresh on representation opening” & “Automatic Refresh” options.
+Rely on manual refreshing of diagrams instead of on automatic one. In Capella main menu, select Window\Preferences\Sirius and deactivate “Do refresh on representation opening” & “Automatic Refresh” options.
 
 When necessary, update representations refreshing them manually with diagram toolbar button
 [[Image:Images/Perf_REC2.png|25x25px]].<br>
@@ -21,10 +21,13 @@ When necessary, update representations refreshing them manually with diagram too
 [[Image:Images/Perf_REC3.png|650x500px]]<br>
 
 
+== Diagram and Properties view customizations == 
 
-== Desactivate transfer viewer automatic expand ==
-
+=== Deactivate transfer viewer automatic expand  ===
 In order to avoid the systematic unfolding of element trees, select Window\Preferences\Capella\Transfer Viewer in the main menu and deactivate all choices in “Multiple Selection Dialog” and in “Single Selection Dialog”.
+
+=== Disable transfer viewer label computation ===
+In order to show up the dialog faster, it is recommended for huge models to disable the label computation for model elements. Instead of the custom label, the name of the element will be displayed. When the object is not a named element, its meta-class name will be displayed.
 
 [[Image:Images/Perf_REC4.png|650x500px]]<br>
 
@@ -61,7 +64,7 @@ See dedicated User Manual section Advanced Management of Diagrams.
 
 
 
-== Avoid source control when generating HTML documentation addon ==
+== Avoid source control when generating HTML documentation add-on ==
 
 Capella html documentation add-on generates too many external files in a SCM context. It is advised to run this generation outside a SCM context in order to avoid Capella ClearCase adapter freeze. However the result can be zipped and added to source control.
 
@@ -153,7 +156,7 @@ For instance, disable temporally pattern, cycles checks or others, in the main m
 
 
 
-== Desactivate option checking model version at session opening ==
+== Deactivate option checking model version at session opening ==
 
 Capella main toolbar \Window\Preferences\Capella and deactivate “Check model version at load time” option.
 
@@ -168,7 +171,7 @@ In Capella main menu, open Window\Preferences\MDE Reporting and deactivate some 
 
 
 
-== Desactivate model change recorder ==
+== Deactivate model change recorder ==
 
 Disabled by default.
 
@@ -178,14 +181,14 @@ In Capella main menu Window\Preferences\Capella\Model Change Recorder, deactivat
 
 
 
-== Desactivate option showing delete wizard ==
+== Deactivate option showing delete wizard ==
 
 In Capella main menu \Window\Preferences\Capella\Delete, deactivate option “Confirm deletions”.
 
 [[Image:Images/Perf_REC16.png|700x450px]]<br>
 
 
-== Desactivate project explorer link with editors ==
+== Deactivate project explorer link with editors ==
 
 Disabled by default.
 
@@ -193,7 +196,7 @@ Disabled by default.
 
 
 
-== Close properties view in case that only popup wizard are used to edit the model ==
+== Close properties view in case that only pop-up wizard are used to edit the model ==
 
 [[Image:Images/Perf_REC18.png|800x400px]]<br>
 
