@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,9 +43,21 @@ public class SelectionDialogHelper {
     // Displayed elements.
     Collection<? extends EObject> elements = (null != list_p) ? list_p : new ArrayList<EObject>(0);
     // call wizard
-    SelectElementsDialog selectionDialog =
-        new SelectElementsDialog(shell_p, TransactionHelper.getEditingDomain(elements), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
-            Messages.SelectionDialogHelper_SelectionWizard_Title, ICommonConstants.EMPTY_STRING, elements, multiplicity_p, null, treeViewerExpandLevel_p);
+    SelectElementsDialog selectionDialog = new SelectElementsDialog(shell_p, TransactionHelper.getEditingDomain(elements),
+        CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
+        Messages.SelectionDialogHelper_SelectionWizard_Title, ICommonConstants.EMPTY_STRING, elements, multiplicity_p,
+        null, treeViewerExpandLevel_p);
+    return selectionDialog;
+  }
+  
+  private static SelectElementsDialog getSelectionDialogWizard(Collection<? extends EObject> list, DataLabelProvider labelProvider, Shell shell, boolean multiplicity,
+      int treeViewerExpandLevel) {
+    // Displayed elements.
+    Collection<? extends EObject> elements = (null != list) ? list : new ArrayList<EObject>(0);
+    // call wizard
+    SelectElementsDialog selectionDialog = new SelectElementsDialog(shell, labelProvider,
+        Messages.SelectionDialogHelper_SelectionWizard_Title, ICommonConstants.EMPTY_STRING, elements, multiplicity,
+        null, treeViewerExpandLevel);
     return selectionDialog;
   }
 
@@ -74,6 +86,22 @@ public class SelectionDialogHelper {
     }
     return null;
   }
+  
+  /**
+   * Open selection wizard for given list of elements
+   * @param list : list of selection-able elements
+   * @param shell : current shell
+   * @param treeViewerExpandLevel
+   * @return Collection<EObject> : selected elements from wizard (value can be null)
+   */
+  public static Collection<? extends EObject> simplePropertiesSelectionDialogWizard(Collection<? extends EObject> list, DataLabelProvider labelProvider,Shell shell,
+      int treeViewerExpandLevel) {
+    SelectElementsDialog selectionDialog = getSelectionDialogWizard(list, labelProvider, shell, true, treeViewerExpandLevel);
+    if (Window.OK == selectionDialog.open()) {
+      return selectionDialog.getResult();
+    }
+    return null;
+  }
 
   /**
    * Open selection wizard for given list of elements
@@ -94,6 +122,24 @@ public class SelectionDialogHelper {
    */
   public static EObject simplePropertySelectionDialogWizard(Collection<? extends EObject> list_p, Shell shell_p, int treeViewerExpandLevel_p) {
     SelectElementsDialog selectionDialog = getSelectionDialogWizard(list_p, shell_p, false, treeViewerExpandLevel_p);
+    if (Window.OK == selectionDialog.open()) {
+      List<? extends EObject> result = selectionDialog.getResult();
+      if (!result.isEmpty()) {
+        return result.get(0);
+      }
+    }
+    return null;
+  }
+  
+  /**
+   * Open selection wizard for given list of elements
+   * @param list : list of selection-able elements
+   * @param shell : current shell
+   * @param treeViewerExpandLevel
+   * @return EObject : selected element from wizard (value can be null)
+   */
+  public static EObject simplePropertySelectionDialogWizard(Collection<? extends EObject> list, DataLabelProvider labelProvider, Shell shell, int treeViewerExpandLevel) {
+    SelectElementsDialog selectionDialog = getSelectionDialogWizard(list, labelProvider, shell, false, treeViewerExpandLevel);
     if (Window.OK == selectionDialog.open()) {
       List<? extends EObject> result = selectionDialog.getResult();
       if (!result.isEmpty()) {

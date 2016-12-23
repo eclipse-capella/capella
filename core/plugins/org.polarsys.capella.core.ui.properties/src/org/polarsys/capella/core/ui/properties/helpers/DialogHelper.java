@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,12 +16,11 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.swt.widgets.Control;
-
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
-import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerLabelProvider;
+import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
 
 /**
  */
@@ -35,8 +34,8 @@ public class DialogHelper {
    */
   public static EObject openSimpleSelectionDialog(Control control, Collection<? extends EObject> list) {
     boolean expandViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandSingleViewerContent();
-
-    return SelectionDialogHelper.simplePropertySelectionDialogWizard(list, control.getShell(), expandViewer ? AbstractTreeViewer.ALL_LEVELS : 0);
+    CapellaTransfertViewerLabelProvider labelProvider = new CapellaTransfertViewerLabelProvider(TransactionHelper.getEditingDomain(list));
+    return SelectionDialogHelper.simplePropertySelectionDialogWizard(list, labelProvider,control.getShell(), expandViewer ? AbstractTreeViewer.ALL_LEVELS : 0);
   }
 
   /**
@@ -47,8 +46,8 @@ public class DialogHelper {
    */
   public static Collection<? extends EObject> openMultiSelectionDialog(Control control, Collection<? extends EObject> list) {
     boolean expandViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandSingleViewerContent();
-
-    return SelectionDialogHelper.simplePropertiesSelectionDialogWizard(list, control.getShell(), expandViewer ? AbstractTreeViewer.ALL_LEVELS : 0);
+    CapellaTransfertViewerLabelProvider labelProvider = new CapellaTransfertViewerLabelProvider(TransactionHelper.getEditingDomain(list));
+    return SelectionDialogHelper.simplePropertiesSelectionDialogWizard(list, labelProvider, control.getShell(), expandViewer ? AbstractTreeViewer.ALL_LEVELS : 0);
   }
 
   /**

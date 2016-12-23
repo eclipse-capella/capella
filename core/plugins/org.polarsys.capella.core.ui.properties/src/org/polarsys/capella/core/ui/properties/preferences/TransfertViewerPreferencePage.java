@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,6 @@ import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-
 import org.polarsys.capella.common.ui.toolkit.fields.SpacerFieldEditor;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 import org.polarsys.capella.core.commands.preferences.service.PreferenceField;
@@ -65,6 +64,10 @@ public class TransfertViewerPreferencePage extends AbstractDefaultPreferencePage
   protected void createFieldEditors() {
     Composite fieldEditorParent = getFieldEditorParent();
 
+    addField(new PreferenceField(ITransfertViewerPreferences.PREFS_DISABLE_LABEL_COMPUTATION, Messages.DisableLabelComputation, fieldEditorParent),
+        UserProfileModeEnum.User, fieldEditorParent, ProjectScope.class);
+    addField(new SpacerFieldEditor(fieldEditorParent));
+    
     Group group1 =
         createGroup(Messages.MultipleSelectionDialogPreferencePage_Group_Title, Messages.MultipleSelectionDialogPreferencePage_Group_Title, fieldEditorParent);
     addField(new PreferenceField(ITransfertViewerPreferences.PREFS_EXPAND_LEFT_VIEWER_CONTENT, Messages.LeftTransfertViewerPreferencePage_Description, group1),
