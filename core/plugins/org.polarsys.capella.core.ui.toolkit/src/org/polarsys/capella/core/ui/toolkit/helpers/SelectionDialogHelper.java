@@ -44,9 +44,21 @@ public class SelectionDialogHelper {
     // Displayed elements.
     Collection<? extends EObject> elements = (null != list) ? list : new ArrayList<EObject>(0);
     // call wizard
-    SelectElementsDialog selectionDialog =
-        new SelectElementsDialog(shell, TransactionHelper.getEditingDomain(elements), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
-            Messages.SelectionDialogHelper_SelectionWizard_Title, ICommonConstants.EMPTY_STRING, elements, multiplicity, null, treeViewerExpandLevel);
+    SelectElementsDialog selectionDialog = new SelectElementsDialog(shell, TransactionHelper.getEditingDomain(elements),
+        CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
+        Messages.SelectionDialogHelper_SelectionWizard_Title, ICommonConstants.EMPTY_STRING, elements, multiplicity,
+        null, treeViewerExpandLevel);
+    return selectionDialog;
+  }
+  
+  private static SelectElementsDialog getSelectionDialogWizard(Collection<? extends EObject> list, DataLabelProvider labelProvider, Shell shell, boolean multiplicity,
+      int treeViewerExpandLevel) {
+    // Displayed elements.
+    Collection<? extends EObject> elements = (null != list) ? list : new ArrayList<EObject>(0);
+    // call wizard
+    SelectElementsDialog selectionDialog = new SelectElementsDialog(shell, labelProvider,
+        Messages.SelectionDialogHelper_SelectionWizard_Title, ICommonConstants.EMPTY_STRING, elements, multiplicity,
+        null, treeViewerExpandLevel);
     return selectionDialog;
   }
 
@@ -75,6 +87,22 @@ public class SelectionDialogHelper {
     }
     return null;
   }
+  
+  /**
+   * Open selection wizard for given list of elements
+   * @param list : list of selection-able elements
+   * @param shell : current shell
+   * @param treeViewerExpandLevel
+   * @return Collection<EObject> : selected elements from wizard (value can be null)
+   */
+  public static Collection<? extends EObject> simplePropertiesSelectionDialogWizard(Collection<? extends EObject> list, DataLabelProvider labelProvider,Shell shell,
+      int treeViewerExpandLevel) {
+    SelectElementsDialog selectionDialog = getSelectionDialogWizard(list, labelProvider, shell, true, treeViewerExpandLevel);
+    if (Window.OK == selectionDialog.open()) {
+      return selectionDialog.getResult();
+    }
+    return null;
+  }
 
   /**
    * Open selection wizard for given list of elements
@@ -95,6 +123,24 @@ public class SelectionDialogHelper {
    */
   public static EObject simplePropertySelectionDialogWizard(Collection<? extends EObject> list, Shell shell, int treeViewerExpandLevel) {
     SelectElementsDialog selectionDialog = getSelectionDialogWizard(list, shell, false, treeViewerExpandLevel);
+    if (Window.OK == selectionDialog.open()) {
+      List<? extends EObject> result = selectionDialog.getResult();
+      if (!result.isEmpty()) {
+        return result.get(0);
+      }
+    }
+    return null;
+  }
+  
+  /**
+   * Open selection wizard for given list of elements
+   * @param list : list of selection-able elements
+   * @param shell : current shell
+   * @param treeViewerExpandLevel
+   * @return EObject : selected element from wizard (value can be null)
+   */
+  public static EObject simplePropertySelectionDialogWizard(Collection<? extends EObject> list, DataLabelProvider labelProvider, Shell shell, int treeViewerExpandLevel) {
+    SelectElementsDialog selectionDialog = getSelectionDialogWizard(list, labelProvider, shell, false, treeViewerExpandLevel);
     if (Window.OK == selectionDialog.open()) {
       List<? extends EObject> result = selectionDialog.getResult();
       if (!result.isEmpty()) {

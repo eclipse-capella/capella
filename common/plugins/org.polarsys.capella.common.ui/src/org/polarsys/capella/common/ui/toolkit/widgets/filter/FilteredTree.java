@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.ui.toolkit.widgets.filter;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -544,7 +543,9 @@ public class FilteredTree extends Composite {
                 }
               }
               // Refresh the tree viewer to take into account the new pattern filter value.
-              treeViewer.refresh(true);
+              if(newPatternToApply != null){
+                treeViewer.refresh(false);
+              }
 
               if (!initial) {
                 if (text.length() > 0) {
