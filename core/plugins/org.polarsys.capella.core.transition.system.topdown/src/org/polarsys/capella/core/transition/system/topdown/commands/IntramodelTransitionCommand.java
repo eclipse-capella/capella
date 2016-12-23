@@ -134,7 +134,7 @@ public class IntramodelTransitionCommand extends LauncherCommand {
 
     } else if (ITopDownConstants.TRANSITION_TOPDOWN_INTERFACE.equals(kind)) {
       if (rootElement instanceof BlockArchitecture) {
-        rootElement = BlockArchitectureExt.getInterfacePkg((BlockArchitecture) rootElement);
+        rootElement = BlockArchitectureExt.getInterfacePkg((BlockArchitecture) rootElement, false);
 
       } else if (rootElement instanceof Component) {
         rootElement = ComponentExt.getInterfacePkg((Component) rootElement, false);
@@ -142,7 +142,7 @@ public class IntramodelTransitionCommand extends LauncherCommand {
 
     } else if (ITopDownConstants.TRANSITION_TOPDOWN_DATA.equals(kind)) {
       if (rootElement instanceof BlockArchitecture) {
-        rootElement = BlockArchitectureExt.getDataPkg((BlockArchitecture) rootElement);
+        rootElement = BlockArchitectureExt.getDataPkg((BlockArchitecture) rootElement, false);
 
       } else if (rootElement instanceof Component) {
         rootElement = ComponentExt.getDataPkg((Component) rootElement, false);
@@ -164,17 +164,17 @@ public class IntramodelTransitionCommand extends LauncherCommand {
 
     } else if (ITopDownConstants.TRANSITION_TOPDOWN_ACTOR.equals(kind)) {
       if (rootElement instanceof BlockArchitecture) {
-        rootElement = BlockArchitectureExt.getActorPkg((BlockArchitecture) rootElement);
+        rootElement = BlockArchitectureExt.getActorPkg((BlockArchitecture) rootElement, false);
       }
 
     } else if (ITopDownConstants.TRANSITION_TOPDOWN_SYSTEM.equals(kind)) {
       if (rootElement instanceof BlockArchitecture) {
-        rootElement = BlockArchitectureExt.getFirstComponent((BlockArchitecture) rootElement);
+        rootElement = BlockArchitectureExt.getFirstComponent((BlockArchitecture) rootElement, false);
       }
 
     } else if (ITopDownConstants.TRANSITION_TOPDOWN_LC2PC.equals(kind)) {
       if (rootElement instanceof BlockArchitecture) {
-        rootElement = BlockArchitectureExt.getFirstComponent((BlockArchitecture) rootElement);
+        rootElement = BlockArchitectureExt.getFirstComponent((BlockArchitecture) rootElement, false);
       }
 
     } else if (ITopDownConstants.TRANSITION_TOPDOWN_OE2ACTOR.equals(kind)) {

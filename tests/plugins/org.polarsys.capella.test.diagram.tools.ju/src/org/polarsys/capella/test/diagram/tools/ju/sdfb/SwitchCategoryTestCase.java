@@ -15,10 +15,10 @@ import junit.framework.Test;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.SwitchTool;
 import org.polarsys.capella.test.diagram.tools.ju.model.SwitchCategory;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 /**
  * Test Show/Hide category. Use the switch tool to:

@@ -111,7 +111,7 @@ In order to modify configuration property values located on the 	Project element
 [[Image:Images/6.2_Model preferences.png|440x152px]]
 
  
-If the preference is activated, the tree will be displayed. For significant model, il can be usefull to not display entire trees and use the Regex to find a specific model.
+If the preference is activated, the tree will be displayed. For significant model, it can be useful to not display entire trees and use the Regex to find a specific model.
 
  
 [[Image:Images/6.2.%20Model%20preferences_html_mc875712.png|250x200px]]
@@ -155,20 +155,20 @@ Activating this 				configuration option is mandatory when working with Clearcas
 |}  
 
 
-== Transfert Viewer ==
+== Transfer Viewer ==
 
-On the sub section of '''Capella / Transfert Viewer preferences''', it is possible to allow the automatic build of trees in selection dialogs.
+On the sub section of '''Capella / Transfer Viewer preferences''', it's recommended for huge models to disable the computation of labels for model elements which appear in the tree, it is also possible to allow the automatic expansion of trees in selection dialogs from Browse button in Properties view and also from Insert/Remove tool in diagram Palette.
 
 [[Image:Images/6.2_Model preferences5.png|400x170px]]
 
 [[Image:Images/6.2_Model preferences6.png|800x500px]]
 
-If the preference is activated, the tree will be displayed. For significant model, il can be usefull to not display entire trees.
+If the preference is activated, the tree will be displayed. For significant model, it can be useful to not display entire trees.
 
 
 == Transitions/Generation ==
  
-On the sub section of '''Capella / Transistions/Generation preferences''', it is possible to specify the scope of automatic transitions.
+On the sub section of '''Capella / Transitions/Generation preferences''', it is possible to specify the scope of automatic transitions.
 
  
 [[Image:Images/6.2.%20Model%20preferences_html_m73c38954.png|753x478px]]

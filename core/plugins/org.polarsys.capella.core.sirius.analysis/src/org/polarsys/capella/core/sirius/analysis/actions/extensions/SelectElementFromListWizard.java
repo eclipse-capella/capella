@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
+import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerLabelProvider;
 
 /**
@@ -43,13 +44,15 @@ public class SelectElementFromListWizard extends AbstractExternalJavaAction {
     if (scope == null) {
       scope = Collections.emptyList();
     }
+    boolean expandViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandSingleViewerContent();
+    int viewerExpandLevel = expandViewer ? AbstractTreeViewer.ALL_LEVELS : 0;
     SelectElementsDialog selectionDialog = new SelectElementsDialog(getShell(),
     		new CapellaTransfertViewerLabelProvider(TransactionHelper.getEditingDomain(context)),
             Messages.SelectElementFromListWizard_Title,
             wizardMessage,
             new ArrayList<EObject>(scope),
             multiple_p,
-            null, AbstractTreeViewer.ALL_LEVELS);
+            null, viewerExpandLevel);
 
     Object result = WIZARD_CANCELED;
     if (Window.OK == selectionDialog.open()) {

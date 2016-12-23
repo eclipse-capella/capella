@@ -245,15 +245,15 @@ public class ReconciliationTraceabilityHandler extends LevelBasedTraceabilityHan
    * @param map
    */
   protected void initializeBlockArchitecture(BlockArchitecture source, BlockArchitecture target, IContext context, LevelMappingTraceability map) {
-    addMapping(map, BlockArchitectureExt.getFunctionPkg(source), BlockArchitectureExt.getFunctionPkg(target), context);
-    addMapping(map, BlockArchitectureExt.getRootFunction(source), BlockArchitectureExt.getRootFunction(target), context);
-    addMapping(map, BlockArchitectureExt.getDataPkg(source), BlockArchitectureExt.getDataPkg(target), context);
+    addMapping(map, BlockArchitectureExt.getFunctionPkg(source, false), BlockArchitectureExt.getFunctionPkg(target, false), context);
+    addMapping(map, BlockArchitectureExt.getRootFunction(source, false), BlockArchitectureExt.getRootFunction(target, false), context);
+    addMapping(map, BlockArchitectureExt.getDataPkg(source, false), BlockArchitectureExt.getDataPkg(target, false), context);
 
-    addMapping(map, BlockArchitectureExt.getActorPkg(source), BlockArchitectureExt.getActorPkg(target), context);
-    addMapping(map, BlockArchitectureExt.getContext(source), BlockArchitectureExt.getContext(target), context);
-    addMapping(map, BlockArchitectureExt.getInterfacePkg(source), BlockArchitectureExt.getInterfacePkg(target), context);
-    addMapping(map, BlockArchitectureExt.getRequirementsPkg(source), BlockArchitectureExt.getRequirementsPkg(target), context);
-    addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source), BlockArchitectureExt.getAbstractCapabilityPkg(target), context);
+    addMapping(map, BlockArchitectureExt.getActorPkg(source, false), BlockArchitectureExt.getActorPkg(target, false), context);
+    addMapping(map, BlockArchitectureExt.getContext(source, false), BlockArchitectureExt.getContext(target, false), context);
+    addMapping(map, BlockArchitectureExt.getInterfacePkg(source, false), BlockArchitectureExt.getInterfacePkg(target, false), context);
+    addMapping(map, BlockArchitectureExt.getRequirementsPkg(source, false), BlockArchitectureExt.getRequirementsPkg(target, false), context);
+    addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source, false), BlockArchitectureExt.getAbstractCapabilityPkg(target, false), context);
   }
 
 }

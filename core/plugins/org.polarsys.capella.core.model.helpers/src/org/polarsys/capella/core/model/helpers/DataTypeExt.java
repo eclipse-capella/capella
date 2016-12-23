@@ -19,9 +19,9 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
-import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
+import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.information.datatype.BooleanType;
 import org.polarsys.capella.core.data.information.datatype.DataType;
 import org.polarsys.capella.core.data.information.datatype.DatatypePackage;
@@ -31,10 +31,7 @@ import org.polarsys.capella.core.data.information.datatype.PhysicalQuantity;
 import org.polarsys.capella.core.data.information.datatype.StringType;
 import org.polarsys.capella.core.data.information.datavalue.DataValue;
 import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
-import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
-import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
-import org.polarsys.capella.common.queries.debug.QueryDebugger;
 
 /**
  */
@@ -44,17 +41,7 @@ public class DataTypeExt {
    * @return all the dataTypes contained in the current and previous architectures
    */
   public static Collection<DataType> getAllDataTypes(final EObject context) {
-    // OLD CODE
-    Collection<DataType> returnedDataTypes = new ArrayList<DataType>();
-    for (BlockArchitecture aBlockArchitecture : BlockArchitectureExt.getRootAndPreviousBlockArchitectures(context)) {
-      for (EObject aDataType : EObjectExt.getAll(aBlockArchitecture, DatatypePackage.Literals.DATA_TYPE)) {
-        returnedDataTypes.add((DataType) aDataType);
-      }
-    }
-    // NEW CODE
-    returnedDataTypes = (List) QueryDebugger.executeQueryWithEqualityDebug(QueryIdentifierConstants.GET_ALL_DATA_TYPES, context, returnedDataTypes);
-    // END CODE REFACTOR
-    return returnedDataTypes;
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_DATA_TYPES, context);
   }
 
   /**

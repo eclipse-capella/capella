@@ -13,12 +13,13 @@ package org.polarsys.capella.test.transition.ju.testsuites.main;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.transition.ju.testcases.ReconciliationCommunicationLinks;
 import org.polarsys.capella.test.transition.ju.testcases.ReconciliationInterfaceUsesImplements;
+import org.polarsys.capella.test.transition.ju.testcases.SkeletonElementsNames;
+
+import junit.framework.Test;
 
 public class TransitionTestSuite extends BasicTestSuite {
 
@@ -34,6 +35,7 @@ public class TransitionTestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new ReconciliationCommunicationLinks());
     tests.add(new ReconciliationInterfaceUsesImplements());
+    tests.add(new SkeletonElementsNames());
     return tests;
   }
 

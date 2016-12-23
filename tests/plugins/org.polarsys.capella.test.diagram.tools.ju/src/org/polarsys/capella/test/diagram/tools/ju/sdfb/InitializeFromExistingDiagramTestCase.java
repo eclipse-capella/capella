@@ -16,9 +16,9 @@ import junit.framework.Test;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.context.XDFBDiagram;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 /**
  * Test InitializeFromExistingDiagram tool and check that the layout is preserved.

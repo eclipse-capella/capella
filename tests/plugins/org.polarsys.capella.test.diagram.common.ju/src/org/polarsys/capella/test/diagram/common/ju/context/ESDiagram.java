@@ -28,6 +28,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.sequence.MessageCreationTool;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class ESDiagram extends DiagramContext {
 

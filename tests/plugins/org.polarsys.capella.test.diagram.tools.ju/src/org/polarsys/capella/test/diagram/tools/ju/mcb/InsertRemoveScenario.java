@@ -16,9 +16,9 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.CapabilityDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.MissionDiagram;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
-import org.polarsys.capella.test.diagram.tools.ju.model.GenericModel;
+import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.model.GenericModel;
 
 /**
  * Test for each architecture phases some basic insert remove on capabilities diagrams

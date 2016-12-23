@@ -83,7 +83,7 @@ import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
-import org.polarsys.capella.common.queries.debug.QueryDebugger;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
@@ -97,8 +97,6 @@ import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
-import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.Block;
@@ -158,7 +156,6 @@ import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
-import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
@@ -484,15 +481,10 @@ public class CapellaServices {
     return result;
   }
 
-  @SuppressWarnings({ "unchecked", "rawtypes" })
   public Collection<AbstractExchangeItem> getAllExchangeItems(final EObject context) {
     Collection<AbstractExchangeItem> returnedInformationItems = new ArrayList<AbstractExchangeItem>();
-    // OLD CODE
-    List<BlockArchitecture> blocks = getAvailableArchitectures(context);
-    // NEW CODE
-    blocks = (List) QueryDebugger.executeQueryWithInclusionDebug(
-        QueryIdentifierConstants.GET_AVAILABLE_ARCHITECTURES_FOR_LIB, context, blocks);
-    // END CODE REFACTOR
+    List<BlockArchitecture> blocks = QueryInterpretor
+        .executeQuery(QueryIdentifierConstants.GET_AVAILABLE_ARCHITECTURES_FOR_LIB, context);
     for (BlockArchitecture aBlockArchitecture : blocks) {
       TreeIterator<EObject> it = aBlockArchitecture.eAllContents();
       while (it.hasNext()) {
@@ -732,47 +724,10 @@ public class CapellaServices {
     return current;
   }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   public List<BlockArchitecture> getAvailableArchitectures(final EObject context) {
-    // OLD CODE
-    List<BlockArchitecture> returnedArchitectures = new ArrayList<BlockArchitecture>();
-    SystemEngineering rootSystemEngineering = (SystemEngineering) getAncestor(context,
-        CapellamodellerPackage.Literals.SYSTEM_ENGINEERING.getName());
-    BlockArchitecture ownerBlockArchitecture = (BlockArchitecture) getAncestor(context,
-        CsPackage.Literals.BLOCK_ARCHITECTURE.getName());
-    EList<ModellingArchitecture> ownedArchitectures = rootSystemEngineering.getOwnedArchitectures();
-    for (ModellingArchitecture modellingArchitecture : ownedArchitectures) {
-      if (modellingArchitecture instanceof OperationalAnalysis) {
-        returnedArchitectures.add((OperationalAnalysis) modellingArchitecture);
-      }
-      if (modellingArchitecture instanceof SystemAnalysis) {
-        if (!(ownerBlockArchitecture instanceof OperationalAnalysis)) {
-          returnedArchitectures.add((SystemAnalysis) modellingArchitecture);
-        }
-      }
-      if (modellingArchitecture instanceof LogicalArchitecture) {
-        if (!((ownerBlockArchitecture instanceof OperationalAnalysis) || (ownerBlockArchitecture instanceof SystemAnalysis))) {
-          returnedArchitectures.add((LogicalArchitecture) modellingArchitecture);
-        }
-      }
-      if (modellingArchitecture instanceof PhysicalArchitecture) {
-        if (!((ownerBlockArchitecture instanceof OperationalAnalysis)
-            || (ownerBlockArchitecture instanceof SystemAnalysis) || (ownerBlockArchitecture instanceof LogicalArchitecture))) {
-          returnedArchitectures.add((PhysicalArchitecture) modellingArchitecture);
-        }
-      }
-      if (modellingArchitecture instanceof EPBSArchitecture) {
-        if (ownerBlockArchitecture instanceof EPBSArchitecture) {
-          returnedArchitectures.add((EPBSArchitecture) modellingArchitecture);
-        }
-      }
-    }
-    // NEW CODE
-    returnedArchitectures = (List) QueryDebugger.executeQueryWithEqualityDebug(
+    return QueryInterpretor.executeQuery(
         org.polarsys.capella.core.sirius.analysis.queries.QueryIdentifierConstants.GET_AVAILABLE_ARCHITECTURES,
-        context, returnedArchitectures);
-    // END CODE REFACTOR
-    return returnedArchitectures;
+        context);
   }
 
   public Collection<EObject> getRelatedAssociations(Classifier clazz) {

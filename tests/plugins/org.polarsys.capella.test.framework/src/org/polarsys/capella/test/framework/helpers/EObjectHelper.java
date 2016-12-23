@@ -22,10 +22,13 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.core.libraries.utils.ScopeModelWrapper;
+import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 /**
  * Useful services on EObject
@@ -172,5 +175,29 @@ public class EObjectHelper {
 		}
 		return result;
 	}
+	
+  public static void removeElement(EObject element) {
+    if (element != null) {
+      List<EObject> list = new ArrayList<EObject>();
+      list.add(element);
+      removeElements(list);
+    }
+  }
+  
+  public static void removeElement(final String id, final SessionContext context) {
+    EObject object = context.getSemanticElement(id);
+    EObjectHelper.removeElement(object);
+    context.removeSemanticElement(id);
+  }
+
+  public static void removeElements(Collection<? extends EObject> elements) {
+    if ((elements != null) && (elements.size() > 0)) {
+      CapellaDeleteCommand command = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(elements),
+          elements, false, false, true);
+      if (command.canExecute()) {
+        command.execute();
+      }
+    }
+  }
 
 }

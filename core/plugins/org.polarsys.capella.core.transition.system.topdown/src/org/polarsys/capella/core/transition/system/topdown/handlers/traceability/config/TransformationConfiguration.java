@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,100 +29,100 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class TransformationConfiguration extends org.polarsys.capella.core.transition.system.handlers.traceability.config.TransformationConfiguration {
 
   @Override
-  protected void initHandlers(IContext fContext_p) {
-    addHandler(fContext_p, new ReconciliationTraceabilityHandler(getIdentifier(fContext_p)) {
+  protected void initHandlers(IContext fContext) {
+    addHandler(fContext, new ReconciliationTraceabilityHandler(getIdentifier(fContext)) {
 
       @Override
-      protected void initializeDataPkg(DataPkg source_p, DataPkg target_p, IContext context_p, LevelMappingTraceability map_p) {
-        if (source_p.eClass().equals(target_p.eClass())) {
-          addMapping(map_p, source_p, target_p, context_p);
+      protected void initializeDataPkg(DataPkg source, DataPkg target, IContext context, LevelMappingTraceability map) {
+        if (source.eClass().equals(target.eClass())) {
+          addMapping(map, source, target, context);
         }
       }
 
       @Override
-      protected void initializeComponent(Component source_p, Component target_p, IContext context_p, LevelMappingTraceability map_p) {
+      protected void initializeComponent(Component source, Component target, IContext context, LevelMappingTraceability map) {
         //Nothing here, we don't want to play with matching though stateMachines size while transformation
       }
 
       @Override
-      protected void initializeBlockArchitecture(BlockArchitecture source_p, BlockArchitecture target_p, IContext context_p, LevelMappingTraceability map_p) {
-        addMapping(map_p, BlockArchitectureExt.getFunctionPkg(source_p, true), BlockArchitectureExt.getFunctionPkg(target_p, true), context_p);
-        addMapping(map_p, BlockArchitectureExt.getRootFunction(source_p, true), BlockArchitectureExt.getRootFunction(target_p, true), context_p);
-        addMapping(map_p, BlockArchitectureExt.getDataPkg(source_p, true), BlockArchitectureExt.getDataPkg(target_p, true), context_p);
-        addMapping(map_p, BlockArchitectureExt.getActorPkg(source_p, true), BlockArchitectureExt.getActorPkg(target_p, true), context_p);
-        addMapping(map_p, BlockArchitectureExt.getContext(source_p, true), BlockArchitectureExt.getContext(target_p, true), context_p);
+      protected void initializeBlockArchitecture(BlockArchitecture source, BlockArchitecture target, IContext context, LevelMappingTraceability map) {
+        addMapping(map, BlockArchitectureExt.getFunctionPkg(source, false), BlockArchitectureExt.getFunctionPkg(target, false), context);
+        addMapping(map, BlockArchitectureExt.getRootFunction(source, false), BlockArchitectureExt.getRootFunction(target, false), context);
+        addMapping(map, BlockArchitectureExt.getDataPkg(source, false), BlockArchitectureExt.getDataPkg(target, false), context);
+        addMapping(map, BlockArchitectureExt.getActorPkg(source, false), BlockArchitectureExt.getActorPkg(target, false), context);
+        addMapping(map, BlockArchitectureExt.getContext(source, false), BlockArchitectureExt.getContext(target, false), context);
 
-        if (!((target_p instanceof PhysicalArchitecture) && !(source_p instanceof PhysicalArchitecture))) {
-          addMapping(map_p, BlockArchitectureExt.getInterfacePkg(source_p, true), BlockArchitectureExt.getInterfacePkg(target_p, true), context_p);
+        if (!((target instanceof PhysicalArchitecture) && !(source instanceof PhysicalArchitecture))) {
+          addMapping(map, BlockArchitectureExt.getInterfacePkg(source, false), BlockArchitectureExt.getInterfacePkg(target, false), context);
         }
-        addMapping(map_p, BlockArchitectureExt.getRequirementsPkg(source_p, false), BlockArchitectureExt.getRequirementsPkg(target_p, false), context_p);
-        addMapping(map_p, BlockArchitectureExt.getAbstractCapabilityPkg(source_p, true), BlockArchitectureExt.getAbstractCapabilityPkg(target_p, true),
-            context_p);
-        addMapping(map_p, BlockArchitectureExt.getFirstComponent(source_p, true), BlockArchitectureExt.getFirstComponent(target_p, true), context_p);
+        addMapping(map, BlockArchitectureExt.getRequirementsPkg(source, false), BlockArchitectureExt.getRequirementsPkg(target, false), context);
+        addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source, false), BlockArchitectureExt.getAbstractCapabilityPkg(target, false),
+            context);
+        addMapping(map, BlockArchitectureExt.getFirstComponent(source, false), BlockArchitectureExt.getFirstComponent(target, false), context);
       }
 
       /**
        * {@inheritDoc}
        */
       @Override
-      protected void initializeRootMappings(IContext context_p) {
-        super.initializeRootMappings(context_p);
-        EObject source = (EObject) context_p.get(ITransitionConstants.TRANSFORMATION_SOURCE_ROOT);
-        EObject target = (EObject) context_p.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
-        addMappings(source, target, context_p);
+      protected void initializeRootMappings(IContext context) {
+        super.initializeRootMappings(context);
+        EObject source = (EObject) context.get(ITransitionConstants.TRANSFORMATION_SOURCE_ROOT);
+        EObject target = (EObject) context.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
+        addMappings(source, target, context);
       }
 
     });
 
-    addHandler(fContext_p, new RealizationLinkTraceabilityHandler(getIdentifier(fContext_p)) {
+    addHandler(fContext, new RealizationLinkTraceabilityHandler(getIdentifier(fContext)) {
 
       /**
        * {@inheritDoc}
        */
       @Override
-      protected void initializeRootMappings(IContext context_p) {
-        super.initializeRootMappings(context_p);
-        EObject source = (EObject) context_p.get(ITransitionConstants.TRANSFORMATION_SOURCE_ROOT);
-        EObject target = (EObject) context_p.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
-        initializeMappings(source, target, context_p);
+      protected void initializeRootMappings(IContext context) {
+        super.initializeRootMappings(context);
+        EObject source = (EObject) context.get(ITransitionConstants.TRANSFORMATION_SOURCE_ROOT);
+        EObject target = (EObject) context.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
+        initializeMappings(source, target, context);
       }
 
     });
 
-    addHandler(fContext_p, new LibraryTraceabilityHandler());
+    addHandler(fContext, new LibraryTraceabilityHandler());
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean useHandlerForAttachment(EObject source_p, EObject target_p, ITraceabilityHandler handler_p, IContext context_p) {
-    if (LibraryTraceabilityHandler.isLibraryElement(source_p, context_p)) {
-      return handler_p instanceof LibraryTraceabilityHandler;
+  public boolean useHandlerForAttachment(EObject source, EObject target, ITraceabilityHandler handler, IContext context) {
+    if (LibraryTraceabilityHandler.isLibraryElement(source, context)) {
+      return handler instanceof LibraryTraceabilityHandler;
     }
-    return super.useHandlerForAttachment(source_p, target_p, handler_p, context_p);
+    return super.useHandlerForAttachment(source, target, handler, context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean useHandlerForTracedElements(EObject source_p, ITraceabilityHandler handler_p, IContext context_p) {
-    if (LibraryTraceabilityHandler.isLibraryElement(source_p, context_p)) {
-      return handler_p instanceof LibraryTraceabilityHandler;
+  public boolean useHandlerForTracedElements(EObject source, ITraceabilityHandler handler, IContext context) {
+    if (LibraryTraceabilityHandler.isLibraryElement(source, context)) {
+      return handler instanceof LibraryTraceabilityHandler;
     }
-    return super.useHandlerForTracedElements(source_p, handler_p, context_p);
+    return super.useHandlerForTracedElements(source, handler, context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean useHandlerForSourceElements(EObject source_p, ITraceabilityHandler handler_p, IContext context_p) {
-    if (LibraryTraceabilityHandler.isLibraryElement(source_p, context_p)) {
-      return handler_p instanceof LibraryTraceabilityHandler;
+  public boolean useHandlerForSourceElements(EObject source, ITraceabilityHandler handler, IContext context) {
+    if (LibraryTraceabilityHandler.isLibraryElement(source, context)) {
+      return handler instanceof LibraryTraceabilityHandler;
     }
-    return super.useHandlerForSourceElements(source_p, handler_p, context_p);
+    return super.useHandlerForSourceElements(source, handler, context);
   }
 
 }

@@ -26,6 +26,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class XBreakdownDiagram extends CommonDiagram {
 

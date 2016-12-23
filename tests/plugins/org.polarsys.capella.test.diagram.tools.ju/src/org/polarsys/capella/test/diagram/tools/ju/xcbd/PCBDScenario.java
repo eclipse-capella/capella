@@ -11,11 +11,11 @@
 package org.polarsys.capella.test.diagram.tools.ju.xcbd;
 
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.context.XBreakdownDiagram;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
-import org.polarsys.capella.test.diagram.tools.ju.model.GenericModel;
+import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
+import org.polarsys.capella.test.framework.model.GenericModel;
 
 public class PCBDScenario extends EmptyProject {
 

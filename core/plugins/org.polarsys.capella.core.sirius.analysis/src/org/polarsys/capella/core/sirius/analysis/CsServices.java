@@ -83,7 +83,6 @@ import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
-import org.polarsys.capella.common.queries.debug.QueryDebugger;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -106,7 +105,6 @@ import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellacore.ModellingBlock;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.Relationship;
-import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
@@ -129,7 +127,6 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
-import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeKind;
@@ -144,7 +141,6 @@ import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
-import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
 import org.polarsys.capella.core.data.helpers.information.services.CommunicationLinkExt;
 import org.polarsys.capella.core.data.helpers.information.services.ExchangeItemExt;
 import org.polarsys.capella.core.data.information.Association;
@@ -859,75 +855,7 @@ public class CsServices {
    * interfaces of parents components and their allocated components (recursively).
    */
   public Collection<Interface> getCCEIInsertInterface(EObject context) {
-    // OLD CODE
-    Collection<Interface> interfaces = new java.util.HashSet<Interface>();
-    Collection<EObject> components = new java.util.HashSet<EObject>();
-
-    // go to the first parent component (which can append when component.eContainer is a package)
-    EObject object = getFirstParentContainer(context);
-
-    // Add related interfaces
-    if (object instanceof ConfigurationItem) {
-
-      components = getParentContainersByParts((Component) object);
-      components.add(object);
-      components.addAll(getAllSubUsedComponents((ConfigurationItem) object));
-
-      // For all components, add all linked interfaces
-      for (EObject subObject : components) {
-        if (subObject instanceof Component) {
-          Component subComponent = (Component) subObject;
-          interfaces.addAll(getRelatedInterfacesFromAllocatedComponent(subComponent));
-          interfaces.addAll(getRelatedInterfaces(subComponent));
-        }
-      }
-
-    } else if (object instanceof Component) {
-      // Add components accessible by namespace
-
-      components = getParentContainersByParts((Component) object);
-
-      // For all components, add all defined and linked interfaces
-      for (EObject subObject : components) {
-        if (subObject instanceof Component) {
-          Component subComponent = (Component) subObject;
-          interfaces.addAll(getSubDefinedInterfaces(subComponent));
-          interfaces.addAll(getRelatedInterfaces(subComponent));
-          interfaces.addAll(getInterfacesFromAllocatedComponent(subComponent));
-
-        } else if (subObject instanceof BlockArchitecture) {
-          interfaces.addAll(getSubDefinedInterfaces((BlockArchitecture) subObject));
-          interfaces.addAll(getInterfacesFromAllocatedArchitecture((BlockArchitecture) subObject));
-        }
-      }
-
-    } else if (object instanceof EPBSArchitecture) {
-
-      interfaces.addAll(getSubDefinedInterfaces((BlockArchitecture) object));
-      components.addAll(getAllSubUsedComponents(getContext((EPBSArchitecture) object)));
-
-      // For all components, add all linked interfaces
-      for (EObject subObject : components) {
-        if (subObject instanceof Component) {
-          Component subComponent = (Component) subObject;
-          interfaces.addAll(getRelatedInterfaces(subComponent));
-          interfaces.addAll(getRelatedInterfacesFromAllocatedComponent(subComponent));
-        }
-      }
-
-    } else if (object instanceof BlockArchitecture) {
-      interfaces.addAll(getSubDefinedInterfaces((BlockArchitecture) object));
-      interfaces.addAll(getInterfacesFromAllocatedArchitecture((BlockArchitecture) object));
-
-    }
-
-    // Remove all allocated interfaces
-    removeAllAllocatedInterfaces(interfaces);
-    // NEW CODE
-    interfaces = (List) QueryDebugger
-        .executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_CCE_INSERT_INTERFACE_FOR_LIB, context, interfaces);
-    // END CODE REFACTOR
-    return interfaces;
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCE_INSERT_INTERFACE_FOR_LIB, context);
   }
 
   /**
@@ -1123,30 +1051,7 @@ public class CsServices {
    * namespace which haven't part) CCII-Insert-Component.
    */
   public Collection<Component> getCCIIInsertComponent(Component component) {
-    // OLD CODE
-    Collection<Component> components = new java.util.HashSet<Component>();
-
-    // Add components accessible by namespace
-    components.addAll(ComponentExt.getAvailableComponentsByNamespace(component));
-
-    if (!isMultipartMode(component)) {
-      // Remove component from existing part
-      components.removeAll(getSubUsedComponents(component));
-    }
-
-    // Remove current component and remove all containers of current component
-    components.remove(component);
-    components.removeAll(getParentContainersByParts(component));
-
-    if (component instanceof PhysicalComponent) {
-      components = filterPhysicalComponentsByNature((PhysicalComponent) component, components);
-    }
-
-    // NEW CODE
-    components = (List) QueryDebugger.executeQueryWithInclusionDebug(
-        QueryIdentifierConstants.GET_CCII_INSERT_COMPONENTS_FOR_LIB, component, components);
-    // END CODE REFACTOR
-    return components;
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_INSERT_COMPONENTS_FOR_LIB, component);
   }
 
   /**
@@ -1301,39 +1206,16 @@ public class CsServices {
    * Returns available components which are accessible by brothers-part CCEI-Show-Hide-Component.
    */
   public Collection<Component> getCCEIShowHideComponent(Component component) {
-    // OLD CODE
-    // Collection<Component> components = getBrothersComponents(component);
-    // // Remove component
-    // components.remove(component);
-    // components = filterNotActors(components);
-    Collection<Component> components = (List) QueryInterpretor.executeQuery(
-        org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants.GET_BROTHER_COMPONENTS, component,
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCEI_SHOW_HIDE_COMPONENTS_FOR_LIB, component,
         new QueryContext(), new RemoveActorsFilter());
-    // NEW CODE
-    // END CODE REFACTOR
-    components = (List) QueryDebugger.executeQueryWithInclusionDebug(
-        QueryIdentifierConstants.GET_CCEI_SHOW_HIDE_COMPONENTS_FOR_LIB, component, new RemoveActorsFilter(),
-        components);
-
-    return components;
   }
 
   /**
    * Returns available components which are accessible by brothers-part CCEI-Show-Hide-Component.
    */
   public Collection<Component> getCCEIShowHideActors(Component component) {
-    // OLD CODE
-    Collection<Component> components = new ArrayList<Component>();
-
-    // Add actors
-    components.addAll(ComponentExt.getSubDefinedActors(getArchitecture(component)));
-    components = filterActors(components);
-
-    // NEW CODE
-    components = (List) QueryDebugger.executeQueryWithInclusionDebug(
-        QueryIdentifierConstants.GET_CCEI_SHOW_HIDE_ACTORS_FOR_LIB, getArchitecture(component), components);
-    // END CODE REFACTOR
-    return components;
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCEI_SHOW_HIDE_ACTORS_FOR_LIB,
+        getArchitecture(component));
   }
 
   /**
@@ -1352,13 +1234,7 @@ public class CsServices {
       return Collections.emptyList();
     }
     EObject target = getCCIITarget(decorator);
-    // OLD CODE
-    Collection<Component> components = getSubComponents(target);
-    // NEW CODE
-    components = (List) QueryDebugger.executeQueryWithInclusionDebug("GetCCIIShowHideComponent__Lib", target, //$NON-NLS-1$
-        components);
-    // END CODE REFACTOR
-    return components;
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB, target);
   }
 
   public Collection<Component> getSubComponents(EObject target) {
@@ -1440,33 +1316,7 @@ public class CsServices {
    * Returns available components which are accessible CCII-Show-Hide-Component.
    */
   public Collection<Component> getIBShowHideComponent(DSemanticDecorator decorator) {
-    // OLD CODE
-    Collection<Component> components = new HashSet<Component>();
-    if (!(decorator.getTarget() instanceof Component)) {
-      return new ArrayList<Component>();
-    }
-    EObject target = getIBTarget(decorator);
-    if (decorator instanceof DDiagram) {
-      if (target instanceof Component) {
-        components.addAll(getBrothersComponents((Component) target));
-        components.addAll(ComponentExt.getSubDefinedComponents((Component) target));
-        components.addAll(ComponentExt.getSubUsedComponents((Component) target));
-        components.add((Component) target);
-
-      } else if (target instanceof BlockArchitecture) {
-        components.addAll(ComponentExt.getSubDefinedComponents((BlockArchitecture) target));
-      }
-    } else if (target instanceof Component) {
-      components = new ArrayList<Component>();
-      components.addAll(ComponentExt.getSubDefinedComponents((Component) target));
-      components.addAll(ComponentExt.getSubUsedComponents((Component) target));
-    }
-    components = filterNotActors(components);
-    // NEW CODE
-    components = (List) QueryDebugger.executeQueryWithInclusionDebug(
-        QueryIdentifierConstants.GET_IB_SHOW_HIDE_COMPONENTS_FOR_LIB, decorator, components);
-    // END CODE REFACTOR
-    return components;
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_IB_SHOW_HIDE_COMPONENTS_FOR_LIB, decorator);
   }
 
   /**
@@ -4573,56 +4423,14 @@ public class CsServices {
    * Returns actors which should be inserted into the architecture of the component in the LAB diagram
    */
   public Collection<? extends Component> getABInsertActor(Component component) {
-    // OLD CODE
-    BlockArchitecture architecture = getArchitecture(component);
-    Structure structure = BlockArchitectureExt.getActorPkg(architecture, false);
-    List<AbstractActor> components = ActorPkgExt.getAllActors(structure);
-
-    if (!isMultipartMode(architecture)) {
-      Component context = getContext(architecture);
-
-      if ((context != null) && (components != null)) {
-        // Remove component from existing part
-        components.removeAll(getSubUsedComponents(getContext(architecture)));
-      }
-    }
-
-    // NEW CODE
-    components = (List) QueryDebugger
-        .executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_AB_INSERT_ACTOR_FOR_LIB, component, components);
-    // END CODE REFACTOR
-
-    return components;
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_AB_INSERT_ACTOR_FOR_LIB, component);
   }
 
   /**
    * Returns components which can be inserted into the given component in the LAB Diagram
    */
   public Collection<? extends Component> getABInsertComponent(Component component) {
-    // OLD CODE
-    Collection<Component> components = new java.util.HashSet<Component>();
-
-    // Add components accessible by namespace
-    components.addAll(ComponentExt.getAvailableComponentsByNamespace(component));
-
-    if (!isMultipartMode(component)) {
-      // Remove component from existing part
-      components.removeAll(getSubUsedComponents(component));
-    }
-
-    // Remove current component and remove all containers of current component
-    components.remove(component);
-    components.removeAll(getParentContainers(component));
-
-    if (component instanceof PhysicalComponent) {
-      components = filterPhysicalComponentsByNature((PhysicalComponent) component, components);
-    }
-
-    // NEW CODE
-    components = (List) QueryDebugger.executeQueryWithInclusionDebug(
-        QueryIdentifierConstants.GET_CCII_INSERT_COMPONENTS_FOR_LIB, component, components);
-    // END CODE REFACTOR
-    return components;
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_INSERT_COMPONENTS_FOR_LIB, component);
   }
 
   public Collection<? extends NamedElement> getABShowHideActor(DSemanticDecorator view) {

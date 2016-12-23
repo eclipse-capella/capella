@@ -15,8 +15,8 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.junit.Assert;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.step.AbstractDiagramStepWithDelta;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 /**
  * An abstract test class to call on an hide/show filter in a diagram with delta support on diagram.

@@ -17,7 +17,6 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
-
 import org.polarsys.capella.common.flexibility.properties.property.PropertyPreference;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 
@@ -32,14 +31,14 @@ public class OutputModelPreference extends PropertyPreference {
   public IStatus validate(Object newValue, IPropertyContext context) {
 
     if ((newValue == null) || (newValue.toString().length() == 0)) {
-      return new Status(IStatus.WARNING, getId(), null);
+      return new Status(IStatus.ERROR, getId(), null);
     }
 
     String pathValue = newValue.toString();
     IPath path = new Path(pathValue);
     IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
     if (!file.isAccessible() || !file.exists() || file.isPhantom()) {
-      return new Status(IStatus.WARNING, getId(), "Please select a valid output Capella model");
+      return new Status(IStatus.ERROR, getId(), "Please select a valid output Capella model");
     }
 
     return Status.OK_STATUS;

@@ -18,12 +18,12 @@ import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.MSMDiagram;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.step.filters.ChangeFilter;
 import org.polarsys.capella.test.diagram.common.ju.step.filters.ChangeFilter.ChangeType;
 import org.polarsys.capella.test.diagram.common.ju.step.filters.FilterStep;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
-import org.polarsys.capella.test.diagram.tools.ju.model.GenericModel;
+import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.model.GenericModel;
 
 /**
  */
