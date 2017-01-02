@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!--
-  Copyright (c) 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -13,15 +13,14 @@
 <target name="Capella" sequenceNumber="1450804471">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.sdk.feature.group" version="4.6.0.v20160606-1342"/>
-      <unit id="org.eclipse.platform.feature.group" version="4.6.0.v20160606-1342"/>
-      <!--unit id="org.eclipse.equinox.executable.feature.group" version="3.6.200.v20150602-1417"/-->
-      <unit id="org.eclipse.emf.sdk.feature.group" version="2.12.0.v20160526-0356"/>
+      <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.query.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.emf.transaction.feature.group" version="1.10.0.201606071900"/>
-      <unit id="org.eclipse.gmf.feature.group" version="1.10.0.201606071959"/>
+      <unit id="org.eclipse.emf.transaction.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.gmf.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
-      <unit id="com.ibm.icu" version="56.1.0.v201601250100"/>
+      <unit id="com.ibm.icu" version="0.0.0"/>
       <repository location="http://download.eclipse.org/releases/neon"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">

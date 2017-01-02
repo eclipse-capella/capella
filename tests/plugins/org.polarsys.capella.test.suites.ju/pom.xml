@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (c) 2016 THALES GLOBAL SERVICES. All rights reserved. This 
-	program and the accompanying materials are made available under the terms 
-	of the Eclipse Public License v1.0 which accompanies this distribution, and 
-	is available at http://www.eclipse.org/legal/epl-v10.html Contributors: Thales 
-	- initial API and implementation -->
+<!--
+  Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
 <project
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -17,76 +22,5 @@
 	<groupId>org.polarsys.capella</groupId>
 	<artifactId>org.polarsys.capella.test.suites.ju</artifactId>
 	<version>1.1.0-SNAPSHOT</version>
-	<packaging>eclipse-test-plugin</packaging>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-surefire-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<product>${capella-product-id}</product>
-					<application>${capella-application-id}</application>
-					<useUIHarness>true</useUIHarness>
-					<useUIThread>true</useUIThread>
-					<testSuite>org.polarsys.capella.test.suites.ju</testSuite>
-					<testClass>org.polarsys.capella.test.suites.ju.RunInUITestSuite</testClass>
-				</configuration>
-			</plugin>
-			<!--plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-surefire-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<executions>
-					<execution>
-						<id>RunInNotUITestSuite</id>
-						<phase>integration-test</phase>
-						<goals>
-							<goal>test</goal>
-						</goals>
-						<configuration>
-							<product>${capella-product-id}</product>
-							<application>${capella-application-id}</application>
-							<useUIHarness>false</useUIHarness>
-							<useUIThread>true</useUIThread>
-							<testSuite>org.polarsys.capella.test.suites.ju</testSuite>
-							<testClass>org.polarsys.capella.test.suites.ju.RunInNotUITestSuite</testClass>
-						</configuration>
-					</execution>
-					<execution>
-						<id>RunInUITestSuite</id>
-						<phase>integration-test</phase>
-						<goals>
-							<goal>test</goal>
-						</goals>
-						<configuration>
-							<product>${capella-product-id}</product>
-							<application>${capella-application-id}</application>
-							<useUIHarness>true</useUIHarness>
-							<useUIThread>true</useUIThread>
-							<testSuite>org.polarsys.capella.test.suites.ju</testSuite>
-							<testClass>org.polarsys.capella.test.suites.ju.RunInUITestSuite</testClass>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin-->
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<dependency-resolution>
-						<extraRequirements>
-							<requirement>
-								<type>eclipse-feature</type>
-								<id>org.polarsys.capella.rcp.feature</id>
-								<versionRange>0.0.0</versionRange>
-							</requirement>
-						</extraRequirements>
-					</dependency-resolution>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+	<packaging>eclipse-plugin</packaging>
 </project>
