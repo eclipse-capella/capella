@@ -310,6 +310,7 @@
 		<module>releng/plugins/org.polarsys.capella.rcp</module>
 		<module>releng/plugins/org.polarsys.capella.rcp.product</module>
 		<module>releng/plugins/org.polarsys.capella.rcp.site</module>
+		<module>releng/plugins/org.polarsys.capella.rcp.target</module>
 		<module>tests/features/org.polarsys.capella.test.feature</module>
 		<module>tests/plugins/org.polarsys.capella.test.business.queries.ju</module>
 		<module>tests/plugins/org.polarsys.capella.test.diagram.common.ju</module>
@@ -353,17 +354,11 @@
 					<target>
 						<artifact>
 							<groupId>org.polarsys.capella</groupId>
-							<artifactId>org.polarsys.capella.rcp.product</artifactId>
-							<version>1.1.0-SNAPSHOT</version>
-							<classifier>tp/capella</classifier>
+							<artifactId>capella.target-definition</artifactId>
+							<version>1.2.0-SNAPSHOT</version>
 						</artifact>
 					</target>
 					<environments>
-						<!--environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86</arch>
-						</environment-->
 						<environment>
 							<os>win32</os>
 							<ws>win32</ws>

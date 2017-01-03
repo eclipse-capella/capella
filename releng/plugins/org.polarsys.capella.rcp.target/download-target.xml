@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2017 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<project name="download-target" default="main">
+	<property name="targetFileURL" value="https://git.polarsys.org/c/capella/capella.git/plain/releng/plugins/org.polarsys.capella.rcp.product/tp/capella.target"/>
+	<property name="branch" value="bugzilla/000097/experimentalPlatformBuild"/>
+	<property name="destinationPath" value="."/>
+
+	<target name="main">
+		<get src="${targetFileURL}?h=${branch}" dest="${destinationPath}" />
+	</target>
+</project>
