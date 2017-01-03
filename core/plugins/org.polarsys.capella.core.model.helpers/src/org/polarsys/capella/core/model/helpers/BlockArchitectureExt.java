@@ -21,6 +21,7 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -297,6 +298,23 @@ public class BlockArchitectureExt {
 
     return null;
   }
+  
+  /**
+   * Returns whether the element use a default ActorPkg name
+   */
+  public static boolean isDefaultNameActorPkg(AbstractNamedElement pkg) {
+    if (NamingConstants.CreateSysAnalysisCmd_actors_pkg_name.equals(pkg.getName())) {
+      return true;
+    
+    } else if (NamingConstants.CreateLogicalArchCmd_actors_pkg_name.equals(pkg.getName())) {
+      return true;
+    
+    } else if (NamingConstants.CreatePhysicalArchCmd_actors_pkg_name.equals(pkg.getName())) {
+      return true;
+    
+    } 
+    return false;
+  }
 
   /**
    * Retrieve the data pkg from the given architecture
@@ -311,6 +329,17 @@ public class BlockArchitectureExt {
   }
 
   /**
+   * Returns whether the element use a default DataPkg name
+   */
+  public static boolean isDefaultNameDataPkg(AbstractNamedElement pkg) {
+    if (NamingConstants.CreateCommonCmd_data_pkg_name.equals(pkg.getName())) {
+      return true;
+    
+    } 
+    return false;
+  }
+  
+  /**
    * Retrieve the data pkg from the given architecture
    */
   public static DataPkg getDataPkg(BlockArchitecture architecture) {
@@ -323,7 +352,7 @@ public class BlockArchitectureExt {
   public static Structure getRequirementsPkg(BlockArchitecture architecture, boolean create) {
     if ((architecture.getOwnedRequirementPkgs().size() == 0) && create) {
       // to externalize when constants in skeleton will be into helpers.
-      RequirementsPkg pkg = RequirementFactory.eINSTANCE.createRequirementsPkg("Requirements"); //$NON-NLS-1$
+      RequirementsPkg pkg = RequirementFactory.eINSTANCE.createRequirementsPkg(NamingConstants.CreateCommonCmd_requirements_pkg_name); //$NON-NLS-1$
       architecture.getOwnedRequirementPkgs().add(pkg);
     }
     if (architecture.getOwnedRequirementPkgs().isEmpty()) {
@@ -332,6 +361,16 @@ public class BlockArchitectureExt {
     return architecture.getOwnedRequirementPkgs().get(0);
   }
 
+  /**
+   * Returns whether the element use a default RequirementPkg name
+   */
+  public static boolean isDefaultNameRequirementsPkg(AbstractNamedElement pkg) {
+    if (NamingConstants.CreateCommonCmd_requirements_pkg_name.equals(pkg.getName())) {
+      return true;
+    }
+    return false;
+  }
+  
   /**
    * Retrieve the Requirement pkg from the given architecture
    */
@@ -347,7 +386,7 @@ public class BlockArchitectureExt {
   }
 
   public static AbstractCapabilityPkg getAbstractCapabilityPkg(BlockArchitecture architecture, boolean create) {
-    if (architecture.getOwnedAbstractCapabilityPkg() == null) {
+    if (architecture.getOwnedAbstractCapabilityPkg() == null && create) {
       // to externalize when constants in skeleton will be into helpers.
       AbstractCapabilityPkg pkg = null;
       if (architecture instanceof OperationalAnalysis) {
@@ -371,6 +410,24 @@ public class BlockArchitectureExt {
   }
 
   /**
+   * Returns whether the element use a default CapabilityPkg name
+   */
+  public static boolean isDefaultNameAbstractCapabilityPkg(AbstractNamedElement pkg) {
+    if (NamingConstants.CreateOpAnalysisCmd_operationalCapabilities_pkg_name.equals(pkg.getName())) {
+      return true;
+    
+    } else if (NamingConstants.CreateSysAnalysisCmd_capabilities_pkg_name.equals(pkg.getName())) {
+      return true;
+
+    } else if (NamingConstants.CreateCommonCmd_capability_realisation_pkg_name.equals(pkg.getName())) {
+      return true;
+
+    } 
+    return false;
+  }
+
+  
+  /**
    * Retrieve the interface pkg from the given architecture
    * Create if not exists
    */
@@ -378,6 +435,18 @@ public class BlockArchitectureExt {
     return getInterfacePkg(architecture, true);
   }
 
+
+  /**
+   * Returns whether the element use a default InterfacePkg name
+   */
+  public static boolean isDefaultNameInterfacePkg(AbstractNamedElement pkg) {
+    if (NamingConstants.CreateCommonCmd_interfaces_pkg_name.equals(pkg.getName())) {
+      return true;
+    } 
+    return false;
+  }
+
+  
   /**
    * Retrieve the interface pkg from the given architecture
    */
@@ -475,6 +544,25 @@ public class BlockArchitectureExt {
     }
     return architecture.getOwnedFunctionPkg();
   }
+  
+  /**
+   * Returns whether the element use a default FunctionPkg name
+   */
+  public static boolean isDefaultNameFunctionPkg(AbstractNamedElement pkg) {
+    if (NamingConstants.CreateOpAnalysisCmd_operationalActivities_pkg_name.equals(pkg.getName())) {
+      return true;
+    
+    } else if (NamingConstants.CreateSysAnalysisCmd_system_functions_pkg_name.equals(pkg.getName())) {
+      return true;
+
+    } else if (NamingConstants.CreateLogicalArchCmd_logicalFunctions_pkg_name.equals(pkg.getName())) {
+      return true;
+
+    } else if (NamingConstants.CreatePhysicalArchCmd_physicalFunctions_pkg_name.equals(pkg.getName())) {
+      return true;
+    }
+    return false;
+  }
 
   /**
    * Retrieve the root function from the given architecture
@@ -537,6 +625,25 @@ public class BlockArchitectureExt {
   }
 
   /**
+   * Returns whether the element use a default Function name
+   */
+  public static boolean isDefaultNameRootFunction(AbstractNamedElement element) {
+    if (NamingConstants.CreateOpAnalysisCmd_operationalActivity_root_name.equals(element.getName())) {
+      return true;
+    
+    } else if (NamingConstants.CreateSysAnalysisCmd_system_function_root_name.equals(element.getName())) {
+      return true;
+
+    } else if (NamingConstants.CreateLogicalArchCmd_logicalFunction_root_name.equals(element.getName())) {
+      return true;
+
+    } else if (NamingConstants.CreatePhysicalArchCmd_physicalFunction_root_name.equals(element.getName())) {
+      return true;
+    }
+    return false;
+  }
+  
+  /**
    * Return the main component of the phase
    * @param architecture
    * @param create
@@ -577,6 +684,26 @@ public class BlockArchitectureExt {
     return first;
   }
 
+
+  /**
+   * Returns whether the element use a default First Component name
+   */
+  public static boolean isDefaultNameFirstComponent(AbstractNamedElement element) {
+    if (NamingConstants.CreateSysAnalysisCmd_system_name.equals(element.getName())) {
+      return true;
+    
+    } else if (NamingConstants.CreateLogicalArchCmd_logicalComponent_name.equals(element.getName())) {
+      return true;
+
+    } else if (NamingConstants.CreatePhysicalArchCmd_physicalComponent_name.equals(element.getName())) {
+      return true;
+
+    } else if (NamingConstants.CreateEPBSArchCmd_configurationItem_name.equals(element.getName())) {
+      return true;
+    }
+    return false;
+  }
+  
   /**
    * Return the main component of the phase
    * @param architecture

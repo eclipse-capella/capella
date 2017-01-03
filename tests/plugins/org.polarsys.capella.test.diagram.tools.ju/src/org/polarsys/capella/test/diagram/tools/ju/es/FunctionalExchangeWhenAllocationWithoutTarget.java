@@ -14,8 +14,8 @@ import junit.framework.Test;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.test.diagram.common.ju.context.ESDiagram;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.tools.ju.model.ESProject;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 /**
  * Test for each architecture phases some basic insert remove on ES diagrams

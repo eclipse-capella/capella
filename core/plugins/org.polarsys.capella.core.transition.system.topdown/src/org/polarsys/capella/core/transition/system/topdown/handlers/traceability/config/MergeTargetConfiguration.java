@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -178,19 +178,19 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
 
     @Override
     protected void initializeBlockArchitecture(BlockArchitecture source, BlockArchitecture target, IContext context, LevelMappingTraceability map) {
-      addMapping(map, BlockArchitectureExt.getFunctionPkg(source, true), BlockArchitectureExt.getFunctionPkg(target, true), context);
-      addMapping(map, BlockArchitectureExt.getRootFunction(source, true), BlockArchitectureExt.getRootFunction(target, true), context);
-      addMapping(map, BlockArchitectureExt.getDataPkg(source, true), BlockArchitectureExt.getDataPkg(target, true), context);
-      addMapping(map, BlockArchitectureExt.getActorPkg(source, true), BlockArchitectureExt.getActorPkg(target, true), context);
-      addMapping(map, BlockArchitectureExt.getContext(source, true), BlockArchitectureExt.getContext(target, true), context);
+      addMapping(map, BlockArchitectureExt.getFunctionPkg(source, false), BlockArchitectureExt.getFunctionPkg(target, false), context);
+      addMapping(map, BlockArchitectureExt.getRootFunction(source, false), BlockArchitectureExt.getRootFunction(target, false), context);
+      addMapping(map, BlockArchitectureExt.getDataPkg(source, false), BlockArchitectureExt.getDataPkg(target, false), context);
+      addMapping(map, BlockArchitectureExt.getActorPkg(source, false), BlockArchitectureExt.getActorPkg(target, false), context);
+      addMapping(map, BlockArchitectureExt.getContext(source, false), BlockArchitectureExt.getContext(target, false), context);
 
       if (!((target instanceof PhysicalArchitecture) && !(source instanceof PhysicalArchitecture))) {
-        addMapping(map, BlockArchitectureExt.getInterfacePkg(source, true), BlockArchitectureExt.getInterfacePkg(target, true), context);
+        addMapping(map, BlockArchitectureExt.getInterfacePkg(source, false), BlockArchitectureExt.getInterfacePkg(target, false), context);
       }
 
       addMapping(map, BlockArchitectureExt.getRequirementsPkg(source, false), BlockArchitectureExt.getRequirementsPkg(target, false), context);
-      addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source, true), BlockArchitectureExt.getAbstractCapabilityPkg(target, true), context);
-      addMapping(map, BlockArchitectureExt.getFirstComponent(source, true), BlockArchitectureExt.getFirstComponent(target, true), context);
+      addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source, false), BlockArchitectureExt.getAbstractCapabilityPkg(target, false), context);
+      addMapping(map, BlockArchitectureExt.getFirstComponent(source, false), BlockArchitectureExt.getFirstComponent(target, false), context);
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -87,8 +87,8 @@ public class TransitionCommandHelper {
     return new TransitionCommandHelper();
   }
 
-  public ICommand getActorTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+  public ICommand getActorTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -97,8 +97,8 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getDataTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+  public ICommand getDataTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -107,8 +107,8 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getExchangeItemTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+  public ICommand getExchangeItemTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -117,8 +117,8 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getFunctionalTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+  public ICommand getFunctionalTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -127,9 +127,9 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getOCtoSMTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getOCtoSMTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -138,9 +138,9 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getOAtoSCTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getOAtoSCTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -150,9 +150,9 @@ public class TransitionCommandHelper {
 
   }
 
-  public ICommand getOAtoSMTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getOAtoSMTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -162,8 +162,8 @@ public class TransitionCommandHelper {
 
   }
 
-  public ICommand getInterfaceTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+  public ICommand getInterfaceTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -172,9 +172,9 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getLC2PCTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getLC2PCTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -183,8 +183,8 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getStateMachineTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+  public ICommand getStateMachineTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -193,9 +193,9 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getCapabilityTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getCapabilityTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -204,9 +204,9 @@ public class TransitionCommandHelper {
     };
   }
 
-  public ICommand getOE2SystemTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getOE2SystemTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -216,13 +216,13 @@ public class TransitionCommandHelper {
   }
 
   /**
-   * @param selection_p
-   * @param progressMonitor_p
+   * @param selection
+   * @param progressMonitor
    * @return
    */
-  public ICommand getOE2ActorTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getOE2ActorTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -232,13 +232,13 @@ public class TransitionCommandHelper {
   }
 
   /**
-   * @param selection_p
-   * @param progressMonitor_p
+   * @param selection
+   * @param progressMonitor
    * @return
    */
-  public ICommand getPropertyValueTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getPropertyValueTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -248,13 +248,13 @@ public class TransitionCommandHelper {
   }
 
   /**
-   * @param selection_p
-   * @param progressMonitor_p
+   * @param selection
+   * @param progressMonitor
    * @return
    */
-  public ICommand getSystemTransitionCommand(Collection<?> elements_p, IProgressMonitor monitor_p) {
+  public ICommand getSystemTransitionCommand(Collection<?> elements, IProgressMonitor monitor) {
 
-    return new IntramodelTransitionCommand(elements_p, monitor_p) {
+    return new IntramodelTransitionCommand(elements, monitor) {
 
       @Override
       protected String getTransitionKind() {
@@ -264,59 +264,69 @@ public class TransitionCommandHelper {
   }
 
   public boolean isFunctionalTransitionAvailable(EObject object) {
-    return ((object instanceof OperationalAnalysis) || (object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture))
-           || ((object instanceof CapellaElement)
-               && (CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object)
-                   || CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object) || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)) && ((object instanceof AbstractFunction)
-                                                                                                                                                                  || (object instanceof FunctionPkg)
-                                                                                                                                                                  || (object instanceof AbstractCapability)
-                                                                                                                                                                  || (object instanceof AbstractCapabilityPkg)
-                                                                                                                                                                  || (object instanceof FunctionalExchange) || (object instanceof FunctionalChain)));
+    return ((object instanceof OperationalAnalysis) || (object instanceof SystemAnalysis)
+        || (object instanceof LogicalArchitecture))
+        || ((object instanceof CapellaElement)
+            && (CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object))
+            && ((object instanceof AbstractFunction) || (object instanceof FunctionPkg)
+                || (object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg)
+                || (object instanceof FunctionalExchange) || (object instanceof FunctionalChain)));
   }
 
   public boolean isInterfaceTransitionAvailable(EObject object) {
     return
     // Interface transition is disabled from ctx2la. Use generate interfaces instead.
     // interface transition is disabled from component or architecture
-    ((object instanceof CapellaElement) && (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)) && ((object instanceof Interface) || (object instanceof InterfacePkg)));
+    ((object instanceof CapellaElement) && (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object))
+        && ((object instanceof Interface) || (object instanceof InterfacePkg)));
   }
 
   public boolean isExchangeItemTransitionAvailable(EObject object) {
     return ((object instanceof CapellaElement)
-            && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object) || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)) && ((object instanceof ExchangeItem) || (object instanceof ExchangeItemAllocation)));
+        && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
+            || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object))
+        && ((object instanceof ExchangeItem) || (object instanceof ExchangeItemAllocation)));
   }
 
   public boolean isStateMachineTransitionAvailable(EObject object) {
     return ((object instanceof BlockArchitecture)
-            || ((object instanceof Component) && !(object instanceof ComponentContext) && (((Component) object).getOwnedStateMachines().size() > 0))
-            || ((object instanceof Part) && (((Part) object).getAbstractType() != null) && (((Part) object).getAbstractType() instanceof Component) && (((Component) ((Part) object)
-                .getAbstractType()).getOwnedStateMachines().size() > 0)) || (object instanceof StateMachine) || (object instanceof AbstractState) || (object instanceof StateTransition))
-           && ((object instanceof CapellaElement) && !CapellaLayerCheckingExt.isAOrInEPBSLayer((CapellaElement) object) && !CapellaLayerCheckingExt
-               .isAOrInPhysicalLayer((CapellaElement) object));
+        || ((object instanceof Component) && !(object instanceof ComponentContext)
+            && (((Component) object).getOwnedStateMachines().size() > 0))
+        || ((object instanceof Part) && (((Part) object).getAbstractType() != null)
+            && (((Part) object).getAbstractType() instanceof Component)
+            && (((Component) ((Part) object).getAbstractType()).getOwnedStateMachines().size() > 0))
+        || (object instanceof StateMachine) || (object instanceof AbstractState) || (object instanceof StateTransition))
+        && ((object instanceof CapellaElement) && !CapellaLayerCheckingExt.isAOrInEPBSLayer((CapellaElement) object)
+            && !CapellaLayerCheckingExt.isAOrInPhysicalLayer((CapellaElement) object));
 
   }
 
   public boolean isDataTransitionAvailable(EObject object) {
-    return ((object instanceof BlockArchitecture)
-            || ((object instanceof Component) && !(object instanceof ComponentContext) && (((Component) object).getOwnedDataPkg() != null))
-            || ((object instanceof Part) && (((Part) object).getAbstractType() != null) && (((Part) object).getAbstractType() instanceof Component) && (((Component) ((Part) object)
-                .getAbstractType()).getOwnedDataPkg() != null)) || (object instanceof DataPkg) || (object instanceof DataValueContainer)
-            || (object instanceof Collection) || (object instanceof CommunicationItem) || (object instanceof Class))
-           && ((object instanceof CapellaElement) && !CapellaLayerCheckingExt.isAOrInEPBSLayer((CapellaElement) object) && !CapellaLayerCheckingExt
-               .isAOrInPhysicalLayer((CapellaElement) object));
+    return ((object instanceof BlockArchitecture && (((BlockArchitecture) object).getOwnedDataPkg() != null))
+        || ((object instanceof Component) && !(object instanceof ComponentContext)
+            && (((Component) object).getOwnedDataPkg() != null))
+        || ((object instanceof Part) && (((Part) object).getAbstractType() != null)
+            && (((Part) object).getAbstractType() instanceof Component)
+            && (((Component) ((Part) object).getAbstractType()).getOwnedDataPkg() != null))
+        || (object instanceof DataPkg) || (object instanceof DataValueContainer) || (object instanceof Collection)
+        || (object instanceof CommunicationItem) || (object instanceof Class))
+        && ((object instanceof CapellaElement) && !CapellaLayerCheckingExt.isAOrInEPBSLayer((CapellaElement) object)
+            && !CapellaLayerCheckingExt.isAOrInPhysicalLayer((CapellaElement) object));
 
   }
 
   /**
    * An INTERACTION scenario can be a FUNCTIONAL scenario or an DATA_FLOW scenario
    */
-  public boolean isFunctionalScenario(Scenario scenario_p) {
+  public boolean isFunctionalScenario(Scenario scenario) {
 
-    if (scenario_p.getKind() == ScenarioKind.FUNCTIONAL) {
+    if (scenario.getKind() == ScenarioKind.FUNCTIONAL) {
       return true;
 
-    } else if (scenario_p.getKind() == ScenarioKind.INTERACTION) {
-      for (InstanceRole role : scenario_p.getOwnedInstanceRoles()) {
+    } else if (scenario.getKind() == ScenarioKind.INTERACTION) {
+      for (InstanceRole role : scenario.getOwnedInstanceRoles()) {
         if ((role.getRepresentedInstance() != null) && (role.getRepresentedInstance() instanceof AbstractFunction)) {
           return true;
         }
@@ -326,24 +336,24 @@ public class TransitionCommandHelper {
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isActorTransitionAvailable(EObject object) {
     return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture))
-           || ((object instanceof CapellaElement)
-               && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object) || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)) && ((object instanceof AbstractActor)
-                                                                                                                                                               || ((object instanceof Part)
-                                                                                                                                                                   && (((Part) object)
-                                                                                                                                                                       .getAbstractType() != null) && (((Part) object)
-                                                                                                                                                                     .getAbstractType() instanceof AbstractActor))
-                                                                                                                                                               || (object instanceof ActorPkg)
-                                                                                                                                                               || (object instanceof LogicalActorPkg) || ((object instanceof ComponentExchange) && ComponentExchangeExt
-               .isLinkToAnActor((ComponentExchange) object))));
+        || ((object instanceof CapellaElement)
+            && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object))
+            && ((object instanceof AbstractActor)
+                || ((object instanceof Part) && (((Part) object).getAbstractType() != null)
+                    && (((Part) object).getAbstractType() instanceof AbstractActor))
+                || (object instanceof ActorPkg) || (object instanceof LogicalActorPkg)
+                || ((object instanceof ComponentExchange)
+                    && ComponentExchangeExt.isLinkToAnActor((ComponentExchange) object))));
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isSystemTransitionAvailable(EObject object) {
@@ -351,76 +361,83 @@ public class TransitionCommandHelper {
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isLC2PCTransitionAvailable(EObject object) {
     return (object instanceof LogicalArchitecture)
-           || ((object instanceof CapellaElement) && (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)) && (((object instanceof LogicalComponent) && !(object instanceof ComponentContext))
-                                                                                                                             || (object instanceof LogicalComponentPkg)
-                                                                                                                             || ((object instanceof Part)
-                                                                                                                                 && (((Part) object)
-                                                                                                                                     .getAbstractType() != null) && (((Part) object)
-                                                                                                                                   .getAbstractType() instanceof LogicalComponent)) || ((object instanceof ComponentExchange) && ComponentExchangeExt
-               .isNotLinkToAnActor((ComponentExchange) object))));
+        || ((object instanceof CapellaElement) && (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object))
+            && (((object instanceof LogicalComponent) && !(object instanceof ComponentContext))
+                || (object instanceof LogicalComponentPkg)
+                || ((object instanceof Part) && (((Part) object).getAbstractType() != null)
+                    && (((Part) object).getAbstractType() instanceof LogicalComponent))
+                || ((object instanceof ComponentExchange)
+                    && ComponentExchangeExt.isNotLinkToAnActor((ComponentExchange) object))));
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isOE2ActorTransitionAvailable(EObject object) {
-    return (object instanceof OperationalAnalysis)
-           || ((object instanceof CapellaElement) && (CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object)) && ((object instanceof Entity)
-                                                                                                                                         || (object instanceof EntityPkg) || (object instanceof CommunicationMean)));
+    return (object instanceof OperationalAnalysis) || ((object instanceof CapellaElement)
+        && (CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object))
+        && ((object instanceof Entity) || (object instanceof EntityPkg) || (object instanceof CommunicationMean)));
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isOE2SystemTransitionAvailable(EObject object) {
-    return (object instanceof OperationalAnalysis)
-           || ((object instanceof CapellaElement) && (CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object)) && (((object instanceof Entity) && !(object instanceof OperationalActor))
-                                                                                                                                         || (object instanceof EntityPkg) || (object instanceof CommunicationMean)));
+    return (object instanceof OperationalAnalysis) || ((object instanceof CapellaElement)
+        && (CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object))
+        && (((object instanceof Entity) && !(object instanceof OperationalActor)) || (object instanceof EntityPkg)
+            || (object instanceof CommunicationMean)));
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isOA2SCTransitionAvailable(EObject object) {
-    return (object instanceof OperationalAnalysis)
-           || ((object instanceof CapellaElement) && (CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object)) && ((object instanceof OperationalActivity) || (object instanceof OperationalActivityPkg)));
+    return (object instanceof OperationalAnalysis) || ((object instanceof CapellaElement)
+        && (CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object))
+        && ((object instanceof OperationalActivity) || (object instanceof OperationalActivityPkg)));
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isOA2SMTransitionAvailable(EObject object) {
-    return (object instanceof OperationalAnalysis)
-           || ((object instanceof CapellaElement) && (CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object)) && ((object instanceof OperationalActivity) || (object instanceof OperationalActivityPkg)));
+    return (object instanceof OperationalAnalysis) || ((object instanceof CapellaElement)
+        && (CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object))
+        && ((object instanceof OperationalActivity) || (object instanceof OperationalActivityPkg)));
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isCapabilityTransitionAvailable(EObject object) {
-    return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture) || (object instanceof OperationalAnalysis))
-           || ((object instanceof CapellaElement)
-               && (CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object)
-                   || CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object) || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)) && ((object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg)));
+    return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture)
+        || (object instanceof OperationalAnalysis))
+        || ((object instanceof CapellaElement)
+            && (CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object))
+            && ((object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg)));
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isOC2SMTransitionAvailable(EObject object) {
-    return (object instanceof OperationalAnalysis)
-           || ((object instanceof CapellaElement) && (CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object)) && ((object instanceof OperationalCapability) || (object instanceof OperationalCapabilityPkg)));
+    return (object instanceof OperationalAnalysis) || ((object instanceof CapellaElement)
+        && (CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object))
+        && ((object instanceof OperationalCapability) || (object instanceof OperationalCapabilityPkg)));
   }
 
   public boolean isES2ESTransitionAvailable(EObject object) {
@@ -440,18 +457,23 @@ public class TransitionCommandHelper {
             continue;
           }
           // should be a dataflow scenario
-          if ((s.getKind() == ScenarioKind.DATA_FLOW) || ((s.getKind() == ScenarioKind.INTERACTION) && !isFunctionalScenario(s))) {
+          if ((s.getKind() == ScenarioKind.DATA_FLOW)
+              || ((s.getKind() == ScenarioKind.INTERACTION) && !isFunctionalScenario(s))) {
             return false;
           }
         }
       }
-      return (scenario.getKind() == ScenarioKind.DATA_FLOW) || ((scenario.getKind() == ScenarioKind.INTERACTION) && !isFunctionalScenario(scenario));
+      return (scenario.getKind() == ScenarioKind.DATA_FLOW)
+          || ((scenario.getKind() == ScenarioKind.INTERACTION) && !isFunctionalScenario(scenario));
     }
 
-    return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture) || (object instanceof OperationalAnalysis))
-           || ((object instanceof CapellaElement)
-               && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object) || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object) || CapellaLayerCheckingExt
-                   .isInOperationalAnalysisLayer((CapellaElement) object)) && ((object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg)));
+    return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture)
+        || (object instanceof OperationalAnalysis))
+        || ((object instanceof CapellaElement)
+            && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object))
+            && ((object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg)));
 
   }
 
@@ -482,14 +504,18 @@ public class TransitionCommandHelper {
       }
     }
 
-    return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture) || (object instanceof PhysicalArchitecture))
-           || ((object instanceof CapellaElement)
-               && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object) || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object) || CapellaLayerCheckingExt
-                   .isInPhysicalLayer((CapellaElement) object)) && ((object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg) || (object instanceof Scenario)));
+    return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture)
+        || (object instanceof PhysicalArchitecture))
+        || ((object instanceof CapellaElement)
+            && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInPhysicalLayer((CapellaElement) object))
+            && ((object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg)
+                || (object instanceof Scenario)));
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isESF2ESBTransitionAvailable(EObject object) {
@@ -529,34 +555,40 @@ public class TransitionCommandHelper {
       }
     }
 
-    return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture) || (object instanceof PhysicalArchitecture))
-           || ((object instanceof CapellaElement)
-               && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object) || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object) || CapellaLayerCheckingExt
-                   .isInPhysicalLayer((CapellaElement) object)) && ((object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg) || (object instanceof Scenario)));
+    return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture)
+        || (object instanceof PhysicalArchitecture))
+        || ((object instanceof CapellaElement)
+            && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInPhysicalLayer((CapellaElement) object))
+            && ((object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg)
+                || (object instanceof Scenario)));
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  public boolean isFS2ESForOASATransitionAvailable(EObject element_p) {
-    return (element_p instanceof CapellaElement) && CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer((CapellaElement) element_p)
-           && isFS2ESTransitionAvailable(element_p);
+  public boolean isFS2ESForOASATransitionAvailable(EObject element) {
+    return (element instanceof CapellaElement)
+        && CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer((CapellaElement) element)
+        && isFS2ESTransitionAvailable(element);
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  public boolean isFS2ESForSALAPATransitionAvailable(EObject element_p) {
-    return (element_p instanceof CapellaElement)
-           && (CapellaLayerCheckingExt.isAOrInContextLayer((CapellaElement) element_p)
-               || CapellaLayerCheckingExt.isAOrInLogicalLayer((CapellaElement) element_p) || CapellaLayerCheckingExt
-                 .isAOrInPhysicalLayer((CapellaElement) element_p)) && isFS2ESTransitionAvailable(element_p);
+  public boolean isFS2ESForSALAPATransitionAvailable(EObject element) {
+    return (element instanceof CapellaElement)
+        && (CapellaLayerCheckingExt.isAOrInContextLayer((CapellaElement) element)
+            || CapellaLayerCheckingExt.isAOrInLogicalLayer((CapellaElement) element)
+            || CapellaLayerCheckingExt.isAOrInPhysicalLayer((CapellaElement) element))
+        && isFS2ESTransitionAvailable(element);
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isFS2ESTransitionAvailable(EObject object) {
@@ -590,41 +622,47 @@ public class TransitionCommandHelper {
 
     }
 
-    return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture) || (object instanceof PhysicalArchitecture))
-           || ((object instanceof CapellaElement)
-               && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object) || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object) || CapellaLayerCheckingExt
-                   .isInPhysicalLayer((CapellaElement) object)) && ((object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg)));
+    return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture)
+        || (object instanceof PhysicalArchitecture))
+        || ((object instanceof CapellaElement)
+            && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInPhysicalLayer((CapellaElement) object))
+            && ((object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg)));
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  public boolean isES2ESForOASATransitionAvailable(EObject element_p) {
-    return (element_p instanceof CapellaElement) && CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer((CapellaElement) element_p)
-           && isES2ESTransitionAvailable(element_p);
+  public boolean isES2ESForOASATransitionAvailable(EObject element) {
+    return (element instanceof CapellaElement)
+        && CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer((CapellaElement) element)
+        && isES2ESTransitionAvailable(element);
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  public boolean isES2ESForSALATransitionAvailable(EObject element_p) {
-    return (element_p instanceof CapellaElement) && CapellaLayerCheckingExt.isAOrInContextLayer((CapellaElement) element_p)
-           && isES2ESTransitionAvailable(element_p);
+  public boolean isES2ESForSALATransitionAvailable(EObject element) {
+    return (element instanceof CapellaElement)
+        && CapellaLayerCheckingExt.isAOrInContextLayer((CapellaElement) element)
+        && isES2ESTransitionAvailable(element);
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  public boolean isES2ESForLAPATransitionAvailable(EObject element_p) {
-    return (element_p instanceof CapellaElement) && CapellaLayerCheckingExt.isAOrInLogicalLayer((CapellaElement) element_p)
-           && isES2ESTransitionAvailable(element_p);
+  public boolean isES2ESForLAPATransitionAvailable(EObject element) {
+    return (element instanceof CapellaElement)
+        && CapellaLayerCheckingExt.isAOrInLogicalLayer((CapellaElement) element)
+        && isES2ESTransitionAvailable(element);
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isInterfaceGenerationAvailable(EObject object) {
@@ -638,23 +676,24 @@ public class TransitionCommandHelper {
       }
     }
     return ((object instanceof CapellaElement)
-            && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object) || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object) || CapellaLayerCheckingExt
-                .isInPhysicalLayer((CapellaElement) object)) && (((object instanceof Component) && !(object instanceof ComponentContext)) || ((object instanceof Part)
-                                                                                                                                              && (((Part) object)
-                                                                                                                                                  .getAbstractType() != null) && (((Part) object)
-        .getAbstractType() instanceof Component))));
+        && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
+            || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)
+            || CapellaLayerCheckingExt.isInPhysicalLayer((CapellaElement) object))
+        && (((object instanceof Component) && !(object instanceof ComponentContext))
+            || ((object instanceof Part) && (((Part) object).getAbstractType() != null)
+                && (((Part) object).getAbstractType() instanceof Component))));
   }
 
   /**
-   * @param object_p
+   * @param object
    * @return
    */
-  private Component getComponent(EObject object_p) {
-    if (null != object_p) {
-      if (object_p instanceof Component) {
-        return (Component) object_p;
-      } else if (object_p instanceof Part) {
-        Part part = (Part) object_p;
+  private Component getComponent(EObject object) {
+    if (null != object) {
+      if (object instanceof Component) {
+        return (Component) object;
+      } else if (object instanceof Part) {
+        Part part = (Part) object;
         AbstractType abstractType = part.getAbstractType();
         if ((null != abstractType) && (abstractType instanceof Component)) {
           return (Component) abstractType;
@@ -665,12 +704,13 @@ public class TransitionCommandHelper {
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isComponentExchangesGenerationAvailable(EObject object) {
     EObject component = object;
-    if (!(component instanceof CapellaElement) || CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer((CapellaElement) component)) {
+    if (!(component instanceof CapellaElement)
+        || CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer((CapellaElement) component)) {
       return false;
     }
     if (object instanceof Part) {
@@ -688,12 +728,13 @@ public class TransitionCommandHelper {
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isCommunicationMeansGenerationAvailable(EObject object) {
     EObject component = object;
-    if (!(component instanceof CapellaElement) || !CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer((CapellaElement) component)) {
+    if (!(component instanceof CapellaElement)
+        || !CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer((CapellaElement) component)) {
       return false;
     }
     if (object instanceof Part) {
@@ -711,7 +752,7 @@ public class TransitionCommandHelper {
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isPhysicalLinksGenerationAvailable(EObject object) {
@@ -731,7 +772,7 @@ public class TransitionCommandHelper {
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   public boolean isPhysicalLinksComponentExchangesGenerationAvailable(EObject object) {
@@ -748,7 +789,7 @@ public class TransitionCommandHelper {
   }
 
   /**
-   * @param scenario_p
+   * @param scenario
    * @return
    */
   public boolean isFS2FSTransitionAvailable(EObject object) {
@@ -776,47 +817,54 @@ public class TransitionCommandHelper {
       return isFunctionalScenario(scenario);
     }
 
-    return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture) || (object instanceof OperationalAnalysis))
-           || ((object instanceof CapellaElement)
-               && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object) || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object) || CapellaLayerCheckingExt
-                   .isInOperationalAnalysisLayer((CapellaElement) object)) && ((object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg)));
+    return ((object instanceof SystemAnalysis) || (object instanceof LogicalArchitecture)
+        || (object instanceof OperationalAnalysis))
+        || ((object instanceof CapellaElement)
+            && (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)
+                || CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) object))
+            && ((object instanceof AbstractCapability) || (object instanceof AbstractCapabilityPkg)));
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  public boolean isFS2FSForOASATransitionAvailable(EObject element_p) {
-    return (element_p instanceof CapellaElement) && CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer((CapellaElement) element_p)
-           && isFS2FSTransitionAvailable(element_p);
+  public boolean isFS2FSForOASATransitionAvailable(EObject element) {
+    return (element instanceof CapellaElement)
+        && CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer((CapellaElement) element)
+        && isFS2FSTransitionAvailable(element);
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  public boolean isFS2FSForSALATransitionAvailable(EObject element_p) {
-    return (element_p instanceof CapellaElement) && CapellaLayerCheckingExt.isAOrInContextLayer((CapellaElement) element_p)
-           && isFS2FSTransitionAvailable(element_p);
+  public boolean isFS2FSForSALATransitionAvailable(EObject element) {
+    return (element instanceof CapellaElement)
+        && CapellaLayerCheckingExt.isAOrInContextLayer((CapellaElement) element)
+        && isFS2FSTransitionAvailable(element);
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  public boolean isFS2FSForLAPATransitionAvailable(EObject element_p) {
-    return (element_p instanceof CapellaElement) && CapellaLayerCheckingExt.isAOrInLogicalLayer((CapellaElement) element_p)
-           && isFS2FSTransitionAvailable(element_p);
+  public boolean isFS2FSForLAPATransitionAvailable(EObject element) {
+    return (element instanceof CapellaElement)
+        && CapellaLayerCheckingExt.isAOrInLogicalLayer((CapellaElement) element)
+        && isFS2FSTransitionAvailable(element);
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  public boolean isPropertyValueTransitionAvailable(EObject element_p) {
-    return ((element_p instanceof CapellaElement)
-            && ((element_p instanceof PropertyValueGroup) || (element_p instanceof PropertyValuePkg) || (element_p instanceof AbstractPropertyValue) || (element_p instanceof EnumerationPropertyType))
-            && EcoreUtil2.isContainedBy(element_p, CsPackage.Literals.BLOCK_ARCHITECTURE) && !(CapellaLayerCheckingExt
-        .isAOrInEPBSLayer((CapellaElement) element_p)));
+  public boolean isPropertyValueTransitionAvailable(EObject element) {
+    return ((element instanceof CapellaElement)
+        && ((element instanceof PropertyValueGroup) || (element instanceof PropertyValuePkg)
+            || (element instanceof AbstractPropertyValue) || (element instanceof EnumerationPropertyType))
+        && EcoreUtil2.isContainedBy(element, CsPackage.Literals.BLOCK_ARCHITECTURE)
+        && !(CapellaLayerCheckingExt.isAOrInEPBSLayer((CapellaElement) element)));
   }
 }

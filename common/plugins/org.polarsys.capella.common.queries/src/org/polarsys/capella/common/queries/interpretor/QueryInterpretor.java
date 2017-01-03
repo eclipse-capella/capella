@@ -35,6 +35,7 @@ import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.internal.IPrivateQueryContext;
 import org.polarsys.capella.common.queries.internal.NoneValue;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.common.queries.queryContext.QueryContextConstants;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
@@ -128,6 +129,13 @@ public class QueryInterpretor {
 
 	public static <T> List<T> executeQuery(String queryIdentifier, Object semanticsObject, IQueryContext context) {
 		return executeQuery(queryIdentifier, semanticsObject, context, getFilters(queryIdentifier));
+	}
+	
+	/**
+	 * Execute the given query on the given semanticObject with an empty QueryContext.
+	 */
+	public static <T> List<T> executeQuery(String queryIdentifier, Object semanticsObject) {
+	  return executeQuery(queryIdentifier,semanticsObject, new QueryContext());
 	}
 
 	public static <T> List<T> executeQuery(String queryIdentifier, IQueryContext context) {

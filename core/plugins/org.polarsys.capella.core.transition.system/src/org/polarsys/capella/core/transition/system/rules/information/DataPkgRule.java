@@ -16,7 +16,8 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -24,8 +25,6 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.capella.core.transition.system.rules.AbstractCapellaElementRule;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -55,6 +54,26 @@ public class DataPkgRule extends AbstractCapellaElementRule {
     }
   }
 
+  @Override
+  protected EObject transformDirectElement(EObject element, IContext context) {
+    if (element.eContainer() instanceof BlockArchitecture) {
+      EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
+      BlockArchitecture target = (BlockArchitecture) TransformationHandlerHelper.getInstance(context)
+          .getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE);
+      
+      Structure result = BlockArchitectureExt.getDataPkg(target, true);
+      if (result != null) {
+        if (!BlockArchitectureExt.isDefaultNameDataPkg((AbstractNamedElement) element)) {
+          ((AbstractNamedElement) result).setName(((AbstractNamedElement) element).getName());
+        }
+        return result;
+      }
+      
+    }
+    return super.transformDirectElement(element, context);
+  }
+  
+  
   @Override
   protected boolean isOrderedContainment(EObject element) {
     return true;

@@ -1,0 +1,79 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+BODY {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 11px;
+	COLOR: #000000;
+	LINE-HEIGHT: 16px;
+	FONT-FAMILY: Verdana, arial, sans-serif
+}
+
+H1 {
+	PADDING-RIGHT: 2px;
+	PADDING-LEFT: 2px;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 24px;
+	PADDING-BOTTOM: 2px;
+	MARGIN: 36px 0px 4px;
+	COLOR: #336699;
+	LINE-HEIGHT: normal;
+	PADDING-TOP: 2px;
+	BORDER-BOTTOM: #336699 1px solid;
+	/* TEXT-TRANSFORM: lowercase; */
+}
+
+/* H1:FIRST-LETTER {
+	TEXT-TRANSFORM: capitalize;
+} */
+
+H2 {
+	PADDING-RIGHT: 2px;
+	PADDING-LEFT: 2px;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 18px;
+	PADDING-BOTTOM: 2px;
+	MARGIN: 27px 0px 4px;
+	COLOR: #5DBFD4;
+	LINE-HEIGHT: normal;
+	PADDING-TOP: 2px;
+	TEXT-TRANSFORM: lowercase;
+}
+
+H2:FIRST-LETTER {
+	TEXT-TRANSFORM: capitalize;
+}
+
+H3 {
+	PADDING-RIGHT: 2px;
+	PADDING-LEFT: 2px;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 14px;
+	PADDING-BOTTOM: 2px;
+	MARGIN: 21px 0px 4px;
+	COLOR: #5491A0;
+	LINE-HEIGHT: normal;
+	PADDING-TOP: 2px;
+	TEXT-TRANSFORM: lowercase;
+}
+
+H3:FIRST-LETTER {
+	TEXT-TRANSFORM: capitalize;
+}
+
+TABLE {
+	BORDER: 2px solid #00000;
+	FONT-STYLE: italic;
+	BACKGROUND-COLOR: #EBF4FA;
+}
+
+TABLE TD {
+	BORDER: none;
+}

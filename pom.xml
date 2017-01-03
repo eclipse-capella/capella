@@ -294,6 +294,7 @@
 		<module>doc/plugins/org.polarsys.capella.diagrams.doc</module>
 		<module>doc/plugins/org.polarsys.capella.glossary.doc</module>
 		<module>doc/plugins/org.polarsys.capella.validation.doc</module>
+		<module>doc/plugins/org.polarsys.capella.viewpoint.doc</module>
 		<module>doc/plugins/org.polarsys.capella.th.doc</module>
 		<module>doc/plugins/org.polarsys.capella.tipsandtricks.doc</module>
 		<module>ext/detachment/features/org.polarsys.capella.detachment.feature</module>

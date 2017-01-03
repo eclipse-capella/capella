@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,15 +33,15 @@ public class PreferenceProjectSelectionDialog extends CheckedTreeSelectionDialog
   private final String SUFFUX_EPF_FILE_NAME = "_preferences.epf"; //$NON-NLS-1$
 
   /**
-   * @param wizardPreferencesTransfererExportPage_p
-   * @param parent_p
-   * @param labelProvider_p
-   * @param contentProvider_p
+   * @param wizardPreferencesTransfererExportPage
+   * @param parent
+   * @param labelProvider
+   * @param contentProvider
    */
-  public PreferenceProjectSelectionDialog(WizardPreferencesTransfererExportPage wizardPreferencesTransfererExportPage_p, Shell parent_p,
-      ILabelProvider labelProvider_p, ITreeContentProvider contentProvider_p) {
-    super(parent_p, labelProvider_p, contentProvider_p);
-    this.parentWizard = wizardPreferencesTransfererExportPage_p;
+  public PreferenceProjectSelectionDialog(WizardPreferencesTransfererExportPage wizardPreferencesTransfererExportPage, Shell parent,
+      ILabelProvider labelProvider, ITreeContentProvider contentProvider) {
+    super(parent, labelProvider, contentProvider);
+    this.parentWizard = wizardPreferencesTransfererExportPage;
   }
 
   @Override
@@ -59,15 +59,15 @@ public class PreferenceProjectSelectionDialog extends CheckedTreeSelectionDialog
           file = settingFolder.getFile(project.getName() + SUFFUX_EPF_FILE_NAME);
         }
       }
-    } catch (CoreException exception_p) {
-      exception_p.printStackTrace();
+    } catch (CoreException exception) {
+      exception.printStackTrace();
       StringBuilder loggerMessage = new StringBuilder("PreferenceProjectSelectionDialog.computeResult(..) _ "); //$NON-NLS-1$
     }
 
     if (parentWizard != null) {
       StringBuffer location = new StringBuffer();
       location.append(project.getLocation().toOSString());
-      location.append("\\" + project.getName() + SUFFUX_EPF_FILE_NAME);
+      location.append("/" + project.getName() + SUFFUX_EPF_FILE_NAME);
       this.parentWizard.addDestinationItem(location.toString());
 
     }
@@ -76,13 +76,13 @@ public class PreferenceProjectSelectionDialog extends CheckedTreeSelectionDialog
   }
 
   @Override
-  public void addFilter(ViewerFilter filter_p) {
+  public void addFilter(ViewerFilter filter) {
     super.addFilter(new ViewerFilter() {
 
       @Override
-      public boolean select(Viewer viewer_p, Object parentElement_p, Object element_p) {
+      public boolean select(Viewer viewer, Object parentElement, Object element) {
         try {
-          return (element_p instanceof IProject) && (((IProject) element_p).getNature(CONFUGRATION_PROJECT_NATURE_ID) != null);
+          return (element instanceof IProject) && (((IProject) element).getNature(CONFUGRATION_PROJECT_NATURE_ID) != null);
         } catch (CoreException exception) {
           StringBuilder loggerMessage = new StringBuilder(".select(..) _ "); //$NON-NLS-1$
         }

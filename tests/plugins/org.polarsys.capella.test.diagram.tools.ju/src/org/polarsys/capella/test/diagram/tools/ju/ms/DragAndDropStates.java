@@ -18,13 +18,13 @@ import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.DragAndDropTool;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
-import org.polarsys.capella.test.diagram.tools.ju.model.GenericModel;
+import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.model.GenericModel;
 
 public class DragAndDropStates extends EmptyProject {
 

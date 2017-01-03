@@ -14,10 +14,10 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DNode;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.MSMDiagram;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.step.filters.FilterStep;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
-import org.polarsys.capella.test.diagram.tools.ju.model.GenericModel;
+import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.model.GenericModel;
 
 /**
  */

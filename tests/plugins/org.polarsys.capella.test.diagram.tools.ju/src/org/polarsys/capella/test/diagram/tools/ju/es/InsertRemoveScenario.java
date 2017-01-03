@@ -17,9 +17,9 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.test.diagram.common.ju.context.ESDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.PA_ESDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.SA_ESDiagram;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.tools.ju.model.ESProject;
-import org.polarsys.capella.test.diagram.tools.ju.model.GenericModel;
+import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.model.GenericModel;
 
 /**
  * Test for each architecture phases some basic insert remove on ES diagrams

@@ -2,12 +2,15 @@
 <toc topic="html/Performance Recommandations/Performance Recommandations.html" label="Performance Recommandations">
 	<topic href="html/Performance Recommandations/Performance Recommandations.html" label="Capella Performance Recommandations">
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Desynchronize_semantic_browser" label="Desynchronize semantic browser"></topic>
-		<topic href="html/Performance Recommandations/Performance Recommandations.html#Desactivate_diagram_automatic_refreshes" label="Desactivate diagram automatic refreshes"></topic>
-		<topic href="html/Performance Recommandations/Performance Recommandations.html#Desactivate_transfert_viewer_automatic_expand" label="Desactivate transfert viewer automatic expand"></topic>
+		<topic href="html/Performance Recommandations/Performance Recommandations.html#Deactivate_diagram_automatic_refreshes" label="Deactivate diagram automatic refreshes"></topic>
+		<topic href="html/Performance Recommandations/Performance Recommandations.html#Diagram_and_Properties_view_customizations" label="Diagram and Properties view customizations">
+			<topic href="html/Performance Recommandations/Performance Recommandations.html#Deactivate_transfer_viewer_automatic_expand" label="Deactivate transfer viewer automatic expand"></topic>
+			<topic href="html/Performance Recommandations/Performance Recommandations.html#Disable_transfer_viewer_label_computation" label="Disable transfer viewer label computation"></topic>
+		</topic>
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Use_fast_linker_view" label="Use fast linker view"></topic>
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Filter_Project_explorer_model_elements" label="Filter Project explorer model elements"></topic>
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Set_diagram_unsynchronized" label="Set diagram unsynchronized"></topic>
-		<topic href="html/Performance Recommandations/Performance Recommandations.html#Avoid_source_control_when_generating_HTML_documentation_addon" label="Avoid source control when generating HTML documentation addon"></topic>
+		<topic href="html/Performance Recommandations/Performance Recommandations.html#Avoid_source_control_when_generating_HTML_documentation_add-on" label="Avoid source control when generating HTML documentation add-on"></topic>
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#In_clearcase_SCM_context.2C_focus_on_snapshot_view" label="In clearcase SCM context, focus on snapshot view"></topic>
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Fragment_Capella_Model" label="Fragment Capella Model"></topic>
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Adapt_Eclipse.ini_configuration" label="Adapt Eclipse.ini configuration">
@@ -19,11 +22,11 @@
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Create_AIRD_analysis_and_isolate_table_representation" label="Create AIRD analysis and isolate table representation"></topic>
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Close_outline_view" label="Close outline view"></topic>
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Customize_enabled_validation_rules" label="Customize enabled validation rules"></topic>
-		<topic href="html/Performance Recommandations/Performance Recommandations.html#Desactivate_option_checking_model_version_at_session_opening" label="Desactivate option checking model version at session opening"></topic>
+		<topic href="html/Performance Recommandations/Performance Recommandations.html#Deactivate_option_checking_model_version_at_session_opening" label="Deactivate option checking model version at session opening"></topic>
 		<topic href="html/Performance Recommandations/Performance Recommandations.html#Customize_MDE_reporting_preferences" label="Customize MDE reporting preferences"></topic>
-		<topic href="html/Performance Recommandations/Performance Recommandations.html#Desactivate_model_change_recorder" label="Desactivate model change recorder"></topic>
-		<topic href="html/Performance Recommandations/Performance Recommandations.html#Desactivate_option_showing_delete_wizard" label="Desactivate option showing delete wizard"></topic>
-		<topic href="html/Performance Recommandations/Performance Recommandations.html#Desactivate_project_explorer_link_with_editors" label="Desactivate project explorer link with editors"></topic>
-		<topic href="html/Performance Recommandations/Performance Recommandations.html#Close_properties_view_in_case_that_only_popup_wizard_are_used_to_edit_the_model" label="Close properties view in case that only popup wizard are used to edit the model"></topic>
+		<topic href="html/Performance Recommandations/Performance Recommandations.html#Deactivate_model_change_recorder" label="Deactivate model change recorder"></topic>
+		<topic href="html/Performance Recommandations/Performance Recommandations.html#Deactivate_option_showing_delete_wizard" label="Deactivate option showing delete wizard"></topic>
+		<topic href="html/Performance Recommandations/Performance Recommandations.html#Deactivate_project_explorer_link_with_editors" label="Deactivate project explorer link with editors"></topic>
+		<topic href="html/Performance Recommandations/Performance Recommandations.html#Close_properties_view_in_case_that_only_pop-up_wizard_are_used_to_edit_the_model" label="Close properties view in case that only pop-up wizard are used to edit the model"></topic>
 	</topic>
 </toc>
