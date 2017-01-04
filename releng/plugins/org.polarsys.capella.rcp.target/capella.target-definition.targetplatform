@@ -1,7 +1,18 @@
-target "Capella 1.1.0"
+/*******************************************************************************
+ * Copyright (c)  2017 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+target "Capella"
 
-location "http://download.eclipse.org/releases/neon/" {
-	with source, requirements
+with source, requirements
+
+location "http://download.eclipse.org/releases/neon" {
 	org.eclipse.sdk.feature.group
 	org.eclipse.platform.feature.group
 	org.eclipse.emf.sdk.feature.group
@@ -13,15 +24,11 @@ location "http://download.eclipse.org/releases/neon/" {
 }
 
 location "http://download.eclipse.org/sirius/updates/releases/4.1.1/neon" {
-	with source, requirements
 	org.eclipse.sirius.runtime.feature.group
 	org.eclipse.sirius.runtime.ide.ui.feature.group
 }
 
 location "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_runtime/site.p2" {
-	with source, requirements
-	org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group
-	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group
 	org.polarsys.kitalpha.ad.feature.feature.group
 	org.polarsys.kitalpha.ad.integration.amalgam.feature.feature.group
 	org.polarsys.kitalpha.ad.integration.emde.feature.feature.group
@@ -43,34 +50,28 @@ location "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfu
 }
 
 location "http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site" {
-	with source, requirements
 	org.eclipse.emf.diffmerge.sdk.feature.feature.group
 }
 
 location "http://download.eclipse.org/diffmerge/releases/0.7.0/edm-patterns-site" {
-	with source, requirements
 	org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group
 	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group
 }
 
 location "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.7.0-N20160409-021353/neon" {
-	with source, requirements
 	org.eclipse.amalgam.explorer.activity.feature.group
 }
 
 location "http://download.eclipse.org/sirius/updates/legacy/1.1.0" {
-	with source, requirements
 	org.eclipse.sirius.query.legacy.feature.feature.group
 }
 
-location "http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository" {
-	with source, requirements
-	org.apache.log4j;version="1.2.15.v201012070815"
-	org.apache.commons.lang;version="2.4.0.v201005080502"
-	org.apache.commons.net;version="3.2.0.v201305141515"
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository" {
+	org.apache.log4j [1.2.15.v201012070815,1.2.15.v201012070815]
+	org.apache.commons.lang [2.4.0.v201005080502,2.4.0.v201005080502]
+	org.apache.commons.net [3.2.0.v201305141515,3.2.0.v201305141515]
 }
 
 location "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository" {
-	with source, requirements
-	com.google.guava;version="15.0.0.v201403281430"
+	com.google.guava [15.0.0.v201403281430,15.0.0.v201403281430]
 }
