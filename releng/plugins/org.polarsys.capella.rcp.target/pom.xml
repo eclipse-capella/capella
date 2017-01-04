@@ -13,7 +13,81 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
+	<groupId>org.polarsys.capella.releng</groupId>
+	<artifactId>capella.target-definition</artifactId>
+	<version>1.2.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<licenses>
+		<license>
+			<name>Eclipse Public License v1.0</name>
+			<comments>
+				All rights reserved.
+
+				This program and the accompanying materials are made
+				available under the terms of the Eclipse Public License v1.0
+				which accompanies this distribution, and is available at
+				http://www.eclipse.org/legal/epl-v10.htm
+			</comments>
+		</license>
+	</licenses>
+
+	<properties>
+		<tycho-version>0.25.0</tycho-version>
+		<tycho-extras-version>0.25.0</tycho-extras-version>
+		<platform-name>neon</platform-name>
+		<targetPlatform.repository>http://mbarbero.github.com/fr.obeo.releng.targetplatform/p2/latest</targetPlatform.repository>
+		<targetPlatform.name>capella.targetplatform</targetPlatform.name>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-eclipserun-plugin</artifactId>
+				<version>${tycho-extras-version}</version>
+				<configuration>
+					<repositories>
+						<repository>
+							<id>${platform-name}</id>
+							<layout>p2</layout>
+							<url>http://download.eclipse.org/releases/${platform-name}</url>
+						</repository>
+						<repository>
+							<id>targetplatform</id>
+							<layout>p2</layout>
+							<url>${targetPlatform.repository}</url>
+						</repository>
+					</repositories>
+					<applicationsArgs>
+						<args>-consoleLog</args>
+						<args>-application fr.obeo.releng.targetplatform.targetPlatform.converter ${targetPlatform.name}</args>
+					</applicationsArgs>
+					<!-- Set dependencies to launch the application -->
+					<dependencies>
+						<dependency>
+							<artifactId>fr.obeo.releng.targetplatform-feature</artifactId>
+							<type>eclipse-feature</type>
+						</dependency>
+						<dependency>
+							<artifactId>org.eclipse.equinox.p2.sdk</artifactId>
+							<type>eclipse-feature</type>
+						</dependency>
+					</dependencies>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>eclipse-run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!--parent>
 		<groupId>org.polarsys.capella</groupId>
 		<artifactId>capella</artifactId>
 		<version>1.2.0-SNAPSHOT</version>
@@ -22,5 +96,6 @@
 
 	<artifactId>capella.target-definition</artifactId>
 	<packaging>eclipse-target-definition</packaging>
-	<version>1.2.0-SNAPSHOT</version>
+	<version>1.2.0-SNAPSHOT</version-->
+
 </project>

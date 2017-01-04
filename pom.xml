@@ -311,7 +311,6 @@
 		<module>releng/plugins/org.polarsys.capella.rcp</module>
 		<module>releng/plugins/org.polarsys.capella.rcp.product</module>
 		<module>releng/plugins/org.polarsys.capella.rcp.site</module>
-		<module>releng/plugins/org.polarsys.capella.rcp.target</module>
 		<module>tests/features/org.polarsys.capella.test.feature</module>
 		<module>tests/plugins/org.polarsys.capella.test.business.queries.ju</module>
 		<module>tests/plugins/org.polarsys.capella.test.diagram.common.ju</module>
@@ -355,8 +354,9 @@
 					<target>
 						<artifact>
 							<groupId>org.polarsys.capella</groupId>
-							<artifactId>capella.target-definition</artifactId>
+							<artifactId>capella</artifactId>
 							<version>1.2.0-SNAPSHOT</version>
+							<classifier>releng/plugins/org.polarsys.capella.rcp.target/capella.target-definition</classifier>
 						</artifact>
 					</target>
 					<environments>
