@@ -21,3 +21,6 @@ Export-Package: org.polarsys.capella.common.tools.report.appenders.reportlogview
  org.polarsys.capella.common.tools.report.appenders.reportlogview.handler
 Bundle-Activator: org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin
 Bundle-Localization: plugin
+Import-Package: org.eclipse.sirius.diagram,
+ org.polarsys.capella.core.model.handler.command,
+ org.polarsys.capella.core.model.handler.helpers

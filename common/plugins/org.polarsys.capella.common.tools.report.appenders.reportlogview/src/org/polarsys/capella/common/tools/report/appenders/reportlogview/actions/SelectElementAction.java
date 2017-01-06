@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,23 +11,33 @@
 
 package org.polarsys.capella.common.tools.report.appenders.reportlogview.actions;
 
+import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-
+import org.polarsys.capella.common.tools.report.EmbeddedMessage;
+import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 
 /**
  *
  */
 public class SelectElementAction extends Action {
-
+	
+   private Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+   
   /**
    * View id of project explorer
    */
@@ -57,21 +67,41 @@ public class SelectElementAction extends Action {
    */
   @Override
   public void run() {
-    selectInExplorer(eObject);
+    selectElementInCapellaExplorer(eObject);
+  }
+  
+  protected Object getFirstSelectedElement(ISelection selection) {
+	    if (selection.isEmpty() || !(selection instanceof IStructuredSelection)) {
+	      return null;
+	    }
+	    IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+	    return structuredSelection.getFirstElement();
   }
 
   /**
    * @param elem
    */
-  void selectInExplorer(EObject elem) {
+  public void selectElementInCapellaExplorer(EObject elem) {
     if (null != elem) {
       IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-      try {
-        IViewPart explorerView = activePage.showView(__EXPLORER_VIEW_ID);
-        ISelection newSelection = new StructuredSelection(elem);
-        explorerView.getViewSite().getSelectionProvider().setSelection(newSelection);
-      } catch (PartInitException exception) {
-        // nothing
+      ISelection newSelection = new StructuredSelection(elem);
+      Object firstElement = getFirstSelectedElement(newSelection);
+      Object elementToSelectInCapellaExplorer = null;
+      
+      if(firstElement instanceof DRepresentation){
+    	  elementToSelectInCapellaExplorer = RepresentationHelper.getRepresentationDescriptor((DRepresentation)firstElement);
+      }
+      
+      // Keep the double check here, as getSemanticElement can return error.
+      if (CapellaResourceHelper.isSemanticElement(elementToSelectInCapellaExplorer)
+          || (elementToSelectInCapellaExplorer instanceof DRepresentation)
+          || (elementToSelectInCapellaExplorer instanceof DRepresentationDescriptor)) {
+    	  try {
+    	        IViewPart explorerView = activePage.showView(__EXPLORER_VIEW_ID);
+    	        explorerView.getViewSite().getSelectionProvider().setSelection(new StructuredSelection(elementToSelectInCapellaExplorer));
+    	  } catch (PartInitException exception) {
+    		  __logger.warn(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI), exception);
+    	  }
       }
     }
   }
