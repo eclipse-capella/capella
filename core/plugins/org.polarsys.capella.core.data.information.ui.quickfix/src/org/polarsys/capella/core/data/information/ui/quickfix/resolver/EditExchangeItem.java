@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,43 +29,52 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarke
  * edit respected values when necessary
  */
 public class EditExchangeItem extends AbstractCapellaMarkerResolution {
-
+	
+	public static boolean editElement = false;
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public void run(final IMarker marker) {
-
+		
 		final EObject value = getModelElements(marker).get(0);
-		try {
-			if ((null != value) && (value instanceof ExchangeItemElement)) {
-				final ExchangeItemElement eie = (ExchangeItemElement) value;
-				final ExchangeItem ei = (ExchangeItem) eie.eContainer();
-				AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
-					@Override
-					public void run() {
-						if (ei.getExchangeMechanism() == ExchangeMechanism.OPERATION) {
-							eie.setKind(ElementKind.MEMBER);
-							boolean editElement = CapellaUIPropertiesPlugin
-									.getDefault().openWizard(eie);
-						} else if (eie.getKind() == ElementKind.MEMBER) {
-							eie.setKind(ElementKind.TYPE);
-						} else {
-							eie.setDirection(ParameterDirection.UNSET);
+		try {		
+			if ((null != value)){
+					AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
+						@Override
+						public void run() {
+							if(value instanceof ExchangeItemElement){
+								final ExchangeItemElement eie = (ExchangeItemElement) value;
+								final ExchangeItem ei = (ExchangeItem) eie.eContainer();
+								if (ei.getExchangeMechanism() == ExchangeMechanism.OPERATION) {
+									eie.setKind(ElementKind.MEMBER);
+									editElement = CapellaUIPropertiesPlugin
+										.getDefault().openWizard(eie);
+								} else if (eie.getKind() == ElementKind.MEMBER) {
+									eie.setKind(ElementKind.TYPE);
+								} else {
+									eie.setDirection(ParameterDirection.UNSET);
+								}
+							} else if (value instanceof ExchangeItem){
+								editElement = CapellaUIPropertiesPlugin
+										.getDefault().openWizard(value);
+							}
 						}
+					};
+					
+					try {
+						ExecutionManagerRegistry
+								.getInstance()
+								.getExecutionManager(
+										TransactionHelper.getEditingDomain(value))
+								.execute(cmd);
+					} catch (Exception e) {
+							// nothing
 					}
-				};
-				try {
-					ExecutionManagerRegistry
-							.getInstance()
-							.getExecutionManager(
-									TransactionHelper.getEditingDomain(eie))
-							.execute(cmd);
-				} catch (Exception e) {
-					// nothing
-				}
 			}
-			marker.delete();
+			if(editElement){
+				marker.delete();
+			}
 		} catch (CoreException exception) {
 			// no nothing
 		}
