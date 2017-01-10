@@ -19,7 +19,6 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
@@ -28,7 +27,6 @@ import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 
 /**
@@ -86,23 +84,19 @@ public class SelectElementAction extends Action {
       IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
       ISelection newSelection = new StructuredSelection(elem);
       Object firstElement = getFirstSelectedElement(newSelection);
-      Object elementToSelectInCapellaExplorer = null;
-      
-      if(firstElement instanceof DRepresentation){
-    	  elementToSelectInCapellaExplorer = RepresentationHelper.getRepresentationDescriptor((DRepresentation)firstElement);
-      }
-      
-      // Keep the double check here, as getSemanticElement can return error.
-      if (CapellaResourceHelper.isSemanticElement(elementToSelectInCapellaExplorer)
-          || (elementToSelectInCapellaExplorer instanceof DRepresentation)
-          || (elementToSelectInCapellaExplorer instanceof DRepresentationDescriptor)) {
-    	  try {
-    	        IViewPart explorerView = activePage.showView(__EXPLORER_VIEW_ID);
-    	        explorerView.getViewSite().getSelectionProvider().setSelection(new StructuredSelection(elementToSelectInCapellaExplorer));
-    	  } catch (PartInitException exception) {
-    		  __logger.warn(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI), exception);
-    	  }
-      }
+     
+      try {
+    	  IViewPart explorerView = activePage.showView(__EXPLORER_VIEW_ID);
+          if(firstElement instanceof DRepresentation){
+        	  explorerView.getViewSite().getSelectionProvider().setSelection(
+        			  new StructuredSelection(RepresentationHelper.getRepresentationDescriptor((DRepresentation)firstElement)));
+          } else {
+        	  // when it doesn't concern DRepresentations
+        	  explorerView.getViewSite().getSelectionProvider().setSelection(newSelection);
+          }   
+      } catch (PartInitException exception) {
+    	__logger.warn(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI), exception);
+      } 
     }
   }
 }
