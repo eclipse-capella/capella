@@ -29,15 +29,14 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarke
  * edit respected values when necessary
  */
 public class EditExchangeItem extends AbstractCapellaMarkerResolution {
-	
-	public static boolean editElement = false;
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void run(final IMarker marker) {
-		
+	public void run(final IMarker marker) {	
+		final boolean[] editElement = {false};
 		final EObject value = getModelElements(marker).get(0);
+		
 		try {		
 			if ((null != value)){
 					AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
@@ -48,7 +47,7 @@ public class EditExchangeItem extends AbstractCapellaMarkerResolution {
 								final ExchangeItem ei = (ExchangeItem) eie.eContainer();
 								if (ei.getExchangeMechanism() == ExchangeMechanism.OPERATION) {
 									eie.setKind(ElementKind.MEMBER);
-									editElement = CapellaUIPropertiesPlugin
+									editElement[0] = CapellaUIPropertiesPlugin
 										.getDefault().openWizard(eie);
 								} else if (eie.getKind() == ElementKind.MEMBER) {
 									eie.setKind(ElementKind.TYPE);
@@ -56,7 +55,7 @@ public class EditExchangeItem extends AbstractCapellaMarkerResolution {
 									eie.setDirection(ParameterDirection.UNSET);
 								}
 							} else if (value instanceof ExchangeItem){
-								editElement = CapellaUIPropertiesPlugin
+								editElement[0] = CapellaUIPropertiesPlugin
 										.getDefault().openWizard(value);
 							}
 						}
@@ -69,14 +68,14 @@ public class EditExchangeItem extends AbstractCapellaMarkerResolution {
 										TransactionHelper.getEditingDomain(value))
 								.execute(cmd);
 					} catch (Exception e) {
-							// nothing
+							// do nothing
 					}
 			}
-			if(editElement){
+			if(editElement[0]){
 				marker.delete();
 			}
 		} catch (CoreException exception) {
-			// no nothing
+			// do nothing
 		}
 	}
 }
