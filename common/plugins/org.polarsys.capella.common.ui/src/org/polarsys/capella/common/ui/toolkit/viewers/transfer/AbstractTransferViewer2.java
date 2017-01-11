@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -597,28 +597,25 @@ public abstract class AbstractTransferViewer2 extends Viewer {
     if ((0 != (_style & SINGLE_SELECTION_VIEWER)) && !event.getSelection().isEmpty()) {
       // It must be one of the two viewers : left or right.
       ISelectionProvider selectionProvider = event.getSelectionProvider();
-      // If the originator of the new selection is the left viewer, disable the selection in the right viewer.
-      StructuredViewer disableSelectionViewer = null;
-      Button buttonDrivenByOppositeViewer = null;
       if (selectionProvider == _leftViewer) {
-        disableSelectionViewer = _rightViewer;
-        // Selection is coming from the left viewer, the button linked to the opposite viewer is 'removeSelectedBtn'.
-        buttonDrivenByOppositeViewer = _removeSelectedBtn;
+        // Selection coming from left viewer -> Enable Add, Disable Remove, clear selection in right viewer.
+        _addSelectedBtn.setEnabled(true);
+        _removeSelectedBtn.setEnabled(false);
+        clearSelection(_rightViewer);
       }
-      // If the originator of the new selection is the left viewer, disable the selection in the right viewer.
       else if (selectionProvider == _rightViewer) {
-        disableSelectionViewer = _leftViewer;
-        // Selection is coming from the right viewer, the button linked to the opposite viewer is 'addSelectedBtn'.
-        buttonDrivenByOppositeViewer = _addSelectedBtn;
+        // Selection coming from right viewer -> Disable Add, Enable Remove, clear selection in left viewer.
+        _addSelectedBtn.setEnabled(false);
+        _removeSelectedBtn.setEnabled(true);
+        clearSelection(_leftViewer);
       }
-      // Disable the button driven by the opposite viewer.
-      if (null != buttonDrivenByOppositeViewer) {
-        buttonDrivenByOppositeViewer.setEnabled(false);
-      }
-      // Disable the selection on the appropriate viewer if it has a non empty selection.
-      if (!disableSelectionViewer.getSelection().isEmpty()) {
-        disableSelectionViewer.setSelection(StructuredSelection.EMPTY);
-      }
+    }
+  }
+
+  protected void clearSelection(StructuredViewer viewer) {
+    // Clear selection if needed.
+    if (!viewer.getSelection().isEmpty()) {
+      viewer.setSelection(StructuredSelection.EMPTY);
     }
   }
 
@@ -694,11 +691,7 @@ public abstract class AbstractTransferViewer2 extends Viewer {
     control.setToolTipText(tooltip);
     viewer.addSelectionChangedListener(_viewerSelectionChangedListener);
     // Sets the viewer layout data.
-    GridData gdData = new GridData();
-    gdData.horizontalAlignment = SWT.FILL;
-    gdData.verticalAlignment = SWT.FILL;
-    gdData.grabExcessHorizontalSpace = true;
-    gdData.grabExcessVerticalSpace = true;
+    GridData gdData = new GridData(SWT.FILL, SWT.FILL, true, true);
     control.setLayoutData(gdData);
   }
 
