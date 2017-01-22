@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _2kJLQGXmEeaVsIgvj-cA7g
 Runtime-Version: 2.0.2.201511100828
-Save-Time: 9/20/16 6:27 PM
+Save-Time: 1/11/17 2:50 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -72,6 +72,8 @@ proc getPatternCreationDialog {
 			}
 		}
 		get-menu "Patterns/Create Pattern..." | click
+		// Wait 5 seconds to let pattern Wizard compute the pattern's preview image
+		wait -ms 5000
 	}
 }
 
