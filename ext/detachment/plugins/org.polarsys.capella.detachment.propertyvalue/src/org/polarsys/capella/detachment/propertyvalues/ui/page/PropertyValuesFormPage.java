@@ -26,8 +26,6 @@ import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ICheckStateProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
@@ -186,15 +184,16 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 	}
 
 	private void setComparator() {
-		ViewerComparator comparator = new ViewerComparator(new PropertiesComparator()) {
-			@SuppressWarnings("unchecked")
-			@Override
-			public int compare(Viewer viewer, Object e1, Object e2) {
-				return getComparator().compare(e1, e2);
-			}
-		};
-
-		treeViewer.setComparator(comparator);
+// FIXME API Change in Eclipse Neon
+//		ViewerComparator comparator = new ViewerComparator(new PropertiesComparator()) {
+//			@SuppressWarnings("unchecked")
+//			@Override
+//			public int compare(Viewer viewer, Object e1, Object e2) {
+//				return getComparator().compare(e1, e2);
+//			}
+//		};
+//
+//		treeViewer.setComparator(comparator);
 	}
 
 	private void createViewerColumns(TreeColumnLayout treeColLayout, Tree tree) {

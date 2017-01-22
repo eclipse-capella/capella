@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ import org.polarsys.capella.core.model.handler.ModelHandlerPlugin;
  */
 public class PluggableDiagnosticianProvider extends AbstractDiagnosticianProvider {
 
-  public static final String DIAGNOSTICIAN_PROVIDER_EXTENSION = ModelHandlerPlugin.getDefault().getPluginId() + ".diagnosticianProviders"; //$NON-NLS-1$
+  public static final String DIAGNOSTICIAN_PROVIDER_EXTENSION = ModelHandlerPlugin.PLUGIN_ID + ".diagnosticianProviders"; //$NON-NLS-1$
 
   @Override
   public Diagnostician getDiagnostician(AdapterFactory adapterFactory_p, IProgressMonitor progressMonitor_p) {
@@ -42,8 +42,7 @@ public class PluggableDiagnosticianProvider extends AbstractDiagnosticianProvide
         AbstractDiagnosticianProvider provider = (AbstractDiagnosticianProvider) elems[0].createExecutableExtension("class"); //$NON-NLS-1$
         result = provider.getDiagnostician(adapterFactory_p, progressMonitor_p);
       } catch (CoreException e1) {
-        ModelHandlerPlugin plugin = ModelHandlerPlugin.getDefault();
-        plugin.getLog().log(new Status(IStatus.ERROR, plugin.getPluginId(), e1.getMessage(), e1));
+        ModelHandlerPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, ModelHandlerPlugin.PLUGIN_ID, e1.getMessage(), e1));
       }
     }
     if (null == result) {

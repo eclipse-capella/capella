@@ -58,40 +58,6 @@
           </run>
        </application>
     </extension>
-    <extension
-          id="product"
-          point="org.eclipse.core.runtime.products">
-       <product
-             application="org.polarsys.capella.core.platform.sirius.ui.perspective.id"
-             name="Capella">
-             <property name="aboutImage" value="icons/CapellaAbout.png"/>
-         <property
-               name="aboutText"
-               value="%productBlurb"/>
-         <property  name="windowImages" value="icons/CapellaAdavance16x16.gif,icons/Capella32x32.png,icons/Capella48x48.png"/>
-         <property name="preferenceCustomization" value="plugin_customization.ini" /> 
-         <property name="startupForegroundColor" value="000000" /> 
-         <property name="startupMessageRect" value="24,200,421,20" /> 
-         <property name="startupProgressRect" value="1,288,452,15" />
-         <property
-               name="appName"
-               value="Capella">
-         </property>
-          <property
-                name="introTitle"
-                value="%productIntroTitle"/>
-          <property
-                name="introBrandingImage"
-                value="product:icons/intro-capella.png"/>
-          <property
-                name="introBrandingImageText"
-                value="%productIntroBrandingText"/>
-          <property
-                name="introDescription-firststeps"
-                value="%introDescription-firststeps"/>
-       </product>
-    </extension>
-   
    <extension point= "org.eclipse.ui.activities" >
      <!-- Declare the activity -->
      <activity id= "org.polarsys.capella.core.hidden.activity" description= "Capella Hidden Activities" name= "Capella Hidden Activities"/>
@@ -106,7 +72,7 @@
             id="org.polarsys.capella.core.product.splashHandler">
       </splashHandler>
       <splashHandlerProductBinding
-            productId="org.polarsys.capella.core.platform.sirius.ui.perspective.product"
+            productId="org.polarsys.capella.rcp.product"
             splashId="org.polarsys.capella.core.product.splashHandler">
       </splashHandlerProductBinding>
    </extension-->
@@ -118,7 +84,7 @@
       	</statusHandler>
          <statusHandlerProductBinding
                handlerId="org.polarsys.capella.core.platform.sirius.ui.perspective.statusHandler"
-               productId="org.polarsys.capella.core.platform.sirius.ui.perspective.product">
+               productId="org.polarsys.capella.rcp.product">
          </statusHandlerProductBinding>
    </extension>
 	<extension

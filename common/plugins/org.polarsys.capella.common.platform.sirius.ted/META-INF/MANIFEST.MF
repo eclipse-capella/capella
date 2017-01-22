@@ -2,14 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.platform.sirius.ted;singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Vendor: %providerName
 Export-Package: org.polarsys.capella.common.platform.sirius.ted
-Require-Bundle: org.eclipse.emf.common.ui,
- org.eclipse.gmf.runtime.emf.core,
+Require-Bundle: org.eclipse.gmf.runtime.emf.core,
  org.eclipse.sirius;visibility:=reexport,
  org.eclipse.sirius.common;visibility:=reexport,
- org.eclipse.sirius.common.ui;visibility:=reexport,
  org.eclipse.sirius.ecore.extender;visibility:=reexport,
  org.polarsys.capella.common.ef;visibility:=reexport,
  org.polarsys.kitalpha.ad.metadata,

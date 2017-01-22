@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.test.suite.notinui.ju
+Bundle-Version: 1.1.0.qualifier
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Require-Bundle: org.polarsys.capella.test.suites.ju
+Export-Package: org.polarsys.capella.test.suite.notinui.ju
