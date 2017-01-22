@@ -383,6 +383,9 @@
               <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
                   id="022bd5d6-f8a1-4708-97b7-5f6bedce2595" deployedElement="#8e5090a7-887d-45eb-955e-985cc526e8b5"
                   location="#8a14b970-0357-4f30-ad0e-deffac1c1d3f"/>
+              <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
+                  id="7a962886-3829-49b8-9127-7ed5d261ebb6" deployedElement="#2643f14c-4d10-4ec0-95bc-c4c4a1f6290e"
+                  location="#8a14b970-0357-4f30-ad0e-deffac1c1d3f"/>
             </ownedFeatures>
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="e00e861c-ea87-4f6f-8e91-916313a7c55d"
                 name="org.polarsys.capella.common.compare.feature" abstractType="#cb9cc916-60cd-4ca4-a77a-81f8d72e2f8e">
@@ -412,6 +415,8 @@
                 name="org.polarsys.capella.common.model.feature" abstractType="#36788afc-5393-4bff-a06c-3fd0bac0f982"/>
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="ec53ca0d-faa6-46e0-b4b5-a2a1e18a3bde"
                 name="org.polarsys.capella.common.re.feature" abstractType="#2da61638-b982-4b09-a786-aed4b52d33bd"/>
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="2643f14c-4d10-4ec0-95bc-c4c4a1f6290e"
+                name="org.polarsys.capella.common.ui.feature" abstractType="#95d2559c-ef82-4e3f-8d0c-2a92ee352603"/>
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="67328da0-39ac-4650-ad50-7a3074f5787a"
                 name="org.polarsys.capella.core.advance.feature" abstractType="#b6c28c10-79ba-4cd3-91ca-e23cda326375">
               <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
@@ -598,6 +603,9 @@
                   kind="SOFTWARE" nature="BEHAVIOR"/>
               <ownedComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
                   id="2da61638-b982-4b09-a786-aed4b52d33bd" name="org.polarsys.capella.common.re.feature"
+                  kind="SOFTWARE" nature="BEHAVIOR"/>
+              <ownedComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+                  id="95d2559c-ef82-4e3f-8d0c-2a92ee352603" name="org.polarsys.capella.common.ui.feature"
                   kind="SOFTWARE" nature="BEHAVIOR"/>
               <ownedComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
                   id="6d65e75a-1b2d-4e8d-bed1-a7b5a2f9d36b" name="org.polarsys.capella.shared.feature"

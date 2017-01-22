@@ -690,10 +690,7 @@
 				<module>patterns/plugins/org.polarsys.capella.patterns</module>
 				<module>patterns/plugins/org.polarsys.capella.patterns.obfuscator</module>
 				<module>patterns/plugins/org.polarsys.capella.patterns.migration</module>
-				<module>releng/features/org.polarsys.capella.rcp.feature</module>
-				<module>releng/plugins/org.polarsys.capella.rcp</module>
-				<module>releng/plugins/org.polarsys.capella.rcp.product</module>
-				<module>releng/plugins/org.polarsys.capella.rcp.site</module>
+				<module>releng/plugins/org.polarsys.capella.headless.site</module>
 			</modules>
 		</profile>
 	</profiles>
