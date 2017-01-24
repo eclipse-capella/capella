@@ -21,8 +21,14 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tycho-version>0.25.0</tycho-version>
 		<tycho-extras-version>0.25.0</tycho-extras-version>
-		<tycho.scmUrl>scm:git:http://git.polarsys.org/c/capella/capella.git</tycho.scmUrl>
 		<antrun-version>1.7</antrun-version>
+		<rcptt-version>2.1.0</rcptt-version>
+		<rcptt-runner-version>2.1.0</rcptt-runner-version>
+		<sonar-version>3.0.2</sonar-version>
+		<jacoco-version>0.7.4.201502262128</jacoco-version>
+
+		<!-- for tycho -->
+		<tycho.scmUrl>scm:git:http://git.polarsys.org/c/capella/capella.git</tycho.scmUrl>
 
 		<!-- for packaging -->
 		<eclipse-repo.url>http://download.eclipse.org/releases/neon</eclipse-repo.url>
@@ -32,6 +38,11 @@
 		<capella-product-id>org.polarsys.capella.rcp.product</capella-product-id>
 		<capella-application-id>org.polarsys.capella.core.platform.sirius.ui.perspective.id</capella-application-id>
 		<tycho.testArgLine>-Xms256m -Xmx1024m</tycho.testArgLine>
+
+		<!-- for sonar -->
+		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+		<sonar.jacoco.reportPath>${project.basedir}/../../../target/jacoco.exec</sonar.jacoco.reportPath>
+		<sonar.jacoco.itReportPath>${project.basedir}/../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
 	</properties>
 
 	<modules>
@@ -83,9 +94,29 @@
 					</environments>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco-version}</version>
+				<configuration>
+					<destFile>${sonar.jacoco.reportPath}</destFile>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>${sonar-version}</version>
+				</plugin>
 				<!-- plugins only called if a descendant need them -->
 				<plugin>
 					<groupId>org.eclipse.tycho.extras</groupId>

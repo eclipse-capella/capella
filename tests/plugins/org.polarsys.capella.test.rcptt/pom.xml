@@ -44,17 +44,16 @@
 			<plugin>
 				<groupId>org.eclipse.rcptt</groupId>
 				<artifactId>rcptt-maven-plugin</artifactId>
-				<version>2.1.0</version>
+				<version>${rcptt-version}</version>
 				<extensions>true</extensions>
 				<configuration>
 					<runner>
-						<version>2.1.0</version>
+						<version>${rcptt-runner-version}</version>
 						<vmArgs>
 							<vmArg>-Xmx1024m</vmArg>
 							<vmArg>-XX:MaxPermSize=512m</vmArg>
 						</vmArgs>
 					</runner>
-
 					<aut>
 						<explicit>../../../releng/plugins/org.polarsys.capella.rcp.product/target/products/org.polarsys.capella.rcp.product-[platform].zip</explicit>
 					</aut>
