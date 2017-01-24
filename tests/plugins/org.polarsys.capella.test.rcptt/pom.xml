@@ -23,16 +23,32 @@
 	<artifactId>org.polarsys.capella.test.rcptt</artifactId>
 	<packaging>rcpttTest</packaging>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>rcptt-releases</id>
+			<name>RCPTT Maven repository</name>
+			<url>https://repo.eclipse.org/content/repositories/rcptt-releases/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>rcptt-snapshots</id>
+			<name>RCPTT Maven Snapshots repository</name>
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+			<url>https://repo.eclipse.org/content/repositories/rcptt-snapshots/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.rcptt</groupId>
 				<artifactId>rcptt-maven-plugin</artifactId>
-				<version>2.0.1</version>
+				<version>2.1.0</version>
 				<extensions>true</extensions>
 				<configuration>
 					<runner>
-						<version>2.0.2</version>
+						<version>2.1.0</version>
 						<vmArgs>
 							<vmArg>-Xmx1024m</vmArg>
 							<vmArg>-XX:MaxPermSize=512m</vmArg>
