@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,6 +79,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
 
   /**
    * Is this field displayed in a wizard ?
+   * 
    * @return the displayedInWizard
    */
   public boolean isDisplayedInWizard() {
@@ -87,7 +88,9 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
 
   /**
    * Set whether or not the field is displayed in a wizard.
-   * @param displayedInWizard the displayedInWizard to set
+   * 
+   * @param displayedInWizard
+   *          the displayedInWizard to set
    */
   public void setDisplayedInWizard(boolean displayedInWizard) {
     _displayedInWizard = displayedInWizard;
@@ -95,6 +98,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
 
   /**
    * Execute given command.
+   * 
    * @param command
    */
   protected void executeCommand(ICommand command) {
@@ -106,7 +110,8 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
     ICommand cmd = command;
     if (isDisplayedInWizard()) {
       // In wizards, we are already running within a TIG read/write command.
-      // To be able to cancel modifications we need to run given command (i.e the one specified as argument) as a non dirtying one.
+      // To be able to cancel modifications we need to run given command (i.e the one specified as argument) as a non
+      // dirtying one.
       // Indeed, we don't want to have these sub commands on the command stack, only the main one would be stacked.
       // Thus, let's create a non dirtying that is used as a proxy of given one.
       cmd = createNonDirtyingCommand(command);
@@ -132,14 +137,17 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
    * This method verifies if there is an active transaction.<br>
    * If such case, the command is simply run.<br>
    * If not, the command is executed through the execution manager.<br>
-   * @param command the command to be executed
+   * 
+   * @param command
+   *          the command to be executed
    */
   protected void verifiedExecution(ICommand command) {
     ExecutionManager executionManager = getExecutionManager();
     if (null != executionManager) {
       TransactionalEditingDomain editingDomain = executionManager.getEditingDomain();
       if (editingDomain instanceof InternalTransactionalEditingDomain) {
-        InternalTransaction activeTransaction = ((InternalTransactionalEditingDomain) editingDomain).getActiveTransaction();
+        InternalTransaction activeTransaction = ((InternalTransactionalEditingDomain) editingDomain)
+            .getActiveTransaction();
         if ((null != activeTransaction) && activeTransaction.isActive()) {
           command.run();
         } else {
@@ -231,6 +239,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
 
   /**
    * Load the field for given element and given feature.
+   * 
    * @param semanticElement
    * @param semanticFeature
    */
@@ -241,6 +250,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
 
   /**
    * Load the UI representation of given semantic element.
+   * 
    * @param semanticElement
    */
   public abstract void loadData(EObject semanticElement);
@@ -281,8 +291,8 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   public void keyReleased(KeyEvent event) {
     if (event != null) {
       // this field can be used in two different contexts:
-      //  - in the property view: we don't want to create a command for each modification (unless it's a CR character)
-      //  - in a wizard dialog: all the modifications will be embedded in a single command
+      // - in the property view: we don't want to create a command for each modification (unless it's a CR character)
+      // - in a wizard dialog: all the modifications will be embedded in a single command
       if (_displayedInWizard || (!_displayedInWizard && (event.character == SWT.CR))) {
         Object source = event.getSource();
         if ((source != null) && (source instanceof Text)) {
@@ -316,7 +326,9 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   /**
    * Fill given text field.<br>
    * Default behavior does nothing.
-   * @param textField text field to be filled
+   * 
+   * @param textField
+   *          text field to be filled
    */
   protected void fillTextField(Text textField) {
     // Do nothing.
@@ -325,7 +337,9 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   /**
    * Fill given combo field.<br>
    * Default behavior does nothing.
-   * @param CCombo combo field to be filled
+   * 
+   * @param CCombo
+   *          combo field to be filled
    */
   protected void fillComboField(CCombo comboField) {
     // Do nothing.
@@ -333,6 +347,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
 
   /**
    * Set text value.
+   * 
    * @param text
    * @param object
    * @param feature
@@ -345,6 +360,8 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
       text.setText(((Integer) value).toString());
     } else if (value instanceof Float) {
       text.setText(((Float) value).toString());
+    } else if (value instanceof Double) {
+      text.setText(((Double) value).toString());
     } else {
       text.setText(ICommonConstants.EMPTY_STRING);
     }
@@ -352,6 +369,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
 
   /**
    * Set data value i.e change given object for given feature with specified value.
+   * 
    * @param object
    * @param feature
    * @param value
@@ -383,6 +401,14 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
                   //
                 }
               }
+            } else if (EcorePackage.eINSTANCE.getEDouble().equals(type)) {
+              if (value instanceof String) {
+                try {
+                  object.eSet(feature, new Double(Double.parseDouble((String) value)));
+                } catch (NumberFormatException ex) {
+                  //
+                }
+              }
             }
           } else if (feature instanceof EReference) {
             if (((EReference) feature).isContainment()) {
@@ -399,6 +425,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
 
   /**
    * Add data value i.e change given object for given feature with specified value.
+   * 
    * @param object
    * @param feature
    * @param value
@@ -418,6 +445,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
 
   /**
    * Move data value.
+   * 
    * @param object
    * @param owner
    * @param feature
@@ -439,6 +467,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
 
   /**
    * Remove data value i.e change given object for given feature with specified value.
+   * 
    * @param object
    * @param feature
    * @param value
@@ -461,6 +490,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
 
   /**
    * Remove all data value from given object for given feature.
+   * 
    * @param object
    * @param feature
    */
@@ -486,8 +516,8 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
    * @param object
    */
   public static void deleteContainmentValue(EObject object) {
-    CapellaDeleteCommand command =
-        new CapellaDeleteCommand(TransactionHelper.getExecutionManager(object), Collections.singleton(object), false, false, true);
+    CapellaDeleteCommand command = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(object),
+        Collections.singleton(object), false, false, true);
     if (command.canExecute()) {
       command.execute();
     }
@@ -495,6 +525,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
 
   /**
    * Set data value i.e change given object for given feature with specified value.
+   * 
    * @param object
    * @param feature
    * @param value
@@ -514,6 +545,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
 
   /**
    * Set data value i.e change given object for given feature with specified value.
+   * 
    * @param button
    * @param object
    * @param feature
@@ -527,6 +559,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
 
   /**
    * Set data value.
+   * 
    * @param button
    */
   protected void setBooleanValue(Button button, boolean value) {
@@ -535,13 +568,16 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
 
   /**
    * Set whether or not this semantic field is enabled or not.<br>
-   * Enabled means all internal widgets are set to specified <code>enabled</code> value. Default implementation does nothing.
+   * Enabled means all internal widgets are set to specified <code>enabled</code> value. Default implementation does
+   * nothing.
+   * 
    * @param enabled
    */
   public abstract void setEnabled(boolean enabled);
 
   /**
    * Create a button with specified image and no label.
+   * 
    * @param parent
    * @param image
    * @param tooltip
