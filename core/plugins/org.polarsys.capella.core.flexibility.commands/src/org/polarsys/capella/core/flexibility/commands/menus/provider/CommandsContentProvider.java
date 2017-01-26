@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,30 +40,30 @@ public class CommandsContentProvider implements ITreeContentProvider, ICheckStat
   /**
    * {@inheritDoc}
    */
-  public void inputChanged(Viewer viewer_p, Object oldInput_p, Object newInput_p) {
-    if (newInput_p instanceof MenuInput) {
-      currentInput = (MenuInput) newInput_p;
+  public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+    if (newInput instanceof MenuInput) {
+      currentInput = (MenuInput) newInput;
     }
   }
 
   /**
    * {@inheritDoc}
    */
-  public Object[] getElements(Object inputElement_p) {
-    Object input = inputElement_p;
+  public Object[] getElements(Object inputElement) {
+    Object input = inputElement;
 
     String parentId = null;
 
     ArrayList<Object> contexts = new ArrayList<Object>();
 
-    if ((inputElement_p instanceof MenuInput)) {
+    if ((inputElement instanceof MenuInput)) {
       contexts.addAll(getChildCategories(null));
       contexts.addAll(getChildCommands(null));
     }
-    if ((inputElement_p instanceof Command)) {
+    if ((inputElement instanceof Command)) {
       parentId = ((Command) input).getId();
     }
-    if ((inputElement_p instanceof Category)) {
+    if ((inputElement instanceof Category)) {
       parentId = ((Category) input).getId();
       contexts.addAll(getChildCategories(parentId));
       contexts.addAll(getChildCommands(parentId));
@@ -84,10 +84,10 @@ public class CommandsContentProvider implements ITreeContentProvider, ICheckStat
   }
 
   /**
-   * @param object_p
+   * @param object
    * @return
    */
-  protected ArrayList<Object> getChildCommands(String parentId_p) {
+  protected ArrayList<Object> getChildCommands(String parentId) {
 
     ArrayList<Object> contexts = new ArrayList<Object>();
     ICommandService cmdService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
@@ -98,13 +98,13 @@ public class CommandsContentProvider implements ITreeContentProvider, ICheckStat
       }
       try {
         Category category = command.getCategory();
-        if ((category == null) && (parentId_p == null)) {
+        if ((category == null) && (parentId == null)) {
           contexts.add(command);
-        } else if ((category != null) && category.getId().equals(parentId_p)) {
+        } else if ((category != null) && category.getId().equals(parentId)) {
           contexts.add(command);
         }
-      } catch (NotDefinedException exception_p) {
-        if (parentId_p == null) {
+      } catch (NotDefinedException exception) {
+        if (parentId == null) {
           contexts.add(command);
         }
       }
@@ -114,10 +114,10 @@ public class CommandsContentProvider implements ITreeContentProvider, ICheckStat
   }
 
   /**
-   * @param object_p
+   * @param object
    * @return
    */
-  protected ArrayList<Category> getChildCategories(String parentId_p) {
+  protected ArrayList<Category> getChildCategories(String parentId) {
 
     ArrayList<Category> contexts = new ArrayList<Category>();
     ICommandService cmdService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
@@ -125,7 +125,7 @@ public class CommandsContentProvider implements ITreeContentProvider, ICheckStat
     for (Category category : cmdService.getDefinedCategories()) {
       boolean shouldAdd = false;
 
-      if (parentId_p == null) {
+      if (parentId == null) {
         shouldAdd = true;
         for (Category category2 : cmdService.getDefinedCategories()) {
           if ((category.getId() != null) && !(category.getId().equals(category2.getId())) && (category.getId().startsWith(category2.getId()))) {
@@ -133,7 +133,7 @@ public class CommandsContentProvider implements ITreeContentProvider, ICheckStat
             break;
           }
         }
-      } else if (!(category.getId().equals(parentId_p)) && (category.getId().startsWith(parentId_p))) {
+      } else if (!(category.getId().equals(parentId)) && (category.getId().startsWith(parentId))) {
         shouldAdd = true;
       }
 
@@ -150,25 +150,25 @@ public class CommandsContentProvider implements ITreeContentProvider, ICheckStat
   /**
    * {@inheritDoc}
    */
-  public Object[] getChildren(Object parentElement_p) {
-    return getElements(parentElement_p);
+  public Object[] getChildren(Object parentElement) {
+    return getElements(parentElement);
   }
 
   /**
    * {@inheritDoc}
    */
-  public Object getParent(Object element_p) {
+  public Object getParent(Object element) {
     return null;
   }
 
   /**
    * {@inheritDoc}
    */
-  public boolean hasChildren(Object element_p) {
-    if (element_p == null) {
+  public boolean hasChildren(Object element) {
+    if (element == null) {
       return true;
     }
-    if (element_p instanceof Category) {
+    if (element instanceof Category) {
       return true;
     }
     return false;
@@ -203,9 +203,9 @@ public class CommandsContentProvider implements ITreeContentProvider, ICheckStat
   /**
    * {@inheritDoc}
    */
-  public boolean isChecked(Object element_p) {
-    if (element_p instanceof Category) {
-      for (Object child : getElements(element_p)) {
+  public boolean isChecked(Object element) {
+    if (element instanceof Category) {
+      for (Object child : getElements(element)) {
         if (isChecked(child)) {
           return true;
         }
@@ -213,8 +213,8 @@ public class CommandsContentProvider implements ITreeContentProvider, ICheckStat
       return false;
     }
 
-    if (element_p instanceof Command) {
-      String id = ((Command) element_p).getId();
+    if (element instanceof Command) {
+      String id = ((Command) element).getId();
 
       return !PerspectiveOverrides.isHiddenMenu(id);
     }
@@ -224,12 +224,12 @@ public class CommandsContentProvider implements ITreeContentProvider, ICheckStat
   /**
    * {@inheritDoc}
    */
-  public boolean isGrayed(Object element_p) {
+  public boolean isGrayed(Object element) {
 
-    if (element_p instanceof Category) {
+    if (element instanceof Category) {
       boolean haveChildChecked = false;
       boolean haveChildUnchecked = false;
-      for (Object child : getElements(element_p)) {
+      for (Object child : getElements(element)) {
         if (isChecked(child)) {
           haveChildChecked = true;
         }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,9 +30,9 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class ConfigurationItemSection extends ComponentSection {
   
-  private ConfigurationItemKindGroup _ciKindGroup;
-  private ConfigurationItemIdGroup _itemIdentifierGroup;
-  private MultipleSemanticField _physicalArtifactRealizations;
+  private ConfigurationItemKindGroup ciKindGroup;
+  private ConfigurationItemIdGroup itemIdentifierGroup;
+  private MultipleSemanticField physicalArtifactRealizations;
 
   /**
    * Default constructor.
@@ -50,16 +50,16 @@ public class ConfigurationItemSection extends ComponentSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _ciKindGroup = new ConfigurationItemKindGroup(_rootParentComposite, getWidgetFactory(), true);
-    _ciKindGroup.setDisplayedInWizard(displayedInWizard);
+    ciKindGroup = new ConfigurationItemKindGroup(_rootParentComposite, getWidgetFactory(), true);
+    ciKindGroup.setDisplayedInWizard(displayedInWizard);
 
-    _itemIdentifierGroup = new ConfigurationItemIdGroup(_rootParentComposite, getWidgetFactory());
-    _itemIdentifierGroup.setDisplayedInWizard(displayedInWizard);
+    itemIdentifierGroup = new ConfigurationItemIdGroup(_rootParentComposite, getWidgetFactory());
+    itemIdentifierGroup.setDisplayedInWizard(displayedInWizard);
 
-    _physicalArtifactRealizations =
+    physicalArtifactRealizations =
         new MultipleSemanticField(getReferencesGroup(), Messages.getString("ConfigurationItemSection_PhysicalArtifactRealizations_Label"), getWidgetFactory(), //$NON-NLS-1$
             new RealizedPhysicalArtifactsController());
-    _physicalArtifactRealizations.setDisplayedInWizard(displayedInWizard);
+    physicalArtifactRealizations.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
@@ -69,9 +69,9 @@ public class ConfigurationItemSection extends ComponentSection {
   public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
-    _ciKindGroup.loadData(capellaElement, EpbsPackage.Literals.CONFIGURATION_ITEM__KIND);
-    _itemIdentifierGroup.loadData(capellaElement, EpbsPackage.Literals.CONFIGURATION_ITEM__ITEM_IDENTIFIER);
-    _physicalArtifactRealizations.loadData(capellaElement, EpbsPackage.Literals.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS);
+    ciKindGroup.loadData(capellaElement, EpbsPackage.Literals.CONFIGURATION_ITEM__KIND);
+    itemIdentifierGroup.loadData(capellaElement, EpbsPackage.Literals.CONFIGURATION_ITEM__ITEM_IDENTIFIER);
+    physicalArtifactRealizations.loadData(capellaElement, EpbsPackage.Literals.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS);
   }
 
   /**
@@ -82,9 +82,9 @@ public class ConfigurationItemSection extends ComponentSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_ciKindGroup);
-    fields.add(_itemIdentifierGroup);
-    fields.add(_physicalArtifactRealizations);
+    fields.add(ciKindGroup);
+    fields.add(itemIdentifierGroup);
+    fields.add(physicalArtifactRealizations);
 
     return fields;
   }

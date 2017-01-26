@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,45 +26,45 @@ public class EIAllocationTreeViewerCellModifier implements ICellModifier {
 
   public final static String RENAMED_NOTIFICATION = "renamed_notification"; //$NON-NLS-1$
 
-  private boolean _enabled;
-  private Tree _tree;
+  private boolean enabled;
+  private Tree tree;
 
   /**
-   * @param treeViewer_p
+   * @param treeViewer
    */
-  public EIAllocationTreeViewerCellModifier(Tree tree_p) {
-    _enabled = false;
-    _tree = tree_p;
+  public EIAllocationTreeViewerCellModifier(Tree tree) {
+    this.enabled = false;
+    this.tree = tree;
   }
 
   /**
    * @return the enabled
    */
   public boolean isEnabled() {
-    return _enabled;
+    return enabled;
   }
 
   /**
-   * @param enabled_p
+   * @param enabled
    *          the enabled to set
    */
-  public void setEnabled(boolean enabled_p) {
-    _enabled = enabled_p;
+  public void setEnabled(boolean enabled) {
+    this.enabled = enabled;
   }
 
   /**
    * @see org.eclipse.jface.viewers.ICellModifier#canModify(java.lang.Object, java.lang.String)
    */
-  public boolean canModify(Object element_p, String property_p) {
+  public boolean canModify(Object element, String property) {
     return isEnabled();
   }
 
   /**
    * @see org.eclipse.jface.viewers.ICellModifier#getValue(java.lang.Object, java.lang.String)
    */
-  public Object getValue(Object element_p, String property_p) {
-    if (element_p instanceof AbstractNamedElement) {
-      return ((AbstractNamedElement) element_p).getName();
+  public Object getValue(Object element, String property) {
+    if (element instanceof AbstractNamedElement) {
+      return ((AbstractNamedElement) element).getName();
     }
     return null;
   }
@@ -72,13 +72,13 @@ public class EIAllocationTreeViewerCellModifier implements ICellModifier {
   /**
    * @see org.eclipse.jface.viewers.ICellModifier#modify(java.lang.Object, java.lang.String, java.lang.Object)
    */
-  public void modify(Object element_p, String property_p, Object value_p) {
-    if (element_p instanceof TreeItem) {
-      Object data = ((TreeItem) element_p).getData();
+  public void modify(Object element, String property, Object value) {
+    if (element instanceof TreeItem) {
+      Object data = ((TreeItem) element).getData();
       if (data instanceof AbstractNamedElement) {
-        String newName = value_p.toString();
+        String newName = value.toString();
         rename((AbstractNamedElement) data, newName);
-        sendNotification((TreeItem) element_p, data);
+        sendNotification((TreeItem) element, data);
       }
     }
   }
@@ -86,20 +86,20 @@ public class EIAllocationTreeViewerCellModifier implements ICellModifier {
   /**
    *
    */
-  public void rename(AbstractNamedElement element_p, String name_p) {
-    if (!element_p.getName().equals(name_p)) {
-      element_p.setName(name_p);
+  public void rename(AbstractNamedElement element, String name) {
+    if (!element.getName().equals(name)) {
+      element.setName(name);
     }
   }
 
   /**
    * Send a notification to disable the editing
    */
-  public void sendNotification(TreeItem item_p, Object data) {
+  public void sendNotification(TreeItem item, Object data) {
     Event event = new Event();
-    event.item = item_p;
+    event.item = item;
     event.data = data;
     event.text = RENAMED_NOTIFICATION;
-    _tree.notifyListeners(SWT.MouseDown, event);
+    tree.notifyListeners(SWT.MouseDown, event);
   }
 }

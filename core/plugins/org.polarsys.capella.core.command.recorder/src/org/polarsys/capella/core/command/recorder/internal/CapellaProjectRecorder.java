@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,20 +42,20 @@ import org.polarsys.capella.core.command.recorder.internal.utils.CapellaProjectU
 public class CapellaProjectRecorder extends AbstractProjectRecorder {
   
   /** the name resolver */
-  protected INameResolver _nameResolver;
+  protected INameResolver nameResolver;
   
   /**
    * Constructor
    */
-  public CapellaProjectRecorder(AbstractRecorderManager manager_p, IProject project_p) {
-    super(manager_p, project_p);
+  public CapellaProjectRecorder(AbstractRecorderManager manager, IProject project) {
+    super(manager, project);
     
-    _nameResolver = new INameResolver() {
-      public String getReadableName(EObject eobject_p) {
-        return CapellaProjectUtils.getReadableName(eobject_p);
+    nameResolver = new INameResolver() {
+      public String getReadableName(EObject eobject) {
+        return CapellaProjectUtils.getReadableName(eobject);
       }
-      public String getID(EObject eobject_p) {
-        return CapellaProjectUtils.getID(eobject_p);
+      public String getID(EObject eobject) {
+        return CapellaProjectUtils.getID(eobject);
       }
     }; 
     
@@ -72,7 +72,7 @@ public class CapellaProjectRecorder extends AbstractProjectRecorder {
   /**
    * {@inheritDoc}
    */
-  public void write(Writer writer_p) throws IOException {
+  public void write(Writer writer) throws IOException {
    
     if (null != _events && !_events.isEmpty() ) {
       
@@ -106,16 +106,16 @@ public class CapellaProjectRecorder extends AbstractProjectRecorder {
             // Notification text
             depth = 0;
             String str = NotificationEnum.getOperationEnum(notification.getEventType()).getLiteral();
-            TXTWriterHelper.writeSubEntry(writer_p, depth, str);
+            TXTWriterHelper.writeSubEntry(writer, depth, str);
             
             // Main tgt object
             root = (EObject) notification.getNotifier();
             depth++;
             
             TXTWriterHelper.writeSubEntryForEObject(
-                writer_p,
+                writer,
                 root,
-                _nameResolver,
+                nameResolver,
                 depth,
                 false
             );
@@ -126,9 +126,9 @@ public class CapellaProjectRecorder extends AbstractProjectRecorder {
               depth++;
               
               TXTWriterHelper.writeSubEntryForEObject(
-                  writer_p,
+                  writer,
                   subRoot,
-                  _nameResolver,
+                  nameResolver,
                   depth,
                   true
               );             
@@ -175,7 +175,7 @@ public class CapellaProjectRecorder extends AbstractProjectRecorder {
               // Do nothing
             break;
           }
-        } catch (Exception exception_p) {
+        } catch (Exception exception) {
           // DO nothing
         }
         
@@ -191,13 +191,13 @@ public class CapellaProjectRecorder extends AbstractProjectRecorder {
    * {@inheritDoc}
    */
   @Override
-  public void notifyAddSession(Session newSession_p) {
-    IFile file = WorkspaceSynchronizer.getFile(newSession_p.getSessionResource());
-    if (null != file && file.getProject().equals(_project)){
+  public void notifyAddSession(Session newSession) {
+    IFile file = WorkspaceSynchronizer.getFile(newSession.getSessionResource());
+    if (null != file && file.getProject().equals(project)){
       // directly write to this recorder's output stream. this is a workaround...
       Writer w = _manager.getOutputManager().getWriter(this);
       try {
-        TXTWriterHelper.writeEntry(w, "DONE Open session " + newSession_p.getSessionResource().getURI()); //$NON-NLS-1$
+        TXTWriterHelper.writeEntry(w, "DONE Open session " + newSession.getSessionResource().getURI()); //$NON-NLS-1$
         TXTWriterHelper.writeExtraDataLine(w, new Date().toString());
         w.flush();
       } catch (IOException e ){
@@ -211,13 +211,13 @@ public class CapellaProjectRecorder extends AbstractProjectRecorder {
    * {@inheritDoc}
    */
   @Override
-  public void notifyRemoveSession(Session removedSession_p) {
-    IFile file = WorkspaceSynchronizer.getFile(removedSession_p.getSessionResource());
-    if (null != file && file.getProject().equals(_project)){
+  public void notifyRemoveSession(Session removedSession) {
+    IFile file = WorkspaceSynchronizer.getFile(removedSession.getSessionResource());
+    if (null != file && file.getProject().equals(project)){
       // directly write to this recorder's output stream. this is a workaround...
       Writer w = _manager.getOutputManager().getWriter(this);
       try {
-        TXTWriterHelper.writeEntry(w, "DONE Close session " + removedSession_p.getSessionResource().getURI()); //$NON-NLS-1$
+        TXTWriterHelper.writeEntry(w, "DONE Close session " + removedSession.getSessionResource().getURI()); //$NON-NLS-1$
         TXTWriterHelper.writeExtraDataLine(w, new Date().toString());
         w.flush();
       } catch (IOException e ){

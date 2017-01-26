@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,16 +43,16 @@ public class DynamicCommandsContentProvider extends CommandsContentProvider impl
 
   Collection<DefaultAction> actions = null;
 
-  public Collection<DefaultAction> getActions(Shell shell_p, ISelectionProvider selectionProvider_p) {
-    return new AllPackagedProviders().getActions(shell_p, selectionProvider_p);
+  public Collection<DefaultAction> getActions(Shell shell, ISelectionProvider selectionProvider) {
+    return new AllPackagedProviders().getActions(shell, selectionProvider);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void inputChanged(Viewer viewer_p, Object oldInput_p, Object newInput_p) {
-    super.inputChanged(viewer_p, oldInput_p, newInput_p);
+  public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+    super.inputChanged(viewer, oldInput, newInput);
     ICommandService cmdService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
 
     if (null != currentInput) {
@@ -101,8 +101,8 @@ public class DynamicCommandsContentProvider extends CommandsContentProvider impl
         handlerService.activateHandler(eatTaco.getId(), handler, new Expression() {
 
           @Override
-          public EvaluationResult evaluate(IEvaluationContext context_p) throws CoreException {
-            Object selection = context_p.getVariable("selection");
+          public EvaluationResult evaluate(IEvaluationContext context) throws CoreException {
+            Object selection = context.getVariable("selection");
             boolean result = true;
             if ((selection != null) && (selection instanceof ISelection)) {
               currentInput.selectionProvider.setSelection((ISelection) selection);
@@ -124,20 +124,20 @@ public class DynamicCommandsContentProvider extends CommandsContentProvider impl
   }
 
   /**
-   * @param subCategory_p
-   * @param category_p
+   * @param subCategory
+   * @param category
    */
-  protected void registerCategory(String categoryId_p, Category parent_p) {
+  protected void registerCategory(String categoryId, Category parent) {
     ICommandService cmdService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
-    Category lunch = cmdService.getCategory(categoryId_p);
+    Category lunch = cmdService.getCategory(categoryId);
     if (!lunch.isDefined()) {
-      lunch.define(getName(categoryId_p), getName(categoryId_p) + " commands");
+      lunch.define(getName(categoryId), getName(categoryId) + " commands");
     }
   }
 
-  public String getName(String categoryId_p) {
-    String[] ides = categoryId_p.split("\\.");
-    String value = categoryId_p;
+  public String getName(String categoryId) {
+    String[] ides = categoryId.split("\\.");
+    String value = categoryId;
     if (ides.length != 0) {
       value = ides[ides.length - 1];
     }

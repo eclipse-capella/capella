@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,6 @@ import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
-
 
 /**
  * A merge policy for Capella models.
@@ -76,25 +75,25 @@ public class CapellaMergePolicy extends SiriusMergePolicy {
    * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusMergePolicy#getAdditionGroup(org.eclipse.emf.ecore.EObject, org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope)
    */
   @Override
-  public Set<EObject> getAdditionGroup(EObject element_p,
-      IFeaturedModelScope scope_p) {
-    Set<EObject> result = super.getAdditionGroup(element_p, scope_p);
-    if (element_p instanceof Part) {
-      Part part = (Part)element_p;
+  public Set<EObject> getAdditionGroup(EObject element,
+      IFeaturedModelScope scope) {
+    Set<EObject> result = super.getAdditionGroup(element, scope);
+    if (element instanceof Part) {
+      Part part = (Part)element;
       AbstractType type = part.getAbstractType();
       if (type instanceof Component)
         result.add(type);
-    } else if (element_p instanceof Component) {
-      Component component = (Component)element_p;
+    } else if (element instanceof Component) {
+      Component component = (Component)element;
       List<AbstractTypedElement> typed = component.getAbstractTypedElements();
       if (typed.size() == 1 && typed.get(0) instanceof Part)
         result.addAll(typed);
-    } else if (element_p instanceof Association) {
-      Association association = (Association)element_p;
+    } else if (element instanceof Association) {
+      Association association = (Association)element;
       result.addAll((association.getOwnedMembers()));
       result.addAll((association.getNavigableMembers()));
-    } else if (element_p instanceof Property) {
-      Property property = (Property)element_p;
+    } else if (element instanceof Property) {
+      Property property = (Property)element;
       Association association = property.getAssociation();
       if (association != null)
         result.add(association);
@@ -106,12 +105,12 @@ public class CapellaMergePolicy extends SiriusMergePolicy {
    * @see org.eclipse.emf.diffmerge.impl.policies.DefaultMergePolicy#getNewIntrinsicID(org.eclipse.emf.ecore.EObject, org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope)
    */
   @Override
-  public String getNewIntrinsicID(EObject element_p, IFeaturedModelScope scope_p) {
+  public String getNewIntrinsicID(EObject element, IFeaturedModelScope scope) {
     String result;
-    if (element_p.eClass().getEIDAttribute() != null)
+    if (element.eClass().getEIDAttribute() != null)
       result = IdGenerator.createId();
     else
-      result = super.getNewIntrinsicID(element_p, scope_p);
+      result = super.getNewIntrinsicID(element, scope);
     return result;
   }
   
@@ -119,9 +118,9 @@ public class CapellaMergePolicy extends SiriusMergePolicy {
    * @see org.eclipse.emf.diffmerge.impl.policies.DefaultMergePolicy#isSingleMandatory(org.eclipse.emf.ecore.EReference)
    */
   @Override
-  protected boolean isSingleMandatory(EReference reference_p) {
-    return super.isSingleMandatory(reference_p) ||
-        __MANDATORY_REFERENCES.contains(reference_p);
+  protected boolean isSingleMandatory(EReference reference) {
+    return super.isSingleMandatory(reference) ||
+        __MANDATORY_REFERENCES.contains(reference);
   }
   
 }

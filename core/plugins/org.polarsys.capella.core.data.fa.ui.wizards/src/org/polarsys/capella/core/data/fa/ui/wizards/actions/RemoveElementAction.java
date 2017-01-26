@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,16 +28,16 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  */
 public abstract class RemoveElementAction extends Action {
   /** */
-  protected TreeViewer _treeViewer;
-  protected IStructuredSelection _selection;
+  protected TreeViewer treeViewer;
+  protected IStructuredSelection selection;
 
   /**
    * 
    */
-  public RemoveElementAction(IStructuredSelection selection_p, TreeViewer treeViewer_p) {
+  public RemoveElementAction(IStructuredSelection selection, TreeViewer treeViewer) {
     super();
-    _treeViewer = treeViewer_p;
-    _selection = selection_p;
+    this.treeViewer = treeViewer;
+    this.selection = selection;
   }
 
   /**
@@ -45,7 +45,7 @@ public abstract class RemoveElementAction extends Action {
    */
   @Override
   public void run() {
-    Map<Object, Object> selectionMap = EIAllocationTreeViewer.getSelectionMap(_treeViewer);
+    Map<Object, Object> selectionMap = EIAllocationTreeViewer.getSelectionMap(treeViewer);
     for (Object selectedItem : selectionMap.keySet()) {
       Object parentItem = selectionMap.get(selectedItem);
       if (null != parentItem) {
@@ -86,8 +86,8 @@ public abstract class RemoveElementAction extends Action {
    */
   @Override
   public boolean isEnabled() {
-    if (_selection.size() == 1) {
-      return (_selection.getFirstElement() instanceof ExchangeItem);
+    if (selection.size() == 1) {
+      return (selection.getFirstElement() instanceof ExchangeItem);
     }
     return false;
   }

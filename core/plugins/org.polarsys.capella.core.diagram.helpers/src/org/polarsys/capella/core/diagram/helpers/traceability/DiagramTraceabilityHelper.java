@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,7 +36,7 @@ public class DiagramTraceabilityHelper {
     return _instance;
   }
 
-  public IDiagramTraceability getTraceabilityHandler(DRepresentation representation, String idTraceability_p) {
+  public IDiagramTraceability getTraceabilityHandler(DRepresentation representation, String idTraceability) {
     IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
 
     IConfigurationElement configurationElements[] = extensionRegistry.getConfigurationElementsFor("org.polarsys.capella.core.diagram.traceability");
@@ -44,7 +44,7 @@ public class DiagramTraceabilityHelper {
     // Loop over contributed DiagramTraceability providers, must be only one.
     if ((configurationElements != null) && (configurationElements.length > 0)) {
       for (IConfigurationElement element : configurationElements) {
-        if (idTraceability_p.equals(element.getAttribute(ExtensionPointHelper.ATT_ID))) {
+        if (idTraceability.equals(element.getAttribute(ExtensionPointHelper.ATT_ID))) {
           IDiagramTraceability result = (IDiagramTraceability) ExtensionPointHelper.createInstance(element, ExtensionPointHelper.ATT_CLASS);
           return result;
         }

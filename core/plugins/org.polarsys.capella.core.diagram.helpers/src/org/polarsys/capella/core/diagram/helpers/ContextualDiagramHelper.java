@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,17 +65,17 @@ import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
  */
 public class ContextualDiagramHelper {
 
-  public static ContextualDiagramHelper _instance;
+  public static ContextualDiagramHelper instance;
 
   protected ContextualDiagramHelper() {
     //Nothing here
   }
 
   public static ContextualDiagramHelper getService() {
-    if (_instance == null) {
-      _instance = new ContextualDiagramHelper();
+    if (instance == null) {
+      instance = new ContextualDiagramHelper();
     }
-    return _instance;
+    return instance;
   }
 
   /** Key used in diagrams to store contextual elements */
@@ -83,12 +83,12 @@ public class ContextualDiagramHelper {
 
   /**
    * Retrieve whether the representation can be a contextualizedElements based diagram.
-   * @param representation_p
+   * @param representation
    * @return 
    */
-  public boolean isContextualRepresentation(DRepresentation representation_p) {
-    if (representation_p instanceof DDiagram) {
-      DDiagram diagram = (DDiagram) representation_p;
+  public boolean isContextualRepresentation(DRepresentation representation) {
+    if (representation instanceof DDiagram) {
+      DDiagram diagram = (DDiagram) representation;
       DiagramDescription description = diagram.getDescription();
       if (description != null) {
         if (description.getName() != null) {
@@ -103,8 +103,8 @@ public class ContextualDiagramHelper {
     return false;
   }
 
-  public boolean hasContextualElements(DRepresentation representation_p) {
-    DAnnotation annotation = RepresentationHelper.getAnnotation(CONTEXTUAL_ELEMENTS, representation_p);
+  public boolean hasContextualElements(DRepresentation representation) {
+    DAnnotation annotation = RepresentationHelper.getAnnotation(CONTEXTUAL_ELEMENTS, representation);
     if (annotation != null) {
       return (annotation.getDetails() != null) && !annotation.getDetails().isEmpty();
     }
@@ -112,13 +112,13 @@ public class ContextualDiagramHelper {
   }
 
   /**
-   * Retrieve contextualElements according to the string-based annotation of the given representation_p
-   * @param representation_p
-   * @param elements_p
+   * Retrieve contextualElements according to the string-based annotation of the given representation
+   * @param representation
+   * @param elements
    */
-  public List<EObject> getContextualElements(DRepresentation representation_p) {
+  public List<EObject> getContextualElements(DRepresentation representation) {
     ArrayList<EObject> result = new ArrayList<EObject>();
-    DAnnotation annotation = RepresentationHelper.getAnnotation(CONTEXTUAL_ELEMENTS, representation_p);
+    DAnnotation annotation = RepresentationHelper.getAnnotation(CONTEXTUAL_ELEMENTS, representation);
     if (annotation != null) {
       for (String elementURI : annotation.getDetails().values()) {
         if ((elementURI != null) && (elementURI.length() > 0)) {
@@ -130,7 +130,7 @@ public class ContextualDiagramHelper {
             }
 
             if ((id != null) && (id.length() > 0)) {
-              for (Resource resource : RepresentationHelper.getSemanticResources(representation_p)) {
+              for (Resource resource : RepresentationHelper.getSemanticResources(representation)) {
                 if (resource != null) {
                   EObject obj = resource.getEObject(id);
                   if (obj != null) {
@@ -149,26 +149,26 @@ public class ContextualDiagramHelper {
   }
 
   /**
-   * Set the contextualElement string-based annotation of the given representation_p for given elements
-   * @param representation_p
-   * @param elements_p
+   * Set the contextualElement string-based annotation of the given representation for given elements
+   * @param representation
+   * @param elements
    */
-  public void setContextualElements(DRepresentation representation_p, Collection<EObject> elements_p) {
-    if (representation_p != null) {
-      if ((elements_p == null) || (elements_p.size() == 0)) {
-        RepresentationHelper.removeAnnotation(CONTEXTUAL_ELEMENTS, representation_p);
+  public void setContextualElements(DRepresentation representation, Collection<EObject> elements) {
+    if (representation != null) {
+      if ((elements == null) || (elements.size() == 0)) {
+        RepresentationHelper.removeAnnotation(CONTEXTUAL_ELEMENTS, representation);
 
       } else {
-        DAnnotation annotation = RepresentationHelper.getAnnotation(CONTEXTUAL_ELEMENTS, representation_p);
+        DAnnotation annotation = RepresentationHelper.getAnnotation(CONTEXTUAL_ELEMENTS, representation);
         if (annotation == null) {
-          annotation = RepresentationHelper.createAnnotation(CONTEXTUAL_ELEMENTS, representation_p);
+          annotation = RepresentationHelper.createAnnotation(CONTEXTUAL_ELEMENTS, representation);
         }
         if (annotation.getDetails() != null) {
           annotation.getDetails().clear();
         }
-        if (elements_p != null) {
+        if (elements != null) {
           int i = 0;
-          for (EObject object : elements_p) {
+          for (EObject object : elements) {
             String id = EcoreUtil.getID(object);
             if ((id != null) && !(id.length() == 0)) {
               annotation.getDetails().put("id_" + i, id); //$NON-NLS-1$
@@ -183,12 +183,12 @@ public class ContextualDiagramHelper {
   /**
    * Retrieve all available elements which can be used as a contextual element into the given representation
    */
-  public Collection<EObject> getAvailableContextualElements(DRepresentation representation_p) {
-    if ((representation_p != null) && (representation_p instanceof DSemanticDiagram)) {
-      DSemanticDiagram diagram = (DSemanticDiagram) representation_p;
+  public Collection<EObject> getAvailableContextualElements(DRepresentation representation) {
+    if ((representation != null) && (representation instanceof DSemanticDiagram)) {
+      DSemanticDiagram diagram = (DSemanticDiagram) representation;
 
       // Check for invalid diagrams
-      EObject target = ((DSemanticDiagram) representation_p).getTarget();
+      EObject target = ((DSemanticDiagram) representation).getTarget();
       if ((target == null) || (diagram.getDescription() == null)) {
         return Collections.emptyList();
       }
@@ -212,9 +212,9 @@ public class ContextualDiagramHelper {
   /**
    * Retrieve all available elements which can be used as a contextual element into the given architecture blank diagram
    */
-  protected Collection<EObject> getABAvailableContextualElements(DSemanticDiagram diagram_p) {
+  protected Collection<EObject> getABAvailableContextualElements(DSemanticDiagram diagram) {
     Collection<EObject> result = new HashSet<EObject>();
-    EObject target = diagram_p.getTarget();
+    EObject target = diagram.getTarget();
 
     BlockArchitecture architecture = (BlockArchitecture) EcoreUtil2.getFirstContainer(target, CsPackage.Literals.BLOCK_ARCHITECTURE);
     if (architecture != null) {
@@ -262,12 +262,12 @@ public class ContextualDiagramHelper {
   }
 
   /**
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public boolean isABContextualScenario(Scenario scenario_p, BlockArchitecture architecture_p) {
+  public boolean isABContextualScenario(Scenario scenario, BlockArchitecture architecture) {
     boolean addElement = false;
-    for (EObject element : getInsertScenariosRelatedElements(scenario_p, architecture_p)) {
+    for (EObject element : getInsertScenariosRelatedElements(scenario, architecture)) {
       if (element instanceof AbstractFunction) {
         addElement = true;
 
@@ -292,13 +292,13 @@ public class ContextualDiagramHelper {
       }
     }
     if (addElement) {
-      if (ScenarioExt.isFunctionalScenario(scenario_p)) {
+      if (ScenarioExt.isFunctionalScenario(scenario)) {
         return true;
-      } else if (ScenarioExt.isDataFlowFunctionalScenario(scenario_p)) {
+      } else if (ScenarioExt.isDataFlowFunctionalScenario(scenario)) {
         return true;
-      } else if (ScenarioExt.isDataFlowBehaviouralScenario(scenario_p)) {
+      } else if (ScenarioExt.isDataFlowBehaviouralScenario(scenario)) {
         return true;
-      } else if (ScenarioExt.isInterfaceScenario(scenario_p)) {
+      } else if (ScenarioExt.isInterfaceScenario(scenario)) {
         return true;
       }
     }
@@ -308,9 +308,9 @@ public class ContextualDiagramHelper {
   /**
    * Retrieve all available elements which can be used as a contextual element into the given data flow blank diagram
    */
-  protected Collection<EObject> getDFAvailableContextualElements(DSemanticDiagram diagram_p) {
+  protected Collection<EObject> getDFAvailableContextualElements(DSemanticDiagram diagram) {
     Collection<EObject> result = new HashSet<EObject>();
-    EObject target = diagram_p.getTarget();
+    EObject target = diagram.getTarget();
 
     BlockArchitecture architecture = (BlockArchitecture) EcoreUtil2.getFirstContainer(target, CsPackage.Literals.BLOCK_ARCHITECTURE);
     if (architecture != null) {
@@ -343,13 +343,13 @@ public class ContextualDiagramHelper {
   }
 
   /**
-   * @param scenario_p
-   * @param architecture_p
+   * @param scenario
+   * @param architecture
    * @return
    */
-  public boolean isDFContextualScenario(Scenario scenario_p, BlockArchitecture architecture_p) {
+  public boolean isDFContextualScenario(Scenario scenario, BlockArchitecture architecture) {
     boolean addElement = false;
-    for (EObject element : getInsertScenariosRelatedElements(scenario_p, architecture_p)) {
+    for (EObject element : getInsertScenariosRelatedElements(scenario, architecture)) {
       if (element instanceof AbstractFunction) {
         addElement = true;
       } else if (element instanceof FunctionalExchange) {
@@ -361,9 +361,9 @@ public class ContextualDiagramHelper {
       }
     }
     if (addElement) {
-      if (ScenarioExt.isFunctionalScenario(scenario_p)) {
+      if (ScenarioExt.isFunctionalScenario(scenario)) {
         return true;
-      } else if (ScenarioExt.isDataFlowFunctionalScenario(scenario_p)) {
+      } else if (ScenarioExt.isDataFlowFunctionalScenario(scenario)) {
         return true;
       }
     }
@@ -372,20 +372,20 @@ public class ContextualDiagramHelper {
 
   /**
    * Retrieve related elements for a scenario and a given architecture (functions and functional exchanges)
-   * @param scenario_p
-   * @param sourceArchitecture_p
+   * @param scenario
+   * @param sourceArchitecture
    * @return
    */
-  public Collection<? extends EObject> getInsertScenariosRelatedElements(Scenario scenario_p, BlockArchitecture sourceArchitecture_p) {
+  public Collection<? extends EObject> getInsertScenariosRelatedElements(Scenario scenario, BlockArchitecture sourceArchitecture) {
     Collection<EObject> result = new HashSet<EObject>();
 
-    for (InstanceRole role : scenario_p.getOwnedInstanceRoles()) {
+    for (InstanceRole role : scenario.getOwnedInstanceRoles()) {
       AbstractInstance instance = role.getRepresentedInstance();
       if ((instance != null)) {
         BlockArchitecture targetArchitecture = BlockArchitectureExt.getRootBlockArchitecture(instance);
-        if (sourceArchitecture_p.equals(targetArchitecture)) {
+        if (sourceArchitecture.equals(targetArchitecture)) {
 
-          if (CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer(sourceArchitecture_p) && (instance instanceof Part)) {
+          if (CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer(sourceArchitecture) && (instance instanceof Part)) {
 
             result.add(instance.getAbstractType());
           } else {
@@ -395,23 +395,23 @@ public class ContextualDiagramHelper {
       }
     }
 
-    for (SequenceMessage message : scenario_p.getOwnedMessages()) {
+    for (SequenceMessage message : scenario.getOwnedMessages()) {
       AbstractEventOperation operation = message.getInvokedOperation();
       if ((operation != null)) {
         BlockArchitecture targetArchitecture = BlockArchitectureExt.getRootBlockArchitecture(operation);
-        if (sourceArchitecture_p.equals(targetArchitecture)) {
+        if (sourceArchitecture.equals(targetArchitecture)) {
           result.add(operation);
         }
       }
     }
 
-    for (TimeLapse timeLapse : scenario_p.getOwnedTimeLapses()) {
+    for (TimeLapse timeLapse : scenario.getOwnedTimeLapses()) {
       if (timeLapse instanceof StateFragment) {
         StateFragment fragment = (StateFragment) timeLapse;
 
         if ((fragment.getRelatedAbstractFunction() != null)) {
           BlockArchitecture targetArchitecture = BlockArchitectureExt.getRootBlockArchitecture(fragment.getRelatedAbstractFunction());
-          if (sourceArchitecture_p.equals(targetArchitecture)) {
+          if (sourceArchitecture.equals(targetArchitecture)) {
             result.add(fragment.getRelatedAbstractFunction());
           }
         }
@@ -424,9 +424,9 @@ public class ContextualDiagramHelper {
   /**
    * Retrieve all available elements which can be used as a contextual element into the given class diagram blank
    */
-  protected Collection<EObject> getCDBAvailableContextualElements(DSemanticDiagram diagram_p) {
+  protected Collection<EObject> getCDBAvailableContextualElements(DSemanticDiagram diagram) {
     Collection<EObject> result = new HashSet<EObject>();
-    EObject target = diagram_p.getTarget();
+    EObject target = diagram.getTarget();
 
     BlockArchitecture architecture = (BlockArchitecture) EcoreUtil2.getFirstContainer(target, CsPackage.Literals.BLOCK_ARCHITECTURE);
     if (architecture != null) {

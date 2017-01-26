@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,8 +22,8 @@ public class StartLinkAction extends AbstractLinkAction {
   /**
    * 
    */
-  public StartLinkAction(LinkManager linkManager_p, TreeViewer treeViewer_p) {
-    super(linkManager_p, treeViewer_p);
+  public StartLinkAction(LinkManager linkManager, TreeViewer treeViewer) {
+    super(linkManager, treeViewer);
   }
 
   /**
@@ -31,7 +31,7 @@ public class StartLinkAction extends AbstractLinkAction {
    */
   @Override
   public void run() {
-    _linkManager.startLinkFrom(((TreeSelection) _treeViewer.getSelection()).toList());
+    linkManager.startLinkFrom(((TreeSelection) treeViewer.getSelection()).toList());
 
     super.run();
   }

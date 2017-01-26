@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,21 +25,21 @@ public class CompoundOverrides implements IContributionManagerOverrides {
     overrides = new ArrayList<IContributionManagerOverrides>();
   }
 
-  public void add(IContributionManagerOverrides override_p) {
-    overrides.add(override_p);
+  public void add(IContributionManagerOverrides override) {
+    overrides.add(override);
   }
 
-  public void remove(IContributionManagerOverrides override_p) {
-    overrides.remove(override_p);
+  public void remove(IContributionManagerOverrides override) {
+    overrides.remove(override);
   }
 
   /**
    * {@inheritDoc}
    */
-  public Boolean getEnabled(IContributionItem item_p) {
+  public Boolean getEnabled(IContributionItem item) {
     Boolean result = null;
     for (IContributionManagerOverrides override : overrides) {
-      Boolean childResult = override.getEnabled(item_p);
+      Boolean childResult = override.getEnabled(item);
       if (childResult != null) {
         if (childResult == Boolean.FALSE) {
           return Boolean.FALSE;
@@ -53,10 +53,10 @@ public class CompoundOverrides implements IContributionManagerOverrides {
   /**
    * {@inheritDoc}
    */
-  public Integer getAccelerator(IContributionItem item_p) {
+  public Integer getAccelerator(IContributionItem item) {
     Integer result = null;
     for (IContributionManagerOverrides override : overrides) {
-      Integer childResult = override.getAccelerator(item_p);
+      Integer childResult = override.getAccelerator(item);
       if (childResult != null) {
         return childResult;
       }
@@ -67,10 +67,10 @@ public class CompoundOverrides implements IContributionManagerOverrides {
   /**
    * {@inheritDoc}
    */
-  public String getAcceleratorText(IContributionItem item_p) {
+  public String getAcceleratorText(IContributionItem item) {
     String result = null;
     for (IContributionManagerOverrides override : overrides) {
-      String childResult = override.getAcceleratorText(item_p);
+      String childResult = override.getAcceleratorText(item);
       if (childResult != null) {
         return childResult;
       }
@@ -81,10 +81,10 @@ public class CompoundOverrides implements IContributionManagerOverrides {
   /**
    * {@inheritDoc}
    */
-  public String getText(IContributionItem item_p) {
+  public String getText(IContributionItem item) {
     String result = null;
     for (IContributionManagerOverrides override : overrides) {
-      String childResult = override.getText(item_p);
+      String childResult = override.getText(item);
       if (childResult != null) {
         return childResult;
       }
@@ -95,10 +95,10 @@ public class CompoundOverrides implements IContributionManagerOverrides {
   /**
    * {@inheritDoc}
    */
-  public Boolean getVisible(IContributionItem item_p) {
+  public Boolean getVisible(IContributionItem item) {
     Boolean result = null;
     for (IContributionManagerOverrides override : overrides) {
-      Boolean childResult = override.getVisible(item_p);
+      Boolean childResult = override.getVisible(item);
       if (childResult != null) {
         if (childResult == Boolean.FALSE) {
           return Boolean.FALSE;

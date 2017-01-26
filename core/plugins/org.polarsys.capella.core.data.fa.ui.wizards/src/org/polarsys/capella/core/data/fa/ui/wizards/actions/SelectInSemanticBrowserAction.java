@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,14 +27,14 @@ import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
 public class SelectInSemanticBrowserAction extends Action {
 
   /** */
-  private TreeSelection _selection;
+  private TreeSelection selection;
 
   /**
    * 
    */
-  public SelectInSemanticBrowserAction(ISelection selection_p) {
+  public SelectInSemanticBrowserAction(ISelection selection) {
     super();
-    _selection = (TreeSelection) selection_p;
+    this.selection = (TreeSelection) selection;
   }
 
   /**
@@ -51,8 +51,8 @@ public class SelectInSemanticBrowserAction extends Action {
         smView = (SemanticBrowserView) activePage.showView(SemanticBrowserView.SEMANTIC_BROWSER_ID);
       }
       activePage.activate(smView);
-      smView.setInput(_selection.getFirstElement());
-    } catch (PartInitException exception_p) {
+      smView.setInput(selection.getFirstElement());
+    } catch (PartInitException exception) {
     	// Catch exception silently,
     }
   }

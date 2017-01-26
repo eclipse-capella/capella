@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,13 +24,13 @@ public class PolicyOverrides implements IContributionManagerOverrides {
   /**
    * {@inheritDoc}
    */
-  public Boolean getVisible(IContributionItem item_p) {
-    if (item_p.isEnabled()) {
-      if (item_p instanceof MenuManager) {
+  public Boolean getVisible(IContributionItem item) {
+    if (item.isEnabled()) {
+      if (item instanceof MenuManager) {
         return null;
       }
       IActionPolicy policy = PolicyProvider.INSTANCE.getPolicy();
-      return Boolean.valueOf(policy.cover(item_p.getId()));
+      return Boolean.valueOf(policy.cover(item.getId()));
     }
 
     return null;
@@ -39,28 +39,28 @@ public class PolicyOverrides implements IContributionManagerOverrides {
   /**
    * {@inheritDoc}
    */
-  public Boolean getEnabled(IContributionItem item_p) {
+  public Boolean getEnabled(IContributionItem item) {
     return null;
   }
 
   /**
    * {@inheritDoc}
    */
-  public Integer getAccelerator(IContributionItem item_p) {
+  public Integer getAccelerator(IContributionItem item) {
     return null;
   }
 
   /**
    * {@inheritDoc}
    */
-  public String getAcceleratorText(IContributionItem item_p) {
+  public String getAcceleratorText(IContributionItem item) {
     return null;
   }
 
   /**
    * {@inheritDoc}
    */
-  public String getText(IContributionItem item_p) {
+  public String getText(IContributionItem item) {
     return null;
   }
 

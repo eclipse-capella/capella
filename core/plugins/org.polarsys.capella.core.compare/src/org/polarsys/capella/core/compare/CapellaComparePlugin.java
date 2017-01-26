@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,21 +46,21 @@ public class CapellaComparePlugin extends AbstractUIPlugin {
 	protected static final String CC_PROJECT_NATURE = "com.rational.clearcase.ccprovider_nature"; //$NON-NLS-1$
 	
 	/** The (potentially null) Eclipse projects dedicated to referencing files outside the workspace */
-	protected final Map<CapellaScope, IProject> _proxyProjects;
+	protected final Map<CapellaScope, IProject> proxyProjects;
   
   
 	/**
 	 * Constructor
 	 */
 	public CapellaComparePlugin() {
-	  _proxyProjects = new HashMap<CapellaScope, IProject>();
+	  proxyProjects = new HashMap<CapellaScope, IProject>();
 	}
   
 	/**
 	 * Clean up the proxy projects for no side effect between successive executions
 	 */
 	public void cleanupProxyProjects() {
-	  for (IProject proxyProject : _proxyProjects.values()) {
+	  for (IProject proxyProject : proxyProjects.values()) {
 	    try {
 	      RepositoryProvider.unmap(proxyProject);
 	    } catch (CoreException e) {
@@ -84,24 +84,24 @@ public class CapellaComparePlugin extends AbstractUIPlugin {
   
   /**
    * Return an Eclipse project dedicated to referencing files outside the workspace
-   * @param scope_p the scope that requires the project
-   * @param externalFilePath_p the path of one of the files outside the workspace
+   * @param scope the scope that requires the project
+   * @param externalFilePath the path of one of the files outside the workspace
    * @return a potentially null Eclipse project
    */
-  public IProject getProxyProject(CapellaScope scope_p, IPath externalFilePath_p) {
-    IProject result = _proxyProjects.get(scope_p);
+  public IProject getProxyProject(CapellaScope scope, IPath externalFilePath) {
+    IProject result = proxyProjects.get(scope);
     if (result == null) {
       IWorkspace wk = ResourcesPlugin.getWorkspace();
       if (wk != null && wk.getRoot() != null) {
         result = wk.getRoot().getProject(
-            "DiffMergeExternalFiles_" + System.identityHashCode(scope_p)); //$NON-NLS-1$
+            "DiffMergeExternalFiles_" + System.identityHashCode(scope)); //$NON-NLS-1$
         try {
           if (!result.exists())
             result.create(null);
           if (!result.isOpen())
             result.open(null);
-          forceClearCaseNature(result, externalFilePath_p);
-          _proxyProjects.put(scope_p, result);
+          forceClearCaseNature(result, externalFilePath);
+          proxyProjects.put(scope, result);
         } catch (TeamException e) {
           // Team nature could not be changed: proceed
         } catch (CoreException e) {
@@ -117,15 +117,15 @@ public class CapellaComparePlugin extends AbstractUIPlugin {
    * Make the ClearCase plugins, if present, identify the given project as a
    * ClearCase project associated to the view of the file at the given path.
    * This is really a trick.
-   * @param project_p a non-null project
-   * @param referencePath_p a non-null path
+   * @param project a non-null project
+   * @param referencePath a non-null path
    * @return whether the operation succeeded
    */
-  protected boolean forceClearCaseNature(IProject project_p, IPath referencePath_p) {
+  protected boolean forceClearCaseNature(IProject project, IPath referencePath) {
     boolean result = false;
     try {
-      RepositoryProvider.map(project_p, CC_PROJECT_NATURE);
-      ProxyProjectWrapper wrapper = new ProxyProjectWrapper(project_p, referencePath_p);
+      RepositoryProvider.map(project, CC_PROJECT_NATURE);
+      ProxyProjectWrapper wrapper = new ProxyProjectWrapper(project, referencePath);
       // We use reflexivity since we don't have access to the API of the CC plugin
       Bundle ccBundle = Platform.getBundle("com.rational.clearcase"); //$NON-NLS-1$
       Class<?> ccClass = ccBundle.loadClass("com.rational.clearcase.ClearCasePlugin"); //$NON-NLS-1$
@@ -166,43 +166,43 @@ public class CapellaComparePlugin extends AbstractUIPlugin {
    */
   protected static class ProxyProjectWrapper extends Project {
     /** The non-null wrapped project */
-    private final IProject _wrappedProject;
+    private final IProject wrappedProject;
     /** The non-null location */
-    private final IPath _specificLocation;
+    private final IPath specificLocation;
     /**
      * Constructor
-     * @param wrappedProject_p the non-null project being wrapped
-     * @param specificLocation_p the non-null fake location of the project
+     * @param wrappedProject the non-null project being wrapped
+     * @param specificLocation the non-null fake location of the project
      */
-    public ProxyProjectWrapper(IProject wrappedProject_p, IPath specificLocation_p) {
-      super(wrappedProject_p.getFullPath(), (Workspace)wrappedProject_p.getWorkspace());
-      _wrappedProject = wrappedProject_p;
-      _specificLocation = specificLocation_p;
+    public ProxyProjectWrapper(IProject wrappedProject, IPath specificLocation) {
+      super(wrappedProject.getFullPath(), (Workspace)wrappedProject.getWorkspace());
+      this.wrappedProject = wrappedProject;
+      this.specificLocation = specificLocation;
     }
     /**
      * @see org.eclipse.core.internal.resources.Resource#getLocation()
      */
     @Override
     public IPath getLocation() {
-      return _specificLocation;
+      return specificLocation;
     }
     /**
      * Return the project being wrapped
      * @return a non-null project
      */
     public IProject getWrappedProject() {
-      return _wrappedProject;
+      return wrappedProject;
     }
     /**
      * @see org.eclipse.core.internal.resources.Resource#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object peer_p) {
+    public boolean equals(Object peer) {
       boolean result = false;
-      if (peer_p instanceof ProxyProjectWrapper)
-        result = ((ProxyProjectWrapper)peer_p).getWrappedProject().equals(getWrappedProject());
-      else if (peer_p instanceof IProject)
-        result = ((IProject)peer_p).equals(getWrappedProject());
+      if (peer instanceof ProxyProjectWrapper)
+        result = ((ProxyProjectWrapper)peer).getWrappedProject().equals(getWrappedProject());
+      else if (peer instanceof IProject)
+        result = ((IProject)peer).equals(getWrappedProject());
       return result;
     }
     /**

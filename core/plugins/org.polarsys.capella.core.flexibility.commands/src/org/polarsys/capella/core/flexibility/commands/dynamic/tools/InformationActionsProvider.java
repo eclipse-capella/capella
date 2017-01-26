@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -66,15 +66,15 @@ public class InformationActionsProvider implements IActionsProvider {
   /**
    * @see org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider#getActions()
    */
-  public Collection<DefaultAction> getActions(Shell shell_p, ISelectionProvider selectionProvider_p) {
+  public Collection<DefaultAction> getActions(Shell shell, ISelectionProvider selectionProvider) {
     List<DefaultAction> list = new ArrayList<DefaultAction>();
 
-    list.add(new RetrieveIDs(shell_p, selectionProvider_p));
-    list.add(new MustBeTransitioned(shell_p, selectionProvider_p));
-    list.add(new ShouldNotBeTransitioned(shell_p, selectionProvider_p));
-    list.add(new Descriptions(shell_p, selectionProvider_p));
-    list.add(new RetrieveFromIdentifierTransitioned(shell_p, selectionProvider_p));
-    list.add(new RetrieveHelpers(shell_p, selectionProvider_p));
+    list.add(new RetrieveIDs(shell, selectionProvider));
+    list.add(new MustBeTransitioned(shell, selectionProvider));
+    list.add(new ShouldNotBeTransitioned(shell, selectionProvider));
+    list.add(new Descriptions(shell, selectionProvider));
+    list.add(new RetrieveFromIdentifierTransitioned(shell, selectionProvider));
+    list.add(new RetrieveHelpers(shell, selectionProvider));
 
     return list;
   }
@@ -82,8 +82,8 @@ public class InformationActionsProvider implements IActionsProvider {
   @SuppressWarnings("nls")
   public class MustBeTransitioned extends DefaultAction {
 
-    public MustBeTransitioned(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public MustBeTransitioned(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -116,11 +116,11 @@ public class InformationActionsProvider implements IActionsProvider {
     }
 
     /**
-     * @param object_p
-     * @param string_p
+     * @param object
+     * @param string
      */
-    private void setName(EObject object_p, String string_p) {
-      System.out.println("mustBeTransitioned(" + EObjectHelper.getInstance().getID(object_p) + ");  //$NON-NLS-1$ ");
+    private void setName(EObject object, String string) {
+      System.out.println("mustBeTransitioned(" + EObjectHelper.getInstance().getID(object) + ");  //$NON-NLS-1$ ");
     }
   }
 
@@ -129,12 +129,12 @@ public class InformationActionsProvider implements IActionsProvider {
     Shell shell;
     String value;
 
-    GetText(Shell shell_p) {
-      shell = shell_p;
+    GetText(Shell shell) {
+      shell = shell;
     }
 
-    public void setValue(String value_p) {
-      value = value_p;
+    public void setValue(String value) {
+      value = value;
     }
 
     public String getValue() {
@@ -145,11 +145,11 @@ public class InformationActionsProvider implements IActionsProvider {
          * {@inheritDoc}
          */
         @Override
-        protected Control createDialogArea(Composite parent_p) {
-          Control control = super.createDialogArea(parent_p);
+        protected Control createDialogArea(Composite parent) {
+          Control control = super.createDialogArea(parent);
 
           // Create a multiple line text field
-          t = new Text(parent_p, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
+          t = new Text(parent, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
           t.setLayoutData(new GridData(GridData.FILL_BOTH));
           setMessage("Choose a text value"); //$NON-NLS-1$
           return control;
@@ -174,8 +174,8 @@ public class InformationActionsProvider implements IActionsProvider {
   @SuppressWarnings("nls")
   public class RetrieveFromIdentifierTransitioned extends DefaultAction {
 
-    public RetrieveFromIdentifierTransitioned(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public RetrieveFromIdentifierTransitioned(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -225,11 +225,11 @@ public class InformationActionsProvider implements IActionsProvider {
 
       ISelectionProvider provider = new ISelectionProvider() {
 
-        public void setSelection(ISelection selection_p) {
+        public void setSelection(ISelection selection) {
 
         }
 
-        public void removeSelectionChangedListener(ISelectionChangedListener listener_p) {
+        public void removeSelectionChangedListener(ISelectionChangedListener listener) {
 
         }
 
@@ -237,7 +237,7 @@ public class InformationActionsProvider implements IActionsProvider {
           return new StructuredSelection(objects);
         }
 
-        public void addSelectionChangedListener(ISelectionChangedListener listener_p) {
+        public void addSelectionChangedListener(ISelectionChangedListener listener) {
 
         }
       };
@@ -247,19 +247,19 @@ public class InformationActionsProvider implements IActionsProvider {
     }
 
     /**
-     * @param object_p
-     * @param string_p
+     * @param object
+     * @param string
      */
-    private void setName(EObject object_p, String string_p) {
-      System.out.println("shouldNotBeTransitioned(" + EObjectHelper.getInstance().getID(object_p) + ");  //$NON-NLS-1$ ");
+    private void setName(EObject object, String string) {
+      System.out.println("shouldNotBeTransitioned(" + EObjectHelper.getInstance().getID(object) + ");  //$NON-NLS-1$ ");
     }
   }
 
   @SuppressWarnings("nls")
   public class ShouldNotBeTransitioned extends DefaultAction {
 
-    public ShouldNotBeTransitioned(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public ShouldNotBeTransitioned(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -292,19 +292,19 @@ public class InformationActionsProvider implements IActionsProvider {
     }
 
     /**
-     * @param object_p
-     * @param string_p
+     * @param object
+     * @param string
      */
-    private void setName(EObject object_p, String string_p) {
-      System.out.println("shouldNotBeTransitioned(" + EObjectHelper.getInstance().getID(object_p) + ");  //$NON-NLS-1$ ");
+    private void setName(EObject object, String string) {
+      System.out.println("shouldNotBeTransitioned(" + EObjectHelper.getInstance().getID(object) + ");  //$NON-NLS-1$ ");
     }
   }
 
   @SuppressWarnings("nls")
   public class RetrieveHelpers extends DefaultAction {
 
-    public RetrieveHelpers(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public RetrieveHelpers(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -339,20 +339,20 @@ public class InformationActionsProvider implements IActionsProvider {
     }
 
     /**
-     * @param object_p
-     * @param string_p
+     * @param object
+     * @param string
      */
-    private void setName(EObject object_p, String string_p) {
-      System.out.println("EObject " + EObjectHelper.getInstance().getVariable(object_p) + " = shouldNotBeTransitioned(\""
-                         + EObjectHelper.getInstance().getName(object_p) + "\", " + EObjectHelper.getInstance().getID(object_p) + ");");
+    private void setName(EObject object, String string) {
+      System.out.println("EObject " + EObjectHelper.getInstance().getVariable(object) + " = shouldNotBeTransitioned(\""
+                         + EObjectHelper.getInstance().getName(object) + "\", " + EObjectHelper.getInstance().getID(object) + ");");
     }
   }
 
   @SuppressWarnings("nls")
   public class RetrieveCalls extends DefaultAction {
 
-    public RetrieveCalls(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public RetrieveCalls(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -385,20 +385,20 @@ public class InformationActionsProvider implements IActionsProvider {
     }
 
     /**
-     * @param object_p
-     * @param string_p
+     * @param object
+     * @param string
      */
-    private void setName(EObject object_p, String string_p) {
-      System.out.println("EObject " + EObjectHelper.getInstance().getVariable(object_p) + " = shouldNotBeTransitioned(\""
-                         + EObjectHelper.getInstance().getName(object_p) + "\", " + EObjectHelper.getInstance().getID(object_p) + ");");
+    private void setName(EObject object, String string) {
+      System.out.println("EObject " + EObjectHelper.getInstance().getVariable(object) + " = shouldNotBeTransitioned(\""
+                         + EObjectHelper.getInstance().getName(object) + "\", " + EObjectHelper.getInstance().getID(object) + ");");
     }
   }
 
   @SuppressWarnings("nls")
   public class RetrieveIDs extends DefaultAction {
 
-    public RetrieveIDs(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public RetrieveIDs(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -429,11 +429,11 @@ public class InformationActionsProvider implements IActionsProvider {
     }
 
     /**
-     * @param object_p
-     * @param string_p
+     * @param object
+     * @param string
      */
-    private void setName(EObject object_p, String string_p) {
-      System.out.println("private String " + EObjectHelper.getInstance().getID(object_p) + " = \"" + EObjectHelper.getInstance().getIDValue(object_p)
+    private void setName(EObject object, String string) {
+      System.out.println("private String " + EObjectHelper.getInstance().getID(object) + " = \"" + EObjectHelper.getInstance().getIDValue(object)
                          + "\";  //$NON-NLS-1$ ");
     }
   }
@@ -443,8 +443,8 @@ public class InformationActionsProvider implements IActionsProvider {
 
     String SEP = "  ";
 
-    public Descriptions(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public Descriptions(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -481,110 +481,110 @@ public class InformationActionsProvider implements IActionsProvider {
     }
 
     /**
-     * @param object_p
-     * @param string_p
+     * @param object
+     * @param string
      */
-    private void identifier(EObject object_p, String string_p) {
-      System.out.println(string_p + "identifier:name:'" + EObjectHelper.getInstance().getName(object_p) + "',id=#"
-                         + EObjectHelper.getInstance().getIDValue(object_p) + "");
+    private void identifier(EObject object, String string) {
+      System.out.println(string + "identifier:name:'" + EObjectHelper.getInstance().getName(object) + "',id=#"
+                         + EObjectHelper.getInstance().getIDValue(object) + "");
     }
 
     /**
-     * @param object_p
+     * @param object
      */
-    private void browse(EObject object_p, String sep) {
-      System.out.println(create(object_p, sep));
+    private void browse(EObject object, String sep) {
+      System.out.println(create(object, sep));
 
-      for (EObject content : object_p.eContents()) {
+      for (EObject content : object.eContents()) {
         browse(content, SEP + sep);
       }
     }
 
     /**
-     * @param object_p
-     * @param string_p
+     * @param object
+     * @param string
      */
-    private String create(EObject object_p, String string_p) {
-      String result = " * " + string_p;
-      String d = "\n" + " * " + string_p + SEP;
+    private String create(EObject object, String string) {
+      String result = " * " + string;
+      String d = "\n" + " * " + string + SEP;
 
       result +=
           NLS.bind(
               "- Create ''{0}'' [{1}]",
-              new Object[] { EObjectHelper.getInstance().getName(object_p), object_p.eClass().getName(),
-                            EObjectHelper.getInstance().getName(object_p.eContainer()), object_p.eContainer().eClass().getName() });
-      if (object_p instanceof AbstractTypedElement) {
-        result += getLinkTo(object_p, new EReference[] { ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE }, d);
+              new Object[] { EObjectHelper.getInstance().getName(object), object.eClass().getName(),
+                            EObjectHelper.getInstance().getName(object.eContainer()), object.eContainer().eClass().getName() });
+      if (object instanceof AbstractTypedElement) {
+        result += getLinkTo(object, new EReference[] { ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE }, d);
       }
 
-      if (object_p instanceof AbstractInformationFlow) {
+      if (object instanceof AbstractInformationFlow) {
         result +=
-            getLinkTo(object_p, new EReference[] { ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE,
+            getLinkTo(object, new EReference[] { ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE,
                                                   ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET }, d);
       }
 
-      if (object_p instanceof ActivityEdge) {
-        result += getLinkTo(object_p, new EReference[] { ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE, ActivityPackage.Literals.ACTIVITY_EDGE__TARGET }, d);
+      if (object instanceof ActivityEdge) {
+        result += getLinkTo(object, new EReference[] { ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE, ActivityPackage.Literals.ACTIVITY_EDGE__TARGET }, d);
       }
 
-      if (object_p instanceof ComponentPort) {
-        result += getSetTo(object_p, new EAttribute[] { FaPackage.Literals.COMPONENT_PORT__KIND, FaPackage.Literals.COMPONENT_PORT__ORIENTATION }, d);
+      if (object instanceof ComponentPort) {
+        result += getSetTo(object, new EAttribute[] { FaPackage.Literals.COMPONENT_PORT__KIND, FaPackage.Literals.COMPONENT_PORT__ORIENTATION }, d);
       }
 
-      if (object_p instanceof PhysicalComponent) {
+      if (object instanceof PhysicalComponent) {
         result +=
-            getSetTo(object_p,
+            getSetTo(object,
                 new EAttribute[] { PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT__KIND, PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT__NATURE }, d);
       }
 
-      if (object_p instanceof FunctionInputPort) {
-        result += getLinkTo(object_p, new EReference[] { FaPackage.Literals.FUNCTION_INPUT_PORT__INCOMING_EXCHANGE_ITEMS }, d);
+      if (object instanceof FunctionInputPort) {
+        result += getLinkTo(object, new EReference[] { FaPackage.Literals.FUNCTION_INPUT_PORT__INCOMING_EXCHANGE_ITEMS }, d);
       }
 
-      if (object_p instanceof AbstractFunction) {
-        result += getLinkTo(object_p, new EReference[] { FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES }, d);
+      if (object instanceof AbstractFunction) {
+        result += getLinkTo(object, new EReference[] { FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES }, d);
       }
 
-      if (object_p instanceof FunctionOutputPort) {
-        result += getLinkTo(object_p, new EReference[] { FaPackage.Literals.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS }, d);
+      if (object instanceof FunctionOutputPort) {
+        result += getLinkTo(object, new EReference[] { FaPackage.Literals.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS }, d);
       }
 
-      if (object_p instanceof Involvement) {
+      if (object instanceof Involvement) {
         result +=
-            getLinkTo(object_p, new EReference[] { CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED }, d);
+            getLinkTo(object, new EReference[] { CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED }, d);
       }
 
-      if (object_p instanceof StateTransition) {
+      if (object instanceof StateTransition) {
         result +=
-            getLinkTo(object_p,
+            getLinkTo(object,
                 new EReference[] { CapellacommonPackage.Literals.STATE_TRANSITION__SOURCE, CapellacommonPackage.Literals.STATE_TRANSITION__TARGET }, d);
         result +=
-            getLinkTo(object_p, new EReference[] { CapellacommonPackage.Literals.STATE_TRANSITION__GUARD },
+            getLinkTo(object, new EReference[] { CapellacommonPackage.Literals.STATE_TRANSITION__GUARD },
                 d);
         result +=
-            getSetTo(object_p, new EAttribute[] { CapellacommonPackage.Literals.STATE_TRANSITION__KIND },
+            getSetTo(object, new EAttribute[] { CapellacommonPackage.Literals.STATE_TRANSITION__KIND },
                 d);
 
       }
 
-      if (object_p instanceof FunctionalExchange) {
+      if (object instanceof FunctionalExchange) {
         result +=
-            getLinkTo(object_p,
+            getLinkTo(object,
                 new EReference[] { FaPackage.Literals.FUNCTIONAL_EXCHANGE__EXCHANGED_ITEMS, FaPackage.Literals.FUNCTIONAL_EXCHANGE__CATEGORIES }, d);
       }
 
-      if (object_p instanceof AbstractTrace) {
+      if (object instanceof AbstractTrace) {
         result +=
-            getLinkTo(object_p, new EReference[] { ModellingcorePackage.Literals.ABSTRACT_TRACE__SOURCE_ELEMENT,
+            getLinkTo(object, new EReference[] { ModellingcorePackage.Literals.ABSTRACT_TRACE__SOURCE_ELEMENT,
                                                   ModellingcorePackage.Literals.ABSTRACT_TRACE__TARGET_ELEMENT }, d);
       }
-      if (object_p instanceof InterfaceUse) {
+      if (object instanceof InterfaceUse) {
         result +=
-            getLinkTo(object_p, new EReference[] { CsPackage.Literals.INTERFACE_USE__INTERFACE_USER, CsPackage.Literals.INTERFACE_USE__USED_INTERFACE }, d);
+            getLinkTo(object, new EReference[] { CsPackage.Literals.INTERFACE_USE__INTERFACE_USER, CsPackage.Literals.INTERFACE_USE__USED_INTERFACE }, d);
       }
-      if (object_p instanceof InterfaceImplementation) {
+      if (object instanceof InterfaceImplementation) {
         result +=
-            getLinkTo(object_p, new EReference[] { CsPackage.Literals.INTERFACE_IMPLEMENTATION__INTERFACE_IMPLEMENTOR,
+            getLinkTo(object, new EReference[] { CsPackage.Literals.INTERFACE_IMPLEMENTATION__INTERFACE_IMPLEMENTOR,
                                                   CsPackage.Literals.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE }, d);
       }
 
@@ -593,26 +593,26 @@ public class InformationActionsProvider implements IActionsProvider {
     }
 
     /**
-     * @param ce_p
+     * @param ce
      * @param reference
      * @return
      */
-    private String getSetTo(EObject ce_p, EAttribute[] attributes, String sep) {
+    private String getSetTo(EObject ce, EAttribute[] attributes, String sep) {
 
       String result = "";
       boolean isSet = false;
       int i = 0;
       for (EAttribute attribute : attributes) {
-        Object source = ce_p.eGet(attribute);
+        Object source = ce.eGet(attribute);
         if ((source != null) && !((source instanceof EList) && (((EList) source).size() == 0))) {
 
           if (!isSet) {
-            result = sep + NLS.bind("> Set ''{0}'' to ", EObjectHelper.getInstance().getName(ce_p));
+            result = sep + NLS.bind("> Set ''{0}'' to ", EObjectHelper.getInstance().getName(ce));
             isSet = true;
           }
           result +=
               NLS.bind("''{1}'' [{2}]",
-                  new Object[] { EObjectHelper.getInstance().getName(ce_p), EObjectHelper.getInstance().getName(source), attribute.getName() });
+                  new Object[] { EObjectHelper.getInstance().getName(ce), EObjectHelper.getInstance().getName(source), attribute.getName() });
         }
         i++;
         if (i < attributes.length) {
@@ -623,26 +623,26 @@ public class InformationActionsProvider implements IActionsProvider {
     }
 
     /**
-     * @param ce_p
+     * @param ce
      * @param reference
      * @return
      */
-    private String getLinkTo(EObject ce_p, EReference[] references, String sep) {
+    private String getLinkTo(EObject ce, EReference[] references, String sep) {
 
       String result = "";
       boolean isSet = false;
       int i = 0;
       for (EReference reference : references) {
-        Object source = ce_p.eGet(reference);
+        Object source = ce.eGet(reference);
         if ((source != null) && !((source instanceof EList) && (((EList) source).size() == 0))) {
 
           if (!isSet) {
-            result = sep + NLS.bind("> Link ''{0}'' to ", EObjectHelper.getInstance().getName(ce_p));
+            result = sep + NLS.bind("> Link ''{0}'' to ", EObjectHelper.getInstance().getName(ce));
             isSet = true;
           }
           result +=
               NLS.bind("''{1}'' [{2}]",
-                  new Object[] { EObjectHelper.getInstance().getName(ce_p), EObjectHelper.getInstance().getName(source), reference.getName() });
+                  new Object[] { EObjectHelper.getInstance().getName(ce), EObjectHelper.getInstance().getName(source), reference.getName() });
         }
         i++;
         if (i < references.length) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,13 +35,13 @@ public class CapellaRecorderLabelProvider implements ITableLabelProvider {
   /**
    * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnImage(java.lang.Object, int)
    */
-  public Image getColumnImage(Object element_p, int columnIndex_p) {
+  public Image getColumnImage(Object element, int columnIndex) {
 
     Image img = null;
 
-    if (0 == columnIndex_p) {
+    if (0 == columnIndex) {
 
-      DummyTreeData data = (DummyTreeData) element_p;
+      DummyTreeData data = (DummyTreeData) element;
 
       //
       // ENTRY
@@ -115,15 +115,15 @@ public class CapellaRecorderLabelProvider implements ITableLabelProvider {
 
   /**
    * Get image for specified {@link EObject}
-   * @param eObject_p
+   * @param eObject
    * @return <code>null</code> if not found.
    */
-  private static Image getImage(EObject eObject_p) {
-    Image result = EObjectLabelProviderHelper.getImage(eObject_p);
+  private static Image getImage(EObject eObject) {
+    Image result = EObjectLabelProviderHelper.getImage(eObject);
     if (null == result) {
-      ItemProviderAdapter itemProvider = getItemProvider(eObject_p);
+      ItemProviderAdapter itemProvider = getItemProvider(eObject);
       if (null != itemProvider) {
-        result = EObjectLabelProviderHelper.getImageFromObject(itemProvider.getImage(eObject_p));
+        result = EObjectLabelProviderHelper.getImageFromObject(itemProvider.getImage(eObject));
         itemProvider.dispose();
       }
     }
@@ -135,38 +135,38 @@ public class CapellaRecorderLabelProvider implements ITableLabelProvider {
    * Get a generic item provider.
    * @return an {@link ItemProviderAdapter} if any.
    */
-  private static ItemProviderAdapter getItemProvider(EObject object_p) {
-    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(object_p);
-    IItemLabelProvider provider = (IItemLabelProvider) editingDomain.getAdapterFactory().adapt(object_p, IItemLabelProvider.class);
+  private static ItemProviderAdapter getItemProvider(EObject object) {
+    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(object);
+    IItemLabelProvider provider = (IItemLabelProvider) editingDomain.getAdapterFactory().adapt(object, IItemLabelProvider.class);
     return (ItemProviderAdapter) provider;
   }
 
   /**
    * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnText(java.lang.Object, int)
    */
-  public String getColumnText(Object element_p, int columnIndex_p) {
+  public String getColumnText(Object element, int columnIndex) {
 
     String result = ICommonConstants.EMPTY_STRING;
 
-    DummyTreeData data = (DummyTreeData) element_p;
+    DummyTreeData data = (DummyTreeData) element;
     String[] ds = (String[]) data.getData();
 
     if (data.getDepth() < 0) { // ENTRY
 
-      if (0 == columnIndex_p) {
+      if (0 == columnIndex) {
         result = ds[1];
-      } else if (1 == columnIndex_p) {
+      } else if (1 == columnIndex) {
         if (data.hasSubData()) {
           result = ((String[]) data.getSubData())[0];
         }
       }
 
     } else if (data.getDepth() == 0) { // SUB 0
-      if (0 == columnIndex_p) {
+      if (0 == columnIndex) {
         result = NotificationEnum.getOperationEnum(ds[1]).getLiteral();
       }
     } else if (data.getDepth() > 0) {
-      if (0 == columnIndex_p) {
+      if (0 == columnIndex) {
         result = ds[1];
       }
     }
@@ -177,7 +177,7 @@ public class CapellaRecorderLabelProvider implements ITableLabelProvider {
   /**
    * @see org.eclipse.jface.viewers.IBaseLabelProvider#addListener(org.eclipse.jface.viewers.ILabelProviderListener)
    */
-  public void addListener(ILabelProviderListener listener_p) {
+  public void addListener(ILabelProviderListener listener) {
   }
 
   /**
@@ -191,14 +191,14 @@ public class CapellaRecorderLabelProvider implements ITableLabelProvider {
   /**
    * @see org.eclipse.jface.viewers.IBaseLabelProvider#isLabelProperty(java.lang.Object, java.lang.String)
    */
-  public boolean isLabelProperty(Object element_p, String property_p) {
+  public boolean isLabelProperty(Object element, String property) {
     return false;
   }
 
   /**
    * @see org.eclipse.jface.viewers.IBaseLabelProvider#removeListener(org.eclipse.jface.viewers.ILabelProviderListener)
    */
-  public void removeListener(ILabelProviderListener listener_p) {
+  public void removeListener(ILabelProviderListener listener) {
     return;
   }
 }

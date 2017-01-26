@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -124,16 +124,16 @@ public class PreferencePage extends FieldEditorPreferencePage implements IWorkbe
   }
 
   /**
-   * @param composite_p
+   * @param composite
    */
-  private void createCommandPart(Composite composite_p) {
+  private void createCommandPart(Composite composite) {
 
     final CommandsContentProvider commandProvider = new DynamicCommandsContentProvider();
 
     CellLabelProvider labelProvider = new CommandsLabelProvider();
 
-    //viewer = new TreeViewer(composite_p, SWT.FULL_SELECTION);
-    viewer = new CheckboxTreeViewer(composite_p, SWT.FULL_SELECTION);
+    //viewer = new TreeViewer(composite, SWT.FULL_SELECTION);
+    viewer = new CheckboxTreeViewer(composite, SWT.FULL_SELECTION);
     viewer.setContentProvider(commandProvider);
     TableLayout layout = new TableLayout();
 
@@ -163,11 +163,11 @@ public class PreferencePage extends FieldEditorPreferencePage implements IWorkbe
 
     viewer.setInput(new MenuInput(Activator.getDefault().getWorkbench(), new ISelectionProvider() {
 
-      public void setSelection(ISelection selection_p) {
+      public void setSelection(ISelection selection) {
         //Do nothing.
       }
 
-      public void removeSelectionChangedListener(ISelectionChangedListener listener_p) {
+      public void removeSelectionChangedListener(ISelectionChangedListener listener) {
         //Do nothing.
       }
 
@@ -175,7 +175,7 @@ public class PreferencePage extends FieldEditorPreferencePage implements IWorkbe
         return new StructuredSelection();
       }
 
-      public void addSelectionChangedListener(ISelectionChangedListener listener_p) {
+      public void addSelectionChangedListener(ISelectionChangedListener listener) {
         //Do nothing.
       }
     }));

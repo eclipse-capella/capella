@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,21 +39,21 @@ public class PhysicalLinkSelection implements ILinkSelection {
   /**
    * @see org.polarsys.capella.common.helpers.selection.ILinkSelection#getDisplayedTarget(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
    */
-  public EObject getDisplayedTarget(EObject object_p, EObject context_p) {
-    PhysicalLink currentLink = (PhysicalLink) object_p;
+  public EObject getDisplayedTarget(EObject object, EObject context) {
+    PhysicalLink currentLink = (PhysicalLink) object;
     Part end1 = PhysicalLinkExt.getSourcePart(currentLink);
     Part end2 = PhysicalLinkExt.getTargetPart(currentLink);
     
     Part contextPart = null;
-    if (context_p instanceof Component){
-      Component contextComponent = (Component) context_p;
+    if (context instanceof Component){
+      Component contextComponent = (Component) context;
       if (contextComponent.getRepresentingPartitions().isEmpty()){
         return null;
       }
       contextPart = (Part) contextComponent.getRepresentingPartitions().get(0);
     }
     else {
-      contextPart = (Part) context_p;
+      contextPart = (Part) context;
     }
     EObject result;
     if (end1.equals(contextPart)){

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,16 +39,16 @@ public class ObfuscateModelHandler extends AbstractUiHandler {
   /**
    * {@inheritDoc}
    */
-  public Object execute(final ExecutionEvent event_p) throws ExecutionException {
+  public Object execute(final ExecutionEvent event) throws ExecutionException {
     final Logger logger = Logger.getLogger(IReportManagerDefaultComponents.MODEL);
 
-    List<IFile> selection = getSelection(event_p, IFile.class);
+    List<IFile> selection = getSelection(event, IFile.class);
 
     if ((selection != null) && (selection.size() > 0)) {
 
       for (IFile file : selection) {
         if (CapellaResourceHelper.isAirdResource(file, true)) {
-          obfuscate(file, event_p);
+          obfuscate(file, event);
         }
       }
     }
@@ -58,26 +58,26 @@ public class ObfuscateModelHandler extends AbstractUiHandler {
   }
 
   /**
-   * @param file_p
+   * @param file
    */
-  protected void obfuscate(IFile file_p, final ExecutionEvent event_p) {
+  protected void obfuscate(IFile file, final ExecutionEvent event) {
     final Logger logger = Logger.getLogger(IReportManagerDefaultComponents.MODEL);
 
-    Session session = SessionHelper.getSession(file_p);
+    Session session = SessionHelper.getSession(file);
     if (session != null) {
       ObfuscateSessionAction action = new ObfuscateSessionAction() {
         @Override
-        protected void obfuscateFile(IFile value_p, Session session_p) {
+        protected void obfuscateFile(IFile value, Session session) {
 
         }
 
         @Override
-        protected void obfuscateFile(IFile value_p) {
+        protected void obfuscateFile(IFile value) {
           //Disable Repair/Migrate
         }
       };
 
-      action.selectionChanged(new StructuredSelection(file_p));
+      action.selectionChanged(new StructuredSelection(file));
       action.run();
       logger.info("Obfuscation is done (refresh is required!");
     }

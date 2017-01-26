@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,13 +49,13 @@ public class WorkbenchHelper {
       IResourceVisitor visitor = new IResourceVisitor() {
 
         @Override
-        public boolean visit(IResource resource_p) throws CoreException {
+        public boolean visit(IResource resource) throws CoreException {
           final byte[] buffer = new byte[1024];
           try {
-            if (resource_p instanceof IFile) {
-              ZipEntry ze = new ZipEntry(resource_p.getFullPath().toString().substring(1));
+            if (resource instanceof IFile) {
+              ZipEntry ze = new ZipEntry(resource.getFullPath().toString().substring(1));
               zos.putNextEntry(ze);
-              FileInputStream in = new FileInputStream(resource_p.getLocation().toOSString());
+              FileInputStream in = new FileInputStream(resource.getLocation().toOSString());
               int len;
               while ((len = in.read(buffer)) > 0) {
                 zos.write(buffer, 0, len);
@@ -63,7 +63,7 @@ public class WorkbenchHelper {
               in.close();
               zos.closeEntry();
             }
-          } catch (IOException exception_p) {
+          } catch (IOException exception) {
         	//Catch exception silently,
           }
           return true;
@@ -100,9 +100,9 @@ public class WorkbenchHelper {
          * {@inheritDoc}
          */
         @Override
-        public List getChildren(Object element_p) {
+        public List getChildren(Object element) {
 
-          List parrent = super.getChildren(element_p);
+          List parrent = super.getChildren(element);
           if (parrent == null) {
             return Collections.emptyList();
           }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,22 +18,22 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
  */
 public class LCDecompositionCommand extends AbstractReadWriteCommand {
 
-  private ModelElement _modelElement = null;
+  private ModelElement modelElement = null;
 
   /**
    * Constructor
    */
-  public LCDecompositionCommand(ModelElement modelElement_p) {
-    _modelElement = modelElement_p;
+  public LCDecompositionCommand(ModelElement modelElement) {
+    this.modelElement = modelElement;
   }
 
   /**
    * @see org.polarsys.capella.common.ef.command.command.ICommand#execute(org.eclipse.core.runtime.IProgressMonitor)
    */
   public void run() {
-    if (_modelElement instanceof LogicalComponent) {
+    if (modelElement instanceof LogicalComponent) {
         LCDecompositionController controller = new LCDecompositionController();
-        controller.createAndShowDecompositionWizard((LogicalComponent) _modelElement);
+        controller.createAndShowDecompositionWizard((LogicalComponent) modelElement);
     }
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import org.polarsys.capella.common.mdsofa.common.activator.AbstractActivator;
 public class CapellaCommandRecorderActivator extends AbstractActivator {
 
   // The shared instance
-  private static CapellaCommandRecorderActivator __plugin;
+  private static CapellaCommandRecorderActivator plugin;
 
   /**
    * {@inheritDoc}
@@ -25,7 +25,7 @@ public class CapellaCommandRecorderActivator extends AbstractActivator {
   @Override
   public void start(BundleContext bundleContext) throws Exception {
     super.start(bundleContext);
-    __plugin = this;
+    plugin = this;
   }
 
   /**
@@ -33,7 +33,7 @@ public class CapellaCommandRecorderActivator extends AbstractActivator {
    */
   @Override
   public void stop(BundleContext bundleContext) throws Exception {
-    __plugin = null;
+    plugin = null;
     super.stop(bundleContext);
   }
 
@@ -42,6 +42,6 @@ public class CapellaCommandRecorderActivator extends AbstractActivator {
    * @return the shared instance
    */
   public static CapellaCommandRecorderActivator getDefault() {
-    return __plugin;
+    return plugin;
   }
 }

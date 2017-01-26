@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,7 @@ public class CommandLineArgumentHelper {
    * 
    */
 
-  private static CommandLineArgumentHelper _instance;
+  private static CommandLineArgumentHelper instance;
   private String filePath;
   private String outputFolder;
   private boolean helpNeeded;
@@ -39,14 +39,14 @@ public class CommandLineArgumentHelper {
   protected static String[] args;
 
   public static CommandLineArgumentHelper getInstance() {
-    if (null == _instance) {
-      _instance = new CommandLineArgumentHelper();
+    if (null == instance) {
+      instance = new CommandLineArgumentHelper();
     }
-    return _instance;
+    return instance;
   }
 
-  public static String[] parseContext(IApplicationContext context_p) {
-    Map arguments = context_p.getArguments();
+  public static String[] parseContext(IApplicationContext context) {
+    Map arguments = context.getArguments();
     args = (String[]) arguments.get(IApplicationContext.APPLICATION_ARGS);
     return args;
   }

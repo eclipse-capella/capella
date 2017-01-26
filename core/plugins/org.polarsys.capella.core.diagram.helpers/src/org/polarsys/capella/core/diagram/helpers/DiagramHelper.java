@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,7 +53,7 @@ public class DiagramHelper {
    * 
    * @param diagram
    *          current diagram
-   * @param diagramDescriptionId_p
+   * @param diagramDescriptionId
    *          a DiagramDescriptionConstants
    */
   public boolean isA(DRepresentation diagram, String descriptionId) {
@@ -67,7 +67,7 @@ public class DiagramHelper {
   /**
    * Returns whether the given diagram description is the given description
    * 
-   * @param diagram_p
+   * @param diagram
    *          current diagram
    * @param diagramDescriptionId
    *          a DiagramDescriptionConstants
@@ -134,7 +134,7 @@ public class DiagramHelper {
   }
 
   /**
-   * Returns the current session for the given diagram_p
+   * Returns the current session for the given diagram
    * 
    * @param diagram
    * @return

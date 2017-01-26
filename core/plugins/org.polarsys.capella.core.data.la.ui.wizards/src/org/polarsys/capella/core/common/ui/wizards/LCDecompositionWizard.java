@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,34 +22,34 @@ import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
  */
 public class LCDecompositionWizard extends Wizard {
 
-  private DecompositionModel _decompositionModel;
-  private LCDecompositionWizardPage _lcDecompositionWizardPage;
-  private LCDecompositionValidateWizardPage _lcDecompositionValidateWizardPage;
-  private LCDecompositionController _controller;
+  private DecompositionModel decompositionModel;
+  private LCDecompositionWizardPage lcDecompositionWizardPage;
+  private LCDecompositionValidateWizardPage lcDecompositionValidateWizardPage;
+  private LCDecompositionController controller;
 
   public LCDecompositionWizard() {
     // Default constructor
   }
 
-  public LCDecompositionWizard(DecompositionModel decompModel_p) {
-    setDecompositionModel(decompModel_p);
-    _lcDecompositionWizardPage = new LCDecompositionWizardPage(_decompositionModel);
-    _lcDecompositionValidateWizardPage = new LCDecompositionValidateWizardPage(_decompositionModel);
+  public LCDecompositionWizard(DecompositionModel decompModel) {
+    setDecompositionModel(decompModel);
+    lcDecompositionWizardPage = new LCDecompositionWizardPage(decompositionModel);
+    lcDecompositionValidateWizardPage = new LCDecompositionValidateWizardPage(decompositionModel);
 
-    addPage(_lcDecompositionWizardPage);
-    addPage(_lcDecompositionValidateWizardPage);
+    addPage(lcDecompositionWizardPage);
+    addPage(lcDecompositionValidateWizardPage);
     setNeedsProgressMonitor(true);
   }
 
   public void initComponents() {
-    _lcDecompositionWizardPage = new LCDecompositionWizardPage(getDecompositionModel());
-    _lcDecompositionWizardPage.setController(getController());
+    lcDecompositionWizardPage = new LCDecompositionWizardPage(getDecompositionModel());
+    lcDecompositionWizardPage.setController(getController());
 
-    _lcDecompositionValidateWizardPage = new LCDecompositionValidateWizardPage(getDecompositionModel());
-    _lcDecompositionValidateWizardPage.setController(getController());
+    lcDecompositionValidateWizardPage = new LCDecompositionValidateWizardPage(getDecompositionModel());
+    lcDecompositionValidateWizardPage.setController(getController());
 
-    addPage(_lcDecompositionWizardPage);
-    addPage(_lcDecompositionValidateWizardPage);
+    addPage(lcDecompositionWizardPage);
+    addPage(lcDecompositionValidateWizardPage);
     setNeedsProgressMonitor(true);
   }
 
@@ -58,7 +58,7 @@ public class LCDecompositionWizard extends Wizard {
    */
   @Override
   public boolean performFinish() {
-    return _decompositionModel.finishDecomposition();
+    return decompositionModel.finishDecomposition();
   }
 
   /**
@@ -66,8 +66,8 @@ public class LCDecompositionWizard extends Wizard {
    */
   @Override
   public boolean canFinish() {
-    boolean decompositionComplete = _controller.isDecompositionComplete();
-    boolean userHasDeletedSubComponent = _controller.userHasDeletedSubComponent();
+    boolean decompositionComplete = controller.isDecompositionComplete();
+    boolean userHasDeletedSubComponent = controller.userHasDeletedSubComponent();
     return userHasDeletedSubComponent || decompositionComplete;
   }
 
@@ -75,37 +75,37 @@ public class LCDecompositionWizard extends Wizard {
    * @return the controller
    */
   public LCDecompositionController getController() {
-    return _controller;
+    return controller;
   }
 
   /**
-   * @param controller_p the controller to set
+   * @param controller the controller to set
    */
-  public void setController(LCDecompositionController controller_p) {
-    _controller = controller_p;
+  public void setController(LCDecompositionController controller) {
+    this.controller = controller;
   }
 
   /**
    * @return the decompositionModel
    */
   public DecompositionModel getDecompositionModel() {
-    return _decompositionModel;
+    return decompositionModel;
   }
 
   /**
-   * @param decompositionModel_p the decompositionModel to set
+   * @param decompositionModel the decompositionModel to set
    */
-  public void setDecompositionModel(DecompositionModel decompositionModel_p) {
-    _decompositionModel = decompositionModel_p;
+  public void setDecompositionModel(DecompositionModel decompositionModel) {
+    this.decompositionModel = decompositionModel;
   }
 
   /**
    * 
    */
   public void trigger() {
-    boolean flag = _controller.isDecompositionComplete();
-    _lcDecompositionWizardPage.setPageComplete(flag);
-    _lcDecompositionValidateWizardPage.setPageComplete(flag);
+    boolean flag = controller.isDecompositionComplete();
+    lcDecompositionWizardPage.setPageComplete(flag);
+    lcDecompositionValidateWizardPage.setPageComplete(flag);
   }
 
   /**

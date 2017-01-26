@@ -204,7 +204,7 @@ public class ValidationCommandLine extends AbstractCommandLine {
 
     } catch (BackingStoreException exception1) {
       StringBuilder loggerMessage = new StringBuilder("ValidationCommandLine.readRules(..) _ "); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString(), exception1);
+      logger.warn(loggerMessage.toString(), exception1);
     }
 
     return results;
@@ -284,7 +284,7 @@ public class ValidationCommandLine extends AbstractCommandLine {
 
     } catch (CoreException exception) {
       StringBuilder loggerMessage = new StringBuilder("ValidationComandlineApp.storeResultsToFile(..) _ "); //$NON-NLS-1$
-      __logger.error(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.VALIDATION));
+      logger.error(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.VALIDATION));
     }
 
   }

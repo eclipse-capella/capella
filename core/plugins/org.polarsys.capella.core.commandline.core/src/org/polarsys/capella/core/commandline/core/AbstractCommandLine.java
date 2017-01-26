@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,7 +44,7 @@ public class AbstractCommandLine implements ICommandLine {
 
   public static int FATAL = IStatus.CANCEL;
 
-  protected static Logger __logger;
+  protected static Logger logger;
   protected static CommandLineArgumentHelper argHelper;
   protected CommandLineMode mode;
 
@@ -55,7 +55,7 @@ public class AbstractCommandLine implements ICommandLine {
    */
   public AbstractCommandLine() {
     argHelper = CommandLineArgumentHelper.getInstance();
-    __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
+    logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
   }
 
   /**
@@ -165,7 +165,7 @@ public class AbstractCommandLine implements ICommandLine {
         project.open(new NullProgressMonitor());
       } catch (CoreException exception) {
         StringBuilder loggerMessage = new StringBuilder("HTMLCommandLine.checkArgs(..) _ "); //$NON-NLS-1$
-        __logger.warn(loggerMessage.toString(), exception);
+        logger.warn(loggerMessage.toString(), exception);
       }
 
       List<IFile> melodymodellerFiles = getCapellamodellerFiles(project);
@@ -265,7 +265,7 @@ public class AbstractCommandLine implements ICommandLine {
 
     } catch (CoreException exception) {
       StringBuilder loggerMessage = new StringBuilder(Messages.compliance_check_pb);
-      __logger.warn(loggerMessage.toString(), exception);
+      logger.warn(loggerMessage.toString(), exception);
     }
     return files;
 
@@ -299,13 +299,13 @@ public class AbstractCommandLine implements ICommandLine {
       }
     } catch (IOException exception) {
       StringBuilder loggerMessage = new StringBuilder(exception.getMessage());
-      __logger.error(loggerMessage.toString(), exception);
+      logger.error(loggerMessage.toString(), exception);
     }
 
   }
 
   /**
-   * @param importProjects_p
+   * @param importProjects
    * @return
    */
   protected boolean isEmtyOrNull(String var) {
@@ -341,7 +341,7 @@ public class AbstractCommandLine implements ICommandLine {
       project.open(new NullProgressMonitor());
     } catch (CoreException exception) {
       StringBuilder loggerMessage = new StringBuilder(Messages.unable_open_project + project.getName());
-      __logger.warn(loggerMessage.toString(), exception);
+      logger.warn(loggerMessage.toString(), exception);
     }
     IFile file = project.getFile(getRelativeFilePath(argHelper.getFilePath()));
     if (!file.exists()) {
@@ -353,19 +353,19 @@ public class AbstractCommandLine implements ICommandLine {
 
   protected void logStatus(IStatus status) {
     if (status.isOK()) {
-      __logger.info(status.getMessage());
+      logger.info(status.getMessage());
 
     } else if (FATAL == status.getSeverity()) {
-      __logger.fatal(status.getMessage());
+      logger.fatal(status.getMessage());
 
     } else if (IStatus.ERROR == status.getSeverity()) {
-      __logger.error(status.getMessage());
+      logger.error(status.getMessage());
 
     } else if (IStatus.WARNING == status.getSeverity()) {
-      __logger.warn(status.getMessage());
+      logger.warn(status.getMessage());
 
     } else {
-      __logger.info(status.getMessage());
+      logger.info(status.getMessage());
 
     }
     if (status.isMultiStatus()) {
@@ -378,7 +378,7 @@ public class AbstractCommandLine implements ICommandLine {
 
   protected void logError(String message) {
     StringBuilder loggerMessage = new StringBuilder(message);
-    __logger.error(loggerMessage.toString());
+    logger.error(loggerMessage.toString());
   }
 
   /**
@@ -386,7 +386,7 @@ public class AbstractCommandLine implements ICommandLine {
    */
   protected void logInfo(String message) {
     StringBuilder loggerMessage = new StringBuilder(message);
-    __logger.info(loggerMessage.toString());
+    logger.info(loggerMessage.toString());
 
   }
 
@@ -480,7 +480,7 @@ public class AbstractCommandLine implements ICommandLine {
 
     } catch (CoreException exception) {
       StringBuilder message = new StringBuilder(Messages.cannot_create_folder);
-      __logger.error(message.toString(), exception);
+      logger.error(message.toString(), exception);
       throw new CommandLineException(message.toString());
     }
   }

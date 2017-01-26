@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,16 +45,16 @@ public class EIAllocationModelHelpers {
   /**
    * Get list of transitioned Elements
    */
-  public static List<ModelElement> getTransitionedElements(ModelElement element_p) {
-    return getTransitionedElements(Collections.singletonList(element_p));
+  public static List<ModelElement> getTransitionedElements(ModelElement element) {
+    return getTransitionedElements(Collections.singletonList(element));
   }
 
   /**
    * Get list of transitioned Elements
    */
-  public static List<ModelElement> getTransitionedElements(List<ModelElement> elements_p) {
+  public static List<ModelElement> getTransitionedElements(List<ModelElement> elements) {
     List<ModelElement> result = new ArrayList<ModelElement>();
-    for (ModelElement elt : elements_p) {
+    for (ModelElement elt : elements) {
       if (elt instanceof AbstractFunction) {
         for (AbstractTrace trace : ((AbstractFunction) elt).getIncomingTraces()) {
           if (trace instanceof FunctionRealization) {
@@ -81,16 +81,16 @@ public class EIAllocationModelHelpers {
   /**
    * Get list of transitioner Elements
    */
-  public static List<ModelElement> getTransitionerElements(ModelElement element_p) {
-    return getTransitionerElements(Collections.singletonList(element_p));
+  public static List<ModelElement> getTransitionerElements(ModelElement element) {
+    return getTransitionerElements(Collections.singletonList(element));
   }
 
   /**
    * Get list of transitioner Elements
    */
-  public static List<ModelElement> getTransitionerElements(List<ModelElement> elements_p) {
+  public static List<ModelElement> getTransitionerElements(List<ModelElement> elements) {
     List<ModelElement> result = new ArrayList<ModelElement>();
-    for (ModelElement elt : elements_p) {
+    for (ModelElement elt : elements) {
       if (elt instanceof AbstractFunction) {
         for (AbstractTrace trace : ((AbstractFunction) elt).getOutgoingTraces()) {
           if (trace instanceof FunctionRealization) {
@@ -115,18 +115,18 @@ public class EIAllocationModelHelpers {
   }
 
   /**
-   * @param exchangeItem_p
+   * @param exchangeItem
    */
-  public static List<EObject> getOwners(ExchangeItem exchangeItem_p) {
-    return EObjectExt.getReferencers(exchangeItem_p, Arrays.asList(
+  public static List<EObject> getOwners(ExchangeItem exchangeItem) {
+    return EObjectExt.getReferencers(exchangeItem, Arrays.asList(
       new EReference[] { FaPackage.Literals.FUNCTION_INPUT_PORT__INCOMING_EXCHANGE_ITEMS, FaPackage.Literals.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS }));
   }
 
   /**
-   * @param selection_p
+   * @param selection
    */
-  public static void handleDeletion(Collection<?> selection_p) {
-	Collection<EObject> elts = filterFunctionsAndPorts(selection_p);
+  public static void handleDeletion(Collection<?> selection) {
+	Collection<EObject> elts = filterFunctionsAndPorts(selection);
     CapellaDeleteCommand cmd = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(elts), elts, false, false, false);
     if (cmd.canExecute()) {
       cmd.execute();
@@ -134,11 +134,11 @@ public class EIAllocationModelHelpers {
   }
 
   /**
-   * @param selection_p
+   * @param selection
    */
-  public static Collection<EObject> filterFunctionsAndPorts(Collection<?> selection_p) {
+  public static Collection<EObject> filterFunctionsAndPorts(Collection<?> selection) {
     Set<EObject> result = new HashSet<EObject>();
-    for (Object obj : selection_p) {
+    for (Object obj : selection) {
       if ((obj instanceof AbstractFunction) || (obj instanceof FunctionPort)) {
         result.add((EObject) obj);
       }
@@ -147,69 +147,69 @@ public class EIAllocationModelHelpers {
   }
 
   /**
-   * @param sepFunctionPort_p
-   * @param tepFunctionPort_p
-   * @param exchangeItem_p
+   * @param sepFunctionPort
+   * @param tepFunctionPort
+   * @param exchangeItem
    */
-  public static void handleAllocation(FunctionPort sepFunctionPort_p, FunctionPort tepFunctionPort_p, ExchangeItem exchangeItem_p) {
-    if ((null != tepFunctionPort_p) && (null != exchangeItem_p)) {
-      if (tepFunctionPort_p instanceof FunctionInputPort) {
-        List<ExchangeItem> incomingEI = ((FunctionInputPort) tepFunctionPort_p).getIncomingExchangeItems();
-        if (!incomingEI.contains(exchangeItem_p)) {
-          incomingEI.add(exchangeItem_p);
+  public static void handleAllocation(FunctionPort sepFunctionPort, FunctionPort tepFunctionPort, ExchangeItem exchangeItem) {
+    if ((null != tepFunctionPort) && (null != exchangeItem)) {
+      if (tepFunctionPort instanceof FunctionInputPort) {
+        List<ExchangeItem> incomingEI = ((FunctionInputPort) tepFunctionPort).getIncomingExchangeItems();
+        if (!incomingEI.contains(exchangeItem)) {
+          incomingEI.add(exchangeItem);
         }
-      } else if (tepFunctionPort_p instanceof FunctionOutputPort) {
-        List<ExchangeItem> outgoingEI = ((FunctionOutputPort) tepFunctionPort_p).getOutgoingExchangeItems();
-        if (!outgoingEI.contains(exchangeItem_p)) {
-          outgoingEI.add(exchangeItem_p);
+      } else if (tepFunctionPort instanceof FunctionOutputPort) {
+        List<ExchangeItem> outgoingEI = ((FunctionOutputPort) tepFunctionPort).getOutgoingExchangeItems();
+        if (!outgoingEI.contains(exchangeItem)) {
+          outgoingEI.add(exchangeItem);
         }
       }
-      handleAllocation(tepFunctionPort_p, sepFunctionPort_p);
+      handleAllocation(tepFunctionPort, sepFunctionPort);
     }
   }
 
   /**
-   * @param source_p
-   * @param target_p
+   * @param source
+   * @param target
    */
-  public static void handleAllocation(AbstractFunction source_p, AbstractFunction target_p) {
+  public static void handleAllocation(AbstractFunction source, AbstractFunction target) {
     boolean alreadyRealized = false;
-    for (FunctionRealization rlz : source_p.getOutFunctionRealizations()) {
+    for (FunctionRealization rlz : source.getOutFunctionRealizations()) {
       AbstractFunction fct = rlz.getAllocatedFunction();
-      if (target_p.equals(fct)) {
+      if (target.equals(fct)) {
         alreadyRealized = true;
         break;
       }
     }
     if (!alreadyRealized) {
       FunctionRealization rlz = FaFactory.eINSTANCE.createFunctionRealization();
-      rlz.setSourceElement(source_p);
-      rlz.setTargetElement(target_p);
-      source_p.getOwnedFunctionRealizations().add(rlz);
+      rlz.setSourceElement(source);
+      rlz.setTargetElement(target);
+      source.getOwnedFunctionRealizations().add(rlz);
     }
   }
 
   /**
-   * @param source_p
-   * @param target_p
+   * @param source
+   * @param target
    */
-  public static void handleAllocation(FunctionPort source_p, FunctionPort target_p) {
+  public static void handleAllocation(FunctionPort source, FunctionPort target) {
     boolean alreadyRealized = false;
-    if (((source_p instanceof FunctionInputPort) && (target_p instanceof FunctionInputPort))
-      || ((source_p instanceof FunctionOutputPort) && (target_p instanceof FunctionOutputPort)))
+    if (((source instanceof FunctionInputPort) && (target instanceof FunctionInputPort))
+      || ((source instanceof FunctionOutputPort) && (target instanceof FunctionOutputPort)))
     {
-      for (PortRealization rlz : source_p.getOutgoingPortRealizations()) {
+      for (PortRealization rlz : source.getOutgoingPortRealizations()) {
         Port port = rlz.getRealizedPort();
-        if (target_p.equals(port)) {
+        if (target.equals(port)) {
           alreadyRealized = true;
           break;
         }
       }
       if (!alreadyRealized) {
         PortRealization rlz = InformationFactory.eINSTANCE.createPortRealization();
-        rlz.setSourceElement(source_p);
-        rlz.setTargetElement(target_p);
-        source_p.getOwnedPortRealizations().add(rlz);
+        rlz.setSourceElement(source);
+        rlz.setTargetElement(target);
+        source.getOwnedPortRealizations().add(rlz);
       }
     } else {
       //
@@ -217,13 +217,13 @@ public class EIAllocationModelHelpers {
   }
 
   /**
-   * @param elements_p
+   * @param elements
    * @return
    */
-  public static boolean isSameType(List<EObject> elements_p) {
-    if ((null != elements_p) && !elements_p.isEmpty()) {
-      EClass cls = elements_p.get(0).eClass();
-      for (EObject elt : elements_p) {
+  public static boolean isSameType(List<EObject> elements) {
+    if ((null != elements) && !elements.isEmpty()) {
+      EClass cls = elements.get(0).eClass();
+      for (EObject elt : elements) {
         if (!elt.eClass().equals(cls)) {
           return false;
         }
@@ -234,35 +234,35 @@ public class EIAllocationModelHelpers {
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  public static boolean isSupportedType(Object element_p) {
-    return !(element_p instanceof ExchangeItem);
+  public static boolean isSupportedType(Object element) {
+    return !(element instanceof ExchangeItem);
   }
 
   /**
-   * @param element1_p
-   * @param element2_p
+   * @param element1
+   * @param element2
    * @return
    */
-  public static boolean isCompatibleType(Object element1_p, Object element2_p) {
-    if ((element1_p instanceof AbstractFunction) && (element2_p instanceof AbstractFunction)) {
+  public static boolean isCompatibleType(Object element1, Object element2) {
+    if ((element1 instanceof AbstractFunction) && (element2 instanceof AbstractFunction)) {
       return true;
-    } else if ((element1_p instanceof FunctionPort) && (element2_p instanceof FunctionPort)) {
-      return isSamePortType((FunctionPort) element1_p, (FunctionPort) element2_p);
+    } else if ((element1 instanceof FunctionPort) && (element2 instanceof FunctionPort)) {
+      return isSamePortType((FunctionPort) element1, (FunctionPort) element2);
     }
     return false;
   }
 
   /**
-   * @param element1_p
-   * @param element2_p
+   * @param element1
+   * @param element2
    * @return
    */
-  private static boolean isSamePortType(FunctionPort element1_p, FunctionPort element2_p) {
-    if (((element1_p instanceof FunctionInputPort) && (element2_p instanceof FunctionInputPort))
-      ||((element1_p instanceof FunctionOutputPort) && (element2_p instanceof FunctionOutputPort)))
+  private static boolean isSamePortType(FunctionPort element1, FunctionPort element2) {
+    if (((element1 instanceof FunctionInputPort) && (element2 instanceof FunctionInputPort))
+      ||((element1 instanceof FunctionOutputPort) && (element2 instanceof FunctionOutputPort)))
     {
       return true;
     }
@@ -270,12 +270,12 @@ public class EIAllocationModelHelpers {
   }
 
   /**
-   * @param elements_p
+   * @param elements
    * @return
    */
-  public static boolean isValidTypeForDeletion(List<EObject> elements_p) {
-    if ((null != elements_p) && !elements_p.isEmpty()) {
-      for (EObject elt : elements_p) {
+  public static boolean isValidTypeForDeletion(List<EObject> elements) {
+    if ((null != elements) && !elements.isEmpty()) {
+      for (EObject elt : elements) {
         if (!(elt instanceof AbstractFunction) && !(elt instanceof FunctionPort)) {
           return false;
         }
@@ -286,17 +286,17 @@ public class EIAllocationModelHelpers {
   }
 
   /**
-   * @param exchangeItem_p
-   * @param port_p
+   * @param exchangeItem
+   * @param port
    * @return
    */
-  public static boolean isDelegated(ExchangeItem exchangeItem_p, FunctionPort port_p) {
+  public static boolean isDelegated(ExchangeItem exchangeItem, FunctionPort port) {
     boolean isDelegated = false;
-    for (PortRealization rlz : port_p.getIncomingPortRealizations()) {
+    for (PortRealization rlz : port.getIncomingPortRealizations()) {
       Port srcPort = rlz.getRealizingPort();
-      if ((srcPort instanceof FunctionInputPort) && ((FunctionInputPort) srcPort).getIncomingExchangeItems().contains(exchangeItem_p)) {
+      if ((srcPort instanceof FunctionInputPort) && ((FunctionInputPort) srcPort).getIncomingExchangeItems().contains(exchangeItem)) {
         isDelegated = true;
-      } else if ((srcPort instanceof FunctionOutputPort) && ((FunctionOutputPort) srcPort).getOutgoingExchangeItems().contains(exchangeItem_p)) {
+      } else if ((srcPort instanceof FunctionOutputPort) && ((FunctionOutputPort) srcPort).getOutgoingExchangeItems().contains(exchangeItem)) {
         isDelegated = true;
       }
     }
@@ -304,17 +304,17 @@ public class EIAllocationModelHelpers {
   }
 
   /**
-   * @param exchangeItem_p
-   * @param port_p
+   * @param exchangeItem
+   * @param port
    * @return
    */
-  public static boolean isDelegator(ExchangeItem exchangeItem_p, FunctionPort port_p) {
+  public static boolean isDelegator(ExchangeItem exchangeItem, FunctionPort port) {
     boolean isDelegated = false;
-    for (PortRealization rlz : port_p.getOutgoingPortRealizations()) {
+    for (PortRealization rlz : port.getOutgoingPortRealizations()) {
       Port dstPort = rlz.getRealizedPort();
-      if ((dstPort instanceof FunctionInputPort) && ((FunctionInputPort) dstPort).getIncomingExchangeItems().contains(exchangeItem_p)) {
+      if ((dstPort instanceof FunctionInputPort) && ((FunctionInputPort) dstPort).getIncomingExchangeItems().contains(exchangeItem)) {
         isDelegated = true;
-      } else if ((dstPort instanceof FunctionOutputPort) && ((FunctionOutputPort) dstPort).getOutgoingExchangeItems().contains(exchangeItem_p)) {
+      } else if ((dstPort instanceof FunctionOutputPort) && ((FunctionOutputPort) dstPort).getOutgoingExchangeItems().contains(exchangeItem)) {
         isDelegated = true;
       }
     }

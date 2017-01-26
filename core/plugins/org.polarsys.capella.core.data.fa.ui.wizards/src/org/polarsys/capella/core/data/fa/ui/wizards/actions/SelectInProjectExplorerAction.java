@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,14 +26,14 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommon
 public class SelectInProjectExplorerAction extends Action {
 
   /** */
-  private ISelection _selection;
+  private ISelection selection;
 
   /**
    * 
    */
-  public SelectInProjectExplorerAction(ISelection selection_p) {
+  public SelectInProjectExplorerAction(ISelection selection) {
     super();
-    _selection = selection_p;
+    this.selection = selection;
   }
 
   /**
@@ -49,8 +49,8 @@ public class SelectInProjectExplorerAction extends Action {
         // Show it if not found.
         explorerView = (CapellaCommonNavigator) activePage.showView(CapellaCommonNavigator.ID);
       }
-      explorerView.selectReveal(_selection);
-    } catch (PartInitException exception_p) {
+      explorerView.selectReveal(selection);
+    } catch (PartInitException exception) {
     	// Catch exception silently,
     }
   }

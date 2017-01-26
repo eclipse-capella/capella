@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,32 +35,32 @@ public class EIAllocationTreeViewer extends FieldsViewer {
   protected Group _group;
 
   protected class MyTreeViewer extends TreeViewer {
-    public MyTreeViewer(Composite parent_p, int style_p) {
-      super(parent_p, style_p);
+    public MyTreeViewer(Composite parent, int style) {
+      super(parent, style);
     }
-    public Widget findMyItem(Object element_p) {
-      return findItem(element_p);
+    public Widget findMyItem(Object element) {
+      return findItem(element);
     }
-    public Widget[] findMyItems(Object element_p) {
-      return findItems(element_p);
+    public Widget[] findMyItems(Object element) {
+      return findItems(element);
     }
   }
 
   /**
-   * @param parent_p
+   * @param parent
    */
-  public EIAllocationTreeViewer(Composite parent_p) {
-    super(parent_p);
+  public EIAllocationTreeViewer(Composite parent) {
+    super(parent);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.viewers.FieldsViewer#createControl(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected void createControl(Composite parent_p) {
-    super.createControl(parent_p);
-    parent_p.setLayout(new FillLayout());
-    _group = new Group(parent_p, SWT.CENTER | SWT.SHADOW_NONE);
+  protected void createControl(Composite parent) {
+    super.createControl(parent);
+    parent.setLayout(new FillLayout());
+    _group = new Group(parent, SWT.CENTER | SWT.SHADOW_NONE);
 
     GridLayout layout = new GridLayout();
     layout.marginHeight = 5;
@@ -97,9 +97,9 @@ public class EIAllocationTreeViewer extends FieldsViewer {
   /**
    *
    */
-  public List<Object> getOwnerData(Object data_p) {
+  public List<Object> getOwnerData(Object data) {
     List<Object> result = new ArrayList<Object>();
-    for (Widget widget : findItems(data_p)) {
+    for (Widget widget : findItems(data)) {
       if (widget instanceof TreeItem) {
         TreeItem parent = ((TreeItem) widget).getParentItem();
         if (null != parent) {
@@ -116,9 +116,9 @@ public class EIAllocationTreeViewer extends FieldsViewer {
   /**
    *
    */
-  public static Map<Object, Object> getSelectionMap(TreeViewer treeViewer_p) {
+  public static Map<Object, Object> getSelectionMap(TreeViewer treeViewer) {
     Map<Object, Object> selectionMap = new HashMap<Object, Object>();
-    for (TreeItem treeItem : treeViewer_p.getTree().getSelection()) {
+    for (TreeItem treeItem : treeViewer.getTree().getSelection()) {
       TreeItem parentItem = treeItem.getParentItem();
       if (null != parentItem) {
         Object obj = parentItem.getData();
@@ -148,15 +148,15 @@ public class EIAllocationTreeViewer extends FieldsViewer {
   /**
    * @return the TreeViewer
    */
-  public void setGroupLabel(String label_p) {
-    _group.setText(label_p);
+  public void setGroupLabel(String label) {
+    _group.setText(label);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.viewers.FieldsViewer#setInput(java.lang.Object)
    */
   @Override
-  public void setInput(Object input_p) {
-    _treeViewer.setInput(input_p);
+  public void setInput(Object input) {
+    _treeViewer.setInput(input);
   }
 }

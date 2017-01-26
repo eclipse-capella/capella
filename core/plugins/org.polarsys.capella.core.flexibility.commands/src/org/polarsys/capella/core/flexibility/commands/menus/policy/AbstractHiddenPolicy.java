@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,15 +22,15 @@ public class AbstractHiddenPolicy implements IActionPolicy {
   /**
    * @return the visibles
    */
-  public void add(String commandId_p) {
-    hidden.add(commandId_p);
+  public void add(String commandId) {
+    hidden.add(commandId);
   }
 
   /**
    * {@inheritDoc}
    */
-  public boolean cover(String commandId_p) {
-    return !hidden.contains(commandId_p);
+  public boolean cover(String commandId) {
+    return !hidden.contains(commandId);
   }
 
 }

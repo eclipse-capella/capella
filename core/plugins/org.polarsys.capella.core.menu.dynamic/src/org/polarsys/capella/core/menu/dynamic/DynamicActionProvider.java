@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ public class DynamicActionProvider extends AbstractActionProvider {
   /**
    * Dynamic creation action.
    */
-  private DynamicCreationAction _dynamicAction;
+  private DynamicCreationAction dynamicAction;
 
   public DynamicActionProvider() {
     // Initialize the action provider to force it to load menu contributors.
@@ -42,13 +42,13 @@ public class DynamicActionProvider extends AbstractActionProvider {
    *      org.eclipse.ui.IWorkbenchPage, org.eclipse.jface.viewers.ISelectionProvider)
    */
   @Override
-  protected void initActions(Shell shell_p, IWorkbenchPage page_p, ISelectionProvider selectionProvider_p) {
-    _dynamicAction = new DynamicCreationAction(shell_p, selectionProvider_p);
+  protected void initActions(Shell shell, IWorkbenchPage page, ISelectionProvider selectionProvider) {
+    dynamicAction = new DynamicCreationAction(shell, selectionProvider);
   }
 
   protected IContributionItem createContributionItem() {
     IMenuManager subMenuManager = new MenuManager(Messages.DynamicActionProvider_AddCapellaElement_Title, "Dynamic.Menu.ID"); //$NON-NLS-1$
-    fillContextMenu(subMenuManager, _dynamicAction, null);
+    fillContextMenu(subMenuManager, dynamicAction, null);
     return subMenuManager;
   }
 
@@ -56,73 +56,73 @@ public class DynamicActionProvider extends AbstractActionProvider {
    * @see org.eclipse.ui.actions.ActionGroup#fillContextMenu(org.eclipse.jface.action.IMenuManager)
    */
   @Override
-  public void fillContextMenu(IMenuManager menu_p) {
+  public void fillContextMenu(IMenuManager menu) {
     // Fill actions located in GROUP_NEW
-    menu_p.insertAfter(ICommonMenuConstants.GROUP_NEW, createContributionItem());
+    menu.insertAfter(ICommonMenuConstants.GROUP_NEW, createContributionItem());
   }
 
   /**
    * @see org.polarsys.capella.common.mdsofa.rootasset.ui.workbench.action.navigator.AbstractActionProvider#fillActionBars(org.eclipse.ui.IActionBars)
    */
   @Override
-  public void fillActionBars(IActionBars actionBars_p) {
+  public void fillActionBars(IActionBars actionBars) {
     // Do nothing.
   }
 
-  protected void fillContextMenu(IMenuManager menu_p, DynamicCreationAction action_p, String groupId_p) {
+  protected void fillContextMenu(IMenuManager menu, DynamicCreationAction action, String groupId) {
     // In this case, check really if the action is compatible with current selection.
-    if (action_p.isSelectionCompatible()) {
-      for (IContributionItem item : action_p.getStructuralDynamicActions()) {
-        addContributionItem(menu_p, groupId_p, item);
+    if (action.isSelectionCompatible()) {
+      for (IContributionItem item : action.getStructuralDynamicActions()) {
+        addContributionItem(menu, groupId, item);
       }
 
       // Add a separator between structural and non structural items.
-      menu_p.add(new Separator());
+      menu.add(new Separator());
 
-      for (IContributionItem containedAction : action_p.getNonStructuralDynamicActions()) {
-        addContributionItem(menu_p, groupId_p, containedAction);
+      for (IContributionItem containedAction : action.getNonStructuralDynamicActions()) {
+        addContributionItem(menu, groupId, containedAction);
       }
 
       // Add a separator between non structural and property value items.
-      menu_p.add(new Separator());
+      menu.add(new Separator());
 
-      for (IContributionItem containedAction : action_p.getPropertyValueDynamicActions()) {
-        addContributionItem(menu_p, groupId_p, containedAction);
+      for (IContributionItem containedAction : action.getPropertyValueDynamicActions()) {
+        addContributionItem(menu, groupId, containedAction);
       }
 
       // Add a separator between property value and extension items.
-      menu_p.add(new Separator());
+      menu.add(new Separator());
 
-      for (IContributionItem containedAction : action_p.getExtensionDynamicActions()) {
-        addContributionItem(menu_p, groupId_p, containedAction);
+      for (IContributionItem containedAction : action.getExtensionDynamicActions()) {
+        addContributionItem(menu, groupId, containedAction);
       }
     }
   }
 
   /**
    * Add given contribution item in specified menu.
-   * @param menu_p
-   * @param groupId_p
-   * @param item_p
+   * @param menu
+   * @param groupId
+   * @param item
    */
-  protected void addContributionItem(IMenuManager menu_p, String groupId_p, IContributionItem item_p) {
+  protected void addContributionItem(IMenuManager menu, String groupId, IContributionItem item) {
     // Append the action to a group if provided...
-    if (null != groupId_p) {
-      menu_p.appendToGroup(groupId_p, item_p);
+    if (null != groupId) {
+      menu.appendToGroup(groupId, item);
     } else {
-      menu_p.add(item_p);
+      menu.add(item);
     }
   }
 
   /**
    * Add given action in specified menu manager.
-   * @param menu_p
-   * @param groupId_p
-   * @param action_p
+   * @param menu
+   * @param groupId
+   * @param action
    */
-  protected void addAction(IMenuManager menu_p, String groupId_p, IAction action_p) {
+  protected void addAction(IMenuManager menu, String groupId, IAction action) {
     // Override the action contribution item to force the context menu to be
     // refreshed even if the selected object has not changed.
-    addContributionItem(menu_p, groupId_p, new DynamicActionContributionItem(action_p));
+    addContributionItem(menu, groupId, new DynamicActionContributionItem(action));
   }
 }

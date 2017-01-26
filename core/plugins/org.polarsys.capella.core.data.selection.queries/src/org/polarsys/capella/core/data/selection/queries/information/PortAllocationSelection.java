@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,16 +32,16 @@ public class PortAllocationSelection implements ILinkSelection {
 	  /**
 	   * @see org.polarsys.capella.core.data.core.utils.selection.ILinkSelection#getDisplayedTarget(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
 	   */
-	  public EObject getDisplayedTarget(EObject object_p, EObject context_p) {
-		 if ((object_p instanceof PortAllocation) && (context_p instanceof Port)) {
-			 PortAllocation currentAllocation = (PortAllocation) object_p;
-			 if (currentAllocation.getAllocatedPort().equals(context_p)) {
+	  public EObject getDisplayedTarget(EObject object, EObject context) {
+		 if ((object instanceof PortAllocation) && (context instanceof Port)) {
+			 PortAllocation currentAllocation = (PortAllocation) object;
+			 if (currentAllocation.getAllocatedPort().equals(context)) {
 				 return currentAllocation.getAllocatingPort();
-			 } else if (currentAllocation.getAllocatingPort().equals(context_p)) {
+			 } else if (currentAllocation.getAllocatingPort().equals(context)) {
 				 return currentAllocation.getAllocatedPort();
 			 }
  	     }
-		 return context_p;
+		 return context;
 	  }
 
 	  /**

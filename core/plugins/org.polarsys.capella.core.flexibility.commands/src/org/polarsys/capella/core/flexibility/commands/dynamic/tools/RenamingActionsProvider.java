@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,10 +34,10 @@ public class RenamingActionsProvider implements IActionsProvider {
   /**
    * @see org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider#getActions()
    */
-  public Collection<DefaultAction> getActions(Shell shell_p, ISelectionProvider selectionProvider_p) {
+  public Collection<DefaultAction> getActions(Shell shell, ISelectionProvider selectionProvider) {
     List<DefaultAction> list = new ArrayList<DefaultAction>();
 
-    list.add(new SetNames(shell_p, selectionProvider_p));
+    list.add(new SetNames(shell, selectionProvider));
 
     return list;
   }
@@ -45,8 +45,8 @@ public class RenamingActionsProvider implements IActionsProvider {
   @SuppressWarnings("nls")
   public class SetNames extends DefaultAction {
 
-    public SetNames(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public SetNames(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -97,15 +97,14 @@ public class RenamingActionsProvider implements IActionsProvider {
     }
 
     /**
-     * @param object_p
+     * @param object
      * @return
      */
-    @SuppressWarnings("unchecked")
-    private int getPosition(EObject object_p) {
+    private int getPosition(EObject object) {
       int i = 1;
-      if (object_p.eContainmentFeature().isMany()) {
-        for (Object o : (EList) object_p.eContainer().eGet(object_p.eContainmentFeature())) {
-          if (!o.equals(object_p)) {
+      if (object.eContainmentFeature().isMany()) {
+        for (Object o : (EList) object.eContainer().eGet(object.eContainmentFeature())) {
+          if (!o.equals(object)) {
             i++;
           } else {
             break;

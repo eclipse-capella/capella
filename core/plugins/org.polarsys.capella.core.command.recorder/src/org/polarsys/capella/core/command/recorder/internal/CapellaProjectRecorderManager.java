@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,15 +39,15 @@ public class CapellaProjectRecorderManager extends AbstractProjectRecorderManage
    * {@inheritDoc}
    */
   @Override
-  protected AbstractProjectRecorder createProjectRecorder(IProject project_p) {
-    return new CapellaProjectRecorder(this, project_p);
+  protected AbstractProjectRecorder createProjectRecorder(IProject project) {
+    return new CapellaProjectRecorder(this, project);
   }
   
   /**
    * {@inheritDoc}
    */
   @Override
-  public void writeOperation(Writer writer_p) throws IOException {
+  public void writeOperation(Writer writer) throws IOException {
     
     OperationEnum current = OperationEnum.getOperationEnum(_hlc.getClosingOperation());
     
@@ -57,10 +57,10 @@ public class CapellaProjectRecorderManager extends AbstractProjectRecorderManage
       _hlc.getLabel()
     ;
     
-    TXTWriterHelper.writeEntry(writer_p, str);
+    TXTWriterHelper.writeEntry(writer, str);
     
     if ( null != _hlc.getDate() ) {
-    	TXTWriterHelper.writeExtraDataLine(writer_p,_hlc.getDate().toString());
+    	TXTWriterHelper.writeExtraDataLine(writer,_hlc.getDate().toString());
     }
     
     

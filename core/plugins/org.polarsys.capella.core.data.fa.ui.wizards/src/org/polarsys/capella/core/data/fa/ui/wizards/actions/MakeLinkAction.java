@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,8 +23,8 @@ public class MakeLinkAction extends AbstractLinkAction {
   /**
    * 
    */
-  public MakeLinkAction(LinkManager linkManager_p, TreeViewer treeViewer_p) {
-    super(linkManager_p, treeViewer_p);
+  public MakeLinkAction(LinkManager linkManager, TreeViewer treeViewer) {
+    super(linkManager, treeViewer);
   }
 
   /**
@@ -32,7 +32,7 @@ public class MakeLinkAction extends AbstractLinkAction {
    */
   @Override
   public void run() {
-    _linkManager.makeLinkTo(((TreeSelection) _treeViewer.getSelection()).toList());
+    linkManager.makeLinkTo(((TreeSelection) treeViewer.getSelection()).toList());
 
     super.run();
   }
@@ -50,8 +50,8 @@ public class MakeLinkAction extends AbstractLinkAction {
    */
   @Override
   public boolean isEnabled() {
-    if (super.isEnabled() && _linkManager.isStarted()) {
-      if (EIAllocationModelHelpers.isCompatibleType(_linkManager.getStartedElements().get(0), ((TreeSelection) _treeViewer.getSelection()).getFirstElement())) {
+    if (super.isEnabled() && linkManager.isStarted()) {
+      if (EIAllocationModelHelpers.isCompatibleType(linkManager.getStartedElements().get(0), ((TreeSelection) treeViewer.getSelection()).getFirstElement())) {
         return true;
       }
     }

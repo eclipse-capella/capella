@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,8 +44,8 @@ import org.polarsys.capella.core.flexibility.commands.menus.ui.PolicyOverrides;
  */
 public class MenuProvider {
 
-  public MenuManager createMenuManager(String text_p, ImageDescriptor image_p, String id_p) {
-    MenuManager manager = new MenuManager(text_p, image_p, id_p);
+  public MenuManager createMenuManager(String text, ImageDescriptor image, String id) {
+    MenuManager manager = new MenuManager(text, image, id);
     manager.setOverrides(getOverrides());
     return manager;
   }
@@ -69,22 +69,22 @@ public class MenuProvider {
   ISelectionProvider selectionProvider = new ISelectionProvider() {
     ISelection selection = StructuredSelection.EMPTY;
 
-    public void setSelection(ISelection selection_p) {
-      selection = selection_p;
+    public void setSelection(ISelection selection) {
+      selection = selection;
     }
 
-    public void removeSelectionChangedListener(ISelectionChangedListener listener_p) {
+    public void removeSelectionChangedListener(ISelectionChangedListener listener) {
     }
 
     public ISelection getSelection() {
       return selection;
     }
 
-    public void addSelectionChangedListener(ISelectionChangedListener listener_p) {
+    public void addSelectionChangedListener(ISelectionChangedListener listener) {
     }
   };
 
-  protected IContributionItem[] getMenus(final IServiceLocator serviceLocator_p, final ITreeContentProvider contentProvider_p, Object menuInput) {
+  protected IContributionItem[] getMenus(final IServiceLocator serviceLocator, final ITreeContentProvider contentProvider, Object menuInput) {
 
     ArrayList<IContributionItem> items = new ArrayList<IContributionItem>();
     boolean previousIsCategory = false;
@@ -93,7 +93,7 @@ public class MenuProvider {
       items.add(new Separator());
     }
 
-    for (final Object object : contentProvider_p.getChildren(menuInput)) {
+    for (final Object object : contentProvider.getChildren(menuInput)) {
 
       if (object instanceof Category) {
         Category category = (Category) object;
@@ -105,7 +105,7 @@ public class MenuProvider {
         MenuManager submenu =
             createMenuManager(labelProvider.getText(category), ImageDescriptor.createFromImage(labelProvider.getImage(root)), category.getId());
         items.add(submenu);
-        for (IContributionItem item : getMenus(serviceLocator_p, contentProvider_p, object)) {
+        for (IContributionItem item : getMenus(serviceLocator, contentProvider, object)) {
           submenu.add(item);
         }
 
@@ -116,7 +116,7 @@ public class MenuProvider {
         }
 
         CommandContributionItemParameter parameter =
-            new CommandContributionItemParameter(serviceLocator_p, action.getId(), action.getId(), CommandContributionItem.STYLE_PUSH);
+            new CommandContributionItemParameter(serviceLocator, action.getId(), action.getId(), CommandContributionItem.STYLE_PUSH);
         parameter.label = labelProvider.getText(action);
         parameter.icon = ImageDescriptor.createFromImage(labelProvider.getImage(action));
 
@@ -142,13 +142,13 @@ public class MenuProvider {
   AbstractContributionFactory viewMenuAddition = new AbstractContributionFactory("popup:capella.project.explorer#PopupMenu?after=group.goto", "") {
 
     @Override
-    public void createContributionItems(final IServiceLocator serviceLocator_p, IContributionRoot additions_p) {
+    public void createContributionItems(final IServiceLocator serviceLocator, IContributionRoot additions) {
       ITreeContentProvider contentProvider = new DynamicCommandsContentProvider();
       MenuInput menuInput = new MenuInput(PlatformUI.getWorkbench(), selectionProvider);
       contentProvider.inputChanged(null, null, menuInput);
 
-      for (IContributionItem item : getMenus(serviceLocator_p, contentProvider, menuInput)) {
-        additions_p.addContributionItem(item, null);
+      for (IContributionItem item : getMenus(serviceLocator, contentProvider, menuInput)) {
+        additions.addContributionItem(item, null);
       }
     }
   };
