@@ -80,7 +80,20 @@ public class CapellaAdvancedPropertySection extends AdvancedPropertySection impl
 
   /**
    * {@inheritDoc}
-   * @see org.eclipse.ui.views.properties.tabbed.AdvancedPropertySection#setInput(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+   */
+  @Override
+  public void refresh() {
+    try {
+      super.refresh();
+    } catch (org.polarsys.kitalpha.emde.extension.InvalidContextException ex) {
+      ex.printStackTrace();
+    } catch (org.polarsys.kitalpha.ad.services.manager.InvalidContextException ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  /**
+   * {@inheritDoc}
    */
   @Override
   public void setInput(IWorkbenchPart part, ISelection selection) {
