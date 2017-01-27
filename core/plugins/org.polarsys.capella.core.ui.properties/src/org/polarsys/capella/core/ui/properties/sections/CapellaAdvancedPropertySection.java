@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,8 +23,9 @@ import org.eclipse.ui.views.properties.tabbed.AdvancedPropertySection;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
 /**
+ *
  */
-public class CapelladPropertySection extends AdvancedPropertySection implements IPropertySourceProvider {
+public class CapellaAdvancedPropertySection extends AdvancedPropertySection implements IPropertySourceProvider {
   /**
    * Force to share the same adapter factory with other capella components.
    */
@@ -79,13 +80,26 @@ public class CapelladPropertySection extends AdvancedPropertySection implements 
 
   /**
    * {@inheritDoc}
-   * @see org.eclipse.ui.views.properties.tabbed.AdvancedPropertySection#setInput(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+   */
+  @Override
+  public void refresh() {
+    try {
+      super.refresh();
+    } catch (org.polarsys.kitalpha.emde.extension.InvalidContextException ex) {
+      ex.printStackTrace();
+    } catch (org.polarsys.kitalpha.ad.services.manager.InvalidContextException ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  /**
+   * {@inheritDoc}
    */
   @Override
   public void setInput(IWorkbenchPart part, ISelection selection) {
+    super.setInput(part, selection);
     if (null != page) {
       page.setPropertySourceProvider(this);
     }
-    super.setInput(part, selection);
   }
 }

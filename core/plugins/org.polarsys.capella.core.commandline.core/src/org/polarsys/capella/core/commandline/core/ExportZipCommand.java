@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ public class ExportZipCommand extends AbstractCommandLine {
    * {@inheritDoc}
    */
   @Override
-  public boolean execute(IApplicationContext context_p) throws CommandLineException {
+  public boolean execute(IApplicationContext context) throws CommandLineException {
 
     String name = argHelper.getExportProject();
 
@@ -46,6 +46,6 @@ public class ExportZipCommand extends AbstractCommandLine {
         WorkbenchHelper.exportZipFile(newProject, file);
       }
     }
-    return super.execute(context_p);
+    return super.execute(context);
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,25 +34,25 @@ public class AssociationSelection implements ILinkSelection {
 	  /**
 	   * @see org.polarsys.capella.core.data.core.utils.selection.ILinkSelection#getDisplayedTarget(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
 	   */
-	  public EObject getDisplayedTarget(EObject object_p, EObject context_p) {
-		 if ((object_p instanceof Association) && (context_p instanceof Classifier)) {
-			 Association currentAssociation = (Association) object_p;
+	  public EObject getDisplayedTarget(EObject object, EObject context) {
+		 if ((object instanceof Association) && (context instanceof Classifier)) {
+			 Association currentAssociation = (Association) object;
 			 for (Property property : currentAssociation.getOwnedMembers()) {
 				 Type type = property.getType();
-				if (type != null && !type.equals(context_p)) {
-					//opposite element of the context_p via association
+				if (type != null && !type.equals(context)) {
+					//opposite element of the context via association
 					return type;
 				}
 			 }
 			 for (Property property : currentAssociation.getNavigableMembers()) {
 				 Type type = property.getType();
-				if (type != null && !type.equals(context_p)) {
-					//opposite element of the context_p via association
+				if (type != null && !type.equals(context)) {
+					//opposite element of the context via association
 					return type;
 				}
 			 }
 			 // self association
-			 return context_p;
+			 return context;
  	    }
 	    return null;
 	  }

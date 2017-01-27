@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,16 +24,16 @@ import org.polarsys.capella.core.data.fa.ui.wizards.dialogs.EIAllocationModelHel
  */
 public abstract class DeleteElementAction extends Action {
   /** */
-  protected TreeViewer _treeViewer;
-  protected IStructuredSelection _selection;
+  protected TreeViewer treeViewer;
+  protected IStructuredSelection selection;
 
   /**
    * 
    */
-  public DeleteElementAction(IStructuredSelection selection_p, TreeViewer treeViewer_p) {
+  public DeleteElementAction(IStructuredSelection selection, TreeViewer treeViewer) {
     super();
-    _treeViewer = treeViewer_p;
-    _selection = selection_p;
+    this.treeViewer = treeViewer;
+    this.selection = selection;
   }
 
   /**
@@ -41,7 +41,7 @@ public abstract class DeleteElementAction extends Action {
    */
   @Override
   public void run() {
-    EIAllocationModelHelpers.handleDeletion(_selection.toList());
+    EIAllocationModelHelpers.handleDeletion(selection.toList());
 
     postRun();
   }
@@ -73,13 +73,13 @@ public abstract class DeleteElementAction extends Action {
   @SuppressWarnings("unchecked")
   @Override
   public boolean isEnabled() {
-    TreeItem[] selectedItems = _treeViewer.getTree().getSelection();
+    TreeItem[] selectedItems = treeViewer.getTree().getSelection();
     if (selectedItems.length == 1) {
       if (null == selectedItems[0].getParentItem()) {
         /** deletion is not allowed on root elements */
         return false;
       }
-      if (EIAllocationModelHelpers.isValidTypeForDeletion(_selection.toList())) {
+      if (EIAllocationModelHelpers.isValidTypeForDeletion(selection.toList())) {
         return true;
       }
     }

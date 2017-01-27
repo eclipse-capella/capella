@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,11 +24,11 @@ import org.polarsys.capella.common.menu.dynamic.AbstractModelElementAction;
 public abstract class DynamicModelElementAction extends AbstractModelElementAction {
   /**
    * Constructor.
-   * @param shell_p
-   * @param selectionProvider_p
+   * @param shell
+   * @param selectionProvider
    */
-  public DynamicModelElementAction(Shell shell_p, ISelectionProvider selectionProvider_p) {
-    super(shell_p, selectionProvider_p);
+  public DynamicModelElementAction(Shell shell, ISelectionProvider selectionProvider) {
+    super(shell, selectionProvider);
   }
 
   /**

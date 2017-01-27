@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.compare;singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.compare.CapellaComparePlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.data.gen,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.common.platform.sirius
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.compare
 Bundle-Localization: plugin

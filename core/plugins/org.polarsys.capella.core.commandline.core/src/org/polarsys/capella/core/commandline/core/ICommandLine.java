@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,28 +31,28 @@ public interface ICommandLine {
   /**
    * called first to get command line arguments
    */
-  void parseContext(IApplicationContext context_p) throws CommandLineException;
+  void parseContext(IApplicationContext context) throws CommandLineException;
 
   /**
    * checks arguments validity
-   * @param context_p
+   * @param context
    * @throws CommandLineException
    */
-  void checkArgs(IApplicationContext context_p) throws CommandLineException;
+  void checkArgs(IApplicationContext context) throws CommandLineException;
 
   /**
    * Prepares the execution (e.g. import projects into the workspace before a document generation)
-   * @param context_p
+   * @param context
    * @throws CommandLineException
    */
-  void prepare(IApplicationContext context_p) throws CommandLineException;
+  void prepare(IApplicationContext context) throws CommandLineException;
 
   /**
    * Performs the actual work of the command line application
-   * @param context_p
+   * @param context
    * @return
    * @throws CommandLineException
    */
-  boolean execute(IApplicationContext context_p) throws CommandLineException;
+  boolean execute(IApplicationContext context) throws CommandLineException;
 
 }

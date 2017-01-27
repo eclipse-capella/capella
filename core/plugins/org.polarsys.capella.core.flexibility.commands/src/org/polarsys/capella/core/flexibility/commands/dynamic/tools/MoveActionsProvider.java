@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,20 +53,20 @@ public class MoveActionsProvider implements IActionsProvider {
   /**
    * @see org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider#getActions()
    */
-  public Collection<DefaultAction> getActions(Shell shell_p, ISelectionProvider selectionProvider_p) {
+  public Collection<DefaultAction> getActions(Shell shell, ISelectionProvider selectionProvider) {
     List<DefaultAction> list = new ArrayList<DefaultAction>();
 
-    list.add(new ReplaceFunctionalExchangeAccessor(shell_p, selectionProvider_p));
-    list.add(new ReplaceComponentExchangeAccessor(shell_p, selectionProvider_p));
-    list.add(new ReplacePhysicalLinkAccessor(shell_p, selectionProvider_p));
+    list.add(new ReplaceFunctionalExchangeAccessor(shell, selectionProvider));
+    list.add(new ReplaceComponentExchangeAccessor(shell, selectionProvider));
+    list.add(new ReplacePhysicalLinkAccessor(shell, selectionProvider));
 
     return list;
   }
 
   private abstract class MoveElementAction extends DefaultAction {
 
-    public MoveElementAction(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public MoveElementAction(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     public abstract EClass getRelatedEClass();
@@ -105,24 +105,24 @@ public class MoveActionsProvider implements IActionsProvider {
 
     }
 
-    protected abstract void moveExchange(EObject exchange_p);
+    protected abstract void moveExchange(EObject exchange);
 
     /**
-     * @param source_p
+     * @param source
      */
-    private boolean process(EObject exchange_p, Logger logger) {
-      EObject container = exchange_p.eContainer();
-      moveExchange(exchange_p);
+    private boolean process(EObject exchange, Logger logger) {
+      EObject container = exchange.eContainer();
+      moveExchange(exchange);
 
-      if ((container != exchange_p.eContainer())) {
+      if ((container != exchange.eContainer())) {
         List<EObject> related = new ArrayList<EObject>();
-        related.add(exchange_p);
+        related.add(exchange);
         related.add(container);
-        related.add(exchange_p.eContainer());
+        related.add(exchange.eContainer());
         logger.info(new EmbeddedMessage(NLS.bind(
             "''{0}'' has been moved from ''{1}'' to ''{2}''.",
-            new Object[] { EObjectLabelProviderHelper.getText(exchange_p), EObjectLabelProviderHelper.getText(container),
-                          EObjectLabelProviderHelper.getText(exchange_p.eContainer()) }), IReportManagerDefaultComponents.UI, related));
+            new Object[] { EObjectLabelProviderHelper.getText(exchange), EObjectLabelProviderHelper.getText(container),
+                          EObjectLabelProviderHelper.getText(exchange.eContainer()) }), IReportManagerDefaultComponents.UI, related));
         return true;
       }
       return false;
@@ -152,8 +152,8 @@ public class MoveActionsProvider implements IActionsProvider {
       return false;
     }
 
-    public ReplaceFunctionalExchangeAccessor(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public ReplaceFunctionalExchangeAccessor(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -180,9 +180,9 @@ public class MoveActionsProvider implements IActionsProvider {
      * From FaServices (since 1.5.1)
      */
     @Override
-    protected void moveExchange(EObject exchange_p) {
-      FunctionalExchange exchange = (FunctionalExchange) exchange_p;
-      FunctionalExchangeExt.attachToDefaultContainer(exchange);
+    protected void moveExchange(EObject exchange) {
+      FunctionalExchange exch = (FunctionalExchange) exchange;
+      FunctionalExchangeExt.attachToDefaultContainer(exch);
     }
 
   };
@@ -214,8 +214,8 @@ public class MoveActionsProvider implements IActionsProvider {
       return false;
     }
 
-    public ReplaceComponentExchangeAccessor(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public ReplaceComponentExchangeAccessor(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -241,9 +241,9 @@ public class MoveActionsProvider implements IActionsProvider {
      * @param exchange the given componentExchange
      */
     @Override
-    protected void moveExchange(EObject exchange_p) {
-      ComponentExchange exchange = (ComponentExchange) exchange_p;
-      ComponentExchangeExt.attachToDefaultContainer(exchange);
+    protected void moveExchange(EObject exchange) {
+      ComponentExchange exch = (ComponentExchange) exchange;
+      ComponentExchangeExt.attachToDefaultContainer(exch);
     }
   };
 
@@ -268,8 +268,8 @@ public class MoveActionsProvider implements IActionsProvider {
       return false;
     }
 
-    public ReplacePhysicalLinkAccessor(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public ReplacePhysicalLinkAccessor(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -282,21 +282,21 @@ public class MoveActionsProvider implements IActionsProvider {
      * @param exchange the given PhysicalLink
      */
     @Override
-    protected void moveExchange(EObject exchange_p) {
-      PhysicalLink exchange = (PhysicalLink) exchange_p;
+    protected void moveExchange(EObject exchange) {
+      PhysicalLink exch = (PhysicalLink) exchange;
 
-      EObject sourceComponent = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceComponent(exchange);
+      EObject sourceComponent = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceComponent(exch);
       if ((sourceComponent == null) || (sourceComponent instanceof AbstractActor)) {
         //Disable move of CE linked from actor
         return;
       }
 
-      EObject targetComponent = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getTargetComponent(exchange);
+      EObject targetComponent = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getTargetComponent(exch);
       if ((targetComponent == null) || (targetComponent instanceof AbstractActor)) {
         //Disable move of CE linked to actor
         return;
       }
-      org.polarsys.capella.core.model.helpers.PhysicalLinkExt.attachToDefaultContainer(exchange);
+      org.polarsys.capella.core.model.helpers.PhysicalLinkExt.attachToDefaultContainer(exch);
     }
 
     /**

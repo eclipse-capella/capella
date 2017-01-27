@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -90,12 +90,12 @@ import org.polarsys.capella.common.menu.dynamic.DynamicCreateChildAction;
  */
 public class EIAllocationTransfertDlg extends AbstractViewerDialog {
 
-  protected Text _statusBarText;
-  protected LinkManager _linkManager;
-  protected EIAllocationTreeViewer _sepViewer;
-  protected EIAllocationTreeViewer _tepViewer;
-  protected List<ModelElement> _selectedElements;
-  protected List<ModelElement> _transitionedElements;
+  protected Text statusBarText;
+  protected LinkManager linkManager;
+  protected EIAllocationTreeViewer sepViewer;
+  protected EIAllocationTreeViewer tepViewer;
+  protected List<ModelElement> selectedElements;
+  protected List<ModelElement> transitionedElements;
 
   /** message pattern used for formatting the status bar tooltip */
   private static final String MSG_PATTERN = "[%s][%s] %s"; //$NON-NLS-1$
@@ -104,24 +104,24 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
   private static final String PATH_SEPARATOR = "::"; //$NON-NLS-1$
 
   /**
-   * @param parentShell_p
-   * @param leftLabelProvider_p
-   * @param rightLabelProvider_p
-   * @param dialogTitle_p
-   * @param dialogMessage_p
+   * @param parentShell
+   * @param leftLabelProvider
+   * @param rightLabelProvider
+   * @param dialogTitle
+   * @param dialogMessage
    */
-  public EIAllocationTransfertDlg(Shell parentShell_p, String dialogTitle_p, String dialogMessage_p, String shellTitle_p) {
-    super(parentShell_p, dialogTitle_p, dialogMessage_p, shellTitle_p);
+  public EIAllocationTransfertDlg(Shell parentShell, String dialogTitle, String dialogMessage, String shellTitle) {
+    super(parentShell, dialogTitle, dialogMessage, shellTitle);
     
-    _linkManager = new LinkManager();
+    linkManager = new LinkManager();
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected void doCreateDialogArea(Composite dialogAreaComposite_p) {
-    Composite treeComposite = new Composite(dialogAreaComposite_p, SWT.CENTER);
+  protected void doCreateDialogArea(Composite dialogAreaComposite) {
+    Composite treeComposite = new Composite(dialogAreaComposite, SWT.CENTER);
     treeComposite.setLayout(new FillLayout(SWT.HORIZONTAL));
     GridData gdData = new GridData(GridData.FILL_BOTH);
     gdData.horizontalAlignment = SWT.FILL;
@@ -131,86 +131,86 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
     gdData.widthHint = 600;
     treeComposite.setLayoutData(gdData);
 
-    _sepViewer = new EIAllocationTreeViewer(treeComposite);
-    _tepViewer = new EIAllocationTreeViewer(treeComposite);
+    sepViewer = new EIAllocationTreeViewer(treeComposite);
+    tepViewer = new EIAllocationTreeViewer(treeComposite);
 
-    _sepViewer.setGroupLabel("Source Engineering Phase" + getArchitectureName(_selectedElements)); //$NON-NLS-1$
-    _sepViewer.getTreeViewer().setContentProvider(new EIAllocationContentProvider());
-    _sepViewer.getTreeViewer().setLabelProvider(new EIAllocationLabelProvider(_linkManager, _sepViewer, true));
-    _sepViewer.getTreeViewer().setColumnProperties(new String[] { ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.getName() });
-    _sepViewer.getTreeViewer().setCellEditors(new CellEditor[] { new TextCellEditor(_sepViewer.getTreeViewer().getTree(), SWT.BORDER) });
-    _sepViewer.getTreeViewer().setCellModifier(new EIAllocationTreeViewerCellModifier(_sepViewer.getTreeViewer().getTree()));
-    _sepViewer.getTreeViewer().addSelectionChangedListener(new ISelectionChangedListener() {
+    sepViewer.setGroupLabel("Source Engineering Phase" + getArchitectureName(selectedElements)); //$NON-NLS-1$
+    sepViewer.getTreeViewer().setContentProvider(new EIAllocationContentProvider());
+    sepViewer.getTreeViewer().setLabelProvider(new EIAllocationLabelProvider(linkManager, sepViewer, true));
+    sepViewer.getTreeViewer().setColumnProperties(new String[] { ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.getName() });
+    sepViewer.getTreeViewer().setCellEditors(new CellEditor[] { new TextCellEditor(sepViewer.getTreeViewer().getTree(), SWT.BORDER) });
+    sepViewer.getTreeViewer().setCellModifier(new EIAllocationTreeViewerCellModifier(sepViewer.getTreeViewer().getTree()));
+    sepViewer.getTreeViewer().addSelectionChangedListener(new ISelectionChangedListener() {
       @Override
-      public void selectionChanged(SelectionChangedEvent event_p) {
-        updateSelection((ITreeSelection) event_p.getSelection(), false, _tepViewer, _sepViewer);
+      public void selectionChanged(SelectionChangedEvent event) {
+        updateSelection((ITreeSelection) event.getSelection(), false, tepViewer, sepViewer);
       }
     });
-    _sepViewer.getTreeViewer().addDoubleClickListener(new IDoubleClickListener() {
+    sepViewer.getTreeViewer().addDoubleClickListener(new IDoubleClickListener() {
       @Override
-      public void doubleClick(DoubleClickEvent event_p) {
-        handleDbClick(event_p, _sepViewer.getTreeViewer());
+      public void doubleClick(DoubleClickEvent event) {
+        handleDbClick(event, sepViewer.getTreeViewer());
       }
     });
-    _sepViewer.getTreeViewer().getTree().addListener(SWT.MouseDown, new Listener() {
+    sepViewer.getTreeViewer().getTree().addListener(SWT.MouseDown, new Listener() {
       @Override
       public void handleEvent(Event event) {
-        handleNotification(event, _sepViewer);
+        handleNotification(event, sepViewer);
       }
     });
-    _sepViewer.setInput(_selectedElements);
+    sepViewer.setInput(selectedElements);
 
-    _tepViewer.setGroupLabel("Target Engineering Phase" + getArchitectureName(_transitionedElements)); //$NON-NLS-1$
-    _tepViewer.getTreeViewer().setUseHashlookup(true);
-    _tepViewer.getTreeViewer().setContentProvider(new EIAllocationContentProvider());
-    _tepViewer.getTreeViewer().setLabelProvider(new EIAllocationLabelProvider(_linkManager, _tepViewer, false));
-    _tepViewer.getTreeViewer().setColumnProperties(new String[] { ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.getName() });
-    _tepViewer.getTreeViewer().setCellEditors(new CellEditor[] { new TextCellEditor(_tepViewer.getTreeViewer().getTree(), SWT.BORDER) });
-    _tepViewer.getTreeViewer().setCellModifier(new EIAllocationTreeViewerCellModifier(_tepViewer.getTreeViewer().getTree()));
-    _tepViewer.getTreeViewer().addSelectionChangedListener(new ISelectionChangedListener() {
+    tepViewer.setGroupLabel("Target Engineering Phase" + getArchitectureName(transitionedElements)); //$NON-NLS-1$
+    tepViewer.getTreeViewer().setUseHashlookup(true);
+    tepViewer.getTreeViewer().setContentProvider(new EIAllocationContentProvider());
+    tepViewer.getTreeViewer().setLabelProvider(new EIAllocationLabelProvider(linkManager, tepViewer, false));
+    tepViewer.getTreeViewer().setColumnProperties(new String[] { ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.getName() });
+    tepViewer.getTreeViewer().setCellEditors(new CellEditor[] { new TextCellEditor(tepViewer.getTreeViewer().getTree(), SWT.BORDER) });
+    tepViewer.getTreeViewer().setCellModifier(new EIAllocationTreeViewerCellModifier(tepViewer.getTreeViewer().getTree()));
+    tepViewer.getTreeViewer().addSelectionChangedListener(new ISelectionChangedListener() {
       @Override
-      public void selectionChanged(SelectionChangedEvent event_p) {
-        updateSelection((ITreeSelection) event_p.getSelection(), true, _sepViewer, _tepViewer);
+      public void selectionChanged(SelectionChangedEvent event) {
+        updateSelection((ITreeSelection) event.getSelection(), true, sepViewer, tepViewer);
       }
     });
-    _tepViewer.getTreeViewer().addDoubleClickListener(new IDoubleClickListener() {
+    tepViewer.getTreeViewer().addDoubleClickListener(new IDoubleClickListener() {
       @Override
-      public void doubleClick(DoubleClickEvent event_p) {
-        handleDbClick(event_p, _tepViewer.getTreeViewer());
+      public void doubleClick(DoubleClickEvent event) {
+        handleDbClick(event, tepViewer.getTreeViewer());
       }
     });
-    _tepViewer.getTreeViewer().getTree().addListener(SWT.MouseDown, new Listener() {
+    tepViewer.getTreeViewer().getTree().addListener(SWT.MouseDown, new Listener() {
       @Override
       public void handleEvent(Event event) {
-        handleNotification(event, _tepViewer);
+        handleNotification(event, tepViewer);
       }
     });
-    _tepViewer.setInput(_transitionedElements);
+    tepViewer.setInput(transitionedElements);
 
-    createStatusTextField(dialogAreaComposite_p);
+    createStatusTextField(dialogAreaComposite);
     createDragDropSourceTargets();
   }
 
   /**
    *
    */
-  protected void handleDbClick(DoubleClickEvent event_p, TreeViewer treeViewer_p) {
-    ITreeSelection selection = (ITreeSelection) event_p.getSelection();
+  protected void handleDbClick(DoubleClickEvent event, TreeViewer treeViewer) {
+    ITreeSelection selection = (ITreeSelection) event.getSelection();
     if (!selection.isEmpty()) {
       Object data = selection.getFirstElement();
-      ((EIAllocationTreeViewerCellModifier) treeViewer_p.getCellModifier()).setEnabled(true);
-      treeViewer_p.editElement(data, 0);
+      ((EIAllocationTreeViewerCellModifier) treeViewer.getCellModifier()).setEnabled(true);
+      treeViewer.editElement(data, 0);
     }
   }
 
   /**
    *
    */
-  protected void handleNotification(Event event_p, EIAllocationTreeViewer treeViewer_p) {
-    ((EIAllocationTreeViewerCellModifier) treeViewer_p.getTreeViewer().getCellModifier()).setEnabled(false);
-    if (EIAllocationTreeViewerCellModifier.RENAMED_NOTIFICATION.equals(event_p.text)) {
+  protected void handleNotification(Event event, EIAllocationTreeViewer treeViewer) {
+    ((EIAllocationTreeViewerCellModifier) treeViewer.getTreeViewer().getCellModifier()).setEnabled(false);
+    if (EIAllocationTreeViewerCellModifier.RENAMED_NOTIFICATION.equals(event.text)) {
       refreshViewers(true);
-      updateStatusBar(event_p.data, treeViewer_p);
+      updateStatusBar(event.data, treeViewer);
     }
   }
 
@@ -220,26 +220,26 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
   /**
    *
    */
-  protected void updateSelection(ITreeSelection selection, boolean isTEP_p, EIAllocationTreeViewer updatedViewer_p, EIAllocationTreeViewer menuViewer_p) {
+  protected void updateSelection(ITreeSelection selection, boolean isTEP, EIAllocationTreeViewer updatedViewer, EIAllocationTreeViewer menuViewer) {
     if (!isAlreadyUpdatingSelection) {
       isAlreadyUpdatingSelection = true;
 
       if (selection.size() == 1) {
         ModelElement selectedElement = (ModelElement) selection.getFirstElement();
         if (selectedElement instanceof ExchangeItem) {
-          selectExchangeItem((ExchangeItem) selectedElement, updatedViewer_p);
+          selectExchangeItem((ExchangeItem) selectedElement, updatedViewer);
         } else {
-          List<ModelElement> elts = isTEP_p ?
+          List<ModelElement> elts = isTEP ?
            EIAllocationModelHelpers.getTransitionerElements(selectedElement) :
              EIAllocationModelHelpers.getTransitionedElements(selectedElement);
-          updatedViewer_p.getTreeViewer().setSelection(new StructuredSelection(elts), true);
+          updatedViewer.getTreeViewer().setSelection(new StructuredSelection(elts), true);
         }
-        updateStatusBar(selectedElement, menuViewer_p);
+        updateStatusBar(selectedElement, menuViewer);
       } else {
-        updatedViewer_p.getTreeViewer().setSelection(null, true);
+        updatedViewer.getTreeViewer().setSelection(null, true);
         updateStatusBar(null);
       }
-      showContextualMenu(selection, menuViewer_p.getTreeViewer(), isTEP_p);
+      showContextualMenu(selection, menuViewer.getTreeViewer(), isTEP);
 
       isAlreadyUpdatingSelection = false;
     }
@@ -248,9 +248,9 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
   /**
    *
    */
-  protected String getArchitectureName(List<ModelElement> elements_p) {
-    if (!elements_p.isEmpty()) {
-      ModelElement elt = elements_p.get(0);
+  protected String getArchitectureName(List<ModelElement> elements) {
+    if (!elements.isEmpty()) {
+      ModelElement elt = elements.get(0);
       BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(elt);
       if (OaPackage.Literals.OPERATIONAL_ANALYSIS.equals(arch.eClass())) {
         return " [OA]"; //$NON-NLS-1$
@@ -268,88 +268,88 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
   }
 
   /**
-   *@param exchangeItem_p
-   *@param treeViewer_p
+   *@param exchangeItem
+   *@param treeViewer
    */
-  protected void selectExchangeItem(ExchangeItem exchangeItem_p, EIAllocationTreeViewer treeViewer_p) {
-    for (EObject obj : EIAllocationModelHelpers.getOwners(exchangeItem_p)) {
-      treeViewer_p.getTreeViewer().expandToLevel(obj, 1);
+  protected void selectExchangeItem(ExchangeItem exchangeItem, EIAllocationTreeViewer treeViewer) {
+    for (EObject obj : EIAllocationModelHelpers.getOwners(exchangeItem)) {
+      treeViewer.getTreeViewer().expandToLevel(obj, 1);
     }
-    Widget[] widgets = treeViewer_p.findItems(exchangeItem_p);
+    Widget[] widgets = treeViewer.findItems(exchangeItem);
     TreeItem[] items = new TreeItem[widgets.length];
     for (int i = 0; i < widgets.length; i++) {
       items[i] = (TreeItem) widgets[i];
     }
-    treeViewer_p.getTreeViewer().getTree().setSelection(items);
+    treeViewer.getTreeViewer().getTree().setSelection(items);
   }
 
   /**
-   * @param selection_p
-   * @param treeViewer_p
-   * @param isTEP_p
+   * @param selection
+   * @param treeViewer
+   * @param isTEP
    */
-  protected void showContextualMenu(final IStructuredSelection selection_p, final TreeViewer treeViewer_p, final boolean isTEP_p) {
+  protected void showContextualMenu(final IStructuredSelection selection, final TreeViewer treeViewer, final boolean isTEP) {
     MenuManager menuMgr = new MenuManager();
-    if (isTEP_p) {
-      if (selection_p.size() == 1) {
-        for (Action action : getAddElementActions(selection_p, treeViewer_p)) {
+    if (isTEP) {
+      if (selection.size() == 1) {
+        for (Action action : getAddElementActions(selection, treeViewer)) {
           menuMgr.add(action);
         }
         menuMgr.add(new Separator());
       }
     }
-    menuMgr.add(new DeleteElementAction(selection_p, treeViewer_p) {
+    menuMgr.add(new DeleteElementAction(selection, treeViewer) {
       @Override
       protected void postRun() {
-        refreshViewers(isTEP_p);
+        refreshViewers(isTEP);
       }
     });
-    menuMgr.add(new RemoveElementAction(selection_p, treeViewer_p) {
+    menuMgr.add(new RemoveElementAction(selection, treeViewer) {
       @Override
       protected void postRun() {
-        refreshViewers(isTEP_p);
+        refreshViewers(isTEP);
       }
     });
     menuMgr.add(new Separator());
-    menuMgr.add(new SelectInProjectExplorerAction(selection_p));
-    menuMgr.add(new SelectInSemanticBrowserAction(selection_p));
+    menuMgr.add(new SelectInProjectExplorerAction(selection));
+    menuMgr.add(new SelectInSemanticBrowserAction(selection));
     menuMgr.add(new Separator());
-    if (isTEP_p) {
-      menuMgr.add(new StartLinkAction(_linkManager, treeViewer_p) {
+    if (isTEP) {
+      menuMgr.add(new StartLinkAction(linkManager, treeViewer) {
         @Override
         protected void postRun() {
           refreshViewers(true);
         }
       });
     } else {
-      menuMgr.add(new MakeLinkAction(_linkManager, treeViewer_p) {
+      menuMgr.add(new MakeLinkAction(linkManager, treeViewer) {
         @Override
         protected void postRun() {
           refreshViewers(true);
         }
       });
     }
-    Menu menu = menuMgr.createContextMenu(treeViewer_p.getControl());
-    treeViewer_p.getControl().setMenu(menu);
+    Menu menu = menuMgr.createContextMenu(treeViewer.getControl());
+    treeViewer.getControl().setMenu(menu);
   }
 
   /**
-   * @param isTEP_p
+   * @param isTEP
    */
-  protected void refreshViewers(boolean isTEP_p) {
-    _sepViewer.getTreeViewer().refresh(true);
-    if (isTEP_p) {
-      _tepViewer.getTreeViewer().refresh(true);
+  protected void refreshViewers(boolean isTEP) {
+    sepViewer.getTreeViewer().refresh(true);
+    if (isTEP) {
+      tepViewer.getTreeViewer().refresh(true);
     }
   }
 
   /**
    * @param selection
-   * @param treeViewer_p
+   * @param treeViewer
    * @return
    */
   @SuppressWarnings("unchecked")
-  protected List<Action> getAddElementActions(IStructuredSelection selection, final TreeViewer treeViewer_p) {
+  protected List<Action> getAddElementActions(IStructuredSelection selection, final TreeViewer treeViewer) {
     List<Action> actions = new ArrayList<Action>();
     final Object selectedElement = selection.getFirstElement();
     if (selectedElement instanceof AbstractFunction) {
@@ -373,7 +373,7 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
               String name = EcoreUtil2.getUniqueName(obj, (EObject) selectedElement, ref, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, obj.eClass().getName());
               obj.eSet(ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, name);
 
-              treeViewer_p.refresh(true);
+              treeViewer.refresh(true);
             }
             @Override
             public String getText() {
@@ -396,31 +396,31 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
   protected void createDragDropSourceTargets() {
     int operations = DND.DROP_MOVE;
     Transfer[] transferTypes = new Transfer[] { LocalTransfer.getInstance() };
-    _sepViewer.getTreeViewer().addDragSupport(operations, transferTypes, new EIAllocationDragListener(_sepViewer.getTreeViewer()));
-    _tepViewer.getTreeViewer().addDropSupport(operations, transferTypes, new EIAllocationDropAdapter(_sepViewer.getTreeViewer(), _tepViewer.getTreeViewer()));
+    sepViewer.getTreeViewer().addDragSupport(operations, transferTypes, new EIAllocationDragListener(sepViewer.getTreeViewer()));
+    tepViewer.getTreeViewer().addDropSupport(operations, transferTypes, new EIAllocationDropAdapter(sepViewer.getTreeViewer(), tepViewer.getTreeViewer()));
   }
 
   /**
-   * @param parent_p
+   * @param parent
    */
-  private void createStatusTextField(Composite parent_p) {
-    _statusBarText = new Text(parent_p, SWT.READ_ONLY | SWT.BORDER);
-    _statusBarText.setEditable(false);
+  private void createStatusTextField(Composite parent) {
+    statusBarText = new Text(parent, SWT.READ_ONLY | SWT.BORDER);
+    statusBarText.setEditable(false);
     GridData gdData = new GridData();
     gdData.horizontalAlignment = SWT.FILL;
     gdData.grabExcessHorizontalSpace = true;
     gdData.grabExcessVerticalSpace = false;
     gdData.horizontalSpan = 2;
-    _statusBarText.setLayoutData(gdData);
+    statusBarText.setLayoutData(gdData);
   }
 
   /**
-   * @param selectedElements_p
-   * @param transitionedElements_p
+   * @param selectedElements
+   * @param transitionedElements
    */
-  public void setSelection(List<ModelElement> selectedElements_p, List<ModelElement> transitionedElements_p) {
-    _selectedElements = selectedElements_p;
-    _transitionedElements = transitionedElements_p;
+  public void setSelection(List<ModelElement> selectedElements, List<ModelElement> transitionedElements) {
+    this.selectedElements = selectedElements;
+    this.transitionedElements = transitionedElements;
   }
 
   /**
@@ -432,29 +432,29 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
   }
 
   /**
-   * @param element_p
+   * @param element
    */
   @SuppressWarnings("unchecked")
-  protected void updateStatusBar(Object element_p) {
-    updateStatusBar(element_p, Collections.EMPTY_LIST);
+  protected void updateStatusBar(Object element) {
+    updateStatusBar(element, Collections.EMPTY_LIST);
   }
 
   /**
-   * @param element_p
-   * @param treeViewer_p
+   * @param element
+   * @param treeViewer
    */
-  protected void updateStatusBar(Object element_p, EIAllocationTreeViewer treeViewer_p) {
-    updateStatusBar(element_p, treeViewer_p.findItem(element_p));
+  protected void updateStatusBar(Object element, EIAllocationTreeViewer treeViewer) {
+    updateStatusBar(element, treeViewer.findItem(element));
   }
 
   /**
-   * @param element_p
-   * @param widget_p
+   * @param element
+   * @param widget
    */
-  protected void updateStatusBar(Object element_p, Widget widget_p) {
+  protected void updateStatusBar(Object element, Widget widget) {
     List<String> messages = new ArrayList<String>();
-    if (null != widget_p) {
-      Object data = widget_p.getData(EIAllocationLabelProvider.VALIDATION_KEY);
+    if (null != widget) {
+      Object data = widget.getData(EIAllocationLabelProvider.VALIDATION_KEY);
       if (data instanceof IStatus) {
         IStatus status = (IStatus) data;
         if (status.isMultiStatus()) {
@@ -466,27 +466,27 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
         }
       }
     }
-    updateStatusBar(element_p, messages);
+    updateStatusBar(element, messages);
   }
 
   /**
-   * @param status_p
+   * @param status
    * @return
    */
-  private String getRuleId(IStatus status_p) {
-    if (status_p instanceof ConstraintStatus) {
-      IConstraintDescriptor desc = ((ConstraintStatus) status_p).getConstraint().getDescriptor();
+  private String getRuleId(IStatus status) {
+    if (status instanceof ConstraintStatus) {
+      IConstraintDescriptor desc = ((ConstraintStatus) status).getConstraint().getDescriptor();
       return desc.getId().replace(desc.getPluginId() + ".", Util.ZERO_LENGTH_STRING); //$NON-NLS-1$
     }
     return Util.ZERO_LENGTH_STRING;
   }
 
   /**
-   * @param status_p
+   * @param status
    * @return
    */
-  private String getSeverity(IStatus status_p) {
-    switch (status_p.getSeverity()) {
+  private String getSeverity(IStatus status) {
+    switch (status.getSeverity()) {
       case IStatus.INFO: return "INFO"; //$NON-NLS-1$
       case IStatus.WARNING: return "WARNING"; //$NON-NLS-1$
       case IStatus.ERROR: return "ERROR"; //$NON-NLS-1$
@@ -495,51 +495,51 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
   }
 
   /**
-   * @param element_p
-   * @param messages_p
+   * @param element
+   * @param messages
    */
-  protected void updateStatusBar(Object element_p, List<String> messages_p) {
-    if (element_p instanceof AbstractNamedElement) {
-      AbstractNamedElement element = (AbstractNamedElement) element_p;
-      SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
-      String path = getPath(systemEngineering, element);
-      _statusBarText.setText("[" + messages_p.size() + " warning/error(s)] " + ((path == null) ? Util.ZERO_LENGTH_STRING : path));  //$NON-NLS-1$//$NON-NLS-2$
-      if (messages_p.size() > 0) {
+  protected void updateStatusBar(Object element, List<String> messages) {
+    if (element instanceof AbstractNamedElement) {
+      AbstractNamedElement elt = (AbstractNamedElement) element;
+      SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(elt);
+      String path = getPath(systemEngineering, elt);
+      statusBarText.setText("[" + messages.size() + " warning/error(s)] " + ((path == null) ? Util.ZERO_LENGTH_STRING : path));  //$NON-NLS-1$//$NON-NLS-2$
+      if (messages.size() > 0) {
         String tooltip = Util.ZERO_LENGTH_STRING;
-        for (int i = 0; i < messages_p.size(); i++) {
-          tooltip += messages_p.get(i);
-          if (i < messages_p.size() - 1) {
+        for (int i = 0; i < messages.size(); i++) {
+          tooltip += messages.get(i);
+          if (i < messages.size() - 1) {
             tooltip += "\n"; //$NON-NLS-1$
           }
         }
-        _statusBarText.setToolTipText(tooltip);
+        statusBarText.setToolTipText(tooltip);
       } else {
-        _statusBarText.setToolTipText(null);
+        statusBarText.setToolTipText(null);
       }
     } else {
-      _statusBarText.setText(Util.ZERO_LENGTH_STRING);
-      _statusBarText.setToolTipText(null);
+      statusBarText.setText(Util.ZERO_LENGTH_STRING);
+      statusBarText.setToolTipText(null);
     }
   }
 
   /**
    * Gets the path.
-   * @param sysEng_p tghe system engineering.
-   * @param target_p The target element.
+   * @param sysEng the system engineering.
+   * @param target The target element.
    * @return The path.
    */
-  public String getPath(SystemEngineering sysEng_p, AbstractNamedElement target_p) {
-    String name = (target_p instanceof ExchangeItemAllocation) ? ((ExchangeItemAllocation) target_p).getAllocatedItem().getName() : target_p.getName();
+  public String getPath(SystemEngineering sysEng, AbstractNamedElement target) {
+    String name = (target instanceof ExchangeItemAllocation) ? ((ExchangeItemAllocation) target).getAllocatedItem().getName() : target.getName();
     if (null == name) {
       name = Util.ZERO_LENGTH_STRING;
     }
     StringBuffer path = new StringBuffer(name);
 
-    EObject container = target_p.eContainer();
+    EObject container = target.eContainer();
     if (container instanceof AbstractNamedElement) {
-      AbstractNamedElement parent = (AbstractNamedElement) target_p.eContainer();
-      if (parent != sysEng_p) {
-        path.insert(path.indexOf(path.toString()), getPath(sysEng_p, parent) + PATH_SEPARATOR);
+      AbstractNamedElement parent = (AbstractNamedElement) target.eContainer();
+      if (parent != sysEng) {
+        path.insert(path.indexOf(path.toString()), getPath(sysEng, parent) + PATH_SEPARATOR);
       } else {
         path.insert(path.indexOf(path.toString()), parent.getName() + PATH_SEPARATOR);
       }

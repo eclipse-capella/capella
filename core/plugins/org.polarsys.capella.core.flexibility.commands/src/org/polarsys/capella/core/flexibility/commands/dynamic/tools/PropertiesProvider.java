@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,11 +35,11 @@ public class PropertiesProvider implements IActionsProvider {
   /**
    * @see org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider#getActions()
    */
-  public Collection<DefaultAction> getActions(Shell shell_p, ISelectionProvider selectionProvider_p) {
+  public Collection<DefaultAction> getActions(Shell shell, ISelectionProvider selectionProvider) {
     List<DefaultAction> list = new ArrayList<DefaultAction>();
 
 
-    list.add(new PropertiesAccessor2(shell_p, selectionProvider_p));
+    list.add(new PropertiesAccessor2(shell, selectionProvider));
 
 
     return list;
@@ -50,9 +50,9 @@ public class PropertiesProvider implements IActionsProvider {
     /**
      * {@inheritDoc}
      */
-    public Object getValue(IPropertyContext context_p) {
+    public Object getValue(IPropertyContext context) {
 
-      Object object = context_p.getCurrentValue(context_p.getProperties().getProperty("weight"));
+      Object object = context.getCurrentValue(context.getProperties().getProperty("weight"));
       if (object instanceof Integer) {
         return ((Integer) object) * 2;
       }
@@ -62,23 +62,23 @@ public class PropertiesProvider implements IActionsProvider {
     /**
      * {@inheritDoc}
      */
-    public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+    public IStatus validate(Object newValue, IPropertyContext context) {
 
-      Object object = context_p.getCurrentValue(context_p.getProperties().getProperty("weight"));
+      Object object = context.getCurrentValue(context.getProperties().getProperty("weight"));
       if (!(object instanceof Integer)) {
         return new Status(IStatus.ERROR, "hop", "weight should be an integer value");
       }
 
-      Object objectMax = context_p.getCurrentValue(context_p.getProperties().getProperty("maxweight"));
+      Object objectMax = context.getCurrentValue(context.getProperties().getProperty("maxweight"));
       if (!(objectMax instanceof Integer)) {
         return new Status(IStatus.ERROR, "hop", "weightmax should be an integer value");
       }
 
-      if (!(newValue_p instanceof Integer)) {
+      if (!(newValue instanceof Integer)) {
         return new Status(IStatus.ERROR, "hop", "weightdouble should be an integer value");
       }
 
-      if (((Integer) newValue_p).intValue() > ((Integer) objectMax).intValue()) {
+      if (((Integer) newValue).intValue() > ((Integer) objectMax).intValue()) {
         return new Status(IStatus.ERROR, "hop", "Double is not lower than max weight");
       }
 
@@ -95,11 +95,11 @@ public class PropertiesProvider implements IActionsProvider {
     /**
      * {@inheritDoc}
      */
-    public Object toType(Object value_p, IPropertyContext context_p) {
-      if (value_p instanceof String) {
-        return Integer.parseInt((String) value_p);
+    public Object toType(Object value, IPropertyContext context) {
+      if (value instanceof String) {
+        return Integer.parseInt((String) value);
       }
-      return value_p;
+      return value;
     }
 
     /**
@@ -112,7 +112,7 @@ public class PropertiesProvider implements IActionsProvider {
     /**
      * {@inheritDoc}
      */
-    public void updatedValue(IProperty property_p, IPropertyContext context_p) {
+    public void updatedValue(IProperty property, IPropertyContext context) {
 
     }
 
@@ -123,14 +123,14 @@ public class PropertiesProvider implements IActionsProvider {
     /**
      * {@inheritDoc}
      */
-    public Object getValue(IPropertyContext context_p) {
+    public Object getValue(IPropertyContext context) {
       return "";
     }
 
     /**
      * {@inheritDoc}
      */
-    public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+    public IStatus validate(Object newValue, IPropertyContext context) {
 
       return Status.OK_STATUS;
     }
@@ -145,8 +145,8 @@ public class PropertiesProvider implements IActionsProvider {
     /**
      * {@inheritDoc}
      */
-    public Object toType(Object value_p, IPropertyContext context_p) {
-      return value_p;
+    public Object toType(Object value, IPropertyContext context) {
+      return value;
     }
 
   }
@@ -154,8 +154,8 @@ public class PropertiesProvider implements IActionsProvider {
   @SuppressWarnings("nls")
   private class PropertiesAccessor2 extends DefaultAction {
 
-    public PropertiesAccessor2(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public PropertiesAccessor2(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override

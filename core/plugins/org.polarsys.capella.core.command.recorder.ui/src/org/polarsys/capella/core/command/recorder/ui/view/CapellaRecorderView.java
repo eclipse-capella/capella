@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,9 +49,9 @@ public class CapellaRecorderView extends AbstractRecorderView {
    * {@inheritDoc}
    */
   @Override
-  protected TreeViewer createTreeViewer(Composite parent_p) {
+  protected TreeViewer createTreeViewer(Composite parent) {
   
-    TreeViewer treeViewer= new TreeViewer(parent_p);
+    TreeViewer treeViewer= new TreeViewer(parent);
   
     Tree tree = treeViewer.getTree();
     tree.setHeaderVisible(true);
@@ -88,9 +88,9 @@ public class CapellaRecorderView extends AbstractRecorderView {
    * {@inheritDoc}
    */
   @Override
-  protected boolean loadRecord(File file_p) {
+  protected boolean loadRecord(File file) {
     
-    TXTRecordReader reader = new TXTRecordReader(file_p);
+    TXTRecordReader reader = new TXTRecordReader(file);
     
     reader.parse();
     

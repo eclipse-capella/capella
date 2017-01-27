@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,18 +39,18 @@ public class FunctionalExchangeSelection implements ILinkSelection {
   /**
    * @see org.polarsys.capella.core.data.core.utils.selection.ILinkSelection#getDisplayedTarget(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
    */
-  public EObject getDisplayedTarget(EObject object_p, EObject context_p) {
-    if (object_p instanceof FunctionalExchange) {
-      FunctionalExchange currentExchange = (FunctionalExchange) object_p;
-      if (context_p == null) {
+  public EObject getDisplayedTarget(EObject object, EObject context) {
+    if (object instanceof FunctionalExchange) {
+      FunctionalExchange currentExchange = (FunctionalExchange) object;
+      if (context == null) {
         return getLinkedFunction(currentExchange.getTarget());
         
-      } else if (context_p instanceof AbstractFunction) {
+      } else if (context instanceof AbstractFunction) {
         AbstractFunction returnedFunction = getLinkedFunction(currentExchange.getSource());
-        //if returnFunction equals to context_p or if one of its parent is context_p
+        //if returnFunction equals to context or if one of its parent is context
         // return target
         List<AbstractFunction> parentFunctions = FunctionExt.getParentFunctions(returnedFunction);
-        if (returnedFunction.equals(context_p) || parentFunctions.contains(context_p)) {
+        if (returnedFunction.equals(context) || parentFunctions.contains(context)) {
           returnedFunction = getLinkedFunction(currentExchange.getTarget());
         }
         return returnedFunction;
@@ -66,11 +66,11 @@ public class FunctionalExchangeSelection implements ILinkSelection {
     return FaPackage.Literals.FUNCTIONAL_EXCHANGE;
   }
 
-  public AbstractFunction getLinkedFunction(ActivityNode activityNode_p) {
-    if (activityNode_p instanceof AbstractFunction) {
-      return (AbstractFunction) activityNode_p;
+  public AbstractFunction getLinkedFunction(ActivityNode activityNode) {
+    if (activityNode instanceof AbstractFunction) {
+      return (AbstractFunction) activityNode;
     }
-    return (AbstractFunction) activityNode_p.eContainer();
+    return (AbstractFunction) activityNode.eContainer();
   }
 
 }

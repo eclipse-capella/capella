@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EAttribute;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.common.consonance.ui.sirius.SiriusDiffPolicy;
-
 
 /**
  * A diff policy for Capella models.
@@ -35,13 +34,13 @@ public class CapellaDiffPolicy extends SiriusDiffPolicy {
    * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusDiffPolicy#coverValue(java.lang.Object, org.eclipse.emf.ecore.EAttribute)
    */
   @Override
-  public boolean coverValue(Object value_p, EAttribute attribute_p) {
+  public boolean coverValue(Object value, EAttribute attribute) {
     boolean result;
-    if (IGNORING_EMPTY_STRING_ATTRIBUTES.contains(attribute_p)
-        && ((String)value_p).length() == 0)
+    if (IGNORING_EMPTY_STRING_ATTRIBUTES.contains(attribute)
+        && ((String)value).length() == 0)
       result = false;
     else
-      result = super.coverValue(value_p, attribute_p);
+      result = super.coverValue(value, attribute);
     return result;
   }
   

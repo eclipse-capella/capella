@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,10 +32,10 @@ public class AbstractCapabilityExtendSelection implements ILinkSelection {
   /**
    * @see org.polarsys.capella.core.data.core.utils.selection.ILinkSelection#getDisplayedTarget(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
    */
-  public EObject getDisplayedTarget(EObject object_p, EObject context_p) {
-    if ((object_p instanceof AbstractCapabilityExtend) && (context_p instanceof AbstractCapability)) {
-      AbstractCapabilityExtend currentGeneralization = (AbstractCapabilityExtend) object_p;
-      if (currentGeneralization.getExtended().equals(context_p)) {
+  public EObject getDisplayedTarget(EObject object, EObject context) {
+    if ((object instanceof AbstractCapabilityExtend) && (context instanceof AbstractCapability)) {
+      AbstractCapabilityExtend currentGeneralization = (AbstractCapabilityExtend) object;
+      if (currentGeneralization.getExtended().equals(context)) {
         return currentGeneralization.getExtension();
       }
       return currentGeneralization.getExtended();

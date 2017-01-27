@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,15 +21,15 @@ import org.polarsys.capella.core.data.fa.FunctionPort;
  */
 public class LinkManager {
 
-  List<Object> _startedElements;
+  List<Object> startedElements;
 
   public LinkManager() {
-    _startedElements = new ArrayList<Object>();
+    startedElements = new ArrayList<Object>();
   }
 
-  public void makeLinkTo(Collection<?> endElements_p) {
-    for (Object sepObj : _startedElements) {
-      for (Object tepObj : endElements_p) {
+  public void makeLinkTo(Collection<?> endElements) {
+    for (Object sepObj : startedElements) {
+      for (Object tepObj : endElements) {
         if ((sepObj instanceof AbstractFunction) && (tepObj instanceof AbstractFunction)) {
           EIAllocationModelHelpers.handleAllocation((AbstractFunction) sepObj, (AbstractFunction) tepObj);
         } else if ((sepObj instanceof FunctionPort) && (tepObj instanceof FunctionPort)) {
@@ -40,26 +40,26 @@ public class LinkManager {
     clearStartedElements();
   }
 
-  public void startLinkFrom(Collection<?> startedElements_p) {
+  public void startLinkFrom(Collection<?> startedElements) {
     clearStartedElements();
-    _startedElements.addAll(startedElements_p);
+    this.startedElements.addAll(startedElements);
   }
 
   public void clearStartedElements() {
-    if (!_startedElements.isEmpty()) {
-      _startedElements.clear();
+    if (!startedElements.isEmpty()) {
+      startedElements.clear();
     }
   }
 
   public List<?> getStartedElements() {
-    return _startedElements;
+    return startedElements;
   }
 
-  public boolean isStartedElement(Object element_p) {
-    return _startedElements.contains(element_p);
+  public boolean isStartedElement(Object element) {
+    return startedElements.contains(element);
   }
 
   public boolean isStarted() {
-    return !_startedElements.isEmpty();
+    return !startedElements.isEmpty();
   }
 }

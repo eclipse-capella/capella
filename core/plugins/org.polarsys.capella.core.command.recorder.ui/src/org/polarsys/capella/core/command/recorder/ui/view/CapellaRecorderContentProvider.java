@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,10 +23,10 @@ public class CapellaRecorderContentProvider implements ITreeContentProvider  {
   /**
    * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
    */
-  public Object[] getChildren(Object parentElement_p) {
+  public Object[] getChildren(Object parentElement) {
     return
-      hasChildren(parentElement_p) ?
-        ((DummyTreeData) parentElement_p).getChildren().toArray():
+      hasChildren(parentElement) ?
+        ((DummyTreeData) parentElement).getChildren().toArray():
         null
     ;
   }
@@ -34,22 +34,22 @@ public class CapellaRecorderContentProvider implements ITreeContentProvider  {
   /**
    * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
    */
-  public Object getParent(Object element_p) {
-    return ((DummyTreeData) element_p).getParent();
+  public Object getParent(Object element) {
+    return ((DummyTreeData) element).getParent();
   }
 
   /**
    * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
    */
-  public boolean hasChildren(Object element_p) {
-    return ((DummyTreeData) element_p).hasChildren();
+  public boolean hasChildren(Object element) {
+    return ((DummyTreeData) element).hasChildren();
   }
 
   /**
    * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
    */
-  public Object[] getElements(Object inputElement_p) {
-    return  ((DummyTreeData) inputElement_p).getChildren().toArray();
+  public Object[] getElements(Object inputElement) {
+    return  ((DummyTreeData) inputElement).getChildren().toArray();
   }
 
   /**
@@ -60,7 +60,7 @@ public class CapellaRecorderContentProvider implements ITreeContentProvider  {
   /**
    * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
    */
-  public void inputChanged(Viewer viewer_p, Object oldInput_p, Object newInput_p) { return;}
+  public void inputChanged(Viewer viewer, Object oldInput, Object newInput) { return;}
 
  
 

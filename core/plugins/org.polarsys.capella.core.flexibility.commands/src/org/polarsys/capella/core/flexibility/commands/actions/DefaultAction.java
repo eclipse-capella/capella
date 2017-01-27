@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,7 +48,7 @@ public class DefaultAction extends Action {
   ISelectionProvider selectionProvider;
 
   /**
-   * @return the shell_p
+   * @return the shell
    */
   public Shell getShell() {
     return shell;
@@ -59,7 +59,7 @@ public class DefaultAction extends Action {
   }
 
   /**
-   * @return the selectionProvider_p
+   * @return the selectionProvider
    */
   public ISelectionProvider getSelectionProvider() {
     return selectionProvider;
@@ -75,12 +75,12 @@ public class DefaultAction extends Action {
   }
 
   /**
-   * @param shell_p
-   * @param selectionProvider_p
+   * @param shell
+   * @param selectionProvider
    */
-  public DefaultAction(Shell shell_p, ISelectionProvider selectionProvider_p) {
-    selectionProvider = selectionProvider_p;
-    shell = shell_p;
+  public DefaultAction(Shell shell, ISelectionProvider selectionProvider) {
+    selectionProvider = selectionProvider;
+    shell = shell;
     setId(getId(getClass()));
   }
 
@@ -109,7 +109,7 @@ public class DefaultAction extends Action {
   }
 
   @SuppressWarnings("unchecked")
-  protected List<?> getSelection(Class<?> objectType_p) {
+  protected List<?> getSelection(Class<?> objectType) {
     List<Object> resultObjects = new ArrayList<Object>();
     // Get selected objects if any.
     if (getSelectionProvider().getSelection() instanceof IStructuredSelection) {
@@ -119,7 +119,7 @@ public class DefaultAction extends Action {
         Iterator<Object> i = selectedObjects.iterator();
         while (i.hasNext()) {
           Object element = i.next();
-          if ((objectType_p == null) || objectType_p.isInstance(element)) {
+          if ((objectType == null) || objectType.isInstance(element)) {
             resultObjects.add(element);
           }
         }

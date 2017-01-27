@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,9 +58,9 @@ public class CapellaEmbeddedLinkedTextEditor extends EmbeddedLinkedTextEditor {
        */
       new LinkedTextHyperlinkDetector() {
         @Override
-         protected void appendLinksFor(final LinkedTextHyperlink hl_p, Collection<IHyperlink> links_p) {
-           links_p.add(new IHyperlink() {
-             final IRegion region = new Region(hl_p.getOffset(), hl_p.getLength());
+         protected void appendLinksFor(final LinkedTextHyperlink hl, Collection<IHyperlink> links) {
+           links.add(new IHyperlink() {
+             final IRegion region = new Region(hl.getOffset(), hl.getLength());
              @Override
              public void open() {
                IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
@@ -68,7 +68,7 @@ public class CapellaEmbeddedLinkedTextEditor extends EmbeddedLinkedTextEditor {
                  IViewPart part = window.getActivePage().findView("capella.project.explorer"); //$NON-NLS-1$
                  if (part != null){
                    IShowInTarget showInTarget = (IShowInTarget) part.getAdapter(IShowInTarget.class);
-                   showInTarget.show(new ShowInContext(null, new StructuredSelection(hl_p.getTarget())));
+                   showInTarget.show(new ShowInContext(null, new StructuredSelection(hl.getTarget())));
                  }
                }
              }
@@ -89,8 +89,8 @@ public class CapellaEmbeddedLinkedTextEditor extends EmbeddedLinkedTextEditor {
       }
   };
   
-  public CapellaEmbeddedLinkedTextEditor(Composite parent_p, int style_p) {
-    super(parent_p, style_p);
+  public CapellaEmbeddedLinkedTextEditor(Composite parent, int style) {
+    super(parent, style);
   }
 
      /**
@@ -104,7 +104,7 @@ public class CapellaEmbeddedLinkedTextEditor extends EmbeddedLinkedTextEditor {
        * {@inheritDoc}
        */
       @Override
-      public IHyperlinkDetector[] getHyperlinkDetectors(ISourceViewer sourceViewer_p) {
+      public IHyperlinkDetector[] getHyperlinkDetectors(ISourceViewer sourceViewer) {
         return _hyperlinkDetectors;
       }
 
@@ -115,20 +115,20 @@ public class CapellaEmbeddedLinkedTextEditor extends EmbeddedLinkedTextEditor {
       protected IStructuredContentProvider getCompletionProcessorContentProvider() {
         return new DefaultLinkedTextContentProvider(new Predicate<EObject>(){
           @Override
-          public boolean apply(EObject arg0_p) {
-            return arg0_p instanceof AbstractNamedElement;
+          public boolean apply(EObject arg0) {
+            return arg0 instanceof AbstractNamedElement;
           }
         }){
           @Override
-          protected void fillAdditionalElements(EObject inputElement_p, Collection<EObject> result_p){
-            IModel model = ILibraryManager.INSTANCE.getModel(inputElement_p);
+          protected void fillAdditionalElements(EObject inputElement, Collection<EObject> result){
+            IModel model = ILibraryManager.INSTANCE.getModel(inputElement);
             for (IModel lib : LibraryManagerExt.getAllActivesReferences(model)){
               if (lib instanceof ICapellaModel){
-                Project root = ((ICapellaModel )lib).getProject(TransactionUtil.getEditingDomain(inputElement_p));
+                Project root = ((ICapellaModel )lib).getProject(TransactionUtil.getEditingDomain(inputElement));
                 for (TreeIterator<EObject> contents = root.eAllContents(); contents.hasNext();){
                   EObject next = contents.next();
                   if (getEObjectPredicate().apply(next)){
-                    result_p.add(next);
+                    result.add(next);
                   }
                 }
               }

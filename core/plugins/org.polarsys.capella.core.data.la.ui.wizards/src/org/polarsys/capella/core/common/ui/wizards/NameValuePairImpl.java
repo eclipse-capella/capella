@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,15 +21,15 @@ import org.polarsys.capella.core.ui.toolkit.decomposition.NameValuePair;
  * @deprecated Use {@link DecompositionItem} instead
  */
 public class NameValuePairImpl implements NameValuePair {
-  private String _name;
-  private Object _value;
-  private int _status;
-  private String _statusMessage;
-  private Set<String> _decompositionNames;
-  private DecompositionComponent _parentComponent;
-  private boolean _alreadyDecomposed;
+  private String name;
+  private Object value;
+  private int status;
+  private String statusMessage;
+  private Set<String> decompositionNames;
+  private DecompositionComponent parentComponent;
+  private boolean alreadyDecomposed;
 
-  private boolean _used;
+  private boolean used;
 
   /**
    * Default constructor
@@ -40,88 +40,88 @@ public class NameValuePairImpl implements NameValuePair {
 
   /**
    * Constructor
-   * @param name_p
+   * @param name
    *          the name
-   * @param value_p
+   * @param value
    *          the value
-   * @param status_p
+   * @param status
    *          the status
    */
-  public NameValuePairImpl(String name_p, Object value_p, int status_p) {
-    setName(name_p);
-    setValue(value_p);
-    setStatus(status_p);
+  public NameValuePairImpl(String name, Object value, int status) {
+    setName(name);
+    setValue(value);
+    setStatus(status);
     setStatusMessage(""); //$NON-NLS-1$
-    _decompositionNames = new TreeSet<String>();
+    decompositionNames = new TreeSet<String>();
   }
 
   /**
    * Constructor
-   * @param name_p
+   * @param name
    *          the name
-   * @param value_p
+   * @param value
    *          the value
-   * @param status_p
+   * @param status
    *          the status
-   * @param used_p
+   * @param used
    *          flag to indicate whether the interface is used or implemented
    */
-  public NameValuePairImpl(String name_p, Object value_p, int status_p, boolean used_p) {
-    this(name_p, value_p, status_p);
-    setUsed(used_p);
+  public NameValuePairImpl(String name, Object value, int status, boolean used) {
+    this(name, value, status);
+    setUsed(used);
   }
 
   /**
    * @return the name
    */
   public String getName() {
-    return _name;
+    return name;
   }
 
   /**
-   * @param name_p
+   * @param name
    *          the name to set
    */
-  public void setName(String name_p) {
-    _name = name_p;
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
    * @return the value
    */
   public Object getValue() {
-    return _value;
+    return value;
   }
 
   /**
-   * @param value_p
+   * @param value
    *          the value to set
    */
-  public void setValue(Object value_p) {
-    _value = value_p;
+  public void setValue(Object value) {
+    this.value = value;
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.viewers.decomposition.NameValuePair#getStatus()
    */
   public int getStatus() {
-    return _status;
+    return status;
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.viewers.decomposition.NameValuePair#setStatus(int)
    */
-  public void setStatus(int status_p) {
-    _status = status_p;
+  public void setStatus(int status) {
+    this.status = status;
   }
 
   /**
    * @see java.lang.Object#equals(java.lang.Object)
    */
   @Override
-  public boolean equals(Object object_p) {
-    if (object_p instanceof NameValuePair) {
-      return getValue().equals(((NameValuePair) object_p).getValue());
+  public boolean equals(Object object) {
+    if (object instanceof NameValuePair) {
+      return getValue().equals(((NameValuePair) object).getValue());
     }
     return false;
   }
@@ -130,59 +130,59 @@ public class NameValuePairImpl implements NameValuePair {
    * @return the statusMessage
    */
   public String getStatusMessage() {
-    return _statusMessage;
+    return statusMessage;
   }
 
   /**
-   * @param statusMessage_p
+   * @param statusMessage
    *          the statusMessage to set
    */
-  public void setStatusMessage(String statusMessage_p) {
-    _statusMessage = statusMessage_p;
+  public void setStatusMessage(String statusMessage) {
+    this.statusMessage = statusMessage;
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.viewers.decomposition.NameValuePair#addDecompositionNames(java.lang.String)
    */
-  public void addDecompositionNames(String decompositionName_p) {
-    _decompositionNames.add(decompositionName_p);
+  public void addDecompositionNames(String decompositionName) {
+    decompositionNames.add(decompositionName);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.viewers.decomposition.NameValuePair#getDecompositionNames()
    */
   public Set<String> getDecompositionNames() {
-    return _decompositionNames;
+    return decompositionNames;
   }
 
   /**
    * @return the used
    */
   public boolean isUsed() {
-    return _used;
+    return used;
   }
 
   /**
-   * @param used_p
+   * @param used
    *          the used to set
    */
-  public void setUsed(boolean used_p) {
-    _used = used_p;
+  public void setUsed(boolean used) {
+    this.used = used;
   }
 
   /**
    * @return the parentComponent
    */
   public DecompositionComponent getParentComponent() {
-    return _parentComponent;
+    return parentComponent;
   }
 
   /**
-   * @param parentComponent_p
+   * @param parentComponent
    *          the parentComponent to set
    */
-  public void setParentComponent(DecompositionComponent parentComponent_p) {
-    _parentComponent = parentComponent_p;
+  public void setParentComponent(DecompositionComponent parentComponent) {
+    this.parentComponent = parentComponent;
   }
 
   /**
@@ -198,7 +198,7 @@ public class NameValuePairImpl implements NameValuePair {
    */
   public NameValuePair getCopy() {
     NameValuePairImpl copy = new NameValuePairImpl(this.getName(), this.getValue(), this.getStatus(), this.isUsed());
-    copy._decompositionNames = this.getDecompositionNames();
+    copy.decompositionNames = this.getDecompositionNames();
     return copy;
   }
 
@@ -206,13 +206,13 @@ public class NameValuePairImpl implements NameValuePair {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.decomposition.NameValuePair#isAlreadyDecomposed()
    */
   public boolean isAlreadyDecomposed() {
-    return _alreadyDecomposed;
+    return alreadyDecomposed;
   }
 
   /**
-   * @param alreadyDecomposed_p the alreadyDecomposed to set
+   * @param alreadyDecomposed the alreadyDecomposed to set
    */
-  public void setAlreadyDecomposed(boolean alreadyDecomposed_p) {
-    _alreadyDecomposed = alreadyDecomposed_p;
+  public void setAlreadyDecomposed(boolean alreadyDecomposed) {
+    this.alreadyDecomposed = alreadyDecomposed;
   }
 }

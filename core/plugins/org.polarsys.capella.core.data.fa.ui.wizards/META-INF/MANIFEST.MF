@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.fa.ui.wizards;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.fa.ui.wizards.FAUIWizardsPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.ui.semantic.browser,
  org.polarsys.capella.core.validation
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.data.fa.ui.wizards,

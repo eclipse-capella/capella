@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,7 +60,7 @@ public class CapellaRecorderHandler implements IPreferenceChangeListener {
       } else {
         _recorderManager.shutDown();
       }
-    } catch (RecorderException exception_p) {
+    } catch (RecorderException exception) {
       // do nothing
     }
 
@@ -87,9 +87,9 @@ public class CapellaRecorderHandler implements IPreferenceChangeListener {
   /**
    * {@inheritDoc}
    */
-  public void preferenceChange(PreferenceChangeEvent event_p) {
+  public void preferenceChange(PreferenceChangeEvent event) {
 
-    if (event_p.getKey().equals(IRecorderCorePreferenceConstants.RECORDER_STATE_PREF_ID)) {
+    if (event.getKey().equals(IRecorderCorePreferenceConstants.RECORDER_STATE_PREF_ID)) {
       boolean newState = RecorderCorePreferenceServices.isRecorderShouldBeRunning();
 
       initRecorderManager();
@@ -100,15 +100,15 @@ public class CapellaRecorderHandler implements IPreferenceChangeListener {
         } else {
           _recorderManager.shutDown();
         }
-      } catch (RecorderException exception_p) {
+      } catch (RecorderException exception) {
         // Do nothing
       }
 
-    } else if ( event_p.getKey().equals(IRecorderCorePreferenceConstants.RECORDER_ROOT_PATH_PREF_ID) ) {
+    } else if ( event.getKey().equals(IRecorderCorePreferenceConstants.RECORDER_ROOT_PATH_PREF_ID) ) {
       try {
         _recorderManager.shutDown();
         _recorderManager.startup();
-      } catch (RecorderException exception_p) {
+      } catch (RecorderException exception) {
         // Do nothing
       }
     }

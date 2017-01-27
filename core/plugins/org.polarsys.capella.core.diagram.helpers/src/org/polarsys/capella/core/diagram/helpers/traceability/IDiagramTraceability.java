@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,47 +22,47 @@ public interface IDiagramTraceability {
 
   /**
    * Returns list of realizing diagrams for the given representation
-   * @param representation_p
+   * @param representation
    * @return
    */
-  public Collection<DRepresentation> getRealizingRepresentations(DRepresentation representation_p);
+  Collection<DRepresentation> getRealizingRepresentations(DRepresentation representation);
 
   /**
    * Returns list of realized diagrams for the given representation
-   * @param representation_p
+   * @param representation
    * @return
    */
-  public Collection<DRepresentation> getRealizedRepresentations(DRepresentation representation_p);
+  Collection<DRepresentation> getRealizedRepresentations(DRepresentation representation);
 
   /**
    * Add a traceability link between both representations, the realized and the realizing
-   * @param realized_p
-   * @param realizing_p
+   * @param realized
+   * @param realizing
    * @return
    */
-  public IStatus addRealizingRepresentation(DRepresentation realized_p, DRepresentation realizing_p);
+  IStatus addRealizingRepresentation(DRepresentation realized, DRepresentation realizing);
 
   /**
    * Returns whether the given representation can realize an other representation
    * (for instance, any OA cannot realize another diagram)
-   * @param realizing_p
+   * @param realizing
    * @return
    */
-  public boolean isRealizingable(DRepresentation realizing_p);
+  boolean isRealizingable(DRepresentation realizing);
 
   /**
    * Returns whether the given representation can be realized by another representation
    * (for instance, any EPBS cannot be realized by another diagram)
-   * @param realized_p
-   * @param realizing_p
+   * @param realized
+   * @param realizing
    * @return
    */
-  public boolean isRealizable(DRepresentation realized_p, DRepresentation realizing_p);
+  boolean isRealizable(DRepresentation realized, DRepresentation realizing);
 
   /**
    * Some traceability informations can be stored in helper to optimize performance.
    * Calling dispose() will clean stored information but all other methods of helper must works even after a dispose.
    */
-  public void dispose();
+  void dispose();
 
 }

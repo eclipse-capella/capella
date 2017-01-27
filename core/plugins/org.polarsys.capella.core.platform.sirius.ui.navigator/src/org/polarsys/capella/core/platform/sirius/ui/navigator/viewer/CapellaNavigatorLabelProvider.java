@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,7 +48,8 @@ import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 /**
  * The Capella navigator label provider.
  */
-public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvider implements IDescriptionProvider, IFontProvider {
+public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvider implements IDescriptionProvider,
+    IFontProvider {
   private static final String STATUS_LINE_PATH_SEPARATOR = "::"; //$NON-NLS-1$
   private Font _italicFont;
 
@@ -110,7 +111,8 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
       text = super.getText(((ItemWrapper) object).getWrappedObject());
     } else {
       // Fix due to 3.5 & 3.6 that have changed the implementation of IResource.toString().
-      IWorkbenchAdapter workbenchAdapter = (IWorkbenchAdapter) Platform.getAdapterManager().getAdapter(object, IWorkbenchAdapter.class);
+      IWorkbenchAdapter workbenchAdapter = (IWorkbenchAdapter) Platform.getAdapterManager().getAdapter(object,
+          IWorkbenchAdapter.class);
       text = (null != workbenchAdapter) ? workbenchAdapter.getLabel(object) : super.getText(object);
 
       if (object instanceof IFile) {
@@ -142,8 +144,8 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
       result = path.replaceAll(slash, STATUS_LINE_PATH_SEPARATOR);
     } else if (element instanceof DRepresentation || element instanceof DRepresentationDescriptor) {
       // Adapts the representation into a Capella element (it returns its Capella container).
-      DRepresentation representation = (element instanceof DRepresentationDescriptor) ?
-          ((DRepresentationDescriptor) element).getRepresentation() : (DRepresentation) element;
+      DRepresentation representation = (element instanceof DRepresentationDescriptor) ? ((DRepresentationDescriptor) element)
+          .getRepresentation() : (DRepresentation) element;
       Object modelElement = Platform.getAdapterManager().getAdapter(representation, ModelElement.class);
       if (null == modelElement) {
         modelElement = Platform.getAdapterManager().loadAdapter(representation, ModelElement.class.getName());
@@ -179,6 +181,23 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
         container = container.eContainer();
       }
       result = representationDescPath;
+    } else if (element instanceof EObject) {
+
+      String path = getText(element);
+      EObject container = ((EObject) element).eContainer();
+
+      while (null != container) {
+        String containerPath = getDescription(container);
+        if (null != containerPath) {
+          path = containerPath.concat(STATUS_LINE_PATH_SEPARATOR).concat(path);
+        }
+        if (containerPath.contains(STATUS_LINE_PATH_SEPARATOR)) {
+          container = null;
+        } else {
+          container = container.eContainer();
+        }
+      }
+      result = path;
     }
     return result;
   }

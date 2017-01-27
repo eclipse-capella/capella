@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,16 +46,16 @@ public class GeneratePluginInformationHandler extends AbstractUiHandler {
   /**
    * {@inheritDoc}
    */
-  public Object execute(final ExecutionEvent event_p) throws ExecutionException {
+  public Object execute(final ExecutionEvent event) throws ExecutionException {
     final Logger logger = Logger.getLogger(IReportManagerDefaultComponents.MODEL);
 
     ISelectionProvider selectionProvider = new ISelectionProvider() {
 
-      public void setSelection(ISelection selection_p) {
+      public void setSelection(ISelection selection) {
         //Do nothing.
       }
 
-      public void removeSelectionChangedListener(ISelectionChangedListener listener_p) {
+      public void removeSelectionChangedListener(ISelectionChangedListener listener) {
         //Do nothing.
       }
 
@@ -63,7 +63,7 @@ public class GeneratePluginInformationHandler extends AbstractUiHandler {
         return new StructuredSelection();
       }
 
-      public void addSelectionChangedListener(ISelectionChangedListener listener_p) {
+      public void addSelectionChangedListener(ISelectionChangedListener listener) {
         //Do nothing.
       }
     };
@@ -90,16 +90,16 @@ public class GeneratePluginInformationHandler extends AbstractUiHandler {
 
         try {
           fileOutput.delete(true, new NullProgressMonitor());
-        } catch (CoreException exception_p) {
-          exception_p.printStackTrace();
+        } catch (CoreException exception) {
+          exception.printStackTrace();
 
         }
       }
 
       try {
         fileOutput.create(new ByteArrayInputStream(sb.toString().getBytes()), isEnabled(), new NullProgressMonitor());
-      } catch (CoreException exception_p) {
-        exception_p.printStackTrace();
+      } catch (CoreException exception) {
+        exception.printStackTrace();
       }
 
     }
@@ -108,39 +108,39 @@ public class GeneratePluginInformationHandler extends AbstractUiHandler {
   }
 
   /**
-   * @param sb_p
-   * @param string_p
-   * @param contentProvider_p
-   * @param menuInput_p
+   * @param sb
+   * @param string
+   * @param contentProvider
+   * @param menuInput
    */
-  private void output(StringBuffer sb_p, String string_p, ITreeContentProvider contentProvider_p, Object menuInput_p) {
+  private void output(StringBuffer sb, String string, ITreeContentProvider contentProvider, Object menuInput) {
 
-    for (Object child : contentProvider_p.getElements(menuInput_p)) {
+    for (Object child : contentProvider.getElements(menuInput)) {
       if (child instanceof Category) {
         Category category = (Category) child;
-        sb_p.append(string_p + "<li>\n");
-        sb_p.append(string_p + "<span class='bold'>");
+        sb.append(string + "<li>\n");
+        sb.append(string + "<span class='bold'>");
         try {
-          sb_p.append(category.getName());
-        } catch (NotDefinedException exception_p) {
-          sb_p.append(category.getId());
+          sb.append(category.getName());
+        } catch (NotDefinedException exception) {
+          sb.append(category.getId());
         }
-        sb_p.append("</span>");
+        sb.append("</span>");
 
-        sb_p.append(string_p + "<span>");
+        sb.append(string + "<span>");
         try {
-          sb_p.append(category.getDescription());
-        } catch (NotDefinedException exception_p) {
-          sb_p.append(category.getId());
+          sb.append(category.getDescription());
+        } catch (NotDefinedException exception) {
+          sb.append(category.getId());
         }
-        sb_p.append("</span>\n");
+        sb.append("</span>\n");
 
-        sb_p.append(string_p + "<ul>\n");
+        sb.append(string + "<ul>\n");
 
-        output(sb_p, string_p + "  ", contentProvider_p, child);
+        output(sb, string + "  ", contentProvider, child);
 
-        sb_p.append(string_p + "</ul>\n");
-        sb_p.append(string_p + "</li>\n");
+        sb.append(string + "</ul>\n");
+        sb.append(string + "</li>\n");
 
       } else if (child instanceof Command) {
         Command command = (Command) child;
@@ -148,25 +148,25 @@ public class GeneratePluginInformationHandler extends AbstractUiHandler {
         if (!PolicyProvider.INSTANCE.getPolicy().cover(command.getId())) {
           continue;
         }
-        sb_p.append(string_p + "<li>\n");
+        sb.append(string + "<li>\n");
 
-        sb_p.append(string_p + "<span class='bold'>");
+        sb.append(string + "<span class='bold'>");
         try {
-          sb_p.append(command.getName());
-        } catch (NotDefinedException exception_p) {
-          sb_p.append(command.getId());
+          sb.append(command.getName());
+        } catch (NotDefinedException exception) {
+          sb.append(command.getId());
         }
-        sb_p.append("</span>");
+        sb.append("</span>");
 
-        sb_p.append(string_p + "<span>");
+        sb.append(string + "<span>");
         try {
-          sb_p.append(command.getDescription());
-        } catch (NotDefinedException exception_p) {
-          sb_p.append(command.getId());
+          sb.append(command.getDescription());
+        } catch (NotDefinedException exception) {
+          sb.append(command.getId());
         }
-        sb_p.append("</span>\n");
+        sb.append("</span>\n");
 
-        sb_p.append(string_p + "</li>\n");
+        sb.append(string + "</li>\n");
       }
     }
 

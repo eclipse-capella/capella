@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,11 +70,11 @@ public class EIAllocationManagementWizardAction extends AbstractTigAction {
 
   /**
    * decides weather list of elements are valid or not for allocation action
-   * @param elements_p
+   * @param elements
    * @return true if all the elements in the list are of type AbstractFunction, false otherwise
    */
-  public boolean isValidSelection(List<? extends EObject> elements_p) {
-    for (EObject object : elements_p) {
+  public boolean isValidSelection(List<? extends EObject> elements) {
+    for (EObject object : elements) {
       if (!(object instanceof AbstractFunction)) {
         return false;
       }
@@ -84,13 +84,13 @@ public class EIAllocationManagementWizardAction extends AbstractTigAction {
 
   /**
    * Create message box
-   * @param message_p
+   * @param message
    * @param icon_status
    */
-  private void createMessageBox(String message_p, int icon_status) {
+  private void createMessageBox(String message, int icon_status) {
     MessageBox messageBox = new MessageBox(getActiveShell(), icon_status);
     messageBox.setText(Messages.EIAllocationManagementWizardAction_Warning_Title);
-    messageBox.setMessage(message_p);
+    messageBox.setMessage(message);
     messageBox.open();
   }
 }

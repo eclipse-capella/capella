@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,9 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.helpers.log.FormatedLogger;
@@ -36,6 +38,7 @@ public abstract class BQTestCase extends BasicTestCase {
 	}
 
 	public abstract String getProjectForTest();
+	
 	public abstract String getBQFullQualifiedName();
 
 	public File getTestSuiteFile() {
@@ -46,12 +49,15 @@ public abstract class BQTestCase extends BasicTestCase {
 	public void test() throws Exception {
 		// Get and check parameters
 		String queryIdentifier = getBQFullQualifiedName();
-		IBusinessQuery businessQuery = BQTestHelpers.instanciateBQ(queryIdentifier);
+
+		IBusinessQuery businessQuery = BQTestHelpers.instanciateBQ(FrameworkUtil.getBundle(getClass()), queryIdentifier);
 		if (businessQuery == null)
-			assertTrue("Impossible to instanciate business query " + queryIdentifier, false); //$NON-NLS-1$
+			assertTrue(NLS.bind("Impossible to instanciate business query: {0}", queryIdentifier), false); //$NON-NLS-1$
+		
 		File testSuiteFile = getTestSuiteFile();
 		if (testSuiteFile == null || !testSuiteFile.exists())
-			assertTrue("test suite file does not exist (" + testSuiteFile + ")", false); //$NON-NLS-1$ //$NON-NLS-2$
+			assertTrue(NLS.bind("test suite file does not exist ({0})", testSuiteFile), false); //$NON-NLS-1$ //$NON-NLS-2$
+
 		Session sessionForTest = getSessionForTestModel(getProjectForTest());
 		
 		// Begin test

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,14 +68,14 @@ public class AccessActionsProvider implements IActionsProvider {
   /**
    * @see org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider#getActions()
    */
-  public Collection<DefaultAction> getActions(Shell shell_p, ISelectionProvider selectionProvider_p) {
+  public Collection<DefaultAction> getActions(Shell shell, ISelectionProvider selectionProvider) {
     List<DefaultAction> list = new ArrayList<DefaultAction>();
 
-    list.add(new PhysicalLinkDelegation(shell_p, selectionProvider_p));
-    list.add(new OpenAsText(shell_p, selectionProvider_p));
-    list.add(new CreateCapellaProject(shell_p, selectionProvider_p));
-    list.add(new SetAsReadOnly(shell_p, selectionProvider_p));
-    list.add(new UnsetAsReadOnly(shell_p, selectionProvider_p));
+    list.add(new PhysicalLinkDelegation(shell, selectionProvider));
+    list.add(new OpenAsText(shell, selectionProvider));
+    list.add(new CreateCapellaProject(shell, selectionProvider));
+    list.add(new SetAsReadOnly(shell, selectionProvider));
+    list.add(new UnsetAsReadOnly(shell, selectionProvider));
 
     return list;
   }
@@ -83,8 +83,8 @@ public class AccessActionsProvider implements IActionsProvider {
   @SuppressWarnings("nls")
   private class PhysicalLinkDelegation extends DefaultAction {
 
-    public PhysicalLinkDelegation(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public PhysicalLinkDelegation(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -123,8 +123,8 @@ public class AccessActionsProvider implements IActionsProvider {
   @SuppressWarnings("nls")
   private class TransitionTest extends DefaultAction {
 
-    public TransitionTest(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public TransitionTest(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -155,8 +155,8 @@ public class AccessActionsProvider implements IActionsProvider {
   @SuppressWarnings("nls")
   private class MakeLogCommands extends DefaultAction {
 
-    public MakeLogCommands(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public MakeLogCommands(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -214,8 +214,8 @@ public class AccessActionsProvider implements IActionsProvider {
   @SuppressWarnings("nls")
   private class MustBeTransitioned extends DefaultAction {
 
-    public MustBeTransitioned(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public MustBeTransitioned(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -294,8 +294,8 @@ public class AccessActionsProvider implements IActionsProvider {
       }
     }
 
-    public ValidationAccessor(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public ValidationAccessor(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     /**
@@ -324,10 +324,10 @@ public class AccessActionsProvider implements IActionsProvider {
 
       TreeSet<ConstraintDesc> elements = new TreeSet<ConstraintDesc>(new Comparator<ConstraintDesc>() {
 
-        public int compare(ConstraintDesc arg0_p, ConstraintDesc arg1_p) {
-          int res = arg0_p.id.compareTo(arg1_p.id);
+        public int compare(ConstraintDesc arg0, ConstraintDesc arg1) {
+          int res = arg0.id.compareTo(arg1.id);
           if (res == 0) {
-            res = arg0_p.name.compareTo(arg1_p.name);
+            res = arg0.name.compareTo(arg1.name);
           }
           return res;
         }
@@ -362,8 +362,8 @@ public class AccessActionsProvider implements IActionsProvider {
       return getSelection(ModelElement.class).size() > 0;
     }
 
-    public DirtyDiagramAccessor(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public DirtyDiagramAccessor(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -437,8 +437,8 @@ public class AccessActionsProvider implements IActionsProvider {
       return getSelection(ModelElement.class).size() > 0;
     }
 
-    public EmptyDiagramAccessor(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public EmptyDiagramAccessor(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -489,8 +489,8 @@ public class AccessActionsProvider implements IActionsProvider {
 
     }
 
-    private void initMap(EObject obj_p) {
-      ResourceSet set = obj_p.eResource().getResourceSet();
+    private void initMap(EObject obj) {
+      ResourceSet set = obj.eResource().getResourceSet();
       for (Resource resource : set.getResources()) {
         if (resource instanceof CapellamodellerResourceImpl) {
           Iterator<EObject> res = resource.getAllContents();
@@ -507,15 +507,15 @@ public class AccessActionsProvider implements IActionsProvider {
       }
     }
 
-    private boolean performDiagram(DDiagram diagram_p) {
+    private boolean performDiagram(DDiagram diagram) {
       Logger logger = getLogger();
       List<DDiagramElement> invalids = new ArrayList<DDiagramElement>();
       List<DDiagramElement> realInvalids = new ArrayList<DDiagramElement>();
       List<DDiagramElement> realPortInvalids = new ArrayList<DDiagramElement>();
 
-      logger.info(new EmbeddedMessage(NLS.bind("Diagram ''{0}'' checking...", diagram_p.getName()), IReportManagerDefaultComponents.UI, diagram_p));
+      logger.info(new EmbeddedMessage(NLS.bind("Diagram ''{0}'' checking...", diagram.getName()), IReportManagerDefaultComponents.UI, diagram));
 
-      for (DDiagramElement element : diagram_p.getDiagramElements()) {
+      for (DDiagramElement element : diagram.getDiagramElements()) {
 
         if (element.getTarget() == null) {
           invalids.add(element);
@@ -540,13 +540,13 @@ public class AccessActionsProvider implements IActionsProvider {
       }
 
       logger.info(new EmbeddedMessage(NLS.bind("{0} graphical elements aren't related to a semantic element.", invalids.size()),
-          IReportManagerDefaultComponents.UI, diagram_p));
+          IReportManagerDefaultComponents.UI, diagram));
       if (invalids.size() > 0) {
 
         logger.info(new EmbeddedMessage(NLS.bind(
             "Diagram contains {0} graphical elements which can potentially be associated to an existing semantic element.", realInvalids.size()
                                                                                                                             + realPortInvalids.size()),
-            IReportManagerDefaultComponents.UI, diagram_p));
+            IReportManagerDefaultComponents.UI, diagram));
 
         for (DDiagramElement realInvalid : realInvalids) {
           logger.info(new EmbeddedMessage(NLS.bind(
@@ -569,8 +569,8 @@ public class AccessActionsProvider implements IActionsProvider {
 
   private class OpenAsText extends DefaultAction {
 
-    public OpenAsText(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public OpenAsText(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -603,7 +603,7 @@ public class AccessActionsProvider implements IActionsProvider {
           try {
             IDE.openEditor(Activator.getDefault().getWorkbench().getActiveWorkbenchWindow().getActivePage(), file,
                 org.eclipse.ui.editors.text.EditorsUI.DEFAULT_TEXT_EDITOR_ID, true);
-          } catch (PartInitException exception_p) {
+          } catch (PartInitException exception) {
             // Nothing here
           }
         }
@@ -616,8 +616,8 @@ public class AccessActionsProvider implements IActionsProvider {
 
   private class CompareAsText extends DefaultAction {
 
-    public CompareAsText(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public CompareAsText(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -648,8 +648,8 @@ public class AccessActionsProvider implements IActionsProvider {
 
   private class UnsetAsReadOnly extends SetAsReadOnly {
 
-    public UnsetAsReadOnly(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public UnsetAsReadOnly(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -670,8 +670,8 @@ public class AccessActionsProvider implements IActionsProvider {
 
   private class SetAsReadOnly extends DefaultAction {
 
-    public SetAsReadOnly(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public SetAsReadOnly(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -709,7 +709,7 @@ public class AccessActionsProvider implements IActionsProvider {
             attr.setArchive(true);
             attr.setReadOnly(isReadOnly());
             file.setResourceAttributes(attr);
-          } catch (CoreException exception_p) {
+          } catch (CoreException exception) {
             // Nothing here
           }
         }
@@ -721,8 +721,8 @@ public class AccessActionsProvider implements IActionsProvider {
 
   private class CreateCapellaProject extends DefaultAction {
 
-    public CreateCapellaProject(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public CreateCapellaProject(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override

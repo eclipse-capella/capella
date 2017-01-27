@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -150,6 +150,31 @@ public class BlockArchitectureExt {
     }
 
     return allocatedArchitectures;
+  }
+
+  /**
+   * Returns all architectures allocating by the architecture and also the given architecture
+   */
+  public static Collection<BlockArchitecture> getAllAllocatingArchitectures(BlockArchitecture architecture) {
+    LinkedList<BlockArchitecture> listArchitectures = new LinkedList<BlockArchitecture>();
+    Collection<BlockArchitecture> allocatingArchitectures = new HashSet<BlockArchitecture>();
+
+    if (architecture != null) {
+      listArchitectures.add(architecture);
+
+      while (listArchitectures.size() > 0) {
+        BlockArchitecture current = listArchitectures.removeFirst();
+        allocatingArchitectures.add(current);
+
+        for (BlockArchitecture allocated : current.getAllocatingArchitectures()) {
+          if ((allocated != null) && !allocatingArchitectures.contains(allocated)) {
+            listArchitectures.addLast(allocated);
+          }
+        }
+      }
+    }
+
+    return allocatingArchitectures;
   }
 
   /**

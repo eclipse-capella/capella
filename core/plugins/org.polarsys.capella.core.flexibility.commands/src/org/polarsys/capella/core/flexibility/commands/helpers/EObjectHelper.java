@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -94,7 +94,7 @@ public class EObjectHelper {
       try {
         String value = (String) field.get(null);
         namings.add(value);
-      } catch (Exception exception_p) {
+      } catch (Exception exception) {
       }
     }
 
@@ -162,7 +162,7 @@ public class EObjectHelper {
   }
 
   /**
-   * @param object_p
+   * @param object
    * @return
    */
   protected String getQualifiedIdentifier(EObject object, boolean isLast) {

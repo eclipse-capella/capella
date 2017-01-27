@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,9 +32,9 @@ import com.google.common.collect.ImmutableMap;
  */
 public class ScenarioSection extends NamedElementSection {
 
-  private ScenarioKindGroup _scenarioKindGroup;
-  private MultipleSemanticField _realizedScenariosField;
-  private ConstraintReferenceGroup _prePostGroup;
+  private ScenarioKindGroup scenarioKindGroup;
+  private MultipleSemanticField realizedScenariosField;
+  private ConstraintReferenceGroup prePostGroup;
 
   /**
    * {@inheritDoc}
@@ -45,19 +45,19 @@ public class ScenarioSection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _scenarioKindGroup = new ScenarioKindGroup(_rootParentComposite, getWidgetFactory(), true);
-    _scenarioKindGroup.setDisplayedInWizard(displayedInWizard);
+    scenarioKindGroup = new ScenarioKindGroup(_rootParentComposite, getWidgetFactory(), true);
+    scenarioKindGroup.setDisplayedInWizard(displayedInWizard);
 
-    _prePostGroup = new ConstraintReferenceGroup(ImmutableMap.of(
+    prePostGroup = new ConstraintReferenceGroup(ImmutableMap.of(
         Messages.getString("Scenario_PreCondition_Label"), InteractionPackage.Literals.SCENARIO__PRE_CONDITION, //$NON-NLS-1$
         Messages.getString("Scenario_PostCondition_Label"), InteractionPackage.Literals.SCENARIO__POST_CONDITION //$NON-NLS-1$
     ));
-    _prePostGroup.createControls(_rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
+    prePostGroup.createControls(_rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
 
 
-    _realizedScenariosField = new MultipleSemanticField(getReferencesGroup(),
+    realizedScenariosField = new MultipleSemanticField(getReferencesGroup(),
         Messages.getString("ScenarioSection_RealizedScenarios_Label"), getWidgetFactory(), new Scenario_RealizedScenariosController()); //$NON-NLS-1$
-    _realizedScenariosField.setDisplayedInWizard(displayedInWizard);
+    realizedScenariosField.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
@@ -67,9 +67,9 @@ public class ScenarioSection extends NamedElementSection {
   public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
-    _scenarioKindGroup.loadData(capellaElement, InteractionPackage.eINSTANCE.getScenario_Kind());
-    _realizedScenariosField.loadData(capellaElement, InteractionPackage.eINSTANCE.getScenario_OwnedScenarioRealization());
-    _prePostGroup.loadData(capellaElement);
+    scenarioKindGroup.loadData(capellaElement, InteractionPackage.eINSTANCE.getScenario_Kind());
+    realizedScenariosField.loadData(capellaElement, InteractionPackage.eINSTANCE.getScenario_OwnedScenarioRealization());
+    prePostGroup.loadData(capellaElement);
   }
 
   /**
@@ -88,9 +88,9 @@ public class ScenarioSection extends NamedElementSection {
   public List<AbstractSemanticField> getSemanticFields() {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
     fields.addAll(super.getSemanticFields());
-    fields.add(_realizedScenariosField);
-    fields.add(_scenarioKindGroup);
-    fields.addAll(_prePostGroup.getFields());
+    fields.add(realizedScenariosField);
+    fields.add(scenarioKindGroup);
+    fields.addAll(prePostGroup.getFields());
     return fields;
   }
 }

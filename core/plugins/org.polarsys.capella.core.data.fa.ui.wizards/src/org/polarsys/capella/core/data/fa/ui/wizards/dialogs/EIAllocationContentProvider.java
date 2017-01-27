@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ public class EIAllocationContentProvider implements ITreeContentProvider {
   /**
    * {@inheritDoc}
    */
-  public void inputChanged(Viewer viewer_p, Object oldInput_p, Object newInput_p) {
+  public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
     // do nothing
   }
 
@@ -46,11 +46,11 @@ public class EIAllocationContentProvider implements ITreeContentProvider {
    * {@inheritDoc}
    */
   @Override
-  public Object[] getElements(Object inputElement_p) {
-    if (inputElement_p instanceof AbstractFunction) {
-      return new Object[] { inputElement_p };
-    } else if (inputElement_p instanceof List) {
-      return ((List<?>) inputElement_p).toArray();
+  public Object[] getElements(Object inputElement) {
+    if (inputElement instanceof AbstractFunction) {
+      return new Object[] { inputElement };
+    } else if (inputElement instanceof List) {
+      return ((List<?>) inputElement).toArray();
     }
     return new Object[0];
   }
@@ -59,20 +59,20 @@ public class EIAllocationContentProvider implements ITreeContentProvider {
    * {@inheritDoc}
    */
   @Override
-  public Object[] getChildren(Object element_p) {
-    if (element_p instanceof AbstractFunction) {
+  public Object[] getChildren(Object element) {
+    if (element instanceof AbstractFunction) {
       List<ModelElement> children = new ArrayList<ModelElement>();
-      children.addAll(((AbstractFunction) element_p).getOwnedFunctions());
-      children.addAll(((AbstractFunction) element_p).getInputs());
-      children.addAll(((AbstractFunction) element_p).getOutputs());
+      children.addAll(((AbstractFunction) element).getOwnedFunctions());
+      children.addAll(((AbstractFunction) element).getInputs());
+      children.addAll(((AbstractFunction) element).getOutputs());
       return children.toArray();
-    } else if (element_p instanceof FunctionInputPort) {
+    } else if (element instanceof FunctionInputPort) {
       List<ModelElement> children = new ArrayList<ModelElement>();
-      children.addAll(((FunctionInputPort) element_p).getIncomingExchangeItems());
+      children.addAll(((FunctionInputPort) element).getIncomingExchangeItems());
       return children.toArray();
-    } else if (element_p instanceof FunctionOutputPort) {
+    } else if (element instanceof FunctionOutputPort) {
       List<ModelElement> children = new ArrayList<ModelElement>();
-      children.addAll(((FunctionOutputPort) element_p).getOutgoingExchangeItems());
+      children.addAll(((FunctionOutputPort) element).getOutgoingExchangeItems());
       return children.toArray();
     }
     return new Object[0];
@@ -82,13 +82,13 @@ public class EIAllocationContentProvider implements ITreeContentProvider {
    * {@inheritDoc}
    */
   @Override
-  public Object getParent(Object element_p) {
-    if (element_p instanceof AbstractFunction) {
-      return ((EObject) element_p).eContainer();
-    } else if (element_p instanceof FunctionPort) {
-      return ((EObject) element_p).eContainer();
-    } else if (element_p instanceof ExchangeItem) {
-      return EIAllocationModelHelpers.getOwners((ExchangeItem) element_p);
+  public Object getParent(Object element) {
+    if (element instanceof AbstractFunction) {
+      return ((EObject) element).eContainer();
+    } else if (element instanceof FunctionPort) {
+      return ((EObject) element).eContainer();
+    } else if (element instanceof ExchangeItem) {
+      return EIAllocationModelHelpers.getOwners((ExchangeItem) element);
     }
     return null;
   }
@@ -97,20 +97,20 @@ public class EIAllocationContentProvider implements ITreeContentProvider {
    * {@inheritDoc}
    */
   @Override
-  public boolean hasChildren(Object element_p) {
-	  if (element_p instanceof AbstractFunction) {
+  public boolean hasChildren(Object element) {
+	  if (element instanceof AbstractFunction) {
 	    List<ModelElement> children = new ArrayList<ModelElement>();
-	    children.addAll(((AbstractFunction) element_p).getOwnedFunctions());
-      children.addAll(((AbstractFunction) element_p).getInputs());
-      children.addAll(((AbstractFunction) element_p).getOutputs());
+	    children.addAll(((AbstractFunction) element).getOwnedFunctions());
+      children.addAll(((AbstractFunction) element).getInputs());
+      children.addAll(((AbstractFunction) element).getOutputs());
 		  return !children.isEmpty();
-	  } else if (element_p instanceof FunctionInputPort) {
+	  } else if (element instanceof FunctionInputPort) {
       List<ModelElement> children = new ArrayList<ModelElement>();
-      children.addAll(((FunctionInputPort) element_p).getIncomingExchangeItems());
+      children.addAll(((FunctionInputPort) element).getIncomingExchangeItems());
       return !children.isEmpty();
-    } else if (element_p instanceof FunctionOutputPort) {
+    } else if (element instanceof FunctionOutputPort) {
       List<ModelElement> children = new ArrayList<ModelElement>();
-      children.addAll(((FunctionOutputPort) element_p).getOutgoingExchangeItems());
+      children.addAll(((FunctionOutputPort) element).getOutgoingExchangeItems());
       return !children.isEmpty();
 	  }
 	  return false;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,60 +19,60 @@ import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionModel;
 /**
  */
 public class LCDecompositionValidateWizardPage extends WizardPage {
-  private DecompositionModel _decompositionModel;
-  private DecompositionGeneralViewer _decompositionGeneralViewer;
-  private LCDecompositionController _controller;
+  private DecompositionModel decompositionModel;
+  private DecompositionGeneralViewer decompositionGeneralViewer;
+  private LCDecompositionController controller;
 
   /**
    * @return the decompositionGeneralViewer
    */
   public DecompositionGeneralViewer getDecompositionGeneralViewer() {
-    return _decompositionGeneralViewer;
+    return decompositionGeneralViewer;
   }
 
   /**
-   * @param decompositionGeneralViewer_p the decompositionGeneralViewer to set
+   * @param decompositionGeneralViewer the decompositionGeneralViewer to set
    */
-  public void setDecompositionGeneralViewer(DecompositionGeneralViewer decompositionGeneralViewer_p) {
-    _decompositionGeneralViewer = decompositionGeneralViewer_p;
+  public void setDecompositionGeneralViewer(DecompositionGeneralViewer decompositionGeneralViewer) {
+    this.decompositionGeneralViewer = decompositionGeneralViewer;
   }
 
-  public LCDecompositionValidateWizardPage(DecompositionModel decompositionModel_p) {
+  public LCDecompositionValidateWizardPage(DecompositionModel decompositionModel) {
     this("Capella Logical Component Decomposition"); //$NON-NLS-1$
-    _decompositionModel = decompositionModel_p;
+    this.decompositionModel = decompositionModel;
     setPageComplete(false);
   }
 
   /**
-   * @param pageName_p
+   * @param pageName
    */
-  protected LCDecompositionValidateWizardPage(String pageName_p) {
-    super(pageName_p);
-    setTitle(pageName_p);
+  protected LCDecompositionValidateWizardPage(String pageName) {
+    super(pageName);
+    setTitle(pageName);
     setMessage("This editor displays the Capella Logical Component Decomposition - Synthesis Check"); //$NON-NLS-1$
   }
 
   /**
    * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
    */
-  public void createControl(Composite parent_p) {
-    _decompositionGeneralViewer = new DecompositionGeneralViewer(parent_p, _decompositionModel, false);
-    _decompositionGeneralViewer.setSourceTreeContentProvider(true);
-    setControl(_decompositionGeneralViewer.getControl());
+  public void createControl(Composite parent) {
+    decompositionGeneralViewer = new DecompositionGeneralViewer(parent, decompositionModel, false);
+    decompositionGeneralViewer.setSourceTreeContentProvider(true);
+    setControl(decompositionGeneralViewer.getControl());
   }
 
   /**
    * @return the controller
    */
   public LCDecompositionController getController() {
-    return _controller;
+    return controller;
   }
 
   /**
-   * @param controller_p the controller to set
+   * @param controller the controller to set
    */
-  public void setController(LCDecompositionController controller_p) {
-    _controller = controller_p;
+  public void setController(LCDecompositionController controller) {
+    this.controller = controller;
   }
 
 }

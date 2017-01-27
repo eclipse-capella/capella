@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,11 +30,11 @@ public class HelperActionsProvider implements IActionsProvider {
   /**
    * @see org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider#getActions()
    */
-  public Collection<DefaultAction> getActions(Shell shell_p, ISelectionProvider selectionProvider_p) {
+  public Collection<DefaultAction> getActions(Shell shell, ISelectionProvider selectionProvider) {
     List<DefaultAction> list = new ArrayList<DefaultAction>();
 
-    list.add(new FunctionalChainInformations(shell_p, selectionProvider_p));
-    list.add(new FunctionalChainInvolvementInformations(shell_p, selectionProvider_p));
+    list.add(new FunctionalChainInformations(shell, selectionProvider));
+    list.add(new FunctionalChainInvolvementInformations(shell, selectionProvider));
 
     return list;
   }
@@ -45,8 +45,8 @@ public class HelperActionsProvider implements IActionsProvider {
 
     String SEP = "  ";
 
-    public FunctionalChainInvolvementInformations(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public FunctionalChainInvolvementInformations(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -79,8 +79,8 @@ public class HelperActionsProvider implements IActionsProvider {
     }
 
     /**
-     * @param chain_p
-     * @param flatFirstFunctionalChainInvolvments_p
+     * @param chain
+     * @param flatFirstFunctionalChainInvolvments
      */
     private Collection<Object> getCollection(Object a, Object b) {
       Collection<Object> list = new LinkedList<Object>();
@@ -104,8 +104,8 @@ public class HelperActionsProvider implements IActionsProvider {
 
     String SEP = "  ";
 
-    public FunctionalChainInformations(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public FunctionalChainInformations(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -138,8 +138,8 @@ public class HelperActionsProvider implements IActionsProvider {
     }
 
     /**
-     * @param chain_p
-     * @param flatFirstFunctionalChainInvolvments_p
+     * @param chain
+     * @param flatFirstFunctionalChainInvolvments
      */
     private Collection<Object> getCollection(Object a, Object b) {
       Collection<Object> list = new LinkedList<Object>();

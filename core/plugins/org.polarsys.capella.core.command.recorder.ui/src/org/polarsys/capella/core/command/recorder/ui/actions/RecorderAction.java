@@ -34,14 +34,14 @@ public class RecorderAction implements IWorkbenchWindowActionDelegate {
   /**
    * @see org.eclipse.ui.IWorkbenchWindowActionDelegate#init(org.eclipse.ui.IWorkbenchWindow)
    */
-  public void init(IWorkbenchWindow window_p) {
+  public void init(IWorkbenchWindow window) {
   }
 
   
   /**
    * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
    */
-  public void run(IAction action_p) {
+  public void run(IAction action) {
     
     IRecorderManager recorderManager = CapellaRecorderHandler.INSTANCE.getRecorder();
     
@@ -53,7 +53,7 @@ public class RecorderAction implements IWorkbenchWindowActionDelegate {
   /**
    * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
    */
-  public void selectionChanged(IAction action_p, ISelection selection_p) {
+  public void selectionChanged(IAction action, ISelection selection) {
     // Do nothing
   }
 

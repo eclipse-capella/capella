@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,21 +25,21 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
  */
 public class LCDecompositionWizardPage extends WizardPage {
 
-  private DecompositionModel _decompositionModel;
-  private DecompositionGeneralViewer _decompositionGeneralViewer;
-  private LCDecompositionController _controller;
+  private DecompositionModel decompositionModel;
+  private DecompositionGeneralViewer decompositionGeneralViewer;
+  private LCDecompositionController controller;
 
-  public LCDecompositionWizardPage(DecompositionModel decompositionModel_p) {
+  public LCDecompositionWizardPage(DecompositionModel decompositionModel) {
     this("Capella Logical Component Decomposition"); //$NON-NLS-1$
-    _decompositionModel = decompositionModel_p;
+    this.decompositionModel = decompositionModel;
   }
 
   /**
-   * @param pageName_p
+   * @param pageName
    */
-  public LCDecompositionWizardPage(String pageName_p) {
-    super(pageName_p);
-    setTitle(pageName_p);
+  public LCDecompositionWizardPage(String pageName) {
+    super(pageName);
+    setTitle(pageName);
     setMessage("This editor displays the Capella Logical Component Decomposition"); //$NON-NLS-1$
     setPageComplete(false);
 
@@ -48,14 +48,14 @@ public class LCDecompositionWizardPage extends WizardPage {
   /**
    * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
    */
-  public void createControl(Composite parent_p) {
-    _decompositionGeneralViewer =
-        new DecompositionGeneralViewer(parent_p, _decompositionModel, true, getSynchronizationModeSelected(_decompositionModel), false);
-    _decompositionGeneralViewer.setSourceTreeContentProvider(false);
-    _decompositionGeneralViewer.addTreeTipListeners();
-    _decompositionGeneralViewer.setDialogPage(this);
+  public void createControl(Composite parent) {
+    decompositionGeneralViewer =
+        new DecompositionGeneralViewer(parent, decompositionModel, true, getSynchronizationModeSelected(decompositionModel), false);
+    decompositionGeneralViewer.setSourceTreeContentProvider(false);
+    decompositionGeneralViewer.addTreeTipListeners();
+    decompositionGeneralViewer.setDialogPage(this);
 
-    setControl(_decompositionGeneralViewer.getControl());
+    setControl(decompositionGeneralViewer.getControl());
   }
 
   /**
@@ -64,7 +64,7 @@ public class LCDecompositionWizardPage extends WizardPage {
   @Override
   public IWizardPage getNextPage() {
     LCDecompositionValidateWizardPage page = (LCDecompositionValidateWizardPage) super.getNextPage();
-    _decompositionModel.refreshStatusForSynthesisCheck();
+    decompositionModel.refreshStatusForSynthesisCheck();
     page.getDecompositionGeneralViewer().refreshItems(null);
     page.getDecompositionGeneralViewer().addTreeSelectionListener();
     return page;
@@ -75,7 +75,7 @@ public class LCDecompositionWizardPage extends WizardPage {
    */
   @Override
   public boolean canFlipToNextPage() {
-    boolean flag = _controller.canFlipToNextPage();
+    boolean flag = controller.canFlipToNextPage();
     return flag;
   }
 
@@ -83,38 +83,38 @@ public class LCDecompositionWizardPage extends WizardPage {
    * @return the controller
    */
   public LCDecompositionController getController() {
-    return _controller;
+    return controller;
   }
 
   /**
-   * @param controller_p the controller to set
+   * @param controller the controller to set
    */
-  public void setController(LCDecompositionController controller_p) {
-    _controller = controller_p;
+  public void setController(LCDecompositionController controller) {
+    this.controller = controller;
   }
 
   /**
    * @return the decompositionModel
    */
   public DecompositionModel getDecompositionModel() {
-    return _decompositionModel;
+    return decompositionModel;
   }
 
   /**
-   * @param decompositionModel_p the decompositionModel to set
+   * @param decompositionModel the decompositionModel to set
    */
-  public void setDecompositionModel(DecompositionModel decompositionModel_p) {
-    _decompositionModel = decompositionModel_p;
+  public void setDecompositionModel(DecompositionModel decompositionModel) {
+    this.decompositionModel = decompositionModel;
   }
 
   /**
-   * @param decompositionModel_p
+   * @param decompositionModel
    * @return
    */
-  private boolean getSynchronizationModeSelected(DecompositionModel decompositionModel_p) {
+  private boolean getSynchronizationModeSelected(DecompositionModel decompositionModel) {
     boolean result = true;
-    if (decompositionModel_p != null) {
-      DecompositionComponent component = decompositionModel_p.getSourceComponent();
+    if (decompositionModel != null) {
+      DecompositionComponent component = decompositionModel.getSourceComponent();
       if (component != null) {
         Object value = component.getValue();
         if (value != null && value instanceof ModelElement) {

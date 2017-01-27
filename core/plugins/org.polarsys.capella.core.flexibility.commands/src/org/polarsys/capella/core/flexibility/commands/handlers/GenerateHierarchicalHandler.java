@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,12 +49,12 @@ public class GenerateHierarchicalHandler extends AbstractUiHandler {
     Shell shell;
     String value;
 
-    GetText(Shell shell_p) {
-      shell = shell_p;
+    GetText(Shell shell) {
+      shell = shell;
     }
 
-    public void setValue(String value_p) {
-      value = value_p;
+    public void setValue(String value) {
+      value = value;
     }
 
     public String getValue() {
@@ -65,11 +65,11 @@ public class GenerateHierarchicalHandler extends AbstractUiHandler {
          * {@inheritDoc}
          */
         @Override
-        protected Control createDialogArea(Composite parent_p) {
-          Control control = super.createDialogArea(parent_p);
+        protected Control createDialogArea(Composite parent) {
+          Control control = super.createDialogArea(parent);
 
           // Create a multiple line text field
-          t = new Text(parent_p, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
+          t = new Text(parent, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
           t.setLayoutData(new GridData(GridData.FILL_BOTH));
           setMessage("Choose a text value"); //$NON-NLS-1$
           return control;
@@ -94,11 +94,11 @@ public class GenerateHierarchicalHandler extends AbstractUiHandler {
   /**
    * {@inheritDoc}
    */
-  public Object execute(final ExecutionEvent event_p) throws ExecutionException {
+  public Object execute(final ExecutionEvent event) throws ExecutionException {
 
     Resource resource = null;
     final List<EObject> objects = new ArrayList<EObject>();
-    IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelection(event_p);
+    IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelection(event);
     final EObject root = (EObject) selection.iterator().next();
 
     TransactionHelper.getExecutionManager(root).execute(new AbstractReadWriteCommand() {
@@ -148,6 +148,6 @@ public class GenerateHierarchicalHandler extends AbstractUiHandler {
       }
     });
 
-    return event_p;
+    return event;
   }
 }

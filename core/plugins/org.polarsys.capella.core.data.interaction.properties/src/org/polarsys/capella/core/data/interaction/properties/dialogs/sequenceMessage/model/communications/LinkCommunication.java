@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,10 +19,10 @@ import org.polarsys.capella.core.data.information.communication.CommunicationLin
 
 public class LinkCommunication extends AbstractCommunication implements CommunicationLink {
 
-	public LinkCommunication(CommunicationLink senderLink_p, ExchangeItem exchangeItem_p, CommunicationLink receiverLink_p) {
-		super(exchangeItem_p, senderLink_p == null || receiverLink_p == null);
-		this.senderLink = senderLink_p;
-		this.receiverLink = receiverLink_p;
+	public LinkCommunication(CommunicationLink senderLink, ExchangeItem exchangeItem, CommunicationLink receiverLink) {
+		super(exchangeItem, senderLink == null || receiverLink == null);
+		this.senderLink = senderLink;
+		this.receiverLink = receiverLink;
 	}
 		
 	@Override
@@ -37,9 +37,8 @@ public class LinkCommunication extends AbstractCommunication implements Communic
 	public CommunicationLink getRepresentativeElement() {
 		if (senderLink != null) {
 			return senderLink;
-		} else {
-			return receiverLink;
 		}
+		return receiverLink;
 	}
 
 	@Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ public class CommandsLabelProvider extends CellLabelProvider implements ILabelPr
    * @see org.eclipse.jface.viewers.CellLabelProvider#getToolTipDisplayDelayTime(java.lang.Object)
    */
   @Override
-  public int getToolTipDisplayDelayTime(Object object_p) {
+  public int getToolTipDisplayDelayTime(Object object) {
     return 200;
   }
 
@@ -43,14 +43,14 @@ public class CommandsLabelProvider extends CellLabelProvider implements ILabelPr
    * @see org.eclipse.jface.viewers.CellLabelProvider#getToolTipShift(java.lang.Object)
    */
   @Override
-  public Point getToolTipShift(Object object_p) {
+  public Point getToolTipShift(Object object) {
     return new Point(5, 5);
   }
 
   @Override
-  public Image getToolTipImage(Object object_p) {
-    if (getToolTipText(object_p) != null) {
-      return getColumnImage(object_p, 0);
+  public Image getToolTipImage(Object object) {
+    if (getToolTipText(object) != null) {
+      return getColumnImage(object, 0);
     }
     return null;
   }
@@ -59,7 +59,7 @@ public class CommandsLabelProvider extends CellLabelProvider implements ILabelPr
    * @see org.eclipse.jface.viewers.CellLabelProvider#getToolTipTimeDisplayed(java.lang.Object)
    */
   @Override
-  public int getToolTipTimeDisplayed(Object object_p) {
+  public int getToolTipTimeDisplayed(Object object) {
     return 7000;
   }
 
@@ -81,35 +81,35 @@ public class CommandsLabelProvider extends CellLabelProvider implements ILabelPr
   /**
    * {@inheritDoc}
    */
-  public Color getForeground(Object element_p, int columnIndex_p) {
+  public Color getForeground(Object element, int columnIndex) {
     return null;
   }
 
   /**
    * {@inheritDoc}
    */
-  public Color getBackground(Object element_p, int columnIndex_p) {
+  public Color getBackground(Object element, int columnIndex) {
     return null;
   }
 
   /**
    * {@inheritDoc}
    */
-  public Image getColumnImage(Object element_p, int columnIndex_p) {
-    switch (columnIndex_p) {
+  public Image getColumnImage(Object element, int columnIndex) {
+    switch (columnIndex) {
       case 0:
-        if (element_p instanceof Command) {
+        if (element instanceof Command) {
           ICommandImageService service = (ICommandImageService) Activator.getDefault().getWorkbench().getService(ICommandImageService.class);
-          ImageDescriptor descriptor = service.getImageDescriptor(((Command) element_p).getId());
+          ImageDescriptor descriptor = service.getImageDescriptor(((Command) element).getId());
           if (descriptor != null) {
             return descriptor.createImage();
           }
           return Activator.getDefault().getImageDescriptor("process.gif").createImage();
         }
-        if (element_p instanceof Category) {
+        if (element instanceof Category) {
           return Activator.getDefault().getImageDescriptor("process.gif").createImage();
         }
-        if (element_p instanceof MenuInput) {
+        if (element instanceof MenuInput) {
           return Activator.getDefault().getImageDescriptor("process.gif").createImage();
         }
         return null;
@@ -125,33 +125,33 @@ public class CommandsLabelProvider extends CellLabelProvider implements ILabelPr
   /**
    * {@inheritDoc}
    */
-  public String getColumnText(Object element_p, int columnIndex_p) {
+  public String getColumnText(Object element, int columnIndex) {
     try {
 
-      switch (columnIndex_p) {
+      switch (columnIndex) {
         case 0:
-          if (element_p instanceof Command) {
-            return ((Command) element_p).getName();
+          if (element instanceof Command) {
+            return ((Command) element).getName();
 
-          } else if (element_p instanceof Category) {
-            return ((Category) element_p).getName();
+          } else if (element instanceof Category) {
+            return ((Category) element).getName();
           }
 
         break;
         case 1:
-          if (element_p instanceof Command) {
-            return ((Command) element_p).getDescription();
+          if (element instanceof Command) {
+            return ((Command) element).getDescription();
 
-          } else if (element_p instanceof Category) {
-            return ((Category) element_p).getDescription();
+          } else if (element instanceof Category) {
+            return ((Category) element).getDescription();
           }
         break;
       }
 
-    } catch (NotDefinedException exception_p) {
+    } catch (NotDefinedException exception) {
       //Do nothing.
     }
-    return element_p.toString();
+    return element.toString();
 
   }
 
@@ -159,23 +159,23 @@ public class CommandsLabelProvider extends CellLabelProvider implements ILabelPr
    * {@inheritDoc}
    */
   @Override
-  public void update(ViewerCell cell_p) {
-    cell_p.setText(getColumnText(cell_p.getElement(), cell_p.getColumnIndex()));
-    cell_p.setImage(getColumnImage(cell_p.getElement(), cell_p.getColumnIndex()));
+  public void update(ViewerCell cell) {
+    cell.setText(getColumnText(cell.getElement(), cell.getColumnIndex()));
+    cell.setImage(getColumnImage(cell.getElement(), cell.getColumnIndex()));
   }
 
   /**
    * {@inheritDoc}
    */
-  public Image getImage(Object element_p) {
-    return getColumnImage(element_p, 0);
+  public Image getImage(Object element) {
+    return getColumnImage(element, 0);
   }
 
   /**
    * {@inheritDoc}
    */
-  public String getText(Object element_p) {
-    return getColumnText(element_p, 0);
+  public String getText(Object element) {
+    return getColumnText(element, 0);
   }
 
 }

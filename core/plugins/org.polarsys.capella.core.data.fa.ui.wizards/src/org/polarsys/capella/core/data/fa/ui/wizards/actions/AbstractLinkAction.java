@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,16 +25,16 @@ import org.polarsys.capella.core.data.fa.ui.wizards.dialogs.LinkManager;
 public abstract class AbstractLinkAction extends Action {
 
   /** */
-  protected TreeViewer _treeViewer;
-  protected LinkManager _linkManager;
+  protected TreeViewer treeViewer;
+  protected LinkManager linkManager;
 
   /**
    * 
    */
-  public AbstractLinkAction(LinkManager linkManager_p, TreeViewer treeViewer_p) {
+  public AbstractLinkAction(LinkManager linkManager, TreeViewer treeViewer) {
     super();
-    _treeViewer = treeViewer_p;
-    _linkManager = linkManager_p;
+    this.treeViewer = treeViewer;
+    this.linkManager = linkManager;
   }
 
   /**
@@ -66,7 +66,7 @@ public abstract class AbstractLinkAction extends Action {
   @SuppressWarnings("unchecked")
   @Override
   public boolean isEnabled() {
-    TreeSelection selection = (TreeSelection) _treeViewer.getSelection();
+    TreeSelection selection = (TreeSelection) treeViewer.getSelection();
     if (EIAllocationModelHelpers.isSupportedType(selection.getFirstElement()) && EIAllocationModelHelpers.isSameType(selection.toList())) {
       return true;
     }
