@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,13 +18,16 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
+import org.osgi.framework.Bundle;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 
 /**
  * @author Erwan Brottier
@@ -32,23 +35,40 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 public class BQTestHelpers {
 
 	public static String getQueryClassification(String fqn, char separator) {
-		List<String> segments = Arrays.asList(fqn.substring(BQTestConstants.BQ_PLUGIN_NAME.length()+1, fqn.length()).split("\\.")); //$NON-NLS-1$
-		StringBuilder pck = new StringBuilder();
-		for (int i = 0; i < segments.size()-1; i++) {
-			pck.append(segments.get(i));
-			if (i < segments.size()-2)
-				pck.append(separator);
-		}
-		return pck.toString();
+		List<String> segments = Arrays.asList(fqn.split("\\.")); //$NON-NLS-1$
+		String folder = segments.get(segments.size()-2);
+    return folder;
 	}
 	
-	public static IBusinessQuery instanciateBQ(String queryIdentifier) {
-		try {
-			Class<?> bqClass = Class.forName(queryIdentifier);
-			return (IBusinessQuery) bqClass.getConstructors()[0].newInstance();
-		} catch (Exception e) {
-			return null;
-		}
+  
+  public static Class<?> loadClass(Bundle bundle, String queryIdentifier) {
+    try {
+      Class<?> bqClass = null;
+      if (bundle != null) {
+        bqClass = bundle.loadClass(queryIdentifier);
+      }
+      if (bqClass == null) {
+        bqClass = Class.forName(queryIdentifier);
+      }
+      return bqClass;
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+  
+
+  public static <T> T newObject(Bundle bundle, String queryIdentifier) {
+    try {
+      return (T) loadClass(bundle, queryIdentifier).getConstructors()[0].newInstance();
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+  
+	public static IBusinessQuery instanciateBQ(Bundle bundle, String queryIdentifier) {
+		return (IBusinessQuery) newObject(bundle, queryIdentifier);
 	}
 	
 	public static Hashtable<String, EObject> createId2ObjectTable(List<EObject> elements) {
@@ -81,22 +101,22 @@ public class BQTestHelpers {
 		return StringUtils.join(segs, '.');
 	}
 	
-	public static Hashtable<String, CapellaElement> getId2ObjectTableInSessionForTest(Session session, EClass clazz) {
-		Hashtable<String, CapellaElement> id2ObjectTable = new Hashtable<String, CapellaElement>();
-		for (CapellaElement capellaElement : getAllObjectsInSession(session, clazz)) {
+	public static Hashtable<String, EObject> getId2ObjectTableInSessionForTest(Session session, EClass clazz) {
+		Hashtable<String, EObject> id2ObjectTable = new Hashtable<String, EObject>();
+		for (EObject capellaElement : getAllObjectsInSession(session, clazz)) {
 			id2ObjectTable.put(QueryResult.getObjectId(capellaElement), capellaElement);
 		}			
 		return id2ObjectTable;
 	}
 
-	public static List<CapellaElement> getAllObjectsInSession(Session session, EClass clazz) {
-		List<CapellaElement> objects = new ArrayList<CapellaElement>();
+	public static List<EObject> getAllObjectsInSession(Session session, EClass clazz) {
+		List<EObject> objects = new ArrayList<EObject>();
 		for (Resource semanticResource : session.getSemanticResources()) {
 			TreeIterator<EObject> treeIterator = semanticResource.getAllContents();
 			while (treeIterator.hasNext()) {
 				EObject obj = treeIterator.next();				
-				if (obj instanceof CapellaElement && clazz.isInstance(obj)) {
-					objects.add((CapellaElement) obj);					
+				if (clazz.isInstance(obj)) {
+					objects.add(obj);					
 				}
 			}
 		}
@@ -109,9 +129,21 @@ public class BQTestHelpers {
 		return new File(bqTestProjectFolder.toString()+"/"+relativePath); //$NON-NLS-1$
 	}
 	
-	public static File getJUnitFile(File bqTestProjectFolder, String queryIdentifier, String testProjectName, String fileName) {
-		String pck = getQueryClassification(queryIdentifier, '/');
-		File junitFile = new File(bqTestProjectFolder.toString()+"/"+BQTestConstants.TEST_CASES_RELATIVE_FOLDER+testProjectName + "/" + pck + "/" + fileName); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+	public static String getPackagePath(IProject bqTestProject, String queryIdentifier, String testProjectName) {
+    String pck = getQueryClassification(queryIdentifier, '/');
+    String path = bqTestProject.getName().replaceAll("\\.", "/");
+    return NLS.bind(BQTestConstants.TEST_CASES_PACKAGE, new String[]{ path, testProjectName, pck});
+  }
+
+  public static String getPackageName(IProject bqTestProject, String queryIdentifier, String testProjectName) {
+    return getPackagePath(bqTestProject, queryIdentifier, testProjectName).replaceAll("/", ".");
+  }
+	public static File getJUnitFile(IProject bqTestProject, String queryIdentifier, String testProjectName, String fileName) {
+    File bqTestProjectFolder = IResourceHelpers.convertToFile(bqTestProject);
+    
+    String packageName = getPackageName(bqTestProject, queryIdentifier, testProjectName).replaceAll("\\.", "/");
+    String junitFileName = bqTestProjectFolder.toString() + "/" + BQTestConstants.TEST_CASES_RELATIVE_FOLDER + "/" + packageName + "/" + fileName;
+		File junitFile = new File(junitFileName);
 		return junitFile;
 	}
 	
