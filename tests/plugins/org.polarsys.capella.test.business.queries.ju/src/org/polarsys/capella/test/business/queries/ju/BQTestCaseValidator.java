@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.test.business.queries.ju.errors.BQValidationError;
 import org.polarsys.capella.test.business.queries.ju.errors.InputNotFoundError;
 import org.polarsys.capella.test.business.queries.ju.errors.InvalidMethodToCallTestCaseError;
@@ -54,13 +53,13 @@ public class BQTestCaseValidator {
 		// validation of inputs that return result
 		List<String> testedInputIdsForAvailable = new ArrayList<String>();
 		List<String> testedInputIdsForCurrent = new ArrayList<String>();
-		Hashtable<String, CapellaElement> id2ObjectTable = BQTestHelpers.getId2ObjectTableInSessionForTest(testSession, businessQuery.getEClass());
+		Hashtable<String, EObject> id2ObjectTable = BQTestHelpers.getId2ObjectTableInSessionForTest(testSession, businessQuery.getEClass());
 		String serializedData = IResourceHelpers.readFileAsString(testSuiteFile);
 		List<QueryResult> testCases = QueryResult.deserialize(serializedData);
 		nbTestCases = testCases.size();
 		for (QueryResult oracleResult : testCases) {
 			String ident = oracleResult.getQueryIdentifier();
-			CapellaElement input = id2ObjectTable.get(oracleResult.getInputId());
+			EObject input = id2ObjectTable.get(oracleResult.getInputId());
 			if (input == null)
 				declareInputNotFound(oracleResult.getInputId());
 			else {
@@ -102,7 +101,7 @@ public class BQTestCaseValidator {
 		addTestCaseFeedBack('?');
 		errors.add(new InputNotFoundError(inputId));
 	}
-	protected void declareExceptionRaised(Throwable exception, CapellaElement input, String methodName) {
+	protected void declareExceptionRaised(Throwable exception, EObject input, String methodName) {
 		nbRaisedExceptions++;
 		errors.add(new TestCaseRaiseExceptionError(exception, input, methodName));
 	}

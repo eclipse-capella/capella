@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.test.business.queries.ju.errors;
 
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * @author Erwan Brottier
@@ -18,17 +18,17 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 public class TestCaseRaiseExceptionError implements BQValidationError {
 
 	protected Throwable exception;
-	protected CapellaElement input;
+	protected EObject input;
 	protected String methodName;
 	
-	public TestCaseRaiseExceptionError(Throwable exception, CapellaElement input, String methodName) {
+	public TestCaseRaiseExceptionError(Throwable exception, EObject input, String methodName) {
 		this.exception = exception;
 		this.input = input;
 		this.methodName = methodName;
 	}
 	
 	public String toString() {
-		return "Test case raises an exception (input id : "+input.getId()+", method : "+methodName+", exception : "+exception.toString()+")";  //$NON-NLS-1$//$NON-NLS-2$
+		return "Test case raises an exception (input id : "+input.eResource().getURIFragment(input)+", method : "+methodName+", exception : "+exception.toString()+")";  //$NON-NLS-1$//$NON-NLS-2$
 	}
 
 }
