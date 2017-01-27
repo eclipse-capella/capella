@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,18 +20,17 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointsFolderItem;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointsFolderItemImpl;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.sirius.analysis.IViewpointNameConstants;
 
 /**
@@ -95,14 +94,12 @@ public class CapellaArchitectureContentProvider extends AdapterFactoryContentPro
 					if (item instanceof ItemWrapper) {
 						item = ((ItemWrapper) item).getWrappedObject();
 					}
-					// Only considering semantic diagrams & tables, what else ?
-					if ((item instanceof DSemanticDiagram) || (item instanceof DTable)) {
-						DSemanticDecorator representationInCommon = (DSemanticDecorator) item;
-						// Remove if target element is either the filtering metaclass or contain in something related to the filtering metaclass.
-						if (!_filteringMetaClassForCommonViewpoint.isSuperTypeOf(representationInCommon.getTarget().eClass())
-								&& !EcoreUtil2.isContainedBy(representationInCommon.getTarget(), _filteringMetaClassForCommonViewpoint)) {
-							iterator.remove();
-						}
+					if(item instanceof DRepresentationDescriptor){
+					  DRepresentationDescriptor representationDescriptor = (DRepresentationDescriptor)item;
+					  BlockArchitecture rootBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(representationDescriptor.getTarget());
+					  if (!_filteringMetaClassForCommonViewpoint.isSuperTypeOf(rootBlockArchitecture.eClass())) {
+              iterator.remove();
+            }
 					}
 				}
 			}
