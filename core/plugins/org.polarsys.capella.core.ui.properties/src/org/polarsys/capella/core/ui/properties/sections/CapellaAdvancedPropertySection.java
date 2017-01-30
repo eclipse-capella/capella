@@ -97,9 +97,15 @@ public class CapellaAdvancedPropertySection extends AdvancedPropertySection impl
    */
   @Override
   public void setInput(IWorkbenchPart part, ISelection selection) {
-    super.setInput(part, selection);
-    if (null != page) {
-      page.setPropertySourceProvider(this);
-    }
+	  try {
+		  super.setInput(part, selection);
+		    if (null != page) {
+		      page.setPropertySourceProvider(this);
+		    }
+	  } catch (org.polarsys.kitalpha.emde.extension.InvalidContextException ex) {
+		  ex.printStackTrace();
+	  } catch (org.polarsys.kitalpha.ad.services.manager.InvalidContextException ex){
+		  ex.printStackTrace();
+	  }
   }
 }
