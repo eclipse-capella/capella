@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <buildcore:Chain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmi:id="_4-dhIEHFEeGR0qHofFpKtQ" name="Job">
   <propertyPackages xmi:id="_fpDlcGOuEeGSqYRIJfl_UQ" name="General Properties">
-    <properties xmi:id="_VPrWUFZGEeGR2_cB4MDfaQ" key="VERSION" value="1.0.3"/>
+    <properties xmi:id="_VPrWUFZGEeGR2_cB4MDfaQ" key="VERSION" value="1.0.4"/>
     <properties xmi:id="_L7cW0Ev-EeG48a7kaF1Bnw" key="buildVersion" value="${VERSION}.${timestamp}"/>
     <properties xmi:id="_JAvf4G3iEeGehoHCqtPcvA" key="qualifier.replacement.*" value="${timestamp}"/>
     <properties xmi:id="_L9oxMLEMEeSLhv0uZvTdTQ" key="hudson.job.url" value="https://hudson.polarsys.org/capella/job/capella-${env.GIT_BRANCH}/lastSuccessfulBuild"/>
-    <properties xmi:id="_Nd07YLB5EeSlmrPd2VafjQ" key="capella.version" value="1.0.3"/>
+    <properties xmi:id="_Nd07YLB5EeSlmrPd2VafjQ" key="capella.version" value="1.0.4"/>
   </propertyPackages>
   <propertyPackages xmi:id="_K0cHAGOuEeGSqYRIJfl_UQ" name="Update Sites">
     <properties xmi:id="_xJ7uoPCvEeOiS52wF1-fPg" key="site_QueryLegacy" value="${eclipse.download.prefix}/sirius/updates/legacy/1.1.0/"/>
