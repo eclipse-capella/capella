@@ -83,13 +83,7 @@ public class CapellaAdvancedPropertySection extends AdvancedPropertySection impl
    */
   @Override
   public void refresh() {
-    try {
-      super.refresh();
-    } catch (org.polarsys.kitalpha.emde.extension.InvalidContextException ex) {
-      ex.printStackTrace();
-    } catch (org.polarsys.kitalpha.ad.services.manager.InvalidContextException ex) {
-      ex.printStackTrace();
-    }
+    super.refresh();
   }
 
   /**
@@ -97,7 +91,7 @@ public class CapellaAdvancedPropertySection extends AdvancedPropertySection impl
    */
   @Override
   public void setInput(IWorkbenchPart part, ISelection selection) {
-    super.setInput(part, selection);
+	  super.setInput(part, selection);
     if (null != page) {
       page.setPropertySourceProvider(this);
     }
