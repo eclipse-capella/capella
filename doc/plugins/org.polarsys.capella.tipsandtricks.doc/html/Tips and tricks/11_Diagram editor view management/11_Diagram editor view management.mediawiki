@@ -12,6 +12,17 @@ Reset origin tool is useful '''when some elements are not visible''' because the
 
 The origin '''is now on the top left''' of Logical System, which '''results in a better layout for the user.'''
 
+{| border="1"
+|-
+| 
+[[Image:../../Images/InfoIcon.png|48x48px]]
+
+ 
+| 
+Reset origin tool can also be used directly on the diagram to move all elements at the top left corner of the diagram without removing the space between them.
+ 
+|} 
+
 ==Zoom on diagram==
 
 The shortcut '''Ctrl + Mouse wheel''' enables the user to '''zoom or zoom out diagram''' if needed. The zoom is done on the mouse location and not on the center of the editor.
