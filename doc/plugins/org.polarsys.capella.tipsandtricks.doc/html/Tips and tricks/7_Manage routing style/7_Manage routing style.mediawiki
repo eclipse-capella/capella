@@ -1,4 +1,4 @@
-=Manage routing Style…=
+=Manage routing Style=
 
 '''In order to improve the readability on diagrams''' a functionality on connectors enables to manage the routing style e.g to have rectilinear or oblique connectors.
 

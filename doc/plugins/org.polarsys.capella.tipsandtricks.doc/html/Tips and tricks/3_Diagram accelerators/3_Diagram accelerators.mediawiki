@@ -18,7 +18,7 @@ From a diagram, Capella provides a few tools called accelerators allowing automa
 
  
 | 
-Graphical elements have to be unpinned before running this action. To unpin an element, choose "Unpin selected elements on the diagram menu"
+For better results, graphical elements have to be unpinned before running this action. On the diagram menu choose "Select All" then "Unpin selected elements".
 
  
 |}  
