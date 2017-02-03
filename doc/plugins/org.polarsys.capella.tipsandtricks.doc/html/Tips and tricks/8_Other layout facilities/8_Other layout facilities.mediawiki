@@ -1,4 +1,4 @@
-=Connectors layout facilities=
+=Layout facilities=
 
 In order to '''facilitate the layout set up of elements on diagrams''', some functionalities exist:  
 
@@ -18,6 +18,7 @@ If you select several elements, you can distribute them vertically, horizontally
 
 
 The goal of this feature is to '''assist user to set edge selection vertical or horizontal''' in order to help exchange layout. If the edge is connected to "ports", the '''"port" is moved too'''.''
+To do this, it is recommended to arrange all connected ports first, then use the right-to-left multiple selection.
 
 [[Image:../../Images/Tips22.png]]
 
