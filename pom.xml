@@ -242,7 +242,6 @@
 				<module>common/features/org.polarsys.capella.common.advance.feature</module>
 				<module>common/features/org.polarsys.capella.common.base.feature</module>
 				<module>common/features/org.polarsys.capella.common.compare.feature</module>
-				<module>common/features/org.polarsys.capella.common.dependencies.feature</module>
 				<module>common/features/org.polarsys.capella.common.feature</module>
 				<module>common/features/org.polarsys.capella.common.libraries.definition.feature</module>
 				<module>common/features/org.polarsys.capella.common.libraries.feature</module>
@@ -557,7 +556,6 @@
 				<module>common/features/org.polarsys.capella.common.advance.feature</module>
 				<module>common/features/org.polarsys.capella.common.base.feature</module>
 				<module>common/features/org.polarsys.capella.common.compare.feature</module>
-				<module>common/features/org.polarsys.capella.common.dependencies.feature</module>
 				<module>common/features/org.polarsys.capella.common.feature</module>
 				<module>common/features/org.polarsys.capella.common.libraries.definition.feature</module>
 				<module>common/features/org.polarsys.capella.common.libraries.feature</module>

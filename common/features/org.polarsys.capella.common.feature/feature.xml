@@ -27,10 +27,6 @@
       %license
    </license>
 
-   <requires>
-      <import feature="org.polarsys.capella.common.dependencies.feature"/>
-   </requires>
-
    <plugin
          id="org.polarsys.capella.common"
          download-size="0"
