@@ -44,6 +44,7 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
+					<environments combine.self="override"/>
 					<dependency-resolution>
 						<extraRequirements>
 							<requirement>
