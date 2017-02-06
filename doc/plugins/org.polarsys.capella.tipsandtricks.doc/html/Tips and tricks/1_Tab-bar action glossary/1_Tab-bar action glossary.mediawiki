@@ -2,9 +2,12 @@
 
 The top area of all Sirius diagram editors is filled with the '''tab-bar''', which provides access to '''many operations on diagrams and their elements '''such as "automatic layout tool, selection tool, Show/Hide tool..." The content of the tab-bar will depend on whether the current selection is the diagram itself (i.e. no element is selected) or one or several diagram elements.
 
-This document describes some of  these operations.
+<center>[[Image:../../Images/Tips65.png]]</center>
+<center>'''Figure 1: Tab-bar Actions Available on Diagram Elements'''</center>
 
-<center>'''Tab-bar Actions Available on Diagram'''</center>
+This document describes some of these operations.
+
+'''Tab-bar Actions Available on Diagram'''
 
 * Automatic Layout Tools
 * Selection Tools
@@ -18,7 +21,7 @@ This document describes some of  these operations.
 * Export As Image
 * Layout Mode
 
-<center>'''Tab-bar Actions Available on Diagram Elements'''</center>
+'''Tab-bar Actions Available on Diagram Elements'''
 
 * Arrange Selection
 * Alignment Control
@@ -35,8 +38,3 @@ This document describes some of  these operations.
 * Apply Style
 * Make Same Size
 * Auto-Size
-
-You will find in this document, descriptions of some of these operations.
-
-
-
