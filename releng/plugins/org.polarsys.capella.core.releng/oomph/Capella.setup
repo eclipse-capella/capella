@@ -266,7 +266,7 @@
         <repository
             url="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
         <repository
-            url="http://download.eclipse.org/diffmerge/releases/0.7.0/edm-patterns-site"/>
+            url="http://download.eclipse.org/diffmerge/releases/0.7.1/edm-patterns-site"/>
         <repository
             url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/7/artifact/result/publish/kitalpha_runtime/site.p2"/>
         <repository

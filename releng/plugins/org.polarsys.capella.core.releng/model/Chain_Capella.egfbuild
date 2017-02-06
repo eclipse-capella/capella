@@ -10,7 +10,7 @@
   <propertyPackages xmi:id="_K0cHAGOuEeGSqYRIJfl_UQ" name="Update Sites">
     <properties xmi:id="_xJ7uoPCvEeOiS52wF1-fPg" key="site_QueryLegacy" value="${eclipse.download.prefix}/sirius/updates/legacy/1.1.0/"/>
     <properties xmi:id="_K2caEAyPEeKIGKNriwuyOw" key="site_DiffMerge" value="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
-    <properties xmi:id="_Y092gC0WEeSpNZCH09tG3Q" key="site_Patterns" value="${eclipse.download.prefix}/diffmerge/releases/0.7.0/edm-patterns-site/"/>
+    <properties xmi:id="_Y092gC0WEeSpNZCH09tG3Q" key="site_Patterns" value="${eclipse.download.prefix}/diffmerge/releases/0.7.1/edm-patterns-site/"/>
     <properties xmi:id="_wKYdYHKOEeGk8-zOAaqAYg" key="site_Kitalpha_CTK" value="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/123/artifact/result/publish/kitalpha_runtime/site.p2"/>
     <properties xmi:id="_rNt18GaHEeWkG6r98F2org" key="site_Kitalpha_SDK" value="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/123/artifact/result/publish/kitalpha_sdk/site.p2"/>
     <properties xmi:id="_ha1JUDXkEeWcHcNqIIHNgA" key="site_Amalgam" value="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20161128-035928/mars"/>

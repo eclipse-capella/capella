@@ -23,6 +23,12 @@ Check validation profile Exported via EPF file.
 Content-Type: text/ecl
 Entry-Name: .content
 
+// Restart Capella in the same workspace empty as ClearPreferences does not work properly
+	clean-workspace-before-restart
+	restart-aut
+	wait-until-eclipse-is-ready
+	prepare-AUT-after-restart
+
 checkDefaultPreferences ""
 // Configurability project and Capella project are already created and imported
 // in the workspace
