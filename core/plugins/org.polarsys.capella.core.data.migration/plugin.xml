@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -24,19 +24,22 @@
       <command
             categoryId="org.polarsys.capella.core.data.migration"
             id="org.polarsys.capella.core.data.migration.project"
-            name="%projectMigration">
+            name="%projectMigration"
+            description="%projectMigration_description">
       </command>
       
       <command
             categoryId="org.polarsys.capella.core.data.migration"
             id="org.polarsys.capella.core.data.migration.model"
-            name="%semanticModelMigration">
+            name="%semanticModelMigration"
+            description="%semanticModelMigration_description">
       </command>
       
       <command
             categoryId="org.polarsys.capella.core.data.migration"
             id="org.polarsys.capella.core.data.migration.aird"
-            name="%airdModelMigration">
+            name="%airdModelMigration"
+            description="%airdModelMigration_description">
       </command>
       
    </extension>
@@ -59,6 +62,23 @@
    </extension>
    
    <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="org.polarsys.capella.core.data.migration.project"
+            icon="icons/full/etools16/capella_migrate.gif">
+      </image>
+      <image
+            commandId="org.polarsys.capella.core.data.migration.model"
+            icon="icons/full/etools16/capella_migrate.gif">
+      </image>
+      <image
+            commandId="org.polarsys.capella.core.data.migration.aird"
+            icon="icons/full/etools16/capella_migrate.gif">
+      </image>
+      
+   </extension>
+   
+   <extension
          point="org.eclipse.ui.menus">
       <menuContribution
             locationURI="popup:capella.project.explorer#PopupMenu?after=group.migration">
@@ -66,8 +86,7 @@
             
             <command
                   commandId="org.polarsys.capella.core.data.migration.project"
-                  id="org.polarsys.capella.core.data.migration.project"
-                  icon="icons/full/etools16/capella_migrate.gif">
+                  id="org.polarsys.capella.core.data.migration.project">
                <visibleWhen
                      checkEnabled="false">
                   <iterate
@@ -91,8 +110,7 @@
             </command>
             <command
                   commandId="org.polarsys.capella.core.data.migration.model"
-                  id="org.polarsys.capella.core.data.migration.model"
-                  icon="icons/full/etools16/capella_migrate.gif">
+                  id="org.polarsys.capella.core.data.migration.model">
                 <visibleWhen checkEnabled="false">
                    <iterate
                          ifEmpty="false"
@@ -115,8 +133,7 @@
             </command>
             <command
                   commandId="org.polarsys.capella.core.data.migration.aird"
-                  id="org.polarsys.capella.core.data.migration.aird"
-                  icon="icons/full/etools16/capella_migrate.gif">
+                  id="org.polarsys.capella.core.data.migration.aird">
                 <visibleWhen checkEnabled="false">
                    <iterate
                          ifEmpty="false"
@@ -135,6 +152,29 @@
             </menu>
          
       </menuContribution>
+   </extension>
+   
+   
+   <extension
+      point="org.polarsys.capella.core.preferences.capellaPreferences">
+    
+    <category
+         name="%migrationMenu"
+         description="%migrationMenu">
+      <item
+            id="org.polarsys.capella.core.data.migration.project"
+            enableByDefault="true">
+      </item>
+      <item
+            id="org.polarsys.capella.core.data.migration.aird"
+            enableByDefault="false">
+      </item>
+      <item
+            id="org.polarsys.capella.core.data.migration.model"
+            enableByDefault="false">
+      </item>
+    </category>
+      
    </extension>
    
    <!-- Contributions that should not be removed between versions -->

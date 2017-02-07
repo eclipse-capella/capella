@@ -13,7 +13,7 @@ Capella provides a mechanism to disable commands categories and user profile man
 The visibility of several commands can be controlled using the commands preferences page.
 
  
-[[Image:Images/6.4.%20Commands%20preferences_html_m67bd7302.png|600x500px]]
+[[Image:Images/6.4.%20Commands%20preferences_html_m67bd7302.png|627x540px]]
 
  
 '''Figure 1''': Preference dialog showing Commands configurability preference page.
