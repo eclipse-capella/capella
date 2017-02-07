@@ -141,7 +141,7 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
         String objectID = getId(object);
         OracleDefinition oracleDef = objectID2OracleDefinition.get(objectID);
         Diagnostic diagnostic = diagnostician.validate(object);
-        if ((diagnostic.getSeverity() == Diagnostic.OK) && (oracleDef != null)) {
+        if ((diagnostic.getSeverity() == Diagnostic.OK) && (oracleDef != null) && oracleDef.getNbExpectedErrors() > 0) {
           assertTrue("Validation rule " + ruleID + " has not detected an error on object " + objectID + " while it must be the case", false); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         } else {
           if (diagnostic.getSeverity() != Diagnostic.OK) {
