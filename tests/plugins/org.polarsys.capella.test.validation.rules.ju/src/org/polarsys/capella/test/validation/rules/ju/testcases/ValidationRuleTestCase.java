@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,6 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
   // these values are obtained by using methods defined in concrete test cases
   protected String ruleID = getRuleID();
   protected EClass targetedEClass = getTargetedEClass();
-  protected List<OracleDefinition> oracleDefinitions = getOracleDefinitions();
 
   // internal variables
   protected IConstraintDescriptor ruleDescriptor;
@@ -129,6 +128,7 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
     // get the objects to validate (only CapellaElement because the oracle is based on object ID)
     ICapellaModel model = getTestModel(getRequiredTestModel());
     List<EObject> objectsToValidate = getTestScope(model);
+    List<OracleDefinition> oracleDefinitions = getOracleDefinitions();
     if (oracleDefinitions != null) {
       // prepare oracle table
       for (OracleDefinition definition : oracleDefinitions) {
@@ -201,7 +201,6 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
     }
     ruleID = null;
     targetedEClass = null;
-    oracleDefinitions = null;
     ruleDescriptor = null;
     filter = null;
     validator = null;
