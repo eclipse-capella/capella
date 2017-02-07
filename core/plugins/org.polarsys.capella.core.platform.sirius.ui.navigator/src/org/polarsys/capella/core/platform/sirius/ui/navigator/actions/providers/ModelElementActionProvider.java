@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,17 +27,17 @@ import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.navigator.ICommonMenuConstants;
 import org.eclipse.ui.navigator.ICommonViewerSite;
-
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.ImpactAnalysisAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.NavigateAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.ShowInDiagramAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.internal.navigate.NavigationAdvisor;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  * Action Provider for {@link ModelElement}.
@@ -152,7 +152,7 @@ public class ModelElementActionProvider extends CommonActionProvider {
           // Create a navigate action that enables this navigation.
           NavigateAction action = new NavigateAction(currentModelElement, viewer);
           action.setText(EObjectLabelProviderHelper.getText(currentModelElement));
-          action.setImageDescriptor(ImageDescriptor.createFromImage(EObjectLabelProviderHelper.getImage(currentModelElement)));
+          action.setImageDescriptor(ImageDescriptor.createFromImage(EObjectImageProviderHelper.getImage(currentModelElement)));
           // Add this action in given menu manager.
           addAction(menu_p, null, action);
         }

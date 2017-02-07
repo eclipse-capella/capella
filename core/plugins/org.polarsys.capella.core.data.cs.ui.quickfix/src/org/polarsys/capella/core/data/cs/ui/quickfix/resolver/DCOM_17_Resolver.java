@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,20 +20,20 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPortExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.NavigateAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
-import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 
 /**
  *
@@ -88,7 +88,7 @@ public class DCOM_17_Resolver  extends AbstractCapellaMarkerResolution {
 		    // Create a navigate action that enables this navigation.
 	        NavigateAction action = new NavigateAction(abstractExchangeItemToAdd, capellaCommonNavigator.getCommonViewer());
 	        action.setText(EObjectLabelProviderHelper.getText(abstractExchangeItemToAdd));
-	        action.setImageDescriptor(ImageDescriptor.createFromImage(EObjectLabelProviderHelper.getImage(abstractExchangeItemToAdd)));
+	        action.setImageDescriptor(ImageDescriptor.createFromImage(EObjectImageProviderHelper.getImage(abstractExchangeItemToAdd)));
 		    action.run();
 	}
 	

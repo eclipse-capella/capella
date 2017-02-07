@@ -2,12 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.tiger;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: org.polarsys.capella.core.model.helpers;visibility:=reexport,
- org.polarsys.capella.common.ui.services;visibility:=reexport,
- org.polarsys.capella.core.model.handler;visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.polarsys.capella.common;visibility:=reexport,
+ org.polarsys.capella.core.model.helpers;visibility:=reexport
 Export-Package: org.polarsys.capella.core.tiger;
   uses:="org.polarsys.capella.core.tiger.impl,
    org.osgi.framework,

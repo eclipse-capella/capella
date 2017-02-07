@@ -2,14 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.model.helpers;singleton:=true
-Bundle-Version: 1.1.1.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.apache.commons.lang,
  org.eclipse.emf.codegen.ecore,
  org.polarsys.capella.common.helpers;visibility:=reexport,
  org.polarsys.capella.common.menu.dynamic;visibility:=reexport,
  org.polarsys.capella.common.queries,
- org.polarsys.capella.common.ui,
  org.polarsys.capella.core.data.gen.edit;visibility:=reexport,
  org.polarsys.capella.core.data.helpers;visibility:=reexport,
  org.polarsys.capella.shared.id.handler,

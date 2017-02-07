@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.tools.report.appenders.reportlogview.actions;
 
 import org.apache.log4j.Logger;
@@ -23,10 +22,11 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 
 /**
@@ -52,7 +52,7 @@ public class SelectElementAction extends Action {
 
   @Override
   public ImageDescriptor getImageDescriptor() {
-    return ImageDescriptor.createFromImage(EObjectLabelProviderHelper.getImage(eObject));
+    return ImageDescriptor.createFromImage(EObjectImageProviderHelper.getImage(eObject));
   }
 
   @Override

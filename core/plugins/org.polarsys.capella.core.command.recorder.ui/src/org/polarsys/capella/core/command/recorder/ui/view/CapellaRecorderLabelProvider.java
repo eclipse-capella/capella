@@ -24,7 +24,7 @@ import org.polarsys.capella.common.command.recorder.core.manager.utils.Notificat
 import org.polarsys.capella.common.command.recorder.core.manager.utils.OperationEnum;
 import org.polarsys.capella.common.command.recorder.core.writer.DummyTreeData;
 import org.polarsys.capella.common.command.recorder.ui.view.RecorderSharedImages;
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 
@@ -119,11 +119,11 @@ public class CapellaRecorderLabelProvider implements ITableLabelProvider {
    * @return <code>null</code> if not found.
    */
   private static Image getImage(EObject eObject) {
-    Image result = EObjectLabelProviderHelper.getImage(eObject);
+    Image result = EObjectImageProviderHelper.getImage(eObject);
     if (null == result) {
       ItemProviderAdapter itemProvider = getItemProvider(eObject);
       if (null != itemProvider) {
-        result = EObjectLabelProviderHelper.getImageFromObject(itemProvider.getImage(eObject));
+        result = EObjectImageProviderHelper.getImageFromObject(itemProvider.getImage(eObject));
         itemProvider.dispose();
       }
     }

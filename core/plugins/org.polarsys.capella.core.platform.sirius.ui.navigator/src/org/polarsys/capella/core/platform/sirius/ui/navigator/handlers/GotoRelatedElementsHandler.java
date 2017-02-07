@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,8 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
@@ -72,7 +73,7 @@ public class GotoRelatedElementsHandler extends CompoundContributionItem {
         // Create a navigate action that enables this navigation.
         NavigateAction action = new NavigateAction(currentModelElement, capellaCommonNavigator.getCommonViewer());
         action.setText(EObjectLabelProviderHelper.getText(currentModelElement));
-        action.setImageDescriptor(ImageDescriptor.createFromImage(EObjectLabelProviderHelper.getImage(currentModelElement)));
+        action.setImageDescriptor(ImageDescriptor.createFromImage(EObjectImageProviderHelper.getImage(currentModelElement)));
         result.add(new ActionContributionItem(action));
       }
       return result.toArray(new IContributionItem[result.size()]);

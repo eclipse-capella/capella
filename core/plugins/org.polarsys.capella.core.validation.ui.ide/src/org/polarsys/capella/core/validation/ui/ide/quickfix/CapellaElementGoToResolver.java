@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,9 +16,9 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IMarkerResolution2;
-
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.actions.SelectElementAction;
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 
 /**
  * This class can be used to create "Go to" Quick Fixes.
@@ -54,7 +54,7 @@ public class CapellaElementGoToResolver implements IMarkerResolution2 {
         MessageFormat.format(QUICK_FIX_LABEL_PATTERN, elementToGoToDescription, modelElementName,
             modelElementClassName);
     // Image.
-    image = EObjectLabelProviderHelper.getImage(modelElement);
+    image = EObjectImageProviderHelper.getImage(modelElement);
 
     this.modelElement = modelElement;
   }
