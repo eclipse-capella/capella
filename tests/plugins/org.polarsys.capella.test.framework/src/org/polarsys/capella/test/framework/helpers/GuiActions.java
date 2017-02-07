@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,6 +41,7 @@ import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.progress.UIJob;
 import org.polarsys.capella.core.explorer.activity.ui.actions.OpenActivityExplorerAction;
+import org.polarsys.capella.core.model.obfuscator.actions.ObfuscateSessionAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortContentAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortSelectionAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
@@ -333,5 +334,12 @@ public class GuiActions {
 
     site.setSelectionProvider(capellaProjectView.getCommonViewer());
     site.getSelectionProvider().setSelection(selection);
+  }
+  
+  public static void obfuscate(IFile airdFile) {
+    ObfuscateSessionAction obfuscateAction = new ObfuscateSessionAction();
+    IStructuredSelection selection = new StructuredSelection(airdFile);
+    obfuscateAction.selectionChanged(selection);
+    obfuscateAction.obfuscate();
   }
 }
