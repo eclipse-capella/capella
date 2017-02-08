@@ -21,8 +21,8 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.navigator.ICommonMenuConstants;
 
-import org.polarsys.capella.common.menu.dynamic.AbstractActionProvider;
 import org.polarsys.capella.common.menu.dynamic.contributions.ActionContributionProvider;
+import org.polarsys.capella.common.ui.menu.dynamic.AbstractActionProvider;
 
 /**
  */

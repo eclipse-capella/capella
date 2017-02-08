@@ -8,7 +8,7 @@
  *  Contributors:
  *      LCELB - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.common.menu.dynamic;
+package org.polarsys.capella.common.ui.menu.dynamic;
 
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.swt.widgets.Shell;

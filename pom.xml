@@ -290,6 +290,7 @@
 				<module>common/plugins/org.polarsys.capella.common.tools.report.appenders.reportlogview</module>
 				<module>common/plugins/org.polarsys.capella.common.tools.report.ui</module>
 				<module>common/plugins/org.polarsys.capella.common.ui</module>
+				<module>common/plugins/org.polarsys.capella.common.ui.menu.dynamic</module>
 				<module>common/plugins/org.polarsys.capella.common.ui.progress</module>
 				<module>common/plugins/org.polarsys.capella.common.ui.services</module>
 				<module>common/plugins/org.polarsys.capella.common.ui.toolkit</module>

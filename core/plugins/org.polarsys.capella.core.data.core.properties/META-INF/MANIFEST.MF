@@ -2,12 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.core.properties;singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.core.properties.CorePropertiesPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.ui.properties;visibility:=reexport,
  org.polarsys.capella.core.linkedtext.ui,
  org.polarsys.capella.common.linkedtext.ui,
+ org.polarsys.capella.common.ui.menu.dynamic,
  org.eclipse.jface,
  org.polarsys.capella.core.platform.sirius.ui.actions
 Bundle-ActivationPolicy: lazy

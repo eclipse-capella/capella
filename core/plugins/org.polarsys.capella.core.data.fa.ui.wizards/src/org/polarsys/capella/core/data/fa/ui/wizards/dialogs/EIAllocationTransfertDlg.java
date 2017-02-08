@@ -63,7 +63,7 @@ import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.menu.dynamic.DynamicCreateChildAction;
+import org.polarsys.capella.common.ui.menu.dynamic.DynamicCreateChildAction;
 import org.polarsys.capella.common.ui.toolkit.dialogs.AbstractViewerDialog;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;

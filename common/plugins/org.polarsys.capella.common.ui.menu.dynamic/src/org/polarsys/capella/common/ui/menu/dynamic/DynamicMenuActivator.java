@@ -8,14 +8,15 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.common.menu.dynamic;
+package org.polarsys.capella.common.ui.menu.dynamic;
 
-import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
+
+import org.polarsys.capella.common.ui.services.AbstractUIActivator;
 
 /**
  */
-public class DynamicMenuActivator extends Plugin {
+public class DynamicMenuActivator extends AbstractUIActivator {
   /**
    * The shared instance
    */

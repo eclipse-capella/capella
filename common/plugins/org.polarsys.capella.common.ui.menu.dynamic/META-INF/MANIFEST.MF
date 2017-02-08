@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.common.ui.menu.dynamic;singleton:=true
+Bundle-Version: 1.2.0.qualifier
+Bundle-Vendor: %providerName
+Require-Bundle: org.eclipse.ui.navigator;visibility:=reexport,
+ org.polarsys.capella.common.menu.dynamic;visibility:=reexport,
+ org.polarsys.capella.common.ui.services;visibility:=reexport
+Export-Package: org.polarsys.capella.common.ui.menu.dynamic,
+ org.polarsys.capella.common.ui.menu.dynamic.utils
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Activator: org.polarsys.capella.common.ui.menu.dynamic.DynamicMenuActivator
+Bundle-Localization: plugin

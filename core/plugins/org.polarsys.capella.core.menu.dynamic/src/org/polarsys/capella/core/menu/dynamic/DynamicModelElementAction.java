@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.swt.widgets.Shell;
-import org.polarsys.capella.common.menu.dynamic.AbstractModelElementAction;
+import org.polarsys.capella.common.ui.menu.dynamic.AbstractModelElementAction;
 
 /**
  * Base class to implement dynamic action.
