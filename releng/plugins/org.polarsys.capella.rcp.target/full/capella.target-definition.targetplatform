@@ -28,11 +28,8 @@ location "http://download.eclipse.org/sirius/updates/releases/4.1.1/neon" {
 	org.eclipse.sirius.runtime.ide.ui.feature.group
 }
 
-location "https://hudson.polarsys.org/kitalpha/job/Kitalpha-v1.1.x/lastSuccessfulBuild/artifact/result/publish/kitalpha_runtime/site.p2" {
-	org.polarsys.kitalpha.ad.feature.feature.group
-	org.polarsys.kitalpha.ad.integration.amalgam.feature.feature.group
-	org.polarsys.kitalpha.ad.integration.emde.feature.feature.group
-	org.polarsys.kitalpha.ad.integration.sirius.feature.feature.group
+location "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_runtime/site.p2" {
+	org.polarsys.kitalpha.ad.runtime.feature.feature.group
 	org.polarsys.kitalpha.cadence.feature.feature.group
 	org.polarsys.kitalpha.common.feature.feature.group
 	org.polarsys.kitalpha.emde.feature.feature.group
@@ -53,7 +50,7 @@ location "http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-sit
 	org.eclipse.emf.diffmerge.sdk.feature.feature.group
 }
 
-location "http://download.eclipse.org/diffmerge/releases/0.7.0/edm-patterns-site" {
+location "http://download.eclipse.org/diffmerge/releases/0.7.1/edm-patterns-site" {
 	org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group
 	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group
 }
