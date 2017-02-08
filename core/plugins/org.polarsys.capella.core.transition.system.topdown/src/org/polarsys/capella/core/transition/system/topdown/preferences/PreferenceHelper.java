@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -99,8 +99,25 @@ public class PreferenceHelper {
   }
 
   /**
+   * Returns whether the interface generation should propagate exchange items form Functional
+   * Exchanges to its function ports.
+   */
+  public boolean generateInterfacesPropagateExchangeItems(){
+    return getBooleanValue(IProjectionPreferences.PREFS_INTERFACEGEN_PROPAGATE_EXCHANGE_ITEMS);
+  }
+  
+  /**
+   * Returns whether the interface generation should create a component exchange between provider/requirer 
+   * component ports.
+   */
+  public boolean generateInterfacesCreateComponentExchange(){
+    return getBooleanValue(IProjectionPreferences.PREFS_INTERFACEGEN_CREATE_COMPONENT_EXCHANGE);
+  }
+  
+  /**
    * Returns whether the interface generation should create standard port instead of flow ports
    */
+  @Deprecated
   public boolean generateStandardPortRatherThanFlowPort() {
     return getBooleanValue(IProjectionPreferences.PREFS_USE_STANDARDPORT_INSTEAD_FLOWPORT);
   }
@@ -108,6 +125,7 @@ public class PreferenceHelper {
   /**
    * Returns whether the interface generation should generate ports and allocate interface to ports
    */
+  @Deprecated
   public boolean generateComponentPort() {
     return getBooleanValue(IProjectionPreferences.PREFS_GENERATE_COMPONENTPORT);
   }

@@ -305,6 +305,10 @@
       <markerResolutionGenerator
             class="org.polarsys.capella.core.data.fa.ui.quickfix.generator.ComponentExchangeFunctionalExchangeResoultions"
             markerType="org.polarsys.capella.core.validation.markers">
-      </markerResolutionGenerator>     
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.fa.ui.quickfix.generator.GenerateInterfacesResolutionGenerator"
+            markerType="org.polarsys.capella.core.validation.markers">
+      </markerResolutionGenerator>
    </extension>
 </plugin>

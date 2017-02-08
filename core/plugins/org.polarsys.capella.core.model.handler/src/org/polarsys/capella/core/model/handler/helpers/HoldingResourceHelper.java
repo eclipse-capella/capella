@@ -42,7 +42,7 @@ public class HoldingResourceHelper {
 
   protected static Resource getHoldingResource(final TransactionalEditingDomain domain, boolean create) {
     Resource hresource = domain.getResourceSet().getResource(uri, false);
-    if (hresource == null) {
+    if (hresource == null && create) {
       ExecutionManagerRegistry.getInstance().getExecutionManager(domain).execute(new AbstractNonDirtyingCommand() {
         public void run() {
           HoldingResource resource = new HoldingResource(uri);

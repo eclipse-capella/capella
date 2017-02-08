@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.libraries.ju.testsuites.main.LibrariesTestSuite;
 import org.polarsys.capella.test.model.ju.rename.RenameModelTestSuite;
 import org.polarsys.capella.test.model.ju.testsuites.main.ModelTestSuite;
+import org.polarsys.capella.test.projection.ju.ProjectionTestSuite;
 import org.polarsys.capella.test.recrpl.ju.testsuites.main.RecRplTestSuite;
 import org.polarsys.capella.test.refinement.ju.testsuites.main.AllRefinementTestSuites;
 import org.polarsys.capella.test.transition.ju.testsuites.main.TransitionTestSuite;
@@ -55,6 +56,7 @@ public class RunInUITestSuite extends BasicTestSuite {
     tests.add(new ActivityExplorerTestsSuite());
     tests.add(new DiagramToolsTestSuite());
     tests.add(new RenameModelTestSuite());
+    tests.add(new ProjectionTestSuite());
     return tests;
   }
 
