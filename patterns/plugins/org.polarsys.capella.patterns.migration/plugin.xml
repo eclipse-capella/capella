@@ -32,16 +32,6 @@
                   commandId="org.polarsys.capella.patterns.migration"
                   id="org.polarsys.capella.patterns.migration">
                 <visibleWhen checkEnabled="true">
-                <with variable="selection">
-                    <iterate
-                          ifEmpty="false">
-                            <and>
-                                <test property="org.polarsys.capella.patterns.migration.PatternMigrationEnablementTester" forcePluginActivation="true"
-                                   value="org.polarsys.capella.patterns.migration">
-                                </test>
-                            </and>
-                    </iterate>
-                </with>
                 </visibleWhen> 
             </command>
             
@@ -80,6 +70,21 @@
       <handler
             class="org.polarsys.capella.patterns.migration.PatternsCustomizeHandler"
             commandId="org.polarsys.capella.patterns.migration">
+         <enabledWhen>
+            <with
+                  variable="selection">
+               <iterate
+                     ifEmpty="false">
+                  <and>
+                     <test
+                           forcePluginActivation="true"
+                           property="org.polarsys.capella.patterns.migration.PatternMigrationEnablementTester"
+                           value="org.polarsys.capella.patterns.migration">
+                     </test>
+                  </and>
+               </iterate>
+            </with>
+         </enabledWhen>
       </handler> 
    </extension>
    
