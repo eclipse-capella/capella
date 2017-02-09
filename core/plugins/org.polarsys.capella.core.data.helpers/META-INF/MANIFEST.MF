@@ -41,8 +41,7 @@ Export-Package: org.polarsys.capella.core.data.helpers.capellacommon,
  org.polarsys.capella.core.data.helpers.requirement.delegates,
  org.polarsys.capella.core.data.helpers.sharedmodel
 Require-Bundle: org.polarsys.capella.core.data.gen;visibility:=reexport,
- org.polarsys.capella.common.data.helpers;visibility:=reexport,
- org.polarsys.capella.common.ui
+ org.polarsys.capella.common.data.helpers;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Localization: plugin

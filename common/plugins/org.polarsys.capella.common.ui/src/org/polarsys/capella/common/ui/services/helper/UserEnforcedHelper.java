@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.common.helpers.IUserEnforcedHelper2;
 
 /**
  * Helper methods enforced by user interaction.<br>
@@ -43,7 +44,7 @@ public class UserEnforcedHelper implements IUserEnforcedHelper2 {
   }
 
   /**
-   * @see org.polarsys.capella.common.ui.services.helper.IUserEnforcedHelper2#makeFilesWritable(org.eclipse.core.resources.IFile[])
+   * @see org.polarsys.capella.common.helpers.IUserEnforcedHelper2#makeFilesWritable(org.eclipse.core.resources.IFile[])
    */
   public IStatus makeFilesWritable(final IFile[] files) {
     // Resulting status.
@@ -69,7 +70,7 @@ public class UserEnforcedHelper implements IUserEnforcedHelper2 {
   }
 
   /**
-   * @see org.polarsys.capella.common.ui.services.helper.IUserEnforcedHelper2#makeFilesWritable(org.eclipse.core.resources.IFile[], java.lang.Object)
+   * @see org.polarsys.capella.common.helpers.IUserEnforcedHelper2#makeFilesWritable(org.eclipse.core.resources.IFile[], java.lang.Object)
    */
   public IStatus makeFilesWritable(final IFile[] files, Object display) {
     // Given files must not be null.

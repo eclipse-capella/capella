@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
@@ -91,7 +92,8 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
     if (parent) {
       reps = representations;
     } else {
-      reps = RepresentationHelper.getRepresentations(getStructuredSelection());
+      IStructuredSelection selection = getStructuredSelection();
+      reps = RepresentationHelper.getRepresentations(selection.toList());
     }
     // Precondition
     if (reps.isEmpty()) {

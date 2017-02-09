@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
@@ -45,8 +46,8 @@ public class DeleteRepresentationAction extends BaseSelectionListenerAction {
   @Override
   public void run() {
     // Gets selected representations from the current selection.
-    List<DRepresentation> selectedRepresentations = RepresentationHelper.getRepresentations(getStructuredSelection(),
-        true);
+    IStructuredSelection selection = getStructuredSelection();
+    List<DRepresentation> selectedRepresentations = RepresentationHelper.getRepresentations(selection.toList(), true);
     if (!selectedRepresentations.isEmpty()) {
       int deletedDiagramCount = selectedRepresentations.size();
       String contextualMessage = null;

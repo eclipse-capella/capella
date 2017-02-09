@@ -5,9 +5,9 @@ Bundle-SymbolicName: org.polarsys.capella.core.model.handler;singleton:=true
 Bundle-Version: 1.2.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
  org.polarsys.capella.core.data.gen;visibility:=reexport,
  org.polarsys.capella.common.platform.sirius.ted;visibility:=reexport,
- org.polarsys.capella.common.ui.services,
  org.eclipse.sirius,
  org.eclipse.sirius.diagram,
  org.eclipse.sirius.table,

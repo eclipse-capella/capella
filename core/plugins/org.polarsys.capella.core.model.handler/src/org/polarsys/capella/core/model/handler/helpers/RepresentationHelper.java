@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -54,12 +53,12 @@ import com.google.common.collect.Iterables;
 public class RepresentationHelper {
 
   /**
-   * Same as {@link #getRepresentations(IStructuredSelection, boolean)} with {@code mustBeDecorator=false}
+   * Same as {@link #getRepresentations(Collection, boolean)} with {@code mustBeDecorator=false}
    *
    * @param selection
    * @return
    */
-  public static List<DRepresentation> getRepresentations(IStructuredSelection selection) {
+  public static List<DRepresentation> getRepresentations(Collection<?> selection) {
     return getRepresentations(selection, false);
   }
 
@@ -72,7 +71,7 @@ public class RepresentationHelper {
    *
    * @return
    */
-  public static List<DRepresentation> getRepresentations(IStructuredSelection selection, boolean mustBeDecorator) {
+  public static List<DRepresentation> getRepresentations(Collection<?> selection, boolean mustBeDecorator) {
 
     List<DRepresentation> representations = new ArrayList<DRepresentation>();
     Iterator<?> iterator = selection.iterator();
