@@ -1,14 +1,27 @@
-=Diagram accelerators=
-== CONTEXTUAL to a model element ==
+=Diagram Accelerators=
+== Contextualize Your Diagram To Selected Model Elements ==
 
-Contextual diagrams are used to put the focus on one specific element. This makes them have specific refresh rules. For more details, please refer to the section Capella Guide > User Manual > Diagram Management > Diagram Concepts > Blank and Contextual Diagrams, Contextual Diagram Elements
+Contextual diagrams are used to focus on one specific element. 
+This feature is available when you select the '''''background of the Diagram''''' and assign a specific model element (for instance a Functional Chain) in the field '''''Contextual Element''''' of the Properties view. Then, the Diagram has specific refresh rules and always keeps up-to-date the contextual elements.
 
-==Diagram accelerators==
-From a diagram, Capella provides a few tools called accelerators allowing automated synchronization or generations of model elements. For more details, please refer to the section Capella Guide > User Manual > Modelling Wizards and Accelerators
+As an example, imagine a Dataflow diagram always synchronised with Functions and Functional Exchanges coming from a selected contextual Functional Chain, or an Architecture Diagram always synchronised with Components and Functional Exchanges coming from a selected contextual dynamic Exchange Scenario.
+
+[[File:../../Images/Tips66.png|thumbnail|400px|]]
+
+For more details, please refer to the section ''Capella Guide > User Manual > Diagram Management > Diagram Concepts > Blank and Contextual Diagrams, Contextual Diagram Elements''.
+
+This feature is often coupled with “Synchronizing Diagram” capability in order to master the visibility of the elements in the resulting Diagram, see section below “Unsynchronize your diagram”.
+
+==Diagram Accelerators==
+From a diagram, Capella provides some tools called accelerators allowing automated synchronization or generations of model elements.
+
+For instance, you can propagate Exchange Items allocated to a Functional Exchange to its source and target ports, etc…
+
+[[File:../../Images/Tips67.png|thumbnail|600px|]]
+
+For more details, please refer to the section ''Capella Guide > User Manual > Modelling Wizards and Accelerators''.
 
 ==Initialize Diagram==
-
-<br>
 
          
 {| border="1"
@@ -22,20 +35,36 @@ For better results, graphical elements have to be unpinned before running this a
 
  
 |}  
-<br>
 
 
 
-The idea is to initialize and then apply layout from diagram template for instance. In order to save time, Capella is able to initialize diagrams from others, not only in a same layer but also between different layers. 
+The idea is to initialize a diagram from another one based on information in the model. Then apply the layout from a third diagram, a template one for instance.
 
-* For example, in the ''System Analysis'', from a ''Function Scenario'', you can initialize an ''Exchange Scenario'' thanks to the '''''Transition''''' functionality:
+Note: A recommended best practice is to capitalize the layout creation effort in a diagram and use it as a reference to apply the layout on other diagrams and keep their display consistent.
 
-[[Image:../../Images/Tips9.png]]
+In order to save time when information can be deduced from the model, Capella is able to initialize diagrams from others, not only in a same layer but also between different layers, based on realization links.  
 
-[[Image:../../Images/Tips10.png]]
+* For example, in the ''System Analysis'', from a ''Function Scenario'', you can initialize an ''Exchange Scenario'' thanks to the '''''Transitions''''' menu:
 
-* Another example from the ''System Analysis'' to the ''Logical Architecture'' is that you can also initialize an ''Exchange Scenario'' thanks to the '''''Transition''''' functionality:
+[[File:../../Images/Tips9.png|thumbnail|800px|]]
 
-[[Image:../../Images/Tips11.png]]
+[[File:../../Images/Tips10.png|thumbnail|800px|]]
+:The resulting ES Scenario is deduced from the model: the System and Actors allocating the functions displayed in the original FS Scenario.
 
-[[Image:../../Images/Tips12.png]]
+* Another example from the ''System Analysis'' to the ''Logical Architecture'' is that you can also initialize an ''Exchange Scenario'' thanks to the '''''Transitions''''' menu:
+
+[[File:../../Images/Tips11.png|thumbnail|800px|]]
+
+[[File:../../Images/Tips12.png|thumbnail|800px|]]
+
+:The resulting ES Scenario is deduced from the model: previous Functional Transitions from System to Logical phase and Logical Components and Actors allocating transitioned functions displayed in the original ES Scenario.
+
+:Then, you can imagine having a static view of this new dynamic ES Scenario, creating a new Architecture Diagram LAB and clicking on palette tool Diagram Accelerators '''Elements from Scenario''' which will initialize it with information coming from the ES Scenario: Logical Components and Actors, Logical Functions and Exchanges etc.. .  
+	
+[[File:../../Images/Tips68.png|thumbnail|1000px|]]
+
+This feature is often coupled with:
+* “Synchronizing Diagram” capability in order to master the resulting Diagram, see section below “Unsynchronize your diagram”
+* Copying/Pasting Layout from a template Diagram or a upper Architecture Diagram SAB to keep original layout. (see section below “Layout Management > Diagram Template”.)
+
+

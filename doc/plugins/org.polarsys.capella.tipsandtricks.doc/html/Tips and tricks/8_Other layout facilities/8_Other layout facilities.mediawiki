@@ -1,8 +1,8 @@
-=Layout facilities=
+=Other Layout Facilities=
 
-In order to '''facilitate the layout set up of elements on diagrams''', some functionalities exist:  
+In order to '''facilitate the layout set up of elements on diagrams''', some Diagram facilities exist:  
 
-==Elements Alignement==
+==Elements Alignment==
 
 If you select several elements, you can align them on the right, middle, left, top...
 
@@ -20,13 +20,13 @@ If you select several elements, you can distribute them vertically, horizontally
 The goal of this feature is to '''assist user to set edge selection vertical or horizontal''' in order to help exchange layout. If the edge is connected to "ports", the '''"port" is moved too'''.''
 To do this, it is recommended to arrange all connected ports first, then use the right-to-left multiple selection.
 
-[[Image:../../Images/Tips22.png]]
+[[File:../../Images/Tips22.png|thumbnail|600px|]]
 
 ==Arrange connected ports==
 
 In addition to the standard automatic layout, this specific action allows '''to arrange automatically the edges/ports so that they are as short as possible by preserving routing style'''. This action moves the ports of a node / container when necessary. It is useful when the positions of the nodes and containers have already been defined and edges still need a better layout.
 
-[[Image:../../Images/8_4_Arrange.png]]
+[[File:../../Images/8_4_Arrange.png|thumbnail|700px|]]
 
 <br>
 
@@ -52,3 +52,18 @@ This feature aims to '''move the group {edge, labels, ports}''' in a single oper
 Moreover, by selecting multiple edges with ports and pressing '''''F3''''' key, you can move them simultaneously:
 
 [[Image:../../Images/Tips23.png]]
+
+
+==Snap back labels on edge selection==
+Although there is already a button to snap back a label to it original position on label selection, a new button "''Snap Back Label(s)''" '''on edge selection''' allows to snap back all labels (source, middle, target) of this edge at the same time:
+
+[[File:../../Images/Tips73.png|thumbnail|800px|]]
+
+
+==Display link between an edge and its label==
+It is a new preference added in '''Sirius > Sirius Diagram > Connections''':
+[[File:../../Images/Tips74.png|thumbnail|700px|]]
+
+When you '''select an edge or a label''', graphical link appears between them:
+[[File:../../Images/Tips75.png|thumbnail|700px|]]
+

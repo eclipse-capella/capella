@@ -1,5 +1,5 @@
-=Export and impression=
-==Export as image==
+=Diagram Export and Printing=
+==Export As Image==
 
 You can '''export a diagram to an image file'''. In order to do that right-click on the diagram and choose the menu '''''Export diagram as image''''' or on the icon present in the tab-bar.
 
@@ -7,24 +7,32 @@ You can '''export a diagram to an image file'''. In order to do that right-click
 
 [[Image:../../Images/Tips59.png]]
 
-You can :
+You can:
 
 * Select the repository to export it,
 * Choose the format among JPG, PNG, SVG, BMP, GIF.
 * Export it to HTML Format
 
-==Batch image export==
+==Batch Image Export==
 
 It is possible '''to export all diagrams of a representations file at once'''. 
 
-In order to do that, select your representations file (aird file) and right-click on it. Then choose the menu '''''Export representations as image'''''.
+In order to do that; right-click on your representations file (aird file) then choose the menu '''''Export representations as image'''''.
 
 [[Image:../../Images/Tips61.png]]
 
 [[Image:../../Images/Tips60.png]]
 
-You can :
+You can:
 
 * Select the repository to export them,
 * Choose the format among JPG, PNG, SVG, BMP, GIF.
 * Export it to HTML Format
+
+==Print Area Preview==
+
+Before sending a diagram to a printer, it can be interesting to arrange the elements of the diagram to avoid them to be split by a page break, to help doing so use the command '''''Diagram > View > page Breaks''''' to display page breaks on the diagram background.
+
+[[File:../../Images/Tips69.png|thumbnail|600px|]]
+
+Note: Use the same command to hide the page breaks displayed on the diagram.
