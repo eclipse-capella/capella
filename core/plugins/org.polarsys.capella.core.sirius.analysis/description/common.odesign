@@ -1138,7 +1138,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Region" name="Region" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']" extraMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Region" name="Region" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']" extraMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']/@subContainerMappings[name='MSM_Region']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -5593,7 +5593,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates an allocation relationship from an Interface to an Exchange Item. An Exchange Item can be allocated to several Interfaces." name="Manage Exchange Item Allocations" label="Manage Exchange Item Allocations" precondition="&lt;%$elementView.target.isA(&quot;Interface&quot;)%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates an allocation relationship from an Interface to an Exchange Item. An Exchange Item can be allocated to several Interfaces." name="Manage Exchange Item Allocations" label="Manage Exchange Item Allocations" precondition="&lt;%$elementView.target.isA(&quot;Interface&quot;)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
             <element name="element">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="exchangeItems" computationExpression="feature:exchangeItems"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="exchangeItemAllocations" computationExpression="feature:ownedExchangeItemAllocations"/>
@@ -8979,7 +8979,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Interfaces. Removing an Interface graphical object from a diagram does not delete the Interface from the model. This tool does not modify the semantic model." name="Show/Hide Interfaces" label="Interfaces" precondition="&lt;%$container.isA(&quot;Component&quot;)%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@nodeMappings[name='CCII_Interface']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Interfaces. Removing an Interface graphical object from a diagram does not delete the Interface from the model. This tool does not modify the semantic model." name="Show/Hide Interfaces" label="Interfaces" precondition="&lt;%$container.isA(&quot;Component&quot;)%>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@nodeMappings[name='CCII_Interface']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodes" computationExpression="&lt;%$containerView.getViewDiagram().getAllNodes()%>"/>
@@ -10648,7 +10648,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Exchange Items Allocations. Removing an Exchange Item Allocation graphical object from a diagram does not delete the Exchange Item Allocation from the model. This tool does not modify the semantic model. An Exchange Item allocation is a reference relationship from an Interface to an Exchange Item." name="Manage Exchange Item Allocations" label="Manage Exchange Item Allocations" precondition="&lt;%$elementView.target.isA(&quot;Interface&quot;)%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Exchange Items Allocations. Removing an Exchange Item Allocation graphical object from a diagram does not delete the Exchange Item Allocation from the model. This tool does not modify the semantic model. An Exchange Item allocation is a reference relationship from an Interface to an Exchange Item." name="Manage Exchange Item Allocations" label="Manage Exchange Item Allocations" precondition="&lt;%$elementView.target.isA(&quot;Interface&quot;)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
             <element name="element">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="exchangeItems" computationExpression="feature:exchangeItems"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="exchangeItemAllocations" computationExpression="feature:ownedExchangeItemAllocations"/>
@@ -11002,7 +11002,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="&lt;%!$elementView.isA(&quot;DDiagram&quot;) &amp;&amp; (isA(&quot;Component&quot;) || isA(&quot;ComponentPort&quot;) || isA(&quot;Interface&quot;))%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="&lt;%!$elementView.isA(&quot;DDiagram&quot;) &amp;&amp; (isA(&quot;Component&quot;) || isA(&quot;ComponentPort&quot;) || isA(&quot;Interface&quot;))%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -12657,7 +12657,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="&lt;%!$elementView.isA(&quot;DDiagram&quot;) &amp;&amp; (isA(&quot;CapabilityRealization&quot;) || isA(&quot;AbstractActor&quot;))%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="&lt;%!$elementView.isA(&quot;DDiagram&quot;) &amp;&amp; (isA(&quot;CapabilityRealization&quot;) || isA(&quot;AbstractActor&quot;))%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -12841,7 +12841,7 @@
           </style>
         </edgeMappings>
         <toolSections name="Dependencies">
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Data Packages" name="Show/Hide DataPkgs" label="Data Packages" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Data Packages" name="Show/Hide DataPkgs" label="Data Packages" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;%$elementView.getDiagramContainer()%>"/>
@@ -12862,7 +12862,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Iinterface Packages" name="Show/Hide InterfacePkgs" label="Interface Packages" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Iinterface Packages" name="Show/Hide InterfacePkgs" label="Interface Packages" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;%$elementView.getDiagramContainer()%>"/>
@@ -18656,7 +18656,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates two new steps respectively referencing one existing outgoing Functional Exchange and a target Functions." name="Involve Functional Exchange &amp; Target Function" precondition="&lt;%$containerView.isValidFCDInvolveFunctionalExchangeAndFunction()%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvement.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates two new steps respectively referencing one existing outgoing Functional Exchange and a target Functions." name="Involve Functional Exchange &amp; Target Function" precondition="&lt;%$containerView.isValidFCDInvolveFunctionalExchangeAndFunction()%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvement.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>

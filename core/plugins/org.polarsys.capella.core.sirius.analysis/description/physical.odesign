@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="Physical Descriptions" version="10.1.0.201507271600">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="Physical Descriptions" version="10.1.3.201511131800">
   <ownedViewpoints name="Physical Architecture" modelFileExtension="melodymodeller" icon="">
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Physical Functions - Requirements" domainClass="PhysicalArchitecture">
       <ownedLineMappings name="Physical Functions 2" domainClass="AbstractFunction" semanticCandidatesExpression="&lt;%getTableRootAbstractFunctions()%>" headerLabelExpression="feature:name">
@@ -966,7 +966,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Functions. Create or delete graphical objects corresponding to already existing Functions. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model." name="Show/Hide Functions" label="Functions" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Functions. Create or delete graphical objects corresponding to already existing Functions. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model." name="Show/Hide Functions" label="Functions" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool:AcceleoVariable" name="visibleFunctions" computationExpression="&lt;% $elementView.getDisplayedAbstractFunctions()[allocationBlocks.filter(&quot;AbstractActor&quot;).nSize() == 0]%>"/>
@@ -993,7 +993,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Actor Functions. Create or delete graphical objects corresponding to already existing Functions allocated to Actors. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model." name="Show/Hide Actor Functions" label="Actor Functions" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Actor Functions. Create or delete graphical objects corresponding to already existing Functions allocated to Actors. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model." name="Show/Hide Actor Functions" label="Actor Functions" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool:AcceleoVariable" name="visibleFunctions" computationExpression="&lt;% $elementView.getDisplayedAbstractFunctions()[allocationBlocks.filter(&quot;AbstractActor&quot;).nSize() > 0]%>"/>
@@ -1078,7 +1078,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="[Available only when the diagram is unsynchronized] Insert/Remove Categorized Exchanges. Create or delete graphical objects corresponding to already existing Categorized Exchanges and the corresponding source/target Functions if they are not present on the diagram yet. Removing a Categorized Exchange graphical object from the diagram does not delete the Exchange from the model. This tool does not modify the semantic model." name="Show/Hide Exchange Categories" label="Exchange Categories" precondition="&lt;%($elementView.filter(&quot;DNodeContainer&quot;).nSize() > 0)  &amp;&amp; ($elementView.target.filter(&quot;AbstractFunction&quot;).nSize() > 0)%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="[Available only when the diagram is unsynchronized] Insert/Remove Categorized Exchanges. Create or delete graphical objects corresponding to already existing Categorized Exchanges and the corresponding source/target Functions if they are not present on the diagram yet. Removing a Categorized Exchange graphical object from the diagram does not delete the Exchange from the model. This tool does not modify the semantic model." name="Show/Hide Exchange Categories" label="Exchange Categories" precondition="&lt;%($elementView.filter(&quot;DNodeContainer&quot;).nSize() > 0)  &amp;&amp; ($elementView.target.filter(&quot;AbstractFunction&quot;).nSize() > 0)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <filters precondition="feature:synchronized" elementsToListen="&lt;%current%>">
                 <listeners domainClass="DDiagram" featureName="synchronized"/>
               </filters>
@@ -1140,7 +1140,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Switch between the representation of individual Physical Links and their representation as Category-based Physical Links." name="Switch Functional Exchanges / Categories" precondition="&lt;%($elementView.filter(&quot;DDiagram&quot;).nSize() > 0)%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Switch between the representation of individual Physical Links and their representation as Category-based Physical Links." name="Switch Functional Exchanges / Categories" precondition="&lt;%($elementView.filter(&quot;DDiagram&quot;).nSize() > 0)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -2517,7 +2517,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createABComponentPortAllocation($sourceView, $targetView)%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates new deployment relationships between selected Node Physical Component and the target Physical Component. The newly deployed Physical Components are automatically displayed on the target Physical Component. This tool modifies the semantic model." name="Manage Node PCs Deployment" precondition="&lt;%$element.isA(&quot;Part&quot;) &amp;&amp; $element.isNode()%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates new deployment relationships between selected Node Physical Component and the target Physical Component. The newly deployed Physical Components are automatically displayed on the target Physical Component. This tool modifies the semantic model." name="Manage Node PCs Deployment" precondition="&lt;%$element.isA(&quot;Part&quot;) &amp;&amp; $element.isNode()%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;%$elementView.getDiagramContainer()%>"/>
@@ -2804,7 +2804,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="Insert/Remove Physical Paths. Creates or delete graphical objects corresponding to existing Physical Paths. Removing a Physical Path graphical object from a diagram does not delete the Physical Path from the model. This tool does not modify the semantic model." name="Show/Hide Physical Path" label="Physical Path" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="Insert/Remove Physical Paths. Creates or delete graphical objects corresponding to existing Physical Paths. Removing a Physical Path graphical object from a diagram does not delete the Physical Path from the model. This tool does not modify the semantic model." name="Show/Hide Physical Path" label="Physical Path" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -3391,7 +3391,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates new deployment relationships between selected Behavior Physical Component and the target Physical Component. The newly deployed Physical Components are automatically displayed on the target Physical Component. This tool modifies the semantic model." name="Manage Behavior PCs Deployment" precondition="&lt;%$element.isA(&quot;Part&quot;)%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates new deployment relationships between selected Behavior Physical Component and the target Physical Component. The newly deployed Physical Components are automatically displayed on the target Physical Component. This tool modifies the semantic model." name="Manage Behavior PCs Deployment" precondition="&lt;%$element.isA(&quot;Part&quot;)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;%$elementView.getDiagramContainer()%>"/>
@@ -4079,7 +4079,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="Switch between the representation of individual Physical Links and their representation as Category-based Physical Links." name="Switch Functional Exchanges / Categories" precondition="&lt;%($elementView.filter(&quot;DDiagram&quot;).nSize() > 0)%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="Switch between the representation of individual Physical Links and their representation as Category-based Physical Links." name="Switch Functional Exchanges / Categories" precondition="&lt;%($elementView.filter(&quot;DDiagram&quot;).nSize() > 0)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -4462,7 +4462,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="[Reusable Components] Creates two new steps respectively referencing one existing outgoing Physical Link and a target Physical Component." name="Involve Physical Link &amp; Target Part" precondition="&lt;%$containerView.isValidPPDInvolvePhysicalLinkAndPart()%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalPathInvolvement.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="[Reusable Components] Creates two new steps respectively referencing one existing outgoing Physical Link and a target Physical Component." name="Involve Physical Link &amp; Target Part" precondition="&lt;%$containerView.isValidPPDInvolvePhysicalLinkAndPart()%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalPathInvolvement.gif">
             <filters precondition="&lt;%!target.isMultipartMode()%>" elementsToListen="&lt;%getEmptyList()%>"/>
             <element name="element"/>
             <elementView name="elementView"/>
@@ -4496,7 +4496,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates two new steps respectively referencing one existing outgoing Physical Link and a target Physical Component Part." name="Involve Physical Link &amp; Target Component" precondition="&lt;%$containerView.isValidPPDInvolvePhysicalLinkAndComponent()%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalPathInvolvement.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates two new steps respectively referencing one existing outgoing Physical Link and a target Physical Component Part." name="Involve Physical Link &amp; Target Component" precondition="&lt;%$containerView.isValidPPDInvolvePhysicalLinkAndComponent()%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalPathInvolvement.gif">
             <filters precondition="&lt;%target.isMultipartMode()%>" elementsToListen="&lt;%getEmptyList()%>"/>
             <element name="element"/>
             <elementView name="elementView"/>
