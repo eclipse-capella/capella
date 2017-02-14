@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -68,7 +67,6 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Classifier;
 import org.polarsys.capella.core.data.capellacore.Constraint;
-import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.cs.AbstractActor;
@@ -1563,27 +1561,27 @@ public class InformationServices {
    */
   @Deprecated
   public EObject showHideInterfacePkgs(final EObject elementView, List<InterfacePkg> selectedPkgs) {
-    Map<InterfacePkg, DNodeContainer> existingPkgs = new HashMap<InterfacePkg, DNodeContainer>();
-    for (DNodeContainer aContainer : DiagramServices.getDiagramServices().getAllContainers(elementView)) {
+    Map<InterfacePkg, DDiagramElement> existingPkgs = new HashMap<InterfacePkg, DDiagramElement>();
+    for (DDiagramElement aContainer : DiagramServices.getDiagramServices().getAllNodeContainers(elementView)) {
       if (aContainer.getTarget() instanceof InterfacePkg) {
         existingPkgs.put((InterfacePkg) aContainer.getTarget(), aContainer);
       }
     }
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(elementView);
-    Set<DNodeContainer> toBeRemoved = new HashSet<DNodeContainer>();
+    Set<DDiagramElement> toBeRemoved = new HashSet<DDiagramElement>();
 
-    for (Entry<InterfacePkg, DNodeContainer> me : existingPkgs.entrySet()) {
+    for (Entry<InterfacePkg, DDiagramElement> me : existingPkgs.entrySet()) {
       if (!selectedPkgs.contains(me.getKey())) {
         toBeRemoved.add(me.getValue());
       }
     }
     // move packages whose parent must be deleted
-    for (DNodeContainer aContainer : existingPkgs.values()) {
+    for (DDiagramElement aContainer : existingPkgs.values()) {
       if (!toBeRemoved.contains(aContainer) && toBeRemoved.contains(aContainer.eContainer())) {
         diagram.getOwnedDiagramElements().add(aContainer);
       }
     }
-    for (DNodeContainer aContainer : toBeRemoved) {
+    for (DDiagramElement aContainer : toBeRemoved) {
       DiagramServices.getDiagramServices().removeContainerView(aContainer);
     }
     for (InterfacePkg aPkg : selectedPkgs) {
@@ -1612,28 +1610,28 @@ public class InformationServices {
    */
   public EObject showHidePDDependentPkgs(final EObject elementView, List<AbstractDependenciesPkg> selectedPkgs,
       List<AbstractDependenciesPkg> existingPackages) {
-    Map<AbstractDependenciesPkg, DNodeContainer> existingPkgs = new HashMap<AbstractDependenciesPkg, DNodeContainer>();
-    for (DNodeContainer aContainer : DiagramServices.getDiagramServices().getAllContainers(elementView)) {
+    Map<AbstractDependenciesPkg, DDiagramElement> existingPkgs = new HashMap<AbstractDependenciesPkg, DDiagramElement>();
+    for (DDiagramElement aContainer : DiagramServices.getDiagramServices().getAllNodeContainers(elementView)) {
       if (existingPackages.contains(aContainer.getTarget())) {
         existingPkgs.put((AbstractDependenciesPkg) aContainer.getTarget(), aContainer);
       }
     }
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(elementView);
-    Set<DNodeContainer> toBeRemoved = new HashSet<DNodeContainer>();
+    Set<DDiagramElement> toBeRemoved = new HashSet<DDiagramElement>();
 
-    for (Entry<AbstractDependenciesPkg, DNodeContainer> me : existingPkgs.entrySet()) {
+    for (Entry<AbstractDependenciesPkg, DDiagramElement> me : existingPkgs.entrySet()) {
       if (!selectedPkgs.contains(me.getKey())) {
         toBeRemoved.add(me.getValue());
       }
     }
 
     // move packages whose parent must be deleted
-    for (DNodeContainer aContainer : DiagramServices.getDiagramServices().getAllContainers(diagram)) {
+    for (DDiagramElement aContainer : DiagramServices.getDiagramServices().getAllNodeContainers(diagram)) {
       if (!toBeRemoved.contains(aContainer) && toBeRemoved.contains(aContainer.eContainer())) {
         diagram.getOwnedDiagramElements().add(aContainer);
       }
     }
-    for (DNodeContainer aContainer : toBeRemoved) {
+    for (DDiagramElement aContainer : toBeRemoved) {
       DiagramServices.getDiagramServices().removeContainerView(aContainer);
     }
     for (AbstractDependenciesPkg aPkg : selectedPkgs) {
@@ -2051,8 +2049,8 @@ public class InformationServices {
    * @param diagram
    * @return
    */
-  public Collection<Generalization> getCDBGeneralizationSemanticCandidates(DDiagram diagram) {
-    Collection<Generalization> candidateGeneralizations = new ArrayList<Generalization>();
+  public Collection<EObject> getCDBGeneralizationSemanticCandidates(DDiagram diagram) {
+    Collection<EObject> candidateGeneralizations = new ArrayList<EObject>();
     for (DDiagramElement dNode : diagram.getDiagramElements()) {
       if (dNode instanceof AbstractDNode) {
         EObject target = dNode.getTarget();
@@ -2071,8 +2069,8 @@ public class InformationServices {
    * @param diagram
    * @return
    */
-  public Collection<ExchangeItemElement> getCDBExchangeItemElementSemanticCandidates(DDiagram diagram) {
-    Collection<ExchangeItemElement> candidateExchangeItemElements = new ArrayList<ExchangeItemElement>();
+  public Collection<EObject> getCDBExchangeItemElementSemanticCandidates(DDiagram diagram) {
+    Collection<EObject> candidateExchangeItemElements = new ArrayList<EObject>();
     for (DDiagramElement dNode : diagram.getDiagramElements()) {
       if (dNode instanceof AbstractDNode) {
         EObject target = dNode.getTarget();
@@ -2157,14 +2155,7 @@ public class InformationServices {
       ExchangeItemAllocation allocation = (ExchangeItemAllocation) exchangeItemAllocation;
       // get Diagram
       DDiagram diagram = CapellaServices.getService().getDiagramContainer(view);
-      if (diagram == null) {
-        Object oDiagram = CsServices.getService().getInterpreterVariable(exchangeItemAllocation,
-            IInterpreterSiriusVariables.DIAGRAM);
-        if ((oDiagram != null) && (oDiagram instanceof DDiagram)) {
-          diagram = (DDiagram) oDiagram;
-        }
-      }
-
+      
       if (diagram != null) {
         EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
         boolean allParameterHide = false;
@@ -2425,13 +2416,6 @@ public class InformationServices {
     if (null != view) {
       // get Diagram
       DDiagram diagram = CapellaServices.getService().getDiagramContainer(view);
-      if (diagram == null) {
-        Object oDiagram = CsServices.getService().getInterpreterVariable(assocation,
-            IInterpreterSiriusVariables.DIAGRAM);
-        if ((oDiagram != null) && (oDiagram instanceof DDiagram)) {
-          diagram = (DDiagram) oDiagram;
-        }
-      }
 
       if (diagram != null) {
         EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();

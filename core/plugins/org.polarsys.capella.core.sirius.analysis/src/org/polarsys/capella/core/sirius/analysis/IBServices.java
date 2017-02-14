@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,13 +39,17 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.information.ExchangeItem;
+import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
@@ -118,15 +122,15 @@ public class IBServices {
     String mappingName = ""; //$NON-NLS-1$
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.IDB_INTERFACE_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCDI_INTERFACE;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCEI_INTERFACE;
       isContainerMapping = false;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCII_INTERFACE;
       isContainerMapping = false;
     }
@@ -145,14 +149,14 @@ public class IBServices {
     String mappingName = ""; //$NON-NLS-1$
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.IDB_COMMUNICATION_LINK_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCDI_COMMUNICATION_LINK_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCEI_COMMUNICATION_LINK_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCII_COMMUNICATION_LINK_MAPPING_NAME;
     }
 
@@ -176,14 +180,14 @@ public class IBServices {
     String mappingName = ""; //$NON-NLS-1$
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.IDB_GENERALIZATION_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCDI_GENERALIZATION_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCEI_GENERALIZATION_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCII_GENERALIZATION_MAPPING_NAME;
     }
 
@@ -195,14 +199,14 @@ public class IBServices {
     String mappingName = ""; //$NON-NLS-1$
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.IDB_USE_INTERFACE_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCDI_USE_INTERFACE_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCEI_USE_INTERFACE_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCII_USE_INTERFACE_MAPPING_NAME;
     }
 
@@ -214,14 +218,14 @@ public class IBServices {
     String mappingName = ""; //$NON-NLS-1$
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.IDB_IMPLEMENTATION_INTERFACE_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCDI_IMPLEMENTATION_INTERFACE_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCEI_IMPLEMENTATION_INTERFACE_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCII_IMPLEMENTATION_INTERFACE_MAPPING_NAME;
     }
 
@@ -233,14 +237,14 @@ public class IBServices {
     String mappingName = ""; //$NON-NLS-1$
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.IDB_PROVIDED_INTERFACE_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCDI_PROVIDED_INTERFACE_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCEI_PROVIDED_INTERFACE_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCII_PROVIDED_INTERFACE_MAPPING_NAME;
     }
 
@@ -252,14 +256,14 @@ public class IBServices {
     String mappingName = ""; //$NON-NLS-1$
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.IDB_REQUIRED_INTERFACE_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCDI_REQUIRED_INTERFACE_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCEI_REQUIRED_INTERFACE_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCII_REQUIRED_INTERFACE_MAPPING_NAME;
     }
 
@@ -273,14 +277,14 @@ public class IBServices {
     String mappingName = ""; //$NON-NLS-1$
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.IDB_COMPONENT_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCDI_COMPONENT_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCEI_COMPONENT;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCII_COMPONENT;
 
     }
@@ -299,14 +303,14 @@ public class IBServices {
     String mappingName = ""; //$NON-NLS-1$
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.IDB_COMPONENT_PORT_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCDI_COMPONENT_PORT_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCEI_COMPONENT_PORT_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCII_COMPONENT_PORT_MAPPING_NAME;
 
     }
@@ -322,15 +326,15 @@ public class IBServices {
     String mappingName = ""; //$NON-NLS-1$
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.IDB_EXCHANGE_ITEM_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCDI_EXCHANGE_ITEM_MAPPING_NAME;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCEI_EXCHANGE_ITEM_MAPPING_NAME;
       isContainerMapping = false;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       mappingName = IMappingNameConstants.CCII_EXCHANGE_ITEM_MAPPING_NAME;
       isContainerMapping = false;
     }
@@ -480,7 +484,8 @@ public class IBServices {
           context.setVariable(ShowHideIDRelationships.PROVIDED_INTERFACE, object);
           shService.show(semantic, context);
 
-        } else if ((object instanceof Interface) && ((ComponentPort) semantic).getRequiredInterfaces().contains(object)) {
+        } else if ((object instanceof Interface)
+            && ((ComponentPort) semantic).getRequiredInterfaces().contains(object)) {
           context.setVariable(ShowHideIDRelationships.REQUIRED_INTERFACE, object);
           shService.show(semantic, context);
         }
@@ -570,7 +575,8 @@ public class IBServices {
    */
   public boolean isValidCreationCCDIInterface(DSemanticDecorator containerView) {
     if (!((!(containerView instanceof DDiagram)) && (containerView.getTarget() instanceof AbstractActor))
-        && !(((DSemanticDecorator) CapellaServices.getService().getDiagramContainer(containerView)).getTarget() instanceof ConfigurationItem)) {
+        && !(((DSemanticDecorator) CapellaServices.getService().getDiagramContainer(containerView))
+            .getTarget() instanceof ConfigurationItem)) {
       return true;
     }
     return false;
@@ -584,4 +590,74 @@ public class IBServices {
     return CsServices.getService().isValidCreationABDelegationExchange(root, preSourceView, preTargetView);
   }
 
+  public Object getIBInterfaceUseSemanticCandidates(DDiagram diagram) {
+    Collection<EObject> result = new ArrayList<EObject>();
+
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
+      EObject target = dNode.getTarget();
+      if (target instanceof Component) {
+        result.addAll(((Component) target).getUsedInterfaceLinks());
+      }
+    }
+
+    return result;
+  }
+
+  public Object getIBInterfaceImplementationSemanticCandidates(DDiagram diagram) {
+    Collection<EObject> result = new ArrayList<EObject>();
+
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
+      EObject target = dNode.getTarget();
+      if (target instanceof Component) {
+        result.addAll(((Component) target).getImplementedInterfaceLinks());
+      }
+    }
+
+    return result;
+  }
+
+  public Object getIBComponentExchangeSemanticCandidates(DDiagram diagram) {
+    Collection<ComponentExchange> result = new ArrayList<ComponentExchange>();
+
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
+      EObject target = dNode.getTarget();
+      if (target instanceof Part) {
+        result.addAll(ComponentExt.getAllRelatedComponentExchange((Part) target, true));
+      } else if (target instanceof Component) {
+        result.addAll(ComponentExt.getAllRelatedComponentExchange((Component) target));
+      }
+    }
+
+    return result;
+  }
+
+  public Object getIBGeneralizationSemanticCandidates(DDiagram diagram) {
+    return InformationServices.getService().getCDBGeneralizationSemanticCandidates(diagram);
+  }
+
+  public Object getIBCommunicationLinkSemanticCandidates(DDiagram diagram) {
+    Collection<CommunicationLink> result = new ArrayList<CommunicationLink>();
+
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
+      EObject target = dNode.getTarget();
+      if (target instanceof Component) {
+        result.addAll(((Component) target).getOwnedCommunicationLinks());
+      }
+    }
+
+    return result;
+  }
+
+  public Object getIBExchangeItemAllocationSemanticCandidates(DDiagram diagram) {
+    Collection<ExchangeItemAllocation> result = new ArrayList<ExchangeItemAllocation>();
+
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
+      EObject target = dNode.getTarget();
+      if (target instanceof Interface) {
+        result.addAll(((Interface) target).getOwnedExchangeItemAllocations());
+      }
+    }
+
+    return result;
+  }
 }
