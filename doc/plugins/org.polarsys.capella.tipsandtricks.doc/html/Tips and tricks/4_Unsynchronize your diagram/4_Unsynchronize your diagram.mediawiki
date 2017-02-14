@@ -1,6 +1,11 @@
-=Unsynchronize your diagram=
+=Unsynchronize Your Diagram=
 
-This functionality allows to master complexity and avoid to hide a lot of diagram elements which increase the performance. For more information, please refer to the section Capella Guide > User Manual > Diagram Management > Advanced Management of Diagrams > Synchronized and Unsynchronized Diagrams
+This functionality allows to master complexity and avoids hiding a lot of diagram elements which decreases the performance. For more information, please refer to the section ''Capella Guide > User Manual > Diagram Management > Advanced Management of Diagrams > Synchronized and Unsynchronized Diagrams''.
 
+[[File:../../Images/Tips70.png|thumbnail|500px|]]
+
+You should unsynchronize a diagram to:
+* keep a diagram display unchanged even if additional elements (ports, sub components ...) are added in the model, for documentary purpose for instance.
+* control the elements displayed without hiding unwanted ones.
 
 

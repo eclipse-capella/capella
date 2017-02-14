@@ -1,0 +1,45 @@
+=Tab-Bar Actions Glossary=
+
+The top area of all Sirius diagram editors is filled with the '''tab-bar''', which provides access to '''many operations on diagrams and their elements '''such as "automatic layout tool, selection tool, Show/Hide tool...". The content of the tab-bar differs when the current selection is the diagram itself (i.e. no element is selected) or one or several diagram elements.
+
+[[Image:../../Images/Tips65.png]]
+
+<br/>
+<br/>
+
+This document describes some of these operations.
+
+{|class="wikitable"
+! '''Tab-bar Actions Available on Diagram'''&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+! '''Tab-bar Actions Available on Diagram Elements'''
+|- style="vertical-align:top;"
+|
+* Automatic Layout Tools
+* Selection Tools
+* Refresh
+* Layers Selection
+* Filters Selection
+* Show/Hide
+* Pin/Unpin
+* Paste Layout
+* Zoom Controls
+* Export As Image
+* Layout Mode
+|
+* Arrange Selection
+* Alignment Control
+* Distribute Elements
+* Pin/Unpin
+* Copy Layout
+* Hide
+* Hide Label
+* Delete from Diagram
+* Delete from Model
+* Font Controls
+* Color and Visual Style Controls
+* Cancel Custom Style
+* Apply Style
+* Make Same Size
+* Auto-Size
+|}
+

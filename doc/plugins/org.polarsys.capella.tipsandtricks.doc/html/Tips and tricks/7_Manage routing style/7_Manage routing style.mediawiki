@@ -1,11 +1,11 @@
-=Manage routing Style=
+=Manage Routing Style=
 
-'''In order to improve the readability on diagrams''' a functionality on connectors enables to manage the routing style e.g to have rectilinear or oblique connectors.
+'''In order to improve the readability on diagrams''' a capability available on connectors enables to manage the routing style (e.g to have rectilinear or oblique connectors).
 
 
 ==Via preferences==
 
-Open ''Preferences'', in ''Sirius/Sirius Diagram/Connections ''checks the box '''''nable user specific default values. These setting apply to all diagrams''''' and select the ''line style'' wanted.
+Open ''Preferences'', in ''Sirius/Sirius Diagram/Connections ''checks the box '''''enable user specific default values. These setting apply to all diagrams''''' and select the ''line style'' wanted.
 
 [[Image:../../Images/Tips3.png]]
 

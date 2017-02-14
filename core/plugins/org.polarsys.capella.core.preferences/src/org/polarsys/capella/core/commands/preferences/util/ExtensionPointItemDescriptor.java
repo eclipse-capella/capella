@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2003, 2016 Corporation and others.
+ * Copyright (c) 2003, 2017 Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -178,8 +178,12 @@ public final class ExtensionPointItemDescriptor extends AbstractItemDescriptor
   private void parseIsEnabledByDefault(IConfigurationElement extConfig) {
     String attr = extConfig.getAttribute(XmlPreferencesConfig.ITEM_IS_ENABLED_BY_DEFAULT);
 
-    this.isEnabledByDefault = true;
+    boolean result = true;
+    if (attr != null && !attr.isEmpty()) {
+      result = Boolean.parseBoolean(attr);
+    }
 
+    this.isEnabledByDefault = result;
     ConfigurabilityPreferences.setItemDisabledDefault(id, isEnabledByDefault);
 
   }

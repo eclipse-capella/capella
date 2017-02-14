@@ -1,32 +1,24 @@
 =Element Selection =
 
-==Automatic cursor selection of diagram elements==
+==Automatic Cursor Selection Of Diagram Elements==
 
-When a diagram is composed of a lot of elements (components, functions, edges...) it can become fastidious to select some of them to apply them a specific styling or other.
+When a diagram displays a lot of elements (components, functions, edges...) it can be fastidious to select some of them to apply a specific styling or other.
 
-Thats why, two selection modes are realizable thanks to your computer cursor:
+That's why, two selection modes are available with the mouse cursor:
 
+# '''''From the left to the right: '''''to select the elements contained in the selection area (Figure 1). (for example if you want to select all ports of a component on the same side without selecting the exchanges or the component itself.)
+# '''''From the right to the left: '''''to select the elements contained in the selection area '''''AND''''' also those which cross it (Figure 2). (for example if you want to select exchanges without their ports.)
 
+[[File:../../Images/Tips1.png|thumbnail|800px|Figure 1: Cursor selection from the left to the right]]
 
-# '''''From the left to the right: '''''it selects automatically all the elements contained in your selection area (Figure 1), for example if you want to select all ports of a component on the same side without selecting the exchanges or the component itself.
-# '''''From the right to the left: '''''it selects not only automatically all the elements contained in your selection area but also those which cross it (Figure 2), for example if you want to select exchanges without their ports.
-
-
-[[Image:../../Images/Tips1.png]]
-
-<center>'''Figure 1: Cursor selection from the left to the right '''</center>
-
-
-[[Image:../../Images/Tips2.png]]
-<center>'''Figure 2: Cursor selection from the right to the left'''</center>
-
-==Connectors selection==
+[[File:../../Images/Tips2.png|thumbnail|800px|Figure 2: Cursor selection from the right to the left]]
 
 
 
-It can be necessary to '''select all connectors''' to change the routing style or remove bend point for example and select them one by one can quickly become a fastidious task. 
+==Connectors Selection==
 
-Thus, you can select all diagram connectors in the same time by selecting '''''Select All Connectors''''' on the diagram menu.
+Connectors can be selected one by one. As it can be fastidious to select all the connectors of a diagram one by one, to change the routing style or remove bend point for example, use the button '''''Select All Connectors''''' on the diagram menu instead.
+
 
 [[Image:../../Images/TT7.png]]
 

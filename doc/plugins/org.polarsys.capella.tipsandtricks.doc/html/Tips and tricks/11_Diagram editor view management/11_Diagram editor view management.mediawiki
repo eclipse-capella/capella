@@ -1,4 +1,4 @@
-=Diagram Editor view Management=
+=Diagram Editor View Management=
 ==Reset Origin==
 
 Reset origin tool is useful '''when some elements are not visible''' because their layout is not centered. Reset origin tools will automatically adjust the layout in order to have the origin at the top left of the container or editor. 
