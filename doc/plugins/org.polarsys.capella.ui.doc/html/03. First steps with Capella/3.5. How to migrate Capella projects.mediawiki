@@ -4,10 +4,10 @@
 Capella offers migration feature to operate with old Capella projects.
 
  
-To launch the migration process on a Capella Project, right click on the <u>'''project'''</u> and choose ''migration &gt; Migrate Project toward v3.0''
+To launch the migration process on a Capella Project, right click on the <u>'''project'''</u> and choose ''migration &gt; Migrate Project toward current version''
 
  
-[[Image:Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_m55692da5.png|550x500px]]
+[[Image:Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_m55692da5.png|675x430px]]
 
  
 A reminder asks to manually make a versioned copy (baseline) of the model before running migration.
@@ -18,11 +18,16 @@ Capella creates backup files before performing migration to go back in case of m
  
 [[Image:Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_m381b2efb.png|567x210px]]
 
+<br>
+<br>
+Some additional migration commands are available on semantic and diagram files allowing advanced migration processes by triggering migration on each files kind separately. These commands can be enabled following "Capella Guide > User Manual > Preferences > Capella > Commands & User Profiles" section.
+
  
 <br>
 <br>
-
-         
+Version specific information are available in the corresponding 				Capella Software Center Operator Manual.
+ 
+        
 {| border="1"
 |-
 | 

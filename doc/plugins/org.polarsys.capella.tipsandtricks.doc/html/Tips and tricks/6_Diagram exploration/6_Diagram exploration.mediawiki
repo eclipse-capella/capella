@@ -1,5 +1,5 @@
 =Diagram Exploration=
-==Find an element in a digram==
+==Find an element in a diagram==
 
 The '''''Ctrl+o''''' command enables to display for a dedicated diagram, in an independent window (as following), every diagram elements.
 
@@ -9,11 +9,11 @@ The '''''Ctrl+o''''' command enables to display for a dedicated diagram, in an i
 
 Shortcuts are available to navigate between views:
 
-* F8: It opens the explorer and highlights the diagram selected element or the semantic browser selected element in the '''''Project Explorer'''.''
+* '''F8''': opens the explorer and highlights the diagram selected element or the semantic browser selected element in the '''''Project Explorer'''.''
 
 [[Image:../../Images/Tips17.png]]
 
-* Go To: It opens the explorer and highlights the element you chose in the '''''Project Explorer'''''.
+* '''Go To''': opens the explorer and highlights the element you chose in the '''''Project Explorer'''''.
 
 [[Image:../../Images/Tips18.png]]
 
@@ -29,3 +29,5 @@ Directly in diagrams, it is possible to go through large diagrams and move in al
 
 * Space + Mouse left click 
 * Mouse wheel click "Middle click"
+
+[[File:../../Images/Tips72.png|thumbnail|700px|]]

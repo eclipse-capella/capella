@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,7 @@ import org.polarsys.capella.core.model.obfuscator.IImageKeys;
 import org.polarsys.capella.core.model.obfuscator.IResourceObfuscator;
 import org.polarsys.capella.core.sirius.ui.actions.CloseSessionAction;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
+import org.polarsys.kitalpha.ad.metadata.helpers.ViewpointMetadata;
 
 /**
  * Obfuscate end-user selected Sirius open sessions.
@@ -59,6 +60,10 @@ public class ObfuscateSessionAction extends BaseSelectionListenerAction {
         Messages.ObfuscateModelAction_ConfirmationDialog_Message)) {
       return;
     }
+    obfuscate();
+  }
+
+  public void obfuscate() {
     // Let's start
     List<Couple<Session, IFile>> sessions = SessionHelper.getSessionsFromSelection(getStructuredSelection());
     // Loop over sessions to obfuscate them.
@@ -69,7 +74,9 @@ public class ObfuscateSessionAction extends BaseSelectionListenerAction {
 
       // Obfuscate semantic resources.
       for (Resource resource : semanticResources) {
-        obfuscateSemanticResource(resource, executionManager);
+        if (resource.getURI().fileExtension() != null
+            && !(resource.getURI().fileExtension().equals(ViewpointMetadata.STORAGE_EXTENSION)))
+          obfuscateSemanticResource(resource, executionManager);
       }
       // Obfuscate all representations.
       for (DRepresentation representation : DialectManager.INSTANCE.getAllRepresentations(session)) {

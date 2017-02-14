@@ -23,7 +23,7 @@ location "http://download.eclipse.org/releases/neon" {
 	com.ibm.icu
 }
 
-location "http://download.eclipse.org/sirius/updates/releases/4.1.1/neon" {
+location "http://download.eclipse.org/sirius/updates/releases/4.1.3/neon" {
 	org.eclipse.sirius.runtime.feature.group
 	org.eclipse.sirius.runtime.ide.ui.feature.group
 }

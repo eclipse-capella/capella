@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,12 +34,10 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
-import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.core.af.integration.listener.NoMetadataException;
 import org.polarsys.capella.core.platform.sirius.ui.session.CapellaSessionHelper;
 import org.polarsys.capella.core.sirius.ui.Messages;
 import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
@@ -245,7 +243,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
           IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
           if (session.isOpen() || shouldOpenActivityExplorer) {
             activePage.openEditor(new ActivityExplorerEditorInput(session, SessionHelper.getCapellaProject(session)),
-                ACTIVITY_EXPLORER_EDITOR);
+                ACTIVITY_EXPLORER_EDITOR, true, IWorkbenchPage.MATCH_ID | IWorkbenchPage.MATCH_INPUT);
           }
           result[0] = true;
         } catch (PartInitException exception) {

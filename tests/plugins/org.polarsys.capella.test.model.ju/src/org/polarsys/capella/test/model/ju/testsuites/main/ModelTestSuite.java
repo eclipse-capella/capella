@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.model.ju.obfuscate.ObfuscateModelTestCase;
 import org.polarsys.capella.test.model.ju.rename.RenameModelTestSuite;
 import org.polarsys.capella.test.model.ju.sortContent.SortContentTestSuite;
 import org.polarsys.capella.test.model.ju.sortSelection.SortSelectionTestSuite;
@@ -51,6 +52,7 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new SortContentTestSuite());
     tests.add(new NewDiagramDialogLabel());
     tests.add(new RenameModelTestSuite());
+    tests.add(new ObfuscateModelTestCase());
     return tests;
   }
 
