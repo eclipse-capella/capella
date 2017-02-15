@@ -3135,7 +3135,7 @@ public class ABServices {
     Collection<EObject> result = new ArrayList<EObject>();
 
     for (DDiagramElement dNode : DiagramServices.getDiagramServices()
-        .getAllAbstractNodes((DSemanticDecorator) diagram)) {
+        .getAllAbstractNodes((DSemanticDecorator) diagram, true)) {
       EObject target = dNode.getTarget();
       if (target instanceof Port) {
         result.addAll(((Port) target).getOutgoingPortAllocations());
@@ -3149,7 +3149,7 @@ public class ABServices {
     Collection<ComponentPortAllocation> result = new ArrayList<ComponentPortAllocation>();
 
     for (DDiagramElement dNode : DiagramServices.getDiagramServices()
-        .getAllAbstractNodes((DSemanticDecorator) diagram)) {
+        .getAllAbstractNodes((DSemanticDecorator) diagram, true)) {
       EObject target = dNode.getTarget();
       if (target instanceof PhysicalPort) {
         for (AbstractTrace trace : ((PhysicalPort) target).getOutgoingTraces()) {

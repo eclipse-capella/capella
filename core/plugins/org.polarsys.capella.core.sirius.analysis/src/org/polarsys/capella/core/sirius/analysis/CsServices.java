@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.AppliedCompositeFilters;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -52,6 +53,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -59,10 +61,7 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
-import org.eclipse.sirius.diagram.description.filter.Filter;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
-import org.eclipse.sirius.diagram.description.filter.FilterKind;
-import org.eclipse.sirius.diagram.description.filter.MappingFilter;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -2855,13 +2854,20 @@ public class CsServices {
     return semantics;
   }
 
-  /**
-   * Returns all component exchange for mapping LAB_ComponentExchangeByGroup
-   */
   public Collection<CapellaElement> getComponentExchangeByGroupSemantics(EObject source) {
 
     Object sourceView = getInterpreterVariable(source, IInterpreterSiriusVariables.SOURCE_VIEW);
     Object targetView = getInterpreterVariable(source, IInterpreterSiriusVariables.TARGET_VIEW);
+
+    return getComponentExchangeByGroupSemantics(source, (DSemanticDecorator)sourceView, (DSemanticDecorator)targetView);
+  }
+  
+  /**
+   * Returns all component exchange for mapping LAB_ComponentExchangeByGroup
+   * @param target 
+   * @param source2 
+   */
+  public Collection<CapellaElement> getComponentExchangeByGroupSemantics(EObject source, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
 
     Part sourcePart = (Part) ((DSemanticDecorator) sourceView).getTarget();
     Part targetPart = (Part) ((DSemanticDecorator) targetView).getTarget();
@@ -2904,13 +2910,21 @@ public class CsServices {
     return target2;
   }
 
+  public Collection<CapellaElement> getComponentExchangeByGroupOrientedSemanticElts(final EObject source) {
+
+    Object sourceView = getInterpreterVariable(source, IInterpreterSiriusVariables.SOURCE_VIEW);
+    Object targetView = getInterpreterVariable(source, IInterpreterSiriusVariables.TARGET_VIEW);
+
+    return getComponentExchangeByGroupOrientedSemanticElts(source, (DSemanticDecorator)sourceView, (DSemanticDecorator)targetView);
+  }
+  
   /**
    * Returns all component exchange for mapping xAB_ComponentExchangeByGroup_Oriented associated semantic elements.
    * Returns the outgoing componentExchanges
    */
-  public Collection<CapellaElement> getComponentExchangeByGroupOrientedSemanticElts(final EObject source) {
+  public Collection<CapellaElement> getComponentExchangeByGroupOrientedSemanticElts(final EObject source, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
 
-    Collection<CapellaElement> componentExchanges = getComponentExchangeByGroupSemantics(source);
+    Collection<CapellaElement> componentExchanges = getComponentExchangeByGroupSemantics(source, sourceView, targetView);
     Predicate<EObject> isPartSourceForCE = new Predicate<EObject>() {
 
       @Override
@@ -2953,7 +2967,7 @@ public class CsServices {
       DSemanticDecorator target) {
 
     // Retrieve the first correct semantic element between both elements
-    Collection<CapellaElement> result = getComponentExchangeByGroupOrientedSemanticElts(source.getTarget());
+    Collection<CapellaElement> result = getComponentExchangeByGroupOrientedSemanticElts(source.getTarget(), source, target);
     if (result.isEmpty()) {
       return false;
     }
@@ -3000,7 +3014,7 @@ public class CsServices {
 
     EObject semantic = communication;
     // Retrieve the first correct semantic element between both elements
-    Collection<CapellaElement> result = getComponentExchangeByGroupSemantics(source.getTarget());
+    Collection<CapellaElement> result = getComponentExchangeByGroupSemantics(source.getTarget(), source, target);
     semantic = result.iterator().next();
 
     if (semantic instanceof ComponentExchange) {
@@ -3037,20 +3051,18 @@ public class CsServices {
     return true;
   }
 
+  /**
+   * Returns true whether the filter has been activated at least one time.
+   * Until the filter has not yet been activated, edges are not created
+   */
   public boolean isFirstFilterActive(FilterDescription filter, DDiagram diagram) {
     if (filter instanceof CompositeFilterDescription) {
-      CompositeFilterDescription cF = (CompositeFilterDescription) filter;
-      if (cF.getFilters() != null) {
-        for (Filter internalFilter : cF.getFilters()) {
-          if ((internalFilter instanceof MappingFilter) && (internalFilter.getFilterKind() == FilterKind.HIDE_LITERAL)) {
-            MappingFilter hF = (MappingFilter) internalFilter;
-            if (hF.getMappings() != null) {
-              for (DiagramElementMapping mapping : hF.getMappings()) {
-                for (DEdge edge : diagram.getEdges()) {
-                  if (mapping.equals(edge.getActualMapping())) {
-                    return false;
-                  }
-                }
+      for (DEdge edge : diagram.getEdges()) {
+        if (!edge.getGraphicalFilters().isEmpty()) {
+          for (GraphicalFilter appliedFilter : edge.getGraphicalFilters()) {
+            if (appliedFilter instanceof AppliedCompositeFilters) {
+              if (((AppliedCompositeFilters) appliedFilter).getCompositeFilterDescriptions().contains(filter)) {
+                return false;
               }
             }
           }
@@ -3078,7 +3090,7 @@ public class CsServices {
       return false;
     }
 
-    Collection<? extends EObject> semantics = getComponentExchangeByDelegationSemantics(communication);
+    Collection<? extends EObject> semantics = getComponentExchangeByDelegationSemantics(communication, source, target);
 
     // We needs to recompute this, sirius make supposition, if no semanticElements, semanticElements = target...
     if (semantics.size() == 0) {

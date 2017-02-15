@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -158,9 +158,9 @@ public class FunctionalChainServices {
 		boolean hasResetNode = false;
 
 		// find displayed Functional chains and functions
-		for (DNode aNode : diagram.getNodes()) {
-			if ((aNode.getTarget() != null) && (aNode.getTarget() instanceof FunctionalChain)) {
-				displayedFC.put((FunctionalChain) aNode.getTarget(), aNode);
+		for (DDiagramElement aNode : diagram.getOwnedDiagramElements()) {
+			if ((aNode instanceof DNode) && (aNode.getTarget() != null) && (aNode.getTarget() instanceof FunctionalChain)) {
+				displayedFC.put((FunctionalChain) aNode.getTarget(), (DNode)aNode);
 			}
 		}
 		// find displayed functions

@@ -82,6 +82,8 @@ import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 
+import com.google.common.collect.Lists;
+
 /**
  */
 public class DiagramServices {
@@ -188,8 +190,8 @@ public class DiagramServices {
     return views;
   }
 
-  public Iterable<DDiagramElement> getAllAbstractNodes(EObject element) {
-    return getAllAbstractNodes(element, true);
+  public Collection<DDiagramElement> getAllAbstractNodes(EObject element) {
+    return Lists.newArrayList(getAllAbstractNodes(element, true));
   }
 
   public Iterable<DDiagramElement> getAllAbstractNodes(EObject element, boolean borderedNode) {
@@ -1018,7 +1020,9 @@ public class DiagramServices {
   }
   
   public Iterable<DDiagramElement> getDiagramElements(DDiagram diagram, DiagramElementMapping mapping) {
-    final DiagramIterator iterator = new DiagramIterator(diagram, mapping);
+    boolean isEdgeMapping = mapping instanceof EdgeMapping || mapping instanceof EdgeMappingImport;
+    
+    final DiagramIterator iterator = new DiagramIterator(diagram, mapping, isEdgeMapping, !isEdgeMapping, !isEdgeMapping, !isEdgeMapping);
 
     return new Iterable<DDiagramElement>() {
 
@@ -1030,7 +1034,9 @@ public class DiagramServices {
   }
 
   public Iterable<DDiagramElement> getDiagramElements(DDiagramElement diagramElement, DiagramElementMapping mapping) {
-    final DiagramIterator iterator = new DiagramIterator(diagramElement, mapping);
+    boolean isEdgeMapping = mapping instanceof EdgeMapping || mapping instanceof EdgeMappingImport;
+    
+    final DiagramIterator iterator = new DiagramIterator(diagramElement, mapping, isEdgeMapping, !isEdgeMapping, !isEdgeMapping, !isEdgeMapping);
 
     return new Iterable<DDiagramElement>() {
 

@@ -3274,7 +3274,7 @@
           </style>
         </nodeMappings>
         <nodeMappings name="CA Dummy" semanticCandidatesExpression="" createElements="false" documentation="only used for &quot;show all allocated functions&quot; tool" domainClass="CapellaElement"/>
-        <nodeMappings name="SAB_PhysicalPathEnd" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="&lt;%getAvailablePhysicalPathsToInsert($diagram)%>" createElements="false" domainClass="PhysicalPath">
+        <nodeMappings name="SAB_PhysicalPathEnd" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" createElements="false" domainClass="PhysicalPath">
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Path%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Path%20Description']"/>
           <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%getPhysicalPathLabel($diagram) %>" sizeComputationExpression="1" resizeKind="NSEW" width="2" height="2">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
