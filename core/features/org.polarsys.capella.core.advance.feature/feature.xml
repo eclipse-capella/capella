@@ -94,10 +94,6 @@
          version="0.0.0"/>
 
    <includes
-         id="org.polarsys.capella.shared.feature"
-         version="0.0.0"/>
-
-   <includes
          id="org.polarsys.capella.patterns.feature"
          version="0.0.0"/>
 
@@ -107,6 +103,14 @@
 
    <includes
          id="org.polarsys.capella.doc.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.polarsys.capella.common.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.polarsys.capella.common.ui.feature"
          version="0.0.0"/>
 
 </feature>

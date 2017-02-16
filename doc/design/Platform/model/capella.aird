@@ -48,6 +48,14 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']"/>
         <target xmi:type="platform:Feature" href="capella.platform#_u3e4Te8MEealyuWlKlnakw"/>
       </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_rRoHwPSJEea6ItKtsYIoVw" name="org.polarsys.capella.core.feature - features and plugins" representation="_rSJFIPSJEea6ItKtsYIoVw">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']"/>
+        <target xmi:type="platform:Feature" href="capella.platform#_u3eSx-8MEealyuWlKlnakw"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_gWCugPSKEea6ItKtsYIoVw" name="org.polarsys.capella.rcp.feature - features and plugins" representation="_gWCugfSKEea6ItKtsYIoVw">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']"/>
+        <target xmi:type="platform:Feature" href="capella.platform#_u3e4Ie8MEealyuWlKlnakw"/>
+      </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_RCcFAO8NEealyuWlKlnakw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.polarsys.capella.test.rcptt/target/runner-workspace/.metadata/.plugins/org.eclipse.pde.core/AUT_0/org.eclipse.osgi/794/0/.cp/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
@@ -4081,5 +4089,664 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer"/>
     <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@additionalLayers[name='Edition']"/>
     <target xmi:type="platform:Feature" href="capella.platform#_u3e4Te8MEealyuWlKlnakw"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram xmi:id="_rSJFIPSJEea6ItKtsYIoVw" name="org.polarsys.capella.core.feature - features and plugins">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_rSJFIfSJEea6ItKtsYIoVw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_rSJFIvSJEea6ItKtsYIoVw"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_rVn28PSJEea6ItKtsYIoVw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_rVn28fSJEea6ItKtsYIoVw" type="Sirius" element="_rSJFIPSJEea6ItKtsYIoVw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_yrppUPSJEea6ItKtsYIoVw" type="2003" element="_ycnu0PSJEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_yryMMPSJEea6ItKtsYIoVw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_yryzQPSJEea6ItKtsYIoVw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_yr8kQPSJEea6ItKtsYIoVw" type="3010" element="_ycyt8PSJEea6ItKtsYIoVw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_yr8kQfSJEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_yr8kQvSJEea6ItKtsYIoVw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_yryzQfSJEea6ItKtsYIoVw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_yrzaUPSJEea6ItKtsYIoVw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_yrppUfSJEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yrppUvSJEea6ItKtsYIoVw" x="225" y="28"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_1bHgQPSJEea6ItKtsYIoVw" type="2003" element="_1M9IcPSJEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_1bIHUPSJEea6ItKtsYIoVw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_1bIHUfSJEea6ItKtsYIoVw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_1bJVc_SJEea6ItKtsYIoVw" type="3010" element="_1NDPEPSJEea6ItKtsYIoVw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_1bJVdPSJEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_1bJVdfSJEea6ItKtsYIoVw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_1bIHUvSJEea6ItKtsYIoVw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_1bIHU_SJEea6ItKtsYIoVw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_1bHgQfSJEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1bHgQvSJEea6ItKtsYIoVw" x="344" y="120"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_1bIHVPSJEea6ItKtsYIoVw" type="2003" element="_1M9vgPSJEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_1bIuYPSJEea6ItKtsYIoVw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_1bIuYfSJEea6ItKtsYIoVw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_1bJ8gPSJEea6ItKtsYIoVw" type="3010" element="_1ND2IPSJEea6ItKtsYIoVw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_1bJ8gfSJEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_1bJ8gvSJEea6ItKtsYIoVw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_1bIuYvSJEea6ItKtsYIoVw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_1bIuY_SJEea6ItKtsYIoVw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_1bIHVfSJEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1bIHVvSJEea6ItKtsYIoVw" x="28" y="120"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_DdTooPSKEea6ItKtsYIoVw" type="2003" element="_DNbZkPSKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_DdToo_SKEea6ItKtsYIoVw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_DdUPsPSKEea6ItKtsYIoVw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_DdUPs_SKEea6ItKtsYIoVw" type="3010" element="_DNfrAPSKEea6ItKtsYIoVw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_DdUPtPSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_DdUPtfSKEea6ItKtsYIoVw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_DdUPsfSKEea6ItKtsYIoVw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_DdUPsvSKEea6ItKtsYIoVw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_DdToofSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DdToovSKEea6ItKtsYIoVw" x="356" y="224"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_FycUAPSKEea6ItKtsYIoVw" type="2003" element="_FkNqwPSKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_Fyc7EPSKEea6ItKtsYIoVw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_Fyc7EfSKEea6ItKtsYIoVw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_FyeJMvSKEea6ItKtsYIoVw" type="3010" element="_FkTKUPSKEea6ItKtsYIoVw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_FyeJM_SKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_FyeJNPSKEea6ItKtsYIoVw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_Fyc7EvSKEea6ItKtsYIoVw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_Fyc7E_SKEea6ItKtsYIoVw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_FycUAfSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FycUAvSKEea6ItKtsYIoVw" x="480" y="316"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_FydiIPSKEea6ItKtsYIoVw" type="2003" element="_FkO44PSKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_FydiI_SKEea6ItKtsYIoVw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_FydiJPSKEea6ItKtsYIoVw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_FyewQPSKEea6ItKtsYIoVw" type="3010" element="_FkTxYfSKEea6ItKtsYIoVw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_FyewQfSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_FyewQvSKEea6ItKtsYIoVw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_FyeJMPSKEea6ItKtsYIoVw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_FyeJMfSKEea6ItKtsYIoVw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_FydiIfSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FydiIvSKEea6ItKtsYIoVw" x="220" y="312"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_LovZAPSKEea6ItKtsYIoVw" type="2003" element="_LZXgQPSKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_LovZA_SKEea6ItKtsYIoVw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_LowAEPSKEea6ItKtsYIoVw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_Lo4i8PSKEea6ItKtsYIoVw" type="3010" element="_LZe1APSKEea6ItKtsYIoVw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_Lo4i8fSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Lo4i8vSKEea6ItKtsYIoVw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_LowAEfSKEea6ItKtsYIoVw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_LowAEvSKEea6ItKtsYIoVw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_LovZAfSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LovZAvSKEea6ItKtsYIoVw" x="264" y="452"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_LowAE_SKEea6ItKtsYIoVw" type="2003" element="_LZYHUPSKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_LowAFvSKEea6ItKtsYIoVw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_LownIPSKEea6ItKtsYIoVw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_Lo5KAPSKEea6ItKtsYIoVw" type="3010" element="_LZe1AvSKEea6ItKtsYIoVw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_Lo5KAfSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Lo5KAvSKEea6ItKtsYIoVw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_LownIfSKEea6ItKtsYIoVw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_LownIvSKEea6ItKtsYIoVw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_LowAFPSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LowAFfSKEea6ItKtsYIoVw" x="100" y="508"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_LownI_SKEea6ItKtsYIoVw" type="2003" element="_LZYuYfSKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_LownJvSKEea6ItKtsYIoVw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_LownJ_SKEea6ItKtsYIoVw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_Lo5xEPSKEea6ItKtsYIoVw" type="3010" element="_LZfcEfSKEea6ItKtsYIoVw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_Lo5xEfSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Lo5xEvSKEea6ItKtsYIoVw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_LownKPSKEea6ItKtsYIoVw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_LownKfSKEea6ItKtsYIoVw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_LownJPSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LownJfSKEea6ItKtsYIoVw" x="492" y="452"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_LoxOMPSKEea6ItKtsYIoVw" type="2003" element="_LZZVcPSKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_LoxOM_SKEea6ItKtsYIoVw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_LoxONPSKEea6ItKtsYIoVw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_Lo5xE_SKEea6ItKtsYIoVw" type="3010" element="_LZfcE_SKEea6ItKtsYIoVw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_Lo5xFPSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Lo5xFfSKEea6ItKtsYIoVw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_LoxONfSKEea6ItKtsYIoVw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_LoxONvSKEea6ItKtsYIoVw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_LoxOMfSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LoxOMvSKEea6ItKtsYIoVw" x="28" y="452"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_rVn28vSJEea6ItKtsYIoVw"/>
+        <edges xmi:type="notation:Edge" xmi:id="_1bWw0PSJEea6ItKtsYIoVw" type="4001" element="_1VVoYPSJEea6ItKtsYIoVw" source="_yrppUPSJEea6ItKtsYIoVw" target="_1bHgQPSJEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_1bYmAPSJEea6ItKtsYIoVw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1bZNEPSJEea6ItKtsYIoVw" x="33" y="-47"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_1babMPSJEea6ItKtsYIoVw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1babMfSJEea6ItKtsYIoVw" y="-1"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_1bbCQPSJEea6ItKtsYIoVw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1bbCQfSJEea6ItKtsYIoVw" x="-4"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_1bWw0fSJEea6ItKtsYIoVw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_1bWw0vSJEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_1bWw0_SJEea6ItKtsYIoVw" points="[25, 20, -110, -72]$[105, 73, -30, -19]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1bsvEPSJEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1bsvEfSJEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_1btWIPSJEea6ItKtsYIoVw" type="4001" element="_1VW2gvSJEea6ItKtsYIoVw" source="_yrppUPSJEea6ItKtsYIoVw" target="_1bIHVPSJEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_1bt9MPSJEea6ItKtsYIoVw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1bt9MfSJEea6ItKtsYIoVw" x="41" y="40"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_1bt9MvSJEea6ItKtsYIoVw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1bt9M_SJEea6ItKtsYIoVw" x="144" y="2"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_1bt9NPSJEea6ItKtsYIoVw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1bt9NfSJEea6ItKtsYIoVw" x="25" y="2"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_1btWIfSJEea6ItKtsYIoVw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_1btWIvSJEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_1btWI_SJEea6ItKtsYIoVw" points="[-17, 20, 137, -72]$[-118, 73, 36, -19]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1bt9NvSJEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1bt9N_SJEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_DdU2wPSKEea6ItKtsYIoVw" type="4001" element="_DWwUsPSKEea6ItKtsYIoVw" source="_1bHgQPSJEea6ItKtsYIoVw" target="_DdTooPSKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_DdU2xPSKEea6ItKtsYIoVw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DdU2xfSKEea6ItKtsYIoVw" x="-1" y="-6"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_DdU2xvSKEea6ItKtsYIoVw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DdU2x_SKEea6ItKtsYIoVw" x="-2" y="8"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_DdU2yPSKEea6ItKtsYIoVw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DdU2yfSKEea6ItKtsYIoVw" x="-2" y="8"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_DdU2wfSKEea6ItKtsYIoVw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_DdU2wvSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_DdU2w_SKEea6ItKtsYIoVw" points="[-2, 20, -2, -84]$[-1, 85, -1, -19]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_DdVd0PSKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_DdVd0fSKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_Fyf-YPSKEea6ItKtsYIoVw" type="4001" element="_FtY04PSKEea6ItKtsYIoVw" source="_DdTooPSKEea6ItKtsYIoVw" target="_FycUAPSKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_Fyf-ZPSKEea6ItKtsYIoVw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HKCZEPSKEea6ItKtsYIoVw" x="-7" y="-8"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Fyf-ZvSKEea6ItKtsYIoVw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HKCZEfSKEea6ItKtsYIoVw" x="3" y="7"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_FyglcPSKEea6ItKtsYIoVw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HKCZEvSKEea6ItKtsYIoVw" x="5" y="7"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_Fyf-YfSKEea6ItKtsYIoVw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_Fyf-YvSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Fyf-Y_SKEea6ItKtsYIoVw" points="[46, 20, -98, -72]$[118, 73, -26, -19]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FyglcvSKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Fyglc_SKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_FygldPSKEea6ItKtsYIoVw" type="4001" element="_FtZb8PSKEea6ItKtsYIoVw" source="_DdTooPSKEea6ItKtsYIoVw" target="_FydiIPSKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_FyhMgPSKEea6ItKtsYIoVw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HjhQEPSKEea6ItKtsYIoVw" x="5" y="-8"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_FyhMgvSKEea6ItKtsYIoVw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HjhQEfSKEea6ItKtsYIoVw" x="-3" y="12"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_FyhMhPSKEea6ItKtsYIoVw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Hjh3IPSKEea6ItKtsYIoVw" x="-2" y="12"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_FygldfSKEea6ItKtsYIoVw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_FygldvSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Fygld_SKEea6ItKtsYIoVw" points="[-38, 20, 84, -68]$[-99, 69, 23, -19]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FyhMhvSKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FyhMh_SKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_Lo6YIPSKEea6ItKtsYIoVw" type="4001" element="_LfAOMPSKEea6ItKtsYIoVw" source="_LownI_SKEea6ItKtsYIoVw" target="_LovZAPSKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_Lo6YJPSKEea6ItKtsYIoVw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Lo6YJfSKEea6ItKtsYIoVw" x="4" y="3"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Lo6_MPSKEea6ItKtsYIoVw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Lo6_MfSKEea6ItKtsYIoVw" x="28" y="7"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Lo6_MvSKEea6ItKtsYIoVw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Lo6_M_SKEea6ItKtsYIoVw" x="24" y="8"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_Lo6YIfSKEea6ItKtsYIoVw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_Lo6YIvSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Lo6YI_SKEea6ItKtsYIoVw" points="[-93, 8, 148, 8]$[-161, 4, 80, 4]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Lo6_NPSKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Lo6_NfSKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_Lo6_NvSKEea6ItKtsYIoVw" type="4001" element="_LfBcUPSKEea6ItKtsYIoVw" source="_FycUAPSKEea6ItKtsYIoVw" target="_LownI_SKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_Lo_3sPSKEea6ItKtsYIoVw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Lo_3sfSKEea6ItKtsYIoVw" x="-15" y="6"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Lo_3svSKEea6ItKtsYIoVw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Lo_3s_SKEea6ItKtsYIoVw" x="4" y="-1"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Lo_3tPSKEea6ItKtsYIoVw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Lo_3tfSKEea6ItKtsYIoVw" x="4"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_Lo6_N_SKEea6ItKtsYIoVw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_Lo6_OPSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Lo6_OfSKEea6ItKtsYIoVw" points="[2, 20, -7, -116]$[16, 117, 7, -19]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LpAewPSKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LpAewfSKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_LpAewvSKEea6ItKtsYIoVw" type="4001" element="_LiFXYPSKEea6ItKtsYIoVw" source="_FydiIPSKEea6ItKtsYIoVw" target="_LovZAPSKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_LpBF0PSKEea6ItKtsYIoVw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LpBF0fSKEea6ItKtsYIoVw" x="-8" y="4"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LpBF0vSKEea6ItKtsYIoVw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LpBF0_SKEea6ItKtsYIoVw" x="6" y="-1"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LpBF1PSKEea6ItKtsYIoVw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LpBF1fSKEea6ItKtsYIoVw" x="6" y="-4"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_LpAew_SKEea6ItKtsYIoVw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_LpAexPSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_LpAexfSKEea6ItKtsYIoVw" points="[10, 20, -24, -120]$[30, 121, -4, -19]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LpBF1vSKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LpBF1_SKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_LpBF2PSKEea6ItKtsYIoVw" type="4001" element="_LiF-cvSKEea6ItKtsYIoVw" source="_FydiIPSKEea6ItKtsYIoVw" target="_LowAE_SKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_LpBs4PSKEea6ItKtsYIoVw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LpBs4fSKEea6ItKtsYIoVw" x="-15" y="-2"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LpBs4vSKEea6ItKtsYIoVw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LpBs4_SKEea6ItKtsYIoVw" x="9" y="3"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LpBs5PSKEea6ItKtsYIoVw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LpBs5fSKEea6ItKtsYIoVw" x="10" y="4"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_LpBF2fSKEea6ItKtsYIoVw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_LpBF2vSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_LpBF2_SKEea6ItKtsYIoVw" points="[-3, 20, 95, -176]$[-88, 177, 10, -19]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LpBs5vSKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LpBs5_SKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_LpBs6PSKEea6ItKtsYIoVw" type="4001" element="_LiGlgvSKEea6ItKtsYIoVw" source="_FydiIPSKEea6ItKtsYIoVw" target="_LownI_SKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_LpCT8PSKEea6ItKtsYIoVw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LpCT8fSKEea6ItKtsYIoVw" x="-30" y="1"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LpCT8vSKEea6ItKtsYIoVw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LpCT8_SKEea6ItKtsYIoVw" x="24" y="-2"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LpCT9PSKEea6ItKtsYIoVw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LpCT9fSKEea6ItKtsYIoVw" x="21" y="-2"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_LpBs6fSKEea6ItKtsYIoVw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_LpBs6vSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_LpBs6_SKEea6ItKtsYIoVw" points="[-2, 20, -277, -120]$[231, 121, -44, -19]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LpCT9vSKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LpCT9_SKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_LpCT-PSKEea6ItKtsYIoVw" type="4001" element="_LiGlhfSKEea6ItKtsYIoVw" source="_FydiIPSKEea6ItKtsYIoVw" target="_LoxOMPSKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_LpC7APSKEea6ItKtsYIoVw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LpC7AfSKEea6ItKtsYIoVw" x="-3" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LpC7AvSKEea6ItKtsYIoVw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LpC7A_SKEea6ItKtsYIoVw" x="6" y="-7"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LpC7BPSKEea6ItKtsYIoVw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LpC7BfSKEea6ItKtsYIoVw" x="6" y="-5"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_LpCT-fSKEea6ItKtsYIoVw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_LpCT-vSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_LpCT-_SKEea6ItKtsYIoVw" points="[-24, 20, 174, -120]$[-171, 121, 27, -19]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LpC7BvSKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LpC7B_SKEea6ItKtsYIoVw" id="(0.5,0.5)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ycnu0PSJEea6ItKtsYIoVw" name="org.polarsys.capella.core.feature" outgoingEdges="_1VVoYPSJEea6ItKtsYIoVw _1VW2gvSJEea6ItKtsYIoVw">
+      <target xmi:type="platform:Feature" href="capella.platform#_u3eSx-8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3eSx-8MEealyuWlKlnakw"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ycnu0fSJEea6ItKtsYIoVw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" foregroundColor="242,185,184">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ycyt8PSJEea6ItKtsYIoVw" name="Version : 1.2.0">
+        <target xmi:type="platform:Feature" href="capella.platform#_u3eSx-8MEealyuWlKlnakw"/>
+        <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3eSx-8MEealyuWlKlnakw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_yc0jIPSJEea6ItKtsYIoVw" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_1M9IcPSJEea6ItKtsYIoVw" name="org.polarsys.capella.core.advance.feature" outgoingEdges="_DWwUsPSKEea6ItKtsYIoVw" incomingEdges="_1VVoYPSJEea6ItKtsYIoVw">
+      <target xmi:type="platform:Feature" href="capella.platform#_u3eSqO8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3eSqO8MEealyuWlKlnakw"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_1M9IcfSJEea6ItKtsYIoVw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" foregroundColor="242,185,184">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_1NDPEPSJEea6ItKtsYIoVw" name="Version : 1.2.0">
+        <target xmi:type="platform:Feature" href="capella.platform#_u3eSqO8MEealyuWlKlnakw"/>
+        <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3eSqO8MEealyuWlKlnakw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_1NDPEfSJEea6ItKtsYIoVw" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_1M9vgPSJEea6ItKtsYIoVw" name="org.polarsys.capella.core.properties.description.feature" incomingEdges="_1VW2gvSJEea6ItKtsYIoVw">
+      <target xmi:type="platform:Feature" href="capella.platform#_u3dEt-8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3dEt-8MEealyuWlKlnakw"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_1M-WkPSJEea6ItKtsYIoVw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" foregroundColor="242,185,184">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_1ND2IPSJEea6ItKtsYIoVw" name="Version : 1.0.0">
+        <target xmi:type="platform:Feature" href="capella.platform#_u3dEt-8MEealyuWlKlnakw"/>
+        <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3dEt-8MEealyuWlKlnakw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_1ND2IfSJEea6ItKtsYIoVw" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_1VVoYPSJEea6ItKtsYIoVw" name="&lt;&lt;includes>>&#xA;Optional : false&#xA;vv1.2.0.201702091[...]" sourceNode="_ycnu0PSJEea6ItKtsYIoVw" targetNode="_1M9IcPSJEea6ItKtsYIoVw">
+      <target xmi:type="platform:FeatureInclusion" href="capella.platform#_u3eSye8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:FeatureInclusion" href="capella.platform#_u3eSye8MEealyuWlKlnakw"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_1VW2gPSJEea6ItKtsYIoVw" sourceArrow="FillDiamond" strokeColor="0,0,0">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_1VW2gfSJEea6ItKtsYIoVw" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_1VW2gvSJEea6ItKtsYIoVw" name="&lt;&lt;includes>>&#xA;Optional : false&#xA;vv1.0.0.201702091[...]" sourceNode="_ycnu0PSJEea6ItKtsYIoVw" targetNode="_1M9vgPSJEea6ItKtsYIoVw">
+      <target xmi:type="platform:FeatureInclusion" href="capella.platform#_u3eSyu8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:FeatureInclusion" href="capella.platform#_u3eSyu8MEealyuWlKlnakw"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_1VXdkPSJEea6ItKtsYIoVw" sourceArrow="FillDiamond" strokeColor="0,0,0">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_1VXdkfSJEea6ItKtsYIoVw" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_DNbZkPSKEea6ItKtsYIoVw" name="org.polarsys.capella.shared.feature" outgoingEdges="_FtY04PSKEea6ItKtsYIoVw _FtZb8PSKEea6ItKtsYIoVw" incomingEdges="_DWwUsPSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:Feature" href="capella.platform#_u3e4Te8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3e4Te8MEealyuWlKlnakw"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_DNcAoPSKEea6ItKtsYIoVw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" foregroundColor="242,185,184">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DNfrAPSKEea6ItKtsYIoVw" name="Version : 1.0.0">
+        <target xmi:type="platform:Feature" href="capella.platform#_u3e4Te8MEealyuWlKlnakw"/>
+        <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3e4Te8MEealyuWlKlnakw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_DNfrAfSKEea6ItKtsYIoVw" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_DWwUsPSKEea6ItKtsYIoVw" name="&lt;&lt;includes>>&#xA;Optional : false&#xA;vv1.0.0.201702091[...]" sourceNode="_1M9IcPSJEea6ItKtsYIoVw" targetNode="_DNbZkPSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:FeatureInclusion" href="capella.platform#_u3eSve8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:FeatureInclusion" href="capella.platform#_u3eSve8MEealyuWlKlnakw"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_DWwUsfSKEea6ItKtsYIoVw" sourceArrow="FillDiamond" strokeColor="0,0,0">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_DWwUsvSKEea6ItKtsYIoVw" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_FkNqwPSKEea6ItKtsYIoVw" name="org.polarsys.capella.common.advance.feature" outgoingEdges="_LfBcUPSKEea6ItKtsYIoVw" incomingEdges="_FtY04PSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:Feature" href="capella.platform#_u3bOtO8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3bOtO8MEealyuWlKlnakw"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_FkOR0PSKEea6ItKtsYIoVw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" foregroundColor="242,185,184">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_FkTKUPSKEea6ItKtsYIoVw" name="Version : 1.2.0">
+        <target xmi:type="platform:Feature" href="capella.platform#_u3bOtO8MEealyuWlKlnakw"/>
+        <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3bOtO8MEealyuWlKlnakw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_FkTxYPSKEea6ItKtsYIoVw" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_FkO44PSKEea6ItKtsYIoVw" name="org.polarsys.capella.common.base.feature" outgoingEdges="_LiFXYPSKEea6ItKtsYIoVw _LiF-cvSKEea6ItKtsYIoVw _LiGlgvSKEea6ItKtsYIoVw _LiGlhfSKEea6ItKtsYIoVw" incomingEdges="_FtZb8PSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:Feature" href="capella.platform#_u3bOuu8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3bOuu8MEealyuWlKlnakw"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_FkO44fSKEea6ItKtsYIoVw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" foregroundColor="242,185,184">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_FkTxYfSKEea6ItKtsYIoVw" name="Version : 1.2.0">
+        <target xmi:type="platform:Feature" href="capella.platform#_u3bOuu8MEealyuWlKlnakw"/>
+        <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3bOuu8MEealyuWlKlnakw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_FkTxYvSKEea6ItKtsYIoVw" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_FtY04PSKEea6ItKtsYIoVw" name="&lt;&lt;includes>>&#xA;Optional : false&#xA;vv1.2.0.201702091[...]" sourceNode="_DNbZkPSKEea6ItKtsYIoVw" targetNode="_FkNqwPSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:FeatureInclusion" href="capella.platform#_u3e4T-8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:FeatureInclusion" href="capella.platform#_u3e4T-8MEealyuWlKlnakw"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_FtY04fSKEea6ItKtsYIoVw" sourceArrow="FillDiamond" strokeColor="0,0,0">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_FtY04vSKEea6ItKtsYIoVw" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_FtZb8PSKEea6ItKtsYIoVw" name="&lt;&lt;includes>>&#xA;Optional : false&#xA;vv1.2.0.201702091[...]" sourceNode="_DNbZkPSKEea6ItKtsYIoVw" targetNode="_FkO44PSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:FeatureInclusion" href="capella.platform#_u3e4UO8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:FeatureInclusion" href="capella.platform#_u3e4UO8MEealyuWlKlnakw"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_FtaDAPSKEea6ItKtsYIoVw" sourceArrow="FillDiamond" strokeColor="0,0,0">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_FtaDAfSKEea6ItKtsYIoVw" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_LZXgQPSKEea6ItKtsYIoVw" name="org.polarsys.capella.common.feature" incomingEdges="_LfAOMPSKEea6ItKtsYIoVw _LiFXYPSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:Feature" href="capella.platform#_u3bOyO8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3bOyO8MEealyuWlKlnakw"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_LZXgQfSKEea6ItKtsYIoVw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" foregroundColor="242,185,184">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_LZe1APSKEea6ItKtsYIoVw" name="Version : 1.2.0">
+        <target xmi:type="platform:Feature" href="capella.platform#_u3bOyO8MEealyuWlKlnakw"/>
+        <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3bOyO8MEealyuWlKlnakw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_LZe1AfSKEea6ItKtsYIoVw" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_LZYHUPSKEea6ItKtsYIoVw" name="org.polarsys.capella.common.mdsofa.common.feature" incomingEdges="_LiF-cvSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:Feature" href="capella.platform#_u3anhe8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3anhe8MEealyuWlKlnakw"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_LZYuYPSKEea6ItKtsYIoVw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" foregroundColor="242,185,184">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_LZe1AvSKEea6ItKtsYIoVw" name="Version : 1.0.0">
+        <target xmi:type="platform:Feature" href="capella.platform#_u3anhe8MEealyuWlKlnakw"/>
+        <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3anhe8MEealyuWlKlnakw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_LZfcEPSKEea6ItKtsYIoVw" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_LZYuYfSKEea6ItKtsYIoVw" name="org.polarsys.capella.common.model.feature" outgoingEdges="_LfAOMPSKEea6ItKtsYIoVw" incomingEdges="_LfBcUPSKEea6ItKtsYIoVw _LiGlgvSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:Feature" href="capella.platform#_u3anqe8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3anqe8MEealyuWlKlnakw"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_LZYuYvSKEea6ItKtsYIoVw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" foregroundColor="242,185,184">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_LZfcEfSKEea6ItKtsYIoVw" name="Version : 1.0.0">
+        <target xmi:type="platform:Feature" href="capella.platform#_u3anqe8MEealyuWlKlnakw"/>
+        <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3anqe8MEealyuWlKlnakw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_LZfcEvSKEea6ItKtsYIoVw" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_LZZVcPSKEea6ItKtsYIoVw" name="org.polarsys.capella.common.ui.feature" incomingEdges="_LiGlhfSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:Feature" href="capella.platform#_u3bOGu8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3bOGu8MEealyuWlKlnakw"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_LZZVcfSKEea6ItKtsYIoVw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" foregroundColor="242,185,184">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_LZfcE_SKEea6ItKtsYIoVw" name="Version : 1.2.0">
+        <target xmi:type="platform:Feature" href="capella.platform#_u3bOGu8MEealyuWlKlnakw"/>
+        <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3bOGu8MEealyuWlKlnakw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_LZgDIPSKEea6ItKtsYIoVw" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LfAOMPSKEea6ItKtsYIoVw" name="&lt;&lt;depends>>&#xA; : UNSET" sourceNode="_LZYuYfSKEea6ItKtsYIoVw" targetNode="_LZXgQPSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:FeatureDependency" href="capella.platform#_u3anru8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:FeatureDependency" href="capella.platform#_u3anru8MEealyuWlKlnakw"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LfA1QPSKEea6ItKtsYIoVw" lineStyle="dash" strokeColor="0,0,0">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToFeatureDependency']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_LfA1QfSKEea6ItKtsYIoVw" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToFeatureDependency']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LfBcUPSKEea6ItKtsYIoVw" name="&lt;&lt;depends>>&#xA; : UNSET" sourceNode="_FkNqwPSKEea6ItKtsYIoVw" targetNode="_LZYuYfSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:FeatureDependency" href="capella.platform#_u3bOue8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:FeatureDependency" href="capella.platform#_u3bOue8MEealyuWlKlnakw"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LfBcUfSKEea6ItKtsYIoVw" lineStyle="dash" strokeColor="0,0,0">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToFeatureDependency']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_LfBcUvSKEea6ItKtsYIoVw" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToFeatureDependency']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LiFXYPSKEea6ItKtsYIoVw" name="&lt;&lt;includes>>&#xA;Optional : false&#xA;vv1.2.0.201702091[...]" sourceNode="_FkO44PSKEea6ItKtsYIoVw" targetNode="_LZXgQPSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:FeatureInclusion" href="capella.platform#_u3bOvO8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:FeatureInclusion" href="capella.platform#_u3bOvO8MEealyuWlKlnakw"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LiF-cPSKEea6ItKtsYIoVw" sourceArrow="FillDiamond" strokeColor="0,0,0">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_LiF-cfSKEea6ItKtsYIoVw" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LiF-cvSKEea6ItKtsYIoVw" name="&lt;&lt;includes>>&#xA;Optional : false&#xA;vv1.0.0.201702091[...]" sourceNode="_FkO44PSKEea6ItKtsYIoVw" targetNode="_LZYHUPSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:FeatureInclusion" href="capella.platform#_u3bOve8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:FeatureInclusion" href="capella.platform#_u3bOve8MEealyuWlKlnakw"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LiGlgPSKEea6ItKtsYIoVw" sourceArrow="FillDiamond" strokeColor="0,0,0">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_LiGlgfSKEea6ItKtsYIoVw" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LiGlgvSKEea6ItKtsYIoVw" name="&lt;&lt;includes>>&#xA;Optional : false&#xA;vv1.0.0.201702091[...]" sourceNode="_FkO44PSKEea6ItKtsYIoVw" targetNode="_LZYuYfSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:FeatureInclusion" href="capella.platform#_u3bOvu8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:FeatureInclusion" href="capella.platform#_u3bOvu8MEealyuWlKlnakw"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LiGlg_SKEea6ItKtsYIoVw" sourceArrow="FillDiamond" strokeColor="0,0,0">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_LiGlhPSKEea6ItKtsYIoVw" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LiGlhfSKEea6ItKtsYIoVw" name="&lt;&lt;includes>>&#xA;Optional : false&#xA;vv1.2.0.201702091[...]" sourceNode="_FkO44PSKEea6ItKtsYIoVw" targetNode="_LZZVcPSKEea6ItKtsYIoVw">
+      <target xmi:type="platform:FeatureInclusion" href="capella.platform#_u3bOv-8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:FeatureInclusion" href="capella.platform#_u3bOv-8MEealyuWlKlnakw"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LiHMkPSKEea6ItKtsYIoVw" sourceArrow="FillDiamond" strokeColor="0,0,0">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_LiHMkfSKEea6ItKtsYIoVw" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_rSJFI_SJEea6ItKtsYIoVw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@additionalLayers[name='Edition']"/>
+    <target xmi:type="platform:Feature" href="capella.platform#_u3eSx-8MEealyuWlKlnakw"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram xmi:id="_gWCugfSKEea6ItKtsYIoVw" name="org.polarsys.capella.rcp.feature - features and plugins">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_gWCugvSKEea6ItKtsYIoVw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_gWCug_SKEea6ItKtsYIoVw"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_gWEjsPSKEea6ItKtsYIoVw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_gWEjsfSKEea6ItKtsYIoVw" type="Sirius" element="_gWCugfSKEea6ItKtsYIoVw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_ki04APSKEea6ItKtsYIoVw" type="2003" element="_kU-pQPSKEea6ItKtsYIoVw">
+          <children xmi:type="notation:Node" xmi:id="_ki1fEPSKEea6ItKtsYIoVw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_ki1fEfSKEea6ItKtsYIoVw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_ki2GIPSKEea6ItKtsYIoVw" type="3010" element="_kVAecPSKEea6ItKtsYIoVw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_ki2GIfSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_ki2GIvSKEea6ItKtsYIoVw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_ki1fEvSKEea6ItKtsYIoVw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_ki1fE_SKEea6ItKtsYIoVw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_ki04AfSKEea6ItKtsYIoVw" fontName=".SF NS Text" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ki04AvSKEea6ItKtsYIoVw" x="256" y="52"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_gWEjsvSKEea6ItKtsYIoVw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_kU-pQPSKEea6ItKtsYIoVw" name="org.polarsys.capella.rcp.feature">
+      <target xmi:type="platform:Feature" href="capella.platform#_u3e4Ie8MEealyuWlKlnakw"/>
+      <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3e4Ie8MEealyuWlKlnakw"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_kU-pQfSKEea6ItKtsYIoVw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" foregroundColor="242,185,184">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kVAecPSKEea6ItKtsYIoVw" name="Version : 1.2.0">
+        <target xmi:type="platform:Feature" href="capella.platform#_u3e4Ie8MEealyuWlKlnakw"/>
+        <semanticElements xmi:type="platform:Feature" href="capella.platform#_u3e4Ie8MEealyuWlKlnakw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_kVBFgPSKEea6ItKtsYIoVw" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']/@subNodeMappings[name='F.Version']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_gWCuhPSKEea6ItKtsYIoVw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.polarsys.kitalpha.pdt.modeler.design/description/platform.odesign#//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@additionalLayers[name='Edition']"/>
+    <target xmi:type="platform:Feature" href="capella.platform#_u3e4Ie8MEealyuWlKlnakw"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

@@ -71,9 +71,10 @@ export WKS="."
 
 # Ensure the target folder exists
 mkdir -p "$TARGET_DIR"
-# The actual publication of the p2 repo produced by the build
+# The actual publication of the p2 repository produced by the build
 cp -dR "$WKS"/releng/plugins/org.polarsys.capella.rcp.site/target/repository/* "$TARGET_DIR"
-# Publish the target platform definitions used, so that dowstream projects can reference them
+cp -dR "$WKS"/releng/plugins/org.polarsys.capella.rcp.site/target/org.polarsys.capella.rcp-updateSite-*.zip "$TARGET_ROOT/$FULL_VERSION/org.polarsys.capella.rcp-updateSite-$FULL_VERSION-$PLATFORM.zip"
+# Publish the target platform definitions used, so that downstream projects can reference them
 mkdir -p "$TARGET_DIR/targets"
 cp -dR "$WKS"/releng/plugins/org.polarsys.capella.rcp.target/full/* "$TARGET_DIR/targets"
 cp -dR "$WKS"/releng/plugins/org.polarsys.capella.rcp.target/headless/* "$TARGET_DIR/targets"
@@ -118,9 +119,9 @@ EOF
 
 }
 
-# First, a link for the $VERSION (e.g. "1.2.0/luna" => "1.2.0-NYYYYMMDD-HHMM/luna")
-create_redirect "$TARGET_ROOT/$VERSION/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
-# Also create a link for the $STREAM (e.g. "1.2.x/luna" => "1.2.0-NYYYYMMDD-HHMM/luna")
+# First, a link for the $VERSION (e.g. "1.2.0/neon" => "1.2.0-NYYYYMMDD-HHMM/neon")
+#create_redirect "$TARGET_ROOT/$VERSION/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
+# Also create a link for the $STREAM (e.g. "1.2.x/neon" => "1.2.0-NYYYYMMDD-HHMM/neon")
 create_redirect "$TARGET_ROOT/$STREAM/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
 # And publish the zipped versions there, at stable URLs
 cp -dR "$WKS"/releng/plugins/org.polarsys.capella.rcp.site/target/org.polarsys.capella.rcp-updateSite-*.zip "$TARGET_ROOT/$STREAM/org.polarsys.capella.rcp-updateSite-$VERSION-$PLATFORM.zip"

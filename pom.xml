@@ -239,16 +239,12 @@
 				<target-platform-path>full</target-platform-path>
 			</properties>
 			<modules>
-				<module>common/features/org.polarsys.capella.common.advance.feature</module>
-				<module>common/features/org.polarsys.capella.common.base.feature</module>
 				<module>common/features/org.polarsys.capella.common.compare.feature</module>
 				<module>common/features/org.polarsys.capella.common.feature</module>
 				<module>common/features/org.polarsys.capella.common.libraries.definition.feature</module>
 				<module>common/features/org.polarsys.capella.common.libraries.feature</module>
-				<module>common/features/org.polarsys.capella.common.model.feature</module>
 				<module>common/features/org.polarsys.capella.common.re.feature</module>
 				<module>common/features/org.polarsys.capella.common.ui.feature</module>
-				<module>common/features/org.polarsys.capella.shared.feature</module>
 				<module>common/plugins/org.polarsys.capella.common</module>
 				<module>common/plugins/org.polarsys.capella.common.command.recorder.core</module>
 				<module>common/plugins/org.polarsys.capella.common.command.recorder.ui</module>
@@ -505,7 +501,6 @@
 				<module>ext/detachment/features/org.polarsys.capella.detachment.feature</module>
 				<module>ext/detachment/plugins/org.polarsys.capella.detachment.propertyvalue</module>
 				<module>ext/detachment/plugins/org.polarsys.capella.detachment.version.precondition</module>
-				<module>legacy/features/org.polarsys.capella.common.mdsofa.common.feature</module>
 				<module>legacy/plugins/org.polarsys.capella.common.mdsofa.common</module>
 				<module>patterns/features/org.polarsys.capella.patterns.feature</module>
 				<module>patterns/plugins/org.polarsys.capella.patterns</module>
@@ -554,15 +549,11 @@
 				<target-platform-path>headless</target-platform-path>
 			</properties>
 			<modules>
-				<module>common/features/org.polarsys.capella.common.advance.feature</module>
-				<module>common/features/org.polarsys.capella.common.base.feature</module>
 				<module>common/features/org.polarsys.capella.common.compare.feature</module>
 				<module>common/features/org.polarsys.capella.common.feature</module>
 				<module>common/features/org.polarsys.capella.common.libraries.definition.feature</module>
 				<module>common/features/org.polarsys.capella.common.libraries.feature</module>
-				<module>common/features/org.polarsys.capella.common.model.feature</module>
 				<module>common/features/org.polarsys.capella.common.re.feature</module>
-				<module>common/features/org.polarsys.capella.shared.feature</module>
 				<module>common/plugins/org.polarsys.capella.common</module>
 				<module>common/plugins/org.polarsys.capella.common.command.recorder.core</module>
 				<module>common/plugins/org.polarsys.capella.common.consonance.ui.sirius</module>
@@ -726,7 +717,6 @@
 				<module>ext/detachment/features/org.polarsys.capella.detachment.feature</module>
 				<module>ext/detachment/plugins/org.polarsys.capella.detachment.propertyvalue</module>
 				<module>ext/detachment/plugins/org.polarsys.capella.detachment.version.precondition</module>
-				<module>legacy/features/org.polarsys.capella.common.mdsofa.common.feature</module>
 				<module>legacy/plugins/org.polarsys.capella.common.mdsofa.common</module>
 				<module>patterns/features/org.polarsys.capella.patterns.feature</module>
 				<module>patterns/plugins/org.polarsys.capella.patterns</module>

@@ -30,14 +30,6 @@
    </license>
 
    <includes
-         id="org.polarsys.capella.common.advance.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.common.base.feature"
-         version="0.0.0"/>
-
-   <includes
          id="org.polarsys.capella.common.feature"
          version="0.0.0"/>
 
@@ -47,14 +39,6 @@
 
    <includes
          id="org.polarsys.capella.common.libraries.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.common.mdsofa.common.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.common.model.feature"
          version="0.0.0"/>
 
    <includes
@@ -130,7 +114,7 @@
          version="0.0.0"/>
 
    <includes
-         id="org.polarsys.capella.shared.feature"
+         id="org.polarsys.capella.common.ui.feature"
          version="0.0.0"/>
 
    <plugin
