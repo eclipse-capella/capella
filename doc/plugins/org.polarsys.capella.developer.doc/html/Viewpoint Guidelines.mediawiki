@@ -1,0 +1,19 @@
+= Viewpoint Guidelines =
+
+To avoid performance issues, some guidelines must be followed.
+
+== Diagram extensions ==
+
+=== Semantic Candidate Expression ===
+This expression is called should be the most efficient possible. It can be computed based on the displayed graphical elements using the variable *diagram*.
+
+=== Create Generic Viewpoints ===
+Create Generic Viewpoints using:
+* Sirius capability to extends several diagrams at one time with regular expressions extensions 
+* Diagram Styles Customization Feature allowing to customize the style of elements based on expression. (for instance, on all "Functions called 'Deprecated'", set color as gray)
+
+== Avoid EObject.eResource calls ==
+
+On EObject, you have to avoid as much as possible calls to eObject.eResource()
+
+
