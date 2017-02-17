@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,6 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IPerspectiveDescriptor;
@@ -418,13 +417,14 @@ public class PreferencesHelper {
    * 
    */
   public static String getActivePerpectiveId() {
-    String perspectiveId = null;
     IWorkbench wb = PlatformUI.getWorkbench();
-    IWorkbenchWindow win = wb.getActiveWorkbenchWindow();
-    IWorkbenchPage page = win != null ? win.getActivePage() : null;
-    IPerspectiveDescriptor perspective = page != null ? page.getPerspective() : null;
-    perspectiveId = perspective != null ? perspective.getId() : perspectiveId;
-    return perspectiveId;
+    if (wb != null && !wb.isStarting()) {
+      IWorkbenchWindow win = wb.getActiveWorkbenchWindow();
+      IWorkbenchPage page = win != null ? win.getActivePage() : null;
+      IPerspectiveDescriptor perspective = page != null ? page.getPerspective() : null;
+      return perspective != null ? perspective.getId() : null;
+    }
+    return null;
   }
 
   /**
@@ -606,10 +606,9 @@ public class PreferencesHelper {
    * @param capellaPerspectiveId
    */
   public static void removeEclipseProjectReferences(String capellaPerspectiveId) {
-    if (PreferencesHelper.getActivePerpectiveId().equals(capellaPerspectiveId)) {
+    if (capellaPerspectiveId.equals(PreferencesHelper.getActivePerpectiveId())) {
       PreferenceManager pm = PlatformUI.getWorkbench().getPreferenceManager();
       pm.remove("org.eclipse.ui.propertypages.project.reference"); //$NON-NLS-1$
-
     }
   }
 
