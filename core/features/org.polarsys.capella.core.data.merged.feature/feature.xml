@@ -29,6 +29,7 @@
 
    <requires>
       <import feature="org.polarsys.capella.common.feature"/>
+      <import feature="org.polarsys.capella.common.ui.feature"/>
    </requires>
 
    <plugin
