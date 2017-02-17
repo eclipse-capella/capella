@@ -37,6 +37,14 @@
 					<useUIThread>false</useUIThread>
 					<testSuite>org.polarsys.capella.test.suite.notinui.ju</testSuite>
 					<testClass>org.polarsys.capella.test.suite.notinui.ju.RunInNotUITestSuite</testClass>
+					<dependencies>
+						<!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=462862 -->
+						<dependency>
+							<type>eclipse-plugin</type>
+							<artifactId>org.eclipse.equinox.event</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+					</dependencies>
 				</configuration>
 			</plugin>
 			<plugin>
