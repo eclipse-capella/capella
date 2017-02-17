@@ -5,7 +5,7 @@ To avoid performance issues, some guidelines must be followed.
 == Diagram extensions ==
 
 === Semantic Candidate Expression ===
-This expression is called should be the most efficient possible. It can be computed based on the displayed graphical elements using the variable *diagram*.
+This expression called at each diagram refresh should be the most efficient possible. It can be computed based on the displayed graphical elements using the variable *diagram*. When 'Import Mapping' are used, please ensure that semantic candidate expression has been updated accordingly to the semantic candidate expression of the imported mapping
 
 === Create Generic Viewpoints ===
 Create Generic Viewpoints using:
@@ -15,5 +15,3 @@ Create Generic Viewpoints using:
 == Avoid EObject.eResource calls ==
 
 On EObject, you have to avoid as much as possible calls to eObject.eResource()
-
-
