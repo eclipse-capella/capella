@@ -6,7 +6,6 @@ Bundle-Version: 1.2.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.polarsys.capella.core.validation,
- org.polarsys.capella.common.ui,
  org.apache.commons.lang
 Export-Package: org.polarsys.capella.core.data.fa.validation.connection,
  org.polarsys.capella.core.data.fa.validation.functionalChain,

@@ -241,7 +241,6 @@
 			<modules>
 				<module>common/features/org.polarsys.capella.common.compare.feature</module>
 				<module>common/features/org.polarsys.capella.common.feature</module>
-				<module>common/features/org.polarsys.capella.common.libraries.definition.feature</module>
 				<module>common/features/org.polarsys.capella.common.libraries.feature</module>
 				<module>common/features/org.polarsys.capella.common.re.feature</module>
 				<module>common/features/org.polarsys.capella.common.ui.feature</module>
@@ -313,6 +312,7 @@
 				<module>core/features/org.polarsys.capella.core.ui.feature</module>
 				<module>core/features/org.polarsys.capella.core.ui.quickfix.feature</module>
 				<module>core/features/org.polarsys.capella.core.ui.semantic.browser.feature</module>
+				<module>core/features/org.polarsys.capella.core.ui.transfo.feature</module>
 				<module>core/features/org.polarsys.capella.core.ui.wizards.feature</module>
 				<module>core/features/org.polarsys.capella.core.validation.feature</module>
 				<module>core/plugins/org.polarsys.capella.common.ui.resources</module>
@@ -551,7 +551,6 @@
 			<modules>
 				<module>common/features/org.polarsys.capella.common.compare.feature</module>
 				<module>common/features/org.polarsys.capella.common.feature</module>
-				<module>common/features/org.polarsys.capella.common.libraries.definition.feature</module>
 				<module>common/features/org.polarsys.capella.common.libraries.feature</module>
 				<module>common/features/org.polarsys.capella.common.re.feature</module>
 				<module>common/plugins/org.polarsys.capella.common</module>
@@ -664,7 +663,6 @@
 				<module>core/plugins/org.polarsys.capella.core.projection.actors.la2pa</module>
 				<module>core/plugins/org.polarsys.capella.core.projection.actors.oa2ctx</module>
 				<module>core/plugins/org.polarsys.capella.core.projection.actorsandinterfaces.ctx2la</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.commands</module>
 				<module>core/plugins/org.polarsys.capella.core.projection.common</module>
 				<module>core/plugins/org.polarsys.capella.core.projection.data</module>
 				<module>core/plugins/org.polarsys.capella.core.projection.exchanges</module>
@@ -684,7 +682,6 @@
 				<module>core/plugins/org.polarsys.capella.core.projection.systemfunction</module>
 				<module>core/plugins/org.polarsys.capella.core.queries.helpers</module>
 				<module>core/plugins/org.polarsys.capella.core.re</module>
-				<module>core/plugins/org.polarsys.capella.core.refinement.commands</module>
 				<module>core/plugins/org.polarsys.capella.core.refinement.framework</module>
 				<module>core/plugins/org.polarsys.capella.core.refinement.mapper.broadcastpattern</module>
 				<module>core/plugins/org.polarsys.capella.core.refinement.mapper.standard</module>

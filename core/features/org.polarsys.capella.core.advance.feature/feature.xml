@@ -113,4 +113,8 @@
          id="org.polarsys.capella.common.ui.feature"
          version="0.0.0"/>
 
+   <includes
+         id="org.polarsys.capella.core.ui.transfo.feature"
+         version="0.0.0"/>
+
 </feature>
