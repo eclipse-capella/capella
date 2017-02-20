@@ -408,6 +408,7 @@
 				<module>core/plugins/org.polarsys.capella.core.projection.actorsandinterfaces.ctx2la</module>
 				<module>core/plugins/org.polarsys.capella.core.projection.commands</module>
 				<module>core/plugins/org.polarsys.capella.core.projection.common</module>
+				<module>core/plugins/org.polarsys.capella.core.projection.common.ui</module>
 				<module>core/plugins/org.polarsys.capella.core.projection.data</module>
 				<module>core/plugins/org.polarsys.capella.core.projection.exchanges</module>
 				<module>core/plugins/org.polarsys.capella.core.projection.interfaces</module>

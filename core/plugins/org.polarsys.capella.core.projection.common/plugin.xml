@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -11,15 +11,6 @@
        Thales - initial API and implementation
 -->
 <plugin>
-   <extension
-         point="org.polarsys.capella.core.tiger">
-      <resolver
-            class="org.polarsys.capella.core.projection.common.resolver.UIResolver"
-            id="org.polarsys.capella.core.projection.common.uiResolver"
-            priority="low">
-      </resolver>
-   </extension>
-   
    <extension
          point="org.polarsys.capella.core.tiger">
       <ruleset context="org.polarsys.capella.core.projection.common.resolver">
@@ -86,11 +77,7 @@
       <sharedContext context="capella.logicalfunctions.rules"/>
       <sharedContext context="capella.operationalactivities.rules"/>
       <sharedContext context="capella.systemfunction.rules"/>
-      
-      
-      
    </ruleset>
    </extension>
-
   
 </plugin>

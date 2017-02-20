@@ -2,17 +2,19 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.projection.actors.oa2ctx;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.projection.actors.oa2ctx.Activator
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
+Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.projection.common,
  org.polarsys.capella.core.projection.operationalactivity,
  org.polarsys.capella.core.projection.data,
  org.polarsys.capella.core.projection.statemachine,
  org.polarsys.capella.core.projection.preferences
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.core.projection.actors.oa2ctx
+Export-Package: org.polarsys.capella.core.projection.actors.oa2ctx,
+ org.polarsys.capella.core.projection.actors.oa2ctx.rules.byactor,
+ org.polarsys.capella.core.projection.actors.oa2ctx.rules.bysystem,
+ org.polarsys.capella.core.projection.actors.oa2ctx.rules.common
 Bundle-Localization: plugin
