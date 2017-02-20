@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,8 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -57,6 +59,7 @@ public class DFServices {
 
   /**
    * Returns whether creation of a Function[FunctionKind==FUNCTION] is allowed on the given view
+   * 
    * @param containerView
    * @return
    */
@@ -87,6 +90,7 @@ public class DFServices {
 
   /**
    * Returns whether creation of a Function[FunctionKind!=FUNCTION] is allowed on the given view
+   * 
    * @param containerView
    * @return
    */
@@ -96,6 +100,7 @@ public class DFServices {
 
   /**
    * Move the given function from oldContainer to the newContainer
+   * 
    * @param function
    * @param oldContainer
    * @param newContainer
@@ -107,19 +112,22 @@ public class DFServices {
 
   /**
    * Move the given function from oldContainer to the newContainer
+   * 
    * @param function
    * @param oldContainer
    * @param newContainer
    * @return
    */
-  public EObject dndDFAbstractFunction(AbstractFunction function, NamedElement oldContainer, NamedElement newContainer) {
+  public EObject dndDFAbstractFunction(AbstractFunction function, NamedElement oldContainer,
+      NamedElement newContainer) {
 
     // move function in the new container
     if (newContainer instanceof AbstractFunction) {
       AbstractFunction newFunction = (AbstractFunction) newContainer;
       // fix for bug when dnd function A in a diagram related to A
       if (newContainer == function) {
-        if ((newFunction.eContainer() != null) && (newFunction.eContainer() != null) && (newFunction.eContainer().eContainer() != null)
+        if ((newFunction.eContainer() != null) && (newFunction.eContainer() != null)
+            && (newFunction.eContainer().eContainer() != null)
             && (newFunction.eContainer().eContainer() instanceof AbstractFunction)) {
           ((AbstractFunction) (newFunction.eContainer().eContainer())).getOwnedFunctions().add(function);
         } else {
@@ -143,29 +151,35 @@ public class DFServices {
 
   /**
    * Returns whether FunctionalExchange edge is valid between both sourceView/targetView
+   * 
    * @param context
    * @param sourceView
    * @param targetView
    * @return
    */
-  public boolean isValidDFFunctionalExchangeEdge(EObject context, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
+  public boolean isValidDFFunctionalExchangeEdge(EObject context, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView) {
     if (context instanceof FunctionalExchange) {
       DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
       if (CapellaServices.getService().areInternalEdgePorts(sourceView, targetView)) {
         // FE is internal ? Do not display it.
         return false;
       }
-      return !diagram.isSynchronized() || !FaServices.getFaServices().isACategoryDisplayed(context, sourceView, targetView);
+      return !diagram.isSynchronized()
+          || !FaServices.getFaServices().isACategoryDisplayed(context, sourceView, targetView);
     }
-    // Context can be FunctionInputPort while tool creation of Functional Exchange (sirius weird behavior), so we return false in this case.
+    // Context can be FunctionInputPort while tool creation of Functional Exchange (sirius weird behavior), so we return
+    // false in this case.
     return false;
   }
 
-  public boolean isValidDFFunctionalExchangeEdgeFromInternalTool(EObject context, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
+  public boolean isValidDFFunctionalExchangeEdgeFromInternalTool(EObject context, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView) {
     if (context instanceof FunctionalExchange) {
       return !FaServices.getFaServices().isACategoryDisplayed(context, sourceView, targetView);
     }
-    // Context can be FunctionInputPort while tool creation of Functional Exchange (sirius weird behavior), so we return false in this case.
+    // Context can be FunctionInputPort while tool creation of Functional Exchange (sirius weird behavior), so we return
+    // false in this case.
     return false;
   }
 
@@ -189,12 +203,15 @@ public class DFServices {
     return false;
   }
 
-  public boolean isValidDFFunctionalChainInternalLinkEdge(FunctionalChain chain, DSemanticDecorator source, DSemanticDecorator target) {
-    return FunctionalChainServices.getFunctionalChainServices().isValidInternalLinkEdge(chain, (EdgeTarget) source, (EdgeTarget) target);
+  public boolean isValidDFFunctionalChainInternalLinkEdge(FunctionalChain chain, DSemanticDecorator source,
+      DSemanticDecorator target) {
+    return FunctionalChainServices.getFunctionalChainServices().isValidInternalLinkEdge(chain, (EdgeTarget) source,
+        (EdgeTarget) target);
   }
 
   /**
    * Create a functional exchange between both views
+   * 
    * @param context
    * @param sourceView
    * @param targetView
@@ -206,6 +223,7 @@ public class DFServices {
 
   /**
    * Returns available states/modes to insert in given diagram
+   * 
    * @param containerView
    * @return
    */
@@ -220,7 +238,8 @@ public class DFServices {
     if (target != null) {
       // Retrieve all available states
       BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(target);
-      for (AbstractFunction function : FunctionPkgExt.getAllAbstractFunctions(BlockArchitectureExt.getFunctionPkg(architecture))) {
+      for (AbstractFunction function : FunctionPkgExt
+          .getAllAbstractFunctions(BlockArchitectureExt.getFunctionPkg(architecture))) {
         availableStates.addAll(function.getAvailableInStates());
       }
 
@@ -229,7 +248,8 @@ public class DFServices {
         boolean addElement = false;
         for (EObject function : getDFInsertStateModesRelatedElements(state, architecture)) {
           if (function instanceof AbstractFunction) {
-            if (!content.containsView(function, FaServices.getFaServices().getMappingDFFunction((AbstractFunction) function, diagram))) {
+            if (!content.containsView(function,
+                FaServices.getFaServices().getMappingDFFunction((AbstractFunction) function, diagram))) {
               addElement = true;
               break;
             }
@@ -245,6 +265,7 @@ public class DFServices {
 
   /**
    * Display related elements of given states modes in the current diagram
+   * 
    * @param containerView
    * @param elements
    */
@@ -265,7 +286,8 @@ public class DFServices {
       }
       for (EObject toShow : functionsToShow) {
         if (toShow instanceof AbstractFunction) {
-          FaServices.getFaServices().showDFAbstractFunction((AbstractFunction) toShow, content.getBestContainer(toShow), content);
+          FaServices.getFaServices().showDFAbstractFunction((AbstractFunction) toShow, content.getBestContainer(toShow),
+              content);
         }
       }
     }
@@ -273,6 +295,7 @@ public class DFServices {
 
   /**
    * Retrieve related elements for a mode and a given architecture (functions)
+   * 
    * @param mode
    * @param sourceArchitecture
    * @return
@@ -326,6 +349,7 @@ public class DFServices {
 
   /**
    * Returns whether the tool insert states/modes is available in the given context
+   * 
    * @param containerView
    * @return
    */
@@ -347,9 +371,11 @@ public class DFServices {
       for (Scenario scenario : AbstractCapabilityPkgExt.getAllScenarios(pkg)) {
 
         boolean addElement = false;
-        for (EObject element : ContextualDiagramHelper.getService().getInsertScenariosRelatedElements(scenario, sourceArchitecture)) {
+        for (EObject element : ContextualDiagramHelper.getService().getInsertScenariosRelatedElements(scenario,
+            sourceArchitecture)) {
           if (element instanceof AbstractFunction) {
-            if (!content.containsView(element, FaServices.getFaServices().getMappingDFFunction((AbstractFunction) element, diagram))) {
+            if (!content.containsView(element,
+                FaServices.getFaServices().getMappingDFFunction((AbstractFunction) element, diagram))) {
               addElement = true;
               break;
             }
@@ -376,6 +402,7 @@ public class DFServices {
 
   /**
    * Display related elements of given states modes in the current diagram
+   * 
    * @param containerView
    * @param elements
    */
@@ -394,7 +421,8 @@ public class DFServices {
         if (object instanceof Scenario) {
           Scenario scenario = (Scenario) object;
 
-          for (EObject related : ContextualDiagramHelper.getService().getInsertScenariosRelatedElements(scenario, sourceArchitecture)) {
+          for (EObject related : ContextualDiagramHelper.getService().getInsertScenariosRelatedElements(scenario,
+              sourceArchitecture)) {
 
             if (related instanceof AbstractFunction) {
               functionsToShow.add((AbstractFunction) related);
@@ -418,6 +446,7 @@ public class DFServices {
 
   /**
    * Returns whether the tool insert scenario is available in the given context
+   * 
    * @param containerView
    * @return
    */
@@ -450,6 +479,31 @@ public class DFServices {
       return decorator.getTarget();
     }
     return decorator.getTarget();
+  }
+
+  public Object getDFFunctionalExchangeSemanticCandidates(DDiagram diagram) {
+    LinkedList<AbstractFunction> toVisit = new LinkedList<AbstractFunction>();
+    Collection<FunctionalExchange> result = new ArrayList<FunctionalExchange>();
+
+    //Retrieve all Functions from diagram
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
+        EObject target = dNode.getTarget();
+        if (target instanceof AbstractFunction) {
+          toVisit.add((AbstractFunction)target);
+        }
+    }
+    
+    //Retrieve all outgoing exchanges from displayed Functions (recursively since a parent function display sub-exchanges if subfunction is not displayed)
+    Collection<AbstractFunction> visited = new ArrayList<AbstractFunction>();
+    while (!toVisit.isEmpty()) {
+      AbstractFunction function = toVisit.removeFirst();
+      if (!visited.contains(function)) {
+        toVisit.addAll(function.getOwnedFunctions());
+        result.addAll(FunctionExt.getOutGoingExchange(function));
+        visited.add(function);
+      }
+    }
+    return result;
   }
 
 }

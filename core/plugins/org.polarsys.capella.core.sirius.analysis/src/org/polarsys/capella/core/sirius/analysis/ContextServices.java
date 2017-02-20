@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,11 +30,13 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
+import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
 import org.polarsys.capella.core.data.helpers.ctx.services.CapabilityPkgExt;
 import org.polarsys.capella.core.data.helpers.ctx.services.MissionPkgExt;
+import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActor;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
@@ -67,8 +69,8 @@ public class ContextServices {
   public List<EObject> getMBCapabilities(DSemanticDecorator current) {
     List<EObject> result = new ArrayList<EObject>();
     EObject target = current.getTarget();
-    AbstractCapabilityPkg abstractCapabilityPkg = BlockArchitectureExt.getAbstractCapabilityPkg(BlockArchitectureExt
-        .getRootBlockArchitecture(target));
+    AbstractCapabilityPkg abstractCapabilityPkg = BlockArchitectureExt
+        .getAbstractCapabilityPkg(BlockArchitectureExt.getRootBlockArchitecture(target));
     result.addAll(CapabilityPkgExt.getAllAbstractCapabilities(abstractCapabilityPkg));
     return result;
   }
@@ -245,4 +247,83 @@ public class ContextServices {
     }
     return components;
   }
+
+  public Collection<EObject> getMBCapabilityInvolvementSemanticCandidates(DDiagram diagram) {
+    Collection<EObject> result = new ArrayList<EObject>();
+
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
+      EObject target = dNode.getTarget();
+      if (target instanceof AbstractCapability) {
+        result.addAll(((AbstractCapability) target).getInvolvedInvolvements());
+      }
+    }
+
+    return result;
+  }
+
+  public Collection<EObject> getMBMissionInvolvementSemanticCandidates(DDiagram diagram) {
+    Collection<EObject> result = new ArrayList<EObject>();
+
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
+      EObject target = dNode.getTarget();
+      if (target instanceof Mission) {
+        result.addAll(((Mission) target).getInvolvedActors());
+      }
+    }
+
+    return result;
+  }
+
+  public Collection<EObject> getMBCapabilityIncludeSemanticCandidates(DDiagram diagram) {
+    Collection<EObject> result = new ArrayList<EObject>();
+
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
+      EObject target = dNode.getTarget();
+      if (target instanceof AbstractCapability) {
+        result.addAll(((AbstractCapability) target).getIncludes());
+      }
+    }
+
+    return result;
+  }
+
+  public Collection<EObject> getMBCapabilityExtendSemanticCandidates(DDiagram diagram) {
+    Collection<EObject> result = new ArrayList<EObject>();
+
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
+      EObject target = dNode.getTarget();
+      if (target instanceof AbstractCapability) {
+        result.addAll(((AbstractCapability) target).getExtends());
+      }
+    }
+
+    return result;
+  }
+
+  public Collection<EObject> getMBActorGeneralizationSemanticCandidates(DDiagram diagram) {
+    return InformationServices.getService().getCDBGeneralizationSemanticCandidates(diagram);
+  }
+
+  public Collection<EObject> getMBCapabilityGeneralizationSemanticCandidates(DDiagram diagram) {
+    Collection<EObject> result = new ArrayList<EObject>();
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
+      EObject target = dNode.getTarget();
+      if (target instanceof AbstractCapability) {
+        result.addAll(((AbstractCapability) target).getSuperGeneralizations());
+      }
+    }
+    return result;
+  }
+
+  public Collection<EObject> getMBCapabilityExploitationSemanticCandidates(DDiagram diagram) {
+    Collection<EObject> result = new ArrayList<EObject>();
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
+      EObject target = dNode.getTarget();
+      if (target instanceof Mission) {
+        result.addAll(((Mission) target).getOwnedCapabilityExploitations());
+      }
+    }
+    return result;
+  }
+
 }

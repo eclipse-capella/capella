@@ -1,0 +1,10 @@
+= Introduction =
+
+Capella provides tools facilitating the daily work of the system engineer (transitions between architectures, filters and layers on diagrams, modeling acceleration tools, synthetic business view of relationships between model elements, etc.) and guarantying the quality of the designed architectures (impact analysis, model validation, etc.)
+
+
+It also possible to extend and/or specialize the core environment to address particular engineering concerns (e.g. performance, operating safety, cost, mass, product line, etc.) and carry out multi-criteria analyses of target architectures to find the best trade-offs by adding additional viewpoints.
+
+This Developer Guide will explain how to contribute to extend Capella core environment.
+
+[[File:Images/capella_earlyvalidation_900.png|thumbnail|600px]]
