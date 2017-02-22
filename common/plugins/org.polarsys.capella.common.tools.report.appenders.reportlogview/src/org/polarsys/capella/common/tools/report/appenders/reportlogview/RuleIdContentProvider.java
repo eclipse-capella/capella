@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -111,9 +111,8 @@ class RuleIdContentProvider extends AbstractMarkerViewContentProvider implements
    */
   public synchronized boolean hasChildren(Object element) {
     if (element == viewer.getInput()){
-      Set<?> keys = markers.keySet();
-      for (Object key : keys){
-        List<IMarker> children = markers.get(key);
+      for (Map.Entry<Object, List<IMarker>> entry : markers.entrySet()){
+        List<IMarker> children = entry.getValue();
         if (children != null && children.size() > 0){
           return true;
         }
@@ -156,8 +155,8 @@ class RuleIdContentProvider extends AbstractMarkerViewContentProvider implements
    */
   public synchronized void markerDeleted(IMarker marker) {
     boolean removed = false;
-    for (Object key : markers.keySet()){
-      List<IMarker> children = markers.get(key);
+    for (Map.Entry<Object, List<IMarker>> entry : markers.entrySet()){
+      List<IMarker> children = entry.getValue();
       if (children != null){
         removed = children.remove(marker);
         if (removed){
