@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.transition.common.ui;singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.transition.common.ui.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.polarsys.kitalpha.transposer.transformation.emf,
- org.polarsys.capella.core.transition.common,
+ org.polarsys.capella.common.transition,
  org.eclipse.emf.diffmerge,
  org.eclipse.emf.diffmerge.ui,
  org.eclipse.core.expressions;bundle-version="3.4.200",

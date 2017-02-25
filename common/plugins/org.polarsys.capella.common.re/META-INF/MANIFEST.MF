@@ -5,18 +5,15 @@ Bundle-SymbolicName: org.polarsys.capella.common.re;singleton:=true
 Bundle-Version: 1.2.0.qualifier
 Bundle-Activator: org.polarsys.capella.common.re.Activator
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.expressions,
  org.polarsys.kitalpha.emde;visibility:=reexport,
  org.polarsys.kitalpha.emde.model;visibility:=reexport,
  org.polarsys.capella.common.re.gen,
- org.polarsys.capella.core.transition.common;visibility:=reexport,
- org.eclipse.emf.diffmerge,
- org.eclipse.core.expressions,
  org.polarsys.capella.common.queries;visibility:=reexport,
  org.polarsys.capella.common.libraries,
- org.eclipse.sirius,
- org.polarsys.capella.common.model.helpers
+ org.polarsys.capella.common.model.helpers,
+ org.polarsys.capella.common.transition;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
@@ -28,6 +25,7 @@ Export-Package: org.polarsys.capella.common.re,
  org.polarsys.capella.common.re.handlers.attachment,
  org.polarsys.capella.common.re.handlers.attributes,
  org.polarsys.capella.common.re.handlers.location,
+ org.polarsys.capella.common.re.handlers.merge,
  org.polarsys.capella.common.re.handlers.replicable,
  org.polarsys.capella.common.re.handlers.scope,
  org.polarsys.capella.common.re.handlers.selection,
@@ -49,6 +47,7 @@ Export-Package: org.polarsys.capella.common.re,
  org.polarsys.capella.common.re.re2rpl.update.properties,
  org.polarsys.capella.common.re.rpl2re.activities,
  org.polarsys.capella.common.re.rpl2re.create.properties,
+ org.polarsys.capella.common.re.rpl2re.merge,
  org.polarsys.capella.common.re.rpl2re.properties,
  org.polarsys.capella.common.re.rpl2re.rules,
  org.polarsys.capella.common.re.rpl2re.updatecur.properties,

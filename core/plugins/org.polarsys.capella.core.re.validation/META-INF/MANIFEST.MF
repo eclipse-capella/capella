@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.core.re.validation;singleton:=true
+Bundle-Version: 1.2.0.qualifier
+Bundle-Vendor: %providerName
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.polarsys.capella.common.re,
+ org.polarsys.capella.common.re.gen,
+ org.polarsys.capella.core.validation
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
+Export-Package: org.polarsys.capella.core.re.validation.design.consistency

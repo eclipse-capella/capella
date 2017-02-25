@@ -19,7 +19,7 @@
     <relativePath>../../../</relativePath>
   </parent>
   <groupId>org.polarsys.capella</groupId>
-  <artifactId>org.polarsys.capella.core.transition.common.feature</artifactId>
+  <artifactId>org.polarsys.capella.core.re.validation</artifactId>
   <version>1.2.0-SNAPSHOT</version>
-  <packaging>eclipse-feature</packaging>
+  <packaging>eclipse-plugin</packaging>
 </project>

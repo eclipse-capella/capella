@@ -136,4 +136,25 @@
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="org.polarsys.capella.common.sirius.decorators"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.common.re.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.common.flexibility.wizards"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
 <feature
       id="org.polarsys.capella.core.transition.common.feature"
       label="%featureName"
-      version="1.1.1.qualifier"
+      version="1.2.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.example.com/description">
@@ -34,13 +34,6 @@
    </requires>
 
    <plugin
-         id="org.polarsys.capella.core.transition.common"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.polarsys.capella.core.transition.common.ui"
          download-size="0"
          install-size="0"
@@ -56,20 +49,6 @@
 
    <plugin
          id="org.polarsys.capella.core.transition.system.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.polarsys.capella.common.flexibility.properties"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.polarsys.capella.common.flexibility.wizards"
          download-size="0"
          install-size="0"
          version="0.0.0"

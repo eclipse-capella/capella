@@ -32,7 +32,6 @@
 
 		<!-- for packaging -->
 		<eclipse-repo.url>http://download.eclipse.org/releases/neon</eclipse-repo.url>
-		<packagedDropinsName>org.polarsys.capella.rcp</packagedDropinsName>
 
 		<!-- for junit -->
 		<capella-product-id>org.polarsys.capella.rcp.product</capella-product-id>
@@ -237,12 +236,11 @@
 			</activation>
 			<properties>
 				<target-platform-path>full</target-platform-path>
+				<packagedDropinsName>org.polarsys.capella.rcp</packagedDropinsName>
 			</properties>
 			<modules>
 				<module>common/features/org.polarsys.capella.common.compare.feature</module>
 				<module>common/features/org.polarsys.capella.common.feature</module>
-				<module>common/features/org.polarsys.capella.common.libraries.feature</module>
-				<module>common/features/org.polarsys.capella.common.re.feature</module>
 				<module>common/features/org.polarsys.capella.common.ui.feature</module>
 				<module>common/plugins/org.polarsys.capella.common</module>
 				<module>common/plugins/org.polarsys.capella.common.command.recorder.core</module>
@@ -276,7 +274,6 @@
 				<module>common/plugins/org.polarsys.capella.common.re</module>
 				<module>common/plugins/org.polarsys.capella.common.re.gen</module>
 				<module>common/plugins/org.polarsys.capella.common.re.gen.edit</module>
-				<module>common/plugins/org.polarsys.capella.common.re.validation</module>
 				<module>common/plugins/org.polarsys.capella.common.re.ui</module>
 				<module>common/plugins/org.polarsys.capella.common.sirius.decorators</module>
 				<module>common/plugins/org.polarsys.capella.common.tools.report</module>
@@ -284,6 +281,7 @@
 				<module>common/plugins/org.polarsys.capella.common.tools.report.appenders.file</module>
 				<module>common/plugins/org.polarsys.capella.common.tools.report.appenders.reportlogview</module>
 				<module>common/plugins/org.polarsys.capella.common.tools.report.ui</module>
+				<module>common/plugins/org.polarsys.capella.common.transition</module>
 				<module>common/plugins/org.polarsys.capella.common.ui</module>
 				<module>common/plugins/org.polarsys.capella.common.ui.menu.dynamic</module>
 				<module>common/plugins/org.polarsys.capella.common.ui.progress</module>
@@ -430,6 +428,7 @@
 				<module>core/plugins/org.polarsys.capella.core.re.ui</module>
 				<module>core/plugins/org.polarsys.capella.core.re.ui.quickfix</module>
 				<module>core/plugins/org.polarsys.capella.core.re.updateconnections.ui</module>
+				<module>core/plugins/org.polarsys.capella.core.re.validation</module>
 				<module>core/plugins/org.polarsys.capella.core.refinement.commands</module>
 				<module>core/plugins/org.polarsys.capella.core.refinement.framework</module>
 				<module>core/plugins/org.polarsys.capella.core.refinement.framework.ui</module>
@@ -456,7 +455,6 @@
 				<module>core/plugins/org.polarsys.capella.core.sirius.analysis</module>
 				<module>core/plugins/org.polarsys.capella.core.sirius.ui</module>
 				<module>core/plugins/org.polarsys.capella.core.tiger</module>
-				<module>core/plugins/org.polarsys.capella.core.transition.common</module>
 				<module>core/plugins/org.polarsys.capella.core.transition.common.ui</module>
 				<module>core/plugins/org.polarsys.capella.core.transition.diagram</module>
 				<module>core/plugins/org.polarsys.capella.core.transition.diagram.ui</module>
@@ -548,15 +546,12 @@
 			</activation>
 			<properties>
 				<target-platform-path>headless</target-platform-path>
+				<packagedDropinsName>org.polarsys.capella.headless</packagedDropinsName>
 			</properties>
 			<modules>
-				<module>common/features/org.polarsys.capella.common.compare.feature</module>
+				<!-- common bundles -->
 				<module>common/features/org.polarsys.capella.common.feature</module>
-				<module>common/features/org.polarsys.capella.common.libraries.feature</module>
-				<module>common/features/org.polarsys.capella.common.re.feature</module>
 				<module>common/plugins/org.polarsys.capella.common</module>
-				<module>common/plugins/org.polarsys.capella.common.command.recorder.core</module>
-				<module>common/plugins/org.polarsys.capella.common.consonance.ui.sirius</module>
 				<module>common/plugins/org.polarsys.capella.common.data.activity.gen</module>
 				<module>common/plugins/org.polarsys.capella.common.data.activity.gen.edit</module>
 				<module>common/plugins/org.polarsys.capella.common.data.behavior.gen</module>
@@ -565,161 +560,37 @@
 				<module>common/plugins/org.polarsys.capella.common.data.core.gen.edit</module>
 				<module>common/plugins/org.polarsys.capella.common.data.helpers</module>
 				<module>common/plugins/org.polarsys.capella.common.ef</module>
+				<module>common/plugins/org.polarsys.capella.common.flexibility.properties</module>
 				<module>common/plugins/org.polarsys.capella.common.helpers</module>
 				<module>common/plugins/org.polarsys.capella.common.id.handler</module>
 				<module>common/plugins/org.polarsys.capella.common.libraries</module>
 				<module>common/plugins/org.polarsys.capella.common.libraries.gen</module>
 				<module>common/plugins/org.polarsys.capella.common.libraries.gen.edit</module>
+				<module>legacy/plugins/org.polarsys.capella.common.mdsofa.common</module>
 				<module>common/plugins/org.polarsys.capella.common.menu.dynamic</module>
 				<module>common/plugins/org.polarsys.capella.common.model</module>
 				<module>common/plugins/org.polarsys.capella.common.model.helpers</module>
-				<module>common/plugins/org.polarsys.capella.common.platform.eclipse.tools.report.console</module>
 				<module>common/plugins/org.polarsys.capella.common.platform.sirius</module>
-				<module>common/plugins/org.polarsys.capella.common.platform.sirius.customization</module>
 				<module>common/plugins/org.polarsys.capella.common.platform.sirius.ted</module>
 				<module>common/plugins/org.polarsys.capella.common.queries</module>
 				<module>common/plugins/org.polarsys.capella.common.re</module>
 				<module>common/plugins/org.polarsys.capella.common.re.gen</module>
 				<module>common/plugins/org.polarsys.capella.common.re.gen.edit</module>
-				<module>common/plugins/org.polarsys.capella.common.re.validation</module>
-				<module>common/plugins/org.polarsys.capella.common.sirius.decorators</module>
 				<module>common/plugins/org.polarsys.capella.common.tools.report</module>
-				<module>common/plugins/org.polarsys.capella.common.tools.report.appenders.console</module>
-				<module>common/plugins/org.polarsys.capella.common.tools.report.appenders.file</module>
-				<module>common/plugins/org.polarsys.capella.common.tools.report.appenders.reportlogview</module>
-				<module>common/plugins/org.polarsys.capella.common.tools.report.ui</module>
+				<module>common/plugins/org.polarsys.capella.common.transition</module>
 				<module>common/plugins/org.polarsys.capella.common.xmisupport</module>
 				<module>common/plugins/org.polarsys.capella.shared.id.handler</module>
-				<module>core/features/org.polarsys.capella.core.advance.feature</module>
-				<module>core/features/org.polarsys.capella.core.af.feature</module>
-				<module>core/features/org.polarsys.capella.core.common.feature</module>
-				<module>core/features/org.polarsys.capella.core.compare.feature</module>
-				<module>core/features/org.polarsys.capella.core.dashboard.feature</module>
-				<module>core/features/org.polarsys.capella.core.data.merged.feature</module>
-				<module>core/features/org.polarsys.capella.core.feature</module>
-				<module>core/features/org.polarsys.capella.core.libraries.feature</module>
-				<module>core/features/org.polarsys.capella.core.migration.feature</module>
-				<module>core/features/org.polarsys.capella.core.re.feature</module>
-				<module>core/features/org.polarsys.capella.core.transfo.feature</module>
-				<module>core/features/org.polarsys.capella.core.transition.common.feature</module>
-				<module>core/features/org.polarsys.capella.core.transition.system.topdown.feature</module>
-				<module>core/features/org.polarsys.capella.core.validation.feature</module>
-				<module>core/plugins/org.polarsys.capella.core.af.integration</module>
+
+				<!-- core bundles -->
 				<module>core/plugins/org.polarsys.capella.core.application</module>
-				<module>core/plugins/org.polarsys.capella.core.command.recorder</module>
 				<module>core/plugins/org.polarsys.capella.core.commandline.core</module>
-				<module>core/plugins/org.polarsys.capella.core.compare</module>
-				<module>core/plugins/org.polarsys.capella.core.data.business.queries</module>
-				<module>core/plugins/org.polarsys.capella.core.data.common.validation</module>
-				<module>core/plugins/org.polarsys.capella.core.data.core.validation</module>
-				<module>core/plugins/org.polarsys.capella.core.data.cs.validation</module>
-				<module>core/plugins/org.polarsys.capella.core.data.ctx.validation</module>
-				<module>core/plugins/org.polarsys.capella.core.data.epbs.validation</module>
-				<module>core/plugins/org.polarsys.capella.core.data.fa.validation</module>
 				<module>core/plugins/org.polarsys.capella.core.data.gen</module>
 				<module>core/plugins/org.polarsys.capella.core.data.gen.edit</module>
-				<module>core/plugins/org.polarsys.capella.core.data.gen.edit.decorators</module>
-				<module>core/plugins/org.polarsys.capella.core.data.gen.editor</module>
 				<module>core/plugins/org.polarsys.capella.core.data.helpers</module>
-				<module>core/plugins/org.polarsys.capella.core.data.information.communication.validation</module>
-				<module>core/plugins/org.polarsys.capella.core.data.information.datatype.validation</module>
-				<module>core/plugins/org.polarsys.capella.core.data.information.validation</module>
-				<module>core/plugins/org.polarsys.capella.core.data.interaction.validation</module>
-				<module>core/plugins/org.polarsys.capella.core.data.la.validation</module>
-				<module>core/plugins/org.polarsys.capella.core.data.menu.contributions</module>
-				<module>core/plugins/org.polarsys.capella.core.data.oa.validation</module>
-				<module>core/plugins/org.polarsys.capella.core.data.pa.deployment.validation</module>
-				<module>core/plugins/org.polarsys.capella.core.data.pa.validation</module>
-				<module>core/plugins/org.polarsys.capella.core.data.res.edit</module>
-				<module>core/plugins/org.polarsys.capella.core.data.res.editor</module>
-				<module>core/plugins/org.polarsys.capella.core.data.selection.queries</module>
-				<module>core/plugins/org.polarsys.capella.core.diagram.helpers</module>
-				<module>core/plugins/org.polarsys.capella.core.flexibility.commands</module>
-				<module>core/plugins/org.polarsys.capella.core.flexibility.wizards</module>
-				<module>core/plugins/org.polarsys.capella.core.libraries</module>
-				<module>core/plugins/org.polarsys.capella.core.libraries.extendedQueries</module>
-				<module>core/plugins/org.polarsys.capella.core.menu.dynamic</module>
-				<module>core/plugins/org.polarsys.capella.core.model.detachement</module>
 				<module>core/plugins/org.polarsys.capella.core.model.handler</module>
-				<module>core/plugins/org.polarsys.capella.core.model.helpers</module>
-				<module>core/plugins/org.polarsys.capella.core.model.links.helpers</module>
-				<module>core/plugins/org.polarsys.capella.core.model.obfuscator</module>
-				<module>core/plugins/org.polarsys.capella.core.model.preferences</module>
-				<module>core/plugins/org.polarsys.capella.core.model.semantic</module>
-				<module>core/plugins/org.polarsys.capella.core.model.skeleton</module>
-				<module>core/plugins/org.polarsys.capella.core.platform.eclipse.ui.trace</module>
-				<module>core/plugins/org.polarsys.capella.core.platform.sirius.adapter</module>
-				<module>core/plugins/org.polarsys.capella.core.platform.sirius.clipboard</module>
-				<module>core/plugins/org.polarsys.capella.core.platform.sirius.refinement.processor</module>
-				<module>core/plugins/org.polarsys.capella.core.platform.sirius.sirius.validation</module>
-				<module>core/plugins/org.polarsys.capella.core.platform.sirius.ui.actions</module>
-				<module>core/plugins/org.polarsys.capella.core.platform.sirius.ui.menu</module>
-				<module>core/plugins/org.polarsys.capella.core.platform.sirius.ui.navigator</module>
-				<module>core/plugins/org.polarsys.capella.core.platform.sirius.ui.perspective</module>
-				<module>core/plugins/org.polarsys.capella.core.platform.sirius.ui.project</module>
-				<module>core/plugins/org.polarsys.capella.core.platform.sirius.ui.services</module>
-				<module>core/plugins/org.polarsys.capella.core.preferences</module>
-				<module>core/plugins/org.polarsys.capella.core.preferences.project.configuration</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.actors.ctx2la</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.actors.la2pa</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.actors.oa2ctx</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.actorsandinterfaces.ctx2la</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.common</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.data</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.exchanges</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.interfaces</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.interfaces.ctx2la</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.interfaces.ctx2pa</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.interfaces.la2pa</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.lc2pc.breakdownstrategy</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.lc2pc.leafstrategy</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.logicalfunction</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.misc</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.operationalactivity</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.operationalcapability</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.preferences</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.scenario</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.statemachine</module>
-				<module>core/plugins/org.polarsys.capella.core.projection.systemfunction</module>
-				<module>core/plugins/org.polarsys.capella.core.queries.helpers</module>
-				<module>core/plugins/org.polarsys.capella.core.re</module>
-				<module>core/plugins/org.polarsys.capella.core.refinement.framework</module>
-				<module>core/plugins/org.polarsys.capella.core.refinement.mapper.broadcastpattern</module>
-				<module>core/plugins/org.polarsys.capella.core.refinement.mapper.standard</module>
-				<module>core/plugins/org.polarsys.capella.core.refinement.merge</module>
-				<module>core/plugins/org.polarsys.capella.core.refinement.preferences</module>
-				<module>core/plugins/org.polarsys.capella.core.refinement.processor.actorprojection</module>
-				<module>core/plugins/org.polarsys.capella.core.refinement.processor.interfacelinksupdate</module>
-				<module>core/plugins/org.polarsys.capella.core.refinement.processor.realizationsupdate</module>
-				<module>core/plugins/org.polarsys.capella.core.refinement.processor.structuresynchronization</module>
-				<module>core/plugins/org.polarsys.capella.core.refinement.resolver.standard</module>
-				<module>core/plugins/org.polarsys.capella.core.refinement.scenario</module>
-				<module>core/plugins/org.polarsys.capella.core.refinement.scheduler.standard</module>
-				<module>core/plugins/org.polarsys.capella.core.refinement.static</module>
-				<module>core/plugins/org.polarsys.capella.core.refinement.subscenario</module>
-				<module>core/plugins/org.polarsys.capella.core.semantic.queries</module>
-				<module>core/plugins/org.polarsys.capella.core.semantic.queries.sirius</module>
-				<module>core/plugins/org.polarsys.capella.core.sequencediag.specific</module>
-				<module>core/plugins/org.polarsys.capella.core.services</module>
-				<module>core/plugins/org.polarsys.capella.core.sirius.analysis</module>
-				<module>core/plugins/org.polarsys.capella.core.sirius.ui</module>
-				<module>core/plugins/org.polarsys.capella.core.tiger</module>
-				<module>core/plugins/org.polarsys.capella.core.transition.common</module>
-				<module>core/plugins/org.polarsys.capella.core.transition.diagram</module>
-				<module>core/plugins/org.polarsys.capella.core.transition.system</module>
-				<module>core/plugins/org.polarsys.capella.core.transition.system.topdown</module>
-				<module>core/plugins/org.polarsys.capella.core.validation</module>
-				<module>core/plugins/org.polarsys.capella.core.validation.commandline</module>
-				<module>core/plugins/org.polarsys.capella.ui.views</module>
-				<module>core/plugins/org.polarsys.capella.core.data.migration</module>
-				<module>ext/detachment/features/org.polarsys.capella.detachment.feature</module>
-				<module>ext/detachment/plugins/org.polarsys.capella.detachment.propertyvalue</module>
-				<module>ext/detachment/plugins/org.polarsys.capella.detachment.version.precondition</module>
-				<module>legacy/plugins/org.polarsys.capella.common.mdsofa.common</module>
-				<module>patterns/features/org.polarsys.capella.patterns.feature</module>
-				<module>patterns/plugins/org.polarsys.capella.patterns</module>
-				<module>patterns/plugins/org.polarsys.capella.patterns.obfuscator</module>
-				<module>patterns/plugins/org.polarsys.capella.patterns.migration</module>
+
+				<!-- -->
+				<module>releng/features/org.polarsys.capella.headless.feature</module>
 				<module>releng/plugins/org.polarsys.capella.headless.site</module>
 			</modules>
 		</profile>

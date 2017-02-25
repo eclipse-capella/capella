@@ -34,14 +34,6 @@
          version="0.0.0"/>
 
    <includes
-         id="org.polarsys.capella.common.libraries.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.common.re.feature"
-         version="0.0.0"/>
-
-   <includes
          id="org.polarsys.capella.core.feature"
          version="0.0.0"/>
 
@@ -71,10 +63,6 @@
 
    <includes
          id="org.polarsys.capella.core.properties.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.re.feature"
          version="0.0.0"/>
 
    <includes
@@ -111,6 +99,10 @@
 
    <includes
          id="org.polarsys.capella.common.ui.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.polarsys.capella.core.re.feature"
          version="0.0.0"/>
 
    <plugin

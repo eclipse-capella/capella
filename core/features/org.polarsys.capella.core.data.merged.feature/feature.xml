@@ -29,60 +29,10 @@
 
    <requires>
       <import feature="org.polarsys.capella.common.feature"/>
-      <import feature="org.polarsys.capella.common.ui.feature"/>
    </requires>
 
    <plugin
-         id="org.polarsys.capella.common.data.core.gen"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.polarsys.capella.common.data.core.gen.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.polarsys.capella.common.data.helpers"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.polarsys.capella.core.data.helpers"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.polarsys.capella.common.data.behavior.gen"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.polarsys.capella.common.data.behavior.gen.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.polarsys.capella.common.data.activity.gen"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.polarsys.capella.common.data.activity.gen.edit"
          download-size="0"
          install-size="0"
          version="0.0.0"

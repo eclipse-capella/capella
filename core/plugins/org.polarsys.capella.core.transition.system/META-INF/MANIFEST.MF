@@ -7,14 +7,15 @@ Bundle-Activator: org.polarsys.capella.core.transition.system.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.polarsys.capella.core.transition.common;visibility:=reexport,
+ org.polarsys.capella.common.transition;visibility:=reexport,
  org.eclipse.sirius,
  org.eclipse.emf.diffmerge;visibility:=reexport,
  org.polarsys.capella.core.data.helpers;visibility:=reexport,
  org.polarsys.capella.core.model.helpers;visibility:=reexport,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.preferences,
- org.polarsys.capella.common.queries
+ org.polarsys.capella.common.queries,
+ org.polarsys.capella.common.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.system,
