@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -81,6 +81,8 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
+
+import com.google.common.collect.Lists;
 
 /**
  */
@@ -188,28 +190,22 @@ public class DiagramServices {
     return views;
   }
 
-  /**
-   * Returns owned NodeContainers from the given element
-   */
-  public Collection<DDiagramElement> getAllAbstractNodes(DSemanticDecorator element) {
-    ArrayList<DDiagramElement> views = new ArrayList<DDiagramElement>();
-
-    if (element instanceof DDiagram) {
-      for (DDiagramElement view : getDiagramElements((DDiagram) element)) {
-        if (view instanceof AbstractDNode) {
-          views.add(view);
-        }
-      }
-    } else if (element instanceof DDiagramElement) {
-      for (DDiagramElement view : getDiagramElements((DDiagramElement) element)) {
-        if (view instanceof AbstractDNode) {
-          views.add(view);
-        }
-      }
-    }
-    return views;
+  public Collection<DDiagramElement> getAllAbstractNodes(EObject element) {
+    return Lists.newArrayList(getAllAbstractNodes(element, true));
   }
 
+  public Iterable<DDiagramElement> getAllAbstractNodes(EObject element, boolean borderedNode) {
+    return getDiagramElements(element, false, true, true, borderedNode);
+  }
+  
+  public Iterable<AbstractDNode> getAllNodeContainers(EObject element) {
+    return (Iterable)getDiagramElements(element, false, false, true, false);
+  }
+  
+  public Iterable<DDiagramElement> getAllBorderedNodes(DSemanticDecorator element) {
+    return getDiagramElements((DSemanticDecorator)element, false, false, false, true);
+  }
+  
   /**
    * Returns owned NodeContainers from the given element
    */
@@ -847,56 +843,84 @@ public class DiagramServices {
 
     EClass clazz;
     
+    boolean edges = true;
+    
+    boolean nodes = true;
+
+    boolean containers = true;
+    
+    boolean borderedNodes = true;
+  
+    /**
+     * @param context
+     * @param edges whether edges will be returned
+     * @param nodes whether nodes will be returned
+     * @param containers whether containers will be returned
+     * @param borderedNodes whether bordered nodes will be included in addition to other nodes/containers
+     */
+    public DiagramIterator(EObject context, boolean edges, boolean nodes, boolean containers, boolean borderedNodes) {
+      elements = new LinkedList<DDiagramElement>();
+
+      this.edges = edges;
+      this.nodes = nodes;
+      this.containers = containers;
+      this.borderedNodes = borderedNodes;
+      
+      if (context instanceof DDiagram) {
+        addElements(elements, ((DDiagram)context).getOwnedDiagramElements());
+        
+      } else if (context instanceof DDiagramElement) {
+        elements.addAll(getNexts((DDiagramElement)context));
+      }
+    }
+    
+    private void addElements(Collection<DDiagramElement> elements, Collection<DDiagramElement> toAdd) {
+      for (DDiagramElement element : toAdd) {
+        if (this.containers && element instanceof DNodeContainer) {
+          elements.add(element);
+        } else if (this.nodes && element instanceof AbstractDNode && !(element instanceof DNodeContainer)) {
+          elements.add(element);
+        } else if (this.edges && element instanceof DEdge) {
+          elements.add(element);
+        }
+      }
+    }
+
+    /**
+     * @param context a DDiagram or a DDiagramElement
+     */
+    public DiagramIterator(EObject context) {
+      this(context, true, true, true, true);
+    }
+
+    /**
+     * @param context a DDiagram or a DDiagramElement
+     */
+    public DiagramIterator(EObject context, DiagramElementMapping mapping) {
+      this(context, mapping, true, true, true, true);
+    }
     
     /**
-     * @param diagram
+     * @param context a DDiagram or a DDiagramElement
      */
-    public DiagramIterator(DDiagram diagram) {
-      elements = new LinkedList<DDiagramElement>();
-      if (diagram != null) {
-        elements.addAll(diagram.getOwnedDiagramElements());
-      }
-    }
-
-    public DiagramIterator(DDiagram diagram, DiagramElementMapping mapping) {
-      this(diagram);
+    public DiagramIterator(EObject context, DiagramElementMapping mapping, boolean edges, boolean nodes, boolean containers, boolean borderedNodes) {
+      this(context, edges, nodes, containers, borderedNodes);
       this.mapping = mapping;
-      clazz = CapellaServices.getService().getDomainClass(diagram, mapping);
-    }
-
-    public DiagramIterator(DDiagramElement diagramElement) {
-      elements = new LinkedList<DDiagramElement>();
-
-      if (diagramElement instanceof AbstractDNode) {
-        elements.addAll(((AbstractDNode) diagramElement).getOwnedBorderedNodes());
+      if (mapping != null) {
+        clazz = CapellaServices.getService().getDomainClass(context, mapping);
       }
-      if (diagramElement instanceof DNodeContainer) {
-        elements.addAll(((DNodeContainer) diagramElement).getOwnedDiagramElements());
-      }
-      if (diagramElement instanceof DNodeList) {
-        elements.addAll(((DNodeList) diagramElement).getOwnedElements());
-      }
-    }
-
-    public DiagramIterator(DDiagramElement diagramElement, DiagramElementMapping mapping) {
-      this(diagramElement);
-      this.mapping = mapping;
-      clazz = CapellaServices.getService().getDomainClass(diagramElement, mapping);
     }
 
     /**
      * @see java.util.Iterator#hasNext()
      */
     public boolean hasNext() {
-      if (mapping == null) {
-        return elements.size() > 0;
-      }
       if (elements.size() == 0) {
         return false;
       }
 
       DDiagramElement element = elements.getFirst();
-      if (validMapping(mapping, element)) {
+      if (mapping == null || validMapping(mapping, element)) {
         return true;
       }
 
@@ -904,7 +928,7 @@ public class DiagramServices {
       nexts.addAll(elements);
       while (nexts.size() > 0) {
         DDiagramElement next = nexts.removeFirst();
-        if (validMapping(mapping, next)) {
+        if (mapping == null || validMapping(mapping, next)) {
           return true;
         }
         nexts.addAll(getNexts(next));
@@ -912,20 +936,20 @@ public class DiagramServices {
       return false;
     }
 
-    protected Collection<DDiagramElement> getNexts(DDiagramElement diagramElement) {
+    protected Collection<DDiagramElement> getNexts(DDiagramElement context) {
 
       List<DDiagramElement> element = new ArrayList<DDiagramElement>();
 
-      if (diagramElement instanceof AbstractDNode) {
-        element.addAll(((AbstractDNode) diagramElement).getOwnedBorderedNodes());
+      if (this.borderedNodes && context instanceof AbstractDNode) {
+        element.addAll((Collection)((AbstractDNode) context).getOwnedBorderedNodes());
       }
-      if (diagramElement instanceof DNodeContainer) {
-        element.addAll(((DNodeContainer) diagramElement).getOwnedDiagramElements());
+      if (context instanceof DNodeContainer) {
+        addElements(element, (Collection)((DNodeContainer) context).getOwnedDiagramElements());
       }
-      if (diagramElement instanceof DNodeList) {
-        element.addAll(((DNodeList) diagramElement).getOwnedElements());
+      if (context instanceof DNodeList) {
+        addElements(element, (Collection)((DNodeList) context).getOwnedElements());
       }
-
+      
       return element;
     }
 
@@ -971,8 +995,8 @@ public class DiagramServices {
   /**
    * An optimized version of diagram.getDiagramElements()
    */
-  public Iterable<DDiagramElement> getDiagramElements(DDiagram diagram) {
-    final DiagramIterator iterator = new DiagramIterator(diagram);
+  public Iterable<DDiagramElement> getDiagramElements(EObject context) {
+    final DiagramIterator iterator = new DiagramIterator(context);
 
     return new Iterable<DDiagramElement>() {
 
@@ -983,8 +1007,8 @@ public class DiagramServices {
     };
   }
 
-  public Iterable<DDiagramElement> getDiagramElements(DDiagramElement diagramElement) {
-    final DiagramIterator iterator = new DiagramIterator(diagramElement);
+  public Iterable<DDiagramElement> getDiagramElements(EObject context, boolean edges, boolean nodes, boolean containers, boolean borderedNodes) {
+    final DiagramIterator iterator = new DiagramIterator(context, edges, nodes, containers, borderedNodes);
 
     return new Iterable<DDiagramElement>() {
 
@@ -994,9 +1018,11 @@ public class DiagramServices {
 
     };
   }
-
+  
   public Iterable<DDiagramElement> getDiagramElements(DDiagram diagram, DiagramElementMapping mapping) {
-    final DiagramIterator iterator = new DiagramIterator(diagram, mapping);
+    boolean isEdgeMapping = mapping instanceof EdgeMapping || mapping instanceof EdgeMappingImport;
+    
+    final DiagramIterator iterator = new DiagramIterator(diagram, mapping, isEdgeMapping, !isEdgeMapping, !isEdgeMapping, !isEdgeMapping);
 
     return new Iterable<DDiagramElement>() {
 
@@ -1008,7 +1034,9 @@ public class DiagramServices {
   }
 
   public Iterable<DDiagramElement> getDiagramElements(DDiagramElement diagramElement, DiagramElementMapping mapping) {
-    final DiagramIterator iterator = new DiagramIterator(diagramElement, mapping);
+    boolean isEdgeMapping = mapping instanceof EdgeMapping || mapping instanceof EdgeMappingImport;
+    
+    final DiagramIterator iterator = new DiagramIterator(diagramElement, mapping, isEdgeMapping, !isEdgeMapping, !isEdgeMapping, !isEdgeMapping);
 
     return new Iterable<DDiagramElement>() {
 
@@ -1093,6 +1121,7 @@ public class DiagramServices {
    *          a {@link DDiagram} or a {@link DNodeContainer}
    * @return recursively all the containers contained in view
    */
+  @Deprecated
   public List<DNodeContainer> getAllContainers(EObject view) {
     List<DNodeContainer> returnedList = new ArrayList<DNodeContainer>();
     if (view instanceof DDiagram) {

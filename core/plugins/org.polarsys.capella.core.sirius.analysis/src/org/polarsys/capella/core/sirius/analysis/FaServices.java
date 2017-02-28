@@ -30,7 +30,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.viewers.ILabelDecorator;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -296,8 +295,7 @@ public class FaServices {
       result = getDisplayedFunctionalExchangesFromAbstractDNode((AbstractDNode) selectedElement);
 
       // Consider Sub Containers of current DiagramElement
-      List<DNodeContainer> allContainers = DiagramServices.getDiagramServices().getAllContainers(selectedElement);
-      for (DNodeContainer dNodeContainer : allContainers) {
+      for (AbstractDNode dNodeContainer : DiagramServices.getDiagramServices().getAllNodeContainers(selectedElement)) {
         List<FunctionalExchange> subFunctionEdges = getDisplayedFunctionalExchangesFromAbstractDNode(dNodeContainer);
         if (!subFunctionEdges.isEmpty()) {
           result.addAll(subFunctionEdges);
@@ -5000,10 +4998,6 @@ public class FaServices {
     if (null != diagram) {
       // get Diagram
       DDiagram diag = CapellaServices.getService().getDiagramContainer(diagram);
-      Object oDiagram = CsServices.getService().getInterpreterVariable(exchange, IInterpreterSiriusVariables.DIAGRAM);
-      if ((oDiagram != null) && (oDiagram instanceof DDiagram)) {
-        diag = (DDiagram) oDiagram;
-      }
       if (diag != null) {
         EList<FilterDescription> activatedFilters = diag.getActivatedFilters();
         for (FilterDescription filterDescription : activatedFilters) {
