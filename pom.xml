@@ -489,6 +489,7 @@
 				<module>doc/plugins/org.polarsys.capella.re.doc</module>
 				<module>doc/plugins/org.polarsys.capella.transitions.doc</module>
 				<module>doc/plugins/org.polarsys.capella.ui.doc</module>
+				<module>doc/org.polarsys.capella.developer.doc</module>
 				<module>doc/plugins/org.polarsys.capella.doc</module>
 				<module>doc/plugins/org.polarsys.capella.core.ui.intro</module>
 				<module>doc/plugins/org.polarsys.capella.diagrams.doc</module>
