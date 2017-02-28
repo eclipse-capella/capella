@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,11 +14,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
-import org.polarsys.capella.test.semantic.queries.ju.model.SemanticQueries;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AbstractFunction_mother_activity_allocation;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AbstractFunction_mother_function_allocation;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AvailableForTypeClassExistTest;
@@ -29,8 +26,9 @@ import org.polarsys.capella.test.semantic.queries.ju.testcases.PropertyValueGrou
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PropertyValue_applying_valued_element;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.State_OwnedEntryExitPointsTest;
 
-public class SemanticQueriesTestSuite extends BasicTestSuite {
+import junit.framework.Test;
 
+public class SemanticQueriesTestSuite extends BasicTestSuite {
 
   @Override
   protected List<BasicTestArtefact> getTests() {
@@ -49,7 +47,7 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
   
   @Override
   public List<String> getRequiredTestModels() {
-    return Collections.singletonList(SemanticQueries.class.getSimpleName());
+    return Collections.singletonList("semanticqueries");
   }
   
   /**

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.business.queries.ju;singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Activator: org.polarsys.capella.test.business.queries.ju.TestBusinessQueriesPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
@@ -17,6 +17,7 @@ Export-Package: org.polarsys.capella.test.business.queries.ju,
  org.polarsys.capella.test.business.queries.ju.testSuites.partial,
  org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.capellacommon,
  org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.capellacore,
+ org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.capellamodeller,
  org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs,
  org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.ctx,
  org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.epbs,
