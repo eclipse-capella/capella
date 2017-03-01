@@ -112,6 +112,7 @@ import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemElement;
 import org.polarsys.capella.core.data.information.Port;
+import org.polarsys.capella.core.data.information.PortAllocation;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement;
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
@@ -5572,5 +5573,41 @@ public class FaServices {
       }
     }
     return result;
+  }
+
+  /**
+   * Check if the input is a FunctionOutputPort
+   * @param activityNode
+   * @return
+   */
+  public boolean isAFunctionOutputPort(EObject activityNode) {
+    return activityNode instanceof FunctionOutputPort;
+  }
+  
+  /**
+   * Check is the input is not a leaf and if all of their leaves are FunctionActor allocated
+   * @param function
+   * @return
+   */
+  public boolean isNotLeafAndisAllLeavesFunctionActorAllocated(AbstractFunction function) {
+	  return !isLeaf(function) && isAllLeavesFunctionActorALlocated(function);
+  }
+  
+  /**
+   * Check if the input is an OutputPin
+   * @param portAllocation
+   * @return
+   */
+  public boolean isAOutputPin(PortAllocation portAllocation) {
+	  return portAllocation.getAllocatedPort() instanceof OutputPin;
+  }
+  
+  /**
+   * Check if the input is not a leaf
+   * @param systemFunction
+   * @return
+   */
+  public boolean isNotLeaf(EObject systemFunction) {
+	  return !isLeaf(systemFunction);
   }
 }

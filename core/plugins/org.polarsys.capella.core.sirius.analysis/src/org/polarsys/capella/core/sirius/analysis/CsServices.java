@@ -2097,6 +2097,17 @@ public class CsServices {
   }
 
   /**
+   * Checks if port is an (strictly) in flow port.
+   * 
+   * @param port
+   *          the given componentPort
+   * @return true, if is in flow port
+   */
+  public boolean isInStrictFlowPort(EObject port) {
+    return PortExt.isInStrictFlowPort(port);
+  }
+
+  /**
    * Checks if port is an out flow port.
    * 
    * @param port
@@ -2105,6 +2116,28 @@ public class CsServices {
    */
   public boolean isOutFlowPort(EObject port) {
     return PortExt.isOutFlowPort(port);
+  }
+
+  /**
+   * Checks if port is an (strictly) out flow port.
+   * 
+   * @param port
+   *          the given componentPort
+   * @return true, if is out flow port
+   */
+  public boolean isOutStrictFlowPort(EObject port) {
+    return PortExt.isOutStrictFlowPort(port);
+  }
+  
+  /**
+   * Checks if port is an (strictly) in-out flow port.
+   * 
+   * @param port
+   *          the given componentPort
+   * @return true, if is out flow port
+   */
+  public boolean isInoutStrictFlowPort(EObject port) {
+    return PortExt.isInoutStrictFlowPort(port);
   }
 
   /**
@@ -6179,4 +6212,12 @@ public class CsServices {
     return false;
   }
 
+  /**
+   * Check if the input is a PhysicalPort
+   * @param port
+   * @return
+   */
+  public boolean isAPhysicalPort(EObject port) {
+    return port instanceof PhysicalPort;
+  }
 }

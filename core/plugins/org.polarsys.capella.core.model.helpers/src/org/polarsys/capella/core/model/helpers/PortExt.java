@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -578,6 +578,15 @@ public class PortExt {
   public static boolean isInFlowPort(EObject port) {
     return isFlowPort(port) && isIn((ComponentPort) port);
   }
+  
+  /**
+   * Checks if port is an (strictly) in flow port.
+   * @param port the given componentPort
+   * @return true, if is in flow port
+   */
+  public static boolean isInStrictFlowPort(EObject port) {
+    return isFlowPort(port) && isInStrict((ComponentPort) port);
+  }
 
   /**
    * @param cp
@@ -593,6 +602,14 @@ public class PortExt {
    */
   public static boolean isOutStrict(ComponentPort cp) {
     return OrientationPortKind.OUT.equals(cp.getOrientation());
+  }
+  
+  /**
+   * @param cp
+   * @return
+   */
+  public static boolean isInoutStrict(ComponentPort cp) {
+    return OrientationPortKind.INOUT.equals(cp.getOrientation());
   }
 
   public static boolean isNotCompatibleWith(ComponentPort comparedPort, ComponentPort reference) {
@@ -642,6 +659,24 @@ public class PortExt {
    */
   public static boolean isOutFlowPort(EObject port) {
     return isFlowPort(port) && isOut((ComponentPort) port);
+  }
+  
+  /**
+   * Checks if port is an (strictly) out flow port.
+   * @param port the given componentPort
+   * @return true, if is out flow port
+   */
+  public static boolean isOutStrictFlowPort(EObject port) {
+    return isFlowPort(port) && isOutStrict((ComponentPort) port);
+  }
+  
+  /**
+   * Checks if port is an (strictly) inout flow port.
+   * @param port the given componentPort
+   * @return true, if is in flow port
+   */
+  public static boolean isInoutStrictFlowPort(EObject port) {
+    return isFlowPort(port) && isInoutStrict((ComponentPort) port);
   }
 
   /**
