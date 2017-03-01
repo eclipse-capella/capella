@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.business.queries.ju.testSuites.main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.business.queries.ju.testSuites.partial.CapellaCommonBusinessQueryTestSuite;
@@ -27,7 +28,6 @@ import org.polarsys.capella.test.business.queries.ju.testSuites.partial.OaBusine
 import org.polarsys.capella.test.business.queries.ju.testSuites.partial.PaBusinessQueryTestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
-import org.polarsys.capella.test.semantic.queries.ju.testsuites.SemanticQueriesTestSuite;
 
 import junit.framework.Test;
 
@@ -58,7 +58,11 @@ public class BusinessQueryTestSuite extends BasicTestSuite {
 		tests.add(new LaBusinessQueryTestSuite());
 		tests.add(new OaBusinessQueryTestSuite());
 		tests.add(new PaBusinessQueryTestSuite());
-		tests.add(new SemanticQueriesTestSuite());
 		return tests;
 	}
+
+  @Override
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList(new String[] { "sysmodel" }); //$NON-NLS-1$
+  }
 }

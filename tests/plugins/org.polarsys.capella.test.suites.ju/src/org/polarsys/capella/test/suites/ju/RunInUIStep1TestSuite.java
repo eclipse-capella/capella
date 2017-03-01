@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,31 +13,32 @@ package org.polarsys.capella.test.suites.ju;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.business.queries.ju.testSuites.main.BusinessQueryTestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.semantic.queries.ju.testsuites.SemanticQueriesTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testsuites.main.ValidationRulesTestSuite;
 
 import junit.framework.Test;
 
 /**
  *
  */
-public class RunInUITestSuite extends BasicTestSuite {
+public class RunInUIStep1TestSuite extends BasicTestSuite {
 
   /**
    * Returns the suite. This is required to unary launch this test.
    */
   public static Test suite() {
-    return new RunInUITestSuite();
+    return new RunInUIStep1TestSuite();
   }
 
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new RunInUIStep1TestSuite());
-    tests.add(new RunInUIStep2TestSuite());
-    tests.add(new RunInUIStep3TestSuite());
-    tests.add(new RunInUIStep4TestSuite());
-    tests.add(new RunInUIStep5TestSuite());
+    tests.add(new BusinessQueryTestSuite());
+    tests.add(new SemanticQueriesTestSuite());
+    tests.add(new ValidationRulesTestSuite());
     return tests;
   }
 
