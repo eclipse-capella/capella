@@ -195,13 +195,6 @@
    
    
    <!-- Contributions that should be removed between versions -->
-   <extension
-         point="org.polarsys.capella.core.data.migration.migrationContributions">
-
-      <migrationContribution 
-            class="org.polarsys.capella.core.data.migration.aird.FixCustomFeaturesContribution">
-      </migrationContribution>
-   </extension>
    
    
    
