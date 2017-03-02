@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,8 +13,6 @@ package org.polarsys.capella.test.business.queries.ju.testSuites.main;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import junit.framework.Test;
 
 import org.polarsys.capella.test.business.queries.ju.testSuites.partial.CapellaCommonBusinessQueryTestSuite;
 import org.polarsys.capella.test.business.queries.ju.testSuites.partial.CapellaCoreBusinessQueryTestSuite;
@@ -30,7 +28,8 @@ import org.polarsys.capella.test.business.queries.ju.testSuites.partial.OaBusine
 import org.polarsys.capella.test.business.queries.ju.testSuites.partial.PaBusinessQueryTestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
-import org.polarsys.capella.test.semantic.queries.ju.testsuites.SemanticQueriesTestSuite;
+
+import junit.framework.Test;
 
 /**
  * @author Erwan Brottier
@@ -59,12 +58,11 @@ public class BusinessQueryTestSuite extends BasicTestSuite {
 		tests.add(new LaBusinessQueryTestSuite());
 		tests.add(new OaBusinessQueryTestSuite());
 		tests.add(new PaBusinessQueryTestSuite());
-		tests.add(new SemanticQueriesTestSuite());
 		return tests;
 	}
 
-	@Override
-	public List<String> getRequiredTestModels() {
-		return Arrays.asList("sysmodel");
-	}
+  @Override
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList(new String[] { "sysmodel" }); //$NON-NLS-1$
+  }
 }

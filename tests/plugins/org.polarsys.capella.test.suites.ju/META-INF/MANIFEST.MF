@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.suites.ju
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %providerName
@@ -17,6 +17,7 @@ Require-Bundle: org.polarsys.capella.test.business.queries.ju;visibility:=reexpo
  org.polarsys.capella.test.recrpl.ju;visibility:=reexport,
  org.polarsys.capella.test.refinement.ju;visibility:=reexport,
  org.polarsys.capella.test.transition.ju;visibility:=reexport,
+ org.polarsys.capella.test.semantic.queries.ju;visibility:=reexport,
  org.polarsys.capella.test.validation.rules.ju;visibility:=reexport,
  org.polarsys.capella.test.explorer.activity.ju;visibility:=reexport,
  org.polarsys.capella.test.navigator.ju;visibility:=reexport,

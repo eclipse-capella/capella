@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,29 +15,28 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.refinement.ju.testsuites.main.AllRefinementTestSuites;
+import org.polarsys.capella.test.transition.ju.testsuites.main.TransitionTestSuite;
 
 import junit.framework.Test;
 
 /**
  *
  */
-public class RunInUITestSuite extends BasicTestSuite {
+public class RunInUIStep4TestSuite extends BasicTestSuite {
 
   /**
    * Returns the suite. This is required to unary launch this test.
    */
   public static Test suite() {
-    return new RunInUITestSuite();
+    return new RunInUIStep4TestSuite();
   }
 
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new RunInUIStep1TestSuite());
-    tests.add(new RunInUIStep2TestSuite());
-    tests.add(new RunInUIStep3TestSuite());
-    tests.add(new RunInUIStep4TestSuite());
-    tests.add(new RunInUIStep5TestSuite());
+    tests.add(new AllRefinementTestSuites());
+    tests.add(new TransitionTestSuite());
     return tests;
   }
 
