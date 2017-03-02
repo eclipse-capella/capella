@@ -18,6 +18,10 @@ tmp/
 # Maven
 target/
 
+# Generated stuff
+api-docs/
+api_docs.xml
+
 # External tool builders
 .externalToolBuilders/
 

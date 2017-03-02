@@ -21,4 +21,7 @@
 		</topic>
 		<topic href="html/Viewpoint Guidelines.html#Avoid_EObject.eResource_calls" label="Avoid EObject.eResource calls"></topic>
 	</topic>
+	<topic label="Reference">
+		<anchor id="reference"/>
+	</topic>
 </toc>
