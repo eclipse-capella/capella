@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.flexibility.wizards.ui.tabbed;
 
 import org.eclipse.ui.views.properties.tabbed.AbstractSectionDescriptor;
@@ -19,14 +18,14 @@ import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContex
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyGroup;
 
 public class PropertiesSectionDescriptor extends AbstractSectionDescriptor {
-  IPropertyContext _propertyContext;
-  IPropertyGroup _group;
-  IRendererContext _rendererContext;
+  IPropertyContext propertyContext;
+  IPropertyGroup group;
+  IRendererContext rendererContext;
 
   public PropertiesSectionDescriptor(IPropertyContext context, IRendererContext renderers, IPropertyGroup group) {
-    _propertyContext = context;
-    _group = group;
-    _rendererContext = renderers;
+    this.propertyContext = context;
+    this.group = group;
+    this.rendererContext = renderers;
   }
 
   /**
@@ -34,7 +33,7 @@ public class PropertiesSectionDescriptor extends AbstractSectionDescriptor {
    */
   @Override
   public String getId() {
-    return _group.getId() + _propertyContext.getProperties().getPropertiesId();
+    return group.getId() + propertyContext.getProperties().getPropertiesId();
   }
 
   /**
@@ -42,7 +41,7 @@ public class PropertiesSectionDescriptor extends AbstractSectionDescriptor {
    */
   @Override
   public String getTargetTab() {
-    return _group.getId();
+    return group.getId();
   }
 
   /**
@@ -50,7 +49,7 @@ public class PropertiesSectionDescriptor extends AbstractSectionDescriptor {
    */
   @Override
   public ISection getSectionClass() {
-    return createSection(_propertyContext, _rendererContext, _group);
+    return createSection(propertyContext, rendererContext, group);
   }
 
   /**

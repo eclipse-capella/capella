@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.tools.report.appenders.console;
 
 import java.io.BufferedWriter;
@@ -38,31 +37,30 @@ import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
  * console. Of course, if the console is blocked because 
  * the ui is blocked (e.g by a dialog), events may queue up 
  * and cause memory usage peaks.
- * 
  */
 public class ReportManagerConsoleAppender extends AppenderSkeleton {
 
-  public Map<Level, Writer> _logWriters;
-  protected IReportConsole _console;
-  private Thread _worker;
-  private volatile boolean _running;
-  private final List<LoggingEvent> _pending;
+  public Map<Level, Writer> logWriters;
+  protected IReportConsole console;
+  private Thread worker;
+  private volatile boolean running;
+  private final List<LoggingEvent> pending;
   
   public ReportManagerConsoleAppender(Layout layout) {
 	  setLayout(layout);
 	  setName(ReportManagerConstants.LOG_OUTPUT_CONSOLE);
-	  _console = ConsoleAppenderActivator.getDefault().getReportConsole();
-	  _logWriters = new HashMap<Level, Writer>();
-	  if (_console != null) {
-	    Map<Level, MessageConsoleStream> messageStreams = _console.getOutputStreams();
+	  console = ConsoleAppenderActivator.getDefault().getReportConsole();
+	  logWriters = new HashMap<Level, Writer>();
+	  if (console != null) {
+	    Map<Level, MessageConsoleStream> messageStreams = console.getOutputStreams();
 		  for (Level lev : messageStreams.keySet()){
-		    _logWriters.put(lev, new BufferedWriter(new OutputStreamWriter(messageStreams.get(lev))));
+		    logWriters.put(lev, new BufferedWriter(new OutputStreamWriter(messageStreams.get(lev))));
 		  }
 	  }
-	  _running = true;
-	  _pending = Collections.synchronizedList(new ArrayList<LoggingEvent>());
-	  _worker = new Thread(null, new ConsoleAppenderJob(), "ReportManagerConsoleAppender"); //$NON-NLS-1$
-    _worker.start();
+	  running = true;
+	  pending = Collections.synchronizedList(new ArrayList<LoggingEvent>());
+	  worker = new Thread(null, new ConsoleAppenderJob(), "ReportManagerConsoleAppender"); //$NON-NLS-1$
+    worker.start();
   }
 
   public ReportManagerConsoleAppender() {
@@ -72,7 +70,7 @@ public class ReportManagerConsoleAppender extends AppenderSkeleton {
   @Override
   // handle event in the future
   protected void append(LoggingEvent event) {
-    _pending.add(event);
+    pending.add(event);
   }
 
   /*
@@ -85,12 +83,12 @@ public class ReportManagerConsoleAppender extends AppenderSkeleton {
      */
     @SuppressWarnings("synthetic-access")
     public void run() {
-      while (_running) {
-        if (!_pending.isEmpty()){
+      while (running) {
+        if (!pending.isEmpty()){
           List<LoggingEvent> pendingCopy = null;
-          synchronized (_pending){
-            pendingCopy = new ArrayList<LoggingEvent>(_pending);
-            _pending.clear();
+          synchronized (pending){
+            pendingCopy = new ArrayList<LoggingEvent>(pending);
+            pending.clear();
           }
           for (LoggingEvent e : pendingCopy) {
             writeToConsole(e);
@@ -107,7 +105,7 @@ public class ReportManagerConsoleAppender extends AppenderSkeleton {
   
   private void writeToConsole(LoggingEvent event){
     try {
-      Writer writer = _logWriters.get(event.getLevel());
+      Writer writer = logWriters.get(event.getLevel());
       writer.write(" [From " + event.getLoggerName() + "] "); //$NON-NLS-1$ //$NON-NLS-2$
       writer.write(layout.format(event));
       if (layout.ignoresThrowable()) {
@@ -130,7 +128,7 @@ public class ReportManagerConsoleAppender extends AppenderSkeleton {
    * {@inheritDoc}
    */
   public void close() {
-    _running = false;
+    running = false;
   }
 
   /**

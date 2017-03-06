@@ -45,14 +45,14 @@ public class ScenarioSection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    scenarioKindGroup = new ScenarioKindGroup(_rootParentComposite, getWidgetFactory(), true);
+    scenarioKindGroup = new ScenarioKindGroup(rootParentComposite, getWidgetFactory(), true);
     scenarioKindGroup.setDisplayedInWizard(displayedInWizard);
 
     prePostGroup = new ConstraintReferenceGroup(ImmutableMap.of(
         Messages.getString("Scenario_PreCondition_Label"), InteractionPackage.Literals.SCENARIO__PRE_CONDITION, //$NON-NLS-1$
         Messages.getString("Scenario_PostCondition_Label"), InteractionPackage.Literals.SCENARIO__POST_CONDITION //$NON-NLS-1$
     ));
-    prePostGroup.createControls(_rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
+    prePostGroup.createControls(rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
 
 
     realizedScenariosField = new MultipleSemanticField(getReferencesGroup(),

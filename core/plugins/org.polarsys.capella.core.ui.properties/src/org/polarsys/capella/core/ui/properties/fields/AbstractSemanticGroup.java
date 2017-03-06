@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
  */
 public abstract class AbstractSemanticGroup extends AbstractSemanticField {
 
-  protected Composite _parent;
+  protected Composite parent;
 
   /**
    * @param parent
@@ -34,19 +34,19 @@ public abstract class AbstractSemanticGroup extends AbstractSemanticField {
     if (!skipGroup) {
       createGroup(parent);
     } else {
-      _parent = parent;
+      this.parent = parent;
     }
   }
 
   protected void createGroup(Composite parent) {
-    _parent = _widgetFactory.createGroup(parent, ICommonConstants.EMPTY_STRING);
-    _parent.setLayout(new GridLayout(2, false));
+    this.parent = _widgetFactory.createGroup(parent, ICommonConstants.EMPTY_STRING);
+    this.parent.setLayout(new GridLayout(2, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
-    _parent.setLayoutData(gd);
+    this.parent.setLayoutData(gd);
   }
   
   public Composite getParent() {
-    return _parent;
+    return this.parent;
   }
 }

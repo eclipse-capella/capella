@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,8 +34,8 @@ public class EStoESCommand extends ESToISCommand {
 
   @Override
   public String getName() {
-    if ((_rootElements != null) && (_rootElements.size() > 0)) {
-      EObject element = _rootElements.iterator().next();
+    if ((rootElements != null) && (rootElements.size() > 0)) {
+      EObject element = rootElements.iterator().next();
 
       if (TransitionHelper.getService().isES2ESForOASATransitionAvailable(element)) {
         return Messages.transitionES2ES_OAtoSA_label;

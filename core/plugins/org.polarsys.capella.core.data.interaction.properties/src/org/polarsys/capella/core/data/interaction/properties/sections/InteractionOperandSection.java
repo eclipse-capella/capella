@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,7 @@ public class InteractionOperandSection extends NamedElementSection {
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createControls(parent, aTabbedPropertySheetPage);
     _constraintReferences = new ConstraintReferenceGroup(Collections.singletonMap(Messages.getString("InteractionOperandSection_Guard_Label"), InteractionPackage.Literals.INTERACTION_OPERAND__GUARD)); //$NON-NLS-1$
-    _constraintReferences.createControls(_rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
+    _constraintReferences.createControls(rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
   }
 
   /**

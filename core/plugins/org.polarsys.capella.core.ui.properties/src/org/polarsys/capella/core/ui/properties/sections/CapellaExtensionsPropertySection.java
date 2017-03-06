@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -141,12 +141,12 @@ public class CapellaExtensionsPropertySection extends AbstractSection implements
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createControls(parent, aTabbedPropertySheetPage);
 
-    _rootParentComposite.setLayout(new GridLayout());
-    _rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+    rootParentComposite.setLayout(new GridLayout());
+    rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    Group grp = getWidgetFactory().createGroup(_rootParentComposite, ICommonConstants.EMPTY_STRING);
+    Group grp = getWidgetFactory().createGroup(rootParentComposite, ICommonConstants.EMPTY_STRING);
     grp.setLayout(new GridLayout(1, false));
     GridData layoutData = new GridData(GridData.FILL, GridData.FILL, true, true);
     layoutData.horizontalSpan = 2;
@@ -186,7 +186,7 @@ public class CapellaExtensionsPropertySection extends AbstractSection implements
       });
     _appliedPropertyValuesTableField.setDisplayedInWizard(displayedInWizard);
 
-    grp = getWidgetFactory().createGroup(_rootParentComposite, ICommonConstants.EMPTY_STRING);
+    grp = getWidgetFactory().createGroup(rootParentComposite, ICommonConstants.EMPTY_STRING);
     grp.setLayout(new GridLayout(1, false));
     layoutData = new GridData(GridData.FILL, GridData.FILL, true, true);
     layoutData.horizontalSpan = 2;

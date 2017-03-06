@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,14 +23,14 @@ import org.eclipse.ui.views.navigator.LocalSelectionTransfer;
  */
 public class ModelDragTargetAdapter extends DragSourceAdapter implements TransferDragSourceListener {
 
-   private ISelectionProvider _provider;
+   private ISelectionProvider provider;
     
    /**
     * Construct a new drag target adapter from  the selection provider given as parameter.
-    * @param provider_p the selection provider
+    * @param selectionProvider the selection provider
     */
-   public ModelDragTargetAdapter(final ISelectionProvider provider_p) {
-       _provider = provider_p;
+   public ModelDragTargetAdapter(final ISelectionProvider selectionProvider) {
+       provider = selectionProvider;
    }
    
    /**
@@ -49,7 +49,7 @@ public class ModelDragTargetAdapter extends DragSourceAdapter implements Transfe
      */
     @Override
     public void dragStart(final DragSourceEvent event) {
-        final ISelection selection = _provider.getSelection();
+        final ISelection selection = provider.getSelection();
         LocalSelectionTransfer.getInstance().setSelection(selection);
         LocalSelectionTransfer.getInstance().setSelectionSetTime(event.time & 0xFFFFFFFFL);
         event.doit = true;

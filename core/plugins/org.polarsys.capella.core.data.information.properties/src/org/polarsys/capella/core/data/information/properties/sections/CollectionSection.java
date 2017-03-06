@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,10 +70,10 @@ public class CollectionSection extends MultiplicityElementSection {
     collectionBooleanPropertiesCheckbox = new CollectionBooleanPropertiesCheckbox(getCheckGroup(), getWidgetFactory(), true, true);
     collectionBooleanPropertiesCheckbox.setDisplayedInWizard(displayedInWizard);
 
-    collectionKindGroup = new CollectionKindGroup(_rootParentComposite, getWidgetFactory());
+    collectionKindGroup = new CollectionKindGroup(rootParentComposite, getWidgetFactory());
     collectionKindGroup.setDisplayedInWizard(displayedInWizard);
 
-    aggregationKindGroup = new AggregationKindGroup(_rootParentComposite, getWidgetFactory());
+    aggregationKindGroup = new AggregationKindGroup(rootParentComposite, getWidgetFactory());
     aggregationKindGroup.setDisplayedInWizard(displayedInWizard);
 
     superTypes = new CompositionMultipleSemanticField(getReferencesGroup(),
@@ -102,7 +102,7 @@ public class CollectionSection extends MultiplicityElementSection {
         Messages.getString("MultiplicityElement.DefaultValueLabel"), getWidgetFactory(), "", new Collection_ValueController()); //$NON-NLS-1$ //$NON-NLS-2$
     defaultValueField.setDisplayedInWizard(displayedInWizard);
 
-    visibilityKindGroup = new VisibilityKindGroup(_rootParentComposite, getWidgetFactory());
+    visibilityKindGroup = new VisibilityKindGroup(rootParentComposite, getWidgetFactory());
     visibilityKindGroup.setDisplayedInWizard(displayedInWizard);
   }
 

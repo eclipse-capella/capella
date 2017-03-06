@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,62 +37,62 @@ public class LibraryManager extends ILibraryManager implements ILibraryProviderL
   /**
    * List of all active providers
    */
-  Collection<ILibraryProvider> _providers = null;
+  Collection<ILibraryProvider> providers = null;
 
   /**
    * A stored version of all model identifiers. it is cleared each time a provider notifies us.
    */
-  Collection<IModelIdentifier> _models = null;
+  Collection<IModelIdentifier> models = null;
 
   /**
    * A stored version of model per editing domain.
    */
-  HashMap<TransactionalEditingDomain, IModel> _modelsPerDomain = null;
+  HashMap<TransactionalEditingDomain, IModel> modelsPerDomain = null;
 
   public Collection<ILibraryProvider> getProviders() {
 
-    if (_providers == null) {
-      _providers = new HashSet<ILibraryProvider>();
+    if (providers == null) {
+      providers = new HashSet<ILibraryProvider>();
 
       for (IConfigurationElement element : Platform.getExtensionRegistry().getConfigurationElementsFor(PROVIDER_EXTENSION)) {
         try {
           ILibraryProvider provider = (ILibraryProvider) element.createExecutableExtension("class");
           if (provider != null) {
-            _providers.add(provider);
+            providers.add(provider);
           }
         } catch (Exception exception) {
           // nothing here, a provider can't be loaded
         }
       }
 
-      for (ILibraryProvider provider : _providers) {
+      for (ILibraryProvider provider : providers) {
         provider.addListener(this);
       }
     }
 
-    return _providers;
+    return providers;
   }
 
   @Override
   public Collection<IModelIdentifier> getAvailableModels() {
-    if (_models == null) {
-      _models = new ArrayList<IModelIdentifier>();
+    if (models == null) {
+      models = new ArrayList<IModelIdentifier>();
       for (ILibraryProvider provider : getProviders()) {
         for (IModelIdentifier model : provider.getAvailableModels()) {
-          if (!_models.contains(model)) {
-            _models.add(model);
+          if (!models.contains(model)) {
+            models.add(model);
           }
         }
       }
     }
-    return _models;
+    return models;
   }
 
   @Override
   public void onLibraryProviderChanged(LibraryProviderEvent event) {
     // We should clear cache (maybe we could do less)
-    _models = null;
-    _modelsPerDomain = null;
+    models = null;
+    modelsPerDomain = null;
   }
 
   @Override
@@ -136,19 +136,19 @@ public class LibraryManager extends ILibraryManager implements ILibraryProviderL
   @Override
   public IModel getModel(TransactionalEditingDomain domain) {
 
-    if (_modelsPerDomain != null) {
-      if (_modelsPerDomain.containsKey(domain)) {
-        return _modelsPerDomain.get(domain);
+    if (modelsPerDomain != null) {
+      if (modelsPerDomain.containsKey(domain)) {
+        return modelsPerDomain.get(domain);
       }
     }
 
     for (ILibraryProvider provider : getProviders()) {
       IModel model = provider.getModel(domain);
       if (model != null) {
-        if (_modelsPerDomain == null) {
-          _modelsPerDomain = new HashMap<TransactionalEditingDomain, IModel>();
+        if (modelsPerDomain == null) {
+          modelsPerDomain = new HashMap<TransactionalEditingDomain, IModel>();
         }
-        _modelsPerDomain.put(domain, model);
+        modelsPerDomain.put(domain, model);
         return model;
       }
     }
@@ -173,8 +173,8 @@ public class LibraryManager extends ILibraryManager implements ILibraryProviderL
 
   @Override
   public void disposedEditingDomain(EditingDomain editingDomain) {
-    if (_modelsPerDomain != null) {
-      _modelsPerDomain.remove(editingDomain);
+    if (modelsPerDomain != null) {
+      modelsPerDomain.remove(editingDomain);
     }
   }
 

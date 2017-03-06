@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.model.skeleton.impl.cmd;
 
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerFactory;
@@ -22,32 +21,32 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
  */
 public class CreateEngSystemCmd extends AbstractReadWriteCommand {
   // The engineering name.
-  private String _systemEngName;
+  private String systemEngName;
   // The system engineering.
-  private SystemEngineering _systemEng;
+  private SystemEngineering systemEng;
   // The capella project.
-  private Project _project;
+  private Project project;
 
   /**
    * Constructs a system engineering element.
-   * @param project_p The Capella project.
-   * @param systemName_p The engineering system name.
+   * @param prj The Capella project.
+   * @param systemName The engineering system name.
    */
-  public CreateEngSystemCmd(Project project_p, String systemName_p) {
+  public CreateEngSystemCmd(Project prj, String systemName) {
     // Check the engineering name.
-    if (null == systemName_p) {
+    if (null == systemName) {
       // TODO to change to logger ??
       throw new IllegalArgumentException("The system engineering name parameter cannot be null !"); //$NON-NLS-1$
     }
     
     // Check the Capella project.
-    if (null == project_p) {
+    if (null == prj) {
       // TODO to change to logger ??
       throw new IllegalArgumentException("The Capella project parameter cannot be null !"); //$NON-NLS-1$
     }
 
-    _project = project_p;
-    _systemEngName = systemName_p;
+    project = prj;
+    systemEngName = systemName;
   }
 
   /**
@@ -55,10 +54,10 @@ public class CreateEngSystemCmd extends AbstractReadWriteCommand {
    */
   public void run() {
     // 1 - Builds the system engineering with the specified name.
-    _systemEng = CapellamodellerFactory.eINSTANCE.createSystemEngineering(_systemEngName);
+    systemEng = CapellamodellerFactory.eINSTANCE.createSystemEngineering(systemEngName);
 
     // Attaches the model to its parent project.
-    _project.getOwnedModelRoots().add(_systemEng);
+    project.getOwnedModelRoots().add(systemEng);
   }
 
   /**
@@ -74,6 +73,6 @@ public class CreateEngSystemCmd extends AbstractReadWriteCommand {
    * @return The new system engineering.
    */
   public SystemEngineering getSystemEngineering() {
-    return _systemEng;
+    return systemEng;
   }
 }

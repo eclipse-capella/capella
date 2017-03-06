@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -72,18 +72,18 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
    * The FastLinker pin menu creator.
    */
   protected class PinDropDownMenuCreator implements IMenuCreator {
-    private Menu _menu;
+    private Menu menu;
 
     @SuppressWarnings("rawtypes")
-	protected MenuItem createPinMenuItem(Menu parentMenu_p, final Collection modelElement_p, Collection<EObject> pinnedElement_p) {
-      MenuItem menuItem = new MenuItem(parentMenu_p, SWT.CHECK);
-      menuItem.setImage(_capellaNavigatorLabelProvider.getImage(modelElement_p));
-      menuItem.setText(_capellaNavigatorLabelProvider.getText(modelElement_p));
-      menuItem.setSelection(modelElement_p == pinnedElement_p);
+	protected MenuItem createPinMenuItem(Menu parentMenu, final Collection modelElement, Collection<EObject> pinnedElement) {
+      MenuItem menuItem = new MenuItem(parentMenu, SWT.CHECK);
+      menuItem.setImage(capellaNavigatorLabelProvider.getImage(modelElement));
+      menuItem.setText(capellaNavigatorLabelProvider.getText(modelElement));
+      menuItem.setSelection(modelElement == pinnedElement);
       menuItem.addSelectionListener(new SelectionAdapter() {
         @Override
-        public void widgetSelected(SelectionEvent e_p) {
-          FastLinkerActivator.getDefault().getFastLinkerManager().pinModelElement(modelElement_p);
+        public void widgetSelected(SelectionEvent e) {
+          FastLinkerActivator.getDefault().getFastLinkerManager().pinModelElement(modelElement);
         }
       });
       return menuItem;
@@ -91,64 +91,64 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
 
     @Override
     public void dispose() {
-      if (null != _menu) {
-        _menu.dispose();
+      if (null != menu) {
+        menu.dispose();
       }
     }
 
     @SuppressWarnings("unchecked")
 	@Override
-    public Menu getMenu(Control parent_p) {
+    public Menu getMenu(Control parent) {
       // Dispose the previous menu (if any).
-      if (null != _menu) {
-        _menu.dispose();
+      if (null != menu) {
+        menu.dispose();
       }
       // Create a new menu.
-      _menu = new Menu(parent_p);
+      menu = new Menu(parent);
       final FastLinkerState state = FastLinkerActivator.getDefault().getFastLinkerManager().getCurrentState();
       if (null != state.getSecondElement()) {
-        createPinMenuItem(_menu, state.getSecondElement(), state.getPinnedElement());
+        createPinMenuItem(menu, state.getSecondElement(), state.getPinnedElement());
       }
       if (null != state.getFirstElement()) {
-        createPinMenuItem(_menu, state.getFirstElement(), state.getPinnedElement());
+        createPinMenuItem(menu, state.getFirstElement(), state.getPinnedElement());
       }
-      return _menu;
+      return menu;
     }
 
     @Override
-    public Menu getMenu(Menu parent_p) {
+    public Menu getMenu(Menu parent) {
       return null;
     }
   }
 
   public static final String VIEW_ID = "org.polarsys.capella.core.ui.fastlinker.view"; //$NON-NLS-1$
 
-  protected Action _clearFastLinkerAction;
+  protected Action clearFastLinkerAction;
 
-  protected FastLinkerFigureCanvas _fastLinkerFigureCanvas;
+  protected FastLinkerFigureCanvas fastLinkerFigureCanvas;
 
-  protected FastLinkerLabelProvider _capellaNavigatorLabelProvider;
+  protected FastLinkerLabelProvider capellaNavigatorLabelProvider;
 
-  protected Action _pinElementAction;
+  protected Action pinElementAction;
 
-  protected CapellaTabbedPropertySheetPage _propertySheetPage;
+  protected CapellaTabbedPropertySheetPage propertySheetPage;
 
   /**
    * Displays a menu to ask the user which command he will to execute.
-   * @param firstToSecondCommands_p
-   * @param secondToFirstCommands_p
+   * @param firstToSecondCommands
+   * @param secondToFirstCommands
    * @return
    */
-  public AbstractCreateLinksCommand chooseCommandToExecute(List<AbstractCreateLinksCommand> firstToSecondCommands_p,
-      List<AbstractCreateLinksCommand> secondToFirstCommands_p) {
+  public AbstractCreateLinksCommand chooseCommandToExecute(List<AbstractCreateLinksCommand> firstToSecondCommands,
+      List<AbstractCreateLinksCommand> secondToFirstCommands) {
     final AbstractCreateLinksCommand[] selectedCommand = new AbstractCreateLinksCommand[1];
     SelectionListener menuItemSelectionAdapter = new SelectionAdapter() {
       @Override
-      public void widgetSelected(SelectionEvent e_p) {
-        if (!(e_p.getSource() instanceof MenuItem)) {
+      public void widgetSelected(SelectionEvent e) {
+        if (!(e.getSource() instanceof MenuItem)) {
           return;
         }
-        Object data = ((MenuItem) e_p.getSource()).getData();
+        Object data = ((MenuItem) e.getSource()).getData();
         if (data instanceof AbstractCreateLinksCommand) {
           selectedCommand[0] = (AbstractCreateLinksCommand) data;
         }
@@ -156,34 +156,34 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
     };
 
     String firstElementName =
-        _capellaNavigatorLabelProvider.getText(FastLinkerActivator.getDefault().getFastLinkerManager().getCurrentState().getFirstElement());
+        capellaNavigatorLabelProvider.getText(FastLinkerActivator.getDefault().getFastLinkerManager().getCurrentState().getFirstElement());
     String secondElementName =
-        _capellaNavigatorLabelProvider.getText(FastLinkerActivator.getDefault().getFastLinkerManager().getCurrentState().getSecondElement());
-    Menu myMenu = new Menu(_fastLinkerFigureCanvas);
-    if (!firstToSecondCommands_p.isEmpty() && !secondToFirstCommands_p.isEmpty()) {
+        capellaNavigatorLabelProvider.getText(FastLinkerActivator.getDefault().getFastLinkerManager().getCurrentState().getSecondElement());
+    Menu myMenu = new Menu(fastLinkerFigureCanvas);
+    if (!firstToSecondCommands.isEmpty() && !secondToFirstCommands.isEmpty()) {
       // Create first to second sub menu.
       Menu firstToSecondSubMenu = new Menu(myMenu);
       MenuItem firstToSecondSubMenuItem = new MenuItem(myMenu, SWT.CASCADE);
       firstToSecondSubMenuItem.setText(firstElementName + " -> " + secondElementName); //$NON-NLS-1$
       firstToSecondSubMenuItem.setMenu(firstToSecondSubMenu);
-      fillMenuWithCommands(firstToSecondSubMenu, firstToSecondCommands_p, menuItemSelectionAdapter);
+      fillMenuWithCommands(firstToSecondSubMenu, firstToSecondCommands, menuItemSelectionAdapter);
       // Create second to first sub menu.
       Menu secondToFirstSubMenu = new Menu(myMenu);
       MenuItem secondToFirstSubMenuItem = new MenuItem(myMenu, SWT.CASCADE);
       secondToFirstSubMenuItem.setText(secondElementName + " -> " + firstElementName); //$NON-NLS-1$
       secondToFirstSubMenuItem.setMenu(secondToFirstSubMenu);
-      fillMenuWithCommands(secondToFirstSubMenu, secondToFirstCommands_p, menuItemSelectionAdapter);
-    } else if (!firstToSecondCommands_p.isEmpty()) {
-      fillMenuWithCommands(myMenu, firstToSecondCommands_p, menuItemSelectionAdapter);
-    } else if (!secondToFirstCommands_p.isEmpty()) {
-      fillMenuWithCommands(myMenu, secondToFirstCommands_p, menuItemSelectionAdapter);
+      fillMenuWithCommands(secondToFirstSubMenu, secondToFirstCommands, menuItemSelectionAdapter);
+    } else if (!firstToSecondCommands.isEmpty()) {
+      fillMenuWithCommands(myMenu, firstToSecondCommands, menuItemSelectionAdapter);
+    } else if (!secondToFirstCommands.isEmpty()) {
+      fillMenuWithCommands(myMenu, secondToFirstCommands, menuItemSelectionAdapter);
     }
     new MenuItem(myMenu, SWT.SEPARATOR);
     MenuItem mi1 = new MenuItem(myMenu, SWT.NONE);
     mi1.setText(Messages.FastLinkerView_MenuItem_Cancel_Text);
 
-    Point fastLinkerSize = _fastLinkerFigureCanvas.getSize();
-    myMenu.setLocation(_fastLinkerFigureCanvas.toDisplay(fastLinkerSize.x / 2, fastLinkerSize.y / 2));
+    Point fastLinkerSize = fastLinkerFigureCanvas.getSize();
+    myMenu.setLocation(fastLinkerFigureCanvas.toDisplay(fastLinkerSize.x / 2, fastLinkerSize.y / 2));
     myMenu.setVisible(true);
     // Wait until user does its selection or the menu is hidden.
     while (!myMenu.isDisposed() && myMenu.isVisible()) {
@@ -200,11 +200,11 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
   protected void createActions() {
     IToolBarManager toolBarManager = getViewSite().getActionBars().getToolBarManager();
     // Clear action.
-    _clearFastLinkerAction = createClearAction();
-    toolBarManager.add(_clearFastLinkerAction);
+    clearFastLinkerAction = createClearAction();
+    toolBarManager.add(clearFastLinkerAction);
     // Pin/Unpin action.
-    _pinElementAction = createPinElementAction();
-    toolBarManager.add(_pinElementAction);
+    pinElementAction = createPinElementAction();
+    toolBarManager.add(pinElementAction);
   }
 
   /**
@@ -227,30 +227,30 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
    * {@inheritDoc}
    */
   @Override
-  public void createPartControl(Composite parent_p) {
-    parent_p.setLayout(new FillLayout());
+  public void createPartControl(Composite parent) {
+    parent.setLayout(new FillLayout());
     // Label provider for status bar.
-    _capellaNavigatorLabelProvider = new FastLinkerLabelProvider();
+    capellaNavigatorLabelProvider = new FastLinkerLabelProvider();
 
-    _fastLinkerFigureCanvas = new FastLinkerFigureCanvas(parent_p, SWT.NONE);
-    _fastLinkerFigureCanvas.addSelectionChangedListener(new ISelectionChangedListener() {
+    fastLinkerFigureCanvas = new FastLinkerFigureCanvas(parent, SWT.NONE);
+    fastLinkerFigureCanvas.addSelectionChangedListener(new ISelectionChangedListener() {
       /**
        * {@inheritDoc}
        */
       @Override
-      public void selectionChanged(SelectionChangedEvent event_p) {
-        refreshPropertyPage(event_p.getSelectionProvider());
-        updateStatusBar(getFirstModelElementFromSelection(event_p.getSelection()));
+      public void selectionChanged(SelectionChangedEvent event) {
+        refreshPropertyPage(event.getSelectionProvider());
+        updateStatusBar(getFirstModelElementFromSelection(event.getSelection()));
       }
     });
-    _fastLinkerFigureCanvas.addDoubleClickListener(new IDoubleClickListener() {
+    fastLinkerFigureCanvas.addDoubleClickListener(new IDoubleClickListener() {
       /**
        * {@inheritDoc}
        */
       @SuppressWarnings("rawtypes")
   	  @Override
-      public void doubleClick(SelectionChangedEvent event_p) {
-       Collection doubleClickedModelElement = getFirstModelElementFromSelection(event_p
+      public void doubleClick(SelectionChangedEvent event) {
+       Collection doubleClickedModelElement = getFirstModelElementFromSelection(event
 								.getSelection());
 						if (null != doubleClickedModelElement
 								&& !doubleClickedModelElement.isEmpty()) {
@@ -264,12 +264,12 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
 
     createActions();
     initializeContextMenu();
-    getViewSite().setSelectionProvider(_fastLinkerFigureCanvas);
+    getViewSite().setSelectionProvider(fastLinkerFigureCanvas);
 
     // Configure drop.
     // Allow data to be copied or moved to the drop target
     int operations = DND.DROP_MOVE;
-    DropTarget target = new DropTarget(_fastLinkerFigureCanvas, operations);
+    DropTarget target = new DropTarget(fastLinkerFigureCanvas, operations);
     target.setTransfer(new Transfer[] { LocalSelectionTransfer.getTransfer() });
     target.addDropListener(new DropTargetAdapter() {
       @SuppressWarnings("rawtypes")
@@ -303,7 +303,7 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
       @SuppressWarnings("rawtypes")
 	  @Override
       public void run() {
-        Collection selectedModelElement = getFirstModelElementFromSelection(_fastLinkerFigureCanvas.getSelection());
+        Collection selectedModelElement = getFirstModelElementFromSelection(fastLinkerFigureCanvas.getSelection());
         FastLinkerActivator.getDefault().getFastLinkerManager().pinModelElement(selectedModelElement);
       }
     };
@@ -315,16 +315,16 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
 
   /**
    * Fill given menu, creating a MenuItem for each given command.
-   * @param menu_p
-   * @param commands_p
-   * @param menuItemSelectionListener_p
+   * @param menu
+   * @param commands
+   * @param menuItemSelectionListener
    */
-  protected void fillMenuWithCommands(Menu menu_p, List<AbstractCreateLinksCommand> commands_p, SelectionListener menuItemSelectionListener_p) {
-    for (Command executableCommand : commands_p) {
-      MenuItem mi = new MenuItem(menu_p, SWT.NONE);
+  protected void fillMenuWithCommands(Menu menu, List<AbstractCreateLinksCommand> commands, SelectionListener menuItemSelectionListener) {
+    for (Command executableCommand : commands) {
+      MenuItem mi = new MenuItem(menu, SWT.NONE);
       mi.setText(executableCommand.getLabel());
       mi.setData(executableCommand);
-      mi.addSelectionListener(menuItemSelectionListener_p);
+      mi.addSelectionListener(menuItemSelectionListener);
     }
   }
 
@@ -333,11 +333,11 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
    */
   @SuppressWarnings("rawtypes")
   @Override
-  public Object getAdapter(Class adapter_p) {
-    if (IPropertySheetPage.class.equals(adapter_p)) {
+  public Object getAdapter(Class adapter) {
+    if (IPropertySheetPage.class.equals(adapter)) {
       return getPropertySheetPage();
     }
-    return super.getAdapter(adapter_p);
+    return super.getAdapter(adapter);
   }
 
   /**
@@ -353,7 +353,7 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
    */
   @Override
   public EditingDomain getEditingDomain() {
-	ISelection selection = _fastLinkerFigureCanvas.getSelection();
+	ISelection selection = fastLinkerFigureCanvas.getSelection();
 	if (selection instanceof IStructuredSelection) {
 	  Object elt = ((IStructuredSelection) selection).getFirstElement();
 	  if (elt instanceof EObject) {
@@ -369,11 +369,11 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
    */
   @SuppressWarnings("rawtypes")
   protected Collection getFirstModelElementFromSelection(
-			ISelection selection_p) {
-		if (!(selection_p instanceof IStructuredSelection)) {
+			ISelection selection) {
+		if (!(selection instanceof IStructuredSelection)) {
 			return null;
 		}
-		List firstElements = ((IStructuredSelection) selection_p).toList();
+		List firstElements = ((IStructuredSelection) selection).toList();
 		for (Object firstElement : firstElements)
 			if (!(firstElement instanceof ModelElement)) {
 				return null;
@@ -385,55 +385,55 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
    * Gets the property sheet page.
    */
   protected TabbedPropertySheetPage getPropertySheetPage() {
-    if (null == _propertySheetPage) {
-      _propertySheetPage = new CapellaTabbedPropertySheetPage(this) {
+    if (null == propertySheetPage) {
+      propertySheetPage = new CapellaTabbedPropertySheetPage(this) {
         /**
          * {@inheritDoc}
          */
         @Override
         public void dispose() {
           super.dispose();
-          _propertySheetPage = null;
+          propertySheetPage = null;
         }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public void init(IPageSite pageSite_p) {
-          super.init(pageSite_p);
-          pageSite_p.setSelectionProvider(FastLinkerView.this.getViewSite().getSelectionProvider());
+        public void init(IPageSite pageSite) {
+          super.init(pageSite);
+          pageSite.setSelectionProvider(FastLinkerView.this.getViewSite().getSelectionProvider());
         }
       };
     }
-    return _propertySheetPage;
+    return propertySheetPage;
   }
 
   /**
    * Initialize a context menu for given viewer.
-   * @param menuManagerText_p
-   * @param menuManagerId_p
-   * @param viewer_p
+   * @param menuManagerText
+   * @param menuManagerId
+   * @param viewer
    */
   private void initializeContextMenu() {
     MenuManager menuManager = new MenuManager("FastLinkerPopupMenu", VIEW_ID); //$NON-NLS-1$
     menuManager.setRemoveAllWhenShown(true);
-    Menu currentMenu = menuManager.createContextMenu(_fastLinkerFigureCanvas);
-    _fastLinkerFigureCanvas.setMenu(currentMenu);
-    getSite().registerContextMenu(VIEW_ID, menuManager, _fastLinkerFigureCanvas);
+    Menu currentMenu = menuManager.createContextMenu(fastLinkerFigureCanvas);
+    fastLinkerFigureCanvas.setMenu(currentMenu);
+    getSite().registerContextMenu(VIEW_ID, menuManager, fastLinkerFigureCanvas);
   }
 
-  protected void refreshPropertyPage(ISelectionProvider selectionProvider_p) {
+  protected void refreshPropertyPage(ISelectionProvider selectionProvider) {
     // Notify the property page to refresh with the new selection.
     // Be careful, the properties view can be closed, don't send it
     // selection changes.
-    IStructuredSelection selection = (IStructuredSelection) selectionProvider_p.getSelection();
-    if ((null != _propertySheetPage) && (!_propertySheetPage.getControl().isDisposed())) {
-      ISelectionProvider pageSelectionProvider = _propertySheetPage.getSite().getSelectionProvider();
-      if ((null == pageSelectionProvider) || (pageSelectionProvider != selectionProvider_p)) {
-        _propertySheetPage.getSite().setSelectionProvider(selectionProvider_p);
+    IStructuredSelection selection = (IStructuredSelection) selectionProvider.getSelection();
+    if ((null != propertySheetPage) && (!propertySheetPage.getControl().isDisposed())) {
+      ISelectionProvider pageSelectionProvider = propertySheetPage.getSite().getSelectionProvider();
+      if ((null == pageSelectionProvider) || (pageSelectionProvider != selectionProvider)) {
+        propertySheetPage.getSite().setSelectionProvider(selectionProvider);
       }
-      _propertySheetPage.selectionChanged(FastLinkerView.this, selection);
+      propertySheetPage.selectionChanged(FastLinkerView.this, selection);
     }
   }
 
@@ -443,7 +443,7 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
   @Override
   public void setFocus() {
     // Give focus to the figure canvas (if omitted, RuntimeExceptions can be raised because of recursive view activations).
-    _fastLinkerFigureCanvas.setFocus();
+    fastLinkerFigureCanvas.setFocus();
   }
 
   /**
@@ -452,23 +452,23 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
   public void update() {
    FastLinkerState currentState = FastLinkerActivator.getDefault()
 				.getFastLinkerManager().getCurrentState();
-		_fastLinkerFigureCanvas.fillFigure(currentState.getFirstElement(),
+		fastLinkerFigureCanvas.fillFigure(currentState.getFirstElement(),
 				currentState.getSecondElement(),
 				currentState.getPinnedElement(), currentState.getLinkCreated());
-		_pinElementAction.setEnabled((null != currentState.getFirstElement())
+		pinElementAction.setEnabled((null != currentState.getFirstElement())
 				|| (null != currentState.getSecondElement()));
-		_clearFastLinkerAction.setEnabled((null != currentState
+		clearFastLinkerAction.setEnabled((null != currentState
 				.getFirstElement())
 				|| (null != currentState.getSecondElement()));
   }
 
   /**
    * Display the path of the given element in the status bar.
-   * @param elementToDisplay_p
+   * @param elementToDisplay
    */
-  public void updateStatusBar(Object elementToDisplay_p) {
-    Image elementImage = _capellaNavigatorLabelProvider.getImage(elementToDisplay_p);
-    String elementDescription = _capellaNavigatorLabelProvider.getDescription(elementToDisplay_p);
+  public void updateStatusBar(Object elementToDisplay) {
+    Image elementImage = capellaNavigatorLabelProvider.getImage(elementToDisplay);
+    String elementDescription = capellaNavigatorLabelProvider.getDescription(elementToDisplay);
     getViewSite().getActionBars().getStatusLineManager().setMessage(elementImage, elementDescription);
   }
 }

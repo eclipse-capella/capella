@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.flexibility.wizards.ui.tabbed;
 
 import java.util.Collection;
@@ -39,15 +38,15 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
  */
 public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescriptorProvider {
 
-  RenderersLoader _rendererLoader = new RenderersLoader();
+  RenderersLoader rendererLoader = new RenderersLoader();
 
-  IProperties _properties = null;
+  IProperties properties = null;
 
   Collection<Object> source = null;
 
-  String _identifier = null;
+  String identifier = null;
 
-  ObjectPropertiesLoader _propertiesLoader = new ObjectPropertiesLoader() {
+  ObjectPropertiesLoader propertiesLoader = new ObjectPropertiesLoader() {
 
     /**
      * {@inheritDoc}
@@ -77,10 +76,10 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
    */
   @Override
   public IPropertyContext getPropertyContext() {
-    if (_protertyContext == null) {
-      _protertyContext = createContext(getProperties(source));
+    if (propertyContext == null) {
+      propertyContext = createContext(getProperties(source));
     }
-    return _protertyContext;
+    return propertyContext;
   }
 
   @Override
@@ -91,23 +90,23 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
       source = sel;
 
       // Compute a propertiesId for the selection
-      String identifier = _propertiesLoader.getIdentifier(source);
+      String id = propertiesLoader.getIdentifier(source);
 
-      if (_identifier != identifier) {
+      if (identifier != id) {
         // If different from previously stored identifier, we recompute an properties (already stored in cache of PropertiesLoader) and renderers (recomputed)
-        _properties = _propertiesLoader.getProperties(identifier);
-        _renderers = null;
+        properties = propertiesLoader.getProperties(id);
+        renderers = null;
       }
 
-      _identifier = identifier;
-      _protertyContext = null;
-      _rendererContext = null;
+      identifier = id;
+      propertyContext = null;
+      rendererContext = null;
     }
 
-    if (_properties == null) {
-      _properties = new Properties("");
+    if (properties == null) {
+      properties = new Properties("");
     }
-    return _properties;
+    return properties;
   }
 
   private class ContextAdapter extends AdapterImpl implements PropertyChangeListener {
@@ -214,7 +213,7 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
    */
   @Override
   protected IRenderers createRenderers(IProperties properties) {
-    return _rendererLoader.getRenderers(properties);
+    return rendererLoader.getRenderers(properties);
   }
 
   protected String adapt(String canonicalName) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -160,7 +160,7 @@ public class CustomPropertyHelper {
       }
     }
 
-    SubPropertiesTabDescriptorProvider _provider = new SubPropertiesTabDescriptorProvider() {
+    SubPropertiesTabDescriptorProvider provider = new SubPropertiesTabDescriptorProvider() {
 
       @Override
       protected ITabDescriptor createTabDescriptor(IPropertyContext context, IRendererContext rendererContext, IPropertyGroup mainGroup) {
@@ -183,7 +183,7 @@ public class CustomPropertyHelper {
     };
     ISelection selection = new StructuredSelection(object);
 
-    ITabDescriptor[] descriptors = _provider.getTabDescriptors(null, selection);
+    ITabDescriptor[] descriptors = provider.getTabDescriptors(null, selection);
     for (ITabDescriptor descriptor : descriptors) {
       for (Object obj : descriptor.getSectionDescriptors()) {
         if (obj instanceof ISectionDescriptor) {

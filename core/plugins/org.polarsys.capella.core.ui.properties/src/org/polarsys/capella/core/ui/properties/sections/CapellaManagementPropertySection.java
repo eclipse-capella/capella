@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,18 +57,18 @@ public class CapellaManagementPropertySection extends AbstractSection implements
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createControls(parent, aTabbedPropertySheetPage);
 
-    _rootParentComposite.setLayout(new GridLayout());
-    _rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+    rootParentComposite.setLayout(new GridLayout());
+    rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _visibleInDocGroup = new BooleanValueGroup(_rootParentComposite, Messages.VisibleInDocGroup_Label, getWidgetFactory());
+    _visibleInDocGroup = new BooleanValueGroup(rootParentComposite, Messages.VisibleInDocGroup_Label, getWidgetFactory());
     _visibleInDocGroup.setDisplayedInWizard(displayedInWizard);
 
-    _visibleInLMGroup = new BooleanValueGroup(_rootParentComposite, Messages.VisibleForTraceabilityGroup_Label, getWidgetFactory());
+    _visibleInLMGroup = new BooleanValueGroup(rootParentComposite, Messages.VisibleForTraceabilityGroup_Label, getWidgetFactory());
     _visibleInLMGroup.setDisplayedInWizard(displayedInWizard);
 
-    _status = new EnumerationValueGroup(_rootParentComposite, Messages.ProgressStatus_Label, getWidgetFactory());
+    _status = new EnumerationValueGroup(rootParentComposite, Messages.ProgressStatus_Label, getWidgetFactory());
     _status.setDisplayedInWizard(displayedInWizard);
 
     _review = new TextAreaValueGroup(_status.getParent(), Messages.ReviewGroup_Label, getWidgetFactory(), true);

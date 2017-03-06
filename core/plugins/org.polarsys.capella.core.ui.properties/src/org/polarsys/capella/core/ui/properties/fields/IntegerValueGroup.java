@@ -57,9 +57,9 @@ public class IntegerValueGroup extends TextValueGroup implements VerifyListener 
    * 
    */
   protected void addListeners() {
-    _valueField.addFocusListener(this);
-    _valueField.addKeyListener(this);
-    _valueField.addVerifyListener(this);
+    valueField.addFocusListener(this);
+    valueField.addKeyListener(this);
+    valueField.addVerifyListener(this);
   }
 
   @Override
@@ -87,15 +87,15 @@ public class IntegerValueGroup extends TextValueGroup implements VerifyListener 
    */
   protected void handleResetButtonClicked(Button button) {
     setDataValue(_semanticElement, _semanticFeature, "0");
-    setTextValue(_valueField, _semanticElement, _semanticFeature);
+    setTextValue(valueField, _semanticElement, _semanticFeature);
   }
 
   /**
    * 
    */
   protected void updateResetBtnStatus() {
-    if (null != _valueResetBtn) {
-      _valueResetBtn.setEnabled(_semanticElement.eGet(_semanticFeature) != null
+    if (null != valueResetBtn) {
+      valueResetBtn.setEnabled(_semanticElement.eGet(_semanticFeature) != null
           && !_semanticElement.eGet(_semanticFeature).equals("0"));
     }
   }

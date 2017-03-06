@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.flexibility.properties.loader;
 
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ import org.polarsys.capella.common.flexibility.properties.schema.PropertiesSchem
  */
 public class PropertiesLoader {
 
-  private HashMap<String, Properties> _propertiesMap = new HashMap<String, Properties>();
+  private HashMap<String, Properties> propertiesMap = new HashMap<String, Properties>();
 
   protected Collection<IConfigurationElement> extensions = null;
 
@@ -48,11 +47,11 @@ public class PropertiesLoader {
   }
 
   protected Properties getStoredProperties(String idProperties) {
-    return _propertiesMap.get(idProperties);
+    return propertiesMap.get(idProperties);
   }
 
   protected void setStoredProperties(String idProperties, Properties properties) {
-    _propertiesMap.put(idProperties, properties);
+    propertiesMap.put(idProperties, properties);
   }
 
   public IProperties getProperties(String idProperties) {

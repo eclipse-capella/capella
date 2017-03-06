@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,20 +47,20 @@ public class TransformLogicalFunction extends AbstractTransform {
   /**
    * PA reminder.
    */
-  private PhysicalArchitecture _physicalArchitecture;
+  private PhysicalArchitecture physicalArchitecture;
 
-  public void setContext(EObject context_p) {
-    if (isValidElement(context_p)) {
-      _context.add(context_p);
-    } else if (context_p instanceof LogicalArchitecture) {
-      _context.add(((LogicalArchitecture) context_p).getOwnedFunctionPkg());
+  public void setContext(EObject ctx) {
+    if (isValidElement(ctx)) {
+      _context.add(ctx);
+    } else if (ctx instanceof LogicalArchitecture) {
+      _context.add(((LogicalArchitecture) ctx).getOwnedFunctionPkg());
     }
   }
 
   @Override
-  protected ITransfo createTransfo(ITransfoRuleBase ruleBase_p) throws ClassNotFoundException {
+  protected ITransfo createTransfo(ITransfoRuleBase ruleBase) throws ClassNotFoundException {
     // Gets the base rules
-    Iterator<TransfoRule> iterator = ruleBase_p.iterator();
+    Iterator<TransfoRule> iterator = ruleBase.iterator();
     Transfo transfo = new Transfo(CapellacommonPackage.Literals.TRANSFO_LINK, CAPELLA_LOGICALFUNCTIONS_RULES);
     // Adds the base rules:
     while (iterator.hasNext()) {
@@ -73,12 +73,12 @@ public class TransformLogicalFunction extends AbstractTransform {
 
   @Override
   protected boolean retainContextElement(EObject contextElement, ITransfo transfo) {
-    if ((null == _physicalArchitecture) && (contextElement instanceof CapellaElement)) {
-      _physicalArchitecture = getOrCreatePaLayer((CapellaElement) contextElement);
+    if ((null == physicalArchitecture) && (contextElement instanceof CapellaElement)) {
+      physicalArchitecture = getOrCreatePaLayer((CapellaElement) contextElement);
     }
     if (isValidElement(contextElement)) {
       transfo.put(TransfoEngine.TRANSFO_SOURCE, contextElement);
-      transfo.put(CapellaEngine.TRANSFO_TARGET_CONTAINER, _physicalArchitecture);
+      transfo.put(CapellaEngine.TRANSFO_TARGET_CONTAINER, physicalArchitecture);
       return true;
     }
     return false;
@@ -98,13 +98,13 @@ public class TransformLogicalFunction extends AbstractTransform {
     return pa;
   }
 
-  public boolean isValidElement(EObject context_p) {
-    return (context_p != null)
-           && CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) context_p)
+  public boolean isValidElement(EObject context) {
+    return (context != null)
+           && CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) context)
            &&
 
-           ((context_p instanceof FunctionPkg) || (context_p instanceof AbstractFunction) || (context_p instanceof FunctionalExchange)
-            || (context_p instanceof FunctionPort) || (context_p instanceof FunctionalChain));
+           ((context instanceof FunctionPkg) || (context instanceof AbstractFunction) || (context instanceof FunctionalExchange)
+            || (context instanceof FunctionPort) || (context instanceof FunctionalChain));
 
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.flexibility.wizards.ui.tabbed;
 
 import java.util.ArrayList;
@@ -38,9 +37,9 @@ import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 
 public class PropertiesSection extends AbstractPropertySection {
-  IPropertyContext _propertyContext;
-  IRendererContext _rendererContext;
-  IPropertyGroup _group;
+  IPropertyContext propertyContext;
+  IRendererContext rendererContext;
+  IPropertyGroup group;
 
   public PropertiesSection(IPropertyContext context, IRendererContext renderers, IPropertyGroup group) {
     init(context, renderers, group);
@@ -50,10 +49,10 @@ public class PropertiesSection extends AbstractPropertySection {
   }
 
   protected void init(IPropertyContext context, IRendererContext renderers, IPropertyGroup group) {
-    _propertyContext = context;
-    _group = group;
-    _rendererContext = renderers;
-    initRendererContext(_rendererContext);
+    this.propertyContext = context;
+    this.group = group;
+    this.rendererContext = renderers;
+    initRendererContext(rendererContext);
   }
 
   /**
@@ -127,7 +126,7 @@ public class PropertiesSection extends AbstractPropertySection {
   }
 
   protected void setContext(ISelection selection) {
-    _propertyContext.setSource(getSource(selection));
+    propertyContext.setSource(getSource(selection));
   }
 
   /**
@@ -135,8 +134,8 @@ public class PropertiesSection extends AbstractPropertySection {
    */
   @Override
   public void setInput(final IWorkbenchPart part, final ISelection selection) {
-    write(_propertyContext);
-    _propertyContext.setSource(getSource(selection));
+    write(propertyContext);
+    propertyContext.setSource(getSource(selection));
     super.setInput(part, selection);
   }
 
@@ -150,11 +149,11 @@ public class PropertiesSection extends AbstractPropertySection {
 
   @Override
   public void dispose() {
-    write(_propertyContext);
-    for (IProperty property : _propertyContext.getProperties().getAllItems()) {
-      IRenderer renderer = _rendererContext.getRenderer(property);
+    write(propertyContext);
+    for (IProperty property : propertyContext.getProperties().getAllItems()) {
+      IRenderer renderer = rendererContext.getRenderer(property);
       if (renderer != null) {
-        renderer.dispose(_rendererContext);
+        renderer.dispose(rendererContext);
       }
     }
     super.dispose();
@@ -165,7 +164,7 @@ public class PropertiesSection extends AbstractPropertySection {
    */
   @Override
   public void aboutToBeHidden() {
-    write(_propertyContext);
+    write(propertyContext);
     super.aboutToBeHidden();
   }
 
@@ -173,7 +172,7 @@ public class PropertiesSection extends AbstractPropertySection {
    * @return
    */
   protected ILabelProvider getLabelProvider() {
-    return _rendererContext.getLabelProvider();
+    return rendererContext.getLabelProvider();
   }
 
   /**
@@ -184,9 +183,9 @@ public class PropertiesSection extends AbstractPropertySection {
     super.createControls(parent, aTabbedPropertySheetPage);
     try {
       parent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-      IGroupRenderer groupRenderer = _rendererContext.getRenderer(_group);
+      IGroupRenderer groupRenderer = rendererContext.getRenderer(group);
       if (groupRenderer != null) {
-        groupRenderer.render(parent, _rendererContext);
+        groupRenderer.render(parent, rendererContext);
       }
 
     } catch (Exception e) {

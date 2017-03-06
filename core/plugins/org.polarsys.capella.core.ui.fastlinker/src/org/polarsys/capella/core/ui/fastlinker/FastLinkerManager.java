@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -146,9 +146,9 @@ public class FastLinkerManager {
 		_secondToFirstCommands.clear();
 		
 		// Check if element will be the first one in FastLinker.
-		if ((null != futureState._firstElement)
-				&& (null == futureState._secondElement)
-				&& (!futureState._firstElement.isEmpty())
+		if ((null != futureState.firstElement)
+				&& (null == futureState.secondElement)
+				&& (!futureState.firstElement.isEmpty())
 				) {
 			EClass commonSuperType = getCommonType(elementToPut_p);
 			// Is there commands using this element as source or target ?
@@ -164,9 +164,9 @@ public class FastLinkerManager {
 		// Element will not be the first one -> check commands are available
 		// between first and second elements (as source or target).
 		else {
-			if (!futureState._firstElement.isEmpty() && !futureState._secondElement.isEmpty()) {
-				EClass firstSuperType = getCommonType(futureState._firstElement);
-				EClass secondSuperType = getCommonType(futureState._secondElement);
+			if (!futureState.firstElement.isEmpty() && !futureState.secondElement.isEmpty()) {
+				EClass firstSuperType = getCommonType(futureState.firstElement);
+				EClass secondSuperType = getCommonType(futureState.secondElement);
 			if (  LinksCommandRegistry.getInstance()
 				.containsCommandForSourceTargetTypes(
 						firstSuperType,
@@ -177,11 +177,11 @@ public class FastLinkerManager {
 										firstSuperType)) {
 			// Some commands are available -> get them.
 			_firstToSecondCommands.addAll(LinksCommandRegistry.getInstance()
-					.getExecutableCommands(futureState._firstElement,
-							futureState._secondElement));
+					.getExecutableCommands(futureState.firstElement,
+							futureState.secondElement));
 			_secondToFirstCommands.addAll(LinksCommandRegistry.getInstance()
-					.getExecutableCommands(futureState._secondElement,
-							futureState._firstElement));
+					.getExecutableCommands(futureState.secondElement,
+							futureState.firstElement));
 			if (!_firstToSecondCommands.isEmpty()
 					|| !_secondToFirstCommands.isEmpty()) {
 				return true;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.transition.common.launcher;
 
 import java.util.Collection;
@@ -35,11 +34,11 @@ import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParamete
  */
 public class ActivitiesLauncher {
 
-  protected ExtendedCadenceLauncher _cadenceLauncher;
+  protected ExtendedCadenceLauncher cadenceLauncher;
 
-  protected HashMap<String, String> _mapOverrides;
+  protected HashMap<String, String> mapOverrides;
 
-  protected SharedWorkflowActivityParameter _parameters = new SharedWorkflowActivityParameter(); 
+  protected SharedWorkflowActivityParameter parameters = new SharedWorkflowActivityParameter(); 
   
   private String name;
 
@@ -69,7 +68,7 @@ public class ActivitiesLauncher {
   }
 
   public void initCadence() {
-    _cadenceLauncher = createCadenceLauncher();
+    this.cadenceLauncher = createCadenceLauncher();
   }
 
   public ActivitiesLauncher() {
@@ -92,10 +91,10 @@ public class ActivitiesLauncher {
   }
 
   protected void addOverrides(String idOverrided, String idOverriding) {
-    if (_mapOverrides == null) {
-      _mapOverrides = new HashMap<String, String>();
+    if (mapOverrides == null) {
+      mapOverrides = new HashMap<String, String>();
     }
-    _mapOverrides.put(idOverrided, idOverriding);
+    mapOverrides.put(idOverrided, idOverriding);
   }
 
   /**
@@ -158,15 +157,15 @@ public class ActivitiesLauncher {
   }
 
   public void addParameters(SharedWorkflowActivityParameter parameters) {
-    _parameters.merge(parameters);
+    this.parameters.merge(parameters);
   }
   
   public void addParameter(String idActivity, GenericParameter<?> parameter) {
-    _parameters.addParameter(idActivity, parameter);
+    this.parameters.addParameter(idActivity, parameter);
   }
   
   public void addSharedParameter(GenericParameter<?> parameter) {
-    _parameters.addSharedParameter(parameter);
+    this.parameters.addSharedParameter(parameter);
   }
   
   protected Iterator<String> iteratorWorkflowElements(String workflowId) {
@@ -183,7 +182,7 @@ public class ActivitiesLauncher {
       for (Iterator<String> iter = iteratorWorkflowElements(workflowId); iter.hasNext();) {
         String workflowElement = iter.next();
         WorkflowActivityParameter parameter = getParameter(workflowId, workflowElement);
-        mergeParameters(parameter, _parameters);
+        mergeParameters(parameter, parameters);
         IStatus status = triggerActivities(parameter, workflowId, workflowElement, monitor);
         checkStatus(monitor, status);
       }
@@ -204,7 +203,7 @@ public class ActivitiesLauncher {
         for (Iterator<String> iter = iteratorFinalWorkflowElements(workflowId); iter.hasNext();) {
           String workflowElement = iter.next();
           WorkflowActivityParameter parameter = getParameter(workflowId, workflowElement);
-          mergeParameters(parameter, _parameters);
+          mergeParameters(parameter, parameters);
           IStatus status = triggerActivities(parameter, workflowId, workflowElement, monitor);
           checkStatus(monitor, status);
         }
@@ -239,7 +238,9 @@ public class ActivitiesLauncher {
   }
 
   /**
-   * @param selection_p
+   * @param activities
+   * @param workflowId
+   * @param workflowElement
    * @param monitor
    */
   protected IStatus triggerActivities(WorkflowActivityParameter activities, String workflowId, String workflowElement, IProgressMonitor monitor) {
@@ -252,7 +253,7 @@ public class ActivitiesLauncher {
 
   public IStatus cadence(final String workflow_id, final String workflowElement_id, final WorkflowActivityParameter workflowActivityParameters,
       final IProgressMonitor monitor) throws Exception {
-    IStatus result = _cadenceLauncher.cadence(workflow_id, workflowElement_id, workflowActivityParameters, monitor);
+    IStatus result = cadenceLauncher.cadence(workflow_id, workflowElement_id, workflowActivityParameters, monitor);
     if (result.matches(IStatus.CANCEL) || result.matches(IStatus.ERROR)) {
       monitor.setCanceled(true);
     }
@@ -278,9 +279,9 @@ public class ActivitiesLauncher {
    * @return
    */
   protected String getActivity(String id) {
-    if (_mapOverrides != null) {
-      if (_mapOverrides.containsKey(id)) {
-        return getActivity(_mapOverrides.get(id));
+    if (mapOverrides != null) {
+      if (mapOverrides.containsKey(id)) {
+        return getActivity(mapOverrides.get(id));
       }
     }
     return id;

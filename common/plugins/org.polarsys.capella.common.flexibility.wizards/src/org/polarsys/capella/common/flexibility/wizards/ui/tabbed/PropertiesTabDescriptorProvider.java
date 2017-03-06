@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.flexibility.wizards.ui.tabbed;
 
 import java.util.ArrayList;
@@ -32,11 +31,11 @@ import org.polarsys.capella.common.flexibility.properties.schema.IPropertyGroup;
  */
 public class PropertiesTabDescriptorProvider implements ITabDescriptorProvider {
 
-  protected IRendererContext _rendererContext = null;
+  protected IRendererContext rendererContext = null;
 
-  protected IPropertyContext _protertyContext = null;
+  protected IPropertyContext propertyContext = null;
 
-  protected IRenderers _renderers = null;
+  protected IRenderers renderers = null;
 
   protected IProperties getProperties(Collection<Object> selection) {
     return null;
@@ -50,27 +49,27 @@ public class PropertiesTabDescriptorProvider implements ITabDescriptorProvider {
    * {@inheritDoc}
    */
   public IRendererContext getRendererContext() {
-    if (_rendererContext == null) {
-      _rendererContext = new RendererContext(getRenderers(), getPropertyContext());
+    if (rendererContext == null) {
+      rendererContext = new RendererContext(getRenderers(), getPropertyContext());
     }
-    return _rendererContext;
+    return rendererContext;
   }
 
   /**
    * {@inheritDoc}
    */
   public IPropertyContext getPropertyContext() {
-    return _protertyContext;
+    return propertyContext;
   }
 
   /**
    * {@inheritDoc}
    */
   public IRenderers getRenderers() {
-    if (_renderers == null) {
-      _renderers = createRenderers(getPropertyContext().getProperties());
+    if (renderers == null) {
+      renderers = createRenderers(getPropertyContext().getProperties());
     }
-    return _renderers;
+    return renderers;
   }
 
   /**

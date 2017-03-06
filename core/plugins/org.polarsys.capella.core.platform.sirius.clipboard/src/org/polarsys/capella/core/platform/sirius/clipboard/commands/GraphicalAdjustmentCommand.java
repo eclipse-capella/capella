@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,24 +42,24 @@ import org.polarsys.capella.core.platform.sirius.clipboard.util.SiriusUtil;
 public class GraphicalAdjustmentCommand extends AbstractResultCommand {
 
   // The Sirius elements whose layout has to be adjusted
-  private List<DSemanticDecorator> _pastedSiriusElements;
+  private List<DSemanticDecorator> pastedSiriusElements;
   
   // A map allowing to retrieve, from a Sirius element E1, the Sirius element
   // whose layout must be replicated on E1
-  private Map<? extends DSemanticDecorator, ? extends DSemanticDecorator> _originsMapping;
+  private Map<? extends DSemanticDecorator, ? extends DSemanticDecorator> originsMapping;
   
   // The view in which paste occurred
-  private View _targetView;
+  private View targetView;
   
   // The expected location of the top-left corner of the pasted elements,
   // relative to the graphical container
-  private Point _relativeLocation;
+  private Point relativeLocation;
     
   // A non-null helper for pinning graphical elements
-  private final PinHelper _pinHelper;
+  private final PinHelper pinHelper;
   
   // Whether refresh must be performed at the end (e.g. to draw arcs)
-  private boolean _mustRefresh;
+  private boolean mustRefresh;
 
   private final boolean applyLayout;
   
@@ -81,12 +81,12 @@ public class GraphicalAdjustmentCommand extends AbstractResultCommand {
       View targetView, Point newLocation, boolean mustRefresh, boolean applyLayout, boolean applyStyle) {
     assert origins != null;
     assert targets != null;
-    _originsMapping = origins;
-    _pastedSiriusElements = MiscUtil.filter(targets, DSemanticDecorator.class);
-    _targetView = targetView;
-    _relativeLocation = newLocation;
-    _mustRefresh = mustRefresh;
-    _pinHelper = new PinHelper();
+    this.originsMapping = origins;
+    this. pastedSiriusElements = MiscUtil.filter(targets, DSemanticDecorator.class);
+    this.targetView = targetView;
+    this.relativeLocation = newLocation;
+    this.mustRefresh = mustRefresh;
+    this.pinHelper = new PinHelper();
     this.applyLayout = applyLayout;
     this.applyStyle = applyStyle;
   }
@@ -96,14 +96,14 @@ public class GraphicalAdjustmentCommand extends AbstractResultCommand {
    * @param targetView The encompassing view (e.g. in which paste occurred)
    */
   public GraphicalAdjustmentCommand(View targetView) {
-    _originsMapping = Collections.emptyMap();
-    _pastedSiriusElements = Collections.emptyList();
-    _targetView = targetView;
-    _relativeLocation = null;
-    _mustRefresh = true;
-    _pinHelper = new PinHelper();
-    applyLayout = false;
-    applyStyle = false;
+    this.originsMapping = Collections.emptyMap();
+    this. pastedSiriusElements = Collections.emptyList();
+    this.targetView = targetView;
+    this.relativeLocation = null;
+    this.mustRefresh = true;
+    this.pinHelper = new PinHelper();
+    this.applyLayout = false;
+    this.applyStyle = false;
   }
   
   
@@ -114,27 +114,27 @@ public class GraphicalAdjustmentCommand extends AbstractResultCommand {
    */
   public void run() {
     Collection<Node> gmfRoots;
-    if (_pastedSiriusElements != null && !_pastedSiriusElements.isEmpty()) {
+    if (pastedSiriusElements != null && !pastedSiriusElements.isEmpty()) {
       // Nodes
       Collection<DSemanticDecorator> siriusRoots =
-        MiscUtil.getRoots(_pastedSiriusElements);
+        MiscUtil.getRoots(pastedSiriusElements);
       
       
       for (DSemanticDecorator target : siriusRoots) {
         IGraphicalEditPart pastedGraphicalEditPart = LayerUtil.getGraphicalPart(target);
         if (pastedGraphicalEditPart != null) {
-          CapellaDiagramClipboard.getInstance().applyFormat(_originsMapping, pastedGraphicalEditPart, applyLayout, applyStyle);
+          CapellaDiagramClipboard.getInstance().applyFormat(originsMapping, pastedGraphicalEditPart, applyLayout, applyStyle);
         }
       }
       // Move top-left corner to mouse location, if specified
       gmfRoots = MiscUtil.filter(LayerUtil.upToGmf(siriusRoots), Node.class);
-      if (_relativeLocation != null && !(_targetView instanceof Edge))
-        moveAll(gmfRoots, _targetView, _relativeLocation);
+      if (relativeLocation != null && !(targetView instanceof Edge))
+        moveAll(gmfRoots, targetView, relativeLocation);
     } else {
       gmfRoots = Collections.emptyList();
     }
     // Refresh diagram in order to draw edges
-    if (_mustRefresh)
+    if (mustRefresh)
       refresh(gmfRoots);
   }
   
@@ -144,10 +144,10 @@ public class GraphicalAdjustmentCommand extends AbstractResultCommand {
   protected void refresh(Collection<? extends Node> roots) {
     // Refresh diagram to draw edges
     DDiagram diagram = null;
-    if (!_pastedSiriusElements.isEmpty()) {
-      diagram = SiriusUtil.getOwningDiagram(_pastedSiriusElements.get(0));
-    } else if (_targetView != null) {
-      Diagram gmfDiag = _targetView.getDiagram();
+    if (!pastedSiriusElements.isEmpty()) {
+      diagram = SiriusUtil.getOwningDiagram(pastedSiriusElements.get(0));
+    } else if (targetView != null) {
+      Diagram gmfDiag = targetView.getDiagram();
       EObject diagElement = gmfDiag.getElement();
       if (diagElement instanceof DDiagram)
         diagram = (DDiagram)diagElement;
@@ -201,7 +201,7 @@ public class GraphicalAdjustmentCommand extends AbstractResultCommand {
    */
   protected void pin(Object object) {
     if (object instanceof DDiagramElement)
-      _pinHelper.markAsPinned((DDiagramElement)object);
+      pinHelper.markAsPinned((DDiagramElement)object);
   }
   
   @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,16 +20,16 @@ public class SemanticModelActivator implements BundleActivator {
 
   public static final String PLUGIN_ID = "org.polarsys.capella.core.model.semantic"; //$NON-NLS-1$
 
-  private static BundleContext __context;
-  private static SemanticModelActivator __defaultActivator;
-  private ISemanticModelPreferences _preferences = new SemanticModelPreferences();
+  private static BundleContext context;
+  private static SemanticModelActivator defaultActivator;
+  private ISemanticModelPreferences preferences = new SemanticModelPreferences();
 
   static BundleContext getContext() {
-    return __context;
+    return context;
   }
 
   public static SemanticModelActivator getDefault() {
-    return __defaultActivator;
+    return defaultActivator;
   }
 
   /*
@@ -38,8 +38,8 @@ public class SemanticModelActivator implements BundleActivator {
    */
   @Override
   public void start(BundleContext bundleContext) throws Exception {
-    SemanticModelActivator.__context = bundleContext;
-    __defaultActivator = this;
+    SemanticModelActivator.context = bundleContext;
+    defaultActivator = this;
   }
 
   /*
@@ -47,24 +47,24 @@ public class SemanticModelActivator implements BundleActivator {
    * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
    */
   @Override
-  public void stop(BundleContext bundleContext_p) throws Exception {
-    __defaultActivator = null;
-    SemanticModelActivator.__context = null;
+  public void stop(BundleContext bundleContext) throws Exception {
+    defaultActivator = null;
+    SemanticModelActivator.context = null;
   }
 
   /**
    * Get the active preferences.
    */
   public ISemanticModelPreferences getPreferences() {
-    return _preferences;
+    return preferences;
   }
 
   /**
    * Allows test classes to set custom preference mocks.
-   * @param preferences_p
+   * @param preferences
    */
-  public void setPreferences(ISemanticModelPreferences preferences_p) {
-    _preferences = preferences_p;
+  public void setPreferences(ISemanticModelPreferences preferences) {
+    this.preferences = preferences;
   }
 
 }

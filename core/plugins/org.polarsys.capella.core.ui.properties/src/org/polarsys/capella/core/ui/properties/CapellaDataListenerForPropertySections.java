@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,7 @@ public class CapellaDataListenerForPropertySections extends CapellaModelDataList
   /**
    * 
    */
-  private Set<TabbedPropertySheetPage> _pages;
+  private Set<TabbedPropertySheetPage> pages;
 
   /**
    * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
@@ -86,9 +86,9 @@ public class CapellaDataListenerForPropertySections extends CapellaModelDataList
    * 
    */
   public Set<TabbedPropertySheetPage> getPages() {
-    if (null == _pages) {
-      _pages = new HashSet<TabbedPropertySheetPage>();
+    if (null == pages) {
+      pages = new HashSet<TabbedPropertySheetPage>();
     }
-    return _pages;
+    return pages;
   }
 }

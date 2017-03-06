@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -63,7 +63,7 @@ public class SequenceMessageSection extends NamedElementSection {
 
     namedElementGroup.enableNameField(false);
 
-    Group main = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
+    Group main = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
     main.setLayout(new GridLayout(6, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
@@ -150,13 +150,13 @@ public class SequenceMessageSection extends NamedElementSection {
         new MultipleSemanticField(main, Messages.getString("SequenceMessage.ExchangedItemsLabel"), getWidgetFactory(), new ExchangedItemsController()); //$NON-NLS-1$
     exchangedItemsField.setDisplayedInWizard(displayedInWizard);
 
-    messageKindGroup = new MessageKindGroup(_rootParentComposite, getWidgetFactory(), false);
+    messageKindGroup = new MessageKindGroup(rootParentComposite, getWidgetFactory(), false);
     messageKindGroup.setDisplayedInWizard(displayedInWizard);
 
     exchangeContextField =
         new ConstraintReferenceGroup(Collections.singletonMap(
             Messages.getString("SequenceMessage.ExchangeContextLabel"), InteractionPackage.Literals.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT)); //$NON-NLS-1$
-    exchangeContextField.createControls(_rootParentComposite, getWidgetFactory(), displayedInWizard);
+    exchangeContextField.createControls(rootParentComposite, getWidgetFactory(), displayedInWizard);
 
   }
 

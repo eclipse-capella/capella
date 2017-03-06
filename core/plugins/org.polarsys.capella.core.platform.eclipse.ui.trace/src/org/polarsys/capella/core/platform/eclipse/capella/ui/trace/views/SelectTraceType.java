@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,23 +29,23 @@ import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.Trac
 public class SelectTraceType extends WizardPage {
 
   /** Parent wizard */
-  public AddTraceWizard _parentWizard;
+  public AddTraceWizard parentWizard;
   /** UI - ComboBox */
-  private Combo _comboType;
+  private Combo comboType;
 
   /**
-   * @param pageName_p
+   * @param pageName
    */
-  public SelectTraceType(String pageName_p, AddTraceWizard parentWizard_p) {
-    super(pageName_p);
-    _parentWizard = parentWizard_p;
+  public SelectTraceType(String pageName, AddTraceWizard parentWizard) {
+    super(pageName);
+    this.parentWizard = parentWizard;
     setTitle(Messages.getString("SelectTraceType.title")); //$NON-NLS-1$
   }
 
   /**
    * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
    */
-  public void createControl(Composite parent_p) {
+  public void createControl(Composite parent) {
     // **Layout definition
     RowLayout rowLayout = new RowLayout(SWT.VERTICAL);
     rowLayout.wrap = true;
@@ -53,7 +53,7 @@ public class SelectTraceType extends WizardPage {
     rowLayout.justify = false;
 
     // **Main composite
-    Composite composite = new Composite(parent_p, SWT.NONE);
+    Composite composite = new Composite(parent, SWT.NONE);
     composite.setLayout(rowLayout);
 
     // label question
@@ -61,22 +61,22 @@ public class SelectTraceType extends WizardPage {
     label.setText(Messages.getString("SelectTraceType.question_selection")); //$NON-NLS-1$
 
     // Combo displaying types
-    _comboType = new Combo(composite, SWT.READ_ONLY | SWT.SINGLE | SWT.BORDER);
+    comboType = new Combo(composite, SWT.READ_ONLY | SWT.SINGLE | SWT.BORDER);
     List<String> traceTypes = TraceNameHelper.getTraceTypes();
     for (String traceType : traceTypes) {
-      _comboType.add(traceType);
+      comboType.add(traceType);
     }
-    _comboType.select(0);
-    _parentWizard.setTraceType(_comboType.getText());
-    _comboType.addSelectionListener(new SelectionListener() {
-      public void widgetDefaultSelected(SelectionEvent e_p) {
+    comboType.select(0);
+    parentWizard.setTraceType(comboType.getText());
+    comboType.addSelectionListener(new SelectionListener() {
+      public void widgetDefaultSelected(SelectionEvent e) {
         //
       }
 
-      public void widgetSelected(SelectionEvent e_p) {
-        if (e_p.getSource() instanceof Combo) {
-          Combo combo = (Combo) e_p.getSource();
-          _parentWizard.setTraceType(combo.getText());
+      public void widgetSelected(SelectionEvent e) {
+        if (e.getSource() instanceof Combo) {
+          Combo combo = (Combo) e.getSource();
+          parentWizard.setTraceType(combo.getText());
         }
       }
     });

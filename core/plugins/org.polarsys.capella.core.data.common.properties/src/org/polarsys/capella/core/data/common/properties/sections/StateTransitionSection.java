@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,14 +50,14 @@ public class StateTransitionSection extends NamedElementSection {
 
 
     _guardGroup = new ConstraintReferenceGroup(Collections.singletonMap(Messages.getString("StateTransitionGroup.Guard.Label"), CapellacommonPackage.Literals.STATE_TRANSITION__GUARD)); //$NON-NLS-1$
-    _guardGroup.createControls(_rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
+    _guardGroup.createControls(rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
 
     _effectField =
         new MultipleSemanticField(getReferencesGroup(),
             Messages.getString("StateTransition.Effect.Label"), getWidgetFactory(), new EffectsController()); //$NON-NLS-1$
     _effectField.setDisplayedInWizard(displayedInWizard);
 
-    Group triggersGroup = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
+    Group triggersGroup = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
     triggersGroup.setLayout(new GridLayout(1, false));
     GridData layoutData = new GridData(GridData.FILL_HORIZONTAL);
     layoutData.horizontalSpan = 2;
@@ -74,7 +74,7 @@ public class StateTransitionSection extends NamedElementSection {
             Messages.getString("StateTransition.Realizations.Label"), getWidgetFactory(), new StateTransitionRealizationsController()); //$NON-NLS-1$
     _realizationsField.setDisplayedInWizard(displayedInWizard);
 
-    _stateTransitionGroup = new StateTransitionGroup(_rootParentComposite, getWidgetFactory());
+    _stateTransitionGroup = new StateTransitionGroup(rootParentComposite, getWidgetFactory());
     _stateTransitionGroup.setDisplayedInWizard(isDisplayedInWizard());
   }
 

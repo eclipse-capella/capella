@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2002, 2015 Corporation and others.
+ * Copyright (c) 2002, 2017 Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -89,14 +89,14 @@ public class WizardNewProjectCreationPage extends WizardPage {
   /**
    * Project approach selection.
    */
-  private CapellaProjectHelper.ProjectApproach _projectApproachSelection;
+  private CapellaProjectHelper.ProjectApproach projectApproachSelection;
 
   /**
    * Get the project approach selection.
    * @return the projectApproachSelection
    */
   public CapellaProjectHelper.ProjectApproach getProjectApproachSelection() {
-    return _projectApproachSelection;
+    return projectApproachSelection;
   }
 
   /**
@@ -110,7 +110,7 @@ public class WizardNewProjectCreationPage extends WizardPage {
 
   /**
    * Handle default project location.
-   * @param defaultProjectLocation_p
+   * @param defaultProjectLocation
    */
   protected ProjectContentsLocationArea handleDefaultProjectLocation(Composite composite) {
     return new ProjectContentsLocationArea(getErrorReporter(), composite);
@@ -119,10 +119,10 @@ public class WizardNewProjectCreationPage extends WizardPage {
   /**
    * (non-Javadoc) Method declared on IDialogPage.
    */
-  public void createControl(Composite parent_p) {
+  public void createControl(Composite parent) {
     GridLayout layout = new GridLayout();
-    Composite dialogAreaComposite = new Composite(parent_p, SWT.NULL);
-    dialogAreaComposite.setFont(parent_p.getFont());
+    Composite dialogAreaComposite = new Composite(parent, SWT.NULL);
+    dialogAreaComposite.setFont(parent.getFont());
 
     initializeDialogUnits(dialogAreaComposite);
 
@@ -172,10 +172,10 @@ public class WizardNewProjectCreationPage extends WizardPage {
 
   /**
    * Comment on, not used at the moment. Create project workflow radio group.
-   * @param composite_p
+   * @param composite
    */
-  protected void createProjectApproachGroup(Composite parent_p) {
-    Group radioBox = new Group(parent_p, SWT.NONE);
+  protected void createProjectApproachGroup(Composite parent) {
+    Group radioBox = new Group(parent, SWT.NONE);
     radioBox.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
     radioBox.setLayout(new GridLayout());
     radioBox.setText(Messages.WizardNewProjectCreationPage_CapellaProjectApproach_Title);
@@ -184,10 +184,10 @@ public class WizardNewProjectCreationPage extends WizardPage {
         createRadioButton(radioBox, Messages.WizardNewProjectCreationPage_NO_LABEL /* use our own label to avoid conflicting accelerator */,
             CapellaProjectHelper.ProjectApproach.SingletonComponents);
     // Get default project approach.
-    _projectApproachSelection = getRelatedPreferenceProjectApproach();
+    projectApproachSelection = getRelatedPreferenceProjectApproach();
     // Select the radio button according to the default preference.
     Button selectedButton = null;
-    if (CapellaProjectHelper.ProjectApproach.SingletonComponents.equals(_projectApproachSelection)) {
+    if (CapellaProjectHelper.ProjectApproach.SingletonComponents.equals(projectApproachSelection)) {
       selectedButton = radioSC;
     } else {
       selectedButton = radioRC;
@@ -209,15 +209,15 @@ public class WizardNewProjectCreationPage extends WizardPage {
 
   /**
    * Create a radio button for specified parameters.
-   * @param parent_p
-   * @param label_p
-   * @param approach_p
+   * @param parent
+   * @param label
+   * @param approach
    * @return
    */
-  private Button createRadioButton(Group parent_p, String label_p, CapellaProjectHelper.ProjectApproach approach_p) {
-    Button radioButton = new Button(parent_p, SWT.RADIO | SWT.LEFT);
-    radioButton.setText(label_p);
-    radioButton.setData(approach_p);
+  private Button createRadioButton(Group parent, String label, CapellaProjectHelper.ProjectApproach approach) {
+    Button radioButton = new Button(parent, SWT.RADIO | SWT.LEFT);
+    radioButton.setText(label);
+    radioButton.setData(approach);
     radioButton.addSelectionListener(new SelectionAdapter() {
       @Override
       public void widgetSelected(SelectionEvent event) {
@@ -232,7 +232,7 @@ public class WizardNewProjectCreationPage extends WizardPage {
    * @param event
    */
   protected void handleProjectApproachSelection(SelectionEvent event) {
-    _projectApproachSelection = (ProjectApproach) event.widget.getData();
+    projectApproachSelection = (ProjectApproach) event.widget.getData();
   }
 
   /**

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.platform.eclipse.ui.trace;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -15,6 +15,6 @@ Export-Package: org.polarsys.capella.core.platform.eclipse.capella.ui.trace,
  org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views,
  org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.components,
  org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Activator: org.polarsys.capella.core.platform.eclipse.capella.ui.trace.MDTrace
 Bundle-Localization: plugin

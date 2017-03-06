@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -80,7 +80,7 @@ public class PreRemoveCommand extends AbstractCommand {
     if (null == notifier) {
       // Container is a resource.
       // Since a resource is not an EObject, just return the resource itself.
-      _handler._notifications.add(new NotificationImpl(Notification.REMOVE, elementToRemove_p, null) {
+      _handler.notifications.add(new NotificationImpl(Notification.REMOVE, elementToRemove_p, null) {
         /**
          * @see org.eclipse.emf.common.notify.impl.NotificationImpl#getNotifier()
          */
@@ -107,13 +107,13 @@ public class PreRemoveCommand extends AbstractCommand {
               List<EObject> objects = (List<EObject>) value;
               if (objects.contains(elementToRemove_p)) {
                 // It does contain the element to remove, thus the feature is found.
-                _handler._notifications.add(createNotification((InternalEObject) container, Notification.REMOVE, elementToRemove_p, structuralFeature));
+                _handler.notifications.add(createNotification((InternalEObject) container, Notification.REMOVE, elementToRemove_p, structuralFeature));
                 break;
               }
             } else { // Reference is a container with unary multiplicity.
               if (value == elementToRemove_p) {
                 // The feature is found.
-                _handler._notifications.add(createNotification((InternalEObject) container, Notification.SET, elementToRemove_p, structuralFeature));
+                _handler.notifications.add(createNotification((InternalEObject) container, Notification.SET, elementToRemove_p, structuralFeature));
               }
             }
           }

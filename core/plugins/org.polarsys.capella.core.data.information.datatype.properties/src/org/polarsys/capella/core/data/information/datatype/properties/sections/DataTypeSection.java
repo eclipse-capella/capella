@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -61,7 +61,7 @@ public abstract class DataTypeSection extends NamedElementSection {
     boolean displayedInWizard = isDisplayedInWizard();
 
     if (_showPatternField) {
-      _dataTypeComposite = new TextValueGroup(_rootParentComposite, Messages.getString("DataType.PatternLabel"), getWidgetFactory()); //$NON-NLS-1$
+      _dataTypeComposite = new TextValueGroup(rootParentComposite, Messages.getString("DataType.PatternLabel"), getWidgetFactory()); //$NON-NLS-1$
       _dataTypeComposite.setDisplayedInWizard(displayedInWizard);
     }
 
@@ -74,7 +74,7 @@ public abstract class DataTypeSection extends NamedElementSection {
     _realizedInformationWidget = new CompositionMultipleSemanticField(getReferencesGroup(), Messages.getString("DataType.RealizedInformationLabel"), getWidgetFactory(), new DataTypeController()); //$NON-NLS-1$
     _realizedInformationWidget.setDisplayedInWizard(displayedInWizard);
 
-    _visibilityKindGroup = new VisibilityKindGroup(_rootParentComposite, getWidgetFactory());
+    _visibilityKindGroup = new VisibilityKindGroup(rootParentComposite, getWidgetFactory());
     _visibilityKindGroup.setDisplayedInWizard(displayedInWizard);
   }
 

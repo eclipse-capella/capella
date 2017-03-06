@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.flexibility.wizards.ui.tabbed;
 
 import java.util.Collection;
@@ -27,14 +26,14 @@ import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContex
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyGroup;
 
 public class PropertiesTabDescriptor extends AbstractTabDescriptor {
-  IPropertyContext _propertyContext;
-  IRendererContext _rendererContext;
-  IPropertyGroup _group;
+  IPropertyContext propertyContext;
+  IRendererContext rendererContext;
+  IPropertyGroup group;
 
   public PropertiesTabDescriptor(IPropertyContext context, IRendererContext rendererContext, IPropertyGroup group) {
-    _propertyContext = context;
-    _rendererContext = rendererContext;
-    _group = group;
+    this.propertyContext = context;
+    this.rendererContext = rendererContext;
+    this.group = group;
   }
 
   @Override
@@ -44,12 +43,12 @@ public class PropertiesTabDescriptor extends AbstractTabDescriptor {
 
   @Override
   public String getId() {
-    return _group.getId();
+    return group.getId();
   }
 
   @Override
   public String getLabel() {
-    return _group.getName();
+    return group.getName();
   }
 
   /**
@@ -59,22 +58,22 @@ public class PropertiesTabDescriptor extends AbstractTabDescriptor {
   public List<ISectionDescriptor> getSectionDescriptors() {
 
     List<ISectionDescriptor> desc = new LinkedList<ISectionDescriptor>();
-    IRenderers renderers = _rendererContext.getRenderers();
-    IProperties properties = _propertyContext.getProperties();
+    IRenderers renderers = rendererContext.getRenderers();
+    IProperties properties = propertyContext.getProperties();
 
     Collection<IPropertyGroup> childGroups = Collections.emptyList();
     if (renderers != null) {
-      childGroups = renderers.getGroups(properties, _group);
+      childGroups = renderers.getGroups(properties, group);
     }
 
-    final Collection<IProperty> childProperties = properties.getItems(_group);
+    final Collection<IProperty> childProperties = properties.getItems(group);
 
     if ((childGroups.size() == 0) && (childProperties.size() == 0)) {
       return desc;
     }
 
     for (final IPropertyGroup group : childGroups) {
-      desc.add(createSectionDescriptor(_propertyContext, _rendererContext, group));
+      desc.add(createSectionDescriptor(propertyContext, rendererContext, group));
     }
 
     return desc;

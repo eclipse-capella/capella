@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.flexibility.properties;
 
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
@@ -18,19 +17,19 @@ import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContex
  *
  */
 public class PropertyChangedEvent {
-  IProperty _property;
-  IPropertyContext _context;
+  IProperty property;
+  IPropertyContext context;
 
   public PropertyChangedEvent(IProperty property, IPropertyContext context) {
-    this._property = property;
-    this._context = context;
+    this.property = property;
+    this.context = context;
   }
 
   public IProperty getProperty() {
-    return _property;
+    return property;
   }
 
   public IPropertyContext getPropertyContext() {
-    return _context;
+    return context;
   }
 }

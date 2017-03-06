@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -111,10 +111,10 @@ public class ProjectReferencesPreferencePage extends PropertyPage {
   /**
    * Returns a content provider for the list dialog. It will return all projects in the workspace except the given project, plus any projects referenced by the
    * given project which do no exist in the workspace.
-   * @param _project the project to provide content for
+   * @param prj the project to provide content for
    * @return the content provider that shows the project content
    */
-  protected IStructuredContentProvider getContentProvider(final IProject _project) {
+  protected IStructuredContentProvider getContentProvider(final IProject prj) {
     return new CapellaProjectPropertyContentProvider() {
       @Override
       public Object[] getChildren(Object o) {
@@ -127,7 +127,7 @@ public class ProjectReferencesPreferencePage extends PropertyPage {
         List<IProject> referenced = new ArrayList<IProject>(projects.length);
         boolean found = false;
         for (IProject project2 : projects) {
-          if (!found && project2.equals(_project)) {
+          if (!found && project2.equals(prj)) {
             found = true;
             continue;
           }
@@ -136,7 +136,7 @@ public class ProjectReferencesPreferencePage extends PropertyPage {
 
         // Add any referenced that do not exist in the workspace currently
         try {
-          projects = _project.getDescription().getReferencedProjects();
+          projects = prj.getDescription().getReferencedProjects();
           for (int i = 0; i < projects.length; i++) {
             if (!referenced.contains(projects[i])) {
               referenced.add(projects[i]);

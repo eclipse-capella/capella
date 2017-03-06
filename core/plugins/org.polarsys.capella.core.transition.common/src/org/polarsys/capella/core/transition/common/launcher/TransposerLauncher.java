@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.transition.common.launcher;
 
 import java.util.ArrayList;
@@ -39,12 +38,12 @@ public class TransposerLauncher extends ActivitiesLauncher {
   private final String PURPOSE = "org.polarsys.capella.core.transition"; //$NON-NLS-1$
   private final String MAPPING = "org.polarsys.capella.core.transition.defaultMapping"; //$NON-NLS-1$
 
-  protected ExtendedTransposer _transposer;
+  protected ExtendedTransposer transposer;
 
-  protected ILoopActivityDispatcher _dispatcher;
+  protected ILoopActivityDispatcher dispatcher;
 
   protected ExtendedTransposer getTransposer() {
-    return _transposer;
+    return transposer;
   }
 
   protected String getPurpose() {
@@ -59,7 +58,7 @@ public class TransposerLauncher extends ActivitiesLauncher {
     return new ExtendedTransposer(purpose, mappingId) {
       @Override
       public void initCadence() {
-        cadenceLauncher = _cadenceLauncher;
+        extendedCadenceLauncher = cadenceLauncher;
       }
     };
   }
@@ -72,10 +71,10 @@ public class TransposerLauncher extends ActivitiesLauncher {
    * @return
    */
   public ILoopActivityDispatcher getDispatcher() {
-    if (_dispatcher == null) {
-      _dispatcher = createDispatcher();
+    if (dispatcher == null) {
+      dispatcher = createDispatcher();
     }
-    return _dispatcher;
+    return dispatcher;
   }
 
   /**
@@ -92,15 +91,15 @@ public class TransposerLauncher extends ActivitiesLauncher {
    */
   @Override
   protected void dispose() {
-    if (_transposer != null) {
-      _transposer.dispose();
+    if (transposer != null) {
+      transposer.dispose();
     }
 
     LogHelper.getInstance().flush();
     LogHelper.dispose();
 
     super.dispose();
-    _transposer = null;
+    transposer = null;
   }
 
 
@@ -122,14 +121,14 @@ public class TransposerLauncher extends ActivitiesLauncher {
     try {
       initializeLogHandler();
 
-      _transposer = createTransposer(purpose, mappingId);
+      transposer = createTransposer(purpose, mappingId);
 
-      _transposer.getContext().put(ITransitionConstants.TRANSPOSER_INSTANCE, _transposer);
-      _transposer.getContext().put(ITransitionConstants.TRANSPOSER_SELECTION, selection);
-      _transposer.getContext().put(ITransitionConstants.TRANSPOSER_PURPOSE, purpose);
-      _transposer.getContext().put(ITransitionConstants.COMMAND_NAME, getName());
-      _transposer.getContext().put(ITransitionConstants.TRANSPOSER_MAPPING, mappingId);
-      _transposer.getContext().put(ITransposerWorkflow.TRANSPOSER_ANALYSIS_SOURCES, new ArrayList<Object>());
+      transposer.getContext().put(ITransitionConstants.TRANSPOSER_INSTANCE, transposer);
+      transposer.getContext().put(ITransitionConstants.TRANSPOSER_SELECTION, selection);
+      transposer.getContext().put(ITransitionConstants.TRANSPOSER_PURPOSE, purpose);
+      transposer.getContext().put(ITransitionConstants.COMMAND_NAME, getName());
+      transposer.getContext().put(ITransitionConstants.TRANSPOSER_MAPPING, mappingId);
+      transposer.getContext().put(ITransposerWorkflow.TRANSPOSER_ANALYSIS_SOURCES, new ArrayList<Object>());
 
       initializeParameters();
       
@@ -156,7 +155,7 @@ public class TransposerLauncher extends ActivitiesLauncher {
 
   protected void initializeParameters() {
     addSharedParameter(new GenericParameter<IContext>(ITransposerWorkflow.TRANSPOSER_CONTEXT,
-        _transposer.getContext(), "Context used during rules execution"));
+        transposer.getContext(), "Context used during rules execution"));
   }
 
   public class DispatcherArrayIterator implements Iterator<String> {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,7 +54,7 @@ public class ClassSection extends GeneralizableElementSection {
         Messages.getString("ClassSection_RealizedClasses_Label"), getWidgetFactory(), new Class_InformationRealizationsController()); //$NON-NLS-1$
     _realizedClassesField.setDisplayedInWizard(displayedInWizard);
     
-    _visibilityKindGroup = new VisibilityKindGroup(_rootParentComposite, getWidgetFactory());
+    _visibilityKindGroup = new VisibilityKindGroup(rootParentComposite, getWidgetFactory());
     _visibilityKindGroup.setDisplayedInWizard(displayedInWizard);
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.platform.sirius.adapter;
 
 import org.eclipse.core.runtime.Plugin;
@@ -23,7 +22,7 @@ public class Activator extends Plugin {
   public static final String PLUGIN_ID = "org.polarsys.capella.core.platform.sirius.adapter"; //$NON-NLS-1$
 
   // The shared instance
-  private static Activator _plugin;
+  private static Activator plugin;
 
   /**
    * Constructs the activator.
@@ -36,9 +35,9 @@ public class Activator extends Plugin {
    * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
    */
   @Override
-  public void start(BundleContext context_p) throws Exception {
-    super.start(context_p);
-    _plugin = this;
+  public void start(BundleContext context) throws Exception {
+    super.start(context);
+    plugin = this;
   }
 
   /**
@@ -46,7 +45,7 @@ public class Activator extends Plugin {
    */
   @Override
   public void stop(BundleContext context) throws Exception {
-    _plugin = null;
+    plugin = null;
     super.stop(context);
   }
 
@@ -55,6 +54,6 @@ public class Activator extends Plugin {
    * @return the shared instance
    */
   public static Activator getDefault() {
-    return _plugin;
+    return plugin;
   }
 }

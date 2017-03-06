@@ -26,7 +26,7 @@ public abstract class AbstractNavigatorAction extends Action {
 	/**
 	 * Selection provider.
 	 */
-	private ISelectionProvider _provider;
+	private ISelectionProvider provider;
 
 	/**
 	 * Shell.
@@ -39,7 +39,7 @@ public abstract class AbstractNavigatorAction extends Action {
 	 * @param selectionProvider
 	 */
 	protected AbstractNavigatorAction(ISelectionProvider selectionProvider) {
-		_provider = selectionProvider;
+		provider = selectionProvider;
 	}
 
 	/**
@@ -62,7 +62,7 @@ public abstract class AbstractNavigatorAction extends Action {
 	protected Object getSelection(Class<?> objectType) {
 		Object selectedObject = null;
 		// Get selected objects if any.
-		IStructuredSelection selectedObjects = (IStructuredSelection) _provider.getSelection();
+		IStructuredSelection selectedObjects = (IStructuredSelection) provider.getSelection();
 		// If not empty, get the first selected object.
 		if (!selectedObjects.isEmpty()) {
 			Object firstElement = selectedObjects.getFirstElement();
@@ -127,6 +127,6 @@ public abstract class AbstractNavigatorAction extends Action {
 	 * @return the provider
 	 */
 	protected ISelectionProvider getSelectionProvider() {
-		return _provider;
+		return provider;
 	}
 }

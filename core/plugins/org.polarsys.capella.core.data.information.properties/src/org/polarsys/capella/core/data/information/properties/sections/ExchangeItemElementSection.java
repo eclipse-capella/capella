@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,7 +62,7 @@ public class ExchangeItemElementSection extends MultiplicityElementSection {
             Messages.getString("ExchangeItemElement_ReferencedProperties_Label"), getWidgetFactory(), new ExchangeItemElementController()); //$NON-NLS-1$
     _referencedProperties.setDisplayedInWizard(displayedInWizard);
 
-    elementKindGroup = new ElementKindGroup(_rootParentComposite, getWidgetFactory()) {
+    elementKindGroup = new ElementKindGroup(rootParentComposite, getWidgetFactory()) {
       /**
        * {@inheritDoc}
        */
@@ -74,7 +74,7 @@ public class ExchangeItemElementSection extends MultiplicityElementSection {
     elementKindGroup.setEnabled(false);
     elementKindGroup.setDisplayedInWizard(displayedInWizard);
 
-    parameterDirectionGroup = new ParameterDirectionGroup(_rootParentComposite, getWidgetFactory());
+    parameterDirectionGroup = new ParameterDirectionGroup(rootParentComposite, getWidgetFactory());
     parameterDirectionGroup.setDisplayedInWizard(displayedInWizard);
   }
 

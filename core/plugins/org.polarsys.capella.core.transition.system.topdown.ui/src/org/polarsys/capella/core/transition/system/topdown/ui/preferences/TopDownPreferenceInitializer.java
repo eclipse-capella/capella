@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.ui.preferences;
 
 import org.polarsys.capella.common.flexibility.properties.loader.PropertiesLoader;
@@ -24,14 +34,14 @@ public class TopDownPreferenceInitializer extends AbstractPreferencesInitializer
 	  @Override
 	  public void initializeDefaultPreferences() {
 		  
-		   IProperties _properties = new PropertiesLoader().getProperties(ITopDownConstants.OPTIONS_SCOPE__PREFERENCES);
-		   IPropertyContext _context = new PropertyContext(_properties);
-		   for (IProperty property : _properties.getAllItems()) {
+		   IProperties properties = new PropertiesLoader().getProperties(ITopDownConstants.OPTIONS_SCOPE__PREFERENCES);
+		   IPropertyContext context = new PropertyContext(properties);
+		   for (IProperty property : properties.getAllItems()) {
 			   if (property instanceof IDefaultValueProperty) {
-				   _context.setCurrentValue(property, ((IDefaultValueProperty)property).getDefaultValue(_context));
+				   context.setCurrentValue(property, ((IDefaultValueProperty)property).getDefaultValue(context));
 			   }
 		   }
-		    _context.writeAll();
+		    context.writeAll();
 			ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID).save();
 	  }
 	}

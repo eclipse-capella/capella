@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.model.skeleton.impl.cmd;
 
 import org.polarsys.capella.core.data.cs.CsFactory;
@@ -34,26 +33,26 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
  */
 public class CreateEPBSArchiCmd extends AbstractReadWriteCommand {
   // The architecture name.
-  private String _architectureName;
+  private String architectureName;
   // The EPBS architecture.
-  private EPBSArchitecture _epbsArchitecture;
+  private EPBSArchitecture epbsArchitecture;
   // The physical architecture.
-  private PhysicalArchitecture _physicalArchitecture;
+  private PhysicalArchitecture physicalArchitecture;
   // The system engineering.
-  private SystemEngineering _systemEng;
-  private PhysicalComponent _pcRoot;
+  private SystemEngineering systemEng;
+  private PhysicalComponent pcRoot;
 
   /**
    * Constructs the command allowing to create the EPBS architecture structure skeleton.
-   * @param systemEng_p The system engineering.
-   * @param architectureName_p The architecture name.
-   * @param physicalArchitecture_p The physical architecture.
+   * @param systemEng The system engineering.
+   * @param architectureName The architecture name.
+   * @param physicalArchitecture The physical architecture.
    */
-  public CreateEPBSArchiCmd(SystemEngineering systemEng_p, String architectureName_p, PhysicalArchitecture physicalArchitecture_p, PhysicalComponent physicalComp_p) {
-    _architectureName = architectureName_p;
-    _physicalArchitecture = physicalArchitecture_p;
-    _systemEng = systemEng_p;
-    _pcRoot = physicalComp_p;
+  public CreateEPBSArchiCmd(SystemEngineering systemEng, String architectureName, PhysicalArchitecture physicalArchitecture, PhysicalComponent physicalComp) {
+    this.architectureName = architectureName;
+    this.physicalArchitecture = physicalArchitecture;
+    this.systemEng = systemEng;
+    this.pcRoot = physicalComp;
   }
 
   /**
@@ -61,15 +60,15 @@ public class CreateEPBSArchiCmd extends AbstractReadWriteCommand {
    */
   public void run() {
     // Builds the root element of the EPBS architecture.
-    _epbsArchitecture = EpbsFactory.eINSTANCE.createEPBSArchitecture(_architectureName);
+    epbsArchitecture = EpbsFactory.eINSTANCE.createEPBSArchitecture(architectureName);
 
     ConfigurationItem ci = EpbsFactory.eINSTANCE.createConfigurationItem(NamingConstants.CreateEPBSArchCmd_configurationItem_name);
     ci.setKind(ConfigurationItemKind.SYSTEM_CI);
-    _epbsArchitecture.setOwnedConfigurationItem(ci);
+    epbsArchitecture.setOwnedConfigurationItem(ci);
 
     // Builds the epbs context structure skeleton.
     EPBSContext epbsContext = EpbsFactory.eINSTANCE.createEPBSContext(NamingConstants.CreateEPBSArchCmd_epbsContext_name);
-    _epbsArchitecture.setOwnedEPBSContext(epbsContext);
+    epbsArchitecture.setOwnedEPBSContext(epbsContext);
 
     Part epbsRootPart = CsFactory.eINSTANCE.createPart(ci.getName());
     epbsContext.getOwnedFeatures().add(epbsRootPart);
@@ -79,24 +78,24 @@ public class CreateEPBSArchiCmd extends AbstractReadWriteCommand {
     PhysicalArtifactRealization physicalComponentRealisation = EpbsFactory.eINSTANCE.createPhysicalArtifactRealization();
     ci.getOwnedPhysicalArtifactRealizations().add(physicalComponentRealisation);
     physicalComponentRealisation.setSourceElement(ci);
-    if (null != _pcRoot) {
-      physicalComponentRealisation.setTargetElement(_pcRoot);
+    if (null != pcRoot) {
+      physicalComponentRealisation.setTargetElement(pcRoot);
     }
 
     PhysicalArchitectureRealization physicalArchitectureAlloc = EpbsFactory.eINSTANCE.createPhysicalArchitectureRealization();
-    _epbsArchitecture.getOwnedPhysicalArchitectureRealizations().add(physicalArchitectureAlloc);
-    physicalArchitectureAlloc.setSourceElement(_epbsArchitecture);
-    if (null != _physicalArchitecture) {
-      physicalArchitectureAlloc.setTargetElement(_physicalArchitecture);
+    epbsArchitecture.getOwnedPhysicalArchitectureRealizations().add(physicalArchitectureAlloc);
+    physicalArchitectureAlloc.setSourceElement(epbsArchitecture);
+    if (null != physicalArchitecture) {
+      physicalArchitectureAlloc.setTargetElement(physicalArchitecture);
     }
 
     // Builds the capabilities realizations structure skeleton.
     CapabilityRealizationPkg capaRealisationPkg =
                                                   LaFactory.eINSTANCE.createCapabilityRealizationPkg(NamingConstants.CreateCommonCmd_capability_realisation_pkg_name);
-    _epbsArchitecture.setOwnedAbstractCapabilityPkg(capaRealisationPkg);
+    epbsArchitecture.setOwnedAbstractCapabilityPkg(capaRealisationPkg);
     
     // Attaches the EPBS architecture to its parent system engineering.
-    _systemEng.getOwnedArchitectures().add(_epbsArchitecture);
+    systemEng.getOwnedArchitectures().add(epbsArchitecture);
   }
 
   /**
@@ -104,7 +103,7 @@ public class CreateEPBSArchiCmd extends AbstractReadWriteCommand {
    * @return The EPBS architecture.
    */
   public EPBSArchitecture getEPBSArchitecture() {
-    return _epbsArchitecture;
+    return epbsArchitecture;
   }
 
   /**
@@ -112,7 +111,7 @@ public class CreateEPBSArchiCmd extends AbstractReadWriteCommand {
    * @return The physical architecture.
    */
   public PhysicalArchitecture getPhysicalArchitecture() {
-    return _physicalArchitecture;
+    return physicalArchitecture;
   }
   
   /**
