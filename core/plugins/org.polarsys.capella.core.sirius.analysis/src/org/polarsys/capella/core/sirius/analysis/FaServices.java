@@ -5094,18 +5094,24 @@ public class FaServices {
    * @param context
    * @param scope
    * @param initialSelection
-   * @param selectedElements
+   * @param selectedElements in tool, the categories chosen by the user, in refresh, the displayed categories
    * @return
    */
   public EObject switchFECategories(DSemanticDecorator context, Collection<EObject> scope,
       Collection<EObject> initialSelection, Collection<EObject> selectedElements) {
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context);
     DDiagramContents content = new DDiagramContents(currentDiagram);
-    return switchFECategories(content, context, selectedElements);
+    return switchFECategories(content, context, selectedElements, true);
   }
 
+  @Deprecated
   public EObject switchFECategories(DDiagramContents content, DSemanticDecorator context,
       Collection<EObject> selectedElements) {
+    return switchFECategories(content, context, selectedElements, true);
+  }
+  
+  public EObject switchFECategories(DDiagramContents content, DSemanticDecorator context,
+      Collection<EObject> selectedElements, boolean showHiddenExchanges ) {
 
     FaServices.getFaServices().updateFECategories(content);
 
@@ -5128,6 +5134,7 @@ public class FaServices {
       ctx.setVariable(ShowHideABComponentExchange.SOURCE_PART_VIEWS, Collections.singletonList(context));
     }
 
+    // Display the categories between parts if they are part of selectedElements, or hide them
     for (DDiagramElement sourceView : sourceViews) {
       EObject sourceViewTarget = sourceView.getTarget();
       if (sourceViewTarget != null) {
@@ -5148,6 +5155,11 @@ public class FaServices {
       }
     }
 
+    // In tool (showHiddenExchanges==true), user may have removed some categories, so he wants to display hidden
+    // exchanges associated to them.
+    // In refresh (showHiddenExchanges==false), categories haven't been changed by the user, so he doesn't want to
+    // display hidden exchanges,
+    // he just want to hide new exchanges associated to displayed categories.    
     ctx = categories.new DiagramContext();
     for (DDiagramElement sourceView : sourceViews) {
       EObject sourceViewTarget = sourceView.getTarget();
@@ -5160,7 +5172,7 @@ public class FaServices {
                 categories.hide(exchange, ctx);
               }
             }
-          } else {
+          } else if (showHiddenExchanges){
             for (FunctionalExchange exchange : FunctionExt.getAllExchanges((AbstractFunction) sourceViewTarget)) {
               if (exchange.getCategories().contains(key)) {
                 categories.show(exchange, ctx);
