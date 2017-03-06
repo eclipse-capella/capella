@@ -78,7 +78,13 @@ The iterative transition is using the DiffMerge tooling to display changes betwe
  
 Additional documentation is available in the section "Model DiffMerge"
  
+{| border="1"
+|-
+| 
+[[Image:Images/11.1.%20Concepts_html_3c78e109.png|48x48px]]
+| 
+During the merge, it is recommended to not uncheck the "incremental mode" option, as this leads to undesirable behavior (removal of other elements on the targeted architecture).
+|}
  
 <br>
 <br>
-   
