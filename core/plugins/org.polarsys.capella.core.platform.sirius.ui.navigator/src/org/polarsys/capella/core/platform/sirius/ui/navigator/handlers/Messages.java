@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ public class Messages extends NLS {
   public static String RefreshDiagramsCommandHandler_JobName;
   public static String RefreshDiagramsCommandHandler_NoDiagramDialog_Text;
   public static String RefreshDiagramsCommandHandler_NoDiagramDialog_Title;
+
   public static String FixFiltersAction_0;
   public static String FixFiltersAction_1;
   public static String FixFiltersAction_2;
@@ -35,14 +36,17 @@ public class Messages extends NLS {
   public static String FixFiltersAction_7;
   public static String FixFiltersAction_8;
   public static String FixFiltersAction_9;
-
   public static String RemoveHiddenElementsHandler_ConfirmRefreshDialog_Title;
-
   public static String RemoveHiddenElementsHandler_ConfirmRefreshDialog_Text;
   
+  public static String AbstractFixCommandHandler_ConfirmFix_Title;
+  
   public static String FixCustomFeaturesJobName;
-
+  public static String FixCustomFeatureHandler_ConfirmFixCustomDialog_Text;
+  
   public static String FixDAnnotationsJobName;
+  public static String FixDiagramsHandler_ConfirmFixDiagramsDialog_Text;
+  public static String FixDiagramsHandler_ConfirmFixDiagramsCheckbox_Text;
 
   static {
     // initialize resource bundle
