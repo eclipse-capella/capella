@@ -301,4 +301,16 @@ public class XABDiagram extends DiagramContext {
     }
     new CreateAbstractDNodeTool(this, name, getDiagramId(), id).run();
   }
+
+  public void insertFunctionalExchange(String id, String containerId, boolean autoRefresh) {
+    String name = null;
+    if (type == Type.SA) {
+      name = IToolNameConstants.TOOL_SAB_SHOW_HIDE_FUNCTIONAL_EXCHANGES;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_SHOW_HIDE_FUNCTIONAL_EXCHANGES;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PAB_SHOW_HIDE_FUNCTIONAL_EXCHANGES;
+    }
+    new InsertRemoveTool(this, name, containerId, autoRefresh).insert(id);
+  }
 }
