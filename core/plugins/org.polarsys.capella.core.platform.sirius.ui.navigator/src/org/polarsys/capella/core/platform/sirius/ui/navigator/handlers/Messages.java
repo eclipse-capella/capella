@@ -39,15 +39,6 @@ public class Messages extends NLS {
   public static String RemoveHiddenElementsHandler_ConfirmRefreshDialog_Title;
   public static String RemoveHiddenElementsHandler_ConfirmRefreshDialog_Text;
   
-  public static String AbstractFixCommandHandler_ConfirmFix_Title;
-  
-  public static String FixCustomFeaturesJobName;
-  public static String FixCustomFeatureHandler_ConfirmFixCustomDialog_Text;
-  
-  public static String FixDAnnotationsJobName;
-  public static String FixDiagramsHandler_ConfirmFixDiagramsDialog_Text;
-  public static String FixDiagramsHandler_ConfirmFixDiagramsCheckbox_Text;
-
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

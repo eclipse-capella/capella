@@ -378,5 +378,5 @@ public class GuiActions {
     job.setUser(true);
     job.schedule();
   }
-  
+
 }
