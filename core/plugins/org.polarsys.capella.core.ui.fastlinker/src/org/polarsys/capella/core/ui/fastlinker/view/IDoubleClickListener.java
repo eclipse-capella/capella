@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 public interface IDoubleClickListener {
   /**
    * Notifies of a double click.
-   * @param selectionChangedEvent_p event object describing the double-click selection.
+   * @param selectionChangedEvent event object describing the double-click selection.
    */
-  public void doubleClick(SelectionChangedEvent selectionChangedEvent_p);
+  public void doubleClick(SelectionChangedEvent selectionChangedEvent);
 }

@@ -125,7 +125,7 @@ public class FastLinkerState {
    * @param linkCreated
    */
   public void setLinkCreated(LinkInfo linkCreated) {
-    linkCreated = linkCreated;
+    this.linkCreated = linkCreated;
   }
 
   /**

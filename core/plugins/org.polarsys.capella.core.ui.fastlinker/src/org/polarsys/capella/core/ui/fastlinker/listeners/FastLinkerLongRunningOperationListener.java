@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,7 +53,7 @@ public class FastLinkerLongRunningOperationListener implements ILongRunningListe
 					if (result[0].ID.equals(viewReference.getId())) {
 						try {
 							result[0] = FastLinkerView.class.cast(viewReference.getView(false));
-						} catch (Exception e_p) {
+						} catch (Exception e) {
 							// Oups, can't get the navigator.
 							// Either it is not open, or it is no longer a navigator implementation.
 						}
@@ -74,21 +74,21 @@ public class FastLinkerLongRunningOperationListener implements ILongRunningListe
 	}
 
 	@Override
-	public boolean isListenerFor(Class<?> longRunningOperationClass_p) {
+	public boolean isListenerFor(Class<?> longRunningOperationClass) {
 		return true;
 	}
 
 	@Override
-	public void operationStarting(final Class<?> operationClass_p) {
+	public void operationStarting(final Class<?> operationClass) {
 
 	}
 
 	@Override
-	public void operationAborted(Class<?> operationClass_p) {
+	public void operationAborted(Class<?> operationClass) {
 	}
 
 	@Override
-	public void operationEnded(final Class<?> operationClass_p) {
+	public void operationEnded(final Class<?> operationClass) {
 		final FastLinkerView view = getCapellaFastLinkerView();
 
 		// Precondition.
@@ -108,7 +108,7 @@ public class FastLinkerLongRunningOperationListener implements ILongRunningListe
 				ArrayList<Object> firstElementToDelete = new ArrayList<Object>();
 				ArrayList<Object> secondElementToDelete = new ArrayList<Object>();
 
-				if (CapellaDeleteCommand.class.equals(operationClass_p)) {
+				if (CapellaDeleteCommand.class.equals(operationClass)) {
 					if(currentState.getFirstElement() != null){
 						for(Object obj : currentState.getFirstElement()){
 							if(SystemEngineeringExt.findArchitecture((EObject) obj) == null)

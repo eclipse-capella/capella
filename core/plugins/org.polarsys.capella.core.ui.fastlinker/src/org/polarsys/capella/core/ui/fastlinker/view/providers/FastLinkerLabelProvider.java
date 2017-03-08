@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,21 +19,19 @@ import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorLabelProvider;
 import org.polarsys.capella.core.ui.fastlinker.FastLinkerManager;
 
-
-
 public class FastLinkerLabelProvider extends CapellaNavigatorLabelProvider {
 
 	@Override
-	public Image getImage(Object object_p) {
-		if (object_p instanceof Collection) {
-			if (((Collection) object_p).isEmpty())
+	public Image getImage(Object object) {
+		if (object instanceof Collection) {
+			if (((Collection) object).isEmpty())
 				return null;
-			if (((Collection) object_p).size() == 1)
+			if (((Collection) object).size() == 1)
 				return super
-						.getImage(((Collection) object_p).iterator().next());
+						.getImage(((Collection) object).iterator().next());
 			else {
 				EClass eClass = null;
-				Iterator it = ((Collection) object_p).iterator();
+				Iterator it = ((Collection) object).iterator();
 				while (it.hasNext()) {
 					Object current = it.next();
 					if (current instanceof EObject) {
@@ -43,25 +41,25 @@ public class FastLinkerLabelProvider extends CapellaNavigatorLabelProvider {
 							return null;
 					} else
 						return null;
-					return super.getImage(((Collection) object_p).iterator()
+					return super.getImage(((Collection) object).iterator()
 							.next());
 				}
 			}
 		}
-		return super.getImage(object_p);
+		return super.getImage(object);
 	}
 
 	@Override
-	public String getText(Object object_p) {
-		if (object_p instanceof Collection) {
-			if (((Collection) object_p).isEmpty())
+	public String getText(Object object) {
+		if (object instanceof Collection) {
+			if (((Collection) object).isEmpty())
 				return null;
-			if (((Collection) object_p).size() == 1)
-				return super.getText(((Collection) object_p).iterator().next());
+			if (((Collection) object).size() == 1)
+				return super.getText(((Collection) object).iterator().next());
 			else {
-				EClass eClass = FastLinkerManager.getCommonType((Collection) object_p);
+				EClass eClass = FastLinkerManager.getCommonType((Collection) object);
 				if (eClass != null) {
-				Iterator it = ((Collection) object_p).iterator();
+				Iterator it = ((Collection) object).iterator();
 				String array = "";
 				while (it.hasNext()) {
 					Object current = it.next();
@@ -76,7 +74,7 @@ public class FastLinkerLabelProvider extends CapellaNavigatorLabelProvider {
 				}
 			}
 		}
-		return super.getText(object_p);
+		return super.getText(object);
 	}
 
 }

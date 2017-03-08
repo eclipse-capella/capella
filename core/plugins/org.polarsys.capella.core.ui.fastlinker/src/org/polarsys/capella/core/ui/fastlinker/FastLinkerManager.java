@@ -42,23 +42,23 @@ public class FastLinkerManager {
 	/**
 	 * Object managing the FastLinker state.
 	 */
-	protected final FastLinkerState _currentState;
+	protected final FastLinkerState currentState;
 	/**
 	 * Available commands to create links between first and second elements.
 	 */
-	protected final List<AbstractCreateLinksCommand> _firstToSecondCommands;
+	protected final List<AbstractCreateLinksCommand> firstToSecondCommands;
 	/**
 	 * Available commands to create links between second and first elements.
 	 */
-	protected final List<AbstractCreateLinksCommand> _secondToFirstCommands;
+	protected final List<AbstractCreateLinksCommand> secondToFirstCommands;
 
 	/**
 	 * Constructor.
 	 */
 	public FastLinkerManager() {
-		_currentState = new FastLinkerState();
-		_firstToSecondCommands = new ArrayList<AbstractCreateLinksCommand>();
-		_secondToFirstCommands = new ArrayList<AbstractCreateLinksCommand>();
+		currentState = new FastLinkerState();
+		firstToSecondCommands = new ArrayList<AbstractCreateLinksCommand>();
+		secondToFirstCommands = new ArrayList<AbstractCreateLinksCommand>();
 	}
 
 	/**
@@ -66,15 +66,15 @@ public class FastLinkerManager {
 	 * FastLinker, this method get the element to put from the originally
 	 * dragged/selected element.
 	 * 
-	 * @param originalElement_p
+	 * @param originalElement
 	 * @return
 	 */
-	protected Collection getElementToPut(Collection originalElement_p) {
+	protected Collection getElementToPut(Collection originalElement) {
 		// If the original element is of type Part so FastLinker has to work
 		// with the Component of this part.
 		Collection ret = new ArrayList();
-		for (Object elem : originalElement_p) {
-			if (CsPackage.Literals.PART.isInstance(originalElement_p)) {
+		for (Object elem : originalElement) {
+			if (CsPackage.Literals.PART.isInstance(originalElement)) {
 				ret.add(((Part) elem).getAbstractType());
 			} else
 				ret.add(elem);
@@ -84,16 +84,16 @@ public class FastLinkerManager {
 	/**
 	 * Given a set of elements, find their lowest common meta-class
 	 * 
-	 * @param elements_p
+	 * @param elements
 	 *            a non-null collection of model elements
-	 * @return a meta-class which is not null if elements_p is not empty
+	 * @return a meta-class which is not null if elements is not empty
 	 */
-	public static EClass getCommonType(Collection<? extends EObject> elements_p) {
+	public static EClass getCommonType(Collection<? extends EObject> elements) {
 		EClass result = null;
-		if (!elements_p.isEmpty()) {
+		if (!elements.isEmpty()) {
 			List<EClass> common = new ArrayList<EClass>(
-					getSuperTypes(elements_p.iterator().next().eClass()));
-			for (EObject elt : elements_p) {
+					getSuperTypes(elements.iterator().next().eClass()));
+			for (EObject elt : elements) {
 				common.retainAll(getSuperTypes(elt.eClass()));
 			}
 			if (!common.isEmpty()) {
@@ -106,15 +106,15 @@ public class FastLinkerManager {
 	 * Return the super types of the given meta-class including the class
 	 * itself, ordered from higher to lower in the hierarchy
 	 * 
-	 * @param class_p
+	 * @param cls
 	 *            a non-null meta-class
 	 * @return a non-null, non-empty, unmodifiable list
 	 */
-	private static List<EClass> getSuperTypes(EClass class_p) {
-		List<EClass> allButSelf = class_p.getEAllSuperTypes();
+	private static List<EClass> getSuperTypes(EClass cls) {
+		List<EClass> allButSelf = cls.getEAllSuperTypes();
 		List<EClass> result = new ArrayList<EClass>(allButSelf.size() + 1);
 		result.addAll(allButSelf);
-		result.add(class_p);
+		result.add(cls);
 		return Collections.unmodifiableList(result);
 	}
 	/**
@@ -125,32 +125,32 @@ public class FastLinkerManager {
 	 * {@link FastLinkerManager#putElementInFastLinker(EObject)} since it
 	 * initializes commands lists.</b>
 	 * 
-	 * @param elementToPut_p
+	 * @param elementToPut
 	 * @return
 	 */
-	public boolean acceptElementInFastLinker(Collection elementToPut_p) {
+	public boolean acceptElementInFastLinker(Collection elementToPut) {
 		// Precondition : eliminate null and non ModelElement.
-		if (!putInFastLinkerPreconditionsRespected(elementToPut_p)) {
+		if (!putInFastLinkerPreconditionsRespected(elementToPut)) {
 			return false;
 		}
 
-		Collection modelElementToPut = getElementToPut(elementToPut_p);
+		Collection modelElementToPut = getElementToPut(elementToPut);
 		// Compute the future state of the FastLinker.
-		FastLinkerState futureState = _currentState
+		FastLinkerState futureState = currentState
 				.getPreviewState(modelElementToPut);
 		if (null == futureState) {
 			return false;
 		}
 		// Clean command lists.
-		_firstToSecondCommands.clear();
-		_secondToFirstCommands.clear();
+		firstToSecondCommands.clear();
+		secondToFirstCommands.clear();
 		
 		// Check if element will be the first one in FastLinker.
 		if ((null != futureState.firstElement)
 				&& (null == futureState.secondElement)
 				&& (!futureState.firstElement.isEmpty())
 				) {
-			EClass commonSuperType = getCommonType(elementToPut_p);
+			EClass commonSuperType = getCommonType(elementToPut);
 			// Is there commands using this element as source or target ?
 			LinksCommandRegistry linksCommandRegistryInstance = LinksCommandRegistry
 					.getInstance();
@@ -176,14 +176,14 @@ public class FastLinkerManager {
 								secondSuperType,
 										firstSuperType)) {
 			// Some commands are available -> get them.
-			_firstToSecondCommands.addAll(LinksCommandRegistry.getInstance()
+			firstToSecondCommands.addAll(LinksCommandRegistry.getInstance()
 					.getExecutableCommands(futureState.firstElement,
 							futureState.secondElement));
-			_secondToFirstCommands.addAll(LinksCommandRegistry.getInstance()
+			secondToFirstCommands.addAll(LinksCommandRegistry.getInstance()
 					.getExecutableCommands(futureState.secondElement,
 							futureState.firstElement));
-			if (!_firstToSecondCommands.isEmpty()
-					|| !_secondToFirstCommands.isEmpty()) {
+			if (!firstToSecondCommands.isEmpty()
+					|| !secondToFirstCommands.isEmpty()) {
 				return true;
 			}
 		}
@@ -195,15 +195,15 @@ public class FastLinkerManager {
 	}
 
 	private boolean putInFastLinkerPreconditionsRespected(
-			Collection elementToPut_p) {
-		if ((null == elementToPut_p || elementToPut_p.isEmpty())) {
+			Collection elementToPut) {
+		if ((null == elementToPut || elementToPut.isEmpty())) {
 			return false;
 		}
-		for (Object it : elementToPut_p) {
+		for (Object it : elementToPut) {
 			if (!(it instanceof ModelElement))
 				return false;
 		}
-		return getCommonType(elementToPut_p)!= null;
+		return getCommonType(elementToPut)!= null;
 		
 	}
 
@@ -211,10 +211,10 @@ public class FastLinkerManager {
 	 * Pin or unpin a ModelElement present in the FastLinker.<br>
 	 * The element will be unpinned if it is already pinned.
 	 * 
-	 * @param elementToPin_p
+	 * @param elementToPin
 	 */
-	public void pinModelElement(Collection elementToPin_p) {
-		_currentState.pinModelElement(elementToPin_p);
+	public void pinModelElement(Collection elementToPin) {
+		currentState.pinModelElement(elementToPin);
 		showFastLinkerView().update();
 	}
 
@@ -222,7 +222,7 @@ public class FastLinkerManager {
 	 * Clean FastLinker.
 	 */
 	public void clearFastLinker() {
-		_currentState.clear();
+		currentState.clear();
 		showFastLinkerView().update();
 	}
 
@@ -232,7 +232,7 @@ public class FastLinkerManager {
 	 * @return
 	 */
 	public FastLinkerState getCurrentState() {
-		return _currentState;
+		return currentState;
 	}
 
 	/**
@@ -241,7 +241,7 @@ public class FastLinkerManager {
 	 * @return
 	 */
 	public List<AbstractCreateLinksCommand> getFirstToSecondCommands() {
-		return Collections.unmodifiableList(_firstToSecondCommands);
+		return Collections.unmodifiableList(firstToSecondCommands);
 	}
 
 	/**
@@ -250,7 +250,7 @@ public class FastLinkerManager {
 	 * @return
 	 */
 	public List<AbstractCreateLinksCommand> getSecondToFirstCommands() {
-		return Collections.unmodifiableList(_secondToFirstCommands);
+		return Collections.unmodifiableList(secondToFirstCommands);
 	}
 
 	/**
@@ -268,14 +268,14 @@ public class FastLinkerManager {
 					.getActivePage()
 					.showView(FastLinkerView.VIEW_ID, null,
 							IWorkbenchPage.VIEW_VISIBLE);
-		} catch (PartInitException exception_p) {
+		} catch (PartInitException exception) {
 			// An error occurred -> log it.
 			FastLinkerActivator
 					.getDefault()
 					.getLog()
 					.log(new Status(IStatus.ERROR,
-							FastLinkerActivator.PLUGIN_ID, exception_p
-									.getLocalizedMessage(), exception_p));
+							FastLinkerActivator.PLUGIN_ID, exception
+									.getLocalizedMessage(), exception));
 			return null;
 		}
 	}
@@ -286,10 +286,10 @@ public class FastLinkerManager {
 	 * {@link FastLinkerManager#acceptElementInFastLinker(EObject)} and to get a
 	 * <code>true</code> result before calling this method.</b>
 	 * 
-	 * @param elementToPut_p
+	 * @param elementToPut
 	 */
-	public void putElementInFastLinker(Collection elementToPut_p) {
-		putElementInFastLinker(elementToPut_p, null);
+	public void putElementInFastLinker(Collection elementToPut) {
+		putElementInFastLinker(elementToPut, null);
 	}
 
 	/**
@@ -302,51 +302,51 @@ public class FastLinkerManager {
 	 * to execute. In normal usage,
 	 * {@link FastLinkerManager#putElementInFastLinker(EObject)} must be called.
 	 * 
-	 * @param elementToPut_p
-	 * @param commandToExecute_p
+	 * @param elementToPut
+	 * @param cmd
 	 *            the command to execute, must be amongst executable commands
 	 *            (use {@link FastLinkerManager#getFirstToSecondCommands()} or
 	 *            {@link FastLinkerManager#getSecondToFirstCommands()}).
 	 */
-	public void putElementInFastLinker(final Collection elementToPut_p,
-			AbstractCreateLinksCommand commandToExecute_p) {
+	public void putElementInFastLinker(final Collection elementToPut,
+			AbstractCreateLinksCommand cmd) {
 		// Preconditions.
 		// Eliminate null and non ModelElement.
-		if (!putInFastLinkerPreconditionsRespected(elementToPut_p)) {
+		if (!putInFastLinkerPreconditionsRespected(elementToPut)) {
 			return;
 		}
 		// If a command to execute is specified, it must be amongst executable
 		// commands.
-		if ((null != commandToExecute_p)
-				&& (!_firstToSecondCommands.contains(commandToExecute_p) || !_secondToFirstCommands
-						.contains(commandToExecute_p))) {
+		if ((null != cmd)
+				&& (!firstToSecondCommands.contains(cmd) || !secondToFirstCommands
+						.contains(cmd))) {
 			throw new IllegalArgumentException(
 					"Command to execute must be amongst executable command(s)."); //$NON-NLS-1$
 		}
 
-		Collection modelElementToPut = getElementToPut(elementToPut_p);
+		Collection modelElementToPut = getElementToPut(elementToPut);
 		// Update FastLinker state.
-		_currentState.updateState(modelElementToPut);
+		currentState.updateState(modelElementToPut);
 		// Get command to execute.
 		AbstractCreateLinksCommand commandToExecute;
-		if ((0 == _firstToSecondCommands.size())
-				&& (0 == _secondToFirstCommands.size())) {
+		if ((0 == firstToSecondCommands.size())
+				&& (0 == secondToFirstCommands.size())) {
 			// No command to execute (there is probably only one element in the
 			// FastLinker, else there is a problem...).
 			commandToExecute = null;
-		} else if ((1 == _firstToSecondCommands.size())
-				&& (0 == _secondToFirstCommands.size())) {
+		} else if ((1 == firstToSecondCommands.size())
+				&& (0 == secondToFirstCommands.size())) {
 			// Only one command in the firstToSecond list -> execute it.
-			commandToExecute = _firstToSecondCommands.get(0);
-		} else if ((0 == _firstToSecondCommands.size())
-				&& (1 == _secondToFirstCommands.size())) {
+			commandToExecute = firstToSecondCommands.get(0);
+		} else if ((0 == firstToSecondCommands.size())
+				&& (1 == secondToFirstCommands.size())) {
 			// Only one command in the secondToFirst list -> execute it.
-			commandToExecute = _secondToFirstCommands.get(0);
+			commandToExecute = secondToFirstCommands.get(0);
 		} else {
 			// Several commands.
-			if (null != commandToExecute_p) {
+			if (null != cmd) {
 				// If a command to execute is specified -> execute it.
-				commandToExecute = commandToExecute_p;
+				commandToExecute = cmd;
 			} else {
 				// No command specified -> ask user to choose one.
 				FastLinkerView fastLinkerView = showFastLinkerView();
@@ -355,7 +355,7 @@ public class FastLinkerManager {
 				fastLinkerView.update();
 				// Ask user to choose between available commands.
 				commandToExecute = fastLinkerView.chooseCommandToExecute(
-						_firstToSecondCommands, _secondToFirstCommands);
+						firstToSecondCommands, secondToFirstCommands);
 			}
 		}
 		if (null != commandToExecute) {
@@ -374,7 +374,7 @@ public class FastLinkerManager {
 			}
 			
 			// Update state and view with the created link.
-			_currentState.setLinkCreated(commandToExecute
+			currentState.setLinkCreated(commandToExecute
 					.getLinkRepresentation());
 		}
 		showFastLinkerView().update();
@@ -384,15 +384,15 @@ public class FastLinkerManager {
 	 * Ask this method to display the textual result of an executed command in
 	 * the Information view.
 	 * 
-	 * @param executedCommand_p
+	 * @param cmd
 	 */
 	public void showCommandExecutedMessage(
-			final AbstractCreateLinksCommand executedCommand_p) {
-		EObject createdLinkObject = executedCommand_p.getCreatedLinkObject();
+			final AbstractCreateLinksCommand cmd) {
+		EObject createdLinkObject = cmd.getCreatedLinkObject();
 		final String informationMessage;
 		final EObject affectedObject;
-		String sourceName = executedCommand_p.getSource().getLabel();
-		String targetName = executedCommand_p.getTarget().getLabel();
+		String sourceName = cmd.getSource().getLabel();
+		String targetName = cmd.getTarget().getLabel();
 		
 		if (null != createdLinkObject) {
 			informationMessage = MessageFormat.format(
@@ -403,8 +403,8 @@ public class FastLinkerManager {
 		} else {
 			informationMessage = MessageFormat.format(
 					Messages.FastLinkerManager_UnQualifiedLinkCommandReport,
-					executedCommand_p.getLabel(), sourceName, targetName);
-			affectedObject = executedCommand_p.getSource();
+					cmd.getLabel(), sourceName, targetName);
+			affectedObject = cmd.getSource();
 		}
 		LightMarkerRegistry.getInstance().createMarker(
 				ResourcesPlugin.getWorkspace().getRoot(), new BasicDiagnostic(Messages.FastLinker, 0, informationMessage, new Object[] { affectedObject }));
@@ -416,18 +416,18 @@ public class FastLinkerManager {
 					.getActivePage()
 					.showView(MarkerView.VIEW_ID, null,
 							IWorkbenchPage.VIEW_VISIBLE);
-		} catch (PartInitException exception_p) {
+		} catch (PartInitException exception) {
 			// An error occurred -> log it.
 			MarkerViewPlugin
 					.getDefault()
 					.getLog()
 					.log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID,
-							exception_p.getLocalizedMessage(), exception_p));
+							exception.getLocalizedMessage(), exception));
 		}
 	}
 	
 	public void updateCurrentState(Collection first, Collection second , Collection pinned ){
-		_currentState.updateState(first , second , pinned);
+		currentState.updateState(first , second , pinned);
 		showFastLinkerView().update();
 	}
 }

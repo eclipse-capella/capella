@@ -64,7 +64,7 @@ import org.eclipse.swt.SWT;
  * is created when <code>numColumns</code>+ 1 figures are added to the <code>Figure<code> parent container.
  * @see GridData
  */
-@SuppressWarnings({ "hiding", "rawtypes", "unchecked" })
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class FilteringGridLayout extends AbstractLayout {
 
   /**
