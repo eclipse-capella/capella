@@ -103,4 +103,25 @@
             id="org.eclipse.emf.diffmerge.patterns.capella.PatternElementIdHandler">
       </IdHandler>
    </extension>
+   <extension
+         point="org.polarsys.capella.core.validation.ui.ide.capellaQuickFix">
+      <resolver
+            class="org.eclipse.emf.diffmerge.patterns.capella.quickfix.SoftPatternCapellaMarkerResolution"
+            desc="Delete pattern instances"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+            label="Delete pattern instances">
+         <rules
+               ruleId="DCON_01">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.eclipse.emf.diffmerge.patterns.capella.quickfix.PatternCapellaMarkerResolution"
+            desc="Delete pattern instances and pattern elements"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+            label="Delete pattern instances and pattern elements">
+         <rules
+               ruleId="DCON_01">
+         </rules>
+      </resolver>
+   </extension>
 </plugin>
