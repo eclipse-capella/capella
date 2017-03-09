@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,7 +60,6 @@ public class CreateXmlConfiguration {
     ConfigurationInstance confInstance = _factory.createConfigurationInstance();
     confInstance.setComponentName(componentName);
 
-
     // list of outputConfigs
     List<OutputConfiguration> opConfList = confInstance.getOutputConfiguration();
 
@@ -70,10 +69,9 @@ public class CreateXmlConfiguration {
 
       opConfList.add(currentConfig);
 
-      createLogConfig(currentConfig, true); 
+      createLogConfig(currentConfig, true);
 
     }
-
 
     return confInstance;
   }
@@ -87,14 +85,20 @@ public class CreateXmlConfiguration {
 
     logLevelListFile.clear();
 
-    logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_INFO));
-    logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
-    logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_WARN));
-    logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_ERROR));
-    logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_FATAL));
-
+    if (ReportManagerConstants.LOG_OUTPUT_FILE.equals(outputConfiguration.getOutputName())) {
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_INFO));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_WARN));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_ERROR));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_FATAL));
+    } else {
+      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_INFO));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
+      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_WARN));
+      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_ERROR));
+      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_FATAL));
+    }
   }
-
   /**
    * @param logLevelValue
    * @return
@@ -172,7 +176,6 @@ public class CreateXmlConfiguration {
    */
   public void saveConfiguration(HashMap<String, ConfigurationInstance> configurationMap) {
 
-    
     ReportConfigurationFile repConffile = _factory.createReportConfigurationFile();
     repConffile.setFileFormatVersion(ReportManagerConstants.FILEFORMAT_VERSION);
     repConffile.setReportManagerVersion(ReportManagerConstants.REPORTMANAGER_VERSION);
