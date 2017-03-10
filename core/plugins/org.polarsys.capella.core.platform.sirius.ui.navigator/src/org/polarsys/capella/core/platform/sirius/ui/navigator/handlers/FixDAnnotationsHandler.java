@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,14 +10,14 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.handlers;
 
-import org.polarsys.capella.core.platform.sirius.ui.navigator.helpers.FixDAnnotationsCleanOptionHelper;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.helpers.FixDAnnotationsHelper;
 
 public class FixDAnnotationsHandler extends AbstractFixDiagramsHandler {
 
   public FixDAnnotationsHandler() {
-    setDialogConfirmationMessage("Are you sure you want to fix diagram annotations ?");
-    setOnlyCleanMessage("Remove deprecated diagram annotations");
+    setDialogConfirmationMessage(Messages.FixDiagramsHandler_ConfirmFixDiagramsDialog_Text);
+    setOnlyCleanMessage(Messages.FixDiagramsHandler_ConfirmFixDiagramsCheckbox_Text);
     setJobName(Messages.FixDAnnotationsJobName);
-    setFixHelper(new FixDAnnotationsCleanOptionHelper());
+    setFixHelper(new FixDAnnotationsHelper());
   }
 }
