@@ -12,5 +12,5 @@ With some slight modifications, the skeleton viewpoint can be customized to crea
 
 [[File:Images/sample_diagram.png|thumbnail|600px]]
 
-See also the main [https://www.polarsys.org/projects/polarsys.kitalpha Kitalpha project site] and the [https://wiki.polarsys.org/Kitalpha top-level wiki page].
+See also the main [https://www.polarsys.org/kitalpha/ Kitalpha project site] and the [https://wiki.polarsys.org/Kitalpha top-level wiki page].
 
