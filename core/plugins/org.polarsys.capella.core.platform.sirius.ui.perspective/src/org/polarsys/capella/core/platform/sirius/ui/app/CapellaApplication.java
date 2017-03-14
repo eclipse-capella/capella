@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2003, 2016 IBM Corporation and others.
+ * Copyright (c) 2003, 2017 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,6 +43,7 @@ import org.eclipse.ui.internal.ide.ChooseWorkspaceDialog;
 import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.ui.internal.misc.StatusUtil;
+import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.core.application.appstart.AbstractApplication;
 
 /**
@@ -87,6 +88,7 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
    * 
    * @see org.eclipse.equinox.app.IApplication#start(org.eclipse.equinox.app.IApplicationContext context)
    */
+  @Override
   public Object start(IApplicationContext appContext) throws Exception {
     super.start(appContext);
 
@@ -112,6 +114,9 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
       // PlatformUI.getWorkbench() or AbstractUIPlugin.getWorkbench()
       int returnCode = PlatformUI.createAndRunWorkbench(display, new CapellaWorkbenchAdvisor());
 
+      // Save report log configuration
+      ReportManagerRegistry.getInstance().saveConfiguration();
+      
       // the workbench doesn't support relaunch yet so
       // for now restart is used, and exit data properties are checked
       // here to substitute in the relaunch return code if needed
@@ -312,12 +317,12 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
       return true;
     }
 
-    final int ide_version = Integer.parseInt(WORKSPACE_VERSION_VALUE);
-    int workspace_version = Integer.parseInt(version);
+    final int ideVersion = Integer.parseInt(WORKSPACE_VERSION_VALUE);
+    int workspaceVersion = Integer.parseInt(version);
 
     // equality test is required since any version difference (newer
     // or older) may result in data being trampled
-    if (workspace_version == ide_version) {
+    if (workspaceVersion == ideVersion) {
       return true;
     }
 
@@ -437,15 +442,19 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
    * @see org.eclipse.equinox.app.IApplication#stop()
    */
   public void stop() {
+    // Save report log configuration
+    ReportManagerRegistry.getInstance().saveConfiguration();
     super.stop();
     final IWorkbench workbench = PlatformUI.getWorkbench();
-    if (workbench == null)
+    if (workbench == null) {
       return;
+    }
     final Display display = workbench.getDisplay();
     display.syncExec(new Runnable() {
       public void run() {
-        if (!display.isDisposed())
+        if (!display.isDisposed()) {
           workbench.close();
+        }
       }
     });
   }

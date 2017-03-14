@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.osgi.util.NLS;
@@ -75,10 +74,8 @@ public class AbstractCommandLine implements ICommandLine {
    */
   @Override
   public void parseContext(IApplicationContext context) throws CommandLineException {
-
     String[] args = CommandLineArgumentHelper.parseContext(context);
     argHelper.parseArgs(args);
-
   }
 
   /**
@@ -88,8 +85,6 @@ public class AbstractCommandLine implements ICommandLine {
    */
   @Override
   public void checkArgs(IApplicationContext context) throws CommandLineException {
-    isWorkspaceInUse();
-
     // refreshing the workspace needed in case of folders removed from outside the workbench
     try {
       ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
@@ -287,21 +282,6 @@ public class AbstractCommandLine implements ICommandLine {
   protected void logErrorAndThrowException(String message) throws CommandLineException {
     logError(message);
     throw new CommandLineException(message);
-  }
-
-  /**
-   * @throws CommandLineException
-   */
-  private void isWorkspaceInUse() throws CommandLineException {
-    try {
-      if (!Platform.getInstanceLocation().lock()) {
-        throw new CommandLineException(Messages.workspace_in_use);
-      }
-    } catch (IOException exception) {
-      StringBuilder loggerMessage = new StringBuilder(exception.getMessage());
-      __logger.error(loggerMessage.toString(), exception);
-    }
-
   }
 
   /**
