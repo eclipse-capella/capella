@@ -6566,26 +6566,13 @@
         <toolSections name="External Interfaces">
           <ownedTools xsi:type="tool:ToolGroup" name="Component">
             <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Component (and creates a Part in the selected Container Component)" name="Component" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@containerMappings[name='CA_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
-              <variable name="container"/>
+              <variable name="container">
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="parentContainer" computationExpression="&lt;%$container.getParentContainer()%>"/>
+              </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.getParentContainer()%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:parentContainer">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isA(&quot;LogicalArchitecture&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%false &amp;&amp; ownedLogicalComponent.nSize()!=0%>">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedLogicalComponentPkg.nSize()!=0%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%setVariableA(&quot;owner&quot;, ownedLogicalComponentPkg.nGet(0))%>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedLogicalComponentPkg.nSize()==0%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponentPkg" referenceName="ownedLogicalComponentPkg" variableName="owner">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$owner%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="comp">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedLogicalComponent.nSize()==0%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponent" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
@@ -6593,21 +6580,6 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isA(&quot;PhysicalArchitecture&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%false &amp;&amp; ownedPhysicalComponent.nSize()!=0%>">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedPhysicalComponentPkg.nSize()!=0%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%setVariableA(&quot;owner&quot;, ownedPhysicalComponentPkg.nGet(0))%>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedPhysicalComponentPkg.nSize()==0%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponentPkg" referenceName="ownedPhysicalComponentPkg" variableName="owner">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$owner%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedComponents" variableName="comp">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedPhysicalComponent.nSize()==0%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponent" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
@@ -6615,21 +6587,6 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isA(&quot;EPBSArchitecture&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%false &amp;&amp; ownedConfigurationItem.nSize()!=0%>">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedConfigurationItemPkg.nSize()!=0%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%setVariableA(&quot;owner&quot;, ownedConfigurationItemPkg.nGet(0))%>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedConfigurationItemPkg.nSize()==0%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItemPkg" referenceName="ownedConfigurationItemPkg" variableName="owner">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$owner%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItems" variableName="comp">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedConfigurationItem.nSize()==0%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItem" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
@@ -6642,14 +6599,9 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isA(&quot;PhysicalComponent&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
-                      <parameters name="context" value="&lt;% $container%>"/>
-                      <parameters name="variable" value="natureParent"/>
-                      <parameters name="value" value="feature:nature"/>
-                    </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="comp">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="&lt;%$natureParent%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="service:getIBCreationNature(parentContainer)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isA(&quot;ConfigurationItem&quot;)%>">
@@ -8230,26 +8182,13 @@
         <toolSections name="Internal Interfaces">
           <ownedTools xsi:type="tool:ToolGroup" name="Component">
             <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Component (and creates a Part in the selected Container Component)" name="Component" precondition="&lt;% !($containerView.isA(&quot;DDiagram&quot;) &amp;&amp; $container.getParentContainer().isA(&quot;BlockArchitecture&quot;)) %>" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
-              <variable name="container"/>
+              <variable name="container">
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="parentContainer" computationExpression="&lt;%$containerView.getCCIITarget()%>"/>
+              </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$containerView.getCCIITarget()%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:parentContainer">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isA(&quot;LogicalArchitecture&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%false &amp;&amp; ownedLogicalComponent.nSize()!=0%>">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedLogicalComponentPkg.nSize()!=0%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%setVariableA(&quot;owner&quot;, ownedLogicalComponentPkg.nGet(0))%>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedLogicalComponentPkg.nSize()==0%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponentPkg" referenceName="ownedLogicalComponentPkg" variableName="owner">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$owner%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="comp">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedLogicalComponent.nSize()==0%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponent" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
@@ -8257,21 +8196,6 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isA(&quot;PhysicalArchitecture&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%false &amp;&amp; ownedPhysicalComponent.nSize()!=0%>">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedPhysicalComponentPkg.nSize()!=0%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%setVariableA(&quot;owner&quot;, ownedPhysicalComponentPkg.nGet(0))%>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedPhysicalComponentPkg.nSize()==0%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponentPkg" referenceName="ownedPhysicalComponentPkg" variableName="owner">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$owner%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedComponents" variableName="comp">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedPhysicalComponent.nSize()==0%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponent" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
@@ -8279,22 +8203,6 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isA(&quot;EPBSArchitecture&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%false &amp;&amp; ownedConfigurationItem.nSize()!=0%>">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedConfigurationItemPkg.nSize()!=0%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%setVariableA(&quot;owner&quot;, ownedConfigurationItemPkg.nGet(0))%>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedConfigurationItemPkg.nSize()==0%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItemPkg" referenceName="ownedConfigurationItemPkg" variableName="owner">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$owner%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItems" variableName="comp">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                          <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="&lt;%ConfigurationItemKind.SystemCI%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedConfigurationItem.nSize()==0%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItem" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
@@ -8308,14 +8216,9 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isA(&quot;PhysicalComponent&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
-                      <parameters name="context" value="&lt;% $container%>"/>
-                      <parameters name="variable" value="natureParent"/>
-                      <parameters name="value" value="feature:nature"/>
-                    </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="comp">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="&lt;%$natureParent%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="service:getIBCreationNature(parentContainer)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isA(&quot;ConfigurationItem&quot;)%>">
@@ -9891,48 +9794,20 @@
         <toolSections name="Interfaces Blank">
           <ownedTools xsi:type="tool:ToolGroup" name="Component">
             <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Component (and creates a Part in the selected Container Component)" name="Component" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
-              <variable name="container"/>
+              <variable name="container">
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="parentContainer" computationExpression="&lt;%$containerView.getIBTarget()%>"/>
+              </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$containerView.getIBTarget()%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:parentContainer">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isA(&quot;LogicalArchitecture&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%false &amp;&amp; ownedLogicalComponent.nSize()!=0%>">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedLogicalComponentPkg.nSize()!=0%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%setVariableA(&quot;owner&quot;, ownedLogicalComponentPkg.nGet(0))%>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedLogicalComponentPkg.nSize()==0%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponentPkg" referenceName="ownedLogicalComponentPkg" variableName="owner">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$owner%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="comp">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedLogicalComponent.nSize()==0%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponent" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% isA(&quot;PhysicalArchitecture&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%false &amp;&amp; ownedPhysicalComponent.nSize()!=0%>">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedPhysicalComponentPkg.nSize()!=0%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%setVariableA(&quot;owner&quot;, ownedPhysicalComponentPkg.nGet(0))%>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedPhysicalComponentPkg.nSize()==0%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponentPkg" referenceName="ownedPhysicalComponentPkg" variableName="owner">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$owner%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedComponents" variableName="comp">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isA(&quot;PhysicalArchitecture&quot;)%>">
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedPhysicalComponent.nSize()==0%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponent" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
@@ -9940,22 +9815,6 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isA(&quot;EPBSArchitecture&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%false &amp;&amp; ownedConfigurationItem.nSize()!=0%>">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedConfigurationItemPkg.nSize()!=0%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%setVariableA(&quot;owner&quot;, ownedConfigurationItemPkg.nGet(0))%>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedConfigurationItemPkg.nSize()==0%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItemPkg" referenceName="ownedConfigurationItemPkg" variableName="owner">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$owner%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItems" variableName="comp">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                          <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="&lt;%ConfigurationItemKind.SystemCI%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedConfigurationItem.nSize()==0%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItem" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
@@ -9969,14 +9828,9 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isA(&quot;PhysicalComponent&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
-                      <parameters name="context" value="&lt;% $container%>"/>
-                      <parameters name="variable" value="natureParent"/>
-                      <parameters name="value" value="feature:nature"/>
-                    </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="comp">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="&lt;%$natureParent%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="service:getIBCreationNature(parentContainer)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isA(&quot;ConfigurationItem&quot;)%>">

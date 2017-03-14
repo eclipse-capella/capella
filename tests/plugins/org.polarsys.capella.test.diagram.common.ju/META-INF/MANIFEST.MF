@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-SymbolicName: org.polarsys.capella.test.diagram.common.ju;singleton:=true
-Bundle-Version: 1.0.2.qualifier
+Bundle-Version: 1.0.4.qualifier
 Bundle-Activator: org.polarsys.capella.test.diagram.common.ju.TestDiagramCommonPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -25,8 +25,6 @@ Export-Package: org.polarsys.capella.test.diagram.common.ju,
  org.polarsys.capella.test.diagram.common.ju.step.crud,
  org.polarsys.capella.test.diagram.common.ju.step.filters,
  org.polarsys.capella.test.diagram.common.ju.step.tools,
- org.polarsys.capella.test.diagram.common.ju.step.tools.cdb,
- org.polarsys.capella.test.diagram.common.ju.step.tools.idb,
  org.polarsys.capella.test.diagram.common.ju.step.tools.xdfb,
  org.polarsys.capella.test.diagram.common.ju.wrapper,
  org.polarsys.capella.test.diagram.common.ju.wrapper.factory,
