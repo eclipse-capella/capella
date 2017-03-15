@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,7 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleEvent;
 import org.osgi.framework.BundleListener;
-import org.polarsys.capella.test.diagram.common.ju.headless.ExternalJavaActionForTestTools;
+import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessJavaActionsProvider;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -58,10 +58,6 @@ public class TestDiagramCommonPlugin extends AbstractUIPlugin {
    */
   @Override
   public void stop(BundleContext context) throws Exception {
-
-    // Restore the extension registry to its initial state
-    ExternalJavaActionForTestTools.INSTANCE.restore();
-
     plugin = null;
     super.stop(context);
   }
@@ -91,7 +87,7 @@ public class TestDiagramCommonPlugin extends AbstractUIPlugin {
    */
   protected synchronized void resetExternalJavaAction() {
     if (!externalJavaActionReseted) {
-      ExternalJavaActionForTestTools.INSTANCE.init();
+      new HeadlessJavaActionsProvider().init();
       externalJavaActionReseted = true;
     }
   }
