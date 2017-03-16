@@ -13,14 +13,15 @@ package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.diagram.tools.ju.lab.ConstraintRenameTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.lab.DragAndDropLF;
 import org.polarsys.capella.test.diagram.tools.ju.lab.ShowHideComponentExchangeWithCategoryTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.lab.ShowHideComponentTestCase;
+import org.polarsys.capella.test.diagram.tools.ju.lab.ShowHideFETestCase;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+
+import junit.framework.Test;
 
 public class LABDiagramToolsTestSuite extends BasicTestSuite {
 
@@ -41,6 +42,7 @@ public class LABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new DragAndDropLF());
     tests.add(new ConstraintRenameTestCase());
     tests.add(new ShowHideComponentExchangeWithCategoryTestCase());
+    tests.add(new ShowHideFETestCase());
     return tests;
   }
 

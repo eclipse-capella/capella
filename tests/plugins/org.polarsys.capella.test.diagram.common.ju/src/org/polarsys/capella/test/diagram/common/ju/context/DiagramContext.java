@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,8 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
 import org.polarsys.capella.test.framework.api.CommonTestMessages;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
+import junit.framework.Assert;
+
 /**
  *
  */
@@ -52,6 +54,8 @@ public class DiagramContext extends SessionContext {
 
   private Map<String, DDiagramElement> _viewObjectMap;
 
+  private String _type;
+  
   public Map<String, DDiagramElement> getViewObjectMap() {
     if (null == _viewObjectMap) {
       _viewObjectMap = new HashMap<String, DDiagramElement>();
@@ -67,7 +71,12 @@ public class DiagramContext extends SessionContext {
     super(DiagramHelper.getService().getSession(diagram));
     diagramIdentifier = diagram.getName();
     _diagram = diagram;
+    _type = _diagram.getDescription().getName();
     _sessionContext = context;
+  }
+  
+  public String getType() {
+    return _type;
   }
 
   @Override

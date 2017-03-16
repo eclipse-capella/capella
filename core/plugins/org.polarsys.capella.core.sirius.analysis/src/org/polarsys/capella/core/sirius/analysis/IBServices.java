@@ -50,6 +50,8 @@ import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
@@ -145,6 +147,17 @@ public class IBServices {
 
   }
 
+  /**
+   * In Interface Diagrams, we want to create a NODE when parent component is NODE, BEHAVIOR otherwise
+   */
+  public PhysicalComponentNature getIBCreationNature(EObject current, EObject container) {
+    PhysicalComponentNature result = PhysicalComponentNature.BEHAVIOR;
+    if (container instanceof PhysicalComponent && ((PhysicalComponent) container).getNature() == PhysicalComponentNature.NODE) {
+      result = PhysicalComponentNature.NODE;
+    }
+    return result;
+  }
+  
   public EdgeMapping getMappingIDCommunicationLink(EObject context, DDiagram diagram) {
     String mappingName = ""; //$NON-NLS-1$
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {

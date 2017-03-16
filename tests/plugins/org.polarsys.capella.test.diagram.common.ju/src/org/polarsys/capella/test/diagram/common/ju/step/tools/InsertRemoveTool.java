@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,8 @@ public class InsertRemoveTool extends AbstractToolStep {
 
   boolean removeAll = false;
 
+  boolean autoRefresh = true;
+
   String containerId;
   protected String[] toInsert;
   protected String[] toRemove;
@@ -57,6 +59,11 @@ public class InsertRemoveTool extends AbstractToolStep {
   public InsertRemoveTool(DiagramContext context, String[] toolIdentifier, String containerId) {
     super(context, toolIdentifier[0], toolIdentifier[1]);
     this.containerId = containerId;
+  }
+
+  public InsertRemoveTool(DiagramContext context, String toolName, String containerId, boolean autoRefresh) {
+    this(context, toolName, containerId);
+    this.autoRefresh = autoRefresh;
   }
 
   protected void initialize(boolean insertAll, boolean removeAll) {
@@ -180,8 +187,9 @@ public class InsertRemoveTool extends AbstractToolStep {
   @Override
   protected void postRunTest() {
     super.postRunTest();
-    DiagramHelper.refreshDiagram(getExecutionContext().getDiagram());
-    
+    if (autoRefresh)
+      DiagramHelper.refreshDiagram(getExecutionContext().getDiagram());
+
     for (String identifier : insertedElements) {
       getExecutionContext().hasView(identifier);
     }
