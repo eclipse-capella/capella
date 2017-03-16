@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -100,11 +100,9 @@ public class AttachmentActivity extends AbstractActivity {
     for (EObject custom : AttributesHandlerHelper.getInstance(context).getCustomNameElements(context)) {
       if (custom instanceof CatalogElement) {
         EObject target = custom;
-        if (target != null) {
-          EStructuralFeature feature = AttributesHandlerHelper.getInstance(context).getSuffixableFeature(target, context);
-          if (feature != null) {
-            target.eSet(feature, AttributesHandlerHelper.getInstance(context).getCustomName(custom, context));
-          }
+        EStructuralFeature feature = AttributesHandlerHelper.getInstance(context).getSuffixableFeature(target, context);
+        if (feature != null) {
+          target.eSet(feature, AttributesHandlerHelper.getInstance(context).getCustomName(custom, context));
         }
       }
     }

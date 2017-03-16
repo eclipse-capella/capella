@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,7 +56,7 @@ public class NameHelper {
           Object attributeValue = eSibling.eGet(attribute);
           if (attributeValue instanceof String) {
             String name = (String) attributeValue;
-            if (null != name && !name.equals("")) { //$NON-NLS-1$
+            if (!name.equals("")) { //$NON-NLS-1$
               existingNames.add(name);
             }
           }
@@ -75,7 +75,7 @@ public class NameHelper {
 
   /**
    * Retrieve the attribute which symbolizes the name of the given object. Research is based on business specific annotations hold by a eAttribute in the
-   * metaclass.
+   * meta-class.
    * @param eObject
    * @return namingAttribute
    */
