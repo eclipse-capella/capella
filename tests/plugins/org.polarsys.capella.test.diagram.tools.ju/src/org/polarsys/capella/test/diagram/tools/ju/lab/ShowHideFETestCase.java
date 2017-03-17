@@ -14,9 +14,9 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DNode;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 import junit.framework.Test;
 

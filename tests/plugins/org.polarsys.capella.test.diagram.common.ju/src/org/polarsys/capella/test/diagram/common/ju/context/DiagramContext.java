@@ -36,8 +36,6 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
 import org.polarsys.capella.test.framework.api.CommonTestMessages;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
-import junit.framework.Assert;
-
 /**
  *
  */
