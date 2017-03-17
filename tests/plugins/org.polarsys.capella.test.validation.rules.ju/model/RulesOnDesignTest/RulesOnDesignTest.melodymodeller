@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.1.0-->
+<!--Capella_Version_1.1.1-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.1.0"
     xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.1.0"
@@ -28112,6 +28112,56 @@
           name="Missions"/>
       <ownedOperationalAnalysisRealizations xsi:type="org.polarsys.capella.core.data.ctx:OperationalAnalysisRealization"
           id="b41a002c-6b33-43ba-99c6-ac66bcd23be8" sourceElement="#e783d6df-b258-40d6-a805-781205488904"/>
+    </ownedArchitectures>
+  </ownedModelRoots>
+  <ownedModelRoots xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering"
+      id="b5fb7f99-10aa-46b4-825e-f24860131b0d" name="DWF_DC_34">
+    <ownedArchitectures xsi:type="org.polarsys.capella.core.data.pa:PhysicalArchitecture"
+        id="70f8184a-2948-4c5e-a95d-0b74a5da9701" name="PhysicalArchitecture">
+      <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunctionPkg"
+          id="0b3fb9bd-4791-4dfb-aeb1-121ed0709139" name="Physical Functions">
+        <ownedPhysicalFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+            id="dc8e64a7-e6fa-4a4c-b3e0-eefbc320e32a" name="Root Physical Function">
+          <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
+              id="c5abeb98-10a4-4f9c-b162-85bcdfedaf85" sourceElement="#dc8e64a7-e6fa-4a4c-b3e0-eefbc320e32a"/>
+        </ownedPhysicalFunctions>
+      </ownedFunctionPkg>
+      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
+          id="18678dcd-33c7-484a-8b1f-130926cfbd0a" name="Requirements"/>
+      <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
+          id="2ddd27c2-9558-45d6-b8b1-ff36ee35be6a" name="Capabilities"/>
+      <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
+          id="92d8f327-ba62-4e0f-818d-47180d5cd330" name="Interfaces"/>
+      <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
+          id="fb79c072-77d5-4854-9198-06815540a36a" name="Data"/>
+      <ownedPhysicalContext xsi:type="org.polarsys.capella.core.data.pa:PhysicalContext"
+          id="a19896c3-f9c9-4bb3-a118-f6becd1a4cf2" name="Physical Context">
+        <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="db99758e-e7bb-4b5b-a1d0-95cbbcb07756"
+            name="Physical System" abstractType="#08e0e107-41a8-4242-a2d8-abee39d94149"/>
+      </ownedPhysicalContext>
+      <ownedPhysicalComponent xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+          id="08e0e107-41a8-4242-a2d8-abee39d94149" name="Physical System">
+        <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="4ad50fa8-e4ed-42f2-9d20-480479896f31"
+            name="PC 1 Node" abstractType="#d29fd7fa-2748-4dd7-b8b6-7f0aab34eaf6"/>
+        <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="70cc6cce-a907-4810-a959-e1d1bd680862"
+            name="PC 2 Behavior" abstractType="#267f3d41-85cb-441a-8bd9-7277fcbecac2"/>
+        <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="ba6e194a-b902-41d2-8853-99f962ccecb8"
+            name="PC 3 Unset" abstractType="#94d40c85-11d3-420a-a603-85955c8fb3b0"/>
+        <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+            id="d29fd7fa-2748-4dd7-b8b6-7f0aab34eaf6" name="PC 1 Node" kind="SOFTWARE"
+            nature="NODE"/>
+        <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+            id="267f3d41-85cb-441a-8bd9-7277fcbecac2" name="PC 2 Behavior" kind="SOFTWARE"
+            nature="BEHAVIOR"/>
+        <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+            id="94d40c85-11d3-420a-a603-85955c8fb3b0" name="PC 3 Unset" kind="SOFTWARE"/>
+        <ownedLogicalComponentRealizations xsi:type="org.polarsys.capella.core.data.pa:LogicalComponentRealization"
+            id="bcf73b3e-cbf6-4183-b793-3bf53fb01723" sourceElement="#08e0e107-41a8-4242-a2d8-abee39d94149"/>
+      </ownedPhysicalComponent>
+      <ownedPhysicalActorPkg xsi:type="org.polarsys.capella.core.data.pa:PhysicalActorPkg"
+          id="48605e7e-8c53-4a5a-bd26-dda10d5d850f" name="Physical Actors"/>
+      <ownedLogicalArchitectureRealizations xsi:type="org.polarsys.capella.core.data.pa:LogicalArchitectureRealization"
+          id="9e2dfb40-7ab5-4eb9-8071-b6c199ea5555" sourceElement="#70f8184a-2948-4c5e-a95d-0b74a5da9701"/>
     </ownedArchitectures>
   </ownedModelRoots>
 </org.polarsys.capella.core.data.capellamodeller:Project>

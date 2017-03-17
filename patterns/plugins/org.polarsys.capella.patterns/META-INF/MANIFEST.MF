@@ -19,7 +19,9 @@ Require-Bundle: org.eclipse.emf.diffmerge.patterns.repositories.catalogs,
  org.eclipse.emf.diffmerge.patterns.support,
  org.polarsys.kitalpha.patterns.emde.gen,
  org.eclipse.emf.diffmerge.patterns.core,
- org.eclipse.sirius.diagram
+ org.eclipse.sirius.diagram,
+ org.polarsys.capella.core.validation.ui.ide,
+ org.polarsys.capella.core.validation
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
 Bundle-Version: 1.2.0.qualifier

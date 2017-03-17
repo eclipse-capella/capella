@@ -20,5 +20,6 @@
 			<topic href="html/Viewpoint Guidelines.html#Create_Generic_Viewpoints" label="Create Generic Viewpoints"></topic>
 		</topic>
 		<topic href="html/Viewpoint Guidelines.html#Avoid_EObject.eResource_calls" label="Avoid EObject.eResource calls"></topic>
+		<topic href="html/Viewpoint Guidelines.html#Contribute_an_ID_handler" label="Contribute an ID handler"></topic>
 	</topic>
 </toc>
