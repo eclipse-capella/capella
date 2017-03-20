@@ -19,14 +19,6 @@
    <!--feature id="org.polarsys.capella.rcp.feature.source" version="1.2.0.qualifier">
       <category name="org.polarsys.capella.rcp.source"/>
    </feature-->
-   <feature id="org.polarsys.capella.test.feature" version="1.1.1.qualifier">
-      <category name="org.polarsys.capella.test"/>
-   </feature>
-   <!--feature id="org.polarsys.capella.test.feature.source" version="1.1.1.qualifier">
-      <category name="org.polarsys.capella.test.source"/>
-   </feature-->
    <category-def name="org.polarsys.capella.rcp" label="Capella"/>
    <!--category-def name="org.polarsys.capella.rcp.source" label="Capella Sources"/-->
-   <category-def name="org.polarsys.capella.test" label="Capella Tests"/>
-   <!--category-def name="org.polarsys.capella.test.source" label="Capella Tests Sources"/-->
 </site>
