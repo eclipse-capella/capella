@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,7 +59,7 @@ public class CreateElement extends BasicTestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    // Deadlock because of Workbench Auto-Save Job, so we have to remove it 
+    // Deadlock because of Workbench Auto-Save Job, so we have to remove it
     Job[] allJobs = Job.getJobManager().find(null);
     for (Job job : allJobs) {
       if (Workbench.WORKBENCH_AUTO_SAVE_JOB.equals(job.getName())) {
@@ -99,7 +99,7 @@ public class CreateElement extends BasicTestCase {
   /**
    * @return
    */
-  private CommonViewer getViewer() {
+  protected CommonViewer getViewer() {
     final CommonViewer[] viewer = new CommonViewer[1];
     Display.getDefault().syncExec(new Runnable() {
 
@@ -148,6 +148,7 @@ public class CreateElement extends BasicTestCase {
           Collection<IContributionItem> items = new ArrayList<IContributionItem>();
           items.addAll(actions.getStructuralDynamicActions());
           items.addAll(actions.getNonStructuralDynamicActions());
+          items.addAll(actions.getExtensionDynamicActions());
 
           for (IContributionItem item : items) {
 
@@ -163,7 +164,7 @@ public class CreateElement extends BasicTestCase {
     });
 
     GuiActions.flushASyncGuiThread();
-    GuiActions.flushASyncGuiJobs();
+    // GuiActions.flushASyncGuiJobs();
     ISelection selection3 = viewer.getSelection();
     EObject a = (EObject) ((IStructuredSelection) selection3).getFirstElement();
     return a;

@@ -11,4 +11,5 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.menu.dynamic
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.polarsys.capella.test.navigator.ju.testsuites.main
+Export-Package: org.polarsys.capella.test.navigator.ju,
+ org.polarsys.capella.test.navigator.ju.testsuites.main
