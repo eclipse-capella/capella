@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,7 +47,7 @@ public class ReportManagerPrefPage extends PreferencePage implements
 	public static Properties _tempStore = new Properties();
 	public static Map<String, String> _comboItems = new HashMap<String, String>();
 
-	private String[] _levelsName = new String[] {
+	private static final String[] _levelsName = new String[] {
 			ReportManagerConstants.LOG_LEVEL_DEBUG,
 			ReportManagerConstants.LOG_LEVEL_INFO,
 			ReportManagerConstants.LOG_LEVEL_WARN,
@@ -55,8 +55,7 @@ public class ReportManagerPrefPage extends PreferencePage implements
 			ReportManagerConstants.LOG_LEVEL_FATAL };
 
 	private ReportManagerRegistry _registry;
-	private SelectionListener _componentHandler;
-	CreateBaseComponentTable _componentTable;
+	private CreateBaseComponentTable _componentTable;
 
 
 	@Override
@@ -131,17 +130,16 @@ public class ReportManagerPrefPage extends PreferencePage implements
 		}
 
 		// Add the selection listener.
-		_componentHandler = new SelectionAdapter() {
+		SelectionListener componentHandler = new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				if (event.widget instanceof Combo) {
-					Combo combo_l = (Combo) event.widget;
-//					_componentTable.loadPreferences(combo_l.getText());
-					_componentTable.selectPage (combo_l.getText());
+					Combo comboWidget = (Combo) event.widget;
+					_componentTable.selectPage (comboWidget.getText());
 				} 
 			}
 		};
-		combo.addSelectionListener(_componentHandler);
+		combo.addSelectionListener(componentHandler);
 		return combo;
 	}
 
