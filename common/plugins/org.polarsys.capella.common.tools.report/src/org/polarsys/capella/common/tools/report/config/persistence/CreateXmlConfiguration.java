@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.xml.bind.JAXBContext;
@@ -53,7 +54,7 @@ public class CreateXmlConfiguration {
    * @return
    * 
    */
-  public ConfigurationInstance createDefaultConfiguration(String componentName, HashMap<String, Appender> map) {
+  public ConfigurationInstance createDefaultConfiguration(String componentName, Map<String, Appender> map) {
 
     Set<String> appenders = map.keySet();
 
@@ -174,7 +175,7 @@ public class CreateXmlConfiguration {
    * save configuraion hashmap to configuration file
    * @param configurationMap
    */
-  public void saveConfiguration(HashMap<String, ConfigurationInstance> configurationMap) {
+  public void saveConfiguration(Map<String, ConfigurationInstance> configurationMap) {
 
     ReportConfigurationFile repConffile = _factory.createReportConfigurationFile();
     repConffile.setFileFormatVersion(ReportManagerConstants.FILEFORMAT_VERSION);

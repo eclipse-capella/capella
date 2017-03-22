@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,12 +14,11 @@ package org.polarsys.capella.common.tools.report.config.registry;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 import org.apache.log4j.Appender;
 import org.apache.log4j.Hierarchy;
 import org.apache.log4j.Logger;
-
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.EmbeddedMessageRenderer;
 import org.polarsys.capella.common.tools.report.ReportManagerActivator;
@@ -33,8 +32,8 @@ import org.polarsys.capella.common.tools.report.config.persistence.OutputConfigu
 
 public class ReportManagerRegistry {
 
-  private HashMap<String, ConfigurationInstance> _configurations = new HashMap<String, ConfigurationInstance>(1);
-  private HashMap<String, Appender> _appenders = new HashMap<String, Appender>(1);
+  private Map<String, ConfigurationInstance> _configurations = new HashMap<String, ConfigurationInstance>(1);
+  private Map<String, Appender> _appenders = new HashMap<String, Appender>(1);
 
   private static ReportManagerRegistry instance;
 
@@ -51,18 +50,16 @@ public class ReportManagerRegistry {
     _configurations.put(defaultConfInstance.getComponentName(), defaultConfInstance);
 
     if (configuration.isConfigurationFileExists()) {
-      // call loading process here
-      HashMap<String, ConfigurationInstance> persistedConfs = new HashMap<String, ConfigurationInstance>(1);
+      // Load configuration from XML config file
+      HashMap<String, ConfigurationInstance> persistedConfs = configuration.loadConfiguration();
       HashMap<String, ConfigurationInstance> virtualConfs = new HashMap<String, ConfigurationInstance>(1);
 
-      Set<String> persistedConfNames = persistedConfs.keySet();
+      for (Map.Entry<String, ConfigurationInstance> confEntry : persistedConfs.entrySet()) {
+        ConfigurationInstance newVirtualConf = configuration.createDefaultConfiguration(confEntry.getKey(), _appenders);
 
-      for (String confName : persistedConfNames) {
-        ConfigurationInstance newVirtualConf = configuration.createDefaultConfiguration(confName, _appenders);
+        copyValuesOfConfigurationInstance(confEntry.getValue(), newVirtualConf);
 
-        copyValuesOfConfigurationInstance(persistedConfs.get(confName), newVirtualConf);
-
-        virtualConfs.put(confName, newVirtualConf);
+        virtualConfs.put(confEntry.getKey(), newVirtualConf);
 
       }
 
@@ -201,7 +198,6 @@ public class ReportManagerRegistry {
         synchronized (_configurations) {
           _configurations.put(componentName, oConfigurationInstance);
         }
-        saveConfiguration();
       }
     }
 
@@ -219,7 +215,6 @@ public class ReportManagerRegistry {
         _configurations.remove(componentName);
       }
     }
-    saveConfiguration();
   }
 
   /**
@@ -283,20 +278,21 @@ public class ReportManagerRegistry {
   public void saveConfiguration() {
     CreateXmlConfiguration configuration = new CreateXmlConfiguration();
     synchronized (_configurations) {
+    	configuration.saveConfiguration(_configurations);
     }
   }
 
   /**
    * @see org.polarsys.capella.common.tools.report.config.registry.IReportManagerRegistry#getConfigurations()
    */
-  public HashMap<String, ConfigurationInstance> getConfigurations() {
+  public Map<String, ConfigurationInstance> getConfigurations() {
     return _configurations;
   }
 
   /**
    * @param map the _configurationMap to set
    */
-  public void setConfigurations(HashMap<String, ConfigurationInstance> map) {
+  public void setConfigurations(Map<String, ConfigurationInstance> map) {
     synchronized (_configurations) {
       _configurations = map;
     }
@@ -313,7 +309,7 @@ public class ReportManagerRegistry {
   /**
    * @return
    */
-  public HashMap<String, Appender> getAppenders() {
+  public Map<String, Appender> getAppenders() {
     return _appenders;
   }
 

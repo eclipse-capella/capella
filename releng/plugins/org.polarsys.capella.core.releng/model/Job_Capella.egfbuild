@@ -5,7 +5,7 @@
     <properties xmi:id="_shWXEZyfEeSdafV5Hx9whg" key="eclipseCodeName" value="mars" type="INLINED"/>
     <properties xmi:id="_shWXEpyfEeSdafV5Hx9whg" key="primary_eclipseUpdateSite" value="${eclipse.download.prefix}/releases/${eclipseCodeName}" type="INLINED"/>
     <properties xmi:id="_shWXE5yfEeSdafV5Hx9whg" key="orbit.download.url" value="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
-    <properties xmi:id="_shWXFJyfEeSdafV5Hx9whg" key="site_Sirius" value="${eclipse.download.prefix}/sirius/updates/stable/4.1.4-S20170303-085205/${eclipseCodeName}" type="INLINED"/>
+    <properties xmi:id="_shWXFJyfEeSdafV5Hx9whg" key="site_Sirius" value="${eclipse.download.prefix}/sirius/updates/stable/4.1.4-S20170321-101206/${eclipseCodeName}" type="INLINED"/>
     <steps xsi:type="buildcore:ReuseStep" xmi:id="_shWXFZyfEeSdafV5Hx9whg" name="Build All">
       <reusedStep xsi:type="buildcore:StepContainer" href="Common.egfbuild#__Rn-QIgFEeOdzI3OsQ-7WQ"/>
     </steps>

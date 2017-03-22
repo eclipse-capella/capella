@@ -27,7 +27,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.osgi.util.NLS;
@@ -88,8 +87,6 @@ public class AbstractCommandLine implements ICommandLine {
    */
   @Override
   public void checkArgs(IApplicationContext context) throws CommandLineException {
-    isWorkspaceInUse();
-
     // refreshing the workspace needed in case of folders removed from outside the workbench
     try {
       ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
@@ -290,22 +287,7 @@ public class AbstractCommandLine implements ICommandLine {
   }
 
   /**
-   * @throws CommandLineException
-   */
-  private void isWorkspaceInUse() throws CommandLineException {
-    try {
-      if (!Platform.getInstanceLocation().lock()) {
-        throw new CommandLineException(Messages.workspace_in_use);
-      }
-    } catch (IOException exception) {
-      StringBuilder loggerMessage = new StringBuilder(exception.getMessage());
-      logger.error(loggerMessage.toString(), exception);
-    }
-
-  }
-
-  /**
-   * @param importProjects
+   * @param var
    * @return
    */
   protected boolean isEmtyOrNull(String var) {

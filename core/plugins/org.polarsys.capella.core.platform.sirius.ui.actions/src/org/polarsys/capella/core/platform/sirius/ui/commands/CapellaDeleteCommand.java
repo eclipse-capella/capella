@@ -568,7 +568,7 @@ public class CapellaDeleteCommand extends AbstractCommand {
                 boolean handleNotification = false;
                 try {
                   EReference feature = EReference.class.cast(notification.getFeature());
-                  handleNotification = feature.isContainment();
+                  handleNotification = feature != null ? feature.isContainment() : false;                    
                 } catch (ClassCastException cce) {
                   // Could not tell feature, add notification whatever it might be.
                   handleNotification = true;

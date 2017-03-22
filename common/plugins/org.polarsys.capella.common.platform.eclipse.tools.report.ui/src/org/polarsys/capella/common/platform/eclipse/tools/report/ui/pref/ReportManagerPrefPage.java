@@ -45,7 +45,7 @@ public class ReportManagerPrefPage extends PreferencePage implements IWorkbenchP
 	public static Properties tempStore = new Properties();
 	public static Map<String, String> comboItems = new HashMap<String, String>();
 
-	private String[] levelsName = new String[] {
+	private static final String[] levelsName = new String[] {
 			ReportManagerConstants.LOG_LEVEL_DEBUG,
 			ReportManagerConstants.LOG_LEVEL_INFO,
 			ReportManagerConstants.LOG_LEVEL_WARN,
@@ -53,8 +53,7 @@ public class ReportManagerPrefPage extends PreferencePage implements IWorkbenchP
 			ReportManagerConstants.LOG_LEVEL_FATAL };
 
 	private ReportManagerRegistry registry;
-	private SelectionListener componentHandler;
-	CreateBaseComponentTable componentTable;
+	private CreateBaseComponentTable componentTable;
 
 	@Override
 	protected void performDefaults() {
@@ -128,13 +127,12 @@ public class ReportManagerPrefPage extends PreferencePage implements IWorkbenchP
 		}
 
 		// Add the selection listener.
-		componentHandler = new SelectionAdapter() {
+		SelectionListener componentHandler = new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				if (event.widget instanceof Combo) {
-					Combo combo_l = (Combo) event.widget;
-//					_componentTable.loadPreferences(combo_l.getText());
-					componentTable.selectPage (combo_l.getText());
+					Combo comboWidget = (Combo) event.widget;
+					componentTable.selectPage (comboWidget.getText());
 				} 
 			}
 		};
