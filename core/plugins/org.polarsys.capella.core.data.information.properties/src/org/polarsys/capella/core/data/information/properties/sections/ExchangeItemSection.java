@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,10 +56,10 @@ public class ExchangeItemSection extends GeneralizableElementSection {
     _exchangeItemBooleanPropertiesCheckbox = new ExchangeItemBooleanPropertiesCheckbox(getCheckGroup(), getWidgetFactory());
     _exchangeItemBooleanPropertiesCheckbox.setDisplayedInWizard(displayedInWizard);    
     
-    _exchangeMechanismGroup = new ExchangeMechanismGroup(_rootParentComposite, getWidgetFactory());
+    _exchangeMechanismGroup = new ExchangeMechanismGroup(rootParentComposite, getWidgetFactory());
     _exchangeMechanismGroup.setDisplayedInWizard(displayedInWizard);
 
-    Group exchangeItemGroup = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
+    Group exchangeItemGroup = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
     exchangeItemGroup.setLayout(new GridLayout(1, false));
     GridData layoutData = new GridData(GridData.FILL_HORIZONTAL);
     layoutData.horizontalSpan = 2;
@@ -97,7 +97,7 @@ public class ExchangeItemSection extends GeneralizableElementSection {
     };
     _containmentTableField.setDisplayedInWizard(displayedInWizard);
 
-    Group main = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
+    Group main = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
     main.setLayout(new GridLayout(6, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;

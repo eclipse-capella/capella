@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,13 +68,13 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
   private Composite pageComposite;
 
   /** The table viewer. */
-  private CheckboxTreeViewer _treeViewer;
+  private CheckboxTreeViewer treeViewer;
 
   /** The filter. */
 
-  private Session _root;
+  private Session root;
 
-  private Collection<DRepresentationDescriptor> _preselection;
+  private Collection<DRepresentationDescriptor> preselection;
 
   /**
    * Create a new <code>DescDiagramSelectionWizardPage</code>.
@@ -84,9 +84,9 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
   public RepresentationsSelectionWizardPage(Session root, Collection<DRepresentationDescriptor> representations) {
     super(PAGE_TITLE);
     setTitle(PAGE_TITLE);
-    _root = root;
-    _preselection = representations;
-    if (_preselection.size() > 0)
+    this.root = root;
+    preselection = representations;
+    if (preselection.size() > 0)
       setPageComplete(true);
     setMessage(SELECT_DIAGRAMS_TO_EXPORT, IMessageProvider.INFORMATION);
   }
@@ -102,16 +102,16 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
     pageComposite.setLayout(new GridLayout());
     pageComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
 
-    _treeViewer = createTreeViewer(pageComposite);
-    _treeViewer.setInput(_root);
+    treeViewer = createTreeViewer(pageComposite);
+    treeViewer.setInput(root);
     // Force the viewer to pre-load all items.
-    _treeViewer.expandAll();
-    _treeViewer.collapseAll();
+    treeViewer.expandAll();
+    treeViewer.collapseAll();
     // Check default preselected elements.
     setControl(pageComposite);
     
-    for (final DRepresentationDescriptor preselected : _preselection) {
-        this._treeViewer.setChecked(preselected, true);
+    for (final DRepresentationDescriptor preselected : preselection) {
+        this.treeViewer.setChecked(preselected, true);
     }
   }
 
@@ -130,7 +130,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
     viewer.getTree().setLinesVisible(false);
     viewer.addCheckStateListener(new SiriusDiagramSelectionCheckStateListener());
 
-    viewer.setContentProvider(new SessionContentProvider(_root));
+    viewer.setContentProvider(new SessionContentProvider(root));
     ComposedAdapterFactory composedAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
     viewer.setLabelProvider(new AdapterFactoryLabelProvider(composedAdapterFactory));
 
@@ -295,9 +295,9 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
   @SuppressWarnings("unchecked")
   public Collection<DRepresentationDescriptor> getSelectedElements() {
     Collection<DRepresentationDescriptor> result = new HashSet<DRepresentationDescriptor>();
-    Collection<? extends DRepresentationDescriptor> asList = (Collection<? extends DRepresentationDescriptor>) Arrays.asList(_treeViewer.getCheckedElements());
+    Collection<? extends DRepresentationDescriptor> asList = (Collection<? extends DRepresentationDescriptor>) Arrays.asList(treeViewer.getCheckedElements());
     result.addAll(asList);
-    result.removeAll(Arrays.asList(_treeViewer.getGrayedElements()));
+    result.removeAll(Arrays.asList(treeViewer.getGrayedElements()));
     return result;
   }
 

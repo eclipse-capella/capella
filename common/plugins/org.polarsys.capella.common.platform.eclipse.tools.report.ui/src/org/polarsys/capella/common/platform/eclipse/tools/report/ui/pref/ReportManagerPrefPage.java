@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.platform.eclipse.tools.report.ui.pref;
 
 import java.lang.reflect.Field;
@@ -39,35 +38,32 @@ import org.polarsys.capella.common.tools.report.ui.pref.IReportManagerPrefPage;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 
 
-public class ReportManagerPrefPage extends PreferencePage implements
-		IWorkbenchPreferencePage, IReportManagerPrefPage {
-	private Combo _componentCombo;
+public class ReportManagerPrefPage extends PreferencePage implements IWorkbenchPreferencePage, IReportManagerPrefPage {
+	private Combo componentCombo;
 
-	public static Properties _preferenceStore = new Properties();
-	public static Properties _tempStore = new Properties();
-	public static Map<String, String> _comboItems = new HashMap<String, String>();
+	public static Properties preferenceStore = new Properties();
+	public static Properties tempStore = new Properties();
+	public static Map<String, String> comboItems = new HashMap<String, String>();
 
-	private String[] _levelsName = new String[] {
+	private static final String[] levelsName = new String[] {
 			ReportManagerConstants.LOG_LEVEL_DEBUG,
 			ReportManagerConstants.LOG_LEVEL_INFO,
 			ReportManagerConstants.LOG_LEVEL_WARN,
 			ReportManagerConstants.LOG_LEVEL_ERROR,
 			ReportManagerConstants.LOG_LEVEL_FATAL };
 
-	private ReportManagerRegistry _registry;
-	private SelectionListener _componentHandler;
-	CreateBaseComponentTable _componentTable;
-
+	private ReportManagerRegistry registry;
+	private CreateBaseComponentTable componentTable;
 
 	@Override
 	protected void performDefaults() {
 		super.performDefaults();
-		_componentTable.defaultValues ();
+		componentTable.defaultValues ();
 		
 	}
 
 	public ReportManagerPrefPage() {
-		_registry = ReportManagerRegistry.getInstance();
+		registry = ReportManagerRegistry.getInstance();
 	}
 
 	/**
@@ -82,10 +78,10 @@ public class ReportManagerPrefPage extends PreferencePage implements
 		// The component selection combo & label.
 		Label comboLabel = new Label(root, SWT.NONE);
 		comboLabel.setText("Select Category :"); //$NON-NLS-1$
-		_componentCombo = createComponentCombo(root);
+		componentCombo = createComponentCombo(root);
 		// Creates the logger viewer.
-	   _componentTable = new CreateBaseComponentTable(root, SWT.NONE, _registry, this, _levelsName);
-	   _componentCombo.notifyListeners(SWT.Selection, null);
+	  componentTable = new CreateBaseComponentTable(root, SWT.NONE, registry, this, levelsName);
+	  componentCombo.notifyListeners(SWT.Selection, null);
 
 		return root;
 	}
@@ -104,7 +100,7 @@ public class ReportManagerPrefPage extends PreferencePage implements
 	  for (Field f : fields){
 	    try {
 	      String componentName = (String) f.get(null);
-	      _registry.subscribe(componentName);
+	      registry.subscribe(componentName);
 	    } catch (Exception exception) {
 	      ReportManagerActivator.getDefault().getLog().log(new Status(IStatus.ERROR, ReportManagerActivator.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
 	    }
@@ -112,7 +108,7 @@ public class ReportManagerPrefPage extends PreferencePage implements
 
 		Combo combo = new Combo(parent, SWT.READ_ONLY);
 		// Load combo box items.
-		Object[] componentList = _registry.getComponentsList();
+		Object[] componentList = registry.getComponentsList();
 		String[] items = new String[componentList.length];
 		for (int i = 0; i < componentList.length; i++) {
 			items[i] = componentList[i].toString();
@@ -131,17 +127,16 @@ public class ReportManagerPrefPage extends PreferencePage implements
 		}
 
 		// Add the selection listener.
-		_componentHandler = new SelectionAdapter() {
+		SelectionListener componentHandler = new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				if (event.widget instanceof Combo) {
-					Combo combo_l = (Combo) event.widget;
-//					_componentTable.loadPreferences(combo_l.getText());
-					_componentTable.selectPage (combo_l.getText());
+					Combo comboWidget = (Combo) event.widget;
+					componentTable.selectPage (comboWidget.getText());
 				} 
 			}
 		};
-		combo.addSelectionListener(_componentHandler);
+		combo.addSelectionListener(componentHandler);
 		return combo;
 	}
 
@@ -151,12 +146,12 @@ public class ReportManagerPrefPage extends PreferencePage implements
 	 */
 	@Override
 	public boolean performOk() {
-		_componentTable.updateConfigurationHashMap(_registry.getConfigurations());
-		_registry.saveConfiguration();
+		componentTable.updateConfigurationHashMap(registry.getConfigurations());
+		registry.saveConfiguration();
 		return super.performOk();
 	}
 
 	public Properties get_preferenceStore() {
-		return _preferenceStore;
+		return preferenceStore;
 	}
 }

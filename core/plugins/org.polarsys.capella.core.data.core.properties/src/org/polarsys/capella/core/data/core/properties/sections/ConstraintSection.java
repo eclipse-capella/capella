@@ -81,7 +81,7 @@ public class ConstraintSection extends NamedElementSection {
         });
     _constrainedElementsField.setDisplayedInWizard(displayedInWizard);
 
-    Group group = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
+    Group group = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
     GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
     gd.horizontalSpan = 2;
     group.setLayoutData(gd);

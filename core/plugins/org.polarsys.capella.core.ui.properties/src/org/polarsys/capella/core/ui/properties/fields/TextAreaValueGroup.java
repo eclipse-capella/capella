@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,15 +47,15 @@ public class TextAreaValueGroup extends TextValueGroup {
    */
   @Override
   protected void createValueTextField(String label, boolean hasResetBtn) {
-    CLabel lbl = _widgetFactory.createCLabel(_parent, label);
+    CLabel lbl = _widgetFactory.createCLabel(parent, label);
     GridData gd = new GridData();
-    gd.horizontalSpan = ((GridLayout) _parent.getLayout()).numColumns; //2;
+    gd.horizontalSpan = ((GridLayout) parent.getLayout()).numColumns; //2;
     lbl.setLayoutData(gd);
-    _valueField = _widgetFactory.createText(_parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
+    valueField = _widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
     gd = new GridData(GridData.FILL_HORIZONTAL);
-    gd.horizontalSpan = ((GridLayout) _parent.getLayout()).numColumns; //2;
+    gd.horizontalSpan = ((GridLayout) parent.getLayout()).numColumns; //2;
     gd.heightHint = 80;
-    _valueField.setLayoutData(gd);
+    valueField.setLayoutData(gd);
     addListeners();
   }
 
@@ -64,6 +64,6 @@ public class TextAreaValueGroup extends TextValueGroup {
    */
   @Override
   protected void addListeners() {
-    _valueField.addFocusListener(this);
+    valueField.addFocusListener(this);
   }
 }

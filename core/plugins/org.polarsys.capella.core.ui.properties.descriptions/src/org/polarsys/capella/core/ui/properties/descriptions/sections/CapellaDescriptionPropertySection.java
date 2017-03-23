@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,10 +54,10 @@ public class CapellaDescriptionPropertySection extends AbstractSection implement
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createControls(parent, aTabbedPropertySheetPage);
 
-    _rootParentComposite.setLayout(new GridLayout());
-    _rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+    rootParentComposite.setLayout(new GridLayout());
+    rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-    _descriptionGroup = new CapellaElementDescriptionGroup(_rootParentComposite, (aTabbedPropertySheetPage != null) ? getWidgetFactory() : null);
+    _descriptionGroup = new CapellaElementDescriptionGroup(rootParentComposite, (aTabbedPropertySheetPage != null) ? getWidgetFactory() : null);
   }
 
   /**

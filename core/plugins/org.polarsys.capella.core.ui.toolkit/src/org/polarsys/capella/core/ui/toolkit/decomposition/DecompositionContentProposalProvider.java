@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,58 +21,58 @@ import org.eclipse.jface.fieldassist.IContentProposalProvider;
  */
 public class DecompositionContentProposalProvider implements IContentProposalProvider {
   
-  private List<DecompositionComponent> _components;
-  private List<DecompositionReuseContentProposal> _proposals;
+  private List<DecompositionComponent> components;
+  private List<DecompositionReuseContentProposal> proposals;
   
-  public DecompositionContentProposalProvider(List<DecompositionComponent> components_p) {
-    setComponents(components_p);
+  public DecompositionContentProposalProvider(List<DecompositionComponent> components) {
+    setComponents(components);
     setProposals(new ArrayList<DecompositionReuseContentProposal>(1));
-    for(DecompositionComponent comp : _components) {
-      _proposals.add(new DecompositionReuseContentProposal(comp));
+    for(DecompositionComponent comp : components) {
+      proposals.add(new DecompositionReuseContentProposal(comp));
     }
   }
 
   /**
    * @see org.eclipse.jface.fieldassist.IContentProposalProvider#getProposals(java.lang.String, int)
    */
-  public IContentProposal[] getProposals(String contents_p, int position_p) {
-    return _proposals.toArray(new IContentProposal[0]);
+  public IContentProposal[] getProposals(String contents, int position) {
+    return proposals.toArray(new IContentProposal[0]);
   }
 
   /**
    * @return the components
    */
   public List<DecompositionComponent> getComponents() {
-    return _components;
+    return components;
   }
 
   /**
-   * @param components_p the components to set
+   * @param components the components to set
    */
-  public void setComponents(List<DecompositionComponent> components_p) {
-    _components = components_p;
+  public void setComponents(List<DecompositionComponent> components) {
+    this.components = components;
   }
 
   /**
    * @return the proposals
    */
   public List<DecompositionReuseContentProposal> getProposals() {
-    return _proposals;
+    return proposals;
   }
 
   /**
-   * @param proposals_p the proposals to set
+   * @param proposals the proposals to set
    */
-  public void setProposals(List<DecompositionReuseContentProposal> proposals_p) {
-    _proposals = proposals_p;
+  public void setProposals(List<DecompositionReuseContentProposal> proposals) {
+    this.proposals = proposals;
   }
 
 }
 class DecompositionReuseContentProposal implements IContentProposal {
-  private DecompositionComponent _component;
+  private DecompositionComponent component;
   
-  public DecompositionReuseContentProposal(DecompositionComponent component_p) {
-    setComponent(component_p);
+  public DecompositionReuseContentProposal(DecompositionComponent component) {
+    setComponent(component);
   }
   /**
    * @see org.eclipse.jface.fieldassist.IContentProposal#getContent()
@@ -106,14 +106,14 @@ class DecompositionReuseContentProposal implements IContentProposal {
    * @return the component
    */
   public DecompositionComponent getComponent() {
-    return _component;
+    return component;
   }
 
   /**
-   * @param component_p the component to set
+   * @param component the component to set
    */
-  public void setComponent(DecompositionComponent component_p) {
-    _component = component_p;
+  public void setComponent(DecompositionComponent component) {
+    this.component = component;
   }
   
 }

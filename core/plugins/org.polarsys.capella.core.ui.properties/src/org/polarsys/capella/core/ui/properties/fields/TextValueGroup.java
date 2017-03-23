@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,8 +27,8 @@ import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
  */
 public class TextValueGroup extends AbstractSemanticGroup {
 
-  protected Text _valueField;
-  protected Button _valueResetBtn;
+  protected Text valueField;
+  protected Button valueResetBtn;
 
   /**
    * @param parent
@@ -67,15 +67,15 @@ public class TextValueGroup extends AbstractSemanticGroup {
    * @param hasResetBtn
    */
   protected void createValueTextField(String label, boolean hasResetBtn) {
-    Composite main = _widgetFactory.createComposite(_parent);
+    Composite main = _widgetFactory.createComposite(parent);
     main.setLayout(new GridLayout(3, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-    gd.horizontalSpan = ((GridLayout) _parent.getLayout()).numColumns; //2;
+    gd.horizontalSpan = ((GridLayout) parent.getLayout()).numColumns; //2;
     main.setLayoutData(gd);
 
     _widgetFactory.createCLabel(main, label);
-    _valueField = _widgetFactory.createText(main, ""); //$NON-NLS-1$
-    _valueField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+    valueField = _widgetFactory.createText(main, ""); //$NON-NLS-1$
+    valueField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
     addListeners();
 
     if (hasResetBtn) {
@@ -91,15 +91,15 @@ public class TextValueGroup extends AbstractSemanticGroup {
     ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
     Image removeImage = imgRegistry.get(ToolkitPlugin.REMOVE_IMAGE_ITEM_ID);
     String tooltip = Messages.TextValueGroup_ValueResetBtn_Label;
-    _valueResetBtn = createButton(parent, removeImage, tooltip);
+    valueResetBtn = createButton(parent, removeImage, tooltip);
   }
 
   /**
    * 
    */
   protected void addListeners() {
-    _valueField.addFocusListener(this);
-    _valueField.addKeyListener(this);
+    valueField.addFocusListener(this);
+    valueField.addKeyListener(this);
   }
 
   /**
@@ -124,8 +124,8 @@ public class TextValueGroup extends AbstractSemanticGroup {
    *
    */
   public void loadTextValue() {
-    if (null != _valueField && null != _semanticElement && null != _semanticFeature) {
-      setTextValue(_valueField, _semanticElement, _semanticFeature);
+    if (null != valueField && null != _semanticElement && null != _semanticFeature) {
+      setTextValue(valueField, _semanticElement, _semanticFeature);
       updateResetBtnStatus();
     }
   }
@@ -135,8 +135,8 @@ public class TextValueGroup extends AbstractSemanticGroup {
    */
   @Override
   protected void fillTextField(Text textField) {
-    if (textField.equals(_valueField)) {
-      setDataValue(_semanticElement, _semanticFeature, _valueField.getText());
+    if (textField.equals(valueField)) {
+      setDataValue(_semanticElement, _semanticFeature, valueField.getText());
     }
   }
 
@@ -145,11 +145,11 @@ public class TextValueGroup extends AbstractSemanticGroup {
    */
   @Override
   public void setEnabled(boolean enabled) {
-    if (null != _valueField && !_valueField.isDisposed()) {
-      _valueField.setEnabled(enabled);
+    if (null != valueField && !valueField.isDisposed()) {
+      valueField.setEnabled(enabled);
     }
-    if (null != _valueResetBtn && !_valueResetBtn.isDisposed()) {
-      _valueResetBtn.setEnabled(enabled);
+    if (null != valueResetBtn && !valueResetBtn.isDisposed()) {
+      valueResetBtn.setEnabled(enabled);
     }
   }
 
@@ -161,8 +161,8 @@ public class TextValueGroup extends AbstractSemanticGroup {
     if (event != null) {
       Object source = event.getSource();
       if (source != null) {
-        if (source.equals(_valueResetBtn)) {
-          handleResetButtonClicked(_valueResetBtn);
+        if (source.equals(valueResetBtn)) {
+          handleResetButtonClicked(valueResetBtn);
         }
       }
     }
@@ -174,15 +174,15 @@ public class TextValueGroup extends AbstractSemanticGroup {
    */
   protected void handleResetButtonClicked(Button button) {
     setDataValue(_semanticElement, _semanticFeature, null);
-    setTextValue(_valueField, _semanticElement, _semanticFeature);
+    setTextValue(valueField, _semanticElement, _semanticFeature);
   }
 
   /**
    * 
    */
   protected void updateResetBtnStatus() {
-    if (null != _valueResetBtn) {
-      _valueResetBtn.setEnabled(_semanticElement.eGet(_semanticFeature) != null);
+    if (null != valueResetBtn) {
+      valueResetBtn.setEnabled(_semanticElement.eGet(_semanticFeature) != null);
     }
   }
   

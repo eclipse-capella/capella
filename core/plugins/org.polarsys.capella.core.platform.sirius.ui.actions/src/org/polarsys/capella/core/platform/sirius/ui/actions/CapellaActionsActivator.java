@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import org.eclipse.emf.ecore.EClass;
@@ -35,7 +34,7 @@ public class CapellaActionsActivator extends AbstractUIActivator {
   /**
    * Shared instance.
    */
-  private static CapellaActionsActivator _plugin;
+  private static CapellaActionsActivator plugin;
 
   /**
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
@@ -43,7 +42,7 @@ public class CapellaActionsActivator extends AbstractUIActivator {
   @Override
   public void start(BundleContext context) throws Exception {
     super.start(context);
-    _plugin = this;
+    plugin = this;
     new DeletePreferences();
     new CapellaValidationPreferencesInitializer();
     new ActionsPreferenceInitializer();
@@ -55,7 +54,7 @@ public class CapellaActionsActivator extends AbstractUIActivator {
    */
   @Override
   public void stop(BundleContext context) throws Exception {
-    _plugin = null;
+    plugin = null;
     super.stop(context);
   }
 
@@ -64,7 +63,7 @@ public class CapellaActionsActivator extends AbstractUIActivator {
    * @return
    */
   public static CapellaActionsActivator getDefault() {
-    return _plugin;
+    return plugin;
   }
 
   /**

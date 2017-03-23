@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,32 +50,32 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
  */
 public class ExtractRepresentationsWizard extends Wizard {
   // Log4j reference logger.
-  private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  private static final Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
 
-  private TransactionalEditingDomain _domain;
-  private DAnalysisSession _session;
-  private List<DRepresentation> _representations;
-  private AirdFileCreationWizardPage _diagramModelFilePage;
-  private Resource _pickedResource;
+  private TransactionalEditingDomain domain;
+  private DAnalysisSession session;
+  private List<DRepresentation> representations;
+  private AirdFileCreationWizardPage diagramModelFilePage;
+  private Resource pickedResource;
 
   /**
    * Constructor.
-   * @param session_p origin session.
-   * @param domain_p the editing domain
-   * @param movableRepresentations_p the DView instance
+   * @param session origin session.
+   * @param domain the editing domain
+   * @param movableRepresentations the DView instance
    */
-  public ExtractRepresentationsWizard(DAnalysisSession session_p, TransactionalEditingDomain domain_p, List<DRepresentation> movableRepresentations_p) {
-    _domain = domain_p;
-    _session = session_p;
-    _representations = movableRepresentations_p;
+  public ExtractRepresentationsWizard(DAnalysisSession session, TransactionalEditingDomain domain, List<DRepresentation> movableRepresentations) {
+    this.domain = domain;
+    this.session = session;
+    this.representations = movableRepresentations;
   }
 
   /**
    * Initialize the wizard.
-   * @param workbench_p the workbench
-   * @param selection_p the selection
+   * @param workbench the workbench
+   * @param selection the selection
    */
-  public void init(IWorkbench workbench_p, IStructuredSelection selection_p) {
+  public void init(IWorkbench workbench, IStructuredSelection selection) {
     setWindowTitle("Extract views"); //$NON-NLS-1$
     setNeedsProgressMonitor(true);
   }
@@ -85,7 +85,7 @@ public class ExtractRepresentationsWizard extends Wizard {
    * @return The editing domain.
    */
   protected TransactionalEditingDomain getDomain() {
-    return _domain;
+    return domain;
   }
 
   /**
@@ -95,7 +95,7 @@ public class ExtractRepresentationsWizard extends Wizard {
   @Override
   public boolean performFinish() {
 
-    closeRepresentations(_representations);
+    closeRepresentations(representations);
 
     IRunnableWithProgress op = new DiagramFileCreationOperation();
     boolean errorCatch = false;
@@ -111,16 +111,16 @@ public class ExtractRepresentationsWizard extends Wizard {
   }
 
   /**
-   * @param slaveAnalysis_p
+   * @param slaveAnalysis
    */
-  private void moveRepresentations(final DAnalysis slaveAnalysis_p) {
+  private void moveRepresentations(final DAnalysis slaveAnalysis) {
     IRunnableWithProgress moveReps = new IRunnableWithProgress() {
-      public void run(IProgressMonitor monitor_p) {
+      public void run(IProgressMonitor monitor) {
         getDomain().getCommandStack().execute(new RecordingCommand(getDomain()) {
 
           @Override
           protected void doExecute() {
-            doMoveRepresentation(slaveAnalysis_p);
+            doMoveRepresentation(slaveAnalysis);
           }
 
           @Override
@@ -135,21 +135,21 @@ public class ExtractRepresentationsWizard extends Wizard {
     };
     try {
       getContainer().run(false, true, moveReps);
-    } catch (final InterruptedException ex_p) {
-      __logger.debug(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
-    } catch (InvocationTargetException ex_p) {
-      __logger.debug(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
+    } catch (final InterruptedException ex) {
+      logger.debug(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
+    } catch (InvocationTargetException ex) {
+      logger.debug(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
     }
   }
 
   /**
-   * @param op_p
+   * @param op
    * @return
    */
-  private boolean createAIRDFile(IRunnableWithProgress op_p, boolean error_p) {
-    boolean errorCatch = error_p;
+  private boolean createAIRDFile(IRunnableWithProgress op, boolean error) {
+    boolean errorCatch = error;
     try {
-      getContainer().run(false, true, op_p);
+      getContainer().run(false, true, op);
     } catch (InterruptedException e) {
       errorCatch = true;
       // return false;
@@ -172,7 +172,7 @@ public class ExtractRepresentationsWizard extends Wizard {
   private DAnalysis prepareNewAnalysis() {
     final DAnalysis slaveAnalysis = ViewpointFactory.eINSTANCE.createDAnalysis();
 
-    _domain.getCommandStack().execute(new RecordingCommand(_domain) {
+    domain.getCommandStack().execute(new RecordingCommand(domain) {
 
       @Override
       protected void doExecute() {
@@ -188,21 +188,21 @@ public class ExtractRepresentationsWizard extends Wizard {
     return slaveAnalysis;
   }
 
-  private void closeRepresentations(List<DRepresentation> diagrams_p) {
-    IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(_session);
+  private void closeRepresentations(List<DRepresentation> diagrams) {
+    IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
     if (uiSession != null) {
-      for (DRepresentation representation : diagrams_p) {
+      for (DRepresentation representation : diagrams) {
         closeOpenedEditor(uiSession, representation);
       }
     }
   }
 
   /**
-   * @param uiSession_p
-   * @param representation_p
+   * @param uiSession
+   * @param representation
    */
-  private void closeOpenedEditor(IEditingSession uiSession_p, DRepresentation representation_p) {
-    IEditorPart editor = uiSession_p.getEditor(representation_p);
+  private void closeOpenedEditor(IEditingSession uiSession, DRepresentation representation) {
+    IEditorPart editor = uiSession.getEditor(representation);
     if (editor != null) {
       editor.getEditorSite().getPage().closeEditor(editor, false);
     }
@@ -216,8 +216,8 @@ public class ExtractRepresentationsWizard extends Wizard {
   public void addPages() {
     List<String> extensions = new ArrayList<String>();
     extensions.add(SiriusUtil.DESCRIPTION_MODEL_EXTENSION);
-    _diagramModelFilePage = new AirdFileCreationWizardPage("DiagramModelFile", new StructuredSelection(), CapellaResourceHelper.AIRD_FILE_EXTENSION); //$NON-NLS-1$
-    addPage(_diagramModelFilePage);
+    diagramModelFilePage = new AirdFileCreationWizardPage("DiagramModelFile", new StructuredSelection(), CapellaResourceHelper.AIRD_FILE_EXTENSION); //$NON-NLS-1$
+    addPage(diagramModelFilePage);
   }
 
   /**
@@ -225,23 +225,23 @@ public class ExtractRepresentationsWizard extends Wizard {
    * @return the newly created resource.
    */
   public Resource getCreatedResource() {
-    return _pickedResource;
+    return pickedResource;
   }
 
   /**
-   * @param slaveAnalysis_p
+   * @param slaveAnalysis
    */
-  protected void doMoveRepresentation(final DAnalysis slaveAnalysis_p) {
-    _session.addReferencedAnalysis(slaveAnalysis_p);
-    for (Resource resource : _session.getSemanticResources()) {
+  protected void doMoveRepresentation(final DAnalysis slaveAnalysis) {
+    session.addReferencedAnalysis(slaveAnalysis);
+    for (Resource resource : session.getSemanticResources()) {
       if (!resource.getContents().isEmpty()) {
-        slaveAnalysis_p.getSemanticResources().add(new ResourceDescriptor(resource.getURI()));
+        slaveAnalysis.getSemanticResources().add(new ResourceDescriptor(resource.getURI()));
       }
     }
-    for (DRepresentation representation : _representations) {
+    for (DRepresentation representation : representations) {
       DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation).getRepresentationDescriptor();
       if (representationDescriptor != null) {
-        _session.moveRepresentation(slaveAnalysis_p, representationDescriptor);
+        session.moveRepresentation(slaveAnalysis, representationDescriptor);
       }
     }
   }
@@ -250,14 +250,14 @@ public class ExtractRepresentationsWizard extends Wizard {
    * 
    */
   protected void doCreateResource() {
-    _pickedResource = TransactionHelper.getEditingDomain(_session).getResourceSet().createResource(_diagramModelFilePage.getURI());
+    pickedResource = TransactionHelper.getEditingDomain(session).getResourceSet().createResource(diagramModelFilePage.getURI());
   }
 
   /**
    * @param slaveAnalysis
    */
   protected void doPrepareNewAnalysis(final DAnalysis slaveAnalysis) {
-    _pickedResource.getContents().add(slaveAnalysis);
+    pickedResource.getContents().add(slaveAnalysis);
   }
 
   private class DiagramFileCreationOperation extends WorkspaceModifyOperation {
@@ -267,7 +267,7 @@ public class ExtractRepresentationsWizard extends Wizard {
     }
 
     @Override
-    protected void execute(IProgressMonitor monitor_p) throws CoreException, InterruptedException {
+    protected void execute(IProgressMonitor monitor) throws CoreException, InterruptedException {
       doCreateResource();
     }
   }

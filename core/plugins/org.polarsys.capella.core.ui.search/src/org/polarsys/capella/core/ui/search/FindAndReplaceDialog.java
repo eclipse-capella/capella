@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -78,40 +78,38 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
 
   private static final String SPACE = " "; //$NON-NLS-1$
 
-  private Pattern _pattern;
+  private Pattern pattern;
 
   private static final int REPLACE_ALL_BUTTON = IDialogConstants.CLIENT_ID + 1;
   private static final int COMPUTE_IMPACT_BUTTON = IDialogConstants.CLIENT_ID + 2;
-  private FindAndReplaceHeader _header;
-  private ISelection _currentSelection;
+  private FindAndReplaceHeader header;
+  private ISelection currentSelection;
 
-  private Predicate<Element> _isNameMatching;
+  private Predicate<Element> isNameMatching;
+  private Predicate<Element> isSummaryMatching;
+  private Predicate<Element> isDescriptionMatching;
 
-  private Predicate<Element> _isSummaryMatching;
+  boolean ignoreWildCards;
+  private boolean wholeExpression;
+  private boolean wholeModelSearch;
+  private boolean nameSearch;
+  private boolean summarySearch;
+  private boolean descriptionSearch;
+  private SystemEngineering systemEngineering;
 
-  private Predicate<Element> _isDescriptionMatching;
-
-  boolean _ignoreWildCards;
-  private boolean _wholeExpression;
-  private boolean _wholeModelSearch;
-  private boolean _nameSearch;
-  private boolean _summarySearch;
-  private boolean _descriptionSearch;
-  private SystemEngineering _systemEngineering;
-
-  private Set<Element> _scope;
+  private Set<Element> scope;
   // TODO use a matchingMap:HashMap
-  private Set<Element> _matchingElementsForName;
+  private Set<Element> matchingElementsForName;
 
-  private Set<Element> _matchingElementsForSummary;
+  private Set<Element> matchingElementsForSummary;
 
-  private Set<Element> _matchingElementsForDescription;
+  private Set<Element> matchingElementsForDescription;
 
-  private boolean _updateHyperlinks;
+  private boolean updateHyperlinks;
 
-  private boolean _ignoreCase;
+  private boolean ignoreCase;
 
-  private Predicate<CapellaElement> _isDescriptionMatchingByWords;
+  private Predicate<CapellaElement> isDescriptionMatchingByWords;
 
   /**
    * Create the dialog.
@@ -137,8 +135,8 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
   public FindAndReplaceDialog(Shell shell, SystemEngineering root, HashSet<EObject> modelElementContent, ISelection selection,
       int treeViewerExpandLevel) {
     this(shell, modelElementContent, treeViewerExpandLevel);
-    _currentSelection = selection;
-    _systemEngineering = root;
+    this.currentSelection = selection;
+    this.systemEngineering = root;
   }
 
   /**
@@ -173,12 +171,12 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
   @Override
   protected void doCreateDialogArea(Composite parent) {
     // add the header
-    _header = new FindAndReplaceHeader(parent, SWT.NO_BACKGROUND);
+    header = new FindAndReplaceHeader(parent, SWT.NO_BACKGROUND);
     super.doCreateDialogArea(parent);
-    getViewer().getClientViewer().setSelection(_currentSelection, true);
+    getViewer().getClientViewer().setSelection(currentSelection, true);
     getViewer().getClientViewer().getTree().showSelection();
 
-    _isNameMatching = new Predicate<Element>() {
+    isNameMatching = new Predicate<Element>() {
       @Override
       public boolean apply(Element elt) {
         if (elt instanceof AbstractNamedElement) {
@@ -191,13 +189,13 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
       }
     };
 
-    _isSummaryMatching = new Predicate<Element>() {
+    isSummaryMatching = new Predicate<Element>() {
       @Override
       public boolean apply(Element elt) {
         return elt instanceof CapellaElement ? match(((CapellaElement) elt).getSummary()) : false;
       }
     };
-    _isDescriptionMatching = new Predicate<Element>() {
+    isDescriptionMatching = new Predicate<Element>() {
       @Override
       public boolean apply(Element elt) {
         return elt instanceof CapellaElement ? match(((CapellaElement) elt).getDescription()) : false;
@@ -205,7 +203,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     };
 
     // other version that matches description words
-    _isDescriptionMatchingByWords = new Predicate<CapellaElement>() {
+    isDescriptionMatchingByWords = new Predicate<CapellaElement>() {
       @Override
       public boolean apply(CapellaElement elt) {
         String description = elt.getDescription();
@@ -223,18 +221,18 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
       }
     };
 
-    _matchingElementsForSummary = Sets.newHashSet();
-    _matchingElementsForName = Sets.newHashSet();
-    _matchingElementsForDescription = Sets.newHashSet();
+    matchingElementsForSummary = Sets.newHashSet();
+    matchingElementsForName = Sets.newHashSet();
+    matchingElementsForDescription = Sets.newHashSet();
 
-    _header.getWholeModelRadioButton().addSelectionListener(new SelectionAdapter() {
+    header.getWholeModelRadioButton().addSelectionListener(new SelectionAdapter() {
       @SuppressWarnings("synthetic-access")
       @Override
       public void widgetSelected(SelectionEvent e) {
         getViewer().setEnabled(false);
       }
     });
-    _header.getSelectedElementsRadioBtn().addSelectionListener(new SelectionAdapter() {
+    header.getSelectedElementsRadioBtn().addSelectionListener(new SelectionAdapter() {
       @SuppressWarnings("synthetic-access")
       @Override
       public void widgetSelected(SelectionEvent e) {
@@ -247,14 +245,14 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    * 
    */
   private void getUserChoices() {
-    _ignoreWildCards = !_header.isWildCardsChecked();
-    _ignoreCase = !_header.isCaseSensitiveChecked();
-    _wholeModelSearch = _header.isWholeModelChecked();
-    _wholeExpression = _header.isWholeExpression();
-    _nameSearch = _header.isNameChecked();
-    _summarySearch = _header.isSummaryChecked();
-    _descriptionSearch = _header.isDescriptionChecked();
-    _updateHyperlinks = _header.isUpdateHyperlinks();
+    ignoreWildCards = !header.isWildCardsChecked();
+    ignoreCase = !header.isCaseSensitiveChecked();
+    wholeModelSearch = header.isWholeModelChecked();
+    wholeExpression = header.isWholeExpression();
+    nameSearch = header.isNameChecked();
+    summarySearch = header.isSummaryChecked();
+    descriptionSearch = header.isDescriptionChecked();
+    updateHyperlinks = header.isUpdateHyperlinks();
   }
 
   void handlePreviewImpact() {
@@ -263,11 +261,11 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     updatePattern();
     updateMatchingElements();
 
-    _header.getImpactedElementsLabel().setText(_matchingElementsForName.size() + SPACE);
-    _header.getNbImpactedSummaries().setText(_matchingElementsForSummary.size() + SPACE);
-    _header.getNbImpactedDescs().setText(_matchingElementsForDescription.size() + SPACE);
+    header.getImpactedElementsLabel().setText(matchingElementsForName.size() + SPACE);
+    header.getNbImpactedSummaries().setText(matchingElementsForSummary.size() + SPACE);
+    header.getNbImpactedDescs().setText(matchingElementsForDescription.size() + SPACE);
 
-    SetView<Element> impactedElts = Sets.union(Sets.union(_matchingElementsForName, _matchingElementsForSummary), _matchingElementsForDescription);
+    SetView<Element> impactedElts = Sets.union(Sets.union(matchingElementsForName, matchingElementsForSummary), matchingElementsForDescription);
 
     // no matching elements
     if (impactedElts.size() == 0) {
@@ -292,11 +290,11 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     updateMatchingElements();
 
     ICommand replaceAllInNameCmd =
-        CommandFactory.createReplaceAllInNameCommand(_matchingElementsForName, getFindString(), getReplaceString(), false, _ignoreWildCards, false, false);
+        CommandFactory.createReplaceAllInNameCommand(matchingElementsForName, getFindString(), getReplaceString(), false, ignoreWildCards, false, false);
     ICommand replaceAllInSummaryCmd =
-        CommandFactory.createReplaceAllInSummary(_matchingElementsForSummary, getFindString(), getReplaceString(), false, _ignoreWildCards, false, false);
+        CommandFactory.createReplaceAllInSummary(matchingElementsForSummary, getFindString(), getReplaceString(), false, ignoreWildCards, false, false);
     ICommand replaceAllInDescCmd =
-        CommandFactory.createReplaceAllInDescription(_matchingElementsForDescription, getFindString(), getReplaceString(), false, _ignoreWildCards, false,
+        CommandFactory.createReplaceAllInDescription(matchingElementsForDescription, getFindString(), getReplaceString(), false, ignoreWildCards, false,
             false);
 
     // execute the compoundcommand to replace names, summaries and descriptions
@@ -306,18 +304,18 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     replaceAllCommand.append(replaceAllInDescCmd);
 
     if (replaceAllCommand.getContainedCommandsSize() > 0) {
-      TransactionHelper.getExecutionManager(_systemEngineering).execute(replaceAllCommand);
+      TransactionHelper.getExecutionManager(systemEngineering).execute(replaceAllCommand);
     }
 
     // update description hyperlinks to impacted elements
-    if (_updateHyperlinks) {
+    if (updateHyperlinks) {
       updateHyperlinksInDescriptions();
     }
 
     // report results to user
-    reportResults(Messages.FindAndReplaceDialog_impacted_names, _matchingElementsForName);
-    reportResults(Messages.FindAndReplaceDialog_impacted_summaries, _matchingElementsForSummary);
-    reportResults(Messages.FindAndReplaceDialog_impacted_descriptions, _matchingElementsForDescription);
+    reportResults(Messages.FindAndReplaceDialog_impacted_names, matchingElementsForName);
+    reportResults(Messages.FindAndReplaceDialog_impacted_summaries, matchingElementsForSummary);
+    reportResults(Messages.FindAndReplaceDialog_impacted_descriptions, matchingElementsForDescription);
 
   }
 
@@ -328,7 +326,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
   private void updateHyperlinksInDescriptions() {
     // warn: not optimized implementation, scans the whole system engineering content
     // TODO reduce the scope update to referencing descriptions
-    final Set<EObject> SysEngAllContents = (Set<EObject>) EcoreUtil2.getAllContents(Collections.singleton(_systemEngineering));
+    final Set<EObject> SysEngAllContents = (Set<EObject>) EcoreUtil2.getAllContents(Collections.singleton(systemEngineering));
     final WriteCapellaElementDescriptionSAXParser writeDescription = new WriteCapellaElementDescriptionSAXParser() {
       /**
        * {@inheritDoc}
@@ -372,20 +370,20 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    * 
    */
   private void updateMatchingElements() {
-    if (_nameSearch) {
-      _matchingElementsForName = ImmutableSet.copyOf(Sets.filter(_scope, _isNameMatching));
+    if (nameSearch) {
+      matchingElementsForName = ImmutableSet.copyOf(Sets.filter(scope, isNameMatching));
     } else {
-      _matchingElementsForName = Collections.emptySet();
+      matchingElementsForName = Collections.emptySet();
     }
-    if (_summarySearch) {
-      _matchingElementsForSummary = ImmutableSet.copyOf(Sets.filter(_scope, _isSummaryMatching));
+    if (summarySearch) {
+      matchingElementsForSummary = ImmutableSet.copyOf(Sets.filter(scope, isSummaryMatching));
     } else {
-      _matchingElementsForSummary = Collections.emptySet();
+      matchingElementsForSummary = Collections.emptySet();
     }
-    if (_descriptionSearch) {
-      _matchingElementsForDescription = ImmutableSet.copyOf(Sets.filter(_scope, _isDescriptionMatching));
+    if (descriptionSearch) {
+      matchingElementsForDescription = ImmutableSet.copyOf(Sets.filter(scope, isDescriptionMatching));
     } else {
-      _matchingElementsForDescription = Collections.emptySet();
+      matchingElementsForDescription = Collections.emptySet();
     }
   }
 
@@ -393,13 +391,13 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    * 
    */
   private void updatePattern() {
-    if (!_ignoreWildCards) {
+    if (!ignoreWildCards) {
       return;
     }
-    if (_ignoreWildCards) {
-      _pattern = Pattern.compile(getFindString(), (_ignoreCase ? Pattern.CASE_INSENSITIVE : 0) | Pattern.LITERAL);
+    if (ignoreWildCards) {
+      pattern = Pattern.compile(getFindString(), (ignoreCase ? Pattern.CASE_INSENSITIVE : 0) | Pattern.LITERAL);
     } else {
-      _pattern = Pattern.compile(getFindString(), _ignoreCase ? Pattern.CASE_INSENSITIVE : 0);
+      pattern = Pattern.compile(getFindString(), ignoreCase ? Pattern.CASE_INSENSITIVE : 0);
     }
   }
 
@@ -408,13 +406,13 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    */
   @SuppressWarnings("unchecked")
   private void updateScope() {
-    if (_wholeModelSearch) {
-      _scope = (Set<Element>) EcoreUtil2.getAllContents(Collections.singleton(_systemEngineering));
+    if (wholeModelSearch) {
+      scope = (Set<Element>) EcoreUtil2.getAllContents(Collections.singleton(systemEngineering));
     } else { // scope is the selected elements in the tree viewer
       List<? extends EObject> selected = handleResult();
       // append contents of selected elements to the list
       // TODO transform
-      _scope = (Set<Element>) EcoreUtil2.getAllContents(selected);
+      scope = (Set<Element>) EcoreUtil2.getAllContents(selected);
     }
 
   }
@@ -423,7 +421,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    * @return
    */
   public String getFindString() {
-    String findText = _header.getFindCombo().getText();
+    String findText = header.getFindCombo().getText();
     return findText;
   }
 
@@ -431,7 +429,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    * @return
    */
   public String getReplaceString() {
-    return _header.getReplaceCombo().getText();
+    return header.getReplaceCombo().getText();
   }
 
   /**
@@ -443,17 +441,17 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     if (null == string) {
       return false;
     }
-    if (!_ignoreWildCards) {// if wildcards are used
+    if (!ignoreWildCards) {// if wildcards are used
 
       return matchWithWildCard(string);
     }
-    if (_wholeExpression) {
+    if (wholeExpression) {
       List<String> findExprList = Arrays.asList(getFindString().split(SPACE));
       List<String> string_pList = Arrays.asList(string.split(SPACE));
 
-      return matchExpressionList(string_pList, findExprList, _ignoreCase);
+      return matchExpressionList(string_pList, findExprList, ignoreCase);
     }
-    return _pattern.matcher(string).find();
+    return pattern.matcher(string).find();
   }
 
   /**
@@ -462,7 +460,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    */
   @SuppressWarnings("restriction")
   private boolean matchWithWildCard(String string) {
-    StringMatcher wildCardMatcher = new StringMatcher(getFindString(), _ignoreCase, _ignoreWildCards);
+    StringMatcher wildCardMatcher = new StringMatcher(getFindString(), ignoreCase, ignoreWildCards);
     return wildCardMatcher.match(string);
   }
 

@@ -20,20 +20,20 @@ public class EditCapellaCustomPropertyWizard extends Wizard {
   /**
    * Model element that the wizard is open for.
    */
-  private EObject _object;
+  private EObject object;
   /**
    * Metaclass UI label for handled model element.
    */
-  private String _metaclassLabel;
+  private String metaclassLabel;
   /**
    * Wizard page that displays the sections for handled model element.
    */
-  private EditCapellaCustomPropertyWizardPage _page;
+  private EditCapellaCustomPropertyWizardPage page;
 
   public EditCapellaCustomPropertyWizard(EObject object) {
-    _object = object;
-    _metaclassLabel = EObjectLabelProviderHelper.getMetaclassLabel(object, false);
-    setWindowTitle(_metaclassLabel);
+    this.object = object;
+    this.metaclassLabel = EObjectLabelProviderHelper.getMetaclassLabel(object, false);
+    setWindowTitle(metaclassLabel);
   }
 
   /**
@@ -41,8 +41,8 @@ public class EditCapellaCustomPropertyWizard extends Wizard {
    */
   @Override
   public void addPages() {
-    _page = new EditCapellaCustomPropertyWizardPage("editCapellaCustomWizardPage", _object, _metaclassLabel); //$NON-NLS-1$
-    addPage(_page);
+    page = new EditCapellaCustomPropertyWizardPage("editCapellaCustomWizardPage", object, metaclassLabel); //$NON-NLS-1$
+    addPage(page);
   }
 
   /**
@@ -59,6 +59,6 @@ public class EditCapellaCustomPropertyWizard extends Wizard {
    * @return a not <code>null</code> element.
    */
   public EObject getEObject() {
-    return _object;
+    return object;
   }
 }

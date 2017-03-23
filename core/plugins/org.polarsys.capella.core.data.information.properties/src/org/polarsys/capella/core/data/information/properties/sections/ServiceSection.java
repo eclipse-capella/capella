@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,7 +59,7 @@ public class ServiceSection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _visibilityKindGroup = new VisibilityKindGroup(_rootParentComposite, getWidgetFactory());
+    _visibilityKindGroup = new VisibilityKindGroup(rootParentComposite, getWidgetFactory());
     _visibilityKindGroup.setDisplayedInWizard(displayedInWizard);
 
     _thrownExceptionsField = new MultipleSemanticField(getReferencesGroup(),
@@ -75,7 +75,7 @@ public class ServiceSection extends NamedElementSection {
         Messages.getString("ServiceSection_RealizedExchangeItems_Label"), getWidgetFactory(), new Service_RealizedExchangeItemsController()); //$NON-NLS-1$
     _realizedExchangeItemsField.setDisplayedInWizard(displayedInWizard);
 
-    Group exchangeItemGroup = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
+    Group exchangeItemGroup = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
     exchangeItemGroup.setLayout(new GridLayout(1, false));
     GridData layoutData = new GridData(GridData.FILL_HORIZONTAL);
     layoutData.horizontalSpan = 2;

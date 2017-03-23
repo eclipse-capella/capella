@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,118 +18,119 @@ import java.util.List;
  * @see Decomposition#addTargetComponent(DecompositionComponent)
  */
 public class DecompositionComponent {
-  private String _name;
-  private Object _value;
-  private List<DecompositionItem> _items;
-  private String _decompositionName;
-  private boolean _sourceComponent;
+  private String name;
+  private Object value;
+  private List<DecompositionItem> items;
+  private String decompositionName;
+  private boolean sourceComponent;
   private Decomposition parentDecomposition;
-  private boolean _reusedComponent;
-  private boolean _alreadyDecomposed;
-  private Object _reusedTarget;
-  private String _path;
-  private boolean _isComposite;
-  private boolean _triger = false;
+  private boolean reusedComponent;
+  private boolean alreadyDecomposed;
+  private Object reusedTarget;
+  private String path;
+  private boolean isComposite;
+  private boolean trigger = false;
+
   /**
    * Constructor
    */
   public DecompositionComponent() {
-    _items = new ArrayList<DecompositionItem>();
+    items = new ArrayList<DecompositionItem>();
   }
 
   /**
    * @return the component
    */
   public Object getValue() {
-    return _value;
+    return value;
   }
 
   /**
-   * @param component_p
+   * @param component
    *          the component to set
    */
-  public void setValue(Object value_p) {
-    _value = value_p;
+  public void setValue(Object value) {
+    this.value = value;
   }
 
   /**
    * @return the items
    */
   public List<DecompositionItem> getItems() {
-    return _items;
+    return items;
   }
   
   /**
-   * @param items_p
+   * @param items
    *          the items to set
    */
-  public void setItems(List<DecompositionItem> items_p) {
-    for (DecompositionItem pair : items_p)
+  public void setItems(List<DecompositionItem> items) {
+    for (DecompositionItem pair : items)
       pair.setParentComponent(this);
-    _items = items_p;
+    this.items = items;
   }
 
   /**
    * Adds a DecompositionItem item (Wrapper for any object) with name, value and status
-   * @param item_p
+   * @param item
    *          the item to be added
    */
-  public void addItem(DecompositionItem item_p) {
-    _items.add(item_p);
+  public void addItem(DecompositionItem item) {
+    items.add(item);
   }
 
   /**
    * Removes an item from the component
-   * @param item_p
+   * @param item
    *          the item to be removed
    */
-  public void removeItem(DecompositionItem item_p) {
-    _items.remove(item_p);
+  public void removeItem(DecompositionItem item) {
+    items.remove(item);
   }
 
   /**
    * @return the name
    */
   public String getName() {
-    return _name;
+    return name;
   }
 
   /**
-   * @param name_p
+   * @param name
    *          the name to set
    */
-  public void setName(String name_p) {
-    _name = name_p;
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
    * @return the decompositionName
    */
   public String getDecompositionName() {
-    return _decompositionName;
+    return decompositionName;
   }
 
   /**
-   * @param decompositionName_p
+   * @param decompositionName
    *          the decompositionName to set
    */
-  public void setDecompositionName(String decompositionName_p) {
-    _decompositionName = decompositionName_p;
+  public void setDecompositionName(String decompositionName) {
+    this.decompositionName = decompositionName;
   }
 
   /**
    * @return the sourceComponent
    */
   public boolean isSourceComponent() {
-    return _sourceComponent;
+    return sourceComponent;
   }
 
   /**
-   * @param sourceComponent_p
+   * @param sourceComponent
    *          the sourceComponent to set
    */
-  public void setSourceComponent(boolean sourceComponent_p) {
-    _sourceComponent = sourceComponent_p;
+  public void setSourceComponent(boolean sourceComponent) {
+    this.sourceComponent = sourceComponent;
   }
 
   /**
@@ -140,11 +141,11 @@ public class DecompositionComponent {
   }
 
   /**
-   * @param parentDecomposition_p
+   * @param parentDecomposition
    *          the parentDecomposition to set
    */
-  public void setParentDecomposition(Decomposition parentDecomposition_p) {
-    parentDecomposition = parentDecomposition_p;
+  public void setParentDecomposition(Decomposition parentDecomposition) {
+    this.parentDecomposition = parentDecomposition;
   }
 
   /**
@@ -159,97 +160,97 @@ public class DecompositionComponent {
    * @return the reusedComponent
    */
   public boolean isReusedComponent() {
-    return _reusedComponent;
+    return reusedComponent;
   }
 
   /**
-   * @param reusedComponent_p the reusedComponent to set
+   * @param reusedComponent the reusedComponent to set
    */
-  public void setReusedComponent(boolean reusedComponent_p) {
-    _reusedComponent = reusedComponent_p;
+  public void setReusedComponent(boolean reusedComponent) {
+    this.reusedComponent = reusedComponent;
   }
 
   /**
    * @see java.lang.Object#equals(java.lang.Object)
    */
   @Override
-  public boolean equals(Object object_p) {
-    if (!(object_p instanceof DecompositionComponent))
+  public boolean equals(Object object) {
+    if (!(object instanceof DecompositionComponent))
       return false;
-    if(this == object_p) return true;
+    if(this == object) return true;
     if (getValue() == null) {
       return false;
     }
-    return getValue().equals(((DecompositionComponent) object_p).getValue());
+    return getValue().equals(((DecompositionComponent) object).getValue());
   }
 
   /**
    * @return the alreadyDecomposed
    */
   public boolean isAlreadyDecomposed() {
-    return _alreadyDecomposed;
+    return alreadyDecomposed;
   }
 
   /**
-   * @param alreadyDecomposed_p the alreadyDecomposed to set
+   * @param alreadyDecomposed the alreadyDecomposed to set
    */
-  public void setAlreadyDecomposed(boolean alreadyDecomposed_p) {
-    _alreadyDecomposed = alreadyDecomposed_p;
+  public void setAlreadyDecomposed(boolean alreadyDecomposed) {
+    this.alreadyDecomposed = alreadyDecomposed;
   }
 
   /**
    * @return the reusedTarget
    */
   public Object getReusedTarget() {
-    return _reusedTarget;
+    return reusedTarget;
   }
 
   /**
-   * @param reusedTarget_p the reusedTarget to set
+   * @param reusedTarget the reusedTarget to set
    */
-  public void setReusedTarget(Object reusedTarget_p) {
-    _reusedTarget = reusedTarget_p;
+  public void setReusedTarget(Object reusedTarget) {
+    this.reusedTarget = reusedTarget;
   }
 
   /**
    * @return the path
    */
   public String getPath() {
-    return _path;
+    return path;
   }
 
   /**
-   * @param path_p the path to set
+   * @param path the path to set
    */
-  public void setPath(String path_p) {
-    _path = path_p;
+  public void setPath(String path) {
+    this.path = path;
   }
 
   /**
    * @return the isComposite
    */
   public boolean isComposite() {
-    return _isComposite;
+    return isComposite;
   }
 
   /**
-   * @param isComposite_p the isComposite to set
+   * @param isComposite the isComposite to set
    */
-  public void setComposite(boolean isComposite_p) {
-    _isComposite = isComposite_p;
+  public void setComposite(boolean isComposite) {
+    this.isComposite = isComposite;
   }
   /** 
    * @return the isTrigger : specific for LC Decomposition wizard.
    * 						 return true if naming convention triggered through this wizard 
    */
   public boolean isTrigger(){
-	  return _triger;
+	  return trigger;
   }
   /** 
-   * @param trigger_p vaule to set : specific for LC Decomposition wizard.
+   * @param trigger vaule to set : specific for LC Decomposition wizard.
    * 				 
    */
-  public void setTrigger(boolean trigger_p){
-	_triger =  trigger_p; 
+  public void setTrigger(boolean trigger){
+    this.trigger =  trigger; 
   }
 }

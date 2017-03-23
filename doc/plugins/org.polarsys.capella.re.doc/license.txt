@@ -137,3 +137,4 @@ org.polarsys.capella.doc/html/**/Images
 9.4. Usage Restrictions_html_733c5d5d.jpg
 9.4. Usage Restrictions_html_m2f4cc7f5.jpg
 9.4. Usage Restrictions_html_m9524248.png
+InfoIcon.png

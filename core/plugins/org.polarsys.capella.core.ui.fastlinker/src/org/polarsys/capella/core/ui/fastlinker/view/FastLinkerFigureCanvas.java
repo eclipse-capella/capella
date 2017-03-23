@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,11 +42,9 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.polarsys.capella.core.ui.fastlinker.view.providers.FastLinkerLabelProvider;
-import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
 import org.polarsys.capella.core.model.links.helpers.LinkInfo;
 import org.polarsys.capella.core.model.links.helpers.LinkInfo.LinkStyle;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.core.ui.fastlinker.view.providers.FastLinkerLabelProvider;
 
 /**
  */
@@ -55,63 +53,63 @@ public class FastLinkerFigureCanvas extends FigureCanvas implements ISelectionPr
    */
   protected class SelectionDragManager extends MouseMotionListener.Stub implements MouseListener {
 
-    private IFigure _draggedFigure;
+    private IFigure draggedFigure;
 
-    private Point _lastFigureLocation;
+    private Point lastFigureLocation;
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void mouseDoubleClicked(MouseEvent me_p) {
+    public void mouseDoubleClicked(MouseEvent me) {
       fireDoubleClick();
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-      if (null == _draggedFigure) {
+      if (null == draggedFigure) {
         return;
       }
       Point newFigureLocation = e.getLocation();
-      Dimension delta = newFigureLocation.getDifference(_lastFigureLocation);
-      _lastFigureLocation = newFigureLocation;
-      if (_fastLinkerFigure.getLayoutManager() instanceof FilteringGridLayout) {
-        switchToXYLayout(_fastLinkerFigure);
+      Dimension delta = newFigureLocation.getDifference(lastFigureLocation);
+      lastFigureLocation = newFigureLocation;
+      if (fastLinkerFigure.getLayoutManager() instanceof FilteringGridLayout) {
+        switchToXYLayout(fastLinkerFigure);
       }
-      Rectangle newBounds = _draggedFigure.getBounds().getTranslated(delta.width, delta.height);
+      Rectangle newBounds = draggedFigure.getBounds().getTranslated(delta.width, delta.height);
       // Forbid to drag the figure beyond the left and top limits of the canvas.
       if ((newBounds.x > 0) && (newBounds.y > 0)) {
-        _draggedFigure.getParent().setConstraint(_draggedFigure, newBounds);
+        draggedFigure.getParent().setConstraint(draggedFigure, newBounds);
       }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-      _lastFigureLocation = e.getLocation();
+      lastFigureLocation = e.getLocation();
       e.consume();
       // Get Label at event location.
-      IFigure newSelectedFigure = _fastLinkerFigure.findFigureAt(e.x, e.y, LABEL_FILTER);
-      if (_selectedFigure != newSelectedFigure) {
-        if (null != _selectedFigure) {
-          _selectedFigure.setBorder(null);
+      IFigure newSelectedFigure = fastLinkerFigure.findFigureAt(e.x, e.y, LABEL_FILTER);
+      if (selectedFigure != newSelectedFigure) {
+        if (null != selectedFigure) {
+          selectedFigure.setBorder(null);
         }
         if (null != newSelectedFigure) {
           newSelectedFigure.setBorder(new LineBorder());
-          if (_fastLinkerFigure.getLayoutManager().getConstraint(newSelectedFigure) instanceof Rectangle) {
-            ((Rectangle) _fastLinkerFigure.getLayoutManager().getConstraint(newSelectedFigure)).setSize(newSelectedFigure.getPreferredSize());
+          if (fastLinkerFigure.getLayoutManager().getConstraint(newSelectedFigure) instanceof Rectangle) {
+            ((Rectangle) fastLinkerFigure.getLayoutManager().getConstraint(newSelectedFigure)).setSize(newSelectedFigure.getPreferredSize());
           }
         }
-        _selectedFigure = newSelectedFigure;
+        selectedFigure = newSelectedFigure;
         fireSelectionChanged();
       }
       if (null != newSelectedFigure) {
-        _draggedFigure = newSelectedFigure;
+        draggedFigure = newSelectedFigure;
       }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-      _draggedFigure = null;
+      draggedFigure = null;
     }
   }
 
@@ -123,156 +121,155 @@ public class FastLinkerFigureCanvas extends FigureCanvas implements ISelectionPr
      * {@inheritDoc}
      */
     @Override
-    public boolean accept(IFigure figure_p) {
+    public boolean accept(IFigure figure) {
       // Accept figure of type Label only (and so ignore Connections and main figure).
-      return (figure_p instanceof Label);
+      return (figure instanceof Label);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean prune(IFigure figure_p) {
+    public boolean prune(IFigure figure) {
       return false;
     }
   };
 
-  protected final List<IDoubleClickListener> _doubleClickListeners;
+  protected final List<IDoubleClickListener> doubleClickListeners;
 
-  protected final Figure _fastLinkerFigure;
+  protected final Figure fastLinkerFigure;
 
-  protected final Map<IFigure, Collection> _figureToModelElement;
-protected final FastLinkerLabelProvider _capellaElementLabelProvider;
-  
+  protected final Map<IFigure, Collection> figureToModelElement;
+  protected final FastLinkerLabelProvider capellaElementLabelProvider;
 
-  protected IFigure _selectedFigure;
+  protected IFigure selectedFigure;
 
-  protected final List<ISelectionChangedListener> _selectionListeners;
+  protected final List<ISelectionChangedListener> selectionListeners;
 
-  protected final SelectionDragManager _sharedDragManager;
+  protected final SelectionDragManager sharedDragManager;
 
   /**
    * Constructor.
-   * @param parent_p
+   * @param parent
    */
-  public FastLinkerFigureCanvas(Composite parent_p, int style) {
-    super(parent_p, style);
+  public FastLinkerFigureCanvas(Composite parent, int style) {
+    super(parent, style);
 
-    _figureToModelElement = new HashMap<IFigure, Collection>();
-    _selectionListeners = new ArrayList<ISelectionChangedListener>();
-    _doubleClickListeners = new ArrayList<IDoubleClickListener>();
+    figureToModelElement = new HashMap<IFigure, Collection>();
+    selectionListeners = new ArrayList<ISelectionChangedListener>();
+    doubleClickListeners = new ArrayList<IDoubleClickListener>();
 
     // Label provider for ModelElements displayed in the view.
-    _capellaElementLabelProvider = new FastLinkerLabelProvider();
+    capellaElementLabelProvider = new FastLinkerLabelProvider();
 
-    _fastLinkerFigure = new Figure();
-    setContents(_fastLinkerFigure);
+    fastLinkerFigure = new Figure();
+    setContents(fastLinkerFigure);
 
-    _sharedDragManager = new SelectionDragManager();
-    _fastLinkerFigure.addMouseListener(_sharedDragManager);
-    _fastLinkerFigure.addMouseMotionListener(_sharedDragManager);
+    sharedDragManager = new SelectionDragManager();
+    fastLinkerFigure.addMouseListener(sharedDragManager);
+    fastLinkerFigure.addMouseMotionListener(sharedDragManager);
 
     setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
     setScrollBarVisibility(FigureCanvas.AUTOMATIC);
   }
 
-  public void addDoubleClickListener(IDoubleClickListener listener_p) {
-    _doubleClickListeners.add(listener_p);
+  public void addDoubleClickListener(IDoubleClickListener listener) {
+    doubleClickListeners.add(listener);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void addSelectionChangedListener(ISelectionChangedListener listener_p) {
-    _selectionListeners.add(listener_p);
+  public void addSelectionChangedListener(ISelectionChangedListener listener) {
+    selectionListeners.add(listener);
   }
 
-  protected IFigure createConnection(IFigure sourceFigure_p, IFigure targetFigure_p, LinkStyle linkGraphicalRepresentation_p) {
+  protected IFigure createConnection(IFigure sourceFigure, IFigure targetFigure, LinkStyle linkGraphicalRepresentation) {
     PolylineConnection connection = new PolylineConnection();
-    connection.setSourceAnchor(new ChopboxAnchor(sourceFigure_p));
-    connection.setTargetAnchor(new ChopboxAnchor(targetFigure_p));
+    connection.setSourceAnchor(new ChopboxAnchor(sourceFigure));
+    connection.setTargetAnchor(new ChopboxAnchor(targetFigure));
     connection.setAntialias(SWT.ON);
     // Line style.
-    if (LinkStyle.LINE_DASHED == linkGraphicalRepresentation_p) {
+    if (LinkStyle.LINE_DASHED == linkGraphicalRepresentation) {
       connection.setLineStyle(SWT.LINE_CUSTOM);
       connection.setLineDash(new float[] { 4f, 4f });
     } else {
       connection.setLineStyle(SWT.LINE_SOLID);
     }
     // Arrow.
-    if (LinkStyle.LINE_SOLID_WITH_EMPTY_ARROW == linkGraphicalRepresentation_p) {
+    if (LinkStyle.LINE_SOLID_WITH_EMPTY_ARROW == linkGraphicalRepresentation) {
       PolygonDecoration pd = new PolygonDecoration();
       pd.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
       connection.setTargetDecoration(pd);
-    } else if (LinkStyle.LINE_SOLID_WITH_FILLED_ARROW == linkGraphicalRepresentation_p) {
+    } else if (LinkStyle.LINE_SOLID_WITH_FILLED_ARROW == linkGraphicalRepresentation) {
       PolygonDecoration pd = new PolygonDecoration();
       connection.setTargetDecoration(pd);
     }
     return connection;
   }
 
-  protected Label createModelElementFigure(Collection modelElement_p, boolean displayInBold_p) {
-    Label modelElementFigure = new Label(_capellaElementLabelProvider.getText(modelElement_p), _capellaElementLabelProvider.getImage(modelElement_p));
-    if (displayInBold_p) {
+  protected Label createModelElementFigure(Collection modelElement, boolean displayInBold) {
+    Label modelElementFigure = new Label(capellaElementLabelProvider.getText(modelElement), capellaElementLabelProvider.getImage(modelElement));
+    if (displayInBold) {
       // Get the BOLD font from the FontRegistry.
       Font boldFont = JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT);
       modelElementFigure.setFont(boldFont);
     }
-    _figureToModelElement.put(modelElementFigure, modelElement_p);
+    figureToModelElement.put(modelElementFigure, modelElement);
     return modelElementFigure;
   }
 
-  public void fillFigure(Collection firstElement_p, Collection secondElement_p, Collection pinnedElement_p, LinkInfo linkRepresentation_p) {
-    _figureToModelElement.clear();
-    _fastLinkerFigure.removeAll();
-    _selectedFigure = null;
+  public void fillFigure(Collection firstElement, Collection secondElement, Collection pinnedElement, LinkInfo linkRepresentation) {
+    figureToModelElement.clear();
+    fastLinkerFigure.removeAll();
+    selectedFigure = null;
     fireSelectionChanged();
 
-    _fastLinkerFigure.setLayoutManager(new FilteringGridLayout(1, false));
+    fastLinkerFigure.setLayoutManager(new FilteringGridLayout(1, false));
 
     IFigure secondElementFigure = null;
-    if (null != secondElement_p) {
-      secondElementFigure = createModelElementFigure(secondElement_p, secondElement_p == pinnedElement_p);
-      _fastLinkerFigure.add(secondElementFigure, new FilteringGridData(SWT.CENTER, SWT.CENTER, true, true));
+    if (null != secondElement) {
+      secondElementFigure = createModelElementFigure(secondElement, secondElement == pinnedElement);
+      fastLinkerFigure.add(secondElementFigure, new FilteringGridData(SWT.CENTER, SWT.CENTER, true, true));
     }
 
     IFigure firstElementFigure = null;
-    if (null != firstElement_p) {
-      firstElementFigure = createModelElementFigure(firstElement_p, firstElement_p == pinnedElement_p);
-      _fastLinkerFigure.add(firstElementFigure, new FilteringGridData(SWT.CENTER, SWT.CENTER, true, true));
+    if (null != firstElement) {
+      firstElementFigure = createModelElementFigure(firstElement, firstElement == pinnedElement);
+      fastLinkerFigure.add(firstElementFigure, new FilteringGridData(SWT.CENTER, SWT.CENTER, true, true));
     }
 
-    if (null != linkRepresentation_p) {
+    if (null != linkRepresentation) {
       IFigure connection = null;
-			if (firstElement_p != null && (firstElement_p.contains(linkRepresentation_p._sourceElement))
-					&& secondElement_p != null && (secondElement_p
-							.contains(linkRepresentation_p._targetElement))) {
+			if (firstElement != null && (firstElement.contains(linkRepresentation._sourceElement))
+					&& secondElement != null && (secondElement
+							.contains(linkRepresentation._targetElement))) {
 				connection = createConnection(firstElementFigure,
-						secondElementFigure, linkRepresentation_p._linkStyle);
-			} else if (secondElement_p != null && (secondElement_p
-					.contains(linkRepresentation_p._sourceElement))
-					&& firstElement_p != null && (firstElement_p
-							.contains(linkRepresentation_p._targetElement))) {
+						secondElementFigure, linkRepresentation._linkStyle);
+			} else if (secondElement != null && (secondElement
+					.contains(linkRepresentation._sourceElement))
+					&& firstElement != null && (firstElement
+							.contains(linkRepresentation._targetElement))) {
 				connection = createConnection(secondElementFigure,
-						firstElementFigure, linkRepresentation_p._linkStyle);
+						firstElementFigure, linkRepresentation._linkStyle);
 			}
 			if (null != connection) {
-				_fastLinkerFigure.add(connection);
+				fastLinkerFigure.add(connection);
 			}
     }
   }
 
   protected void fireDoubleClick() {
     final SelectionChangedEvent event = new SelectionChangedEvent(this, getSelection());
-    for (final IDoubleClickListener listener : _doubleClickListeners) {
+    for (final IDoubleClickListener listener : doubleClickListeners) {
       listener.doubleClick(event);
     }
   }
 
   protected void fireSelectionChanged() {
     final SelectionChangedEvent event = new SelectionChangedEvent(this, getSelection());
-    for (final ISelectionChangedListener listener : _selectionListeners) {
+    for (final ISelectionChangedListener listener : selectionListeners) {
       listener.selectionChanged(event);
     }
   }
@@ -282,42 +279,40 @@ protected final FastLinkerLabelProvider _capellaElementLabelProvider;
    */
   @Override
   public ISelection getSelection() {
-    if ((null == _selectedFigure) || (null == _figureToModelElement.get(_selectedFigure))) {
+    if ((null == selectedFigure) || (null == figureToModelElement.get(selectedFigure))) {
       return StructuredSelection.EMPTY;
     }
 
-    return new StructuredSelection(_figureToModelElement.get(_selectedFigure));
+    return new StructuredSelection(figureToModelElement.get(selectedFigure));
   }
 
-  public void removeDoubleClickListener(IDoubleClickListener listener_p) {
-    _doubleClickListeners.remove(listener_p);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void removeSelectionChangedListener(ISelectionChangedListener listener_p) {
-    _selectionListeners.remove(listener_p);
+  public void removeDoubleClickListener(IDoubleClickListener listener) {
+    doubleClickListeners.remove(listener);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setSelection(ISelection selection_p) {
+  public void removeSelectionChangedListener(ISelectionChangedListener listener) {
+    selectionListeners.remove(listener);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void setSelection(ISelection selection) {
     // Nothing to do.
   }
 
-  protected void switchToXYLayout(IFigure figure_p) {
-    figure_p.setLayoutManager(new XYLayout());
+  protected void switchToXYLayout(IFigure figure) {
+    figure.setLayoutManager(new XYLayout());
     // Add constraints.
-    List<?> children = figure_p.getChildren();
+    List<?> children = figure.getChildren();
     for (Object child : children) {
       IFigure childFigure = (IFigure) child;
-      figure_p.setConstraint(childFigure, childFigure.getBounds());
+      figure.setConstraint(childFigure, childFigure.getBounds());
     }
-
   }
-
 }

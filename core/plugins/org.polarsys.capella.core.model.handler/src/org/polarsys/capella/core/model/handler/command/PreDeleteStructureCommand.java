@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,10 +62,10 @@ public class PreDeleteStructureCommand extends DeleteStructureCommand {
   @Override
   protected void deletePointingReference(EObject referencingEObject, EStructuralFeature feature, EObject referenceToDelete) {
     if (feature.isMany()) {
-      handler._notifications.add(PreRemoveCommand.createNotification((InternalEObject) referencingEObject, Notification.REMOVE, referenceToDelete,
+      handler.notifications.add(PreRemoveCommand.createNotification((InternalEObject) referencingEObject, Notification.REMOVE, referenceToDelete,
           feature));
     } else {
-      handler._notifications
+      handler.notifications
           .add(PreRemoveCommand.createNotification((InternalEObject) referencingEObject, Notification.SET, referenceToDelete, feature));
     }
     // Delete specific semantic structure, if any.

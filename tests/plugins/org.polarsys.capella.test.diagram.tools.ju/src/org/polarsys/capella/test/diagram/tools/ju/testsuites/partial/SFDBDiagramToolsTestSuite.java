@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import junit.framework.Test;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.DnDWithInternalFE;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.DnDWithInternalFEAndCommonPort;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.InitializeFromExistingDiagramTestCase;
+import org.polarsys.capella.test.diagram.tools.ju.sdfb.ShowHideFunctionalExchangeWithCategoryTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.SwitchCategoryTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.UndoOnHideSystemFunction;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
@@ -43,6 +44,7 @@ public class SFDBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new SwitchCategoryTestCase());
     tests.add(new UndoOnHideSystemFunction());
     tests.add(new InitializeFromExistingDiagramTestCase());
+	tests.add(new ShowHideFunctionalExchangeWithCategoryTestCase());
     return tests;
 	}
 

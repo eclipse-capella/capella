@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,9 +51,9 @@ public class PhysicalComponentSection extends ComponentSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    pcKindGroup = new PhysicalComponentKindGroup(_rootParentComposite, getWidgetFactory(), true);
+    pcKindGroup = new PhysicalComponentKindGroup(rootParentComposite, getWidgetFactory(), true);
     pcKindGroup.setDisplayedInWizard(displayedInWizard);
-    pcNatureGroup = new PhysicalComponentNatureGroup(_rootParentComposite, getWidgetFactory(), true);
+    pcNatureGroup = new PhysicalComponentNatureGroup(rootParentComposite, getWidgetFactory(), true);
     pcNatureGroup.setDisplayedInWizard(displayedInWizard);
 
     logicalComponentRealizations =

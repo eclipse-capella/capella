@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
-
 package org.polarsys.capella.core.platform.sirius.ui.commands;
 
 import java.util.ArrayList;
@@ -71,7 +69,7 @@ public class CapellaDeleteCommand extends AbstractCommand {
   /**
    * The delete helper which performs business rule expansion of the selection.
    */
-  private IDeleteHelper _deleteHelper = IDeleteHelper.DEFAULT;
+  private IDeleteHelper deleteHelper = IDeleteHelper.DEFAULT;
 
   /**
    * Id based-on label to handle this command among recording ones.
@@ -81,27 +79,27 @@ public class CapellaDeleteCommand extends AbstractCommand {
   /**
    * Hooks to notify prior deletion
    */
-  private static ArrayList<AbstractCapellaDeleteHook> __deleteCommandHooks;
+  private static ArrayList<AbstractCapellaDeleteHook> deleteCommandHooks;
 
   /**
    * Real command that modifies the model.
    */
-  private Command _realCommand;
+  private Command realCommand;
 
   /**
    * The original selection of elements to delete.
    */
-  private Collection<?> _selection;
+  private Collection<?> selection;
 
   /**
    * The cached result of helper.getExpandedSelection(selection)
    */
-  private Collection<?> _expandedSelection;
+  private Collection<?> expandedSelection;
 
   /**
    * The cached result of getAllElementsToDelete(...)
    */
-  private Set<Object> _allElementsToDelete;
+  private Set<Object> allElementsToDelete;
 
   /**
    * The cached result of getControlledExpandedSelectionContents(...)
@@ -111,30 +109,28 @@ public class CapellaDeleteCommand extends AbstractCommand {
   /**
    * Execute against the transaction manager or not.
    */
-  private boolean _ensureTransaction;
+  private boolean ensureTransaction;
 
   /**
    * The execution manager.
    */
-  private ExecutionManager _executionManager;
+  private ExecutionManager executionManager;
   
   /**
    * The editing domain (used when no execution manager is available).
    */
-  private EditingDomain _editingDomain;
+  private EditingDomain editingDomain;
   
   /**
    * Are we notifying the long running event registry?
    */
-  private boolean _sendLongRunningEvents;
+  private boolean sendLongRunningEvents;
 
   /**
    * Show a confirmation dialog? Note: This value only controls whether we show the dialog to confirm the delete. Another dialog may be shown in case the
    * selection contains fragment roots.
-   * @param domain
-   * @param selection
    */
-  private boolean _confirmDelete;
+  private boolean confirmDelete;
 
   /**
    * Equivalent to <code>CapellaDeleteCommand(executionManager, selection, true)</code>.
@@ -154,7 +150,7 @@ public class CapellaDeleteCommand extends AbstractCommand {
    */
   public CapellaDeleteCommand(EditingDomain editingDomain, Collection<?> selection, boolean confirmDelete) {
 	  this(null, selection, false, confirmDelete, true);
-    this._editingDomain = editingDomain;
+    this.editingDomain = editingDomain;
   }
 
   /**
@@ -176,12 +172,12 @@ public class CapellaDeleteCommand extends AbstractCommand {
    * @param longOperationEvents Should events about this long running operation flow be sent ? <code>true</code> if so, <code>false</code> otherwise.
    */
   public CapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection, boolean ensureTransaction, boolean confirmDelete, boolean longOperationEvents) {
-    _executionManager = executionManager;
-    _editingDomain = (executionManager != null) ? executionManager.getEditingDomain() : null;
-    _ensureTransaction = ensureTransaction;
-    _confirmDelete = confirmDelete;
-    _sendLongRunningEvents = longOperationEvents;
-    _selection = new ArrayList<Object>(selection);
+    this.executionManager = executionManager;
+    this.editingDomain = (executionManager != null) ? executionManager.getEditingDomain() : null;
+    this.ensureTransaction = ensureTransaction;
+    this.confirmDelete = confirmDelete;
+    this.sendLongRunningEvents = longOperationEvents;
+    this.selection = new ArrayList<Object>(selection);
   }
 
   /**
@@ -189,8 +185,8 @@ public class CapellaDeleteCommand extends AbstractCommand {
    */
   @Override
   public boolean canUndo() {
-    if (null != _realCommand) {
-      return _realCommand.canUndo();
+    if (null != realCommand) {
+      return realCommand.canUndo();
     }
     // If no real command is available, that was just about predeletion, and it is not undoable.
     return false;
@@ -214,7 +210,7 @@ public class CapellaDeleteCommand extends AbstractCommand {
     /**
      * Show confirmation/impact analysis if desired.
      */
-    if (_confirmDelete) {
+    if (confirmDelete) {
       final int dialogResult[] = new int[] { 0 };
       PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
         public void run() {
@@ -229,9 +225,9 @@ public class CapellaDeleteCommand extends AbstractCommand {
     }
 
     // Should execution take place against the execution manager ?
-    if (_ensureTransaction) {
+    if (ensureTransaction) {
       // Execute deletion against the execution manager.
-      _executionManager.execute(new AbstractReadWriteCommand() {
+      executionManager.execute(new AbstractReadWriteCommand() {
         /**
          * @see org.polarsys.capella.common.ef.command.AbstractCommand#commandRolledBack()
          */
@@ -239,7 +235,7 @@ public class CapellaDeleteCommand extends AbstractCommand {
         @Override
         public void commandRolledBack() {
           // Send aborted event.
-          if (_sendLongRunningEvents) {
+          if (sendLongRunningEvents) {
             LongRunningListenersRegistry.getInstance().operationAborted(CapellaDeleteCommand.class);
           }
         }
@@ -250,8 +246,8 @@ public class CapellaDeleteCommand extends AbstractCommand {
         @SuppressWarnings("synthetic-access")
         @Override
         public Collection<?> getAffectedObjects() {
-          if (null != _realCommand) {
-            return _realCommand.getAffectedObjects();
+          if (null != realCommand) {
+            return realCommand.getAffectedObjects();
           }
           return super.getAffectedObjects();
         }
@@ -286,19 +282,19 @@ public class CapellaDeleteCommand extends AbstractCommand {
    * Do execute real command. Point of no return.
    */
   protected void doExecute() {
-    if (_sendLongRunningEvents) {
+    if (sendLongRunningEvents) {
       LongRunningListenersRegistry.getInstance().operationStarting(CapellaDeleteCommand.class);
     }
     for (AbstractCapellaDeleteHook hook : getDeleteCommandHooks()) {
       if (!hook.preDelete(getAllElementsToDelete()).isOK()) {
-        if (_sendLongRunningEvents) {
+        if (sendLongRunningEvents) {
           LongRunningListenersRegistry.getInstance().operationAborted(CapellaDeleteCommand.class);
         }
         return;
       }
     }
     try {
-    	_realCommand = new DeleteStructureCommand(_editingDomain, getExpandedSelection(), isDeletingPartTypesForMultiPartProjects()) {
+    	realCommand = new DeleteStructureCommand(editingDomain, getExpandedSelection(), isDeletingPartTypesForMultiPartProjects()) {
     		@Override
     		protected void doPrepare() {
     			// Use DeleteRepresentation here since this command handles open representation editors.
@@ -307,11 +303,11 @@ public class CapellaDeleteCommand extends AbstractCommand {
     			super.doPrepare();
     		}
     	};
-      if (_realCommand.canExecute()) {
-        _realCommand.execute();
+      if (realCommand.canExecute()) {
+        realCommand.execute();
       }
     } finally {
-      if (_sendLongRunningEvents) {
+      if (sendLongRunningEvents) {
         LongRunningListenersRegistry.getInstance().operationEnded(CapellaDeleteCommand.class);
       }
     }
@@ -326,8 +322,8 @@ public class CapellaDeleteCommand extends AbstractCommand {
    */
   @Override
   public Collection<?> getAffectedObjects() {
-    if (null != _realCommand) {
-      return _realCommand.getAffectedObjects();
+    if (null != realCommand) {
+      return realCommand.getAffectedObjects();
     }
     return super.getAffectedObjects();
   }
@@ -344,8 +340,8 @@ public class CapellaDeleteCommand extends AbstractCommand {
    * @see org.eclipse.emf.common.command.Command#redo()
    */
   public void redo() {
-    if (null != _realCommand) {
-      _realCommand.redo();
+    if (null != realCommand) {
+      realCommand.redo();
     }
   }
 
@@ -354,8 +350,8 @@ public class CapellaDeleteCommand extends AbstractCommand {
    */
   @Override
   public void undo() {
-    if (null != _realCommand) {
-      _realCommand.undo();
+    if (null != realCommand) {
+      realCommand.undo();
     }
   }
 
@@ -363,17 +359,17 @@ public class CapellaDeleteCommand extends AbstractCommand {
    * The list of delete command hooks we should notify before and after delete. Never null.
    */
   private List<AbstractCapellaDeleteHook> getDeleteCommandHooks() {
-    if (__deleteCommandHooks == null) {
-      __deleteCommandHooks = new ArrayList<AbstractCapellaDeleteHook>();
+    if (deleteCommandHooks == null) {
+      deleteCommandHooks = new ArrayList<AbstractCapellaDeleteHook>();
       // Load IDeleteCommandDelegation contributor if any.
       IConfigurationElement[] configurationElements =
           ExtensionPointHelper.getConfigurationElements(CapellaActionsActivator.getDefault().getPluginId(), "deleteCommandDelegation"); //$NON-NLS-1$
       // Loop over contributed IDeleteCommandDelegation contributor, must be only one.
       for (IConfigurationElement elem : configurationElements) {
-        __deleteCommandHooks.add((AbstractCapellaDeleteHook) ExtensionPointHelper.createInstance(elem, ExtensionPointHelper.ATT_CLASS));
+        deleteCommandHooks.add((AbstractCapellaDeleteHook) ExtensionPointHelper.createInstance(elem, ExtensionPointHelper.ATT_CLASS));
       }
     }
-    return __deleteCommandHooks;
+    return deleteCommandHooks;
   }
 
   /**
@@ -496,17 +492,17 @@ public class CapellaDeleteCommand extends AbstractCommand {
    * @see getDeleteHelper()
    */
   public Collection<?> getExpandedSelection() {
-    if (_expandedSelection == null) {
-      _expandedSelection = Collections.unmodifiableCollection(_deleteHelper.getExpandedSelection(_selection));
+    if (expandedSelection == null) {
+      expandedSelection = Collections.unmodifiableCollection(deleteHelper.getExpandedSelection(selection));
     }
-    return _expandedSelection;
+    return expandedSelection;
   }
 
   /**
    * Returns the current delete helper for this command. The default is IDeleteHelper.DEFAULT.
    */
   public IDeleteHelper getDeleteHelper() {
-    return _deleteHelper;
+    return deleteHelper;
   }
 
   /**
@@ -514,7 +510,7 @@ public class CapellaDeleteCommand extends AbstractCommand {
    * @see getExpandedSelection()
    */
   public void setDeleteHelper(IDeleteHelper helper) {
-    _deleteHelper = helper;
+    deleteHelper = helper;
   }
 
   /**
@@ -540,19 +536,19 @@ public class CapellaDeleteCommand extends AbstractCommand {
    * of deleted elements are explicitly contained in the result set.
    */
   public Set<?> getAllElementsToDelete() {
-    if (_allElementsToDelete == null) {
+    if (allElementsToDelete == null) {
       // Get a new handler.
       HashSet<Object> result = new HashSet<Object>();
       PreDeleteHandler handler = new PreDeleteHandler();
 
       // Call predeletion command.
       Command preDeletion =
-          new PreDeleteStructureCommand(_editingDomain, getExpandedSelection(), isDeletingPartTypesForMultiPartProjects(), handler);
+          new PreDeleteStructureCommand(editingDomain, getExpandedSelection(), isDeletingPartTypesForMultiPartProjects(), handler);
       if (preDeletion.canExecute()) {
         preDeletion.execute();
       }
 
-      for (Notification notification : handler._notifications) {
+      for (Notification notification : handler.notifications) {
         Object notifier = notification.getNotifier();
         if (notifier instanceof EObject) {
           // Get old value (ie removed one).
@@ -572,7 +568,7 @@ public class CapellaDeleteCommand extends AbstractCommand {
                 boolean handleNotification = false;
                 try {
                   EReference feature = EReference.class.cast(notification.getFeature());
-                  handleNotification = feature.isContainment();
+                  handleNotification = feature != null ? feature.isContainment() : false;                    
                 } catch (ClassCastException cce) {
                   // Could not tell feature, add notification whatever it might be.
                   handleNotification = true;
@@ -599,9 +595,9 @@ public class CapellaDeleteCommand extends AbstractCommand {
         }
       }
       handler.dispose();
-      _allElementsToDelete = Collections.unmodifiableSet(result);
+      allElementsToDelete = Collections.unmodifiableSet(result);
     }
-    return _allElementsToDelete;
+    return allElementsToDelete;
   }
 
   /**

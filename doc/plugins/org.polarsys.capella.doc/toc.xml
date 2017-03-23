@@ -11,6 +11,8 @@
        Thales - initial API and implementation
 -->
 <toc label="Capella Guide" topic="html/toc.html" sort="false">
+   <topic href="html/Release note/Release note.html" label="Release Note">
+   </topic>
    <topic label="User Manual">
       <anchor id="main"/>
    		<anchor id="contribution"/>
@@ -30,4 +32,5 @@
    <topic label="Thematic Highlights">
       <anchor id="thematic"/>
    </topic>
+   <anchor id="guidecontribution"/>
 </toc>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.command.recorder.core.writer;
 
 import java.util.ArrayList;
@@ -19,72 +18,64 @@ import java.util.List;
  */
 public class DummyTreeData {
 
-  protected int _depth;
+  protected int depth;
   
-  protected DummyTreeData _parent;
+  protected DummyTreeData parent;
   
-  protected List<DummyTreeData> _children;
+  protected List<DummyTreeData> children;
   
-  protected Object _data;
-  protected Object _subData;
+  protected Object data;
+  protected Object subData;
   
   public DummyTreeData(DummyTreeData parent, int depth) {
-    
-    _depth = depth;
-    _parent = parent; 
-    _children = new ArrayList<DummyTreeData>();
-    
+    this.depth = depth;
+    this.parent = parent; 
+    this.children = new ArrayList<DummyTreeData>();
   }
   
   public int getDepth() {
-	  return _depth;
+	  return depth;
   }
   
   public Object getData() {
-    return _data;
+    return data;
   }
   
   public void setData(Object data) {
-    _data = data;
-    return;
+    this.data = data;
   }
   
   public void setSubData(Object subData) {
-	_subData = subData;
-	return;
+    this.subData = subData;
   }
   
   public Object getSubData() {
-    return _subData;
+    return subData;
   }
   
-  public boolean hasSubData(){ return null!=_subData;}
+  public boolean hasSubData(){ return null!=subData;}
   
   public List<DummyTreeData> getChildren() {
-    return _children;
+    return children;
   }
   
   public DummyTreeData getParent() {
-    return _parent;
+    return parent;
   }
   
   public boolean isRoot() {
-    return ( null == _parent );
+    return ( null == parent );
   }
   
   public boolean hasChildren() {
-    return (null != _children && !_children.isEmpty());
+    return (null != children && !children.isEmpty());
   }
   
   public void addChild(DummyTreeData child) {
-
-    if (null == _children) {
-      _children = new ArrayList<DummyTreeData>();
+    if (null == children) {
+      children = new ArrayList<DummyTreeData>();
     }
-    _children.add(child);
-
-    return;
-
+    children.add(child);
   }
   
 }

@@ -533,6 +533,8 @@
 				<module>tests/plugins/org.polarsys.capella.test.meta.ju</module>
 				<module>tests/plugins/org.polarsys.capella.test.model.ju</module>
 				<module>tests/plugins/org.polarsys.capella.test.navigator.ju</module>
+				<module>tests/plugins/org.polarsys.capella.test.migration.ju</module>
+				<module>tests/plugins/org.polarsys.capella.test.commandline.ju</module>
 				<module>tests/plugins/org.polarsys.capella.test.platform.ju</module>
 				<module>tests/plugins/org.polarsys.capella.test.progressmonitoring.ju</module>
 				<module>tests/plugins/org.polarsys.capella.test.re.updateconnections.ju</module>
@@ -599,7 +601,7 @@
 				<module>core/plugins/org.polarsys.capella.core.data.helpers</module>
 				<module>core/plugins/org.polarsys.capella.core.model.handler</module>
 
-				<!-- -->
+				<!-- releng bundles -->
 				<module>releng/features/org.polarsys.capella.headless.feature</module>
 				<module>releng/plugins/org.polarsys.capella.headless.site</module>
 			</modules>

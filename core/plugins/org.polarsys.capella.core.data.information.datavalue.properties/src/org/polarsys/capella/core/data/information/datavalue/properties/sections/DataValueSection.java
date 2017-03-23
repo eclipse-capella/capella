@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,7 @@ public abstract class DataValueSection extends TypedElementSection {
     if (showIsAbstract) {
       boolean displayedInWizard = isDisplayedInWizard();
       
-      Group checkGroup = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
+      Group checkGroup = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
       checkGroup.setLayout(new GridLayout(5, true));
       GridData gd = new GridData(GridData.FILL_HORIZONTAL);
       gd.horizontalSpan = 2;

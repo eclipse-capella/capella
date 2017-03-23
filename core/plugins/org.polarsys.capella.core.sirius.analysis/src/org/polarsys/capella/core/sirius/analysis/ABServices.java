@@ -1713,8 +1713,17 @@ public class ABServices {
     return switchABPhysicalCategories(content, context, selectedElements, true);
   }
 
+  /**
+   * Do a switch Physical Link / Category
+   * 
+   * @param content
+   * @param context
+   * @param selectedElements in tool, the categories chosen by the user, in refresh, the displayed categories
+   * @param showHiddenPhysicalLinks
+   * @return
+   */
   public EObject switchABPhysicalCategories(DDiagramContents content, DSemanticDecorator context,
-      Collection<EObject> selectedElements, boolean showPhysicalExchanges) {
+      Collection<EObject> selectedElements, boolean showHiddenPhysicalLinks) {
     ABServices.getService().updateABPhysicalCategories(content);
 
     DDiagram currentDiagram = content.getDDiagram();
@@ -1786,7 +1795,11 @@ public class ABServices {
       }
     }
 
-    // show or hide physical links
+    // In tool (showHiddenPhysicalLinks==true), user may have removed some categories, so he wants to display hidden
+    // physical links associated to them.
+    // In refresh (showHiddenPhysicalLinks==false), categories haven't been changed by the user, so he doesn't want to
+    // display hidden physical links,
+    // he just want to hide new physical links associated to displayed categories.
     for (DDiagramElement sourceView : sourceViews) {
       EObject sourceViewTarget = sourceView.getTarget();
       if (sourceViewTarget != null) {
@@ -1806,7 +1819,7 @@ public class ABServices {
                 categories.hide(exchange, ctx);
               }
             }
-          } else if (showPhysicalExchanges) {
+          } else if (showHiddenPhysicalLinks) {
             for (PhysicalLink exchange : relatedPhysicalLinksMap.get(source)) {
               if (exchange.getCategories().contains(key)) {
                 displayABPhysicalCategoryPortDelegation(ctx, category, exchange,
@@ -1831,7 +1844,13 @@ public class ABServices {
       Collection<EObject> initialSelection, Collection<EObject> selectedElements) {
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context);
     DDiagramContents content = new DDiagramContents(currentDiagram);
-    return switchABComponentCategories(content, context, selectedElements);
+    return switchABComponentCategories(content, context, selectedElements, true);
+  }
+
+  @Deprecated
+  public EObject switchABComponentCategories(DDiagramContents content, DSemanticDecorator context,
+      Collection<EObject> selectedElements) {
+    return switchABComponentCategories(content, context, selectedElements, true);
   }
 
   /**
@@ -1840,11 +1859,11 @@ public class ABServices {
    * @param context
    * @param scope
    * @param initialSelection
-   * @param selectedElements
+   * @param selectedElements in tool, the categories chosen by the user, in refresh, the displayed categories
    * @return
    */
   public EObject switchABComponentCategories(DDiagramContents content, DSemanticDecorator context,
-      Collection<EObject> selectedElements) {
+      Collection<EObject> selectedElements, boolean showHiddenExchanges) {
 
     ABServices.getService().updateABComponentCategories(content);
 
@@ -1895,6 +1914,7 @@ public class ABServices {
       }
     }
 
+    // Display the categories between parts if they are part of selectedElements, or hide them
     for (DDiagramElement sourceView : sourceViews) {
       EObject sourceViewTarget = sourceView.getTarget();
       if (sourceViewTarget != null) {
@@ -1915,6 +1935,11 @@ public class ABServices {
       }
     }
 
+    // In tool (showHiddenExchanges==true), user may have removed some categories, so he wants to display hidden
+    // exchanges associated to them.
+    // In refresh (showHiddenExchanges==false), categories haven't been changed by the user, so he doesn't want to
+    // display hidden exchanges,
+    // he just want to hide new exchanges associated to displayed categories.
     for (DDiagramElement sourceView : sourceViews) {
       EObject sourceViewTarget = sourceView.getTarget();
       if (sourceViewTarget != null) {
@@ -1932,7 +1957,7 @@ public class ABServices {
                 categories.hide(exchange, ctx);
               }
             }
-          } else {
+          } else if (showHiddenExchanges) {
             for (ComponentExchange exchange : relatedComponentExchangesMap.get(source)) {
               if (exchange.getCategories().contains(key)) {
                 displayABComponentCategoryPortDelegation(ctx, category, exchange,

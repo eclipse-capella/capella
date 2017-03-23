@@ -12,7 +12,7 @@
 <feature
       id="org.polarsys.capella.test.feature"
       label="%featureName"
-      version="1.1.1.qualifier"
+      version="1.2.0.qualifier"
       provider-name="%providerName">
 
    <description>
@@ -176,6 +176,20 @@
 
    <plugin
          id="org.polarsys.capella.test.re.updateconnections.ju"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.test.commandline.ju"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.test.migration.ju"
          download-size="0"
          install-size="0"
          version="0.0.0"

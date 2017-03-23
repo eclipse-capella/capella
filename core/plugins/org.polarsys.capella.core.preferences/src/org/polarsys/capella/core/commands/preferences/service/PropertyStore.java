@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
   /*
    * 
    */
-  private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  private static final Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
 
   /*
    * 
@@ -53,8 +53,8 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
     return resource;
   }
 
-  public void setResource(IResource resource_p) {
-    resource = resource_p;
+  public void setResource(IResource resource) {
+    this.resource = resource;
   }
 
   /*
@@ -77,12 +77,12 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
   /**
    * @param _resource
    * @param _workbenchStore
-   * @param _pageId
+   * @param id
    */
-  public PropertyStore(IResource _resource, IPreferenceStore _workbenchStore, String _pageId) {
+  public PropertyStore(IResource _resource, IPreferenceStore _workbenchStore, String id) {
     this.resource = _resource;
     this.workbenchStore = _workbenchStore;
-    this.pageId = _pageId;
+    this.pageId = id;
 
   }
 
@@ -124,9 +124,9 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
         project.getNode(Activator.PLUGIN_ID).flush();
       }
 
-    } catch (BackingStoreException exception_p) {
+    } catch (BackingStoreException exception) {
       StringBuilder loggerMessage = new StringBuilder("PropertyStore : "); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString(), exception_p);
+      logger.warn(loggerMessage.toString(), exception);
     }
   }
 
@@ -372,9 +372,9 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
   }
 
   /**
-   * @param b_p
+   * @param b
    */
-  public void setCanceled(boolean b_p) {
+  public void setCanceled(boolean b) {
     isCanceled = true;
 
   }

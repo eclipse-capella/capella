@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,17 +34,14 @@ public class ReportConsole implements IReportConsole {
 	private static final RGB rgb_RED = new RGB(204,0,0);
 	private static final RGB rgb_DARK_YELLOW = new RGB(153, 153, 153);
 
-	public OutputStream getErrorStream() {
-		MessageConsole messageConsole = getCapellaConsole();
-		if (null != messageConsole) {
-			MessageConsoleStream consoleStream = new MessageConsoleStream(messageConsole);
-			return consoleStream;
-		}
-		return System.err;
-	}
+  public OutputStream getErrorStream() {
+    MessageConsole messageConsole = getCapellaConsole();
+    MessageConsoleStream consoleStream = new MessageConsoleStream(messageConsole);
+    return consoleStream;
+  }
 
   /**
-   * Return OutPutStreams connected to the same Capella Console, colorized for each Level log.
+   * Return OutPutStreams connected to the same Capella Console, colored for each Level log.
    */
 	public HashMap<Level,MessageConsoleStream> getOutputStreams() {
 		HashMap<Level, MessageConsoleStream> conStreamsMap;
@@ -74,7 +71,7 @@ public class ReportConsole implements IReportConsole {
 	
 	
 	/**
-	 * Return OutPutStreams, colorized for each Level log.
+	 * Return OutPutStreams, colored for each Level log.
 	 */
 	private HashMap<Level,MessageConsoleStream> createOutputStreamsColor(MessageConsole messageCons) {
 		HashMap<Level, MessageConsoleStream> conStreamsMap = new HashMap<Level, MessageConsoleStream>();

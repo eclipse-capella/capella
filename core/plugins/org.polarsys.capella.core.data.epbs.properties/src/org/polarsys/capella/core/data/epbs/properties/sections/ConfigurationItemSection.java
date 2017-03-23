@@ -50,10 +50,10 @@ public class ConfigurationItemSection extends ComponentSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    ciKindGroup = new ConfigurationItemKindGroup(_rootParentComposite, getWidgetFactory(), true);
+    ciKindGroup = new ConfigurationItemKindGroup(rootParentComposite, getWidgetFactory(), true);
     ciKindGroup.setDisplayedInWizard(displayedInWizard);
 
-    itemIdentifierGroup = new ConfigurationItemIdGroup(_rootParentComposite, getWidgetFactory());
+    itemIdentifierGroup = new ConfigurationItemIdGroup(rootParentComposite, getWidgetFactory());
     itemIdentifierGroup.setDisplayedInWizard(displayedInWizard);
 
     physicalArtifactRealizations =

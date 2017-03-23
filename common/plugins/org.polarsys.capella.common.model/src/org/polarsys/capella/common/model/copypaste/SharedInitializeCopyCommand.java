@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.model.copypaste;
 
 import java.util.ArrayList;
@@ -40,15 +39,15 @@ public class SharedInitializeCopyCommand extends InitializeCopyCommand {
    * Qualifies the source of a link pending after a copy / paste.
    */
   public class PendingQualification {
-    private EObject _src;
-    private EReference _reference;
+    private EObject src;
+    private EReference reference;
 
     /**
      * 
      */
     public PendingQualification(EObject src, EReference reference) {
-      _src = src;
-      _reference = reference;
+      this.src = src;
+      this.reference = reference;
     }
 
     /**
@@ -59,7 +58,7 @@ public class SharedInitializeCopyCommand extends InitializeCopyCommand {
       if (!(obj instanceof PendingQualification))
         return false;
       PendingQualification other = (PendingQualification) obj;
-      return _src.equals(other._src) && _reference.equals(other._reference);
+      return src.equals(other.src) && reference.equals(other.reference);
     }
 
     /**
@@ -67,15 +66,15 @@ public class SharedInitializeCopyCommand extends InitializeCopyCommand {
      */
     @Override
     public int hashCode() {
-      return _src.hashCode() + _reference.hashCode();
+      return src.hashCode() + reference.hashCode();
     }
 
   }
 
-private static final String PLUGIN_ID = "org.polarsys.capella.common.model.DroppedReferencesOnCopy";
+  private static final String PLUGIN_ID = "org.polarsys.capella.common.model.DroppedReferencesOnCopy";
 
-  private static Map<PendingQualification, Object> _pendingReferences = new HashMap<PendingQualification, Object>();
-  private static List<String> _droppedReferences = null;
+  private static Map<PendingQualification, Object> pendingReferences = new HashMap<PendingQualification, Object>();
+  private static List<String> droppedReferences = null;
 
   /**
    * @param domain
@@ -113,7 +112,7 @@ private static final String PLUGIN_ID = "org.polarsys.capella.common.model.Dropp
       if (value == null) {
         // It must be an unsettable feature to be null and considered set,
         // or a pending reference, that i need to find the corresponding target in pending map.
-        value = _pendingReferences.get(new PendingQualification(owner, reference));
+        value = pendingReferences.get(new PendingQualification(owner, reference));
         if (value == null) {
           copy.eSet(reference, null);
         } else {
@@ -157,26 +156,26 @@ private static final String PLUGIN_ID = "org.polarsys.capella.common.model.Dropp
           copy.eSet(reference, target);
         } else {
           // dropped object, pending reference to register
-        		_pendingReferences.put(new PendingQualification(copy, reference), value);
+        		pendingReferences.put(new PendingQualification(copy, reference), value);
         }
       }
     }
   }
 
   private boolean isDroppedReference(EReference reference) {
-	if (_droppedReferences  == null){
+	if (droppedReferences  == null){
 		loadDroppedReferences ();
 	}
-	return _droppedReferences.contains (reference.getName());
+	return droppedReferences.contains (reference.getName());
 }
 
 private void loadDroppedReferences() {
     IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
     IConfigurationElement[] elementsForPlugin = extensionRegistry.getConfigurationElementsFor(PLUGIN_ID);
-	_droppedReferences = new ArrayList<String>(elementsForPlugin.length);
+	droppedReferences = new ArrayList<String>(elementsForPlugin.length);
     for (IConfigurationElement configurationElement : elementsForPlugin) {
     	String refName = configurationElement.getAttribute(REFERENCE_NAME_ATTRIBUTE);
-    	_droppedReferences.add(refName);
+    	droppedReferences.add(refName);
     }
 	
 }
@@ -196,7 +195,7 @@ private void loadDroppedReferences() {
    */
   private boolean isReferenceSet(EReference reference) {
     PendingQualification pq = new PendingQualification(owner, reference);
-    return owner.eIsSet(reference) || _pendingReferences.containsKey(pq);
+    return owner.eIsSet(reference) || pendingReferences.containsKey(pq);
   }
 
 }

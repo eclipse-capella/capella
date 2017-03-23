@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.transition.common.transposer;
 
 import java.util.ArrayList;
@@ -43,7 +42,7 @@ import org.polarsys.kitalpha.transposer.scheduler.api.ITransposerTask;
  */
 public class ExtendedTransposer extends GenericTransposer {
 
-  protected ExtendedCadenceLauncher cadenceLauncher;
+  protected ExtendedCadenceLauncher extendedCadenceLauncher;
 
   protected HashMap<IProgressMonitor, IStatus> statuses;
 
@@ -77,7 +76,7 @@ public class ExtendedTransposer extends GenericTransposer {
   }
 
   public void initCadence() {
-    cadenceLauncher = new ExtendedCadenceLauncher();
+    extendedCadenceLauncher = new ExtendedCadenceLauncher();
   }
 
   /**
@@ -254,7 +253,7 @@ public class ExtendedTransposer extends GenericTransposer {
 
   public IStatus cadence(final String workflow_id, final String workflowElement_id, final WorkflowActivityParameter workflowActivityParameters,
       final IProgressMonitor monitor) throws Exception {
-    IStatus result = cadenceLauncher.cadence(workflow_id, workflowElement_id, workflowActivityParameters, monitor);
+    IStatus result = extendedCadenceLauncher.cadence(workflow_id, workflowElement_id, workflowActivityParameters, monitor);
     if (result.matches(IStatus.CANCEL) || result.matches(IStatus.ERROR)) {
       monitor.setCanceled(true);
       statuses.put(monitor, result);

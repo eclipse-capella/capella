@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -162,7 +162,28 @@ public class GenericModel {
   public static String PC_2 = "PC 2";
   public static String PC_2_1 = "PC 2_1";
   public static String PC_3 = "PC 3";
+  public static String PC_3_1 = "PC 3_1";
   public static String PC_4 = "PC 4";
+  public static String PC_4_1 = "PC 4_1";
+
+  public static String NODE_1 = "NODE 1";
+  public static String NODE_1_1 = "NODE 1_1";
+  public static String NODE_2 = "NODE 2";
+  public static String NODE_2_1 = "NODE 2_1";
+  public static String NODE_3 = "NODE 3";
+  public static String NODE_3_1 = "NODE 3_1";
+  public static String NODE_4 = "NODE 4";
+  public static String NODE_4_1 = "NODE 4_1";
+
+
+  public static String BEHAVIOR_1 = "BEHAVIOR 1";
+  public static String BEHAVIOR_1_1 = "BEHAVIOR 1_1";
+  public static String BEHAVIOR_2 = "BEHAVIOR 2";
+  public static String BEHAVIOR_2_1 = "BEHAVIOR 2_1";
+  public static String BEHAVIOR_3 = "BEHAVIOR 3";
+  public static String BEHAVIOR_3_1 = "BEHAVIOR 3_1";
+  public static String BEHAVIOR_4 = "BEHAVIOR 4";
+  public static String BEHAVIOR_4_1 = "BEHAVIOR 4_1";
 
   public static String CI_1 = "CI 1";
   public static String CI_1_1 = "CI 1_1";

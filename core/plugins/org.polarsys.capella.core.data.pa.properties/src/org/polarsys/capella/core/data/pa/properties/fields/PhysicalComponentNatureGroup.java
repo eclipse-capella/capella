@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,6 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticKindGroup;
 /**
  */
 public class PhysicalComponentNatureGroup extends AbstractSemanticKindGroup {
-  private Button pcNatureBtnUnset;
   private Button pcNatureBtnBehavior;
   private Button pcNatureBtnNode;
 
@@ -37,7 +36,6 @@ public class PhysicalComponentNatureGroup extends AbstractSemanticKindGroup {
   public PhysicalComponentNatureGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean enabled) {
     super(parent, widgetFactory, Messages.getString("PhysicalComponentNature.Label"), 3); //$NON-NLS-1$
 
-    pcNatureBtnUnset = createButton(PhysicalComponentNature.UNSET, enabled);
     pcNatureBtnBehavior = createButton(PhysicalComponentNature.BEHAVIOR, enabled);
     pcNatureBtnNode = createButton(PhysicalComponentNature.NODE, enabled);
   }
@@ -49,7 +47,6 @@ public class PhysicalComponentNatureGroup extends AbstractSemanticKindGroup {
   public List<Button> getSemanticFields() {
     List<Button> fields = new ArrayList<Button>();
 
-    fields.add(pcNatureBtnUnset);
     fields.add(pcNatureBtnBehavior);
     fields.add(pcNatureBtnNode);
 
@@ -61,6 +58,6 @@ public class PhysicalComponentNatureGroup extends AbstractSemanticKindGroup {
    */
   @Override
   public Button getDefaultSemanticField() {
-    return pcNatureBtnUnset;
+    return null;
   }
 }

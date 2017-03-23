@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.ui.toolkit.editors;
 
 import java.util.ArrayList;
@@ -35,9 +34,9 @@ import org.polarsys.capella.common.ui.toolkit.viewers.FieldsViewer;
  */
 public abstract class Editor extends Wizard {
   // The editor page.
-  public EditorPage _page;
+  public EditorPage page;
   // The element store.
-  private IPreferenceStore _store;
+  private IPreferenceStore store;
 
   /**
    * Constructs the generic editor.
@@ -45,8 +44,8 @@ public abstract class Editor extends Wizard {
    * @param store The data binding controller.
    */
   public Editor(IPageContentProvider pageContentProvider, IPreferenceStore store) {
-    _page = new EditorPage(pageContentProvider);
-    _store = store;
+    this.page = new EditorPage(pageContentProvider);
+    this.store = store;
   }
 
   /**
@@ -54,8 +53,8 @@ public abstract class Editor extends Wizard {
    */
   @Override
   public final void addPages() {
-    addPage(_page);
-    _page.setPageComplete(true);
+    addPage(page);
+    page.setPageComplete(true);
   }
 
   /**
@@ -63,8 +62,8 @@ public abstract class Editor extends Wizard {
    * @param enabled <code>True</code> to enable the editor else false.
    */
   public void setEnabled(boolean enabled) {
-    if (null != _page) {
-      _page.setEnabled(enabled);
+    if (null != page) {
+      page.setEnabled(enabled);
     }
   }
 
@@ -73,8 +72,8 @@ public abstract class Editor extends Wizard {
    * @param consult <code>True</code> to enable the consult mode else <code>false</code>.
    */
   public void setConsultMode(boolean consult) {
-    if (null != _page) {
-      _page.setConsultMode(consult);
+    if (null != page) {
+      page.setConsultMode(consult);
     }
   }
 
@@ -83,8 +82,8 @@ public abstract class Editor extends Wizard {
    * @param title The page title.
    */
   public void setPageTitle(String title) {
-    if (null != _page) {
-      _page.setTitle(title);
+    if (null != page) {
+      page.setTitle(title);
     }
   }
 
@@ -93,8 +92,8 @@ public abstract class Editor extends Wizard {
    * @param image The image of the page header.
    */
   public void setPageImage(ImageDescriptor image) {
-    if (null != _page) {
-      _page.setImageDescriptor(image);
+    if (null != page) {
+      page.setImageDescriptor(image);
     }
   }
 
@@ -103,8 +102,8 @@ public abstract class Editor extends Wizard {
    * @return The page title.
    */
   public String getPageTitle() {
-    if (null != _page) {
-      return _page.getTitle();
+    if (null != page) {
+      return page.getTitle();
     }
     return null;
   }
@@ -114,8 +113,8 @@ public abstract class Editor extends Wizard {
    * @param description The page description.
    */
   public void setPageDescription(String description) {
-    if (null != _page) {
-      _page.setDescription(description);
+    if (null != page) {
+      page.setDescription(description);
     }
   }
 
@@ -124,8 +123,8 @@ public abstract class Editor extends Wizard {
    * @return The page description.
    */
   public String getPageDescription() {
-    if (null != _page) {
-      return _page.getDescription();
+    if (null != page) {
+      return page.getDescription();
     }
     return null;
   }
@@ -135,7 +134,7 @@ public abstract class Editor extends Wizard {
    * @return The data binding controller.
    */
   public IPreferenceStore getStore() {
-    return _store;
+    return store;
   }
 
   /**
@@ -143,7 +142,7 @@ public abstract class Editor extends Wizard {
    * @return The element this editor applies to.
    */
   public EClass getElementType() {
-    return _page.getElementType();
+    return page.getElementType();
   }
 
   /**
@@ -222,7 +221,7 @@ public abstract class Editor extends Wizard {
         tabItem.setText(descriptor.getLabel());
         FieldsViewer content = descriptor.getContent(_folder);
         if (null != content) {
-          content.setStore(_store);
+          content.setStore(store);
 
           content.setPage(this);
           content.load();

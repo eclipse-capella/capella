@@ -15,3 +15,9 @@ Create Generic Viewpoints using:
 == Avoid EObject.eResource calls ==
 
 On EObject, you have to avoid as much as possible calls to eObject.eResource()
+
+
+== Contribute an ID handler ==
+
+If your metamodel elements doesn't inherit from org.polarsys.capella.common.data.modellingcore.ModelElement, you have to contribute an Id handler via the extension point "org.polarsys.capella.shared.id.handler.IdHandler"
+You can simply extend the org.polarsys.capella.shared.id.handler.AbstractIdHandler.

@@ -78,7 +78,7 @@ public class RealValueGroup extends IntegerValueGroup implements VerifyListener 
    */
   protected void handleResetButtonClicked(Button button) {
     setDataValue(_semanticElement, _semanticFeature, "0.0");
-    setTextValue(_valueField, _semanticElement, _semanticFeature);
+    setTextValue(valueField, _semanticElement, _semanticFeature);
   }
 
 }

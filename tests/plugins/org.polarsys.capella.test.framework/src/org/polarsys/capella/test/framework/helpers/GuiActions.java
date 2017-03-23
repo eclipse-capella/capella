@@ -30,7 +30,9 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.IWorkbenchSite;
@@ -44,6 +46,10 @@ import org.polarsys.capella.core.explorer.activity.ui.actions.OpenActivityExplor
 import org.polarsys.capella.core.model.obfuscator.actions.ObfuscateSessionAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortContentAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortSelectionAction;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.DeleteHiddenElementsJob;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.FixDiagramFiltersHandler;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.FixDiagramFiltersHandler.FixDiagramsJob;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RefreshDiagramsCommandHandler;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.platform.sirius.ui.project.NewProjectWizard;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
@@ -342,4 +348,35 @@ public class GuiActions {
     obfuscateAction.selectionChanged(selection);
     obfuscateAction.obfuscate();
   }
+
+  /**
+   * This code is called when using the "Remove Hidden Elements" action
+   * @param session
+   */
+  public static void deleteHiddenElements(Session session, boolean isUnsyncDiagram) {
+    Collection<DRepresentation> representationsToRefresh = DialectManager.INSTANCE.getAllRepresentations(session);
+    Job job = new DeleteHiddenElementsJob(representationsToRefresh, session, isUnsyncDiagram);
+    job.setThread(Display.getDefault().getThread());
+    job.setUser(true);
+    job.schedule();
+  }
+ 
+  /**
+   * This code is called when using the "Fix Filters on all Representations" action
+   * @param session
+   */
+  public static void fixDiagrams(IFile airdFile, Session session) {
+    FixDiagramsJob job = new FixDiagramFiltersHandler().new FixDiagramsJob("Fix filters on aird", airdFile.getName(), session, Display.getDefault());
+    job.setUser(true);
+    job.schedule();
+  }
+
+  public static void refreshAllSubRepresentations(IFile airdFile, Session session) {
+    Collection<DRepresentation> representationsToRefresh = DialectManager.INSTANCE.getAllRepresentations(session);
+    Job job = new RefreshDiagramsCommandHandler().new RefreshDiagramsJob(airdFile.getName(), session, representationsToRefresh, Display.getCurrent());
+    job.setThread(Display.getDefault().getThread());
+    job.setUser(true);
+    job.schedule();
+  }
+
 }

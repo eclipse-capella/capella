@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,26 +30,25 @@ public class TargetElementContentProvider extends SourceElementContentProvider {
    * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
    */
   @Override
-  public Object[] getChildren(Object parentElement_p) {
-    
+  public Object[] getChildren(Object parentElement) {
     //It's a class we get all instances of trace of this type
-    if(parentElement_p instanceof Class){
+    if (parentElement instanceof Class){
       // Retrieve all source traces from current element 
-      List<AbstractTrace> targetTraceList = _currentElement.getOutgoingTraces();
+      List<AbstractTrace> targetTraceList = currentElement.getOutgoingTraces();
       List<AbstractTrace> result=new ArrayList<AbstractTrace>();
       for (AbstractTrace trace : targetTraceList) {
-        if(trace.getClass().equals(parentElement_p)){
+        if(trace.getClass().equals(parentElement)){
           result.add(trace);
         }
       }
       return result.toArray();
     }
     //It's a instance of trace we get all related NamedElement
-    else if(parentElement_p instanceof Trace){
-      TraceableElement result=((AbstractTrace) parentElement_p).getTargetElement();
+    else if (parentElement instanceof Trace){
+      TraceableElement result=((AbstractTrace) parentElement).getTargetElement();
       if (result!=null){
         //To have the parent link
-          _parentLinkMap.put(result, (Trace)parentElement_p);
+          parentLinkMap.put(result, (Trace)parentElement);
         return Collections.singletonList(result).toArray();
       }
     }
@@ -61,19 +60,19 @@ public class TargetElementContentProvider extends SourceElementContentProvider {
    * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
    */
   @Override
-  public Object[] getElements(Object inputElement_p) {
+  public Object[] getElements(Object inputElement) {
     
-    if(inputElement_p instanceof CapellaElement){
-      _currentElement=(CapellaElement) inputElement_p;
+    if (inputElement instanceof CapellaElement){
+      currentElement=(CapellaElement) inputElement;
       // Retrieve all source traces from current element 
-      List<AbstractTrace> targetTraceList = ((CapellaElement) inputElement_p).getOutgoingTraces();
-      _traceType=new ArrayList<Class<? extends AbstractTrace>>();
+      List<AbstractTrace> targetTraceList = ((CapellaElement) inputElement).getOutgoingTraces();
+      traceType=new ArrayList<Class<? extends AbstractTrace>>();
       // Build the list of type trace
       for (AbstractTrace currentTrace : targetTraceList) {
-        if(!_traceType.contains(currentTrace.getClass()))
-          _traceType.add(currentTrace.getClass());
+        if(!traceType.contains(currentTrace.getClass()))
+          traceType.add(currentTrace.getClass());
       }
-      return _traceType.toArray();
+      return traceType.toArray();
     }
     return null;
   }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,23 +34,23 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 public class ViewCapellaModelPage extends WizardPage {
 
   /** Parent wizard */
-  public AddTraceWizard _parentWizard;
+  public AddTraceWizard parentWizard;
   /** model to display */
-  private SystemEngineering _system;
+  private SystemEngineering system;
   /** capella model viewer */
-  CapellaModelTreeViewer _capellaModelViewer;
+  CapellaModelTreeViewer capellaModelViewer;
 
   /**
-   * @param pageName_p
+   * @param pageName
    */
-  public ViewCapellaModelPage(String pageName_p, SystemEngineering sysEng_p, AddTraceWizard parentWizard_p) {
-    super(pageName_p);
-    _system = sysEng_p;
-    _parentWizard = parentWizard_p;
+  public ViewCapellaModelPage(String pageName, SystemEngineering sysEng, AddTraceWizard parentWizard) {
+    super(pageName);
+    this.system = sysEng;
+    this.parentWizard = parentWizard;
   }
 
-  protected Composite createInternalComposite(Composite parent_p) {
-    Composite composite = new Composite(parent_p, SWT.NONE);
+  protected Composite createInternalComposite(Composite parent) {
+    Composite composite = new Composite(parent, SWT.NONE);
     // Install a layout manager, all widgets are displayed on 2 columns.
     composite.setLayout(new GridLayout(1, true));
     // Set its layout.
@@ -62,31 +62,31 @@ public class ViewCapellaModelPage extends WizardPage {
   /**
    * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
    */
-  public void createControl(Composite parent_p) {
+  public void createControl(Composite parent) {
     // **Layout definition
     FillLayout horizontalFillLayout = new FillLayout(SWT.HORIZONTAL);
-    Composite composite = createInternalComposite(parent_p);
+    Composite composite = createInternalComposite(parent);
 
     // **Presentation of trace elements(source and target)
     Composite capellaTreeComposite = new Composite(composite, SWT.NONE);
     capellaTreeComposite.setLayout(horizontalFillLayout);
     capellaTreeComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-    _capellaModelViewer = new CapellaModelTreeViewer(_system);
-    _capellaModelViewer._currentNamedElement = _parentWizard.getWorkingNamedElement();
-    _capellaModelViewer.getControl(capellaTreeComposite);
+    capellaModelViewer = new CapellaModelTreeViewer(system);
+    capellaModelViewer._currentNamedElement = parentWizard.getWorkingNamedElement();
+    capellaModelViewer.getControl(capellaTreeComposite);
 
     // **Add listener
-    _capellaModelViewer._treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+    capellaModelViewer._treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
-      public void selectionChanged(SelectionChangedEvent event_p) {
-        ISelection selection = event_p.getSelection();
+      public void selectionChanged(SelectionChangedEvent event) {
+        ISelection selection = event.getSelection();
         if (selection instanceof IStructuredSelection && ((IStructuredSelection) selection).size() == 1) {
           Object elem = ((IStructuredSelection) selection).getFirstElement();
           if (elem instanceof NamedElement) {
             if (checkElement((NamedElement) elem)) {
               setPageComplete(true);
-              _parentWizard.setCurrentNamedElement((NamedElement) elem);
+              parentWizard.setCurrentNamedElement((NamedElement) elem);
               setMessage(null);
             } else {
               setPageComplete(false);
@@ -102,21 +102,21 @@ public class ViewCapellaModelPage extends WizardPage {
     setControl(composite);
   }
 
-  public boolean checkElement(NamedElement element_p) {
-    NamedElement currentElt = _parentWizard.getWorkingNamedElement();
-    if (currentElt.equals(element_p)) {
+  public boolean checkElement(NamedElement element) {
+    NamedElement currentElt = parentWizard.getWorkingNamedElement();
+    if (currentElt.equals(element)) {
       return false;
     }
     for (AbstractTrace trace : currentElt.getIncomingTraces()) {
-      if (trace.getSourceElement() == element_p)
+      if (trace.getSourceElement() == element)
         return false;
-      if (trace.getTargetElement() == element_p)
+      if (trace.getTargetElement() == element)
         return false;
     }
     for (AbstractTrace trace : currentElt.getOutgoingTraces()) {
-      if (trace.getSourceElement() == element_p)
+      if (trace.getSourceElement() == element)
         return false;
-      if (trace.getTargetElement() == element_p)
+      if (trace.getTargetElement() == element)
         return false;
     }
     return true;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -107,10 +107,10 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
 
     TabbedPropertySheetWidgetFactory widgetFactory = getWidgetFactory();
 
-    _rootParentComposite.setLayout(new GridLayout());
+    rootParentComposite.setLayout(new GridLayout());
 
     // Create the group.
-    Group textGroup = widgetFactory.createGroup(_rootParentComposite, ICommonConstants.EMPTY_STRING);
+    Group textGroup = widgetFactory.createGroup(rootParentComposite, ICommonConstants.EMPTY_STRING);
     textGroup.setLayout(new GridLayout(2, false));
     textGroup.setLayoutData(new GridData(SWT.FILL, GridData.FILL, false, false));
 
@@ -146,7 +146,7 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
     createNameWidget(widgetFactory, textGroup);
 
     // Create Contextual Elements widget.
-    createContextualElementsWidget(widgetFactory, _rootParentComposite);
+    createContextualElementsWidget(widgetFactory, rootParentComposite);
   }
 
   /**

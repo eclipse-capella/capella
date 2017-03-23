@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
 
 public class UpdateCategoriesWizardAction extends AbstractTigAction implements IHandler {
 
-  private UpdateCategoriesController _updateCatController;
+  private UpdateCategoriesController updateCatController;
 
   @Override
   public void run(IAction action) {
@@ -43,10 +42,10 @@ public class UpdateCategoriesWizardAction extends AbstractTigAction implements I
     // if not valid selection return warning message
     if (UpdateCategoriesController.isValidSelection(selection)) {
       // Get available elements.
-      _updateCatController = UpdateCategoriesController.createUpdateCategoriesController(selection);
+      updateCatController = UpdateCategoriesController.createUpdateCategoriesController(selection);
 
-      List<EObject> availableElements = _updateCatController.getAvailableCategories(selection);
-      List<EObject> commonCategories = _updateCatController.getCommonCategories(selection);
+      List<EObject> availableElements = updateCatController.getAvailableCategories(selection);
+      List<EObject> commonCategories = updateCatController.getCommonCategories(selection);
 
       // open transfert dialog
       final List<EObject> wizardSelections = SelectionDialogHelper.multiplePropertyTransfertDialogWizard(getActiveShell(), Messages.UpdateCategoriesWizardAction_Title,
@@ -99,11 +98,12 @@ public class UpdateCategoriesWizardAction extends AbstractTigAction implements I
   }
 
   /**
-   * @param selection
-   * @param wizardSelections
+   * @param selectedElements
+   * @param categoriesToAdd
+   * @param categoriesToRemove
    */
   protected void handleChanges(List<EObject> selectedElements, List<EObject> categoriesToAdd, List<EObject> categoriesToRemove) {
-    _updateCatController.updateCategories(selectedElements, categoriesToAdd, categoriesToRemove);
+    updateCatController.updateCategories(selectedElements, categoriesToAdd, categoriesToRemove);
 
   }
 }

@@ -14,7 +14,14 @@ Select at least one original element of the REC and from the contextual menu, ch
  
 [[Image:Images/8.3.%20Update%20REC-RPL_html_518bd489.png|627x111px]]
 
- 
+{| border="1"
+|-
+| 
+[[Image:Images/InfoIcon.png|48x48px]]
+| 
+The Semantic Browser can be useful to identify the selection of the right REC.
+|}
+
 The REC definition dialog appears, including the new elements
 
  
@@ -37,12 +44,21 @@ Validate the new REC content and check the result in the Semantic Browser for ex
  
 == Update of a RPL from its REC ==
  
-Select a RPL element and in f the contextual menu
+Select a RPL element and in the contextual menu:
 
  
 [[Image:Images/8.3.%20Update%20REC-RPL_html_m2fb5616b.png|627x154px]]
 
- 
+
+{| border="1"
+|-
+| 
+[[Image:Images/InfoIcon.png|48x48px]]
+| 
+The Semantic Browser can be useful to check if the selection is about the right RPL associated with the right REC.<br/>
+The contextual menu is also available directly on the RPL in the Semantic Browser.
+|}
+
 The REC instantiation wizard opens and in the left tree, the new elements appear.
 
  
@@ -68,18 +84,26 @@ Perform a few modifications on elements belonging to a RPL.
 [[Image:Images/8.3.%20Update%20REC-RPL_html_2b539e6f.png|360x290px]]
 
  
-From the contextual menu, select
+From the contextual menu, select:
 
  
 [[Image:Images/8.3.%20Update%20REC-RPL_html_m41eba791.png|627x114px]]
 
- 
+{| border="1"
+|-
+| 
+[[Image:Images/InfoIcon.png|48x48px]]
+| 
+The Semantic Browser can be useful to check if the selection is about the right RPL associated with the right REC.<br/>
+The contextual menu is also available directly on the RPL in the Semantic Browser.
+|}
+
 This opens the REC definition dialog. The changes are visible in the tree.
 
  
 [[Image:Images/8.3.%20Update%20REC-RPL_html_4875b314.png|622x607px]]
 
  
-From here, the behavior is the same as when the definition update was created directly from the REC elements. [[Image:Images/8.3.%20Update%20REC-RPL_html_m2f4cc7f5.jpg|92x92px]][[Image:Images/8.3.%20Update%20REC-RPL_html_733c5d5d.jpg|92x92px]]
+From here, the behavior is the same as when the definition update was created directly from the REC elements.
 
    

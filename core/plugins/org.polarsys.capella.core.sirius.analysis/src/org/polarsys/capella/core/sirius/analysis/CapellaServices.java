@@ -57,6 +57,7 @@ import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSy
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
@@ -276,6 +277,12 @@ public class CapellaServices {
   public EObject forceRefresh(DDiagram diagram) {
     boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
     if (null != diagram && !automaticRefresh) {
+    	
+    	if (diagram.getActivatedFilters().size() != 0) {
+            CompositeFilterApplicationBuilder builder = new CompositeFilterApplicationBuilder(diagram);
+            builder.computeCompositeFilterApplications();
+        }
+
       // Refreshes the diagram
       DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
     }

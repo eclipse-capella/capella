@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -156,6 +156,25 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                    This rule ensures that NodePC is not deployed in PhysicalActor.
 
 NodePC=Physical Component of nature NODE
+                </description>
+                <target
+                      class="PhysicalComponent">
+                </target>
+             </constraint>
+             <constraint
+                   class="org.polarsys.capella.core.data.pa.validation.physicalComponent.UnsetPhysicalComponent"
+                   id="DWF_DC_34"
+                   isEnabledByDefault="true"
+                   lang="Java"
+                   mode="Batch"
+                   name="DWF_DC_34 - PhysicalComponent of nature UNSET"
+                   severity="WARNING"
+                   statusCode="1">
+                <message>
+                   {0}
+                </message>
+                <description>
+                   This rule ensures that a Physical Component is not of nature UNSET.
                 </description>
                 <target
                       class="PhysicalComponent">

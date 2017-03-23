@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.flexibility.wizards.renderer;
 
 import java.util.HashMap;
@@ -34,20 +33,14 @@ import org.polarsys.capella.common.flexibility.wizards.ui.DefaultLabelProvider;
 public class RendererContext implements IRendererContext, PropertyChangeListener, IPolicifiedRendererContext {
 
   ILabelProvider labelProvider;
+  IPropertyContext propertyContext;
+  IRenderers renderers;
 
-  IPropertyContext _propertyContext;
-
-  IRenderers _renderers;
-
-  HashMap<IProperty, IPropertyRenderer> _properties2renderers;
-
-  HashMap<IPropertyRenderer, IProperty> _renderers2properties;
-
-  HashMap<IPropertyGroup, IGroupRenderer> _groups2renderers;
-
-  HashMap<IGroupRenderer, IPropertyGroup> _renderers2groups;
-
-  HashMap<String, Object> _parameters = new HashMap<String, Object>();
+  HashMap<IProperty, IPropertyRenderer> properties2renderers;
+  HashMap<IPropertyRenderer, IProperty> renderers2properties;
+  HashMap<IPropertyGroup, IGroupRenderer> groups2renderers;
+  HashMap<IGroupRenderer, IPropertyGroup> renderers2groups;
+  HashMap<String, Object> parameters = new HashMap<String, Object>();
 
   IRendererPolicy policy;
 
@@ -57,15 +50,12 @@ public class RendererContext implements IRendererContext, PropertyChangeListener
 
   public RendererContext(IRenderers renderers, IPropertyContext context) {
     setPropertyContext(context);
-    _renderers = renderers;
-
-    _properties2renderers = new HashMap<IProperty, IPropertyRenderer>(0);
-    _renderers2properties = new HashMap<IPropertyRenderer, IProperty>(0);
-
-    _groups2renderers = new HashMap<IPropertyGroup, IGroupRenderer>(0);
-    _renderers2groups = new HashMap<IGroupRenderer, IPropertyGroup>(0);
-
-    labelProvider = new DefaultLabelProvider();
+    this.renderers = renderers;
+    this.properties2renderers = new HashMap<IProperty, IPropertyRenderer>(0);
+    this.renderers2properties = new HashMap<IPropertyRenderer, IProperty>(0);
+    this.groups2renderers = new HashMap<IPropertyGroup, IGroupRenderer>(0);
+    this.renderers2groups = new HashMap<IGroupRenderer, IPropertyGroup>(0);
+    this.labelProvider = new DefaultLabelProvider();
   }
 
   public ILabelProvider getLabelProvider() {
@@ -73,36 +63,36 @@ public class RendererContext implements IRendererContext, PropertyChangeListener
   }
 
   /**
-   * @param propertyContext
+   * @param ctx
    */
-  public void setPropertyContext(IPropertyContext propertyContext) {
+  public void setPropertyContext(IPropertyContext ctx) {
 
-    if ((_propertyContext != null) && (_propertyContext != propertyContext)) {
-      _propertyContext.unregisterListener(this);
+    if ((propertyContext != null) && (propertyContext != ctx)) {
+      propertyContext.unregisterListener(this);
     }
 
     HashMap<IProperty, IProperty> map = new HashMap<IProperty, IProperty>();
 
-    if (_propertyContext != propertyContext) {
-      if (_propertyContext != null) {
+    if (propertyContext != ctx) {
+      if (propertyContext != null) {
 
-        for (IProperty property : _propertyContext.getProperties().getAllItems()) {
-          for (IProperty property2 : propertyContext.getProperties().getAllItems()) {
+        for (IProperty property : propertyContext.getProperties().getAllItems()) {
+          for (IProperty property2 : ctx.getProperties().getAllItems()) {
             if (property.getId().equals(property2.getId()) && !(property.equals(property2))) {
               map.put(property, property2);
-              _properties2renderers.put(property2, _properties2renderers.get(property));
-              _renderers2properties.put(_properties2renderers.get(property2), property2);
+              properties2renderers.put(property2, properties2renderers.get(property));
+              renderers2properties.put(properties2renderers.get(property2), property2);
               updatePropertyRenderer(property2.getId());
             }
           }
         }
       }
 
-      _propertyContext = propertyContext;
+      propertyContext = ctx;
     }
 
-    if ((_propertyContext != null)) {
-      _propertyContext.registerListener(this);
+    if ((propertyContext != null)) {
+      propertyContext.registerListener(this);
     }
   }
 
@@ -136,7 +126,7 @@ public class RendererContext implements IRendererContext, PropertyChangeListener
    */
   @Override
   public IProperty getProperty(IPropertyRenderer renderer) {
-    return _renderers2properties.get(renderer);
+    return renderers2properties.get(renderer);
   }
 
   /**
@@ -144,15 +134,15 @@ public class RendererContext implements IRendererContext, PropertyChangeListener
    */
   @Override
   public IPropertyRenderer getRenderer(IProperty property) {
-    if (!_properties2renderers.containsKey(property)) {
-      IPropertyRenderer renderer = _renderers.createRenderer(property);
+    if (!properties2renderers.containsKey(property)) {
+      IPropertyRenderer renderer = renderers.createRenderer(property);
       if (renderer == null) {
         renderer = createDefaultRenderer(property);
       }
-      _properties2renderers.put(property, renderer);
-      _renderers2properties.put(renderer, property);
+      properties2renderers.put(property, renderer);
+      renderers2properties.put(renderer, property);
     }
-    return _properties2renderers.get(property);
+    return properties2renderers.get(property);
   }
 
   public IPropertyRenderer createDefaultRenderer(IProperty property) {
@@ -167,15 +157,15 @@ public class RendererContext implements IRendererContext, PropertyChangeListener
    */
   @Override
   public IGroupRenderer getRenderer(IPropertyGroup propertyGroup) {
-    if (!_groups2renderers.containsKey(propertyGroup)) {
-      IGroupRenderer renderer = _renderers.createRenderer(propertyGroup);
+    if (!groups2renderers.containsKey(propertyGroup)) {
+      IGroupRenderer renderer = renderers.createRenderer(propertyGroup);
       if (renderer == null) {
         renderer = createDefaultRenderer(propertyGroup);
       }
-      _groups2renderers.put(propertyGroup, renderer);
-      _renderers2groups.put(renderer, propertyGroup);
+      groups2renderers.put(propertyGroup, renderer);
+      renderers2groups.put(renderer, propertyGroup);
     }
-    return _groups2renderers.get(propertyGroup);
+    return groups2renderers.get(propertyGroup);
   }
 
   public IGroupRenderer createDefaultRenderer(IPropertyGroup propertyGroup) {
@@ -190,7 +180,7 @@ public class RendererContext implements IRendererContext, PropertyChangeListener
    */
   @Override
   public IPropertyGroup getPropertyGroup(IGroupRenderer renderer) {
-    return _renderers2groups.get(renderer);
+    return renderers2groups.get(renderer);
   }
 
   /**
@@ -198,7 +188,7 @@ public class RendererContext implements IRendererContext, PropertyChangeListener
    */
   @Override
   public IRenderers getRenderers() {
-    return _renderers;
+    return renderers;
   }
 
   /**
@@ -206,7 +196,7 @@ public class RendererContext implements IRendererContext, PropertyChangeListener
    */
   @Override
   public IPropertyContext getPropertyContext() {
-    return _propertyContext;
+    return propertyContext;
   }
 
   /**
@@ -214,7 +204,7 @@ public class RendererContext implements IRendererContext, PropertyChangeListener
    */
   @Override
   public Object getParameter(String id) {
-    return _parameters.get(id);
+    return parameters.get(id);
   }
 
   /**
@@ -222,7 +212,7 @@ public class RendererContext implements IRendererContext, PropertyChangeListener
    */
   @Override
   public void putParameter(String id, Object value) {
-    _parameters.put(id, value);
+    parameters.put(id, value);
   }
 
 }

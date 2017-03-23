@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,24 +37,20 @@ public class DependenciesScopeHandler extends SubCommandHandler {
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
     ISelection selection = getSelection(event);
-    if(selection != null && selection instanceof IStructuredSelection){
+    if (selection != null && selection instanceof IStructuredSelection) {
       IRendererContext context = ExecutionEventUtil.getRendererContext(event);
-      
-      Collection<Object> selectiona =
-          ((selection == null) || (selection.isEmpty())) ? context.getPropertyContext().getSourceAsList() : ((IStructuredSelection) selection).toList();
-          
-          IProperty property = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE);
-          
-          Collection<EObject> currentValue = (Collection<EObject>) context.getPropertyContext().getCurrentValue(property);
-          
-          try {
-            IProperty dependenciesProperty = context.getPropertyContext().getProperties().getProperty("dependencies");
-            Collection<EObject> dependencies = (Collection) context.getPropertyContext().getCurrentValue(dependenciesProperty);
-            currentValue.addAll(dependencies);
-            context.getPropertyContext().setCurrentValue(property, currentValue);
-          } catch (Exception e) {
-            //Nothing here
-          }      
+      IProperty property = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE);
+      Collection<EObject> currentValue = (Collection<EObject>) context.getPropertyContext().getCurrentValue(property);
+
+      try {
+        IProperty dependenciesProperty = context.getPropertyContext().getProperties().getProperty("dependencies");
+        Collection<EObject> dependencies = (Collection) context.getPropertyContext()
+            .getCurrentValue(dependenciesProperty);
+        currentValue.addAll(dependencies);
+        context.getPropertyContext().setCurrentValue(property, currentValue);
+      } catch (Exception e) {
+        // Nothing here
+      }
     }
     return null;
   }
@@ -65,12 +61,15 @@ public class DependenciesScopeHandler extends SubCommandHandler {
   @Override
   public void setEnabled(Object evaluationContext) {
     if (evaluationContext != null) {
-    IEvaluationContext context = (IEvaluationContext) evaluationContext;
+      IEvaluationContext context = (IEvaluationContext) evaluationContext;
       IRendererContext rendererContext = ExecutionEventUtil.getRendererContext(context);
-      if ((rendererContext != null) && (rendererContext.getPropertyContext() != null) && (rendererContext.getPropertyContext().getProperties() != null)) {
-        IProperty dependenciesProperty = rendererContext.getPropertyContext().getProperties().getProperty("dependencies");
+      if ((rendererContext != null) && (rendererContext.getPropertyContext() != null)
+          && (rendererContext.getPropertyContext().getProperties() != null)) {
+        IProperty dependenciesProperty = rendererContext.getPropertyContext().getProperties()
+            .getProperty("dependencies");
         if (dependenciesProperty != null) {
-          Collection<EObject> values = (Collection<EObject>) rendererContext.getPropertyContext().getCurrentValue(dependenciesProperty);
+          Collection<EObject> values = (Collection<EObject>) rendererContext.getPropertyContext()
+              .getCurrentValue(dependenciesProperty);
           setBaseEnabled(!values.isEmpty());
         }
       }

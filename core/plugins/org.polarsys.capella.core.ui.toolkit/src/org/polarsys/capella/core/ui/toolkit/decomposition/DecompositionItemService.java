@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,42 +12,42 @@ package org.polarsys.capella.core.ui.toolkit.decomposition;
 
 public class DecompositionItemService {
 
-	private String _name;
-	private Object _value;
-	private DecompositionItem _parentDecompositionItem;
-	private boolean _used;
-  private String _path;
+	private String name;
+	private Object value;
+	private DecompositionItem parentDecompositionItem;
+	private boolean used;
+  private String path;
 
 	
-	public DecompositionItemService(String name_p, Object value_p, boolean used_p, String path_p) {
-		setName(name_p);
-		setValue(value_p);
-		setUsed(used_p);
-    setPath(path_p);
+	public DecompositionItemService(String name, Object value, boolean used, String path) {
+		setName(name);
+		setValue(value);
+		setUsed(used);
+    setPath(path);
 	}
 	
 	public String getName() {
-		return _name;
+		return name;
 	}
 
-	public void setName(String name_p) {
-		this._name = name_p;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Object getValue() {
-		return _value;
+		return value;
 	}
 
-	public void setValue(Object value_p) {
-		this._value = value_p;
+	public void setValue(Object value) {
+		this.value = value;
 	}
 
 	public DecompositionItem getParentDecompositionItem() {
-		return _parentDecompositionItem;
+		return parentDecompositionItem;
 	}
 
-	public void setParentDecompositionItem(DecompositionItem decompositionItem_p) {
-		_parentDecompositionItem = decompositionItem_p;
+	public void setParentDecompositionItem(DecompositionItem decompositionItem) {
+		parentDecompositionItem = decompositionItem;
 	}
 
 	@Override
@@ -64,25 +64,25 @@ public class DecompositionItemService {
 	}
 
 	public boolean isUsed() {
-		return _used;
+		return used;
 	}
 
-	public void setUsed(boolean used_p) {
-		this._used = used_p;
+	public void setUsed(boolean used) {
+		this.used = used;
 	}
 
   /**
    * @return the path
    */
   public String getPath() {
-    return _path;
+    return path;
   }
 
   /**
-   * @param path_p the path to set
+   * @param path the path to set
    */
-  public void setPath(String path_p) {
-    _path = path_p;
+  public void setPath(String path) {
+    this.path = path;
   }
 
 }

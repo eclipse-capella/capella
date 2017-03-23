@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,7 @@ public class ExchangeItemAllocationSection extends NamedElementSection {
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createControls(parent, aTabbedPropertySheetPage);
 
-    Group main = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
+    Group main = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
     main.setLayout(new GridLayout(6, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
@@ -66,10 +66,10 @@ public class ExchangeItemAllocationSection extends NamedElementSection {
     };
     _exchangeItemField.setDisplayedInWizard(displayedInWizard);
 
-    _transmissionProtocolGroup = new CommunicationLinkProtocolGroup(_rootParentComposite, Messages.ExchangeItemAllocationSection_TransmissionProtocol_Label, getWidgetFactory(), true, true, false);
+    _transmissionProtocolGroup = new CommunicationLinkProtocolGroup(rootParentComposite, Messages.ExchangeItemAllocationSection_TransmissionProtocol_Label, getWidgetFactory(), true, true, false);
     _transmissionProtocolGroup.setDisplayedInWizard(displayedInWizard);
 
-    _acquisitionProtocolGroup = new CommunicationLinkProtocolGroup(_rootParentComposite, Messages.ExchangeItemAllocationSection_AcquisitionProtocol_Label, getWidgetFactory(), false, false, true);
+    _acquisitionProtocolGroup = new CommunicationLinkProtocolGroup(rootParentComposite, Messages.ExchangeItemAllocationSection_AcquisitionProtocol_Label, getWidgetFactory(), false, false, true);
     _acquisitionProtocolGroup.setDisplayedInWizard(displayedInWizard);
   }
 

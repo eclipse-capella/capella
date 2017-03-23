@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,19 +62,19 @@ import org.polarsys.capella.core.platform.sirius.clipboard.util.StorageLocation;
 public class CapellaDiagramPasteCommand extends AbstractResultCommand {
 
   // The non-null list of GMF elements to paste into
-  private List<View> _targets;
+  private List<View> targets;
 
   // The suffix of the copied semantic elements, computed during paste
-  private String _suffix;
+  private String suffix;
 
   // Mapping of the actually pasted Sirius elements to their original versions,
   // computed during Semantic/Sirius layers reconciliation
-  private Map<DRepresentationElement, DRepresentationElement> _pastedSiriusElementsMapping;
+  private Map<DRepresentationElement, DRepresentationElement> pastedSiriusElementsMapping;
 
   // Whether the user simply copy/pasted without selecting a paste target
-  private boolean _isStandbyUsage;
+  private boolean isStandbyUsage;
 
-  private boolean _isRestoreStyles;
+  private boolean isRestoreStyles;
 
   /**
    * Constructor
@@ -91,18 +91,18 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    */
   public CapellaDiagramPasteCommand(List<? extends View> targets, boolean restoreStyles) {
     assert targets != null;
-    _isRestoreStyles = restoreStyles;
-    _targets = new ArrayList<View>(targets);
-    _suffix = null;
-    _pastedSiriusElementsMapping = new HashMap<DRepresentationElement, DRepresentationElement>();
-    _isStandbyUsage = checkStandbyUsage();
+    this.isRestoreStyles = restoreStyles;
+    this.targets = new ArrayList<View>(targets);
+    this.suffix = null;
+    this.pastedSiriusElementsMapping = new HashMap<DRepresentationElement, DRepresentationElement>();
+    this.isStandbyUsage = checkStandbyUsage();
   }
 
   /**
-   * @see _pastedSiriusElementsMapping
+   * @see pastedSiriusElementsMapping
    */
   public Map<DRepresentationElement, DRepresentationElement> getPastedSiriusElementsOrigins() {
-    return Collections.unmodifiableMap(_pastedSiriusElementsMapping);
+    return Collections.unmodifiableMap(pastedSiriusElementsMapping);
   }
 
   /**
@@ -127,7 +127,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
     List<EObject> rawAllSiriusOrigins = MiscUtil
         .getContentSet(CapellaDiagramClipboard.getInstance().getSiriusElements());
     List<DSemanticDecorator> allSiriusOrigins = MiscUtil.filter(rawAllSiriusOrigins, DSemanticDecorator.class);
-    for (View target : _targets) {
+    for (View target : targets) {
       EcoreUtil.resolveAll(target);
     }
     
@@ -188,7 +188,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    */
   protected boolean checkStandbyUsage() {
     Set<EObject> copySelection = new HashSet<EObject>(CapellaDiagramClipboard.getInstance().getSiriusElements());
-    Set<EObject> pasteSelection = new HashSet<EObject>(LayerUtil.toSirius(_targets));
+    Set<EObject> pasteSelection = new HashSet<EObject>(LayerUtil.toSirius(targets));
     return copySelection.equals(pasteSelection);
   }
 
@@ -198,8 +198,8 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    * @return a non-null view
    */
   public View getGmfTarget() {
-    View result = _targets.get(0);
-    if (_isStandbyUsage && (result.eContainer() instanceof View) && !(result.eContainer() instanceof Edge)) {
+    View result = targets.get(0);
+    if (isStandbyUsage && (result.eContainer() instanceof View) && !(result.eContainer() instanceof Edge)) {
       result = (View) result.eContainer();
     }
     return result;
@@ -279,7 +279,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
           representation.setName(name);
         }
         result.add(representation);
-        _pastedSiriusElementsMapping.put(representation, origin);
+        pastedSiriusElementsMapping.put(representation, origin);
       } else {
         toDelete.add(representation);
       }
@@ -336,7 +336,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
         }
       }
 
-      if (_isRestoreStyles) {
+      if (isRestoreStyles) {
         // We replace the current style
         for (EObject pasted : result) {
           if (pasted instanceof DDiagramElement) {
@@ -372,9 +372,9 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
     if (locations != null) {
       assert origins.size() == locations.size();
       // Compute suffix for names uniqueness
-      _suffix = getCommonSuffix(origins, locations);
+      suffix = getCommonSuffix(origins, locations);
       // Duplicate elements
-      List<EObject> copies = copyAll(origins, _suffix);
+      List<EObject> copies = copyAll(origins, suffix);
       // Store copies at the original locations if applicable
       List<EObject> orderedOrigins = sortBySibling(origins);
       for (EObject orderedOrigin : orderedOrigins) {
@@ -624,7 +624,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
     EObject container = null;
     if (element != null) {
       containment = element.eContainmentFeature();
-      if (!_isStandbyUsage && (element.eContainer() == source)
+      if (!isStandbyUsage && (element.eContainer() == source)
           && target.eClass().getEAllContainments().contains(containment) && !elementIsPart(element)) {
         // Replace source by target since it is applicable
         container = target;

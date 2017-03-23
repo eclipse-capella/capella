@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPropertyPage;
 import org.osgi.service.prefs.BackingStoreException;
-
 import org.polarsys.capella.core.commands.preferences.preferences.ConfigurabilityPreferences;
 import org.polarsys.capella.core.commands.preferences.util.XmlPreferencesConfig;
 import org.polarsys.capella.core.preferences.Activator;
@@ -54,8 +53,8 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
   private IAdaptable element;
 
   @Override
-  public void setElement(IAdaptable _element) {
-    this.element = _element;
+  public void setElement(IAdaptable elt) {
+    this.element = elt;
   }
 
   @Override
@@ -88,11 +87,10 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
 
   /**
    * Creates a new field editor preference page with the given style, an empty title, and no image.
-   * @param style either <code>GRID</code> or <code>FLAT</code>
    */
-  protected ConfigurableFieldEditorPreferencePage(String _pageIdentifient) {
+  protected ConfigurableFieldEditorPreferencePage(String id) {
     super(SWT.FLAT);
-    this.pageId = _pageIdentifient;
+    this.pageId = id;
     getPropertyPagesIdentifients().add(pageId);
 
   }
@@ -100,7 +98,7 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
   /**
    * @see org.eclipse.ui.IWorkbenchPreferencePage#init(org.eclipse.ui.IWorkbench)
    */
-  public void init(IWorkbench workbench_p) {
+  public void init(IWorkbench workbench) {
     // Nothing to do.
     this.addPageChangedListener(new EclipseNodePreferencesChangeListener());
   }
@@ -109,18 +107,18 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
   }
 
   /**
-   * @param editor_p
-   * @param userProfileModeEnum_p
+   * @param editor
+   * @param userProfileModeEnum
    * @param parent
    */
-  protected void addField(FieldEditor editor_p, UserProfileModeEnum userProfileModeEnum_p, Composite parent) {
-    if (UserProfileModeEnum.Expert.equals(userProfileModeEnum_p) && (parent != null) && !parent.isDisposed()) {
-      EXPERT_FIEL_EDITORS.put(editor_p, parent);
-      editor_p.setEnabled(ConfigurabilityPreferences.isInstanceScopePreferenceItemEnabled(XmlPreferencesConfig.USER_PROFILE_MODE_ID), parent);
+  protected void addField(FieldEditor editor, UserProfileModeEnum userProfileModeEnum, Composite parent) {
+    if (UserProfileModeEnum.Expert.equals(userProfileModeEnum) && (parent != null) && !parent.isDisposed()) {
+      EXPERT_FIEL_EDITORS.put(editor, parent);
+      editor.setEnabled(ConfigurabilityPreferences.isInstanceScopePreferenceItemEnabled(XmlPreferencesConfig.USER_PROFILE_MODE_ID), parent);
       parent.setEnabled(ConfigurabilityPreferences.isInstanceScopePreferenceItemEnabled(XmlPreferencesConfig.USER_PROFILE_MODE_ID));
     }
-    editor_p.setPreferenceStore(Activator.getDefault().getPreferenceStore());
-    super.addField(editor_p);
+    editor.setPreferenceStore(Activator.getDefault().getPreferenceStore());
+    super.addField(editor);
   }
 
   @Override
@@ -137,28 +135,28 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
   }
 
   /**
-   * @param editor_p
-   * @param userProfileModeEnum_p
+   * @param editor
+   * @param userProfileModeEnum
    * @param parent
    */
-  protected void addField(FieldEditor editor_p, UserProfileModeEnum userProfileModeEnum_p, Composite parent, Class scope) {
-    if (UserProfileModeEnum.Expert.equals(userProfileModeEnum_p) && (parent != null) && !parent.isDisposed()) {
-      EXPERT_FIEL_EDITORS.put(editor_p, parent);
-      editor_p.setEnabled(ConfigurabilityPreferences.isInstanceScopePreferenceItemEnabled(XmlPreferencesConfig.USER_PROFILE_MODE_ID), parent);
+  protected void addField(FieldEditor editor, UserProfileModeEnum userProfileModeEnum, Composite parent, Class scope) {
+    if (UserProfileModeEnum.Expert.equals(userProfileModeEnum) && (parent != null) && !parent.isDisposed()) {
+      EXPERT_FIEL_EDITORS.put(editor, parent);
+      editor.setEnabled(ConfigurabilityPreferences.isInstanceScopePreferenceItemEnabled(XmlPreferencesConfig.USER_PROFILE_MODE_ID), parent);
       parent.setEnabled(ConfigurabilityPreferences.isInstanceScopePreferenceItemEnabled(XmlPreferencesConfig.USER_PROFILE_MODE_ID));
     } else {
-      editor_p.setEnabled(true, parent);
+      editor.setEnabled(true, parent);
       parent.setEnabled(true);
     }
-    ScopedCapellaPreferencesStore.fields.put(editor_p, null);
-    editor_p.setPreferenceStore(Activator.getDefault().getPreferenceStore());
-    super.addField(editor_p);
+    ScopedCapellaPreferencesStore.fields.put(editor, null);
+    editor.setPreferenceStore(Activator.getDefault().getPreferenceStore());
+    super.addField(editor);
   }
 
   @Override
-  protected void addField(FieldEditor editor_p) {
-    editor_p.setPreferenceStore(Activator.getDefault().getPreferenceStore());
-    this.addField(editor_p, UserProfileModeEnum.User, null);
+  protected void addField(FieldEditor editor) {
+    editor.setPreferenceStore(Activator.getDefault().getPreferenceStore());
+    this.addField(editor, UserProfileModeEnum.User, null);
   }
 
   @Override
@@ -187,16 +185,16 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
    * {@inheritDoc}
    */
   @Override
-  public void addPageChangedListener(IPageChangedListener listener_p) {
-    pageChangedListener.add(listener_p);
+  public void addPageChangedListener(IPageChangedListener listener) {
+    pageChangedListener.add(listener);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void removePageChangedListener(IPageChangedListener listener_p) {
-    pageChangedListener.remove(listener_p);
+  public void removePageChangedListener(IPageChangedListener listener) {
+    pageChangedListener.remove(listener);
 
   }
 
@@ -219,7 +217,7 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
     super.performOk();
     try {
       Platform.getPreferencesService().getRootNode().flush();
-    } catch (BackingStoreException exception_p) {
+    } catch (BackingStoreException exception) {
       StringBuilder loggerMessage = new StringBuilder("ConfigurableFieldEditorPreferencePage.performOk(..) _ "); //$NON-NLS-1$
     }
     ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID).save();

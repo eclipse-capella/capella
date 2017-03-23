@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,17 +20,17 @@ public class PhysicalActorExchangesCreator implements IExchangesCreator {
   /**
    * The component which will be the starting point of the exchanges creation
    */
-  protected Component _component;
+  protected Component component;
 
-  private Part _part = null;
+  private Part part = null;
   
   /**
    * Constructor
-   * @param component_p the component which will be the starting point of the exchanges creation
+   * @param component the component which will be the starting point of the exchanges creation
    */
-  public PhysicalActorExchangesCreator(Component component_p, Part part_p) {
-    _component = component_p;
-    _part = part_p;
+  public PhysicalActorExchangesCreator(Component component, Part part) {
+    this.component = component;
+    this.part = part;
   }
   
   /**
@@ -38,7 +38,7 @@ public class PhysicalActorExchangesCreator implements IExchangesCreator {
    * The type of exchange may be different between 2 implementations. It can be a component exchange, a physical link,... 
    */
   public void createExchanges() {
-    new DefaultExchangesCreator(_component).createExchanges();
-    new NodePhysicalComponentExchangesCreator(_component, _part).createExchanges();
+    new DefaultExchangesCreator(component).createExchanges();
+    new NodePhysicalComponentExchangesCreator(component, part).createExchanges();
   }
 }

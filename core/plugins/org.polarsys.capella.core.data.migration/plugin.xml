@@ -184,6 +184,7 @@
          class="org.polarsys.capella.core.data.migration.af.ViewpointMigrationContribution"/>         
    </extension>
    
+   
    <extension
          point="org.polarsys.capella.core.data.migration.migrationContributors">
       <migrationContributor
@@ -195,12 +196,11 @@
    
    
    <!-- Contributions that should be removed between versions -->
+   
    <extension
          point="org.polarsys.capella.core.data.migration.migrationContributions">
-
-      <migrationContribution 
-            class="org.polarsys.capella.core.data.migration.aird.FixCustomFeaturesContribution">
-      </migrationContribution>
+	  <migrationContribution
+         class="org.polarsys.capella.core.data.migration.contribution.FixDAnnotationsContribution"/>         
    </extension>
    
    

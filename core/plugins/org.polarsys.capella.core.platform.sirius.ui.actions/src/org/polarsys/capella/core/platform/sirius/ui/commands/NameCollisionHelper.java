@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.platform.sirius.ui.commands;
 
 import java.util.ArrayList;
@@ -38,7 +37,7 @@ public class NameCollisionHelper {
   /**
    * The pattern that's used in this NameCollisionHelper
    */
-  private Pattern _pattern;
+  private Pattern pattern;
   
   /**
    * A default, reusable instance.
@@ -55,7 +54,7 @@ public class NameCollisionHelper {
    * @param pattern
    */
   public NameCollisionHelper(Pattern pattern){
-    _pattern = pattern; 
+    this.pattern = pattern; 
   }
   
   public static NameCollisionHelper getDefault(){
@@ -99,7 +98,7 @@ public class NameCollisionHelper {
         boolean firstAttempt = true;
         List<EObject> eContents = owner.eContents();
         while (isCollide(eContents, name)) {
-          Matcher patternMatcher = _pattern.matcher(name);
+          Matcher patternMatcher = pattern.matcher(name);
           if (firstAttempt) {
             name = Messages.CapellaPasteCommand_COPY_OF + name;
             firstAttempt = false;
@@ -121,7 +120,7 @@ public class NameCollisionHelper {
 
   /**
    * Is the given name already present in the list of elements.
-   * @param contents a list of model elements
+   * @param modelElements a list of model elements
    * @param name
    * @return
    */
@@ -135,6 +134,5 @@ public class NameCollisionHelper {
     }
     return false;
   }
-  
   
 }

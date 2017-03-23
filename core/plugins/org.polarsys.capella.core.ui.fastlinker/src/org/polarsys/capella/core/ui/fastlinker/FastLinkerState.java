@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,112 +22,110 @@ public class FastLinkerState {
   /**
    * The first element put in the FastLinker (can be <code>null</code> if the FastLinker is empty).
    */
-  protected Collection _firstElement;
+  protected Collection firstElement;
   /**
    * The second element put in the FastLinker (can be <code>null</code> if the FastLinker is empty or if it contains only one element).
    */
-  protected Collection _secondElement;
+  protected Collection secondElement;
   /**
    * The currently pinned element (can contain a reference to the first element, to the second element or can be <code>null</code> if no element is pinned).
    */
-  protected Collection _pinnedElement;
+  protected Collection pinnedElement;
   /**
    * Info on the created link (or <code>null</code> if no link is created).
    */
-  protected LinkInfo _linkCreated;
+  protected LinkInfo linkCreated;
 
   /**
    * Constructor. Initialize the state as empty.
    */
   protected FastLinkerState() {
-    _firstElement = null;
-    _secondElement = null;
-    _pinnedElement = null;
-    _linkCreated = null;
+    firstElement = null;
+    secondElement = null;
+    pinnedElement = null;
+    linkCreated = null;
   }
 
   /**
    * Constructor. Initialize the state with given parameters.
-   * @param firstElement_p
-   * @param secondElement_p
-   * @param pinnedElement_p
+   * @param firstElement
+   * @param secondElement
+   * @param pinnedElement
    */
-  protected FastLinkerState(Collection firstElement_p,
-			Collection secondElement_p, Collection pinnedElement_p) {
-		_firstElement = firstElement_p;
-		_secondElement = secondElement_p;
-		if ((null == pinnedElement_p) || (firstElement_p == pinnedElement_p)
-				|| (secondElement_p == pinnedElement_p)) {
-			_pinnedElement = pinnedElement_p;
+  protected FastLinkerState(Collection firstElement, Collection secondElement, Collection pinnedElement) {
+		this.firstElement = firstElement;
+		this.secondElement = secondElement;
+		if ((null == pinnedElement) || (firstElement == pinnedElement) || (secondElement == pinnedElement)) {
+		  this.pinnedElement = pinnedElement;
 		}
-		_linkCreated = null;
+		this.linkCreated = null;
 	}
 
   /**
    * Clear state. Set it as empty.
    */
   protected void clear() {
-    _firstElement = null;
-    _secondElement = null;
-    _pinnedElement = null;
-    _linkCreated = null;
+    firstElement = null;
+    secondElement = null;
+    pinnedElement = null;
+    linkCreated = null;
   }
 
   /**
    * Get a preview of this state with the given element added. <code>this</code> state is not changed.
-   * @param elementToPut_p
+   * @param elementToPut
    * @return
    */
-  protected FastLinkerState getPreviewState(Collection elementToPut_p) {
-    FastLinkerState previewState = new FastLinkerState(_firstElement, _secondElement, _pinnedElement);
-    return previewState.updateState(elementToPut_p);
+  protected FastLinkerState getPreviewState(Collection elementToPut) {
+    FastLinkerState previewState = new FastLinkerState(firstElement, secondElement, pinnedElement);
+    return previewState.updateState(elementToPut);
   }
 
   /**
    * Update <code>this</code> state by adding given element.
-   * @param elementToPut_p
+   * @param elementToPut
    * @return
    */
-  protected FastLinkerState updateState(Collection elementToPut_p) {
-    if (null == _firstElement) {
-      _firstElement = elementToPut_p;
-    } else if (null == _secondElement) {
-      _secondElement = elementToPut_p;
+  protected FastLinkerState updateState(Collection elementToPut) {
+    if (null == firstElement) {
+      firstElement = elementToPut;
+    } else if (null == secondElement) {
+      secondElement = elementToPut;
     } else {
-      if (null == _pinnedElement) {
-        _firstElement = elementToPut_p;
-        _secondElement = null;
-      } else if (_firstElement == _pinnedElement) {
-        _secondElement = elementToPut_p;
-      } else if (_secondElement == _pinnedElement) {
-        _firstElement = elementToPut_p;
+      if (null == pinnedElement) {
+        firstElement = elementToPut;
+        secondElement = null;
+      } else if (firstElement == pinnedElement) {
+        secondElement = elementToPut;
+      } else if (secondElement == pinnedElement) {
+        firstElement = elementToPut;
       }
     }
-    _linkCreated = null;
+    linkCreated = null;
     return this;
   }
   
   /**
    * * Update <code>this</code> state by adding given elements.
-   * @param firstElement_p
-   * @param secondElement_p
-   * @param pinnedElement_p
+   * @param firstElement
+   * @param secondElement
+   * @param pinnedElement
    */
-  protected FastLinkerState updateState(Collection firstElement_p,
-			Collection secondElement_p, Collection pinnedElement_p) {
+  protected FastLinkerState updateState(Collection firstElement,
+			Collection secondElement, Collection pinnedElement) {
 	  
-	  this._firstElement = firstElement_p;
-	  this._secondElement = secondElement_p;
-	  this._pinnedElement = pinnedElement_p;
+	  this.firstElement = firstElement;
+	  this.secondElement = secondElement;
+	  this.pinnedElement = pinnedElement;
 	  return this;
   }
 
   /**
    * Set link created info.
-   * @param linkCreated_p
+   * @param linkCreated
    */
-  public void setLinkCreated(LinkInfo linkCreated_p) {
-    _linkCreated = linkCreated_p;
+  public void setLinkCreated(LinkInfo linkCreated) {
+    this.linkCreated = linkCreated;
   }
 
   /**
@@ -135,7 +133,7 @@ public class FastLinkerState {
    * @return
    */
   public LinkInfo getLinkCreated() {
-    return _linkCreated;
+    return linkCreated;
   }
 
   /**
@@ -143,7 +141,7 @@ public class FastLinkerState {
    * @return
    */
   public Collection getPinnedElement() {
-    return _pinnedElement;
+    return pinnedElement;
   }
 
   /**
@@ -151,7 +149,7 @@ public class FastLinkerState {
    * @return
    */
   public Collection getFirstElement() {
-    return _firstElement;
+    return firstElement;
   }
 
   /**
@@ -159,25 +157,25 @@ public class FastLinkerState {
    * @return
    */
   public Collection getSecondElement() {
-    return _secondElement;
+    return secondElement;
   }
 
   /**
    * Pin/unpin a model element.
-   * @param elementToPin_p <ul>
+   * @param elementToPin <ul>
    *          <li>If given element is <code>null</code>, eventually pinned element is unpinned,</li>
    *          <li>If given element is not pinned, it is pinned,</li>
    *          <li>If given element is pinned, it is unpinned,</li>
    *          <li>If given element is not present in FastLinker, nothing happens.
    *          </ul>
    */
- protected void pinModelElement(Collection elementToPin_p) {
-		if ((null == elementToPin_p) || (_pinnedElement == elementToPin_p)
-				|| elementToPin_p.isEmpty()) {
-			_pinnedElement = null;
-		} else if ((_firstElement == elementToPin_p)
-				|| (_secondElement == elementToPin_p)) {
-			_pinnedElement = elementToPin_p;
+ protected void pinModelElement(Collection elementToPin) {
+		if ((null == elementToPin) || (pinnedElement == elementToPin)
+				|| elementToPin.isEmpty()) {
+			pinnedElement = null;
+		} else if ((firstElement == elementToPin)
+				|| (secondElement == elementToPin)) {
+			pinnedElement = elementToPin;
 		}
 	}
 }

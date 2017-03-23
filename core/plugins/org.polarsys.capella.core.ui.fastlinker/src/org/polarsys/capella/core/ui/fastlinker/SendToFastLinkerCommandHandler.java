@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,9 +36,9 @@ public class SendToFastLinkerCommandHandler extends AbstractHandler {
    * {@inheritDoc}
    */
   @Override
-  public Object execute(ExecutionEvent event_p) throws ExecutionException {
+  public Object execute(ExecutionEvent event) throws ExecutionException {
     // Get selection.
-    ISelection selection = getCurrentSelection(event_p.getApplicationContext());
+    ISelection selection = getCurrentSelection(event.getApplicationContext());
     // Get selected model element.
     Collection selectedModelElement = getSelectedModelElement(selection);
     if (null == selectedModelElement) {
@@ -51,12 +51,12 @@ public class SendToFastLinkerCommandHandler extends AbstractHandler {
 
   /**
    * Gets current selection for this command.<br>
-   * @param evaluationContext_p
+   * @param evaluationContext
    * @return
    */
-  public ISelection getCurrentSelection(Object evaluationContext_p) {
+  public ISelection getCurrentSelection(Object evaluationContext) {
     // Get the active part.
-    IWorkbenchPart activePart = (IWorkbenchPart) HandlerUtil.getVariable(evaluationContext_p, ISources.ACTIVE_PART_NAME);
+    IWorkbenchPart activePart = (IWorkbenchPart) HandlerUtil.getVariable(evaluationContext, ISources.ACTIVE_PART_NAME);
     // Precondition.
     if (null == activePart) {
       return StructuredSelection.EMPTY;
@@ -70,16 +70,16 @@ public class SendToFastLinkerCommandHandler extends AbstractHandler {
 
   /**
    * Get the first element from given selection.
-   * @param selection_p an {@link IStructuredSelection} containing an {@link IDiagramElementEditPart} or an {@link EObject} as first element.
+   * @param selection an {@link IStructuredSelection} containing an {@link IDiagramElementEditPart} or an {@link EObject} as first element.
    * @return the target element of the {@link IDiagramElementEditPart} or the EObject contained in the given selection or <code>null</code> if the selection is
    *         empty or if it doesn't contain an {@link IDiagramElementEditPart} or an {@link EObject} as first element.
    */
-  public Collection<EObject> getSelectedModelElement(ISelection selection_p) {
-		if (!(selection_p instanceof IStructuredSelection)) {
+  public Collection<EObject> getSelectedModelElement(ISelection selection) {
+		if (!(selection instanceof IStructuredSelection)) {
 			return null;
 		}
 		Collection<EObject> ret = new ArrayList<EObject>();
-		List selectedElements = ((IStructuredSelection) selection_p).toList();
+		List selectedElements = ((IStructuredSelection) selection).toList();
 		for (Object selectedElement : selectedElements)
 			if ((selectedElement instanceof IAbstractDiagramNodeEditPart) || (selectedElement instanceof IDiagramEdgeEditPart)) {
 				IDiagramElementEditPart diagramElement = (IDiagramElementEditPart) selectedElement;
@@ -96,9 +96,9 @@ public class SendToFastLinkerCommandHandler extends AbstractHandler {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(Object evaluationContext_p) {
+  public void setEnabled(Object evaluationContext) {
     // Get current selection.
-	  ISelection selection = getCurrentSelection(evaluationContext_p);
+	  ISelection selection = getCurrentSelection(evaluationContext);
 		// Extract selected model element from selection.
 		Collection selectedElement = getSelectedModelElement(selection);
 		if (null == selectedElement || selectedElement.isEmpty()) {

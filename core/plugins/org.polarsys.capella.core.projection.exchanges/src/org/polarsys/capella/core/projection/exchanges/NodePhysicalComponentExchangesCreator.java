@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,16 +56,16 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
  */
 public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreator {
 
-  private Part _part = null;
+  private Part part = null;
 
   /**
    * Constructor
-   * @param component_p
+   * @param component
    */
-  public NodePhysicalComponentExchangesCreator(Component component_p, Part part_p) {
-    super(component_p);
-    if (null != part_p) {
-      _part = part_p;
+  public NodePhysicalComponentExchangesCreator(Component component, Part part) {
+    super(component);
+    if (null != part) {
+      this.part = part;
     }
   }
 
@@ -86,18 +86,18 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
 
   /**
    * Returns whether a component which will be a bound of a created exchange is valid or not
-   * @param component_p
+   * @param component
    * @return
    */
   @Override
-  protected boolean isValidBound(Component component_p) {
-    if (component_p instanceof AbstractPhysicalComponent) {
-      AbstractPhysicalComponent component = (AbstractPhysicalComponent) component_p;
-      PhysicalComponentNature nature = component.getNature();
-      if ((component instanceof PhysicalComponent) && (nature == PhysicalComponentNature.NODE)) {
+  protected boolean isValidBound(Component component) {
+    if (component instanceof AbstractPhysicalComponent) {
+      AbstractPhysicalComponent cpnt = (AbstractPhysicalComponent) component;
+      PhysicalComponentNature nature = cpnt.getNature();
+      if ((cpnt instanceof PhysicalComponent) && (nature == PhysicalComponentNature.NODE)) {
         return true;
 
-      } else if (component instanceof PhysicalActor) {
+      } else if (cpnt instanceof PhysicalActor) {
         return true;
       }
     }
@@ -108,18 +108,18 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
    * @see org.polarsys.capella.core.projection.exchanges.DefaultExchangesCreator#isValidCreation(org.polarsys.capella.core.data.fa.FunctionalExchange, org.polarsys.capella.core.data.cs.Component, org.polarsys.capella.core.data.cs.Component)
    */
   @Override
-  protected boolean isValidCreation(AbstractEventOperation fe_p, Component component_p, Component allocating_p) {
-    return isValidBound(component_p) && isValidBound(allocating_p);
+  protected boolean isValidCreation(AbstractEventOperation fe, Component component, Component allocating) {
+    return isValidBound(component) && isValidBound(allocating);
   }
 
   /**
    * Creates the exchanges related to exchanges between deployed physical components.
-   * @param node_p the node physical component from which the search of deployed physical component will be done
+   * @param node the node physical component from which the search of deployed physical component will be done
    */
-  protected void createExchangesForDeployedPhysicalComponents(AbstractPhysicalComponent node_p) {
+  protected void createExchangesForDeployedPhysicalComponents(AbstractPhysicalComponent node) {
 
     // Gets the deployments of the node
-    EList<AbstractDeploymentLink> deployments = _part.getDeploymentLinks();
+    EList<AbstractDeploymentLink> deployments = part.getDeploymentLinks();
 
     for (AbstractDeploymentLink deployment : deployments) {
       if (deployment instanceof PartDeploymentLink) {
@@ -129,20 +129,20 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
           Part part = (Part) deployedElement;
           Type type = part.getType();
           if (null != type) {
-            createExchangesFromDeployedElement(node_p, type);
+            createExchangesFromDeployedElement(node, type);
           }
         } else if ((deployedElement != null) && (deployedElement instanceof AbstractPhysicalComponent)) {
-          createExchangesFromDeployedElement(node_p, (AbstractPhysicalComponent) deployedElement);
+          createExchangesFromDeployedElement(node, (AbstractPhysicalComponent) deployedElement);
         }
       }
     }
   }
 
   /**
-   * @param node_p
+   * @param node
    * @param type
    */
-  private void createExchangesFromDeployedElement(AbstractPhysicalComponent node_p, Type type) {
+  private void createExchangesFromDeployedElement(AbstractPhysicalComponent node, Type type) {
     if ((type != null) && (type instanceof AbstractPhysicalComponent)) {
       // Process each deployed PC
       // DeployableElement deployedElement =
@@ -161,7 +161,7 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
             // Connection
             //              if (connection.getSource().equals(port)) {
             // check if physicalLink creation is necessary
-            if (!doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(node_p, connection)) {
+            if (!doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(node, connection)) {
               // get the opposite port [which could be
               // source or target of the Connection]
               InformationsExchanger target = FunctionalExt.getOtherBound(connection, port);
@@ -183,11 +183,11 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
 
                             //Create an exchange if there is no connection created
                             //TODO In multipart, create physical links with part related, not type
-                            if (isValidCreation(connection, node_p, typeDeploying) && !doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(node_p, connection)) {
+                            if (isValidCreation(connection, node, typeDeploying) && !doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(node, connection)) {
                               if (connection.getSource().equals(port)) {
-                                doCreateExchange(connection, node_p, typeDeploying);
+                                doCreateExchange(connection, node, typeDeploying);
                               } else {
-                                doCreateExchange(connection, typeDeploying, node_p);
+                                doCreateExchange(connection, typeDeploying, node);
                               }
                             }
                           }
@@ -214,42 +214,42 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
    *      org.polarsys.capella.core.data.cs.Component, org.polarsys.capella.core.data.cs.Component)
    */
   @Override
-  protected void doCreateExchange(FunctionalExchange functionalExchange_p, Component exchangeOutput_p, Component exchangeInput_p) {
-    PhysicalLink physicalLink = CsFactory.eINSTANCE.createPhysicalLink(functionalExchange_p.getLabel());
-    PhysicalPort outP = CsFactory.eINSTANCE.createPhysicalPort(functionalExchange_p.getSource().getName());
-    PhysicalPort inP = CsFactory.eINSTANCE.createPhysicalPort(functionalExchange_p.getTarget().getName());
+  protected void doCreateExchange(FunctionalExchange functionalExchange, Component exchangeOutput, Component exchangeInput) {
+    PhysicalLink physicalLink = CsFactory.eINSTANCE.createPhysicalLink(functionalExchange.getLabel());
+    PhysicalPort outP = CsFactory.eINSTANCE.createPhysicalPort(functionalExchange.getSource().getName());
+    PhysicalPort inP = CsFactory.eINSTANCE.createPhysicalPort(functionalExchange.getTarget().getName());
     physicalLink.getLinkEnds().add(outP);
     physicalLink.getLinkEnds().add(inP);
-    exchangeInput_p.getOwnedFeatures().add(inP);
-    exchangeOutput_p.getOwnedFeatures().add(outP);
+    exchangeInput.getOwnedFeatures().add(inP);
+    exchangeOutput.getOwnedFeatures().add(outP);
     PhysicalLinkExt.attachToDefaultContainer(physicalLink);
 
     // Creates the ports allocation
-    PortExt.attachPort(outP, functionalExchange_p.getSource());
-    PortExt.attachPort(inP, functionalExchange_p.getTarget());
+    PortExt.attachPort(outP, functionalExchange.getSource());
+    PortExt.attachPort(inP, functionalExchange.getTarget());
   }
 
   /**
    * Create a physical link corresponding to the given component exchange, between the given components
-   * @param componentExchange_p the source component exchange
-   * @param exchangeOutput_p the output component
-   * @param exchangeInput_p the input component
+   * @param componentExchange the source component exchange
+   * @param exchangeOutput the output component
+   * @param exchangeInput the input component
    */
-  protected void doCreateExchange(ComponentExchange componentExchange_p, Component exchangeOutput_p, Component exchangeInput_p) {
+  protected void doCreateExchange(ComponentExchange componentExchange, Component exchangeOutput, Component exchangeInput) {
     // Precondition:
-    if (exchangeOutput_p == exchangeInput_p) {
+    if (exchangeOutput == exchangeInput) {
       // Not necessary to create a physical link for exchanges inside the
       // same container.
       return;
     }
-    PhysicalLink physicalLink = CsFactory.eINSTANCE.createPhysicalLink(componentExchange_p.getLabel());
-    PhysicalPort outP = CsFactory.eINSTANCE.createPhysicalPort(componentExchange_p.getSource().getLabel());
-    PhysicalPort inP = CsFactory.eINSTANCE.createPhysicalPort(componentExchange_p.getTarget().getLabel());
+    PhysicalLink physicalLink = CsFactory.eINSTANCE.createPhysicalLink(componentExchange.getLabel());
+    PhysicalPort outP = CsFactory.eINSTANCE.createPhysicalPort(componentExchange.getSource().getLabel());
+    PhysicalPort inP = CsFactory.eINSTANCE.createPhysicalPort(componentExchange.getTarget().getLabel());
     physicalLink.getLinkEnds().add(outP);
     physicalLink.getLinkEnds().add(inP);
 
-    exchangeInput_p.getOwnedFeatures().add(inP);
-    exchangeOutput_p.getOwnedFeatures().add(outP);
+    exchangeInput.getOwnedFeatures().add(inP);
+    exchangeOutput.getOwnedFeatures().add(outP);
     CapellaElementExt.creationService(inP);
     CapellaElementExt.creationService(outP);
 
@@ -259,48 +259,48 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
     // Creates the exchange allocation
     ComponentExchangeAllocation cea = FaFactory.eINSTANCE.createComponentExchangeAllocation();
     cea.setSourceElement(physicalLink);
-    cea.setTargetElement(componentExchange_p);
+    cea.setTargetElement(componentExchange);
     physicalLink.getOwnedComponentExchangeAllocations().add(cea);
     CapellaElementExt.creationService(cea);
 
     // source side delegation
-    InformationsExchanger target = componentExchange_p.getTarget();
+    InformationsExchanger target = componentExchange.getTarget();
     createComponentPortAllocation(target, inP);
 
     // target side Delegation
-    InformationsExchanger source = componentExchange_p.getSource();
+    InformationsExchanger source = componentExchange.getSource();
     createComponentPortAllocation(source, outP);
 
   }
 
   /**
-   * @param informationExchange_p
-   * @param physicalPort_p
-   * @param connection_p
+   * @param informationExchange
+   * @param physicalPort
+   * @param connection
    */
-  private ComponentPortAllocation createComponentPortAllocation(InformationsExchanger informationExchange_p, PhysicalPort physicalPort_p) {
+  private ComponentPortAllocation createComponentPortAllocation(InformationsExchanger informationExchange, PhysicalPort physicalPort) {
     ComponentPortAllocation allocation = FaFactory.eINSTANCE.createComponentPortAllocation();
-    allocation.setSourceElement(physicalPort_p);
-    allocation.setTargetElement((TraceableElement) informationExchange_p);
-    physicalPort_p.getOwnedComponentPortAllocations().add(allocation);
+    allocation.setSourceElement(physicalPort);
+    allocation.setTargetElement((TraceableElement) informationExchange);
+    physicalPort.getOwnedComponentPortAllocations().add(allocation);
     CapellaElementExt.creationService(allocation);
     return allocation;
   }
 
   /**
    * This method allows to know if the given component exchange has already been allocated to a physical link linked to the given physical component.
-   * @param physicalComponent_p the physical component
-   * @param componentExchange_p the component exchange
+   * @param physicalComponent the physical component
+   * @param componentExchange the component exchange
    * @return true if its has already been allocated, false otherwise
    */
-  protected boolean doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(AbstractPhysicalComponent physicalComponent_p, ComponentExchange componentExchange_p) {
+  protected boolean doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(AbstractPhysicalComponent physicalComponent, ComponentExchange componentExchange) {
     boolean result = false;
     // Get the semantic editing domain to access the cross referencer.
-    SemanticEditingDomain editingDomain = (SemanticEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(componentExchange_p);
+    SemanticEditingDomain editingDomain = (SemanticEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(componentExchange);
     // Get the cross referencer.
     ECrossReferenceAdapter crossReferencer = editingDomain.getCrossReferencer();
     // Search inverses relations on given component exchange.
-    Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(componentExchange_p, true);
+    Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(componentExchange, true);
     for (Setting setting : inverseReferences) {
       // Search for a relation targeting the ComponentExchangeAllocation metaclass.
       if (setting.getEObject() instanceof ComponentExchangeAllocation) {

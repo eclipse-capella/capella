@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,35 +43,33 @@ public class EAdaptableFeatureProperty extends EStructuralFeatureProperty {
         EObject element = (EObject) object;
         EStructuralFeature feature = element.eClass().getEStructuralFeature(getRelatedEReference());
 
-        if (element != null) {
-          if ((clazz == null) || clazz.isSuperTypeOf(element.eClass())) {
-            if (element.eClass().getEAllStructuralFeatures().contains(feature)) {
-              if (feature.isMany()) {
-                Object value = context.getCurrentValue(this);
-                Collection<Object> result = null;
+        if ((clazz == null) || clazz.isSuperTypeOf(element.eClass())) {
+          if (element.eClass().getEAllStructuralFeatures().contains(feature)) {
+            if (feature.isMany()) {
+              Object value = context.getCurrentValue(this);
+              Collection<Object> result = null;
 
-                if (value instanceof Collection) {
-                  result = (Collection) value;
-                } else {
-                  result = Collections.singleton(value);
-                }
-
-                Collection<Object> current = (Collection) element.eGet(feature);
-
-                for (Object res : new ArrayList<Object>(current)) {
-                  if (!result.contains(res)) {
-                    current.remove(res);
-                  }
-                }
-                for (Object res : result) {
-                  if (!current.contains(res)) {
-                    current.add(res);
-                  }
-                }
+              if (value instanceof Collection) {
+                result = (Collection) value;
               } else {
-                Object result = adaptValue(context.getCurrentValue(this), i++);
-                element.eSet(feature, result);
+                result = Collections.singleton(value);
               }
+
+              Collection<Object> current = (Collection) element.eGet(feature);
+
+              for (Object res : new ArrayList<Object>(current)) {
+                if (!result.contains(res)) {
+                  current.remove(res);
+                }
+              }
+              for (Object res : result) {
+                if (!current.contains(res)) {
+                  current.add(res);
+                }
+              }
+            } else {
+              Object result = adaptValue(context.getCurrentValue(this), i++);
+              element.eSet(feature, result);
             }
           }
         }
@@ -92,5 +90,4 @@ public class EAdaptableFeatureProperty extends EStructuralFeatureProperty {
     }
     return currentValue;
   }
-
 }

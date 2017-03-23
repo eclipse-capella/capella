@@ -52,6 +52,8 @@ public class DiagramContext extends SessionContext {
 
   private Map<String, DDiagramElement> _viewObjectMap;
 
+  private String _type;
+  
   public Map<String, DDiagramElement> getViewObjectMap() {
     if (null == _viewObjectMap) {
       _viewObjectMap = new HashMap<String, DDiagramElement>();
@@ -67,7 +69,12 @@ public class DiagramContext extends SessionContext {
     super(DiagramHelper.getService().getSession(diagram));
     diagramIdentifier = diagram.getName();
     _diagram = diagram;
+    _type = _diagram.getDescription().getName();
     _sessionContext = context;
+  }
+  
+  public String getType() {
+    return _type;
   }
 
   @Override

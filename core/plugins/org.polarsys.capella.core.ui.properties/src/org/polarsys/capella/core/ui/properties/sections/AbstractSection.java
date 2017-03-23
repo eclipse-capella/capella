@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,7 +57,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   /**
    * Whether or not the field is displayed in a wizard.
    */
-  private boolean _displayedInWizard;
+  private boolean displayedInWizard;
   /**
    * Capella element displayed by this section.
    */
@@ -65,27 +65,27 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   /**
    * Parent background color.
    */
-  private Color _parentBackgroundColor;
+  private Color parentBackgroundColor;
   /**
    * Main composite displayed in this section.
    */
-  protected Composite _rootParentComposite;
+  protected Composite rootParentComposite;
   /**
    * Widget factory used when displaying in a wizard.
    */
-  private TabbedPropertySheetWidgetFactory _widgetFactory;
+  private TabbedPropertySheetWidgetFactory widgetFactory;
   /**
    * Group that will be shared for all the reference fields
    */
-  private Group _referencesGroup;
+  private Group referencesGroup;
   /**
    * Group that will be shared for all the check boxes
    */
-  private Group _checkGroup;
+  private Group checkGroup;
   /**
    * 
    */
-  private TabbedPropertySheetPage _propertySheetPage;
+  private TabbedPropertySheetPage propertySheetPage;
 
   /**
    * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#createControls(org.eclipse.swt.widgets.Composite,
@@ -94,15 +94,15 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   @Override
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createControls(parent, aTabbedPropertySheetPage);
-    if (null != _parentBackgroundColor) {
-      handleParentBackground(_parentBackgroundColor, parent);
+    if (null != parentBackgroundColor) {
+      handleParentBackground(parentBackgroundColor, parent);
     }
     // Whether or not we are displayed in a wizard.
     if (null == aTabbedPropertySheetPage) {
       // Root composite is the one specified by the caller.
-      _rootParentComposite = parent;
+      rootParentComposite = parent;
       // Change the flag to indicate we are displaying within a wizard.
-      _displayedInWizard = true;
+      displayedInWizard = true;
       parent.addDisposeListener(new DisposeListener() {
         /**
          * {@inheritDoc}
@@ -113,18 +113,18 @@ public abstract class AbstractSection extends AbstractPropertySection implements
         }
       });
     } else {
-      _propertySheetPage = aTabbedPropertySheetPage;
+      propertySheetPage = aTabbedPropertySheetPage;
       parent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
       Section section = getWidgetFactory().createSection(parent, ExpandableComposite.TITLE_BAR | ExpandableComposite.TWISTIE | ExpandableComposite.EXPANDED);
       section.setText(Messages.CapellaElement_SectionLabel);
 
-      _rootParentComposite = getWidgetFactory().createFlatFormComposite(section);
-      _rootParentComposite.setLayout(new GridLayout(2, true)); // 2 ?
+      rootParentComposite = getWidgetFactory().createFlatFormComposite(section);
+      rootParentComposite.setLayout(new GridLayout(2, true)); // 2 ?
 
-      section.setClient(_rootParentComposite);
+      section.setClient(rootParentComposite);
 
-      CapellalEditingDomainListenerForPropertySections.getCapellaDataListenerForPropertySections().registerPropertySheetPage(_propertySheetPage);
+      CapellalEditingDomainListenerForPropertySections.getCapellaDataListenerForPropertySections().registerPropertySheetPage(propertySheetPage);
     }
   }
 
@@ -136,15 +136,15 @@ public abstract class AbstractSection extends AbstractPropertySection implements
     super.dispose();
     // Unregister...
     CapellaReadOnlyHelper.unregister(_capellaElement, this);
-    CapellalEditingDomainListenerForPropertySections.getCapellaDataListenerForPropertySections().unregisterPropertySheetPage(_propertySheetPage);
+    CapellalEditingDomainListenerForPropertySections.getCapellaDataListenerForPropertySections().unregisterPropertySheetPage(propertySheetPage);
 
     // Clean capella element.
     _capellaElement = null;
 
-    if (null != _widgetFactory) {
+    if (null != widgetFactory) {
       // Clean widget factory.
-      _widgetFactory.dispose();
-      _widgetFactory = null;
+      widgetFactory.dispose();
+      widgetFactory = null;
     }
 
     // Remove as operation history listener.
@@ -155,7 +155,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
    * @return the color
    */
   protected Color getColor() {
-    return _parentBackgroundColor;
+    return parentBackgroundColor;
   }
 
   /**
@@ -168,10 +168,10 @@ public abstract class AbstractSection extends AbstractPropertySection implements
       result = super.getWidgetFactory();
     } else {
       // Lazy creation pattern.
-      if (null == _widgetFactory) {
-        _widgetFactory = new TabbedPropertySheetWidgetFactory();
+      if (null == widgetFactory) {
+        widgetFactory = new TabbedPropertySheetWidgetFactory();
       }
-      result = _widgetFactory;
+      result = widgetFactory;
     }
     return result;
   }
@@ -180,29 +180,29 @@ public abstract class AbstractSection extends AbstractPropertySection implements
    * @return the shared group that will contain all reference fields
    */
   protected Group getReferencesGroup() {
-    if (null == _referencesGroup) {
-      _referencesGroup = getWidgetFactory().createGroup(_rootParentComposite, ICommonConstants.EMPTY_STRING);
-      _referencesGroup.setLayout(new GridLayout(6, false));
+    if (null == referencesGroup) {
+      referencesGroup = getWidgetFactory().createGroup(rootParentComposite, ICommonConstants.EMPTY_STRING);
+      referencesGroup.setLayout(new GridLayout(6, false));
       GridData gd = new GridData(GridData.FILL_HORIZONTAL);
       gd.horizontalSpan = 2;
-      _referencesGroup.setLayoutData(gd);
+      referencesGroup.setLayoutData(gd);
     }
-    return _referencesGroup;
+    return referencesGroup;
   }
 
   /**
    * @return the shared group that will contain all check boxes
    */
   protected Group getCheckGroup() {
-    if (null == _checkGroup) {
-      _checkGroup = getWidgetFactory().createGroup(_rootParentComposite, ICommonConstants.EMPTY_STRING);
-      _checkGroup.setLayout(new GridLayout(6, true));
+    if (null == checkGroup) {
+      checkGroup = getWidgetFactory().createGroup(rootParentComposite, ICommonConstants.EMPTY_STRING);
+      checkGroup.setLayout(new GridLayout(6, true));
       GridData gd = new GridData(GridData.FILL_HORIZONTAL);
       gd.horizontalSpan = 2;
-      _checkGroup.setLayoutData(gd);
-      _checkGroup.moveAbove(getReferencesGroup());
+      checkGroup.setLayoutData(gd);
+      checkGroup.moveAbove(getReferencesGroup());
     }
-    return _checkGroup;
+    return checkGroup;
   }
 
   /**
@@ -241,7 +241,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
    * @return the displayedInWizard
    */
   protected boolean isDisplayedInWizard() {
-    return _displayedInWizard;
+    return displayedInWizard;
   }
 
   /**
@@ -312,7 +312,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
    */
   @Override
   public void setParentBackgroundColor(Color color) {
-    _parentBackgroundColor = color;
+    parentBackgroundColor = color;
   }
 
   /**
@@ -336,11 +336,11 @@ public abstract class AbstractSection extends AbstractPropertySection implements
    */
   @Override
   public void refreshTitleBar() {
-    if (null != _propertySheetPage) {
+    if (null != propertySheetPage) {
       try {
         Method refreshTitleMethod = TabbedPropertySheetPage.class.getDeclaredMethod("refreshTitleBar", new Class[] {}); //$NON-NLS-1$
         refreshTitleMethod.setAccessible(true);
-        refreshTitleMethod.invoke(_propertySheetPage, new Object[] {});
+        refreshTitleMethod.invoke(propertySheetPage, new Object[] {});
       } catch (Exception exception) {
         // Catch exception silently.
       }

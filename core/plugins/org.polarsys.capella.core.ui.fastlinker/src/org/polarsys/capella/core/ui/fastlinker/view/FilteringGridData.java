@@ -46,7 +46,6 @@ import org.eclipse.swt.SWT;
  * </p>
  * @see GridLayout
  */
-@SuppressWarnings("hiding")
 public final class FilteringGridData {
   /**
    * verticalAlignment specifies how figures will be positioned vertically within a cell. The default value is CENTER. Possible values are: SWT.BEGINNING (or

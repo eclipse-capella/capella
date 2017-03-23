@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,7 +73,7 @@ public abstract class AbstractFunctionSection extends NamedElementSection {
     boolean displayedInWizard = isDisplayedInWizard();
 
     if (showKind) {
-      functionKindGroup = new FunctionKindGroup(_rootParentComposite, getWidgetFactory(), true) {
+      functionKindGroup = new FunctionKindGroup(rootParentComposite, getWidgetFactory(), true) {
         /**
          * {@inheritDoc}
          */
@@ -85,7 +85,7 @@ public abstract class AbstractFunctionSection extends NamedElementSection {
       };
       functionKindGroup.setDisplayedInWizard(displayedInWizard);
 
-      conditionField = new TextValueGroup(_rootParentComposite, Messages.AbstractFunctionSection_Condition_Label, getWidgetFactory());
+      conditionField = new TextValueGroup(rootParentComposite, Messages.AbstractFunctionSection_Condition_Label, getWidgetFactory());
       conditionField.setDisplayedInWizard(displayedInWizard);
     }
 

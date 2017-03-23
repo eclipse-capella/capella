@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,10 +24,10 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 public abstract class AbstractFixCommand extends AbstractReadWriteCommand {
 
   /** the modelElement */
-  protected Collection<ModelElement> _selection = null;
+  protected Collection<ModelElement> selection = null;
 
   /** a progress monitor */
-  private IProgressMonitor _progressMonitor = null;
+  private IProgressMonitor progressMonitor = null;
 
   /**
    * @param modelElement
@@ -42,8 +42,8 @@ public abstract class AbstractFixCommand extends AbstractReadWriteCommand {
    * @param progressMonitor
    */
   public AbstractFixCommand(Collection<ModelElement> selection, IProgressMonitor progressMonitor) {
-    _selection = selection;
-    _progressMonitor = progressMonitor;
+    this.selection = selection;
+    this.progressMonitor = progressMonitor;
   }
 
   /**
@@ -65,14 +65,14 @@ public abstract class AbstractFixCommand extends AbstractReadWriteCommand {
     LongRunningListenersRegistry.getInstance().operationStarting(getClass());
     try {
 
-      for (ModelElement selectedElement : _selection) {
+      for (ModelElement selectedElement : selection) {
         Collection<ModelElement> elements = retrieveModelElements(selectedElement);
-        _progressMonitor.beginTask(getName(), elements.size());
+        progressMonitor.beginTask(getName(), elements.size());
 
         // Perform a transition for all retrieved elements
         for (ModelElement element : elements) {
           process(element);
-          _progressMonitor.worked(1);
+          progressMonitor.worked(1);
         }
       }
     } finally {

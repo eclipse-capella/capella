@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -58,6 +57,7 @@ import org.polarsys.capella.core.commandline.core.CommandLineException;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.handler.markers.ICapellaValidationConstants;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
+import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
 public class ValidationCommandLine extends AbstractCommandLine {
   static final String CONSTRAINT_DISABLED_PREFIX = "org.eclipse.emf.validation//con.disabled/"; //$NON-NLS-1$
@@ -67,30 +67,10 @@ public class ValidationCommandLine extends AbstractCommandLine {
     argHelper = new ValidationArgumentHelper();
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void parseContext(IApplicationContext context) throws CommandLineException {
-    super.parseContext(context);
-  }
-
   @Override
   public void printHelp() {
     System.out.println("Capella Validation Command Line Exporter"); //$NON-NLS-1$
     super.printHelp();
-  }
-
-  @Override
-  public void checkArgs(IApplicationContext context) throws CommandLineException {
-    super.checkArgs(context);
-
-  }
-
-  @Override
-  public void prepare(IApplicationContext context) throws CommandLineException {
-    super.prepare(context);
-
   }
 
   @Override
@@ -123,8 +103,12 @@ public class ValidationCommandLine extends AbstractCommandLine {
     CapellaValidateComlineAction capellaValidateCLineAction = new CapellaValidateComlineAction();
 
     // load
-    Resource semanticModel = loadAirdSemanticModel(uri);
-    capellaValidateCLineAction.setResource(semanticModel);
+    Project semanticRootElement = loadSemanticRootElement(uri);
+    if (semanticRootElement == null) {
+      throw new CommandLineException("No semantic model found!"); //$NON-NLS-1$
+    }
+    Resource semanticRootResource = semanticRootElement.eResource();
+    capellaValidateCLineAction.setResource(semanticRootResource);
 
     // set the rule set
     String validationRuleSetFile = ((ValidationArgumentHelper) argHelper).getValidationRuleSet();
@@ -134,7 +118,6 @@ public class ValidationCommandLine extends AbstractCommandLine {
       ensureEMFValidationActivation();
       for (String ruleId : ruleSet) {
         EMFModelValidationPreferences.setConstraintDisabled(ruleId, true);
-
       }
     }
 
@@ -142,19 +125,11 @@ public class ValidationCommandLine extends AbstractCommandLine {
     String validationContext = ((ValidationArgumentHelper) argHelper).getValidationContext();
 
     if (!isEmtyOrNull(validationContext)) {// validate selected EObjects
-      List<String> uris = toListOfURIString(validationContext);
-      if (semanticModel.getContents().isEmpty()) {
-        throw new CommandLineException("Semantic model is empty!"); //$NON-NLS-1$
-      }
-      if (semanticModel.getContents().get(0) instanceof Project) {
-        Project project = (Project) semanticModel.getContents().get(0);
-
-        List<EObject> loadedEObjs = loadEObjects(project, uris);
-        capellaValidateCLineAction.setSelectedObjects(loadedEObjs);
-      }
+      List<String> objectToValidateUris = toListOfURIString(validationContext);
+      List<EObject> loadedEObjs = loadEObjects(semanticRootElement, objectToValidateUris);
+      capellaValidateCLineAction.setSelectedObjects(loadedEObjs);
     } else {// validate the whole model
-      capellaValidateCLineAction.setSelectedObjects(semanticModel.getContents());
-
+      capellaValidateCLineAction.setSelectedObjects(semanticRootResource.getContents());
     }
 
     // Run the validation
@@ -196,15 +171,15 @@ public class ValidationCommandLine extends AbstractCommandLine {
 
         boolean isDisabled = validationNode.getBoolean(s, false);
 
-        String[] split = s.split("/"); //$NON-NLS-1$
         if (isDisabled) {
+          String[] split = s.split("/"); //$NON-NLS-1$
           results.add(split[1]);
         }
       }
 
     } catch (BackingStoreException exception1) {
-      StringBuilder loggerMessage = new StringBuilder("ValidationCommandLine.readRules(..) _ "); //$NON-NLS-1$
-      logger.warn(loggerMessage.toString(), exception1);
+      String loggerMessage = "ValidationCommandLine.readRules(..) _ "; //$NON-NLS-1$
+      logger.warn(loggerMessage, exception1);
     }
 
     return results;
@@ -236,7 +211,7 @@ public class ValidationCommandLine extends AbstractCommandLine {
 
   private List<String> toListOfURIString(String validationContext) {
     List<String> list = new ArrayList<String>();
-    for (String s : Arrays.asList(validationContext.split("\\|"))) { //$NON-NLS-1$
+    for (String s : validationContext.split("\\|")) { //$NON-NLS-1$
       list.add(s.trim());
     }
     return list;
@@ -246,17 +221,10 @@ public class ValidationCommandLine extends AbstractCommandLine {
    * @param uri
    * @return
    */
-  private Resource loadAirdSemanticModel(URI uri) {
+  private Project loadSemanticRootElement(URI uri) {
     SessionManager sessionManager = SessionManager.INSTANCE;
     Session session = sessionManager.getSession(uri, new NullProgressMonitor());
-
-    Collection<Resource> resources = session.getSemanticResources();
-
-    if (!resources.isEmpty()) {
-      Resource semanticResource = resources.iterator().next();
-      return semanticResource;
-    }
-    return null;
+    return SessionHelper.getCapellaProject(session);
   }
 
   /**
@@ -283,8 +251,8 @@ public class ValidationCommandLine extends AbstractCommandLine {
       }
 
     } catch (CoreException exception) {
-      StringBuilder loggerMessage = new StringBuilder("ValidationComandlineApp.storeResultsToFile(..) _ "); //$NON-NLS-1$
-      logger.error(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.VALIDATION));
+      String loggerMessage = "ValidationComandlineApp.storeResultsToFile(..) _ "; //$NON-NLS-1$
+      logger.error(new EmbeddedMessage(loggerMessage, IReportManagerDefaultComponents.VALIDATION));
     }
 
   }
@@ -308,6 +276,10 @@ public class ValidationCommandLine extends AbstractCommandLine {
    * A workbench is needed by some Sirius plugins
    */
   public static void startFakeWorkbench() {
+    if (PlatformUI.isWorkbenchRunning()) {
+      return;
+    }
+    
     Display display = PlatformUI.createDisplay();
     PlatformUI.createAndRunWorkbench(display, new WorkbenchAdvisor() {
 

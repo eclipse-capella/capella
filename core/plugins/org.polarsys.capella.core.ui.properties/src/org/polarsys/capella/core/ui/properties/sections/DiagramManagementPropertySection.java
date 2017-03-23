@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,12 +65,12 @@ public class DiagramManagementPropertySection extends AbstractSection {
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createControls(parent, aTabbedPropertySheetPage);
 
-    _rootParentComposite.setLayout(new GridLayout());
-    _rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+    rootParentComposite.setLayout(new GridLayout());
+    rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _visibleInDocGroup = new BooleanValueGroup(_rootParentComposite, Messages.VisibleInDocGroup_Label, getWidgetFactory()) {
+    _visibleInDocGroup = new BooleanValueGroup(rootParentComposite, Messages.VisibleInDocGroup_Label, getWidgetFactory()) {
       /**
        * {@inheritDoc}
        */
@@ -92,7 +92,7 @@ public class DiagramManagementPropertySection extends AbstractSection {
     };
     _visibleInDocGroup.setDisplayedInWizard(displayedInWizard);
 
-    _visibleInLMGroup = new BooleanValueGroup(_rootParentComposite, Messages.VisibleForTraceabilityGroup_Label, getWidgetFactory()) {
+    _visibleInLMGroup = new BooleanValueGroup(rootParentComposite, Messages.VisibleForTraceabilityGroup_Label, getWidgetFactory()) {
       /**
        * {@inheritDoc}
        */
@@ -114,7 +114,7 @@ public class DiagramManagementPropertySection extends AbstractSection {
     };
     _visibleInLMGroup.setDisplayedInWizard(displayedInWizard);
 
-    _status = new EnumerationValueGroup(_rootParentComposite, Messages.ProgressStatus_Label, getWidgetFactory()) {
+    _status = new EnumerationValueGroup(rootParentComposite, Messages.ProgressStatus_Label, getWidgetFactory()) {
       /**
        * {@inheritDoc}
        */
@@ -171,7 +171,7 @@ public class DiagramManagementPropertySection extends AbstractSection {
       @SuppressWarnings("synthetic-access")
       @Override
       public void loadTextValue() {
-        _valueField.setText(RepresentationAnnotationHelper.getStatusReview(_representation.get()));
+        valueField.setText(RepresentationAnnotationHelper.getStatusReview(_representation.get()));
       }
 
       /**

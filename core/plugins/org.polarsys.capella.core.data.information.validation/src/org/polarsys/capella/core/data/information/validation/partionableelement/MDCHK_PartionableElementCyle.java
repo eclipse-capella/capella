@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,15 +32,15 @@ public class MDCHK_PartionableElementCyle extends AbstractValidationRule {
   /**
    * This list allows to store all the partitionable elements already seen in order to detect cycle involving one of them
    */
-  private List<PartitionableElement> _processedPartitionableElements;
+  private List<PartitionableElement> processedPartitionableElements;
   /**
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    _processedPartitionableElements = new ArrayList<PartitionableElement>();
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    processedPartitionableElements = new ArrayList<PartitionableElement>();
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
     if (eType == EMFEventType.NULL) {
       // Handles <code>PartitionableElement</code> instances
       if (eObj instanceof PartitionableElement) {
@@ -49,25 +49,25 @@ public class MDCHK_PartionableElementCyle extends AbstractValidationRule {
         // Gets its owned partitions
         EList<Partition> ownedPartitions = partitionableElement.getOwnedPartitions();
         // And then process recursively the partitions
-        return processPartitions(ctx_p, partitionableElement, ownedPartitions);
+        return processPartitions(ctx, partitionableElement, ownedPartitions);
       }
     }
     // No problem encountered
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
 
   /**
    * Process the given <code>Partition</code>'s instances to verify that the given <code>PartitionableElement</code> () is not referenced as a one of their
    * partitions.
-   * @param ctx_p the <code>IValidationContext</code>
+   * @param ctx the <code>IValidationContext</code>
    * @param partitionableElement the "parent" <code>PartitionableElement</code>
    * @param ownedPartitions the <code>Partition</code>'s instances to test
    * @return a <code>IStatus</code> instance
    */
-  private IStatus processPartitions(IValidationContext ctx_p, PartitionableElement partitionableElement, EList<Partition> ownedPartitions) {
+  private IStatus processPartitions(IValidationContext ctx, PartitionableElement partitionableElement, EList<Partition> ownedPartitions) {
     // Gets the name of the "parent" partitionable element
-    _processedPartitionableElements.add(partitionableElement);
+    processedPartitionableElements.add(partitionableElement);
     for (Partition partition : ownedPartitions) {
       // Iterates other the owned partitions
       // Gets the type of the part
@@ -84,19 +84,19 @@ public class MDCHK_PartionableElementCyle extends AbstractValidationRule {
         for (Partition innerPartition : innerOwnedPartitions) {
           Type innerType = innerPartition.getType();
           String innerPartitionInnerPartitionName = innerPartition.getName();
-          for (PartitionableElement alreadySawElem : _processedPartitionableElements) {
+          for (PartitionableElement alreadySawElem : processedPartitionableElements) {
             if (innerType == alreadySawElem) {
               String alreadySawElemName = alreadySawElem.getName();
               // There is a cycle!!!
-              return createFailureStatus(ctx_p, new Object[] { alreadySawElemName, partitionName, innerPartitionInnerPartitionName });
+              return createFailureStatus(ctx, new Object[] { alreadySawElemName, partitionName, innerPartitionInnerPartitionName });
             }
           }
         }
         // No cycle has been found yet, so process the inner partitions recursively
         // processes the partitions recursively:
-        return processPartitions(ctx_p, innerPartitionableElement, innerOwnedPartitions);
+        return processPartitions(ctx, innerPartitionableElement, innerOwnedPartitions);
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

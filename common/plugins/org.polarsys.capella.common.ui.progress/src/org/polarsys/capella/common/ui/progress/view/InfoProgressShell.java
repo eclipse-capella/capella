@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.common.ui.progress.view;
 
 import java.util.HashMap;
@@ -34,43 +33,43 @@ public class InfoProgressShell
   implements Observer {
 
 	Shell sShell = null;
-	ProgressBar _progressBar = null;
-	private CLabel _message = null;
-	Text _textArea = null;
-	private Button _details = null;
-	private Button _cancelOrClose = null;
-  private Button _pauseOrResume = null;
+	ProgressBar progressBar = null;
+	private CLabel message = null;
+	Text textArea = null;
+	private Button details = null;
+	private Button cancelOrClose = null;
+  private Button pauseOrResume = null;
 
-  Composite _top;
+  Composite top;
 
-  private Rectangle _bounds;
-  private Rectangle _topBounds;
+  private Rectangle bounds;
+  private Rectangle topBounds;
   
-  protected boolean _disposeAtEnd = false;
-  protected boolean _isStoppable = false;
-  protected boolean _isRunning = true;
+  protected boolean disposeAtEnd = false;
+  protected boolean isStoppable = false;
+  protected boolean isRunning = true;
 
-  final Display _display;
+  final Display display;
   
-  StringBuffer _detailedMessageCache = null;
+  StringBuffer detailedMessageCache = null;
 
-  Observer _model = null;
+  Observer model = null;
 
   /**
    * Default constructor (just for the VE designer)
    */
   public InfoProgressShell() {
-    _display = new Display();
+    this.display = new Display();
     init();
   } 
   
   
   public InfoProgressShell(Display display, Observer observer) {
-    _display = display;
-    _model = observer;
-    this.addObserver(_model);
-    if (_model instanceof Observable) {
-      Observable observable = (Observable) _model;
+    this.display = display;
+    this.model = observer;
+    this.addObserver(model);
+    if (model instanceof Observable) {
+      Observable observable = (Observable) model;
       observable.addObserver(this);
     }
 
@@ -81,12 +80,12 @@ public class InfoProgressShell
   private void init() {
     createSShell();
     Rectangle rect = sShell.getBounds();
-    _topBounds = new Rectangle(rect.x, rect.y, 600, 140);
-    _bounds = new Rectangle(rect.x, rect.y, _topBounds.width, _topBounds.height + 300);
-    sShell.setBounds(_topBounds);
+    topBounds = new Rectangle(rect.x, rect.y, 600, 140);
+    bounds = new Rectangle(rect.x, rect.y, topBounds.width, topBounds.height + 300);
+    sShell.setBounds(topBounds);
     setDetailMode(false);
     setStoppable(false);
-    _detailedMessageCache = new StringBuffer();
+    detailedMessageCache = new StringBuffer();
   }
   
   /**
@@ -100,21 +99,21 @@ public class InfoProgressShell
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#getMaximum()
    */
   public int getMaximum() {
-    return _progressBar.getMaximum();
+    return progressBar.getMaximum();
   }
 
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#setMaximum(int)
    */
   public void setMaximum(int valueI) {
-    _progressBar.setMaximum(valueI);
+    progressBar.setMaximum(valueI);
   }
 
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#setSelection(int)
    */
   public void setSelection(int valueI) {
-    _progressBar.setSelection(valueI);
+    progressBar.setSelection(valueI);
     float pourcent = ((float) valueI / (float) getMaximum()) * 100.0F;
     sShell.setText( (int)pourcent + "%"); //$NON-NLS-1$
   }
@@ -123,15 +122,15 @@ public class InfoProgressShell
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#setStoppable(boolean)
    */
   public void setStoppable(boolean isStoppable) {
-    _isStoppable = isStoppable;
-    _cancelOrClose.setEnabled(_isStoppable);
+    this.isStoppable = isStoppable;
+    cancelOrClose.setEnabled(this.isStoppable);
   }
 
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#setDisposeAtEnd(boolean)
    */
   public void setDisposeAtEnd(boolean disposeAtEnd) {
-    _disposeAtEnd = disposeAtEnd;
+    this.disposeAtEnd = disposeAtEnd;
   }
 
   /**
@@ -146,18 +145,18 @@ public class InfoProgressShell
    */
   @SuppressWarnings("nls")
   public void setDetailMode(boolean showDetailB) {
-    _textArea.setVisible(showDetailB);
+    textArea.setVisible(showDetailB);
 
     Rectangle rect = sShell.getBounds();
-    _topBounds = new Rectangle(rect.x, rect.y, _topBounds.width, _topBounds.height);
-    _bounds = new Rectangle(rect.x, rect.y, _bounds.width, _bounds.height);
+    topBounds = new Rectangle(rect.x, rect.y, topBounds.width, topBounds.height);
+    bounds = new Rectangle(rect.x, rect.y, bounds.width, bounds.height);
 
     if(!showDetailB) {
-      _details.setText(">>");
-      sShell.setBounds(_topBounds);
+      details.setText(">>");
+      sShell.setBounds(topBounds);
     } else {
-      _details.setText("<<");
-      sShell.setBounds(_bounds);
+      details.setText("<<");
+      sShell.setBounds(bounds);
     }  
   }
 
@@ -165,7 +164,7 @@ public class InfoProgressShell
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#isDetailMode()
    */
   public boolean isDetailMode() {
-    return _textArea.isVisible();
+    return textArea.isVisible();
   }
 
   /**
@@ -179,25 +178,25 @@ public class InfoProgressShell
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#setMessage(java.lang.String)
    */
   public void setMessage(String messageString) {
-    _message.setText(messageString);
+    message.setText(messageString);
   }
 
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#appendDetailedMessage(java.lang.String)
    */
   public void appendDetailedMessage(String messageString) {
-    _detailedMessageCache.append(messageString);
-    _detailedMessageCache.append(System.getProperty("line.separator")); //$NON-NLS-1$
+    detailedMessageCache.append(messageString);
+    detailedMessageCache.append(System.getProperty("line.separator")); //$NON-NLS-1$
     
     try {
-      _display.asyncExec(new Runnable() {
+      display.asyncExec(new Runnable() {
         public void run() {
           if (isDisposed())
             return;
           
-          synchronized (_detailedMessageCache) {
-            _textArea.append(_detailedMessageCache.toString());
-            _detailedMessageCache.setLength(0);
+          synchronized (detailedMessageCache) {
+            textArea.append(detailedMessageCache.toString());
+            detailedMessageCache.setLength(0);
           }
         }
       });
@@ -211,12 +210,12 @@ public class InfoProgressShell
    */
   public void clearDetailedMessage() {
     try {
-      _display.asyncExec(new Runnable() {
+      display.asyncExec(new Runnable() {
         public void run() {
           if (isDisposed())
             return;
-          _textArea.setText(""); //$NON-NLS-1$
-          _detailedMessageCache.setLength(0);
+          textArea.setText(""); //$NON-NLS-1$
+          detailedMessageCache.setLength(0);
         }
       });
     } catch (Exception e) {
@@ -228,7 +227,7 @@ public class InfoProgressShell
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#open()
    */
   public void open() {
-    Monitor monitor = _display.getMonitors()[0];
+    Monitor monitor = display.getMonitors()[0];
     
     Rectangle screen = monitor.getBounds();
     
@@ -244,8 +243,8 @@ public class InfoProgressShell
     
     // Waiting for ending
     while (!sShell.isDisposed()) {
-      if (!_display.readAndDispatch())
-        _display.sleep();
+      if (!display.readAndDispatch())
+        display.sleep();
     }
   }
   
@@ -256,13 +255,13 @@ public class InfoProgressShell
   @SuppressWarnings("unchecked")
   public void update(Observable o, final Object arg) {
     
-    if (_display.isDisposed())
+    if (display.isDisposed())
       return;
     
     try {
       if (arg instanceof Integer) {
         final Integer progress = (Integer) arg;
-        _display.asyncExec(new Runnable() {
+        display.asyncExec(new Runnable() {
           @SuppressWarnings("boxing")
           public void run() {
             if (isDisposed())
@@ -290,7 +289,7 @@ public class InfoProgressShell
     if(detailedMessage!=null)
       appendDetailedMessage(detailedMessage);
     
-    _display.asyncExec(new Runnable() {
+    display.asyncExec(new Runnable() {
       @SuppressWarnings("boxing")
       public void run() {
         if(isDisposed())
@@ -298,7 +297,7 @@ public class InfoProgressShell
         
         Integer min = (Integer)properties.get("Min");//$NON-NLS-1$
         if(min != null)
-          _progressBar.setMinimum(min);
+          progressBar.setMinimum(min);
         
         if(isDisposed())
           return;
@@ -339,11 +338,11 @@ public class InfoProgressShell
     if(finished) {
       setSelection(getMaximum());
       
-      if(_disposeAtEnd) {
+      if(disposeAtEnd) {
         close();
       } else {
-        _cancelOrClose.setText("Close"); //$NON-NLS-1$
-        _cancelOrClose.setEnabled(true);      
+        cancelOrClose.setText("Close"); //$NON-NLS-1$
+        cancelOrClose.setEnabled(true);      
       }
     }
   }
@@ -383,39 +382,39 @@ public class InfoProgressShell
     gridData3.horizontalAlignment = GridData.FILL;
     GridLayout gridLayout1 = new GridLayout();
     gridLayout1.numColumns = 3;
-    _top = new Composite(sShell, SWT.NONE);
-    _top.setLayout(gridLayout1);
-    _top.setLayoutData(gridData15);
+    top = new Composite(sShell, SWT.NONE);
+    top.setLayout(gridLayout1);
+    top.setLayoutData(gridData15);
     
     
-    _message = new CLabel(_top, SWT.NONE);
-    _message.setText("");
-    _message.setLayoutData(gridData14);
-    _progressBar = new ProgressBar(_top, SWT.SMOOTH);
-    _progressBar.setLayoutData(gridData3);
-    _details = new Button(_top, SWT.NONE);
-    _details.setText(">>");
-    _details.setLayoutData(gridData);
-    _pauseOrResume = new Button(_top, SWT.NONE);
-    _pauseOrResume.setText("Pause");
-    _pauseOrResume.setLayoutData(gridData4);
-    _cancelOrClose = new Button(_top, SWT.NONE);
-    _cancelOrClose.setText("Cancel");
-    _cancelOrClose.setLayoutData(gridData1);
-    _pauseOrResume.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
+    message = new CLabel(top, SWT.NONE);
+    message.setText("");
+    message.setLayoutData(gridData14);
+    progressBar = new ProgressBar(top, SWT.SMOOTH);
+    progressBar.setLayoutData(gridData3);
+    details = new Button(top, SWT.NONE);
+    details.setText(">>");
+    details.setLayoutData(gridData);
+    pauseOrResume = new Button(top, SWT.NONE);
+    pauseOrResume.setText("Pause");
+    pauseOrResume.setLayoutData(gridData4);
+    cancelOrClose = new Button(top, SWT.NONE);
+    cancelOrClose.setText("Cancel");
+    cancelOrClose.setLayoutData(gridData1);
+    pauseOrResume.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
       @Override
       public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
         switchActive();
       }
     });
-    _cancelOrClose.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
+    cancelOrClose.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
       @Override
       public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
         close();
         
       }
     });
-    _details.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
+    details.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
       @Override
       public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
         switchDetail();
@@ -427,9 +426,9 @@ public class InfoProgressShell
    * 
    */
   protected void close() {
-    this.deleteObserver(_model);
-    if (_model instanceof Observable) {
-      Observable observable = (Observable) _model;    
+    this.deleteObserver(model);
+    if (model instanceof Observable) {
+      Observable observable = (Observable) model;    
       observable.deleteObserver(this);    
     }
     sShell.dispose();
@@ -440,15 +439,15 @@ public class InfoProgressShell
    */
   @SuppressWarnings("nls")
   protected void switchActive() {
-    _isRunning = !_isRunning;
+    isRunning = !isRunning;
     
     setChanged();
     notifyObservers();
     
-    if(_isRunning) {
-      _pauseOrResume.setText("Pause");
+    if(isRunning) {
+      pauseOrResume.setText("Pause");
     } else {
-      _pauseOrResume.setText("Resume");
+      pauseOrResume.setText("Resume");
     }
   }
 
@@ -474,10 +473,10 @@ public class InfoProgressShell
   	sShell.setLayout(new GridLayout());
   
     createTop();
-    _textArea = new Text(sShell, SWT.MULTI | SWT.V_SCROLL | SWT.BORDER | SWT.READ_ONLY);
-  	_textArea.setEditable(false);
-  	_textArea.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-  	_textArea.setLayoutData(gridData2);
-  	_textArea.setEnabled(true);
+    textArea = new Text(sShell, SWT.MULTI | SWT.V_SCROLL | SWT.BORDER | SWT.READ_ONLY);
+  	textArea.setEditable(false);
+  	textArea.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+  	textArea.setLayoutData(gridData2);
+  	textArea.setEnabled(true);
   }
 }

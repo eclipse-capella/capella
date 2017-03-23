@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,9 +21,9 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
  */
 public class CapellaDecoratorFormatDataKey extends AbstractCapellaFormatDataKey {
 
-  AbstractCapellaFormatDataKey _parent;
+  AbstractCapellaFormatDataKey parent;
 
-  Collection<EObject> _decorations;
+  Collection<EObject> decorations;
 
   @Override
   public String getId() {
@@ -45,26 +45,26 @@ public class CapellaDecoratorFormatDataKey extends AbstractCapellaFormatDataKey 
    */
   public CapellaDecoratorFormatDataKey(AbstractCapellaFormatDataKey key) {
     super(key.getSemantic());
-    _parent = key;
+    parent = key;
   }
 
   /**
    * @return the decorations
    */
   public Collection<EObject> getDecorations() {
-    return _decorations;
+    return decorations;
   }
 
   /**
    * @return the parent
    */
   public AbstractCapellaFormatDataKey getParent() {
-    return _parent;
+    return parent;
   }
 
   protected void addDecoration(EObject object) {
     if (getDecorations() == null) {
-      _decorations = new ArrayList<EObject>();
+      decorations = new ArrayList<EObject>();
     }
     getDecorations().add(object);
   }

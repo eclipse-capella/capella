@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers;
 
 import org.eclipse.jface.action.IMenuManager;
@@ -43,18 +42,18 @@ import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
  * The edit contribution actions provider.
  */
 public class EditCommonActionProvider extends CommonActionProvider {
-  private BaseSelectionListenerAction _copyAction;
-  private BaseSelectionListenerAction _cutAction;
-  private CapellaDeleteAction _deleteAction;
-  private BaseSelectionListenerAction _moveDown;
-  private BaseSelectionListenerAction _moveUp;
-  private BaseSelectionListenerAction _sortContent;
-  private BaseSelectionListenerAction _sortSelection;
+  private BaseSelectionListenerAction copyAction;
+  private BaseSelectionListenerAction cutAction;
+  private CapellaDeleteAction deleteAction;
+  private BaseSelectionListenerAction moveDown;
+  private BaseSelectionListenerAction moveUp;
+  private BaseSelectionListenerAction sortContent;
+  private BaseSelectionListenerAction sortSelection;
 
-  private BaseSelectionListenerAction _pasteAction;
-  private RenameAction _renameAction;
+  private BaseSelectionListenerAction pasteAction;
+  private RenameAction renameAction;
 
-  // private ValidateAction _validateAction;
+  // private ValidateAction validateAction;
 
   /**
    * Constructs the edit contribution actions provider.
@@ -69,63 +68,63 @@ public class EditCommonActionProvider extends CommonActionProvider {
   @Override
   public void dispose() {
     ISelectionProvider selectionProvider = getActionSite().getViewSite().getSelectionProvider();
-    if (null != _cutAction) {
-      selectionProvider.removeSelectionChangedListener(_cutAction);
-      _cutAction = null;
+    if (null != cutAction) {
+      selectionProvider.removeSelectionChangedListener(cutAction);
+      cutAction = null;
     }
-    if (null != _copyAction) {
-      selectionProvider.removeSelectionChangedListener(_copyAction);
-      _copyAction = null;
+    if (null != copyAction) {
+      selectionProvider.removeSelectionChangedListener(copyAction);
+      copyAction = null;
     }
-    if (null != _pasteAction) {
-      selectionProvider.removeSelectionChangedListener(_pasteAction);
-      _pasteAction = null;
+    if (null != pasteAction) {
+      selectionProvider.removeSelectionChangedListener(pasteAction);
+      pasteAction = null;
     }
-    if (null != _deleteAction) {
-      selectionProvider.removeSelectionChangedListener(_deleteAction);
+    if (null != deleteAction) {
+      selectionProvider.removeSelectionChangedListener(deleteAction);
       // Call dispose to remove the property listener...
-      _deleteAction.dispose();
-      _deleteAction = null;
+      deleteAction.dispose();
+      deleteAction = null;
     }
 
-    if (null != _moveUp) {
-      selectionProvider.removeSelectionChangedListener(_moveUp);
-      _moveUp = null;
+    if (null != moveUp) {
+      selectionProvider.removeSelectionChangedListener(moveUp);
+      moveUp = null;
     }
-    if (null != _moveDown) {
-      selectionProvider.removeSelectionChangedListener(_moveDown);
-      _moveDown = null;
+    if (null != moveDown) {
+      selectionProvider.removeSelectionChangedListener(moveDown);
+      moveDown = null;
     }
-    if (null != _sortContent) {
-      selectionProvider.removeSelectionChangedListener(_sortContent);
-      _sortContent = null;
+    if (null != sortContent) {
+      selectionProvider.removeSelectionChangedListener(sortContent);
+      sortContent = null;
     }
-    if (null != _sortSelection) {
-      selectionProvider.removeSelectionChangedListener(_sortSelection);
-      _sortSelection = null;
+    if (null != sortSelection) {
+      selectionProvider.removeSelectionChangedListener(sortSelection);
+      sortSelection = null;
     }
-    if (null != _renameAction) {
-      selectionProvider.removeSelectionChangedListener(_renameAction);
-      _renameAction = null;
+    if (null != renameAction) {
+      selectionProvider.removeSelectionChangedListener(renameAction);
+      renameAction = null;
     }
     super.dispose();
   }
 
   @Override
   public void fillActionBars(IActionBars actionBars) {
-    actionBars.setGlobalActionHandler(ActionFactory.CUT.getId(), _cutAction);
-    actionBars.setGlobalActionHandler(ActionFactory.COPY.getId(), _copyAction);
-    actionBars.setGlobalActionHandler(ActionFactory.PASTE.getId(), _pasteAction);
-    actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(), _deleteAction);
-    actionBars.setGlobalActionHandler(ActionFactory.RENAME.getId(), _renameAction);
+    actionBars.setGlobalActionHandler(ActionFactory.CUT.getId(), cutAction);
+    actionBars.setGlobalActionHandler(ActionFactory.COPY.getId(), copyAction);
+    actionBars.setGlobalActionHandler(ActionFactory.PASTE.getId(), pasteAction);
+    actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(), deleteAction);
+    actionBars.setGlobalActionHandler(ActionFactory.RENAME.getId(), renameAction);
 
     // Handle Rename action with delegation for Cut, Copy, Paste...
     TextActionHandler textActionHandler = new TextActionHandler(actionBars); // hook handlers
-    textActionHandler.setCutAction(_cutAction);
-    textActionHandler.setCopyAction(_copyAction);
-    textActionHandler.setPasteAction(_pasteAction);
-    textActionHandler.setDeleteAction(_deleteAction);
-    _renameAction.setTextActionHandler(textActionHandler);
+    textActionHandler.setCutAction(cutAction);
+    textActionHandler.setCopyAction(copyAction);
+    textActionHandler.setPasteAction(pasteAction);
+    textActionHandler.setDeleteAction(deleteAction);
+    renameAction.setTextActionHandler(textActionHandler);
   }
 
   /**
@@ -133,15 +132,15 @@ public class EditCommonActionProvider extends CommonActionProvider {
    */
   @Override
   public void fillContextMenu(IMenuManager menu) {
-    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _cutAction);
-    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _copyAction);
-    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _pasteAction);
-    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _deleteAction);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, cutAction);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, copyAction);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, pasteAction);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, deleteAction);
     menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, new Separator());
-    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _moveUp);
-    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _sortContent);
-    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _sortSelection);
-    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _moveDown);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, moveUp);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, sortContent);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, sortSelection);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, moveDown);
     menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, new Separator());
 
   }
@@ -165,12 +164,12 @@ public class EditCommonActionProvider extends CommonActionProvider {
     ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
     ISelectionProvider selectionProvider = commonViewSite.getSelectionProvider();
 
-    _cutAction = new CapellaCutAction(site.getStructuredViewer());
-    _cutAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.CUT);
-    _cutAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_CUT));
-    _cutAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_CUT_DISABLED));
-    SelectionHelper.registerToSelectionChanges(_cutAction, selectionProvider);
-    _copyAction = new CapellaCopyAction(site.getStructuredViewer()) {
+    cutAction = new CapellaCutAction(site.getStructuredViewer());
+    cutAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.CUT);
+    cutAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_CUT));
+    cutAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_CUT_DISABLED));
+    SelectionHelper.registerToSelectionChanges(cutAction, selectionProvider);
+    copyAction = new CapellaCopyAction(site.getStructuredViewer()) {
       /**
        * {@inheritDoc}
        */
@@ -180,49 +179,49 @@ public class EditCommonActionProvider extends CommonActionProvider {
         super.run();
         // Force to refresh the paste action, to be able to paste the copied selection into the clipboard, directly
         // without changing the selection.
-        _pasteAction.selectionChanged(getStructuredSelection());
+        pasteAction.selectionChanged(getStructuredSelection());
       }
     };
-    _copyAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.COPY);
-    _copyAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY));
-    _copyAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY_DISABLED));
-    SelectionHelper.registerToSelectionChanges(_copyAction, selectionProvider);
+    copyAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.COPY);
+    copyAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY));
+    copyAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY_DISABLED));
+    SelectionHelper.registerToSelectionChanges(copyAction, selectionProvider);
 
-    _pasteAction = new CapellaPasteAction();
-    _pasteAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.PASTE);
-    _pasteAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_PASTE));
-    _pasteAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_PASTE_DISABLED));
-    SelectionHelper.registerToSelectionChanges(_pasteAction, selectionProvider);
+    pasteAction = new CapellaPasteAction();
+    pasteAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.PASTE);
+    pasteAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_PASTE));
+    pasteAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_PASTE_DISABLED));
+    SelectionHelper.registerToSelectionChanges(pasteAction, selectionProvider);
 
-    _deleteAction = new CapellaDeleteAction();
-    _deleteAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.DELETE);
-    _deleteAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
-    _deleteAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE_DISABLED));
-    SelectionHelper.registerToSelectionChanges(_deleteAction, selectionProvider);
+    deleteAction = new CapellaDeleteAction();
+    deleteAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.DELETE);
+    deleteAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
+    deleteAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE_DISABLED));
+    SelectionHelper.registerToSelectionChanges(deleteAction, selectionProvider);
 
-    _moveUp = new MoveUpAction();
-    SelectionHelper.registerToSelectionChanges(_moveUp, selectionProvider);
+    moveUp = new MoveUpAction();
+    SelectionHelper.registerToSelectionChanges(moveUp, selectionProvider);
 
-    _moveDown = new MoveDownAction();
-    SelectionHelper.registerToSelectionChanges(_moveDown, selectionProvider);
+    moveDown = new MoveDownAction();
+    SelectionHelper.registerToSelectionChanges(moveDown, selectionProvider);
 
-    _sortContent = new SortContentAction();
-    _sortContent.setImageDescriptor(CapellaUIResourcesPlugin.getDefault().getImageDescriptor(
+    sortContent = new SortContentAction();
+    sortContent.setImageDescriptor(CapellaUIResourcesPlugin.getDefault().getImageDescriptor(
         org.polarsys.capella.core.ui.resources.IImageKeys.CAPELLA_SORT_IMG_16));
-    _sortContent.setDisabledImageDescriptor(CapellaUIResourcesPlugin.getDefault().getImageDescriptor(
+    sortContent.setDisabledImageDescriptor(CapellaUIResourcesPlugin.getDefault().getImageDescriptor(
         org.polarsys.capella.core.ui.resources.IImageKeys.CAPELLA_SORT_DISABLED_IMG_16));
-    SelectionHelper.registerToSelectionChanges(_sortContent, selectionProvider);
+    SelectionHelper.registerToSelectionChanges(sortContent, selectionProvider);
 
-    _sortSelection = new SortSelectionAction();
-    _sortSelection.setImageDescriptor(CapellaUIResourcesPlugin.getDefault().getImageDescriptor(
+    sortSelection = new SortSelectionAction();
+    sortSelection.setImageDescriptor(CapellaUIResourcesPlugin.getDefault().getImageDescriptor(
         org.polarsys.capella.core.ui.resources.IImageKeys.CAPELLA_SORT_IMG_16));
-    _sortSelection.setDisabledImageDescriptor(CapellaUIResourcesPlugin.getDefault().getImageDescriptor(
+    sortSelection.setDisabledImageDescriptor(CapellaUIResourcesPlugin.getDefault().getImageDescriptor(
         org.polarsys.capella.core.ui.resources.IImageKeys.CAPELLA_SORT_DISABLED_IMG_16));
-    SelectionHelper.registerToSelectionChanges(_sortSelection, selectionProvider);
+    SelectionHelper.registerToSelectionChanges(sortSelection, selectionProvider);
 
     // Initialize the rename action.
-    _renameAction = new RenameAction(activePart);
-    _renameAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.RENAME);
-    SelectionHelper.registerToSelectionChanges(_renameAction, selectionProvider);
+    renameAction = new RenameAction(activePart);
+    renameAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.RENAME);
+    SelectionHelper.registerToSelectionChanges(renameAction, selectionProvider);
   }
 }
