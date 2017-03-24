@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.validation;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.validation.model.IConstraintStatus;
 import org.eclipse.emf.validation.service.IBatchValidator;
@@ -104,5 +107,11 @@ public class CapellaValidatorAdapter extends EValidatorAdapter {
     EValidator.Registry.INSTANCE.put(ActivityPackage.eINSTANCE, this);
     EValidator.Registry.INSTANCE.put(BehaviorPackage.eINSTANCE, this);
     EValidator.Registry.INSTANCE.put(ModellingcorePackage.eINSTANCE, this);
+
+  }
+
+  public void registerAdditionalPackages(List<? extends EPackage> packages) {
+    for (EPackage ePkg : packages)
+      EValidator.Registry.INSTANCE.put(ePkg, this);
   }
 }

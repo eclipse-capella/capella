@@ -36,6 +36,7 @@ public class DCONRulesTestSuite extends BasicTestSuite {
 		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new Rule_DCON_02());
     tests.add(new Rule_DCON_01());
+    tests.add(new Rule_DCON_03());
 		return tests;
 	}
 
