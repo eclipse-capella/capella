@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>CapellaFeatures</name>
+	<name>CapellaDesign</name>
 	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
 	</buildSpec>
 	<natures>
-		<nature>org.polarsys.capella.library.nature</nature>
+		<nature>org.polarsys.capella.project.nature</nature>
 	</natures>
 </projectDescription>
