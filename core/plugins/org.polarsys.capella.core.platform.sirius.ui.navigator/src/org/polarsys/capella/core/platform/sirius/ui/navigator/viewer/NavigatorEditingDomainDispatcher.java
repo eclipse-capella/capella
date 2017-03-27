@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.HashSet;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
@@ -98,8 +99,13 @@ public class NavigatorEditingDomainDispatcher implements IEditingDomainListener,
         return Status.OK_STATUS;
       }
     };
+    // When an element is added to the model, we have to be sure it is displayed in the Project Exporer before trying to
+    // select it.
+    // => We want to be sure that this Job is executed after the Job refreshing the Project Explorer (see
+    // org.polarsys.capella.common.ui.toolkit.provider.GroupedAdapterFactoryContentProvider.runRefresh()).
+    // => Set a lower priority to this Job.
+    job.setPriority(Job.DECORATE);
     job.schedule();
-
   }
 
   public static void registerNotifyChangedListener(INotifyChangedListener listener) {
