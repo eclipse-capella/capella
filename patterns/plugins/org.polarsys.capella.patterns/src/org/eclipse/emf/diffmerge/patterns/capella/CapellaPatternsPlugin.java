@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,16 +10,20 @@
  *******************************************************************************/
 package org.eclipse.emf.diffmerge.patterns.capella;
 
+import java.util.Collections;
+
 import org.eclipse.core.runtime.IAdapterFactory;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.emf.diffmerge.patterns.capella.validation.ValidatorAdapter;
 import org.eclipse.emf.diffmerge.patterns.support.gen.commonpatternsupport.CommonPatternInstance;
+import org.eclipse.emf.diffmerge.patterns.support.gen.commonpatternsupport.CommonpatternsupportPackage;
 import org.eclipse.emf.ecore.EValidator;
 import org.osgi.framework.BundleContext;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl;
+import org.polarsys.capella.core.validation.CapellaValidationActivator;
 
 
 /**
@@ -101,6 +105,7 @@ public class CapellaPatternsPlugin extends Plugin {
 		super.start(context);
     EValidator.Registry.INSTANCE.put(
         ModellingcorePackage.eINSTANCE, new ValidatorAdapter());
+    CapellaValidationActivator.getDefault().getCapellaValidatorAdapter().registerAdditionalPackages(Collections.singletonList(CommonpatternsupportPackage.eINSTANCE));
 		__plugin = this;
 	}
   
