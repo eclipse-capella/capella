@@ -8,7 +8,8 @@ Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.common.flexibility.properties,
  org.polarsys.capella.common.libraries;visibility:=reexport,
  org.polarsys.capella.core.model.helpers,
- org.polarsys.capella.core.model.preferences
+ org.polarsys.capella.core.model.preferences,
+ org.polarsys.kitalpha.ad.metadata
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.libraries,

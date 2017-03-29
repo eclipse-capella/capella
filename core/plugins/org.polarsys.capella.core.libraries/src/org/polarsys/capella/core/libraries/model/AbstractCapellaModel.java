@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -167,7 +167,7 @@ public abstract class AbstractCapellaModel extends AbstractUriModel implements I
 
   protected ModelInformation getModelInformation(IModel model_p, boolean create_p) {
     if (model_p instanceof CapellaModel) {
-      Resource target = getResource(_domain, ((CapellaModel) model_p).uriSemanticFile, create_p && resolve());
+      Resource target = getResource(_domain, ((CapellaModel)model_p).getUriSemanticFile(), create_p && resolve());
       ModelInformation targetObject = CapellaLibraryExt.getModelInformation(target, create_p);
       return targetObject;
     }

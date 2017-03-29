@@ -6,7 +6,8 @@ Bundle-Version: 1.1.0.qualifier
 Bundle-Activator: org.polarsys.capella.test.libraries.ju.TestLibrariesPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.polarsys.capella.test.framework
+ org.polarsys.capella.test.framework,
+ org.polarsys.kitalpha.ad.metadata.model
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %providerName
