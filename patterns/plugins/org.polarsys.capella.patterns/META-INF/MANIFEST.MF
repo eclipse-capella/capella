@@ -21,7 +21,8 @@ Require-Bundle: org.eclipse.emf.diffmerge.patterns.repositories.catalogs,
  org.eclipse.emf.diffmerge.patterns.core,
  org.eclipse.sirius.diagram,
  org.polarsys.capella.core.validation.ui.ide,
- org.polarsys.capella.core.validation
+ org.polarsys.capella.core.validation,
+ org.eclipse.emf.diffmerge.patterns.templates.gen
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
 Bundle-Version: 1.2.0.qualifier

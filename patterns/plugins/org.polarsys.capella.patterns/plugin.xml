@@ -89,6 +89,33 @@
             </constraint>
          </constraints>
       </constraintProvider>
+      <constraintProvider>
+         <package
+               namespaceUri="http://org.eclipse.emf.patterns/support/1.0.0">
+         </package>
+         <constraints
+               categories="capella.category/design/consistency">
+            <constraint
+                  class="org.eclipse.emf.diffmerge.patterns.capella.validation.InvalidePatternInstanceConstraint"
+                  id="DCON_03"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCON_03 - Invalid pattern instance"
+                  severity="WARNING"
+                  statusCode="1">
+               <description>
+                  The rule checks if pattern instances still point to existing Capella elements.
+               </description>
+               <message>
+                  Invalid pattern instance found
+               </message>
+               <target
+                     class="CommonPatternInstance">
+               </target>
+            </constraint>
+         </constraints>
+      </constraintProvider>
    </extension>
    <extension
          point="org.eclipse.emf.diffmerge.patterns.diagrams.semanticMapping">
@@ -121,6 +148,15 @@
             label="Delete pattern instances and pattern elements">
          <rules
                ruleId="DCON_01">
+         </rules>
+      </resolver>
+            <resolver
+            class="org.eclipse.emf.diffmerge.patterns.capella.quickfix.DeletePatternInstanceResolution"
+            desc="Delete pattern instance"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+            label="Delete pattern instance">
+         <rules
+               ruleId="DCON_03">
          </rules>
       </resolver>
    </extension>

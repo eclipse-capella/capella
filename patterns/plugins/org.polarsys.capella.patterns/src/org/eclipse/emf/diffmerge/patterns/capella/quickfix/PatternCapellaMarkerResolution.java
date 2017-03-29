@@ -25,15 +25,15 @@ import org.eclipse.emf.diffmerge.patterns.core.api.ext.IPatternSupport;
 import org.eclipse.emf.diffmerge.patterns.core.api.status.IPatternConformityStatus;
 import org.eclipse.emf.diffmerge.patterns.core.api.status.SimpleStatus;
 import org.eclipse.emf.diffmerge.patterns.core.util.LocationsUtil;
+import org.eclipse.emf.diffmerge.patterns.support.gen.commonpatternsupport.CommonPatternInstance;
 import org.eclipse.emf.diffmerge.patterns.templates.engine.TemplatePatternsEnginePlugin;
 import org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ISemanticRuleProvider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
-public class PatternCapellaMarkerResolution extends AbstractCapellaMarkerResolution {
+public class PatternCapellaMarkerResolution extends AbstractPatternCapellaMarkerResolution {
   Map<IMarker, Collection<IPatternInstance>> marker2InvalidPatternInstances = new HashMap<>();
 
   protected boolean shouldKeepElements() {
@@ -49,24 +49,33 @@ public class PatternCapellaMarkerResolution extends AbstractCapellaMarkerResolut
         AbstractReadWriteCommand abstrctCommand = new AbstractReadWriteCommand() {
           @Override
           public void run() {
+            EObject patternStorage = null;
+            if (instance instanceof CommonPatternInstance)
+              patternStorage = ((CommonPatternInstance)instance).eContainer();
+            
             if (shouldKeepElements())
               instance.delete(true);
             else
               instance.delete(false);
+            
+            if (patternStorage != null)
+              deletePatternStorage(patternStorage);
+            
+            mustDeleteMarker[0] = true;
           }
         };
-        if (instance instanceof EObject)
+        if (instance instanceof EObject) {
           TransactionHelper.getExecutionManager((EObject) instance).execute(abstrctCommand);
+        }
       }
-      mustDeleteMarker[0] = true;
     }
 
     // Remove the marker if the element is deleted.
-    if (mustDeleteMarker[0] == true) {
+    if (mustDeleteMarker[0]) {
       try {
         marker.delete();
       } catch (CoreException exception) {
-        // no nothing
+        // do nothing
       }
     }
   }
@@ -105,5 +114,10 @@ public class PatternCapellaMarkerResolution extends AbstractCapellaMarkerResolut
         return false;
     }
     return true;
+  }
+
+  @Override
+  protected boolean quickFixAllSimilarEnabled(Collection<IMarker> markers) {
+    return false;
   }
 }
