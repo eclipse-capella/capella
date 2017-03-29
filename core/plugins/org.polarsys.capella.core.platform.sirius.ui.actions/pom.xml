@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright (c) 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -13,12 +13,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.polarsys.capella</groupId>
-    <artifactId>capella</artifactId>
+    <groupId>org.polarsys</groupId>
+    <artifactId>org.polarsys.capella</artifactId>
     <version>1.2.0-SNAPSHOT</version>
     <relativePath>../../../</relativePath>
   </parent>
-  <groupId>org.polarsys.capella</groupId>
+  <groupId>org.polarsys</groupId>
   <artifactId>org.polarsys.capella.core.platform.sirius.ui.actions</artifactId>
   <version>1.2.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
