@@ -400,6 +400,14 @@
                     id="8e4d93de-a525-4193-abe3-6f44cd1c36f0" value="1"/>
               </ownedElements>
               <ownedElements xsi:type="org.polarsys.capella.core.data.information:ExchangeItemElement"
+                  id="2d3d7579-80b0-41f8-9f11-0eb1a33f5bfd" name="org.eclipse.sirius.runtime.aql.feature"
+                  direction="UNSET" composite="true">
+                <ownedMinCard xsi:type="org.polarsys.capella.core.data.information.datavalue:LiteralNumericValue"
+                    id="5c17d261-0b54-4e16-a98a-8f992220325c" value="1"/>
+                <ownedMaxCard xsi:type="org.polarsys.capella.core.data.information.datavalue:LiteralNumericValue"
+                    id="dc5756e7-5d97-4bde-ad01-b99dd63e7c2d" value="1"/>
+              </ownedElements>
+              <ownedElements xsi:type="org.polarsys.capella.core.data.information:ExchangeItemElement"
                   id="60c94709-2a99-47ae-8bb3-b6cb2b358008" name="org.eclipse.sirius.runtime.ide.ui.feature"
                   direction="UNSET" composite="true">
                 <ownedMinCard xsi:type="org.polarsys.capella.core.data.information.datavalue:LiteralNumericValue"
