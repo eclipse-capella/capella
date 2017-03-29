@@ -79,6 +79,7 @@
       <feature id="org.eclipse.sdk"/>
       <feature id="org.eclipse.sirius.query.legacy.feature"/>
       <feature id="org.eclipse.sirius.runtime"/>
+      <feature id="org.eclipse.sirius.runtime.aql"/>
       <feature id="org.eclipse.sirius.runtime.ide.ui"/>
       <feature id="org.polarsys.capella.rcp.feature"/>
       <feature id="org.polarsys.kitalpha.ad.feature"/>
