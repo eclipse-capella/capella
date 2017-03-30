@@ -108,11 +108,13 @@
 				</configuration>
 				<executions>
 					<execution>
+						<id>agent-for-ut</id>
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
 					</execution>
 					<execution>
+						<id>jacoco-site</id>
 						<phase>verify</phase>
 						<goals>
 							<goal>report</goal>
