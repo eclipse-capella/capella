@@ -218,6 +218,17 @@
                      name="PropertyValueGroup">
                </defaultMappingPossibility>
             </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.OpaqueExpression"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.core.OpaqueExpressionRule"
+                     enabled="true"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.core.OpaqueExpressionRule"
+                     name="OpaqueExpression">
+               </defaultMappingPossibility>
+            </mappingElement>
             
             
             

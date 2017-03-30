@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,6 +79,8 @@ public class Rule_Scenario extends CommonRule {
   public void firstAttach(EObject element_p, ITransfo transfo_p) throws TransfoException {
     TigerRelationshipHelper.attachUnattachedIntoSameContainer(element_p, getTargetType(), InteractionPackage.Literals.ABSTRACT_CAPABILITY__OWNED_SCENARIOS,
         transfo_p);
+    TigerRelationshipHelper.attachTransformedRelatedElements(element_p, InteractionPackage.Literals.SCENARIO__PRE_CONDITION, transfo_p);
+    TigerRelationshipHelper.attachTransformedRelatedElements(element_p, InteractionPackage.Literals.SCENARIO__POST_CONDITION, transfo_p);
   }
 
   @Override
@@ -89,6 +91,8 @@ public class Rule_Scenario extends CommonRule {
   @Override
   protected void doGoDeep(EObject element_p, List<EObject> result_p) {
     Scenario s = (Scenario) element_p;
+    result_p.add(s.getPreCondition());
+    result_p.add(s.getPostCondition());
     result_p.addAll(s.getOwnedInteractionFragments());
     result_p.addAll(s.getOwnedMessages());
     result_p.addAll(s.getOwnedTimeLapses());
