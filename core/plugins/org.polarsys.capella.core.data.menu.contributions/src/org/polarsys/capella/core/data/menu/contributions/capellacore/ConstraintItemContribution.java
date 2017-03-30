@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,28 +33,31 @@ public class ConstraintItemContribution implements IMDEMenuItemContribution {
   @Override
   public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     return !feature.equals(ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_PRECONDITION)
-      && !feature.equals(ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_POSTCONDITION);
+        && !feature.equals(ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_POSTCONDITION);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
   @Override
-  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement,final ModelElement createdElement, EStructuralFeature feature) {
+  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement,
+      final ModelElement createdElement, EStructuralFeature feature) {
     return new RecordingCommand((TransactionalEditingDomain) editingDomain) {
       @Override
       protected void doExecute() {
-        ((Constraint)createdElement).setName(""); //$NON-NLS-1$
-        final OpaqueExpression oe = DatavalueFactory.eINSTANCE.createOpaqueExpression();
-        ((Constraint)createdElement).setOwnedSpecification(oe);
-        Command opaqueExpressionContribution = CreationHelper.getContributorsCommand(oe, createdElement, oe.eClass(), oe.eContainingFeature());
-        if (opaqueExpressionContribution.canExecute()){
-          opaqueExpressionContribution.execute();
+        ((Constraint) createdElement).setName(""); //$NON-NLS-1$
+        if (((Constraint) createdElement).getOwnedSpecification() == null) {
+          final OpaqueExpression oe = DatavalueFactory.eINSTANCE.createOpaqueExpression();
+          ((Constraint) createdElement).setOwnedSpecification(oe);
+          Command opaqueExpressionContribution = CreationHelper.getContributorsCommand(oe, createdElement, oe.eClass(),
+              oe.eContainingFeature());
+          if (opaqueExpressionContribution.canExecute()) {
+            opaqueExpressionContribution.execute();
+          }
         }
       }
     };
   }
-
 
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#getMetaclass()
