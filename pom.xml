@@ -42,11 +42,14 @@
 		<os-jvm-flags />
 
 		<!-- for sonar -->
+		<sonar.skipDesign>true</sonar.skipDesign>
 		<sonar.dynamic>reuseReports</sonar.dynamic>
-		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
 		<sonar.jacoco.reportPath>${project.basedir}/../../../target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.jacoco.itReportPath>${project.basedir}/../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
+		<sonar.exclusions>**/doc/**,**/releng/**,**/tests/**,**/*.gen/**,**/*.gen.edit/**</sonar.exclusions>
+		<sonar.coverage.exclusions>**/doc/**,**/releng/**,**/tests/**,**/*.gen/**,**/*.gen.edit/**</sonar.coverage.exclusions>
 	</properties>
 
 	<modules>
