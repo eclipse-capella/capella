@@ -13,13 +13,13 @@ package org.polarsys.capella.test.diagram.common.ju.api;
 import java.util.Arrays;
 import java.util.List;
 
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
 import junit.framework.TestResult;
