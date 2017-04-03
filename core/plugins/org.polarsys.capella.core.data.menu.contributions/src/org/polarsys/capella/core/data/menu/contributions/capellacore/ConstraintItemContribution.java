@@ -17,7 +17,9 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.menu.dynamic.CreationHelper;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
@@ -45,7 +47,12 @@ public class ConstraintItemContribution implements IMDEMenuItemContribution {
     return new RecordingCommand((TransactionalEditingDomain) editingDomain) {
       @Override
       protected void doExecute() {
-        ((Constraint) createdElement).setName(""); //$NON-NLS-1$
+        if (createdElement instanceof AbstractNamedElement) {
+          String name = ((AbstractNamedElement) createdElement).getName();
+          if ((name == null) || name.startsWith(createdElement.eClass().getName())) {
+            ((Constraint) createdElement).setName(ICommonConstants.EMPTY_STRING);
+          }
+        }
         if (((Constraint) createdElement).getOwnedSpecification() == null) {
           final OpaqueExpression oe = DatavalueFactory.eINSTANCE.createOpaqueExpression();
           ((Constraint) createdElement).setOwnedSpecification(oe);
