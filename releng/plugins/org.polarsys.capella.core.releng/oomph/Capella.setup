@@ -85,12 +85,6 @@
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"
-      name="eclipse.target.platform"
-      value="Mars"
-      defaultValue="Mars"
-      storageURI="scope://Workspace"/>
-  <setupTask
-      xsi:type="setup:VariableTask"
       name="polarsys.git.remoteURIs"
       label="Polarsys Git Repository">
     <choice
@@ -169,120 +163,6 @@
     <description>Choose from the available Gerrit or Git URIs</description>
   </setupTask>
   <setupTask
-      xsi:type="setup.targlets:TargletTask">
-    <targlet
-        name="Capella Features"
-        activeRepositoryList="${eclipse.target.platform}">
-      <requirement
-          name="org.polarsys.capella.core.advance.feature.feature.group"/>
-      <repositoryList
-          name="Mars">
-        <repository
-            url="https://hudson.polarsys.org/capella/view/Capella-master/job/capella-master/lastSuccessfulBuild/artifact/result/publish/org.polarsys.capella/site.p2"/>
-      </repositoryList>
-    </targlet>
-    <targlet
-        name="Capella Dependencies"
-        activeRepositoryList="${eclipse.target.platform}">
-      <annotation
-          source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
-        <detail
-            key="location">
-          <value>${java.io.tmpdir/Capella.target}</value>
-        </detail>
-        <detail
-            key="extraUnits">
-          <value>org.eclipse.equinox.executable.feature.group</value>
-        </detail>
-        <detail
-            key="singleLocation">
-          <value>true</value>
-        </detail>
-        <detail
-            key="includeAllPlatforms">
-          <value>false</value>
-        </detail>
-        <detail
-            key="includeSource">
-          <value>true</value>
-        </detail>
-      </annotation>
-      <requirement
-          name="org.eclipse.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.gef.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.transaction.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.validation.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.query.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.workspace.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.validation.ocl.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.query.ocl.feature.group"/>
-      <requirement
-          name="org.eclipse.gmf.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.query.legacy.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.runtime.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.runtime.ide.ui.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.doc.feature.feature.group"/>
-      <requirement
-          name="org.polarsys.kitalpha.emde.ui.feature.feature.group"/>
-      <requirement
-          name="org.polarsys.kitalpha.emde.feature.feature.group"/>
-      <requirement
-          name="org.polarsys.kitalpha.model.detachment.feature.feature.group"/>
-      <requirement
-          name="org.polarsys.kitalpha.patterns.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.diffmerge.sdk.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.amalgam.explorer.activity.feature.group"/>
-      <requirement
-          name="org.eclipse.amalgam.explorer.contextual.feature.group"/>
-      <requirement
-          name="org.eclipse.amalgam.explorer.contextual.core.feature.group"/>
-      <requirement
-          name="org.eclipse.amalgam.explorer.contextual.sirius.feature.group"/>
-      <repositoryList
-          name="Mars">
-        <repository
-            url="http://download.eclipse.org/sirius/updates/stable/4.1.4-S20170303-085205/mars"/>
-        <repository
-            url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
-        <repository
-            url="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
-        <repository
-            url="http://download.eclipse.org/diffmerge/releases/0.7.1/edm-patterns-site"/>
-        <repository
-            url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/7/artifact/result/publish/kitalpha_runtime/site.p2"/>
-        <repository
-            url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/7/artifact/result/publish/kitalpha_sdk/site.p2"/>
-        <repository
-            url="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20161128-035928/mars"/>
-        <repository
-            url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
-        <repository
-            url="http://download.eclipse.org/releases/mars"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
-      </repositoryList>
-    </targlet>
-  </setupTask>
-  <setupTask
       xsi:type="setup.p2:P2Task">
     <requirement
         name="org.eclipse.sirius.specifier.feature.group"/>
@@ -337,7 +217,7 @@
         xsi:type="setup.targlets:TargletTask">
       <targlet
           name="Capella Sourcelocator Targlet"
-          activeRepositoryList="${eclipse.target.platform}">
+          activeRepositoryList="">
         <sourceLocator
             rootFolder="${git.clone.capella.location}"
             locateNestedProjects="true"/>
@@ -510,6 +390,7 @@
     </setupTask>
     <setupTask
         xsi:type="setup:ResourceCopyTask"
+        disabled="true"
         sourceURL="${java.io.tmpdir|uri}/Capella.target"
         targetURL="${git.clone.capella.location|uri}/releng/plugins/org.polarsys.capella.core.releng/oomph/Capella.target"/>
     <project
@@ -536,12 +417,26 @@
               pattern=".*\.def"/>
         </workingSet>
       </setupTask>
-      <stream
-          name="master"/>
       <description>Select this if you need to make changes to the Capella metamodel definitions</description>
     </project>
     <stream
-        name="master"/>
+        name="master">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Neon"
+          defaultValue="Neon"
+          storageURI="scope://Workspace"/>
+    </stream>
+    <stream
+        name="v1.1.x">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Mars"
+          defaultValue="Mars"
+          storageURI="scope://Workspace"/>
+    </stream>
     <description>Select this to work on the capella source code</description>
   </project>
   <project name="Capella Addon Developer">
@@ -642,12 +537,19 @@
             name="org.polarsys.capella.vp.price.feature.feature.group"/>
         <requirement
             name="org.polarsys.capella.transition.system2subsystem.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.capella.transition.system2subsystem.tests.ju"/>
         <sourceLocator
             rootFolder="${git.clone.addon-xhtml.location}"/>
         <sourceLocator
             rootFolder="${git.clone.addon-basicvp.location}"/>
         <sourceLocator
             rootFolder="${git.clone.addon-ssstransition.location}"/>
+      </targlet>
+      <targlet
+          name="Capella Addons Test Dependencies">
+        <requirement
+            name="org.eclipse.jgit"/>
       </targlet>
     </setupTask>
     <setupTask
@@ -711,7 +613,23 @@
           url="/buglist.cgi?bug_status=RESOLVED&amp;bug_status=VERIFIED&amp;classification=Polarsys&amp;component=GenDoc HTML&amp;component=Mass VP&amp;component=Perfo VP&amp;component=Price VP&amp;component=System2Subsystem&amp;component=XML Pivot&amp;product=Capella&amp;query_format=advanced"/>
     </setupTask>
     <stream
-        name="master"/>
+        name="master">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Neon"
+          defaultValue="Neon"
+          storageURI="scope://Workspace"/>
+    </stream>
+    <stream
+        name="v1.1.x">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Mars"
+          defaultValue="Mars"
+          storageURI="scope://Workspace"/>
+    </stream>
     <description>Select this work on capella addons source code</description>
   </project>
   <project name="Capella Tools Developer">
@@ -758,16 +676,16 @@
       </targlet>
       <targlet
           name="Capella Groovy Dependencies"
-          activeRepositoryList="${eclipse.target.platform}">
+          activeRepositoryList="${scope.project.stream.name}">
         <requirement
             name="org.codehaus.groovy.eclipse.feature.feature.group"/>
         <repositoryList
-            name="Neon">
+            name="master">
           <repository
               url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.6/"/>
         </repositoryList>
         <repositoryList
-            name="Mars">
+            name="v1.1.x">
           <repository
               url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.5/"/>
         </repositoryList>
@@ -813,9 +731,336 @@
           url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.5/"/>
     </setupTask>
     <stream
-        name="master"/>
+        name="master">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Neon"
+          defaultValue="Neon"
+          storageURI="scope://Workspace"/>
+    </stream>
     <description>Select this work on capella addons source code</description>
   </project>
+  <stream name="v1.1.x">
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.target.platform"
+        value="Mars"
+        defaultValue="Mars"
+        storageURI="scope://Workspace"/>
+    <setupTask
+        xsi:type="setup.targlets:TargletTask">
+      <targlet
+          name="Capella Features"
+          activeRepositoryList="">
+        <requirement
+            name="org.polarsys.capella.core.advance.feature.feature.group"/>
+        <repositoryList
+            name="Mars">
+          <repository
+              url="https://hudson.polarsys.org/capella/view/Capella-v1.1.x/job/capella-v1.1.x/lastSuccessfulBuild/artifact/result/publish/org.polarsys.capella/site.p2/"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Capella Dependencies"
+          activeRepositoryList="">
+        <annotation
+            source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
+          <detail
+              key="location">
+            <value>${java.io.tmpdir/Capella.target}</value>
+          </detail>
+          <detail
+              key="extraUnits">
+            <value>org.eclipse.equinox.executable.feature.group</value>
+          </detail>
+          <detail
+              key="singleLocation">
+            <value>true</value>
+          </detail>
+          <detail
+              key="includeAllPlatforms">
+            <value>false</value>
+          </detail>
+          <detail
+              key="includeSource">
+            <value>true</value>
+          </detail>
+        </annotation>
+        <requirement
+            name="org.eclipse.sdk.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.sdk.feature.group"/>
+        <requirement
+            name="org.eclipse.gef.sdk.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.transaction.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.validation.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.query.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.workspace.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.validation.ocl.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.query.ocl.feature.group"/>
+        <requirement
+            name="org.eclipse.gmf.feature.group"/>
+        <requirement
+            name="org.eclipse.sirius.query.legacy.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.sirius.runtime.feature.group"/>
+        <requirement
+            name="org.eclipse.sirius.runtime.ide.ui.feature.group"/>
+        <requirement
+            name="org.eclipse.sirius.doc.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.emde.ui.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.emde.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.model.detachment.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.patterns.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.diffmerge.sdk.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.amalgam.explorer.activity.feature.group"/>
+        <requirement
+            name="org.eclipse.amalgam.explorer.contextual.feature.group"/>
+        <requirement
+            name="org.eclipse.amalgam.explorer.contextual.core.feature.group"/>
+        <requirement
+            name="org.eclipse.amalgam.explorer.contextual.sirius.feature.group"/>
+        <repositoryList
+            name="Mars">
+          <repository
+              url="http://download.eclipse.org/sirius/updates/stable/4.1.4-S20170321-101206/mars"/>
+          <repository
+              url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
+          <repository
+              url="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
+          <repository
+              url="http://download.eclipse.org/diffmerge/releases/0.7.1/edm-patterns-site"/>
+          <repository
+              url="https://hudson.polarsys.org/kitalpha/job/kitalpha-v1.1.x/269/artifact/result/publish/kitalpha_runtime/site.p2"/>
+          <repository
+              url="https://hudson.polarsys.org/kitalpha/job/kitalpha-v1.1.x/269/artifact/result/publish/kitalpha_sdk/site.p2"/>
+          <repository
+              url="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20170307-051244/mars"/>
+          <repository
+              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
+          <repository
+              url="http://download.eclipse.org/releases/mars"/>
+          <repository
+              url="http://download.eclipse.org/cbi/updates/license"/>
+        </repositoryList>
+      </targlet>
+    </setupTask>
+    <description>Capella version 1.1.x maintenance</description>
+  </stream>
+  <stream name="master"
+      label="">
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.target.platform"
+        value="Neon"
+        defaultValue="Neon"
+        storageURI="scope://Workspace"/>
+    <setupTask
+        xsi:type="setup.targlets:TargletTask">
+      <targlet
+          name="Eclipse Projects"
+          activeRepositoryList="">
+        <annotation
+            source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
+          <detail
+              key="location">
+            <value>${java.io.tmpdir/Capella.target}</value>
+          </detail>
+          <detail
+              key="extraUnits">
+            <value>org.eclipse.equinox.executable.feature.group</value>
+          </detail>
+          <detail
+              key="singleLocation">
+            <value>true</value>
+          </detail>
+          <detail
+              key="includeAllPlatforms">
+            <value>false</value>
+          </detail>
+          <detail
+              key="includeSource">
+            <value>true</value>
+          </detail>
+        </annotation>
+        <requirement
+            name="org.eclipse.sdk.feature.group"/>
+        <requirement
+            name="org.eclipse.platform.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.sdk.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.query.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.transaction.feature.group"/>
+        <requirement
+            name="org.eclipse.gmf.feature.group"/>
+        <requirement
+            name="org.eclipse.equinox.executable.feature.group"/>
+        <requirement
+            name="com.ibm.icu"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/releases/neon"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Sirius">
+        <requirement
+            name="org.eclipse.sirius.runtime.feature.group"/>
+        <requirement
+            name="org.eclipse.sirius.runtime.aql.feature.group"/>
+        <requirement
+            name="org.eclipse.sirius.runtime.ide.ui.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/sirius/updates/stable/4.1.4-S20170321-101206/neon"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Kitalpha">
+        <requirement
+            name="org.polarsys.kitalpha.ad.runtime.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.cadence.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.common.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.emde.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.emde.ui.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.model.common.commands.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.model.common.scrutiny.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.model.common.share.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.model.detachment.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.model.detachment.ui.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.patterns.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.report.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.report.ui.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.transposer.feature.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_runtime/site.p2"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Diffmerge">
+        <requirement
+            name="org.eclipse.emf.diffmerge.sdk.feature.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Patterns">
+        <requirement
+            name="org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/diffmerge/releases/0.7.1/edm-patterns-site"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Amalgam">
+        <requirement
+            name="org.eclipse.amalgam.explorer.activity.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20170328-042916/mars"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Sirius Legacy">
+        <requirement
+            name="org.eclipse.sirius.query.legacy.feature.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Orbit 2013">
+        <requirement
+            name="org.apache.log4j"
+            versionRange="[1.2.15.v201012070815,1.2.15.v201012070815]"/>
+        <requirement
+            name="org.apache.commons.lang"
+            versionRange="[2.4.0.v201005080502,2.4.0.v201005080502]"/>
+        <requirement
+            name="org.apache.commons.net"
+            versionRange="[3.2.0.v201305141515,3.2.0.v201305141515]"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Orbit 2014">
+        <requirement
+            name="com.google.guava"
+            versionRange="[15.0.0.v201403281430,15.0.0.v201403281430]"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Capella Features"
+          activeRepositoryList="">
+        <requirement
+            name="org.polarsys.capella.core.advance.feature.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="https://hudson.polarsys.org/capella/view/Capella-master/job/capella-master/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.capella.rcp.site/target/repository/"/>
+        </repositoryList>
+      </targlet>
+      <description>Capella Dependencies, copied from org.polarsys.capella.rcp.target/full</description>
+    </setupTask>
+    <description>Capella master development</description>
+  </stream>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
       href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
