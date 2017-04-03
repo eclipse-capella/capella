@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c)  2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,21 +30,21 @@ location "http://download.eclipse.org/sirius/updates/stable/4.1.4-S20170321-1012
 }
 
 location "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_runtime/site.p2" {
-	org.polarsys.kitalpha.ad.runtime.feature.feature.group
-	org.polarsys.kitalpha.cadence.feature.feature.group
-	org.polarsys.kitalpha.common.feature.feature.group
-	org.polarsys.kitalpha.emde.feature.feature.group
-	org.polarsys.kitalpha.emde.ui.feature.feature.group
-	org.polarsys.kitalpha.model.common.commands.feature.feature.group
-	org.polarsys.kitalpha.model.common.scrutiny.feature.feature.group
-	org.polarsys.kitalpha.model.common.share.feature.feature.group
-	org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.feature.group
-	org.polarsys.kitalpha.model.detachment.feature.feature.group
-	org.polarsys.kitalpha.model.detachment.ui.feature.feature.group
-	org.polarsys.kitalpha.patterns.feature.feature.group
-	org.polarsys.kitalpha.report.feature.feature.group
-	org.polarsys.kitalpha.report.ui.feature.feature.group
-	org.polarsys.kitalpha.transposer.feature.feature.group
+	org.polarsys.kitalpha.ad.runtime.feature.feature.group lazy
+	org.polarsys.kitalpha.cadence.feature.feature.group lazy
+	org.polarsys.kitalpha.common.feature.feature.group lazy
+	org.polarsys.kitalpha.emde.feature.feature.group lazy
+	org.polarsys.kitalpha.emde.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.model.common.commands.feature.feature.group lazy
+	org.polarsys.kitalpha.model.common.scrutiny.feature.feature.group lazy
+	org.polarsys.kitalpha.model.common.share.feature.feature.group lazy
+	org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.feature.group lazy
+	org.polarsys.kitalpha.model.detachment.feature.feature.group lazy
+	org.polarsys.kitalpha.model.detachment.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.patterns.feature.feature.group lazy
+	org.polarsys.kitalpha.report.feature.feature.group lazy
+	org.polarsys.kitalpha.report.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.transposer.feature.feature.group lazy
 }
 
 location "http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site" {
