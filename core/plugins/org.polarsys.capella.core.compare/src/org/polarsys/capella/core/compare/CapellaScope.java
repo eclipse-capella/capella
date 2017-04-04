@@ -212,7 +212,7 @@ public class CapellaScope extends SiriusScope {
   }
   
   /**
-   * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusScope#getCrossReferencesInScope(org.eclipse.emf.ecore.EObject)
+   * @see org.eclipse.emf.diffmerge.sirius.SiriusScope#getCrossReferencesInScope(org.eclipse.emf.ecore.EObject)
    */
   @Override
   protected Collection<EReference> getCrossReferencesInScope(EObject element) {
