@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.projection.scenario.esf2esb.rules;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
@@ -68,6 +69,7 @@ public class Rule_Message extends CommonRule {
         InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END, transfo_p);
     TigerRelationshipHelper.attachIemeWithIeme(element_p, getTargetType(), InteractionPackage.Literals.MESSAGE_END,
         InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END, transfo_p);
+    TigerRelationshipHelper.attachTransformedRelatedElements(element_p, InteractionPackage.Literals.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT, transfo_p);
     TigerRelationshipHelper.attachUnattachedIntoTransformedContainer(element_p, getTargetType(), InteractionPackage.Literals.SCENARIO__OWNED_MESSAGES,
         transfo_p);
 
@@ -86,4 +88,11 @@ public class Rule_Message extends CommonRule {
     return InteractionFactory.eINSTANCE.createSequenceMessage();
   }
 
+  @Override
+  protected void doGoDeep(EObject element_p, List<EObject> result_p) {
+
+    SequenceMessage s = (SequenceMessage) element_p;
+
+    result_p.add(s.getExchangeContext());
+  }
 }

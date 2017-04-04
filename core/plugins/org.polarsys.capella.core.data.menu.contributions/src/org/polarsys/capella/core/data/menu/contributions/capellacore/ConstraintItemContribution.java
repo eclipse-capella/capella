@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,30 +31,33 @@ public class ConstraintItemContribution implements IMDEMenuItemContribution {
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
   @Override
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
-    return !feature_p.equals(ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_PRECONDITION)
-      && !feature_p.equals(ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_POSTCONDITION);
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
+    return !feature.equals(ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_PRECONDITION)
+        && !feature.equals(ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_POSTCONDITION);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
   @Override
-  public Command executionContribution(EditingDomain editingDomain_p, ModelElement containerElement_p,final ModelElement createdElement_p, EStructuralFeature feature_p) {
-    return new RecordingCommand((TransactionalEditingDomain) editingDomain_p) {
+  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement,
+      final ModelElement createdElement, EStructuralFeature feature) {
+    return new RecordingCommand((TransactionalEditingDomain) editingDomain) {
       @Override
       protected void doExecute() {
-        ((Constraint)createdElement_p).setName(""); //$NON-NLS-1$
-        final OpaqueExpression oe = DatavalueFactory.eINSTANCE.createOpaqueExpression();
-        ((Constraint)createdElement_p).setOwnedSpecification(oe);
-        Command opaqueExpressionContribution = CreationHelper.getContributorsCommand(oe, createdElement_p, oe.eClass(), oe.eContainingFeature());
-        if (opaqueExpressionContribution.canExecute()){
-          opaqueExpressionContribution.execute();
+        ((Constraint) createdElement).setName(""); //$NON-NLS-1$
+        if (((Constraint) createdElement).getOwnedSpecification() == null) {
+          final OpaqueExpression oe = DatavalueFactory.eINSTANCE.createOpaqueExpression();
+          ((Constraint) createdElement).setOwnedSpecification(oe);
+          Command opaqueExpressionContribution = CreationHelper.getContributorsCommand(oe, createdElement, oe.eClass(),
+              oe.eContainingFeature());
+          if (opaqueExpressionContribution.canExecute()) {
+            opaqueExpressionContribution.execute();
+          }
         }
       }
     };
   }
-
 
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#getMetaclass()

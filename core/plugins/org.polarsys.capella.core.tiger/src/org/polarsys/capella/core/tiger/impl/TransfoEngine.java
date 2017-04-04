@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -453,7 +453,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
     if (targetElement != null) { // Allow transformation one to nothing
 
       if (targetElement.eResource() == null) {
-        getHoldingResource(_transfo).getContents().add(targetElement);
+        HoldingResourceHelper.attachToHoldingResource(targetElement, getHoldingResource(_transfo));
       }
 
       _transformedElements.add(targetElement);
@@ -462,7 +462,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
       AbstractTrace newLink = TigerRelationshipHelper.createTransfoLink(sourceElement, targetElement, _transfo);
       if (newLink != null) {
         if (newLink.eContainer() == null) {
-          getHoldingResource(_transfo).getContents().add(newLink);
+          HoldingResourceHelper.attachToHoldingResource(newLink, getHoldingResource(_transfo));
         }
         List<AbstractTrace> links = (List<AbstractTrace>) _transfo.get(NEW_LINKS);
         links.add(newLink);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -373,7 +373,7 @@ public abstract class AbstractCommonRule extends TransfoRule implements IRuleTra
       for (EObject res : result) {
         EObject transformed = res;
         if (res.eResource() == null) {
-          getHoldingResource(_transfo).getContents().add(res);
+          HoldingResourceHelper.attachToHoldingResource(res, getHoldingResource(_transfo));
         }
 
         String sourceText = EObjectLabelProviderHelper.getText(element_p);
