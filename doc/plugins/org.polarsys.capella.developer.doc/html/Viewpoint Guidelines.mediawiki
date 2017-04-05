@@ -4,6 +4,14 @@ To avoid performance issues, some guidelines must be followed.
 
 == Diagram extensions ==
 
+=== Expressions in .odesigns ===
+For performance reasons, when writing expressions in .odesigns it is recommended to:
+<ul>
+<li>Use Java services,</li>
+<li>Use AQL expressions,</li>
+<li>Not use Acceleo 2 expressions (Acceleo 2 is deprecated).</li>
+</ul> 
+
 === Semantic Candidate Expression ===
 This expression called at each diagram refresh should be the most efficient possible. It can be computed based on the displayed graphical elements using the variable *diagram*. When 'Import Mapping' are used, please ensure that semantic candidate expression has been updated accordingly to the semantic candidate expression of the imported mapping
 

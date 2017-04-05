@@ -276,8 +276,10 @@
 		<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html#Clear_Progress_Status_on_Elements" label="Clear Progress Status on Elements"></topic>
 		<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html#Visualization_of_Progress_Monitoring_Information" label="Visualization of Progress Monitoring Information"></topic>
 	</topic>
- <topic label="Acceleo Queries">
-    <topic href="html/12. Model Analysis/12.5 Acceleo Queries.html" label="Acceleo Queries">
+ <topic label="Model Queries">
+    <topic href="html/12. Model Analysis/12.5.1 AQL Queries.html" label="AQL Queries">
+    </topic>
+    <topic href="html/12. Model Analysis/12.5.2 Acceleo 2 Queries.html" label="Acceleo 2 Queries">
     </topic>
  </topic>
       <anchor id="Model Analysis"/>

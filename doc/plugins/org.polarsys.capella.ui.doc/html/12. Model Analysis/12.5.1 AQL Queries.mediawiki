@@ -1,0 +1,15 @@
+= Interpreter View and AQL queries =
+== Interpreter View ==
+Using the Interpreter view, you can write and evaluate queries on model elements using the AQL languages.
+
+[[Image:Images/12_5_Interpreter_View.png|746x318px]]
+ 
+<br>
+The Interpreter view supports content assist to help you write queries (Ctrl + space). 
+<br>
+
+== AQL ==
+AQL is a language used to navigate and query an EMF model.
+
+For more information about AQL, have a look at the dedicated documentation (http://www.eclipse.org/acceleo/documentation/).
+
