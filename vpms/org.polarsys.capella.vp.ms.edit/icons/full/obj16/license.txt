@@ -1,0 +1,15 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/full/obj16/AndOperation.gif          - org.polarsys.capella.vp.ms.edit   - org.polarsys.capella.vp.ms.edit/icons/full/obj16/AndOperation.gif         
+/icons/full/obj16/BooleanOperation.gif      - org.polarsys.capella.vp.ms.edit   - org.polarsys.capella.vp.ms.edit/icons/full/obj16/BooleanOperation.gif     
+/icons/full/obj16/CSConfiguration.gif       - org.polarsys.capella.vp.ms.edit   - org.polarsys.capella.vp.ms.edit/icons/full/obj16/CSConfiguration.gif      
+/icons/full/obj16/FSMType.gif               - org.polarsys.capella.vp.ms.edit   - org.polarsys.capella.vp.ms.edit/icons/full/obj16/FSMType.gif              
+/icons/full/obj16/InSituationExpression.gif - org.polarsys.capella.vp.ms.edit   - org.polarsys.capella.vp.ms.edit/icons/full/obj16/InSituationExpression.gif
+/icons/full/obj16/InStateExpression.gif     - org.polarsys.capella.vp.ms.edit   - org.polarsys.capella.vp.ms.edit/icons/full/obj16/InStateExpression.gif    
+/icons/full/obj16/NotOperation.gif          - org.polarsys.capella.vp.ms.edit   - org.polarsys.capella.vp.ms.edit/icons/full/obj16/NotOperation.gif         
+/icons/full/obj16/OrOperation.gif           - org.polarsys.capella.vp.ms.edit   - org.polarsys.capella.vp.ms.edit/icons/full/obj16/OrOperation.gif          
+/icons/full/obj16/Situation.gif             - org.polarsys.capella.vp.ms.edit   - org.polarsys.capella.vp.ms.edit/icons/full/obj16/Situation.gif            

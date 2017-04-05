@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+
+
+<!--
+    Copyright (c) 2017 THALES GLOBAL SERVICES.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+      
+    Contributors:
+       Thales - initial API and implementation
+ -->
+
+<plugin>
+
+   
+<!--@generated-->
+  <extension point="org.eclipse.emf.ecore.generated_package">
+      <package class="org.polarsys.capella.vp.ms.MsPackage" genModel="models/ms.genmodel" uri="http://www.polarsys.org/capella/ms"/>
+   </extension>
+
+
+<!--@generated-->
+  <extension point="org.polarsys.capella.common.model.helpers.helper">
+    <helperImpl class="org.polarsys.capella.vp.ms.helpers.MsPackageHelper" nsURI="http://www.polarsys.org/capella/ms"/>
+  </extension>
+</plugin>

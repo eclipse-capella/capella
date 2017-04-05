@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+    Copyright (c) 2017 THALES GLOBAL SERVICES.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+      
+    Contributors:
+       Thales - initial API and implementation
+ -->
+
+<plugin>
+ 
+  <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+    <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
+        <propertySection class="org.polarsys.capella.vp.ms.ui.properties.CSConfigurationSection" id="org.polarsys.capella.vp.ms.ui.properties.CSConfigurationSection" tab="Base">
+            <input type="org.polarsys.capella.vp.ms.CSConfiguration"/>
+        </propertySection>
+        <propertySection
+              class="org.polarsys.capella.vp.ms.ui.properties.SituationSection"
+              id="org.polarsys.capella.vp.ms.ui.properties.SituationSection"
+              tab="Base">
+           <input
+                 type="org.polarsys.capella.vp.ms.Situation">
+           </input>
+        </propertySection>
+        <propertySection
+              class="org.polarsys.capella.vp.ms.ui.properties.BooleanOperationSection"
+              id="org.polarsys.capella.vp.ms.ui.properties.BooleanOperationSection"
+              tab="Base">
+           <input
+                 type="org.polarsys.capella.vp.ms.BooleanOperation">
+           </input>
+        </propertySection>
+</propertySections>
+    </extension>
+
+
+  <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+    <propertySections contributorId="org.eclipse.sirius.diagram.ui">
+        <propertySection
+              class="org.polarsys.capella.vp.ms.ui.properties.CSConfigurationSection"
+              filter="org.polarsys.capella.vp.ms.ui.properties.CSConfigurationSection"
+              id="org.polarsys.capella.vp.ms.ui.properties.CSConfigurationSection"
+              tab="Base"/>
+       
+</propertySections>
+    </extension>
+  <extension
+        point="org.polarsys.capella.common.menu.dynamic.MDEMenuItemContribution">
+     <MDEMenuItemContribution
+           class="org.polarsys.capella.vp.ms.ui.CorrectConfigurationName"
+           id="org.polarsys.capella.vp.ms.ui.CorrectConfigurationName">
+     </MDEMenuItemContribution>
+  </extension>
+  <extension
+        point="org.eclipse.ui.menus">
+     <menuContribution
+           allPopups="false"
+           locationURI="popup:org.eclipse.sirius.table.ui.CrossTableEditorID?after=additions">
+        <dynamic
+              class="org.polarsys.capella.vp.ms.ui.ConfigurationContentFilter"
+              id="org.polarsys.capella.vp.ms.ui.configurationContentFilter">
+        </dynamic>
+     </menuContribution>
+     <menuContribution
+           allPopups="false"
+           class="org.polarsys.capella.vp.ms.ui.MsUITabbarContributionFactory"
+           locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=additions">
+     </menuContribution>
+  </extension>
+  <extension
+        point="org.polarsys.capella.common.ef.editingDomainListener">
+     <editingDomainListener
+           class="org.polarsys.capella.vp.ms.ui.CSConfigurationListener">
+     </editingDomainListener>
+  </extension>
+  <extension
+        point="org.eclipse.ui.preferencePages">
+     <page
+           category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+           class="org.polarsys.capella.vp.ms.ui.MsPreferencePage"
+           id="org.polarsys.capella.vp.ms.ui.preferencePage"
+           name="Modes and States Preferences">
+     </page>
+  </extension>
+  <extension
+        point="org.eclipse.core.runtime.preferences">
+     <initializer
+           class="org.polarsys.capella.vp.ms.ui.MsPreferencePage$Initializer">
+     </initializer>
+  </extension>
+  <extension
+        point="org.polarsys.capella.common.ui.toolkit.browser.contentProviderCategory">
+     <category
+           id="org.polarsys.capella.vp.ms.ui.CSConfiguration.Elements"
+           isTopLevel="true"
+           name="Elements">
+        <availableForType
+              class="org.polarsys.capella.vp.ms.CSConfiguration">
+        </availableForType>
+        <targetBrowserId
+              id="ReferencedElementBrowser">
+        </targetBrowserId>
+        <categoryQuery>
+           <basicQuery
+                 class="org.polarsys.capella.vp.ms.ui.contextual.MsContextualQueries$Elements">
+           </basicQuery>
+        </categoryQuery>
+     </category>
+     <category
+           id="org.polarsys.capella.vp.ms.ui.ModelElement.Configurations"
+           isTopLevel="true"
+           name="Configurations">
+        <availableForType
+              class="org.polarsys.capella.common.data.modellingcore.ModelElement">
+        </availableForType>
+        <targetBrowserId
+              id="ReferencingElementBrowser">
+        </targetBrowserId>
+        <categoryQuery>
+           <basicQuery
+                 class="org.polarsys.capella.vp.ms.ui.contextual.MsContextualQueries$ElementsInverse">
+           </basicQuery>
+        </categoryQuery>
+     </category>
+     <category
+           id="org.polarsys.capella.vp.ms.ui.Configuration.Modes"
+           isTopLevel="true"
+           name="Modes">
+        <targetBrowserId
+              id="ReferencedElementBrowser">
+        </targetBrowserId>
+        <availableForType
+              class="org.polarsys.capella.vp.ms.CSConfiguration">
+        </availableForType>
+        <categoryQuery>
+           <basicQuery
+                 class="org.polarsys.capella.vp.ms.ui.contextual.MsContextualQueries$Modes"></basicQuery>
+        </categoryQuery>
+     </category>
+     <category
+           id="org.polarsys.capella.vp.ms.ui.AbstractState.Configurations"
+           isTopLevel="true"
+           name="Configurations">
+        <availableForType
+              class="org.polarsys.capella.core.data.capellacommon.AbstractState">
+        </availableForType>
+        <targetBrowserId
+              id="ReferencingElementBrowser">
+        </targetBrowserId>
+        <categoryQuery>
+           <basicQuery
+                 class="org.polarsys.capella.vp.ms.ui.contextual.MsContextualQueries$ModesInverse">
+           </basicQuery>
+        </categoryQuery>
+     </category>
+     <category
+           id="org.polarsys.capella.vp.ms.ui.Configuration.Context"
+           isTopLevel="true"
+           name="Context">
+        <availableForType
+              class="org.polarsys.capella.vp.ms.CSConfiguration">
+        </availableForType>
+        <targetBrowserId
+              id="ReferencedElementBrowser">
+        </targetBrowserId>
+        <categoryQuery>
+           <basicQuery
+                 class="org.polarsys.capella.vp.ms.ui.contextual.MsContextualQueries$Context">
+           </basicQuery>
+        </categoryQuery>
+     </category>
+     <category
+           id="org.polarsys.capella.vp.ms.ui.Situation.Configurations"
+           isTopLevel="true"
+           name="Configurations">
+        <availableForType
+              class="org.polarsys.capella.vp.ms.Situation">
+        </availableForType>
+        <targetBrowserId
+              id="ReferencingElementBrowser">
+        </targetBrowserId>
+        <categoryQuery>
+           <basicQuery
+                 class="org.polarsys.capella.vp.ms.ui.contextual.MsContextualQueries$ContextInverse">
+           </basicQuery>
+        </categoryQuery>
+     </category>
+     
+  </extension>
+
+</plugin>

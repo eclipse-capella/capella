@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<generationChain:GenerationChain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CapellaExtension="http://www.polarsys.org/capella/extension/genchain/0.8.0" xmlns:generationChain="http://www.eclipse.org/egf/1.0.0/generationChain" name="ms" factoryComponentName="org.polarsys.capella.vp.ms">
+  <elements xsi:type="generationChain:GenerationChain" name="ms">
+    <elements xsi:type="CapellaExtension:CapellaEmfGeneration" name="Capella Emf Generation for ms" modelPath="/org.polarsys.capella.vp.ms/models/ms.ecore" generateModel="true" generateEdit="true" pluginName="org.polarsys.capella.vp.ms.model" basePackage="org.polarsys.capella.vp.ms"/>
+  </elements>
+</generationChain:GenerationChain>

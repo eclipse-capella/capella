@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+
+<!--
+    Copyright (c) 2017 THALES GLOBAL SERVICES.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+      
+    Contributors:
+       Thales - initial API and implementation
+ -->
+
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="ms.design.Activator"
+               id="ms.design"
+	       name="ms">
+    </component>
+  </extension>
+  <extension
+        point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+     <paletteProvider
+           class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+        <Priority
+              name="Highest">
+        </Priority>
+        <contribution>
+        <predefinedEntry
+                 id="standardGroup/zoomInTool"            
+                 remove="true">
+           </predefinedEntry>
+           <predefinedEntry
+                 id="standardGroup/noteStack/textTool"                 
+                 remove="true">
+           </predefinedEntry>
+           <predefinedEntry
+                 id="standardGroup/noteStack/noteTool"
+                 remove="true">
+           </predefinedEntry>
+           <predefinedEntry
+                 id="Classes/DataPkg"
+                 remove="true">
+           </predefinedEntry>
+
+
+        </contribution>
+        <editor
+              id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
+        </editor>
+     </paletteProvider>
+  </extension>
+</plugin>
