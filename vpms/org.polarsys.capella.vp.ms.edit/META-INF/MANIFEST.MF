@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.vp.ms.edit;singleton:=true
+Bundle-Version: 0.6.1.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: org.polarsys.capella.vp.ms.provider.MsEditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.polarsys.capella.vp.ms.provider
+Require-Bundle: org.eclipse.core.runtime,
+ org.polarsys.capella.vp.ms;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport,
+ org.polarsys.capella.core.data.gen.edit,
+ com.google.guava
+Bundle-ActivationPolicy: lazy

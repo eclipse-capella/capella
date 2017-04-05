@@ -1,0 +1,9 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+icons/full/ctool16/CreateExtensibleElement_ownedExtensions_CSConfiguration.gif - org.polarsys.capella.vp.ms.edit - org.polarsys.capella.vp.ms.edit/icons/full/ctool16/CreateExtensibleElement_ownedExtensions_CSConfiguration.gif
+icons/full/ctool16/CreateExtensibleElement_ownedExtensions_FSMType.gif         - org.polarsys.capella.vp.ms.edit - org.polarsys.capella.vp.ms.edit/icons/full/ctool16/CreateExtensibleElement_ownedExtensions_FSMType.gif
+icons/full/ctool16/CreateExtensibleElement_ownedExtensions_Situation.gif       - org.polarsys.capella.vp.ms.edit - org.polarsys.capella.vp.ms.edit/icons/full/ctool16/CreateExtensibleElement_ownedExtensions_Situation.gif

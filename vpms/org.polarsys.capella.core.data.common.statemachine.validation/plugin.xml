@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<!--
+    Copyright (c) 2017 THALES GLOBAL SERVICES.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+      
+    Contributors:
+       Thales - initial API and implementation
+ -->
+
+<plugin>
+<extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/fa/1.1.0">
+         </package>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/common/1.1.0">
+         </package>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/interaction/1.1.0">
+         </package>
+         <constraints
+               categories="capella.category/design/well-formedness/state_machines">
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_State_Mode_InTransition"
+                  id="DWF_SM_16"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_16 - A Mode/State has at least one incoming transition."
+                  severity="ERROR"
+                  statusCode="1">
+               <target
+                     class="State">
+               </target>
+               <description>
+                  When designing an FSM, it is important that all Mode/State has at least one incoming transition. In fact, if no such transition exists, the Mode/State is said unreachable.
+               </description>
+               <message>
+                  The {1}&quot;{0}&quot; is unreachable. At least one incoming transition should exist for this {1}.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Fork_OutTransition"
+                  id="DWF_SM_17"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_17 - There exists at least two outgoing transition from a Fork Pseudo-State."
+                  severity="ERROR"
+                  statusCode="1">
+               <target
+                     class="ForkPseudoState">
+               </target>
+               <description>
+                  A Fork Pseudo-State serves to split an incoming transition into two or more transitions.
+               </description>
+               <message>
+                  The Fork&quot;{0}&quot; has less than two outgoing transitions. At least two outgoing transitions should exist for this Fork.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Join_InTransition"
+                  id="DWF_SM_18"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_18 - There exists at least two incoming transition to a Join Pseudo-State."
+                  severity="ERROR"
+                  statusCode="1">
+               <target
+                     class="JoinPseudoState">
+               </target>
+               <description>
+                  A Join Pseudo-State serves to merge several transitions.
+               </description>
+               <message>
+                  The Join&quot;{0}&quot; has less than two incoming transitions. At least two incoming transitions should exist for this Join.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Region_Initial"
+                  id="DWF_SM_19"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_19 - Into a region, there exists no more than one Initial Pseudo-State."
+                  severity="ERROR"
+                  statusCode="1">
+               <target
+                     class="Region">
+               </target>
+               <description>
+                  There is no more than one Initial Pseudo-State into a Region.
+               </description>
+               <message>
+                  The Region&quot;{0}&quot; has more than one Initial Pseudo-State. In a region, should exist at most one Initial Pseudo-State.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Initial_OutTransitionMin"
+                  id="DWF_SM_20"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_20 - There exists at least one transition starting from an Initial Pseudo-State."
+                  severity="ERROR"
+                  statusCode="1">
+               <target
+                     class="InitialPseudoState">
+               </target>
+               <description>
+                  Into a region with an Initial Pseudo-State, there exists at least one transition starting from this Initial Pseudo-State.
+               </description>
+               <message>
+                  The Initial Pseudo-State &quot;{0}&quot; has no outgoing transition. At least one outgoing transition should exist for this Initial Pseudo-State.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Initial_OutTransitionMax"
+                  id="DWF_SM_21"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_21 - There exists at most one transition starting from an Initial Pseudo-State."
+                  severity="ERROR"
+                  statusCode="1">
+               <target
+                     class="InitialPseudoState">
+               </target>
+               <description>
+                  Into a region with an Initial Pseudo-State, there exists at most one transition starting from this Initial Pseudo-State.
+               </description>
+               <message>
+                  The Initial Pseudo-State&quot;{0}&quot; has more than one outgoing transition. The Initial Pseudo-State should have at most one outgoing transition.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_PseudoState_OutTransitionTrigger"
+                  id="DWF_SM_22"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_22 - Outgoing transitions of a Pseudo-State should not have a trigger."
+                  severity="ERROR"
+                  statusCode="1">
+               <target
+                     class="Pseudostate">
+               </target>
+               <description>
+                  Outgoing transitions of a Pseudo-State should not have a trigger.
+               </description>
+               <message>
+                  The Pseudo-State&quot;{0}&quot; has one or more outgoing transitions that have trigger. Outgoing transitions of a Pseudo-State should not have a trigger.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Choice_OutTransitionMin"
+                  id="DWF_SM_23"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_23 - There exists at least two outgoing transition from a Choice Pseudo-State."
+                  severity="ERROR"
+                  statusCode="1">
+               <target
+                     class="ChoicePseudoState">
+               </target>
+               <description>
+                  There exists at least two outgoing transition from a Choice Pseudo-State.
+               </description>
+               <message>
+                  The Choice Pseudo-State &quot;{0}&quot; has less than two outgoing transitions. At least two outgoing transitions should exist for this Choice.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Fork_OutTransitionGuard"
+                  id="DWF_SM_24"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_24 - Outgoing transitions from a Fork Pseudo-State should not have Guard."
+                  severity="ERROR"
+                  statusCode="1">
+               <target
+                     class="ForkPseudoState">
+               </target>
+               <description>
+                  Outgoing transitions from a Fork Pseudo-State should not have Guard.
+               </description>
+               <message>
+                  The Fork Pseudo-State&quot;{0}&quot; has one or more outgoing transitions that have Guard. Outgoing transitions of a Fork Pseudo-State should not have a Guard.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Join_InTransitionGuard"
+                  id="DWF_SM_25"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_25 - Incoming transitions to a Join Pseudo-State should not have Guard."
+                  severity="ERROR"
+                  statusCode="1">
+               <target
+                     class="JoinPseudoState">
+               </target>
+               <description>
+                  Incoming transitions to a Join Pseudo-State should not have Guard.
+               </description>
+               <message>
+                  The Join Pseudo-State&quot;{0}&quot; has one or more incoming transitions that have Guard. Incoming transitions of a Join Pseudo-State should not have a Guard.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Initial_OutTransitionGuard"
+                  id="DWF_SM_26"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_26 - Transitions starting from Initial Pseudo-States cannot have Guard."
+                  severity="ERROR"
+                  statusCode="1">
+               <target
+                     class="InitialPseudoState">
+               </target>
+               <description>
+                  Transitions starting from Initial Pseudo-States cannot have Guard.
+               </description>
+               <message>
+                  The Initial Pseudo-State&quot;{0}&quot; has an outgoing transition that have Guard. Outgoing transition of an Initial Pseudo-State should not have a Guard.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_State_Inclusions"
+                  id="DWF_SM_27"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_27 - Limit the number of inclusions of M/Ss into M/Ss to 3 levels."
+                  severity="WARNING"
+                  statusCode="1">
+               <target
+                     class="State">
+               </target>
+               <description>
+                  Limit the number of inclusions of M/Ss into M/Ss to 3 levels.
+               </description>
+               <message>
+                  The State &quot;{0}&quot; is in the level &quot;{1}&quot; of inclusions. The number of inclusions of M/Ss into M/Ss is limited to 3 levels.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_State_Mode_OutTransition"
+                  id="DWF_SM_28"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_28 - A Mode/State has at least one outgoing transition."
+                  severity="WARNING"
+                  statusCode="1">
+               <target
+                     class="State">
+               </target>
+               <description>
+                  When designing an FSM, it is important that all Mode/State have at least one outgoing transition. In fact, if no such transition exists, the Mode/State is said blocking state.
+               </description>
+               <message>
+                  The {1}&quot;{0}&quot; is a blocking {1}. At least one outgoing transition should exist for this {1}.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Join_InTransitionTrigger"
+                  id="DWF_SM_29"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_29 - Incoming transitions to a Join Pseudo-State should not have Trigger."
+                  severity="ERROR"
+                  statusCode="1">
+               <target
+                     class="JoinPseudoState">
+               </target>
+               <description>
+                  Incoming transitions to a Join Pseudo-State should not have Trigger.
+               </description>
+               <message>
+                  The Join Pseudo-State&quot;{0}&quot; has one or more incoming transitions that have Trigger. Incoming transitions of a Join Pseudo-State should not have a Trigger.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Region_Initial_Least"
+                  id="DWF_SM_30"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_30 - Into a region, there exists at least one Initial Pseudo-State."
+                  severity="WARNING"
+                  statusCode="1">
+               <target
+                     class="Region">
+               </target>
+               <description>
+                  There is at least one one Initial Pseudo-State into a Region.
+               </description>
+               <message>
+                  The Region&quot;{0}&quot; has no Initial Pseudo-State. In a region, should exist at least one Initial Pseudo-State.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Function_AvailableIn"
+                  id="DWF_SM_31"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_31 - At least one M/S of the component FSMs has this function set as available."
+                  severity="WARNING"
+                  statusCode="1">
+               <target
+                     class="AbstractFunction:http://www.polarsys.org/capella/core/fa/1.0.0">
+               </target>
+               <description>
+                  Let consider a function allocated to a component. If an FSM is linked to this component, then at least one M/S of this FSM has this function set as available.
+               </description>
+               <message>
+                  The Function &quot;{0}&quot; is allocated to the Component &quot;{1}&quot;. No M/S has this function set as available in the FSMs attached to this Component.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_State_DoActivity_AvailableFunction"
+                  id="DWF_SM_32"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_32 - The function involved by the ‘do activity’ of the M/S has to be available in this M/S or in the M/S of the higher level (if existing)."
+                  severity="WARNING"
+                  statusCode="1">
+               <target
+                     class="State:http://www.polarsys.org/capella/core/common/1.0.0">
+               </target>
+               <description>
+                  The function involved by the ‘do activity’ of the M/S has to be available in this M/S or in the M/S of the higher level (if existing).
+               </description>
+               <message>
+                  The Function &quot;{1}&quot; is involved by the &quot;do activity&quot; of the State &quot;{0}&quot;, this Function has to be available in this State or in the State of the higher level (if existing).
+               </message>
+            </constraint>
+                        <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_FunctionalChain_AllocatedFunction"
+                  id="DWF_SM_33"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_33 - All functions of a ‘functional chain’ should be allocated to a component if this functional chain is set available into a M/S of a FSM linked to this component."
+                  severity="WARNING"
+                  statusCode="1">
+                           <target
+                                 class="FunctionalChain">
+                           </target>
+               <description>
+                  A functional chain can be set available into a M/S of an FSM linked to a component, only if all functions of this functional chains are allocated to this component.
+                  
+               </description>
+               <message>
+                  The functional chain ‘{0}’ is set available into a M/S of a FSM linked to the component {1}, all functions of this functional chain ‘{0}’ should be allocated to this component {1}.
+                  
+               </message>
+            </constraint>
+                        <constraint
+                              class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_InstanceRole_Component_FSM"
+                              id="DWF_SM_34"
+                              isEnabledByDefault="true"
+                              lang="Java"
+                              mode="Batch"
+                              name="DWF_SM_34 - The first element into the lifeline of a component should be a M/S if at least one FSM is linked to this component."
+                              severity="WARNING"
+                              statusCode="1">
+                           <target
+                                 class="InstanceRole">
+                           </target>
+                           <description>
+                              Within an exchange scenario, for the lifeline of a component for which an FSM is linked, one of the following is required:
+-	Either the first object put into this lifeline is a M/S (of this FSM).
+-	Or the diagram’s pre-condition defines the first M/S of the considered lifeline.
+                           </description>
+                           <message>
+                              The first element into the lifeline ‘{0}’ of the component ‘{1}’ is not a M/S. This first element should be a M/S or the diagram’s pre-condition defines the first M/S of this lifeline.
+                           </message>
+                        </constraint>
+                        <constraint
+                              class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_InstanceRole_StateState_FSM"
+                              id="DWF_SM_35"
+                              isEnabledByDefault="true"
+                              lang="Java"
+                              mode="Batch"
+                              name="DWF_SM_35 - Between two consecutive M/Ss placed on a lifeline, there exists a path of transitions between these M/Ss."
+                              severity="ERROR"
+                              statusCode="1">
+                           <target
+                                 class="InstanceRole">
+                           </target>
+                           <description>
+                              Within an exchange scenario, between two consecutive M/Ss placed on a lifeline, there exists a path of transitions between these M/Ss.
+                           </description>
+                           <message>
+                              Between the consecutive M/Ss ‘{0}’ and ‘{1}’ placed on the lifeline ‘{2}’, there exists no path of transitions.
+                           </message>
+                        </constraint>
+                        <constraint
+                              class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_InstanceRole_StateState_FunctionalExchange_FSM"
+                              id="DWF_SM_36"
+                              isEnabledByDefault="true"
+                              lang="Java"
+                              mode="Batch"
+                              name="DWF_SM_36 - The functional exchange trigger of two consecutive M/Ss has to be added between these two M/Ss in the lifeline."
+                              severity="WARNING"
+                              statusCode="1">
+                           <target
+                                 class="InstanceRole">
+                           </target>
+                           <description>
+                              Within an exchange scenario, let consider two consecutive M/Ss put in a lifeline with an existing transition triggered by a functional exchange; if the lifeline of the architectural part (i.e.: another component or an actor), for which the function starting the functional exchange, is present into the exchange scenario; this functional exchange has to be added between these two M/Ss.
+                           </description>
+                           <message>
+                              The functional exchange ‘{2}’ trigger a transition between the consecutive M/Ss ‘{0}’ and ‘{1}’ has to be added between these two M/Ss in the lifeline.
+                           </message>
+                        </constraint>
+                        <constraint
+                              class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Fork_TargetState_Region_Fork"
+                              id="DWF_SM_38"
+                              isEnabledByDefault="true"
+                              lang="Java"
+                              mode="Batch"
+                              name="DWF_SM_38 - Target M/Ss of outgoing transitions from a Fork Pseudo-State must have to be in a distinct region than the Fork Pseudo-State."
+                              severity="ERROR"
+                              statusCode="1">
+                           <target
+                                 class="ForkPseudoState">
+                           </target>
+                           <description>
+                              Target M/Ss of outgoing transitions from a Fork Pseudo-State must have to be in a distinct region than the Fork Pseudo-State.
+                           </description>
+                           <message>
+                              The Fork Pseudo-State ‘{0}’ has one or more target M/Ss of its outgoing transitions in the same Region than this Fork Pseudo-State. Target M/Ss of outgoing transitions from a Fork Pseudo-State must have to be in a distinct region than the Fork Pseudo-State.
+                           </message>
+                        </constraint>
+                        <constraint
+                              class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Fork_TargetState_Region"
+                              id="DWF_SM_39"
+                              isEnabledByDefault="true"
+                              lang="Java"
+                              mode="Batch"
+                              name="DWF_SM_39 - Outgoing transitions from a Fork Pseudo-State must target M/Ss into distinct regions of an orthogonal state."
+                              severity="ERROR"
+                              statusCode="1">
+                           <target
+                                 class="ForkPseudoState">
+                           </target>
+                           <description>
+                              Outgoing transitions from a Fork Pseudo-State must target M/Ss into distinct regions of an orthogonal state.
+                           </description>
+                           <message>
+                              Outgoing transitions from the Fork Pseudo-State ‘{0}’ target at least two M/Ss into the same region or into non concurrent regions. However, outgoing transitions from a Fork Pseudo-State must target M/Ss into distinct regions of an orthogonal state.
+                           </message>
+                        </constraint>
+                        <constraint
+                              class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Join_TargetState_Region_Join"
+                              id="DWF_SM_40"
+                              isEnabledByDefault="true"
+                              lang="Java"
+                              mode="Batch"
+                              name="DWF_SM_40 - Source M/Ss of incoming transitions to a Join Pseudo-State must have to be in a distinct region than the Join Pseudo-State."
+                              severity="ERROR"
+                              statusCode="1">
+                           <target
+                                 class="JoinPseudoState">
+                           </target>
+                           <description>
+                              Source M/Ss of incoming transitions to a Join Pseudo-State must have to be in a distinct region than the Join Pseudo-State.
+                           </description>
+                           <message>
+                              The Join Pseudo-State ‘{0}’ has one or more source M/Ss of its incoming transitions in the same Region than this Join Pseudo-State. Source M/Ss of incoming transitions to a Join Pseudo-State must have to be in a distinct region than the Join Pseudo-State.
+                           </message>
+                        </constraint>
+                        <constraint
+                              class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Join_SourceState_Region"
+                              id="DWF_SM_41"
+                              isEnabledByDefault="true"
+                              lang="Java"
+                              mode="Batch"
+                              name="DWF_SM_41 - Incoming transitions to a Join Pseudo-State must originate from M/Ss into different regions of an orthogonal state."
+                              severity="ERROR"
+                              statusCode="1">
+                           <target
+                                 class="JoinPseudoState">
+                           </target>
+                           <description>
+                              Incoming transitions to a Join Pseudo-State must originate from M/Ss into different regions of an orthogonal state.
+                           </description>
+                           <message>
+                              Incoming transitions to the Join Pseudo-State ‘{0}’ originate at least from two M/Ss into the same region or into non concurrent regions. However, incoming transitions to a Join Pseudo-State must originate from M/Ss into different regions of an orthogonal state.
+                           </message>
+                        </constraint>
+                        <constraint
+                              class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Final_Region"
+                              id="DWF_SM_42"
+                              isEnabledByDefault="true"
+                              lang="Java"
+                              mode="Batch"
+                              name="DWF_SM_42 - Final State should not include a Region."
+                              severity="ERROR"
+                              statusCode="1">
+                           <target
+                                 class="FinalState">
+                           </target>
+                           <description>
+                              Final State should not include a Region.
+                           </description>
+                           <message>
+                              Tha Final State ‘{0}’ include at least one region. However, a final State should not include a Region.
+                           </message>
+                        </constraint>
+                        <constraint
+                              class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_ModeMachineRegions_Configurations"
+                              id="DWF_SM_43"
+                              isEnabledByDefault="false"
+                              lang="Java"
+                              mode="Batch"
+                              name="DWF_SM_43 - Generate global modes of the system and then analyze the configurations availability."
+                              severity="WARNING"
+                              statusCode="1">
+                           <target
+                                 class="StateMachine">
+                           </target>
+                           <description>
+                              Generate global modes of the system and then analyze the configurations availability in these global modes.
+                              
+                           </description>
+                           <message>
+                              ‘{0}’ .
+                           </message>
+                        </constraint>
+            
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Mode_State"
+                  id="DWF_SM_44"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_44 - No inclusion of modes into states."
+                  severity="WARNING"
+                  statusCode="1">
+               <target
+                     class="Mode">
+               </target>
+               <description>
+                  The inclusion of modes into states is not allowed.
+               </description>
+               <message>
+                  The Mode &quot;{0}&quot; is included in the  State &quot;{1}&quot;. Inclusion of modes into states is not allowed.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_State_Mode"
+                  id="DWF_SM_45"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_45 - No inclusion of states into modes ."
+                  severity="WARNING"
+                  statusCode="1">
+               <target
+                     class="State">
+               </target>
+               <description>
+                  The inclusion of states into modes is not allowed.
+               </description>
+               <message>
+                  The State &quot;{0}&quot; is included in the  Mode &quot;{1}&quot;. Inclusion of states into modes is not allowed.
+               </message>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/design/well-formedness/components">
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalChain.FunctionalChainStateMode"
+                  id="DWF_DC_34"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_34 - Analyzing the assurance of the FunctionalChain in the States/Modes."
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <target
+                     class="FunctionalChain">
+               </target>
+               <description>
+                  Analyzing the assurance of the FunctionalChain in the States/Modes.
+                  
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalChain.StateModeFunctionalChain"
+                  id="DWF_DC_35"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_35 - Analyzing the assurance of the FunctionalChains in the State/Mode."
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <target
+                     class="State">
+               </target>
+               <description>
+                  Analyzing the assurance of the FunctionalChains in the State/Mode.
+               </description>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+
+</plugin>

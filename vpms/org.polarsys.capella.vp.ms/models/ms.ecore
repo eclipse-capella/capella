@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ms" nsURI="http://www.polarsys.org/capella/ms" nsPrefix="ms">
+  <eClassifiers xsi:type="ecore:EClass" name="CSConfiguration" eSuperTypes="../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//NamedElement platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ElementExtension">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint">
+      <details key="ExtendedElement" value=" http://www.polarsys.org/capella/core/cs/1.1.0#//Component"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping">
+      <details key="Mapping" value="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//Component"/>
+    </eAnnotations>
+    <eOperations name="includes" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="element" lowerBound="1" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ModelElement"/>
+    </eOperations>
+    <eOperations name="getScope" upperBound="-1" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ModelElement"/>
+    <eOperations name="getScope" upperBound="-1">
+      <eGenericType eTypeParameter="#//CSConfiguration/getScope.1/T"/>
+      <eTypeParameters name="T">
+        <eBounds eClassifier="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ModelElement"/>
+      </eTypeParameters>
+      <eParameters name="type">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//CSConfiguration/getScope.1/T"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supportedModes" upperBound="-1"
+        eType="ecore:EClass ../../org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#//AbstractState"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ModelElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deploymentLinks" upperBound="-1"
+        eType="ecore:EClass ../../org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//AbstractDeploymentLink"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functions" upperBound="-1"
+        eType="ecore:EClass ../../org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#//AbstractFunction"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionalChains" upperBound="-1"
+        eType="ecore:EClass ../../org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#//FunctionalChain"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
+        eType="ecore:EClass ../../org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//Component"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" upperBound="-1"
+        eType="ecore:EClass ../../org.polarsys.capella.core.data.gen/model/Information.ecore#//Port"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="childConfigurations" upperBound="-1"
+        eType="#//CSConfiguration"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//kind_Type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="access" eType="#//access_Type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selector" eType="#//selector_Type"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="context" upperBound="-1"
+        eType="#//Situation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FSMType" eSuperTypes="../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//NamedElement platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ElementExtension">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint">
+      <details key="ExtendedElement" value=" http://www.polarsys.org/capella/core/common/1.1.0#//StateMachine"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping">
+      <details key="Mapping" value=" platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#//StateMachine"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ms" eType="#//ms_Type"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Situation" eSuperTypes="../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//NamedElement platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ElementExtension">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint">
+      <details key="ExtendedElement" value=" http://www.polarsys.org/capella/core/cs/1.1.0#//Component"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping">
+      <details key="Mapping" value=" platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//Component"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//BooleanExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanExpression" abstract="true" eSuperTypes="../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//CapellaElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanOperation" abstract="true" eSuperTypes="#//BooleanExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//BooleanExpression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InStateExpression" eSuperTypes="#//BooleanExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="state" eType="ecore:EClass ../../org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#//AbstractState"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InSituationExpression" eSuperTypes="#//BooleanExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="situation" eType="#//Situation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="kind_Type">
+    <eLiterals name="component" literal="component"/>
+    <eLiterals name="system" value="1" literal="system"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="access_Type">
+    <eLiterals name="flat" literal="flat"/>
+    <eLiterals name="subcomponents" value="1" literal="subcomponents"/>
+    <eLiterals name="full" value="2" literal="full"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="selector_Type">
+    <eLiterals name="inclusion"/>
+    <eLiterals name="exclusion" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ms_Type">
+    <eLiterals name="mixed" literal="mixed"/>
+    <eLiterals name="state" value="1" literal="state"/>
+    <eLiterals name="mode" value="2" literal="mode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AndOperation" eSuperTypes="#//BooleanOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OrOperation" eSuperTypes="#//BooleanOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NotOperation" eSuperTypes="#//BooleanOperation"/>
+</ecore:EPackage>
