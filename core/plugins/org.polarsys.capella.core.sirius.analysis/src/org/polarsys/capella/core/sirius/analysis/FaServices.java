@@ -897,12 +897,8 @@ public class FaServices {
           }
         }
       }
-      if (!diagram.isSynchronized()) {
-        DiagramServices.getDiagramServices().removeEdgeView(anEdge);
-      } else {
-        DiagramServices.getDiagramServices().removeEdgeView(anEdge);
+      DiagramServices.getDiagramServices().removeEdgeView(anEdge);
       }
-    }
 
     // create exchange category views and remove functional exchange views
     for (DEdge anEdge : functionalExchangeEdgesToRemove) {

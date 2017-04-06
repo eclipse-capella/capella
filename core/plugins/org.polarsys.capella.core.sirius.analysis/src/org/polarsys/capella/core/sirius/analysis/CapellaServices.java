@@ -967,29 +967,31 @@ public class CapellaServices {
     returnedFunctions.addAll(FunctionExt.getAllAbstractFunctions(rootFunction));
     returnedFunctions.removeAll(ownedNodes);
 
-    for (DDiagramElementContainer aNodeContainer : allGraphicalContainers) {
-      List<AbstractFunction> toBeRemoved = new ArrayList<AbstractFunction>();
-      if (aNodeContainer.getTarget() instanceof AbstractFunction) {
-        returnedFunctions.remove(aNodeContainer.getTarget());
-        for (AbstractFunction anAbstractFunction : returnedFunctions) {
-          if (EcoreUtil.isAncestor(anAbstractFunction, aNodeContainer.getTarget())) {
-            toBeRemoved.add(anAbstractFunction);
-          }
-        }
-      }
-      List<DNode> ownedBorderedNodes = aNodeContainer.getOwnedBorderedNodes();
-      for (DNode aNode : aNodeContainer.getNodes()) {
-        if ((aNode.getTarget() instanceof AbstractFunction) && !ownedBorderedNodes.contains(aNode)) {
-          returnedFunctions.remove(aNode.getTarget());
+    if(allGraphicalContainers != null){
+      for (DDiagramElementContainer aNodeContainer : allGraphicalContainers) {
+        List<AbstractFunction> toBeRemoved = new ArrayList<AbstractFunction>();
+        if (aNodeContainer.getTarget() instanceof AbstractFunction) {
+          returnedFunctions.remove(aNodeContainer.getTarget());
           for (AbstractFunction anAbstractFunction : returnedFunctions) {
-            if (EcoreUtil.isAncestor(anAbstractFunction, aNode.getTarget())) {
+            if (EcoreUtil.isAncestor(anAbstractFunction, aNodeContainer.getTarget())) {
               toBeRemoved.add(anAbstractFunction);
             }
           }
         }
+        List<DNode> ownedBorderedNodes = aNodeContainer.getOwnedBorderedNodes();
+        for (DNode aNode : aNodeContainer.getNodes()) {
+          if ((aNode.getTarget() instanceof AbstractFunction) && !ownedBorderedNodes.contains(aNode)) {
+            returnedFunctions.remove(aNode.getTarget());
+            for (AbstractFunction anAbstractFunction : returnedFunctions) {
+              if (EcoreUtil.isAncestor(anAbstractFunction, aNode.getTarget())) {
+                toBeRemoved.add(anAbstractFunction);
+              }
+            }
+          }
+        }
+        returnedFunctions.removeAll(toBeRemoved);
+        toBeRemoved = null;
       }
-      returnedFunctions.removeAll(toBeRemoved);
-      toBeRemoved = null;
     }
     return returnedFunctions;
   }

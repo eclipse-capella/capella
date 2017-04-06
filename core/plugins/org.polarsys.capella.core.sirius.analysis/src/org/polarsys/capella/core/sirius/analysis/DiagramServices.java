@@ -928,7 +928,7 @@ public class DiagramServices {
       nexts.addAll(elements);
       while (nexts.size() > 0) {
         DDiagramElement next = nexts.removeFirst();
-        if (mapping == null || validMapping(mapping, next)) {
+        if (validMapping(mapping, next)) {
           return true;
         }
         nexts.addAll(getNexts(next));
@@ -1448,11 +1448,9 @@ public class DiagramServices {
       result.put(nodeMapping.getName(), nodeMapping);
       for (DiagramElementMapping mapping : nodeMapping.getAllMappings()) {
         result.put(mapping.getName(), mapping);
-        if ((mapping instanceof DiagramElementMapping)) {
-          for (DiagramElementMapping borderedMapping : ((DiagramElementMapping) mapping).getAllMappings()) {
+          for (DiagramElementMapping borderedMapping : mapping.getAllMappings()) {
             result.put(borderedMapping.getName(), borderedMapping);
           }
-        }
       }
     }
     for (final EdgeMapping edgeMapping : description_p.getAllEdgeMappings()) {

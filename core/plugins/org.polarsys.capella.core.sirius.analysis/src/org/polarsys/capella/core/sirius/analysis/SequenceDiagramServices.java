@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -280,22 +280,21 @@ public class SequenceDiagramServices {
    */
   private static void reorderInteractionFragment(InteractionFragment newPredecessor,
       InteractionFragment currentFragment) {
-	  
-    Scenario scenario = (Scenario) currentFragment.eContainer();
-    
-	int currentFragmentIndex = -1;
-	if (currentFragment != null){
-		currentFragmentIndex = scenario.getOwnedInteractionFragments().indexOf(currentFragment);
-	}		
-	int currentIndexNewPredecessor = -1;
-	if (newPredecessor != null){
-		currentIndexNewPredecessor = scenario.getOwnedInteractionFragments().indexOf(newPredecessor);
-	}			
-    //Reorder shall use move method instead of remove/add
-	if (currentFragmentIndex < currentIndexNewPredecessor) {
-    	scenario.getOwnedInteractionFragments().move(currentIndexNewPredecessor, currentFragmentIndex);
-	} else if (currentFragmentIndex > currentIndexNewPredecessor) {
-		scenario.getOwnedInteractionFragments().move(currentIndexNewPredecessor +1, currentFragmentIndex);
+
+    int currentFragmentIndex = -1;
+    if (currentFragment != null) {
+      Scenario scenario = (Scenario) currentFragment.eContainer();
+      currentFragmentIndex = scenario.getOwnedInteractionFragments().indexOf(currentFragment);
+      int currentIndexNewPredecessor = -1;
+      if (newPredecessor != null) {
+        currentIndexNewPredecessor = scenario.getOwnedInteractionFragments().indexOf(newPredecessor);
+      }
+      // Reorder shall use move method instead of remove/add
+      if (currentFragmentIndex < currentIndexNewPredecessor) {
+        scenario.getOwnedInteractionFragments().move(currentIndexNewPredecessor, currentFragmentIndex);
+      } else if (currentFragmentIndex > currentIndexNewPredecessor) {
+        scenario.getOwnedInteractionFragments().move(currentIndexNewPredecessor + 1, currentFragmentIndex);
+      }
     }
   }
 
