@@ -1,0 +1,22 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: PropertyValueUILib
+Element-Type: context
+Element-Version: 2.0
+Id: _WqfOcBYkEee-A_RTBZbvjg
+Runtime-Version: 2.0.0.201506042314
+Save-Time: 3/31/17 5:30 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+proc getButton [ val buttonName ] {
+	get-editor "Detachment " | get-button $buttonName
+}
+
+proc getTree {
+	get-editor "Detachment" | get-tree
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
