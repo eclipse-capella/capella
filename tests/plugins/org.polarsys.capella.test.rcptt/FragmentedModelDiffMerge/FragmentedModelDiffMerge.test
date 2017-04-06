@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _s0WTkLfUEea5ZpGbd-RfXw
-Runtime-Version: 2.0.2.201511100828
-Save-Time: 12/6/16 11:46 AM
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 4/6/17 11:42 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -339,7 +339,7 @@ with [get-editor "New Logical Functions - System Functions"] {
 // Compare the two models with diffmerge and merge all modified original model in the copied model
 with [get-view "Capella Project Explorer" | get-tree] {
     select "fragmentedModel/fragmentedModel.aird" | get-menu Close | click
-    select "Copy of fragmentedModel/fragmentedModel.melodymodeller" "fragmentedModel/fragmentedModel.melodymodeller"
+    select "fragmentedModel2/fragmentedModel.melodymodeller" "fragmentedModel/fragmentedModel.melodymodeller"
     get-menu "Compare With/Each Other as models" | click
 }
 get-window "EMF Diff/Merge" | get-button Finish | click
@@ -357,7 +357,7 @@ with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
     close
 }
 with [get-view "Capella Project Explorer" | get-tree] {
-    select "Copy of fragmentedModel/fragmentedModel.aird" "fragmentedModel/fragmentedModel.aird"
+    select "fragmentedModel2/fragmentedModel.aird" "fragmentedModel/fragmentedModel.aird"
     get-menu "Compare With/Each Other as models" | click
 }
 get-window "EMF Diff/Merge" | get-button Finish | click
@@ -377,7 +377,7 @@ with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
 
 // Compare again, no differences must be found
 with [get-view "Capella Project Explorer" | get-tree] {
-    select "Copy of fragmentedModel/fragmentedModel.melodymodeller" "fragmentedModel/fragmentedModel.melodymodeller"
+    select "fragmentedModel2/fragmentedModel.melodymodeller" "fragmentedModel/fragmentedModel.melodymodeller"
     get-menu "Compare With/Each Other as models" | click
 }
 get-window "EMF Diff/Merge" | get-button Finish | click
@@ -385,7 +385,7 @@ get-window Compare | get-label "There are no differences between the selected in
     | equals "There are no differences between the selected inputs." | verify-true
 get-window Compare | get-button OK | click
 with [get-view "Capella Project Explorer" | get-tree] {
-    select "Copy of fragmentedModel/fragmentedModel.aird" "fragmentedModel/fragmentedModel.aird"
+    select "fragmentedModel2/fragmentedModel.aird" "fragmentedModel/fragmentedModel.aird"
     get-menu "Compare With/Each Other as models" | click
 }
 get-window "EMF Diff/Merge" | get-button Finish | click
