@@ -56,6 +56,10 @@
 					</runner>
 					<aut>
 						<explicit>../../../releng/plugins/org.polarsys.capella.rcp.product/target/products/org.polarsys.capella.rcp.product-[platform].zip</explicit>
+						<args>
+							<arg>-autArgs</arg>
+							<arg>-EPF;${project.build.directory}/User2Prefs.epf</arg>
+						</args>
 					</aut>
 				</configuration>
 			</plugin>
