@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@ package org.polarsys.capella.core.model.handler.helpers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.TreeIterator;
@@ -23,6 +22,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
@@ -315,16 +315,16 @@ public abstract class PropertyPropagator {
         if (isTagged(current)) {
           result.add(current);
         }
-        for (Iterator<?> iter = DialectManager.INSTANCE.getRepresentations(current, session).iterator(); iter.hasNext();) {
-          currentDiagram = (EObject) iter.next();
+        for (DRepresentationDescriptor representationDesc : DialectManager.INSTANCE.getRepresentationDescriptors(current, session)) {
+          currentDiagram = representationDesc.getRepresentation();
           if (isTaggedRepresentation(currentDiagram)) {
-            result.add(currentDiagram);
+            result.add(representationDesc);
           }
         }
-        for (Iterator<?> iter = DialectManager.INSTANCE.getRepresentations(root, session).iterator(); iter.hasNext();) {
-          currentDiagram = (EObject) iter.next();
+        for (DRepresentationDescriptor representationDesc : DialectManager.INSTANCE.getRepresentationDescriptors(root, session)) {
+          currentDiagram = representationDesc.getRepresentation();
           if (isTaggedRepresentation(currentDiagram)) {
-            result.add(currentDiagram);
+            result.add(representationDesc);
           }
         }
       }

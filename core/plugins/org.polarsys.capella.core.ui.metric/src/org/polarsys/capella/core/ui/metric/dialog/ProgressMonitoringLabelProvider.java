@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.polarsys.capella.core.ui.metric.dialog;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -100,9 +101,10 @@ public class ProgressMonitoringLabelProvider extends MDEAdapterFactoryLabelProvi
           text = status.getLabel();
         }
       }
-      if (element instanceof DRepresentation) {
+      if (element instanceof DRepresentationDescriptor) {
+        DRepresentationDescriptor representationDesc = (DRepresentationDescriptor) element;
         String eAnnot = IRepresentationAnnotationConstants.ProgressStatus;
-        DAnnotation dAnnotation = RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) element);
+        DAnnotation dAnnotation = RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) representationDesc.getRepresentation());
         if (dAnnotation != null) {
           text = dAnnotation.getDetails().get("value");
         }
@@ -114,9 +116,10 @@ public class ProgressMonitoringLabelProvider extends MDEAdapterFactoryLabelProvi
           text = review;
         }
       }
-      if (element instanceof DRepresentation) {
+      if (element instanceof DRepresentationDescriptor) {
+        DRepresentationDescriptor representationDesc = (DRepresentationDescriptor) element;
         String eAnnot = IRepresentationAnnotationConstants.StatusReview;
-        DAnnotation dAnnotation = RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) element);
+        DAnnotation dAnnotation = RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) representationDesc.getRepresentation());
         if (dAnnotation != null) {
           text = dAnnotation.getDetails().get("value");
         }
