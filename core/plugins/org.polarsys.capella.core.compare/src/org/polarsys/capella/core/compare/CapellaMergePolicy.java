@@ -16,9 +16,9 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
+import org.eclipse.emf.diffmerge.sirius.SiriusMergePolicy;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.polarsys.capella.common.consonance.ui.sirius.SiriusMergePolicy;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;

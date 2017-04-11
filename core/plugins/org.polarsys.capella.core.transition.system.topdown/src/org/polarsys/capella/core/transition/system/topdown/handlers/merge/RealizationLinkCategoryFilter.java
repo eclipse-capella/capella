@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -82,11 +82,11 @@ public class RealizationLinkCategoryFilter extends CategoryFilter {
 
       if (difference instanceof IReferenceValuePresence) {
         IReferenceValuePresence ref = (IReferenceValuePresence) difference;
-        target = ref.getValue().get(Role.TARGET);
+        target = ref.getValueMatch().get(Role.TARGET);
         if (isTrace(target, context)) {
           return true;
         }
-        target = ref.getValue().get(Role.REFERENCE);
+        target = ref.getValueMatch().get(Role.REFERENCE);
         if (isTrace(target, context)) {
           return true;
         }

@@ -13,9 +13,9 @@ package org.polarsys.capella.core.compare;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.eclipse.emf.diffmerge.sirius.SiriusDiffPolicy;
 import org.eclipse.emf.ecore.EAttribute;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.common.consonance.ui.sirius.SiriusDiffPolicy;
 
 /**
  * A diff policy for Capella models.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.common.merge;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.emf.diffmerge.api.IDiffPolicy;
 import org.eclipse.emf.diffmerge.api.IMapping;
@@ -87,7 +90,7 @@ public class ExtendedComparison extends EComparisonImpl {
             // (it may not be because the opposite ref may not be covered by the diff policy)
             IMatch holderMatch = _mapping.getMatchFor(source, _sourceRole);
             if (holderMatch != null) {
-              mustCopy = holderMatch.getReferenceValueDifference(reference, valueMatch) == null;
+              mustCopy = holderMatch.getReferenceValueDifference(reference, source) == null;
             }
           }
           if (mustCopy && reference.isContainment()) {
@@ -198,7 +201,7 @@ public class ExtendedComparison extends EComparisonImpl {
         boolean checkOrder = reference.isMany() && getDiffPolicy().considerOrdered(reference);
         int maxIndex = -1;
         // Check which ones match
-        List<IMatch> isolatedTargetMatches = new FArrayList<IMatch>();
+        Map<IMatch, EObject> isolatedTargetMatches = new HashMap<IMatch, EObject>();
         for (EObject targetValue : targetValues) {
           // For every value in TARGET, get its corresponding match (if none, uncovered)
           IMatch targetValueMatch = getMapping().getMatchFor(targetValue, Role.TARGET);
@@ -215,7 +218,7 @@ public class ExtendedComparison extends EComparisonImpl {
                   // Ordering difference
                   if (!create)
                     return true;
-                  createReferenceOrderDifference(match, reference, targetValueMatch);
+                  createReferenceOrderDifference(match, reference, targetValue, targetValueMatch);
                   result = true;
                   checkOrder = false;
                 } else {
@@ -225,41 +228,45 @@ public class ExtendedComparison extends EComparisonImpl {
             }
             if (isIsolated)
               // None found or not in referenced values: mark as isolated
-              isolatedTargetMatches.add(targetValueMatch);
+              isolatedTargetMatches.put(targetValueMatch, targetValue);
             else
               remainingReferenceValues.remove(matchReference);
           }
         }
         // For every remaining value in REFERENCE, get its corresponding isolated match
         // if the value is covered
-        List<IMatch> isolatedReferenceMatches = new FArrayList<IMatch>();
+        Map<IMatch, EObject> isolatedReferenceMatches = new HashMap<IMatch, EObject>();
         for (EObject remainingReferenceValue : remainingReferenceValues) {
           IMatch referenceValueMatch = getMapping().getMatchFor(
               remainingReferenceValue, Role.REFERENCE);
           if (referenceValueMatch != null)
-            isolatedReferenceMatches.add(referenceValueMatch);      
+            isolatedReferenceMatches.put(referenceValueMatch, remainingReferenceValue);      
         }
 
         IDiffPolicy diffPolicy = getDiffPolicy();
         
         // Create differences for isolated values
-        for (IMatch isolatedTargetMatch : isolatedTargetMatches) {
+        for (Entry<IMatch, EObject> entry : isolatedTargetMatches.entrySet()) {
+          IMatch isolatedTargetMatch = entry.getKey();
+          EObject value = entry.getValue();
           if (diffPolicy instanceof IDiffPolicy2) {
             if (((IDiffPolicy2) diffPolicy).coverMatchOnReference(isolatedTargetMatch, reference)) {
-              createReferenceValueDifference(match, reference, isolatedTargetMatch, Role.TARGET, false);
+              createReferenceValueDifference(match, reference, value, isolatedTargetMatch, Role.TARGET, false);
               result = true;
             }
           } else if (diffPolicy.coverMatch(isolatedTargetMatch)) {
-            createReferenceValueDifference(match, reference, isolatedTargetMatch, Role.TARGET, false);
+            createReferenceValueDifference(match, reference, value, isolatedTargetMatch, Role.TARGET, false);
             result = true;
           }
         }
-        for (IMatch isolatedReferenceMatch : isolatedReferenceMatches) {
+        for (Entry<IMatch, EObject> entry : isolatedReferenceMatches.entrySet()) {
+          IMatch isolatedReferenceMatch = entry.getKey();
+          EObject value = entry.getValue();
           if (((IDiffPolicy2) diffPolicy).coverMatchOnReference(isolatedReferenceMatch, reference)) {
-            createReferenceValueDifference(match, reference, isolatedReferenceMatch, Role.REFERENCE, false);
+            createReferenceValueDifference(match, reference, value, isolatedReferenceMatch, Role.REFERENCE, false);
             result = true;
           } else if (diffPolicy.coverMatch(isolatedReferenceMatch)) {
-            createReferenceValueDifference(match, reference, isolatedReferenceMatch, Role.REFERENCE, false);
+            createReferenceValueDifference(match, reference, value, isolatedReferenceMatch, Role.REFERENCE, false);
             result = true;
           }
         }

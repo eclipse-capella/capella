@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.diffmerge.sirius.SiriusScope;
 import org.eclipse.emf.diffmerge.ui.EMFDiffMergeUIPlugin;
 import org.eclipse.emf.diffmerge.ui.util.MiscUtil;
 import org.eclipse.emf.ecore.EObject;
@@ -36,7 +37,6 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.bundle.FeatureHelper;
-import org.polarsys.capella.common.consonance.ui.sirius.SiriusScope;
 import org.polarsys.capella.common.libraries.LibrariesPackage;
 import org.polarsys.capella.common.libraries.LibraryReference;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;

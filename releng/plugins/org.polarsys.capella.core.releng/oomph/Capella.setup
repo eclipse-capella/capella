@@ -847,9 +847,9 @@
           <repository
               url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
           <repository
-              url="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
+              url="https://hudson.eclipse.org/diffmerge/job/emf-diffmerge-core-master/167/artifact/releng/org.eclipse.emf.diffmerge.update/target/repository"/>
           <repository
-              url="http://download.eclipse.org/diffmerge/releases/0.7.1/edm-patterns-site"/>
+              url="https://hudson.eclipse.org/diffmerge/job/emf-diffmerge-patterns-master/106/artifact/releng/org.eclipse.emf.diffmerge.patterns.update/target/repository"/>
           <repository
               url="https://hudson.polarsys.org/kitalpha/job/kitalpha-v1.1.x/269/artifact/result/publish/kitalpha_runtime/site.p2"/>
           <repository
@@ -984,7 +984,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
+              url="https://hudson.eclipse.org/diffmerge/job/emf-diffmerge-core-master/167/artifact/releng/org.eclipse.emf.diffmerge.update/target/repository"/>
         </repositoryList>
       </targlet>
       <targlet
@@ -996,7 +996,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/diffmerge/releases/0.7.1/edm-patterns-site"/>
+              url="https://hudson.eclipse.org/diffmerge/job/emf-diffmerge-patterns-master/106/artifact/releng/org.eclipse.emf.diffmerge.patterns.update/target/repository"/>
         </repositoryList>
       </targlet>
       <targlet

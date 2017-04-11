@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,14 +68,14 @@ public class RemoveRealizedCategoryFilter extends CategoryFilter {
       IReferenceValuePresence presence = (IReferenceValuePresence) difference;
 
       IMatch element = presence.getElementMatch();
-      IMatch value = presence.getValue();
+      IMatch value = presence.getValueMatch();
       EObject valueElement = value.get(Role.REFERENCE);
       if (valueElement == null) {
         return;
       }
       Collection<IReferenceValuePresence> diffs = element.getReferenceDifferences(presence.getFeature());
       for (IReferenceValuePresence diff : diffs) {
-        IMatch ei2 = diff.getValue();
+        IMatch ei2 = diff.getValueMatch();
         EObject eiTransfo2 = ei2.get(Role.TARGET);
         BlockArchitecture architecture = getSourceArchitecture(valueElement, context);
         BlockArchitecture current = BlockArchitectureExt.getRootBlockArchitecture(eiTransfo2);

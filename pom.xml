@@ -256,13 +256,11 @@
 				<packagedDropinsName>org.polarsys.capella.rcp</packagedDropinsName>
 			</properties>
 			<modules>
-				<module>common/features/org.polarsys.capella.common.compare.feature</module>
 				<module>common/features/org.polarsys.capella.common.feature</module>
 				<module>common/features/org.polarsys.capella.common.ui.feature</module>
 				<module>common/plugins/org.polarsys.capella.common</module>
 				<module>common/plugins/org.polarsys.capella.common.command.recorder.core</module>
 				<module>common/plugins/org.polarsys.capella.common.command.recorder.ui</module>
-				<module>common/plugins/org.polarsys.capella.common.consonance.ui.sirius</module>
 				<module>common/plugins/org.polarsys.capella.common.data.activity.gen</module>
 				<module>common/plugins/org.polarsys.capella.common.data.activity.gen.edit</module>
 				<module>common/plugins/org.polarsys.capella.common.data.behavior.gen</module>

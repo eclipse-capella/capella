@@ -14,9 +14,9 @@ import org.eclipse.emf.diffmerge.api.IDiffPolicy;
 import org.eclipse.emf.diffmerge.api.IMatchPolicy;
 import org.eclipse.emf.diffmerge.api.IMergePolicy;
 import org.eclipse.emf.diffmerge.impl.policies.DefaultMatchPolicy;
+import org.eclipse.emf.diffmerge.ui.sirius.SiriusComparisonMethod;
 import org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.polarsys.capella.common.consonance.ui.sirius.SiriusComparisonMethod;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory;
 
 
