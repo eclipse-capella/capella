@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *   
  * Contributors:
  *    Thales - initial API and implementation
+ *    Altran - Compare Configurations
  *******************************************************************************/
 
 package org.polarsys.capella.vp.ms;
@@ -327,6 +328,25 @@ public interface CSConfiguration extends NamedElement, ElementExtension {
    */
 
   EList<Situation> getContext();
+
+  /**
+   * Returns the value of the '<em><b>Compare To</b></em>' reference list. The list contents are of type
+   * {@link org.polarsys.capella.vp.ms.CSConfiguration}.
+   * 
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Compare To</em>' reference list isn't clear, there really should be more of a
+   * description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * 
+   * @return the value of the '<em>Compare To</em>' reference list.
+   * @see org.polarsys.capella.vp.ms.MsPackage#getCSConfiguration_CompareTo()
+   * @model
+   * @generated
+   */
+
+  EList<CSConfiguration> getCompareTo();
 
   /**
    * 

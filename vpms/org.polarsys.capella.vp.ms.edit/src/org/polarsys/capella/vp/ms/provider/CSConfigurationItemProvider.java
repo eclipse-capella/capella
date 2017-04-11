@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *   
  * Contributors:
  *    Thales - initial API and implementation
+ *    Altran - Compare Configurations
  *******************************************************************************/
 
 package org.polarsys.capella.vp.ms.provider;
@@ -74,6 +75,7 @@ public class CSConfigurationItemProvider extends NamedElementItemProvider implem
       addAccessPropertyDescriptor(object);
       addSelectorPropertyDescriptor(object);
       addContextPropertyDescriptor(object);
+      addCompareToPropertyDescriptor(object);
     }
     // begin-extension-code
     checkChildCreationExtender(object);
@@ -323,6 +325,26 @@ public class CSConfigurationItemProvider extends NamedElementItemProvider implem
   }
 
   /**
+   * This adds a property descriptor for the Compare To feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  protected void addCompareToPropertyDescriptor(Object object) {
+
+    // begin-extension-code
+    itemPropertyDescriptors.add(createItemPropertyDescriptor
+    // end-extension-code
+    (((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+        getString("_UI_CSConfiguration_compareTo_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_CSConfiguration_compareTo_feature", //$NON-NLS-1$ //$NON-NLS-2$
+            "_UI_CSConfiguration_type"), //$NON-NLS-1$
+        MsPackage.Literals.CS_CONFIGURATION__COMPARE_TO, true, false, true, null, null,
+        // begin-extension-code
+        null));
+    // end-extension-code
+  }
+
+  /**
    * This returns CSConfiguration.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
@@ -399,6 +421,26 @@ public class CSConfigurationItemProvider extends NamedElementItemProvider implem
     {
       CommandParameter commandParameter = createChildParameter(
           EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS, MsFactory.eINSTANCE.createSituation());
+      if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+        newChildDescriptors.add(commandParameter);
+      }
+    }
+    // end-extension-code
+
+    // begin-extension-code
+    {
+      CommandParameter commandParameter = createChildParameter(
+          EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS, MsFactory.eINSTANCE.createComparison());
+      if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+        newChildDescriptors.add(commandParameter);
+      }
+    }
+    // end-extension-code
+
+    // begin-extension-code
+    {
+      CommandParameter commandParameter = createChildParameter(
+          EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS, MsFactory.eINSTANCE.createResult());
       if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
         newChildDescriptors.add(commandParameter);
       }

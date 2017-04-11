@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-SymbolicName: org.polarsys.capella.vp.ms.ui;singleton:=true
-Bundle-Version: 0.6.1.qualifier
+Bundle-Version: 0.7.0.qualifier
 Bundle-Localization: plugin
 Bundle-Activator: org.polarsys.capella.vp.ms.ui.Activator
 Require-Bundle: org.eclipse.ui,

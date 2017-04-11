@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *   
  * Contributors:
  *    Thales - initial API and implementation
+ *    Altran - Compare Configurations
  *******************************************************************************/
 
 package ms.configuration.services.cs;
@@ -42,6 +43,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
+import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
@@ -52,9 +54,14 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.vp.ms.BooleanOperation;
 import org.polarsys.capella.vp.ms.CSConfiguration;
+import org.polarsys.capella.vp.ms.Comparison;
+import org.polarsys.capella.vp.ms.InStateExpression;
 import org.polarsys.capella.vp.ms.MsFactory;
 import org.polarsys.capella.vp.ms.MsPackage;
+import org.polarsys.capella.vp.ms.Result;
+import org.polarsys.capella.vp.ms.Situation;
 import org.polarsys.capella.vp.ms.selector_Type;
 import org.polarsys.capella.vp.ms.provider.MsEditPlugin;
 //import org.polarsys.capella.vp.ms.ui.MsUICommandHandler;
@@ -71,6 +78,8 @@ public class CsConfigurationServices {
   public static final String DANNOTATION_DETAIL_SHOW_FUNCTIONAL_CHAINS = "showFunctionalChains"; //$NON-NLS-1$
 
   private static final String CONFIGURATIONS_LAYER_LABEL = Messages.CsConfigurationServices_Configurations_Layer_Name;
+  protected List<CSConfiguration> configListFiltered = new ArrayList<CSConfiguration>();
+  protected List<CSConfiguration> configList = new ArrayList<CSConfiguration>();
 
   public static boolean canCompleteChildConfigurationRelation(CSConfiguration source, CSConfiguration target) {
     AdapterFactoryEditingDomain domain = (AdapterFactoryEditingDomain) AdapterFactoryEditingDomain
@@ -97,6 +106,110 @@ public class CsConfigurationServices {
     return Collections.emptyList();
   }
 
+  public Collection<EObject> getIrregularEObject(EObject ele) {
+    // TODO Auto-generated method stub
+    this.configList.clear();
+    this.configListFiltered.clear();
+    List<AbstractFunction> functionListIncluded = new ArrayList<AbstractFunction>();
+    List<AbstractFunction> functionListExcluded = new ArrayList<AbstractFunction>();
+    List<Component> componentListIncluded = new ArrayList<Component>();
+    List<Component> componentListExcluded = new ArrayList<Component>();
+    Collection<EObject> objectsIrregularList = new ArrayList<EObject>();
+    Situation situCompare = null;
+
+    if (ele instanceof Result) {
+      Result result = (Result) ele;
+      situCompare = result.getSituation().get(0);
+    }
+    for (EObject iObj : situCompare.eContents()) {
+      if (iObj instanceof BooleanOperation) {
+        BooleanOperation boolObj = (BooleanOperation) iObj;
+        EObject tObj = boolObj.eContainer();
+        EObject vObj = tObj.eContainer();
+        for (EObject jObj : vObj.eContents()) {
+          if (jObj instanceof CSConfiguration) {
+            if (!configList.contains((CSConfiguration) jObj)) {
+              configList.add((CSConfiguration) jObj);
+            }
+          } else if (jObj instanceof Component) {
+            for (EObject childComponent : ((Component) jObj).eContents()) {
+              if (childComponent instanceof CSConfiguration) {
+                if (!configList.contains((CSConfiguration) childComponent)) {
+                  configList.add((CSConfiguration) childComponent);
+                }
+              }
+            }
+          }
+        }
+        for (EObject jObj : boolObj.eContents()) {
+          if (jObj instanceof InStateExpression) {
+            for (CSConfiguration configObject : configList) {
+              for (AbstractState pObj : configObject.getSupportedModes()) {
+                if (((InStateExpression) jObj).getState() instanceof Mode) {
+                  Mode modeState = (Mode) ((InStateExpression) jObj).getState();
+                  if (modeState.equals(pObj)) {
+                    if (!configListFiltered.contains(configObject)) {
+                      configListFiltered.add(configObject);
+                    }
+                  }
+                } else if (((InStateExpression) jObj).getState() instanceof State) {
+                  State modeState = (State) ((InStateExpression) jObj).getState();
+                  if (modeState.equals(pObj)) {
+                    if (!configListFiltered.contains(configObject)) {
+                      configListFiltered.add(configObject);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      for (CSConfiguration configObject : configListFiltered) {
+        for (AbstractFunction jObj : configObject.getFunctions()) {
+          if (configObject.getSelector().equals(configObject.getSelector().INCLUSION)) {
+            functionListIncluded.add(jObj);
+          } else {
+            functionListExcluded.add(jObj);
+          }
+        }
+        for (FunctionalChain jObj : configObject.getFunctionalChains()) {
+          if (configObject.getSelector().equals(configObject.getSelector().INCLUSION)) {
+            for (AbstractFunction tObj : jObj.getInvolvedFunctions()) {
+              functionListIncluded.add(tObj);
+            }
+          } else {
+            for (AbstractFunction tObj : jObj.getInvolvedFunctions()) {
+              functionListExcluded.add(tObj);
+            }
+          }
+        }
+
+        for (Component jObj : configObject.getComponents()) {
+          if (configObject.getSelector().equals(configObject.getSelector().INCLUSION)) {
+            componentListIncluded.add(jObj);
+          } else {
+            componentListExcluded.add(jObj);
+          }
+        }
+      }
+
+      for (AbstractFunction fct : functionListIncluded) {
+        if (functionListExcluded.contains(fct)) {
+          objectsIrregularList.add(fct);
+        }
+      }
+      for (Component jObj : componentListIncluded) {
+        if (componentListExcluded.contains(jObj)) {
+          objectsIrregularList.add(jObj);
+        }
+      }
+
+    }
+
+    return objectsIrregularList;
+  }
+
   public Collection<CSConfiguration> getOwnedConfigurations(Component component) {
     Collection<CSConfiguration> result = new ArrayList<CSConfiguration>();
     for (ElementExtension extension : component.getOwnedExtensions()) {
@@ -105,6 +218,99 @@ public class CsConfigurationServices {
       }
     }
     return result;
+  }
+
+  public Collection<EObject> getTheConfiguration(EObject ele) {
+    Collection<EObject> result = new ArrayList<EObject>();
+    Collection<AbstractState> modeCompareList = new ArrayList<AbstractState>();
+    configList.clear();
+
+    if (ele instanceof Comparison) {
+      Situation situMode = ((Comparison) ele).getSituation().get(0);
+      for (EObject iObj : situMode.eContents()) {
+        if (iObj instanceof BooleanOperation) {
+          BooleanOperation boolObj = (BooleanOperation) iObj;
+          EObject tObj = boolObj.eContainer();
+          EObject vObj = tObj.eContainer();
+          for (EObject jObj : vObj.eContents()) {
+            if (jObj instanceof CSConfiguration) {
+              if (!configList.contains((CSConfiguration) jObj)) {
+                configList.add((CSConfiguration) jObj);
+              }
+            } else if (jObj instanceof Component) {
+              for (EObject childComponent : ((Component) jObj).eContents()) {
+                if (childComponent instanceof CSConfiguration) {
+                  if (!configList.contains((CSConfiguration) childComponent)) {
+                    configList.add((CSConfiguration) childComponent);
+                  }
+                }
+              }
+            }
+          }
+          for (EObject jObj : boolObj.eContents()) {
+            if (jObj instanceof InStateExpression) {
+              if (((InStateExpression) jObj).getState() instanceof AbstractState) {
+                modeCompareList.add((AbstractState) ((InStateExpression) jObj).getState());
+              }
+            }
+          }
+        }
+      }
+      CSConfiguration premConfig = ((Comparison) ele).getConfiguration1().get(0);
+      for (CSConfiguration csc : configList) {
+        if (!csc.equals(premConfig)) {
+          for (AbstractState mode : csc.getSupportedModes()) {
+            if (modeCompareList.contains(mode)) {
+              for (ModelElement iObj : premConfig.getElements()) {
+                if (csc.getElements().contains(iObj)) {
+                  result.add((EObject) iObj);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return result;
+  }
+
+  public Collection<EObject> getTheAbstractState(EObject ele) {
+    Collection<EObject> result = new ArrayList<EObject>();
+    if (ele instanceof Comparison) {
+      CSConfiguration csc = ((Comparison) ele).getConfiguration1().get(0);
+      for (ModelElement iObj : csc.getElements()) {
+        result.add((EObject) iObj);
+      }
+    }
+    return result;
+  }
+
+  public String getConfigurationIrregular(EObject ele) {
+    String result = "";
+    for (CSConfiguration confEle : configListFiltered) {
+      for (AbstractFunction jObj : confEle.getFunctions()) {
+        if (jObj.equals(ele)) {
+          if (result.length() == 0) {
+            result = confEle.getName();
+          } else {
+            result = result + "; " + confEle.getName();
+          }
+
+        }
+      }
+    }
+    return result;
+  }
+
+  public String getElementsIrregular(EObject ele) {
+    return "X";
+  }
+
+  public boolean verifCell(EObject ele) {
+    if (ele instanceof EObject) {
+      return true;
+    }
+    return false;
   }
 
   public List<EObject> getOwnedConfigurationsFromType(EObject ele) {
@@ -146,6 +352,20 @@ public class CsConfigurationServices {
     for (EStructuralFeature.Setting setting : refs) {
       result.add(setting.getEObject());
     }
+    return result;
+  }
+
+  public Collection<EObject> getConfigurationsFromEObject(EObject ele) {
+
+    List<EObject> result = new ArrayList<EObject>();
+    result.add(ele);
+    return result;
+  }
+
+  public Collection<EObject> getConfigurationsFromModesandStates(EObject ele) {
+
+    List<EObject> result = new ArrayList<EObject>();
+    result.add(ele);
     return result;
   }
 

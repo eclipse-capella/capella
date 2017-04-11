@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *   
  * Contributors:
  *    Thales - initial API and implementation
+ *    Altran - Compare Configurations
  *******************************************************************************/
 
 package org.polarsys.capella.vp.ms.impl;
@@ -19,6 +20,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.vp.ms.AndOperation;
 import org.polarsys.capella.vp.ms.CSConfiguration;
+import org.polarsys.capella.vp.ms.Comparison;
 import org.polarsys.capella.vp.ms.FSMType;
 import org.polarsys.capella.vp.ms.InSituationExpression;
 import org.polarsys.capella.vp.ms.InStateExpression;
@@ -26,6 +28,7 @@ import org.polarsys.capella.vp.ms.MsFactory;
 import org.polarsys.capella.vp.ms.MsPackage;
 import org.polarsys.capella.vp.ms.NotOperation;
 import org.polarsys.capella.vp.ms.OrOperation;
+import org.polarsys.capella.vp.ms.Result;
 import org.polarsys.capella.vp.ms.Situation;
 import org.polarsys.capella.vp.ms.access_Type;
 import org.polarsys.capella.vp.ms.kind_Type;
@@ -88,6 +91,10 @@ public class MsFactoryImpl extends EFactoryImpl implements MsFactory {
       return createOrOperation();
     case MsPackage.NOT_OPERATION:
       return createNotOperation();
+    case MsPackage.COMPARISON:
+      return createComparison();
+    case MsPackage.RESULT:
+      return createResult();
     default:
       throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
     }
@@ -213,6 +220,26 @@ public class MsFactoryImpl extends EFactoryImpl implements MsFactory {
   public NotOperation createNotOperation() {
     NotOperationImpl notOperation = new NotOperationImpl();
     return notOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public Comparison createComparison() {
+    ComparisonImpl comparison = new ComparisonImpl();
+    return comparison;
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public Result createResult() {
+    ResultImpl result = new ResultImpl();
+    return result;
   }
 
   /**
