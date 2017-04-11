@@ -6,7 +6,7 @@
     xmlns:mp="http://www.eclipse.org/buckminster/MavenProvider-1.0"
     xmlns:pp="http://www.eclipse.org/buckminster/PDEMapProvider-1.0">
 
-	<property key="projects.location" value="${env_var:WORKSPACE}/git" />
+	<property key="projects.location" value="${env_var:WORKSPACE}/git/vpms" />
 
  	<searchPath name="localsources">
 		<provider componentTypes="eclipse.feature,osgi.bundle,buckminster"
