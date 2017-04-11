@@ -2512,7 +2512,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Port Allocation from the source Component Port to the target Function Port." name="ComponentPort Allocation" label="Component Port Allocation" precondition="&lt;%isValidABCreationComponentPortAllocation($preSourceView, $preTargetView)%>" edgeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_ComponentPortAllocation']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PortAllocation.gif" connectionStartPrecondition="&lt;%isValidABCreationComponentPortAllocation($preSourceView)%>">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Port Allocation from the source Physical Port to the target Component Port." name="ComponentPort Allocation" label="Component Port Allocation" precondition="&lt;%isValidABCreationComponentPortAllocation($preSourceView, $preTargetView)%>" edgeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_ComponentPortAllocation']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PortAllocation.gif" connectionStartPrecondition="&lt;%isValidABCreationComponentPortAllocation($preSourceView)%>">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
