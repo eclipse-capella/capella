@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *   
  * Contributors:
  *    Thales - initial API and implementation
+ *    Altran - Compare Configurations
  *******************************************************************************/
 
 package org.polarsys.capella.vp.ms.impl;
@@ -164,6 +165,16 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
    * @ordered
    */
   protected EList<Situation> context;
+
+  /**
+   * The cached value of the '{@link #getCompareTo() <em>Compare To</em>}' reference list. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
+   * @see #getCompareTo()
+   * @generated
+   * @ordered
+   */
+  protected EList<CSConfiguration> compareTo;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -376,6 +387,21 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
       context = new EObjectResolvingEList<Situation>(Situation.class, this, MsPackage.CS_CONFIGURATION__CONTEXT);
     }
     return context;
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+
+  public EList<CSConfiguration> getCompareTo() {
+
+    if (compareTo == null) {
+      compareTo = new EObjectResolvingEList<CSConfiguration>(CSConfiguration.class, this,
+          MsPackage.CS_CONFIGURATION__COMPARE_TO);
+    }
+    return compareTo;
   }
 
   /**
@@ -632,6 +658,8 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
       return getSelector();
     case MsPackage.CS_CONFIGURATION__CONTEXT:
       return getContext();
+    case MsPackage.CS_CONFIGURATION__COMPARE_TO:
+      return getCompareTo();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -670,6 +698,10 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
       getContext().clear();
       getContext().addAll((Collection<? extends Situation>) newValue);
       return;
+    case MsPackage.CS_CONFIGURATION__COMPARE_TO:
+      getCompareTo().clear();
+      getCompareTo().addAll((Collection<? extends CSConfiguration>) newValue);
+      return;
     }
     super.eSet(featureID, newValue);
   }
@@ -702,6 +734,9 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
       return;
     case MsPackage.CS_CONFIGURATION__CONTEXT:
       getContext().clear();
+      return;
+    case MsPackage.CS_CONFIGURATION__COMPARE_TO:
+      getCompareTo().clear();
       return;
     }
     super.eUnset(featureID);
@@ -739,6 +774,8 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
       return selector != SELECTOR_EDEFAULT;
     case MsPackage.CS_CONFIGURATION__CONTEXT:
       return context != null && !context.isEmpty();
+    case MsPackage.CS_CONFIGURATION__COMPARE_TO:
+      return compareTo != null && !compareTo.isEmpty();
     }
     return super.eIsSet(featureID);
   }

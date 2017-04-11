@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *   
  * Contributors:
  *    Thales - initial API and implementation
+ *    Altran - Compare Configurations
  *******************************************************************************/
 
 package org.polarsys.capella.vp.ms.util;
@@ -25,12 +26,14 @@ import org.polarsys.capella.vp.ms.AndOperation;
 import org.polarsys.capella.vp.ms.BooleanExpression;
 import org.polarsys.capella.vp.ms.BooleanOperation;
 import org.polarsys.capella.vp.ms.CSConfiguration;
+import org.polarsys.capella.vp.ms.Comparison;
 import org.polarsys.capella.vp.ms.FSMType;
 import org.polarsys.capella.vp.ms.InSituationExpression;
 import org.polarsys.capella.vp.ms.InStateExpression;
 import org.polarsys.capella.vp.ms.MsPackage;
 import org.polarsys.capella.vp.ms.NotOperation;
 import org.polarsys.capella.vp.ms.OrOperation;
+import org.polarsys.capella.vp.ms.Result;
 import org.polarsys.capella.vp.ms.Situation;
 import org.polarsys.kitalpha.emde.model.Element;
 import org.polarsys.kitalpha.emde.model.ElementExtension;
@@ -135,6 +138,16 @@ public class MsAdapterFactory extends AdapterFactoryImpl {
     @Override
     public Adapter caseNotOperation(NotOperation object) {
       return createNotOperationAdapter();
+    }
+
+    @Override
+    public Adapter caseComparison(Comparison object) {
+      return createComparisonAdapter();
+    }
+
+    @Override
+    public Adapter caseResult(Result object) {
+      return createResultAdapter();
     }
 
     @Override
@@ -328,6 +341,32 @@ public class MsAdapterFactory extends AdapterFactoryImpl {
    * @generated
    */
   public Adapter createNotOperationAdapter() {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.vp.ms.Comparison <em>Comparison</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+   * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
+   * @return the new adapter.
+   * @see org.polarsys.capella.vp.ms.Comparison
+   * @generated
+   */
+  public Adapter createComparisonAdapter() {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.vp.ms.Result <em>Result</em>}'. <!--
+   * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+   * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
+   * @return the new adapter.
+   * @see org.polarsys.capella.vp.ms.Result
+   * @generated
+   */
+  public Adapter createResultAdapter() {
     return null;
   }
 

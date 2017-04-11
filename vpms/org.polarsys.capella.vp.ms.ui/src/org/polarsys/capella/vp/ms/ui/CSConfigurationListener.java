@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *   
  * Contributors:
  *    Thales - initial API and implementation
+ *    Altran - Compare Configurations
  *******************************************************************************/
 package org.polarsys.capella.vp.ms.ui;
 
@@ -40,6 +41,8 @@ import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.vp.ms.CSConfiguration;
+import org.polarsys.capella.vp.ms.Comparison;
+import org.polarsys.capella.vp.ms.Result;
 import org.polarsys.capella.vp.ms.access_Type;
 import org.polarsys.kitalpha.emde.model.EmdePackage;
 
@@ -61,7 +64,15 @@ public class CSConfigurationListener extends ResourceSetListenerImpl implements 
 
     for (Notification notif : event.getNotifications()) {
       if (notif.getEventType() == Notification.REMOVE) {
-        removedConfigurations.add((CSConfiguration) notif.getOldValue());
+        if (notif.getOldValue() instanceof Comparison) {
+          Comparison iObj = (Comparison) notif.getOldValue();
+          iObj.destroy();
+        } else if (notif.getOldValue() instanceof Result) {
+          Result iObj = (Result) notif.getOldValue();
+          iObj.destroy();
+        } else {
+          removedConfigurations.add((CSConfiguration) notif.getOldValue());
+        }
       } else if (notif.getEventType() == Notification.REMOVE_MANY) {
         for (Object o : ((Collection<?>) notif.getOldValue())) {
           if (o instanceof CSConfiguration) {

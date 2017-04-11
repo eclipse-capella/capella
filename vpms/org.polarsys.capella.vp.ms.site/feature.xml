@@ -12,7 +12,7 @@
 <feature
       id="org.polarsys.capella.vp.ms.site"
       label="%featureName"
-      version="0.6.1.qualifier"
+      version="0.7.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.example.com/description">

@@ -13,3 +13,5 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/NotOperation.gif          - org.polarsys.capella.vp.ms.edit   - org.polarsys.capella.vp.ms.edit/icons/full/obj16/NotOperation.gif         
 /icons/full/obj16/OrOperation.gif           - org.polarsys.capella.vp.ms.edit   - org.polarsys.capella.vp.ms.edit/icons/full/obj16/OrOperation.gif          
 /icons/full/obj16/Situation.gif             - org.polarsys.capella.vp.ms.edit   - org.polarsys.capella.vp.ms.edit/icons/full/obj16/Situation.gif            
+/icons/full/obj16/Comparison.gif            - org.polarsys.capella.vp.ms.edit   - org.polarsys.capella.vp.ms.edit/icons/full/obj16/Comparison.gif          
+/icons/full/obj16/Result.gif                - org.polarsys.capella.vp.ms.edit   - org.polarsys.capella.vp.ms.edit/icons/full/obj16/Result.gif            

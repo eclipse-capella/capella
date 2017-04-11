@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 0.7.0 - 2017-04-24
+### Added
+ - Comparison/Result elements
+ - DWF_SM_50 Element are included and excluded by Configuration
+ - DWF_SM_52 Realising configuration
+ - DWF_SM_53 irregular realization between layer
+ - Crosstable "Irregular Configuration"
+ 
 ## 0.6.1 - 2017-04-10
 ### Fixed
  - Convert to EPL license and push to git.polarsys.org

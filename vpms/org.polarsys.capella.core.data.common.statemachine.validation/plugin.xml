@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 
 <!--
-    Copyright (c) 2017 THALES GLOBAL SERVICES.
+    Copyright (c) 2017 THALES GLOBAL SERVICES and others.
     All rights reserved. This program and the accompanying materials
     are made available under the terms of the Eclipse Public License v1.0
     which accompanies this distribution, and is available at
@@ -10,7 +10,8 @@
       
     Contributors:
        Thales - initial API and implementation
- -->
+       Altran - Compare Configurations
+-->
 
 <plugin>
 <extension
@@ -82,6 +83,25 @@
                </description>
                <message>
                   The Join&quot;{0}&quot; has less than two incoming transitions. At least two incoming transitions should exist for this Join.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Functional_Conflits"
+                  id="DWF_SM_50"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_50 - Element are included and excluded by CSConfiguration."
+                  severity="ERROR"
+                  statusCode="1">
+               <target
+                     class="Result">
+               </target>
+               <description>
+                  There is no more than one Initial Pseudo-State into a Region.
+               </description>
+               <message>
+                  Element&quot;{0}&quot; are included and excluded by CSConfiguration: &quot;{1}&quot; and &quot;{2}&quot;.
                </message>
             </constraint>
             <constraint
@@ -583,6 +603,38 @@
                <message>
                   The State &quot;{0}&quot; is included in the  Mode &quot;{1}&quot;. Inclusion of states into modes is not allowed.
                </message>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_differentLayer"
+                  id="DWF_SM_52"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_52 -Realising configuration"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {3} : Consistency warning: the function {0} is not included into both configurations {1} and {2}
+               </message>
+               <target
+                     class="Result">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_RealizationsIrregular"
+                  id="DWF_SM_53"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_53-irregular realization between layer"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {3} : Consistency error: the function {0} is at the same time included  and excluded into both configurations {1} and {2}
+               </message>
+               <target
+                     class="Result">
+               </target>
             </constraint>
          </constraints>
          <constraints

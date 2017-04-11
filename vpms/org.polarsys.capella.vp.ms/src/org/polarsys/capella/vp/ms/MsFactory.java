@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *   
  * Contributors:
  *    Thales - initial API and implementation
+ *    Altran - Compare Configurations
  *******************************************************************************/
 
 package org.polarsys.capella.vp.ms;
@@ -91,6 +92,22 @@ public interface MsFactory extends EFactory {
    * @generated
    */
   NotOperation createNotOperation();
+
+  /**
+   * Returns a new object of class '<em>Comparison</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @return a new object of class '<em>Comparison</em>'.
+   * @generated
+   */
+  Comparison createComparison();
+
+  /**
+   * Returns a new object of class '<em>Result</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @return a new object of class '<em>Result</em>'.
+   * @generated
+   */
+  Result createResult();
 
   /**
    * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->

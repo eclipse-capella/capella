@@ -1,13 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017 ALTRAN.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *   
  * Contributors:
- *    Thales - initial API and implementation
- *    Altran - Compare Configurations
+ *    Altran - initial API and implementation
  *******************************************************************************/
 
 package org.polarsys.capella.vp.ms.provider;
@@ -25,29 +24,27 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.core.data.capellacore.provider.NamedElementItemProvider;
-import org.polarsys.capella.vp.ms.FSMType;
 import org.polarsys.capella.vp.ms.MsFactory;
 import org.polarsys.capella.vp.ms.MsPackage;
+import org.polarsys.capella.vp.ms.Result;
 import org.polarsys.kitalpha.emde.model.EmdePackage;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
- * This is the item provider adapter for a {@link org.polarsys.capella.vp.ms.FSMType} object. <!-- begin-user-doc -->
+ * This is the item provider adapter for a {@link org.polarsys.capella.vp.ms.Result} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * 
  * @generated
  */
-public class FSMTypeItemProvider extends NamedElementItemProvider implements IEditingDomainItemProvider,
+public class ResultItemProvider extends NamedElementItemProvider implements IEditingDomainItemProvider,
     IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
   /**
    * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    */
-  public FSMTypeItemProvider(AdapterFactory adapterFactory) {
+  public ResultItemProvider(AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
 
@@ -61,7 +58,7 @@ public class FSMTypeItemProvider extends NamedElementItemProvider implements IEd
     if (itemPropertyDescriptors == null) {
       super.getPropertyDescriptors(object);
 
-      addMsPropertyDescriptor(object);
+      addSituationPropertyDescriptor(object);
     }
     // begin-extension-code
     checkChildCreationExtender(object);
@@ -70,32 +67,32 @@ public class FSMTypeItemProvider extends NamedElementItemProvider implements IEd
   }
 
   /**
-   * This adds a property descriptor for the Ms feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a property descriptor for the Situation feature. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    */
-  protected void addMsPropertyDescriptor(Object object) {
+  protected void addSituationPropertyDescriptor(Object object) {
 
     // begin-extension-code
     itemPropertyDescriptors.add(createItemPropertyDescriptor
     // end-extension-code
     (((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_FSMType_ms_feature"), //$NON-NLS-1$
-        getString("_UI_PropertyDescriptor_description", "_UI_FSMType_ms_feature", "_UI_FSMType_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        MsPackage.Literals.FSM_TYPE__MS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+        getString("_UI_Result_Situation_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_Result_Situation_feature", "_UI_Result_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        MsPackage.Literals.RESULT__SITUATION, true, false, true, null, null,
         // begin-extension-code
         null));
     // end-extension-code
   }
 
   /**
-   * This returns FSMType.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns Result.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    */
   @Override
   public Object getImage(Object object) {
-    return overlayImage(object, getResourceLocator().getImage("full/obj16/FSMType")); //$NON-NLS-1$
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/Result")); //$NON-NLS-1$
   }
 
   /**
@@ -106,9 +103,9 @@ public class FSMTypeItemProvider extends NamedElementItemProvider implements IEd
   @Override
   public String getText(Object object) {
 
-    String label = ((FSMType) object).getName();
+    String label = ((Result) object).getName();
     // begin-extension-code
-    return label == null || label.length() == 0 ? "[" + getString("_UI_FSMType_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return label == null || label.length() == 0 ? "[" + getString("_UI_Result_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     // end-extension-code
   }
 
@@ -121,12 +118,6 @@ public class FSMTypeItemProvider extends NamedElementItemProvider implements IEd
   @Override
   public void notifyChanged(Notification notification) {
     updateChildren(notification);
-
-    switch (notification.getFeatureID(FSMType.class)) {
-    case MsPackage.FSM_TYPE__MS:
-      fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-      return;
-    }
     super.notifyChanged(notification);
   }
 
