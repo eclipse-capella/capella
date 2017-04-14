@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -300,10 +300,11 @@ public class OpaqueExpressionSection extends NamedElementSection {
     data = new GridData(30, SWT.DEFAULT);
     add.setLayoutData(data);
     
-    Button remove = getWidgetFactory().createButton(opaqueExpressionGroup, null, SWT.PUSH);
+    final Button remove = getWidgetFactory().createButton(opaqueExpressionGroup, null, SWT.PUSH);
     remove.setImage(ToolkitPlugin.getDefault().getImageRegistry().get(ToolkitPlugin.REMOVE_IMAGE_ITEM_ID));
     data = new GridData(30, SWT.DEFAULT);
     remove.setLayoutData(data);
+    updateRemoveButtonState(remove);
     
     remove.addSelectionListener(new SelectionListener() {
       @Override
@@ -312,8 +313,10 @@ public class OpaqueExpressionSection extends NamedElementSection {
         if (selected != null){
           getElements().remove(selected);
           syncToModel();
+          updateRemoveButtonState(remove);
         }
       }
+
       @Override
       public void widgetDefaultSelected(SelectionEvent e) {
       }
@@ -388,6 +391,8 @@ public class OpaqueExpressionSection extends NamedElementSection {
           languagesViewer.setSelection(new StructuredSelection(oe));
           syncToModel();
         }
+        
+        updateRemoveButtonState(remove);
       }
 
       @Override
@@ -400,6 +405,13 @@ public class OpaqueExpressionSection extends NamedElementSection {
 
   }
 
+  protected void updateRemoveButtonState(final Button remove) {
+    if (getElements().size() > 1)
+      remove.setEnabled(true);
+    else
+      remove.setEnabled(false);
+  }
+  
   /**
    * @param firstElement
    */
@@ -494,7 +506,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
         }
         @Override
         public void setText(String linkedText) {
-          _element.setBody(linkedText.isEmpty() ? null : linkedText);
+          _element.setBody(linkedText);
         }
       };
       editor.getSourceViewer().getTextWidget().addDisposeListener(new DisposeListener() {
