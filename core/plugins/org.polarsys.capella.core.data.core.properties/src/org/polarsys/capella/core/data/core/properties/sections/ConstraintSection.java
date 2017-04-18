@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -92,7 +92,7 @@ public class ConstraintSection extends NamedElementSection {
     CLabel label = getWidgetFactory().createCLabel(group, Messages.getString("Constraint.OwnedSpecification.Label")); //$NON-NLS-1$
     label.setLayoutData(new GridData(SWT.FILL, SWT.TOP, false, false));
     _specificationText = getWidgetFactory().createText(group, "", SWT.MULTI | SWT.FULL_SELECTION | SWT.V_SCROLL | SWT.H_SCROLL | SWT.WRAP); //$NON-NLS-1$
-    _specificationText.setEnabled(false);
+    _specificationText.setEditable(false);
 
     gd = new GridData(SWT.FILL, SWT.FILL, true, true);
     _specificationText.setLayoutData(gd);
