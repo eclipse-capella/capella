@@ -11,8 +11,6 @@
 package org.polarsys.capella.core.data.migration.capella;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.information.datavalue.OpaqueExpression;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
@@ -20,11 +18,10 @@ import org.polarsys.capella.core.data.migration.contribution.AbstractMigrationCo
 
 public class OpaqueExpressionMigrationContribution extends AbstractMigrationContribution {
   @Override
-  public void updateElement(EObject peekObject, String typeName, EObject result, EStructuralFeature feature,
-      Resource resource, MigrationContext context) {
-    super.updateElement(peekObject, typeName, result, feature, resource, context);
-    if (result instanceof OpaqueExpression) {
-      OpaqueExpression expression = (OpaqueExpression) result;
+  public void unaryMigrationExecute(EObject object, MigrationContext context) {
+    super.unaryMigrationExecute(object, context);
+    if (object instanceof OpaqueExpression) {
+      OpaqueExpression expression = (OpaqueExpression) object;
       if (expression.getLanguages().isEmpty()) {
         expression.getLanguages().add("capella:linkedText");
       }
