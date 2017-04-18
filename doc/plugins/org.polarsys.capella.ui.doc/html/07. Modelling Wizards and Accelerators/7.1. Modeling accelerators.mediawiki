@@ -86,18 +86,44 @@ The Semantic Browser shows the Component Exchanges are correctly allocated to th
  
 === Illustration ===
  
-Model before generation: Exchange Items are referenced by the Functional Exchange but not by the input and output Function Ports.
+Model before propagation: EI 1 and EI 2 are referenced by the Functional Exchange whereas the Function Input Port on Physical Function 2 references EI 3 and EI 4:
+
+[[Image:Images/propagate_ei_diagram.png|483x85px]]
+[[Image:Images/propagate_ei_port_before.png|980x196px]]
+
+Model after propagation: Exchange Item references to EI 1 and EI 2 have been added to the Function Input Port:
+
+[[Image:Images/propagate_ei_port_after.png|981x221px]]
+
+The same change is applied to the Function Output Port.
+
+<br>
+<br>
+
+== Synchronization of Exchange Items on Functional Exchanges and Ports ==
+ 
+'''Source element''': Functional Exchange
 
  
-[[Image:Images/7.1.%20Modeling%20accelerators_html_m7eccf2be.png|554x357px]]
+'''Command:''' Modeling Accelerators / Synchronize Exchange Items and Function Ports
+
+
+'''Effect:''' Adds references from input and output Function Ports to the Exchange Items associated to the selected Functional Exchange, and removes any other Exchange Item reference from these Function Ports.
 
  
-Model after propagation: The Exchange Items referenced by the Functional Exchange have been added as references from the input and output Function Ports.
-
+=== Illustration ===
  
-[[Image:Images/7.1.%20Modeling%20accelerators_html_1a7918c9.png|554x179px]]
+Model before synchronization: EI 1 and EI 2 are referenced by the Functional Exchange whereas the Function Input Port on Physical Function 2 references EI 3 and EI 4:
 
- 
+[[Image:Images/propagate_ei_diagram.png|483x85px]]
+[[Image:Images/propagate_ei_port_before.png|980x196px]]
+
+Model after synchronization: The Exchange Item references to EI 3 and EI 4 have been removed from the Function Input Port, and references to EI 1 and EI 2 have been added:
+
+[[Image:Images/synchronize_ei_port_after.png|981x186px]]
+
+The same change is applied to the Function Output Port.
+
 <br>
 <br>
 
