@@ -18,6 +18,7 @@ import org.polarsys.capella.common.helpers.query.IQuery;
 import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacore.InvolverElement;
 import org.polarsys.capella.core.data.cs.AbstractActor;
+import org.polarsys.capella.core.data.cs.SystemComponent;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 
 /**
@@ -30,8 +31,7 @@ public class ActorAllocatingCapabilityRealizations implements IQuery {
    */
   public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    // gets the Semantic Editing Domain
-    if (object instanceof AbstractActor) {
+    if (object instanceof AbstractActor && !(object instanceof SystemComponent)) {
       AbstractActor actor = (AbstractActor) object;
       EList<CapabilityRealizationInvolvement> involvements = actor.getInvolvingCapabilityRealizationInvolvements();
       for (CapabilityRealizationInvolvement involvement : involvements) {
