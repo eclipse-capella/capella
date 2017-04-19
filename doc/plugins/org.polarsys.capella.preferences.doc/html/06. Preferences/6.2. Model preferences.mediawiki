@@ -161,8 +161,8 @@ It is possible to specify the behaviour of the automated transitions.
 * The checkbox &ldquo;'''Transit State Machines owned by a Component 	while transition of Components'''&rdquo; specifies whether State 	Machines transition is triggered when performing a Component 	transition.
 * The checkbox &ldquo;'''Transit Functional elements allocated by an 	Operational Entity or Operational Actor while their transition'''&rdquo; 	specifies whether Operational Activities are transformed into System 	Functions when performing a transition of Operational Entities or 	Actors.
 * The checkbox '''&ldquo;Include involved elements&rdquo;''' on the 	Property Values section specifies whether involved elements will be 	propagated while a transition of Property Values
-* The checkbox '''&ldquo;Propagate Exchange Items from Functional Exchanges to Function Ports&rdquo;''' specifies specifies whether Exchange Items from Functional Exchanges should be propagated to their related Function Ports during Interface generation.
-* The checkbox '''&ldquo;Create Component Exchange Between provider/requirer ports&rdquo;''' specifies specifies if the Interface generation accelerator should create a Component Exchange between each pair of Interface provider/requirer ports if such an exchange does not already exist.
+* The checkbox '''&ldquo;Propagate Exchange Items from Functional Exchanges to Function Ports&rdquo;''' specifies whether Exchange Items from Functional Exchanges should be propagated to their related Function Ports during Interface generation.
+* The checkbox '''&ldquo;Create Component Exchange Between provider/requirer ports&rdquo;''' specifies if the Interface generation should create a Component Exchange between each pair of Interface provider/requirer ports if such an exchange does not already exist.
 
 <br>
 <br>
