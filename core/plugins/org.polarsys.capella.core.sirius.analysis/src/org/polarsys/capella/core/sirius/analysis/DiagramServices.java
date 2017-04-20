@@ -55,6 +55,7 @@ import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDN
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DEdgeCandidate;
+import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
@@ -534,7 +535,7 @@ public class DiagramServices {
       mappingsToEdgeTargets.get(targetMapping).add(targetView);
     }
 
-    diagramSync.computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
+    new DecorationHelperInternal(diagram, interpreter, accessor).computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
     return elementSync.createNewEdge(getMappingManager((DSemanticDiagram) diagram), edgeCandidate,
         mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration);
   }
