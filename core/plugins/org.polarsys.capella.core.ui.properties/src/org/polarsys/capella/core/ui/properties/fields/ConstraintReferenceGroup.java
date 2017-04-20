@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,10 +70,10 @@ public class ConstraintReferenceGroup {
     referenceGroup.setLayoutData(gd);
     
     // label, text, edit, browse, delete. SimpleEditableSemanticField uses 2 columns for the text field, so we need to add one extra column.
-    referenceGroup.setLayout(new GridLayout(6, false));
+    referenceGroup.setLayout(new GridLayout(5, false));
     for (final Map.Entry<String, EReference> entry : refs.entrySet()){
 
-      SimpleEditableSemanticField field = new SimpleEditableSemanticField(referenceGroup, entry.getKey(), factory, "", new AbstractSimpleEditableSemanticFieldController() { //$NON-NLS-1$
+      ConstraintReferenceField field = new ConstraintReferenceField(referenceGroup, entry.getKey(), factory, new AbstractSimpleEditableSemanticFieldController() { //$NON-NLS-1$
 
         @Override
         public EObject writeOpenValue(EObject semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
