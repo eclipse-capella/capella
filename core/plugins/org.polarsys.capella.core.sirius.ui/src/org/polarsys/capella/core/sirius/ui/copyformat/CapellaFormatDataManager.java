@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataMa
 import org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey;
 import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.sirius.ui.copyformat.keyproviders.IKeyProvider;
 
@@ -157,7 +158,7 @@ public class CapellaFormatDataManager extends AbstractSiriusFormatDataManager im
   }
 
   @Override
-  public AbstractFormatData getFormatData(FormatDataKey key) {
+  public AbstractFormatData getFormatData(FormatDataKey key, RepresentationElementMapping mapping) {
     AbstractFormatData formatData = null;
     if ((key instanceof AbstractCapellaFormatDataKey) && validateKey((AbstractCapellaFormatDataKey) key)) {
       formatData = getLinkedFormatData((AbstractCapellaFormatDataKey) key);
@@ -175,7 +176,7 @@ public class CapellaFormatDataManager extends AbstractSiriusFormatDataManager im
   }
 
   @Override
-  public void addFormatData(FormatDataKey key, AbstractFormatData formatData) {
+  public void addFormatData(FormatDataKey key, RepresentationElementMapping mapping, AbstractFormatData formatData) {
 
     if ((key instanceof AbstractCapellaFormatDataKey) && validateKey((AbstractCapellaFormatDataKey) key)) {
       if (key instanceof CapellaDecoratorFormatDataKey) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.formatdata.AbstractFormatData;
 import org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
  * FormatDataManager used in Capella Copy/Paste operations to paste layouts or/and styles.
@@ -77,7 +78,7 @@ public class CapellaDiagramFormatDataManager extends AbstractSiriusFormatDataMan
 	
 	
 	@Override
-	public AbstractFormatData getFormatData(FormatDataKey key) {
+	public AbstractFormatData getFormatData(FormatDataKey key, RepresentationElementMapping mapping) {
 		if (key instanceof CapellaDiagramFormatKey) {
 			return keyToFormatData.get(key);
 		}
@@ -86,7 +87,8 @@ public class CapellaDiagramFormatDataManager extends AbstractSiriusFormatDataMan
 
 
 
-	public void addFormatData(FormatDataKey key, AbstractFormatData formatData) {
+    @Override
+	public void addFormatData(FormatDataKey key, RepresentationElementMapping mapping, AbstractFormatData formatData) {
 		if (key instanceof CapellaDiagramFormatKey) {
 			keyToFormatData.put((CapellaDiagramFormatKey) key, formatData);
 		}
