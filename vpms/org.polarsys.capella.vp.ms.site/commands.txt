@@ -1,0 +1,5 @@
+importtargetdefinition --active "${workspace}/git/vpms/org.polarsys.capella.vp.ms.site/capella.target"
+import "${workspace}/git/vpms/org.polarsys.capella.vp.ms.site/site.cquery"
+clean
+build
+perform org.polarsys.capella.vp.ms.site#site.p2
