@@ -1981,11 +1981,7 @@
 |-
 | 	Functions 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Insert/Remove Functions. Create or delete graphical objects corresponding to already existing Functions. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model. 	
-|-
-| 	Actor Functions 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Insert/Remove Actor Functions. Create or delete graphical objects corresponding to already existing Functions allocated to Actors. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model. 	
+| 		Insert/Remove Functions. Create or delete graphical objects corresponding to already existing Functions. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model. 		
 |-
 | 	Functional Exchanges 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
@@ -3207,11 +3203,7 @@
 |-
 | 	Functions 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Insert/Remove Functions. Create or delete graphical objects corresponding to already existing Functions. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model. 	
-|-
-| 	Actor Functions 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Insert/Remove Actor Functions. Create or delete graphical objects corresponding to already existing Functions allocated to Actors. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model. 	
+| 		Insert/Remove Functions. Create or delete graphical objects corresponding to already existing Functions. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model. 		
 |-
 | 	Functional Exchanges 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
@@ -3579,11 +3571,7 @@
 |-
 | 	Functions 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Insert/Remove Functions. Create or delete graphical objects corresponding to already existing Functions. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model. 	
-|-
-| 	Actor Functions 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Insert/Remove Actor Functions. Create or delete graphical objects corresponding to already existing Functions allocated to Actors. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model. 	
+| 		Insert/Remove Functions. Create or delete graphical objects corresponding to already existing Functions. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model. 		
 |-
 | 	Functional Exchanges 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 

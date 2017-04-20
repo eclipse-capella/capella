@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InitializationFromExistingDiagramTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class XDFBDiagram extends DiagramContext {
@@ -84,6 +85,22 @@ public class XDFBDiagram extends DiagramContext {
     new CreateContainerTool(this, name, containerId, id).run();
   }
   
+  public void createActorFunction(String id) {
+    createActorFunction(id, getDiagramId());
+  }
+
+  public void createActorFunction(String id, String containerId) {
+    String name = null;
+    if (type == Type.SA) {
+      name = IToolNameConstants.TOOL_SDFB_CREATE_ACTOR_FUNCTION;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LDFB_CREATE_ACTOR_FUNCTION;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PDFB_CREATE_ACTOR_FUNCTION;
+    }
+    new CreateContainerTool(this, name, containerId, id).run();
+  }
+  
   public void createFunctionalExchange(String id, String sourceViewId, String targetViewId, String newSourceIdentifier, String newTargetIdentifier) {
     String name = null;
     if (type == Type.OA) {
@@ -104,5 +121,25 @@ public class XDFBDiagram extends DiagramContext {
 
   public void initializationFromExistingDiagram(DiagramContext existingContext) {
     new InitializationFromExistingDiagramTool(this, IToolNameConstants.TOOL_SDFB_INITIALIZATION_FROM_EXISTING_DIAGRAM, existingContext).insert(existingContext.getDiagramId());
+  }
+  
+  public void insertFunction(String containerId, String id){
+	  if (type == Type.SA) {
+	  new InsertRemoveTool(this, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONS, containerId).insert(id);
+    } else if (type == Type.LA) {
+    	new InsertRemoveTool(this, IToolNameConstants.TOOL_LDFB_SHOW_HIDE_FUNCTIONS, containerId).insert(id);
+    } else if (type == Type.PA) {
+    	new InsertRemoveTool(this, IToolNameConstants.TOOL_PDFB_SHOW_HIDE_FUNCTIONS, containerId).insert(id);
+    }
+  }
+  
+  public void removeFunction(String containerId, String id){
+	  if (type == Type.SA) {
+		  new InsertRemoveTool(this, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONS, containerId).remove(id);
+	    } else if (type == Type.LA) {
+	    	new InsertRemoveTool(this, IToolNameConstants.TOOL_LDFB_SHOW_HIDE_FUNCTIONS, containerId).remove(id);
+	    } else if (type == Type.PA) {
+	    	new InsertRemoveTool(this, IToolNameConstants.TOOL_PDFB_SHOW_HIDE_FUNCTIONS, containerId).remove(id);
+	    }
   }
 }
