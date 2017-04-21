@@ -54,16 +54,16 @@ if [ $? ]; then
   echo $version
   echo $simpleversion
 
-#  rm -rf capella-vpms-addon-dropins-*
-#  mkdir capella-vpms-addon-dropins-$version
-#  
-#  cp -r $buckminster_out/org.polarsys.capella.vp.ms.site_${simpleversion}-eclipse.feature/site.p2/features capella-vpms-addon-dropins-$version
-#  cp -r $buckminster_out/org.polarsys.capella.vp.ms.site_${simpleversion}-eclipse.feature/site.p2/plugins capella-vpms-addon-dropins-$version
-#
-#  rm -rf capella-vpms-addon-site-*
-#  mkdir capella-vpms-addon-site-$version
-#
-#  cp -r $buckminster_out/org.polarsys.capella.vp.ms.site_${simpleversion}-eclipse.feature/site.p2/* capella-vpms-addon-site-$version
+  rm -rf capella-vpms-addon-dropins-*
+  mkdir capella-vpms-addon-dropins-$version
+  
+  cp -r $buckminster_out/org.polarsys.capella.vp.ms.site_${simpleversion}-eclipse.feature/site.p2/features capella-vpms-addon-dropins-$version
+  cp -r $buckminster_out/org.polarsys.capella.vp.ms.site_${simpleversion}-eclipse.feature/site.p2/plugins capella-vpms-addon-dropins-$version
+
+  rm -rf capella-vpms-addon-site-*
+  mkdir capella-vpms-addon-site-$version
+
+  cp -r $buckminster_out/org.polarsys.capella.vp.ms.site_${simpleversion}-eclipse.feature/site.p2/* capella-vpms-addon-site-$version
 
   rm -rf $buckminster_out
 fi
