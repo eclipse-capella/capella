@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -102,7 +102,7 @@ final public class MarkerResolutionCache {
           // Many capella qf extensions don't use the fully qualified constraint id, 
           // but only the 'unqualified id', e.g. DWF_D_20 rather than org.polarsys.capella...DWF_D_20
           for (String current: allConstraintsIds) {
-            if (current.endsWith(id)) {
+            if (current.endsWith('.' + id)) {
               addToCache(current, key);
               break;
             }

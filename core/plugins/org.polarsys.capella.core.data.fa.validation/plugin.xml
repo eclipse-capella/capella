@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -74,10 +74,45 @@
                                This rule generates a warning if the the source or target of an Interaction/Functional Exchange is not allocated on a leaf function.
                             </description>
                          </constraint>
+                         <constraint
+                               class="org.polarsys.capella.core.data.fa.validation.functionPort.DCOM_21_UnusedExchangeItems"
+                               id="DCOM_21"
+                               isEnabledByDefault="true"
+                               lang="java"
+                               mode="Batch"
+                               name="DCOM_21 - Unused function port Exchange Items"
+                               severity="WARNING"
+                               statusCode="1">
+                            <message>
+                               &quot;{0}&quot; ({1}) conveys &quot;{2}&quot; ({3}) which is not allocated to any associated Functional Exchange.
+                            </message>
+                            <target
+                                  class="FunctionPort">
+                            </target>
+                            <description>
+                               This rule generates a warning if a Function Port conveys an Exchange Item which is not allocated to any connected Functional Exchange.
+                            </description>
+                         </constraint>
+                         <constraint
+                               class="org.polarsys.capella.core.data.fa.validation.functionPort.DCOM_22_UnsynchronizedExchangeItems"
+                               id="DCOM_22"
+                               isEnabledByDefault="false"
+                               lang="java"
+                               mode="Batch"
+                               name="DCOM_22 - Unsynchronized Function Port Exchange Items"
+                               severity="WARNING"
+                               statusCode="1">
+                            <message>
+                               &quot;{0}&quot; ({1}) and all its connected Functional Exchanges do not have the exact same Exchange Items.
+                            </message>
+                            <target
+                                  class="FunctionPort">
+                            </target>
+                            <description>
+                               This rule generates a warning if a Function Port and all its connected Functional Exchanges do not have the exact same Exchange Items.
+                            </description>
+                         </constraint>
          </constraints> 
-         
-         
-         
          <constraints categories="capella.category/design/consistency">
          </constraints>
          <constraints categories="capella.category/transition/justification/generic">
@@ -402,6 +437,25 @@
 In Case the ComponentExchange is of kind DELEGATION
 - &quot;source port/target Port&quot; can only have orientation &apos;IN/IN&apos; or &apos;OUT/OUT&apos;
                </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalExchange.I_35_FunctionalExchangeNameConsistency"
+                  id="I_35"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_35 - Related functional exchanges must have identical names"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Functional Exchange) should have identical names
+               </message>
+               <description>
+                  This rule checks that Functional Exchanges connected to the same source and/or target port have identical names.
+               </description>
+               <target
+                     class="FunctionalExchange">
+               </target>
             </constraint>
          </constraints>
          <constraints categories="capella.category/design/well-formedness/components">

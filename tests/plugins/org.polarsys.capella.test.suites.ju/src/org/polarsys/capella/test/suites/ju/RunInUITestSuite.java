@@ -26,6 +26,7 @@ import org.polarsys.capella.test.libraries.ju.testsuites.main.LibrariesTestSuite
 import org.polarsys.capella.test.meta.ju.testSuites.MetaTestSuite;
 import org.polarsys.capella.test.model.ju.testsuites.main.ModelTestSuite;
 import org.polarsys.capella.test.progressmonitoring.ju.testsuites.SetProgressTestSuite;
+import org.polarsys.capella.test.projection.ju.ProjectionTestSuite;
 import org.polarsys.capella.test.re.updateconnections.ju.UpdateConnectionsTest.UpdateConnectionsTestSuite;
 import org.polarsys.capella.test.recrpl.ju.testsuites.main.RecRplTestSuite;
 import org.polarsys.capella.test.refinement.ju.testsuites.main.AllRefinementTestSuites;
@@ -65,6 +66,7 @@ public class RunInUITestSuite extends BasicTestSuite {
     tests.add(new DiagramMiscTestSuite());
     tests.add(new UpdateConnectionsTestSuite());
     tests.add(new CommandLineTestSuite());
+    tests.add(new ProjectionTestSuite());
     return tests;
   }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -156,6 +156,42 @@
          
       </objectContribution>
       <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.synchronizeEIOnPorts"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+         <test forcePluginActivation="true"
+               property="org.polarsys.capella.core.platform.sirius.ui.graphicalActionMode"
+               value="synchronizeEIOnPorts">
+         </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.platform.sirius.ui.actions.SynchronizeExchangeItemAllocationsAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.platform.sirius.ui.actions.SynchronizeEIOnPortsAction"
+               label="%SynchronizeEIOnPorts"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.synchronizeEIOnPorts"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <action
+               class="org.polarsys.capella.core.platform.sirius.ui.actions.SynchronizeExchangeItemAllocationsAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.platform.sirius.ui.actions.SynchronizeEIOnPortsAction1"
+               label="%SynchronizeEIOnPorts"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+         <enablement>
+         <test forcePluginActivation="true"
+               property="org.polarsys.capella.core.platform.sirius.ui.actionMode"
+               value="synchronizeEIOnPorts">
+         </test>
+         </enablement>
+      </objectContribution>
+      <objectContribution
             id="org.polarsys.capella.core.sirius.menus.graphical.propagationEIOnPorts"
             objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
             
@@ -172,7 +208,7 @@
          </enablement>
          
          <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.ExchangeItemAllocationOnPortsAction"
+               class="org.polarsys.capella.core.platform.sirius.ui.actions.PropagateExchangeItemAllocationsAction"
                icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.PropagateEIOnPortsAction"
                label="%PropagateEIOnPorts"
@@ -183,8 +219,7 @@
             id="capella.project.explorer.toolsContributor.propagationEIOnPorts1"
             objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
          <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.ExchangeItemAllocationOnPortsAction"
-               enablesFor="1"
+               class="org.polarsys.capella.core.platform.sirius.ui.actions.PropagateExchangeItemAllocationsAction"
                icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.PropagateEIOnPortsAction1"
                label="%PropagateEIOnPorts"
@@ -199,7 +234,6 @@
          </enablement>
          
       </objectContribution>
-      
       <objectContribution
             id="org.polarsys.capella.core.sirius.menus.graphical.propagationPortRealizations1"
             objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">

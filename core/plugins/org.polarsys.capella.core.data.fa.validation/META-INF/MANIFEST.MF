@@ -2,13 +2,17 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.fa.validation;singleton:=true
-Bundle-Version: 1.1.1.qualifier
+Bundle-Version: 1.1.2.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.polarsys.capella.core.validation,
  org.polarsys.capella.common.ui,
  org.apache.commons.lang
-Export-Package: org.polarsys.capella.core.data.fa.validation.connection,
+Export-Package: org.polarsys.capella.core.data.fa.validation,
+ org.polarsys.capella.core.data.fa.validation.componentPort,
+ org.polarsys.capella.core.data.fa.validation.connection,
+ org.polarsys.capella.core.data.fa.validation.function,
+ org.polarsys.capella.core.data.fa.validation.functionPort,
  org.polarsys.capella.core.data.fa.validation.functionalChain,
  org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement,
  org.polarsys.capella.core.data.fa.validation.functionalExchange

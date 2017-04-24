@@ -237,4 +237,10 @@
 |  I_34 - Inter-model inconsistency Detection
 |-
 | colspan="2" |This rule detects inter-model inconsistencies (dependency violations and inter-model cycles). 
+|}
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../Images/warning.gif|WARNING]]
+|  I_35 - Related functional exchanges must have identical names
+|-
+| colspan="2" |This rule checks that Functional Exchanges connected to the same source and/or target port have identical names.
 |}   

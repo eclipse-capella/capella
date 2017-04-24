@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,9 @@ public class ActionPropertyTester extends PropertyTester {
 
         if ("propagationEIOnPorts".equals(actionName)) { //$NON-NLS-1$
           return isPropagationEIOnPorts(element);
+        }
+        if ("synchronizeEIOnPorts".equals(actionName)) { //$NON-NLS-1$
+          return isSynchronizeEIOnPorts(element);
         }
         if ("propagationPortRealizationsFromFE".equals(actionName)) { //$NON-NLS-1$
           return isPropagationPortRealizationsFromFE(element);
@@ -118,6 +121,12 @@ public class ActionPropertyTester extends PropertyTester {
     result = ((element_p instanceof AbstractFunction) || (element_p instanceof FunctionalExchange));
     result = (result && !CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer((CapellaElement) element_p));
 
+    return result;
+  }
+
+  private boolean isSynchronizeEIOnPorts(ModelElement element) {
+    boolean result = element instanceof FunctionalExchange;
+    result = (result && !CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer((CapellaElement) element));
     return result;
   }
 }

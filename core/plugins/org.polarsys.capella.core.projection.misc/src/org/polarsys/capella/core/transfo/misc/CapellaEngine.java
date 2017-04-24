@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -54,6 +55,14 @@ public class CapellaEngine extends TransfoEngine {
    * TRANSFO_TARGET_CONTAINER tag's property
    */
   public static final String TRANSFO_TARGET_CONTAINER = "transfoTargetContainer"; //$NON-NLS-1$
+
+  public CapellaEngine(Logger logger) {
+    super(logger);
+  }
+
+  public CapellaEngine() {
+    super();
+  }
 
   /**
    * @see org.polarsys.capella.core.tiger.impl.TransfoEngine#doProcessDependingModels (java.util.List)
