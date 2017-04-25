@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -336,6 +336,25 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                </description>
                <target
                      class="CapellaElement"></target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.constraint.I_36_ConstraintNotReferenced"
+                  id="I_36"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_36 - Check whether a Constraint is not used"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  The constraint {0} is not used on {1} of {2} ({3}).
+               </message>
+               <description>
+                  This rule checks that Constraints under a CapellaElement with Constraint references are used.
+               </description>
+               <target
+                     class="Constraint">
+               </target>
             </constraint>
          </constraints>
       </constraintProvider>
