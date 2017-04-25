@@ -23,32 +23,34 @@ location "http://download.eclipse.org/releases/neon" {
 	com.ibm.icu
 }
 
-location "http://download.eclipse.org/sirius/updates/stable/4.1.4-S20170321-101206/neon" {
+location "http://download.eclipse.org/sirius/updates/milestones/5.0.0M6/neon" {
 	org.eclipse.sirius.runtime.feature.group
 	org.eclipse.sirius.runtime.aql.feature.group
 	org.eclipse.sirius.runtime.ide.ui.feature.group
 }
 
 location "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_runtime/site.p2" {
-	org.polarsys.kitalpha.ad.runtime.feature.feature.group
-	org.polarsys.kitalpha.cadence.feature.feature.group
-	org.polarsys.kitalpha.common.feature.feature.group
-	org.polarsys.kitalpha.emde.feature.feature.group
-	org.polarsys.kitalpha.emde.ui.feature.feature.group
-	org.polarsys.kitalpha.model.common.commands.feature.feature.group
-	org.polarsys.kitalpha.model.common.scrutiny.feature.feature.group
-	org.polarsys.kitalpha.model.common.share.feature.feature.group
-	org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.feature.group
-	org.polarsys.kitalpha.model.detachment.feature.feature.group
-	org.polarsys.kitalpha.model.detachment.ui.feature.feature.group
-	org.polarsys.kitalpha.patterns.feature.feature.group
-	org.polarsys.kitalpha.report.feature.feature.group
-	org.polarsys.kitalpha.report.ui.feature.feature.group
-	org.polarsys.kitalpha.transposer.feature.feature.group
+	org.polarsys.kitalpha.ad.runtime.feature.feature.group lazy
+	org.polarsys.kitalpha.cadence.feature.feature.group lazy
+	org.polarsys.kitalpha.common.feature.feature.group lazy
+	org.polarsys.kitalpha.emde.feature.feature.group lazy
+	org.polarsys.kitalpha.emde.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.model.common.commands.feature.feature.group lazy
+	org.polarsys.kitalpha.model.common.scrutiny.feature.feature.group lazy
+	org.polarsys.kitalpha.model.common.share.feature.feature.group lazy
+	org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.feature.group lazy
+	org.polarsys.kitalpha.model.detachment.feature.feature.group lazy
+	org.polarsys.kitalpha.model.detachment.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.patterns.feature.feature.group lazy
+	org.polarsys.kitalpha.report.feature.feature.group lazy
+	org.polarsys.kitalpha.report.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.transposer.feature.feature.group lazy
 }
 
 location "https://hudson.eclipse.org/diffmerge/job/emf-diffmerge-core-master/167/artifact/releng/org.eclipse.emf.diffmerge.update/target/repository" {
-	org.eclipse.emf.diffmerge.sdk.feature.feature.group
+	org.eclipse.emf.diffmerge.feature.feature.group
+	org.eclipse.emf.diffmerge.sirius.feature.feature.group
+	org.eclipse.emf.diffmerge.gmf.feature.feature.group
 }
 
 location "https://hudson.eclipse.org/diffmerge/job/emf-diffmerge-patterns-master/106/artifact/releng/org.eclipse.emf.diffmerge.patterns.update/target/repository" {

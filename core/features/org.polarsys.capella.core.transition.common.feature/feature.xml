@@ -30,7 +30,7 @@
    <requires>
       <import feature="org.polarsys.kitalpha.cadence.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.polarsys.kitalpha.transposer.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.diffmerge.sdk.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.diffmerge.sirius.feature" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

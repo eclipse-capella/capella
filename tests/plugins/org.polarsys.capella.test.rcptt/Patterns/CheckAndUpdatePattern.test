@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _LFQK4Gk0EeaVsIgvj-cA7g
-Runtime-Version: 2.0.2.201511100828
-Save-Time: 8/23/16 5:10 PM
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 4/21/17 4:14 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -58,9 +58,9 @@ with [get-window "Pattern Instance Management"] {
 		// Check the difference are
 		with [get-group "Instance elements (technical differences with pattern: 4)" | get-group Details | get-table] {
 			get-property itemCount | equals 3 | verify-true
-			get-property "getItems().TableItem[0].getText()" | equals description | verify-true
-			get-property "getItems().TableItem[1].getText()" | equals name | verify-true
-			get-property "getItems().TableItem[2].getText()" | equals summary | verify-true
+			get-property "getItems().TableItem[0].getText()" | equals Description | verify-true
+			get-property "getItems().TableItem[1].getText()" | equals Name | verify-true
+			get-property "getItems().TableItem[2].getText()" | equals Summary | verify-true
 		}
 		get-button OK | click
 	}
@@ -86,8 +86,8 @@ with [get-window "Pattern Instance Management" | get-window "Update Pattern"] {
 		"unctions)"
 	with [get-group "Pattern elements (2 technical differences)" | get-group Details | get-table] {
 		get-property itemCount | equals 2 | verify-true
-		get-property "getItems().TableItem[0].getText()" | equals description | verify-true
-		get-property "getItems().TableItem[1].getText()" | equals summary | verify-true
+		get-property "getItems().TableItem[0].getText()" | equals Description | verify-true
+		get-property "getItems().TableItem[1].getText()" | equals Summary | verify-true
 	}
 	get-button Finish | click
 }

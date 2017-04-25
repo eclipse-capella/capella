@@ -71,7 +71,7 @@
       <feature id="org.eclipse.amalgam.explorer.activity"/>
       <feature id="org.eclipse.emf.diffmerge.patterns.sdk.feature"/>
       <feature id="org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature"/>
-      <feature id="org.eclipse.emf.diffmerge.sdk.feature"/>
+      <feature id="org.eclipse.emf.diffmerge.sirius.feature"/>
       <feature id="org.eclipse.emf.sdk"/>
       <feature id="org.eclipse.emf.transaction"/>
       <feature id="org.eclipse.gmf"/>
