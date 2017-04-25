@@ -1,8 +1,269 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>7.1. Modeling accelerators</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Modeling_Accelerators">Modeling Accelerators</h1><p>Between engineering phases or within one, some modeling tasks can be tedious. Capella provides a few tools allowing automated synchronization or generations of model elements. These tools are all available contextually under the Modeling Accelerators menu.</p><h2 id="Component_and_Functional_Exchanges">Component and Functional Exchanges</h2><p><b>Source element</b>: Components (System, Logical Components, Physical Components)</p><p><b>Command</b>: Modeling Accelerators / Component Exchanges</p><p><b>Effect</b>: Creates Component Exchanges between Components according to the Function they implement and the Functional Exchanges between them. Also creates the Component Ports and Port Allocations.</p><h3 id="Illustration">Illustration</h3><p>Model before generation</p><p><img height="329" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_67e6a41c.png"/></p><p>Model after generation of Component Exchanges on LC 1</p><p><img height="328" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_5e22a0cd.png"/></p><p>The Semantic Browser shows the Functional Exchanges are correctly allocated to their corresponding Component Exchanges.</p><p><img height="148" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m6212ede3.png"/></p><p>Note: For example in the case of LF1 and LF2, the tool cannot decide whether one single Component Exchange should carry both Functional Exchanges or one Component Exchange is necessary for each. The latter solution is the one applied; it is up to the system engineer to refactor this result if needed.</p><h2 id="Physical_Links_and_Component_Exchanges">Physical Links and Component Exchanges</h2><p><b>Source element</b>: Node Physical Components</p><p><b>Command:</b> Modeling Accelerators / Physical Links</p><p><b>Effect:</b> Creates Physical Links between Node Physical Components according to the existing Component Exchanges between the Behaviour Physical Components they deploy. This generation also creates Physical Ports and Delegations.</p><h3 id="Illustration_2">Illustration</h3><p>Model before generation</p><p><img height="194" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m662553b3.png"/></p><p>Model after generation of Physical Links on PC3</p><p><img height="199" width="554" border="0" src="Images/7.1.%20Modeling%20accelerators_html_md0f733b.png"/></p><p>The Semantic Browser shows the Component Exchanges are correctly allocated to their corresponding Physical Links.</p><p><img height="109" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_77412d6b.png"/></p><p><br/>
-<br/></p><h2 id="Exchange_Item_Propagation_to_Ports">Exchange Item Propagation to Ports</h2><p><b>Source element</b>: Functions or Functional Exchanges</p><p><b>Command:</b> Modeling Accelerators / Propagate Exchange Items to Function Ports</p><p><b>Effect:</b> Adds references from input and output Function Ports to the Exchange Items associated to the current Functional Exchange. When launched on a Function, this command applies recursively for all Functional Exchanges of the Function hierarchy.</p><h3 id="Illustration_3">Illustration</h3><p>Model before generation: Exchange Items are referenced by the Functional Exchange but not by the input and output Function Ports.</p><p><img height="500" width="700" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m7eccf2be.png"/></p><p>Model after propagation: The Exchange Items referenced by the Functional Exchange have been added as references from the input and output Function Ports.</p><p><img height="200" width="600" border="0" src="Images/7.1.%20Modeling%20accelerators_html_1a7918c9.png"/></p><p><br/>
-<br/></p><h2 id="Port_Realization_According_to_Realizations_Between_Functional_Exchanges">Port Realization According to Realizations Between Functional Exchanges</h2><p><b>Source element</b>: Functions or Functional Exchanges</p><p><b>Command:</b> Modeling Accelerators / Propagate Port Realizations from realized Functional Exchange</p><p><b>Effect:</b> Adds a Realization link between Function Ports of two successive engineering phases, according to the existing Functional Exchange realizations. When launched on a Function, this command applies recursively for all Functional Exchanges of the Function hierarchy.</p><h3 id="Illustration_4">Illustration</h3><p>Model before generation</p><p><img height="193" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_5f97dea6.png"/></p><p>At Physical level, the Functional Exchange is moved towards a new Function. The Port of the Physical Function PF 7 does not realize the one of the Logical Function LF 6.</p><p><img height="319" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m437e70f8.png"/></p><p>After generation of Function Port realizations, the traceability between Function Ports is set.</p><p><br/>
-<br/></p><p><br/>
-<br/></p><p><img height="159" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m665442c6.png"/></p><p><br/>
-<br/></p><h2 id="Port_Realization_According_to_Realizations_Between_Component_Exchanges">Port Realization According to Realizations Between Component Exchanges</h2><p><b>Source element</b>: Components or Component Exchanges</p><p><b>Command:</b> Modeling Accelerators / Propagate Port Realizations from realized Component Exchange</p><p><b>Effect:</b> Adds a Realization link between Component Ports of two successive engineering phases, according to the existing Component Exchange realizations. When launched on a Component, this command applies recursively for all Component Exchanges of the Component hierarchy.</p><h3 id="Illustration_5">Illustration</h3><p>Model before generation</p><p><img height="193" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_5f97dea6.png"/></p><p>At Physical level, the Component Exchange is moved towards a new Component. The Port of the Physical Component New PC does not realize the one of the Logical Component LC 4.</p><p><img height="349" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m4ca6bbc5.png"/></p><p>After generation of Component Port realizations, the traceability between Component Ports is set.</p><p><img height="145" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_a37b1aa.png"/></p><p><br/>
-<br/></p><h2 id="Synchronization_of_Interface_Use_.2F_Implement_.2F_Provide_.2F_Require_Links">Synchronization of Interface Use / Implement / Provide / Require Links</h2><p><b>Source element</b>: System, Logical System, Logical Components, Physical Components, Configuration Items</p><p><b>Command for System element: </b>Modeling Accelerators / Propagate Interfaces to Logical System</p><p><b>Command for Logical System: </b>Modeling Accelerators / Synchronize Interfaces from System Analysis</p><p><b>Command for Logical Components</b>: Modeling Accelerators / Propagate Interfaces to allocating Physical Component</p><p><b>Commands for Physical Components</b>:</p><ul><li>Modeling Accelerators / Synchronize Interfaces from allocated 	Logical Component</li><li>Modeling Accelerators / Propagate Interfaces to allocating 	Configuration Item</li></ul><p><b>Command for Configuration Items</b>: Modeling Accelerators / Synchronize Interfaces from allocated Physical Components</p><p><b>Effect: </b>Given a source component use / implement / provide / require links towards Interfaces, replicate these links on the target component.</p><h3 id="Illustration_between_System_Analysis_and_Logical_Architecture">Illustration between System Analysis and Logical Architecture</h3><p>Model before generation: At System level, the System element uses / implements / provides / requires a set of Interfaces. As shown by the Semantic Browser, the Logical System (which is realizing the System element) does not use / implement / provide / require any Interface.</p><p><img height="318" width="414" border="0" src="Images/7.1.%20Modeling%20accelerators_html_1cf7543e.png"/></p><p><img height="114" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_2dcaeafb.png"/></p><p>After the Interface Synchronization is launched from the Logical System, the Logical System uses / implements / provides / requires the same Interface than the System element.</p><p><img height="251" width="293" border="0" src="Images/7.1.%20Modeling%20accelerators_html_3a3b835f.png"/></p><p>This synchronization also manages the Interfaces that are not used / implemented / provided / required anymore by the source element. For example if Interface 1 is not implemented anymore by the System element, applying the same synchronization command a second time modifies the Logical System.</p><h3 id="Note_for_the_case_of_a_synchronization_from_Logical_Components_to_Physical_Components">Note for the case of a synchronization from Logical Components to Physical Components</h3><p>Between these two engineering phases, it is possible to perform a transition of Interfaces. In that case, a source Logical Interface leads to the creation of a corresponding Physical Interface in the Physical Architecture.</p><p>If the Interface synchronization algorithm finds such a realization link between Logical and Physical Interfaces, then the corresponding Use / Implement / Provide / Require links from the Physical Component target the Physical Interface instead of the original Logical Interface.</p><h2 id="Interface_Generation_from_Allocated_Functions">Interface Generation from Allocated Functions</h2><p><b>Source element</b>: Components (System, Logical Components, Physical Components)</p><p><b>Command:</b> Modeling Accelerators / Interfaces from allocated Functions</p><p><b>Effect:</b> Analyze the Component Exchanges, the Functional Exchanges they carry and the Exchange Items associated to the Functional Exchanges to generate a set of Interfaces between Components</p><h3 id="Illustration_6">Illustration</h3><p>Source model: Two components, three Component Exchanges, four Functional Exchanges associated to Exchange Items.</p><p><img height="253" width="554" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m52977986.png"/></p><p>Same elements with Functional Exchange displaying the referenced Exchange Items and Component Exchanges displaying allocated Functional Exchanges.</p><p><img height="248" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m34764e20.png"/></p><p>Result of the generation of Interfaces: One Interface is created per Component Exchange. All Exchange Items coming from different Functional Exchanges are aggregated in the same Interface.</p><p><img height="282" width="554" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m652c731a.png"/></p><p><br/>
-<br/></p></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>7.1. Modeling accelerators</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" type="text/css" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" />
+	</head>
+	<body>
+		<h1 id="Modeling_Accelerators">Modeling Accelerators</h1>
+		<p>Between engineering phases or within one, some modeling tasks can be tedious. Capella provides a few tools allowing automated synchronization or generations of model elements. These tools are all available contextually under the Modeling Accelerators menu.</p>
+		<h2 id="Component_and_Functional_Exchanges">Component and Functional Exchanges</h2>
+		<p>
+			<b>Source element</b>: Components (System, Logical Components, Physical Components)
+		</p>
+		<p>
+			<b>Command</b>: Modeling Accelerators / Component Exchanges
+		</p>
+		<p>
+			<b>Effect</b>: Creates Component Exchanges between Components according to the Function they implement and the Functional Exchanges between them. Also creates the Component Ports and Port Allocations.
+		</p>
+		<h3 id="Illustration">Illustration</h3>
+		<p>Model before generation</p>
+		<p>
+			<img height="329" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_67e6a41c.png"/>
+		</p>
+		<p>Model after generation of Component Exchanges on LC 1</p>
+		<p>
+			<img height="328" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_5e22a0cd.png"/>
+		</p>
+		<p>The Semantic Browser shows the Functional Exchanges are correctly allocated to their corresponding Component Exchanges.</p>
+		<p>
+			<img height="148" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m6212ede3.png"/>
+		</p>
+		<p>Note: For example in the case of LF1 and LF2, the tool cannot decide whether one single Component Exchange should carry both Functional Exchanges or one Component Exchange is necessary for each. The latter solution is the one applied; it is up to the system engineer to refactor this result if needed.</p>
+		<h2 id="Physical_Links_and_Component_Exchanges">Physical Links and Component Exchanges</h2>
+		<p>
+			<b>Source element</b>: Node Physical Components
+		</p>
+		<p>
+			<b>Command:</b> Modeling Accelerators / Physical Links
+		</p>
+		<p>
+			<b>Effect:</b> Creates Physical Links between Node Physical Components according to the existing Component Exchanges between the Behaviour Physical Components they deploy. This generation also creates Physical Ports and Delegations.
+		</p>
+		<h3 id="Illustration_2">Illustration</h3>
+		<p>Model before generation</p>
+		<p>
+			<img height="194" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m662553b3.png"/>
+		</p>
+		<p>Model after generation of Physical Links on PC3</p>
+		<p>
+			<img height="199" width="554" border="0" src="Images/7.1.%20Modeling%20accelerators_html_md0f733b.png"/>
+		</p>
+		<p>The Semantic Browser shows the Component Exchanges are correctly allocated to their corresponding Physical Links.</p>
+		<p>
+			<img height="109" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_77412d6b.png"/>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<h2 id="Exchange_Item_Propagation_to_Ports">Exchange Item Propagation to Ports</h2>
+		<p>
+			<b>Source element</b>: Functions or Functional Exchanges
+		</p>
+		<p>
+			<b>Command:</b> Modeling Accelerators / Propagate Exchange Items to Function Ports
+		</p>
+		<p>
+			<b>Effect:</b> Adds references from input and output Function Ports to the Exchange Items associated to the current Functional Exchange. When launched on a Function, this command applies recursively for all Functional Exchanges of the Function hierarchy.
+		</p>
+		<h3 id="Illustration_3">Illustration</h3>
+		<p>Model before propagation: EI 1 and EI 2 are referenced by the Functional Exchange whereas the Function Input Port on Physical Function 2 references EI 3 and EI 4:</p>
+		<p>
+			<img height="85" width="483" border="0" src="Images/propagate_ei_diagram.png"/>
+
+			<img height="196" width="980" border="0" src="Images/propagate_ei_port_before.png"/>
+		</p>
+		<p>
+			<img height="500" width="700" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m7eccf2be.png"/>
+			Model after propagation: Exchange Item references to EI 1 and EI 2 have been added to the Function Input Port:
+		</p>
+		<p>
+			<img height="221" width="981" border="0" src="Images/propagate_ei_port_after.png"/>
+		</p>
+		<p>The same change is applied to the Function Output Port.</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<p>
+			<img height="200" width="600" border="0" src="Images/7.1.%20Modeling%20accelerators_html_1a7918c9.png"/>
+		</p>
+		<h2 id="Synchronization_of_Exchange_Items_on_Functional_Exchanges_and_Ports">Synchronization of Exchange Items on Functional Exchanges and Ports</h2>
+		<p>
+			<b>Source element</b>: Functional Exchange
+		</p>
+		<p>
+			<b>Command:</b> Modeling Accelerators / Synchronize Exchange Items and Function Ports
+		</p>
+		<p>
+			<b>Effect:</b> Adds references from input and output Function Ports to the Exchange Items associated to the selected Functional Exchange, and removes any other Exchange Item reference from these Function Ports.
+		</p>
+		<h3 id="Illustration_4">Illustration</h3>
+		<p>Model before synchronization: EI 1 and EI 2 are referenced by the Functional Exchange whereas the Function Input Port on Physical Function 2 references EI 3 and EI 4:</p>
+		<p>
+			<img height="85" width="483" border="0" src="Images/propagate_ei_diagram.png"/>
+
+			<img height="196" width="980" border="0" src="Images/propagate_ei_port_before.png"/>
+		</p>
+		<p>Model after synchronization: The Exchange Item references to EI 3 and EI 4 have been removed from the Function Input Port, and references to EI 1 and EI 2 have been added:</p>
+		<p>
+			<img height="186" width="981" border="0" src="Images/synchronize_ei_port_after.png"/>
+		</p>
+		<p>The same change is applied to the Function Output Port.</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<h2 id="Port_Realization_According_to_Realizations_Between_Functional_Exchanges">Port Realization According to Realizations Between Functional Exchanges</h2>
+		<p>
+			<b>Source element</b>: Functions or Functional Exchanges
+		</p>
+		<p>
+			<b>Command:</b> Modeling Accelerators / Propagate Port Realizations from realized Functional Exchange
+		</p>
+		<p>
+			<b>Effect:</b> Adds a Realization link between Function Ports of two successive engineering phases, according to the existing Functional Exchange realizations. When launched on a Function, this command applies recursively for all Functional Exchanges of the Function hierarchy.
+		</p>
+		<h3 id="Illustration_5">Illustration</h3>
+		<p>Model before generation</p>
+		<p>
+			<img height="193" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_5f97dea6.png"/>
+		</p>
+		<p>At Physical level, the Functional Exchange is moved towards a new Function. The Port of the Physical Function PF 7 does not realize the one of the Logical Function LF 6.</p>
+		<p>
+			<img height="319" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m437e70f8.png"/>
+		</p>
+		<p>After generation of Function Port realizations, the traceability between Function Ports is set.</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<p>
+			<img height="159" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m665442c6.png"/>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<h2 id="Port_Realization_According_to_Realizations_Between_Component_Exchanges">Port Realization According to Realizations Between Component Exchanges</h2>
+		<p>
+			<b>Source element</b>: Components or Component Exchanges
+		</p>
+		<p>
+			<b>Command:</b> Modeling Accelerators / Propagate Port Realizations from realized Component Exchange
+		</p>
+		<p>
+			<b>Effect:</b> Adds a Realization link between Component Ports of two successive engineering phases, according to the existing Component Exchange realizations. When launched on a Component, this command applies recursively for all Component Exchanges of the Component hierarchy.
+		</p>
+		<h3 id="Illustration_6">Illustration</h3>
+		<p>Model before generation</p>
+		<p>
+			<img height="193" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_5f97dea6.png"/>
+		</p>
+		<p>At Physical level, the Component Exchange is moved towards a new Component. The Port of the Physical Component New PC does not realize the one of the Logical Component LC 4.</p>
+		<p>
+			<img height="349" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m4ca6bbc5.png"/>
+		</p>
+		<p>After generation of Component Port realizations, the traceability between Component Ports is set.</p>
+		<p>
+			<img height="145" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_a37b1aa.png"/>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<h2 id="Synchronization_of_Interface_Use_.2F_Implement_.2F_Provide_.2F_Require_Links">Synchronization of Interface Use / Implement / Provide / Require Links</h2>
+		<p>
+			<b>Source element</b>: System, Logical System, Logical Components, Physical Components, Configuration Items
+		</p>
+		<p>
+			<b>Command for System element: </b>Modeling Accelerators / Propagate Interfaces to Logical System
+		</p>
+		<p>
+			<b>Command for Logical System: </b>Modeling Accelerators / Synchronize Interfaces from System Analysis
+		</p>
+		<p>
+			<b>Command for Logical Components</b>: Modeling Accelerators / Propagate Interfaces to allocating Physical Component
+		</p>
+		<p>
+			<b>Commands for Physical Components</b>:
+		</p>
+		<ul>
+			<li>Modeling Accelerators / Synchronize Interfaces from allocated 	Logical Component</li>
+			<li>Modeling Accelerators / Propagate Interfaces to allocating 	Configuration Item</li>
+		</ul>
+		<p>
+			<b>Command for Configuration Items</b>: Modeling Accelerators / Synchronize Interfaces from allocated Physical Components
+		</p>
+		<p>
+			<b>Effect: </b>Given a source component use / implement / provide / require links towards Interfaces, replicate these links on the target component.
+		</p>
+		<h3 id="Illustration_between_System_Analysis_and_Logical_Architecture">Illustration between System Analysis and Logical Architecture</h3>
+		<p>Model before generation: At System level, the System element uses / implements / provides / requires a set of Interfaces. As shown by the Semantic Browser, the Logical System (which is realizing the System element) does not use / implement / provide / require any Interface.</p>
+		<p>
+			<img height="318" width="414" border="0" src="Images/7.1.%20Modeling%20accelerators_html_1cf7543e.png"/>
+		</p>
+		<p>
+			<img height="114" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_2dcaeafb.png"/>
+		</p>
+		<p>After the Interface Synchronization is launched from the Logical System, the Logical System uses / implements / provides / requires the same Interface than the System element.</p>
+		<p>
+			<img height="251" width="293" border="0" src="Images/7.1.%20Modeling%20accelerators_html_3a3b835f.png"/>
+		</p>
+		<p>This synchronization also manages the Interfaces that are not used / implemented / provided / required anymore by the source element. For example if Interface 1 is not implemented anymore by the System element, applying the same synchronization command a second time modifies the Logical System.</p>
+		<h3 id="Note_for_the_case_of_a_synchronization_from_Logical_Components_to_Physical_Components">Note for the case of a synchronization from Logical Components to Physical Components</h3>
+		<p>Between these two engineering phases, it is possible to perform a transition of Interfaces. In that case, a source Logical Interface leads to the creation of a corresponding Physical Interface in the Physical Architecture.</p>
+		<p>If the Interface synchronization algorithm finds such a realization link between Logical and Physical Interfaces, then the corresponding Use / Implement / Provide / Require links from the Physical Component target the Physical Interface instead of the original Logical Interface.</p>
+		<h2 id="Interface_Generation_from_Allocated_Functions">Interface Generation from Allocated Functions</h2>
+		<p>
+			<b>Source element</b>: Components (System, Logical Components, Physical Components)
+		</p>
+		<p>
+			<b>Command:</b> Modeling Accelerators / Interfaces from allocated Functions
+		</p>
+		<p>
+			<b>Effect:</b> Analyze the Component Exchanges, the Functional Exchanges they carry and the Exchange Items associated to the Functional Exchanges to generate a set of Interfaces between Components
+		</p>
+		<h3 id="Illustration_1">Illustration 1</h3>
+		<p>Source model: Two components, three Component Exchanges, four Functional Exchanges associated to Exchange Items.</p>
+		<p>
+			<img height="253" width="554" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m52977986.png"/>
+		</p>
+		<p>Same elements with Functional Exchange displaying the referenced Exchange Items and Component Exchanges displaying allocated Functional Exchanges.</p>
+		<p>
+			<img height="248" width="553" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m34764e20.png"/>
+		</p>
+		<p>Result of the generation of Interfaces: One Interface is created per Component Exchange. All Exchange Items coming from different Functional Exchanges are aggregated in the same Interface.</p>
+		<p>
+			<img height="282" width="554" border="0" src="Images/7.1.%20Modeling%20accelerators_html_m652c731a.png"/>
+		</p>
+		<h3 id="Illustration_22">Illustration 2</h3>
+		<p>This example demonstrates interface generation in the following cases:</p>
+		<ul>
+			<li>A functional exchange which is allocated to a component exchange.</li>
+			<li>A functional exchange with function ports that are allocated to component ports. The functional exchange itself is not allocated to the component exchange.</li>
+			<li>A functional exchange without a corresponding component exchange.</li>
+		</ul>
+		<p>
+			<img height="484" width="522" border="0" src="Images/interface_from_allocated_functions_before.png"/>
+		</p>
+		<p>Three interfaces will be generated:</p>
+		<p>
+			<img height="171" width="684" border="0" src="Images/interface_from_allocated_functions_after.png"/>
+		</p>
+	</body>
+</html>

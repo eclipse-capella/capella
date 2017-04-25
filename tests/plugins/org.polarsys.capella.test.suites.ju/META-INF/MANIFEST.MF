@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.suites.ju
-Bundle-Version: 1.1.1.qualifier
+Bundle-Version: 1.1.2.qualifier
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %providerName
@@ -24,5 +24,6 @@ Require-Bundle: org.polarsys.capella.test.business.queries.ju,
  org.polarsys.capella.test.progressmonitoring.ju,
  org.polarsys.capella.test.diagram.misc.ju,
  org.polarsys.capella.test.re.updateconnections.ju,
- org.polarsys.capella.test.commandline.ju
+ org.polarsys.capella.test.commandline.ju,
+ org.polarsys.capella.test.projection.ju
 Export-Package: org.polarsys.capella.test.suites.ju

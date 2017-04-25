@@ -16,17 +16,17 @@ import org.osgi.framework.BundleContext;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends Plugin {
+public class InterfaceGenerationActivator extends Plugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.polarsys.capella.core.projection.interfaces"; //$NON-NLS-1$
 
 	// The shared instance
-	private static Activator plugin;
+	private static InterfaceGenerationActivator plugin;
 	
 	/**
 	 * The constructor
 	 */
-	public Activator() {
+	public InterfaceGenerationActivator() {
 	  //
 	}
 
@@ -53,7 +53,7 @@ public class Activator extends Plugin {
 	 *
 	 * @return the shared instance
 	 */
-	public static Activator getDefault() {
+	public static InterfaceGenerationActivator getDefault() {
 		return plugin;
 	}
 }
