@@ -31,22 +31,14 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
-import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.mdsofa.common.misc.Couple;
-import org.polarsys.capella.common.menu.dynamic.CreationHelper;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Constraint;
-import org.polarsys.capella.core.data.information.datavalue.DatavalueFactory;
 import org.polarsys.capella.core.data.information.datavalue.OpaqueExpression;
 import org.polarsys.capella.core.linkedtext.ui.CapellaEmbeddedLinkedTextEditor;
 import org.polarsys.capella.core.linkedtext.ui.CapellaEmbeddedLinkedTextEditorInput;
 import org.polarsys.capella.core.model.helpers.ConstraintExt;
+import org.polarsys.capella.core.ui.properties.controllers.ConstraintController;
 import org.polarsys.capella.core.ui.properties.controllers.ISimpleEditableSemanticFieldController;
-import org.polarsys.capella.core.ui.properties.controllers.ISimpleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.helpers.DialogHelper;
 import org.polarsys.capella.core.ui.properties.helpers.LockHelper;
 import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
@@ -60,7 +52,7 @@ public class ConstraintReferenceField extends AbstractSemanticField {
   /**
    * Controller associated to this semantic field.
    */
-  protected ISimpleSemanticFieldController _controller;
+  protected ConstraintController _controller;
 
   private final Label _labelTextArea;
   private final Composite _textArea;
@@ -69,20 +61,22 @@ public class ConstraintReferenceField extends AbstractSemanticField {
   protected Button _valueDelBtn;
   protected Button _valueEditBtn;
 
-  private Constraint currentConstraint = null;
+  private Constraint _currentConstraint;
 
   /**
    * @param parent
    * @param label
    * @param widgetFactory
+   * @param displayOpenButton 
    * @param defaultName
    * @param controller
    */
   public ConstraintReferenceField(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory,
-      ISimpleEditableSemanticFieldController controller) {
+      boolean displayOpenButton, ConstraintController controller) {
     super(widgetFactory);
+    
     _controller = controller;
-
+    
     _labelTextArea = _widgetFactory.createLabel(parent, label);
     _labelTextArea.setLayoutData(new GridData(SWT.FILL, SWT.TOP, false, false));
 
@@ -95,7 +89,9 @@ public class ConstraintReferenceField extends AbstractSemanticField {
     _textArea.setLayout(new FillLayout());
 
     createEditButton(parent);
-    createOpenButton(parent);
+   if (displayOpenButton) {
+      createOpenButton(parent);
+   }
     createDeleteButton(parent);
   }
 
@@ -113,33 +109,20 @@ public class ConstraintReferenceField extends AbstractSemanticField {
     return button;
   }
 
-  public Constraint createConstraintIfNeeded(EObject semanticElement, EStructuralFeature semanticFeature) {
-    // Get constraint on semantic element
-    Constraint constraint = ((Constraint) semanticElement.eGet(semanticFeature));
-
-    // If element has no constraint, create one
-    if (null == constraint) {
-      constraint = CapellacoreFactory.eINSTANCE.createConstraint();
-      ((CapellaElement) semanticElement).getOwnedConstraints().add(constraint);
-      CreationHelper.performContributionCommands(constraint, semanticElement);
-      semanticElement.eSet(semanticFeature, constraint);
-    }
-    return constraint;
-  }
-
   /**
    * Create the mono line Text field used to edit the name of a Constraint.
+   * 
    * @param elementToEdit
    */
-  public void createConstraintNameTextField(final EObject elementToEdit) {
-    String constraintName = ((Constraint) elementToEdit).getName();
-    final Text constraintNameTextField = _widgetFactory.createText(_textArea, constraintName);
-    constraintNameTextField.addModifyListener(new ModifyListener() {
+  public void createConstraintNameTextField(final EObject semanticElement, final EStructuralFeature semanticFeature) {
+    String text = _controller.loadText(semanticElement, semanticFeature);
+    final Text defaultTextField = _widgetFactory.createText(_textArea, text);
+    defaultTextField.addModifyListener(new ModifyListener() {
       @Override
       public void modifyText(final ModifyEvent e) {
         AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
           public void run() {
-            ((Constraint) elementToEdit).setName(constraintNameTextField.getText());
+            _controller.editText(semanticElement, semanticFeature, defaultTextField.getText());
           }
         };
         executeCommand(command);
@@ -149,17 +132,18 @@ public class ConstraintReferenceField extends AbstractSemanticField {
 
   /**
    * Create a multi line Text filed used to edit texts that are not of type LinkedText.
+   * 
    * @param elementToEdit
    */
-  public void createDefaultTextTextField(final EObject elementToEdit) {
-    String text = getFirstOpaqueExpressionElement(elementToEdit).getValue();
+  public void createDefaultTextTextField(final EObject semanticElement, final EStructuralFeature semanticFeature) {
+    String text = _controller.loadText(semanticElement, semanticFeature);
     final Text defaultTextField = _widgetFactory.createText(_textArea, text, SWT.MULTI | SWT.V_SCROLL);
     defaultTextField.addModifyListener(new ModifyListener() {
       @Override
       public void modifyText(final ModifyEvent e) {
         AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
           public void run() {
-            ((OpaqueExpression) elementToEdit).getBodies().set(0, defaultTextField.getText());
+            _controller.editText(semanticElement, semanticFeature, defaultTextField.getText());
           }
         };
         executeCommand(command);
@@ -178,7 +162,7 @@ public class ConstraintReferenceField extends AbstractSemanticField {
     String tooltip = Messages.BrowseSemanticField_DelBtn;
     _valueDelBtn = createButton(parent_p, removeImage, tooltip);
   }
-  
+
   /**
    * Create Edit button.
    * 
@@ -193,36 +177,33 @@ public class ConstraintReferenceField extends AbstractSemanticField {
 
   /**
    * Create a LinkedText Editor to edit LinkedText content (or elements that are not already existing).
+   * 
    * @param semanticElement
    * @param semanticFeature
    * @param elementToEdit
    */
-  public void createLinkedTextEditor(final EObject semanticElement, final EStructuralFeature semanticFeature, final EObject elementToEdit ) {
+  public void createLinkedTextEditor(final EObject semanticElement, final EStructuralFeature semanticFeature) {
+
     CapellaEmbeddedLinkedTextEditor editor = new CapellaEmbeddedLinkedTextEditor(_textArea,
         SWT.H_SCROLL | SWT.V_SCROLL | _widgetFactory.getBorderStyle());
     final CapellaEmbeddedLinkedTextEditorInput input = new CapellaEmbeddedLinkedTextEditorInput(semanticElement) {
       @Override
       public String getText() {
-        Couple<String, String> oeElement = getFirstOpaqueExpressionElement(elementToEdit);
-        // OpaqueExpressionElement possibly does not exist
-        if (oeElement == null) {
-          return "";
-        }
-        return oeElement.getValue();
+        return _controller.loadText(semanticElement, semanticFeature);
       }
 
       @Override
       public void setText(final String linkedText) {
-        if ((linkedText == null || linkedText.isEmpty())
-            && (elementToEdit == null || getFirstOpaqueExpressionElement(elementToEdit) == null)) {
+        if ((linkedText == null || linkedText.isEmpty()) && _controller.getElementToEdit(semanticElement, semanticFeature) == null) {
           // setText is called on a mouse click in the editor -> do not create all model elements in this case
           return;
         }
         AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
           public void run() {
-            currentConstraint = createConstraintIfNeeded(semanticElement, semanticFeature);
-            EObject currentEditedElement = createOpaqueExpressionIfNeeded((Constraint) currentConstraint);
-            ((OpaqueExpression) currentEditedElement).getBodies().set(0, linkedText);
+            EObject constraint = _controller.loadValue(semanticElement, semanticFeature);
+            _controller.editText(semanticElement, semanticFeature, linkedText);
+            constraint = _controller.loadValue(semanticElement, semanticFeature);
+            _currentConstraint = (Constraint) constraint;
           }
         };
         executeCommand(command);
@@ -237,26 +218,6 @@ public class ConstraintReferenceField extends AbstractSemanticField {
     editor.setInput(input);
   }
 
-  public OpaqueExpression createOpaqueExpressionIfNeeded(Constraint constraint) {
-    ValueSpecification specification = constraint.getOwnedSpecification();
-
-    // If constraint has no OpaqueExpression, create one
-    if (null == specification) {
-      specification = DatavalueFactory.eINSTANCE.createOpaqueExpression();
-      constraint.setOwnedSpecification(specification);
-      CreationHelper.performContributionCommands(specification, constraint);
-    }
-
-    OpaqueExpression oe = (OpaqueExpression) specification;
-    // If OpaqueExpression has no content, create an empty LINKED_TEXT content
-    if (oe.getLanguages().isEmpty() || oe.getBodies().isEmpty()) {
-      oe.getLanguages().add(ConstraintExt.OPAQUE_EXPRESSION_LINKED_TEXT);
-      oe.getBodies().add("");
-    }
-
-    return (OpaqueExpression) specification;
-  }
-
   /**
    * Create Open button.
    * 
@@ -269,8 +230,6 @@ public class ConstraintReferenceField extends AbstractSemanticField {
     _valueOpenBtn = createButton(parent, openImage, tooltip);
   }
 
-  
-  
   /**
    * @param element
    * @param feature
@@ -282,6 +241,7 @@ public class ConstraintReferenceField extends AbstractSemanticField {
       setDataValue(element, feature, null);
     }
 
+    loadData(element, feature);
     if (_valueEditBtn != null)
       _valueEditBtn.setEnabled(true);
 
@@ -298,37 +258,6 @@ public class ConstraintReferenceField extends AbstractSemanticField {
         doDeleteCommand(element, feature);
       }
     };
-  }
-
-  public EObject getElementToEdit(EObject semanticElement, EStructuralFeature semanticFeature) {
-    if (_controller == null) {
-      return null;
-    }
-    EObject expectedConstraint = _controller.loadValue(semanticElement, semanticFeature);
-    if (expectedConstraint == null || !(expectedConstraint instanceof Constraint)) {
-      return null;
-    }
-    Constraint constraint = (Constraint) expectedConstraint;
-    if (constraint.getName() != null && !constraint.getName().isEmpty()) {
-      return constraint;
-    }
-    ValueSpecification expectedOpaqueExpression = constraint.getOwnedSpecification();
-    if (expectedOpaqueExpression == null || !(expectedOpaqueExpression instanceof OpaqueExpression)) {
-      return null;
-    }
-    OpaqueExpression opaqueExpression = (OpaqueExpression) expectedOpaqueExpression;
-    return opaqueExpression;
-  }
-
-  public Couple<String, String> getFirstOpaqueExpressionElement(EObject eObject) {
-    if (!(eObject instanceof OpaqueExpression)) {
-      return null;
-    }
-    OpaqueExpression oe = (OpaqueExpression) eObject;
-    if (oe.getLanguages().isEmpty() || oe.getBodies().isEmpty()) {
-      return null;
-    }
-    return new Couple<>(oe.getLanguages().get(0), oe.getBodies().get(0));
   }
 
   /**
@@ -352,11 +281,12 @@ public class ConstraintReferenceField extends AbstractSemanticField {
       public void run() {
         ((ISimpleEditableSemanticFieldController) _controller).editValue(_semanticElement, _semanticFeature,
             DEFAULT_CONSTRAINT_NAME);
+
       }
     };
     executeCommand(command);
   }
-  
+
   /**
    * Handle Open button click event.
    * 
@@ -379,8 +309,9 @@ public class ConstraintReferenceField extends AbstractSemanticField {
       }
     };
     executeCommand(command);
+
   }
-  
+
   /**
    * {@inheritDoc}
    */
@@ -399,52 +330,54 @@ public class ConstraintReferenceField extends AbstractSemanticField {
     if (_controller == null) {
       return;
     }
-    final EObject constraint = _controller.loadValue(semanticElement, semanticFeature);
-    if (constraint != null && constraint == currentConstraint) {
+
+    EObject constraint = _controller.loadValue(semanticElement, semanticFeature);
+    // Since we do some graphical changes while loading, we need to keep a trace to previous element to avoid massive ui
+    // refresh.
+    if (constraint != null && constraint == _currentConstraint) {
       return;
     }
+
+    _currentConstraint = (Constraint) constraint;
+
+    updateTextbox(_textArea);
+
+  }
+
+  private void updateTextbox(Composite textArea) {
 
     // Clear the text area (there should be only 1 child)
     for (Control c : _textArea.getChildren()) {
       c.dispose();
     }
 
-    final EObject elementToEdit = getElementToEdit(semanticElement, semanticFeature);
+    final EObject elementToEdit = _controller.getElementToEdit(_semanticElement, _semanticFeature);
 
     // Install editor/text field corresponding to the element to edit
     boolean useLinkedTextEditor = false;
     if (elementToEdit == null) {
       useLinkedTextEditor = true;
+
     } else if (elementToEdit instanceof OpaqueExpression) {
-      Couple<String, String> oeElement = getFirstOpaqueExpressionElement(elementToEdit);
-      if (oeElement == null || oeElement.getKey().equals(ConstraintExt.OPAQUE_EXPRESSION_LINKED_TEXT)) {
-        useLinkedTextEditor = true;
-      }
+      OpaqueExpression expression = (OpaqueExpression) elementToEdit;
+      useLinkedTextEditor = !ConstraintExt.hasBodies(expression) || ConstraintExt.hasPrimaryLinkedText(expression);
     }
+
     if (useLinkedTextEditor) {
       // Use a LinkedTextEditor if the first element of the OpaqueExpression is a LinkedText (if Constraint,
       // OpaqueExpression or LinkedText does not exist, create them)
-      createLinkedTextEditor(semanticElement, semanticFeature, elementToEdit);
+      createLinkedTextEditor(_semanticElement, _semanticFeature);
+
     } else if (elementToEdit instanceof OpaqueExpression) {
       // Edit the first text of the Opaque Expression using a multi line Text field
-      currentConstraint = (Constraint) EcoreUtil2.getFirstContainer(elementToEdit,
-          CapellacorePackage.Literals.CONSTRAINT);
-      createDefaultTextTextField(elementToEdit);
+      createDefaultTextTextField(_semanticElement, _semanticFeature);
+
     } else if (elementToEdit instanceof Constraint) {
       // Edit the Constraint name using a mono line Text field
-      currentConstraint = (Constraint) elementToEdit;
-      createConstraintNameTextField(elementToEdit);
+      createConstraintNameTextField(_semanticElement, _semanticFeature);
     }
-    _textArea.layout(true, true);
-  }
 
-  /**
-   * Set given controller.
-   * 
-   * @param controller
-   */
-  public void setController(ISimpleSemanticFieldController controller) {
-    _controller = controller;
+    _textArea.layout(true, true);
   }
 
   /**
@@ -515,16 +448,20 @@ public class ConstraintReferenceField extends AbstractSemanticField {
       if (source != null) {
         if (source.equals(_valueOpenBtn)) {
           handleOpenButtonClicked(_valueOpenBtn);
+
         } else if (source.equals(_valueDelBtn)) {
           handleDeleteButtonClicked();
+
         } else if (source.equals(_valueEditBtn)) {
           try {
             handleEditButtonClicked();
+
           } catch (EditableSemanticFieldException ex) {
             // this exception has been thrown in order to roll back the command
             // it shall not be visible by the end user
           }
         }
+        updateTextbox(_textArea);
       }
     }
   }
