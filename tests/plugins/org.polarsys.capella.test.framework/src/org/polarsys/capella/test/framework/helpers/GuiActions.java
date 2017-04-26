@@ -208,11 +208,12 @@ public class GuiActions {
     while (jobs.size() > 0) {
       for (Job job : jobs) {
         try {
-          job.join();
+          job.join(100,new NullProgressMonitor());
         } catch (InterruptedException e) {
           e.printStackTrace();
         }
       }
+      flushASyncGuiThread();
       jobs = getUIJobs();
     }
   }

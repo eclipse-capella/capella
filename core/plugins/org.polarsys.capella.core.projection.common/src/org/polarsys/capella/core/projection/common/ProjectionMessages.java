@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,6 +55,7 @@ public class ProjectionMessages extends NLS {
   public static String EventNotTransitioned;
   public static String RelatedFunctionalExchangeConveyNoExchangeItem;
   public static String RelatedConnectionConveyNoExchangeItem;
+  public static String RelatedFunctionalExchangeIsNotExternal;
 
   public static String SuperNull;
   public static String SubNull;

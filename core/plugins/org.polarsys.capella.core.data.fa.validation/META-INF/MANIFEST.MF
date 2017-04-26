@@ -7,7 +7,11 @@ Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.polarsys.capella.core.validation,
  org.apache.commons.lang
-Export-Package: org.polarsys.capella.core.data.fa.validation.connection,
+Export-Package: org.polarsys.capella.core.data.fa.validation,
+ org.polarsys.capella.core.data.fa.validation.componentPort,
+ org.polarsys.capella.core.data.fa.validation.connection,
+ org.polarsys.capella.core.data.fa.validation.function,
+ org.polarsys.capella.core.data.fa.validation.functionPort,
  org.polarsys.capella.core.data.fa.validation.functionalChain,
  org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement,
  org.polarsys.capella.core.data.fa.validation.functionalExchange

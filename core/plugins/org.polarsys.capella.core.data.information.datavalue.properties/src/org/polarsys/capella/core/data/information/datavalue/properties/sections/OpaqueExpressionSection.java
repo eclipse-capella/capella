@@ -79,6 +79,9 @@ public class OpaqueExpressionSection extends NamedElementSection {
       syncToModel();
     }
   };
+  private Group opaqueExpressionGroup;
+  private Button add;
+  private Button remove;
   
   static class OpaqueExpressionElement {
     
@@ -209,8 +212,8 @@ public class OpaqueExpressionSection extends NamedElementSection {
           elements.remove(opaqueExpression.getLanguages().size());
         }
       }
-
     }
+    updateRemoveButtonState(remove);
   }
 
   private void syncToModel() {
@@ -262,14 +265,13 @@ public class OpaqueExpressionSection extends NamedElementSection {
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createControls(parent, aTabbedPropertySheetPage);
 
-    Group opaqueExpressionGroup = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
-
     GridLayout layout = new GridLayout(5, false);
     layout.marginBottom = 2;
     layout.marginLeft = 2;
     layout.marginRight = 2;
     layout.marginTop = 2;
     
+    opaqueExpressionGroup = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
     opaqueExpressionGroup.setLayout(layout);
     GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
     gd.horizontalSpan = 2;
@@ -295,15 +297,18 @@ public class OpaqueExpressionSection extends NamedElementSection {
     data = new GridData(SWT.FILL, SWT.FILL, true, true);
     bodyEditorComposite.setLayoutData(data);
     
-    Button add = getWidgetFactory().createButton(opaqueExpressionGroup, null, SWT.PUSH);
+    // add button
+    add = getWidgetFactory().createButton(opaqueExpressionGroup, null, SWT.PUSH);
     add.setImage(ToolkitPlugin.getDefault().getImageRegistry().get(ToolkitPlugin.ADD_ITEM_IMAGE_ID));
     data = new GridData(30, SWT.DEFAULT);
     add.setLayoutData(data);
     
-    Button remove = getWidgetFactory().createButton(opaqueExpressionGroup, null, SWT.PUSH);
+    // remove button
+    remove = getWidgetFactory().createButton(opaqueExpressionGroup, null, SWT.PUSH);
     remove.setImage(ToolkitPlugin.getDefault().getImageRegistry().get(ToolkitPlugin.REMOVE_IMAGE_ITEM_ID));
     data = new GridData(30, SWT.DEFAULT);
     remove.setLayoutData(data);
+    updateRemoveButtonState(remove);
     
     remove.addSelectionListener(new SelectionListener() {
       @Override
@@ -312,8 +317,10 @@ public class OpaqueExpressionSection extends NamedElementSection {
         if (selected != null){
           getElements().remove(selected);
           syncToModel();
+          updateRemoveButtonState(remove);
         }
       }
+
       @Override
       public void widgetDefaultSelected(SelectionEvent e) {
       }
@@ -384,10 +391,14 @@ public class OpaqueExpressionSection extends NamedElementSection {
           }
           
           OpaqueExpressionElement oe = new OpaqueExpressionElement(getOpaqueExpression(), language, ""); //$NON-NLS-1$
+          oe.addPropertyChangeListener("body", bodyListener);
           getElements().add(oe);
+          
           languagesViewer.setSelection(new StructuredSelection(oe));
           syncToModel();
         }
+        
+        updateRemoveButtonState(remove);
       }
 
       @Override
@@ -400,6 +411,13 @@ public class OpaqueExpressionSection extends NamedElementSection {
 
   }
 
+  protected void updateRemoveButtonState(final Button remove) {
+    if (getElements().size() > 1)
+      remove.setEnabled(true);
+    else
+      remove.setEnabled(false);
+  }
+  
   /**
    * @param firstElement
    */
@@ -494,7 +512,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
         }
         @Override
         public void setText(String linkedText) {
-          _element.setBody(linkedText.isEmpty() ? null : linkedText);
+          _element.setBody(linkedText);
         }
       };
       editor.getSourceViewer().getTextWidget().addDisposeListener(new DisposeListener() {

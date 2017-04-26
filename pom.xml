@@ -552,6 +552,7 @@
 				<module>tests/plugins/org.polarsys.capella.test.commandline.ju</module>
 				<module>tests/plugins/org.polarsys.capella.test.platform.ju</module>
 				<module>tests/plugins/org.polarsys.capella.test.progressmonitoring.ju</module>
+				<module>tests/plugins/org.polarsys.capella.test.projection.ju</module>
 				<module>tests/plugins/org.polarsys.capella.test.re.updateconnections.ju</module>
 				<module>tests/plugins/org.polarsys.capella.test.recrpl.ju</module>
 				<module>tests/plugins/org.polarsys.capella.test.refinement.ju</module>

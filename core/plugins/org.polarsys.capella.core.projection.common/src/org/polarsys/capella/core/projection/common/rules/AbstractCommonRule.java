@@ -373,7 +373,7 @@ public abstract class AbstractCommonRule extends TransfoRule implements IRuleTra
       for (EObject res : result) {
         EObject transformed = res;
         if (res.eResource() == null) {
-          getHoldingResource(_transfo).getContents().add(res);
+          HoldingResourceHelper.attachToHoldingResource(res, getHoldingResource(_transfo));
         }
 
         String sourceText = EObjectLabelProviderHelper.getText(element_p);

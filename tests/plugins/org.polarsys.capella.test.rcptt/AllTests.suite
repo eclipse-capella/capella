@@ -5,8 +5,8 @@ Element-Type: testsuite
 Element-Version: 2.0
 Id: _H2g9YMEUEeWqb6y2_gGIKQ
 Manually-Ordered: true
-Runtime-Version: 2.0.1.201508250612
-Save-Time: 2/6/17 2:09 PM
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 4/10/17 4:35 PM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -20,5 +20,6 @@ _LPsygGYiEeaVsIgvj-cA7g	// kind: 'suite' name: 'PatternSuite' path: 'Patterns/Pa
 _s0WTkLfUEea5ZpGbd-RfXw	// kind: 'test' name: 'FragmentedModelDiffMerge' path: 'FragmentedModelDiffMerge/FragmentedModelDiffMerge.test'
 _KKad8L0gEeaNWvF_GpqW3w	// kind: 'suite' name: 'ValidationProfileSuite' path: 'PrefConfig/ValidationProfileSuite.suite'
 _zy85YBhIEee-A_RTBZbvjg	// kind: 'test' name: 'DetachVP' path: 'detachment/DetachVP.test'
+_AczyQB3uEeex3Nv8iShVXQ	// kind: 'suite' name: 'InnerDiagramsSuite' path: 'InnerDiagrams/InnerDiagramsSuite.suite'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

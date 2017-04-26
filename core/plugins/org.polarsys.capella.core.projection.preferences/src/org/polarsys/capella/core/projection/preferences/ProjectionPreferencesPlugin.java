@@ -117,18 +117,4 @@ public class ProjectionPreferencesPlugin extends Plugin {
     return new PreferenceHelper().transitionInterfaceWhileComponentTransition();
   }
 
-  /**
-   * Returns whether the interface generation should create standard port instead of flow ports
-   */
-  public boolean generateStandardPortRatherThanFlowPort() {
-    return new PreferenceHelper().generateStandardPortRatherThanFlowPort();
-  }
-
-  /**
-   * Returns whether the interface generation should generate ports and allocate interface to ports
-   */
-  public boolean generateComponentPort() {
-    return new PreferenceHelper().generateComponentPort();
-  }
-
 }

@@ -127,11 +127,11 @@ public abstract class CommonRule extends TransfoRule implements IRuleTransformat
 
         List<? extends EObject> newRoot = Query.retrieveTransformedElements(element_p, transfo_p);
         if (newRoot.size() == 0) {
-          String reason = reasonTransformFailed(element_p, transfo_p);
-          String sourceEClassName = element_p != null ? element_p.eClass().getName() : ICommonConstants.EMPTY_STRING;
-          notifyMessage(NLS.bind(ProjectionMessages.ElementNotTransitioned, EObjectLabelProviderHelper.getText(element_p), sourceEClassName)
-                        + ((reason == null || reason.length() == 0) ? ICommonConstants.EMPTY_STRING : reason), element_p,
+          String tfm = getTransformFailedMessage(element_p, transfo_p);
+          if (tfm != null){
+            notifyMessage(tfm, element_p,
               ReportManagerConstants.LOG_LEVEL_WARN, transfo_p);
+          }
         }
 
       } else if (reAttachIsNeeded(element_p, transfo_p)) {
@@ -152,6 +152,7 @@ public abstract class CommonRule extends TransfoRule implements IRuleTransformat
       }
     }
   }
+
 
   /**
    * Should be overridden when a sub transition is required.
@@ -250,11 +251,11 @@ public abstract class CommonRule extends TransfoRule implements IRuleTransformat
       return result;
     }
 
-    String reason = reasonTransformFailed(element_p, transfo_p);
-    String sourceEClassName = EObjectLabelProviderHelper.getMetaclassLabel(element_p, true);
-    notifyMessage(NLS.bind(ProjectionMessages.ElementNotTransitioned, EObjectLabelProviderHelper.getText(element_p), sourceEClassName)
-                  + ((reason == null || reason.length() == 0) ? ICommonConstants.EMPTY_STRING : reason), element_p, ReportManagerConstants.LOG_LEVEL_WARN,
-        transfo_p);
+    String tfm = getTransformFailedMessage(element_p, transfo_p);
+    if (tfm != null) {
+      notifyMessage(tfm, element_p, ReportManagerConstants.LOG_LEVEL_WARN,
+          transfo_p);
+    }
     return null;
   }
 
@@ -349,6 +350,16 @@ public abstract class CommonRule extends TransfoRule implements IRuleTransformat
       mess.setSource(getClass().getSimpleName());
       _logger.log(Level.toLevel(priority), mess);       
     }
+  }
+
+  /**
+   * Specifies the message that is logged when this rule decides that an element is not transformed.
+   */
+  protected String getTransformFailedMessage(EObject element, ITransfo transfo){
+    String reason = reasonTransformFailed(element, transfo);
+    String sourceEClassName = element != null ? element.eClass().getName() : ICommonConstants.EMPTY_STRING;
+    return NLS.bind(ProjectionMessages.ElementNotTransitioned, EObjectLabelProviderHelper.getText(element), sourceEClassName)
+        + ((reason == null || reason.length() == 0) ? ICommonConstants.EMPTY_STRING : reason);
   }
 
 }

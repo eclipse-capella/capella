@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -86,14 +86,22 @@ public class IProjectionPreferences {
    */
   public static final Boolean DEFAULT_STATE_MACHINE_PROJECTION = Boolean.FALSE;
 
-  public static final String PREFS_USE_STANDARDPORT_INSTEAD_FLOWPORT = "projection.useStandardPortInsteadFlowPort"; //$NON-NLS-1$
+  public static final String PREFS_INTERFACEGEN_PROPAGATE_EXCHANGE_ITEMS = "projection.interfaces.propagateEI"; //$NON-NLS-1$
 
-  public static String PREFS_GENERATE_COMPONENTPORT = "projection.interfaces.linkToComponentPort"; //$NON-NLS-1$
-
-  public static Boolean DEFAULT_USE_STANDARDPORT_INSTEAD_FLOWPORT = Boolean.FALSE;
-
-  public static Boolean DEFAULT_GENERATE_COMPONENTPORT = Boolean.TRUE;
-
+  public static final String PREFS_INTERFACEGEN_CREATE_COMPONENT_EXCHANGE = "projection.interfaces.createCE"; //$NON-NLS-1$
+  
   public static Boolean DEFAULT_FUNCTIONAL_ELEMENT_PROJECTION = Boolean.TRUE;
 
+  @Deprecated
+  public static final String PREFS_USE_STANDARDPORT_INSTEAD_FLOWPORT = "projection.useStandardPortInsteadFlowPort"; //$NON-NLS-1$
+
+  @Deprecated
+  public static String PREFS_GENERATE_COMPONENTPORT = "projection.interfaces.linkToComponentPort"; //$NON-NLS-1$
+
+  @Deprecated
+  public static Boolean DEFAULT_USE_STANDARDPORT_INSTEAD_FLOWPORT = Boolean.FALSE;
+
+  @Deprecated
+  public static Boolean DEFAULT_GENERATE_COMPONENTPORT = Boolean.TRUE;
+  
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,24 +22,35 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.VerifyKeyListener;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.VerifyEvent;
 import org.eclipse.swt.events.VerifyListener;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 public class EmbeddedLinkedTextEditor {
 
   private SourceViewer sv;
   private LinkedTextDocument.Input _input;
   private LinkedTextDocument _document;
-  
-  public EmbeddedLinkedTextEditor(Composite parent, int style){
+  private final String INITIAL_TEXT = "<Press key \"Ctrl+Space\" and type name for Content Assist>";
+  private Color defaultTextColor;
+
+  public EmbeddedLinkedTextEditor(Composite parent, int style) {
     sv = createSourceViewer(parent, style);
     sv.getTextWidget().addKeyListener(new InputKeyListener(sv));
     sv.getTextWidget().setAlwaysShowScrollBars(false);
+    sv.getTextWidget().setToolTipText(INITIAL_TEXT);
+    defaultTextColor = sv.getTextWidget().getForeground();
+  }
+
+  protected Color getHintColor() {
+    return sv.getTextWidget().getDisplay().getSystemColor(SWT.COLOR_DARK_GRAY);
   }
 
   /**
@@ -61,8 +72,11 @@ public class EmbeddedLinkedTextEditor {
       public void documentChanged(final DocumentEvent event) {
         sv.getControl().getDisplay().asyncExec(new Runnable(){
           @Override
-          public void run(){
-            _input.setText(_document.saveToRaw());
+          public void run() {
+            String content = _document.saveToRaw();
+            if (_document.get().equals(INITIAL_TEXT))
+              return;
+            _input.setText(content);
           }
         });
       }
@@ -71,7 +85,12 @@ public class EmbeddedLinkedTextEditor {
         //nop
       }
     });
-    
+
+    if (_document.get().equals(ICommonConstants.EMPTY_STRING)) {
+      sv.getTextWidget().setForeground(getHintColor());
+      _document.set(INITIAL_TEXT);
+    }
+
     sv.getTextWidget().addDisposeListener(new DisposeListener() {
       @Override
       public void widgetDisposed(DisposeEvent e) {
@@ -80,6 +99,25 @@ public class EmbeddedLinkedTextEditor {
         }
       }
     });
+
+    sv.getTextWidget().addFocusListener(new FocusListener() {
+      @Override
+      public void focusLost(FocusEvent e) {
+        if (_document.get().equals(ICommonConstants.EMPTY_STRING)) {
+          sv.getTextWidget().setForeground(getHintColor());
+          _document.set(INITIAL_TEXT);
+        }
+      }
+
+      @Override
+      public void focusGained(FocusEvent e) {
+        if (_document.get().equals(INITIAL_TEXT)) {
+          sv.getTextWidget().setForeground(defaultTextColor);
+          _document.set(ICommonConstants.EMPTY_STRING);
+        }
+      }
+    });
+
     sv.setDocument(_document, new AnnotationModel());
     sv.invalidateTextPresentation();
   }

@@ -7,7 +7,6 @@ Bundle-Activator: org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlu
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.ui.toolkit;visibility:=reexport,
  org.polarsys.capella.core.data.gen;visibility:=reexport,
- org.polarsys.capella.core.model.handler;visibility:=reexport,
  org.polarsys.capella.common.ui.services;visibility:=reexport,
  org.eclipse.sirius.common.ui;visibility:=reexport,
  org.eclipse.sirius;visibility:=reexport,
@@ -27,7 +26,9 @@ Require-Bundle: org.polarsys.capella.core.ui.toolkit;visibility:=reexport,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.common.flexibility.wizards,
  org.eclipse.sirius.diagram.ui,
- org.polarsys.kitalpha.ad.services
+ org.polarsys.kitalpha.ad.services,
+ org.polarsys.capella.core.linkedtext.ui,
+ org.polarsys.capella.common.linkedtext.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.ui.properties,

@@ -20,6 +20,6 @@
   </parent>
   <groupId>org.polarsys</groupId>
   <artifactId>org.polarsys.capella.test.diagram.tools.ju</artifactId>
-  <version>1.1.1-SNAPSHOT</version>
+  <version>1.2.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>

@@ -86,18 +86,46 @@ The Semantic Browser shows the Component Exchanges are correctly allocated to th
  
 === Illustration ===
  
-Model before generation: Exchange Items are referenced by the Functional Exchange but not by the input and output Function Ports.
+Model before propagation: EI 1 and EI 2 are referenced by the Functional Exchange whereas the Function Input Port on Physical Function 2 references EI 3 and EI 4:
 
+[[Image:Images/propagate_ei_diagram.png|483x85px]]
+[[Image:Images/propagate_ei_port_before.png|980x196px]]
  
 [[Image:Images/7.1.%20Modeling%20accelerators_html_m7eccf2be.png|700x500px]]
+Model after propagation: Exchange Item references to EI 1 and EI 2 have been added to the Function Input Port:
 
+[[Image:Images/propagate_ei_port_after.png|981x221px]]
  
-Model after propagation: The Exchange Items referenced by the Functional Exchange have been added as references from the input and output Function Ports.
+The same change is applied to the Function Output Port.
 
+<br>
+<br>
  
 [[Image:Images/7.1.%20Modeling%20accelerators_html_1a7918c9.png|600x200px]]
+== Synchronization of Exchange Items on Functional Exchanges and Ports ==
+
+'''Source element''': Functional Exchange
+ 
+ 
+'''Command:''' Modeling Accelerators / Synchronize Exchange Items and Function Ports
+
+
+'''Effect:''' Adds references from input and output Function Ports to the Exchange Items associated to the selected Functional Exchange, and removes any other Exchange Item reference from these Function Ports.
 
  
+=== Illustration ===
+ 
+Model before synchronization: EI 1 and EI 2 are referenced by the Functional Exchange whereas the Function Input Port on Physical Function 2 references EI 3 and EI 4:
+
+[[Image:Images/propagate_ei_diagram.png|483x85px]]
+[[Image:Images/propagate_ei_port_before.png|980x196px]]
+
+Model after synchronization: The Exchange Item references to EI 3 and EI 4 have been removed from the Function Input Port, and references to EI 1 and EI 2 have been added:
+
+[[Image:Images/synchronize_ei_port_after.png|981x186px]]
+
+The same change is applied to the Function Output Port.
+
 <br>
 <br>
 
@@ -245,7 +273,7 @@ If the Interface synchronization algorithm finds such a realization link between
 '''Effect:''' Analyze the Component Exchanges, the Functional Exchanges they carry and the Exchange Items associated to the Functional Exchanges to generate a set of Interfaces between Components
 
  
-=== Illustration ===
+=== Illustration 1 ===
  
 Source model: Two components, three Component Exchanges, four Functional Exchanges associated to Exchange Items.
 
@@ -264,8 +292,15 @@ Result of the generation of Interfaces: One Interface is created per Component E
  
 [[Image:Images/7.1.%20Modeling%20accelerators_html_m652c731a.png|554x282px]]
 
+=== Illustration 2 ===
  
-<br>
-<br>
+This example demonstrates interface generation in the following cases:
+* A functional exchange which is allocated to a component exchange.
+* A functional exchange with function ports that are allocated to component ports. The functional exchange itself is not allocated to the component exchange.
+* A functional exchange without a corresponding component exchange.
 
-   
+[[Image:Images/interface_from_allocated_functions_before.png|522x484px]]
+ 
+Three interfaces will be generated:
+ 
+[[Image:Images/interface_from_allocated_functions_after.png|684x171px]]

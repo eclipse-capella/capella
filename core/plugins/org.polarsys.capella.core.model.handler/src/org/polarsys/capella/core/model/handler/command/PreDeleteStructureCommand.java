@@ -50,7 +50,7 @@ public class PreDeleteStructureCommand extends DeleteStructureCommand {
   @Override
   protected void doPrepare() {
     // Fake deleting representations according to semantic elements.
-    Collection<? extends EObject> allContainedRepresentationsFor = RepresentationHelper.getAllRepresentationsTargetedBy(getElementsToDelete());
+    Collection<? extends EObject> allContainedRepresentationsFor = RepresentationHelper.getAllRepresentationDescriptorsTargetedBy(getElementsToDelete());
     append(new PreRemoveCommand((Collection<EObject>) allContainedRepresentationsFor, handler));
     append(new PreRemoveCommand((Collection<EObject>) getElementsToDelete(), handler));
   }

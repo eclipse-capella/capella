@@ -289,6 +289,22 @@
          </categoryQuery>
       </category>
       <category
+            id="org.polarsys.capella.core.semantic.queries.SystemComponentInvolvingCapabilityRealizations"
+            isTopLevel="true"
+            name="Involving Capability Realizations">
+         <availableForType
+               class="org.polarsys.capella.core.data.cs.SystemComponent">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SystemComponentInvolvingCapabilityRealizations">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
             id="------------- Logical Component -----------">
       </category>
       <category
@@ -1242,7 +1258,7 @@
             isTopLevel="true"
             name="Involving Capabilities">
          <availableForType
-               class="org.polarsys.capella.core.data.ctx.Actor">
+               class="org.polarsys.capella.core.data.cs.AbstractActor">
          </availableForType>
          <targetBrowserId
                id="ReferencingElementBrowser">
@@ -1258,7 +1274,7 @@
             isTopLevel="true"
             name="Involving Capability Realizations">
          <availableForType
-               class="org.polarsys.capella.core.data.ctx.Actor">
+               class="org.polarsys.capella.core.data.cs.AbstractActor">
          </availableForType>
          <targetBrowserId
                id="ReferencingElementBrowser">
@@ -5337,6 +5353,38 @@
          <categoryQuery>
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.PAAbstractCapabilityInvolvedFunctions">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapabilityRealization_involvedActors"
+            isTopLevel="true"
+            name="Involved Actors">
+         <availableForType
+               class="org.polarsys.capella.core.data.la.CapabilityRealization">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapabilityRealization_involvedActors">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapabilityRealization_involvedComponents"
+            isTopLevel="true"
+            name="Involved Components">
+         <availableForType
+               class="org.polarsys.capella.core.data.la.CapabilityRealization">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapabilityRealization_involvedComponents">
             </basicQuery>
          </categoryQuery>
       </category>

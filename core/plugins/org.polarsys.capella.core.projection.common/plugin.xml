@@ -13,6 +13,23 @@
 <plugin>
    <extension
          point="org.polarsys.capella.core.tiger">
+      <resolver
+            class="org.polarsys.capella.core.projection.common.resolver.UIResolver"
+            id="org.polarsys.capella.core.projection.common.uiResolver"
+            priority="low">
+      </resolver>
+   </extension>
+   
+   
+   <extension
+         point="org.polarsys.capella.core.tiger">
+         
+     <ruleset context="org.polarsys.capella.core.projection.constraint"
+      	rulepackage="org.polarsys.capella.core.projection.common.rules.core">
+          <rule rulename="Rule_Constraint"/>
+          <rule rulename="Rule_OpaqueExpression"/>
+       </ruleset>
+       
       <ruleset context="org.polarsys.capella.core.projection.common.resolver">
          <finalizer class="org.polarsys.capella.core.projection.common.resolver.ResolverFinalizer"/>
       </ruleset>

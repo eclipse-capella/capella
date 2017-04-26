@@ -1080,24 +1080,24 @@
       <key
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.moveDown"
             sequence="CTRL+PAGE_DOWN"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+            schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"/>
       <key
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.moveUp"
             sequence="CTRL+PAGE_UP"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+            schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"/>
       <key
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
             sequence="F8">
       </key>
       <key
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showInDiagramCommand"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
             sequence="F10">
       </key>
       <key
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementsCommand"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
             sequence="F7">
       </key>
    </extension>

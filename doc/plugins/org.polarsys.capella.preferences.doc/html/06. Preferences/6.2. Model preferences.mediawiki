@@ -171,11 +171,8 @@ If the preference is activated, the tree will be displayed. For significant mode
 On the sub section of '''Capella / Transitions/Generation preferences''', it is possible to specify the scope of automatic transitions.
 
  
-[[Image:Images/6.2.%20Model%20preferences_html_m73c38954.png|753x478px]]
+[[Image:Images/6.2.%20Model%20preferences_html_m73c38954.png|799x668px]]
 
- 
-* The checkbox &ldquo;'''Use STANDARD Component Port rather than FLOW 	Component Port'''&rdquo; specifies whether generation of component 	exchanges and interfaces generate STANDARD Component Port rather 	than FLOW Component Port.
-* The checkbox &ldquo;'''Generate Component Port while generating 	Interfaces'''&rdquo; specifies whether generation of interfaces 	from allocated functions generates providing/requiring Component 	Port rather than implementation/usage links.
 * The radio buttons &ldquo;'''Propagate logical component breakdown in 	physical architecture'''&rdquo; and &ldquo;'''Propagate only leaf 	logical components in physical architecture'''&rdquo; specifies 	whether the breakdown of Logical Components is kept at physical 	level or not.
 * The checkbox &ldquo;'''Transit interfaces handled by Components from 	context/logical layers to physical architecture'''&rdquo; specifies 	whether interfaces are duplicated from Logical architecture to 	Physical architecture when performing a Logical Component to 	Physical Component transition. If not activated, Physical Components 	will directly implement / use / provide / require interface located 	in the system analysis and logical architecture.
 * The checkbox &ldquo;'''Transit allocated Exchange Items while 	transition of Interfaces, Functions or Components'''&rdquo; 	specifies whether Interfaces, Functions or Components transition 	triggers transition of related Exchange Items (i.e. duplicates 	Exchange Items from one engineering phase to the following one). If 	not activated, Interface, Functions and Component Exchanges in the 	target engineering phase will still refer the Exchange Items located 	in the previous engineering phase.
@@ -183,7 +180,9 @@ On the sub section of '''Capella / Transitions/Generation preferences''', it is 
 * The checkbox &ldquo;'''Transit State Machines owned by a Component 	while transition of Components'''&rdquo; specifies whether State 	Machines transition is triggered when performing a Component 	transition.
 * The checkbox &ldquo;'''Transit Functional elements allocated by an 	Operational Entity or Operational Actor while their transition'''&rdquo; 	specifies whether Operational Activities are transformed into System 	Functions when performing a transition of Operational Entities or 	Actors.
 * The checkbox '''&ldquo;Include involved elements&rdquo;''' on the 	Property Values section specifies whether involved elements will be 	propagated while a transition of Property Values
- 
+* The checkbox '''&ldquo;Propagate Exchange Items from Functional Exchanges to Function Ports&rdquo;''' specifies whether Exchange Items from Functional Exchanges should be propagated to their related Function Ports during Interface generation.
+* The checkbox '''&ldquo;Create Component Exchange Between provider/requirer ports&rdquo;''' specifies if the Interface generation should create a Component Exchange between each pair of Interface provider/requirer ports if such an exchange does not already exist.
+
 <br>
 <br>
 

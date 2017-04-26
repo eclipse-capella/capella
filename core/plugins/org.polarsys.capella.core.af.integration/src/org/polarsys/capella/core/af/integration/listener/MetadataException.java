@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,7 @@ public class MetadataException extends RuntimeException {
 	}
 
 	public MetadataException(IStatus status) {
-		this(childMessages(status), status);
+		this("Migration needed or missing Viewpoint(s), see documentation:\n" + childMessages(status), status);
 	}
 
 	public MetadataException(String message, IStatus status) {
@@ -34,19 +34,11 @@ public class MetadataException extends RuntimeException {
 	}
 
 	protected static String childMessages(IStatus status) {
-		String result = "";
-		int i = 0;
+		StringBuilder result = new StringBuilder();
 		for (IStatus child : status.getChildren()) {
-			result += child.getMessage();
-			if (i < status.getChildren().length - 1) {
-				result += "\n";
-			}
-			if (i < status.getChildren().length) {
-				result += "\n";
-			}
-			i++;
+			result.append("- " + child.getMessage() + "\n");
 		}
-		return result;
+		return result.toString();
 	}
 
 }

@@ -5,8 +5,8 @@ Element-Name: ValidationProfileActions
 Element-Type: context
 Element-Version: 2.0
 Id: _ZR3fQKKHEeaAAPJPtfviTA
-Runtime-Version: 2.0.0.201506042314
-Save-Time: 12/12/16 6:14 PM
+Runtime-Version: 2.1.0.201605312320
+Save-Time: 4/27/17 9:33 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -253,9 +253,9 @@ proc "checkDefaultPreferences" [val projectName] {
 	        checkPropertyButtonSelected "Propagate logical component breakdown in physical architecture" true
 	        checkPropertyButtonSelected "Propagate only leaf logical component in physical architecture" false
 	    }
-	    with [get-group "Default Component Port, Exchange and Interface generation"] {
-	        checkPropertyButtonSelected "Use STANDARD Component Port rather than FLOW Component Port" false
-	        checkPropertyButtonSelected "Generate Component Port while generating Interfaces" true
+	    with [get-group "Interface generation"] {
+	        checkPropertyButtonSelected "Propagate Exchange Items from Functional Exchange to Function Ports" true
+	        checkPropertyButtonSelected "Create component exchange between provider/requirer ports" false
 	    }
 	    get-group Log | checkPropertyButtonSelected "Enable log in Information view" true
 	
@@ -330,9 +330,9 @@ proc "changePreferences" [val projectName] {
 	    with [get-group "Logical Components to Physical Components"] {
 	        get-button "Propagate only leaf logical component in physical architecture" | click
 	    }
-	    with [get-group "Default Component Port, Exchange and Interface generation"] {
-	        get-button "Use STANDARD Component Port rather than FLOW Component Port" | check
-	        get-button "Generate Component Port while generating Interfaces" | uncheck
+	    with [get-group "Interface generation"] {
+	        get-button "Propagate Exchange Items from Functional Exchange to Function Ports" | uncheck
+	        get-button "Create component exchange between provider/requirer ports" | check
 	    }
 	    get-group Log | get-button "Enable log in Information view" | uncheck
 	
@@ -413,10 +413,10 @@ proc "checkChangedPreferences" [val projectName] {
 	        get-button "Propagate only leaf logical component in physical architecture" | get-property selected 
 	            | equals true | verify-true
 	    }
-	    with [get-group "Default Component Port, Exchange and Interface generation"] {
-	        get-button "Use STANDARD Component Port rather than FLOW Component Port" | get-property selected | equals true 
+	    with [get-group "Interface generation"] {
+	        get-button "Propagate Exchange Items from Functional Exchange to Function Ports" | get-property selected | equals false 
 	            | verify-true
-	        get-button "Generate Component Port while generating Interfaces" | get-property selected | equals false 
+	        get-button "Create component exchange between provider/requirer ports" | get-property selected | equals true 
 	            | verify-true
 	    }
 	    get-group Log | get-button "Enable log in Information view" | get-property selected | equals false | verify-true
@@ -499,10 +499,10 @@ proc "checkUnchangedPreferencesProject1" [val projectName] {
 	        get-button "Propagate only leaf logical component in physical architecture" | get-property selected 
 	            | equals false | verify-true
 	    }
-	    with [get-group "Default Component Port, Exchange and Interface generation"] {
-	        get-button "Use STANDARD Component Port rather than FLOW Component Port" | get-property selected | equals true 
+	    with [get-group "Interface generation"] {
+	        get-button "Propagate Exchange Items from Functional Exchange to Function Ports" | get-property selected | equals false 
 	            | verify-true
-	        get-button "Generate Component Port while generating Interfaces" | get-property selected | equals false 
+	        get-button "Create component exchange between provider/requirer ports" | get-property selected | equals true 
 	            | verify-true
 	    }
 	    get-group Log | get-button "Enable log in Information view" | get-property selected | equals false | verify-true
