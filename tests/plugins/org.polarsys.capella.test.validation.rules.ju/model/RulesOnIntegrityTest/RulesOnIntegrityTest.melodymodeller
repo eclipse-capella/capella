@@ -4501,10 +4501,7 @@
       <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.la:LogicalFunctionPkg"
           id="b31b4210-9b63-489e-b8aa-df340120ece9" name="Logical Functions">
         <ownedLogicalFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
-            id="e294b96d-272c-4780-aae7-63e1b4b1d177" name="Root Logical Function">
-          <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
-              id="f9eaae56-9170-4327-b67f-b5b38ee9f430" sourceElement="#e294b96d-272c-4780-aae7-63e1b4b1d177"/>
-        </ownedLogicalFunctions>
+            id="e294b96d-272c-4780-aae7-63e1b4b1d177" name="Root Logical Function"/>
       </ownedFunctionPkg>
       <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
           id="05533cfb-4fc6-4627-9254-268cf9ca6387" name="Requirements"/>
@@ -4632,6 +4629,14 @@
                 <languages>capella:linkedText</languages>
               </ownedSpecification>
             </ownedConstraints>
+            <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
+                id="93134332-0e6c-43c2-a9ae-01fe8aa2ddcb" name="" constrainedElements="#e294b96d-272c-4780-aae7-63e1b4b1d177">
+              <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
+                  id="cf71b739-fdca-492e-a8fd-b35b054f5604">
+                <bodies></bodies>
+                <languages>capella:linkedText</languages>
+              </ownedSpecification>
+            </ownedConstraints>
             <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
                 id="22807b34-6b72-4053-96bf-cd77a42058b3" name="Mode 1" outgoing="#5419f833-fa98-40c5-a06b-9fe19d9f2757">
               <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
@@ -4672,13 +4677,9 @@
               id="fb1137b4-6245-4546-a1a9-656511c95b18" name="CP 1" orientation="IN"
               kind="FLOW"/>
         </ownedLogicalComponents>
-        <ownedSystemRealizations xsi:type="org.polarsys.capella.core.data.la:SystemRealization"
-            id="a231fa3c-5ea0-4999-aaf8-40b415975d86" sourceElement="#d67c8cb4-b233-4d21-985e-e9a6538f9c36"/>
       </ownedLogicalComponent>
       <ownedLogicalActorPkg xsi:type="org.polarsys.capella.core.data.la:LogicalActorPkg"
           id="5ffe9086-83b2-4810-8a41-afc18a3619c8" name="Logical Actors"/>
-      <ownedSystemAnalysisRealizations xsi:type="org.polarsys.capella.core.data.la:SystemAnalysisRealization"
-          id="3b689cb5-b545-4a1a-b231-26b795b405a1" sourceElement="#b6337434-e9f0-4978-9d1c-680aff07a5d3"/>
     </ownedArchitectures>
   </ownedModelRoots>
 </org.polarsys.capella.core.data.capellamodeller:Project>
