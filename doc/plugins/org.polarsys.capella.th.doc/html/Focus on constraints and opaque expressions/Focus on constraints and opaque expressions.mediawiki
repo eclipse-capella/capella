@@ -35,3 +35,14 @@ An opaque expression is an uninterpreted textual statement that denotes a (possi
 == Constraints label ==
 
 The label of a constraint is either the name of the constraint or their expression (Unary, Binary or Opaque Expression). For constraint defined with opaque expression, the label is simply calculated from the first content which corresponds to the first language in the list. So the label can be adjusted by moving the language list order.
+
+== Constraints expression fields edition ==
+As Linked Text editor, the direct edition of the following constraint expression fields include a content edition assist, simplifying model elements reference:
+
+* Guard (State Transition/ Operand)
+* Pre/Post Condition (Scenario)
+* Exchange Context (Sequence Message)
+* Owned Specification (Constraint)
+* Change Event/ Time Event (State Transition)
+
+[[Image:Images/Cons6.png|600x500px]]<br>
