@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Capella" id="org.polarsys.capella.core.platform.sirius.ui.perspective.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.0.4.qualifier" useFeatures="false" includeLaunchers="true">
+<product name="Capella" id="org.polarsys.capella.core.platform.sirius.ui.perspective.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.0.5.qualifier" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
       <image path="icons/CapellaAbout.png"/>
