@@ -847,9 +847,9 @@
           <repository
               url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
           <repository
-              url="https://hudson.eclipse.org/diffmerge/job/emf-diffmerge-core-master/167/artifact/releng/org.eclipse.emf.diffmerge.update/target/repository"/>
+              url="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
           <repository
-              url="https://hudson.eclipse.org/diffmerge/job/emf-diffmerge-patterns-master/106/artifact/releng/org.eclipse.emf.diffmerge.patterns.update/target/repository"/>
+              url="http://download.eclipse.org/diffmerge/releases/0.7.1/edm-patterns-site"/>
           <repository
               url="https://hudson.polarsys.org/kitalpha/job/kitalpha-v1.1.x/269/artifact/result/publish/kitalpha_runtime/site.p2"/>
           <repository
@@ -936,7 +936,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/sirius/updates/stable/4.1.4-S20170321-101206/neon"/>
+              url="http://download.eclipse.org/sirius/updates/milestones/5.0.0M6/neon"/>
         </repositoryList>
       </targlet>
       <targlet
@@ -980,7 +980,11 @@
       <targlet
           name="Diffmerge">
         <requirement
-            name="org.eclipse.emf.diffmerge.sdk.feature.feature.group"/>
+            name="org.eclipse.emf.diffmerge.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.diffmerge.sirius.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.diffmerge.gmf.feature.feature.group"/>
         <repositoryList
             name="Neon">
           <repository
