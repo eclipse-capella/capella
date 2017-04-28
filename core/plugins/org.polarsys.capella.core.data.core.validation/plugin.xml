@@ -347,10 +347,10 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  The constraint {0} is not used on {1} of {2} ({3}).
+                  The constraint {0} is not used in the model{1}
                </message>
                <description>
-                  This rule checks that Constraints under a CapellaElement with Constraint references are used.
+                  This rule checks that Constraints are used in the model.
                </description>
                <target
                      class="Constraint">
