@@ -171,7 +171,7 @@
     <requirement
         name="org.eclipse.releng.tools.feature.group"/>
     <repository
-        url="http://download.eclipse.org/sirius/updates/releases/4.0.0/neon"/>
+        url="http://download.eclipse.org/sirius/updates/releases/4.1.4/neon"/>
     <repository
         url="http://download.eclipse.org/releases/neon"/>
     <repository
