@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="Logical Descriptions" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="Logical Descriptions" version="11.1.1.201610211630">
   <ownedViewpoints name="Logical Architecture" modelFileExtension="melodymodeller" icon="">
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Logical Functions - Requirements" domainClass="LogicalArchitecture">
       <ownedLineMappings name="Logical Functions 2" domainClass="AbstractFunction" semanticCandidatesExpression="&lt;%getTableRootAbstractFunctions()%>" headerLabelExpression="feature:name">
@@ -1293,44 +1293,17 @@
           <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Functions. Create or delete graphical objects corresponding to already existing Functions. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model." name="Show/Hide Functions" label="Functions" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
-              <subVariables xsi:type="tool:AcceleoVariable" name="visibleFunctions" computationExpression="&lt;% $elementView.getDisplayedAbstractFunctions()[allocationBlocks.filter(&quot;AbstractActor&quot;).nSize() == 0]%>"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="visibleFunctionViews" computationExpression="&lt;% $elementView.getDisplayedAbstractFunctionViews()[target.allocationBlocks.filter(&quot;AbstractActor&quot;).nSize() == 0]%>"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="visibleFunctions" computationExpression="&lt;% $elementView.getDisplayedAbstractFunctions() %>"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="visibleFunctionViews" computationExpression="&lt;% $elementView.getDisplayedAbstractFunctionViews() %>"/>
             </elementView>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectFunctions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                   <parameters name="context" value="&lt;% $elementView %>"/>
-                  <parameters name="scope" value="&lt;% $elementView.getAvailableAbstractFunctionsToInsertInDataFlowBlank()[allocationBlocks.filter(&quot;AbstractActor&quot;).nSize() == 0]%>"/>
+                  <parameters name="scope" value="&lt;% $elementView.getAvailableAbstractFunctionsToInsertInDataFlowBlank() %>"/>
                   <parameters name="resultVariable" value="selectedFunctions"/>
                   <parameters name="wizardMessage" value="Select Functions and ControlNodes to show in &lt;%$element.name%>."/>
                   <parameters name="initialSelection" value="&lt;%$visibleFunctions%>"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selectedFunctions == &quot;WIZARD_CANCELED&quot;) %>">
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="ShowHideFunctions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideFunctions">
-                    <parameters name="view" value="&lt;%$elementView%>"/>
-                    <parameters name="selected functions" value="&lt;%$selectedFunctions%>"/>
-                    <parameters name="visible functions" value="&lt;%$visibleFunctions%>"/>
-                    <parameters name="visible function views" value="&lt;%$visibleFunctionViews%>"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Actor Functions. Create or delete graphical objects corresponding to already existing Functions allocated to Actors. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model." name="Show/Hide Actor Functions" label="Actor Functions" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <element name="element"/>
-            <elementView name="elementView">
-              <subVariables xsi:type="tool:AcceleoVariable" name="visibleFunctions" computationExpression="&lt;% $elementView.getDisplayedAbstractFunctions()[allocationBlocks.filter(&quot;AbstractActor&quot;).nSize() > 0]%>"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="visibleFunctionViews" computationExpression="&lt;% $elementView.getDisplayedAbstractFunctionViews()[target.allocationBlocks.filter(&quot;AbstractActor&quot;).nSize() > 0]%>"/>
-            </elementView>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectFunctions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                  <parameters name="context" value="&lt;% $elementView %>"/>
-                  <parameters name="scope" value="&lt;% $elementView.getAvailableAbstractFunctionsToInsertInDataFlowBlank()[allocationBlocks.filter(&quot;AbstractActor&quot;).nSize() > 0]%>"/>
-                  <parameters name="resultVariable" value="selectedFunctions"/>
-                  <parameters name="wizardMessage" value="Select Actor Functions to show in &lt;%$element.name%>."/>
-                  <parameters name="initialSelection" value="&lt;% $visibleFunctions%>"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selectedFunctions == &quot;WIZARD_CANCELED&quot;) %>">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="ShowHideFunctions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideFunctions">

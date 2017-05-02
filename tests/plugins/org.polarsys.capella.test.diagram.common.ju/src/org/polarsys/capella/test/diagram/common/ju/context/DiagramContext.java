@@ -53,7 +53,7 @@ public class DiagramContext extends SessionContext {
   private Map<String, DDiagramElement> _viewObjectMap;
 
   private String _type;
-  
+
   public Map<String, DDiagramElement> getViewObjectMap() {
     if (null == _viewObjectMap) {
       _viewObjectMap = new HashMap<String, DDiagramElement>();
@@ -72,7 +72,7 @@ public class DiagramContext extends SessionContext {
     _type = _diagram.getDescription().getName();
     _sessionContext = context;
   }
-  
+
   public String getType() {
     return _type;
   }
@@ -120,6 +120,12 @@ public class DiagramContext extends SessionContext {
     return org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper.getOnDiagram(_diagram, semantic);
   }
 
+  public DDiagramElement getView(String semanticIdentifier, DSemanticDecorator view) {
+    EObject semantic = getSemanticElement(semanticIdentifier);
+    return org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper.getOnDiagram(_diagram, semantic,
+        view);
+  }
+
   /**
    * @param semantic
    * @return
@@ -141,24 +147,22 @@ public class DiagramContext extends SessionContext {
     DSemanticDecorator view = getView(identifier);
 
     boolean result = view != null;
-    Assert.assertTrue(
-        NLS.bind(CommonTestMessages.objectRepresentationNotAvailableOnDiagram,
-            EObjectLabelProviderHelper.getText(eObject)), result);
+    Assert.assertTrue(NLS.bind(CommonTestMessages.objectRepresentationNotAvailableOnDiagram,
+        EObjectLabelProviderHelper.getText(eObject)), result);
 
     if (mappingName != null) {
-      DiagramElementMapping mapping = DiagramServices.getDiagramServices().getAbstractNodeMapping(
-          getDiagram().getDescription(), mappingName);
-      Assert.assertTrue(NLS.bind(CommonTestMessages.wrongMapping, mappingName), DiagramServices.getDiagramServices()
-          .isMapping((DDiagramElement) view, mapping));
+      DiagramElementMapping mapping = DiagramServices.getDiagramServices()
+          .getAbstractNodeMapping(getDiagram().getDescription(), mappingName);
+      Assert.assertTrue(NLS.bind(CommonTestMessages.wrongMapping, mappingName),
+          DiagramServices.getDiagramServices().isMapping((DDiagramElement) view, mapping));
     }
   }
 
   public void hasntView(String identifier) {
     EObject eObject = getSemanticElement(identifier);
     boolean result = getView(identifier) == null;
-    Assert.assertTrue(
-        NLS.bind(CommonTestMessages.objectRepresentationStillAvailableOnDiagram,
-            EObjectLabelProviderHelper.getText(eObject)), result);
+    Assert.assertTrue(NLS.bind(CommonTestMessages.objectRepresentationStillAvailableOnDiagram,
+        EObjectLabelProviderHelper.getText(eObject)), result);
   }
 
   public void hasHiddenView(String identifier) {
@@ -169,9 +173,8 @@ public class DiagramContext extends SessionContext {
 
     } else if (view instanceof DDiagramElement) {
       boolean result = DiagramServices.getDiagramServices().isHidden((DDiagramElement) view);
-      Assert.assertTrue(
-          NLS.bind(CommonTestMessages.objectRepresentationStillAvailableOnDiagram,
-              EObjectLabelProviderHelper.getText(eObject)), result);
+      Assert.assertTrue(NLS.bind(CommonTestMessages.objectRepresentationStillAvailableOnDiagram,
+          EObjectLabelProviderHelper.getText(eObject)), result);
     } else {
       Assert.assertTrue("view is diagram", false);
     }
@@ -185,9 +188,8 @@ public class DiagramContext extends SessionContext {
 
     } else if (view instanceof DDiagramElement) {
       boolean result = DiagramServices.getDiagramServices().isFiltered((DDiagramElement) view);
-      Assert.assertTrue(
-          NLS.bind(CommonTestMessages.objectRepresentationStillAvailableOnDiagram,
-              EObjectLabelProviderHelper.getText(eObject)), result);
+      Assert.assertTrue(NLS.bind(CommonTestMessages.objectRepresentationStillAvailableOnDiagram,
+          EObjectLabelProviderHelper.getText(eObject)), result);
     } else {
       Assert.assertTrue("view is diagram", false);
     }

@@ -197,9 +197,17 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
 	  public static final String EPBS__SYSTEMCI_SYSTEM = "70388259-e554-4623-b6c9-0c14852f9665";
 	  public static final String EPBS__SYSTEMCI_SYSTEM__PHYSICAL_ARTIFACT_REALIZATION_TO_PHYSICAL_SYSTEM = "6ca9d1b5-e19f-4cc5-b8a2-3db8490aa223";
 	  public static final String EPBS__PHYSICAL_ARCHITECTURE_REALIZATION_TO_PHYSICAL_ARCHITECTURE = "001e1adc-f9cb-4852-bcde-41a9670a51e0";
-
+	  public static final String SA__CAPABILITIES__CAPABILITY_1 = "c25c6355-166e-4d53-ba1d-627b047d7f9b";  //$NON-NLS-1$ 
+	  public static final String LA__ROOT_LF__FUNCTIONALCHAIN_1 = "776631b3-a5f6-4163-af86-4c4a11e2b2c0";  //$NON-NLS-1$ 
+	  public static final String LA__ROOT_LF__LOGICALFUNCTION_2 = "b87a57f7-c590-4d10-8604-c233669ebcc7";  //$NON-NLS-1$ 
+	  public static final String LA__CAPABILITIES__CAPABILITY_1 = "aed377e4-51e3-46ff-9efd-21172936af86";  //$NON-NLS-1$ 
+	  public static final String LA__CAPABILITIES__CAPABILITY_1__FUNCTIONALCHAIN_1 = "437fc9bc-63f7-43fe-99f3-17e82f84b793";  //$NON-NLS-1$ 
+	  public static final String PA__CAPABILITIES__CAPABILITY_1 = "a51c707d-0591-43e7-8d87-3b49882745d9";  //$NON-NLS-1$ 
+	  public static final String LA__LOGICALCOMPONENT_1 = "e3c12d76-4afd-442e-96c5-d8b8be8cb0d9";  //$NON-NLS-1$ 
+	  public static final String LA__LOGICAL_ACTORS__LA_2 = "37af6f3b-2a72-494f-928d-8ce375e1e957";  //$NON-NLS-1$ 
+	  
 	@Override
 	public List<String> getRequiredTestModels() {
-		return Collections.singletonList("semanticqueries");
+		return Collections.singletonList("SemanticQueries");
 	}
 }

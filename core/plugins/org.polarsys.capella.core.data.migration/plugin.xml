@@ -152,6 +152,9 @@
       <migrationContribution 
             class="org.polarsys.capella.core.data.migration.capella.EOppositeMigrationContribution">
       </migrationContribution>
+      <migrationContribution
+            class="org.polarsys.capella.core.data.migration.capella.OpaqueExpressionMigrationContribution">
+      </migrationContribution>
    </extension>
    
    

@@ -79,9 +79,10 @@ public class CustomPropertyHelper {
       String key = it.next();
       List<Object> values = map.get(key);
       if (values.size() > 0) {
-        Object value = values.get(0);
-        if (value instanceof IAbstractSection) {
-          result.put(key, (IAbstractSection) value);
+        for (Object value : values) {
+          if (value instanceof IAbstractSection && ((IAbstractSection) value).select(object)) {
+            result.put(key, (IAbstractSection) value);
+          }
         }
       }
     }

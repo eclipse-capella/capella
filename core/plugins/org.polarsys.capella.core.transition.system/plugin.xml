@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -132,6 +132,28 @@
                      name="StateTransition">
                </defaultMappingPossibility>
             </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacommon.TimeEvent"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.common.TimeEventRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.common.TimeEventRule"
+                     enabled="true"
+                     name="TimeEvent">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacommon.ChangeEvent"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.common.ChangeEventRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.common.ChangeEventRule"
+                     enabled="true"
+                     name="ChangeEvent">
+               </defaultMappingPossibility>
+            </mappingElement>
         </mappingPackage>
             
             
@@ -217,6 +239,17 @@
                      incompleteRule="org.polarsys.capella.core.transition.system.rules.core.PropertyValueGroupRule"
                      enabled="true"
                      name="PropertyValueGroup">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.OpaqueExpression"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.core.OpaqueExpressionRule"
+                     enabled="true"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.core.OpaqueExpressionRule"
+                     name="OpaqueExpression">
                </defaultMappingPossibility>
             </mappingElement>
             

@@ -128,6 +128,10 @@ public abstract class TransfoEngine extends ITransfoEngine {
    */
   protected List<EObject> _transformedElements;
 
+  private String _transitionStartTemplate = "----- Perform transition of ''{0}'' -----"; //$NON-NLS-1$
+
+  private String _alreadyTransitionedTemplate = "''{0}'' is already transitioned."; //$NON-NLS-1$
+
   /**
    * Default constructor
    */
@@ -453,7 +457,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
     if (targetElement != null) { // Allow transformation one to nothing
 
       if (targetElement.eResource() == null) {
-        getHoldingResource(_transfo).getContents().add(targetElement);
+        HoldingResourceHelper.attachToHoldingResource(targetElement, getHoldingResource(_transfo));
       }
 
       _transformedElements.add(targetElement);
@@ -462,7 +466,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
       AbstractTrace newLink = TigerRelationshipHelper.createTransfoLink(sourceElement, targetElement, _transfo);
       if (newLink != null) {
         if (newLink.eContainer() == null) {
-          getHoldingResource(_transfo).getContents().add(newLink);
+          HoldingResourceHelper.attachToHoldingResource(newLink, getHoldingResource(_transfo));
         }
         List<AbstractTrace> links = (List<AbstractTrace>) _transfo.get(NEW_LINKS);
         links.add(newLink);
@@ -523,8 +527,10 @@ public abstract class TransfoEngine extends ITransfoEngine {
     agenda.addAll(bootstrap);
 
     if (!agenda.isEmpty() && _logger.isInfoEnabled()) {
-      _logger.info(new EmbeddedMessage("----- Perform transition of '" + EObjectLabelProviderHelper.getText(agenda.get(0)) + "' -----", _logger.getName(), //$NON-NLS-1$ //$NON-NLS-2$
-          agenda.get(0)));
+      String startMessage = formatTransitionStartMessage(agenda.get(0));
+      if (startMessage != null) {
+        _logger.info(new EmbeddedMessage(startMessage, _logger.getName(), agenda.get(0)));
+      }
     }
 
     int step = 0;
@@ -658,8 +664,10 @@ public abstract class TransfoEngine extends ITransfoEngine {
         } else {
           Object transformedElement = Query.retrieveTransformedElement(sourceElement, _transfo);
           if (_logger.isInfoEnabled()) {
-            _logger.info(new EmbeddedMessage(NLS.bind("''{0}'' is already transitioned.", EObjectLabelProviderHelper.getText(sourceElement)), //$NON-NLS-1$
-                _logger.getName(), new Object[] { sourceElement, transformedElement }));
+            String alreadyTransitionedMessage = formatAlreadyTransitionedMessage(sourceElement, transformedElement);
+            if (alreadyTransitionedMessage != null){
+              _logger.info(new EmbeddedMessage(alreadyTransitionedMessage, _logger.getName(), new Object[] { sourceElement, transformedElement }));
+            }
           }
         }
 
@@ -698,5 +706,41 @@ public abstract class TransfoEngine extends ITransfoEngine {
 
     // 3- Destroy the element itself
     element.destroy();
+  }
+
+
+  /**
+   * Set a custom NLS template string to show at beginning of the transition.
+   * @param template the string to be formatted
+   */
+  public void setTransitionStartTemplate(String template){
+    _transitionStartTemplate = template;
+  }
+
+
+  /**
+   * Set a custom NLS template string to show for already transitioned elements
+   * @param template the string to be formatted
+   */
+  public void setAlreadyTransitionedTemplate(String template){
+    _alreadyTransitionedTemplate = template;
+  }
+
+
+  private String formatTransitionStartMessage(EObject first) {
+    String result = null;
+    if (_transitionStartTemplate != null) {
+      result = NLS.bind(_transitionStartTemplate, EObjectLabelProviderHelper.getText(first));
+    } 
+    return result;
+  }
+
+
+  private String formatAlreadyTransitionedMessage(EObject transitioned, Object transformedElement) {
+    String result = null;
+    if (_alreadyTransitionedTemplate != null) {
+      result = NLS.bind(_alreadyTransitionedTemplate, EObjectLabelProviderHelper.getText(transitioned), EObjectLabelProviderHelper.getText(transformedElement));
+    }
+    return result;
   }
 }

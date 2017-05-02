@@ -31,6 +31,8 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
+					<!-- When using p2Installed testRuntime, set Bundle-RequiredExecutionEnvironment: JavaSE-1.6 (and only JavaSE-1.6) in the MANIFEST.MF of the test plugin, see bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=387701 -->
+					<testRuntime>p2Installed</testRuntime>
 					<product>${capella-product-id}</product>
 					<application>${capella-application-id}</application>
 					<useUIHarness>true</useUIHarness>
@@ -55,9 +57,10 @@
 					<environments combine.self="override"/>
 					<dependency-resolution>
 						<extraRequirements>
+							<!-- Use the product to get dependencies -->
 							<requirement>
-								<type>eclipse-feature</type>
-								<id>org.polarsys.capella.rcp.feature</id>
+								<type>p2-installable-unit</type>
+								<id>${capella-product-id}</id>
 								<versionRange>0.0.0</versionRange>
 							</requirement>
 						</extraRequirements>

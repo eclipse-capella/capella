@@ -19,6 +19,13 @@ import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AbstractFunction_mother_activity_allocation;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AbstractFunction_mother_function_allocation;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AvailableForTypeClassExistTest;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.CapabilityRealization_InvolvedActors;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.CapabilityRealization_InvolvedComponents;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.CapabilityRealization_InvolvedFunctionalChains;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.CapabilityRealization_InvolvedFunctions;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.CapabilityRealization_OwnedFunctionalChains;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.CapabilityRealization_RealizedCapability;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.CapabilityRealization_RealizingCapabilityRealization;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaElement_applied_property_value_groups;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaElement_applied_property_values;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.EntryExitPoint_ParentRegionTest;
@@ -42,12 +49,20 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new PropertyValueGroup_applying_valued_element());
     tests.add(new EntryExitPoint_ParentRegionTest());
     tests.add(new State_OwnedEntryExitPointsTest());
+    tests.add(new CapabilityRealization_InvolvedActors());
+    tests.add(new CapabilityRealization_InvolvedComponents());
+    tests.add(new CapabilityRealization_InvolvedFunctionalChains());
+    tests.add(new CapabilityRealization_InvolvedFunctions());
+    tests.add(new CapabilityRealization_OwnedFunctionalChains());
+    tests.add(new CapabilityRealization_RealizedCapability());
+    tests.add(new CapabilityRealization_RealizingCapabilityRealization());
+    
     return tests;
   }
   
   @Override
   public List<String> getRequiredTestModels() {
-    return Collections.singletonList("semanticqueries");
+    return Collections.singletonList("SemanticQueries");
   }
   
   /**

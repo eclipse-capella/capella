@@ -1,0 +1,33 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _0ljJcEkPEeaoOLXB8A2oPA,_4Zi_gEkPEeaoOLXB8A2oPA
+Element-Name: ProgressMonitoringOverview
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _OuJeEBrGEeeW4YRUbIvNnA
+Runtime-Version: 2.0.0.201506042314
+Save-Time: 4/6/17 2:44 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Capella Project Explorer" | get-tree
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/IFE System/Manage Passenger Services Lifecycle" 
+    | get-menu "Progress Monitoring/Set Progress..." | click
+with [get-window "Set Progress Status"] {
+    get-group Filters | get-button "Propagate to all Sub Representations" | check
+    get-button OK | click
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/*In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/IFE System/Manage Passenger Services Lifecycle" 
+    | get-menu "Progress Monitoring/Progress Overview..." | click
+with [get-window "Progress Monitoring Overview"] {
+    get-tree | get-property itemCount | equals 2 | verify-true
+    get-tree | select "DAnalysis.*"
+    get-button Close | click
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

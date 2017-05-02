@@ -5,13 +5,16 @@ Bundle-SymbolicName: org.polarsys.capella.core.projection.interfaces;singleton:=
 Bundle-Version: 1.2.0.qualifier
 Bundle-Vendor: %providerName
 Export-Package: org.polarsys.capella.core.projection.interfaces,
- org.polarsys.capella.core.projection.interfaces.rules
+ org.polarsys.capella.core.projection.interfaces.generateInterfaces,
+ org.polarsys.capella.core.projection.interfaces.rules,
+ org.polarsys.capella.core.projection.interfaces.validation
 Require-Bundle: org.polarsys.capella.core.projection.misc,
  org.polarsys.capella.core.projection.common,
  org.polarsys.capella.core.projection.data,
  org.polarsys.capella.core.projection.preferences,
- org.polarsys.capella.core.platform.sirius.ui.actions
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+ org.polarsys.capella.core.platform.sirius.ui.actions,
+ org.polarsys.capella.core.transition.system.topdown
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Bundle-Activator: org.polarsys.capella.core.projection.interfaces.Activator
+Bundle-Activator: org.polarsys.capella.core.projection.interfaces.InterfaceGenerationActivator
 Bundle-Localization: plugin

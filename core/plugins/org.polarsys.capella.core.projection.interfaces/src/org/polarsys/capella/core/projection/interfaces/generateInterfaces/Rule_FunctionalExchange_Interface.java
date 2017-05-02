@@ -10,152 +10,192 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.interfaces.generateInterfaces;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.osgi.util.NLS;
+import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.cs.CsFactory;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
-import org.polarsys.capella.core.data.cs.InterfacePkg;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
-import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation;
+import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.FaPackage;
+import org.polarsys.capella.core.data.fa.FunctionInputPort;
+import org.polarsys.capella.core.data.fa.FunctionOutputPort;
+import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.information.ExchangeItem;
-import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.InterfaceExt;
-import org.polarsys.capella.core.projection.common.CommonRule;
-import org.polarsys.capella.core.projection.common.ProjectionMessages;
+import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
+import org.polarsys.capella.core.model.helpers.PortExt;
+import org.polarsys.capella.core.projection.interfaces.InterfaceGeneration;
+import org.polarsys.capella.core.projection.interfaces.InterfaceGenerationPreferences;
 import org.polarsys.capella.core.tiger.ITransfo;
-import org.polarsys.capella.core.tiger.helpers.Query;
-import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
-import org.polarsys.capella.core.transfo.misc.CapellaEngine;
 
 /**
  */
-public class Rule_FunctionalExchange_Interface extends CommonRule {
+public class Rule_FunctionalExchange_Interface extends InterfaceGenerationRule {
 
-  /**
-   * @param eclass_p
-   */
+  private final TracingStrategy tracingStrategy = new ExchangeTracing();
+  
+  /* cache computed information */
+  final static String KEY_INTERFACEINFO_MAP = "org.polarsys.capella.core.projection.interfaces.generateInterfaces.INFOMAP"; //$NON-NLS-1$
+
   public Rule_FunctionalExchange_Interface() {
     super(FaPackage.Literals.FUNCTIONAL_EXCHANGE, CsPackage.Literals.INTERFACE);
   }
 
-  /**
-   * @see org.polarsys.capella.core.projection.common.CommonRule#reasonTransformFailed(org.eclipse.emf.ecore.EObject, org.polarsys.capella.core.tiger.ITransfo)
-   */
   @Override
-  protected String reasonTransformFailed(EObject element_p, ITransfo transfo_p) {
-
-    FunctionalExchange exchange = (FunctionalExchange)element_p;
-    boolean result = GenerationHelper.getExchangeItems(exchange).size()!=0;
-
-    if (!result) {
-      return ProjectionMessages.RelatedFunctionalExchangeConveyNoExchangeItem;
-    }
-
-    for (ComponentExchangeFunctionalExchangeAllocation allocation : exchange.getIncomingComponentExchangeFunctionalExchangeRealizations()) {
-      ComponentExchange connection = allocation.getAllocatingComponentExchange();
-      if (isOrWillBeTranformedTo(connection, transfo_p, CsPackage.Literals.INTERFACE)) {
-        result = false;
-        break;
+  protected Collection<InterfaceInfo> transformToInterfaceInfo(EObject element, ITransfo transfo) {
+    InterfaceInfo info = getInterfaceInfo((FunctionalExchange) element, transfo);
+    if (info != null) {
+      InterfaceGenerationPreferences prefs = InterfaceGeneration.getPreferences(transfo);
+      if (info.getExchangeItems(prefs).size() > 0) {
+        return Collections.singleton(info);
       }
     }
-
-    return ICommonConstants.EMPTY_STRING;
+    return Collections.emptyList();
   }
 
   /**
-   * @see org.polarsys.capella.core.projection.common.CommonRule#transformIsRequired(org.eclipse.emf.ecore.EObject, org.polarsys.capella.core.tiger.ITransfo)
+   * Find the interface information data for a given exchange. Returns an empty lisf for internal exchanges.
+   * Multiple elements are returned if the related function ports is allocated to multiple distinct component port pairs
+   * and/or the exchange is allocated to multiple distinct component exchanges that connect different pairs of component
+   * ports.
    */
-  @Override
-  protected boolean transformIsRequired(EObject element_p, ITransfo transfo_p) {
-    FunctionalExchange exchange = (FunctionalExchange)element_p;
-    boolean result = GenerationHelper.getExchangeItems(exchange).size()!=0;
+  private Collection<InterfaceInfo> getInterfaceInfo(FunctionalExchange exchange){
 
-    if (result) {
-      for (ComponentExchangeFunctionalExchangeAllocation allocation : exchange.getIncomingComponentExchangeFunctionalExchangeRealizations()) {
-        ComponentExchange connection = allocation.getAllocatingComponentExchange();
-        if (isOrWillBeTranformedTo(connection, transfo_p, CsPackage.Literals.INTERFACE)) {
-          result = false;
-          break;
+    Collection<InterfaceInfo> result = new LinkedHashSet<InterfaceInfo>();
+
+    // watch out: source and target function is not related to input and output port
+    AbstractFunction sourceFunction = FunctionalExchangeExt.getSourceFunction(exchange);
+    AbstractFunction targetFunction = FunctionalExchangeExt.getTargetFunction(exchange);
+
+    for (ComponentExchange ce : exchange.getAllocatingComponentExchanges()){
+      ComponentPort leftPort = (ComponentPort) ce.getSourcePort();
+      ComponentPort rightPort = (ComponentPort) ce.getTargetPort();
+      if (leftPort != null && rightPort != null && sourceFunction != null && targetFunction != null) {
+
+          ComponentPort providing = null;
+          ComponentPort requiring = null;
+
+          Component leftComponent = PortExt.getRelatedComponent(leftPort);
+          Component rightComponent = PortExt.getRelatedComponent(rightPort);
+
+          if (leftComponent.getAllocatedFunctions().contains(sourceFunction) && rightComponent.getAllocatedFunctions().contains(targetFunction)) {
+            requiring = leftPort;
+            providing = rightPort;
+          } else if (rightComponent.getAllocatedFunctions().contains(sourceFunction) && leftComponent.getAllocatedComponents().contains(targetFunction)){
+            requiring = rightPort;
+            providing = leftPort;
+      }
+          if (providing != null && requiring != null && providing != requiring) {
+            result.add(new InterfaceInfo(new ComponentPortInterfaceAdapter(providing), new ComponentPortInterfaceAdapter(requiring), tracingStrategy));
+    }
+  }
+    }
+
+    FunctionInputPort fip = exchange.getTargetFunctionInputPort();
+    FunctionOutputPort fop = exchange.getSourceFunctionOutputPort();
+
+    if (fip != null && fop != null){
+
+      Collection<InterfaceRequirer> allRequiring = analyzePort(sourceFunction, fop, result.isEmpty());
+      Collection<InterfaceProvider> allProviding = analyzePort(targetFunction, fip, result.isEmpty());
+
+      for (InterfaceRequirer requiring : allRequiring) {
+        for (InterfaceProvider providing : allProviding) {
+          if (providing != requiring){
+            result.add(new InterfaceInfo(providing, requiring, tracingStrategy));
         }
+      }
+    }
+  }
+
+    return result;
+
+      }
+
+
+  @SuppressWarnings("unchecked")
+  private <T> Collection<T> analyzePort(AbstractFunction f, FunctionPort port, boolean createComponentInterfaceAdapter){
+    Collection<T> result = new ArrayList<T>();
+    for (ComponentPort p : port.getAllocatorComponentPorts()){
+      result.add((T)new ComponentPortInterfaceAdapter(p));
+    }
+    if (result.isEmpty() && createComponentInterfaceAdapter){
+      for (AbstractFunctionalBlock allocator : f.getAllocationBlocks()){
+        if (allocator instanceof Component){
+          result.add((T)new ComponentInterfaceAdapter((Component) allocator));
+  }
       }
     }
     return result;
   }
 
+  /* cache already known results here */
+  @SuppressWarnings("unchecked")
+  private static Map<FunctionalExchange, InterfaceInfo> getInfoMap(ITransfo transfo){
+    Map<FunctionalExchange, InterfaceInfo> map = (Map<FunctionalExchange, InterfaceInfo>) transfo.get(KEY_INTERFACEINFO_MAP);
+    if (map == null){
+      map = new HashMap<FunctionalExchange, InterfaceInfo>();
+      transfo.put(KEY_INTERFACEINFO_MAP, map);
+  }
+    return map;
+  }
+
+  private void logMultipleInfosFound(EObject exchange){
+    _logger.error(new EmbeddedMessage("Skipping generation for functional exchange " + EObjectLabelProviderHelper.getText(exchange) + " which has inconsistent or multiple port/ce allocations", _logger.getName(), exchange));
+  }
+
+  private void logNoInfosFound(EObject element) {
+    if (_logger.isDebugEnabled()){
+      _logger.debug(new EmbeddedMessage("Skipping generation for internal functional exchange " + EObjectLabelProviderHelper.getText(element), _logger.getName(), element));
+    }
+  }
+
   /**
-   * @see org.polarsys.capella.core.tiger.impl.TransfoRule#attach_(org.eclipse.emf.ecore.EObject, org.polarsys.capella.core.tiger.ITransfo)
+   * Returns the interface for the given functional exchange, or null if no such interface exists.
+   *
+   * @param exchange
+   * @param transfo
+   * @return
    */
-  @Override
-  public void firstAttach(EObject element_p, ITransfo transfo_p) {
-    for (EObject tgt : Query.retrieveUnattachedTransformedElements(element_p, _transfo, getTargetType())) {
-      BlockArchitecture ctx = (BlockArchitecture) transfo_p.get(CapellaEngine.TRANSFO_TARGET_CONTAINER);
-      InterfacePkg pkg = ctx.getOwnedInterfacePkg();
-      if (pkg==null) {
-        ctx.setOwnedInterfacePkg(CsFactory.eINSTANCE.createInterfacePkg());
-        pkg = ctx.getOwnedInterfacePkg();
-      }
-
-      TigerRelationshipHelper.attachElementByRel(pkg, tgt, CsPackage.Literals.INTERFACE_PKG__OWNED_INTERFACES);
-    }
+  public static Interface getInterface(FunctionalExchange exchange, ITransfo transfo){
+    Interface result = null;
+    InterfaceInfo info = getInfoMap(transfo).get(exchange);
+    if (info != null) {
+      result = info.getInterface(false);
+  }
+    return result;
   }
 
-  @Override
-  protected void doAddContainer(EObject element_p, List<EObject> result_p) {
-    //Nothing to do
-  }
-
-  @Override
-  protected void doGoDeep(EObject element_p, List<EObject> result_p) {
-    //Nothing to do
-  }
-
-  @Override
-  protected Object transformElement(EObject element_p, ITransfo transfo_p) {
-    Interface itf = CsFactory.eINSTANCE.createInterface();
-    FunctionalExchange exchange = (FunctionalExchange)element_p;
-    itf.setName(exchange.getName());
-
-    //attach to container
-    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(element_p);
-    InterfacePkg pkg = architecture.getOwnedInterfacePkg();
-    if (pkg==null) {
-      architecture.setOwnedInterfacePkg(CsFactory.eINSTANCE.createInterfacePkg());
-      pkg = architecture.getOwnedInterfacePkg();
-    }
-
-    TigerRelationshipHelper.attachElementByRel(pkg, itf, CsPackage.Literals.INTERFACE_PKG__OWNED_INTERFACES);
-    return itf;
-  }
-
-  @Override
-  public void update_(EObject element_p, ITransfo transfo_p) {
-    super.update_(element_p, transfo_p);
-
-    FunctionalExchange e = (FunctionalExchange)element_p;
-    for (EObject tgt : Query.retrieveTransformedElements(element_p, _transfo, getTargetType())) {
-      if (tgt instanceof Interface) {
-        for (ExchangeItem item : GenerationHelper.getExchangeItems(e)) {
-          if (!((Interface)tgt).getExchangeItems().contains(item)) {
-            ExchangeItemAllocation allocation = InterfaceExt.addExchangeItem((Interface)tgt, item);
-            notifyMessage(NLS.bind("Element ''{0}'' has been allocated into ''{1}''", //$NON-NLS-1$
-                new Object[] {EObjectLabelProviderHelper.getText(item), 
-                              EObjectLabelProviderHelper.getText(tgt)}), new Object[] {item, tgt}, ReportManagerConstants.LOG_LEVEL_INFO, transfo_p);
-            allocation.setName(item.getName());
+  InterfaceInfo getInterfaceInfo(FunctionalExchange element, ITransfo transfo){
+    Map<FunctionalExchange, InterfaceInfo> infomap = getInfoMap(transfo);
+    InterfaceInfo result = null;
+    if (infomap.containsKey(element)){
+      result = getInfoMap(transfo).get(element);
+    } else {
+      Collection<InterfaceInfo> infos = getInterfaceInfo((FunctionalExchange)element);
+      if (infos.size() == 1){
+        result = infos.iterator().next();
+        for (FunctionalExchange exchange : result.getFunctionalExchanges()) {
+          infomap.put(exchange, result);
           }
+      } else if (infos.isEmpty()){
+        logNoInfosFound(element); // internal exchange
+      } else {
+        logMultipleInfosFound(element); // exchange is somehow allocated multiple times/and/or/inconsistently
         }
+      infomap.put((FunctionalExchange) element, result);
       }
+    return result;
     }
-
-  }
 
 }

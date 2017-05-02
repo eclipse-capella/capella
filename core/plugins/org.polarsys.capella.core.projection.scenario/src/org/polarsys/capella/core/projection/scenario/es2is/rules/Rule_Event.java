@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.polarsys.capella.core.data.interaction.EventSentOperation;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
+import org.polarsys.capella.core.projection.interfaces.generateInterfaces.Rule_FunctionalExchange_Interface;
 import org.polarsys.capella.core.projection.scenario.CommonScenarioHelper;
 import org.polarsys.capella.core.projection.scenario.ScenarioFinalizer;
 import org.polarsys.capella.core.tiger.ITransfo;
@@ -89,7 +90,7 @@ public class Rule_Event extends CommonRule {
         EventSentOperation src = (EventSentOperation) element_p;
         EventSentOperation tgt = (EventSentOperation) obj;
         if (!items.isEmpty() && (src.getOperation() != null)) {
-          AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), items.get(i), i);
+          AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), items.get(i), i, transfo_p);
           if (operation != null) {
             TigerRelationshipHelper.attachElementByRel(tgt, operation, InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION);
           }
@@ -99,7 +100,7 @@ public class Rule_Event extends CommonRule {
         EventReceiptOperation src = (EventReceiptOperation) element_p;
         EventReceiptOperation tgt = (EventReceiptOperation) obj;
         if (!items.isEmpty() && (src.getOperation() != null)) {
-          AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), items.get(i), i);
+          AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), items.get(i), i, transfo_p);
           if (operation != null) {
             TigerRelationshipHelper.attachElementByRel(tgt, operation, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION);
           }
@@ -115,8 +116,16 @@ public class Rule_Event extends CommonRule {
    * @param operation_p
    * @return
    */
-  private AbstractEventOperation getRelatedExchangeItemAllocation(AbstractEventOperation operation_p, ExchangeItem item, int n) {
-    Interface itf = (Interface) Query.retrieveFirstTransformedElement(operation_p, _transfo, CsPackage.Literals.INTERFACE);
+  private AbstractEventOperation getRelatedExchangeItemAllocation(AbstractEventOperation operation_p, ExchangeItem item, int n, ITransfo transfo) {
+
+    Interface itf = null;
+
+    if (operation_p instanceof FunctionalExchange){
+      itf = Rule_FunctionalExchange_Interface.getInterface(((FunctionalExchange)operation_p), transfo);
+    } else {
+      itf = (Interface) Query.retrieveFirstTransformedElement(operation_p, _transfo, CsPackage.Literals.INTERFACE);
+    }
+
     if (itf != null) {
       for (ExchangeItemAllocation alloc : itf.getOwnedExchangeItemAllocations()) {
         if (alloc.getAllocatedItem().equals(item)) {

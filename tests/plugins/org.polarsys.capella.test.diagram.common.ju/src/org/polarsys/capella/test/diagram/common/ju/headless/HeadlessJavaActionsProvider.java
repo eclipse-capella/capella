@@ -22,38 +22,48 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.tools.api.ui.ExternalJavaActionProvider;
 import org.eclipse.sirius.tools.internal.ui.ExternalJavaActionDescriptor;
 import org.eclipse.sirius.tools.internal.ui.ExternalJavaActionRegistryListener;
+import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.test.diagram.common.ju.TestDiagramCommonPlugin;
 
 public class HeadlessJavaActionsProvider {
-  
+
   public void init() {
-    
-    //Retrieve the headless actions registered within this plugin
+
+    // Retrieve the headless actions registered within this plugin
     IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
-    HashMap<String, String> headlessActions = new HashMap<String, String>();
-    IExtension[] extensions = extensionRegistry.getExtensions(ContributorFactoryOSGi.createContributor(TestDiagramCommonPlugin.getDefault().getBundle()));
+    HashMap<String, String> headlessActionIds = new HashMap<String, String>();
+    IExtension[] extensions = extensionRegistry
+        .getExtensions(ContributorFactoryOSGi.createContributor(TestDiagramCommonPlugin.getDefault().getBundle()));
     for (IExtension extension : extensions) {
-      if (ExternalJavaActionRegistryListener.EXTERNAL_JAVA_ACTION_EXTENSION_POINT.equals(extension.getExtensionPointUniqueIdentifier())) {
+      if (ExternalJavaActionRegistryListener.EXTERNAL_JAVA_ACTION_EXTENSION_POINT
+          .equals(extension.getExtensionPointUniqueIdentifier())) {
         for (IConfigurationElement element : extension.getConfigurationElements()) {
           ExternalJavaActionDescriptor descriptor = new ExternalJavaActionDescriptor(element);
-          headlessActions.put(descriptor.getId(), descriptor.getActionClass());
+          headlessActionIds.put(descriptor.getId(), descriptor.getActionClass());
         }
       }
     }
-    
-    //Remove all other actionClasses contributed to overridden actions
-    Collection<String> toRemove = new ArrayList<String>();
-    for (ExternalJavaActionDescriptor registeredAction : ExternalJavaActionProvider.INSTANCE.getJavaActionDescriptor()) {
-      if (headlessActions.containsKey(registeredAction.getId())) {
-        if (!headlessActions.get(registeredAction.getId()).equals(registeredAction.getActionClass())) {
-          toRemove.add(registeredAction.getActionClass());
+
+    //Retrieve all registered actions into Sirius ExternalJavaActionProvider
+    Collection<String> headlessActions = new ArrayList<String>();
+    Collection<String> uiActions = new ArrayList<String>();
+    for (ExternalJavaActionDescriptor registeredAction : ExternalJavaActionProvider.INSTANCE
+        .getJavaActionDescriptor()) {
+      if (headlessActionIds.containsKey(registeredAction.getId())) {
+        if (headlessActionIds.get(registeredAction.getId()).equals(registeredAction.getActionClass())) {
+          headlessActions.add(registeredAction.getActionClass());
+        } else {
+          uiActions.add(registeredAction.getActionClass());
         }
       }
     }
-    
-    for (String action: toRemove) {
+
+    // Remove uiActions when headless is required, or headless actions when outside junit
+    boolean enableHeadless = (PlatformUI.getTestableObject().getTestHarness() != null);
+    Collection<String> toRemove = enableHeadless ? uiActions : headlessActions;
+    for (String action : toRemove) {
       ExternalJavaActionProvider.INSTANCE.removeAction(action);
     }
   }
-  
+
 }

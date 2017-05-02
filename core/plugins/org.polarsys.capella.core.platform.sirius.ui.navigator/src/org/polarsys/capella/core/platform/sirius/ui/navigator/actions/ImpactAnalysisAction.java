@@ -72,7 +72,7 @@ public class ImpactAnalysisAction extends BaseSelectionListenerAction {
     final EObject modelElement = (EObject) getStructuredSelection().getFirstElement();
     List<EObject> referencingElements = CrossReferencerHelper.getReferencingElements(modelElement);
     // Add representations that reference selected element.
-    referencingElements.addAll(RepresentationHelper.getAllRepresentationsTargetedBy(Collections.singletonList(modelElement)));
+    referencingElements.addAll(RepresentationHelper.getAllRepresentationDescriptorsTargetedBy(Collections.singletonList(modelElement)));
     // Create a formatted message.
     String formattedMessage =
         StringHelper.formatMessage(Messages.ImpactAnalysisDialog_Message, new String[] { EObjectLabelProviderHelper.getText(modelElement) });

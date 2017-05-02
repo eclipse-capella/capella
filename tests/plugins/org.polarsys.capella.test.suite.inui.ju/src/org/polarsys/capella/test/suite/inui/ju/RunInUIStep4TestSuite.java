@@ -13,8 +13,10 @@ package org.polarsys.capella.test.suite.inui.ju;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.commandline.ju.testsuites.CommandLineTestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.migration.ju.testsuites.main.MigrationTestSuite;
 import org.polarsys.capella.test.refinement.ju.testsuites.main.AllRefinementTestSuites;
 import org.polarsys.capella.test.transition.ju.testsuites.main.TransitionTestSuite;
 
@@ -37,6 +39,8 @@ public class RunInUIStep4TestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new AllRefinementTestSuites());
     tests.add(new TransitionTestSuite());
+    tests.add(new MigrationTestSuite());
+    tests.add(new CommandLineTestSuite());
     return tests;
   }
 

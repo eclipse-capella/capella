@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,8 @@ import java.util.List;
 
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.ITransfoEngine;
 import org.polarsys.capella.core.tiger.ITransfoRuleBase;
@@ -82,8 +84,12 @@ public abstract class AbstractTransform implements ITransform {
    * @throws TransfoException
    */
   protected void doExecuteTransformation(EObject modelElement_p, ITransfoEngine engine_p, ITransfo transfo_p) throws TransfoException {
-    // engine_p.inihtialize(transfo_p);
-    engine_p.execute(transfo_p);
+    try {
+      // engine_p.inihtialize(transfo_p);
+      engine_p.execute(transfo_p);
+    } finally {
+      HoldingResourceHelper.flushHoldingResource(TransactionUtil.getEditingDomain(modelElement_p));
+    } 
   }
 
   /**

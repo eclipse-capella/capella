@@ -153,7 +153,20 @@
 | colspan="2"|This rule generates a warning if the the source or target of an Interaction/Functional Exchange is not allocated on a leaf function. 
 |}    
 <br>
-        
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! [[Image:../../../Images/warning.gif|WARNING]]
+| DCOM_21 - Unused function port Exchange Items 
+|-
+| colspan="2"|This rule generates a warning if a Function Port conveys an Exchange Item which is not allocated to any connected Functional Exchange.
+|}
+<br>
+{| cellpadding="6" style="max-width:100%;"
+! [[Image:../../../Images/warning.gif|WARNING]]
+| DCOM_22 - Unsynchronized Function Port Exchange Items
+|-
+| colspan="2"|This rule generates a warning if a Function Port and all its connected Functional Exchanges do not have the exact same Exchange Items.
+|}
+<br>
 {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DC_CL_01 Communication Link is delegated by one subcomponent at least 

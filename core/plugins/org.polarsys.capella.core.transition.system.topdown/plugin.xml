@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -294,13 +294,13 @@
                class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
                enabled="true"
                group="transition.generation.ports"
-               id="projection.useStandardPortInsteadFlowPort"
-               name="%transition.generation.useStantardPortInsteadFlowPort.name"
-               description="%transition.generation.useStantardPortInsteadFlowPort.description">
+               id="projection.interfaces.propagateEI"
+               name="%projection.interfaces.propagateEI"
+               description="%projection.interfaces.propagateEI.description">
                <parameter id="scope" value="org.polarsys.capella.core.projection.preferences"></parameter>
                <parameter
                      id="default"
-                     value="false">
+                     value="true">
                </parameter>
          </property>
          
@@ -308,13 +308,13 @@
                class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
                enabled="true"
                group="transition.generation.ports"
-               id="projection.interfaces.linkToComponentPort"
-               name="%transition.generation.generateComponentPort.name"
-               description="%transition.generation.generateComponentPort.description">
+               id="projection.interfaces.createCE"
+               name="%projection.interfaces.createCE"
+               description="%projection.interfaces.createCE.description">
                <parameter id="scope" value="org.polarsys.capella.core.projection.preferences"></parameter>
                <parameter
                      id="default"
-                     value="true">
+                     value="false">
                </parameter>
          </property>
          
