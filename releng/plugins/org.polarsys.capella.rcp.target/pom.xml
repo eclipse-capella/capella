@@ -74,6 +74,18 @@
 				</configuration>
 				<executions>
 					<execution>
+						<id>generate.canary.target</id>
+						<phase>validate</phase>
+						<configuration>
+							<applicationsArgs>
+								<args>-application ${converterApplication.name} canary/${targetPlatform.name}</args>
+							</applicationsArgs>
+						</configuration>
+						<goals>
+							<goal>eclipse-run</goal>
+						</goals>
+					</execution>
+					<execution>
 						<id>generate.full.target</id>
 						<phase>validate</phase>
 						<configuration>

@@ -1,0 +1,77 @@
+/*******************************************************************************
+ * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+target "Capella"
+
+with source, requirements
+
+location "http://download.eclipse.org/releases/neon" {
+	org.eclipse.sdk.feature.group
+	org.eclipse.platform.feature.group
+	org.eclipse.emf.sdk.feature.group
+	org.eclipse.emf.query.feature.group
+	org.eclipse.emf.transaction.feature.group
+	org.eclipse.gmf.feature.group
+	org.eclipse.equinox.executable.feature.group
+	com.ibm.icu
+}
+
+location "http://download.eclipse.org/sirius/updates/nightly/latest/neon" {
+	org.eclipse.sirius.runtime.feature.group
+	org.eclipse.sirius.runtime.aql.feature.group
+	org.eclipse.sirius.runtime.ide.ui.feature.group
+}
+
+location "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_runtime/site.p2" {
+	org.polarsys.kitalpha.ad.runtime.feature.feature.group lazy
+	org.polarsys.kitalpha.cadence.feature.feature.group lazy
+	org.polarsys.kitalpha.common.feature.feature.group lazy
+	org.polarsys.kitalpha.emde.feature.feature.group lazy
+	org.polarsys.kitalpha.emde.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.model.common.commands.feature.feature.group lazy
+	org.polarsys.kitalpha.model.common.scrutiny.feature.feature.group lazy
+	org.polarsys.kitalpha.model.common.share.feature.feature.group lazy
+	org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.feature.group lazy
+	org.polarsys.kitalpha.model.detachment.feature.feature.group lazy
+	org.polarsys.kitalpha.model.detachment.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.patterns.feature.feature.group lazy
+	org.polarsys.kitalpha.report.feature.feature.group lazy
+	org.polarsys.kitalpha.report.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.transposer.feature.feature.group lazy
+}
+
+location "https://hudson.eclipse.org/diffmerge/job/emf-diffmerge-core-master/167/artifact/releng/org.eclipse.emf.diffmerge.update/target/repository" {
+	org.eclipse.emf.diffmerge.feature.feature.group
+	org.eclipse.emf.diffmerge.sirius.feature.feature.group
+	org.eclipse.emf.diffmerge.gmf.feature.feature.group
+}
+
+location "https://hudson.eclipse.org/diffmerge/job/emf-diffmerge-patterns-master/106/artifact/releng/org.eclipse.emf.diffmerge.patterns.update/target/repository" {
+	org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group
+	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group
+}
+
+location "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20170328-042916/mars" {
+	org.eclipse.amalgam.explorer.activity.feature.group
+}
+
+location "http://download.eclipse.org/sirius/updates/legacy/1.1.0" {
+	org.eclipse.sirius.query.legacy.feature.feature.group
+}
+
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository" {
+	org.apache.log4j [1.2.15.v201012070815,1.2.15.v201012070815]
+	org.apache.commons.lang [2.4.0.v201005080502,2.4.0.v201005080502]
+	org.apache.commons.net [3.2.0.v201305141515,3.2.0.v201305141515]
+}
+
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository" {
+	com.google.guava [15.0.0.v201403281430,15.0.0.v201403281430]
+}
