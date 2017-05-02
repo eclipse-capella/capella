@@ -12,7 +12,7 @@
 <feature
       id="org.polarsys.capella.core.advance.feature"
       label="%featureName"
-      version="1.1.1.qualifier"
+      version="1.1.2.qualifier"
       provider-name="%providerName"
       plugin="org.polarsys.capella.core.platform.sirius.ui.perspective"
       image="Capella32x32.gif">
@@ -88,25 +88,25 @@
    <includes
          id="org.polarsys.capella.core.migration.feature"
          version="0.0.0"/>
-	
-	<includes
+
+   <includes
          id="org.polarsys.capella.core.compare.feature"
          version="0.0.0"/>
 
    <includes
-      id="org.polarsys.capella.shared.feature"
-      version="0.0.0"/>
-      
+         id="org.polarsys.capella.shared.feature"
+         version="0.0.0"/>
+
    <includes
-      id="org.polarsys.capella.patterns.feature"
-      version="0.0.0"/>
-      
+         id="org.polarsys.capella.patterns.feature"
+         version="0.0.0"/>
+
    <includes
-      id="org.polarsys.capella.detachment.feature"
-      version="0.0.0"/>
-      
+         id="org.polarsys.capella.detachment.feature"
+         version="0.0.0"/>
+
    <includes
-      id="org.polarsys.capella.doc.feature"
-      version="0.0.0"/>
+         id="org.polarsys.capella.doc.feature"
+         version="0.0.0"/>
 
 </feature>

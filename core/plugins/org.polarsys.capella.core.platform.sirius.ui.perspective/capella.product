@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Capella" id="org.polarsys.capella.core.platform.sirius.ui.perspective.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.1.1.qualifier" useFeatures="false" includeLaunchers="true">
+<product name="Capella" id="org.polarsys.capella.core.platform.sirius.ui.perspective.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.1.2.qualifier" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
       <image path="icons/CapellaAbout.png"/>
@@ -14,7 +14,8 @@
    </configIni>
 
    <launcherArgs>
-      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
    </launcherArgs>
 
    <windowImages i16="icons/CapellaAdavance16x16.gif" i32="icons/Capella32x32.png" i48="icons/Capella48x48.png"/>
