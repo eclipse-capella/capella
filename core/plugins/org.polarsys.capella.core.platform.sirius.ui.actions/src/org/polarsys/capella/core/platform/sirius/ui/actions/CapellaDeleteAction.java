@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -186,10 +186,10 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
       }
     } else if (elt_p instanceof SequenceMessage) {
       SequenceMessage msg = (SequenceMessage) elt_p;
-      if ((msg.getSendingEnd() == null) || (msg.getReceivingEnd() == null)) {
+      if (msg.getReceivingEnd() == null || msg.getKind() == MessageKind.CREATE || msg.getKind() == MessageKind.DELETE) {
         return false;
-      }
-      return (msg.getKind() == MessageKind.SYNCHRONOUS_CALL) || (msg.getKind() == MessageKind.ASYNCHRONOUS_CALL) || (msg.getKind() == MessageKind.REPLY);
+      } 
+      return true;
     } else if (elt_p instanceof ModelInformation) {
       return true;
     }
