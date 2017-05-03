@@ -98,7 +98,7 @@
                      class="Result">
                </target>
                <description>
-                  There is no more than one Initial Pseudo-State into a Region.
+                  Elements are included and excluded by CSConfiguration.
                </description>
                <message>
                   Element&quot;{0}&quot; are included and excluded by CSConfiguration: &quot;{1}&quot; and &quot;{2}&quot;.
