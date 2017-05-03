@@ -16,5 +16,8 @@
    <feature id="org.polarsys.capella.test.feature" version="1.2.0.qualifier">
       <category name="org.polarsys.capella.test"/>
    </feature>
+   <feature id="org.polarsys.capella.test.feature.source" version="1.2.0.qualifier">
+      <category name="org.polarsys.capella.test"/>
+   </feature>
    <category-def name="org.polarsys.capella.test" label="Capella Tests"/>
 </site>
