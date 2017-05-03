@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" version="11.1.1.201610211630">
   <ownedViewpoints name="Operational Analysis" modelFileExtension="melodymodeller">
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Operational Activities - Requirements" domainClass="OperationalAnalysis">
       <ownedLineMappings name="Operational Activity" domainClass="OperationalActivity" semanticCandidatesExpression="&lt;%getTableRootAbstractFunctions()%>" headerLabelExpression="feature:name">
@@ -2536,14 +2536,14 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="preconditionMapping" semanticCandidatesExpression="&lt;% preCondition %>" domainClass="capellacore.Constraint">
+        <nodeMappings name="preconditionMapping" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% preCondition %>" domainClass="capellacore.Constraint">
           <style xsi:type="style:NoteDescription" showIcon="false" labelExpression="&lt;%&quot;pre:&quot; + getConstraintLabel()  %>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="postconditionMapping" semanticCandidatesExpression="&lt;% postCondition %>" domainClass="capellacore.Constraint">
+        <nodeMappings name="postconditionMapping" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% postCondition %>" domainClass="capellacore.Constraint">
           <style xsi:type="style:NoteDescription" showIcon="false" labelExpression="&lt;%&quot;post:&quot; + getConstraintLabel() %>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -4060,14 +4060,14 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="preconditionMapping" semanticCandidatesExpression="&lt;% preCondition %>" domainClass="capellacore.Constraint">
+        <nodeMappings name="preconditionMapping" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% preCondition %>" domainClass="capellacore.Constraint">
           <style xsi:type="style:NoteDescription" showIcon="false" labelExpression="&lt;%&quot;pre:&quot; + getConstraintLabel() %>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="postconditionMapping" semanticCandidatesExpression="&lt;% postCondition %>" domainClass="capellacore.Constraint">
+        <nodeMappings name="postconditionMapping" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% postCondition %>" domainClass="capellacore.Constraint">
           <style xsi:type="style:NoteDescription" showIcon="false" labelExpression="&lt;%&quot;post:&quot; + getConstraintLabel() %>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
