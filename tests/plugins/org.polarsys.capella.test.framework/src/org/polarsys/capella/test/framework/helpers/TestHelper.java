@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.junit.Assert;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.libraries.model.CapellaLibraryExt;
@@ -106,13 +107,18 @@ public class TestHelper {
    * @param value
    *          true to set as Multipart, otherwise false
    */
-  public static void setReusableComponents(EObject anyModelElement, boolean value) {
-    Project project = CapellaProjectHelper.getProject(anyModelElement);
-    if (value) {
-      CapellaProjectHelper.setProjectWithApproach(project, ProjectApproach.ReusableComponents);
-    } else {
-      CapellaProjectHelper.setProjectWithApproach(project, ProjectApproach.SingletonComponents);
-    }
+  public static void setReusableComponents(final EObject anyModelElement, final boolean value) {
+    ExecutionManagerRegistry.getInstance().getExecutionManager(TransactionHelper.getEditingDomain(anyModelElement)).execute(new AbstractReadWriteCommand() {
+      @Override
+      public void run() {
+        Project project = CapellaProjectHelper.getProject(anyModelElement);
+        if (value) {
+          CapellaProjectHelper.setProjectWithApproach(project, ProjectApproach.ReusableComponents);
+        } else {
+          CapellaProjectHelper.setProjectWithApproach(project, ProjectApproach.SingletonComponents);
+        }
+      }
+    });
   }
 
   /**

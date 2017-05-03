@@ -24,6 +24,7 @@ import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecompositi
 import org.polarsys.capella.test.model.ju.testcase.copyPasteModel.CopyPasteModelWithAppliedPVGandPV;
 import org.polarsys.capella.test.model.ju.testcase.copyPasteModel.CopyPasteModelWithFunctionalAllocation;
 import org.polarsys.capella.test.model.ju.testcase.dialoglabel.NewDiagramDialogLabel;
+import org.polarsys.capella.test.model.ju.testcases.datalisteners.DataListenerTestSuite;
 import org.polarsys.capella.test.model.ju.testcases.delete.DeleteElementTestSuite;
 import org.polarsys.capella.test.model.ju.testcases.interfacescenario.message.ISMessage;
 
@@ -55,6 +56,7 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new RenameModelTestSuite());
     tests.add(new ObfuscateModelTestCase());
     tests.add(new DeleteElementTestSuite());
+    tests.add(new DataListenerTestSuite());
     return tests;
   }
 
