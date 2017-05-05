@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2017 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.polarsys</groupId>
+    <artifactId>org.polarsys.capella</artifactId>
+    <version>1.2.0-SNAPSHOT</version>
+    <relativePath>../../</relativePath>
+  </parent>
+  <groupId>org.polarsys</groupId>
+  <artifactId>org.polarsys.capella.tests.plugins</artifactId>
+  <packaging>pom</packaging>
+  
+  <profiles>
+    <profile>
+      <id>full</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <modules>
+        <module>org.polarsys.capella.test.business.queries.ju</module>
+        <module>org.polarsys.capella.test.diagram.common.ju</module>
+        <module>org.polarsys.capella.test.diagram.filters.ju</module>
+        <module>org.polarsys.capella.test.diagram.misc.ju</module>
+        <module>org.polarsys.capella.test.diagram.tools.ju</module>
+        <module>org.polarsys.capella.test.explorer.activity.ju</module>
+        <module>org.polarsys.capella.test.fastlinker.ju</module>
+        <module>org.polarsys.capella.test.framework</module>
+        <module>org.polarsys.capella.test.library.ju</module>
+        <module>org.polarsys.capella.test.merge.ju</module>
+        <module>org.polarsys.capella.test.meta.ju</module>
+        <module>org.polarsys.capella.test.model.ju</module>
+        <module>org.polarsys.capella.test.navigator.ju</module>
+        <module>org.polarsys.capella.test.migration.ju</module>
+        <module>org.polarsys.capella.test.commandline.ju</module>
+        <module>org.polarsys.capella.test.platform.ju</module>
+        <module>org.polarsys.capella.test.progressmonitoring.ju</module>
+        <module>org.polarsys.capella.test.projection.ju</module>
+        <module>org.polarsys.capella.test.re.updateconnections.ju</module>
+        <module>org.polarsys.capella.test.recrpl.ju</module>
+        <module>org.polarsys.capella.test.refinement.ju</module>
+        <module>org.polarsys.capella.test.semantic.queries.ju</module>
+        <module>org.polarsys.capella.test.suite.inui.ju</module>
+        <module>org.polarsys.capella.test.suite.local.ju</module>
+        <module>org.polarsys.capella.test.suite.notinui.ju</module>
+        <module>org.polarsys.capella.test.suites.ju</module>
+        <module>org.polarsys.capella.test.transition.ju</module>
+        <module>org.polarsys.capella.test.validation.rules.ju</module>
+        <module>org.polarsys.capella.test.rcptt</module>
+      </modules>
+    </profile>
+  </profiles>
+</project>

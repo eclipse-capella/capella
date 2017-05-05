@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.polarsys</groupId>
+    <artifactId>org.polarsys.capella</artifactId>
+    <version>1.2.0-SNAPSHOT</version>
+    <relativePath>../../</relativePath>
+  </parent>
+  <groupId>org.polarsys</groupId>
+  <artifactId>org.polarsys.capella.core.features</artifactId>
+  <packaging>pom</packaging>
+  <profiles>
+    <profile>
+      <id>full</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <modules>
+        <module>org.polarsys.capella.core.advance.feature</module>
+        <module>org.polarsys.capella.core.af.feature</module>
+        <module>org.polarsys.capella.core.common.feature</module>
+        <module>org.polarsys.capella.core.common.ui.feature</module>
+        <module>org.polarsys.capella.core.compare.feature</module>
+        <module>org.polarsys.capella.core.dashboard.feature</module>
+        <module>org.polarsys.capella.core.data.merged.feature</module>
+        <module>org.polarsys.capella.core.feature</module>
+        <module>org.polarsys.capella.core.libraries.feature</module>
+        <module>org.polarsys.capella.core.migration.feature</module>
+        <module>org.polarsys.capella.core.properties.description.feature</module>
+        <module>org.polarsys.capella.core.properties.feature</module>
+        <module>org.polarsys.capella.core.re.feature</module>
+        <module>org.polarsys.capella.core.transfo.feature</module>
+        <module>org.polarsys.capella.core.transition.common.feature</module>
+        <module>org.polarsys.capella.core.transition.system.topdown.feature</module>
+        <module>org.polarsys.capella.core.ui.feature</module>
+        <module>org.polarsys.capella.core.ui.quickfix.feature</module>
+        <module>org.polarsys.capella.core.ui.semantic.browser.feature</module>
+        <module>org.polarsys.capella.core.ui.transfo.feature</module>
+        <module>org.polarsys.capella.core.ui.wizards.feature</module>
+        <module>org.polarsys.capella.core.validation.feature</module>
+      </modules>
+    </profile>
+  </profiles>
+</project>
