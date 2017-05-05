@@ -35,7 +35,7 @@ public class ProjectionPreferencesPlugin extends Plugin {
   }
 
   /**
-   * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+   * {@inheritDoc}
    */
   @Override
   public void start(BundleContext context) throws Exception {
@@ -44,7 +44,7 @@ public class ProjectionPreferencesPlugin extends Plugin {
   }
 
   /**
-   * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+   * {@inheritDoc}
    */
   @Override
   public void stop(BundleContext context) throws Exception {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ public class TestSemanticQueriesPlugin extends Plugin {
   private static TestSemanticQueriesPlugin plugin;
 
   /**
-   * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+   * {@inheritDoc}
    */
   @Override
   public void start(BundleContext context) throws Exception {
@@ -38,7 +38,7 @@ public class TestSemanticQueriesPlugin extends Plugin {
   }
 
   /**
-   * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+   * {@inheritDoc}
    */
   @Override
   public void stop(BundleContext context) throws Exception {

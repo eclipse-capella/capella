@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -81,9 +81,8 @@ public class ReportManagerActivator extends Plugin {
     return _flushableappenders;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+  /**
+   * {@inheritDoc}
    */
   @Override
   public void start(BundleContext context) throws Exception {
@@ -92,9 +91,8 @@ public class ReportManagerActivator extends Plugin {
     getFlushableAppenders();
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+  /**
+   * {@inheritDoc}
    */
   @Override
   public void stop(BundleContext context) throws Exception {
