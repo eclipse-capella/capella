@@ -16495,7 +16495,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Lost and found">
-            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a new Lost Sequence Message invoking a Functional Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Functional Exchange." name="Found Functional Exchange" precondition="&lt;% $element.filter (&quot;Execution&quot;).nSize > 0 ||  $element.filter (&quot;InstanceRole&quot;).nSize > 0 %>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FoundMessage.gif">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a new Found Sequence Message invoking a Functional Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Functional Exchange." name="Found Functional Exchange" precondition="&lt;% $element.filter (&quot;Execution&quot;).nSize > 0 ||  $element.filter (&quot;InstanceRole&quot;).nSize > 0 %>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FoundMessage.gif">
               <filters precondition="&lt;% target.eContainer (&quot;Scenario&quot;).ownedEvents.operation.filter (&quot;ComponentExchange&quot;).nSize > 0 %>" elementsToListen="&lt;% target.eContainer (&quot;Scenario&quot;) %>">
                 <listeners domainClass="interaction.Scenario" featureName="ownedInteractionFragments"/>
               </filters>
@@ -16560,7 +16560,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a new Found Sequence Message invoking a Component Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Component Exchange." name="Lost Component Exchange" precondition="&lt;% $element.filter (&quot;Execution&quot;).nSize > 0 ||  $element.filter (&quot;InstanceRole&quot;).nSize > 0 %>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LostMessage.gif">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a new Lost Sequence Message invoking a Component Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Component Exchange." name="Lost Component Exchange" precondition="&lt;% $element.filter (&quot;Execution&quot;).nSize > 0 ||  $element.filter (&quot;InstanceRole&quot;).nSize > 0 %>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LostMessage.gif">
               <filters precondition="&lt;% target.eContainer (&quot;Scenario&quot;).ownedEvents.operation.filter (&quot;FunctionalExchange&quot;).nSize > 0 %>" elementsToListen="&lt;% target.eContainer (&quot;Scenario&quot;) %>">
                 <listeners domainClass="interaction.Scenario" featureName="ownedInteractionFragments"/>
               </filters>
@@ -16613,7 +16613,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a new Lost Sequence Message invoking a Component Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Component Exchange." name="Found Component Exchange" precondition="&lt;% $element.filter (&quot;Execution&quot;).nSize > 0 ||  $element.filter (&quot;InstanceRole&quot;).nSize > 0 %>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FoundMessage.gif">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a new Found Sequence Message invoking a Component Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Component Exchange." name="Found Component Exchange" precondition="&lt;% $element.filter (&quot;Execution&quot;).nSize > 0 ||  $element.filter (&quot;InstanceRole&quot;).nSize > 0 %>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FoundMessage.gif">
               <filters precondition="&lt;% target.eContainer (&quot;Scenario&quot;).ownedEvents.operation.filter (&quot;FunctionalExchange&quot;).nSize > 0 %>" elementsToListen="&lt;% target.eContainer (&quot;Scenario&quot;) %>">
                 <listeners domainClass="interaction.Scenario" featureName="ownedInteractionFragments"/>
               </filters>
@@ -16678,7 +16678,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a new Found Sequence Message invoking a Functional Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Functional Exchange." name="Lost Functional Exchange" precondition="&lt;% $element.filter (&quot;Execution&quot;).nSize > 0 ||  $element.filter (&quot;InstanceRole&quot;).nSize > 0 %>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LostMessage.gif">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Creates a new Lost Sequence Message invoking a Functional Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Functional Exchange." name="Lost Functional Exchange" precondition="&lt;% $element.filter (&quot;Execution&quot;).nSize > 0 ||  $element.filter (&quot;InstanceRole&quot;).nSize > 0 %>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LostMessage.gif">
               <filters precondition="&lt;% target.eContainer (&quot;Scenario&quot;).ownedEvents.operation.filter (&quot;ComponentExchange&quot;).nSize > 0 %>" elementsToListen="&lt;% target.eContainer (&quot;Scenario&quot;) %>">
                 <listeners domainClass="interaction.Scenario" featureName="ownedInteractionFragments"/>
               </filters>
