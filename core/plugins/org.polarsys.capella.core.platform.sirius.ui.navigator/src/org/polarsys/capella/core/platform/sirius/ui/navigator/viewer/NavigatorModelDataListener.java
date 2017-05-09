@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,8 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
@@ -94,6 +96,8 @@ public class NavigatorModelDataListener extends CapellaModelDataListener {
       __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.LITERAL_BOOLEAN_VALUE__VALUE);
       __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.LITERAL_NUMERIC_VALUE__VALUE);
       __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.LITERAL_STRING_VALUE__VALUE);
+
+      __monitoredReferencesForAdditionalNotifications.add(ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__TARGET);
     }
   }
 
@@ -112,6 +116,7 @@ public class NavigatorModelDataListener extends CapellaModelDataListener {
         dataNotifier.addAdapter(LiteralBooleanValue.class, this);
         dataNotifier.addAdapter(LiteralNumericValue.class, this);
         dataNotifier.addAdapter(LiteralStringValue.class, this);
+        dataNotifier.addAdapter(DRepresentationDescriptor.class, this);
       }
     }
   }
