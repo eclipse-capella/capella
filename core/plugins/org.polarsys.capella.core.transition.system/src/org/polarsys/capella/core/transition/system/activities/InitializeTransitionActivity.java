@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,9 +33,7 @@ import org.polarsys.capella.core.transition.common.handlers.scope.RuleContainers
 import org.polarsys.capella.core.transition.common.handlers.scope.RuleRootElementsScopeRetriever;
 import org.polarsys.capella.core.transition.common.handlers.traceability.CompoundTraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.config.ITraceabilityConfiguration;
-import org.polarsys.capella.core.transition.system.constants.ISystemConstants;
 import org.polarsys.capella.core.transition.system.handlers.attachment.CapellaDefaultAttachmentHandler;
-import org.polarsys.capella.core.transition.system.handlers.optimize.CrossReferencerHandler;
 import org.polarsys.capella.core.transition.system.handlers.traceability.config.MergeTargetConfiguration;
 import org.polarsys.capella.core.transition.system.handlers.transformation.CapellaTransformationHandler;
 import org.polarsys.capella.core.transition.system.helpers.SemanticHelper;
@@ -82,9 +80,6 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
   }
 
   protected IStatus initializeOptimizations(IContext context, ActivityParameters activityParams) {
-    IHandler handler = new CrossReferencerHandler();
-    context.put(ISystemConstants.CROSS_REFERENCER_HANDLER, handler);
-    handler.init(context);
     return Status.OK_STATUS;
   }
 

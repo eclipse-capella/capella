@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.business.api.control.SiriusControlCommand;
@@ -65,6 +66,7 @@ import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultCompon
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.model.handler.AbortedTransactionException;
+import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.handler.pre.commit.listener.FileModificationPreCommitListener;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.ICapellaPreferences;
@@ -476,13 +478,16 @@ public class DesignerControlAction extends ControlAction {
   public void run() {
     final boolean controlling = (command == null);
     final Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+    TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(_eObject);
+    CrossReferencerHelper.enableProxyResolution(editingDomain, true);
     if (controlling) {
       fragment(shell);
     } else {
       unFragment(shell);
     }
+    CrossReferencerHelper.enableProxyResolution(editingDomain, false);
   }
-
+  
   /**
    * Save session.
    * @param semanticRoot

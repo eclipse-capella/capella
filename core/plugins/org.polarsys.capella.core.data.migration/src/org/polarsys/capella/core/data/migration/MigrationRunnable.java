@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,6 @@ import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.IUserEnforcedHelper;
 import org.polarsys.capella.core.af.integration.listener.MetadataCheckListener;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
-import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.capella.core.platform.sirius.ui.session.CapellaSessionHelper;
 
 /**
@@ -423,17 +422,10 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
 		// cause by the Sirius session when
 		// disposing...
 
-		boolean isResolving = CrossReferencerHelper.resolutionEnabled();
-		try {
-			// We want to disable CrossReferencing resolution while we unload a resource
-			CrossReferencerHelper.enableResolution(false);
 			for (Resource resource : resources) {
 				resource.unload();
 				resource.eAdapters().clear(); // remove any adapters
 			}
-		} finally {
-			CrossReferencerHelper.enableResolution(isResolving);
-		}
 
 		// Don't put the unload loop in the dispose of the ED otherwise we will have memory leaks on Sirius session close
 		// operation.
@@ -447,5 +439,4 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
 		postDispose(executionManager, resourceSet, context);
 		LongRunningListenersRegistry.getInstance().operationEnded(getClass());
 	}
-
 }
