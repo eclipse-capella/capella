@@ -1,0 +1,49 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _77dBkJ6NEeWcU-ojRg-Rxw,_C_OB0MEVEeWqb6y2_gGIKQ,_9ikm0J6BEeWcU-ojRg-Rxw
+Element-Name: DragnDropClassDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _02YZQDS4EeeZEMGRa8a5kg
+Runtime-Version: 2.0.0.201506042314
+Save-Time: 5/9/17 3:43 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Creates a new Class Diagram then DnD it into a different Data Package.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "EOLE_AF/EOLE_AF.aird" | double-click
+    select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Operational Analysis/Data" 
+        | get-menu "New Diagram \\/ Table.../Class Diagram Blank" | click
+}
+get-window "New Class Diagram Blank" | get-button OK | click
+get-editor "[CDB] Data" | get-diagram -index 1 | get-edit-part -name "[CDB] Data" | mouse-move 138 257 -height 398 
+    -width 605
+get-view "Capella Project Explorer" | get-tree | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Operational Analysis/Data" 
+    | get-menu "Add Capella Element/Data Pkg" | click
+get-editor "[CDB] Data" | get-diagram -index 1 | get-edit-part -name "[CDB] Data" | mouse-move 257 149 -height 398 
+    -width 605
+get-view "Capella Project Explorer" | get-tree | key-type "M1+s"
+get-editor "[CDB] Data" | get-diagram -index 1 | get-edit-part -name "[CDB] Data" | mouse-move 27 236 -height 398 
+    -width 605
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Operational Analysis/Data/[CDB] Data" 
+        | get-item "EOLE_AF/EOLE_AF.aird/EOLE_AF/Operational Analysis/Data/\\[CDB\\] Data" | drag-start 32 9
+    get-item "EOLE_AF/EOLE_AF.aird/EOLE_AF/Operational Analysis/Data/\\[CDB\\] Data" | drag-enter 32 3 -detail move
+    get-item "EOLE_AF/EOLE_AF.aird/EOLE_AF/Operational Analysis/Data/DataPkg 1" | drag-over 32 8
+    get-item "EOLE_AF/EOLE_AF.aird/EOLE_AF/Operational Analysis/Data/\\[CDB\\] Data" | drag-exit
+    drag-end
+    
+    // The diagram should be dropped under the newly created DataPkg 1
+    get-item "EOLE_AF/EOLE_AF.aird/EOLE_AF/Operational Analysis/Data/DataPkg 1/\\[CDB\\] Data" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
