@@ -52,7 +52,7 @@
 		<sonar.coverage.exclusions>**/doc/**,**/releng/**,**/tests/**,**/*.gen/**,**/*.gen.edit/**</sonar.coverage.exclusions>
 
 		<!-- Default target-platform-path (other values: canary, headless) -->
-		<target-platform-path>canary</target-platform-path>
+		<target-platform-path>full</target-platform-path>
 	</properties>
 
 	<modules>
