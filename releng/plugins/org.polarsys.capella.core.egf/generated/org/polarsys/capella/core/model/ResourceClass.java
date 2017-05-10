@@ -1,30 +1,17 @@
-//Generated with EGF 1.3.0.v20160112-1239
+//Generated with EGF 1.4.1.v20161010-1511
 package org.polarsys.capella.core.model;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.eclipse.egf.model.pattern.Node;
-import org.eclipse.egf.model.pattern.PatternContext;
-import org.eclipse.egf.pattern.execution.CallHelper;
-import org.eclipse.egf.pattern.execution.ExecutionContext;
-import org.eclipse.egf.pattern.execution.InternalPatternContext;
-import org.eclipse.egf.pattern.execution.OutputManager;
-import org.eclipse.egf.pattern.execution.SuperOrchestrationContext;
-import org.eclipse.egf.pattern.query.IQuery;
-import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
-import org.eclipse.emf.codegen.ecore.genmodel.GenClassifier;
-import org.eclipse.emf.codegen.ecore.genmodel.GenDataType;
-import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
-import org.eclipse.emf.codegen.ecore.genmodel.GenJDKLevel;
-import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
-import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
-import org.eclipse.emf.codegen.ecore.genmodel.GenResourceKind;
-import org.eclipse.emf.codegen.ecore.genmodel.impl.Literals;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.ExtendedMetaData;
-import org.polarsys.kitalpha.emde.egf.helper.ExtensionHelper;
+import org.eclipse.egf.common.helper.*;
+import java.util.*;
+import org.eclipse.emf.ecore.*;
+import org.eclipse.egf.model.pattern.*;
+import org.eclipse.egf.pattern.execution.*;
+import org.eclipse.egf.pattern.query.*;
+import org.eclipse.emf.codegen.ecore.genmodel.*;
+import org.eclipse.emf.ecore.util.*;
+import org.eclipse.emf.codegen.ecore.genmodel.impl.*;
+import org.polarsys.capella.core.egf.*;
+import org.polarsys.kitalpha.emde.egf.helper.*;
 
 public class ResourceClass extends org.polarsys.kitalpha.emde.egf.model.ResourceClass {
   protected static String nl;
