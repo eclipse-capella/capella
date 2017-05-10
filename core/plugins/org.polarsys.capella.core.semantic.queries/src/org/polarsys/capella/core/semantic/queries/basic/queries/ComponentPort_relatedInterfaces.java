@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,9 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.fa.ComponentPort;
+import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
@@ -39,7 +41,14 @@ public class ComponentPort_relatedInterfaces implements IQuery {
 		List<Object> result = new ArrayList<Object>();
 		if (object instanceof ComponentPort) {
 		  ComponentPort p = (ComponentPort) object;
-			result.addAll(p.getRequiredInterfaces());
+		  EList<Interface> requiredI = p.getRequiredInterfaces();
+		  EList<Interface> providedI = p.getProvidedInterfaces();
+		  		  
+		  if (null != requiredI)
+		  	result.addAll(requiredI);
+		  	  	
+		  if (null != providedI)
+			result.addAll(providedI);
 		}
         return result;
 	}

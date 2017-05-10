@@ -2536,14 +2536,14 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="preconditionMapping" semanticCandidatesExpression="&lt;% preCondition %>" domainClass="capellacore.Constraint">
+        <nodeMappings name="preconditionMapping" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% preCondition %>" domainClass="capellacore.Constraint">
           <style xsi:type="style:NoteDescription" showIcon="false" labelExpression="&lt;%&quot;pre:&quot; + getConstraintLabel()  %>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="postconditionMapping" semanticCandidatesExpression="&lt;% postCondition %>" domainClass="capellacore.Constraint">
+        <nodeMappings name="postconditionMapping" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% postCondition %>" domainClass="capellacore.Constraint">
           <style xsi:type="style:NoteDescription" showIcon="false" labelExpression="&lt;%&quot;post:&quot; + getConstraintLabel() %>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -4060,14 +4060,14 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="preconditionMapping" semanticCandidatesExpression="&lt;% preCondition %>" domainClass="capellacore.Constraint">
+        <nodeMappings name="preconditionMapping" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% preCondition %>" domainClass="capellacore.Constraint">
           <style xsi:type="style:NoteDescription" showIcon="false" labelExpression="&lt;%&quot;pre:&quot; + getConstraintLabel() %>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="postconditionMapping" semanticCandidatesExpression="&lt;% postCondition %>" domainClass="capellacore.Constraint">
+        <nodeMappings name="postconditionMapping" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% postCondition %>" domainClass="capellacore.Constraint">
           <style xsi:type="style:NoteDescription" showIcon="false" labelExpression="&lt;%&quot;post:&quot; + getConstraintLabel() %>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
