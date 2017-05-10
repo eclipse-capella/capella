@@ -481,19 +481,19 @@
 |-
 | 	Found Functional Exchange 	
 | [[Image:Images/icons/full/obj16/FoundMessage.gif]] 
-| 		Creates a new Lost Sequence Message invoking a Functional Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Functional Exchange. 	
+| 		Creates a new Found Sequence Message invoking a Functional Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Functional Exchange. 	
 |-
 | 	Lost Component Exchange 	
 | [[Image:Images/icons/full/obj16/LostMessage.gif]] 
-| 		Creates a new Found Sequence Message invoking a Component Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Component Exchange. 	
+| 		Creates a new Lost Sequence Message invoking a Component Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Component Exchange. 	
 |-
 | 	Found Component Exchange 	
 | [[Image:Images/icons/full/obj16/FoundMessage.gif]] 
-| 		Creates a new Lost Sequence Message invoking a Component Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Component Exchange. 	
+| 		Creates a new Found Sequence Message invoking a Component Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Component Exchange. 	
 |-
 | 	Lost Functional Exchange 	
 | [[Image:Images/icons/full/obj16/LostMessage.gif]] 
-| 		Creates a new Found Sequence Message invoking a Functional Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Functional Exchange. 	
+| 		Creates a new Lost Sequence Message invoking a Functional Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Functional Exchange. 	
 |-
 | 	Allocated Function 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
