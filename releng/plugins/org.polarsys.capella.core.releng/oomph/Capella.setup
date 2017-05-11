@@ -39,6 +39,22 @@
     </annotation>
     <setupTask
         xsi:type="setup:CompoundTask"
+        name="org.eclipse.core.resources">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.core.resources/encoding"
+          value="UTF-8"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="org.eclipse.core.runtime">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.core.runtime/line.separator"
+          value="&#xD;&#xA;"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
         name="org.eclipse.jdt.ui">
       <setupTask
           xsi:type="setup:PreferenceTask"
@@ -170,12 +186,20 @@
         name="org.eclipse.emf.sdk.feature.group"/>
     <requirement
         name="org.eclipse.releng.tools.feature.group"/>
+    <requirement
+        name="org.eclipse.egf.sdk.feature.group"/>
+    <requirement
+        name="org.polarsys.kitalpha.emde.sdk.feature.feature.group"/>
     <repository
         url="http://download.eclipse.org/sirius/updates/releases/4.1.4/neon"/>
     <repository
         url="http://download.eclipse.org/releases/neon"/>
     <repository
         url="http://download.eclipse.org/eclipse/updates/4.6"/>
+    <repository
+        url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_sdk/site.p2/"/>
+    <repository
+        url="https://hudson.eclipse.org/egf/job/buckminster-egf-mars/31/artifact/result/publish/org.eclipse.egf.sdk/site.p2/"/>
   </setupTask>
   <project name="Capella Developer"
       logicalProjectContainer="/">
@@ -228,6 +252,11 @@
         <requirement
             name="org.polarsys.capella.test.feature.feature.group"/>
       </targlet>
+      <targlet
+          name="Capella M2 Definitions">
+        <requirement
+            name="org.polarsys.capella.core.model.definition.feature.feature.group"/>
+      </targlet>
     </setupTask>
     <setupTask
         xsi:type="setup.workingsets:WorkingSetTask">
@@ -236,8 +265,14 @@
         <predicate
             xsi:type="predicates:AndPredicate">
           <operand
-              xsi:type="predicates:NamePredicate"
-              pattern=".*\.gen(\..*)?"/>
+              xsi:type="predicates:OrPredicate">
+            <operand
+                xsi:type="predicates:NamePredicate"
+                pattern=".*\.gen(\..*)?"/>
+            <operand
+                xsi:type="predicates:NamePredicate"
+                pattern=".*\.def$"/>
+          </operand>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -323,11 +358,11 @@
         <predicate
             xsi:type="predicates:AndPredicate">
           <operand
-              xsi:type="predicates:NamePredicate"
-              pattern=".*\.common(\..*)?"/>
+              xsi:type="predicates:LocationPredicate"
+              pattern=".*/common/.*"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.7 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.7 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.11"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -338,11 +373,11 @@
         <predicate
             xsi:type="predicates:AndPredicate">
           <operand
-              xsi:type="predicates:NamePredicate"
-              pattern=".*\.core(\..*)?"/>
+              xsi:type="predicates:LocationPredicate"
+              pattern=".*/core/.*"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.11"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -375,6 +410,36 @@
               project="org.polarsys.capella.common"/>
         </predicate>
       </workingSet>
+      <workingSet
+          name="Capella Releng">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:LocationPredicate"
+              pattern=".*releng.*"/>
+          <operand
+              xsi:type="predicates:RepositoryPredicate"
+              project="org.polarsys.capella.common"/>
+          <operand
+              xsi:type="workingsets:ExclusionPredicate"
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
+        </predicate>
+      </workingSet>
+      <workingSet
+          name="Capella Doc">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:LocationPredicate"
+              pattern=".*/doc/.*"/>
+          <operand
+              xsi:type="workingsets:ExclusionPredicate"
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
+          <operand
+              xsi:type="predicates:RepositoryPredicate"
+              project="org.polarsys.capella.common"/>
+        </predicate>
+      </workingSet>
       <description>The dynamic working sets for ${scope.project.label}</description>
     </setupTask>
     <setupTask
@@ -394,32 +459,6 @@
         disabled="true"
         sourceURL="${java.io.tmpdir|uri}/Capella.target"
         targetURL="${git.clone.capella.location|uri}/releng/plugins/org.polarsys.capella.core.releng/oomph/Capella.target"/>
-    <project
-        name="Capella Metamodel Developer"
-        label="">
-      <setupTask
-          xsi:type="setup.targlets:TargletTask">
-        <targlet
-            name="Capella Metamodel Definitions">
-          <requirement
-              name="org.polarsys.capella.core.data.def"/>
-          <requirement
-              name="org.polarsys.capella.common.data.def"/>
-          <requirement
-              name="org.polarsys.capella.core.egf.feature.feature.group"/>
-        </targlet>
-      </setupTask>
-      <setupTask
-          xsi:type="setup.workingsets:WorkingSetTask">
-        <workingSet
-            name="Capella Metamodel Definitions">
-          <predicate
-              xsi:type="predicates:NamePredicate"
-              pattern=".*\.def"/>
-        </workingSet>
-      </setupTask>
-      <description>Select this if you need to make changes to the Capella metamodel definitions</description>
-    </project>
     <stream
         name="master">
       <setupTask
@@ -975,6 +1014,8 @@
             name="Neon">
           <repository
               url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_runtime/site.p2"/>
+          <repository
+              url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_sdk/site.p2"/>
         </repositoryList>
       </targlet>
       <targlet
@@ -1061,6 +1102,19 @@
           <repository
               url="https://hudson.polarsys.org/capella/view/Capella-master/job/capella-master/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.capella.rcp.site/target/repository/"/>
         </repositoryList>
+      </targlet>
+      <targlet
+          name="Capella Releng and Code Generators">
+        <requirement
+            name="org.polarsys.capella.core.egf.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.capella.headless.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.capella.rcp.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.capella.core.data.def"/>
+        <requirement
+            name="org.polarsys.capella.common.data.def"/>
       </targlet>
       <description>Capella Dependencies, copied from org.polarsys.capella.rcp.target/full</description>
     </setupTask>
