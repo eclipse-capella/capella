@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,9 +42,13 @@ public abstract class ESProject extends AbstractDiagramTestCase {
   public static String LA__ROOT_LF__FUNCTIONALEXCHANGE_2 = "5bbfb786-71d3-4a5c-88d0-5245513f4561";  //$NON-NLS-1$ 
   public static String LA__CAPABILITIES = "120e51a0-63a1-44fe-9f3d-69c1651b2461";  //$NON-NLS-1$ 
   public static String LA__CAPABILITIES__CAPABILITYREALIZATION_1 = "a8143c88-483c-45b5-86b1-31b493a464e8";  //$NON-NLS-1$ 
-  public static String LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_1 = "e8bd0bc4-3c55-46cc-b119-a18c2db3a444";  //$NON-NLS-1$ 
+  public static String LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_1 = "e8bd0bc4-3c55-46cc-b119-a18c2db3a444";  //$NON-NLS-1$
   public static String LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_1__LA_1 = "2858335e-e69e-43de-99e5-914927e0f860";  //$NON-NLS-1$ 
   public static String LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_1__LA_2 = "bc347bb0-929b-46c2-87bc-70d3701c83e3";  //$NON-NLS-1$
+  public static String LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_2 = "6b68f673-d089-4055-83fd-73b9d2dd7ade"; //$NON-NLS-1$
+  public static String LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_2__LA_1 = "16b2efda-430e-470f-8085-b707a5b150cf";  //$NON-NLS-1$ 
+  public static String LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_2__LA_2 = "81b3d151-3d8e-4da3-86f2-2c117977a49b";  //$NON-NLS-1$
+  public static String LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_2__EXE_1 = "076a88b9-3932-4060-8549-f25544f2a0b7"; //$NON-NLS-1$
   public static String LA__INTERFACES = "86f2a43b-51da-4e0e-8a05-d4bc1a268bab";  //$NON-NLS-1$ 
   public static String LA__DATA = "cb66e407-43cc-4629-991e-a8eea7b74dd2";  //$NON-NLS-1$ 
   public static String LA__LOGICAL_CONTEXT = "4a127589-987f-4cc0-a790-945f2a1c939c";  //$NON-NLS-1$ 
