@@ -14294,7 +14294,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;%$call.name%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="&lt;%$targetIR%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="event" valueExpression="&lt;%$eventReceiptOperationCall%>"/>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $messageEndAfter != null %>">
@@ -14310,7 +14310,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;%$call.name%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="&lt;%$sourceIR%>"/>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$messageEndBefore == null%>">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfScenario%>"/>
@@ -14370,7 +14370,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;%$call.name%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="&lt;%$targetIR%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="event" valueExpression="&lt;%$eventReceiptOperationCall%>"/>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $messageEndAfter != null %>">
@@ -14386,7 +14386,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;%$call.name%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="&lt;%$sourceIR%>"/>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$messageEndBefore == null%>">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfScenario%>"/>
@@ -16070,7 +16070,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;% $call.name%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="&lt;%$targetIR%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="event" valueExpression="&lt;%$eventReceiptOperationCall%>"/>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $messageEndAfter != null %>">
@@ -16086,7 +16086,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;% $call.name%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="&lt;%$sourceIR%>"/>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$messageEndBefore == null%>">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfScenario%>"/>
@@ -16146,7 +16146,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;% $call.name%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="&lt;%$targetIR%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="event" valueExpression="&lt;%$eventReceiptOperationCall%>"/>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $messageEndAfter != null %>">
@@ -16162,7 +16162,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;% $call.name%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="&lt;%$sourceIR%>"/>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$messageEndBefore == null%>">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfScenario%>"/>
