@@ -23,5 +23,6 @@ _AczyQB3uEeex3Nv8iShVXQ	// kind: 'suite' name: 'InnerDiagramsSuite' path: 'Inner
 _6DCJACmvEeeLMJ-eLKwAnw	// kind: 'suite' name: 'Constraint' path: 'Constraint/Constraint.suite'
 _02YZQDS4EeeZEMGRa8a5kg	// kind: 'test' name: 'DragnDropClassDiagram' path: 'DragAndDrop/DragnDropClassDiagram.test'
 _JamzwDWUEeeWUYFkeZvpdw	// kind: 'test' name: 'LifelineDeletion' path: 'Sequence/LifelineDeletion.test'
+_VqGRgDS6EeepRL_NUeNEXg	// kind: 'test' name: 'PrePostConditionDeletionImpactAnalysis' path: 'Sequence/PrePostConditionDeletionImpactAnalysis.test'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--
