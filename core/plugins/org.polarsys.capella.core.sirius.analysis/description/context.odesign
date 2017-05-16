@@ -2661,7 +2661,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new System Function allocated to a new System Actor" name="Actor Function" precondition="&lt;%$containerView.isValidCreationDFFunction() &amp;&amp; $containerView.isA(&quot;DDiagram&quot;) %>" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ActorFunction.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new System Function allocated to a new System Actor" name="Actor Function" precondition="&lt;%$containerView.isValidCreationDFFunction() &amp;&amp; $containerView.isA(&quot;DDiagram&quot;) %>" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ActorSystemFunction.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>

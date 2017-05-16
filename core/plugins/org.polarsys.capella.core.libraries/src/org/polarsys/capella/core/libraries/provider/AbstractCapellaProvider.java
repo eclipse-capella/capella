@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
@@ -100,8 +100,8 @@ public abstract class AbstractCapellaProvider extends AbstractLibraryProvider {
       semanticElement = ModelAdaptation.adaptToCapella(semanticElement);
     }
 
-    // If we are in a capella resource, the resource is loaded in the resourceSet, so we can return the model
-    TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(object);
+    // If we are in a Capella resource, the resource is loaded in the resourceSet, so we can return the model
+    TransactionalEditingDomain domain = TransactionHelper.getEditingDomain(object);
     if (semanticElement != null) {
       Resource resource = semanticElement.eResource();
       if ((resource != null) && isHandled(resource.getURI())) {

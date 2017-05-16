@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,6 @@ import org.eclipse.emf.diffmerge.ui.viewers.EnhancedComparisonSideViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.EnhancedComparisonTreeViewer;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
@@ -52,6 +51,7 @@ import org.polarsys.capella.common.flexibility.wizards.renderer.RendererContext;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.ui.PropertyDialog;
 import org.polarsys.capella.common.flexibility.wizards.ui.PropertyWizard;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
@@ -117,7 +117,7 @@ public class UpdateConnectionsHandler extends AbstractHandler {
       final EComparison comp = new DiffmergeHandler(selectedRPL1, selectedRPL2, connectionMatcher)
           .computeDifferences(new NullProgressMonitor());
 
-      final EMFDiffNode diffNode = new EMFDiffNode(comp, TransactionUtil.getEditingDomain(selectedRPL1));
+      final EMFDiffNode diffNode = new EMFDiffNode(comp, TransactionHelper.getEditingDomain(selectedRPL1));
 
       // Show the comparison in a dialog
       UpdateConnectionsDiffmergeDialog dialog = new UpdateConnectionsDiffmergeDialog(HandlerUtil.getActiveShell(event),

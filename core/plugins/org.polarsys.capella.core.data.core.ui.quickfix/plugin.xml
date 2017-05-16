@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -56,6 +56,15 @@
             label="%quickFix.Q3.label">
          <rules
                ruleId="Q_03">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.I_36_Resolver"
+            desc="%quickFix.I_36.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.I_36.label">
+         <rules
+               ruleId="I_36">
          </rules>
       </resolver>
    </extension>

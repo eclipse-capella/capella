@@ -51,7 +51,7 @@ public class ConstraintExt {
     if (expression == null) {
       return false;
     }
-    return expression.getBodies().isEmpty();
+    return !expression.getBodies().isEmpty();
   }
 
   public static boolean hasPrimaryLinkedText(OpaqueExpression expression) {

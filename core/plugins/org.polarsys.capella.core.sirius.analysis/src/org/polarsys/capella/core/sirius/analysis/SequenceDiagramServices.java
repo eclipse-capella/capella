@@ -29,7 +29,6 @@ import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.services.UIUtil;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.ExchangeItem;
@@ -171,7 +170,6 @@ public class SequenceDiagramServices {
       }
     }
     Execution execution = getExecutionOfMessageEnd(end);
-
     return execution == null ? end.getCovered() : execution;
   }
 
@@ -249,21 +247,20 @@ public class SequenceDiagramServices {
       EObject finishingEndPredecessorAfter) {
     InteractionFragment newPredecessor = (InteractionFragment) startingEndPredecessorAfter;
     InteractionFragment newPredecessorOfEnd = (InteractionFragment) finishingEndPredecessorAfter;
-
-    NamedElement ne = (NamedElement) object;
+    Scenario scenario = (Scenario) object.eContainer();
 
     if (object instanceof SequenceMessage) {
       SequenceMessage reorderedMessage = (SequenceMessage) object;
-      reorderSequenceMessage(newPredecessor, newPredecessorOfEnd, reorderedMessage);
+      reorderSequenceMessage(scenario, newPredecessor, newPredecessorOfEnd, reorderedMessage);
     }  else if (object instanceof TimeLapse) {
         TimeLapse execution = (TimeLapse) object;
-        reorderTimeLapse(newPredecessor, newPredecessorOfEnd, execution);
+      reorderTimeLapse(scenario, newPredecessor, newPredecessorOfEnd, execution);
     } else if (object instanceof InteractionState) {
       InteractionState interactionState = (InteractionState) object;
-      reorderInteractionState(newPredecessor, newPredecessorOfEnd, interactionState);
+      reorderInteractionState(scenario, newPredecessor, newPredecessorOfEnd, interactionState);
     } else if (object instanceof InteractionOperand) {
       InteractionOperand interactionOperand = (InteractionOperand) object;
-      reorderInteractionOperand(newPredecessor, newPredecessorOfEnd, interactionOperand);
+      reorderInteractionOperand(scenario, newPredecessor, newPredecessorOfEnd, interactionOperand);
     } 
     return object;
   }
@@ -278,74 +275,79 @@ public class SequenceDiagramServices {
    * @param newPredecessor
    * @param currentFragment
    */
-  private static void reorderInteractionFragment(InteractionFragment newPredecessor,
+  private static void reorderInteractionFragment(Scenario scenario, InteractionFragment newPredecessor,
       InteractionFragment currentFragment) {
 
     int currentFragmentIndex = -1;
     if (currentFragment != null) {
-      Scenario scenario = (Scenario) currentFragment.eContainer();
       currentFragmentIndex = scenario.getOwnedInteractionFragments().indexOf(currentFragment);
-      int currentIndexNewPredecessor = -1;
-      if (newPredecessor != null) {
-        currentIndexNewPredecessor = scenario.getOwnedInteractionFragments().indexOf(newPredecessor);
-      }
-      // Reorder shall use move method instead of remove/add
-      if (currentFragmentIndex < currentIndexNewPredecessor) {
-        scenario.getOwnedInteractionFragments().move(currentIndexNewPredecessor, currentFragmentIndex);
-      } else if (currentFragmentIndex > currentIndexNewPredecessor) {
-        scenario.getOwnedInteractionFragments().move(currentIndexNewPredecessor + 1, currentFragmentIndex);
+    int currentIndexNewPredecessor = -1;
+    if (newPredecessor != null) {
+      currentIndexNewPredecessor = scenario.getOwnedInteractionFragments().indexOf(newPredecessor);
+    }
+
+    // Reorder shall use move method instead of remove/add
+    if (currentFragmentIndex < currentIndexNewPredecessor) {
+      scenario.getOwnedInteractionFragments().move(currentIndexNewPredecessor, currentFragmentIndex);
+    } else if (currentFragmentIndex > currentIndexNewPredecessor) {
+      scenario.getOwnedInteractionFragments().move(currentIndexNewPredecessor + 1, currentFragmentIndex);
       }
     }
   }
 
   /**
+   * @param scenario
    * @param newPredecessor
    * @param newPredecessorOfEnd
    * @param interactionState
    */
-  private static void reorderInteractionState(InteractionFragment newPredecessor,
+  private static void reorderInteractionState(Scenario scenario, InteractionFragment newPredecessor,
       InteractionFragment newPredecessorOfEnd, InteractionState interactionState) {
-	  reorderInteractionFragment(newPredecessor, interactionState);
+    reorderInteractionFragment(scenario, newPredecessor, interactionState);
   }
   
-
-  private static void reorderInteractionOperand(InteractionFragment newPredecessor,
+  private static void reorderInteractionOperand(Scenario scenario, InteractionFragment newPredecessor,
     InteractionFragment newPredecessorOfEnd, InteractionOperand interactionOperand) {
-	  reorderInteractionFragment(newPredecessor, interactionOperand);
+    reorderInteractionFragment(scenario, newPredecessor, interactionOperand);
   }
 
   /**
+   * @param scenario
    * @param newPredecessor
    * @param newPredecessorOfEnd
    * @param execution
    */
-  private static void reorderTimeLapse(InteractionFragment newPredecessor, InteractionFragment newPredecessorOfEnd,
-      TimeLapse execution) {
-	  reorderInteractionFragment(newPredecessor, execution.getStart());
-	  reorderInteractionFragment(newPredecessorOfEnd, execution.getFinish());
+  private static void reorderTimeLapse(Scenario scenario, InteractionFragment newPredecessor,
+      InteractionFragment newPredecessorOfEnd, TimeLapse execution) {
+    reorderInteractionFragment(scenario, newPredecessor, execution.getStart());
+    reorderInteractionFragment(scenario, newPredecessorOfEnd, execution.getFinish());
   }
 
   /**
+   * @param scenario
    * @param newPredecessor
    * @param newPredecessorOfEnd
    * @param reorderedMessage
    * @param scenario
    */
-  private static void reorderSequenceMessage(InteractionFragment newPredecessor,
+  private static void reorderSequenceMessage(Scenario scenario, InteractionFragment newPredecessor,
       InteractionFragment newPredecessorOfEnd, SequenceMessage reorderedMessage) {
     AbstractEnd begin = reorderedMessage.getSendingEnd();
     AbstractEnd end = reorderedMessage.getReceivingEnd();
     
-	  reorderInteractionFragment(newPredecessor, begin);
-	  reorderInteractionFragment(newPredecessorOfEnd, end);
+    if (begin != null) {
+      reorderInteractionFragment(scenario, newPredecessor, begin);
+    }
+    if (end != null) {
+      reorderInteractionFragment(scenario, newPredecessorOfEnd, end);
+    }
 
-    
     EList<InteractionFragment> fragments = null;
     EList<SequenceMessage> messages = null;
 
-    EObject container = begin != null ? begin.eContainer() : end.eContainer();
-	fragments = ((Scenario) container).getOwnedInteractionFragments();
-    messages = ((Scenario) container).getOwnedMessages();
+    fragments = scenario.getOwnedInteractionFragments();
+    messages = scenario.getOwnedMessages();
+
     //Reorder shall use move instead of remove/add
     if (newPredecessor == null) {
       // The message is pushed up to the top of the message list
@@ -437,8 +439,8 @@ public class SequenceDiagramServices {
       }
     }
     // create message must not have a fragment after for the targetIR
-    List<InteractionFragment> fragments = new ArrayList<InteractionFragment>(scenario.getOwnedInteractionFragments()
-        .size());
+    List<InteractionFragment> fragments = new ArrayList<InteractionFragment>(
+        scenario.getOwnedInteractionFragments().size());
     for (InteractionFragment fragment : scenario.getOwnedInteractionFragments()) {
       fragments.add(0, fragment);
     }
@@ -456,8 +458,8 @@ public class SequenceDiagramServices {
     return true;
   }
 
-  public static boolean allowMessageCreation(EObject current, EObject preSource, EObject preTarget,
-      boolean withReturn, EObject endBefore, EObject endAfter) {
+  public static boolean allowMessageCreation(EObject current, EObject preSource, EObject preTarget, boolean withReturn,
+      EObject endBefore, EObject endAfter) {
     InstanceRole sourceInstance;
     InstanceRole targetInstance;
 
@@ -556,17 +558,17 @@ public class SequenceDiagramServices {
    * @param exchangeItemLifeLine
    * @return
    */
-  private static boolean allowMessageCreationOnSharedData(EObject preSource, EObject preTarget,
-      boolean withReturn, InstanceRole sourceInstance, InstanceRole targetInstance, InstanceRole exchangeItemLifeLine) {
+  private static boolean allowMessageCreationOnSharedData(EObject preSource, EObject preTarget, boolean withReturn,
+      InstanceRole sourceInstance, InstanceRole targetInstance, InstanceRole exchangeItemLifeLine) {
     boolean case2found = false; // <=> existing ACCEPT message found.
     boolean case3found = false; // <=> existing READ message found.
     // Go through existing SequenceMessages of the Scenario connecting sourceInstance and targetInstance.
     Scenario s = (Scenario) sourceInstance.eContainer();
     for (SequenceMessage existingSequenceMessage : s.getOwnedMessages()) {
-      if (((existingSequenceMessage.getSendingEnd().getCovered() == sourceInstance) && (existingSequenceMessage
-          .getReceivingEnd().getCovered() == targetInstance))
-          || ((existingSequenceMessage.getSendingEnd().getCovered() == targetInstance) && (existingSequenceMessage
-              .getReceivingEnd().getCovered() == sourceInstance))) {
+      if (((existingSequenceMessage.getSendingEnd().getCovered() == sourceInstance)
+          && (existingSequenceMessage.getReceivingEnd().getCovered() == targetInstance))
+          || ((existingSequenceMessage.getSendingEnd().getCovered() == targetInstance)
+              && (existingSequenceMessage.getReceivingEnd().getCovered() == sourceInstance))) {
         if (existingSequenceMessage.getReceivingEnd().getCovered() == exchangeItemLifeLine) {
           // SequenceMessage pointing to the ExchangeItem -> can be case 1 (WRITE message) or case 3 (READ message).
           if (SequenceMessageExt.getOppositeSequenceMessage(existingSequenceMessage) != null) {
@@ -744,8 +746,7 @@ public class SequenceDiagramServices {
   public static boolean isValidES(EObject ctx) {
     if (ctx instanceof Scenario) {
       Scenario s = (Scenario) ctx;
-      return (!CapellaServices.getService().isOperationalContext(s))
-          && (!CapellaServices.getService().isEPBSContext(s))
+      return (!CapellaServices.getService().isOperationalContext(s)) && (!CapellaServices.getService().isEPBSContext(s))
           && (s.getKind().equals(ScenarioKind.DATA_FLOW) || s.getKind().equals(ScenarioKind.UNSET));
     } else {
       AbstractCapability capa = (AbstractCapability) ctx;
@@ -756,8 +757,7 @@ public class SequenceDiagramServices {
   public static boolean isValidFS(EObject ctx) {
     if (ctx instanceof Scenario) {
       Scenario s = (Scenario) ctx;
-      return (!CapellaServices.getService().isOperationalContext(s))
-          && (!CapellaServices.getService().isEPBSContext(s))
+      return (!CapellaServices.getService().isOperationalContext(s)) && (!CapellaServices.getService().isEPBSContext(s))
           && (s.getKind().equals(ScenarioKind.FUNCTIONAL) || s.getKind().equals(ScenarioKind.UNSET));
     } else {
       AbstractCapability capa = (AbstractCapability) ctx;
@@ -777,8 +777,7 @@ public class SequenceDiagramServices {
    * | end | --------------------------------------------------- | CASE B | CASE C | message | begin | sending | |
    * mess.IR | receiving | ---------------------------------------------------
    */
-  public static InteractionFragment getCorrespondingIFStart(EObject context, EObject obj,
-      EObject correspondingFinish) {
+  public static InteractionFragment getCorrespondingIFStart(EObject context, EObject obj, EObject correspondingFinish) {
     if (obj instanceof InteractionFragment) {
       InteractionFragment if_ = (InteractionFragment) obj;
       return if_;
@@ -809,8 +808,7 @@ public class SequenceDiagramServices {
     return null;
   }
 
-  public static InteractionFragment getCorrespondingIFFinish(EObject context, EObject obj,
-      EObject correspondingStart) {
+  public static InteractionFragment getCorrespondingIFFinish(EObject context, EObject obj, EObject correspondingStart) {
     if (obj instanceof InteractionFragment) {
       InteractionFragment if_ = (InteractionFragment) obj;
       return if_;

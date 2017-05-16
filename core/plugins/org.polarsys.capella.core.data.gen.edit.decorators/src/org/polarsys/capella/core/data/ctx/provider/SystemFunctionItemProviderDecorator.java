@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEd
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.fa.FunctionKind;
 import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDecorator;
+import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 
 public class SystemFunctionItemProviderDecorator extends
 		ItemProviderAdapterDecorator implements IEditingDomainItemProvider,
@@ -44,7 +45,8 @@ public class SystemFunctionItemProviderDecorator extends
 			imagePath = "full/obj16/FunctionKind_Select"; //$NON-NLS-1$
 		} else if (FunctionKind.SPLIT.equals(fct.getKind())) {
 			imagePath = "full/obj16/FunctionKind_Split"; //$NON-NLS-1$
-		}
+		} else if (FunctionExt.isActorFunction(fct))
+		  imagePath = "full/obj16/ActorSystemFunction"; //$NON-NLS-1$
 		return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage(imagePath));
 	}
 }

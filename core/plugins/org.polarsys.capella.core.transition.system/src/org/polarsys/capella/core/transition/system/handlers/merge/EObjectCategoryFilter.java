@@ -18,10 +18,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.osgi.util.NLS;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.CategoryFilter;
@@ -43,7 +43,7 @@ public class EObjectCategoryFilter extends CategoryFilter {
 
   public EObjectCategoryFilter(IContext context, EClass iconClazz) {
     super(context, null, null, null, null);
-    TransactionalEditingDomain domain = (TransactionalEditingDomain) TransactionUtil
+    TransactionalEditingDomain domain = TransactionHelper
         .getEditingDomain(((EObject) context.get(ITransitionConstants.TRANSITION_SOURCE_ROOT)));
     Resource res = HoldingResourceHelper.getHoldingResource(domain);
     if (iconClazz != null && !iconClazz.isAbstract()) {

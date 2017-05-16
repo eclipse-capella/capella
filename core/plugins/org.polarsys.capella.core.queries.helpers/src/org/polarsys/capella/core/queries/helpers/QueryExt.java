@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellamodeller.ModelRoot;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
@@ -66,9 +66,10 @@ public class QueryExt {
     return systemEngineering;
   }
 
-  public static SystemEngineering getSystemEngineeringFromLibrary(TransactionalEditingDomain domain, CapellaModel library) {
-    Project libraryProject = library.getProject(domain);
+  public static SystemEngineering getSystemEngineeringFromLibrary(TransactionalEditingDomain domain,
+      CapellaModel library) {
     if (library != null) {
+      Project libraryProject = library.getProject(domain);
       SystemEngineering systemEngineering = QueryExt.getSystemEngineeringFrom(libraryProject);
       return systemEngineering;
     }
@@ -78,7 +79,7 @@ public class QueryExt {
   public static BlockArchitecture getCorrespondingBlockArchitectureFromLibrary(BlockArchitecture currentArchBlock, CapellaModel library) {
     BlockArchitecture res = null;
     // we get the systemEngineering object ...
-    Project libraryProject = library.getProject(TransactionUtil.getEditingDomain(currentArchBlock));
+    Project libraryProject = library.getProject(TransactionHelper.getEditingDomain(currentArchBlock));
     if (libraryProject != null) {
       SystemEngineering systemEngineering = QueryExt.getSystemEngineeringFrom(libraryProject);
       // ... in order to get architecture blocks from libraries (for now, we filter these blocks so that we keep only blocks of the same level of the given
@@ -101,7 +102,7 @@ public class QueryExt {
   public static BlockArchitecture getBlockArchitectureFromLibraryUpward(BlockArchitecture currentArchBlock, CapellaModel library) {
     BlockArchitecture res = null;
     // we get the systemEngineering object ...
-    Project libraryProject = library.getProject(TransactionUtil.getEditingDomain(currentArchBlock));
+    Project libraryProject = library.getProject(TransactionHelper.getEditingDomain(currentArchBlock));
     if (libraryProject != null) {
       SystemEngineering systemEngineering = QueryExt.getSystemEngineeringFrom(libraryProject);
       // ... in order to get architecture blocks from libraries (not restricted to blocks of the same level)

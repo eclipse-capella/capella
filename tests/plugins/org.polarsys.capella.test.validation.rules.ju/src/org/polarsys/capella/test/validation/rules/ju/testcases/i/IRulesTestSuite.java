@@ -64,6 +64,7 @@ public class IRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_I_34());
     tests.add(new Rule_I_34_OnFragment());
     tests.add(new Rule_I_35());
+    tests.add(new Rule_I_36());
     return tests;
   }
 

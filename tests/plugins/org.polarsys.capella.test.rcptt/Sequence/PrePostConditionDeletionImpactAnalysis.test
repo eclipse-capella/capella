@@ -1,0 +1,63 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _77dBkJ6NEeWcU-ojRg-Rxw,_0alKwJ6FEeWcU-ojRg-Rxw,_9ikm0J6BEeWcU-ojRg-Rxw
+Element-Name: PrePostConditionDeletionImpactAnalysis
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _VqGRgDS6EeepRL_NUeNEXg
+Runtime-Version: 2.0.0.201506042314
+Save-Time: 5/10/17 12:01 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+- Create a Pre Condition on a scenario
+- Open the related Scenario diagram
+- Delete the Pre Condition, from the ES diagram
+- Impact Analysis related to the Pre Condition is opened
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "EOLE_AF/EOLE_AF.aird" | key-type Enter
+    click -default
+    select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Operational Analysis/Operational Capabilities/Provide Meteo Services/Scenario" 
+        | key-type Enter
+    click -default
+}
+with [get-window Scenario] {
+    get-tab-folder | get-tab-item Base | click
+    get-group "" -index 1 | get-button "Create a new element / Edit an existing element" | click
+    with [get-window "Opaque Expression"] {
+        get-tab-folder | get-tab-item Base | click
+        get-group "" -index 1 | get-button | click
+        with [get-window "Add OpaqueExpression element"] {
+            get-editbox -after [get-label "Enter language name"] | set-text preconds
+            get-button OK | click
+        }
+        get-button Finish | click
+    }
+    get-button Finish | click
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Operational Analysis/Operational Capabilities/Provide Meteo Services/Scenario" 
+    | get-menu "Open Diagram \\/ Table.../[OAS] Provide Meteo Services - Operational Activity Scenario" | click
+get-editor "[OAS] Provide Meteo Services - Operational Activity Scenario" | get-button Filters | click -arrow
+get-menu "Hide pre and post conditions" | click
+with [get-editor "[OAS] Provide Meteo Services - Operational Activity Scenario" | get-diagram -index 1] {
+    with [get-edit-part -name "[OAS] Provide Meteo Services - Operational Activity Scenario" | get-edit-part 
+        -name "pre:" | get-edit-part -className NoteEditPart] {
+        mouse-move 18 25 button1 -height 50 -width 50
+        mouse-press 18 25 button1 -height 50 -width 50
+        mouse-release 18 25 button1 524288 -height 50 -width 50
+        mouse-hover 14 21 -height 50 -width 50
+    }
+    key-type Del
+}
+get-window Delete | get-button Yes | click
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
