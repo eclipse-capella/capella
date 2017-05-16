@@ -8,6 +8,7 @@
  *  Contributors:
  *      LCELB - initial API and implementation
  *     Thales - bug fix (see https://polarsys.org/bugs/show_bug.cgi?id=367)
+ *     Thales - bug fix (see https://bugs.polarsys.org/show_bug.cgi?id=1570)
  *******************************************************************************/
 package org.polarsys.capella.common.platform.sirius.ted;
 
@@ -311,5 +312,9 @@ public class DataNotifier extends EContentAdapter {
       return false;
     }
     return super.resolve();
+  }
+  
+  public EditingDomain getEditingDomain(){
+	  return _editingDomain.get();
   }
 }

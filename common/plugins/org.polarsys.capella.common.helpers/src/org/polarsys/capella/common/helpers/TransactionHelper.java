@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.polarsys.capella.common.helpers;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -22,6 +23,7 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
+import org.polarsys.capella.common.platform.sirius.ted.DataNotifier;
 
 /**
  * This class contains convenient static methods for working with Editing Domains and Execution Managers.
@@ -34,6 +36,11 @@ public class TransactionHelper {
    * @return the editing domain
    */
   public static TransactionalEditingDomain getEditingDomain(EObject eobject) {
+	  for(Adapter adapter : eobject.eAdapters()){
+		  if(adapter instanceof DataNotifier){
+			  return (TransactionalEditingDomain)((DataNotifier)adapter).getEditingDomain();
+		  }
+	  }
     return TransactionUtil.getEditingDomain(eobject);
   }
 

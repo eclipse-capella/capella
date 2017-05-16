@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.IViewerNotification;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.NotifyChangedToViewerRefresh;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
@@ -143,8 +144,7 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
       if ((currentNotifications != null) && (currentNotifications.size() > 0)) {
         viewerRefresh = new ViewerRefresh(viewer);
         for (Notification notification : currentNotifications) {
-          ChangeNotification changeNotification =
-              new ChangeNotification(notification.getNotifier(), notification.getFeature(), notification.getNewValue(), notification.getEventType());
+          ChangeNotification changeNotification = new ChangeNotification(notification);
           if (!duplicateNotifications.contains(changeNotification)) {
             duplicateNotifications.add(changeNotification);
             notifyChanged2(notification);
@@ -206,6 +206,7 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
     private WeakReference<Object> _notifierReference;
     private WeakReference<Object> _featureReference;
     private WeakReference<Object> _newValueReference;
+    private WeakReference<Object> _element;
     private int _eventType;
 
     /**
@@ -214,6 +215,7 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
      * @param newValue
      * @param notifier
      */
+    @Deprecated
     public ChangeNotification(Object notifier, Object feature, Object newValue, int eventType) {
       _notifierReference = new WeakReference<Object>(notifier);
       _featureReference = new WeakReference<Object>(feature);
@@ -221,6 +223,13 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
       _eventType = eventType;
     }
 
+    public ChangeNotification(Notification notification) {
+      this(notification.getNotifier(), notification.getFeature(), notification.getNewValue(), notification.getEventType());
+      if (notification instanceof ViewerNotification) {
+        _element = new WeakReference<Object>(((ViewerNotification) notification).getElement());
+      }
+    }
+    
     /**
      * @see java.lang.Object#equals(java.lang.Object)
      */
@@ -242,6 +251,10 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
 
         } else if (!(((_newValueReference.get() == null) && (notification._newValueReference.get() == null)) || ((_newValueReference.get() != null) && _newValueReference
             .get().equals(notification._newValueReference.get())))) {
+          cr = false;
+          
+        } else if (_element != null && !(((_element.get() == null) && (notification._element.get() == null)) || ((_element.get() != null) && _element
+            .get().equals(notification._element.get())))) {
           cr = false;
         }
 
@@ -265,6 +278,9 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
       }
       if (_newValueReference.get() != null) {
         result = (37 * result) + _newValueReference.get().hashCode();
+      }
+      if (_element != null && _element.get() != null) {
+        result = (37 * result) + _element.get().hashCode();
       }
       result = (37 * result) + _eventType;
       return result;

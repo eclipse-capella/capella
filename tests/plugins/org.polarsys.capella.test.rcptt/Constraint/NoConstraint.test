@@ -1,0 +1,54 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _77dBkJ6NEeWcU-ojRg-Rxw,_SkZKgCmmEeeLMJ-eLKwAnw
+Element-Name: NoConstraint
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _vE9zkCmcEeeLMJ-eLKwAnw
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 4/25/17 1:24 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Case 1: No contraint
+- Create contraint with linkedText
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "ConstraintEdition/ConstraintEdition.aird" | double-click
+    select [get-item "ConstraintEdition/ConstraintEdition.aird/ConstraintEdition/System Analysis/System/System State Machine/Default Region" 
+        | get-item "Transition 2"]
+}
+
+// Test the default hint <Press key \"Ctrl+Space\" and type name for Content Assist>
+get-view Properties | get-section Property | get-group "" -index 1 | get-text-viewer | get-property text 
+    | equals "<Press key \"Ctrl+Space\" and type name for Content Assist>" | verify-true
+
+// Test the Ctrl + Space command
+with [get-view Properties | get-section Property | get-group "" -index 1 | get-text-viewer] {
+    type-text "toto="
+    key-type "M1+SPACE"
+}
+get-window -from "CompletionProposalPopup.createProposalSelector()" | get-table 
+    | select "\\/ConstraintEdition\\/ConstraintEdition\\/System Analysis\\/Data\\/Predefined Types\\/Boolean\\/True" 
+    | click -default
+get-view "Capella Project Explorer" | get-tree 
+    | select [get-item "ConstraintEdition/*ConstraintEdition.aird/ConstraintEdition/System Analysis/System/System State Machine/Default Region" 
+    | get-item "Transition 2" | get-item "[Constraint]/[Opaque Expression]"]
+
+// Test that the language "LinkedText" and its content are created
+with [get-view Properties | get-section Property | get-group "" -index 1] {
+    with [get-table] {
+        get-property itemCount | equals 1 | verify-true
+        get-property "selection[0].path[0]" | equals LinkedText | verify-true
+    }
+    get-text-viewer | get-property text | equals "toto=True" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
@@ -56,7 +56,7 @@ public class GetABShowHideActor extends AbstractQuery {
     Collection<IModel> libraries = LibraryManagerExt.getActivesReferences(currentProject);
     for (IModel library : libraries) {
       // we get the systemEngineering object ...
-      Project libraryProject = ((CapellaModel) library).getProject(TransactionUtil.getEditingDomain(currentArchBlock));
+      Project libraryProject = ((CapellaModel) library).getProject(TransactionHelper.getEditingDomain(currentArchBlock));
       if (libraryProject != null) {
         SystemEngineering systemEngineering = QueryExt.getSystemEngineeringFrom(libraryProject);
         // ... in order to get architecture blocks from libraries (for now, we filter these blocks so that we keep only blocks of the same level of the given

@@ -19,14 +19,27 @@
          <category
                id="quality"
                name="Quality">
+                   <![CDATA[Quality-related rules check for example that most important elements have descriptions.]]>
          </category>
          <category
                id="integrity"
                name="Integrity">
+                   <![CDATA[This category contains Capella additional rules about the model integrity. For example,
+• Verification that two distinct elements have distinct IDs
+• Verification of naming conflicts]]>
          </category>
          <category
                id="design"
                name="Design">
+                   <![CDATA[Design-related rules gather all business rules within an engineering phase (System Analysis, Logical Architecture, etc.). This set of rules does take into account what is modeled in the previous or following engineering phase.
+
+This category is divided in four sub categories:
+• Well-formedness. For example, a Join Function has only one outgoing Functional Exchange, a Class Property is typed, etc.
+• Consistency. For example, the Interface usage/implementation by a sub component requires the same Interface usage/implementation by/from the parent component
+• Completeness. For example, a leaf Function has to be allocated to one Component, an Interface references at least one Exchange Item, etc.
+• Coverage. For example, an Actor is involved in at least one Capability, a Component appears on at least one Scenario, etc.
+
+The difference between Completeness and Coverage can appear subtle. Completeness is close to being inconsistent (a leaf Function really HAS to be allocated to a Component). But according to the current objectives of the system engineer, this “almost inconsistence” might not be important for the moment. Coverage is more about the risk of forgetting things is the system design, or not to be precise enough.]]>
             <category
                   id="coverage"
                   name="Coverage">

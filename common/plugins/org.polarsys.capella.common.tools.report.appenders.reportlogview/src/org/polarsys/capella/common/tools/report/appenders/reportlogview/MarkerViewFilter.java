@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,8 +73,6 @@ public class MarkerViewFilter extends ViewerFilter {
     this.viewer = viewer;
     hookSeverityFilter();
     hookSelectionFilter();
-    
-    
   }
   
   private void hookSelectionFilter() {
@@ -93,7 +91,7 @@ public class MarkerViewFilter extends ViewerFilter {
         SelectionFilter filter = SelectionFilter.valueOf(state.getValue().toString());
         if (filter != selectionFilter){
           selectionFilter = filter;
-          viewer.refresh();
+          updateViewer(state, this, viewer);
         }
       }
     });
@@ -123,26 +121,37 @@ public class MarkerViewFilter extends ViewerFilter {
       }
       
       // listen to state change and refresh the viewer
-      // FIXME should remove those listeners on dispose
       state.addListener(new IStateListener(){
         @SuppressWarnings("synthetic-access")
         public void handleStateChange(State state, Object oldValue) {
           SeverityLevel level = severityLevelMap.get(commandId);
           if ((Boolean) state.getValue()){
             if (activeLevels.add(level)){
-              viewer.refresh();
-            }
+              updateViewer(state, this, viewer);
+            } 
           } else {
             if (activeLevels.remove(level)){
-              viewer.refresh();
+              updateViewer(state, this, viewer);
             }
           }
         }
+
       });
     }
     
   }
 
+  /**
+   * Update the viewer for the given state listener
+   */
+  private void updateViewer(State state, IStateListener listener, Viewer viewer) {
+    if (!viewer.getControl().isDisposed()) {
+      viewer.refresh();
+    } else {
+      state.removeListener(listener);
+    }
+  }
+  
   public enum SelectionFilter {
     PROJECT,
     SELECTION,
@@ -394,6 +403,6 @@ public class MarkerViewFilter extends ViewerFilter {
       return found;
     }
   }
-  
+
 }
 

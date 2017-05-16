@@ -10,9 +10,7 @@
 *******************************************************************************/
 package org.polarsys.capella.test.model.ju.testcases.delete;
 
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
@@ -20,30 +18,17 @@ import org.polarsys.capella.core.libraries.utils.ScopeModelWrapper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
-import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
+import org.polarsys.capella.test.model.ju.model.MiscModel;
 
-public class DeleteGuard extends BasicTestCase {
-
-  public static String MODEL_NAME = "miscmodel"; //$NON-NLS-1$
-
-  public static String SA__SYSTEM__STATEMACHINE_1__DEFAULT_REGION__STATE_TRANSITION__CONSTRAINT = "be2b76aa-36bb-4243-861a-b968ad8133cb"; //$NON-NLS-1$
-  public static String SA__SYSTEM__STATEMACHINE_1__DEFAULT_REGION__STATE_TRANSITION = "da8600e2-5df6-4ac2-b784-cb70e49c9fa7"; //$NON-NLS-1$
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public List<String> getRequiredTestModels() {
-    return Arrays.asList(MODEL_NAME);
-  }
+public class DeleteGuard extends MiscModel {
 
   /**
    * {@inheritDoc}
    */
   @Override
   public void test() {
-    ICapellaModel model = getTestModel(MODEL_NAME);
+    ICapellaModel model = getTestModel();
     IScope scope = new ScopeModelWrapper(model);
 
     Constraint constraint = (Constraint) IdManager.getInstance()

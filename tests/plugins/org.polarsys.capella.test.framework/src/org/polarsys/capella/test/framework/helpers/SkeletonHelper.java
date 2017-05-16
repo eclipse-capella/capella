@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,15 +14,33 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.junit.Assert;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.fa.FaPackage;
+import org.polarsys.capella.core.data.information.AbstractEventOperation;
+import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.InformationPackage;
+import org.polarsys.capella.core.data.information.Partition;
+import org.polarsys.capella.core.data.information.communication.CommunicationLink;
+import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
+import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
+import org.polarsys.capella.core.data.interaction.EventReceiptOperation;
+import org.polarsys.capella.core.data.interaction.EventSentOperation;
+import org.polarsys.capella.core.data.interaction.InstanceRole;
+import org.polarsys.capella.core.data.interaction.InteractionPackage;
+import org.polarsys.capella.core.data.interaction.MessageEnd;
+import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
@@ -33,6 +51,7 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
+import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class SkeletonHelper {
@@ -41,26 +60,22 @@ public class SkeletonHelper {
     EObject container = context.getSemanticElement(containerId);
 
     if (container instanceof OperationalAnalysis) {
-      createObject(elementId, containerId,
-          FaPackage.Literals.ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_FUNCTION_PKG,
+      createObject(elementId, containerId, FaPackage.Literals.ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_FUNCTION_PKG,
           OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG,
           NamingConstants.CreateOpAnalysisCmd_operationalActivities_pkg_name, context);
 
     } else if (container instanceof SystemAnalysis) {
-      createObject(elementId, containerId,
-          FaPackage.Literals.ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_FUNCTION_PKG,
+      createObject(elementId, containerId, FaPackage.Literals.ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_FUNCTION_PKG,
           CtxPackage.Literals.SYSTEM_FUNCTION_PKG, NamingConstants.CreateSysAnalysisCmd_system_functions_pkg_name,
           context);
-      
+
     } else if (container instanceof LogicalArchitecture) {
-      createObject(elementId, containerId,
-          FaPackage.Literals.ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_FUNCTION_PKG,
+      createObject(elementId, containerId, FaPackage.Literals.ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_FUNCTION_PKG,
           LaPackage.Literals.LOGICAL_FUNCTION_PKG, NamingConstants.CreateLogicalArchCmd_logicalFunctions_pkg_name,
           context);
-      
+
     } else if (container instanceof PhysicalArchitecture) {
-      createObject(elementId, containerId,
-          FaPackage.Literals.ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_FUNCTION_PKG,
+      createObject(elementId, containerId, FaPackage.Literals.ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_FUNCTION_PKG,
           PaPackage.Literals.PHYSICAL_FUNCTION_PKG, NamingConstants.CreatePhysicalArchCmd_physicalFunctions_pkg_name,
           context);
     }
@@ -71,94 +86,82 @@ public class SkeletonHelper {
     EObject container = context.getSemanticElement(containerId);
 
     if (container instanceof OperationalActivityPkg) {
-      createObject(elementId, containerId,
-          OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES,
+      createObject(elementId, containerId, OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES,
           OaPackage.Literals.OPERATIONAL_ACTIVITY, NamingConstants.CreateOpAnalysisCmd_operationalActivity_root_name,
           context);
 
     } else if (container instanceof SystemFunctionPkg) {
-      createObject(elementId, containerId,
-          CtxPackage.Literals.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS, CtxPackage.Literals.SYSTEM_FUNCTION,
-          NamingConstants.CreateSysAnalysisCmd_system_function_root_name, context);
-      
+      createObject(elementId, containerId, CtxPackage.Literals.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS,
+          CtxPackage.Literals.SYSTEM_FUNCTION, NamingConstants.CreateSysAnalysisCmd_system_function_root_name, context);
+
     } else if (container instanceof LogicalFunctionPkg) {
-      createObject(elementId, containerId,
-          LaPackage.Literals.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS, LaPackage.Literals.LOGICAL_FUNCTION,
-          NamingConstants.CreateLogicalArchCmd_logicalFunction_root_name, context);
-      
+      createObject(elementId, containerId, LaPackage.Literals.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS,
+          LaPackage.Literals.LOGICAL_FUNCTION, NamingConstants.CreateLogicalArchCmd_logicalFunction_root_name, context);
+
     } else if (container instanceof PhysicalFunctionPkg) {
-      createObject(elementId, containerId,
-          PaPackage.Literals.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS, PaPackage.Literals.PHYSICAL_FUNCTION,
-          NamingConstants.CreatePhysicalArchCmd_physicalFunction_root_name, context);
+      createObject(elementId, containerId, PaPackage.Literals.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS,
+          PaPackage.Literals.PHYSICAL_FUNCTION, NamingConstants.CreatePhysicalArchCmd_physicalFunction_root_name,
+          context);
     }
-    
+
   }
 
   public static void createCapabilityPkg(String containerId, String elementId, SessionContext context) {
     EObject container = context.getSemanticElement(containerId);
 
     if (container instanceof OperationalAnalysis) {
-      createObject(elementId, containerId,
-          CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG,
-          OaPackage.Literals.OPERATIONAL_CAPABILITY_PKG, NamingConstants.CreateOpAnalysisCmd_operationalCapabilities_pkg_name,
-          context);
+      createObject(elementId, containerId, CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG,
+          OaPackage.Literals.OPERATIONAL_CAPABILITY_PKG,
+          NamingConstants.CreateOpAnalysisCmd_operationalCapabilities_pkg_name, context);
 
     } else if (container instanceof SystemAnalysis) {
-      createObject(elementId, containerId,
-          CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG, CtxPackage.Literals.CAPABILITY_PKG,
-          NamingConstants.CreateSysAnalysisCmd_capabilities_pkg_name, context);
-      
+      createObject(elementId, containerId, CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG,
+          CtxPackage.Literals.CAPABILITY_PKG, NamingConstants.CreateSysAnalysisCmd_capabilities_pkg_name, context);
+
     } else if (container instanceof LogicalArchitecture) {
-      createObject(elementId, containerId,
-          CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG, LaPackage.Literals.CAPABILITY_REALIZATION_PKG,
+      createObject(elementId, containerId, CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG,
+          LaPackage.Literals.CAPABILITY_REALIZATION_PKG,
           NamingConstants.CreateCommonCmd_capability_realisation_pkg_name, context);
-      
+
     } else if (container instanceof PhysicalArchitecture) {
-      createObject(elementId, containerId,
-          CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG, LaPackage.Literals.CAPABILITY_REALIZATION_PKG,
+      createObject(elementId, containerId, CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG,
+          LaPackage.Literals.CAPABILITY_REALIZATION_PKG,
           NamingConstants.CreateCommonCmd_capability_realisation_pkg_name, context);
     }
   }
-  
+
   public static void createActorPkg(String containerId, String elementId, SessionContext context) {
     EObject container = context.getSemanticElement(containerId);
 
     if (container instanceof OperationalAnalysis) {
-      createObject(elementId, containerId,
-          OaPackage.Literals.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG, OaPackage.Literals.ENTITY_PKG,
-          NamingConstants.CreateOpAnalysisCmd_operationalEntities_pkg_name, context);
-      
-    } else  if (container instanceof SystemAnalysis) {
-      createObject(elementId, containerId,
-          CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG, CtxPackage.Literals.ACTOR_PKG,
-          NamingConstants.CreateSysAnalysisCmd_actors_pkg_name, context);
-      
+      createObject(elementId, containerId, OaPackage.Literals.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG,
+          OaPackage.Literals.ENTITY_PKG, NamingConstants.CreateOpAnalysisCmd_operationalEntities_pkg_name, context);
+
+    } else if (container instanceof SystemAnalysis) {
+      createObject(elementId, containerId, CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG,
+          CtxPackage.Literals.ACTOR_PKG, NamingConstants.CreateSysAnalysisCmd_actors_pkg_name, context);
+
     } else if (container instanceof LogicalArchitecture) {
-      createObject(elementId, containerId,
-          LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG, LaPackage.Literals.LOGICAL_ACTOR_PKG,
-          NamingConstants.CreateLogicalArchCmd_actors_pkg_name, context);
-      
+      createObject(elementId, containerId, LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG,
+          LaPackage.Literals.LOGICAL_ACTOR_PKG, NamingConstants.CreateLogicalArchCmd_actors_pkg_name, context);
+
     } else if (container instanceof PhysicalArchitecture) {
-      createObject(elementId, containerId,
-          PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG, PaPackage.Literals.PHYSICAL_ACTOR_PKG,
-          NamingConstants.CreatePhysicalArchCmd_actors_pkg_name, context);
+      createObject(elementId, containerId, PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG,
+          PaPackage.Literals.PHYSICAL_ACTOR_PKG, NamingConstants.CreatePhysicalArchCmd_actors_pkg_name, context);
     }
   }
-  
+
   public static void createDataPkg(String containerId, String elementId, SessionContext context) {
-    createObject(elementId, containerId,
-          CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_DATA_PKG, InformationPackage.Literals.DATA_PKG,
-          NamingConstants.CreateCommonCmd_data_pkg_name, context);
+    createObject(elementId, containerId, CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_DATA_PKG,
+        InformationPackage.Literals.DATA_PKG, NamingConstants.CreateCommonCmd_data_pkg_name, context);
   }
 
   public static void createInterfacePkg(String containerId, String elementId, SessionContext context) {
-    createObject(elementId, containerId,
-          CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG, CsPackage.Literals.INTERFACE_PKG,
-          NamingConstants.CreateCommonCmd_interfaces_pkg_name, context);
+    createObject(elementId, containerId, CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG,
+        CsPackage.Literals.INTERFACE_PKG, NamingConstants.CreateCommonCmd_interfaces_pkg_name, context);
   }
-  
 
-  public static EObject createObject(final String id, final String containerId, final EStructuralFeature feature,
+  public static <T> T createObject(final String id, final String containerId, final EStructuralFeature feature,
       final EClass clazz, final String name, final SessionContext context) {
 
     context.getExecutionManager().execute(new AbstractReadWriteCommand() {
@@ -172,7 +175,7 @@ public class SkeletonHelper {
         } else {
           container.eSet(feature, result);
         }
-
+        CapellaServices.getService().creationService(result);
         if (result instanceof AbstractNamedElement) {
           ((AbstractNamedElement) result).setName(name);
         }
@@ -183,5 +186,235 @@ public class SkeletonHelper {
     return context.getSemanticElement(id);
   }
 
+  public static void moveObject(final String elementId, final String containerId, final SessionContext context) {
+    EObject element = context.getSemanticElement(elementId);
+    setReference(containerId, elementId, element.eContainingFeature(), context);
+  }
 
+  public static void setReference(final String elementId, final String valueId, final EStructuralFeature feature,
+      final SessionContext context) {
+    EObject value = context.getSemanticElement(valueId);
+    EObject element = context.getSemanticElement(elementId);
+    setReference(element, value, feature, context);
+  }
+
+  public static void setReference(final EObject element, final EObject value, final EStructuralFeature feature,
+      final SessionContext context) {
+    context.getExecutionManager().execute(new AbstractReadWriteCommand() {
+
+      @Override
+      public void run() {
+        if (feature.isMany()) {
+          ((EList) element.eGet(feature)).add(value);
+        } else {
+          element.eSet(feature, value);
+        }
+      }
+    });
+  }
+
+  public static void setAttribute(final EObject element, final Object value, final EStructuralFeature feature,
+      final SessionContext context) {
+    context.getExecutionManager().execute(new AbstractReadWriteCommand() {
+
+      @Override
+      public void run() {
+        if (feature.isMany()) {
+          ((EList) element.eGet(feature)).add(value);
+        } else {
+          element.eSet(feature, value);
+        }
+      }
+    });
+  }
+
+  public static void checkReference(String containerId, String elementId, EStructuralFeature feature,
+      SessionContext context) {
+    EObject container = context.getSemanticElement(containerId);
+    EObject element = context.getSemanticElement(elementId);
+    if (feature.isMany()) {
+      Assert.assertTrue(((EList) container.eGet(feature)).contains(element));
+    } else {
+      Assert.assertTrue(container.eGet(feature) == element);
+    }
+  }
+
+  public static void checkNotReference(String containerId, String elementId, EReference feature,
+      SessionContext context) {
+    EObject container = context.getSemanticElement(containerId);
+    EObject element = context.getSemanticElement(elementId);
+    if (feature.isMany()) {
+      Assert.assertTrue(!((EList) container.eGet(feature)).contains(element));
+    } else {
+      Assert.assertTrue(container.eGet(feature) != element);
+    }
+  }
+
+  public static void createSequenceMessage(String containerId, String elementId, String instanceRoleId1,
+      String instanceRoleId2, SessionContext context) {
+    SequenceMessage message = createObject(elementId, containerId, InteractionPackage.Literals.SCENARIO__OWNED_MESSAGES,
+        InteractionPackage.Literals.SEQUENCE_MESSAGE, elementId, context);
+
+    MessageEnd sendEnd = createObject("end", containerId,
+        InteractionPackage.Literals.SCENARIO__OWNED_INTERACTION_FRAGMENTS, InteractionPackage.Literals.MESSAGE_END,
+        "end", context);
+
+    EventSentOperation sendEvent = createObject("event", containerId,
+        InteractionPackage.Literals.SCENARIO__OWNED_EVENTS, InteractionPackage.Literals.EVENT_SENT_OPERATION, "event",
+        context);
+    
+    MessageEnd receiveEnd = createObject("end", containerId,
+        InteractionPackage.Literals.SCENARIO__OWNED_INTERACTION_FRAGMENTS, InteractionPackage.Literals.MESSAGE_END,
+        "end", context);
+
+    EventReceiptOperation receiveEvent = createObject("event", containerId,
+        InteractionPackage.Literals.SCENARIO__OWNED_EVENTS, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION, "event",
+        context);
+    
+    setReference(message, sendEnd, InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END, context);
+    setReference(message, receiveEnd, InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END, context);
+    setReference(sendEnd, sendEvent, InteractionPackage.Literals.ABSTRACT_END__EVENT, context);
+    setReference(receiveEnd, receiveEvent, InteractionPackage.Literals.ABSTRACT_END__EVENT, context);
+
+    setReference(sendEnd, context.getSemanticElement(instanceRoleId1),
+        InteractionPackage.Literals.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES, context);
+    setReference(receiveEnd, context.getSemanticElement(instanceRoleId2),
+        InteractionPackage.Literals.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES, context);
+  }
+
+  public static void setOperation(String messageId, String operationId, SessionContext context) {
+    SequenceMessage message = context.getSemanticElement(messageId);
+    AbstractEventOperation operation = context.getSemanticElement(operationId);
+
+    setReference(((EventSentOperation) message.getSendingEnd().getEvent()), operation,
+        InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION, context);
+    setReference(((EventReceiptOperation) message.getReceivingEnd().getEvent()), operation,
+        InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION, context);
+  }
+
+  public static void createExchangeItem(String containerId, String elementId, SessionContext context) {
+    createObject(elementId, containerId, CapellacorePackage.Literals.ABSTRACT_EXCHANGE_ITEM_PKG__OWNED_EXCHANGE_ITEMS,
+        InformationPackage.Literals.EXCHANGE_ITEM, elementId, context);
+  }
+
+  public static void createExchangeItemElement(String containerId, String elementId, SessionContext context) {
+    createObject(elementId, containerId, InformationPackage.Literals.EXCHANGE_ITEM__OWNED_ELEMENTS,
+        InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT, elementId, context);
+  }
+
+  public static void createComponentExchange(String containerId, String elementId, SessionContext context) {
+    createObject(elementId, containerId, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGES,
+        FaPackage.Literals.COMPONENT_EXCHANGE, elementId, context);
+  }
+
+  public static void createFunctionalExchange(String containerId, String elementId, SessionContext context) {
+    createObject(elementId, containerId, FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTIONAL_EXCHANGES,
+        FaPackage.Literals.FUNCTIONAL_EXCHANGE, elementId, context);
+  }
+
+  public static void setName(final SessionContext context, final String name, final String elementId) {
+    context.getExecutionManager().execute(new AbstractReadWriteCommand() {
+      @Override
+      public void run() {
+        AbstractNamedElement element = context.getSemanticElement(elementId);
+        element.setName(name);
+      }
+    });
+  }
+
+  public static void ensureNames(final SessionContext context, final String name, final String... elementIds) {
+    for (String elementId : elementIds) {
+      AbstractNamedElement element = context.getSemanticElement(elementId);
+      Assert.assertTrue(name.equals(element.getName()));
+    }
+  }
+
+  public static void createCapability(String containerId, String elementId, SessionContext context) {
+    createObject(elementId, containerId, CtxPackage.Literals.CAPABILITY_PKG__OWNED_CAPABILITIES,
+        CtxPackage.Literals.CAPABILITY, elementId, context);
+  }
+
+  public static void createScenario(String containerId, String elementId, SessionContext context) {
+    createObject(elementId, containerId, InteractionPackage.Literals.ABSTRACT_CAPABILITY__OWNED_SCENARIOS,
+        InteractionPackage.Literals.SCENARIO, elementId, context);
+  }
+
+  public static void createInstanceRole(String containerId, String elementId, SessionContext context) {
+    createObject(elementId, containerId, InteractionPackage.Literals.SCENARIO__OWNED_INSTANCE_ROLES,
+        InteractionPackage.Literals.INSTANCE_ROLE, elementId, context);
+  }
+
+  public static void createRegion(final String containerId, final String elementId, final SessionContext context) {
+    createObject(elementId, containerId, CapellacommonPackage.Literals.STATE_MACHINE__OWNED_REGIONS,
+        CapellacommonPackage.Literals.REGION, elementId, context);
+  }
+
+  public static void createState(final String containerId, final String elementId, final SessionContext context) {
+    createObject(elementId, containerId, CapellacommonPackage.Literals.REGION__OWNED_STATES,
+        CapellacommonPackage.Literals.STATE, elementId, context);
+  }
+
+  public static void moveState(final String oldContainerId, final String newContainerId, final String elementId,
+      final SessionContext context) {
+    moveObject(elementId, newContainerId, context);
+  }
+
+  public static void createActor(final String containerId, final String elementId, String partId,
+      final SessionContext context) {
+    createObject(elementId, containerId, CtxPackage.Literals.ACTOR_PKG__OWNED_ACTORS, CtxPackage.Literals.ACTOR,
+        elementId, context);
+
+    Part part = (Part) ((Actor) context.getSemanticElement(elementId)).getRepresentingPartitions().get(0);
+    context.putSemanticElement(partId, part);
+  }
+
+  public static void createInstanceRole(final String containerId, final String elementId, final String instanceId,
+      final SessionContext context) {
+    createObject(elementId, containerId, InteractionPackage.Literals.SCENARIO__OWNED_INSTANCE_ROLES,
+        InteractionPackage.Literals.INSTANCE_ROLE, elementId, context);
+
+    context.getExecutionManager().execute(new AbstractReadWriteCommand() {
+      @Override
+      public void run() {
+        InstanceRole role = context.getSemanticElement(elementId);
+        Partition part = context.getSemanticElement(instanceId);
+        role.setRepresentedInstance(part);
+      }
+    });
+  }
+
+  public static void createCommunicationLinkSend(String linkId, String componentId, String itemId,
+      SessionContext context) {
+    CommunicationLink link = createObject(linkId, componentId,
+        CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS,
+        CommunicationPackage.Literals.COMMUNICATION_LINK, linkId, context);
+    ExchangeItem item = context.getSemanticElement(itemId);
+    setAttribute(link, CommunicationLinkKind.SEND, CommunicationPackage.Literals.COMMUNICATION_LINK__KIND, context);
+    setReference(link, item, CommunicationPackage.Literals.COMMUNICATION_LINK__EXCHANGE_ITEM, context);
+  }
+
+  public static void createCommunicationLinkReceive(String linkId, String componentId, String itemId,
+      SessionContext context) {
+    CommunicationLink link = createObject(linkId, componentId,
+        CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS,
+        CommunicationPackage.Literals.COMMUNICATION_LINK, linkId, context);
+    ExchangeItem item = context.getSemanticElement(itemId);
+    setAttribute(link, CommunicationLinkKind.RECEIVE, CommunicationPackage.Literals.COMMUNICATION_LINK__KIND, context);
+    setReference(link, item, CommunicationPackage.Literals.COMMUNICATION_LINK__EXCHANGE_ITEM, context);
+  }
+
+  public static void createInterface(String containerId, String elementId, SessionContext context) {
+    createObject(elementId, containerId,
+        CsPackage.Literals.INTERFACE_PKG__OWNED_INTERFACES,
+        CsPackage.Literals.INTERFACE, elementId, context);
+  }
+
+  public static void createExchangeItemAllocation(String linkId, String interfaceId, String itemId, SessionContext context) {
+    EObject source = createObject(linkId, interfaceId,
+        CsPackage.Literals.INTERFACE__OWNED_EXCHANGE_ITEM_ALLOCATIONS,
+        CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION, linkId, context);
+
+    ExchangeItem item = context.getSemanticElement(itemId);
+    setReference(source, item, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM, context);
+  }
 }

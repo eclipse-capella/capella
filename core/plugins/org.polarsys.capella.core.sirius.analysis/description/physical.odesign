@@ -917,7 +917,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Physical Function allocated to a new Physical Actor" name="Actor Function" precondition="&lt;%$containerView.isValidCreationDFFunction() &amp;&amp; $containerView.isA(&quot;DDiagram&quot;)%>" containerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ActorFunction.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Physical Function allocated to a new Physical Actor" name="Actor Function" precondition="&lt;%$containerView.isValidCreationDFFunction() &amp;&amp; $containerView.isA(&quot;DDiagram&quot;)%>" containerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ActorPhysicalFunction.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>

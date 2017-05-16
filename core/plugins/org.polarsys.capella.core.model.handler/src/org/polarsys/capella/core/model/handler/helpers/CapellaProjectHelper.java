@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -74,11 +74,13 @@ public class CapellaProjectHelper {
    * @param capellaProject_p
    */
   public static void setProjectWithApproach(Project capellaProject_p, ProjectApproach approach_p) {
-    // Preconditions : the capella project must not already have an approach set.
-    if (TriStateBoolean.True.equals(hasGivenApproach(ProjectApproach.SingletonComponents, capellaProject_p))
-        || TriStateBoolean.True.equals(hasGivenApproach(ProjectApproach.ReusableComponents, capellaProject_p))) {
-      return;
+    for (KeyValue keyValue : capellaProject_p.getKeyValuePairs()) {
+      if (PROJECT_APPROACH_KEY.equals(keyValue.getKey())) {
+        keyValue.setValue(approach_p.name());
+        return;
+      }
     }
+    
     // Create a key value to store the project approach.
     KeyValue natureKeyValue = CapellacoreFactory.eINSTANCE.createKeyValue();
     natureKeyValue.setKey(PROJECT_APPROACH_KEY);

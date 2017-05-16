@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,8 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 public class SemanticCrossReferencer extends ECrossReferenceAdapter {
+  
+  boolean proxyResolutionEnabled = true;
 
   public Collection<EStructuralFeature.Setting> getInverseReferences(EObject eObject, EStructuralFeature feature, boolean resolve) {
     Collection<EStructuralFeature.Setting> result = new ArrayList<EStructuralFeature.Setting>();
@@ -64,7 +66,14 @@ public class SemanticCrossReferencer extends ECrossReferenceAdapter {
         }
       }
     }
-
     return result;
+  }
+  
+  public void enableProxyResolution(boolean enabled){
+    proxyResolutionEnabled = enabled;
+  }
+  
+  public boolean isProxyResolutionEnabled(){
+    return proxyResolutionEnabled;
   }
 }

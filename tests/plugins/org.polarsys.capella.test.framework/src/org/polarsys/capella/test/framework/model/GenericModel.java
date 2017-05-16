@@ -27,6 +27,15 @@ public class GenericModel {
   public static String INTERFACE_PKG = "INTERFACE_PKG";
   public static String DATA_PKG = "DATA_PKG";
   
+
+  
+  public static String SCENARIO_1 = "SCENARIO 1";
+  public static String INSTANCE_ROLE_1 = "INSTANCE_ROLE_1";
+  public static String INSTANCE_ROLE_2 = "INSTANCE_ROLE_2";
+  public static String INSTANCE_ROLE_3 = "INSTANCE_ROLE_3";
+  public static String PART_1 = "PART_1";
+  public static String PART_2 = "PART_2";
+  public static String PART_3 = "PART_3";
   
   public static String ACTIVITY_1 = "ACTIVITY 1";
   public static String ACTIVITY_1_1 = "ACTIVITY 1_1";
@@ -68,6 +77,9 @@ public class GenericModel {
   public static String COMPONENT_3 = "COMPONENT 3";
   public static String COMPONENT_4 = "COMPONENT 4";
 
+  public static String COMPONENT_EXCHANGE_1 = "COMPONENT_EXCHANGE_1";
+  public static String COMPONENT_EXCHANGE_2 = "COMPONENT_EXCHANGE_2";
+  
   public static String MISSION_1 = "MISSION 1";
   public static String MISSION_2 = "MISSION 2";
   public static String MISSION_3 = "MISSION 3";
@@ -88,6 +100,9 @@ public class GenericModel {
   public static String EXCHANGE_ITEM_3 = "Exchange Item 3";
   public static String EXCHANGE_ITEM_4 = "Exchange Item 4";
 
+  public static String EXCHANGE_ITEM_ELEMENT_1 = "EXCHANGE_ITEM_ELEMENT_1";
+  public static String EXCHANGE_ITEM_ELEMENT_2 = "EXCHANGE_ITEM_ELEMENT_2";
+  
   public static String GENERALIZATION_1 = "GENERALIZATION 1";
   public static String GENERALIZATION_2 = "GENERALIZATION 2";
   public static String GENERALIZATION_3 = "GENERALIZATION 3";

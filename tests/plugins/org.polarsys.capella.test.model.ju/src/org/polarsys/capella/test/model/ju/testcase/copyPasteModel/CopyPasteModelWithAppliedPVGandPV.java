@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,6 @@
 package org.polarsys.capella.test.model.ju.testcase.copyPasteModel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -37,19 +36,10 @@ import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCopyToClipboardCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaPasteCommand;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
-import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
+import org.polarsys.capella.test.model.ju.model.MiscModel;
 
-public class CopyPasteModelWithAppliedPVGandPV extends BasicTestCase {
-  public static final String MODEL_NAME = "miscmodel"; //$NON-NLS-1$
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public List<String> getRequiredTestModels() {
-    return Arrays.asList(MODEL_NAME);
-  }
+public class CopyPasteModelWithAppliedPVGandPV extends MiscModel {
 
   /**
    * {@inheritDoc}
@@ -59,8 +49,8 @@ public class CopyPasteModelWithAppliedPVGandPV extends BasicTestCase {
     //
     // Test data creation.
     //
-    ICapellaModel model = getTestModel(MODEL_NAME);
-    Session session = getSessionForTestModel(MODEL_NAME);
+    ICapellaModel model = getTestModel();
+    Session session = getSessionForTestModel(getRequiredTestModels().get(0));
     TransactionalEditingDomain ted = session.getTransactionalEditingDomain();
     final Project project = ((ICapellaModel) model).getProject(ted);
     // Create a PropertyValueGroup, a PropertyValue, an OperationalActivity and apply the PVG and the PV to the OA.
