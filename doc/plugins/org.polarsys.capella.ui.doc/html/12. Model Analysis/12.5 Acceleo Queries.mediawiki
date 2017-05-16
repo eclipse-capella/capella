@@ -81,7 +81,7 @@ referencedAnalysis current.ancestor.referencedAnalysis.
 referencedAnalysis.referencedAnalysis.referencedAnalysis 
 current.ancestor.referencedAnalysis.referencedAnalysis.
 referencedAnalysis.referencedAnalysis.referencedAnalysis)
-[eClass.name=="DAnalysis"].minimize.ownedViews.
+&#91;eClass.name=="DAnalysis"&#93;.minimize.ownedViews.
 ownedRepresentations.nSize()%&gt;
 |- valign="TOP"
 | width="249" |
@@ -96,8 +96,8 @@ referencedAnalysis current.ancestor.referencedAnalysis.
 referencedAnalysis.referencedAnalysis.referencedAnalysis 
 current.ancestor.referencedAnalysis.referencedAnalysis.
 referencedAnalysis.referencedAnalysis.referencedAnalysis)
-[eClass.name=="DAnalysis"].minimize.ownedViews.
-ownedRepresentations[description.name.endsWith("Scenario")==false]%&gt;
+&#91;eClass.name=="DAnalysis"&#93;.minimize.ownedViews.
+ownedRepresentations&#91;description.name.endsWith("Scenario")==false&#93;%&gt;
 |- valign="TOP"
 | width="249" |
 List of different viewpoints
@@ -111,7 +111,7 @@ referencedAnalysis current.ancestor.referencedAnalysis.
 referencedAnalysis.referencedAnalysis.referencedAnalysis 
 current.ancestor.referencedAnalysis.referencedAnalysis.
 referencedAnalysis.referencedAnalysis.referencedAnalysis)
-[eClass.name=="DAnalysis"].ownedViews.viewpoint.nMinimize()%&gt;
+&#91;eClass.name=="DAnalysis"&#93;.ownedViews.viewpoint.nMinimize()%&gt;
 |- valign="TOP"
 | width="249" |
 Number of graphical elements in all diagrams
@@ -125,7 +125,7 @@ referencedAnalysis current.ancestor.referencedAnalysis.
 referencedAnalysis.referencedAnalysis.referencedAnalysis 
 current.ancestor.referencedAnalysis.referencedAnalysis.
 referencedAnalysis.referencedAnalysis.referencedAnalysis)
-[eClass.name=="DAnalysis"].minimize.ownedViews.
+&#91;eClass.name=="DAnalysis"&#93;.minimize.ownedViews.
 ownedRepresentations.diagramElements.nSize()%&gt;
 |- valign="TOP"
 | width="249" |
@@ -140,7 +140,7 @@ referencedAnalysis current.ancestor.referencedAnalysis.
 referencedAnalysis.referencedAnalysis.referencedAnalysis 
 current.ancestor.referencedAnalysis.referencedAnalysis.
 referencedAnalysis.referencedAnalysis.referencedAnalysis)
-[eClass.name=="DAnalysis"].minimize.eAllContents.nSize()%&gt;
+&#91;eClass.name=="DAnalysis"&#93;.minimize.eAllContents.nSize()%&gt;
 |}
 <br>
 == Searching Strings ==
@@ -158,21 +158,21 @@ All element containing the "TODO" string in their 'Name' property
 | width="156" |
 A model element
 | width="430" |
-&lt;%current.eAllContents()[name.matches(".*TODO.*")]%&gt;
+&lt;%current.eAllContents()&#91;name.matches(".*TODO.*")&#93;%&gt;
 |- valign="TOP"
 | width="249" |
 All element containing the "TODO" string in their 'Summary' property
 | width="156" |
 A model element
 | width="430" |
-&lt;%current.eAllContents()[summary.matches(".*TODO.*")]%&gt;
+&lt;%current.eAllContents()&#91;summary.matches(".*TODO.*")&#93;%&gt;
 |- valign="TOP"
 | width="249" |
 All element containing the "TODO" string in their 'Description' property
 | width="156" |
 A model element
 | width="430" |
-&lt;%current.eAllContents()[description.matches(".*TODO.*")]%&gt;
+&lt;%current.eAllContents()&#91;description.matches(".*TODO.*")&#93;%&gt;
 |- valign="TOP"
 | width="249" |
 All diagrams containing a note containing the "TODO" string
@@ -186,10 +186,10 @@ referencedAnalysis current.ancestor.referencedAnalysis.
 referencedAnalysis.referencedAnalysis.referencedAnalysis
 current.ancestor.referencedAnalysis.referencedAnalysis.
 referencedAnalysis.referencedAnalysis.referencedAnalysis)
-[eClass.name=="DAnalysis"].minimize.
+&#91;eClass.name=="DAnalysis"&#93;.minimize.
 ownedViews.ownedRepresentations
-[~element.filter("notation.Diagram").eAllContents("notation.Node")
-[type=="Note" &amp;&amp; description.indexOf("TODO")&gt;=0]]%&gt;
+&#91;~element.filter("notation.Diagram").eAllContents("notation.Node")
+&#91;type=="Note" &amp;&amp; description.indexOf("TODO")&gt;=0&#93;&#93;%&gt;
 |- valign="TOP"
 | width="249" |
 Number of notes containing the "TODO" string
@@ -203,9 +203,9 @@ referencedAnalysis current.ancestor.referencedAnalysis.
 referencedAnalysis.referencedAnalysis.referencedAnalysis
 current.ancestor.referencedAnalysis.referencedAnalysis.
 referencedAnalysis.referencedAnalysis.referencedAnalysis)
-[eClass.name=="DAnalysis"].minimize.ownedViews.
-ownedRepresentations[~element.filter("notation.Diagram").
-eAllContents("notation.Node")[type=="Note" &amp;&amp; description.indexOf("TODO")&gt;=0]].nSize()%&gt;
+&#91;eClass.name=="DAnalysis"&#93;.minimize.ownedViews.
+ownedRepresentations&#91;~element.filter("notation.Diagram").
+eAllContents("notation.Node")&#91;type=="Note" &amp;&amp; description.indexOf("TODO")&gt;=0&#93;&#93;.nSize()%&gt;
 |}
 <br>
 == Requirements ==
@@ -223,7 +223,7 @@ Query to retrieve the list of non-allocated requirements
 | width="156" |
 Requirement Package
 | width="430" |
-&lt;%current.eAllContents[relatedCapellaElements==null]%
+&lt;%current.eAllContents&#91;relatedCapellaElements==null&#93;%
 |}
 <br>
 == Model Navigation Examples ==
@@ -258,7 +258,7 @@ List of all functions
 | width="156" |
 Any Component
 | width="430" |
-&lt;%current.allocatedFunctions[name.startsWith("Store") &amp;&amp; eAllContents().filter("FunctionPort").nSize&gt;3]%&gt;
+&lt;%current.allocatedFunctions&#91;name.startsWith("Store") &amp;&amp; eAllContents().filter("FunctionPort").nSize&gt;3&#93;%&gt;
 |}
 <br>
 == Metrics ==
@@ -396,7 +396,7 @@ Number of Behaviour Components in PA
 PhysicalArchitecture
 | width="430" |
 &lt;%current.eAllContents("PhysicalComponent")
-[nature=="BEHAVIOR"].nSize%&gt;
+&#91;nature=="BEHAVIOR"&#93;.nSize%&gt;
 |- valign="TOP"
 | width="249" |
 Number of Implementation PC (nodes) in PA
@@ -404,7 +404,7 @@ Number of Implementation PC (nodes) in PA
 PhysicalArchitecture
 | width="430" |
 &lt;%current.eAllContents("PhysicalComponent")
-[nature=="NODE"].nSize%&gt;
+&#91;nature=="NODE"&#93;.nSize%&gt;
 |- valign="TOP"
 | width="249" |
 Number of Physical Links

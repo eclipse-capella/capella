@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 Corporation and others.
+ * Copyright (c) 2006, 2017 Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.io.UnsupportedEncodingException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.commands.ExecutionException;
@@ -240,38 +241,75 @@ public class RenameResourceAction extends WorkspaceAction {
         if (resources.length == 1) {
           // check for overwrite
           IResource oldResource = resources[0];
-          IWorkspaceRoot workspaceRoot = oldResource.getWorkspace().getRoot();
-          IResource newResource = workspaceRoot.findMember(newPath);
-          boolean go = true;
-          if (newResource != null) {
-            go = checkOverwrite(_shell, newResource);
-          }
-          if (go) {
-            // Get current resource name.
-            String resourceNameBeforeRenaming = oldResource.getName();
-            MoveResourcesOperation op = new MoveResourcesOperation(oldResource, newPath, IDEWorkbenchMessages.RenameResourceAction_operationTitle);
-            op.setModelProviderIds(getModelProviderIds());
-            try {
-              PlatformUI.getWorkbench().getOperationSupport().getOperationHistory().execute(op, monitor, WorkspaceUndoUtil.getUIInfoAdapter(_shell));
-              // Update files that references renaming file.
-              boolean updateCapellaProjectName = CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION.equals(oldResource.getFileExtension());
-              updateReferencesToFile(oldResource.getProject(), resourceNameBeforeRenaming, newPath.lastSegment(), updateCapellaProjectName);
-            } catch (UnsupportedEncodingException e) {
-              errorStatus[0] = new Status(IStatus.ERROR, PlatformUI.PLUGIN_ID, "Rename action failed to perform because UTF-8 encoding is not supported", e);
-            } catch (ExecutionException e) {
-              if (e.getCause() instanceof CoreException) {
-                errorStatus[0] = ((CoreException) e.getCause()).getStatus();
-              } else {
-                errorStatus[0] = new Status(IStatus.ERROR, PlatformUI.PLUGIN_ID, getProblemsMessage(), e);
+          renameResource(oldResource, newPath, monitor, errorStatus);
+          
+          // When renaming the AIRD, rename also the associated AFM file if it has the same old name.
+          if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(oldResource.getFileExtension())) {
+            IPath oldAfmPath = changeExtension(oldResource.getFullPath(), CapellaResourceHelper.AFM_FILE_EXTENSION);
+            IWorkspaceRoot workspaceRoot = oldResource.getWorkspace().getRoot();
+            IResource oldAfmResource = workspaceRoot.findMember(oldAfmPath);
+            // If AFM exists with same name as old AIRD
+            if (oldAfmResource!=null) {
+              String airdContent ="";
+              try {
+                airdContent = FileHelper.readFile(newPath.toString());
+              } catch (UnsupportedEncodingException e) {
+                // Ignore the error
+              }
+              // If the AFM is referenced by the AIRD
+              if (airdContent.contains("<semanticResources>"+oldAfmPath.lastSegment())) {
+                IPath newAfmPath =changeExtension(newPath, CapellaResourceHelper.AFM_FILE_EXTENSION);
+                // Rename the AFM
+                renameResource(oldAfmResource, newAfmPath, monitor, errorStatus);
               }
             }
-
           }
         }
       }
     };
   }
+  
+  private IPath changeExtension (IPath inPath, String newExtension) {
+    IPath newPath = inPath;
+    String oldExtension = inPath.getFileExtension();
+    if (oldExtension != null && !oldExtension.isEmpty()) {
+      newPath = inPath.removeLastSegments(1).append(inPath.lastSegment().replace("."+CapellaResourceHelper.AIRD_FILE_EXTENSION, "."+CapellaResourceHelper.AFM_FILE_EXTENSION));
+    } 
+    return newPath;
+  }
 
+  private void renameResource(IResource oldResource, IPath newResourcePath,IProgressMonitor monitor, final IStatus[] errorStatus) {
+    boolean go = true;
+    IWorkspaceRoot workspaceRoot = oldResource.getWorkspace().getRoot();
+    IResource newResource = workspaceRoot.findMember(newResourcePath);
+    
+    if (newResource != null) {
+      go = checkOverwrite(_shell, newResource);
+    }
+    if (go) {
+      // Get current resource name.
+      String resourceNameBeforeRenaming = oldResource.getName();
+      MoveResourcesOperation op = new MoveResourcesOperation(oldResource, newResourcePath, IDEWorkbenchMessages.RenameResourceAction_operationTitle);
+      op.setModelProviderIds(getModelProviderIds());
+      try {
+        PlatformUI.getWorkbench().getOperationSupport().getOperationHistory().execute(op, monitor, WorkspaceUndoUtil.getUIInfoAdapter(_shell));
+        // Update files that references renaming file.
+        boolean updateCapellaProjectName = CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION.equals(oldResource.getFileExtension());
+        updateReferencesToFile(oldResource.getProject(), resourceNameBeforeRenaming, newResourcePath.lastSegment(), updateCapellaProjectName);
+      } catch (UnsupportedEncodingException e) {
+        errorStatus[0] = new Status(IStatus.ERROR, PlatformUI.PLUGIN_ID, "Rename action failed to perform because UTF-8 encoding is not supported", e);
+      } catch (ExecutionException e) {
+        if (e.getCause() instanceof CoreException) {
+          errorStatus[0] = ((CoreException) e.getCause()).getStatus();
+        } else {
+          errorStatus[0] = new Status(IStatus.ERROR, PlatformUI.PLUGIN_ID, getProblemsMessage(), e);
+        }
+      }
+
+    }
+  }
+  
+  
   Composite createParent() {
     Tree tree = getTree();
     Composite result = new Composite(tree, SWT.NONE);
@@ -708,8 +746,8 @@ public class RenameResourceAction extends WorkspaceAction {
       case IResource.FILE:
         // Is current resource a capella file or a diagram one different from the file related to newName_p ?
         String fileExtension = resource.getFileExtension();
-        if ((CapellaResourceHelper.isCapellaResource(resource) || CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(fileExtension) || CapellaResourceHelper.AIRD_FRAGMENT_FILE_EXTENSION
-            .equals(fileExtension))) {
+        if (CapellaResourceHelper.isCapellaResource(resource) || CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(fileExtension) || CapellaResourceHelper.AIRD_FRAGMENT_FILE_EXTENSION
+            .equals(fileExtension) || CapellaResourceHelper.AFM_FILE_EXTENSION.equals(fileExtension)) {
           IFile file = (IFile) resource;
           String filePath = file.getFullPath().toString();
           // Read file content when needed, to avoid useless read...
@@ -755,13 +793,16 @@ public class RenameResourceAction extends WorkspaceAction {
     // Special characters � � etc.
     String oldName = normalizeForContent(oldName_p);
     String newName = normalizeForContent(newName_p);
-    newContent = initialContent_p.replace(oldName, newName);
+    //Replace the entire string not in a subString
+    newContent = initialContent_p.replaceAll("\\b" + Pattern.quote(oldName) + "\\b", newName);
+    
 
     // TODO This special case was in the previous implementation
     // Handle special case.
     if (oldName.contains(Character.toString('&'))) {
       oldName = replaceSpecialCharacter(oldName, '&', AND_HTML_REPRESENTATION);
-      newContent = newContent.replace(oldName, newName);
+      //Replace the entire string not in a subString
+      newContent = initialContent_p.replaceAll("\\b" + Pattern.quote(oldName) + "\\b", newName);
     }
 
     return newContent;

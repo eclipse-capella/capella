@@ -13,6 +13,8 @@ package org.polarsys.capella.test.model.ju.testsuites.main;
 import java.util.ArrayList;
 import java.util.List;
 
+import junit.framework.Test;
+
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.model.ju.obfuscate.ObfuscateModelTestCase;
@@ -27,8 +29,6 @@ import org.polarsys.capella.test.model.ju.testcase.dialoglabel.NewDiagramDialogL
 import org.polarsys.capella.test.model.ju.testcases.datalisteners.DataListenerTestSuite;
 import org.polarsys.capella.test.model.ju.testcases.delete.DeleteElementTestSuite;
 import org.polarsys.capella.test.model.ju.testcases.interfacescenario.message.ISMessage;
-
-import junit.framework.Test;
 
 /**
  * @author Hakim Sellou

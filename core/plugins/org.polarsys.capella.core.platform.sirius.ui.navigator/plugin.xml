@@ -443,6 +443,11 @@
                      <test
                            forcePluginActivation="true"
                            property="org.eclipse.core.resources.extension"
+                           value="afm">
+                     </test>
+                     <test
+                           forcePluginActivation="true"
+                           property="org.eclipse.core.resources.extension"
                            value="aird">
                      </test>
                      <test

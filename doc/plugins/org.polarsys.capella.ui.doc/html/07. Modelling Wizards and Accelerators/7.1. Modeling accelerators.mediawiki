@@ -90,8 +90,7 @@ Model before propagation: EI 1 and EI 2 are referenced by the Functional Exchang
 
 [[Image:Images/propagate_ei_diagram.png|483x85px]]
 [[Image:Images/propagate_ei_port_before.png|980x196px]]
- 
-[[Image:Images/7.1.%20Modeling%20accelerators_html_m7eccf2be.png|700x500px]]
+
 Model after propagation: Exchange Item references to EI 1 and EI 2 have been added to the Function Input Port:
 
 [[Image:Images/propagate_ei_port_after.png|981x221px]]
@@ -100,12 +99,11 @@ The same change is applied to the Function Output Port.
 
 <br>
 <br>
- 
-[[Image:Images/7.1.%20Modeling%20accelerators_html_1a7918c9.png|600x200px]]
-== Synchronization of Exchange Items on Functional Exchanges and Ports ==
 
-'''Source element''': Functional Exchange
+== Synchronization of Exchange Items on Functional Exchanges and Ports ==
  
+'''Source element''': Functional Exchange
+
  
 '''Command:''' Modeling Accelerators / Synchronize Exchange Items and Function Ports
 
@@ -156,14 +154,6 @@ At Physical level, the Functional Exchange is moved towards a new Function. The 
 
  
 After generation of Function Port realizations, the traceability between Function Ports is set.
-
- 
-<br>
-<br>
-
- 
-<br>
-<br>
 
  
 [[Image:Images/7.1.%20Modeling%20accelerators_html_m665442c6.png|553x159px]]
