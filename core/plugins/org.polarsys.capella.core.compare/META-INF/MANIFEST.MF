@@ -8,10 +8,13 @@ Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.team.core,
+ org.polarsys.kitalpha.ad.metadata.model,
+ org.polarsys.kitalpha.ad.services,
  org.polarsys.capella.core.data.gen,
  org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.common.platform.sirius,
- org.eclipse.emf.diffmerge.ui.sirius
+ org.eclipse.emf.diffmerge.ui.sirius;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.compare

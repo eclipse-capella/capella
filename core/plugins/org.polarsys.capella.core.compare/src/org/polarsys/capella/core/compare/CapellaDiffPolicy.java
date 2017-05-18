@@ -17,6 +17,7 @@ import org.eclipse.emf.diffmerge.sirius.SiriusDiffPolicy;
 import org.eclipse.emf.ecore.EAttribute;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 
+
 /**
  * A diff policy for Capella models.
  */
@@ -31,7 +32,7 @@ public class CapellaDiffPolicy extends SiriusDiffPolicy {
     );
   
   /**
-   * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusDiffPolicy#coverValue(java.lang.Object, org.eclipse.emf.ecore.EAttribute)
+   * @see org.eclipse.emf.diffmerge.sirius.SiriusDiffPolicy#coverValue(java.lang.Object, org.eclipse.emf.ecore.EAttribute)
    */
   @Override
   public boolean coverValue(Object value, EAttribute attribute) {

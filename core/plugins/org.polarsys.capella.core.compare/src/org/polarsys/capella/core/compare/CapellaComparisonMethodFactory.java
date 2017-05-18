@@ -24,7 +24,7 @@ import org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition;
 public class CapellaComparisonMethodFactory extends SiriusComparisonMethodFactory {
   
   /**
-   * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusComparisonMethodFactory#createComparisonMethod(org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition, org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition, org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition)
+   * @see org.eclipse.emf.diffmerge.ui.sirius.SiriusComparisonMethodFactory#createComparisonMethod(org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition, org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition, org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition)
    */
   @Override
   public IComparisonMethod createComparisonMethod(
@@ -35,7 +35,7 @@ public class CapellaComparisonMethodFactory extends SiriusComparisonMethodFactor
   }
   
   /**
-   * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusComparisonMethodFactory#getLabel()
+   * @see org.eclipse.emf.diffmerge.ui.sirius.SiriusComparisonMethodFactory#getLabel()
    */
   @Override
   public String getLabel() {
@@ -43,7 +43,7 @@ public class CapellaComparisonMethodFactory extends SiriusComparisonMethodFactor
   }
   
   /**
-   * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusComparisonMethodFactory#getOverridenClasses()
+   * @see org.eclipse.emf.diffmerge.ui.sirius.SiriusComparisonMethodFactory#getOverridenClasses()
    */
   @Override
   public Collection<Class<?>> getOverridenClasses() {

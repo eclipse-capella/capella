@@ -171,13 +171,13 @@ public class CapellaComparePlugin extends AbstractUIPlugin {
     private final IPath specificLocation;
     /**
      * Constructor
-     * @param wrappedProject the non-null project being wrapped
-     * @param specificLocation the non-null fake location of the project
+     * @param wrappedProjectParam the non-null project being wrapped
+     * @param specificLocationParam the non-null fake location of the project
      */
-    public ProxyProjectWrapper(IProject wrappedProject, IPath specificLocation) {
-      super(wrappedProject.getFullPath(), (Workspace)wrappedProject.getWorkspace());
-      this.wrappedProject = wrappedProject;
-      this.specificLocation = specificLocation;
+    public ProxyProjectWrapper(IProject wrappedProjectParam, IPath specificLocationParam) {
+      super(wrappedProjectParam.getFullPath(), (Workspace)wrappedProjectParam.getWorkspace());
+      this.wrappedProject = wrappedProjectParam;
+      this.specificLocation = specificLocationParam;
     }
     /**
      * @see org.eclipse.core.internal.resources.Resource#getLocation()

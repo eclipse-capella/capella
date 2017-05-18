@@ -72,7 +72,7 @@ public class CapellaMergePolicy extends SiriusMergePolicy {
   
   
   /**
-   * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusMergePolicy#getAdditionGroup(org.eclipse.emf.ecore.EObject, org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope)
+   * @see org.eclipse.emf.diffmerge.sirius.SiriusMergePolicy#getAdditionGroup(org.eclipse.emf.ecore.EObject, org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope)
    */
   @Override
   public Set<EObject> getAdditionGroup(EObject element,

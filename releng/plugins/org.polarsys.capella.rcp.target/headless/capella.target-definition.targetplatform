@@ -47,13 +47,13 @@ location "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfu
 	org.polarsys.kitalpha.transposer.feature.feature.group lazy
 }
 
-location "https://hudson.eclipse.org/diffmerge/job/emf-diffmerge-core-master/167/artifact/releng/org.eclipse.emf.diffmerge.update/target/repository" {
+location "http://download.eclipse.org/diffmerge/releases/0.8.0/emf-diffmerge-site" {
 	org.eclipse.emf.diffmerge.feature.feature.group
 	org.eclipse.emf.diffmerge.sirius.feature.feature.group
 	org.eclipse.emf.diffmerge.gmf.feature.feature.group
 }
 
-location "https://hudson.eclipse.org/diffmerge/job/emf-diffmerge-patterns-master/106/artifact/releng/org.eclipse.emf.diffmerge.patterns.update/target/repository" {
+location "http://download.eclipse.org/diffmerge/releases/0.8.0/edm-patterns-site" {
 	org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group
 	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group
 }

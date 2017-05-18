@@ -29,7 +29,7 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
 public class CapellaScopeFactory extends SiriusScopeFactory {
   
   /**
-   * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusScopeFactory#createScopeDefinitionFromURI(org.eclipse.emf.common.util.URI, java.lang.String, boolean)
+   * @see org.eclipse.emf.diffmerge.ui.sirius.SiriusScopeFactory#createScopeDefinitionFromURI(org.eclipse.emf.common.util.URI, java.lang.String, boolean)
    */
   @Override
   protected IModelScopeDefinition createScopeDefinitionFromURI(URI uri, String label,
@@ -62,7 +62,7 @@ public class CapellaScopeFactory extends SiriusScopeFactory {
   }
   
   /**
-   * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusScopeFactory#getOverridenClasses()
+   * @see org.eclipse.emf.diffmerge.ui.sirius.SiriusScopeFactory#getOverridenClasses()
    */
   @Override
   public Collection<? extends Class<?>> getOverridenClasses() {
