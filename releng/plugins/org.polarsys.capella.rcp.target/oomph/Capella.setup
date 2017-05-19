@@ -207,7 +207,7 @@
         xsi:type="setup:EclipseIniTask"
         disabled="true"
         option="-Doomph.redirection.capella="
-        value="https://git.polarsys.org/c/capella/capella.git/plain/releng/plugins/org.polarsys.capella.core.releng/oomph/Capella.setup->${git.clone.capella.location|uri}/releng/plugins/org.polarsys.capella.core.releng/oomph/Capella.setup"
+        value="https://git.polarsys.org/c/capella/capella.git/plain/releng/plugins/org.polarsys.capella.rcp.target/oomph/Capella.setup->${git.clone.capella.location|uri}/releng/plugins/org.polarsys.capella.rcp.target/oomph/Capella.setup"
         vm="true">
       <description>Redirect to local setup file allows testing changes before pushing them back to git. Disabled atm because does not work with branches other than master.</description>
     </setupTask>
