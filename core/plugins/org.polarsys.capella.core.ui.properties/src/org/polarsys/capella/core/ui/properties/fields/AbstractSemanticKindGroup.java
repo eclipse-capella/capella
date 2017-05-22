@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,12 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 public abstract class AbstractSemanticKindGroup extends AbstractSemanticButtonGroup {
 
   protected Group _group;
+  
+  public AbstractSemanticKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, String groupLabel, boolean enabled, int numColumns) {
+    super(widgetFactory);
+
+    _group = createGroup(parent, groupLabel, enabled, numColumns);
+  }
 
   /**
    * Constructor.
@@ -37,9 +43,7 @@ public abstract class AbstractSemanticKindGroup extends AbstractSemanticButtonGr
    * @param groupLabel
    */
   public AbstractSemanticKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, String groupLabel, int numColumns) {
-    super(widgetFactory);
-
-    _group = createGroup(parent, groupLabel, numColumns);
+    this(parent, widgetFactory, groupLabel, true, numColumns);
   }
 
   /**
@@ -68,12 +72,13 @@ public abstract class AbstractSemanticKindGroup extends AbstractSemanticButtonGr
    * @param numColumns
    * @return a not <code>null</code> object.
    */
-  protected Group createGroup(Composite parent, String label, int numColumns) {
+  protected Group createGroup(Composite parent, String label, boolean enabled, int numColumns) {
     _group = _widgetFactory.createGroup(parent, label);
     _group.setLayout(new GridLayout(numColumns, true));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = ((GridLayout) parent.getLayout()).numColumns;
     _group.setLayoutData(gd);
+    _group.setEnabled(enabled);
     return _group;
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,10 +47,12 @@ public class CapellaModelPreferencesInitializer extends AbstractPreferencesIniti
         ProjectScope.class);
     putBoolean(ISynchronizationPreferences.PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALLINK,
         ISynchronizationPreferences.PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALLINK_DEFAULT
-            .booleanValue(), ProjectScope.class);
+            .booleanValue(),
+        ProjectScope.class);
     putBoolean(ISynchronizationPreferences.PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALPATH,
         ISynchronizationPreferences.PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALPATH_DEFAULT
-            .booleanValue(), ProjectScope.class);
+            .booleanValue(),
+        ProjectScope.class);
 
     // Set inter-model integrity preferences
     putBoolean(IInterModelIntegrityPreferences.PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION,
@@ -60,6 +62,9 @@ public class CapellaModelPreferencesInitializer extends AbstractPreferencesIniti
     // Set Mode & State management preferences
     putBoolean(IModeAndStateManagementPreferences.PREFS_MIXED_MODE_STATE_ALLOWED,
         IModeAndStateManagementPreferences.PREFS_MIXED_MODE_STATE_ALLOWED_DEFAULT.booleanValue(), ProjectScope.class);
-  }
 
+    // Set Physical Component preferences
+    putBoolean(IDataPreferences.PREFS_ALLOW_PHYSICAL_COMPONENT_NATURE_CHANGE,
+        IDataPreferences.PREFS_ALLOW_PHYSICAL_COMPONENT_NATURE_CHANGE_DEFAULT.booleanValue(), ProjectScope.class);
+  }
 }
