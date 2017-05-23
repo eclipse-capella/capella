@@ -13446,7 +13446,7 @@
                 </style>
               </conditionnalStyles>
             </borderedNodeMappings>
-            <borderedNodeMappings xsi:type="description_2:EndOfLifeMapping" name="Lifeline deletion mapping" preconditionExpression="&lt;% eContainer.ownedMessages[kind==&quot;DELETE&quot;].receivingEnd.covered.nContains (self) %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements%20IS']" semanticCandidatesExpression="&lt;% self %>" synchronizationLock="true" domainClass="interaction.InstanceRole">
+            <borderedNodeMappings xsi:type="description_2:EndOfLifeMapping" name="Lifeline deletion mapping" preconditionExpression="&lt;% eContainer.ownedMessages[kind==&quot;DELETE&quot;].receivingEnd.covered.nContains (self) %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='no%20delete%20IS']" semanticCandidatesExpression="&lt;% self %>" synchronizationLock="true" domainClass="interaction.InstanceRole">
               <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;% &quot;&quot; %>" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/eol.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -15520,7 +15520,7 @@
                 </style>
               </conditionnalStyles>
             </borderedNodeMappings>
-            <borderedNodeMappings xsi:type="description_2:EndOfLifeMapping" name="Lifeline deletion mapping DF" preconditionExpression="&lt;% eContainer.ownedMessages[kind==&quot;DELETE&quot;].receivingEnd.covered.nContains (self) %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements%20DF']" semanticCandidatesExpression="&lt;% self %>" synchronizationLock="true" domainClass="interaction.InstanceRole">
+            <borderedNodeMappings xsi:type="description_2:EndOfLifeMapping" name="Lifeline deletion mapping DF" preconditionExpression="&lt;% eContainer.ownedMessages[kind==&quot;DELETE&quot;].receivingEnd.covered.nContains (self) %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='no%20delete%20DF']" semanticCandidatesExpression="&lt;% self %>" synchronizationLock="true" domainClass="interaction.InstanceRole">
               <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;% &quot;&quot; %>" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/eol.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -17335,7 +17335,7 @@
                 </style>
               </conditionnalStyles>
             </borderedNodeMappings>
-            <borderedNodeMappings xsi:type="description_2:EndOfLifeMapping" name="Lifeline deletion mapping FS" preconditionExpression="&lt;% eContainer.ownedMessages[kind==&quot;DELETE&quot;].receivingEnd.covered.nContains (self) %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% self %>" synchronizationLock="true" domainClass="interaction.InstanceRole">
+            <borderedNodeMappings xsi:type="description_2:EndOfLifeMapping" name="Lifeline deletion mapping FS" preconditionExpression="&lt;% eContainer.ownedMessages[kind==&quot;DELETE&quot;].receivingEnd.covered.nContains (self) %>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='no%20delete%20FS']" semanticCandidatesExpression="&lt;% self %>" synchronizationLock="true" domainClass="interaction.InstanceRole">
               <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;% &quot;&quot; %>" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/eol.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
