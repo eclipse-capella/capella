@@ -17,6 +17,7 @@ tmp/
 
 # Maven
 target/
+.polyglot.build.properties
 
 # Generated stuff
 api-docs/
