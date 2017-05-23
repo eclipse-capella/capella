@@ -1029,7 +1029,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="https://hudson.eclipse.org/diffmerge/job/emf-diffmerge-core-master/167/artifact/releng/org.eclipse.emf.diffmerge.update/target/repository"/>
+              url="http://download.eclipse.org/diffmerge/releases/0.8.0/emf-diffmerge-site"/>
         </repositoryList>
       </targlet>
       <targlet
@@ -1041,7 +1041,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="https://hudson.eclipse.org/diffmerge/job/emf-diffmerge-patterns-master/106/artifact/releng/org.eclipse.emf.diffmerge.patterns.update/target/repository"/>
+              url="http://download.eclipse.org/diffmerge/releases/0.8.0/edm-patterns-site"/>
         </repositoryList>
       </targlet>
       <targlet
