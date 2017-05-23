@@ -7,7 +7,6 @@ Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.common.tools.report;visibility:=reexport,
  org.eclipse.core.runtime,
  org.polarsys.capella.core.model.handler,
- org.eclipse.ui.ide,
  org.polarsys.capella.core.application
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

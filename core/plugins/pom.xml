@@ -34,6 +34,7 @@
         <module>org.polarsys.capella.core.command.recorder</module>
         <module>org.polarsys.capella.core.command.recorder.ui</module>
         <module>org.polarsys.capella.core.commandline.core</module>
+        <module>org.polarsys.capella.core.commandline.core.ui</module>
         <module>org.polarsys.capella.core.compare</module>
         <module>org.polarsys.capella.core.data.business.queries</module>
         <module>org.polarsys.capella.core.data.common.properties</module>

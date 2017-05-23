@@ -414,9 +414,11 @@ public class AbstractCommandLine implements ICommandLine {
       IProject project = null;
 
       if (projectPath.endsWith(".zip")) {
-        IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(projectPath));
-        WorkbenchHelper.importZipFile(file);
-
+        List<IFileImporter> importers = ImporterRegistry.getInstance().getImporters("zip");
+        if (!importers.isEmpty()) {
+          IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(projectPath));
+          importers.get(0).importFile(file);
+        }
       } else {
         IProjectDescription description = ResourcesPlugin.getWorkspace()
             .loadProjectDescription(new Path(projectPath).append(".project")); //$NON-NLS-1$
