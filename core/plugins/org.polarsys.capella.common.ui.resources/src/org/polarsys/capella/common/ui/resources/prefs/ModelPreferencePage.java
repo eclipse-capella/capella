@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -78,6 +78,7 @@ public class ModelPreferencePage extends AbstractDefaultPreferencePage {
         ProjectScope.class);
 
     addField(new SpacerFieldEditor(fieldEditorParent));
+    
     Group group1 = createGroup(Messages.InheritancePreferencePage_Group_Title,
         Messages.InheritancePreferencePage_Group_Title, fieldEditorParent);
     addField(new PreferenceField(IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE,
@@ -88,6 +89,7 @@ public class ModelPreferencePage extends AbstractDefaultPreferencePage {
         ProjectScope.class);
 
     addField(new SpacerFieldEditor(fieldEditorParent));
+    
     Group group2 = createGroup(Messages.DeploymentPreferencePage_Group_Title,
         Messages.DeploymentPreferencePage_Group_Title, fieldEditorParent);
     addField(new PreferenceField(IDeploymentPreferences.PREFS_ALLOW_MULTIPLE_DEPLOYMENT,
@@ -95,6 +97,7 @@ public class ModelPreferencePage extends AbstractDefaultPreferencePage {
         ProjectScope.class);
 
     addField(new SpacerFieldEditor(fieldEditorParent));
+    
     Group group3 = createGroup(Messages.DataPreferencePage_Group_Title, Messages.DataPreferencePage_Group_Title,
         fieldEditorParent);
     addField(new PreferenceField(IDataPreferences.PREFS_ALLOW_PRIMITIVE_SYNCHRONIZATION,
@@ -102,6 +105,7 @@ public class ModelPreferencePage extends AbstractDefaultPreferencePage {
         ProjectScope.class);
 
     addField(new SpacerFieldEditor(fieldEditorParent));
+    
     Group group4 = createGroup(Messages.SyncPreferencePage_Group_Title, Messages.SyncPreferencePage_Group_Title,
         fieldEditorParent);
     addField(new PreferenceField(ISynchronizationPreferences.PREFS_ALLOW_SYNC_COMPONENTPORT_TO_FUNCTIONPORT,
@@ -117,6 +121,7 @@ public class ModelPreferencePage extends AbstractDefaultPreferencePage {
         UserProfileModeEnum.Expert, group4, ProjectScope.class);
 
     addField(new SpacerFieldEditor(fieldEditorParent));
+    
     Group group5 = createGroup(Messages.interModelIntegrity_Group_Title, Messages.interModelIntegrity_Group_Title,
         fieldEditorParent);
     addField(new PreferenceField(IInterModelIntegrityPreferences.PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION,
@@ -124,8 +129,15 @@ public class ModelPreferencePage extends AbstractDefaultPreferencePage {
         group5, ProjectScope.class);
 
     addField(new SpacerFieldEditor(fieldEditorParent));
+    
     Group group6 = createGroup(Messages.ModeAndState_Group_Title, Messages.ModeAndState_Group_Title, fieldEditorParent);
     addField(new PreferenceField(IModeAndStateManagementPreferences.PREFS_MIXED_MODE_STATE_ALLOWED,
         Messages.ModeAndState_MixedHierarchy_Title, group6), UserProfileModeEnum.Expert, group6, ProjectScope.class);
+    
+    addField(new SpacerFieldEditor(fieldEditorParent));
+    
+    Group group7 = createGroup(Messages.PhysicalComponenentProperties_Group_Title, Messages.PhysicalComponenentProperties_Group_Title, fieldEditorParent);
+    addField(new PreferenceField(IDataPreferences.PREFS_ALLOW_PHYSICAL_COMPONENT_NATURE_CHANGE,
+        Messages.PhysicalComponenentNatureChange_Title, group7), UserProfileModeEnum.Expert, group7, ProjectScope.class);
   }
 }

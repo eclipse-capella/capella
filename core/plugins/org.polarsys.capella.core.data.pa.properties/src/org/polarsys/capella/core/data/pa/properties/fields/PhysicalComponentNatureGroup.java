@@ -34,7 +34,7 @@ public class PhysicalComponentNatureGroup extends AbstractSemanticKindGroup {
    * @param enabled
    */
   public PhysicalComponentNatureGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean enabled) {
-    super(parent, widgetFactory, Messages.getString("PhysicalComponentNature.Label"), 3); //$NON-NLS-1$
+    super(parent, widgetFactory, Messages.getString("PhysicalComponentNature.Label"), enabled, 3); //$NON-NLS-1$
 
     pcNatureBtnBehavior = createButton(PhysicalComponentNature.BEHAVIOR, enabled);
     pcNatureBtnNode = createButton(PhysicalComponentNature.NODE, enabled);

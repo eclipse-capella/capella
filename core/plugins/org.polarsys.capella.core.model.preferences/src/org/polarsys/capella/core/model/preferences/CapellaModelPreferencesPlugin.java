@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -218,5 +218,12 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   public boolean isMixedModeStateAllowed() {
     return AbstractPreferencesInitializer.getBoolean(IModeAndStateManagementPreferences.PREFS_MIXED_MODE_STATE_ALLOWED,
         true);
+  }
+  
+  /**
+   * @return whether it's allowed to change the Physical Component Nature
+   */
+  public boolean isChangePhysicalComponentNatureAllowed() {
+    return AbstractPreferencesInitializer.getBoolean(IDataPreferences.PREFS_ALLOW_PHYSICAL_COMPONENT_NATURE_CHANGE, true);
   }
 }

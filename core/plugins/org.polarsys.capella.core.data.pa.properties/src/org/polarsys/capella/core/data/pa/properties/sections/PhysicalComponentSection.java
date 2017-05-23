@@ -23,6 +23,7 @@ import org.polarsys.capella.core.data.pa.properties.Messages;
 import org.polarsys.capella.core.data.pa.properties.controllers.RealizedLogicalComponentsController;
 import org.polarsys.capella.core.data.pa.properties.fields.PhysicalComponentKindGroup;
 import org.polarsys.capella.core.data.pa.properties.fields.PhysicalComponentNatureGroup;
+import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 
@@ -53,12 +54,13 @@ public class PhysicalComponentSection extends ComponentSection {
 
     pcKindGroup = new PhysicalComponentKindGroup(rootParentComposite, getWidgetFactory(), true);
     pcKindGroup.setDisplayedInWizard(displayedInWizard);
-    pcNatureGroup = new PhysicalComponentNatureGroup(rootParentComposite, getWidgetFactory(), true);
+    pcNatureGroup = new PhysicalComponentNatureGroup(rootParentComposite, getWidgetFactory(),
+        CapellaModelPreferencesPlugin.getDefault().isChangePhysicalComponentNatureAllowed());
     pcNatureGroup.setDisplayedInWizard(displayedInWizard);
 
-    logicalComponentRealizations =
-        new MultipleSemanticField(getReferencesGroup(), Messages.getString("PhysicalComponentSection_LogicalComponentRealizations_Label"), getWidgetFactory(), //$NON-NLS-1$
-            new RealizedLogicalComponentsController());
+    logicalComponentRealizations = new MultipleSemanticField(getReferencesGroup(),
+        Messages.getString("PhysicalComponentSection_LogicalComponentRealizations_Label"), getWidgetFactory(), //$NON-NLS-1$
+        new RealizedLogicalComponentsController());
     logicalComponentRealizations.setDisplayedInWizard(displayedInWizard);
   }
 

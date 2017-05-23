@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,7 +45,7 @@ public class AbstractPhysicalComponentItemContribution implements IMDEMenuItemCo
 			if (createdElement instanceof PhysicalNode) {
 				cmd.append(new SetCommand(editingDomain, createdElement, PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT__KIND, PhysicalComponentKind.HARDWARE));
 			} else if (createdElement instanceof PhysicalComponent) {
-				cmd.append(new SetCommand(editingDomain, createdElement, PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT__KIND, PhysicalComponentKind.SOFTWARE));
+				cmd.append(new SetCommand(editingDomain, createdElement, PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT__KIND, PhysicalComponentKind.UNSET));
 			} else if (createdElement instanceof PhysicalActor) {
 				cmd.append(new SetCommand(editingDomain, createdElement, PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT__KIND, PhysicalComponentKind.PERSON));
 			}
