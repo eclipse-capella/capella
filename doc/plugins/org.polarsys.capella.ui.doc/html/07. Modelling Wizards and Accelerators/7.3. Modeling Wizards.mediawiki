@@ -6,21 +6,6 @@
 <br>
 <br>
 
-         
-{| border="1"
-|-
-| 
-[[Image:Images/7.3.%20Modeling%20Wizards_html_3c78e109.png|48x48px]]
-
- 
-| 
-As Capella is integrated in Orchestra, '''the most 				powerful way to manage requirements is to rely on a dedicated 				Requirement Tool (DOORS) and exploit the traceability 				capabilities offered by Orchestra (Link Manager). '''
-
- 
-However, in certain 				cases (for example at the very beginning of a project), it can be 				useful to manage requirements within Capella.
-
- 
-|}  
 '''Capella offers lightweight requirement management capabilities'''. Allocation is performed through matrices or using the dedicated wizard. On any element, using the contextual menu, select the Requirements Manager as shown below to open the requirement allocation dialog.
 
  

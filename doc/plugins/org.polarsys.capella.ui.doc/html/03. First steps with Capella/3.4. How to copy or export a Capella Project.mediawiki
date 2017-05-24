@@ -28,7 +28,7 @@ Using the contextual menu on the Project Explorer, select &ldquo;Paste&rdquo;. A
 
  
 | 
-Having several copies of the same Project in a given workspace or 				several copies of a same Model in a given Project is not 				recommended (especially when Capella is used in an 				Orchestra context, as prerequisite are made given the Project and 				Model names for example).
+Having several copies of the same Project in a given workspace or 				several copies of a same Model in a given Project is not 				recommended.
 
  
 It is 				strongly recommended not to open simultaneously two versions the 				same Model (through different Projects or Folders).

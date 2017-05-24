@@ -1,1 +1,50 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>1.1. Introduction to Capella</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Introduction_to_Capella">Introduction to Capella</h1><h2 id="Overview">Overview</h2><p>Capella is the Model Driven Engineering (MDE) solution provided by CST/EPM in Orchestra. It is a Tooled-Up-Process solution, enacting Sys-EM and Arcadia, supporting Systems Engineering and Software Architecture Engineering. The Capella primary objectives are to define a unified engineering language across Thales, to provide a seamless engineering workflow framework, to automate engineering tasks ensuring modelling productivity and quality, to manage information consistency, to capitalise and reuse engineering know-how and best practices and to ensure collaborative modelling work.</p><p>Thales Units and Areas, through the Deployment Committee and the Ochestra Key Projects, manage the Capella strategy and roadmap.</p><h2 id="System_and_Software_Architecture_Definition_in_a_Tool">System and Software Architecture Definition in a Tool</h2><p>Defining a system architecture means</p><ul><li>Performing 	and refining a <b>functional 	analysis</b></li><li>Defining and 	<b>refining 	use cases</b></li><li><b>Defining 	components</b> 	realizing the functions of the system</li><li><b>Defining 	the interfaces</b> 	between these components</li><li><b>Model the 	dynamics of the system</b> 	with scenarios</li><li>Take into 	account <b>non-functional 	constraints</b> 	(Performance, Safety, Human Factors, etc.)</li></ul><h2 id="A_Methodological_Guide_in_a_Tool">A Methodological Guide in a Tool</h2><p>In Thales, methodologies exist to help and guide the various actors of the engineering process. It is notably the case of</p><ul><li><b>Sys-EM</b>, 	which defines the successive stages of the engineering process</li><li><b>Arcadia</b>, 	which compliments Sys-EM with a brick specifically dedicated to the 	functional analysis and architecture definition.</li></ul><p><b>Capella leverages these methodologies and embeds them in a tool, which is helping and guiding the system engineer in its activity</b>.</p><p>Is also provides Thales-wide language and tools, very close to (and interoperable with) industry standards such as UML and Sys-ML. This ensures a better understanding between Thales engineers from all domains.</p><p><br/></p><table border="1"><tr><td><p><img height="48" width="48" border="0" src="Images/1.1.%20Introduction%20to%20Melody%20Advance_html_3c78e109.png"/></p></td><td><p>Capella 				provides tools <b>facilitating the daily work of the system 				engineer</b> (transitions between architectures, filters and 				layers on diagrams, modeling acceleration tools, synthetic 				business view of relationships between model elements, etc.) and 				<b>guarantying the quality of the designed architectures </b>(impact 				analysis, model validation, etc.)</p></td></tr></table></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>1.1. Introduction to Capella</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<p>Much more than just yet another modelling tool, Capella is a model-based engineering solution that has been successfully deployed in a wide variety of industrial contexts. Based on a graphical modelling workbench, it provides systems, software and hardware architects with rich methodological guidance relying on Arcadia, a comprehensive model-based engineering method.</p>
+		<ul>
+			<li>Ensure engineering-wide collaboration by sharing the same reference architecture</li>
+			<li>Master the complexity of systems and architectures</li>
+			<li>Define the best optimal architectures through trade-off analysis</li>
+			<li>Master different engineering levels and traceability with automated transition and information refinement</li>
+		</ul>
+		<p>
+			<img height="828" width="1131" border="0" src="Images/SAB_diagram_example.png"/>
+		</p>
+		<h2 id="A_graphical_modeling_workbench_...">A graphical modeling workbench ...</h2>
+		<p>The Capella workbench is an Eclipse application implementing the Arcadia method providing both a Domain Specific Language (DSL) and toolset which is dedicated to guidance, productivity and quality. Intuitive model editing and viewing capabilities help engineers focus on the design and description of the system and its architecture.</p>
+		<h2 id="..._dedicated_to_efficient_architectural_design">... dedicated to efficient architectural design</h2>
+		<p>The capabilities of Capella focus on helping engineers design better architectures through:</p>
+		<ul>
+			<li>An embedded methodology browser</li>
+			<li>Advanced mechanisms to manage complexity through computed simplifications and abstractions</li>
+			<li>Productivity tools including:
+				<ul>
+					<li>Model-to-model transformations</li>
+					<li>Capitalization through patterns</li>
+					<li>Libraries of replicable elements</li>
+					<li>Layout brushing</li>
+					<li>System to subsystem transition, etc.</li>
+				</ul>
+			</li>
+			<li>Native support for viewpoint extensions using Kitalpha (PolarSys solution) and Sirius (Eclipse component)</li>
+			<li>An ability to extend and/or specialize the core environment with feature plugins to address particular engineering concerns (e.g. performance, operating safety, cost, mass, product line, etc.) and carry out multi-criteria analyses of target architectures to find the best trade-offs.</li>
+		</ul>
+		<h2 id="A_method-driven_DSL">A method-driven DSL</h2>
+		<p>The Arcadia/Capella DSL is inspired by UML/SysML and NAF standards, and shares many concepts with these languages. It is the result of an iterative definition process driven by systems and software architects working in a broad spectrum of business domains (transportation, avionics, space, radar, etc.).</p>
+		<p>
+			<img height="517" width="900" border="0" src="Images/early_validation.png"/>
+		</p>
+		<p>The Arcadia/Capella DSL enforces an approach structured on successive engineering phases which establishes clear separation between needs (operational need analysis and system need analysis) and solutions (logical and physical architectures), in accordance with the IEEE 1220 standard. Arcadia and Capella cover all aspects of standard architecture modelling in each engineering phase including:</p>
+		<ul>
+			<li>Capability-driven model organization with scenarios and functional chains</li>
+			<li>Functional analysis and allocation to components and resources</li>
+			<li>Interfaces, bit-precise data models, behaviours, etc.</li>
+		</ul>
+	</body>
+</html>

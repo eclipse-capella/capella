@@ -114,7 +114,7 @@ It is a good practice to increase Xms, Xmx and XX:MaxPermSize values with model 
 [[Image:Images/Perf_REC9.png|750x150px]]<br>
 
 
-''Notes: another way to launch Capella with more memory is to create a new shortcut of eclipse.exe program and add for instance -vm "C:\orchestra\Sun\Java\jre1.6.0_18\bin\javaw.exe" -clean -vmargs -Xms128m –Xmx1208m -XX:MaxPermSize=128m -XX:+CMSPermGenSweepingEnabled -XX:+CMSClassUnloadingEnabled , adapting the suitable JRE path.''
+''Notes: another way to launch Capella with more memory is to create a new shortcut of eclipse.exe program and add for instance -vm "C:\...\Java\...\bin\javaw.exe" -clean -vmargs -Xms128m –Xmx1208m -XX:MaxPermSize=128m -XX:+CMSPermGenSweepingEnabled -XX:+CMSClassUnloadingEnabled , adapting the suitable JRE path.''
 
 ==== Stack Size ====
 
