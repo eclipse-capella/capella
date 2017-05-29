@@ -93,7 +93,7 @@ Optional parameters:
 ''-logfile D:\CommandLineLog\log.html''
 
  
-This command validates the model corresponding to the ''&lt;workspacePath&gt;''/EOLE_AF/EOLE_AF.aird file and generates a report to the output folder ''&lt;workspacePath&gt;''/Doc/validation. The two projects ''EOLE_AF'' and ''Doc'' are existing projects into the specified workspace. If the &ldquo;''validation''&rdquo; folder does not exist, the parameter ''forceoutputfoldercreation'' has to be used. A log file is also specified.
+This command validates the model corresponding to the ''&lt;workspacePath&gt;''/EOLE_AF/EOLE_AF.aird file and generates a report to the output folder ''&lt;workspacePath&gt;''/Doc/validation. It is required to get into the specified workspace the two projects, ''EOLE_AF'' (as Capella Project) and ''Doc'' (as general project). If the &ldquo;''validation''&rdquo; folder does not exist, the parameter ''forceoutputfoldercreation'' has to be used, the it will be created in the ''Doc'' project. A log file is also specified.
 
  
 <br>
@@ -210,7 +210,7 @@ This command will generate ''HTML'' report from the EOLE-AF aird file specified 
 ''-data &lt;targetWorkspacePath&gt;''
 
  
-''-import &lt;workspacePath&gt;/EOLE_AF | &lt;workspacePath&gt;/Doc ''
+''-import &lt;workspacePath&gt;/EOLE_AF  &lt;workspacePath&gt;/Doc ''
 
  
 ''-forceoutputfoldercreation -filepath /EOLE_AF/EOLE_AF.aird ''
@@ -225,7 +225,8 @@ This command will generate ''HTML'' report from the EOLE-AF aird file specified 
 This command will import two projects (EOLE_AF and Doc) from ''&lt;workspacePath&gt;'' workspace into ''&lt;targetWorkspacePath&gt; ''workspace before generating the HTML report.
 
  
-'''NOTE''': the source and target workspaces have to be different
+'''NOTE''': The source and target workspaces have to be different. The values order for the parameter -import must be respected as shown in the example.
+
 
  
 <br>
