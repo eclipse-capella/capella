@@ -31,4 +31,8 @@
          id="org.polarsys.capella.common.feature"
          version="0.0.0"/>
 
+   <includes
+         id="org.polarsys.capella.core.common.feature"
+         version="0.0.0"/>
+
 </feature>

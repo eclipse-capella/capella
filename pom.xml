@@ -352,10 +352,13 @@
 				<module>legacy/plugins/org.polarsys.capella.common.mdsofa.common</module>
 
 				<!-- core bundles -->
+		        <module>core/features/org.polarsys.capella.core.common.feature</module>
+		        <module>core/features/org.polarsys.capella.core.data.merged.feature</module>
 				<module>core/plugins</module>
 
 				<!-- releng bundles -->
 				<module>releng/features/org.polarsys.capella.headless.feature</module>
+				<module>releng/plugins/org.polarsys.capella.headless.product</module>
 				<module>releng/plugins/org.polarsys.capella.headless.site</module>
 			</modules>
 		</profile>
