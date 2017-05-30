@@ -28,9 +28,6 @@
     <extension
           point="org.polarsys.capella.common.ef.editingDomainListener">
        <editingDomainListener
-             class="org.polarsys.capella.core.af.integration.listener.MetadataCheckListener">
-       </editingDomainListener>
-       <editingDomainListener
              class="org.polarsys.capella.core.af.integration.listener.MetadataViewpointUpdater">
        </editingDomainListener>
     </extension>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,9 @@ public class PlatformSiriusTedActivator extends AbstractActivator {
    */
   private static PlatformSiriusTedActivator __instance;
 
+  //The identifier of the Capella "virtual" viewpoint
+  public static final String CAPELLA_VIEWPOINT_ID = "org.polarsys.capella.core.viewpoint";
+	
   /**
    * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
    */

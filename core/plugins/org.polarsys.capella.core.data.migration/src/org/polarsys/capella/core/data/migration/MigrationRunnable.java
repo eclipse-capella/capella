@@ -41,7 +41,6 @@ import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegist
 import org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.IUserEnforcedHelper;
-import org.polarsys.capella.core.af.integration.listener.MetadataCheckListener;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.platform.sirius.ui.session.CapellaSessionHelper;
 
@@ -103,9 +102,6 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
 		// Get the resource set.
 		ResourceSet resourceSet = executionManager.getEditingDomain().getResourceSet();
 
-		// Disable checks on metadata
-		MetadataCheckListener.unregister(executionManager.getEditingDomain());
-		
 		// Create a local resource factory and set it as default one.
 		resourceSet.setResourceFactoryRegistry(createLocalResourceFactory(context));
 		

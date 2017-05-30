@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.business.api.repair.SiriusRepairProcess;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
-import org.polarsys.capella.core.af.integration.listener.MetadataCheckListener;
 import org.polarsys.capella.core.data.migration.AbstractMigrationRunnable;
 import org.polarsys.capella.core.data.migration.MigrationHelpers;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
@@ -36,9 +35,6 @@ public class RepairSiriusRunnable extends AbstractMigrationRunnable {
     // so we should find a better way.
     // async lead to popups..
 
-	//We disable metadata checks while Repair
-
-	MetadataCheckListener.disable();
     
 	try {
       LongRunningListenersRegistry.getInstance().operationStarting(getClass());
@@ -53,7 +49,6 @@ public class RepairSiriusRunnable extends AbstractMigrationRunnable {
       throw error;
 
     } finally {
-		MetadataCheckListener.enable();
       LongRunningListenersRegistry.getInstance().operationEnded(getClass());
 
       context.getProgressMonitor().done();

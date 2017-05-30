@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.af.integration.listener;
+package org.polarsys.capella.common.platform.sirius.ted;
 
 import org.eclipse.core.runtime.IStatus;
 
@@ -25,7 +25,7 @@ public class MetadataException extends RuntimeException {
 	}
 
 	public MetadataException(IStatus status) {
-		this("Migration needed or missing Viewpoint(s), see documentation:\n" + childMessages(status), status);
+		this(childMessages(status), status);
 	}
 
 	public MetadataException(String message, IStatus status) {
@@ -34,11 +34,19 @@ public class MetadataException extends RuntimeException {
 	}
 
 	protected static String childMessages(IStatus status) {
-		StringBuilder result = new StringBuilder();
+		String result = "";
+		int i = 0;
 		for (IStatus child : status.getChildren()) {
-			result.append("- " + child.getMessage() + "\n");
+			result += child.getMessage();
+			if (i < status.getChildren().length - 1) {
+				result += "\n";
+			}
+			if (i < status.getChildren().length) {
+				result += "\n";
+			}
+			i++;
 		}
-		return result.toString();
+		return result;
 	}
 
 }
