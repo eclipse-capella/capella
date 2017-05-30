@@ -802,7 +802,7 @@ public class RenameResourceAction extends WorkspaceAction {
     if (oldName.contains(Character.toString('&'))) {
       oldName = replaceSpecialCharacter(oldName, '&', AND_HTML_REPRESENTATION);
       //Replace the entire string not in a subString
-      newContent = initialContent_p.replaceAll("\\b" + Pattern.quote(oldName) + "\\b", newName);
+      newContent = newContent.replaceAll("\\b" + Pattern.quote(oldName) + "\\b", newName);
     }
 
     return newContent;
