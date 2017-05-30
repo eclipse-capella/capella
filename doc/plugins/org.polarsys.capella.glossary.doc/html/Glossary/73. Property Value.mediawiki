@@ -3,7 +3,7 @@
  
 === DEFINITION ===
  
-Property Values are kinds of free annotations on Melody Advance elements. They are usually used to store specific (possibly domain-related) information not managed natively by Melody Advance.
+Property Values are kinds of free annotations on Capella elements. They are usually used to store specific (possibly domain-related) information not managed natively by Capella.
 
  
 Among others, Property Values are often used for Viewpoints (in order to annotate models with Safety, Performance, IVVQ data).

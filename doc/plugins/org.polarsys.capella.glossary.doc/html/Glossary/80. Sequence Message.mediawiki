@@ -6,7 +6,7 @@
 A Sequence Message carry an interaction between the element represented by the source lifeline and the one represented by the target lifeline.
 
  
-In Melody Advance, according to the kind of Scenario, Sequence Messages can refer to Functional Exchanges, Component Exchanges, Exchange Items.
+In Capella, according to the kind of Scenario, Sequence Messages can refer to Functional Exchanges, Component Exchanges, Exchange Items.
 
  
 === ICONS ===

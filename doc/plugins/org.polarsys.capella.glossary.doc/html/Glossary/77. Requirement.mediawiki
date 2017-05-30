@@ -6,7 +6,7 @@
 The recommended way for managing requirement in to use a dedicated tool (typically DOORS).
 
  
-However, in certain cases, it might be useful to manage requirements in a simpler way within Melody Advance. Requirements can be attached to any Melody Advance model element.
+However, in certain cases, it might be useful to manage requirements in a simpler way within Capella. Requirements can be attached to any Capella model element.
 
  
 === ICONS ===
