@@ -105,4 +105,10 @@
             parentId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </scheme>
    </extension>
+      <extension
+            point="org.polarsys.capella.core.application.AppStart">
+         <appStart
+               class="org.polarsys.capella.core.platform.sirius.ui.AcceleratorConfigurationInitializer">
+         </appStart>
+      </extension>
 </plugin>
