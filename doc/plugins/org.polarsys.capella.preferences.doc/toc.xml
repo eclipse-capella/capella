@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
-<!-- Copyright (c) 2006, 2016 THALES GLOBAL SERVICES. All rights reserved. 
+<!-- Copyright (c) 2006, 2017 THALES GLOBAL SERVICES. All rights reserved. 
 	This program and the accompanying materials are made available under the 
 	terms of the Eclipse Public License v1.0 which accompanies this distribution, 
 	and is available at http://www.eclipse.org/legal/epl-v10.html Contributors: 
@@ -22,7 +22,7 @@
 			<topic href="html/06. Preferences/6.2. Model preferences.html#Project_Explorer" label="Project Explorer"></topic>
 			<topic href="html/06. Preferences/6.2. Model preferences.html#Refinement" label="Refinement"></topic>
 			<topic href="html/06. Preferences/6.2. Model preferences.html#SCM" label="SCM"></topic>
-			<topic href="html/06. Preferences/6.2. Model preferences.html#Transfert_Viewer" label="Transfer Viewer"></topic>
+			<topic href="html/06. Preferences/6.2. Model preferences.html#Transfer_Viewer" label="Transfer Viewer"></topic>
 			<topic href="html/06. Preferences/6.2. Model preferences.html#Transitions.2FGeneration" label="Transitions/Generation"></topic>
 		
 		<topic href="html/06. Preferences/6.4. Commands preferences.html"

@@ -58,7 +58,7 @@ The following figure illustrates the prompted dialog when deleting the System Ac
 On the sub section '''Model''' of Capella preferences, it is possible to specify global behavior regarding the management of specific elements.
 
  
-[[Image:Images/6.2.%20Model%20preferences_html_m2492a832.png|700x474px]]
+[[Image:Images/6.2.%20Model%20preferences_html_m2492a832.png|1200x800px]]
 
 When &ldquo;'''Reuse of components'''&rdquo; is activated, it activates to enable the reuse of components, creating several “Parts” from a Type. During a project creation, it activate a performance to reuse components.
 
@@ -159,7 +159,7 @@ Activating this 				configuration option is mandatory when working with Clearcas
 
 On the sub section of '''Capella / Transfer Viewer preferences''', it's recommended for huge models to disable the computation of labels for model elements which appear in the tree, it is also possible to allow the automatic expansion of trees in selection dialogs from Browse button in Properties view and also from Insert/Remove tool in diagram Palette.
 
-[[Image:Images/6.2_Model preferences5.png|400x170px]]
+[[Image:Images/6.2_Model preferences5.png|625x537px]]
 
 [[Image:Images/6.2_Model preferences6.png|800x500px]]
 
