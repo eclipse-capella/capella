@@ -42,7 +42,7 @@ import org.polarsys.capella.common.libraries.LibraryReference;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaFeatureHelper;
-import org.polarsys.capella.core.model.handler.pre.commit.listener.FileModificationPreCommitListener;
+import org.polarsys.capella.core.sirius.ui.listener.FileModificationPreCommitListener;
 
 
 /**

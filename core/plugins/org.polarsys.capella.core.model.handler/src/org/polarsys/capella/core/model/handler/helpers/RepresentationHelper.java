@@ -27,7 +27,6 @@ import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
-import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -77,9 +76,10 @@ public class RepresentationHelper {
     Iterator<?> iterator = selection.iterator();
     while (iterator.hasNext()) {
       Object selectedObject = iterator.next();
-      if (selectedObject instanceof ItemWrapper) {
-        selectedObject = ((ItemWrapper) selectedObject).getWrappedObject();
-      }
+// seems to be useless ... to be reactivated if it's really required
+//      if (selectedObject instanceof ItemWrapper) {
+//        selectedObject = ((ItemWrapper) selectedObject).getWrappedObject();
+//      }
 
       if (selectedObject instanceof DRepresentation) {
         addRepresentation(mustBeDecorator, representations, (DRepresentation) selectedObject);

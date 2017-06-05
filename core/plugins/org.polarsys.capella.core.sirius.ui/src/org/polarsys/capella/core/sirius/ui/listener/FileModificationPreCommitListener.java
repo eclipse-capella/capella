@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.model.handler.pre.commit.listener;
+package org.polarsys.capella.core.sirius.ui.listener;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -4,19 +4,13 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.model.handler;singleton:=true
 Bundle-Version: 1.2.0.qualifier
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.ui,
- org.polarsys.capella.core.data.gen;visibility:=reexport,
- org.polarsys.capella.common.platform.sirius.ted;visibility:=reexport,
- org.eclipse.sirius,
+Require-Bundle: com.google.guava,
+ org.eclipse.core.runtime,
  org.eclipse.sirius.diagram,
  org.eclipse.sirius.table,
- org.eclipse.sirius.common,
- org.eclipse.sirius.ui,
  org.polarsys.capella.common.data.helpers,
  org.polarsys.capella.common.libraries;visibility:=reexport,
- org.polarsys.capella.shared.id.handler;visibility:=reexport,
- com.google.guava,
+ org.polarsys.capella.core.data.gen;visibility:=reexport,
  org.polarsys.capella.core.data.gen.edit,
  org.polarsys.kitalpha.ad.metadata.model.edit
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
@@ -29,7 +23,6 @@ Export-Package: org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.model.handler.internal.session,
  org.polarsys.capella.core.model.handler.markers,
  org.polarsys.capella.core.model.handler.post.commit.listener,
- org.polarsys.capella.core.model.handler.pre.commit.listener,
  org.polarsys.capella.core.model.handler.pre.condition,
  org.polarsys.capella.core.model.handler.provider,
  org.polarsys.capella.core.model.handler.validation

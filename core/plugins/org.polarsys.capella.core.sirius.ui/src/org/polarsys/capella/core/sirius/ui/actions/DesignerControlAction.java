@@ -68,10 +68,10 @@ import org.polarsys.capella.core.commands.preferences.service.AbstractPreference
 import org.polarsys.capella.core.model.handler.AbortedTransactionException;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
-import org.polarsys.capella.core.model.handler.pre.commit.listener.FileModificationPreCommitListener;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.ICapellaPreferences;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.sirius.ui.internal.UncontrolMessageDialog;
+import org.polarsys.capella.core.sirius.ui.listener.FileModificationPreCommitListener;
 import org.polarsys.capella.core.sirius.ui.wizard.SelectRepresentationsWizard;
 
 import com.google.common.collect.Sets;
