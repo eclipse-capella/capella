@@ -90,8 +90,6 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
    */
   @Override
   public Object start(IApplicationContext appContext) throws Exception {
-    super.start(appContext);
-
     Display display = createDisplay();
 
     try {
@@ -117,6 +115,9 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
       // Save report log configuration
       ReportManagerRegistry.getInstance().saveConfiguration();
       
+      // Run extensions from org.polarsys.capella.core.application.AppStart when the workbench is properly loaded
+      super.start(appContext);
+
       // the workbench doesn't support relaunch yet so
       // for now restart is used, and exit data properties are checked
       // here to substitute in the relaunch return code if needed
