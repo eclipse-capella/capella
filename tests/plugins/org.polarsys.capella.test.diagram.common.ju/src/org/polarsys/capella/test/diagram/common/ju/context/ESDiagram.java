@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.sequence.MessageCreationTool;
@@ -143,9 +144,14 @@ public class ESDiagram extends DiagramContext {
     new InsertRemoveTool(this, name).remove(id);
   }
   
-  public void createFunctionalExchange(String id, String source, String target) {
+  public void createFunctionalExchange(String functionalExchange, String source, String target) {
     String name = IToolNameConstants.TOOL_ES_CREATE_FUNCTIONAL_EXCHANGE;
-    new MessageCreationTool(this, name, id, source, target).run();
+    new MessageCreationTool(this, name, functionalExchange, source, target).run();
+  }
+  
+  public void createArmTimer(String source, String target){
+	 String name = IToolNameConstants.TOOL_ES_CREATE_ARM_TIMER;
+	 new CreateDEdgeTool(this, name, source, target).run();
   }
   
   @Override
