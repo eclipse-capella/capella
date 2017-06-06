@@ -29,6 +29,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.sequence.MessageCreationTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.sequence.TimerCreationTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class ESDiagram extends DiagramContext {
@@ -151,7 +152,7 @@ public class ESDiagram extends DiagramContext {
   
   public void createArmTimer(String source, String target){
 	 String name = IToolNameConstants.TOOL_ES_CREATE_ARM_TIMER;
-	 new CreateDEdgeTool(this, name, source, target).run();
+	 new TimerCreationTool(this, name, source, target).run();
   }
   
   @Override

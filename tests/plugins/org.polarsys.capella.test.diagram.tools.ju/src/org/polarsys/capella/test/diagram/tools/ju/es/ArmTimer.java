@@ -12,7 +12,7 @@ package org.polarsys.capella.test.diagram.tools.ju.es;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.test.diagram.common.ju.context.ESDiagram;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
+import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.diagram.tools.ju.model.ESProject;
 
 import junit.framework.Test;
@@ -29,8 +29,8 @@ public class ArmTimer extends ESProject {
 
 	    ESDiagram diagram = ESDiagram.createDiagram(context, LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_2);
 	    
-	    diagram.createArmTimer(LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_2__EXE_1,
-	    		LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_2__EXE_1);
+	    diagram.createArmTimer(LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_2__LA_2,
+	    		LA__CAPABILITIES__CAPABILITYREALIZATION_1__ES_SCENARIO_2__LA_2);
 	}
 	
 	public static Test suite(){
