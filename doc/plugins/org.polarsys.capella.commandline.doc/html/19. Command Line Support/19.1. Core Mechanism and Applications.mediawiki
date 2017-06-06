@@ -33,7 +33,7 @@ Optional parameters:
 -data: defines the path to the workspace.
 
  
--import: defines a list of projects to import into the workspace before doing the actual job. List of projects is a '|' separated list.
+-import: defines a list of projects to import into the workspace before doing the actual job. List of projects have to be placed into quotes "" and separated by vertical bar '|'.
 
  
 -forceoutputfoldercreation: create the output folder. If the folder already exists, it is deleted and a new output folder is created.
@@ -93,7 +93,7 @@ Optional parameters:
 ''-logfile D:\CommandLineLog\log.html''
 
  
-This command validates the model corresponding to the ''&lt;workspacePath&gt;''/EOLE_AF/EOLE_AF.aird file and generates a report to the output folder ''&lt;workspacePath&gt;''/Doc/validation. The two projects ''EOLE_AF'' and ''Doc'' are existing projects into the specified workspace. If the &ldquo;''validation''&rdquo; folder does not exist, the parameter ''forceoutputfoldercreation'' has to be used. A log file is also specified.
+This command validates the model corresponding to the ''&lt;workspacePath&gt;''/EOLE_AF/EOLE_AF.aird file and generates a report to the output folder ''&lt;workspacePath&gt;''/Doc/validation. It is required to get into the specified workspace the two projects, ''EOLE_AF'' (as Capella Project) and ''Doc'' (as general project). If the &ldquo;''validation''&rdquo; folder does not exist, the parameter ''forceoutputfoldercreation'' has to be used, the it will be created in the ''Doc'' project. A log file is also specified.
 
  
 <br>
@@ -195,9 +195,10 @@ This command will generate ''HTML'' report from the EOLE-AF aird file specified 
 <br>
 
  
-<u>'''Complex use case:'''</u>
+<u>'''Complex use cases:'''</u>
 
- 
+'''Import Capella project and generate inside it'''
+<br>
 ''&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
 
  
@@ -210,22 +211,79 @@ This command will generate ''HTML'' report from the EOLE-AF aird file specified 
 ''-data &lt;targetWorkspacePath&gt;''
 
  
-''-import &lt;workspacePath&gt;/EOLE_AF | &lt;workspacePath&gt;/Doc ''
+''-import &lt;workspacePath&gt;/EOLE_AF ''
 
  
 ''-forceoutputfoldercreation -filepath /EOLE_AF/EOLE_AF.aird ''
 
  
-''-outputfolder /Doc/HTML ''
+''-outputfolder /EOLE_AF/HTML ''
 
  
 ''-logfile D:/CommandLineLog/log.html''
 
  
-This command will import two projects (EOLE_AF and Doc) from ''&lt;workspacePath&gt;'' workspace into ''&lt;targetWorkspacePath&gt; ''workspace before generating the HTML report.
+This command will import the EOLE_AF project from ''&lt;workspacePath&gt;'' workspace into ''&lt;targetWorkspacePath&gt; ''workspace before generating the HTML report inside it.
+
+'''Import Capella project and generate inside a new project'''
+<br>
+''&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
 
  
-'''NOTE''': the source and target workspaces have to be different
+''-application org.polarsys.capella.core.commandline.core''
+
+ 
+''-appid org.polarsys.kitalpha.doc.gen.business.capella.commandline''
+
+ 
+''-data &lt;targetWorkspacePath&gt;''
+
+ 
+''-import &lt;workspacePath&gt;/EOLE_AF ''
+
+ 
+''-forceoutputfoldercreation -filepath /EOLE_AF/EOLE_AF.aird ''
+
+ 
+''-outputfolder /DocProject/HTML ''
+
+ 
+''-logfile D:/CommandLineLog/log.html''
+
+ 
+This command will import the EOLE_AF project from ''&lt;workspacePath&gt;'' workspace into ''&lt;targetWorkspacePath&gt; ''workspace and create the DocProject to generate the HTML report inside it.
+
+'''Import Capella project and a Doc project to generate inside it'''
+<br>
+''&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
+
+ 
+''-application org.polarsys.capella.core.commandline.core''
+
+ 
+''-appid org.polarsys.kitalpha.doc.gen.business.capella.commandline''
+
+ 
+''-data &lt;targetWorkspacePath&gt;''
+
+ 
+''-import "&lt;workspacePath&gt;/EOLE_AF | &lt;workspacePath&gt;/DocProject" ''
+
+ 
+''-forceoutputfoldercreation -filepath /EOLE_AF/EOLE_AF.aird ''
+
+ 
+''-outputfolder /DocProject/HTML ''
+
+ 
+''-logfile D:/CommandLineLog/log.html''
+
+ 
+This command will import two projects (EOLE_AF and DocProject) from ''&lt;workspacePath&gt;'' workspace into ''&lt;targetWorkspacePath&gt; ''workspace before generating the HTML report inside the DocProject.
+
+ 
+'''NOTE''': The source and target workspaces have to be different.
+
 
  
 <br>

@@ -7,20 +7,27 @@ The first step is to close the session, if it&rsquo;s opened.
 Then, the following sequence must be respected:
 
  
-# On the project, type F2 (or contextual menu &ldquo;Rename&rdquo;): 	this action will rename the folder of the project and modify the 	&ldquo;.project&rdquo; file inside this folder.
-# On the &ldquo;.melodymodeller&rdquo; file, type F2 (or contextual 	menu &ldquo;Rename&rdquo;): this action will rename the 	&ldquo;.melodymodeller&rdquo; file, the Project root element of the 	model and update all references from the &ldquo;.aird&rdquo; files 	to the &ldquo;.melodymodeller&rdquo; file.
-# On the &ldquo;.aird&rdquo; file, type F2 (or contextual menu 	&ldquo;Rename&rdquo;): this action will rename the &ldquo;.aird&rdquo; 	file.
-# On the &ldquo;.afm&rdquo; file, type F2 (or contextual 	menu &ldquo;Rename&rdquo;): this action will rename the 	&ldquo;.afm&rdquo; file.
+# On the '''project''', type '''F2''' (or contextual menu &ldquo;Rename&rdquo;): 	this action will rename the folder of the project and modify the 	&ldquo;.project&rdquo; file inside this folder.
+# On the &ldquo;'''.melodymodeller'''&rdquo; file, type '''F2''' (or contextual 	menu &ldquo;Rename&rdquo;): this action will rename the 	&ldquo;.melodymodeller&rdquo; file, the Project root element of the 	model and update all references from the &ldquo;.aird&rdquo; files 	to the &ldquo;.melodymodeller&rdquo; file.
+# On the &ldquo;'''.aird'''&rdquo; file, type '''F2''' (or contextual menu 	&ldquo;Rename&rdquo;): this action will rename the &ldquo;.aird&rdquo; 	file and also the associated &ldquo;.afm&rdquo; file (so the step 5 becomes optional) and update all references in the &ldquo;.aird&rdquo; files 	to the &ldquo;.afm&rdquo; file.
+# On the &ldquo;'''.melodyconnector'''&rdquo; file, type '''F2''' (or contextual 	menu &ldquo;Rename&rdquo;): this action will rename the 	&ldquo;.melodyconnector&rdquo; file.
+# On the &ldquo;'''.afm'''&rdquo; file, type '''F2''' (or contextual 	menu &ldquo;Rename&rdquo;): this action will rename the 	&ldquo;.afm&rdquo; file and update all references in the &ldquo;.aird&rdquo; files 	to the &ldquo;.afm&rdquo; file.
  
-<br>
 <br>
 
- 
-The same process can be applied on Libraries projects.
 
  
+
+{| border="1"
+|-
+| 
+[[Image:Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_3c78e109.png|48x48px]]
+| 
+The same process can be applied on Library projects.
+|} 
+ 
 <br>
-<br>
+
 
          
 {| border="1"
@@ -34,7 +41,7 @@ If 				you rename a Library project, all the references to this library 				will
 
  
 |}  
-<br>
+
 <br>
 
 
