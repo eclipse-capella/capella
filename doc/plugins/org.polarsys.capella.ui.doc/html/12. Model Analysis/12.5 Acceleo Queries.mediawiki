@@ -3,424 +3,262 @@ Using the Model requests interpreter view, you can write and evaluate queries us
 [[Image:Images/12_5_ Acceleo Queries_html_m22fce208.png|500x350px]]
  
 <br>
-In the following sections, we will describe the syntax of such queries by providing some examples. You can also follow the Acceleo reference guide for more information (http://www.acceleo.org/doc/obeo/en/acceleo-2.6-reference.pdf).
+In the following sections, we will describe the syntax of such queries by providing some examples. 
 <br>
 == Basic Model Queries ==
  
-{| width="879" border="1" cellpadding="7"
-|- valign="TOP"
-| width="249" |
-'''Description'''
-| width="156" |
-'''Workbench Selection'''
-| width="430" |
-'''Syntax'''
-|- valign="TOP"
-| width="249" |
-Current Element
-| width="156" |
-A model element
-| width="430" |
-&lt;%current%&gt;
-|- valign="TOP"
-| width="249" |
-Container of current element
-| width="156" |
-A model element
-| width="430" |
-&lt;%current.eContainer%&gt;
-|- valign="TOP"
-| width="249" |
-Type of an element
-| width="156" |
-A model element
-| width="430" |
-&lt;%current.eClass%&gt;
-|- valign="TOP"
-| width="249" |
-Total number of elements in a model
-| width="156" |
-A model element
-| width="430" |
-&lt;%current.ancestor.nLast.eAllContents.nSize%&gt;
-|- valign="TOP"
-| width="249" |
-Total number of sub-elements
-| width="156" |
-A model element
-| width="430" |
-&lt;%current.eAllContents.nSize%&gt;
+{| cellpadding="7" valign="TOP"
+!'''Description'''
+!'''Workbench Selection'''
+!'''Syntax'''
+|-
+| Current Element 
+| Model Element
+| <% current %>
+
+|-
+| Container of current element
+| A model element 
+| <% current.'''eContainer''' %>
+
+|-
+| Type of an element
+| A model element
+| <% current.'''eClass''' %>
+
+|-
+| Total number of elements in a model
+| A model element
+| <% current.'''ancestor.nLast.eAllContents.nSize''' %>
+
+|-
+| Total number of sub-elements
+| A model element
+| <% current.'''eAllContents.nSize''' %>
+
 |}
+
 <br>
 == Diagram Queries ==
-{| width="879" border="1" cellpadding="7"
-|- valign="TOP"
-| width="249" |
-'''Description'''
-| width="156" |
-'''Workbench Selection'''
-| width="430" |
-'''Syntax'''
-|- valign="TOP"
-| width="249" |
-Semantic element associated to a graphical element
-| width="156" |
-A diagram element
-| width="430" |
-&lt;%current.target%&gt;
-|- valign="TOP"
-| width="249" |
-Number of diagrams
-| width="156" |
-A diagram element
-| width="430" |
-&lt;%(current.ancestor.referencedAnalysis current.ancestor 
-current.ancestor.referencedAnalysis.referencedAnalysis 
-current.ancestor.referencedAnalysis.referencedAnalysis.
-referencedAnalysis current.ancestor.referencedAnalysis.
-referencedAnalysis.referencedAnalysis.referencedAnalysis 
-current.ancestor.referencedAnalysis.referencedAnalysis.
-referencedAnalysis.referencedAnalysis.referencedAnalysis)
-&#91;eClass.name=="DAnalysis"&#93;.minimize.ownedViews.
-ownedRepresentations.nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Diagrams without Sequence diagram
-| width="156" |
-A diagram element
-| width="430" |
-&lt;%(current.ancestor.referencedAnalysis current.ancestor 
-current.ancestor.referencedAnalysis.referencedAnalysis 
-current.ancestor.referencedAnalysis.referencedAnalysis.
-referencedAnalysis current.ancestor.referencedAnalysis.
-referencedAnalysis.referencedAnalysis.referencedAnalysis 
-current.ancestor.referencedAnalysis.referencedAnalysis.
-referencedAnalysis.referencedAnalysis.referencedAnalysis)
-&#91;eClass.name=="DAnalysis"&#93;.minimize.ownedViews.
-ownedRepresentations&#91;description.name.endsWith("Scenario")==false&#93;%&gt;
-|- valign="TOP"
-| width="249" |
-List of different viewpoints
-| width="156" |
-A diagram element
-| width="430" |
-&lt;%(current.ancestor.referencedAnalysis current.ancestor 
-current.ancestor.referencedAnalysis.referencedAnalysis 
-current.ancestor.referencedAnalysis.referencedAnalysis.
-referencedAnalysis current.ancestor.referencedAnalysis.
-referencedAnalysis.referencedAnalysis.referencedAnalysis 
-current.ancestor.referencedAnalysis.referencedAnalysis.
-referencedAnalysis.referencedAnalysis.referencedAnalysis)
-&#91;eClass.name=="DAnalysis"&#93;.ownedViews.viewpoint.nMinimize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of graphical elements in all diagrams
-| width="156" |
-A diagram element
-| width="430" |
-&lt;%(current.ancestor.referencedAnalysis current.ancestor 
-current.ancestor.referencedAnalysis.referencedAnalysis 
-current.ancestor.referencedAnalysis.referencedAnalysis.
-referencedAnalysis current.ancestor.referencedAnalysis.
-referencedAnalysis.referencedAnalysis.referencedAnalysis 
-current.ancestor.referencedAnalysis.referencedAnalysis.
-referencedAnalysis.referencedAnalysis.referencedAnalysis)
-&#91;eClass.name=="DAnalysis"&#93;.minimize.ownedViews.
-ownedRepresentations.diagramElements.nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of graphical elements in all diagrams (including technical elements like style, color…)
-| width="156" |
-A diagram element
-| width="430" |
-&lt;%(current.ancestor.referencedAnalysis current.ancestor 
-current.ancestor.referencedAnalysis.referencedAnalysis 
-current.ancestor.referencedAnalysis.referencedAnalysis.
-referencedAnalysis current.ancestor.referencedAnalysis.
-referencedAnalysis.referencedAnalysis.referencedAnalysis 
-current.ancestor.referencedAnalysis.referencedAnalysis.
-referencedAnalysis.referencedAnalysis.referencedAnalysis)
-&#91;eClass.name=="DAnalysis"&#93;.minimize.eAllContents.nSize()%&gt;
+{| cellpadding="7"
+|-
+| '''Description'''
+| '''Workbench Selection'''
+| '''Syntax'''
+
+|-
+| Semantic element associated to a graphical element
+| A diagram element
+| <% current.'''target''' %>
+
+|-
+| aird file (non fragmented model)
+| A diagram element
+| <% ((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize()) %>
+
+|-
+| All aird files (fragmented model)
+| A diagram element
+
+| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"]) %>
+
+
+|-
+| All diagrams
+| A diagram element
+| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors''' %>
+
+|-
+| Number of diagrams
+| A diagram element
+| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors.nSize()''' %>
+
+|-
+| All diagrams from kind "Logical Data Flow"
+| A diagram element
+| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors[description.name.startsWith("Logical Data Flow Blank")]'''%>
+|-
+| All diagrams except kind "Scenario"
+| A diagram element
+| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors[description.name.endsWith("Scenario")==false]''' %>
+
+|-
+| List of different viewpoints
+| All diagrams query
+| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.viewpoint.nMinimize()''' %>
+
+|-
+| Number of graphical elements in all diagrams
+| A diagram element
+| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors.representation.diagramElements.nSize()''' %>
+
+|-
+| Number of graphical elements in all diagrams (including technical elements like style, color…)
+| A diagram element
+| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors.representation.eAllContents.nSize()''' %>
 |}
-<br>
+
 == Searching Strings ==
-{| width="879" border="1" cellpadding="7"
-|- valign="TOP"
-| width="249" |
-'''Description'''
-| width="156" |
-'''Workbench Selection'''
-| width="430" |
-'''Syntax'''
-|- valign="TOP"
-| width="249" |
-All element containing the "TODO" string in their 'Name' property
-| width="156" |
-A model element
-| width="430" |
-&lt;%current.eAllContents()&#91;name.matches(".*TODO.*")&#93;%&gt;
-|- valign="TOP"
-| width="249" |
-All element containing the "TODO" string in their 'Summary' property
-| width="156" |
-A model element
-| width="430" |
-&lt;%current.eAllContents()&#91;summary.matches(".*TODO.*")&#93;%&gt;
-|- valign="TOP"
-| width="249" |
-All element containing the "TODO" string in their 'Description' property
-| width="156" |
-A model element
-| width="430" |
-&lt;%current.eAllContents()&#91;description.matches(".*TODO.*")&#93;%&gt;
-|- valign="TOP"
-| width="249" |
-All diagrams containing a note containing the "TODO" string
-| width="156" |
-A diagram element
-| width="430" |
-&lt;%(current.ancestor.referencedAnalysis current.ancestor
-current.ancestor.referencedAnalysis.referencedAnalysis
-current.ancestor.referencedAnalysis.referencedAnalysis.
-referencedAnalysis current.ancestor.referencedAnalysis.
-referencedAnalysis.referencedAnalysis.referencedAnalysis
-current.ancestor.referencedAnalysis.referencedAnalysis.
-referencedAnalysis.referencedAnalysis.referencedAnalysis)
-&#91;eClass.name=="DAnalysis"&#93;.minimize.
-ownedViews.ownedRepresentations
-&#91;~element.filter("notation.Diagram").eAllContents("notation.Node")
-&#91;type=="Note" &amp;&amp; description.indexOf("TODO")&gt;=0&#93;&#93;%&gt;
-|- valign="TOP"
-| width="249" |
-Number of notes containing the "TODO" string
-| width="156" |
-A diagram element
-| width="430" |
-&lt;%(current.ancestor.referencedAnalysis current.ancestor
-current.ancestor.referencedAnalysis.referencedAnalysis
-current.ancestor.referencedAnalysis.referencedAnalysis.
-referencedAnalysis current.ancestor.referencedAnalysis.
-referencedAnalysis.referencedAnalysis.referencedAnalysis
-current.ancestor.referencedAnalysis.referencedAnalysis.
-referencedAnalysis.referencedAnalysis.referencedAnalysis)
-&#91;eClass.name=="DAnalysis"&#93;.minimize.ownedViews.
-ownedRepresentations&#91;~element.filter("notation.Diagram").
-eAllContents("notation.Node")&#91;type=="Note" &amp;&amp; description.indexOf("TODO")&gt;=0&#93;&#93;.nSize()%&gt;
+{| cellpadding="7"
+|-
+| '''Description'''
+| '''Workbench Selection'''
+| '''Syntax'''
+|-
+| All element containing the "TODO" string in their 'Name' property
+| A model element
+| <% current.eAllContents()'''[name.matches(".*TODO.*")]''' %>
+
+|-
+| All element containing the "TODO" string in their 'Summary' property
+| A model element
+| <% current.eAllContents()'''[summary.matches(".*TODO.*")]''' %>
+
+|-
+| All element containing the "TODO" string in their 'Description' property
+| A model element
+| <% current.eAllContents()'''[description.matches(".*TODO.*")]''' %>
+
+|-
+| All diagrams containing a note containing the "TODO" string
+| A diagram element
+| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"]).ownedViews.ownedRepresentationDescriptors.'''representation[~element.filter("notation.Diagram").eAllContents("notation.Node")[type=="Note" && description.indexOf("TODO")>=0]]''' %>
+
+|-
+| Number of notes containing the "TODO" string
+| A diagram element
+| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"]).ownedViews.ownedRepresentationDescriptors.'''representation[~element.filter("notation.Diagram").eAllContents("notation.Node")[type=="Note" && description.indexOf("TODO")>=0]].nSize()''' %>
 |}
-<br>
+
 == Requirements ==
-{| width="879" border="1" cellpadding="7"
-|- valign="TOP"
-| width="249" |
-'''Description'''
-| width="156" |
-'''Workbench Selection'''
-| width="430" |
-'''Syntax'''
-|- valign="TOP"
-| width="249" |
-Query to retrieve the list of non-allocated requirements
-| width="156" |
-Requirement Package
-| width="430" |
-&lt;%current.eAllContents&#91;relatedCapellaElements==null&#93;%
+{| cellpadding="7"
+|-
+| '''Description'''
+| '''Workbench Selection'''
+| '''Syntax'''
+|-
+| Query to retrieve the list of non-allocated requirements
+| Requirement Package
+| <% current.'''eAllContents[relatedCapellaElements==null]''' %>
 |}
-<br>
+
 == Model Navigation Examples ==
-{| width="879" border="1" cellpadding="7"
-|- valign="TOP"
-| width="249" |
-'''Description'''
-| width="156" |
-'''Workbench Selection'''
-| width="430" |
-'''Syntax'''
-|- valign="TOP"
-| width="249" |
-List of functions allocated to a component
-| width="156" |
-Any Component
-| width="430" |
-&lt;%current.allocatedFunctions%&gt;
-|- valign="TOP"
-| width="249" |
-List of sub logical components
-| width="156" |
-Any Logical Component
-| width="430" |
-&lt;%current.subLogicalComponents%&gt;
-|- valign="TOP"
-| width="249" |
-List of all functions
+{| cellpadding="7"
+|-
+| '''Description'''
+| '''Workbench Selection'''
+| '''Syntax'''
+|-
+| List of functions allocated to a component
+| Any Component
+| <% current.allocatedFunctions %>
+|-
+| List of sub logical components
+| Any Logical Component
+| <% current.subLogicalComponents %>
+|-
+| List of all functions
 - having more than 3 ports
 - allocated to one given component
 - Which name starts with "Store"
-| width="156" |
-Any Component
-| width="430" |
-&lt;%current.allocatedFunctions&#91;name.startsWith("Store") &amp;&amp; eAllContents().filter("FunctionPort").nSize&gt;3&#93;%&gt;
+| Any Component
+| <% current.allocatedFunctions[name.startsWith("Store") && eAllContents().filter("FunctionPort").nSize>3] %>
 |}
-<br>
+
 == Metrics ==
-{| width="879" border="1" cellpadding="7"
-|- valign="TOP"
-| width="249" |
-'''Description'''
-| width="156" |
-'''Workbench Selection'''
-| width="430" |
-'''Syntax'''
-|- valign="TOP"
-| width="249" |
-Number of XXXX owned by the selected element, where XXXX is the type of a model element (&lt;%current.eClass%&gt; )
-| width="156" |
-A model element
-| width="430" |
-&lt;%current.eAllContents("XXXX").nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Operational Activities
-| width="156" |
-OperationalAnalysis
-| width="430" |
-&lt;%current.eAllContents("OperationalActivity").nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Operational Interactions
-| width="156" |
-OperationalAnalysis
-| width="430" |
-&lt;%current.eAllContents("FunctionalExchange").nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Exchange Items in OA
-| width="156" |
-OperationalAnalysis
-| width="430" |
-&lt;%current.eAllContents("AbstractExchangeItem").nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Types (Classes, Datatypes) in OA
-| width="156" |
-OperationalAnalysis
-| width="430" |
-&lt;%current.eAllContents("DataType").nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Classes in OA
-| width="156" |
-OperationalAnalysis
-| width="430" |
-&lt;%current.eAllContents("Class").nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of States or Modes in OA
-| width="156" |
-OperationalAnalysis
-| width="430" |
-&lt;%(current.eAllContents().filter("State") - current.eAllContents().filter("Mode")).nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Operational Entities
-| width="156" |
-OperationalAnalysis
-| width="430" |
-&lt;%(current.eAllContents("Entity")-current.eAllContents("OperationalActor")).nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Operational Actors
-| width="156" |
-OperationalAnalysis
-| width="430" |
-&lt;%current.eAllContents("OperationalActor").nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Operational Roles
-| width="156" |
-OperationalAnalysis
-| width="430" |
-&lt;%current.eAllContents("Role").nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Communication Means
-| width="156" |
-OperationalAnalysis
-| width="430" |
-&lt;%current.eAllContents("CommunicationMean").nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of System Functions
-| width="156" |
-SystemAnalysis
-| width="430" |
-&lt;%current.eAllContents("SystemFunction").nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Functional Exchanges in SA
-| width="156" |
-SystemAnalysis
-| width="430" |
-&lt;%current.eAllContents("FunctionalExchange").nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Function Ports in SA
-| width="156" |
-SystemAnalysis
-| width="430" |
-&lt;%current.eAllContents().filter("FunctionPort").nSize%&gt;
-|- valign="TOP"
-| width="249" |
-Number of System Actors
-| width="156" |
-SystemAnalysis
-| width="430" |
-&lt;%current.eAllContents("Actor").nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Functional Chains in SA
-| width="156" |
-SystemAnalysis
-| width="430" |
-&lt;%current.eAllContents("FunctionalChain").nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Scenarios in SA
-| width="156" |
-SystemAnalysis
-| width="430" |
-&lt;%current.eAllContents("Scenario").nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Behaviour Components in PA
-| width="156" |
-PhysicalArchitecture
-| width="430" |
-&lt;%current.eAllContents("PhysicalComponent")
-&#91;nature=="BEHAVIOR"&#93;.nSize%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Implementation PC (nodes) in PA
-| width="156" |
-PhysicalArchitecture
-| width="430" |
-&lt;%current.eAllContents("PhysicalComponent")
-&#91;nature=="NODE"&#93;.nSize%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Physical Links
-| width="156" |
-PhysicalArchitecture
-| width="430" |
-&lt;%current.eAllContents("PhysicalLink").nSize()%&gt;
-|- valign="TOP"
-| width="249" |
-Number of Physical Ports
-| width="156" |
-PhysicalArchitecture
-| width="430" |
-&lt;%current.eAllContents("PhysicalPort").nSize()%&gt;
+{| cellpadding="7"
+|-
+| '''Description'''
+| '''Workbench Selection'''
+| '''Syntax'''
+|-
+| Number of XXXX owned by the selected element, where XXXX is the type of a model element (<% current.eClass %> )
+| A model element
+| <% current.eAllContents("XXXX").nSize() %>
+|-
+| Number of Operational Activities
+| OperationalAnalysis
+| <% current.eAllContents("OperationalActivity").nSize() %>
+|-
+| Number of Operational Interactions
+| OperationalAnalysis
+| <% current.eAllContents("FunctionalExchange").nSize() %>
+|-
+| Number of Exchange Items in OA
+| OperationalAnalysis
+| <% current.eAllContents("AbstractExchangeItem").nSize() %>
+|-
+| Number of Types (Classes, Datatypes) in OA
+| OperationalAnalysis
+| <% current.eAllContents("DataType").nSize() %>
+|-
+| Number of Classes in OA
+| OperationalAnalysis
+| 
+<% current.eAllContents("Class").nSize() %>
+|-
+| Number of States or Modes in OA
+| OperationalAnalysis
+| <% (current.eAllContents().filter("State") - current.eAllContents().filter("Mode")).nSize() %>
+|-
+| Number of Operational Entities
+| OperationalAnalysis
+| <% (current.eAllContents("Entity")-current.eAllContents("OperationalActor")).nSize() %>
+|-
+| Number of Operational Actors
+| OperationalAnalysis
+| <% current.eAllContents("OperationalActor").nSize() %>
+|-
+| Number of Operational Roles
+| OperationalAnalysis
+| <% current.eAllContents("Role").nSize() %>
+|-
+| Number of Communication Means
+| OperationalAnalysis
+| <% current.eAllContents("CommunicationMean").nSize() %>
+|-
+| Number of System Functions
+| SystemAnalysis
+| <% current.eAllContents("SystemFunction").nSize() %>
+|-
+| Number of Functional Exchanges in SA
+| SystemAnalysis
+| <% current.eAllContents("FunctionalExchange").nSize() %>
+|-
+| Number of Function Ports in SA
+| SystemAnalysis
+| <% current.eAllContents().filter("FunctionPort").nSize %>
+|-
+| Number of System Actors
+| SystemAnalysis
+| <% current.eAllContents("Actor").nSize() %>
+|-
+| Number of Functional Chains in SA
+| SystemAnalysis
+| <% current.eAllContents("FunctionalChain").nSize() %>
+|-
+| Number of Scenarios in SA
+| SystemAnalysis
+| <% current.eAllContents("Scenario").nSize() %>
+|-
+| Number of Behaviour Components in PA
+| PhysicalArchitecture
+| <% current.eAllContents("PhysicalComponent")[nature=="BEHAVIOR"].nSize %>
+|-
+| Number of Implementation PC (nodes) in PA
+| PhysicalArchitecture
+| <% current.eAllContents("PhysicalComponent")[nature=="NODE"].nSize %>
+|-
+| Number of Physical Links
+| PhysicalArchitecture
+| <% current.eAllContents("PhysicalLink").nSize() %>
+|-
+| Number of Physical Ports
+| PhysicalArchitecture
+| <% current.eAllContents("PhysicalPort").nSize() %>
 |}
-<br>
+
+
 == Advanced Queries ==
 With Acceleo, you can navigate in elements following references and attributes:
 <%current.outgoing%> on a SystemFunction will retrieve outgoing functional exchanges:<br><br>

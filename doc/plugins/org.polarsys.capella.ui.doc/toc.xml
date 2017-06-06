@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -277,8 +277,14 @@
 		<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html#Visualization_of_Progress_Monitoring_Information" label="Visualization of Progress Monitoring Information"></topic>
 	</topic>
  <topic label="Acceleo Queries">
-    <topic href="html/12. Model Analysis/12.5 Acceleo Queries.html" label="Acceleo Queries">
-    </topic>
+ 	<topic href="html/12. Model Analysis/12.5 Acceleo Queries.html" label="Model Requests Interpreter View"></topic>
+	<topic href="html/12. Model Analysis/12.5 Acceleo Queries.html#Basic_Model_Queries" label="Basic Model Queries"></topic>
+	<topic href="html/12. Model Analysis/12.5 Acceleo Queries.html#Diagram_Queries" label="Diagram Queries"></topic>
+	<topic href="html/12. Model Analysis/12.5 Acceleo Queries.html#Searching_Strings" label="Searching Strings"></topic>
+	<topic href="html/12. Model Analysis/12.5 Acceleo Queries.html#Requirements" label="Requirements"></topic>
+	<topic href="html/12. Model Analysis/12.5 Acceleo Queries.html#Model_Navigation_Examples" label="Model Navigation Examples"></topic>
+	<topic href="html/12. Model Analysis/12.5 Acceleo Queries.html#Metrics" label="Metrics"></topic>
+	<topic href="html/12. Model Analysis/12.5 Acceleo Queries.html#Advanced_Queries" label="Advanced Queries"></topic>
  </topic>
       <anchor id="Model Analysis"/>
    </topic>
