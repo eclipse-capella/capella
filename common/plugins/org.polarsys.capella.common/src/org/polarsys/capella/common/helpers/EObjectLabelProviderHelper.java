@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.MissingResourceException;
 
 import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -105,7 +106,8 @@ public class EObjectLabelProviderHelper {
   }
   
   /**
-   * Get the item provider adapter for the given object
+   * Get the ItemProviderAdapter associated to the AdapterFactoryEditingDomain of the given EObject.
+   * returns null if object is not attached to an EditingDomain
    */
   public static ItemProviderAdapter getItemProvider(EObject object) {
     // Precondition.
@@ -117,10 +119,20 @@ public class EObjectLabelProviderHelper {
     if (null == editingDomain) {
       return null;
     }
-
+    return getItemProvider(object, editingDomain.getAdapterFactory());
+  }
+  
+  /**
+   * Get the item provider adapter for the given object and given adapter factory
+   */
+  public static ItemProviderAdapter getItemProvider(EObject object, AdapterFactory factory) {
+    // Precondition.
+    if (null == object) {
+      return null;
+    }
     // Adaptation to ItemProviderAdapter returns null due to EMF Edit generated ItemProviderAdapterFactory that do not support this type.
     // So, we adapt to IItemLabelProvider and then we cast...
-    Adapter adapter = editingDomain.getAdapterFactory().adapt(object, IItemLabelProvider.class);
+    Adapter adapter = factory.adapt(object, IItemLabelProvider.class);
     if (adapter instanceof ItemProviderDecorator) {
       IChangeNotifier notifier = ((ItemProviderDecorator) adapter).getDecoratedItemProvider();
       if (notifier instanceof ItemProviderAdapter) {
