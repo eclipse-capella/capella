@@ -38,12 +38,12 @@ import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.IWorkbenchSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.actions.RenameResourceAction;
 import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.progress.UIJob;
 import org.polarsys.capella.core.explorer.activity.ui.actions.OpenActivityExplorerAction;
 import org.polarsys.capella.core.model.obfuscator.actions.ObfuscateSessionAction;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.RenameResourceAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortContentAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortSelectionAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.DeleteHiddenElementsJob;
@@ -238,15 +238,10 @@ public class GuiActions {
 
   public static void renameModelFile(IFile modelFile, final String newName) {
 
-    // Replace default command by a dummy one (we do not want to display the rename dialog)
-    ICommandService commandService = PlatformUI.getWorkbench().getService(ICommandService.class);
-    Command command = commandService.getCommand("org.eclipse.ltk.ui.refactoring.commands.renameResource");
-    command.undefine();
-
     // Execute the rename action
-    RenameResourceAction renameAction = new RenameResourceAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow()) {
+    RenameResourceAction renameAction = new RenameResourceAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell()) {
       @Override
-      protected String queryNewResourceName(final IResource resource) {
+      protected String queryNewResourceName(IResource resource) {
         return newName;
       }
     };
