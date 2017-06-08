@@ -2,14 +2,17 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.gen.edit.decorators;singleton:=true
-Bundle-Version: 1.1.2.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.polarsys.capella.core.data.gen.edit;visibility:=reexport,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.data.helpers
-Export-Package: org.polarsys.capella.core.data.capellamodeller.provider,
+Export-Package: org.polarsys.capella.core.data.capellacommon.provider,
+ org.polarsys.capella.core.data.capellacore.provider,
+ org.polarsys.capella.core.data.capellamodeller.provider,
  org.polarsys.capella.core.data.cs.provider,
  org.polarsys.capella.core.data.ctx.provider,
+ org.polarsys.capella.core.data.epbs.provider,
  org.polarsys.capella.core.data.fa.provider,
  org.polarsys.capella.core.data.gen.edit.decorators,
  org.polarsys.capella.core.data.information.communication.provider,
@@ -17,6 +20,7 @@ Export-Package: org.polarsys.capella.core.data.capellamodeller.provider,
  org.polarsys.capella.core.data.interaction.provider,
  org.polarsys.capella.core.data.la.provider,
  org.polarsys.capella.core.data.oa.provider,
- org.polarsys.capella.core.data.pa.provider
+ org.polarsys.capella.core.data.pa.provider,
+ org.polarsys.capella.core.data.sharedmodel.provider
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
