@@ -13,8 +13,10 @@ package org.polarsys.capella.core.data.pa.properties.fields;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
@@ -59,5 +61,15 @@ public class PhysicalComponentNatureGroup extends AbstractSemanticKindGroup {
   @Override
   public Button getDefaultSemanticField() {
     return null;
+  }
+  
+  @Override
+  public void setEnabled(boolean enabled) {
+    super.setEnabled(enabled);
+    for (Button button : getSemanticFields()) {
+      if (!enabled)
+        button.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_GRAY));
+    }
+    
   }
 }

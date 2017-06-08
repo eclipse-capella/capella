@@ -76,6 +76,7 @@ public class PhysicalComponentSection extends ComponentSection {
     logicalComponentRealizations.loadData(capellaElement, PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_REALIZATIONS);
 
     updateAllocatedFunctionsField((PhysicalComponentNature) capellaElement.eGet(PaPackage.eINSTANCE.getAbstractPhysicalComponent_Nature()));
+    pcNatureGroup.setEnabled(CapellaModelPreferencesPlugin.getDefault().isChangePhysicalComponentNatureAllowed());
   }
 
   /**
