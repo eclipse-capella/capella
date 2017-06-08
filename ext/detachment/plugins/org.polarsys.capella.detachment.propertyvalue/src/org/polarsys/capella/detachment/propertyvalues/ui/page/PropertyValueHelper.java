@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,17 +25,17 @@ import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
 import org.polarsys.capella.detachment.propertyvalue.Activator;
 import org.polarsys.kitalpha.model.common.scrutiny.analyzer.ModelScrutinyException;
-import org.polarsys.kitalpha.model.common.scrutiny.analyzer.Scrutineer;
 import org.polarsys.kitalpha.model.common.scrutiny.interfaces.IScrutinize;
+import org.polarsys.kitalpha.model.common.scrutiny.registry.ModelScrutinyRegistry;
 import org.polarsys.kitalpha.model.common.scrutiny.registry.ModelScrutinyRegistry.RegistryElement;
 
 public class PropertyValueHelper {
 	
 	
 	@SuppressWarnings("rawtypes")
-	public static Collection<IScrutinize> getScrutinizers(String id){
+	public static Collection<IScrutinize> getScrutinizers(ModelScrutinyRegistry analysis, String id){
 		try {
-			RegistryElement regElt = Scrutineer.getRegistryElement(id);	
+			RegistryElement regElt = analysis.getRegistryElement(id);	
 			return regElt.getFinders();
 		} catch (ModelScrutinyException e) {
 			Status status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);

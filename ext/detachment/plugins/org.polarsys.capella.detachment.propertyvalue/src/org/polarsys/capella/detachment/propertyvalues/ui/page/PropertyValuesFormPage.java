@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -91,7 +91,7 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 	@SuppressWarnings("rawtypes")
 	private void setTreeTableViewerInput() {
 		Set<Object> input = new HashSet<Object>();
-		Collection<IScrutinize> scrutinizers = PropertyValueHelper.getScrutinizers(getFinderID());
+		Collection<IScrutinize> scrutinizers = PropertyValueHelper.getScrutinizers(getScrutinyAnalysis(), getFinderID());
 		for (IScrutinize iScrutinize : scrutinizers) {
 			Map<EObject, Boolean> result = (Map<EObject, Boolean>)iScrutinize.getAnalysisResult();
 			for (Entry<EObject, Boolean> e : result.entrySet()) {
@@ -401,7 +401,7 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 	@SuppressWarnings("rawtypes")
 	private void updateResult(Object data, boolean checked) {
 		if (data != null){
-			Collection<IScrutinize> scrutinizers = PropertyValueHelper.getScrutinizers(getFinderID());
+			Collection<IScrutinize> scrutinizers = PropertyValueHelper.getScrutinizers(getScrutinyAnalysis(), getFinderID());
 			ITreeContentProvider contentProvider = (ITreeContentProvider) treeViewer.getContentProvider();
 			for (IScrutinize iScrutinize : scrutinizers) {
 				@SuppressWarnings("unchecked")
@@ -419,7 +419,7 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 
 	@SuppressWarnings("rawtypes")
 	private void updateResult(boolean checked) {
-		Collection<IScrutinize> scrutinizers = PropertyValueHelper.getScrutinizers(getFinderID());
+		Collection<IScrutinize> scrutinizers = PropertyValueHelper.getScrutinizers(getScrutinyAnalysis(), getFinderID());
 		for (IScrutinize iScrutinize : scrutinizers) {
 			@SuppressWarnings("unchecked")
 			Map<Object, Boolean> analysisResult = (Map<Object, Boolean>) iScrutinize.getAnalysisResult();
@@ -462,7 +462,7 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private boolean getStateOf(Object elt) {
-		Collection<IScrutinize> scrutinizers = PropertyValueHelper.getScrutinizers(getFinderID());
+		Collection<IScrutinize> scrutinizers = PropertyValueHelper.getScrutinizers(getScrutinyAnalysis(), getFinderID());
 		for (IScrutinize iScrutinize : scrutinizers) {
 			Map<Object, Boolean> analysisResult = (Map<Object, Boolean>) iScrutinize.getAnalysisResult();
 			if (analysisResult.containsKey(elt)){
