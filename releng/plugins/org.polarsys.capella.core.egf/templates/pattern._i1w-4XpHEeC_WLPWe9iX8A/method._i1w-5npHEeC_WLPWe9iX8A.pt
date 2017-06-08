@@ -1,7 +1,5 @@
 <%
 /**
- * <copyright>
- *
  * Copyright (c) 2002-2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -10,8 +8,6 @@
  *
  * Contributors:
  *   IBM - Initial API and implementation
- *
- * </copyright>
  */
 %>
 <%GenPackage genPackage = (GenPackage)argument; GenModel genModel=genPackage.getGenModel(); ExtendedMetaData extendedMetaData= genModel.getExtendedMetaData();%>
@@ -75,8 +71,6 @@ public class <%=genPackage.getResourceClassName()%> extends <%=genPackage.getImp
 	public <%=genPackage.getResourceClassName()%>(URI uri)
 	{
 		super(uri);
-<%if (genPackage.getResource() == GenResourceKind.XML_LITERAL) { // Do nothing%>
-<%}%>
 	}	
 <%if (genPackage.getResource() == GenResourceKind.XML_LITERAL || genPackage.getResource() == GenResourceKind.XMI_LITERAL) {%>
 <%if (genPackage.isExtensibleProviderFactory() || genPackage.isChildCreationExtenders()) {%>

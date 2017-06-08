@@ -1,7 +1,5 @@
 <%
 /**
- * <copyright>
- *
  * Copyright (c) 2002-2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -10,8 +8,6 @@
  *
  * Contributors:
  *   IBM - Initial API and implementation
- *
- * </copyright>
  */
 %>
 <%GenPackage genPackage = (GenPackage)((Object[])argument)[0]; GenModel genModel=genPackage.getGenModel(); /* Trick to import java.util.* without warnings */Iterator.class.getName();%>
@@ -108,7 +104,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	{
 		try
 		{
-			<%=factoryType%> the<%=genPackage.getFactoryName()%> = (<%=factoryType%>)<%=genModel.getImportedName("org.eclipse.emf.ecore.EPackage")%>.Registry.INSTANCE.getEFactory("<%=genPackage.getNSURI()%>");<%=genModel.getNonNLS()%> 
+			<%=factoryType%> the<%=genPackage.getFactoryName()%> = (<%=factoryType%>)<%=genModel.getImportedName("org.eclipse.emf.ecore.EPackage")%>.Registry.INSTANCE.getEFactory(<%=genPackage.getPackageInterfaceName()%>.eNS_URI);
 			if (the<%=genPackage.getFactoryName()%> != null)
 			{
 				return the<%=genPackage.getFactoryName()%>;
@@ -118,7 +114,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 		{
 			<%=genModel.getImportedName("org.eclipse.emf.ecore.plugin.EcorePlugin")%>.INSTANCE.log(exception);
 		}
-		return new <%=genPackage.getFactoryClassName()%>();
+		return new <%=genPackage.getImportedFactoryClassName()%>();
 	}
 
 	/**
@@ -226,18 +222,20 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 <%}%>
 <%for (GenDataType genDataType : genPackage.getAllGenDataTypes()) {%>
   <%if (genDataType.isSerializable()) {%>
-<%if (genPackage.isDataTypeConverters()) { String eDataType = genDataType.getQualifiedClassifierAccessor();%>
+<%if (genPackage.isDataTypeConverters() || genDataType.hasCreatorBody()) { String eDataType = genDataType.getQualifiedClassifierAccessor();%>
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    <%if (genModel.useGenerics() && genDataType.isUncheckedCast()) {%>
+    <%if (genModel.useGenerics() && genDataType.isUncheckedCast() && !genDataType.hasCreatorBody()) {%>
 	@SuppressWarnings("unchecked")
     <%}%>
-	public <%=genDataType.getImportedParameterizedInstanceClassName()%> create<%=genDataType.getName()%>(String literal)
+	public <%=genDataType.getImportedParameterizedInstanceClassName()%> create<%=genDataType.getName()%>(<%if (genDataType.hasCreatorBody()) {%>final <%}%>String <%if (genDataType.hasCreatorBody()) {%>it<%} else {%>literal<%}%>)
 	{
-    <%if (genDataType instanceof GenEnum) {%>
+    <%if (genDataType.hasCreatorBody()) {%>
+		<%=genDataType.getCreatorBody(genModel.getIndentation(stringBuffer))%>
+    <%} else if (genDataType instanceof GenEnum) {%>
 		<%=genDataType.getImportedInstanceClassName()%> result = <%=genDataType.getImportedInstanceClassName()%>.get(literal);
 		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + <%=eDataType%>.getName() + "'");<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%><%=genModel.getNonNLS(3)%>
 		return result;
@@ -317,16 +315,16 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 		if (<%if (!genDataType.isPrimitiveType()) {%>result != null || <%}%>exception == null) return result;
     
 		throw exception;
-    <%} else if (genModel.useGenerics() && (genDataType.isArrayType() || !genDataType.getEcoreDataType().getETypeParameters().isEmpty() || genDataType.getEcoreDataType().getInstanceTypeName().contains("<"))) {%>
+    <%} else if (!genDataType.hasConversionDelegate() && genModel.useGenerics() && (genDataType.isArrayType() || !genDataType.getEcoreDataType().getETypeParameters().isEmpty() || genDataType.getEcoreDataType().getInstanceTypeName().contains("<"))) {%>
 		return (<%=genDataType.getImportedParameterizedObjectInstanceClassName()%>)super.createFromString(literal);
-    <%} else if (genDataType.isArrayType()) {%>
+    <%} else if (!genDataType.hasConversionDelegate() && genDataType.isArrayType()) {%>
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new <%=genModel.getImportedName("java.lang.UnsupportedOperationException")%>();
     <%} else if (genDataType.isPrimitiveType() && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>
 		return ((<%=genDataType.getObjectInstanceClassName()%>)super.createFromString(<%=eDataType%>, literal)).<%=genDataType.getPrimitiveValueFunction()%>();
     <%} else {%>
-		return <%if (!genDataType.isObjectType()) {%>(<%=genDataType.getObjectInstanceClassName()%>)<%}%>super.createFromString(<%=eDataType%>, literal);
+		return <%if (!genDataType.isObjectType()) {%>(<%=genDataType.getImportedParameterizedObjectInstanceClassName()%>)<%}%>super.createFromString(<%=eDataType%>, literal);
     <%}%>
 	}
 
@@ -336,13 +334,13 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    <%if (genModel.useGenerics() && genDataType.isUncheckedCast()) {%>
+    <%if (!genPackage.isDataTypeConverters() && genModel.useGenerics() && genDataType.isUncheckedCast() && !genDataType.hasCreatorBody()) {%>
 	@SuppressWarnings("unchecked")
     <%}%>
 	public <%=genDataType.getImportedParameterizedObjectInstanceClassName()%> create<%=genDataType.getName()%>FromString(<%=genModel.getImportedName("org.eclipse.emf.ecore.EDataType")%> eDataType, String initialValue)
 	{
     <%if (genDataType instanceof GenEnum) {%>
-      <%if (genPackage.isDataTypeConverters()) {%>
+      <%if (genPackage.isDataTypeConverters() || genDataType.hasCreatorBody()) {%>
 		return create<%=genDataType.getName()%>(initialValue);
       <%} else {%>
 		<%=((GenEnum)genDataType).getImportedInstanceClassName()%> result = <%=((GenEnum)genDataType).getImportedInstanceClassName()%>.get(initialValue);
@@ -411,26 +409,30 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
     
 		throw exception;
       <%}%>
-    <%} else if (genModel.useGenerics() && (genDataType.isArrayType() || !genDataType.getEcoreDataType().getETypeParameters().isEmpty() || genDataType.getEcoreDataType().getInstanceTypeName().contains("<"))) {%>
+    <%} else if (genPackage.isDataTypeConverters() || genDataType.hasCreatorBody()) {%>
+		return create<%=genDataType.getName()%>(initialValue);
+    <%} else if (!genDataType.hasConversionDelegate() && genModel.useGenerics() && (genDataType.isArrayType() || !genDataType.getEcoreDataType().getETypeParameters().isEmpty() || genDataType.getEcoreDataType().getInstanceTypeName().contains("<"))) {%>
 		return <%if (!genDataType.isObjectType()) {%>(<%=genDataType.getImportedParameterizedObjectInstanceClassName()%>)<%}%>super.createFromString(initialValue);
-    <%} else if (genDataType.isArrayType()) {%>
+    <%} else if (!genDataType.hasConversionDelegate() && genDataType.isArrayType()) {%>
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new <%=genModel.getImportedName("java.lang.UnsupportedOperationException")%>();
     <%} else {%>
-		return <%if (!genDataType.isObjectType()) {%>(<%=genDataType.getObjectInstanceClassName()%>)<%}%>super.createFromString(eDataType, initialValue);
+		return <%if (!genDataType.isObjectType()) {%>(<%=genDataType.getImportedParameterizedObjectInstanceClassName()%>)<%}%>super.createFromString(eDataType, initialValue);
     <%}%>
 	}
 
-<%if (genPackage.isDataTypeConverters()) { String eDataType = genDataType.getQualifiedClassifierAccessor();%>
+<%if (genPackage.isDataTypeConverters() || genDataType.hasConverterBody()) { String eDataType = genDataType.getQualifiedClassifierAccessor();%>
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convert<%=genDataType.getName()%>(<%=genDataType.getImportedBoundedWildcardInstanceClassName()%> instanceValue)
+	public String convert<%=genDataType.getName()%>(<%if (genDataType.hasCreatorBody()) {%>final <%}%><%=genDataType.getImportedBoundedWildcardInstanceClassName()%> <%if (genDataType.hasConverterBody()) {%>it<%} else {%>instanceValue<%}%>)
 	{
-    <%if (genDataType instanceof GenEnum) {%>
+    <%if (genDataType.hasConverterBody()) {%>
+		<%=genDataType.getConverterBody(genModel.getIndentation(stringBuffer))%>
+    <%} else if (genDataType instanceof GenEnum) {%>
 		return instanceValue == null ? null : instanceValue.toString();
     <%} else if (genDataType.getBaseType() != null) { GenDataType genBaseType = genDataType.getBaseType(); boolean isPrimitiveConversion = !genDataType.isPrimitiveType() && genBaseType.isPrimitiveType();%>
       <%if (genBaseType.getGenPackage() == genPackage) {%>
@@ -531,9 +533,9 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
         <%}%>
       <%}%>
 		throw new IllegalArgumentException("Invalid value: '"+instanceValue+"' for datatype :"+<%=eDataType%>.getName());
-    <%} else if (genModel.useGenerics() && (genDataType.isArrayType() || !genDataType.getEcoreDataType().getETypeParameters().isEmpty() || genDataType.getEcoreDataType().getInstanceTypeName().contains("<"))) {%>
+    <%} else if (!genDataType.hasConversionDelegate() && genModel.useGenerics() && (genDataType.isArrayType() || !genDataType.getEcoreDataType().getETypeParameters().isEmpty() || genDataType.getEcoreDataType().getInstanceTypeName().contains("<"))) {%>
 		return super.convertToString(instanceValue);
-    <%} else if (genDataType.isArrayType()) {%>
+    <%} else if (!genDataType.hasConversionDelegate() && genDataType.isArrayType()) {%>
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new <%=genModel.getImportedName("java.lang.UnsupportedOperationException")%>();
@@ -550,13 +552,17 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    <%if (genModel.useGenerics() && genDataType.getItemType() != null && genPackage.isDataTypeConverters()) {%>
+    <%if (genModel.useGenerics() && (genDataType.getItemType() != null || genDataType.isUncheckedCast()) && (genPackage.isDataTypeConverters() || genDataType.hasCreatorBody())) {%>
 	@SuppressWarnings("unchecked")
     <%}%>
 	public String convert<%=genDataType.getName()%>ToString(<%=genModel.getImportedName("org.eclipse.emf.ecore.EDataType")%> eDataType, Object instanceValue)
 	{
     <%if (genDataType instanceof GenEnum) {%>
+      <%if (genPackage.isDataTypeConverters() || genDataType.hasConverterBody()) {%>
+		return convert<%=genDataType.getName()%>((<%=genDataType.getImportedInstanceClassName()%>)instanceValue);
+      <%} else {%>
 		return instanceValue == null ? null : instanceValue.toString();
+      <%}%>
     <%} else if (genDataType.getBaseType() != null) { GenDataType genBaseType = genDataType.getBaseType(); %>
       <%if (genBaseType.getGenPackage() == genPackage) {%>
 		return convert<%=genBaseType.getName()%>ToString(<%=genBaseType.getQualifiedClassifierAccessor()%>, instanceValue);
@@ -564,7 +570,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 		return <%=genBaseType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convertToString(<%=genBaseType.getQualifiedClassifierAccessor()%>, instanceValue);
       <%}%>
     <%} else if (genDataType.getItemType() != null) { GenDataType genItemType = genDataType.getItemType(); %>
-      <%if (genPackage.isDataTypeConverters()) {%>
+      <%if (genPackage.isDataTypeConverters() || genDataType.hasCreatorBody()) {%>
 		return convert<%=genDataType.getName()%>((<%=genDataType.getImportedBoundedWildcardInstanceClassName()%>)instanceValue);
       <%} else { final String singleWildcard = genModel.useGenerics() ? "<?>" : "";%>
 		if (instanceValue == null) return null;
@@ -587,7 +593,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 		return result.substring(0, result.length() - 1);
       <%}%>
     <%} else if (!genDataType.getMemberTypes().isEmpty()) {%>
-      <%if (genPackage.isDataTypeConverters()) {%>
+      <%if (genPackage.isDataTypeConverters() || genDataType.hasConverterBody()) {%>
         <%if (genDataType.isPrimitiveType()) {%>
 		return instanceValue == null ? null : convert<%=genDataType.getName()%>(((<%=genDataType.getObjectInstanceClassName()%>)instanceValue)<%if (genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>.<%=genDataType.getPrimitiveValueFunction()%>()<%}%>);
         <%} else {%>
@@ -615,9 +621,15 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
         <%}%>
 		throw new IllegalArgumentException("Invalid value: '"+instanceValue+"' for datatype :"+eDataType.getName());
       <%}%>
-    <%} else if (genModel.useGenerics() && (genDataType.isArrayType() || !genDataType.getEcoreDataType().getETypeParameters().isEmpty() || genDataType.getEcoreDataType().getInstanceTypeName().contains("<"))) {%>
+    <%} else if (genPackage.isDataTypeConverters() || genDataType.hasConverterBody()) {%>
+        <%if (genDataType.isPrimitiveType()) {%>
+		return instanceValue == null ? null : convert<%=genDataType.getName()%>(<%if (genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>(<%}%>(<%=genDataType.getObjectInstanceClassName()%>)instanceValue<%if (genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>).<%=genDataType.getPrimitiveValueFunction()%>()<%}%>);
+        <%} else {%>
+		return convert<%=genDataType.getName()%>((<%=genDataType.getImportedBoundedWildcardInstanceClassName()%>)instanceValue);
+        <%}%>
+    <%} else if (!genDataType.hasConversionDelegate() && genModel.useGenerics() && (genDataType.isArrayType() || !genDataType.getEcoreDataType().getETypeParameters().isEmpty() || genDataType.getEcoreDataType().getInstanceTypeName().contains("<"))) {%>
 		return super.convertToString(instanceValue);
-    <%} else if (genDataType.isArrayType()) {%>
+    <%} else if (!genDataType.hasConversionDelegate() && genDataType.isArrayType()) {%>
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new <%=genModel.getImportedName("java.lang.UnsupportedOperationException")%>();

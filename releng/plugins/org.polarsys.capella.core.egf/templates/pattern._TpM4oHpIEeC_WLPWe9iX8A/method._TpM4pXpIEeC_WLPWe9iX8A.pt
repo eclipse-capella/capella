@@ -1,7 +1,5 @@
 <%
 /**
- * <copyright>
- *
  * Copyright (c) 2002-2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -10,8 +8,6 @@
  *
  * Contributors:
  *   IBM - Initial API and implementation
- *
- * </copyright>
  */
 %>
 <%GenModel genModel = (GenModel)argument; /* Trick to import java.util.* without warnings */Iterator.class.getName();%>
@@ -131,6 +127,25 @@ public final class <%=genModel.getEditPluginClassName()%> extends EMFPlugin
 			//
 			plugin = this;
 		}
+<%if (genModel.isOSGiCompatible()) {%>
+	
+		/**
+		 * The actual implementation of the purely OSGi-compatible <b>Bundle Activator</b>.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final class Activator extends <%=genModel.getImportedName("org.eclipse.emf.common.EMFPlugin")%>.OSGiDelegatingBundleActivator
+		{
+<%if (genModel.useClassOverrideAnnotation()) {%>
+			@Override
+<%}%>
+			protected <%=genModel.getImportedName("org.osgi.framework.BundleActivator")%> createBundle()
+			{
+				return new Implementation();
+			}
+		}
+<%}%>
 		
 		//begin-capella-code
 		/**
@@ -166,7 +181,7 @@ public final class <%=genModel.getEditPluginClassName()%> extends EMFPlugin
 <%boolean first = true; for (GenPackage genPackage : genModel.getAllGenAndUsedGenPackagesWithClassifiers()) {%>
   <%if (genPackage.getGenModel() == genModel || !genPackage.getGenModel().hasEditSupport()) { %>
     <%for (GenClass genClass : genPackage.getGenClasses()) {%>
-		<%if (first) { first = false; } else {%>else <%}%> if ("_UI_<%=genClass.getName()%>_type".equals(key)) return PROPERTIES.<%=genClass.getUncapName()%>Type();
+		<%if (first) { first = false; } else {%>else <%}%>if ("_UI_<%=genClass.getName()%>_type".equals(key)) return PROPERTIES.<%=genClass.getUncapName()%>Type();
     <%}%>
   <%}%>
 <%}%>
@@ -233,7 +248,7 @@ public final class <%=genModel.getEditPluginClassName()%> extends EMFPlugin
 <%first = true; for (GenPackage genPackage : genModel.getAllGenAndUsedGenPackagesWithClassifiers()) {%>
   <%for (GenClass genClass : genPackage.getGenClasses()) {%>
     <%if (genClass.isImage()) { String image = genClass.getItemIconFileName(); image = image.substring(image.lastIndexOf("/icons/") + 7, image.length() - 4); %>
-		<%if (first) { first = false; } else {%>else <%}%>if ("<%=image%>".equals(key)) return IMAGES.<%=genClass.getSafeUncapName()%>();
+		<%if (first) { first = false; } else {%>else <%}%>if ("<%=image%>".equals(key)) return IMAGES.<%=genClass.getItemIconAccessorName()%>();
     <%}%>
   <%}%>
 <%}%>

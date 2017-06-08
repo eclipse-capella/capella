@@ -1,7 +1,5 @@
 <%
 /**
- * <copyright>
- *
  * Copyright (c) 2002-2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -10,15 +8,14 @@
  * 
  * Contributors: 
  *   IBM - Initial API and implementation
- *
- * </copyright>
  */
 %>
 <%GenModel genModel = (GenModel)argument; /* Trick to import java.util.* without warnings */Iterator.class.getName();%>
 <%@ egf:patternCall patternId="platform:/plugin/org.eclipse.egf.emf.pattern.base/egf/EMF_Pattern_Base.fcore#LogicalName=org.eclipse.egf.emf.pattern.base.HeaderProperties" args="parameter:argument"%>
 
-pluginName = <%=genModel.getModelName()%> Editor (Incubation)
-providerName = Eclipse.org
+pluginName = <%=genModel.getModelName()%> Editor
+providerName = www.polarsys.org
+<%if (genModel.getRuntimePlatform() != GenRuntimePlatform.GWT) {%>
 
 <%boolean hasMultiPageEditor = false;%>
 <%for (GenPackage genPackage : genModel.getAllGenPackagesWithClassifiers()) {if (genPackage.isMultipleEditorPages()) { hasMultiPageEditor = true; }%>
@@ -50,7 +47,7 @@ _UI_MultiObjectSelected = Selected {0} Objects
 
 _UI_OpenEditorError_label = Open Editor
 
-_UI_MDEToolkit_Wizard_category = Capella
+_UI_Wizard_category = Capella
 
 _UI_CreateModelError_message = Problems encountered in file "{0}"
 
@@ -59,7 +56,7 @@ _UI_CreateModelError_message = Problems encountered in file "{0}"
 _UI_<%=genPackage.getModelWizardClassName()%>_label = <%=genPackage.getPrefix()%> Model
 _UI_<%=genPackage.getModelWizardClassName()%>_description = Create a new <%=genPackage.getPrefix()%> model
 
-<%}%>
+  <%}%>
 _UI_<%=genPackage.getEditorClassName()%>_label = <%=genPackage.getPrefix()%> Model Editor
 _UI_<%=genPackage.getPrefix()%>ModelSearchEngine_Label=<%=genPackage.getPrefix()%> Search Engine
 
@@ -113,4 +110,5 @@ _UI_About_text = <%=genModel.getModelName()%> Application about box goes here.
 _UI_<%=genPackage.getModelWizardClassName()%>_ActionSet_label = <%=genPackage.getPrefix()%> Model Action Set
 <%}}%>
 
+<%}%>
 <%}%>

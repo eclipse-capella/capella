@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  org.polarsys.kitalpha.emde;visibility:=reexport,
  org.polarsys.kitalpha.emde.xmi;visibility:=reexport,
  org.polarsys.kitalpha.emde.model;visibility:=reexport,
- org.polarsys.capella.common.model.helpers
+ org.polarsys.capella.common.model.helpers,
+ org.polarsys.capella.common.data.core.gen
 Export-Package: org.polarsys.capella.common.re,
  org.polarsys.capella.common.re.impl,
  org.polarsys.capella.common.re.util
