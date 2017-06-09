@@ -45,7 +45,7 @@ buckminster-4.3/buckminster -Dbuckminster.output.root="$buckminster_out" \
   -Dtarget.arch=* \
   -Dworkspace="$WORKSPACE" -data ws --scriptfile ${site_dir}/commands.txt
 
-if [ $? ]; then
+if [ $? -eq 0 ]; then
   rm -rf "$buckminster_temp"
   feature=$(find buckminster.output/org.polarsys.capella.vp.ms.site_*.*.*-eclipse.feature/site.p2/features/org.polarsys.capella.vp.ms.feature* | tail -n1)
   version=$(basename $feature | perl -pe 's/org.polarsys.capella.vp.ms.feature_(.*).jar/$1/')
