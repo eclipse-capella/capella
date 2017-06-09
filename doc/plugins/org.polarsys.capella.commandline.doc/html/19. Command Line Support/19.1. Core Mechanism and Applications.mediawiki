@@ -200,11 +200,11 @@ This command will generate ''HTML'' report from the EOLE-AF aird file specified 
  
 <u>'''Complex use cases:'''</u>
 
-<br>
+</br>
 
 '''Import Capella project and generate inside it'''
 
-<br>
+</br>
 
 ''&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
 
@@ -218,7 +218,7 @@ This command will generate ''HTML'' report from the EOLE-AF aird file specified 
 ''-data &lt;targetWorkspacePath&gt;''
 
  
-''-import &lt;workspacePath&gt;/EOLE_AF ''
+''-import &lt;absolutePath&gt;/EOLE_AF ''
 
 
 ''-filepath /EOLE_AF/EOLE_AF.aird''
@@ -233,13 +233,13 @@ This command will generate ''HTML'' report from the EOLE-AF aird file specified 
 ''-logfile D:/CommandLineLog/log.html''
 
 
-This command will import the EOLE_AF project from ''&lt;workspacePath&gt;'' workspace into ''&lt;targetWorkspacePath&gt; ''workspace before generating the HTML report inside it.
+This command will import the EOLE_AF project from ''&lt;absolutePath&gt;'' workspace into ''&lt;targetWorkspacePath&gt; ''workspace before generating the HTML report inside it.
 
-<br>
+</br>
 
 '''Import Capella project and generate inside a new project'''
 
-<br>
+</br>
 
 ''&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
 
@@ -253,7 +253,7 @@ This command will import the EOLE_AF project from ''&lt;workspacePath&gt;'' work
 ''-data &lt;targetWorkspacePath&gt;''
 
  
-''-import &lt;workspacePath&gt;/EOLE_AF''
+''-import &lt;absolutePath&gt;/EOLE_AF''
 
 
 ''-filepath /EOLE_AF/EOLE_AF.aird ''
@@ -268,7 +268,7 @@ This command will import the EOLE_AF project from ''&lt;workspacePath&gt;'' work
 ''-logfile D:/CommandLineLog/log.html''
 
  
-This command will import the EOLE_AF project from ''&lt;workspacePath&gt;'' workspace into ''&lt;targetWorkspacePath&gt; ''workspace and create the DocProject to generate the HTML report inside it.
+This command will import the EOLE_AF project from ''&lt;absolutePath&gt;'' workspace into ''&lt;targetWorkspacePath&gt; ''workspace and create the DocProject to generate the HTML report inside it.
 
 <br>
 
@@ -288,7 +288,7 @@ This command will import the EOLE_AF project from ''&lt;workspacePath&gt;'' work
 ''-data &lt;targetWorkspacePath&gt;''
 
  
-''-import "&lt;workspacePath&gt;/EOLE_AF | &lt;workspacePath&gt;/DocProject" ''
+''-import "&lt;absolutePath&gt;/EOLE_AF | &lt;absolutePath&gt;/DocProject" ''
 
 
 ''-filepath /EOLE_AF/EOLE_AF.aird''
@@ -303,7 +303,7 @@ This command will import the EOLE_AF project from ''&lt;workspacePath&gt;'' work
 ''-logfile D:/CommandLineLog/log.html''
 
  
-This command will import two projects (EOLE_AF and DocProject) from ''&lt;workspacePath&gt;'' workspace into ''&lt;targetWorkspacePath&gt; ''workspace before generating the HTML report inside the DocProject.
+This command will import two projects (EOLE_AF and DocProject) from ''&lt;absolutePath&gt;'' workspace into ''&lt;targetWorkspacePath&gt; ''workspace before generating the HTML report inside the DocProject.
 
  
 '''NOTE''': The source and target workspaces have to be different.
@@ -357,18 +357,6 @@ The filepath argument may either be a relative or an absolute path. If it is a r
 
 
 ''-filepath C:/EOLE_AF/EOLE_AF.melodymodeller''
-
-
-<br/>
-
-
-''&lt;CapellaInstallationPath&gt;/eclipse.exe -consoleLog &ndash;nosplash''
-
-
-''-application org.polarsys.capella.core.commandline.core''
-
-
-''-appid xmlpivot.export - filepath EOLE_AF/EOLE_AF.melodymodeller''
 
  
 This command exports a capella model into an xml file stored at ''filepath'' path.
