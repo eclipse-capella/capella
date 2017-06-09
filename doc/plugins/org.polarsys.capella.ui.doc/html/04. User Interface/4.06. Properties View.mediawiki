@@ -38,19 +38,28 @@ The Descriptions section allows editing html descriptions for model elements.
 [[Image:Images/4.06.%20Properties%20View_html_m602830a9.png|553x290px]]
 
  
-By default the Description field is in read mode, so that hypertext links can be navigated. To start editing the Description, click on the Edit button.
+By default the Description field is in read only mode, so that hypertext links can be navigated. To start editing the Description, click on the Edit button.
 
  
 [[Image:Images/4.06.%20Properties%20View_html_6e4a98ee.png|554x97px]]
 
- 
+{| border="1"
+|-
+| 
+[[Image:Images/Warning_ExclamationPoint.png|34x34px]]
+| 
+If the text field looses the focus during the edition, especially when editing the description of a diagram that is currently open, it is recommended to uncheck the Link with Editor button.
+
+[[Image:Images/LinkWithEditorButton.png|255x74px]]
+|}  
+
 Insertion of hypertext links to other model elements, existing diagrams or URLs are possible using the dedicated button of the toolbar.
 
  
 [[Image:Images/4.06.%20Properties%20View_html_3563deb8.png|553x98px]]
 
  
-To get mode editing options, open the Description is a dedicated Editor. To do so, click on the second button of the toolbar. A new Editor will open.
+To get more editing options, open the Description in a dedicated Editor. To do so, click on the second button of the toolbar. A new Editor will open.
 
  
 [[Image:Images/4.06.%20Properties%20View_html_3a2738b6.png|553x99px]]
@@ -58,7 +67,16 @@ To get mode editing options, open the Description is a dedicated Editor. To do s
  
 [[Image:Images/4.06.%20Properties%20View_html_598f5164.png|553x203px]]
 
- 
+
+{| border="1"
+|-
+| 
+[[Image:Images/Warning_ExclamationPoint.png|34x34px]]
+| 
+To avoid synchronization problems between the Description field of the Properties view and the dedicated Editor. It is recommended to have only one tool open at the same time to modify the text.
+|}  
+
+
 Clicking on diagram hyperlinks opens the referenced diagram.
 
  

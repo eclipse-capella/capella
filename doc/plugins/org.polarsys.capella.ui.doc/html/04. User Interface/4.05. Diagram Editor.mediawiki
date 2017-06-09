@@ -155,7 +155,7 @@ Focus on 4, selection of active layers
 {| border="1"
 |-
 | 
-[[Image:Images/4.05.%20Diagram%20Editor_html_723ed3f9.png|34x34px]]
+[[Image:Images/Warning_ExclamationPoint.png|34x34px]]
 
  
 | 
