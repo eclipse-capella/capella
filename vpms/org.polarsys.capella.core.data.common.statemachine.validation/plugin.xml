@@ -26,6 +26,9 @@
          <package
                namespaceUri="http://www.polarsys.org/capella/core/interaction/1.1.0">
          </package>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/ms">
+         </package>
          <constraints
                categories="capella.category/design/well-formedness/state_machines">
             <constraint
@@ -342,7 +345,7 @@
                   severity="WARNING"
                   statusCode="1">
                <target
-                     class="AbstractFunction:http://www.polarsys.org/capella/core/fa/1.0.0">
+                     class="AbstractFunction">
                </target>
                <description>
                   Let consider a function allocated to a component. If an FSM is linked to this component, then at least one M/S of this FSM has this function set as available.
@@ -361,7 +364,7 @@
                   severity="WARNING"
                   statusCode="1">
                <target
-                     class="State:http://www.polarsys.org/capella/core/common/1.0.0">
+                     class="State">
                </target>
                <description>
                   The function involved by the ‘do activity’ of the M/S has to be available in this M/S or in the M/S of the higher level (if existing).
