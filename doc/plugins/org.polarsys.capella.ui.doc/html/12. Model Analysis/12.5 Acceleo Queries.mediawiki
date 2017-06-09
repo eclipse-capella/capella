@@ -1,5 +1,7 @@
 == Model Requests Interpreter View ==
 Using the Model requests interpreter view, you can write and evaluate queries using the Acceleo queries syntax.
+<br>
+<br>
 [[Image:Images/12_5_ Acceleo Queries_html_m22fce208.png|500x350px]]
  
 <br>
@@ -48,53 +50,53 @@ In the following sections, we will describe the syntax of such queries by provid
 
 |-
 | Semantic element associated to a graphical element
-| A diagram element
+| A diagram / A diagram element
 | <% current.'''target''' %>
 
 |-
 | aird file (non fragmented model)
-| A diagram element
+| A diagram
 | <% ((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize()) %>
 
 |-
 | All aird files (fragmented model)
-| A diagram element
+| A diagram
 
 | <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"]) %>
 
 
 |-
 | All diagrams
-| A diagram element
+| A diagram
 | <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors''' %>
 
 |-
 | Number of diagrams
-| A diagram element
+| A diagram
 | <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors.nSize()''' %>
 
 |-
 | All diagrams from kind "Logical Data Flow"
-| A diagram element
+| A diagram
 | <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors[description.name.startsWith("Logical Data Flow Blank")]'''%>
 |-
 | All diagrams except kind "Scenario"
-| A diagram element
+| A diagram
 | <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors[description.name.endsWith("Scenario")==false]''' %>
 
 |-
 | List of different viewpoints
-| All diagrams query
+| A diagram
 | <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.viewpoint.nMinimize()''' %>
 
 |-
 | Number of graphical elements in all diagrams
-| A diagram element
+| A diagram
 | <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors.representation.diagramElements.nSize()''' %>
 
 |-
 | Number of graphical elements in all diagrams (including technical elements like style, color…)
-| A diagram element
+| A diagram
 | <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors.representation.eAllContents.nSize()''' %>
 |}
 
@@ -121,12 +123,12 @@ In the following sections, we will describe the syntax of such queries by provid
 
 |-
 | All diagrams containing a note containing the "TODO" string
-| A diagram element
+| A diagram
 | <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"]).ownedViews.ownedRepresentationDescriptors.'''representation[~element.filter("notation.Diagram").eAllContents("notation.Node")[type=="Note" && description.indexOf("TODO")>=0]]''' %>
 
 |-
-| Number of notes containing the "TODO" string
-| A diagram element
+| Number of diagrams containing a note containing the "TODO" string
+| A diagram
 | <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"]).ownedViews.ownedRepresentationDescriptors.'''representation[~element.filter("notation.Diagram").eAllContents("notation.Node")[type=="Note" && description.indexOf("TODO")>=0]].nSize()''' %>
 |}
 
