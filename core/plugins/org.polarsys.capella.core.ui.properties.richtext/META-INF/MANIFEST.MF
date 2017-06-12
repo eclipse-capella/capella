@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-Vendor: %providerName
+Bundle-SymbolicName: org.polarsys.capella.core.ui.properties.richtext;singleton:=true
+Bundle-Version: 1.2.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.sirius.diagram.ui,
+ org.polarsys.capella.core.ui.properties,
+ org.polarsys.kitalpha.richtext.widget
+Export-Package: org.polarsys.capella.core.ui.properties.richtext,
+ org.polarsys.capella.core.ui.properties.richtext.fields,
+ org.polarsys.capella.core.ui.properties.richtext.sections
+Bundle-Activator: org.polarsys.capella.core.ui.properties.richtext.CapellaUIPropertiesRichtextPlugin

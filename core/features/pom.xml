@@ -39,6 +39,7 @@
         <module>org.polarsys.capella.core.libraries.feature</module>
         <module>org.polarsys.capella.core.migration.feature</module>
         <module>org.polarsys.capella.core.properties.description.feature</module>
+        <module>org.polarsys.capella.core.properties.richtext.feature</module>
         <module>org.polarsys.capella.core.properties.feature</module>
         <module>org.polarsys.capella.core.re.feature</module>
         <module>org.polarsys.capella.core.transfo.feature</module>
