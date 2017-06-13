@@ -31,10 +31,10 @@ import org.polarsys.capella.core.data.pa.PhysicalNode;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalNodeImpl#getSubPhysicalNodes <em>Sub Physical Nodes</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

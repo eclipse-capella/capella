@@ -38,5 +38,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.views.properties.tabbed,
  org.polarsys.kitalpha.emde.xmi,
  org.eclipse.emf.ecore.edit;visibility:=reexport,
- org.polarsys.kitalpha.emde.ui;visibility:=reexport
+ org.polarsys.kitalpha.emde.ui;visibility:=reexport,
+ org.polarsys.kitalpha.ad.metadata
 Bundle-ActivationPolicy: lazy

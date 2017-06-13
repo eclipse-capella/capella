@@ -41,7 +41,7 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 */
 	public static DatatypeFactory init() {
 		try {
-			DatatypeFactory theDatatypeFactory = (DatatypeFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/information/datatype/1.1.0"); //$NON-NLS-1$ 
+			DatatypeFactory theDatatypeFactory = (DatatypeFactory)EPackage.Registry.INSTANCE.getEFactory(DatatypePackage.eNS_URI);
 			if (theDatatypeFactory != null) {
 				return theDatatypeFactory;
 			}

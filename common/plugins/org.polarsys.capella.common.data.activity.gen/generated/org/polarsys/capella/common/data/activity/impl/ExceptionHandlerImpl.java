@@ -33,13 +33,13 @@ import org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ExceptionHandlerImpl#getProtectedNode <em>Protected Node</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ExceptionHandlerImpl#getHandlerBody <em>Handler Body</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ExceptionHandlerImpl#getExceptionInput <em>Exception Input</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ExceptionHandlerImpl#getExceptionTypes <em>Exception Types</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -385,31 +385,13 @@ public abstract class ExceptionHandlerImpl extends ModelElementImpl implements E
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ActivityPackage.EXCEPTION_HANDLER__PROTECTED_NODE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ExecutableNode) {
-				// end-extension-code
 					setProtectedNode((ExecutableNode)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.EXCEPTION_HANDLER__HANDLER_BODY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ExecutableNode) {
-				// end-extension-code
 					setHandlerBody((ExecutableNode)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ObjectNode) {
-				// end-extension-code
 					setExceptionInput((ObjectNode)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.EXCEPTION_HANDLER__EXCEPTION_TYPES:
 				getExceptionTypes().clear();

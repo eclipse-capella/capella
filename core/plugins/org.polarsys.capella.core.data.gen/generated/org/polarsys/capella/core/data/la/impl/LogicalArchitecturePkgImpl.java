@@ -29,10 +29,10 @@ import org.polarsys.capella.core.data.la.LogicalArchitecturePkg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalArchitecturePkgImpl#getOwnedLogicalArchitectures <em>Owned Logical Architectures</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

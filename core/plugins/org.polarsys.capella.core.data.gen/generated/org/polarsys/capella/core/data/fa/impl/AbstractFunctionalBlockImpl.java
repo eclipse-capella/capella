@@ -42,6 +42,7 @@ import org.polarsys.capella.core.data.fa.FaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalBlockImpl#getOwnedFunctionalAllocation <em>Owned Functional Allocation</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalBlockImpl#getOwnedComponentExchanges <em>Owned Component Exchanges</em>}</li>
@@ -51,7 +52,6 @@ import org.polarsys.capella.core.data.fa.FaPackage;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalBlockImpl#getInExchangeLinks <em>In Exchange Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalBlockImpl#getOutExchangeLinks <em>Out Exchange Links</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

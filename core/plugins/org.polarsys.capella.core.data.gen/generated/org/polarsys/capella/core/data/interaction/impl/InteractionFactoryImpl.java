@@ -69,7 +69,7 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 */
 	public static InteractionFactory init() {
 		try {
-			InteractionFactory theInteractionFactory = (InteractionFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/interaction/1.1.0"); //$NON-NLS-1$ 
+			InteractionFactory theInteractionFactory = (InteractionFactory)EPackage.Registry.INSTANCE.getEFactory(InteractionPackage.eNS_URI);
 			if (theInteractionFactory != null) {
 				return theInteractionFactory;
 			}

@@ -47,6 +47,7 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.DataPkgImpl#getOwnedExchangeItems <em>Owned Exchange Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.DataPkgImpl#getVisibility <em>Visibility</em>}</li>
@@ -64,7 +65,6 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
  *   <li>{@link org.polarsys.capella.core.data.information.impl.DataPkgImpl#getOwnedExceptions <em>Owned Exceptions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.DataPkgImpl#getOwnedStateEvents <em>Owned State Events</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -687,13 +687,7 @@ public class DataPkgImpl extends AbstractDependenciesPkgImpl implements DataPkg 
 				getOwnedExchangeItems().addAll((java.util.Collection<? extends ExchangeItem>)newValue);
 				return;
 			case InformationPackage.DATA_PKG__VISIBILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof VisibilityKind) {
-				// end-extension-code
 					setVisibility((VisibilityKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.DATA_PKG__OWNED_ASSOCIATIONS:
 				getOwnedAssociations().clear();

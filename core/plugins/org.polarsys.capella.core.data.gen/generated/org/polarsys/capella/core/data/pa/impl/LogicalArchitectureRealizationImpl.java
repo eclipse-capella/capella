@@ -19,8 +19,6 @@ import org.polarsys.capella.core.data.pa.PaPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Logical Architecture Realization</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

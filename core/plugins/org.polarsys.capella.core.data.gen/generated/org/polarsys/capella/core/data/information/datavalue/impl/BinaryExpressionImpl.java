@@ -26,12 +26,12 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.BinaryExpressionImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.BinaryExpressionImpl#getOwnedLeftOperand <em>Owned Left Operand</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.BinaryExpressionImpl#getOwnedRightOperand <em>Owned Right Operand</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -360,31 +360,13 @@ public class BinaryExpressionImpl extends AbstractExpressionValueImpl implements
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatavaluePackage.BINARY_EXPRESSION__OPERATOR:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof BinaryOperator) {
-				// end-extension-code
 					setOperator((BinaryOperator)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.BINARY_EXPRESSION__OWNED_LEFT_OPERAND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedLeftOperand((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.BINARY_EXPRESSION__OWNED_RIGHT_OPERAND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedRightOperand((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

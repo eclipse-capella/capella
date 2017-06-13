@@ -18,8 +18,6 @@ import org.polarsys.capella.core.data.capellacommon.InitialPseudoState;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Initial Pseudo State</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

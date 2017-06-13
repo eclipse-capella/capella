@@ -52,6 +52,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityPkgImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityPkgImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -68,7 +69,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityPkgImpl#getOwnedLocations <em>Owned Locations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityPkgImpl#getOwnedCommunicationMeans <em>Owned Communication Means</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

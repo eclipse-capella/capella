@@ -19,8 +19,6 @@ import org.polarsys.capella.core.data.fa.FunctionalChainRealization;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Functional Chain Realization</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

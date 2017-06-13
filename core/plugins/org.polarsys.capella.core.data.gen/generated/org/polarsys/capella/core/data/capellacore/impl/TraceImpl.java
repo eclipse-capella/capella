@@ -26,11 +26,11 @@ import org.polarsys.capella.core.data.capellacore.Trace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TraceImpl#getTargetElement <em>Target Element</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TraceImpl#getSourceElement <em>Source Element</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -219,22 +219,10 @@ public abstract class TraceImpl extends RelationshipImpl implements Trace {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacorePackage.TRACE__TARGET_ELEMENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof TraceableElement) {
-				// end-extension-code
 					setTargetElement((TraceableElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.TRACE__SOURCE_ELEMENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof TraceableElement) {
-				// end-extension-code
 					setSourceElement((TraceableElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -18,8 +18,6 @@ import org.polarsys.capella.core.data.information.InformationPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Exchange Item Instance</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

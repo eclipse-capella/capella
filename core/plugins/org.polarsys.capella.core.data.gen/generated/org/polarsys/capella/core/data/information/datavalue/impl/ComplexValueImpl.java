@@ -28,10 +28,10 @@ import org.polarsys.capella.core.data.information.datavalue.ValuePart;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.ComplexValueImpl#getOwnedParts <em>Owned Parts</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

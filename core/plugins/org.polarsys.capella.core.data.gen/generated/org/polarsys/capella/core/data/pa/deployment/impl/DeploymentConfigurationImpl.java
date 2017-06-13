@@ -30,11 +30,11 @@ import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.DeploymentConfigurationImpl#getOwnedDeploymentLinks <em>Owned Deployment Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.DeploymentConfigurationImpl#getOwnedPhysicalInstances <em>Owned Physical Instances</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

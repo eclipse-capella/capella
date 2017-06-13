@@ -30,11 +30,11 @@ import org.polarsys.capella.core.data.information.datavalue.DataValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.CollectionValueImpl#getOwnedElements <em>Owned Elements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.CollectionValueImpl#getOwnedDefaultElement <em>Owned Default Element</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -241,13 +241,7 @@ public class CollectionValueImpl extends AbstractCollectionValueImpl implements 
 				getOwnedElements().addAll((Collection<? extends DataValue>)newValue);
 				return;
 			case InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedDefaultElement((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

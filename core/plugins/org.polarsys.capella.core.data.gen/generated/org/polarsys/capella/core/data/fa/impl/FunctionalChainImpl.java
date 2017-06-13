@@ -52,6 +52,7 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainImpl#getInvolvedInvolvements <em>Involved Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainImpl#getInvolvingInvolvements <em>Involving Involvements</em>}</li>
@@ -71,7 +72,6 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainImpl#getRealizedFunctionalChains <em>Realized Functional Chains</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainImpl#getRealizingFunctionalChains <em>Realizing Functional Chains</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -986,13 +986,7 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FaPackage.FUNCTIONAL_CHAIN__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof FunctionalChainKind) {
-				// end-extension-code
 					setKind((FunctionalChainKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
 				getOwnedFunctionalChainInvolvements().clear();

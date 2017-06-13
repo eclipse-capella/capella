@@ -34,13 +34,13 @@ import org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityGroupImpl#getSuperGroup <em>Super Group</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityGroupImpl#getSubGroups <em>Sub Groups</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityGroupImpl#getOwnedNodes <em>Owned Nodes</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityGroupImpl#getOwnedEdges <em>Owned Edges</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -323,13 +323,7 @@ public abstract class ActivityGroupImpl extends ModelElementImpl implements Acti
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ActivityPackage.ACTIVITY_GROUP__SUPER_GROUP:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ActivityGroup) {
-				// end-extension-code
 					setSuperGroup((ActivityGroup)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ACTIVITY_GROUP__SUB_GROUPS:
 				getSubGroups().clear();

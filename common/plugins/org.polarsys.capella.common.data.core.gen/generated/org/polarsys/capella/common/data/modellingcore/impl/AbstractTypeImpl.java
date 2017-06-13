@@ -32,10 +32,10 @@ import org.polarsys.capella.common.model.helpers.IHelper;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractTypeImpl#getAbstractTypedElements <em>Abstract Typed Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

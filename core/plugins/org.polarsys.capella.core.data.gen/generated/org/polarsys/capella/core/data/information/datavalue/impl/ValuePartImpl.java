@@ -50,6 +50,7 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.ValuePartImpl#getIncomingTraces <em>Incoming Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.ValuePartImpl#getOutgoingTraces <em>Outgoing Traces</em>}</li>
@@ -69,7 +70,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.ValuePartImpl#getReferencedProperty <em>Referenced Property</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.ValuePartImpl#getOwnedValue <em>Owned Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1035,49 +1035,19 @@ public class ValuePartImpl extends ModelElementImpl implements ValuePart {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatavaluePackage.VALUE_PART__VISIBLE_IN_DOC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInDoc((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.VALUE_PART__VISIBLE_IN_LM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInLM((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.VALUE_PART__SUMMARY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setSummary((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.VALUE_PART__DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.VALUE_PART__REVIEW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setReview((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.VALUE_PART__OWNED_PROPERTY_VALUES:
 				getOwnedPropertyValues().clear();
@@ -1100,35 +1070,17 @@ public class ValuePartImpl extends ModelElementImpl implements ValuePart {
 				getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
 				return;
 			case DatavaluePackage.VALUE_PART__STATUS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
-				// end-extension-code
 					setStatus((EnumerationPropertyLiteral)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.VALUE_PART__FEATURES:
 				getFeatures().clear();
 				getFeatures().addAll((Collection<? extends EnumerationPropertyLiteral>)newValue);
 				return;
 			case DatavaluePackage.VALUE_PART__REFERENCED_PROPERTY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Property) {
-				// end-extension-code
 					setReferencedProperty((Property)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.VALUE_PART__OWNED_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

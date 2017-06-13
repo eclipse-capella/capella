@@ -51,6 +51,7 @@ import org.polarsys.capella.common.model.helpers.IHelper;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.StructuredActivityNodeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.StructuredActivityNodeImpl#getInActivityPartition <em>In Activity Partition</em>}</li>
@@ -65,7 +66,6 @@ import org.polarsys.capella.common.model.helpers.IHelper;
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.StructuredActivityNodeImpl#getInputs <em>Inputs</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.StructuredActivityNodeImpl#getOutputs <em>Outputs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -872,44 +872,20 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__NAME:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setName((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__OWNED_HANDLERS:
 				getOwnedHandlers().clear();
 				getOwnedHandlers().addAll((Collection<? extends ExceptionHandler>)newValue);
 				return;
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractConstraint) {
-				// end-extension-code
 					setLocalPrecondition((AbstractConstraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractConstraint) {
-				// end-extension-code
 					setLocalPostcondition((AbstractConstraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__CONTEXT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractType) {
-				// end-extension-code
 					setContext((AbstractType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__INPUTS:
 				getInputs().clear();

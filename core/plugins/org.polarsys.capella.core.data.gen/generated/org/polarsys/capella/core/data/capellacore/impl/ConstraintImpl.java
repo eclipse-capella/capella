@@ -39,12 +39,12 @@ import org.polarsys.capella.core.data.capellacore.Constraint;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.ConstraintImpl#getConstrainedElements <em>Constrained Elements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.ConstraintImpl#getOwnedSpecification <em>Owned Specification</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.ConstraintImpl#getContext <em>Context</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -302,13 +302,7 @@ public class ConstraintImpl extends NamedElementImpl implements Constraint {
 				getConstrainedElements().addAll((Collection<? extends ModelElement>)newValue);
 				return;
 			case CapellacorePackage.CONSTRAINT__OWNED_SPECIFICATION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setOwnedSpecification((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

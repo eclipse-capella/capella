@@ -33,6 +33,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.AbstractActionImpl#getLocalPrecondition <em>Local Precondition</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.AbstractActionImpl#getLocalPostcondition <em>Local Postcondition</em>}</li>
@@ -40,7 +41,6 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.AbstractActionImpl#getInputs <em>Inputs</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.AbstractActionImpl#getOutputs <em>Outputs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -454,31 +454,13 @@ public abstract class AbstractActionImpl extends ExecutableNodeImpl implements A
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractConstraint) {
-				// end-extension-code
 					setLocalPrecondition((AbstractConstraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractConstraint) {
-				// end-extension-code
 					setLocalPostcondition((AbstractConstraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ABSTRACT_ACTION__CONTEXT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractType) {
-				// end-extension-code
 					setContext((AbstractType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ABSTRACT_ACTION__INPUTS:
 				getInputs().clear();

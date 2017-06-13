@@ -18,8 +18,6 @@ import org.polarsys.capella.core.data.cs.CsPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Component Context</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

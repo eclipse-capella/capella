@@ -25,11 +25,11 @@ import org.polarsys.capella.core.data.interaction.StateFragment;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.StateFragmentImpl#getRelatedAbstractState <em>Related Abstract State</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.StateFragmentImpl#getRelatedAbstractFunction <em>Related Abstract Function</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -218,22 +218,10 @@ public class StateFragmentImpl extends TimeLapseImpl implements StateFragment {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.STATE_FRAGMENT__RELATED_ABSTRACT_STATE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractState) {
-				// end-extension-code
 					setRelatedAbstractState((AbstractState)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractFunction) {
-				// end-extension-code
 					setRelatedAbstractFunction((AbstractFunction)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

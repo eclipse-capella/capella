@@ -25,11 +25,11 @@ import org.polarsys.capella.core.data.capellacore.EnumerationPropertyValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.EnumerationPropertyValueImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.EnumerationPropertyValueImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -218,22 +218,10 @@ public class EnumerationPropertyValueImpl extends AbstractPropertyValueImpl impl
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacorePackage.ENUMERATION_PROPERTY_VALUE__TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyType) {
-				// end-extension-code
 					setType((EnumerationPropertyType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.ENUMERATION_PROPERTY_VALUE__VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
-				// end-extension-code
 					setValue((EnumerationPropertyLiteral)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

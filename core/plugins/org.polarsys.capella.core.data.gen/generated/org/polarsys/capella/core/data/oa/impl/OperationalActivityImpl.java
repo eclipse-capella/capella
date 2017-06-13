@@ -43,6 +43,7 @@ import org.polarsys.capella.core.data.oa.Swimlane;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalActivityImpl#getOwnedOperationalActivityPkgs <em>Owned Operational Activity Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalActivityImpl#getActivityAllocations <em>Activity Allocations</em>}</li>
@@ -54,7 +55,6 @@ import org.polarsys.capella.core.data.oa.Swimlane;
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalActivityImpl#getContainedOperationalActivities <em>Contained Operational Activities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalActivityImpl#getChildrenOperationalActivities <em>Children Operational Activities</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

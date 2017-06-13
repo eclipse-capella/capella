@@ -28,10 +28,10 @@ import org.polarsys.capella.core.data.capellacommon.TimeEventKind;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.TimeEventImpl#getKind <em>Kind</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -138,13 +138,7 @@ public class TimeEventImpl extends StateEventImpl implements TimeEvent {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacommonPackage.TIME_EVENT__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof TimeEventKind) {
-				// end-extension-code
 					setKind((TimeEventKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -47,6 +47,7 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalArchitectureImpl#getOwnedLogicalContext <em>Owned Logical Context</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalArchitectureImpl#getOwnedLogicalComponent <em>Owned Logical Component</em>}</li>
@@ -59,7 +60,6 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalArchitectureImpl#getAllocatedSystemAnalyses <em>Allocated System Analyses</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalArchitectureImpl#getAllocatingPhysicalArchitectures <em>Allocating Physical Architectures</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -868,40 +868,16 @@ public class LogicalArchitectureImpl extends ComponentArchitectureImpl implement
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof LogicalContext) {
-				// end-extension-code
 					setOwnedLogicalContext((LogicalContext)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof LogicalComponent) {
-				// end-extension-code
 					setOwnedLogicalComponent((LogicalComponent)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof LogicalComponentPkg) {
-				// end-extension-code
 					setOwnedLogicalComponentPkg((LogicalComponentPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof LogicalActorPkg) {
-				// end-extension-code
 					setOwnedLogicalActorPkg((LogicalActorPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_SYSTEM_ANALYSIS_REALIZATIONS:
 				getOwnedSystemAnalysisRealizations().clear();

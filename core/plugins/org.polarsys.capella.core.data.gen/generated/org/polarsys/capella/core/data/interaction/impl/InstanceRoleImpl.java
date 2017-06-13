@@ -37,11 +37,11 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.InstanceRoleImpl#getAbstractEnds <em>Abstract Ends</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.InstanceRoleImpl#getRepresentedInstance <em>Represented Instance</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -213,13 +213,7 @@ public class InstanceRoleImpl extends NamedElementImpl implements InstanceRole {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.INSTANCE_ROLE__REPRESENTED_INSTANCE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractInstance) {
-				// end-extension-code
 					setRepresentedInstance((AbstractInstance)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

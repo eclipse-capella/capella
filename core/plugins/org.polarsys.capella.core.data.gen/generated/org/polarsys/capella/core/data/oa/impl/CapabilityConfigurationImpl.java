@@ -24,10 +24,10 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.CapabilityConfigurationImpl#getConfiguredCapability <em>Configured Capability</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -146,13 +146,7 @@ public class CapabilityConfigurationImpl extends AbstractConceptItemImpl impleme
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case OaPackage.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof OperationalCapability) {
-				// end-extension-code
 					setConfiguredCapability((OperationalCapability)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

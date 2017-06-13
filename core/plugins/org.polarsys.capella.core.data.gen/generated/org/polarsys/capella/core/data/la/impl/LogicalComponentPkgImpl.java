@@ -29,11 +29,11 @@ import org.polarsys.capella.core.data.la.LogicalComponentPkg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalComponentPkgImpl#getOwnedLogicalComponents <em>Owned Logical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalComponentPkgImpl#getOwnedLogicalComponentPkgs <em>Owned Logical Component Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

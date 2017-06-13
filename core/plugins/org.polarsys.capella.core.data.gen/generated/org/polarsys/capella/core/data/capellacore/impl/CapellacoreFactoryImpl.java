@@ -50,7 +50,7 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	 */
 	public static CapellacoreFactory init() {
 		try {
-			CapellacoreFactory theCapellacoreFactory = (CapellacoreFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/core/1.1.0"); //$NON-NLS-1$ 
+			CapellacoreFactory theCapellacoreFactory = (CapellacoreFactory)EPackage.Registry.INSTANCE.getEFactory(CapellacorePackage.eNS_URI);
 			if (theCapellacoreFactory != null) {
 				return theCapellacoreFactory;
 			}

@@ -42,6 +42,7 @@ import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInv
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.SystemComponentImpl#getInvolvingInvolvements <em>Involving Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.SystemComponentImpl#getInvolvingCapabilityRealizationInvolvements <em>Involving Capability Realization Involvements</em>}</li>
@@ -49,7 +50,6 @@ import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInv
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.SystemComponentImpl#getDataType <em>Data Type</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.SystemComponentImpl#getParticipationsInCapabilityRealizations <em>Participations In Capability Realizations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -350,13 +350,7 @@ public abstract class SystemComponentImpl extends ComponentImpl implements Syste
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CsPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setDataComponent((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.SYSTEM_COMPONENT__DATA_TYPE:
 				getDataType().clear();

@@ -55,6 +55,7 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.OpaqueExpressionImpl#getIncomingTraces <em>Incoming Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.OpaqueExpressionImpl#getOutgoingTraces <em>Outgoing Traces</em>}</li>
@@ -76,7 +77,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.OpaqueExpressionImpl#getBodies <em>Bodies</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.OpaqueExpressionImpl#getLanguages <em>Languages</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -987,49 +987,19 @@ public class OpaqueExpressionImpl extends ModelElementImpl implements OpaqueExpr
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatavaluePackage.OPAQUE_EXPRESSION__VISIBLE_IN_DOC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInDoc((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.OPAQUE_EXPRESSION__VISIBLE_IN_LM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInLM((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.OPAQUE_EXPRESSION__SUMMARY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setSummary((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.OPAQUE_EXPRESSION__DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.OPAQUE_EXPRESSION__REVIEW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setReview((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.OPAQUE_EXPRESSION__OWNED_PROPERTY_VALUES:
 				getOwnedPropertyValues().clear();
@@ -1052,35 +1022,17 @@ public class OpaqueExpressionImpl extends ModelElementImpl implements OpaqueExpr
 				getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
 				return;
 			case DatavaluePackage.OPAQUE_EXPRESSION__STATUS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
-				// end-extension-code
 					setStatus((EnumerationPropertyLiteral)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.OPAQUE_EXPRESSION__FEATURES:
 				getFeatures().clear();
 				getFeatures().addAll((Collection<? extends EnumerationPropertyLiteral>)newValue);
 				return;
 			case DatavaluePackage.OPAQUE_EXPRESSION__NAME:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setName((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.OPAQUE_EXPRESSION__ABSTRACT_TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractType) {
-				// end-extension-code
 					setAbstractType((AbstractType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.OPAQUE_EXPRESSION__BODIES:
 				getBodies().clear();

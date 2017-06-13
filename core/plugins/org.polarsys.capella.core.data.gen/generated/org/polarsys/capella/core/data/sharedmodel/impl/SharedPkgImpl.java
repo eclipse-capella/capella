@@ -48,6 +48,7 @@ import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.sharedmodel.impl.SharedPkgImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.sharedmodel.impl.SharedPkgImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -58,7 +59,6 @@ import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
  *   <li>{@link org.polarsys.capella.core.data.sharedmodel.impl.SharedPkgImpl#getOwnedDataPkg <em>Owned Data Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.sharedmodel.impl.SharedPkgImpl#getOwnedGenericPkg <em>Owned Generic Pkg</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -538,22 +538,10 @@ public class SharedPkgImpl extends NamedElementImpl implements SharedPkg {
 				getReuseLinks().addAll((Collection<? extends ReuseLink>)newValue);
 				return;
 			case SharedmodelPackage.SHARED_PKG__OWNED_DATA_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataPkg) {
-				// end-extension-code
 					setOwnedDataPkg((DataPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case SharedmodelPackage.SHARED_PKG__OWNED_GENERIC_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof GenericPkg) {
-				// end-extension-code
 					setOwnedGenericPkg((GenericPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

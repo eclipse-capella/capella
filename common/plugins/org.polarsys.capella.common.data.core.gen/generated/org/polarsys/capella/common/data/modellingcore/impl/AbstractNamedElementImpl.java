@@ -25,10 +25,10 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractNamedElementImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -135,13 +135,7 @@ public abstract class AbstractNamedElementImpl extends ModelElementImpl implemen
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setName((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

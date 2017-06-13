@@ -38,6 +38,7 @@ import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.impl.SystemEngineeringImpl#getContainedOperationalAnalysis <em>Contained Operational Analysis</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.impl.SystemEngineeringImpl#getContainedSystemAnalysis <em>Contained System Analysis</em>}</li>
@@ -46,7 +47,6 @@ import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.impl.SystemEngineeringImpl#getContainedEPBSArchitectures <em>Contained EPBS Architectures</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.impl.SystemEngineeringImpl#getContainedSharedPkgs <em>Contained Shared Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

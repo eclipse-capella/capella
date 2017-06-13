@@ -41,6 +41,7 @@ import org.polarsys.capella.common.model.helpers.IHelper;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityPartitionImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityPartitionImpl#isIsDimension <em>Is Dimension</em>}</li>
@@ -49,7 +50,6 @@ import org.polarsys.capella.common.model.helpers.IHelper;
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityPartitionImpl#getSuperPartition <em>Super Partition</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityPartitionImpl#getSubPartitions <em>Sub Partitions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -462,40 +462,16 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ActivityPackage.ACTIVITY_PARTITION__NAME:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setName((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ACTIVITY_PARTITION__IS_DIMENSION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsDimension((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ACTIVITY_PARTITION__IS_EXTERNAL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsExternal((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ACTIVITY_PARTITION__REPRESENTED_ELEMENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractType) {
-				// end-extension-code
 					setRepresentedElement((AbstractType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

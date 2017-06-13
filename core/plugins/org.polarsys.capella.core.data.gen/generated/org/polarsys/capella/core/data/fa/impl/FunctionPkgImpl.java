@@ -47,6 +47,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionPkgImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionPkgImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -59,7 +60,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionPkgImpl#getOwnedCategories <em>Owned Categories</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionPkgImpl#getOwnedFunctionSpecifications <em>Owned Function Specifications</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

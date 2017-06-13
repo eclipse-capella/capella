@@ -52,6 +52,7 @@ import org.polarsys.capella.core.data.oa.RoleAllocation;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityImpl#getIncomingInformationFlows <em>Incoming Information Flows</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityImpl#getOutgoingInformationFlows <em>Outgoing Information Flows</em>}</li>
@@ -70,7 +71,6 @@ import org.polarsys.capella.core.data.oa.RoleAllocation;
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityImpl#getRealizingActors <em>Realizing Actors</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityImpl#getInvolvingOperationalCapabilities <em>Involving Operational Capabilities</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -931,13 +931,7 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 				getOrganisationalUnitMemberships().addAll((Collection<? extends OrganisationalUnitComposition>)newValue);
 				return;
 			case OaPackage.ENTITY__ACTUAL_LOCATION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Location) {
-				// end-extension-code
 					setActualLocation((Location)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.ENTITY__OWNED_ENTITIES:
 				getOwnedEntities().clear();

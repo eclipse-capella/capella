@@ -26,10 +26,10 @@ import org.polarsys.capella.core.data.oa.OaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.AbstractConceptItemImpl#getComposingLinks <em>Composing Links</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

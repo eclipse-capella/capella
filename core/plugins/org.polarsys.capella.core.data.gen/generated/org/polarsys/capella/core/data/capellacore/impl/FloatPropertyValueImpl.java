@@ -22,10 +22,10 @@ import org.polarsys.capella.core.data.capellacore.FloatPropertyValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.FloatPropertyValueImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -132,13 +132,7 @@ public class FloatPropertyValueImpl extends AbstractPropertyValueImpl implements
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacorePackage.FLOAT_PROPERTY_VALUE__VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Float) {
-				// end-extension-code
 					setValue((Float)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

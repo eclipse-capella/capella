@@ -64,6 +64,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -97,7 +98,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityImpl#getInvolvedAbstractFunctions <em>Involved Abstract Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityImpl#getInvolvedFunctionalChains <em>Involved Functional Chains</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1579,22 +1579,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 				getOwnedFunctionalChains().addAll((Collection<? extends FunctionalChain>)newValue);
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY__PRE_CONDITION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Constraint) {
-				// end-extension-code
 					setPreCondition((Constraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY__POST_CONDITION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Constraint) {
-				// end-extension-code
 					setPostCondition((Constraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY__OWNED_SCENARIOS:
 				getOwnedScenarios().clear();

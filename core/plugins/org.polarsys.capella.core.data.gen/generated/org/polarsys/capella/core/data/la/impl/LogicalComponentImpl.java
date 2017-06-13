@@ -41,6 +41,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalComponentImpl#getOwnedLogicalComponents <em>Owned Logical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalComponentImpl#getOwnedLogicalArchitectures <em>Owned Logical Architectures</em>}</li>
@@ -52,7 +53,6 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalComponentImpl#getRealizingPhysicalComponents <em>Realizing Physical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalComponentImpl#getRealizedSystems <em>Realized Systems</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

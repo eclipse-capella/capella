@@ -26,12 +26,12 @@ import org.polarsys.capella.common.libraries.ModelVersion;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.libraries.impl.LibraryReferenceImpl#getLibrary <em>Library</em>}</li>
  *   <li>{@link org.polarsys.capella.common.libraries.impl.LibraryReferenceImpl#getAccessPolicy <em>Access Policy</em>}</li>
  *   <li>{@link org.polarsys.capella.common.libraries.impl.LibraryReferenceImpl#getVersion <em>Version</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -278,31 +278,13 @@ public class LibraryReferenceImpl extends LibraryAbstractElementImpl implements 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case LibrariesPackage.LIBRARY_REFERENCE__LIBRARY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ModelInformation) {
-				// end-extension-code
 					setLibrary((ModelInformation)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case LibrariesPackage.LIBRARY_REFERENCE__ACCESS_POLICY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AccessPolicy) {
-				// end-extension-code
 					setAccessPolicy((AccessPolicy)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case LibrariesPackage.LIBRARY_REFERENCE__VERSION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ModelVersion) {
-				// end-extension-code
 					setVersion((ModelVersion)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

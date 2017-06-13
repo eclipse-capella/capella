@@ -43,6 +43,7 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateImpl#getReferencedStates <em>Referenced States</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateImpl#getExploitedStates <em>Exploited States</em>}</li>
@@ -53,7 +54,6 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateImpl#getIncoming <em>Incoming</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateImpl#getInvolverRegions <em>Involver Regions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

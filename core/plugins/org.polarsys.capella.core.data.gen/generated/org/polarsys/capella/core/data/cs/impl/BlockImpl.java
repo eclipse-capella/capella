@@ -50,6 +50,7 @@ import org.polarsys.capella.core.data.information.DataPkg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockImpl#getOwnedFunctionalAllocation <em>Owned Functional Allocation</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockImpl#getOwnedComponentExchanges <em>Owned Component Exchanges</em>}</li>
@@ -63,7 +64,6 @@ import org.polarsys.capella.core.data.information.DataPkg;
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockImpl#getOwnedDataPkg <em>Owned Data Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockImpl#getOwnedStateMachines <em>Owned State Machines</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -778,31 +778,13 @@ public abstract class BlockImpl extends TypeImpl implements Block {
 				getOutExchangeLinks().addAll((Collection<? extends ExchangeLink>)newValue);
 				return;
 			case CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractCapabilityPkg) {
-				// end-extension-code
 					setOwnedAbstractCapabilityPkg((AbstractCapabilityPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.BLOCK__OWNED_INTERFACE_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InterfacePkg) {
-				// end-extension-code
 					setOwnedInterfacePkg((InterfacePkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.BLOCK__OWNED_DATA_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataPkg) {
-				// end-extension-code
 					setOwnedDataPkg((DataPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.BLOCK__OWNED_STATE_MACHINES:
 				getOwnedStateMachines().clear();

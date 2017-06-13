@@ -56,6 +56,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionSpecificationImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionSpecificationImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -75,7 +76,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionSpecificationImpl#getOwnedFunctionPorts <em>Owned Function Ports</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionSpecificationImpl#getSubFunctionSpecifications <em>Sub Function Specifications</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -883,13 +883,7 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
 				return;
 			case FaPackage.FUNCTION_SPECIFICATION__IS_CONTROL_OPERATOR:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsControlOperator((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER_SET:
 				getOwnedParameterSet().clear();
@@ -900,22 +894,10 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 				getOwnedParameter().addAll((Collection<? extends AbstractParameter>)newValue);
 				return;
 			case FaPackage.FUNCTION_SPECIFICATION__IS_READ_ONLY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsReadOnly((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTION_SPECIFICATION__IS_SINGLE_EXECUTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsSingleExecution((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES:
 				getOwnedNodes().clear();

@@ -30,11 +30,11 @@ import org.polarsys.capella.core.data.capellacore.impl.AllocationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionRealizationImpl#getRealizedStateTransition <em>Realized State Transition</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionRealizationImpl#getRealizingStateTransition <em>Realizing State Transition</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

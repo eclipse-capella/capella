@@ -19,8 +19,6 @@ import org.polarsys.capella.core.data.fa.impl.ComponentExchangeAllocatorImpl;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Abstract Physical Path Link</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

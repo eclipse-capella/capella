@@ -53,7 +53,7 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 */
 	public static CtxFactory init() {
 		try {
-			CtxFactory theCtxFactory = (CtxFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/ctx/1.1.0"); //$NON-NLS-1$ 
+			CtxFactory theCtxFactory = (CtxFactory)EPackage.Registry.INSTANCE.getEFactory(CtxPackage.eNS_URI);
 			if (theCtxFactory != null) {
 				return theCtxFactory;
 			}

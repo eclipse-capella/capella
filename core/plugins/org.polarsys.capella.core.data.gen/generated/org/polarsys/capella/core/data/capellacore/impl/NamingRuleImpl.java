@@ -47,6 +47,7 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.NamingRuleImpl#getIncomingTraces <em>Incoming Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.NamingRuleImpl#getOutgoingTraces <em>Outgoing Traces</em>}</li>
@@ -66,7 +67,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.NamingRuleImpl#getContent <em>Content</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.NamingRuleImpl#getTargetType <em>Target Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -973,49 +973,19 @@ public class NamingRuleImpl extends ModelElementImpl implements NamingRule {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacorePackage.NAMING_RULE__VISIBLE_IN_DOC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInDoc((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.NAMING_RULE__VISIBLE_IN_LM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInLM((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.NAMING_RULE__SUMMARY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setSummary((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.NAMING_RULE__DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.NAMING_RULE__REVIEW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setReview((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.NAMING_RULE__OWNED_PROPERTY_VALUES:
 				getOwnedPropertyValues().clear();
@@ -1038,35 +1008,17 @@ public class NamingRuleImpl extends ModelElementImpl implements NamingRule {
 				getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
 				return;
 			case CapellacorePackage.NAMING_RULE__STATUS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
-				// end-extension-code
 					setStatus((EnumerationPropertyLiteral)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.NAMING_RULE__FEATURES:
 				getFeatures().clear();
 				getFeatures().addAll((Collection<? extends EnumerationPropertyLiteral>)newValue);
 				return;
 			case CapellacorePackage.NAMING_RULE__CONTENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setContent((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.NAMING_RULE__TARGET_TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setTargetType((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

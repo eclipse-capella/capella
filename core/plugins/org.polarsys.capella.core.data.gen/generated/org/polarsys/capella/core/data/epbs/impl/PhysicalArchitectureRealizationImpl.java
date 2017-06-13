@@ -19,8 +19,6 @@ import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Physical Architecture Realization</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

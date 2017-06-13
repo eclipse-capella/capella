@@ -34,7 +34,7 @@ public class BehaviorFactoryImpl extends EFactoryImpl implements BehaviorFactory
 	 */
 	public static BehaviorFactory init() {
 		try {
-			BehaviorFactory theBehaviorFactory = (BehaviorFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/common/behavior/1.1.0"); //$NON-NLS-1$ 
+			BehaviorFactory theBehaviorFactory = (BehaviorFactory)EPackage.Registry.INSTANCE.getEFactory(BehaviorPackage.eNS_URI);
 			if (theBehaviorFactory != null) {
 				return theBehaviorFactory;
 			}

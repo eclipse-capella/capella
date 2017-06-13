@@ -18,8 +18,6 @@ import org.polarsys.capella.core.data.information.communication.Message;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Message</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

@@ -39,12 +39,12 @@ import org.polarsys.capella.core.data.pa.deployment.PortInstance;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.PortInstanceImpl#getConnections <em>Connections</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.PortInstanceImpl#getComponent <em>Component</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.PortInstanceImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -297,13 +297,7 @@ public class PortInstanceImpl extends AbstractPhysicalInstanceImpl implements Po
 				getConnections().addAll((Collection<? extends ConnectionInstance>)newValue);
 				return;
 			case DeploymentPackage.PORT_INSTANCE__TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ComponentPort) {
-				// end-extension-code
 					setType((ComponentPort)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

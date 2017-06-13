@@ -56,6 +56,7 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getIncomingTraces <em>Incoming Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getOutgoingTraces <em>Outgoing Traces</em>}</li>
@@ -79,7 +80,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getOwnedRegions <em>Owned Regions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getOwnedConnectionPoints <em>Owned Connection Points</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1121,49 +1121,19 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_DOC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInDoc((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_LM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInLM((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_MACHINE__SUMMARY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setSummary((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_MACHINE__DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_MACHINE__REVIEW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setReview((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUES:
 				getOwnedPropertyValues().clear();
@@ -1186,35 +1156,17 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 				getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
 				return;
 			case CapellacommonPackage.STATE_MACHINE__STATUS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
-				// end-extension-code
 					setStatus((EnumerationPropertyLiteral)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_MACHINE__FEATURES:
 				getFeatures().clear();
 				getFeatures().addAll((Collection<? extends EnumerationPropertyLiteral>)newValue);
 				return;
 			case CapellacommonPackage.STATE_MACHINE__NAME:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setName((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsControlOperator((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET:
 				getOwnedParameterSet().clear();

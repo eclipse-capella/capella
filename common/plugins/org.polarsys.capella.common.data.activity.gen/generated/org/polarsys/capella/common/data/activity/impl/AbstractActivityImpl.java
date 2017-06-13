@@ -48,6 +48,7 @@ import org.polarsys.capella.common.model.helpers.IHelper;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.AbstractActivityImpl#isIsControlOperator <em>Is Control Operator</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.AbstractActivityImpl#getOwnedParameterSet <em>Owned Parameter Set</em>}</li>
@@ -61,7 +62,6 @@ import org.polarsys.capella.common.model.helpers.IHelper;
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.AbstractActivityImpl#getOwnedGroups <em>Owned Groups</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.AbstractActivityImpl#getOwnedStructuredNodes <em>Owned Structured Nodes</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -632,13 +632,7 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ActivityPackage.ABSTRACT_ACTIVITY__IS_CONTROL_OPERATOR:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsControlOperator((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER_SET:
 				getOwnedParameterSet().clear();
@@ -649,22 +643,10 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 				getOwnedParameter().addAll((Collection<? extends AbstractParameter>)newValue);
 				return;
 			case ActivityPackage.ABSTRACT_ACTIVITY__IS_READ_ONLY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsReadOnly((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ABSTRACT_ACTIVITY__IS_SINGLE_EXECUTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsSingleExecution((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES:
 				getOwnedNodes().clear();

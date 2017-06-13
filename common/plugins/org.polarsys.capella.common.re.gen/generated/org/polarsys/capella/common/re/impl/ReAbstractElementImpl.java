@@ -23,10 +23,10 @@ import org.polarsys.kitalpha.emde.model.impl.ExtensibleElementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.re.impl.ReAbstractElementImpl#getId <em>Id</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -134,13 +134,7 @@ public abstract class ReAbstractElementImpl extends ExtensibleElementImpl implem
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case RePackage.RE_ABSTRACT_ELEMENT__ID:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setId((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

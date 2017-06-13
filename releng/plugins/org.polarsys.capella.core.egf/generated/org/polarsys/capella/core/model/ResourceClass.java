@@ -127,8 +127,8 @@ public class ResourceClass extends org.polarsys.kitalpha.emde.egf.model.Resource
 			+ "\t\tgetDefaultLoadOptions().put(XMLResource.OPTION_USE_PARSER_POOL, parserPool);" + NL
 			+ "\t\tgetDefaultLoadOptions().put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, nameToFeatureMap);" + NL
 			+ "\t\tgetDefaultLoadOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);" + NL
-			+ "\t\tgetDefaultLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);\t}" + NL + ""
-			+ NL + "\t//begin-capella-code" + NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL
+			+ "\t\tgetDefaultLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);" + NL + "\t}"
+			+ NL + "" + NL + "\t//begin-capella-code" + NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * " + NL
 			+ "\t * @see org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl#getEObjectByID(java.lang.String)" + NL
 			+ "\t * @generated" + NL + "\t */";

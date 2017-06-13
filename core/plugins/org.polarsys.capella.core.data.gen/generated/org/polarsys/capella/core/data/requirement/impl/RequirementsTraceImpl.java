@@ -29,11 +29,11 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.requirement.impl.RequirementsTraceImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.requirement.impl.RequirementsTraceImpl#getTarget <em>Target</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

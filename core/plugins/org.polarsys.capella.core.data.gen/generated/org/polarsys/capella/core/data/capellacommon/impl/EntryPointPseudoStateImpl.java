@@ -21,8 +21,6 @@ import org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Entry Point Pseudo State</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

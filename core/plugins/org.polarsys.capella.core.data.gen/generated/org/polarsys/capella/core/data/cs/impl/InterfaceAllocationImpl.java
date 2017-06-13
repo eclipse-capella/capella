@@ -31,11 +31,11 @@ import org.polarsys.capella.core.data.cs.InterfaceAllocator;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceAllocationImpl#getAllocatedInterface <em>Allocated Interface</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceAllocationImpl#getAllocatingInterfaceAllocator <em>Allocating Interface Allocator</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -34,13 +34,13 @@ import org.polarsys.capella.core.data.ctx.SystemCapabilityInvolvement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemCapabilityInvolvementImpl#getInvolver <em>Involver</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemCapabilityInvolvementImpl#getInvolved <em>Involved</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemCapabilityInvolvementImpl#getCapability <em>Capability</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemCapabilityInvolvementImpl#getSystem <em>System</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -361,22 +361,10 @@ public class SystemCapabilityInvolvementImpl extends RelationshipImpl implements
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CtxPackage.SYSTEM_CAPABILITY_INVOLVEMENT__INVOLVER:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolverElement) {
-				// end-extension-code
 					setInvolver((InvolverElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CtxPackage.SYSTEM_CAPABILITY_INVOLVEMENT__INVOLVED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolvedElement) {
-				// end-extension-code
 					setInvolved((InvolvedElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -33,10 +33,10 @@ import org.polarsys.capella.core.data.cs.DeployableElement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.DeployableElementImpl#getDeployingLinks <em>Deploying Links</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

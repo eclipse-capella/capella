@@ -43,7 +43,7 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	 */
 	public static ReFactory init() {
 		try {
-			ReFactory theReFactory = (ReFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/common/re/1.1.0"); //$NON-NLS-1$ 
+			ReFactory theReFactory = (ReFactory)EPackage.Registry.INSTANCE.getEFactory(RePackage.eNS_URI);
 			if (theReFactory != null) {
 				return theReFactory;
 			}

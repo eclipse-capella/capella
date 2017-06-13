@@ -44,6 +44,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.requirement.impl.RequirementImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.requirement.impl.RequirementImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -58,7 +59,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.requirement.impl.RequirementImpl#getFeature <em>Feature</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.requirement.impl.RequirementImpl#getRelatedCapellaElements <em>Related Capella Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -765,67 +765,25 @@ public abstract class RequirementImpl extends NamedElementImpl implements Requir
 				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
 				return;
 			case RequirementPackage.REQUIREMENT__IS_OBSOLETE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsObsolete((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RequirementPackage.REQUIREMENT__REQUIREMENT_ID:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setRequirementId((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RequirementPackage.REQUIREMENT__ADDITIONAL_INFORMATION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setAdditionalInformation((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RequirementPackage.REQUIREMENT__VERIFICATION_METHOD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setVerificationMethod((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RequirementPackage.REQUIREMENT__VERIFICATION_PHASE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setVerificationPhase((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RequirementPackage.REQUIREMENT__IMPLEMENTATION_VERSION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setImplementationVersion((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RequirementPackage.REQUIREMENT__FEATURE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setFeature((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

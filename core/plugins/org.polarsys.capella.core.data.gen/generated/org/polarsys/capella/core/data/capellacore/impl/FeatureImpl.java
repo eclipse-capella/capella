@@ -23,12 +23,12 @@ import org.polarsys.capella.core.data.capellacore.VisibilityKind;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.FeatureImpl#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.FeatureImpl#isIsStatic <em>Is Static</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.FeatureImpl#getVisibility <em>Visibility</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -251,31 +251,13 @@ public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacorePackage.FEATURE__IS_ABSTRACT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsAbstract((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.FEATURE__IS_STATIC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsStatic((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.FEATURE__VISIBILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof VisibilityKind) {
-				// end-extension-code
 					setVisibility((VisibilityKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

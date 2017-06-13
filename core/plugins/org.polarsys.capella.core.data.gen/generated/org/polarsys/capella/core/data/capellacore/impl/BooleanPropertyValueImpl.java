@@ -22,10 +22,10 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.BooleanPropertyValueImpl#isValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -132,13 +132,7 @@ public class BooleanPropertyValueImpl extends AbstractPropertyValueImpl implemen
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacorePackage.BOOLEAN_PROPERTY_VALUE__VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setValue((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

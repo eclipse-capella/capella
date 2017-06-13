@@ -23,11 +23,11 @@ import org.polarsys.capella.core.data.oa.OperationalScenario;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalScenarioImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalScenarioImpl#getObjective <em>Objective</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -192,22 +192,10 @@ public abstract class OperationalScenarioImpl extends NamedElementImpl implement
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case OaPackage.OPERATIONAL_SCENARIO__CONTEXT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setContext((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.OPERATIONAL_SCENARIO__OBJECTIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setObjective((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

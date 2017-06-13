@@ -44,13 +44,13 @@ import org.polarsys.kitalpha.emde.model.impl.ExtensibleElementImpl;
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Model Element</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl#getSid <em>Sid</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl#getOwnedConstraints <em>Owned Constraints</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -353,22 +353,10 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ModellingcorePackage.MODEL_ELEMENT__ID:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setId((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ModellingcorePackage.MODEL_ELEMENT__SID:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setSid((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ModellingcorePackage.MODEL_ELEMENT__OWNED_CONSTRAINTS:
 				getOwnedConstraints().clear();

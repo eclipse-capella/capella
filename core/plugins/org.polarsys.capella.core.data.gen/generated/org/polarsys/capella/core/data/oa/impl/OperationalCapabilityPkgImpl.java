@@ -31,13 +31,13 @@ import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalCapabilityPkgImpl#getOwnedOperationalCapabilities <em>Owned Operational Capabilities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalCapabilityPkgImpl#getOwnedOperationalCapabilityPkgs <em>Owned Operational Capability Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalCapabilityPkgImpl#getOwnedCapabilityConfigurations <em>Owned Capability Configurations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalCapabilityPkgImpl#getOwnedConceptCompliances <em>Owned Concept Compliances</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

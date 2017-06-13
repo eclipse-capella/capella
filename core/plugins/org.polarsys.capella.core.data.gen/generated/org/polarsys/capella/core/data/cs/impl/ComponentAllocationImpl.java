@@ -30,11 +30,11 @@ import org.polarsys.capella.core.data.cs.CsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentAllocationImpl#getAllocatedComponent <em>Allocated Component</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentAllocationImpl#getAllocatingComponent <em>Allocating Component</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

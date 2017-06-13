@@ -43,7 +43,7 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 */
 	public static EpbsFactory init() {
 		try {
-			EpbsFactory theEpbsFactory = (EpbsFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/epbs/1.1.0"); //$NON-NLS-1$ 
+			EpbsFactory theEpbsFactory = (EpbsFactory)EPackage.Registry.INSTANCE.getEFactory(EpbsPackage.eNS_URI);
 			if (theEpbsFactory != null) {
 				return theEpbsFactory;
 			}

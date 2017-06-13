@@ -64,7 +64,7 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	 */
 	public static FaFactory init() {
 		try {
-			FaFactory theFaFactory = (FaFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/fa/1.1.0"); //$NON-NLS-1$ 
+			FaFactory theFaFactory = (FaFactory)EPackage.Registry.INSTANCE.getEFactory(FaPackage.eNS_URI);
 			if (theFaFactory != null) {
 				return theFaFactory;
 			}

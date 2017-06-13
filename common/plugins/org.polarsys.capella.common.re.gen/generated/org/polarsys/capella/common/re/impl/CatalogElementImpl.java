@@ -43,6 +43,7 @@ import org.polarsys.capella.common.re.RePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getOwnedElements <em>Owned Elements</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getKind <em>Kind</em>}</li>
@@ -58,7 +59,6 @@ import org.polarsys.capella.common.re.RePackage;
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getReferencedElements <em>Referenced Elements</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getReplicatedElements <em>Replicated Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -816,80 +816,32 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 				getOwnedElements().addAll((Collection<? extends CatalogElement>)newValue);
 				return;
 			case RePackage.CATALOG_ELEMENT__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof CatalogElementKind) {
-				// end-extension-code
 					setKind((CatalogElementKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RePackage.CATALOG_ELEMENT__AUTHOR:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setAuthor((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setEnvironment((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RePackage.CATALOG_ELEMENT__SUFFIX:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setSuffix((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RePackage.CATALOG_ELEMENT__PURPOSE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setPurpose((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RePackage.CATALOG_ELEMENT__TAGS:
 				getTags().clear();
 				getTags().addAll((Collection<? extends String>)newValue);
 				return;
 			case RePackage.CATALOG_ELEMENT__ORIGIN:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof CatalogElement) {
-				// end-extension-code
 					setOrigin((CatalogElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RePackage.CATALOG_ELEMENT__CURRENT_COMPLIANCY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof CompliancyDefinition) {
-				// end-extension-code
 					setCurrentCompliancy((CompliancyDefinition)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RePackage.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof CompliancyDefinition) {
-				// end-extension-code
 					setDefaultReplicaCompliancy((CompliancyDefinition)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RePackage.CATALOG_ELEMENT__OWNED_LINKS:
 				getOwnedLinks().clear();

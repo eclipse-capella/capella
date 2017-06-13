@@ -29,11 +29,11 @@ import org.polarsys.capella.common.re.RePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementPkgImpl#getOwnedElements <em>Owned Elements</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementPkgImpl#getOwnedElementPkgs <em>Owned Element Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

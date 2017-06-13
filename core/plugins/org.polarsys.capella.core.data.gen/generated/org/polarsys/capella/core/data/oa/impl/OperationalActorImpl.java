@@ -32,10 +32,10 @@ import org.polarsys.capella.core.data.oa.OperationalActor;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalActorImpl#getRealizingSystemActors <em>Realizing System Actors</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

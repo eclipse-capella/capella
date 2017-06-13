@@ -46,6 +46,7 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.OperationImpl#getAbstractTypedElements <em>Abstract Typed Elements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.OperationImpl#getInvokingSequenceMessages <em>Invoking Sequence Messages</em>}</li>
@@ -56,7 +57,6 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
  *   <li>{@link org.polarsys.capella.core.data.information.impl.OperationImpl#getOwnedExchangeItemRealizations <em>Owned Exchange Item Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.OperationImpl#getRealizedExchangeItems <em>Realized Exchange Items</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

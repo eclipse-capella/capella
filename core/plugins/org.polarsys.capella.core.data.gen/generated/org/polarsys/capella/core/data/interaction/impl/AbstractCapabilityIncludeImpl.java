@@ -34,11 +34,11 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityIncludeImpl#getIncluded <em>Included</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityIncludeImpl#getInclusion <em>Inclusion</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -222,13 +222,7 @@ public class AbstractCapabilityIncludeImpl extends RelationshipImpl implements A
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractCapability) {
-				// end-extension-code
 					setIncluded((AbstractCapability)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

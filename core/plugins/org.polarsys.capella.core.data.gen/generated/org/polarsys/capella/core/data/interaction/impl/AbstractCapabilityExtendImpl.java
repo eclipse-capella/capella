@@ -35,12 +35,12 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtendImpl#getExtended <em>Extended</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtendImpl#getExtension <em>Extension</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtendImpl#getExtensionLocation <em>Extension Location</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -349,22 +349,10 @@ public class AbstractCapabilityExtendImpl extends RelationshipImpl implements Ab
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractCapability) {
-				// end-extension-code
 					setExtended((AbstractCapability)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractCapabilityExtensionPoint) {
-				// end-extension-code
 					setExtensionLocation((AbstractCapabilityExtensionPoint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

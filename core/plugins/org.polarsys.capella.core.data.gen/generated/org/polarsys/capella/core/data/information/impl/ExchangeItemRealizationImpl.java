@@ -31,11 +31,11 @@ import org.polarsys.capella.core.data.information.Operation;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemRealizationImpl#getRealizedItem <em>Realized Item</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemRealizationImpl#getRealizingOperation <em>Realizing Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

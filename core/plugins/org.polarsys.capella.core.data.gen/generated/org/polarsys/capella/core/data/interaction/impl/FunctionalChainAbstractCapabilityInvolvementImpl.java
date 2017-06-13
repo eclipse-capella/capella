@@ -35,13 +35,13 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.FunctionalChainAbstractCapabilityInvolvementImpl#getInvolver <em>Involver</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.FunctionalChainAbstractCapabilityInvolvementImpl#getInvolved <em>Involved</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.FunctionalChainAbstractCapabilityInvolvementImpl#getCapability <em>Capability</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.FunctionalChainAbstractCapabilityInvolvementImpl#getFunctionalChain <em>Functional Chain</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -362,22 +362,10 @@ public class FunctionalChainAbstractCapabilityInvolvementImpl extends Relationsh
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVER:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolverElement) {
-				// end-extension-code
 					setInvolver((InvolverElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolvedElement) {
-				// end-extension-code
 					setInvolved((InvolvedElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

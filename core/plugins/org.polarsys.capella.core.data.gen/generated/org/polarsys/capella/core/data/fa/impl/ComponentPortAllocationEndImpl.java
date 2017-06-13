@@ -52,6 +52,7 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortAllocationEndImpl#getIncomingTraces <em>Incoming Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortAllocationEndImpl#getOutgoingTraces <em>Outgoing Traces</em>}</li>
@@ -72,7 +73,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortAllocationEndImpl#getPart <em>Part</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortAllocationEndImpl#getOwningComponentPortAllocation <em>Owning Component Port Allocation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1113,49 +1113,19 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FaPackage.COMPONENT_PORT_ALLOCATION_END__VISIBLE_IN_DOC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInDoc((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_PORT_ALLOCATION_END__VISIBLE_IN_LM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInLM((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_PORT_ALLOCATION_END__SUMMARY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setSummary((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_PORT_ALLOCATION_END__DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_PORT_ALLOCATION_END__REVIEW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setReview((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_PORT_ALLOCATION_END__OWNED_PROPERTY_VALUES:
 				getOwnedPropertyValues().clear();
@@ -1178,44 +1148,20 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 				getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
 				return;
 			case FaPackage.COMPONENT_PORT_ALLOCATION_END__STATUS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
-				// end-extension-code
 					setStatus((EnumerationPropertyLiteral)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_PORT_ALLOCATION_END__FEATURES:
 				getFeatures().clear();
 				getFeatures().addAll((Collection<? extends EnumerationPropertyLiteral>)newValue);
 				return;
 			case FaPackage.COMPONENT_PORT_ALLOCATION_END__PORT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Port) {
-				// end-extension-code
 					setPort((Port)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_PORT_ALLOCATION_END__PART:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Part) {
-				// end-extension-code
 					setPart((Part)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ComponentPortAllocation) {
-				// end-extension-code
 					setOwningComponentPortAllocation((ComponentPortAllocation)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

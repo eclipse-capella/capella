@@ -46,6 +46,7 @@ import org.polarsys.capella.core.data.interaction.SequenceMessageValuation;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.SequenceMessageImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.SequenceMessageImpl#getExchangeContext <em>Exchange Context</em>}</li>
@@ -59,7 +60,6 @@ import org.polarsys.capella.core.data.interaction.SequenceMessageValuation;
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.SequenceMessageImpl#getReceivingFunction <em>Receiving Function</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.SequenceMessageImpl#getOwnedSequenceMessageValuations <em>Owned Sequence Message Valuations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -793,40 +793,16 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.SEQUENCE_MESSAGE__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof MessageKind) {
-				// end-extension-code
 					setKind((MessageKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Constraint) {
-				// end-extension-code
 					setExchangeContext((Constraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE__SENDING_END:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof MessageEnd) {
-				// end-extension-code
 					setSendingEnd((MessageEnd)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_END:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof MessageEnd) {
-				// end-extension-code
 					setReceivingEnd((MessageEnd)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGED_ITEMS:
 				getExchangedItems().clear();

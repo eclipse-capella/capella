@@ -26,11 +26,11 @@ import org.polarsys.capella.core.data.oa.OrganisationalUnit;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.CommunityOfInterestCompositionImpl#getCommunityOfInterest <em>Community Of Interest</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.CommunityOfInterestCompositionImpl#getInterestedOrganisationUnit <em>Interested Organisation Unit</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -219,22 +219,10 @@ public class CommunityOfInterestCompositionImpl extends NamedElementImpl impleme
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof CommunityOfInterest) {
-				// end-extension-code
 					setCommunityOfInterest((CommunityOfInterest)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof OrganisationalUnit) {
-				// end-extension-code
 					setInterestedOrganisationUnit((OrganisationalUnit)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

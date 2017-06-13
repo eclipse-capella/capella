@@ -51,6 +51,7 @@ import org.polarsys.capella.core.data.information.impl.AbstractInstanceImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PartImpl#getIncomingInformationFlows <em>Incoming Information Flows</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PartImpl#getOutgoingInformationFlows <em>Outgoing Information Flows</em>}</li>
@@ -65,7 +66,6 @@ import org.polarsys.capella.core.data.information.impl.AbstractInstanceImpl;
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PartImpl#getDeployingParts <em>Deploying Parts</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PartImpl#getOwnedAbstractType <em>Owned Abstract Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -786,13 +786,7 @@ public class PartImpl extends AbstractInstanceImpl implements Part {
 				getOwnedDeploymentLinks().addAll((Collection<? extends AbstractDeploymentLink>)newValue);
 				return;
 			case CsPackage.PART__OWNED_ABSTRACT_TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractType) {
-				// end-extension-code
 					setOwnedAbstractType((AbstractType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

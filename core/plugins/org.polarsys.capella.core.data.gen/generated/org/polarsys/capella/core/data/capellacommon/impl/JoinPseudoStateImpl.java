@@ -18,8 +18,6 @@ import org.polarsys.capella.core.data.capellacommon.JoinPseudoState;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Join Pseudo State</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

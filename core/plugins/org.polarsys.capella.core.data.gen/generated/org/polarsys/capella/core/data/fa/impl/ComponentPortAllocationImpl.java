@@ -37,12 +37,12 @@ import org.polarsys.capella.core.data.information.Port;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortAllocationImpl#getOwnedComponentPortAllocationEnds <em>Owned Component Port Allocation Ends</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortAllocationImpl#getAllocatedPort <em>Allocated Port</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortAllocationImpl#getAllocatingPort <em>Allocating Port</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

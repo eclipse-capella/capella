@@ -25,10 +25,10 @@ import org.polarsys.capella.core.data.information.Property;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.KeyPartImpl#getProperty <em>Property</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -147,13 +147,7 @@ public class KeyPartImpl extends RelationshipImpl implements KeyPart {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InformationPackage.KEY_PART__PROPERTY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Property) {
-				// end-extension-code
 					setProperty((Property)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -29,10 +29,10 @@ import org.polarsys.capella.core.data.epbs.EpbsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.EPBSArchitecturePkgImpl#getOwnedEPBSArchitectures <em>Owned EPBS Architectures</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

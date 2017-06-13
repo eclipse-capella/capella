@@ -41,6 +41,7 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ParameterImpl#isOrdered <em>Ordered</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ParameterImpl#isUnique <em>Unique</em>}</li>
@@ -65,7 +66,6 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ParameterImpl#getDirection <em>Direction</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ParameterImpl#getPassingMode <em>Passing Mode</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1642,197 +1642,71 @@ public class ParameterImpl extends TypedElementImpl implements Parameter {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InformationPackage.PARAMETER__ORDERED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setOrdered((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__UNIQUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setUnique((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__MIN_INCLUSIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setMinInclusive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__MAX_INCLUSIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setMaxInclusive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__OWNED_DEFAULT_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedDefaultValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__OWNED_MIN_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedMinValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__OWNED_MAX_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedMaxValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__OWNED_NULL_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedNullValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__OWNED_MIN_CARD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMinCard((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__OWNED_MIN_LENGTH:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMinLength((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__OWNED_MAX_CARD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMaxCard((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__OWNED_MAX_LENGTH:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMaxLength((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__IS_EXCEPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsException((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__IS_STREAM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsStream((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__IS_OPTIONAL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsOptional((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__KIND_OF_RATE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof RateKind) {
-				// end-extension-code
 					setKindOfRate((RateKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__EFFECT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ParameterEffectKind) {
-				// end-extension-code
 					setEffect((ParameterEffectKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__RATE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setRate((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__PROBABILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setProbability((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__PARAMETER_SET:
 				getParameterSet().clear();
 				getParameterSet().addAll((Collection<? extends AbstractParameterSet>)newValue);
 				return;
 			case InformationPackage.PARAMETER__DIRECTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ParameterDirection) {
-				// end-extension-code
 					setDirection((ParameterDirection)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PARAMETER__PASSING_MODE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof PassingMode) {
-				// end-extension-code
 					setPassingMode((PassingMode)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -31,11 +31,11 @@ import org.polarsys.capella.common.libraries.ModelVersion;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.libraries.impl.ModelInformationImpl#getOwnedReferences <em>Owned References</em>}</li>
  *   <li>{@link org.polarsys.capella.common.libraries.impl.ModelInformationImpl#getVersion <em>Version</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -207,13 +207,7 @@ public class ModelInformationImpl extends LibraryAbstractElementImpl implements 
 				getOwnedReferences().addAll((Collection<? extends LibraryReference>)newValue);
 				return;
 			case LibrariesPackage.MODEL_INFORMATION__VERSION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ModelVersion) {
-				// end-extension-code
 					setVersion((ModelVersion)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -36,12 +36,12 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.DataValueImpl#getAbstractType <em>Abstract Type</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.DataValueImpl#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.DataValueImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -284,22 +284,10 @@ public abstract class DataValueImpl extends NamedElementImpl implements DataValu
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractType) {
-				// end-extension-code
 					setAbstractType((AbstractType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.DATA_VALUE__ABSTRACT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setAbstract((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

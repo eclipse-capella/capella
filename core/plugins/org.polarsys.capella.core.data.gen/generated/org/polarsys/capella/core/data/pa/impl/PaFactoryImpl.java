@@ -51,7 +51,7 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 */
 	public static PaFactory init() {
 		try {
-			PaFactory thePaFactory = (PaFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/pa/1.1.0"); //$NON-NLS-1$ 
+			PaFactory thePaFactory = (PaFactory)EPackage.Registry.INSTANCE.getEFactory(PaPackage.eNS_URI);
 			if (thePaFactory != null) {
 				return thePaFactory;
 			}

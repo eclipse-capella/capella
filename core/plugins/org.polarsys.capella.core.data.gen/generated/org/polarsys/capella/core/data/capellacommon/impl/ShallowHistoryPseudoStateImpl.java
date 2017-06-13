@@ -21,8 +21,6 @@ import org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Shallow History Pseudo State</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

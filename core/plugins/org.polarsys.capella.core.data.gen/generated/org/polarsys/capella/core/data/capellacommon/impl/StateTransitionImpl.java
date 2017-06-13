@@ -48,6 +48,7 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getRealizedFlow <em>Realized Flow</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getKind <em>Kind</em>}</li>
@@ -61,7 +62,6 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getRealizedStateTransitions <em>Realized State Transitions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getRealizingStateTransitions <em>Realizing State Transitions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -804,58 +804,22 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacommonPackage.STATE_TRANSITION__REALIZED_FLOW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractInformationFlow) {
-				// end-extension-code
 					setRealizedFlow((AbstractInformationFlow)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_TRANSITION__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof TransitionKind) {
-				// end-extension-code
 					setKind((TransitionKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_TRANSITION__TRIGGER_DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setTriggerDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_TRANSITION__GUARD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Constraint) {
-				// end-extension-code
 					setGuard((Constraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_TRANSITION__SOURCE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractState) {
-				// end-extension-code
 					setSource((AbstractState)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_TRANSITION__TARGET:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractState) {
-				// end-extension-code
 					setTarget((AbstractState)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_TRANSITION__EFFECT:
 				getEffect().clear();

@@ -29,11 +29,11 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalArchitecturePkgImpl#getOwnedPhysicalArchitecturePkgs <em>Owned Physical Architecture Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalArchitecturePkgImpl#getOwnedPhysicalArchitectures <em>Owned Physical Architectures</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

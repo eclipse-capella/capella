@@ -30,11 +30,11 @@ import org.polarsys.capella.core.data.information.OperationAllocation;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.OperationAllocationImpl#getAllocatedOperation <em>Allocated Operation</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.OperationAllocationImpl#getAllocatingOperation <em>Allocating Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

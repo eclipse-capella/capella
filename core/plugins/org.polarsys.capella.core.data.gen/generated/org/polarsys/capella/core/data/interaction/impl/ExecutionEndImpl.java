@@ -29,10 +29,10 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ExecutionEndImpl#getExecution <em>Execution</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

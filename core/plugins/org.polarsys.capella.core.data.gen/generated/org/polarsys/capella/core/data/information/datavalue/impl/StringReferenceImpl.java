@@ -25,11 +25,11 @@ import org.polarsys.capella.core.data.information.datavalue.StringReference;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.StringReferenceImpl#getReferencedValue <em>Referenced Value</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.StringReferenceImpl#getReferencedProperty <em>Referenced Property</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -218,22 +218,10 @@ public class StringReferenceImpl extends AbstractStringValueImpl implements Stri
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatavaluePackage.STRING_REFERENCE__REFERENCED_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractStringValue) {
-				// end-extension-code
 					setReferencedValue((AbstractStringValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.STRING_REFERENCE__REFERENCED_PROPERTY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Property) {
-				// end-extension-code
 					setReferencedProperty((Property)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

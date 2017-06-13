@@ -25,11 +25,11 @@ import org.polarsys.capella.core.data.interaction.TimeLapse;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.TimeLapseImpl#getStart <em>Start</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.TimeLapseImpl#getFinish <em>Finish</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -218,22 +218,10 @@ public abstract class TimeLapseImpl extends NamedElementImpl implements TimeLaps
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.TIME_LAPSE__START:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InteractionFragment) {
-				// end-extension-code
 					setStart((InteractionFragment)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.TIME_LAPSE__FINISH:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InteractionFragment) {
-				// end-extension-code
 					setFinish((InteractionFragment)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

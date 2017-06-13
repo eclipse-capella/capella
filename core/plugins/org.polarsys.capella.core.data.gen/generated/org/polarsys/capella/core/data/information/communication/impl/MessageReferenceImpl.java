@@ -25,10 +25,10 @@ import org.polarsys.capella.core.data.information.communication.MessageReference
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.MessageReferenceImpl#getMessage <em>Message</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -147,13 +147,7 @@ public class MessageReferenceImpl extends RelationshipImpl implements MessageRef
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CommunicationPackage.MESSAGE_REFERENCE__MESSAGE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Message) {
-				// end-extension-code
 					setMessage((Message)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

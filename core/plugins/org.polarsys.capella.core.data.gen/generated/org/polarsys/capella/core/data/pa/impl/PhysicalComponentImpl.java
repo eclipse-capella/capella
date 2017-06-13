@@ -44,6 +44,7 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getAllocatorConfigurationItems <em>Allocator Configuration Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getOwnedPhysicalComponents <em>Owned Physical Components</em>}</li>
@@ -58,7 +59,6 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getDeployingPhysicalComponents <em>Deploying Physical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getDeployingPhysicalActors <em>Deploying Physical Actors</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

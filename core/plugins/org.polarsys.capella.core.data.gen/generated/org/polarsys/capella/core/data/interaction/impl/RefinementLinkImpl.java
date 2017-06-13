@@ -19,8 +19,6 @@ import org.polarsys.capella.core.data.interaction.RefinementLink;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Refinement Link</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

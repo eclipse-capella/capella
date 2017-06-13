@@ -49,6 +49,7 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalChainContainerImpl#getIncomingTraces <em>Incoming Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalChainContainerImpl#getOutgoingTraces <em>Outgoing Traces</em>}</li>
@@ -67,7 +68,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalChainContainerImpl#getAppliedRequirements <em>Applied Requirements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalChainContainerImpl#getOwnedFunctionalChains <em>Owned Functional Chains</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -894,49 +894,19 @@ public abstract class AbstractFunctionalChainContainerImpl extends ModelElementI
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FaPackage.ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER__VISIBLE_IN_DOC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInDoc((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER__VISIBLE_IN_LM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInLM((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER__SUMMARY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setSummary((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER__DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER__REVIEW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setReview((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER__OWNED_PROPERTY_VALUES:
 				getOwnedPropertyValues().clear();
@@ -959,13 +929,7 @@ public abstract class AbstractFunctionalChainContainerImpl extends ModelElementI
 				getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
 				return;
 			case FaPackage.ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER__STATUS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
-				// end-extension-code
 					setStatus((EnumerationPropertyLiteral)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER__FEATURES:
 				getFeatures().clear();

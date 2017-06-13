@@ -34,12 +34,12 @@ import org.polarsys.capella.core.data.capellacore.impl.RelationshipImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.CapabilityRealizationInvolvementImpl#getInvolver <em>Involver</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.CapabilityRealizationInvolvementImpl#getInvolved <em>Involved</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.CapabilityRealizationInvolvementImpl#getInvolvedCapabilityRealizationInvolvedElement <em>Involved Capability Realization Involved Element</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -294,22 +294,10 @@ public abstract class CapabilityRealizationInvolvementImpl extends RelationshipI
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVEMENT__INVOLVER:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolverElement) {
-				// end-extension-code
 					setInvolver((InvolverElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVEMENT__INVOLVED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolvedElement) {
-				// end-extension-code
 					setInvolved((InvolvedElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -43,6 +43,7 @@ import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.sharedmodel.impl.GenericPkgImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.sharedmodel.impl.GenericPkgImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -52,7 +53,6 @@ import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
  *   <li>{@link org.polarsys.capella.core.data.sharedmodel.impl.GenericPkgImpl#getSubGenericPkgs <em>Sub Generic Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.sharedmodel.impl.GenericPkgImpl#getCapellaElements <em>Capella Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

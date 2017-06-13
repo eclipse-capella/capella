@@ -24,10 +24,10 @@ import org.polarsys.capella.core.data.information.datatype.PhysicalQuantity;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.PhysicalQuantityImpl#getUnit <em>Unit</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -146,13 +146,7 @@ public class PhysicalQuantityImpl extends NumericTypeImpl implements PhysicalQua
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatatypePackage.PHYSICAL_QUANTITY__UNIT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Unit) {
-				// end-extension-code
 					setUnit((Unit)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

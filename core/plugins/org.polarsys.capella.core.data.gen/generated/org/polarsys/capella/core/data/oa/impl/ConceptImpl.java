@@ -31,11 +31,11 @@ import org.polarsys.capella.core.data.oa.OaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.ConceptImpl#getCompliances <em>Compliances</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.ConceptImpl#getCompositeLinks <em>Composite Links</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

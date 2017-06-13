@@ -40,6 +40,7 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemFunctionImpl#getOwnedSystemFunctionPkgs <em>Owned System Function Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemFunctionImpl#getAllocatorActors <em>Allocator Actors</em>}</li>
@@ -49,7 +50,6 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemFunctionImpl#getContainedSystemFunctions <em>Contained System Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemFunctionImpl#getChildrenSystemFunctions <em>Children System Functions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

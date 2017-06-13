@@ -28,10 +28,10 @@ import org.polarsys.capella.common.data.activity.InvocationAction;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.InvocationActionImpl#getArguments <em>Arguments</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

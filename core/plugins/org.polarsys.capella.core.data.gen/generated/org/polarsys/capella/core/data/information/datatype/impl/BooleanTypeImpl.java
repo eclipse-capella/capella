@@ -31,11 +31,11 @@ import org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.BooleanTypeImpl#getOwnedLiterals <em>Owned Literals</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.BooleanTypeImpl#getOwnedDefaultValue <em>Owned Default Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -242,13 +242,7 @@ public class BooleanTypeImpl extends DataTypeImpl implements BooleanType {
 				getOwnedLiterals().addAll((Collection<? extends LiteralBooleanValue>)newValue);
 				return;
 			case DatatypePackage.BOOLEAN_TYPE__OWNED_DEFAULT_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractBooleanValue) {
-				// end-extension-code
 					setOwnedDefaultValue((AbstractBooleanValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -33,11 +33,11 @@ import org.polarsys.capella.core.data.cs.InterfaceImplementation;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceImplementationImpl#getInterfaceImplementor <em>Interface Implementor</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceImplementationImpl#getImplementedInterface <em>Implemented Interface</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -222,13 +222,7 @@ public class InterfaceImplementationImpl extends RelationshipImpl implements Int
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CsPackage.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Interface) {
-				// end-extension-code
 					setImplementedInterface((Interface)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

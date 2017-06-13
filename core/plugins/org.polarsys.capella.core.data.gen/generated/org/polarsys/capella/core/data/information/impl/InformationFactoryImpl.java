@@ -63,7 +63,7 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	 */
 	public static InformationFactory init() {
 		try {
-			InformationFactory theInformationFactory = (InformationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/information/1.1.0"); //$NON-NLS-1$ 
+			InformationFactory theInformationFactory = (InformationFactory)EPackage.Registry.INSTANCE.getEFactory(InformationPackage.eNS_URI);
 			if (theInformationFactory != null) {
 				return theInformationFactory;
 			}

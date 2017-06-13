@@ -41,7 +41,7 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	 */
 	public static RequirementFactory init() {
 		try {
-			RequirementFactory theRequirementFactory = (RequirementFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/requirement/1.1.0"); //$NON-NLS-1$ 
+			RequirementFactory theRequirementFactory = (RequirementFactory)EPackage.Registry.INSTANCE.getEFactory(RequirementPackage.eNS_URI);
 			if (theRequirementFactory != null) {
 				return theRequirementFactory;
 			}

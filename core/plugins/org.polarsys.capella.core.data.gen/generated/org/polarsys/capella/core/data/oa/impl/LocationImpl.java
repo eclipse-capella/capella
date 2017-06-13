@@ -27,11 +27,11 @@ import org.polarsys.capella.core.data.oa.OaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.LocationImpl#getLocationDescription <em>Location Description</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.LocationImpl#getLocatedEntities <em>Located Entities</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -173,13 +173,7 @@ public class LocationImpl extends AbstractConceptItemImpl implements Location {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case OaPackage.LOCATION__LOCATION_DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setLocationDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.LOCATION__LOCATED_ENTITIES:
 				getLocatedEntities().clear();

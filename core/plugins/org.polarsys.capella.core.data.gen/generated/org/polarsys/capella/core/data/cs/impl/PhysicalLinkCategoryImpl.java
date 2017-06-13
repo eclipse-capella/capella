@@ -29,10 +29,10 @@ import org.polarsys.capella.core.data.cs.PhysicalLinkCategory;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalLinkCategoryImpl#getLinks <em>Links</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

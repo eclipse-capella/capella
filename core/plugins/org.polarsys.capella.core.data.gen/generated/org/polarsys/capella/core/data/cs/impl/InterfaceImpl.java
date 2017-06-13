@@ -46,6 +46,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceImpl#getOwnedInterfaceAllocations <em>Owned Interface Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceImpl#getProvisionedInterfaceAllocations <em>Provisioned Interface Allocations</em>}</li>
@@ -70,7 +71,6 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceImpl#getRealizingPhysicalInterfaces <em>Realizing Physical Interfaces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceImpl#getRealizedLogicalInterfaces <em>Realized Logical Interfaces</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1292,22 +1292,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 				getOwnedInterfaceAllocations().addAll((Collection<? extends InterfaceAllocation>)newValue);
 				return;
 			case CsPackage.INTERFACE__MECHANISM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setMechanism((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.INTERFACE__STRUCTURAL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setStructural((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.INTERFACE__OWNED_EXCHANGE_ITEM_ALLOCATIONS:
 				getOwnedExchangeItemAllocations().clear();

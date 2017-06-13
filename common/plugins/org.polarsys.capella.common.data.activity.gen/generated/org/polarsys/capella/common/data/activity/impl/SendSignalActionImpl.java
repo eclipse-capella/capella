@@ -26,11 +26,11 @@ import org.polarsys.capella.common.data.behavior.AbstractSignal;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.SendSignalActionImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.SendSignalActionImpl#getSignal <em>Signal</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -266,22 +266,10 @@ public abstract class SendSignalActionImpl extends InvocationActionImpl implemen
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ActivityPackage.SEND_SIGNAL_ACTION__TARGET:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InputPin) {
-				// end-extension-code
 					setTarget((InputPin)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.SEND_SIGNAL_ACTION__SIGNAL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractSignal) {
-				// end-extension-code
 					setSignal((AbstractSignal)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

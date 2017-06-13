@@ -17,8 +17,6 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Exception</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

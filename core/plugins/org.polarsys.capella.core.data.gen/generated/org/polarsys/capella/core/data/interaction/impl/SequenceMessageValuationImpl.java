@@ -51,6 +51,7 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.SequenceMessageValuationImpl#getIncomingTraces <em>Incoming Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.SequenceMessageValuationImpl#getOutgoingTraces <em>Outgoing Traces</em>}</li>
@@ -70,7 +71,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.SequenceMessageValuationImpl#getExchangeItemElement <em>Exchange Item Element</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.SequenceMessageValuationImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1001,49 +1001,19 @@ public class SequenceMessageValuationImpl extends ModelElementImpl implements Se
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.SEQUENCE_MESSAGE_VALUATION__VISIBLE_IN_DOC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInDoc((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE_VALUATION__VISIBLE_IN_LM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInLM((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE_VALUATION__SUMMARY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setSummary((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE_VALUATION__DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE_VALUATION__REVIEW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setReview((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE_VALUATION__OWNED_PROPERTY_VALUES:
 				getOwnedPropertyValues().clear();
@@ -1066,35 +1036,17 @@ public class SequenceMessageValuationImpl extends ModelElementImpl implements Se
 				getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE_VALUATION__STATUS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
-				// end-extension-code
 					setStatus((EnumerationPropertyLiteral)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE_VALUATION__FEATURES:
 				getFeatures().clear();
 				getFeatures().addAll((Collection<? extends EnumerationPropertyLiteral>)newValue);
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE_VALUATION__EXCHANGE_ITEM_ELEMENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ExchangeItemElement) {
-				// end-extension-code
 					setExchangeItemElement((ExchangeItemElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE_VALUATION__VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setValue((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

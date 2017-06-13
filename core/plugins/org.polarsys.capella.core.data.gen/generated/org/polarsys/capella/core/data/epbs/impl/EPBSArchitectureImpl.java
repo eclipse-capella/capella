@@ -44,6 +44,7 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.EPBSArchitectureImpl#getOwnedEPBSContext <em>Owned EPBS Context</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.EPBSArchitectureImpl#getOwnedConfigurationItem <em>Owned Configuration Item</em>}</li>
@@ -53,7 +54,6 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.EPBSArchitectureImpl#getAllocatedPhysicalArchitectureRealizations <em>Allocated Physical Architecture Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.EPBSArchitectureImpl#getAllocatedPhysicalArchitectures <em>Allocated Physical Architectures</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -638,31 +638,13 @@ public class EPBSArchitectureImpl extends ComponentArchitectureImpl implements E
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EPBSContext) {
-				// end-extension-code
 					setOwnedEPBSContext((EPBSContext)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ConfigurationItem) {
-				// end-extension-code
 					setOwnedConfigurationItem((ConfigurationItem)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ConfigurationItemPkg) {
-				// end-extension-code
 					setOwnedConfigurationItemPkg((ConfigurationItemPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_PHYSICAL_ARCHITECTURE_REALIZATIONS:
 				getOwnedPhysicalArchitectureRealizations().clear();

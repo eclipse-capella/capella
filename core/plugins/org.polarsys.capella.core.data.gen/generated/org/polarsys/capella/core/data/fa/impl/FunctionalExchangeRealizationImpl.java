@@ -30,11 +30,11 @@ import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalExchangeRealizationImpl#getRealizedFunctionalExchange <em>Realized Functional Exchange</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalExchangeRealizationImpl#getRealizingFunctionalExchange <em>Realizing Functional Exchange</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

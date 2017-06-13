@@ -69,6 +69,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#isFinal <em>Final</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getIncomingTraces <em>Incoming Traces</em>}</li>
@@ -106,7 +107,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getRealizingExchangeItems <em>Realizing Exchange Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getRealizingOperations <em>Realizing Operations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1748,58 +1748,22 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InformationPackage.EXCHANGE_ITEM__FINAL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setFinal((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM__VISIBLE_IN_DOC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInDoc((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM__VISIBLE_IN_LM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInLM((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM__SUMMARY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setSummary((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM__DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM__REVIEW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setReview((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM__OWNED_PROPERTY_VALUES:
 				getOwnedPropertyValues().clear();
@@ -1822,13 +1786,7 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 				getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
 				return;
 			case InformationPackage.EXCHANGE_ITEM__STATUS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
-				// end-extension-code
 					setStatus((EnumerationPropertyLiteral)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM__FEATURES:
 				getFeatures().clear();
@@ -1843,26 +1801,14 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
 				return;
 			case InformationPackage.EXCHANGE_ITEM__ABSTRACT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setAbstract((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM__OWNED_GENERALIZATIONS:
 				getOwnedGeneralizations().clear();
 				getOwnedGeneralizations().addAll((Collection<? extends Generalization>)newValue);
 				return;
 			case InformationPackage.EXCHANGE_ITEM__EXCHANGE_MECHANISM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ExchangeMechanism) {
-				// end-extension-code
 					setExchangeMechanism((ExchangeMechanism)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM__OWNED_ELEMENTS:
 				getOwnedElements().clear();

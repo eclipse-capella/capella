@@ -29,11 +29,11 @@ import org.polarsys.capella.core.data.la.LaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.CapabilityRealizationPkgImpl#getOwnedCapabilityRealizations <em>Owned Capability Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.CapabilityRealizationPkgImpl#getOwnedCapabilityRealizationPkgs <em>Owned Capability Realization Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

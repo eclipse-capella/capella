@@ -46,6 +46,7 @@ import org.polarsys.capella.core.data.pa.deployment.DeploymentAspect;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.AbstractPhysicalComponentImpl#getDeployingLinks <em>Deploying Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.AbstractPhysicalComponentImpl#getDeploymentLinks <em>Deployment Links</em>}</li>
@@ -54,7 +55,6 @@ import org.polarsys.capella.core.data.pa.deployment.DeploymentAspect;
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.AbstractPhysicalComponentImpl#getOwnedDeploymentLinks <em>Owned Deployment Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.AbstractPhysicalComponentImpl#getOwnedDeploymentAspect <em>Owned Deployment Aspect</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -475,35 +475,17 @@ public abstract class AbstractPhysicalComponentImpl extends SystemComponentImpl 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof PhysicalComponentKind) {
-				// end-extension-code
 					setKind((PhysicalComponentKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__NATURE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof PhysicalComponentNature) {
-				// end-extension-code
 					setNature((PhysicalComponentNature)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS:
 				getOwnedDeploymentLinks().clear();
 				getOwnedDeploymentLinks().addAll((Collection<? extends AbstractDeploymentLink>)newValue);
 				return;
 			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DeploymentAspect) {
-				// end-extension-code
 					setOwnedDeploymentAspect((DeploymentAspect)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

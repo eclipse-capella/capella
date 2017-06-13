@@ -43,6 +43,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemPkgImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemPkgImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -52,7 +53,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemPkgImpl#getOwnedConfigurationItems <em>Owned Configuration Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemPkgImpl#getOwnedConfigurationItemPkgs <em>Owned Configuration Item Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

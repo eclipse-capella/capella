@@ -43,6 +43,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.ConceptPkgImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.ConceptPkgImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -52,7 +53,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.ConceptPkgImpl#getOwnedConceptPkgs <em>Owned Concept Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.ConceptPkgImpl#getOwnedConcepts <em>Owned Concepts</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

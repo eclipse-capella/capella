@@ -33,6 +33,7 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractInformationFlowImpl#getRealizedFlow <em>Realized Flow</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractInformationFlowImpl#getRealizations <em>Realizations</em>}</li>
@@ -40,7 +41,6 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractInformationFlowImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractInformationFlowImpl#getTarget <em>Target</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -430,13 +430,7 @@ public abstract class AbstractInformationFlowImpl extends AbstractNamedElementIm
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ModellingcorePackage.ABSTRACT_INFORMATION_FLOW__REALIZED_FLOW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractInformationFlow) {
-				// end-extension-code
 					setRealizedFlow((AbstractInformationFlow)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ModellingcorePackage.ABSTRACT_INFORMATION_FLOW__REALIZATIONS:
 				getRealizations().clear();
@@ -447,22 +441,10 @@ public abstract class AbstractInformationFlowImpl extends AbstractNamedElementIm
 				getConvoyedInformations().addAll((Collection<? extends AbstractExchangeItem>)newValue);
 				return;
 			case ModellingcorePackage.ABSTRACT_INFORMATION_FLOW__SOURCE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InformationsExchanger) {
-				// end-extension-code
 					setSource((InformationsExchanger)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ModellingcorePackage.ABSTRACT_INFORMATION_FLOW__TARGET:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InformationsExchanger) {
-				// end-extension-code
 					setTarget((InformationsExchanger)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

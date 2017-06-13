@@ -25,11 +25,11 @@ import org.polarsys.capella.core.data.information.datavalue.EnumerationReference
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.EnumerationReferenceImpl#getReferencedValue <em>Referenced Value</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.EnumerationReferenceImpl#getReferencedProperty <em>Referenced Property</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -218,22 +218,10 @@ public class EnumerationReferenceImpl extends AbstractEnumerationValueImpl imple
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatavaluePackage.ENUMERATION_REFERENCE__REFERENCED_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractEnumerationValue) {
-				// end-extension-code
 					setReferencedValue((AbstractEnumerationValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.ENUMERATION_REFERENCE__REFERENCED_PROPERTY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Property) {
-				// end-extension-code
 					setReferencedProperty((Property)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

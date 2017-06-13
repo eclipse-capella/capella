@@ -24,10 +24,10 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractTypedElementImpl#getAbstractType <em>Abstract Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -146,13 +146,7 @@ public abstract class AbstractTypedElementImpl extends AbstractNamedElementImpl 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractType) {
-				// end-extension-code
 					setAbstractType((AbstractType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

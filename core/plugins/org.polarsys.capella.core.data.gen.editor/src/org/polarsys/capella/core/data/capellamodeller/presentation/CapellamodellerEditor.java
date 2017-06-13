@@ -47,8 +47,6 @@ import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
@@ -80,6 +78,7 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -96,6 +95,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.FileTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
@@ -124,6 +124,7 @@ import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
+import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.polarsys.capella.common.data.activity.provider.ActivityItemProviderAdapterFactory;
 import org.polarsys.capella.common.data.behavior.provider.BehaviorItemProviderAdapterFactory;
@@ -146,6 +147,7 @@ import org.polarsys.capella.core.data.pa.deployment.provider.DeploymentItemProvi
 import org.polarsys.capella.core.data.pa.provider.PaItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.requirement.provider.RequirementItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.sharedmodel.provider.SharedmodelItemProviderAdapterFactory;
+import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
 import org.polarsys.kitalpha.emde.extension.ExtendedModel;
 import org.polarsys.kitalpha.emde.extension.ExtensibleModel;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionDescriptor;
@@ -218,8 +220,9 @@ public class CapellamodellerEditor
 	 * @generated
 	 */
 	// begin-capella-code
-	//protected PropertySheetPage propertySheetPage;
-	protected ExtendedPropertySheetPage propertySheetPage;
+	//protected List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
+	protected List<ExtendedPropertySheetPage> propertySheetPages = new ArrayList<ExtendedPropertySheetPage>();
+
 	// end-capella-code
 
 	/**
@@ -356,7 +359,7 @@ public class CapellamodellerEditor
 					}
 				}
 				else if (p instanceof PropertySheet) {
-					if (((PropertySheet)p).getCurrentPage() == propertySheetPage) {
+					if (propertySheetPages.contains(((PropertySheet)p).getCurrentPage())) {
 						getActionBarContributor().setActiveEditor(CapellamodellerEditor.this);
 						handleActivate();
 					}
@@ -474,6 +477,15 @@ public class CapellamodellerEditor
 			@Override
 			protected void unsetTarget(Resource target) {
 				basicUnsetTarget(target);
+				resourceToDiagnosticMap.remove(target);
+				if (updateProblemIndication) {
+					getSite().getShell().getDisplay().asyncExec
+						(new Runnable() {
+							 public void run() {
+								 updateProblemIndication();
+			}
+						 });
+				}
 			}
 		};
 
@@ -507,6 +519,7 @@ public class CapellamodellerEditor
 										}
 									}
 								}
+								return false;
 							}
 
 							return true;
@@ -770,9 +783,15 @@ public class CapellamodellerEditor
 								  if (mostRecentCommand != null) {
 									  setSelectionToViewer(mostRecentCommand.getAffectedObjects());
 								  }
-								  if (propertySheetPage != null && !propertySheetPage.getControl().isDisposed()) {
+								  for (Iterator<ExtendedPropertySheetPage> i = propertySheetPages.iterator(); i.hasNext(); ) {
+									  ExtendedPropertySheetPage propertySheetPage = i.next();
+									  if (propertySheetPage.getControl().isDisposed()) {
+										  i.remove();
+									  }
+									  else {
 									  propertySheetPage.refresh();
 								  }
+							  }
 							  }
 						  });
 				 }
@@ -780,13 +799,16 @@ public class CapellamodellerEditor
 
 		// Create the editing domain with a special command stack.
 		//
-		// begin-capella-code
 		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap<Resource, Boolean>());
+		// begin-capella-code
 		//String efName = TigEfProvider.getExecutionManagerName();
 		//ExecutionManager em = ExecutionManagerRegistry.getInstance().getExecutionManager(efName);
 		//editingDomain = (AdapterFactoryEditingDomain) em.getEditingDomain(); 
    		// end-capella-code
 
+		// Register this editor for ExtendedModel state
+		//
+		ModelExtensionHelper.getInstance(getEditingDomain().getResourceSet()).addListener(this);		
 	}
 
 	/**
@@ -1068,7 +1090,7 @@ public class CapellamodellerEditor
 		getSite().registerContextMenu(contextMenu, new UnwrappingSelectionProvider(viewer));
 
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
-		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
+		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance(), LocalSelectionTransfer.getTransfer(), FileTransfer.getInstance() };
 		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
 		viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(editingDomain, viewer));
 	}
@@ -1080,7 +1102,7 @@ public class CapellamodellerEditor
 	 * @generated
 	 */
 	public void createModel() {
-		URI resourceURI = EditUIUtil.getURI(getEditorInput());
+		URI resourceURI = EditUIUtil.getURI(getEditorInput(), editingDomain.getResourceSet().getURIConverter());
 		Exception exception = null;
 		Resource resource = null;
 		try {
@@ -1098,6 +1120,7 @@ public class CapellamodellerEditor
 			resourceToDiagnosticMap.put(resource,  analyzeResourceProblems(resource, exception));
 		}
 		editingDomain.getResourceSet().eAdapters().add(problemIndicationAdapter);
+		MetadataHelper.getViewpointMetadata(editingDomain.getResourceSet()).initMetadataStorage();
 	}
 
 	/**
@@ -1108,10 +1131,11 @@ public class CapellamodellerEditor
 	 * @generated
 	 */
 	public Diagnostic analyzeResourceProblems(Resource resource, Exception exception) {
-		if (!resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty()) {
+		boolean hasErrors = !resource.getErrors().isEmpty();
+		if (hasErrors || !resource.getWarnings().isEmpty()) {
 			BasicDiagnostic basicDiagnostic =
 				new BasicDiagnostic
-					(Diagnostic.ERROR,
+					(hasErrors ? Diagnostic.ERROR : Diagnostic.WARNING,
 					 "org.polarsys.capella.core.data.gen.editor", //$NON-NLS-1$
 					 0,
 					 getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
@@ -1147,8 +1171,8 @@ public class CapellamodellerEditor
 
 		// Only creates the other pages if there is something that can be edited
 		//
-		// begin-capella-code
 		if (!getEditingDomain().getResourceSet().getResources().isEmpty())
+		// begin-capella-code
 		//if (!getEditingDomain().getResourceSet().getResources().isEmpty() &&
 		//	!(getEditingDomain().getResourceSet().getResources().get(0)).getContents().isEmpty())
 		// end-capella-code
@@ -1166,9 +1190,11 @@ public class CapellamodellerEditor
                                 @Override
                                 public void refresh() {
                                     super.refresh();
-                                    if (propertySheetPage != null && !propertySheetPage.getControl().isDisposed()) {
-                                        propertySheetPage.refresh();
-                                    }
+									for (PropertySheetPage propertySheetPage : propertySheetPages) {
+                                    	if (!propertySheetPage.getControl().isDisposed()) {
+											propertySheetPage.refresh();
+										}
+									}
                                 }
                             };
                             return newTreeViewer;
@@ -1213,9 +1239,11 @@ public class CapellamodellerEditor
                                 @Override
                                 public void refresh() {
                                     super.refresh();
-                                    if (propertySheetPage != null && !propertySheetPage.getControl().isDisposed()) {
-                                        propertySheetPage.refresh();
-                                    }
+									for (PropertySheetPage propertySheetPage : propertySheetPages) {
+                                    	if (!propertySheetPage.getControl().isDisposed()) {
+											propertySheetPage.refresh();
+										}
+									}
                                 }
                             };
                             return newTreeViewer;
@@ -1254,9 +1282,11 @@ public class CapellamodellerEditor
                                 @Override
                                 public void refresh() {
                                     super.refresh();
-                                    if (propertySheetPage != null && !propertySheetPage.getControl().isDisposed()) {
-                                        propertySheetPage.refresh();
-                                    }
+									for (PropertySheetPage propertySheetPage : propertySheetPages) {
+                                    	if (!propertySheetPage.getControl().isDisposed()) {
+											propertySheetPage.refresh();
+										}
+									}
                                 }
                             };
                             return newListViewer;
@@ -1293,9 +1323,11 @@ public class CapellamodellerEditor
                                 @Override
                                 public void refresh() {
                                     super.refresh();
-                                    if (propertySheetPage != null && !propertySheetPage.getControl().isDisposed()) {
-                                        propertySheetPage.refresh();
-                                    }
+									for (PropertySheetPage propertySheetPage : propertySheetPages) {
+                                    	if (!propertySheetPage.getControl().isDisposed()) {
+											propertySheetPage.refresh();
+										}
+									}
                                 }
                             };
                             return newTreeViewer;
@@ -1334,9 +1366,11 @@ public class CapellamodellerEditor
                                 @Override
                                 public void refresh() {
                                     super.refresh();
-                                    if (propertySheetPage != null && !propertySheetPage.getControl().isDisposed()) {
-                                        propertySheetPage.refresh();
-                                    }
+									for (PropertySheetPage propertySheetPage : propertySheetPages) {
+                                    	if (!propertySheetPage.getControl().isDisposed()) {
+											propertySheetPage.refresh();
+										}
+									}
                                 }
                             };
                             return newTableViewer;
@@ -1391,9 +1425,11 @@ public class CapellamodellerEditor
                                 @Override
                                 public void refresh() {
                                     super.refresh();
-                                    if (propertySheetPage != null && !propertySheetPage.getControl().isDisposed()) {
-                                        propertySheetPage.refresh();
-                                    }
+									for (PropertySheetPage propertySheetPage : propertySheetPages) {
+                                    	if (!propertySheetPage.getControl().isDisposed()) {
+											propertySheetPage.refresh();
+										}
+									}
                                 }
                             };
                             return newTreeViewer;
@@ -1650,8 +1686,7 @@ public class CapellamodellerEditor
 	 * @generated
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
-		if (propertySheetPage == null) {
-			propertySheetPage =
+		ExtendedPropertySheetPage propertySheetPage =
 				new ExtendedPropertySheetPage(editingDomain) {
 					@Override
 					public void setSelectionToViewer(List<?> selection) {
@@ -1666,7 +1701,7 @@ public class CapellamodellerEditor
 					}
 				};
 			propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
-		}
+		propertySheetPages.add(propertySheetPage);
 
 		return propertySheetPage;
 	}
@@ -1733,6 +1768,7 @@ public class CapellamodellerEditor
 		//
 		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
 		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
+		saveOptions.put(Resource.OPTION_LINE_DELIMITER, Resource.OPTION_LINE_DELIMITER_UNSPECIFIED);
 
 		// Do the work within an operation because this is a long running activity that modifies the workbench.
 		//
@@ -1857,20 +1893,9 @@ public class CapellamodellerEditor
 	 * @generated
 	 */
 	public void gotoMarker(IMarker marker) {
-		try {
-			if (marker.getType().equals(EValidator.MARKER)) {
-				String uriAttribute = marker.getAttribute(EValidator.URI_ATTRIBUTE, null);
-				if (uriAttribute != null) {
-					URI uri = URI.createURI(uriAttribute);
-					EObject eObject = editingDomain.getResourceSet().getEObject(uri, true);
-					if (eObject != null) {
-					  setSelectionToViewer(Collections.singleton(editingDomain.getWrapper(eObject)));
-					}
-				}
-			}
-		}
-		catch (CoreException exception) {
-			CapellaModellerEditorPlugin.INSTANCE.log(exception);
+		List<?> targetObjects = markerHelper.getTargetObjects(editingDomain, marker);
+		if (!targetObjects.isEmpty()) {
+			setSelectionToViewer(targetObjects);
 		}
 	}
 
@@ -2072,7 +2097,7 @@ public class CapellamodellerEditor
 			getActionBarContributor().setActiveEditor(null);
 		}
 
-		if (propertySheetPage != null) {
+		for (PropertySheetPage propertySheetPage : propertySheetPages) {
 			propertySheetPage.dispose();
 		}
 

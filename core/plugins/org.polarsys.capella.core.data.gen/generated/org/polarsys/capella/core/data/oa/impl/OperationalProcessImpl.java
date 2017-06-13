@@ -33,10 +33,10 @@ import org.polarsys.capella.core.data.oa.OperationalProcess;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalProcessImpl#getInvolvingOperationalCapabilities <em>Involving Operational Capabilities</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

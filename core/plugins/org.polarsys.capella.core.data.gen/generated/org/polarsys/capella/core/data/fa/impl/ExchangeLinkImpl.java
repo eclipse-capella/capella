@@ -48,6 +48,7 @@ import org.polarsys.capella.core.data.fa.FunctionSpecification;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeLinkImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeLinkImpl#getNamingRules <em>Naming Rules</em>}</li>
@@ -57,7 +58,6 @@ import org.polarsys.capella.core.data.fa.FunctionSpecification;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeLinkImpl#getSources <em>Sources</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeLinkImpl#getDestinations <em>Destinations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -421,13 +421,7 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FaPackage.EXCHANGE_LINK__NAME:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setName((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.EXCHANGE_LINK__NAMING_RULES:
 				getNamingRules().clear();

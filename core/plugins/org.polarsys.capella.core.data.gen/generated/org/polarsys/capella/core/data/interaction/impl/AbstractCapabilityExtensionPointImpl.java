@@ -46,13 +46,13 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtensionPointImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtensionPointImpl#getNamingRules <em>Naming Rules</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtensionPointImpl#getAbstractCapability <em>Abstract Capability</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtensionPointImpl#getExtendLinks <em>Extend Links</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -322,13 +322,7 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAME:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setName((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES:
 				getNamingRules().clear();

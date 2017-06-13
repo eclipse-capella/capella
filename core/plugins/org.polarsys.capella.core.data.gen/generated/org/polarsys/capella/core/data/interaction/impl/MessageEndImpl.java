@@ -29,10 +29,10 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.MessageEndImpl#getMessage <em>Message</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

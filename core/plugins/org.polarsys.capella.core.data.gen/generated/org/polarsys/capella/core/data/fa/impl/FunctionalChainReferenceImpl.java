@@ -29,10 +29,10 @@ import org.polarsys.capella.core.data.fa.FunctionalChainReference;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainReferenceImpl#getReferencedFunctionalChain <em>Referenced Functional Chain</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

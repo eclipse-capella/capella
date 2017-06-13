@@ -47,6 +47,7 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.CommunicationItemImpl#getOwnedPropertyValuePkgs <em>Owned Property Value Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.CommunicationItemImpl#getOwnedDataValues <em>Owned Data Values</em>}</li>
@@ -54,7 +55,6 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
  *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.CommunicationItemImpl#getOwnedStateMachines <em>Owned State Machines</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.CommunicationItemImpl#getProperties <em>Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -343,13 +343,7 @@ public abstract class CommunicationItemImpl extends ClassifierImpl implements Co
 				getOwnedDataValues().addAll((Collection<? extends DataValue>)newValue);
 				return;
 			case CommunicationPackage.COMMUNICATION_ITEM__VISIBILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof VisibilityKind) {
-				// end-extension-code
 					setVisibility((VisibilityKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_STATE_MACHINES:
 				getOwnedStateMachines().clear();

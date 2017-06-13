@@ -19,8 +19,6 @@ import org.polarsys.capella.core.data.cs.PhysicalPathRealization;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Physical Path Realization</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

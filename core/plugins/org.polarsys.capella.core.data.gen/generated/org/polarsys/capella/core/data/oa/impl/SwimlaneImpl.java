@@ -47,6 +47,7 @@ import org.polarsys.capella.core.data.oa.Swimlane;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.SwimlaneImpl#getSuperGroup <em>Super Group</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.SwimlaneImpl#getSubGroups <em>Sub Groups</em>}</li>
@@ -59,7 +60,6 @@ import org.polarsys.capella.core.data.oa.Swimlane;
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.SwimlaneImpl#getSubPartitions <em>Sub Partitions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.SwimlaneImpl#getRepresentedEntity <em>Represented Entity</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -713,13 +713,7 @@ public class SwimlaneImpl extends NamedElementImpl implements Swimlane {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case OaPackage.SWIMLANE__SUPER_GROUP:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ActivityGroup) {
-				// end-extension-code
 					setSuperGroup((ActivityGroup)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.SWIMLANE__SUB_GROUPS:
 				getSubGroups().clear();
@@ -734,31 +728,13 @@ public class SwimlaneImpl extends NamedElementImpl implements Swimlane {
 				getOwnedEdges().addAll((Collection<? extends ActivityEdge>)newValue);
 				return;
 			case OaPackage.SWIMLANE__IS_DIMENSION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsDimension((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.SWIMLANE__IS_EXTERNAL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsExternal((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.SWIMLANE__REPRESENTED_ELEMENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractType) {
-				// end-extension-code
 					setRepresentedElement((AbstractType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -25,11 +25,11 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.NumericReferenceImpl#getReferencedValue <em>Referenced Value</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.NumericReferenceImpl#getReferencedProperty <em>Referenced Property</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -218,22 +218,10 @@ public class NumericReferenceImpl extends NumericValueImpl implements NumericRef
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatavaluePackage.NUMERIC_REFERENCE__REFERENCED_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setReferencedValue((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.NUMERIC_REFERENCE__REFERENCED_PROPERTY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Property) {
-				// end-extension-code
 					setReferencedProperty((Property)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

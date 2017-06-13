@@ -29,11 +29,11 @@ import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalActivityPkgImpl#getOwnedOperationalActivities <em>Owned Operational Activities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalActivityPkgImpl#getOwnedOperationalActivityPkgs <em>Owned Operational Activity Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -62,7 +62,7 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 */
 	public static OaFactory init() {
 		try {
-			OaFactory theOaFactory = (OaFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/oa/1.1.0"); //$NON-NLS-1$ 
+			OaFactory theOaFactory = (OaFactory)EPackage.Registry.INSTANCE.getEFactory(OaPackage.eNS_URI);
 			if (theOaFactory != null) {
 				return theOaFactory;
 			}

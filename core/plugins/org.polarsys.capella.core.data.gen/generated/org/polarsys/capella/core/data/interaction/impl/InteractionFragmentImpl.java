@@ -26,10 +26,10 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.InteractionFragmentImpl#getCoveredInstanceRoles <em>Covered Instance Roles</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

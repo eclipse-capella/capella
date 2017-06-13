@@ -35,13 +35,13 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractFunctionAbstractCapabilityInvolvementImpl#getInvolver <em>Involver</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractFunctionAbstractCapabilityInvolvementImpl#getInvolved <em>Involved</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractFunctionAbstractCapabilityInvolvementImpl#getCapability <em>Capability</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractFunctionAbstractCapabilityInvolvementImpl#getFunction <em>Function</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -362,22 +362,10 @@ public class AbstractFunctionAbstractCapabilityInvolvementImpl extends Relations
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.ABSTRACT_FUNCTION_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVER:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolverElement) {
-				// end-extension-code
 					setInvolver((InvolverElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.ABSTRACT_FUNCTION_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolvedElement) {
-				// end-extension-code
 					setInvolved((InvolvedElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

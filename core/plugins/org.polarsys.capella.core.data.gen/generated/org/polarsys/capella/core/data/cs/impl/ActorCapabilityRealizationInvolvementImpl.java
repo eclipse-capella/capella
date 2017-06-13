@@ -19,8 +19,6 @@ import org.polarsys.capella.core.data.cs.CsPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Actor Capability Realization Involvement</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

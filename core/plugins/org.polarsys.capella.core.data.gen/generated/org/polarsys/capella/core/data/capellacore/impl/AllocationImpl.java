@@ -26,11 +26,11 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.AllocationImpl#getTargetElement <em>Target Element</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.AllocationImpl#getSourceElement <em>Source Element</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -219,22 +219,10 @@ public abstract class AllocationImpl extends RelationshipImpl implements Allocat
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacorePackage.ALLOCATION__TARGET_ELEMENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof TraceableElement) {
-				// end-extension-code
 					setTargetElement((TraceableElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.ALLOCATION__SOURCE_ELEMENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof TraceableElement) {
-				// end-extension-code
 					setSourceElement((TraceableElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

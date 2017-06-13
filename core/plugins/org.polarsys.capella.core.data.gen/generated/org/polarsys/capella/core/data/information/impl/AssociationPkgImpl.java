@@ -46,6 +46,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.AssociationPkgImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.AssociationPkgImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -55,7 +56,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.information.impl.AssociationPkgImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.AssociationPkgImpl#getOwnedAssociations <em>Owned Associations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -437,13 +437,7 @@ public abstract class AssociationPkgImpl extends NamedElementImpl implements Ass
 				getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
 				return;
 			case InformationPackage.ASSOCIATION_PKG__VISIBILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof VisibilityKind) {
-				// end-extension-code
 					setVisibility((VisibilityKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.ASSOCIATION_PKG__OWNED_ASSOCIATIONS:
 				getOwnedAssociations().clear();

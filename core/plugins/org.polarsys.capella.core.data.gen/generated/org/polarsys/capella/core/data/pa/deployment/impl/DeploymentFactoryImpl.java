@@ -42,7 +42,7 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
 	 */
 	public static DeploymentFactory init() {
 		try {
-			DeploymentFactory theDeploymentFactory = (DeploymentFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/pa/deployment/1.1.0"); //$NON-NLS-1$ 
+			DeploymentFactory theDeploymentFactory = (DeploymentFactory)EPackage.Registry.INSTANCE.getEFactory(DeploymentPackage.eNS_URI);
 			if (theDeploymentFactory != null) {
 				return theDeploymentFactory;
 			}

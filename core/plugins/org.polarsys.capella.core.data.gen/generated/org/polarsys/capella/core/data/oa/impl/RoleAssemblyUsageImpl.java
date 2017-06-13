@@ -25,10 +25,10 @@ import org.polarsys.capella.core.data.oa.RoleAssemblyUsage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.RoleAssemblyUsageImpl#getChild <em>Child</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -147,13 +147,7 @@ public class RoleAssemblyUsageImpl extends NamedElementImpl implements RoleAssem
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case OaPackage.ROLE_ASSEMBLY_USAGE__CHILD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Role) {
-				// end-extension-code
 					setChild((Role)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

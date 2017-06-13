@@ -26,11 +26,11 @@ import org.polarsys.capella.core.data.ctx.SystemCommunicationHook;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemCommunicationHookImpl#getCommunication <em>Communication</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemCommunicationHookImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -219,22 +219,10 @@ public class SystemCommunicationHookImpl extends NamedElementImpl implements Sys
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CtxPackage.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof SystemCommunication) {
-				// end-extension-code
 					setCommunication((SystemCommunication)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CtxPackage.SYSTEM_COMMUNICATION_HOOK__TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Component) {
-				// end-extension-code
 					setType((Component)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

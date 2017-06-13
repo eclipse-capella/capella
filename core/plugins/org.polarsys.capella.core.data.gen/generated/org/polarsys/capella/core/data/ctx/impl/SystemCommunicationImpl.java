@@ -29,10 +29,10 @@ import org.polarsys.capella.core.data.ctx.SystemCommunicationHook;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemCommunicationImpl#getEnds <em>Ends</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

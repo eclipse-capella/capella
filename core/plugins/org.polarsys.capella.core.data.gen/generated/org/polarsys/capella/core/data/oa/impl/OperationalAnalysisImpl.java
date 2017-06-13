@@ -43,6 +43,7 @@ import org.polarsys.capella.core.data.oa.RolePkg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalAnalysisImpl#getOwnedOperationalContext <em>Owned Operational Context</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalAnalysisImpl#getOwnedRolePkg <em>Owned Role Pkg</em>}</li>
@@ -52,7 +53,6 @@ import org.polarsys.capella.core.data.oa.RolePkg;
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalAnalysisImpl#getContainedOperationalActivityPkg <em>Contained Operational Activity Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalAnalysisImpl#getAllocatingSystemAnalyses <em>Allocating System Analyses</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -718,40 +718,16 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof OperationalContext) {
-				// end-extension-code
 					setOwnedOperationalContext((OperationalContext)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof RolePkg) {
-				// end-extension-code
 					setOwnedRolePkg((RolePkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EntityPkg) {
-				// end-extension-code
 					setOwnedEntityPkg((EntityPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ConceptPkg) {
-				// end-extension-code
 					setOwnedConceptPkg((ConceptPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

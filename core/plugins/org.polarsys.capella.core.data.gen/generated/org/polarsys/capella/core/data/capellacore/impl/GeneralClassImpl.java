@@ -41,13 +41,13 @@ import org.polarsys.capella.core.data.information.Operation;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.GeneralClassImpl#isFinal <em>Final</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.GeneralClassImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.GeneralClassImpl#getContainedOperations <em>Contained Operations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.GeneralClassImpl#getNestedGeneralClasses <em>Nested General Classes</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -314,22 +314,10 @@ public abstract class GeneralClassImpl extends ClassifierImpl implements General
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacorePackage.GENERAL_CLASS__FINAL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setFinal((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.GENERAL_CLASS__VISIBILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof VisibilityKind) {
-				// end-extension-code
 					setVisibility((VisibilityKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.GENERAL_CLASS__NESTED_GENERAL_CLASSES:
 				getNestedGeneralClasses().clear();

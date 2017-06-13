@@ -40,6 +40,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.PropertyValueGroupImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.PropertyValueGroupImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -47,7 +48,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.PropertyValueGroupImpl#getNamingRules <em>Naming Rules</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.PropertyValueGroupImpl#getValuedElements <em>Valued Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

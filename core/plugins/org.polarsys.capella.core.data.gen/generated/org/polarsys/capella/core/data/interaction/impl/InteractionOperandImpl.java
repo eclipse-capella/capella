@@ -29,11 +29,11 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.InteractionOperandImpl#getReferencedInteractionFragments <em>Referenced Interaction Fragments</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.InteractionOperandImpl#getGuard <em>Guard</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -180,13 +180,7 @@ public class InteractionOperandImpl extends InteractionFragmentImpl implements I
 				getReferencedInteractionFragments().addAll((Collection<? extends InteractionFragment>)newValue);
 				return;
 			case InteractionPackage.INTERACTION_OPERAND__GUARD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Constraint) {
-				// end-extension-code
 					setGuard((Constraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

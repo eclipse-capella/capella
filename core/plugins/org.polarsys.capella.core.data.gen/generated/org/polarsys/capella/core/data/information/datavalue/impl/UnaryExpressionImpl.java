@@ -26,11 +26,11 @@ import org.polarsys.capella.core.data.information.datavalue.UnaryOperator;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.UnaryExpressionImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.UnaryExpressionImpl#getOwnedOperand <em>Owned Operand</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -254,22 +254,10 @@ public class UnaryExpressionImpl extends AbstractExpressionValueImpl implements 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatavaluePackage.UNARY_EXPRESSION__OPERATOR:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof UnaryOperator) {
-				// end-extension-code
 					setOperator((UnaryOperator)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedOperand((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

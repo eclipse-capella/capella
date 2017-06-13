@@ -74,6 +74,7 @@ import org.polarsys.capella.core.data.oa.OaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.CommunicationMeanImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.CommunicationMeanImpl#getNamingRules <em>Naming Rules</em>}</li>
@@ -108,7 +109,6 @@ import org.polarsys.capella.core.data.oa.OaPackage;
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.CommunicationMeanImpl#getSourceEntity <em>Source Entity</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.CommunicationMeanImpl#getTargetEntity <em>Target Entity</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1952,13 +1952,7 @@ public class CommunicationMeanImpl extends RelationshipImpl implements Communica
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case OaPackage.COMMUNICATION_MEAN__NAME:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setName((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.COMMUNICATION_MEAN__NAMING_RULES:
 				getNamingRules().clear();
@@ -1973,49 +1967,19 @@ public class CommunicationMeanImpl extends RelationshipImpl implements Communica
 				getConvoyedInformations().addAll((Collection<? extends AbstractExchangeItem>)newValue);
 				return;
 			case OaPackage.COMMUNICATION_MEAN__SOURCE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InformationsExchanger) {
-				// end-extension-code
 					setSource((InformationsExchanger)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.COMMUNICATION_MEAN__TARGET:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InformationsExchanger) {
-				// end-extension-code
 					setTarget((InformationsExchanger)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.COMMUNICATION_MEAN__LINK:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ExchangeContainment) {
-				// end-extension-code
 					setLink((ExchangeContainment)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.COMMUNICATION_MEAN__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ComponentExchangeKind) {
-				// end-extension-code
 					setKind((ComponentExchangeKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.COMMUNICATION_MEAN__ORIENTED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setOriented((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.COMMUNICATION_MEAN__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS:
 				getOwnedComponentExchangeFunctionalExchangeAllocations().clear();

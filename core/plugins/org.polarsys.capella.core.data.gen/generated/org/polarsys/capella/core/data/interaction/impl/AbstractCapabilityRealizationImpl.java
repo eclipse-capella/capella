@@ -30,11 +30,11 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityRealizationImpl#getRealizedCapability <em>Realized Capability</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityRealizationImpl#getRealizingCapability <em>Realizing Capability</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

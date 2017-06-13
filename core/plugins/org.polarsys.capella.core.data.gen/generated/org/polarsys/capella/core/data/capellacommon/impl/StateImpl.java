@@ -45,6 +45,7 @@ import org.polarsys.capella.core.data.interaction.AbstractCapability;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateImpl#getOwnedRegions <em>Owned Regions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateImpl#getOwnedConnectionPoints <em>Owned Connection Points</em>}</li>
@@ -56,7 +57,6 @@ import org.polarsys.capella.core.data.interaction.AbstractCapability;
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateImpl#getExit <em>Exit</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateImpl#getStateInvariant <em>State Invariant</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -575,13 +575,7 @@ public class StateImpl extends AbstractStateImpl implements State {
 				getExit().addAll((Collection<? extends AbstractEvent>)newValue);
 				return;
 			case CapellacommonPackage.STATE__STATE_INVARIANT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractConstraint) {
-				// end-extension-code
 					setStateInvariant((AbstractConstraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -37,6 +37,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentPkgImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentPkgImpl#getOwnedAssociations <em>Owned Associations</em>}</li>
@@ -45,7 +46,6 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentPkgImpl#getOwnedKeyParts <em>Owned Key Parts</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentPkgImpl#getOwnedDeployments <em>Owned Deployments</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -345,13 +345,7 @@ public class PhysicalComponentPkgImpl extends AbstractFunctionalStructureImpl im
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PaPackage.PHYSICAL_COMPONENT_PKG__VISIBILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof VisibilityKind) {
-				// end-extension-code
 					setVisibility((VisibilityKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_ASSOCIATIONS:
 				getOwnedAssociations().clear();

@@ -32,11 +32,11 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.NumericValueImpl#getUnit <em>Unit</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.NumericValueImpl#getNumericType <em>Numeric Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -221,13 +221,7 @@ public abstract class NumericValueImpl extends DataValueImpl implements NumericV
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatavaluePackage.NUMERIC_VALUE__UNIT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Unit) {
-				// end-extension-code
 					setUnit((Unit)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

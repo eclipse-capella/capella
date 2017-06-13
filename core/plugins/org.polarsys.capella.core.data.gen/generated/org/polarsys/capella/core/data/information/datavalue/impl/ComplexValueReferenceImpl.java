@@ -25,11 +25,11 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.ComplexValueReferenceImpl#getReferencedValue <em>Referenced Value</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.ComplexValueReferenceImpl#getReferencedProperty <em>Referenced Property</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -218,22 +218,10 @@ public class ComplexValueReferenceImpl extends AbstractComplexValueImpl implemen
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatavaluePackage.COMPLEX_VALUE_REFERENCE__REFERENCED_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractComplexValue) {
-				// end-extension-code
 					setReferencedValue((AbstractComplexValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.COMPLEX_VALUE_REFERENCE__REFERENCED_PROPERTY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Property) {
-				// end-extension-code
 					setReferencedProperty((Property)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

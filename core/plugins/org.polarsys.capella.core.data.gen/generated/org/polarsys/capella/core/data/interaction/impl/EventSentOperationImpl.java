@@ -24,10 +24,10 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.EventSentOperationImpl#getOperation <em>Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -146,13 +146,7 @@ public class EventSentOperationImpl extends EventImpl implements EventSentOperat
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.EVENT_SENT_OPERATION__OPERATION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractEventOperation) {
-				// end-extension-code
 					setOperation((AbstractEventOperation)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -48,6 +48,7 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemElementImpl#isOrdered <em>Ordered</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemElementImpl#isUnique <em>Unique</em>}</li>
@@ -68,7 +69,6 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemElementImpl#isComposite <em>Composite</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemElementImpl#getReferencedProperties <em>Referenced Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1322,148 +1322,52 @@ public class ExchangeItemElementImpl extends NamedElementImpl implements Exchang
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__ORDERED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setOrdered((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__UNIQUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setUnique((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__MIN_INCLUSIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setMinInclusive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__MAX_INCLUSIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setMaxInclusive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__OWNED_DEFAULT_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedDefaultValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__OWNED_MIN_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedMinValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__OWNED_MAX_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedMaxValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__OWNED_NULL_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedNullValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__OWNED_MIN_CARD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMinCard((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__OWNED_MIN_LENGTH:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMinLength((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__OWNED_MAX_CARD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMaxCard((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__OWNED_MAX_LENGTH:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMaxLength((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__ABSTRACT_TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractType) {
-				// end-extension-code
 					setAbstractType((AbstractType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ElementKind) {
-				// end-extension-code
 					setKind((ElementKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__DIRECTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ParameterDirection) {
-				// end-extension-code
 					setDirection((ParameterDirection)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__COMPOSITE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setComposite((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.EXCHANGE_ITEM_ELEMENT__REFERENCED_PROPERTIES:
 				getReferencedProperties().clear();

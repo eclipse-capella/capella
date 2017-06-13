@@ -49,6 +49,7 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ExchangeItemAllocationImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ExchangeItemAllocationImpl#getInvokingSequenceMessages <em>Invoking Sequence Messages</em>}</li>
@@ -58,7 +59,6 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ExchangeItemAllocationImpl#getAllocatedItem <em>Allocated Item</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ExchangeItemAllocationImpl#getAllocatingInterface <em>Allocating Interface</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -525,49 +525,19 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setName((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setFinal((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.EXCHANGE_ITEM_ALLOCATION__SEND_PROTOCOL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof CommunicationLinkProtocol) {
-				// end-extension-code
 					setSendProtocol((CommunicationLinkProtocol)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.EXCHANGE_ITEM_ALLOCATION__RECEIVE_PROTOCOL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof CommunicationLinkProtocol) {
-				// end-extension-code
 					setReceiveProtocol((CommunicationLinkProtocol)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ExchangeItem) {
-				// end-extension-code
 					setAllocatedItem((ExchangeItem)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

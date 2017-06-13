@@ -22,11 +22,11 @@ import org.polarsys.capella.common.data.modellingcore.PublishableElement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.PublishableElementImpl#isVisibleInDoc <em>Visible In Doc</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.PublishableElementImpl#isVisibleInLM <em>Visible In LM</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -191,22 +191,10 @@ public abstract class PublishableElementImpl extends ModelElementImpl implements
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInDoc((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInLM((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

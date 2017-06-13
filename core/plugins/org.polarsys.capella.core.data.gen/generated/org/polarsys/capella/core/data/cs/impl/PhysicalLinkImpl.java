@@ -49,6 +49,7 @@ import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllo
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalLinkImpl#getAllocatorConfigurationItems <em>Allocator Configuration Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalLinkImpl#getInvolvingInvolvements <em>Involving Involvements</em>}</li>
@@ -62,7 +63,6 @@ import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllo
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalLinkImpl#getRealizedPhysicalLinks <em>Realized Physical Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalLinkImpl#getRealizingPhysicalLinks <em>Realizing Physical Links</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

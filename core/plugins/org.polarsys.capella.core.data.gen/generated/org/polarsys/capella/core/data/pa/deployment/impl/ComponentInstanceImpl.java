@@ -50,6 +50,7 @@ import org.polarsys.capella.core.data.pa.deployment.PortInstance;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.ComponentInstanceImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.ComponentInstanceImpl#getDeployingLinks <em>Deploying Links</em>}</li>
@@ -59,7 +60,6 @@ import org.polarsys.capella.core.data.pa.deployment.PortInstance;
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.ComponentInstanceImpl#getOwnedInstanceDeploymentLinks <em>Owned Instance Deployment Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.ComponentInstanceImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -468,13 +468,7 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DeploymentPackage.COMPONENT_INSTANCE__NAME:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setName((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DeploymentPackage.COMPONENT_INSTANCE__OWNED_ABSTRACT_PHYSICAL_INSTANCES:
 				getOwnedAbstractPhysicalInstances().clear();
@@ -485,13 +479,7 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 				getOwnedInstanceDeploymentLinks().addAll((Collection<? extends InstanceDeploymentLink>)newValue);
 				return;
 			case DeploymentPackage.COMPONENT_INSTANCE__TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractPhysicalComponent) {
-				// end-extension-code
 					setType((AbstractPhysicalComponent)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

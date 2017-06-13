@@ -18,8 +18,6 @@ import org.polarsys.capella.core.data.requirement.SystemUserRequirement;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>System User Requirement</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

@@ -19,8 +19,6 @@ import org.polarsys.capella.core.data.la.SystemActorRealization;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>System Actor Realization</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

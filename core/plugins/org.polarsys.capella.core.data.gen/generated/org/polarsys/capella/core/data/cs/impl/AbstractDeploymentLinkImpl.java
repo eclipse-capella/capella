@@ -27,11 +27,11 @@ import org.polarsys.capella.core.data.cs.DeploymentTarget;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.AbstractDeploymentLinkImpl#getDeployedElement <em>Deployed Element</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.AbstractDeploymentLinkImpl#getLocation <em>Location</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -220,22 +220,10 @@ public abstract class AbstractDeploymentLinkImpl extends RelationshipImpl implem
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CsPackage.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DeployableElement) {
-				// end-extension-code
 					setDeployedElement((DeployableElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.ABSTRACT_DEPLOYMENT_LINK__LOCATION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DeploymentTarget) {
-				// end-extension-code
 					setLocation((DeploymentTarget)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

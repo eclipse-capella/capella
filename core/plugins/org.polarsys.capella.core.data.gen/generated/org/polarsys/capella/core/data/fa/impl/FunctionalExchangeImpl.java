@@ -72,6 +72,7 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalExchangeImpl#getRealizedFlow <em>Realized Flow</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalExchangeImpl#getInvolvingInvolvements <em>Involving Involvements</em>}</li>
@@ -106,7 +107,6 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalExchangeImpl#getRealizedFunctionalExchanges <em>Realized Functional Exchanges</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalExchangeImpl#getRealizingFunctionalExchanges <em>Realizing Functional Exchanges</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -2263,121 +2263,43 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FaPackage.FUNCTIONAL_EXCHANGE__REALIZED_FLOW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractInformationFlow) {
-				// end-extension-code
 					setRealizedFlow((AbstractInformationFlow)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__KIND_OF_RATE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof RateKind) {
-				// end-extension-code
 					setKindOfRate((RateKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__RATE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setRate((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__PROBABILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setProbability((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__TARGET:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ActivityNode) {
-				// end-extension-code
 					setTarget((ActivityNode)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__SOURCE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ActivityNode) {
-				// end-extension-code
 					setSource((ActivityNode)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__GUARD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setGuard((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__WEIGHT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setWeight((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__INTERRUPTS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InterruptibleActivityRegion) {
-				// end-extension-code
 					setInterrupts((InterruptibleActivityRegion)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__IS_MULTICAST:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsMulticast((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__IS_MULTIRECEIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsMultireceive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__TRANSFORMATION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractBehavior) {
-				// end-extension-code
 					setTransformation((AbstractBehavior)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__SELECTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractBehavior) {
-				// end-extension-code
 					setSelection((AbstractBehavior)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__EXCHANGE_SPECIFICATIONS:
 				getExchangeSpecifications().clear();

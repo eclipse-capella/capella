@@ -47,6 +47,7 @@ import org.polarsys.capella.core.data.ctx.SystemMissionInvolvement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.MissionImpl#getInvolvedInvolvements <em>Involved Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.MissionImpl#getOwnedActorMissionInvolvements <em>Owned Actor Mission Involvements</em>}</li>
@@ -58,7 +59,6 @@ import org.polarsys.capella.core.data.ctx.SystemMissionInvolvement;
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.MissionImpl#getInvolvedSystem <em>Involved System</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.MissionImpl#getExploitedCapabilities <em>Exploited Capabilities</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -632,13 +632,7 @@ public class MissionImpl extends NamedElementImpl implements Mission {
 				getOwnedActorMissionInvolvements().addAll((Collection<? extends ActorMissionInvolvement>)newValue);
 				return;
 			case CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof SystemMissionInvolvement) {
-				// end-extension-code
 					setOwnedSystemMissionInvolvement((SystemMissionInvolvement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS:
 				getOwnedCapabilityExploitations().clear();

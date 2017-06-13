@@ -43,6 +43,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.impl.FolderImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.impl.FolderImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -52,7 +53,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.impl.FolderImpl#getOwnedFolders <em>Owned Folders</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.impl.FolderImpl#getOwnedModelRoots <em>Owned Model Roots</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

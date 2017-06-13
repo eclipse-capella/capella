@@ -37,12 +37,12 @@ import org.polarsys.capella.core.data.capellacore.impl.TraceImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.GenericTraceImpl#getKeyValuePairs <em>Key Value Pairs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.GenericTraceImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.GenericTraceImpl#getTarget <em>Target</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -25,10 +25,10 @@ import org.polarsys.capella.core.data.cs.ProvidedInterfaceLink;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ProvidedInterfaceLinkImpl#getInterface <em>Interface</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -147,13 +147,7 @@ public abstract class ProvidedInterfaceLinkImpl extends RelationshipImpl impleme
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CsPackage.PROVIDED_INTERFACE_LINK__INTERFACE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Interface) {
-				// end-extension-code
 					setInterface((Interface)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

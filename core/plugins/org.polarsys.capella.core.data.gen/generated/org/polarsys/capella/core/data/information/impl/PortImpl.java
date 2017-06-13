@@ -41,6 +41,7 @@ import org.polarsys.capella.core.data.information.PortRealization;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PortImpl#getIncomingPortRealizations <em>Incoming Port Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PortImpl#getOutgoingPortRealizations <em>Outgoing Port Realizations</em>}</li>
@@ -52,7 +53,6 @@ import org.polarsys.capella.core.data.information.PortRealization;
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PortImpl#getOwnedPortRealizations <em>Owned Port Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PortImpl#getOwnedPortAllocations <em>Owned Port Allocations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

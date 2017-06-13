@@ -24,11 +24,11 @@ import org.polarsys.capella.core.data.capellacore.Generalization;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.GeneralizationImpl#getSuper <em>Super</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.GeneralizationImpl#getSub <em>Sub</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -217,22 +217,10 @@ public class GeneralizationImpl extends RelationshipImpl implements Generalizati
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacorePackage.GENERALIZATION__SUPER:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof GeneralizableElement) {
-				// end-extension-code
 					setSuper((GeneralizableElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.GENERALIZATION__SUB:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof GeneralizableElement) {
-				// end-extension-code
 					setSub((GeneralizableElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

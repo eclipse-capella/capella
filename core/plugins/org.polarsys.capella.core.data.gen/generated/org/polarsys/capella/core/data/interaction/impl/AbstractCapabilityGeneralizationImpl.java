@@ -34,11 +34,11 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityGeneralizationImpl#getSuper <em>Super</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityGeneralizationImpl#getSub <em>Sub</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -222,13 +222,7 @@ public class AbstractCapabilityGeneralizationImpl extends RelationshipImpl imple
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractCapability) {
-				// end-extension-code
 					setSuper((AbstractCapability)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -26,11 +26,11 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.ConceptComplianceImpl#getComplyWithConcept <em>Comply With Concept</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.ConceptComplianceImpl#getCompliantCapability <em>Compliant Capability</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -219,22 +219,10 @@ public class ConceptComplianceImpl extends RelationshipImpl implements ConceptCo
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case OaPackage.CONCEPT_COMPLIANCE__COMPLY_WITH_CONCEPT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Concept) {
-				// end-extension-code
 					setComplyWithConcept((Concept)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.CONCEPT_COMPLIANCE__COMPLIANT_CAPABILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof OperationalCapability) {
-				// end-extension-code
 					setCompliantCapability((OperationalCapability)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

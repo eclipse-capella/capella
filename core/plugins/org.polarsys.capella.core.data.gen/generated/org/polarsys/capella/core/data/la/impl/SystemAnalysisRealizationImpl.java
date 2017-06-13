@@ -19,8 +19,6 @@ import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>System Analysis Realization</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

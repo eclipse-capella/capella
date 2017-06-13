@@ -30,11 +30,11 @@ import org.polarsys.capella.core.data.cs.CsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ArchitectureAllocationImpl#getAllocatedArchitecture <em>Allocated Architecture</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ArchitectureAllocationImpl#getAllocatingArchitecture <em>Allocating Architecture</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

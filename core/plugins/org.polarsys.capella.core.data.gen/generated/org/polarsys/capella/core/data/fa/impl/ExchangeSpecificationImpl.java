@@ -50,6 +50,7 @@ import org.polarsys.capella.core.data.fa.FaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeSpecificationImpl#getRealizedFlow <em>Realized Flow</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeSpecificationImpl#getRealizations <em>Realizations</em>}</li>
@@ -62,7 +63,6 @@ import org.polarsys.capella.core.data.fa.FaPackage;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeSpecificationImpl#getOutgoingExchangeSpecificationRealizations <em>Outgoing Exchange Specification Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeSpecificationImpl#getIncomingExchangeSpecificationRealizations <em>Incoming Exchange Specification Realizations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -780,13 +780,7 @@ public abstract class ExchangeSpecificationImpl extends NamedElementImpl impleme
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FaPackage.EXCHANGE_SPECIFICATION__REALIZED_FLOW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractInformationFlow) {
-				// end-extension-code
 					setRealizedFlow((AbstractInformationFlow)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.EXCHANGE_SPECIFICATION__REALIZATIONS:
 				getRealizations().clear();
@@ -797,31 +791,13 @@ public abstract class ExchangeSpecificationImpl extends NamedElementImpl impleme
 				getConvoyedInformations().addAll((Collection<? extends AbstractExchangeItem>)newValue);
 				return;
 			case FaPackage.EXCHANGE_SPECIFICATION__SOURCE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InformationsExchanger) {
-				// end-extension-code
 					setSource((InformationsExchanger)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.EXCHANGE_SPECIFICATION__TARGET:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InformationsExchanger) {
-				// end-extension-code
 					setTarget((InformationsExchanger)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.EXCHANGE_SPECIFICATION__LINK:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ExchangeContainment) {
-				// end-extension-code
 					setLink((ExchangeContainment)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

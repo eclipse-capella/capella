@@ -49,7 +49,7 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 */
 	public static LaFactory init() {
 		try {
-			LaFactory theLaFactory = (LaFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/la/1.1.0"); //$NON-NLS-1$ 
+			LaFactory theLaFactory = (LaFactory)EPackage.Registry.INSTANCE.getEFactory(LaPackage.eNS_URI);
 			if (theLaFactory != null) {
 				return theLaFactory;
 			}

@@ -43,6 +43,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.DeploymentAspectImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.DeploymentAspectImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -52,7 +53,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.DeploymentAspectImpl#getOwnedConfigurations <em>Owned Configurations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.DeploymentAspectImpl#getOwnedDeploymentAspects <em>Owned Deployment Aspects</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

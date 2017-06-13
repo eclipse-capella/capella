@@ -29,11 +29,11 @@ import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalActorPkgImpl#getOwnedPhysicalActorPkgs <em>Owned Physical Actor Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalActorPkgImpl#getOwnedPhysicalActors <em>Owned Physical Actors</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

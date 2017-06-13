@@ -28,10 +28,10 @@ import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.EnumerationPropertyTypeImpl#getOwnedLiterals <em>Owned Literals</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

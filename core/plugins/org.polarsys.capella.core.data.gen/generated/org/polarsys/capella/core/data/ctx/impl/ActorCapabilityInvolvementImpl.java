@@ -35,13 +35,13 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.ActorCapabilityInvolvementImpl#getInvolver <em>Involver</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.ActorCapabilityInvolvementImpl#getInvolved <em>Involved</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.ActorCapabilityInvolvementImpl#getActor <em>Actor</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.ActorCapabilityInvolvementImpl#getCapability <em>Capability</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -362,22 +362,10 @@ public class ActorCapabilityInvolvementImpl extends RelationshipImpl implements 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVER:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolverElement) {
-				// end-extension-code
 					setInvolver((InvolverElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolvedElement) {
-				// end-extension-code
 					setInvolved((InvolvedElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

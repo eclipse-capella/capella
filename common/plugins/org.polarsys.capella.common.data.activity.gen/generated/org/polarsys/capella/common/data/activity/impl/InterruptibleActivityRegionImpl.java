@@ -28,10 +28,10 @@ import org.polarsys.capella.common.data.activity.InterruptibleActivityRegion;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.InterruptibleActivityRegionImpl#getInterruptingEdges <em>Interrupting Edges</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

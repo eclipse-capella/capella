@@ -29,11 +29,11 @@ import org.polarsys.capella.core.data.fa.impl.FunctionPkgImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemFunctionPkgImpl#getOwnedSystemFunctions <em>Owned System Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemFunctionPkgImpl#getOwnedSystemFunctionPkgs <em>Owned System Function Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

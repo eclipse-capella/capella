@@ -32,12 +32,12 @@ import org.polarsys.capella.common.model.helpers.IHelper;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.InformationsExchangerImpl#getIncomingInformationFlows <em>Incoming Information Flows</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.InformationsExchangerImpl#getOutgoingInformationFlows <em>Outgoing Information Flows</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.InformationsExchangerImpl#getInformationFlows <em>Information Flows</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

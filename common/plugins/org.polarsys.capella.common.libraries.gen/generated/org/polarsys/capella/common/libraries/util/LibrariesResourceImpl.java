@@ -17,6 +17,7 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLLoad;
@@ -26,6 +27,8 @@ import org.eclipse.emf.ecore.xmi.XMLSave;
 import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
+import org.polarsys.capella.common.data.core.gen.xmi.impl.CapellaXMLSaveImpl;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.eclipse.emf.ecore.xmi.impl.XMLSaveImpl;
 import org.polarsys.kitalpha.emde.xmi.XMIExtensionHelperImpl;
 import org.polarsys.kitalpha.emde.xmi.XMIExtensionLoadImpl;
@@ -146,7 +149,8 @@ public class LibrariesResourceImpl extends XMIResourceImpl {
 		getDefaultLoadOptions().put(XMLResource.OPTION_USE_PARSER_POOL, parserPool);
 		getDefaultLoadOptions().put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, nameToFeatureMap);
 		getDefaultLoadOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
-		getDefaultLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);	}
+		getDefaultLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
+	}
 
   //begin-capella-code
   /**

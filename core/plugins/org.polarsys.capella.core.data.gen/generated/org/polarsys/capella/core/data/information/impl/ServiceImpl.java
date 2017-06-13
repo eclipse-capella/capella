@@ -37,13 +37,13 @@ import org.polarsys.capella.core.data.information.communication.MessageReference
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ServiceImpl#getSynchronismKind <em>Synchronism Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ServiceImpl#getThrownExceptions <em>Thrown Exceptions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ServiceImpl#getMessages <em>Messages</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ServiceImpl#getMessageReferences <em>Message References</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -272,13 +272,7 @@ public class ServiceImpl extends OperationImpl implements Service {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InformationPackage.SERVICE__SYNCHRONISM_KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof SynchronismKind) {
-				// end-extension-code
 					setSynchronismKind((SynchronismKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.SERVICE__THROWN_EXCEPTIONS:
 				getThrownExceptions().clear();

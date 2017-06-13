@@ -39,7 +39,7 @@ public class LibrariesFactoryImpl extends EFactoryImpl implements LibrariesFacto
 	 */
 	public static LibrariesFactory init() {
 		try {
-			LibrariesFactory theLibrariesFactory = (LibrariesFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/common/libraries/1.1.0"); //$NON-NLS-1$ 
+			LibrariesFactory theLibrariesFactory = (LibrariesFactory)EPackage.Registry.INSTANCE.getEFactory(LibrariesPackage.eNS_URI);
 			if (theLibrariesFactory != null) {
 				return theLibrariesFactory;
 			}

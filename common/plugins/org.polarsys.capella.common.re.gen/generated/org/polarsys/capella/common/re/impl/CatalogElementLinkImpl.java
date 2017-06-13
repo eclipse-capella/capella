@@ -29,6 +29,7 @@ import org.polarsys.capella.common.re.RePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementLinkImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementLinkImpl#getTarget <em>Target</em>}</li>
@@ -36,7 +37,6 @@ import org.polarsys.capella.common.re.RePackage;
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementLinkImpl#getUnsynchronizedFeatures <em>Unsynchronized Features</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementLinkImpl#isSuffixed <em>Suffixed</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -385,44 +385,20 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case RePackage.CATALOG_ELEMENT_LINK__SOURCE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof CatalogElement) {
-				// end-extension-code
 					setSource((CatalogElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RePackage.CATALOG_ELEMENT_LINK__TARGET:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EObject) {
-				// end-extension-code
 					setTarget((EObject)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RePackage.CATALOG_ELEMENT_LINK__ORIGIN:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof CatalogElementLink) {
-				// end-extension-code
 					setOrigin((CatalogElementLink)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
 				getUnsynchronizedFeatures().clear();
 				getUnsynchronizedFeatures().addAll((Collection<? extends String>)newValue);
 				return;
 			case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setSuffixed((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

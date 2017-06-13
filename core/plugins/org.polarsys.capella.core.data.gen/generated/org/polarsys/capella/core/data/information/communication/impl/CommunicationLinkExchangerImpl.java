@@ -37,6 +37,7 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.CommunicationLinkExchangerImpl#getOwnedCommunicationLinks <em>Owned Communication Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.CommunicationLinkExchangerImpl#getProduce <em>Produce</em>}</li>
@@ -50,7 +51,6 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
  *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.CommunicationLinkExchangerImpl#getAcquire <em>Acquire</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.CommunicationLinkExchangerImpl#getTransmit <em>Transmit</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -33,11 +33,11 @@ import org.polarsys.capella.core.data.cs.InterfaceUse;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceUseImpl#getInterfaceUser <em>Interface User</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceUseImpl#getUsedInterface <em>Used Interface</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -222,13 +222,7 @@ public class InterfaceUseImpl extends RelationshipImpl implements InterfaceUse {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CsPackage.INTERFACE_USE__USED_INTERFACE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Interface) {
-				// end-extension-code
 					setUsedInterface((Interface)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

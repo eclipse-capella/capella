@@ -41,7 +41,7 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 */
 	public static CommunicationFactory init() {
 		try {
-			CommunicationFactory theCommunicationFactory = (CommunicationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/information/communication/1.1.0"); //$NON-NLS-1$ 
+			CommunicationFactory theCommunicationFactory = (CommunicationFactory)EPackage.Registry.INSTANCE.getEFactory(CommunicationPackage.eNS_URI);
 			if (theCommunicationFactory != null) {
 				return theCommunicationFactory;
 			}

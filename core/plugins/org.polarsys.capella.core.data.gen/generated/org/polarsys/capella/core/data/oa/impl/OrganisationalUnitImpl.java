@@ -31,11 +31,11 @@ import org.polarsys.capella.core.data.oa.OrganisationalUnitComposition;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OrganisationalUnitImpl#getOrganisationalUnitCompositions <em>Organisational Unit Compositions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OrganisationalUnitImpl#getCommunityOfInterestMemberships <em>Community Of Interest Memberships</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -36,7 +36,7 @@ public class SharedmodelFactoryImpl extends EFactoryImpl implements SharedmodelF
 	 */
 	public static SharedmodelFactory init() {
 		try {
-			SharedmodelFactory theSharedmodelFactory = (SharedmodelFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/sharedmodel/1.1.0"); //$NON-NLS-1$ 
+			SharedmodelFactory theSharedmodelFactory = (SharedmodelFactory)EPackage.Registry.INSTANCE.getEFactory(SharedmodelPackage.eNS_URI);
 			if (theSharedmodelFactory != null) {
 				return theSharedmodelFactory;
 			}

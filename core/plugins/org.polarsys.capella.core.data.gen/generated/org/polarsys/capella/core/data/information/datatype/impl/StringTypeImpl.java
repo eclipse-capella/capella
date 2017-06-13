@@ -26,13 +26,13 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.StringTypeImpl#getOwnedDefaultValue <em>Owned Default Value</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.StringTypeImpl#getOwnedNullValue <em>Owned Null Value</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.StringTypeImpl#getOwnedMinLength <em>Owned Min Length</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.StringTypeImpl#getOwnedMaxLength <em>Owned Max Length</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -513,40 +513,16 @@ public class StringTypeImpl extends DataTypeImpl implements StringType {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatatypePackage.STRING_TYPE__OWNED_DEFAULT_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractStringValue) {
-				// end-extension-code
 					setOwnedDefaultValue((AbstractStringValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.STRING_TYPE__OWNED_NULL_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractStringValue) {
-				// end-extension-code
 					setOwnedNullValue((AbstractStringValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.STRING_TYPE__OWNED_MIN_LENGTH:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMinLength((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.STRING_TYPE__OWNED_MAX_LENGTH:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMaxLength((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

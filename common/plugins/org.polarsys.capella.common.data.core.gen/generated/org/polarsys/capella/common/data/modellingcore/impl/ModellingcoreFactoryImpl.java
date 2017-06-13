@@ -36,7 +36,7 @@ public class ModellingcoreFactoryImpl extends EFactoryImpl implements Modellingc
 	 */
 	public static ModellingcoreFactory init() {
 		try {
-			ModellingcoreFactory theModellingcoreFactory = (ModellingcoreFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/common/core/1.1.0"); //$NON-NLS-1$ 
+			ModellingcoreFactory theModellingcoreFactory = (ModellingcoreFactory)EPackage.Registry.INSTANCE.getEFactory(ModellingcorePackage.eNS_URI);
 			if (theModellingcoreFactory != null) {
 				return theModellingcoreFactory;
 			}

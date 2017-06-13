@@ -18,8 +18,6 @@ import org.polarsys.capella.core.data.capellacommon.ChoicePseudoState;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Choice Pseudo State</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

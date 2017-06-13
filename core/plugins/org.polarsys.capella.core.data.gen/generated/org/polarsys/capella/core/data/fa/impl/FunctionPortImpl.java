@@ -43,6 +43,7 @@ import org.polarsys.capella.core.data.information.impl.PortImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionPortImpl#getAbstractType <em>Abstract Type</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionPortImpl#getType <em>Type</em>}</li>
@@ -52,7 +53,6 @@ import org.polarsys.capella.core.data.information.impl.PortImpl;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionPortImpl#getRealizedFunctionPorts <em>Realized Function Ports</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionPortImpl#getRealizingFunctionPorts <em>Realizing Function Ports</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -511,22 +511,10 @@ public abstract class FunctionPortImpl extends PortImpl implements FunctionPort 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FaPackage.FUNCTION_PORT__ABSTRACT_TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractType) {
-				// end-extension-code
 					setAbstractType((AbstractType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTION_PORT__REPRESENTED_COMPONENT_PORT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ComponentPort) {
-				// end-extension-code
 					setRepresentedComponentPort((ComponentPort)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

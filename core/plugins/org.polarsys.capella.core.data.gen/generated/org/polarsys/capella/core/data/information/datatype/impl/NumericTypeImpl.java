@@ -26,6 +26,7 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.NumericTypeImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.NumericTypeImpl#getOwnedDefaultValue <em>Owned Default Value</em>}</li>
@@ -33,7 +34,6 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.NumericTypeImpl#getOwnedMinValue <em>Owned Min Value</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.NumericTypeImpl#getOwnedMaxValue <em>Owned Max Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -572,49 +572,19 @@ public class NumericTypeImpl extends DataTypeImpl implements NumericType {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatatypePackage.NUMERIC_TYPE__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericTypeKind) {
-				// end-extension-code
 					setKind((NumericTypeKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.NUMERIC_TYPE__OWNED_DEFAULT_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedDefaultValue((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.NUMERIC_TYPE__OWNED_NULL_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedNullValue((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.NUMERIC_TYPE__OWNED_MIN_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMinValue((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.NUMERIC_TYPE__OWNED_MAX_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMaxValue((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

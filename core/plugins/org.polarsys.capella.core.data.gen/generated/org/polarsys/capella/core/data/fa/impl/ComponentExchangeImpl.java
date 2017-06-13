@@ -75,6 +75,7 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeImpl#getIncomingTraces <em>Incoming Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeImpl#getOutgoingTraces <em>Outgoing Traces</em>}</li>
@@ -120,7 +121,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeImpl#getRealizedComponentExchanges <em>Realized Component Exchanges</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeImpl#getRealizingComponentExchanges <em>Realizing Component Exchanges</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -2517,49 +2517,19 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FaPackage.COMPONENT_EXCHANGE__VISIBLE_IN_DOC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInDoc((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE__VISIBLE_IN_LM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInLM((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE__SUMMARY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setSummary((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE__DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE__REVIEW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setReview((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE__OWNED_PROPERTY_VALUES:
 				getOwnedPropertyValues().clear();
@@ -2582,26 +2552,14 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 				getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
 				return;
 			case FaPackage.COMPONENT_EXCHANGE__STATUS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
-				// end-extension-code
 					setStatus((EnumerationPropertyLiteral)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE__FEATURES:
 				getFeatures().clear();
 				getFeatures().addAll((Collection<? extends EnumerationPropertyLiteral>)newValue);
 				return;
 			case FaPackage.COMPONENT_EXCHANGE__REALIZED_FLOW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractInformationFlow) {
-				// end-extension-code
 					setRealizedFlow((AbstractInformationFlow)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE__REALIZATIONS:
 				getRealizations().clear();
@@ -2612,49 +2570,19 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 				getConvoyedInformations().addAll((Collection<? extends AbstractExchangeItem>)newValue);
 				return;
 			case FaPackage.COMPONENT_EXCHANGE__SOURCE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InformationsExchanger) {
-				// end-extension-code
 					setSource((InformationsExchanger)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE__TARGET:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InformationsExchanger) {
-				// end-extension-code
 					setTarget((InformationsExchanger)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE__LINK:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ExchangeContainment) {
-				// end-extension-code
 					setLink((ExchangeContainment)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ComponentExchangeKind) {
-				// end-extension-code
 					setKind((ComponentExchangeKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE__ORIENTED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setOriented((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS:
 				getOwnedComponentExchangeFunctionalExchangeAllocations().clear();

@@ -19,8 +19,6 @@ import org.polarsys.capella.core.data.epbs.EpbsPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>EPBS Context</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

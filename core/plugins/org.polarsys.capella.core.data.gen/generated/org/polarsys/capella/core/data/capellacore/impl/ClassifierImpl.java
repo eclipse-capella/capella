@@ -37,11 +37,11 @@ import org.polarsys.capella.core.data.information.Property;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.ClassifierImpl#getOwnedFeatures <em>Owned Features</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.ClassifierImpl#getContainedProperties <em>Contained Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

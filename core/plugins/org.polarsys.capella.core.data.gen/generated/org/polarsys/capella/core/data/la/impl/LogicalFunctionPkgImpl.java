@@ -29,11 +29,11 @@ import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalFunctionPkgImpl#getOwnedLogicalFunctions <em>Owned Logical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalFunctionPkgImpl#getOwnedLogicalFunctionPkgs <em>Owned Logical Function Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

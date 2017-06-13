@@ -37,10 +37,10 @@ import org.polarsys.capella.core.data.cs.DeploymentTarget;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.DeploymentTargetImpl#getDeploymentLinks <em>Deployment Links</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -33,12 +33,12 @@ import org.polarsys.capella.core.data.interaction.InteractionState;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.InteractionStateImpl#getRelatedAbstractState <em>Related Abstract State</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.InteractionStateImpl#getRelatedAbstractFunction <em>Related Abstract Function</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.InteractionStateImpl#getCovered <em>Covered</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -293,22 +293,10 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractState) {
-				// end-extension-code
 					setRelatedAbstractState((AbstractState)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractFunction) {
-				// end-extension-code
 					setRelatedAbstractFunction((AbstractFunction)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

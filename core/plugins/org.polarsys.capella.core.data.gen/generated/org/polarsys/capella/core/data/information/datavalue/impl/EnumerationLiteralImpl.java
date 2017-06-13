@@ -25,10 +25,10 @@ import org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.EnumerationLiteralImpl#getDomainValue <em>Domain Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -194,13 +194,7 @@ public class EnumerationLiteralImpl extends AbstractEnumerationValueImpl impleme
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatavaluePackage.ENUMERATION_LITERAL__DOMAIN_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setDomainValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -22,12 +22,12 @@ import org.polarsys.capella.common.libraries.ModelVersion;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.libraries.impl.ModelVersionImpl#getMajorVersionNumber <em>Major Version Number</em>}</li>
  *   <li>{@link org.polarsys.capella.common.libraries.impl.ModelVersionImpl#getMinorVersionNumber <em>Minor Version Number</em>}</li>
  *   <li>{@link org.polarsys.capella.common.libraries.impl.ModelVersionImpl#getLastModifiedFileStamp <em>Last Modified File Stamp</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -250,31 +250,13 @@ public class ModelVersionImpl extends LibraryAbstractElementImpl implements Mode
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case LibrariesPackage.MODEL_VERSION__MAJOR_VERSION_NUMBER:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Integer) {
-				// end-extension-code
 					setMajorVersionNumber((Integer)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case LibrariesPackage.MODEL_VERSION__MINOR_VERSION_NUMBER:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Integer) {
-				// end-extension-code
 					setMinorVersionNumber((Integer)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case LibrariesPackage.MODEL_VERSION__LAST_MODIFIED_FILE_STAMP:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Long) {
-				// end-extension-code
 					setLastModifiedFileStamp((Long)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

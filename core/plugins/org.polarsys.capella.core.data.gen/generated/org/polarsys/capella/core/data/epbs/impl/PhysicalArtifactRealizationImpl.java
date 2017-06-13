@@ -19,8 +19,6 @@ import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Physical Artifact Realization</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

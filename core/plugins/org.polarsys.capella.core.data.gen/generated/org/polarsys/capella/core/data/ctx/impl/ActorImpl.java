@@ -50,6 +50,7 @@ import org.polarsys.capella.core.data.oa.OperationalActor;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.ActorImpl#getParticipationsInMissions <em>Participations In Missions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.ActorImpl#getParticipationsInCapabilities <em>Participations In Capabilities</em>}</li>
@@ -64,7 +65,6 @@ import org.polarsys.capella.core.data.oa.OperationalActor;
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.ActorImpl#getRealizedOperationalActors <em>Realized Operational Actors</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.ActorImpl#getRealizingLogicalActors <em>Realizing Logical Actors</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -745,13 +745,7 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CtxPackage.ACTOR__SYSTEM_COMMUNICATION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof SystemCommunicationHook) {
-				// end-extension-code
 					setSystemCommunication((SystemCommunicationHook)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CtxPackage.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS:
 				getOwnedOperationalActorRealizations().clear();

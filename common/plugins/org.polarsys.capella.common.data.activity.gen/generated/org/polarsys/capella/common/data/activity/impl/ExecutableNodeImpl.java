@@ -40,6 +40,7 @@ import org.polarsys.capella.common.model.helpers.IHelper;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ExecutableNodeImpl#getInActivityPartition <em>In Activity Partition</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ExecutableNodeImpl#getInInterruptibleRegion <em>In Interruptible Region</em>}</li>
@@ -48,7 +49,6 @@ import org.polarsys.capella.common.model.helpers.IHelper;
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ExecutableNodeImpl#getIncoming <em>Incoming</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ExecutableNodeImpl#getOwnedHandlers <em>Owned Handlers</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

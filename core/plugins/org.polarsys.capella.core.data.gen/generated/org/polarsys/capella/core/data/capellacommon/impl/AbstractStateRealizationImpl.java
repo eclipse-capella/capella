@@ -30,11 +30,11 @@ import org.polarsys.capella.core.data.capellacore.impl.AllocationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateRealizationImpl#getRealizedAbstractState <em>Realized Abstract State</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateRealizationImpl#getRealizingAbstractState <em>Realizing Abstract State</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

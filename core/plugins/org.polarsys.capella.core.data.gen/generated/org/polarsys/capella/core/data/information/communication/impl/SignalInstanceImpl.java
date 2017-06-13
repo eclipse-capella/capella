@@ -19,8 +19,6 @@ import org.polarsys.capella.core.data.information.impl.AbstractInstanceImpl;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Signal Instance</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

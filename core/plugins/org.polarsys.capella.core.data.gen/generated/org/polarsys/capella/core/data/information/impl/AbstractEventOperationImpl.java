@@ -33,10 +33,10 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.AbstractEventOperationImpl#getInvokingSequenceMessages <em>Invoking Sequence Messages</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

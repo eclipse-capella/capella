@@ -36,11 +36,11 @@ import org.polarsys.capella.core.data.interaction.Scenario;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.InteractionUseImpl#getReferencedScenario <em>Referenced Scenario</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.InteractionUseImpl#getActualGates <em>Actual Gates</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -212,13 +212,7 @@ public class InteractionUseImpl extends AbstractFragmentImpl implements Interact
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.INTERACTION_USE__REFERENCED_SCENARIO:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Scenario) {
-				// end-extension-code
 					setReferencedScenario((Scenario)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

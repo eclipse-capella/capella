@@ -26,11 +26,11 @@ import org.polarsys.capella.core.data.oa.OaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.ItemInConceptImpl#getConcept <em>Concept</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.ItemInConceptImpl#getItem <em>Item</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -219,22 +219,10 @@ public class ItemInConceptImpl extends NamedElementImpl implements ItemInConcept
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case OaPackage.ITEM_IN_CONCEPT__CONCEPT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Concept) {
-				// end-extension-code
 					setConcept((Concept)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.ITEM_IN_CONCEPT__ITEM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractConceptItem) {
-				// end-extension-code
 					setItem((AbstractConceptItem)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

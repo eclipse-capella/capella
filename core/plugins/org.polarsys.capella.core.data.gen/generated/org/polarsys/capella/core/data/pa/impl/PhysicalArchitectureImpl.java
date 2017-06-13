@@ -48,6 +48,7 @@ import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalArchitectureImpl#getOwnedPhysicalContext <em>Owned Physical Context</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalArchitectureImpl#getOwnedPhysicalComponent <em>Owned Physical Component</em>}</li>
@@ -61,7 +62,6 @@ import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalArchitectureImpl#getAllocatedLogicalArchitectures <em>Allocated Logical Architectures</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalArchitectureImpl#getAllocatingEpbsArchitectures <em>Allocating Epbs Architectures</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -906,40 +906,16 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_CONTEXT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof PhysicalContext) {
-				// end-extension-code
 					setOwnedPhysicalContext((PhysicalContext)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof PhysicalComponent) {
-				// end-extension-code
 					setOwnedPhysicalComponent((PhysicalComponent)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof PhysicalComponentPkg) {
-				// end-extension-code
 					setOwnedPhysicalComponentPkg((PhysicalComponentPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof PhysicalActorPkg) {
-				// end-extension-code
 					setOwnedPhysicalActorPkg((PhysicalActorPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS:
 				getOwnedDeployments().clear();

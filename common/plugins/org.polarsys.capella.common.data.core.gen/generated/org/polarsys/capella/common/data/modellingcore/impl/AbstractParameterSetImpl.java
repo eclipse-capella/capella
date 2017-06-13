@@ -33,12 +33,12 @@ import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractParameterSetImpl#getOwnedConditions <em>Owned Conditions</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractParameterSetImpl#getProbability <em>Probability</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractParameterSetImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -296,13 +296,7 @@ public abstract class AbstractParameterSetImpl extends AbstractNamedElementImpl 
 				getOwnedConditions().addAll((Collection<? extends AbstractConstraint>)newValue);
 				return;
 			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setProbability((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PARAMETERS:
 				getParameters().clear();

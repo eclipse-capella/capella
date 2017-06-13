@@ -49,6 +49,7 @@ import org.polarsys.capella.core.data.fa.FaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalPathImpl#getOwnedComponentExchangeAllocations <em>Owned Component Exchange Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalPathImpl#getAllocatedComponentExchanges <em>Allocated Component Exchanges</em>}</li>
@@ -61,7 +62,6 @@ import org.polarsys.capella.core.data.fa.FaPackage;
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalPathImpl#getRealizedPhysicalPaths <em>Realized Physical Paths</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalPathImpl#getRealizingPhysicalPaths <em>Realizing Physical Paths</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

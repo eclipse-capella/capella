@@ -22,10 +22,10 @@ import org.polarsys.capella.common.re.RePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.re.impl.ReDescriptionElementImpl#getDescription <em>Description</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -132,13 +132,7 @@ public abstract class ReDescriptionElementImpl extends ReNamedElementImpl implem
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case RePackage.RE_DESCRIPTION_ELEMENT__DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

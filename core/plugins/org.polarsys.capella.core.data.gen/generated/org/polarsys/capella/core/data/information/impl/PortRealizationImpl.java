@@ -30,11 +30,11 @@ import org.polarsys.capella.core.data.information.PortRealization;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PortRealizationImpl#getRealizedPort <em>Realized Port</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PortRealizationImpl#getRealizingPort <em>Realizing Port</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

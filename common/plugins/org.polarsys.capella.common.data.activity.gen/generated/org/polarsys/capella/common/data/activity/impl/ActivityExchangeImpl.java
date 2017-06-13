@@ -33,10 +33,10 @@ import org.polarsys.capella.common.model.helpers.IHelper;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityExchangeImpl#getRealizingActivityFlows <em>Realizing Activity Flows</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

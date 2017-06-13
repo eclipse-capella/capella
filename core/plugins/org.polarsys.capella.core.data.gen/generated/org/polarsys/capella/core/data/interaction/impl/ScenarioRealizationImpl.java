@@ -30,11 +30,11 @@ import org.polarsys.capella.core.data.interaction.ScenarioRealization;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioRealizationImpl#getRealizedScenario <em>Realized Scenario</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioRealizationImpl#getRealizingScenario <em>Realizing Scenario</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

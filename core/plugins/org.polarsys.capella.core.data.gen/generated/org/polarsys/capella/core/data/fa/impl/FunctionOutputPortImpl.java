@@ -51,6 +51,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionOutputPortImpl#getInActivityPartition <em>In Activity Partition</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionOutputPortImpl#getInInterruptibleRegion <em>In Interruptible Region</em>}</li>
@@ -67,7 +68,6 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionOutputPortImpl#getOutgoingExchangeItems <em>Outgoing Exchange Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionOutputPortImpl#getOutgoingFunctionalExchanges <em>Outgoing Functional Exchanges</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -961,62 +961,26 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL_TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsControlType((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTION_OUTPUT_PORT__KIND_OF_NODE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ObjectNodeKind) {
-				// end-extension-code
 					setKindOfNode((ObjectNodeKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTION_OUTPUT_PORT__ORDERING:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ObjectNodeOrderingKind) {
-				// end-extension-code
 					setOrdering((ObjectNodeOrderingKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setUpperBound((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTION_OUTPUT_PORT__IN_STATE:
 				getInState().clear();
 				getInState().addAll((Collection<? extends IState>)newValue);
 				return;
 			case FaPackage.FUNCTION_OUTPUT_PORT__SELECTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractBehavior) {
-				// end-extension-code
 					setSelection((AbstractBehavior)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsControl((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS:
 				getOutgoingExchangeItems().clear();

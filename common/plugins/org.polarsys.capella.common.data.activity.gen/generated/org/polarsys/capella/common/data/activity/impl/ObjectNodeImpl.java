@@ -48,6 +48,7 @@ import org.polarsys.capella.common.model.helpers.IHelper;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ObjectNodeImpl#getInActivityPartition <em>In Activity Partition</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ObjectNodeImpl#getInInterruptibleRegion <em>In Interruptible Region</em>}</li>
@@ -62,7 +63,6 @@ import org.polarsys.capella.common.model.helpers.IHelper;
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ObjectNodeImpl#getInState <em>In State</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ObjectNodeImpl#getSelection <em>Selection</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -881,62 +881,26 @@ public abstract class ObjectNodeImpl extends AbstractNamedElementImpl implements
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ActivityPackage.OBJECT_NODE__ABSTRACT_TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractType) {
-				// end-extension-code
 					setAbstractType((AbstractType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.OBJECT_NODE__IS_CONTROL_TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsControlType((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.OBJECT_NODE__KIND_OF_NODE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ObjectNodeKind) {
-				// end-extension-code
 					setKindOfNode((ObjectNodeKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.OBJECT_NODE__ORDERING:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ObjectNodeOrderingKind) {
-				// end-extension-code
 					setOrdering((ObjectNodeOrderingKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.OBJECT_NODE__UPPER_BOUND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setUpperBound((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.OBJECT_NODE__IN_STATE:
 				getInState().clear();
 				getInState().addAll((Collection<? extends IState>)newValue);
 				return;
 			case ActivityPackage.OBJECT_NODE__SELECTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractBehavior) {
-				// end-extension-code
 					setSelection((AbstractBehavior)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

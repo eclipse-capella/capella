@@ -45,12 +45,12 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateEventImpl#getAbstractTypedElements <em>Abstract Typed Elements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateEventImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateEventImpl#getOwnedStateEventRealizations <em>Owned State Event Realizations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -255,13 +255,7 @@ public abstract class StateEventImpl extends NamedElementImpl implements StateEv
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacommonPackage.STATE_EVENT__EXPRESSION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Constraint) {
-				// end-extension-code
 					setExpression((Constraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS:
 				getOwnedStateEventRealizations().clear();

@@ -33,11 +33,11 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.AbstractPropertyValueImpl#getInvolvedElements <em>Involved Elements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.AbstractPropertyValueImpl#getValuedElements <em>Valued Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

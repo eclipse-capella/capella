@@ -19,8 +19,6 @@ import org.polarsys.capella.core.data.cs.PhysicalPortRealization;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Physical Port Realization</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

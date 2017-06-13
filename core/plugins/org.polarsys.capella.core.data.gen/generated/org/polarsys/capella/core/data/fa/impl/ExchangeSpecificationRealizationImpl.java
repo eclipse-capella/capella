@@ -30,11 +30,11 @@ import org.polarsys.capella.core.data.fa.FaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeSpecificationRealizationImpl#getRealizedExchangeSpecification <em>Realized Exchange Specification</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeSpecificationRealizationImpl#getRealizingExchangeSpecification <em>Realizing Exchange Specification</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

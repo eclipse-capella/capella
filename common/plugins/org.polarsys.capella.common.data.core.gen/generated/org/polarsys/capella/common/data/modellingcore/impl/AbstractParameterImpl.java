@@ -33,6 +33,7 @@ import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractParameterImpl#isIsException <em>Is Exception</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractParameterImpl#isIsStream <em>Is Stream</em>}</li>
@@ -43,7 +44,6 @@ import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractParameterImpl#getProbability <em>Probability</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractParameterImpl#getParameterSet <em>Parameter Set</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -656,67 +656,25 @@ public abstract class AbstractParameterImpl extends AbstractTypedElementImpl imp
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ModellingcorePackage.ABSTRACT_PARAMETER__IS_EXCEPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsException((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ModellingcorePackage.ABSTRACT_PARAMETER__IS_STREAM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsStream((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ModellingcorePackage.ABSTRACT_PARAMETER__IS_OPTIONAL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsOptional((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ModellingcorePackage.ABSTRACT_PARAMETER__KIND_OF_RATE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof RateKind) {
-				// end-extension-code
 					setKindOfRate((RateKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ModellingcorePackage.ABSTRACT_PARAMETER__EFFECT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ParameterEffectKind) {
-				// end-extension-code
 					setEffect((ParameterEffectKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ModellingcorePackage.ABSTRACT_PARAMETER__RATE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setRate((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ModellingcorePackage.ABSTRACT_PARAMETER__PROBABILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setProbability((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ModellingcorePackage.ABSTRACT_PARAMETER__PARAMETER_SET:
 				getParameterSet().clear();

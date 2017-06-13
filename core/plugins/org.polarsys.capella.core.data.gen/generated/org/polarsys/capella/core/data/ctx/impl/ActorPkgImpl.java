@@ -44,6 +44,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.ActorPkgImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.ActorPkgImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -54,7 +55,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.ActorPkgImpl#getOwnedActorPkgs <em>Owned Actor Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.ActorPkgImpl#getOwnedSystemCommunication <em>Owned System Communication</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -25,10 +25,10 @@ import org.polarsys.capella.common.re.RecCatalog;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.re.impl.RecCatalogImpl#getOwnedCompliancyDefinitionPkg <em>Owned Compliancy Definition Pkg</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -194,13 +194,7 @@ public class RecCatalogImpl extends CatalogElementPkgImpl implements RecCatalog 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof CompliancyDefinitionPkg) {
-				// end-extension-code
 					setOwnedCompliancyDefinitionPkg((CompliancyDefinitionPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

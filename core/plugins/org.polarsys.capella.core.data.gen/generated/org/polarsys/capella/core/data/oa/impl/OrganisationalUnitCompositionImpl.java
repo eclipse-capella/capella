@@ -26,11 +26,11 @@ import org.polarsys.capella.core.data.oa.OrganisationalUnitComposition;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OrganisationalUnitCompositionImpl#getOrganisationalUnit <em>Organisational Unit</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OrganisationalUnitCompositionImpl#getParticipatingEntity <em>Participating Entity</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -219,22 +219,10 @@ public class OrganisationalUnitCompositionImpl extends NamedElementImpl implemen
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof OrganisationalUnit) {
-				// end-extension-code
 					setOrganisationalUnit((OrganisationalUnit)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Entity) {
-				// end-extension-code
 					setParticipatingEntity((Entity)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

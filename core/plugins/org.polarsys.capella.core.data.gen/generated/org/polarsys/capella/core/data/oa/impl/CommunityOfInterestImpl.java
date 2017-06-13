@@ -29,10 +29,10 @@ import org.polarsys.capella.core.data.oa.OaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.CommunityOfInterestImpl#getCommunityOfInterestCompositions <em>Community Of Interest Compositions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -51,6 +51,7 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.CommunicationLinkImpl#getIncomingTraces <em>Incoming Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.CommunicationLinkImpl#getOutgoingTraces <em>Outgoing Traces</em>}</li>
@@ -71,7 +72,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.CommunicationLinkImpl#getProtocol <em>Protocol</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.CommunicationLinkImpl#getExchangeItem <em>Exchange Item</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1048,49 +1048,19 @@ public class CommunicationLinkImpl extends ModelElementImpl implements Communica
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CommunicationPackage.COMMUNICATION_LINK__VISIBLE_IN_DOC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInDoc((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CommunicationPackage.COMMUNICATION_LINK__VISIBLE_IN_LM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInLM((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CommunicationPackage.COMMUNICATION_LINK__SUMMARY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setSummary((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CommunicationPackage.COMMUNICATION_LINK__DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CommunicationPackage.COMMUNICATION_LINK__REVIEW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setReview((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CommunicationPackage.COMMUNICATION_LINK__OWNED_PROPERTY_VALUES:
 				getOwnedPropertyValues().clear();
@@ -1113,44 +1083,20 @@ public class CommunicationLinkImpl extends ModelElementImpl implements Communica
 				getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
 				return;
 			case CommunicationPackage.COMMUNICATION_LINK__STATUS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
-				// end-extension-code
 					setStatus((EnumerationPropertyLiteral)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CommunicationPackage.COMMUNICATION_LINK__FEATURES:
 				getFeatures().clear();
 				getFeatures().addAll((Collection<? extends EnumerationPropertyLiteral>)newValue);
 				return;
 			case CommunicationPackage.COMMUNICATION_LINK__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof CommunicationLinkKind) {
-				// end-extension-code
 					setKind((CommunicationLinkKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CommunicationPackage.COMMUNICATION_LINK__PROTOCOL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof CommunicationLinkProtocol) {
-				// end-extension-code
 					setProtocol((CommunicationLinkProtocol)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CommunicationPackage.COMMUNICATION_LINK__EXCHANGE_ITEM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ExchangeItem) {
-				// end-extension-code
 					setExchangeItem((ExchangeItem)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -42,6 +42,7 @@ import org.polarsys.capella.core.data.information.datavalue.DataValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ClassImpl#isIsPrimitive <em>Is Primitive</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ClassImpl#getKeyParts <em>Key Parts</em>}</li>
@@ -51,7 +52,6 @@ import org.polarsys.capella.core.data.information.datavalue.DataValue;
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ClassImpl#getRealizedClasses <em>Realized Classes</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ClassImpl#getRealizingClasses <em>Realizing Classes</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -419,13 +419,7 @@ public class ClassImpl extends GeneralClassImpl implements org.polarsys.capella.
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InformationPackage.CLASS__IS_PRIMITIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsPrimitive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.CLASS__KEY_PARTS:
 				getKeyParts().clear();

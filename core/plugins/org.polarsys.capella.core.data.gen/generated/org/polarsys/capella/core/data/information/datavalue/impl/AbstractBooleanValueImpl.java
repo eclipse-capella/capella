@@ -29,10 +29,10 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.AbstractBooleanValueImpl#getBooleanType <em>Boolean Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

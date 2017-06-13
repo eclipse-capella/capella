@@ -44,6 +44,7 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PropertyImpl#getAbstractType <em>Abstract Type</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PropertyImpl#getType <em>Type</em>}</li>
@@ -66,7 +67,6 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PropertyImpl#isIsPartOfKey <em>Is Part Of Key</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PropertyImpl#getAssociation <em>Association</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1464,166 +1464,58 @@ public class PropertyImpl extends FeatureImpl implements Property {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InformationPackage.PROPERTY__ABSTRACT_TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractType) {
-				// end-extension-code
 					setAbstractType((AbstractType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__ORDERED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setOrdered((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__UNIQUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setUnique((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__MIN_INCLUSIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setMinInclusive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__MAX_INCLUSIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setMaxInclusive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__OWNED_DEFAULT_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedDefaultValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__OWNED_MIN_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedMinValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__OWNED_MAX_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedMaxValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__OWNED_NULL_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedNullValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__OWNED_MIN_CARD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMinCard((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__OWNED_MIN_LENGTH:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMinLength((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__OWNED_MAX_CARD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMaxCard((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__OWNED_MAX_LENGTH:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMaxLength((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__FINAL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setFinal((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__AGGREGATION_KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AggregationKind) {
-				// end-extension-code
 					setAggregationKind((AggregationKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__IS_DERIVED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsDerived((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__IS_READ_ONLY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsReadOnly((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.PROPERTY__IS_PART_OF_KEY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsPartOfKey((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

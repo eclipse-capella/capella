@@ -37,11 +37,11 @@ import org.polarsys.capella.core.data.cs.CsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.AbstractActorImpl#getInvolvingInvolvements <em>Involving Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.AbstractActorImpl#getInvolvingCapabilityRealizationInvolvements <em>Involving Capability Realization Involvements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

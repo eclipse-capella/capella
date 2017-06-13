@@ -52,7 +52,7 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 */
 	public static CsFactory init() {
 		try {
-			CsFactory theCsFactory = (CsFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/cs/1.1.0"); //$NON-NLS-1$ 
+			CsFactory theCsFactory = (CsFactory)EPackage.Registry.INSTANCE.getEFactory(CsPackage.eNS_URI);
 			if (theCsFactory != null) {
 				return theCsFactory;
 			}

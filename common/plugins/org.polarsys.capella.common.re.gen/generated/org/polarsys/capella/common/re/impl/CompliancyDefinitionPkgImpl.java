@@ -28,10 +28,10 @@ import org.polarsys.capella.common.re.RePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.re.impl.CompliancyDefinitionPkgImpl#getOwnedDefinitions <em>Owned Definitions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -28,10 +28,10 @@ import org.polarsys.capella.core.data.capellacommon.ChangeEventKind;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.ChangeEventImpl#getKind <em>Kind</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -138,13 +138,7 @@ public class ChangeEventImpl extends StateEventImpl implements ChangeEvent {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacommonPackage.CHANGE_EVENT__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ChangeEventKind) {
-				// end-extension-code
 					setKind((ChangeEventKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

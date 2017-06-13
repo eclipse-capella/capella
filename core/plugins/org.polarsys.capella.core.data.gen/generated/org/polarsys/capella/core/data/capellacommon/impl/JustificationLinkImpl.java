@@ -21,8 +21,6 @@ import org.polarsys.capella.core.data.capellacommon.JustificationLink;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Justification Link</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

@@ -31,11 +31,11 @@ import org.polarsys.capella.core.data.pa.deployment.PortInstance;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.ConnectionInstanceImpl#getConnectionEnds <em>Connection Ends</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.ConnectionInstanceImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -222,13 +222,7 @@ public class ConnectionInstanceImpl extends AbstractPhysicalInstanceImpl impleme
 				getConnectionEnds().addAll((Collection<? extends PortInstance>)newValue);
 				return;
 			case DeploymentPackage.CONNECTION_INSTANCE__TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ComponentExchange) {
-				// end-extension-code
 					setType((ComponentExchange)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -25,10 +25,10 @@ import org.polarsys.capella.core.data.information.datavalue.DataValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.UnionPropertyImpl#getQualifier <em>Qualifier</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

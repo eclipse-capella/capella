@@ -40,6 +40,7 @@ import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalFunctionImpl#getOwnedPhysicalFunctionPkgs <em>Owned Physical Function Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalFunctionImpl#getAllocatorPhysicalActors <em>Allocator Physical Actors</em>}</li>
@@ -48,7 +49,6 @@ import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalFunctionImpl#getContainedPhysicalFunctions <em>Contained Physical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalFunctionImpl#getChildrenPhysicalFunctions <em>Children Physical Functions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

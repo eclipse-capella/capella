@@ -41,6 +41,7 @@ import org.polarsys.capella.core.data.pa.PhysicalActor;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalActorImpl#getOwnedSystemActorRealizations <em>Owned System Actor Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalActorImpl#getSystemActorRealizations <em>System Actor Realizations</em>}</li>
@@ -49,7 +50,6 @@ import org.polarsys.capella.core.data.pa.PhysicalActor;
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalActorImpl#getRealizedSystemActors <em>Realized System Actors</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalActorImpl#getRealizingPhysicalActors <em>Realizing Physical Actors</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

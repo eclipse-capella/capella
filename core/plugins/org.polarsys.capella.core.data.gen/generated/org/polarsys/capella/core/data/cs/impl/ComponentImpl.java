@@ -61,6 +61,7 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getOwnedGeneralizations <em>Owned Generalizations</em>}</li>
@@ -105,7 +106,6 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getOwnedPhysicalLinks <em>Owned Physical Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getOwnedPhysicalLinkCategories <em>Owned Physical Link Categories</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -2258,13 +2258,7 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CsPackage.COMPONENT__ABSTRACT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setAbstract((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.COMPONENT__OWNED_GENERALIZATIONS:
 				getOwnedGeneralizations().clear();

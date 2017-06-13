@@ -25,10 +25,10 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractRelationshipImpl#getRealizedFlow <em>Realized Flow</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -204,13 +204,7 @@ public abstract class AbstractRelationshipImpl extends ModelElementImpl implemen
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ModellingcorePackage.ABSTRACT_RELATIONSHIP__REALIZED_FLOW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractInformationFlow) {
-				// end-extension-code
 					setRealizedFlow((AbstractInformationFlow)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

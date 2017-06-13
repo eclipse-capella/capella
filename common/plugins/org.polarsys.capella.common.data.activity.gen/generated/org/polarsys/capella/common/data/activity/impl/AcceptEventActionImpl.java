@@ -30,11 +30,11 @@ import org.polarsys.capella.common.data.activity.OutputPin;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.AcceptEventActionImpl#isIsUnmarshall <em>Is Unmarshall</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.AcceptEventActionImpl#getResult <em>Result</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -190,13 +190,7 @@ public abstract class AcceptEventActionImpl extends AbstractActionImpl implement
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ActivityPackage.ACCEPT_EVENT_ACTION__IS_UNMARSHALL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsUnmarshall((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ACCEPT_EVENT_ACTION__RESULT:
 				getResult().clear();

@@ -49,6 +49,7 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.AbstractPathInvolvedElementImpl#getIncomingTraces <em>Incoming Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.AbstractPathInvolvedElementImpl#getOutgoingTraces <em>Outgoing Traces</em>}</li>
@@ -67,7 +68,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.AbstractPathInvolvedElementImpl#getAppliedRequirements <em>Applied Requirements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.AbstractPathInvolvedElementImpl#getInvolvingInvolvements <em>Involving Involvements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -911,49 +911,19 @@ public abstract class AbstractPathInvolvedElementImpl extends ModelElementImpl i
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CsPackage.ABSTRACT_PATH_INVOLVED_ELEMENT__VISIBLE_IN_DOC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInDoc((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.ABSTRACT_PATH_INVOLVED_ELEMENT__VISIBLE_IN_LM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInLM((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.ABSTRACT_PATH_INVOLVED_ELEMENT__SUMMARY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setSummary((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.ABSTRACT_PATH_INVOLVED_ELEMENT__DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.ABSTRACT_PATH_INVOLVED_ELEMENT__REVIEW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setReview((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.ABSTRACT_PATH_INVOLVED_ELEMENT__OWNED_PROPERTY_VALUES:
 				getOwnedPropertyValues().clear();
@@ -976,13 +946,7 @@ public abstract class AbstractPathInvolvedElementImpl extends ModelElementImpl i
 				getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
 				return;
 			case CsPackage.ABSTRACT_PATH_INVOLVED_ELEMENT__STATUS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
-				// end-extension-code
 					setStatus((EnumerationPropertyLiteral)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.ABSTRACT_PATH_INVOLVED_ELEMENT__FEATURES:
 				getFeatures().clear();

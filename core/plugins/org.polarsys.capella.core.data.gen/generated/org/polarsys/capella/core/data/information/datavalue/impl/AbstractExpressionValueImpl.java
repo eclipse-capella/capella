@@ -40,6 +40,7 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.AbstractExpressionValueImpl#getComplexType <em>Complex Type</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.AbstractExpressionValueImpl#getEnumerationType <em>Enumeration Type</em>}</li>
@@ -50,7 +51,6 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.AbstractExpressionValueImpl#getUnparsedExpression <em>Unparsed Expression</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.impl.AbstractExpressionValueImpl#getExpressionType <em>Expression Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -618,22 +618,10 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Unit) {
-				// end-extension-code
 					setUnit((Unit)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNPARSED_EXPRESSION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setUnparsedExpression((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

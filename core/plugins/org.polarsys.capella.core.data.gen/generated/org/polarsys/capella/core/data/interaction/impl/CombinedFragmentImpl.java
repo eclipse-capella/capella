@@ -37,12 +37,12 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.CombinedFragmentImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.CombinedFragmentImpl#getReferencedOperands <em>Referenced Operands</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.CombinedFragmentImpl#getExpressionGates <em>Expression Gates</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -237,13 +237,7 @@ public class CombinedFragmentImpl extends AbstractFragmentImpl implements Combin
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.COMBINED_FRAGMENT__OPERATOR:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InteractionOperatorKind) {
-				// end-extension-code
 					setOperator((InteractionOperatorKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.COMBINED_FRAGMENT__REFERENCED_OPERANDS:
 				getReferencedOperands().clear();

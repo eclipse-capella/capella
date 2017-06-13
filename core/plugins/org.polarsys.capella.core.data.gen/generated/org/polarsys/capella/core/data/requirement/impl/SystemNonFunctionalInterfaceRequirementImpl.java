@@ -18,8 +18,6 @@ import org.polarsys.capella.core.data.requirement.SystemNonFunctionalInterfaceRe
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>System Non Functional Interface Requirement</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

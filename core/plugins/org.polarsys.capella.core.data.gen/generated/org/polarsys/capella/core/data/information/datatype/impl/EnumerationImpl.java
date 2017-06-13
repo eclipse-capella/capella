@@ -32,6 +32,7 @@ import org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.EnumerationImpl#getOwnedLiterals <em>Owned Literals</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.EnumerationImpl#getOwnedDefaultValue <em>Owned Default Value</em>}</li>
@@ -40,7 +41,6 @@ import org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral;
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.EnumerationImpl#getOwnedMaxValue <em>Owned Max Value</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.EnumerationImpl#getDomainType <em>Domain Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -632,49 +632,19 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 				getOwnedLiterals().addAll((Collection<? extends EnumerationLiteral>)newValue);
 				return;
 			case DatatypePackage.ENUMERATION__OWNED_DEFAULT_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractEnumerationValue) {
-				// end-extension-code
 					setOwnedDefaultValue((AbstractEnumerationValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.ENUMERATION__OWNED_NULL_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractEnumerationValue) {
-				// end-extension-code
 					setOwnedNullValue((AbstractEnumerationValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.ENUMERATION__OWNED_MIN_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractEnumerationValue) {
-				// end-extension-code
 					setOwnedMinValue((AbstractEnumerationValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.ENUMERATION__OWNED_MAX_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractEnumerationValue) {
-				// end-extension-code
 					setOwnedMaxValue((AbstractEnumerationValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.ENUMERATION__DOMAIN_TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataType) {
-				// end-extension-code
 					setDomainType((DataType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

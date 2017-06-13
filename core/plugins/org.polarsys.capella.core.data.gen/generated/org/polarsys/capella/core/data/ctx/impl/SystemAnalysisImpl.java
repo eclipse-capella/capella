@@ -46,6 +46,7 @@ import org.polarsys.capella.core.data.oa.OperationalAnalysis;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemAnalysisImpl#getOwnedSystemContext <em>Owned System Context</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemAnalysisImpl#getOwnedSystem <em>Owned System</em>}</li>
@@ -58,7 +59,6 @@ import org.polarsys.capella.core.data.oa.OperationalAnalysis;
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemAnalysisImpl#getAllocatedOperationalAnalyses <em>Allocated Operational Analyses</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemAnalysisImpl#getAllocatingLogicalArchitectures <em>Allocating Logical Architectures</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -867,40 +867,16 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof SystemContext) {
-				// end-extension-code
 					setOwnedSystemContext((SystemContext)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof org.polarsys.capella.core.data.ctx.System) {
-				// end-extension-code
 					setOwnedSystem((org.polarsys.capella.core.data.ctx.System)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CtxPackage.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ActorPkg) {
-				// end-extension-code
 					setOwnedActorPkg((ActorPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CtxPackage.SYSTEM_ANALYSIS__OWNED_MISSION_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof MissionPkg) {
-				// end-extension-code
 					setOwnedMissionPkg((MissionPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CtxPackage.SYSTEM_ANALYSIS__OWNED_OPERATIONAL_ANALYSIS_REALIZATIONS:
 				getOwnedOperationalAnalysisRealizations().clear();

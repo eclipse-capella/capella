@@ -45,6 +45,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.requirement.impl.RequirementsPkgImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.requirement.impl.RequirementsPkgImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -56,7 +57,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.requirement.impl.RequirementsPkgImpl#getOwnedRequirements <em>Owned Requirements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.requirement.impl.RequirementsPkgImpl#getOwnedRequirementPkgs <em>Owned Requirement Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -532,22 +532,10 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
 				getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
 				return;
 			case RequirementPackage.REQUIREMENTS_PKG__ADDITIONAL_INFORMATION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setAdditionalInformation((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RequirementPackage.REQUIREMENTS_PKG__LEVEL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setLevel((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENTS:
 				getOwnedRequirements().clear();

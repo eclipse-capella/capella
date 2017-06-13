@@ -28,10 +28,10 @@ import org.polarsys.capella.common.data.activity.OutputPin;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.CallActionImpl#getResults <em>Results</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

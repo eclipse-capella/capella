@@ -48,6 +48,7 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.DataTypeImpl#getOwnedPropertyValuePkgs <em>Owned Property Value Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.DataTypeImpl#getOwnedDataValues <em>Owned Data Values</em>}</li>
@@ -63,7 +64,6 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.DataTypeImpl#getRealizedDataTypes <em>Realized Data Types</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.impl.DataTypeImpl#getRealizingDataTypes <em>Realizing Data Types</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -827,58 +827,22 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 				getOwnedDataValues().addAll((Collection<? extends DataValue>)newValue);
 				return;
 			case DatatypePackage.DATA_TYPE__FINAL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setFinal((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.DATA_TYPE__DISCRETE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setDiscrete((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.DATA_TYPE__MIN_INCLUSIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setMinInclusive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.DATA_TYPE__MAX_INCLUSIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setMaxInclusive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.DATA_TYPE__PATTERN:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setPattern((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.DATA_TYPE__VISIBILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof VisibilityKind) {
-				// end-extension-code
 					setVisibility((VisibilityKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DatatypePackage.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS:
 				getOwnedInformationRealizations().clear();

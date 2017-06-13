@@ -29,10 +29,10 @@ import org.polarsys.capella.core.data.cs.PhysicalPathReference;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalPathReferenceImpl#getReferencedPhysicalPath <em>Referenced Physical Path</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

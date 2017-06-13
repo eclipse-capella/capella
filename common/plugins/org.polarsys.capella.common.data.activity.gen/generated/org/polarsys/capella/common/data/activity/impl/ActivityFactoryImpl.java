@@ -37,7 +37,7 @@ public class ActivityFactoryImpl extends EFactoryImpl implements ActivityFactory
 	 */
 	public static ActivityFactory init() {
 		try {
-			ActivityFactory theActivityFactory = (ActivityFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/common/activity/1.1.0"); //$NON-NLS-1$ 
+			ActivityFactory theActivityFactory = (ActivityFactory)EPackage.Registry.INSTANCE.getEFactory(ActivityPackage.eNS_URI);
 			if (theActivityFactory != null) {
 				return theActivityFactory;
 			}

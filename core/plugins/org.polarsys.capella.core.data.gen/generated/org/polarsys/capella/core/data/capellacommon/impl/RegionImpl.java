@@ -31,12 +31,12 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.RegionImpl#getOwnedStates <em>Owned States</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.RegionImpl#getOwnedTransitions <em>Owned Transitions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.RegionImpl#getInvolvedStates <em>Involved States</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

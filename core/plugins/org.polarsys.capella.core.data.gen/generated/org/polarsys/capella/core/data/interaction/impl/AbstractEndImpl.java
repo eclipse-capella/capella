@@ -32,11 +32,11 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractEndImpl#getEvent <em>Event</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractEndImpl#getCovered <em>Covered</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -221,13 +221,7 @@ public abstract class AbstractEndImpl extends InteractionFragmentImpl implements
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.ABSTRACT_END__EVENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Event) {
-				// end-extension-code
 					setEvent((Event)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

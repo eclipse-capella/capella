@@ -33,12 +33,12 @@ import org.polarsys.capella.core.data.information.communication.impl.MessageRefe
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfacePkgImpl#getOwnedExchangeItems <em>Owned Exchange Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfacePkgImpl#getOwnedInterfaces <em>Owned Interfaces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfacePkgImpl#getOwnedInterfacePkgs <em>Owned Interface Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -19,8 +19,6 @@ import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInv
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>System Component Capability Realization Involvement</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

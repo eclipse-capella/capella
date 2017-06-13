@@ -40,6 +40,7 @@ import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalPathInvolvementImpl#getInvolver <em>Involver</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalPathInvolvementImpl#getInvolved <em>Involved</em>}</li>
@@ -48,7 +49,6 @@ import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalPathInvolvementImpl#getInvolvedElement <em>Involved Element</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalPathInvolvementImpl#getInvolvedComponent <em>Involved Component</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -457,22 +457,10 @@ public class PhysicalPathInvolvementImpl extends RelationshipImpl implements Phy
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVER:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolverElement) {
-				// end-extension-code
 					setInvolver((InvolverElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolvedElement) {
-				// end-extension-code
 					setInvolved((InvolvedElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__NEXT_INVOLVEMENTS:
 				getNextInvolvements().clear();

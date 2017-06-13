@@ -53,6 +53,7 @@ import org.polarsys.capella.core.data.information.impl.AbstractInstanceImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalPortImpl#getIncomingPortRealizations <em>Incoming Port Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalPortImpl#getOutgoingPortRealizations <em>Outgoing Port Realizations</em>}</li>
@@ -74,7 +75,6 @@ import org.polarsys.capella.core.data.information.impl.AbstractInstanceImpl;
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalPortImpl#getRealizedPhysicalPorts <em>Realized Physical Ports</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalPortImpl#getRealizingPhysicalPorts <em>Realizing Physical Ports</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

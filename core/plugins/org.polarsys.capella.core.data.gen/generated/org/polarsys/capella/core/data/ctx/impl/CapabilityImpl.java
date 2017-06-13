@@ -46,6 +46,7 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.CapabilityImpl#getOwnedActorCapabilityInvolvements <em>Owned Actor Capability Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.CapabilityImpl#getOwnedSystemCapabilityInvolvement <em>Owned System Capability Involvement</em>}</li>
@@ -58,7 +59,6 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.CapabilityImpl#getRealizedOperationalCapabilities <em>Realized Operational Capabilities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.CapabilityImpl#getRealizingCapabilityRealizations <em>Realizing Capability Realizations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -685,13 +685,7 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
 				getOwnedActorCapabilityInvolvements().addAll((Collection<? extends ActorCapabilityInvolvement>)newValue);
 				return;
 			case CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof SystemCapabilityInvolvement) {
-				// end-extension-code
 					setOwnedSystemCapabilityInvolvement((SystemCapabilityInvolvement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CtxPackage.CAPABILITY__PURPOSES:
 				getPurposes().clear();

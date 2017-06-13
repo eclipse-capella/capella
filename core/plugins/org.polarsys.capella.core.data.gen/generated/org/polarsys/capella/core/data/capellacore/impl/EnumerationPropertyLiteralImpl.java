@@ -18,8 +18,6 @@ import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Enumeration Property Literal</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

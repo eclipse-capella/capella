@@ -29,10 +29,10 @@ import org.polarsys.capella.core.data.fa.FaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeCategoryImpl#getExchanges <em>Exchanges</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

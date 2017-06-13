@@ -38,6 +38,7 @@ import org.polarsys.capella.core.data.capellacore.Generalization;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.GeneralizableElementImpl#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.GeneralizableElementImpl#getOwnedGeneralizations <em>Owned Generalizations</em>}</li>
@@ -46,7 +47,6 @@ import org.polarsys.capella.core.data.capellacore.Generalization;
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.GeneralizableElementImpl#getSuper <em>Super</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.GeneralizableElementImpl#getSub <em>Sub</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -414,13 +414,7 @@ public abstract class GeneralizableElementImpl extends TypeImpl implements Gener
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacorePackage.GENERALIZABLE_ELEMENT__ABSTRACT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setAbstract((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS:
 				getOwnedGeneralizations().clear();

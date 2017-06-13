@@ -31,11 +31,11 @@ import org.polarsys.capella.core.data.oa.RoleAllocation;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.RoleAllocationImpl#getRole <em>Role</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.RoleAllocationImpl#getEntity <em>Entity</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

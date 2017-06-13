@@ -52,6 +52,7 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeEndImpl#getIncomingTraces <em>Incoming Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeEndImpl#getOutgoingTraces <em>Outgoing Traces</em>}</li>
@@ -71,7 +72,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeEndImpl#getPort <em>Port</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeEndImpl#getPart <em>Part</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1002,49 +1002,19 @@ public class ComponentExchangeEndImpl extends InformationsExchangerImpl implemen
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FaPackage.COMPONENT_EXCHANGE_END__VISIBLE_IN_DOC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInDoc((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE_END__VISIBLE_IN_LM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInLM((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE_END__SUMMARY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setSummary((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE_END__DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE_END__REVIEW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setReview((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE_END__OWNED_PROPERTY_VALUES:
 				getOwnedPropertyValues().clear();
@@ -1067,35 +1037,17 @@ public class ComponentExchangeEndImpl extends InformationsExchangerImpl implemen
 				getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
 				return;
 			case FaPackage.COMPONENT_EXCHANGE_END__STATUS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
-				// end-extension-code
 					setStatus((EnumerationPropertyLiteral)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE_END__FEATURES:
 				getFeatures().clear();
 				getFeatures().addAll((Collection<? extends EnumerationPropertyLiteral>)newValue);
 				return;
 			case FaPackage.COMPONENT_EXCHANGE_END__PORT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Port) {
-				// end-extension-code
 					setPort((Port)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.COMPONENT_EXCHANGE_END__PART:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Partition) {
-				// end-extension-code
 					setPart((Partition)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

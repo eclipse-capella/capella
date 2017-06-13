@@ -19,8 +19,6 @@ import org.polarsys.capella.core.data.la.LogicalContext;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Logical Context</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

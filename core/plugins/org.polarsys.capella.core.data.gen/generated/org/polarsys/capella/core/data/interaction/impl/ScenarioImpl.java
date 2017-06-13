@@ -60,6 +60,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -86,7 +87,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#getRealizedScenarios <em>Realized Scenarios</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#getRealizingScenarios <em>Realizing Scenarios</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1271,13 +1271,7 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
 				return;
 			case InteractionPackage.SCENARIO__IS_CONTROL_OPERATOR:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsControlOperator((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SCENARIO__OWNED_PARAMETER_SET:
 				getOwnedParameterSet().clear();
@@ -1288,40 +1282,16 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 				getOwnedParameter().addAll((Collection<? extends AbstractParameter>)newValue);
 				return;
 			case InteractionPackage.SCENARIO__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ScenarioKind) {
-				// end-extension-code
 					setKind((ScenarioKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SCENARIO__MERGED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setMerged((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SCENARIO__PRE_CONDITION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Constraint) {
-				// end-extension-code
 					setPreCondition((Constraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SCENARIO__POST_CONDITION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Constraint) {
-				// end-extension-code
 					setPostCondition((Constraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.SCENARIO__OWNED_INSTANCE_ROLES:
 				getOwnedInstanceRoles().clear();

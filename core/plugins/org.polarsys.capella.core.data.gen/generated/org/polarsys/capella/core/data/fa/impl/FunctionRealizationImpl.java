@@ -30,11 +30,11 @@ import org.polarsys.capella.core.data.fa.FunctionRealization;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionRealizationImpl#getAllocatedFunction <em>Allocated Function</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionRealizationImpl#getAllocatingFunction <em>Allocating Function</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -25,11 +25,11 @@ import org.polarsys.capella.core.data.cs.PhysicalPort;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalLinkEndImpl#getPort <em>Port</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.PhysicalLinkEndImpl#getPart <em>Part</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -218,22 +218,10 @@ public class PhysicalLinkEndImpl extends AbstractPhysicalLinkEndImpl implements 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CsPackage.PHYSICAL_LINK_END__PORT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof PhysicalPort) {
-				// end-extension-code
 					setPort((PhysicalPort)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.PHYSICAL_LINK_END__PART:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Part) {
-				// end-extension-code
 					setPart((Part)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

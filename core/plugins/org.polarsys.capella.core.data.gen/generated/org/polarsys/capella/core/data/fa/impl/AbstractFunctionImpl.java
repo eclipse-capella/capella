@@ -92,6 +92,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -155,7 +156,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionImpl#getLinkedStateMachine <em>Linked State Machine</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionImpl#getLinkedFunctionSpecification <em>Linked Function Specification</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -3737,193 +3737,67 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__IS_ABSTRACT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsAbstract((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__IS_STATIC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsStatic((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__VISIBILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof VisibilityKind) {
-				// end-extension-code
 					setVisibility((VisibilityKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__ABSTRACT_TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractType) {
-				// end-extension-code
 					setAbstractType((AbstractType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__ORDERED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setOrdered((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__UNIQUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setUnique((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__MIN_INCLUSIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setMinInclusive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__MAX_INCLUSIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setMaxInclusive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__OWNED_DEFAULT_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedDefaultValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__OWNED_MIN_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedMinValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__OWNED_MAX_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedMaxValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__OWNED_NULL_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
 					setOwnedNullValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__OWNED_MIN_CARD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMinCard((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__OWNED_MIN_LENGTH:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMinLength((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__OWNED_MAX_CARD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMaxCard((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__OWNED_MAX_LENGTH:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
 					setOwnedMaxLength((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__FINAL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setFinal((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__AGGREGATION_KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AggregationKind) {
-				// end-extension-code
 					setAggregationKind((AggregationKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__IS_DERIVED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsDerived((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__IS_READ_ONLY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsReadOnly((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__IS_PART_OF_KEY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsPartOfKey((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__OWNED_FUNCTIONAL_CHAINS:
 				getOwnedFunctionalChains().clear();
@@ -3934,31 +3808,13 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 				getOwnedHandlers().addAll((Collection<? extends ExceptionHandler>)newValue);
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__LOCAL_PRECONDITION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractConstraint) {
-				// end-extension-code
 					setLocalPrecondition((AbstractConstraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__LOCAL_POSTCONDITION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractConstraint) {
-				// end-extension-code
 					setLocalPostcondition((AbstractConstraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__CONTEXT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractType) {
-				// end-extension-code
 					setContext((AbstractType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__INPUTS:
 				getInputs().clear();
@@ -3977,31 +3833,13 @@ public abstract class AbstractFunctionImpl extends NamedElementImpl implements A
 				getResults().addAll((Collection<? extends OutputPin>)newValue);
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__BEHAVIOR:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractBehavior) {
-				// end-extension-code
 					setBehavior((AbstractBehavior)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof FunctionKind) {
-				// end-extension-code
 					setKind((FunctionKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__CONDITION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setCondition((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTION__OWNED_FUNCTIONS:
 				getOwnedFunctions().clear();

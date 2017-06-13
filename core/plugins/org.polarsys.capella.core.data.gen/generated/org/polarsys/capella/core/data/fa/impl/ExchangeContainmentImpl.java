@@ -27,11 +27,11 @@ import org.polarsys.capella.core.data.fa.FaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeContainmentImpl#getExchange <em>Exchange</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeContainmentImpl#getLink <em>Link</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -310,22 +310,10 @@ public class ExchangeContainmentImpl extends RelationshipImpl implements Exchang
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FaPackage.EXCHANGE_CONTAINMENT__EXCHANGE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ExchangeSpecification) {
-				// end-extension-code
 					setExchange((ExchangeSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.EXCHANGE_CONTAINMENT__LINK:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ExchangeLink) {
-				// end-extension-code
 					setLink((ExchangeLink)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

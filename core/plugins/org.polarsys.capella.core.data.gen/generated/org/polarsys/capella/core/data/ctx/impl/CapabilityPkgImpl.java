@@ -29,11 +29,11 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.CapabilityPkgImpl#getOwnedCapabilities <em>Owned Capabilities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.CapabilityPkgImpl#getOwnedCapabilityPkgs <em>Owned Capability Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

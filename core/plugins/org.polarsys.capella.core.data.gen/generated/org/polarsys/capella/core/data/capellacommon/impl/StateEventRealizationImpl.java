@@ -31,11 +31,11 @@ import org.polarsys.capella.core.data.capellacore.impl.AllocationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateEventRealizationImpl#getRealizedEvent <em>Realized Event</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateEventRealizationImpl#getRealizingEvent <em>Realizing Event</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

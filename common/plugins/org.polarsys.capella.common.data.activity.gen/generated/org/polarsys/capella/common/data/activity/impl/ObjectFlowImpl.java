@@ -24,13 +24,13 @@ import org.polarsys.capella.common.data.behavior.AbstractBehavior;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ObjectFlowImpl#isIsMulticast <em>Is Multicast</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ObjectFlowImpl#isIsMultireceive <em>Is Multireceive</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ObjectFlowImpl#getTransformation <em>Transformation</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ObjectFlowImpl#getSelection <em>Selection</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -335,40 +335,16 @@ public abstract class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectF
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ActivityPackage.OBJECT_FLOW__IS_MULTICAST:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsMulticast((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.OBJECT_FLOW__IS_MULTIRECEIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setIsMultireceive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.OBJECT_FLOW__TRANSFORMATION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractBehavior) {
-				// end-extension-code
 					setTransformation((AbstractBehavior)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.OBJECT_FLOW__SELECTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractBehavior) {
-				// end-extension-code
 					setSelection((AbstractBehavior)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

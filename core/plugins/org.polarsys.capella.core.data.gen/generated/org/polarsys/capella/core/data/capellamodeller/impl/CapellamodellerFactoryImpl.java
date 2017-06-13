@@ -39,7 +39,7 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 */
 	public static CapellamodellerFactory init() {
 		try {
-			CapellamodellerFactory theCapellamodellerFactory = (CapellamodellerFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/modeller/1.1.0"); //$NON-NLS-1$ 
+			CapellamodellerFactory theCapellamodellerFactory = (CapellamodellerFactory)EPackage.Registry.INSTANCE.getEFactory(CapellamodellerPackage.eNS_URI);
 			if (theCapellamodellerFactory != null) {
 				return theCapellamodellerFactory;
 			}

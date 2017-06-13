@@ -31,11 +31,11 @@ import org.polarsys.capella.core.data.fa.FaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentFunctionalAllocationImpl#getFunction <em>Function</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentFunctionalAllocationImpl#getBlock <em>Block</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

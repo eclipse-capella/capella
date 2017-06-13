@@ -51,6 +51,7 @@ import org.polarsys.capella.core.data.oa.Entity;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemImpl#getInvolvingInvolvements <em>Involving Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemImpl#getInvolvingCapabilityRealizationInvolvements <em>Involving Capability Realization Involvements</em>}</li>
@@ -65,7 +66,6 @@ import org.polarsys.capella.core.data.oa.Entity;
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemImpl#getRealizedEntities <em>Realized Entities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemImpl#getRealizingLogicalComponents <em>Realizing Logical Components</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

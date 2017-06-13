@@ -42,6 +42,7 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalCapabilityImpl#getCompliances <em>Compliances</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalCapabilityImpl#getConfigurations <em>Configurations</em>}</li>
@@ -49,7 +50,6 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalCapabilityImpl#getRealizingCapabilities <em>Realizing Capabilities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalCapabilityImpl#getInvolvedEntities <em>Involved Entities</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -38,11 +38,11 @@ import org.polarsys.capella.core.data.fa.FaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeAllocatorImpl#getOwnedComponentExchangeAllocations <em>Owned Component Exchange Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeAllocatorImpl#getAllocatedComponentExchanges <em>Allocated Component Exchanges</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -50,7 +50,7 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	 */
 	public static DatavalueFactory init() {
 		try {
-			DatavalueFactory theDatavalueFactory = (DatavalueFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/information/datavalue/1.1.0"); //$NON-NLS-1$ 
+			DatavalueFactory theDatavalueFactory = (DatavalueFactory)EPackage.Registry.INSTANCE.getEFactory(DatavaluePackage.eNS_URI);
 			if (theDatavalueFactory != null) {
 				return theDatavalueFactory;
 			}

@@ -41,6 +41,7 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalFunctionImpl#getOwnedLogicalFunctionPkgs <em>Owned Logical Function Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalFunctionImpl#getAllocatorLogicalActors <em>Allocator Logical Actors</em>}</li>
@@ -50,7 +51,6 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalFunctionImpl#getContainedLogicalFunctions <em>Contained Logical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalFunctionImpl#getChildrenLogicalFunctions <em>Children Logical Functions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

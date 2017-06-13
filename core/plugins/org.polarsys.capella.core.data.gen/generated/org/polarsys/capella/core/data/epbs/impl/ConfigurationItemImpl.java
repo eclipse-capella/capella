@@ -42,6 +42,7 @@ import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getItemIdentifier <em>Item Identifier</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getKind <em>Kind</em>}</li>
@@ -50,7 +51,6 @@ import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getOwnedPhysicalArtifactRealizations <em>Owned Physical Artifact Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getAllocatedPhysicalArtifacts <em>Allocated Physical Artifacts</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -389,22 +389,10 @@ public class ConfigurationItemImpl extends SystemComponentImpl implements Config
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EpbsPackage.CONFIGURATION_ITEM__ITEM_IDENTIFIER:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setItemIdentifier((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case EpbsPackage.CONFIGURATION_ITEM__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ConfigurationItemKind) {
-				// end-extension-code
 					setKind((ConfigurationItemKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS:
 				getOwnedConfigurationItems().clear();

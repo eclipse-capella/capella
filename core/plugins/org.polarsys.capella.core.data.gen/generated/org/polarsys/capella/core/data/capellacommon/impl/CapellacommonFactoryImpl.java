@@ -51,7 +51,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 */
 	public static CapellacommonFactory init() {
 		try {
-			CapellacommonFactory theCapellacommonFactory = (CapellacommonFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/common/1.1.0"); //$NON-NLS-1$ 
+			CapellacommonFactory theCapellacommonFactory = (CapellacommonFactory)EPackage.Registry.INSTANCE.getEFactory(CapellacommonPackage.eNS_URI);
 			if (theCapellacommonFactory != null) {
 				return theCapellacommonFactory;
 			}

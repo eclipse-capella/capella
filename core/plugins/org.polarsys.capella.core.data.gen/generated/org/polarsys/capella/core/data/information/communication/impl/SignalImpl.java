@@ -28,10 +28,10 @@ import org.polarsys.capella.core.data.information.communication.SignalInstance;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.SignalImpl#getSignalInstances <em>Signal Instances</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

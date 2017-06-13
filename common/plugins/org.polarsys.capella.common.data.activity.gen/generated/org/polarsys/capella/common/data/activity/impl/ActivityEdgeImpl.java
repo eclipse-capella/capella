@@ -38,6 +38,7 @@ import org.polarsys.capella.common.model.helpers.IHelper;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityEdgeImpl#getKindOfRate <em>Kind Of Rate</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityEdgeImpl#getInActivityPartition <em>In Activity Partition</em>}</li>
@@ -51,7 +52,6 @@ import org.polarsys.capella.common.model.helpers.IHelper;
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityEdgeImpl#getWeight <em>Weight</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityEdgeImpl#getInterrupts <em>Interrupts</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1043,76 +1043,28 @@ public abstract class ActivityEdgeImpl extends AbstractRelationshipImpl implemen
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ActivityPackage.ACTIVITY_EDGE__KIND_OF_RATE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof RateKind) {
-				// end-extension-code
 					setKindOfRate((RateKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ACTIVITY_EDGE__RATE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setRate((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ACTIVITY_EDGE__PROBABILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setProbability((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ACTIVITY_EDGE__TARGET:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ActivityNode) {
-				// end-extension-code
 					setTarget((ActivityNode)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ACTIVITY_EDGE__SOURCE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ActivityNode) {
-				// end-extension-code
 					setSource((ActivityNode)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ACTIVITY_EDGE__GUARD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setGuard((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ACTIVITY_EDGE__WEIGHT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ValueSpecification) {
-				// end-extension-code
 					setWeight((ValueSpecification)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case ActivityPackage.ACTIVITY_EDGE__INTERRUPTS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InterruptibleActivityRegion) {
-				// end-extension-code
 					setInterrupts((InterruptibleActivityRegion)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

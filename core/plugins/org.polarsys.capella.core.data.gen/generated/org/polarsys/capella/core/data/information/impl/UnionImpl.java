@@ -36,13 +36,13 @@ import org.polarsys.capella.core.data.information.UnionProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.UnionImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.UnionImpl#getDiscriminant <em>Discriminant</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.UnionImpl#getDefaultProperty <em>Default Property</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.UnionImpl#getContainedUnionProperties <em>Contained Union Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -342,31 +342,13 @@ public class UnionImpl extends ClassImpl implements Union {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InformationPackage.UNION__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof UnionKind) {
-				// end-extension-code
 					setKind((UnionKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.UNION__DISCRIMINANT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof UnionProperty) {
-				// end-extension-code
 					setDiscriminant((UnionProperty)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.UNION__DEFAULT_PROPERTY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof UnionProperty) {
-				// end-extension-code
 					setDefaultProperty((UnionProperty)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

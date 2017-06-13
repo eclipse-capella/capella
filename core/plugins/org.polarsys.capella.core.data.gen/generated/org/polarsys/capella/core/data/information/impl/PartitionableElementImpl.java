@@ -33,11 +33,11 @@ import org.polarsys.capella.core.data.information.PartitionableElement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PartitionableElementImpl#getOwnedPartitions <em>Owned Partitions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PartitionableElementImpl#getRepresentingPartitions <em>Representing Partitions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

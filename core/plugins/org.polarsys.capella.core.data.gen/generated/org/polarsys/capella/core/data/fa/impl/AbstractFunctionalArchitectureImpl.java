@@ -50,6 +50,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalArchitectureImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalArchitectureImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
@@ -63,7 +64,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalArchitectureImpl#getOwnedFunctionalAllocations <em>Owned Functional Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalArchitectureImpl#getOwnedComponentExchangeRealizations <em>Owned Component Exchange Realizations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -636,13 +636,7 @@ public abstract class AbstractFunctionalArchitectureImpl extends NamedElementImp
 				getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
 				return;
 			case FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_FUNCTION_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof FunctionPkg) {
-				// end-extension-code
 					setOwnedFunctionPkg((FunctionPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_COMPONENT_EXCHANGES:
 				getOwnedComponentExchanges().clear();

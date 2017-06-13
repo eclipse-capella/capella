@@ -43,6 +43,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsPkg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockArchitectureImpl#getOwnedRequirementPkgs <em>Owned Requirement Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockArchitectureImpl#getOwnedAbstractCapabilityPkg <em>Owned Abstract Capability Pkg</em>}</li>
@@ -53,7 +54,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsPkg;
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockArchitectureImpl#getAllocatedArchitectures <em>Allocated Architectures</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockArchitectureImpl#getAllocatingArchitectures <em>Allocating Architectures</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -682,31 +682,13 @@ public abstract class BlockArchitectureImpl extends AbstractFunctionalArchitectu
 				getOwnedRequirementPkgs().addAll((Collection<? extends RequirementsPkg>)newValue);
 				return;
 			case CsPackage.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractCapabilityPkg) {
-				// end-extension-code
 					setOwnedAbstractCapabilityPkg((AbstractCapabilityPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InterfacePkg) {
-				// end-extension-code
 					setOwnedInterfacePkg((InterfacePkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CsPackage.BLOCK_ARCHITECTURE__OWNED_DATA_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataPkg) {
-				// end-extension-code
 					setOwnedDataPkg((DataPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

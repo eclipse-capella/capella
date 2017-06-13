@@ -25,11 +25,11 @@ import org.polarsys.capella.core.data.capellacore.ReuserStructure;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.ReuseLinkImpl#getReused <em>Reused</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.ReuseLinkImpl#getReuser <em>Reuser</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -196,22 +196,10 @@ public class ReuseLinkImpl extends RelationshipImpl implements ReuseLink {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapellacorePackage.REUSE_LINK__REUSED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ReuseableStructure) {
-				// end-extension-code
 					setReused((ReuseableStructure)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case CapellacorePackage.REUSE_LINK__REUSER:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ReuserStructure) {
-				// end-extension-code
 					setReuser((ReuserStructure)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

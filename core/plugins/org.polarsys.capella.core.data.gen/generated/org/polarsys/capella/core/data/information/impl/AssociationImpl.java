@@ -37,13 +37,13 @@ import org.polarsys.capella.core.data.information.Property;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.AssociationImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.AssociationImpl#getNamingRules <em>Naming Rules</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.AssociationImpl#getOwnedMembers <em>Owned Members</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.AssociationImpl#getNavigableMembers <em>Navigable Members</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -269,13 +269,7 @@ public class AssociationImpl extends RelationshipImpl implements Association {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InformationPackage.ASSOCIATION__NAME:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setName((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InformationPackage.ASSOCIATION__NAMING_RULES:
 				getNamingRules().clear();

@@ -29,11 +29,11 @@ import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalFunctionPkgImpl#getOwnedPhysicalFunctions <em>Owned Physical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalFunctionPkgImpl#getOwnedPhysicalFunctionPkgs <em>Owned Physical Function Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

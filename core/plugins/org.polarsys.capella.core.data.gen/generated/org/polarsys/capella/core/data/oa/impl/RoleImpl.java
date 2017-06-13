@@ -41,6 +41,7 @@ import org.polarsys.capella.core.data.oa.RoleAssemblyUsage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.RoleImpl#getOwnedRoleAssemblyUsages <em>Owned Role Assembly Usages</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.RoleImpl#getOwnedActivityAllocations <em>Owned Activity Allocations</em>}</li>
@@ -49,7 +50,6 @@ import org.polarsys.capella.core.data.oa.RoleAssemblyUsage;
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.RoleImpl#getAllocatingEntities <em>Allocating Entities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.RoleImpl#getAllocatedOperationalActivities <em>Allocated Operational Activities</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

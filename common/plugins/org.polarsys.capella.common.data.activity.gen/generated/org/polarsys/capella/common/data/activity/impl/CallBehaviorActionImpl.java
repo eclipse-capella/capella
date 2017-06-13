@@ -24,10 +24,10 @@ import org.polarsys.capella.common.data.behavior.AbstractBehavior;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.CallBehaviorActionImpl#getBehavior <em>Behavior</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -146,13 +146,7 @@ public abstract class CallBehaviorActionImpl extends CallActionImpl implements C
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ActivityPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractBehavior) {
-				// end-extension-code
 					setBehavior((AbstractBehavior)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);

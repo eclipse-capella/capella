@@ -48,6 +48,7 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.AbstractPhysicalInstanceImpl#getIncomingTraces <em>Incoming Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.AbstractPhysicalInstanceImpl#getOutgoingTraces <em>Outgoing Traces</em>}</li>
@@ -65,7 +66,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.AbstractPhysicalInstanceImpl#getFeatures <em>Features</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.AbstractPhysicalInstanceImpl#getAppliedRequirements <em>Applied Requirements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -856,49 +856,19 @@ public abstract class AbstractPhysicalInstanceImpl extends ModelElementImpl impl
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DeploymentPackage.ABSTRACT_PHYSICAL_INSTANCE__VISIBLE_IN_DOC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInDoc((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DeploymentPackage.ABSTRACT_PHYSICAL_INSTANCE__VISIBLE_IN_LM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
 					setVisibleInLM((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DeploymentPackage.ABSTRACT_PHYSICAL_INSTANCE__SUMMARY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setSummary((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DeploymentPackage.ABSTRACT_PHYSICAL_INSTANCE__DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DeploymentPackage.ABSTRACT_PHYSICAL_INSTANCE__REVIEW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setReview((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DeploymentPackage.ABSTRACT_PHYSICAL_INSTANCE__OWNED_PROPERTY_VALUES:
 				getOwnedPropertyValues().clear();
@@ -921,13 +891,7 @@ public abstract class AbstractPhysicalInstanceImpl extends ModelElementImpl impl
 				getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
 				return;
 			case DeploymentPackage.ABSTRACT_PHYSICAL_INSTANCE__STATUS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
-				// end-extension-code
 					setStatus((EnumerationPropertyLiteral)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case DeploymentPackage.ABSTRACT_PHYSICAL_INSTANCE__FEATURES:
 				getFeatures().clear();

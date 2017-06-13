@@ -39,6 +39,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementImpl#getInvolver <em>Involver</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementImpl#getInvolved <em>Involved</em>}</li>
@@ -47,7 +48,6 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementImpl#getExchangedItems <em>Exchanged Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementImpl#getInvolvedElement <em>Involved Element</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -424,22 +424,10 @@ public class FunctionalChainInvolvementImpl extends RelationshipImpl implements 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVER:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolverElement) {
-				// end-extension-code
 					setInvolver((InvolverElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolvedElement) {
-				// end-extension-code
 					setInvolved((InvolvedElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS:
 				getNextFunctionalChainInvolvements().clear();

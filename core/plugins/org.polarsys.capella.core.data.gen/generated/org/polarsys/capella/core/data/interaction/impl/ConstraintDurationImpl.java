@@ -25,12 +25,12 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ConstraintDurationImpl#getDuration <em>Duration</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ConstraintDurationImpl#getStart <em>Start</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ConstraintDurationImpl#getFinish <em>Finish</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -277,31 +277,13 @@ public class ConstraintDurationImpl extends NamedElementImpl implements Constrai
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InteractionPackage.CONSTRAINT_DURATION__DURATION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
 					setDuration((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.CONSTRAINT_DURATION__START:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InteractionFragment) {
-				// end-extension-code
 					setStart((InteractionFragment)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 			case InteractionPackage.CONSTRAINT_DURATION__FINISH:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InteractionFragment) {
-				// end-extension-code
 					setFinish((InteractionFragment)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
 				return;
 		}
 		super.eSet(featureID, newValue);
