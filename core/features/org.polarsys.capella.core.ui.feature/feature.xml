@@ -173,34 +173,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.polarsys.capella.common.command.recorder.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.polarsys.capella.common.command.recorder.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.polarsys.capella.core.command.recorder"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.polarsys.capella.core.command.recorder.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.polarsys.capella.core.ui.reportlog"
          download-size="0"
          install-size="0"
