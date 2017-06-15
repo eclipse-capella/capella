@@ -58,6 +58,7 @@
         <module>org.polarsys.capella.test.transition.ju</module>
         <module>org.polarsys.capella.test.validation.rules.ju</module>
         <module>org.polarsys.capella.test.rcptt</module>
+        <module>org.polarsys.capella.test.doc.ju</module>
       </modules>
     </profile>
   </profiles>
