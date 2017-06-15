@@ -2,105 +2,105 @@
 = > Validation Rules > capella.category > design > well-formedness > state_machines =
             
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/error.gif|ERROR]]
 |   DWF_SM_01 - A state machine must have only one initial state 
 |-
 | colspan="2"|This rule checks that a state machine have only one initial state 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/error.gif|ERROR]]
 |   DWF_SM_02 - An initial state must have only one outgoing transition 
 |-
 | colspan="2" |This rule checks that an initial state have only one outgoing transition. 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/error.gif|ERROR]]
 |   DWF_SM_03 - Referenced states of a state must be all involved states in its subregions 
 |-
 | colspan="2"|This rule checks that referenced  States in a State are the sum of all involved States of sub regions. 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/error.gif|ERROR]]
 |   DWF_SM_04 - A decision or a fork must have only one entering transition 
 |-
 | colspan="2"|This rule checks that a decision or a fork have only one entering transition. 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/error.gif|ERROR]]
 |   DWF_SM_05 - A join connector must have only one outgoing transition 
 |-
 | colspan="2"|This rule checks that a join connector have only one outgoing transition. 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/warning.gif|WARNING]]
 |   DWF_SM_06 - Mode and State should'nt be in same hierarchy 
 |-
 | colspan="2"|This rule depends on the Preference option "Mode/State mixed hierarchy allowed". If this option is set to false, the rule checks that  a state is not in a mode hierarchy or a mode is not in a state hierarchy. In this case, hierarchy includes siblings. 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/warning.gif|WARNING]]
 |   DWF_SM_07 - Fork and Join State must be used in the context of concurrent Region 
 |-
 | colspan="2"|This rule ensure that Join/Fork states are used in concurrent region context. 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/warning.gif|WARNING]]
 |   DWF_SM_08 - State must reference a function with doActivity/entry/exit related with its own component 
 |-
 | colspan="2"|This rule check if doActivity/Entry/Exit reference only functions associated to the component owning the state Machine or allocated to one of its subcomponents. 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/warning.gif|WARNING]]
 |   DWF_SM_09 - StateTransition trigger must not reference a Function 
 |-
 | colspan="2"|This rule check that Functions or Functional Exchanges which triggers the StateTransition are allocated on the Component or one of its subcomponents. 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/warning.gif|WARNING]]
 |   DWF_SM_10 - StateTransition source and target shouldn't be stored in concurrent region 
 |-
 | colspan="2"|This rule check that source and target of StateTransition are not stored in concurrent region. 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/error.gif|ERROR]]
 |   DWF_SM_11 - EntryPoint must have only one outgoing transition and one or more incoming transition 
 |-
 | colspan="2"|This rule check that EntryPoint have only one outgoing transition and one or more incoming transition. 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/error.gif|ERROR]]
 |   DWF_SM_12 - ExitPoint must have only one incoming transition and one or more outgoing transition 
 |-
 | colspan="2"|This rule check that ExitPoint have only one incoming transition and one or more outgoing transition. 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/error.gif|ERROR]]
 |   DWF_SM_13 - Shallow/Deep History shall have only incoming transitions 
 |-
 | colspan="2"|This rule check that Shallow/Deep History state has only incoming transitions. 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/warning.gif|WARNING]]
 |  DWF_SM_14 - Functions referenced in a State must be referenced as available in this State
 |-
 | colspan="2"|This rule check that Functions referenced as DoActivity, Entry or Exit of a Mode/State are available via the Operational Activities/Functions reference of this State. 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/warning.gif|WARNING]]
 |  DWF_SM_15 - Mode and States shouldn't reuse each other
 |-

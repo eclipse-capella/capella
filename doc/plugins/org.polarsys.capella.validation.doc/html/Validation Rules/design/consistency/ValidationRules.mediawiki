@@ -2,7 +2,7 @@
 = > Validation Rules > capella.category > design > consistency =
 
 <br>         
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ![[Image:../../../Images/warning.gif|WARNING]]
 |DCON_01 - Pattern Conformance  
 |-
@@ -10,7 +10,7 @@
 |}     
 <br>  
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ![[Image:../../../Images/warning.gif|WARNING]]
 |DCON_02 - RPL to REC conformance  
 |-

@@ -2,35 +2,35 @@
 = > Validation Rules > capella.category > design > well-formedness > components =
             
 <br>         
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_01 - Partitions cycles check 
 |-
 | colspan="2"|This validation rule ensures that a partition of an element cannot have a partition typed by this element. Thus it avoids"partitions cycles". 
 |}     
 <br>    
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_02 - Role Allocation 
 |-
 | colspan="2"|This rule checks the role allocations consistency between roles and entities.  
 |}     
 <br>    
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_03 - Physical Path Involved Links check  
 |-
 | colspan="2"|This rule checks that a PhysicalPath is valid.   
 |}     
 <br>    
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_04 - Check multiple deployment 
 |-
 | colspan="2"|This rule depends on the Preference option "Multiple deployment allowed". If this option is set to false, the rule checks that a Behavior Physical Component is not deployed on more than one Node Physical Component.  
 |}     
 <br> 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_05 - Part type accessibility check 
 |-
@@ -38,7 +38,7 @@
 |}     
 <br>  
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_06 - Component Parts type level check 
 |-
@@ -46,7 +46,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_07 - Contexts Abstract Actor Parts Check 
 |-
@@ -54,7 +54,7 @@
 |}     
 <br>  
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_08 - Part typed 
 |-
@@ -62,7 +62,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_09 - Component allocated functions types check 
 |-
@@ -70,7 +70,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_10 - Actors Part Locations Check 
 |-
@@ -78,7 +78,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_11 - Component Functional Allocation 
 |-
@@ -86,7 +86,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_12 - Function Allocation Unicity
 |-
@@ -94,7 +94,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_13 - Component Exchange Functional Exchanges Realization
 |-
@@ -102,7 +102,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_14 - Component Port Allocation 
 |-
@@ -110,7 +110,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_15 - Function Allocation Consistency 
 |-
@@ -118,7 +118,7 @@
 |}     
 <br>
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_16 - Component Exchange encapsulation problem check 
 |-
@@ -126,7 +126,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_17 - Physical Component deployment check 
 |-
@@ -134,7 +134,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_18 - Component Exchange location check 
 |-
@@ -142,7 +142,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_19 - Physical Link location check 
 |-
@@ -150,7 +150,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_20 - Physical Component Function Allocation check 
 |-
@@ -158,7 +158,7 @@
 |}     
 <br>
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_21 - Containement check for node and behaviour 
 |-
@@ -166,7 +166,7 @@
 |}     
 <br>
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_22 - NodeDeployment In BehaviourPC 
 |-
@@ -174,7 +174,7 @@
 |}     
 <br>
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_23 - NodeDeployment In PhysicalActor 
 |-
@@ -182,7 +182,7 @@
 |}     
 <br>
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_24 - Physical Path involvement check involved element 
 |-
@@ -190,7 +190,7 @@
 |}     
 <br> 
 	
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_25 - Physical Path involvement check involver element 
 |-
@@ -198,7 +198,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_26 - Root Physical Component Ports Check 
 |-
@@ -206,7 +206,7 @@
 |}     
 <br>
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_27 - Functional Exchange Component Exchange Allocation Unicity 
 |-
@@ -214,7 +214,7 @@
 |}     
 <br>
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_28 - Delegation out of place check 
 |-
@@ -222,7 +222,7 @@
 |}     
 <br>
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_29 - Component Exchange Functional Exchange consistency 
 |-
@@ -230,7 +230,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_30 - PhysicalPort on BehaviourPC 
 |-
@@ -238,7 +238,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_31 - ComponentPort on NodePC  
 |-
@@ -246,7 +246,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_32 - Component Exchange with out port on NodePC 
 |-
@@ -255,7 +255,7 @@
 <br> 
 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DC_33 - PhysicalPath allocated CE
 |-

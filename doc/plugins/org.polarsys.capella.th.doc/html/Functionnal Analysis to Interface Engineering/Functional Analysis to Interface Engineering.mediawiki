@@ -99,7 +99,7 @@ Once, Capella is open for the first step of this project:
 '''Note:''' ''The System Architecture diagram is updated.''<br>
 '''Note:''' ''Once a Functional Exchange has been put on the Scenario, it is not possible anymore to put Component Exchanges.''
 
-<center>[[Image:Images/TH_1.14.png|75000x450px]]</center><br>
+<center>[[Image:Images/TH_1.14.png|1016x492px]]</center><br>
 
 == TRANSITIONS FROM SYSTEM ANALYSIS TO LOGICAL ARCHITECTURE ==
 

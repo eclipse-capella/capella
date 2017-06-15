@@ -2,7 +2,7 @@
 = > Validation Rules > capella.category > design > completeness =
 
 <br>         
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ![[Image:../../../Images/warning.gif|WARNING]]
 |DCOM_01 - Logical component used interfaces delegation check 
 |-
@@ -10,7 +10,7 @@
 |}     
 <br>      
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ![[Image:../../../Images/warning.gif|WARNING]]
 |DCOM_02 - Logical component implemented interfaces delegation check 
 |-
@@ -18,7 +18,7 @@
 |}    
 <br>
   
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ![[Image:../../../Images/warning.gif|WARNING]]
 |DCOM_03 - Terminating Function and ControlNode Allocation 
 |-
@@ -26,7 +26,7 @@
 |}     
 <br>  
        
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ![[Image:../../../Images/error.gif|ERROR]]
 |DCOM_04 - Activity Allocation 
 |-
@@ -34,7 +34,7 @@
 |}   
 <br>    
          
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ![[Image:../../../Images/error.gif|ERROR]]
 |DCOM_05 - Scenario components capability involvement check 
 |-
@@ -42,7 +42,7 @@
 |}      
 <br>    
       
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ![[Image:../../../Images/warning.gif|WARNING]]
 |DCOM_06 - Interface implementation 1 
 |-
@@ -50,7 +50,7 @@
 |}   
 <br>
          
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ![[Image:../../../Images/warning.gif|WARNING]]
 |DCOM_07 - Interface used one sub component at least 
 |-
@@ -58,7 +58,7 @@
 |}   
 <br>
          
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DCOM_08 - Interface implemented by one component 
 |-
@@ -66,7 +66,7 @@
 |}  
 <br>
           
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DCOM_09 - Interface operations number check 
 |-
@@ -74,7 +74,7 @@
 |}    
 <br>
         
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DCOM_10 - Used interface delegation 
 |-
@@ -82,7 +82,7 @@
 |}    
 <br>
         
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/error.gif|ERROR]]
 | DCOM_11 - Activity Allocation Consistency 
 |-
@@ -90,7 +90,7 @@
 |}    
 <br>
         
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DCOM_13 - Exchange items allocation on Function Ports check 
 |-
@@ -98,7 +98,7 @@
 |}    
 <br>
         
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DCOM_14 - Implemented interface delegation 
 |-
@@ -106,7 +106,7 @@
 |}   
 <br>
          
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DCOM_15 - Exchange item allocation consistency 
 |-
@@ -114,7 +114,7 @@
 |}   
 <br>
          
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DCOM_16 - Interface Exchange item allocation consistency 
 |-
@@ -122,7 +122,7 @@
 |}   
 <br>
          
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DCOM_17 - Function Port Exchange item allocation consistency 
 |-
@@ -130,7 +130,7 @@
 |}   
 <br>
          
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DCOM_18 - Component provided interface delegation check 
 |-
@@ -138,7 +138,7 @@
 |}   
 <br>
          
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DCOM_19 - Component required interface delegation check 
 |-
@@ -146,28 +146,28 @@
 |}  
 <br>
           
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DCOM_20 - Functional Exchange delegation check 
 |-
 | colspan="2"|This rule generates a warning if the the source or target of an Interaction/Functional Exchange is not allocated on a leaf function. 
 |}    
 <br>
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DCOM_21 - Unused function port Exchange Items 
 |-
 | colspan="2"|This rule generates a warning if a Function Port conveys an Exchange Item which is not allocated to any connected Functional Exchange.
 |}
 <br>
-{| cellpadding="6" style="max-width:100%;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DCOM_22 - Unsynchronized Function Port Exchange Items
 |-
 | colspan="2"|This rule generates a warning if a Function Port and all its connected Functional Exchanges do not have the exact same Exchange Items.
 |}
 <br>
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DC_CL_01 Communication Link is delegated by one subcomponent at least 
 |-
@@ -175,7 +175,7 @@
 |}  
 <br>
           
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 ! [[Image:../../../Images/warning.gif|WARNING]]
 | DC_CL_02 Communication Link for a component is defined in its parent 
 |-
