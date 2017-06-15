@@ -29,8 +29,6 @@
       </activation>
       <modules>
         <module>org.polarsys.capella.common</module>
-        <module>org.polarsys.capella.common.command.recorder.core</module>
-        <module>org.polarsys.capella.common.command.recorder.ui</module>
         <module>org.polarsys.capella.common.data.activity.gen</module>
         <module>org.polarsys.capella.common.data.activity.gen.edit</module>
         <module>org.polarsys.capella.common.data.behavior.gen</module>
