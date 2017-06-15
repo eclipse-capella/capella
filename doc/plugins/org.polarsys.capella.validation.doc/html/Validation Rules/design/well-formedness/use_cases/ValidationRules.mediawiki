@@ -2,7 +2,7 @@
 = > Validation Rules > capella.category > design > well-formedness > use_cases =
             
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/error.gif|ERROR]]
 | DWF_UC_01 - Capability realization location check in logical, physical or EPBS level 
 |-
@@ -10,7 +10,7 @@
 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../../../Images/warning.gif|WARNING]]
 | DWF_UC_02 - Abstract Capability Realization Check 
 |-
