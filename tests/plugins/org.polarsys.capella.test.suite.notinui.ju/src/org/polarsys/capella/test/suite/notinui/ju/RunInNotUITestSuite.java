@@ -15,6 +15,7 @@ import java.util.List;
 
 import junit.framework.Test;
 
+import org.polarsys.capella.test.doc.ju.testsuites.DocTestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.navigator.ju.testsuites.main.NavigatorTestSuite;
@@ -35,6 +36,7 @@ public class RunInNotUITestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new NavigatorTestSuite());
+    tests.add(new DocTestSuite());
     return tests;
   }
 
