@@ -1,0 +1,125 @@
+= Version Control Systems (VCS) with GIT =
+ 
+== Installation ==
+
+=== Installation from update sites ===
+
+#Install the correct version of Capella.
+#Download the correct version of EGit.
+#* For Capella 1.1 based on Mars.2 use the following link (EGit 4.2.0:<br> http://www.eclipse.org/downloads/download.php?file=/egit/updates-4.2/org.eclipse.egit.repository-4.2.0.201601211800-r.zip
+#Install EGit:
+#* In Capella, select Window > Preferences > Install/Update > Available Software Sites > Add… > Archive… and select the downloaded ZIP file.
+#* Select "Eclipse Git Team Provider" and "JGit", click Next.
+#* After a few seconds, a warning page shows up: click Next, "I accept", "Finish" then "Yes".
+#* If you click the "+" button in the top right-hand corner near the "Capella" perspective button, you should now see a "Git" perspective available.
+#Download the correct version of EMF Diff/Merge.
+#* For Capella 1.1 use the following link (EMF-DiffMerge-0.7.0):<br>  http://www.eclipse.org/downloads/download.php?file=/diffmerge/releases/0.7.0/EMF-DiffMerge-0.7.0.v20161020-1434-Site-Incubation.zip
+#Install EMF Diff/Merge:
+#* In Capella, select Window > Preferences > Install/Update > Available Software Sites > Add… > Archive… and select the downloaded ZIP file.
+#* Select "EMF Diff/Merge EGit Integration Feature (Incubation)", click Next.
+#* Click Next, "I accept", "Finish", "OK", "Yes".
+
+== Tutorials ==
+
+These tutorials assume that you are familiar with Git and you knwo how it works.<br>
+If you're new to Git or distributed version control systems generally, then you might want to read [http://127.0.0.1:54666/help/topic/org.eclipse.egit.doc/help/EGit/Git_For_Eclipse_Users/Git-For-Eclipse-Users.html Git for Eclipse Users] first.<br>
+More background and details can be found in the on-line book [https://git-scm.com/book/en/v2 Pro Git].
+
+Capella Git Adapter is based on EMF Diff/Merge, help and details about it can be found in [http://127.0.0.1:53149/help/topic/org.eclipse.emf.diffmerge.doc/html/EMF-DiffMerge.html EMF Diff/Merge Guide].
+
+{| border="1"
+|-
+| 
+[[Image:images/Information.png|48x48px]]
+|'''Please consider the given process instructions:'''<br>
+<ul>
+<li>Always validate your model before a commit.</li>
+<li>Select all fragments on commit if the model is fragmented.</li>
+<li>Close the session before a pull, rebase or merge operation.</li>
+<li>To handle large files in Git Repositories, more than 2GB, there are multiple 3rd party implementations that will try to solve the problem, many of them using similar paradigm as a solution.<br>We recommend you to use git-Iss. (TODO see with OCO)</li>
+<li>Content of all model files (aird, airdfragment, melodymodeller, melodyfragment, afm, ...) are declared as ASCII Text and not binary files.<br>(see Capella : Window > Preferences > Team > File Content)</li>
+</ul>
+|}
+
+
+=== Basic Tutorial ===
+
+This tutorial provides a step by step walk-through of the Capella Git Adapter.
+
+
+==== Git perspective ==== 
+<ul>
+<li>To open the Git perspective: go to menu Window > Perspective > Open perspective > Other... > Git.</li>
+</ul>
+
+==== Creating Repositories ====
+
+{| border="1"
+|-
+|
+[[Image:images/Information.png|48x48px]]
+|'''Some considerations for Git Repositories to be used in Capella:'''<br>
+<ul>
+<li>Don't create the Repository within the Capella workspace.</li>
+<li>Don't create a Repository with a Capella project as root.</li>
+</ul>
+|}
+
+*In the Git Repositories view, create a new Git Repository: click "Create a new local Git repository".<br><br>
+:-[[Image:images/CreateRepo.png|center|531x498px]]
+<br>
+*In the opened wizard, select a path on your file-system to a non-existing folder, click Finish.<br><br>
+:-[[Image:images/CreateRepoWizard.png|441x359px]]
+<br>
+*The created Git Repository will be shown in  the Git Repositories view.<br><br>
+:-[[Image:images/CreatedRepo.png|450x520px]]<br>
+
+
+==== Put the Capella project under source control on the Git Repository ====
+
+*Now, switch back to the Capella perspective ("Capella" button in the top right-hand corner) and create a new Capella Project.
+*Right-click the project in the Capella Project Explorer > Team > Share Project...<br><br>
+:-[[Image:images/ShareProject.png|480x580px]]
+<br>
+*Select Git and click Next.<br><br>
+:-[[Image:images/ShareProjectGit.png|460x410px]]
+<br>
+*Select your repository and click Finish.<br><br>
+:-[[Image:images/ConfigureGitRepo.png|590x450px]]
+
+
+==== Commit the project ====
+
+*Right-click the project in the Capella Project Explorer > Team > Commit...<br><br>
+:-[[Image:images/Commit.png|530x800px]]
+<br>
+*Type "Initial commit" in the message field, select all files, click "Commit".A "master" branch is being created.<br><br>
+:-[[Image:images/CommitMessage.png|630x620px]]
+<br>
+*Create for example a System Data Flow Blank diagram, create a few functions and exchanges, save.
+*Commit the changes like above, for example with the "First changes" message.
+
+
+==== Check the History ====
+
+*Right-click the .melodymodeller file > Team > Show in History. You can now see your two commit in the History view.<br><br>
+:-[[Image:images/History.png|666x215px]]
+<br>
+*In the History view, select the two commits and select "Compare with each other" then "Finish".You should see the differences between your commits with the Capella Diff/Merge tool. But you cannot modify them (merge), because you cannot modify the history.<br><br>
+:-[[Image:images/CompareCommit.png|550x390px]]
+<br>
+:-[[Image:images/CompareEditor.png|840x670px]]
+
+
+==== Check the current changes wrt. the last commit ====
+
+*Make new changes in your diagram including the renaming of a function, save.
+
+*Right-click the .melodymodeller file > Compare with > Head revision > Finish. You have the possibility to undo some of the current changes at a fine grain with the diff/merge tool.<br><br>
+:-[[Image:images/CompareWithHead.png|470x600px]]
+<br>
+:-[[Image:images/CompareHeadActions.png|988x470px]]
+
+
+
+=== Advanced Tutorial With Conflicts ===
