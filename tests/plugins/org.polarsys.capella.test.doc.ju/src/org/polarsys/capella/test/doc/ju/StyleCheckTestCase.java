@@ -45,7 +45,7 @@ public class StyleCheckTestCase extends BasicTestCase {
       boolean hasInvalidHtml = false;
       while (entries.hasMoreElements()) {
         URL htmlURL = entries.nextElement();
-        if (!doesHtmlDocIncludeStyle(htmlURL)) {
+        if (!isExluded(htmlURL) && !doesHtmlDocIncludeStyle(htmlURL)) {
           invalidHtmls.add(htmlURL);
           bundleErrMsg += (htmlURL.getFile() + ", ");
           hasInvalidHtml = true;
@@ -75,6 +75,13 @@ public class StyleCheckTestCase extends BasicTestCase {
 
   protected String getCSSFile() {
     return "PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css";
+  }
+  
+  protected boolean isExluded(URL htmlURL) {
+    // We should not verify generated javadoc 
+    if (htmlURL.getFile().startsWith("/html/api-docs/javadoc"))
+      return true;
+    return false;
   }
 
 }
