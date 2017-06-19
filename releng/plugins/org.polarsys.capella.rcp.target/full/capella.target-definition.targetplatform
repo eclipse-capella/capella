@@ -75,6 +75,7 @@ location orbit-R20130827064939 "http://download.eclipse.org/tools/orbit/download
 	org.apache.log4j [1.2.15.v201012070815,1.2.15.v201012070815]
 	org.apache.commons.lang [2.4.0.v201005080502,2.4.0.v201005080502]
 	org.apache.commons.net [3.2.0.v201305141515,3.2.0.v201305141515]
+	org.jsoup [1.7.2.v201304221138,1.7.2.v201304221138]
 }
 
 location orbit-R20140525021250 "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository" {
