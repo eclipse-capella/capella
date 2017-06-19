@@ -7,7 +7,7 @@
     are made available under the terms of the Eclipse Public License v1.0
     which accompanies this distribution, and is available at
     http://www.eclipse.org/legal/epl-v10.html
-      
+
     Contributors:
        Thales - initial API and implementation
        Altran - Compare Configurations
@@ -86,25 +86,6 @@
                </description>
                <message>
                   The Join&quot;{0}&quot; has less than two incoming transitions. At least two incoming transitions should exist for this Join.
-               </message>
-            </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Functional_Conflits"
-                  id="DWF_SM_50"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="DWF_SM_50 - Element are included and excluded by CSConfiguration."
-                  severity="ERROR"
-                  statusCode="1">
-               <target
-                     class="Result">
-               </target>
-               <description>
-                  Elements are included and excluded by CSConfiguration.
-               </description>
-               <message>
-                  Element&quot;{0}&quot; are included and excluded by CSConfiguration: &quot;{1}&quot; and &quot;{2}&quot;.
                </message>
             </constraint>
             <constraint
@@ -562,13 +543,11 @@
                            </target>
                            <description>
                               Generate global modes of the system and then analyze the configurations availability in these global modes.
-                              
                            </description>
                            <message>
                               ‘{0}’ .
                            </message>
                         </constraint>
-            
             <constraint
                   class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Mode_State"
                   id="DWF_SM_44"
@@ -608,6 +587,25 @@
                </message>
             </constraint>
             <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_Functional_Conflits"
+                  id="DWF_SM_50"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_50 - Element are included and excluded by CSConfiguration."
+                  severity="ERROR"
+                  statusCode="1">
+               <target
+                     class="Result">
+               </target>
+               <description>
+                  Element are included and excluded by CSConfiguration.
+               </description>
+               <message>
+                  Element&quot;{0}&quot; are included and excluded by CSConfiguration: &quot;{1}&quot; and &quot;{2}&quot;.
+               </message>
+            </constraint>
+            <constraint
                   class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_differentLayer"
                   id="DWF_SM_52"
                   isEnabledByDefault="true"
@@ -639,6 +637,86 @@
                      class="Result">
                </target>
             </constraint>
+             <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_MSVAL_ComparisonCompleteness"
+                  id="DWF_SM_60"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_60 - Analysis of the comparison element completeness"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Comparison {0} is incompletely defined : It must compare two configurations, or one configuration and one situation"
+               </message>
+               <target
+                	class="Comparison">
+               </target>
+            </constraint>
+              <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_MSVAL_ComparisonCorrectness"
+                  id="DWF_SM_61"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_61 - Analysis of the comparison element correctness"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Comparison {0} is incorrectly defined : It must compare exactly two configurations, or one configuration and one situation. If a situation is compared, a result element that refers to the situation must exist."
+               </message>
+               <target
+                	class="Comparison">
+               </target>
+            </constraint>
+              <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_MSVAL_ComparisonInclExcl"
+                  id="DWF_SM_62"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_62 - Analysis of the comparison element consistency"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} : {1} {2} is included by one configuration and excluded in the other
+               </message>
+               <target
+                	class="Comparison">
+               </target>
+            </constraint>
+               <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_MSVAL_SituationCompleteness"
+                  id="DWF_SM_90"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_90 - Analysis of the situation element construction (completeness and correctness)"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                   Situation '{0}' is incompletely defined : No boolean expression
+               </message>
+               <target
+                	class="Situation">
+               </target>
+            </constraint>
+                <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_MSVAL_ResultCorrectness"
+                  id="DWF_SM_96"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_96 - Analysis of the result element correctness"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                   Result element {0} is incorrect : {1}
+               </message>
+               <target
+                	class="Result">
+               </target>
+            </constraint>
          </constraints>
          <constraints
                categories="capella.category/design/well-formedness/components">
@@ -659,7 +737,6 @@
                </target>
                <description>
                   Analyzing the assurance of the FunctionalChain in the States/Modes.
-                  
                </description>
             </constraint>
             <constraint
@@ -681,8 +758,64 @@
                   Analyzing the assurance of the FunctionalChains in the State/Mode.
                </description>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_MSVAL_ComparisonIncl"
+                  id="DWF_SM_95"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_95"
+                  severity="WARNING"
+                  statusCode="1">
+              <message>
+                  The {1} not exist in the {2}.
+              </message>
+              <target
+                     class="Comparison">
+              </target>
+              <description>
+                  Compare each configuration or situation and check if they contain the same functions.
+              </description>
+           </constraint>
+           <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDHCK_ComparisonPort"
+                  id="DWF_DC_36"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_36"
+                  severity="WARNING"
+                  statusCode="1">
+              <message>
+                  The {0} is not included in the {1} but his port is included in the {2}.
+              </message>
+              <target
+                     class="Comparison">
+              </target>
+              <description>
+                  Check if a included component has his port included in the other configuration. 
+              </description>
+           </constraint>
+           <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_MSVAL_SituationInternalConsistency"
+                  id="DWF_DC_37"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_37"
+                  severity="WARNING"
+                  statusCode="1">
+              <message>
+                  {0}
+              </message>
+              <target
+                     class="Situation">
+              </target>
+              <description>
+                  Check if an not or or operator have more than 1 values and if a not operator have only 1 value.
+              </description>
+           </constraint>
          </constraints>
       </constraintProvider>
    </extension>
-
 </plugin>
