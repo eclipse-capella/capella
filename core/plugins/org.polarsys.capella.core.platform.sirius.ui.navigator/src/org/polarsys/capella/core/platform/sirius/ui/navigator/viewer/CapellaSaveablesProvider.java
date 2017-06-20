@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,12 +20,16 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
+import org.eclipse.sirius.ui.business.api.session.IEditingSession;
+import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.ISaveablesSource;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.Saveable;
 import org.eclipse.ui.navigator.SaveablesProvider;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.Messages;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
 /**
@@ -120,11 +124,23 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
    */
   @Override
   public void notifyAddSession(Session newSession) {
-    // Create a new saveable for this new session.
-    CapellaSaveable saveable = new CapellaSaveable(newSession);
-    synchronized (_saveables) {
-      _saveables.put(newSession, saveable);
-    }
+	// Instead of manually creating the saveables, rely on the UISession to provide the saveables.
+	IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(newSession);
+	if(uiSession instanceof ISaveablesSource){
+		ISaveablesSource saveablesProvider = (ISaveablesSource) uiSession;
+		Saveable[] saveables = saveablesProvider.getSaveables();
+		if(saveables.length == 1){
+			synchronized (_saveables) {
+				_saveables.put(newSession, saveables[0]);
+			}
+		} else{
+		    // ISaveableSource returned 0 or more than 1 saveables.
+			throw new IllegalArgumentException(String.format(Messages.CapellaSaveablesProvider_IEditingSessionRetrieval_WrongNumberOfSaveables, ISaveablesSource.class.getSimpleName(), uiSession.getClass().getSimpleName(), Saveable.class.getSimpleName(), _saveables.size()));
+		}
+	} else{
+		// IEditingSession instance does not implement ISaveablesSource.
+		throw new ClassCastException(String.format(Messages.CapellaSaveablesProvider_IEditingSessionRetrieval_ShouldAlsoImplementISaveablesSource, IEditingSession.class.getSimpleName(), ISaveablesSource.class.getSimpleName()));
+	}
   }
 
   /**
