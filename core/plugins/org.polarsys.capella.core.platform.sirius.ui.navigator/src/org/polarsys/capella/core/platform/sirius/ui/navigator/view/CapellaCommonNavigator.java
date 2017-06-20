@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -69,6 +69,8 @@ import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.navigator.INavigatorContentExtension;
 import org.eclipse.ui.navigator.INavigatorContentService;
+import org.eclipse.ui.navigator.INavigatorSaveablesService;
+import org.eclipse.ui.navigator.SaveablesProvider;
 import org.eclipse.ui.part.IPageSite;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
@@ -958,12 +960,13 @@ public class CapellaCommonNavigator extends CommonNavigator implements IEditingD
   }
 
   /**
-   * FIXME MA01 - ensure Sirius-2776 is now fixed {@inheritDoc}
+   * {@inheritDoc}
    */
   @Override
   public Saveable[] getActiveSaveables() {
-    // Used by "Save" action.
-    return super.getActiveSaveables();
+	// INavigatorSaveablesService has the logic to retrieve, from the selection, the Saveables concerned by the save action.
+	INavigatorSaveablesService navigatorSaveablesService = this.getCommonViewer().getNavigatorContentService().getSaveablesService();
+	return navigatorSaveablesService.getActiveSaveables();
   }
 
   /**
@@ -971,8 +974,8 @@ public class CapellaCommonNavigator extends CommonNavigator implements IEditingD
    */
   @Override
   public Saveable[] getSaveables() {
-    // Used by "Save All" action.
-    return super.getSaveables();
+    SaveablesProvider saveablesProvider = (SaveablesProvider) this.getContentProvider().getAdapter(SaveablesProvider.class);
+    return saveablesProvider.getSaveables();
   }
 
   /**

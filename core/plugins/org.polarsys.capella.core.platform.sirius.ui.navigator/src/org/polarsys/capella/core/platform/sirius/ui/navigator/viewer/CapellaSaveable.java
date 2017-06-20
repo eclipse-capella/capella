@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ import org.polarsys.capella.core.sirius.ui.SaveSessionAction;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
 /**
- * The capella saveable.
+ * The Capella saveable.
  */
 public class CapellaSaveable extends SessionSaveable {
 
@@ -71,7 +71,7 @@ public class CapellaSaveable extends SessionSaveable {
   @Override
   public IJobRunnable doSave(IProgressMonitor monitor, IShellProvider shellProvider) throws CoreException {
     SaveSessionAction saveSessionAction = new SaveSessionAction();
-    saveSessionAction.selectionChanged(new StructuredSelection(getSession()));
+    saveSessionAction.selectionChanged(new StructuredSelection(super.getSession()));
     saveSessionAction.run();
     return null;
   }
@@ -82,7 +82,7 @@ public class CapellaSaveable extends SessionSaveable {
   @Override
   public void doSave(IProgressMonitor monitor) {
     SaveSessionAction saveSessionAction = new SaveSessionAction();
-    saveSessionAction.selectionChanged(new StructuredSelection(getSession()));
+    saveSessionAction.selectionChanged(new StructuredSelection(super.getSession()));
     saveSessionAction.run();
   }
 

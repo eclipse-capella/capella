@@ -1479,4 +1479,12 @@
             class="org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.NavigatorEditingDomainDispatcher">
       </editingDomainListener>
    </extension>
+   <extension
+         id="capellaUISession"
+         name="Capella UI Session"
+         point="org.eclipse.sirius.ui.uiSessionFactory">
+      <uiSessionFactory
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaUISessionFactory">
+      </uiSessionFactory>
+   </extension>
 </plugin>

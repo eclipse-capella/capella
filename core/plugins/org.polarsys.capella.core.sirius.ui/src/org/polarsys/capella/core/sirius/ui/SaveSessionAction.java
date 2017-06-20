@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.polarsys.capella.core.sirius.ui;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -41,6 +42,7 @@ import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
  * The save action for sessions.
  */
 public class SaveSessionAction extends BaseSelectionListenerAction {
+	
   /**
    * Constructs the save action for sessions.
    */
@@ -88,16 +90,12 @@ public class SaveSessionAction extends BaseSelectionListenerAction {
     final Shell activeShell = Display.getCurrent().getActiveShell();
     ProgressMonitorDialog monitor = new ProgressMonitorDialog(activeShell);
     try {
-      // Save sessions runnable.
-      IRunnableWithProgress saveSessionOperation = new IRunnableWithProgress() {
-        public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-          for (Session session : saveableSessions) {
-            session.save(monitor);
-          }
-        }
-      };
+    	
+      List<IRunnableWithProgress> runnables = createRunnables(saveableSessions);
 
-      monitor.run(false, false, saveSessionOperation);
+      for(IRunnableWithProgress runnable : runnables){
+    	  monitor.run(false, false, runnable);
+      }
 
       if (!unsaveableSessions.isEmpty()) {
         String msg;
@@ -117,6 +115,24 @@ public class SaveSessionAction extends BaseSelectionListenerAction {
       StatusManager.getManager().handle(new Status(IStatus.ERROR, getBundleId(ie), ie.getMessage(), ie));
     }
   }
+  
+  /**
+   * Override this method to define the runnables to execute during a save action.
+   * 
+   * @return the list of {@link IRunnableWithProgress} to execute.
+   */
+  protected List<IRunnableWithProgress> createRunnables(final List<Session> sessionsToSave){
+	  List<IRunnableWithProgress> runnables = new ArrayList<IRunnableWithProgress>();
+	  IRunnableWithProgress saveSessionRunnable = new IRunnableWithProgress() {
+	        public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+	          for (Session session : sessionsToSave) {
+	            session.save(monitor);
+	          }
+	        }};
+	  runnables.add(saveSessionRunnable);
+	  return runnables;
+  }
+  
 
   /**
    * @param obj
