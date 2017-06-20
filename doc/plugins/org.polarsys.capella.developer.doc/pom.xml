@@ -59,6 +59,7 @@
 										http://help.eclipse.org/neon/topic/org.eclipse.platform.doc.isv/reference/api/
 									</additionalArgument>
 									<additionalArgument>-public</additionalArgument>
+									<additionalArgument>-stylesheetfile ${project.basedir}/../org.polarsys.capella.doc/html/styles.css</additionalArgument>
 								</additionalArguments>
 							</javadocOptions>
 						</configuration>
