@@ -514,7 +514,7 @@ public class CapellaElementExt {
 
   /**
    * @param eObject
-   * @return use BlockArchitectureExt.getRootBlockArchitecture instead
+   * @deprecated use BlockArchitectureExt.getRootBlockArchitecture instead
    */
   @Deprecated
   public static ModellingArchitecture getArchi(EObject eObject) {

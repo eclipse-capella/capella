@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -54,7 +54,7 @@ public class ResourceAccessPolicyListener extends ResourceSetListenerImpl {
             if (sourceModel.getAccess(model) == AccessPolicy.READ_ONLY) {
               Logger.getLogger(IReportManagerDefaultComponents.MODEL)
                   .error(Messages.ResourceAccessPolicyListener_RollbackReadOnly);
-              throw new RollbackException(new Status(IStatus.CANCEL, Activator.PLUGIN_ID,
+              throw new RollbackException(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
                   Messages.ResourceAccessPolicyListener_RollbackReadOnly));
             }
           }

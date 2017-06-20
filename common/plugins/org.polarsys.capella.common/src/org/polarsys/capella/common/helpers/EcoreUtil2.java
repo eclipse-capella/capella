@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -32,6 +32,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
@@ -417,13 +419,13 @@ public class EcoreUtil2 {
         if (attribute != null) {
           for (Object sibling : siblings) {
             EObject eSibling = (EObject) sibling;
-            
+
             //eGet doesn't raise an exception if 'java assert' option is not enabled
             //See https://polarsys.org/bugs/show_bug.cgi?id=389
             if(!eSibling.eClass().getEAllStructuralFeatures().contains(attribute)){
             	continue;
             }
-            
+
             Object attributeValue = eSibling.eGet(attribute);
             if (attributeValue instanceof String) {
               String name = (String) attributeValue;
@@ -461,6 +463,7 @@ public class EcoreUtil2 {
       /**
        * {@inheritDoc}
        */
+      @Override
       public void run() {
         EObject container = getObject();
         setResult(Boolean.valueOf(containerClass.isInstance(container)));
@@ -484,6 +487,7 @@ public class EcoreUtil2 {
       /**
        * {@inheritDoc}
        */
+      @Override
       public void run() {
         EObject container = getObject();
         setResult(Boolean.valueOf(cls.isSuperTypeOf(container.eClass())));
@@ -507,6 +511,7 @@ public class EcoreUtil2 {
       /**
        * {@inheritDoc}
        */
+      @Override
       public void run() {
         EObject owner = getObject();
         setResult(Boolean.valueOf(container == owner));
@@ -614,5 +619,27 @@ public class EcoreUtil2 {
         ((Collection<?>) container.eGet(eStructFeatureFound)).remove(elt);
       }
     }
+  }
+
+  /**
+   * If all objects in elements have the same editing domain return that domain, otherwise return null.
+   * @param elements
+   * @return the common EditingDomain for elements, or null if elements have different editing domains
+   */
+  public static TransactionalEditingDomain getEditingDomain(Collection<EObject> elements) {
+    TransactionalEditingDomain commonDomain = null;
+    for (EObject e : elements) {
+      TransactionalEditingDomain eDomain = TransactionUtil.getEditingDomain(e);
+      if (eDomain == null) {
+        return null;
+      } else {
+        if (commonDomain == null) {
+          commonDomain = eDomain;
+        } else if (commonDomain != eDomain) {
+          return null;
+        }
+      }
+    }
+    return commonDomain;
   }
 }

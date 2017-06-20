@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.DragAndDropCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.transaction.TransactionalCommandStack;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ISelection;
@@ -30,14 +31,15 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.TransferData;
-
+import org.eclipse.ui.statushandlers.StatusManager;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.model.copypaste.SharedCopyPasteElements;
+import org.polarsys.capella.common.ui.StatusManagerExceptionHandler;
 import org.polarsys.capella.core.model.helpers.move.MoveHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCopyToClipboardCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaPasteCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.PasteCommandHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  * The Capella explorer drop assistant.
@@ -113,7 +115,7 @@ public class ExplorerDropAdapterAssistant extends AbstractCapellaDropAdapterAssi
       /**
        * Prepare a drop copy on. We simply copy the selection to the clipboard, followed by
        * an immediate paste. We also clean the clipboard after the operation completes.
-       * 
+       *
        * TODO: There's no real need to occupy the editing domain clipboard here. We
        * could just use a CopyCommand and use its result for the drop. Unfortunately
        * we're bound to the clipboard method because it incrusts does some semantic tuning
@@ -148,9 +150,7 @@ public class ExplorerDropAdapterAssistant extends AbstractCapellaDropAdapterAssi
       }
     };
 
-    // Execute it against the TED rather the execution manager, as this command needs to be prepared to be able to run...
-    // TED would encapsulate it in a transaction for us.
-    editingDomain.getCommandStack().execute(dropCommand);
+    new StatusManagerExceptionHandler().installAndExecute(((TransactionalCommandStack)editingDomain.getCommandStack()), dropCommand, StatusManager.SHOW);
     return Status.OK_STATUS;
   }
 
