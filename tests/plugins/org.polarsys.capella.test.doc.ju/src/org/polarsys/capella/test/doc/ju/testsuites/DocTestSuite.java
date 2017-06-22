@@ -13,6 +13,7 @@ package org.polarsys.capella.test.doc.ju.testsuites;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.doc.ju.BrokenLinksCheckTestCase;
 import org.polarsys.capella.test.doc.ju.StyleCheckTestCase;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -32,6 +33,7 @@ public class DocTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new StyleCheckTestCase());
+    tests.add(new BrokenLinksCheckTestCase());
     return tests;
   }
 
