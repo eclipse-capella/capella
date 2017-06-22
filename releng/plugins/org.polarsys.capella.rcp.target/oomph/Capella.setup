@@ -1075,6 +1075,9 @@
         <requirement
             name="org.apache.commons.net"
             versionRange="[3.2.0.v201305141515,3.2.0.v201305141515]"/>
+        <requirement
+            name="org.jsoup"
+            versionRange="[1.7.2.v201304221138,1.7.2.v201304221138]"/>
         <repositoryList
             name="Neon">
           <repository
