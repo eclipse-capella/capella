@@ -12,6 +12,8 @@ package org.polarsys.capella.core.sirius.ui.actions;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -24,6 +26,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
+import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.widgets.Display;
@@ -93,9 +96,10 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
       reps = representations;
     } else {
       IStructuredSelection selection = getStructuredSelection();
-      reps = RepresentationHelper.getRepresentations(selection.toList());
+      
+      reps = RepresentationHelper.getRepresentations(prepareSelection(selection));
     }
-    // Precondition
+    // Precondition	
     if (reps.isEmpty()) {
       return;
     }
@@ -110,5 +114,24 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
     }
     parent = false;
   }
+  
+  /**
+   * Prepare a new selection with a retrieval of wrapped objects.
+   * @param selection
+   * @return a not <code>null</code> collection.
+   */
+  private static Collection<?> prepareSelection(IStructuredSelection selection) {
 
+    List<Object> newSelection = new ArrayList<Object>();
+    Iterator<?> iterator = selection.iterator();
+
+    while (iterator.hasNext()) {
+      Object selectedObject = iterator.next();
+      if (selectedObject instanceof ItemWrapper) {
+        newSelection.add(((ItemWrapper) selectedObject).getWrappedObject());
+      }
+      newSelection.add(selectedObject);
+    }
+    return newSelection;
+  }
 }

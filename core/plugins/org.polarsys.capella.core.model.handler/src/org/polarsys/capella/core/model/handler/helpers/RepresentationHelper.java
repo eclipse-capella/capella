@@ -76,10 +76,11 @@ public class RepresentationHelper {
     Iterator<?> iterator = selection.iterator();
     while (iterator.hasNext()) {
       Object selectedObject = iterator.next();
-// seems to be useless ... to be reactivated if it's really required
-//      if (selectedObject instanceof ItemWrapper) {
-//        selectedObject = ((ItemWrapper) selectedObject).getWrappedObject();
-//      }
+      // We don't manage ItemWrapper here to avoid ui dependency...
+      // if (selectedObject instanceof ItemWrapper) {
+      // selectedObject = ((ItemWrapper)
+      // selectedObject).getWrappedObject();
+      // }
 
       if (selectedObject instanceof DRepresentation) {
         addRepresentation(mustBeDecorator, representations, (DRepresentation) selectedObject);
