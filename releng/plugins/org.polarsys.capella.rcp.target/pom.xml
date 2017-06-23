@@ -109,6 +109,18 @@
 							</applicationsArgs>
 						</configuration>
 					</execution>
+					<execution>
+						<id>generate.nightly.target</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>eclipse-run</goal>
+						</goals>
+						<configuration>
+							<applicationsArgs>
+								<args>-application ${converterApplication.name} nightly/${targetPlatform.name}</args>
+							</applicationsArgs>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
