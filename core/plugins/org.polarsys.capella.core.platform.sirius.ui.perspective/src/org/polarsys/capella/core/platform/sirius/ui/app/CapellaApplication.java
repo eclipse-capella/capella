@@ -106,6 +106,9 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
         }
       }
 
+      // Run extensions from org.polarsys.capella.core.application.AppStart when the workbench is properly loaded
+      super.start(appContext);
+
       // create the workbench with this advisor and run it until it exits
       // N.B. createWorkbench remembers the advisor, and also registers
       // the workbench globally so that all UI plug-ins can find it using
@@ -115,9 +118,6 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
       // Save report log configuration
       ReportManagerRegistry.getInstance().saveConfiguration();
       
-      // Run extensions from org.polarsys.capella.core.application.AppStart when the workbench is properly loaded
-      super.start(appContext);
-
       // the workbench doesn't support relaunch yet so
       // for now restart is used, and exit data properties are checked
       // here to substitute in the relaunch return code if needed
