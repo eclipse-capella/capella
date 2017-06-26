@@ -1,0 +1,42 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _77dBkJ6NEeWcU-ojRg-Rxw,_9ikm0J6BEeWcU-ojRg-Rxw
+Element-Name: OpenDiagramRepresentationPerCategory
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _lhay0FpGEeey96mRdJF15w
+Runtime-Version: 2.3.0.201706222316
+Save-Time: 6/26/17 10:41 AM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+ From Capella Explorer :
+- Open two diagrams through "Representation per Category"
+- Open a single diagram selected under "System Analisys Layer"and" Representation per Category"
+- Check whether the diagrams are open
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "EOLE_AF/EOLE_AF.aird" | key-type Enter
+    click -default
+    select "EOLE_AF/EOLE_AF.aird/Representations per category/Common/Class Diagram Blank/[CDB] Data - Heat Class Diagram Blank" "EOLE_AF/EOLE_AF.aird/Representations per category/Common/Class Diagram Blank/[CDB] Data - Class Diagram Blank"
+    get-menu -path Open | click
+}
+get-editor "[CDB] Data - Class Diagram Blank" | click
+get-editor "[CDB] Data - Heat Class Diagram Blank" | click
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "EOLE_AF/EOLE_AF.aird/Representations per category/Common/Class Diagram Blank/[CDB] Data - Image Class Diagram Blank" "EOLE_AF/EOLE_AF.aird/EOLE_AF/System Analysis/Data/[CDB] Data - Image Class Diagram Blank"
+    get-menu -path Open | click
+}
+get-editor "[CDB] Data - Class Diagram Blank" | click
+get-editor "[CDB] Data - Heat Class Diagram Blank" | click
+get-editor "[CDB] Data - Image Class Diagram Blank" | click
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
