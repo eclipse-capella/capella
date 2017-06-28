@@ -75,6 +75,7 @@
       <feature id="org.eclipse.gmf"/>
       <feature id="org.eclipse.platform"/>
       <feature id="org.eclipse.sdk"/>
+      <feature id="org.eclipse.sirius.doc.feature"/>
       <feature id="org.eclipse.sirius.query.legacy.feature"/>
       <feature id="org.eclipse.sirius.runtime"/>
       <feature id="org.eclipse.sirius.runtime.aql"/>
@@ -91,6 +92,7 @@
       <feature id="org.polarsys.kitalpha.model.common.scrutiny.feature"/>
       <feature id="org.polarsys.kitalpha.model.common.share.feature"/>
       <feature id="org.polarsys.kitalpha.model.detachment.feature"/>
+      <feature id="org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature"/>
       <feature id="org.polarsys.kitalpha.model.detachment.ui.feature"/>
       <feature id="org.polarsys.kitalpha.patterns.feature"/>
       <feature id="org.polarsys.kitalpha.report.feature"/>

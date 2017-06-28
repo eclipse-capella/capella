@@ -24,6 +24,7 @@ location eclipse-releases-neon "http://download.eclipse.org/releases/neon" {
 }
 
 location sirius-5.0.0 "http://download.eclipse.org/sirius/updates/stable/5.0.0-S20170505-110126/neon" {
+	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.runtime.feature.group
 	org.eclipse.sirius.runtime.aql.feature.group
 	org.eclipse.sirius.runtime.ide.ui.feature.group
