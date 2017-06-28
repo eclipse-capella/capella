@@ -21,7 +21,7 @@
       <unit id="org.polarsys.kitalpha.emde.ui.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.model.detachment.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.patterns.feature.feature.group" version="0.0.0"/>
-      <repository location="http://download.eclipse.org/sirius/updates/milestones/4.1.5rc1/mars/"/>
+      <repository location="http://download.eclipse.org/sirius/updates/stable/4.1.6-S20170628-064814/mars/"/>
       <repository location="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
       <repository location="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
       <repository location="http://download.eclipse.org/diffmerge/releases/0.7.1/edm-patterns-site"/>
