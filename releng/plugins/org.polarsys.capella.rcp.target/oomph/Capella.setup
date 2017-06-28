@@ -766,9 +766,7 @@
       <requirement
           name="org.codehaus.groovy.eclipse.feature.feature.group"/>
       <repository
-          url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.6/"/>
-      <repository
-          url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.5/"/>
+          url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.7/"/>
     </setupTask>
     <stream
         name="master">
@@ -882,7 +880,7 @@
         <repositoryList
             name="Mars">
           <repository
-              url="http://download.eclipse.org/sirius/updates/releases/4.1.5/mars"/>
+              url="http://download.eclipse.org/sirius/updates/stable/4.1.6-S20170628-064814/mars"/>
           <repository
               url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
           <repository
@@ -967,6 +965,8 @@
       <targlet
           name="Sirius">
         <requirement
+            name="org.eclipse.sirius.doc.feature.feature.group"/>
+        <requirement
             name="org.eclipse.sirius.runtime.feature.group"/>
         <requirement
             name="org.eclipse.sirius.runtime.aql.feature.group"/>
@@ -975,7 +975,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/sirius/updates/stable/5.0.0-S20170505-110126/neon"/>
+              url="http://download.eclipse.org/sirius/updates/releases/5.0.1/neon"/>
         </repositoryList>
       </targlet>
       <targlet
