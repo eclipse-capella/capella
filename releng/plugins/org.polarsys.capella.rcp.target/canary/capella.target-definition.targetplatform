@@ -45,6 +45,7 @@ location "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfu
 	org.polarsys.kitalpha.report.feature.feature.group lazy
 	org.polarsys.kitalpha.report.ui.feature.feature.group lazy
 	org.polarsys.kitalpha.transposer.feature.feature.group lazy
+	org.polarsys.kitalpha.richtext.widget.feature.feature.group lazy
 }
 
 location "http://download.eclipse.org/diffmerge/releases/0.8.0/emf-diffmerge-site" {
@@ -64,6 +65,10 @@ location "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20
 
 location "http://download.eclipse.org/sirius/updates/legacy/1.1.0" {
 	org.eclipse.sirius.query.legacy.feature.feature.group
+}
+
+location nebula-1.2.0 "http://download.eclipse.org/nebula/releases/1.2.0" {
+	org.eclipse.nebula.feature.feature.group
 }
 
 location "http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository" {
