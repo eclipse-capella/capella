@@ -700,7 +700,12 @@ public class DiagramHelper {
     List<ShapeStyle> resultList = new ArrayList<ShapeStyle>();
     EList<AnnotationEntry> ownedAnnotationEntries = diagram.getOwnedAnnotationEntries();
 
-    AnnotationEntry annotationEntry = ownedAnnotationEntries.get(0);
+    AnnotationEntry annotationEntry = null;
+    for (AnnotationEntry entry : ownedAnnotationEntries) {
+      if ("GMF_DIAGRAMS".equals(entry.getSource())) {
+        annotationEntry = entry;
+      }
+    }
     EObject data = annotationEntry.getData();
     Assert.assertTrue(data instanceof Diagram);
     final Diagram diag = (Diagram) data;
