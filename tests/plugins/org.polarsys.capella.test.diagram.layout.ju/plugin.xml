@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+  Copyright (c) 2017 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated layout -->
+      <package
+            uri="http://org.polarsys.capella.layout"
+            class="org.polarsys.capella.test.diagram.layout.ju.layout.LayoutPackage"
+            genModel="model/layout.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated layout -->
+      <parser
+            type="layout"
+            class="org.polarsys.capella.test.diagram.layout.ju.layout.util.LayoutResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated layout -->
+      <factory
+            uri="http://org.polarsys.capella.layout"
+            class="org.polarsys.capella.test.diagram.layout.ju.layout.provider.LayoutItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+   
+   <extension
+         point="org.eclipse.emf.diffmerge.ui.modelComparisonContext">
+         <comparisonMethod factory="org.polarsys.capella.test.diagram.layout.ju.layout.compare.LayoutComparisonMethodFactory">
+         </comparisonMethod>
+   </extension>
+
+</plugin>

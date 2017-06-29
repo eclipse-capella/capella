@@ -8,12 +8,15 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.polarsys.capella.test.framework,
  org.polarsys.capella.core.ui.properties,
- org.polarsys.capella.core.data.migration
+ org.polarsys.capella.core.data.migration,
+ org.polarsys.capella.test.diagram.common.ju,
+ org.polarsys.capella.test.diagram.layout.ju
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.test.migration.ju,
+ org.polarsys.capella.test.migration.ju.helpers,
  org.polarsys.capella.test.migration.ju.testcases.basic,
  org.polarsys.capella.test.migration.ju.testsuites.main,
  org.polarsys.capella.test.migration.ju.testsuites.partial

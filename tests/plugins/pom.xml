@@ -32,6 +32,7 @@
         <module>org.polarsys.capella.test.business.queries.ju</module>
         <module>org.polarsys.capella.test.diagram.common.ju</module>
         <module>org.polarsys.capella.test.diagram.filters.ju</module>
+        <module>org.polarsys.capella.test.diagram.layout.ju</module>
         <module>org.polarsys.capella.test.diagram.misc.ju</module>
         <module>org.polarsys.capella.test.diagram.tools.ju</module>
         <module>org.polarsys.capella.test.explorer.activity.ju</module>
