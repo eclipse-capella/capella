@@ -15,7 +15,7 @@ import java.util.Collections;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
-import org.eclipse.emf.diffmerge.ui.sirius.SiriusScopeFactory;
+import org.eclipse.emf.diffmerge.ui.sirius.SiriusScopeDefinitionFactory;
 import org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition;
 import org.eclipse.emf.diffmerge.ui.specification.ext.URIScopeDefinition;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -26,10 +26,10 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
 /**
  * A factory for comparison scopes within Capella models.
  */
-public class CapellaScopeFactory extends SiriusScopeFactory {
+public class CapellaScopeFactory extends SiriusScopeDefinitionFactory {
   
   /**
-   * @see org.eclipse.emf.diffmerge.ui.sirius.SiriusScopeFactory#createScopeDefinitionFromURI(org.eclipse.emf.common.util.URI, java.lang.String, boolean)
+   * @see org.eclipse.emf.diffmerge.ui.sirius.SiriusScopeDefinitionFactory#createScopeDefinitionFromURI(org.eclipse.emf.common.util.URI, java.lang.String, boolean)
    */
   @Override
   protected IModelScopeDefinition createScopeDefinitionFromURI(URI uri, String label,
@@ -62,11 +62,11 @@ public class CapellaScopeFactory extends SiriusScopeFactory {
   }
   
   /**
-   * @see org.eclipse.emf.diffmerge.ui.sirius.SiriusScopeFactory#getOverridenClasses()
+   * @see org.eclipse.emf.diffmerge.ui.sirius.SiriusScopeDefinitionFactory#getOverridenClasses()
    */
   @Override
   public Collection<? extends Class<?>> getOverridenClasses() {
-    return Collections.<Class<?>>singleton(SiriusScopeFactory.class);
+    return Collections.<Class<?>>singleton(SiriusScopeDefinitionFactory.class);
   }
   
 }
