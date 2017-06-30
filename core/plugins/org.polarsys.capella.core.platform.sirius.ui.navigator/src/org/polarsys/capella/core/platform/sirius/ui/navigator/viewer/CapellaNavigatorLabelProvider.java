@@ -143,25 +143,30 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
       }
       result = path.replaceAll(slash, STATUS_LINE_PATH_SEPARATOR);
     } else if (element instanceof DRepresentation || element instanceof DRepresentationDescriptor) {
-      // Adapts the representation into a Capella element (it returns its Capella container).
-      DRepresentation representation = (element instanceof DRepresentationDescriptor) ? ((DRepresentationDescriptor) element)
-          .getRepresentation() : (DRepresentation) element;
-      Object modelElement = Platform.getAdapterManager().getAdapter(representation, ModelElement.class);
-      if (null == modelElement) {
-        modelElement = Platform.getAdapterManager().loadAdapter(representation, ModelElement.class.getName());
+      Object modelElement = null;
+      String representationName = ICommonConstants.EMPTY_STRING;
+      if (element instanceof DRepresentationDescriptor) {
+        representationName = ((DRepresentationDescriptor) element).getName();
+        modelElement = ((DRepresentationDescriptor) element).getTarget();
+      } else {
+        representationName = ((DRepresentation) element).getName();
+        // Adapts the representation into a Capella element (it returns its Capella container).
+        modelElement = Platform.getAdapterManager().getAdapter((DRepresentation) element, ModelElement.class);
+        if (null == modelElement) {
+          modelElement = Platform.getAdapterManager().loadAdapter((DRepresentation) element, ModelElement.class.getName());
+        }
       }
       if (null != modelElement) {
         // Builds and formats the DRepresentation path.
         String containerPath = getDescription(modelElement);
-        String path = containerPath.concat(STATUS_LINE_PATH_SEPARATOR).concat(representation.getName());
+        String path = containerPath.concat(STATUS_LINE_PATH_SEPARATOR).concat(representationName);
         if (path.startsWith(slash)) {
           path = path.substring(1);
         }
         result = path.replaceAll(slash, STATUS_LINE_PATH_SEPARATOR);
       }
     } else if (element instanceof ItemWrapper) {
-      // Adapts the representation into a Capella element (it returns its
-      // Capella container).
+      // Adapts the representation into a Capella element (it returns its Capella container).
       ItemWrapper item = (ItemWrapper) element;
       Object wrappedObject = item.getWrappedObject();
       String description = getDescription(wrappedObject);
