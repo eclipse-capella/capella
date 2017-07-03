@@ -122,4 +122,116 @@ This tutorial provides a step by step walk-through of the Capella Git Adapter.
 
 
 
-=== Advanced Tutorial With Conflicts ===
+=== Advanced Tutorial ===
+
+This is a continuation of the above basic tutorial.
+
+==== Resolve Conflicts ====
+
+Conflicts arise when contradicting changes have been made in parallel and an attempt is made to integrate (merge) them. With Git, this may happen for example when two branches are '''merged''', when a branch is '''rebased''' on another, or when a '''pull''' is done.
+
+*Commit the changes done before with the message "Added Transmit", including the renaming of the function. Be sure to select both .aird and .melodymodeller files.
+ 
+*Right-click the project > Team > Switch to > New branch..., type "maintenance" and validate.<br>
+'''You are now in branch "maintenance"'''.<br><br>
+:-[[Image:images/SwitchNewBranch.png|500x400px]]
+<br>
+*Close the session (right-click the .aird file and select "Close"). This is because we are going to modify the content of the filesystem.
+ 
+*In the History view, right-click the "First changes" commit, right-click "Reset" > "Hard". Branch "maintenance" has been moved back to this past commit.<br><br>
+:-[[Image:images/ResetHard.png|500x400px]]
+<br>
+:-[[Image:images/MaintenanceHead.png|600x200px]]
+<br>
+*Open the model again, rename the function again with a different name, add another function and commit. 
+
+*In Window > Preferences > Team > Git > History, select "All branches and tags" and click OK.
+
+*In the History view, you can now see the two branches "master" and "maintenance" that have parallel commits. 
+'''We are going to merge branch "master" into branch "maintenance"'''.<br><br>
+:-[[Image:images/BothBranches.png|600x200px]]
+<br>
+*Close the session again. 
+
+*Right-click the project and click Team > Merge..., select "master" then "Merge".<br><br>
+:-[[Image:images/Merge.png|550x650px]]
+<br>
+:-[[Image:images/MergeDialog.png|550x450px]]
+
+*A conflict dialog shows up, click OK.<br><br>
+:-[[Image:images/MergeResult.png|450x180px]]
+
+*A red icon identifies the conflicting files, here the .aird and .melodymodeller files.'''They are identified as conflicting because they have been modified in both branches'''.<br><br>
+:-[[Image:images/ConflictFiles.png|400x275px]]
+
+*Right-click the .aird file and select Team > Merge Tool.<br><br>
+:-[[Image:images/MergeTool.png|600x650px]]
+<br>
+:-[[Image:images/DiffMergeDialog.png|600x300px]]
+
+*Click OK: '''the Capella diff/merge tool shows up'''. You may only modify the model on the left-hand side, which is initialized with the content it has in branch "maintenance". On the right-hand side, you can see its content in the "master" branch. You may only report changes from the "master" branch to the "maitenance" branch. In the end, the content on the left-hand side will be considered as the merged content.
+
+*Click the "Difference Categories" button in the "Synthesis" section: a dialog opens that allows filtering differences.<br><br>
+:-[[Image:images/DiffMergeEditor.png|1000x400px]]
+
+*'''Let us report all elements that were added in the "master" branch'''. Set the "Added elements" with the right-to-left blue arrow icon to "Focused" mode and click OK: only those differences are now shown.<br><br>
+:-[[Image:images/DifferenceCategories.png|550x400px]]
+ 
+*Select all root elements in the "Synthesis" section and click the "Copy to the left" merge button, the one with the left-to-right arrow icon. Done!<br><br>
+:-[[Image:images/CopyToLeft.png|1000x300px]]
+
+*'''Let us now focus on real conflicts''', i.e., conflicts at the granularity of model elements. Re-open the "Difference Categories" dialog, reset the "Added elements" category to "normal" mode and set the "Conflicts" category to "focused" mode, then press OK.<br><br>
+:-[[Image:images/DifferenceCategoriesConflicts.png|550x400px]]
+
+*There is one real conflict: the parallel renaming of the function. You can now see it in both the model and the diagram. Let us first ignore the diagram since in this case it will be able to synchronize with the model.
+
+*Select the diagram in the "Synthesis" view and click the "Ignore on the left" button, the one with the check box icon.<br><br>
+:-[[Image:images/IgnoreDiagramConflicts.png|1000x300px]]
+
+*Click the "Next model difference" navigation button, the one with the downward arrow.<br><br>
+:-[[Image:images/NextModelDiff.png|1000x300px]]
+
+*The only difference left is selected, which corresponds to the renaming in the model. You have the choice to either keep the name from the "maintenance" branch on the left, or report the name of the "master" branch on the right. Click the "Copy to the left" merge button to opt for the second solution.<br><br>
+:-[[Image:images/CopyToTheLeft.png|1000x300px]]
+<br>
+:-[[Image:images/ModelMerged.png|1000x300px]]
+
+*'''You may now consider the model as merged'''. Press Ctrl-S to save then close the diff/merge editor. You now have to inform Git that the merge is finished. 
+
+*Switch back to the Git perspective, select the repository and select the "Git Staging" view at the bottom. You should see the .aird and .melodymodeller files in the "Unstaged Changes" section.<br><br>
+:-[[Image:images/GitStaging.png|1000x375px]]
+
+
+*Drag and drop these files to the "Staged Changes" section to mark them as merged, then click the Commit button. The merge is officially finished.<br><br>
+:-[[Image:images/StagedChanges.png|1000x375px]]
+
+*Switch back to the Capella perspective and select the "History" view: you can see through the lifelines that you have successfully merged the branches.<br><br>
+:-[[Image:images/MergedBranches.png|625x175px]]
+
+*Open the System Data Flow diagram: you can see that the contributions of the two branches have been integrated and the rename conflict has been resolved in favor of the "master" branch. You can also see that the editor is in dirty mode (save is enabled): this is because the diagram has automatically updated itself to reflect the change to the name.
+
+
+==== Fragmented Model ====
+
+If you are not familiar with Capella model fragmentation, you can refer to [http://127.0.0.1:52231/help/topic/org.polarsys.capella.doc/html/Fragment%20management/Fragment%20management.html Fragment Management]
+
+When your model is fragmented, you have to select all your fragments in your commits and always use the root aird for compare operation.
+
+
+==== Model with libraries ====
+
+If your model refers to libraries, you have to include manually your modified libraries in your commits in order to keep your model valid.
+
+=== Videos on polarsys ===
+
+'''TODO''' Link to be added here
+
+=== Limitations / Known Issues ===
+
+'''TODO''' to enhance this section
+* T4C : use case préoconisé / gconf fichier
+* Diff/Merge 3-way to enhance.
+* Session need to be closed prior to any Fetch, Pull or Rebase.
+* Diff/Merge on root fragment
+* Difference of CC and SVN Adapter : non support de la notion de réservation de fragments via des locks pour scm en mode pessimiste (prise de lock de fragments) : mode optimiste via DiffMerge 
+ 
