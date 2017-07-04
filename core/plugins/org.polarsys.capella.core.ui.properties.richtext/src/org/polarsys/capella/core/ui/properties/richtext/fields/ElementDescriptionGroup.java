@@ -12,6 +12,7 @@ package org.polarsys.capella.core.ui.properties.richtext.fields;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.kitalpha.richtext.common.intf.MDERichTextWidget;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
@@ -26,8 +27,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.kitalpha.richtext.widget.factories.MDERichTextFactory;
-import org.polarsys.kitalpha.richtext.widget.spi.MDERichTextWidget;
+import org.polarsys.kitalpha.richtext.widget.factory.MDERichTextFactory;
 
 /**
  * @author Joao Barata
@@ -94,7 +94,7 @@ public abstract class ElementDescriptionGroup implements SelectionListener, Focu
    * @return
    */
   protected MDERichTextWidget createDescriptionField(Composite parent) {
-    return new MDERichTextFactory().createMDERichText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+    return new MDERichTextFactory().createDefaultRichTextWidget(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
     //return new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
   }
 
