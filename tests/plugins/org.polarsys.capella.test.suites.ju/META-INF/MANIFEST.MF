@@ -25,5 +25,6 @@ Require-Bundle: org.polarsys.capella.test.business.queries.ju,
  org.polarsys.capella.test.diagram.misc.ju,
  org.polarsys.capella.test.re.updateconnections.ju,
  org.polarsys.capella.test.commandline.ju,
- org.polarsys.capella.test.projection.ju
+ org.polarsys.capella.test.projection.ju,
+ org.polarsys.capella.test.migration.ju
 Export-Package: org.polarsys.capella.test.suites.ju
