@@ -1,0 +1,46 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _77dBkJ6NEeWcU-ojRg-Rxw,_C_OB0MEVEeWqb6y2_gGIKQ,_9ikm0J6BEeWcU-ojRg-Rxw
+Element-Name: DragnDropCapellaElement
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _mqfJ4GIsEeeQB6qYkFOmxQ
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 7/6/17 1:17 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+DnD a CapellaElement in the project explorer.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "EOLE_AF/EOLE_AF.aird" | double-click
+    select "EOLE_AF/EOLE_AF.aird/EOLE_AF/System Analysis/System Functions/Root System Function/Collect meteo data"
+    get-item "EOLE_AF/EOLE_AF.aird/EOLE_AF/System Analysis/System Functions/Root System Function/Collect meteo data" 
+        | drag-start 21 8
+    get-item "EOLE_AF/EOLE_AF.aird/EOLE_AF/System Analysis/System Functions/Root System Function/Elaborate current situation" 
+        | drag-enter 31 7 -detail move
+    get-item "EOLE_AF/EOLE_AF.aird/EOLE_AF/System Analysis/System Functions/Root System Function/Elaborate current situation" 
+        | drag-over 31 13 -detail move
+    get-item "EOLE_AF/EOLE_AF.aird/EOLE_AF/System Analysis/System Functions/Root System Function/Elaborate current situation" 
+        | drag-exit
+    get-item "EOLE_AF/EOLE_AF.aird/EOLE_AF/System Analysis/System Functions/Root System Function/Elaborate current situation" 
+        | drag-accept 31 13 -detail move
+    drag-set-data
+    get-item "EOLE_AF/EOLE_AF.aird/EOLE_AF/System Analysis/System Functions/Root System Function/Elaborate current situation" 
+        | drop 31 13 -detail move
+    drag-end -detail move
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/System Analysis/System Functions/Root System Function/Elaborate current situation"
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "EOLE_AF/\\*EOLE_AF.aird/EOLE_AF/System Analysis/System Functions/Root System Function/Elaborate current situation" 
+    | get-property childCount | equals 1 | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
