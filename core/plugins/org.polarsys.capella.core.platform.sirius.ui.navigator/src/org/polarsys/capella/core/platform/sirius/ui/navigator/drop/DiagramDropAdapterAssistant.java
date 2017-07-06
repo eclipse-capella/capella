@@ -84,6 +84,8 @@ public class DiagramDropAdapterAssistant extends AbstractCapellaDropAdapterAssis
         if (!isDroppable((DRepresentationDescriptor) object, targetElement)) {
           return Status.CANCEL_STATUS;
         }
+      } else {
+        return Status.CANCEL_STATUS;
       }
     }
     return Status.OK_STATUS;
