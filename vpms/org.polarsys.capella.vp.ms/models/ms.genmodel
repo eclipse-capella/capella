@@ -38,6 +38,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ms.ecore#//CSConfiguration/access"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ms.ecore#//CSConfiguration/selector"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ms.ecore#//CSConfiguration/context"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ms.ecore#//CSConfiguration/compareTo"/>
       <genOperations ecoreOperation="ms.ecore#//CSConfiguration/includes">
         <genParameters ecoreParameter="ms.ecore#//CSConfiguration/includes/element"/>
       </genOperations>
@@ -66,5 +67,13 @@
     <genClasses ecoreClass="ms.ecore#//AndOperation"/>
     <genClasses ecoreClass="ms.ecore#//OrOperation"/>
     <genClasses ecoreClass="ms.ecore#//NotOperation"/>
+    <genClasses ecoreClass="ms.ecore#//Comparison">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ms.ecore#//Comparison/configuration1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ms.ecore#//Comparison/Situation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ms.ecore#//Comparison/configuration2"/>
+    </genClasses>
+    <genClasses ecoreClass="ms.ecore#//Result">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ms.ecore#//Result/Situation"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
