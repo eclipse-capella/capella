@@ -1,0 +1,15 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+Bounds.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui\icons\full\obj16\SetValue.gif
+DiagramLayout.gif - org.eclipse.sirius.diagram.ui - org.eclipse.sirius.diagram.ui\icons\full\obj16\DiagramDescription.gif
+EdgeLayout.gif - org.eclipse.sirius.diagram.ui - org.eclipse.sirius.diagram.ui\icons\full\obj16\DEdge.gif
+Location.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui\icons\full\obj16\SetValue.gif
+NodeLayout.gif - org.eclipse.sirius.diagram.ui - org.eclipse.sirius.diagram.ui\icons\full\obj16\DNodeContainer.gif
+NoteLayout.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui\icons\full\obj16\TooltipStyleDescription.gif
+SessionLayout.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui\icons\obj16\SessionResourceFile.gif
+Size.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui\icons\full\obj16\SetValue.gif
+
