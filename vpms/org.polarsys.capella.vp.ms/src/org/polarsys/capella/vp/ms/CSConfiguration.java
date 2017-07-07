@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.information.Port;
+import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.kitalpha.emde.model.ElementExtension;
 
 /**
@@ -149,6 +150,25 @@ public interface CSConfiguration extends NamedElement, ElementExtension {
    */
 
   EList<FunctionalChain> getFunctionalChains();
+
+  /**
+   * Returns the value of the '<em><b>Scenarios</b></em>' reference list. The list contents are of type
+   * {@link org.polarsys.capella.core.data.interaction.Scenario}.
+   * 
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Scenarios</em>' reference list isn't clear, there really should be more of a description
+   * here...
+   * </p>
+   * <!-- end-user-doc -->
+   * 
+   * @return the value of the '<em>Scenarios</em>' reference list.
+   * @see org.polarsys.capella.vp.ms.MsPackage#getCSConfiguration_Scenarios()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   * @generated
+   */
+
+  EList<Scenario> getScenarios();
 
   /**
    * Returns the value of the '<em><b>Components</b></em>' reference list. The list contents are of type

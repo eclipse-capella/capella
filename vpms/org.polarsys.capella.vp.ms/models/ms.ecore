@@ -36,6 +36,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="functionalChains" upperBound="-1"
         eType="ecore:EClass ../../org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#//FunctionalChain"
         changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
+        eType="ecore:EClass ../../org.polarsys.capella.core.data.gen/model/Interaction.ecore#//Scenario"
+        changeable="false" volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
         eType="ecore:EClass ../../org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//Component"
         changeable="false" volatile="true" transient="true" derived="true"/>

@@ -271,6 +271,16 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
    * 
    * @generated NOT
    */
+  public EList<Scenario> getScenarios() {
+    Object[] data = getElementsFiltered(Scenario.class);
+    return new EcoreEList.UnmodifiableEList<Scenario>(this, MsPackage.Literals.CS_CONFIGURATION__SCENARIOS, data.length, data);
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
+   */
   public EList<Component> getComponents() {
     Object[] data = getElementsFiltered(Component.class);
     return new EcoreEList.UnmodifiableEList<Component>(this, MsPackage.Literals.CS_CONFIGURATION__COMPONENTS,
@@ -672,6 +682,8 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
       return getFunctions();
     case MsPackage.CS_CONFIGURATION__FUNCTIONAL_CHAINS:
       return getFunctionalChains();
+    case MsPackage.CS_CONFIGURATION__SCENARIOS:
+      return getScenarios();
     case MsPackage.CS_CONFIGURATION__COMPONENTS:
       return getComponents();
     case MsPackage.CS_CONFIGURATION__PORTS:
@@ -788,6 +800,8 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
       return !getFunctions().isEmpty();
     case MsPackage.CS_CONFIGURATION__FUNCTIONAL_CHAINS:
       return !getFunctionalChains().isEmpty();
+    case MsPackage.CS_CONFIGURATION__SCENARIOS:
+      return !getScenarios().isEmpty();
     case MsPackage.CS_CONFIGURATION__COMPONENTS:
       return !getComponents().isEmpty();
     case MsPackage.CS_CONFIGURATION__PORTS:

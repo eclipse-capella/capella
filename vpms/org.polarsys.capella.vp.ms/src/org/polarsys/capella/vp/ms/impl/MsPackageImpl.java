@@ -306,7 +306,7 @@ public class MsPackageImpl extends EPackageImpl implements MsPackage {
    * 
    * @generated
    */
-  public EReference getCSConfiguration_Components() {
+  public EReference getCSConfiguration_Scenarios() {
     return (EReference) csConfigurationEClass.getEStructuralFeatures().get(5);
   }
 
@@ -315,7 +315,7 @@ public class MsPackageImpl extends EPackageImpl implements MsPackage {
    * 
    * @generated
    */
-  public EReference getCSConfiguration_Ports() {
+  public EReference getCSConfiguration_Components() {
     return (EReference) csConfigurationEClass.getEStructuralFeatures().get(6);
   }
 
@@ -324,7 +324,7 @@ public class MsPackageImpl extends EPackageImpl implements MsPackage {
    * 
    * @generated
    */
-  public EReference getCSConfiguration_ChildConfigurations() {
+  public EReference getCSConfiguration_Ports() {
     return (EReference) csConfigurationEClass.getEStructuralFeatures().get(7);
   }
 
@@ -333,8 +333,8 @@ public class MsPackageImpl extends EPackageImpl implements MsPackage {
    * 
    * @generated
    */
-  public EAttribute getCSConfiguration_Kind() {
-    return (EAttribute) csConfigurationEClass.getEStructuralFeatures().get(8);
+  public EReference getCSConfiguration_ChildConfigurations() {
+    return (EReference) csConfigurationEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -342,7 +342,7 @@ public class MsPackageImpl extends EPackageImpl implements MsPackage {
    * 
    * @generated
    */
-  public EAttribute getCSConfiguration_Access() {
+  public EAttribute getCSConfiguration_Kind() {
     return (EAttribute) csConfigurationEClass.getEStructuralFeatures().get(9);
   }
 
@@ -351,7 +351,7 @@ public class MsPackageImpl extends EPackageImpl implements MsPackage {
    * 
    * @generated
    */
-  public EAttribute getCSConfiguration_Selector() {
+  public EAttribute getCSConfiguration_Access() {
     return (EAttribute) csConfigurationEClass.getEStructuralFeatures().get(10);
   }
 
@@ -360,8 +360,17 @@ public class MsPackageImpl extends EPackageImpl implements MsPackage {
    * 
    * @generated
    */
+  public EAttribute getCSConfiguration_Selector() {
+    return (EAttribute) csConfigurationEClass.getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
   public EReference getCSConfiguration_Context() {
-    return (EReference) csConfigurationEClass.getEStructuralFeatures().get(11);
+    return (EReference) csConfigurationEClass.getEStructuralFeatures().get(12);
   }
 
   /**
@@ -370,7 +379,7 @@ public class MsPackageImpl extends EPackageImpl implements MsPackage {
    * @generated
    */
   public EReference getCSConfiguration_CompareTo() {
-    return (EReference) csConfigurationEClass.getEStructuralFeatures().get(12);
+    return (EReference) csConfigurationEClass.getEStructuralFeatures().get(13);
   }
 
   /**
@@ -623,6 +632,7 @@ public class MsPackageImpl extends EPackageImpl implements MsPackage {
     createEReference(csConfigurationEClass, CS_CONFIGURATION__DEPLOYMENT_LINKS);
     createEReference(csConfigurationEClass, CS_CONFIGURATION__FUNCTIONS);
     createEReference(csConfigurationEClass, CS_CONFIGURATION__FUNCTIONAL_CHAINS);
+    createEReference(csConfigurationEClass, CS_CONFIGURATION__SCENARIOS);
     createEReference(csConfigurationEClass, CS_CONFIGURATION__COMPONENTS);
     createEReference(csConfigurationEClass, CS_CONFIGURATION__PORTS);
     createEReference(csConfigurationEClass, CS_CONFIGURATION__CHILD_CONFIGURATIONS);
@@ -703,6 +713,8 @@ public class MsPackageImpl extends EPackageImpl implements MsPackage {
         .getEPackage(ModellingcorePackage.eNS_URI);
     CsPackage theCsPackage = (CsPackage) EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI);
     FaPackage theFaPackage = (FaPackage) EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI);
+    InteractionPackage theInteractionPackage = (InteractionPackage) EPackage.Registry.INSTANCE
+        .getEPackage(InteractionPackage.eNS_URI);
     InformationPackage theInformationPackage = (InformationPackage) EPackage.Registry.INSTANCE
         .getEPackage(InformationPackage.eNS_URI);
 
@@ -747,6 +759,9 @@ public class MsPackageImpl extends EPackageImpl implements MsPackage {
     initEReference(getCSConfiguration_FunctionalChains(), theFaPackage.getFunctionalChain(), null, "functionalChains", //$NON-NLS-1$
         null, 0, -1, CSConfiguration.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE,
         IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+    initEReference(getCSConfiguration_Scenarios(), theInteractionPackage.getScenario(), null, "scenarios", null, 0, -1, //$NON-NLS-1$
+        CSConfiguration.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+        !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
     initEReference(getCSConfiguration_Components(), theCsPackage.getComponent(), null, "components", null, 0, -1, //$NON-NLS-1$
         CSConfiguration.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
         !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);

@@ -68,6 +68,7 @@ public class CSConfigurationItemProvider extends NamedElementItemProvider implem
       addDeploymentLinksPropertyDescriptor(object);
       addFunctionsPropertyDescriptor(object);
       addFunctionalChainsPropertyDescriptor(object);
+      addScenariosPropertyDescriptor(object);
       addComponentsPropertyDescriptor(object);
       addPortsPropertyDescriptor(object);
       addChildConfigurationsPropertyDescriptor(object);
@@ -178,6 +179,26 @@ public class CSConfigurationItemProvider extends NamedElementItemProvider implem
         getString("_UI_PropertyDescriptor_description", "_UI_CSConfiguration_functionalChains_feature", //$NON-NLS-1$ //$NON-NLS-2$
             "_UI_CSConfiguration_type"), //$NON-NLS-1$
         MsPackage.Literals.CS_CONFIGURATION__FUNCTIONAL_CHAINS, false, false, false, null, null,
+        // begin-extension-code
+        null));
+    // end-extension-code
+  }
+
+  /**
+   * This adds a property descriptor for the Scenarios feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  protected void addScenariosPropertyDescriptor(Object object) {
+
+    // begin-extension-code
+    itemPropertyDescriptors.add(createItemPropertyDescriptor
+    // end-extension-code
+    (((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+        getString("_UI_CSConfiguration_scenarios_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_CSConfiguration_scenarios_feature", //$NON-NLS-1$ //$NON-NLS-2$
+            "_UI_CSConfiguration_type"), //$NON-NLS-1$
+        MsPackage.Literals.CS_CONFIGURATION__SCENARIOS, false, false, false, null, null,
         // begin-extension-code
         null));
     // end-extension-code
@@ -466,7 +487,8 @@ public class CSConfigurationItemProvider extends NamedElementItemProvider implem
         || feature_p == MsPackage.Literals.CS_CONFIGURATION__DEPLOYMENT_LINKS
         || feature_p == MsPackage.Literals.CS_CONFIGURATION__FUNCTIONAL_CHAINS
         || feature_p == MsPackage.Literals.CS_CONFIGURATION__FUNCTIONS
-        || feature_p == MsPackage.Literals.CS_CONFIGURATION__PORTS) {
+        || feature_p == MsPackage.Literals.CS_CONFIGURATION__PORTS
+        || feature_p == MsPackage.Literals.CS_CONFIGURATION__SCENARIOS) {
 
       return new CSConfigurationItemPropertyDescriptor(adapterFactory_p, resourceLocator_p, displayName_p,
           description_p, feature_p, isSettable_p, multiLine_p, sortChoices_p, staticImage_p, category_p, filterFlags_p);
