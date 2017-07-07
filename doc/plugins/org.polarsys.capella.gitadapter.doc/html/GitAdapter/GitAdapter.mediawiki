@@ -1,4 +1,6 @@
-= Version Control Systems (VCS) with GIT =
+= Version Control with GIT =
+
+Git is a Version Control System (VCS) for tracking changes in computer files and coordinating work on those files among multiple users.<br>As with most other distributed version control systems, and unlike SVN and CC, every Git directory on every computer is a full-fledged repository with complete history and full version tracking abilities, independent of network access or a central server.<br>This document describe how to install the Capella Git Adapter and help you to manage Capella Models with Git.
  
 == Installation ==
 
@@ -36,7 +38,7 @@ Capella Git Adapter is based on EMF Diff/Merge, help and details about it can be
 <li>Always validate your model before a commit.</li>
 <li>Select all fragments on commit if the model is fragmented.</li>
 <li>Close the session before a pull, rebase or merge operation.</li>
-<li>To handle large files in Git Repositories, more than 2GB, there are multiple 3rd party implementations that will try to solve the problem, many of them using similar paradigm as a solution.<br>We recommend you to use git-Iss. (TODO see with OCO)</li>
+<li>To handle large files in Git Repositories, more than 2GB, there are multiple 3rd party implementations that will try to solve the problem, many of them using similar paradigm as a solution.</li>
 <li>Content of all model files (aird, airdfragment, melodymodeller, melodyfragment, afm, ...) are declared as ASCII Text and not binary files.<br>(see Capella : Window > Preferences > Team > File Content)</li>
 </ul>
 |}
@@ -222,16 +224,10 @@ When your model is fragmented, you have to select all your fragments in your com
 
 If your model refers to libraries, you have to include manually your modified libraries in your commits in order to keep your model valid.
 
-=== Videos on polarsys ===
 
-'''TODO''' Link to be added here
+== Limitations / Known Issues ==
 
-=== Limitations / Known Issues ===
-
-'''TODO''' to enhance this section
-* T4C : use case préoconisé / gconf fichier
 * Diff/Merge 3-way to enhance.
 * Session need to be closed prior to any Fetch, Pull or Rebase.
 * Diff/Merge on root fragment
-* Difference of CC and SVN Adapter : non support de la notion de réservation de fragments via des locks pour scm en mode pessimiste (prise de lock de fragments) : mode optimiste via DiffMerge 
  
