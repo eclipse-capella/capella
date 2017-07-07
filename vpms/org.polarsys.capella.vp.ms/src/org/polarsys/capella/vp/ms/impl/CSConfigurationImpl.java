@@ -28,12 +28,18 @@ import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
+import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import org.polarsys.capella.core.data.information.AbstractInstance;
+import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.Port;
+import org.polarsys.capella.core.data.interaction.InstanceRole;
+import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalActor;
@@ -582,8 +588,15 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
 
   private void addComboBoxElements(Collection<ModelElement> result, Component parent) {
 
+    for (Partition part : parent.getRepresentingPartitions()) {
+      addComboboxElements(result, part);
+    }
+
     for (AbstractFunction allocated : parent.getAllocatedFunctions()) {
       result.add(allocated);
+
+      addComboboxElements(result, allocated);
+
       for (Port port : FunctionExt.getOwnedFunctionPorts(allocated)) {
         result.add(port);
       }
@@ -592,8 +605,23 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
       }
     }
 
-    result.addAll(parent.getContainedComponentPorts());
-    result.addAll(parent.getContainedPhysicalPorts());
+    for (ComponentPort cp : parent.getContainedComponentPorts()) {
+      result.add(cp);
+      addComboboxElements(result, cp);
+    }
+
+    for (PhysicalPort pp : parent.getContainedPhysicalPorts()) {
+      result.add(pp);
+      addComboboxElements(result, pp);
+    }
+  }
+
+  private void addComboboxElements(Collection<ModelElement> result, AbstractInstance allocated) {
+    for (InstanceRole ir : allocated.getRepresentingInstanceRoles()) {
+      if (ir.eContainer() instanceof Scenario) {
+        result.add((Scenario) ir.eContainer());
+      }
+    }
   }
 
   private void addComboBoxElements(Collection<ModelElement> result, System parent) {
