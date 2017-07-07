@@ -83,8 +83,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="situation" eType="#//Situation"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="kind_Type">
-    <eLiterals name="component" literal="component"/>
-    <eLiterals name="system" value="1" literal="system"/>
+    <eLiterals name="Atomic" literal="Atomic"/>
+    <eLiterals name="Global" value="1" literal="Global"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="access_Type">
     <eLiterals name="flat" literal="flat"/>

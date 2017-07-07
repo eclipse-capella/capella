@@ -105,7 +105,7 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
    * @generated
    * @ordered
    */
-  protected static final kind_Type KIND_EDEFAULT = kind_Type.COMPONENT;
+  protected static final kind_Type KIND_EDEFAULT = kind_Type.ATOMIC;
 
   /**
    * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->

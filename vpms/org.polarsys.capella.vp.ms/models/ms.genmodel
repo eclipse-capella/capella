@@ -8,8 +8,8 @@
   <genPackages prefix="Ms" basePackage="org.polarsys.capella.vp" disposableProviderFactory="true"
       extensibleProviderFactory="true" childCreationExtenders="true" ecorePackage="ms.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ms.ecore#//kind_Type">
-      <genEnumLiterals ecoreEnumLiteral="ms.ecore#//kind_Type/component"/>
-      <genEnumLiterals ecoreEnumLiteral="ms.ecore#//kind_Type/system"/>
+      <genEnumLiterals ecoreEnumLiteral="ms.ecore#//kind_Type/Atomic"/>
+      <genEnumLiterals ecoreEnumLiteral="ms.ecore#//kind_Type/Global"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ms.ecore#//access_Type">
       <genEnumLiterals ecoreEnumLiteral="ms.ecore#//access_Type/flat"/>
