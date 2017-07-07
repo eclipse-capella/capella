@@ -295,12 +295,20 @@ public interface MsPackage extends EPackage {
   int CS_CONFIGURATION__FUNCTIONAL_CHAINS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
 
   /**
+   * The feature id for the '<em><b>Scenarios</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   * @ordered
+   */
+  int CS_CONFIGURATION__SCENARIOS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+  /**
    * The feature id for the '<em><b>Components</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    * @ordered
    */
-  int CS_CONFIGURATION__COMPONENTS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
+  int CS_CONFIGURATION__COMPONENTS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Ports</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -308,7 +316,7 @@ public interface MsPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CS_CONFIGURATION__PORTS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
+  int CS_CONFIGURATION__PORTS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Child Configurations</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -317,7 +325,7 @@ public interface MsPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CS_CONFIGURATION__CHILD_CONFIGURATIONS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
+  int CS_CONFIGURATION__CHILD_CONFIGURATIONS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Kind</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -325,7 +333,7 @@ public interface MsPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CS_CONFIGURATION__KIND = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 8;
+  int CS_CONFIGURATION__KIND = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 9;
 
   /**
    * The feature id for the '<em><b>Access</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -333,7 +341,7 @@ public interface MsPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CS_CONFIGURATION__ACCESS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 9;
+  int CS_CONFIGURATION__ACCESS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 10;
 
   /**
    * The feature id for the '<em><b>Selector</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -341,7 +349,7 @@ public interface MsPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CS_CONFIGURATION__SELECTOR = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 10;
+  int CS_CONFIGURATION__SELECTOR = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 11;
 
   /**
    * The feature id for the '<em><b>Context</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -349,7 +357,7 @@ public interface MsPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CS_CONFIGURATION__CONTEXT = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 11;
+  int CS_CONFIGURATION__CONTEXT = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 12;
 
   /**
    * The feature id for the '<em><b>Compare To</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -357,7 +365,7 @@ public interface MsPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CS_CONFIGURATION__COMPARE_TO = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 12;
+  int CS_CONFIGURATION__COMPARE_TO = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 13;
 
   /**
    * The number of structural features of the '<em>CS Configuration</em>' class. <!-- begin-user-doc --> <!--
@@ -366,7 +374,7 @@ public interface MsPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CS_CONFIGURATION_FEATURE_COUNT = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 13;
+  int CS_CONFIGURATION_FEATURE_COUNT = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 14;
 
   /**
    * The meta object id for the '{@link org.polarsys.capella.vp.ms.impl.FSMTypeImpl <em>FSM Type</em>}' class. <!--
@@ -2686,6 +2694,17 @@ public interface MsPackage extends EPackage {
   EReference getCSConfiguration_FunctionalChains();
 
   /**
+   * Returns the meta object for the reference list '{@link org.polarsys.capella.vp.ms.CSConfiguration#getScenarios
+   * <em>Scenarios</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @return the meta object for the reference list '<em>Scenarios</em>'.
+   * @see org.polarsys.capella.vp.ms.CSConfiguration#getScenarios()
+   * @see #getCSConfiguration()
+   * @generated
+   */
+  EReference getCSConfiguration_Scenarios();
+
+  /**
    * Returns the meta object for the reference list '{@link org.polarsys.capella.vp.ms.CSConfiguration#getComponents
    * <em>Components</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
@@ -3095,6 +3114,14 @@ public interface MsPackage extends EPackage {
      * @generated
      */
     EReference CS_CONFIGURATION__FUNCTIONAL_CHAINS = eINSTANCE.getCSConfiguration_FunctionalChains();
+
+    /**
+     * The meta object literal for the '<em><b>Scenarios</b></em>' reference list feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     */
+    EReference CS_CONFIGURATION__SCENARIOS = eINSTANCE.getCSConfiguration_Scenarios();
 
     /**
      * The meta object literal for the '<em><b>Components</b></em>' reference list feature. <!-- begin-user-doc --> <!--

@@ -31,6 +31,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ms.ecore#//CSConfiguration/deploymentLinks"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ms.ecore#//CSConfiguration/functions"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ms.ecore#//CSConfiguration/functionalChains"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ms.ecore#//CSConfiguration/scenarios"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ms.ecore#//CSConfiguration/components"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ms.ecore#//CSConfiguration/ports"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ms.ecore#//CSConfiguration/childConfigurations"/>
