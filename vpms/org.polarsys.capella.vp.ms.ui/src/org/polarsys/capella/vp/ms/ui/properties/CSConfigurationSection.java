@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *   
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -50,6 +50,8 @@ public class CSConfigurationSection extends NamedElementSection {
 
   private MultipleSemanticField childConfigurationsField;
 
+  private KindGroup kindGroup;
+
   @Override
   public boolean select(Object toTest) {
     EObject obj = CapellaAdapterHelper.resolveSemanticObject(toTest);
@@ -69,6 +71,9 @@ public class CSConfigurationSection extends NamedElementSection {
     selectorGroup = new SelectorGroup(_rootParentComposite, getWidgetFactory(),
         MsEditPlugin.INSTANCE.getString("_UI_CSConfiguration_selector_feature"), 2); //$NON-NLS-1$
     selectorGroup.setDisplayedInWizard(displayedInWizard);
+
+    kindGroup = new KindGroup(_rootParentComposite, getWidgetFactory(),
+        MsEditPlugin.INSTANCE.getString("_UI_CSConfiguration_kind_feature"), 2); //$NON-NLS-1$
 
     IMultipleSemanticFieldController elementsController = new DerivedElementsController();
 
@@ -99,6 +104,7 @@ public class CSConfigurationSection extends NamedElementSection {
     contextField = new MultipleSemanticField(getReferencesGroup(),
         MsEditPlugin.INSTANCE.getString("_UI_CSConfiguration_context_feature"), getWidgetFactory(), //$NON-NLS-1$
         new ItemProviderFieldController());
+
   }
 
   /**
@@ -114,6 +120,7 @@ public class CSConfigurationSection extends NamedElementSection {
 
     childConfigurationsField.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__CHILD_CONFIGURATIONS);
     selectorGroup.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__SELECTOR);
+    kindGroup.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__KIND);
     contextField.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__CONTEXT);
   }
 
@@ -129,6 +136,7 @@ public class CSConfigurationSection extends NamedElementSection {
     fields.add(componentsField);
     fields.add(portsField);
     fields.add(selectorGroup);
+    fields.add(kindGroup);
     fields.add(childConfigurationsField);
     fields.add(contextField);
     return fields;
