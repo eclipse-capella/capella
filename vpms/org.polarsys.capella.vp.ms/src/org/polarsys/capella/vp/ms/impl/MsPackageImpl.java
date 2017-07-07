@@ -846,8 +846,8 @@ public class MsPackageImpl extends EPackageImpl implements MsPackage {
 
     // Initialize enums and add enum literals
     initEEnum(kind_TypeEEnum, kind_Type.class, "kind_Type"); //$NON-NLS-1$
-    addEEnumLiteral(kind_TypeEEnum, kind_Type.COMPONENT);
-    addEEnumLiteral(kind_TypeEEnum, kind_Type.SYSTEM);
+    addEEnumLiteral(kind_TypeEEnum, kind_Type.ATOMIC);
+    addEEnumLiteral(kind_TypeEEnum, kind_Type.GLOBAL);
 
     initEEnum(access_TypeEEnum, access_Type.class, "access_Type"); //$NON-NLS-1$
     addEEnumLiteral(access_TypeEEnum, access_Type.FLAT);

@@ -27,59 +27,58 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum kind_Type implements Enumerator {
   /**
-   * The '<em><b>Component</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The '<em><b>Atomic</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @see #COMPONENT_VALUE
+   * @see #ATOMIC_VALUE
    * @generated
    * @ordered
    */
-  COMPONENT(0, "component", "component"),
-
+  ATOMIC(0, "Atomic", "Atomic"),
   /**
-   * The '<em><b>System</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The '<em><b>Global</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @see #SYSTEM_VALUE
+   * @see #GLOBAL_VALUE
    * @generated
    * @ordered
    */
-  SYSTEM(1, "system", "system");
+  GLOBAL(1, "Global", "Global");
 
   /**
-   * The '<em><b>Component</b></em>' literal value. <!-- begin-user-doc -->
+   * The '<em><b>Atomic</b></em>' literal value. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of '<em><b>Component</b></em>' literal object isn't clear, there really should be more of a
-   * description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * 
-   * @see #COMPONENT
-   * @model name="component"
-   * @generated
-   * @ordered
-   */
-  public static final int COMPONENT_VALUE = 0;
-
-  /**
-   * The '<em><b>System</b></em>' literal value. <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of '<em><b>System</b></em>' literal object isn't clear, there really should be more of a description
+   * If the meaning of '<em><b>Atomic</b></em>' literal object isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
    * 
-   * @see #SYSTEM
-   * @model name="system"
+   * @see #ATOMIC
+   * @model name="Atomic"
    * @generated
    * @ordered
    */
-  public static final int SYSTEM_VALUE = 1;
+  public static final int ATOMIC_VALUE = 0;
+
+  /**
+   * The '<em><b>Global</b></em>' literal value. <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of '<em><b>Global</b></em>' literal object isn't clear, there really should be more of a description
+   * here...
+   * </p>
+   * <!-- end-user-doc -->
+   * 
+   * @see #GLOBAL
+   * @model name="Global"
+   * @generated
+   * @ordered
+   */
+  public static final int GLOBAL_VALUE = 1;
 
   /**
    * An array of all the '<em><b>kind Type</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    */
-  private static final kind_Type[] VALUES_ARRAY = new kind_Type[] { COMPONENT, SYSTEM, };
+  private static final kind_Type[] VALUES_ARRAY = new kind_Type[] { ATOMIC, GLOBAL, };
 
   /**
    * A public read-only list of all the '<em><b>kind Type</b></em>' enumerators. <!-- begin-user-doc --> <!--
@@ -138,10 +137,10 @@ public enum kind_Type implements Enumerator {
    */
   public static kind_Type get(int value) {
     switch (value) {
-    case COMPONENT_VALUE:
-      return COMPONENT;
-    case SYSTEM_VALUE:
-      return SYSTEM;
+    case ATOMIC_VALUE:
+      return ATOMIC;
+    case GLOBAL_VALUE:
+      return GLOBAL;
     }
     return null;
   }
