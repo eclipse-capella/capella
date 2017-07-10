@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.geometry.Point;
@@ -458,6 +459,7 @@ public class CompareLayoutManager {
       
       StringBuffer result = new StringBuffer();
       result.append("There should not have layout modification\n");
+      result.append(ResourcesPlugin.getWorkspace().getRoot().getLocation()+"\n");
       
       LayoutAdapterFactory factory = new LayoutItemProviderAdapterFactory();
       
