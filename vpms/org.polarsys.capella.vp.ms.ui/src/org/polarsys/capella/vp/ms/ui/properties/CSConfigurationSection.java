@@ -44,6 +44,7 @@ public class CSConfigurationSection extends NamedElementSection {
   private MultipleSemanticField portsField;
   private MultipleSemanticField componentsField;
   private MultipleSemanticField scenariosField;
+  private MultipleSemanticField elementsField;
 
   private MultipleSemanticField contextField;
 
@@ -103,6 +104,10 @@ public class CSConfigurationSection extends NamedElementSection {
         CS_CONFIGURATION__ELEMENTS);
     scenariosField.setDisplayedInWizard(displayedInWizard);
 
+    elementsField = new MultipleSemanticField(getReferencesGroup(),
+        MsEditPlugin.INSTANCE.getString("_UI_CSConfiguration_other_elements"), getWidgetFactory(), elementsController); //$NON-NLS-1$
+    elementsField.setDisplayedInWizard(displayedInWizard);
+
     childConfigurationsField = new MultipleSemanticField(getReferencesGroup(),
         MsEditPlugin.INSTANCE.getString("_UI_CSConfiguration_childConfigurations_feature"), getWidgetFactory(), //$NON-NLS-1$
         new ItemProviderFieldController());
@@ -124,6 +129,7 @@ public class CSConfigurationSection extends NamedElementSection {
     componentsField.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__COMPONENTS);
     portsField.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__PORTS);
     scenariosField.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__SCENARIOS);
+    elementsField.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__ELEMENTS);
     childConfigurationsField.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__CHILD_CONFIGURATIONS);
     selectorGroup.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__SELECTOR);
     kindGroup.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__KIND);
@@ -142,6 +148,7 @@ public class CSConfigurationSection extends NamedElementSection {
     fields.add(componentsField);
     fields.add(portsField);
     fields.add(scenariosField);
+    fields.add(elementsField);
     fields.add(selectorGroup);
     fields.add(kindGroup);
     fields.add(childConfigurationsField);
@@ -188,10 +195,7 @@ public class CSConfigurationSection extends NamedElementSection {
         IItemPropertySource propertySource = (IItemPropertySource) domain.getAdapterFactory().adapt(semanticElement,
             IItemPropertySource.class);
         IItemPropertyDescriptor descriptor = propertySource.getPropertyDescriptor(semanticElement, semanticFeature);
-        result = new ArrayList<EObject>();
-        for (Object o : descriptor.getChoiceOfValues(semanticElement)) {
-          result.add((EObject) o);
-        }
+        result = new ArrayList<EObject>((Collection<? extends EObject>) descriptor.getChoiceOfValues(semanticElement));
         result.removeAll(current);
       } else {
         result = current;
@@ -206,7 +210,24 @@ public class CSConfigurationSection extends NamedElementSection {
 
   }
 
-  static class DerivedElementsController extends ItemProviderFieldController {
+  /*
+   *  A specialized controller that
+   *   - always stores elements in CSConfiguration.elements
+   *   - filters values so that the 'other elements' field does not show elements
+   *     from one of the typed elements fields, and vice-versa.
+   */
+  private static class DerivedElementsController extends ItemProviderFieldController {
+
+    @Override
+    public List<EObject> loadValues(EObject semanticElement, EStructuralFeature semanticFeature) {
+      List<EObject> values = super.loadValues(semanticElement, semanticFeature);
+      if (semanticFeature == MsPackage.Literals.CS_CONFIGURATION__ELEMENTS) {
+        values.removeAll(((CSConfiguration)semanticElement).getScope());
+      } else {
+        values.retainAll(((CSConfiguration)semanticElement).getScope());
+      }
+      return values;
+    }
 
     @Override
     protected void doAddOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature,

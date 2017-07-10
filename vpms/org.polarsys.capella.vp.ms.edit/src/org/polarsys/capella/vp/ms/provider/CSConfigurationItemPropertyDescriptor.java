@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *   
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -21,6 +21,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.model.IDelegatedListener;
 import org.polarsys.capella.vp.ms.CSConfiguration;
+import org.polarsys.capella.vp.ms.MsPackage;
 import org.polarsys.kitalpha.emde.model.edit.provider.ExtensionItemPropertyDescriptor;
 
 public class CSConfigurationItemPropertyDescriptor extends ExtensionItemPropertyDescriptor {
@@ -63,6 +64,13 @@ public class CSConfigurationItemPropertyDescriptor extends ExtensionItemProperty
 
   @Override
   protected Collection<?> getComboBoxObjects(Object object) {
+
+    if (feature == MsPackage.Literals.CS_CONFIGURATION__ELEMENTS) {
+      Collection<?> result = super.getComboBoxObjects(object);
+      result.removeAll(((CSConfiguration) object).getScope());
+      return result;
+    }
+
     return ((CSConfiguration) object).getScope((Class<? extends ModelElement>) feature.getEType().getInstanceClass());
   }
 
