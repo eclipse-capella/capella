@@ -43,6 +43,7 @@ public class CSConfigurationSection extends NamedElementSection {
   private MultipleSemanticField functionalChainsField;
   private MultipleSemanticField portsField;
   private MultipleSemanticField componentsField;
+  private MultipleSemanticField scenariosField;
 
   private MultipleSemanticField contextField;
 
@@ -97,6 +98,11 @@ public class CSConfigurationSection extends NamedElementSection {
         CS_CONFIGURATION__ELEMENTS);
     portsField.setDisplayedInWizard(displayedInWizard);
 
+    scenariosField = new DerivedMultipleSemanticField(getReferencesGroup(),
+        MsEditPlugin.INSTANCE.getString("_UI_CSConfiguration_scenarios_feature"), getWidgetFactory(), elementsController, //$NON-NLS-1$
+        CS_CONFIGURATION__ELEMENTS);
+    scenariosField.setDisplayedInWizard(displayedInWizard);
+
     childConfigurationsField = new MultipleSemanticField(getReferencesGroup(),
         MsEditPlugin.INSTANCE.getString("_UI_CSConfiguration_childConfigurations_feature"), getWidgetFactory(), //$NON-NLS-1$
         new ItemProviderFieldController());
@@ -117,7 +123,7 @@ public class CSConfigurationSection extends NamedElementSection {
     functionalChainsField.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__FUNCTIONAL_CHAINS);
     componentsField.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__COMPONENTS);
     portsField.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__PORTS);
-
+    scenariosField.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__SCENARIOS);
     childConfigurationsField.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__CHILD_CONFIGURATIONS);
     selectorGroup.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__SELECTOR);
     kindGroup.loadData(capellaElement, MsPackage.Literals.CS_CONFIGURATION__KIND);
@@ -135,6 +141,7 @@ public class CSConfigurationSection extends NamedElementSection {
     fields.add(functionalChainsField);
     fields.add(componentsField);
     fields.add(portsField);
+    fields.add(scenariosField);
     fields.add(selectorGroup);
     fields.add(kindGroup);
     fields.add(childConfigurationsField);
