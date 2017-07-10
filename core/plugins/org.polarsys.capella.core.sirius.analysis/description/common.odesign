@@ -14557,7 +14557,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Timers">
-            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new sequence message to arm a timer." name="Arm timer" precondition="&lt;% $preSource == $preTarget%>" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping']">
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new sequence message to arm a timer." name="Arm timer" precondition="&lt;% $preSource == $preTarget%>" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping']">
               <sourceVariable name="source">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceIR" computationExpression="&lt;%if (filter(&quot;Execution&quot;).nSize > 0) {%>&lt;%covered%>&lt;%}else{%>&lt;%current%>&lt;%}%>"/>
               </sourceVariable>
@@ -14633,7 +14633,7 @@
               <startingEndPredecessor name="messageEndBefore"/>
               <finishingEndPredecessor name="messageEndAfter"/>
             </tools>
-            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new sequence message to cancel a prieviously armed timer." name="Cancel timer" precondition="&lt;% $preSource == $preTarget%>" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping']">
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new sequence message to cancel a prieviously armed timer." name="Cancel timer" precondition="&lt;% $preSource == $preTarget%>" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping']">
               <sourceVariable name="source">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceIR" computationExpression="&lt;%if (filter(&quot;Execution&quot;).nSize > 0) {%>&lt;%covered%>&lt;%}else{%>&lt;%current%>&lt;%}%>"/>
               </sourceVariable>
@@ -16347,7 +16347,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Timers">
-            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new sequence message to arm a timer." name="Arm timer" precondition="&lt;% $preSource == $preTarget%>" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping%20DF']">
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new sequence message to arm a timer." name="Arm timer" precondition="&lt;% $preSource == $preTarget%>" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping%20DF']">
               <sourceVariable name="source">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceIR" computationExpression="&lt;%if (filter(&quot;Execution&quot;).nSize > 0) {%>&lt;%covered%>&lt;%}else{%>&lt;%current%>&lt;%}%>"/>
               </sourceVariable>
@@ -16423,7 +16423,7 @@
               <startingEndPredecessor name="messageEndBefore"/>
               <finishingEndPredecessor name="messageEndAfter"/>
             </tools>
-            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new sequence message to cancel a prieviously armed timer." name="Cancel timer" precondition="&lt;% $preSource == $preTarget%>" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping%20DF']">
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new sequence message to cancel a prieviously armed timer." name="Cancel timer" precondition="&lt;% $preSource == $preTarget%>" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping%20DF']">
               <sourceVariable name="source">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceIR" computationExpression="&lt;%if (filter(&quot;Execution&quot;).nSize > 0) {%>&lt;%covered%>&lt;%}else{%>&lt;%current%>&lt;%}%>"/>
               </sourceVariable>

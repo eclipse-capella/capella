@@ -3291,7 +3291,7 @@
             <finishingEndPredecessor name="messageEndAfter"/>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Timers">
-            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new sequence message to arm a timer." name="Arm timer" precondition="&lt;% $preSource == $preTarget%>" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping%20OA']">
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new sequence message to arm a timer." name="Arm timer" precondition="&lt;% $preSource == $preTarget%>" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping%20OA']">
               <sourceVariable name="source">
                 <subVariables xsi:type="tool:AcceleoVariable" name="sourceIR" computationExpression="&lt;%if (filter(&quot;Execution&quot;).nSize > 0) {%>&lt;%covered%>&lt;%}else{%>&lt;%current%>&lt;%}%>"/>
               </sourceVariable>
@@ -3367,7 +3367,7 @@
               <startingEndPredecessor name="messageEndBefore"/>
               <finishingEndPredecessor name="messageEndAfter"/>
             </tools>
-            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new sequence message to cancel a prieviously armed timer." name="Cancel timer" precondition="&lt;% $preSource == $preTarget%>" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping%20OA']">
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new sequence message to cancel a prieviously armed timer." name="Cancel timer" precondition="&lt;% $preSource == $preTarget%>" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping%20OA']">
               <sourceVariable name="source">
                 <subVariables xsi:type="tool:AcceleoVariable" name="sourceIR" computationExpression="&lt;%if (filter(&quot;Execution&quot;).nSize > 0) {%>&lt;%covered%>&lt;%}else{%>&lt;%current%>&lt;%}%>"/>
               </sourceVariable>
