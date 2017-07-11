@@ -18,18 +18,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
-import org.polarsys.capella.core.data.capellacommon.ChoicePseudoState;
-import org.polarsys.capella.vp.ms.AndOperation;
-import org.polarsys.capella.vp.ms.BooleanExpression;
-import org.polarsys.capella.vp.ms.BooleanOperation;
-import org.polarsys.capella.vp.ms.Comparison;
-import org.polarsys.capella.vp.ms.NotOperation;
-import org.polarsys.capella.vp.ms.OrOperation;
 import org.polarsys.capella.vp.ms.Result;
 import org.polarsys.capella.vp.ms.Situation;
 
 import ms.configuration.services.cs.CalculatedConfiguration;
-import ms.configuration.services.cs.CalculatedConfiguration.BooleanExpr;
 import ms.configuration.services.cs.CalculatedConfiguration.ConfList;
 
 // check the consistency of the boolean operation between M&S, trigger warning and error messages
@@ -41,7 +33,7 @@ public class MDCHK_MSVAL_ResultCorrectness extends AbstractModelConstraint {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
- public IStatus validate(IValidationContext ctx) {
+  public IStatus validate(IValidationContext ctx) {
     Collection<IStatus> objectsIrregularList = new ArrayList<IStatus>();
     ConfList conflist = null;
     ArrayList<String> irregFault = new ArrayList<String>();
@@ -49,15 +41,15 @@ public class MDCHK_MSVAL_ResultCorrectness extends AbstractModelConstraint {
     if (eObj instanceof Result) {
       Result result = (Result)eObj;
       for (Situation situ : result.getSituation()){
-          CalculatedConfiguration cC = new CalculatedConfiguration(result); // JVS
-          conflist = cC.Calculate(); // JVS
-          irregFault = cC.getErrorListText();
+        CalculatedConfiguration cC = new CalculatedConfiguration(result); // JVS
+        conflist = cC.Calculate(); // JVS
+        irregFault = cC.getErrorListText();
       }
       if(irregFault.size() > 0)
       {
         for(String errorToShow : irregFault)
           objectsIrregularList.add(ctx.createFailureStatus(result.getName(),errorToShow));
-          return ConstraintStatus.createMultiStatus(ctx, objectsIrregularList);
+        return ConstraintStatus.createMultiStatus(ctx, objectsIrregularList);
       }
       else
         return ctx.createSuccessStatus();

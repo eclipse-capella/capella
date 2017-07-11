@@ -134,7 +134,7 @@ public class MDCHK_MSVAL_ComparisonInclExcl extends AbstractModelConstraint {
           if(!a_is_exclusive){ // if config a is inclusive, search for excluded elements in calculated configurations
             for(AbstractFunction jObj: a.getFunctions())
               for(LightConfiguration lc:conflist.getLightConfigurationList())
-                for(AbstractFunction kObj : lc.getExclLogFct())
+                for(AbstractFunction kObj : lc.getExclFct())
                   if(jObj.equals(kObj)){
                     failureMessageArgument1.add("Function");
                     failureMessageArgument2.add(kObj.getName());
@@ -143,7 +143,7 @@ public class MDCHK_MSVAL_ComparisonInclExcl extends AbstractModelConstraint {
           else {  // if config a is exclusive, search for included elements in calculated configurations
             for(AbstractFunction jObj: a.getFunctions())
               for(LightConfiguration lc:conflist.getLightConfigurationList())
-                for(AbstractFunction kObj : lc.getExclLogFct())
+                for(AbstractFunction kObj : lc.getExclFct())
                   if(jObj.equals(kObj)){
                     failureMessageArgument1.add("Function");
                     failureMessageArgument2.add(kObj.getName());

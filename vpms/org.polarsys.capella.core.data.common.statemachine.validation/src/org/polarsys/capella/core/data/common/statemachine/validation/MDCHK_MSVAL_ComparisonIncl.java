@@ -12,7 +12,6 @@
 package org.polarsys.capella.core.data.common.statemachine.validation;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -25,6 +24,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.information.Port;
+import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.vp.ms.CSConfiguration;
 import org.polarsys.capella.vp.ms.Comparison;
@@ -40,11 +40,9 @@ public class MDCHK_MSVAL_ComparisonIncl extends AbstractModelConstraint {
 
   @Override
   public IStatus validate(IValidationContext ctx) {
-
     EObject eObj = ctx.getTarget();
 
-    Collection<IStatus> failureStatusList = new ArrayList<IStatus>();
-    ArrayList<ErrorArgument> failureMessageArgument1 = new ArrayList<>();
+    ArrayList<IStatus> failureMessageArgument1 = new ArrayList<>();
     if (eObj instanceof Comparison) {
       Comparison comparison = (Comparison)eObj;
       // check that the comparison elements have references to two configuration elements, or one config and one situation
@@ -59,55 +57,55 @@ public class MDCHK_MSVAL_ComparisonIncl extends AbstractModelConstraint {
         CSConfiguration config2 = comparison.getConfiguration2().get(0);
         config1.getSelector();
         config2.getSelector();
-        if (config1.getSelector().equals(selector_Type.INCLUSION) && config2.getSelector().equals(selector_Type.INCLUSION)){
+        if (config1.getSelector().equals(selector_Type.INCLUSION) && config2.getSelector().equals(selector_Type.INCLUSION) && config1.eContainer() instanceof LogicalComponent && config2.eContainer() instanceof LogicalComponent){
           for(AbstractFunction function : config1.getFunctions()){
             if(!config2.getFunctions().contains(function)){
-              failureMessageArgument1.add(new ErrorArgument("Function", config2.getName(), function.getName()));
+              failureMessageArgument1.add(ctx.createFailureStatus("Function", function.getName(), config2.getName(), comparison.getName()));
             }
           }
           for(AbstractFunction function : config2.getFunctions()){
             if(!config1.getFunctions().contains(function)){
-              failureMessageArgument1.add(new ErrorArgument("Function", config1.getName(), function.getName()));
+              failureMessageArgument1.add(ctx.createFailureStatus("Function", function.getName(), config1.getName(), comparison.getName()));
             }
           }
           for(FunctionalChain functionalChain : config1.getFunctionalChains()){
             if(!config2.getFunctionalChains().contains(functionalChain)){
-              failureMessageArgument1.add(new ErrorArgument("Functional Chain", config2.getName(), functionalChain.getName()));
+              failureMessageArgument1.add(ctx.createFailureStatus("Functional Chain", functionalChain.getName(), config2.getName(), comparison.getName()));
             }
           }
           for(FunctionalChain functionalChain : config2.getFunctionalChains()){
             if(!config1.getFunctionalChains().contains(functionalChain)){
-              failureMessageArgument1.add(new ErrorArgument("Functional Chain", config1.getName(), functionalChain.getName()));
+              failureMessageArgument1.add(ctx.createFailureStatus("Functional Chain", functionalChain.getName(), config1.getName(), comparison.getName()));
             }
           }
           for(Port port : config1.getPorts()){
             if(!config2.getPorts().contains(port)){
-              failureMessageArgument1.add(new ErrorArgument("Port", config2.getName(), port.getName()));
+              failureMessageArgument1.add(ctx.createFailureStatus("Port", port.getName(), config2.getName(), comparison.getName()));
             }
           }
           for(Port port : config2.getPorts()){
             if(!config1.getPorts().contains(port)){
-              failureMessageArgument1.add(new ErrorArgument("Port", config1.getName(), port.getName()));
+              failureMessageArgument1.add(ctx.createFailureStatus("Port", port.getName(), config1.getName(), comparison.getName()));
             }
           }
           for(Component component : config1.getComponents()){
             if(!config2.getComponents().contains(component)){
-              failureMessageArgument1.add(new ErrorArgument("Component", config2.getName(), component.getName()));
+              failureMessageArgument1.add(ctx.createFailureStatus("Component", component.getName(), config2.getName(), comparison.getName()));
             }
           }
           for(Component component : config2.getComponents()){
             if(!config1.getComponents().contains(component)){
-              failureMessageArgument1.add(new ErrorArgument("Component", config1.getName(), component.getName()));
+              failureMessageArgument1.add(ctx.createFailureStatus("Component", component.getName(), config1.getName(), comparison.getName()));
             }
           }
           for(CSConfiguration csConf : config1.getChildConfigurations()){
             if(!config2.getChildConfigurations().contains(csConf)){
-              failureMessageArgument1.add(new ErrorArgument("Child Configuration", config2.getName(), csConf.getName()));
+              failureMessageArgument1.add(ctx.createFailureStatus("Child Configuration", csConf.getName(), config2.getName(), comparison.getName()));
             }
           }
           for(CSConfiguration csConf : config2.getChildConfigurations()){
             if(!config1.getChildConfigurations().contains(csConf)){
-              failureMessageArgument1.add(new ErrorArgument("Child Configuration", config1.getName(), csConf.getName()));
+              failureMessageArgument1.add(ctx.createFailureStatus("Child Configuration", csConf.getName(), config1.getName(), comparison.getName()));
             }
           }
         }
@@ -140,43 +138,43 @@ public class MDCHK_MSVAL_ComparisonIncl extends AbstractModelConstraint {
           if(comparison.getConfiguration1().get(0).getSelector().equals(selector_Type.INCLUSION)){
             for(AbstractFunction jObj : a1.getFunctions()){
               for(LightConfiguration lc : conflist.getLightConfigurationList()){
-                if(!lc.getExclLogFct().contains(jObj)){
-                  failureMessageArgument1.add(new ErrorArgument("Function", jObj.getName(), lc.getName()));
+                if(!lc.getExclFct().contains(jObj)){
+                  failureMessageArgument1.add(ctx.createFailureStatus("Function", jObj.getName(), lc.getName(), comparison.getName()));
                 }
               }
             }
             for(LightConfiguration lc : conflist.getLightConfigurationList()){
-              for(AbstractFunction kObj : lc.getLogFct()){
+              for(AbstractFunction kObj : lc.getExclFct()){
                 if(!a1.getFunctions().contains(kObj)){
-                  failureMessageArgument1.add(new ErrorArgument("Function", kObj.getName(), a1.getName()));
+                  failureMessageArgument1.add(ctx.createFailureStatus("Function", kObj.getName(), a1.getName(), comparison.getName()));
                 }
               }
             }
             for(Component jObj : a1.getComponents()){
               for(LightConfiguration lc : conflist.getLightConfigurationList()){
                 if(!lc.getExclComponents().contains(jObj)){
-                  failureMessageArgument1.add(new ErrorArgument("Component", jObj.getName(), lc.getName()));
+                  failureMessageArgument1.add(ctx.createFailureStatus("Component", jObj.getName(), lc.getName(), comparison.getName()));
                 }
               }
             }
             for(LightConfiguration lc : conflist.getLightConfigurationList()){
               for(Component kObj : lc.getComponents()){
                 if(!a1.getComponents().contains(kObj)){
-                  failureMessageArgument1.add(new ErrorArgument("Component", kObj.getName(), a1.getName()));
+                  failureMessageArgument1.add(ctx.createFailureStatus("Component", kObj.getName(), a1.getName(), comparison.getName()));
                 }
               }
             }
             for(FunctionalChain jObj : a1.getFunctionalChains()){
               for(LightConfiguration lc : conflist.getLightConfigurationList()){
                 if(!lc.getExclFctChain().contains(jObj)){
-                  failureMessageArgument1.add(new ErrorArgument("Functional Chain", jObj.getName(), lc.getName()));
+                  failureMessageArgument1.add(ctx.createFailureStatus("Functional Chain", jObj.getName(), lc.getName(), comparison.getName()));
                 }
               }
             }
             for(LightConfiguration lc : conflist.getLightConfigurationList()){
               for(FunctionalChain kObj : lc.getExclFctChain()){
                 if(!a1.getFunctionalChains().contains(kObj)){
-                  failureMessageArgument1.add(new ErrorArgument("Functional Chain", kObj.getName(), a1.getName()));
+                  failureMessageArgument1.add(ctx.createFailureStatus("Functional Chain", kObj.getName(), a1.getName(), comparison.getName()));
                 }
               }
             }
@@ -185,40 +183,10 @@ public class MDCHK_MSVAL_ComparisonIncl extends AbstractModelConstraint {
       }
     }
     if(failureMessageArgument1.size() > 0){
-      for(ErrorArgument error : failureMessageArgument1){
-        failureStatusList.add(ctx.createFailureStatus(error.getName(), error.getConfigurationName(), error.getComponentName()));
-      }
-      return ConstraintStatus.createMultiStatus(ctx, failureStatusList);
+      return ConstraintStatus.createMultiStatus(ctx, failureMessageArgument1);
     }
     else {
       return ctx.createSuccessStatus();
     }
   }
-
-  private class ErrorArgument{
-
-    private String name;
-    private String configurationName;
-    private String componentName;
-
-    public ErrorArgument(String name, String configurationName, String componentName) {
-      super();
-      this.name = name;
-      this.configurationName = configurationName;
-      this.componentName = componentName;
-    }
-
-    public String getName() {
-      return name;
-    }
-
-    public String getConfigurationName() {
-      return configurationName;
-    }
-
-    public String getComponentName() {
-      return componentName;
-    }
-  }
-
 }

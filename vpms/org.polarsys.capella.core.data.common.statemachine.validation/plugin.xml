@@ -685,7 +685,23 @@
                 	class="Comparison">
                </target>
             </constraint>
-               <constraint
+                <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_MSVAL_ComparisonInclExcl_viaFC"
+                  id="DWF_SM_63"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_63 - Analysis of the comparison element consistency"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} : {1} {2}, via its involvement in a functional chain, is included by one configuration and excluded in the other 
+               </message>
+               <target
+                	class="Comparison">
+               </target>
+            </constraint>          
+                <constraint
                   class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_MSVAL_SituationCompleteness"
                   id="DWF_SM_90"
                   isEnabledByDefault="true"
@@ -768,7 +784,7 @@
                   severity="WARNING"
                   statusCode="1">
               <message>
-                  The {1} not exist in the {2}.
+                  For the {3} : {1} does not exist in {2}.
               </message>
               <target
                      class="Comparison">
@@ -813,6 +829,25 @@
               </target>
               <description>
                   Check if an not or or operator have more than 1 values and if a not operator have only 1 value.
+              </description>
+           </constraint>
+           <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDHCK_MSVAL_ValidateBetweenSystemAndLogical"
+                  id="DWF_SM_97"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_97"
+                  severity="WARNING"
+                  statusCode="1">
+              <message>
+                  The {0} include {1} but the {2} excludes a function which realizes {3}.
+              </message>
+              <target
+                     class="Comparison">
+              </target>
+              <description>
+                  Compare each configuration (one int the system, and other in the logical) and check if they contain the same functions.
               </description>
            </constraint>
          </constraints>
