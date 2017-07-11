@@ -28,6 +28,7 @@ import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.capella.core.sirius.ui.Messages;
+import org.polarsys.capella.core.sirius.ui.helper.SiriusItemWrapperHelper;
 
 /**
  * The action allowing to rename representations.
@@ -75,7 +76,7 @@ public class RenameRepresentationAction extends BaseSelectionListenerAction {
   public void run() {
     // Gets all the selected representations.
     IStructuredSelection selection = getStructuredSelection();
-    List<DRepresentation> representations = RepresentationHelper.getRepresentations(selection.toList());
+    List<DRepresentation> representations = RepresentationHelper.getRepresentations(SiriusItemWrapperHelper.filterItemWrapper(selection));
     
     // Parses the selected representations and rename them.
     for (DRepresentation representation : representations) {
