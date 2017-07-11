@@ -12,8 +12,6 @@ package org.polarsys.capella.core.sirius.ui.actions;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -26,7 +24,6 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
-import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.widgets.Display;
@@ -36,6 +33,7 @@ import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.core.sirius.ui.helper.SiriusItemWrapperHelper;
 import org.polarsys.capella.core.sirius.ui.runnable.OpenRepresentationsRunnable;
 
 /**
@@ -97,7 +95,7 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
     } else {
       IStructuredSelection selection = getStructuredSelection();
       
-      reps = RepresentationHelper.getRepresentations(prepareSelection(selection));
+      reps = RepresentationHelper.getRepresentations((SiriusItemWrapperHelper.filterItemWrapper(selection)));
     }
     // Precondition	
     if (reps.isEmpty()) {
@@ -114,24 +112,5 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
     }
     parent = false;
   }
-  
-  /**
-   * Prepare a new selection with a retrieval of wrapped objects.
-   * @param selection
-   * @return a not <code>null</code> collection.
-   */
-  private static Collection<?> prepareSelection(IStructuredSelection selection) {
 
-    List<Object> newSelection = new ArrayList<Object>();
-    Iterator<?> iterator = selection.iterator();
-
-    while (iterator.hasNext()) {
-      Object selectedObject = iterator.next();
-      if (selectedObject instanceof ItemWrapper) {
-        newSelection.add(((ItemWrapper) selectedObject).getWrappedObject());
-      }
-      newSelection.add(selectedObject);
-    }
-    return newSelection;
-  }
 }

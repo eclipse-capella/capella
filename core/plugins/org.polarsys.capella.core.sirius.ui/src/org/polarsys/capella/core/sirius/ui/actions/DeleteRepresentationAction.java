@@ -24,6 +24,7 @@ import org.polarsys.capella.common.mdsofa.common.helper.StringHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.DeleteRepresentationCommand;
 import org.polarsys.capella.core.sirius.ui.Messages;
+import org.polarsys.capella.core.sirius.ui.helper.SiriusItemWrapperHelper;
 
 /**
  * The actions allowing to delete representation from selection.
@@ -47,7 +48,7 @@ public class DeleteRepresentationAction extends BaseSelectionListenerAction {
   public void run() {
     // Gets selected representations from the current selection.
     IStructuredSelection selection = getStructuredSelection();
-    List<DRepresentation> selectedRepresentations = RepresentationHelper.getRepresentations(selection.toList(), true);
+    List<DRepresentation> selectedRepresentations = RepresentationHelper.getRepresentations(SiriusItemWrapperHelper.filterItemWrapper(selection), true);
     if (!selectedRepresentations.isEmpty()) {
       int deletedDiagramCount = selectedRepresentations.size();
       String contextualMessage = null;
