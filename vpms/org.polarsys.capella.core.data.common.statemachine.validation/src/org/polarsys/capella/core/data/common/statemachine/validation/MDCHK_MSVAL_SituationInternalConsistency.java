@@ -45,9 +45,8 @@ public class MDCHK_MSVAL_SituationInternalConsistency extends AbstractModelConst
   }
 
   private void checkOrAnd(BooleanExpression be, IValidationContext ctx){
-    String error = "You can't have an 'AND' or 'OR' operator with less than 2 values.";
-    int size = objectsIrregularList.size();
-    if(be.eContents().size() < 2 && (be instanceof OrOperation || be instanceof AndOperation) && size == 0){
+    String error = "'AND' / 'OR' operator must have minimum 2 operands";
+    if(be.eContents().size() < 2 && (be instanceof OrOperation || be instanceof AndOperation)){
       objectsIrregularList.add(ctx.createFailureStatus(error));
     }else{
       for(EObject obj : be.eContents()){
@@ -59,9 +58,8 @@ public class MDCHK_MSVAL_SituationInternalConsistency extends AbstractModelConst
   }
 
   private void checkNot(BooleanExpression be, IValidationContext ctx){
-    String error = "You can't have an 'NOT' operator with more than 1 value.";
-    int size = objectsIrregularList.size();
-    if(be.eContents().size() > 1 && be instanceof NotOperation && size == 0){
+    String error = "'NOT' operator must have exactly one operand";
+    if(be.eContents().size() > 1 && be instanceof NotOperation){
       objectsIrregularList.add(ctx.createFailureStatus(error));
     }else{
       for(EObject obj : be.eContents()){
@@ -71,7 +69,4 @@ public class MDCHK_MSVAL_SituationInternalConsistency extends AbstractModelConst
       }
     }
   }
-
-
-
 }
