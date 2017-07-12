@@ -2,11 +2,10 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.business.queries;singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.model.helpers;visibility:=reexport,
  org.polarsys.capella.core.model.preferences;visibility:=reexport,
- org.polarsys.capella.common.ui.services,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.common.queries
 Bundle-ActivationPolicy: lazy
@@ -25,7 +24,6 @@ Export-Package: org.polarsys.capella.core.business.abstractqueries,
  org.polarsys.capella.core.business.queries.la,
  org.polarsys.capella.core.business.queries.oa,
  org.polarsys.capella.core.business.queries.pa,
- org.polarsys.capella.core.business.queries.preferences,
  org.polarsys.capella.core.business.queries.queries.capellacommon,
  org.polarsys.capella.core.business.queries.queries.capellacore,
  org.polarsys.capella.core.business.queries.queries.capellamodeller,

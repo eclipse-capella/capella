@@ -2,22 +2,17 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.libraries.ui;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.libraries.ui.Activator
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.ui,
+Require-Bundle: org.eclipse.core.expressions,
  org.eclipse.ui.ide,
- org.polarsys.capella.core.model.handler,
- org.eclipse.core.runtime,
- org.eclipse.sirius,
- org.eclipse.emf.ecore.xmi,
- org.polarsys.capella.common.libraries;visibility:=reexport,
- org.eclipse.core.resources,
- org.polarsys.capella.core.platform.sirius.ui.project,
- org.polarsys.capella.core.libraries,
  org.polarsys.capella.common.flexibility.wizards,
- org.polarsys.capella.common.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+ org.polarsys.capella.common.ui,
+ org.polarsys.capella.core.libraries,
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.core.platform.sirius.ui.project
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.libraries.ui,
  org.polarsys.capella.core.libraries.ui.handlers,

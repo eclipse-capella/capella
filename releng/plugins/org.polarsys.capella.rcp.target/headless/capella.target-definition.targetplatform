@@ -26,7 +26,6 @@ location "http://download.eclipse.org/releases/neon" {
 location "http://download.eclipse.org/sirius/updates/stable/5.1.0-S20170707-080022/neon" {
 	org.eclipse.sirius.runtime.feature.group
 	org.eclipse.sirius.runtime.aql.feature.group
-	org.eclipse.sirius.runtime.ide.ui.feature.group
 }
 
 location "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_runtime/site.p2" {

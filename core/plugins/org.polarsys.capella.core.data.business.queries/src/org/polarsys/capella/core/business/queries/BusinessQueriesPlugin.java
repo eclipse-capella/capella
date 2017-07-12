@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries;
 
+import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
-import org.polarsys.capella.common.ui.services.AbstractUIActivator;
 
 /**
  * This is the activator of the business queries plug-in
  */
-public class BusinessQueriesPlugin extends AbstractUIActivator {
+public class BusinessQueriesPlugin extends Plugin {
   /**
    * Single instance of the class
    */
@@ -24,14 +24,14 @@ public class BusinessQueriesPlugin extends AbstractUIActivator {
 
   /**
    * Returns the single instance of the class
-   * @return a<code>BusinessQueriesActivator</code> instance
+   * @return a <code>BusinessQueriesPlugin</code> instance
    */
   public static BusinessQueriesPlugin getDefault() {
     return __instance;
   }
 
   /**
-   * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+   * {@inheritDoc}
    */
   @Override
   public void start(BundleContext context) throws Exception {
@@ -40,7 +40,7 @@ public class BusinessQueriesPlugin extends AbstractUIActivator {
   }
 
   /**
-   * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+   * {@inheritDoc}
    */
   @Override
   public void stop(BundleContext context) throws Exception {

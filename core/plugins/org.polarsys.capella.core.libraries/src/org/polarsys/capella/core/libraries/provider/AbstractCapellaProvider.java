@@ -22,10 +22,10 @@ import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.libraries.provider.AbstractLibraryProvider;
-import org.polarsys.capella.common.ui.actions.ModelAdaptation;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.libraries.model.ModelIdentifier;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 
 public abstract class AbstractCapellaProvider extends AbstractLibraryProvider {
 
@@ -97,7 +97,7 @@ public abstract class AbstractCapellaProvider extends AbstractLibraryProvider {
 
     // don't forget to adapt to capella
     if (!(CapellaResourceHelper.isSemanticElement(semanticElement))) {
-      semanticElement = ModelAdaptation.adaptToCapella(semanticElement);
+      semanticElement = CapellaAdapterHelper.resolveSemanticObject(semanticElement);
     }
 
     // If we are in a Capella resource, the resource is loaded in the resourceSet, so we can return the model
