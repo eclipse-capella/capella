@@ -7,6 +7,7 @@ Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.google.guava;visibility:=reexport,
  org.apache.commons.lang;visibility:=reexport,
+ org.eclipse.core.expressions,
  org.eclipse.ui;visibility:=reexport,
  org.eclipse.ui.ide;visibility:=reexport,
  org.junit;visibility:=reexport,

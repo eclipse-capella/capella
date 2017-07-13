@@ -342,6 +342,7 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
+				<target-platform-path>headless</target-platform-path>
 				<packagedDropinsName>org.polarsys.capella.headless</packagedDropinsName>
 			</properties>
 			<modules>
