@@ -240,6 +240,13 @@
       <metamodel href="../../org.polarsys.capella.vp.ms/models/ms.ecore#/"/>
       <metamodel href="http://www.polarsys.org/capella/core/cs/1.1.0#/"/>
       <layers name="LAB_Layer_Configuration" label="Configurations">
+        <nodeMappings name="LAB_Layer_ConfigurationNode" createElements="false" domainClass="ms.CSConfiguration">
+          <style xsi:type="style:LozengeNodeDescription" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          </style>
+        </nodeMappings>
         <edgeMappings name="LAB_Layer_Configuration_ChildConfiguration_Edge" preconditionExpression="service:diagram.isShowChildConfigurationRelationships" deletionDescription="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@toolSections.0/@ownedTools[name='Delete%20Child%20Configuration']" sourceMapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@containerMappings[name='LAB_Layer_Configuration_LAB_Component']/@borderedNodeMappings[name='LAB_Layer_Configuration_LAB_Configuration']" targetMapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@containerMappings[name='LAB_Layer_Configuration_LAB_Component']/@borderedNodeMappings[name='LAB_Layer_Configuration_LAB_Configuration']" targetFinderExpression="feature:childConfigurations">
           <style sizeComputationExpression="2" endsCentering="Both">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -274,23 +281,28 @@
           <importedMapping href="../../org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='Logical%20Actors']"/>
         </containerMappings>
         <toolSections name="LAB_Layer_Configuration_Tool_Configuration" label="Configurations">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="LAB_Layer_Configuration_Tool_Configuration_CreateConfiguration" label="Configuration" nodeMappings="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@containerMappings[name='LAB_Layer_Configuration_LAB_Component']/@borderedNodeMappings[name='LAB_Layer_Configuration_LAB_Configuration']" iconPath="/ms.design/images/Configuration.gif">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="LAB_Layer_Configuration_Tool_Configuration_CreateConfiguration" label="Configuration" precondition="&lt;% $container.eClass.name.matches(&quot;Part|LogicalComponent&quot;)%>" nodeMappings="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@containerMappings[name='LAB_Layer_Configuration_LAB_Component']/@borderedNodeMappings[name='LAB_Layer_Configuration_LAB_Configuration'] //@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@nodeMappings[name='LAB_Layer_ConfigurationNode']" iconPath="/ms.design/images/Configuration.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createConfiguration">
-                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@containerMappings[name='LAB_Layer_Configuration_LAB_Component']/@borderedNodeMappings[name='LAB_Layer_Configuration_LAB_Configuration']" containerViewExpression="var:containerView"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerView == $diagram%>">
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@nodeMappings[name='LAB_Layer_ConfigurationNode']" containerViewExpression="var:diagram"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerView != $diagram %>">
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@containerMappings[name='LAB_Layer_Configuration_LAB_Component']/@borderedNodeMappings[name='LAB_Layer_Configuration_LAB_Configuration']" containerViewExpression="var:containerView"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="LAB_Layer_Configuration_Tool_Configuration_Configuration_Selection" label="Configuration Selection">
+          <ownedTools xsi:type="tool:ToolDescription" name="LAB_Layer_Configuration_Tool_Configuration_Configuration_Selection" label="Configuration Selection" precondition="&lt;% $container.eClass.name.matches(&quot;Part|LogicalComponent&quot;)%>">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="LAB_Layer_Configuration_Tool_Configuraton_Selection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                   <parameters name="context" value="var:elementView"/>
-                  <parameters name="scope" value="service:getOwnedConfigurations"/>
+                  <parameters name="scope" value="service:elementView.getSelectableConfigurations"/>
                   <parameters name="initialSelection" value="service:elementView.getSelectedConfigurations"/>
                   <parameters name="resultVariable" value="selection"/>
                   <parameters name="wizardMessage" value="select Configuration to show their avalaible Functions"/>
@@ -300,7 +312,12 @@
                     <subModelOperations xsi:type="tool:DeleteView"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:For" expression="var:selection" iteratorName="selectedConfiguration">
-                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@containerMappings[name='LAB_Layer_Configuration_LAB_Component']/@borderedNodeMappings[name='LAB_Layer_Configuration_LAB_Configuration']" containerViewExpression="var:elementView" variableName="createdViewConfiguration"/>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$elementView == $diagram%>">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@nodeMappings[name='LAB_Layer_ConfigurationNode']" containerViewExpression="var:diagram" variableName="createdViewConfiguration"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$elementView != $diagram%>">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@containerMappings[name='LAB_Layer_Configuration_LAB_Component']/@borderedNodeMappings[name='LAB_Layer_Configuration_LAB_Configuration']" containerViewExpression="var:elementView" variableName="createdViewConfiguration"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -332,6 +349,13 @@
     </ownedRepresentationExtensions>
     <ownedRepresentationExtensions xsi:type="description_2:DiagramExtensionDescription" name="SAConfigurations" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/System Analysis" representationName="System Architecture Blank">
       <layers name="SAB_Layer_Configuration" label="Configurations">
+        <nodeMappings name="SAB_Layer_ConfigurationNode" createElements="false" domainClass="ms.CSConfiguration">
+          <style xsi:type="style:LozengeNodeDescription" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          </style>
+        </nodeMappings>
         <edgeMappings name="LAB_Layer_Configuration_SAB_ChildConfiguration_Edge" preconditionExpression="service:diagram.isShowChildConfigurationRelationships" deletionDescription="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@toolSections.0/@ownedTools[name='Delete%20Child%20Configuration']" sourceMapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='SAConfigurations']/@layers[name='SAB_Layer_Configuration']/@containerMappings[name='SAB_Layer_Configuration_SAB_Actors']/@borderedNodeMappings[name='SAB_Layer_Configuration_SAB_Configuration']" targetMapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='SAConfigurations']/@layers[name='SAB_Layer_Configuration']/@containerMappings[name='SAB_Layer_Configuration_SAB_Actors']/@borderedNodeMappings[name='SAB_Layer_Configuration_SAB_Configuration']" targetFinderExpression="feature:childConfigurations">
           <style sizeComputationExpression="2" endsCentering="Both">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -369,23 +393,28 @@
           <importedMapping href="../../org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']"/>
         </containerMappings>
         <toolSections name="SAB_Layer_Configuration_Tool_Configuration" label="Configurations" reusedTools="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@toolSections.0/@ownedTools[name='Add%20Child%20Configuration'] //@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@toolSections.0/@ownedTools[name='Delete%20Child%20Configuration']">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="SAB_Layer_Configuration_Tool_Configuration_CreateConfiguration" label="Configuration" nodeMappings="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='SAConfigurations']/@layers[name='SAB_Layer_Configuration']/@containerMappings[name='SAB_Layer_Configuration_SAB_Actors']/@borderedNodeMappings[name='SAB_Layer_Configuration_SAB_Configuration']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="SAB_Layer_Configuration_Tool_Configuration_CreateConfiguration" label="Configuration" precondition="&lt;% $container.eClass.name.matches(&quot;Part|System&quot;)%>" nodeMappings="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='SAConfigurations']/@layers[name='SAB_Layer_Configuration']/@containerMappings[name='SAB_Layer_Configuration_SAB_Actors']/@borderedNodeMappings[name='SAB_Layer_Configuration_SAB_Configuration'] //@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='SAConfigurations']/@layers[name='SAB_Layer_Configuration']/@nodeMappings[name='SAB_Layer_ConfigurationNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createConfiguration">
-                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='SAConfigurations']/@layers[name='SAB_Layer_Configuration']/@containerMappings[name='SAB_Layer_Configuration_SAB_Actors']/@borderedNodeMappings[name='SAB_Layer_Configuration_SAB_Configuration']" containerViewExpression="var:containerView"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerView == $diagram%>">
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='SAConfigurations']/@layers[name='SAB_Layer_Configuration']/@nodeMappings[name='SAB_Layer_ConfigurationNode']" containerViewExpression="var:diagram"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerView != $diagram %>">
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='SAConfigurations']/@layers[name='SAB_Layer_Configuration']/@containerMappings[name='SAB_Layer_Configuration_SAB_Actors']/@borderedNodeMappings[name='SAB_Layer_Configuration_SAB_Configuration']" containerViewExpression="var:containerView"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="SAB_Layer_Configuration_Tool_Configuration_Configuration_Selection" label="Configuration Selection" precondition="&lt;%($elementView.filter(&quot;DNodeContainer&quot;).nSize > 0) &amp;&amp; ($elementView.target.filter(&quot;Part&quot;).nSize > 0)%>">
+          <ownedTools xsi:type="tool:ToolDescription" name="SAB_Layer_Configuration_Tool_Configuration_Configuration_Selection" label="Configuration Selection" precondition="&lt;% $container.eClass.name.matches(&quot;Part|System&quot;)%>">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="SAB_Layer_Configuration_Tool_Configuration_Selection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                   <parameters name="context" value="var:elementView"/>
-                  <parameters name="scope" value="service:getOwnedConfigurations"/>
+                  <parameters name="scope" value="service:elementView.getSelectableConfigurations"/>
                   <parameters name="initialSelection" value="service:elementView.getSelectedConfigurations"/>
                   <parameters name="resultVariable" value="selection"/>
                   <parameters name="wizardMessage" value="select Configuration to show their avalaible Functions"/>
@@ -395,7 +424,12 @@
                     <subModelOperations xsi:type="tool:DeleteView"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:For" expression="var:selection" iteratorName="selectedConfiguration">
-                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='SAConfigurations']/@layers[name='SAB_Layer_Configuration']/@containerMappings[name='SAB_Layer_Configuration_SAB_Actors']/@borderedNodeMappings[name='SAB_Layer_Configuration_SAB_Configuration']" containerViewExpression="var:elementView" variableName="createdViewConfiguration"/>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$elementView == $diagram%>">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='SAConfigurations']/@layers[name='SAB_Layer_Configuration']/@nodeMappings[name='SAB_Layer_ConfigurationNode']" containerViewExpression="var:diagram" variableName="createdViewConfiguration"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$elementView != $diagram%>">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='SAConfigurations']/@layers[name='SAB_Layer_Configuration']/@containerMappings[name='SAB_Layer_Configuration_SAB_Actors']/@borderedNodeMappings[name='SAB_Layer_Configuration_SAB_Configuration']" containerViewExpression="var:elementView" variableName="createdViewConfiguration"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -406,6 +440,13 @@
     </ownedRepresentationExtensions>
     <ownedRepresentationExtensions xsi:type="description_2:DiagramExtensionDescription" name="PAConfigurations" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/Physical Architecture" representationName="Physical Architecture Blank">
       <layers name="PAB_Layer_Configuration" label="Configurations">
+        <nodeMappings name="PAB_Layer_ConfigurationNode" createElements="false" domainClass="ms.CSConfiguration">
+          <style xsi:type="style:LozengeNodeDescription" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          </style>
+        </nodeMappings>
         <edgeMappings name="PAB_Layer_Configuration_ChildConfiguration_Edge" preconditionExpression="service:diagram.isShowChildConfigurationRelationships" deletionDescription="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@toolSections.0/@ownedTools[name='Delete%20Child%20Configuration']" sourceMapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='PAConfigurations']/@layers[name='PAB_Layer_Configuration']/@containerMappings[name='PAB_Layer_Configuration_PAB_Component']/@borderedNodeMappings[name='PAB_Layer_Configuration_PAB_Configuration']" targetMapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='PAConfigurations']/@layers[name='PAB_Layer_Configuration']/@containerMappings[name='PAB_Layer_Configuration_PAB_Component']/@borderedNodeMappings[name='PAB_Layer_Configuration_PAB_Configuration']" targetFinderExpression="feature:childConfigurations">
           <style sizeComputationExpression="2" endsCentering="Both">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -447,23 +488,28 @@
           <importedMapping href="../../org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']"/>
         </containerMappings>
         <toolSections name="PAB_Layer_Configuration_Tool_Configuration" label="Configurations" reusedTools="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@toolSections.0/@ownedTools[name='Add%20Child%20Configuration'] //@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LAConfigurations']/@layers[name='LAB_Layer_Configuration']/@toolSections.0/@ownedTools[name='Delete%20Child%20Configuration']">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="PAB_Layer_Configuration_Tool_Configuration_CreateConfiguration" label="Configuration" nodeMappings="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='PAConfigurations']/@layers[name='PAB_Layer_Configuration']/@containerMappings[name='PAB_Layer_Configuration_PAB_Component']/@borderedNodeMappings[name='PAB_Layer_Configuration_PAB_Configuration']" iconPath="/ms.design/images/Configuration.gif">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="PAB_Layer_Configuration_Tool_Configuration_CreateConfiguration" label="Configuration" precondition="&lt;% $container.eClass.name.matches(&quot;Part|PhysicalComponent&quot;)%>" nodeMappings="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='PAConfigurations']/@layers[name='PAB_Layer_Configuration']/@containerMappings[name='PAB_Layer_Configuration_PAB_Component']/@borderedNodeMappings[name='PAB_Layer_Configuration_PAB_Configuration'] //@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='PAConfigurations']/@layers[name='PAB_Layer_Configuration']/@nodeMappings[name='PAB_Layer_ConfigurationNode']" iconPath="/ms.design/images/Configuration.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createConfiguration">
-                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='PAConfigurations']/@layers[name='PAB_Layer_Configuration']/@containerMappings[name='PAB_Layer_Configuration_PAB_Component']/@borderedNodeMappings[name='PAB_Layer_Configuration_PAB_Configuration']" containerViewExpression="var:containerView"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerView == $diagram%>">
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='PAConfigurations']/@layers[name='PAB_Layer_Configuration']/@nodeMappings[name='PAB_Layer_ConfigurationNode']" containerViewExpression="var:diagram"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerView != $diagram %>">
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='PAConfigurations']/@layers[name='PAB_Layer_Configuration']/@containerMappings[name='PAB_Layer_Configuration_PAB_Component']/@borderedNodeMappings[name='PAB_Layer_Configuration_PAB_Configuration']" containerViewExpression="var:containerView"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="PAB_Layer_Configuration_Tool_Configuration_Configuration_Selection" label="Configuration Selection">
+          <ownedTools xsi:type="tool:ToolDescription" name="PAB_Layer_Configuration_Tool_Configuration_Configuration_Selection" label="Configuration Selection" precondition="&lt;% $container.eClass.name.matches(&quot;Part|PhysicalComponent&quot;)%>">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="PAB_Layer_Configuration_Tool_Configuraton_Selection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                   <parameters name="context" value="var:elementView"/>
-                  <parameters name="scope" value="service:getOwnedConfigurations"/>
+                  <parameters name="scope" value="service:elementView.getSelectableConfigurations"/>
                   <parameters name="initialSelection" value="service:elementView.getSelectedConfigurations"/>
                   <parameters name="resultVariable" value="selection"/>
                   <parameters name="wizardMessage" value="select Configuration to show their avalaible Functions"/>
@@ -473,7 +519,12 @@
                     <subModelOperations xsi:type="tool:DeleteView"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:For" expression="var:selection" iteratorName="selectedConfiguration">
-                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='PAConfigurations']/@layers[name='PAB_Layer_Configuration']/@containerMappings[name='PAB_Layer_Configuration_PAB_Component']/@borderedNodeMappings[name='PAB_Layer_Configuration_PAB_Configuration']" containerViewExpression="var:elementView" variableName="createdViewConfiguration"/>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$elementView == $diagram%>">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='PAConfigurations']/@layers[name='PAB_Layer_Configuration']/@nodeMappings[name='PAB_Layer_ConfigurationNode']" containerViewExpression="var:diagram" variableName="createdViewConfiguration"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$elementView != $diagram%>">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='PAConfigurations']/@layers[name='PAB_Layer_Configuration']/@containerMappings[name='PAB_Layer_Configuration_PAB_Component']/@borderedNodeMappings[name='PAB_Layer_Configuration_PAB_Configuration']" containerViewExpression="var:elementView" variableName="createdViewConfiguration"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
