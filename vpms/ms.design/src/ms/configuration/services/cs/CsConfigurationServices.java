@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *   
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *    Altran - Compare Configurations
@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
@@ -48,6 +49,7 @@ import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
+import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
@@ -92,7 +94,7 @@ public class CsConfigurationServices {
 
   /**
    * Find all {@link Configuration}s owned by the type of a given {@link Part} .
-   * 
+   *
    * @param ele
    *          the {@link Part}
    * @return the owned {@link Configuration}s
@@ -378,54 +380,128 @@ public class CsConfigurationServices {
     return false;
   }
 
+  private void getSelectedConfigurationsImpl(DNodeContainer view, boolean includeParents, Collection<CSConfiguration> result) {
+
+    DNodeContainer current = view;
+
+    for (DNode dNode : current.getOwnedBorderedNodes()) {
+      if (dNode.getTarget() instanceof CSConfiguration) {
+        result.add((CSConfiguration) dNode.getTarget());
+      }
+    }
+
+    if (includeParents) {
+
+      if (current.eContainer() instanceof DNodeContainer) {
+
+        getSelectedConfigurationsImpl((DNodeContainer) current.eContainer(), includeParents, result);
+
+      } else if (current.eContainer() instanceof DSemanticDiagram) {
+
+        // configurations on canvas dont apply to actors
+        if (!(current.getTarget() instanceof Part && (((Part) current.getTarget()).getType() instanceof Actor))) {
+          getSelectedConfigurationsImpl((DSemanticDiagram) current.eContainer(), result);
+        }
+
+      }
+    }
+  }
+
   /**
-   * 
+   *
    * @param view
    * @return
    */
-  public Collection<CSConfiguration> getSelectedConfigurations(DNodeContainer view) {
-
+  public Collection<CSConfiguration> getSelectedConfigurations(DNodeContainer view, Boolean includeParents) {
     Collection<CSConfiguration> result = new ArrayList<CSConfiguration>();
-    DNodeContainer current = view;
-    do {
-      for (DNode dNode : current.getOwnedBorderedNodes()) {
-        if (dNode.getTarget() instanceof CSConfiguration) {
-          result.add((CSConfiguration) dNode.getTarget());
-        }
-      }
-
-      current = current.eContainer() instanceof DNodeContainer ? (DNodeContainer) current.eContainer() : null;
-
-    } while (current != null && result.isEmpty());
-
+    getSelectedConfigurationsImpl(view, includeParents, result);
     return result;
+  }
 
+  public Collection<CSConfiguration> getSelectedConfigurations(DSemanticDiagram diagram){
+    ArrayList<CSConfiguration> result = new ArrayList<CSConfiguration>();
+    getSelectedConfigurationsImpl(diagram, result);
+    return result;
+  }
+
+  public Collection<CSConfiguration> getSelectedConfigurations(DNodeContainer node){
+    return getSelectedConfigurations(node, false);
+  }
+
+  private void getSelectedConfigurationsImpl(DSemanticDiagram diagram, Collection<CSConfiguration> result) {
+    for (DDiagramElement dnode : diagram.getOwnedDiagramElements()) {
+      if (dnode.getTarget() instanceof CSConfiguration) {
+        result.add((CSConfiguration) dnode.getTarget());
+      }
+    }
   }
 
   /**
    * Find all {@link DNode} which are not selected
-   * 
+   *
    * @param view
    * @param selection
    * @return
    */
   public List<EObject> getNotSelectedConfigurations(EObject view, List<EObject> selection) {
-    List<EObject> result = new ArrayList<EObject>();
-
     if (view instanceof DNodeContainer) {
-      for (DNode dNode : ((DNodeContainer) view).getOwnedBorderedNodes()) {
-        if (dNode.getTarget() instanceof CSConfiguration && !selection.contains(dNode.getTarget())) {
-          result.add(dNode);
-        }
+      return getNotSelectedConfigurations((DNodeContainer) view, selection);
+    } else if (view instanceof DDiagram) {
+      return getNotSelectedConfigurations((DDiagram) view, selection);
+    }
+    throw new IllegalArgumentException();
+  }
+
+  // sirius gets confused if this is public
+  private List<EObject> getNotSelectedConfigurations(DNodeContainer view, List<EObject> selection){
+    List<EObject> result = new ArrayList<EObject>();
+    for (DNode dNode : view.getOwnedBorderedNodes()) {
+      if (dNode.getTarget() instanceof CSConfiguration && !selection.contains(dNode.getTarget())) {
+        result.add(dNode);
       }
     }
     return result;
   }
 
+  // sirius gets confused if this is public
+  private List<EObject> getNotSelectedConfigurations(DDiagram diagram, List<EObject> selection){
+    List<EObject> result = new ArrayList<EObject>();
+    for (DDiagramElement element : diagram.getOwnedDiagramElements()) {
+      if (element.getTarget() instanceof CSConfiguration && !selection.contains(element.getTarget())) {
+        result.add(element);
+      }
+    }
+    return result;
+  }
+
+  /*
+   * The selectable configurations on a diagram are the configurations of the component that the diagram targets
+   * and the configurations of that component's ancestor component.
+   */
+  public Collection<CSConfiguration> getSelectableConfigurations(DSemanticDiagram diagram){
+    Collection<CSConfiguration> result = new ArrayList<CSConfiguration>();
+    EObject c = diagram.getTarget();
+    while (c instanceof Component) {
+      result.addAll(getOwnedConfigurations((Component)c));
+      c = c.eContainer();
+    }
+    return result;
+  }
+
+  /*
+   * The selectable configurations on a part are the configurations of the parts component.
+   */
+  public Collection<CSConfiguration> getSelectableConfigurations(DNodeContainer container){
+    if (container.getTarget() instanceof Part && ((Part)container.getTarget()).getType() instanceof Component) {
+      return getOwnedConfigurations((Component) ((Part)container.getTarget()).getType());
+    }
+    return Collections.emptyList();
+  }
+
   /**
    * Verify if a given {@link AbstractFunction} is available at least in one of the graphically selected
    * {@link Configuration}s of the {@link Component} container of the {@link AbstractFunction}
-   * 
+   *
    * @param context
    *          the {@link AbstractFunction}
    * @param view
@@ -446,7 +522,7 @@ public class CsConfigurationServices {
 
     if (view.eContainer() instanceof DNodeContainer) {
       ModelElement target = context instanceof Part ? ((Part) context).getType() : context;
-      Collection<CSConfiguration> configs = getSelectedConfigurations((DNodeContainer) view.eContainer());
+      Collection<CSConfiguration> configs = getSelectedConfigurations((DNodeContainer) view.eContainer(), true);
       result = configs.isEmpty();
       for (CSConfiguration c : configs) {
         if (c.includes(target)) {
@@ -462,7 +538,7 @@ public class CsConfigurationServices {
   /**
    * FIXME doc Verify if a given {@link AbstractFunction} is not available in all graphically selected
    * {@link Configuration}s of the {@link Component} container of the {@link AbstractFunction}
-   * 
+   *
    * @param context
    *          the {@link AbstractFunction}
    * @param view
@@ -477,30 +553,35 @@ public class CsConfigurationServices {
 
     ModelElement target = context instanceof Part ? ((Part) context).getType() : context;
 
-    for (CSConfiguration c : getSelectedConfigurations((DNodeContainer) view.eContainer())) {
-
+    for (CSConfiguration c : getSelectedConfigurations((DNodeContainer) view.eContainer(), true)) {
       if (c.getSelector() == selector_Type.EXCLUSION && c.getElements().contains(target)) {
         return 150;
       }
-
     }
     return 220;
   }
 
   /**
    * Create a new {@link Configuration} for the type of a given {@link Part}
-   * 
+   *
    * @param context
    * @return
    */
   public CSConfiguration createConfiguration(EObject context) {
-    if (context instanceof Part && ((Part) context).getType() instanceof Component) {
-      Component cmp = (Component) ((Part) context).getType();
+    Component cmp = null;
+    if (context instanceof Component) {
+      cmp = (Component) context;
+    } else if (context instanceof Part && ((Part) context).getType() instanceof Component) {
+      cmp = (Component) ((Part) context).getType();
+    }
+
+    if (cmp != null) {
       CSConfiguration configuration = MsFactory.eINSTANCE.createCSConfiguration();
       cmp.getOwnedExtensions().add(configuration);
       msCreationService(configuration);
       return configuration;
     }
+
     return null;
   }
 
