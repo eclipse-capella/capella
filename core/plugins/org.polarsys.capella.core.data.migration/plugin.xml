@@ -200,7 +200,10 @@
    <extension
          point="org.polarsys.capella.core.data.migration.migrationContributions">
 	  <migrationContribution
-         class="org.polarsys.capella.core.data.migration.contribution.FixDAnnotationsContribution"/>         
+         class="org.polarsys.capella.core.data.migration.contribution.FixDAnnotationsContribution"/>
+   <migrationContribution
+         class="org.polarsys.capella.core.data.migration.contribution.ActivateDiagramFiltersContribution">
+   </migrationContribution>       
    </extension>
    
    

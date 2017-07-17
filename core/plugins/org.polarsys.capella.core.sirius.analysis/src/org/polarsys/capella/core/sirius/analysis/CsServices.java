@@ -33,6 +33,7 @@ import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.expressions.EvaluationContext;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -55,6 +56,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.GraphicalFilter;
+import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeSpec;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -190,6 +192,7 @@ import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConsta
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.AbstractDependenciesPkgExt;
+import org.polarsys.capella.core.model.helpers.ActorExt;
 import org.polarsys.capella.core.model.helpers.AssociationExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapabilityRealizationExt;
@@ -205,6 +208,7 @@ import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
+import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 
 import com.google.common.base.Predicate;
@@ -2128,7 +2132,7 @@ public class CsServices {
   public boolean isOutStrictFlowPort(EObject port) {
     return PortExt.isOutStrictFlowPort(port);
   }
-  
+
   /**
    * Checks if port is an (strictly) in-out flow port.
    * 
@@ -2889,15 +2893,18 @@ public class CsServices {
     Object sourceView = getInterpreterVariable(source, IInterpreterSiriusVariables.SOURCE_VIEW);
     Object targetView = getInterpreterVariable(source, IInterpreterSiriusVariables.TARGET_VIEW);
 
-    return getComponentExchangeByGroupSemantics(source, (DSemanticDecorator)sourceView, (DSemanticDecorator)targetView);
+    return getComponentExchangeByGroupSemantics(source, (DSemanticDecorator) sourceView,
+        (DSemanticDecorator) targetView);
   }
-  
+
   /**
    * Returns all component exchange for mapping LAB_ComponentExchangeByGroup
-   * @param target 
-   * @param source2 
+   * 
+   * @param target
+   * @param source2
    */
-  public Collection<CapellaElement> getComponentExchangeByGroupSemantics(EObject source, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
+  public Collection<CapellaElement> getComponentExchangeByGroupSemantics(EObject source, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView) {
 
     Part sourcePart = (Part) ((DSemanticDecorator) sourceView).getTarget();
     Part targetPart = (Part) ((DSemanticDecorator) targetView).getTarget();
@@ -2945,16 +2952,19 @@ public class CsServices {
     Object sourceView = getInterpreterVariable(source, IInterpreterSiriusVariables.SOURCE_VIEW);
     Object targetView = getInterpreterVariable(source, IInterpreterSiriusVariables.TARGET_VIEW);
 
-    return getComponentExchangeByGroupOrientedSemanticElts(source, (DSemanticDecorator)sourceView, (DSemanticDecorator)targetView);
+    return getComponentExchangeByGroupOrientedSemanticElts(source, (DSemanticDecorator) sourceView,
+        (DSemanticDecorator) targetView);
   }
-  
+
   /**
    * Returns all component exchange for mapping xAB_ComponentExchangeByGroup_Oriented associated semantic elements.
    * Returns the outgoing componentExchanges
    */
-  public Collection<CapellaElement> getComponentExchangeByGroupOrientedSemanticElts(final EObject source, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
+  public Collection<CapellaElement> getComponentExchangeByGroupOrientedSemanticElts(final EObject source,
+      DSemanticDecorator sourceView, DSemanticDecorator targetView) {
 
-    Collection<CapellaElement> componentExchanges = getComponentExchangeByGroupSemantics(source, sourceView, targetView);
+    Collection<CapellaElement> componentExchanges = getComponentExchangeByGroupSemantics(source, sourceView,
+        targetView);
     Predicate<EObject> isPartSourceForCE = new Predicate<EObject>() {
 
       @Override
@@ -2997,7 +3007,8 @@ public class CsServices {
       DSemanticDecorator target) {
 
     // Retrieve the first correct semantic element between both elements
-    Collection<CapellaElement> result = getComponentExchangeByGroupOrientedSemanticElts(source.getTarget(), source, target);
+    Collection<CapellaElement> result = getComponentExchangeByGroupOrientedSemanticElts(source.getTarget(), source,
+        target);
     if (result.isEmpty()) {
       return false;
     }
@@ -3075,23 +3086,23 @@ public class CsServices {
   }
 
   /**
-   * Returns true whether the filter has been activated at least one time.
-   * Until the filter has not yet been activated, edges are not created
+   * Returns true whether the filter has been activated at least one time. Until the filter has not yet been activated,
+   * edges are not created
    */
   public boolean isFirstFilterActive(FilterDescription filter, DDiagram diagram) {
     if (filter instanceof CompositeFilterDescription) {
-                for (DEdge edge : diagram.getEdges()) {
+      for (DEdge edge : diagram.getEdges()) {
         if (!edge.getGraphicalFilters().isEmpty()) {
           for (GraphicalFilter appliedFilter : edge.getGraphicalFilters()) {
             if (appliedFilter instanceof AppliedCompositeFilters) {
               if (((AppliedCompositeFilters) appliedFilter).getCompositeFilterDescriptions().contains(filter)) {
-                    return false;
-                  }
-                }
+                return false;
               }
             }
           }
         }
+      }
+    }
     return true;
   }
 
@@ -5220,7 +5231,6 @@ public class CsServices {
     return exchangeItemsByKinds;
   }
 
-  
   /**
    * @used in common.odesign Return true if ShowTriggerFESource filter is on
    * @param transition
@@ -5228,7 +5238,8 @@ public class CsServices {
    * @return
    */
   public boolean isShowTriggerSourceFunctionEnable(EObject transition, EObject view) {
-    return InformationServices.getService().isDiagramFilterEnable(transition, view, IMappingNameConstants.SHOW_TRIGGER_SOURCE_FUNCTION);
+    return InformationServices.getService().isDiagramFilterEnable(transition, view,
+        IMappingNameConstants.SHOW_TRIGGER_SOURCE_FUNCTION);
   }
 
   /**
@@ -5251,7 +5262,8 @@ public class CsServices {
         if (trigger != null) {
           String name = "";
           if (trigger instanceof FunctionalExchange && isShowTriggerSourceFunctionEnable(context, view)) {
-            name = ModeStateMachineServices.getService().getIncomingFunctionalExchangeLabel((FunctionalExchange) trigger);
+            name = ModeStateMachineServices.getService()
+                .getIncomingFunctionalExchangeLabel((FunctionalExchange) trigger);
           } else
             name = EObjectLabelProviderHelper.getText(trigger);
           if (trigger instanceof ChangeEvent) {
@@ -5305,8 +5317,8 @@ public class CsServices {
               result.append(", "); //$NON-NLS-1$
             }
             if (effect instanceof FunctionalExchange) {
-              result.append(
-                  ModeStateMachineServices.getService().getOutgoingFunctionalExchangeLabel((FunctionalExchange) effect));
+              result.append(ModeStateMachineServices.getService()
+                  .getOutgoingFunctionalExchangeLabel((FunctionalExchange) effect));
             } else
               result.append(EObjectLabelProviderHelper.getText(effect));
           }
@@ -6214,10 +6226,376 @@ public class CsServices {
 
   /**
    * Check if the input is a PhysicalPort
+   * 
    * @param port
    * @return
    */
   public boolean isAPhysicalPort(EObject port) {
     return port instanceof PhysicalPort;
+  }
+
+  public boolean isValidComputedComponentExchangeEdge(EObject communication, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView) {
+    // Case 1
+    if (sourceView == targetView) {
+      return false;
+    }
+
+    // Case 2
+    EObject source = sourceView.getTarget();
+    EObject target = targetView.getTarget();
+
+    if (source instanceof Port && target instanceof Port) {
+      return false;
+    }
+
+    // Case 3
+    AbstractType sourceComponent = null;
+    AbstractType targetComponent = null;
+
+    if (source instanceof Part) {
+      sourceComponent = ((Part) source).getAbstractType();
+    } else if (source instanceof Port) {
+      sourceComponent = (AbstractType) source.eContainer();
+    }
+
+    if (target instanceof Part) {
+      targetComponent = ((Part) target).getAbstractType();
+    } else if (target instanceof Port) {
+      targetComponent = (AbstractType) target.eContainer();
+    }
+    if (sourceComponent != null && targetComponent != null
+        && (isAnAncestor(sourceComponent, targetComponent) || isAnAncestor(targetComponent, sourceComponent))) {
+      return false;
+    }
+
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
+    if (diagram != null) {
+      DSemanticDecorator sourceElement = sourceView;
+      DSemanticDecorator targetElement = targetView;
+      if (sourceElement.getTarget() instanceof Port) {
+        sourceElement = (DSemanticDecorator) sourceElement.eContainer();
+      }
+      if (targetElement.getTarget() instanceof Port) {
+        targetElement = (DSemanticDecorator) targetElement.eContainer();
+      }
+      // Case 4
+      DDiagramContents context = new DDiagramContents(diagram);
+      Collection<DEdge> edges = context.getEdges(communication);
+      for (DEdge edge : edges) {
+        if (!(edge.getMapping().getName().equals(IMappingNameConstants.LAB_COMPUTED_COMPONENT_EXCHANGE)
+            || edge.getMapping().getName().equals(IMappingNameConstants.PAB_COMPUTED_COMPONENT_EXCHANGE))) {
+          boolean hasSrc = false;
+          DSemanticDecorator sourceNode = (DSemanticDecorator) edge.getSourceNode();
+          if (sourceNode.getTarget() instanceof Port) {
+            sourceNode = (DSemanticDecorator) sourceNode.eContainer();
+          }
+          List<DDiagramElement> toCheck = new ArrayList<DDiagramElement>();
+          toCheck.add((DDiagramElement) sourceElement);
+          toCheck.addAll(((DNodeContainer) sourceElement).getOwnedDiagramElements());
+          Iterator<DDiagramElement> sourceElementContents = toCheck.iterator();
+          while (!hasSrc && sourceElementContents.hasNext()) {
+            EObject next = sourceElementContents.next();
+            if (next == sourceNode) {
+              hasSrc = true;
+            }
+          }
+          toCheck.clear();
+          boolean hasTrgt = false;
+          DSemanticDecorator targetNode = (DSemanticDecorator) edge.getTargetNode();
+          if (targetNode.getTarget() instanceof Port) {
+            targetNode = (DSemanticDecorator) targetNode.eContainer();
+          }
+          toCheck.add((DDiagramElement) targetElement);
+          toCheck.addAll(((DNodeContainer) targetElement).getOwnedDiagramElements());
+          Iterator<DDiagramElement> targetElementContents = toCheck.iterator();
+          while (!hasTrgt && targetElementContents.hasNext()) {
+            EObject next = targetElementContents.next();
+            if (next == targetNode) {
+              hasTrgt = true;
+            }
+          }
+          if (hasSrc && hasTrgt) {
+            return false;
+          }
+        }
+      }
+
+      if (isMultipartMode((ModelElement) sourceView.getTarget()) && isUndoublonLink(sourceView, targetView)) {
+        return false;
+      }
+
+      // Case 5
+      for (FilterDescription filter : diagram.getActivatedFilters()) {
+        if (IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE.equals(filter.getName())
+            || IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE.equals(filter.getName())) {
+          if (isFirstFilterActive(filter, diagram)) {
+            return false;
+          }
+        }
+      }
+    }
+    return true;
+  }
+
+  public Collection<EObject> getComputedComponentExchangeSource(EObject related, DDiagram diagram) {
+    if (related instanceof ComponentExchange) {
+      ComponentExchange connection = (ComponentExchange) related;
+      EObject componentExchangeSource = getComponentExchangeSource(connection);
+      return getVisibleEdgeEnds(diagram, componentExchangeSource);
+    }
+    return Collections.singletonList(related);
+  }
+
+  /**
+   * Returns target for mapping LAB_ComputedComponentExchange
+   */
+  public Collection<EObject> getComputedComponentExchangeTarget(EObject related, DDiagram diagram) {
+    if (related instanceof ComponentExchange) {
+      ComponentExchange connection = (ComponentExchange) related;
+      EObject componentExchangeTarget = getComponentExchangeTarget(connection);
+      return getVisibleEdgeEnds(diagram, componentExchangeTarget);
+    }
+    return Collections.singletonList(related);
+  }
+
+  public Object getComputedComponentExchangeSemanticCandidates(final DDiagram diagram) {
+    Collection<ComponentExchange> result = new HashSet<ComponentExchange>();
+    final DDiagramContents context = new DDiagramContents(diagram);
+    for (DDiagramElement dNode : context.getDiagramElements()) {
+      EObject target = dNode.getTarget();
+      if (target instanceof Part) {
+        result.addAll(ComponentExt.getAllRelatedComponentExchange((Part) target, true));
+        Collection<Part> allSubUsedParts = ComponentExt.getAllSubUsedParts((Part) target, true);
+        for (Part part : allSubUsedParts) {
+          result.addAll(ComponentExt.getAllRelatedComponentExchange(part, true));
+        }
+      } else if (target instanceof Component) {
+        result.addAll(ComponentExt.getAllRelatedComponentExchange((Component) target));
+        Collection<Component> allSubUsedComponents = ComponentExt.getAllSubUsedComponents((Component) target);
+        for (Component component : allSubUsedComponents) {
+          result.addAll(ComponentExt.getAllRelatedComponentExchange(component));
+        }
+      }
+    }
+    return result;
+  }
+
+  public Collection<EObject> getComputedPhysicalLinkSource(EObject related, DDiagram diagram) {
+    if (related instanceof PhysicalLink) {
+      EObject physicalLinkSource = getPhysicalLinkSource((PhysicalLink) related);
+      return getVisibleEdgeEnds(diagram, physicalLinkSource);
+    }
+    return Collections.singletonList(related);
+  }
+
+  public Collection<EObject> getComputedPhysicalLinkTarget(EObject related, DDiagram diagram) {
+    if (related instanceof PhysicalLink) {
+      EObject physicalLinkTarget = getPhysicalLinkTarget((PhysicalLink) related);
+      return getVisibleEdgeEnds(diagram, physicalLinkTarget);
+    }
+    return Collections.singletonList(related);
+  }
+
+  public Object getComputedPhysicalLinkSemanticCandidates(final DDiagram diagram) {
+    Collection<PhysicalLink> result = new ArrayList<PhysicalLink>();
+    final DDiagramContents context = new DDiagramContents(diagram);
+    for (DDiagramElement dNode : context.getDiagramElements()) {
+      EObject target = dNode.getTarget();
+      if (target instanceof Part) {
+        result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks((Part) target));
+        Collection<Part> allSubUsedParts = ComponentExt.getAllSubUsedParts((Part) target, true);
+        for (Part part : allSubUsedParts) {
+          result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks(part));
+        }
+      } else if (target instanceof Component) {
+        result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks((Component) target));
+        Collection<Component> allSubUsedComponents = ComponentExt.getAllSubUsedComponents((Component) target);
+        for (Component component : allSubUsedComponents) {
+          result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks(component));
+        }
+      }
+    }
+    return result;
+  }
+
+  public boolean isValidComputedPhysicalLinkEdge(EObject communication, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView) {
+    // Case 1
+    if (sourceView == targetView) {
+      return false;
+    }
+
+    // Case 2
+    EObject source = sourceView.getTarget();
+    EObject target = targetView.getTarget();
+
+    if (source instanceof Port && target instanceof Port) {
+      return false;
+    }
+
+    // Case 3
+    AbstractType sourceComponent = null;
+    AbstractType targetComponent = null;
+    if (source instanceof Part) {
+      sourceComponent = ((Part) source).getAbstractType();
+    } else if (source instanceof Port) {
+      sourceComponent = (AbstractType) source.eContainer();
+    }
+
+    if (target instanceof Part) {
+      targetComponent = ((Part) target).getAbstractType();
+    } else if (target instanceof Port) {
+      targetComponent = (AbstractType) target.eContainer();
+    }
+    if (sourceComponent != null && targetComponent != null
+        && (isAnAncestor(sourceComponent, targetComponent) || isAnAncestor(targetComponent, sourceComponent))) {
+      return false;
+    }
+
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
+    if (diagram != null) {
+      DSemanticDecorator sourceElement = sourceView;
+      DSemanticDecorator targetElement = targetView;
+      if (sourceElement.getTarget() instanceof Port) {
+        sourceElement = (DSemanticDecorator) sourceElement.eContainer();
+      }
+      if (targetElement.getTarget() instanceof Port) {
+        targetElement = (DSemanticDecorator) targetElement.eContainer();
+      }
+      // Case 4
+      DDiagramContents context = new DDiagramContents(diagram);
+      Collection<DEdge> edges = context.getEdges(communication);
+      for (DEdge edge : edges) {
+        if (!(edge.getMapping().getName().equals(IMappingNameConstants.LAB_COMPUTED_PHYSICAL_LINK)
+            || edge.getMapping().getName().equals(IMappingNameConstants.PAB_COMPUTED_PHYSICAL_LINK))) {
+          boolean hasSrc = false;
+          DSemanticDecorator sourceNode = (DSemanticDecorator) edge.getSourceNode();
+          if (sourceNode.getTarget() instanceof Port) {
+            sourceNode = (DSemanticDecorator) sourceNode.eContainer();
+          }
+          List<DDiagramElement> toCheck = new ArrayList<DDiagramElement>();
+          toCheck.add((DDiagramElement) sourceElement);
+          toCheck.addAll(((DNodeContainer) sourceElement).getOwnedDiagramElements());
+          Iterator<DDiagramElement> sourceElementContents = toCheck.iterator();
+          while (!hasSrc && sourceElementContents.hasNext()) {
+            EObject next = sourceElementContents.next();
+            if (next == sourceNode) {
+              hasSrc = true;
+            }
+          }
+          toCheck.clear();
+          boolean hasTrgt = false;
+          DSemanticDecorator targetNode = (DSemanticDecorator) edge.getTargetNode();
+          if (targetNode.getTarget() instanceof Port) {
+            targetNode = (DSemanticDecorator) targetNode.eContainer();
+          }
+          toCheck.add((DDiagramElement) targetElement);
+          toCheck.addAll(((DNodeContainer) targetElement).getOwnedDiagramElements());
+          Iterator<DDiagramElement> targetElementContents = toCheck.iterator();
+          while (!hasTrgt && targetElementContents.hasNext()) {
+            EObject next = targetElementContents.next();
+            if (next == targetNode) {
+              hasTrgt = true;
+            }
+          }
+          if (hasSrc && hasTrgt) {
+            return false;
+          }
+        }
+      }
+
+      if (isMultipartMode((ModelElement) sourceView.getTarget()) && isUndoublonLink(sourceView, targetView)) {
+        return false;
+      }
+
+      // Case 5
+      for (FilterDescription filter : diagram.getActivatedFilters()) {
+        if (IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_PL.equals(filter.getName())
+            || IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE.equals(filter.getName())) {
+          if (isFirstFilterActive(filter, diagram)) {
+            return false;
+          }
+        }
+      }
+    }
+    return true;
+  }
+
+  private Collection<EObject> getVisibleEdgeEnds(DDiagram diagram, EObject source) {
+    DDiagramContents context = new DDiagramContents(diagram);
+    // When it is a port, try to find the diagram element
+    // corresponding to this port and return it
+    if (source instanceof Port) {
+      DDiagramElement diagramElement = getDiagramElement(context, source);
+      // Port is on t
+      if (diagramElement != null && DiagramServices.getDiagramServices().isVisible(diagramElement)) {
+        List<EObject> result = new ArrayList<EObject>();
+        result.add(source);
+        if (source.eContainer() instanceof Component) {
+          Part portParent = ComponentExt.getRepresentingParts((Component) source.eContainer()).iterator().next();
+          result.addAll(getVisibleEdgeEnds(context, portParent, false));
+        }
+        return result;
+      } else if (source.eContainer() instanceof Component) {
+        Part portParent = ComponentExt.getRepresentingParts((Component) source.eContainer()).iterator().next();
+        return getVisibleEdgeEnds(context, portParent, true);
+      }
+
+    } else if (source instanceof Part) {
+      return getVisibleEdgeEnds(context, (Part) source, true);
+    }
+    return null;
+  }
+
+  private Collection<EObject> getVisibleEdgeEnds(DDiagramContents context, Part mainPart, boolean handleMainPart) {
+    List<EObject> result = new ArrayList<EObject>();
+    List<DeploymentTarget> toHandle = new ArrayList<DeploymentTarget>();
+    if (handleMainPart) {
+      toHandle.add(mainPart);
+    } else {
+      Part parentPart = ComponentExt.getRepresentingParts((Component) mainPart.eContainer()).iterator().next();
+      Collection<DDiagramElement> diagramElements = context.getDiagramElements(parentPart);
+      boolean found = false;
+      for (DDiagramElement diagElt : diagramElements) {
+        if (diagElt instanceof DNodeContainer) {
+          DNodeContainer node = (DNodeContainer) diagElt;
+          for (DDiagramElement elt : node.getOwnedDiagramElements()) {
+            if (mainPart.equals(elt.getTarget())) {
+              found = true;
+            }
+          }
+        }
+      }
+      if (!found) {
+        toHandle.add(parentPart);
+      }
+    }
+    toHandle.addAll(PartExt.getDeployingElements(mainPart));
+    for (DeploymentTarget deploymentTarget : toHandle) {
+      Collection<Part> relevantParts = new ArrayList<Part>();
+      relevantParts.add((Part) deploymentTarget);
+      relevantParts.addAll(ComponentExt.getPartAncestors((Part) deploymentTarget));
+      result.add(getFirstVisibleAncestor(context, relevantParts));
+    }
+    return result;
+  }
+
+  private EObject getFirstVisibleAncestor(DDiagramContents context, Collection<Part> relevantParts) {
+    Iterator<Part> iterator = relevantParts.iterator();
+    while (iterator.hasNext()) {
+      Part part = iterator.next();
+      DDiagramElement diagramElement = getDiagramElement(context, part);
+      if (diagramElement != null && diagramElement.isVisible()) {
+        return part;
+      }
+    }
+    return null;
+  }
+
+  private DDiagramElement getDiagramElement(DDiagramContents context, EObject target) {
+    Iterable<DDiagramElement> diagramElements = context.getDiagramElements(target);
+    Iterator<DDiagramElement> iterator = diagramElements.iterator();
+    return iterator.hasNext() ? iterator.next() : null;
   }
 }
