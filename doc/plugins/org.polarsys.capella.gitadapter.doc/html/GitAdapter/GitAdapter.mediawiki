@@ -128,6 +128,21 @@ This tutorial provides a step by step walk-through of the Capella Git Adapter.
 
 This is a continuation of the above basic tutorial.
 
+==== Create a tag ====
+
+Like most VCSs, Git has the ability to tag specific points in history as being important. Typically people use this functionality to mark release points (v1.0, and so on). In this section, you’ll learn how to create new tags.
+
+*Open the History View and right-click on the commit you want to tag
+*Click '''Create Tag...''' in the menu<br><br>
+:-[[Image:images/CreateTag.png|450x400px]]
+<br>
+:-[[Image:images/TagV1.png|550x330px]]
+*Enter the tag name "V1.0"
+*Enter the tag message "Version 1.0"
+*Click '''Create Tag''' to create the annotated tag
+
+Tags can also be created from the team menu, click '''Team > Advanced > Tag...''', enter the tag name and message, select the commit you want to tag (default is HEAD) and click OK.
+
 ==== Resolve Conflicts ====
 
 Conflicts arise when contradicting changes have been made in parallel and an attempt is made to integrate (merge) them. With Git, this may happen for example when two branches are '''merged''', when a branch is '''rebased''' on another, or when a '''pull''' is done.
@@ -140,7 +155,8 @@ Conflicts arise when contradicting changes have been made in parallel and an att
 <br>
 *Close the session (right-click the .aird file and select "Close"). This is because we are going to modify the content of the filesystem.
  
-*In the History view, right-click the "First changes" commit, right-click "Reset" > "Hard". Branch "maintenance" has been moved back to this past commit.<br><br>
+*In the History view, right-click the "First changes" commit, right-click "Reset" > "Hard". Branch "maintenance" has been moved back to this past commit.<br>This will reset the current branch head to "First changes" commit. It resets the index and working tree. Any changes to tracked files in the working tree since "First changes" commit are discarded.<br><br>
+
 :-[[Image:images/ResetHard.png|500x400px]]
 <br>
 :-[[Image:images/MaintenanceHead.png|600x200px]]
@@ -228,6 +244,6 @@ If your model refers to libraries, you have to include manually your modified li
 == Limitations / Known Issues ==
 
 * Diff/Merge 3-way to enhance.
-* Session need to be closed prior to any Fetch, Pull or Rebase.
-* Diff/Merge on root fragment
+* Session need to be closed prior to any Fetch, Pull or Rebase as the files will be changed by Git and those changes need to be synchonized with the Eclipse File System.
+* On a fragmented model, Diff/Merge shall be performed on root file (not airdfragment/melodyfragment) to ensure that model is fully loaded while Diff/Merge analysis.
  
