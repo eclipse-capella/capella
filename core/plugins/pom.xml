@@ -30,6 +30,7 @@
       <modules>
         <module>org.polarsys.capella.common.ui.resources</module>
         <module>org.polarsys.capella.core.af.integration</module>
+        <module>org.polarsys.capella.core.af.integration.ui</module>
         <module>org.polarsys.capella.core.application</module>
         <module>org.polarsys.capella.core.commandline.core</module>
         <module>org.polarsys.capella.core.commandline.core.ui</module>

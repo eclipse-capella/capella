@@ -12,22 +12,6 @@
 -->
 <plugin>
    <extension
-         point="org.polarsys.kitalpha.ad.viewpoint.implementation.services">
-      <Implementation
-            class="org.polarsys.capella.core.af.integration.services.DisplaySelectionServiceImplementation"
-            label="Display Capella selection"
-            type="display.capella.selection">
-      </Implementation>
-   </extension>
-   <extension
-         point="org.polarsys.kitalpha.ad.viewpoint.ui.provider.selection">
-      <SelectionProvider
-      		id="org.polarsys.capella.core.af.integration.provider.CapellaSelectionProvider"
-            class="org.polarsys.capella.core.af.integration.provider.CapellaSelectionProvider"
-            label="Capella provider">
-      </SelectionProvider>
-   </extension>
-   <extension
          point="org.polarsys.capella.core.model.handler.delegateWorkbenchAdvisor">
       <advisor
             class="org.polarsys.capella.core.af.integration.AFDelegateWorkbenchAdvisor">
@@ -41,14 +25,6 @@
 	        name="Capella viewpoint"
 	        path="/org.polarsys.capella.core.af.integration/model/capella.vp#capella"/>
    </extension>
-    <extension
-       point="org.eclipse.ui.views">
-      <category
-            id="org.polarsys.capella.vp.views.category"
-            name="%capella.vp.category">
-      </category>
-    </extension>
-    
     <extension
           point="org.polarsys.capella.common.ef.editingDomainListener">
        <editingDomainListener

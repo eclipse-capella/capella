@@ -66,10 +66,6 @@
          version="0.0.0"/>
 
    <includes
-         id="org.polarsys.capella.core.af.feature"
-         version="0.0.0"/>
-
-   <includes
          id="org.polarsys.capella.core.transition.system.topdown.feature"
          version="0.0.0"/>
 

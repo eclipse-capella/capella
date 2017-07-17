@@ -6,26 +6,11 @@ Bundle-Localization: plugin
 Bundle-SymbolicName: org.polarsys.capella.core.af.integration;singleton:=true
 Bundle-Version: 1.2.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.af.integration.AFIntegrationPlugin
-Require-Bundle: org.eclipse.ui.navigator,
- org.eclipse.gmf.runtime.diagram.ui,
- org.polarsys.capella.common.ui.toolkit.browser,
- org.polarsys.capella.core.model.handler,
- org.polarsys.kitalpha.ad.integration.sirius,
- org.polarsys.kitalpha.ad.af.coredomain,
- org.polarsys.kitalpha.ad.services;visibility:=reexport,
- org.polarsys.kitalpha.ad.viewpoint.coredomain.model.edit,
- org.polarsys.kitalpha.ad.viewpoint.ui,
- org.eclipse.sirius,
- org.eclipse.emf.edit.ui,
- org.polarsys.kitalpha.model.common.scrutiny;visibility:=reexport,
- org.polarsys.kitalpha.model.common.scrutiny.contrib.viewpoints;visibility:=reexport,
+Require-Bundle: org.polarsys.capella.core.model.handler,
  org.polarsys.kitalpha.ad.metadata;visibility:=reexport,
- org.eclipse.emf.ecore,
- org.eclipse.core.resources,
- org.eclipse.sirius.ui
+ org.polarsys.kitalpha.ad.viewpoint;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.polarsys.capella.core.af.integration,
  org.polarsys.capella.core.af.integration.listener,
- org.polarsys.capella.core.af.integration.provider,
  org.polarsys.capella.core.af.integration.services
 Bundle-ActivationPolicy: lazy 

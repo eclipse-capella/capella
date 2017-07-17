@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2017 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.polarsys.kitalpha.ad.viewpoint.implementation.services">
+      <Implementation
+            class="org.polarsys.capella.core.af.integration.ui.services.DisplaySelectionServiceImplementation"
+            label="Display Capella selection"
+            type="display.capella.selection">
+      </Implementation>
+   </extension>
+   <extension
+         point="org.polarsys.kitalpha.ad.viewpoint.ui.provider.selection">
+      <SelectionProvider
+      		id="org.polarsys.capella.core.af.integration.ui.provider.CapellaSelectionProvider"
+            class="org.polarsys.capella.core.af.integration.ui.provider.CapellaSelectionProvider"
+            label="Capella provider">
+      </SelectionProvider>
+   </extension>
+   <extension
+       point="org.eclipse.ui.views">
+      <category
+            id="org.polarsys.capella.vp.views.category"
+            name="%capella.vp.category">
+      </category>
+   </extension>
+</plugin>

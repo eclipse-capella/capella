@@ -29,7 +29,6 @@
       </activation>
       <modules>
         <module>org.polarsys.capella.core.advance.feature</module>
-        <module>org.polarsys.capella.core.af.feature</module>
         <module>org.polarsys.capella.core.common.feature</module>
         <module>org.polarsys.capella.core.common.ui.feature</module>
         <module>org.polarsys.capella.core.compare.feature</module>
