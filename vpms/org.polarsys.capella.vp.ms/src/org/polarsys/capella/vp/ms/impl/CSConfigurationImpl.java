@@ -23,18 +23,22 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
+import org.polarsys.capella.common.data.activity.InputPin;
+import org.polarsys.capella.common.data.activity.OutputPin;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
+import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
 import org.polarsys.capella.core.data.fa.ComponentPort;
+import org.polarsys.capella.core.data.fa.FunctionInputPort;
+import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.Port;
@@ -523,6 +527,8 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
     EList<ModelElement> result = new UniqueEList<ModelElement>();
     if (parent instanceof System) {
       recurseComponentsForComboBox(result, (System) parent);
+    } else if (parent instanceof Actor) {
+      recurseComponentsForComboBox(result, (Actor) parent);
     } else if (parent instanceof LogicalComponent) {
       recurseComponentsForComboBox(result, (LogicalComponent) parent);
     } else if (parent instanceof LogicalActor) {
@@ -570,6 +576,10 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
     addComboBoxElements(result, parent);
   }
 
+  private void recurseComponentsForComboBox(Collection<ModelElement> result, Actor parent) {
+    addComboBoxElements(result, parent);
+  }
+
   private void recurseComponentsForComboBox(Collection<ModelElement> result, PhysicalComponent parent) {
     addComboBoxElements(result, parent);
 
@@ -607,8 +617,18 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
 
       addComboboxElements(result, allocated);
 
-      for (Port port : FunctionExt.getOwnedFunctionPorts(allocated)) {
-        result.add(port);
+      for (InputPin in : allocated.getInputs()) {
+        if (in instanceof FunctionInputPort) {
+          result.add(in);
+          result.addAll(((FunctionInputPort) in).getIncomingFunctionalExchanges());
+        }
+      }
+
+      for (OutputPin out : allocated.getOutputs()) {
+        if (out instanceof FunctionOutputPort) {
+          result.add(out);
+          result.addAll(((FunctionOutputPort)out).getOutgoingFunctionalExchanges());
+        }
       }
       for (FunctionalChain chain : allocated.getInvolvingFunctionalChains()) {
         result.add(chain);
@@ -617,11 +637,15 @@ public class CSConfigurationImpl extends NamedElementImpl implements CSConfigura
 
     for (ComponentPort cp : parent.getContainedComponentPorts()) {
       result.add(cp);
+      result.addAll(cp.getComponentExchanges());
+
       addComboboxElements(result, cp);
     }
 
     for (PhysicalPort pp : parent.getContainedPhysicalPorts()) {
       result.add(pp);
+      result.addAll(pp.getInvolvedLinks());
+
       addComboboxElements(result, pp);
     }
   }

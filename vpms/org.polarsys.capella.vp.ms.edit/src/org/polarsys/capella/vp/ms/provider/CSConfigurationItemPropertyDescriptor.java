@@ -12,6 +12,8 @@
 package org.polarsys.capella.vp.ms.provider;
 
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -20,6 +22,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.model.IDelegatedListener;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.information.Port;
+import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.vp.ms.CSConfiguration;
 import org.polarsys.capella.vp.ms.MsPackage;
 import org.polarsys.kitalpha.emde.model.edit.provider.ExtensionItemPropertyDescriptor;
@@ -67,7 +74,17 @@ public class CSConfigurationItemPropertyDescriptor extends ExtensionItemProperty
 
     if (feature == MsPackage.Literals.CS_CONFIGURATION__ELEMENTS) {
       Collection<?> result = super.getComboBoxObjects(object);
-      result.removeAll(((CSConfiguration) object).getScope());
+      List<ModelElement> scope = ((CSConfiguration) object).getScope();
+      for (Iterator<?> it = result.iterator(); it.hasNext();) {
+        Object next = it.next();
+        if (((next instanceof FunctionalExchange
+            || next instanceof Scenario
+            || next instanceof Port
+            || next instanceof Component
+            || next instanceof AbstractFunction)) && !scope.contains(next)){
+          it.remove();
+        }
+      }
       return result;
     }
 

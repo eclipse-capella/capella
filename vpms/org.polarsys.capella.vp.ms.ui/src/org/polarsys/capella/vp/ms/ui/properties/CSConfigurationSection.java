@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.polarsys.capella.vp.ms.ui.properties;
 
+import static com.google.common.base.Predicates.instanceOf;
+import static com.google.common.base.Predicates.not;
+import static com.google.common.base.Predicates.or;
 import static org.polarsys.capella.vp.ms.MsPackage.Literals.CS_CONFIGURATION__ELEMENTS;
 
 import java.util.ArrayList;
@@ -28,6 +31,11 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.FunctionalChain;
+import org.polarsys.capella.core.data.information.Port;
+import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.controllers.IMultipleSemanticFieldController;
@@ -36,6 +44,8 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 import org.polarsys.capella.vp.ms.CSConfiguration;
 import org.polarsys.capella.vp.ms.MsPackage;
 import org.polarsys.capella.vp.ms.provider.MsEditPlugin;
+
+import com.google.common.collect.Collections2;
 
 public class CSConfigurationSection extends NamedElementSection {
 
@@ -216,15 +226,20 @@ public class CSConfigurationSection extends NamedElementSection {
    *   - filters values so that the 'other elements' field does not show elements
    *     from one of the typed elements fields, and vice-versa.
    */
-  private static class DerivedElementsController extends ItemProviderFieldController {
+  private class DerivedElementsController extends ItemProviderFieldController {
 
     @Override
     public List<EObject> loadValues(EObject semanticElement, EStructuralFeature semanticFeature) {
       List<EObject> values = super.loadValues(semanticElement, semanticFeature);
       if (semanticFeature == MsPackage.Literals.CS_CONFIGURATION__ELEMENTS) {
-        values.removeAll(((CSConfiguration)semanticElement).getScope());
-      } else {
-        values.retainAll(((CSConfiguration)semanticElement).getScope());
+        values = new ArrayList<EObject>(Collections2.filter(values,
+            not(
+              or(
+               instanceOf(AbstractFunction.class),
+               instanceOf(FunctionalChain.class),
+               instanceOf(Component.class),
+               instanceOf(Port.class),
+               instanceOf(Scenario.class)))));
       }
       return values;
     }

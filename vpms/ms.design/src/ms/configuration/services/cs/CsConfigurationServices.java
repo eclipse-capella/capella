@@ -48,14 +48,21 @@ import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
+import org.polarsys.capella.core.data.fa.FunctionInputPort;
+import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
+import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.vp.ms.BooleanOperation;
 import org.polarsys.capella.vp.ms.CSConfiguration;
 import org.polarsys.capella.vp.ms.Comparison;
@@ -516,9 +523,128 @@ public class CsConfigurationServices {
     return isAvailableInSelectedConfigurationImpl(context, view);
   }
 
+  private boolean isAvailableInSelectedConfigurationImpl(ComponentExchange context, DDiagramElement view) {
+
+    Component source = ComponentExchangeExt.getSourceComponent(context);
+    Component target = ComponentExchangeExt.getTargetComponent(context);
+
+    return isAvailableInSelectedConfigurationImpl(context, view, source, target);
+
+  }
+
+  private boolean isAvailableInSelectedConfigurationImpl(PhysicalLink context, DDiagramElement view) {
+
+    PhysicalPort source = context.getSourcePhysicalPort();
+    PhysicalPort target = context.getTargetPhysicalPort();
+
+    Component sourceComponent = (Component) source.eContainer();
+    Component targetComponent = (Component) target.eContainer();
+
+    return isAvailableInSelectedConfigurationImpl(context, view, sourceComponent, targetComponent);
+
+  }
+
+  private boolean isAvailableInSelectedConfigurationImpl(ModelElement link, DDiagramElement view, Component sourceComponent, Component targetComponent) {
+
+    DDiagramElement sourceComponentNode = null;
+    DDiagramElement targetComponentNode = null;
+
+    for (DDiagramElement elem : view.getParentDiagram().getDiagramElements()) {
+      if (elem.getTarget() instanceof Part) {
+        if (((Part) elem.getTarget()).getType() == sourceComponent) {
+          sourceComponentNode = elem;
+        }
+        if (((Part) elem.getTarget()).getType() == targetComponent) {
+          targetComponentNode = elem;
+        }
+      }
+    }
+
+    boolean result = true;
+
+    if (sourceComponentNode instanceof DNodeContainer && targetComponentNode instanceof DNodeContainer) {
+
+      Collection<CSConfiguration> sourceConfigs = getSelectedConfigurations((DNodeContainer) sourceComponentNode, true);
+      Collection<CSConfiguration> targetConfigs = getSelectedConfigurations((DNodeContainer) targetComponentNode, true);
+
+      boolean sResult = sourceConfigs.isEmpty();
+      boolean tResult = targetConfigs.isEmpty();
+
+      for (CSConfiguration sc : sourceConfigs) {
+        if (sc.includes(link)) {
+          sResult = true;
+          break;
+        }
+      }
+
+      for (CSConfiguration tc : targetConfigs) {
+        if (tc.includes(link)) {
+          tResult = true;
+          break;
+        }
+      }
+
+      result = sResult && tResult;
+
+    }
+
+    return result;
+
+  }
+
+  /*
+   * At least one of the displayed configurations on each 'side' of the exchange must include the exchange,
+   * or it is greyed out.
+   *
+   * @param context
+   * @param view
+   * @return
+   */
+  private boolean isAvailableInSelectedConfigurationImpl(FunctionalExchange context, DDiagramElement view) {
+
+    FunctionOutputPort source = context.getSourceFunctionOutputPort();
+    FunctionInputPort target = context.getTargetFunctionInputPort();
+
+    AbstractFunction sourceFunction = (AbstractFunction) source.eContainer();
+    AbstractFunction targetFunction = (AbstractFunction) target.eContainer();
+
+    Component sourceComponent = null;
+    Component targetComponent = null;
+
+    for (AbstractFunctionalBlock block : sourceFunction.getAllocationBlocks()) {
+      if (block instanceof Component) {
+        sourceComponent = (Component) block;
+      }
+    }
+
+    for (AbstractFunctionalBlock block : targetFunction.getAllocationBlocks()) {
+      if (block instanceof Component) {
+        targetComponent = (Component) block;
+      }
+    }
+
+    return isAvailableInSelectedConfigurationImpl(context, view, sourceComponent, targetComponent);
+
+  }
+
+
   private boolean isAvailableInSelectedConfigurationImpl(ModelElement context, DDiagramElement view) {
 
     boolean result = true;
+
+    if (context instanceof FunctionalExchange) {
+
+      result = isAvailableInSelectedConfigurationImpl((FunctionalExchange) context, view);
+
+    } else if (context instanceof ComponentExchange) {
+
+      result = isAvailableInSelectedConfigurationImpl((ComponentExchange) context, view);
+
+    } else if (context instanceof PhysicalLink) {
+
+      result = isAvailableInSelectedConfigurationImpl((PhysicalLink) context, view);
+
+    } else {
 
     if (view.eContainer() instanceof DNodeContainer) {
       ModelElement target = context instanceof Part ? ((Part) context).getType() : context;
@@ -527,10 +653,11 @@ public class CsConfigurationServices {
       for (CSConfiguration c : configs) {
         if (c.includes(target)) {
           result = true;
+          break;
         }
       }
     }
-
+  }
     return result;
 
   }
