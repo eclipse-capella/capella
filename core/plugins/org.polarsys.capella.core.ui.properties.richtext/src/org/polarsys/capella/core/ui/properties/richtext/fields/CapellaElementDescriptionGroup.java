@@ -56,7 +56,7 @@ public class CapellaElementDescriptionGroup extends ElementDescriptionGroup {
     if (NotificationHelper.isNotificationRequired(object, feature, value)) {
       AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
         public void run() {
-          object.eSet(feature, value);
+          _descriptionTextField.saveContent();
         }
       };
       executeCommand(command);

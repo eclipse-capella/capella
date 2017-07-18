@@ -10,14 +10,20 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.properties.richtext.fields;
 
+import java.util.Collection;
+import java.util.Collections;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.kitalpha.richtext.common.intf.MDERichTextWidget;
+import org.eclipse.kitalpha.richtext.common.intf.SaveStrategy;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
@@ -26,7 +32,11 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.ICommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.ui.properties.helpers.NotificationHelper;
 import org.polarsys.kitalpha.richtext.widget.factory.MDERichTextFactory;
 
 /**
@@ -84,7 +94,7 @@ public abstract class ElementDescriptionGroup implements SelectionListener, Focu
     _descriptionTextField = createDescriptionField(textGroup);
     //GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
     //_descriptionTextField.setLayoutData(gd);
-    _descriptionTextField.setEditable(false);
+    // _descriptionTextField.setEditable(false);
     _descriptionTextField.addFocusListener(this);
   }
 
@@ -94,17 +104,106 @@ public abstract class ElementDescriptionGroup implements SelectionListener, Focu
    * @return
    */
   protected MDERichTextWidget createDescriptionField(Composite parent) {
-    return new MDERichTextFactory().createDefaultRichTextWidget(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
-    //return new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+//    RichTextEditorConfiguration conf = new RichTextEditorConfiguration();
+//    conf.setOption(RichTextEditorConfiguration.TOOLBAR_GROUPS, "");
+//    RichTextEditor editor = new RichTextEditor(parent, conf);
+//    editor.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+//    return editor;
+    MDERichTextFactory f = new MDERichTextFactory();
+	final MDERichTextWidget ee = f.createDefaultRichTextWidget(parent);
+	ee.addModifyListener(new ModifyListener() {
+		
+		@Override
+		public void modifyText(ModifyEvent e) {
+			ee.saveContent();
+		}
+	});
+	
+	
+	ee.setSaveStrategy(new SaveStrategy() {
+		
+		@Override
+		public void save(final String editorText, final EObject owner, final EStructuralFeature feature) {
+			if (NotificationHelper.isNotificationRequired(owner, feature, editorText)) {
+			      AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+			        public void run() {
+			        	owner.eSet(feature, editorText);
+			        }
+			      };
+			      executeCommand(command);
+			 }
+		}
+		
+		protected void executeCommand(final ICommand command) {
+		    // Precondition
+		    if ((null == command)) {
+		      return;
+		    }
+		    // Command to run.
+		    ICommand cmd = command;
+		    // Encapsulate given command in a new one to enable undo / redo refresh based on getAffectedObjects.
+		    // AbstractSection call getAffectedObjects() against the command provided by the OperationHistory.
+		    if (command instanceof AbstractReadWriteCommand) {
+		      cmd = new AbstractReadWriteCommand() {
+		        /**
+		         * @see java.lang.Runnable#run()
+		         */
+		        public void run() {
+		          command.run();
+		        }
+
+		        /**
+		         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getAffectedObjects()
+		         */
+		        @SuppressWarnings("synthetic-access")
+		        @Override
+		        public Collection<?> getAffectedObjects() {
+		          return Collections.singletonList(_semanticElement);
+		        }
+
+		        /**
+		         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getName()
+		         */
+		        @Override
+		        public String getName() {
+		          return "Model Edition"; //$NON-NLS-1$
+		        }
+
+		        /**
+		         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#commandInterrupted()
+		         */
+		        @Override
+		        public void commandInterrupted() {
+		          commandRolledBack();
+		        }
+
+		        /**
+		         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#commandRolledBack()
+		         */
+		        @SuppressWarnings("synthetic-access")
+		        @Override
+		        public void commandRolledBack() {
+		          // Reload data >> refresh the UI.
+		          loadData(_semanticElement, _semanticFeature);
+		        }
+		      };
+		    }
+		    // Execute it against the TED.
+		    TransactionHelper.getExecutionManager(_semanticElement).execute(cmd);
+		  }
+	});
+	
+	
+	return ee;
   }
 
   /**
    * @param enabled
    */
   public void setEnabled(boolean enabled) {
-    if (_descriptionTextField != null) {
-      _descriptionTextField.setEditable(enabled);
-    }
+//    if (_descriptionTextField != null) {
+//      _descriptionTextField.setEditable(enabled);
+//    }
   }
 
   /**
@@ -114,7 +213,8 @@ public abstract class ElementDescriptionGroup implements SelectionListener, Focu
   public void loadData(EObject element, EStructuralFeature feature) {
     _semanticElement = element;
     _semanticFeature = feature;
-    setTextValue(_descriptionTextField, _semanticElement, _semanticFeature);
+   _descriptionTextField.bind(_semanticElement, _semanticFeature);
+    //setTextValue(_descriptionTextField, _semanticElement, _semanticFeature);
   }
 
   /**
@@ -171,9 +271,9 @@ public abstract class ElementDescriptionGroup implements SelectionListener, Focu
    * @param textField text field to be filled
    */
   protected void fillTextField(Text textField) {
-    if (textField.equals(_descriptionTextField)) {
-      setDataValue(_semanticElement, _semanticFeature, _descriptionTextField.getText());
-    }
+//    if (textField.equals(_descriptionTextField)) {
+//      setDataValue(_semanticElement, _semanticFeature, _descriptionTextField.getText());
+//    }
   }
 
   /**
@@ -187,24 +287,24 @@ public abstract class ElementDescriptionGroup implements SelectionListener, Focu
    * @see org.eclipse.swt.events.FocusListener#focusLost(org.eclipse.swt.events.FocusEvent)
    */
   public void focusLost(FocusEvent event) {
-    if (event != null) {
-      Object source = event.getSource();
-      if ((source != null) && (source instanceof Text)) {
-        fillTextField((Text) source);
-      }
-    }
+//    if (event != null) {
+//      Object source = event.getSource();
+//      if ((source != null) && (source instanceof Text)) {
+//        fillTextField((Text) source);
+//      }
+//    }
   }
 
   /**
    * @see org.eclipse.swt.events.KeyListener#keyPressed(org.eclipse.swt.events.KeyEvent)
    */
   public void keyPressed(KeyEvent event) {
-    if ((event != null) && (event.character == SWT.CR)) {
-      Object source = event.getSource();
-      if ((source != null) && (source instanceof Text)) {
-        fillTextField((Text) source);
-      }
-    }
+//    if ((event != null) && (event.character == SWT.CR)) {
+//      Object source = event.getSource();
+//      if ((source != null) && (source instanceof Text)) {
+//        fillTextField((Text) source);
+//      }
+//    }
   }
 
   /**
