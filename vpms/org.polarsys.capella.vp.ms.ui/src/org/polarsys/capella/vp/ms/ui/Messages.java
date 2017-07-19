@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *   
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -18,6 +18,7 @@ public class Messages extends NLS {
   public static String ConfigurationContentFilter_showFunctionalChains;
   public static String ConfigurationContentFilter_showFunctions;
   public static String ConfigurationContentFilter_showPorts;
+  public static String ConfigurationContentFilter_showScenarios;
   public static String InitializeConfigurationAccessDialog_label;
   public static String InitializeConfigurationAccessDialog_message;
   public static String InitializeConfigurationAccessDialog_title;

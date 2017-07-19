@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *   
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -74,7 +74,7 @@ public class ConfigurationContentFilter extends CompoundContributionItem impleme
 
   @Override
   public void initialize(IServiceLocator serviceLocator) {
-    partService = (IPartService) serviceLocator.getService(IPartService.class);
+    partService = serviceLocator.getService(IPartService.class);
   }
 
   @Override
@@ -82,15 +82,16 @@ public class ConfigurationContentFilter extends CompoundContributionItem impleme
 
     final DTableEditor editor = (DTableEditor) partService.getActivePart();
     final DTable table = (DTable) (((SessionEditorInput) editor.getEditorInput())).getInput();
-    final TransactionalEditingDomain editingDomain = (TransactionalEditingDomain) editor.getEditingDomain();
 
-    IContributionItem[] items = new IContributionItem[4];
+    IContributionItem[] items = new IContributionItem[5];
 
     items[0] = makeItem(Messages.ConfigurationContentFilter_showPorts, new Predicate<DTable>() {
+      @Override
       public boolean apply(DTable t) {
         return CsConfigurationServices.isShowPorts(t);
       }
     }, new Function<Boolean, Object>() {
+      @Override
       public Object apply(Boolean b) {
         CsConfigurationServices.setShowPorts(table, b);
         return null;
@@ -98,10 +99,12 @@ public class ConfigurationContentFilter extends CompoundContributionItem impleme
     });
 
     items[1] = makeItem(Messages.ConfigurationContentFilter_showFunctions, new Predicate<DTable>() {
+      @Override
       public boolean apply(DTable t) {
         return CsConfigurationServices.isShowFunctions(t);
       }
     }, new Function<Boolean, Object>() {
+      @Override
       public Object apply(Boolean b) {
         CsConfigurationServices.setShowFunctions(table, b);
         return null;
@@ -109,10 +112,12 @@ public class ConfigurationContentFilter extends CompoundContributionItem impleme
     });
 
     items[2] = makeItem(Messages.ConfigurationContentFilter_showFunctionalChains, new Predicate<DTable>() {
+      @Override
       public boolean apply(DTable t) {
         return CsConfigurationServices.isShowFunctionalChains(t);
       }
     }, new Function<Boolean, Object>() {
+      @Override
       public Object apply(Boolean b) {
         CsConfigurationServices.setShowFunctionalChains(table, b);
         return null;
@@ -120,12 +125,27 @@ public class ConfigurationContentFilter extends CompoundContributionItem impleme
     });
 
     items[3] = makeItem(Messages.ConfigurationContentFilter_showComponents, new Predicate<DTable>() {
+      @Override
       public boolean apply(DTable t) {
         return CsConfigurationServices.isShowComponents(t);
       }
     }, new Function<Boolean, Object>() {
+      @Override
       public Object apply(Boolean b) {
         CsConfigurationServices.setShowComponents(table, b);
+        return null;
+      }
+    });
+
+    items[4] = makeItem(Messages.ConfigurationContentFilter_showScenarios, new Predicate<DTable>() {
+      @Override
+      public boolean apply(DTable t) {
+        return CsConfigurationServices.isShowScenarios(t);
+      }
+    }, new Function<Boolean, Object>(){
+      @Override
+      public Object apply(Boolean b) {
+        CsConfigurationServices.setShowScenarios(table, b);
         return null;
       }
     });

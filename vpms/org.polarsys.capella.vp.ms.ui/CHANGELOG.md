@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 0.8.0 - 
+### Added
+ - Configurations can reference Scenarios and 'Other Elements'
+ - Configuration elements table also shows Scenarios
+ - Configurations are displayable on canvas root for xAB diagrams
+ - Show Configuration Property Kind: Atomic/Global
+ - Exchanges/Links on xAB are now d-a-s-h-e-d if not included by at least one visible Configuration on either side of
+   the link
+
 ## 0.7.0 - 2017-04-24
 ### Added
  - Comparison/Result elements
