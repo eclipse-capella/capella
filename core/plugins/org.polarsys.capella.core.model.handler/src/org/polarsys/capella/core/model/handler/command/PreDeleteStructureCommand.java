@@ -35,11 +35,10 @@ public class PreDeleteStructureCommand extends DeleteStructureCommand {
    * Constructor.
    * @param editingDomain
    * @param elements
-   * @param deleteParts
    * @param handler The resulting notifications chain, faking the delete behavior, plus shared data.
    */
-  public PreDeleteStructureCommand(EditingDomain editingDomain, Collection<?> elements, boolean deleteParts, PreDeleteHandler handler) {
-	  super(editingDomain, elements, deleteParts);
+  public PreDeleteStructureCommand(EditingDomain editingDomain, Collection<?> elements, PreDeleteHandler handler) {
+	  super(editingDomain, elements);
 	  this.handler = handler;
   }
 
@@ -85,7 +84,7 @@ public class PreDeleteStructureCommand extends DeleteStructureCommand {
    */
   @Override
   protected Command doDeleteStructure(EObject sourceObject) {
-    return new PreDeleteStructureCommand(getEditingDomain(), Collections.singletonList(sourceObject), deleteParts, handler);
+    return new PreDeleteStructureCommand(getEditingDomain(), Collections.singletonList(sourceObject), handler);
   }
 
   /**

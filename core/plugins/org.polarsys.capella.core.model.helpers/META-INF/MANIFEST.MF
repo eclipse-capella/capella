@@ -13,6 +13,7 @@ Require-Bundle: org.apache.commons.lang,
  org.polarsys.capella.core.data.helpers;visibility:=reexport,
  org.polarsys.capella.core.model.preferences
 Export-Package: org.polarsys.capella.core.model.helpers,
+ org.polarsys.capella.core.model.helpers.delete,
  org.polarsys.capella.core.model.helpers.intermodelInconsistencyDetection,
  org.polarsys.capella.core.model.helpers.listeners,
  org.polarsys.capella.core.model.helpers.move,

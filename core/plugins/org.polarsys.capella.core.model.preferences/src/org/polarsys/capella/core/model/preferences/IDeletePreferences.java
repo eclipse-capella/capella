@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,30 +10,48 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.preferences;
 
+import org.eclipse.emf.ecore.EClass;
+
 /**
- * @deprecated Use org.polarsys.capella.core.platform.sirius.ui.preferences.IDeletePreferences
+ *
  */
-public class IDeletePreferences {
+public interface IDeletePreferences {
+
+  public static final IDeletePreferences INSTANCE = new DeletePreferences();
+
   /**
    * Confirm delete action preference.
-   * @deprecated
    */
-  public static final String PREFERENCE_CONFIRM_DELETE = "Confirm_Delete"; //$NON-NLS-1$
+  final String PREFERENCE_CONFIRM_DELETE = "Confirm_Delete";//$NON-NLS-1$
+
   /**
    * Default value for confirm delete action preference.
-   * @deprecated
    */
-  public static final Boolean PREFERENCE_CONFIRM_DELETE_DEFAULT = Boolean.TRUE;
+  final Boolean PREFERENCE_CONFIRM_DELETE_DEFAULT = Boolean.TRUE;
 
   /**
    * Delete parts preference.
-   * @deprecated
    */
-  public static final String PREFERENCE_DELETE_PARTS = "Delete_Parts"; //$NON-NLS-1$
+  final String PREFERENCE_DELETE_PARTS = "Delete_Parts"; //$NON-NLS-1$
 
   /**
    * Default value for delete parts preference.
-   * @deprecated
    */
-  public static final Boolean PREFERENCE_DELETE_PARTS_DEFAULT = Boolean.FALSE;
+  final Boolean PREFERENCE_DELETE_PARTS_DEFAULT = Boolean.FALSE;
+
+  /**
+   * Should a delete be confirmed by the user?
+   */
+  public boolean isConfirmationRequired();
+
+  /**
+   * Are we deleting a part's type in multi-part projects?
+   */
+  public boolean isDeletingPartType();
+
+  /**
+   * May the user delete instances of the given class?
+   */
+  public boolean isMetaclassProtected(EClass clazz);
+
 }

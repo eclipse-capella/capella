@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,7 +67,7 @@ public class CapellaDefaultAttachmentHandler extends DefaultAttachmentHandler {
   @Override
   public void removeElements(Collection<EObject> objects, IContext context) {
     DeleteStructureCommand command = new DeleteStructureCommand(TransactionHelper.getEditingDomain((Collection) context
-        .get(ITransitionConstants.TRANSITION_SOURCES)), objects, true);
+        .get(ITransitionConstants.TRANSITION_SOURCES)), objects);
     if (command.canExecute()) {
       command.execute();
     }

@@ -222,8 +222,7 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
     Collection<EObject> traces = Collections.singletonList((EObject) getDefaultOwner(context));
     if (!traces.isEmpty()) {
       DeleteStructureCommand command =
-          new DeleteStructureCommand((TransactionalEditingDomain) context.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN), getDefaultOwner(
-              context).eContents(), true);
+          new DeleteStructureCommand((TransactionalEditingDomain) context.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN), getDefaultOwner(context).eContents());
       if (command.canExecute()) {
         command.execute();
       }

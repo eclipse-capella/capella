@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.platform.sirius.ui.commands;
+package org.polarsys.capella.core.model.handler.command;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,6 +20,7 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.common.command.Command;
@@ -34,14 +35,8 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
-import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.model.handler.command.DeleteStructureCommand;
-import org.polarsys.capella.core.model.handler.command.IDeleteHelper;
-import org.polarsys.capella.core.model.handler.command.PreDeleteHandler;
-import org.polarsys.capella.core.model.handler.command.PreDeleteStructureCommand;
+import org.polarsys.capella.core.model.handler.ModelHandlerPlugin;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
-import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
-import org.polarsys.capella.core.platform.sirius.ui.preferences.IDeletePreferences;
 
 /**
  * @author Joao Barata
@@ -130,7 +125,8 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
    * @param collection
    */
   public BasicCapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection, boolean ensureTransaction) {
-    this(executionManager, selection, ensureTransaction, IDeletePreferences.INSTANCE.isConfirmationRequired(), true);
+    this(executionManager, selection, ensureTransaction, false, true);
+    this.confirmDelete = isConfirmationRequired();
   }
 
   /**
@@ -220,7 +216,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
       try {
         doExecute();
       } catch (Exception re) {
-        CapellaActionsActivator.getDefault().getLog().log(new Status(IStatus.WARNING, CapellaActionsActivator.PLUGIN_ID, re.getMessage(), re));
+        ModelHandlerPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, ModelHandlerPlugin.PLUGIN_ID, re.getMessage(), re));
       }
     }
   }
@@ -231,6 +227,11 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
 
   protected boolean confirmDeletion() {
     return true;
+  }
+
+  protected Command getDeleteRepresentationCommand(TransactionalEditingDomain editingDomain) {
+    return new BasicRepresentationDeleteCommand(editingDomain,
+        RepresentationHelper.getAllRepresentationsTargetedBy(getExpandedSelection()), new NullProgressMonitor());
   }
 
   /**
@@ -249,12 +250,11 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
       }
     }
     try {
-      realCommand = new DeleteStructureCommand(editingDomain, getExpandedSelection(), isDeletingPartTypesForMultiPartProjects()) {
+      realCommand = new DeleteStructureCommand(editingDomain, getExpandedSelection()) {
         @Override
         protected void doPrepare() {
           // Use DeleteRepresentation here since this command handles open representation editors.
-          append(new DeleteRepresentationCommand((TransactionalEditingDomain) getEditingDomain(),
-              RepresentationHelper.getAllRepresentationsTargetedBy(getExpandedSelection())));
+          append(getDeleteRepresentationCommand((TransactionalEditingDomain) getEditingDomain()));
           super.doPrepare();
         }
       };
@@ -280,8 +280,8 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
     return false;
   }
 
-  protected boolean isDeletingPartTypesForMultiPartProjects() {
-    return IDeletePreferences.INSTANCE.isDeletingPartType();
+  protected boolean isConfirmationRequired() {
+    return false;
   }
 
   /**
@@ -395,7 +395,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
 
       // Call predeletion command.
       Command preDeletion =
-          new PreDeleteStructureCommand(editingDomain, getExpandedSelection(), isDeletingPartTypesForMultiPartProjects(), handler);
+          new PreDeleteStructureCommand(editingDomain, getExpandedSelection(), handler);
       if (preDeletion.canExecute()) {
         preDeletion.execute();
       }

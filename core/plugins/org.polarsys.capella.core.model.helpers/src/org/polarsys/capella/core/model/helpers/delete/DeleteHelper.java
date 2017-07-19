@@ -8,8 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
-package org.polarsys.capella.core.platform.sirius.ui.commands;
+package org.polarsys.capella.core.model.helpers.delete;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -81,10 +80,10 @@ import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
-import org.polarsys.capella.core.platform.sirius.ui.preferences.IDeletePreferences;
+import org.polarsys.capella.core.model.preferences.IDeletePreferences;
 
 /**
- * This class should not be defined into UI plugin !! (but it can't be defined into model.handler too)
+ * 
  */
 public class DeleteHelper implements IDeleteHelper {
 

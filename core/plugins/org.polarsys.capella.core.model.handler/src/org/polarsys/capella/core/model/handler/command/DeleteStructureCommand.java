@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,21 +22,15 @@ import org.eclipse.emf.edit.domain.EditingDomain;
  * Extension of the delete command that also deletes attached semantic structure (no longer in use).
  */
 public class DeleteStructureCommand extends DeleteCommand {
-  /**
-   * Should undefined parts be deleted as well ?
-   */
-  protected boolean deleteParts;
 
   /**
    * Constructor.
    * @param editingDomain
    * @param elements
-   * @param deleteParts Remove parts that are no longer typed because of the deletion ? <code>true</code> if so, <code>false</code> otherwise.
    */
-  public DeleteStructureCommand(EditingDomain editingDomain, Collection<?> elements, boolean deleteParts) {
-	    super(editingDomain, elements);
-	    this.deleteParts = deleteParts;
-	  }
+  public DeleteStructureCommand(EditingDomain editingDomain, Collection<?> elements) {
+    super(editingDomain, elements);
+  }
 
   /**
    * @see org.polarsys.capella.core.model.handler.command.DeleteCommand#deletePointingReference(org.eclipse.emf.ecore.EObject,
@@ -105,6 +99,6 @@ public class DeleteStructureCommand extends DeleteCommand {
    * @return
    */
   protected Command doDeleteStructure(EObject sourceObject) {
-    return new DeleteStructureCommand(getEditingDomain(), Collections.singletonList(sourceObject), deleteParts);
+    return new DeleteStructureCommand(getEditingDomain(), Collections.singletonList(sourceObject));
   }
 }

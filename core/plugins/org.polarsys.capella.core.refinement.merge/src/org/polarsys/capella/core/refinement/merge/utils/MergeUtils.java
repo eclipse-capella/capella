@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,7 @@ public class MergeUtils {
     if ( null != eObjects && !eObjects.isEmpty() ) {
       EditingDomain editingDomain = TransactionHelper.getEditingDomain(eObjects);
       if (null != editingDomain) {
-        DeleteStructureCommand cmd = new DeleteStructureCommand(editingDomain, eObjects, false);
+        DeleteStructureCommand cmd = new DeleteStructureCommand(editingDomain, eObjects);
         cmd.execute();
       }
     }

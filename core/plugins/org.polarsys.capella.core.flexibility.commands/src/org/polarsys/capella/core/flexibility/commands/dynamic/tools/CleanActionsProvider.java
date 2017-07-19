@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -653,7 +653,7 @@ public class CleanActionsProvider implements IActionsProvider {
           monitor.beginTask("Delete objects", objects.size()); //$NON-NLS-1$
 
           for (EObject object : objects) {
-            DeleteStructureCommand comand = new DeleteStructureCommand(TransactionHelper.getEditingDomain(object), Collections.singleton(object), false);
+            DeleteStructureCommand comand = new DeleteStructureCommand(TransactionHelper.getEditingDomain(object), Collections.singleton(object));
             if (comand.canExecute()) {
               monitor.setTaskName("Deleting : " + object); //$NON-NLS-1$
               comand.execute();

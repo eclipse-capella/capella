@@ -265,7 +265,7 @@ private static void addElementsForAbstractState(
     addInAdditionSomeReferencedElemensInDelete((Collection<Object>) elementsToDelete);
 
     // Call predeletion command.
-    Command preDeletion = new PreDeleteStructureCommand(editingDomain, elementsToDelete, preferenceDeleteParts, handler);
+    Command preDeletion = new PreDeleteStructureCommand(editingDomain, elementsToDelete, handler);
     if (preDeletion.canExecute()) {
       preDeletion.execute();
     }

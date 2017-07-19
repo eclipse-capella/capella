@@ -14,14 +14,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.ef.ExecutionManager;
-import org.polarsys.capella.core.platform.sirius.ui.preferences.IDeletePreferences;
+import org.polarsys.capella.core.model.handler.command.BasicCapellaDeleteCommand;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.core.model.preferences.IDeletePreferences;
 import org.polarsys.capella.core.ui.toolkit.dialogs.ConfirmDeleteCapellaElementDialog;
 import org.polarsys.capella.core.ui.toolkit.dialogs.ImpactAnalysisDialog;
 
@@ -71,6 +75,20 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
    */
   public CapellaDeleteCommand(ExecutionManager executionManager, Collection<?> selection, boolean ensureTransaction, boolean confirmDelete, boolean longOperationEvents) {
     super(executionManager, selection, ensureTransaction, confirmDelete, longOperationEvents);
+  }
+
+  /**
+   * 
+   */
+  protected Command getDeleteRepresentationCommand(TransactionalEditingDomain editingDomain) {
+    return new DeleteRepresentationCommand(editingDomain, RepresentationHelper.getAllRepresentationsTargetedBy(getExpandedSelection()));
+  }
+
+  /**
+   * 
+   */
+  protected boolean isConfirmationRequired() {
+    return IDeletePreferences.INSTANCE.isConfirmationRequired();
   }
 
   /**

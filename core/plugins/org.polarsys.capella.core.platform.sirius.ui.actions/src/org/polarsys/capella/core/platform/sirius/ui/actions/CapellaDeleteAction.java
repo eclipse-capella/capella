@@ -8,8 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
-
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.lang.reflect.InvocationTargetException;
@@ -42,10 +40,11 @@ import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.model.preferences.IDeletePreferences;
+import org.polarsys.capella.core.model.preferences.ProtectedElementsPreferences;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.Messages;
-import org.polarsys.capella.core.platform.sirius.ui.preferences.IDeletePreferences;
-import org.polarsys.capella.core.platform.sirius.ui.preferences.ProtectedElementsPreferences;
 import org.polarsys.capella.core.ui.toolkit.AbstractCommandActionHandler;
 import org.polarsys.kitalpha.emde.model.Element;
 
@@ -152,7 +151,7 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
     Iterable<Element> selectedModelElements = Iterables.filter(selectedElement, Element.class);
     for (Element selectedModelElement : selectedModelElements) {
       // If the model element or its meta-class are protected -> can not delete.
-      if (CapellaActionsActivator.getDefault().isMetaclassProtected(selectedModelElement.eClass()) || isElementProtected(selectedModelElement)) {
+      if (CapellaModelPreferencesPlugin.getDefault().isMetaclassProtected(selectedModelElement.eClass()) || isElementProtected(selectedModelElement)) {
         return false;
       }
     }
@@ -183,7 +182,7 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
     } else if (elt instanceof Part) {
       AbstractType type = ((Part) elt).getAbstractType();
       if (type != null) {
-        return CapellaActionsActivator.getDefault().isMetaclassProtected(type.eClass()) || isElementProtected(type);
+        return CapellaModelPreferencesPlugin.getDefault().isMetaclassProtected(type.eClass()) || isElementProtected(type);
       }
     } else if (elt instanceof SequenceMessage) {
       SequenceMessage msg = (SequenceMessage) elt;
