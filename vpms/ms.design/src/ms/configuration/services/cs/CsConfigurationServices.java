@@ -85,6 +85,7 @@ public class CsConfigurationServices {
   public static final String DANNOTATION_DETAIL_SHOW_FUNCTIONS = "showFunctions"; //$NON-NLS-1$
   public static final String DANNOTATION_DETAIL_SHOW_PORTS = "showPorts"; //$NON-NLS-1$
   public static final String DANNOTATION_DETAIL_SHOW_FUNCTIONAL_CHAINS = "showFunctionalChains"; //$NON-NLS-1$
+  public static final String DANNOTATION_DETAIL_SHOW_SCENARIOS = "showScenarios"; //$NON-NLS-1$
 
   private static final String CONFIGURATIONS_LAYER_LABEL = Messages.CsConfigurationServices_Configurations_Layer_Name;
   protected List<CSConfiguration> configListFiltered = new ArrayList<CSConfiguration>();
@@ -137,13 +138,13 @@ public class CsConfigurationServices {
         EObject vObj = tObj.eContainer();
         for (EObject jObj : vObj.eContents()) {
           if (jObj instanceof CSConfiguration) {
-            if (!configList.contains((CSConfiguration) jObj)) {
+            if (!configList.contains(jObj)) {
               configList.add((CSConfiguration) jObj);
             }
           } else if (jObj instanceof Component) {
             for (EObject childComponent : ((Component) jObj).eContents()) {
               if (childComponent instanceof CSConfiguration) {
-                if (!configList.contains((CSConfiguration) childComponent)) {
+                if (!configList.contains(childComponent)) {
                   configList.add((CSConfiguration) childComponent);
                 }
               }
@@ -243,13 +244,13 @@ public class CsConfigurationServices {
           EObject vObj = tObj.eContainer();
           for (EObject jObj : vObj.eContents()) {
             if (jObj instanceof CSConfiguration) {
-              if (!configList.contains((CSConfiguration) jObj)) {
+              if (!configList.contains(jObj)) {
                 configList.add((CSConfiguration) jObj);
               }
             } else if (jObj instanceof Component) {
               for (EObject childComponent : ((Component) jObj).eContents()) {
                 if (childComponent instanceof CSConfiguration) {
-                  if (!configList.contains((CSConfiguration) childComponent)) {
+                  if (!configList.contains(childComponent)) {
                     configList.add((CSConfiguration) childComponent);
                   }
                 }
@@ -259,7 +260,7 @@ public class CsConfigurationServices {
           for (EObject jObj : boolObj.eContents()) {
             if (jObj instanceof InStateExpression) {
               if (((InStateExpression) jObj).getState() instanceof AbstractState) {
-                modeCompareList.add((AbstractState) ((InStateExpression) jObj).getState());
+                modeCompareList.add(((InStateExpression) jObj).getState());
               }
             }
           }
@@ -272,7 +273,7 @@ public class CsConfigurationServices {
             if (modeCompareList.contains(mode)) {
               for (ModelElement iObj : premConfig.getElements()) {
                 if (csc.getElements().contains(iObj)) {
-                  result.add((EObject) iObj);
+                  result.add(iObj);
                 }
               }
             }
@@ -288,7 +289,7 @@ public class CsConfigurationServices {
     if (ele instanceof Comparison) {
       CSConfiguration csc = ((Comparison) ele).getConfiguration1().get(0);
       for (ModelElement iObj : csc.getElements()) {
-        result.add((EObject) iObj);
+        result.add(iObj);
       }
     }
     return result;
@@ -714,7 +715,7 @@ public class CsConfigurationServices {
 
   /**
    * Verify if the {@link Configuration}s of a given {@link State} can be modified.
-   * 
+   *
    * @param state
    *          the given {@link State}
    * @return <code>true</code> if the feature 'configurations' of the {@link State} can be modified, else
@@ -730,7 +731,7 @@ public class CsConfigurationServices {
 
   /**
    * Find all allocated {@link AbstractFunction}s to a given {@link Component} .
-   * 
+   *
    * @param component
    *          the {@link Component}.
    * @return the allocated {@link AbstractFunction}.
@@ -776,9 +777,16 @@ public class CsConfigurationServices {
     return result;
   }
 
-  public Collection<FunctionalChain> msCrossTableFunctionalChains(DTable table, Component component) {
+  public Collection<?> msCrossTableFunctionalChains(DTable table, Component component) {
+    return msCrossTableElements(table, component, MsPackage.Literals.CS_CONFIGURATION__FUNCTIONAL_CHAINS);
+  }
 
-    if (!isShowFunctionalChains(table)) {
+  public Collection<?> msCrossTableScenarios(DTable table, Component component) {
+    return msCrossTableElements(table, component, MsPackage.Literals.CS_CONFIGURATION__SCENARIOS);
+  }
+
+  private Collection<?> msCrossTableElements(DTable table, Component component, EStructuralFeature feature){
+    if (!isShowScenarios(table)) {
       return Collections.emptyList();
     }
 
@@ -794,13 +802,9 @@ public class CsConfigurationServices {
     IItemPropertySource propertySource = (IItemPropertySource) domain.getAdapterFactory().adapt(configuration,
         IItemPropertySource.class);
     IItemPropertyDescriptor descriptor = propertySource.getPropertyDescriptor(configuration,
-        MsPackage.Literals.CS_CONFIGURATION__FUNCTIONAL_CHAINS);
+        feature);
 
-    Collection<FunctionalChain> result = new LinkedHashSet<FunctionalChain>();
-    for (Object o : descriptor.getChoiceOfValues(configuration)) {
-      result.add((FunctionalChain) o);
-    }
-    return result;
+    return new LinkedHashSet<Object>(descriptor.getChoiceOfValues(configuration)); // FIXME why would there be duplicates?
   }
 
   public void msCreationService(CSConfiguration configuration) {
@@ -887,6 +891,14 @@ public class CsConfigurationServices {
 
   public static boolean isShowFunctionalChains(DTable table) {
     return isAnnotationDetailSet(table, DANNOTATION_DETAIL_SHOW_FUNCTIONAL_CHAINS, true);
+  }
+
+  public static boolean isShowScenarios(DTable table) {
+    return isAnnotationDetailSet(table, DANNOTATION_DETAIL_SHOW_SCENARIOS, true);
+  }
+
+  public static void setShowScenarios(DTable table, boolean b) {
+    setAnnotationDetail(table, DANNOTATION_DETAIL_SHOW_SCENARIOS, b);
   }
 
   private static boolean isAnnotationDetailSet(DModelElement element, String key, boolean defaultValue) {
