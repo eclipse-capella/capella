@@ -27,10 +27,6 @@
       %license
    </license>
 
-   <includes
-         id="org.polarsys.capella.core.data.merged.feature"
-         version="0.0.0"/>
-
    <plugin
          id="org.polarsys.capella.core.model.helpers"
          download-size="0"
@@ -117,6 +113,34 @@
 
    <plugin
          id="org.polarsys.capella.core.af.integration"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.core.data.helpers"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.core.data.gen"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.core.data.gen.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.core.data.gen.edit.decorators"
          download-size="0"
          install-size="0"
          version="0.0.0"

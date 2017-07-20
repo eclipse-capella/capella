@@ -73,4 +73,27 @@
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="org.polarsys.capella.core.data.res.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.core.data.res.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.core.data.gen.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>

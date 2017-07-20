@@ -107,16 +107,10 @@
         <module>org.polarsys.capella.common.re.gen</module>
         <module>org.polarsys.capella.common.re.gen.edit</module>
         <module>org.polarsys.capella.common.tools.report</module>
-        <module>org.polarsys.capella.common.tools.report.appenders.reportlogview</module>
         <module>org.polarsys.capella.common.transition</module>
-        <module>org.polarsys.capella.common.ui</module>
-        <module>org.polarsys.capella.common.ui.services</module>
-        <module>org.polarsys.capella.common.ui.toolkit</module>
-        <module>org.polarsys.capella.common.ui.toolkit.services</module>
         <module>org.polarsys.capella.common.xmisupport</module>
         <module>org.polarsys.capella.shared.id.handler</module>
       </modules>
     </profile>
   </profiles>
-
 </project>

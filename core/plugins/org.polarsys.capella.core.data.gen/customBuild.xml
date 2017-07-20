@@ -163,8 +163,6 @@
 		<eclipse.addProjectIntoWorkspace projectPaths="${basedir}/../org.polarsys.capella.common.data.behavior.def#${basedir}/../org.polarsys.capella.common.data.core.def" />
 		<!-- Add Plug-in that hosts generated creation tool icons -->
 		<eclipse.addProjectIntoWorkspace projectPaths="${basedir}/../org.polarsys.capella.core.data.res.edit" />
-		<!-- Add Features that contain the generated plug-ins -->
-		<eclipse.addProjectIntoWorkspace projectPaths="${basedir}/../../features/org.polarsys.capella.core.data.merged" />
 
 		<!-- Call SolFa to generate Capella code -->
 		<solfa.FactoryComponentRunnerInWorkbenchWindow factoryComponentId="asset.1231837376033.174" />

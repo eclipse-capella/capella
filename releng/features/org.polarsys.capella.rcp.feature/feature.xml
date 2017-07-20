@@ -50,10 +50,6 @@
          version="0.0.0"/>
 
    <includes
-         id="org.polarsys.capella.core.data.merged.feature"
-         version="0.0.0"/>
-
-   <includes
          id="org.polarsys.capella.core.libraries.feature"
          version="0.0.0"/>
 

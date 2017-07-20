@@ -33,7 +33,6 @@
         <module>org.polarsys.capella.core.common.ui.feature</module>
         <module>org.polarsys.capella.core.compare.feature</module>
         <module>org.polarsys.capella.core.dashboard.feature</module>
-        <module>org.polarsys.capella.core.data.merged.feature</module>
         <module>org.polarsys.capella.core.feature</module>
         <module>org.polarsys.capella.core.libraries.feature</module>
         <module>org.polarsys.capella.core.migration.feature</module>

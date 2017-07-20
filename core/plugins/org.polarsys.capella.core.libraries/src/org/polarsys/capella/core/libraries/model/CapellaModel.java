@@ -37,8 +37,8 @@ import org.polarsys.capella.common.libraries.LibraryReference;
 import org.polarsys.capella.common.libraries.ModelInformation;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.libraries.Activator;
+import org.polarsys.capella.core.model.handler.command.BasicCapellaDeleteCommand;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
-import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 
 public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
 
@@ -203,7 +203,7 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
             }
           }
 
-          new CapellaDeleteCommand(ExecutionManagerRegistry.getInstance().getExecutionManager(_domain),
+          new BasicCapellaDeleteCommand(ExecutionManagerRegistry.getInstance().getExecutionManager(_domain),
               Collections.singleton(toDelete), false, false, false).execute();
           if (toRemove != null) {
             toRemove.unload();
