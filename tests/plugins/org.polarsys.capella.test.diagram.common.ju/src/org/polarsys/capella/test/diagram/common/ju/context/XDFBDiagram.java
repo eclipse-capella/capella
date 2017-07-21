@@ -20,6 +20,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.CreatePathTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InitializationFromExistingDiagramTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
@@ -141,5 +142,9 @@ public class XDFBDiagram extends DiagramContext {
 	    } else if (type == Type.PA) {
 	    	new InsertRemoveTool(this, IToolNameConstants.TOOL_PDFB_SHOW_HIDE_FUNCTIONS, containerId).remove(id);
 	    }
+  }
+
+  public void createFunctionalChain(String path, String ...links) {
+    new CreatePathTool(this, IToolNameConstants.TOOL_CREATE_FUNCTIONAL_CHAIN, path, links).run();
   }
 }

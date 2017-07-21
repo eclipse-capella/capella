@@ -13,6 +13,7 @@ package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.diagram.tools.ju.xdfb.CreateFunctionalChain;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBShowHideFunctions;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -31,11 +32,12 @@ public class XDFBDiagramToolsTestSuite extends BasicTestSuite {
   /**
    * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
    */
-	@Override
-	protected List<BasicTestArtefact> getTests() {
+  @Override
+  protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-	tests.add(new XDFBShowHideFunctions());
+    tests.add(new XDFBShowHideFunctions());
+    tests.add(new CreateFunctionalChain());
     return tests;
-	}
+  }
 
 }
