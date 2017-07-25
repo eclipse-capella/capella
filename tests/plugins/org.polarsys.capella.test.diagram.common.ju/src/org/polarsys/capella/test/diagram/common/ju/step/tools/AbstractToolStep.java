@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.step.tools;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.osgi.util.NLS;
@@ -142,8 +143,8 @@ public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
     initToolArguments();
 
     // Let's check if all is arguments are well set.
-    boolean isArgumentOk = _toolWrapper.isArgumentsAreSet();
-    Assert.assertTrue(Messages.toolWrapperArgumentErr, isArgumentOk);
+    IStatus isArgumentOk = _toolWrapper.checkArguments();
+    Assert.assertTrue(NLS.bind(Messages.toolWrapperArgumentErr, isArgumentOk.toString()), isArgumentOk.isOK());
 
     // Let's check the context
     boolean isContextOk = _toolWrapper.isContextOk();

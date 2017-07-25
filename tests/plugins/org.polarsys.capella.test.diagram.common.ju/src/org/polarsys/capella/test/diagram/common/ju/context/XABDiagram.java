@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,24 +12,38 @@ package org.polarsys.capella.test.diagram.common.ju.context;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.cs.PhysicalLink;
+import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.actions.extensions.AbstractExternalJavaAction;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
+import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProvider;
+import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.CreatePathTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class XABDiagram extends CommonDiagram {
@@ -42,7 +56,8 @@ public class XABDiagram extends CommonDiagram {
   }
 
   public static XABDiagram createDiagram(SessionContext executionContext, String targetIdentifier) {
-    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(executionContext.getSemanticElement(targetIdentifier));
+    BlockArchitecture architecture = BlockArchitectureExt
+        .getRootBlockArchitecture(executionContext.getSemanticElement(targetIdentifier));
     final BlockArchitectureExt.Type type = BlockArchitectureExt.getBlockArchitectureType(architecture);
 
     String name = null;
@@ -59,7 +74,6 @@ public class XABDiagram extends CommonDiagram {
     if (type == Type.PA) {
       return PABDiagram.createDiagram(executionContext, targetIdentifier);
     }
-
     return (XABDiagram) new CreateDiagramStep(executionContext, targetIdentifier, name) {
       @Override
       public DiagramContext getResult() {
@@ -90,6 +104,21 @@ public class XABDiagram extends CommonDiagram {
       name = IToolNameConstants.TOOL_PAB_CREATE_PHYSICAL_ACTOR;
     }
     new CreateContainerTool(this, name, getDiagramId(), id).run();
+  }
+  
+
+  public void createFunction(String id, String containerId) {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAB_CREATE_OPERATIONAL_ACTIVITY;
+    } else if (type == Type.SA) {
+      name = IToolNameConstants.TOOL_SAB_CREATE_SYSTEM_FUNCTION;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_CREATE_LOGICAL_FUNCTION;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PAB_CREATE_PHYSICAL_FUNCTION;
+    }
+    new CreateNodeTool(this, name, containerId, id).run();
   }
 
   public void removeActor(String id) {
@@ -170,7 +199,7 @@ public class XABDiagram extends CommonDiagram {
     }
     new CreateDEdgeTool(this, name, idSource, idTarget, id).run();
   }
-  
+
   public void createPhysicalLink(String idSource, String idTarget, String id) {
     String name = null;
     if (type == Type.SA) {
@@ -298,4 +327,13 @@ public class XABDiagram extends CommonDiagram {
     }
     new InsertRemoveTool(this, name, containerId, autoRefresh).insert(id);
   }
+
+  public void createPhysicalPath(final String path, final String... links) {
+    new CreatePathTool(this, IToolNameConstants.TOOL_CREATE_PHYSICAL_PATH, path, links).run();
+  }
+  
+  public void createFunctionalChain(String path, String ...links) {
+    new CreatePathTool(this, IToolNameConstants.TOOL_CREATE_FUNCTIONAL_CHAIN, path, links).run();
+  }
+
 }

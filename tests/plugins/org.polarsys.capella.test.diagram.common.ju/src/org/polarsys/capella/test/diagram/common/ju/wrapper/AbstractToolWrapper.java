@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,18 +16,22 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.polarsys.capella.test.diagram.common.ju.TestDiagramCommonPlugin;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.InvalidArgumentException;
 
 /**
- * Abstract class for wrapper on {@link AbstractToolDescription} kind of objects. Such wrapper aims to simplify the creation of command from Tools, command
- * context setting as well as pre-control operations.
+ * Abstract class for wrapper on {@link AbstractToolDescription} kind of objects. Such wrapper aims to simplify the
+ * creation of command from Tools, command context setting as well as pre-control operations.
  */
 public abstract class AbstractToolWrapper {
 
@@ -65,6 +69,7 @@ public abstract class AbstractToolWrapper {
 
   /**
    * constructor
+   * 
    * @param tool
    */
   public AbstractToolWrapper(AbstractToolDescription tool) {
@@ -76,18 +81,21 @@ public abstract class AbstractToolWrapper {
 
   /**
    * return the list of need argument.
+   * 
    * @return
    */
   public abstract List<ArgumentData> getArgumentTypes();
 
   /**
    * check is the context defined by the arguments allows to create the corresponding command for this tool
+   * 
    * @return
    */
   public abstract boolean isContextOk();
 
   /**
    * Create the command corresponding to the wrapped tool.
+   * 
    * @return
    * @throws InvalidArgumentException
    */
@@ -95,41 +103,53 @@ public abstract class AbstractToolWrapper {
 
   /**
    * check is all needed arguments to the command have been set with a compliant object type.
+   * 
    * @return
    * @see {@link ArgumentType}
    */
   final public boolean isArgumentsAreSet() {
+    return checkArguments().isOK();
+  }
 
+  final public IStatus checkArguments() {
     boolean ret = true;
-
+    MultiStatus result = new MultiStatus(TestDiagramCommonPlugin.PLUGIN_ID, Status.OK, "isArgumentsAreSet", null);
     Iterator<ArgumentData> it = getArgumentTypes().iterator();
 
     while (it.hasNext() && ret) {
-
       ArgumentData currentArgumentData = it.next();
       ArgumentType currentType = currentArgumentData.getType();
-      if ((currentType.equals(ArgumentType.PREDECESSOR) && (null == _arguments.get(currentType)))
-          || (currentType.equals(ArgumentType.STARTINGENDPREDECESSOR) && (null == _arguments.get(currentType)))
-          || (currentType.equals(ArgumentType.FINISHINGENDPREDECESSOR) && (null == _arguments.get(currentType)))
-
-      ) {
-        return true;
+      
+      if ((currentType.equals(ArgumentType.PREDECESSOR) && (_arguments.get(currentType) == null))
+          || (currentType.equals(ArgumentType.STARTINGENDPREDECESSOR) && (_arguments.get(currentType) == null))
+          || (currentType.equals(ArgumentType.FINISHINGENDPREDECESSOR) && (_arguments.get(currentType) == null))) {
+        result.add(new Status(Status.OK, TestDiagramCommonPlugin.PLUGIN_ID, currentType + " is ok"));
+        return result;
       }
-      if (!_arguments.containsKey(currentType) || (null == _arguments.get(currentType))) {
-        // the argument is not set or null
-        ret = false;
+      
+      if (!_arguments.containsKey(currentType) || (_arguments.get(currentType) == null)) {
+        result.add(new Status(Status.ERROR, TestDiagramCommonPlugin.PLUGIN_ID, currentType + " is not set or null"));
+        
       } else {
         ret = checkValue(currentType);
+        if (ret) {
+          result.add(new Status(Status.OK, TestDiagramCommonPlugin.PLUGIN_ID, currentType + " is ok"));
+
+        } else {
+          result.add(new Status(Status.ERROR, TestDiagramCommonPlugin.PLUGIN_ID, currentType + " is not value"));
+        }
       }
     }
-
-    return ret;
+    return result;
   }
 
   /**
    * Write accessor on argument values.
-   * @param argumentType the target argument
-   * @param value its value
+   * 
+   * @param argumentType
+   *          the target argument
+   * @param value
+   *          its value
    */
   final public void setArgumentValue(ArgumentType argumentType, Object value) {
     if (isArgumentTypeRequired(argumentType)) {
@@ -140,14 +160,17 @@ public abstract class AbstractToolWrapper {
 
   /**
    * Accessor on the argument values.
-   * @param argumentType the target argument type
+   * 
+   * @param argumentType
+   *          the target argument type
    * @return the corresponding value, if sets
    * @throws InvalidArgumentException
    */
   final public Object getArgumentValue(ArgumentType argumentType) throws InvalidArgumentException {
 
     if (!isArgumentTypeRequired(argumentType)) {
-      throw new InvalidArgumentException(NLS.bind(Messages.argumentNotInTheScopeOfWrapper, new Object[] { argumentType.getLiteral(), _tool.getName() }));
+      throw new InvalidArgumentException(NLS.bind(Messages.argumentNotInTheScopeOfWrapper,
+          new Object[] { argumentType.getLiteral(), _tool.getName() }));
     }
 
     return _arguments.get(argumentType);
@@ -155,7 +178,9 @@ public abstract class AbstractToolWrapper {
 
   /**
    * Check is the argument ArgumentType is well initialized
-   * @param argumentType the target ArgumentType
+   * 
+   * @param argumentType
+   *          the target ArgumentType
    * @return
    * @throws InvalidArgumentException
    */
@@ -164,7 +189,8 @@ public abstract class AbstractToolWrapper {
     boolean ret = true;
 
     if (!isArgumentTypeRequired(argumentType)) {
-      throw new InvalidArgumentException(NLS.bind(Messages.argumentNotInTheScopeOfWrapper, new Object[] { argumentType.getLiteral(), _tool.getName() }));
+      throw new InvalidArgumentException(NLS.bind(Messages.argumentNotInTheScopeOfWrapper,
+          new Object[] { argumentType.getLiteral(), _tool.getName() }));
     }
 
     if (argumentType == ArgumentType.COLLECTION) {
@@ -265,7 +291,9 @@ public abstract class AbstractToolWrapper {
 
   /**
    * Check if the {@link ArgumentType} argumentType is required
-   * @param argumentType the {@link ArgumentType} to check
+   * 
+   * @param argumentType
+   *          the {@link ArgumentType} to check
    * @return true whether required
    */
   protected boolean isArgumentTypeRequired(ArgumentType argumentType) {
@@ -284,7 +312,9 @@ public abstract class AbstractToolWrapper {
 
   /**
    * return the {@link ArgumentData} corresponding to the {@link ArgumentType} argumentType
-   * @param argumentType the target ArgumentType_Enum
+   * 
+   * @param argumentType
+   *          the target ArgumentType_Enum
    * @return null whether not found
    */
   protected ArgumentData getArgumentData(ArgumentType argumentType) {

@@ -20,6 +20,7 @@ public class GenericModel {
   public static String OBJECT_2 = "OBJECT 2";
   public static String OBJECT_3 = "OBJECT 3";
   public static String OBJECT_4 = "OBJECT 4";
+  public static String PATH_1 = "PATH_1";
 
   public static String FUNCTION_PKG = "FUNCTION_PKG";
   public static String CAPABILITY_PKG = "CAPABILITY_PKG";
