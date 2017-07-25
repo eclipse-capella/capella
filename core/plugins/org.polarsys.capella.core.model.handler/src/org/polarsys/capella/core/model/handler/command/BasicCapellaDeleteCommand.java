@@ -478,37 +478,4 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
     }
   }
 
-  static class DryRun extends BasicCapellaDeleteCommand {
-    public DryRun(ExecutionManager executionManager, Collection<?> selection) {
-      super(executionManager, selection);
-    }
-
-    boolean proceed = false;
-
-    public boolean proceed() {
-      return proceed;
-    }
-
-    @Override
-    public void doExecute() {
-      // if we reached here, all obstacles are passed
-      // a real capella delete command would now proceed
-      proceed = true;
-    }
-  }
-
-  /**
-   * Simulate deletion of the given selection up to the point where we show a confirmation dialog to the user. Also performs the check on fragment roots. Needed
-   * when deleting elements from a diagram editor for some obscure reason.
-   * @see CapellaDeleteActionHook
-   * @param manager
-   * @param selection
-   * @return true if the deletion would proceed. false otherwise.
-   */
-  public static boolean confirmDeletion(ExecutionManager manager, Collection<?> selection) {
-    DryRun dr = new DryRun(manager, selection);
-    dr.execute();
-    return dr.proceed();
-  }
-
 }

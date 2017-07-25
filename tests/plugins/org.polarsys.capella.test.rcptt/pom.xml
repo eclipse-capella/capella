@@ -51,7 +51,6 @@
 						<version>${rcptt-runner-version}</version>
 						<vmArgs>
 							<vmArg>-Xmx2g</vmArg>
-							<vmArg>-XX:MaxPermSize=512m</vmArg>
 						</vmArgs>
 					</runner>
 					<aut>
