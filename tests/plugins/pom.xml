@@ -22,6 +22,10 @@
   <artifactId>org.polarsys.capella.tests.plugins</artifactId>
   <packaging>pom</packaging>
   
+  <properties>
+    <sonar.skip>true</sonar.skip>
+  </properties>
+
   <profiles>
     <profile>
       <id>full</id>

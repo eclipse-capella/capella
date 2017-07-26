@@ -21,7 +21,11 @@
   <groupId>org.polarsys</groupId>
   <artifactId>org.polarsys.capella.doc.plugins</artifactId>
   <packaging>pom</packaging>
-  
+
+  <properties>
+    <sonar.skip>true</sonar.skip>
+  </properties>
+
   <profiles>
     <profile>
       <id>full</id>
