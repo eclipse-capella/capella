@@ -68,12 +68,20 @@ public class CrossReferencerHelper {
   /**
    * Allows to enable or disable crossReferencer resolution
    * @param editingDomain
-   * @param enabled
+   * @param enablement
    * 
    */
-  public static void enableProxyResolution(TransactionalEditingDomain editingDomain, boolean enabled) {
-    if(editingDomain instanceof SemanticEditingDomain){
-      ((SemanticEditingDomain)editingDomain).getCrossReferencer().enableProxyResolution(enabled);
+  public static void enableResolveProxy(TransactionalEditingDomain editingDomain) {
+    if (editingDomain instanceof SemanticEditingDomain) {
+      SemanticEditingDomain domain = (SemanticEditingDomain)editingDomain;
+      domain.getCrossReferencer().enableResolveProxy();
+    }
+  }
+  
+  public static void disableResolveProxy(TransactionalEditingDomain editingDomain) {
+    if (editingDomain instanceof SemanticEditingDomain) {
+      SemanticEditingDomain domain = (SemanticEditingDomain)editingDomain;
+      domain.getCrossReferencer().disableResolveProxy();
     }
   }
   
@@ -81,16 +89,16 @@ public class CrossReferencerHelper {
    * Returns whether crossReferencer is allowed to perform resolution
    *
    */
-  public static boolean isProxyResolutionEnabled(EditingDomain editingDomain) {
-    if(editingDomain instanceof SemanticEditingDomain){
-      return ((SemanticEditingDomain)editingDomain).getCrossReferencer().isProxyResolutionEnabled();
+  public static boolean isResolveProxyEnabled(EditingDomain editingDomain) {
+    if (editingDomain instanceof SemanticEditingDomain) {
+      return ((SemanticEditingDomain)editingDomain).getCrossReferencer().isResolveProxyEnabled();
     }
     return true;
   }
   
   /**
    * <p>
-   * Use {@link#enableProxyResolution(TransactionalEditingDomain, boolean)} or {@link SemanticCrossReferencer#enableProxyResolution(boolean)}
+   * Use {@link#enableResolveProxy(TransactionalEditingDomain)} or {@link SemanticCrossReferencer#enableResolveProxy()}
    * </p>
    * Allows to enable or disable crossReferencer resolution
    * @param enabled
@@ -103,7 +111,7 @@ public class CrossReferencerHelper {
 
   /**
    * <p>
-   * Use {@link #isProxyResolutionEnabled(TransactionalEditingDomain)} or {@link SemanticCrossReferencer#isProxyResolutionEnabled()}
+   * Use {@link #isResolveProxyEnabled(TransactionalEditingDomain)} or {@link SemanticCrossReferencer#isResolveProxyEnabled()}
    * </p>
    * Returns whether crossReferencer is allowed to perform resolution
    * @return

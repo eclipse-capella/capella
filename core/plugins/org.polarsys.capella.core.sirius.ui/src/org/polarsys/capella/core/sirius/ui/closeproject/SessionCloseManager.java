@@ -26,7 +26,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.business.internal.session.danalysis.ResourceSaveDiagnose;
-import org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -200,7 +200,7 @@ public class SessionCloseManager {
     TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(session);
 
     if (session instanceof DAnalysisSessionImpl) {
-      ECrossReferenceAdapterWithUnproxyCapability cross = (((DAnalysisSessionImpl) session).getSemanticCrossReferencer());
+      SiriusCrossReferenceAdapter cross = (((DAnalysisSessionImpl) session).getSemanticCrossReferencer());
       cross.disableResolveProxy();
     }
 
@@ -215,7 +215,7 @@ public class SessionCloseManager {
       }
     } finally {
       if (session instanceof DAnalysisSessionImpl) {
-        ECrossReferenceAdapterWithUnproxyCapability cross = (((DAnalysisSessionImpl) session).getSemanticCrossReferencer());
+        SiriusCrossReferenceAdapter cross = (((DAnalysisSessionImpl) session).getSemanticCrossReferencer());
         cross.enableResolveProxy();
       }
     }
