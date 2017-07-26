@@ -42,14 +42,14 @@ public class SiriusSessionListener extends SessionManagerListener.Stub {
       break;
     case SessionListener.OPENING:
       if(transactionalEditingDomain instanceof SemanticEditingDomain){
-        ((SemanticEditingDomain)transactionalEditingDomain).getCrossReferencer().enableProxyResolution(true);
+        ((SemanticEditingDomain)transactionalEditingDomain).getCrossReferencer().enableResolveProxy();
       }
       _status.put(transactionalEditingDomain, Integer.valueOf(changeKind));
       break;
     
     case SessionListener.OPENED:
       if(transactionalEditingDomain instanceof SemanticEditingDomain){
-        ((SemanticEditingDomain)transactionalEditingDomain).getCrossReferencer().enableProxyResolution(false);
+        ((SemanticEditingDomain)transactionalEditingDomain).getCrossReferencer().disableResolveProxy();
       }
       _status.put(transactionalEditingDomain, Integer.valueOf(changeKind));
       break;

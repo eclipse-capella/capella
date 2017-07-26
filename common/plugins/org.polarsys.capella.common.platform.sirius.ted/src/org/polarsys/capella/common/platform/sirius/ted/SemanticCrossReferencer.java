@@ -20,10 +20,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 
-public class SemanticCrossReferencer extends ECrossReferenceAdapter {
+public class SemanticCrossReferencer extends ECrossReferenceAdapter implements SiriusCrossReferenceAdapter {
   
-  boolean proxyResolutionEnabled = true;
+  private boolean resolveProxyEnabled = true;
 
   public Collection<EStructuralFeature.Setting> getInverseReferences(EObject eObject, EStructuralFeature feature, boolean resolve) {
     Collection<EStructuralFeature.Setting> result = new ArrayList<EStructuralFeature.Setting>();
@@ -69,11 +70,24 @@ public class SemanticCrossReferencer extends ECrossReferenceAdapter {
     return result;
   }
   
-  public void enableProxyResolution(boolean enabled){
-    proxyResolutionEnabled = enabled;
+  /**
+   * Disable the resolution of the proxy.
+   */
+  @Override
+  public void disableResolveProxy() {
+    resolveProxyEnabled = false;
+  }
+
+  /**
+   * Enable the resolution of the proxy.
+   */
+  @Override
+  public void enableResolveProxy() {
+    resolveProxyEnabled = true;
   }
   
-  public boolean isProxyResolutionEnabled(){
-    return proxyResolutionEnabled;
+  public boolean isResolveProxyEnabled(){
+    return resolveProxyEnabled;
   }
+
 }

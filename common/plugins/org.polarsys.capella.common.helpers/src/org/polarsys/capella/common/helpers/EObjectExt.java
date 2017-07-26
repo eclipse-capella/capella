@@ -100,7 +100,7 @@ public class EObjectExt extends EcoreUtil2 {
 
     SemanticCrossReferencer crossReferencer = editingDomain.getCrossReferencer();
     if (eRef == null) {
-      Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(eObjectRef, editingDomain.getCrossReferencer().isProxyResolutionEnabled());
+      Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(eObjectRef, editingDomain.getCrossReferencer().isResolveProxyEnabled());
       for (Setting setting : inverseReferences) {
         if (!result.contains(setting.getEObject())) {
           result.add((T) setting.getEObject());
@@ -108,7 +108,7 @@ public class EObjectExt extends EcoreUtil2 {
       }
 
     } else {
-      Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(eObjectRef, eRef, editingDomain.getCrossReferencer().isProxyResolutionEnabled());
+      Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(eObjectRef, eRef, editingDomain.getCrossReferencer().isResolveProxyEnabled());
       for (Setting setting : inverseReferences) {
         if (!result.contains(setting.getEObject())) {
           result.add((T) setting.getEObject());

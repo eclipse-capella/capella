@@ -33,28 +33,7 @@ import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 /**
  * An {@link ECrossReferenceAdapter} that only takes capella resources into account.
  */
-public class CapellaECrossReferenceAdapter extends SemanticCrossReferencer implements SiriusCrossReferenceAdapter {
-
-  /**
-   * Tell if the resolution of the proxy is enabled or not.
-   */
-  private boolean resolveProxyEnabled = true;
-
-  /**
-   * Disable the resolution of the proxy.
-   */
-  @Override
-  public void disableResolveProxy() {
-    resolveProxyEnabled = false;
-  }
-
-  /**
-   * Enable the resolution of the proxy.
-   */
-  @Override
-  public void enableResolveProxy() {
-    resolveProxyEnabled = true;
-  }
+public class CapellaECrossReferenceAdapter extends SemanticCrossReferencer  {
 
   class CapellaInverseCrossReferencer extends InverseCrossReferencer {
     /**
@@ -269,11 +248,7 @@ public class CapellaECrossReferenceAdapter extends SemanticCrossReferencer imple
       return false;
     }
 
-    if (!CrossReferencerHelper.isProxyResolutionEnabled(editingDomain)) {
-      return false;
-    }
-
-    if (!resolveProxyEnabled) {
+    if (!isResolveProxyEnabled()) {
       return false;
     }
 

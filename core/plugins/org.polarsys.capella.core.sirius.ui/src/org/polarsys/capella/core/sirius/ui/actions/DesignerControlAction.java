@@ -479,13 +479,13 @@ public class DesignerControlAction extends ControlAction {
     final boolean controlling = (command == null);
     final Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
     TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(_eObject);
-    CrossReferencerHelper.enableProxyResolution(editingDomain, true);
+    CrossReferencerHelper.enableResolveProxy(editingDomain);
     if (controlling) {
       fragment(shell);
     } else {
       unFragment(shell);
     }
-    CrossReferencerHelper.enableProxyResolution(editingDomain, false);
+    CrossReferencerHelper.disableResolveProxy(editingDomain);
   }
   
   /**

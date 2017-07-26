@@ -118,7 +118,7 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
   @Override
   public void addReference(final IModel referencedLibrary_p) {
     // Enable proxy resolution before adding the referenced library
-    CrossReferencerHelper.enableProxyResolution(_domain, true);
+    CrossReferencerHelper.enableResolveProxy(_domain);
 
     ExecutionManagerRegistry.getInstance().getExecutionManager(_domain).execute(new AbstractReadWriteCommand() {
       @Override
@@ -162,13 +162,13 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
     });
 
     // Disable proxy resolution after adding the referenced library
-    CrossReferencerHelper.enableProxyResolution(_domain, false);
+    CrossReferencerHelper.disableResolveProxy(_domain);
   }
 
   @Override
   public void removeReference(final IModel referencedLibrary_p) {
     // Enable proxy resolution before removing the referenced library
-    CrossReferencerHelper.enableProxyResolution(_domain, true);
+    CrossReferencerHelper.enableResolveProxy(_domain);
 
     ExecutionManagerRegistry.getInstance().getExecutionManager(_domain).execute(new AbstractReadWriteCommand() {
       @Override
@@ -219,7 +219,7 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
     });
 
     // Disable proxy resolution after removing the referenced library
-    CrossReferencerHelper.enableProxyResolution(_domain, false);
+    CrossReferencerHelper.disableResolveProxy(_domain);
   }
 
   /**
