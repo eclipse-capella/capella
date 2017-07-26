@@ -125,59 +125,70 @@ public class CapellaECrossReferenceAdapter extends SemanticCrossReferencer imple
   /**
    * @see org.eclipse.emf.ecore.util.ECrossReferenceAdapter#handleContainment(org.eclipse.emf.common.notify.Notification)
    */
-  @SuppressWarnings("fallthrough")
   @Override
   protected void handleContainment(Notification notification) {
     super.handleContainment(notification);
     int eventType = notification.getEventType();
-    switch (eventType) {
-      case Notification.ADD:
-      case Notification.SET:
-        Object newValue = notification.getNewValue();
-        if (null != newValue) {
-          if (newValue instanceof EObject) {
-            // When setting/adding an object, we must make sure its references are also adapted against the cross referencer.
-            // It's mandatory when moving an object from a resource to a new one.
-            // When creating an object, this one is held by the "holding resource" until its attachment to a new parent.
-            // If references are set before attaching (i.e adding through containment relation) the object to its parent, after adding to its new parent, all
-            // references data are lost in the inverse cross referencer due to the remove operation from previous resource (i.e the "holding resource").
-            // That's why we adapt its references again.
-            adaptAllEReferences((EObject) newValue);
-          }
-          break;
-        }
-        // 'unset' case equivalent to remove case...
-      case Notification.REMOVE:
-          EObject oldValue = null;
-          try {
-              oldValue = EObject.class.cast(notification.getOldValue());
-          } catch (Exception exception_p) {
-              // Do not deal with this value.
-          }
-          // The add/remove notification order is not guaranteed in all
-          // execution context. It means that we can have an Add
-          // notification followed by a Remove one whereas it should be the
-          // inverse.
-          // So we have to check before doing the unset that it has not
-          // been added into another reference by checking that it's
-          // container is null.
-          if (null != oldValue && oldValue.eContainer() == null) {
-              // Free references pointing this element. Call unsetTarget
-              // to make sure inverse cross referencer cleans its data
-              // accordingly.
-              unsetTarget(oldValue);
-          }
-          break;
-      case Notification.ADD_MANY:
+    
+    //Handle notification.newValue 
+    if (eventType == Notification.ADD || eventType == Notification.ADD_MANY || eventType == Notification.SET) {
+      Object newValue = notification.getNewValue();
+      
+      // When setting/adding an object, we must make sure its references are also adapted against the cross
+      // referencer.
+      // It's mandatory when moving an object from a resource to a new one.
+      // When creating an object, this one is held by the "holding resource" until its attachment to a new parent.
+      // If references are set before attaching (i.e adding through containment relation) the object to its parent,
+      // after adding to its new parent, all
+      // references data are lost in the inverse cross referencer due to the remove operation from previous resource
+      // (i.e the "holding resource").
+      // That's why we adapt its references again.
+      
+      if (newValue instanceof EObject) {
+        adaptAllEReferences((EObject) newValue);
+        
+      } else if (newValue instanceof Collection<?>) {
         for (Object value : (Collection<?>) notification.getNewValue()) {
           if (value instanceof EObject) {
-            // See explanations in ADD, SET case.
             adaptAllEReferences((EObject) value);
           }
         }
-      break;
-      default:
-      break;
+      }
+    }
+    
+    //Handle notification.oldValue 
+    if (eventType == Notification.ADD || eventType == Notification.ADD_MANY || eventType == Notification.SET || 
+        eventType == Notification.REMOVE || eventType == Notification.REMOVE_MANY || eventType == Notification.UNSET) {
+      
+      // The add/remove notification order is not guaranteed in all
+      // execution context. It means that we can have an Add
+      // notification followed by a Remove one whereas it should be the
+      // inverse.
+      // So we have to check before doing the unset that it has not
+      // been added into another reference by checking that it's
+      // container is null.
+
+      // Free references pointing this element. Call unsetTarget
+      // to make sure inverse cross referencer cleans its data
+      // accordingly.
+      
+      Object oldValue = notification.getOldValue();
+      if (oldValue instanceof EObject) {
+        EObject object = (EObject) oldValue;
+        if (object.eContainer() == null) {
+          unsetTarget(object);
+        }
+        
+      } else if (oldValue instanceof Collection<?>) {
+        for (Object value : (Collection<?>) notification.getOldValue()) {
+          if (value instanceof EObject) {
+            EObject object = (EObject) value;
+            if (object.eContainer() == null) {
+              unsetTarget(object);
+            }
+          }
+        }
+      }
     }
   }
 
