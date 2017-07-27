@@ -22,6 +22,11 @@
   <artifactId>org.polarsys.capella.doc.plugins</artifactId>
   <packaging>pom</packaging>
 
+  <properties>
+    <!-- Skip doc modules in Sonar analysis -->
+    <sonar.skip>true</sonar.skip>
+  </properties>
+
   <profiles>
     <profile>
       <id>full</id>
