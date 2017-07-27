@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _s0WTkLfUEea5ZpGbd-RfXw
-Runtime-Version: 2.1.0.201606221726
-Save-Time: 4/6/17 11:42 AM
+Runtime-Version: 2.2.0.201706152316
+Save-Time: 7/26/17 6:25 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -364,7 +364,7 @@ get-window "EMF Diff/Merge" | get-button Finish | click
 with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
     with [get-tree] {
         key-type "M1+a"
-        select "fragmentedModel.aird (3)" "[LDFB] Root Logical Function (61)" "[FS] Scenario 2 (96)" "New Logical Functions - System Functions (9)" "SA.airdfragment (3)" "[SDFB] Root System Function (61)" "[FS] Scenario (96)" "New System Functions - Operational Activities (6)"
+        select "fragmentedModel (3)" "[LDFB] Root Logical Function (61)" "[FS] Scenario 2 (96)" "New Logical Functions - System Functions (9)" "SA (3)" "[SDFB] Root System Function (61)" "[FS] Scenario (96)" "New System Functions - Operational Activities (6)"
     }
     get-button "Copy to the left" | click
 }
