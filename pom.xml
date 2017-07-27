@@ -48,8 +48,6 @@
 		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
 		<sonar.jacoco.reportPath>${project.basedir}/../../../target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.jacoco.itReportPath>${project.basedir}/../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
-		<sonar.exclusions>**/doc/**,**/releng/**,**/tests/**,**/*.gen/**,**/*.gen.edit/**</sonar.exclusions>
-		<sonar.coverage.exclusions>**/doc/**,**/releng/**,**/tests/**,**/*.gen/**,**/*.gen.edit/**</sonar.coverage.exclusions>
 		<sonar.java.source>8</sonar.java.source>
 
 		<!-- Default target-platform-path (other values: canary, headless) -->

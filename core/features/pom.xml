@@ -22,10 +22,6 @@
   <artifactId>org.polarsys.capella.core.features</artifactId>
   <packaging>pom</packaging>
 
-  <properties>
-    <sonar.skip>true</sonar.skip>
-  </properties>
-
   <profiles>
     <profile>
       <id>full</id>

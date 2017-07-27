@@ -17,9 +17,6 @@
     <artifactId>org.polarsys.capella.core.plugins</artifactId>
     <version>1.2.0-SNAPSHOT</version>
   </parent>
-  <properties>
-    <sonar.skip>true</sonar.skip>
-  </properties>
   <groupId>org.polarsys</groupId>
   <artifactId>org.polarsys.capella.core.data.res.editor</artifactId>
   <version>0.8.0-SNAPSHOT</version>
