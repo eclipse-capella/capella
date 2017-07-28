@@ -21,7 +21,10 @@
   <groupId>org.polarsys</groupId>
   <artifactId>org.polarsys.capella.tests.plugins</artifactId>
   <packaging>pom</packaging>
-
+  <properties>
+    <!-- Skip test plugin modules in Sonar analysis -->
+    <sonar.skip>true</sonar.skip>
+  </properties>
   <profiles>
     <profile>
       <id>full</id>
