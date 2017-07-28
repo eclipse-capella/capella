@@ -11,12 +11,12 @@
 package org.polarsys.capella.core.data.pa.provider;
 
 import org.eclipse.emf.edit.provider.IItemProviderDecorator;
-import org.polarsys.capella.core.data.gen.edit.decorators.DisposableDecoratorAdapterFactory;
+import org.polarsys.capella.core.data.gen.edit.decorators.CustomDecoratorAdapterFactory;
 import org.polarsys.capella.core.data.gen.edit.decorators.ForwardingItemProviderAdapterDecorator;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 
-public class PaItemProviderDecoratorAdapterFactory extends DisposableDecoratorAdapterFactory {
+public class PaItemProviderDecoratorAdapterFactory extends CustomDecoratorAdapterFactory {
 
 	public PaItemProviderDecoratorAdapterFactory() {
 		super(new PaItemProviderAdapterFactory());

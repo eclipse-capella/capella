@@ -13,10 +13,10 @@ package org.polarsys.capella.core.data.cs.provider;
 import org.eclipse.emf.edit.provider.IItemProviderDecorator;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.gen.edit.decorators.DisposableDecoratorAdapterFactory;
+import org.polarsys.capella.core.data.gen.edit.decorators.CustomDecoratorAdapterFactory;
 import org.polarsys.capella.core.data.gen.edit.decorators.ForwardingItemProviderAdapterDecorator;
 
-public class CsItemProviderDecoratorAdapterFactory extends DisposableDecoratorAdapterFactory {
+public class CsItemProviderDecoratorAdapterFactory extends CustomDecoratorAdapterFactory {
 
 	public CsItemProviderDecoratorAdapterFactory() {
 		super(new CsItemProviderAdapterFactory());
