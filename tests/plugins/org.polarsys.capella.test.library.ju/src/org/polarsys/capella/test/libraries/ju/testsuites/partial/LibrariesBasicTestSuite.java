@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.polarsys.capella.test.libraries.ju.testcases.basic.CapellaModel_unici
 import org.polarsys.capella.test.libraries.ju.testcases.basic.LibraryManager_addReference;
 import org.polarsys.capella.test.libraries.ju.testcases.basic.LibraryManager_addReference_cacheFocus;
 import org.polarsys.capella.test.libraries.ju.testcases.basic.LibraryManager_addReference_cycleCase;
+import org.polarsys.capella.test.libraries.ju.testcases.basic.LibraryManager_addReference_metadata;
 import org.polarsys.capella.test.libraries.ju.testcases.basic.LibraryManager_canReference;
 import org.polarsys.capella.test.libraries.ju.testcases.basic.LibraryManager_getAllReferencedLibraries;
 import org.polarsys.capella.test.libraries.ju.testcases.basic.LibraryManager_getAndSetAccessPolicy_diamondCase;
@@ -31,6 +32,7 @@ import org.polarsys.capella.test.libraries.ju.testcases.basic.LibraryManager_isL
 import org.polarsys.capella.test.libraries.ju.testcases.basic.LibraryManager_removeReferenceToLibrary;
 import org.polarsys.capella.test.libraries.ju.testcases.basic.LibraryManager_removeReferenceToLibrary_cacheFocus;
 import org.polarsys.capella.test.libraries.ju.testcases.basic.LibraryManager_removeReferenceToLibrary_diamondCase;
+import org.polarsys.capella.test.libraries.ju.testcases.basic.LibraryManager_removeReferenceToLibrary_metadata;
 import org.polarsys.capella.test.libraries.ju.testcases.basic.LibraryManager_setLibraryActiveState;
 
 /**
@@ -55,6 +57,7 @@ public class LibrariesBasicTestSuite extends BasicTestSuite {
     tests.add(new LibraryManager_addReference_cacheFocus());
     tests.add(new LibraryManager_addReference_cycleCase());
     tests.add(new LibraryManager_addReference());
+    tests.add(new LibraryManager_addReference_metadata());
     tests.add(new LibraryManager_canReference());
     tests.add(new LibraryManager_getAllReferencedLibraries());
     tests.add(new LibraryManager_getAndSetAccessPolicy_diamondCase());
@@ -65,6 +68,7 @@ public class LibrariesBasicTestSuite extends BasicTestSuite {
     tests.add(new LibraryManager_removeReferenceToLibrary_cacheFocus());
     tests.add(new LibraryManager_removeReferenceToLibrary_diamondCase());
     tests.add(new LibraryManager_removeReferenceToLibrary());
+    tests.add(new LibraryManager_removeReferenceToLibrary_metadata());
     tests.add(new LibraryManager_setLibraryActiveState());
     return tests;
   }

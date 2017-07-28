@@ -39,6 +39,7 @@ import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.libraries.Activator;
 import org.polarsys.capella.core.model.handler.command.BasicCapellaDeleteCommand;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
+import org.polarsys.kitalpha.ad.metadata.helpers.LibraryHelper;
 
 public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
 
@@ -132,6 +133,10 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
           }
         }
 
+        // manage afm before adding the new semantic resource: a listener will be call at this moment and it needs up-to-date metadata
+        if (referencedLibrary_p instanceof CapellaModel)
+        	LibraryHelper.add(_domain.getResourceSet(), getUriSemanticFile(), ((CapellaModel)referencedLibrary_p).getUriSemanticFile());
+
         // otherwise, we add a reference
         LibraryReference result = LibrariesFactory.eINSTANCE.createLibraryReference();
         result.setLibrary(target);
@@ -177,6 +182,10 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
 
         LibraryReference toDelete = null;
 
+        // manage afm before removing the new semantic resource: a listener will be call at this moment and it needs up-to-date metadata
+        if (referencedLibrary_p instanceof CapellaModel)
+        	LibraryHelper.remove(_domain.getResourceSet(), getUriSemanticFile(), ((CapellaModel)referencedLibrary_p).getUriSemanticFile());
+        
         // if reference is made, we remove the reference
         for (LibraryReference reference : source.getOwnedReferences()) {
           if (reference.getLibrary() != null) {
