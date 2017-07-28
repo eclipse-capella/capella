@@ -11,11 +11,11 @@
 package org.polarsys.capella.core.data.information.provider;
 
 import org.eclipse.emf.edit.provider.IItemProviderDecorator;
-import org.polarsys.capella.core.data.gen.edit.decorators.DisposableDecoratorAdapterFactory;
+import org.polarsys.capella.core.data.gen.edit.decorators.CustomDecoratorAdapterFactory;
 import org.polarsys.capella.core.data.gen.edit.decorators.ForwardingItemProviderAdapterDecorator;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 
-public class InformationItemProviderDecoratorAdapterFactory extends DisposableDecoratorAdapterFactory {
+public class InformationItemProviderDecoratorAdapterFactory extends CustomDecoratorAdapterFactory {
 
 	public InformationItemProviderDecoratorAdapterFactory() {
 		super(new InformationItemProviderAdapterFactory());

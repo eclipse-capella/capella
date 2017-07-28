@@ -12,10 +12,10 @@ package org.polarsys.capella.core.data.capellamodeller.provider;
 
 import org.eclipse.emf.edit.provider.IItemProviderDecorator;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.gen.edit.decorators.DisposableDecoratorAdapterFactory;
+import org.polarsys.capella.core.data.gen.edit.decorators.CustomDecoratorAdapterFactory;
 import org.polarsys.capella.core.data.gen.edit.decorators.ForwardingItemProviderAdapterDecorator;
 
-public class CapellamodellerItemProviderDecoratorAdapterFactory extends DisposableDecoratorAdapterFactory {
+public class CapellamodellerItemProviderDecoratorAdapterFactory extends CustomDecoratorAdapterFactory {
 
 	public CapellamodellerItemProviderDecoratorAdapterFactory() {
 		super(new CapellamodellerItemProviderAdapterFactory());
