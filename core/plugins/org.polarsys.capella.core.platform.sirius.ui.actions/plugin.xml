@@ -96,10 +96,10 @@
             class="org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaValidationPreferencesInitializer">
       </initializer>
       <initializer
-            class="org.polarsys.capella.core.platform.sirius.ui.preferences.ProtectedElementsPreferences">
+            class="org.polarsys.capella.core.model.preferences.ProtectedElementsPreferences">
       </initializer>
       <initializer
-            class="org.polarsys.capella.core.platform.sirius.ui.preferences.DeletePreferences">
+            class="org.polarsys.capella.core.model.preferences.DeletePreferences">
       </initializer>
    </extension>
    <!-- shall not be activated : not fully tested -->
