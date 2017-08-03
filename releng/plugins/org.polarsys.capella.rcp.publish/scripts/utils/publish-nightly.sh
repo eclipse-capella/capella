@@ -17,7 +17,6 @@
 #
 # ====================================================================
 
-
 [ -z "$WORKSPACE" -o -z "$GIT_BRANCH" ] && {
      echo "Execution aborted.
 
@@ -60,11 +59,9 @@ export TARGET_PATH=$8
 # Exit on error
 set -e
 
-
 # Manifest file
 MANIFEST_NAME="Manifest$COMPONENT_NAME.txt"
 MANIFEST_FILE="$WORKSPACE/$UPDATE_PATH/target/$MANIFEST_NAME"
-
 
 # other parameters are defined in global-parameters.sh and publish-parameters.sh script and launched before this script.
 
@@ -74,16 +71,19 @@ MANIFEST_FILE="$WORKSPACE/$UPDATE_PATH/target/$MANIFEST_NAME"
 
 # Ensure the target folder exists
 mkdir -p "$TARGET_DIR"
+
 # The actual publication of the p2 repo produced by the build
 cp -dR "$WORKSPACE/$UPDATE_PATH"/target/repository/* "$TARGET_DIR"
-echo "Update site runtime core : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$COMPONENT_NAME/$FULL_VERSION"
+echo "Update site runtime core : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION"
+
 # Publish the target platform definitions used, so that downstream projects can reference them
 mkdir -p "$TARGET_DIR/targets"
 cp -dR "$WORKSPACE"/$TARGET_PATH/* "$TARGET_DIR/targets"
-echo "TP for runtime core TP : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$COMPONENT_NAME/$FULL_VERSION/targets"
+echo "TP for runtime core TP : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION/targets"
+
 # Publish a dump of the build environment, may be useful to debug
 env | sort > "$TARGET_DIR/build_env.txt"
-echo "Env for runtime core TP : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$COMPONENT_NAME/$FULL_VERSION/build_env.txt"
+echo "Env for runtime core TP : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION/build_env.txt"
 
 ######################################################################
 # Setup or update the redirects (implemented as composite repos)
@@ -124,34 +124,31 @@ EOF
 }
 
 # First, a link for the $VERSION (e.g. "runtimecore/1.2.0" => "1.2.0-NYYYYMMDD-HHMM/luna")
-create_redirect "$TARGET_ROOT/$COMPONENT_NAME/$VERSION" "$BUILD_TYPE/$COMPONENT_NAME/$FULL_VERSION"
-echo "Link runtime core Version : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$COMPONENT_NAME/$VERSION to $URL_PUBLISH_PREFIX/$BUILD_TYPE/$COMPONENT_NAME/$FULL_VERSION "
+create_redirect "$TARGET_ROOT/$VERSION" "$BUILD_TYPE/$FULL_VERSION"
+echo "Link runtime core Version : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$VERSION to $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION "
+
 # Also create a link for the $STREAM (e.g. "runtimecore/1.2.x" => "1.2.0-NYYYYMMDD-HHMM/luna")
 # and publish the zipped versions there, at stable URLs
-create_redirect "$TARGET_ROOT/$COMPONENT_NAME/$STREAM" "$BUILD_TYPE/$COMPONENT_NAME/$FULL_VERSION"
-echo "Link runtime core Short Version : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$COMPONENT_NAME/$STREAM to $URL_PUBLISH_PREFIX/$BUILD_TYPE/$COMPONENT_NAME/$FULL_VERSION "
+create_redirect "$TARGET_ROOT/$STREAM" "$BUILD_TYPE/$FULL_VERSION"
+echo "Link runtime core Short Version : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$STREAM to $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION "
+
 # Also update the global "latest" links if we are building master
-#if [ "master" = "$GIT_BRANCH" -o "build_tycho_experimental" = "$GIT_BRANCH" ]; then
-#    create_redirect "$TARGET_ROOT/$COMPONENT_NAME/latest" "$BUILD_TYPE/$COMPONENT_NAME/$FULL_VERSION"
-#    cp -dR "$WORKSPACE"/$UPDATE_PATH/target/$UPDATE_PRJ_NAME-*.zip "$TARGET_ROOT/$COMPONENT_NAME/$STREAM/$UPDATE_PRJ_NAME-$VERSION.zip"
-#else
-#	create_redirect "$TARGET_ROOT/$COMPONENT_NAME/$GIT_BRANCH/latest" "$BUILD_TYPE/$COMPONENT_NAME/$FULL_VERSION"
-#fi
-create_redirect "$TARGET_ROOT/$COMPONENT_NAME/latest" "$BUILD_TYPE/$COMPONENT_NAME/$FULL_VERSION"
-echo "Link runtime core Latest : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$COMPONENT_NAME/latest to $URL_PUBLISH_PREFIX/$BUILD_TYPE/$COMPONENT_NAME/$FULL_VERSION "
-cp -dR "$WORKSPACE/$UPDATE_PATH"/target/$UPDATE_PRJ_NAME-*.zip "$TARGET_ROOT/$COMPONENT_NAME/$STREAM/$UPDATE_PRJ_NAME-$VERSION.zip"
-echo "Zipped update site runtime core : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$COMPONENT_NAME/$STREAM/$UPDATE_PRJ_NAME-$VERSION.zip"
+create_redirect "$TARGET_ROOT/latest" "$BUILD_TYPE/$FULL_VERSION"
+echo "Link runtime core Latest : $URL_PUBLISH_PREFIX/$BUILD_TYPE/latest to $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION "
+cp -dR "$WORKSPACE/$UPDATE_PATH"/target/$UPDATE_PRJ_NAME-*.zip "$TARGET_ROOT/$STREAM/$UPDATE_PRJ_NAME-$VERSION.zip"
+echo "Zipped update site runtime core : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$STREAM/$UPDATE_PRJ_NAME-$VERSION.zip"
 
 # Write manifest in artefacts
 echo "IC Build number : $BUILD_NUMBER" > $MANIFEST_FILE
 echo "IC Build url : $MASTER_BUILD_URL/$BUILD_NUMBER/" >> $MANIFEST_FILE
 echo "Update nightly path : $TARGET_DIR" >>  $MANIFEST_FILE
-echo "Update nightly url :  $URL_PUBLISH_PREFIX/$BUILD_TYPE/$COMPONENT_NAME/$FULL_VERSION" >>  $MANIFEST_FILE
-echo "Update nightly manifest url :  $URL_PUBLISH_PREFIX/$BUILD_TYPE/$COMPONENT_NAME/$FULL_VERSION/$MANIFEST_NAME" >>  $MANIFEST_FILE
+echo "Update nightly url :  $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION" >>  $MANIFEST_FILE
+echo "Update nightly manifest url :  $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION/$MANIFEST_NAME" >>  $MANIFEST_FILE
+
 # Create update file to launch Capella
 if [ "$LAUNCH_CAPELLA" = "true" ]; then
 	echo "Launch capella : true" >>  $MANIFEST_FILE
-	cp -dR $MANIFEST_FILE $TARGET_ROOT/$COMPONENT_NAME/latest/launch_cappella.txt
+	cp -dR $MANIFEST_FILE $TARGET_ROOT//latest/launch_capella.txt
 else
 	echo "Launch capella : false" >>  $MANIFEST_FILE
 fi

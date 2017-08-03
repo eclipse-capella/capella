@@ -39,14 +39,17 @@ set -e
 
 # Component name
 export COMPONENT_NAME="products"
+
 # Product project name
 export PRODUCT_PRJ_NAME="org.polarsys.capella.rcp.product"
+
 # Target update project path
 export PRODUCTS_TARGET_FOLDER="releng/plugins/$PRODUCT_PRJ_NAME/target"
 export PRODUCTS_FOLDER="$PRODUCTS_TARGET_FOLDER/products"
 
 # Get folder path contain this script
 BASEDIR=$(dirname $0)
+
 # Get script name
 SCRIPT_NAME=$(basename $0)
 

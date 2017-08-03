@@ -39,16 +39,20 @@ set -e
 
 # Component name
 export COMPONENT_NAME="capella"
+
 # Update project name
 export UPDATE_PRJ_NAME="org.polarsys.capella.rcp.site"
+
 # Target update project path
 export UPDATE_PATH="releng/plugins/$UPDATE_PRJ_NAME"
+
 # The type of build being published
 export BUILD_TYPE="nightly"
 export BUILD_TYPE_PREFIX="N"
 
 # Get folder path contain this script
 BASEDIR=$(dirname $0)
+
 # Get script name
 SCRIPT_NAME=$(basename $0)
 

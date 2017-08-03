@@ -11,7 +11,6 @@
 #    Thales - adaptation for Capella
 # ====================================================================
 
-
 # Get script parameter
 # Verify parameter number => should be 2
 if [ "$#" -lt 3 ]
@@ -36,14 +35,16 @@ elif [ "$BUILD_TYPE" = "stable" ]; then
 fi
 
 # The root folder for all product
-export KITAPHA_FOLDER_ROOT="/home/data/httpd/download.polarsys.org/$PRODUCT_NAME"
-# The root folder for all Kitapha udpate sites
-export KITAPHA_UPDATES_ROOT="$KITAPHA_FOLDER_ROOT/updates"
-# The root folder where all the builds of the same type as this one
-# are published
-export TARGET_ROOT="$KITAPHA_UPDATES_ROOT/$BUILD_TYPE"
+export CAPELLA_FOLDER_ROOT="/home/data/httpd/download.polarsys.org/$PRODUCT_NAME"
+
+# The root folder for all Capella udpate sites
+export CAPELLA_UPDATES_ROOT="$CAPELLA_FOLDER_ROOT/updates"
+
+# The root folder where all the builds of the same type as this one are published
+export TARGET_ROOT="$CAPELLA_UPDATES_ROOT/$BUILD_TYPE"
 
 # The folder for this particular release updatesite
-export TARGET_DIR_RELEASE="$TARGET_ROOT/$COMPONENT_NAME/$BUILD_VERSION"
-# The folder for this particular release product  ???? vide pour le cas product !!!
+export TARGET_DIR_RELEASE="$TARGET_ROOT/$BUILD_VERSION"
+
+# The folder for this particular release product
 export TARGET_DIR_RELEASE_PRODUCT="$TARGET_ROOT_PRODUCT/$BUILD_VERSION"

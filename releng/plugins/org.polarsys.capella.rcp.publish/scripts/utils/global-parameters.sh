@@ -34,24 +34,32 @@ export BUILD_TYPE=$1
 
 # product Name
 export PRODUCT_NAME=capella
+
 # Target platform path
 export TARGET_PATH="releng/plugins/org.polarsys.capella.rcp.target/nightly"
 
 # Job name
 export JOB_NAME=capella-master
+
 # The root folder for all product
-export PUBLISH_FOLDER_ROOT="/d/home/data/httpd/download.polarsys.org/$PRODUCT_NAME/core"
+export PUBLISH_FOLDER_ROOT="/home/data/httpd/download.polarsys.org/$PRODUCT_NAME/core"
+
 # The root folder for all Kitapha udpate sites
 export PUBLISH_UPDATES_ROOT="$PUBLISH_FOLDER_ROOT/updates"
+
 # The root folder for all Kitapha udpate sites
 export PUBLISH_PRODUCTS_ROOT="$PUBLISH_FOLDER_ROOT/products"
+
 # Publish url
-export URL_PUBLISH_PREFIX="http://download.polarsys.org/$PRODUCT_NAME/updates"
-export URL_PRODUCT_PREFIX="http://download.polarsys.org/$PRODUCT_NAME/products"
+export URL_PUBLISH_PREFIX="http://download.polarsys.org/$PRODUCT_NAME/core/updates"
+export URL_PRODUCT_PREFIX="http://download.polarsys.org/$PRODUCT_NAME/core/products"
+
 # Master Build Url
 export MASTER_BUILD_URL="https://hudson.polarsys.org/$PRODUCT_NAME/job/$JOB_NAME"
+
 # The root folder where all the builds of the same type as this one
 # are published
 export TARGET_ROOT="$PUBLISH_UPDATES_ROOT/$BUILD_TYPE"
+
 # The root folder where all products are published
 export TARGET_ROOT_PRODUCT="$PUBLISH_PRODUCTS_ROOT/$BUILD_TYPE"

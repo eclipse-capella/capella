@@ -39,16 +39,22 @@ export VERSION="1.2.0"
 
 # Streams are of the form 1.0.x: only keep major and minor version number parts
 export STREAM=$(echo "$VERSION" | sed -r -e 's/^([0-9]+\.[0-9]+\.).*$/\1x/')
+
 # The short version, common to all versions in that stream
 export SHORT_VERSION=$(echo "$VERSION" | sed -r -e 's/^([0-9]+\.[0-9]+)\..*$/\1/')
+
 # Converts the Hudson BUILD_ID (e.g. 2013-10-15_07-07-07) into the
 # syntax we want for our update-sites (e.g. 20131015-070707)
 export BUILD_TIMESTAMP=$(echo "$BUILD_ID" | sed -e 's/-//g' -e 's/_/-/')
+
 # The timestamp in the p2 composite repos used to implement redirects
 export P2_TIMESTAMP=$(date +"%s000")
+
 # The full version for this build, e.g. 0.9.0-N20131015-070707
 export FULL_VERSION="${VERSION}-${BUILD_TYPE_PREFIX}${BUILD_TIMESTAMP}"
+
 # The folder for this particular build
-export TARGET_DIR="$TARGET_ROOT/$COMPONENT_NAME/$FULL_VERSION"
+export TARGET_DIR="$TARGET_ROOT/$FULL_VERSION"
+
 # The folder for this particular build product
 export TARGET_DIR_PRODUCT="$TARGET_ROOT_PRODUCT/$FULL_VERSION"

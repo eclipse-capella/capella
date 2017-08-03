@@ -13,11 +13,10 @@
 # ====================================================================
 #
 # This script cleans nightly published update sites and products.
-# Keeps only 5 last builds and delete older ones if DRY_RUN variable is set to true
-# If DRY_RUN variable is set to false only show the updatesites to be removed
+# Keeps only 5 last builds and delete older ones if DRY_RUN variable is set to false
+# If DRY_RUN variable is set to true only show the updatesites to be removed
 #
 # ====================================================================
-
 
 # Create a p2 composite repo to setup a redirect
 clean_component() {
@@ -34,7 +33,7 @@ clean_component() {
 	done > kept$COMPONENT_NAME.txt
 	# Identify which ones can be removed
 	comm -23 all$COMPONENT_NAME.txt kept$COMPONENT_NAME.txt > removed$COMPONENT_NAME.txt
-	
+
 	if [ "$DRY_RUN" = "false" ]; then
 		for d in $(cat removed$COMPONENT_NAME.txt); do
 			rm -rf "${d}"
@@ -44,14 +43,15 @@ clean_component() {
 	ls -al $ROOT_DIR
 }
 
+# Get folder path contain this script
+BASEDIR=$(dirname $0)
+
 # Extract global parameters (ie Publish fix part location)
 . $BASEDIR/utils/global-parameters.sh "nightly"
 
 ROOT_DIR="/home/data/httpd/download.polarsys.org/$PRODUCT_NAME/core"
-ROOT_UPDATE_DIR="$ROOT_DIR/updates/nightly"
-SDK_DIR="$ROOT_UPDATE_DIR/sdk"
+UPDATES_DIR="$ROOT_DIR/updates/nightly"
 PRODUCTS_DIR="$ROOT_DIR/products/nightly"
 
-clean_component "sdk" "$SDK_DIR"
+clean_component "updates" "$UPDATES_DIR"
 clean_component "products" "$PRODUCTS_DIR"
-
