@@ -1051,7 +1051,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20170328-042916/mars"/>
+              url="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.9.0-N20170802-100423/neon"/>
         </repositoryList>
       </targlet>
       <targlet

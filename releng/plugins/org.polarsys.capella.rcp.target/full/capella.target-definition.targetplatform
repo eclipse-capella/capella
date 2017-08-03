@@ -60,7 +60,7 @@ location diffmerge-patterns-master "http://download.eclipse.org/diffmerge/releas
 	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group
 }
 
-location amalgam-1.8.0 "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20170328-042916/mars" {
+location amalgam-1.8.0 "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.9.0-N20170802-100423/neon" {
 	org.eclipse.amalgam.explorer.activity.feature.group
 }
 

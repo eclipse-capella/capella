@@ -57,7 +57,7 @@ location "http://download.eclipse.org/diffmerge/releases/0.8.0/edm-patterns-site
 	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group
 }
 
-location "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20170328-042916/mars" {
+location "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.9.0-N20170802-100423/neon" {
 	org.eclipse.amalgam.explorer.activity.feature.group
 }
 
