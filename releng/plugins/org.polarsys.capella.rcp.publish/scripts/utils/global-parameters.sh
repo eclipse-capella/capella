@@ -38,9 +38,9 @@ export PRODUCT_NAME=capella
 export TARGET_PATH="releng/plugins/org.polarsys.capella.rcp.target/nightly"
 
 # Job name
-export JOB_NAME=capella-tychotests
+export JOB_NAME=capella-master
 # The root folder for all product
-export PUBLISH_FOLDER_ROOT="/home/data/httpd/download.polarsys.org/$PRODUCT_NAME"
+export PUBLISH_FOLDER_ROOT="/d/home/data/httpd/download.polarsys.org/$PRODUCT_NAME/core"
 # The root folder for all Kitapha udpate sites
 export PUBLISH_UPDATES_ROOT="$PUBLISH_FOLDER_ROOT/updates"
 # The root folder for all Kitapha udpate sites

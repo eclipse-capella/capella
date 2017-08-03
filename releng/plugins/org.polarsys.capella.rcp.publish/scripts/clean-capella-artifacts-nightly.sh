@@ -12,9 +12,9 @@
 # ====================================================================
 # ====================================================================
 #
-# This script clean nightly published update site from runtime core , runtime, sdk and products.
-# Keep only 5 last builds and delete older one if DRY_RUN variable is set to true
-# If DRY_RUN variable is set to false only show the updatesite to remove
+# This script cleans nightly published update sites and products.
+# Keeps only 5 last builds and delete older ones if DRY_RUN variable is set to true
+# If DRY_RUN variable is set to false only show the updatesites to be removed
 #
 # ====================================================================
 
@@ -45,9 +45,9 @@ clean_component() {
 }
 
 # Extract global parameters (ie Publish fix part location)
-. $BASEDIR/global-parameters.sh "nightly"
+. $BASEDIR/utils/global-parameters.sh "nightly"
 
-ROOT_DIR="/home/data/httpd/download.polarsys.org/$PRODUCT_NAME"
+ROOT_DIR="/home/data/httpd/download.polarsys.org/$PRODUCT_NAME/core"
 ROOT_UPDATE_DIR="$ROOT_DIR/updates/nightly"
 SDK_DIR="$ROOT_UPDATE_DIR/sdk"
 PRODUCTS_DIR="$ROOT_DIR/products/nightly"

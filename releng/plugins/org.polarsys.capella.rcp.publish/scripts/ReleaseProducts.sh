@@ -37,13 +37,13 @@ BASEDIR=$(dirname $0)
 
 # Extract global parameter (ie VERSION)
 if [ "$LOG" = "true" ]; then
-	echo ">>> Run cmd 1 ReleaseProducts.sh start : . $BASEDIR/global-parameters.sh $BUILD_TYPE"
-	echo ">>> Run cmd 1 ReleaseProducts.sh start : . $BASEDIR/release-parameters.sh $COMPONENT_NAME $BUILD_TYPE"
+	echo ">>> Run cmd 1 ReleaseProducts.sh start : . $BASEDIR/utils/global-parameters.sh $BUILD_TYPE"
+	echo ">>> Run cmd 1 ReleaseProducts.sh start : . $BASEDIR/utils/release-parameters.sh $COMPONENT_NAME $BUILD_TYPE"
 fi
 # Extract global parameter (ie Publish path)
-. $BASEDIR/global-parameters.sh $BUILD_TYPE
+. $BASEDIR/utils/global-parameters.sh $BUILD_TYPE
 # Extract global parameter (ie VERSION)
-. $BASEDIR/release-parameters.sh $PRODUCT_NAME $COMPONENT_NAME $BUILD_TYPE
+. $BASEDIR/utils/release-parameters.sh $PRODUCT_NAME $COMPONENT_NAME $BUILD_TYPE
 if [ "$LOG" = "true" ]; then
 	echo ">>> Run cmd 1 ReleaseUpdateRuntime.sh end"
 fi
