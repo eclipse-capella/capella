@@ -53,10 +53,10 @@ BASEDIR=$(dirname $0)
 SCRIPT_NAME=$(basename $0)
 
 # Extract global parameters (ie Publish fix part location)
-. $BASEDIR/global-parameters.sh $BUILD_TYPE
+. $BASEDIR/utils/global-parameters.sh $BUILD_TYPE
 
 # Extract publish parameters (ie VERSION)
-. $BASEDIR/publish-parameters.sh $COMPONENT_NAME $BUILD_TYPE $BUILD_TYPE_PREFIX
+. $BASEDIR/utils/publish-parameters.sh $COMPONENT_NAME $BUILD_TYPE $BUILD_TYPE_PREFIX
 
 # Run nightly publish for this component
-. $BASEDIR/publish-nightly.sh $PRODUCT_NAME $COMPONENT_NAME $UPDATE_PRJ_NAME $UPDATE_PATH $VERSION $BUILD_TYPE $BUILD_TYPE_PREFIX $TARGET_PATH
+. $BASEDIR/utils/publish-nightly.sh $PRODUCT_NAME $COMPONENT_NAME $UPDATE_PRJ_NAME $UPDATE_PATH $VERSION $BUILD_TYPE $BUILD_TYPE_PREFIX $TARGET_PATH

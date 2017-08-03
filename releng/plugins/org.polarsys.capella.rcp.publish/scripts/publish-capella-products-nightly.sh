@@ -40,7 +40,6 @@ set -e
 # Component name
 export COMPONENT_NAME="products"
 # Product project name
-/home/ohaegi/obeo/prjDDSata/thales/modelisationIC/git/capellaMaster/releng/plugins/
 export PRODUCT_PRJ_NAME="org.polarsys.capella.rcp.product"
 # Target update project path
 export PRODUCTS_TARGET_FOLDER="releng/plugins/$PRODUCT_PRJ_NAME/target"
@@ -56,10 +55,10 @@ export BUILD_TYPE="nightly"
 export BUILD_TYPE_PREFIX="N"
 
 # Extract global parameters (ie Publish fix part location)
-. $BASEDIR/global-parameters.sh $BUILD_TYPE
+. $BASEDIR/utils/global-parameters.sh $BUILD_TYPE
 
 # Extract publish parameters (ie VERSION)
-. $BASEDIR/publish-parameters.sh $COMPONENT_NAME $BUILD_TYPE $BUILD_TYPE_PREFIX
+. $BASEDIR/utils/publish-parameters.sh $COMPONENT_NAME $BUILD_TYPE $BUILD_TYPE_PREFIX
 
 # Ensure the target folder exists
 echo "Cmd line : mkdir -p $TARGET_DIR_PRODUCT"
