@@ -57,4 +57,17 @@
          </propertySection>
       </propertySections>
    </extension>
+   <extension
+         point="org.polarsys.kitalpha.richtext.widget.propertySheetPageDelegate">
+      <propertySheetDelegate
+            contributorId="org.polarsys.capella.core.data.capellamodeller.properties"
+            delegateProvider="org.polarsys.capella.core.ui.properties.richtext.propertysheet.CapellaPropertySheetProvider">
+      </propertySheetDelegate>
+   </extension>
+   <extension
+         point="org.polarsys.kitalpha.richtext.mde.tools.link.openModelStrategy">
+      <openModel
+            class="org.polarsys.capella.core.ui.properties.richtext.navigation.CapellaNavigationModelElement">
+      </openModel>
+   </extension>
 </plugin>

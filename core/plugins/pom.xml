@@ -182,7 +182,6 @@
         <module>org.polarsys.capella.core.ui.metric</module>
         <module>org.polarsys.capella.core.ui.properties</module>
         <module>org.polarsys.capella.core.ui.properties.descriptions</module>
-        <module>org.polarsys.capella.core.ui.properties.richtext</module>
         <module>org.polarsys.capella.core.ui.reportlog</module>
         <module>org.polarsys.capella.core.ui.resources</module>
         <module>org.polarsys.capella.core.ui.search</module>

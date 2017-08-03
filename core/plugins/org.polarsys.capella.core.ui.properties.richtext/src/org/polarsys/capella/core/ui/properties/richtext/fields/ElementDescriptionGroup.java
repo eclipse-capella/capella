@@ -15,8 +15,8 @@ import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.kitalpha.richtext.common.intf.MDERichTextWidget;
-import org.eclipse.kitalpha.richtext.common.intf.SaveStrategy;
+import org.polarsys.kitalpha.richtext.common.intf.MDERichTextWidget;
+import org.polarsys.kitalpha.richtext.common.intf.SaveStrategy;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
@@ -110,15 +110,7 @@ public abstract class ElementDescriptionGroup implements SelectionListener, Focu
 //    editor.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 //    return editor;
     MDERichTextFactory f = new MDERichTextFactory();
-	final MDERichTextWidget ee = f.createDefaultRichTextWidget(parent);
-	ee.addModifyListener(new ModifyListener() {
-		
-		@Override
-		public void modifyText(ModifyEvent e) {
-			ee.saveContent();
-		}
-	});
-	
+	final MDERichTextWidget ee = f.createMinimalRichTextWidget(parent);
 	
 	ee.setSaveStrategy(new SaveStrategy() {
 		
