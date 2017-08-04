@@ -34,7 +34,7 @@ public class AirdMigrationHandler extends AbstractMigrationHandler {
     for (Object selected : selection.toList()) {
       if (selected instanceof IResource) {
         MigrationHelpers.getInstance().trigger((IResource) selected, HandlerUtil.getActiveShell(event), false, true,
-            new String[] { MigrationConstants.MIGRATION_KIND__DIAGRAM,  MigrationConstants.MIGRATION_KIND__AFM });
+            new String[] { MigrationConstants.MIGRATION_KIND__DIAGRAM});
       }
     }
 

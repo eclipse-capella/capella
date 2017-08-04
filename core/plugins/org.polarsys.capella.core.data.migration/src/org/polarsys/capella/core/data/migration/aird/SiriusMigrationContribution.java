@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -98,6 +98,7 @@ public class SiriusMigrationContribution extends AbstractMigrationContribution {
   @Override
   public void endElement(EObject peekEObject, Attributes attribs, String uri, String localName, String name,
       Resource resource, MigrationContext context) {
+    // since we override the xmlHandler of airdResource, we need to call it here.
     RepresentationsFileMigrationService.getInstance().postXMLEndElement(peekEObject, attribs, uri, name, name,
         getLoadedVersion(resource));
   }
@@ -105,6 +106,7 @@ public class SiriusMigrationContribution extends AbstractMigrationContribution {
   @Override
   public Object getValue(EObject peekObject, EStructuralFeature feature, Object value, int position, Resource resource,
       MigrationContext context) {
+    // since we override the xmlHelper of airdResource, we need to call it here.
     String version = getLoadedVersion(resource);
     return RepresentationsFileMigrationService.getInstance().getValue(peekObject, feature, value, version);
   }
@@ -112,8 +114,17 @@ public class SiriusMigrationContribution extends AbstractMigrationContribution {
   @Override
   public EStructuralFeature getFeature(EObject peekObject, EStructuralFeature feature, Resource resource,
       MigrationContext context) {
+    // It shoud be already called by RepresentationsFileExtendedMetaData registered on the aird resource in
+    // AirdMigrationRunnable.AirDResourceImpl.init()
+    return null;
+  }
+
+  @Override
+  public void updateElement(EObject peekObject, String typeName, EObject result, EStructuralFeature feature,
+      Resource resource, MigrationContext context) {
+    // since we override the xmlHelper of airdResource, we need to call it here.
     String version = getLoadedVersion(resource);
-    return RepresentationsFileMigrationService.getInstance().getAffiliation(peekObject.eClass(), feature, version);
+    RepresentationsFileMigrationService.getInstance().updateCreatedObject(result, version);
   }
 
   @Override

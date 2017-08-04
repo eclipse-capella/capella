@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.migration.aird;
 
+import java.util.Map;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -17,9 +19,12 @@ import org.eclipse.emf.ecore.xmi.XMLLoad;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMLHelperImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMLLoadImpl;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResource;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
+import org.eclipse.sirius.business.internal.resource.AirDResourceImpl;
 import org.polarsys.capella.core.data.migration.capella.ModelMigrationRunnable;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
@@ -69,19 +74,24 @@ public class AirdMigrationRunnable extends ModelMigrationRunnable {
   public XMLResource doCreateResource(URI uri, final MigrationContext context) {
     if (isAirdFile(uri)) {
 
-      // TODO Auto-generated method stub
-      XMIResourceImpl result = new GMFResource(uri) {
-
+      XMLResource result = new AirDResourceImpl(uri) {
+        
         @Override
         protected XMIExtensionHelperImpl createXMLHelper() {
           return createCapellaXMLHelper(this);
         }
-
+        
         @Override
         protected XMLLoad createXMLLoad() {
           return createCustomizedHandler(createXMLHelper(), context);
         }
 
+        @Override
+        protected XMLLoad createXMLLoad(Map<?, ?> options)
+        {
+          return createXMLLoad();
+        }
+        
         // @Override
         // protected XMLSave createXMLSave() {
         // return createCustomizedSaveHandler(createXMLHelper(), context);
@@ -106,13 +116,12 @@ public class AirdMigrationRunnable extends ModelMigrationRunnable {
           getDefaultSaveOptions().put(XMLResource.OPTION_USE_FILE_BUFFER, Boolean.TRUE);
           getDefaultSaveOptions().put(XMLResource.OPTION_FLUSH_THRESHOLD, Integer.valueOf(0x01000000));
 
-          getDefaultLoadOptions().putAll(GMFResourceFactory.getDefaultLoadOptions());
-          getDefaultSaveOptions().putAll(GMFResourceFactory.getDefaultSaveOptions());
-
           // Avoid any error with unknown features which can exist in aird
           // files. Migration of aird will be processed after
           getDefaultLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
 
+          AirDResourceImpl.addMigrationOptions(loadedVersion, getDefaultLoadOptions(), getDefaultSaveOptions());
+          
           if (!getEncoding().equals(FORMAT_UTF8)) {
             setEncoding(FORMAT_UTF8);
           }

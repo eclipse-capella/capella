@@ -166,9 +166,6 @@
       <migrationContributor
             class="org.polarsys.capella.core.data.migration.aird.AirdMigrationContributor">
       </migrationContributor>
-      <migrationContributor
-            class="org.polarsys.capella.core.data.migration.repair.RepairSiriusMigrationContributor">
-      </migrationContributor>
       
    </extension>
    
@@ -184,6 +181,8 @@
    <extension
          point="org.polarsys.capella.core.data.migration.migrationContributions">
 	  <migrationContribution
+         class="org.polarsys.capella.core.data.migration.af.MetadataMigrationContribution"/>
+      <migrationContribution
          class="org.polarsys.capella.core.data.migration.af.ViewpointMigrationContribution"/>         
    </extension>
    
@@ -191,9 +190,7 @@
    <extension
          point="org.polarsys.capella.core.data.migration.migrationContributors">
       <migrationContributor
-         class="org.polarsys.capella.core.data.migration.af.MetadataUpdateContributor"/>
-      <migrationContributor
-         class="org.polarsys.capella.core.data.migration.af.ViewpointMigrationContributor"/>
+         class="org.polarsys.capella.core.data.migration.af.ViewpointMigrationContributor"/> 
    </extension>
    
    

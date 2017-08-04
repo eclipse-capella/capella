@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -82,9 +82,8 @@ public class MigrationConstants {
   public static final String MIGRATION_KIND__AFM = "MIGRATION_KIND__AFM";
   public static final String MIGRATION_KIND__SEMANTIC = "MIGRATION_KIND__SEMANTIC";
   public static final String MIGRATION_KIND__DIAGRAM = "MIGRATION_KIND__DIAGRAM";
-  public static final String MIGRATION_KIND__REPAIR = "MIGRATION_KIND__REPAIR";
   public static final String MIGRATION_KIND__VIEWPOINT = "MIGRATION_KIND__VIEWPOINT";
 
   public static final String[] DEFAULT_KIND_ORDER = {MIGRATION_KIND__CHECK_MISSING_VP, MIGRATION_KIND__PATTERN, MIGRATION_KIND__SEMANTIC,
-      MIGRATION_KIND__DIAGRAM, MIGRATION_KIND__AFM, MIGRATION_KIND__REPAIR, MIGRATION_KIND__VIEWPOINT, MIGRATION_KIND__SCF};
+      MIGRATION_KIND__DIAGRAM, MIGRATION_KIND__VIEWPOINT, MIGRATION_KIND__SCF};
 }

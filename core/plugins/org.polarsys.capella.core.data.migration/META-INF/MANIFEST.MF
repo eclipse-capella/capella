@@ -43,6 +43,5 @@ Export-Package: org.polarsys.capella.core.data.migration,
  org.polarsys.capella.core.data.migration.context,
  org.polarsys.capella.core.data.migration.contribution,
  org.polarsys.capella.core.data.migration.contributor,
- org.polarsys.capella.core.data.migration.handlers,
- org.polarsys.capella.core.data.migration.repair
+ org.polarsys.capella.core.data.migration.handlers
 Bundle-Vendor: %providerName
