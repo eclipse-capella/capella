@@ -13,7 +13,7 @@
 # ====================================================================
 #
 # This script cleans nightly published update sites and products.
-# Keeps only 5 last builds and delete older ones if DRY_RUN variable is set to false
+# Keeps only $NB_BUILDS_TO_KEEP last builds and delete older ones if DRY_RUN variable is set to false
 # If DRY_RUN variable is set to true only show the updatesites to be removed
 #
 # ====================================================================
@@ -27,9 +27,9 @@ clean_component() {
     rm -f all$COMPONENT_NAME.txt kept$COMPONENT_NAME.txt removed$COMPONENT_NAME.txt
 	# Find all nightly builds
 	find "$ROOT_COMPONENT_DIR" -type d -maxdepth 1 | sort | grep -E '/[0-9]\.[0-9]\.[0-9]-N' > all$COMPONENT_NAME.txt
-	# For each X.Y stream, keep the 5 most recent X.Y.Z build (whichever Z)
+	# For each X.Y stream, keep the $NB_BUILDS_TO_KEEP most recent X.Y.Z build (whichever Z)
 	for s in $(find "$ROOT_COMPONENT_DIR" -type d -maxdepth 1 | sort | grep -E '/[0-9]\.[0-9]\.[0-9]-N' | sed -r -e 's|.*/([0-9]\.[0-9])\.[0-9]-N.*|\1|' | sort -u); do
-		find "$ROOT_COMPONENT_DIR" -type d -maxdepth 1 -name "${s}.[0-9]-N*" | sort | tail -n 5
+		find "$ROOT_COMPONENT_DIR" -type d -maxdepth 1 -name "${s}.[0-9]-N*" | sort | tail -n $NB_BUILDS_TO_KEEP
 	done > kept$COMPONENT_NAME.txt
 	# Identify which ones can be removed
 	comm -23 all$COMPONENT_NAME.txt kept$COMPONENT_NAME.txt > removed$COMPONENT_NAME.txt
