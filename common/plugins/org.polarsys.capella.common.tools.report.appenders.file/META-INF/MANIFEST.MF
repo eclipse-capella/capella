@@ -8,6 +8,7 @@ Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.common.tools.report;visibility:=reexport,
  org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.common.tools.report.appenders.file
+Export-Package: org.polarsys.capella.common.tools.report.appenders.file,
+ org.polarsys.capella.common.tools.report.appenders.file.util
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Localization: plugin

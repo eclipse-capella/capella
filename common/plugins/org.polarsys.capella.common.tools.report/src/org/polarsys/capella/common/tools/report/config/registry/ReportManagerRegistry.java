@@ -29,6 +29,7 @@ import org.polarsys.capella.common.tools.report.config.persistence.Configuration
 import org.polarsys.capella.common.tools.report.config.persistence.CreateXmlConfiguration;
 import org.polarsys.capella.common.tools.report.config.persistence.LogLevel;
 import org.polarsys.capella.common.tools.report.config.persistence.OutputConfiguration;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 
 public class ReportManagerRegistry {
 
@@ -46,8 +47,14 @@ public class ReportManagerRegistry {
     CreateXmlConfiguration configuration = new CreateXmlConfiguration();
 
     // Create configuration file and start loading process.
-    ConfigurationInstance defaultConfInstance = configuration.createDefaultConfiguration(ReportManagerConstants.LOG_OUTPUT_DEFAULT, _appenders);
+    ConfigurationInstance defaultConfInstance = configuration
+        .createDefaultConfiguration(IReportManagerDefaultComponents.DEFAULT, _appenders);
     _configurations.put(defaultConfInstance.getComponentName(), defaultConfInstance);
+
+    // Create usage monitoring configuration
+    ConfigurationInstance usageMonitoringConfInstance = configuration
+        .createUsageMonitoringConfiguration(IReportManagerDefaultComponents.USAGE, _appenders);
+    _configurations.put(usageMonitoringConfInstance.getComponentName(), usageMonitoringConfInstance);
 
     if (configuration.isConfigurationFileExists()) {
       // Load configuration from XML config file
@@ -73,7 +80,7 @@ public class ReportManagerRegistry {
   public synchronized static ReportManagerRegistry getInstance() {
     if (instance == null) {
       instance = new ReportManagerRegistry();
-      instance.subscribe("Default"); //$NON-NLS-1$
+      instance.subscribe(IReportManagerDefaultComponents.DEFAULT); // $NON-NLS-1$
     }
     return instance;
   }
@@ -127,7 +134,8 @@ public class ReportManagerRegistry {
   protected void copyValuesOfOutputConfiguration(ConfigurationInstance source, ConfigurationInstance target) {
     for (OutputConfiguration srcOutputConf : source.getOutputConfiguration()) {
       for (OutputConfiguration tgtOutputConf : target.getOutputConfiguration()) {
-        if ((srcOutputConf.getOutputName() != null) && srcOutputConf.getOutputName().equals(tgtOutputConf.getOutputName())) {
+        if ((srcOutputConf.getOutputName() != null)
+            && srcOutputConf.getOutputName().equals(tgtOutputConf.getOutputName())) {
           copyValuesOfLogLevels(srcOutputConf, tgtOutputConf);
           break;
         }
@@ -151,8 +159,8 @@ public class ReportManagerRegistry {
   }
 
   /**
-   * 
-   */
+  * 
+  */
   protected void initRootLogger() {
 
     try {
@@ -189,20 +197,32 @@ public class ReportManagerRegistry {
    * @return
    */
   public Logger subscribe(String componentName) {
+
     if (!_configurations.containsKey(componentName)) {
 
-      ConfigurationInstance oConfigurationInstance = copyConfig(_configurations.get(ReportManagerConstants.LOG_OUTPUT_DEFAULT));
+      if (!IReportManagerDefaultComponents.USAGE.equals(componentName)) {
+        ConfigurationInstance oConfigurationInstance = copyConfig(
+            _configurations.get(ReportManagerConstants.LOG_OUTPUT_DEFAULT));
 
-      if (null != oConfigurationInstance) {
-        oConfigurationInstance.setComponentName(componentName);
-        synchronized (_configurations) {
-          _configurations.put(componentName, oConfigurationInstance);
+        if (null != oConfigurationInstance) {
+          oConfigurationInstance.setComponentName(componentName);
+          synchronized (_configurations) {
+            _configurations.put(componentName, oConfigurationInstance);
+          }
+        }
+      } else {
+        ConfigurationInstance oConfigurationInstance = copyConfig(
+            _configurations.get(ReportManagerConstants.LOG_OUTPUT_USAGE_FILE));
+        if (null != oConfigurationInstance) {
+          oConfigurationInstance.setComponentName(componentName);
+          synchronized (_configurations) {
+            _configurations.put(componentName, oConfigurationInstance);
+          }
         }
       }
     }
 
     Logger theLog = Logger.getLogger(componentName);
-
     return theLog;
   }
 
@@ -219,6 +239,7 @@ public class ReportManagerRegistry {
 
   /**
    * retrieves the flushable appenders
+   * 
    * @return
    */
   protected List<IFlushableAppenders> getFlushableAppenders() {
@@ -229,8 +250,8 @@ public class ReportManagerRegistry {
   }
 
   /**
-   * 
-   */
+  * 
+  */
   public void beginLoggingSession() {
     beginLoggingSession(IFlushableAppenders.ALL);
   }
@@ -251,7 +272,6 @@ public class ReportManagerRegistry {
       _appender.flush(componentName, loggedElement);
     }
   }
-
 
   /**
    * @see org.polarsys.capella.common.tools.report.config.registry.IReportManagerRegistry#getComponentsList()
@@ -278,7 +298,7 @@ public class ReportManagerRegistry {
   public void saveConfiguration() {
     CreateXmlConfiguration configuration = new CreateXmlConfiguration();
     synchronized (_configurations) {
-    	configuration.saveConfiguration(_configurations);
+      configuration.saveConfiguration(_configurations);
     }
   }
 
@@ -290,7 +310,8 @@ public class ReportManagerRegistry {
   }
 
   /**
-   * @param map the _configurationMap to set
+   * @param map
+   *          the _configurationMap to set
    */
   public void setConfigurations(Map<String, ConfigurationInstance> map) {
     synchronized (_configurations) {

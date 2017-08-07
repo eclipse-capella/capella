@@ -29,7 +29,6 @@ import javax.xml.bind.PropertyException;
 import javax.xml.bind.Unmarshaller;
 
 import org.apache.log4j.Appender;
-
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 
 /**
@@ -49,8 +48,11 @@ public class CreateXmlConfiguration {
 
   /**
    * Create default XML configuration file.
-   * @param componentName name of current business component
-   * @param map map of available appenders
+   * 
+   * @param componentName
+   *          name of current business component
+   * @param map
+   *          map of available appenders
    * @return
    * 
    */
@@ -70,36 +72,93 @@ public class CreateXmlConfiguration {
 
       opConfList.add(currentConfig);
 
-      createLogConfig(currentConfig, true);
+      createDefaultLogConfig(currentConfig, true);
 
     }
 
     return confInstance;
   }
 
-  /**
-   * 
-   * 
-   */
-  private void createLogConfig(OutputConfiguration outputConfiguration, boolean logLevelValue) {
+  public ConfigurationInstance createUsageMonitoringConfiguration(String componentName, Map<String, Appender> map) {
+    Set<String> appenders = map.keySet();
+
+    ConfigurationInstance confInstance = _factory.createConfigurationInstance();
+    confInstance.setComponentName(componentName);
+
+    // list of outputConfigs
+    List<OutputConfiguration> opConfList = confInstance.getOutputConfiguration();
+
+    for (String appenderName : appenders) {
+      OutputConfiguration currentConfig = _factory.createOutputConfiguration();
+      currentConfig.setOutputName(appenderName);
+
+      opConfList.add(currentConfig);
+
+      createUsageMonitoringLogConfig(currentConfig, true);
+    }
+
+    return confInstance;
+  }
+
+  private void createUsageMonitoringLogConfig(OutputConfiguration outputConfiguration, boolean logLevelValue) {
     List<LogLevel> logLevelListFile = outputConfiguration.getLogLevel();
 
     logLevelListFile.clear();
 
-    if (ReportManagerConstants.LOG_OUTPUT_FILE.equals(outputConfiguration.getOutputName())) {
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_INFO));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_WARN));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_ERROR));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_FATAL));
-    } else {
+    if (ReportManagerConstants.LOG_OUTPUT_USAGE_FILE.equals(outputConfiguration.getOutputName())) {
       logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_INFO));
       logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
       logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_WARN));
       logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_ERROR));
       logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_FATAL));
+    } else {
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_INFO));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_WARN));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_ERROR));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_FATAL));
     }
   }
+
+  /**
+   * 
+   * 
+   */
+  private void createDefaultLogConfig(OutputConfiguration outputConfiguration, boolean logLevelValue) {
+    List<LogLevel> logLevelListFile = outputConfiguration.getLogLevel();
+
+    logLevelListFile.clear();
+
+    String outputConfigurationName = outputConfiguration.getOutputName();
+
+    switch (outputConfigurationName) {
+
+    case ReportManagerConstants.LOG_OUTPUT_FILE:
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_INFO));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_WARN));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_ERROR));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_FATAL));
+      break;
+
+    case ReportManagerConstants.LOG_OUTPUT_USAGE_FILE:
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_INFO));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_WARN));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_ERROR));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_FATAL));
+      break;
+
+    default:
+      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_INFO));
+      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
+      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_WARN));
+      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_ERROR));
+      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_FATAL));
+      break;
+    }
+  }
+
   /**
    * @param logLevelValue
    * @return
@@ -113,6 +172,7 @@ public class CreateXmlConfiguration {
 
   /**
    * Check if the configuration file exists
+   * 
    * @return
    */
   public boolean isConfigurationFileExists() {
@@ -125,6 +185,7 @@ public class CreateXmlConfiguration {
    * load persisted configuration
    * 
    * Returns configuration Instance Map
+   * 
    * @return configurationMap
    */
   public HashMap<String, ConfigurationInstance> loadConfiguration() {
@@ -157,6 +218,7 @@ public class CreateXmlConfiguration {
    * load persisted configuration
    * 
    * Returns configuration Instance Map
+   * 
    * @return configurationMap
    */
   public HashMap<String, ConfigurationInstance> getConfiguration(ReportConfigurationFile file) {
@@ -172,7 +234,8 @@ public class CreateXmlConfiguration {
   }
 
   /**
-   * save configuraion hashmap to configuration file
+   * save configuration hashmap to configuration file
+   * 
    * @param configurationMap
    */
   public void saveConfiguration(Map<String, ConfigurationInstance> configurationMap) {
@@ -192,7 +255,8 @@ public class CreateXmlConfiguration {
   /**
    * do the jaxb technical stuff to save the configuration into a file
    * 
-   * @param repConffile the virtual configuration
+   * @param repConffile
+   *          the virtual configuration
    * @throws JAXBException
    * @throws PropertyException
    * @throws FileNotFoundException
