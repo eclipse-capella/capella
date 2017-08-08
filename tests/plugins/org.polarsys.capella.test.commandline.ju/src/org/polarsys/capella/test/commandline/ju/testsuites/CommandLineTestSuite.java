@@ -13,7 +13,9 @@ package org.polarsys.capella.test.commandline.ju.testsuites;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.commandline.ju.testcases.CommandLineFolderMigrationTest;
 import org.polarsys.capella.test.commandline.ju.testcases.CommandLineValidationTest;
+import org.polarsys.capella.test.commandline.ju.testcases.CommandLineZipMigrationTest;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -25,6 +27,8 @@ public class CommandLineTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
     tests.add(new CommandLineValidationTest());
+    tests.add(new CommandLineZipMigrationTest());
+    tests.add(new CommandLineFolderMigrationTest());
     return tests;
   }
   

@@ -13,6 +13,7 @@ package org.polarsys.capella.core.commandline.core;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -417,7 +418,9 @@ public class AbstractCommandLine implements ICommandLine {
         List<IFileImporter> importers = ImporterRegistry.getInstance().getImporters("zip");
         if (!importers.isEmpty()) {
           IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(projectPath));
-          importers.get(0).importFile(file);
+          Collection<IProject> projects = importers.get(0).importFile(file);
+          for (IProject prj : projects)
+            importedProjects.add(prj.getName());
         }
       } else {
         IProjectDescription description = ResourcesPlugin.getWorkspace()
