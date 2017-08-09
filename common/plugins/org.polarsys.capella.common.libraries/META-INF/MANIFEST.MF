@@ -13,8 +13,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.transaction,
  org.polarsys.capella.common.libraries.gen;visibility:=reexport,
  org.polarsys.capella.common.queries,
- org.polarsys.capella.common.tools.report
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+ org.polarsys.capella.common.tools.report,
+ org.polarsys.capella.core.model.handler
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.libraries,
  org.polarsys.capella.common.libraries.manager,

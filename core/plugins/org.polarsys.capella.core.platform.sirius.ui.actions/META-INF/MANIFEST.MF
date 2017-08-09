@@ -16,7 +16,8 @@ Require-Bundle: com.google.guava,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.ui.toolkit,
  org.eclipse.sirius.diagram.ui,
- org.polarsys.capella.core.af.integration
+ org.polarsys.capella.core.af.integration,
+ org.polarsys.capella.common.libraries
 Export-Package: org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.platform.sirius.ui.commands,
  org.polarsys.capella.core.platform.sirius.ui.preferences,
