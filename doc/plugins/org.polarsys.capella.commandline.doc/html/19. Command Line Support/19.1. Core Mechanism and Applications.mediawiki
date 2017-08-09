@@ -144,16 +144,9 @@ The parameter '''''-forceoutputfoldercreation''''' becomes necessary for the fol
 
 A log file is also specified.
 
- 
 <br>
-<br>
-
  
 === HTML Production ===
- 
-<br>
-<br>
-
          
 {| border="1"
 |-
@@ -203,8 +196,6 @@ This command will generate ''HTML'' report from the EOLE-AF aird file specified 
 </br>
 
 '''Import Capella project and generate inside it'''
-
-</br>
 
 ''&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
 
@@ -309,10 +300,8 @@ This command will import two projects (EOLE_AF and DocProject) from ''&lt;absolu
 '''NOTE''': The source and target workspaces have to be different.
 
 <br>
-<br>
+
 === XML Export ===
-<br>
-<br>
          
 {| border="1"
 |-
@@ -366,9 +355,6 @@ This command exports a capella model into an xml file stored at ''filepath'' pat
  
 === Export as ZIP ===
  
-<br>
-
- 
 This command will export selected project to the given zip filename
 
  
@@ -415,4 +401,26 @@ Mandatory parameters:
 
  
 ''-logfile &quot;D:\ CommandLineLog \log.html&quot;''
+
+<br>
+
+=== Migration ===
+
+This command will migrate selected project(s). A workspace folder is created and located where the command is triggered. It contains a log file into .metadata folder. If the project is a folder, it will be backed up and migrated inside this folder, otherwise if the project is a zip file it will be unzipped and migrated into the workspace folder.
+
+If you migrate a project using libraries, project list order is not important but all libraries must be included.
+
+<br>
+
+<u>'''Simple use case:'''</u>
+
+''&lt;''''CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
+ 
+''-application ''''org.polarsys.capella.core.commandline.core''
+
+''-appid ''''org.polarsys.capella.core.migration''
+ 
+''-import &lt;absolutePath&gt; '' (e.g: D:/Projects/EOLE_AF.zip ; "D:/Projects/sysmodelLibrary_Super | D:/Projects/sysmodelLibrary_Sub | D:/Projects/sysmodel")
+ 
+''-logfile D:\CommandLineLog\log.html''
    
