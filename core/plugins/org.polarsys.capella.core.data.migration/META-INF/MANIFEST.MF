@@ -31,7 +31,8 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.kitalpha.patterns.emde,
  org.polarsys.kitalpha.patterns.emde.gen,
  org.polarsys.capella.core.commandline.core,
- org.polarsys.capella.core.af.integration
+ org.polarsys.capella.core.af.integration,
+ org.polarsys.capella.common.libraries
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.polarsys.capella.common.libraries.Activator;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
  */
@@ -45,13 +46,16 @@ public class ResourceAccessPolicyListener extends ResourceSetListenerImpl {
     for (Notification notification : event.getNotifications()) {
       Object notifier = notification.getNotifier();
 
-      if (notifier instanceof EObject) {
+      // Look only at semantic elements, not Diagram elements since Diagram elements are not shared by the library
+      if (CapellaResourceHelper.isSemanticElement(notifier)) {
         IModel model = ILibraryManager.INSTANCE.getModel((EObject) notifier);
         if (model != null) {
           if (!modifiedModels.contains(model)) {
             if (sourceModel.getAccess(model) == AccessPolicy.READ_ONLY) {
-              Logger.getLogger(IReportManagerDefaultComponents.MODEL).error(Messages.ResourceAccessPolicyListener_RollbackReadOnly);
-              throw new RollbackException(new Status(IStatus.CANCEL, Activator.PLUGIN_ID, Messages.ResourceAccessPolicyListener_RollbackReadOnly));
+              Logger.getLogger(IReportManagerDefaultComponents.MODEL)
+                  .error(Messages.ResourceAccessPolicyListener_RollbackReadOnly);
+              throw new RollbackException(new Status(IStatus.CANCEL, Activator.PLUGIN_ID,
+                  Messages.ResourceAccessPolicyListener_RollbackReadOnly));
             }
           }
           modifiedModels.add(model);
