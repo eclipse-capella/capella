@@ -406,9 +406,11 @@ Mandatory parameters:
 
 === Migration ===
 
-This command will migrate selected project(s). A workspace folder is created and located where the command is triggered. It contains a log file into .metadata folder. If the project is a folder, it will be backed up and migrated inside this folder, otherwise if the project is a zip file it will be unzipped and migrated into the workspace folder.
+This command will migrate selected project(s). A workspace folder is created and located where the command is triggered or in a specified path given by the ''-data'' parameter. It contains a log file into .metadata folder. If the selected project is a folder, it will be backed up and migrated inside this folder, otherwise if the input is a zip file it will be unzipped and projects inside will be migrated into the workspace folder.
 
 If you migrate a project using libraries, project list order is not important but all libraries must be included.
+
+The parameter ''-import is mandatory'', but parameters ''-filepath'' and ''-outputfolder'' are not. 
 
 <br>
 
@@ -418,9 +420,27 @@ If you migrate a project using libraries, project list order is not important bu
  
 ''-application ''''org.polarsys.capella.core.commandline.core''
 
-''-appid ''''org.polarsys.capella.core.migration''
+''-appid ''''org.polarsys.capella.migration''
  
-''-import &lt;absolutePath&gt; '' (e.g: D:/Projects/EOLE_AF.zip ; "D:/Projects/sysmodelLibrary_Super | D:/Projects/sysmodelLibrary_Sub | D:/Projects/sysmodel")
+''-import D:/Projects/EOLE_AF.zip
+ 
+''-data &lt;workspacePath&gt;''
+
+This command imports a .zip into the specified workspace and migrate all projects inside.
+
+<u>'''Complex use case:'''</u>
+
+''&lt;''''CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
+ 
+''-application ''''org.polarsys.capella.core.commandline.core''
+
+''-appid ''''org.polarsys.capella.migration''
+ 
+''-import &lt;absolutePath&gt; '' (e.g: "D:/Projects/sysmodelLibrary_Super | D:/Projects/sysmodelLibrary_Sub | D:/Projects/sysmodel")
+ 
+''-data &lt;workspacePath&gt;''
  
 ''-logfile D:\CommandLineLog\log.html''
+
+This command migrate the given projects and create a log.html inside the specified workspace.
    

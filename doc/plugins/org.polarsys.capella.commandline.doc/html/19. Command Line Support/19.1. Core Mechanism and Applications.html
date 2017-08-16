@@ -499,8 +499,15 @@
 			<br/>
 		</p>
 		<h3 id="Migration">Migration</h3>
-		<p>This command will migrate selected project(s). A workspace folder is created and located where the command is triggered. It contains a log file into .metadata folder. If the project is a folder, it will be backed up and migrated inside this folder, otherwise if the project is a zip file it will be unzipped and migrated into the workspace folder.</p>
+		<p>This command will migrate selected project(s). A workspace folder is created and located where the command is triggered or in a specified path given by the 
+			<i>-data</i> parameter. It contains a log file into .metadata folder. If the selected project is a folder, it will be backed up and migrated inside this folder, otherwise if the input is a zip file it will be unzipped and projects inside will be migrated into the workspace folder.
+		</p>
 		<p>If you migrate a project using libraries, project list order is not important but all libraries must be included.</p>
+		<p>The parameter 
+			<i>-import is mandatory</i>, but parameters 
+			<i>-filepath</i> and 
+			<i>-outputfolder</i> are not. 
+		</p>
 		<p>
 			<br/>
 		</p>
@@ -517,13 +524,37 @@
 		</p>
 		<p>
 			<i>-appid </i>
-			<i>org.polarsys.capella.core.migration</i>
+			<i>org.polarsys.capella.migration</i>
+		</p>
+		<p>''-import D:/Projects/EOLE_AF.zip</p>
+		<p>
+			<i>-data &lt;workspacePath&gt;</i>
+		</p>
+		<p>This command imports a .zip into the specified workspace and migrate all projects inside.</p>
+		<p><u>
+			<b>Complex use case:</b></u>
 		</p>
 		<p>
-			<i>-import &lt;absolutePath&gt; </i> (e.g: D:/Projects/EOLE_AF.zip ; "D:/Projects/sysmodelLibrary_Super | D:/Projects/sysmodelLibrary_Sub | D:/Projects/sysmodel")
+			<i>&lt;</i>
+			<i>CapellaInstallationPath&gt;/eclipse.exe -nosplash </i>
+		</p>
+		<p>
+			<i>-application </i>
+			<i>org.polarsys.capella.core.commandline.core</i>
+		</p>
+		<p>
+			<i>-appid </i>
+			<i>org.polarsys.capella.migration</i>
+		</p>
+		<p>
+			<i>-import &lt;absolutePath&gt; </i> (e.g: "D:/Projects/sysmodelLibrary_Super | D:/Projects/sysmodelLibrary_Sub | D:/Projects/sysmodel")
+		</p>
+		<p>
+			<i>-data &lt;workspacePath&gt;</i>
 		</p>
 		<p>
 			<i>-logfile D:\CommandLineLog\log.html</i>
 		</p>
+		<p>This command migrate the given projects and create a log.html inside the specified workspace.</p>
 	</body>
 </html>
