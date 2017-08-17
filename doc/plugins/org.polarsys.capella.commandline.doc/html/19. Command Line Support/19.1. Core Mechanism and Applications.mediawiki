@@ -3,7 +3,7 @@
  
 == Overview ==
  
-Capella provides the capacity to launch actions from command line. Potential actions are model validation, HTML production and XML export.
+Capella provides the capacity to launch actions from command line. Potential actions are Model Validation, HTML Production, XML Export, Export as ZIP and Migration.
 
  
 The core mechanism provides the following parameters:
@@ -422,7 +422,7 @@ The parameter ''-import is mandatory'', but parameters ''-filepath'' and ''-outp
 
 ''-appid ''''org.polarsys.capella.migration''
  
-''-import D:/Projects/EOLE_AF.zip
+''-import D:/Projects/EOLE_AF.zip''
  
 ''-data &lt;workspacePath&gt;''
 
@@ -436,11 +436,11 @@ This command imports a .zip into the specified workspace and migrate all project
 
 ''-appid ''''org.polarsys.capella.migration''
  
-''-import &lt;absolutePath&gt; '' (e.g: "D:/Projects/sysmodelLibrary_Super | D:/Projects/sysmodelLibrary_Sub | D:/Projects/sysmodel")
+''-import "D:/Projects/sysmodelLibrary_Super | D:/Projects/sysmodelLibrary_Sub | D:/Projects/sysmodel"''
  
 ''-data &lt;workspacePath&gt;''
  
 ''-logfile D:\CommandLineLog\log.html''
 
-This command migrate the given projects and create a log.html inside the specified workspace.
+This command migrate the given projects and create a log.html at the specified location.
    
