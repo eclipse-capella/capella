@@ -1,0 +1,13 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ 
+<icon file path> - <plugin repository> - <original file path>
+
+/icons/icon_create.png - capella.platform.sirius.ui.project - /icons/projectWizard.png
+/icons/icon_import.png - org.eclipse.ui - /icons/full/wizban/import_wiz.png
+/icons/icon_web.png - git.polarsys.org/r/polarsys.org/capella - /images/icons
+/icons/icon_bugzilla.png - git.polarsys.org/r/polarsys.org/capella - /images/icons/icon_bugzilla.png
+/icons/icon_forum.png - git.polarsys.org/r/polarsys.org/capella - /images/icons/icon_forum.png
+/icons/icon_training.png - git.polarsys.org/r/polarsys.org/capella - /images/icons/icon_training.png
+/icons/icon_wiki.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/intro-capella.png

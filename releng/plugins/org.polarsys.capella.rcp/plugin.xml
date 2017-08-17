@@ -21,4 +21,14 @@
          <property name="introDescription-firststeps" value="%introDescription-firststeps"/>
        </product>
     </extension>
+    
+   <extension
+         point="org.eclipse.ui.intro">
+         <introProductBinding
+               productId="org.polarsys.capella.rcp.product"
+               introId="org.eclipse.ui.intro.universal">
+         </introProductBinding>
+   </extension>
+    
+    
 </plugin>

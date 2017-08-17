@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -12,25 +12,22 @@
 -->
 <plugin>
    <extension
-         point="org.eclipse.ui.intro">
-      <introProductBinding
-            introId="org.eclipse.ui.intro.universal"
-            productId="org.polarsys.capella.rcp.product">
-      </introProductBinding>
-   </extension>
-   <extension
          point="org.eclipse.ui.intro.configExtension">
          <configExtension
-            configId="org.eclipse.ui.intro.universalConfig"
-            content="intro/whatsnewExtensionContent.xml">
+               configId="org.eclipse.ui.intro.universalConfig"
+               content="intro/firststeps-actions.xml">
          </configExtension>
          <configExtension
                configId="org.eclipse.ui.intro.universalConfig"
-               content="intro/firststepsExtensionContent-actions.xml">
+               content="intro/firststeps-help.xml">
          </configExtension>
          <configExtension
                configId="org.eclipse.ui.intro.universalConfig"
-               content="intro/firststepsExtensionContent-doc.xml">
+               content="intro/firststeps-doc.xml">
+         </configExtension>
+         <configExtension
+               configId="org.eclipse.ui.intro.universalConfig"
+               content="intro/firststeps-bug.xml">
          </configExtension>
          <action
                name="createCapellaProjectCommand"
@@ -40,65 +37,5 @@
                name="importCapellaProjectCommand"
                replaces="runAction?standby=true&amp;pluginId=org.polarsys.capella.core.ui.intro&amp;class=org.polarsys.capella.core.ui.intro.actions.ImportCapellaProjectAction">
          </action>
-         <theme
-            id="org.polarsys.capella.core.ui.intro.theme"
-            name="%theme.name.capella"
-            path="$nl$/themes/capella"
-            previewImage="$nl$/themes/capella/preview.png">
-            <property name="workbenchAsRootLink"
-                    value="true"/>
-                    <!--
-            <property name="launchbarBackground"
-                    value="#a1c2cb"/>
-                    -->
-            <property name="launchbarOverviewIcon"
-                      value="$theme$graphics/launchbar/overview16.png"/>
-            <property name="launchbarFirststepsIcon"
-                      value="$theme$graphics/launchbar/firststeps16.png"/>
-            <property name="launchbarTutorialsIcon"
-                      value="$theme$graphics/launchbar/tutorials16.png"/>
-            <property name="launchbarSamplesIcon"
-                      value="$theme$graphics/launchbar/samples16.png"/>
-            <property name="launchbarWhatsnewIcon"
-                      value="$theme$graphics/launchbar/whatsnew16.png"/>
-            <property name="launchbarMigrateIcon"
-                      value="$theme$graphics/launchbar/migrate16.png"/>
-            <property name="launchbarWebresourcesIcon"
-                      value="$theme$graphics/launchbar/webresources16.png"/>
-
-            <property name="highContrast-overview"
-                      value="$theme$graphics/icons/ctool/overview.png"/>
-            <property name="highContrast-firststeps"
-                      value="$theme$graphics/icons/ctool/firststeps.png"/>
-            <property name="highContrast-tutorials"
-                      value="$theme$graphics/icons/ctool/tutorials.png"/>
-            <property name="highContrast-samples"
-                      value="$theme$graphics/icons/ctool/samples.png"/>
-            <property name="highContrast-whatsnew"
-                      value="$theme$graphics/icons/ctool/whatsnew.png"/>
-            <property name="highContrast-webresources"
-                      value="$theme$graphics/icons/ctool/webresources.png"/>
-            <property name="highContrast-migrate"
-                      value="$theme$graphics/icons/ctool/migrate.png"/>    
-            <property name="highContrast-workbench"
-                      value="$theme$graphics/icons/ctool/workbench.png"/>    
-                      
-            <property name="highContrastNav-overview"
-                      value="$theme$graphics/icons/ctool/ov_nav.png"/>
-            <property name="highContrastNav-firststeps"
-                      value="$theme$graphics/icons/ctool/fs_nav.png"/>
-            <property name="highContrastNav-tutorials"
-                      value="$theme$graphics/icons/ctool/tu_nav.png"/>
-            <property name="highContrastNav-samples"
-                      value="$theme$graphics/icons/ctool/sa_nav.png"/>
-            <property name="highContrastNav-whatsnew"
-                      value="$theme$graphics/icons/ctool/wn_nav.png"/>
-            <property name="highContrastNav-webresources"
-                      value="$theme$graphics/icons/ctool/wr_nav.png"/>
-            <property name="highContrastNav-migrate"
-                      value="$theme$graphics/icons/ctool/mi_nav.png"/> 
-            <property name="highContrastNav-workbench"
-                      value="$theme$graphics/icons/ctool/wb_nav.png"/>                    
-      </theme>
    </extension>
 </plugin>
