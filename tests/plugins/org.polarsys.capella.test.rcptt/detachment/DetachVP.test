@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _zy85YBhIEee-A_RTBZbvjg
 Runtime-Version: 2.1.0.201606221726
-Save-Time: 4/7/17 2:24 PM
+Save-Time: 8/17/17 3:04 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -38,10 +38,9 @@ with [get-view "Capella Project Explorer" | get-tree] {
 
 wait 6000
 
-get-editor "Detachment" | get-tab-folder | get-tab-item "Viewpoints Tree Page" | click
-get-editor "Detachment" | get-section "Viewpoints Hierarchy" | get-tree | select "org.polarsys.capella.vp.perfo"
-get-editor "Detachment" | get-section "Viewpoints Hierarchy" | get-tree | get-item "org.polarsys.capella.vp.perfo" 
-    | uncheck
+get-editor "Detachment" | get-tab-folder | get-tab-item "Unknown references" | click
+get-editor "Detachment" | get-table 
+    | select "Missing Sirius Viewpoint \\(platform:\\/plugin\\/org.polarsys.capella.vp.perfo.design\\/description\\/perfo.odesign#\\/\\/@ownedViewpoints\\[name='Perfo_ID'\\]\\)"
 get-editor "Detachment" | get-button "Perform Detachment" | click
 get-window Information | get-button Yes | click
 wait 3000 
