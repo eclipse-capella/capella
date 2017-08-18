@@ -15,7 +15,7 @@
          point="org.eclipse.ui.perspectives">
       <perspective
             class="org.polarsys.capella.core.platform.sirius.ui.perspective.CapellaPerspective"
-            icon="icons/CapellaAdavance16x16.gif"
+            icon="icons/Capella16x16.png"
             id="capella.sirius.perspective"
             name="%perspective.name">
          <description>
@@ -66,15 +66,12 @@
      <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.modelingproject.wizard"/>
      <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.specificationproject.wizard"/>
    </extension>
+   
    <!--extension point="org.eclipse.ui.splashHandlers">
       <splashHandler
             class="org.polarsys.capella.core.platform.sirius.ui.perspective.CapellaSplashHandler"
             id="org.polarsys.capella.core.product.splashHandler">
       </splashHandler>
-      <splashHandlerProductBinding
-            productId="org.polarsys.capella.rcp.product"
-            splashId="org.polarsys.capella.core.product.splashHandler">
-      </splashHandlerProductBinding>
    </extension-->
    	<extension
          point="org.eclipse.ui.statusHandlers">
@@ -82,10 +79,6 @@
                class="org.polarsys.capella.core.platform.sirius.ui.app.CapellaStatusHandler"
                id="org.polarsys.capella.core.platform.sirius.ui.perspective.statusHandler">
       	</statusHandler>
-         <statusHandlerProductBinding
-               handlerId="org.polarsys.capella.core.platform.sirius.ui.perspective.statusHandler"
-               productId="org.polarsys.capella.rcp.product">
-         </statusHandlerProductBinding>
    </extension>
 	<extension
 			point="org.eclipse.ui.services">

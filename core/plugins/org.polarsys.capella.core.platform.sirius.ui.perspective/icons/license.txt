@@ -4,16 +4,5 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
-/icons/Capella32x32.png - capella.platform.sirius.ui.perspective - capella.platform.sirius.ui.perspective/icons/Capella32x32.png
-/icons/CapellaAbout.png - capella.platform.sirius.ui.perspective - capella.platform.sirius.ui.perspective/icons/CapellaAbout.png
-/icons/Capella48x48.bmp - capella.platform.sirius.ui.perspective - capella.platform.sirius.ui.perspective/icons/Capella48x48.bmp
-/icons/CapellaAdavance16x16.gif - capella.platform.sirius.ui.perspective - capella.platform.sirius.ui.perspective/icons/CapellaAdavance16x16.gif
-/icons/Capella48x48.png - capella.platform.sirius.ui.perspective - capella.platform.sirius.ui.perspective/icons/Capella48x48.png
-/icons/Capella32x32_8bits.bmp - capella.platform.sirius.ui.perspective - capella.platform.sirius.ui.perspective/icons/Capella32x32_8bits.bmp
-/icons/Capella16x16.bmp - capella.platform.sirius.ui.perspective - capella.platform.sirius.ui.perspective/icons/Capella16x16.bmp
-/icons/Capella16x16_8bits.bmp - capella.platform.sirius.ui.perspective - capella.platform.sirius.ui.perspective/icons/Capella16x16_8bits.bmp
-/icons/Capella32x32.bmp - capella.platform.sirius.ui.perspective - capella.platform.sirius.ui.perspective/icons/Capella32x32.bmp
-/icons/Capella24x24.png - capella.platform.sirius.ui.perspective - capella.platform.sirius.ui.perspective/icons/Capella24x24.png
-/icons/intro-capella.png - capella.platform.sirius.ui.perspective - capella.platform.sirius.ui.perspective/icons/intro-capella.png
-/icons/Capella24x24.bmp - capella.platform.sirius.ui.perspective - capella.platform.sirius.ui.perspective/icons/Capella24x24.bmp
-/icons/Capella48x48_8bits.bmp - capella.platform.sirius.ui.perspective - capella.platform.sirius.ui.perspective/icons/Capella48x48_8bits.bmp
+/icons/Capella16x16.png - capella.platform.sirius.ui.perspective - capella.platform.sirius.ui.perspective/icons/Capella16x16.png
+/icons/Capella16x16.gif - capella.platform.sirius.ui.perspective - capella.platform.sirius.ui.perspective/icons/Capella16x16.gif

@@ -3,12 +3,6 @@
 
 <product name="Capella" uid="org.polarsys.capella.rcp.product" id="org.polarsys.capella.rcp.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.2.0.qualifier" useFeatures="true" includeLaunchers="true">
 
-   <aboutInfo>
-      <image path="icons/CapellaAbout.png"/>
-      <text>
-         %productBlurb
-      </text>
-   </aboutInfo>
 
    <configIni use="default">
    </configIni>
@@ -29,23 +23,20 @@
       </vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="../org.polarsys.capella.rcp/icons/Capella16x16.gif" i32="../org.polarsys.capella.rcp/icons/Capella32x32.png" i48="../org.polarsys.capella.rcp/icons/Capella48x48.png"/>
+   <windowImages/>
 
    <splash
-      location="org.polarsys.capella.core.platform.sirius.ui.perspective"
-      startupProgressRect="1,288,452,15"
-      startupMessageRect="24,200,421,20"
-      startupForegroundColor="000000" />
+      location="org.polarsys.capella.core.platform.sirius.ui.perspective" />
    <launcher>
       <solaris/>
       <win useIco="false">
          <bmp
-            winSmallHigh="../../../core/plugins/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella16x16.bmp"
-            winSmallLow="../../../core/plugins/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella16x16_8bits.bmp"
-            winMediumHigh="../../../core/plugins/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella32x32.bmp"
-            winMediumLow="../../../core/plugins/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella32x32_8bits.bmp"
-            winLargeHigh="../../../core/plugins/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella48x48.bmp"
-            winLargeLow="../../../core/plugins/org.polarsys.capella.core.platform.sirius.ui.perspective/icons/Capella48x48_8bits.bmp"/>
+            winSmallHigh="../org.polarsys.capella.rcp/icons/Capella16x16.bmp"
+            winSmallLow="../org.polarsys.capella.rcp/icons/Capella16x16_8bits.bmp"
+            winMediumHigh="../org.polarsys.capella.rcp/icons/Capella32x32.bmp"
+            winMediumLow="../org.polarsys.capella.rcp/icons/Capella32x32_8bits.bmp"
+            winLargeHigh="../org.polarsys.capella.rcp/icons/Capella48x48.bmp"
+            winLargeLow="../org.polarsys.capella.rcp/icons/Capella48x48_8bits.bmp"/>
       </win>
    </launcher>
 
@@ -57,7 +48,6 @@
       <solaris include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</solaris>
       <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</windows>
    </vm>
-
 
    <plugins>
    </plugins>
