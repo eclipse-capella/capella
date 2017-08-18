@@ -27,10 +27,6 @@
       </vmArgsLin>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
-      <vmArgsWin>
-         <argsX86_64>-Dosgi.requiredJavaVersion=1.8
--Dorg.eclipse.swt.browser.DefaultType=mozilla</argsX86_64>
-      </vmArgsWin>
    </launcherArgs>
 
    <windowImages i16="../org.polarsys.capella.rcp/icons/Capella16x16.gif" i32="../org.polarsys.capella.rcp/icons/Capella32x32.png" i48="../org.polarsys.capella.rcp/icons/Capella48x48.png"/>
@@ -61,6 +57,7 @@
       <solaris include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</solaris>
       <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</windows>
    </vm>
+
 
    <plugins>
    </plugins>
