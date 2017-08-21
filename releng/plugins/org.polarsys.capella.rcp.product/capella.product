@@ -3,7 +3,6 @@
 
 <product name="Capella" uid="org.polarsys.capella.rcp.product" id="org.polarsys.capella.rcp.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.2.0.qualifier" useFeatures="true" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
@@ -14,8 +13,6 @@
       <vmArgs>-Dosgi.requiredJavaVersion=1.8
 -Xms1000m
 -Xmx3000m
--XX:PermSize=128m
--XX:MaxPermSize=512m
       </vmArgs>
       <vmArgsLin>-Dorg.eclipse.swt.browser.DefaultType=mozilla
       </vmArgsLin>
