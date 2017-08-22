@@ -13,6 +13,7 @@
       <vmArgs>-Dosgi.requiredJavaVersion=1.8
 -Xms1000m
 -Xmx3000m
+-Xss4m
       </vmArgs>
       <vmArgsLin>-Dorg.eclipse.swt.browser.DefaultType=mozilla
       </vmArgsLin>
