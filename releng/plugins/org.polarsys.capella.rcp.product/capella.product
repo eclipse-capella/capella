@@ -64,6 +64,11 @@
       <feature id="org.eclipse.sirius.runtime"/>
       <feature id="org.eclipse.sirius.runtime.aql"/>
       <feature id="org.eclipse.sirius.runtime.ide.ui"/>
+	  <feature id="org.eclipse.sirius.interpreter.feature"/>
+	  <feature id="org.eclipse.acceleo.ui.interpreter"/>
+	  <feature id="org.eclipse.sirius.aql"/>
+	  <feature id="org.eclipse.acceleo.query"/>
+	  <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo"/>  
       <feature id="org.polarsys.capella.rcp.feature"/>
       <feature id="org.polarsys.kitalpha.ad.feature"/>
       <feature id="org.polarsys.kitalpha.ad.integration.emde.feature"/>

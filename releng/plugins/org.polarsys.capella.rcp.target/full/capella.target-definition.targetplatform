@@ -28,6 +28,11 @@ location sirius-5.1.0 "http://download.eclipse.org/sirius/updates/stable/5.1.0-S
 	org.eclipse.sirius.runtime.feature.group
 	org.eclipse.sirius.runtime.aql.feature.group
 	org.eclipse.sirius.runtime.ide.ui.feature.group
+	org.eclipse.sirius.interpreter.feature.feature.group
+	org.eclipse.acceleo.ui.interpreter.feature.group
+	org.eclipse.sirius.aql.feature.group
+	org.eclipse.acceleo.query.feature.group
+	org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group
 }
 
 location kitalpha-runtime-master-latest "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_runtime/site.p2" {
