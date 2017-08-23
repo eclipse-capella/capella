@@ -22,6 +22,7 @@ import java.util.List;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.diffmerge.api.Role;
@@ -204,7 +205,7 @@ public class CompareLayoutManager {
    * Returns a predefined uri according to the session
    */
   public URI getLayoutUri(Session session) {
-    return session.getSessionResource().getURI().appendFileExtension(LayoutPackage.eNS_PREFIX);
+    return session.getSessionResource().getURI().appendFileExtension(Platform.getOS()).appendFileExtension(LayoutPackage.eNS_PREFIX);
   }
 
   /**
