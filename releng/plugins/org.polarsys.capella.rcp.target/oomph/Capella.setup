@@ -972,6 +972,16 @@
             name="org.eclipse.sirius.runtime.aql.feature.group"/>
         <requirement
             name="org.eclipse.sirius.runtime.ide.ui.feature.group"/>
+        <requirement
+            name="org.eclipse.sirius.interpreter.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.acceleo.ui.interpreter.feature.group"/>
+        <requirement
+            name="org.eclipse.sirius.aql.feature.group"/>
+        <requirement
+            name="org.eclipse.acceleo.query.feature.group"/>
+        <requirement
+            name="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group"/>
         <repositoryList
             name="Neon">
           <repository
