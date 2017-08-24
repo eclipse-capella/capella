@@ -1020,6 +1020,8 @@
             name="org.polarsys.kitalpha.report.ui.feature.feature.group"/>
         <requirement
             name="org.polarsys.kitalpha.transposer.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.richtext.widget.feature.feature.group"/>
         <repositoryList
             name="Neon">
           <repository
