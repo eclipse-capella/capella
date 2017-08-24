@@ -24,6 +24,7 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.IDialogSettings;
@@ -90,6 +91,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -111,6 +113,9 @@ import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryPro
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlyListener;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaStatusLineContributionItemProvider;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaStatusLineContributionItemProvider.CapellaStatusLineMessageContributionItem;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorLabelProvider;
 import org.polarsys.capella.core.ui.properties.CapellaTabbedPropertySheetPage;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
@@ -331,6 +336,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
           ISelectionProvider provider = event.getSelectionProvider();
           updateSelectionProvider(provider);
           refreshPropertyPage(provider);
+          updateStatusLine(provider.getSelection());
         }
       };
     }
@@ -1043,6 +1049,22 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     }
   }
 
+  public void updateStatusLine(ISelection selection) {
+    if (selection instanceof IStructuredSelection) {
+      Object selectedElement = ((IStructuredSelection)selection).getFirstElement();
+      IStatusLineManager statusLineManager = getViewSite().getActionBars().getStatusLineManager();
+      
+      if (selectedElement != null && selectedElement instanceof EObject) {
+        CapellaNavigatorLabelProvider semanticBrowserLabelProvider = new CapellaNavigatorLabelProvider(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
+        Image image = semanticBrowserLabelProvider.getImage(selectedElement);
+        String text = semanticBrowserLabelProvider.getDescription(selectedElement);
+        statusLineManager.setMessage(image, text);
+      }
+      else
+        statusLineManager.setMessage(null, ICommonConstants.EMPTY_STRING);
+    }
+  }
+  
   /**
    * {@inheritDoc}
    */

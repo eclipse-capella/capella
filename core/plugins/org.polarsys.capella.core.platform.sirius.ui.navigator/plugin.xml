@@ -1487,4 +1487,11 @@
             class="org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaUISessionFactory">
       </uiSessionFactory>
    </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.common.ui.services.statusLineContributionItemProviders">
+      <statusLineContributionItemProvider
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaStatusLineContributionItemProvider">
+         <Priority name="High"/>
+      </statusLineContributionItemProvider>
+   </extension>
 </plugin>
