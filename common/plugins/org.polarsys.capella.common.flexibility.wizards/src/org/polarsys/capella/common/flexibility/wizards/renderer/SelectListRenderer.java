@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -22,6 +22,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.jface.resource.ColorRegistry;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.IDoubleClickListener;
@@ -38,7 +39,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.Menu;
@@ -50,6 +50,7 @@ import org.polarsys.capella.common.flexibility.wizards.Activator;
 import org.polarsys.capella.common.flexibility.wizards.constants.ICommonConstants;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.ui.DefaultLabelProvider;
+import org.polarsys.capella.common.flexibility.wizards.ui.FlexibilityColors;
 import org.polarsys.capella.common.flexibility.wizards.ui.util.ToolbarPopulator;
 import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData;
@@ -74,8 +75,8 @@ public class SelectListRenderer extends AbstractRenderer {
   protected IStructuredSelection selection;
   private ILabelProvider labelProvider;
   private DataViewerLabelProvider dataLabelProvider;
-  
- 
+
+
   /**
    * @return the viewer
    */
@@ -167,16 +168,18 @@ public class SelectListRenderer extends AbstractRenderer {
         IStatus status = getStatus(element, rendererContext);
         if ((status == null) || status.isOK()) {
           return null;
-
-        } else if (status.matches(IStatus.INFO)) {
-          return new Color(Display.getDefault(), 217, 255, 209);
-
-        } else if (status.matches(IStatus.WARNING)) {
-          return new Color(Display.getDefault(), 254, 241, 137);
-
-        } else if (status.matches(IStatus.ERROR)) {
-          return new Color(Display.getDefault(), 252, 222, 222);
         }
+
+        ColorRegistry colors = FlexibilityColors.getColorRegistry();
+
+        if (status.matches(IStatus.INFO)) {
+          return colors.get(FlexibilityColors.BG_INFO);
+        } else if (status.matches(IStatus.WARNING)) {
+          return colors.get(FlexibilityColors.BG_WARNING);
+        } else if (status.matches(IStatus.ERROR)) {
+          return colors.get(FlexibilityColors.BG_ERROR);
+        }
+
         return null;
       }
     };
@@ -396,6 +399,7 @@ public class SelectListRenderer extends AbstractRenderer {
       /**
        * @see ISelectionChangedListener#selectionChanged(SelectionChangedEvent)
        */
+      @Override
       public void selectionChanged(SelectionChangedEvent event) {
         // Handle the selection itself.
         selection = (IStructuredSelection) event.getSelection();
@@ -409,6 +413,7 @@ public class SelectListRenderer extends AbstractRenderer {
       /**
        * @see IDoubleClickListener#doubleClick(DoubleClickEvent)
        */
+      @Override
       public void doubleClick(DoubleClickEvent event) {
         ISelection selection = event.getSelection();
         if (isValidDoubleClick(event, selection, context)) {
@@ -554,6 +559,7 @@ public class SelectListRenderer extends AbstractRenderer {
     return new ListData(Collections.emptyList(), null);
   }
 
+  @Override
   public void initialize(IProperty property, IRendererContext propertyContext) {
     Object value = propertyContext.getPropertyContext().getDefaultValue(property);
     updatedValue(property, propertyContext, value);
