@@ -40,7 +40,6 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -50,8 +49,8 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.statushandlers.StatusManager;
 import org.polarsys.capella.common.ef.domain.AbstractEditingDomainResourceSetListenerImpl;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.IUserEnforcedHelper2;
@@ -66,6 +65,8 @@ import org.polarsys.capella.core.model.handler.AbortedTransactionException;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.handler.pre.condition.IFileModificationPreconditionChecker;
+import org.polarsys.capella.core.platform.sirius.ui.session.CapellaSessionHelper;
+import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 
 /**
  * File Modification Pre Commit listener.<br>
@@ -223,13 +224,13 @@ public class FileModificationPreCommitListener extends AbstractEditingDomainReso
     for (Resource res : resourcesToMakeWritable)
       lstFile.add(EcoreUtil2.getFile(res));
 
-    final boolean[] result = { true };
+    boolean result = true;
     // Get a file modification precondition delegator.
     final IFileModificationPreconditionChecker preConditionChecker = getFileModificationPreconditionChecker();
     if (null != preConditionChecker) {
-      result[0] = preConditionChecker.fulfillConditions(lstFile);
+      result = preConditionChecker.fulfillConditions(lstFile);
     }
-    if (!result[0]) {
+    if (!result) {
       throw new AbortedTransactionException(Status.CANCEL_STATUS, "Pre-conditions are not satisfactory"); //$NON-NLS-1$
     }
   }
@@ -251,8 +252,8 @@ public class FileModificationPreCommitListener extends AbstractEditingDomainReso
         filesToCheck.add(file);
       }
     }
+    
     IStatus userWritePermissionStatus = checkUserWritePermission(new ArrayList<IFile>(filesToCheck));
-
     if (!userWritePermissionStatus.isOK()) {
       throw new AbortedTransactionException(Status.CANCEL_STATUS,
           "End-user canceled to make the file writable or it failed to make it writable."); //$NON-NLS-1$
@@ -487,23 +488,14 @@ public class FileModificationPreCommitListener extends AbstractEditingDomainReso
       return Status.OK_STATUS;
     }
 
-    // There is at least one inaccessible file => report error to the user and return cancel status
-    final Display display = PlatformUI.isWorkbenchRunning() ? PlatformUI.getWorkbench().getDisplay() : null;
-    final Shell shell = display.getActiveShell();
     final StringBuilder sb = new StringBuilder(
         "Following files are not accessible (may result from a write access denied)\n");
     for (File f : filesWithNoWritePermission) {
       sb.append(f.getAbsolutePath() + "\n");
     }
-
-    shell.getDisplay().syncExec(new Runnable() {
-      public void run() {
-        MessageDialog.openError(shell, "Inaccessible file encoutered", sb.toString());
-      }
-    });
-
+    CapellaSessionHelper.reportError(new Status(IStatus.ERROR,SiriusUIPlugin.getDefault().getPluginId(), sb.toString()));
     return Status.CANCEL_STATUS;
-  }
+  } 
 
   /**
    * Set whether or not valid edit is enabled or disabled.

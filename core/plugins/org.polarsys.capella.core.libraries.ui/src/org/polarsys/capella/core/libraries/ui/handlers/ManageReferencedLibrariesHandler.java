@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,8 +18,8 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandlerListener;
 import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.session.Session;
@@ -43,7 +43,6 @@ import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.core.libraries.properties.FlexibilityIds;
 import org.polarsys.capella.core.libraries.properties.LibraryManagerModel;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.sirius.ui.SaveSessionAction;
 
 public class ManageReferencedLibrariesHandler extends AbstractHandler {
 
@@ -119,11 +118,7 @@ public class ManageReferencedLibrariesHandler extends AbstractHandler {
     int result = dialog.open();
 
     if (result == Window.OK) {
-
-      SaveSessionAction saveSessionAction = new SaveSessionAction();
-      saveSessionAction.selectionChanged(new StructuredSelection(session));
-      saveSessionAction.run();
-
+      session.save(new NullProgressMonitor());
       return Status.OK_STATUS;
     }
     return null;
