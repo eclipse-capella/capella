@@ -13,6 +13,7 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.viewer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -55,6 +56,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.ui.ISaveablePart2;
+import org.eclipse.ui.Saveable;
 import org.eclipse.ui.navigator.SaveablesProvider;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -524,20 +526,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
     case IResourceChangeEvent.PRE_DELETE: {
       if (null != event.getResource()) {
         IProject project = (IProject) event.getResource();
-        // We are not called in the UI thread. The code below handles
-        // that case.
-        Object[] children = getChildren(project);
-        for (Object object : children) {
-          if (object instanceof Session) {
-            Session session = (Session) object;
-            IEditingSession sessionUI = SessionUIManager.INSTANCE.getUISession(session);
-            boolean saveSession = false;
-            if (SessionStatus.DIRTY.equals(session.getStatus())) {
-              saveSession = (ISaveablePart2.YES == SWTUtil.showSaveDialog(session, "Session", true)); //$NON-NLS-1$
-            }
-            sessionUI.close(saveSession);
-          }
-        }
+        SessionHelper.closeUiSessions(Collections.singletonList(project));
       }
       break;
     }

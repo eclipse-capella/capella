@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.sirius.ui.actions;
 
 import java.lang.reflect.InvocationTargetException;
@@ -26,6 +25,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
@@ -45,7 +45,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.polarsys.capella.common.ef.command.AbstractNonDirtyingCommand;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.sirius.ui.Messages;
 import org.polarsys.capella.core.sirius.ui.closeproject.SessionCloseManager;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
@@ -179,18 +178,6 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
     }
   }
 
-  /*******************************************************************************
-   * Copyright (c) 2008, 2010, 2011 THALES GLOBAL SERVICES. All rights reserved. This program and the accompanying
-   * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this
-   * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
-   *
-   * Contributors: Obeo - initial API and implementation Thales - Contributor
-   *
-   * Close session command. <br>
-   *
-   * @see {@link org.eclipse.sirius.ui.tools.internal.views.sessionview.DesignerSessionView}
-   *
-   *******************************************************************************/
   private class CloseSessionCommand extends AbstractNonDirtyingCommand {
     /**
      * Session to close.
@@ -207,40 +194,12 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
       this.session = session;
     }
 
-    protected void saveSession(Session session) {
-      Collection<IFile> files = new ArrayList<IFile>();
-      if (SessionCloseManager.isSaveable(session,
-          files)/* SessionHelper.areSessionResourcesSaveable(session, files) */) {
-        SessionCloseManager.saveSession(session);// session.save(new NullProgressMonitor());
-      } else {
-        String msg;
-        msg = Messages.unableToSaveDialog_TopMsg;
-        for (IFile file : files) {
-          msg += file.toString() + ICommonConstants.EOL_CHARACTER;
-        }
-        msg += ICommonConstants.EOL_CHARACTER + Messages.unableToSaveDuringCloseOpsDialog_BottomQuestion
-            + ICommonConstants.EOL_CHARACTER;
-        Shell activeShell = Display.getCurrent().getActiveShell();
-
-        MessageDialog.openQuestion(activeShell, Messages.CloseSessionAction_Title, msg);
-      }
-    }
-
     protected void closeSession(Session session, boolean saveIsNeeded) {
       IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
       if (null != uiSession) {
-        SessionCloseManager.closeUISession(uiSession, saveIsNeeded);// uiSession.close(saveIsNeeded);
+        SessionCloseManager.closeUISession(uiSession, saveIsNeeded);
       }
-      // Close editors not yet registered with an UI session
-      Display.getDefault().syncExec(new CloseOthersEditorRunnable(session, saveIsNeeded));
-      // Remove the UI session.
-      if (uiSession != null) {
-        SessionCloseManager.removeUiSession(uiSession);// SessionUIManager.INSTANCE.remove(uiSession);
-      }
-      // sessionsToClose.add(session);
-      if (session.isOpen()) {
-        SessionCloseManager.closeSession(session);// session.close(null);
-      }
+      SessionCloseManager.closeSession(session);
       SessionCloseManager.cleanSession(session);
     }
 
@@ -253,7 +212,7 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
 
       // Ask user confirmation, if needed.
       int choice = ISaveablePart2.NO;
-      if (SessionCloseManager.isDirty(session)/* SessionStatus.DIRTY.equals(session.getStatus()) */) {
+      if (SessionCloseManager.isDirty(session)) {
         if (showDialog) {
           // Show a dialog.
           choice = SWTUtil.showSaveDialog(session, "Session", true); //$NON-NLS-1$
@@ -264,11 +223,22 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
       if (ISaveablePart2.CANCEL == choice) {
         return;
       }
-
+      
       // Save session, if required.
       boolean saveIsNeeded = (ISaveablePart2.YES == choice);
       if (saveIsNeeded) {
-        saveSession(session);
+
+        try {
+          SessionCloseManager.saveSession(session);
+
+        } catch (RuntimeException e) {
+          String msg = NLS.bind(Messages.unableToSaveDuringCloseOpsDialog_BottomQuestion, e.getMessage()); 
+          Shell activeShell = Display.getCurrent().getActiveShell();
+          if (!MessageDialog.openQuestion(activeShell, Messages.CloseSessionAction_Title, msg)) {
+            return;
+          }
+          saveIsNeeded = false;
+        }
       }
 
       closeSession(session, saveIsNeeded);
@@ -276,71 +246,4 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
 
   }
 
-  /**
-   * Close Open editors linked to a session.
-   */
-  private class CloseOthersEditorRunnable implements Runnable {
-    private boolean save;
-    private Session currentSession;
-
-    /**
-     * Constructs the runnable to close others editors.
-     *
-     * @param session
-     *          The session.
-     * @param save
-     *          <code>True</code> if save operation before closing is needed else <code>false</code>.
-     */
-    public CloseOthersEditorRunnable(Session session, boolean save) {
-      this.currentSession = session;
-      this.save = save;
-    }
-
-    /**
-     * @see java.lang.Runnable#run()
-     */
-    @Override
-    public void run() {
-      IWorkbenchPage page = EclipseUIUtil.getActivePage();
-      if (null == page) {
-        return;
-      }
-
-      // Get all editor references i.e active and not activated editors. Indeed, after a restart, previous open editors
-      // are re-opened by the workbench.
-      // But only the active one is fully loaded, other ones are only editors references.
-      IEditorReference[] editorReferences = page.getEditorReferences();
-      // Editor references to close.
-      List<IEditorReference> editorReferencesToClose = new ArrayList<IEditorReference>(0);
-      // Loop over open editor references.
-      for (IEditorReference editorReference : editorReferences) {
-        try {
-          IEditorInput editorReferenceInput = editorReference.getEditorInput();
-          // Get the editor input from the editor reference.
-          if (editorReferenceInput instanceof URIEditorInput) {
-            // Check if current session matches current editor reference input.
-            if (currentSession instanceof DAnalysisSession) {
-              // Get the analysis resources.
-              Collection<Resource> analysisResources = SessionHelper.getAllAirdResources(currentSession);
-              // Loop over theses ones to match URIs.
-              for (Resource resource : analysisResources) {
-                URI uri = resource.getURI();
-                URI trimFragment = ((URIEditorInput) editorReferenceInput).getURI().trimFragment();
-                if ((uri != null) && uri.equals(trimFragment)) {
-                  editorReferencesToClose.add(editorReference);
-                  break;
-                }
-              }
-            }
-          }
-        } catch (final PartInitException e) {
-          // do nothing
-        }
-      }
-      // Close found editors.
-      if (!editorReferencesToClose.isEmpty()) {
-        page.closeEditors(editorReferencesToClose.toArray(new IEditorReference[editorReferencesToClose.size()]), save);
-      }
-    }
-  }
 }

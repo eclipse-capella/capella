@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,41 +59,6 @@ import org.polarsys.capella.core.sirius.ui.session.ISessionAdvisor;
  * {@link Session} helper.
  */
 public class SessionHelper {
-  /**
-   * Utility method in order to perform a pre checking on a Session about the saveable state of its embedded resource.
-   * @param session the target Session
-   * @param unsaveableFiles return the list of unsaveable resources, otherwise an empty one.
-   * @return <code>true</code> if session can be saved, <code>false</code> otherwise.
-   */
-  public static boolean areSessionResourcesSaveable(final Session session, Collection<IFile> unsaveableFiles) {
-    // Preconditions
-    if ((null == session) || (null == unsaveableFiles) || !(session instanceof DAnalysisSession)) {
-      return false;
-    }
-    boolean ret = true;
-    // Let's obtain all resources for this session.
-    Collection<Resource> allResources = getAllAirdResources(session);
-    allResources.addAll(session.getSemanticResources());
-
-    // Let's check it
-    for (Resource resource : allResources) {
-      if (null != resource) {
-        // check whether we have the write permission to the folder containing the resource
-        IFile file = EcoreUtil2.getFile(resource);
-        if (null != file) {
-          IPath path = file.getLocation();
-          IPath parentFolderPath = path.removeLastSegments(1);
-          File dir = parentFolderPath.toFile();
-
-          if (!dir.canWrite()) {
-            ret = false;
-            unsaveableFiles.add(file);
-          }
-        }
-      }
-    }
-    return ret;
-  }
 
   /**
    * Do close the active sessions.<br>
