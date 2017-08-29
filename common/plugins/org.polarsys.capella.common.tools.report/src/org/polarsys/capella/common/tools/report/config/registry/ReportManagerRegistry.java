@@ -48,13 +48,8 @@ public class ReportManagerRegistry {
 
     // Create configuration file and start loading process.
     ConfigurationInstance defaultConfInstance = configuration
-        .createDefaultConfiguration(IReportManagerDefaultComponents.DEFAULT, _appenders);
+        .createDefaultConfiguration(ReportManagerConstants.LOG_OUTPUT_DEFAULT, _appenders);
     _configurations.put(defaultConfInstance.getComponentName(), defaultConfInstance);
-
-    // Create usage monitoring configuration
-    ConfigurationInstance usageMonitoringConfInstance = configuration
-        .createUsageMonitoringConfiguration(IReportManagerDefaultComponents.USAGE, _appenders);
-    _configurations.put(usageMonitoringConfInstance.getComponentName(), usageMonitoringConfInstance);
 
     if (configuration.isConfigurationFileExists()) {
       // Load configuration from XML config file
@@ -80,7 +75,7 @@ public class ReportManagerRegistry {
   public synchronized static ReportManagerRegistry getInstance() {
     if (instance == null) {
       instance = new ReportManagerRegistry();
-      instance.subscribe(IReportManagerDefaultComponents.DEFAULT); // $NON-NLS-1$
+      instance.subscribe(IReportManagerDefaultComponents.DEFAULT); //$NON-NLS-1$
     }
     return instance;
   }
@@ -159,8 +154,8 @@ public class ReportManagerRegistry {
   }
 
   /**
-  * 
-  */
+   * 
+   */
   protected void initRootLogger() {
 
     try {
@@ -197,32 +192,21 @@ public class ReportManagerRegistry {
    * @return
    */
   public Logger subscribe(String componentName) {
-
     if (!_configurations.containsKey(componentName)) {
 
-      if (!IReportManagerDefaultComponents.USAGE.equals(componentName)) {
-        ConfigurationInstance oConfigurationInstance = copyConfig(
-            _configurations.get(ReportManagerConstants.LOG_OUTPUT_DEFAULT));
+      ConfigurationInstance oConfigurationInstance = copyConfig(
+          _configurations.get(ReportManagerConstants.LOG_OUTPUT_DEFAULT));
 
-        if (null != oConfigurationInstance) {
-          oConfigurationInstance.setComponentName(componentName);
-          synchronized (_configurations) {
-            _configurations.put(componentName, oConfigurationInstance);
-          }
-        }
-      } else {
-        ConfigurationInstance oConfigurationInstance = copyConfig(
-            _configurations.get(ReportManagerConstants.LOG_OUTPUT_USAGE_FILE));
-        if (null != oConfigurationInstance) {
-          oConfigurationInstance.setComponentName(componentName);
-          synchronized (_configurations) {
-            _configurations.put(componentName, oConfigurationInstance);
-          }
+      if (null != oConfigurationInstance) {
+        oConfigurationInstance.setComponentName(componentName);
+        synchronized (_configurations) {
+          _configurations.put(componentName, oConfigurationInstance);
         }
       }
     }
 
     Logger theLog = Logger.getLogger(componentName);
+
     return theLog;
   }
 
@@ -250,8 +234,8 @@ public class ReportManagerRegistry {
   }
 
   /**
-  * 
-  */
+   * 
+   */
   public void beginLoggingSession() {
     beginLoggingSession(IFlushableAppenders.ALL);
   }

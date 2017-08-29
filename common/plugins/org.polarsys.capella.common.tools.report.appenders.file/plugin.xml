@@ -18,11 +18,4 @@
             id="org.polarsys.capella.common.tools.report.ReportManagerFileAppender.Log4jAppendersExtension3">
       </Log4jAppendersExtension>
    </extension>
-   <extension
-         point="org.polarsys.capella.common.tools.report.Log4jAppendersExtension">
-      <Log4jAppendersExtension
-            class="org.polarsys.capella.common.tools.report.appenders.file.UsageMonitoringFileAppender"
-            id="org.polarsys.capella.common.tools.report.UsageMonitoringFileAppender.Log4jAppendersExtension1">
-      </Log4jAppendersExtension>
-   </extension>
 </plugin>

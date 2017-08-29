@@ -72,90 +72,34 @@ public class CreateXmlConfiguration {
 
       opConfList.add(currentConfig);
 
-      createDefaultLogConfig(currentConfig, true);
+      createLogConfig(currentConfig, true);
 
     }
 
     return confInstance;
-  }
-
-  public ConfigurationInstance createUsageMonitoringConfiguration(String componentName, Map<String, Appender> map) {
-    Set<String> appenders = map.keySet();
-
-    ConfigurationInstance confInstance = _factory.createConfigurationInstance();
-    confInstance.setComponentName(componentName);
-
-    // list of outputConfigs
-    List<OutputConfiguration> opConfList = confInstance.getOutputConfiguration();
-
-    for (String appenderName : appenders) {
-      OutputConfiguration currentConfig = _factory.createOutputConfiguration();
-      currentConfig.setOutputName(appenderName);
-
-      opConfList.add(currentConfig);
-
-      createUsageMonitoringLogConfig(currentConfig, true);
-    }
-
-    return confInstance;
-  }
-
-  private void createUsageMonitoringLogConfig(OutputConfiguration outputConfiguration, boolean logLevelValue) {
-    List<LogLevel> logLevelListFile = outputConfiguration.getLogLevel();
-
-    logLevelListFile.clear();
-
-    if (ReportManagerConstants.LOG_OUTPUT_USAGE_FILE.equals(outputConfiguration.getOutputName())) {
-      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_INFO));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
-      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_WARN));
-      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_ERROR));
-      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_FATAL));
-    } else {
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_INFO));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_WARN));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_ERROR));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_FATAL));
-    }
   }
 
   /**
    * 
    * 
    */
-  private void createDefaultLogConfig(OutputConfiguration outputConfiguration, boolean logLevelValue) {
+  private void createLogConfig(OutputConfiguration outputConfiguration, boolean logLevelValue) {
     List<LogLevel> logLevelListFile = outputConfiguration.getLogLevel();
 
     logLevelListFile.clear();
 
-    String outputConfigurationName = outputConfiguration.getOutputName();
-
-    switch (outputConfigurationName) {
-
-    case ReportManagerConstants.LOG_OUTPUT_FILE:
+    if (ReportManagerConstants.LOG_OUTPUT_FILE.equals(outputConfiguration.getOutputName())) {
       logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_INFO));
       logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
       logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_WARN));
       logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_ERROR));
       logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_FATAL));
-      break;
-
-    case ReportManagerConstants.LOG_OUTPUT_USAGE_FILE:
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_INFO));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_WARN));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_ERROR));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_FATAL));
-      break;
-
-    default:
+    } else {
       logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_INFO));
       logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
       logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_WARN));
       logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_ERROR));
       logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_FATAL));
-      break;
     }
   }
 
@@ -234,7 +178,7 @@ public class CreateXmlConfiguration {
   }
 
   /**
-   * save configuration hashmap to configuration file
+   * save configuraion hashmap to configuration file
    * 
    * @param configurationMap
    */

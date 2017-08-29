@@ -28,6 +28,4 @@ public interface IReportManagerDefaultComponents {
   public static final String MODEL = "Model Management";
   public static final String DEFAULT = "Default";
   public static final String BRIDGE = "Bridge";
-  public static final String USAGE = "Usage Monitoring";
-
 }

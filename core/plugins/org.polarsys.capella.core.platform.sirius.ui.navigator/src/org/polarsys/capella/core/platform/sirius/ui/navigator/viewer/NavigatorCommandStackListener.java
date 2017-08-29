@@ -16,6 +16,8 @@ import java.util.Collection;
 import java.util.EventObject;
 import java.util.List;
 
+import org.eclipse.core.commands.operations.IOperationHistoryListener;
+import org.eclipse.core.commands.operations.OperationHistoryEvent;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
@@ -25,15 +27,18 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.operations.IWorkbenchOperationSupport;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
+import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageLogger;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 
 /**
- * A command stack listener used to retrieve elements created or relevant from the last command triggered on a command stack This listener triggers an event on
- * the registered ICommandStackSelectionProvider
+ * A command stack listener used to retrieve elements created or relevant from the last command triggered on a command
+ * stack This listener triggers an event on the registered ICommandStackSelectionProvider
  */
 public class NavigatorCommandStackListener implements CommandStackListener {
-
   // Field is never null
   WeakReference<Command> _mostRecent = new WeakReference<Command>(null);
 
@@ -68,7 +73,8 @@ public class NavigatorCommandStackListener implements CommandStackListener {
         // For instance, when creating a property for a class, we don't want to select its min & max cards.
         if (selectedElement != null) {
           ISelection selection = new StructuredSelection(selectedElement);
-          if ((mostRecentCommand instanceof RecordingCommand) && (mostRecentCommand.getLabel().startsWith(CapellaDeleteCommand.ID))) {
+          if ((mostRecentCommand instanceof RecordingCommand)
+              && (mostRecentCommand.getLabel().startsWith(CapellaDeleteCommand.ID))) {
             selection = handleDeleteCommand(affectedObjects);
           }
           selectionChanged(selection);
@@ -77,12 +83,14 @@ public class NavigatorCommandStackListener implements CommandStackListener {
     }
 
   }
+
   protected void selectionChanged(ISelection selection) {
     _callback.commandStackSelectionChanged(selection);
   }
 
   /**
    * Handle Delete commands.
+   * 
    * @param affectedObjects
    */
   protected ISelection handleDeleteCommand(Collection<?> affectedObjects) {
@@ -94,7 +102,8 @@ public class NavigatorCommandStackListener implements CommandStackListener {
           parent = ((EObject) affectedObject).eContainer();
         } catch (Exception exception) {
           // With CDO when closing the sirius session, a late event to select a cdo object can occur.
-          // If the underlying cdo transaction is closed, we can't call eContainer(). in that case don't select something.
+          // If the underlying cdo transaction is closed, we can't call eContainer(). in that case don't select
+          // something.
         }
         if (null != parent) {
           elementsToSelect.add(parent);
@@ -105,7 +114,9 @@ public class NavigatorCommandStackListener implements CommandStackListener {
   }
 
   /**
-   * Default implementations filters out all recording commands apart from {@link CapellaDeleteCommand} (identified by {@link CapellaDeleteCommand#ID}
+   * Default implementations filters out all recording commands apart from {@link CapellaDeleteCommand} (identified by
+   * {@link CapellaDeleteCommand#ID}
+   * 
    * @param mostRecentCommand
    * @return
    */
@@ -123,10 +134,11 @@ public class NavigatorCommandStackListener implements CommandStackListener {
    * Should handle most recent command to select and reveal elements in current common viewer.<br>
    * Default implementation filters out :
    * <ul>
-   * <li> <code>SetCommand</code> performed with new value of String kind.</li>
+   * <li><code>SetCommand</code> performed with new value of String kind.</li>
    * <li><code>CompoundCommand</code> containing SetCommand matching previous case.</li>
    * <li><code>RecordingCommand</code> see {@link #shouldSelectAndReveal(RecordingCommand)}.
    * </ul>
+   * 
    * @param mostRecentCommand
    * @return <code>true</code> means selecteAndReveal needed.
    */
@@ -160,6 +172,22 @@ public class NavigatorCommandStackListener implements CommandStackListener {
    */
   public void registerCommandStackListener(SemanticEditingDomain editingDomain) {
     editingDomain.getCommandStack().addCommandStackListener(this);
+
+    IWorkbenchOperationSupport operationSupport = PlatformUI.getWorkbench().getOperationSupport();
+    operationSupport.getOperationHistory().addOperationHistoryListener(new IOperationHistoryListener() {
+
+      @Override
+      public void historyNotification(OperationHistoryEvent arg0) {
+        
+        if (arg0.getEventType() == OperationHistoryEvent.ABOUT_TO_EXECUTE) {
+          // Usage logging call
+          UsageMonitoringLogger.getInstance().log(UsageLogger.START, arg0.getOperation().getLabel());
+          
+        } else if (arg0.getEventType() == OperationHistoryEvent.DONE) {
+          UsageMonitoringLogger.getInstance().log(UsageLogger.STOP, arg0.getOperation().getLabel(), UsageLogger.OK);
+        }
+      }
+    });
   }
 
   /**
