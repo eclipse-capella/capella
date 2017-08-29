@@ -1,0 +1,19 @@
+h1. Eclipse Configuration Files for Capella
+
+This directory contains configuration files for *Eclipse* which should be installed by every *Capella* team member to ensure a common coding style.
+They have been copied from the the *Sirius* settings project (org.eclipse.sirius.settings).
+
+They can be used as global *Eclipse* configuration files if your IDE is used to develop only *Capella*, otherwise you should prefer the project specific configuration (each project in the repository should already be configured).
+
+
+* @CheckstyleConfiguration.xml@: the configuration file for CheckStyle v5. Import it from __Preferences > CheckStyle__. *Required for everyone*.
+* @CleanupProfile.xml@: the configuration file for Clean Up. Import it from __Preferences > Java > Code Style > Clean Up__.
+* @JavaFormatter.xml@: the configuration file to format the Java file. Import it from __Preferences > Java > Code Style > Formatter__. *Required for everyone*.
+* @capella.importorder@: the configuration file to sort the imports. Import it from __Preferences > Java > Code Style > Organize Imports__. *Required for everyone*.
+
+It also contains configuration files to initialize a new development environment:
+
+* @capella.psf@: A Team Project Set to initialize the working sets of the workspace.
+* @oomph/Capella.setup@: Oomph configuration file.
+
+WARNING: If you change the CleanupProfile.xml, JavaFormatter.xml or capella.importorder, you must also change the corresponding field in Capella.setup file. Indeed, the content of these files is copied in Capella.setup file because there is currently nothing to address these "preferences" in Oomph.
