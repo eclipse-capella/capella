@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.information.datatype.*;
 import org.polarsys.capella.core.data.information.datatype.BooleanType;
 import org.polarsys.capella.core.data.information.datatype.DatatypeFactory;
@@ -118,6 +119,10 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	public BooleanType createBooleanType() {
 		BooleanTypeImpl booleanType = new BooleanTypeImpl();
     //begin-capella-code
+
+    booleanType.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return booleanType;
 	}
@@ -130,6 +135,10 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	public Enumeration createEnumeration() {
 		EnumerationImpl enumeration = new EnumerationImpl();
     //begin-capella-code
+
+    enumeration.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return enumeration;
 	}
@@ -142,6 +151,10 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	public StringType createStringType() {
 		StringTypeImpl stringType = new StringTypeImpl();
     //begin-capella-code
+
+    stringType.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return stringType;
 	}
@@ -154,6 +167,10 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	public NumericType createNumericType() {
 		NumericTypeImpl numericType = new NumericTypeImpl();
     //begin-capella-code
+
+    numericType.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return numericType;
 	}
@@ -166,6 +183,10 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	public PhysicalQuantity createPhysicalQuantity() {
 		PhysicalQuantityImpl physicalQuantity = new PhysicalQuantityImpl();
     //begin-capella-code
+
+    physicalQuantity.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return physicalQuantity;
 	}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.la.*;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
@@ -106,6 +107,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	public LogicalArchitecturePkg createLogicalArchitecturePkg() {
 		LogicalArchitecturePkgImpl logicalArchitecturePkg = new LogicalArchitecturePkgImpl();
     //begin-capella-code
+
+    logicalArchitecturePkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return logicalArchitecturePkg;
 	}
@@ -118,6 +123,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	public LogicalArchitecture createLogicalArchitecture() {
 		LogicalArchitectureImpl logicalArchitecture = new LogicalArchitectureImpl();
     //begin-capella-code
+
+    logicalArchitecture.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return logicalArchitecture;
 	}
@@ -130,6 +139,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	public LogicalFunction createLogicalFunction() {
 		LogicalFunctionImpl logicalFunction = new LogicalFunctionImpl();
     //begin-capella-code
+
+    logicalFunction.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return logicalFunction;
 	}
@@ -142,6 +155,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	public LogicalFunctionPkg createLogicalFunctionPkg() {
 		LogicalFunctionPkgImpl logicalFunctionPkg = new LogicalFunctionPkgImpl();
     //begin-capella-code
+
+    logicalFunctionPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return logicalFunctionPkg;
 	}
@@ -154,6 +171,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	public LogicalComponent createLogicalComponent() {
 		LogicalComponentImpl logicalComponent = new LogicalComponentImpl();
     //begin-capella-code
+
+    logicalComponent.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return logicalComponent;
 	}
@@ -166,6 +187,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	public LogicalComponentPkg createLogicalComponentPkg() {
 		LogicalComponentPkgImpl logicalComponentPkg = new LogicalComponentPkgImpl();
     //begin-capella-code
+
+    logicalComponentPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return logicalComponentPkg;
 	}
@@ -178,6 +203,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	public CapabilityRealization createCapabilityRealization() {
 		CapabilityRealizationImpl capabilityRealization = new CapabilityRealizationImpl();
     //begin-capella-code
+
+    capabilityRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return capabilityRealization;
 	}
@@ -190,6 +219,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	public CapabilityRealizationPkg createCapabilityRealizationPkg() {
 		CapabilityRealizationPkgImpl capabilityRealizationPkg = new CapabilityRealizationPkgImpl();
     //begin-capella-code
+
+    capabilityRealizationPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return capabilityRealizationPkg;
 	}
@@ -202,6 +235,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	public SystemAnalysisRealization createSystemAnalysisRealization() {
 		SystemAnalysisRealizationImpl systemAnalysisRealization = new SystemAnalysisRealizationImpl();
     //begin-capella-code
+
+    systemAnalysisRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemAnalysisRealization;
 	}
@@ -214,6 +251,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	public SystemRealization createSystemRealization() {
 		SystemRealizationImpl systemRealization = new SystemRealizationImpl();
     //begin-capella-code
+
+    systemRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemRealization;
 	}
@@ -226,6 +267,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	public ContextInterfaceRealization createContextInterfaceRealization() {
 		ContextInterfaceRealizationImpl contextInterfaceRealization = new ContextInterfaceRealizationImpl();
     //begin-capella-code
+
+    contextInterfaceRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return contextInterfaceRealization;
 	}
@@ -238,6 +283,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	public LogicalActorPkg createLogicalActorPkg() {
 		LogicalActorPkgImpl logicalActorPkg = new LogicalActorPkgImpl();
     //begin-capella-code
+
+    logicalActorPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return logicalActorPkg;
 	}
@@ -250,6 +299,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	public LogicalActor createLogicalActor() {
 		LogicalActorImpl logicalActor = new LogicalActorImpl();
     //begin-capella-code
+
+    logicalActor.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return logicalActor;
 	}
@@ -262,6 +315,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	public SystemActorRealization createSystemActorRealization() {
 		SystemActorRealizationImpl systemActorRealization = new SystemActorRealizationImpl();
     //begin-capella-code
+
+    systemActorRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemActorRealization;
 	}
@@ -274,6 +331,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	public LogicalContext createLogicalContext() {
 		LogicalContextImpl logicalContext = new LogicalContextImpl();
     //begin-capella-code
+
+    logicalContext.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return logicalContext;
 	}

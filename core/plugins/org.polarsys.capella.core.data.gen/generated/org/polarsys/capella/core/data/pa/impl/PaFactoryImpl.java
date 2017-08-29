@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.pa.*;
 import org.polarsys.capella.core.data.pa.LogicalActorRealization;
 import org.polarsys.capella.core.data.pa.LogicalArchitectureRealization;
@@ -141,6 +142,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	public PhysicalArchitecturePkg createPhysicalArchitecturePkg() {
 		PhysicalArchitecturePkgImpl physicalArchitecturePkg = new PhysicalArchitecturePkgImpl();
     //begin-capella-code
+
+    physicalArchitecturePkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return physicalArchitecturePkg;
 	}
@@ -153,6 +158,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	public PhysicalArchitecture createPhysicalArchitecture() {
 		PhysicalArchitectureImpl physicalArchitecture = new PhysicalArchitectureImpl();
     //begin-capella-code
+
+    physicalArchitecture.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return physicalArchitecture;
 	}
@@ -165,6 +174,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	public PhysicalFunction createPhysicalFunction() {
 		PhysicalFunctionImpl physicalFunction = new PhysicalFunctionImpl();
     //begin-capella-code
+
+    physicalFunction.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return physicalFunction;
 	}
@@ -177,6 +190,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	public PhysicalFunctionPkg createPhysicalFunctionPkg() {
 		PhysicalFunctionPkgImpl physicalFunctionPkg = new PhysicalFunctionPkgImpl();
     //begin-capella-code
+
+    physicalFunctionPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return physicalFunctionPkg;
 	}
@@ -189,6 +206,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	public PhysicalComponent createPhysicalComponent() {
 		PhysicalComponentImpl physicalComponent = new PhysicalComponentImpl();
     //begin-capella-code
+
+    physicalComponent.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return physicalComponent;
 	}
@@ -201,6 +222,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	public PhysicalActorPkg createPhysicalActorPkg() {
 		PhysicalActorPkgImpl physicalActorPkg = new PhysicalActorPkgImpl();
     //begin-capella-code
+
+    physicalActorPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return physicalActorPkg;
 	}
@@ -213,6 +238,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	public PhysicalComponentPkg createPhysicalComponentPkg() {
 		PhysicalComponentPkgImpl physicalComponentPkg = new PhysicalComponentPkgImpl();
     //begin-capella-code
+
+    physicalComponentPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return physicalComponentPkg;
 	}
@@ -225,6 +254,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	public PhysicalActor createPhysicalActor() {
 		PhysicalActorImpl physicalActor = new PhysicalActorImpl();
     //begin-capella-code
+
+    physicalActor.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return physicalActor;
 	}
@@ -237,6 +270,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	public LogicalActorRealization createLogicalActorRealization() {
 		LogicalActorRealizationImpl logicalActorRealization = new LogicalActorRealizationImpl();
     //begin-capella-code
+
+    logicalActorRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return logicalActorRealization;
 	}
@@ -249,6 +286,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	public PhysicalNode createPhysicalNode() {
 		PhysicalNodeImpl physicalNode = new PhysicalNodeImpl();
     //begin-capella-code
+
+    physicalNode.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return physicalNode;
 	}
@@ -261,6 +302,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	public LogicalArchitectureRealization createLogicalArchitectureRealization() {
 		LogicalArchitectureRealizationImpl logicalArchitectureRealization = new LogicalArchitectureRealizationImpl();
     //begin-capella-code
+
+    logicalArchitectureRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return logicalArchitectureRealization;
 	}
@@ -273,6 +318,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	public LogicalComponentRealization createLogicalComponentRealization() {
 		LogicalComponentRealizationImpl logicalComponentRealization = new LogicalComponentRealizationImpl();
     //begin-capella-code
+
+    logicalComponentRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return logicalComponentRealization;
 	}
@@ -285,6 +334,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	public LogicalInterfaceRealization createLogicalInterfaceRealization() {
 		LogicalInterfaceRealizationImpl logicalInterfaceRealization = new LogicalInterfaceRealizationImpl();
     //begin-capella-code
+
+    logicalInterfaceRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return logicalInterfaceRealization;
 	}
@@ -297,6 +350,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	public PhysicalContext createPhysicalContext() {
 		PhysicalContextImpl physicalContext = new PhysicalContextImpl();
     //begin-capella-code
+
+    physicalContext.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return physicalContext;
 	}

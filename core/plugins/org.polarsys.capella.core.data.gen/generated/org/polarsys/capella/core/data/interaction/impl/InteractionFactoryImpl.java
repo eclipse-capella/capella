@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.interaction.*;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint;
@@ -181,6 +182,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public SequenceMessage createSequenceMessage() {
 		SequenceMessageImpl sequenceMessage = new SequenceMessageImpl();
     //begin-capella-code
+
+    sequenceMessage.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return sequenceMessage;
 	}
@@ -193,6 +198,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public Scenario createScenario() {
 		ScenarioImpl scenario = new ScenarioImpl();
     //begin-capella-code
+
+    scenario.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return scenario;
 	}
@@ -205,6 +214,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public MessageEnd createMessageEnd() {
 		MessageEndImpl messageEnd = new MessageEndImpl();
     //begin-capella-code
+
+    messageEnd.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return messageEnd;
 	}
@@ -217,6 +230,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public Execution createExecution() {
 		ExecutionImpl execution = new ExecutionImpl();
     //begin-capella-code
+
+    execution.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return execution;
 	}
@@ -229,6 +246,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public ExecutionEnd createExecutionEnd() {
 		ExecutionEndImpl executionEnd = new ExecutionEndImpl();
     //begin-capella-code
+
+    executionEnd.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return executionEnd;
 	}
@@ -241,6 +262,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public CreationEvent createCreationEvent() {
 		CreationEventImpl creationEvent = new CreationEventImpl();
     //begin-capella-code
+
+    creationEvent.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return creationEvent;
 	}
@@ -253,6 +278,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public DestructionEvent createDestructionEvent() {
 		DestructionEventImpl destructionEvent = new DestructionEventImpl();
     //begin-capella-code
+
+    destructionEvent.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return destructionEvent;
 	}
@@ -265,6 +294,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public ExecutionEvent createExecutionEvent() {
 		ExecutionEventImpl executionEvent = new ExecutionEventImpl();
     //begin-capella-code
+
+    executionEvent.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return executionEvent;
 	}
@@ -277,6 +310,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public InstanceRole createInstanceRole() {
 		InstanceRoleImpl instanceRole = new InstanceRoleImpl();
     //begin-capella-code
+
+    instanceRole.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return instanceRole;
 	}
@@ -289,6 +326,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public EventReceiptOperation createEventReceiptOperation() {
 		EventReceiptOperationImpl eventReceiptOperation = new EventReceiptOperationImpl();
     //begin-capella-code
+
+    eventReceiptOperation.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return eventReceiptOperation;
 	}
@@ -301,6 +342,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public EventSentOperation createEventSentOperation() {
 		EventSentOperationImpl eventSentOperation = new EventSentOperationImpl();
     //begin-capella-code
+
+    eventSentOperation.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return eventSentOperation;
 	}
@@ -313,6 +358,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public MergeLink createMergeLink() {
 		MergeLinkImpl mergeLink = new MergeLinkImpl();
     //begin-capella-code
+
+    mergeLink.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return mergeLink;
 	}
@@ -325,6 +374,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public RefinementLink createRefinementLink() {
 		RefinementLinkImpl refinementLink = new RefinementLinkImpl();
     //begin-capella-code
+
+    refinementLink.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return refinementLink;
 	}
@@ -337,6 +390,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public AbstractCapabilityRealization createAbstractCapabilityRealization() {
 		AbstractCapabilityRealizationImpl abstractCapabilityRealization = new AbstractCapabilityRealizationImpl();
     //begin-capella-code
+
+    abstractCapabilityRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return abstractCapabilityRealization;
 	}
@@ -349,6 +406,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public AbstractCapabilityExtend createAbstractCapabilityExtend() {
 		AbstractCapabilityExtendImpl abstractCapabilityExtend = new AbstractCapabilityExtendImpl();
     //begin-capella-code
+
+    abstractCapabilityExtend.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return abstractCapabilityExtend;
 	}
@@ -361,6 +422,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public AbstractCapabilityExtensionPoint createAbstractCapabilityExtensionPoint() {
 		AbstractCapabilityExtensionPointImpl abstractCapabilityExtensionPoint = new AbstractCapabilityExtensionPointImpl();
     //begin-capella-code
+
+    abstractCapabilityExtensionPoint.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return abstractCapabilityExtensionPoint;
 	}
@@ -373,6 +438,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public AbstractCapabilityGeneralization createAbstractCapabilityGeneralization() {
 		AbstractCapabilityGeneralizationImpl abstractCapabilityGeneralization = new AbstractCapabilityGeneralizationImpl();
     //begin-capella-code
+
+    abstractCapabilityGeneralization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return abstractCapabilityGeneralization;
 	}
@@ -385,6 +454,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public AbstractCapabilityInclude createAbstractCapabilityInclude() {
 		AbstractCapabilityIncludeImpl abstractCapabilityInclude = new AbstractCapabilityIncludeImpl();
     //begin-capella-code
+
+    abstractCapabilityInclude.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return abstractCapabilityInclude;
 	}
@@ -397,6 +470,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public InteractionState createInteractionState() {
 		InteractionStateImpl interactionState = new InteractionStateImpl();
     //begin-capella-code
+
+    interactionState.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return interactionState;
 	}
@@ -409,6 +486,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public InteractionUse createInteractionUse() {
 		InteractionUseImpl interactionUse = new InteractionUseImpl();
     //begin-capella-code
+
+    interactionUse.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return interactionUse;
 	}
@@ -421,6 +502,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public CombinedFragment createCombinedFragment() {
 		CombinedFragmentImpl combinedFragment = new CombinedFragmentImpl();
     //begin-capella-code
+
+    combinedFragment.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return combinedFragment;
 	}
@@ -433,6 +518,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public Gate createGate() {
 		GateImpl gate = new GateImpl();
     //begin-capella-code
+
+    gate.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return gate;
 	}
@@ -445,6 +534,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public InteractionOperand createInteractionOperand() {
 		InteractionOperandImpl interactionOperand = new InteractionOperandImpl();
     //begin-capella-code
+
+    interactionOperand.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return interactionOperand;
 	}
@@ -457,6 +550,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public FragmentEnd createFragmentEnd() {
 		FragmentEndImpl fragmentEnd = new FragmentEndImpl();
     //begin-capella-code
+
+    fragmentEnd.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return fragmentEnd;
 	}
@@ -469,6 +566,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public FunctionalChainAbstractCapabilityInvolvement createFunctionalChainAbstractCapabilityInvolvement() {
 		FunctionalChainAbstractCapabilityInvolvementImpl functionalChainAbstractCapabilityInvolvement = new FunctionalChainAbstractCapabilityInvolvementImpl();
     //begin-capella-code
+
+    functionalChainAbstractCapabilityInvolvement.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return functionalChainAbstractCapabilityInvolvement;
 	}
@@ -481,6 +582,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public AbstractFunctionAbstractCapabilityInvolvement createAbstractFunctionAbstractCapabilityInvolvement() {
 		AbstractFunctionAbstractCapabilityInvolvementImpl abstractFunctionAbstractCapabilityInvolvement = new AbstractFunctionAbstractCapabilityInvolvementImpl();
     //begin-capella-code
+
+    abstractFunctionAbstractCapabilityInvolvement.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return abstractFunctionAbstractCapabilityInvolvement;
 	}
@@ -493,6 +598,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public ScenarioRealization createScenarioRealization() {
 		ScenarioRealizationImpl scenarioRealization = new ScenarioRealizationImpl();
     //begin-capella-code
+
+    scenarioRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return scenarioRealization;
 	}
@@ -505,6 +614,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public StateFragment createStateFragment() {
 		StateFragmentImpl stateFragment = new StateFragmentImpl();
     //begin-capella-code
+
+    stateFragment.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return stateFragment;
 	}
@@ -517,6 +630,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public ArmTimerEvent createArmTimerEvent() {
 		ArmTimerEventImpl armTimerEvent = new ArmTimerEventImpl();
     //begin-capella-code
+
+    armTimerEvent.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return armTimerEvent;
 	}
@@ -529,6 +646,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public CancelTimerEvent createCancelTimerEvent() {
 		CancelTimerEventImpl cancelTimerEvent = new CancelTimerEventImpl();
     //begin-capella-code
+
+    cancelTimerEvent.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return cancelTimerEvent;
 	}
@@ -541,6 +662,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public ConstraintDuration createConstraintDuration() {
 		ConstraintDurationImpl constraintDuration = new ConstraintDurationImpl();
     //begin-capella-code
+
+    constraintDuration.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return constraintDuration;
 	}
@@ -553,6 +678,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	public SequenceMessageValuation createSequenceMessageValuation() {
 		SequenceMessageValuationImpl sequenceMessageValuation = new SequenceMessageValuationImpl();
     //begin-capella-code
+
+    sequenceMessageValuation.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return sequenceMessageValuation;
 	}

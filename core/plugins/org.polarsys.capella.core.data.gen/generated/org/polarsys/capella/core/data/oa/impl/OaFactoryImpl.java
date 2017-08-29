@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.oa.*;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.CapabilityConfiguration;
@@ -132,6 +133,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public OperationalAnalysis createOperationalAnalysis() {
 		OperationalAnalysisImpl operationalAnalysis = new OperationalAnalysisImpl();
     //begin-capella-code
+
+    operationalAnalysis.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return operationalAnalysis;
 	}
@@ -144,6 +149,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public OperationalActivityPkg createOperationalActivityPkg() {
 		OperationalActivityPkgImpl operationalActivityPkg = new OperationalActivityPkgImpl();
     //begin-capella-code
+
+    operationalActivityPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return operationalActivityPkg;
 	}
@@ -156,6 +165,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public OperationalActivity createOperationalActivity() {
 		OperationalActivityImpl operationalActivity = new OperationalActivityImpl();
     //begin-capella-code
+
+    operationalActivity.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return operationalActivity;
 	}
@@ -168,6 +181,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public OperationalProcess createOperationalProcess() {
 		OperationalProcessImpl operationalProcess = new OperationalProcessImpl();
     //begin-capella-code
+
+    operationalProcess.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return operationalProcess;
 	}
@@ -180,6 +197,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public Swimlane createSwimlane() {
 		SwimlaneImpl swimlane = new SwimlaneImpl();
     //begin-capella-code
+
+    swimlane.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return swimlane;
 	}
@@ -192,6 +213,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public OperationalCapabilityPkg createOperationalCapabilityPkg() {
 		OperationalCapabilityPkgImpl operationalCapabilityPkg = new OperationalCapabilityPkgImpl();
     //begin-capella-code
+
+    operationalCapabilityPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return operationalCapabilityPkg;
 	}
@@ -204,6 +229,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public OperationalCapability createOperationalCapability() {
 		OperationalCapabilityImpl operationalCapability = new OperationalCapabilityImpl();
     //begin-capella-code
+
+    operationalCapability.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return operationalCapability;
 	}
@@ -216,6 +245,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public ActivityAllocation createActivityAllocation() {
 		ActivityAllocationImpl activityAllocation = new ActivityAllocationImpl();
     //begin-capella-code
+
+    activityAllocation.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return activityAllocation;
 	}
@@ -228,6 +261,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public RolePkg createRolePkg() {
 		RolePkgImpl rolePkg = new RolePkgImpl();
     //begin-capella-code
+
+    rolePkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return rolePkg;
 	}
@@ -240,6 +277,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public Role createRole() {
 		RoleImpl role = new RoleImpl();
     //begin-capella-code
+
+    role.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return role;
 	}
@@ -252,6 +293,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public RoleAssemblyUsage createRoleAssemblyUsage() {
 		RoleAssemblyUsageImpl roleAssemblyUsage = new RoleAssemblyUsageImpl();
     //begin-capella-code
+
+    roleAssemblyUsage.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return roleAssemblyUsage;
 	}
@@ -264,6 +309,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public RoleAllocation createRoleAllocation() {
 		RoleAllocationImpl roleAllocation = new RoleAllocationImpl();
     //begin-capella-code
+
+    roleAllocation.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return roleAllocation;
 	}
@@ -276,6 +325,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public EntityPkg createEntityPkg() {
 		EntityPkgImpl entityPkg = new EntityPkgImpl();
     //begin-capella-code
+
+    entityPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return entityPkg;
 	}
@@ -288,6 +341,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public Entity createEntity() {
 		EntityImpl entity = new EntityImpl();
     //begin-capella-code
+
+    entity.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return entity;
 	}
@@ -300,6 +357,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public ConceptPkg createConceptPkg() {
 		ConceptPkgImpl conceptPkg = new ConceptPkgImpl();
     //begin-capella-code
+
+    conceptPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return conceptPkg;
 	}
@@ -312,6 +373,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public Concept createConcept() {
 		ConceptImpl concept = new ConceptImpl();
     //begin-capella-code
+
+    concept.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return concept;
 	}
@@ -324,6 +389,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public ConceptCompliance createConceptCompliance() {
 		ConceptComplianceImpl conceptCompliance = new ConceptComplianceImpl();
     //begin-capella-code
+
+    conceptCompliance.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return conceptCompliance;
 	}
@@ -336,6 +405,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public ItemInConcept createItemInConcept() {
 		ItemInConceptImpl itemInConcept = new ItemInConceptImpl();
     //begin-capella-code
+
+    itemInConcept.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return itemInConcept;
 	}
@@ -348,6 +421,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public OperationalActor createOperationalActor() {
 		OperationalActorImpl operationalActor = new OperationalActorImpl();
     //begin-capella-code
+
+    operationalActor.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return operationalActor;
 	}
@@ -360,6 +437,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public CommunityOfInterest createCommunityOfInterest() {
 		CommunityOfInterestImpl communityOfInterest = new CommunityOfInterestImpl();
     //begin-capella-code
+
+    communityOfInterest.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return communityOfInterest;
 	}
@@ -372,6 +453,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public CommunityOfInterestComposition createCommunityOfInterestComposition() {
 		CommunityOfInterestCompositionImpl communityOfInterestComposition = new CommunityOfInterestCompositionImpl();
     //begin-capella-code
+
+    communityOfInterestComposition.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return communityOfInterestComposition;
 	}
@@ -384,6 +469,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public OrganisationalUnit createOrganisationalUnit() {
 		OrganisationalUnitImpl organisationalUnit = new OrganisationalUnitImpl();
     //begin-capella-code
+
+    organisationalUnit.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return organisationalUnit;
 	}
@@ -396,6 +485,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public OrganisationalUnitComposition createOrganisationalUnitComposition() {
 		OrganisationalUnitCompositionImpl organisationalUnitComposition = new OrganisationalUnitCompositionImpl();
     //begin-capella-code
+
+    organisationalUnitComposition.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return organisationalUnitComposition;
 	}
@@ -408,6 +501,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public Location createLocation() {
 		LocationImpl location = new LocationImpl();
     //begin-capella-code
+
+    location.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return location;
 	}
@@ -420,6 +517,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public CapabilityConfiguration createCapabilityConfiguration() {
 		CapabilityConfigurationImpl capabilityConfiguration = new CapabilityConfigurationImpl();
     //begin-capella-code
+
+    capabilityConfiguration.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return capabilityConfiguration;
 	}
@@ -432,6 +533,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public CommunicationMean createCommunicationMean() {
 		CommunicationMeanImpl communicationMean = new CommunicationMeanImpl();
     //begin-capella-code
+
+    communicationMean.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return communicationMean;
 	}
@@ -444,6 +549,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public EntityOperationalCapabilityInvolvement createEntityOperationalCapabilityInvolvement() {
 		EntityOperationalCapabilityInvolvementImpl entityOperationalCapabilityInvolvement = new EntityOperationalCapabilityInvolvementImpl();
     //begin-capella-code
+
+    entityOperationalCapabilityInvolvement.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return entityOperationalCapabilityInvolvement;
 	}
@@ -456,6 +565,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	public OperationalContext createOperationalContext() {
 		OperationalContextImpl operationalContext = new OperationalContextImpl();
     //begin-capella-code
+
+    operationalContext.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return operationalContext;
 	}

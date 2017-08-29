@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.ActorMissionInvolvement;
@@ -116,6 +117,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public SystemAnalysis createSystemAnalysis() {
 		SystemAnalysisImpl systemAnalysis = new SystemAnalysisImpl();
     //begin-capella-code
+
+    systemAnalysis.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemAnalysis;
 	}
@@ -128,6 +133,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public org.polarsys.capella.core.data.ctx.System createSystem() {
 		SystemImpl system = new SystemImpl();
     //begin-capella-code
+
+    system.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return system;
 	}
@@ -140,6 +149,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public SystemFunction createSystemFunction() {
 		SystemFunctionImpl systemFunction = new SystemFunctionImpl();
     //begin-capella-code
+
+    systemFunction.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemFunction;
 	}
@@ -152,6 +165,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public SystemFunctionPkg createSystemFunctionPkg() {
 		SystemFunctionPkgImpl systemFunctionPkg = new SystemFunctionPkgImpl();
     //begin-capella-code
+
+    systemFunctionPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemFunctionPkg;
 	}
@@ -164,6 +181,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public SystemCommunicationHook createSystemCommunicationHook() {
 		SystemCommunicationHookImpl systemCommunicationHook = new SystemCommunicationHookImpl();
     //begin-capella-code
+
+    systemCommunicationHook.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemCommunicationHook;
 	}
@@ -176,6 +197,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public SystemCommunication createSystemCommunication() {
 		SystemCommunicationImpl systemCommunication = new SystemCommunicationImpl();
     //begin-capella-code
+
+    systemCommunication.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemCommunication;
 	}
@@ -188,6 +213,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public Actor createActor() {
 		ActorImpl actor = new ActorImpl();
     //begin-capella-code
+
+    actor.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return actor;
 	}
@@ -200,6 +229,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public ActorCapabilityInvolvement createActorCapabilityInvolvement() {
 		ActorCapabilityInvolvementImpl actorCapabilityInvolvement = new ActorCapabilityInvolvementImpl();
     //begin-capella-code
+
+    actorCapabilityInvolvement.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return actorCapabilityInvolvement;
 	}
@@ -212,6 +245,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public ActorMissionInvolvement createActorMissionInvolvement() {
 		ActorMissionInvolvementImpl actorMissionInvolvement = new ActorMissionInvolvementImpl();
     //begin-capella-code
+
+    actorMissionInvolvement.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return actorMissionInvolvement;
 	}
@@ -224,6 +261,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public ActorPkg createActorPkg() {
 		ActorPkgImpl actorPkg = new ActorPkgImpl();
     //begin-capella-code
+
+    actorPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return actorPkg;
 	}
@@ -236,6 +277,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public Mission createMission() {
 		MissionImpl mission = new MissionImpl();
     //begin-capella-code
+
+    mission.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return mission;
 	}
@@ -248,6 +293,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public MissionPkg createMissionPkg() {
 		MissionPkgImpl missionPkg = new MissionPkgImpl();
     //begin-capella-code
+
+    missionPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return missionPkg;
 	}
@@ -260,6 +309,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public SystemMissionInvolvement createSystemMissionInvolvement() {
 		SystemMissionInvolvementImpl systemMissionInvolvement = new SystemMissionInvolvementImpl();
     //begin-capella-code
+
+    systemMissionInvolvement.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemMissionInvolvement;
 	}
@@ -272,6 +325,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public Capability createCapability() {
 		CapabilityImpl capability = new CapabilityImpl();
     //begin-capella-code
+
+    capability.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return capability;
 	}
@@ -284,6 +341,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public CapabilityExploitation createCapabilityExploitation() {
 		CapabilityExploitationImpl capabilityExploitation = new CapabilityExploitationImpl();
     //begin-capella-code
+
+    capabilityExploitation.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return capabilityExploitation;
 	}
@@ -296,6 +357,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public CapabilityPkg createCapabilityPkg() {
 		CapabilityPkgImpl capabilityPkg = new CapabilityPkgImpl();
     //begin-capella-code
+
+    capabilityPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return capabilityPkg;
 	}
@@ -308,6 +373,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public SystemCapabilityInvolvement createSystemCapabilityInvolvement() {
 		SystemCapabilityInvolvementImpl systemCapabilityInvolvement = new SystemCapabilityInvolvementImpl();
     //begin-capella-code
+
+    systemCapabilityInvolvement.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemCapabilityInvolvement;
 	}
@@ -320,6 +389,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public OperationalActorRealization createOperationalActorRealization() {
 		OperationalActorRealizationImpl operationalActorRealization = new OperationalActorRealizationImpl();
     //begin-capella-code
+
+    operationalActorRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return operationalActorRealization;
 	}
@@ -332,6 +405,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public OperationalAnalysisRealization createOperationalAnalysisRealization() {
 		OperationalAnalysisRealizationImpl operationalAnalysisRealization = new OperationalAnalysisRealizationImpl();
     //begin-capella-code
+
+    operationalAnalysisRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return operationalAnalysisRealization;
 	}
@@ -344,6 +421,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public OperationalEntityRealization createOperationalEntityRealization() {
 		OperationalEntityRealizationImpl operationalEntityRealization = new OperationalEntityRealizationImpl();
     //begin-capella-code
+
+    operationalEntityRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return operationalEntityRealization;
 	}
@@ -356,6 +437,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public SystemContext createSystemContext() {
 		SystemContextImpl systemContext = new SystemContextImpl();
     //begin-capella-code
+
+    systemContext.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemContext;
 	}

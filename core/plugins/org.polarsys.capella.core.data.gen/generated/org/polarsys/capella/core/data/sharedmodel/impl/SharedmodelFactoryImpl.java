@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.sharedmodel.*;
 import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
@@ -80,6 +81,10 @@ public class SharedmodelFactoryImpl extends EFactoryImpl implements SharedmodelF
 	public SharedPkg createSharedPkg() {
 		SharedPkgImpl sharedPkg = new SharedPkgImpl();
     //begin-capella-code
+
+    sharedPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return sharedPkg;
 	}
@@ -92,6 +97,10 @@ public class SharedmodelFactoryImpl extends EFactoryImpl implements SharedmodelF
 	public GenericPkg createGenericPkg() {
 		GenericPkgImpl genericPkg = new GenericPkgImpl();
     //begin-capella-code
+
+    genericPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return genericPkg;
 	}

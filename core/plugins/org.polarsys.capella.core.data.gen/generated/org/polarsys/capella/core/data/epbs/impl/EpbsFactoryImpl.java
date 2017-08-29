@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.epbs.*;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemKind;
@@ -122,6 +123,10 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	public EPBSArchitecturePkg createEPBSArchitecturePkg() {
 		EPBSArchitecturePkgImpl epbsArchitecturePkg = new EPBSArchitecturePkgImpl();
     //begin-capella-code
+
+    epbsArchitecturePkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return epbsArchitecturePkg;
 	}
@@ -134,6 +139,10 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	public EPBSArchitecture createEPBSArchitecture() {
 		EPBSArchitectureImpl epbsArchitecture = new EPBSArchitectureImpl();
     //begin-capella-code
+
+    epbsArchitecture.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return epbsArchitecture;
 	}
@@ -146,6 +155,10 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	public EPBSContext createEPBSContext() {
 		EPBSContextImpl epbsContext = new EPBSContextImpl();
     //begin-capella-code
+
+    epbsContext.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return epbsContext;
 	}
@@ -158,6 +171,10 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	public ConfigurationItemPkg createConfigurationItemPkg() {
 		ConfigurationItemPkgImpl configurationItemPkg = new ConfigurationItemPkgImpl();
     //begin-capella-code
+
+    configurationItemPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return configurationItemPkg;
 	}
@@ -170,6 +187,10 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	public ConfigurationItem createConfigurationItem() {
 		ConfigurationItemImpl configurationItem = new ConfigurationItemImpl();
     //begin-capella-code
+
+    configurationItem.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return configurationItem;
 	}
@@ -182,6 +203,10 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	public PhysicalArchitectureRealization createPhysicalArchitectureRealization() {
 		PhysicalArchitectureRealizationImpl physicalArchitectureRealization = new PhysicalArchitectureRealizationImpl();
     //begin-capella-code
+
+    physicalArchitectureRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return physicalArchitectureRealization;
 	}
@@ -194,6 +219,10 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	public PhysicalArtifactRealization createPhysicalArtifactRealization() {
 		PhysicalArtifactRealizationImpl physicalArtifactRealization = new PhysicalArtifactRealizationImpl();
     //begin-capella-code
+
+    physicalArtifactRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return physicalArtifactRealization;
 	}

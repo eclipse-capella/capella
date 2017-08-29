@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.requirement.*;
 import org.polarsys.capella.core.data.requirement.RequirementFactory;
 import org.polarsys.capella.core.data.requirement.RequirementPackage;
@@ -90,6 +91,10 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	public RequirementsPkg createRequirementsPkg() {
 		RequirementsPkgImpl requirementsPkg = new RequirementsPkgImpl();
     //begin-capella-code
+
+    requirementsPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return requirementsPkg;
 	}
@@ -102,6 +107,10 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	public RequirementsTrace createRequirementsTrace() {
 		RequirementsTraceImpl requirementsTrace = new RequirementsTraceImpl();
     //begin-capella-code
+
+    requirementsTrace.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return requirementsTrace;
 	}
@@ -114,6 +123,10 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	public SystemFunctionalInterfaceRequirement createSystemFunctionalInterfaceRequirement() {
 		SystemFunctionalInterfaceRequirementImpl systemFunctionalInterfaceRequirement = new SystemFunctionalInterfaceRequirementImpl();
     //begin-capella-code
+
+    systemFunctionalInterfaceRequirement.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemFunctionalInterfaceRequirement;
 	}
@@ -126,6 +139,10 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	public SystemFunctionalRequirement createSystemFunctionalRequirement() {
 		SystemFunctionalRequirementImpl systemFunctionalRequirement = new SystemFunctionalRequirementImpl();
     //begin-capella-code
+
+    systemFunctionalRequirement.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemFunctionalRequirement;
 	}
@@ -138,6 +155,10 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	public SystemNonFunctionalInterfaceRequirement createSystemNonFunctionalInterfaceRequirement() {
 		SystemNonFunctionalInterfaceRequirementImpl systemNonFunctionalInterfaceRequirement = new SystemNonFunctionalInterfaceRequirementImpl();
     //begin-capella-code
+
+    systemNonFunctionalInterfaceRequirement.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemNonFunctionalInterfaceRequirement;
 	}
@@ -150,6 +171,10 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	public SystemNonFunctionalRequirement createSystemNonFunctionalRequirement() {
 		SystemNonFunctionalRequirementImpl systemNonFunctionalRequirement = new SystemNonFunctionalRequirementImpl();
     //begin-capella-code
+
+    systemNonFunctionalRequirement.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemNonFunctionalRequirement;
 	}
@@ -162,6 +187,10 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	public SystemUserRequirement createSystemUserRequirement() {
 		SystemUserRequirementImpl systemUserRequirement = new SystemUserRequirementImpl();
     //begin-capella-code
+
+    systemUserRequirement.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemUserRequirement;
 	}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -122,6 +122,9 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	public RecCatalog createRecCatalog() {
 		RecCatalogImpl recCatalog = new RecCatalogImpl();
     //begin-capella-code
+
+
+
     //end-capella-code
 		return recCatalog;
 	}
@@ -134,6 +137,9 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	public GroupingElementPkg createGroupingElementPkg() {
 		GroupingElementPkgImpl groupingElementPkg = new GroupingElementPkgImpl();
     //begin-capella-code
+
+
+
     //end-capella-code
 		return groupingElementPkg;
 	}
@@ -146,6 +152,9 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	public CatalogElementPkg createCatalogElementPkg() {
 		CatalogElementPkgImpl catalogElementPkg = new CatalogElementPkgImpl();
     //begin-capella-code
+
+
+
     //end-capella-code
 		return catalogElementPkg;
 	}
@@ -158,6 +167,9 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	public CatalogElementLink createCatalogElementLink() {
 		CatalogElementLinkImpl catalogElementLink = new CatalogElementLinkImpl();
     //begin-capella-code
+
+
+
     //end-capella-code
 		return catalogElementLink;
 	}
@@ -170,6 +182,9 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	public CatalogElement createCatalogElement() {
 		CatalogElementImpl catalogElement = new CatalogElementImpl();
     //begin-capella-code
+
+
+
     //end-capella-code
 		return catalogElement;
 	}
@@ -182,6 +197,9 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	public CompliancyDefinitionPkg createCompliancyDefinitionPkg() {
 		CompliancyDefinitionPkgImpl compliancyDefinitionPkg = new CompliancyDefinitionPkgImpl();
     //begin-capella-code
+
+
+
     //end-capella-code
 		return compliancyDefinitionPkg;
 	}
@@ -194,6 +212,9 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	public CompliancyDefinition createCompliancyDefinition() {
 		CompliancyDefinitionImpl compliancyDefinition = new CompliancyDefinitionImpl();
     //begin-capella-code
+
+
+
     //end-capella-code
 		return compliancyDefinition;
 	}

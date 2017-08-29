@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.fa.*;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocation;
@@ -176,6 +177,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public FunctionSpecification createFunctionSpecification() {
 		FunctionSpecificationImpl functionSpecification = new FunctionSpecificationImpl();
     //begin-capella-code
+
+    functionSpecification.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return functionSpecification;
 	}
@@ -188,6 +193,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public ExchangeCategory createExchangeCategory() {
 		ExchangeCategoryImpl exchangeCategory = new ExchangeCategoryImpl();
     //begin-capella-code
+
+    exchangeCategory.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return exchangeCategory;
 	}
@@ -200,6 +209,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public ExchangeLink createExchangeLink() {
 		ExchangeLinkImpl exchangeLink = new ExchangeLinkImpl();
     //begin-capella-code
+
+    exchangeLink.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return exchangeLink;
 	}
@@ -212,6 +225,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public ExchangeContainment createExchangeContainment() {
 		ExchangeContainmentImpl exchangeContainment = new ExchangeContainmentImpl();
     //begin-capella-code
+
+    exchangeContainment.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return exchangeContainment;
 	}
@@ -224,6 +241,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public FunctionalExchangeSpecification createFunctionalExchangeSpecification() {
 		FunctionalExchangeSpecificationImpl functionalExchangeSpecification = new FunctionalExchangeSpecificationImpl();
     //begin-capella-code
+
+    functionalExchangeSpecification.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return functionalExchangeSpecification;
 	}
@@ -236,6 +257,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public FunctionalChain createFunctionalChain() {
 		FunctionalChainImpl functionalChain = new FunctionalChainImpl();
     //begin-capella-code
+
+    functionalChain.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return functionalChain;
 	}
@@ -248,6 +273,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public FunctionalChainInvolvement createFunctionalChainInvolvement() {
 		FunctionalChainInvolvementImpl functionalChainInvolvement = new FunctionalChainInvolvementImpl();
     //begin-capella-code
+
+    functionalChainInvolvement.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return functionalChainInvolvement;
 	}
@@ -260,6 +289,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public FunctionalChainReference createFunctionalChainReference() {
 		FunctionalChainReferenceImpl functionalChainReference = new FunctionalChainReferenceImpl();
     //begin-capella-code
+
+    functionalChainReference.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return functionalChainReference;
 	}
@@ -272,6 +305,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public FunctionInputPort createFunctionInputPort() {
 		FunctionInputPortImpl functionInputPort = new FunctionInputPortImpl();
     //begin-capella-code
+
+    functionInputPort.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return functionInputPort;
 	}
@@ -284,6 +321,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public FunctionOutputPort createFunctionOutputPort() {
 		FunctionOutputPortImpl functionOutputPort = new FunctionOutputPortImpl();
     //begin-capella-code
+
+    functionOutputPort.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return functionOutputPort;
 	}
@@ -296,6 +337,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public ComponentFunctionalAllocation createComponentFunctionalAllocation() {
 		ComponentFunctionalAllocationImpl componentFunctionalAllocation = new ComponentFunctionalAllocationImpl();
     //begin-capella-code
+
+    componentFunctionalAllocation.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return componentFunctionalAllocation;
 	}
@@ -308,6 +353,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public FunctionalChainRealization createFunctionalChainRealization() {
 		FunctionalChainRealizationImpl functionalChainRealization = new FunctionalChainRealizationImpl();
     //begin-capella-code
+
+    functionalChainRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return functionalChainRealization;
 	}
@@ -320,6 +369,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public FunctionalExchangeRealization createFunctionalExchangeRealization() {
 		FunctionalExchangeRealizationImpl functionalExchangeRealization = new FunctionalExchangeRealizationImpl();
     //begin-capella-code
+
+    functionalExchangeRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return functionalExchangeRealization;
 	}
@@ -332,6 +385,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public FunctionRealization createFunctionRealization() {
 		FunctionRealizationImpl functionRealization = new FunctionRealizationImpl();
     //begin-capella-code
+
+    functionRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return functionRealization;
 	}
@@ -344,6 +401,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public FunctionalExchange createFunctionalExchange() {
 		FunctionalExchangeImpl functionalExchange = new FunctionalExchangeImpl();
     //begin-capella-code
+
+    functionalExchange.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return functionalExchange;
 	}
@@ -356,6 +417,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public ComponentExchange createComponentExchange() {
 		ComponentExchangeImpl componentExchange = new ComponentExchangeImpl();
     //begin-capella-code
+
+    componentExchange.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return componentExchange;
 	}
@@ -368,6 +433,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public ComponentExchangeAllocation createComponentExchangeAllocation() {
 		ComponentExchangeAllocationImpl componentExchangeAllocation = new ComponentExchangeAllocationImpl();
     //begin-capella-code
+
+    componentExchangeAllocation.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return componentExchangeAllocation;
 	}
@@ -380,6 +449,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public ComponentExchangeCategory createComponentExchangeCategory() {
 		ComponentExchangeCategoryImpl componentExchangeCategory = new ComponentExchangeCategoryImpl();
     //begin-capella-code
+
+    componentExchangeCategory.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return componentExchangeCategory;
 	}
@@ -392,6 +465,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public ComponentExchangeEnd createComponentExchangeEnd() {
 		ComponentExchangeEndImpl componentExchangeEnd = new ComponentExchangeEndImpl();
     //begin-capella-code
+
+    componentExchangeEnd.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return componentExchangeEnd;
 	}
@@ -404,6 +481,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public ComponentExchangeFunctionalExchangeAllocation createComponentExchangeFunctionalExchangeAllocation() {
 		ComponentExchangeFunctionalExchangeAllocationImpl componentExchangeFunctionalExchangeAllocation = new ComponentExchangeFunctionalExchangeAllocationImpl();
     //begin-capella-code
+
+    componentExchangeFunctionalExchangeAllocation.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return componentExchangeFunctionalExchangeAllocation;
 	}
@@ -416,6 +497,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public ComponentExchangeRealization createComponentExchangeRealization() {
 		ComponentExchangeRealizationImpl componentExchangeRealization = new ComponentExchangeRealizationImpl();
     //begin-capella-code
+
+    componentExchangeRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return componentExchangeRealization;
 	}
@@ -428,6 +513,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public ComponentPort createComponentPort() {
 		ComponentPortImpl componentPort = new ComponentPortImpl();
     //begin-capella-code
+
+    componentPort.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return componentPort;
 	}
@@ -440,6 +529,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public ComponentPortAllocation createComponentPortAllocation() {
 		ComponentPortAllocationImpl componentPortAllocation = new ComponentPortAllocationImpl();
     //begin-capella-code
+
+    componentPortAllocation.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return componentPortAllocation;
 	}
@@ -452,6 +545,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	public ComponentPortAllocationEnd createComponentPortAllocationEnd() {
 		ComponentPortAllocationEndImpl componentPortAllocationEnd = new ComponentPortAllocationEndImpl();
     //begin-capella-code
+
+    componentPortAllocationEnd.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return componentPortAllocationEnd;
 	}

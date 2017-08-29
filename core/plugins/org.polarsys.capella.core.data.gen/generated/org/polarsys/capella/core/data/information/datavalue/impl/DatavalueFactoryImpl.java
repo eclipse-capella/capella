@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.information.datavalue.*;
 import org.polarsys.capella.core.data.information.datavalue.BinaryExpression;
 import org.polarsys.capella.core.data.information.datavalue.BinaryOperator;
@@ -140,6 +141,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	public LiteralBooleanValue createLiteralBooleanValue() {
 		LiteralBooleanValueImpl literalBooleanValue = new LiteralBooleanValueImpl();
     //begin-capella-code
+
+    literalBooleanValue.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return literalBooleanValue;
 	}
@@ -152,6 +157,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	public BooleanReference createBooleanReference() {
 		BooleanReferenceImpl booleanReference = new BooleanReferenceImpl();
     //begin-capella-code
+
+    booleanReference.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return booleanReference;
 	}
@@ -164,6 +173,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	public EnumerationLiteral createEnumerationLiteral() {
 		EnumerationLiteralImpl enumerationLiteral = new EnumerationLiteralImpl();
     //begin-capella-code
+
+    enumerationLiteral.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return enumerationLiteral;
 	}
@@ -176,6 +189,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	public EnumerationReference createEnumerationReference() {
 		EnumerationReferenceImpl enumerationReference = new EnumerationReferenceImpl();
     //begin-capella-code
+
+    enumerationReference.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return enumerationReference;
 	}
@@ -188,6 +205,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	public LiteralStringValue createLiteralStringValue() {
 		LiteralStringValueImpl literalStringValue = new LiteralStringValueImpl();
     //begin-capella-code
+
+    literalStringValue.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return literalStringValue;
 	}
@@ -200,6 +221,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	public StringReference createStringReference() {
 		StringReferenceImpl stringReference = new StringReferenceImpl();
     //begin-capella-code
+
+    stringReference.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return stringReference;
 	}
@@ -212,6 +237,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	public LiteralNumericValue createLiteralNumericValue() {
 		LiteralNumericValueImpl literalNumericValue = new LiteralNumericValueImpl();
     //begin-capella-code
+
+    literalNumericValue.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return literalNumericValue;
 	}
@@ -224,6 +253,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	public NumericReference createNumericReference() {
 		NumericReferenceImpl numericReference = new NumericReferenceImpl();
     //begin-capella-code
+
+    numericReference.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return numericReference;
 	}
@@ -236,6 +269,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	public ComplexValue createComplexValue() {
 		ComplexValueImpl complexValue = new ComplexValueImpl();
     //begin-capella-code
+
+    complexValue.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return complexValue;
 	}
@@ -248,6 +285,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	public ComplexValueReference createComplexValueReference() {
 		ComplexValueReferenceImpl complexValueReference = new ComplexValueReferenceImpl();
     //begin-capella-code
+
+    complexValueReference.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return complexValueReference;
 	}
@@ -260,6 +301,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	public ValuePart createValuePart() {
 		ValuePartImpl valuePart = new ValuePartImpl();
     //begin-capella-code
+
+    valuePart.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return valuePart;
 	}
@@ -272,6 +317,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	public BinaryExpression createBinaryExpression() {
 		BinaryExpressionImpl binaryExpression = new BinaryExpressionImpl();
     //begin-capella-code
+
+    binaryExpression.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return binaryExpression;
 	}
@@ -284,6 +333,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	public UnaryExpression createUnaryExpression() {
 		UnaryExpressionImpl unaryExpression = new UnaryExpressionImpl();
     //begin-capella-code
+
+    unaryExpression.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return unaryExpression;
 	}
@@ -296,6 +349,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	public OpaqueExpression createOpaqueExpression() {
 		OpaqueExpressionImpl opaqueExpression = new OpaqueExpressionImpl();
     //begin-capella-code
+
+    opaqueExpression.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return opaqueExpression;
 	}

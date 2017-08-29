@@ -214,6 +214,15 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
     <%}%>
     //begin-capella-code
     <%//@ egf:patternCall patternId="platform:/plugin/org.polarsys.capella.core.egf/egf/capella.fcore#LogicalName=org.polarsys.capella.core.model.createName.setID" args="genModel:genModel,genClass:genClass"%>
+
+<%List<GenClass> superclasses = genClass.getAllBaseGenClasses(); superclasses.add(genClass);%>
+<%for (GenClass cls : superclasses) {%>
+  <%if ((cls.getEcoreModelElement() instanceof EClass) && ((EClass) cls.getEcoreModelElement()).getName().equals("ModelElement")) {%>
+    <%=genClass.getSafeUncapName()%>.setId(<%=genModel.getImportedName("org.polarsys.capella.common.lib.IdGenerator")%>.createId());
+  <%}%>
+<%}%>
+
+
     //end-capella-code
 		return <%=genClass.getSafeUncapName()%>;
 	}

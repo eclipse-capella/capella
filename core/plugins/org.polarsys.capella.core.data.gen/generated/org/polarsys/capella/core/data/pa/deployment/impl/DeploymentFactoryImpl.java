@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.pa.deployment.*;
 import org.polarsys.capella.core.data.pa.deployment.ComponentInstance;
 import org.polarsys.capella.core.data.pa.deployment.ConnectionInstance;
@@ -92,6 +93,10 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
 	public ComponentInstance createComponentInstance() {
 		ComponentInstanceImpl componentInstance = new ComponentInstanceImpl();
     //begin-capella-code
+
+    componentInstance.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return componentInstance;
 	}
@@ -104,6 +109,10 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
 	public ConnectionInstance createConnectionInstance() {
 		ConnectionInstanceImpl connectionInstance = new ConnectionInstanceImpl();
     //begin-capella-code
+
+    connectionInstance.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return connectionInstance;
 	}
@@ -116,6 +125,10 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
 	public DeploymentAspect createDeploymentAspect() {
 		DeploymentAspectImpl deploymentAspect = new DeploymentAspectImpl();
     //begin-capella-code
+
+    deploymentAspect.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return deploymentAspect;
 	}
@@ -128,6 +141,10 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
 	public DeploymentConfiguration createDeploymentConfiguration() {
 		DeploymentConfigurationImpl deploymentConfiguration = new DeploymentConfigurationImpl();
     //begin-capella-code
+
+    deploymentConfiguration.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return deploymentConfiguration;
 	}
@@ -140,6 +157,10 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
 	public InstanceDeploymentLink createInstanceDeploymentLink() {
 		InstanceDeploymentLinkImpl instanceDeploymentLink = new InstanceDeploymentLinkImpl();
     //begin-capella-code
+
+    instanceDeploymentLink.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return instanceDeploymentLink;
 	}
@@ -152,6 +173,10 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
 	public PartDeploymentLink createPartDeploymentLink() {
 		PartDeploymentLinkImpl partDeploymentLink = new PartDeploymentLinkImpl();
     //begin-capella-code
+
+    partDeploymentLink.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return partDeploymentLink;
 	}
@@ -164,6 +189,10 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
 	public PortInstance createPortInstance() {
 		PortInstanceImpl portInstance = new PortInstanceImpl();
     //begin-capella-code
+
+    portInstance.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return portInstance;
 	}
@@ -176,6 +205,10 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
 	public TypeDeploymentLink createTypeDeploymentLink() {
 		TypeDeploymentLinkImpl typeDeploymentLink = new TypeDeploymentLinkImpl();
     //begin-capella-code
+
+    typeDeploymentLink.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return typeDeploymentLink;
 	}

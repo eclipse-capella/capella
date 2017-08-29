@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.capellacore.*;
 import org.polarsys.capella.core.data.capellacore.BooleanPropertyValue;
 import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
@@ -136,6 +137,10 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	public NamingRule createNamingRule() {
 		NamingRuleImpl namingRule = new NamingRuleImpl();
     //begin-capella-code
+
+    namingRule.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return namingRule;
 	}
@@ -148,6 +153,10 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	public Constraint createConstraint() {
 		ConstraintImpl constraint = new ConstraintImpl();
     //begin-capella-code
+
+    constraint.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return constraint;
 	}
@@ -160,6 +169,10 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	public KeyValue createKeyValue() {
 		KeyValueImpl keyValue = new KeyValueImpl();
     //begin-capella-code
+
+    keyValue.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return keyValue;
 	}
@@ -172,6 +185,10 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	public ReuseLink createReuseLink() {
 		ReuseLinkImpl reuseLink = new ReuseLinkImpl();
     //begin-capella-code
+
+    reuseLink.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return reuseLink;
 	}
@@ -184,6 +201,10 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	public Generalization createGeneralization() {
 		GeneralizationImpl generalization = new GeneralizationImpl();
     //begin-capella-code
+
+    generalization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return generalization;
 	}
@@ -196,6 +217,10 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	public StringPropertyValue createStringPropertyValue() {
 		StringPropertyValueImpl stringPropertyValue = new StringPropertyValueImpl();
     //begin-capella-code
+
+    stringPropertyValue.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return stringPropertyValue;
 	}
@@ -208,6 +233,10 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	public IntegerPropertyValue createIntegerPropertyValue() {
 		IntegerPropertyValueImpl integerPropertyValue = new IntegerPropertyValueImpl();
     //begin-capella-code
+
+    integerPropertyValue.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return integerPropertyValue;
 	}
@@ -220,6 +249,10 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	public BooleanPropertyValue createBooleanPropertyValue() {
 		BooleanPropertyValueImpl booleanPropertyValue = new BooleanPropertyValueImpl();
     //begin-capella-code
+
+    booleanPropertyValue.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return booleanPropertyValue;
 	}
@@ -232,6 +265,10 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	public FloatPropertyValue createFloatPropertyValue() {
 		FloatPropertyValueImpl floatPropertyValue = new FloatPropertyValueImpl();
     //begin-capella-code
+
+    floatPropertyValue.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return floatPropertyValue;
 	}
@@ -244,6 +281,10 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	public EnumerationPropertyValue createEnumerationPropertyValue() {
 		EnumerationPropertyValueImpl enumerationPropertyValue = new EnumerationPropertyValueImpl();
     //begin-capella-code
+
+    enumerationPropertyValue.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return enumerationPropertyValue;
 	}
@@ -256,6 +297,10 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	public EnumerationPropertyType createEnumerationPropertyType() {
 		EnumerationPropertyTypeImpl enumerationPropertyType = new EnumerationPropertyTypeImpl();
     //begin-capella-code
+
+    enumerationPropertyType.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return enumerationPropertyType;
 	}
@@ -268,6 +313,10 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	public EnumerationPropertyLiteral createEnumerationPropertyLiteral() {
 		EnumerationPropertyLiteralImpl enumerationPropertyLiteral = new EnumerationPropertyLiteralImpl();
     //begin-capella-code
+
+    enumerationPropertyLiteral.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return enumerationPropertyLiteral;
 	}
@@ -280,6 +329,10 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	public PropertyValueGroup createPropertyValueGroup() {
 		PropertyValueGroupImpl propertyValueGroup = new PropertyValueGroupImpl();
     //begin-capella-code
+
+    propertyValueGroup.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return propertyValueGroup;
 	}
@@ -292,6 +345,10 @@ public class CapellacoreFactoryImpl extends EFactoryImpl implements CapellacoreF
 	public PropertyValuePkg createPropertyValuePkg() {
 		PropertyValuePkgImpl propertyValuePkg = new PropertyValuePkgImpl();
     //begin-capella-code
+
+    propertyValuePkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return propertyValuePkg;
 	}

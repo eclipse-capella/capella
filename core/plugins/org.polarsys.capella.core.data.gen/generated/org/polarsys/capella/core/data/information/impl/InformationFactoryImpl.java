@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.information.AggregationKind;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.Collection;
@@ -185,6 +186,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public Association createAssociation() {
 		AssociationImpl association = new AssociationImpl();
     //begin-capella-code
+
+    association.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return association;
 	}
@@ -197,6 +202,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public org.polarsys.capella.core.data.information.Class createClass() {
 		ClassImpl class_ = new ClassImpl();
     //begin-capella-code
+
+    class_.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return class_;
 	}
@@ -209,6 +218,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public Collection createCollection() {
 		CollectionImpl collection = new CollectionImpl();
     //begin-capella-code
+
+    collection.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return collection;
 	}
@@ -221,6 +234,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public CollectionValue createCollectionValue() {
 		CollectionValueImpl collectionValue = new CollectionValueImpl();
     //begin-capella-code
+
+    collectionValue.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return collectionValue;
 	}
@@ -233,6 +250,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public CollectionValueReference createCollectionValueReference() {
 		CollectionValueReferenceImpl collectionValueReference = new CollectionValueReferenceImpl();
     //begin-capella-code
+
+    collectionValueReference.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return collectionValueReference;
 	}
@@ -245,6 +266,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public DataPkg createDataPkg() {
 		DataPkgImpl dataPkg = new DataPkgImpl();
     //begin-capella-code
+
+    dataPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return dataPkg;
 	}
@@ -257,6 +282,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public DomainElement createDomainElement() {
 		DomainElementImpl domainElement = new DomainElementImpl();
     //begin-capella-code
+
+    domainElement.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return domainElement;
 	}
@@ -269,6 +298,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public KeyPart createKeyPart() {
 		KeyPartImpl keyPart = new KeyPartImpl();
     //begin-capella-code
+
+    keyPart.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return keyPart;
 	}
@@ -281,6 +314,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public OperationAllocation createOperationAllocation() {
 		OperationAllocationImpl operationAllocation = new OperationAllocationImpl();
     //begin-capella-code
+
+    operationAllocation.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return operationAllocation;
 	}
@@ -293,6 +330,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public Parameter createParameter() {
 		ParameterImpl parameter = new ParameterImpl();
     //begin-capella-code
+
+    parameter.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return parameter;
 	}
@@ -305,6 +346,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public Property createProperty() {
 		PropertyImpl property = new PropertyImpl();
     //begin-capella-code
+
+    property.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return property;
 	}
@@ -317,6 +362,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public Service createService() {
 		ServiceImpl service = new ServiceImpl();
     //begin-capella-code
+
+    service.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return service;
 	}
@@ -329,6 +378,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public Union createUnion() {
 		UnionImpl union = new UnionImpl();
     //begin-capella-code
+
+    union.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return union;
 	}
@@ -341,6 +394,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public UnionProperty createUnionProperty() {
 		UnionPropertyImpl unionProperty = new UnionPropertyImpl();
     //begin-capella-code
+
+    unionProperty.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return unionProperty;
 	}
@@ -353,6 +410,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public Unit createUnit() {
 		UnitImpl unit = new UnitImpl();
     //begin-capella-code
+
+    unit.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return unit;
 	}
@@ -365,6 +426,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public PortRealization createPortRealization() {
 		PortRealizationImpl portRealization = new PortRealizationImpl();
     //begin-capella-code
+
+    portRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return portRealization;
 	}
@@ -377,6 +442,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public PortAllocation createPortAllocation() {
 		PortAllocationImpl portAllocation = new PortAllocationImpl();
     //begin-capella-code
+
+    portAllocation.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return portAllocation;
 	}
@@ -389,6 +458,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public ExchangeItem createExchangeItem() {
 		ExchangeItemImpl exchangeItem = new ExchangeItemImpl();
     //begin-capella-code
+
+    exchangeItem.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return exchangeItem;
 	}
@@ -401,6 +474,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public ExchangeItemElement createExchangeItemElement() {
 		ExchangeItemElementImpl exchangeItemElement = new ExchangeItemElementImpl();
     //begin-capella-code
+
+    exchangeItemElement.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return exchangeItemElement;
 	}
@@ -413,6 +490,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public ExchangeItemInstance createExchangeItemInstance() {
 		ExchangeItemInstanceImpl exchangeItemInstance = new ExchangeItemInstanceImpl();
     //begin-capella-code
+
+    exchangeItemInstance.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return exchangeItemInstance;
 	}
@@ -425,6 +506,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public InformationRealization createInformationRealization() {
 		InformationRealizationImpl informationRealization = new InformationRealizationImpl();
     //begin-capella-code
+
+    informationRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return informationRealization;
 	}
@@ -437,6 +522,10 @@ public class InformationFactoryImpl extends EFactoryImpl implements InformationF
 	public ExchangeItemRealization createExchangeItemRealization() {
 		ExchangeItemRealizationImpl exchangeItemRealization = new ExchangeItemRealizationImpl();
     //begin-capella-code
+
+    exchangeItemRealization.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return exchangeItemRealization;
 	}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.information.communication.CommunicationFactory;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
@@ -123,6 +124,10 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	public org.polarsys.capella.core.data.information.communication.Exception createException() {
 		ExceptionImpl exception = new ExceptionImpl();
     //begin-capella-code
+
+    exception.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return exception;
 	}
@@ -135,6 +140,10 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	public Message createMessage() {
 		MessageImpl message = new MessageImpl();
     //begin-capella-code
+
+    message.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return message;
 	}
@@ -147,6 +156,10 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	public MessageReference createMessageReference() {
 		MessageReferenceImpl messageReference = new MessageReferenceImpl();
     //begin-capella-code
+
+    messageReference.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return messageReference;
 	}
@@ -159,6 +172,10 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	public Signal createSignal() {
 		SignalImpl signal = new SignalImpl();
     //begin-capella-code
+
+    signal.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return signal;
 	}
@@ -171,6 +188,10 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	public SignalInstance createSignalInstance() {
 		SignalInstanceImpl signalInstance = new SignalInstanceImpl();
     //begin-capella-code
+
+    signalInstance.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return signalInstance;
 	}
@@ -183,6 +204,10 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	public CommunicationLink createCommunicationLink() {
 		CommunicationLinkImpl communicationLink = new CommunicationLinkImpl();
     //begin-capella-code
+
+    communicationLink.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return communicationLink;
 	}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.core.data.capellamodeller.*;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerFactory;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
@@ -86,6 +87,10 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	public Project createProject() {
 		ProjectImpl project = new ProjectImpl();
     //begin-capella-code
+
+    project.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return project;
 	}
@@ -98,6 +103,10 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	public Folder createFolder() {
 		FolderImpl folder = new FolderImpl();
     //begin-capella-code
+
+    folder.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return folder;
 	}
@@ -110,6 +119,10 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	public SystemEngineering createSystemEngineering() {
 		SystemEngineeringImpl systemEngineering = new SystemEngineeringImpl();
     //begin-capella-code
+
+    systemEngineering.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemEngineering;
 	}
@@ -122,6 +135,10 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	public SystemEngineeringPkg createSystemEngineeringPkg() {
 		SystemEngineeringPkgImpl systemEngineeringPkg = new SystemEngineeringPkgImpl();
     //begin-capella-code
+
+    systemEngineeringPkg.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return systemEngineeringPkg;
 	}
@@ -134,6 +151,10 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	public Library createLibrary() {
 		LibraryImpl library = new LibraryImpl();
     //begin-capella-code
+
+    library.setId(IdGenerator.createId());
+
+
     //end-capella-code
 		return library;
 	}
