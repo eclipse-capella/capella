@@ -30,10 +30,7 @@ location sirius-5.0.0 "http://download.eclipse.org/sirius/updates/releases/5.0.1
 	org.eclipse.sirius.runtime.ide.ui.feature.group
 }
 
-// For local build tests
-// location "file:/<PathToKitalphaGit>/releng/org.polarsys.kitalpha.runtime.core.updatesite/target/repository" {
-location "http://download.polarsys.org/kitalpha/updates/nightly/runtimecore/latest" {
-	org.polarsys.kitalpha.runtime.core.feature.feature.group lazy
+location kitalpha-runtime-master-latest "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_runtime/site.p2" {
 	org.polarsys.kitalpha.ad.runtime.feature.feature.group lazy
 	org.polarsys.kitalpha.cadence.feature.feature.group lazy
 	org.polarsys.kitalpha.common.feature.feature.group lazy
