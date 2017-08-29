@@ -16,10 +16,14 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.IFontProvider;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
@@ -160,6 +164,9 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
         // Builds and formats the DRepresentation path.
         String containerPath = getDescription(modelElement);
         String path = containerPath.concat(STATUS_LINE_PATH_SEPARATOR).concat(representationName);
+
+        path = path.concat(getSiriusMessage(element));
+
         if (path.startsWith(slash)) {
           path = path.substring(1);
         }
@@ -204,6 +211,36 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
       }
       result = path;
     }
+    return result;
+  }
+
+  protected String getSiriusMessage(Object element) {
+    String result = ICommonConstants.EMPTY_STRING;
+    if (element instanceof IGraphicalEditPart) {
+      Object model = ((IGraphicalEditPart) element).getModel(); 
+      if (model instanceof View)
+        element = ((View) model).getElement();
+    }
+
+    if (element instanceof DRepresentationDescriptor)
+      element = ((DRepresentationDescriptor) element).getRepresentation();
+
+    if (element instanceof EObject) {
+      DDiagram diagram = null;
+      if (element instanceof DDiagram)
+        diagram = (DDiagram) element;
+      else
+        diagram = (new EObjectQuery((EObject) element).getParentDiagram()).get();
+
+      if (diagram != null) {
+        if (diagram.isSynchronized()) {
+          result = " (Synchronized)";
+        } else {
+          result = " (Unsynchronized)";
+        }
+      }
+    }
+
     return result;
   }
 

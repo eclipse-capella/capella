@@ -19,6 +19,7 @@ import org.polarsys.capella.test.diagram.misc.ju.testcases.Bug1512TestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.CheckDiagramDirtyStateOnOpeningTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InterfacePortSizeTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.OpenAllAvailableDDiagramsTestCase;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.StatusLineTestCase;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -42,6 +43,7 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
     tests.add(new InterfacePortSizeTestCase());
     tests.add(new OpenAllAvailableDDiagramsTestCase());
     tests.add(new CheckDiagramDirtyStateOnOpeningTestCase());
+    tests.add(new StatusLineTestCase());
     return tests;
   }
 
