@@ -44,7 +44,7 @@ public class CapellaDescriptionPropertySection extends AbstractSection implement
   /**
    *
    */
-  protected CapellaElementDescriptionGroup _descriptionGroup;
+  protected CapellaElementDescriptionGroup descriptionGroup;
 
   /**
    * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
@@ -57,7 +57,7 @@ public class CapellaDescriptionPropertySection extends AbstractSection implement
     rootParentComposite.setLayout(new GridLayout());
     rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-    _descriptionGroup = new CapellaElementDescriptionGroup(rootParentComposite, (aTabbedPropertySheetPage != null) ? getWidgetFactory() : null);
+    descriptionGroup = new CapellaElementDescriptionGroup(rootParentComposite, (aTabbedPropertySheetPage != null) ? getWidgetFactory() : null);
   }
 
   /**
@@ -67,9 +67,9 @@ public class CapellaDescriptionPropertySection extends AbstractSection implement
   public void dispose() {
     super.dispose();
 
-    if (null != _descriptionGroup) {
-      _descriptionGroup.dispose();
-      _descriptionGroup = null;
+    if (null != descriptionGroup) {
+      descriptionGroup.dispose();
+      descriptionGroup = null;
     }
   }
 
@@ -88,8 +88,8 @@ public class CapellaDescriptionPropertySection extends AbstractSection implement
   public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
-    if (null != _descriptionGroup) {
-      _descriptionGroup.loadData(capellaElement);
+    if (null != descriptionGroup) {
+      descriptionGroup.loadData(capellaElement);
     }
   }
 
@@ -137,8 +137,8 @@ public class CapellaDescriptionPropertySection extends AbstractSection implement
   public void setEnabled(boolean enabled) {
     super.setEnabled(enabled);
 
-    if (null != _descriptionGroup) {
-      _descriptionGroup.setEnabled(enabled);
+    if (null != descriptionGroup) {
+      descriptionGroup.setEnabled(enabled);
     }
   }
 

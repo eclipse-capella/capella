@@ -56,7 +56,7 @@ public class CapellaElementDescriptionGroup extends ElementDescriptionGroup {
     if (NotificationHelper.isNotificationRequired(object, feature, value)) {
       AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
         public void run() {
-          _descriptionTextField.saveContent();
+          descriptionTextField.saveContent();
         }
       };
       executeCommand(command);
@@ -91,7 +91,7 @@ public class CapellaElementDescriptionGroup extends ElementDescriptionGroup {
         @SuppressWarnings("synthetic-access")
         @Override
         public Collection<?> getAffectedObjects() {
-          return Collections.singletonList(_semanticElement);
+          return Collections.singletonList(semanticElement);
         }
 
         /**
@@ -117,11 +117,11 @@ public class CapellaElementDescriptionGroup extends ElementDescriptionGroup {
         @Override
         public void commandRolledBack() {
           // Reload data >> refresh the UI.
-          loadData(_semanticElement, _semanticFeature);
+          loadData(semanticElement, semanticFeature);
         }
       };
     }
     // Execute it against the TED.
-    TransactionHelper.getExecutionManager(_semanticElement).execute(cmd);
+    TransactionHelper.getExecutionManager(semanticElement).execute(cmd);
   }
 }

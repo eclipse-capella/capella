@@ -9,7 +9,8 @@ Bundle-Localization: plugin
 Require-Bundle: org.eclipse.sirius.diagram.ui,
  org.polarsys.capella.core.ui.properties,
  org.polarsys.kitalpha.richtext.widget,
- org.eclipse.sirius.table
+ org.eclipse.sirius.table,
+ org.polarsys.capella.shared.id.handler
 Export-Package: org.polarsys.capella.core.ui.properties.richtext,
  org.polarsys.capella.core.ui.properties.richtext.fields,
  org.polarsys.capella.core.ui.properties.richtext.sections

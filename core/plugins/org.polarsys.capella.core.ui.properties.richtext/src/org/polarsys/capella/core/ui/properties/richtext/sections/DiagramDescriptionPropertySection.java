@@ -44,8 +44,8 @@ import org.polarsys.capella.core.ui.properties.sections.AbstractSection;
  * @author Joao Barata
  */
 public class DiagramDescriptionPropertySection extends AbstractSection {
-  private WeakReference<DRepresentation> _representation;
-  protected CapellaElementDescriptionGroup _descriptionGroup;
+  private WeakReference<DRepresentation> representation;
+  protected CapellaElementDescriptionGroup descriptionGroup;
 
   /**
    * {@inheritDoc}
@@ -70,7 +70,7 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
    * @param textGroup
    */
   protected void createDescriptionWidget(TabbedPropertySheetWidgetFactory widgetFactory, Composite parent) {
-    _descriptionGroup = new CapellaElementDescriptionGroup(parent, widgetFactory);
+    descriptionGroup = new CapellaElementDescriptionGroup(parent, widgetFactory);
   }
 
   /**
@@ -80,14 +80,14 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
   public void dispose() {
     super.dispose();
 
-    if (null != _representation) {
-      _representation.clear();
-      _representation = null;
+    if (null != representation) {
+      representation.clear();
+      representation = null;
     }
 
-    if (null != _descriptionGroup) {
-      _descriptionGroup.dispose();
-      _descriptionGroup = null;
+    if (null != descriptionGroup) {
+      descriptionGroup.dispose();
+      descriptionGroup = null;
     }
   }
 
@@ -105,7 +105,7 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
         // Get the command.
         Command command = ((EMFCommandOperation) operation).getCommand();
         // Is the current melody element involved in this command ?
-        if (command.getAffectedObjects().contains(_representation)) {
+        if (command.getAffectedObjects().contains(representation)) {
           // If so, let's refresh the content.
           refresh();
         }
@@ -118,22 +118,22 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
    */
   public void loadData() {
     // Register as operation history listener the first time capella element is set.
-    if (null == _representation.get()) {
+    if (null == representation.get()) {
       // This operation history listener is used to force refreshes when undo / redo operations are performed.
       OperationHistoryFactory.getOperationHistory().addOperationHistoryListener(this);
     }
-    register(_representation.get());
+    register(representation.get());
 
     // Disable the section if the element is read only.
     IReadOnlySectionHandler roHandler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
-    if ((roHandler != null) && roHandler.isLockedByOthers(_representation.get())) {
+    if ((roHandler != null) && roHandler.isLockedByOthers(representation.get())) {
       setEnabled(false);
     } else {
       setEnabled(true);
     }
 
-	if (_descriptionGroup != null) {
-      _descriptionGroup.loadData(_representation.get(), DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION);
+	if (descriptionGroup != null) {
+      descriptionGroup.loadData(representation.get(), DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION);
     }
   }
 
@@ -167,12 +167,12 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
         }
 
         if (firstElement instanceof DRepresentation) {
-          _representation = new WeakReference<DRepresentation>((DRepresentation) firstElement);
+          representation = new WeakReference<DRepresentation>((DRepresentation) firstElement);
         } else if (firstElement instanceof IDDiagramEditPart) {
           IDDiagramEditPart diagramEditPart = (IDDiagramEditPart) firstElement;
-          _representation = new WeakReference<DRepresentation>((DRepresentation) ((Diagram) diagramEditPart.getModel()).getElement());
+          representation = new WeakReference<DRepresentation>((DRepresentation) ((Diagram) diagramEditPart.getModel()).getElement());
         } else {
-          _representation = null;
+          representation = null;
         }
       }
       loadData();
@@ -186,8 +186,8 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
   public void setEnabled(boolean enabled) {
     super.setEnabled(enabled);
 
-    if (null != _descriptionGroup) {
-      _descriptionGroup.setEnabled(enabled);
+    if (null != descriptionGroup) {
+      descriptionGroup.setEnabled(enabled);
     }
   }
 
