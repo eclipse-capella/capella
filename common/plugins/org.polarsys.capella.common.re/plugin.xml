@@ -1328,7 +1328,7 @@
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.common.re.helpers.ReHelper"
-            nsURI="http://www.polarsys.org/capella/common/re/1.1.0">
+            nsURI="http://www.polarsys.org/capella/common/re/1.2.0">
       </helperImpl>
    </extension>
    

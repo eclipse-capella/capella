@@ -13,7 +13,7 @@
 <plugin>
    <extension point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
-         <package namespaceUri="http://www.polarsys.org/capella/core/pa/1.1.0">
+         <package namespaceUri="http://www.polarsys.org/capella/core/pa/1.2.0">
          </package>
          <constraints
                categories="capella.category/transition/justification/epbs">

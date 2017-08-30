@@ -35,7 +35,7 @@
    <extension point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/core/1.1.0">
+               namespaceUri="http://www.polarsys.org/capella/core/core/1.2.0">
          </package>
          <constraints
                categories="capella.category/integrity">
