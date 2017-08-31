@@ -14,6 +14,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.DecoratorAdapterFactory;
+import org.eclipse.emf.edit.provider.IDisposable;
 
 public abstract class CustomDecoratorAdapterFactory extends DecoratorAdapterFactory {
 
@@ -27,6 +28,11 @@ public abstract class CustomDecoratorAdapterFactory extends DecoratorAdapterFact
     
     //https://bugs.eclipse.org/bugs/show_bug.cgi?id=520102
     itemProviderDecorators.clear();
+    
+    if (decoratedAdapterFactory instanceof IDisposable)
+    {
+      ((IDisposable)decoratedAdapterFactory).dispose();
+    }
   }
   
   @Override
