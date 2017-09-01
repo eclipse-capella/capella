@@ -28,6 +28,8 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.ui.properties.helpers.NotificationHelper;
 import org.polarsys.kitalpha.richtext.common.intf.MDERichTextWidget;
 import org.polarsys.kitalpha.richtext.common.intf.SaveStrategy;
+import org.polarsys.kitalpha.richtext.nebula.widget.MDENebulaRichTextConfiguration;
+import org.polarsys.kitalpha.richtext.nebula.widget.MDERichTextConstants;
 import org.polarsys.kitalpha.richtext.widget.factory.MDERichTextFactory;
 
 /**
@@ -83,11 +85,16 @@ public abstract class ElementDescriptionGroup {
      * @return
      */
     protected MDERichTextWidget createDescriptionField(Composite parent) {
-        MDERichTextFactory f = new MDERichTextFactory();
-        final MDERichTextWidget ee = f.createMinimalRichTextWidget(parent);
-
+        MDERichTextFactory f = new MDERichTextFactory() {
+            @Override
+            protected MDERichTextFactory initializeMDEMinimalToolbar() {
+                MDERichTextFactory factory = super.initializeMDEMinimalToolbar();
+                ((MDENebulaRichTextConfiguration) getConfiguration()).removeToolbarItems(MDERichTextConstants.SUBSCRIPT, MDERichTextConstants.SUPERSCRIPT);
+                return factory;
+            }
+        };
+        MDERichTextWidget ee = f.createMinimalRichTextWidget(parent);
         ee.setSaveStrategy(new SaveStrategy() {
-
             @Override
             public void save(final String editorText, final EObject owner, final EStructuralFeature feature) {
                 if (NotificationHelper.isNotificationRequired(owner, feature, editorText)) {
@@ -99,67 +106,72 @@ public abstract class ElementDescriptionGroup {
                     executeCommand(command);
                 }
             }
-
-            protected void executeCommand(final ICommand command) {
-                // Precondition
-                if ((null == command)) {
-                    return;
-                }
-                // Command to run.
-                ICommand cmd = command;
-                // Encapsulate given command in a new one to enable undo / redo refresh based on getAffectedObjects.
-                // AbstractSection call getAffectedObjects() against the command provided by the OperationHistory.
-                if (command instanceof AbstractReadWriteCommand) {
-                    cmd = new AbstractReadWriteCommand() {
-                        /**
-                         * @see java.lang.Runnable#run()
-                         */
-                        public void run() {
-                            command.run();
-                        }
-
-                        /**
-                         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getAffectedObjects()
-                         */
-                        @SuppressWarnings("synthetic-access")
-                        @Override
-                        public Collection<?> getAffectedObjects() {
-                            return Collections.singletonList(semanticElement);
-                        }
-
-                        /**
-                         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getName()
-                         */
-                        @Override
-                        public String getName() {
-                            return "Model Edition"; //$NON-NLS-1$
-                        }
-
-                        /**
-                         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#commandInterrupted()
-                         */
-                        @Override
-                        public void commandInterrupted() {
-                            commandRolledBack();
-                        }
-
-                        /**
-                         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#commandRolledBack()
-                         */
-                        @SuppressWarnings("synthetic-access")
-                        @Override
-                        public void commandRolledBack() {
-                            // Reload data >> refresh the UI.
-                            loadData(semanticElement, semanticFeature);
-                        }
-                    };
-                }
-                // Execute it against the TED.
-                TransactionHelper.getExecutionManager(semanticElement).execute(cmd);
-            }
         });
 
         return ee;
+    }
+
+    /**
+     * Execute given command.
+     * 
+     * @param command
+     */
+    protected void executeCommand(final ICommand command) {
+        // Precondition
+        if ((null == command)) {
+            return;
+        }
+        // Command to run.
+        ICommand cmd = command;
+        // Encapsulate given command in a new one to enable undo / redo refresh based on getAffectedObjects.
+        // AbstractSection call getAffectedObjects() against the command provided by the OperationHistory.
+        if (command instanceof AbstractReadWriteCommand) {
+            cmd = new AbstractReadWriteCommand() {
+                /**
+                 * @see java.lang.Runnable#run()
+                 */
+                public void run() {
+                    command.run();
+                }
+
+                /**
+                 * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getAffectedObjects()
+                 */
+                @SuppressWarnings("synthetic-access")
+                @Override
+                public Collection<?> getAffectedObjects() {
+                    return Collections.singletonList(semanticElement);
+                }
+
+                /**
+                 * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getName()
+                 */
+                @Override
+                public String getName() {
+                    return "Model Edition"; //$NON-NLS-1$
+                }
+
+                /**
+                 * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#commandInterrupted()
+                 */
+                @Override
+                public void commandInterrupted() {
+                    commandRolledBack();
+                }
+
+                /**
+                 * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#commandRolledBack()
+                 */
+                @SuppressWarnings("synthetic-access")
+                @Override
+                public void commandRolledBack() {
+                    // Reload data >> refresh the UI.
+                    loadData(semanticElement, semanticFeature);
+                }
+            };
+        }
+        // Execute it against the TED.
+        TransactionHelper.getExecutionManager(semanticElement).execute(cmd);
     }
 
     /**

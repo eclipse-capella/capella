@@ -18,18 +18,18 @@ import org.polarsys.kitalpha.richtext.widget.propertysheet.MDERichTextPropertySh
 
 public class CapellaPropertySheetProvider implements MDERichTextPropertySheetProvider {
 
-	public CapellaPropertySheetProvider() {
-	}
+    public CapellaPropertySheetProvider() {
+    }
 
-	@Override
-	public TabbedPropertySheetPage getTabbedPropertySheetPageDelegate(final MDERichTextEditor contributor) {
-		return new CapellaTabbedPropertySheetPage(contributor) {
-			@Override
-			public void init(IPageSite pageSite) {
-				super.init(pageSite);
-				pageSite.setSelectionProvider(contributor.getSite().getSelectionProvider());
-			}
-		};
-	}
+    @Override
+    public TabbedPropertySheetPage getTabbedPropertySheetPageDelegate(final MDERichTextEditor contributor) {
+        return new CapellaTabbedPropertySheetPage(contributor) {
+            @Override
+            public void init(IPageSite pageSite) {
+                super.init(pageSite);
+                pageSite.setSelectionProvider(contributor.getSite().getSelectionProvider());
+            }
+        };
+    }
 
 }

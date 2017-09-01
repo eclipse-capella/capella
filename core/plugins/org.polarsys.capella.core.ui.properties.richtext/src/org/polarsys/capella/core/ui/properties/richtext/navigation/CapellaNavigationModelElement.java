@@ -34,37 +34,37 @@ import org.polarsys.kitalpha.richtext.mde.tools.links.handlers.OpenModelElementS
 
 public class CapellaNavigationModelElement implements OpenModelElementStrategy {
 
-	public CapellaNavigationModelElement() {
-	}
+    public CapellaNavigationModelElement() {
+    }
 
-	@Override
-	public void doOpen(EObject eObject, String link) {
-		EObject obj = getElement(TransactionHelper.getEditingDomain(eObject), link);
-	    if (obj != null) {
-	      if (CapellaResourceHelper.isSemanticElement(obj)) {
-	        UIUtil.getInstance().selectInPackageExplorer(obj);
-	      } else if (obj instanceof DSemanticDiagram) {
-	        Session session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) obj).getTarget());
-	        DialectUIManager.INSTANCE.openEditor(session, (DRepresentation) obj, new NullProgressMonitor());
-	      }else if(obj instanceof DTable){
-	    	  Session session = SessionManager.INSTANCE.getSession(((DTable) obj).getTarget());
-	          DialectUIManager.INSTANCE.openEditor(session, (DRepresentation) obj, new NullProgressMonitor());
-	      }      
-	    } else {
-	      MessageBox msgBox = new MessageBox(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
-	      msgBox.setText("Error"); //$NON-NLS-1$
-	      msgBox.setMessage("'" + link + "' is not a valid model resource."); //$NON-NLS-1$ //$NON-NLS-2$
-	      msgBox.open();
-	    }
-	}
+    @Override
+    public void doOpen(EObject eObject, String link) {
+        EObject obj = getElement(TransactionHelper.getEditingDomain(eObject), link);
+        if (obj != null) {
+            if (CapellaResourceHelper.isSemanticElement(obj)) {
+                UIUtil.getInstance().selectInPackageExplorer(obj);
+            } else if (obj instanceof DSemanticDiagram) {
+                Session session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) obj).getTarget());
+                DialectUIManager.INSTANCE.openEditor(session, (DRepresentation) obj, new NullProgressMonitor());
+            } else if (obj instanceof DTable) {
+                Session session = SessionManager.INSTANCE.getSession(((DTable) obj).getTarget());
+                DialectUIManager.INSTANCE.openEditor(session, (DRepresentation) obj, new NullProgressMonitor());
+            }
+        } else {
+            MessageBox msgBox = new MessageBox(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+            msgBox.setText("Error"); //$NON-NLS-1$
+            msgBox.setMessage("'" + link + "' is not a valid model resource."); //$NON-NLS-1$ //$NON-NLS-2$
+            msgBox.open();
+        }
+    }
 
-	private EObject getElement(final EditingDomain editingDomain, String uriFragment) {
-		return IdManager.getInstance().getEObject(uriFragment, new IScope() {
-			@Override
-			public List<Resource> getResources() {
-				return new ArrayList<Resource>(editingDomain.getResourceSet().getResources());
-			}
-		});
-	}
+    private EObject getElement(final EditingDomain editingDomain, String uriFragment) {
+        return IdManager.getInstance().getEObject(uriFragment, new IScope() {
+            @Override
+            public List<Resource> getResources() {
+                return new ArrayList<Resource>(editingDomain.getResourceSet().getResources());
+            }
+        });
+    }
 
 }

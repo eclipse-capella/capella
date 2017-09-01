@@ -10,16 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.properties.richtext.fields;
 
-import java.util.Collection;
-import java.util.Collections;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
-import org.polarsys.capella.common.ef.command.ICommand;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.ui.properties.helpers.NotificationHelper;
 
@@ -30,98 +25,37 @@ import org.polarsys.capella.core.ui.properties.helpers.NotificationHelper;
  */
 public class CapellaElementDescriptionGroup extends ElementDescriptionGroup {
 
-  /**
-   * @param parent
-   * @param widgetFactory
-   */
-  public CapellaElementDescriptionGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
-    super(parent, widgetFactory);
-  }
-
-  /**
-   * Called by the section refresh coming from wherever.
-   */
-  public void loadData(EObject element) {
-    loadData(element, CapellacorePackage.eINSTANCE.getCapellaElement_Description());
-  }
-
-  /**
-   * Set data value i.e change given object for given feature with specified value.
-   * @param object
-   * @param feature
-   * @param value
-   */
-  @Override
-  protected void setDataValue(final EObject object, final EStructuralFeature feature, final Object value) {
-    if (NotificationHelper.isNotificationRequired(object, feature, value)) {
-      AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
-        public void run() {
-          descriptionTextField.saveContent();
-        }
-      };
-      executeCommand(command);
+    /**
+     * @param parent
+     * @param widgetFactory
+     */
+    public CapellaElementDescriptionGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+        super(parent, widgetFactory);
     }
-  }
 
-  /**
-   * Execute given command.
-   * @param command
-   */
-  protected void executeCommand(final ICommand command) {
-    // Precondition
-    if ((null == command)) {
-      return;
+    /**
+     * Called by the section refresh coming from wherever.
+     */
+    public void loadData(EObject element) {
+        loadData(element, CapellacorePackage.eINSTANCE.getCapellaElement_Description());
     }
-    // Command to run.
-    ICommand cmd = command;
-    // Encapsulate given command in a new one to enable undo / redo refresh based on getAffectedObjects.
-    // AbstractSection call getAffectedObjects() against the command provided by the OperationHistory.
-    if (command instanceof AbstractReadWriteCommand) {
-      cmd = new AbstractReadWriteCommand() {
-        /**
-         * @see java.lang.Runnable#run()
-         */
-        public void run() {
-          command.run();
-        }
 
-        /**
-         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getAffectedObjects()
-         */
-        @SuppressWarnings("synthetic-access")
-        @Override
-        public Collection<?> getAffectedObjects() {
-          return Collections.singletonList(semanticElement);
+    /**
+     * Set data value i.e change given object for given feature with specified value.
+     * 
+     * @param object
+     * @param feature
+     * @param value
+     */
+    @Override
+    protected void setDataValue(final EObject object, final EStructuralFeature feature, final Object value) {
+        if (NotificationHelper.isNotificationRequired(object, feature, value)) {
+            AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+                public void run() {
+                    descriptionTextField.saveContent();
+                }
+            };
+            executeCommand(command);
         }
-
-        /**
-         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getName()
-         */
-        @Override
-        public String getName() {
-          return "Model Edition"; //$NON-NLS-1$
-        }
-
-        /**
-         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#commandInterrupted()
-         */
-        @Override
-        public void commandInterrupted() {
-          commandRolledBack();
-        }
-
-        /**
-         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#commandRolledBack()
-         */
-        @SuppressWarnings("synthetic-access")
-        @Override
-        public void commandRolledBack() {
-          // Reload data >> refresh the UI.
-          loadData(semanticElement, semanticFeature);
-        }
-      };
     }
-    // Execute it against the TED.
-    TransactionHelper.getExecutionManager(semanticElement).execute(cmd);
-  }
 }
