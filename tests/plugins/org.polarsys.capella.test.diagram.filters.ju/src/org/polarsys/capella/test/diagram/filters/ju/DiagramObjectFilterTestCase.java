@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.polarsys.capella.test.diagram.filters.ju;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -82,6 +83,13 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
 				diagramElement2ObjectID.put(elt, ((CapellaElement)target).getId());					
 			}
 		}
+		// Check that given IDs are in the model
+		Collection<String> ids = diagramElement2ObjectID.values();
+		for(String id : filteredObjetIDs){
+		  boolean contains = ids.contains(id);
+		  assertTrue("Object "+id+" is not valid for "+diagramName+" of project "+projectTestName, contains); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ 
+		}
+		
     // check that objects that will be filtered are not filtered yet and keep a trace of already not filtered objects
   	List<DDiagramElement> notFiltered = new ArrayList<DDiagramElement>();
   	for (DDiagramElement elt : diagram.getDiagramElements()) {

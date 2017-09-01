@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,10 @@ package org.polarsys.capella.test.diagram.filters.ju.testsuites;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedComponentExchangesForLAB;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedComponentExchangesForPAB;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedPhysicalLinksForLAB;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedPhysicalLinksForPAB;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideControlNodesForLFBD;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideControlNodesForPFBD;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideControlNodesForSFBD;
@@ -59,6 +63,11 @@ public class DiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideTechnicalInterfaceForCII());
     tests.add(new HideTechnicalInterfaceForIDB());
     tests.add(new ShowTriggerSourceFunctionForMSM());
+    tests.add(new HideComputedComponentExchangesForPAB());
+    tests.add(new HideComputedComponentExchangesForLAB());
+    tests.add(new HideComputedPhysicalLinksForPAB());
+    // TODO (aak) add when enhancing test project
+    // tests.add(new HideComputedPhysicalLinksForLAB());
     return tests;
   }
 

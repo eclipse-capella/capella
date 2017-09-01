@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -283,6 +283,8 @@ public interface IMappingNameConstants {
   String LAB_COMPONENT_CATEGORY_MAPPING_NAME = "LAB_ComponentCategory";//$NON-NLS-1$
   String LAB_COMPONENT_CATEGORY_PIN_MAPPING_NAME = "LAB_ComponentCategory_Pin";//$NON-NLS-1$
   String LAB_PHYSICALLINK_MAPPING_NAME = "LAB_PhysicalLink"; //$NON-NLS-1$
+  String LAB_COMPUTED_COMPONENT_EXCHANGE = "LAB_ComputedComponentExchange";
+  String LAB_COMPUTED_PHYSICAL_LINK = "LAB_ComputedPhysicalLink";
 
   String LAB_PHYSICAL_PORT_MAPPING_NAME = "LAB_PhysicalPort"; //$NON-NLS-1$
 
@@ -291,6 +293,7 @@ public interface IMappingNameConstants {
   String LAB_PHYSICAL_CATEGORY_MAPPING_NAME = "LAB_PhysicalCategory"; //$NON-NLS-1$
 
   String LAB_PHYSICAL_CATEGORY_PIN_NAME = "LAB_PhysicalCategory_Pin"; //$NON-NLS-1$
+  String LAB_DIAGRAM = "Logical Architecture Blank"; //$NON-NLS-1$
 
   /**
    * Physical Architecture
@@ -336,12 +339,15 @@ public interface IMappingNameConstants {
   String CPDF_INTERNAL_LINK_MAPPING_NAME = "PDF_InternLink"; //$NON-NLS-1$
   String PAB_INTERNAL_LINK_MAPPING_NAME = "PAB_InternLink"; //$NON-NLS-1$
   String PAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME = "PAB_InternPhysicalPathLink"; //$NON-NLS-1$
+  String PAB_COMPUTED_COMPONENT_EXCHANGE = "PAB_ComputedComponentExchange"; //$NON-NLS-1$
+  String PAB_COMPUTED_PHYSICAL_LINK = "PAB_ComputedPhysicalLink"; //$NON-NLS-1$
 
   String PAB_COMPONENT_CATEGORY_MAPPING_NAME = "PAB_ComponentCategory";//$NON-NLS-1$
   String PAB_COMPONENT_CATEGORY_PIN_MAPPING_NAME = "PAB_ComponentCategory_Pin";//$NON-NLS-1$
   String PAB_PHYSICAL_CATEGORY_MAPPING_NAME = "PAB_PhysicalCategory";//$NON-NLS-1$
   String PAB_PHYSICAL_CATEGORY_PIN_MAPPING_NAME = "PAB_PhysicalCategory_Pin";//$NON-NLS-1$
   String PAB_COMPONENT_PORT_ALLOCATION_MAPPING_NAME = "PAB_ComponentPortAllocation";//$NON-NLS-1$
+  String PAB_DIAGRAM = "Physical Architecture Blank"; //$NON-NLS-1$
 
   /**
    * Interface Diagram

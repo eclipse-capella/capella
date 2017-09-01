@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,30 +13,31 @@ package org.polarsys.capella.test.diagram.filters.ju.testcases;
 import java.util.Arrays;
 import java.util.List;
 
+import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.filters.ju.DiagramObjectFilterTestCase;
 
-public class HideDelegatedCommunicationLinksForCII extends DiagramObjectFilterTestCase {
+public class HideComputedPhysicalLinksForPAB extends DiagramObjectFilterTestCase {
 
 	@Override
 	protected String getTestProjectName() {
-		return "Test_delegationWizard"; //$NON-NLS-1$
+		return "HideSimplifiedLinksFilter"; //$NON-NLS-1$
 	}
 
 	@Override
 	protected String getDiagramName() {
-		return "[CII] TEST"; //$NON-NLS-1$
+		return "[PAB] Test Computed PL"; //$NON-NLS-1$
 	}
 
 	@Override
-	protected String getFilterName() {
-		return "Hide Delegated Communication Links"; //$NON-NLS-1$
+	protected String getFilterName() {		
+		return IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_PL;
 	}
 
 	@Override
 	protected List<String> getFilteredObjetIDs() {		
 		return Arrays.asList(new String [] {
-			"1a525de2-248e-4f4c-ab1b-8df83c88ce80",	 //$NON-NLS-1$
-			"fa136adc-c5a1-42e0-a804-40da387d6ccb",	 //$NON-NLS-1$
+      "fb98cd3d-6004-4676-84f2-b40c0cbc1282", //$NON-NLS-1$
+      "efcd249f-23a5-4678-abe4-d176e2fb37b1" //$NON-NLS-1$
 		});
 	}
 }
