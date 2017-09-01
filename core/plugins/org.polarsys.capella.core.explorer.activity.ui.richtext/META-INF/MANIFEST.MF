@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.core.explorer.activity.ui.richtext;singleton:=true
+Bundle-Version: 1.2.0.qualifier
+Bundle-Activator: org.polarsys.capella.core.explorer.activity.ui.richtext.CapellaActivityExplorerRichTextActivator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui.views.properties.tabbed,
+ org.polarsys.capella.common.ui,
+ org.polarsys.capella.core.explorer.activity.ui,
+ org.polarsys.capella.core.ui.properties,
+ org.polarsys.kitalpha.richtext.widget
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.polarsys.capella.core.explorer.activity.ui.richtext,
+ org.polarsys.capella.core.explorer.activity.ui.richtext.page
+Bundle-Vendor: %providerName
