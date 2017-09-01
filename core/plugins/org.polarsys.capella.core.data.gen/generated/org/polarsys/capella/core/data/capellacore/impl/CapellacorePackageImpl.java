@@ -1806,7 +1806,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 		initEClass(allocationEClass, Allocation.class, "Allocation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(involvementEClass, Involvement.class, "Involvement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getInvolvement_Involver(), this.getInvolverElement(), null, "involver", null, 1, 1, Involvement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getInvolvement_Involver(), this.getInvolverElement(), null, "involver", null, 1, 1, Involvement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getInvolvement_Involved(), this.getInvolvedElement(), null, "involved", null, 1, 1, Involvement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(involverElementEClass, InvolverElement.class, "InvolverElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -4618,6 +4618,11 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 		   });	
 		addAnnotation
 		  (getGeneralClass_ContainedOperations(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInvolvement_Involver(), 
 		   source, 
 		   new String[] {
 		   });	

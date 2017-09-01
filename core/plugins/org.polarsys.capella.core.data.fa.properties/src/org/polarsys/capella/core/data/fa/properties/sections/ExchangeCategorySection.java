@@ -58,7 +58,6 @@ public class ExchangeCategorySection extends NamedElementSection {
   @Override
   public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
-
     exchangesField.loadData(capellaElement, FaPackage.eINSTANCE.getExchangeCategory_Exchanges());
   }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -504,23 +504,6 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                </message>
                <description>
                   This rule checks that a Physical Path Involvement only involves an Part, a Physical Link or a Physical Path.
-               </description>
-               <target class="PhysicalPathInvolvement">
-               </target>
-            </constraint>
-            <constraint class="org.polarsys.capella.core.data.cs.validation.physicalPathInvolvement.PhysicalPathInvolvement_Involver" 
-                        id="DWF_DC_25" 
-                        isEnabledByDefault="true" 
-            			lang="Java" 
-                        mode="Batch" 
-            			name="DWF_DC_25 - Physical Path involvement check involver element" 
-                        severity="WARNING" 
-            			statusCode="1">
-               <message>
-                  This rule checks that a Functional Chain Involvement involver is its owning Functional Chain.
-               </message>
-               <description>
-                  This rule checks that a Physical Path Involvement involver is its owning Physical Path.
                </description>
                <target class="PhysicalPathInvolvement">
                </target>

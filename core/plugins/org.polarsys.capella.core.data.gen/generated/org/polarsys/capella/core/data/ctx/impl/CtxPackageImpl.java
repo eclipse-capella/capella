@@ -1529,7 +1529,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		initEClass(missionEClass, Mission.class, "Mission", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getMission_OwnedActorMissionInvolvements(), this.getActorMissionInvolvement(), null, "ownedActorMissionInvolvements", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getMission_OwnedSystemMissionInvolvement(), this.getSystemMissionInvolvement(), null, "ownedSystemMissionInvolvement", null, 0, 1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getMission_OwnedCapabilityExploitations(), this.getCapabilityExploitation(), this.getCapabilityExploitation_Mission(), "ownedCapabilityExploitations", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getMission_OwnedCapabilityExploitations(), this.getCapabilityExploitation(), null, "ownedCapabilityExploitations", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getMission_ParticipatingActors(), this.getActor(), this.getActor_ContributedMissions(), "participatingActors", null, 0, -1, Mission.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getMission_ParticipatingSystem(), this.getSystem(), this.getSystem_ContributedMissions(), "participatingSystem", null, 0, 1, Mission.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getMission_InvolvedActors(), this.getActorMissionInvolvement(), this.getActorMissionInvolvement_Mission(), "involvedActors", null, 0, -1, Mission.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1551,14 +1551,14 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		initEReference(getCapability_InvolvedSystem(), this.getSystemCapabilityInvolvement(), this.getSystemCapabilityInvolvement_Capability(), "involvedSystem", null, 0, 1, Capability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCapability_ParticipatingActors(), this.getActor(), this.getActor_ContributedCapabilities(), "participatingActors", null, 0, -1, Capability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCapability_ParticipatingSystem(), this.getSystem(), this.getSystem_ContributedCapabilities(), "participatingSystem", null, 0, 1, Capability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getCapability_Purposes(), this.getCapabilityExploitation(), this.getCapabilityExploitation_Capability(), "purposes", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getCapability_Purposes(), this.getCapabilityExploitation(), null, "purposes", null, 0, -1, Capability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCapability_PurposeMissions(), this.getMission(), this.getMission_ExploitedCapabilities(), "purposeMissions", null, 0, -1, Capability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCapability_RealizedOperationalCapabilities(), theOaPackage.getOperationalCapability(), theOaPackage.getOperationalCapability_RealizingCapabilities(), "realizedOperationalCapabilities", null, 0, -1, Capability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCapability_RealizingCapabilityRealizations(), theLaPackage.getCapabilityRealization(), theLaPackage.getCapabilityRealization_RealizedCapabilities(), "realizingCapabilityRealizations", null, 0, -1, Capability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(capabilityExploitationEClass, CapabilityExploitation.class, "CapabilityExploitation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getCapabilityExploitation_Mission(), this.getMission(), this.getMission_OwnedCapabilityExploitations(), "mission", null, 1, 1, CapabilityExploitation.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getCapabilityExploitation_Capability(), this.getCapability(), this.getCapability_Purposes(), "capability", null, 1, 1, CapabilityExploitation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getCapabilityExploitation_Mission(), this.getMission(), null, "mission", null, 1, 1, CapabilityExploitation.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getCapabilityExploitation_Capability(), this.getCapability(), null, "capability", null, 1, 1, CapabilityExploitation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(capabilityPkgEClass, CapabilityPkg.class, "CapabilityPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getCapabilityPkg_OwnedCapabilities(), this.getCapability(), null, "ownedCapabilities", null, 0, -1, CapabilityPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -4810,6 +4810,11 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getCapability_Purposes(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getCapability_PurposeMissions(), 
 		   source, 
 		   new String[] {
@@ -4821,6 +4826,11 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		   });	
 		addAnnotation
 		  (getCapability_RealizingCapabilityRealizations(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getCapabilityExploitation_Mission(), 
 		   source, 
 		   new String[] {
 		   });	

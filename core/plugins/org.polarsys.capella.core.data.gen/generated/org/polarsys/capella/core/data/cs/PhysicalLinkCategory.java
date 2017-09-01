@@ -38,7 +38,6 @@ public interface PhysicalLinkCategory extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Links</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalLink}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.PhysicalLink#getCategories <em>Categories</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -48,9 +47,7 @@ public interface PhysicalLinkCategory extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Links</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLinkCategory_Links()
-	 * @see org.polarsys.capella.core.data.cs.PhysicalLink#getCategories
-	 * @model opposite="categories"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+	 * @model annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated
 	 */
 

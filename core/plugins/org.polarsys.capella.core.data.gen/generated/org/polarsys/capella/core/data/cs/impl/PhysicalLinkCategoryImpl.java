@@ -15,6 +15,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -85,41 +86,12 @@ public class PhysicalLinkCategoryImpl extends NamedElementImpl implements Physic
 	public EList<PhysicalLink> getLinks() {
 
 		if (links == null) {
-			links = new EObjectWithInverseResolvingEList.ManyInverse<PhysicalLink>(PhysicalLink.class, this, CsPackage.PHYSICAL_LINK_CATEGORY__LINKS, CsPackage.PHYSICAL_LINK__CATEGORIES);
+			links = new EObjectResolvingEList<PhysicalLink>(PhysicalLink.class, this, CsPackage.PHYSICAL_LINK_CATEGORY__LINKS);
 		}
 		return links;
 	}
 
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_LINK_CATEGORY__LINKS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLinks()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_LINK_CATEGORY__LINKS:
-				return ((InternalEList<?>)getLinks()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->

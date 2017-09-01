@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -74,21 +74,7 @@ public class PhysicalPathSection extends ComponentExchangeAllocatorSection {
   protected MultipleSemanticField createComponentExchangeAllocationsField() {
     final PhysicalPathAllocatedComponentExchangesController controller = new PhysicalPathAllocatedComponentExchangesController();
     return new MultipleSemanticField(getReferencesGroup(), Messages.ComponentExchangeAllocatorSection_ComponentExchangeAllocations_Label, getWidgetFactory(),
-        controller) {
-      /**
-       * {@inheritDoc}
-       * The synchronization of the delegations/allocations is now managed by {@link DeleteHelper} class
-       */
-      @Override
-      protected void handleDeleteButtonClicked() {
-        executeCommand(new AbstractReadWriteCommand() {
-          @SuppressWarnings("synthetic-access")
-          public void run() {
-            doDeleteCommand(_semanticElement, _semanticFeature);
-          }
-        });
-      }
-    };
+        controller);
   }
 
   /**

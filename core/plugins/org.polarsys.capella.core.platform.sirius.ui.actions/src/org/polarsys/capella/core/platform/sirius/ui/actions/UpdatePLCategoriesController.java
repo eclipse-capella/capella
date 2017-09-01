@@ -17,21 +17,31 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.business.queries.cs.PhysicalLink_Categories;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalLinkCategory;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
+import org.polarsys.capella.core.data.fa.ComponentExchangeCategory;
+import org.polarsys.capella.core.data.fa.FaPackage;
 
 public class UpdatePLCategoriesController extends UpdateCategoriesController {
   /**
    * {@inheritDoc}
    */
   @Override
-  public void updateCategories(List<EObject> selectedElements, List<EObject> categoriesToAdd, List<EObject> categoriesToRemove) {
+  public void updateCategories(List<EObject> selectedElements, List<EObject> categoriesToAdd,
+      List<EObject> categoriesToRemove) {
     for (EObject e : selectedElements) {
       if (e instanceof PhysicalLink) {
-        EList<PhysicalLinkCategory> categories = ((PhysicalLink) e).getCategories();
-        categories.addAll((Collection<? extends PhysicalLinkCategory>) categoriesToAdd);
-        categories.removeAll(categoriesToRemove);
+        for (EObject removed : categoriesToRemove) {
+          ((PhysicalLinkCategory) removed).getLinks().remove(e);
+        }
+        for (EObject added : categoriesToAdd) {
+          ((PhysicalLinkCategory) added).getLinks().add((PhysicalLink) e);
+        }
       }
     }
     logResults(Messages.UpdatePLCategories_add_msg, categoriesToAdd);
@@ -44,11 +54,11 @@ public class UpdatePLCategoriesController extends UpdateCategoriesController {
   @Override
   public List<EObject> getAvailableCategories(List<EObject> element) {
     List<EObject> result = new ArrayList<EObject>();
-    // get all CE categories
     for (EObject e : element) {
-      if (e instanceof PhysicalLink) {
-        List<EObject> categories = new PhysicalLink_Categories().getAvailableElements((PhysicalLink) e);
-        result.addAll(categories);
+      IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(e.eClass(),
+          CsPackage.Literals.PHYSICAL_LINK__CATEGORIES);
+      if (query != null) {
+        result.addAll(query.getAvailableElements(e));
       }
     }
     return result;

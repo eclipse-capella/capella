@@ -1034,7 +1034,7 @@
             mapping="org.polarsys.capella.common.re"
             purpose="org.polarsys.capella.common.re">
          <domain
-               id="http://www.polarsys.org/capella/common/re/1.1.0">
+               id="http://www.polarsys.org/capella/common/re/1.2.0">
          </domain>
       </handlers>
       <handlers

@@ -43,7 +43,6 @@ public class CapabilityExt {
         ActorCapabilityInvolvement involvementLnk = CtxFactory.eINSTANCE.createActorCapabilityInvolvement();
 
         capability.getOwnedActorCapabilityInvolvements().add(involvementLnk);
-        involvementLnk.setInvolver(capability1);
         involvementLnk.setInvolved(actor);
       }
     }
@@ -74,7 +73,6 @@ public class CapabilityExt {
         SystemCapabilityInvolvement involvementLnk = CtxFactory.eINSTANCE.createSystemCapabilityInvolvement();
 
         capability.setOwnedSystemCapabilityInvolvement(involvementLnk);
-        involvementLnk.setInvolver(capability1);
         involvementLnk.setInvolved(system);
       }
     }

@@ -11060,7 +11060,7 @@ public interface FaPackage extends EPackage {
 	int COMPONENT_PORT_ALLOCATION_END__PART = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Owning Component Port Allocation</b></em>' container reference.
+	 * The feature id for the '<em><b>Owning Component Port Allocation</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -13107,10 +13107,10 @@ public interface FaPackage extends EPackage {
 	EReference getComponentPortAllocationEnd_Part();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd#getOwningComponentPortAllocation <em>Owning Component Port Allocation</em>}'.
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd#getOwningComponentPortAllocation <em>Owning Component Port Allocation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Owning Component Port Allocation</em>'.
+	 * @return the meta object for the reference '<em>Owning Component Port Allocation</em>'.
 	 * @see org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd#getOwningComponentPortAllocation()
 	 * @see #getComponentPortAllocationEnd()
 	 * @generated
@@ -14724,7 +14724,7 @@ public interface FaPackage extends EPackage {
 		EReference COMPONENT_PORT_ALLOCATION_END__PART = eINSTANCE.getComponentPortAllocationEnd_Part();
 
 		/**
-		 * The meta object literal for the '<em><b>Owning Component Port Allocation</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Owning Component Port Allocation</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

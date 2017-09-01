@@ -698,12 +698,8 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% getRegionForTransition($sourceView) %>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="StateTransition" referenceName="ownedTransitions" variableName="transition">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression=""/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$transition%>"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$target%>">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$transition%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="&lt;%$source%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="&lt;%$target%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -756,8 +752,8 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$target%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$element%>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="&lt;%$target%>"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
@@ -769,8 +765,8 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$target%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$element%>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="&lt;%$target%>"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
@@ -1476,23 +1472,23 @@
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression=""/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $source.filter(&quot;Region&quot;).nSize > 0 %>">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $source.eContainer %>">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$transition%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $transition %>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="&lt;%$source.eContainer%>"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $source.filter(&quot;Region&quot;).nSize == 0 %>">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$transition%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$transition%>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="&lt;%$source%>"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $target.filter(&quot;Region&quot;).nSize > 0 %>">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $target.eContainer %>">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$transition%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $transition %>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="&lt;%$target.eContainer%>"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $target.filter(&quot;Region&quot;).nSize == 0 %>">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$target%>">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$transition%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$transition%>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="&lt;%$target%>"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -1548,12 +1544,14 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$target%>">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize > 0 %>">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer %>">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$element%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element %>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="&lt;%$target.eContainer%>"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize == 0 %>">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outgoing" valueExpression="&lt;%$element%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element %>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="&lt;%$target%>"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1568,12 +1566,14 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$target%>">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize > 0 %>">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer %>">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$element%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element %>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="&lt;%$target.eContainer%>"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter(&quot;Region&quot;).nSize == 0 %>">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="incoming" valueExpression="&lt;%$element%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element %>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="&lt;%$target%>"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -11461,7 +11461,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$containerView.target%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemComponentCapabilityRealizationInvolvement" referenceName="ownedSystemComponentCapabilityRealizations">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;% $i %>"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;% $container %>"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="ownedSystemComponentCapabilityRealizations" valueExpression="&lt;% $instance %>"/>
                     </subModelOperations>
@@ -11482,7 +11481,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$containerView.target%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemComponentCapabilityRealizationInvolvement" referenceName="ownedSystemComponentCapabilityRealizations">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;% $i %>"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;% $container %>"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="ownedSystemComponentCapabilityRealizations" valueExpression="&lt;% $instance %>"/>
                     </subModelOperations>
@@ -11503,7 +11501,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$containerView.target%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemComponentCapabilityRealizationInvolvement" referenceName="ownedSystemComponentCapabilityRealizations">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;% $i %>"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;% $container %>"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="ownedSystemComponentCapabilityRealizations" valueExpression="&lt;% $instance %>"/>
                     </subModelOperations>
@@ -12132,13 +12129,11 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $source %>">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$target.isA(&quot;AbstractActor&quot;)%>">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorCapabilityRealizationInvolvement" referenceName="ownedActorCapabilityRealizations">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;% $source %>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;% $target %>"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!$target.isA(&quot;AbstractActor&quot;)%>">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemComponentCapabilityRealizationInvolvement" referenceName="ownedSystemComponentCapabilityRealizations">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;% $source %>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;% $target %>"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -18157,7 +18152,6 @@
                   <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedFunctions.filter(&quot;AbstractFunction&quot;)%>" iteratorName="selectedFunction">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="FunctionalChainInvolvement" referenceName="ownedFunctionalChainInvolvements">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;%$container%>"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;%$selectedFunction%>"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -18182,7 +18176,6 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$selectedExchange != &quot;WIZARD_CANCELED&quot;%>">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="FunctionalChainInvolvement" referenceName="ownedFunctionalChainInvolvements" variableName="newInv">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;%$sourceView.getDiagramContainer().target%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;%$selectedExchange%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="nextFunctionalChainInvolvements" valueExpression="&lt;%$target%>"/>
                   </subModelOperations>
@@ -18209,7 +18202,6 @@
                   <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedFunctions.filter(&quot;FunctionalChain&quot;)%>" iteratorName="selectedFunction">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="FunctionalChainReference" referenceName="ownedFunctionalChainInvolvements">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;%$container%>"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;%$selectedFunction%>"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -18233,11 +18225,9 @@
                   <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedExchanges%>">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.eContainer%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="FunctionalChainInvolvement" referenceName="ownedFunctionalChainInvolvements" variableName="invTargetFunction">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;%$element.eContainer%>"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;%$i.getOutgoingAbstractFunction()%>"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="FunctionalChainInvolvement" referenceName="ownedFunctionalChainInvolvements" variableName="invFE">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;%$element.eContainer%>"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;%$i%>"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="nextFunctionalChainInvolvements" valueExpression="&lt;%$invTargetFunction%>"/>
                       </subModelOperations>
@@ -18289,7 +18279,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$newSemanticContainer%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="FunctionalChainInvolvement" referenceName="ownedFunctionalChainInvolvements">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;%$newSemanticContainer%>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;%$element%>"/>
                 </subModelOperations>
               </firstModelOperations>

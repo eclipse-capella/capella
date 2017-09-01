@@ -186,9 +186,7 @@ public class BusinessHelper {
       }
     } else if ((element instanceof EnumerationLiteral) && (context instanceof Enumeration)) {
       ((EnumerationLiteral) element).setAbstractType((AbstractType) context);
-    } else if ((element instanceof FunctionalChainInvolvement) && (context instanceof FunctionalChain)) {
-      ((FunctionalChainInvolvement) element).setInvolver((FunctionalChain) context);
-    }
+    } 
     return result;
   }
 

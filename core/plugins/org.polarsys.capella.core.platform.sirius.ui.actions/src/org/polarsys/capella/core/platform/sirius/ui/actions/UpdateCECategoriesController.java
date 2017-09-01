@@ -17,9 +17,16 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.business.queries.fa.ComponentExchange_Categories;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeCategory;
+import org.polarsys.capella.core.data.fa.ExchangeCategory;
+import org.polarsys.capella.core.data.fa.FaPackage;
+import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
 
 public class UpdateCECategoriesController extends UpdateCategoriesController {
@@ -27,12 +34,16 @@ public class UpdateCECategoriesController extends UpdateCategoriesController {
    * {@inheritDoc}
    */
   @Override
-  public void updateCategories(List<EObject> selectedElements, List<EObject> categoriesToAdd, List<EObject> categoriesToRemove) {
+  public void updateCategories(List<EObject> selectedElements, List<EObject> categoriesToAdd,
+      List<EObject> categoriesToRemove) {
     for (EObject e : selectedElements) {
       if (e instanceof ComponentExchange) {
-        EList<ComponentExchangeCategory> categories = ((ComponentExchange) e).getCategories();
-        categories.addAll((Collection<? extends ComponentExchangeCategory>) categoriesToAdd);
-        categories.removeAll(categoriesToRemove);
+        for (EObject removed : categoriesToRemove) {
+          ((ComponentExchangeCategory) removed).getExchanges().remove(e);
+        }
+        for (EObject added : categoriesToAdd) {
+          ((ComponentExchangeCategory) added).getExchanges().add((ComponentExchange) e);
+        }
       }
     }
     if (!selectedElements.isEmpty() && (selectedElements.get(0) instanceof CommunicationMean)) {
@@ -51,11 +62,11 @@ public class UpdateCECategoriesController extends UpdateCategoriesController {
   @Override
   public List<EObject> getAvailableCategories(List<EObject> element) {
     List<EObject> result = new ArrayList<EObject>();
-    // get all CE categories
     for (EObject fe : element) {
-      if (fe instanceof ComponentExchange) {
-        List<EObject> categories = new ComponentExchange_Categories().getAvailableElements((ComponentExchange) fe);
-        result.addAll(categories);
+      IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(fe.eClass(),
+          FaPackage.Literals.COMPONENT_EXCHANGE__CATEGORIES);
+      if (query != null) {
+        result.addAll(query.getAvailableElements(fe));
       }
     }
     return result;

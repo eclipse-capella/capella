@@ -64,7 +64,6 @@ public class ContextQuery {
         Actor actor = (Actor) component;
         ActorCapabilityRealizationInvolvement involvement = CsFactory.eINSTANCE.createActorCapabilityRealizationInvolvement();
         involvement.setInvolved(actor);
-        involvement.setInvolver(cr);
         cr.getOwnedActorCapabilityRealizations().add(involvement);
       }
 
@@ -72,7 +71,6 @@ public class ContextQuery {
         LogicalComponent logicalComponent = (LogicalComponent) component;
         SystemComponentCapabilityRealizationInvolvement involvement = CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement();
         involvement.setInvolved(logicalComponent);
-        involvement.setInvolver(cr);
         cr.getOwnedSystemComponentCapabilityRealizations().add(involvement);
       }
     }

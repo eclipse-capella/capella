@@ -121,7 +121,6 @@ public interface AbstractState extends NamedElement, IState {
 	/**
 	 * Returns the value of the '<em><b>Outgoing</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.StateTransition}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getSource <em>Source</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -131,8 +130,7 @@ public interface AbstractState extends NamedElement, IState {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Outgoing</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getAbstractState_Outgoing()
-	 * @see org.polarsys.capella.core.data.capellacommon.StateTransition#getSource
-	 * @model opposite="source"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the transitions departing from this vertex.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Transition::source' constraints='Order must be computed'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -150,7 +148,6 @@ public interface AbstractState extends NamedElement, IState {
 	/**
 	 * Returns the value of the '<em><b>Incoming</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.StateTransition}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getTarget <em>Target</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -160,8 +157,7 @@ public interface AbstractState extends NamedElement, IState {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Incoming</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getAbstractState_Incoming()
-	 * @see org.polarsys.capella.core.data.capellacommon.StateTransition#getTarget
-	 * @model opposite="target"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the transitions entering this vertex.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Transition::target' constraints='Order must be computed'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"

@@ -46,33 +46,14 @@ public interface Involvement extends Relationship {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Involver</em>' reference.
-	 * @see #setInvolver(InvolverElement)
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getInvolvement_Involver()
-	 * @model required="true"
+	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the element that involves\r\n[Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [0..1]'"
 	 * @generated
 	 */
 
 	InvolverElement getInvolver();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.Involvement#getInvolver <em>Involver</em>}' reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Involver</em>' reference.
-	 * @see #getInvolver()
-	 * @generated
-	 */
-
-	void setInvolver(InvolverElement value);
-
-
-
 
 
 

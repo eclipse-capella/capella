@@ -14,17 +14,21 @@ package org.polarsys.capella.core.data.helpers.cs.delegates;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalLinkRealization;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
+import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.helpers.fa.delegates.ComponentExchangeAllocatorHelper;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.helpers.EObjectExt;
 
 public class PhysicalLinkHelper {
 	private static PhysicalLinkHelper instance;
@@ -50,6 +54,8 @@ public class PhysicalLinkHelper {
       ret = getRealizedPhysicalLinks(element);
     } else if (feature.equals(CsPackage.Literals.PHYSICAL_LINK__REALIZING_PHYSICAL_LINKS)) {
       ret = getRealizingPhysicalLinks(element);
+    } else if (feature.equals(CsPackage.Literals.PHYSICAL_LINK__CATEGORIES)) {
+      ret = getCategories(element);
     }
 
 		// no helper found... searching in super classes...
@@ -66,6 +72,10 @@ public class PhysicalLinkHelper {
 		return ret;
 	}
 
+  protected List<EObject> getCategories(PhysicalLink element) {
+    return EObjectExt.getReferencers(element, CsPackage.Literals.PHYSICAL_LINK_CATEGORY__LINKS);
+  }
+  
   protected PhysicalPort getSourcePhysicalPort(PhysicalLink element) {
     Port port = PhysicalLinkExt.getSourcePort(element);
     if (port instanceof PhysicalPort) {

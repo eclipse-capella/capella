@@ -76,7 +76,6 @@ public class Rule_FunctionalChainInvolvement extends Rule_CapellaElement {
 
     // Creates the references towards the transformed elements of the referenced referenced by the transformation source element
     AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, context_p);
 
     AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p,
         FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS, context_p);

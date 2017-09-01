@@ -43,7 +43,6 @@ public class IRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_I_10());
     tests.add(new Rule_I_11());
     tests.add(new Rule_I_12());
-    tests.add(new Rule_I_13());
     tests.add(new Rule_I_14());
     tests.add(new Rule_I_15());
     tests.add(new Rule_I_16());

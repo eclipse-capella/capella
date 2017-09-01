@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.model.helpers.IHelper;
@@ -103,7 +104,7 @@ public class ComponentPortAllocationImpl extends AllocationImpl implements Compo
 	public EList<ComponentPortAllocationEnd> getOwnedComponentPortAllocationEnds() {
 
 		if (ownedComponentPortAllocationEnds == null) {
-			ownedComponentPortAllocationEnds = new EObjectContainmentWithInverseEList.Resolving<ComponentPortAllocationEnd>(ComponentPortAllocationEnd.class, this, FaPackage.COMPONENT_PORT_ALLOCATION__OWNED_COMPONENT_PORT_ALLOCATION_ENDS, FaPackage.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION);
+			ownedComponentPortAllocationEnds = new EObjectContainmentEList.Resolving<ComponentPortAllocationEnd>(ComponentPortAllocationEnd.class, this, FaPackage.COMPONENT_PORT_ALLOCATION__OWNED_COMPONENT_PORT_ALLOCATION_ENDS);
 		}
 		return ownedComponentPortAllocationEnds;
 	}
@@ -227,21 +228,6 @@ public class ComponentPortAllocationImpl extends AllocationImpl implements Compo
 
 
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case FaPackage.COMPONENT_PORT_ALLOCATION__OWNED_COMPONENT_PORT_ALLOCATION_ENDS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOwnedComponentPortAllocationEnds()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->

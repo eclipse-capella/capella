@@ -129,7 +129,6 @@ public class ScenarioContraintsService {
     	capability.getOwnedAbstractFunctionAbstractCapabilityInvolvements().add ((AbstractFunctionAbstractCapabilityInvolvement) result);
     }
     if(result != null){
-      result.setInvolver(capability);
       result.setInvolved(component);
     }
     return scenario;

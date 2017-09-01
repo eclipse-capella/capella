@@ -452,39 +452,12 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 	 * @generated
 	 */
 
-	public NotificationChain basicSetSource(AbstractState newSource, NotificationChain msgs) {
+	public void setSource(AbstractState newSource) {
 
 		AbstractState oldSource = source;
 		source = newSource;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_TRANSITION__SOURCE, oldSource, newSource);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setSource(AbstractState newSource) {
-
-		if (newSource != source) {
-			NotificationChain msgs = null;
-			if (source != null)
-				msgs = ((InternalEObject)source).eInverseRemove(this, CapellacommonPackage.ABSTRACT_STATE__OUTGOING, AbstractState.class, msgs);
-			if (newSource != null)
-				msgs = ((InternalEObject)newSource).eInverseAdd(this, CapellacommonPackage.ABSTRACT_STATE__OUTGOING, AbstractState.class, msgs);
-			msgs = basicSetSource(newSource, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_TRANSITION__SOURCE, newSource, newSource));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_TRANSITION__SOURCE, oldSource, source));
 
 	}
 
@@ -532,39 +505,12 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 	 * @generated
 	 */
 
-	public NotificationChain basicSetTarget(AbstractState newTarget, NotificationChain msgs) {
+	public void setTarget(AbstractState newTarget) {
 
 		AbstractState oldTarget = target;
 		target = newTarget;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_TRANSITION__TARGET, oldTarget, newTarget);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setTarget(AbstractState newTarget) {
-
-		if (newTarget != target) {
-			NotificationChain msgs = null;
-			if (target != null)
-				msgs = ((InternalEObject)target).eInverseRemove(this, CapellacommonPackage.ABSTRACT_STATE__INCOMING, AbstractState.class, msgs);
-			if (newTarget != null)
-				msgs = ((InternalEObject)newTarget).eInverseAdd(this, CapellacommonPackage.ABSTRACT_STATE__INCOMING, AbstractState.class, msgs);
-			msgs = basicSetTarget(newTarget, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_TRANSITION__TARGET, newTarget, newTarget));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_TRANSITION__TARGET, oldTarget, target));
 
 	}
 
@@ -724,14 +670,6 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 				if (realizedFlow != null)
 					msgs = ((InternalEObject)realizedFlow).eInverseRemove(this, ModellingcorePackage.ABSTRACT_INFORMATION_FLOW__REALIZATIONS, AbstractInformationFlow.class, msgs);
 				return basicSetRealizedFlow((AbstractInformationFlow)otherEnd, msgs);
-			case CapellacommonPackage.STATE_TRANSITION__SOURCE:
-				if (source != null)
-					msgs = ((InternalEObject)source).eInverseRemove(this, CapellacommonPackage.ABSTRACT_STATE__OUTGOING, AbstractState.class, msgs);
-				return basicSetSource((AbstractState)otherEnd, msgs);
-			case CapellacommonPackage.STATE_TRANSITION__TARGET:
-				if (target != null)
-					msgs = ((InternalEObject)target).eInverseRemove(this, CapellacommonPackage.ABSTRACT_STATE__INCOMING, AbstractState.class, msgs);
-				return basicSetTarget((AbstractState)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -746,10 +684,6 @@ public class StateTransitionImpl extends NamedElementImpl implements StateTransi
 		switch (featureID) {
 			case CapellacommonPackage.STATE_TRANSITION__REALIZED_FLOW:
 				return basicSetRealizedFlow(null, msgs);
-			case CapellacommonPackage.STATE_TRANSITION__SOURCE:
-				return basicSetSource(null, msgs);
-			case CapellacommonPackage.STATE_TRANSITION__TARGET:
-				return basicSetTarget(null, msgs);
 			case CapellacommonPackage.STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS:
 				return ((InternalEList<?>)getOwnedStateTransitionRealizations()).basicRemove(otherEnd, msgs);
 		}

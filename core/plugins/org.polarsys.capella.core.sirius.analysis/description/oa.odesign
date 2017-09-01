@@ -533,7 +533,6 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% !$newContainerView.getDiagramContainer().target.isA(&quot;AbstractFunction&quot;) %>">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$newContainerView.getDiagramContainer().target%>">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="AbstractFunctionAbstractCapabilityInvolvement" referenceName="ownedAbstractFunctionAbstractCapabilityInvolvements" variableName="involvement">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="involver" valueExpression="&lt;%$newContainerView.getDiagramContainer().target%>"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="&lt;%$element%>"/>
                     </subModelOperations>
                   </subModelOperations>
@@ -4915,7 +4914,6 @@
                   <subModelOperations xsi:type="tool:For" expression="&lt;%$selectedFunctions.filter(&quot;AbstractFunction&quot;)%>" iteratorName="selectedFunction">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainInvolvement" referenceName="ownedFunctionalChainInvolvements">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="involver" valueExpression="&lt;%$container%>"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="&lt;%$selectedFunction%>"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -4941,7 +4939,6 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selectedExchange != &quot;WIZARD_CANCELED&quot;%>">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainInvolvement" referenceName="ownedFunctionalChainInvolvements" variableName="newInv">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="involver" valueExpression="&lt;%$sourceView.getDiagramContainer().target%>"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="&lt;%$selectedExchange%>"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="nextFunctionalChainInvolvements" valueExpression="&lt;%$target%>"/>
                   </subModelOperations>
@@ -4969,7 +4966,6 @@
                   <subModelOperations xsi:type="tool:For" expression="&lt;%$selectedFunctions.filter(&quot;FunctionalChain&quot;)%>" iteratorName="selectedFunction">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainReference" referenceName="ownedFunctionalChainInvolvements">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="involver" valueExpression="&lt;%$container%>"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="&lt;%$selectedFunction%>"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -4994,11 +4990,9 @@
                   <subModelOperations xsi:type="tool:For" expression="&lt;%$selectedExchanges%>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.eContainer%>">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainInvolvement" referenceName="ownedFunctionalChainInvolvements" variableName="invTargetFunction">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="involver" valueExpression="&lt;%$element.eContainer%>"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="&lt;%$i.getOutgoingAbstractFunction()%>"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainInvolvement" referenceName="ownedFunctionalChainInvolvements" variableName="invFE">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="involver" valueExpression="&lt;%$element.eContainer%>"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="&lt;%$i%>"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="nextFunctionalChainInvolvements" valueExpression="&lt;%$invTargetFunction%>"/>
                       </subModelOperations>
@@ -5040,7 +5034,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$newSemanticContainer%>">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainInvolvement" referenceName="ownedFunctionalChainInvolvements">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="involver" valueExpression="&lt;%$newSemanticContainer%>"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="&lt;%$element%>"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -5295,7 +5288,6 @@
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="EntityOperationalCapabilityInvolvement" referenceName="ownedEntityOperationalCapabilityInvolvements">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="&lt;%$target%>"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="involver" valueExpression="&lt;%$source%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -5713,7 +5705,6 @@
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="EntityOperationalCapabilityInvolvement" referenceName="ownedEntityOperationalCapabilityInvolvements">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="&lt;%$target%>"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="involver" valueExpression="&lt;%$source%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

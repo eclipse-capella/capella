@@ -55,7 +55,7 @@ public class Rule_FunctionalExchange extends org.polarsys.capella.core.projectio
     }
 
     TigerRelationshipHelper.attachToBestElement(element_p, FaPackage.Literals.FUNCTIONAL_EXCHANGE__EXCHANGED_ITEMS, context_p.getTransfo());
-    TigerRelationshipHelper.attachTransformedRelatedElements(element_p, FaPackage.Literals.FUNCTIONAL_EXCHANGE__CATEGORIES, context_p.getTransfo());
+    TigerRelationshipHelper.invertedAttachTransformedRelatedElements(element_p, FaPackage.Literals.FUNCTIONAL_EXCHANGE__CATEGORIES, FaPackage.Literals.EXCHANGE_CATEGORY__EXCHANGES, context_p.getTransfo());
 
   }
 

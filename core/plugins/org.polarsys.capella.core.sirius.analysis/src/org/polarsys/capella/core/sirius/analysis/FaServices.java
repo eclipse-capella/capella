@@ -1677,7 +1677,6 @@ public class FaServices {
     }
     AbstractFunctionAbstractCapabilityInvolvement newInv = InteractionFactory.eINSTANCE
         .createAbstractFunctionAbstractCapabilityInvolvement();
-    newInv.setInvolver(capability);
     newInv.setInvolved(target);
     capability.getOwnedAbstractFunctionAbstractCapabilityInvolvements().add(newInv);
     CapellaServices.getService().creationService(newInv);

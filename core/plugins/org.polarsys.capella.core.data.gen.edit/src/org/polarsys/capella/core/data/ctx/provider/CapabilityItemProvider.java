@@ -261,9 +261,9 @@ public class CapabilityItemProvider
 				 getString("_UI_Capability_purposes_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Capability_purposes_feature", "_UI_Capability_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 CtxPackage.Literals.CAPABILITY__PURPOSES,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code

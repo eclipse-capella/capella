@@ -39,7 +39,6 @@ public interface ComponentExchangeCategory extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Exchanges</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentExchange}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ComponentExchange#getCategories <em>Categories</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -49,9 +48,7 @@ public interface ComponentExchangeCategory extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Exchanges</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeCategory_Exchanges()
-	 * @see org.polarsys.capella.core.data.fa.ComponentExchange#getCategories
-	 * @model opposite="categories"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of functional exchanges that are part of this exchange category\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of functional exchanges that are part of this exchange category\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated

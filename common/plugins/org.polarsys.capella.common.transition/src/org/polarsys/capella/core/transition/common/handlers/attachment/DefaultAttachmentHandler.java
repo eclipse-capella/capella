@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -176,6 +176,14 @@ public class DefaultAttachmentHandler implements IAttachmentHandler {
     for (EObject traced : retrieveReferenceAsList(source, feature)) {
       for (EObject related : TraceabilityHandlerHelper.getInstance(context).retrieveTracedElements(traced, context)) {
         attachElementByReference(source, target, traced, related, feature, feature);
+      }
+    }
+  }
+  
+  public void invertedAttachTracedElements(EObject source, EObject target, EReference feature, EReference targetFeature, IContext context) {
+    for (EObject traced : retrieveReferenceAsList(source, feature)) {
+      for (EObject related : TraceabilityHandlerHelper.getInstance(context).retrieveTracedElements(traced, context)) {
+        attachElementByReference(traced, related, source, target, targetFeature, targetFeature);
       }
     }
   }

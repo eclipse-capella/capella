@@ -79,6 +79,13 @@ public class ComponentPortAllocationEndItemProvider
 	protected IItemPropertyDescriptor partPropertyDescriptor;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor owningComponentPortAllocationPropertyDescriptor;
+
+	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -131,6 +138,17 @@ public class ComponentPortAllocationEndItemProvider
 					itemPropertyDescriptors.add(partPropertyDescriptor);
 				}
 			}
+			// Process FaPackage.Literals.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION
+			if (owningComponentPortAllocationPropertyDescriptor != null) {
+				Object owningComponentPortAllocationValue = eObject.eGet(FaPackage.Literals.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION, true);
+				if (owningComponentPortAllocationValue != null && owningComponentPortAllocationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) owningComponentPortAllocationValue)) {
+					itemPropertyDescriptors.remove(owningComponentPortAllocationPropertyDescriptor);
+				} else if (owningComponentPortAllocationValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION) != null) {
+					itemPropertyDescriptors.remove(owningComponentPortAllocationPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(owningComponentPortAllocationPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(owningComponentPortAllocationPropertyDescriptor);
+				}
+			}
 		}		
 	}
 
@@ -159,6 +177,7 @@ public class ComponentPortAllocationEndItemProvider
 			addAppliedRequirementsPropertyDescriptor(object);
 			addPortPropertyDescriptor(object);
 			addPartPropertyDescriptor(object);
+			addOwningComponentPortAllocationPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
@@ -538,6 +557,32 @@ public class ComponentPortAllocationEndItemProvider
 		// begin-extension-code
 				 null);
 		itemPropertyDescriptors.add(partPropertyDescriptor);
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Owning Component Port Allocation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOwningComponentPortAllocationPropertyDescriptor(Object object) {
+		// begin-extension-code
+		owningComponentPortAllocationPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ComponentPortAllocationEnd_owningComponentPortAllocation_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentPortAllocationEnd_owningComponentPortAllocation_feature", "_UI_ComponentPortAllocationEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 FaPackage.Literals.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null);
+		itemPropertyDescriptors.add(owningComponentPortAllocationPropertyDescriptor);
 		// end-extension-code
 	}
 

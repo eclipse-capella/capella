@@ -11,10 +11,11 @@
 
 package org.polarsys.capella.core.data.helpers.capellacore.delegates;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.InvolverElement;
@@ -48,6 +49,12 @@ public class InvolverElementHelper {
   }
 
   protected List<Involvement> getInvolvedInvolvements(InvolverElement element) {
-    return EObjectExt.getReferencers(element, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER);
+    List<Involvement> result = new ArrayList<Involvement>();
+    for (EObject child : element.eContents()) {
+      if (child instanceof Involvement) {
+        result.add((Involvement)child);
+      }
+    }
+    return result;
   }
 }

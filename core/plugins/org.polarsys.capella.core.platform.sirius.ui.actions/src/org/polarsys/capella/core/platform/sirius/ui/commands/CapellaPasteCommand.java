@@ -342,8 +342,7 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
     if (involvement != null && involvement.getInvolver() != null) {
       Involvement inv = (Involvement) _copyHelper.getCopy(involvement);
       if (owner instanceof InvolverElement) {
-        compoundCommand.append(SetCommand.create(domain, inv, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, owner));
-
+        
         if (inv instanceof FunctionalChainInvolvement) {
           for (FunctionalChainInvolvement nextInv : ((FunctionalChainInvolvement) inv).getNextFunctionalChainInvolvements()) {
             if (null != nextInv.eContainer()) {

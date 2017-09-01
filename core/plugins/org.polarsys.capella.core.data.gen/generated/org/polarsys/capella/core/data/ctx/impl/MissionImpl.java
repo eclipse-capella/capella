@@ -287,7 +287,7 @@ public class MissionImpl extends NamedElementImpl implements Mission {
 	public EList<CapabilityExploitation> getOwnedCapabilityExploitations() {
 
 		if (ownedCapabilityExploitations == null) {
-			ownedCapabilityExploitations = new EObjectContainmentWithInverseEList<CapabilityExploitation>(CapabilityExploitation.class, this, CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS, CtxPackage.CAPABILITY_EXPLOITATION__MISSION);
+			ownedCapabilityExploitations = new EObjectContainmentEList<CapabilityExploitation>(CapabilityExploitation.class, this, CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS);
 		}
 		return ownedCapabilityExploitations;
 	}
@@ -552,21 +552,6 @@ public class MissionImpl extends NamedElementImpl implements Mission {
 	}
 
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOwnedCapabilityExploitations()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -11,15 +11,18 @@
 package org.polarsys.capella.core.data.fa.properties.sections;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
 import org.polarsys.capella.core.data.fa.FaPackage;
+import org.polarsys.capella.core.data.fa.properties.controllers.FunctionalExchangeCategoriesController;
 import org.polarsys.capella.core.data.fa.properties.controllers.FunctionalExchange_RealizedExchangesController;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
@@ -54,15 +57,12 @@ public class FunctionalExchangeSection extends NamedElementSection {
     });
     exchangedItemsField.setDisplayedInWizard(displayedInWizard);
 
-    categoriesField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionalExchangeSection_Categories_Label, getWidgetFactory(), new AbstractMultipleSemanticFieldController() {
-      /**
-       * {@inheritDoc}
-       */
+    categoriesField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionalExchangeSection_Categories_Label, getWidgetFactory(), new FunctionalExchangeCategoriesController()) {
       @Override
-      protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
-        return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), FaPackage.eINSTANCE.getFunctionalExchange_Categories());
+      protected void removeAllDataValue(EObject element, EStructuralFeature feature) {
+        _controller.writeOpenValues(_semanticElement, _semanticFeature, (List) Collections.emptyList());
       }
-    });
+    };
     categoriesField.setDisplayedInWizard(displayedInWizard);
 
     realizedExchangesField = new MultipleSemanticField(getReferencesGroup(),

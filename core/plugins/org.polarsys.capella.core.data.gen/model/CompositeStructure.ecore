@@ -2171,7 +2171,9 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
-        eType="#//PhysicalLinkCategory" eOpposite="#//PhysicalLinkCategory/links">
+        eType="#//PhysicalLinkCategory" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourcePhysicalPort" eType="#//PhysicalPort"
@@ -2222,7 +2224,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="PhysicalLinkCategory" eSuperTypes="CapellaCore.ecore#//NamedElement">
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
-        eType="#//PhysicalLink" eOpposite="#//PhysicalLink/categories">
+        eType="#//PhysicalLink">
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>

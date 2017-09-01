@@ -134,14 +134,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $source %>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="CapabilityExploitation" referenceName="ownedCapabilityExploitations" variableName="capability">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="mission" valueExpression="&lt;% $source %>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="capability" valueExpression="&lt;% $target %>"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:For" expression="&lt;%$target.involvedActors.actor%>">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$source.involvedActors[actor == $i].nSize() == 0%>">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $source %>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorMissionInvolvement" referenceName="ownedActorMissionInvolvements">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;% $source %>"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;% $i %>"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -158,7 +156,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $source%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorMissionInvolvement" referenceName="ownedActorMissionInvolvements">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;% $source %>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;% $target %>"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -552,14 +549,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="CapabilityExploitation" referenceName="ownedCapabilityExploitations" variableName="capability">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="mission" valueExpression="&lt;% $source %>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="capability" valueExpression="&lt;% $target %>"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:For" expression="&lt;%$target.involvedActors.actor%>">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$source.involvedActors[actor == $i].nSize() == 0%>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $source.ancestor.filter(&quot;SystemAnalysis&quot;).ownedMissionPkg %>">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $source %>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorMissionInvolvement" referenceName="ownedActorMissionInvolvements">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;% $source %>"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;% $i %>"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -585,7 +580,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $source %>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorMissionInvolvement" referenceName="ownedActorMissionInvolvements">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;% $source %>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;% $target %>"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -1017,14 +1011,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $source %>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="CapabilityExploitation" referenceName="ownedCapabilityExploitations" variableName="capability">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="mission" valueExpression="&lt;% $source %>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="capability" valueExpression="&lt;% $target %>"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:For" expression="&lt;%$target.involvedActors.actor%>">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$source.involvedActors[actor == $i].nSize() == 0%>">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $source %>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorMissionInvolvement" referenceName="ownedActorMissionInvolvements">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;% $source %>"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;% $i %>"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -1042,7 +1034,6 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $source %>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorCapabilityInvolvement" referenceName="ownedActorCapabilityInvolvements">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;% $target %>"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;% $source %>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1547,14 +1538,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $source %>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="CapabilityExploitation" referenceName="ownedCapabilityExploitations" variableName="capability">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="mission" valueExpression="&lt;% $source %>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="capability" valueExpression="&lt;% $target %>"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:For" expression="&lt;%$target.involvedActors.actor%>">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$source.involvedActors[actor == $i].nSize() == 0%>">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $source %>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorMissionInvolvement" referenceName="ownedActorMissionInvolvements">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;% $source %>"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;% $i %>"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -1572,13 +1561,11 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $source.isA(&quot;Mission&quot;) %>">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorMissionInvolvement" referenceName="ownedActorMissionInvolvements">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;% $source %>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;% $target %>"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $source.isA(&quot;Capability&quot;) %>">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorCapabilityInvolvement" referenceName="ownedActorCapabilityInvolvements">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;% $source %>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;% $target %>"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -3030,7 +3017,6 @@
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% !$newContainerView.getDiagramContainer().target.isA(&quot;AbstractFunction&quot;) %>">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$newContainerView.getDiagramContainer().target%>">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="AbstractFunctionAbstractCapabilityInvolvement" referenceName="ownedAbstractFunctionAbstractCapabilityInvolvements" variableName="involvement">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involver" valueExpression="&lt;%$newContainerView.getDiagramContainer().target%>"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="&lt;%$element%>"/>
                     </subModelOperations>
                   </subModelOperations>

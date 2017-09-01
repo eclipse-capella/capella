@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,7 @@ import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHel
 import org.polarsys.capella.core.data.helpers.ctx.delegates.ActorCapabilityInvolvementHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.ActorHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.ActorMissionInvolvementHelper;
+import org.polarsys.capella.core.data.helpers.ctx.delegates.CapabilityExploitationHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.CapabilityHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.MissionHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.OperationalActorRealizationHelper;
@@ -103,7 +104,7 @@ public class SystemAnalysisHelper implements IHelper {
 			ret = ActorMissionInvolvementHelper.getInstance().doSwitch((ActorMissionInvolvement) object, feature);
 		}
     else if (object instanceof CapabilityExploitation) {
-      ret = RelationshipHelper.getInstance().doSwitch((CapabilityExploitation) object, feature);
+      ret = CapabilityExploitationHelper.getInstance().doSwitch((CapabilityExploitation) object, feature);
     }
     else if (object instanceof SystemCommunication) {
       ret = RelationshipHelper.getInstance().doSwitch((SystemCommunication) object, feature);

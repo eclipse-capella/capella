@@ -42,4 +42,5 @@ public interface IMultipleSemanticFieldController {
    * @return
    */
   public List<EObject> writeOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, List<EObject> values);
+
 }

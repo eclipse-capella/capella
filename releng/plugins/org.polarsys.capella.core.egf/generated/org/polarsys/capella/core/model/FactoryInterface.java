@@ -1,4 +1,4 @@
-//Generated with EGF 1.5.0.v20170223-0952
+//Generated with EGF 1.5.0.v20170706-0846
 package org.polarsys.capella.core.model;
 
 import org.eclipse.egf.emf.pattern.base.*;

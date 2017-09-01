@@ -28,9 +28,11 @@ import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractCapa
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityRealization;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.helpers.EObjectExt;
 
 public class CapabilityHelper {
 	private static CapabilityHelper instance;
@@ -62,7 +64,9 @@ public class CapabilityHelper {
       ret = getRealizedOperationalCapabilities(element);
     } else if (feature.equals(CtxPackage.Literals.CAPABILITY__REALIZING_CAPABILITY_REALIZATIONS)) {
       ret = getRealizingCapabilityRealizations(element);
-		}
+		} else if (feature.equals(CtxPackage.Literals.CAPABILITY__PURPOSES)) {
+      ret = getPurposes(element);
+    }
 
 		// no helper found... searching in super classes...
 		if(null == ret) {
@@ -72,7 +76,11 @@ public class CapabilityHelper {
 		return ret;
 	}
 
-	protected List<ActorCapabilityInvolvement> getInvolvedActors(Capability element) {
+	protected List<CapabilityExploitation> getPurposes(Capability element) {
+	  return EObjectExt.getReferencers(element, CtxPackage.Literals.CAPABILITY_EXPLOITATION__CAPABILITY);
+	}
+  
+  protected List<ActorCapabilityInvolvement> getInvolvedActors(Capability element) {
 		List <ActorCapabilityInvolvement> ret = new ArrayList<ActorCapabilityInvolvement>();
 		for (Involvement involvement : element.getInvolvedInvolvements()) {
 			if (involvement instanceof ActorCapabilityInvolvement) {

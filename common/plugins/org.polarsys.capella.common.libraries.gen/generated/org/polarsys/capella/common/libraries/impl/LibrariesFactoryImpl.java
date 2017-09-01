@@ -114,6 +114,9 @@ public class LibrariesFactoryImpl extends EFactoryImpl implements LibrariesFacto
 	public ModelInformation createModelInformation() {
 		ModelInformationImpl modelInformation = new ModelInformationImpl();
     //begin-capella-code
+
+
+
     //end-capella-code
 		return modelInformation;
 	}
@@ -126,6 +129,9 @@ public class LibrariesFactoryImpl extends EFactoryImpl implements LibrariesFacto
 	public LibraryReference createLibraryReference() {
 		LibraryReferenceImpl libraryReference = new LibraryReferenceImpl();
     //begin-capella-code
+
+
+
     //end-capella-code
 		return libraryReference;
 	}
@@ -138,6 +144,9 @@ public class LibrariesFactoryImpl extends EFactoryImpl implements LibrariesFacto
 	public ModelVersion createModelVersion() {
 		ModelVersionImpl modelVersion = new ModelVersionImpl();
     //begin-capella-code
+
+
+
     //end-capella-code
 		return modelVersion;
 	}

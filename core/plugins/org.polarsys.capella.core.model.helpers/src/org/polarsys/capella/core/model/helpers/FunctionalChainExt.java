@@ -705,7 +705,6 @@ public class FunctionalChainExt {
       }
     }
     FunctionalChainAbstractCapabilityInvolvement newInv = InteractionFactory.eINSTANCE.createFunctionalChainAbstractCapabilityInvolvement();
-    newInv.setInvolver(capability);
     newInv.setInvolved(target);
     capability.getOwnedFunctionalChainAbstractCapabilityInvolvements().add(newInv);
     return newInv;
@@ -719,7 +718,6 @@ public class FunctionalChainExt {
   public static FunctionalChainInvolvement createInvolvement(FunctionalChain fc, InvolvedElement involved) {
     FunctionalChainInvolvement newInv = FaFactory.eINSTANCE.createFunctionalChainInvolvement();
     fc.getOwnedFunctionalChainInvolvements().add(newInv);
-    newInv.setInvolver(fc);
     newInv.setInvolved(involved);
     return newInv;
   }

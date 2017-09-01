@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.AbstractStateRealization;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.Region;
+import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
 
 public class AbstractStateHelper {
@@ -42,6 +43,10 @@ public class AbstractStateHelper {
       ret = getRealizingAbstractStates(element);
     } else if (feature.equals(CapellacommonPackage.Literals.ABSTRACT_STATE__INVOLVER_REGIONS)) {
       ret = getInvolverRegions(element);
+    } else if (feature.equals(CapellacommonPackage.Literals.ABSTRACT_STATE__INCOMING)) {
+      ret = getIncoming(element);
+    } else if (feature.equals(CapellacommonPackage.Literals.ABSTRACT_STATE__OUTGOING)) {
+      ret = getOutgoing(element);
     }
 
     // no helper found... searching in super classes...
@@ -50,6 +55,14 @@ public class AbstractStateHelper {
     }
 
     return ret;
+  }
+
+  protected List<StateTransition> getOutgoing(AbstractState element) {
+    return EObjectExt.getReferencers(element, CapellacommonPackage.Literals.STATE_TRANSITION__SOURCE);
+  }
+
+  protected List<StateTransition> getIncoming(AbstractState element) {
+    return EObjectExt.getReferencers(element, CapellacommonPackage.Literals.STATE_TRANSITION__TARGET);
   }
 
   protected List<AbstractState> getRealizedAbstractStates(AbstractState element) {

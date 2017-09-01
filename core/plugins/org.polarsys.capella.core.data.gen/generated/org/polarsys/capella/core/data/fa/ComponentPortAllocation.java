@@ -42,7 +42,6 @@ public interface ComponentPortAllocation extends Allocation {
 	/**
 	 * Returns the value of the '<em><b>Owned Component Port Allocation Ends</b></em>' containment reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd#getOwningComponentPortAllocation <em>Owning Component Port Allocation</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -52,8 +51,7 @@ public interface ComponentPortAllocation extends Allocation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Component Port Allocation Ends</em>' containment reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentPortAllocation_OwnedComponentPortAllocationEnds()
-	 * @see org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd#getOwningComponentPortAllocation
-	 * @model opposite="owningComponentPortAllocation" containment="true" resolveProxies="true"
+	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the component port allocation endpoints involved in this link\r\n\r\nA connector consists of at least two connector ends, each representing the participation of instances of the classifiers\r\ntyping the connectable elements attached to this end. The set of connector ends is ordered.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Connector::end' explanation='none' constraints='none'"
 	 * @generated

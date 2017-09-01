@@ -44,7 +44,6 @@ public class InvolvementRule extends AbstractCapellaElementRule {
   protected void retrieveRequired(EObject element, List<EObject> result, IContext context) {
     super.retrieveRequired(element, result, context);
     result.add(((Involvement) element).getInvolved());
-    result.add(((Involvement) element).getInvolver());
   }
 
   /**
@@ -55,7 +54,6 @@ public class InvolvementRule extends AbstractCapellaElementRule {
     super.premicesRelated(eObject1, needed);
     Involvement element = (Involvement) eObject1;
     needed.addAll(createDefaultPrecedencePremices(element, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED));
-    needed.addAll(createDefaultPrecedencePremices(element, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER));
   }
 
   /**
@@ -72,7 +70,6 @@ public class InvolvementRule extends AbstractCapellaElementRule {
   protected void attachRelated(EObject element, EObject result, IContext context) {
     super.attachRelated(element, result, context);
     AttachmentHelper.getInstance(context).attachTracedElements(element, result, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED, context);
-    AttachmentHelper.getInstance(context).attachTracedElements(element, result, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, context);
   }
 
   @Override

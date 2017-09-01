@@ -133,35 +133,6 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 
 
 	/**
-	 * The cached value of the '{@link #getCategories() <em>Categories</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCategories()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<PhysicalLinkCategory> categories;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -360,10 +331,39 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 
 	public EList<PhysicalLinkCategory> getCategories() {
 
-		if (categories == null) {
-			categories = new EObjectWithInverseResolvingEList.ManyInverse<PhysicalLinkCategory>(PhysicalLinkCategory.class, this, CsPackage.PHYSICAL_LINK__CATEGORIES, CsPackage.PHYSICAL_LINK_CATEGORY__LINKS);
-		}
-		return categories;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CsPackage.Literals.PHYSICAL_LINK__CATEGORIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CsPackage.Literals.PHYSICAL_LINK__CATEGORIES, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<PhysicalLinkCategory> resultAsList = (Collection<PhysicalLinkCategory>) result;
+		return new EcoreEList.UnmodifiableEList<PhysicalLinkCategory>(this, CsPackage.Literals.PHYSICAL_LINK__CATEGORIES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
 	}
 
 
@@ -585,21 +585,6 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_LINK__CATEGORIES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCategories()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -609,8 +594,6 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 				return ((InternalEList<?>)getOwnedPhysicalLinkEnds()).basicRemove(otherEnd, msgs);
 			case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS:
 				return ((InternalEList<?>)getOwnedPhysicalLinkRealizations()).basicRemove(otherEnd, msgs);
-			case CsPackage.PHYSICAL_LINK__CATEGORIES:
-				return ((InternalEList<?>)getCategories()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -676,10 +659,6 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 				getOwnedPhysicalLinkRealizations().clear();
 				getOwnedPhysicalLinkRealizations().addAll((Collection<? extends PhysicalLinkRealization>)newValue);
 				return;
-			case CsPackage.PHYSICAL_LINK__CATEGORIES:
-				getCategories().clear();
-				getCategories().addAll((Collection<? extends PhysicalLinkCategory>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -704,9 +683,6 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 				return;
 			case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS:
 				getOwnedPhysicalLinkRealizations().clear();
-				return;
-			case CsPackage.PHYSICAL_LINK__CATEGORIES:
-				getCategories().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -735,7 +711,7 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 			case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS:
 				return ownedPhysicalLinkRealizations != null && !ownedPhysicalLinkRealizations.isEmpty();
 			case CsPackage.PHYSICAL_LINK__CATEGORIES:
-				return categories != null && !categories.isEmpty();
+				return !getCategories().isEmpty();
 			case CsPackage.PHYSICAL_LINK__SOURCE_PHYSICAL_PORT:
 				return basicGetSourcePhysicalPort() != null;
 			case CsPackage.PHYSICAL_LINK__TARGET_PHYSICAL_PORT:

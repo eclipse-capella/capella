@@ -151,7 +151,6 @@ public interface PhysicalLink extends AbstractPhysicalPathLink, AbstractPhysical
 	/**
 	 * Returns the value of the '<em><b>Categories</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalLinkCategory}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.PhysicalLinkCategory#getLinks <em>Links</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -161,8 +160,7 @@ public interface PhysicalLink extends AbstractPhysicalPathLink, AbstractPhysical
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Categories</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLink_Categories()
-	 * @see org.polarsys.capella.core.data.cs.PhysicalLinkCategory#getLinks
-	 * @model opposite="links"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 

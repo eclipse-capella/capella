@@ -37,7 +37,6 @@ public class FunctionalChainInvolvementRule extends AbstractCapellaElementRule {
   protected void retrieveRequired(EObject element, List<EObject> result, IContext context) {
     super.retrieveRequired(element, result, context);
     result.add(((Involvement) element).getInvolved());
-    result.add(((Involvement) element).getInvolver());
   }
 
   @Override
@@ -49,7 +48,6 @@ public class FunctionalChainInvolvementRule extends AbstractCapellaElementRule {
   protected void attachRelated(EObject element, EObject result, IContext context) {
     super.attachRelated(element, result, context);
     AttachmentHelper.getInstance(context).attachTracedElements(element, result, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED, context);
-    AttachmentHelper.getInstance(context).attachTracedElements(element, result, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, context);
     AttachmentHelper.getInstance(context).attachTracedElements(element, result,
         FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS, context);
 
@@ -63,7 +61,6 @@ public class FunctionalChainInvolvementRule extends AbstractCapellaElementRule {
   protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
     super.premicesRelated(element, needed);
     needed.addAll(createDefaultPrecedencePremices(element, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED));
-    needed.addAll(createDefaultPrecedencePremices(element, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER));
     needed.addAll(createDefaultPrecedencePremices(element, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS));
 
     if (element instanceof FunctionalChainReference) {

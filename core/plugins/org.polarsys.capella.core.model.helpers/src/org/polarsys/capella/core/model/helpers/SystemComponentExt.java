@@ -111,7 +111,6 @@ public class SystemComponentExt {
       if (!getInvolvedCapabilityRealisations(cpnt).contains(capabilityRealisationUseCase)) {
         SystemComponentCapabilityRealizationInvolvement capabilityInv = CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement();
         capabilityInv.setInvolved(cpnt);
-        capabilityInv.setInvolver(capabilityRealisationUseCase);
         ((CapabilityRealization) capabilityRealisationUseCase.eContainer()).getOwnedSystemComponentCapabilityRealizations().add(capabilityInv);
       }
     }

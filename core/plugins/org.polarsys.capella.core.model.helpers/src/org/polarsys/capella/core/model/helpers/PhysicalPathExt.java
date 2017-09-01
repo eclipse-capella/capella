@@ -716,7 +716,6 @@ public class PhysicalPathExt {
     PhysicalPathInvolvement newInv = CsFactory.eINSTANCE.createPhysicalPathInvolvement();
     path.getOwnedPhysicalPathInvolvements().add(newInv);
     newInv.setInvolved(involved);
-    newInv.setInvolver(path);
     return newInv;
   }
 

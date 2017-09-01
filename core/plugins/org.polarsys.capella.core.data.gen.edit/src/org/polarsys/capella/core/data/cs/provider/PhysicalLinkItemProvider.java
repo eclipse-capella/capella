@@ -237,9 +237,9 @@ public class PhysicalLinkItemProvider
 				 getString("_UI_PhysicalLink_categories_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_PhysicalLink_categories_feature", "_UI_PhysicalLink_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 CsPackage.Literals.PHYSICAL_LINK__CATEGORIES,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code

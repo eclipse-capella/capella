@@ -136,7 +136,7 @@
     </genClasses>
     <genClasses image="false" ecoreClass="CapellaCore.ecore#//Allocation"/>
     <genClasses image="false" ecoreClass="CapellaCore.ecore#//Involvement">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CapellaCore.ecore#//Involvement/involver"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCore.ecore#//Involvement/involver"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CapellaCore.ecore#//Involvement/involved"/>
     </genClasses>
     <genClasses image="false" ecoreClass="CapellaCore.ecore#//InvolverElement">
@@ -421,13 +421,13 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/involvedSystem"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/participatingActors"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/participatingSystem"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/purposes"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/purposes"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/purposeMissions"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/realizedOperationalCapabilities"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/realizingCapabilityRealizations"/>
     </genClasses>
     <genClasses ecoreClass="ContextArchitecture.ecore#//CapabilityExploitation">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//CapabilityExploitation/mission"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//CapabilityExploitation/mission"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//CapabilityExploitation/capability"/>
     </genClasses>
     <genClasses ecoreClass="ContextArchitecture.ecore#//CapabilityPkg">
@@ -793,8 +793,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//AbstractState/ownedAbstractStateRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//AbstractState/realizedAbstractStates"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//AbstractState/realizingAbstractStates"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//AbstractState/outgoing"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//AbstractState/incoming"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//AbstractState/outgoing"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//AbstractState/incoming"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//AbstractState/involverRegions"/>
     </genClasses>
     <genClasses ecoreClass="CapellaCommon.ecore#//StateTransition">
@@ -1421,7 +1421,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//PhysicalLink/ownedComponentExchangeFunctionalExchangeAllocations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//PhysicalLink/ownedPhysicalLinkEnds"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//PhysicalLink/ownedPhysicalLinkRealizations"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//PhysicalLink/categories"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//PhysicalLink/categories"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//PhysicalLink/sourcePhysicalPort"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//PhysicalLink/targetPhysicalPort"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//PhysicalLink/realizedPhysicalLinks"/>
@@ -1617,7 +1617,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//FunctionalExchange/incomingComponentExchangeFunctionalExchangeRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//FunctionalExchange/incomingFunctionalExchangeRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//FunctionalExchange/outgoingFunctionalExchangeRealizations"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//FunctionalExchange/categories"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//FunctionalExchange/categories"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//FunctionalExchange/ownedFunctionalExchangeRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//FunctionalExchange/sourceFunctionOutputPort"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//FunctionalExchange/targetFunctionInputPort"/>
@@ -1662,7 +1662,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//ComponentExchange/sourcePart"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//ComponentExchange/targetPort"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//ComponentExchange/targetPart"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//ComponentExchange/categories"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//ComponentExchange/categories"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//ComponentExchange/allocatorPhysicalLinks"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//ComponentExchange/realizedComponentExchanges"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//ComponentExchange/realizingComponentExchanges"/>
@@ -1709,7 +1709,7 @@
     <genClasses ecoreClass="FunctionalAnalysis.ecore#//ComponentPortAllocationEnd">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//ComponentPortAllocationEnd/port"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//ComponentPortAllocationEnd/part"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//ComponentPortAllocationEnd/owningComponentPortAllocation"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//ComponentPortAllocationEnd/owningComponentPortAllocation"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Interaction" basePackage="org.polarsys.capella.core.data" resource="XMI"

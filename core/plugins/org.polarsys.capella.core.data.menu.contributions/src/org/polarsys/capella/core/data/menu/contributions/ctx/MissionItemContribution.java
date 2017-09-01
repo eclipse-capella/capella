@@ -79,22 +79,6 @@ public class MissionItemContribution implements IMDEMenuItemContribution {
             };
             cmd.append(setLinkedSystemCmd);
 
-            // Sets the linked mission.
-            Command setLinkedMissionCmd = new CommandWrapper() {
-              @Override
-              public Command createCommand() {
-                Collection<?> res = createLinkCmd.getResult();
-                if (res.size() == 1) {
-                  Object createdObj = res.iterator().next();
-                  if (createdObj instanceof EObject) {
-                    return new SetCommand(editingDomain, (EObject) createdObj, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, mission);
-                  }
-                }
-                return new IdentityCommand();
-              }
-            };
-            cmd.append(setLinkedMissionCmd);
-
             return cmd;
           }
         }

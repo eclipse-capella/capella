@@ -239,7 +239,6 @@ public interface Capability extends AbstractCapability {
 	/**
 	 * Returns the value of the '<em><b>Purposes</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.CapabilityExploitation}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.CapabilityExploitation#getCapability <em>Capability</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -249,8 +248,7 @@ public interface Capability extends AbstractCapability {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Purposes</em>' reference list.
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getCapability_Purposes()
-	 * @see org.polarsys.capella.core.data.ctx.CapabilityExploitation#getCapability
-	 * @model opposite="capability"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='addition' umlOppositeReferenceOwner='Include'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='purposes'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the links to the Mission(s) that this Capability supports\r\n[source: Capella study]' constraints='none' comment/notes='none'"

@@ -86,7 +86,6 @@ public class ActorExt {
 		if ((actor != null) && (capabilityUseCase != null)) {
 			ActorCapabilityInvolvement capabilityInv = CtxFactory.eINSTANCE.createActorCapabilityInvolvement();
 			capabilityInv.setInvolved(actor);
-			capabilityInv.setInvolver(capabilityUseCase);
 			((Capability) capabilityUseCase.eContainer()).getOwnedActorCapabilityInvolvements().add(capabilityInv);
 		}
 	}

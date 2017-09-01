@@ -62,7 +62,6 @@ public class OperationalCapability_InvolvedEntitiesController extends AbstractMu
   @Override
   protected void doAddOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
     EntityOperationalCapabilityInvolvement link = OaFactory.eINSTANCE.createEntityOperationalCapabilityInvolvement();
-    link.setInvolver((InvolverElement) semanticElement);
     link.setInvolved((InvolvedElement) object);
     ((List<EObject>) semanticElement.eGet(semanticFeature)).add(link);
   }

@@ -369,39 +369,6 @@ public class CommunicationMeanImpl extends RelationshipImpl implements Communica
 
 
 	/**
-	 * The cached value of the '{@link #getCategories() <em>Categories</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCategories()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ComponentExchangeCategory> categories;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1542,10 +1509,39 @@ public class CommunicationMeanImpl extends RelationshipImpl implements Communica
 
 	public EList<ComponentExchangeCategory> getCategories() {
 
-		if (categories == null) {
-			categories = new EObjectWithInverseResolvingEList.ManyInverse<ComponentExchangeCategory>(ComponentExchangeCategory.class, this, OaPackage.COMMUNICATION_MEAN__CATEGORIES, FaPackage.COMPONENT_EXCHANGE_CATEGORY__EXCHANGES);
-		}
-		return categories;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = FaPackage.Literals.COMPONENT_EXCHANGE__CATEGORIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, FaPackage.Literals.COMPONENT_EXCHANGE__CATEGORIES, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<ComponentExchangeCategory> resultAsList = (Collection<ComponentExchangeCategory>) result;
+		return new EcoreEList.UnmodifiableEList<ComponentExchangeCategory>(this, FaPackage.Literals.COMPONENT_EXCHANGE__CATEGORIES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
 	}
 
 
@@ -1824,8 +1820,6 @@ public class CommunicationMeanImpl extends RelationshipImpl implements Communica
 				if (link != null)
 					msgs = ((InternalEObject)link).eInverseRemove(this, FaPackage.EXCHANGE_CONTAINMENT__EXCHANGE, ExchangeContainment.class, msgs);
 				return basicSetLink((ExchangeContainment)otherEnd, msgs);
-			case OaPackage.COMMUNICATION_MEAN__CATEGORIES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCategories()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -1850,8 +1844,6 @@ public class CommunicationMeanImpl extends RelationshipImpl implements Communica
 				return ((InternalEList<?>)getOwnedComponentExchangeRealizations()).basicRemove(otherEnd, msgs);
 			case OaPackage.COMMUNICATION_MEAN__OWNED_COMPONENT_EXCHANGE_ENDS:
 				return ((InternalEList<?>)getOwnedComponentExchangeEnds()).basicRemove(otherEnd, msgs);
-			case OaPackage.COMMUNICATION_MEAN__CATEGORIES:
-				return ((InternalEList<?>)getCategories()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1993,10 +1985,6 @@ public class CommunicationMeanImpl extends RelationshipImpl implements Communica
 				getOwnedComponentExchangeEnds().clear();
 				getOwnedComponentExchangeEnds().addAll((Collection<? extends ComponentExchangeEnd>)newValue);
 				return;
-			case OaPackage.COMMUNICATION_MEAN__CATEGORIES:
-				getCategories().clear();
-				getCategories().addAll((Collection<? extends ComponentExchangeCategory>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -2045,9 +2033,6 @@ public class CommunicationMeanImpl extends RelationshipImpl implements Communica
 				return;
 			case OaPackage.COMMUNICATION_MEAN__OWNED_COMPONENT_EXCHANGE_ENDS:
 				getOwnedComponentExchangeEnds().clear();
-				return;
-			case OaPackage.COMMUNICATION_MEAN__CATEGORIES:
-				getCategories().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -2116,7 +2101,7 @@ public class CommunicationMeanImpl extends RelationshipImpl implements Communica
 			case OaPackage.COMMUNICATION_MEAN__TARGET_PART:
 				return basicGetTargetPart() != null;
 			case OaPackage.COMMUNICATION_MEAN__CATEGORIES:
-				return categories != null && !categories.isEmpty();
+				return !getCategories().isEmpty();
 			case OaPackage.COMMUNICATION_MEAN__ALLOCATOR_PHYSICAL_LINKS:
 				return !getAllocatorPhysicalLinks().isEmpty();
 			case OaPackage.COMMUNICATION_MEAN__REALIZED_COMPONENT_EXCHANGES:

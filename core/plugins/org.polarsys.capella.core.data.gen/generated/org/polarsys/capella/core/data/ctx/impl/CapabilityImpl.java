@@ -109,31 +109,6 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
 
 
 	/**
-	 * The cached value of the '{@link #getPurposes() <em>Purposes</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPurposes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<CapabilityExploitation> purposes;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -455,10 +430,39 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
 
 	public EList<CapabilityExploitation> getPurposes() {
 
-		if (purposes == null) {
-			purposes = new EObjectWithInverseResolvingEList<CapabilityExploitation>(CapabilityExploitation.class, this, CtxPackage.CAPABILITY__PURPOSES, CtxPackage.CAPABILITY_EXPLOITATION__CAPABILITY);
-		}
-		return purposes;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CtxPackage.Literals.CAPABILITY__PURPOSES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CtxPackage.Literals.CAPABILITY__PURPOSES, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<CapabilityExploitation> resultAsList = (Collection<CapabilityExploitation>) result;
+		return new EcoreEList.UnmodifiableEList<CapabilityExploitation>(this, CtxPackage.Literals.CAPABILITY__PURPOSES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
 	}
 
 
@@ -609,21 +613,6 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CtxPackage.CAPABILITY__PURPOSES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPurposes()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -631,8 +620,6 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
 				return ((InternalEList<?>)getOwnedActorCapabilityInvolvements()).basicRemove(otherEnd, msgs);
 			case CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT:
 				return basicSetOwnedSystemCapabilityInvolvement(null, msgs);
-			case CtxPackage.CAPABILITY__PURPOSES:
-				return ((InternalEList<?>)getPurposes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -687,10 +674,6 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
 			case CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT:
 					setOwnedSystemCapabilityInvolvement((SystemCapabilityInvolvement)newValue);
 				return;
-			case CtxPackage.CAPABILITY__PURPOSES:
-				getPurposes().clear();
-				getPurposes().addAll((Collection<? extends CapabilityExploitation>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -709,9 +692,6 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
 				return;
 			case CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT:
 				setOwnedSystemCapabilityInvolvement((SystemCapabilityInvolvement)null);
-				return;
-			case CtxPackage.CAPABILITY__PURPOSES:
-				getPurposes().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -740,7 +720,7 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
 			case CtxPackage.CAPABILITY__PARTICIPATING_SYSTEM:
 				return basicGetParticipatingSystem() != null;
 			case CtxPackage.CAPABILITY__PURPOSES:
-				return purposes != null && !purposes.isEmpty();
+				return !getPurposes().isEmpty();
 			case CtxPackage.CAPABILITY__PURPOSE_MISSIONS:
 				return !getPurposeMissions().isEmpty();
 			case CtxPackage.CAPABILITY__REALIZED_OPERATIONAL_CAPABILITIES:

@@ -63,7 +63,6 @@ public class CapabilityRealization_InvolvedActorsController extends AbstractMult
   protected void doAddOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
     ActorCapabilityRealizationInvolvement link = CsFactory.eINSTANCE.createActorCapabilityRealizationInvolvement();
     link.setInvolved((InvolvedElement) object);
-    link.setInvolver((InvolverElement) semanticElement);
     ((List<EObject>) semanticElement.eGet(semanticFeature)).add(link);
   }
 

@@ -162,14 +162,6 @@
          </rules>
       </resolver>
       <resolver
-            class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.I_13_Resolver"
-            desc="%quickFix.I_13.desc"
-            label="%quickFix.I_13.label">
-         <rules
-               ruleId="I_13">
-         </rules>
-      </resolver>
-      <resolver
             class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.EditContainterPCOfComponentPort"
             desc="%quickFix.DWF_DF_10.desc"
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif"

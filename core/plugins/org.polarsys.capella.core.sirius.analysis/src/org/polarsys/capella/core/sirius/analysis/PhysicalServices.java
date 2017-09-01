@@ -1517,13 +1517,11 @@ public class PhysicalServices {
       for (PhysicalPath chain : selection.get(link)) {
         PhysicalPathInvolvement iExchange = CsFactory.eINSTANCE.createPhysicalPathInvolvement();
         iExchange.setInvolved(link);
-        iExchange.setInvolver(sourceFC);
         sourceFC.getOwnedPhysicalPathInvolvements().add(iExchange);
         iSource.getNextInvolvements().add(iExchange);
 
         PhysicalPathInvolvement iChain = CsFactory.eINSTANCE.createPhysicalPathReference();
         iChain.setInvolved(chain);
-        iChain.setInvolver(sourceFC);
         sourceFC.getOwnedPhysicalPathInvolvements().add(iChain);
         iExchange.getNextInvolvements().add(iChain);
 

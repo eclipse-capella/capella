@@ -1196,8 +1196,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedCapabilityExploitations"
-        upperBound="-1" eType="#//CapabilityExploitation" containment="true" resolveProxies="false"
-        eOpposite="#//CapabilityExploitation/mission">
+        upperBound="-1" eType="#//CapabilityExploitation" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="include"/>
         <details key="featureOwner" value="UseCase"/>
@@ -1613,7 +1612,8 @@
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="purposes" upperBound="-1"
-        eType="#//CapabilityExploitation" eOpposite="#//CapabilityExploitation/capability">
+        eType="#//CapabilityExploitation" changeable="false" volatile="true" transient="true"
+        derived="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="umlOppositeReference" value="addition"/>
         <details key="umlOppositeReferenceOwner" value="Include"/>
@@ -1632,6 +1632,7 @@
         <details key="explanation" value="Opposite reference of uml::Include::addition"/>
         <details key="constraints" value="uml::NamedElement::clientDependency elements on which CapabilityExploitation stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
       </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="purposeMissions" upperBound="-1"
         eType="#//Mission" changeable="false" volatile="true" transient="true" derived="true"
@@ -1705,7 +1706,8 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mission" lowerBound="1"
-        eType="#//Mission" transient="true" eOpposite="#//Mission/ownedCapabilityExploitations">
+        eType="#//Mission" changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="includingCase"/>
         <details key="featureOwner" value="Include"/>
@@ -1726,7 +1728,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capability" lowerBound="1"
-        eType="#//Capability" eOpposite="#//Capability/purposes">
+        eType="#//Capability">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="addition"/>
         <details key="featureOwner" value="Include"/>

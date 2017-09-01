@@ -265,7 +265,6 @@ public class DefaultScenarioMerger implements IScenarioMerger {
     if (!found) {
       SystemComponentCapabilityRealizationInvolvement sccr = CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement();
       capability.getOwnedSystemComponentCapabilityRealizations().add(sccr);
-      sccr.setInvolver(capability);
       sccr.setInvolved((InvolvedElement) type);
     }    
   }

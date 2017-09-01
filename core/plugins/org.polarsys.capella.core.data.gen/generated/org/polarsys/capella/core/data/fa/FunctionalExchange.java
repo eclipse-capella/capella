@@ -252,7 +252,6 @@ public interface FunctionalExchange extends NamedElement, Relationship, Involved
 	/**
 	 * Returns the value of the '<em><b>Categories</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeCategory}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ExchangeCategory#getExchanges <em>Exchanges</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -262,8 +261,7 @@ public interface FunctionalExchange extends NamedElement, Relationship, Involved
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Categories</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchange_Categories()
-	 * @see org.polarsys.capella.core.data.fa.ExchangeCategory#getExchanges
-	 * @model opposite="exchanges"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange categories (families) to which this functional exchange belongs\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='' constraints='none'"
 	 * @generated

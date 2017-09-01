@@ -17,8 +17,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
+import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 
 public class UpdateFECategoriesController extends UpdateCategoriesController {
@@ -30,12 +33,16 @@ public class UpdateFECategoriesController extends UpdateCategoriesController {
    * {@inheritDoc}
    */
   @Override
-  public void updateCategories(List<EObject> selectedElements, List<EObject> categoriesToAdd, List<EObject> categoriesToRemove) {
+  public void updateCategories(List<EObject> selectedElements, List<EObject> categoriesToAdd,
+      List<EObject> categoriesToRemove) {
     for (EObject e : selectedElements) {
       if (e instanceof FunctionalExchange) {
-        EList<ExchangeCategory> categories = ((FunctionalExchange) e).getCategories();
-        categories.addAll((Collection<? extends ExchangeCategory>) categoriesToAdd);
-        categories.removeAll(categoriesToRemove);
+        for (EObject removed : categoriesToRemove) {
+          ((ExchangeCategory) removed).getExchanges().remove(e);
+        }
+        for (EObject added : categoriesToAdd) {
+          ((ExchangeCategory) added).getExchanges().add((FunctionalExchange) e);
+        }
       }
     }
     logResults(Messages.UpdateFECategories_add_msg, categoriesToAdd);
@@ -48,11 +55,11 @@ public class UpdateFECategoriesController extends UpdateCategoriesController {
   @Override
   public List<EObject> getAvailableCategories(List<EObject> element) {
     List<EObject> result = new ArrayList<EObject>();
-    // get all FE categories
     for (EObject fe : element) {
-      if (fe instanceof FunctionalExchange) {
-        List<EObject> feCategories = new FunctionalExchange_Categories().getAvailableElements((FunctionalExchange) fe);
-        result.addAll(feCategories);
+      IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(fe.eClass(),
+          FaPackage.Literals.FUNCTIONAL_EXCHANGE__CATEGORIES);
+      if (query != null) {
+        result.addAll(query.getAvailableElements(fe));
       }
     }
     return result;

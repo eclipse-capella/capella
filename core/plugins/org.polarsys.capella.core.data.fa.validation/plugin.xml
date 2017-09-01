@@ -328,16 +328,6 @@
                <target class="AbstractFunction">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement.MDCHK_FunctionalChainInvolvement_Involver_1" id="I_13" isEnabledByDefault="true" lang="Java" mode="Batch" name="I_13 - Functional chain involvement check 2" severity="WARNING" statusCode="1">
-               <message>
-                  {0} (Functional Chain Involvement) involver shall be its owning Functional Chain.
-               </message>
-               <description>
-                  This rule checks that a Functional Chain Involvement involver is its owning Functional Chain.
-               </description>
-               <target class="FunctionalChainInvolvement">
-               </target>
-            </constraint>
             <constraint
                   class="org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement.MDCHK_FunctionalChainInvolvement_NextAndPrevious_1"
                   id="I_27"

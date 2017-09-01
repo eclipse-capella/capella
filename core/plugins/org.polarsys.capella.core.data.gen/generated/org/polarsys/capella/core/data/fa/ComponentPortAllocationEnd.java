@@ -124,8 +124,7 @@ public interface ComponentPortAllocationEnd extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owning Component Port Allocation</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ComponentPortAllocation#getOwnedComponentPortAllocationEnds <em>Owned Component Port Allocation Ends</em>}'.
+	 * Returns the value of the '<em><b>Owning Component Port Allocation</b></em>' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -133,11 +132,9 @@ public interface ComponentPortAllocationEnd extends CapellaElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owning Component Port Allocation</em>' container reference.
-	 * @see #setOwningComponentPortAllocation(ComponentPortAllocation)
+	 * @return the value of the '<em>Owning Component Port Allocation</em>' reference.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentPortAllocationEnd_OwningComponentPortAllocation()
-	 * @see org.polarsys.capella.core.data.fa.ComponentPortAllocation#getOwnedComponentPortAllocationEnds
-	 * @model opposite="ownedComponentPortAllocationEnds" transient="false"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='end' umlOppositeReferenceOwner='Connector'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='owningComponentPortAllocation'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the ComponentPortAllocation link that contains this endpoint\r\n[source: Capella study]' constraints='none' comment/notes='none'"
@@ -146,21 +143,6 @@ public interface ComponentPortAllocationEnd extends CapellaElement {
 	 */
 
 	ComponentPortAllocation getOwningComponentPortAllocation();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd#getOwningComponentPortAllocation <em>Owning Component Port Allocation</em>}' container reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owning Component Port Allocation</em>' container reference.
-	 * @see #getOwningComponentPortAllocation()
-	 * @generated
-	 */
-
-	void setOwningComponentPortAllocation(ComponentPortAllocation value);
 
 
 

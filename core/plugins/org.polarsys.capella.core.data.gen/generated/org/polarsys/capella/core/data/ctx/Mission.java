@@ -120,7 +120,6 @@ public interface Mission extends NamedElement, InvolverElement {
 	/**
 	 * Returns the value of the '<em><b>Owned Capability Exploitations</b></em>' containment reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.CapabilityExploitation}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.CapabilityExploitation#getMission <em>Mission</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -130,8 +129,7 @@ public interface Mission extends NamedElement, InvolverElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Capability Exploitations</em>' containment reference list.
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getMission_OwnedCapabilityExploitations()
-	 * @see org.polarsys.capella.core.data.ctx.CapabilityExploitation#getMission
-	 * @model opposite="mission" containment="true"
+	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='include' featureOwner='UseCase'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='capabilityExploitations'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the capability exploitation links that are assigned to this Mission\r\n[source: Capella study]' constraints='none' comment/notes='none'"

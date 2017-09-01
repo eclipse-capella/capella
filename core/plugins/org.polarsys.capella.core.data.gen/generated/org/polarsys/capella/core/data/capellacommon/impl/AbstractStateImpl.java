@@ -110,37 +110,6 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 
 
 	/**
-	 * The cached value of the '{@link #getOutgoing() <em>Outgoing</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutgoing()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<StateTransition> outgoing;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getIncoming() <em>Incoming</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIncoming()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<StateTransition> incoming;
-
-
-
-
-
-
-
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -317,10 +286,39 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 
 	public EList<StateTransition> getOutgoing() {
 
-		if (outgoing == null) {
-			outgoing = new EObjectWithInverseResolvingEList<StateTransition>(StateTransition.class, this, CapellacommonPackage.ABSTRACT_STATE__OUTGOING, CapellacommonPackage.STATE_TRANSITION__SOURCE);
-		}
-		return outgoing;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CapellacommonPackage.Literals.ABSTRACT_STATE__OUTGOING.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CapellacommonPackage.Literals.ABSTRACT_STATE__OUTGOING, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<StateTransition> resultAsList = (Collection<StateTransition>) result;
+		return new EcoreEList.UnmodifiableEList<StateTransition>(this, CapellacommonPackage.Literals.ABSTRACT_STATE__OUTGOING, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
 	}
 
 
@@ -335,10 +333,39 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 
 	public EList<StateTransition> getIncoming() {
 
-		if (incoming == null) {
-			incoming = new EObjectWithInverseResolvingEList<StateTransition>(StateTransition.class, this, CapellacommonPackage.ABSTRACT_STATE__INCOMING, CapellacommonPackage.STATE_TRANSITION__TARGET);
-		}
-		return incoming;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CapellacommonPackage.Literals.ABSTRACT_STATE__INCOMING.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CapellacommonPackage.Literals.ABSTRACT_STATE__INCOMING, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<StateTransition> resultAsList = (Collection<StateTransition>) result;
+		return new EcoreEList.UnmodifiableEList<StateTransition>(this, CapellacommonPackage.Literals.ABSTRACT_STATE__INCOMING, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
 	}
 
 
@@ -395,32 +422,11 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CapellacommonPackage.ABSTRACT_STATE__OUTGOING:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOutgoing()).basicAdd(otherEnd, msgs);
-			case CapellacommonPackage.ABSTRACT_STATE__INCOMING:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIncoming()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
 				return ((InternalEList<?>)getOwnedAbstractStateRealizations()).basicRemove(otherEnd, msgs);
-			case CapellacommonPackage.ABSTRACT_STATE__OUTGOING:
-				return ((InternalEList<?>)getOutgoing()).basicRemove(otherEnd, msgs);
-			case CapellacommonPackage.ABSTRACT_STATE__INCOMING:
-				return ((InternalEList<?>)getIncoming()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -474,14 +480,6 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 				getOwnedAbstractStateRealizations().clear();
 				getOwnedAbstractStateRealizations().addAll((Collection<? extends AbstractStateRealization>)newValue);
 				return;
-			case CapellacommonPackage.ABSTRACT_STATE__OUTGOING:
-				getOutgoing().clear();
-				getOutgoing().addAll((Collection<? extends StateTransition>)newValue);
-				return;
-			case CapellacommonPackage.ABSTRACT_STATE__INCOMING:
-				getIncoming().clear();
-				getIncoming().addAll((Collection<? extends StateTransition>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -503,12 +501,6 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 				return;
 			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
 				getOwnedAbstractStateRealizations().clear();
-				return;
-			case CapellacommonPackage.ABSTRACT_STATE__OUTGOING:
-				getOutgoing().clear();
-				return;
-			case CapellacommonPackage.ABSTRACT_STATE__INCOMING:
-				getIncoming().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -535,9 +527,9 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 			case CapellacommonPackage.ABSTRACT_STATE__REALIZING_ABSTRACT_STATES:
 				return !getRealizingAbstractStates().isEmpty();
 			case CapellacommonPackage.ABSTRACT_STATE__OUTGOING:
-				return outgoing != null && !outgoing.isEmpty();
+				return !getOutgoing().isEmpty();
 			case CapellacommonPackage.ABSTRACT_STATE__INCOMING:
-				return incoming != null && !incoming.isEmpty();
+				return !getIncoming().isEmpty();
 			case CapellacommonPackage.ABSTRACT_STATE__INVOLVER_REGIONS:
 				return !getInvolverRegions().isEmpty();
 		}

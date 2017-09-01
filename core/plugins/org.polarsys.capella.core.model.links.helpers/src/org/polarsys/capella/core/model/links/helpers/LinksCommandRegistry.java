@@ -402,11 +402,8 @@ public class LinksCommandRegistry {
 
 			// Functional Exchange category to Functional Exchnage
 			__instance._commandScopeToCommand.put(new CommandScope(null,
-					CsPackage.Literals.PHYSICAL_LINK__CATEGORIES),
-					AddExchangeCategoryToPhysicalLinkCommand.class); // TODO
-																		// only
-																		// for
-																		// MA3
+					CsPackage.Literals.PHYSICAL_LINK_CATEGORY__LINKS),
+					AddExchangeCategoryToPhysicalLinkCommand.class); 
 
 			// Mode to
 			// Function(ig:LogicalFunction,SystemFunction,OperationalActivity,...)

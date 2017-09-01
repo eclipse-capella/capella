@@ -14,6 +14,7 @@ package org.polarsys.capella.core.data.helpers.fa.delegates;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -35,6 +36,7 @@ import org.polarsys.capella.common.data.activity.ActivityNode;
 import org.polarsys.capella.common.data.helpers.modellingcore.delegates.AbstractTypeHelper;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.helpers.EObjectExt;
 
 public class FunctionalExchangeHelper {
   private static FunctionalExchangeHelper instance;
@@ -71,6 +73,8 @@ public class FunctionalExchangeHelper {
       ret = getRealizedFunctionalExchanges(element);
     } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__REALIZING_FUNCTIONAL_EXCHANGES)) {
       ret = getRealizingFunctionalExchanges(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__CATEGORIES)) {
+      ret = getCategories(element);
     }
 
     // no helper found... searching in super classes...
@@ -91,6 +95,10 @@ public class FunctionalExchangeHelper {
     }
 
     return ret;
+  }
+
+  protected List<EObject> getCategories(FunctionalExchange element) {
+    return EObjectExt.getReferencers(element, FaPackage.Literals.EXCHANGE_CATEGORY__EXCHANGES);
   }
 
   protected List<FunctionalChain> getInvolvingFunctionalChains(FunctionalExchange element) {

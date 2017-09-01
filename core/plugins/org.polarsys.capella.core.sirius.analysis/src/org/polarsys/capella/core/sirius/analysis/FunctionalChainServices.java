@@ -938,13 +938,11 @@ public class FunctionalChainServices {
 			  for (FunctionalChain chain : selection.get(exchange)) {
 				  FunctionalChainInvolvement iExchange = FaFactory.eINSTANCE.createFunctionalChainInvolvement();
 				  iExchange.setInvolved(exchange);
-				  iExchange.setInvolver(sourceFC);
 				  sourceFC.getOwnedFunctionalChainInvolvements().add(iExchange);
 				  iSource.getNextFunctionalChainInvolvements().add(iExchange);
 
 				  FunctionalChainReference iChain = FaFactory.eINSTANCE.createFunctionalChainReference();
 				  iChain.setInvolved(chain);
-				  iChain.setInvolver(sourceFC);
 				  sourceFC.getOwnedFunctionalChainInvolvements().add(iChain);
 				  iExchange.getNextFunctionalChainInvolvements().add(iChain);
 

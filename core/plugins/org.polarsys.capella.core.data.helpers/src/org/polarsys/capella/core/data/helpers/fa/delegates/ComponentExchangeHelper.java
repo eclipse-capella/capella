@@ -14,6 +14,7 @@ package org.polarsys.capella.core.data.helpers.fa.delegates;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.polarsys.capella.core.data.cs.Part;
@@ -32,6 +33,7 @@ import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.common.data.helpers.modellingcore.delegates.AbstractTypeHelper;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
+import org.polarsys.capella.common.helpers.EObjectExt;
 
 public class ComponentExchangeHelper {
   private static ComponentExchangeHelper instance;
@@ -71,6 +73,8 @@ public class ComponentExchangeHelper {
       ret = getRealizedComponentExchanges(element);
     } else if (feature.equals(FaPackage.Literals.COMPONENT_EXCHANGE__REALIZING_COMPONENT_EXCHANGES)) {
       ret = getRealizingComponentExchanges(element);
+    } else if (feature.equals(FaPackage.Literals.COMPONENT_EXCHANGE__CATEGORIES)) {
+      ret = getCategories(element);
     }
 
     // no helper found... searching in super classes...
@@ -87,6 +91,10 @@ public class ComponentExchangeHelper {
     return ret;
   }
 
+  protected List<EObject> getCategories(ComponentExchange element) {
+    return EObjectExt.getReferencers(element, FaPackage.Literals.COMPONENT_EXCHANGE_CATEGORY__EXCHANGES);
+  }
+  
   protected List<ComponentExchangeRealization> getIncomingComponentExchangeRealizations(ComponentExchange element) {
     List<ComponentExchangeRealization> ret = new ArrayList<ComponentExchangeRealization>();
     for (AbstractTrace trace : element.getIncomingTraces()) {

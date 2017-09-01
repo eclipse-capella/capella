@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,19 +11,20 @@
 package org.polarsys.capella.core.data.cs.properties.sections;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
-import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.properties.controllers.PhysicalLinkAllocatedComponentExchangesController;
+import org.polarsys.capella.core.data.cs.properties.controllers.PhysicalLinkCategoriesController;
 import org.polarsys.capella.core.data.cs.properties.controllers.RealizedPhysicalLinksController;
 import org.polarsys.capella.core.data.fa.properties.sections.ComponentExchangeAllocatorSection;
-import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
+import org.polarsys.capella.core.model.helpers.delete.DeleteHelper;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 
@@ -43,15 +44,12 @@ public class PhysicalLinkSection extends ComponentExchangeAllocatorSection {
 
     _categoriesField =
         new MultipleSemanticField(getReferencesGroup(), Messages.PhysicalLinkSection_Categories_Label, getWidgetFactory(),
-            new AbstractMultipleSemanticFieldController() {
-              /**
-               * {@inheritDoc}
-               */
-              @Override
-              protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
-                return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), CsPackage.eINSTANCE.getPhysicalLink_Categories());
-              }
-            });
+            new PhysicalLinkCategoriesController()) {
+      @Override
+      protected void removeAllDataValue(EObject element, EStructuralFeature feature) {
+        _controller.writeOpenValues(_semanticElement, _semanticFeature, (List) Collections.emptyList());
+      }
+    };
     _categoriesField.setDisplayedInWizard(displayedInWizard);
 
     _realizedLinksField =
@@ -95,22 +93,7 @@ public class PhysicalLinkSection extends ComponentExchangeAllocatorSection {
   protected MultipleSemanticField createComponentExchangeAllocationsField() {
     final PhysicalLinkAllocatedComponentExchangesController controller = new PhysicalLinkAllocatedComponentExchangesController();
     return new MultipleSemanticField(getReferencesGroup(), Messages.ComponentExchangeAllocatorSection_ComponentExchangeAllocations_Label, getWidgetFactory(),
-        controller) {
-      /**
-       * {@inheritDoc}
-       * 
-       * The synchronization of the delegations/allocations is now managed by {@link DeleteHelper} class
-       */
-      @Override
-      protected void handleDeleteButtonClicked() {
-        executeCommand(new AbstractReadWriteCommand() {
-          @SuppressWarnings("synthetic-access")
-          public void run() {
-            doDeleteCommand(_semanticElement, _semanticFeature);
-          }
-        });
-      }
-    };
+        controller);
   }
 
   /**

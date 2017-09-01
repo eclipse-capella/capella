@@ -155,10 +155,10 @@ public class CapellaLinksMap {
       addMapping(FaPackage.Literals.EXCHANGE_CATEGORY, FaPackage.Literals.FUNCTIONAL_EXCHANGE, null, FaPackage.Literals.EXCHANGE_CATEGORY__EXCHANGES);
 
       //add Physical Category to Physical Link
-      addMapping(CsPackage.Literals.PHYSICAL_LINK, CsPackage.Literals.PHYSICAL_LINK_CATEGORY, null, CsPackage.Literals.PHYSICAL_LINK__CATEGORIES);
+      addMapping(CsPackage.Literals.PHYSICAL_LINK_CATEGORY, CsPackage.Literals.PHYSICAL_LINK, null, CsPackage.Literals.PHYSICAL_LINK_CATEGORY__LINKS);
 
-      //add Physical Category to Physical Link
-      addMapping(CsPackage.Literals.PHYSICAL_LINK, CsPackage.Literals.PHYSICAL_LINK_CATEGORY, null, CsPackage.Literals.PHYSICAL_LINK__CATEGORIES);
+      //add Component Exchange Category to Component Exchange
+      addMapping(FaPackage.Literals.COMPONENT_EXCHANGE_CATEGORY, FaPackage.Literals.COMPONENT_EXCHANGE, null, FaPackage.Literals.COMPONENT_EXCHANGE_CATEGORY__EXCHANGES);
 
       //add Mode to an Abstract Function like OperationalActivity, LogicalFunction , PhysicalFunction,SystemFunction
       addMapping(OaPackage.Literals.OPERATIONAL_ACTIVITY,CapellacommonPackage.Literals.MODE , null , FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES);

@@ -142,7 +142,6 @@ public interface StateTransition extends NamedElement, Relationship {
 
   /**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.capellacommon.AbstractState#getOutgoing <em>Outgoing</em>}'.
 
 	 * <!-- begin-user-doc -->
    * <p>
@@ -152,8 +151,7 @@ public interface StateTransition extends NamedElement, Relationship {
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(AbstractState)
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransition_Source()
-	 * @see org.polarsys.capella.core.data.capellacommon.AbstractState#getOutgoing
-	 * @model opposite="outgoing" required="true"
+	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Designates the originating vertex (state or pseudostate) of the transition.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Transition::source' explanation='none' constraints='none'"
 	 * @generated
@@ -174,7 +172,6 @@ public interface StateTransition extends NamedElement, Relationship {
 
   /**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.capellacommon.AbstractState#getIncoming <em>Incoming</em>}'.
 
 	 * <!-- begin-user-doc -->
    * <p>
@@ -184,8 +181,7 @@ public interface StateTransition extends NamedElement, Relationship {
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(AbstractState)
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransition_Target()
-	 * @see org.polarsys.capella.core.data.capellacommon.AbstractState#getIncoming
-	 * @model opposite="incoming" required="true"
+	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Designates the target vertex that is reached when the transition is taken.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Transition::target' explanation='none' constraints='none'"
 	 * @generated

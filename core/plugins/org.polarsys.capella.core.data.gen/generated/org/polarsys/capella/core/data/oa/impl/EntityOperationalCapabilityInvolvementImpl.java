@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.polarsys.capella.common.model.helpers.IHelper;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.capellacore.InvolverElement;
 import org.polarsys.capella.core.data.capellacore.impl.RelationshipImpl;
@@ -46,20 +47,6 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
  * @generated
  */
 public class EntityOperationalCapabilityInvolvementImpl extends RelationshipImpl implements EntityOperationalCapabilityInvolvement {
-
-	/**
-	 * The cached value of the '{@link #getInvolver() <em>Involver</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInvolver()
-	 * @generated
-	 * @ordered
-	 */
-	protected InvolverElement involver;
-
-
-
-
 
 	/**
 	 * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.
@@ -115,15 +102,8 @@ public class EntityOperationalCapabilityInvolvementImpl extends RelationshipImpl
 
 	public InvolverElement getInvolver() {
 
-		if (involver != null && involver.eIsProxy()) {
-			InternalEObject oldInvolver = (InternalEObject)involver;
-			involver = (InvolverElement)eResolveProxy(oldInvolver);
-			if (involver != oldInvolver) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVER, oldInvolver, involver));
-			}
-		}
-		return involver;
+		InvolverElement involver = basicGetInvolver();
+		return involver != null && involver.eIsProxy() ? (InvolverElement)eResolveProxy((InternalEObject)involver) : involver;
 	}
 
 
@@ -135,28 +115,38 @@ public class EntityOperationalCapabilityInvolvementImpl extends RelationshipImpl
 
 	public InvolverElement basicGetInvolver() {
 
-		return involver;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CapellacorePackage.Literals.INVOLVEMENT__INVOLVER.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, annotation);
+		
+		try {
+			return (InvolverElement) result;
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
+	    return null;
+	  }
+		
 	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setInvolver(InvolverElement newInvolver) {
-
-		InvolverElement oldInvolver = involver;
-		involver = newInvolver;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVER, oldInvolver, involver));
-
-	}
-
-
-
 
 
 
@@ -361,9 +351,6 @@ public class EntityOperationalCapabilityInvolvementImpl extends RelationshipImpl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVER:
-					setInvolver((InvolverElement)newValue);
-				return;
 			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVED:
 					setInvolved((InvolvedElement)newValue);
 				return;
@@ -380,9 +367,6 @@ public class EntityOperationalCapabilityInvolvementImpl extends RelationshipImpl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVER:
-				setInvolver((InvolverElement)null);
-				return;
 			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVED:
 				setInvolved((InvolvedElement)null);
 				return;
@@ -401,7 +385,7 @@ public class EntityOperationalCapabilityInvolvementImpl extends RelationshipImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVER:
-				return involver != null;
+				return basicGetInvolver() != null;
 			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVED:
 				return involved != null;
 			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__ENTITY:

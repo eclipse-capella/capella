@@ -521,7 +521,9 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
-        eType="#//StateTransition" eOpposite="#//StateTransition/source">
+        eType="#//StateTransition" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="Specifies the transitions departing from this vertex.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
         <details key="constraints" value="none"/>
@@ -537,7 +539,9 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="incoming" upperBound="-1"
-        eType="#//StateTransition" eOpposite="#//StateTransition/target">
+        eType="#//StateTransition" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="Specifies the transitions entering this vertex.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
         <details key="constraints" value="none"/>
@@ -630,7 +634,7 @@
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
-        eType="#//AbstractState" eOpposite="#//AbstractState/outgoing">
+        eType="#//AbstractState">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="Designates the originating vertex (state or pseudostate) of the transition.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
         <details key="constraints" value="none"/>
@@ -644,7 +648,7 @@
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="#//AbstractState" eOpposite="#//AbstractState/incoming">
+        eType="#//AbstractState">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="Designates the target vertex that is reached when the transition is taken.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
         <details key="constraints" value="none"/>

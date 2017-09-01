@@ -62,7 +62,6 @@ public class AbstractCapability_InvolvedFunctionalChainsController extends Abstr
   @Override
   protected void doAddOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
     FunctionalChainAbstractCapabilityInvolvement link = InteractionFactory.eINSTANCE.createFunctionalChainAbstractCapabilityInvolvement();
-    link.setInvolver((InvolverElement) semanticElement);
     link.setInvolved((InvolvedElement) object);
     ((List<EObject>) semanticElement.eGet(semanticFeature)).add(link);
   }

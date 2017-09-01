@@ -6179,7 +6179,7 @@ public interface CtxPackage extends EPackage {
 	int CAPABILITY_EXPLOITATION__APPLIED_REQUIREMENTS = CapellacorePackage.RELATIONSHIP__APPLIED_REQUIREMENTS;
 
 	/**
-	 * The feature id for the '<em><b>Mission</b></em>' container reference.
+	 * The feature id for the '<em><b>Mission</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -9146,10 +9146,10 @@ public interface CtxPackage extends EPackage {
 	EClass getCapabilityExploitation();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.polarsys.capella.core.data.ctx.CapabilityExploitation#getMission <em>Mission</em>}'.
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.ctx.CapabilityExploitation#getMission <em>Mission</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Mission</em>'.
+	 * @return the meta object for the reference '<em>Mission</em>'.
 	 * @see org.polarsys.capella.core.data.ctx.CapabilityExploitation#getMission()
 	 * @see #getCapabilityExploitation()
 	 * @generated
@@ -10028,7 +10028,7 @@ public interface CtxPackage extends EPackage {
 		EClass CAPABILITY_EXPLOITATION = eINSTANCE.getCapabilityExploitation();
 
 		/**
-		 * The meta object literal for the '<em><b>Mission</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Mission</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

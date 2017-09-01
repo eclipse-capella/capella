@@ -133,7 +133,8 @@ public class FunctionalExchangeRule extends AbstractCapellaElementRule {
     attachExchangeRelated(element, result, context);
 
     AttachmentHelper.getInstance(context).attachTracedElements(element, result, FaPackage.Literals.FUNCTIONAL_EXCHANGE__EXCHANGED_ITEMS, context);
-    AttachmentHelper.getInstance(context).attachTracedElements(element, result, FaPackage.Literals.FUNCTIONAL_EXCHANGE__CATEGORIES, context);
+    
+    AttachmentHelper.getInstance(context).invertedAttachTracedElements(element, result, FaPackage.Literals.FUNCTIONAL_EXCHANGE__CATEGORIES, FaPackage.Literals.EXCHANGE_CATEGORY__EXCHANGES, context);
   }
 
   @Override

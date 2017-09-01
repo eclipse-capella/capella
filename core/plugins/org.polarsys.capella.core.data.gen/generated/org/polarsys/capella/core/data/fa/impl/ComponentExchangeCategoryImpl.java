@@ -15,6 +15,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -85,41 +86,12 @@ public class ComponentExchangeCategoryImpl extends NamedElementImpl implements C
 	public EList<ComponentExchange> getExchanges() {
 
 		if (exchanges == null) {
-			exchanges = new EObjectWithInverseResolvingEList.ManyInverse<ComponentExchange>(ComponentExchange.class, this, FaPackage.COMPONENT_EXCHANGE_CATEGORY__EXCHANGES, FaPackage.COMPONENT_EXCHANGE__CATEGORIES);
+			exchanges = new EObjectResolvingEList<ComponentExchange>(ComponentExchange.class, this, FaPackage.COMPONENT_EXCHANGE_CATEGORY__EXCHANGES);
 		}
 		return exchanges;
 	}
 
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case FaPackage.COMPONENT_EXCHANGE_CATEGORY__EXCHANGES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getExchanges()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case FaPackage.COMPONENT_EXCHANGE_CATEGORY__EXCHANGES:
-				return ((InternalEList<?>)getExchanges()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->

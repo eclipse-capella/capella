@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,8 +28,8 @@ public interface IAttachmentHandler extends IHandler {
   /**
    * Attach the given element_p into the given container_p according to the given feature_p
    */
-  boolean attachElementByReference(EObject sourceAttaching, EObject targetAttaching, EObject sourceAttached, EObject targetAttached,
-      EReference sourceFeature, EReference targetFeature);
+  boolean attachElementByReference(EObject sourceAttaching, EObject targetAttaching, EObject sourceAttached,
+      EObject targetAttached, EReference sourceFeature, EReference targetFeature);
 
   /**
    * Attach the given element_p into the given container_p according to the given feature_p
@@ -53,11 +53,17 @@ public interface IAttachmentHandler extends IHandler {
   void updateElementAttribute(EObject sourceElement, EObject targetElement, EAttribute feature, IContext context);
 
   /**
-   * Attach the referencedElement_p into traced elements of the sourceElement.eGet(reference)
-   * according to policy/feature, it can attach directly the referencedElement_p, its traced element or any other related element
+   * Attach the traced elements of sourceElement.eGet(reference) into targetElement.eGet(reference)
+   * According to policy/feature, it can attach directly the referencedElement, its traced element or any other related element
    */
-  //Should be moved...
   void attachTracedElements(EObject sourceElement, EObject targetElement, EReference reference, IContext context);
+
+  /**
+   * Attach the traced elements of sourceElement.eGet(reference) into traced elements of targetElement.eGet(reference) by the eGet(targetReference).
+   * According to policy/feature, it can attach directly the referencedElement, its traced element or any other related element
+   */
+  void invertedAttachTracedElements(EObject sourceElement, EObject targetElement, EReference reference,
+      EReference targetReference, IContext context);
 
   void removeElements(Collection<EObject> objects, IContext context);
 

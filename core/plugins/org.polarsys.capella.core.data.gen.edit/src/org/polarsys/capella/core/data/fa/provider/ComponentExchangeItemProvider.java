@@ -1215,9 +1215,9 @@ public class ComponentExchangeItemProvider
 				 getString("_UI_ComponentExchange_categories_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentExchange_categories_feature", "_UI_ComponentExchange_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 FaPackage.Literals.COMPONENT_EXCHANGE__CATEGORIES,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code

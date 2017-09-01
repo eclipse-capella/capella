@@ -565,7 +565,7 @@
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="exchanges" upperBound="-1"
-        eType="#//FunctionalExchange" eOpposite="#//FunctionalExchange/categories">
+        eType="#//FunctionalExchange">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the list of functional exchanges that are part of this exchange category&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1794,7 +1794,9 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
-        eType="#//ExchangeCategory" eOpposite="#//ExchangeCategory/exchanges">
+        eType="#//ExchangeCategory" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the exchange categories (families) to which this functional exchange belongs&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2578,7 +2580,9 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
-        eType="#//ComponentExchangeCategory" eOpposite="#//ComponentExchangeCategory/exchanges">
+        eType="#//ComponentExchangeCategory" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the exchange categories (families) to which this functional exchange belongs&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2741,7 +2745,7 @@
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="exchanges" upperBound="-1"
-        eType="#//ComponentExchange" eOpposite="#//ComponentExchange/categories">
+        eType="#//ComponentExchange">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the list of functional exchanges that are part of this exchange category&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -3061,7 +3065,7 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedComponentPortAllocationEnds"
-        upperBound="-1" eType="#//ComponentPortAllocationEnd" containment="true" eOpposite="#//ComponentPortAllocationEnd/owningComponentPortAllocation">
+        upperBound="-1" eType="#//ComponentPortAllocationEnd" containment="true">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the component port allocation endpoints involved in this link&#xD;&#xA;&#xD;&#xA;A connector consists of at least two connector ends, each representing the participation of instances of the classifiers&#xD;&#xA;typing the connectable elements attached to this end. The set of connector ends is ordered.&#xD;&#xA;[source: UML superstructure v2.2]"/>
         <details key="constraints" value="none"/>
@@ -3159,7 +3163,9 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owningComponentPortAllocation"
-        eType="#//ComponentPortAllocation" eOpposite="#//ComponentPortAllocation/ownedComponentPortAllocationEnds">
+        eType="#//ComponentPortAllocation" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="umlOppositeReference" value="end"/>
         <details key="umlOppositeReferenceOwner" value="Connector"/>

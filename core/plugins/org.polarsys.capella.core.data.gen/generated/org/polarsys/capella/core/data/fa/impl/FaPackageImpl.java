@@ -2594,7 +2594,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		initEReference(getFunctionSpecification_SubFunctionSpecifications(), this.getFunctionSpecification(), null, "subFunctionSpecifications", null, 0, -1, FunctionSpecification.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(exchangeCategoryEClass, ExchangeCategory.class, "ExchangeCategory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getExchangeCategory_Exchanges(), this.getFunctionalExchange(), this.getFunctionalExchange_Categories(), "exchanges", null, 0, -1, ExchangeCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getExchangeCategory_Exchanges(), this.getFunctionalExchange(), null, "exchanges", null, 0, -1, ExchangeCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(exchangeLinkEClass, ExchangeLink.class, "ExchangeLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getExchangeLink_Exchanges(), this.getExchangeSpecification(), null, "exchanges", null, 0, -1, ExchangeLink.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2681,7 +2681,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		initEReference(getFunctionalExchange_IncomingComponentExchangeFunctionalExchangeRealizations(), this.getComponentExchangeFunctionalExchangeAllocation(), this.getComponentExchangeFunctionalExchangeAllocation_AllocatedFunctionalExchange(), "incomingComponentExchangeFunctionalExchangeRealizations", null, 0, -1, FunctionalExchange.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getFunctionalExchange_IncomingFunctionalExchangeRealizations(), this.getFunctionalExchangeRealization(), this.getFunctionalExchangeRealization_RealizedFunctionalExchange(), "incomingFunctionalExchangeRealizations", null, 0, -1, FunctionalExchange.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getFunctionalExchange_OutgoingFunctionalExchangeRealizations(), this.getFunctionalExchangeRealization(), this.getFunctionalExchangeRealization_RealizingFunctionalExchange(), "outgoingFunctionalExchangeRealizations", null, 0, -1, FunctionalExchange.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getFunctionalExchange_Categories(), this.getExchangeCategory(), this.getExchangeCategory_Exchanges(), "categories", null, 0, -1, FunctionalExchange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getFunctionalExchange_Categories(), this.getExchangeCategory(), null, "categories", null, 0, -1, FunctionalExchange.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getFunctionalExchange_OwnedFunctionalExchangeRealizations(), this.getFunctionalExchangeRealization(), null, "ownedFunctionalExchangeRealizations", null, 0, -1, FunctionalExchange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getFunctionalExchange_SourceFunctionOutputPort(), this.getFunctionOutputPort(), null, "sourceFunctionOutputPort", null, 0, 1, FunctionalExchange.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getFunctionalExchange_TargetFunctionInputPort(), this.getFunctionInputPort(), null, "targetFunctionInputPort", null, 0, 1, FunctionalExchange.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2726,7 +2726,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		initEReference(getComponentExchange_SourcePart(), theCsPackage.getPart(), null, "sourcePart", null, 0, 1, ComponentExchange.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponentExchange_TargetPort(), theInformationPackage.getPort(), null, "targetPort", null, 0, 1, ComponentExchange.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponentExchange_TargetPart(), theCsPackage.getPart(), null, "targetPart", null, 0, 1, ComponentExchange.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getComponentExchange_Categories(), this.getComponentExchangeCategory(), this.getComponentExchangeCategory_Exchanges(), "categories", null, 0, -1, ComponentExchange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponentExchange_Categories(), this.getComponentExchangeCategory(), null, "categories", null, 0, -1, ComponentExchange.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponentExchange_AllocatorPhysicalLinks(), theCsPackage.getPhysicalLink(), null, "allocatorPhysicalLinks", null, 0, -1, ComponentExchange.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponentExchange_RealizedComponentExchanges(), this.getComponentExchange(), this.getComponentExchange_RealizingComponentExchanges(), "realizedComponentExchanges", null, 0, -1, ComponentExchange.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponentExchange_RealizingComponentExchanges(), this.getComponentExchange(), this.getComponentExchange_RealizedComponentExchanges(), "realizingComponentExchanges", null, 0, -1, ComponentExchange.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2740,7 +2740,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		initEReference(getComponentExchangeAllocator_AllocatedComponentExchanges(), this.getComponentExchange(), null, "allocatedComponentExchanges", null, 0, -1, ComponentExchangeAllocator.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(componentExchangeCategoryEClass, ComponentExchangeCategory.class, "ComponentExchangeCategory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getComponentExchangeCategory_Exchanges(), this.getComponentExchange(), this.getComponentExchange_Categories(), "exchanges", null, 0, -1, ComponentExchangeCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponentExchangeCategory_Exchanges(), this.getComponentExchange(), null, "exchanges", null, 0, -1, ComponentExchangeCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(componentExchangeEndEClass, ComponentExchangeEnd.class, "ComponentExchangeEnd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getComponentExchangeEnd_Port(), theInformationPackage.getPort(), null, "port", null, 0, 1, ComponentExchangeEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2766,14 +2766,14 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		initEReference(getComponentPort_RealizingComponentPorts(), this.getComponentPort(), this.getComponentPort_RealizedComponentPorts(), "realizingComponentPorts", null, 0, -1, ComponentPort.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(componentPortAllocationEClass, ComponentPortAllocation.class, "ComponentPortAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getComponentPortAllocation_OwnedComponentPortAllocationEnds(), this.getComponentPortAllocationEnd(), this.getComponentPortAllocationEnd_OwningComponentPortAllocation(), "ownedComponentPortAllocationEnds", null, 0, -1, ComponentPortAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponentPortAllocation_OwnedComponentPortAllocationEnds(), this.getComponentPortAllocationEnd(), null, "ownedComponentPortAllocationEnds", null, 0, -1, ComponentPortAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponentPortAllocation_AllocatedPort(), theInformationPackage.getPort(), null, "allocatedPort", null, 0, 1, ComponentPortAllocation.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponentPortAllocation_AllocatingPort(), theInformationPackage.getPort(), null, "allocatingPort", null, 0, 1, ComponentPortAllocation.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(componentPortAllocationEndEClass, ComponentPortAllocationEnd.class, "ComponentPortAllocationEnd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getComponentPortAllocationEnd_Port(), theInformationPackage.getPort(), null, "port", null, 0, 1, ComponentPortAllocationEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponentPortAllocationEnd_Part(), theCsPackage.getPart(), null, "part", null, 0, 1, ComponentPortAllocationEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getComponentPortAllocationEnd_OwningComponentPortAllocation(), this.getComponentPortAllocation(), this.getComponentPortAllocation_OwnedComponentPortAllocationEnds(), "owningComponentPortAllocation", null, 0, 1, ComponentPortAllocationEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponentPortAllocationEnd_OwningComponentPortAllocation(), this.getComponentPortAllocation(), null, "owningComponentPortAllocation", null, 0, 1, ComponentPortAllocationEnd.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Initialize enums and add enum literals
 		initEEnum(functionalChainKindEEnum, FunctionalChainKind.class, "FunctionalChainKind"); //$NON-NLS-1$
@@ -7342,6 +7342,11 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getFunctionalExchange_Categories(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getFunctionalExchange_SourceFunctionOutputPort(), 
 		   source, 
 		   new String[] {
@@ -7467,6 +7472,11 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getComponentExchange_Categories(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getComponentExchange_AllocatorPhysicalLinks(), 
 		   source, 
 		   new String[] {
@@ -7558,6 +7568,11 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		   });	
 		addAnnotation
 		  (getComponentPortAllocation_AllocatingPort(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getComponentPortAllocationEnd_OwningComponentPortAllocation(), 
 		   source, 
 		   new String[] {
 		   });

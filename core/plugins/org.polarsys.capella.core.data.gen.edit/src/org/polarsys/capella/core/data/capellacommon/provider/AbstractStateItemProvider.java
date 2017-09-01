@@ -212,9 +212,9 @@ public class AbstractStateItemProvider
 				 getString("_UI_AbstractState_outgoing_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractState_outgoing_feature", "_UI_AbstractState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 CapellacommonPackage.Literals.ABSTRACT_STATE__OUTGOING,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code
@@ -239,9 +239,9 @@ public class AbstractStateItemProvider
 				 getString("_UI_AbstractState_incoming_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractState_incoming_feature", "_UI_AbstractState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 CapellacommonPackage.Literals.ABSTRACT_STATE__INCOMING,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code

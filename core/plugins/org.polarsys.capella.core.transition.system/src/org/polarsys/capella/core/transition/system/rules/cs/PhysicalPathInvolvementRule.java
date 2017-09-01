@@ -41,7 +41,6 @@ public class PhysicalPathInvolvementRule extends AbstractCapellaElementRule {
   protected void attachRelated(EObject element, EObject result, IContext context) {
     super.attachRelated(element, result, context);
     AttachmentHelper.getInstance(context).attachTracedElements(element, result, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED, context);
-    AttachmentHelper.getInstance(context).attachTracedElements(element, result, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, context);
     AttachmentHelper.getInstance(context).attachTracedElements(element, result, CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__NEXT_INVOLVEMENTS,
         context);
 
@@ -55,7 +54,6 @@ public class PhysicalPathInvolvementRule extends AbstractCapellaElementRule {
   protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
     super.premicesRelated(element, needed);
     needed.addAll(createDefaultPrecedencePremices(element, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED));
-    needed.addAll(createDefaultPrecedencePremices(element, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER));
     needed.addAll(createDefaultPrecedencePremices(element, CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__NEXT_INVOLVEMENTS));
 
     if (element instanceof PhysicalPathReference) {

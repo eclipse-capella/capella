@@ -71,8 +71,6 @@ public class CapabilityRealizationExt {
         ActorCapabilityRealizationInvolvement involvementLnk = CsFactory.eINSTANCE.createActorCapabilityRealizationInvolvement();
 
         capabilityRealization.getOwnedActorCapabilityRealizations().add(involvementLnk);
-
-        involvementLnk.setInvolver(capabilityRealization);
         involvementLnk.setInvolved(actor);
       }
     }
@@ -90,8 +88,6 @@ public class CapabilityRealizationExt {
         SystemComponentCapabilityRealizationInvolvement involvementLnk = CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement();
     
         capabilityRealization.getOwnedSystemComponentCapabilityRealizations().add(involvementLnk);
-
-        involvementLnk.setInvolver(capabilityRealization);
         involvementLnk.setInvolved(systemComponent);
       }
     }

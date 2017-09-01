@@ -397,20 +397,6 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 
 
 	/**
-	 * The cached value of the '{@link #getCategories() <em>Categories</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCategories()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ExchangeCategory> categories;
-
-
-
-
-
-	/**
 	 * The cached value of the '{@link #getOwnedFunctionalExchangeRealizations() <em>Owned Functional Exchange Realizations</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1873,10 +1859,39 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 
 	public EList<ExchangeCategory> getCategories() {
 
-		if (categories == null) {
-			categories = new EObjectWithInverseResolvingEList.ManyInverse<ExchangeCategory>(ExchangeCategory.class, this, FaPackage.FUNCTIONAL_EXCHANGE__CATEGORIES, FaPackage.EXCHANGE_CATEGORY__EXCHANGES);
-		}
-		return categories;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_EXCHANGE__CATEGORIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_EXCHANGE__CATEGORIES, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<ExchangeCategory> resultAsList = (Collection<ExchangeCategory>) result;
+		return new EcoreEList.UnmodifiableEList<ExchangeCategory>(this, FaPackage.Literals.FUNCTIONAL_EXCHANGE__CATEGORIES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
 	}
 
 
@@ -2128,8 +2143,6 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 				if (interrupts != null)
 					msgs = ((InternalEObject)interrupts).eInverseRemove(this, ActivityPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES, InterruptibleActivityRegion.class, msgs);
 				return basicSetInterrupts((InterruptibleActivityRegion)otherEnd, msgs);
-			case FaPackage.FUNCTIONAL_EXCHANGE__CATEGORIES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCategories()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -2154,8 +2167,6 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 				return basicSetWeight(null, msgs);
 			case FaPackage.FUNCTIONAL_EXCHANGE__INTERRUPTS:
 				return basicSetInterrupts(null, msgs);
-			case FaPackage.FUNCTIONAL_EXCHANGE__CATEGORIES:
-				return ((InternalEList<?>)getCategories()).basicRemove(otherEnd, msgs);
 			case FaPackage.FUNCTIONAL_EXCHANGE__OWNED_FUNCTIONAL_EXCHANGE_REALIZATIONS:
 				return ((InternalEList<?>)getOwnedFunctionalExchangeRealizations()).basicRemove(otherEnd, msgs);
 		}
@@ -2309,10 +2320,6 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 				getExchangedItems().clear();
 				getExchangedItems().addAll((Collection<? extends ExchangeItem>)newValue);
 				return;
-			case FaPackage.FUNCTIONAL_EXCHANGE__CATEGORIES:
-				getCategories().clear();
-				getCategories().addAll((Collection<? extends ExchangeCategory>)newValue);
-				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__OWNED_FUNCTIONAL_EXCHANGE_REALIZATIONS:
 				getOwnedFunctionalExchangeRealizations().clear();
 				getOwnedFunctionalExchangeRealizations().addAll((Collection<? extends FunctionalExchangeRealization>)newValue);
@@ -2374,9 +2381,6 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__EXCHANGED_ITEMS:
 				getExchangedItems().clear();
-				return;
-			case FaPackage.FUNCTIONAL_EXCHANGE__CATEGORIES:
-				getCategories().clear();
 				return;
 			case FaPackage.FUNCTIONAL_EXCHANGE__OWNED_FUNCTIONAL_EXCHANGE_REALIZATIONS:
 				getOwnedFunctionalExchangeRealizations().clear();
@@ -2448,7 +2452,7 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 			case FaPackage.FUNCTIONAL_EXCHANGE__OUTGOING_FUNCTIONAL_EXCHANGE_REALIZATIONS:
 				return !getOutgoingFunctionalExchangeRealizations().isEmpty();
 			case FaPackage.FUNCTIONAL_EXCHANGE__CATEGORIES:
-				return categories != null && !categories.isEmpty();
+				return !getCategories().isEmpty();
 			case FaPackage.FUNCTIONAL_EXCHANGE__OWNED_FUNCTIONAL_EXCHANGE_REALIZATIONS:
 				return ownedFunctionalExchangeRealizations != null && !ownedFunctionalExchangeRealizations.isEmpty();
 			case FaPackage.FUNCTIONAL_EXCHANGE__SOURCE_FUNCTION_OUTPUT_PORT:

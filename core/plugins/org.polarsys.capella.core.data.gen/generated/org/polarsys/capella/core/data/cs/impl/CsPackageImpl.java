@@ -2329,14 +2329,14 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		initEReference(getPhysicalLink_OwnedComponentExchangeFunctionalExchangeAllocations(), theFaPackage.getComponentExchangeFunctionalExchangeAllocation(), null, "ownedComponentExchangeFunctionalExchangeAllocations", null, 0, -1, PhysicalLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalLink_OwnedPhysicalLinkEnds(), this.getPhysicalLinkEnd(), null, "ownedPhysicalLinkEnds", null, 0, -1, PhysicalLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalLink_OwnedPhysicalLinkRealizations(), this.getPhysicalLinkRealization(), null, "ownedPhysicalLinkRealizations", null, 0, -1, PhysicalLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPhysicalLink_Categories(), this.getPhysicalLinkCategory(), this.getPhysicalLinkCategory_Links(), "categories", null, 0, -1, PhysicalLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getPhysicalLink_Categories(), this.getPhysicalLinkCategory(), null, "categories", null, 0, -1, PhysicalLink.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalLink_SourcePhysicalPort(), this.getPhysicalPort(), null, "sourcePhysicalPort", null, 0, 1, PhysicalLink.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalLink_TargetPhysicalPort(), this.getPhysicalPort(), null, "targetPhysicalPort", null, 0, 1, PhysicalLink.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalLink_RealizedPhysicalLinks(), this.getPhysicalLink(), null, "realizedPhysicalLinks", null, 0, -1, PhysicalLink.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalLink_RealizingPhysicalLinks(), this.getPhysicalLink(), null, "realizingPhysicalLinks", null, 0, -1, PhysicalLink.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(physicalLinkCategoryEClass, PhysicalLinkCategory.class, "PhysicalLinkCategory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getPhysicalLinkCategory_Links(), this.getPhysicalLink(), this.getPhysicalLink_Categories(), "links", null, 0, -1, PhysicalLinkCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getPhysicalLinkCategory_Links(), this.getPhysicalLink(), null, "links", null, 0, -1, PhysicalLinkCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(physicalLinkEndEClass, PhysicalLinkEnd.class, "PhysicalLinkEnd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getPhysicalLinkEnd_Port(), this.getPhysicalPort(), null, "port", null, 0, 1, PhysicalLinkEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -6307,6 +6307,11 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		   });	
 		addAnnotation
 		  (getAbstractPhysicalLinkEnd_InvolvedLinks(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getPhysicalLink_Categories(), 
 		   source, 
 		   new String[] {
 		   });	

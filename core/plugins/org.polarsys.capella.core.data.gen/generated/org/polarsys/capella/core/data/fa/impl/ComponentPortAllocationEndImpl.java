@@ -940,8 +940,8 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 
 	public ComponentPortAllocation getOwningComponentPortAllocation() {
 
-		if (eContainerFeatureID() != FaPackage.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION) return null;
-		return (ComponentPortAllocation)eContainer();
+		ComponentPortAllocation owningComponentPortAllocation = basicGetOwningComponentPortAllocation();
+		return owningComponentPortAllocation != null && owningComponentPortAllocation.eIsProxy() ? (ComponentPortAllocation)eResolveProxy((InternalEObject)owningComponentPortAllocation) : owningComponentPortAllocation;
 	}
 
 
@@ -953,69 +953,40 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 
 	public ComponentPortAllocation basicGetOwningComponentPortAllocation() {
 
-		if (eContainerFeatureID() != FaPackage.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION) return null;
-		return (ComponentPortAllocation)eInternalContainer();
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = FaPackage.Literals.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, FaPackage.Literals.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION, annotation);
+		
+		try {
+			return (ComponentPortAllocation) result;
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
+	    return null;
+	  }
+		
 	}
 
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetOwningComponentPortAllocation(ComponentPortAllocation newOwningComponentPortAllocation, NotificationChain msgs) {
-
-		msgs = eBasicSetContainer((InternalEObject)newOwningComponentPortAllocation, FaPackage.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION, msgs);
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setOwningComponentPortAllocation(ComponentPortAllocation newOwningComponentPortAllocation) {
-
-		if (newOwningComponentPortAllocation != eInternalContainer() || (eContainerFeatureID() != FaPackage.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION && newOwningComponentPortAllocation != null)) {
-			if (EcoreUtil.isAncestor(this, newOwningComponentPortAllocation))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newOwningComponentPortAllocation != null)
-				msgs = ((InternalEObject)newOwningComponentPortAllocation).eInverseAdd(this, FaPackage.COMPONENT_PORT_ALLOCATION__OWNED_COMPONENT_PORT_ALLOCATION_ENDS, ComponentPortAllocation.class, msgs);
-			msgs = basicSetOwningComponentPortAllocation(newOwningComponentPortAllocation, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION, newOwningComponentPortAllocation, newOwningComponentPortAllocation));
-
-	}
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case FaPackage.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetOwningComponentPortAllocation((ComponentPortAllocation)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1031,24 +1002,8 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 				return ((InternalEList<?>)getOwnedEnumerationPropertyTypes()).basicRemove(otherEnd, msgs);
 			case FaPackage.COMPONENT_PORT_ALLOCATION_END__OWNED_PROPERTY_VALUE_GROUPS:
 				return ((InternalEList<?>)getOwnedPropertyValueGroups()).basicRemove(otherEnd, msgs);
-			case FaPackage.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION:
-				return basicSetOwningComponentPortAllocation(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case FaPackage.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION:
-				return eInternalContainer().eInverseRemove(this, FaPackage.COMPONENT_PORT_ALLOCATION__OWNED_COMPONENT_PORT_ALLOCATION_ENDS, ComponentPortAllocation.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -1160,9 +1115,6 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 			case FaPackage.COMPONENT_PORT_ALLOCATION_END__PART:
 					setPart((Part)newValue);
 				return;
-			case FaPackage.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION:
-					setOwningComponentPortAllocation((ComponentPortAllocation)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1217,9 +1169,6 @@ public class ComponentPortAllocationEndImpl extends ModelElementImpl implements 
 				return;
 			case FaPackage.COMPONENT_PORT_ALLOCATION_END__PART:
 				setPart((Part)null);
-				return;
-			case FaPackage.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION:
-				setOwningComponentPortAllocation((ComponentPortAllocation)null);
 				return;
 		}
 		super.eUnset(featureID);

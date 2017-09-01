@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,6 @@ import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.AllocationHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.CapellaElementHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.AbstractFunctionHelper;
@@ -54,6 +53,7 @@ import org.polarsys.capella.core.data.helpers.fa.delegates.ComponentExchangeFunc
 import org.polarsys.capella.core.data.helpers.fa.delegates.ComponentExchangeHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.ComponentExchangeRealizationHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.ComponentFunctionalAllocationHelper;
+import org.polarsys.capella.core.data.helpers.fa.delegates.ComponentPortAllocationEndHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.ComponentPortAllocationHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.ComponentPortHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.ExchangeLinkHelper;
@@ -147,7 +147,7 @@ public class FunctionalAnalysisHelper implements IHelper {
       ret = ComponentPortAllocationHelper.getInstance().doSwitch((ComponentPortAllocation) object, feature);
     }
     else if (object instanceof ComponentPortAllocationEnd) {
-      ret = CapellaElementHelper.getInstance().doSwitch((ComponentPortAllocationEnd) object, feature);
+      ret = ComponentPortAllocationEndHelper.getInstance().doSwitch((ComponentPortAllocationEnd) object, feature);
     }
     else if (object instanceof ComponentExchangeAllocation) {
       ret = ComponentExchangeAllocationHelper.getInstance().doSwitch((ComponentExchangeAllocation) object, feature);

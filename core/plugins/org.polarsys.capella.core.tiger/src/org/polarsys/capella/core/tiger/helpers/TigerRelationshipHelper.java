@@ -546,6 +546,42 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
       }
     }
   }
+  
+  @SuppressWarnings("unchecked")
+  public static void invertedAttachTransformedRelatedElements(EObject sourceElement, EReference sourceReference, EReference targetReference, ITransfo transfo) {
+
+    List<EObject> sourceRelatedElements = Query.retrieveRelatedElements(sourceElement, sourceReference);
+
+    // /////////////////////////////
+
+    List<EObject> targetRelatedElements = new ArrayList<EObject>();
+    for (EObject sourceRelatedElement : sourceRelatedElements) {
+      if (sourceRelatedElement != null) {
+        Object tre = Query.retrieveTransformedElement(sourceRelatedElement, transfo);
+        if (tre != null) {
+          if (tre instanceof EObject) {
+            EObject targetRelatedElement = (EObject) tre;
+            targetRelatedElements.add(targetRelatedElement);
+          } else {
+            List<EObject> tres = (List<EObject>) tre;
+            for (EObject targetRelatedElement : tres) {
+              targetRelatedElements.add(targetRelatedElement);
+            }
+          }
+        }
+      }
+    }
+
+    // "Just add" version
+    List<? extends EObject> targetElements = Query.retrieveTransformedElements(sourceElement, transfo);
+    for (EObject targetElement : targetElements) {
+      for (EObject newlyCreatedElement : targetRelatedElements) {
+        if (isApplicable(targetElement.eClass(), targetReference)) {
+          attachElementByRel(newlyCreatedElement, targetElement, targetReference);
+        }
+      }
+    }
+  }
 
   public static void attachTransformedRelatedElementsByMapping(EObject sourceElement, ITransfo transfo, EReference relationshipInSource, EReference relationshipInTarget) {
     attachTransformedRelatedElementsByMapping(sourceElement, relationshipInSource, relationshipInTarget, transfo);
