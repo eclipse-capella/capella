@@ -44,158 +44,160 @@ import org.polarsys.capella.core.ui.properties.sections.AbstractSection;
  * @author Joao Barata
  */
 public class DiagramDescriptionPropertySection extends AbstractSection {
-  private WeakReference<DRepresentation> representation;
-  protected CapellaElementDescriptionGroup descriptionGroup;
+    private WeakReference<DRepresentation> representation;
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
-    // This operation history listener is used to force refreshes when undo / redo operations are performed.
-    OperationHistoryFactory.getOperationHistory().addOperationHistoryListener(this);
+    protected CapellaElementDescriptionGroup descriptionGroup;
 
-    TabbedPropertySheetWidgetFactory widgetFactory = getWidgetFactory();
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+        super.createControls(parent, aTabbedPropertySheetPage);
+        // This operation history listener is used to force refreshes when undo / redo operations are performed.
+        OperationHistoryFactory.getOperationHistory().addOperationHistoryListener(this);
 
-    rootParentComposite.setLayout(new GridLayout());
+        TabbedPropertySheetWidgetFactory widgetFactory = getWidgetFactory();
 
-    // Create Description text field.
-    createDescriptionWidget(widgetFactory, rootParentComposite);
-  }
+        rootParentComposite.setLayout(new GridLayout());
 
-  /**
-   * Create description widget.
-   * @param widgetFactory
-   * @param textGroup
-   */
-  protected void createDescriptionWidget(TabbedPropertySheetWidgetFactory widgetFactory, Composite parent) {
-    descriptionGroup = new CapellaElementDescriptionGroup(parent, widgetFactory);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void dispose() {
-    super.dispose();
-
-    if (null != representation) {
-      representation.clear();
-      representation = null;
+        // Create Description text field.
+        createDescriptionWidget(widgetFactory, rootParentComposite);
     }
 
-    if (null != descriptionGroup) {
-      descriptionGroup.dispose();
-      descriptionGroup = null;
-    }
-  }
-
-  /**
-   * @see org.eclipse.core.commands.operations.IOperationHistoryListener#historyNotification(org.eclipse.core.commands.operations.OperationHistoryEvent)
-   */
-  @Override
-  public void historyNotification(OperationHistoryEvent event) {
-    // We only handle undo & redo operations to force a refresh.
-    int eventType = event.getEventType();
-    if ((OperationHistoryEvent.UNDONE == eventType) || (OperationHistoryEvent.REDONE == eventType)) {
-      IUndoableOperation operation = event.getOperation();
-      // Take into account the EMF command operation.
-      if (operation instanceof EMFCommandOperation) {
-        // Get the command.
-        Command command = ((EMFCommandOperation) operation).getCommand();
-        // Is the current melody element involved in this command ?
-        if (command.getAffectedObjects().contains(representation)) {
-          // If so, let's refresh the content.
-          refresh();
-        }
-      }
-    }
-  }
-
-  /**
-   * Reload widgets according to data model.
-   */
-  public void loadData() {
-    // Register as operation history listener the first time capella element is set.
-    if (null == representation.get()) {
-      // This operation history listener is used to force refreshes when undo / redo operations are performed.
-      OperationHistoryFactory.getOperationHistory().addOperationHistoryListener(this);
-    }
-    register(representation.get());
-
-    // Disable the section if the element is read only.
-    IReadOnlySectionHandler roHandler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
-    if ((roHandler != null) && roHandler.isLockedByOthers(representation.get())) {
-      setEnabled(false);
-    } else {
-      setEnabled(true);
+    /**
+     * Create description widget.
+     * 
+     * @param widgetFactory
+     * @param textGroup
+     */
+    protected void createDescriptionWidget(TabbedPropertySheetWidgetFactory widgetFactory, Composite parent) {
+        descriptionGroup = new CapellaElementDescriptionGroup(parent, widgetFactory);
     }
 
-	if (descriptionGroup != null) {
-      descriptionGroup.loadData(representation.get(), DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION);
-    }
-  }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void dispose() {
+        super.dispose();
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void refresh() {
-    loadData();
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean select(Object toTest) {
-    return (toTest instanceof DRepresentationDescriptor) || (toTest instanceof DRepresentation) || (toTest instanceof IDDiagramEditPart);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void setInput(IWorkbenchPart part, ISelection selection) {
-    if (!selection.isEmpty()) {
-      if (selection instanceof IStructuredSelection) {
-        Object firstElement = ((IStructuredSelection) selection).getFirstElement();
-
-        if (firstElement instanceof DRepresentationDescriptor) {
-          firstElement = ((DRepresentationDescriptor) firstElement).getRepresentation();
+        if (null != representation) {
+            representation.clear();
+            representation = null;
         }
 
-        if (firstElement instanceof DRepresentation) {
-          representation = new WeakReference<DRepresentation>((DRepresentation) firstElement);
-        } else if (firstElement instanceof IDDiagramEditPart) {
-          IDDiagramEditPart diagramEditPart = (IDDiagramEditPart) firstElement;
-          representation = new WeakReference<DRepresentation>((DRepresentation) ((Diagram) diagramEditPart.getModel()).getElement());
+        if (null != descriptionGroup) {
+            descriptionGroup.dispose();
+            descriptionGroup = null;
+        }
+    }
+
+    /**
+     * @see org.eclipse.core.commands.operations.IOperationHistoryListener#historyNotification(org.eclipse.core.commands.operations.OperationHistoryEvent)
+     */
+    @Override
+    public void historyNotification(OperationHistoryEvent event) {
+        // We only handle undo & redo operations to force a refresh.
+        int eventType = event.getEventType();
+        if ((OperationHistoryEvent.UNDONE == eventType) || (OperationHistoryEvent.REDONE == eventType)) {
+            IUndoableOperation operation = event.getOperation();
+            // Take into account the EMF command operation.
+            if (operation instanceof EMFCommandOperation) {
+                // Get the command.
+                Command command = ((EMFCommandOperation) operation).getCommand();
+                // Is the current melody element involved in this command ?
+                if (command.getAffectedObjects().contains(representation)) {
+                    // If so, let's refresh the content.
+                    refresh();
+                }
+            }
+        }
+    }
+
+    /**
+     * Reload widgets according to data model.
+     */
+    public void loadData() {
+        // Register as operation history listener the first time capella element is set.
+        if (null == representation.get()) {
+            // This operation history listener is used to force refreshes when undo / redo operations are performed.
+            OperationHistoryFactory.getOperationHistory().addOperationHistoryListener(this);
+        }
+        register(representation.get());
+
+        // Disable the section if the element is read only.
+        IReadOnlySectionHandler roHandler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
+        if ((roHandler != null) && roHandler.isLockedByOthers(representation.get())) {
+            setEnabled(false);
         } else {
-          representation = null;
+            setEnabled(true);
         }
-      }
-      loadData();
+
+        if (descriptionGroup != null) {
+            descriptionGroup.loadData(representation.get(), DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION);
+        }
     }
-  }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void setEnabled(boolean enabled) {
-    super.setEnabled(enabled);
-
-    if (null != descriptionGroup) {
-      descriptionGroup.setEnabled(enabled);
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void refresh() {
+        loadData();
     }
-  }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public List<AbstractSemanticField> getSemanticFields() {
-    return Collections.emptyList();
-  }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean select(Object toTest) {
+        return (toTest instanceof DRepresentationDescriptor) || (toTest instanceof DRepresentation) || (toTest instanceof IDDiagramEditPart);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setInput(IWorkbenchPart part, ISelection selection) {
+        if (!selection.isEmpty()) {
+            if (selection instanceof IStructuredSelection) {
+                Object firstElement = ((IStructuredSelection) selection).getFirstElement();
+
+                if (firstElement instanceof DRepresentationDescriptor) {
+                    firstElement = ((DRepresentationDescriptor) firstElement).getRepresentation();
+                }
+
+                if (firstElement instanceof DRepresentation) {
+                    representation = new WeakReference<DRepresentation>((DRepresentation) firstElement);
+                } else if (firstElement instanceof IDDiagramEditPart) {
+                    IDDiagramEditPart diagramEditPart = (IDDiagramEditPart) firstElement;
+                    representation = new WeakReference<DRepresentation>((DRepresentation) ((Diagram) diagramEditPart.getModel()).getElement());
+                } else {
+                    representation = null;
+                }
+            }
+            loadData();
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+
+        if (null != descriptionGroup) {
+            descriptionGroup.setEnabled(enabled);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<AbstractSemanticField> getSemanticFields() {
+        return Collections.emptyList();
+    }
 }

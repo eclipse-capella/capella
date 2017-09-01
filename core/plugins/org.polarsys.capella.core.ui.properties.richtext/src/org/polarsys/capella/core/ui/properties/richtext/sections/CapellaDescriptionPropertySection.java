@@ -41,112 +41,113 @@ import org.polarsys.capella.core.ui.properties.sections.AbstractSection;
  */
 public class CapellaDescriptionPropertySection extends AbstractSection implements IFilter {
 
-  /**
-   *
-   */
-  protected CapellaElementDescriptionGroup descriptionGroup;
+    /**
+     *
+     */
+    protected CapellaElementDescriptionGroup descriptionGroup;
 
-  /**
-   * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
-   *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
-   */
-  @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+    /**
+     * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
+     *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
+     */
+    @Override
+    public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+        super.createControls(parent, aTabbedPropertySheetPage);
 
-    rootParentComposite.setLayout(new GridLayout());
-    rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+        rootParentComposite.setLayout(new GridLayout());
+        rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-    descriptionGroup = new CapellaElementDescriptionGroup(rootParentComposite, (aTabbedPropertySheetPage != null) ? getWidgetFactory() : null);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void dispose() {
-    super.dispose();
-
-    if (null != descriptionGroup) {
-      descriptionGroup.dispose();
-      descriptionGroup = null;
+        descriptionGroup = new CapellaElementDescriptionGroup(rootParentComposite, (aTabbedPropertySheetPage != null) ? getWidgetFactory() : null);
     }
-  }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected void handleParentBackground(Color color, Composite parent) {
-    // Do nothing.
-  }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void dispose() {
+        super.dispose();
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void loadData(EObject capellaElement) {
-    super.loadData(capellaElement);
-
-    if (null != descriptionGroup) {
-      descriptionGroup.loadData(capellaElement);
-    }
-  }
-
-  /**
-   * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#setInput(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
-   */
-  @Override
-  public void setInput(IWorkbenchPart part, ISelection selection) {
-    if (selection instanceof StructuredSelection) {
-      EObject elt = CapellaAdapterHelper.resolveSemanticObject(((StructuredSelection) selection).getFirstElement());
-      if (elt instanceof CapellaElement) {
-        if (elt.eClass().equals(CsPackage.eINSTANCE.getPart())) {
-          boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((Part) elt));
-          if (!allowMultiplePart) {
-            AbstractType type = ((Part) elt).getAbstractType();
-            if ((type != null) && !(type instanceof ConfigurationItem)) {
-              super.setInput(part, new StructuredSelection(type));
-              loadData((CapellaElement) type);
-              return;
-            }
-          }
+        if (null != descriptionGroup) {
+            descriptionGroup.dispose();
+            descriptionGroup = null;
         }
-        loadData((CapellaElement) elt);
-      }
     }
-    super.setInput(part, selection);
-  }
 
-  /**
-   * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
-   */
-  @Override
-  public boolean select(Object toTest) {
-    EObject eObj = CapellaAdapterHelper.resolveSemanticObject(toTest);
-    if (eObj instanceof CapellaElement) {
-      return true;
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void handleParentBackground(Color color, Composite parent) {
+        // Do nothing.
     }
-    return false;
-  }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void setEnabled(boolean enabled) {
-    super.setEnabled(enabled);
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void loadData(EObject capellaElement) {
+        super.loadData(capellaElement);
 
-    if (null != descriptionGroup) {
-      descriptionGroup.setEnabled(enabled);
+        if (null != descriptionGroup) {
+            descriptionGroup.loadData(capellaElement);
+        }
     }
-  }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public List<AbstractSemanticField> getSemanticFields() {
-    return Collections.emptyList();
-  }
+    /**
+     * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
+     *      org.eclipse.jface.viewers.ISelection)
+     */
+    @Override
+    public void setInput(IWorkbenchPart part, ISelection selection) {
+        if (selection instanceof StructuredSelection) {
+            EObject elt = CapellaAdapterHelper.resolveSemanticObject(((StructuredSelection) selection).getFirstElement());
+            if (elt instanceof CapellaElement) {
+                if (elt.eClass().equals(CsPackage.eINSTANCE.getPart())) {
+                    boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((Part) elt));
+                    if (!allowMultiplePart) {
+                        AbstractType type = ((Part) elt).getAbstractType();
+                        if ((type != null) && !(type instanceof ConfigurationItem)) {
+                            super.setInput(part, new StructuredSelection(type));
+                            loadData((CapellaElement) type);
+                            return;
+                        }
+                    }
+                }
+                loadData((CapellaElement) elt);
+            }
+        }
+        super.setInput(part, selection);
+    }
+
+    /**
+     * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+     */
+    @Override
+    public boolean select(Object toTest) {
+        EObject eObj = CapellaAdapterHelper.resolveSemanticObject(toTest);
+        if (eObj instanceof CapellaElement) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+
+        if (null != descriptionGroup) {
+            descriptionGroup.setEnabled(enabled);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<AbstractSemanticField> getSemanticFields() {
+        return Collections.emptyList();
+    }
 }
