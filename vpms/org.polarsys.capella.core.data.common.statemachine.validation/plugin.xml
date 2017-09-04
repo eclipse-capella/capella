@@ -832,7 +832,7 @@
               </description>
            </constraint>
            <constraint
-                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDHCK_MSVAL_ValidateBetweenSystemAndLogical"
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_MSVAL_ValidateBetweenSystemAndLogical"
                   id="DWF_SM_97"
                   isEnabledByDefault="true"
                   lang="Java"
@@ -847,7 +847,26 @@
                      class="Comparison">
               </target>
               <description>
-                  Compare each configuration (one int the system, and other in the logical) and check if they contain the same functions.
+                  Compare each configuration (one in the system, and other in the logical) and check if they contain the same functions.
+              </description>
+           </constraint>
+           <constraint
+                  class="org.polarsys.capella.core.data.common.statemachine.validation.MDCHK_MSVAL_ValidateBetweenPhysicalAndLogical"
+                  id="DWF_SM_98"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_97"
+                  severity="WARNING"
+                  statusCode="1">
+              <message>
+                  The {0} include {1} but the {2} excludes a {4} which realizes {3}.
+              </message>
+              <target
+                     class="Comparison">
+              </target>
+              <description>
+                  Compare each configuration (one in the pysical, and other in the logical) and check if they contain the same functions.
               </description>
            </constraint>
          </constraints>
