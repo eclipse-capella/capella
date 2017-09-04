@@ -25,7 +25,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
-
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 import org.polarsys.capella.common.tools.report.config.persistence.ConfigurationInstance;
 import org.polarsys.capella.common.tools.report.config.persistence.LogLevel;
@@ -51,7 +50,8 @@ public class CreateBaseComponentTable {
    * @param page
    * @param levelsName
    */
-  public CreateBaseComponentTable(Composite composite, int style, ReportManagerRegistry registry, IReportManagerPrefPage page, String[] levelsName) {
+  public CreateBaseComponentTable(Composite composite, int style, ReportManagerRegistry registry,
+      IReportManagerPrefPage page, String[] levelsName) {
     _registry = registry;
     _lineLevelNames = levelsName;
     // Initialize appenders name list
@@ -158,6 +158,7 @@ public class CreateBaseComponentTable {
 
   /**
    * Retrieve state selection button for each level for current component (given in parameter) and store them
+   * 
    * @param configurationMap
    */
   public void updateConfigurationHashMap(Map<String, ConfigurationInstance> configurationMap) {
@@ -184,7 +185,8 @@ public class CreateBaseComponentTable {
 
   /**
    * @param componentName
-   * @param configuration The configuration to update.
+   * @param configuration
+   *          The configuration to update.
    */
   public void updateConfigurationHashMap(String componentName, OutputConfiguration configuration) {
     List<LogLevel> logLevel = configuration.getLogLevel();
@@ -204,7 +206,8 @@ public class CreateBaseComponentTable {
   }
 
   /**
-   * @param text The text.
+   * @param text
+   *          The text.
    */
   public void selectPage(String text) {
     Control page = _stackMapping.get(text);
@@ -214,8 +217,7 @@ public class CreateBaseComponentTable {
   }
 
   /**
-   * Default values.
-   * FIXME this is a workaround.
+   * Default values. FIXME this is a workaround.
    */
   public void defaultValues() {
     for (Object componentName_obj : _registry.getComponentsList()) {
@@ -224,8 +226,9 @@ public class CreateBaseComponentTable {
         for (String currentLevelName : _lineLevelNames) {
           String key = computeButtonKey(componentName, currentLevelName, currentAppenderName);
           Button button = _buttons.get(key);
-          if (button != null){
-            button.setSelection(!(currentLevelName.equals(ReportManagerConstants.LOG_LEVEL_DEBUG) || (currentAppenderName.equals(ReportManagerConstants.LOG_OUTPUT_FILE))));
+          if (button != null) {
+            button.setSelection(!(currentLevelName.equals(ReportManagerConstants.LOG_LEVEL_DEBUG)
+                || (currentAppenderName.equals(ReportManagerConstants.LOG_OUTPUT_FILE))));
           }
         }
       }

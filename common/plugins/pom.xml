@@ -62,6 +62,7 @@
         <module>org.polarsys.capella.common.tools.report</module>
         <module>org.polarsys.capella.common.tools.report.appenders.console</module>
         <module>org.polarsys.capella.common.tools.report.appenders.file</module>
+        <module>org.polarsys.capella.common.tools.report.appenders.usage</module>
         <module>org.polarsys.capella.common.tools.report.appenders.reportlogview</module>
         <module>org.polarsys.capella.common.tools.report.ui</module>
         <module>org.polarsys.capella.common.transition</module>

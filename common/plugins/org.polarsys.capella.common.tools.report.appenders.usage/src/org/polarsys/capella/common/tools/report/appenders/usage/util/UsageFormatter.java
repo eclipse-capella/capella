@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.common.tools.report.appenders.file.util;
+package org.polarsys.capella.common.tools.report.appenders.usage.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
