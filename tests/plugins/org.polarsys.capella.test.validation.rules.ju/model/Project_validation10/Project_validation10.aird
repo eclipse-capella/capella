@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.1.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.1.0" xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/communication/1.1.0 http://www.polarsys.org/capella/core/information/1.1.0#//communication http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_xqs0QBcNEeSxXqwG_iovJg" selectedViews="_xuo5EBcNEeSxXqwG_iovJg _xvUOgBcNEeSxXqwG_iovJg _xvcxYBcNEeSxXqwG_iovJg _xvjfEBcNEeSxXqwG_iovJg _xvxhgBcNEeSxXqwG_iovJg _xv6EYBcNEeSxXqwG_iovJg _xwDOUBcNEeSxXqwG_iovJg" version="11.1.0.201608251200">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.2.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.2.0" xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/1.2.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/communication/1.2.0 http://www.polarsys.org/capella/core/information/1.2.0#//communication http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_xqs0QBcNEeSxXqwG_iovJg" selectedViews="_xuo5EBcNEeSxXqwG_iovJg _xvUOgBcNEeSxXqwG_iovJg _xvcxYBcNEeSxXqwG_iovJg _xvjfEBcNEeSxXqwG_iovJg _xvxhgBcNEeSxXqwG_iovJg _xv6EYBcNEeSxXqwG_iovJg _xwDOUBcNEeSxXqwG_iovJg" version="12.1.0.201708031200">
     <semanticResources>Project_validation10.melodymodeller</semanticResources>
     <semanticResources>Project_validation10.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_xuo5EBcNEeSxXqwG_iovJg">
@@ -23,13 +23,13 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_xwDOUBcNEeSxXqwG_iovJg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_p5lT4HQuEeamAMxs9g9ZYQ" name="[IDB] System - Interfaces Diagram Blank" representation="_zmE70BcNEeSxXqwG_iovJg">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_p5lT4HQuEeamAMxs9g9ZYQ" name="[IDB] System - Interfaces Diagram Blank" repPath="#_PuzLAJFwEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="Project_validation10.melodymodeller#5094b5c3-cd7b-4691-957f-f0c4ca63270f"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_zmE70BcNEeSxXqwG_iovJg" name="[IDB] System - Interfaces Diagram Blank">
+  <diagram:DSemanticDiagram xmi:id="_zmE70BcNEeSxXqwG_iovJg" name="[IDB] System - Interfaces Diagram Blank" uid="_PuzLAJFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_zmLCcBcNEeSxXqwG_iovJg" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_zmLCcRcNEeSxXqwG_iovJg" type="Sirius" element="_zmE70BcNEeSxXqwG_iovJg" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_09Nt4BcNEeSxXqwG_iovJg" type="2003" element="_0744MBcNEeSxXqwG_iovJg">
@@ -96,25 +96,31 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pKZwshcZEeSW_IEqrg0DgA" x="470" y="285" height="68"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_xTQHIBcZEeSW_IEqrg0DgA" type="Note" fontName="Segoe UI" description="KO because two execute with same protocol (UNSET) and KO because two CALL withe the same protocol (SYNCHRONOUS)" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Pyh0cJFwEeemoaFOWaTTWw" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Pyh0cZFwEeemoaFOWaTTWw" key="verticalAlignment" value="8"/>
+          </eAnnotations>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_xTSjYBcZEeSW_IEqrg0DgA" type="DiagramName">
             <element xsi:nil="true"/>
           </children>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_xTSjYRcZEeSW_IEqrg0DgA" type="Description">
             <element xsi:nil="true"/>
           </children>
-          <styles xmi:type="notation:TextStyle" xmi:id="_xTQHIRcZEeSW_IEqrg0DgA"/>
+          <styles xmi:type="notation:TextStyle" xmi:id="_xTQHIRcZEeSW_IEqrg0DgA" textAlignment="Center"/>
           <styles xmi:type="notation:LineTypeStyle" xmi:id="_xTQHIhcZEeSW_IEqrg0DgA"/>
           <element xsi:nil="true"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xTQHIxcZEeSW_IEqrg0DgA" x="915" y="75" width="171" height="81"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_54uvMBcZEeSW_IEqrg0DgA" type="Note" fontName="Segoe UI" description="OK" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Pyh0cpFwEeemoaFOWaTTWw" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Pyh0c5FwEeemoaFOWaTTWw" key="verticalAlignment" value="8"/>
+          </eAnnotations>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_54uvNBcZEeSW_IEqrg0DgA" type="DiagramName">
             <element xsi:nil="true"/>
           </children>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_54vWQBcZEeSW_IEqrg0DgA" type="Description">
             <element xsi:nil="true"/>
           </children>
-          <styles xmi:type="notation:TextStyle" xmi:id="_54uvMRcZEeSW_IEqrg0DgA"/>
+          <styles xmi:type="notation:TextStyle" xmi:id="_54uvMRcZEeSW_IEqrg0DgA" textAlignment="Center"/>
           <styles xmi:type="notation:LineTypeStyle" xmi:id="_54uvMhcZEeSW_IEqrg0DgA"/>
           <element xsi:nil="true"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_54uvMxcZEeSW_IEqrg0DgA" x="925" y="205" width="106" height="51"/>
@@ -148,7 +154,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_4kbsMRcNEeSxXqwG_iovJg"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_4kbsMhcNEeSxXqwG_iovJg" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_4kbsMxcNEeSxXqwG_iovJg" points="[-4, 3, 99, 1]$[-101, -4, 2, -6]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_4kbsMxcNEeSxXqwG_iovJg" points="[-6, -1, 266, 7]$[-238, -7, 34, 1]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_4kc6UBcNEeSxXqwG_iovJg" id="(0.042735042735042736,0.18867924528301888)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_4kc6URcNEeSxXqwG_iovJg" id="(0.9029126213592233,0.17073170731707318)"/>
         </edges>
@@ -164,7 +170,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_4kc6UxcNEeSxXqwG_iovJg"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_4kc6VBcNEeSxXqwG_iovJg" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_4kc6VRcNEeSxXqwG_iovJg" points="[-454, -14, -351, -16]$[-4, -9, 99, -11]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_4kc6VRcNEeSxXqwG_iovJg" points="[14, 1, -622, -43]$[561, 38, -75, -6]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_4kf9oBcNEeSxXqwG_iovJg" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_4kf9oRcNEeSxXqwG_iovJg" id="(0.49572649572649574,0.49056603773584906)"/>
         </edges>
@@ -180,7 +186,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_4kf9oxcNEeSxXqwG_iovJg"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_4kf9pBcNEeSxXqwG_iovJg" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_4kf9pRcNEeSxXqwG_iovJg" points="[-454, -14, -351, -16]$[-4, -9, 99, -11]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_4kf9pRcNEeSxXqwG_iovJg" points="[14, 1, -622, -43]$[561, 38, -75, -6]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_4kgkshcNEeSxXqwG_iovJg" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_4kgksxcNEeSxXqwG_iovJg" id="(0.49572649572649574,0.49056603773584906)"/>
         </edges>
@@ -244,7 +250,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_hTthQRcZEeSW_IEqrg0DgA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_hTthQhcZEeSW_IEqrg0DgA" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hTthQxcZEeSW_IEqrg0DgA" points="[-13, 0, 171, 2]$[-182, 6, 2, 8]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hTthQxcZEeSW_IEqrg0DgA" points="[-14, -2, 266, 34]$[-273, -35, 7, 1]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hTuvYBcZEeSW_IEqrg0DgA" id="(0.0915032679738562,0.5882352941176471)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hTuvYRcZEeSW_IEqrg0DgA" id="(0.9320388349514563,0.8048780487804879)"/>
         </edges>

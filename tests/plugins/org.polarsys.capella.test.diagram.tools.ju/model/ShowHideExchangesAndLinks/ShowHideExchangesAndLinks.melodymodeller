@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.1.1-->
+<!--Capella_Version_1.2.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.1.0"
-    xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.1.0"
-    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.1.0"
-    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.1.0"
-    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.1.0"
-    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.1.0"
-    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.1.0"
-    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.1.0"
-    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0"
-    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.2.0"
+    xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.2.0"
+    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.2.0"
+    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.2.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.2.0"
+    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.2.0"
+    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.2.0"
+    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.2.0"
+    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.2.0"
+    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.2.0"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.2.0"
     id="d2645c9e-07a7-4d86-9bcd-29290b4b2aeb"
     name="ShowHideExchangesAndLinks">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="c193f686-5c7e-4638-bf98-4b43e1080e3f"/>
@@ -81,8 +81,7 @@
               sourceElement="#efd1ffb6-1d71-495c-a59e-a3cfcf3becf4"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="1d58be7c-a879-4ee1-bfb3-7ab823618d73" name="FunctionalExchange 1"
-              target="#b3345892-613c-471f-8bf3-af395b9ad12f" source="#e08acc5d-f178-425b-9162-b8a813810511"
-              categories="#7b388419-cff8-4562-bbc4-b8d3c02fcdc8"/>
+              target="#b3345892-613c-471f-8bf3-af395b9ad12f" source="#e08acc5d-f178-425b-9162-b8a813810511"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
@@ -231,7 +230,7 @@
           id="df124fd2-1a6d-433d-a9d4-889e179b916f" name="Logical System">
         <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
             id="7017325b-f207-42e4-9896-64ca24b3eed1" name="C 1" source="#d269ca58-60cc-4908-851c-f9207eaad6c6"
-            target="#741fa648-43de-42fd-8920-556d5aef82e2" kind="FLOW" categories="#f3a14c9c-1b38-4e0f-b30d-b88e1b073e40"/>
+            target="#741fa648-43de-42fd-8920-556d5aef82e2" kind="FLOW"/>
         <ownedComponentExchangeCategories xsi:type="org.polarsys.capella.core.data.fa:ComponentExchangeCategory"
             id="f3a14c9c-1b38-4e0f-b30d-b88e1b073e40" name="ComponentExchangeCategory 1"
             exchanges="#7017325b-f207-42e4-9896-64ca24b3eed1"/>
@@ -290,8 +289,7 @@
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="10d92f92-48d2-407a-ae28-148577614571"
             name="PC 2" abstractType="#15b8f2fa-5622-49ed-a995-ef9ca0f48dfc"/>
         <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
-            id="156fe1f4-e3da-48cb-ab02-f135c2ca1d62" name="PL 1" linkEnds="#959a580d-3bcd-44ae-b0b5-6f817bb78300 #077c4afe-b819-492a-ab6f-07303e2a706a"
-            categories="#100d1f1d-db1c-40b7-8041-eb3d943e88e7"/>
+            id="156fe1f4-e3da-48cb-ab02-f135c2ca1d62" name="PL 1" linkEnds="#959a580d-3bcd-44ae-b0b5-6f817bb78300 #077c4afe-b819-492a-ab6f-07303e2a706a"/>
         <ownedPhysicalLinkCategories xsi:type="org.polarsys.capella.core.data.cs:PhysicalLinkCategory"
             id="100d1f1d-db1c-40b7-8041-eb3d943e88e7" name="PhysicalLinkCategory 1"
             links="#156fe1f4-e3da-48cb-ab02-f135c2ca1d62"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_3fhdkRoQEee7Y7y_i2JAkQ" selectedViews="_3oAEIBoQEee7Y7y_i2JAkQ _3oS_EBoQEee7Y7y_i2JAkQ _3ocwEBoQEee7Y7y_i2JAkQ _3ovrABoQEee7Y7y_i2JAkQ _3pCl8BoQEee7Y7y_i2JAkQ _3pWH8BoQEee7Y7y_i2JAkQ _3ppC4BoQEee7Y7y_i2JAkQ" version="11.1.0.201608251200">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.2.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_3fhdkRoQEee7Y7y_i2JAkQ" selectedViews="_3oAEIBoQEee7Y7y_i2JAkQ _3oS_EBoQEee7Y7y_i2JAkQ _3ocwEBoQEee7Y7y_i2JAkQ _3ovrABoQEee7Y7y_i2JAkQ _3pCl8BoQEee7Y7y_i2JAkQ _3pWH8BoQEee7Y7y_i2JAkQ _3ppC4BoQEee7Y7y_i2JAkQ" version="12.1.0.201708031200">
     <semanticResources>StateEventTransition.melodymodeller</semanticResources>
     <semanticResources>StateEventTransition.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_3oAEIBoQEee7Y7y_i2JAkQ">
@@ -8,7 +8,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_3oS_EBoQEee7Y7y_i2JAkQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_QjU68B3PEeejjYO-zACrJg" name="[MSM] Default Region" representation="_8YGWEBoQEee7Y7y_i2JAkQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_QjU68B3PEeejjYO-zACrJg" name="[MSM] Default Region" repPath="#_CV73AJFxEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']"/>
         <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="StateEventTransition.melodymodeller#f92bcaaf-f6cc-4376-96b7-9c6f77d94828"/>
       </ownedRepresentationDescriptors>
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_8YGWEBoQEee7Y7y_i2JAkQ" name="[MSM] Default Region">
+  <diagram:DSemanticDiagram xmi:id="_8YGWEBoQEee7Y7y_i2JAkQ" name="[MSM] Default Region" uid="_CV73AJFxEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_8YGWERoQEee7Y7y_i2JAkQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_8YGWEhoQEee7Y7y_i2JAkQ"/>
     </ownedAnnotationEntries>

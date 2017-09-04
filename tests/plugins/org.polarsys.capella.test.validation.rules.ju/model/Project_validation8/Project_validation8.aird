@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.1.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_1A1fYBM4EeSPnsiHy_LRsw" selectedViews="_1DWn4BM4EeSPnsiHy_LRsw _1Dfx0BM4EeSPnsiHy_LRsw _1DtNMBM4EeSPnsiHy_LRsw _1D1JABM4EeSPnsiHy_LRsw _1ECkYBM4EeSPnsiHy_LRsw _1EZwwBM4EeSPnsiHy_LRsw _1EnzMBM4EeSPnsiHy_LRsw" version="11.1.0.201608251200">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.2.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.2.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_1A1fYBM4EeSPnsiHy_LRsw" selectedViews="_1DWn4BM4EeSPnsiHy_LRsw _1Dfx0BM4EeSPnsiHy_LRsw _1DtNMBM4EeSPnsiHy_LRsw _1D1JABM4EeSPnsiHy_LRsw _1ECkYBM4EeSPnsiHy_LRsw _1EZwwBM4EeSPnsiHy_LRsw _1EnzMBM4EeSPnsiHy_LRsw" version="12.1.0.201708031200">
     <semanticResources>Project_validation8.melodymodeller</semanticResources>
     <semanticResources>Project_validation8.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_1DWn4BM4EeSPnsiHy_LRsw">
@@ -17,7 +17,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_1ECkYBM4EeSPnsiHy_LRsw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_AqRdcHQvEeamAMxs9g9ZYQ" name="[IDB] Logical System - Interfaces Diagram Blank" representation="_6wzS4BM4EeSPnsiHy_LRsw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_AqRdcHQvEeamAMxs9g9ZYQ" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_dIlPkJFwEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#2e781c87-9ab7-46de-9784-977bfa3d9490"/>
       </ownedRepresentationDescriptors>
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_6wzS4BM4EeSPnsiHy_LRsw" name="[IDB] Logical System - Interfaces Diagram Blank">
+  <diagram:DSemanticDiagram xmi:id="_6wzS4BM4EeSPnsiHy_LRsw" name="[IDB] Logical System - Interfaces Diagram Blank" uid="_dIlPkJFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_6w5ZgBM4EeSPnsiHy_LRsw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_6w5ZgRM4EeSPnsiHy_LRsw" type="Sirius" element="_6wzS4BM4EeSPnsiHy_LRsw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_7gx-UBM4EeSPnsiHy_LRsw" type="2003" element="_7gMvgBM4EeSPnsiHy_LRsw">
@@ -105,13 +105,16 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FtAhwhM5EeSPnsiHy_LRsw" x="460" y="235"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_bo9bsBM5EeSPnsiHy_LRsw" type="Note" fontName="Segoe UI" description="Rule DWF_I_17 is violated by couple (LC5, LC6) for the technical interface TI2" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dMdqApFwEeemoaFOWaTTWw" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dMdqA5FwEeemoaFOWaTTWw" key="verticalAlignment" value="8"/>
+          </eAnnotations>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_bpLeIBM5EeSPnsiHy_LRsw" type="DiagramName">
             <element xsi:nil="true"/>
           </children>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_bpMFMBM5EeSPnsiHy_LRsw" type="Description">
             <element xsi:nil="true"/>
           </children>
-          <styles xmi:type="notation:TextStyle" xmi:id="_bo9bsRM5EeSPnsiHy_LRsw"/>
+          <styles xmi:type="notation:TextStyle" xmi:id="_bo9bsRM5EeSPnsiHy_LRsw" textAlignment="Center"/>
           <styles xmi:type="notation:LineTypeStyle" xmi:id="_bo9bshM5EeSPnsiHy_LRsw"/>
           <element xsi:nil="true"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bo9bsxM5EeSPnsiHy_LRsw" x="655" y="60" width="206" height="71"/>
@@ -126,25 +129,31 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sPLAAhM5EeSPnsiHy_LRsw" x="276" y="35"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_lZGCkBNFEeStaa6RHpBDUg" type="Note" fontName="Segoe UI" description="Rule DWF_I_18 is violated by components (LC1, LC4, LC5) for the technical interface TI1" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dMdqBJFwEeemoaFOWaTTWw" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dMdqBZFwEeemoaFOWaTTWw" key="verticalAlignment" value="8"/>
+          </eAnnotations>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_lZGCkRNFEeStaa6RHpBDUg" type="DiagramName">
             <element xsi:nil="true"/>
           </children>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_lZGCkhNFEeStaa6RHpBDUg" type="Description">
             <element xsi:nil="true"/>
           </children>
-          <styles xmi:type="notation:TextStyle" xmi:id="_lZGCkxNFEeStaa6RHpBDUg"/>
+          <styles xmi:type="notation:TextStyle" xmi:id="_lZGCkxNFEeStaa6RHpBDUg" textAlignment="Center"/>
           <styles xmi:type="notation:LineTypeStyle" xmi:id="_lZGClBNFEeStaa6RHpBDUg"/>
           <element xsi:nil="true"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lZGClRNFEeStaa6RHpBDUg" x="655" y="140" width="206" height="71"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_rmD7IRNFEeStaa6RHpBDUg" type="Note" fontName="Segoe UI" description="Rule DWF_I_19 is violated by components (LC2, LC3, LC6) for the technical interface TI1" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dMdqAJFwEeemoaFOWaTTWw" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dMdqAZFwEeemoaFOWaTTWw" key="verticalAlignment" value="8"/>
+          </eAnnotations>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_rmD7IhNFEeStaa6RHpBDUg" type="DiagramName">
             <element xsi:nil="true"/>
           </children>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_rmD7IxNFEeStaa6RHpBDUg" type="Description">
             <element xsi:nil="true"/>
           </children>
-          <styles xmi:type="notation:TextStyle" xmi:id="_rmEiMBNFEeStaa6RHpBDUg"/>
+          <styles xmi:type="notation:TextStyle" xmi:id="_rmEiMBNFEeStaa6RHpBDUg" textAlignment="Center"/>
           <styles xmi:type="notation:LineTypeStyle" xmi:id="_rmEiMRNFEeStaa6RHpBDUg"/>
           <element xsi:nil="true"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rmEiMhNFEeStaa6RHpBDUg" x="655" y="220" width="206" height="71"/>

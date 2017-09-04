@@ -33,12 +33,12 @@ public class ChangeLockTestCase extends BasicTestCase {
 
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList(new String[] { "EmptyProject", "EmptyProject2" });
+    return Arrays.asList(new String[] { "EmptyProject1", "EmptyProject2" });
   }
 
   @Override
   public void test() throws Exception {
-    CapellaModel model1 = getTestModel("EmptyProject");
+    CapellaModel model1 = getTestModel("EmptyProject1");
     final Project project1 = model1.getProject(model1.getEditingDomain());
     AbstractCommand command1 = new AbstractReadWriteCommand() {
       @Override

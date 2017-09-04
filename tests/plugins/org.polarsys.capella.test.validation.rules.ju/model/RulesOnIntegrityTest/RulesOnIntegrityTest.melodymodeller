@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.1.1-->
+<!--Capella_Version_1.2.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.1.0"
-    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.1.0"
-    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.1.0"
-    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.1.0"
-    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.1.0"
-    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.1.0"
-    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.1.0"
-    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.1.0"
-    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0"
-    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.2.0"
+    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.2.0"
+    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.2.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.2.0"
+    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.2.0"
+    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.2.0"
+    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.2.0"
+    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.2.0"
+    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.2.0"
+    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.2.0"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.2.0"
+    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/1.2.0"
     id="fa2c0e54-4cfd-4965-bbd3-eee558e03e9c"
     name="RulesOnIntegrityTest">
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
@@ -1436,25 +1436,22 @@
               id="6ab06e16-9217-44cd-8481-6003a898ec9c" name="Right_FC">
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
                 id="1b542d2e-772f-487c-ad4e-8e24059d2f2b" summary="Functional Chain Involvement with right Involver"
-                involver="#6ab06e16-9217-44cd-8481-6003a898ec9c" involved="#1257fe59-48bb-4338-8da2-4ada8bbb1c42"/>
+                involved="#1257fe59-48bb-4338-8da2-4ada8bbb1c42"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
                 id="ea442a84-7de7-42a2-9333-38c586561de4" summary="Functional Chain Involvement with wrong Involver"
-                involver="#1e6cffdd-1f94-41a7-a181-c1b7e90eb8d3" involved="#763a8fd1-ceb8-4f0c-882b-b909d4fa488f"/>
+                involved="#763a8fd1-ceb8-4f0c-882b-b909d4fa488f"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
                 id="ad922c89-2cc8-49db-9a21-22a7ed031786" summary="Functional Chain Involvement with right Involver"
-                involver="#6ab06e16-9217-44cd-8481-6003a898ec9c" involved="#cebbfc2a-f9bb-4cee-98bc-444dd7c00d0e"/>
+                involved="#cebbfc2a-f9bb-4cee-98bc-444dd7c00d0e"/>
           </ownedFunctionalChains>
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
               id="1e6cffdd-1f94-41a7-a181-c1b7e90eb8d3" name="Wrong_FC">
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="ce06fae6-8c23-452a-aca5-6de3a66674fd" involver="#1e6cffdd-1f94-41a7-a181-c1b7e90eb8d3"
-                involved="#43402322-e284-442f-b037-c8bb3c15175f"/>
+                id="ce06fae6-8c23-452a-aca5-6de3a66674fd" involved="#43402322-e284-442f-b037-c8bb3c15175f"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="c8a98485-49e0-4357-8a3c-691178ad09a9" involver="#1e6cffdd-1f94-41a7-a181-c1b7e90eb8d3"
-                involved="#763a8fd1-ceb8-4f0c-882b-b909d4fa488f"/>
+                id="c8a98485-49e0-4357-8a3c-691178ad09a9" involved="#763a8fd1-ceb8-4f0c-882b-b909d4fa488f"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="78d79d28-f1d0-485f-8182-bc182890f2bf" involver="#1e6cffdd-1f94-41a7-a181-c1b7e90eb8d3"
-                involved="#cebbfc2a-f9bb-4cee-98bc-444dd7c00d0e"/>
+                id="78d79d28-f1d0-485f-8182-bc182890f2bf" involved="#cebbfc2a-f9bb-4cee-98bc-444dd7c00d0e"/>
           </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="cebbfc2a-f9bb-4cee-98bc-444dd7c00d0e" name="SystemFunction 1">
@@ -3655,27 +3652,24 @@
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
               id="0bea2a79-11cb-4e19-b1d5-8662f52a3d77" name="FunctionalChain I27_OK">
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="beac6225-7fc7-4b66-b4b8-d0fcf72b37bf" involver="#0bea2a79-11cb-4e19-b1d5-8662f52a3d77"
-                involved="#74da3703-8e15-4fd2-a161-dab2803af00c" nextFunctionalChainInvolvements="#40e10bfe-fa27-4fd1-a133-cb285e537a06"/>
+                id="beac6225-7fc7-4b66-b4b8-d0fcf72b37bf" involved="#74da3703-8e15-4fd2-a161-dab2803af00c"
+                nextFunctionalChainInvolvements="#40e10bfe-fa27-4fd1-a133-cb285e537a06"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="40e10bfe-fa27-4fd1-a133-cb285e537a06" involver="#0bea2a79-11cb-4e19-b1d5-8662f52a3d77"
-                involved="#4995a5bf-e288-42f3-8442-2feec5be68f2"/>
+                id="40e10bfe-fa27-4fd1-a133-cb285e537a06" involved="#4995a5bf-e288-42f3-8442-2feec5be68f2"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="8cb05cdd-3279-4e42-a7c7-047e8b7f010f" involver="#0bea2a79-11cb-4e19-b1d5-8662f52a3d77"
-                involved="#85aa6f38-dcdf-407a-abf4-b2d00fff436a" nextFunctionalChainInvolvements="#beac6225-7fc7-4b66-b4b8-d0fcf72b37bf"/>
+                id="8cb05cdd-3279-4e42-a7c7-047e8b7f010f" involved="#85aa6f38-dcdf-407a-abf4-b2d00fff436a"
+                nextFunctionalChainInvolvements="#beac6225-7fc7-4b66-b4b8-d0fcf72b37bf"/>
           </ownedFunctionalChains>
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
               id="9cc7b40c-0107-4bb9-b796-008c365556b2" name="FunctionalChain I27_KO">
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
                 id="209ccca6-fe03-4fdf-978f-bbd7add5a421" summary="[FCI] to FE I27_2  has an empty next and/or previous involvement"
-                involver="#9cc7b40c-0107-4bb9-b796-008c365556b2" involved="#e50b638c-8849-4ab0-9387-a4355a7a3cd1"/>
+                involved="#e50b638c-8849-4ab0-9387-a4355a7a3cd1"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="8f8fb08a-ae18-4146-96d6-4930fc1dfa11" involver="#9cc7b40c-0107-4bb9-b796-008c365556b2"
-                involved="#94bc4288-a5a0-4cdc-8664-faa920f7250d"/>
+                id="8f8fb08a-ae18-4146-96d6-4930fc1dfa11" involved="#94bc4288-a5a0-4cdc-8664-faa920f7250d"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
                 id="76b00fdc-5ba1-42dd-b365-b037e8dd0f07" summary="pointe to a bad Functional Chain Involvement"
-                involver="#9cc7b40c-0107-4bb9-b796-008c365556b2" involved="#595aa6f8-e5e5-430e-9c39-dd0054f19dd1"
-                nextFunctionalChainInvolvements="#beac6225-7fc7-4b66-b4b8-d0fcf72b37bf"/>
+                involved="#595aa6f8-e5e5-430e-9c39-dd0054f19dd1" nextFunctionalChainInvolvements="#beac6225-7fc7-4b66-b4b8-d0fcf72b37bf"/>
           </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="4995a5bf-e288-42f3-8442-2feec5be68f2" name="SystemFunction I27_2">
@@ -3840,27 +3834,24 @@
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
               id="22ad7f95-3616-42e6-8532-7c59337393df" name="FunctionalChain I28_OK">
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="dbfca2b2-1ade-45f6-b7ce-82df05e63236" involver="#22ad7f95-3616-42e6-8532-7c59337393df"
-                involved="#0803c31c-b5b6-4ec3-a9b5-f6ce1e72955f" nextFunctionalChainInvolvements="#e002ce71-dfcb-45aa-94af-cca3ccbef93a"/>
+                id="dbfca2b2-1ade-45f6-b7ce-82df05e63236" involved="#0803c31c-b5b6-4ec3-a9b5-f6ce1e72955f"
+                nextFunctionalChainInvolvements="#e002ce71-dfcb-45aa-94af-cca3ccbef93a"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="e002ce71-dfcb-45aa-94af-cca3ccbef93a" involver="#22ad7f95-3616-42e6-8532-7c59337393df"
-                involved="#ab18d9a6-2d7c-435a-8187-a41e90128549"/>
+                id="e002ce71-dfcb-45aa-94af-cca3ccbef93a" involved="#ab18d9a6-2d7c-435a-8187-a41e90128549"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="a538ce35-8383-4555-9dd5-69aa62d3fd62" involver="#22ad7f95-3616-42e6-8532-7c59337393df"
-                involved="#e555a2af-7018-4c2f-8d52-ab947483e868" nextFunctionalChainInvolvements="#dbfca2b2-1ade-45f6-b7ce-82df05e63236"/>
+                id="a538ce35-8383-4555-9dd5-69aa62d3fd62" involved="#e555a2af-7018-4c2f-8d52-ab947483e868"
+                nextFunctionalChainInvolvements="#dbfca2b2-1ade-45f6-b7ce-82df05e63236"/>
           </ownedFunctionalChains>
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
               id="eed5f739-a994-4591-814c-706583544f3f" name="FunctionalChain I28_KO">
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="c20bab4e-686a-4cae-83d2-7cc7ea5dded7" involver="#eed5f739-a994-4591-814c-706583544f3f"
-                involved="#983672a1-8bd0-4b66-8332-0719fdc98012" nextFunctionalChainInvolvements="#04b4cf70-3175-423f-bea6-8567d57c568f"/>
+                id="c20bab4e-686a-4cae-83d2-7cc7ea5dded7" involved="#983672a1-8bd0-4b66-8332-0719fdc98012"
+                nextFunctionalChainInvolvements="#04b4cf70-3175-423f-bea6-8567d57c568f"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="04b4cf70-3175-423f-bea6-8567d57c568f" involver="#eed5f739-a994-4591-814c-706583544f3f"
-                involved="#314f88d5-da28-4286-a026-0c94aa961b4b"/>
+                id="04b4cf70-3175-423f-bea6-8567d57c568f" involved="#314f88d5-da28-4286-a026-0c94aa961b4b"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
                 id="f3718ef8-f7de-44d7-99f7-9d240fa6e71f" summary="pointe to a bad Functional Chain Involvement"
-                involver="#eed5f739-a994-4591-814c-706583544f3f" involved="#ff0a0607-fc9e-498b-9883-d1c34e0be6bf"
-                nextFunctionalChainInvolvements="#dbfca2b2-1ade-45f6-b7ce-82df05e63236"/>
+                involved="#ff0a0607-fc9e-498b-9883-d1c34e0be6bf" nextFunctionalChainInvolvements="#dbfca2b2-1ade-45f6-b7ce-82df05e63236"/>
           </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="ab18d9a6-2d7c-435a-8187-a41e90128549" name="SystemFunction I28_2">
@@ -4146,14 +4137,12 @@
         <ownedPhysicalPath xsi:type="org.polarsys.capella.core.data.cs:PhysicalPath"
             id="244f049d-63ad-4ab7-b349-25a6afb8a96e" name="PhysicalPath 1">
           <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
-              id="c6cef771-aa26-4e7f-aed6-6380410adb9c" involver="#244f049d-63ad-4ab7-b349-25a6afb8a96e"
-              involved="#890ab8e1-8f3a-4adb-93f8-821d76417349"/>
+              id="c6cef771-aa26-4e7f-aed6-6380410adb9c" involved="#890ab8e1-8f3a-4adb-93f8-821d76417349"/>
           <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
-              id="bd256f41-6168-4f07-baa4-568703fdc3cc" involver="#244f049d-63ad-4ab7-b349-25a6afb8a96e"
-              involved="#454c6e46-be13-4245-9bcb-3369305a18e0" nextInvolvements="#b6f54a18-c7f0-4b4e-9ce2-5dd408f14cc1"/>
+              id="bd256f41-6168-4f07-baa4-568703fdc3cc" involved="#454c6e46-be13-4245-9bcb-3369305a18e0"
+              nextInvolvements="#b6f54a18-c7f0-4b4e-9ce2-5dd408f14cc1"/>
           <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
-              id="b6f54a18-c7f0-4b4e-9ce2-5dd408f14cc1" involver="#244f049d-63ad-4ab7-b349-25a6afb8a96e"
-              involved="#425daba6-d1bf-4462-a33f-22c46b927f1c"/>
+              id="b6f54a18-c7f0-4b4e-9ce2-5dd408f14cc1" involved="#425daba6-d1bf-4462-a33f-22c46b927f1c"/>
         </ownedPhysicalPath>
         <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
             id="454c6e46-be13-4245-9bcb-3369305a18e0" name="PL 1" linkEnds="#fda638c8-d680-45b3-a803-e7e7000124ba #14176d29-4557-463f-9cfc-c3fab862c445"/>
@@ -4308,26 +4297,24 @@
         <ownedPhysicalPath xsi:type="org.polarsys.capella.core.data.cs:PhysicalPath"
             id="9a7ee414-886d-4d11-b9f2-ad8fb014a07b" name="PhysicalPath 1">
           <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
-              id="c77b0089-fd58-40e2-8221-0ad802a87c46" involver="#9a7ee414-886d-4d11-b9f2-ad8fb014a07b"
-              involved="#be015418-7fe6-455b-8c03-d7f2ce576a24" nextInvolvements="#3053eade-36ee-4755-a779-377838cb3aa8"/>
+              id="c77b0089-fd58-40e2-8221-0ad802a87c46" involved="#be015418-7fe6-455b-8c03-d7f2ce576a24"
+              nextInvolvements="#3053eade-36ee-4755-a779-377838cb3aa8"/>
           <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
-              id="3053eade-36ee-4755-a779-377838cb3aa8" involver="#9a7ee414-886d-4d11-b9f2-ad8fb014a07b"
-              involved="#9b845718-ffe9-4938-8dbf-0cec9ec8110e" nextInvolvements="#a68ab4bd-38d3-4726-8958-e4e96e85b320"/>
+              id="3053eade-36ee-4755-a779-377838cb3aa8" involved="#9b845718-ffe9-4938-8dbf-0cec9ec8110e"
+              nextInvolvements="#a68ab4bd-38d3-4726-8958-e4e96e85b320"/>
           <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
-              id="0003f9b5-7ccc-4595-aa53-b77e647bc82d" involver="#9a7ee414-886d-4d11-b9f2-ad8fb014a07b"
-              involved="#8abac7f8-987d-479c-a427-d00acc7b0b74"/>
+              id="0003f9b5-7ccc-4595-aa53-b77e647bc82d" involved="#8abac7f8-987d-479c-a427-d00acc7b0b74"/>
         </ownedPhysicalPath>
         <ownedPhysicalPath xsi:type="org.polarsys.capella.core.data.cs:PhysicalPath"
             id="95e9a5a2-d9aa-41e1-aa96-2d53a3cc1a3d" name="PhysicalPath 2">
           <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
-              id="49bac000-7112-48a2-9bdc-7f8530391d8a" involver="#95e9a5a2-d9aa-41e1-aa96-2d53a3cc1a3d"
-              involved="#8abac7f8-987d-479c-a427-d00acc7b0b74" nextInvolvements="#83d2be75-b2b5-4878-a115-e61f343c0c5c"/>
+              id="49bac000-7112-48a2-9bdc-7f8530391d8a" involved="#8abac7f8-987d-479c-a427-d00acc7b0b74"
+              nextInvolvements="#83d2be75-b2b5-4878-a115-e61f343c0c5c"/>
           <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
-              id="83d2be75-b2b5-4878-a115-e61f343c0c5c" involver="#95e9a5a2-d9aa-41e1-aa96-2d53a3cc1a3d"
-              involved="#a7580d2c-15a6-4d08-9012-e9337aeee5e5" nextInvolvements="#a68ab4bd-38d3-4726-8958-e4e96e85b320"/>
+              id="83d2be75-b2b5-4878-a115-e61f343c0c5c" involved="#a7580d2c-15a6-4d08-9012-e9337aeee5e5"
+              nextInvolvements="#a68ab4bd-38d3-4726-8958-e4e96e85b320"/>
           <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
-              id="a68ab4bd-38d3-4726-8958-e4e96e85b320" involver="#95e9a5a2-d9aa-41e1-aa96-2d53a3cc1a3d"
-              involved="#95e03a24-aad9-4887-96c6-e1b054c528ee"/>
+              id="a68ab4bd-38d3-4726-8958-e4e96e85b320" involved="#95e03a24-aad9-4887-96c6-e1b054c528ee"/>
         </ownedPhysicalPath>
         <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
             id="9b845718-ffe9-4938-8dbf-0cec9ec8110e" name="PL_KO_I30" linkEnds="#2c49fb59-905c-4be1-87e1-377ff3431c88 #57541e3b-3bcd-4b34-ae23-58370a39fdbe"/>
@@ -4585,11 +4572,9 @@
                 id="17369ae1-9196-4513-9983-36fda5bd0765"/>
           </ownedScenarios>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="2bd2d2f9-9d1b-4093-b887-de7a5e13ba0e" involver="#4b70a906-680e-4bfa-abfd-8decf144140b"
-              involved="#0ee58d01-17e5-49c8-9f1e-5ac9d5fd1d42"/>
+              id="2bd2d2f9-9d1b-4093-b887-de7a5e13ba0e" involved="#0ee58d01-17e5-49c8-9f1e-5ac9d5fd1d42"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="45ccbfd9-1f21-4097-8f8b-3aa3d1eda2e2" involver="#4b70a906-680e-4bfa-abfd-8decf144140b"
-              involved="#d0a5805b-6333-42b1-afc9-b20512c7c8d5"/>
+              id="45ccbfd9-1f21-4097-8f8b-3aa3d1eda2e2" involved="#d0a5805b-6333-42b1-afc9-b20512c7c8d5"/>
         </ownedCapabilityRealizations>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -4638,12 +4623,12 @@
               </ownedSpecification>
             </ownedConstraints>
             <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
-                id="22807b34-6b72-4053-96bf-cd77a42058b3" name="Mode 1" outgoing="#5419f833-fa98-40c5-a06b-9fe19d9f2757">
+                id="22807b34-6b72-4053-96bf-cd77a42058b3" name="Mode 1">
               <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                   id="2398d0c9-dc97-47ab-a7f0-5e9c51024e7a" name="region"/>
             </ownedStates>
             <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
-                id="f1cedd7f-c559-4a60-a04c-9771e23799f5" name="Mode 2" incoming="#5419f833-fa98-40c5-a06b-9fe19d9f2757">
+                id="f1cedd7f-c559-4a60-a04c-9771e23799f5" name="Mode 2">
               <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                   id="7e5528e5-b55e-43f1-bd17-22ab9da5ffb0" name="region"/>
             </ownedStates>

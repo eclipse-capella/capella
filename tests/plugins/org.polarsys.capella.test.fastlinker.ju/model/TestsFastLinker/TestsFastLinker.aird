@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter">
-  <viewpoint:DAnalysis xmi:id="_3tOOUIfQEeKbdub0WZ47Yg" selectedViews="_3uQwIIfQEeKbdub0WZ47Yg _3uahIIfQEeKbdub0WZ47Yg _3ukSIIfQEeKbdub0WZ47Yg _3ukSIYfQEeKbdub0WZ47Yg _3utcEIfQEeKbdub0WZ47Yg _3vA-EIfQEeKbdub0WZ47Yg _3vKIAIfQEeKbdub0WZ47Yg" version="11.1.0.201608251200">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.2.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter">
+  <viewpoint:DAnalysis xmi:id="_3tOOUIfQEeKbdub0WZ47Yg" selectedViews="_3uQwIIfQEeKbdub0WZ47Yg _3uahIIfQEeKbdub0WZ47Yg _3ukSIIfQEeKbdub0WZ47Yg _3ukSIYfQEeKbdub0WZ47Yg _3utcEIfQEeKbdub0WZ47Yg _3vA-EIfQEeKbdub0WZ47Yg _3vKIAIfQEeKbdub0WZ47Yg" version="12.1.0.201708031200">
     <semanticResources>TestsFastLinker.melodymodeller</semanticResources>
     <semanticResources>TestsFastLinker.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_3uQwIIfQEeKbdub0WZ47Yg">
@@ -17,7 +17,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_3utcEIfQEeKbdub0WZ47Yg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_VpA0kFjNEea_Bs2eLgK85w" name="[CDB] Data - Class Diagram Blank" representation="_LKDkMKPoEeWuoeYEgh4h2g">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_VpA0kFjNEea_Bs2eLgK85w" name="[CDB] Data - Class Diagram Blank" repPath="#_e7kasJFxEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="TestsFastLinker.melodymodeller#2ea97a96-2a32-489b-a18b-9244460f1782"/>
       </ownedRepresentationDescriptors>
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_LKDkMKPoEeWuoeYEgh4h2g" name="[CDB] Data - Class Diagram Blank">
+  <diagram:DSemanticDiagram xmi:id="_LKDkMKPoEeWuoeYEgh4h2g" name="[CDB] Data - Class Diagram Blank" uid="_e7kasJFxEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_LKDkMaPoEeWuoeYEgh4h2g" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_LKDkMqPoEeWuoeYEgh4h2g"/>
     </ownedAnnotationEntries>

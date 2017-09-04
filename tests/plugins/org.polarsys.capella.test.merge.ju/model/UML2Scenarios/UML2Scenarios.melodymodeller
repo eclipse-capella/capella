@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.1.0-->
+<!--Capella_Version_1.2.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.1.0"
-    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.1.0"
-    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.1.0"
-    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.1.0"
-    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.1.0"
-    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.1.0"
-    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.1.0"
-    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.1.0"
-    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0"
-    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.2.0"
+    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.2.0"
+    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.2.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.2.0"
+    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.2.0"
+    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.2.0"
+    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.2.0"
+    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.2.0"
+    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.2.0"
+    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.2.0"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.2.0"
     id="3c60c3c5-3200-4b17-abc7-9121a3f0f35e"
     name="UML2Scenarios">
   <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue" id="9605c0c9-9739-4d31-a301-3eb2b392e5a0"
@@ -144,11 +144,9 @@
                 id="b8535a1a-1ddd-47d4-95c9-0bbf7ae6de1a" name=""/>
           </ownedScenarios>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="2c409097-f065-406b-8782-19b62703f7e0" involver="#bbffc3b2-0bff-41fe-ad24-893bafb0f071"
-              involved="#70f58ffb-5dd1-4575-8886-61828058ca4a"/>
+              id="2c409097-f065-406b-8782-19b62703f7e0" involved="#70f58ffb-5dd1-4575-8886-61828058ca4a"/>
           <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-              id="4f3700ca-1d95-4f0d-a472-e68004803585" involver="#bbffc3b2-0bff-41fe-ad24-893bafb0f071"
-              involved="#fb22e396-dd7c-45dc-afa1-d2862aa92bf9"/>
+              id="4f3700ca-1d95-4f0d-a472-e68004803585" involved="#fb22e396-dd7c-45dc-afa1-d2862aa92bf9"/>
         </ownedCapabilities>
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
             id="718a8dd4-a753-46a7-9ca9-613ef37252e7" name="Refine_InteractionStates">
@@ -272,11 +270,9 @@
                 operation="#39d74896-ed94-41c9-8682-c626d357f747"/>
           </ownedScenarios>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="2b3df514-26fc-4ca5-bbe3-a51b9d7e818c" involver="#718a8dd4-a753-46a7-9ca9-613ef37252e7"
-              involved="#fc8927df-5fcb-4760-b1e6-1f9d211191c1"/>
+              id="2b3df514-26fc-4ca5-bbe3-a51b9d7e818c" involved="#fc8927df-5fcb-4760-b1e6-1f9d211191c1"/>
           <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-              id="5f68e344-21c5-491d-a2d6-a45e32c4574c" involver="#718a8dd4-a753-46a7-9ca9-613ef37252e7"
-              involved="#fb22e396-dd7c-45dc-afa1-d2862aa92bf9"/>
+              id="5f68e344-21c5-491d-a2d6-a45e32c4574c" involved="#fb22e396-dd7c-45dc-afa1-d2862aa92bf9"/>
         </ownedCapabilities>
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
             id="0af66c73-b855-48f3-957b-f44d1e39ea95" name="Refine_InteractionUses">
@@ -359,11 +355,9 @@
                 operation="#e32f9af3-0912-4135-92d1-e9f9d636992a"/>
           </ownedScenarios>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="bfa9b694-cfd3-437a-a9c0-b79d1a371d85" involver="#0af66c73-b855-48f3-957b-f44d1e39ea95"
-              involved="#398ea884-ca57-4317-9385-1473414cc038"/>
+              id="bfa9b694-cfd3-437a-a9c0-b79d1a371d85" involved="#398ea884-ca57-4317-9385-1473414cc038"/>
           <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-              id="cb003351-ecd4-414e-bfa5-f5e22ee935c7" involver="#0af66c73-b855-48f3-957b-f44d1e39ea95"
-              involved="#fb22e396-dd7c-45dc-afa1-d2862aa92bf9"/>
+              id="cb003351-ecd4-414e-bfa5-f5e22ee935c7" involved="#fb22e396-dd7c-45dc-afa1-d2862aa92bf9"/>
         </ownedCapabilities>
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
             id="754d294d-662a-4cda-8847-ee7a805f2768" name="Refine_Create_Delete_Messages">
@@ -570,20 +564,15 @@
                 operation="#d43426c6-1619-4c20-9edd-32df1905efd8"/>
           </ownedScenarios>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="14570a2d-a586-406a-9b48-4cd7fcea9982" involver="#754d294d-662a-4cda-8847-ee7a805f2768"
-              involved="#26c4efb5-2fdc-4aa2-8733-06aa4c311eae"/>
+              id="14570a2d-a586-406a-9b48-4cd7fcea9982" involved="#26c4efb5-2fdc-4aa2-8733-06aa4c311eae"/>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="857ca4d6-7057-45f8-8209-c35666cc99f7" involver="#754d294d-662a-4cda-8847-ee7a805f2768"
-              involved="#c9c94253-9da0-41cf-b0e7-d73c756c037b"/>
+              id="857ca4d6-7057-45f8-8209-c35666cc99f7" involved="#c9c94253-9da0-41cf-b0e7-d73c756c037b"/>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="1802fdb4-8e1e-4781-aab6-2371a7669cd7" involver="#754d294d-662a-4cda-8847-ee7a805f2768"
-              involved="#2ea49f3a-2346-4835-b4e0-cf903269a32b"/>
+              id="1802fdb4-8e1e-4781-aab6-2371a7669cd7" involved="#2ea49f3a-2346-4835-b4e0-cf903269a32b"/>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="9eb01c4d-c235-4f7e-9405-d0dcabdddffe" involver="#754d294d-662a-4cda-8847-ee7a805f2768"
-              involved="#fa204eda-933a-4541-b034-102aa95ed96a"/>
+              id="9eb01c4d-c235-4f7e-9405-d0dcabdddffe" involved="#fa204eda-933a-4541-b034-102aa95ed96a"/>
           <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-              id="e73a4e91-eb27-46b1-913c-34daafd19c94" involver="#754d294d-662a-4cda-8847-ee7a805f2768"
-              involved="#fb22e396-dd7c-45dc-afa1-d2862aa92bf9"/>
+              id="e73a4e91-eb27-46b1-913c-34daafd19c94" involved="#fb22e396-dd7c-45dc-afa1-d2862aa92bf9"/>
         </ownedCapabilities>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -1436,14 +1425,11 @@
                 id="c6cdf3c3-eaeb-4b74-bb62-eb8bdfbd2ae6" name=""/>
           </ownedScenarios>
           <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-              id="80af387a-8a3d-4f5a-9738-61deb6078d2c" involver="#6ea7caaa-0107-4290-a543-051b6db9d9e9"
-              involved="#d34afe2c-2849-496b-b3ae-4861bb413bc6"/>
+              id="80af387a-8a3d-4f5a-9738-61deb6078d2c" involved="#d34afe2c-2849-496b-b3ae-4861bb413bc6"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="f6a1c171-3315-484f-9a8a-ab6f51ca02ef" involver="#6ea7caaa-0107-4290-a543-051b6db9d9e9"
-              involved="#1bbbb9aa-413f-4ec8-a836-326d27102a98"/>
+              id="f6a1c171-3315-484f-9a8a-ab6f51ca02ef" involved="#1bbbb9aa-413f-4ec8-a836-326d27102a98"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="41f749af-96a0-40c9-883a-20bb9cb5e412" involver="#6ea7caaa-0107-4290-a543-051b6db9d9e9"
-              involved="#898016db-ba41-4370-bba5-876db02e16df"/>
+              id="41f749af-96a0-40c9-883a-20bb9cb5e412" involved="#898016db-ba41-4370-bba5-876db02e16df"/>
         </ownedCapabilityRealizations>
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
             id="73393fe6-a0ef-477b-b3a2-c4f3822e5eaf" name="Refine_InteractionStates">
@@ -1762,11 +1748,9 @@
                 operation="#39d74896-ed94-41c9-8682-c626d357f747"/>
           </ownedScenarios>
           <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-              id="407df922-ec29-44a5-81af-4c61043873f4" involver="#73393fe6-a0ef-477b-b3a2-c4f3822e5eaf"
-              involved="#7583dc65-2b4a-423e-84f9-db370bf61472"/>
+              id="407df922-ec29-44a5-81af-4c61043873f4" involved="#7583dc65-2b4a-423e-84f9-db370bf61472"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="7dd90b05-be7c-4744-8aa7-005c665c7d7c" involver="#73393fe6-a0ef-477b-b3a2-c4f3822e5eaf"
-              involved="#ff4636f8-7d90-419f-8253-755c8184e8ca"/>
+              id="7dd90b05-be7c-4744-8aa7-005c665c7d7c" involved="#ff4636f8-7d90-419f-8253-755c8184e8ca"/>
         </ownedCapabilityRealizations>
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
             id="3f583a2a-a148-409c-84e4-5eded37d322f" name="Refine_InteractionUses">
@@ -2138,14 +2122,11 @@
                 id="511c6019-26b9-4f0d-ae86-e185a9c66aa3" name=""/>
           </ownedScenarios>
           <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-              id="00e2a1f8-7e87-4700-ab78-6c12e5a56263" involver="#3f583a2a-a148-409c-84e4-5eded37d322f"
-              involved="#f1d25036-ec76-4c5e-b3a0-c04d27f713ad"/>
+              id="00e2a1f8-7e87-4700-ab78-6c12e5a56263" involved="#f1d25036-ec76-4c5e-b3a0-c04d27f713ad"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="6e9433a7-60b6-4972-84ec-4a0566e0589f" involver="#3f583a2a-a148-409c-84e4-5eded37d322f"
-              involved="#6b2b2191-1f5f-45c3-b2fa-99a1d17c0fc2"/>
+              id="6e9433a7-60b6-4972-84ec-4a0566e0589f" involved="#6b2b2191-1f5f-45c3-b2fa-99a1d17c0fc2"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="4c8688b5-d09e-4717-a3bd-989a79d0848a" involver="#3f583a2a-a148-409c-84e4-5eded37d322f"
-              involved="#bf7b689a-a887-40aa-a468-5b15b5de69bd"/>
+              id="4c8688b5-d09e-4717-a3bd-989a79d0848a" involved="#bf7b689a-a887-40aa-a468-5b15b5de69bd"/>
         </ownedCapabilityRealizations>
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
             id="000c02e1-db8d-4498-8bbe-a9e477642bb9" name="Refine_Create_Delete_Messages">
@@ -2841,20 +2822,15 @@
                 operation="#d43426c6-1619-4c20-9edd-32df1905efd8"/>
           </ownedScenarios>
           <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-              id="67c1062b-f832-4b1c-a5dd-819721eb570d" involver="#000c02e1-db8d-4498-8bbe-a9e477642bb9"
-              involved="#94193f28-7750-4527-9a43-b04ab7ac3bed"/>
+              id="67c1062b-f832-4b1c-a5dd-819721eb570d" involved="#94193f28-7750-4527-9a43-b04ab7ac3bed"/>
           <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-              id="8932bf5f-92ed-4da4-af8d-4a8e027f864e" involver="#000c02e1-db8d-4498-8bbe-a9e477642bb9"
-              involved="#8e71395f-80ff-4aff-83bb-cca039df5e44"/>
+              id="8932bf5f-92ed-4da4-af8d-4a8e027f864e" involved="#8e71395f-80ff-4aff-83bb-cca039df5e44"/>
           <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-              id="11dbd66f-fe30-482b-87bb-6740bbf1b402" involver="#000c02e1-db8d-4498-8bbe-a9e477642bb9"
-              involved="#4d5c6a6f-c74e-4217-ba33-9ce49761a97c"/>
+              id="11dbd66f-fe30-482b-87bb-6740bbf1b402" involved="#4d5c6a6f-c74e-4217-ba33-9ce49761a97c"/>
           <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-              id="0ae3a63a-faee-4aa0-a795-727973d8ecfd" involver="#000c02e1-db8d-4498-8bbe-a9e477642bb9"
-              involved="#b2fed6cf-c50b-4916-b5e2-d77ad9f3e4c6"/>
+              id="0ae3a63a-faee-4aa0-a795-727973d8ecfd" involved="#b2fed6cf-c50b-4916-b5e2-d77ad9f3e4c6"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="4de0a70e-c885-40a5-9c44-8bd2882e40ff" involver="#000c02e1-db8d-4498-8bbe-a9e477642bb9"
-              involved="#bc44e8cf-c1fe-451d-8aad-088d035578c0"/>
+              id="4de0a70e-c885-40a5-9c44-8bd2882e40ff" involved="#bc44e8cf-c1fe-451d-8aad-088d035578c0"/>
         </ownedCapabilityRealizations>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -3371,17 +3347,13 @@
                     id="ce3088c3-961f-4552-8522-5e6fc9098449" name=""/>
               </ownedScenarios>
               <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-                  id="b88a4aec-1658-43d2-ae23-26e39843f819" involver="#4eb04d6f-4a4a-4519-8010-9bedc6db7958"
-                  involved="#d34afe2c-2849-496b-b3ae-4861bb413bc6"/>
+                  id="b88a4aec-1658-43d2-ae23-26e39843f819" involved="#d34afe2c-2849-496b-b3ae-4861bb413bc6"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="f75e0d7e-48c0-4eb7-baaf-1a30acba7042" involver="#4eb04d6f-4a4a-4519-8010-9bedc6db7958"
-                  involved="#08f1634c-6eb9-4868-bcac-be372a160116"/>
+                  id="f75e0d7e-48c0-4eb7-baaf-1a30acba7042" involved="#08f1634c-6eb9-4868-bcac-be372a160116"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="8aa0656c-5ced-458c-972e-e42a0aaeda17" involver="#4eb04d6f-4a4a-4519-8010-9bedc6db7958"
-                  involved="#3e3fc696-4b7a-42eb-9831-c003aad640c3"/>
+                  id="8aa0656c-5ced-458c-972e-e42a0aaeda17" involved="#3e3fc696-4b7a-42eb-9831-c003aad640c3"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="b3fdb870-a77b-4191-9a7a-7341571b5b98" involver="#4eb04d6f-4a4a-4519-8010-9bedc6db7958"
-                  involved="#898016db-ba41-4370-bba5-876db02e16df"/>
+                  id="b3fdb870-a77b-4191-9a7a-7341571b5b98" involved="#898016db-ba41-4370-bba5-876db02e16df"/>
             </ownedCapabilityRealizations>
           </ownedAbstractCapabilityPkg>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="9baaa5d4-b0fd-4e71-9489-ae85a2c4ffea"
@@ -3635,11 +3607,9 @@
                     operation="#39d74896-ed94-41c9-8682-c626d357f747"/>
               </ownedScenarios>
               <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-                  id="31ae8271-d69d-4a3b-b766-64c51ea5d59a" involver="#880758d0-4a09-47dd-9148-6789658c7dad"
-                  involved="#7583dc65-2b4a-423e-84f9-db370bf61472"/>
+                  id="31ae8271-d69d-4a3b-b766-64c51ea5d59a" involved="#7583dc65-2b4a-423e-84f9-db370bf61472"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="636d27d4-8871-4398-a541-12a46c876382" involver="#880758d0-4a09-47dd-9148-6789658c7dad"
-                  involved="#d9e7e753-bb31-431f-90ee-3af0cff85afd"/>
+                  id="636d27d4-8871-4398-a541-12a46c876382" involved="#d9e7e753-bb31-431f-90ee-3af0cff85afd"/>
             </ownedCapabilityRealizations>
           </ownedAbstractCapabilityPkg>
           <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
@@ -3984,14 +3954,11 @@
                     operation="#cd0c1570-a3d7-481f-85a9-52e4ce1d7536"/>
               </ownedScenarios>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="5df5b0b1-a6c6-469a-94fe-ff664b7a8948" involver="#01936fc8-af3e-41ef-b8b7-a57db6fd3c70"
-                  involved="#d454df06-62a5-4f8d-878f-6414e6ff25a7"/>
+                  id="5df5b0b1-a6c6-469a-94fe-ff664b7a8948" involved="#d454df06-62a5-4f8d-878f-6414e6ff25a7"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="aafc7ebf-119a-492e-b692-8d704183ca26" involver="#01936fc8-af3e-41ef-b8b7-a57db6fd3c70"
-                  involved="#6b2b2191-1f5f-45c3-b2fa-99a1d17c0fc2"/>
+                  id="aafc7ebf-119a-492e-b692-8d704183ca26" involved="#6b2b2191-1f5f-45c3-b2fa-99a1d17c0fc2"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="841cde4d-d90e-448d-b52b-c7721d603979" involver="#01936fc8-af3e-41ef-b8b7-a57db6fd3c70"
-                  involved="#6078c49f-bd89-4251-aba9-0a550fe4ca6c"/>
+                  id="841cde4d-d90e-448d-b52b-c7721d603979" involved="#6078c49f-bd89-4251-aba9-0a550fe4ca6c"/>
             </ownedCapabilityRealizations>
           </ownedAbstractCapabilityPkg>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="a7333c66-6dae-4f06-a721-3302690998f0"
@@ -4526,23 +4493,17 @@
                     operation="#b6d920ed-4cfe-42d1-8917-3e903eb13277"/>
               </ownedScenarios>
               <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-                  id="42c34b07-bca2-4f02-bdf7-a2b21376e50a" involver="#c328302e-aceb-41bb-b5cc-a221b12fd8b9"
-                  involved="#94193f28-7750-4527-9a43-b04ab7ac3bed"/>
+                  id="42c34b07-bca2-4f02-bdf7-a2b21376e50a" involved="#94193f28-7750-4527-9a43-b04ab7ac3bed"/>
               <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-                  id="9f427ca8-9b81-4dbf-8411-0c77184e472d" involver="#c328302e-aceb-41bb-b5cc-a221b12fd8b9"
-                  involved="#8e71395f-80ff-4aff-83bb-cca039df5e44"/>
+                  id="9f427ca8-9b81-4dbf-8411-0c77184e472d" involved="#8e71395f-80ff-4aff-83bb-cca039df5e44"/>
               <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-                  id="1d52ecff-9de0-49aa-9985-b5b846f42caa" involver="#c328302e-aceb-41bb-b5cc-a221b12fd8b9"
-                  involved="#4d5c6a6f-c74e-4217-ba33-9ce49761a97c"/>
+                  id="1d52ecff-9de0-49aa-9985-b5b846f42caa" involved="#4d5c6a6f-c74e-4217-ba33-9ce49761a97c"/>
               <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-                  id="c0e635be-0f55-4f53-86b6-9cd507324fb1" involver="#c328302e-aceb-41bb-b5cc-a221b12fd8b9"
-                  involved="#b2fed6cf-c50b-4916-b5e2-d77ad9f3e4c6"/>
+                  id="c0e635be-0f55-4f53-86b6-9cd507324fb1" involved="#b2fed6cf-c50b-4916-b5e2-d77ad9f3e4c6"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="e36e554b-6234-44a5-aa1e-ecf6d9225ef5" involver="#c328302e-aceb-41bb-b5cc-a221b12fd8b9"
-                  involved="#a1af1b07-4c1e-4067-a153-b95d12bcc584"/>
+                  id="e36e554b-6234-44a5-aa1e-ecf6d9225ef5" involved="#a1af1b07-4c1e-4067-a153-b95d12bcc584"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="bf7d86a8-19e7-4a2b-940a-27383e998b5f" involver="#c328302e-aceb-41bb-b5cc-a221b12fd8b9"
-                  involved="#b5343a70-b6d8-4632-9367-94ac7f9769dd"/>
+                  id="bf7d86a8-19e7-4a2b-940a-27383e998b5f" involved="#b5343a70-b6d8-4632-9367-94ac7f9769dd"/>
             </ownedCapabilityRealizations>
           </ownedAbstractCapabilityPkg>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="e65fbe07-4acc-404e-b2b0-6ea5bea53b70"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.1.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.1.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_HU8psfuwEeOZYMGwVIPWYw" selectedViews="_HXlG8PuwEeOZYMGwVIPWYw _HXrNkPuwEeOZYMGwVIPWYw _HX53EPuwEeOZYMGwVIPWYw _HYAkwPuwEeOZYMGwVIPWYw _HYfF4PuwEeOZYMGwVIPWYw _HYrTIPuwEeOZYMGwVIPWYw _0QmyEHQuEeamAMxs9g9ZYQ" version="11.1.0.201608251200">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.2.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.2.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.2.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_HU8psfuwEeOZYMGwVIPWYw" selectedViews="_HXlG8PuwEeOZYMGwVIPWYw _HXrNkPuwEeOZYMGwVIPWYw _HX53EPuwEeOZYMGwVIPWYw _HYAkwPuwEeOZYMGwVIPWYw _HYfF4PuwEeOZYMGwVIPWYw _HYrTIPuwEeOZYMGwVIPWYw _0QmyEHQuEeamAMxs9g9ZYQ" version="12.1.0.201708031200">
     <semanticResources>Project_validation2.melodymodeller</semanticResources>
     <semanticResources>Project_validation2.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_HXlG8PuwEeOZYMGwVIPWYw">
@@ -14,7 +14,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_HYAkwPuwEeOZYMGwVIPWYw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_0Iq-EHQuEeamAMxs9g9ZYQ" name="[IDB] Logical System - Interfaces Diagram Blank" representation="_LL4fAPuwEeOZYMGwVIPWYw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_0Iq-EHQuEeamAMxs9g9ZYQ" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_U8vPgJFwEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation2.melodymodeller#55fb90c9-ab90-4692-a6cb-3c142148aa3b"/>
       </ownedRepresentationDescriptors>
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_LL4fAPuwEeOZYMGwVIPWYw" name="[IDB] Logical System - Interfaces Diagram Blank">
+  <diagram:DSemanticDiagram xmi:id="_LL4fAPuwEeOZYMGwVIPWYw" name="[IDB] Logical System - Interfaces Diagram Blank" uid="_U8vPgJFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_LMdt0PuwEeOZYMGwVIPWYw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_LMdt0fuwEeOZYMGwVIPWYw" type="Sirius" element="_LL4fAPuwEeOZYMGwVIPWYw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_NJtdoPuwEeOZYMGwVIPWYw" type="2002" element="_NIlcQPuwEeOZYMGwVIPWYw">
@@ -143,7 +143,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_QQXFgfuwEeOZYMGwVIPWYw"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_QQXFgvuwEeOZYMGwVIPWYw" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_QQXFg_uwEeOZYMGwVIPWYw" points="[-2, -15, 4, 39]$[-6, -54, 0, 0]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_QQXFg_uwEeOZYMGwVIPWYw" points="[-5, -15, 26, 80]$[-30, -92, 1, 3]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_IdNikEWlEeWsf-HHjuu1Bw" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_QQav4PuwEeOZYMGwVIPWYw" id="(0.4935064935064935,1.0)"/>
         </edges>
@@ -159,7 +159,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_RIHM4fuwEeOZYMGwVIPWYw"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_RIHM4vuwEeOZYMGwVIPWYw" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RIHM4_uwEeOZYMGwVIPWYw" points="[-15, -7, 109, 46]$[-124, -53, 0, 0]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RIHM4_uwEeOZYMGwVIPWYw" points="[-15, -10, 134, 84]$[-148, -94, 1, 0]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RIIbAPuwEeOZYMGwVIPWYw" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RIIbAfuwEeOZYMGwVIPWYw" id="(0.4935064935064935,1.0)"/>
         </edges>
@@ -207,7 +207,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_UIGzJPuwEeOZYMGwVIPWYw"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_UIGzJfuwEeOZYMGwVIPWYw" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_UIGzJvuwEeOZYMGwVIPWYw" points="[-6, -15, 15, 38]$[-21, -53, 0, 0]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_UIGzJvuwEeOZYMGwVIPWYw" points="[-8, -15, 38, 79]$[-45, -92, 1, 2]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_UIHaNvuwEeOZYMGwVIPWYw" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_VKjHkPuwEeOZYMGwVIPWYw" id="(0.4935064935064935,1.0)"/>
         </edges>

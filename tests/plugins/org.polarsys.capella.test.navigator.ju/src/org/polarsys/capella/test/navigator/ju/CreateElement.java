@@ -52,7 +52,7 @@ public class CreateElement extends BasicTestCase {
 
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList("EmptyProject");
+    return Arrays.asList("NavigatorEmptyProject");
   }
 
   @SuppressWarnings("restriction")

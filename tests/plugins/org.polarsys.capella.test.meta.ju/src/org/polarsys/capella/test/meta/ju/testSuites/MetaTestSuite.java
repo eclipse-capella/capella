@@ -41,6 +41,6 @@ public class MetaTestSuite extends BasicTestSuite {
 
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList(new String[] { "EmptyProject" });
+    return Arrays.asList(new String[] { "EmptyProject1" });
   }
 }

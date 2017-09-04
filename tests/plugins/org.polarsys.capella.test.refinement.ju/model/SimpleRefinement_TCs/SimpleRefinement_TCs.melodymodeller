@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.1.0-->
+<!--Capella_Version_1.2.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.1.0"
-    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.1.0"
-    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.1.0"
-    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.1.0"
-    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.1.0"
-    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.1.0"
-    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.1.0"
-    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.1.0"
-    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.sharedmodel="http://www.polarsys.org/capella/core/sharedmodel/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.2.0"
+    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.2.0"
+    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.2.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.2.0"
+    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.2.0"
+    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.2.0"
+    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.2.0"
+    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.2.0"
+    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.2.0"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.2.0"
+    xmlns:org.polarsys.capella.core.data.sharedmodel="http://www.polarsys.org/capella/core/sharedmodel/1.2.0"
     id="33304fc7-cc52-449e-ae4f-c05274c78d32"
     name="SimpleRefinement_TCs">
   <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue" id="81409fb6-96d7-4beb-aa8f-c5c9fe8f8ff2"
@@ -30,8 +30,7 @@
         <ownedCapabilityPkgs xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
             id="27bfc7d1-f72f-4959-a835-7dcdafee90cf" name="Simple TCs">
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="4986f88e-005b-4941-afd1-832b461ccdeb" name="Simple TC without ambiguity"
-              purposes="#f0e8c51e-da8c-4666-a349-b2211167191d">
+              id="4986f88e-005b-4941-afd1-832b461ccdeb" name="Simple TC without ambiguity">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="15e76a19-8cbc-4707-be5a-b1f0ae3f6cc7" name="Simple TC without ambiguity"
                 kind="INTERFACE">
@@ -111,15 +110,12 @@
                   operation="#db317fe8-c40c-4fcf-9bfe-507045531239"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="92f148b3-2d5d-4f2a-b3b0-ffdb780abb40" involver="#4986f88e-005b-4941-afd1-832b461ccdeb"
-                involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+                id="92f148b3-2d5d-4f2a-b3b0-ffdb780abb40" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="0bc8740b-6351-437a-8882-5d5e85517e5b" involver="#4986f88e-005b-4941-afd1-832b461ccdeb"
-                involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+                id="0bc8740b-6351-437a-8882-5d5e85517e5b" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="9beaf4af-bcad-4271-8a93-7332d168cd8a" name="Simple TC with usage ambiguity"
-              purposes="#c761142d-dbe4-49f8-9840-9345e4757ad9">
+              id="9beaf4af-bcad-4271-8a93-7332d168cd8a" name="Simple TC with usage ambiguity">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="041f30d0-5f5a-41bc-b2cb-1ec1add74003" name="Simple TC with usage ambiguity"
                 kind="INTERFACE">
@@ -199,15 +195,12 @@
                   operation="#0381307c-19c8-429a-8936-7d070196ec5b"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="4c7e8a23-e094-4056-8496-cb9cd42d601f" involver="#9beaf4af-bcad-4271-8a93-7332d168cd8a"
-                involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+                id="4c7e8a23-e094-4056-8496-cb9cd42d601f" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="5f866232-17a3-4b38-b896-121d613047f2" involver="#9beaf4af-bcad-4271-8a93-7332d168cd8a"
-                involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+                id="5f866232-17a3-4b38-b896-121d613047f2" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="d7323f1b-7016-4e3e-af6f-1bfbabc6865d" name="Simple TC with implementation ambiguity"
-              purposes="#4dfd9081-0ce6-4920-beff-ea2d3b4f134d">
+              id="d7323f1b-7016-4e3e-af6f-1bfbabc6865d" name="Simple TC with implementation ambiguity">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="463cec26-fa57-4d82-9ed5-fdc6523c5c6d" name="Simple TC with implementation ambiguity"
                 kind="INTERFACE">
@@ -287,15 +280,12 @@
                   operation="#db317fe8-c40c-4fcf-9bfe-507045531239"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="8d06af7e-f235-4dd4-853b-2c66cbdb1c26" involver="#d7323f1b-7016-4e3e-af6f-1bfbabc6865d"
-                involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+                id="8d06af7e-f235-4dd4-853b-2c66cbdb1c26" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="291fd6b6-0232-4e8a-958a-94202a66e62b" involver="#d7323f1b-7016-4e3e-af6f-1bfbabc6865d"
-                involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+                id="291fd6b6-0232-4e8a-958a-94202a66e62b" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="d4446014-558c-4821-b905-b47c98b9e8e8" name="Simple TC with both ambiguity"
-              purposes="#5f644f13-8278-4eda-8a4a-62ab3106a6e2">
+              id="d4446014-558c-4821-b905-b47c98b9e8e8" name="Simple TC with both ambiguity">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="5c9a28bd-f5c7-4697-bc39-3e56223ac8ce" name="Simple TC with both ambiguity"
                 kind="INTERFACE">
@@ -375,15 +365,12 @@
                   operation="#0381307c-19c8-429a-8936-7d070196ec5b"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="5edc8ae1-a824-46e4-b4b7-f0c669dfc2b1" involver="#d4446014-558c-4821-b905-b47c98b9e8e8"
-                involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+                id="5edc8ae1-a824-46e4-b4b7-f0c669dfc2b1" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="0c67ea23-6a11-4c0d-9b94-23aa95faf81e" involver="#d4446014-558c-4821-b905-b47c98b9e8e8"
-                involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+                id="0c67ea23-6a11-4c0d-9b94-23aa95faf81e" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="f6afa1ef-a186-41ef-9110-ccf675a5819d" name="Simple TC with interface inheritance"
-              purposes="#57909cc7-4623-4f6a-b46e-444f94f38b95">
+              id="f6afa1ef-a186-41ef-9110-ccf675a5819d" name="Simple TC with interface inheritance">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="c0f03418-e3f2-4c83-801f-6b87dcc1f34d" name="Simple TC with interface inheritance"
                 kind="INTERFACE">
@@ -428,11 +415,9 @@
                   operation="#fbd11332-e7ed-4513-acf8-19086f50b3d2"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="853daff6-d13b-4582-a6d1-57e5a7e825f8" involver="#4986f88e-005b-4941-afd1-832b461ccdeb"
-                involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+                id="853daff6-d13b-4582-a6d1-57e5a7e825f8" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="157b56ad-0913-40f8-9b2f-79b6b15b02c3" involver="#f6afa1ef-a186-41ef-9110-ccf675a5819d"
-                involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+                id="157b56ad-0913-40f8-9b2f-79b6b15b02c3" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
               id="b7b14a60-9cfc-4c9f-acb0-640f18ebe74f" name="Simple TC with reflexive message">
@@ -681,18 +666,15 @@
                   operation="#81fcabc7-e7a3-4fe1-954c-f84483a0ea7e"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="4956938a-a178-4581-8e99-4e8db36bba5d" involver="#b7b14a60-9cfc-4c9f-acb0-640f18ebe74f"
-                involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+                id="4956938a-a178-4581-8e99-4e8db36bba5d" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="5b6ceaf7-b8e0-4c91-8c4e-057fe2e3ed35" involver="#b7b14a60-9cfc-4c9f-acb0-640f18ebe74f"
-                involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+                id="5b6ceaf7-b8e0-4c91-8c4e-057fe2e3ed35" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           </ownedCapabilities>
         </ownedCapabilityPkgs>
         <ownedCapabilityPkgs xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
             id="2dcb20fa-0a9a-419f-af2d-94c5482d6228" name="Simple TCs (through Ports)">
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="5d8c2151-b47b-46f6-9533-52679242feb7" name="Simple TC without ambiguity (through Ports)"
-              purposes="#b52d6e74-c625-45a0-a379-fe8ac06d8bd4">
+              id="5d8c2151-b47b-46f6-9533-52679242feb7" name="Simple TC without ambiguity (through Ports)">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="58983ba8-36bd-42fb-beee-0af4a09eba5a" name="Simple TC without ambiguity (through Ports)"
                 kind="INTERFACE">
@@ -772,15 +754,12 @@
                   operation="#15e0e130-2f7d-4943-84b0-f65d1b0d599d"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="26b94e56-10cb-4ff6-bdf4-d9e114c2dc65" involver="#5d8c2151-b47b-46f6-9533-52679242feb7"
-                involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+                id="26b94e56-10cb-4ff6-bdf4-d9e114c2dc65" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="9d60fc38-e659-40e5-8112-fdac640a0043" involver="#5d8c2151-b47b-46f6-9533-52679242feb7"
-                involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+                id="9d60fc38-e659-40e5-8112-fdac640a0043" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="af3d7793-abb1-4755-b59a-a79d900bc0c3" name="Simple TC with usage ambiguity (through Ports)"
-              purposes="#7a9297ce-11a8-462a-a0a1-aa7be4275424">
+              id="af3d7793-abb1-4755-b59a-a79d900bc0c3" name="Simple TC with usage ambiguity (through Ports)">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="fd2f4397-391d-48ea-97d9-fefb1f083a15" name="Simple TC with usage ambiguity (through Ports)"
                 kind="INTERFACE">
@@ -860,15 +839,12 @@
                   operation="#7bd15bfa-d84a-4bf1-b3d6-03ab4e1b9614"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="fb3c3b48-e953-44e0-8546-9e90cd8a4304" involver="#af3d7793-abb1-4755-b59a-a79d900bc0c3"
-                involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+                id="fb3c3b48-e953-44e0-8546-9e90cd8a4304" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="1756c56a-177f-4736-99c4-0753fd37149e" involver="#af3d7793-abb1-4755-b59a-a79d900bc0c3"
-                involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+                id="1756c56a-177f-4736-99c4-0753fd37149e" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="5a2e6835-62e9-464f-a2ef-5cd6f442dc46" name="Simple TC with implementation ambiguity (through Ports)"
-              purposes="#806f4f2f-3973-4205-aff9-c335108d24ab">
+              id="5a2e6835-62e9-464f-a2ef-5cd6f442dc46" name="Simple TC with implementation ambiguity (through Ports)">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="13a0777a-ace9-43e0-8405-b74a1573e4a4" name="Simple TC with implementation ambiguity (through Ports)"
                 kind="INTERFACE">
@@ -948,15 +924,12 @@
                   operation="#15e0e130-2f7d-4943-84b0-f65d1b0d599d"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="b037121b-3e87-4370-8d62-45b73be1a37d" involver="#5a2e6835-62e9-464f-a2ef-5cd6f442dc46"
-                involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+                id="b037121b-3e87-4370-8d62-45b73be1a37d" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="9b7d792c-7ec5-48b6-9121-687dbe0345bc" involver="#5a2e6835-62e9-464f-a2ef-5cd6f442dc46"
-                involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+                id="9b7d792c-7ec5-48b6-9121-687dbe0345bc" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="baa9ffec-4b35-483a-a47d-070597b1f253" name="Simple TC with both ambiguity (through Ports)"
-              purposes="#05206cff-1e5e-4620-9b41-4d2f220490ef">
+              id="baa9ffec-4b35-483a-a47d-070597b1f253" name="Simple TC with both ambiguity (through Ports)">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="73070003-4622-4fd7-ae3c-9b16ad5d3d68" name="Simple TC with both ambiguity (through Ports)"
                 kind="INTERFACE">
@@ -1036,15 +1009,12 @@
                   operation="#7bd15bfa-d84a-4bf1-b3d6-03ab4e1b9614"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="6e6e0e85-3063-4800-972a-c41cac23a46f" involver="#baa9ffec-4b35-483a-a47d-070597b1f253"
-                involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+                id="6e6e0e85-3063-4800-972a-c41cac23a46f" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="f1d20e17-0030-45b1-8f6d-0bfd2c860ceb" involver="#baa9ffec-4b35-483a-a47d-070597b1f253"
-                involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+                id="f1d20e17-0030-45b1-8f6d-0bfd2c860ceb" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="b504229c-f5bc-461e-ab35-60aaf56352d4" name="Simple TC with interface inheritance (through Ports)"
-              purposes="#12a2cdb1-e5f6-4c10-badf-e4a4ea8beab0">
+              id="b504229c-f5bc-461e-ab35-60aaf56352d4" name="Simple TC with interface inheritance (through Ports)">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="4e6ff4c2-27b1-4046-b986-b0634ca27d28" name="Simple TC with interface inheritance (through Ports)"
                 kind="INTERFACE">
@@ -1089,11 +1059,9 @@
                   operation="#7f28f404-6be5-49e0-b0a4-f98d866321fa"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="8536e7cb-2fc5-40c2-9d61-350caf0fe8f1" involver="#b504229c-f5bc-461e-ab35-60aaf56352d4"
-                involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+                id="8536e7cb-2fc5-40c2-9d61-350caf0fe8f1" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="40b2281d-2d0c-4547-963e-718f00e39150" involver="#b504229c-f5bc-461e-ab35-60aaf56352d4"
-                involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+                id="40b2281d-2d0c-4547-963e-718f00e39150" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
               id="b6278f2f-9282-4999-8c28-ffbf74cfa759" name="Simple TC with reflexive message (through Ports)">
@@ -1342,11 +1310,9 @@
                   operation="#dc4fdebe-0b79-4bc9-a9f9-a5bcea2a109a"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="59a7b25b-3627-4197-9aca-bc362710f68a" involver="#b6278f2f-9282-4999-8c28-ffbf74cfa759"
-                involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+                id="59a7b25b-3627-4197-9aca-bc362710f68a" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="854331e4-8f0e-49c9-a94c-041d8b51cae2" involver="#b6278f2f-9282-4999-8c28-ffbf74cfa759"
-                involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+                id="854331e4-8f0e-49c9-a94c-041d8b51cae2" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           </ownedCapabilities>
         </ownedCapabilityPkgs>
         <ownedCapabilityPkgs xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
@@ -1427,11 +1393,9 @@
                   operation="#55696001-664f-4350-af3b-5296b29784be"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="2ed8a0aa-ff58-40f3-b87e-c55d0c69c450" involver="#d0372193-3f90-4950-806a-5058e8c7f3f9"
-                involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+                id="2ed8a0aa-ff58-40f3-b87e-c55d0c69c450" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="487e211d-9ead-47c3-8be4-c556d04b5df3" involver="#d0372193-3f90-4950-806a-5058e8c7f3f9"
-                involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+                id="487e211d-9ead-47c3-8be4-c556d04b5df3" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
               id="197a6319-7e56-44c7-bbde-655f46949bfc" name="Simple TC with undefined relations">
@@ -1663,11 +1627,9 @@
                   operation="#55696001-664f-4350-af3b-5296b29784be"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="12c221f8-c681-44fb-9e0a-415e9296feeb" involver="#197a6319-7e56-44c7-bbde-655f46949bfc"
-                involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+                id="12c221f8-c681-44fb-9e0a-415e9296feeb" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="fcb079d6-07a4-4ca6-a5b4-61197b9a8d19" involver="#197a6319-7e56-44c7-bbde-655f46949bfc"
-                involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+                id="fcb079d6-07a4-4ca6-a5b4-61197b9a8d19" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           </ownedCapabilities>
         </ownedCapabilityPkgs>
       </ownedAbstractCapabilityPkg>
@@ -2001,11 +1963,9 @@
         <ownedMissions xsi:type="org.polarsys.capella.core.data.ctx:Mission" id="6f6d9c5e-07eb-456d-8226-034da4e04577"
             name="Simple TC Mission">
           <ownedActorMissionInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorMissionInvolvement"
-              id="f91511e0-1fb3-499e-b519-016a531e9cc7" involver="#6f6d9c5e-07eb-456d-8226-034da4e04577"
-              involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+              id="f91511e0-1fb3-499e-b519-016a531e9cc7" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
           <ownedSystemMissionInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemMissionInvolvement"
-              id="a87546b8-df84-4fa6-9119-ea2267210f0c" involver="#6f6d9c5e-07eb-456d-8226-034da4e04577"
-              involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+              id="a87546b8-df84-4fa6-9119-ea2267210f0c" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           <ownedCapabilityExploitations xsi:type="org.polarsys.capella.core.data.ctx:CapabilityExploitation"
               id="f0e8c51e-da8c-4666-a349-b2211167191d" capability="#4986f88e-005b-4941-afd1-832b461ccdeb"/>
           <ownedCapabilityExploitations xsi:type="org.polarsys.capella.core.data.ctx:CapabilityExploitation"
@@ -2020,11 +1980,9 @@
         <ownedMissions xsi:type="org.polarsys.capella.core.data.ctx:Mission" id="108e3ef0-c57a-423e-a277-ebb792c1c722"
             name="Simple TC Mission (through Ports)">
           <ownedActorMissionInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorMissionInvolvement"
-              id="32f9930e-c6bd-404f-af7f-a5a5854f670a" involver="#108e3ef0-c57a-423e-a277-ebb792c1c722"
-              involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
+              id="32f9930e-c6bd-404f-af7f-a5a5854f670a" involved="#6ca8cc75-d1c1-4bf7-a470-61710578daea"/>
           <ownedSystemMissionInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemMissionInvolvement"
-              id="71bd99c2-75fe-4e33-b072-5c582df784e4" involver="#108e3ef0-c57a-423e-a277-ebb792c1c722"
-              involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
+              id="71bd99c2-75fe-4e33-b072-5c582df784e4" involved="#ac1ca527-e503-4dbd-84c9-23888433a1e3"/>
           <ownedCapabilityExploitations xsi:type="org.polarsys.capella.core.data.ctx:CapabilityExploitation"
               id="b52d6e74-c625-45a0-a379-fe8ac06d8bd4" capability="#5d8c2151-b47b-46f6-9533-52679242feb7"/>
           <ownedCapabilityExploitations xsi:type="org.polarsys.capella.core.data.ctx:CapabilityExploitation"
@@ -2382,8 +2340,7 @@
         <ownedCapabilityPkgs xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
             id="4588db9c-3b76-464e-b6e9-51bd42f7653d" name="MultiPart TCs">
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="3dd55bb3-0e7c-42bd-8182-85a526d40d56" name="MultiPart TC without ambiguity"
-              purposes="#b0ceec0c-5014-4556-9907-03365a1b73b6">
+              id="3dd55bb3-0e7c-42bd-8182-85a526d40d56" name="MultiPart TC without ambiguity">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="163f28e2-6c03-46e4-84a8-442d660cebc8" name="MultiPart TC without ambiguity"
                 kind="INTERFACE">
@@ -2533,15 +2490,12 @@
                   operation="#fa1225a7-d7f0-4faa-916e-e3884455e583"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="0d6ab966-0130-432f-b6c1-d88c5be3f701" involver="#3dd55bb3-0e7c-42bd-8182-85a526d40d56"
-                involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
+                id="0d6ab966-0130-432f-b6c1-d88c5be3f701" involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="0ff6e158-40ee-43b2-b849-08f8347b3ecb" involver="#3dd55bb3-0e7c-42bd-8182-85a526d40d56"
-                involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
+                id="0ff6e158-40ee-43b2-b849-08f8347b3ecb" involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="29ede6d5-8d58-4fb0-9bbf-d4411012641f" name="MultiPart TC with usage ambiguity"
-              purposes="#9e182da2-bd1e-45b7-96a9-23b70295c515">
+              id="29ede6d5-8d58-4fb0-9bbf-d4411012641f" name="MultiPart TC with usage ambiguity">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="428ba91e-be0f-439a-9ece-1c2db2bff5c4" name="MultiPart TC with usage ambiguity"
                 kind="INTERFACE">
@@ -2691,15 +2645,12 @@
                   operation="#1b0181b5-a536-4f22-b75a-b3756387d6de"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="d1021417-1421-46d2-ad85-cee897762366" involver="#29ede6d5-8d58-4fb0-9bbf-d4411012641f"
-                involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
+                id="d1021417-1421-46d2-ad85-cee897762366" involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="b3158947-8286-446e-9b4e-f7f4eaf49123" involver="#29ede6d5-8d58-4fb0-9bbf-d4411012641f"
-                involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
+                id="b3158947-8286-446e-9b4e-f7f4eaf49123" involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="c22277e6-12c8-4994-afdd-6bef9bf86b67" name="MultiPart TC with implementation ambiguity"
-              purposes="#0c795407-c8ee-434c-88cb-a09fe62ad3ee">
+              id="c22277e6-12c8-4994-afdd-6bef9bf86b67" name="MultiPart TC with implementation ambiguity">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="095df624-b8d4-46f0-9bb6-b04b1b6b09f4" name="MultiPart TC with implementation ambiguity"
                 kind="INTERFACE">
@@ -2849,15 +2800,12 @@
                   operation="#fa1225a7-d7f0-4faa-916e-e3884455e583"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="a6088278-e407-411f-8af6-f441f38d2fb9" involver="#c22277e6-12c8-4994-afdd-6bef9bf86b67"
-                involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
+                id="a6088278-e407-411f-8af6-f441f38d2fb9" involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="7a70bd8d-8f24-4bdf-ae9a-925cbd242fc5" involver="#c22277e6-12c8-4994-afdd-6bef9bf86b67"
-                involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
+                id="7a70bd8d-8f24-4bdf-ae9a-925cbd242fc5" involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="490e33af-3a3c-411f-a0f0-b27fb054052a" name="MultiPart TC with both ambiguity"
-              purposes="#6c17ebf6-8b7a-439d-9d01-95c123764730">
+              id="490e33af-3a3c-411f-a0f0-b27fb054052a" name="MultiPart TC with both ambiguity">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="65595305-9f7e-461f-9e03-f7c072904094" name="MultiPart TC with both ambiguity"
                 kind="INTERFACE">
@@ -3007,15 +2955,12 @@
                   operation="#1b0181b5-a536-4f22-b75a-b3756387d6de"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="3594df6a-2150-45af-ba9d-179ce958f59e" involver="#490e33af-3a3c-411f-a0f0-b27fb054052a"
-                involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
+                id="3594df6a-2150-45af-ba9d-179ce958f59e" involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="7d9e85fb-c05d-485c-9f81-1b4ed5de9348" involver="#490e33af-3a3c-411f-a0f0-b27fb054052a"
-                involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
+                id="7d9e85fb-c05d-485c-9f81-1b4ed5de9348" involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="a156e61e-b1ee-46e8-942f-8360105a5604" name="MultiPart TC with interface inheritance"
-              purposes="#367a7d5b-b87c-44ae-b871-3a5f4145a34a">
+              id="a156e61e-b1ee-46e8-942f-8360105a5604" name="MultiPart TC with interface inheritance">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="3bf8d62f-1abe-47f3-95d7-2913a22fc6f9" name="MultiPart TC with interface inheritance"
                 kind="INTERFACE">
@@ -3060,11 +3005,9 @@
                   operation="#5fc79cb3-5f0e-43b5-9ed3-76a2dfbadb8f"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="46182b0c-21e5-4e12-9175-a66c2e4e8ad9" involver="#a156e61e-b1ee-46e8-942f-8360105a5604"
-                involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
+                id="46182b0c-21e5-4e12-9175-a66c2e4e8ad9" involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="9697371c-7ee9-48de-927a-8151a4844c9d" involver="#a156e61e-b1ee-46e8-942f-8360105a5604"
-                involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
+                id="9697371c-7ee9-48de-927a-8151a4844c9d" involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
               id="558266cb-dfcd-4cc4-a871-ff708c1b98e7" name="MultiPart TC with reflexive message">
@@ -3313,18 +3256,15 @@
                   operation="#9d3b0fdf-9bec-4805-8ded-02bfc33a8091"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="54cb1805-797d-4076-89a3-a0facf1dd85a" involver="#558266cb-dfcd-4cc4-a871-ff708c1b98e7"
-                involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
+                id="54cb1805-797d-4076-89a3-a0facf1dd85a" involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="618e75fe-f8ce-4d69-a47f-c6fc7304e8e8" involver="#558266cb-dfcd-4cc4-a871-ff708c1b98e7"
-                involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
+                id="618e75fe-f8ce-4d69-a47f-c6fc7304e8e8" involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
           </ownedCapabilities>
         </ownedCapabilityPkgs>
         <ownedCapabilityPkgs xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
             id="8541179f-4665-4b79-8af6-cd0289135923" name="MultiPart TCs (through Ports)">
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="e3dfe348-bcac-4e73-9b9d-3bf1aa031468" name="MultiPart TC without ambiguity (through Ports)"
-              purposes="#b76e9b40-6b23-474f-a2b6-31a9cd15043c">
+              id="e3dfe348-bcac-4e73-9b9d-3bf1aa031468" name="MultiPart TC without ambiguity (through Ports)">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="6417075e-bc6c-4b66-aed7-300105b5f3ec" name="MultiPart TC without ambiguity (through Ports)"
                 kind="INTERFACE">
@@ -3474,15 +3414,12 @@
                   operation="#a41f4cba-14cb-4c49-89b7-03ef2c0db45d"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="40354759-a5da-4d42-bf9c-7a9da07b6f13" involver="#e3dfe348-bcac-4e73-9b9d-3bf1aa031468"
-                involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
+                id="40354759-a5da-4d42-bf9c-7a9da07b6f13" involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="3136505b-fe1e-42f0-8a70-d1271b8f1ac1" involver="#e3dfe348-bcac-4e73-9b9d-3bf1aa031468"
-                involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
+                id="3136505b-fe1e-42f0-8a70-d1271b8f1ac1" involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="bbf58cb6-44d5-4f2a-92c3-47a3d9ba5779" name="MultiPart TC with usage ambiguity (through Ports)"
-              purposes="#6d10fe03-7e44-48a5-8509-f49091dfdbcc">
+              id="bbf58cb6-44d5-4f2a-92c3-47a3d9ba5779" name="MultiPart TC with usage ambiguity (through Ports)">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="d07df96a-8238-4328-8aeb-8d3cff51f744" name="MultiPart TC with usage ambiguity (through Ports)"
                 kind="INTERFACE">
@@ -3632,15 +3569,12 @@
                   operation="#c635f9a5-d2ee-41da-95d4-9e1a769b15ec"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="6e2b532e-e7f3-45af-9f6d-b3b98755912b" involver="#bbf58cb6-44d5-4f2a-92c3-47a3d9ba5779"
-                involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
+                id="6e2b532e-e7f3-45af-9f6d-b3b98755912b" involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="8f391e45-899c-4220-ac11-e1ef59d81a87" involver="#bbf58cb6-44d5-4f2a-92c3-47a3d9ba5779"
-                involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
+                id="8f391e45-899c-4220-ac11-e1ef59d81a87" involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="8d6083f1-44c8-4cac-af88-eea4311b4cc5" name="MultiPart TC with implementation ambiguity (through Ports)"
-              purposes="#0e55b1a7-d4d4-4ec8-a145-787f97a11f58">
+              id="8d6083f1-44c8-4cac-af88-eea4311b4cc5" name="MultiPart TC with implementation ambiguity (through Ports)">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="079ae06c-70a6-47fb-b925-23babf94492f" name="MultiPart TC with implementation ambiguity (through Ports)"
                 kind="INTERFACE">
@@ -3790,15 +3724,12 @@
                   operation="#a41f4cba-14cb-4c49-89b7-03ef2c0db45d"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="415f23e1-759b-4279-b06e-4c7ee402f031" involver="#8d6083f1-44c8-4cac-af88-eea4311b4cc5"
-                involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
+                id="415f23e1-759b-4279-b06e-4c7ee402f031" involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="42353608-c172-41f8-a42f-2a36dafee36c" involver="#8d6083f1-44c8-4cac-af88-eea4311b4cc5"
-                involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
+                id="42353608-c172-41f8-a42f-2a36dafee36c" involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="89547a24-27b9-4cde-93ac-52a80fda1ee3" name="MultiPart TC with both ambiguity (through Ports)"
-              purposes="#df7f4784-4cb8-4dd0-a7a2-54be78ac3511">
+              id="89547a24-27b9-4cde-93ac-52a80fda1ee3" name="MultiPart TC with both ambiguity (through Ports)">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="5b2f433a-fbf9-459d-a685-c8e18621812b" name="MultiPart TC with both ambiguity (through Ports)"
                 kind="INTERFACE">
@@ -3948,15 +3879,12 @@
                   operation="#c635f9a5-d2ee-41da-95d4-9e1a769b15ec"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="93021f50-1c22-4992-98a3-8937fa8d873a" involver="#89547a24-27b9-4cde-93ac-52a80fda1ee3"
-                involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
+                id="93021f50-1c22-4992-98a3-8937fa8d873a" involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="d106ffe9-2f01-4a85-916c-79549c20eb53" involver="#89547a24-27b9-4cde-93ac-52a80fda1ee3"
-                involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
+                id="d106ffe9-2f01-4a85-916c-79549c20eb53" involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-              id="810abaf4-2226-44be-8711-0f7566998e69" name="MultiPart TC with interface inheritance (through Ports)"
-              purposes="#fb9732e9-20aa-4981-92c8-eb2e17740fc4">
+              id="810abaf4-2226-44be-8711-0f7566998e69" name="MultiPart TC with interface inheritance (through Ports)">
             <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
                 id="b46dd387-dce6-42a0-bb6d-83a6b3e8b1b0" name="MultiPart TC with interface inheritance (through Ports)"
                 kind="INTERFACE">
@@ -4001,11 +3929,9 @@
                   operation="#0c216579-18e4-4d1c-b971-7347ca4c7c80"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="4147fe5e-84c7-4432-b848-b899f03ace86" involver="#810abaf4-2226-44be-8711-0f7566998e69"
-                involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
+                id="4147fe5e-84c7-4432-b848-b899f03ace86" involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="6a29762a-4131-4468-a2dd-31c28a63b818" involver="#810abaf4-2226-44be-8711-0f7566998e69"
-                involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
+                id="6a29762a-4131-4468-a2dd-31c28a63b818" involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
           </ownedCapabilities>
           <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
               id="d2449a44-5141-4370-b552-53a599036e01" name="MultiPart TC with reflexive message (through Ports)">
@@ -4254,11 +4180,9 @@
                   operation="#f2025248-eb63-4eeb-b0b2-51bdd1804538"/>
             </ownedScenarios>
             <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-                id="e8c4d0f9-556a-4393-8dfa-b1665f29f446" involver="#d2449a44-5141-4370-b552-53a599036e01"
-                involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
+                id="e8c4d0f9-556a-4393-8dfa-b1665f29f446" involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
             <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-                id="b0cdc359-b34e-45a1-adb3-71e5f0978761" involver="#d2449a44-5141-4370-b552-53a599036e01"
-                involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
+                id="b0cdc359-b34e-45a1-adb3-71e5f0978761" involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
           </ownedCapabilities>
         </ownedCapabilityPkgs>
       </ownedAbstractCapabilityPkg>
@@ -4572,11 +4496,9 @@
         <ownedMissions xsi:type="org.polarsys.capella.core.data.ctx:Mission" id="13b06bca-bb1d-4466-bb46-3d687cb23e4a"
             name="MultiPart TC Mission">
           <ownedActorMissionInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorMissionInvolvement"
-              id="5410c7e4-def3-4523-9cdd-0279979c1bbd" involver="#13b06bca-bb1d-4466-bb46-3d687cb23e4a"
-              involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
+              id="5410c7e4-def3-4523-9cdd-0279979c1bbd" involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
           <ownedSystemMissionInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemMissionInvolvement"
-              id="428ba81d-5a7e-4f3f-904f-fea414ca8ba1" involver="#13b06bca-bb1d-4466-bb46-3d687cb23e4a"
-              involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
+              id="428ba81d-5a7e-4f3f-904f-fea414ca8ba1" involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
           <ownedCapabilityExploitations xsi:type="org.polarsys.capella.core.data.ctx:CapabilityExploitation"
               id="b0ceec0c-5014-4556-9907-03365a1b73b6" capability="#3dd55bb3-0e7c-42bd-8182-85a526d40d56"/>
           <ownedCapabilityExploitations xsi:type="org.polarsys.capella.core.data.ctx:CapabilityExploitation"
@@ -4591,11 +4513,9 @@
         <ownedMissions xsi:type="org.polarsys.capella.core.data.ctx:Mission" id="3ab1b436-f4f2-403f-b93d-82e7a5cd2f79"
             name="MultiPart TC Mission (through Ports)">
           <ownedActorMissionInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorMissionInvolvement"
-              id="95b20fab-b8aa-4728-bb0e-5fd4fd0f6237" involver="#3ab1b436-f4f2-403f-b93d-82e7a5cd2f79"
-              involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
+              id="95b20fab-b8aa-4728-bb0e-5fd4fd0f6237" involved="#8ae369d5-aa75-4783-9502-610957d5d246"/>
           <ownedSystemMissionInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemMissionInvolvement"
-              id="04bd44d1-0278-4916-a14b-e4a0e517f8ca" involver="#3ab1b436-f4f2-403f-b93d-82e7a5cd2f79"
-              involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
+              id="04bd44d1-0278-4916-a14b-e4a0e517f8ca" involved="#21deaaf9-d3df-4526-af57-7089bfa8c08c"/>
           <ownedCapabilityExploitations xsi:type="org.polarsys.capella.core.data.ctx:CapabilityExploitation"
               id="b76e9b40-6b23-474f-a2b6-31a9cd15043c" capability="#e3dfe348-bcac-4e73-9b9d-3bf1aa031468"/>
           <ownedCapabilityExploitations xsi:type="org.polarsys.capella.core.data.ctx:CapabilityExploitation"
@@ -5075,14 +4995,11 @@
                 id="a2e395a4-a481-4eff-88cb-46f7427ed126" name=""/>
           </ownedScenarios>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="ce059f23-4f38-4d0c-9430-306b89bd5c27" involver="#9055aa75-ef39-410a-a5f9-b7cd559bf493"
-              involved="#02549eda-fd9c-41aa-9954-688cfea1c9fc"/>
+              id="ce059f23-4f38-4d0c-9430-306b89bd5c27" involved="#02549eda-fd9c-41aa-9954-688cfea1c9fc"/>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="9952206d-07ec-4de0-9597-bda33210c4b6" involver="#9055aa75-ef39-410a-a5f9-b7cd559bf493"
-              involved="#8c0e124f-5f9b-40f9-83e2-1a27685b34c2"/>
+              id="9952206d-07ec-4de0-9597-bda33210c4b6" involved="#8c0e124f-5f9b-40f9-83e2-1a27685b34c2"/>
           <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-              id="fa2ca0de-3ee4-412d-a856-f93c74f12b66" involver="#9055aa75-ef39-410a-a5f9-b7cd559bf493"
-              involved="#c1960271-7eac-4e8f-ad81-3734a51ca35e"/>
+              id="fa2ca0de-3ee4-412d-a856-f93c74f12b66" involved="#c1960271-7eac-4e8f-ad81-3734a51ca35e"/>
         </ownedCapabilities>
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
             id="3c23701f-448f-4bfb-bf79-6397abf7d0cb" name="Simple TC with Logical Decomposition and MultiPart">
@@ -5163,17 +5080,13 @@
                 operation="#60e0f42d-fdb0-4bc4-9c2b-3294955c97df"/>
           </ownedScenarios>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="da14df5b-5abb-4e46-8a9d-f21795f774ee" involver="#3c23701f-448f-4bfb-bf79-6397abf7d0cb"
-              involved="#02549eda-fd9c-41aa-9954-688cfea1c9fc"/>
+              id="da14df5b-5abb-4e46-8a9d-f21795f774ee" involved="#02549eda-fd9c-41aa-9954-688cfea1c9fc"/>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="a5445ff9-10fd-42d0-9d86-552e0c57a064" involver="#3c23701f-448f-4bfb-bf79-6397abf7d0cb"
-              involved="#8c0e124f-5f9b-40f9-83e2-1a27685b34c2"/>
+              id="a5445ff9-10fd-42d0-9d86-552e0c57a064" involved="#8c0e124f-5f9b-40f9-83e2-1a27685b34c2"/>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="0fa074f9-7c93-4c26-83b3-f2976aea8769" involver="#3c23701f-448f-4bfb-bf79-6397abf7d0cb"
-              involved="#b374ac33-a3da-47c8-82d6-9271d7de8e89"/>
+              id="0fa074f9-7c93-4c26-83b3-f2976aea8769" involved="#b374ac33-a3da-47c8-82d6-9271d7de8e89"/>
           <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-              id="eb25c04b-9dc5-4846-a894-828e50fd1ad6" involver="#3c23701f-448f-4bfb-bf79-6397abf7d0cb"
-              involved="#c1960271-7eac-4e8f-ad81-3734a51ca35e"/>
+              id="eb25c04b-9dc5-4846-a894-828e50fd1ad6" involved="#c1960271-7eac-4e8f-ad81-3734a51ca35e"/>
         </ownedCapabilities>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -5696,17 +5609,13 @@
                 operation="#ce5bf751-e6b5-42d8-b646-49ec34043100"/>
           </ownedScenarios>
           <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-              id="ee521b57-1b0c-4342-93ec-a5dee0086211" involver="#e95e484c-87fa-46e3-b93d-990c68d3aeb5"
-              involved="#9615d596-26f0-4d4d-9d6c-3320c970070b"/>
+              id="ee521b57-1b0c-4342-93ec-a5dee0086211" involved="#9615d596-26f0-4d4d-9d6c-3320c970070b"/>
           <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-              id="e2324f0d-3ef3-4258-93ec-135b0aaa6ebe" involver="#e95e484c-87fa-46e3-b93d-990c68d3aeb5"
-              involved="#919db109-b73d-496f-85d6-1a6980a7bba0"/>
+              id="e2324f0d-3ef3-4258-93ec-135b0aaa6ebe" involved="#919db109-b73d-496f-85d6-1a6980a7bba0"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="937a3009-0d84-4ebf-b913-d144abc6a2e0" involver="#e95e484c-87fa-46e3-b93d-990c68d3aeb5"
-              involved="#036751ee-4c10-4f69-b43b-ae1045792880"/>
+              id="937a3009-0d84-4ebf-b913-d144abc6a2e0" involved="#036751ee-4c10-4f69-b43b-ae1045792880"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="9e0ec636-0ebe-4c99-bf00-7a9f9c1885d3" involver="#e95e484c-87fa-46e3-b93d-990c68d3aeb5"
-              involved="#30de68a0-3d6e-4260-a7f3-093cb6a948bc"/>
+              id="9e0ec636-0ebe-4c99-bf00-7a9f9c1885d3" involved="#30de68a0-3d6e-4260-a7f3-093cb6a948bc"/>
         </ownedCapabilityRealizations>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -6105,8 +6014,7 @@
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="72d4026a-bd98-4408-9958-6d2caf84fdd6" name="Capabilities">
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-            id="05a8d566-ad03-4f6a-9069-6d224bba1506" name="Simple TC with component reuse"
-            purposes="#d6283d09-2f1e-4247-9571-6c3c8d61fa34">
+            id="05a8d566-ad03-4f6a-9069-6d224bba1506" name="Simple TC with component reuse">
           <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
               id="1147c760-50f8-40a8-a3f1-62b29f5459c1" name="Simple TC with component reuse"
               kind="INTERFACE">
@@ -6248,14 +6156,11 @@
                 operation="#59776c5f-0b7a-4d05-89b1-32298ecab790"/>
           </ownedScenarios>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="3d0bb873-dd40-4f55-a173-73bcfcadb8b3" involver="#05a8d566-ad03-4f6a-9069-6d224bba1506"
-              involved="#af79c664-5c86-4c14-81c7-837044fcf95d"/>
+              id="3d0bb873-dd40-4f55-a173-73bcfcadb8b3" involved="#af79c664-5c86-4c14-81c7-837044fcf95d"/>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="2a95a018-d774-4019-a7ad-472eaf735837" involver="#05a8d566-ad03-4f6a-9069-6d224bba1506"
-              involved="#52ce89da-1c74-404b-9a87-4889a9e61dfb"/>
+              id="2a95a018-d774-4019-a7ad-472eaf735837" involved="#52ce89da-1c74-404b-9a87-4889a9e61dfb"/>
           <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-              id="859f92e4-7bce-4863-a2b7-ef0265b91926" involver="#05a8d566-ad03-4f6a-9069-6d224bba1506"
-              involved="#759893ff-27bf-4533-bba0-fc018ecb69e1"/>
+              id="859f92e4-7bce-4863-a2b7-ef0265b91926" involved="#759893ff-27bf-4533-bba0-fc018ecb69e1"/>
         </ownedCapabilities>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -6416,14 +6321,11 @@
         <ownedMissions xsi:type="org.polarsys.capella.core.data.ctx:Mission" id="12cbf63f-f974-474a-a7ee-b5ade57fbc23"
             name="Mission 1">
           <ownedActorMissionInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorMissionInvolvement"
-              id="c64028fb-93f4-4ea6-aebc-931f1a9e0bef" involver="#12cbf63f-f974-474a-a7ee-b5ade57fbc23"
-              involved="#52ce89da-1c74-404b-9a87-4889a9e61dfb"/>
+              id="c64028fb-93f4-4ea6-aebc-931f1a9e0bef" involved="#52ce89da-1c74-404b-9a87-4889a9e61dfb"/>
           <ownedActorMissionInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorMissionInvolvement"
-              id="89ba2565-14f3-4db2-b2cd-acef651e0f62" involver="#12cbf63f-f974-474a-a7ee-b5ade57fbc23"
-              involved="#af79c664-5c86-4c14-81c7-837044fcf95d"/>
+              id="89ba2565-14f3-4db2-b2cd-acef651e0f62" involved="#af79c664-5c86-4c14-81c7-837044fcf95d"/>
           <ownedSystemMissionInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemMissionInvolvement"
-              id="aefbcb6d-5820-4c02-97de-d053e054a483" involver="#12cbf63f-f974-474a-a7ee-b5ade57fbc23"
-              involved="#759893ff-27bf-4533-bba0-fc018ecb69e1"/>
+              id="aefbcb6d-5820-4c02-97de-d053e054a483" involved="#759893ff-27bf-4533-bba0-fc018ecb69e1"/>
           <ownedCapabilityExploitations xsi:type="org.polarsys.capella.core.data.ctx:CapabilityExploitation"
               id="d6283d09-2f1e-4247-9571-6c3c8d61fa34" capability="#05a8d566-ad03-4f6a-9069-6d224bba1506"/>
         </ownedMissions>
@@ -6733,17 +6635,13 @@
                 operation="#ea2a62c7-950e-41a0-b9f3-690a56519b9f"/>
           </ownedScenarios>
           <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-              id="b1e2f4ab-aff4-4ad7-ba8e-74772e166d54" involver="#0ffd592b-be3e-4593-96b3-226373cd216d"
-              involved="#502c4f99-0d67-4bd7-ad58-ed0e1a03732b"/>
+              id="b1e2f4ab-aff4-4ad7-ba8e-74772e166d54" involved="#502c4f99-0d67-4bd7-ad58-ed0e1a03732b"/>
           <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-              id="7fad08c5-d816-40a1-96cd-4a2677ae11bc" involver="#0ffd592b-be3e-4593-96b3-226373cd216d"
-              involved="#7fa187b6-b0d3-496c-b190-31359ba3bc4b"/>
+              id="7fad08c5-d816-40a1-96cd-4a2677ae11bc" involved="#7fa187b6-b0d3-496c-b190-31359ba3bc4b"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="ccf21fce-761a-4ef0-b0e8-bcc18b43ef4b" involver="#0ffd592b-be3e-4593-96b3-226373cd216d"
-              involved="#2f152355-ad38-4ac1-a8b8-6f580df787ee"/>
+              id="ccf21fce-761a-4ef0-b0e8-bcc18b43ef4b" involved="#2f152355-ad38-4ac1-a8b8-6f580df787ee"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="2af6457e-ed99-4f84-af2c-bafc4377d50f" involver="#0ffd592b-be3e-4593-96b3-226373cd216d"
-              involved="#e81f4e76-9606-4cab-9c11-6c323de7071e"/>
+              id="2af6457e-ed99-4f84-af2c-bafc4377d50f" involved="#e81f4e76-9606-4cab-9c11-6c323de7071e"/>
         </ownedCapabilityRealizations>
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
             id="df91afee-b187-4e45-8b12-c2839d1d2b6e" name="regression">
@@ -6811,11 +6709,9 @@
                 id="1ae415bf-fe18-46a1-905a-802c75e938c8" name=""/>
           </ownedScenarios>
           <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-              id="97631479-03b9-4754-81cf-ebcda8c64b09" involver="#df91afee-b187-4e45-8b12-c2839d1d2b6e"
-              involved="#502c4f99-0d67-4bd7-ad58-ed0e1a03732b"/>
+              id="97631479-03b9-4754-81cf-ebcda8c64b09" involved="#502c4f99-0d67-4bd7-ad58-ed0e1a03732b"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="7b8e9cb2-343b-4145-8cf1-9f93482508e9" involver="#df91afee-b187-4e45-8b12-c2839d1d2b6e"
-              involved="#a3c26c21-cb9c-4e9c-b102-b828c1131d8d"/>
+              id="7b8e9cb2-343b-4145-8cf1-9f93482508e9" involved="#a3c26c21-cb9c-4e9c-b102-b828c1131d8d"/>
         </ownedCapabilityRealizations>
       </ownedAbstractCapabilityPkg>
       <ownedLogicalContext xsi:type="org.polarsys.capella.core.data.la:LogicalContext"
@@ -7086,17 +6982,13 @@
                     operation="#93bb9577-1578-4149-90eb-ff8c5b194bc0"/>
               </ownedScenarios>
               <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-                  id="2808bb25-eec1-4bd1-aa48-8697c946737a" involver="#088b4f02-f2d8-4028-9e2b-b04703708126"
-                  involved="#502c4f99-0d67-4bd7-ad58-ed0e1a03732b"/>
+                  id="2808bb25-eec1-4bd1-aa48-8697c946737a" involved="#502c4f99-0d67-4bd7-ad58-ed0e1a03732b"/>
               <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-                  id="7744b087-3c4c-4d3a-9219-8f7a1740c29a" involver="#088b4f02-f2d8-4028-9e2b-b04703708126"
-                  involved="#7fa187b6-b0d3-496c-b190-31359ba3bc4b"/>
+                  id="7744b087-3c4c-4d3a-9219-8f7a1740c29a" involved="#7fa187b6-b0d3-496c-b190-31359ba3bc4b"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="1a9f4230-0fd6-4f71-b0bd-5b677b6529a9" involver="#088b4f02-f2d8-4028-9e2b-b04703708126"
-                  involved="#e81f4e76-9606-4cab-9c11-6c323de7071e"/>
+                  id="1a9f4230-0fd6-4f71-b0bd-5b677b6529a9" involved="#e81f4e76-9606-4cab-9c11-6c323de7071e"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="c2f32f10-1d86-44b0-91b8-10c4db7a0c6a" involver="#088b4f02-f2d8-4028-9e2b-b04703708126"
-                  involved="#003f713b-30d6-43b3-aa0d-6b1993d38ef0"/>
+                  id="c2f32f10-1d86-44b0-91b8-10c4db7a0c6a" involved="#003f713b-30d6-43b3-aa0d-6b1993d38ef0"/>
             </ownedCapabilityRealizations>
           </ownedAbstractCapabilityPkg>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="421ff9d8-d9fb-42f7-8eb5-16d3e4c1e2ab"
@@ -7295,11 +7187,9 @@
                     id="99849cc5-28b8-4723-b9a6-497ca1d8bf33" name=""/>
               </ownedScenarios>
               <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-                  id="01740c32-5011-4066-8268-3afca7024c8b" involver="#62114d4e-6317-4953-ad76-d05a540de21f"
-                  involved="#502c4f99-0d67-4bd7-ad58-ed0e1a03732b"/>
+                  id="01740c32-5011-4066-8268-3afca7024c8b" involved="#502c4f99-0d67-4bd7-ad58-ed0e1a03732b"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="1d67d0b7-2c45-4969-bc25-d54a623cd67c" involver="#62114d4e-6317-4953-ad76-d05a540de21f"
-                  involved="#5aee75ba-8de2-4cc9-8294-156155632fb6"/>
+                  id="1d67d0b7-2c45-4969-bc25-d54a623cd67c" involved="#5aee75ba-8de2-4cc9-8294-156155632fb6"/>
             </ownedCapabilityRealizations>
           </ownedAbstractCapabilityPkg>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="557a0101-f0f9-48ca-8fb6-2cad0f54c37a"
@@ -7905,16 +7795,13 @@
                 id="205e272b-2a28-4771-a732-9a5dd8870eb7" name=""/>
           </ownedScenarios>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="640e968e-569d-4a5a-bbee-7ca81bb1a8b7" involver="#325dfe57-95e1-473b-8cc3-d327a9e0c2d1"
-              involved="#1a5b9473-cc8a-47d0-a29b-8e078e3011db"/>
+              id="640e968e-569d-4a5a-bbee-7ca81bb1a8b7" involved="#1a5b9473-cc8a-47d0-a29b-8e078e3011db"/>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
               id="39b69e75-68c1-48c1-b113-e426e313c093" involved="#981b2e3f-a634-4c3b-af78-2c35a1c33484"/>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="59729da9-68ff-4fe0-9b87-271976ecac87" involver="#325dfe57-95e1-473b-8cc3-d327a9e0c2d1"
-              involved="#981b2e3f-a634-4c3b-af78-2c35a1c33484"/>
+              id="59729da9-68ff-4fe0-9b87-271976ecac87" involved="#981b2e3f-a634-4c3b-af78-2c35a1c33484"/>
           <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-              id="ffd8da1d-da19-46c8-913f-a5ad62ec313f" involver="#325dfe57-95e1-473b-8cc3-d327a9e0c2d1"
-              involved="#c74fb3d1-3caf-4b1c-b49a-852fb0c8ae95"/>
+              id="ffd8da1d-da19-46c8-913f-a5ad62ec313f" involved="#c74fb3d1-3caf-4b1c-b49a-852fb0c8ae95"/>
         </ownedCapabilities>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -8539,11 +8426,9 @@
                 id="4e8e234c-ef8c-43e8-9a65-4344af95f057" name=""/>
           </ownedScenarios>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="b4877b99-9fd9-4458-93bb-f38600135e55" involver="#c5afe29d-2ca6-4ad3-896c-b69082345e16"
-              involved="#b5c70aac-6a94-40f4-95f6-399d2a3baf42"/>
+              id="b4877b99-9fd9-4458-93bb-f38600135e55" involved="#b5c70aac-6a94-40f4-95f6-399d2a3baf42"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="a0441cbb-0b7e-425c-9d1b-9c85b3c5d3d5" involver="#c5afe29d-2ca6-4ad3-896c-b69082345e16"
-              involved="#c85712ed-009b-4cdf-ae24-103c9a575d45"/>
+              id="a0441cbb-0b7e-425c-9d1b-9c85b3c5d3d5" involved="#c85712ed-009b-4cdf-ae24-103c9a575d45"/>
         </ownedCapabilityRealizations>
       </ownedAbstractCapabilityPkg>
       <ownedLogicalContext xsi:type="org.polarsys.capella.core.data.la:LogicalContext"
@@ -9276,14 +9161,11 @@
                 id="24c95c9a-4a97-4cc1-a9fd-c54296b531b1" name=""/>
           </ownedScenarios>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="6507e1d4-388e-463c-b006-1828efcb113d" involver="#5ec4a16e-0757-41c7-8d37-b90a9dda4f11"
-              involved="#340b0e52-635b-4992-8809-55bcf7ea27fe"/>
+              id="6507e1d4-388e-463c-b006-1828efcb113d" involved="#340b0e52-635b-4992-8809-55bcf7ea27fe"/>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="f06d6d27-61fa-4044-b621-f0990520059d" involver="#5ec4a16e-0757-41c7-8d37-b90a9dda4f11"
-              involved="#4a6c3fe9-ab3c-48f9-913e-8165cc0b3e4a"/>
+              id="f06d6d27-61fa-4044-b621-f0990520059d" involved="#4a6c3fe9-ab3c-48f9-913e-8165cc0b3e4a"/>
           <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-              id="9ba5a437-9b52-4467-aa65-08d90148f90d" involver="#5ec4a16e-0757-41c7-8d37-b90a9dda4f11"
-              involved="#81804a35-1898-45b5-b5c7-8bcd70c7b30b"/>
+              id="9ba5a437-9b52-4467-aa65-08d90148f90d" involved="#81804a35-1898-45b5-b5c7-8bcd70c7b30b"/>
         </ownedCapabilities>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -9689,20 +9571,15 @@
                 id="478c3c1c-2b51-4a0d-b5cc-341fa72ea689" name=""/>
           </ownedScenarios>
           <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-              id="4cd298e1-6a28-4e11-9160-37647dbba761" involver="#40508119-e7a4-4902-8934-67dad7ac86b1"
-              involved="#a16ed02f-bbfe-4f8b-bb4d-28e027df513d"/>
+              id="4cd298e1-6a28-4e11-9160-37647dbba761" involved="#a16ed02f-bbfe-4f8b-bb4d-28e027df513d"/>
           <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-              id="25356db8-8d85-4724-a3c8-ce2f5ac7094e" involver="#40508119-e7a4-4902-8934-67dad7ac86b1"
-              involved="#ab527430-d353-4cf0-ab10-fb2fe3246de7"/>
+              id="25356db8-8d85-4724-a3c8-ce2f5ac7094e" involved="#ab527430-d353-4cf0-ab10-fb2fe3246de7"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="7464bc11-9496-4094-b2c5-9abbf9a549cf" involver="#40508119-e7a4-4902-8934-67dad7ac86b1"
-              involved="#545a81a8-376d-4e89-8c67-8123fb53c459"/>
+              id="7464bc11-9496-4094-b2c5-9abbf9a549cf" involved="#545a81a8-376d-4e89-8c67-8123fb53c459"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="9fd7e627-dce0-4a9d-9ce9-1253e40f0365" involver="#40508119-e7a4-4902-8934-67dad7ac86b1"
-              involved="#ab19b15f-deaf-416f-833f-98a9c62ef7a5"/>
+              id="9fd7e627-dce0-4a9d-9ce9-1253e40f0365" involved="#ab19b15f-deaf-416f-833f-98a9c62ef7a5"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="8da2f69e-feb6-41b3-92bd-124ecb0255bd" involver="#40508119-e7a4-4902-8934-67dad7ac86b1"
-              involved="#a62d3e5a-a899-4a84-91c9-d9e3865182b3"/>
+              id="8da2f69e-feb6-41b3-92bd-124ecb0255bd" involved="#a62d3e5a-a899-4a84-91c9-d9e3865182b3"/>
         </ownedCapabilityRealizations>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -10072,20 +9949,15 @@
                     id="0ff2e280-9d8e-48e9-9393-b5b62aa38e3e" name=""/>
               </ownedScenarios>
               <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
-                  id="021a18fc-c938-45f9-adc1-60c975bb8fcd" involver="#a88fc1b6-357a-468a-9746-5cdb30dca231"
-                  involved="#a16ed02f-bbfe-4f8b-bb4d-28e027df513d"/>
+                  id="021a18fc-c938-45f9-adc1-60c975bb8fcd" involved="#a16ed02f-bbfe-4f8b-bb4d-28e027df513d"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="70c2b382-611a-44e3-876b-87096cef8574" involver="#a88fc1b6-357a-468a-9746-5cdb30dca231"
-                  involved="#e925d85c-2cf4-4be5-90a1-a61069b847f9"/>
+                  id="70c2b382-611a-44e3-876b-87096cef8574" involved="#e925d85c-2cf4-4be5-90a1-a61069b847f9"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="dba0c7e9-8866-4a1f-b477-8def6c161b36" involver="#a88fc1b6-357a-468a-9746-5cdb30dca231"
-                  involved="#6559807e-b303-45c5-9fbc-ff44657fe0c9"/>
+                  id="dba0c7e9-8866-4a1f-b477-8def6c161b36" involved="#6559807e-b303-45c5-9fbc-ff44657fe0c9"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="eedf085d-636d-4214-8139-bc3c7ce2413b" involver="#a88fc1b6-357a-468a-9746-5cdb30dca231"
-                  involved="#a62d3e5a-a899-4a84-91c9-d9e3865182b3"/>
+                  id="eedf085d-636d-4214-8139-bc3c7ce2413b" involved="#a62d3e5a-a899-4a84-91c9-d9e3865182b3"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="733b7b38-4e13-45aa-a39b-982786a9f2f6" involver="#a88fc1b6-357a-468a-9746-5cdb30dca231"
-                  involved="#ab19b15f-deaf-416f-833f-98a9c62ef7a5"/>
+                  id="733b7b38-4e13-45aa-a39b-982786a9f2f6" involved="#ab19b15f-deaf-416f-833f-98a9c62ef7a5"/>
             </ownedCapabilityRealizations>
           </ownedAbstractCapabilityPkg>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
@@ -10371,11 +10243,9 @@
                 id="30be0fb6-901a-402d-b661-f1a9d95de68b" name=""/>
           </ownedScenarios>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="11d16947-b024-4d9a-af1a-c35fb7dd3f5d" involver="#0b871388-aba1-480c-bf73-0322cb9d3991"
-              involved="#564b124f-d6fe-4545-ab3a-b4ad99a38608"/>
+              id="11d16947-b024-4d9a-af1a-c35fb7dd3f5d" involved="#564b124f-d6fe-4545-ab3a-b4ad99a38608"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-              id="e0e0571b-560f-4ea7-b28e-441055486900" involver="#0b871388-aba1-480c-bf73-0322cb9d3991"
-              involved="#a554c09f-1689-4009-bb18-119f12643aeb"/>
+              id="e0e0571b-560f-4ea7-b28e-441055486900" involved="#a554c09f-1689-4009-bb18-119f12643aeb"/>
         </ownedCapabilityRealizations>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -10525,11 +10395,9 @@
                     id="72a739f2-fd3d-42f7-b944-c53c265d282a" name=""/>
               </ownedScenarios>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="9ea32447-c795-42b6-a8f3-a373a6633edd" involver="#c6341bf3-a13c-4173-9ccb-1c42f9a24378"
-                  involved="#a97801c7-660b-4bab-ab26-cf4b3092e5cb"/>
+                  id="9ea32447-c795-42b6-a8f3-a373a6633edd" involved="#a97801c7-660b-4bab-ab26-cf4b3092e5cb"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="c4d7e9b4-0447-458d-ad5a-3520fb2a7c29" involver="#c6341bf3-a13c-4173-9ccb-1c42f9a24378"
-                  involved="#a554c09f-1689-4009-bb18-119f12643aeb"/>
+                  id="c4d7e9b4-0447-458d-ad5a-3520fb2a7c29" involved="#a554c09f-1689-4009-bb18-119f12643aeb"/>
             </ownedCapabilityRealizations>
           </ownedAbstractCapabilityPkg>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="e0afbbec-ae2d-4753-ae28-a666f45b2035"
@@ -10621,11 +10489,9 @@
                     id="5dcbc947-b009-4314-83e5-692dbcf40e3b" name=""/>
               </ownedScenarios>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="93a82a5e-24be-48d8-87a1-120ba91f8851" involver="#99510d7c-732d-4533-962e-a6513644371c"
-                  involved="#564b124f-d6fe-4545-ab3a-b4ad99a38608"/>
+                  id="93a82a5e-24be-48d8-87a1-120ba91f8851" involved="#564b124f-d6fe-4545-ab3a-b4ad99a38608"/>
               <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
-                  id="2d32ade1-9d72-480f-adf3-539ca5aa03c8" involver="#99510d7c-732d-4533-962e-a6513644371c"
-                  involved="#62ef68d8-fa47-49c0-940a-178b06057efb"/>
+                  id="2d32ade1-9d72-480f-adf3-539ca5aa03c8" involved="#62ef68d8-fa47-49c0-940a-178b06057efb"/>
             </ownedCapabilityRealizations>
           </ownedAbstractCapabilityPkg>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="88970f76-a1b8-4a35-b743-ea402cd27488"
@@ -10900,11 +10766,9 @@
                 id="2b02c8ae-4193-4631-9097-3a6425c4f56b" name=""/>
           </ownedScenarios>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
-              id="f64e5741-55f7-4a54-ac01-c2acda8f23de" involver="#26c02351-5e20-4eac-8839-0cd0fe2c95d6"
-              involved="#ac275459-e0af-43f4-9b6f-320ef2e3bbd0"/>
+              id="f64e5741-55f7-4a54-ac01-c2acda8f23de" involved="#ac275459-e0af-43f4-9b6f-320ef2e3bbd0"/>
           <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
-              id="b1f9213a-3d68-4b9e-aa9f-ea19d843d51e" involver="#26c02351-5e20-4eac-8839-0cd0fe2c95d6"
-              involved="#167e24c8-6155-46ce-83b3-42598380702d"/>
+              id="b1f9213a-3d68-4b9e-aa9f-ea19d843d51e" involved="#167e24c8-6155-46ce-83b3-42598380702d"/>
         </ownedCapabilities>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.1.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.1.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_CHbsELiYEeaEl8pe_NNa6A" selectedViews="_CJT7YLiYEeaEl8pe_NNa6A _CXrukLiYEeaEl8pe_NNa6A _CX4i4LiYEeaEl8pe_NNa6A _CX_QkLiYEeaEl8pe_NNa6A _CYTZoLiYEeaEl8pe_NNa6A _CYXrELiYEeaEl8pe_NNa6A _CYlGcLiYEeaEl8pe_NNa6A" version="11.1.0.201608251200">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.2.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.2.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.2.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_CHbsELiYEeaEl8pe_NNa6A" selectedViews="_CJT7YLiYEeaEl8pe_NNa6A _CXrukLiYEeaEl8pe_NNa6A _CX4i4LiYEeaEl8pe_NNa6A _CX_QkLiYEeaEl8pe_NNa6A _CYTZoLiYEeaEl8pe_NNa6A _CYXrELiYEeaEl8pe_NNa6A _CYlGcLiYEeaEl8pe_NNa6A" version="12.1.0.201708031200">
     <semanticResources>ShowTriggerSourceFunctionFilter.afm</semanticResources>
     <semanticResources>ShowTriggerSourceFunctionFilter.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_CJT7YLiYEeaEl8pe_NNa6A">
@@ -8,7 +8,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_CXrukLiYEeaEl8pe_NNa6A">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_EqZYELiYEeaEl8pe_NNa6A" name="[SDFB] Root System Function" representation="_EqbNQLiYEeaEl8pe_NNa6A">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_EqZYELiYEeaEl8pe_NNa6A" name="[SDFB] Root System Function" repPath="#_8R2NoJFwEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="ShowTriggerSourceFunctionFilter.melodymodeller#4c0e2f71-3fc1-48f4-8c8a-7a872344f596"/>
       </ownedRepresentationDescriptors>
@@ -18,7 +18,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_CX_QkLiYEeaEl8pe_NNa6A">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_IRCuoLiYEeaEl8pe_NNa6A" name="[MSM] Default Region" representation="_IRCuobiYEeaEl8pe_NNa6A">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_IRCuoLiYEeaEl8pe_NNa6A" name="[MSM] Default Region" repPath="#_8R_-oJFwEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']"/>
         <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="ShowTriggerSourceFunctionFilter.melodymodeller#56405be6-4632-4b9d-8676-a505d72fb1bd"/>
       </ownedRepresentationDescriptors>
@@ -33,7 +33,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_EqbNQLiYEeaEl8pe_NNa6A" name="[SDFB] Root System Function">
+  <diagram:DSemanticDiagram xmi:id="_EqbNQLiYEeaEl8pe_NNa6A" name="[SDFB] Root System Function" uid="_8R2NoJFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_EqbNQbiYEeaEl8pe_NNa6A" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_EqbNQriYEeaEl8pe_NNa6A"/>
     </ownedAnnotationEntries>
@@ -92,7 +92,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_FgmnUbiYEeaEl8pe_NNa6A"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_FgmnUriYEeaEl8pe_NNa6A" fontColor="3038217" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_FgmnU7iYEeaEl8pe_NNa6A" points="[430, 323, 430, 323]$[688, 323, 688, 323]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_FgmnU7iYEeaEl8pe_NNa6A" points="[5, 0, -253, 0]$[253, 0, -5, 0]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Fgq4wLiYEeaEl8pe_NNa6A" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Fgq4wbiYEeaEl8pe_NNa6A" id="(0.5,0.5)"/>
         </edges>
@@ -153,7 +153,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="ShowTriggerSourceFunctionFilter.melodymodeller#4c0e2f71-3fc1-48f4-8c8a-7a872344f596"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_IRCuobiYEeaEl8pe_NNa6A" name="[MSM] Default Region">
+  <diagram:DSemanticDiagram xmi:id="_IRCuobiYEeaEl8pe_NNa6A" name="[MSM] Default Region" uid="_8R_-oJFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_IRCuoriYEeaEl8pe_NNa6A" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_IRCuo7iYEeaEl8pe_NNa6A"/>
     </ownedAnnotationEntries>

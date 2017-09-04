@@ -22,7 +22,7 @@ public class CommandLineFolderMigrationTest extends CommandLineMigrationTest {
   public void test() throws Exception { 
     File superLibFolder = getFolderInTestModelRepository("sysmodelLibrary_Super");
     File subLibFolder = getFolderInTestModelRepository("sysmodelLibrary_Sub");
-    File sysmodelFolder = getFolderInTestModelRepository("sysmodel");
+    File sysmodelFolder = getFolderInTestModelRepository("sysmodelProject");
     
     // Simulated migration command line with multiple projects
     String[] validationCommandLineArguments = {
@@ -35,7 +35,7 @@ public class CommandLineFolderMigrationTest extends CommandLineMigrationTest {
     MigrationCommandLine migrationCmdLine = new MigrationCommandLine();
     launchApplication(mockApplicationContext, migrationCmdLine);
     
-    openSession("sysmodel");
+    openSession("sysmodelProject");
     openSession("sysmodelLibrary_Sub");
     openSession("sysmodelLibrary_Super");
   }

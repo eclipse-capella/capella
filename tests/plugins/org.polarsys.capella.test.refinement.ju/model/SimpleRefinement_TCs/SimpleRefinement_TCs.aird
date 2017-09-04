@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.1.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.1.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.1.0" xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/1.1.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.1.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/communication/1.1.0 http://www.polarsys.org/capella/core/information/1.1.0#//communication http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_lG4pkK97Ed-lwtqlLIworw" selectedViews="_lJkxMK97Ed-lwtqlLIworw _lJ3sIK97Ed-lwtqlLIworw _lP1KMK97Ed-lwtqlLIworw _lQbAEK97Ed-lwtqlLIworw _lReI8K97Ed-lwtqlLIworw _lSgqwK97Ed-lwtqlLIworw _UPrcELCrEeKR0an6CER6Bg" version="11.1.0.201608251200">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.2.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.2.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.2.0" xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/1.2.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.2.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.2.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/communication/1.2.0 http://www.polarsys.org/capella/core/information/1.2.0#//communication http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_lG4pkK97Ed-lwtqlLIworw" selectedViews="_lJkxMK97Ed-lwtqlLIworw _lJ3sIK97Ed-lwtqlLIworw _lP1KMK97Ed-lwtqlLIworw _lQbAEK97Ed-lwtqlLIworw _lReI8K97Ed-lwtqlLIworw _lSgqwK97Ed-lwtqlLIworw _UPrcELCrEeKR0an6CER6Bg" version="12.1.0.201708031200">
     <semanticResources>SimpleRefinement_TCs.melodymodeller</semanticResources>
     <semanticResources>SimpleRefinement_TCs.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_lJkxMK97Ed-lwtqlLIworw">
@@ -8,39 +8,39 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_lJ3sIK97Ed-lwtqlLIworw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1FfoHnFEea0Df0HniJfuA" name="[CEI] System - Contextual Component External Interfaces" representation="_imXFwBjzEeC0L4F5kaco_A">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1FfoHnFEea0Df0HniJfuA" name="[CEI] System - Contextual Component External Interfaces" repPath="#_-VKJMJFwEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="SimpleRefinement_TCs.melodymodeller#c74fb3d1-3caf-4b1c-b49a-852fb0c8ae95"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1FfoXnFEea0Df0HniJfuA" name="[CIS] Simple Communication Mechanisms TC1" representation="_iWDjABluEeC8lPJHPQfb7g">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1FfoXnFEea0Df0HniJfuA" name="[CIS] Simple Communication Mechanisms TC1" repPath="#_-Vv_EJFwEeemoaFOWaTTWw">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="SimpleRefinement_TCs.melodymodeller#254d0f73-11da-4624-8817-9b9d2513e8a0"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1FfonnFEea0Df0HniJfuA" name="[CEI] LC 1 - Contextual Component External Interfaces" representation="_DIGVYBlyEeC8lPJHPQfb7g">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1FfonnFEea0Df0HniJfuA" name="[CEI] LC 1 - Contextual Component External Interfaces" repPath="#_-WMrAJFwEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="SimpleRefinement_TCs.melodymodeller#b5c70aac-6a94-40f4-95f6-399d2a3baf42"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1Ffo3nFEea0Df0HniJfuA" name="[CIS] Simple Communication Mechanisms TC2" representation="_2fAeYBmnEeCjEOIrD1ZvPQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1Ffo3nFEea0Df0HniJfuA" name="[CIS] Simple Communication Mechanisms TC2" repPath="#_-Wfl8JFwEeemoaFOWaTTWw">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="SimpleRefinement_TCs.melodymodeller#380b7049-6295-4929-976e-9d2f6b489565"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1FfpHnFEea0Df0HniJfuA" name="[CEI] LC 2 - Contextual Component External Interfaces" representation="_wqyLEBmpEeCjEOIrD1ZvPQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1FfpHnFEea0Df0HniJfuA" name="[CEI] LC 2 - Contextual Component External Interfaces" repPath="#_-WzH8JFwEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="SimpleRefinement_TCs.melodymodeller#c85712ed-009b-4cdf-ae24-103c9a575d45"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1FfpXnFEea0Df0HniJfuA" name="[CIS] Simple Communication Mechanisms TC1 - Component Interfaces Scenario" representation="_zNgCoBmtEeCjEOIrD1ZvPQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1FfpXnFEea0Df0HniJfuA" name="[CIS] Simple Communication Mechanisms TC1 - Component Interfaces Scenario" repPath="#_-XPM0JFwEeemoaFOWaTTWw">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="SimpleRefinement_TCs.melodymodeller#a5328de1-95d5-4fc2-a5c3-75a3055cd9c4"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1FfpnnFEea0Df0HniJfuA" name="[CIS] Simple Communication Mechanisms TC2 - Component Interfaces Scenario" representation="_-OGCQBmtEeCjEOIrD1ZvPQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1FfpnnFEea0Df0HniJfuA" name="[CIS] Simple Communication Mechanisms TC2 - Component Interfaces Scenario" repPath="#_-Xr4wJFwEeemoaFOWaTTWw">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="SimpleRefinement_TCs.melodymodeller#2db879e6-8659-41fd-a997-5976a6de0a3d"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1Ffp3nFEea0Df0HniJfuA" name="[CEI] LC 1.1 - Contextual Component External Interfaces" representation="_loskYBmuEeCjEOIrD1ZvPQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1Ffp3nFEea0Df0HniJfuA" name="[CEI] LC 1.1 - Contextual Component External Interfaces" repPath="#_-X_awJFwEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="SimpleRefinement_TCs.melodymodeller#82f43619-96e6-47bd-9186-7b3a628cf5a6"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1FfqHnFEea0Df0HniJfuA" name="[CEI] LC 2.2 - Contextual Component External Interfaces" representation="_x6Y_gBmuEeCjEOIrD1ZvPQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="__1FfqHnFEea0Df0HniJfuA" name="[CEI] LC 2.2 - Contextual Component External Interfaces" repPath="#_-YSVsJFwEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="SimpleRefinement_TCs.melodymodeller#544e47ef-7acb-4a9d-8a16-30669c59aac5"/>
       </ownedRepresentationDescriptors>
@@ -61,7 +61,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_imXFwBjzEeC0L4F5kaco_A" name="[CEI] System - Contextual Component External Interfaces">
+  <diagram:DSemanticDiagram xmi:id="_imXFwBjzEeC0L4F5kaco_A" name="[CEI] System - Contextual Component External Interfaces" uid="_-VKJMJFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_imXFwhjzEeC0L4F5kaco_A" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_imXFwxjzEeC0L4F5kaco_A" type="Sirius" element="_imXFwBjzEeC0L4F5kaco_A" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_iqh0EBjzEeC0L4F5kaco_A" type="2001" element="_imqAshjzEeC0L4F5kaco_A">
@@ -644,7 +644,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JItpJZtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JItpJptQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JItpJ5tQEeC1bu5ubiTeKA" points="[0, 0, 0, 0]$[252, 432, 252, 432]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JItpJ5tQEeC1bu5ubiTeKA" points="[7, 18, -175, -422]$[171, 415, -11, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JItpLptQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JItpL5tQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -660,7 +660,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JItpMZtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JItpMptQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JItpM5tQEeC1bu5ubiTeKA" points="[0, 0, 0, 0]$[60, 24, 60, 24]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JItpM5tQEeC1bu5ubiTeKA" points="[20, 7, -70, -25]$[40, 14, -50, -18]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JItpOptQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JItpO5tQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -676,7 +676,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JItpPZtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JItpPptQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JItpP5tQEeC1bu5ubiTeKA" points="[0, 0, 0, 0]$[60, 24, 60, 24]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JItpP5tQEeC1bu5ubiTeKA" points="[20, 7, -70, -25]$[40, 14, -50, -18]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JI3aAJtQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JI3aAZtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -1135,7 +1135,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="SimpleRefinement_TCs.melodymodeller#c74fb3d1-3caf-4b1c-b49a-852fb0c8ae95"/>
   </diagram:DSemanticDiagram>
-  <sequence:SequenceDDiagram xmi:id="_iWDjABluEeC8lPJHPQfb7g" name="[CIS] Simple Communication Mechanisms TC1">
+  <sequence:SequenceDDiagram xmi:id="_iWDjABluEeC8lPJHPQfb7g" name="[CIS] Simple Communication Mechanisms TC1" uid="_-Vv_EJFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_iWgO8BluEeC8lPJHPQfb7g" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_iWgO8RluEeC8lPJHPQfb7g" type="Sirius" element="_iWDjABluEeC8lPJHPQfb7g" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_idzw0BluEeC8lPJHPQfb7g" type="2001" element="_ADPQYHnGEea0Df0HniJfuA">
@@ -2085,7 +2085,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="SimpleRefinement_TCs.melodymodeller#254d0f73-11da-4624-8817-9b9d2513e8a0"/>
   </sequence:SequenceDDiagram>
-  <diagram:DSemanticDiagram xmi:id="_DIGVYBlyEeC8lPJHPQfb7g" name="[CEI] LC 1 - Contextual Component External Interfaces">
+  <diagram:DSemanticDiagram xmi:id="_DIGVYBlyEeC8lPJHPQfb7g" name="[CEI] LC 1 - Contextual Component External Interfaces" uid="_-WMrAJFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_DIGVYhlyEeC8lPJHPQfb7g" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_DIGVYxlyEeC8lPJHPQfb7g" type="Sirius" element="_DIGVYBlyEeC8lPJHPQfb7g" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_DMaNoBlyEeC8lPJHPQfb7g" type="2001" element="_DIZQUBlyEeC8lPJHPQfb7g">
@@ -2271,7 +2271,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKDs3JtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKDs3ZtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKDs3ptQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[444, 168, 444, 168]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKDs3ptQEeC1bu5ubiTeKA" points="[1, 1, -284, -185]$[265, 172, -20, -14]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKDs5ZtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKDs5ptQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -2287,7 +2287,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKDs6JtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKDs6ZtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKDs6ptQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[444, 168, 444, 168]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKDs6ptQEeC1bu5ubiTeKA" points="[2, 1, -463, -185]$[445, 178, -20, -8]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKDs8ZtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKDs8ptQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -2303,7 +2303,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKDs9JtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKDs9ZtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKDs9ptQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[528, 396, 528, 396]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKDs9ptQEeC1bu5ubiTeKA" points="[0, 1, -369, -413]$[353, 397, -16, -17]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKDs_ZtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKDs_ptQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -2319,7 +2319,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKDtAJtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKDtAZtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKDtAptQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[528, 396, 528, 396]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKDtAptQEeC1bu5ubiTeKA" points="[1, 1, -548, -413]$[529, 398, -20, -16]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKDtCZtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKDtCptQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -2335,7 +2335,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKM2wZtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKM2wptQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKM2w5tQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[312, 288, 312, 288]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKM2w5tQEeC1bu5ubiTeKA" points="[0, 1, -183, -313]$[168, 289, -15, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKM2yptQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKM2y5tQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -2351,7 +2351,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKM2zZtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKM2zptQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKM2z5tQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[444, 24, 444, 24]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKM2z5tQEeC1bu5ubiTeKA" points="[6, 1, -309, -49]$[265, 42, -50, -8]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKM21ptQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKM215tQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -2367,7 +2367,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKM22ZtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKM22ptQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKM225tQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[312, 288, 312, 288]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKM225tQEeC1bu5ubiTeKA" points="[1, 1, -362, -313]$[334, 289, -29, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKM24ptQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKM245tQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -2383,7 +2383,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKM25ZtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKM25ptQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKM255tQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[444, 24, 444, 24]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKM255tQEeC1bu5ubiTeKA" points="[9, 1, -486, -49]$[445, 44, -50, -6]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKM27ptQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKM275tQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -2463,7 +2463,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNf5kUaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNf5kkaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNf5k0aREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[312, 288, 312, 288]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNf5k0aREeWeYombhCiYAQ" points="[0, 1, -183, -313]$[168, 289, -15, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNggoEaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNggoUaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -2479,7 +2479,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNggo0aREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNggpEaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNggpUaREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[444, 24, 444, 24]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNggpUaREeWeYombhCiYAQ" points="[6, 1, -309, -49]$[265, 42, -50, -8]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNhHtkaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNhHt0aREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -2495,7 +2495,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNhHuUaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNhHukaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNhHu0aREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[312, 288, 312, 288]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNhHu0aREeWeYombhCiYAQ" points="[0, 1, -183, -313]$[168, 289, -15, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNhuxkaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNhux0aREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -2511,7 +2511,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNhuyUaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNhuykaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNiV0EaREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[444, 24, 444, 24]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNiV0EaREeWeYombhCiYAQ" points="[6, 1, -309, -49]$[265, 42, -50, -8]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNiV10aREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNiV2EaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -2527,7 +2527,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNiV2kaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNiV20aREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNiV3EaREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[312, 288, 312, 288]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNiV3EaREeWeYombhCiYAQ" points="[1, 1, -362, -313]$[334, 289, -29, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNi85kaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNi850aREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -2543,7 +2543,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNi86UaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNi86kaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNi860aREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[444, 24, 444, 24]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNi860aREeWeYombhCiYAQ" points="[9, 1, -486, -49]$[445, 44, -50, -6]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNi88kaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNi880aREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -2559,7 +2559,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNi89UaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNi89kaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNi890aREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[312, 288, 312, 288]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNi890aREeWeYombhCiYAQ" points="[1, 1, -362, -313]$[334, 289, -29, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNjj9kaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNjj90aREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -2575,7 +2575,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNjj-UaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNjj-kaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNjj-0aREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[444, 24, 444, 24]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNjj-0aREeWeYombhCiYAQ" points="[9, 1, -486, -49]$[445, 44, -50, -6]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNkLBEaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNkLBUaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -2932,7 +2932,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="SimpleRefinement_TCs.melodymodeller#b5c70aac-6a94-40f4-95f6-399d2a3baf42"/>
   </diagram:DSemanticDiagram>
-  <sequence:SequenceDDiagram xmi:id="_2fAeYBmnEeCjEOIrD1ZvPQ" name="[CIS] Simple Communication Mechanisms TC2">
+  <sequence:SequenceDDiagram xmi:id="_2fAeYBmnEeCjEOIrD1ZvPQ" name="[CIS] Simple Communication Mechanisms TC2" uid="_-Wfl8JFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_2fAeZBmnEeCjEOIrD1ZvPQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_2fAeZRmnEeCjEOIrD1ZvPQ" type="Sirius" element="_2fAeYBmnEeCjEOIrD1ZvPQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_2fwsUBmnEeCjEOIrD1ZvPQ" type="2001" element="_AE-80HnGEea0Df0HniJfuA">
@@ -3640,7 +3640,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="SimpleRefinement_TCs.melodymodeller#380b7049-6295-4929-976e-9d2f6b489565"/>
   </sequence:SequenceDDiagram>
-  <diagram:DSemanticDiagram xmi:id="_wqyLEBmpEeCjEOIrD1ZvPQ" name="[CEI] LC 2 - Contextual Component External Interfaces">
+  <diagram:DSemanticDiagram xmi:id="_wqyLEBmpEeCjEOIrD1ZvPQ" name="[CEI] LC 2 - Contextual Component External Interfaces" uid="_-WzH8JFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_wqyLEhmpEeCjEOIrD1ZvPQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_wqyLExmpEeCjEOIrD1ZvPQ" type="Sirius" element="_wqyLEBmpEeCjEOIrD1ZvPQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_wuzvcBmpEeCjEOIrD1ZvPQ" type="2001" element="_wq78EBmpEeCjEOIrD1ZvPQ">
@@ -3813,7 +3813,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_Je-dcRmqEeCjEOIrD1ZvPQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_Je-dchmqEeCjEOIrD1ZvPQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Je-dcxmqEeCjEOIrD1ZvPQ" points="[13, 2, -398, -52]$[393, 52, -18, -2]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Je-dcxmqEeCjEOIrD1ZvPQ" points="[5, 1, -542, -95]$[529, 92, -18, -4]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Je-ddhmqEeCjEOIrD1ZvPQ" id="(0.91333336,0.6)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Je-ddxmqEeCjEOIrD1ZvPQ" id="(0.18,0.46)"/>
         </edges>
@@ -3829,7 +3829,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKWnz5tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKWn0JtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKWn0ZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[492, 348, 492, 348]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKWn0ZtQEeC1bu5ubiTeKA" points="[0, 1, -333, -365]$[317, 349, -16, -17]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKWn2JtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKWn2ZtQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -3845,7 +3845,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKWn25tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKWn3JtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKWn3ZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[492, 348, 492, 348]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKWn3ZtQEeC1bu5ubiTeKA" points="[1, 1, -512, -365]$[493, 351, -20, -15]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKWn5JtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKWn5ZtQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -3861,7 +3861,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKWn55tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKWn6JtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKWn6ZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[348, 72, 348, 72]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKWn6ZtQEeC1bu5ubiTeKA" points="[2, 1, -187, -89]$[169, 80, -20, -10]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKgYwJtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKgYwZtQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -3877,7 +3877,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKgYw5tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKgYxJtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKgYxZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[348, 72, 348, 72]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKgYxZtQEeC1bu5ubiTeKA" points="[4, 1, -365, -89]$[349, 85, -20, -5]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKgYzJtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKgYzZtQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -3893,7 +3893,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKgYz5tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKgY0JtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKgY0ZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[660, 240, 660, 240]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKgY0ZtQEeC1bu5ubiTeKA" points="[1, 1, -530, -265]$[481, 241, -50, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKgY2JtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKgY2ZtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -3909,7 +3909,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKgY25tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKgY3JtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKgY3ZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[576, 72, 576, 72]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKgY3ZtQEeC1bu5ubiTeKA" points="[4, 1, -443, -97]$[397, 87, -50, -11]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKgY5JtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKgY5ZtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -3925,7 +3925,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKgY55tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKgY6JtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKgY6ZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[576, 72, 576, 72]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKgY6ZtQEeC1bu5ubiTeKA" points="[6, 1, -621, -97]$[577, 90, -50, -8]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKgY8JtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKgY8ZtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -3941,7 +3941,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JKgY85tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JKgY9JtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKgY9ZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[660, 240, 660, 240]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JKgY9ZtQEeC1bu5ubiTeKA" points="[2, 1, -709, -265]$[661, 247, -50, -19]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKgY_JtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKgY_ZtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -4021,7 +4021,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNlZIUaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNlZIkaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNlZI0aREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[660, 240, 660, 240]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNlZI0aREeWeYombhCiYAQ" points="[1, 1, -530, -265]$[481, 241, -50, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNmAMEaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNmAMUaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -4037,7 +4037,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNmAM0aREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNmANEaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNmANUaREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[576, 72, 576, 72]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNmANUaREeWeYombhCiYAQ" points="[4, 1, -443, -97]$[397, 87, -50, -11]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNmnQEaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNmnQUaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -4053,7 +4053,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNmnQ0aREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNmnREaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNmnRUaREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[660, 240, 660, 240]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNmnRUaREeWeYombhCiYAQ" points="[1, 1, -530, -265]$[481, 241, -50, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNnOUEaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNnOUUaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -4069,7 +4069,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNnOU0aREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNnOVEaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNnOVUaREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[576, 72, 576, 72]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNnOVUaREeWeYombhCiYAQ" points="[4, 1, -443, -97]$[397, 87, -50, -11]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNn1YEaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNn1YUaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -4085,7 +4085,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNn1Y0aREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNn1ZEaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNn1ZUaREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[576, 72, 576, 72]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNn1ZUaREeWeYombhCiYAQ" points="[6, 1, -621, -97]$[577, 90, -50, -8]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNoccEaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNoccUaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -4101,7 +4101,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNocc0aREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNocdEaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNocdUaREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[660, 240, 660, 240]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNocdUaREeWeYombhCiYAQ" points="[2, 1, -709, -265]$[661, 247, -50, -19]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNpDgEaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNpDgUaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -4117,7 +4117,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNpDg0aREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNpDhEaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNpDhUaREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[576, 72, 576, 72]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNpDhUaREeWeYombhCiYAQ" points="[6, 1, -621, -97]$[577, 90, -50, -8]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNpqkEaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNpqkUaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -4133,7 +4133,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNpqk0aREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNpqlEaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNpqlUaREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[660, 240, 660, 240]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNpqlUaREeWeYombhCiYAQ" points="[2, 1, -709, -265]$[661, 247, -50, -19]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNqRoEaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNqRoUaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -4490,7 +4490,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="SimpleRefinement_TCs.melodymodeller#c85712ed-009b-4cdf-ae24-103c9a575d45"/>
   </diagram:DSemanticDiagram>
-  <sequence:SequenceDDiagram xmi:id="_zNgCoBmtEeCjEOIrD1ZvPQ" name="[CIS] Simple Communication Mechanisms TC1 - Component Interfaces Scenario">
+  <sequence:SequenceDDiagram xmi:id="_zNgCoBmtEeCjEOIrD1ZvPQ" name="[CIS] Simple Communication Mechanisms TC1 - Component Interfaces Scenario" uid="_-XPM0JFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_zNgCpBmtEeCjEOIrD1ZvPQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_zNgCpRmtEeCjEOIrD1ZvPQ" type="Sirius" element="_zNgCoBmtEeCjEOIrD1ZvPQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_1OrQMBmtEeCjEOIrD1ZvPQ" type="2001" element="_AGRWQHnGEea0Df0HniJfuA">
@@ -5351,7 +5351,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="SimpleRefinement_TCs.melodymodeller#a5328de1-95d5-4fc2-a5c3-75a3055cd9c4"/>
   </sequence:SequenceDDiagram>
-  <sequence:SequenceDDiagram xmi:id="_-OGCQBmtEeCjEOIrD1ZvPQ" name="[CIS] Simple Communication Mechanisms TC2 - Component Interfaces Scenario">
+  <sequence:SequenceDDiagram xmi:id="_-OGCQBmtEeCjEOIrD1ZvPQ" name="[CIS] Simple Communication Mechanisms TC2 - Component Interfaces Scenario" uid="_-Xr4wJFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_-OGCRBmtEeCjEOIrD1ZvPQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_-OGCRRmtEeCjEOIrD1ZvPQ" type="Sirius" element="_-OGCQBmtEeCjEOIrD1ZvPQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="__2imwBmtEeCjEOIrD1ZvPQ" type="2001" element="_AG1W8HnGEea0Df0HniJfuA">
@@ -5974,7 +5974,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="SimpleRefinement_TCs.melodymodeller#2db879e6-8659-41fd-a997-5976a6de0a3d"/>
   </sequence:SequenceDDiagram>
-  <diagram:DSemanticDiagram xmi:id="_loskYBmuEeCjEOIrD1ZvPQ" name="[CEI] LC 1.1 - Contextual Component External Interfaces">
+  <diagram:DSemanticDiagram xmi:id="_loskYBmuEeCjEOIrD1ZvPQ" name="[CEI] LC 1.1 - Contextual Component External Interfaces" uid="_-X_awJFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_loskYhmuEeCjEOIrD1ZvPQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_loskYxmuEeCjEOIrD1ZvPQ" type="Sirius" element="_loskYBmuEeCjEOIrD1ZvPQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_ltm5kBmuEeCjEOIrD1ZvPQ" type="2001" element="_lo1uUBmuEeCjEOIrD1ZvPQ">
@@ -6161,7 +6161,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JLGOr5tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JLGOsJtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLGOsZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[360, 264, 360, 264]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLGOsZtQEeC1bu5ubiTeKA" points="[0, 1, -201, -281]$[188, 265, -13, -17]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_oJtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_oZtQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -6177,7 +6177,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JLP_o5tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JLP_pJtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLP_pZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[360, 264, 360, 264]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLP_pZtQEeC1bu5ubiTeKA" points="[1, 1, -380, -281]$[361, 267, -20, -15]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_rJtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_rZtQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -6193,7 +6193,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JLP_r5tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JLP_sJtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLP_sZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[360, 132, 360, 132]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLP_sZtQEeC1bu5ubiTeKA" points="[1, 1, -200, -149]$[181, 135, -20, -15]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_uJtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_uZtQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -6209,7 +6209,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JLP_u5tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JLP_vJtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLP_vZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[360, 132, 360, 132]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLP_vZtQEeC1bu5ubiTeKA" points="[2, 1, -379, -149]$[361, 142, -20, -8]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_xJtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_xZtQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -6225,7 +6225,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JLP_x5tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JLP_yJtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLP_yZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[324, 12, 324, 12]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLP_yZtQEeC1bu5ubiTeKA" points="[5, 1, -190, -37]$[145, 28, -50, -10]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_0JtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_0ZtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -6241,7 +6241,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JLP_05tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JLP_1JtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLP_1ZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[336, 372, 336, 372]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLP_1ZtQEeC1bu5ubiTeKA" points="[0, 1, -207, -397]$[193, 373, -14, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_3JtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_3ZtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -6257,7 +6257,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JLP_35tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JLP_4JtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLP_4ZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[324, 12, 324, 12]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLP_4ZtQEeC1bu5ubiTeKA" points="[9, 1, -366, -37]$[325, 32, -50, -6]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_6JtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_6ZtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -6273,7 +6273,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JLP_65tQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JLP_7JtQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLP_7ZtQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[336, 372, 336, 372]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JLP_7ZtQEeC1bu5ubiTeKA" points="[0, 1, -387, -397]$[362, 373, -25, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_9JtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JLP_9ZtQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -6353,7 +6353,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNsG0UaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNsG0kaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNsG00aREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[324, 12, 324, 12]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNsG00aREeWeYombhCiYAQ" points="[5, 1, -190, -37]$[145, 28, -50, -10]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNst4EaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNst4UaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -6369,7 +6369,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNst40aREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNst5EaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNst5UaREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[336, 372, 336, 372]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNst5UaREeWeYombhCiYAQ" points="[0, 1, -207, -397]$[193, 373, -14, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNtU8EaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNtU8UaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -6385,7 +6385,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNtU80aREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNtU9EaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNtU9UaREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[324, 12, 324, 12]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNtU9UaREeWeYombhCiYAQ" points="[5, 1, -190, -37]$[145, 28, -50, -10]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNt8AEaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNt8AUaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -6401,7 +6401,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNt8A0aREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNt8BEaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNt8BUaREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[336, 372, 336, 372]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNt8BUaREeWeYombhCiYAQ" points="[0, 1, -207, -397]$[193, 373, -14, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNt8DEaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNt8DUaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -6417,7 +6417,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNujEUaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNujEkaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNujE0aREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[324, 12, 324, 12]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNujE0aREeWeYombhCiYAQ" points="[9, 1, -366, -37]$[325, 32, -50, -6]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNujGkaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNujG0aREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -6433,7 +6433,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNvKIUaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNvKIkaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNvKI0aREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[336, 372, 336, 372]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNvKI0aREeWeYombhCiYAQ" points="[0, 1, -387, -397]$[362, 373, -25, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNvKKkaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNvKK0aREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -6449,7 +6449,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNvxMUaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNvxMkaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNvxM0aREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[324, 12, 324, 12]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNvxM0aREeWeYombhCiYAQ" points="[9, 1, -366, -37]$[325, 32, -50, -6]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNvxOkaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNvxO0aREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -6465,7 +6465,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNwYQUaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNwYQkaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNwYQ0aREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[336, 372, 336, 372]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNwYQ0aREeWeYombhCiYAQ" points="[0, 1, -387, -397]$[362, 373, -25, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNwYSkaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNwYS0aREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -6822,7 +6822,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="SimpleRefinement_TCs.melodymodeller#82f43619-96e6-47bd-9186-7b3a628cf5a6"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_x6Y_gBmuEeCjEOIrD1ZvPQ" name="[CEI] LC 2.2 - Contextual Component External Interfaces">
+  <diagram:DSemanticDiagram xmi:id="_x6Y_gBmuEeCjEOIrD1ZvPQ" name="[CEI] LC 2.2 - Contextual Component External Interfaces" uid="_-YSVsJFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_x6Y_ghmuEeCjEOIrD1ZvPQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_x6Y_gxmuEeCjEOIrD1ZvPQ" type="Sirius" element="_x6Y_gBmuEeCjEOIrD1ZvPQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_x90G8BmuEeCjEOIrD1ZvPQ" type="2001" element="_x6iwgBmuEeCjEOIrD1ZvPQ">
@@ -7009,7 +7009,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JL11hZtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JL11hptQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL11h5tQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[408, 252, 408, 252]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL11h5tQEeC1bu5ubiTeKA" points="[0, 1, -249, -269]$[233, 253, -16, -17]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL11jptQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL11j5tQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -7025,7 +7025,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JL11kZtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JL11kptQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL11k5tQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[408, 252, 408, 252]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL11k5tQEeC1bu5ubiTeKA" points="[1, 1, -428, -269]$[409, 257, -20, -13]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL11mptQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL11m5tQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -7041,7 +7041,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JL11nZtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JL11nptQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL11n5tQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[420, 132, 420, 132]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL11n5tQEeC1bu5ubiTeKA" points="[1, 1, -260, -149]$[241, 138, -20, -12]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL11pptQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL11p5tQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -7057,7 +7057,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JL11qZtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JL11qptQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL11q5tQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[420, 132, 420, 132]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL11q5tQEeC1bu5ubiTeKA" points="[2, 1, -439, -149]$[421, 143, -20, -7]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL11sptQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL11s5tQEeC1bu5ubiTeKA" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -7073,7 +7073,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JL11tZtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JL11tptQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL11t5tQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[384, 372, 384, 372]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL11t5tQEeC1bu5ubiTeKA" points="[0, 1, -255, -397]$[238, 373, -17, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL_mhptQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL_mh5tQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -7089,7 +7089,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JL_miZtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JL_miptQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL_mi5tQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[384, 12, 384, 12]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL_mi5tQEeC1bu5ubiTeKA" points="[6, 1, -249, -37]$[205, 30, -50, -8]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL_mkptQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL_mk5tQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -7105,7 +7105,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JL_mlZtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JL_mlptQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL_ml5tQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[384, 12, 384, 12]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL_ml5tQEeC1bu5ubiTeKA" points="[11, 1, -424, -37]$[385, 33, -50, -5]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL_mnptQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL_mn5tQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -7121,7 +7121,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_JL_moZtQEeC1bu5ubiTeKA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_JL_moptQEeC1bu5ubiTeKA"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL_mo5tQEeC1bu5ubiTeKA" points="[-1, -1, -1, -1]$[384, 372, 384, 372]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JL_mo5tQEeC1bu5ubiTeKA" points="[1, 1, -434, -397]$[407, 373, -28, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL_mqptQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JL_mq5tQEeC1bu5ubiTeKA" id="(0.5,0.5)"/>
         </edges>
@@ -7201,7 +7201,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNw_UUaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNw_UkaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNw_U0aREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[384, 372, 384, 372]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNw_U0aREeWeYombhCiYAQ" points="[0, 1, -255, -397]$[238, 373, -17, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNxmZkaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNxmZ0aREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -7217,7 +7217,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNxmaUaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNxmakaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNxma0aREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[384, 12, 384, 12]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNxma0aREeWeYombhCiYAQ" points="[6, 1, -249, -37]$[205, 30, -50, -8]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNyNdkaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNyNd0aREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -7233,7 +7233,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNyNeUaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNyNekaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNyNe0aREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[384, 372, 384, 372]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNyNe0aREeWeYombhCiYAQ" points="[0, 1, -255, -397]$[238, 373, -17, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNy0hkaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNy0h0aREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -7249,7 +7249,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNy0iUaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNy0ikaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNy0i0aREeWeYombhCiYAQ" points="[180, -1, 180, -1]$[384, 12, 384, 12]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNy0i0aREeWeYombhCiYAQ" points="[6, 1, -249, -37]$[205, 30, -50, -8]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNzblkaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wNzbl0aREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -7265,7 +7265,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wNzbmUaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wNzbmkaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNzbm0aREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[384, 12, 384, 12]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wNzbm0aREeWeYombhCiYAQ" points="[11, 1, -424, -37]$[385, 33, -50, -5]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wN0CpEaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wN0CpUaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -7281,7 +7281,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wN0Cp0aREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wN0CqEaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wN0CqUaREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[384, 372, 384, 372]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wN0CqUaREeWeYombhCiYAQ" points="[1, 1, -434, -397]$[407, 373, -28, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wN0ptEaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wN0ptUaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -7297,7 +7297,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wN0pt0aREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wN0puEaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wN0puUaREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[384, 12, 384, 12]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wN0puUaREeWeYombhCiYAQ" points="[11, 1, -424, -37]$[385, 33, -50, -5]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wN1QwkaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wN1Qw0aREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>
@@ -7313,7 +7313,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_wN1QxUaREeWeYombhCiYAQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_wN1QxkaREeWeYombhCiYAQ" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wN1Qx0aREeWeYombhCiYAQ" points="[-1, -1, -1, -1]$[384, 372, 384, 372]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wN1Qx0aREeWeYombhCiYAQ" points="[1, 1, -434, -397]$[407, 373, -28, -25]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wN130EaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wN130UaREeWeYombhCiYAQ" id="(0.5,0.5)"/>
         </edges>

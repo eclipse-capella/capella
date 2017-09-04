@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.1.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.1.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.1.0" xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.1.0" xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/datatype/1.1.0 http://www.polarsys.org/capella/core/information/1.1.0#//datatype http://www.polarsys.org/capella/core/information/datavalue/1.1.0 http://www.polarsys.org/capella/core/information/1.1.0#//datavalue http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_XxLn4CZxEeGJJIltX6tx3w" selectedViews="_XxLn4iZxEeGJJIltX6tx3w _lLRMpUZpEeGLU9K9bSXPHw _lLRMpkZpEeGLU9K9bSXPHw _lLRMp0ZpEeGLU9K9bSXPHw _lLRMqEZpEeGLU9K9bSXPHw _lLRMqUZpEeGLU9K9bSXPHw _LpkWQToxEeOCF7WeI29pGQ" version="11.1.0.201608251200">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.2.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.2.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.2.0" xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.2.0" xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.2.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/datatype/1.2.0 http://www.polarsys.org/capella/core/information/1.2.0#//datatype http://www.polarsys.org/capella/core/information/datavalue/1.2.0 http://www.polarsys.org/capella/core/information/1.2.0#//datavalue http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_XxLn4CZxEeGJJIltX6tx3w" selectedViews="_XxLn4iZxEeGJJIltX6tx3w _lLRMpUZpEeGLU9K9bSXPHw _lLRMpkZpEeGLU9K9bSXPHw _lLRMp0ZpEeGLU9K9bSXPHw _lLRMqEZpEeGLU9K9bSXPHw _lLRMqUZpEeGLU9K9bSXPHw _LpkWQToxEeOCF7WeI29pGQ" version="12.1.0.201708031200">
     <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="LA-Logical%20Functions-RLF-OA2-SysOA2_1.airdfragment#_0VgkACZxEeGJJIltX6tx3w"/>
     <semanticResources>SA-Data.melodyfragment</semanticResources>
     <semanticResources>../sysmodel.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_XxLn4iZxEeGJJIltX6tx3w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5MgHTTEea2zdoadWNr2A" name="[PD] Data - Package Dependencies" representation="_0bx5gMNoEeCmUclACW4KLw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5MgHTTEea2zdoadWNr2A" name="[PD] Data - Package Dependencies">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="SA-Data.melodyfragment#fb7840a4-2ac6-46f2-9547-a3368dd320a0"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5MgXTTEea2zdoadWNr2A" name="[CDB] Data - Class Diagram Blank" representation="_5wZAAMNjEeCmUclACW4KLw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5MgXTTEea2zdoadWNr2A" name="[CDB] Data - Class Diagram Blank">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="SA-Data.melodyfragment#fb7840a4-2ac6-46f2-9547-a3368dd320a0"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5MgnTTEea2zdoadWNr2A" name="[CDB] Data and Contextual - Class Diagram Blank" representation="_F2DpkK_uEeGRvqHr5IqSew">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5MgnTTEea2zdoadWNr2A" name="[CDB] Data and Contextual - Class Diagram Blank">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="SA-Data.melodyfragment#fb7840a4-2ac6-46f2-9547-a3368dd320a0"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5Mg3TTEea2zdoadWNr2A" name="[CDB] Data - Class Diagram Blank - With Contextual Element" representation="_2PwCUFo_EeKJDKFqomiB-A">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5Mg3TTEea2zdoadWNr2A" name="[CDB] Data - Class Diagram Blank - With Contextual Element">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="SA-Data.melodyfragment#fb7840a4-2ac6-46f2-9547-a3368dd320a0"/>
       </ownedRepresentationDescriptors>
@@ -42,7 +42,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_0bx5gMNoEeCmUclACW4KLw" name="[PD] Data - Package Dependencies">
+  <diagram:DSemanticDiagram xmi:id="_0bx5gMNoEeCmUclACW4KLw" name="[PD] Data - Package Dependencies" uid="_IY9JYJFxEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_0bx5gsNoEeCmUclACW4KLw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_0bx5g8NoEeCmUclACW4KLw" type="Sirius" element="_0bx5gMNoEeCmUclACW4KLw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_146l4MNoEeCmUclACW4KLw" type="2002" element="_14nD5sNoEeCmUclACW4KLw">
@@ -419,7 +419,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="SA-Data.melodyfragment#fb7840a4-2ac6-46f2-9547-a3368dd320a0"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_5wZAAMNjEeCmUclACW4KLw" name="[CDB] Data - Class Diagram Blank">
+  <diagram:DSemanticDiagram xmi:id="_5wZAAMNjEeCmUclACW4KLw" name="[CDB] Data - Class Diagram Blank" uid="_IZG6YJFxEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_5wZAAsNjEeCmUclACW4KLw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_5wZAA8NjEeCmUclACW4KLw" type="Sirius" element="_5wZAAMNjEeCmUclACW4KLw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_6mL_kMNjEeCmUclACW4KLw" type="2001" element="_6mCOkMNjEeCmUclACW4KLw">
@@ -1935,7 +1935,7 @@
     <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="SA-Data.melodyfragment#fb7840a4-2ac6-46f2-9547-a3368dd320a0"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_F2DpkK_uEeGRvqHr5IqSew" name="[CDB] Data and Contextual - Class Diagram Blank">
+  <diagram:DSemanticDiagram xmi:id="_F2DpkK_uEeGRvqHr5IqSew" name="[CDB] Data and Contextual - Class Diagram Blank" uid="_IZ2hQJFxEeemoaFOWaTTWw">
     <eAnnotations xmi:type="description:DAnnotation" xmi:id="_GwdcUK_uEeGRvqHr5IqSew" source="CONTEXTUAL_ELEMENTS">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ou7s8K_uEeGRvqHr5IqSew" key="id_0" value="2aba8b7f-af58-43ed-80a8-6e1172ebe861"/>
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ou7s8a_uEeGRvqHr5IqSew" key="id_1" value="98531f8b-f63b-4b23-8847-c8076dc3e9e0"/>
@@ -2531,7 +2531,7 @@
     <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="SA-Data.melodyfragment#fb7840a4-2ac6-46f2-9547-a3368dd320a0"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_2PwCUFo_EeKJDKFqomiB-A" name="[CDB] Data - Class Diagram Blank - With Contextual Element">
+  <diagram:DSemanticDiagram xmi:id="_2PwCUFo_EeKJDKFqomiB-A" name="[CDB] Data - Class Diagram Blank - With Contextual Element" uid="_IaJcMJFxEeemoaFOWaTTWw">
     <eAnnotations xmi:type="description:DAnnotation" xmi:id="_7oRmMFo_EeKJDKFqomiB-A" source="CONTEXTUAL_ELEMENTS">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HA0y0FpAEeKJDKFqomiB-A" key="id_0" value="1cc32365-2530-410c-a293-7838909118d0"/>
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HA0y0VpAEeKJDKFqomiB-A" key="id_1" value="f4bdbaed-1add-4bf7-8bb0-8daad7238492"/>

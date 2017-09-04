@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.1.1-->
+<!--Capella_Version_1.2.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.1.0"
-    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.1.0"
-    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.1.0"
-    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.1.0"
-    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.1.0"
-    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.1.0"
-    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.1.0"
-    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0"
-    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.2.0"
+    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.2.0"
+    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.2.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.2.0"
+    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.2.0"
+    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.2.0"
+    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.2.0"
+    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.2.0"
+    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.2.0"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.2.0"
     id="794e6786-9355-4ae4-87a6-2734ede475dd"
     name="miscmodel">
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
@@ -64,15 +64,14 @@
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
               id="ce5d3e25-87ec-4cc2-9856-d7f12589af79" name="FC1">
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="ab1d4f35-35f9-4471-be38-71b21969ed1e" involver="#ce5d3e25-87ec-4cc2-9856-d7f12589af79"
-                involved="#0b057675-ed0e-4a67-829d-2a7d92814fb8" nextFunctionalChainInvolvements="#f13b00dc-afdb-4600-a310-4535586ad818"
+                id="ab1d4f35-35f9-4471-be38-71b21969ed1e" involved="#0b057675-ed0e-4a67-829d-2a7d92814fb8"
+                nextFunctionalChainInvolvements="#f13b00dc-afdb-4600-a310-4535586ad818"
                 exchangedItems="#9e0e8188-0b84-49fa-8cd2-0c84cbe5b1f6"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="f13b00dc-afdb-4600-a310-4535586ad818" involver="#ce5d3e25-87ec-4cc2-9856-d7f12589af79"
-                involved="#326c0742-f560-422e-af2e-ab40186c7484"/>
+                id="f13b00dc-afdb-4600-a310-4535586ad818" involved="#326c0742-f560-422e-af2e-ab40186c7484"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="baab713c-eb15-4c03-b981-8598b9a1ffda" involver="#ce5d3e25-87ec-4cc2-9856-d7f12589af79"
-                involved="#e543b7f1-618e-45a3-b73c-4876f14e72e0" nextFunctionalChainInvolvements="#ab1d4f35-35f9-4471-be38-71b21969ed1e"/>
+                id="baab713c-eb15-4c03-b981-8598b9a1ffda" involved="#e543b7f1-618e-45a3-b73c-4876f14e72e0"
+                nextFunctionalChainInvolvements="#ab1d4f35-35f9-4471-be38-71b21969ed1e"/>
           </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="e543b7f1-618e-45a3-b73c-4876f14e72e0" name="SF1">
@@ -113,12 +112,12 @@
           <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
               id="fc3926fb-2c44-4301-a73d-c3a1aaca5ce2" name="Default Region" involvedStates="#135aa60d-7795-4a71-a6ce-0af9b2a959a9 #a7fde950-553a-4766-b710-31a8a11c7bc4">
             <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
-                id="135aa60d-7795-4a71-a6ce-0af9b2a959a9" name="Mode 1" outgoing="#da8600e2-5df6-4ac2-b784-cb70e49c9fa7">
+                id="135aa60d-7795-4a71-a6ce-0af9b2a959a9" name="Mode 1">
               <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                   id="d384b4e3-5acb-4523-ab8e-7b3621d230d6" name="region"/>
             </ownedStates>
             <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
-                id="a7fde950-553a-4766-b710-31a8a11c7bc4" name="Mode 2" incoming="#da8600e2-5df6-4ac2-b784-cb70e49c9fa7">
+                id="a7fde950-553a-4766-b710-31a8a11c7bc4" name="Mode 2">
               <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                   id="65bddce4-6db0-41b2-9f3d-d7e39f38c6a0" name="region"/>
             </ownedStates>

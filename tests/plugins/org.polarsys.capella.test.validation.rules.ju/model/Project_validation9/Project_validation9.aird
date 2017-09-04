@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.1.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.1.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.1.0" xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/datavalue/1.1.0 http://www.polarsys.org/capella/core/information/1.1.0#//datavalue http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_-9S84BQGEeSbjJMOqU-XlA" selectedViews="_-_QrwBQGEeSbjJMOqU-XlA _-_hxgBQGEeSbjJMOqU-XlA _-_vM4BQGEeSbjJMOqU-XlA _-_2hoBQGEeSbjJMOqU-XlA __AEkEBQGEeSbjJMOqU-XlA __ANG8BQGEeSbjJMOqU-XlA __AVCwBQGEeSbjJMOqU-XlA" version="11.1.0.201608251200">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.2.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.2.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.2.0" xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.2.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/datavalue/1.2.0 http://www.polarsys.org/capella/core/information/1.2.0#//datavalue http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_-9S84BQGEeSbjJMOqU-XlA" selectedViews="_-_QrwBQGEeSbjJMOqU-XlA _-_hxgBQGEeSbjJMOqU-XlA _-_vM4BQGEeSbjJMOqU-XlA _-_2hoBQGEeSbjJMOqU-XlA __AEkEBQGEeSbjJMOqU-XlA __ANG8BQGEeSbjJMOqU-XlA __AVCwBQGEeSbjJMOqU-XlA" version="12.1.0.201708031200">
     <semanticResources>Project_validation9.melodymodeller</semanticResources>
     <semanticResources>Project_validation9.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_-_QrwBQGEeSbjJMOqU-XlA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_C2vVAHQvEeamAMxs9g9ZYQ" name="[IDB] System - Interfaces Diagram Blank" representation="_DVco4BQHEeSbjJMOqU-XlA">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_C2vVAHQvEeamAMxs9g9ZYQ" name="[IDB] System - Interfaces Diagram Blank" repPath="#_eja14JFwEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="Project_validation9.melodymodeller#863c9584-8a1c-4927-9c23-386e49accf61"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_C2vVAXQvEeamAMxs9g9ZYQ" name="[CDB] Data - Class Diagram Blank" representation="_tyiZsBQJEeSbjJMOqU-XlA">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_C2vVAXQvEeamAMxs9g9ZYQ" name="[CDB] Data - Class Diagram Blank" repPath="#_ej4v8JFwEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="Project_validation9.melodymodeller#3f4fe222-4ab7-4d9d-94b7-6d259cb3c557"/>
       </ownedRepresentationDescriptors>
@@ -33,7 +33,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_DVco4BQHEeSbjJMOqU-XlA" name="[IDB] System - Interfaces Diagram Blank">
+  <diagram:DSemanticDiagram xmi:id="_DVco4BQHEeSbjJMOqU-XlA" name="[IDB] System - Interfaces Diagram Blank" uid="_eja14JFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_DVeeEBQHEeSbjJMOqU-XlA" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_DVeeERQHEeSbjJMOqU-XlA" type="Sirius" element="_DVco4BQHEeSbjJMOqU-XlA" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_9QwtIBQHEeSbjJMOqU-XlA" type="2003" element="_9Qj40BQHEeSbjJMOqU-XlA">
@@ -146,25 +146,31 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="__PJFYhQHEeSbjJMOqU-XlA" x="15" y="10"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_sIB1IBQIEeSbjJMOqU-XlA" type="Note" fontName="Segoe UI" description="Ok" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_enYv5JFwEeemoaFOWaTTWw" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_enZW8JFwEeemoaFOWaTTWw" key="verticalAlignment" value="8"/>
+          </eAnnotations>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_sIERYBQIEeSbjJMOqU-XlA" type="DiagramName">
             <element xsi:nil="true"/>
           </children>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_sIE4cBQIEeSbjJMOqU-XlA" type="Description">
             <element xsi:nil="true"/>
           </children>
-          <styles xmi:type="notation:TextStyle" xmi:id="_sIB1IRQIEeSbjJMOqU-XlA"/>
+          <styles xmi:type="notation:TextStyle" xmi:id="_sIB1IRQIEeSbjJMOqU-XlA" textAlignment="Center"/>
           <styles xmi:type="notation:LineTypeStyle" xmi:id="_sIB1IhQIEeSbjJMOqU-XlA"/>
           <element xsi:nil="true"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sIB1IxQIEeSbjJMOqU-XlA" x="895" y="85" width="111" height="116"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_E0S6kBQJEeSbjJMOqU-XlA" type="Note" fontName="Segoe UI" description="KO because one of the two EI in the hierarchy has no EIE" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_enZW8ZFwEeemoaFOWaTTWw" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_enZW8pFwEeemoaFOWaTTWw" key="verticalAlignment" value="8"/>
+          </eAnnotations>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_E0S6kRQJEeSbjJMOqU-XlA" type="DiagramName">
             <element xsi:nil="true"/>
           </children>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_E0S6khQJEeSbjJMOqU-XlA" type="Description">
             <element xsi:nil="true"/>
           </children>
-          <styles xmi:type="notation:TextStyle" xmi:id="_E0S6kxQJEeSbjJMOqU-XlA"/>
+          <styles xmi:type="notation:TextStyle" xmi:id="_E0S6kxQJEeSbjJMOqU-XlA" textAlignment="Center"/>
           <styles xmi:type="notation:LineTypeStyle" xmi:id="_E0S6lBQJEeSbjJMOqU-XlA"/>
           <element xsi:nil="true"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E0S6lRQJEeSbjJMOqU-XlA" x="460" y="585" width="251" height="111"/>
@@ -196,13 +202,16 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TF5X8hQJEeSbjJMOqU-XlA" x="15" y="335"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_encvkRQJEeSbjJMOqU-XlA" type="Note" fontName="Segoe UI" description="Ok because EIE are of type PARAMETER" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_enYv4JFwEeemoaFOWaTTWw" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_enYv4ZFwEeemoaFOWaTTWw" key="verticalAlignment" value="8"/>
+          </eAnnotations>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_encvkhQJEeSbjJMOqU-XlA" type="DiagramName">
             <element xsi:nil="true"/>
           </children>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_encvkxQJEeSbjJMOqU-XlA" type="Description">
             <element xsi:nil="true"/>
           </children>
-          <styles xmi:type="notation:TextStyle" xmi:id="_encvlBQJEeSbjJMOqU-XlA"/>
+          <styles xmi:type="notation:TextStyle" xmi:id="_encvlBQJEeSbjJMOqU-XlA" textAlignment="Center"/>
           <styles xmi:type="notation:LineTypeStyle" xmi:id="_encvlRQJEeSbjJMOqU-XlA"/>
           <element xsi:nil="true"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_encvlhQJEeSbjJMOqU-XlA" x="220" y="250" width="256" height="126"/>
@@ -260,13 +269,16 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pVlGMhQJEeSbjJMOqU-XlA" x="248" y="156"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_1Ii98RQJEeSbjJMOqU-XlA" type="Note" fontName="Segoe UI" description="KO because Class4 is not a sub type of Class1" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_enZW85FwEeemoaFOWaTTWw" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_enZW9JFwEeemoaFOWaTTWw" key="verticalAlignment" value="8"/>
+          </eAnnotations>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_1Ii98hQJEeSbjJMOqU-XlA" type="DiagramName">
             <element xsi:nil="true"/>
           </children>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_1Ii98xQJEeSbjJMOqU-XlA" type="Description">
             <element xsi:nil="true"/>
           </children>
-          <styles xmi:type="notation:TextStyle" xmi:id="_1Ii99BQJEeSbjJMOqU-XlA"/>
+          <styles xmi:type="notation:TextStyle" xmi:id="_1Ii99BQJEeSbjJMOqU-XlA" textAlignment="Center"/>
           <styles xmi:type="notation:LineTypeStyle" xmi:id="_1Ii99RQJEeSbjJMOqU-XlA"/>
           <element xsi:nil="true"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1Ii99hQJEeSbjJMOqU-XlA" x="260" y="420" width="251" height="141"/>
@@ -350,13 +362,16 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Q79_EhyxEeSyV7ORmV5rRQ" x="50" y="870"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_fz4OgByxEeSyV7ORmV5rRQ" type="Note" fontName="Segoe UI" description="KO because one of the two EI in the hierarchy has an EIE with no type" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_enYv4pFwEeemoaFOWaTTWw" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_enYv45FwEeemoaFOWaTTWw" key="verticalAlignment" value="8"/>
+          </eAnnotations>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_fz4OgRyxEeSyV7ORmV5rRQ" type="DiagramName">
             <element xsi:nil="true"/>
           </children>
           <children xmi:type="notation:BasicDecorationNode" xmi:id="_fz4OghyxEeSyV7ORmV5rRQ" type="Description">
             <element xsi:nil="true"/>
           </children>
-          <styles xmi:type="notation:TextStyle" xmi:id="_fz4OgxyxEeSyV7ORmV5rRQ"/>
+          <styles xmi:type="notation:TextStyle" xmi:id="_fz4OgxyxEeSyV7ORmV5rRQ" textAlignment="Center"/>
           <styles xmi:type="notation:LineTypeStyle" xmi:id="_fz4OhByxEeSyV7ORmV5rRQ"/>
           <element xsi:nil="true"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fz4OhRyxEeSyV7ORmV5rRQ" x="450" y="790" width="251" height="111"/>
@@ -1055,7 +1070,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="Project_validation9.melodymodeller#863c9584-8a1c-4927-9c23-386e49accf61"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_tyiZsBQJEeSbjJMOqU-XlA" name="[CDB] Data - Class Diagram Blank">
+  <diagram:DSemanticDiagram xmi:id="_tyiZsBQJEeSbjJMOqU-XlA" name="[CDB] Data - Class Diagram Blank" uid="_ej4v8JFwEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_tyiZshQJEeSbjJMOqU-XlA" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_tyiZsxQJEeSbjJMOqU-XlA" type="Sirius" element="_tyiZsBQJEeSbjJMOqU-XlA" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_uQ2GUBQJEeSbjJMOqU-XlA" type="2003" element="_uQ0RIBQJEeSbjJMOqU-XlA">

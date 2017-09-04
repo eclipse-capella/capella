@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.1.0-->
+<!--Capella_Version_1.2.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.1.0"
-    xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.1.0"
-    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.1.0"
-    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.1.0"
-    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.1.0"
-    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.1.0"
-    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.1.0"
-    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.1.0"
-    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.1.0"
-    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0"
-    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.1.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.1.0" id="e45949e5-dd0d-43e5-8b84-9da87bcf2f31"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.2.0"
+    xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.2.0"
+    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.2.0"
+    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.2.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.2.0"
+    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.2.0"
+    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.2.0"
+    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.2.0"
+    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.2.0"
+    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.2.0"
+    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.2.0"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.2.0"
+    id="e45949e5-dd0d-43e5-8b84-9da87bcf2f31"
     name="Project_validation_12">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="d835f94e-cddb-410f-b0bd-c4fbe361215c"/>
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
@@ -256,8 +257,8 @@
                 <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                     id="15b8157c-b49d-43e3-a390-4fc092a6f870" name="region" involvedStates="#dfb4bf08-470c-45eb-9528-791c6c5a6c6c">
                   <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
-                      id="dfb4bf08-470c-45eb-9528-791c6c5a6c6c" name="Mode 11" outgoing="#b6a23a89-8081-4ce6-9747-4b013c7fe6b2"
-                      entry="#111f6afe-e2ef-4930-b634-16880e5fa831" doActivity="#048c6b9b-705f-4e34-af7f-728691d49d9c">
+                      id="dfb4bf08-470c-45eb-9528-791c6c5a6c6c" name="Mode 11" entry="#111f6afe-e2ef-4930-b634-16880e5fa831"
+                      doActivity="#048c6b9b-705f-4e34-af7f-728691d49d9c">
                     <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                         id="d4e86ad0-017a-43b6-9f86-8737d9e13b6e" name="region"/>
                   </ownedStates>
@@ -268,21 +269,19 @@
                 </ownedRegions>
               </ownedStates>
               <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
-                  id="83261dac-4b34-49de-947d-b1d9bbbe2c20" name="Mode 2" outgoing="#983223eb-645a-43bc-a007-60e06bca3142 #de0fc276-52c2-4b58-b56b-9f3c0c0c50d1"
-                  incoming="#b6a23a89-8081-4ce6-9747-4b013c7fe6b2" doActivity="#048c6b9b-705f-4e34-af7f-728691d49d9c"
+                  id="83261dac-4b34-49de-947d-b1d9bbbe2c20" name="Mode 2" doActivity="#048c6b9b-705f-4e34-af7f-728691d49d9c"
                   exit="#b0b5dba0-30bf-45c4-9c16-bca6c8b4f852">
                 <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                     id="3a3e01cc-023d-4ac9-896e-15a57b6cc5b5" name="region"/>
               </ownedStates>
               <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
-                  id="4e39ac2f-14fb-4206-b050-4aa4a49f98c7" name="Mode 3" incoming="#983223eb-645a-43bc-a007-60e06bca3142"
-                  exit="#048c6b9b-705f-4e34-af7f-728691d49d9c">
+                  id="4e39ac2f-14fb-4206-b050-4aa4a49f98c7" name="Mode 3" exit="#048c6b9b-705f-4e34-af7f-728691d49d9c">
                 <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                     id="288f3f05-afff-4990-8d6e-5a5b785bb069" name="region"/>
               </ownedStates>
               <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
-                  id="4c9355c5-d73d-4f52-abdf-c95439b58c05" name="Mode 4" incoming="#de0fc276-52c2-4b58-b56b-9f3c0c0c50d1"
-                  doActivity="#f96a4ade-1e9e-4017-a78d-c612eb4c7cd1" exit="#048c6b9b-705f-4e34-af7f-728691d49d9c">
+                  id="4c9355c5-d73d-4f52-abdf-c95439b58c05" name="Mode 4" doActivity="#f96a4ade-1e9e-4017-a78d-c612eb4c7cd1"
+                  exit="#048c6b9b-705f-4e34-af7f-728691d49d9c">
                 <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                     id="a4d57f00-3a7a-452c-a717-3c6e246d3e74" name="region"/>
               </ownedStates>

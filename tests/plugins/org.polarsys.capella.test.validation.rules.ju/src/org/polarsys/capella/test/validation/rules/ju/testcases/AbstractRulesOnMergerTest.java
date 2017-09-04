@@ -19,6 +19,6 @@ public abstract class AbstractRulesOnMergerTest extends ValidationRulePartialTes
 
 	@Override
 	protected String getRequiredTestModel() {
-		return "mergerTest"; //$NON-NLS-1$
+		return "validation.mergerTest"; //$NON-NLS-1$
 	}
 }

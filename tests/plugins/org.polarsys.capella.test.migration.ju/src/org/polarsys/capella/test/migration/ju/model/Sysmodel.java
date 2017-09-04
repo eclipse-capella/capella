@@ -19,6 +19,6 @@ public abstract class Sysmodel extends BasicTestCase {
 
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList(Sysmodel.class.getSimpleName().toLowerCase());
+    return Arrays.asList("migration.sysmodel");
   }
 }

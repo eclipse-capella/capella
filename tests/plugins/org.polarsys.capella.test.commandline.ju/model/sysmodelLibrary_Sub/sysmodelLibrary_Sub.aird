@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.1.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.1.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.1.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.1.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_Qd5H4OKyEeSbW_1s1tOuBA" selectedViews="_Q0GocOKyEeSbW_1s1tOuBA _Q0ZjYOKyEeSbW_1s1tOuBA _Q02PUOKyEeSbW_1s1tOuBA _Q0_ZQOKyEeSbW_1s1tOuBA _Q1S7QOKyEeSbW_1s1tOuBA _Q1l2MOKyEeSbW_1s1tOuBA _Q14xIOKyEeSbW_1s1tOuBA" version="11.1.0.201608251200">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.2.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.2.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.2.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.2.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.2.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_Qd5H4OKyEeSbW_1s1tOuBA" selectedViews="_Q0GocOKyEeSbW_1s1tOuBA _Q0ZjYOKyEeSbW_1s1tOuBA _Q02PUOKyEeSbW_1s1tOuBA _Q0_ZQOKyEeSbW_1s1tOuBA _Q1S7QOKyEeSbW_1s1tOuBA _Q1l2MOKyEeSbW_1s1tOuBA _Q14xIOKyEeSbW_1s1tOuBA" version="12.1.0.201708031200">
     <semanticResources>sysmodelLibrary_Sub.melodymodeller</semanticResources>
     <semanticResources>platform:/resource/sysmodelLibrary_Super/sysmodelLibrary_Super.melodymodeller</semanticResources>
     <semanticResources>sysmodelLibrary_Sub.afm</semanticResources>
@@ -9,14 +9,14 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_Q0ZjYOKyEeSbW_1s1tOuBA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_GogWMI-pEeagLJRD2VnG3A" name="[CDB] Data - Class Diagram Blank" representation="_jYUVEOKzEeSbW_1s1tOuBA">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_GogWMI-pEeagLJRD2VnG3A" name="[CDB] Data - Class Diagram Blank" repPath="#_KBg04JFsEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="sysmodelLibrary_Sub.melodymodeller#fcc95bb8-7a0e-4783-ba14-f90ff5453577"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_Q02PUOKyEeSbW_1s1tOuBA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_GogWMY-pEeagLJRD2VnG3A" name="[LAB] Logical System - Logical Architecture Blank" representation="_50GbEOKyEeSbW_1s1tOuBA">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_GogWMY-pEeagLJRD2VnG3A" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_KBm7gJFsEeemoaFOWaTTWw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="sysmodelLibrary_Sub.melodymodeller#73263423-d8e5-408f-816d-5c2e5ad7065b"/>
       </ownedRepresentationDescriptors>
@@ -34,7 +34,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_jYUVEOKzEeSbW_1s1tOuBA" name="[CDB] Data - Class Diagram Blank">
+  <diagram:DSemanticDiagram xmi:id="_jYUVEOKzEeSbW_1s1tOuBA" name="[CDB] Data - Class Diagram Blank" uid="_KBg04JFsEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_jYUVEuKzEeSbW_1s1tOuBA" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_jYUVE-KzEeSbW_1s1tOuBA" type="Sirius" element="_jYUVEOKzEeSbW_1s1tOuBA" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_l8_RQOKzEeSbW_1s1tOuBA" type="2003" element="_l8F5YOKzEeSbW_1s1tOuBA">
@@ -212,7 +212,7 @@
     <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="sysmodelLibrary_Sub.melodymodeller#fcc95bb8-7a0e-4783-ba14-f90ff5453577"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_50GbEOKyEeSbW_1s1tOuBA" name="[LAB] Logical System - Logical Architecture Blank">
+  <diagram:DSemanticDiagram xmi:id="_50GbEOKyEeSbW_1s1tOuBA" name="[LAB] Logical System - Logical Architecture Blank" uid="_KBm7gJFsEeemoaFOWaTTWw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_50GbGOKyEeSbW_1s1tOuBA" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_50GbGeKyEeSbW_1s1tOuBA" type="Sirius" element="_50GbEOKyEeSbW_1s1tOuBA" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_50GbG-KyEeSbW_1s1tOuBA" type="2002" element="_50GbEeKyEeSbW_1s1tOuBA">
