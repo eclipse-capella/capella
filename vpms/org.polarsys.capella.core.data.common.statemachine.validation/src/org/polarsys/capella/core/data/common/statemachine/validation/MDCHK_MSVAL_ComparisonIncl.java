@@ -182,8 +182,16 @@ public class MDCHK_MSVAL_ComparisonIncl extends AbstractModelConstraint {
         }
       }
     }
-    if(failureMessageArgument1.size() > 0){
-      return ConstraintStatus.createMultiStatus(ctx, failureMessageArgument1);
+    ArrayList<String> messageDistinct = new ArrayList<>();
+    ArrayList<IStatus> statusDistinct = new ArrayList<>();
+    for(IStatus statut : failureMessageArgument1){
+      if(!messageDistinct.contains(statut.getMessage())){
+        messageDistinct.add(statut.getMessage());
+        statusDistinct.add(statut);
+      }
+    }
+    if(statusDistinct.size() > 0){
+      return ConstraintStatus.createMultiStatus(ctx, statusDistinct);
     }
     else {
       return ctx.createSuccessStatus();
