@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="information" nsURI="http://www.polarsys.org/capella/core/information/1.1.0"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="information" nsURI="http://www.polarsys.org/capella/core/information/1.2.0"
     nsPrefix="org.polarsys.capella.core.data.information">
   <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
     <details key="trackResourceModification" value="true"/>
@@ -2866,7 +2866,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eSubpackages name="communication" nsURI="http://www.polarsys.org/capella/core/information/communication/1.1.0"
+  <eSubpackages name="communication" nsURI="http://www.polarsys.org/capella/core/information/communication/1.2.0"
       nsPrefix="org.polarsys.capella.core.data.information.communication">
     <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
       <details key="trackResourceModification" value="true"/>
@@ -3674,7 +3674,7 @@
       </eStructuralFeatures>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="datatype" nsURI="http://www.polarsys.org/capella/core/information/datatype/1.1.0"
+  <eSubpackages name="datatype" nsURI="http://www.polarsys.org/capella/core/information/datatype/1.2.0"
       nsPrefix="org.polarsys.capella.core.data.information.datatype">
     <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
       <details key="trackResourceModification" value="true"/>
@@ -4399,7 +4399,7 @@
       </eLiterals>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="datavalue" nsURI="http://www.polarsys.org/capella/core/information/datavalue/1.1.0"
+  <eSubpackages name="datavalue" nsURI="http://www.polarsys.org/capella/core/information/datavalue/1.2.0"
       nsPrefix="org.polarsys.capella.core.data.information.datavalue">
     <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
       <details key="trackResourceModification" value="true"/>

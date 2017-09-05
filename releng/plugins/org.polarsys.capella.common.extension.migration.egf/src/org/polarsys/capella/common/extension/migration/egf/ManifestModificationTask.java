@@ -56,7 +56,7 @@ public class ManifestModificationTask implements ITaskProduction {
                 	
                 	bundlePluginModelBase.getPluginBase().setProviderName("%pluginName");
                 	bundlePluginModelBase.getPluginBase().setProviderName("%providerName");
-                	bundlePluginModelBase.getPluginBase().setVersion("1.1.0.qualifier");
+                	bundlePluginModelBase.getPluginBase().setVersion("1.2.0.qualifier");
                 	
                 	IPluginImport[] imports = bundlePluginModelBase.getPluginBase().getImports();
                 	boolean extension_xmi_found = false;

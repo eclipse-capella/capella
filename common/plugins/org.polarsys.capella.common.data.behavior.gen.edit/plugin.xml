@@ -18,7 +18,7 @@
    
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <factory class="org.polarsys.capella.common.data.behavior.provider.BehaviorItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/common/behavior/1.1.0"/>
+      <factory class="org.polarsys.capella.common.data.behavior.provider.BehaviorItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/common/behavior/1.2.0"/>
    </extension>
 
 </plugin>
