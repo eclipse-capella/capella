@@ -67,8 +67,10 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
   @Override
   protected void createAdditionalResources(Collection<Resource> additionalResources,
       TransactionalEditingDomain transactionalEditingDomain, URI sessionResourceURI, IProgressMonitor monitor) {
-    additionalResources.add(
-        new SessionMetadataHelper().createMetadataResource(transactionalEditingDomain, sessionResourceURI, monitor));
+    Resource metadataResource = new SessionMetadataHelper().createMetadataResource(transactionalEditingDomain, sessionResourceURI, monitor);
+    if (metadataResource != null) {
+      additionalResources.add(metadataResource);
+    }
   }
 
   @Override
@@ -149,15 +151,16 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
     }
 
     public void registerMetadataResource(Resource resource, final Session session, final IProgressMonitor monitor) {
-      final URI metadataResourceURI = resource.getURI();
-      ExecutionManagerRegistry.getInstance().getExecutionManager(session.getTransactionalEditingDomain())
-          .execute(new AbstractReadWriteCommand() {
-            @Override
-            public void run() {
-              session.addSemanticResource(metadataResourceURI, monitor);
-            }
-          });
-
+      if (resource != null && session !=null) {
+        final URI metadataResourceURI = resource.getURI();
+        ExecutionManagerRegistry.getInstance().getExecutionManager(session.getTransactionalEditingDomain())
+            .execute(new AbstractReadWriteCommand() {
+              @Override
+              public void run() {
+                session.addSemanticResource(metadataResourceURI, monitor);
+              }
+            });
+      }
     }
 
     /**
