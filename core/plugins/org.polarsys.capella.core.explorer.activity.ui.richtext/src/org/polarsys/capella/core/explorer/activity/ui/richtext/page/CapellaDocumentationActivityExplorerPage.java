@@ -40,7 +40,7 @@ import org.polarsys.kitalpha.richtext.widget.factory.MDERichTextFactory;
  */
 public class CapellaDocumentationActivityExplorerPage extends CommonActivityExplorerPage {
 
-    private MDERichTextWidget _documentationText;
+    private MDERichTextWidget documentationText;
 
     /**
      * Default constructor.
@@ -66,8 +66,10 @@ public class CapellaDocumentationActivityExplorerPage extends CommonActivityExpl
     @Override
     public void dispose() {
         super.dispose();
-        _documentationText.dispose();
-        _documentationText = null;
+        if (documentationText != null) {
+            documentationText.dispose();
+            documentationText = null;
+        }
     }
 
     /**
@@ -76,8 +78,8 @@ public class CapellaDocumentationActivityExplorerPage extends CommonActivityExpl
      * @param parent
      */
     protected void createDocumentationText(Composite parent) {
-        _documentationText = (new MDERichTextFactory()).createDefaultRichTextWidget(parent);
-        _documentationText.setSaveStrategy(new SaveStrategy() {
+        documentationText = (new MDERichTextFactory()).createDefaultRichTextWidget(parent);
+        documentationText.setSaveStrategy(new SaveStrategy() {
             @Override
             public void save(final String editorText, final EObject owner, final EStructuralFeature feature) {
                 if (NotificationHelper.isNotificationRequired(owner, feature, editorText)) {
@@ -86,11 +88,11 @@ public class CapellaDocumentationActivityExplorerPage extends CommonActivityExpl
                             owner.eSet(feature, editorText);
                         }
                     };
-                    TransactionHelper.getExecutionManager(_documentationText.getElement()).execute(saveCommand);
+                    TransactionHelper.getExecutionManager(documentationText.getElement()).execute(saveCommand);
                 }
             }
         });
-        _documentationText.bind(getDocumentedModelElement(), CapellacorePackage.Literals.CAPELLA_ELEMENT__DESCRIPTION);
+        documentationText.bind(getDocumentedModelElement(), CapellacorePackage.Literals.CAPELLA_ELEMENT__DESCRIPTION);
     }
 
     @Override
