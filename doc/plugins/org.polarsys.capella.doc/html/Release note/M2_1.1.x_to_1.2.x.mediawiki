@@ -1,0 +1,20 @@
+= Metamodel changes =
+
+== From Capella 1.1.x to 1.2.x ==
+
+=== Modification of all NSURI ===
+
+* http://www.polarsys.org/capella/core/.../1.1.0 to http://www.polarsys.org/capella/core/.../1.2.0
+* http://www.polarsys.org/capella/common/.../1.1.0 to http://www.polarsys.org/capella/common/.../1.2.0
+
+=== [Bugzilla 1724][M2] Use derived method instead of eOpposite ===
+
+* The reference '''Involvement.involver''' has been set ''derived'' (the implementation returns the ''eContainer'' of the involvement link)
+* The reference '''FunctionalExchange.categories''' has been set ''derived'' (the implementation returns the referencing ''ExchangeCategory'' through the reference ''ExchangeCategory.exchanges'')
+* The reference '''ComponentExchange.categories''' has been set ''derived'' (the implementation returns the referencing ''ComponentExchangeCategory'' through the reference ''ComponentExchangeCategory.exchanges'')
+* The reference '''PhysicalLink.categories''' has been set ''derived'' (the implementation returns the referencing ''PhysicalLinkCategory'' through the reference  ''PhysicalLinkCategory.links'')
+* The reference '''AbstractState.incoming''' has been set ''derived'' (the implementation returns the referencing ''StateTransition'' through the reference  ''StateTransition.target'')
+* The reference '''AbstractState.outgoing''' has been set ''derived'' (the implementation returns the referencing ''StateTransition'' through the reference  ''StateTransition.source'')
+* The reference '''Capability.purposes''' has been set ''derived'' (the implementation returns the referencing ''CapabilityExploitation'' through the reference  ''CapabilityExploitation.capability'')
+* The reference '''CapabilityExploitation.mission''' has been set ''derived'' (the implementation returns the ''eContainer'' of the exploitation link)
+* The reference '''ComponentPortAllocationEnd.owningComponentPortAllocation''' has been set ''derived'' (the implementation returns the ''eContainer'' of the allocation link)

@@ -1,0 +1,3 @@
+= API changes =
+
+This section describes the technical changes in the Capella API.
