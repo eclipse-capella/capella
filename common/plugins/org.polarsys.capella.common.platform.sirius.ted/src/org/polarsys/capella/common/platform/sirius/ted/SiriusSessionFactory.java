@@ -47,13 +47,13 @@ import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
 public class SiriusSessionFactory extends SessionFactoryImpl implements SessionFactory {
 
   @Override
-  protected Session createSession(DAnalysis analysis) {
+  protected Session createSession(DAnalysis analysis, final TransactionalEditingDomain transactionalEditingDomain) {
     return new DAnalysisSessionImpl(analysis) {
       @Override
       public Collection<Resource> getSemanticResources() {
         Collection<Resource> semanticResources = new ArrayList<Resource>(super.getSemanticResources());
         semanticResources.addAll(new DerivedResourcesHelper()
-            .getDerivedSemanticResources(this.getTransactionalEditingDomain(), semanticResources));
+            .getDerivedSemanticResources(transactionalEditingDomain, semanticResources));
         return Collections.unmodifiableCollection(semanticResources);
       }
     };
