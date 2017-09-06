@@ -1,0 +1,14 @@
+= Metamodel changes =
+
+== From Capella 1.0.x to 1.1.x ==
+
+=== Modification of all NSURI ===
+
+* http://www.polarsys.org/capella/core/.../1.0.0 to http://www.polarsys.org/capella/core/.../1.1.0
+* http://www.polarsys.org/capella/common/.../1.0.0 to http://www.polarsys.org/capella/common/.../1.1.0
+
+=== [Bugzilla 1053] Capella meta-model enhancements ===
+
+* Cardinality on references "State#doActivity", "State#entry", "State#exit" and "StateTransition#effect" have been updated from [0-1] to [0-*]
+* EntryPoints and ExitPoints can now be added, not only on regions, but on StateMachines and States/Modes (through the relation "ownedConnectionPoints [0-*]")
+* An inheritance link has been added from FunctionPort to AbstractEvent (to allow Ports on stateTransition.trigger)

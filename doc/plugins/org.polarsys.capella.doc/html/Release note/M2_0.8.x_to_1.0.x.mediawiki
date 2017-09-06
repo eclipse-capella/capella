@@ -1,0 +1,36 @@
+= Metamodel changes =
+
+== From Capella 0.8.x to 1.0.x ==
+
+=== Modification of all NSURI ===
+
+* http://www.polarsys.org/capella/core/.../0.8.0 to http://www.polarsys.org/capella/core/.../1.0.0
+* http://www.polarsys.org/capella/common/.../0.8.0 to http://www.polarsys.org/capella/common/.../1.0.0
+
+=== [M2][MIGRATION]Update RPL and suffix management ===
+
+* Add suffix on CatalogElement
+* Add suffixed on CatalogElementLink
+
+=== [M&S] State mode / state minimal improvements ===
+
+* Rename IState.availableInStates to IState.exploitedStates
+* Remove time from TimeEvent
+* Rename StateEvent.condition to StateEvent.expression
+
+=== Export does not provide information to get Entry/exit from Modes and States ===
+
+* add semantic annotation on State.entry
+* add semantic annotation on State.exit
+
+=== Removed eOpposite & made derived the following features ===
+
+* AbstractCapability#including
+* AbstractCapability#extending
+* AbstractCapability#subGeneralizations
+* AbstractCapabilityExtend#extension
+* AbstractCapabilityInclude#inclusion
+* DeploymentTarget#deploymentLinks
+* AbstractCapabilityGeneralization#sub
+* AbstractCapabilityExtensionPoint#abstractCapability
+* Removed class communication.CommunicationLinkAllocation
