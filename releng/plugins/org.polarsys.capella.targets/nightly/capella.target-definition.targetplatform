@@ -49,18 +49,18 @@ location kitalpha-runtime-master-latest "https://hudson.polarsys.org/kitalpha/jo
 	org.polarsys.kitalpha.richtext.widget.feature.feature.group lazy
 }
 
-location diffmerge-core-master "http://download.eclipse.org/diffmerge/releases/0.8.0/emf-diffmerge-site" {
+location diffmerge-core-master "http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site" {
 	org.eclipse.emf.diffmerge.feature.feature.group
 	org.eclipse.emf.diffmerge.sirius.feature.feature.group
 	org.eclipse.emf.diffmerge.gmf.feature.feature.group
 }
 
-location diffmerge-patterns-master "http://download.eclipse.org/diffmerge/releases/0.8.0/edm-patterns-site" {
+location diffmerge-patterns-master "http://download.eclipse.org/diffmerge/releases/0.9.0/edm-patterns-site" {
 	org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group
 	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group
 }
 
-location amalgam-1.8.0 "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.9.0-N20170802-100423/neon" {
+location amalgam-1.8.0 "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.9.0-N20170906-115135/capella" {
 	org.eclipse.amalgam.explorer.activity.feature.group
 }
 
