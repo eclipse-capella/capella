@@ -17,7 +17,7 @@ import java.util.Map;
 
 import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
 import org.eclipse.emf.diffmerge.sirius.SiriusMatchPolicy;
-import org.eclipse.emf.diffmerge.util.structures.comparable.ComparableTreeMap;
+import org.eclipse.emf.diffmerge.structures.common.comparable.ComparableTreeMap;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -76,7 +76,6 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 import org.polarsys.kitalpha.ad.metadata.metadata.ViewpointReference;
-
 
 /**
  * A multi-criteria match policy for Capella.
