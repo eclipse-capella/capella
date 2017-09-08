@@ -13,4 +13,9 @@ By default, this file is generated into the current workspace. However the file 
 
  -DUsagePath=D:\APP\<UsagePath>
 
-''' Note :''' This preference is deactivated by default.
+If this file reaches the size of 20 MB, another file is created.
+The maximum number of files is 30.
+If this limit is reaches, the first file is destroyed and therefore the log performs a cycle on the files.
+
+
+''' Note :''' This preference is activated by default.
