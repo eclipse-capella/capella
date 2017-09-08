@@ -16,5 +16,5 @@ public interface IUsagePreferences {
    */
   public static final String PREFERENCES_ACTIVATE_USAGE_MONITORING = "usage.activated"; //$NON-NLS-1$
   
-  public final Boolean PREFERENCES_ACTIVATE_USAGE_MONITORING_DEFAULT = Boolean.FALSE;
+  public final Boolean PREFERENCES_ACTIVATE_USAGE_MONITORING_DEFAULT = Boolean.TRUE;
 }
