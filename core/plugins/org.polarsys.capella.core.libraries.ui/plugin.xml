@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -22,7 +22,7 @@
    <extension
          point="org.eclipse.ui.newWizards">
       <wizard
-            category="org.polarsys.capella.common.mdsofa.category.wizards"
+            category="org.polarsys.capella.wizards"
             class="org.polarsys.capella.core.libraries.ui.wizard.newLibrary.NewLibraryProjectWizard"
             hasPages="true"
             icon="icons/full/etool16/Library.gif"
