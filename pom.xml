@@ -138,10 +138,13 @@
 				</executions>
 				<configuration>
 					<excludes>
-						<!-- provide plug-ins not containing any source code -->
+						<!-- provide bundles not containing any source code -->
 						<plugin id="org.polarsys.capella.core.data.res.edit" />
 						<plugin id="org.polarsys.capella.core.data.res.editor" />
 						<plugin id="org.polarsys.capella.ui.views" />
+						<feature id="org.eclipse.nebula.widgets.richtext.feature" />
+						<feature id="org.polarsys.kitalpha.richtext.mde.tools.sirius.feature" />
+						<feature id="org.polarsys.kitalpha.richtext.widget.feature" />
 					</excludes>
 				</configuration>
 			</plugin>
@@ -327,7 +330,8 @@
 				<module>releng/plugins/org.polarsys.capella.rcp</module>
 				<module>releng/plugins/org.polarsys.capella.rcp.product</module>
 				<module>releng/plugins/org.polarsys.capella.rcp.site</module>
-				
+				<module>releng/plugins/org.polarsys.capella.richtext.site</module>
+
 				<!-- Tests -->
 				<module>tests/features/org.polarsys.capella.test.feature</module>
 				<module>tests/plugins</module>
@@ -367,7 +371,8 @@
 				<module>releng/plugins/org.polarsys.capella.rcp</module>
 				<module>releng/plugins/org.polarsys.capella.rcp.product</module>
 				<module>releng/plugins/org.polarsys.capella.rcp.site</module>
-				
+				<module>releng/plugins/org.polarsys.capella.richtext.site</module>
+
 				<!-- Tests -->
 				<module>tests/features/org.polarsys.capella.test.feature</module>
 				<module>tests/plugins</module>

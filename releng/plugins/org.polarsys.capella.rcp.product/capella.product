@@ -63,6 +63,7 @@
       <feature id="org.eclipse.sirius.doc.feature"/>
       <feature id="org.eclipse.sirius.query.legacy.feature"/>
       <feature id="org.eclipse.sirius.runtime"/>
+      <feature id="org.eclipse.sirius.runtime.source"/>
       <feature id="org.eclipse.sirius.runtime.aql"/>
       <feature id="org.eclipse.sirius.runtime.ide.ui"/>
 	  <feature id="org.eclipse.sirius.interpreter.feature"/>
