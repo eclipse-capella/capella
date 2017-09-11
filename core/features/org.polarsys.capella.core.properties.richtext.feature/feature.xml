@@ -27,9 +27,20 @@
       %license
    </license>
 
+   <includes
+         id="org.eclipse.nebula.widgets.richtext.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.polarsys.kitalpha.richtext.mde.tools.sirius.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.polarsys.kitalpha.richtext.widget.feature"
+         version="0.0.0"/>
+
    <requires>
       <import feature="org.polarsys.capella.core.properties.feature"/>
-      <import feature="org.polarsys.kitalpha.richtext.widget.feature"/>
    </requires>
 
    <plugin
