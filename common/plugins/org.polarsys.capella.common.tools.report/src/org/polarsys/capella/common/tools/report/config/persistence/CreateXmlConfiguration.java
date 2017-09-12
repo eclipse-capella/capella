@@ -38,7 +38,7 @@ public class CreateXmlConfiguration {
   /**
    * 
    */
-  private static final String FILE_PATH = System.getProperty("user.home") + File.separator + "ReportConfiguration.xml"; //$NON-NLS-1$//$NON-NLS-2$
+  private static final String FILE_PATH = System.getProperty("osgi.configuration.area") + File.separator + "ReportConfiguration.xml"; //$NON-NLS-1$//$NON-NLS-2$
 
   private final ObjectFactory _factory = new ObjectFactory();
 
