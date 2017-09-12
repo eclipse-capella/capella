@@ -11,66 +11,67 @@
 package org.polarsys.capella.common.tools.report.appenders.usage.util;
 
 public class UsageMonitoring {
-  private String toolName;
-  private String toolVersion;
-  private String context;
-  private String event;
-  private String status;
-
-  public String getContext() {
-    return context;
+  private String applicationName;
+  private String applicationVersion;
+  private String eventName;
+  private String eventContext;
+  private String eventStatus;
+  private String addendum;
+  
+  public UsageMonitoring(final String applicationName, final String applicationVersion, final String eventName, final String eventContext, final String eventStatus, final String addendum) {
+  this.applicationName = applicationName;
+    this.applicationVersion = applicationVersion;
+    this.eventName = eventName;
+    this.eventContext = eventContext;
+    this.eventStatus = eventStatus;
+    this.addendum = addendum;
   }
 
-  public void setContext(String context) {
-    this.context = context;
+  public String getApplicationName() {
+    return applicationName;
   }
 
-  public String getStatus() {
-    return status;
+  public void setApplicationName(String applicationName) {
+    this.applicationName = applicationName;
   }
 
-  public void setStatus(String status) {
-    this.status = status;
+  public String getApplicationVersion() {
+    return applicationVersion;
   }
 
-  public UsageMonitoring(final String toolName, final String toolVersion, final String event, final String context) {
-    this.toolName = toolName;
-    this.toolVersion = toolVersion;
-    this.event = event;
-    this.context = context;
+  public void setApplicationVersion(String applicationVersion) {
+    this.applicationVersion = applicationVersion;
+  }
+  
+  public String getEventName() {
+    return eventName;
   }
 
-  public UsageMonitoring(final String toolName, final String toolVersion, final String event, final String context,
-      final String status) {
-    this.toolName = toolName;
-    this.toolVersion = toolVersion;
-    this.event = event;
-    this.context = context;
-    this.status = status;
+  public void setEventName(String eventName) {
+    this.eventName = eventName;
+  }
+  
+  public String getEventContext() {
+    return eventContext;
   }
 
-  public String getToolName() {
-    return toolName;
+  public void setEventContext(String eventContext) {
+    this.eventContext = eventContext;
   }
 
-  public void setToolName(String toolName) {
-    this.toolName = toolName;
+  public String getEventStatus() {
+    return eventStatus;
   }
 
-  public String getToolVersion() {
-    return toolVersion;
+  public void setEventStatus(String eventStatus) {
+    this.eventStatus = eventStatus;
+  }
+  
+  public String getAddendum() {
+    return addendum;
   }
 
-  public void setToolVersion(String toolVersion) {
-    this.toolVersion = toolVersion;
+  public void setAddendum(String addendum) {
+    this.addendum = addendum;
   }
-
-  public String getEvent() {
-    return event;
-  }
-
-  public void setEvent(String event) {
-    this.event = event;
-  }
-
 }

@@ -66,15 +66,21 @@ public class UsageMonitoringLogger {
     }
   }
 
-  public void log(final String event, final String context) {
+  public void log(final String eventName, final String eventStatus) {
     if (isUsageMonitoringActivated()) {
-      logger.log(event, context);
+      logger.log(eventName, eventStatus);
     }
   }
 
-  public void log(final String event, final String context, final String status) {
+  public void log(final String eventName, final String eventContext, final String eventStatus) {
     if (isUsageMonitoringActivated()) {
-      logger.log(event, context, status);
+      logger.log(eventName, eventContext, eventStatus);
+    }
+  }
+  
+  public void log(final String eventName, final String eventContext, final String eventStatus, final String addendum) {
+    if (isUsageMonitoringActivated()) {
+      logger.log(eventName, eventContext, eventStatus, addendum);
     }
   }
 

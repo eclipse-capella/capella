@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -177,14 +177,15 @@ public class NavigatorCommandStackListener implements CommandStackListener {
     operationSupport.getOperationHistory().addOperationHistoryListener(new IOperationHistoryListener() {
 
       @Override
-      public void historyNotification(OperationHistoryEvent arg0) {
+      public void historyNotification(OperationHistoryEvent ohe) {
         
-        if (arg0.getEventType() == OperationHistoryEvent.ABOUT_TO_EXECUTE) {
-          // Usage logging call
-          UsageMonitoringLogger.getInstance().log(UsageLogger.START, arg0.getOperation().getLabel());
-          
-        } else if (arg0.getEventType() == OperationHistoryEvent.DONE) {
-          UsageMonitoringLogger.getInstance().log(UsageLogger.STOP, arg0.getOperation().getLabel(), UsageLogger.OK);
+    	// Usage logging call
+        if (ohe.getEventType() == OperationHistoryEvent.ABOUT_TO_EXECUTE) {
+          UsageMonitoringLogger.getInstance().log(ohe.getOperation().getLabel(), UsageLogger.NONE);
+        } else if (ohe.getEventType() == OperationHistoryEvent.DONE) {
+          UsageMonitoringLogger.getInstance().log(ohe.getOperation().getLabel(), UsageLogger.OK);
+        } else if (ohe.getEventType() == OperationHistoryEvent.OPERATION_NOT_OK) {
+          UsageMonitoringLogger.getInstance().log(ohe.getOperation().getLabel(), UsageLogger.ERROR);
         }
       }
     });

@@ -14,37 +14,31 @@ import org.apache.log4j.Logger;
 
 public class UsageLogger {
 	private static final String USAGE_LOGGER = "Usage";
-	private final String productName;
-	private final String productVersion;
+	private final String applicationName;
+	private final String applicationVersion;
 	private final Logger logger = Logger.getLogger(UsageLogger.USAGE_LOGGER);
 
-	public final static String START = "START";
-	public final static String STOP = "STOP";
+	public final static String NONE = "";
 	public final static String OK = "OK";
 	public final static String ERROR = "ERROR";
-	public final static String WARNING = "WARNING";
 
-	private final static String NONE = "";
-
-	public UsageLogger(final String toolName, final String toolVersion) {
-		this.productName = toolName;
-		this.productVersion = toolVersion;
+	public UsageLogger(final String applicationName, final String applicationVersion) {
+		this.applicationName = applicationName;
+		this.applicationVersion = applicationVersion;
 	}
 
-	public void log(final String event, final String context, final String status) {
-		try {
-			final String formattedUsageMonitoring = UsageFormatter
-					.format(new UsageMonitoring(productName, productVersion, event, context, status)); // $NON-NLS-1$
-			logger.info(formattedUsageMonitoring);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void log(final String eventName, final String eventStatus) {
+		log(eventName, NONE, eventStatus, NONE);
 	}
 
-	public void log(final String event, final String context) {
+	public void log(final String eventName, final String eventContext, final String eventStatus) {
+		log(eventName, eventContext, eventStatus, NONE);
+	}
+	
+	public void log(final String eventName, final String eventContext, final String eventStatus, final String addendum) {
 		try {
 			final String formattedUsageMonitoring = UsageFormatter
-					.format(new UsageMonitoring(productName, productVersion, event, context, UsageLogger.NONE)); // $NON-NLS-1$
+					.format(new UsageMonitoring(applicationName, applicationVersion, eventName, eventContext, eventStatus, addendum)); // $NON-NLS-1$
 			logger.info(formattedUsageMonitoring);
 		} catch (Exception e) {
 			e.printStackTrace();
