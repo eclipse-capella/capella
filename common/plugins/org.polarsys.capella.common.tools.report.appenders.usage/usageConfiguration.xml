@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  Copyright (c) 2017 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<ReportConfigurationFile fileFormatVersion="1.0.1" reportManagerVersion="1.1">
+    <ConfigurationInstance ComponentName="Usage">
+        <OutputConfiguration outputName="Console">
+            <LogLevel name="INFO" value="false"/>
+            <LogLevel name="DEBUG" value="false"/>
+            <LogLevel name="WARN" value="false"/>
+            <LogLevel name="ERROR" value="false"/>
+            <LogLevel name="FATAL" value="false"/>
+        </OutputConfiguration>
+        <OutputConfiguration outputName="File">
+            <LogLevel name="INFO" value="false"/>
+            <LogLevel name="DEBUG" value="false"/>
+            <LogLevel name="WARN" value="false"/>
+            <LogLevel name="ERROR" value="false"/>
+            <LogLevel name="FATAL" value="false"/>
+        </OutputConfiguration>
+        <OutputConfiguration outputName="Information">
+            <LogLevel name="INFO" value="false"/>
+            <LogLevel name="DEBUG" value="false"/>
+            <LogLevel name="WARN" value="false"/>
+            <LogLevel name="ERROR" value="false"/>
+            <LogLevel name="FATAL" value="false"/>
+        </OutputConfiguration>
+    </ConfigurationInstance>
+</ReportConfigurationFile>

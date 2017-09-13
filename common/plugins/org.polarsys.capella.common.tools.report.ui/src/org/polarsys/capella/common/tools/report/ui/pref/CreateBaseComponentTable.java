@@ -55,7 +55,7 @@ public class CreateBaseComponentTable {
     _registry = registry;
     _lineLevelNames = levelsName;
     // Initialize appenders name list
-    _appendersName.addAll(registry.getAppenders().keySet());
+    _appendersName.addAll(registry.getAppenderKinds());
     // new create table
     createLoggingTable(composite, registry, levelsName);
   }
@@ -108,9 +108,7 @@ public class CreateBaseComponentTable {
           String key = computeButtonKey(componentName, levelName, appender);
           _buttons.put(key, tickBox);
         }
-
       }
-
     }
     // initialize values
     initializeValuesForReport();
@@ -144,9 +142,7 @@ public class CreateBaseComponentTable {
           setButtonState(componentName, opConfiguration.getOutputName(), ll.getName(), ll.isValue());
         }
       }
-
     }
-
   }
 
   private void setButtonState(String componentName, String appenderName, String levelName, boolean value) {
@@ -198,7 +194,6 @@ public class CreateBaseComponentTable {
         Button button = _buttons.get(key);
         boolean state = button.getSelection();
         ll.setValue(state);
-
       }
     } catch (Exception e) {
       e.printStackTrace();

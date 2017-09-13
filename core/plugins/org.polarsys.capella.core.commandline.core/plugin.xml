@@ -29,13 +29,6 @@
    <extension
          point="org.polarsys.capella.common.tools.report.Log4jAppendersExtension">
       <Log4jAppendersExtension
-            class="org.polarsys.capella.core.commandline.core.CommandLineFileAppender"
-            id="org.polarsys.capella.core.commandline.core.CommandLineFileAppender">
-      </Log4jAppendersExtension>
-   </extension>
-   <extension
-         point="org.polarsys.capella.common.tools.report.Log4jAppendersExtension">
-      <Log4jAppendersExtension
             class="org.polarsys.capella.core.commandline.core.CommandLineConsoleAppender"
             id="org.polarsys.capella.core.commandline.core.CommandLineConsoleAppender">
       </Log4jAppendersExtension>

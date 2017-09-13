@@ -20,7 +20,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -28,7 +27,6 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.PropertyException;
 import javax.xml.bind.Unmarshaller;
 
-import org.apache.log4j.Appender;
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 
 /**
@@ -42,10 +40,16 @@ public class CreateXmlConfiguration {
 
   private final ObjectFactory _factory = new ObjectFactory();
 
+  private String filePath = null;
+  
   public CreateXmlConfiguration() {
-    super();
+    this.filePath = FILE_PATH;
   }
 
+  public CreateXmlConfiguration(String filePath) {
+    this.filePath = filePath;
+  }
+  
   /**
    * Create default XML configuration file.
    * 
@@ -56,9 +60,7 @@ public class CreateXmlConfiguration {
    * @return
    * 
    */
-  public ConfigurationInstance createDefaultConfiguration(String componentName, Map<String, Appender> map) {
-
-    Set<String> appenders = map.keySet();
+  public ConfigurationInstance createDefaultConfiguration(String componentName, Collection<String> appenders) {
 
     ConfigurationInstance confInstance = _factory.createConfigurationInstance();
     confInstance.setComponentName(componentName);
@@ -72,7 +74,7 @@ public class CreateXmlConfiguration {
 
       opConfList.add(currentConfig);
 
-      createLogConfig(currentConfig, true);
+      createLogConfig(currentConfig);
 
     }
 
@@ -83,7 +85,7 @@ public class CreateXmlConfiguration {
    * 
    * 
    */
-  private void createLogConfig(OutputConfiguration outputConfiguration, boolean logLevelValue) {
+  private void createLogConfig(OutputConfiguration outputConfiguration) {
     List<LogLevel> logLevelListFile = outputConfiguration.getLogLevel();
 
     logLevelListFile.clear();
@@ -94,12 +96,13 @@ public class CreateXmlConfiguration {
       logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_WARN));
       logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_ERROR));
       logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_FATAL));
+      
     } else {
-      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_INFO));
+      logLevelListFile.add(buildLogLevel(true, ReportManagerConstants.LOG_LEVEL_INFO));
       logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
-      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_WARN));
-      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_ERROR));
-      logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_FATAL));
+      logLevelListFile.add(buildLogLevel(true, ReportManagerConstants.LOG_LEVEL_WARN));
+      logLevelListFile.add(buildLogLevel(true, ReportManagerConstants.LOG_LEVEL_ERROR));
+      logLevelListFile.add(buildLogLevel(true, ReportManagerConstants.LOG_LEVEL_FATAL));
     }
   }
 
@@ -121,7 +124,7 @@ public class CreateXmlConfiguration {
    */
   public boolean isConfigurationFileExists() {
     // To do check for correct path in addition to adding uml model project name to file name
-    File file = new File(FILE_PATH);
+    File file = new File(filePath);
     return file.exists();
   }
 
@@ -141,7 +144,7 @@ public class CreateXmlConfiguration {
         // create a UnMarshaller and marshal to a file
         Unmarshaller marshaller = jc.createUnmarshaller();
         // To do Check for file correct path
-        ReportConfigurationFile file = (ReportConfigurationFile) marshaller.unmarshal(new FileInputStream(FILE_PATH));
+        ReportConfigurationFile file = (ReportConfigurationFile) marshaller.unmarshal(new FileInputStream(filePath));
 
         configurationMap.putAll(getConfiguration(file));
 
@@ -211,7 +214,7 @@ public class CreateXmlConfiguration {
       JAXBContext jc = getJAXBContext();
       Marshaller marshaller = jc.createMarshaller();
       marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-      marshaller.marshal(repConffile, new FileOutputStream(FILE_PATH));
+      marshaller.marshal(repConffile, new FileOutputStream(filePath));
 
     } catch (PropertyException exception) {
       exception.printStackTrace();

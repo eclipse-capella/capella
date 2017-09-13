@@ -59,7 +59,7 @@ public class UsageMonitoring {
   public void setApplicationVersion(String applicationVersion) {
     this.applicationVersion = applicationVersion;
   }
-  
+
   public String getEventName() {
     return eventName;
   }
@@ -67,7 +67,7 @@ public class UsageMonitoring {
   public void setEventName(String eventName) {
     this.eventName = eventName;
   }
-  
+
   public String getEventContext() {
     return eventContext;
   }
@@ -83,7 +83,7 @@ public class UsageMonitoring {
   public void setEventStatus(EventStatus eventStatus) {
     this.eventStatus = eventStatus;
   }
-  
+
   public String getAddendum() {
     return addendum;
   }
@@ -91,4 +91,12 @@ public class UsageMonitoring {
   public void setAddendum(String addendum) {
     this.addendum = addendum;
   }
+
+  @Override
+  public String toString() {
+    return "UsageMonitoring [applicationName=" + applicationName + ", applicationVersion=" + applicationVersion
+        + ", eventName=" + eventName + ", eventContext=" + eventContext + ", eventStatus=" + eventStatus + ", addendum="
+        + addendum + "]";
+  }
+  
 }

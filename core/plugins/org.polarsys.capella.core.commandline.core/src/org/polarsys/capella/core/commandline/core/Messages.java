@@ -34,7 +34,6 @@ public class Messages extends NLS {
   public static String resource_prefix;
   public static String displayIsNull;
   public static String already_exist;
-  public static String CommandLineFileAppender_DefaultLogFileName;
   public static String could_not_create_exec;
   public static String unable_load_extension;
   public static String unable_open_project;
