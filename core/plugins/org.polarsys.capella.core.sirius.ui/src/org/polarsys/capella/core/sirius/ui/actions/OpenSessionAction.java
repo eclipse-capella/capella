@@ -36,6 +36,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
+import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
+import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageLogger;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.platform.sirius.ui.session.CapellaSessionHelper;
@@ -83,12 +85,18 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
     failedOpeningSessions = new HashMap<IFile, IStatus>();
     // Go through selected elements.
     for (Object selectedElement : getStructuredSelection().toList()) {
+    	
       // Precondition ignore selected elements which are not IFile.
       if (!(selectedElement instanceof IFile)) {
         continue;
       }
       IFile selectedFile = (IFile) selectedElement;
       Session session = null;
+      
+      String eventName = "Open Session";
+	  String eventContext = selectedFile.getName();
+	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.NONE);
+	  
       try {
         // Don't open session if already opened (bad performance).
         if (SessionHelper.getSession(selectedFile) != null) {
@@ -132,8 +140,12 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
           // Open Activity Explorer for open sessions.
           openActivityExplorer(session);
         }
+        
+        UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.OK);
+        
       } catch (Exception ex) {
-          CapellaSessionHelper.reportException(ex);
+        CapellaSessionHelper.reportException(ex);
+        UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.ERROR);
 //            	
 //        IStatus status =
 //            new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("An error occured when opening session ({0})", selectedFile), ex); //$NON-NLS-1$

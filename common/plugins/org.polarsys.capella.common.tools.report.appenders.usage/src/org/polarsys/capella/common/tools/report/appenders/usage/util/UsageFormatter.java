@@ -36,7 +36,7 @@ public class UsageFormatter {
     sb.append(UsageFormatter.encode(monitoring.getEventName() + UsageFormatter.DATA_SEPARATOR));
     sb.append(UsageFormatter.encode(monitoring.getEventContext() + UsageFormatter.DATA_SEPARATOR));
     sb.append(UsageFormatter.encode(monitoring.getEventStatus() + UsageFormatter.DATA_SEPARATOR));
-    sb.append(UsageFormatter.encode(monitoring.getAddendum() + UsageFormatter.DATA_SEPARATOR));
+    sb.append(UsageFormatter.encode(monitoring.getAddendum()));
     return sb.toString();
   }
 

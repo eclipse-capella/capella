@@ -16,8 +16,6 @@ import java.util.Collection;
 import java.util.EventObject;
 import java.util.List;
 
-import org.eclipse.core.commands.operations.IOperationHistoryListener;
-import org.eclipse.core.commands.operations.OperationHistoryEvent;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
@@ -27,11 +25,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.operations.IWorkbenchOperationSupport;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
-import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
-import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageLogger;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 
 /**
@@ -172,23 +166,6 @@ public class NavigatorCommandStackListener implements CommandStackListener {
    */
   public void registerCommandStackListener(SemanticEditingDomain editingDomain) {
     editingDomain.getCommandStack().addCommandStackListener(this);
-
-    IWorkbenchOperationSupport operationSupport = PlatformUI.getWorkbench().getOperationSupport();
-    operationSupport.getOperationHistory().addOperationHistoryListener(new IOperationHistoryListener() {
-
-      @Override
-      public void historyNotification(OperationHistoryEvent ohe) {
-        
-    	// Usage logging call
-        if (ohe.getEventType() == OperationHistoryEvent.ABOUT_TO_EXECUTE) {
-          UsageMonitoringLogger.getInstance().log(ohe.getOperation().getLabel(), UsageLogger.NONE);
-        } else if (ohe.getEventType() == OperationHistoryEvent.DONE) {
-          UsageMonitoringLogger.getInstance().log(ohe.getOperation().getLabel(), UsageLogger.OK);
-        } else if (ohe.getEventType() == OperationHistoryEvent.OPERATION_NOT_OK) {
-          UsageMonitoringLogger.getInstance().log(ohe.getOperation().getLabel(), UsageLogger.ERROR);
-        }
-      }
-    });
   }
 
   /**

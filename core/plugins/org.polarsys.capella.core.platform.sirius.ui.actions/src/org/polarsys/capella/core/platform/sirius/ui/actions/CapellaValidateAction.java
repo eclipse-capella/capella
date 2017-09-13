@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,10 @@ import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
+import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
+import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageLogger;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.handler.markers.ICapellaValidationConstants;
 import org.polarsys.capella.core.model.handler.validation.PluggableDiagnosticianProvider;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.ICapellaValidationPreferences;
@@ -192,13 +195,24 @@ public class CapellaValidateAction extends ValidateAction {
       runnableWithProgress = eclipseResourcesUtil.getWorkspaceModifyOperation(runnableWithProgress);
     }
 
+    String eventName = "Validation";
+    CapellaElement capellaElement = (CapellaElement) selectedObjects.get(0); 
+  	String eventContext = capellaElement.getLabel();
+  	String addendum = capellaElement.getId();
+  	
     try {
+    
+	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.NONE, addendum);
+    	
       // forks is set to false to make the runnable run in the UI thread. If set to true it will lead
       // to a deadlock
       // see Eclipse Bug 105491 : https://bugs.eclipse.org/bugs/show_bug.cgi?id=105491
       new ProgressMonitorDialog(shell).run(false, true, runnableWithProgress);
+      
+      UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.OK, addendum);
     } catch (Exception exception) {
       EMFEditUIPlugin.INSTANCE.log(exception);
+      UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.ERROR, addendum);
     }
   }
 

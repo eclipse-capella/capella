@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,8 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 
 import org.polarsys.capella.common.ui.actions.AbstractTigAction;
 import org.polarsys.capella.common.ef.command.ICommand;
+import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
+import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageLogger;
 
 /**
  */
@@ -42,8 +44,20 @@ public abstract class AbstractTransitionAction extends AbstractTigAction {
         ICommand command = createCommand((Collection) getSelectedElements(), progressMonitor_p);
         if (command != null) {
           progressMonitor_p.beginTask(command.getName() + " processing...", 1); //$NON-NLS-1$
-          getExecutionManager().execute(command);
-          progressMonitor_p.worked(1);
+          
+          String eventName = "Transition";
+          String eventContext = command.getName();
+          
+          try {
+        	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.NONE);
+        	  getExecutionManager().execute(command);
+        	  progressMonitor_p.worked(1);
+        	  
+        	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.OK);
+          } catch (Exception e) {
+        	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.ERROR);
+        	  throw e;
+          }
         }
 
       }
