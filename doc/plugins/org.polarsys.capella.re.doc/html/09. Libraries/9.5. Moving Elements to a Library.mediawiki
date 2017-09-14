@@ -1,4 +1,4 @@
-= The procedures described here are part of a prototype implementation. Executing these actions may break your model and you might not notice that at all. DO NOT USE IT ON PRODUCTION MODELS =
+= The procedures described here are part of a prototype implementation. Please report bugs and feedback to https://bugs.polarsys.org/show_bug.cgi?id=1673  =
 
 = Moving existing elements to a Library =
 
@@ -6,7 +6,8 @@ This prototype makes it possible to move elements from a project to a library. (
 
 == Project Explorer Drag & Drop ==
 
-For simple move operations, drag and drop the element to be moved from the project to a suitable location in the library. However, sometimes such an action would violate referential integrity: for example when you are trying to move a Class A which extends from another Class B to a library, while Class B remains in the project. Since an element in a library can never reference an element in a project, the drop cannot be completed and a warning dialog will open. One could instead select A and B and move them together, but this is only possible because A and B are elements of the same Type. The Move Elements View (Window->Show View->Capella->Move Elements) allows to move multiple elements with distinct types and references between each other in a single undoable operation. 
+For simple move operations, drag and drop the element to be moved from the project to a suitable location in the library. However, sometimes such an action would violate referential integrity: for example when you are trying to move a Class A which extends from another Class B to a library, while Class B remains in the project. Since an element in a library can never reference an element in a project, the drop cannot be completed and a warning dialog will open. One could instead select A and B and move them together, but this is only possible because A and B are elements of the same Type. The Move Elements View (Window->Show View->Capella->Move Elements) allows to move multiple elements with distinct types and references between each other in a single undoable operation. Note however that this method does not currently execute semantic validation (see below), so you may end up with illegal references in your model.
+If you're unsure whether a move would introduce an illegal reference, better use the new Move Elements view or execute validation rule I_38 (which is disabled by default) on your model after you're done moving elements.
 
 == Move Elements View ==
 
@@ -16,7 +17,7 @@ When the Move Elements View (Window->Show View->Capella->Move Elements) is opene
 
 1. The Selection Area shows all elements that should be moved in '''bold'''. Drag/Drop model elements from the Capella Project Explorer over this area to fill the view. To remove a selected element from the view, click the small 'x' on the right side of the Selection Area.
 
-2. The Destination Area shows the possible destinations for elements in the selection area. To set a new destination for a selected element, drag/drop the element from the selection area over a suitable parent in the destindation area. Elements in the selection area for which a destination element has been selected will appear in green. To clear an already set destination for a selected element, click the small 'x' on the right side of the Destination Area.
+2. The Destination Area shows the possible destinations for elements in the selection area. To set a new destination for a selected element, drag/drop the element from the selection area over a suitable parent in the destination area. Elements in the selection area for which a destination element has been selected will appear in green. To clear an already set destination for a selected element, click the small 'x' on the right side of the Destination Area.
 
 3. The execute button is initially disabled. As soon as a destination is set for '''all''' selected elements, and no referential problems (see below) are detected, the execute button will be enabled. Selecting the button executes performs semantic validation (see below) and executes the move operation unless semantic validation detected a problem.
 
@@ -35,7 +36,7 @@ As long as one or more illegal backreferences are present, the execute button re
 When the execute button is clicked, all selected elements are moved to their new destination, and the semantic validation is performed:
 
 * Capella verifies that no illegal references between libraries are introduced by the operation. 
-* NOT YET IMPLEMENTED, MAY INVALIDATE MODELS: Capella verifies that existing references to moved elements are still valid. For example, it is not allowed for a component to allocate a function from a library. If an already allocated function is moved to a library without moving the component too, this rule is violated. 
+* Capella verifies that existing references to and from moved elements are still valid. For example, it is not allowed for a Component to allocate a Function from a Library. If an already allocated Function is moved to a Library without moving the Component too, this rule is violated. 
 
-If the semantic validation phase detects one of the errors described above, a warning dialog opens and the move action is aborted.
+If the semantic validation phase detects one of the errors described above, an error dialog opens and the move action is aborted.
 

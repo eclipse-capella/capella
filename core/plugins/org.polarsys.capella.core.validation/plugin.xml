@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -166,6 +166,23 @@ The difference between Completeness and Coverage can appear subtle. Completeness
       <binding
             category="capella.category"
             context="CapellaValidationRulesContext">
+         <excludeConstraint
+               ref="org.polarsys.capella.core.data.core.validation.I_37">
+         </excludeConstraint>
+      </binding>
+      <clientContext
+            default="false"
+            id="CapellaMoveElementsValidationContext">
+         <enablement>
+            <test
+                  property="org.polarsys.capella.common.ui.workbenchproperties.activePartId"
+                  value="org.polarsys.capella.core.libraries.ui.moveview">
+            </test>
+         </enablement>
+      </clientContext>
+      <binding
+            constraint="org.polarsys.capella.core.data.core.validation.I_37"
+            context="CapellaMoveElementsValidationContext">
       </binding>
    </extension>
    

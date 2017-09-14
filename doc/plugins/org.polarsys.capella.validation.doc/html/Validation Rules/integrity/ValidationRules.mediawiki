@@ -243,4 +243,18 @@
 |  I_35 - Related functional exchanges must have identical names
 |-
 | colspan="2" |This rule checks that Functional Exchanges connected to the same source and/or target port have identical names.
-|}   
+|}
+<br> 
+{| class="VALIDATION-RULE"
+! |[[Image:../../Images/error.gif|ERROR]]
+|  I_37 - Validate referential constraints during move
+|-
+| colspan="2" |This rule detects forbidden references when elements are moved via the Move Staging View. For example, a Component in a Capella Project cannot allocate a Function from a Library. Moving a Project Function to a Library may introduce such a forbidden reference. If such a reference is detected,  the move operation is aborted.
+|}
+<br>
+{| class="VALIDATION-RULE"
+! |[[Image:../../Images/error.gif|ERROR]]
+|  I_38 - Validate referential constraints
+|-
+| colspan="2" |This rule detects forbidden references. For example, a Logical Architecture Class cannot extend a Physical Architecture Class.
+|}

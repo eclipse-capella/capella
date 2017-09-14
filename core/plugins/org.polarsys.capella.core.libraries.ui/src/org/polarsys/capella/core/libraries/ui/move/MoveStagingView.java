@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *   
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -869,6 +869,10 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
   private static class TransactionErrorHandler extends StatusManagerExceptionHandler {
 
     boolean handledException = false;
+
+    TransactionErrorHandler() {
+      super(StatusManager.SHOW | StatusManager.LOG);
+    }
 
     @Override
     public void handleException(Exception e) {

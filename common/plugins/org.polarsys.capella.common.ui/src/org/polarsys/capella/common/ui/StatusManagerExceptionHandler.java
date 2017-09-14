@@ -61,8 +61,19 @@ public class StatusManagerExceptionHandler implements ExceptionHandler {
    * Extracts a status from the given exception. May return null.
    */
   protected IStatus extractStatus(Exception e) {
+
     if (e instanceof RollbackException) {
-      return ((RollbackException) e).getStatus();
+
+      // Show the first non-ok status in EMF transaction result multi status
+      IStatus status = ((RollbackException)e).getStatus();
+      if (status.isMultiStatus()) {
+       for (IStatus child : status.getChildren()) {
+         if (!child.isOK()) {
+           return child;
+         }
+       }
+      }
+
     } else if (e instanceof CoreException){
       CoreException ce = (CoreException) e;
       IStatus exceptionStatus = ce.getStatus();
@@ -75,7 +86,7 @@ public class StatusManagerExceptionHandler implements ExceptionHandler {
    * Install this handler as the stack error handler, executes the command
    * and restores the previous error handler after the command has been executed
    */
-  public void installAndExecute(TransactionalCommandStack stack, Command c, int style) {
+  public void installAndExecute(TransactionalCommandStack stack, Command c) {
     ExceptionHandler oldHandler = null;
     try {
       oldHandler = stack.getExceptionHandler();

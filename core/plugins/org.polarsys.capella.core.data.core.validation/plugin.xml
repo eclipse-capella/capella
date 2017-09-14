@@ -356,6 +356,44 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                      class="Constraint">
                </target>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.constraint.ReferentialConstraintsValidationRule"
+                  id="I_37"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Live"
+                  name="I_37 - Validate referential constraints during move"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Cannot move elements
+               </message>
+               <description>
+                  Detects moved elements and verifies that outgoing/incoming references from/to these elements and their content trees are still allowed. This validation rule is only executed if the move operation was executed in the Move Staging View.
+               </description>
+               <target
+                     class="CapellaElement">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.constraint.ReferentialConstraintsValidationRule"
+                  id="I_38"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_38 - Validate referential constraints"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  ''{0}'' cannot reference ''{1}'' via ''{2}'' 
+               </message>
+               <description>
+                  Detects moved elements and verifies that outgoing/incoming references from/to these elements and their content trees are still allowed. This validation rule is only executed if the move operation was executed in the Move Staging View.
+               </description>
+               <target
+                     class="CapellaElement">
+               </target>
+            </constraint>
          </constraints>
       </constraintProvider>
       <constraintProvider>
