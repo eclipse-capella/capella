@@ -104,7 +104,7 @@ public class ResourceSetListenerForInterModelInconsistencyDetection extends Reso
 		Logger.getLogger(IReportManagerDefaultComponents.DEFAULT).error(message);
 		for (DependencyViolation dependencyViolation : linkChecker.getDependencyViolations())
 			Logger.getLogger(IReportManagerDefaultComponents.DEFAULT).debug(dependencyViolation.getDescription());
-		throw new RollbackException(new Status(IStatus.CANCEL, Activator.PLUGIN_ID, message));
+		throw new RollbackException(new Status(IStatus.ERROR, Activator.PLUGIN_ID, message));
 	}
 
 }

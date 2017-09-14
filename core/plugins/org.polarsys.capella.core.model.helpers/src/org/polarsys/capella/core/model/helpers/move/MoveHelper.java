@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
@@ -262,9 +264,6 @@ public class MoveHelper {
         CsPackage.Literals.BLOCK_ARCHITECTURE);
     BlockArchitecture arch2 = (BlockArchitecture) EcoreUtil2.getFirstContainer(element2,
         CsPackage.Literals.BLOCK_ARCHITECTURE);
-    if (arch1 == arch2) {
-      return true;
-    }
     if (arch1 == null) {
       // arch1 can be null when the object is a copy (clipboard) and have
       // no parent yet
@@ -276,6 +275,9 @@ public class MoveHelper {
           || (pkg.equals(EpbsPackage.eINSTANCE) && (arch2 instanceof EPBSArchitecture))) {
         return true;
       }
+    } 
+    if (arch1.eClass() == arch2.eClass()) {
+      return true;
     }
     return false;
   }
@@ -285,14 +287,30 @@ public class MoveHelper {
    * @param targetElement
    */
   public IStatus checkEMFRules(List<EObject> selectedModelElements, EObject targetElement) {
-    EList<EReference> allReferences = targetElement.eClass().getEAllContainments();
-    boolean result = checkCompatibility(selectedModelElements, allReferences, targetElement);
-
-    if (!result) {
-      // We should explain why !
-      return new Status(IStatus.ERROR, "model.helpers", "EMF rules failed.");
+    IStatus result = Status.OK_STATUS;
+    
+    // 1. We are in a single editing domain
+    TransactionalEditingDomain targetDomain = TransactionUtil.getEditingDomain(targetElement);
+    if (targetDomain == null){
+      result = Status.CANCEL_STATUS;
+    } else {
+      for (EObject e : selectedModelElements) {
+        TransactionalEditingDomain sourceDomain = TransactionUtil.getEditingDomain(e);
+        if (sourceDomain != targetDomain) {
+          result = Status.CANCEL_STATUS;
+        }
+      }
     }
-    return Status.OK_STATUS;
+
+    // 2. For every dropped object there must be a reference that will contain the dropped object
+    if (result.isOK()) {
+      EList<EReference> allReferences = targetElement.eClass().getEAllContainments();
+      if (!checkCompatibility(selectedModelElements, allReferences, targetElement)) {
+        result = Status.CANCEL_STATUS;
+      }
+    }
+
+    return result;
   }
 
   /**

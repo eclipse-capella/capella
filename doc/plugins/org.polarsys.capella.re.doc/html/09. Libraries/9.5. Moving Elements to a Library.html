@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="The_procedures_described_here_are_part_of_a_prototype_implementation._Executing_these_actions_may_break_your_model_and_you_might_not_notice_that_at_all._DO_NOT_USE_IT_ON_PRODUCTION_MODELS">The procedures described here are part of a prototype implementation. Executing these actions may break your model and you might not notice that at all. DO NOT USE IT ON PRODUCTION MODELS</h1>
+		<h1 id="Moving_existing_elements_to_a_Library">Moving existing elements to a Library</h1>
+		<p>This prototype makes it possible to move elements from a project to a library. (Moving elements from a library to a project will be supported soon). Feel encouraged to report feedback in this bugzilla: 
+			<a href="https://bugs.polarsys.org/show_bug.cgi?id=1673">https://bugs.polarsys.org/show_bug.cgi?id=1673</a>
+		</p>
+		<h2 id="Project_Explorer_Drag_.26_Drop">Project Explorer Drag &amp; Drop</h2>
+		<p>For simple move operations, drag and drop the element to be moved from the project to a suitable location in the library. However, sometimes such an action would violate referential integrity: for example when you are trying to move a Class A which extends from another Class B to a library, while Class B remains in the project. Since an element in a library can never reference an element in a project, the drop cannot be completed and a warning dialog will open. One could instead select A and B and move them together, but this is only possible because A and B are elements of the same Type. The Move Elements View (Window-&gt;Show View-&gt;Capella-&gt;Move Elements) allows to move multiple elements with distinct types and references between each other in a single undoable operation. </p>
+		<h2 id="Move_Elements_View">Move Elements View</h2>
+		<p>When the Move Elements View (Window-&gt;Show View-&gt;Capella-&gt;Move Elements) is opened for the first time, it looks like this:</p>
+		<p>
+			<img height="489" width="827" border="0" src="Images//9.5_MoveElementsView_1.png"/> 
+		</p>
+		<p>1. The Selection Area shows all elements that should be moved in 
+			<b>bold</b>. Drag/Drop model elements from the Capella Project Explorer over this area to fill the view. To remove a selected element from the view, click the small 'x' on the right side of the Selection Area.
+		</p>
+		<p>2. The Destination Area shows the possible destinations for elements in the selection area. To set a new destination for a selected element, drag/drop the element from the selection area over a suitable parent in the destindation area. Elements in the selection area for which a destination element has been selected will appear in green. To clear an already set destination for a selected element, click the small 'x' on the right side of the Destination Area.</p>
+		<p>3. The execute button is initially disabled. As soon as a destination is set for 
+			<b>all</b> selected elements, and no referential problems (see below) are detected, the execute button will be enabled. Selecting the button executes performs semantic validation (see below) and executes the move operation unless semantic validation detected a problem.
+		</p>
+		<p>4. It is also possible to reset the view by selecting the reset button.</p>
+		<h3 id="Illegal_Backreferences">Illegal Backreferences</h3>
+		<p>Sometimes it is not possible to move a single element without moving other related elements, such as in the initial example of Class A extending Class B. When Class A is dropped onto the Selection Area, this problem is detected and presented by drawing the Generalization child of A in red. Hovering over the element will show additional informations on this 
+			<i>illegal backreference</i>:
+		</p>
+		<p>
+			<img height="435" width="800" border="0" src="Images//9.5_MoveElementsView_2.png"/> 
+		</p>
+		<p>As long as one or more illegal backreferences are present, the execute button remains disabled. There are always multiple solutions to an illegal backreference: In this case, either add Class B to the Selection Area, or remove the Generalization element from the model. The view detects changes to the model and re-calculates backreferences automatically.</p>
+		<h3 id="Semantic_Validation">Semantic Validation</h3>
+		<p>When the execute button is clicked, all selected elements are moved to their new destination, and the semantic validation is performed:</p>
+		<ul>
+			<li>Capella verifies that no illegal references between libraries are introduced by the operation. </li>
+			<li>NOT YET IMPLEMENTED, MAY INVALIDATE MODELS: Capella verifies that existing references to moved elements are still valid. For example, it is not allowed for a component to allocate a function from a library. If an already allocated function is moved to a library without moving the component too, this rule is violated. </li>
+		</ul>
+		<p>If the semantic validation phase detects one of the errors described above, a warning dialog opens and the move action is aborted.</p>
+	</body>
+</html>

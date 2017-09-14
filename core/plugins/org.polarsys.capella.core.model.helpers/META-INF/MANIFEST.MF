@@ -12,7 +12,8 @@ Require-Bundle: org.apache.commons.lang,
  org.polarsys.capella.core.data.gen.edit;visibility:=reexport,
  org.polarsys.capella.core.data.helpers;visibility:=reexport,
  org.polarsys.capella.core.model.preferences,
- org.polarsys.capella.common.libraries
+ org.polarsys.capella.common.libraries,
+ com.google.guava;bundle-version="15.0.0"
 Export-Package: org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.model.helpers.delete,
  org.polarsys.capella.core.model.helpers.intermodelInconsistencyDetection,

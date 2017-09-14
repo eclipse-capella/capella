@@ -97,6 +97,79 @@
             </command>
          </menu>
       </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.polarsys.capella.core.libraries.ui.moveview?after=additions">
+         <command
+               commandId="org.polarsys.capella.core.libraries.ui.moveReset"
+               icon="IMG_ETOOL_CLEAR"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.polarsys.capella.core.libraries.ui.moveview.stageViewer?after=additions">
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.ui.semantic.browser.sirius.semanticBrowserSetSelectionCommand"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showInDiagramCommand"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showImpactAnalysisCommand"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.polarsys.capella.core.libraries.ui.moveview.destinationViewer?after=additions">
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.ui.semantic.browser.sirius.semanticBrowserSetSelectionCommand"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showInDiagramCommand"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showImpactAnalysisCommand"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+      </menuContribution>
    </extension>
       <extension
             point="org.polarsys.capella.common.flexibility.wizards">
@@ -181,6 +254,25 @@
          </activeWhen>
       </handler>
          
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="org.polarsys.capella.views.category"
+            class="org.polarsys.capella.core.libraries.ui.move.MoveStagingView"
+            id="org.polarsys.capella.core.libraries.ui.moveview"
+            name="Move Elements View"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.polarsys.capella.core.libraries.ui.move.MoveResetHandler"
+            description="Reset the view to start from the beginning"
+            id="org.polarsys.capella.core.libraries.ui.moveReset"
+            name="Reset">
+      </command>
    </extension>
 
 </plugin>
