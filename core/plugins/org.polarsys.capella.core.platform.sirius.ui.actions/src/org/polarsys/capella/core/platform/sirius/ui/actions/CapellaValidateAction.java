@@ -37,12 +37,12 @@ import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
 import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
 import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.handler.markers.ICapellaValidationConstants;
 import org.polarsys.capella.core.model.handler.validation.PluggableDiagnosticianProvider;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.ICapellaValidationPreferences;
@@ -196,9 +196,8 @@ public class CapellaValidateAction extends ValidateAction {
     }
 
     String eventName = "Validation";
-    CapellaElement capellaElement = (CapellaElement) selectedObjects.get(0); 
-  	String eventContext = capellaElement.getLabel();
-  	String addendum = capellaElement.getId();
+  	String eventContext = ICommonConstants.EMPTY_STRING;
+  	String addendum = ICommonConstants.EMPTY_STRING;
   	
     try {
     

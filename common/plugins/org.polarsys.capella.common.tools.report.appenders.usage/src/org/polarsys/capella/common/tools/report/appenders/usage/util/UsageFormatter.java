@@ -12,25 +12,25 @@ package org.polarsys.capella.common.tools.report.appenders.usage.util;
 
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-
 import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 
 public class UsageFormatter {
-  private static final String ENCODING = "utf8"; //$NON-NLS-1$
+  private static final String ENCODING = StandardCharsets.UTF_8.toString(); //$NON-NLS-1$
   private static final int DATA_COUNT = 7;
   private static final String DATA_SEPARATOR = ";"; //$NON-NLS-1$
 
   public static String format(UsageMonitoring monitoring) {
     StringBuilder sb = new StringBuilder(UsageFormatter.DATA_COUNT);
 
-    sb.append(encode(monitoring.getApplicationName() + UsageFormatter.DATA_SEPARATOR));
-    sb.append(encode(monitoring.getApplicationVersion() + UsageFormatter.DATA_SEPARATOR));
-    sb.append(encode(monitoring.getEventName() + UsageFormatter.DATA_SEPARATOR));
-    sb.append(encode(monitoring.getEventContext() + UsageFormatter.DATA_SEPARATOR));
-    sb.append(encode(monitoring.getEventStatus() + UsageFormatter.DATA_SEPARATOR));
+    sb.append(encode(monitoring.getApplicationName()) + UsageFormatter.DATA_SEPARATOR);
+    sb.append(encode(monitoring.getApplicationVersion()) + UsageFormatter.DATA_SEPARATOR);
+    sb.append(encode(monitoring.getEventName()) + UsageFormatter.DATA_SEPARATOR);
+    sb.append(encode(monitoring.getEventContext()) + UsageFormatter.DATA_SEPARATOR);
+    sb.append(encode(monitoring.getEventStatus().toString()) + UsageFormatter.DATA_SEPARATOR);
     sb.append(encode(monitoring.getAddendum()));
 
     return sb.toString();
