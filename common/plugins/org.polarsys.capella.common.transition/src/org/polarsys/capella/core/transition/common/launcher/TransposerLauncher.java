@@ -19,7 +19,7 @@ import java.util.NoSuchElementException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
-import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageLogger;
+import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.context.TransitionContext;
@@ -137,27 +137,27 @@ public class TransposerLauncher extends ActivitiesLauncher {
 
       initializeParameters();
       
-	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.NONE);
+	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE);
       
       triggerActivities(selection, getWorkflow(), monitor);
 
-      UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.OK);
+      UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.OK);
       
     } catch (OperationCanceledException e) {
       processCancel();
-      UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.ERROR);
+      UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR);
       throw e;
 
     } catch (TransitionException e) {
       LogHelper.getInstance().error(e.getMessage(), Messages.Activity_Transition);
       e.printStackTrace();
-      UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.ERROR);
+      UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR);
       throw e;
 
     } catch (Exception e) {
       LogHelper.getInstance().error(e.getMessage(), Messages.Activity_Transition);
       e.printStackTrace();
-      UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.ERROR);
+      UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR);
       throw new TransitionException(e);
 
     } finally {

@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
 import org.polarsys.capella.common.tools.report.appenders.usage.preferences.IUsagePreferences;
 import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageLogger;
+import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 
 public class UsageMonitoringLogger {
@@ -66,19 +67,19 @@ public class UsageMonitoringLogger {
     }
   }
 
-  public void log(final String eventName, final String eventStatus) {
+  public void log(final String eventName, final EventStatus eventStatus) {
     if (isUsageMonitoringActivated()) {
       logger.log(eventName, eventStatus);
     }
   }
 
-  public void log(final String eventName, final String eventContext, final String eventStatus) {
+  public void log(final String eventName, final String eventContext, final EventStatus eventStatus) {
     if (isUsageMonitoringActivated()) {
       logger.log(eventName, eventContext, eventStatus);
     }
   }
   
-  public void log(final String eventName, final String eventContext, final String eventStatus, final String addendum) {
+  public void log(final String eventName, final String eventContext, final EventStatus eventStatus, final String addendum) {
     if (isUsageMonitoringActivated()) {
       logger.log(eventName, eventContext, eventStatus, addendum);
     }

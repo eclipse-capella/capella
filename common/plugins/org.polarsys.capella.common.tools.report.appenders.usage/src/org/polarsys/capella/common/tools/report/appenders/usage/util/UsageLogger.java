@@ -11,6 +11,7 @@
 package org.polarsys.capella.common.tools.report.appenders.usage.util;
 
 import org.apache.log4j.Logger;
+import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 
 public class UsageLogger {
 	private static final String USAGE_LOGGER = "Usage";
@@ -27,15 +28,15 @@ public class UsageLogger {
 		this.applicationVersion = applicationVersion;
 	}
 
-	public void log(final String eventName, final String eventStatus) {
+	public void log(final String eventName, final EventStatus eventStatus) {
 		log(eventName, NONE, eventStatus, NONE);
 	}
 
-	public void log(final String eventName, final String eventContext, final String eventStatus) {
+	public void log(final String eventName, final String eventContext, final EventStatus eventStatus) {
 		log(eventName, eventContext, eventStatus, NONE);
 	}
 	
-	public void log(final String eventName, final String eventContext, final String eventStatus, final String addendum) {
+	public void log(final String eventName, final String eventContext, final EventStatus eventStatus, final String addendum) {
 		try {
 			final String formattedUsageMonitoring = UsageFormatter
 					.format(new UsageMonitoring(applicationName, applicationVersion, eventName, eventContext, eventStatus, addendum)); // $NON-NLS-1$

@@ -37,7 +37,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.polarsys.capella.common.ef.command.AbstractNonDirtyingCommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
-import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageLogger;
+import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.core.sirius.ui.Messages;
 import org.polarsys.capella.core.sirius.ui.closeproject.SessionCloseManager;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
@@ -236,11 +236,11 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
 
       String eventName = "Close Session";
 	  String eventContext = EcoreUtil2.getFile(session.getSessionResource()).getName();
-	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.NONE);
+	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE);
       
       closeSession(session, saveIsNeeded);
       
-      UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.OK);
+      UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.OK);
     }
 
   }

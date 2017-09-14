@@ -18,11 +18,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-
-import org.polarsys.capella.common.ui.actions.AbstractTigAction;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
-import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageLogger;
+import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
+import org.polarsys.capella.common.ui.actions.AbstractTigAction;
 
 /**
  */
@@ -49,13 +48,13 @@ public abstract class AbstractTransitionAction extends AbstractTigAction {
           String eventContext = command.getName();
           
           try {
-        	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.NONE);
+        	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE);
         	  getExecutionManager().execute(command);
         	  progressMonitor_p.worked(1);
         	  
-        	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.OK);
+        	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.OK);
           } catch (Exception e) {
-        	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.ERROR);
+        	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR);
         	  throw e;
           }
         }

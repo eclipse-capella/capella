@@ -15,10 +15,27 @@ public class UsageMonitoring {
   private String applicationVersion;
   private String eventName;
   private String eventContext;
-  private String eventStatus;
+  private EventStatus eventStatus;
   private String addendum;
   
-  public UsageMonitoring(final String applicationName, final String applicationVersion, final String eventName, final String eventContext, final String eventStatus, final String addendum) {
+  public enum EventStatus {
+    NONE (""),
+    OK ("OK"),
+    ERROR ("ERROR");
+  
+    private final String value;
+  
+    private EventStatus(String value) {
+      this.value = value;
+    }
+  
+    @Override
+    public String toString() {
+      return this.value;
+    }
+  }
+  
+  public UsageMonitoring(final String applicationName, final String applicationVersion, final String eventName, final String eventContext, final EventStatus eventStatus, final String addendum) {
   this.applicationName = applicationName;
     this.applicationVersion = applicationVersion;
     this.eventName = eventName;
@@ -59,11 +76,11 @@ public class UsageMonitoring {
     this.eventContext = eventContext;
   }
 
-  public String getEventStatus() {
+  public EventStatus getEventStatus() {
     return eventStatus;
   }
 
-  public void setEventStatus(String eventStatus) {
+  public void setEventStatus(EventStatus eventStatus) {
     this.eventStatus = eventStatus;
   }
   

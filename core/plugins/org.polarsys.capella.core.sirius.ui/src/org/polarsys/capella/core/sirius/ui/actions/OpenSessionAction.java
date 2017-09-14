@@ -37,7 +37,7 @@ import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
-import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageLogger;
+import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.platform.sirius.ui.session.CapellaSessionHelper;
@@ -95,7 +95,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
       
       String eventName = "Open Session";
 	  String eventContext = selectedFile.getName();
-	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.NONE);
+	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE);
 	  
       try {
         // Don't open session if already opened (bad performance).
@@ -141,11 +141,11 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
           openActivityExplorer(session);
         }
         
-        UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.OK);
+        UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.OK);
         
       } catch (Exception ex) {
         CapellaSessionHelper.reportException(ex);
-        UsageMonitoringLogger.getInstance().log(eventName, eventContext, UsageLogger.ERROR);
+        UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR);
 //            	
 //        IStatus status =
 //            new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("An error occured when opening session ({0})", selectedFile), ex); //$NON-NLS-1$

@@ -15,6 +15,8 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.text.ParseException;
 
+import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
+
 public class UsageFormatter {
   private static final String ENCODING = "utf8"; //$NON-NLS-1$
   private static final int DATA_COUNT = 7;
@@ -55,9 +57,17 @@ public class UsageFormatter {
     final String applicationVersion = UsageFormatter.decode(parts[2]);
     final String eventName = UsageFormatter.decode(parts[3]);
     final String eventContext = UsageFormatter.decode(parts[4]);
-    final String eventStatus = UsageFormatter.decode(parts[5]);
+    final String eventStatusValue = UsageFormatter.decode(parts[5]);
     final String addendum = UsageFormatter.decode(parts[6]);
-
+    
+    EventStatus eventStatus = null;
+    for(EventStatus constant : EventStatus.values()) {
+      if (eventStatusValue == constant.toString()) {
+        eventStatus = constant;
+        break;
+      }
+    }
+    
     return new UsageMonitoring(applicationName, applicationVersion, eventName, eventContext, eventStatus, addendum);
 
   }
