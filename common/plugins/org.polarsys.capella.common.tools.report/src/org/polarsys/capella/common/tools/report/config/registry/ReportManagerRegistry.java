@@ -11,30 +11,31 @@
 
 package org.polarsys.capella.common.tools.report.config.registry;
 
-import java.util.Enumeration;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Appender;
 import org.apache.log4j.Hierarchy;
 import org.apache.log4j.Logger;
+import org.eclipse.core.runtime.FileLocator;
+import org.osgi.framework.Bundle;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.EmbeddedMessageRenderer;
 import org.polarsys.capella.common.tools.report.ReportManagerActivator;
 import org.polarsys.capella.common.tools.report.appenders.IFlushableAppenders;
 import org.polarsys.capella.common.tools.report.appenders.ReportManagerFilter;
-import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 import org.polarsys.capella.common.tools.report.config.persistence.ConfigurationInstance;
 import org.polarsys.capella.common.tools.report.config.persistence.CreateXmlConfiguration;
-import org.polarsys.capella.common.tools.report.config.persistence.LogLevel;
-import org.polarsys.capella.common.tools.report.config.persistence.OutputConfiguration;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 
 public class ReportManagerRegistry {
 
   private Map<String, ConfigurationInstance> _configurations = new HashMap<String, ConfigurationInstance>(1);
-  private Map<String, Appender> _appenders = new HashMap<String, Appender>(1);
 
   private static ReportManagerRegistry instance;
 
@@ -42,135 +43,82 @@ public class ReportManagerRegistry {
    * Initial loading of configuration details of each component
    */
   protected ReportManagerRegistry() {
-    initRootLogger();
+
+    Collection<String> kinds = getAppenderKinds();
 
     CreateXmlConfiguration configuration = new CreateXmlConfiguration();
 
-    // Create configuration file and start loading process.
+    // Load default configuration
     ConfigurationInstance defaultConfInstance = configuration
-        .createDefaultConfiguration(ReportManagerConstants.LOG_OUTPUT_DEFAULT, _appenders);
+        .createDefaultConfiguration(IReportManagerDefaultComponents.DEFAULT, kinds);
+
     _configurations.put(defaultConfInstance.getComponentName(), defaultConfInstance);
 
+    // Load configuration from XML configuration file
     if (configuration.isConfigurationFileExists()) {
-      // Load configuration from XML config file
-      HashMap<String, ConfigurationInstance> persistedConfs = configuration.loadConfiguration();
-      HashMap<String, ConfigurationInstance> virtualConfs = new HashMap<String, ConfigurationInstance>(1);
+      HashMap<String, ConfigurationInstance> persisted = configuration.loadConfiguration();
+      HashMap<String, ConfigurationInstance> result = new HashMap<String, ConfigurationInstance>(1);
 
-      for (Map.Entry<String, ConfigurationInstance> confEntry : persistedConfs.entrySet()) {
-        ConfigurationInstance newVirtualConf = configuration.createDefaultConfiguration(confEntry.getKey(), _appenders);
-
-        copyValuesOfConfigurationInstance(confEntry.getValue(), newVirtualConf);
-
-        virtualConfs.put(confEntry.getKey(), newVirtualConf);
-
+      for (Map.Entry<String, ConfigurationInstance> entry : persisted.entrySet()) {
+        if (entry.getKey() != null) {
+          ConfigurationInstance newConf = configuration.createDefaultConfiguration(entry.getKey(), kinds);
+          newConf.merge(entry.getValue());
+          result.put(entry.getKey(), newConf);
+        }
       }
 
-      _configurations.putAll(virtualConfs);
+      _configurations.putAll(result);
     }
 
     setConfigurations(_configurations);
 
+    // Register loggers into Log4J
+    initRootLogger();
+  }
+
+  public Collection<String> getAppenderKinds() {
+    Collection<String> ids = new LinkedHashSet<String>();
+    List<Appender> appenders = ReportManagerActivator.getDefault().getAppenders();
+    for (Appender appender : appenders) {
+      ids.add(appender.getName());
+    }
+    return ids;
+  }
+
+  public static String getConfigurationFile(Bundle bundle, String path) {
+    try {
+      URL confURL = bundle.getEntry(path);
+      return FileLocator.toFileURL(confURL).getPath();
+
+    } catch (IOException e1) {
+      // Nothing here
+    }
+    return null;
   }
 
   public synchronized static ReportManagerRegistry getInstance() {
     if (instance == null) {
       instance = new ReportManagerRegistry();
-      instance.subscribe(IReportManagerDefaultComponents.DEFAULT); //$NON-NLS-1$
+      instance.subscribe(IReportManagerDefaultComponents.DEFAULT); // $NON-NLS-1$
     }
     return instance;
   }
 
-  /**
-   * @param source
-   * @return
-   */
-  protected ConfigurationInstance copyConfig(ConfigurationInstance source) {
-    ConfigurationInstance target = new ConfigurationInstance();
-    target.setComponentName(source.getComponentName());
-    List<OutputConfiguration> tgtOutputConfs = target.getOutputConfiguration();
-
-    for (OutputConfiguration srcOutputConf : source.getOutputConfiguration()) {
-      OutputConfiguration tgtOutputConf = new OutputConfiguration();
-      tgtOutputConf.setOutputName(srcOutputConf.getOutputName());
-
-      List<LogLevel> tgtLogLevels = tgtOutputConf.getLogLevel();
-      for (LogLevel srcLogLevel : srcOutputConf.getLogLevel()) {
-        LogLevel tgtLogLevel = new LogLevel();
-
-        tgtLogLevel.setName(srcLogLevel.getName());
-        tgtLogLevel.setValue(srcLogLevel.isValue());
-
-        tgtLogLevels.add(tgtLogLevel);
-      }
-
-      tgtOutputConfs.add(tgtOutputConf);
-
-    }
-
-    return target;
-  }
 
   /**
-   * @param source
-   * @param target
-   * @return
-   */
-  protected void copyValuesOfConfigurationInstance(ConfigurationInstance source, ConfigurationInstance target) {
-
-    if ((source.getComponentName() != null) && source.getComponentName().equals(target.getComponentName())) {
-      copyValuesOfOutputConfiguration(source, target);
-    }
-  }
-
-  /**
-   * @param source
-   * @param target
-   */
-  protected void copyValuesOfOutputConfiguration(ConfigurationInstance source, ConfigurationInstance target) {
-    for (OutputConfiguration srcOutputConf : source.getOutputConfiguration()) {
-      for (OutputConfiguration tgtOutputConf : target.getOutputConfiguration()) {
-        if ((srcOutputConf.getOutputName() != null)
-            && srcOutputConf.getOutputName().equals(tgtOutputConf.getOutputName())) {
-          copyValuesOfLogLevels(srcOutputConf, tgtOutputConf);
-          break;
-        }
-      }
-    }
-  }
-
-  /**
-   * @param srcOutputConf
-   * @param tgtOutputConf
-   */
-  protected void copyValuesOfLogLevels(OutputConfiguration srcOutputConf, OutputConfiguration tgtOutputConf) {
-    for (LogLevel srcLogLevel : srcOutputConf.getLogLevel()) {
-      for (LogLevel tgtLogLevel : tgtOutputConf.getLogLevel()) {
-        if (srcLogLevel.getName().equals(tgtLogLevel.getName())) {
-          tgtLogLevel.setValue(srcLogLevel.isValue());
-          break;
-        }
-      }
-    }
-  }
-
-  /**
-   * 
+   * Register appenders into Log4J
    */
   protected void initRootLogger() {
 
     try {
       Logger root = Logger.getRootLogger();
-      ReportManagerActivator act = ReportManagerActivator.getDefault();
-      List<Appender> theAppenders = act.getAppenders();
 
-      for (Appender appender : theAppenders) {
+      for (Appender appender : ReportManagerActivator.getDefault().getAppenders()) {
         root.addAppender(appender);
-        if (!(_appenders.containsKey(appender.getName()))) {
-          _appenders.put(appender.getName(), appender);
-        }
+        appender.addFilter(new ReportManagerFilter(appender));
       }
 
-      Hierarchy h = (Hierarchy) Logger.getRootLogger().getLoggerRepository();
+      Hierarchy h = (Hierarchy) root.getLoggerRepository();
       EmbeddedMessageRenderer emRenderer = new EmbeddedMessageRenderer();
       h.addRenderer(EmbeddedMessage.class, emRenderer);
 
@@ -178,36 +126,15 @@ public class ReportManagerRegistry {
       exception.printStackTrace();
     }
 
-    Enumeration<?> appenders = Logger.getRootLogger().getAllAppenders();
-    while (appenders.hasMoreElements()) {
-      Appender currentApp = (Appender) appenders.nextElement();
-      currentApp.clearFilters();
-      currentApp.addFilter(new ReportManagerFilter(currentApp));
-    }
-
   }
 
-  /**
-   * @param componentName
-   * @return
-   */
   public Logger subscribe(String componentName) {
-    if (!_configurations.containsKey(componentName)) {
+    return subscribe(componentName, null);
+  }
 
-      ConfigurationInstance oConfigurationInstance = copyConfig(
-          _configurations.get(ReportManagerConstants.LOG_OUTPUT_DEFAULT));
-
-      if (null != oConfigurationInstance) {
-        oConfigurationInstance.setComponentName(componentName);
-        synchronized (_configurations) {
-          _configurations.put(componentName, oConfigurationInstance);
-        }
-      }
-    }
-
-    Logger theLog = Logger.getLogger(componentName);
-
-    return theLog;
+  public Logger subscribe(String componentName, String defaultConfigurationPath) {
+    getComponentConfiguration(componentName, defaultConfigurationPath);
+    return Logger.getLogger(componentName);
   }
 
   /**
@@ -229,7 +156,6 @@ public class ReportManagerRegistry {
   protected List<IFlushableAppenders> getFlushableAppenders() {
     ReportManagerActivator act = ReportManagerActivator.getDefault();
     List<IFlushableAppenders> theAppenders = act.getFlushableAppenders();
-
     return theAppenders;
   }
 
@@ -262,18 +188,40 @@ public class ReportManagerRegistry {
    */
   public Object[] getComponentsList() {
     return _configurations.keySet().toArray();
-
   }
 
   /**
    * @see org.polarsys.capella.common.tools.report.config.registry.IReportManagerRegistry#getComponentConfiguration(java.lang.String)
    */
   public ConfigurationInstance getComponentConfiguration(String componentName) {
-    ConfigurationInstance oConfigurationInstance = _configurations.get(componentName);
-    if (null != oConfigurationInstance) {
-      return oConfigurationInstance;
+    return getComponentConfiguration(componentName, null);
+  }
+
+  protected ConfigurationInstance getComponentConfiguration(String componentName, String defaultConfigurationPath) {
+    synchronized (_configurations) {
+      ConfigurationInstance instance = _configurations.get(componentName);
+
+      if (null == instance && defaultConfigurationPath != null) {
+        instance = loadFromFile(defaultConfigurationPath, componentName);
+      }
+      if (null == instance) {
+        instance = _configurations.get(IReportManagerDefaultComponents.DEFAULT).clone();
+        instance.setComponentName(componentName);
+      }
+
+      _configurations.put(componentName, instance);
+      return instance;
     }
-    return oConfigurationInstance;
+
+  }
+
+  private ConfigurationInstance loadFromFile(String defaultConfigurationPath, String componentName) {
+    try {
+      return new CreateXmlConfiguration(defaultConfigurationPath).loadConfiguration().get(componentName);
+    } catch (Exception e) {
+      // Invalid configuration file
+    }
+    return null;
   }
 
   /**
@@ -281,6 +229,7 @@ public class ReportManagerRegistry {
    */
   public void saveConfiguration() {
     CreateXmlConfiguration configuration = new CreateXmlConfiguration();
+
     synchronized (_configurations) {
       configuration.saveConfiguration(_configurations);
     }
@@ -309,13 +258,6 @@ public class ReportManagerRegistry {
   @Override
   public String toString() {
     return "ReportManager"; //$NON-NLS-1$
-  }
-
-  /**
-   * @return
-   */
-  public Map<String, Appender> getAppenders() {
-    return _appenders;
   }
 
 }

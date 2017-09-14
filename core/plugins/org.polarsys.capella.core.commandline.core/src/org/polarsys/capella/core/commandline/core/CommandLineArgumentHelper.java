@@ -10,19 +10,16 @@
  *******************************************************************************/
 package org.polarsys.capella.core.commandline.core;
 
-import java.util.Map;
-
 import org.eclipse.equinox.app.IApplicationContext;
+import org.polarsys.capella.common.application.ArgumentsHelper;
+import org.polarsys.capella.common.application.CommonArgumentsConstants;
 
 /**
  */
 public class CommandLineArgumentHelper {
 
-  /**
-   * 
-   */
-
   private static CommandLineArgumentHelper instance;
+  
   private String filePath;
   private String outputFolder;
   private boolean helpNeeded;
@@ -31,9 +28,7 @@ public class CommandLineArgumentHelper {
   private String importProjects;
   private boolean copyOnWorkspace = false;
   private boolean createFolder;
-
   private String exportProject;
-
   private String zipNameProject;
 
   protected static String[] args;
@@ -46,49 +41,26 @@ public class CommandLineArgumentHelper {
   }
 
   public static String[] parseContext(IApplicationContext context) {
-    Map arguments = context.getArguments();
-    args = (String[]) arguments.get(IApplicationContext.APPLICATION_ARGS);
+    args = (String[]) context.getArguments().get(IApplicationContext.APPLICATION_ARGS);
     return args;
   }
 
   public void parseArgs(String[] args) {
-
-    for (int i = 0; i < args.length; i++) {
-      String arg = args[i].toLowerCase();
-
-      if (CommandLineConstants.HELP.equalsIgnoreCase(arg)) {
-        helpNeeded = true;
-
-      } else if (CommandLineConstants.ID.equalsIgnoreCase(arg)) {
-        appid = args[++i];
-
-      } else if (CommandLineConstants.IMPORT.equalsIgnoreCase(arg)) {
-        importProjects = args[++i];
-
-      } else if (CommandLineConstants.EXPORT.equalsIgnoreCase(arg)) {
-        exportProject = args[++i];
-
-      } else if (CommandLineConstants.EXPORT_ZIP_NAME.equalsIgnoreCase(arg)) {
-        zipNameProject = args[++i];
-
-      } else if (CommandLineConstants.FILE_PATH.equalsIgnoreCase(arg)) {
-        filePath = args[++i];
-
-      } else if (CommandLineConstants.OUTPUTFOLDER.equalsIgnoreCase(arg)) {
-        outputFolder = args[++i];
-
-      } else if (CommandLineConstants.FORCEOUTPUTFOLDERCREATION.equalsIgnoreCase(arg)) {
-        createFolder = true;
-
-      } else if (CommandLineConstants.LOG_FILE_PATH.equalsIgnoreCase(arg)) {
-        logFilePath = args[++i];
-
-      } else if (CommandLineConstants.COPY_ON_WORKSPACE.equalsIgnoreCase(arg)) {
-        copyOnWorkspace = true;
-
-      }
-
-    }
+    ArgumentsHelper helper = ArgumentsHelper.getInstance();
+    helper.loadArguments(args);
+    
+    helpNeeded = helper.hasParameter(CommandLineConstants.HELP);
+    createFolder = helper.hasParameter(CommandLineConstants.FORCEOUTPUTFOLDERCREATION);
+    copyOnWorkspace = helper.hasParameter(CommandLineConstants.COPY_ON_WORKSPACE);
+    
+    appid = helper.getString(CommandLineConstants.ID);
+    importProjects = helper.getString(CommandLineConstants.IMPORT);
+    exportProject = helper.getString(CommandLineConstants.EXPORT);
+    zipNameProject = helper.getString(CommandLineConstants.EXPORT_ZIP_NAME);
+    filePath = helper.getString(CommandLineConstants.FILE_PATH);
+    outputFolder = helper.getString(CommandLineConstants.OUTPUTFOLDER);
+    logFilePath = helper.getString(CommonArgumentsConstants.LOG_FILE_PATH);
+    
   }
 
   /**

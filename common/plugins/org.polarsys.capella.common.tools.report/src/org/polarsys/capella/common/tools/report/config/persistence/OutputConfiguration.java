@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@
 // Generated on: 2007.08.23 at 05:43:10 PM IST 
 //
 
-
 package org.polarsys.capella.common.tools.report.config.persistence;
 
 import java.util.ArrayList;
@@ -27,11 +26,12 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -49,68 +49,72 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "logLevel"
-})
+@XmlType(name = "", propOrder = { "logLevel" })
 @XmlRootElement(name = "OutputConfiguration")
-public class OutputConfiguration {
+public class OutputConfiguration implements Cloneable {
 
-    @XmlElement(name = "LogLevel", required = true)
-    protected List<LogLevel> logLevel;
-    @XmlAttribute(required = true)
-    protected String outputName;
+  @XmlElement(name = "LogLevel", required = true)
+  protected List<LogLevel> logLevel;
+  @XmlAttribute(required = true)
+  protected String outputName;
 
-    /**
-     * Gets the value of the logLevel property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the logLevel property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getLogLevel().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link LogLevel }
-     * 
-     * 
-     */
-    public List<LogLevel> getLogLevel() {
-        if (logLevel == null) {
-            logLevel = new ArrayList<LogLevel>(1);
-        }
-        return this.logLevel;
+  /**
+   * Gets the value of the logLevel property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make to
+   * the returned list will be present inside the JAXB object. This is why there is not a <CODE>set</CODE> method for
+   * the logLevel property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getLogLevel().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link LogLevel }
+   * 
+   * 
+   */
+  public List<LogLevel> getLogLevel() {
+    if (logLevel == null) {
+      logLevel = new ArrayList<LogLevel>(1);
     }
+    return this.logLevel;
+  }
 
-    /**
-     * Gets the value of the outputName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getOutputName() {
-        return outputName;
-    }
+  /**
+   * Gets the value of the outputName property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getOutputName() {
+    return outputName;
+  }
 
-    /**
-     * Sets the value of the outputName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setOutputName(String value) {
-        this.outputName = value;
+  /**
+   * Sets the value of the outputName property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setOutputName(String value) {
+    this.outputName = value;
+  }
+
+  @Override
+  protected OutputConfiguration clone() {
+    OutputConfiguration clone = new OutputConfiguration();
+    clone.outputName = outputName;
+    for (LogLevel level : getLogLevel()) {
+      clone.getLogLevel().add(level.clone());
     }
+    return clone;
+  }
 
 }

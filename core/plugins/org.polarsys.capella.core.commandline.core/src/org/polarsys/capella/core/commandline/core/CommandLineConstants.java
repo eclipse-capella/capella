@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Thales - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.core.commandline.core;
+
+import org.polarsys.capella.common.application.CommonArgumentsConstants;
 
 /**
  */
@@ -28,6 +30,7 @@ public class CommandLineConstants {
 
   public static final String OUTPUTFOLDER = "-outputfolder"; //$NON-NLS-1$
   public static final String FORCEOUTPUTFOLDERCREATION = "-forceoutputfoldercreation"; //$NON-NLS-1$
-  public static final String LOG_FILE_PATH = "-logfile";//$NON-NLS-1$
+  
+  public static final String LOG_FILE_PATH = CommonArgumentsConstants.LOG_FILE_PATH;
 
 }

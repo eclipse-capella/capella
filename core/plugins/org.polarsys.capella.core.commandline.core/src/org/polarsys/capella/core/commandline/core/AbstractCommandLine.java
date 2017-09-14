@@ -31,6 +31,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.osgi.util.NLS;
+import org.polarsys.capella.common.application.CommonArgumentsConstants;
 import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
@@ -71,14 +72,11 @@ public class AbstractCommandLine implements ICommandLine {
    * {@value org.polarsys.capella.core.commandline.core.CommandLineConstants#FILE_PATH},
    * {@value org.polarsys.capella.core.commandline.core.CommandLineConstants#FORCEOUTPUTFOLDERCREATION},
    * {@value org.polarsys.capella.core.commandline.core.CommandLineConstants#OUTPUTFOLDER}
-   * {@value org.polarsys.capella.core.commandline.core.CommandLineConstants#LOG_FILE_PATH},
    */
   @Override
   public void parseContext(IApplicationContext context) throws CommandLineException {
-
     String[] args = CommandLineArgumentHelper.parseContext(context);
     argHelper.parseArgs(args);
-
   }
 
   /**
@@ -478,6 +476,7 @@ public class AbstractCommandLine implements ICommandLine {
   @Override
   public void printHelp() {
     System.out.println("*** Capella Command Line Core Mechanism ***"); //$NON-NLS-1$
+    
     System.out.println(CommandLineConstants.ID
         + " value : defines the id of the command line application to launch, see org.polarsys.capella.core.commandline.core.commandline extension point."); //$NON-NLS-1$
     System.out.println(CommandLineConstants.DATA + " value : defines the path to the workspace."); //$NON-NLS-1$
@@ -487,8 +486,9 @@ public class AbstractCommandLine implements ICommandLine {
     System.out.println(CommandLineConstants.OUTPUTFOLDER + " value : defines the path to the output folder."); //$NON-NLS-1$
     System.out.println(
         CommandLineConstants.FORCEOUTPUTFOLDERCREATION + " value : create the output folder if it does not exist."); //$NON-NLS-1$
-    System.out.println(CommandLineConstants.LOG_FILE_PATH + " value : defines the path to the log file."); //$NON-NLS-1$
     System.out.println(CommandLineConstants.HELP + " : prints the help message"); //$NON-NLS-1$
+    
+    System.out.println(CommonArgumentsConstants.LOG_FILE_PATH__DESCRIPTION);
   }
 
   /**

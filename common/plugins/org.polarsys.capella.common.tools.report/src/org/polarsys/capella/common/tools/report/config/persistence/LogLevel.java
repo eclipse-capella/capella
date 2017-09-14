@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,7 +47,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 @XmlRootElement(name = "LogLevel")
-public class LogLevel {
+public class LogLevel implements Cloneable {
 
     @XmlAttribute(required = true)
     protected String _name;
@@ -92,6 +92,14 @@ public class LogLevel {
      */
     public void setValue(boolean value) {
         this._value = value;
+    }
+    
+    @Override
+    protected LogLevel clone() {
+      LogLevel clone = new LogLevel();
+      clone._name = _name;
+      clone._value = _value;
+      return clone;
     }
 
 }
