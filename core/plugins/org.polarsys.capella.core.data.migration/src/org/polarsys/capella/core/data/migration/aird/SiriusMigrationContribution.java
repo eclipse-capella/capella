@@ -48,7 +48,8 @@ public class SiriusMigrationContribution extends AbstractMigrationContribution {
   public void newResource(Resource resource, MigrationContext context) {
     super.newResource(resource, context);
 
-    if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(resource.getURI().fileExtension())) {
+    if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(resource.getURI().fileExtension())
+        || CapellaResourceHelper.AIRD_FRAGMENT_FILE_EXTENSION.equals(resource.getURI().fileExtension())) {
       String version = (String) ((XMLResource) resource).getDefaultLoadOptions().get("VERSION");
       addVersion(resource, version);
     }
