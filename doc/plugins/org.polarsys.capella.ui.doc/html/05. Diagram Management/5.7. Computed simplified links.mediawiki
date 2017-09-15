@@ -1,0 +1,26 @@
+            
+= Computed Links between Parent Components =
+ 
+This feature is only available on Logical Architecture Blank [LAB] and Physical Architecture Blank [PAB] diagrams.
+
+Both mentioned diagrams are able to display links between parent components that are defined between their children when children are not displayed on diagrams.
+
+You can show/hide those simplified links by activating/deactivating corresponding filters in the drop down filter menu in LAB and PAB diagrams.
+
+[[Image:Images/5.7.%20FiltersMenu.png|450x500px]]
+
+== Computed Component Exchanges ==
+
+Example 1
+
+[[Image:Images/5.7.%20CE_ComputedSimplified.png|350x270px]]
+
+Example 2
+
+[[Image:Images/5.7.%20CE_ComputedLinks.png|320x460px]]
+
+== Computed Physical Links ==
+
+Example 1
+
+[[Image:Images/5.7.%20PL_ComputedLinks.png|800x265px]]
