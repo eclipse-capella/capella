@@ -29,7 +29,10 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
+import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
+import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
@@ -101,14 +104,23 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
     if (reps.isEmpty()) {
       return;
     }
+    
+    String eventName = "Open Representation";
+	String eventContext = ICommonConstants.EMPTY_STRING;
+	String addendum = ICommonConstants.EMPTY_STRING;
+	UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE, addendum);
+    
     IRunnableWithProgress runnable = new OpenRepresentationsRunnable(reps, false);
     ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
     try {
       progressDialog.run(false, false, runnable);
+      UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.OK, addendum);
     } catch (InvocationTargetException e) {
       LOGGER.debug(new EmbeddedMessage(e.getMessage(), IReportManagerDefaultComponents.UI));
+      UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR, addendum);
     } catch (InterruptedException e) {
       LOGGER.debug(new EmbeddedMessage(e.getMessage(), IReportManagerDefaultComponents.UI));
+      UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR, addendum);
     }
     parent = false;
   }

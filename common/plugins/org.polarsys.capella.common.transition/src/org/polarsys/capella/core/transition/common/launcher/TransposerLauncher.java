@@ -120,7 +120,7 @@ public class TransposerLauncher extends ActivitiesLauncher {
   @Override
   public void launch(Collection<?> selection, String purpose, String mappingId, IProgressMonitor monitor) {
 
-	String eventName = "Transition";
+	String eventName = getReportComponent();
 	String eventContext = getName();
 	  
     try {
