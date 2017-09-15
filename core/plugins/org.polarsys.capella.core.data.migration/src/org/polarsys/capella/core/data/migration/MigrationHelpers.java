@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.xmi.XMIException;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.polarsys.capella.common.ef.ExecutionManager;
@@ -94,7 +95,7 @@ public class MigrationHelpers implements IMigrationContribution {
     }
 
     MigrationContext context = new MigrationContext();
-    context.setName(Messages.MigrationAction_Title);
+    context.setName(NLS.bind(Messages.MigrationAction_Title, resource.getName()));
     context.setShell(shell);
     context.setSkipConfirmation(skipConfirmation);
 

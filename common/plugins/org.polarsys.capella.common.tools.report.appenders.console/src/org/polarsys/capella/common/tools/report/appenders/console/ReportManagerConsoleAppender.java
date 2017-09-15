@@ -32,10 +32,8 @@ import org.eclipse.ui.console.MessageConsoleStream;
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 
 /**
- * A log4j appender that writes to an eclipse console. Logged 
- * events are queued for max 500ms an then bulk-written to the
- * console. Of course, if the console is blocked because 
- * the ui is blocked (e.g by a dialog), events may queue up 
+ * A log4j appender that writes to an eclipse console. Logged events are queued for max 500ms an then bulk-written to
+ * the console. Of course, if the console is blocked because the ui is blocked (e.g by a dialog), events may queue up
  * and cause memory usage peaks.
  */
 public class ReportManagerConsoleAppender extends AppenderSkeleton {
@@ -45,21 +43,21 @@ public class ReportManagerConsoleAppender extends AppenderSkeleton {
   private Thread worker;
   private volatile boolean running;
   private final List<LoggingEvent> pending;
-  
+
   public ReportManagerConsoleAppender(Layout layout) {
-	  setLayout(layout);
-	  setName(ReportManagerConstants.LOG_OUTPUT_CONSOLE);
-	  console = ConsoleAppenderActivator.getDefault().getReportConsole();
-	  logWriters = new HashMap<Level, Writer>();
-	  if (console != null) {
-	    Map<Level, MessageConsoleStream> messageStreams = console.getOutputStreams();
-		  for (Level lev : messageStreams.keySet()){
-		    logWriters.put(lev, new BufferedWriter(new OutputStreamWriter(messageStreams.get(lev))));
-		  }
-	  }
-	  running = true;
-	  pending = Collections.synchronizedList(new ArrayList<LoggingEvent>());
-	  worker = new Thread(null, new ConsoleAppenderJob(), "ReportManagerConsoleAppender"); //$NON-NLS-1$
+    setLayout(layout);
+    setName(ReportManagerConstants.LOG_OUTPUT_CONSOLE);
+    console = ConsoleAppenderActivator.getDefault().getReportConsole();
+    logWriters = new HashMap<Level, Writer>();
+    if (console != null) {
+      Map<Level, MessageConsoleStream> messageStreams = console.getOutputStreams();
+      for (Level lev : messageStreams.keySet()) {
+        logWriters.put(lev, new BufferedWriter(new OutputStreamWriter(messageStreams.get(lev))));
+      }
+    }
+    running = true;
+    pending = Collections.synchronizedList(new ArrayList<LoggingEvent>());
+    worker = new Thread(null, new ConsoleAppenderJob(), "ReportManagerConsoleAppender"); //$NON-NLS-1$
     worker.start();
   }
 
@@ -77,16 +75,16 @@ public class ReportManagerConsoleAppender extends AppenderSkeleton {
    * Write to eclipse console from a separate thread.
    */
   class ConsoleAppenderJob implements Runnable {
-    
+
     /**
      * {@inheritDoc}
      */
     @SuppressWarnings("synthetic-access")
     public void run() {
       while (running) {
-        if (!pending.isEmpty()){
+        if (!pending.isEmpty()) {
           List<LoggingEvent> pendingCopy = null;
-          synchronized (pending){
+          synchronized (pending) {
             pendingCopy = new ArrayList<LoggingEvent>(pending);
             pending.clear();
           }
@@ -96,31 +94,33 @@ public class ReportManagerConsoleAppender extends AppenderSkeleton {
         }
         try {
           Thread.sleep(500);
-        } catch (InterruptedException e){
-          
+        } catch (InterruptedException e) {
+
         }
       }
     }
   }
-  
-  private void writeToConsole(LoggingEvent event){
+
+  private void writeToConsole(LoggingEvent event) {
     try {
       Writer writer = logWriters.get(event.getLevel());
-      writer.write(" [From " + event.getLoggerName() + "] "); //$NON-NLS-1$ //$NON-NLS-2$
-      writer.write(layout.format(event));
-      if (layout.ignoresThrowable()) {
-        String[] s = event.getThrowableStrRep();
-        if (s != null) {
-          int len = s.length;
-          for (int i = 0; i < len; i++) {
-            writer.write(s[i]);
-            writer.write(Layout.LINE_SEP);
+      if (writer != null) {
+        writer.write(" [From " + event.getLoggerName() + "] "); //$NON-NLS-1$ //$NON-NLS-2$
+        writer.write(layout.format(event));
+        if (layout.ignoresThrowable()) {
+          String[] s = event.getThrowableStrRep();
+          if (s != null) {
+            int len = s.length;
+            for (int i = 0; i < len; i++) {
+              writer.write(s[i]);
+              writer.write(Layout.LINE_SEP);
+            }
           }
         }
       }
     } catch (IOException e) {
-      ConsoleAppenderActivator.getDefault().getLog().log(
-          new Status(IStatus.ERROR, ConsoleAppenderActivator.PLUGIN_ID, e.getMessage(), e));
+      ConsoleAppenderActivator.getDefault().getLog()
+          .log(new Status(IStatus.ERROR, ConsoleAppenderActivator.PLUGIN_ID, e.getMessage(), e));
     }
   }
 
@@ -137,5 +137,5 @@ public class ReportManagerConsoleAppender extends AppenderSkeleton {
   public boolean requiresLayout() {
     return true;
   }
-  
+
 }

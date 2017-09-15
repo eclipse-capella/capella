@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,11 +22,14 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.statushandlers.StatusManager;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.common.tools.report.util.LogExt;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 
 /**
@@ -44,32 +47,32 @@ public class MigrationJobScheduler {
    */
   public void run(LinkedList<AbstractMigrationRunnable> runnables, final MigrationContext context, final boolean runInJob, final boolean checkVersion) {
     _runnables = new LinkedList<AbstractMigrationRunnable>(runnables);
-
+    
     IRunnableWithProgress op = new IRunnableWithProgress() {
 
       public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
         _monitor = monitor;
-        _monitor.beginTask("Model migration", _runnables.size());
-
+        _monitor.beginTask(context.getName(), _runnables.size());
+        
         context.setProgressMonitor(_monitor);
 
         if (runInJob) {
           executeNextJob(Status.OK_STATUS, context, checkVersion);
 
         } else {
+          IStatus status = Status.OK_STATUS;
           try {
-
             for (AbstractMigrationRunnable runnable : _runnables) {
               context.setProgressMonitor(new SubProgressMonitor(_monitor, 1));
-              IStatus status = runnable.run(context, checkVersion);
+              status = runnable.run(context, checkVersion);
               if (!checkStatusOK(status, context)) {
-                logStatus(context, status);
                 _runnables.clear();
                 return;
               }
             }
 
           } finally {
+            logStatus(context, status);
             MigrationHelpers.getInstance().dispose(context);
           }
         }
@@ -129,6 +132,7 @@ public class MigrationJobScheduler {
         }
 
       } else {
+        logStatus(context, status);
         MigrationHelpers.getInstance().dispose(context);
       }
 
@@ -140,8 +144,13 @@ public class MigrationJobScheduler {
 
   }
 
-  protected void logStatus(final MigrationContext context, final IStatus status) {
+  protected void logStatus(MigrationContext context, IStatus status) {
+    if (status.isOK()) {
+      status = new Status(IStatus.INFO, Activator.PLUGIN_ID, NLS.bind(Messages.MigrationAction_MigrationOK, context.getName()));
+    }
+    
     StatusManager.getManager().handle(status, StatusManager.LOG);
+    LogExt.log(IReportManagerDefaultComponents.MODEL, status);
 
     if (!context.isSkipConfirmation()) {
       if ((status.getSeverity() == IStatus.ERROR) || (status.getSeverity() == IStatus.WARNING)) {

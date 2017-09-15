@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,9 +64,8 @@ public class BackupResourceContribution extends AbstractMigrationContribution {
 
         @Override
         public void run() {
-
           MessageDialogWithToggle dialog =
-              MessageDialogWithToggle.openOkCancelConfirm(context.getShell(), Messages.MigrationAction_ConfirmationDialog_Title,
+              MessageDialogWithToggle.openOkCancelConfirm(context.getShell(), context.getName(),
                   Messages.MigrationAction_ConfirmationDialog_Message, Messages.MigrationAction_ConfirmationDialog_ToggleMessage, true, null, null);
           if (dialog.getReturnCode() != IDialogConstants.OK_ID) {
             result[0] = Status.CANCEL_STATUS;
