@@ -199,6 +199,12 @@
     </topic>
 	</topic>
       <anchor id="Diagram Management"/>
+      <topic href="html/05. Diagram Management/5.7. Computed simplified links.html" label="Computed Links between Parent Components">
+         <topic href="html/05. Diagram Management/5.7. Computed simplified links.html#Computed_Component_Exchanges" label="Computed Component Exchanges">
+         </topic>
+         <topic href="html/05. Diagram Management/5.7. Computed simplified links.html#Computed_Physical_Links" label="Computed Physical Links">
+         </topic>
+      </topic>
    </topic>
     <topic label="Modelling Wizards and Accelerators">
     <topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html" label="Modeling Accelerators">

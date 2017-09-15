@@ -6240,8 +6240,20 @@ public class CsServices {
     if (sourceView == targetView) {
       return false;
     }
-
+    
     // Case 2
+    if(!(communication instanceof ComponentExchange)){
+      return false;
+    }
+    
+    ComponentExchange ce = (ComponentExchange) communication;
+    
+    // Case 3
+    if (ce.getKind() == ComponentExchangeKind.DELEGATION) {
+      return false;
+    }
+
+    // Case 4
     EObject source = sourceView.getTarget();
     EObject target = targetView.getTarget();
 
@@ -6249,25 +6261,39 @@ public class CsServices {
       return false;
     }
 
-    // Case 3
-    AbstractType sourceComponent = null;
-    AbstractType targetComponent = null;
-
-    if (source instanceof Part) {
-      sourceComponent = ((Part) source).getAbstractType();
-    } else if (source instanceof Port) {
-      sourceComponent = (AbstractType) source.eContainer();
+    // Case 5
+    if(source instanceof Port && target instanceof Part){
+      EObject sourceComponent = source.eContainer();
+      if(sourceComponent == ((Part)target).getAbstractType()){
+        return false;
+      }
     }
-
-    if (target instanceof Part) {
-      targetComponent = ((Part) target).getAbstractType();
-    } else if (target instanceof Port) {
-      targetComponent = (AbstractType) target.eContainer();
+    
+    // Case 6
+    if(source instanceof Part && target instanceof Port){
+      EObject targetComponent = target.eContainer();
+      if(targetComponent == ((Part)source).getAbstractType()){
+        return false;
+      }
     }
-    if (sourceComponent != null && targetComponent != null
-        && (isAnAncestor(sourceComponent, targetComponent) || isAnAncestor(targetComponent, sourceComponent))) {
-      return false;
-    }
+//    AbstractType sourceComponent = null;
+//    AbstractType targetComponent = null;
+//
+//    if (source instanceof Part) {
+//      sourceComponent = ((Part) source).getAbstractType();
+//    } else if (source instanceof Port) {
+//      sourceComponent = (AbstractType) source.eContainer();
+//    }
+//
+//    if (target instanceof Part) {
+//      targetComponent = ((Part) target).getAbstractType();
+//    } else if (target instanceof Port) {
+//      targetComponent = (AbstractType) target.eContainer();
+//    }
+//    if (sourceComponent != null && targetComponent != null
+//        && (isAnAncestor(sourceComponent, targetComponent) || isAnAncestor(targetComponent, sourceComponent))) {
+//      return false;
+//    }
 
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
     if (diagram != null) {
@@ -6279,11 +6305,11 @@ public class CsServices {
       if (targetElement.getTarget() instanceof Port) {
         targetElement = (DSemanticDecorator) targetElement.eContainer();
       }
-      // Case 4
+      // Case 7
       DDiagramContents context = new DDiagramContents(diagram);
-      Collection<DEdge> edges = context.getEdges(communication);
+      Collection<DEdge> edges = context.getEdges(ce);
       for (DEdge edge : edges) {
-        if (!(edge.getMapping().getName().equals(IMappingNameConstants.LAB_COMPUTED_COMPONENT_EXCHANGE)
+        if (edge.isVisible() && !(edge.getMapping().getName().equals(IMappingNameConstants.LAB_COMPUTED_COMPONENT_EXCHANGE)
             || edge.getMapping().getName().equals(IMappingNameConstants.PAB_COMPUTED_COMPONENT_EXCHANGE))) {
           boolean hasSrc = false;
           DSemanticDecorator sourceNode = (DSemanticDecorator) edge.getSourceNode();
@@ -6321,11 +6347,12 @@ public class CsServices {
         }
       }
 
+      // Case 8
       if (isMultipartMode((ModelElement) sourceView.getTarget()) && isUndoublonLink(sourceView, targetView)) {
         return false;
       }
 
-      // Case 5
+      // Case 9
       for (FilterDescription filter : diagram.getActivatedFilters()) {
         if (IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE.equals(filter.getName())
             || IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE.equals(filter.getName())) {
@@ -6425,33 +6452,54 @@ public class CsServices {
     if (sourceView == targetView) {
       return false;
     }
-
+    
     // Case 2
+    if(!(communication instanceof PhysicalLink)){
+      return false;
+    }
+    
     EObject source = sourceView.getTarget();
     EObject target = targetView.getTarget();
-
+    
+    // Case 3
     if (source instanceof Port && target instanceof Port) {
       return false;
     }
-
-    // Case 3
-    AbstractType sourceComponent = null;
-    AbstractType targetComponent = null;
-    if (source instanceof Part) {
-      sourceComponent = ((Part) source).getAbstractType();
-    } else if (source instanceof Port) {
-      sourceComponent = (AbstractType) source.eContainer();
+ 
+    // Case 4
+    if(source instanceof Port && target instanceof Part){
+      EObject sourceComponent = source.eContainer();
+      if(sourceComponent == ((Part)target).getAbstractType()){
+        return false;
+      }
+    }
+    
+    // Case 5
+    if(source instanceof Part && target instanceof Port){
+      EObject targetComponent = target.eContainer();
+      if(targetComponent == ((Part)source).getAbstractType()){
+        return false;
+      }
     }
 
-    if (target instanceof Part) {
-      targetComponent = ((Part) target).getAbstractType();
-    } else if (target instanceof Port) {
-      targetComponent = (AbstractType) target.eContainer();
-    }
-    if (sourceComponent != null && targetComponent != null
-        && (isAnAncestor(sourceComponent, targetComponent) || isAnAncestor(targetComponent, sourceComponent))) {
-      return false;
-    }
+
+//    AbstractType sourceComponent = null;
+//    AbstractType targetComponent = null;
+//    if (source instanceof Part) {
+//      sourceComponent = ((Part) source).getAbstractType();
+//    } else if (source instanceof Port) {
+//      sourceComponent = (AbstractType) source.eContainer();
+//    }
+//
+//    if (target instanceof Part) {
+//      targetComponent = ((Part) target).getAbstractType();
+//    } else if (target instanceof Port) {
+//      targetComponent = (AbstractType) target.eContainer();
+//    }
+//    if (sourceComponent != null && targetComponent != null
+//        && (isAnAncestor(sourceComponent, targetComponent) || isAnAncestor(targetComponent, sourceComponent))) {
+//      return false;
+//    }
 
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
     if (diagram != null) {
@@ -6463,11 +6511,11 @@ public class CsServices {
       if (targetElement.getTarget() instanceof Port) {
         targetElement = (DSemanticDecorator) targetElement.eContainer();
       }
-      // Case 4
+      // Case 6
       DDiagramContents context = new DDiagramContents(diagram);
       Collection<DEdge> edges = context.getEdges(communication);
       for (DEdge edge : edges) {
-        if (!(edge.getMapping().getName().equals(IMappingNameConstants.LAB_COMPUTED_PHYSICAL_LINK)
+        if (edge.isVisible() && !(edge.getMapping().getName().equals(IMappingNameConstants.LAB_COMPUTED_PHYSICAL_LINK)
             || edge.getMapping().getName().equals(IMappingNameConstants.PAB_COMPUTED_PHYSICAL_LINK))) {
           boolean hasSrc = false;
           DSemanticDecorator sourceNode = (DSemanticDecorator) edge.getSourceNode();
@@ -6505,11 +6553,12 @@ public class CsServices {
         }
       }
 
+      // Case 7
       if (isMultipartMode((ModelElement) sourceView.getTarget()) && isUndoublonLink(sourceView, targetView)) {
         return false;
       }
 
-      // Case 5
+      // Case 8
       for (FilterDescription filter : diagram.getActivatedFilters()) {
         if (IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_PL.equals(filter.getName())
             || IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE.equals(filter.getName())) {
@@ -6529,9 +6578,11 @@ public class CsServices {
     if (source instanceof Port) {
       DDiagramElement diagramElement = getDiagramElement(context, source);
       // Port is on t
-      if (diagramElement != null && DiagramServices.getDiagramServices().isVisible(diagramElement)) {
+      if (diagramElement != null) {
         List<EObject> result = new ArrayList<EObject>();
-        result.add(source);
+        if(diagramElement.isVisible()){
+          result.add(source);
+        }
         if (source.eContainer() instanceof Component) {
           Part portParent = ComponentExt.getRepresentingParts((Component) source.eContainer()).iterator().next();
           result.addAll(getVisibleEdgeEnds(context, portParent, false));
@@ -6554,14 +6605,15 @@ public class CsServices {
     if (handleMainPart) {
       toHandle.add(mainPart);
     } else {
-      Part parentPart = ComponentExt.getRepresentingParts((Component) mainPart.eContainer()).iterator().next();
-      Collection<DDiagramElement> diagramElements = context.getDiagramElements(parentPart);
+      Iterator<Part> partsIterator = ComponentExt.getRepresentingParts((Component) mainPart.eContainer()).iterator();
+      Part parentPart = partsIterator.hasNext() ? partsIterator.next() : null;
+      Collection<DDiagramElement> diagramElements = parentPart != null ? context.getDiagramElements(parentPart) : Collections.<DDiagramElement>emptyList();
       boolean found = false;
       for (DDiagramElement diagElt : diagramElements) {
         if (diagElt instanceof DNodeContainer) {
           DNodeContainer node = (DNodeContainer) diagElt;
           for (DDiagramElement elt : node.getOwnedDiagramElements()) {
-            if (mainPart.equals(elt.getTarget())) {
+            if (mainPart.equals(elt.getTarget()) && elt.isVisible()) {
               found = true;
             }
           }
@@ -6571,12 +6623,30 @@ public class CsServices {
         toHandle.add(parentPart);
       }
     }
-    toHandle.addAll(PartExt.getDeployingElements(mainPart));
+    for(DeploymentTarget element : PartExt.getDeployingElements(mainPart)){
+      boolean isChildView = false;
+      for (DDiagramElement diagElt : context.getDiagramElements(element)) {
+        if (diagElt instanceof DNodeContainer) {
+          DNodeContainer node = (DNodeContainer) diagElt;
+          for (DDiagramElement elt : node.getOwnedDiagramElements()) {
+            if (mainPart.equals(elt.getTarget()) && elt.isVisible()) {
+              isChildView = true;
+            }
+          }
+        }
+      }
+      if(!isChildView){
+        toHandle.add(element);
+      }
+    }
     for (DeploymentTarget deploymentTarget : toHandle) {
       Collection<Part> relevantParts = new ArrayList<Part>();
       relevantParts.add((Part) deploymentTarget);
       relevantParts.addAll(ComponentExt.getPartAncestors((Part) deploymentTarget));
-      result.add(getFirstVisibleAncestor(context, relevantParts));
+      EObject firstVisibleAncestor = getFirstVisibleAncestor(context, relevantParts);
+      if(firstVisibleAncestor instanceof Part){
+        result.add(firstVisibleAncestor);
+      }
     }
     return result;
   }
