@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,7 +48,8 @@ public class SiriusMigrationContribution extends AbstractMigrationContribution {
   public void newResource(Resource resource, MigrationContext context) {
     super.newResource(resource, context);
 
-    if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(resource.getURI().fileExtension())) {
+    if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(resource.getURI().fileExtension())
+        || CapellaResourceHelper.AIRD_FRAGMENT_FILE_EXTENSION.equals(resource.getURI().fileExtension())) {
       String version = (String) ((XMLResource) resource).getDefaultLoadOptions().get("VERSION");
       addVersion(resource, version);
     }
