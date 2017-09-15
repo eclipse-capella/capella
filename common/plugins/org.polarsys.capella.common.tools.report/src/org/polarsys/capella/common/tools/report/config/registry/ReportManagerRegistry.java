@@ -23,10 +23,12 @@ import org.apache.log4j.Appender;
 import org.apache.log4j.Hierarchy;
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IStatus;
 import org.osgi.framework.Bundle;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.EmbeddedMessageRenderer;
 import org.polarsys.capella.common.tools.report.ReportManagerActivator;
+import org.polarsys.capella.common.tools.report.StatusRenderer;
 import org.polarsys.capella.common.tools.report.appenders.IFlushableAppenders;
 import org.polarsys.capella.common.tools.report.appenders.ReportManagerFilter;
 import org.polarsys.capella.common.tools.report.config.persistence.ConfigurationInstance;
@@ -122,6 +124,9 @@ public class ReportManagerRegistry {
       EmbeddedMessageRenderer emRenderer = new EmbeddedMessageRenderer();
       h.addRenderer(EmbeddedMessage.class, emRenderer);
 
+      StatusRenderer stRenderer = new StatusRenderer();
+      h.addRenderer(IStatus.class, stRenderer);
+      
     } catch (Throwable exception) {
       exception.printStackTrace();
     }

@@ -23,6 +23,7 @@ import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
+import org.polarsys.capella.common.tools.report.util.LogExt;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -128,20 +129,7 @@ public class DefaultLogHandler implements ILogHandler {
    * @return
    */
   protected String toPriority(IStatus status) {
-    switch (status.getSeverity()) {
-      case IStatus.OK:
-        return ReportManagerConstants.LOG_LEVEL_INFO;
-      case IStatus.CANCEL:
-        return ReportManagerConstants.LOG_LEVEL_WARN;
-      case IStatus.WARNING:
-        return ReportManagerConstants.LOG_LEVEL_WARN;
-      case IStatus.ERROR:
-        return ReportManagerConstants.LOG_LEVEL_ERROR;
-      case IStatus.INFO:
-        return ReportManagerConstants.LOG_LEVEL_INFO;
-      default:
-        return ReportManagerConstants.LOG_LEVEL_INFO;
-    }
+    return LogExt.toPriority(status);
   }
 
   protected void log(TransitionMessage message) {
