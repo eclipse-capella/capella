@@ -72,7 +72,7 @@ public class CapellaSavingPolicy extends SavingPolicyImpl {
           IPath parentFolderPath = path.removeLastSegments(1);
           File dir = parentFolderPath.toFile();
 
-          if (!dir.canWrite() || file.isReadOnly()) {
+          if ((dir.exists() && !dir.canWrite()) || file.isReadOnly()) {
             files.add(file);
           }
         }
