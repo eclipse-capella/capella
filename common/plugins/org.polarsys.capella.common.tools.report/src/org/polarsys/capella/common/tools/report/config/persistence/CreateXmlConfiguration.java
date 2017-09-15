@@ -27,6 +27,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.PropertyException;
 import javax.xml.bind.Unmarshaller;
 
+import org.eclipse.emf.common.util.URI;
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 
 /**
@@ -36,14 +37,14 @@ public class CreateXmlConfiguration {
   /**
    * 
    */
-  private static final String FILE_PATH = System.getProperty("osgi.configuration.area") + File.separator + "ReportConfiguration.xml"; //$NON-NLS-1$//$NON-NLS-2$
+  private static final String FILE_PATH = System.getProperty("osgi.configuration.area") + "ReportConfiguration.xml"; //$NON-NLS-1$//$NON-NLS-2$
 
   private final ObjectFactory _factory = new ObjectFactory();
 
   private String filePath = null;
   
   public CreateXmlConfiguration() {
-    this.filePath = FILE_PATH;
+    this.filePath = URI.createURI(FILE_PATH).toFileString();
   }
 
   public CreateXmlConfiguration(String filePath) {
