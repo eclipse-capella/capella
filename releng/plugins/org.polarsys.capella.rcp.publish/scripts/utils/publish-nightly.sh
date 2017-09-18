@@ -70,10 +70,15 @@ MANIFEST_FILE="$WORKSPACE/$UPDATE_PATH/target/$MANIFEST_NAME"
 ######################################################################
 
 # Ensure the target folder exists
-mkdir -p "$TARGET_DIR"
+mkdir -p "$TARGET_DIR"/org.polarsys.capella.rcp.site
+mkdir -p "$TARGET_DIR"/org.polarsys.capella.test.site
+mkdir -p "$TARGET_DIR"/org.polarsys.capella.richtext.site
 
 # The actual publication of the p2 repo produced by the build
-cp -dR "$WORKSPACE/$UPDATE_PATH"/target/repository/* "$TARGET_DIR"
+cp -dR "$WORKSPACE"/releng/plugins/org.polarsys.capella.rcp.site/target/repository/* "$TARGET_DIR"/org.polarsys.capella.rcp.site
+cp -dR "$WORKSPACE"/releng/plugins/org.polarsys.capella.test.site/target/repository/* "$TARGET_DIR"/org.polarsys.capella.test.site
+cp -dR "$WORKSPACE"/releng/plugins/org.polarsys.capella.richtext.site/target/repository/* "$TARGET_DIR"/org.polarsys.capella.richtext.site
+
 echo "Update site runtime core : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION"
 
 # Publish the target platform definitions used, so that downstream projects can reference them
@@ -124,19 +129,31 @@ EOF
 }
 
 # First, a link for the $VERSION (e.g. "runtimecore/1.2.0" => "1.2.0-NYYYYMMDD-HHMM/luna")
-create_redirect "$TARGET_ROOT/$VERSION" "$BUILD_TYPE/$FULL_VERSION"
+# and publish the zipped versions there, at stable URLs
+create_redirect "$TARGET_ROOT/$VERSION"/org.polarsys.capella.rcp.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.rcp.site
+create_redirect "$TARGET_ROOT/$VERSION"/org.polarsys.capella.test.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.test.site
+create_redirect "$TARGET_ROOT/$VERSION"/org.polarsys.capella.richtext.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.richtext.site
 echo "Link runtime core Version : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$VERSION to $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION "
+cp -dR "$WORKSPACE/$UPDATE_PATH"/target/$UPDATE_PRJ_NAME-*.zip "$TARGET_ROOT/$VERSION/$UPDATE_PRJ_NAME-$VERSION.zip"
+echo "Zipped update site runtime core : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$VERSION/$UPDATE_PRJ_NAME-$VERSION.zip"
 
 # Also create a link for the $STREAM (e.g. "runtimecore/1.2.x" => "1.2.0-NYYYYMMDD-HHMM/luna")
 # and publish the zipped versions there, at stable URLs
-create_redirect "$TARGET_ROOT/$STREAM" "$BUILD_TYPE/$FULL_VERSION"
+create_redirect "$TARGET_ROOT/$STREAM"/org.polarsys.capella.rcp.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.rcp.site
+create_redirect "$TARGET_ROOT/$STREAM"/org.polarsys.capella.test.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.test.site
+create_redirect "$TARGET_ROOT/$STREAM"/org.polarsys.capella.richtext.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.richtext.site
 echo "Link runtime core Short Version : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$STREAM to $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION "
+cp -dR "$WORKSPACE/$UPDATE_PATH"/target/$UPDATE_PRJ_NAME-*.zip "$TARGET_ROOT/$STREAM/$UPDATE_PRJ_NAME-$STREAM.zip"
+echo "Zipped update site runtime core : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$STREAM/$UPDATE_PRJ_NAME-$STREAM.zip"
 
 # Also update the global "latest" links if we are building master
-create_redirect "$TARGET_ROOT/latest" "$BUILD_TYPE/$FULL_VERSION"
+# and publish the zipped versions there, at stable URLs
+create_redirect "$TARGET_ROOT/latest"/org.polarsys.capella.rcp.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.rcp.site
+create_redirect "$TARGET_ROOT/latest"/org.polarsys.capella.test.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.test.site
+create_redirect "$TARGET_ROOT/latest"/org.polarsys.capella.richtext.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.richtext.site
 echo "Link runtime core Latest : $URL_PUBLISH_PREFIX/$BUILD_TYPE/latest to $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION "
-cp -dR "$WORKSPACE/$UPDATE_PATH"/target/$UPDATE_PRJ_NAME-*.zip "$TARGET_ROOT/$STREAM/$UPDATE_PRJ_NAME-$VERSION.zip"
-echo "Zipped update site runtime core : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$STREAM/$UPDATE_PRJ_NAME-$VERSION.zip"
+cp -dR "$WORKSPACE/$UPDATE_PATH"/target/$UPDATE_PRJ_NAME-*.zip "$TARGET_ROOT/latest/$UPDATE_PRJ_NAME-latest.zip"
+echo "Zipped update site runtime core : $URL_PUBLISH_PREFIX/$BUILD_TYPE/latest/$UPDATE_PRJ_NAME-latest.zip"
 
 # Write manifest in artefacts
 echo "IC Build number : $BUILD_NUMBER" > $MANIFEST_FILE

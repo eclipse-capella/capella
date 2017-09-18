@@ -36,18 +36,18 @@ export BUILD_TYPE=$1
 export PRODUCT_NAME=capella
 
 # Target platform path
-export TARGET_PATH="releng/plugins/org.polarsys.capella.rcp.target/nightly"
+export TARGET_PATH="releng/plugins/org.polarsys.capella.targets/full"
 
 # Job name
 export JOB_NAME=capella-master
 
-# The root folder for all product
-export PUBLISH_FOLDER_ROOT="/home/data/httpd/download.polarsys.org/$PRODUCT_NAME/core"
+# The root folder for all Capella artifacts
+export PUBLISH_FOLDER_ROOT="/d/home/data/httpd/download.polarsys.org/$PRODUCT_NAME/core"
 
-# The root folder for all Kitapha udpate sites
+# The root folder for all Capella udpate sites
 export PUBLISH_UPDATES_ROOT="$PUBLISH_FOLDER_ROOT/updates"
 
-# The root folder for all Kitapha udpate sites
+# The root folder for all Capella products
 export PUBLISH_PRODUCTS_ROOT="$PUBLISH_FOLDER_ROOT/products"
 
 # Publish url
