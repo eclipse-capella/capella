@@ -61,7 +61,7 @@ location "http://download.eclipse.org/diffmerge/releases/0.9.0/edm-patterns-site
 	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group
 }
 
-location "http://download.eclipse.org/modeling/amalgam/updates//nightly/1.9.0-N20170906-115135/capella" {
+location "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.9.0-N20170918-032443/capella" {
 	org.eclipse.amalgam.explorer.activity.feature.group
 }
 
