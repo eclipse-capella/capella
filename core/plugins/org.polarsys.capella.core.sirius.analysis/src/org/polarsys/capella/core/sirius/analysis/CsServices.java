@@ -6638,18 +6638,19 @@ public class CsServices {
     if (source instanceof Port) {
       DDiagramElement diagramElement = getDiagramElement(context, source);
       // Port is on t
+      Collection<Part> representingParts = ComponentExt.getRepresentingParts((Component) source.eContainer());
       if (diagramElement != null) {
         List<EObject> result = new ArrayList<EObject>();
         if(diagramElement.isVisible()){
           result.add(source);
         }
         if (source.eContainer() instanceof Component) {
-          Part portParent = ComponentExt.getRepresentingParts((Component) source.eContainer()).iterator().next();
+          Part portParent = representingParts.iterator().next();
           result.addAll(getVisibleEdgeEnds(context, portParent, false));
         }
         return result;
       } else if (source.eContainer() instanceof Component) {
-        Part portParent = ComponentExt.getRepresentingParts((Component) source.eContainer()).iterator().next();
+        Part portParent = representingParts.iterator().next();
         return getVisibleEdgeEnds(context, portParent, true);
       }
 
@@ -6664,24 +6665,9 @@ public class CsServices {
     List<DeploymentTarget> toHandle = new ArrayList<DeploymentTarget>();
     if (handleMainPart) {
       toHandle.add(mainPart);
+      addRelevantParts(context, mainPart, toHandle);
     } else {
-      Iterator<Part> partsIterator = ComponentExt.getRepresentingParts((Component) mainPart.eContainer()).iterator();
-      Part parentPart = partsIterator.hasNext() ? partsIterator.next() : null;
-      Collection<DDiagramElement> diagramElements = parentPart != null ? context.getDiagramElements(parentPart) : Collections.<DDiagramElement>emptyList();
-      int  foundCount = 0;
-      for (DDiagramElement diagElt : diagramElements) {
-        if (diagElt instanceof DNodeContainer) {
-          DNodeContainer node = (DNodeContainer) diagElt;
-          for (DDiagramElement elt : node.getOwnedDiagramElements()) {
-            if (mainPart.equals(elt.getTarget()) && elt.isVisible()) {
-              foundCount++;
-            }
-          }
-        }
-      }
-      if (diagramElements.size() != foundCount ) {
-        toHandle.add(parentPart);
-      }
+      addRelevantParts(context, mainPart, toHandle);
     }
     for(DeploymentTarget element : PartExt.getDeployingElements(mainPart)){
       boolean isChildView = false;
@@ -6709,6 +6695,28 @@ public class CsServices {
       }
     }
     return result;
+  }
+
+  private void addRelevantParts(DDiagramContents context, Part mainPart, List<DeploymentTarget> toHandle) {
+    Iterator<Part> partsIterator = ComponentExt.getRepresentingParts((Component) mainPart.eContainer()).iterator();
+    while(partsIterator.hasNext()){
+      Part parentPart = partsIterator.next();
+      Collection<DDiagramElement> diagramElements  = context.getDiagramElements(parentPart);
+      int  foundCount = 0;
+      for (DDiagramElement diagElt : diagramElements) {
+        if (diagElt instanceof DNodeContainer) {
+          DNodeContainer node = (DNodeContainer) diagElt;
+          for (DDiagramElement elt : node.getOwnedDiagramElements()) {
+            if (mainPart.equals(elt.getTarget()) && elt.isVisible()) {
+              foundCount++;
+            }
+          }
+        }
+      }
+      if (diagramElements.size() != foundCount ) {
+        toHandle.add(parentPart);
+      }        
+    }
   }
 
   private EObject getFirstVisibleAncestor(DDiagramContents context, Collection<Part> relevantParts) {

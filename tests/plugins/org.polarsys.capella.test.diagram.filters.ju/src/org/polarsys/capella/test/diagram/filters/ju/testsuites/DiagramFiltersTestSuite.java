@@ -13,9 +13,17 @@ package org.polarsys.capella.test.diagram.filters.ju.testsuites;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedCEForPABTestCase1;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedComponentExchangesForLAB;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedComponentExchangesForPAB;
-import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedPhysicalLinksForLAB;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedLinksForPABTestCase1;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedLinksForPABTestCase2;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedLinksForPABTestCase3;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedLinksForPABTestCase4;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedLinksForPABTestCase5;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedLinksForPABTestCase6;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedLinksForPABTestCase7;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedPLForPABTestCase1;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedPhysicalLinksForPAB;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideControlNodesForLFBD;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideControlNodesForPFBD;
@@ -66,8 +74,15 @@ public class DiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideComputedComponentExchangesForPAB());
     tests.add(new HideComputedComponentExchangesForLAB());
     tests.add(new HideComputedPhysicalLinksForPAB());
-    // TODO (aak) add when enhancing test project
-    // tests.add(new HideComputedPhysicalLinksForLAB());
+    tests.add(new HideComputedCEForPABTestCase1());
+    tests.add(new HideComputedPLForPABTestCase1());
+    tests.add(new HideComputedLinksForPABTestCase1());
+    tests.add(new HideComputedLinksForPABTestCase2());
+    tests.add(new HideComputedLinksForPABTestCase3());
+    tests.add(new HideComputedLinksForPABTestCase4());
+    tests.add(new HideComputedLinksForPABTestCase5());
+    tests.add(new HideComputedLinksForPABTestCase6());
+    tests.add(new HideComputedLinksForPABTestCase7());
     return tests;
   }
 
