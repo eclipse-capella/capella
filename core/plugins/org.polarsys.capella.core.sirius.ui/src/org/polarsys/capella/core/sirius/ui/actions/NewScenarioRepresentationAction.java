@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,9 +24,12 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
+import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.Scenario;
+import org.polarsys.capella.shared.id.handler.IdManager;
 
 /**
  * The action allowing to create new representations.
@@ -155,7 +158,12 @@ public class NewScenarioRepresentationAction extends NewRepresentationAction {
       scenario.setName(newName);
       selectedEObject.getOwnedScenarios().add(scenario);
 
+      String eventName = "Create Representation";
+      String eventContext = repDescription.getName();
+      String addendum = IdManager.getInstance().getId(scenario);
+      UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE, addendum);
       representation = DialectManager.INSTANCE.createRepresentation(newName, scenario, repDescription, currentSession, monitor);
+      UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.OK, addendum);
     }
   }
 }
