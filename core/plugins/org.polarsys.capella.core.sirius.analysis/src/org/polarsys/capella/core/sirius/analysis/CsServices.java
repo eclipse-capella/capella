@@ -6263,37 +6263,25 @@ public class CsServices {
 
     // Case 5
     if(source instanceof Port && target instanceof Part){
-      EObject sourceComponent = source.eContainer();
+      AbstractType sourceComponent = (AbstractType)source.eContainer();
+      AbstractType targetComponent = ((Part) target).getAbstractType();
       if(sourceComponent == ((Part)target).getAbstractType()){
+        return false;
+      }else if(isAnAncestor(sourceComponent, targetComponent)){
         return false;
       }
     }
     
     // Case 6
     if(source instanceof Part && target instanceof Port){
-      EObject targetComponent = target.eContainer();
+      AbstractType sourceComponent = ((Part) source).getAbstractType();
+      AbstractType targetComponent = (AbstractType)target.eContainer();
       if(targetComponent == ((Part)source).getAbstractType()){
+        return false;
+      }else if(isAnAncestor(targetComponent, sourceComponent)){
         return false;
       }
     }
-//    AbstractType sourceComponent = null;
-//    AbstractType targetComponent = null;
-//
-//    if (source instanceof Part) {
-//      sourceComponent = ((Part) source).getAbstractType();
-//    } else if (source instanceof Port) {
-//      sourceComponent = (AbstractType) source.eContainer();
-//    }
-//
-//    if (target instanceof Part) {
-//      targetComponent = ((Part) target).getAbstractType();
-//    } else if (target instanceof Port) {
-//      targetComponent = (AbstractType) target.eContainer();
-//    }
-//    if (sourceComponent != null && targetComponent != null
-//        && (isAnAncestor(sourceComponent, targetComponent) || isAnAncestor(targetComponent, sourceComponent))) {
-//      return false;
-//    }
 
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
     if (diagram != null) {
@@ -6348,11 +6336,6 @@ public class CsServices {
       }
 
       // Case 8
-      if (isMultipartMode((ModelElement) sourceView.getTarget()) && isUndoublonLink(sourceView, targetView)) {
-        return false;
-      }
-
-      // Case 9
       for (FilterDescription filter : diagram.getActivatedFilters()) {
         if (IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE.equals(filter.getName())
             || IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE.equals(filter.getName())) {
@@ -6468,38 +6451,25 @@ public class CsServices {
  
     // Case 4
     if(source instanceof Port && target instanceof Part){
-      EObject sourceComponent = source.eContainer();
+      AbstractType sourceComponent = (AbstractType)source.eContainer();
+      AbstractType targetComponent = ((Part) target).getAbstractType();
       if(sourceComponent == ((Part)target).getAbstractType()){
+        return false;
+      }else if(isAnAncestor(sourceComponent, targetComponent)){
         return false;
       }
     }
     
     // Case 5
     if(source instanceof Part && target instanceof Port){
-      EObject targetComponent = target.eContainer();
+      AbstractType sourceComponent = ((Part) source).getAbstractType();
+      AbstractType targetComponent = (AbstractType)target.eContainer();
       if(targetComponent == ((Part)source).getAbstractType()){
+        return false;
+      }else if(isAnAncestor(targetComponent, sourceComponent)){
         return false;
       }
     }
-
-
-//    AbstractType sourceComponent = null;
-//    AbstractType targetComponent = null;
-//    if (source instanceof Part) {
-//      sourceComponent = ((Part) source).getAbstractType();
-//    } else if (source instanceof Port) {
-//      sourceComponent = (AbstractType) source.eContainer();
-//    }
-//
-//    if (target instanceof Part) {
-//      targetComponent = ((Part) target).getAbstractType();
-//    } else if (target instanceof Port) {
-//      targetComponent = (AbstractType) target.eContainer();
-//    }
-//    if (sourceComponent != null && targetComponent != null
-//        && (isAnAncestor(sourceComponent, targetComponent) || isAnAncestor(targetComponent, sourceComponent))) {
-//      return false;
-//    }
 
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
     if (diagram != null) {
@@ -6554,11 +6524,6 @@ public class CsServices {
       }
 
       // Case 7
-      if (isMultipartMode((ModelElement) sourceView.getTarget()) && isUndoublonLink(sourceView, targetView)) {
-        return false;
-      }
-
-      // Case 8
       for (FilterDescription filter : diagram.getActivatedFilters()) {
         if (IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_PL.equals(filter.getName())
             || IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE.equals(filter.getName())) {
