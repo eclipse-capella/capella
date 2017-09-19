@@ -56,7 +56,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.GraphicalFilter;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeSpec;
+import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeContainerSpec;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -192,7 +192,6 @@ import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConsta
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.AbstractDependenciesPkgExt;
-import org.polarsys.capella.core.model.helpers.ActorExt;
 import org.polarsys.capella.core.model.helpers.AssociationExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapabilityRealizationExt;
@@ -6282,6 +6281,54 @@ public class CsServices {
         return false;
       }
     }
+    
+    // Case 7
+    if (source instanceof Part && target instanceof Part) {
+      // Check source
+      Iterator<DNode> srcOwnedBorderedNodes = ((DNodeContainer) sourceView).getOwnedBorderedNodes().iterator();
+      while (srcOwnedBorderedNodes.hasNext()) {
+        DDiagramElement eObject = (DDiagramElement) srcOwnedBorderedNodes.next();
+        if (eObject.getTarget() == ce.getSourcePort()) {
+          return false;
+        }
+      }
+      Iterator<DDiagramElement> srcOwnedDiagramElements = ((DNodeContainer) sourceView).getOwnedDiagramElements()
+          .iterator();
+      while (srcOwnedDiagramElements.hasNext()) {
+        DDiagramElement next = srcOwnedDiagramElements.next();
+        if (next instanceof AbstractDNode) {
+          Iterator<DNode> ownedNodes = ((AbstractDNode) next).getOwnedBorderedNodes().iterator();
+          while (ownedNodes.hasNext()) {
+            DDiagramElement eObject = (DDiagramElement) ownedNodes.next();
+            if (eObject.getTarget() == ce.getSourcePort()) {
+              return false;
+            }
+          }
+        }
+      }
+      // Check target
+      Iterator<DNode> trgtOwnedBorderedNodes = ((DNodeContainer) targetView).getOwnedBorderedNodes().iterator();
+      while (trgtOwnedBorderedNodes.hasNext()) {
+        DDiagramElement eObject = (DDiagramElement) trgtOwnedBorderedNodes.next();
+        if (eObject.getTarget() == ce.getTargetPort()) {
+          return false;
+        }
+      }
+      Iterator<DDiagramElement> trgtOwnedDiagramElements = ((DNodeContainer) targetView).getOwnedDiagramElements()
+          .iterator();
+      while (trgtOwnedDiagramElements.hasNext()) {
+        DDiagramElement next = trgtOwnedDiagramElements.next();
+        if (next instanceof AbstractDNode) {
+          Iterator<DNode> ownedNodes = ((AbstractDNode) next).getOwnedBorderedNodes().iterator();
+          while (ownedNodes.hasNext()) {
+            DDiagramElement eObject = (DDiagramElement) ownedNodes.next();
+            if (eObject.getTarget() == ce.getTargetPort()) {
+              return false;
+            }
+          }
+        }
+      }
+    }
 
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
     if (diagram != null) {
@@ -6293,7 +6340,7 @@ public class CsServices {
       if (targetElement.getTarget() instanceof Port) {
         targetElement = (DSemanticDecorator) targetElement.eContainer();
       }
-      // Case 7
+      // Case 8
       DDiagramContents context = new DDiagramContents(diagram);
       Collection<DEdge> edges = context.getEdges(ce);
       for (DEdge edge : edges) {
@@ -6440,7 +6487,7 @@ public class CsServices {
     if(!(communication instanceof PhysicalLink)){
       return false;
     }
-    
+    PhysicalLink pl = (PhysicalLink) communication;
     EObject source = sourceView.getTarget();
     EObject target = targetView.getTarget();
     
@@ -6470,6 +6517,54 @@ public class CsServices {
         return false;
       }
     }
+    
+    // Case 6
+    if (source instanceof Part && target instanceof Part) {
+      // Check source
+      Iterator<DNode> srcOwnedBorderedNodes = ((DNodeContainer) sourceView).getOwnedBorderedNodes().iterator();
+      while (srcOwnedBorderedNodes.hasNext()) {
+        DDiagramElement eObject = (DDiagramElement) srcOwnedBorderedNodes.next();
+        if (eObject.getTarget() == pl.getSourcePhysicalPort()) {
+          return false;
+        }
+      }
+      Iterator<DDiagramElement> srcOwnedDiagramElements = ((DNodeContainer) sourceView).getOwnedDiagramElements()
+          .iterator();
+      while (srcOwnedDiagramElements.hasNext()) {
+        DDiagramElement next = srcOwnedDiagramElements.next();
+        if (next instanceof AbstractDNode) {
+          Iterator<DNode> ownedNodes = ((AbstractDNode) next).getOwnedBorderedNodes().iterator();
+          while (ownedNodes.hasNext()) {
+            DDiagramElement eObject = (DDiagramElement) ownedNodes.next();
+            if (eObject.getTarget() == pl.getSourcePhysicalPort()) {
+              return false;
+            }
+          }
+        }
+      }
+      // Check target
+      Iterator<DNode> trgtOwnedBorderedNodes = ((DNodeContainer) targetView).getOwnedBorderedNodes().iterator();
+      while (trgtOwnedBorderedNodes.hasNext()) {
+        DDiagramElement eObject = (DDiagramElement) trgtOwnedBorderedNodes.next();
+        if (eObject.getTarget() == pl.getTargetPhysicalPort()) {
+          return false;
+        }
+      }
+      Iterator<DDiagramElement> trgtOwnedDiagramElements = ((DNodeContainer) targetView).getOwnedDiagramElements()
+          .iterator();
+      while (trgtOwnedDiagramElements.hasNext()) {
+        DDiagramElement next = trgtOwnedDiagramElements.next();
+        if (next instanceof AbstractDNode) {
+          Iterator<DNode> ownedNodes = ((AbstractDNode) next).getOwnedBorderedNodes().iterator();
+          while (ownedNodes.hasNext()) {
+            DDiagramElement eObject = (DDiagramElement) ownedNodes.next();
+            if (eObject.getTarget() == pl.getTargetPhysicalPort()) {
+              return false;
+            }
+          }
+        }
+      }
+    }
 
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
     if (diagram != null) {
@@ -6481,7 +6576,7 @@ public class CsServices {
       if (targetElement.getTarget() instanceof Port) {
         targetElement = (DSemanticDecorator) targetElement.eContainer();
       }
-      // Case 6
+      // Case 7
       DDiagramContents context = new DDiagramContents(diagram);
       Collection<DEdge> edges = context.getEdges(communication);
       for (DEdge edge : edges) {
@@ -6522,8 +6617,8 @@ public class CsServices {
           }
         }
       }
-
-      // Case 7
+     
+      // Case 8
       for (FilterDescription filter : diagram.getActivatedFilters()) {
         if (IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_PL.equals(filter.getName())
             || IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE.equals(filter.getName())) {
@@ -6573,18 +6668,18 @@ public class CsServices {
       Iterator<Part> partsIterator = ComponentExt.getRepresentingParts((Component) mainPart.eContainer()).iterator();
       Part parentPart = partsIterator.hasNext() ? partsIterator.next() : null;
       Collection<DDiagramElement> diagramElements = parentPart != null ? context.getDiagramElements(parentPart) : Collections.<DDiagramElement>emptyList();
-      boolean found = false;
+      int  foundCount = 0;
       for (DDiagramElement diagElt : diagramElements) {
         if (diagElt instanceof DNodeContainer) {
           DNodeContainer node = (DNodeContainer) diagElt;
           for (DDiagramElement elt : node.getOwnedDiagramElements()) {
             if (mainPart.equals(elt.getTarget()) && elt.isVisible()) {
-              found = true;
+              foundCount++;
             }
           }
         }
       }
-      if (!found) {
+      if (diagramElements.size() != foundCount ) {
         toHandle.add(parentPart);
       }
     }
