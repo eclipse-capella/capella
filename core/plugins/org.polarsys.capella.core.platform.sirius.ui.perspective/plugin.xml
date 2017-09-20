@@ -65,6 +65,24 @@
      <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern="org\.eclipse\.debug\..*/.*"/>
      <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.modelingproject.wizard"/>
      <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.specificationproject.wizard"/>
+	 <!-- Declare the a specific activity for elements only hidden in Capella perspective -->
+	 <activity
+		description="Capella Hidden Activities"
+		id="org.polarsys.capella.core.perspective.hidden.activity"
+		name="Capella Hidden Activities">
+		<enabledWhen>
+			<with
+				variable="activeWorkbenchWindow.activePerspective">
+				<not>
+					<equals
+						value="capella.sirius.perspective">
+					</equals>
+				</not>
+			</with>
+		</enabledWhen>
+	 </activity>
+	 <!-- This contribution is used to hide the Sirius's close contextual menu in Capella perspective -->
+	 <activityPatternBinding activityId="org.polarsys.capella.core.perspective.hidden.activity" isEqualityPattern="true" pattern="org.eclipse.sirius.ui.editor/org.eclipse.sirius.ui.closeSessionMenuContribution"/>
    </extension>
    
    <!--extension point="org.eclipse.ui.splashHandlers">
