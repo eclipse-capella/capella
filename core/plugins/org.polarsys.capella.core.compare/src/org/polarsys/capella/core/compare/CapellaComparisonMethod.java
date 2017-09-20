@@ -29,6 +29,7 @@ import org.eclipse.emf.diffmerge.api.IMergePolicy;
 import org.eclipse.emf.diffmerge.api.config.IComparisonConfigurator;
 import org.eclipse.emf.diffmerge.impl.policies.ComparisonConfigurator;
 import org.eclipse.emf.diffmerge.ui.sirius.SiriusComparisonMethod;
+import org.eclipse.emf.diffmerge.ui.specification.IComparisonMethodFactory;
 import org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -62,13 +63,15 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
   
   /**
    * Constructor
-   * @param leftScopeSpec a non-null scope specification
-   * @param rightScopeSpec a non-null scope specification
-   * @param ancestorScopeSpec an optional scope specification
+   * @param leftScopeDef a non-null scope definition
+   * @param rightScopeDef a non-null scope definition
+   * @param ancestorScopeDef an optional scope definition
+   * @param factory the optional factory this comparison method originates from
    */
-  public CapellaComparisonMethod(IModelScopeDefinition leftScopeSpec,
-      IModelScopeDefinition rightScopeSpec, IModelScopeDefinition ancestorScopeSpec) {
-    super(leftScopeSpec, rightScopeSpec, ancestorScopeSpec);
+  public CapellaComparisonMethod(IModelScopeDefinition leftScopeDef,
+      IModelScopeDefinition rightScopeDef, IModelScopeDefinition ancestorScopeDef,
+      IComparisonMethodFactory factory) {
+    super(leftScopeDef, rightScopeDef, ancestorScopeDef, factory);
   }
   
   /**

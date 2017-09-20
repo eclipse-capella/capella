@@ -31,7 +31,7 @@ public class CapellaComparisonMethodFactory extends SiriusComparisonMethodFactor
       IModelScopeDefinition leftScopeSpec, IModelScopeDefinition rightScopeSpec,
       IModelScopeDefinition ancestorScopeSpec) {
     return new CapellaComparisonMethod(
-        leftScopeSpec, rightScopeSpec, ancestorScopeSpec);
+        leftScopeSpec, rightScopeSpec, ancestorScopeSpec, this);
   }
   
   /**
