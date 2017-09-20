@@ -72,7 +72,8 @@ public class CapellaSavingPolicy extends SavingPolicyImpl {
           IPath parentFolderPath = path.removeLastSegments(1);
           File dir = parentFolderPath.toFile();
 
-          if ((dir.exists() && !dir.canWrite()) || file.isReadOnly()) {
+          // Read-only mode is already checked in org.polarsys.capella.core.model.handler.pre.commit.listener.FileModificationPreCommitListener
+          if ((dir.exists() && !dir.canWrite())) {
             files.add(file);
           }
         }
