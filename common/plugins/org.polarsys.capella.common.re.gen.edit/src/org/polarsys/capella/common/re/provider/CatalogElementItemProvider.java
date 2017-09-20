@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -140,6 +140,8 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
 			addEnvironmentPropertyDescriptor(object);
 			addSuffixPropertyDescriptor(object);
 			addPurposePropertyDescriptor(object);
+			addReadOnlyPropertyDescriptor(object);
+			addVersionPropertyDescriptor(object);
 			addTagsPropertyDescriptor(object);
 			addOriginPropertyDescriptor(object);
 			addCurrentCompliancyPropertyDescriptor(object);
@@ -289,6 +291,60 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
 	}
 
   /**
+	 * This adds a property descriptor for the Read Only feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReadOnlyPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CatalogElement_readOnly_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_CatalogElement_readOnly_feature", "_UI_CatalogElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 RePackage.Literals.CATALOG_ELEMENT__READ_ONLY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+		/**
+	 * This adds a property descriptor for the Version feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVersionPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CatalogElement_version_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_CatalogElement_version_feature", "_UI_CatalogElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 RePackage.Literals.CATALOG_ELEMENT__VERSION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+		/**
 	 * This adds a property descriptor for the Tags feature.
 	 * <!-- begin-user-doc -->
   * <!-- end-user-doc -->
@@ -542,6 +598,8 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
 			case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
 			case RePackage.CATALOG_ELEMENT__SUFFIX:
 			case RePackage.CATALOG_ELEMENT__PURPOSE:
+			case RePackage.CATALOG_ELEMENT__READ_ONLY:
+			case RePackage.CATALOG_ELEMENT__VERSION:
 			case RePackage.CATALOG_ELEMENT__TAGS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

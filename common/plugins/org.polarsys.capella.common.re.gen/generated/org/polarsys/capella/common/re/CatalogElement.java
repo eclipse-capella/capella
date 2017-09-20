@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getEnvironment <em>Environment</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getSuffix <em>Suffix</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getPurpose <em>Purpose</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.CatalogElement#isReadOnly <em>Read Only</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getVersion <em>Version</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getTags <em>Tags</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getOrigin <em>Origin</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getCurrentCompliancy <em>Current Compliancy</em>}</li>
@@ -237,6 +239,79 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 	 */
 
 	void setPurpose(String value);
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Read Only</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Read Only</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Read Only</em>' attribute.
+	 * @see #setReadOnly(boolean)
+	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_ReadOnly()
+	 * @model default="false"
+	 * @generated
+	 */
+
+	boolean isReadOnly();
+
+
+
+
+	/**
+	 * Sets the value of the '{@link org.polarsys.capella.common.re.CatalogElement#isReadOnly <em>Read Only</em>}' attribute.
+
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Read Only</em>' attribute.
+	 * @see #isReadOnly()
+	 * @generated
+	 */
+
+	void setReadOnly(boolean value);
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Version</b></em>' attribute.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Version</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Version</em>' attribute.
+	 * @see #setVersion(String)
+	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Version()
+	 * @model
+	 * @generated
+	 */
+
+	String getVersion();
+
+
+
+
+	/**
+	 * Sets the value of the '{@link org.polarsys.capella.common.re.CatalogElement#getVersion <em>Version</em>}' attribute.
+
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Version</em>' attribute.
+	 * @see #getVersion()
+	 * @generated
+	 */
+
+	void setVersion(String value);
 
 
 

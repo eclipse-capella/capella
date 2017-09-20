@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,6 +51,8 @@ import org.polarsys.capella.common.re.RePackage;
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getEnvironment <em>Environment</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getSuffix <em>Suffix</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getPurpose <em>Purpose</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#isReadOnly <em>Read Only</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getTags <em>Tags</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getOrigin <em>Origin</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getCurrentCompliancy <em>Current Compliancy</em>}</li>
@@ -201,6 +203,62 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 	 * @ordered
 	 */
 	protected String purpose = PURPOSE_EDEFAULT;
+
+
+
+
+
+	/**
+	 * The default value of the '{@link #isReadOnly() <em>Read Only</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isReadOnly()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean READ_ONLY_EDEFAULT = false;
+
+
+
+
+
+	/**
+	 * The cached value of the '{@link #isReadOnly() <em>Read Only</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isReadOnly()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean readOnly = READ_ONLY_EDEFAULT;
+
+
+
+
+
+	/**
+	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VERSION_EDEFAULT = null;
+
+
+
+
+
+	/**
+	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected String version = VERSION_EDEFAULT;
 
 
 
@@ -463,6 +521,58 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 		purpose = newPurpose;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__PURPOSE, oldPurpose, purpose));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public boolean isReadOnly() {
+
+		return readOnly;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setReadOnly(boolean newReadOnly) {
+
+		boolean oldReadOnly = readOnly;
+		readOnly = newReadOnly;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__READ_ONLY, oldReadOnly, readOnly));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public String getVersion() {
+
+		return version;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setVersion(String newVersion) {
+
+		String oldVersion = version;
+		version = newVersion;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__VERSION, oldVersion, version));
 
 	}
 
@@ -781,6 +891,10 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 				return getSuffix();
 			case RePackage.CATALOG_ELEMENT__PURPOSE:
 				return getPurpose();
+			case RePackage.CATALOG_ELEMENT__READ_ONLY:
+				return isReadOnly();
+			case RePackage.CATALOG_ELEMENT__VERSION:
+				return getVersion();
 			case RePackage.CATALOG_ELEMENT__TAGS:
 				return getTags();
 			case RePackage.CATALOG_ELEMENT__ORIGIN:
@@ -830,6 +944,12 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 			case RePackage.CATALOG_ELEMENT__PURPOSE:
 					setPurpose((String)newValue);
 				return;
+			case RePackage.CATALOG_ELEMENT__READ_ONLY:
+					setReadOnly((Boolean)newValue);
+				return;
+			case RePackage.CATALOG_ELEMENT__VERSION:
+					setVersion((String)newValue);
+				return;
 			case RePackage.CATALOG_ELEMENT__TAGS:
 				getTags().clear();
 				getTags().addAll((Collection<? extends String>)newValue);
@@ -878,6 +998,12 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 			case RePackage.CATALOG_ELEMENT__PURPOSE:
 				setPurpose(PURPOSE_EDEFAULT);
 				return;
+			case RePackage.CATALOG_ELEMENT__READ_ONLY:
+				setReadOnly(READ_ONLY_EDEFAULT);
+				return;
+			case RePackage.CATALOG_ELEMENT__VERSION:
+				setVersion(VERSION_EDEFAULT);
+				return;
 			case RePackage.CATALOG_ELEMENT__TAGS:
 				getTags().clear();
 				return;
@@ -919,6 +1045,10 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 				return SUFFIX_EDEFAULT == null ? suffix != null : !SUFFIX_EDEFAULT.equals(suffix);
 			case RePackage.CATALOG_ELEMENT__PURPOSE:
 				return PURPOSE_EDEFAULT == null ? purpose != null : !PURPOSE_EDEFAULT.equals(purpose);
+			case RePackage.CATALOG_ELEMENT__READ_ONLY:
+				return readOnly != READ_ONLY_EDEFAULT;
+			case RePackage.CATALOG_ELEMENT__VERSION:
+				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
 			case RePackage.CATALOG_ELEMENT__TAGS:
 				return tags != null && !tags.isEmpty();
 			case RePackage.CATALOG_ELEMENT__ORIGIN:
@@ -990,6 +1120,10 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 		result.append(suffix);
 		result.append(", purpose: "); //$NON-NLS-1$
 		result.append(purpose);
+		result.append(", readOnly: "); //$NON-NLS-1$
+		result.append(readOnly);
+		result.append(", version: "); //$NON-NLS-1$
+		result.append(version);
 		result.append(", tags: "); //$NON-NLS-1$
 		result.append(tags);
 		result.append(')');

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -417,7 +417,7 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCatalogElement_Tags() {
+	public EAttribute getCatalogElement_ReadOnly() {
 		return (EAttribute)catalogElementEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -426,25 +426,25 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCatalogElement_Version() {
+		return (EAttribute)catalogElementEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCatalogElement_Tags() {
+		return (EAttribute)catalogElementEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getCatalogElement_Origin() {
-		return (EReference)catalogElementEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getCatalogElement_CurrentCompliancy() {
-		return (EReference)catalogElementEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getCatalogElement_DefaultReplicaCompliancy() {
 		return (EReference)catalogElementEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -453,7 +453,7 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCatalogElement_OwnedLinks() {
+	public EReference getCatalogElement_CurrentCompliancy() {
 		return (EReference)catalogElementEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -462,7 +462,7 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCatalogElement_ReferencedElements() {
+	public EReference getCatalogElement_DefaultReplicaCompliancy() {
 		return (EReference)catalogElementEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -471,8 +471,26 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCatalogElement_ReplicatedElements() {
+	public EReference getCatalogElement_OwnedLinks() {
 		return (EReference)catalogElementEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCatalogElement_ReferencedElements() {
+		return (EReference)catalogElementEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCatalogElement_ReplicatedElements() {
+		return (EReference)catalogElementEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -572,6 +590,8 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 		createEAttribute(catalogElementEClass, CATALOG_ELEMENT__ENVIRONMENT);
 		createEAttribute(catalogElementEClass, CATALOG_ELEMENT__SUFFIX);
 		createEAttribute(catalogElementEClass, CATALOG_ELEMENT__PURPOSE);
+		createEAttribute(catalogElementEClass, CATALOG_ELEMENT__READ_ONLY);
+		createEAttribute(catalogElementEClass, CATALOG_ELEMENT__VERSION);
 		createEAttribute(catalogElementEClass, CATALOG_ELEMENT__TAGS);
 		createEReference(catalogElementEClass, CATALOG_ELEMENT__ORIGIN);
 		createEReference(catalogElementEClass, CATALOG_ELEMENT__CURRENT_COMPLIANCY);
@@ -669,6 +689,8 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 		initEAttribute(getCatalogElement_Environment(), ecorePackage.getEString(), "environment", null, 0, 1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getCatalogElement_Suffix(), ecorePackage.getEString(), "suffix", null, 0, 1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getCatalogElement_Purpose(), ecorePackage.getEString(), "purpose", null, 0, 1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getCatalogElement_ReadOnly(), ecorePackage.getEBoolean(), "readOnly", "false", 0, 1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEAttribute(getCatalogElement_Version(), ecorePackage.getEString(), "version", null, 0, 1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getCatalogElement_Tags(), ecorePackage.getEString(), "tags", null, 0, -1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCatalogElement_Origin(), this.getCatalogElement(), null, "origin", null, 0, 1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCatalogElement_CurrentCompliancy(), this.getCompliancyDefinition(), null, "currentCompliancy", null, 0, 1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -779,6 +801,16 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 		   });	
 		addAnnotation
 		  (getCatalogElement_Purpose(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getCatalogElement_ReadOnly(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getCatalogElement_Version(), 
 		   source, 
 		   new String[] {
 		   });	
