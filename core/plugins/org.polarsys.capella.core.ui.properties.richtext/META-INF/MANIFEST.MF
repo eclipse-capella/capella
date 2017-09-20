@@ -10,9 +10,9 @@ Require-Bundle: org.eclipse.sirius.diagram.ui,
  org.eclipse.sirius.table,
  org.polarsys.capella.core.ui.properties,
  org.polarsys.capella.shared.id.handler,
- org.polarsys.kitalpha.richtext.mde.tools,
- org.polarsys.kitalpha.richtext.nebula.widget,
- org.polarsys.kitalpha.richtext.widget
+ org.polarsys.kitalpha.richtext.common,
+ org.polarsys.kitalpha.richtext.widget,
+ org.polarsys.kitalpha.richtext.widget.ext
 Export-Package: org.polarsys.capella.core.ui.properties.richtext,
  org.polarsys.capella.core.ui.properties.richtext.fields,
  org.polarsys.capella.core.ui.properties.richtext.sections

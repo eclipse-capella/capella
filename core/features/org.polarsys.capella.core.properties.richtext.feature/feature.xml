@@ -32,10 +32,6 @@
          version="0.0.0"/>
 
    <includes
-         id="org.polarsys.kitalpha.richtext.mde.tools.sirius.feature"
-         version="0.0.0"/>
-
-   <includes
          id="org.polarsys.kitalpha.richtext.widget.feature"
          version="0.0.0"/>
 

@@ -65,9 +65,9 @@
       </propertySheetDelegate>
    </extension>
    <extension
-         point="org.polarsys.kitalpha.richtext.mde.tools.link.openModelStrategy">
-      <openModel
-            class="org.polarsys.capella.core.ui.properties.richtext.navigation.CapellaNavigationModelElement">
-      </openModel>
+         point="org.polarsys.kitalpha.richtext.widget.tools.ext.openLinkStrategy">
+      <openStrategy
+            strategy="org.polarsys.capella.core.ui.properties.richtext.navigation.CapellaNavigationModelElement">
+      </openStrategy>
    </extension>
 </plugin>
