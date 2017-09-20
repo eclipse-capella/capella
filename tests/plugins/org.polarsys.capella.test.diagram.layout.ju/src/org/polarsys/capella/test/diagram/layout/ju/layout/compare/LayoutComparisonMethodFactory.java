@@ -38,7 +38,7 @@ public class LayoutComparisonMethodFactory implements IComparisonMethodFactory {
   @Override
   public IComparisonMethod createComparisonMethod(IModelScopeDefinition leftScopeSpec_p,
       IModelScopeDefinition rightScopeSpec_p, IModelScopeDefinition ancestorScopeSpec_p) {
-    IComparisonMethod method =  new DefaultComparisonMethod(leftScopeSpec_p, rightScopeSpec_p, ancestorScopeSpec_p) {
+    IComparisonMethod method =  new DefaultComparisonMethod(leftScopeSpec_p, rightScopeSpec_p, ancestorScopeSpec_p, this) {
 
       @Override
       protected IDiffPolicy createDiffPolicy() {
