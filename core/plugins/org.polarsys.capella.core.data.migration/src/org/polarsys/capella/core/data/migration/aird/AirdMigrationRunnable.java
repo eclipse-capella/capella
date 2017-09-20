@@ -15,16 +15,21 @@ import java.util.Map;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xmi.XMLLoad;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMLHelperImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMLLoadImpl;
-import org.eclipse.gmf.runtime.emf.core.resources.GMFResource;
-import org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
 import org.eclipse.sirius.business.internal.resource.AirDResourceImpl;
+import org.eclipse.sirius.business.internal.resource.parser.RepresentationsFileXMIHelper;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.polarsys.capella.core.data.migration.capella.ModelMigrationRunnable;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
@@ -133,6 +138,77 @@ public class AirdMigrationRunnable extends ModelMigrationRunnable {
     }
 
     return super.doCreateResource(uri, context);
+  }
+
+  @Override
+  @SuppressWarnings("restriction")
+  public XMIExtensionHelperImpl createCapellaXMLHelper(XMLResource resource) {
+      // Ideally, the XMLHelper used should be inherited from RepresentationsFileXMIHelper. But, as
+      // XMIExtensionHelperImpl and RepresentationsFileXMIHelper are not in the same inheritance branch we do
+      // inheritance by composition instantiating RepresentationsFileXMIHelper as delegate.
+      final RepresentationsFileXMIHelper delegateXMLHelper = new RepresentationsFileXMIHelper(resource);
+      XMIExtensionHelperImpl result = new XMIExtensionHelperImpl(resource) {
+          @Override
+          public EClassifier getType(EFactory eFactory, String typeName) {
+              EClassifier type = null;
+              if (eFactory != null) {
+                  EPackage ePackage = eFactory.getEPackage();
+                  if (extendedMetaData != null) {
+                      type = extendedMetaData.getType(ePackage, typeName);
+                  }
+                  if (type == null) {
+                      EClass eClass = (EClass) ePackage.getEClassifier(typeName);
+                      if ((eClass == null) && (xmlMap != null)) {
+                          return xmlMap.getClassifier(ePackage.getNsURI(), typeName);
+                      }
+                      return eClass;
+                  }
+              }
+              return type;
+          }
+
+          @Override
+          public void setValue(EObject object, EStructuralFeature feature, Object value, int position) {
+              super.setValue(object, feature, value, position);
+          }
+
+          @Override
+          public EObject createObject(EFactory eFactory, EClassifier type) {
+              return delegateXMLHelper.createObject(eFactory, type);
+          }
+
+          @Override
+          public URI deresolve(URI uri) {
+              return delegateXMLHelper.deresolve(uri);
+          }
+
+          @Override
+          public String convertToString(EFactory factory, EDataType dataType, Object value) {
+              return delegateXMLHelper.convertToString(factory, dataType, value);
+          }
+
+          /**
+           * Copied from
+           * org.eclipse.sirius.business.internal.resource.parser.RepresentationsFileXMIHelper.createFromString(EFactory,
+           * EDataType, String).
+           * 
+           * @see org.eclipse.emf.ecore.xmi.impl.XMLHelperImpl#createFromString(org.eclipse.emf.ecore.EFactory,
+           *      org.eclipse.emf.ecore.EDataType, java.lang.String)
+           */
+          @Override
+          protected Object createFromString(EFactory eFactory, EDataType eDataType, String value) {
+              if (value != null && eDataType.equals(ViewpointPackage.eINSTANCE.getResourceDescriptor())) {
+                  // ResourceDescriptor(String) constructor converts string into URI
+                  // That URI is used to get a relative URI
+                  URI resolvedURI = new ResourceDescriptor(value).getResourceURI().resolve(resourceURI);
+                  return new ResourceDescriptor(resolvedURI);
+              }
+              return super.createFromString(eFactory, eDataType, value);
+          }
+
+      };
+
+      return result;
   }
 
 }
