@@ -4442,7 +4442,7 @@
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="3bed494a-3ac6-419b-9ee2-a244905e73b7" name="OE3" actualMapping="OEB_OperationalEntities">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="336" y="-89" width="70" height="70"/>
+      <bounds x="336" y="-89" width="70" height="49"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="fd2748c4-e347-46bc-a7fc-8f6c43daee57" name="OA2" actualMapping="OEB_OperationalEntities">
       <appliedFilters>HideFilter</appliedFilters>
@@ -4752,19 +4752,19 @@
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="4b46f4a1-5bdf-4df4-8394-e3f4fb99a829" name="OC1" actualMapping="COC2_OperationalCapabilities">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="250" y="175" width="70" height="70"/>
+      <bounds x="250" y="175" width="70" height="49"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="aa6965b0-9e92-489c-80c2-03edd5e51cc5" name="OC2" actualMapping="COC2_OperationalCapabilities">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="440" y="265" width="70" height="70"/>
+      <bounds x="440" y="265" width="70" height="49"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="21f77d8e-53ae-4fb7-af7a-fa0842dc3471" name="OC3" actualMapping="COC2_OperationalCapabilities">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="35" y="255" width="70" height="70"/>
+      <bounds x="35" y="255" width="70" height="49"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="31530839-ef92-4e5c-a203-303c6842d5ff" name="OC4" actualMapping="COC2_OperationalCapabilities">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="255" y="270" width="70" height="70"/>
+      <bounds x="255" y="270" width="70" height="49"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="f2c2017e-b49b-433f-89eb-b4d0fcade96f" name="" actualMapping="DT_Contraint">
       <appliedStyles>foregroundColor: 255,245,181</appliedStyles>
@@ -4821,48 +4821,48 @@
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="98" y="255"/>
-      <bendpoints x="255" y="68"/>
+      <bendpoints x="90" y="255"/>
+      <bendpoints x="254" y="68"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="664053b3-296d-4026-9d27-326f97e49602" name="" actualMapping="COC2_EntityCapabilityInvolvement" source="//@ownedLayouts.25/@ownedLayouts.2" target="//@ownedLayouts.25/@ownedLayouts.7">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="63" y="324"/>
-      <bendpoints x="63" y="526"/>
-      <bendpoints x="554" y="560"/>
+      <bendpoints x="63" y="303"/>
+      <bendpoints x="63" y="519"/>
+      <bendpoints x="554" y="557"/>
       <bendpoints x="497" y="68"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="a53a8234-ef19-4de4-9f85-19c3a49acd45" name="&#xab; e &#xbb;" actualMapping="COC2_OC_Extends" source="//@ownedLayouts.25/@ownedLayouts.0" target="//@ownedLayouts.25/@ownedLayouts.1">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="319" y="226"/>
-      <bendpoints x="440" y="283"/>
+      <bendpoints x="319" y="216"/>
+      <bendpoints x="440" y="273"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="2946d5c8-f879-4476-856f-e39faeb7a60c" name="&#xab; i &#xbb;" actualMapping="COC2_OC_Include" source="//@ownedLayouts.25/@ownedLayouts.0" target="//@ownedLayouts.25/@ownedLayouts.2">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="250" y="223"/>
-      <bendpoints x="104" y="276"/>
+      <bendpoints x="250" y="212"/>
+      <bendpoints x="104" y="266"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="67d38ab7-2cf1-4327-a490-d8a718e56f30" name="" actualMapping="COC2_OC_Generalization" source="//@ownedLayouts.25/@ownedLayouts.0" target="//@ownedLayouts.25/@ownedLayouts.3">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="290" y="244"/>
+      <bendpoints x="290" y="223"/>
       <bendpoints x="290" y="270"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="f2c2017e-b49b-433f-89eb-b4d0fcade96f" name="" actualMapping="DT_ContrainedElements" source="//@ownedLayouts.25/@ownedLayouts.4" target="//@ownedLayouts.25/@ownedLayouts.0">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="354" y="385"/>
-      <bendpoints x="294" y="355"/>
-      <bendpoints x="386" y="368"/>
-      <bendpoints x="372" y="284"/>
-      <bendpoints x="319" y="239"/>
+      <bendpoints x="357" y="385"/>
+      <bendpoints x="294" y="352"/>
+      <bendpoints x="386" y="362"/>
+      <bendpoints x="372" y="276"/>
+      <bendpoints x="312" y="223"/>
     </ownedLayouts>
     <appliedLayers>Default</appliedLayers>
   </ownedLayouts>
@@ -21198,87 +21198,87 @@
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="7b8aa28d-cd04-4e96-b580-609605af9143" name="OA1" actualMapping="SC_Actor">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="130" y="121" width="70" height="70"/>
+      <bounds x="130" y="121" width="70" height="61"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="1f350ba9-d062-46ec-b85a-edc9d82b31b1" name="OE3" actualMapping="SC_Actor">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="48" y="252" width="70" height="70"/>
+      <bounds x="48" y="252" width="70" height="61"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="2fff953a-cdd8-489f-ac75-eafca016ddf6" name="Actor3" actualMapping="SC_Actor">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="264" y="72" width="70" height="70"/>
+      <bounds x="264" y="72" width="70" height="61"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="afb47953-e18d-43e8-89cb-75e3ee7b1861" name="Actor4" actualMapping="SC_Actor">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="492" y="96" width="70" height="70"/>
+      <bounds x="492" y="96" width="70" height="61"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="21b34685-dc54-4ab4-9217-12100a61f47b" name="Actor 5" actualMapping="SC_Actor">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="505" y="245" width="70" height="70"/>
+      <bounds x="505" y="245" width="70" height="61"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="9cc6b86c-af25-42e8-9133-c8fbf19d5d7f" name="A 6" actualMapping="SC_Actor">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="0" y="0" width="70" height="70"/>
+      <bounds x="0" y="0" width="70" height="61"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="fd49b459-02e4-4dcb-9da6-10ef1ba9fcaf" name="A 7" actualMapping="SC_Actor">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="0" y="0" width="70" height="70"/>
+      <bounds x="0" y="0" width="70" height="61"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="96dc1f45-deb3-4d45-8b05-25e6597c2db8" name="" actualMapping="SC_System_Actor" source="//@ownedLayouts.107/@ownedLayouts.0" target="//@ownedLayouts.107/@ownedLayouts.1">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="253" y="242"/>
-      <bendpoints x="199" y="189"/>
+      <bendpoints x="255" y="242"/>
+      <bendpoints x="195" y="181"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="18258c12-395f-483a-97dd-e053608ab182" name="" actualMapping="SC_System_Actor" source="//@ownedLayouts.107/@ownedLayouts.0" target="//@ownedLayouts.107/@ownedLayouts.2">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="245" y="286"/>
-      <bendpoints x="117" y="286"/>
+      <bendpoints x="245" y="282"/>
+      <bendpoints x="117" y="282"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="389d5b96-81f5-4a6d-8764-8eaca0d2a05c" name="" actualMapping="SC_System_Actor" source="//@ownedLayouts.107/@ownedLayouts.0" target="//@ownedLayouts.107/@ownedLayouts.3">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
       <bendpoints x="299" y="242"/>
-      <bendpoints x="299" y="141"/>
+      <bendpoints x="299" y="132"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="a901dcfb-aea5-4b2e-b183-48c981814da7" name="" actualMapping="SC_System_Actor" source="//@ownedLayouts.107/@ownedLayouts.0" target="//@ownedLayouts.107/@ownedLayouts.4">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="345" y="249"/>
-      <bendpoints x="492" y="153"/>
+      <bendpoints x="345" y="248"/>
+      <bendpoints x="492" y="149"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="d2b997fe-4d74-4d4b-817b-6cd24ad5f3f9" name="" actualMapping="SC_System_Actor" source="//@ownedLayouts.107/@ownedLayouts.0" target="//@ownedLayouts.107/@ownedLayouts.5">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="345" y="281"/>
-      <bendpoints x="505" y="281"/>
+      <bendpoints x="345" y="277"/>
+      <bendpoints x="505" y="277"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="b28185a9-67b4-4388-bae6-a603818a3ff1" name="" actualMapping="SC_System_Actor" source="//@ownedLayouts.107/@ownedLayouts.0" target="//@ownedLayouts.107/@ownedLayouts.6">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="252" y="242"/>
-      <bendpoints x="69" y="67"/>
+      <bendpoints x="253" y="242"/>
+      <bendpoints x="66" y="60"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="fb781d58-2750-433a-aa82-c555f5d46be5" name="" actualMapping="SC_System_Actor" source="//@ownedLayouts.107/@ownedLayouts.0" target="//@ownedLayouts.107/@ownedLayouts.7">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="252" y="242"/>
-      <bendpoints x="69" y="67"/>
+      <bendpoints x="253" y="242"/>
+      <bendpoints x="66" y="60"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="c65a6902-f4a9-4de7-aafc-d9d3cd514dba" name="" actualMapping="actorGeneralization5" source="//@ownedLayouts.107/@ownedLayouts.3" target="//@ownedLayouts.107/@ownedLayouts.4">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="333" y="110"/>
-      <bendpoints x="492" y="126"/>
+      <bendpoints x="333" y="105"/>
+      <bendpoints x="492" y="122"/>
     </ownedLayouts>
     <appliedLayers>default</appliedLayers>
   </ownedLayouts>
