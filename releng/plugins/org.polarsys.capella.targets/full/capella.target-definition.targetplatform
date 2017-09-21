@@ -60,30 +60,37 @@ location kitalpha-runtime-master-latest "https://hudson.polarsys.org/kitalpha/jo
 	org.polarsys.kitalpha.report.feature.feature.group lazy
 	org.polarsys.kitalpha.report.ui.feature.feature.group lazy
 	org.polarsys.kitalpha.transposer.feature.feature.group lazy
-	org.polarsys.kitalpha.richtext.mde.tools.sirius.feature.feature.group lazy
-	org.polarsys.kitalpha.richtext.mde.tools.sirius.source.feature.feature.group lazy
 	org.polarsys.kitalpha.richtext.widget.doc.feature.feature.group lazy
 	org.polarsys.kitalpha.richtext.widget.feature.feature.group lazy
 	org.polarsys.kitalpha.richtext.widget.source.feature.feature.group lazy
+	org.polarsys.kitalpha.richtext.widget.ext.feature.feature.group lazy
+	org.polarsys.kitalpha.richtext.widget.ext.source.feature.feature.group lazy
 }
 
 location diffmerge-core-master "http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site" {
 	org.eclipse.emf.diffmerge.feature.feature.group
+	org.eclipse.emf.diffmerge.feature.source.feature.group
 	org.eclipse.emf.diffmerge.sirius.feature.feature.group
+	org.eclipse.emf.diffmerge.sirius.feature.source.feature.group
 	org.eclipse.emf.diffmerge.gmf.feature.feature.group
+	org.eclipse.emf.diffmerge.gmf.feature.source.feature.group
 }
 
 location diffmerge-patterns-master "http://download.eclipse.org/diffmerge/releases/0.9.0/edm-patterns-site" {
 	org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group
+	org.eclipse.emf.diffmerge.patterns.sdk.feature.source.feature.group
 	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group
+	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.source.feature.group
 }
 
 location amalgam-1.9.0 "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.9.0-N20170918-032443/capella" {
 	org.eclipse.amalgam.explorer.activity.feature.group
+	org.eclipse.amalgam.explorer.activity.source.feature.group
 }
 
 location sirius-query-legacy-1.1.0 "http://download.eclipse.org/sirius/updates/legacy/1.1.0" {
 	org.eclipse.sirius.query.legacy.feature.feature.group
+	org.eclipse.sirius.query.legacy.feature.source.feature.group
 }
 
 location nebula-1.2.0 "http://download.eclipse.org/nebula/releases/1.2.0" {

@@ -30,15 +30,14 @@ import org.polarsys.capella.common.ui.services.UIUtil;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
-import org.polarsys.kitalpha.richtext.mde.tools.links.handlers.OpenModelElementStrategy;
+import org.polarsys.kitalpha.richtext.widget.tools.ext.intf.OpenLinkStrategy;
 
-public class CapellaNavigationModelElement implements OpenModelElementStrategy {
+public class CapellaNavigationModelElement implements OpenLinkStrategy {
 
     public CapellaNavigationModelElement() {
     }
 
-    @Override
-    public void doOpen(EObject eObject, String link) {
+    private void doOpen(EObject eObject, String link) {
         EObject obj = getElement(TransactionHelper.getEditingDomain(eObject), link);
         if (obj != null) {
             if (CapellaResourceHelper.isSemanticElement(obj)) {
@@ -66,5 +65,10 @@ public class CapellaNavigationModelElement implements OpenModelElementStrategy {
             }
         });
     }
+
+	@Override
+	public void openLink(Object object, String link) {
+		doOpen((EObject) object, link);
+	}
 
 }
