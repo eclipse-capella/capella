@@ -6233,168 +6233,6 @@ public class CsServices {
     return port instanceof PhysicalPort;
   }
 
-  public boolean isValidComputedComponentExchangeEdge(EObject communication, DSemanticDecorator sourceView,
-      DSemanticDecorator targetView) {
-    // Case 1
-    if (sourceView == targetView) {
-      return false;
-    }
-    
-    // Case 2
-    if(!(communication instanceof ComponentExchange)){
-      return false;
-    }
-    
-    ComponentExchange ce = (ComponentExchange) communication;
-    
-    // Case 3
-    if (ce.getKind() == ComponentExchangeKind.DELEGATION) {
-      return false;
-    }
-
-    // Case 4
-    EObject source = sourceView.getTarget();
-    EObject target = targetView.getTarget();
-
-    if (source instanceof Port && target instanceof Port) {
-      return false;
-    }
-
-    // Case 5
-    if(source instanceof Port && target instanceof Part){
-      AbstractType sourceComponent = (AbstractType)source.eContainer();
-      AbstractType targetComponent = ((Part) target).getAbstractType();
-      if(sourceComponent == ((Part)target).getAbstractType()){
-        return false;
-      }else if(isAnAncestor(sourceComponent, targetComponent)){
-        return false;
-      }
-    }
-    
-    // Case 6
-    if(source instanceof Part && target instanceof Port){
-      AbstractType sourceComponent = ((Part) source).getAbstractType();
-      AbstractType targetComponent = (AbstractType)target.eContainer();
-      if(targetComponent == ((Part)source).getAbstractType()){
-        return false;
-      }else if(isAnAncestor(targetComponent, sourceComponent)){
-        return false;
-      }
-    }
-    
-    // Case 7
-    if (source instanceof Part && target instanceof Part) {
-      // Check source
-      Iterator<DNode> srcOwnedBorderedNodes = ((DNodeContainer) sourceView).getOwnedBorderedNodes().iterator();
-      while (srcOwnedBorderedNodes.hasNext()) {
-        DDiagramElement eObject = (DDiagramElement) srcOwnedBorderedNodes.next();
-        if (eObject.getTarget() == ce.getSourcePort()) {
-          return false;
-        }
-      }
-      Iterator<DDiagramElement> srcOwnedDiagramElements = ((DNodeContainer) sourceView).getOwnedDiagramElements()
-          .iterator();
-      while (srcOwnedDiagramElements.hasNext()) {
-        DDiagramElement next = srcOwnedDiagramElements.next();
-        if (next instanceof AbstractDNode) {
-          Iterator<DNode> ownedNodes = ((AbstractDNode) next).getOwnedBorderedNodes().iterator();
-          while (ownedNodes.hasNext()) {
-            DDiagramElement eObject = (DDiagramElement) ownedNodes.next();
-            if (eObject.getTarget() == ce.getSourcePort()) {
-              return false;
-            }
-          }
-        }
-      }
-      // Check target
-      Iterator<DNode> trgtOwnedBorderedNodes = ((DNodeContainer) targetView).getOwnedBorderedNodes().iterator();
-      while (trgtOwnedBorderedNodes.hasNext()) {
-        DDiagramElement eObject = (DDiagramElement) trgtOwnedBorderedNodes.next();
-        if (eObject.getTarget() == ce.getTargetPort()) {
-          return false;
-        }
-      }
-      Iterator<DDiagramElement> trgtOwnedDiagramElements = ((DNodeContainer) targetView).getOwnedDiagramElements()
-          .iterator();
-      while (trgtOwnedDiagramElements.hasNext()) {
-        DDiagramElement next = trgtOwnedDiagramElements.next();
-        if (next instanceof AbstractDNode) {
-          Iterator<DNode> ownedNodes = ((AbstractDNode) next).getOwnedBorderedNodes().iterator();
-          while (ownedNodes.hasNext()) {
-            DDiagramElement eObject = (DDiagramElement) ownedNodes.next();
-            if (eObject.getTarget() == ce.getTargetPort()) {
-              return false;
-            }
-          }
-        }
-      }
-    }
-
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
-    if (diagram != null) {
-      DSemanticDecorator sourceElement = sourceView;
-      DSemanticDecorator targetElement = targetView;
-      if (sourceElement.getTarget() instanceof Port) {
-        sourceElement = (DSemanticDecorator) sourceElement.eContainer();
-      }
-      if (targetElement.getTarget() instanceof Port) {
-        targetElement = (DSemanticDecorator) targetElement.eContainer();
-      }
-      // Case 8
-      DDiagramContents context = new DDiagramContents(diagram);
-      Collection<DEdge> edges = context.getEdges(ce);
-      for (DEdge edge : edges) {
-        if (edge.isVisible() && !(edge.getMapping().getName().equals(IMappingNameConstants.LAB_COMPUTED_COMPONENT_EXCHANGE)
-            || edge.getMapping().getName().equals(IMappingNameConstants.PAB_COMPUTED_COMPONENT_EXCHANGE))) {
-          boolean hasSrc = false;
-          DSemanticDecorator sourceNode = (DSemanticDecorator) edge.getSourceNode();
-          if (sourceNode.getTarget() instanceof Port) {
-            sourceNode = (DSemanticDecorator) sourceNode.eContainer();
-          }
-          List<DDiagramElement> toCheck = new ArrayList<DDiagramElement>();
-          toCheck.add((DDiagramElement) sourceElement);
-          toCheck.addAll(((DNodeContainer) sourceElement).getOwnedDiagramElements());
-          Iterator<DDiagramElement> sourceElementContents = toCheck.iterator();
-          while (!hasSrc && sourceElementContents.hasNext()) {
-            EObject next = sourceElementContents.next();
-            if (next == sourceNode) {
-              hasSrc = true;
-            }
-          }
-          toCheck.clear();
-          boolean hasTrgt = false;
-          DSemanticDecorator targetNode = (DSemanticDecorator) edge.getTargetNode();
-          if (targetNode.getTarget() instanceof Port) {
-            targetNode = (DSemanticDecorator) targetNode.eContainer();
-          }
-          toCheck.add((DDiagramElement) targetElement);
-          toCheck.addAll(((DNodeContainer) targetElement).getOwnedDiagramElements());
-          Iterator<DDiagramElement> targetElementContents = toCheck.iterator();
-          while (!hasTrgt && targetElementContents.hasNext()) {
-            EObject next = targetElementContents.next();
-            if (next == targetNode) {
-              hasTrgt = true;
-            }
-          }
-          if (hasSrc && hasTrgt) {
-            return false;
-          }
-        }
-      }
-
-      // Case 8
-      for (FilterDescription filter : diagram.getActivatedFilters()) {
-        if (IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE.equals(filter.getName())
-            || IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE.equals(filter.getName())) {
-          if (isFirstFilterActive(filter, diagram)) {
-            return false;
-          }
-        }
-      }
-    }
-    return true;
-  }
-
   public Collection<EObject> getComputedComponentExchangeSource(EObject related, DDiagram diagram) {
     if (related instanceof ComponentExchange) {
       ComponentExchange connection = (ComponentExchange) related;
@@ -6478,91 +6316,134 @@ public class CsServices {
 
   public boolean isValidComputedPhysicalLinkEdge(EObject communication, DSemanticDecorator sourceView,
       DSemanticDecorator targetView) {
+
+    // Case 1
+    if (!(communication instanceof PhysicalLink)) {
+      return false;
+    }
+
+    PhysicalLink pl = (PhysicalLink) communication;
+
+    // Case 2
+    if (!isValidComputedLink(communication, pl.getSourcePhysicalPort(), pl.getTargetPhysicalPort(), sourceView,
+        targetView, IMappingNameConstants.LAB_COMPUTED_PHYSICAL_LINK, IMappingNameConstants.PAB_COMPUTED_PHYSICAL_LINK,
+        IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_PL, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_PL)) {
+      return false;
+    }
+
+    return true;
+  }
+
+  public boolean isValidComputedComponentExchangeEdge(EObject communication, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView) {
+
+    // Case 1
+    if (!(communication instanceof ComponentExchange)) {
+      return false;
+    }
+
+    ComponentExchange ce = (ComponentExchange) communication;
+
+    // Case 2
+    if (ce.getKind() == ComponentExchangeKind.DELEGATION) {
+      return false;
+    }
+
+    // Case 3
+    if (!isValidComputedLink(communication, ce.getSourcePort(), ce.getTargetPort(), sourceView, targetView,
+        IMappingNameConstants.LAB_COMPUTED_COMPONENT_EXCHANGE, IMappingNameConstants.PAB_COMPUTED_COMPONENT_EXCHANGE,
+        IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE)) {
+      return false;
+    }
+
+    return true;
+  }
+  
+  /**
+   * Common cases for {@link #isValidComputedComponentExchangeEdge(EObject, DSemanticDecorator, DSemanticDecorator)} and {@link #isValidComputedPhysicalLinkEdge(EObject, DSemanticDecorator, DSemanticDecorator)}
+   */
+  private boolean isValidComputedLink(EObject communication, Port sourcePort, Port targetPort, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView, String labMappingName, String pabMappingName, String labFilterName,
+      String pabFilterName) {
+
+    EObject source = sourceView.getTarget();
+    EObject target = targetView.getTarget();
+
     // Case 1
     if (sourceView == targetView) {
       return false;
     }
-    
+
     // Case 2
-    if(!(communication instanceof PhysicalLink)){
-      return false;
-    }
-    PhysicalLink pl = (PhysicalLink) communication;
-    EObject source = sourceView.getTarget();
-    EObject target = targetView.getTarget();
-    
-    // Case 3
     if (source instanceof Port && target instanceof Port) {
       return false;
     }
- 
+
+    // Case 3
+    if (source instanceof Port && target instanceof Part) {
+      Part targetPart = (Part) target;
+      AbstractType sourceComponent = (AbstractType) source.eContainer();
+      AbstractType targetComponent = targetPart.getAbstractType();
+      if (sourceComponent == targetComponent) {
+        return false;
+      }
+      if (isAnAncestor(sourceComponent, targetComponent)) {
+        return false;
+      }
+      // Check that the part of the Port source is not deployed by the target Part
+      DNodeContainer portParentNode = (DNodeContainer) sourceView.eContainer();
+      EObject portParentNodeTarget = portParentNode.getTarget();
+      if (portParentNodeTarget instanceof Part) {
+        if (PartExt.isDeploying(targetPart, (Part) portParentNodeTarget)) {
+          return false;
+        }
+      }
+    }
+
     // Case 4
-    if(source instanceof Port && target instanceof Part){
-      AbstractType sourceComponent = (AbstractType)source.eContainer();
-      AbstractType targetComponent = ((Part) target).getAbstractType();
-      if(sourceComponent == ((Part)target).getAbstractType()){
-        return false;
-      }else if(isAnAncestor(sourceComponent, targetComponent)){
+    if (source instanceof Part && target instanceof Port) {
+      Part sourcePart = (Part) source;
+      AbstractType sourceComponent = sourcePart.getAbstractType();
+      AbstractType targetComponent = (AbstractType) target.eContainer();
+      if (targetComponent == sourceComponent) {
         return false;
       }
+      if (isAnAncestor(targetComponent, sourceComponent)) {
+        return false;
+      }
+
+      // Check that the part of the Port target is not deployed by the source Part
+      DNodeContainer portParentNode = (DNodeContainer) targetView.eContainer();
+      EObject portParentNodeTarget = portParentNode.getTarget();
+      if (portParentNodeTarget instanceof Part) {
+        if (PartExt.isDeploying(sourcePart, (Part) portParentNodeTarget)) {
+          return false;
+        }
+      }
     }
-    
+
     // Case 5
-    if(source instanceof Part && target instanceof Port){
-      AbstractType sourceComponent = ((Part) source).getAbstractType();
-      AbstractType targetComponent = (AbstractType)target.eContainer();
-      if(targetComponent == ((Part)source).getAbstractType()){
-        return false;
-      }else if(isAnAncestor(targetComponent, sourceComponent)){
-        return false;
-      }
-    }
-    
-    // Case 6
     if (source instanceof Part && target instanceof Part) {
+      Part sourcePart = (Part) source;
+      Part targetPart = (Part) target;
+      AbstractType sourceComponent = sourcePart.getAbstractType();
+      AbstractType targetComponent = targetPart.getAbstractType();
+
+      if (PartExt.isDeploying(sourcePart, targetPart) || PartExt.isDeploying(targetPart, sourcePart)) {
+        return false;
+      }
+
+      if (isAnAncestor(targetComponent, sourceComponent) || isAnAncestor(sourceComponent, targetComponent)) {
+        return false;
+      }
       // Check source
-      Iterator<DNode> srcOwnedBorderedNodes = ((DNodeContainer) sourceView).getOwnedBorderedNodes().iterator();
-      while (srcOwnedBorderedNodes.hasNext()) {
-        DDiagramElement eObject = (DDiagramElement) srcOwnedBorderedNodes.next();
-        if (eObject.getTarget() == pl.getSourcePhysicalPort()) {
-          return false;
-        }
+      if (isInnerPort((AbstractDNode) sourceView, sourcePort)) {
+        return false;
       }
-      Iterator<DDiagramElement> srcOwnedDiagramElements = ((DNodeContainer) sourceView).getOwnedDiagramElements()
-          .iterator();
-      while (srcOwnedDiagramElements.hasNext()) {
-        DDiagramElement next = srcOwnedDiagramElements.next();
-        if (next instanceof AbstractDNode) {
-          Iterator<DNode> ownedNodes = ((AbstractDNode) next).getOwnedBorderedNodes().iterator();
-          while (ownedNodes.hasNext()) {
-            DDiagramElement eObject = (DDiagramElement) ownedNodes.next();
-            if (eObject.getTarget() == pl.getSourcePhysicalPort()) {
-              return false;
-            }
-          }
-        }
-      }
+
       // Check target
-      Iterator<DNode> trgtOwnedBorderedNodes = ((DNodeContainer) targetView).getOwnedBorderedNodes().iterator();
-      while (trgtOwnedBorderedNodes.hasNext()) {
-        DDiagramElement eObject = (DDiagramElement) trgtOwnedBorderedNodes.next();
-        if (eObject.getTarget() == pl.getTargetPhysicalPort()) {
-          return false;
-        }
-      }
-      Iterator<DDiagramElement> trgtOwnedDiagramElements = ((DNodeContainer) targetView).getOwnedDiagramElements()
-          .iterator();
-      while (trgtOwnedDiagramElements.hasNext()) {
-        DDiagramElement next = trgtOwnedDiagramElements.next();
-        if (next instanceof AbstractDNode) {
-          Iterator<DNode> ownedNodes = ((AbstractDNode) next).getOwnedBorderedNodes().iterator();
-          while (ownedNodes.hasNext()) {
-            DDiagramElement eObject = (DDiagramElement) ownedNodes.next();
-            if (eObject.getTarget() == pl.getTargetPhysicalPort()) {
-              return false;
-            }
-          }
-        }
+      if (isInnerPort((AbstractDNode) targetView, targetPort)) {
+        return false;
       }
     }
 
@@ -6576,12 +6457,12 @@ public class CsServices {
       if (targetElement.getTarget() instanceof Port) {
         targetElement = (DSemanticDecorator) targetElement.eContainer();
       }
-      // Case 7
+      // Case 6
       DDiagramContents context = new DDiagramContents(diagram);
       Collection<DEdge> edges = context.getEdges(communication);
       for (DEdge edge : edges) {
-        if (edge.isVisible() && !(edge.getMapping().getName().equals(IMappingNameConstants.LAB_COMPUTED_PHYSICAL_LINK)
-            || edge.getMapping().getName().equals(IMappingNameConstants.PAB_COMPUTED_PHYSICAL_LINK))) {
+        if (edge.isVisible() && !(edge.getMapping().getName().equals(labMappingName)
+            || edge.getMapping().getName().equals(pabMappingName))) {
           boolean hasSrc = false;
           DSemanticDecorator sourceNode = (DSemanticDecorator) edge.getSourceNode();
           if (sourceNode.getTarget() instanceof Port) {
@@ -6617,20 +6498,39 @@ public class CsServices {
           }
         }
       }
-     
-      // Case 8
+
+      // Case 7
       for (FilterDescription filter : diagram.getActivatedFilters()) {
-        if (IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_PL.equals(filter.getName())
-            || IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE.equals(filter.getName())) {
+        if (labFilterName.equals(filter.getName()) || pabFilterName.equals(filter.getName())) {
           if (isFirstFilterActive(filter, diagram)) {
             return false;
           }
         }
       }
     }
+
     return true;
   }
 
+  private boolean isInnerPort(AbstractDNode node, Port port) {
+    Iterator<DNode> ownedBorderedNodes = node.getOwnedBorderedNodes().iterator();
+    while (ownedBorderedNodes.hasNext()) {
+      DDiagramElement eObject = (DDiagramElement) ownedBorderedNodes.next();
+      if (eObject.getTarget() == port) {
+        return true;
+      }
+    }
+    if (node instanceof DNodeContainer) {
+      Iterator<DDiagramElement> ownedDiagramElements = ((DNodeContainer) node).getOwnedDiagramElements().iterator();
+      while (ownedDiagramElements.hasNext()) {
+        DDiagramElement next = ownedDiagramElements.next();
+        if (next instanceof AbstractDNode && isInnerPort((AbstractDNode) next, port)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
   private Collection<EObject> getVisibleEdgeEnds(DDiagram diagram, EObject source) {
     DDiagramContents context = new DDiagramContents(diagram);
     // When it is a port, try to find the diagram element
