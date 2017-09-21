@@ -1022,6 +1022,10 @@
             name="org.polarsys.kitalpha.transposer.feature.feature.group"/>
         <requirement
             name="org.polarsys.kitalpha.richtext.widget.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.richtext.widget.doc.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.richtext.widget.ext.feature.feature.group"/>
         <repositoryList
             name="Neon">
           <repository
