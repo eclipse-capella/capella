@@ -18,3 +18,8 @@
 * The reference '''Capability.purposes''' has been set ''derived'' (the implementation returns the referencing ''CapabilityExploitation'' through the reference  ''CapabilityExploitation.capability'')
 * The reference '''CapabilityExploitation.mission''' has been set ''derived'' (the implementation returns the ''eContainer'' of the exploitation link)
 * The reference '''ComponentPortAllocationEnd.owningComponentPortAllocation''' has been set ''derived'' (the implementation returns the ''eContainer'' of the allocation link)
+
+=== [Bugzilla 1747][REC-RPL][M2] add new properties on CatalogElement  ===
+
+* A property '''readOnly''' (EBoolean) has been added to ''re.CatalogElement'' metaclass
+* A property '''version''' (EString) has been added to ''re.CatalogElement'' metaclass
