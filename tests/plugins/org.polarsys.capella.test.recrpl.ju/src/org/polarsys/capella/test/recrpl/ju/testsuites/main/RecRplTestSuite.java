@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -40,6 +40,9 @@ import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_AddElementWithSuf
 import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_Containment;
 import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_RemoveElement;
 import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_RenameElementWithSuffix;
+import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BlackboxComplianceTest1;
+import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BlackboxComplianceTest2;
+import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BlackboxComplianceTest3;
 
 import junit.framework.Test;
 
@@ -80,6 +83,9 @@ public class RecRplTestSuite extends BasicTestSuite {
     tests.add(new UpdateRPL_Containment());
     tests.add(new UpdateRPL_RemoveElement());
     tests.add(new UpdateRPL_RenameElementWithSuffix());
+    tests.add(new BlackboxComplianceTest1());
+    tests.add(new BlackboxComplianceTest2());
+    tests.add(new BlackboxComplianceTest3());
     return tests;
   }
 

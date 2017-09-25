@@ -13,6 +13,22 @@
 <plugin>
    <extension
          point="org.eclipse.emf.validation.constraintProviders">
+      <category
+            id="capella.category/design/consistency/compliance"
+            name="RPL Compliance">
+         <category
+               id="BLACK_BOX"
+               name="Blackbox">
+         </category>
+         <category
+               id="INHERITANCY_REUSE"
+               name="Inheritancy Reuse">
+         </category>
+         <category
+               id="CONSTRAINT_REUSE"
+               name="Constraint Reuse">
+         </category>
+      </category>
       <constraintProvider>
          <package
                namespaceUri="http://www.polarsys.org/capella/common/re/1.2.0">
@@ -36,6 +52,30 @@
                </target>
                <description>
                   This rule check if a RPL is up to date compared to its origin REC.
+               </description>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+      <constraintProvider>
+         <package
+               namespaceUri="*">
+         </package>
+         <constraints
+               categories="capella.category/design/consistency/compliance/BLACK_BOX">
+            <constraint
+                  class="org.polarsys.capella.core.re.validation.design.consistency.DefaultBlackBoxCompliance"
+                  id="org.polarsys.capella.core.re.validation.compliance.blackbox.default"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Live"
+                  name="Default Compliance Validator"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Modification of feature&apos;&apos;{0}&apos;&apos; of element &apos;&apos;{1}&apos;&apos; violates BLACK_BOX REC/RPL compliancy
+               </message>
+               <description>
+                  The default BLACK_BOX compliance validation rule prevents all modifications on RPL elements with BLACK_BOX compliance.
                </description>
             </constraint>
          </constraints>

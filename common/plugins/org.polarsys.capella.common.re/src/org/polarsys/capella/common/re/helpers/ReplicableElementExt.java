@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
@@ -43,7 +42,7 @@ public class ReplicableElementExt {
     }
     return elements;
   }
-  
+
   /**
    * Returns replicable elements referencing the given element
    */
@@ -62,7 +61,7 @@ public class ReplicableElementExt {
   }
 
   /**
-   * Returns replicable elements links referencing the given element
+   * Returns replicable elements links referencing the given element via the links 'target' reference
    */
   public static Collection<CatalogElementLink> getReferencingLinks(EObject source) {
     ArrayList<CatalogElementLink> elements = new ArrayList<CatalogElementLink>();
@@ -101,5 +100,6 @@ public class ReplicableElementExt {
     }
     return elements;
   }
+
 
 }

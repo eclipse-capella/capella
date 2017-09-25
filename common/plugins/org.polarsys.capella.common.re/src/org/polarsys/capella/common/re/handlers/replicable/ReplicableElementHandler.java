@@ -62,6 +62,10 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
 
   public static final String LINKS = "LINKS";
 
+  public static final String COMPLIANCY_BLACK_BOX_NAME = "BLACK_BOX"; //$NON-NLS-1$
+  public static final String COMPLIANCY_CONSTRAINT_REUSE_NAME = "CONSTRAINT_REUSE"; //$NON-NLS-1$
+  public static final String COMPLIANCY_INHERITANCY_REUSE_NAME = "INHERITANCY_REUSE"; //$NON-NLS-1$
+
   public CatalogElement getSource(IContext context) {
     IPropertyContext ctx =
         ((IPropertyHandler) OptionsHandlerHelper.getInstance(context)).getPropertyContext(context,
@@ -621,15 +625,15 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
 
       if (definitions.getOwnedDefinitions().isEmpty()) {
         CompliancyDefinition definition = ReFactory.eINSTANCE.createCompliancyDefinition();
-        definition.setName("BLACK_BOX");
+        definition.setName(COMPLIANCY_BLACK_BOX_NAME);
         definitions.getOwnedDefinitions().add(definition);
 
         definition = ReFactory.eINSTANCE.createCompliancyDefinition();
-        definition.setName("CONSTRAINT_REUSE");
+        definition.setName(COMPLIANCY_CONSTRAINT_REUSE_NAME);
         definitions.getOwnedDefinitions().add(definition);
 
         definition = ReFactory.eINSTANCE.createCompliancyDefinition();
-        definition.setName("INHERITANCY_REUSE");
+        definition.setName(COMPLIANCY_INHERITANCY_REUSE_NAME);
         definitions.getOwnedDefinitions().add(definition);
       }
     }

@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -17,6 +17,7 @@ import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
+import org.polarsys.capella.common.flexibility.wizards.constants.ICommonConstants;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 
 /**
@@ -32,7 +33,11 @@ public class CheckboxRenderer extends AbstractRenderer {
 
     final IProperty property = rendererContext.getProperty(this);
     dataExport = new Button(parent, SWT.CHECK);
-    dataExport.setText(property.getName());
+
+    if (!Boolean.FALSE.equals(rendererContext.getParameter(ICommonConstants.PARAMETER_RENDER_LABEL))) {
+      dataExport.setText(property.getName());
+    }
+
     dataExport.setToolTipText(property.getDescription());
 
     dataExport.setData(property);
@@ -40,6 +45,7 @@ public class CheckboxRenderer extends AbstractRenderer {
 
     dataExport.addSelectionListener(new SelectionListener() {
 
+      @Override
       public void widgetSelected(SelectionEvent e) {
         boolean newValue = ((Button) e.widget).getSelection();
         Boolean value = Boolean.valueOf(newValue);
@@ -47,12 +53,14 @@ public class CheckboxRenderer extends AbstractRenderer {
         updatedValue(property, rendererContext, value);
       }
 
+      @Override
       public void widgetDefaultSelected(SelectionEvent e) {
         // Nothing here
       }
     });
   }
 
+  @Override
   public void initialize(IProperty property, IRendererContext propertyContext) {
     Object value = propertyContext.getPropertyContext().getDefaultValue(property);
     updatedValue(property, propertyContext, value);
@@ -73,7 +81,9 @@ public class CheckboxRenderer extends AbstractRenderer {
   @Override
   public void dispose(IRendererContext context) {
     super.dispose(context);
-    dataExport.dispose();
+    if (dataExport != null) {
+      dataExport.dispose();
+    }
   }
 
 }
