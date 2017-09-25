@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,12 +11,15 @@
 package org.polarsys.capella.core.transition.diagram.commands;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -25,6 +28,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewRefactorHelper;
 import org.eclipse.gmf.runtime.diagram.ui.OffscreenEditPartFactory;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
@@ -48,6 +52,7 @@ import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationTask;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -73,7 +78,6 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.SynchronizeGMFModelCommand
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.data.extension.FormatDataManagerRegistry;
-import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistry;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -756,9 +760,28 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
       return super.createDiagram(oldDiagram, newElement);
     }
 
+    /*
+     * This method is overridden to use Sirius's EObjectQuery.getInverseReferences instead of EMFCoreUtil.getReferencers
+     * since the latter initializes GMF's CrossReferenceAdapter which creates bugs when the session is closed (see Bug 1754)
+     */
     @Override
     public Collection getReferencingViews(EObject element) {
-      return super.getReferencingViews(element);
+      Collection<EObject> views = new EObjectQuery(element).getInverseReferences(NotationPackage.eINSTANCE.getView_Element());
+      
+      // remove subviews since they will be refactored with their parent
+      for (Iterator i = views.iterator(); i.hasNext();) {
+        View view = (View) i.next();
+        
+        EObject parent = null;
+        while ((parent = view.eContainer()) instanceof View) { 
+          if (views.contains(parent)) {
+            i.remove();
+            break;
+          }
+          view = (View) parent;
+        }
+      }
+      return views;
     }
 
     @Override
