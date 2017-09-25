@@ -10,8 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.tools.ju.xab;
 
+import java.io.File;
 import java.text.MessageFormat;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
@@ -121,11 +123,7 @@ public class ShowHideComponentExchanges extends EmptyProject {
   protected void testOnLogicalComponents(SessionContext context, String idSource) {
     XABDiagram xab = XABDiagram.createDiagram(context, idSource);
     
-    // Activate the filter to hide the computed CE
-    DDiagram diagram = xab.getDiagram();
-    FilterDescription filter = DiagramHelper.getFilterForDiagram(diagram, IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE);
-    Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE, diagram.getName()), filter);
-    DiagramHelper.addFilterInDiagram(diagram, filter);
+    activateFilter(xab.getDiagram(), getFilterName());
     
     xab.createComponent(GenericModel.LC_1, LA__LOGICAL_CONTEXT__PART_LOGICAL_SYSTEM__LOGICAL_SYSTEM);
     xab.createComponent(GenericModel.LC_2, LA__LOGICAL_CONTEXT__PART_LOGICAL_SYSTEM__LOGICAL_SYSTEM);
@@ -145,11 +143,7 @@ public class ShowHideComponentExchanges extends EmptyProject {
   protected void testOnPhysicalComponents(SessionContext context, String idSource) {
     PABDiagram xab = PABDiagram.createDiagram(context, idSource);
     
-    // Activate the filter to hide the computed CE
-    DDiagram diagram = xab.getDiagram();
-    FilterDescription filter = DiagramHelper.getFilterForDiagram(diagram, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE);
-    Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE, diagram.getName()), filter);
-    DiagramHelper.addFilterInDiagram(diagram, filter);
+    activateFilter(xab.getDiagram(), getFilterName());
 
     // Create a component exchange between two behavior not deployed
     createSubComponent(xab, GenericModel.LC_1, xab.getDiagramId());
@@ -173,11 +167,7 @@ public class ShowHideComponentExchanges extends EmptyProject {
   protected void testOnDeployedPhysicalComponents(SessionContext context, String idSource) {
     PABDiagram xab = PABDiagram.createDiagram(context, idSource);
 
-    // Activate the filter to hide the computed CE
-    DDiagram diagram = xab.getDiagram();
-    FilterDescription filter = DiagramHelper.getFilterForDiagram(diagram, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE);
-    Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE, diagram.getName()), filter);
-    DiagramHelper.addFilterInDiagram(diagram, filter);
+    activateFilter(xab.getDiagram(), getFilterName());
     
     // Create a component exchange between two deployments
     xab.createNodeComponent(GenericModel.LC_1, xab.getDiagramId());
@@ -200,6 +190,7 @@ public class ShowHideComponentExchanges extends EmptyProject {
     removeSubComponent(xab, GenericModel.LC_4, xab.getDiagramId());
     xab.insertNodeComponent(GenericModel.LC_3, xab.getDiagramId());
     
+    assertFilterActive(xab.getDiagram(), getFilterName());
     
     insertLink(xab, GenericModel.CL_1, GenericModel.LC_2);
     xab.hasView(GenericModel.LC_4, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME);
@@ -210,10 +201,7 @@ public class ShowHideComponentExchanges extends EmptyProject {
     PABDiagram xab = PABDiagram.createDiagram(context, idSource);
 
     // Activate the filter to hide the computed CE
-    DDiagram diagram = xab.getDiagram();
-    FilterDescription filter = DiagramHelper.getFilterForDiagram(diagram, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE);
-    Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE, diagram.getName()), filter);
-    DiagramHelper.addFilterInDiagram(diagram, filter);
+    activateFilter(xab.getDiagram(), getFilterName());
     
     // Create a component exchange between a behavior and a deployed behavior.
     // if there is no other deployed displayed, target is displayed as undeployed
@@ -226,6 +214,32 @@ public class ShowHideComponentExchanges extends EmptyProject {
     
     insertLink(xab, GenericModel.CL_1, GenericModel.LC_1);
     xab.hasView(GenericModel.LC_3, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME);
-
+  }
+  
+  /**
+   * Activate the given filter on the given diagram.
+   * @param diagram
+   * @param filterName
+   */
+  protected void activateFilter(DDiagram diagram, String filterName) {
+    FilterDescription filter = DiagramHelper.getFilterForDiagram(diagram, filterName);
+    Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, filterName, diagram.getName()), filter);
+    DiagramHelper.addFilterInDiagram(diagram, filter);
+  }
+  
+  protected String getFilterName(){
+    return IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE;
+  }
+  
+  /**
+   * Checks that the given filter is activated on the given diagram.
+   * @param diagram
+   * @param filterName
+   */
+  protected void assertFilterActive(DDiagram diagram, String filterName){
+    FilterDescription filter = DiagramHelper.getFilterForDiagram(diagram, filterName);
+    Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, filterName, diagram.getName()), filter);
+    EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
+    assertTrue(activatedFilters.contains(filter));
   }
 }

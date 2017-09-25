@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -278,7 +278,9 @@ public abstract class RecRplTestCase extends BasicTestCase {
   protected Collection<EObject> getObjects(String... ids) {
     Collection<EObject> objects = new ArrayList<EObject>();
     for (String id : ids) {
-      objects.add(getObject(id));
+      EObject object = getObject(id);
+      assertNotNull(object);
+      objects.add(object);
     }
     return objects;
   }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,9 +10,18 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.tools.ju.xab;
 
+import java.text.MessageFormat;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.junit.Assert;
+import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.PABDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.helpers.HelperMessages;
 
 public class ShowHidePhysicalLinks extends ShowHideComponentExchanges {
 
@@ -55,5 +64,9 @@ public class ShowHidePhysicalLinks extends ShowHideComponentExchanges {
   public void removeDeployedSubComponent(PABDiagram xab, String id, String containerId) {
     xab.removeDeployedNodeComponent(id, containerId);
   }
-
+  
+  @Override
+  protected String getFilterName() {
+    return IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_PL;
+  }
 }
