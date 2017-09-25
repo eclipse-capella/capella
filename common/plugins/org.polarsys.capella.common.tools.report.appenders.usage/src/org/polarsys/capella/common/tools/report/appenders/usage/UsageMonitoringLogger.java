@@ -12,13 +12,14 @@ package org.polarsys.capella.common.tools.report.appenders.usage;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Platform;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.appenders.usage.preferences.IUsagePreferences;
 import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageLogger;
 import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 
 public class UsageMonitoringLogger {
-  private static UsageMonitoringLogger __instance = null;
+  private static UsageMonitoringLogger instance;
   private final UsageLogger logger;
   public static String USAGE_PATH = "UsagePath";
   
@@ -26,10 +27,10 @@ public class UsageMonitoringLogger {
    * @return a MonitoringLogger instance
    */
   public static UsageMonitoringLogger getInstance() {
-    if (null == UsageMonitoringLogger.__instance) {
-      UsageMonitoringLogger.__instance = new UsageMonitoringLogger();
+    if (UsageMonitoringLogger.instance == null) {
+    	UsageMonitoringLogger.instance = new UsageMonitoringLogger();
     }
-    return UsageMonitoringLogger.__instance;
+    return UsageMonitoringLogger.instance;
   }
   
   /**
@@ -45,9 +46,13 @@ public class UsageMonitoringLogger {
     setUsagePath();
     
     // configure the logger
-    final String productName = Platform.getProduct().getName().toString();
-    final String productVersion = Platform.getProduct().getDefiningBundle().getVersion().toString();
-    logger = new UsageLogger(productName, productVersion); // $NON-NLS-1$
+    if (Platform.getProduct() != null) {
+    	final String productName = Platform.getProduct().getName().toString();
+        final String productVersion = Platform.getProduct().getDefiningBundle().getVersion().toString();
+        logger = new UsageLogger(productName, productVersion);
+    } else {
+    	logger = new UsageLogger(ICommonConstants.EMPTY_STRING, ICommonConstants.EMPTY_STRING);
+    }
   }
 
   public void log(final String eventName, final EventStatus eventStatus) {
