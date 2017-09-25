@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _s0WTkLfUEea5ZpGbd-RfXw
-Runtime-Version: 2.2.0.201706152316
-Save-Time: 7/26/17 6:25 PM
+Runtime-Version: 2.1.0.201605312320
+Save-Time: 9/22/17 1:06 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -98,6 +98,8 @@ with [get-editor "[SDFB] Root System Function"] {
 }
 get-editor "fragmentedModel" | get-section "Refine System Functions, describe Functional Exchanges" 
     | get-link "[FS] Create a new Functional Scenario" | click
+get-window "Selection Dialog" | get-tree | select "fragmentedModel/fragmentedModel/System Analysis/Capabilities/Capability" 
+get-window "Selection Dialog" | get-button OK | click
 get-window "New Function Scenario" | get-button OK | click
 get-window "Analysis Selection" | get-table 
     | select "platform:\\/resource\\/fragmentedModel\\/fragments\\/SA.airdfragment" | double-click
@@ -249,6 +251,8 @@ with [get-editor "[LDFB] Root Logical Function"] {
 get-editor "fragmentedModel" 
     | get-section "Refine Logical Functions, describe Functional Exchanges" 
     | get-link "[FS] Create a new Functional Scenario" | click
+get-window "Selection Dialog" | get-tree | select "fragmentedModel/fragmentedModel/Logical Architecture/Capabilities/Capability" 
+get-window "Selection Dialog" | get-button OK | click
 with [get-window "New Function Scenario"] {
     get-editbox -after [get-label "Name:"] | set-text "[FS] Scenario 2"
     get-button OK | click
@@ -346,7 +350,7 @@ get-window "EMF Diff/Merge" | get-button Finish | click
 with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
     with [get-tree] {
         key-type "M1+a"
-        select "fragmentedModel (50)"
+        select "fragmentedModel (52)"
     }
     get-button "Copy to the left" | click
 }
