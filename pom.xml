@@ -223,42 +223,7 @@
 								<goal>eclipse-run</goal>
 							</goals>
 							<configuration>
-								<appArgLine>-application org.eclipse.equinox.p2.repository.repo2runnable -source file:${project.build.directory}/repository -destination ${project.build.directory}/${packagedDropinsName}/eclipse</appArgLine>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-antrun-plugin</artifactId>
-					<version>${antrun-version}</version>
-					<executions>
-						<execution>
-							<id>package-dropins</id>
-							<phase>package</phase>
-							<goals>
-								<goal>run</goal>
-							</goals>
-							<configuration>
-								<target>
-									<delete
-										dir="${project.build.directory}/${packagedDropinsName}/eclipse/binary" />
-									<delete
-										file="${project.build.directory}/${packagedDropinsName}/eclipse/artifacts.jar" />
-									<delete
-										file="${project.build.directory}/${packagedDropinsName}/eclipse/content.jar" />
-									<delete includeemptydirs="true">
-										<fileset
-											dir="${project.build.directory}/${packagedDropinsName}/eclipse/features"
-											includes="**/META-INF/**" />
-									</delete>
-									<zip
-										destfile="${project.build.directory}/${packagedDropinsName}-dropins-${unqualifiedVersion}.${buildQualifier}.zip">
-										<fileset dir="${project.build.directory}">
-											<include name="${packagedDropinsName}/**" />
-										</fileset>
-									</zip>
-								</target>
+								<appArgLine>-application org.eclipse.equinox.p2.repository.repo2runnable -source file:${project.build.directory}/repository -destination ${project.build.directory}/${packagedSiteName}/eclipse</appArgLine>
 							</configuration>
 						</execution>
 					</executions>
@@ -275,7 +240,7 @@
 								<goal>archive-repository</goal>
 							</goals>
 							<configuration>
-								<finalName>${packagedDropinsName}-updateSite-${unqualifiedVersion}.${buildQualifier}</finalName>
+								<finalName>${packagedSiteName}.site-${unqualifiedVersion}.${buildQualifier}</finalName>
 							</configuration>
 						</execution>
 					</executions>
@@ -302,7 +267,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<packagedDropinsName>org.polarsys.capella.rcp</packagedDropinsName>
+				<packagedSiteName>org.polarsys.capella.rcp.product</packagedSiteName>
 			</properties>
 			<modules>
 				<module>common/features/org.polarsys.capella.common.feature</module>
@@ -342,7 +307,7 @@
 		<profile>
 			<id>nightly</id>
 			<properties>
-				<packagedDropinsName>org.polarsys.capella.rcp</packagedDropinsName>
+				<packagedSiteName>org.polarsys.capella.rcp.product</packagedSiteName>
 				<target-platform-path>nightly</target-platform-path>
 			</properties>
 			<modules>
@@ -385,8 +350,8 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
+				<packagedSiteName>org.polarsys.capella.headless.product</packagedSiteName>
 				<target-platform-path>headless</target-platform-path>
-				<packagedDropinsName>org.polarsys.capella.headless</packagedDropinsName>
 			</properties>
 			<modules>
 				<!-- common bundles -->
