@@ -25,7 +25,7 @@
 	<version>1.2.0-SNAPSHOT</version>
 
 	<properties>
-		<packagedDropinsName>org.polarsys.capella.richtext</packagedDropinsName>
+		<packagedSiteName>org.polarsys.capella.richtext</packagedSiteName>
 	</properties>
 
 	<build>
@@ -37,27 +37,6 @@
 				<configuration>
 					<xzCompress>false</xzCompress>
 				</configuration>
-			</plugin>
-			
-			<plugin>
-				<groupId>org.eclipse.tycho.extras</groupId>
-				<artifactId>tycho-eclipserun-plugin</artifactId>
-				<version>${tycho-extras-version}</version>
-				<executions>
-					<execution>
-						<id>create-dropins</id>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>package-dropins</id>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
