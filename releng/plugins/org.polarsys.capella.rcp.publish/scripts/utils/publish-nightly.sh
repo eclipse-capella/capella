@@ -134,7 +134,7 @@ create_redirect "$TARGET_ROOT/$VERSION"/org.polarsys.capella.rcp.site "$BUILD_TY
 create_redirect "$TARGET_ROOT/$VERSION"/org.polarsys.capella.test.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.test.site
 create_redirect "$TARGET_ROOT/$VERSION"/org.polarsys.capella.richtext.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.richtext.site
 echo "Link runtime core Version : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$VERSION to $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION "
-cp -dR "$WORKSPACE/$UPDATE_PATH"/target/$UPDATE_PRJ_NAME-*.zip "$TARGET_ROOT/$VERSION/$UPDATE_PRJ_NAME-$VERSION.zip"
+cp -dR "$WORKSPACE/$UPDATE_PATH"/target/$UPDATE_PRJ_NAME-$VERSION-*.zip "$TARGET_ROOT/$VERSION/$UPDATE_PRJ_NAME-$VERSION.zip"
 echo "Zipped update site runtime core : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$VERSION/$UPDATE_PRJ_NAME-$VERSION.zip"
 
 # Also create a link for the $STREAM (e.g. "runtimecore/1.2.x" => "1.2.0-NYYYYMMDD-HHMM/luna")
@@ -143,7 +143,7 @@ create_redirect "$TARGET_ROOT/$STREAM"/org.polarsys.capella.rcp.site "$BUILD_TYP
 create_redirect "$TARGET_ROOT/$STREAM"/org.polarsys.capella.test.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.test.site
 create_redirect "$TARGET_ROOT/$STREAM"/org.polarsys.capella.richtext.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.richtext.site
 echo "Link runtime core Short Version : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$STREAM to $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION "
-cp -dR "$WORKSPACE/$UPDATE_PATH"/target/$UPDATE_PRJ_NAME-*.zip "$TARGET_ROOT/$STREAM/$UPDATE_PRJ_NAME-$STREAM.zip"
+cp -dR "$WORKSPACE/$UPDATE_PATH"/target/$UPDATE_PRJ_NAME-$VERSION-*.zip "$TARGET_ROOT/$STREAM/$UPDATE_PRJ_NAME-$STREAM.zip"
 echo "Zipped update site runtime core : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$STREAM/$UPDATE_PRJ_NAME-$STREAM.zip"
 
 # Also update the global "latest" links if we are building master
@@ -152,7 +152,7 @@ create_redirect "$TARGET_ROOT/latest"/org.polarsys.capella.rcp.site "$BUILD_TYPE
 create_redirect "$TARGET_ROOT/latest"/org.polarsys.capella.test.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.test.site
 create_redirect "$TARGET_ROOT/latest"/org.polarsys.capella.richtext.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.richtext.site
 echo "Link runtime core Latest : $URL_PUBLISH_PREFIX/$BUILD_TYPE/latest to $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION "
-cp -dR "$WORKSPACE/$UPDATE_PATH"/target/$UPDATE_PRJ_NAME-*.zip "$TARGET_ROOT/latest/$UPDATE_PRJ_NAME-latest.zip"
+cp -dR "$WORKSPACE/$UPDATE_PATH"/target/$UPDATE_PRJ_NAME-$VERSION-*.zip "$TARGET_ROOT/latest/$UPDATE_PRJ_NAME-latest.zip"
 echo "Zipped update site runtime core : $URL_PUBLISH_PREFIX/$BUILD_TYPE/latest/$UPDATE_PRJ_NAME-latest.zip"
 
 # Write manifest in artefacts
