@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.common.platform.sirius.customisation;
 
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IWorkbenchPreferenceConstants;
 import org.eclipse.ui.PlatformUI;
@@ -49,6 +50,9 @@ public class SiriusPlugin extends AbstractUIPlugin {
 
         // Change the UICallBack to have a specific Session displayed name
         SiriusEditPlugin.getPlugin().setUiCallback(new SiriusUiCallBack(SiriusEditPlugin.getPlugin().getUiCallback()));
+        
+        // Allow by default aird fragment with no representation creation
+        SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
     }
 
     /**
