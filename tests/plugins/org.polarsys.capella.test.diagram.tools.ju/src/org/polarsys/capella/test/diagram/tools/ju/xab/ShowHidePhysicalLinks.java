@@ -10,18 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.tools.ju.xab;
 
-import java.text.MessageFormat;
-
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.description.filter.FilterDescription;
-import org.junit.Assert;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.PABDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.framework.context.SessionContext;
-import org.polarsys.capella.test.framework.helpers.HelperMessages;
 
 public class ShowHidePhysicalLinks extends ShowHideComponentExchanges {
 

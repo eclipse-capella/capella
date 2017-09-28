@@ -18,6 +18,7 @@ import java.util.Hashtable;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -106,7 +107,11 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
   	FilterDescription filter = DiagramHelper.getFilterForDiagram(diagram, filterName);
   	Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, filterName, diagramName), filter);// test case check    
   	DiagramHelper.addFilterInDiagram(diagram, filter);
-    // check that expected filtered objects are actually filtered    
+   
+  	// check that filter is active
+  	assertFilterActive(diagram, filterName);
+  	
+  	// check that expected filtered objects are actually filtered    
   	for (DDiagramElement elt : diagram.getDiagramElements()) {
   		String objectID = diagramElement2ObjectID.get(elt);
   		if (objectID != null) {
@@ -119,7 +124,20 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
   		}
   	}
   }
+  
   protected boolean isFiltered(DDiagramElement elt) {
     return DiagramHelper.isDiagramElementFiltered(elt);
+  }
+  
+  /**
+   * Checks that the given filter is activated on the given diagram.
+   * @param diagram
+   * @param filterName
+   */
+  protected void assertFilterActive(DDiagram diagram, String filterName){
+    FilterDescription filter = DiagramHelper.getFilterForDiagram(diagram, filterName);
+    Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, filterName, diagram.getName()), filter);
+    EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
+    assertTrue(activatedFilters.contains(filter));
   }
 }

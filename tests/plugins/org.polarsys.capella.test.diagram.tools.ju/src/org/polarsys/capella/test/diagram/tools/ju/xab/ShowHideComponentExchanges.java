@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.tools.ju.xab;
 
-import java.io.File;
 import java.text.MessageFormat;
 
 import org.eclipse.emf.common.util.EList;
