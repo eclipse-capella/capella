@@ -20,6 +20,8 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
+import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -45,17 +47,17 @@ import org.polarsys.capella.test.framework.helpers.HelperMessages;
  * tested filter are not filtered firstly. */
 public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
 
-	// these values are obtained by using methods defined in concrete test cases
+	// These values are obtained by using methods defined in concrete test cases
 	protected String diagramName = getDiagramName();
 	protected String projectTestName = getTestProjectName();
 	protected String filterName = getFilterName();
 	protected List<String> filteredObjetIDs = getFilteredObjetIDs();
 
-	// internal variables
+	// Internal variables
 	protected Session session;
 	protected Hashtable<DDiagramElement, String> diagramElement2ObjectID = new Hashtable<DDiagramElement, String>();
   
-  // these methods must be overridden by concrete test cases	
+  // These methods must be overridden by concrete test cases	
 	/** returns the name of the test project folder (by default in the folder "model") */
 	protected abstract String getTestProjectName();
 	/** returns the name of the tested diagram in the test project */
@@ -65,6 +67,8 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
 	/** returns the ID list of all objects in the tested diagram that should be filtered by the tested filter */
 	protected abstract List<String> getFilteredObjetIDs();
   
+	protected boolean filterActivated = false;
+	
 	@Override
   public List<String> getRequiredTestModels() {
     return Arrays.asList(projectTestName);
@@ -77,7 +81,7 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
   	GuiActions.openSession(airdFile, true);
   	DDiagram diagram = (DDiagram) DiagramHelper.getDRepresentation(session, diagramName);
   	Assert.assertNotNull(MessageFormat.format(HelperMessages.diagramNotContainedInSession, diagramName, airdFile), diagram);// test case check
-  	// initialize a matching table to get semantic object IDs from diagram elements
+  	// Initialize a matching table to get semantic object IDs from diagram elements
 		for (DDiagramElement elt : diagram.getDiagramElements()) {
 			EObject target = elt.getTarget();
 			if (target != null && target instanceof CapellaElement) {
@@ -91,7 +95,7 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
 		  assertTrue("Object "+id+" is not valid for "+diagramName+" of project "+projectTestName, contains); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ 
 		}
 		
-    // check that objects that will be filtered are not filtered yet and keep a trace of already not filtered objects
+    // Check that objects that will be filtered are not filtered yet and keep a trace of already not filtered objects
   	List<DDiagramElement> notFiltered = new ArrayList<DDiagramElement>();
   	for (DDiagramElement elt : diagram.getDiagramElements()) {
   		String objectID = diagramElement2ObjectID.get(elt);
@@ -103,15 +107,30 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
   			}
   		}
 		}
-    // activate the filter
+  	
+  	ResourceSetListenerImpl resourceSetListener = getResourceSetListener();
+  	
+  	// Add the resource set listener
+    session.getTransactionalEditingDomain().addResourceSetListener(resourceSetListener);
+  	
+    // Activate the filter
   	FilterDescription filter = DiagramHelper.getFilterForDiagram(diagram, filterName);
   	Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, filterName, diagramName), filter);// test case check    
   	DiagramHelper.addFilterInDiagram(diagram, filter);
    
-  	// check that filter is active
+  	// Wait the activation of the filter to continue the test
+  	System.out.print("Waiting filter activation");
+  	while(!filterActivated){
+  	  System.out.print(".");
+  	}
+  	// Check that filter is active
   	assertFilterActive(diagram, filterName);
+  	System.out.println();
   	
-  	// check that expected filtered objects are actually filtered    
+  	// Remove the resource set listener
+  	session.getTransactionalEditingDomain().removeResourceSetListener(resourceSetListener);
+  	
+  	//Check that expected filtered objects are actually filtered    
   	for (DDiagramElement elt : diagram.getDiagramElements()) {
   		String objectID = diagramElement2ObjectID.get(elt);
   		if (objectID != null) {
@@ -123,6 +142,20 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
   			}  			
   		}
   	}
+  }
+  
+  private ResourceSetListenerImpl getResourceSetListener() {
+    return new ResourceSetListenerImpl(){
+  	  @Override
+  	  public void resourceSetChanged(ResourceSetChangeEvent event) {
+  	    filterActivated = true;
+  	  }
+  	  
+  	  @Override
+  	  public boolean isPostcommitOnly() {
+  	    return true;
+  	  }
+  	};
   }
   
   protected boolean isFiltered(DDiagramElement elt) {
