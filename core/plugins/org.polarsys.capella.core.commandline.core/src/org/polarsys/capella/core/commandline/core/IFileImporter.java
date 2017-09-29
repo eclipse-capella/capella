@@ -24,6 +24,6 @@ public interface IFileImporter {
    * @param file
    * @return
    */
-  Collection<IProject> importFile(IFile file);
+  Collection<IProject> importFile(IFile file, boolean forceImport);
 
 }

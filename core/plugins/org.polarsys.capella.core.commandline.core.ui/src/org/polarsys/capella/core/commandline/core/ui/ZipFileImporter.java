@@ -22,11 +22,17 @@ import java.util.zip.ZipFile;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.dialogs.IOverwriteQuery;
 import org.eclipse.ui.internal.wizards.datatransfer.ZipLeveledStructureProvider;
 import org.eclipse.ui.wizards.datatransfer.ImportOperation;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.common.tools.report.util.LogExt;
+import org.polarsys.capella.core.commandline.core.CommandLineApp;
 import org.polarsys.capella.core.commandline.core.IFileImporter;
 
 /**
@@ -38,7 +44,7 @@ public class ZipFileImporter implements IFileImporter {
    * @param theZipFile
    * @return
    */
-  public Collection<IProject> importFile(IFile theZipFile) {
+  public Collection<IProject> importFile(IFile theZipFile, boolean forceImport) {
     try {
 
       ZipFile zipFile = new ZipFile(theZipFile.getFullPath().toOSString());
@@ -77,14 +83,28 @@ public class ZipFileImporter implements IFileImporter {
         if (entry.getName().endsWith(".project")) {
           IProjectDescription description = ResourcesPlugin.getWorkspace().loadProjectDescription(zipFile.getInputStream(entry));
           IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(description.getName());
-          maps.put(project.getName(), new ArrayList<Object>());
-          if (!project.exists()) {
-            project.create(null);
-          }
-          if (!project.isOpen()) {
+          if (!forceImport) {
+            if (project.exists()) {
+              // Log an error if a project exists already and -forceImport is not given
+              IStatus status = new Status(IStatus.ERROR, CommandLineApp.PLUGIN_ID, "Problem while importing project into the workspace: A project with the same name is referenced from the workspace. This should be removed from the workspace.");
+              LogExt.log(IReportManagerDefaultComponents.MODEL, status);
+            } else {
+              project.create(description, null);
+              project.open(null);
+              maps.put(project.getName(), new ArrayList<Object>());
+            }
+          } else {
+            // If -forceImport is given, unreference/delete existing project from the workspace
+            if (project.exists()) {
+              if (ResourcesPlugin.getWorkspace().getRoot().getLocation().append(project.getFullPath()).toFile().exists())
+                project.delete(IResource.ALWAYS_DELETE_PROJECT_CONTENT, new NullProgressMonitor());
+              else
+                project.delete(IResource.NEVER_DELETE_PROJECT_CONTENT, new NullProgressMonitor());
+            }
+            project.create(description, null);
             project.open(null);
+            maps.put(project.getName(), new ArrayList<Object>());
           }
-
         }
       }
 
@@ -120,7 +140,8 @@ public class ZipFileImporter implements IFileImporter {
       return projects;
 
     } catch (Exception exception) {
-      exception.printStackTrace();
+      IStatus status = new Status(IStatus.ERROR, CommandLineApp.PLUGIN_ID, exception.getMessage());
+      LogExt.log(IReportManagerDefaultComponents.MODEL, status);
       return Collections.emptyList();
     }
   }
