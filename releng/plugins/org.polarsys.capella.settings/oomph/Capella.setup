@@ -985,7 +985,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/sirius/updates/milestones/5.1.0rc1/neon"/>
+              url="http://download.eclipse.org/sirius/updates/milestones/5.1.0rc2/neon"/>
         </repositoryList>
       </targlet>
       <targlet
