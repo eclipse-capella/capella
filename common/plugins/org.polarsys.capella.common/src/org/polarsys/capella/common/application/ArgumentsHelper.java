@@ -51,7 +51,8 @@ public class ArgumentsHelper {
         String value = i < args.length - 1 ? args[i + 1] : null;
         if (value != null && !value.startsWith("-")) { //$NON-NLS-1$
           values.put(arg, value);
-        }
+        } else
+          values.put(arg, null);
       }
     }
   }

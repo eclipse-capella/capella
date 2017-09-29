@@ -28,6 +28,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.osgi.util.NLS;
@@ -36,6 +37,7 @@ import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.common.tools.report.util.LogExt;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaFeatureHelper;
 
@@ -416,7 +418,7 @@ public class AbstractCommandLine implements ICommandLine {
         List<IFileImporter> importers = ImporterRegistry.getInstance().getImporters("zip");
         if (!importers.isEmpty()) {
           IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(projectPath));
-          Collection<IProject> projects = importers.get(0).importFile(file);
+          Collection<IProject> projects = importers.get(0).importFile(file, argHelper.isForceImport());
           for (IProject prj : projects)
             importedProjects.add(prj.getName());
         }
@@ -424,18 +426,26 @@ public class AbstractCommandLine implements ICommandLine {
         IProjectDescription description = ResourcesPlugin.getWorkspace()
             .loadProjectDescription(new Path(projectPath).append(".project")); //$NON-NLS-1$
         project = ResourcesPlugin.getWorkspace().getRoot().getProject(description.getName());
-        if (!project.exists()) {
-          project.create(description, null);
-        } else {
-          project.delete(IResource.NEVER_DELETE_PROJECT_CONTENT, new NullProgressMonitor());
-          project.create(description, null);
-          project.open(null);
-        }
-        if (!project.isOpen()) {
-          project.open(null);
-        }
 
-        importedProjects.add(project.getName());
+        if (!argHelper.isForceImport()) {
+          if (project.exists()) {
+            // Log an error if a project exists already and -forceImport is not given
+            IStatus status = new Status(IStatus.ERROR, CommandLineApp.PLUGIN_ID,
+                "Problem while importing project into the workspace: A project with the same name is referenced from the workspace. This should be removed from the workspace.");
+            LogExt.log(IReportManagerDefaultComponents.MODEL, status);
+          } else {
+            project.create(description, null);
+            project.open(null);
+            importedProjects.add(project.getName());
+          }
+        } else {
+          // If -forceImport is given, unreference existing project from the workspace
+          if (project.exists())
+            project.delete(IResource.NEVER_DELETE_PROJECT_CONTENT, new NullProgressMonitor());
+          project.create(description, null);
+          project.open(null);
+          importedProjects.add(project.getName());
+        }
       }
     }
 
@@ -476,18 +486,20 @@ public class AbstractCommandLine implements ICommandLine {
   @Override
   public void printHelp() {
     System.out.println("*** Capella Command Line Core Mechanism ***"); //$NON-NLS-1$
-    
+
     System.out.println(CommandLineConstants.ID
         + " value : defines the id of the command line application to launch, see org.polarsys.capella.core.commandline.core.commandline extension point."); //$NON-NLS-1$
     System.out.println(CommandLineConstants.DATA + " value : defines the path to the workspace."); //$NON-NLS-1$
     System.out.println(CommandLineConstants.IMPORT
         + " value : defines a list of projects to import into the workspace before doing the actual job. List of projects is a '|' separated list."); //$NON-NLS-1$
+    System.out.println(
+        CommandLineConstants.FORCEIMPORT + " : delete/unreference the project if it exists already in the workspace."); //$NON-NLS-1$
     System.out.println(CommandLineConstants.FILE_PATH + " value : defines the path to your aird file."); //$NON-NLS-1$
     System.out.println(CommandLineConstants.OUTPUTFOLDER + " value : defines the path to the output folder."); //$NON-NLS-1$
     System.out.println(
         CommandLineConstants.FORCEOUTPUTFOLDERCREATION + " value : create the output folder if it does not exist."); //$NON-NLS-1$
     System.out.println(CommandLineConstants.HELP + " : prints the help message"); //$NON-NLS-1$
-    
+
     System.out.println(CommonArgumentsConstants.LOG_FILE_PATH__DESCRIPTION);
   }
 

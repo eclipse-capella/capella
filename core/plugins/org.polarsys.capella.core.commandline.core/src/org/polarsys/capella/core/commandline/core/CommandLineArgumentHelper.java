@@ -26,6 +26,7 @@ public class CommandLineArgumentHelper {
   private String logFilePath;
   private String appid;
   private String importProjects;
+  private boolean forceImport;
   private boolean copyOnWorkspace = false;
   private boolean createFolder;
   private String exportProject;
@@ -55,6 +56,7 @@ public class CommandLineArgumentHelper {
     
     appid = helper.getString(CommandLineConstants.ID);
     importProjects = helper.getString(CommandLineConstants.IMPORT);
+    forceImport = helper.hasParameter(CommandLineConstants.FORCEIMPORT);
     exportProject = helper.getString(CommandLineConstants.EXPORT);
     zipNameProject = helper.getString(CommandLineConstants.EXPORT_ZIP_NAME);
     filePath = helper.getString(CommandLineConstants.FILE_PATH);
@@ -105,6 +107,13 @@ public class CommandLineArgumentHelper {
     return importProjects;
   }
 
+  /**
+   * @return the forceImport
+   */
+  public boolean isForceImport() {
+    return forceImport;
+  }
+  
   /**
    * @return the createFolder
    */

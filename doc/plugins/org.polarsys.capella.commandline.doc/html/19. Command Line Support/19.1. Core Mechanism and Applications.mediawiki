@@ -34,6 +34,8 @@ Optional parameters:
 
 * import: defines a list of the path of the Eclipse projects to import into the workspace before doing the actual job. The list have to be placed into quotes "" and separated by vertical bar '|'.
 
+* forceimport: unreference/delete exiting project from the workspace while importing projects using command line. Without this option, an error is logged if a project with the same name than the imported project exists already in the workspace.
+
 * forceoutputfoldercreation: automatically create the output folder. If the folder already exists, this one is deleted and a new output folder is created.
 
 * logfile: defines the path to the log file (if not specified, log file is created in the workspace directory).
