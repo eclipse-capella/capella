@@ -30,7 +30,7 @@ public class RenameModelTestSuite extends BasicTestSuite {
     tests.add(new RenameModelTestCase());
     tests.add(new RenameAirdTestCase());
     tests.add(new RenameAfmTestCase());
+    tests.add(new RenameProjectWithOpenedSessionTestCase());
     return tests;
   }
-
 }

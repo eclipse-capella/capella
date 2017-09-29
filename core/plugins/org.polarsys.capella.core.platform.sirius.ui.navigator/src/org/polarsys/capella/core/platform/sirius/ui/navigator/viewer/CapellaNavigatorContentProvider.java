@@ -39,15 +39,11 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
-import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.ui.business.api.session.IEditingSession;
-import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointItem;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionWrapperContentProvider;
@@ -55,8 +51,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.ui.ISaveablePart2;
-import org.eclipse.ui.Saveable;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.navigator.SaveablesProvider;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -521,12 +516,18 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    * @see org.eclipse.core.resources.IResourceChangeListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)
    */
   @Override
-  public void resourceChanged(IResourceChangeEvent event) {
+  public void resourceChanged(final IResourceChangeEvent event) {
     switch (event.getType()) {
     case IResourceChangeEvent.PRE_DELETE: {
       if (null != event.getResource()) {
-        IProject project = (IProject) event.getResource();
-        SessionHelper.closeUiSessions(Collections.singletonList(project));
+        Display.getDefault().syncExec(new Runnable() {
+
+          @Override
+          public void run() {
+            IProject project = (IProject) event.getResource();
+            SessionHelper.closeUiSessions(Collections.singletonList(project));
+          }
+        });
       }
       break;
     }
