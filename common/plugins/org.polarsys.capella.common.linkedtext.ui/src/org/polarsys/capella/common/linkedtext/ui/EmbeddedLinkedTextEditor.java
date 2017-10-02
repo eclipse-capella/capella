@@ -256,7 +256,6 @@ public class EmbeddedLinkedTextEditor {
           case ' ':
             if ((e.stateMask & SWT.CTRL) == SWT.CTRL && getHyperlinkOverCaret(_sv) == null) {
               _sv.doOperation(ISourceViewer.CONTENTASSIST_PROPOSALS);
-              _sv.moveFocusToWidgetToken();
             }
           }
       }
