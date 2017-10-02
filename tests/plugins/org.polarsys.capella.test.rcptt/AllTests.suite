@@ -5,8 +5,8 @@ Element-Type: testsuite
 Element-Version: 2.0
 Id: _H2g9YMEUEeWqb6y2_gGIKQ
 Manually-Ordered: true
-Runtime-Version: 2.1.0.201606221726
-Save-Time: 7/6/17 1:17 PM
+Runtime-Version: 2.3.0.201706222316
+Save-Time: 10/2/17 5:50 PM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -27,5 +27,6 @@ _mqfJ4GIsEeeQB6qYkFOmxQ	// kind: 'test' name: 'DragnDropCapellaElement' path: 'D
 _JamzwDWUEeeWUYFkeZvpdw	// kind: 'test' name: 'LifelineDeletion' path: 'Sequence/LifelineDeletion.test'
 _VqGRgDS6EeepRL_NUeNEXg	// kind: 'test' name: 'PrePostConditionDeletionImpactAnalysis' path: 'Sequence/PrePostConditionDeletionImpactAnalysis.test'
 _lhay0FpGEeey96mRdJF15w	// kind: 'test' name: 'OpenDiagramRepresentationPerCategory' path: 'ProjectExplorer/OpenDiagramRepresentationPerCategory.test'
+_iXvJIKd2EeeauqwgHGcTiA	// kind: 'suite' name: 'RetrieveCapellaExplorerTreeAfterSearch' path: 'ProjectExplorer/Search/RetrieveCapellaExplorerTreeAfterSearch.suite'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--
