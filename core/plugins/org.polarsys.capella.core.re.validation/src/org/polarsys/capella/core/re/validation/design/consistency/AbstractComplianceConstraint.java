@@ -1,0 +1,321 @@
+/*******************************************************************************
+ * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.re.validation.design.consistency;
+
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.validation.EMFEventType;
+import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.emf.validation.model.ConstraintStatus;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.helpers.NotificationAnalysis;
+import org.polarsys.capella.common.re.CatalogElement;
+import org.polarsys.capella.common.re.CatalogElementKind;
+import org.polarsys.capella.common.re.CatalogElementLink;
+import org.polarsys.capella.common.re.CompliancyDefinition;
+import org.polarsys.capella.common.re.RePackage;
+import org.polarsys.capella.common.re.helpers.ReplicableElementExt;
+import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
+
+import com.google.common.base.Predicate;
+
+/**
+ * A base class for REC/RPL compliance live validation.
+ */
+public abstract class AbstractComplianceConstraint extends AbstractValidationRule {
+
+  private final boolean validateUnsynchronizedFeatures;
+  private final EqualityHelper equalityHelper = new EqualityHelper();
+  private final Predicate<CompliancyDefinition> compliancyPredicate;
+
+  public AbstractComplianceConstraint(Predicate<CompliancyDefinition> compliancyPredicate, boolean validateUnsynchronizedFeatures){
+    this.compliancyPredicate = compliancyPredicate;
+    this.validateUnsynchronizedFeatures = validateUnsynchronizedFeatures;
+  }
+
+  public AbstractComplianceConstraint(Predicate<CompliancyDefinition> compliancyPredicate) {
+    this(compliancyPredicate, false);
+  }
+
+  @Override
+  public IStatus validate(IValidationContext ctx) {
+
+    ArrayList<IStatus> results = new ArrayList<IStatus>();
+
+    if (ctx.getFeature() == RePackage.Literals.CATALOG_ELEMENT__OWNED_LINKS) {
+
+      CatalogElement ce = (CatalogElement) ctx.getTarget();
+
+      if (ce.isReadOnly() && ce.getKind() == CatalogElementKind.RPL) {
+
+        for (CatalogElementLink removed : getRemovedLinks(ctx)) {
+          IStatus s = handleRemovedLink((CatalogElement) ctx.getTarget(), removed, ctx);
+          if (!s.isOK()) {
+            results.add(s);
+          }
+        }
+      }
+
+    } else if (ctx.getFeature() == RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET) {
+
+      if (ctx.getFeatureNewValue() == null) {
+        IStatus s = handleClearedLink((CatalogElementLink) ctx.getTarget(), ctx);
+        if (!s.isOK()) {
+          results.add(s);
+        }
+
+      } else {
+        // Changing the target of a link once the target has been set ...
+        Object original = NotificationAnalysis.getOriginalSingleValue(ctx.getTarget(), ctx.getFeature(), ctx.getAllEvents());
+        if (original != null) {
+          // Can't just consider this illegal: Create RPL copies the REC link and then updates it..
+          // TODO .. check if the link is new, then allow it
+        }
+      }
+    } else {
+
+      // handle changes to relements that are part of readonly rpls with the given compliance
+      for (ComplianceValidationContext cvc : ComplianceValidationContext.create(ctx, compliancyPredicate)) {
+        IStatus result = validate(cvc);
+        if (!result.isOK()) {
+          results.add(result);
+        }
+      }
+
+    }
+
+    if (results.size() > 0) {
+      return ConstraintStatus.createMultiStatus(ctx, results);
+    }
+
+    return ctx.createSuccessStatus();
+  }
+
+  /**
+   * </p>
+   * Handle the case where a CatalogElementLink was removed from its owner RPL. Note that the link is not necessarily
+   * deleted: It might have moved to a different CatalogElement in the same transaction, so removed.eResource()
+   * is not necessarily null.
+   * <p>
+   * If the method returns a failure status, the transaction is invalidated.
+   * </p>
+   * This default implementation returns a failure status in each of the following cases:
+   * <ul>
+   * <li>The link was moved from one CatalogElement to a different CatalogElement
+   * <li>The deleted link still has an origin link and that origin link isn't deleted itself
+   * </ul>
+   *
+   * @param owner the original owner of the link
+   * @param link the link that was removed (but possibly moved to a different owner during this transaction)
+   * @param ctx the surrounding validation context
+   * @return a status indicating if link removal is valid or not
+   */
+  protected IStatus handleRemovedLink(CatalogElement owner, CatalogElementLink removed, IValidationContext ctx) {
+
+    IStatus result = Status.OK_STATUS;
+
+    if (removed.eResource() != null) {
+
+      // It isn't allowed to move a link to some other place
+      result = ctx.createFailureStatus(owner, removed);
+
+    } else {
+
+      // The link was really deleted. This is only allowed if the link has no origin link.
+      CatalogElementLink recLink = NotificationAnalysis.getOriginalSingleValue(removed, RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN, ctx.getAllEvents());
+
+      if (recLink != null && recLink.eResource() != null) { // and if that rec link wasn't also deleted
+        result = ctx.createFailureStatus(owner, removed);
+      }
+    }
+
+    return result;
+
+  }
+
+  /**
+   * Handle the case where a RPL CatalogElementLink's target reference was set to null.
+   * This default implementation always returns an error status, which will invalidate the change.
+   *
+   * @param owner
+   * @param cleared
+   * @param ctx
+   * @return
+   */
+  protected IStatus handleClearedLink(CatalogElementLink cleared, IValidationContext ctx) {
+    return ctx.createFailureStatus(ctx.getTarget(), ctx.getFeature());
+  }
+
+  /**
+   * Validates the given ComplianceValidationContext.
+   * @param ctx
+   * @return
+   */
+  protected IStatus validate(ComplianceValidationContext ctx) {
+
+    IStatus result = Status.OK_STATUS;
+    EStructuralFeature feature = ctx.getValidationContext().getFeature();
+
+    if (validateUnsynchronizedFeatures || !ctx.getRecLink().getUnsynchronizedFeatures().contains(feature.getName())) {
+
+      if (feature instanceof EAttribute) {
+
+        result = validateAttribute(ctx);
+
+      } else {
+
+        result = validateReference(ctx);
+
+      }
+    }
+
+    return result;
+  }
+
+  protected IStatus validateReference(ComplianceValidationContext ctx) {
+
+    IValidationContext vc = ctx.getValidationContext();
+    final boolean add = vc.getEventType() == EMFEventType.ADD || vc.getEventType() == EMFEventType.ADD_MANY;
+    final boolean remove = vc.getEventType() == EMFEventType.REMOVE || vc.getEventType() == EMFEventType.REMOVE_MANY;
+    final boolean set = vc.getEventType() == EMFEventType.SET;
+
+    if (add || remove || set) {
+
+      Collection<?> values = Collections.emptyList(); // values added, set, or removed from feature
+
+      if (vc.getFeatureNewValue() instanceof Collection<?>) {
+        values = (Collection<?>) vc.getFeatureNewValue();
+      } else {
+        values = Collections.singleton(vc.getFeatureNewValue());
+      }
+
+      for (Object vRpl : values) {
+
+        if (vRpl != null) { // may be null in case of setXXX(null)
+
+          Object vRec = vRpl;
+
+          // is the added or removed value also part of this RPL?
+          Collection<CatalogElementLink> vRplLinks = ReplicableElementExt.getReferencingLinks((EObject) vRpl);
+
+          for (Iterator<CatalogElementLink> it = vRplLinks.iterator(); it.hasNext();) {
+            CatalogElementLink next = it.next();
+            if (next.getSource() == ctx.getRPL()) {
+              if (next.getOrigin() != null) {
+                vRec = next.getOrigin().getTarget();
+              }
+            } else {
+              it.remove();
+            }
+          }
+
+          if (vRec != null) {
+
+            if (vc.getFeature().isMany()) {
+
+              if (add && !((Collection<?>)ctx.getRecElement().eGet(vc.getFeature())).contains(vRec)){
+                return ctx.createFailureStatus();
+              }
+
+              if (remove && ((Collection<?>)ctx.getRecElement().eGet(vc.getFeature())).contains(vRec)){
+                return ctx.createFailureStatus();
+              }
+
+            } else {
+
+              if ((ctx.getRecElement().eGet(vc.getFeature()) != vRec)) {
+                return ctx.createFailureStatus();
+              }
+
+            }
+          } else {
+
+            // the added/removed vRpl is part of this context rpl, but we cannot find a corresponding vRec
+
+            // adding such an element is not allowed, removing is
+            if (add) {
+              return ctx.createFailureStatus();
+            }
+
+          }
+
+        } else {
+
+          // setXXX(null), allowed, but only if the rec element has it also set to null
+          if (ctx.getRecElement().eGet(vc.getFeature()) != null) {
+
+            return ctx.createFailureStatus();
+
+          }
+
+        }
+      }
+    }
+
+    return Status.OK_STATUS;
+  }
+
+
+  protected IStatus validateAttribute(ComplianceValidationContext ctx) {
+    if (ctx.getValidationContext().getFeature() == ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME) {
+      return validateName(ctx);
+    } else if (!equalityHelper.validateAttribute(ctx.getRecElement(), ctx.getRplElement(), (EAttribute) ctx.getValidationContext().getFeature())) {
+      return ctx.createFailureStatus();
+    }
+    return Status.OK_STATUS;
+  }
+
+  protected IStatus validateName(ComplianceValidationContext ctx) {
+    String rplName = ((AbstractNamedElement)ctx.getRplElement()).getName();
+    String recName = ((AbstractNamedElement)ctx.getRecElement()).getName();
+    String suffix = ""; //$NON-NLS-1$
+
+    if (ctx.getRplLink().isSuffixed() && ctx.getRPL().getSuffix() != null) {
+      suffix = ctx.getRPL().getSuffix();
+    }
+    if (recName == null || ((recName + suffix).equals(rplName))) {
+      return Status.OK_STATUS;
+    }
+    return ctx.createFailureStatus();
+  }
+
+
+  @SuppressWarnings("serial")
+  static class EqualityHelper extends EcoreUtil.EqualityHelper {
+    public boolean validateAttribute(EObject eObject1, EObject eObject2, EAttribute attribute) {
+      return super.haveEqualFeature(eObject1, eObject2, attribute);
+    }
+  }
+
+  @SuppressWarnings("unchecked")
+  private Collection<CatalogElementLink> getRemovedLinks(IValidationContext ctx){
+    if (ctx.getEventType() == EMFEventType.REMOVE) {
+      return Collections.singleton((CatalogElementLink)ctx.getFeatureNewValue());
+    }
+    if (ctx.getEventType() == EMFEventType.REMOVE_MANY) {
+      return (Collection<CatalogElementLink>) ctx.getFeatureNewValue();
+    }
+    return Collections.emptyList();
+  }
+
+
+}

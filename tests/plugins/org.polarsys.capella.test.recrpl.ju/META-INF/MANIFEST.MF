@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.eclipse.emf.diffmerge
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.test.recrpl.ju,

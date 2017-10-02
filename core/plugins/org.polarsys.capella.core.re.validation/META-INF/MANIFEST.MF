@@ -7,7 +7,8 @@ Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.polarsys.capella.common.re,
  org.polarsys.capella.common.re.gen,
- org.polarsys.capella.core.validation
+ org.polarsys.capella.core.validation,
+ com.google.guava;bundle-version="15.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.re.validation.design.consistency

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -98,21 +98,24 @@ public abstract class RecRplTestCase extends BasicTestCase {
     assertTrue(object.eContainer().equals(container));
   }
 
-  /** overrides this method to write the test code */
-  public abstract void performTest() throws Exception;
+  /**
+   * Override this method to write the test code
+   **/
+  public void performTest() throws Exception {
+    // this does nothing by default
+  }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
-  protected CatalogElement createREC(Collection<EObject> elements) {
-    ICommand command = new CreateRecCommand((Collection) elements, new NullProgressMonitor());
+  protected CatalogElement createREC(Collection<? extends EObject> elements) {
+    CreateRecCommand command = new CreateRecCommand(elements, new NullProgressMonitor());
     executeCommand(command);
-
+    assertFalse(command.isRolledBack());
     // for (EObject element : elements) {
     // mustReference(REC, element);
     // }
 
     // Check if a new REC is connected to all given elements
     CatalogElement newREC = null;
-    Iterator<EObject> element = elements.iterator();
+    Iterator<? extends EObject> element = elements.iterator();
     while (element.hasNext()) {
       EObject object = element.next();
       Collection<CatalogElement> relatedRecs = ReplicableElementExt.getReferencingReplicableElements(object);
@@ -129,16 +132,16 @@ public abstract class RecRplTestCase extends BasicTestCase {
     return createReplica(elements, REC, null);
   }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
-  protected CatalogElement createReplica(Collection<EObject> elements, CatalogElement REC, String suffix) {
+  protected CatalogElement createReplica(Collection<? extends EObject> selection, CatalogElement REC, String suffix) {
     Collection<CatalogElement> RPLS = ReplicableElementExt.getReplicas(REC);
 
-    ICommand command = new CreateReplicaCommand((Collection) elements, new NullProgressMonitor());
+    CreateReplicaCommand command = new CreateReplicaCommand(selection, new NullProgressMonitor());
     RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE, REC);
     if (suffix != null) {
       RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX, suffix);
     }
     executeCommand(command);
+    assertFalse(command.isRolledBack());
 
     // A new RPL must be created
     Collection<CatalogElement> RPLS2 = ReplicableElementExt.getReplicas(REC);
@@ -159,31 +162,30 @@ public abstract class RecRplTestCase extends BasicTestCase {
     return RPL;
   }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
-  protected void updateCur(Collection<EObject> elements, CatalogElement rec) {
-    ICommand command = new UpdateCurCommand((Collection) elements, new NullProgressMonitor());
+  protected void updateCur(Collection<EObject> selection, CatalogElement rec) {
+    UpdateCurCommand command = new UpdateCurCommand(selection, new NullProgressMonitor());
     RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, rec);
     executeCommand(command);
+    assertFalse(command.isRolledBack());
   }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   protected void updateReplica(Collection<EObject> elements, CatalogElement replica) {
-    ICommand command = new UpdateReplicaCommand((Collection) elements, new NullProgressMonitor());
+    UpdateReplicaCommand command = new UpdateReplicaCommand(elements, new NullProgressMonitor());
     RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, replica);
     executeCommand(command);
+    assertFalse(command.isRolledBack());
   }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   protected void updateReplica(Collection<EObject> elements, CatalogElement replica, String suffix) {
-    ICommand command = new UpdateReplicaCommand((Collection) elements, new NullProgressMonitor());
+    UpdateReplicaCommand command = new UpdateReplicaCommand(elements, new NullProgressMonitor());
     RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, replica);
     RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX, suffix);
     executeCommand(command);
+    assertFalse(command.isRolledBack());
   }
 
-  protected void updateReplica(Collection<EObject> elements, CatalogElement replica, final Collection<String> disabledCategoryFilters){
-
-    UpdateReplicaCommand command = new UpdateReplicaCommand((Collection) elements, new NullProgressMonitor());
+  protected boolean updateReplica(Collection<EObject> elements, CatalogElement replica, final Collection<String> disabledCategoryFilters){
+    UpdateReplicaCommand command = new UpdateReplicaCommand(elements, new NullProgressMonitor());
     command.addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, new DefaultMergeHandler(true){
 
               @Override
@@ -194,27 +196,25 @@ public abstract class RecRplTestCase extends BasicTestCase {
                 }
               }
 
-            }, "Merge"));
+            }, "Merge")); //$NON-NLS-1$
 
     RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, replica);
     executeCommand(command);
+    return !command.isRolledBack();
   }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   protected void updateDef(Collection<EObject> elements) {
-    ICommand command = new UpdateDefCommand((Collection) elements, new NullProgressMonitor());
+    ICommand command = new UpdateDefCommand(elements, new NullProgressMonitor());
     executeCommand(command);
   }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   protected void deleteReplicaAndRelatedElements(Collection<EObject> elements) {
-    ICommand command = new DeleteReplicaAndRelatedElementsCommand((Collection) elements, new NullProgressMonitor());
+    ICommand command = new DeleteReplicaAndRelatedElementsCommand(elements, new NullProgressMonitor());
     executeCommand(command);
   }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   protected void deleteReplicaPreserveRelatedElements(Collection<EObject> elements) {
-    ICommand command = new DeleteReplicaPreserveRelatedElementsCommand((Collection) elements, new NullProgressMonitor());
+    ICommand command = new DeleteReplicaPreserveRelatedElementsCommand(elements, new NullProgressMonitor());
     executeCommand(command);
   }
 
@@ -269,6 +269,34 @@ public abstract class RecRplTestCase extends BasicTestCase {
     } finally {
       RecRplCommandManager.clear();
     }
+  }
+
+  /**
+   * Executes the runnable in a read write command and returns the rollback status for the command
+   * @param r
+   * @return true if the command wasn't rolled back, false if the command was rolled back
+   */
+  protected boolean executeCommand(final Runnable r) {
+    AbstractReadWriteCommand arwc = new AbstractReadWriteCommand() {
+      @Override
+      public void run() {
+        r.run();
+      }
+    };
+    executeCommand(arwc);
+    return !arwc.isRolledBack();
+  }
+
+  protected void expectRollback(final Runnable r) {
+    assertFalse(executeCommand(r));
+  }
+
+  protected void expectNoRollback(final Runnable r) {
+    assertTrue(executeCommand(r));
+  }
+
+  protected void expectNoRollback(boolean b) {
+    assertTrue(b);
   }
 
   protected EObject getObject(String id) {

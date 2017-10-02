@@ -1,17 +1,25 @@
             
 = Validation of RPL =
  
-== Compliancy of RPL ==
+== RPL Compliance ==
  
 Different kinds of conformance are possible between a RPL and its REC. Capella defines three default kinds of conformance, but end-user can define their own ones.
 
  
-* Blackbox: No modification is allowed on the Replica. elements of the 	RPL should not be edited, but only connected via existing port and 	interfaces with other elements of the model. <br> It should not be 	possible to add internal elements, modify the external constraints 	(ports, interfaces) of elements of the RPL.<br>
+* Blackbox: No modification is allowed on the Replica. Elements of the 	RPL should not be edited, but only connected via existing port and 	interfaces with other elements of the model. <br> It should not be 	possible to add internal elements, modify the external constraints 	(ports, interfaces) of elements of the RPL.<br>
 
 * Constrained Reuse: Internal elements can be added inside a RPL, but 	constraints and Interfaces (Function and Component Ports for 	example) defined in REC cannot be modified.<br>
 
 * Inheritance: Any element can be added in the RPL, including new 	Interfaces, ports or functions
  
-'''Validation rules according to Compliancy of the RPL are not available yet ''' 
+Capella currently provides a live validation rule for RPL with Blackbox compliance. The rule is deactivated by default. To enable live validation of RPL with Blackbox compliance, activate the rule in the Capella Preferences:
 
-   
+[[Image:Images/8.5.enable_blackbox_rule.png|747x549px]]
+
+If the Blackbox validation rule is active, live validation will occur on all RPL which have the 'Enfore RPL Compliance on the Fly' flag checked in its properties. This flag makes it possible to enable validation for specific RPL only:
+
+[[Image:Images/8.5.rplproperties.png|495x368px]]
+
+If the live validation detects a violating change, the change is rolled back and an error dialog will open, indicating which changes were not in line with the current compliancy setting of the RPL.
+
+'''Validation rules for the other two Compliance definitions of the RPL are not available yet ''' 
