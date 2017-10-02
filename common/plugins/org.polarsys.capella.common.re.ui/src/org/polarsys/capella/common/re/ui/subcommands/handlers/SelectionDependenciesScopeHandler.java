@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.polarsys.capella.common.re.ui.subcommands.handlers;
 import java.util.Collection;
 
 import org.eclipse.core.expressions.IEvaluationContext;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.polarsys.capella.common.flexibility.properties.loader.PropertiesLoader;
 import org.polarsys.capella.common.flexibility.properties.property.PropertyContext;
@@ -21,9 +22,10 @@ import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.ui.util.ExecutionEventUtil;
+import org.polarsys.capella.common.re.constants.IReConstants;
 
 /**
- *
+ * 
  */
 public class SelectionDependenciesScopeHandler extends SelectionCommandHandler {
 
@@ -53,14 +55,18 @@ public class SelectionDependenciesScopeHandler extends SelectionCommandHandler {
 
         if ((scope == null) || scope.isEmpty()) {
           setBaseEnabled(false);
-        } else {
 
-          IProperties delegatedProperties = new PropertiesLoader().getProperties(scope);
-          Object source = getPropertySource(new StructuredSelection(selectedObjects), rendererContext);
-          IPropertyContext delegatedContext = new PropertyContext(delegatedProperties, source);
-          IProperty property = delegatedProperties.getProperty(propertyId);
-          Object current = delegatedContext.getCurrentValue(property);
-          setBaseEnabled((current instanceof Collection) && !((Collection) current).isEmpty());
+        } else {
+          Collection<EObject> scopeElements = (Collection) rendererContext.getPropertyContext().getCurrentValue(
+              rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
+          if (scopeElements.containsAll(selectedObjects)) {
+            IProperties delegatedProperties = new PropertiesLoader().getProperties(scope);
+            Object source = getPropertySource(new StructuredSelection(selectedObjects.toArray()), rendererContext);
+            IPropertyContext delegatedContext = new PropertyContext(delegatedProperties, source);
+            IProperty property = delegatedProperties.getProperty(propertyId);
+            Object current = delegatedContext.getCurrentValue(property);
+            setBaseEnabled((current instanceof Collection) && !((Collection) current).isEmpty());
+          }
         }
       }
     }
