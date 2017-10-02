@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.polarsys.capella.common.flexibility.wizards.ui.DefaultLabelProvider;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.attributes.AttributesHandlerHelper;
 import org.polarsys.capella.common.re.handlers.scope.DependenciesHandlerHelper;
+import org.polarsys.capella.common.re.ui.Activator;
 import org.polarsys.capella.common.re.ui.decorators.InstanciationLabelDecorator;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -183,12 +184,12 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
         }
 
         if (!scopeElements.contains(element)) {
-          return new Status(IStatus.INFO, "dd", "");
+          return new Status(IStatus.INFO, Activator.PLUGIN_ID, "");
         }
 
         IContext ctx = (IContext) context.getPropertyContext().getSource();
         if (AttributesHandlerHelper.getInstance(ctx).isSuffixable(element, ctx)) {
-          return new Status(IStatus.WARNING, "dd", "+SUFFIX");
+          return new Status(IStatus.WARNING, Activator.PLUGIN_ID, "+SUFFIX");
         }
 
         return Status.OK_STATUS;
@@ -220,7 +221,7 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
     if (values.isEmpty()) {
       return Status.OK_STATUS;
     }
-    return new Status(IStatus.WARNING, "aa", "missing dependencies");
+    return new Status(IStatus.WARNING, Activator.PLUGIN_ID, "Missing dependencies");
   }
 
   @Override
