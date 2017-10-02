@@ -13,6 +13,7 @@ package org.polarsys.capella.core.platform.sirius.ui.app;
 
 import java.util.List;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ui.internal.WorkbenchErrorHandlerProxy;
 import org.eclipse.ui.internal.statushandlers.StatusHandlerDescriptor;
 import org.eclipse.ui.internal.statushandlers.StatusHandlerRegistry;
@@ -25,22 +26,17 @@ public class CapellaStatusHandler extends AbstractStatusHandler {
 
   @Override
   public void handle(StatusAdapter statusAdapter, int style) {
-
-    try {
-      StatusHandlerRegistry handlerRegistry = StatusHandlerRegistry.getDefault();
-      String plugin = statusAdapter.getStatus().getPlugin();
-      List<?> handlerDescriptors = handlerRegistry.getHandlerDescriptors(plugin);
-      if (handlerDescriptors != null && !handlerDescriptors.isEmpty()) {
-        StatusHandlerDescriptor statusHandlerDescriptor = (StatusHandlerDescriptor) handlerDescriptors.get(0);
-        statusHandlerDescriptor.getStatusHandler().handle(statusAdapter, style);
-      }
-    } catch (Exception e2) {
+    StatusHandlerRegistry handlerRegistry = StatusHandlerRegistry.getDefault();
+    String plugin = statusAdapter.getStatus().getPlugin();
+    List<?> handlerDescriptors = handlerRegistry.getHandlerDescriptors(plugin);
+    AbstractStatusHandler statusHandler = defaultHandler;
+    if (handlerDescriptors != null && !handlerDescriptors.isEmpty()) {
+      StatusHandlerDescriptor statusHandlerDescriptor = (StatusHandlerDescriptor) handlerDescriptors.get(0);
       try {
-        defaultHandler.handle(statusAdapter, style);
-      } catch (Exception e1) {
-        e1.printStackTrace();
+        statusHandler = statusHandlerDescriptor.getStatusHandler();
+      } catch (CoreException ex) {
       }
     }
-    ;
+    statusHandler.handle(statusAdapter, style);
   }
 }
