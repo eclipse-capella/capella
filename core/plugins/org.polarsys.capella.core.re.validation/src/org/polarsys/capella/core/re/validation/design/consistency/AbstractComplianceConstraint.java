@@ -59,6 +59,10 @@ public abstract class AbstractComplianceConstraint extends AbstractValidationRul
   @Override
   public IStatus validate(IValidationContext ctx) {
 
+    if (ctx.getEventType() == EMFEventType.NULL) {
+      return ctx.createSuccessStatus();
+    }
+
     ArrayList<IStatus> results = new ArrayList<IStatus>();
 
     if (ctx.getFeature() == RePackage.Literals.CATALOG_ELEMENT__OWNED_LINKS) {
