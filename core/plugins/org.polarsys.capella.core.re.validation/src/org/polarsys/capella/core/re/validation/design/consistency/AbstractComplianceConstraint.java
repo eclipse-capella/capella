@@ -233,27 +233,29 @@ public abstract class AbstractComplianceConstraint extends AbstractValidationRul
             if (vc.getFeature().isMany()) {
 
               if (add && !((Collection<?>)ctx.getRecElement().eGet(vc.getFeature())).contains(vRec)){
-                return ctx.createFailureStatus();
+                return validateAddReference(ctx, vRpl, vRec);
               }
 
               if (remove && ((Collection<?>)ctx.getRecElement().eGet(vc.getFeature())).contains(vRec)){
-                return ctx.createFailureStatus();
+                return validateRemoveReference(ctx, vRpl, vRec);
               }
 
             } else {
 
-              if ((ctx.getRecElement().eGet(vc.getFeature()) != vRec)) {
-                return ctx.createFailureStatus();
+              if (ctx.getRecElement().eGet(vc.getFeature()) != vRec) {
+                validateDifferentReference(ctx, vRpl, vRec);
               }
 
             }
           } else {
 
             // the added/removed vRpl is part of this context rpl, but we cannot find a corresponding vRec
+            if (add ) {
+              return validateAddReference(ctx, vRpl, vRec);
+            }
 
-            // adding such an element is not allowed, removing is
-            if (add) {
-              return ctx.createFailureStatus();
+            if (set) {
+              return validateDifferentReference(ctx, vRpl, vRec);
             }
 
           }
@@ -262,9 +264,7 @@ public abstract class AbstractComplianceConstraint extends AbstractValidationRul
 
           // setXXX(null), allowed, but only if the rec element has it also set to null
           if (ctx.getRecElement().eGet(vc.getFeature()) != null) {
-
-            return ctx.createFailureStatus();
-
+            validateDifferentReference(ctx, null, null);
           }
 
         }
@@ -274,7 +274,61 @@ public abstract class AbstractComplianceConstraint extends AbstractValidationRul
     return Status.OK_STATUS;
   }
 
+  /**
+   * Handle the case where an object <code>vRpl</code> was added to a multi-valued reference of a RPL element,
+   * but the corresponding object <code>vRec</code> is <b>not</b> referenced by the complementing REC element.
+   * <p>
+   * If the added object <code>vRpl</code> is also part of the RPL, the corresponding object
+   * <code>vRec</code> is its complementing element in the REC. If the complementing object cannot be found
+   * <code>vRec</code> will be null.
+   * Otherwise vRpl and vRec are the same object.
+   * </p>
+   * @param ctx the current context
+   * @param vRpl the value that was added to a many-valued reference on the rpl element. Never null.
+   * @param expected the value that should be referenced by the complementing rec element but isn't. Can be null as described above.
+   * @return
+   */
+  protected abstract IStatus validateAddReference(ComplianceValidationContext ctx, Object vRpl, Object expected);
 
+  /**
+   * Handle the case where an object <code>vRpl</code> was removed from a many-valued reference of a RPL element,
+   * but the corresponding object <code>vRec</code> is still referenced by the complementing REC element.
+   * <p>
+   * If the removed object <code>vRpl</code> is also part of the RPL, the corresponding object
+   * <code>vRec</code> is its complementing element in the REC.
+   * <code>vRec</code> will be null.
+   * Otherwise vRpl and vRec are the same object.
+   * </p>
+   * @param ctx the current context
+   * @param vRpl the value that was removed from a many-valued reference on the rpl element. Never null.
+   * @param vRec the value that is still referenced by the complementing rec element but shouldn't be. Never null.
+   * @return
+   */
+  protected abstract IStatus validateRemoveReference(ComplianceValidationContext ctx, Object vRpl, Object vRec);
+
+  /**
+   * Handle the case where an single-valued reference of an RPL element was set to <code>vRpl</code>,
+   * but the corresponding REC element still has it set to something that is not the expected <code>vRec</code>.
+   * <p>
+   * If the set object <code>vRpl</code> is also part of the RPL, the corresponding object
+   * <code>vRec</code> is its complementing element in the REC. If the complementing object cannot be found
+   * <code>vRec</code> will be null.
+   * Otherwise vRpl and vRec are the same object.
+   * </p>
+   * @param ctx the current context
+   * @param vRpl the value that was removed from a many-valued reference on the rpl element. May be null, and in that case vRec is also null.
+   * @param vRec the value that is still referenced by the complementing rec element but shouldn't be. Can be null as described above.
+   * @return
+   */
+  protected abstract IStatus validateDifferentReference(ComplianceValidationContext ctx, Object vRpl, Object vRec);
+
+  /**
+   * Validate a change of an attribute of a RPL element. This default implementation returns an Error status
+   * if the corresponding REC element's attribute isn't equal to the RPL element attribute according to
+   * EcoreUtil.EqualityHelper
+   * @param ctx
+   * @return
+   */
   protected IStatus validateAttribute(ComplianceValidationContext ctx) {
     if (ctx.getValidationContext().getFeature() == ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME) {
       return validateName(ctx);
@@ -284,6 +338,11 @@ public abstract class AbstractComplianceConstraint extends AbstractValidationRul
     return Status.OK_STATUS;
   }
 
+  /**
+   * Validate a name change of a RPL element. This is a special case because of REC/RPL suffixes.
+   * @param ctx
+   * @return
+   */
   protected IStatus validateName(ComplianceValidationContext ctx) {
     String rplName = ((AbstractNamedElement)ctx.getRplElement()).getName();
     String recName = ((AbstractNamedElement)ctx.getRecElement()).getName();
