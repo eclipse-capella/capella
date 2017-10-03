@@ -10,19 +10,17 @@
  *******************************************************************************/
 package org.polarsys.capella.core.re.validation.design.consistency;
 
-import org.polarsys.capella.common.re.CompliancyDefinition;
-import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandler;
+import java.util.Collections;
 
-import com.google.common.base.Predicate;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
-public class DefaultBlackBoxCompliance extends AbstractComplianceConstraint {
+/**
+ * A blackbox where nothing can be modified.
+ */
+public class DefaultBlackBoxCompliance extends BlackBoxComplianceWithExceptions {
 
   public DefaultBlackBoxCompliance() {
-    super(new Predicate<CompliancyDefinition>() {
-        @Override
-        public boolean apply(CompliancyDefinition input) {
-          return ReplicableElementHandler.COMPLIANCY_BLACK_BOX_NAME.equals(input.getName());
-        }
-      });
+    super(Collections.<EStructuralFeature>emptyList());
   };
+
 }
