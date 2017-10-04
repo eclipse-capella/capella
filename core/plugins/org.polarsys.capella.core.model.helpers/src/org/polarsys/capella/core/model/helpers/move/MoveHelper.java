@@ -68,6 +68,7 @@ import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
@@ -208,15 +209,15 @@ public class MoveHelper {
    * @return
    */
   protected boolean isLegalInterfaceMode(Interface interf, EObject targetElement) {
-    ModellingArchitecture iArchi = CapellaElementExt.getArchi(targetElement);
+    ModellingArchitecture iArchi = BlockArchitectureExt.getRootBlockArchitecture(targetElement);
     for (Component component : interf.getUserComponents()) {
-      ModellingArchitecture cArchi = CapellaElementExt.getArchi(component);
+      ModellingArchitecture cArchi = BlockArchitectureExt.getRootBlockArchitecture(component);
       if (!CapellaElementExt.isLegalArchitecture(iArchi, cArchi)) {
         return false;
       }
     }
     for (Component component : interf.getImplementorComponents()) {
-      ModellingArchitecture cArchi = CapellaElementExt.getArchi(component);
+      ModellingArchitecture cArchi = BlockArchitectureExt.getRootBlockArchitecture(component);
       if (!CapellaElementExt.isLegalArchitecture(iArchi, cArchi)) {
         return false;
       }
@@ -224,13 +225,13 @@ public class MoveHelper {
 
     // via component ports
     for (Component component : InterfaceExt.getRequireComponent(interf)) {
-      ModellingArchitecture cArchi = CapellaElementExt.getArchi(component);
+      ModellingArchitecture cArchi = BlockArchitectureExt.getRootBlockArchitecture(component);
       if (!CapellaElementExt.isLegalArchitecture(iArchi, cArchi)) {
         return false;
       }
     }
     for (Component component : InterfaceExt.getProviderComponent(interf)) {
-      ModellingArchitecture cArchi = CapellaElementExt.getArchi(component);
+      ModellingArchitecture cArchi = BlockArchitectureExt.getRootBlockArchitecture(component);
       if (!CapellaElementExt.isLegalArchitecture(iArchi, cArchi)) {
         return false;
       }
@@ -296,7 +297,7 @@ public class MoveHelper {
     } else {
       for (EObject e : selectedModelElements) {
         TransactionalEditingDomain sourceDomain = TransactionUtil.getEditingDomain(e);
-        if (sourceDomain != targetDomain) {
+        if (sourceDomain != null && sourceDomain != targetDomain) {
           result = Status.CANCEL_STATUS;
         }
       }
@@ -333,6 +334,7 @@ public class MoveHelper {
               && modelElements.size() <= upperBound) {
             isElementCompatible = true;
           } else if (upperBound > 1) {
+            @SuppressWarnings("unchecked")
             EObjectContainmentEList<EObject> contList = (EObjectContainmentEList<EObject>) target.eGet(reference);
             if (contList.size() < upperBound) {
               isElementCompatible = true;

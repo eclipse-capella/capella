@@ -20,6 +20,7 @@ import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.CatalogElementLink;
@@ -30,9 +31,11 @@ import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandl
 import org.polarsys.capella.common.re.handlers.traceability.MatchConfiguration;
 import org.polarsys.capella.core.transition.common.activities.AbstractActivity;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
+import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
 import org.polarsys.capella.core.transition.common.handlers.traceability.CompoundTraceabilityHandler;
 import org.polarsys.capella.core.transition.common.merge.ExtendedComparison;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
@@ -266,6 +269,12 @@ public class AttachmentActivity extends AbstractActivity {
     if (location != null) {
       EStructuralFeature feature = LocationHandlerHelper.getInstance(context).getFeature(source, target, location, context);
       attachElement(context, target, location, feature);
+      
+    } else {
+      LogHelper.getInstance().debug(
+          NLS.bind("Element ''{0}'' has not been attached.", LogHelper.getInstance().getText(target)),
+          Messages.Activity_Transformation);
+
     }
 
   }

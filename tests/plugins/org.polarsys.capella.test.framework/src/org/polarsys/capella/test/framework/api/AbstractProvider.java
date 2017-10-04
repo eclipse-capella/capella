@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
@@ -56,14 +57,15 @@ public abstract class AbstractProvider implements IModelProvider {
     Set<String> toImport = new HashSet<String>();
     for (String relativeModelPath : relativeModelsPath) {
       String modelIdentifier = getModelIdentifier(artefact, relativeModelPath);
-      System.out.println(">> require " + modelIdentifier);
-      // load the model if it is not already the case
+      System.out.print(getTestName(artefact) + ">> require ");
+      // Load the model if it is not already the case
       if (!modelIdentifier2Owner.containsKey(modelIdentifier)) {
         File sourceFolder = artefact.getFolderInTestModelRepository(relativeModelPath);
         if (!sourceFolder.exists() || !sourceFolder.isDirectory()) {
+          System.out.println(getShortIdentifier(modelIdentifier));
           throw new IllegalArgumentException("test model '" + relativeModelPath + "' does not exist");
         }
-        System.out.println(">> load " + modelIdentifier);
+        System.out.println(">> load " + getShortIdentifier(modelIdentifier));
 
         BasicTestArtefact startArtefact = getSetupArtefact(artefact);
         if (startArtefact == null) {
@@ -74,7 +76,7 @@ public abstract class AbstractProvider implements IModelProvider {
             lstSetUpArtefacts.put(artefact, loadedModels);
           } catch (Exception e) {
             e.printStackTrace();
-          throw new WrappedException(e);
+            throw new WrappedException(e);
           }
         } else {
           List<String> loadedModels = lstSetUpArtefacts.get(startArtefact);
@@ -87,15 +89,16 @@ public abstract class AbstractProvider implements IModelProvider {
 
         modelIdentifier2Owner.put(modelIdentifier, artefact);
         modelIdentifier2ProjectNameInWorkspace.put(modelIdentifier, sourceFolder.getName());
+      }else{
+        System.out.println(getShortIdentifier(modelIdentifier));
       }
-
     }
 
     importCapellaProject(toImport, artefact);
 
     for (String relativeModelPath : relativeModelsPath) {
       String modelIdentifier = getModelIdentifier(artefact, relativeModelPath);
-      // add a change lock on the test model if the artefact is not the owner
+      // Add a change lock on the test model if the artefact is not the owner
       // of the test model
       if (modelIdentifier2Owner.get(modelIdentifier) != artefact) {
         Session session = getSessionForTestModel(relativeModelPath, artefact);
@@ -104,9 +107,7 @@ public abstract class AbstractProvider implements IModelProvider {
         modelIdentifier2ChangeLocker.put(modelIdentifier, changeLocker);
         ted.addResourceSetListener(changeLocker);
       }
-
     }
-
   }
 
   protected static String getModelIdentifier(BasicTestArtefact artefact, String relativeModelPath) {
@@ -139,14 +140,15 @@ public abstract class AbstractProvider implements IModelProvider {
   protected void releaseTestModel(String relativeModelPath, BasicTestArtefact artefact, boolean eraseProject) {
     File sourceFolder = artefact.getFolderInTestModelRepository(relativeModelPath);
     String modelIdentifier = sourceFolder.toString();
-    System.out.println(">> release " + modelIdentifier);
+    System.out.print(getTestName(artefact) + ">> release ");
     if (!modelIdentifier2Owner.containsKey(modelIdentifier)) {
+      System.out.println(getShortIdentifier(modelIdentifier));
       throw new IllegalArgumentException("test model '" + relativeModelPath + "' has not been loaded");
     }
-    // if the test artefact is the owner of the test model, do actually the
+    // If the test artefact is the owner of the test model, do actually the
     // unload
     if (modelIdentifier2Owner.get(modelIdentifier) == artefact) {
-      System.out.println(">> unload " + modelIdentifier);
+      System.out.println(">> unload " + getShortIdentifier(modelIdentifier));
       removeCapellaProject(relativeModelPath, artefact, eraseProject);
 
       modelIdentifier2Owner.remove(modelIdentifier);
@@ -166,13 +168,16 @@ public abstract class AbstractProvider implements IModelProvider {
         }
       }
     }
-    // remove the change locker if any
+    // Remove the change locker if any
     else if (modelIdentifier2ChangeLocker.containsKey(modelIdentifier)) {
+      System.out.println(getShortIdentifier(modelIdentifier));
       ChangeLocker changeLocker = modelIdentifier2ChangeLocker.get(modelIdentifier);
       modelIdentifier2ChangeLocker.remove(modelIdentifier);
       Session session = getSessionForTestModel(relativeModelPath, artefact);
       TransactionalEditingDomain ted = TransactionHelper.getEditingDomain(session);
       ted.removeResourceSetListener(changeLocker);
+    }else{
+      System.out.println(getShortIdentifier(modelIdentifier));
     }
     // BEGIN To be delete when the following bug will be solved :
     // Bug 261 - Testability issue due to creation of async GUI jobs during
@@ -220,5 +225,14 @@ public abstract class AbstractProvider implements IModelProvider {
 
   public static String getModelIdentifier2ProjectNameInWorkspace(String modelIdentifier) {
     return modelIdentifier2ProjectNameInWorkspace.get(modelIdentifier);
+  }
+  
+  private String getTestName(BasicTestArtefact artefact) {
+    return "[" + artefact.getClass().getSimpleName() + "] ";
+  }
+  
+  private String getShortIdentifier(String modelIdentifier) {
+    URI createURI = URI.createFileURI(modelIdentifier);
+    return createURI.lastSegment();
   }
 }
