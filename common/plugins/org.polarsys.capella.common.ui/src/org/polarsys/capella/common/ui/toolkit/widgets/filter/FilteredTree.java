@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,11 +48,10 @@ import org.eclipse.ui.IWorkbenchPreferenceConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.WorkbenchMessages;
 import org.eclipse.ui.progress.WorkbenchJob;
-
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.IImageKeys;
 import org.polarsys.capella.common.ui.MdeCommonUiActivator;
 import org.polarsys.capella.common.ui.services.swt.events.AbstractKeyAdapter;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 /**
  * Copied from org.eclipse.ui.dialogs due to {@link PatternFilter} methods visibility.<br>
@@ -231,6 +230,8 @@ public class FilteredTree extends Composite {
    * The viewer for the filtered tree. This value should never be <code>null</code> after the widget creation methods are complete.
    */
   protected TreeViewer treeViewer;
+  
+  protected String lastAppliedPattern = "";
 
   /**
    * Create a new instance of the receiver. Subclasses that wish to override the default creation behavior may use this constructor, but must ensure that the
@@ -407,6 +408,19 @@ public class FilteredTree extends Composite {
           }
         });
       }
+      
+      @Override
+      public void focusLost(FocusEvent e) {
+        if (!getFilterString().equals(previousFilterText)) {
+          previousFilterText = getFilterString();
+          refreshJob.cancel();
+          long delay = 0;
+          if (isAutoFiltering()) {
+            delay = getAutoFilteringDelay();
+          }
+          refreshJob.schedule(delay);
+        }
+      }
     });
     filterText.addKeyListener(new AbstractKeyAdapter() {
       /**
@@ -513,15 +527,16 @@ public class FilteredTree extends Composite {
             }
 
             String text = getFilterString();
-            if (text == null) {
+            if (text == null || lastAppliedPattern.equals(text)) {
               return Status.OK_STATUS;
             }
 
             boolean initial = (initialText != null) && initialText.equals(text);
-            String newPatternToApply = null;
+            String newPatternToApply = "";
             if (!initial && (text.length() > 0)) {
               newPatternToApply = text;
             }
+            lastAppliedPattern = newPatternToApply;
             patternFilter.setPattern(newPatternToApply);
 
             Control redrawFalseControl = treeComposite != null ? treeComposite : treeViewer.getControl();
@@ -543,9 +558,7 @@ public class FilteredTree extends Composite {
                 }
               }
               // Refresh the tree viewer to take into account the new pattern filter value.
-              if(newPatternToApply != null){
-                treeViewer.refresh(false);
-              }
+              treeViewer.refresh(false);
 
               if (!initial) {
                 if (text.length() > 0) {
@@ -821,7 +834,7 @@ public class FilteredTree extends Composite {
     if (isAutoFiltering()) {
       delay = getAutoFilteringDelay();
     }
-    // Run it immediately.
+    // Schedule it immediately.
     refreshJob.schedule(delay);
   }
 
