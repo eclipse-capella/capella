@@ -19,7 +19,7 @@ import org.polarsys.capella.test.recrpl.ju.RecRplTestCase;
 
 public abstract class Compliance extends RecRplTestCase {
 
-  public static final String RULE_ID = "org.polarsys.capella.core.re.validation.compliance.blackbox.default"; //$NON-NLS-1$
+  public static final String RULE_ID = "org.polarsys.capella.core.re.validation.compliance.blackbox.withRealizationLinks"; //$NON-NLS-1$
 
   @Override
   public List<String> getRequiredTestModels() {
