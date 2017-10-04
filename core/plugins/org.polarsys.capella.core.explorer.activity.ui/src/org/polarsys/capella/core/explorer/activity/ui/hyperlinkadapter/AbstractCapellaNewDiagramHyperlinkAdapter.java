@@ -12,6 +12,7 @@ package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter;
 
 import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.AbstractNewDiagramHyperlinkAdapter;
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
@@ -43,10 +44,11 @@ public abstract class AbstractCapellaNewDiagramHyperlinkAdapter extends Abstract
 		
 		String eventName = "Create Representation";
 		String eventContext = getRepresentationName();
-		String addendum = IdManager.getInstance().getId(getModelElement(project));
+		EObject modelElement = getModelElement(project);
+		String addendum = IdManager.getInstance().getId(modelElement);
 		
 		UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE, addendum);
-		linkPressed(event, getModelElement(project), session);
+		linkPressed(event, modelElement, session);
 		UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.OK, addendum);
 	}
 }
