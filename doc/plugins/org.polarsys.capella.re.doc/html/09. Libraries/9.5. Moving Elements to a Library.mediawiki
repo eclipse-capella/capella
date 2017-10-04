@@ -1,17 +1,26 @@
-= The procedures described here are part of a prototype implementation. Please report bugs and feedback to https://bugs.polarsys.org/show_bug.cgi?id=1673  =
+{| border="1"
+|-
+| 
+[[Image:Images/9.1.%20Introduction_html_723ed3f9.png|34x34px]]
+| 
+ The procedures described here are part of a PROTOTYPE implementation
+|}
 
 = Moving existing elements to a Library =
 
-This prototype makes it possible to move elements from a project to a library. (Moving elements from a library to a project will be supported soon). Feel encouraged to report feedback in this bugzilla: https://bugs.polarsys.org/show_bug.cgi?id=1673
+This PROTOTYPE makes it possible to move elements from a project to a library. (Moving elements from a library to a project will be supported soon). Feel encouraged to report feedback in this bugzilla: https://bugs.polarsys.org/show_bug.cgi?id=1673
 
 == Project Explorer Drag & Drop ==
 
-For simple move operations, drag and drop the element to be moved from the project to a suitable location in the library. However, sometimes such an action would violate referential integrity: for example when you are trying to move a Class A which extends from another Class B to a library, while Class B remains in the project. Since an element in a library can never reference an element in a project, the drop cannot be completed and a warning dialog will open. One could instead select A and B and move them together, but this is only possible because A and B are elements of the same Type. The Move Elements View (Window->Show View->Capella->Move Elements) allows to move multiple elements with distinct types and references between each other in a single undoable operation. Note however that this method does not currently execute semantic validation (see below), so you may end up with illegal references in your model.
+For simple move operations, drag and drop the element to be moved from the project to a suitable location in the library. However, sometimes such an action would violate referential integrity: for example when you are trying to move a Class A which extends from another Class B to a library, while Class B remains in the project. Since an element in a library can never reference an element in a project, the drop cannot be completed and a warning dialog will open. One could instead select A and B and move them together, but this is only possible because A and B are elements of the same Type. 
+
+The Move Elements View (see below) allows to move multiple elements with distinct types and references between each other in a single undoable operation. Note however that this method does not currently execute semantic validation (see below), so you may end up with illegal references in your model.
+
 If you're unsure whether a move would introduce an illegal reference, better use the new Move Elements view or execute validation rule I_38 (which is disabled by default) on your model after you're done moving elements.
 
 == Move Elements View ==
 
-When the Move Elements View (Window->Show View->Capella->Move Elements) is opened for the first time, it looks like this:
+When the Move Elements View (Window->Show View->Capella (Incubation)->Move Elements View) is opened for the first time, it looks like this:
 
 [[Image:Images//9.5_MoveElementsView_1.png|827x489px]] 
 

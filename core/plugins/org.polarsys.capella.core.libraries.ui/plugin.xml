@@ -258,7 +258,7 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-            category="org.polarsys.capella.views.category"
+            category="org.polarsys.capella.views.category.incubation"
             class="org.polarsys.capella.core.libraries.ui.move.MoveStagingView"
             id="org.polarsys.capella.core.libraries.ui.moveview"
             name="Move Elements View"

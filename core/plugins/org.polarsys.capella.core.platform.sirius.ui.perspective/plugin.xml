@@ -39,6 +39,10 @@
             id="org.polarsys.capella.views.category"
             name="Capella">
       </category>
+      <category
+            id="org.polarsys.capella.views.category.incubation"
+            name="Capella (Incubation)">
+      </category>
     </extension>
     <extension
           point="org.eclipse.core.runtime.preferences">
