@@ -1067,7 +1067,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.9.0-N20170922-073358/capella"/>
+              url="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.9.0-N20171004-042126/capella"/>
         </repositoryList>
       </targlet>
       <targlet
