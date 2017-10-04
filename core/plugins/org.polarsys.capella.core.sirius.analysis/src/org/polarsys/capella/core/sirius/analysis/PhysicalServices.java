@@ -301,7 +301,10 @@ public class PhysicalServices {
       }
     }
     for (DEdge anEdge : incomingOutgoingEdges) {
-      if (anEdge.getTarget() instanceof PhysicalLink) {
+      String edgeMappingName = anEdge.getMapping().getName();
+      if (anEdge.getTarget() instanceof PhysicalLink
+          && !(edgeMappingName.equals(IMappingNameConstants.PAB_COMPUTED_PHYSICAL_LINK)
+              || edgeMappingName.equals(IMappingNameConstants.LAB_COMPUTED_PHYSICAL_LINK))) {
         returnedList.add((PhysicalLink) anEdge.getTarget());
       }
     }

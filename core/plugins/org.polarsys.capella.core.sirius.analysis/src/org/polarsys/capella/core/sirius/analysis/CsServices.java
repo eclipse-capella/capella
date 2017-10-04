@@ -6348,8 +6348,21 @@ public class CsServices {
     if (ce.getKind() == ComponentExchangeKind.DELEGATION) {
       return false;
     }
-
+    
     // Case 3
+    EObject source = sourceView.getTarget();
+    EObject target = targetView.getTarget();
+    if (source instanceof Part && target instanceof Part) {
+      AbstractType sourceType = ((Part) source).getAbstractType();
+      AbstractType targetType = ((Part) target).getAbstractType();
+      if (sourceType instanceof PhysicalComponent && targetType instanceof PhysicalComponent
+          && ((PhysicalComponent) sourceType).getNature() == PhysicalComponentNature.NODE
+          && ((PhysicalComponent) targetType).getNature() == PhysicalComponentNature.NODE) {
+        return false;
+      }
+    }
+
+    // Case 4
     if (!isValidComputedLink(communication, ce.getSourcePort(), ce.getTargetPort(), sourceView, targetView,
         IMappingNameConstants.LAB_COMPUTED_COMPONENT_EXCHANGE, IMappingNameConstants.PAB_COMPUTED_COMPONENT_EXCHANGE,
         IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE)) {
