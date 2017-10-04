@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,19 +22,19 @@ import org.polarsys.capella.common.tools.report.config.registry.ReportManagerReg
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 
 /**
- * The capella common drag adapter assistant.
+ * The Capella common drag adapter assistant.
  */
 public class CapellaCommonDragAdapterAssistant extends CommonDragAdapterAssistant {
   /**
    * Log4j reference logger.
    */
-  protected Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  protected Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
 
   // The supported transfers list.
   private static final Transfer[] SUPPORTED_TRANSFERS = new Transfer[] { LocalSelectionTransfer.getTransfer() };
 
   /**
-   * Constructs the capella common drag adapter assistant.
+   * Constructs the Capella common drag adapter assistant.
    */
   public CapellaCommonDragAdapterAssistant() {
     // Do nothing.
@@ -52,13 +52,12 @@ public class CapellaCommonDragAdapterAssistant extends CommonDragAdapterAssistan
    * @see org.eclipse.ui.navigator.CommonDragAdapterAssistant#setDragData(org.eclipse.swt.dnd.DragSourceEvent, org.eclipse.jface.viewers.IStructuredSelection)
    */
   @Override
-  public boolean setDragData(DragSourceEvent event_p, IStructuredSelection selection_p) {
-    if (org.eclipse.ui.views.navigator.LocalSelectionTransfer.getInstance().isSupportedType(event_p.dataType)) {
-      __logger.debug(new EmbeddedMessage("Drag activated from " + event_p.getSource(), IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
-      event_p.data = selection_p;
+  public boolean setDragData(DragSourceEvent event_p, IStructuredSelection selection) {
+    if (LocalSelectionTransfer.getTransfer().isSupportedType(event_p.dataType)) {
+      logger.debug(new EmbeddedMessage("Drag activated from " + event_p.getSource(), IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
+      event_p.data = selection;
       return true;
     }
     return false;
   }
-
 }

@@ -45,8 +45,8 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
 
   private static final String ACTIVE_STATE_PREF_ID = "LIBRARY_ACTIVE_STATE_INFORMATIONS"; //$NON-NLS-1$
 
-  public CapellaModel(ModelIdentifier identifier_p, TransactionalEditingDomain domain_p) {
-    super(identifier_p, domain_p);
+  public CapellaModel(ModelIdentifier identifier, TransactionalEditingDomain domain) {
+    super(identifier, domain);
   }
 
   @Override
@@ -93,12 +93,12 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
     return models;
   }
 
-  protected static ModelIdentifier createModelIdentifier(String identifier, URI uri_p) {
-    return new ModelIdentifier(identifier, uri_p);
+  protected static ModelIdentifier createModelIdentifier(String identifier, URI uri) {
+    return new ModelIdentifier(identifier, uri);
   }
 
-  public static ModelIdentifier createModelIdentifier(Resource resource_p) {
-    Project project = CapellaLibraryExt.getProject(resource_p);
+  public static ModelIdentifier createModelIdentifier(Resource resource) {
+    Project project = CapellaLibraryExt.getProject(resource);
     if (project != null) {
       Resource rootResource = project.eResource();
       ModelInformation information = CapellaLibraryExt.getModelInformation(rootResource, false);
@@ -108,15 +108,15 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
     return null;
   }
 
-  public static IModel createModel(ModelIdentifier identifier_p, TransactionalEditingDomain domain) {
-    if (identifier_p == null) {
+  public static IModel createModel(ModelIdentifier identifier, TransactionalEditingDomain domain) {
+    if (identifier == null) {
       return null;
     }
-    return new CapellaModel(identifier_p, domain);
+    return new CapellaModel(identifier, domain);
   }
 
   @Override
-  public void addReference(final IModel referencedLibrary_p) {
+  public void addReference(final IModel referencedLibrary) {
     // Enable proxy resolution before adding the referenced library
     CrossReferencerHelper.enableResolveProxy(_domain);
 
@@ -124,7 +124,7 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
       @Override
       public void run() {
         ModelInformation source = getModelInformation(CapellaModel.this, true);
-        ModelInformation target = getModelInformation(referencedLibrary_p, true);
+        ModelInformation target = getModelInformation(referencedLibrary, true);
 
         // if reference is already made, we don't add another reference
         for (LibraryReference reference : source.getOwnedReferences()) {
@@ -134,18 +134,18 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
         }
 
         // manage afm before adding the new semantic resource: a listener will be call at this moment and it needs up-to-date metadata
-        if (referencedLibrary_p instanceof CapellaModel)
-        	LibraryHelper.add(_domain.getResourceSet(), getUriSemanticFile(), ((CapellaModel)referencedLibrary_p).getUriSemanticFile());
+        if (referencedLibrary instanceof CapellaModel)
+        	LibraryHelper.add(_domain.getResourceSet(), getUriSemanticFile(), ((CapellaModel)referencedLibrary).getUriSemanticFile());
 
         // otherwise, we add a reference
         LibraryReference result = LibrariesFactory.eINSTANCE.createLibraryReference();
         result.setLibrary(target);
         source.getOwnedReferences().add(result);
-        result.setAccessPolicy(getDefaultNewAccess(referencedLibrary_p));
+        result.setAccessPolicy(getDefaultNewAccess(referencedLibrary));
 
         // Sirius session requires the semantic target resource to be added to the <semanticResources> reference
         // we can't use session.addSemanticResources unload the resource if already loaded.......
-        // new AddSemanticResourceCommand(session, ((CapellaModel) referencedLibrary_p).uriSemanticFile, new
+        // new AddSemanticResourceCommand(session, ((CapellaModel) referencedLibrary).uriSemanticFile, new
         // NullProgressMonitor()).execute();
 
         Resource toAdd = target.eResource();
@@ -170,7 +170,7 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
   }
 
   @Override
-  public void removeReference(final IModel referencedLibrary_p) {
+  public void removeReference(final IModel referencedLibrary) {
     // Enable proxy resolution before removing the referenced library
     CrossReferencerHelper.enableResolveProxy(_domain);
 
@@ -178,13 +178,13 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
       @Override
       public void run() {
         ModelInformation source = getModelInformation(CapellaModel.this, true);
-        ModelInformation target = getModelInformation(referencedLibrary_p, true);
+        ModelInformation target = getModelInformation(referencedLibrary, true);
 
         LibraryReference toDelete = null;
 
         // manage afm before removing the new semantic resource: a listener will be call at this moment and it needs up-to-date metadata
-        if (referencedLibrary_p instanceof CapellaModel)
-        	LibraryHelper.remove(_domain.getResourceSet(), getUriSemanticFile(), ((CapellaModel)referencedLibrary_p).getUriSemanticFile());
+        if (referencedLibrary instanceof CapellaModel)
+        	LibraryHelper.remove(_domain.getResourceSet(), getUriSemanticFile(), ((CapellaModel)referencedLibrary).getUriSemanticFile());
         
         // if reference is made, we remove the reference
         for (LibraryReference reference : source.getOwnedReferences()) {
@@ -192,7 +192,7 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
             if (reference.getLibrary().equals(target)) {
               toDelete = reference;
               break;
-            } else if (reference.getLibrary().eIsProxy() && referencedLibrary_p.getIdentifier().getId()
+            } else if (reference.getLibrary().eIsProxy() && referencedLibrary.getIdentifier().getId()
                 .equals(((InternalEObject) reference.getLibrary()).eProxyURI().fragment())) {
               toDelete = reference;
               break;
@@ -231,15 +231,15 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
   }
 
   /**
-   * @param source_p
+   * @param source
    */
-  protected void notifyLibraryChange(ModelInformation source_p) {
+  protected void notifyLibraryChange(ModelInformation source) {
 
     // TODO a workaround to update the views of the ModelInformation, even if we don't really touch it.
 
     // we should add an event based mechanism on library state changes, instead of being based on EMF underlayer, but still better than :
 
-    // ResourceSetSync sync = ResourceSetSync.getOrInstallResourceSetSync(domain_p);
+    // ResourceSetSync sync = ResourceSetSync.getOrInstallResourceSetSync(domain);
     // Session session = SessionManager.INSTANCE.getSession(source);
     // sync.statusChanged(session.getSessionResource(), ResourceSetSync.ResourceStatus.SYNC, ResourceSetSync.ResourceStatus.UNKNOWN); // (UNKNOWN leads to
     // inconsistencies)
@@ -251,25 +251,25 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
     // }
     //
     // @Override
-    // public int getFeatureID(Class<?> expectedClass_p) {
+    // public int getFeatureID(Class<?> expectedClass) {
     // return LibrariesPackage.MODEL_INFORMATION__OWNED_REFERENCES;
     // }
     // };
     // source.eNotify(notification); //this doesn't update the view since no transaction change is triggered.
 
     LibraryReference reference = LibrariesFactory.eINSTANCE.createLibraryReference();
-    source_p.getOwnedReferences().add(reference);
-    source_p.getOwnedReferences().remove(reference);
+    source.getOwnedReferences().add(reference);
+    source.getOwnedReferences().remove(reference);
   }
 
   @Override
-  public void setAccess(final IModel library_p, final AccessPolicy currentAccessPolicy_p) {
+  public void setAccess(final IModel library, final AccessPolicy currentAccessPolicy) {
 
     ExecutionManagerRegistry.getInstance().getExecutionManager(_domain).execute(new AbstractReadWriteCommand() {
       @Override
       public void run() {
         ModelInformation source = getModelInformation(CapellaModel.this, true);
-        ModelInformation target = getModelInformation(library_p, true);
+        ModelInformation target = getModelInformation(library, true);
 
         LibraryReference result = null;
 
@@ -281,7 +281,7 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
         }
 
         if (result != null) {
-          result.setAccessPolicy(currentAccessPolicy_p);
+          result.setAccessPolicy(currentAccessPolicy);
         }
 
         notifyLibraryChange(source);
@@ -291,20 +291,20 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
   }
 
   @Override
-  public boolean canReference(IModel referencedLibrary_p) {
-    return (referencedLibrary_p instanceof CapellaModel) && ((CapellaModel) referencedLibrary_p).isLibrary();
+  public boolean canReference(IModel referencedLibrary) {
+    return (referencedLibrary instanceof CapellaModel) && ((CapellaModel) referencedLibrary).isLibrary();
   }
 
   @Override
   public boolean isActive(IModel library) {
-    Preferences activeLibraryPrefInfos = new ConfigurationScope().getNode(Activator.PLUGIN_ID).node(ACTIVE_STATE_PREF_ID);
+    Preferences activeLibraryPrefInfos = ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID).node(ACTIVE_STATE_PREF_ID);
     Preferences libraryContextPref = activeLibraryPrefInfos.node(this.getIdentifier().getName());
     return libraryContextPref.getBoolean(library.getIdentifier().getName(), getDefaultActiveState(library));
   }
 
   @Override
   public void setActive(IModel library, boolean activeState) {
-    final Preferences activeLibraryPrefInfos = new ConfigurationScope().getNode(Activator.PLUGIN_ID).node(ACTIVE_STATE_PREF_ID);
+    final Preferences activeLibraryPrefInfos = ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID).node(ACTIVE_STATE_PREF_ID);
     Preferences libraryContextPref = activeLibraryPrefInfos.node(this.getIdentifier().getName());
     libraryContextPref.putBoolean(library.getIdentifier().getName(), activeState);
 
@@ -327,9 +327,8 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
   }
 
   @Override
-  public AccessPolicy getDefaultNewAccess(IModel referencedLibrary_p) {
-    //when a library can be added as a reference, it will have a readonly access policy
+  public AccessPolicy getDefaultNewAccess(IModel referencedLibrary) {
+    //When a library can be added as a reference, it will have a read-only access policy
     return AccessPolicy.READ_ONLY;
   }
-
 }

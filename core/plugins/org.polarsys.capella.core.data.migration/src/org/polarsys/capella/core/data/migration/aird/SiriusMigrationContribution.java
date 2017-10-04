@@ -33,6 +33,7 @@ import org.xml.sax.Attributes;
 /**
  * This class triggers the first part of sirius repair action (metamodel modifications)
  */
+@SuppressWarnings("restriction")
 public class SiriusMigrationContribution extends AbstractMigrationContribution {
 
   HashMap<Resource, String> versions = null;

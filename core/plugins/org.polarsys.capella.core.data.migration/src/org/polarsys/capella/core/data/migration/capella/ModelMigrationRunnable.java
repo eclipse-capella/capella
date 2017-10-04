@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,10 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.migration.capella;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IStatus;
@@ -130,9 +128,9 @@ public class ModelMigrationRunnable extends ContributoryMigrationRunnable {
         // values
         Object extendedValues = getValues(o, f);
         if ((extendedValues != null) && (extendedValues instanceof InternalEList)) {
-          InternalEList listExtendedValues = (InternalEList<? extends EObject>) extendedValues;
+          InternalEList<?> listExtendedValues = (InternalEList<? extends EObject>) extendedValues;
           if (!listExtendedValues.isEmpty()) {
-            InternalEList<EObject> result = new BasicInternalEList(EObject.class);
+            InternalEList<EObject> result = new BasicInternalEList<>(EObject.class);
             HashMap<String, EObject> uriFragment = new HashMap<String, EObject>();
 
             // Add all values
@@ -305,7 +303,6 @@ public class ModelMigrationRunnable extends ContributoryMigrationRunnable {
           /**
            * Set the given feature of the given object to the given value.
            */
-          @SuppressWarnings({ "unchecked", "rawtypes" })
           @Override
           protected void setFeatureValue(EObject peekObject, EStructuralFeature inputFeature, Object inputValue, int position) {
             EStructuralFeature feature = inputFeature;
@@ -335,14 +332,10 @@ public class ModelMigrationRunnable extends ContributoryMigrationRunnable {
           /**
            * Set the values for the given multi-valued forward reference.
            */
-          @SuppressWarnings({ "unchecked", "rawtypes" })
           @Override
           protected void setFeatureValues(ManyReference reference) {
             EObject peekObject = reference.getObject();
-            List<?> values = Arrays.asList(reference.getValues());
-
             EStructuralFeature inputFeature = reference.getFeature();
-
             EStructuralFeature feature = inputFeature;
 
             if ((reference.getPositions() != null) && (reference.getValues() != null) && (reference.getPositions().length == reference.getValues().length)) {
@@ -362,8 +355,6 @@ public class ModelMigrationRunnable extends ContributoryMigrationRunnable {
                 setFeatureValue(peekObject, feature, value, reference.getPositions()[i]);
               }
             }
-
-            // super.setFeatureValues(reference);
           }
 
           /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,26 +28,30 @@ public class IFileRequestor implements IResourceVisitor {
   protected String fileExtension = null;
   protected boolean recursive = false;
 
-  public List<IFile> search(IContainer container, String fileExtension_p, boolean recursive_p) {
-    recursive = recursive_p;
+  public List<IFile> search(IContainer container, String fileExtension, boolean recursive) {
+    this.recursive = recursive;
+    this.fileExtension = fileExtension;
     result = new ArrayList<IFile>();
-    fileExtension = fileExtension_p;
-    try {
-      container.accept(this);
-    } catch (Exception exception) {
-      exception.printStackTrace();
+    if (container.isAccessible()) {
+      try {
+        container.accept(this);
+      } catch (Exception exception) {
+        exception.printStackTrace();
+      }
     }
     return result;
   }
 
-  public List<IFile> search(IContainer container, boolean recursive_p) {
-    recursive = recursive_p;
-    result = new ArrayList<IFile>();
+  public List<IFile> search(IContainer container, boolean recursive) {
+    this.recursive = recursive;
     fileExtension = null;
-    try {
-      container.accept(this);
-    } catch (Exception exception) {
-      exception.printStackTrace();
+    result = new ArrayList<IFile>();
+    if (container.isAccessible()) {
+      try {
+        container.accept(this);
+      } catch (Exception exception) {
+        exception.printStackTrace();
+      }
     }
     return result;
   }
