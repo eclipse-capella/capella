@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -4025,7 +4025,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.ComponentInternalOutgoingComponentExchanges_comp"
             isTopLevel="true"
-            name="Internal Outgoing Component Exchanges">
+            name="Internal Outgoing Component Exchanges (computed)">
          <availableForType
                class="org.polarsys.capella.core.data.cs.Component">
          </availableForType>
@@ -4046,7 +4046,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.ComponentInternalIncomingComponentExchanges_comp"
             isTopLevel="true"
-            name="Internal Incoming Component Exchanges">
+            name="Internal Incoming Component Exchanges (computed)">
          <availableForType
                class="org.polarsys.capella.core.data.cs.Component">
          </availableForType>
@@ -4101,6 +4101,40 @@
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.AbstractPhysicalComponentIncomingPhysicalLink"></basicQuery></categoryQuery>
          <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget"></basicQuery></itemQueries>
+      </category>
+            <category
+            id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_InternalPhysicalLinks"
+            isTopLevel="true"
+            name="Internal Physical Links (computed)">
+         <availableForType
+               class="org.polarsys.capella.core.data.pa.AbstractPhysicalComponent">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalComponent_InternalPhysicalLinks"></basicQuery></categoryQuery>
+             <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget"></basicQuery></itemQueries>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_InternalPhysicalLinks"
+            isTopLevel="true"
+            name="Internal Physical Links (computed)">
+         <availableForType
+               class="org.polarsys.capella.core.data.pa.AbstractPhysicalComponent">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalComponent_InternalPhysicalLinks"></basicQuery></categoryQuery>
+             <itemQueries>
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget"></basicQuery></itemQueries>
       </category>
