@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *   
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -14,6 +14,7 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.re.CompliancyDefinition;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandler;
@@ -42,29 +43,27 @@ public class BlackBoxComplianceWithExceptions extends AbstractComplianceConstrai
   }
 
   @Override
-  protected IStatus validateAddReference(ComplianceValidationContext ctx, Object vRpl, Object expected) {
-    if (allowed.contains(ctx.getValidationContext().getFeature())){
+  protected IStatus validateAddReference(ComplianceValidationContext ctx, EReference ref, Object vRpl, Object expected) {
+    if (allowed.contains(ref)){
         return Status.OK_STATUS;
     }
-    return ctx.createFailureStatus();
+    return ctx.createFailureStatus(ref);
   }
 
   @Override
-  protected IStatus validateRemoveReference(ComplianceValidationContext ctx, Object vRpl, Object vRec) {
-    if (allowed.contains(ctx.getValidationContext().getFeature())) {
+  protected IStatus validateRemoveReference(ComplianceValidationContext ctx, EReference ref, Object vRpl, Object vRec) {
+    if (allowed.contains(ref)) {
         return Status.OK_STATUS;
     }
-    return ctx.createFailureStatus();
+    return ctx.createFailureStatus(ref);
   }
 
   @Override
-  protected IStatus validateDifferentReference(ComplianceValidationContext ctx, Object vRpl, Object vRec) {
-    if (allowed.contains(ctx.getValidationContext().getFeature())) {
+  protected IStatus validateDifferentReference(ComplianceValidationContext ctx, EReference ref, Object vRpl, Object vRec) {
+    if (allowed.contains(ref)) {
       return Status.OK_STATUS;
     }
-    return ctx.createFailureStatus();
+    return ctx.createFailureStatus(ref);
   }
-
-
 
 }
