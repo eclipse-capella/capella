@@ -27,9 +27,9 @@ public class HideComputedLinksForPABTestCase2 extends CountBasedDiagramFilterTes
 	  return IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_PL;
 	}
 	protected int getBeforeFilterDiagramElementCount(){
-	  return 6;
+	  return 3;
 	}
 	protected int getAfterFilterDiagramElementCount(){
-	  return 5;
+	  return 2;
 	}
 }

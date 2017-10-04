@@ -24,3 +24,7 @@ Example 2
 Example 1
 
 [[Image:Images/5.7.%20PL_ComputedLinks.png|800x265px]]
+
+Example 2
+
+[[Image:Images/5.7.%20PL_ComputedLinks_2.png|1000x250px]]

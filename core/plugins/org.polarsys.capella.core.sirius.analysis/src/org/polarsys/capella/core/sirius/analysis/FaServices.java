@@ -386,13 +386,15 @@ public class FaServices {
     edges.addAll(CapellaServices.getService().getOutgoingEdges(selectedElement));
 
     for (DEdge anEdge : edges) {
-      if ((anEdge.getTarget() != null) && (anEdge.getTarget() instanceof ComponentExchange)) {
+      String edgeMappingName = anEdge.getMapping().getName();
+      if (anEdge.getTarget() instanceof ComponentExchange
+          && !(edgeMappingName.equals(IMappingNameConstants.PAB_COMPUTED_COMPONENT_EXCHANGE)
+              || edgeMappingName.equals(IMappingNameConstants.LAB_COMPUTED_COMPONENT_EXCHANGE))) {
         if (DiagramServices.getDiagramServices().isVisible(anEdge)) {
           returnedList.add((ComponentExchange) anEdge.getTarget());
         }
       }
     }
-
     return returnedList;
   }
 
