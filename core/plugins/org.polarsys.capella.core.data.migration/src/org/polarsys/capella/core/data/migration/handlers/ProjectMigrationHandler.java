@@ -18,6 +18,7 @@ import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.ui.tools.internal.actions.repair.RepresentationFilesNeedCloseSessionValidator;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.polarsys.capella.core.data.migration.Messages;
@@ -27,23 +28,21 @@ import org.polarsys.capella.core.data.migration.MigrationHelpers;
 /**
  * 
  */
+@SuppressWarnings("restriction")
 public class ProjectMigrationHandler extends AbstractMigrationHandler {
 
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
-
-    boolean skipConfirmation = false;
-    if (Boolean.TRUE.equals(Boolean.valueOf(event.getParameter("skipConfirmation")))) {
-      skipConfirmation = true;
-    }
+    boolean skipConfirmation = Boolean.valueOf(event.getParameter("skipConfirmation"));
     for (Object selected : getSelection((IEvaluationContext) event.getApplicationContext(), IResource.class)) {
-      if (selected instanceof IResource && selected instanceof IProject) {
-			@SuppressWarnings("restriction")
-			IStatus validationStatus = new RepresentationFilesNeedCloseSessionValidator(Messages.MigrationAction_Title).validate(null);
-			if (validationStatus.isOK()) {
-				MigrationHelpers.getInstance().trigger((IResource) selected, HandlerUtil.getActiveShell(event),
-						skipConfirmation, true, MigrationConstants.DEFAULT_KIND_ORDER);
-			}
+      if (selected instanceof IProject) {
+        IProject project = (IProject) selected;
+        IStatus validationStatus = new RepresentationFilesNeedCloseSessionValidator(
+            NLS.bind(Messages.MigrationAction_Title, project.getName())).validate(null);
+        if (validationStatus.isOK()) {
+          MigrationHelpers.getInstance().trigger(project, HandlerUtil.getActiveShell(event), skipConfirmation, true,
+              MigrationConstants.DEFAULT_KIND_ORDER);
+        }
       }
     }
     return event;
@@ -58,5 +57,4 @@ public class ProjectMigrationHandler extends AbstractMigrationHandler {
     }
     return true;
   }
-
 }
