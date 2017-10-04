@@ -399,6 +399,10 @@
             property="targetContentLocation"
             renderer="replicaContentLocationRenderer">
         </propertyBinding>
+        <propertyBinding
+              property="readOnly"
+              renderer="checkboxRenderer">
+        </propertyBinding>
         
       </bindings>       
       
@@ -449,6 +453,10 @@
         <propertyBinding 
             property="targetContentLocation"
             renderer="replicaContentLocationRenderer">
+        </propertyBinding>
+        <propertyBinding
+              property="readOnly"
+              renderer="checkboxRenderer">
         </propertyBinding>
       </bindings>     
             
