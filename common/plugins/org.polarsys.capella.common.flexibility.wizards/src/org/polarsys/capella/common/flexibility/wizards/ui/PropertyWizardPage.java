@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
 package org.polarsys.capella.common.flexibility.wizards.ui;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
@@ -24,6 +25,7 @@ import org.polarsys.capella.common.flexibility.properties.PropertyChangedEvent;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperties;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
+import org.polarsys.capella.common.flexibility.wizards.Activator;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 
@@ -35,9 +37,13 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
   protected IPropertyContext context;
 
   protected IRendererContext renderers;
+  
+  protected MultiStatus status;
 
+  @Deprecated
   protected IStatus lastStatus;
 
+  @Deprecated
   protected IProperty lastProperty;
 
   /**
@@ -63,7 +69,7 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
     ctx.registerListener(this);
     setImageDescriptor(JFaceResources.getImageRegistry().getDescriptor(TitleAreaDialog.DLG_IMG_TITLE_BANNER));
   }
-
+  
   /**
    * {@inheritDoc}
    */
@@ -107,14 +113,14 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
   }
 
   protected void applyToStatusLine() {
-    if (lastStatus != null) {
-      String message = lastStatus.getMessage();
+    if (status != null) {
+      String message = status.getMessage();
       if ((message == null) || (message.length() == 0)) {
         setErrorMessage(null);
         setMessage(getDescription());
 
       } else {
-        switch (lastStatus.getSeverity()) {
+        switch (status.getSeverity()) {
         case IStatus.OK:
           setErrorMessage(null);
           setMessage(getDescription());
@@ -138,10 +144,10 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
 
   @Override
   public boolean isPageComplete() {
-    if (lastStatus == null) {
+    if (status == null) {
       return true;
     }
-    boolean isError = lastStatus.matches(IStatus.ERROR);
+    boolean isError = status.matches(IStatus.ERROR);
     return !isError;
   }
 
@@ -149,21 +155,25 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
     IPropertyContext context = getContext();
 
     int level = IStatus.OK;
-    lastStatus = Status.OK_STATUS;
     lastProperty = null;
-
+    lastStatus = Status.OK_STATUS;
+    status = null;
+    
     if (context != null) {
+      MultiStatus multiStatus = new CompoundMultiStatus(Activator.PLUGIN_ID);
       IProperties properties = context.getProperties();
       if (properties != null) {
         for (IProperty item : properties.getAllItems()) {
           IStatus status = item.validate(context.getCurrentValue(item), context);
+          multiStatus.add(status);
           if ((status != null) && !status.isOK() && (level < status.getSeverity())) {
             level = status.getSeverity();
-            lastStatus = status;
             lastProperty = item;
+            lastStatus = status;
           }
         }
       }
+      status = multiStatus;
     }
   }
 
