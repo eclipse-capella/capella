@@ -14,12 +14,15 @@ package org.polarsys.capella.core.re.validation.design.consistency;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.validation.EMFEventType;
@@ -39,7 +42,7 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 import com.google.common.base.Predicate;
 
 /**
- * A base class for REC/RPL compliance live validation.
+ * A base class for REC/RPL compliance validation.
  */
 public abstract class AbstractComplianceConstraint extends AbstractValidationRule {
 
@@ -59,52 +62,60 @@ public abstract class AbstractComplianceConstraint extends AbstractValidationRul
   @Override
   public IStatus validate(IValidationContext ctx) {
 
-    if (ctx.getEventType() == EMFEventType.NULL) {
-      return ctx.createSuccessStatus();
-    }
-
     ArrayList<IStatus> results = new ArrayList<IStatus>();
 
-    if (ctx.getFeature() == RePackage.Literals.CATALOG_ELEMENT__OWNED_LINKS) {
+    if (ctx.getEventType() == EMFEventType.NULL) {
 
-      CatalogElement ce = (CatalogElement) ctx.getTarget();
+      if (ctx.getTarget() instanceof CatalogElement) {
+        CatalogElement elem = (CatalogElement) ctx.getTarget();
+        if (elem.getKind() == CatalogElementKind.RPL && elem.getCurrentCompliancy() != null && compliancyPredicate.apply(elem.getCurrentCompliancy())) {
+          results.addAll(validateBatch(elem, ctx));
+        }
+      }
 
-      if (ce.isReadOnly() && ce.getKind() == CatalogElementKind.RPL) {
+    } else {
 
-        for (CatalogElementLink removed : getRemovedLinks(ctx)) {
-          IStatus s = handleRemovedLink((CatalogElement) ctx.getTarget(), removed, ctx);
+      if (ctx.getFeature() == RePackage.Literals.CATALOG_ELEMENT__OWNED_LINKS) {
+
+        CatalogElement ce = (CatalogElement) ctx.getTarget();
+
+        if (ce.isReadOnly() && ce.getKind() == CatalogElementKind.RPL) {
+
+          for (CatalogElementLink removed : getRemovedLinks(ctx)) {
+            IStatus s = handleRemovedLink((CatalogElement) ctx.getTarget(), removed, ctx);
+            if (!s.isOK()) {
+              results.add(s);
+            }
+          }
+        }
+
+      } else if (ctx.getFeature() == RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET) {
+
+        if (ctx.getFeatureNewValue() == null) {
+          IStatus s = handleClearedLink((CatalogElementLink) ctx.getTarget(), ctx);
           if (!s.isOK()) {
             results.add(s);
           }
+
+        } else {
+          // Changing the target of a link once the target has been set ...
+          Object original = NotificationAnalysis.getOriginalSingleValue(ctx.getTarget(), ctx.getFeature(), ctx.getAllEvents());
+          if (original != null) {
+            // Can't just consider this illegal: Create RPL copies the REC link and then updates it..
+            // TODO .. check if the link is new, then allow it
+          }
         }
-      }
-
-    } else if (ctx.getFeature() == RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET) {
-
-      if (ctx.getFeatureNewValue() == null) {
-        IStatus s = handleClearedLink((CatalogElementLink) ctx.getTarget(), ctx);
-        if (!s.isOK()) {
-          results.add(s);
-        }
-
       } else {
-        // Changing the target of a link once the target has been set ...
-        Object original = NotificationAnalysis.getOriginalSingleValue(ctx.getTarget(), ctx.getFeature(), ctx.getAllEvents());
-        if (original != null) {
-          // Can't just consider this illegal: Create RPL copies the REC link and then updates it..
-          // TODO .. check if the link is new, then allow it
-        }
-      }
-    } else {
 
-      // handle changes to relements that are part of readonly rpls with the given compliance
-      for (ComplianceValidationContext cvc : ComplianceValidationContext.create(ctx, compliancyPredicate)) {
-        IStatus result = validate(cvc);
-        if (!result.isOK()) {
-          results.add(result);
+        // handle changes to relements that are part of readonly rpls with the given compliance
+        for (ComplianceValidationContext cvc : ComplianceValidationContext.create(ctx, compliancyPredicate)) {
+          IStatus result = validate(cvc);
+          if (!result.isOK()) {
+            results.add(result);
+          }
         }
-      }
 
+      }
     }
 
     if (results.size() > 0) {
@@ -112,6 +123,40 @@ public abstract class AbstractComplianceConstraint extends AbstractValidationRul
     }
 
     return ctx.createSuccessStatus();
+  }
+
+  /**
+   * Validate the given RPL in batch mode. Currently, this implementation only validates rpl element contents for compliance, crossreferences
+   * are not yet available.
+   *
+   * @param rpl, the rpl to validate
+   * @param ctx the constraint status. the target is the rpl, and it is guaranteed that the rpl compliancy matches the compliancy filter
+   * @return
+   */
+  protected Collection<? extends IStatus> validateBatch(CatalogElement rpl, IValidationContext ctx) {
+
+    Collection<IStatus> results = new ArrayList<IStatus>();
+
+    Collection<EObject> externalContents = new ArrayList<EObject>();
+    Map<EObject, CatalogElementLink> rplContents = new HashMap<EObject, CatalogElementLink>();
+    for (CatalogElementLink l : rpl.getOwnedLinks()) {
+      EObject rplElement = l.getTarget();
+      if (rplElement != null) {
+        externalContents.addAll(rplElement.eContents());
+        rplContents.put(rplElement, l);
+      }
+    }
+    externalContents.removeAll(rplContents.values());
+    for (EObject e : externalContents) {
+      ComplianceValidationContext cvctx = new ComplianceValidationContext(ctx, rplContents.get(e.eContainer()));
+      if (e.eContainingFeature().isMany()) {
+        results.add(validateAddReference(cvctx, e.eContainmentFeature(), e, e));
+      } else {
+        results.add(validateDifferentReference(cvctx, e.eContainmentFeature(), e, e));
+      }
+    }
+
+    return results;
   }
 
   /**
@@ -237,17 +282,17 @@ public abstract class AbstractComplianceConstraint extends AbstractValidationRul
             if (vc.getFeature().isMany()) {
 
               if (add && !((Collection<?>)ctx.getRecElement().eGet(vc.getFeature())).contains(vRec)){
-                return validateAddReference(ctx, vRpl, vRec);
+                return validateAddReference(ctx, (EReference) vc.getFeature(), vRpl, vRec);
               }
 
               if (remove && ((Collection<?>)ctx.getRecElement().eGet(vc.getFeature())).contains(vRec)){
-                return validateRemoveReference(ctx, vRpl, vRec);
+                return validateRemoveReference(ctx, (EReference) vc.getFeature(), vRpl, vRec);
               }
 
             } else {
 
               if (ctx.getRecElement().eGet(vc.getFeature()) != vRec) {
-                validateDifferentReference(ctx, vRpl, vRec);
+                validateDifferentReference(ctx, (EReference) vc.getFeature(), vRpl, vRec);
               }
 
             }
@@ -255,11 +300,11 @@ public abstract class AbstractComplianceConstraint extends AbstractValidationRul
 
             // the added/removed vRpl is part of this context rpl, but we cannot find a corresponding vRec
             if (add ) {
-              return validateAddReference(ctx, vRpl, vRec);
+              return validateAddReference(ctx, (EReference) vc.getFeature(), vRpl, vRec);
             }
 
             if (set) {
-              return validateDifferentReference(ctx, vRpl, vRec);
+              return validateDifferentReference(ctx, (EReference) vc.getFeature(), vRpl, vRec);
             }
 
           }
@@ -268,7 +313,7 @@ public abstract class AbstractComplianceConstraint extends AbstractValidationRul
 
           // setXXX(null), allowed, but only if the rec element has it also set to null
           if (ctx.getRecElement().eGet(vc.getFeature()) != null) {
-            validateDifferentReference(ctx, null, null);
+            validateDifferentReference(ctx, (EReference) vc.getFeature(), null, null);
           }
 
         }
@@ -288,11 +333,12 @@ public abstract class AbstractComplianceConstraint extends AbstractValidationRul
    * Otherwise vRpl and vRec are the same object.
    * </p>
    * @param ctx the current context
+   * @param ref the changed reference
    * @param vRpl the value that was added to a many-valued reference on the rpl element. Never null.
    * @param expected the value that should be referenced by the complementing rec element but isn't. Can be null as described above.
    * @return
    */
-  protected abstract IStatus validateAddReference(ComplianceValidationContext ctx, Object vRpl, Object expected);
+  protected abstract IStatus validateAddReference(ComplianceValidationContext ctx, EReference ref, Object vRpl, Object expected);
 
   /**
    * Handle the case where an object <code>vRpl</code> was removed from a many-valued reference of a RPL element,
@@ -304,11 +350,12 @@ public abstract class AbstractComplianceConstraint extends AbstractValidationRul
    * Otherwise vRpl and vRec are the same object.
    * </p>
    * @param ctx the current context
+   * @param ref the changed reference
    * @param vRpl the value that was removed from a many-valued reference on the rpl element. Never null.
    * @param vRec the value that is still referenced by the complementing rec element but shouldn't be. Never null.
    * @return
    */
-  protected abstract IStatus validateRemoveReference(ComplianceValidationContext ctx, Object vRpl, Object vRec);
+  protected abstract IStatus validateRemoveReference(ComplianceValidationContext ctx, EReference ref, Object vRpl, Object vRec);
 
   /**
    * Handle the case where an single-valued reference of an RPL element was set to <code>vRpl</code>,
@@ -320,11 +367,12 @@ public abstract class AbstractComplianceConstraint extends AbstractValidationRul
    * Otherwise vRpl and vRec are the same object.
    * </p>
    * @param ctx the current context
+   * @param ref the changed reference
    * @param vRpl the value that was removed from a many-valued reference on the rpl element. May be null, and in that case vRec is also null.
    * @param vRec the value that is still referenced by the complementing rec element but shouldn't be. Can be null as described above.
    * @return
    */
-  protected abstract IStatus validateDifferentReference(ComplianceValidationContext ctx, Object vRpl, Object vRec);
+  protected abstract IStatus validateDifferentReference(ComplianceValidationContext ctx, EReference ref, Object vRpl, Object vRec);
 
   /**
    * Validate a change of an attribute of a RPL element. This default implementation returns an Error status

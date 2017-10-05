@@ -15,6 +15,7 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
@@ -60,11 +61,17 @@ public class ComplianceValidationContext {
     return result;
   }
 
-  public IStatus createFailureStatus() {
-    return ctx.createFailureStatus(ctx.getTarget(), ctx.getFeature());
+  protected IStatus createFailureStatus() {
+    return createFailureStatus(ctx.getFeature());
   }
 
-  private ComplianceValidationContext(IValidationContext ctx, CatalogElementLink rplLink) {
+  protected IStatus createFailureStatus(EStructuralFeature feature) {
+    ctx.addResult(getRplElement());
+    ctx.addResult(getRPL());
+    return ctx.createFailureStatus(feature, getRplElement());
+  }
+
+  ComplianceValidationContext(IValidationContext ctx, CatalogElementLink rplLink) {
     this.ctx = ctx;
     this.rplLink = rplLink;
   }
