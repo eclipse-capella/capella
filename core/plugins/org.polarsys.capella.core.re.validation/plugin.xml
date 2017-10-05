@@ -63,7 +63,7 @@
                   Modification of feature &apos;&apos;{0}&apos;&apos; of element &apos;&apos;{1}&apos;&apos; violates BLACK_BOX RPL compliancy
                </message>
                <description>
-                  This BLACK_BOX compliance validation rule prevents all modifications on RPL elements with BLACK_BOX compliance unless these modifications concerns realization links.
+                  In live validation mode, the rule prevents all non REC conformant modifications on a RPL, with the exception that it is allowed to add realization links to RPL elements. In batch mode the rule verifies Blackbox compliance partially by checking that no external content was added to any of the validated RPLs elements (with the above mentioned exception for realization links).
                </description>
             </constraint>
          </constraints>
