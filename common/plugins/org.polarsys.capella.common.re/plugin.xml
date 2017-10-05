@@ -662,6 +662,13 @@
                id="targetContentLocation"
                name="Catalog">
          </property>
+         <property
+               class="org.polarsys.capella.common.re.properties.ReadOnlyProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.re.description.replicableElementGroup"
+               id="readOnly"
+               name="Enforce RPL Compliance On The Fly">
+         </property>
          
      </properties>
      
@@ -771,6 +778,13 @@
                group="replicaGroup"
                id="targetContentLocation"
                name="Catalog">
+         </property>
+         <property
+               class="org.polarsys.capella.common.re.properties.ReadOnlyProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.re.description.replicableElementGroup"
+               id="readOnly"
+               name="Enforce RPL Compliance On The Fly">
          </property>
          
      </properties>
