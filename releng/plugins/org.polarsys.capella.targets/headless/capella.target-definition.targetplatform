@@ -29,7 +29,7 @@ location "http://download.eclipse.org/sirius/updates/milestones/5.1.0rc2/neon" {
 	org.eclipse.sirius.runtime.aql.feature.group
 }
 
-location "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_runtime/site.p2" {
+location "http://download.polarsys.org/kitalpha/updates/milestone/runtime/1.2.0rc3/" {
 	org.polarsys.kitalpha.ad.runtime.feature.feature.group lazy
 	org.polarsys.kitalpha.cadence.feature.feature.group lazy
 	org.polarsys.kitalpha.common.feature.feature.group lazy
