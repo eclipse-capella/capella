@@ -16,7 +16,7 @@ import java.util.LinkedList;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
@@ -63,7 +63,7 @@ public class MigrationJobScheduler {
           IStatus status = Status.OK_STATUS;
           try {
             for (AbstractMigrationRunnable runnable : _runnables) {
-              context.setProgressMonitor(new SubProgressMonitor(_monitor, 1));
+              context.setProgressMonitor(SubMonitor.convert(_monitor, 1));
               status = runnable.run(context, checkVersion);
               if (!checkStatusOK(status, context)) {
                 _runnables.clear();
@@ -121,7 +121,7 @@ public class MigrationJobScheduler {
             executeNextJob(jobStatus, context, checkVersion);
           }
         });
-        context.setProgressMonitor(new SubProgressMonitor(_monitor, 1));
+        context.setProgressMonitor(SubMonitor.convert(_monitor, 1));
         job.schedule();
 
         // for the automated tests, join the job to be sure that the scheduled jobs are runned in the right order

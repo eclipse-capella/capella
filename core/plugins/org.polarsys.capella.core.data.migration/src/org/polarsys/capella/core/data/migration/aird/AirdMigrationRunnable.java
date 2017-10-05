@@ -38,6 +38,7 @@ import org.polarsys.kitalpha.emde.xmi.XMIExtensionHelperImpl;
 /**
  * 
  */
+@SuppressWarnings("restriction")
 public class AirdMigrationRunnable extends ModelMigrationRunnable {
 
   static final String FORMAT_UTF8 = "UTF-8"; //$NON-NLS-1$

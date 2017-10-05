@@ -18,7 +18,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -118,19 +118,19 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
 			if (result.isOK()) {
 				// Load all resources. A first step of migration is performed at loading (ecore2ecore and resource's
 				// loaderHelper create a migrated content of model)
-				context.setProgressMonitor(new SubProgressMonitor(monitor, 40));
+				context.setProgressMonitor(SubMonitor.convert(monitor, 40));
 				result = performLoadResources(_file, executionManager, resourceSet, context);
 			}
 
 			if (result.isOK()) {
 				// Perform additionalStuff into another command (a second step of migration is performed after model is loaded)
-				context.setProgressMonitor(new SubProgressMonitor(monitor, 40));
+				context.setProgressMonitor(SubMonitor.convert(monitor, 40));
 				result = performPostMigrationExecute(executionManager, resourceSet, context);
 			}
 
 			if (result.isOK()) {
 				// Save all required resources
-				context.setProgressMonitor(new SubProgressMonitor(monitor, 20));
+				context.setProgressMonitor(SubMonitor.convert(monitor, 20));
 				result = performSaveResources(executionManager, resourceSet, context);
 			}
 
