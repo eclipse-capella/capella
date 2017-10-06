@@ -29,6 +29,11 @@ import com.google.common.collect.Sets;
  */
 public class BlackBoxComplianceWithRealizationLinks extends BlackBoxComplianceWithExceptions {
 
+  /**
+   * The validation rule id for which this constraint is registered.
+   */
+  public static final String CONSTRAINT_ID = "org.polarsys.capella.core.re.validation.compliance.blackbox.withRealizationLinks"; //$NON-NLS-1$
+
   public BlackBoxComplianceWithRealizationLinks() {
     super(Sets.<EStructuralFeature>newHashSet(
         InteractionPackage.Literals.ABSTRACT_CAPABILITY__OWNED_ABSTRACT_CAPABILITY_REALIZATIONS,

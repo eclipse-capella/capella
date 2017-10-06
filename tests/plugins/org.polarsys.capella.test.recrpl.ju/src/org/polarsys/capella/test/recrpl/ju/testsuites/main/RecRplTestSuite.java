@@ -40,6 +40,7 @@ import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_AddElementWithSuf
 import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_Containment;
 import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_RemoveElement;
 import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_RenameElementWithSuffix;
+import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BatchBlackboxComplianceTest1;
 import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BlackboxComplianceTest1;
 import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BlackboxComplianceTest2;
 import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BlackboxComplianceTest3;
@@ -86,6 +87,7 @@ public class RecRplTestSuite extends BasicTestSuite {
     tests.add(new BlackboxComplianceTest1());
     tests.add(new BlackboxComplianceTest2());
     tests.add(new BlackboxComplianceTest3());
+    tests.add(new BatchBlackboxComplianceTest1());
     return tests;
   }
 
