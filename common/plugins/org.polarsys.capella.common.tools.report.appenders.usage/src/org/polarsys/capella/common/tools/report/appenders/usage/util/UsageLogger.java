@@ -11,7 +11,7 @@
 package org.polarsys.capella.common.tools.report.appenders.usage.util;
 
 import org.apache.log4j.Logger;
-import org.polarsys.capella.common.tools.report.appenders.usage.Activator;
+import org.polarsys.capella.common.tools.report.appenders.usage.UsageAppenderPlugin;
 import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 
@@ -29,7 +29,7 @@ public class UsageLogger {
   public Logger getLogger() {
 
     if (logger == null) {
-      String defaultConfiguration = ReportManagerRegistry.getConfigurationFile(Activator.getDefault().getBundle(),
+      String defaultConfiguration = ReportManagerRegistry.getConfigurationFile(UsageAppenderPlugin.getDefault().getBundle(),
           "usageConfiguration.xml");
       logger = ReportManagerRegistry.getInstance().subscribe(UsageLogger.USAGE_LOGGER, defaultConfiguration);
 

@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.common.tools.report.appenders.usage.preferences;
 
-import org.eclipse.jface.preference.IPreferenceStore;
-import org.polarsys.capella.common.tools.report.appenders.usage.Activator;
+import org.eclipse.core.resources.ProjectScope;
+import org.polarsys.capella.common.tools.report.appenders.usage.UsageAppenderPlugin;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 
 /**
@@ -19,10 +19,10 @@ import org.polarsys.capella.core.commands.preferences.service.AbstractPreference
  */
 public class PreferencesInitializer extends AbstractPreferencesInitializer {
   /**
-   * @param pluginID_p
+   *
    */
   public PreferencesInitializer() {
-    super(Activator.PLUGIN_ID);
+    super(UsageAppenderPlugin.PLUGIN_ID);
   }
 
   /**
@@ -30,11 +30,9 @@ public class PreferencesInitializer extends AbstractPreferencesInitializer {
    */
   @Override
   public void initializeDefaultPreferences() {
-    IPreferenceStore preferenceStore = org.polarsys.capella.core.preferences.Activator.getDefault()
-        .getPreferenceStore();
     // Set default usage monitoring activation.
-    preferenceStore.setDefault(IUsagePreferences.PREFERENCES_ACTIVATE_USAGE_MONITORING,
-        IUsagePreferences.PREFERENCES_ACTIVATE_USAGE_MONITORING_DEFAULT.booleanValue());
+    putBoolean(IUsagePreferences.PREFERENCES_ACTIVATE_USAGE_MONITORING,
+        IUsagePreferences.PREFERENCES_ACTIVATE_USAGE_MONITORING_DEFAULT.booleanValue(), ProjectScope.class);
 
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@ package org.polarsys.capella.core.transition.common.handlers.merge;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.swt.graphics.Image;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class CategoryFilter implements ICategoryItem {
@@ -34,11 +33,11 @@ public class CategoryFilter implements ICategoryItem {
 
   protected String description;
   
-  protected Image image;
+  protected Object image;
 
   protected String id;
 
-  public CategoryFilter(IContext context, String id, String name, String description, Image image) {
+  public CategoryFilter(IContext context, String id, String name, String description, Object image) {
     this.context = context;
     this.image = image;
     this.name = name;
@@ -61,7 +60,7 @@ public class CategoryFilter implements ICategoryItem {
   }
 
   @Override
-  public Image getImage() {
+  public Object getImage() {
     return image;
   }
 
