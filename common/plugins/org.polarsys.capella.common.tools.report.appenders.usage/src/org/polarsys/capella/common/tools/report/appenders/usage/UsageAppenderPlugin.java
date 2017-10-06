@@ -17,17 +17,17 @@ import org.polarsys.capella.common.tools.report.appenders.usage.preferences.Pref
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends Plugin {
+public class UsageAppenderPlugin extends Plugin {
   
   public static final String PLUGIN_ID = "org.polarsys.capella.common.tools.report.appenders.usage"; //$NON-NLS-1$
   
   // The shared instance
-  private static Activator plugin;
+  private static UsageAppenderPlugin plugin;
 
   /**
    * The constructor
    */
-  public Activator() {
+  public UsageAppenderPlugin() {
     // nothing
   }
 
@@ -54,7 +54,7 @@ public class Activator extends Plugin {
    * Returns the shared instance
    * @return the shared instance
    */
-  public static Activator getDefault() {
+  public static UsageAppenderPlugin getDefault() {
     return plugin;
   }
 

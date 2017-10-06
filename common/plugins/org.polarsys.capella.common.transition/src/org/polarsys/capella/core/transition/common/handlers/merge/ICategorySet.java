@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,8 +9,6 @@
  *    Thales - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.core.transition.common.handlers.merge;
-
-import org.eclipse.swt.graphics.Image;
 
 public interface ICategorySet {
 
@@ -22,7 +20,7 @@ public interface ICategorySet {
   /**
    * Return an optional image for this set of category
    */
-  Image getImage();
+  Object getImage();
 
   /**
    * Return a user-friendly name for this category in the context of the given diff node

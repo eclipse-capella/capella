@@ -14,7 +14,7 @@
 	<extension point="org.eclipse.ui.preferencePages">
       <page
             category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
-            class="org.polarsys.capella.common.tools.report.appenders.usage.preferences.UsagePreferencePage"
+            class="org.polarsys.capella.common.tools.report.appenders.usage.ui.UsagePreferencePage"
             id="org.polarsys.capella.common.tools.report.appenders.usage.preferences.usagePage"
             name="%usagePageName">
       </page>

@@ -8,18 +8,19 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.common.tools.report.appenders.usage.preferences;
+package org.polarsys.capella.common.tools.report.appenders.usage.ui;
 
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+import org.polarsys.capella.common.tools.report.appenders.usage.preferences.IUsagePreferences;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 import org.polarsys.capella.core.commands.preferences.service.PreferenceField;
 import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
 import org.polarsys.capella.core.preferences.Activator;
 
-
 /**
+ * 
  */
 public class UsagePreferencePage extends AbstractDefaultPreferencePage {
 
