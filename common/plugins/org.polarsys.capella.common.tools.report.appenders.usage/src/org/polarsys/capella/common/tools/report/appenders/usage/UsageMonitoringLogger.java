@@ -57,8 +57,8 @@ public class UsageMonitoringLogger {
         String variableName = getVariableName(matcher.group());
         String varValue = getVariableValue(variableName);
         // Log warning about undefined environment variable or system property
-        Activator.getDefault().getLog()
-            .log(new Status(IStatus.WARNING, Activator.PLUGIN_ID, "Undefined environment variable: " + variableName));
+        UsageAppenderPlugin.getDefault().getLog()
+            .log(new Status(IStatus.WARNING, UsageAppenderPlugin.PLUGIN_ID, "Undefined environment variable: " + variableName));
         usagePathProperty = usagePathProperty.replaceFirst(varRegex, Matcher.quoteReplacement(varValue));
       }
       System.setProperty(UsageMonitoringLogger.USAGE_PATH, usagePathProperty);
