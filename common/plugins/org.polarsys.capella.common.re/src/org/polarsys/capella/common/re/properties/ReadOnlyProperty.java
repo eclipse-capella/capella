@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *   
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -38,7 +38,12 @@ public class ReadOnlyProperty extends AbstractProperty implements ICompoundPrope
   public Object getValue(IPropertyContext context) {
     CatalogElement element =
         (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
-    return element.isReadOnly();
+
+    if (element != null) {
+      return element.isReadOnly();
+    }
+
+    return Boolean.FALSE;
   }
 
   /**
