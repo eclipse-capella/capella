@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,130 +11,63 @@
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
-
+import org.polarsys.capella.common.helpers.query.IQuery;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
-import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.capellacore.TypedElement;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
+import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
-import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
- * Return incoming  or outgoing component exchanges of given  
- * AbstractActor, System, LC or PC 
+ * Return incoming or outgoing component exchanges of given AbstractActor, System, LC or PC
  * 
  */
 public abstract class AbstractComponentFilteredComponentExchange implements IQuery {
 
-  /** 
-   * 
-   */
-  public AbstractComponentFilteredComponentExchange() {
-    // do nothing
-  }
-
   /**
    * current.componentPorts.outgoingFlows
+   * 
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
   public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    
-    // get component exchanges for (AbstractActor, System, LC, PC)
+
     if (isValidComponentForComponentExchanges(object)) {
-      Component comp = (Component) object;
-      // collect owned component ports 
-      for (ComponentPort port : ComponentExt.getOwnedComponentPort(comp)) {
-    	// collect component exchanges 
-        EList<ComponentExchange> componentExchanges = port.getComponentExchanges();
-        for (ComponentExchange connection : componentExchanges) {
-          // collect related ports	
-          List<Port> relatedPorts = getRelatedPorts(connection);
-          for (Port relatedPort : relatedPorts) {
-            if (null != relatedPort && port.equals(relatedPort)) {
-              result.add(connection);              
-            }  
-          }
+      for (ComponentExchange exchange : getExchanges(object)) {
+        if (isValid(exchange, object)) {
+          result.add(exchange);
         }
       }
-      
-      // looking for connection via part
-      // handle connection between parts
-      EList<TypedElement> typedElements = comp.getTypedElements();
-      for (TypedElement typedElement : typedElements) {
-        if (typedElement instanceof Part) {
-          Part part = (Part) typedElement;
-          EList<AbstractInformationFlow> informationFlows = part.getInformationFlows();
-          for (AbstractInformationFlow abstractInformationFlow : informationFlows) {
-            if (abstractInformationFlow instanceof ComponentExchange) {
-              ComponentExchange connection = (ComponentExchange) abstractInformationFlow;
-              List<Part> relatedParts = getRelatedParts(connection);
-              for (Part relatedPart : relatedParts) {
-                if (null != relatedPart && part.equals(relatedPart)) {
-                  result.add(connection);              
-                }
-              }
-            }
-          }
-          
-        }
-      }
-      
     }
     
     return result;
   }
 
+  protected boolean isValid(ComponentExchange exchange, Object object) {
+    return false;
+  }
+
+  protected Collection<ComponentExchange> getExchanges(Object object) {
+    return ComponentExt.getAllRelatedComponentExchange((Component)object);
+  }
+
   /**
    * check for valid exchanges that can have component exchanges
-   * 
-   * @param object
-   * @return
    */
   public boolean isValidComponentForComponentExchanges(Object object) {
-    return object instanceof AbstractActor ||
-        object instanceof org.polarsys.capella.core.data.ctx.System ||
-        object instanceof LogicalComponent ||
-        object instanceof PhysicalComponent;
+    return object instanceof AbstractActor || object instanceof org.polarsys.capella.core.data.ctx.System
+        || object instanceof LogicalComponent || (object instanceof PhysicalComponent
+            && ((PhysicalComponent) object).getNature() != PhysicalComponentNature.NODE);
   }
-  
-  /**
-   * 
-   * should be implemented by sub class
-   * @returns list of ports
-   */
-  abstract public List<Port> getRelatedPorts(ComponentExchange connection); 
-  
-  /**
-   * 
-   * should be implemented by sub class
-   * @returns list of parts
-   */
-  abstract public List<Part> getRelatedParts(ComponentExchange connection);
-  
-  /**
-   * Return owned Partitionable elements of current element
-   * @param object
-   * @return list of 
-   */
-  public List<Partition> getOwnedPartitionableElements(Object object) {
-    List<Partition> ownedPartitions =  new ArrayList<Partition>(0);
-    if (null !=  object && object instanceof PartitionableElement) {
-      PartitionableElement element = (PartitionableElement) object;
-      ownedPartitions.addAll(element.getOwnedPartitions());
-    } 
-    
-    return ownedPartitions;
-  }
+
 }
