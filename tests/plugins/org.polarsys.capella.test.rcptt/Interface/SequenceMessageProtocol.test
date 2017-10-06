@@ -1,0 +1,181 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _n3K_MK56Eee2vO1UksePLw
+Element-Name: SequenceMessageProtocol
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _GSPGkK6TEee2vO1UksePLw
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 3/21/18 2:32 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "InterfaceDelegation/InterfaceDelegation.aird" | get-menu "Open Session" | click
+}
+
+//Creation of default Sequence Messages
+//- after creation of default Sequence message, check Tranmission  & Acquisition Protocol value
+
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "InterfaceDelegation/InterfaceDelegation.aird/prod00122042/Physical Architecture/Capabilities" 
+    | get-menu "Add Capella Element/Capability Realization" | click
+    
+    
+get-view "Capella Project Explorer" | get-tree 
+    | select "InterfaceDelegation/*InterfaceDelegation.aird/prod00122042/Physical Architecture/Capabilities/CapabilityRealization 1" 
+    | get-menu "New Diagram \\/ Table.../Interface Scenario" | click
+get-window "New Interface Scenario" | get-button OK | click
+
+with [get-editor "[IS] CapabilityRealization 1"] {
+    get-diagram -index 1 | get-edit-part -name "[IS] CapabilityRealization 1" | mouse-move 991 201 -height 663 
+        -width 1042
+    with [get-palette] {
+        with [get-palette-entry Component] {
+            mouse-move 44 16 button1 -height 23 -width 125
+            mouse-press 44 16 button1 -height 23 -width 125
+            mouse-release 44 16 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[IS] CapabilityRealization 1"] {
+        mouse-move 98 68 button1 -height 663 -width 1042
+        mouse-press 98 68 button1 -height 663 -width 1042
+        mouse-release 98 68 button1 524288 -height 663 -width 1042
+    }
+    get-diagram -index 1 | get-edit-part -name "[IS] CapabilityRealization 1" | mouse-move 515 35 -height 663 
+        -width 1042
+    with [get-palette | get-palette-entry Component] {
+        mouse-move 50 13 button1 -height 23 -width 125
+        mouse-press 50 13 button1 -height 23 -width 125
+        mouse-release 50 13 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[IS] CapabilityRealization 1"] {
+        mouse-move 402 61 button1 -height 663 -width 1042
+        mouse-press 402 61 button1 -height 663 -width 1042
+        mouse-release 402 61 button1 524288 -height 663 -width 1042
+    }
+}
+
+
+
+
+//A procedure calling the msgTool, clicking on the msgKind, on eiKind and checking in the property view if Transmission and Acquisition are properly setted
+proc createMessage [val eiName] [val msgTool] [val msgKind] [val eiKind] [val checkTransmission] [val checkAcquisition]{
+	//msgKind shall be async or sync on return message, async on noReturn
+    with [get-editor "[IS] CapabilityRealization 1"] {
+        get-diagram -index 1 | get-edit-part -name "[IS] CapabilityRealization 1" | mouse-move 766 120 -height 663 
+            -width 1042
+        with [get-palette | get-palette-entry $msgTool] {
+            mouse-move 66 17 button1 -height 37 -width 125
+            mouse-press 66 17 button1 -height 37 -width 125
+            mouse-release 66 17 button1 524288 -height 37 -width 125
+        }
+        with [get-diagram -index 1 | get-edit-part -name "[IS] CapabilityRealization 1"] {
+            mouse-move 182 130 -height 663 -width 1042
+            with [get-edit-part -name "PhysicalComponent 1" | get-edit-part -name "" | get-edit-part 
+                -className SquareEditPart] {
+                mouse-move 6 31 button1 -height 395 -width 10
+                mouse-press 6 31 button1 -height 395 -width 10
+                mouse-release 6 31 button1 524288 -height 395 -width 10
+            }
+            mouse-move 469 128 -height 663 -width 1042
+            with [get-edit-part -name "PhysicalComponent 2" | get-edit-part -name "" | get-edit-part 
+                -className SquareEditPart] {
+                mouse-move 1 28 button1 -height 395 -width 10
+                mouse-press 1 28 button1 -height 395 -width 10
+            }
+        }
+    }
+
+    with [get-window "Selection Dialog"] {
+        with [get-group "Sequence Message Kind"] {
+            get-button $msgKind | click
+        }
+        with [get-group "Create a new Exchange Item"] {
+            get-button "Create a new exchange item" | check
+            get-editbox -after [get-label "Exchange Item :"] | set-text $eiName
+            get-group "Exchange Mechanism" | get-button $eiKind | click
+        }
+        get-button OK | click
+    }
+
+
+    get-view "Capella Project Explorer" | get-tree 
+        | select [concat "InterfaceDelegation/*InterfaceDelegation.aird/prod00122042/Physical Architecture/Physical System/Interfaces/PhysicalComponent 1_to_PhysicalComponent 2/--> " $eiName]
+
+    get-view Properties | click
+    with [get-view Properties | get-section Property | get-group "Transmission Protocol :" | get-button $checkTransmission] {
+        get-property enablement | equals true | verify-true
+        get-property selected | equals true | verify-true
+    }
+    with [get-view Properties | get-section Property | get-group "Acquisition Protocol :" | get-button $checkAcquisition] {
+        get-property enablement | equals true | verify-true
+        get-property selected | equals true | verify-true
+    }
+
+}
+
+
+
+// "Asynchronous call" // "Synchronous call"
+createMessage "aa" "Sequence Message" "Asynchronous call"  "Unset" "UNSET" "UNSET"
+createMessage "ab" "Sequence Message" "Asynchronous call"  "Event" "UNICAST" "UNSET"
+createMessage "ac" "Sequence Message" "Asynchronous call"  "Flow" "UNSET" "UNSET"
+createMessage "ad" "Sequence Message" "Asynchronous call"  "Operation" "ASYNCHRONOUS" "UNSET"
+createMessage "ae" "Sequence Message" "Asynchronous call"  "Shared data" "UNSET" "ACCEPT"
+
+createMessage "ba" "Sequence Message with Return Branch" "Synchronous call"  "Unset" "UNSET" "UNSET"
+createMessage "bc" "Sequence Message with Return Branch" "Synchronous call"  "Flow" "UNSET" "UNSET"
+createMessage "bd" "Sequence Message with Return Branch" "Synchronous call"  "Operation" "SYNCHRONOUS" "UNSET"
+createMessage "be" "Sequence Message with Return Branch" "Synchronous call"  "Shared data" "UNSET" "READ"
+
+createMessage "ca" "Sequence Message with Return Branch" "Asynchronous call"  "Unset" "UNSET" "UNSET"
+createMessage "cc" "Sequence Message with Return Branch" "Asynchronous call"  "Flow" "UNSET" "UNSET"
+createMessage "cd" "Sequence Message with Return Branch" "Asynchronous call"  "Operation" "ASYNCHRONOUS" "UNSET"
+createMessage "ce" "Sequence Message with Return Branch" "Asynchronous call"  "Shared data" "UNSET" "ACCEPT"
+
+//
+// Check that Sequence Message With Return Branch can't create Event
+
+with [get-editor "[IS] CapabilityRealization 1"] {
+    get-diagram -index 1 | get-edit-part -name "[IS] CapabilityRealization 1" | mouse-move 1034 179 -height 663 
+        -width 1042
+    with [get-palette] {
+        get-palette-entry "Create message" | mouse-move 23 21 -height 23 -width 240
+        with [get-palette-entry "Sequence Message with Return Branch"] {
+            mouse-move 58 16 button1 -height 23 -width 240
+            mouse-press 58 16 button1 -height 23 -width 240
+            mouse-release 58 16 button1 524288 -height 23 -width 240
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[IS] CapabilityRealization 1"] {
+        mouse-move 197 467 -height 663 -width 1042
+        with [get-edit-part -name "PhysicalComponent 1" | get-edit-part -name "" | get-edit-part 
+            -className SquareEditPart] {
+            mouse-move 2 361 button1 -height 395 -width 10
+            mouse-press 2 361 button1 -height 395 -width 10
+            mouse-release 2 361 button1 524288 -height 395 -width 10
+        }
+        mouse-move 465 465 -height 663 -width 1042
+        mouse-hover 465 465 -height 663 -width 1042
+        with [get-edit-part -name "PhysicalComponent 2" | get-edit-part -name "" | get-edit-part 
+            -className SquareEditPart] {
+            mouse-move 3 364 button1 -height 395 -width 10
+            mouse-press 3 364 button1 -height 395 -width 10
+        }
+    }
+}
+get-window "Selection Dialog" | get-group "Create a new Exchange Item" | get-button "Create a new exchange item" | check
+get-window "Selection Dialog" | get-group "Create a new Exchange Item" | get-group "Exchange Mechanism" 
+    | get-button Event | get-property enablement | equals false | verify-true
+get-window "Selection Dialog" | get-group "Sequence Message Kind" | get-button "Asynchronous call" | click
+get-window "Selection Dialog" | get-group "Create a new Exchange Item" | get-group "Exchange Mechanism" 
+    | get-button Event | get-property enablement | equals false | verify-true
+    
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

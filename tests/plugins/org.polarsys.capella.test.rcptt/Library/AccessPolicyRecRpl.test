@@ -1,0 +1,464 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _C_OB0MEVEeWqb6y2_gGIKQ
+Element-Name: AccessPolicyRecRpl
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _tEBy8KkGEee0yuaysMB3Rg
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 3/21/18 2:32 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+DnD a CapellaElement in the project explorer.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Library" | click
+with [get-window "New Capella Library"] {
+    get-editbox | set-text LibProjectSuper
+    get-button Finish | click
+}
+
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Library" | click
+with [get-window "New Capella Library"] {
+    get-editbox | set-text LibProjectSub
+    get-button Finish | click
+}
+
+get-view "Capella Project Explorer" | get-tree | select "LibProjectSub/LibProjectSub.aird" 
+    | get-menu "Libraries/Manage references" | click
+with [get-window -class PropertyDialog] {
+    get-table | get-item "LibProjectSuper.melodymodeller" | check
+    with [get-tab-folder] {
+        get-tab-item "Access Policies" | click
+    }
+    with [get-table -index 1] {
+        select "LibProjectSuper.melodymodeller" | activate-cell-edit -column 1
+        get-combo | select readAndWrite
+        apply-cell-edit -deactivate
+    }
+    get-button OK | click
+}
+get-view "Capella Project Explorer" | get-tree | select "LibProjectSub/LibProjectSub.aird" 
+    | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text MAProjectReadOnlyLib
+    get-button Finish | click
+}
+get-view "Capella Project Explorer" | get-tree | select "MAProjectReadOnlyLib/MAProjectReadOnlyLib.aird" 
+    | get-menu "Libraries/Manage references" | click
+with [get-window -class PropertyDialog] {
+    get-table | get-item "LibProjectSuper.melodymodeller" | check
+    with [get-tab-folder] {
+        get-tab-item "Access Policies" | click
+    }
+    with [get-table -index 1] {
+        select "LibProjectSuper.melodymodeller" | activate-cell-edit -column 1
+        get-combo | select readOnly
+        apply-cell-edit -deactivate
+    }
+    get-button OK | click
+}
+get-view "Capella Project Explorer" | get-tree | select "MAProjectReadOnlyLib/MAProjectReadOnlyLib.aird" 
+    | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text MAProjectReadWriteLib
+    get-button Finish | click
+}
+get-view "Capella Project Explorer" | get-tree | select "MAProjectReadWriteLib/MAProjectReadWriteLib.aird" 
+    | get-menu "Libraries/Manage references" | click
+with [get-window -class PropertyDialog] {
+    get-table | get-item "LibProjectSub.melodymodeller \\(LibProjectSuper.melodymodeller\\)" | check
+    with [get-tab-folder] {
+        get-tab-item "Access Policies" | click
+    }
+    with [get-table -index 1] {
+        select "LibProjectSub.melodymodeller" | activate-cell-edit -column 1
+        get-combo | select readAndWrite
+        apply-cell-edit -deactivate
+    }
+    get-button OK | click
+}
+
+
+// Create a REC with two function and an exchange
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "LibProjectSuper/LibProjectSuper.aird/LibProjectSuper/System Analysis/System Functions/Root System Function" 
+    | get-menu "New Diagram \\/ Table.../System Data Flow Blank" | click
+get-window "New System Data Flow Blank" | get-button OK | click
+with [get-editor "[SDFB] Root System Function"] {
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 1041 138 -height 687 
+        -width 1042
+    with [get-palette] {
+        get-palette-entry "Functional Exchange" | mouse-move 20 11 -height 37 -width 125
+        get-palette-entry "Actor Function" | mouse-move 34 20 -height 23 -width 125
+        with [get-palette-entry "System Function"] {
+            mouse-move 38 14 button1 -height 23 -width 125
+            mouse-press 38 14 button1 -height 23 -width 125
+            mouse-release 38 14 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 150 182 button1 CTRL -height 687 -width 1042
+        mouse-press 150 182 button1 CTRL -height 687 -width 1042
+        mouse-release 150 182 button1 786432 -height 687 -width 1042
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 489 179 button1 CTRL -height 687 -width 1042
+        mouse-press 489 179 button1 CTRL -height 687 -width 1042
+        mouse-release 489 179 button1 786432 -height 687 -width 1042
+    }
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 982 148 -height 687 
+        -width 1042
+    with [get-palette | get-palette-entry "Functional Exchange"] {
+        mouse-move 54 21 button1 -height 37 -width 125
+        mouse-press 54 21 button1 -height 37 -width 125
+        mouse-release 54 21 button1 524288 -height 37 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 933 131 -height 687 -width 1042
+        mouse-move 337 210 -height 687 -width 1042
+        with [get-edit-part -name "SystemFunction 1" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 108 36 button1 CTRL -height 68 -width 148
+            mouse-press 108 36 button1 CTRL -height 68 -width 148
+            mouse-release 108 36 button1 786432 -height 68 -width 148
+        }
+        with [get-edit-part -name "SystemFunction 2" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 29 32 button1 CTRL -height 68 -width 148
+            mouse-press 29 32 button1 CTRL -height 68 -width 148
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "[SDFB] Root System Function"] {
+            get-edit-part -name "SystemFunction 2" | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartmentEditPart | mouse-release 29 32 button1 786432 
+                -height 68 -width 148
+            mouse-move 323 89 button1 -height 687 -width 1042
+            mouse-press 323 89 button1 -height 687 -width 1042
+            mouse-release 323 89 button1 524288 -height 687 -width 1042
+            mouse-press 323 89 button3 -height 687 -width 1042
+            mouse-release 323 89 button3 2097152 -height 687 -width 1042
+            mouse-press 315 87 button1 -height 687 -width 1042
+            mouse-move 315 87 -mask 524288 -height 687 -width 1042
+            mouse-drag 315 87 button1 524288 -height 687 -width 1042
+            mouse-release 315 87 button1 524288 -height 687 -width 1042
+        }
+        key-type "M1+a"
+        with [get-edit-part -name "[SDFB] Root System Function"] {
+            mouse-move 314 87 -height 687 -width 1042
+            with [get-edit-part -name "SystemFunction 1" | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+                mouse-move 95 54 button3 -height 68 -width 148
+                mouse-press 95 54 button3 -height 68 -width 148
+                mouse-release 95 54 button3 2097152 -height 68 -width 148
+            }
+        }
+        get-menu "REC \\/ RPL/Create a REC from selection" | click
+    }
+}
+
+// Create a REC with a Logical Component, a Port and a Constraint
+
+get-window "Replicable Elements" | get-button OK | click
+with [get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function"] {
+    mouse-move 1011 402 button1 -height 687 -width 1042
+    mouse-press 1011 402 button1 -height 687 -width 1042
+    mouse-release 1011 402 button1 524288 -height 687 -width 1042
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Logical System"
+get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" 
+    | mouse-move 17 365 -height 687 -width 1042
+get-view "Capella Project Explorer" | get-tree 
+    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Logical System" 
+    | get-menu "New Diagram \\/ Table.../Logical Architecture Blank" | click
+get-window "New Logical Architecture Blank" | get-button OK | click
+get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "[LAB] Logical System" 
+    | mouse-move 254 462 -height 687 -width 1042
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Logical System" 
+    | get-menu "Add Capella Element/Logical Component" | click
+get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "[LAB] Logical System" 
+    | mouse-move 146 482 -height 687 -width 1042
+get-view "Capella Project Explorer" | get-tree 
+    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Logical System/LogicalComponent 1" 
+    | get-menu "Add Capella Element/Component Port" | click
+get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "[LAB] Logical System" 
+    | mouse-move 8 420 -height 687 -width 1042
+get-view "Capella Project Explorer" | get-tree 
+    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Logical System/LogicalComponent 1" 
+    | get-menu "Add Capella Element/Constraint" | click
+get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "[LAB] Logical System" 
+    | mouse-move 68 317 -height 687 -width 1042
+get-view "Capella Project Explorer" | get-tree 
+    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Logical System/LogicalComponent 1" 
+    | get-menu "REC \\/ RPL/Create a REC from selection" | click
+get-window "Replicable Elements" | get-button OK | click
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Logical System/LogicalComponent 1 [REC]" 
+        | key-type "M1+s"
+}
+
+// Instanciate REC in the project MAProjectReadOnlyLib
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "MAProjectReadOnlyLib/MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/System Analysis/System Functions/Root System Function" 
+        | get-menu "REC \\/ RPL/Instantiate a RPL from a REC" | click
+}
+with [get-window "Replicable Elements"] {
+    get-group "" | get-button "Browse available elements" | click
+    with [get-window "Selection Dialog"] {
+        get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] 
+            | set-focus
+        get-tree | select "LibProjectSuper/LibProjectSuper/REC Catalog/REC1" | double-click
+    }
+    get-button OK | click
+}
+get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "[LAB] Logical System" 
+    | mouse-move 102 506 -height 687 -width 1042
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadOnlyLib/*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/REC Catalog/RPL1 [REC1]"
+with [get-view "Capella Project Explorer" | get-tree] {
+    get-item "MAProjectReadOnlyLib/\\*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/REC Catalog/RPL1 \\[REC1\\]" 
+        | get-property childCount | equals 5 | verify-true
+    get-item "MAProjectReadOnlyLib/\\*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/System Analysis/System Functions/Root System Function/SystemFunction 1 \\[RPL\\]" 
+        | get-property caption | equals "SystemFunction 1 [RPL]" | verify-true
+    get-item "MAProjectReadOnlyLib/\\*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/System Analysis/System Functions/Root System Function/SystemFunction 2 \\[RPL\\]" 
+        | get-property caption | equals "SystemFunction 2 [RPL]" | verify-true
+}
+
+// Change the Kind of RPL function, add a Port and Rename Exchange
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadOnlyLib/*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/System Analysis/System Functions/Root System Function/SystemFunction 1 [RPL]"
+with [get-view Properties | get-section Property | get-group "Kind :"] {
+    get-button SELECT | click
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadOnlyLib/*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/System Analysis/System Functions/Root System Function/SystemFunction 2 [RPL]" 
+    | get-menu "Add Capella Element/Function Input Port" | click
+get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "[LAB] Logical System" 
+    | mouse-move 24 518 -height 687 -width 1042
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadOnlyLib/*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/System Analysis/System Functions/Root System Function"
+
+
+get-button "View Menu" | click
+get-view "Capella Project Explorer" | get-menu "Customize View..." | click
+with [get-window "Available Customizations"] {
+    get-tab-folder | get-tab-item Filters | click
+    with [get-table] {
+        get-item "Functional Exchanges" | uncheck
+        get-item "Function Port" | uncheck
+    }
+    get-button OK | click
+}
+
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "MAProjectReadOnlyLib/*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/System Analysis/System Functions/Root System Function/FunctionalExchange 1 [RPL]" 
+        | key-type F2
+    get-editbox | set-text DDDD
+    select "MAProjectReadOnlyLib/*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/System Analysis/System Functions/Root System Function/DDDD [RPL]" 
+        | get-menu "REC \\/ RPL/Update REC from selected RPL" | click
+}
+get-window "Replicable Elements" | get-button OK | click
+with [get-window "Update REC from selected RPL"] {
+    get-button Apply | click
+    get-window "Merge Operation" | get-button OK | click
+}
+
+// There is an error in the Information View
+with [get-view Information] {
+    click
+    get-tree | select "This element is part of a library configured with read-only access policy."
+}
+
+get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "[LAB] Logical System" 
+    | mouse-move 15 502 -height 687 -width 1042
+with [get-view Information] {
+    get-tree | select [get-item "This element is part of a library configured with read-only access policy."]
+    get-button "Clear view contents" | click
+}
+
+
+// Check that REC has not been modified
+
+get-view Properties | click
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadOnlyLib/*MAProjectReadOnlyLib.aird/LibProjectSuper/System Analysis/System Functions/Root System Function/SystemFunction 2 [REC]"
+
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "MAProjectReadOnlyLib/\\*MAProjectReadOnlyLib.aird/LibProjectSuper/System Analysis/System Functions/Root System Function/SystemFunction 2 \\[REC\\]" 
+    | get-property childCount | equals 1 | verify-true
+
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "MAProjectReadOnlyLib/\\*MAProjectReadOnlyLib.aird/LibProjectSuper/System Analysis/System Functions/Root System Function/FunctionalExchange 1 \\[REC\\]" 
+    | get-property caption | equals "FunctionalExchange 1 [REC]" | verify-true
+
+
+// Instanciate a RPL in MAProjectReadWriteLib
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadWriteLib/MAProjectReadWriteLib.aird/MAProjectReadWriteLib/Logical Architecture/Logical System" 
+    | get-menu "REC \\/ RPL/Instantiate a RPL from a REC" | click
+with [get-window "Replicable Elements"] {
+    get-group "" | get-button "Browse available elements" | click
+    with [get-window "Selection Dialog"] {
+        get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] 
+            | set-focus
+        get-tree | select "LibProjectSuper/LibProjectSuper/REC Catalog/REC2" | double-click
+    }
+    get-button OK | click
+}
+
+// Delete the constraint and Update REC, it shall be removed from REC
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/Logical Architecture/Logical System/LogicalComponent 1 [RPL]/[Constraint] [RPL]" 
+    | key-type Del
+    
+get-window "Progress Information" | get-window Delete | get-button Yes | click
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/Logical Architecture/Logical System/LogicalComponent 1 [RPL]" 
+    | get-menu "REC \\/ RPL/Update REC from selected RPL" | click
+get-window "Replicable Elements" | get-button OK | click
+with [get-window "Update REC from selected RPL"] {
+    get-button Apply | click
+    get-window "Merge Operation" | get-button OK | click
+}
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "MAProjectReadWriteLib/\\*MAProjectReadWriteLib.aird/LibProjectSuper/Logical Architecture/Logical System/LogicalComponent 1 \\[REC\\]" 
+    | get-property childCount | equals 0 | verify-true
+
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "MAProjectReadWriteLib/\\*MAProjectReadWriteLib.aird/LibProjectSuper/REC Catalog/REC2" 
+    | get-property childCount | equals 3 | verify-true
+
+// Instanciate RPL into MAProjectReadWriteLib and modify kind, add port, rename exchange
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/System Analysis/System Functions/Root System Function" 
+    | get-menu "REC \\/ RPL/Instantiate a RPL from a REC" | click
+with [get-window "Replicable Elements"] {
+    get-group "" | get-button "Browse available elements" | click
+    with [get-window "Selection Dialog"] {
+        get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] 
+            | set-focus
+        get-tree | select "LibProjectSuper/LibProjectSuper/REC Catalog/REC1" | double-click
+    }
+    get-button OK | click
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/System Analysis/System Functions/Root System Function/SystemFunction 1 [RPL]"
+with [get-view Properties | get-section Property | get-group "Kind :"] {
+    get-button GATHER | click
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/System Analysis/System Functions/Root System Function/SystemFunction 2 [RPL]" 
+    | get-menu "Add Capella Element/Function Input Port" | click
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/System Analysis/System Functions/Root System Function/FunctionalExchange 1 [RPL]" 
+        | key-type F2
+    get-editbox | set-text ddd
+    select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/System Analysis/System Functions/Root System Function/SystemFunction 1 [RPL]" "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/System Analysis/System Functions/Root System Function/SystemFunction 2 [RPL]" "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/System Analysis/System Functions/Root System Function/ddd [RPL]"
+    get-menu "REC \\/ RPL/Update REC from selected RPL" | click
+}
+
+// Update REC, it shall be updated too
+
+get-window "Replicable Elements" | get-button OK | click
+with [get-window "Update REC from selected RPL"] {
+    get-button Apply | click
+    get-window "Merge Operation" | get-button OK | click
+}
+with [get-view "Capella Project Explorer" | get-tree] {
+    get-item "MAProjectReadWriteLib/\\*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/REC Catalog/RPL1 \\[REC1\\]" 
+        | get-property caption | equals "RPL1 [REC1]" | verify-true
+    get-item "MAProjectReadWriteLib/\\*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/REC Catalog/RPL1 \\[REC1\\]" 
+        | get-property childCount | equals 6 | verify-true
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/LibProjectSuper/REC Catalog/REC1"
+with [get-view "Capella Project Explorer" | get-tree] {
+    get-item "MAProjectReadWriteLib/\\*MAProjectReadWriteLib.aird/LibProjectSuper/REC Catalog/REC1" 
+        | get-property caption | equals REC1 | verify-true
+    get-item "MAProjectReadWriteLib/\\*MAProjectReadWriteLib.aird/LibProjectSuper/REC Catalog/REC1" 
+        | get-property childCount | equals 6 | verify-true
+}
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/LibProjectSuper/System Analysis/System Functions/Root System Function/ddd [REC]"
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "MAProjectReadWriteLib/\\*MAProjectReadWriteLib.aird/LibProjectSuper/System Analysis/System Functions/Root System Function/ddd \\[REC\\]" 
+    | get-property caption | equals "ddd [REC]" | verify-true
+    
+    
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/LibProjectSuper/System Analysis/System Functions/Root System Function/SystemFunction 2 [REC]"
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "MAProjectReadWriteLib/\\*MAProjectReadWriteLib.aird/LibProjectSuper/System Analysis/System Functions/Root System Function/SystemFunction 2 \\[REC\\]" 
+    | get-property childCount | equals 2 | verify-true
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/LibProjectSuper/System Analysis/System Functions/Root System Function/SystemFunction 1 [REC]"
+get-view Properties | get-section Property | get-group "Kind :" | get-button GATHER | get-property selected 
+    | equals true | verify-true
+get-view Properties | get-section Property | get-group "Kind :" | get-button FUNCTION | get-property selected 
+    | equals false | verify-true
+
+// Save Project (and also library then)
+
+get-button "Save (M1+S)" | click
+
+// Update RPL from MAProjectReadOnlyLib, it now shall contains the updated version of REC
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadOnlyLib/*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/System Analysis/System Functions/Root System Function/SystemFunction 1 [RPL]" 
+    | get-menu "REC \\/ RPL/Update selected RPL from its REC" | click
+get-window "Replicable Elements" | get-button OK | click
+with [get-window "Update selected RPL from its REC"] {
+    get-button "Copy all to the right" | click
+    get-window "Merge Operation" | get-button OK | click
+    get-button OK | click
+}
+with [get-view "Capella Project Explorer" | get-tree] {
+    get-item "MAProjectReadOnlyLib/\\*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/REC Catalog/RPL1 \\[REC1\\]" 
+        | get-property childCount | equals 6 | verify-true
+    get-item "MAProjectReadOnlyLib/\\*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/System Analysis/System Functions/Root System Function/ddd \\[RPL\\]" 
+        | get-property caption | equals "ddd [RPL]" | verify-true
+    get-item "MAProjectReadOnlyLib/\\*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/System Analysis/System Functions/Root System Function/SystemFunction 2 \\[RPL\\]/FIP 2 \\[RPL\\]" 
+        | get-property caption | equals "FIP 2 [RPL]" | verify-true
+}
+
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "MAProjectReadOnlyLib/*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/System Analysis/System Functions/Root System Function/SystemFunction 1 [RPL]"
+get-view Properties | get-section Property | get-group "Kind :" | get-button GATHER | get-property selected 
+    | equals true | verify-true
+    
+
+
+get-button "Save All (M1+M2+S)" | click
+
+with [get-view "Capella Project Explorer"] {
+    get-button "Collapse All  (M1+M2+Numpad_Divide)" | click
+    with [get-tree] {
+        select LibProjectSub LibProjectSuper MAProjectReadOnlyLib MAProjectReadWriteLib
+        get-menu "Close Project" | click
+    }
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

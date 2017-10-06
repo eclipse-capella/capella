@@ -1,0 +1,540 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _C_OB0MEVEeWqb6y2_gGIKQ,_0alKwJ6FEeWcU-ojRg-Rxa
+Element-Name: ConstraintExchangeContext
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _c4SbkK3REee2vO1UksePLw
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 3/21/18 4:59 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text Project
+    get-button Finish | click
+}
+
+//Create Contraint under "MA_Project01::MA_Project01::System Analysis::Capabilities"
+
+get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird/Project/System Analysis/Capabilities" 
+    | get-menu "Add Capella Element/Constraint" | click
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "Project/\\*Project.aird/Project/System Analysis/Capabilities/\\[Constraint\\]" 
+    | get-property childCount | equals 1 | verify-true
+
+// Set an OpaqueExpression with a text
+get-view "Capella Project Explorer" | get-tree 
+    | select "Project/*Project.aird/Project/System Analysis/Capabilities/[Constraint]/[Opaque Expression]"
+with [get-view Properties] {
+    click
+    with [get-section Property | get-group "" -index 1 | get-text-viewer] {
+        type-text Bonjour
+        key-type BackSpace -times 8
+        type-text "Hello "
+        key-type "M1+SPACE"
+    }
+}
+get-window -from "CompletionProposalPopup.createProposalSelector()" | get-table 
+    | select "\\/Project\\/Project\\/System Analysis\\/System Functions\\/Root System Function" | click -default
+with [get-view Properties | get-section Property | get-group "" -index 1 | get-text-viewer] {
+    set-caret-pos 1 27
+    type-text ", how are t"
+    key-type BackSpace
+    type-text "you?"
+    key-type Enter
+    key-type "M1+s"
+}
+
+
+get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird/Project/System Analysis/Capabilities" 
+    | get-menu "Add Capella Element/Capability" | click
+    
+
+
+
+// Create a Function Scenario
+get-view "Capella Project Explorer" | get-tree 
+    | select "Project/*Project.aird/Project/System Analysis/Capabilities/Capability 1" 
+    | get-menu "New Diagram \\/ Table.../Function Scenario" | click
+    
+get-window "New Function Scenario" | get-button OK | click
+
+
+with [get-editor "[FS] Capability 1"] {
+    get-diagram -index 1 | get-edit-part -name "[FS] Capability 1" | mouse-move 735 109 -height 663 -width 1042
+    with [get-palette] {
+        get-palette-entry "Functional Exchange with return branch" | mouse-move 11 5 -height 52 -width 125
+        get-palette-entry Functions | mouse-move 31 22 -height 23 -width 125
+        with [get-palette-entry "System Function"] {
+            mouse-move 34 11 button1 -height 23 -width 125
+            mouse-press 34 11 button1 -height 23 -width 125
+            mouse-release 34 11 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 160 59 button1 CTRL -height 663 -width 1042
+        mouse-press 160 59 button1 CTRL -height 663 -width 1042
+        mouse-release 160 59 button1 786432 -height 663 -width 1042
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 460 51 -mask CTRL -height 663 -width 1042
+        mouse-hover 460 51 -mask CTRL -height 663 -width 1042
+        mouse-move 1041 42 -height 663 -width 1042
+    }
+    with [get-palette | get-palette-entry "System Function"] {
+        mouse-move 69 7 button1 -height 23 -width 125
+        mouse-press 69 7 button1 -height 23 -width 125
+        mouse-release 69 7 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 505 48 button1 -height 663 -width 1042
+        mouse-press 505 48 button1 -height 663 -width 1042
+        mouse-release 505 48 button1 524288 -height 663 -width 1042
+    }
+    get-diagram -index 1 | get-edit-part -name "[FS] Capability 1" | mouse-move 909 49 -height 663 -width 1042
+    with [get-palette | get-palette-entry "Functional Exchange with return branch"] {
+        mouse-move 70 34 button1 -height 52 -width 125
+        mouse-press 70 34 button1 -height 52 -width 125
+        mouse-release 70 34 button1 524288 -height 52 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 204 152 -height 663 -width 1042
+        with [get-edit-part -name "SystemFunction 1" | get-edit-part -name "" | get-edit-part 
+            -className SquareEditPart] {
+            mouse-move 3 52 button1 -height 398 -width 10
+            mouse-press 3 52 button1 -height 398 -width 10
+            mouse-release 3 52 button1 524288 -height 398 -width 10
+        }
+        mouse-move 561 147 -height 663 -width 1042
+        with [get-edit-part -name "SystemFunction 2" | get-edit-part -name "" | get-edit-part 
+            -className SquareEditPart] {
+            mouse-move 4 48 button1 -height 398 -width 10
+            mouse-press 4 48 button1 -height 398 -width 10
+        }
+    }
+}
+with [get-window "Selection Dialog"] {
+    get-group "Create a new Functional Exchange" | get-editbox -after [get-label "Functional Exchange"] | set-text fe
+    get-button OK | click
+}
+
+// On the message, set the Constraint as an Exchange Context
+with [get-editor "[FS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+    mouse-hover 625 636 -height 663 -width 1042
+    mouse-move 492 117 -height 663 -width 1042
+    mouse-hover 492 117 -height 663 -width 1042
+    mouse-move 429 237 -height 663 -width 1042
+    mouse-hover 429 237 -height 663 -width 1042
+    mouse-move 420 222 button1 -height 663 -width 1042
+    mouse-press 420 222 button1 -height 663 -width 1042
+    mouse-release 420 222 button1 524288 -height 663 -width 1042
+    mouse-move 402 164 -height 663 -width 1042
+    with [get-edit-part -name "SystemFunction 2" | get-edit-part -name "" | get-edit-part -name "" -index 1 
+        | get-target-connection 0] {
+        mouse-move 201 29 button1 -height 46 -width 366
+        mouse-press 201 29 button1 -height 46 -width 366
+        mouse-release 203 30 button1 524288 -height 48 -width 370
+    }
+    mouse-move 376 562 -height 663 -width 1042
+    
+    with [get-edit-part -name "SystemFunction 2" | get-edit-part -name "" | get-edit-part -name "" -index 1 
+        | get-target-connection 0] {
+        mouse-hover 140 31 -height 48 -width 370
+        mouse-move 140 31 button1 -height 48 -width 370
+        mouse-press 140 31 button1 -height 48 -width 370
+        mouse-release 140 31 button1 524288 -height 48 -width 370
+    }
+    
+}
+
+get-view Properties | get-section Property | get-group -index 3 | get-button "Browse available elements" | click
+get-window "Selection Dialog" | get-tree | select "Project/Project/System Analysis/Capabilities/\\[Constraint\\]" 
+    | double-click
+
+
+//Show Exchange Context Filter shall display the context in the message
+with [get-editor "[FS] Capability 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-release 290 274 button1 524288 -height 663 -width 1042
+        mouse-move 330 274 button1 -height 663 -width 1042
+        mouse-press 330 274 button1 -height 663 -width 1042
+        mouse-release 330 274 button1 524288 -height 663 -width 1042
+        mouse-move 107 2 -height 663 -width 1042
+    }
+    get-button "Refresh diagram" | click
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 87 221 button1 -height 663 -width 1042
+        mouse-press 87 221 button1 -height 663 -width 1042
+        mouse-release 87 221 button1 524288 -height 663 -width 1042
+        with [get-edit-part -name "SystemFunction 2" | get-edit-part -name "" | get-edit-part -name "" -index 1 
+            | get-target-connection 0] {
+            mouse-move 94 32 button1 -height 46 -width 366
+            mouse-press 94 32 button1 -height 46 -width 366
+            mouse-release 96 33 button1 524288 -height 48 -width 370
+        }
+        mouse-move 321 250 -height 663 -width 1042
+        mouse-hover 321 250 -height 663 -width 1042
+        mouse-move 1011 110 button1 -height 663 -width 1042
+        mouse-press 1011 110 button1 -height 663 -width 1042
+        mouse-release 1011 110 button1 524288 -height 663 -width 1042
+        mouse-move 173 14 -height 663 -width 1042
+    }
+    get-button Filters | click -arrow
+}
+get-menu "Show {Exchange Context}" | click
+with [get-editor "[FS] Capability 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 120 144 button1 -height 663 -width 1042
+        mouse-press 120 144 button1 -height 663 -width 1042
+        mouse-release 120 144 button1 524288 -height 663 -width 1042
+        mouse-move 71 5 -height 663 -width 1042
+    }
+    get-button "Refresh diagram" | click
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 379 156 -height 663 -width 1042
+        with [get-edit-part -name "SystemFunction 2" | get-edit-part -name "" | get-edit-part -name "" -index 1 
+            | get-target-connection 0 | get-edit-part -className SequenceMessageNameEditPart] {
+            mouse-hover 107 23 -height 26 -width 220
+            mouse-move 118 17 button1 -height 26 -width 220
+            mouse-press 118 17 button1 -height 26 -width 220
+            mouse-release 118 17 button1 524288 -height 26 -width 220
+            mouse-hover 118 17 -height 26 -width 220
+        }
+        mouse-move 64 171 -height 663 -width 1042
+    }
+}
+get-editor "[FS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[FS] Capability 1" | get-edit-part 
+    -name "SystemFunction 2" | get-edit-part -name "" | get-edit-part -name "" -index 1 | get-target-connection 0 
+    | get-edit-part -className SequenceMessageNameEditPart | get-property "getLabelText()" 
+    | equals "{Hello Root System Function, how are you?\n"
+    + "}" | verify-true
+    
+    
+
+//Show Fe (Exchange Context) Filter shall display the context in the message
+    
+with [get-editor "[FS] Capability 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 113 140 button1 -height 663 -width 1042
+        mouse-press 113 140 button1 -height 663 -width 1042
+        mouse-release 113 140 button1 524288 -height 663 -width 1042
+        mouse-hover 113 140 -height 663 -width 1042
+        mouse-move 181 10 -height 663 -width 1042
+    }
+    get-button Filters | click -arrow
+}
+get-menu "Show {Exchange Context}" | click
+with [get-editor "[FS] Capability 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 144 150 button1 -height 663 -width 1042
+        mouse-press 144 150 button1 -height 663 -width 1042
+        mouse-release 144 150 button1 524288 -height 663 -width 1042
+        mouse-move 172 3 -height 663 -width 1042
+    }
+    get-button "Refresh diagram" | click
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 90 69 button1 -height 663 -width 1042
+        mouse-press 90 69 button1 -height 663 -width 1042
+        mouse-release 90 69 button1 524288 -height 663 -width 1042
+        mouse-move 148 5 -height 663 -width 1042
+    }
+    get-button Filters | click -arrow
+}
+get-menu "Show FE {Exchange Context}" | click
+with [get-editor "[FS] Capability 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 136 135 button1 -height 663 -width 1042
+        mouse-press 136 135 button1 -height 663 -width 1042
+        mouse-release 136 135 button1 524288 -height 663 -width 1042
+        mouse-move 110 24 -height 663 -width 1042
+    }
+    get-button "Refresh diagram" | click
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 94 126 button1 -height 663 -width 1042
+        mouse-press 94 126 button1 -height 663 -width 1042
+        mouse-release 94 126 button1 524288 -height 663 -width 1042
+        mouse-move 99 126 -height 663 -width 1042
+        with [get-edit-part -name "SystemFunction 2" | get-edit-part -name "" | get-edit-part -name "" -index 1 
+            | get-target-connection 0 | get-edit-part -className SequenceMessageNameEditPart] {
+            mouse-move 78 8 button3 -height 26 -width 233
+            mouse-press 78 8 button3 -height 26 -width 233
+            mouse-release 78 8 button3 2097152 -height 26 -width 233
+        }
+        mouse-press 333 85 button1 -height 663 -width 1042
+        mouse-move 333 85 -mask 524288 -height 663 -width 1042
+        mouse-drag 333 85 button1 524288 -height 663 -width 1042
+        mouse-release 333 85 button1 524288 -height 663 -width 1042
+    }
+}
+get-editor "[FS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[FS] Capability 1" | get-edit-part 
+    -name "SystemFunction 2" | get-edit-part -name "" | get-edit-part -name "" -index 1 | get-target-connection 0 
+    | get-edit-part -className SequenceMessageNameEditPart | get-property "getLabelText()" 
+    | equals "fe {Hello Root System Function, how are you?\n"
+    + "}" | verify-true
+    
+    
+    
+//Create a LOOP
+
+with [get-editor "[FS] Capability 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 86 109 button1 -height 663 -width 1042
+        mouse-press 86 109 button1 -height 663 -width 1042
+        mouse-release 86 109 button1 524288 -height 663 -width 1042
+        mouse-move 95 11 -height 663 -width 1042
+    }
+    get-button Filters | click -arrow
+}
+get-menu "Show FE {Exchange Context}" | click
+with [get-editor "[FS] Capability 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 113 69 button1 -height 663 -width 1042
+        mouse-press 113 69 button1 -height 663 -width 1042
+        mouse-release 113 69 button1 524288 -height 663 -width 1042
+    }
+    get-button "Refresh diagram" | click
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 97 209 button1 -height 663 -width 1042
+        mouse-press 97 209 button1 -height 663 -width 1042
+        mouse-release 97 209 button1 524288 -height 663 -width 1042
+        mouse-move 1029 337 -height 663 -width 1042
+    }
+    with [get-palette] {
+        with [get-palette-entry LOOP] {
+            mouse-move 34 9 button1 -height 23 -width 125
+            mouse-press 34 9 button1 -height 23 -width 125
+            mouse-release 34 9 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 179 234 button1 -height 663 -width 1042
+        mouse-press 179 234 button1 -height 663 -width 1042
+        mouse-move 233 259 -mask 524288 -height 663 -width 1042
+        mouse-drag 600 319 button1 524288 -height 663 -width 1042
+        mouse-release 600 319 button1 524288 -height 663 -width 1042
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        with [get-edit-part -name " LOOP"] {
+            with [get-edit-part -className CombinedFragmentCompartmentEditPart] {
+                mouse-move 22 16 button1 -height 90 -width 445
+                mouse-press 22 16 button1 -height 90 -width 445
+                mouse-release 22 16 button1 524288 -height 90 -width 445
+                mouse-hover 22 16 -height 90 -width 445
+            }
+            activate-direct-edit
+        }
+        mouse-move 97 294 button1 -height 663 -width 1042
+        mouse-press 97 294 button1 -height 663 -width 1042
+        mouse-release 97 294 button1 524288 -height 663 -width 1042
+        with [get-edit-part -name " LOOP" | get-edit-part -className CombinedFragmentCompartmentEditPart 
+            | get-edit-part -name ""] {
+            with [get-edit-part -className OperandCompartmentEditPart] {
+                mouse-move 0 24 button1 -height 60 -width 445
+                mouse-press 0 24 button1 -height 60 -width 445
+            }
+            with [get-handle MoveHandle] {
+                mouse-release 1 25 button1 524288 -height 62 -width 447
+                mouse-hover 1 25 -height 62 -width 447
+            }
+        }
+    }
+}
+get-view Properties | get-section Property | get-group -index 1 | get-button "Browse available elements" | click
+get-window "Selection Dialog" | get-tree | select "Project/Project/System Analysis/Capabilities/\\[Constraint\\]" 
+    | double-click
+    
+    
+    
+    
+    
+with [get-editor "[FS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+    get-edit-part -name " LOOP" | get-edit-part -className CombinedFragmentCompartmentEditPart | get-edit-part 
+        -name "[ Hello Root System Function, how are you?\r\n"
+        + " ]" | get-edit-part -className OperandCompartmentEditPart | mouse-release 120 16 button1 524288 -height 60 
+        -width 445
+    mouse-move 55 296 -height 663 -width 1042
+    mouse-hover 55 296 -height 663 -width 1042
+    mouse-move 71 296 -height 663 -width 1042
+    mouse-hover 71 296 -height 663 -width 1042
+    mouse-move 72 296 button1 -height 663 -width 1042
+    mouse-press 72 296 button1 -height 663 -width 1042
+    mouse-release 72 296 button1 524288 -height 663 -width 1042
+    mouse-hover 72 296 -height 663 -width 1042
+    get-edit-part -name " LOOP" | get-edit-part -className CombinedFragmentCompartmentEditPart | get-edit-part 
+        -name "[ Hello Root System Function, how are you?\r\n"
+        + " ]" | get-edit-part -className OperandCompartmentEditPart | mouse-move 42 18 -height 60 -width 445
+}
+
+
+
+
+
+
+
+// Set Precondition on scenario
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "Project/*Project.aird/Project/System Analysis/Capabilities/Capability 1/[FS] Capability 1"
+    
+
+
+get-view Properties | get-section Property | get-group -index 2 | get-button "Browse available elements" | click
+get-window "Selection Dialog" | get-tree | select "Project/Project/System Analysis/Capabilities/\\[Constraint\\]" 
+    | double-click
+
+get-view Properties | get-section Property | get-group -index 2 | get-text-viewer | get-property text 
+    | equals "Hello Root System Function, how are you?" | verify-true
+
+
+
+
+// Set postCondition on scenario
+
+get-view Properties | get-section Property | get-group -index 2 | get-button "Browse available elements" 
+    -after [get-label "Post-condition :"] | click
+get-window "Selection Dialog" | get-tree | select "Project/Project/System Analysis/Capabilities/\\[Constraint\\]" 
+    | double-click
+
+
+get-view Properties | get-section Property | get-group -index 2 | get-text-viewer 
+    -after [get-label "Post-condition :"] | get-property text | equals "Hello Root System Function, how are you?" 
+    | verify-true
+    
+    
+// Check on diagram preCondition and postCondition
+    
+    
+with [get-editor "[FS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+    get-edit-part -name "pre:Hello Root System Function, how are you?\r\n" | get-edit-part -className NoteEditPart 
+        | get-figure "0/0" | get-property "getText()" | equals "pre:Hello Root System Function, how are you?" 
+        | verify-true
+    get-edit-part -name "post:Hello Root System Function, how are you?\r\n" | get-edit-part -className NoteEditPart 
+        | get-figure "0/0" | get-property "getText()" | equals "post:Hello Root System Function, how are you?" 
+        | verify-true
+}
+
+
+
+// Set Precondition on capability
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "Project/*Project.aird/Project/System Analysis/Capabilities/Capability 1"
+
+
+
+get-view Properties | get-section Property | get-group -index 1 | get-button "Browse available elements" | click
+get-window "Selection Dialog" | get-tree | select "Project/Project/System Analysis/Capabilities/\\[Constraint\\]" 
+    | double-click
+
+get-view Properties | get-section Property | get-group -index 1 | get-text-viewer | get-property text 
+    | equals "Hello Root System Function, how are you?" | verify-true
+
+
+
+// Set postCondition on capability
+
+get-view Properties | get-section Property | get-group -index 1 | get-button "Browse available elements" -after [get-label "Post-condition :"] | click
+get-window "Selection Dialog" | get-tree | select "Project/Project/System Analysis/Capabilities/\\[Constraint\\]" 
+    | double-click
+
+
+get-view Properties | get-section Property | get-group -index 1 | get-text-viewer 
+    -after [get-label "Post-condition :"] | get-property text | equals "Hello Root System Function, how are you?" 
+    | verify-true
+
+    
+    
+
+// Create a Mode and State diagram with a transition
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "Project/*Project.aird/Project/System Analysis/System/System State Machine/Default Region" 
+    | get-menu "New Diagram \\/ Table.../Mode State Machine" | click
+    
+get-window "New Mode State Machine" | get-button OK | click
+with [get-editor "[MSM] Default Region"] {
+    get-diagram -index 1 | get-edit-part -name "[MSM] Default Region" | mouse-move 892 101 -height 502 -width 1042
+    with [get-palette | get-palette-entry Mode] {
+        mouse-move 48 7 button1 -height 23 -width 125
+        mouse-press 48 7 button1 -height 23 -width 125
+        mouse-release 48 7 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[MSM] Default Region"] {
+        mouse-move 350 152 button1 -height 502 -width 1042
+        mouse-press 350 152 button1 -height 502 -width 1042
+        mouse-release 350 152 button1 524288 -height 502 -width 1042
+    }
+    get-diagram -index 1 | get-edit-part -name "[MSM] Default Region" | mouse-move 948 77 -height 502 -width 1042
+    with [get-palette | get-palette-entry Mode] {
+        mouse-move 35 14 button1 -height 23 -width 125
+        mouse-press 35 14 button1 -height 23 -width 125
+        mouse-release 35 14 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[MSM] Default Region"] {
+        mouse-move 637 183 button1 -height 502 -width 1042
+        mouse-press 637 183 button1 -height 502 -width 1042
+        mouse-release 637 183 button1 524288 -height 502 -width 1042
+    }
+    get-diagram -index 1 | get-edit-part -name "[MSM] Default Region" | mouse-move 649 183 -height 502 -width 1042
+    with [get-palette] {
+        get-palette-entry Choice | mouse-move 77 19 -height 23 -width 125
+        get-palette-entry Fork | mouse-move 76 5 -height 23 -width 125
+        get-palette-entry Terminate | mouse-move 69 21 -height 23 -width 125
+        get-palette-entry ShallowHistory | mouse-move 53 19 -height 23 -width 125
+        with [get-palette-entry Transition] {
+            mouse-move 50 13 button1 -height 23 -width 125
+            mouse-press 50 13 button1 -height 23 -width 125
+            mouse-release 50 13 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[MSM] Default Region"] {
+        mouse-move 999 304 -height 502 -width 1042
+        mouse-move 431 198 -height 502 -width 1042
+        with [get-edit-part -name "Mode 1" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name " [region]" 
+            | get-edit-part -className StackCompartment2EditPart] {
+            mouse-move 53 21 button1 -height 40 -width 58
+            mouse-press 53 21 button1 -height 40 -width 58
+            mouse-release 53 21 button1 524288 -height 40 -width 58
+        }
+        with [get-edit-part -name "Mode 2" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name " [region]" 
+            | get-edit-part -className StackCompartment2EditPart] {
+            mouse-move 23 20 button1 -height 40 -width 58
+            mouse-press 23 20 button1 -height 40 -width 58
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[MSM] Default Region"] {
+        get-edit-part -name "Mode 2" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+            | get-edit-part -name " [region]" | get-edit-part -className StackCompartment2EditPart 
+            | mouse-release 23 20 button1 524288 -height 40 -width 58
+        mouse-move 538 264 button1 -height 502 -width 1042
+        mouse-press 538 264 button1 -height 502 -width 1042
+        mouse-release 538 264 button1 524288 -height 502 -width 1042
+        mouse-move 513 236 -height 502 -width 1042
+        with [get-edit-part -name "Mode 2" | get-target-connection 0] {
+            mouse-move 104 24 button1 -height 63 -width 257
+            mouse-press 104 24 button1 -height 63 -width 257
+            mouse-release 106 26 button1 524288 -height 66 -width 261
+        }
+    }
+}
+
+// On transition, set the constraint
+
+get-view Properties | get-section Property | get-group -index 1 | get-button "Browse available elements" | click
+get-window "Selection Dialog" | get-tree | select "Project/Project/System Analysis/Capabilities/\\[Constraint\\]" 
+    | double-click
+
+get-view Properties | get-section Property | get-group -index 1 | get-text-viewer | get-property text 
+    | equals "Hello Root System Function, how are you?" | verify-true
+    
+
+    
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

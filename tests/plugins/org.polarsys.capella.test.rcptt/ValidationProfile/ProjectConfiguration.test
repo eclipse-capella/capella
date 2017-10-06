@@ -1,0 +1,244 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _C_OB0MEVEeWqb6y2_gGIKQ
+Element-Name: ProjectConfiguration
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _4W6WAKnCEee0yuaysMB3Rg
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 3/21/18 2:32 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+//Create a configuration project
+
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Configuration Project" | click
+with [get-window -class WizardDialog] {
+    get-editbox | set-text ConfigProject1
+    get-button Finish | click
+}
+get-view "Capella Project Explorer" | get-tree | get-item ConfigProject1 | get-property caption | equals ConfigProject1 | verify-true
+
+//Create a model linked to the configuration project
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text ModelProject
+    with [get-button "Next >"] {
+        click
+        click
+    }
+}
+//Select all viewpoints
+with [get-window "New Capella Project" | get-table] {
+    select ""
+    get-cell 0 0 | check
+}
+with [get-window "New Capella Project" | get-table] {
+    select [get-item "" -index 1]
+    get-cell 1 0 | check
+}
+with [get-window "New Capella Project" | get-table] {
+    select [get-item "" -index 2]
+    get-cell 2 0 | check
+}
+with [get-window "New Capella Project" | get-table] {
+    select [get-item "" -index 3]
+    get-cell 3 0 | check
+}
+with [get-window "New Capella Project" | get-table] {
+    select [get-item "" -index 4]
+    get-cell 4 0 | check
+}
+with [get-window "New Capella Project" | get-table] {
+    select [get-item "" -index 5]
+    get-cell 5 0 | check
+}
+with [get-window "New Capella Project" | get-table] {
+    select [get-item "" -index 6]
+    get-cell 6 0 | check
+}
+
+//Set the configuration project
+get-window "New Capella Project" | get-button "Next >" | click
+with [get-window "New Capella Project" | get-table] {
+    select ""
+    get-cell 0 0 | check
+}
+
+get-window "New Capella Project" | get-button Finish | click
+
+
+//Ensure that configuration project is linked
+get-view "Capella Project Explorer" | get-tree | select ModelProject | get-menu Properties | click
+with [get-window "Properties for ModelProject"] {
+    get-tree | select "Capella Project References"
+    get-table | select ConfigProject1
+}
+
+with [get-window "Properties for ModelProject" | get-table] {
+    get-property itemCount | equals 1 | verify-true
+    get-item ConfigProject1 | get-property caption | equals ConfigProject1 | verify-true
+    get-item ConfigProject1 | get-property checked | equals true | verify-true
+}
+
+get-window "Properties for ModelProject" | get-button Cancel | click
+
+//Disable delete confirmation
+get-view "Capella Project Explorer" | get-tree | select ConfigProject1 | get-menu Properties | click
+with [get-window "Properties for ConfigProject1"] {
+    get-tree | select "Capella/Delete"
+    get-group Delete | get-button "Confirm deletions" | uncheck
+    get-button OK | click
+}
+
+
+//Disable category commands
+get-view "Capella Project Explorer" | get-tree | select ConfigProject1 | get-menu Properties | click
+with [get-window "Properties for ConfigProject1"] {
+    get-tree | select "Capella/Commands Configurability/Commands"
+    get-tree -after [get-label "Commands categories:"] | select "Category Management"
+    with [get-table] {
+        get-item "Create Category" | uncheck
+        get-item "Update Category" | uncheck
+    }
+    get-button OK | click
+}
+
+
+
+//Delete shall be done without wizard
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "ModelProject/ModelProject.aird/ModelProject/System Analysis/Capabilities" 
+        | get-menu "Add Capella Element/Capability" | click
+    key-type Del
+}
+
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "ModelProject/*ModelProject.aird/ModelProject/System Analysis/Capabilities"
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "ModelProject/\\*ModelProject.aird/ModelProject/System Analysis/Capabilities" | get-property childCount 
+    | equals 0 | verify-true
+    
+    
+    
+//Create a diagram with a Functional Exchange
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "ModelProject/*ModelProject.aird/ModelProject/System Analysis/System Functions/Root System Function" 
+    | get-menu "New Diagram \\/ Table.../System Data Flow Blank" | click
+    
+get-window "New System Data Flow Blank" | get-button OK | click
+with [get-editor "[SDFB] Root System Function"] {
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 947 109 -height 687 
+        -width 1042
+    with [get-palette] {
+        with [get-palette-entry "System Function"] {
+            mouse-move 51 19 button1 -height 23 -width 125
+            mouse-press 51 19 button1 -height 23 -width 125
+            mouse-release 51 19 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 159 184 button1 -height 687 -width 1042
+        mouse-press 159 184 button1 -height 687 -width 1042
+        mouse-release 159 184 button1 524288 -height 687 -width 1042
+    }
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 994 83 -height 687 -width 1042
+    with [get-palette | get-palette-entry "System Function"] {
+        mouse-move 37 11 button1 -height 23 -width 125
+        mouse-press 37 11 button1 -height 23 -width 125
+        mouse-release 37 11 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 507 165 button1 -height 687 -width 1042
+        mouse-press 507 165 button1 -height 687 -width 1042
+        mouse-release 507 165 button1 524288 -height 687 -width 1042
+    }
+    
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 999 85 -height 687 -width 1042
+    with [get-palette] {
+        with [get-palette-entry "Functional Exchange"] {
+            mouse-move 51 18 button1 -height 37 -width 125
+            mouse-press 51 18 button1 -height 37 -width 125
+            mouse-release 51 18 button1 524288 -height 37 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 765 138 -height 687 -width 1042
+        mouse-move 337 210 -height 687 -width 1042
+        with [get-edit-part -name "SystemFunction 1" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 124 31 button1 -height 68 -width 148
+            mouse-press 124 31 button1 -height 68 -width 148
+            mouse-release 124 31 button1 524288 -height 68 -width 148
+        }
+        with [get-edit-part -name "SystemFunction 2" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 45 36 button1 -height 68 -width 148
+            mouse-press 45 36 button1 -height 68 -width 148
+        }
+    }
+}
+
+
+with [get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function"] {
+    with [get-edit-part -name "SystemFunction 2" | get-edit-part -name "FIP 1" | get-target-connection 0] {
+        with [get-edit-part -className DEdgeNameEditPart] {
+            mouse-move 34 7 button3 -height 16 -width 132
+            mouse-press 34 7 button3 -height 16 -width 132
+            mouse-release 34 7 button3 2097152 -height 16 -width 132
+        }
+        mouse-press 96 31 button3 -height 52 -width 282
+        mouse-move 96 31 -mask 2097152 -height 52 -width 282
+    }
+}
+
+// Category menu shall be disabled
+get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-menu "Category/Update Category" 
+    | get-property enablement | equals false | verify-true
+    
+
+// Set Delete confirmation and categories
+get-view "Capella Project Explorer" | get-tree | select ConfigProject1 | get-menu Properties | click
+with [get-window "Properties for ConfigProject1"] {
+    with [get-tree -after [get-label "Commands categories:"]] {
+        select "Category Management"
+        get-item "Category Management" | check
+    }
+    get-tree | select "Capella/Delete"
+    get-group Delete | get-button "Confirm deletions" | check
+    get-button OK | click
+}
+
+// Menu Category shall be reenabled
+with [get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function"] {
+    mouse-move 205 233 -height 687 -width 1042
+    get-edit-part -name "SystemFunction 1" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart | mouse-move 141 41 -height 68 -width 148
+    with [get-edit-part -name "SystemFunction 2" | get-edit-part -name "FIP 1" | get-target-connection 0] {
+        mouse-move 43 46 button3 -height 63 -width 210
+        mouse-press 43 46 button3 -height 63 -width 210
+        mouse-release 43 46 button3 2097152 -height 63 -width 210
+    }
+}
+with [get-editor "[SDFB] Root System Function" | get-diagram -index 1] {
+    get-menu "Category/Update Category" | get-property caption | equals "Update Category" | verify-true
+    get-menu "Category/Update Category" | get-property enablement | equals true | verify-true
+}
+
+//Delete shall display popup
+get-view "Capella Project Explorer" | get-tree 
+    | select "ModelProject/*ModelProject.aird/ModelProject/System Analysis/System Functions/Root System Function/SystemFunction 2" 
+    | key-type Del
+get-window "Progress Information" | get-window Delete | get-button Yes | click
+
+    
+    
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
