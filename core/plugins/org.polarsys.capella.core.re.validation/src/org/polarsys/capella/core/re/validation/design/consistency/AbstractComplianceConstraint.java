@@ -118,11 +118,17 @@ public abstract class AbstractComplianceConstraint extends AbstractValidationRul
       }
     }
 
-    if (results.size() > 0) {
-      return ConstraintStatus.createMultiStatus(ctx, results);
+    IStatus result = null;
+    if (results.size() == 1 ) {
+      result = results.get(0);
+    } else if (results.size() > 1) {
+      result = ConstraintStatus.createMultiStatus(ctx, results);
+    } else {
+      result = ctx.createSuccessStatus();
     }
 
-    return ctx.createSuccessStatus();
+    return result;
+
   }
 
   /**
@@ -146,7 +152,7 @@ public abstract class AbstractComplianceConstraint extends AbstractValidationRul
         rplContents.put(rplElement, l);
       }
     }
-    externalContents.removeAll(rplContents.values());
+    externalContents.removeAll(rplContents.keySet());
     for (EObject e : externalContents) {
       ComplianceValidationContext cvctx = new ComplianceValidationContext(ctx, rplContents.get(e.eContainer()));
       if (e.eContainingFeature().isMany()) {

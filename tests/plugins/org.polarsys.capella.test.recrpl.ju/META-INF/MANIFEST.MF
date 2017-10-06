@@ -11,12 +11,16 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.re,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.platform.sirius.ui.actions,
- org.eclipse.emf.diffmerge
+ org.eclipse.emf.diffmerge,
+ org.polarsys.capella.core.validation,
+ org.polarsys.capella.core.re.validation
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.test.recrpl.ju,
+ org.polarsys.capella.test.recrpl.ju.handlers.scope,
  org.polarsys.capella.test.recrpl.ju.model,
  org.polarsys.capella.test.recrpl.ju.testcases,
+ org.polarsys.capella.test.recrpl.ju.testcases.compliance,
  org.polarsys.capella.test.recrpl.ju.testsuites.main
