@@ -30,10 +30,10 @@
       </resolver>
    </extension>
    <extension
-         point="org.eclipse.emf.validation.validationListeners">
-      <listener
-            class="org.polarsys.capella.core.validation.ui.ide.CapellaValidationListener">
-      </listener>
+         point="org.eclipse.emf.validation.ui.UIRegisteredClientContext">
+      <clientContext
+            id="CapellaValidationRulesContext">
+      </clientContext>
    </extension>
 
 </plugin>
