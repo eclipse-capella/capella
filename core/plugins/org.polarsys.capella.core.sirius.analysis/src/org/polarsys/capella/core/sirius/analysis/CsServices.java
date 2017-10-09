@@ -6348,21 +6348,30 @@ public class CsServices {
     if (ce.getKind() == ComponentExchangeKind.DELEGATION) {
       return false;
     }
-    
+
     // Case 3
+    // Check that source component is not a Node
     EObject source = sourceView.getTarget();
-    EObject target = targetView.getTarget();
-    if (source instanceof Part && target instanceof Part) {
+    if (source instanceof Part) {
       AbstractType sourceType = ((Part) source).getAbstractType();
+      if (sourceType instanceof PhysicalComponent
+          && ((PhysicalComponent) sourceType).getNature() == PhysicalComponentNature.NODE) {
+        return false;
+      }
+    }
+    
+    // Case 4
+    // Check that target component is not a Node
+    EObject target = targetView.getTarget();
+    if (target instanceof Part) {
       AbstractType targetType = ((Part) target).getAbstractType();
-      if (sourceType instanceof PhysicalComponent && targetType instanceof PhysicalComponent
-          && ((PhysicalComponent) sourceType).getNature() == PhysicalComponentNature.NODE
+      if (targetType instanceof PhysicalComponent
           && ((PhysicalComponent) targetType).getNature() == PhysicalComponentNature.NODE) {
         return false;
       }
     }
-
-    // Case 4
+    
+    // Case 5
     if (!isValidComputedLink(communication, ce.getSourcePort(), ce.getTargetPort(), sourceView, targetView,
         IMappingNameConstants.LAB_COMPUTED_COMPONENT_EXCHANGE, IMappingNameConstants.PAB_COMPUTED_COMPONENT_EXCHANGE,
         IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE)) {
@@ -6371,13 +6380,14 @@ public class CsServices {
 
     return true;
   }
-  
+
   /**
-   * Common cases for {@link #isValidComputedComponentExchangeEdge(EObject, DSemanticDecorator, DSemanticDecorator)} and {@link #isValidComputedPhysicalLinkEdge(EObject, DSemanticDecorator, DSemanticDecorator)}
+   * Common cases for {@link #isValidComputedComponentExchangeEdge(EObject, DSemanticDecorator, DSemanticDecorator)} and
+   * {@link #isValidComputedPhysicalLinkEdge(EObject, DSemanticDecorator, DSemanticDecorator)}
    */
-  private boolean isValidComputedLink(EObject communication, Port sourcePort, Port targetPort, DSemanticDecorator sourceView,
-      DSemanticDecorator targetView, String labMappingName, String pabMappingName, String labFilterName,
-      String pabFilterName) {
+  private boolean isValidComputedLink(EObject communication, Port sourcePort, Port targetPort,
+      DSemanticDecorator sourceView, DSemanticDecorator targetView, String labMappingName, String pabMappingName,
+      String labFilterName, String pabFilterName) {
 
     EObject source = sourceView.getTarget();
     EObject target = targetView.getTarget();
@@ -6528,8 +6538,8 @@ public class CsServices {
   private boolean isInnerPort(AbstractDNode node, Port port) {
     Iterator<DNode> ownedBorderedNodes = node.getOwnedBorderedNodes().iterator();
     while (ownedBorderedNodes.hasNext()) {
-      DDiagramElement eObject = (DDiagramElement) ownedBorderedNodes.next();
-      if (eObject.getTarget() == port) {
+      DDiagramElement diagramElement = (DDiagramElement) ownedBorderedNodes.next();
+      if (diagramElement.getTarget() == port && diagramElement.isVisible()) {
         return true;
       }
     }
@@ -6544,6 +6554,7 @@ public class CsServices {
     }
     return false;
   }
+
   private Collection<EObject> getVisibleEdgeEnds(DDiagram diagram, EObject source) {
     DDiagramContents context = new DDiagramContents(diagram);
     // When it is a port, try to find the diagram element
@@ -6554,7 +6565,7 @@ public class CsServices {
       Collection<Part> representingParts = ComponentExt.getRepresentingParts((Component) source.eContainer());
       if (diagramElement != null) {
         List<EObject> result = new ArrayList<EObject>();
-        if(diagramElement.isVisible()){
+        if (diagramElement.isVisible()) {
           result.add(source);
         }
         if (source.eContainer() instanceof Component) {
@@ -6582,7 +6593,7 @@ public class CsServices {
     } else {
       addRelevantParts(context, mainPart, toHandle);
     }
-    for(DeploymentTarget element : PartExt.getDeployingElements(mainPart)){
+    for (DeploymentTarget element : PartExt.getDeployingElements(mainPart)) {
       boolean isChildView = false;
       for (DDiagramElement diagElt : context.getDiagramElements(element)) {
         if (diagElt instanceof DNodeContainer) {
@@ -6594,7 +6605,7 @@ public class CsServices {
           }
         }
       }
-      if(!isChildView){
+      if (!isChildView) {
         toHandle.add(element);
       }
     }
@@ -6603,7 +6614,7 @@ public class CsServices {
       relevantParts.add((Part) deploymentTarget);
       relevantParts.addAll(ComponentExt.getPartAncestors((Part) deploymentTarget));
       EObject firstVisibleAncestor = getFirstVisibleAncestor(context, relevantParts);
-      if(firstVisibleAncestor instanceof Part){
+      if (firstVisibleAncestor instanceof Part) {
         result.add(firstVisibleAncestor);
       }
     }
@@ -6612,10 +6623,10 @@ public class CsServices {
 
   private void addRelevantParts(DDiagramContents context, Part mainPart, List<DeploymentTarget> toHandle) {
     Iterator<Part> partsIterator = ComponentExt.getRepresentingParts((Component) mainPart.eContainer()).iterator();
-    while(partsIterator.hasNext()){
+    while (partsIterator.hasNext()) {
       Part parentPart = partsIterator.next();
-      Collection<DDiagramElement> diagramElements  = context.getDiagramElements(parentPart);
-      int  foundCount = 0;
+      Collection<DDiagramElement> diagramElements = context.getDiagramElements(parentPart);
+      int foundCount = 0;
       for (DDiagramElement diagElt : diagramElements) {
         if (diagElt instanceof DNodeContainer) {
           DNodeContainer node = (DNodeContainer) diagElt;
@@ -6626,9 +6637,9 @@ public class CsServices {
           }
         }
       }
-      if (diagramElements.size() != foundCount ) {
+      if (diagramElements.size() != foundCount) {
         toHandle.add(parentPart);
-      }        
+      }
     }
   }
 
