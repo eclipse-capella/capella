@@ -24,7 +24,7 @@ import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonito
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 
 public class UsageMonitoringLogger {
-  
+
   private static UsageMonitoringLogger instance;
   private final UsageLogger logger;
   public static String USAGE_PATH = "UsagePath";
@@ -41,7 +41,7 @@ public class UsageMonitoringLogger {
     }
     return UsageMonitoringLogger.instance;
   }
-  
+
   /**
    * Set by default the workspace as usage path if vmarg -DUsagePath is NOT provided.
    * Resolve environment variables and system properties in the provided path if needed.
@@ -52,26 +52,37 @@ public class UsageMonitoringLogger {
       System.setProperty(UsageMonitoringLogger.USAGE_PATH,
           ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString());
     } else if (usagePathProperty.matches(pathRegex)) {
+      boolean unresolvableVar = false;
       final Matcher matcher = Pattern.compile(varRegex).matcher(usagePathProperty);
       while (matcher.find()) {
         String variableName = getVariableName(matcher.group());
         String varValue = getVariableValue(variableName);
-        // Log warning about undefined environment variable or system property
-        UsageAppenderPlugin.getDefault().getLog()
-            .log(new Status(IStatus.WARNING, UsageAppenderPlugin.PLUGIN_ID, "Undefined environment variable: " + variableName));
+        if (varValue == null) {
+          // Log warning about undefined environment variable or system property
+          UsageAppenderPlugin.getDefault().getLog()
+              .log(new Status(IStatus.WARNING, UsageAppenderPlugin.PLUGIN_ID, "Undefined environment variable: "
+                  + variableName + " found in -DUsagePath configuration. The log file will be put in the workspace."));
+          unresolvableVar = true;
+          break;
+        }
         usagePathProperty = usagePathProperty.replaceFirst(varRegex, Matcher.quoteReplacement(varValue));
       }
-      System.setProperty(UsageMonitoringLogger.USAGE_PATH, usagePathProperty);
+      // If there is an unresolvable variable, log in the workspace
+      if (!unresolvableVar)
+        System.setProperty(UsageMonitoringLogger.USAGE_PATH, usagePathProperty);
+      else
+        System.setProperty(UsageMonitoringLogger.USAGE_PATH,
+            ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString());
     }
   }
 
   private String getVariableName(String match) {
     return match.substring(2, match.lastIndexOf('}'));
   }
-  
+
   private String getVariableValue(String varName) {
     String value = System.getenv(varName);
-    return value != null ? value : System.getProperty(varName); 
+    return value != null ? value : System.getProperty(varName);
   }
 
   private UsageMonitoringLogger() {
