@@ -18,11 +18,11 @@ import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.helpers.operations.ILongRunningListener;
+import org.polarsys.capella.core.model.handler.command.BasicCapellaDeleteCommand;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.ui.fastlinker.FastLinkerActivator;
 import org.polarsys.capella.core.ui.fastlinker.FastLinkerState;
 import org.polarsys.capella.core.ui.fastlinker.view.FastLinkerView;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 
 /**
  * A long running operations listener dedicated to the FastLinker.
@@ -108,7 +108,7 @@ public class FastLinkerLongRunningOperationListener implements ILongRunningListe
 				ArrayList<Object> firstElementToDelete = new ArrayList<Object>();
 				ArrayList<Object> secondElementToDelete = new ArrayList<Object>();
 
-				if (CapellaDeleteCommand.class.equals(operationClass)) {
+				if (BasicCapellaDeleteCommand.class.equals(operationClass)) {
 					if(currentState.getFirstElement() != null){
 						for(Object obj : currentState.getFirstElement()){
 							if(SystemEngineeringExt.findArchitecture((EObject) obj) == null)
