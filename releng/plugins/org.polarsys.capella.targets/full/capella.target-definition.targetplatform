@@ -44,7 +44,7 @@ location sirius-5.1.0 "http://download.eclipse.org/sirius/updates/milestones/5.1
 	org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group
 }
 
-location kitalpha-runtime-master-latest "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/499/artifact/result/publish/kitalpha_runtime/site.p2" {
+location kitalpha-runtime-master "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/499/artifact/result/publish/kitalpha_runtime/site.p2" {
 	org.polarsys.kitalpha.ad.runtime.feature.feature.group lazy
 	org.polarsys.kitalpha.cadence.feature.feature.group lazy
 	org.polarsys.kitalpha.common.feature.feature.group lazy
@@ -65,6 +65,10 @@ location kitalpha-runtime-master-latest "https://hudson.polarsys.org/kitalpha/jo
 	org.polarsys.kitalpha.richtext.widget.source.feature.feature.group lazy
 	org.polarsys.kitalpha.richtext.widget.ext.feature.feature.group lazy
 	org.polarsys.kitalpha.richtext.widget.ext.source.feature.feature.group lazy
+}
+
+location kitalpha-sdk-master "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/499/artifact/result/publish/kitalpha_sdk/site.p2" {
+	org.polarsys.kitalpha.emde.sdk.feature.feature.group
 }
 
 location diffmerge-core-master "http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site" {
@@ -91,6 +95,10 @@ location amalgam-1.9.0 "http://download.eclipse.org/modeling/amalgam/updates/nig
 location sirius-query-legacy-1.1.0 "http://download.eclipse.org/sirius/updates/legacy/1.1.0" {
 	org.eclipse.sirius.query.legacy.feature.feature.group
 	org.eclipse.sirius.query.legacy.feature.source.feature.group
+}
+
+location egf "https://hudson.eclipse.org/egf/job/buckminster-egf-neon/lastSuccessfulBuild/artifact/result/publish/org.eclipse.egf.site/site.p2" {
+	org.eclipse.egf.sdk.feature.group
 }
 
 location nebula-1.2.0 "http://download.eclipse.org/nebula/releases/1.2.0" {
