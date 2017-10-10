@@ -27,13 +27,19 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.jobs.IJobManager;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.IWorkbenchSite;
 import org.eclipse.ui.PartInitException;
@@ -375,4 +381,21 @@ public class GuiActions {
     job.schedule();
   }
 
+  public static void closeAllOpenedEditors() {
+    final IWorkbenchPage page = EclipseUIUtil.getActivePage();
+    if (page != null) {
+      final IEditorReference[] editorReferences = page.getEditorReferences();
+      final List<IEditorReference> editorsToClose = new ArrayList<IEditorReference>();
+      
+      // Only take care of Sirius editors
+      for (final IEditorReference editor : editorReferences) {
+        if (editor.getEditor(false) instanceof IEditorPart)
+          editorsToClose.add(editor);
+      }
+
+      if (!editorsToClose.isEmpty()) {
+        page.closeEditors(editorsToClose.toArray(new IEditorReference[editorsToClose.size()]), false);
+      }
+    }
+  }
 }

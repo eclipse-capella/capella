@@ -179,6 +179,7 @@ public abstract class AbstractProvider implements IModelProvider {
     }else{
       System.out.println(getShortIdentifier(modelIdentifier));
     }
+    GuiActions.closeAllOpenedEditors();
     // BEGIN To be delete when the following bug will be solved :
     // Bug 261 - Testability issue due to creation of async GUI jobs during
     // session state changes
