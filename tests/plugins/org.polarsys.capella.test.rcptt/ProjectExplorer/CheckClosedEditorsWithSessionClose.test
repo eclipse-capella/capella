@@ -1,0 +1,67 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _77dBkJ6NEeWcU-ojRg-Rxw,_9ikm0J6BEeWcU-ojRg-Rxw
+Element-Name: CheckClosedEditorsWithSessionClose
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _W_aPYK2fEee8uezCxKoQOw
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 10/10/17 1:50 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+ From Capella Explorer :
+- Open two diagrams through "Representation per Category"
+- Modify two diagrams
+- Close session
+=> Verify that all editors are closed
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "EOLE_AF/EOLE_AF.aird" | key-type Enter
+    click -default
+    select "EOLE_AF/EOLE_AF.aird/Representations per category/Common/Class Diagram Blank/[CDB] Data - Heat Class Diagram Blank" "EOLE_AF/EOLE_AF.aird/Representations per category/Common/Class Diagram Blank/[CDB] Data - Class Diagram Blank"
+    get-menu -path Open | click
+}
+get-editor "[CDB] Data - Class Diagram Blank" | click
+
+with [get-editor "[CDB] Data - Class Diagram Blank"] {
+    with [get-palette] {
+        with [get-palette-entry Class] {
+            mouse-press 1 1 button1 -height 23 -width 125
+            mouse-release 1 1 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[CDB] Data - Class Diagram Blank"] {
+        mouse-move 70 83 button1 -height 422 -width 855
+        mouse-press 70 83 button1 -height 422 -width 855
+        mouse-release 70 83 button1 524288 -height 422 -width 855
+    }
+}
+with [get-editor "[CDB] Data - Heat Class Diagram Blank"] {
+    click
+    with [get-palette] {
+        with [get-palette-entry Class] {
+            mouse-press 1 1 button1 -height 23 -width 125
+            mouse-release 1 1 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[CDB] Data - Heat Class Diagram Blank"] {
+        mouse-move 42 117 button1 -height 389 -width 598
+        mouse-press 42 117 button1 -height 389 -width 598
+        mouse-release 42 117 button1 524288 -height 389 -width 598
+    }
+}
+get-view "Capella Project Explorer" | get-tree | select "EOLE_AF/*EOLE_AF.aird" | get-menu Close | click
+get-window Save | get-button No | click
+
+verify-error {get-editor "[CDB] Data - Class Diagram Blank"}
+verify-error {get-editor "[CDB] Data - Heat Class Diagram Blank"}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
