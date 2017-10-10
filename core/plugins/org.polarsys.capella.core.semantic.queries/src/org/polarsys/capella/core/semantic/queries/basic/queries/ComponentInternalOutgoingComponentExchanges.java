@@ -38,8 +38,6 @@ public class ComponentInternalOutgoingComponentExchanges extends ComponentOutgoi
       for (ComponentExchange e : ComponentExt.getAllRelatedComponentExchange(part, true)) {
         if (super.isValid(e, part.getAbstractType())) {
           exchanges.add(e);
-        } else {
-          System.out.println();
         }
       }
     }
