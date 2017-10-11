@@ -1026,12 +1026,14 @@
             name="org.polarsys.kitalpha.richtext.widget.doc.feature.feature.group"/>
         <requirement
             name="org.polarsys.kitalpha.richtext.widget.ext.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.emde.sdk.feature.feature.group"/>
         <repositoryList
             name="Neon">
           <repository
-              url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_runtime/site.p2"/>
+              url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/499/artifact/result/publish/kitalpha_runtime/site.p2"/>
           <repository
-              url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_sdk/site.p2"/>
+              url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/499/artifact/result/publish/kitalpha_sdk/site.p2"/>
         </repositoryList>
       </targlet>
       <targlet
@@ -1134,6 +1136,27 @@
             name="org.polarsys.capella.core.data.def"/>
         <requirement
             name="org.polarsys.capella.common.data.def"/>
+      </targlet>
+      <targlet
+          name="Eclipse License"
+          activeRepositoryList="">
+        <requirement
+            name="org.eclipse.license.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/cbi/updates/license"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="EGF SDK">
+        <requirement
+            name="org.eclipse.egf.sdk.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="https://hudson.eclipse.org/egf/job/buckminster-egf-neon/lastSuccessfulBuild/artifact/result/publish/org.eclipse.egf.site/site.p2"/>
+        </repositoryList>
       </targlet>
       <description>Capella Dependencies, copied from org.polarsys.capella.rcp.target/full</description>
     </setupTask>
