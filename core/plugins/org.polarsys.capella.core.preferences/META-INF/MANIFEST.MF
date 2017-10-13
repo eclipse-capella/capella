@@ -16,9 +16,18 @@ Require-Bundle: org.eclipse.core.expressions,
  org.polarsys.capella.core.model.handler;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.core.commands.preferences.model,
+Export-Package: org.polarsys.capella.core.commands.preferences,
+ org.polarsys.capella.core.commands.preferences.internalization.l10n,
+ org.polarsys.capella.core.commands.preferences.model,
+ org.polarsys.capella.core.commands.preferences.preferences,
  org.polarsys.capella.core.commands.preferences.properties,
  org.polarsys.capella.core.commands.preferences.service,
+ org.polarsys.capella.core.commands.preferences.ui,
+ org.polarsys.capella.core.commands.preferences.ui.sirius,
+ org.polarsys.capella.core.commands.preferences.ui.team,
  org.polarsys.capella.core.commands.preferences.util,
- org.polarsys.capella.core.preferences
+ org.polarsys.capella.core.commands.preferences.xml,
+ org.polarsys.capella.core.preferences,
+ org.polarsys.capella.core.preferences.commands.exceptions,
+ org.polarsys.capella.core.preferences.transferer
 Bundle-Localization: plugin

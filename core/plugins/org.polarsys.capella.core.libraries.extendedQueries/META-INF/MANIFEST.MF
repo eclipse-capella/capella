@@ -17,5 +17,14 @@ Require-Bundle: org.eclipse.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.libraries.extendedqueries,
- org.polarsys.capella.core.libraries.extendedqueries.capellacommon
+ org.polarsys.capella.core.libraries.extendedqueries.capellacommon,
+ org.polarsys.capella.core.libraries.extendedqueries.cs,
+ org.polarsys.capella.core.libraries.extendedqueries.csServices,
+ org.polarsys.capella.core.libraries.extendedqueries.ctx,
+ org.polarsys.capella.core.libraries.extendedqueries.epbs,
+ org.polarsys.capella.core.libraries.extendedqueries.information,
+ org.polarsys.capella.core.libraries.extendedqueries.interaction,
+ org.polarsys.capella.core.libraries.extendedqueries.interactionServices,
+ org.polarsys.capella.core.libraries.extendedqueries.la,
+ org.polarsys.capella.core.libraries.extendedqueries.pa
 Bundle-Localization: plugin

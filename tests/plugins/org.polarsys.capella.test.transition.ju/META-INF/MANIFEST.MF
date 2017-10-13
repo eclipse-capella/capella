@@ -20,5 +20,6 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.test.transition.ju,
  org.polarsys.capella.test.transition.ju.model,
+ org.polarsys.capella.test.transition.ju.model.modestate,
  org.polarsys.capella.test.transition.ju.testcases,
  org.polarsys.capella.test.transition.ju.testsuites.main

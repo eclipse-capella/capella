@@ -16,5 +16,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
 Import-Package: org.polarsys.capella.common.tools.report.appenders.reportlogview
-Export-Package: org.polarsys.capella.core.validation.ui,
- org.polarsys.capella.core.validation.ui.actions
+Export-Package: org.polarsys.capella.core.validation.helpers,
+ org.polarsys.capella.core.validation.service,
+ org.polarsys.capella.core.validation.ui,
+ org.polarsys.capella.core.validation.ui.actions,
+ org.polarsys.capella.core.validation.ui.export.prefs

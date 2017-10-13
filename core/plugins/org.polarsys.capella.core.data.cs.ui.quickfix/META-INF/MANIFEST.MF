@@ -23,3 +23,8 @@ Require-Bundle: org.eclipse.core.resources,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
+Export-Package: org.polarsys.capella.core.data.cs.ui.quickfix,
+ org.polarsys.capella.core.data.cs.ui.quickfix.generator,
+ org.polarsys.capella.core.data.cs.ui.quickfix.messages,
+ org.polarsys.capella.core.data.cs.ui.quickfix.resolver,
+ org.polarsys.capella.core.data.cs.ui.quickfix.resolver.command

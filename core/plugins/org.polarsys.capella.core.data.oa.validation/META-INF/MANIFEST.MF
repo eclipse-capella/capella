@@ -6,6 +6,7 @@ Bundle-Version: 1.2.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.polarsys.capella.core.validation
-Export-Package: org.polarsys.capella.core.data.oa.validation.operationalActivity
+Export-Package: org.polarsys.capella.core.data.oa.validation.operationalActivity,
+ org.polarsys.capella.core.data.oa.validation.role
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

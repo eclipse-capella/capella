@@ -20,4 +20,5 @@ Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.validation.ui.ide,
  org.polarsys.capella.core.validation.ui.ide.internal.quickfix,
+ org.polarsys.capella.core.validation.ui.ide.messages,
  org.polarsys.capella.core.validation.ui.ide.quickfix

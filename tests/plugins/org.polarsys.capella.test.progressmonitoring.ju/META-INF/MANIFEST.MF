@@ -12,4 +12,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: org.polarsys.capella.test.progressmonitoring.ju.testsuites
+Export-Package: org.polarsys.capella.test.progressmonitoring.ju.internal,
+ org.polarsys.capella.test.progressmonitoring.ju.testcases,
+ org.polarsys.capella.test.progressmonitoring.ju.testsuites,
+ org.polarsys.capella.test.progressmonitoring.ju.util

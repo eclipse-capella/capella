@@ -13,3 +13,5 @@ Require-Bundle: org.polarsys.capella.core.validation.ui.ide,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
+Export-Package: org.polarsys.capella.core.data.pa.ui.quickfix,
+ org.polarsys.capella.core.data.pa.ui.quickfix.resolver
