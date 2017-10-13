@@ -147,7 +147,7 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
   public static class SessionMetadataHelper {
 
     public void checkMetadata(URI sessionResourceURI, ResourceSet set) {
-      if (sessionResourceURI.isPlatform()) {
+      if (sessionResourceURI.isPlatform() && isCapellaProject(sessionResourceURI)) {
         if (!ViewpointManager.getInstance(set).hasMetadata()) {
           throw new NoMetadataException(
               MetadataHelper.getViewpointMetadata(set).getExpectedMetadataStorageURI().toPlatformString(true));
