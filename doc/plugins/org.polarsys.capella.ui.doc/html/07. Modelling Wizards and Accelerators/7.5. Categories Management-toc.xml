@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<toc label="7.5. Categories Management" link_to="PLUGINS_ROOT/org.polarsys.capella.ui.doc/toc-wiz.xml#contribution" topic="html/07. Modelling Wizards and Accelerators/7.5. Categories Management.html">
-	<topic href="html/07. Modelling Wizards and Accelerators/7.5. Categories Management.html" label="Categories Management">
-		<topic href="html/07. Modelling Wizards and Accelerators/7.5. Categories Management.html#Example:_Creating_a_Component_Exchange_Category_from_a_Selection_of_Component_Exchanges" label="Example: Creating a Component Exchange Category from a Selection of Component Exchanges"></topic>
-		<topic href="html/07. Modelling Wizards and Accelerators/7.5. Categories Management.html#Example:_Updating_a_Physical_Link_Category_from_a_Selection_of_Physical_Links" label="Example: Updating a Physical Link Category from a Selection of Physical Links"></topic>
-	</topic>
-</toc>

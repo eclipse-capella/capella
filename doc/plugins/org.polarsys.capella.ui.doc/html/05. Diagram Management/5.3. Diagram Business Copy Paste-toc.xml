@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<toc label="5.3. Diagram Business Copy Paste" link_to="PLUGINS_ROOT/org.polarsys.capella.ui.doc/toc-diagmt.xml#contribution" topic="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html">
-	<topic href="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html" label="The Diagram Business Copy-Paste">
-		<topic href="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html#Example_of_Logical_Architecture_Diagram" label="Example of Logical Architecture Diagram"></topic>
-		<topic href="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html#Example:_Component_External_Interfaces_Diagram" label="Example: Component External Interfaces Diagram"></topic>
-	</topic>
-</toc>

@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<toc label="2.2. Understanding the difference between Models Projects and Workspaces" link_to="PLUGINS_ROOT/org.polarsys.capella.ui.doc/toc-wbasics.xml#contribution" topic="html/02. Workbench Basics/2.2. Understanding the difference between Models Projects and Workspaces.html">
-	<topic href="html/02. Workbench Basics/2.2. Understanding the difference between Models Projects and Workspaces.html" label="Understanding the Differences Between Models, Projects and Workspaces">
-		<topic href="html/02. Workbench Basics/2.2. Understanding the difference between Models Projects and Workspaces.html#Capella_Model" label="Capella Model"></topic>
-		<topic href="html/02. Workbench Basics/2.2. Understanding the difference between Models Projects and Workspaces.html#Capella_Project" label="Capella Project"></topic>
-		<topic href="html/02. Workbench Basics/2.2. Understanding the difference between Models Projects and Workspaces.html#Eclipse_Workspace" label="Eclipse Workspace"></topic>
-	</topic>
-</toc>

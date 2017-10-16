@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<toc label="5.2. Advanced Management of Diagrams" link_to="PLUGINS_ROOT/org.polarsys.capella.ui.doc/toc-diagmt.xml#contribution" topic="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html">
-	<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html" label="Advanced Management of Diagrams">
-		<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html#SYNCHRONIZED_AND_UNSYNCHRONIZED_DIAGRAMS:_AN_EXAMPLE" label="Synchronized and Unsynchronized Diagrams"></topic>
-		<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html#Removing_hidden_elements_from_diagrams" label="Removing Hidden Elements from Diagrams"></topic>
-		<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html#Example" label="Example"></topic>
-	</topic>
-</toc>
