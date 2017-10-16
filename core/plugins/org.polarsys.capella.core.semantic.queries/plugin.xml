@@ -4104,8 +4104,8 @@
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget"></basicQuery></itemQueries>
       </category>
-            <category
-            id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_InternalPhysicalLinks"
+      <category
+            id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_InternalPhysicalLinks_referenced"
             isTopLevel="true"
             name="Internal Physical Links (computed)">
          <availableForType
@@ -4122,7 +4122,7 @@
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget"></basicQuery></itemQueries>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_InternalPhysicalLinks"
+            id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_InternalPhysicalLinks_referencing"
             isTopLevel="true"
             name="Internal Physical Links (computed)">
          <availableForType
