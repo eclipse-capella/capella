@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<toc label="9.2. Basic Use Case" link_to="PLUGINS_ROOT/org.polarsys.capella.re.doc/toc-LIBS.xml#contribution" topic="html/09. Libraries/9.2. Basic Use Case.html">
-	<topic href="html/09. Libraries/9.2. Basic Use Case.html" label="Basic Use Case">
-		<topic href="html/09. Libraries/9.2. Basic Use Case.html#Creation_of_a_Library" label="Creation of a Library"></topic>
-		<topic href="html/09. Libraries/9.2. Basic Use Case.html#Referencing_a_Library" label="Referencing a Library"></topic>
-		<topic href="html/09. Libraries/9.2. Basic Use Case.html#Using_Library_Elements_from_a_Project" label="Using Library Elements from a Project"></topic>
-	</topic>
-</toc>

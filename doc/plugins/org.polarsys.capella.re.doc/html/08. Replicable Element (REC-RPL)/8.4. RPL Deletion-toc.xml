@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<toc label="8.4. RPL Deletion" link_to="PLUGINS_ROOT/org.polarsys.capella.re.doc/toc-RE.xml#contribution" topic="html/08. Replicable Element (REC-RPL)/8.4. RPL Deletion.html">
-	<topic href="html/08. Replicable Element (REC-RPL)/8.4. RPL Deletion.html" label="Deletion of RPL">
-		<topic href="html/08. Replicable Element (REC-RPL)/8.4. RPL Deletion.html#Delete_RPL_and_Related_Model_Elements" label="Delete RPL and Related Model Elements"></topic>
-		<topic href="html/08. Replicable Element (REC-RPL)/8.4. RPL Deletion.html#Delete_RPL_and_Preserve_Related_Model_Elements" label="Delete RPL and Preserve Related Model Elements"></topic>
-	</topic>
-</toc>

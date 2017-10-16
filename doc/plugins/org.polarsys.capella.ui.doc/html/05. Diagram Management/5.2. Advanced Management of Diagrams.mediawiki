@@ -137,21 +137,6 @@ The &rdquo;''hResolution''&rdquo; and &ldquo;''vResolution''&rdquo; Properties a
 <br>
 <br>
 
-         
-{| border="1"
-|-
-| 
-[[Image:Images/5.2.%20Advanced%20Managenement%20of%20Diagrams_html_3c78e109.png|48x48px]]
-
- 
-| 
-Please 				notice that this feature is only available since '''Melody 				4.0'''
-
- 
-|}  
-<br>
-<br>
-
  
 Working with complex diagrams can be very hard and may slow down user workflows. To enable a better complexity management when dealing with diagrams, Capella provide a &ldquo;Remove hidden elements&rdquo; command. It is accessible from contextual menu on aird files or any model element.
 

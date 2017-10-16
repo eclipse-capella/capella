@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<toc label="8.2. Basic Use Case" link_to="PLUGINS_ROOT/org.polarsys.capella.re.doc/toc-RE.xml#contribution" topic="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case.html">
-	<topic href="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case.html" label="Basic REC-RPL Use Case">
-		<topic href="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case.html#Creation_of_a_REC" label="Creation of a REC"></topic>
-		<topic href="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case.html#Instantiation_of_a_REC" label="Instantiation of a REC"></topic>
-		<topic href="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case.html#Copy-Paste_Layout" label="Copy-Paste Layout"></topic>
-	</topic>
-</toc>
