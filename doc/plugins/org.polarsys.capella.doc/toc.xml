@@ -11,12 +11,12 @@
        Thales - initial API and implementation
 -->
 <toc label="Capella Guide" topic="html/toc.html" sort="false">
-   <topic href="html/Release note/Release note.html" label="Release Note">
-      <topic href="html/Release note/API changes.html" label="API changes">
+   <topic label="Release Note">
+      <topic label="API changes">
          <topic href="html/Release note/API_1.0.x_to_1.1.x.html" label="Capella 1.0.x to 1.1.x">
          </topic>
       </topic>
-      <topic href="html/Release note/Metamodel changes.html" label="Metamodel changes">
+      <topic label="Metamodel changes">
          <topic href="html/Release note/M2_1.1.x_to_1.2.x.html" label="Capella 1.1.x to 1.2.x">
          </topic>
          <topic href="html/Release note/M2_1.0.x_to_1.1.x.html" label="Capella 1.0.x to 1.1.x">
