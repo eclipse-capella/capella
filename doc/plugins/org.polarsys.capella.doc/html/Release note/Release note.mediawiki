@@ -1,4 +1,0 @@
-            
-= Release note for Capella =
-
-see also [https://wiki.polarsys.org/Capella/Release_Notes Changes in Capella]
