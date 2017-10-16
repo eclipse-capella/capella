@@ -6,15 +6,15 @@
     <semanticResources>../sysmodel.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_i0yfQiZxEeGJJIltX6tx3w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I_MHcHTTEea2zdoadWNr2A" name="[IS] IS1 [From 'Logical System'] - Interface Scenario">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I_MHcHTTEea2zdoadWNr2A" name="[IS] IS1 [From 'Logical System'] - Interface Scenario" repPath="#_ceP80LJkEee8ZfbQ021kng">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.melodyfragment#bd4dd89a-e21a-487a-819c-062b538b0d70"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I_MHcXTTEea2zdoadWNr2A" name="[IS] SubIS2 [From 'Logical System'] - Interface Scenario">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I_MHcXTTEea2zdoadWNr2A" name="[IS] SubIS2 [From 'Logical System'] - Interface Scenario" repPath="#_ceWqgLJkEee8ZfbQ021kng">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.melodyfragment#04823c08-0017-496c-b5b7-c9eebd887f5d"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I_MHcnTTEea2zdoadWNr2A" name="[CII] LC2 - Contextual Component Internal Interfaces">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I_MHcnTTEea2zdoadWNr2A" name="[CII] LC2 - Contextual Component Internal Interfaces" repPath="#_ceZGwLJkEee8ZfbQ021kng">
         <description xmi:type="description_2:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LA-Logical%20System-LC2.melodyfragment#9d407730-701d-4bdb-b0e5-510cd0204642"/>
       </ownedRepresentationDescriptors>
@@ -38,7 +38,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <sequence:SequenceDDiagram xmi:id="_tTEPQMS5EeCI_NCOxdDk1w" name="[IS] IS1 [From 'Logical System'] - Interface Scenario" uid="_IacXIJFxEeemoaFOWaTTWw">
+  <sequence:SequenceDDiagram xmi:id="_tTEPQMS5EeCI_NCOxdDk1w" name="[IS] IS1 [From 'Logical System'] - Interface Scenario" uid="_ceP80LJkEee8ZfbQ021kng">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_tTEPRMS5EeCI_NCOxdDk1w" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_tTEPRcS5EeCI_NCOxdDk1w" type="Sirius" element="_tTEPQMS5EeCI_NCOxdDk1w" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_tT9nO8S5EeCI_NCOxdDk1w" type="2001" element="_MkOUcHTTEea2zdoadWNr2A">
@@ -465,7 +465,7 @@
     <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.melodyfragment#bd4dd89a-e21a-487a-819c-062b538b0d70"/>
   </sequence:SequenceDDiagram>
-  <sequence:SequenceDDiagram xmi:id="_-HPXEMS5EeCI_NCOxdDk1w" name="[IS] SubIS2 [From 'Logical System'] - Interface Scenario" uid="_IamIIJFxEeemoaFOWaTTWw">
+  <sequence:SequenceDDiagram xmi:id="_-HPXEMS5EeCI_NCOxdDk1w" name="[IS] SubIS2 [From 'Logical System'] - Interface Scenario" uid="_ceWqgLJkEee8ZfbQ021kng">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_-HPXFMS5EeCI_NCOxdDk1w" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_-HPXFcS5EeCI_NCOxdDk1w" type="Sirius" element="_-HPXEMS5EeCI_NCOxdDk1w" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_-H-99cS5EeCI_NCOxdDk1w" type="2001" element="_MkhPYHTTEea2zdoadWNr2A">
@@ -644,7 +644,7 @@
     <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="LA-Logical%20System-LC2.melodyfragment#04823c08-0017-496c-b5b7-c9eebd887f5d"/>
   </sequence:SequenceDDiagram>
-  <diagram:DSemanticDiagram xmi:id="_W7WmYMS5EeCI_NCOxdDk1w" name="[CII] LC2 - Contextual Component Internal Interfaces" uid="_IavSEJFxEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_W7WmYMS5EeCI_NCOxdDk1w" name="[CII] LC2 - Contextual Component Internal Interfaces" uid="_ceZGwLJkEee8ZfbQ021kng">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_W7gXYMS5EeCI_NCOxdDk1w" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_W7gXYcS5EeCI_NCOxdDk1w" type="Sirius" element="_W7WmYMS5EeCI_NCOxdDk1w" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_W-CuAMS5EeCI_NCOxdDk1w" type="2002" element="_W7zSUMS5EeCI_NCOxdDk1w">
@@ -753,7 +753,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_W-CuGMS5EeCI_NCOxdDk1w"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_W-CuGcS5EeCI_NCOxdDk1w"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_W-CuGsS5EeCI_NCOxdDk1w" points="[0, -35, -50, 78]$[50, -95, 0, 18]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_W-CuGsS5EeCI_NCOxdDk1w" points="[97, -127, -126, 163]$[209, -272, -14, 18]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_W-CuIcS5EeCI_NCOxdDk1w" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_W-CuIsS5EeCI_NCOxdDk1w" id="(0.5,0.4857142857142857)"/>
         </edges>
@@ -769,7 +769,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_W-CuJMS5EeCI_NCOxdDk1w"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_W-CuJcS5EeCI_NCOxdDk1w"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_W-CuJsS5EeCI_NCOxdDk1w" points="[0, -35, 50, 78]$[-50, -95, 0, 18]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_W-CuJsS5EeCI_NCOxdDk1w" points="[-104, -127, 141, 175]$[-231, -284, 14, 18]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_W-CuLcS5EeCI_NCOxdDk1w" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_W-CuLsS5EeCI_NCOxdDk1w" id="(0.5,0.4857142857142857)"/>
         </edges>
