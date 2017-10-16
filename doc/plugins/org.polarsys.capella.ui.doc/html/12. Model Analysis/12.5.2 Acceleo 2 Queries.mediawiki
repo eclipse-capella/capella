@@ -1,14 +1,5 @@
-= Legacy Model requests interpreter View and Acceleo 2 queries [deprecated] =
+= Acceleo 2 queries [deprecated] =
 
-== Model Requests Interpreter View ==
-Using the Model requests interpreter view, you can write and evaluate queries using the Acceleo queries syntax.
-<br>
-<br>
-[[Image:Images/12_5_ Acceleo Queries_html_m22fce208.png|500x350px]]
- 
-<br>
-In the following sections, we will describe the syntax of such queries by providing some examples. 
-<br>
 == Basic Model Queries ==
  
 {| cellpadding="7" valign="TOP"

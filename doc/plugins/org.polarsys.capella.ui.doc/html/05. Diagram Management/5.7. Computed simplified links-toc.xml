@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<toc label="5.7. Computed simplified links" link_to="PLUGINS_ROOT/org.polarsys.capella.ui.doc/toc-diagmt.xml#contribution" topic="html/05. Diagram Management/5.7. Computed simplified links.html">
-	<topic href="html/05. Diagram Management/5.7. Computed simplified links.html" label="Computed simplified links">
-		<topic href="html/05. Diagram Management/5.7. Computed simplified links.html#Hide_Computed_Component_Exchanges" label="Hide Computed Component Exchanges">
-		</topic>
-		<topic href="html/05. Diagram Management/5.7. Computed simplified links.html#Hide_Computed_Physical_Links" label="Hide Computed Physical Links">
-		</topic>
-	</topic>
-</toc>

@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<toc label="4.08. Information View" link_to="PLUGINS_ROOT/org.polarsys.capella.ui.doc/toc-ui.xml#contribution" topic="html/04. User Interface/4.08. Information View.html">
-	<topic href="html/04. User Interface/4.08. Information View.html" label="Information View">
-		<topic href="html/04. User Interface/4.08. Information View.html#Categorization" label="Categorization"></topic>
-		<topic href="html/04. User Interface/4.08. Information View.html#Deleting_Elements" label="Deleting Elements"></topic>
-		<topic href="html/04. User Interface/4.08. Information View.html#Filters" label="Filters"></topic>
-		<topic href="html/04. User Interface/4.08. Information View.html#Export" label="Export"></topic>
-	</topic>
-</toc>

@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<toc label="4.07. Semantic Browser" link_to="PLUGINS_ROOT/org.polarsys.capella.ui.doc/toc-ui.xml#contribution" topic="html/04. User Interface/4.07. Semantic Browser.html">
-	<topic href="html/04. User Interface/4.07. Semantic Browser.html" label="Semantic Browser">
-		<topic href="html/04. User Interface/4.07. Semantic Browser.html#View" label="View"></topic>
-		<topic href="html/04. User Interface/4.07. Semantic Browser.html#Display_Options" label="Display Options"></topic>
-		<topic href="html/04. User Interface/4.07. Semantic Browser.html#Actions" label="Actions"></topic>
-	</topic>
-</toc>

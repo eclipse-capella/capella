@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<toc label="1.1. Introduction to Capella" link_to="PLUGINS_ROOT/org.polarsys.capella.ui.doc/toc-overview.xml#contribution" topic="html/01. Overview/1.1. Introduction to Capella.html">
-	<topic href="html/01. Overview/1.1. Introduction to Capella.html" label="Introduction to Capella">
-		<topic href="html/01. Overview/1.1. Introduction to Capella.html#Overview" label="Overview"></topic>
-		<topic href="html/01. Overview/1.1. Introduction to Capella.html#System_and_Software_Architecture_Definition_in_a_Tool" label="System and Software Architecture Definition in a Tool"></topic>
-		<topic href="html/01. Overview/1.1. Introduction to Capella.html#A_Methodological_Guide_in_a_Tool" label="A Methodological Guide in a Tool"></topic>
-	</topic>
-</toc>
