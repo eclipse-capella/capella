@@ -23,7 +23,7 @@ location eclipse-releases-neon "http://download.eclipse.org/releases/neon" {
 	com.ibm.icu
 }
 
-location sirius-5.1.0 "http://download.eclipse.org/sirius/updates/milestones/5.1.0rc2/neon" {
+location sirius-5.1.0 "http://download.eclipse.org/sirius/updates/milestones/5.1.0rc3/neon" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.runtime.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
@@ -61,7 +61,7 @@ location diffmerge-patterns-master "http://download.eclipse.org/diffmerge/releas
 	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group
 }
 
-location amalgam-1.9.0 "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.9.0-N20171004-042126/capella" {
+location amalgam-1.9.0 "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.9.0-N17/capella" {
 	org.eclipse.amalgam.explorer.activity.feature.group
 }
 
