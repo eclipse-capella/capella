@@ -497,7 +497,6 @@ public class RenameResourceAction extends WorkspaceAction {
    * still provided for compatibility. All work is now done in the operation created in createOperation(IStatus[]).
    */
   @Override
-  @SuppressWarnings("deprecation")
   protected void invokeOperation(IResource resource, IProgressMonitor monitor) {
     // Do nothing.
   }
@@ -683,7 +682,7 @@ public class RenameResourceAction extends WorkspaceAction {
    *          the model providers known to the client who is using this operation.
    * @since 3.2
    */
-  public void setModelProviderIds(@SuppressWarnings("hiding") String[] modelProviderIds) {
+  public void setModelProviderIds(String[] modelProviderIds) {
     this.modelProviderIds = modelProviderIds;
   }
 

@@ -15,6 +15,7 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.IWorkbenchCommandConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
@@ -24,7 +25,6 @@ import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.navigator.ICommonMenuConstants;
 import org.eclipse.ui.navigator.ICommonViewerSite;
 import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
-import org.eclipse.ui.texteditor.IWorkbenchActionDefinitionIds;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaCopyAction;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaCutAction;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaDeleteAction;
@@ -165,7 +165,7 @@ public class EditCommonActionProvider extends CommonActionProvider {
     ISelectionProvider selectionProvider = commonViewSite.getSelectionProvider();
 
     cutAction = new CapellaCutAction(site.getStructuredViewer());
-    cutAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.CUT);
+    cutAction.setActionDefinitionId(IWorkbenchCommandConstants.EDIT_CUT);
     cutAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_CUT));
     cutAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_CUT_DISABLED));
     SelectionHelper.registerToSelectionChanges(cutAction, selectionProvider);
@@ -182,19 +182,19 @@ public class EditCommonActionProvider extends CommonActionProvider {
         pasteAction.selectionChanged(getStructuredSelection());
       }
     };
-    copyAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.COPY);
+    copyAction.setActionDefinitionId(IWorkbenchCommandConstants.EDIT_COPY);
     copyAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY));
     copyAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY_DISABLED));
     SelectionHelper.registerToSelectionChanges(copyAction, selectionProvider);
 
     pasteAction = new CapellaPasteAction();
-    pasteAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.PASTE);
+    pasteAction.setActionDefinitionId(IWorkbenchCommandConstants.EDIT_PASTE);
     pasteAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_PASTE));
     pasteAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_PASTE_DISABLED));
     SelectionHelper.registerToSelectionChanges(pasteAction, selectionProvider);
 
     deleteAction = new CapellaDeleteAction();
-    deleteAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.DELETE);
+    deleteAction.setActionDefinitionId(IWorkbenchCommandConstants.EDIT_DELETE);
     deleteAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
     deleteAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE_DISABLED));
     SelectionHelper.registerToSelectionChanges(deleteAction, selectionProvider);
@@ -221,7 +221,7 @@ public class EditCommonActionProvider extends CommonActionProvider {
 
     // Initialize the rename action.
     renameAction = new RenameAction(activePart);
-    renameAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.RENAME);
+    renameAction.setActionDefinitionId(IWorkbenchCommandConstants.FILE_RENAME);
     SelectionHelper.registerToSelectionChanges(renameAction, selectionProvider);
   }
 }

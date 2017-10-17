@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2009 IBM Corporation and others.
+ * Copyright (c) 2006, 2017 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,7 @@ public class ProjectActionProvider extends CommonActionProvider {
    * </p>
    * @param menu context menu to add actions to
    */
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings("rawtypes")
   @Override
   public void fillContextMenu(IMenuManager menu) {
     IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();

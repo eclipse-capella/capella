@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,78 +38,78 @@ import org.polarsys.capella.core.sirius.ui.actions.NewScenarioRepresentationActi
  * The New representation action provider.
  */
 public class NewRepresentationActionProvider extends CommonActionProvider {
-  private static final String NewRepresentationAction = null;
 
 /**
    * @see org.eclipse.ui.actions.ActionGroup#fillContextMenu(org.eclipse.jface.action.IMenuManager)
    */
   @Override
-  public void fillContextMenu(IMenuManager menu_p) {
+  public void fillContextMenu(IMenuManager menu) {
 
     IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();
     Object firstElement = selection.getFirstElement();
-    
+
     if (firstElement instanceof EObject) {
       EObject firstSelectedEObject = (EObject) firstElement;
       Session currentSession = SessionManager.INSTANCE.getSession(firstSelectedEObject);
-     
+
       if (null != currentSession) {
-    	IModel sessionModel = ILibraryManager.INSTANCE.getModel(TransactionHelper.getEditingDomain(currentSession));
-    	IModel currentElementModel = ILibraryManager.INSTANCE.getModel(firstSelectedEObject);
-    	
-    	if (sessionModel.equals(currentElementModel)){
-    		Collection<Viewpoint> selectedViewpoints = currentSession.getSelectedViewpoints(false);
-    		Collection<RepresentationDescription> descriptions =
-            DialectManager.INSTANCE.getAvailableRepresentationDescriptions(selectedViewpoints, firstSelectedEObject);
-    		if (!descriptions.isEmpty()) {
-    		  // Creates the "New Diagram / Table" menu.
-    		  MenuManager newDiagramMenu = new MenuManager(Messages.NewRepresentationActionProvider_NewRepresentationAction_Title, "capella.project.diagrams.menu"); //$NON-NLS-1$
+        IModel sessionModel = ILibraryManager.INSTANCE.getModel(TransactionHelper.getEditingDomain(currentSession));
+        IModel currentElementModel = ILibraryManager.INSTANCE.getModel(firstSelectedEObject);
+
+        if (sessionModel == null || sessionModel.equals(currentElementModel)) {
+          Collection<Viewpoint> selectedViewpoints = currentSession.getSelectedViewpoints(false);
+          Collection<RepresentationDescription> descriptions = DialectManager.INSTANCE
+              .getAvailableRepresentationDescriptions(selectedViewpoints, firstSelectedEObject);
+          if (!descriptions.isEmpty()) {
+            // Creates the "New Diagram / Table" menu.
+            MenuManager newDiagramMenu = new MenuManager(
+                Messages.NewRepresentationActionProvider_NewRepresentationAction_Title,
+                "capella.project.diagrams.menu"); //$NON-NLS-1$
 
             // Computes the "New Diagram..." menu content according to the current selection.
             for (RepresentationDescription description : descriptions) {
               if (DialectManager.INSTANCE.canCreate(firstSelectedEObject, description)) {
-                NewRepresentationAction representationAction = buildNewRepresentationAction(firstSelectedEObject, description, currentSession);
+                NewRepresentationAction representationAction = buildNewRepresentationAction(firstSelectedEObject,
+                    description, currentSession);
                 newDiagramMenu.add(representationAction);
               }
             }
-          
-          //create scenarios from capabilities
-          if (firstSelectedEObject instanceof AbstractCapability) {
-			AbstractCapability capa = (AbstractCapability) firstSelectedEObject;
-			for (Viewpoint vp : selectedViewpoints) {
-				for (RepresentationDescription representationDescription : vp.getOwnedRepresentations()) {
-					if (representationDescription instanceof SequenceDiagramDescription) {						
-						SequenceDiagramDescription sdd = (SequenceDiagramDescription) representationDescription;
-						String precondition = sdd.getPreconditionExpression();
-						try {
-							if (InterpreterUtil.getInterpreter(capa).evaluateBoolean(capa, precondition)) {						
-								NewRepresentationAction action = new NewScenarioRepresentationAction(sdd, capa, currentSession);
-								newDiagramMenu.add(action);
-							}
-						} catch (EvaluationException e) {
-							// Catch exception silently,
-							e.printStackTrace();
-						}
-					}
-				} 
-			}
-		  }
 
-          // Attaches the "New Diagram..." menu to group.new of the parent commonViewer contextual menu.
-          if (newDiagramMenu.getSize() > 0) {
-            menu_p.appendToGroup(ICommonMenuConstants.GROUP_NEW, newDiagramMenu);
-          	}
+            // Create scenarios from capabilities
+            if (firstSelectedEObject instanceof AbstractCapability) {
+              AbstractCapability capa = (AbstractCapability) firstSelectedEObject;
+              for (Viewpoint vp : selectedViewpoints) {
+                for (RepresentationDescription representationDescription : vp.getOwnedRepresentations()) {
+                  if (representationDescription instanceof SequenceDiagramDescription) {
+                    SequenceDiagramDescription sdd = (SequenceDiagramDescription) representationDescription;
+                    String precondition = sdd.getPreconditionExpression();
+                    try {
+                      if (InterpreterUtil.getInterpreter(capa).evaluateBoolean(capa, precondition)) {
+                        NewRepresentationAction action = new NewScenarioRepresentationAction(sdd, capa, currentSession);
+                        newDiagramMenu.add(action);
+                      }
+                    } catch (EvaluationException e) {
+                      // Catch exception silently
+                      e.printStackTrace();
+                    }
+                  }
+                }
+              }
+            }
+
+            // Attaches the "New Diagram..." menu to group.new of the parent commonViewer contextual menu.
+            if (newDiagramMenu.getSize() > 0) {
+              menu.appendToGroup(ICommonMenuConstants.GROUP_NEW, newDiagramMenu);
+            }
           }
- 		}
+        }
       }
     }
   }
 
   // Build an action allowing to create new representation according to the current selection.
-  private NewRepresentationAction buildNewRepresentationAction(EObject selectedEObject_p, RepresentationDescription description_p, Session session_p) {
-
-    NewRepresentationAction action = new NewRepresentationAction(description_p, selectedEObject_p, session_p);
-
+  private NewRepresentationAction buildNewRepresentationAction(EObject selectedEObject, RepresentationDescription description, Session session) {
+    NewRepresentationAction action = new NewRepresentationAction(description, selectedEObject, session);
     return action;
   }
 }
