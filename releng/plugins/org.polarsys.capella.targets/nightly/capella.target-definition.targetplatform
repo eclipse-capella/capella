@@ -51,14 +51,14 @@ location kitalpha-runtime-master-latest "http://download.polarsys.org/kitalpha/u
 }
 
 location diffmerge-core-master "http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site" {
-	org.eclipse.emf.diffmerge.feature.feature.group
-	org.eclipse.emf.diffmerge.sirius.feature.feature.group
-	org.eclipse.emf.diffmerge.gmf.feature.feature.group
+	org.eclipse.emf.diffmerge.feature.feature.group lazy
+	org.eclipse.emf.diffmerge.sirius.feature.feature.group lazy
+	org.eclipse.emf.diffmerge.gmf.feature.feature.group lazy
 }
 
 location diffmerge-patterns-master "http://download.eclipse.org/diffmerge/releases/0.9.0/edm-patterns-site" {
-	org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group
-	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group
+	org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group lazy
+	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group lazy
 }
 
 location amalgam-1.9.0 "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.9.0-N17/capella" {

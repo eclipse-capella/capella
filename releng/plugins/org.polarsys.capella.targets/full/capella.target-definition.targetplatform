@@ -72,19 +72,19 @@ location kitalpha-sdk-master "https://hudson.polarsys.org/kitalpha/job/Kitalpha_
 }
 
 location diffmerge-core-master "http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site" {
-	org.eclipse.emf.diffmerge.feature.feature.group
-	org.eclipse.emf.diffmerge.feature.source.feature.group
-	org.eclipse.emf.diffmerge.sirius.feature.feature.group
-	org.eclipse.emf.diffmerge.sirius.feature.source.feature.group
-	org.eclipse.emf.diffmerge.gmf.feature.feature.group
-	org.eclipse.emf.diffmerge.gmf.feature.source.feature.group
+	org.eclipse.emf.diffmerge.feature.feature.group lazy
+	org.eclipse.emf.diffmerge.feature.source.feature.group lazy
+	org.eclipse.emf.diffmerge.sirius.feature.feature.group lazy
+	org.eclipse.emf.diffmerge.sirius.feature.source.feature.group lazy
+	org.eclipse.emf.diffmerge.gmf.feature.feature.group lazy
+	org.eclipse.emf.diffmerge.gmf.feature.source.feature.group lazy
 }
 
 location diffmerge-patterns-master "http://download.eclipse.org/diffmerge/releases/0.9.0/edm-patterns-site" {
-	org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group
-	org.eclipse.emf.diffmerge.patterns.sdk.feature.source.feature.group
-	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group
-	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.source.feature.group
+	org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group lazy
+	org.eclipse.emf.diffmerge.patterns.sdk.feature.source.feature.group lazy
+	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group lazy
+	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.source.feature.group lazy
 }
 
 location amalgam-1.9.0 "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.9.0-N17/capella" {
