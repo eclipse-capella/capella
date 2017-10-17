@@ -1,25 +1,4 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <toc topic="html/21. Model DiffMerge/21.1. Model DiffMerge.html" label="21.1. Model DiffMerge">
-	<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html" label="Model DiffMerge">
-		<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Overview" label="Overview"></topic>
-		<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Starting_the_Diff.2FMerge_Tool" label="Starting the Diff/Merge Tool"></topic>
-		<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Configuration_and_Features_of_the_Diff.2FMerge_Tool" label="Configuration and Features of the Diff/Merge Tool">
-			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Main_interface" label="Main interface"></topic>
-			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Vertical_sections" label="Vertical sections"></topic>
-			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Horizontal_sections" label="Horizontal sections"></topic>
-			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Lock_of_models" label="Lock of models"></topic>
-			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Differences_navigation" label="Differences navigation"></topic>
-			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Filter_and_Focus_capabilities" label="Filter and Focus capabilities"></topic>
-			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Difference_Values_manipulation" label="Difference Values manipulation"></topic>
-			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Differences_manipulation" label="Differences manipulation"></topic>
-			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Apply_button" label="Apply button"></topic>
-		</topic>
-		<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Capella_Diff.2FMerge_process" label="Capella Diff/Merge process">
-			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Starting_the_Diff.2FMerge_tool" label="Starting the Diff/Merge tool"></topic>
-			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Resolve_differences" label="Resolve differences"></topic>
-			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Save_for_committing_the_resolution_results" label="Save for committing the resolution results"></topic>
-		</topic>
-		<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Textual_Comparison" label="Textual Comparison"></topic>
-		<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Local_File_History" label="Local File History"></topic>
-	</topic>
+	<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html" label="Model Diff/Merge"></topic>
 </toc>
