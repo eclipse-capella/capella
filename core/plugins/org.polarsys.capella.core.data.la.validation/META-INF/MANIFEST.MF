@@ -7,6 +7,8 @@ Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.polarsys.capella.core.validation
 Export-Package: org.polarsys.capella.core.data.la.validation.capabilityRealization,
+ org.polarsys.capella.core.data.la.validation.la,
+ org.polarsys.capella.core.data.la.validation.logicalActor,
  org.polarsys.capella.core.data.la.validation.logicalComponent,
  org.polarsys.capella.core.data.la.validation.logicalFunction
 Bundle-ActivationPolicy: lazy

@@ -10,7 +10,9 @@ Require-Bundle: org.polarsys.capella.core.validation,
  org.apache.commons.lang,
  org.polarsys.capella.core.sirius.analysis
 Export-Package: org.polarsys.capella.core.data.interaction.validation.instanceRole,
+ org.polarsys.capella.core.data.interaction.validation.interaction_use,
  org.polarsys.capella.core.data.interaction.validation.scenario,
- org.polarsys.capella.core.data.interaction.validation.sequence_message
+ org.polarsys.capella.core.data.interaction.validation.sequence_message,
+ org.polarsys.capella.core.data.interaction.validation.stateFragment
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

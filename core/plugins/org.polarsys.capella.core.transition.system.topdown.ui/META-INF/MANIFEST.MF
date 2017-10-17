@@ -14,7 +14,10 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.flexibility.wizards
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.core.transition.system.topdown.ui.handlers,
- org.polarsys.capella.core.transition.system.topdown.ui.commands
+Export-Package: org.polarsys.capella.core.transition.system.topdown.ui,
+ org.polarsys.capella.core.transition.system.topdown.ui.commands,
+ org.polarsys.capella.core.transition.system.topdown.ui.handlers,
+ org.polarsys.capella.core.transition.system.topdown.ui.handlers.tester,
+ org.polarsys.capella.core.transition.system.topdown.ui.preferences
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

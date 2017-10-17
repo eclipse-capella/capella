@@ -8,8 +8,10 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.polarsys.capella.core.validation,
  org.polarsys.capella.core.data.helpers
 Export-Package: org.polarsys.capella.core.data.ctx.validation.actor,
+ org.polarsys.capella.core.data.ctx.validation.ca,
  org.polarsys.capella.core.data.ctx.validation.capability,
  org.polarsys.capella.core.data.ctx.validation.mission,
+ org.polarsys.capella.core.data.ctx.validation.system,
  org.polarsys.capella.core.data.ctx.validation.systemFunction
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

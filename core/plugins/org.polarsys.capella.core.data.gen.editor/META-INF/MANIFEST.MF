@@ -8,7 +8,10 @@ Bundle-Activator: org.polarsys.capella.core.data.capellamodeller.presentation.Ca
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.polarsys.capella.core.data.cs.presentation,
+Export-Package: org.polarsys.capella.core.data.capellacommon.presentation,
+ org.polarsys.capella.core.data.capellacore.presentation,
+ org.polarsys.capella.core.data.capellamodeller.presentation,
+ org.polarsys.capella.core.data.cs.presentation,
  org.polarsys.capella.core.data.ctx.presentation,
  org.polarsys.capella.core.data.epbs.presentation,
  org.polarsys.capella.core.data.fa.presentation,
@@ -18,10 +21,8 @@ Export-Package: org.polarsys.capella.core.data.cs.presentation,
  org.polarsys.capella.core.data.information.presentation,
  org.polarsys.capella.core.data.interaction.presentation,
  org.polarsys.capella.core.data.la.presentation,
- org.polarsys.capella.core.data.capellacommon.presentation,
- org.polarsys.capella.core.data.capellacore.presentation,
- org.polarsys.capella.core.data.capellamodeller.presentation,
  org.polarsys.capella.core.data.oa.presentation,
+ org.polarsys.capella.core.data.pa.deployment.presentation,
  org.polarsys.capella.core.data.pa.presentation,
  org.polarsys.capella.core.data.requirement.presentation,
  org.polarsys.capella.core.data.sharedmodel.presentation

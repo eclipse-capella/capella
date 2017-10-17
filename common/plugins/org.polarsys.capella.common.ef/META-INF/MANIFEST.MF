@@ -11,6 +11,7 @@ Require-Bundle: org.eclipse.emf.workspace;visibility:=reexport,
 Export-Package: org.polarsys.capella.common.ef,
  org.polarsys.capella.common.ef.command,
  org.polarsys.capella.common.ef.domain,
- org.polarsys.capella.common.ef.internal.command
+ org.polarsys.capella.common.ef.internal.command,
+ org.polarsys.capella.common.ef.internal.domain
 Bundle-Activator: org.polarsys.capella.common.ef.CapellaEFPlugin
 Bundle-Localization: plugin

@@ -26,6 +26,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.transition.system;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.core.transition.diagram.commands,
- org.polarsys.capella.core.transition.diagram.handlers
+Export-Package: org.polarsys.capella.core.transition.diagram,
+ org.polarsys.capella.core.transition.diagram.commands,
+ org.polarsys.capella.core.transition.diagram.constants,
+ org.polarsys.capella.core.transition.diagram.handlers,
+ org.polarsys.capella.core.transition.diagram.helpers
 Bundle-Localization: plugin

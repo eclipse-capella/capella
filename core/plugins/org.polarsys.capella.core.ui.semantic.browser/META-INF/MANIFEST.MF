@@ -13,5 +13,9 @@ Require-Bundle: org.polarsys.capella.common.ui.toolkit.browser;visibility:=reexp
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.ui.properties
 Export-Package: org.polarsys.capella.core.ui.semantic.browser,
+ org.polarsys.capella.core.ui.semantic.browser.content.provider,
+ org.polarsys.capella.core.ui.semantic.browser.internal,
+ org.polarsys.capella.core.ui.semantic.browser.label.provider,
+ org.polarsys.capella.core.ui.semantic.browser.model,
  org.polarsys.capella.core.ui.semantic.browser.view
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

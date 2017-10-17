@@ -20,6 +20,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.libraries.ui,
  org.polarsys.capella.core.libraries.ui.handlers,
+ org.polarsys.capella.core.libraries.ui.move,
  org.polarsys.capella.core.libraries.ui.propertyTester,
  org.polarsys.capella.core.libraries.ui.views.libraryManager,
  org.polarsys.capella.core.libraries.ui.views.libraryManager.accessPolicyManager,

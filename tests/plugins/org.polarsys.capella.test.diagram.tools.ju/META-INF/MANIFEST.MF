@@ -14,6 +14,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.test.diagram.tools.ju,
  org.polarsys.capella.test.diagram.tools.ju.cdb,
+ org.polarsys.capella.test.diagram.tools.ju.diagram.actions,
  org.polarsys.capella.test.diagram.tools.ju.es,
  org.polarsys.capella.test.diagram.tools.ju.idb,
  org.polarsys.capella.test.diagram.tools.ju.lab,
@@ -29,5 +30,6 @@ Export-Package: org.polarsys.capella.test.diagram.tools.ju,
  org.polarsys.capella.test.diagram.tools.ju.testsuites.partial,
  org.polarsys.capella.test.diagram.tools.ju.xab,
  org.polarsys.capella.test.diagram.tools.ju.xcbd,
+ org.polarsys.capella.test.diagram.tools.ju.xdfb,
  org.polarsys.capella.test.diagram.tools.ju.xfbd
 Bundle-Localization: plugin

@@ -8,6 +8,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.common.mdsofa.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.core.application.appstart
+Export-Package: org.polarsys.capella.core.application,
+ org.polarsys.capella.core.application.appstart
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin

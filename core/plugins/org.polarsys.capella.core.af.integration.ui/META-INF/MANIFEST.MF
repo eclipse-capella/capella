@@ -16,5 +16,6 @@ Require-Bundle: org.eclipse.gmf.runtime.diagram.ui,
  org.polarsys.kitalpha.ad.viewpoint.ui,
  org.polarsys.kitalpha.emde
 Export-Package: org.polarsys.capella.core.af.integration.ui,
+ org.polarsys.capella.core.af.integration.ui.listener,
  org.polarsys.capella.core.af.integration.ui.provider,
  org.polarsys.capella.core.af.integration.ui.services

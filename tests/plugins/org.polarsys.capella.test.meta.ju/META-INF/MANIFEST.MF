@@ -9,4 +9,6 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.test.framework;bundle-version="0.8.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.polarsys.capella.test.meta.ju.testSuites
+Export-Package: org.polarsys.capella.test.meta.ju,
+ org.polarsys.capella.test.meta.ju.testSuites,
+ org.polarsys.capella.test.meta.ju.testcases.modelProvider

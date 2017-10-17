@@ -21,6 +21,17 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.common.flexibility.wizards
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.common.re.ui.handlers.uihead,
- org.polarsys.capella.common.re.ui.renderers
+Export-Package: org.polarsys.capella.common.re.ui,
+ org.polarsys.capella.common.re.ui.decorators,
+ org.polarsys.capella.common.re.ui.group.renderers,
+ org.polarsys.capella.common.re.ui.handlers,
+ org.polarsys.capella.common.re.ui.handlers.merge,
+ org.polarsys.capella.common.re.ui.handlers.options,
+ org.polarsys.capella.common.re.ui.handlers.scope,
+ org.polarsys.capella.common.re.ui.handlers.uihead,
+ org.polarsys.capella.common.re.ui.queries,
+ org.polarsys.capella.common.re.ui.renderers,
+ org.polarsys.capella.common.re.ui.subcommands.handlers,
+ org.polarsys.capella.common.re.ui.subcommands.properties,
+ org.polarsys.capella.common.re.ui.subcommands.renderers
 Bundle-Localization: plugin

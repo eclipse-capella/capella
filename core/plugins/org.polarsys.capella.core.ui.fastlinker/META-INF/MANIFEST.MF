@@ -17,6 +17,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.ui.fastlinker,
  org.polarsys.capella.core.ui.fastlinker.listeners,
- org.polarsys.capella.core.ui.fastlinker.view
+ org.polarsys.capella.core.ui.fastlinker.view,
+ org.polarsys.capella.core.ui.fastlinker.view.providers
 Bundle-Localization: plugin
 Import-Package: org.polarsys.capella.core.platform.sirius.ui.commands

@@ -32,14 +32,17 @@ Require-Bundle: org.eclipse.ui.ide,
  org.polarsys.capella.common.tools.report.appenders.usage;visibility:=reexport
 Export-Package: org.polarsys.capella.core.sirius.ui,
  org.polarsys.capella.core.sirius.ui.actions,
+ org.polarsys.capella.core.sirius.ui.closeproject,
  org.polarsys.capella.core.sirius.ui.copyformat,
  org.polarsys.capella.core.sirius.ui.copyformat.keyproviders,
  org.polarsys.capella.core.sirius.ui.danalysis,
  org.polarsys.capella.core.sirius.ui.editor,
  org.polarsys.capella.core.sirius.ui.helper,
+ org.polarsys.capella.core.sirius.ui.internal,
  org.polarsys.capella.core.sirius.ui.listener,
  org.polarsys.capella.core.sirius.ui.runnable,
- org.polarsys.capella.core.sirius.ui.session
+ org.polarsys.capella.core.sirius.ui.session,
+ org.polarsys.capella.core.sirius.ui.wizard
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.core.sirius.ui.SiriusUIPlugin
 

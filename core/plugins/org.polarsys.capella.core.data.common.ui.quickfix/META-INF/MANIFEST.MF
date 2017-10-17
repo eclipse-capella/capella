@@ -15,3 +15,5 @@ Require-Bundle: org.polarsys.capella.core.validation.ui,
  org.polarsys.capella.common.ef,
  org.polarsys.capella.core.platform.sirius.ui.actions
 Bundle-Localization: plugin
+Export-Package: org.polarsys.capella.core.data.common.ui.quickfix,
+ org.polarsys.capella.core.data.common.ui.quickfix.resolver

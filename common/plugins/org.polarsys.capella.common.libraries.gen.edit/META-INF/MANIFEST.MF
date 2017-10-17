@@ -8,7 +8,8 @@ Bundle-Activator: org.polarsys.capella.common.libraries.provider.LibrariesEditPl
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.polarsys.capella.common.libraries.provider
+Export-Package: org.polarsys.capella.common.libraries.gen.provider,
+ org.polarsys.capella.common.libraries.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.common.data.core.gen;visibility:=reexport,
  org.polarsys.kitalpha.emde.model.edit;visibility:=reexport,
