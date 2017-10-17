@@ -8,7 +8,7 @@
 
  
 | 
-Only nominal cases are supported by the 				current implementation of libraries for now. Please check section 				9.4 &ldquo;Usage Restrictions&rdquo; for more details. In the 				context of Capella Team, please also check section 16.9 				&ldquo;Working with libraries in a multi-user context&rdquo;.
+Only nominal cases are supported by the 				current implementation of libraries for now. Please check section &ldquo;Usage Restrictions&rdquo; for more details. 
 
  
 |}  

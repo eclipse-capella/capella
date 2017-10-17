@@ -232,7 +232,6 @@ AllocatingFunctions_ManageFunctionAllocation.png
 AllocatingFunctions_on_LogicalSystem.png
 AllocatingFunctions_RepresentParentFunction_LF_A.png
 
-4.01. Melody Advance Perspective_html_m226282b1.png
 4.02. Tips and Tricks_html_22ef5f2.png
 4.02. Tips and Tricks_html_29213549.png
 4.02. Tips and Tricks_html_3297b071.png

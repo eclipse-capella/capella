@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<toc label="8.3. Update REC-RPL" link_to="PLUGINS_ROOT/org.polarsys.capella.re.doc/toc-RE.xml#contribution" topic="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html">
-	<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html" label="Updates Between REC and RPL">
-		<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html#Update_of_a_REC_from_its_SOURCE" label="Update of a REC from its SOURCE"></topic>
-		<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html#Update_of_a_RPL_from_its_REC" label="Update of a RPL from its REC"></topic>
-		<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html#Update_of_a_REC_from_its_RPL" label="Update of a REC from its RPL"></topic>
-	</topic>
-</toc>

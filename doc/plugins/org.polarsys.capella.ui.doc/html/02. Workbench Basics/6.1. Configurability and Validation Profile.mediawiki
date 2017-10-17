@@ -357,25 +357,6 @@ Referencing 				a Capella Configuration Project from a Capella project will 				
 <br>
 <br>
 
-         
-{| border="1"
-|-
-| 
-[[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_3c78e109.png|48x48px]]
-
- 
-| 
-For 				'''Capella Team''' 				solution, the only way to apply shared preferences is to 				reference a shared read-only Capella Configuration Project from 				each Capella Team connection project. Though it is thoroughly possible to have project-scope configuration for connected project, this functionality is not recommended. This could make different clients not to have the same configuration for the same project on the server and may lead to incoherent behaviors.
-
- 
-|}  
-<br>
-<br>
-
- 
-<br>
-<br>
-
  
 == Validation Profiles ==
  

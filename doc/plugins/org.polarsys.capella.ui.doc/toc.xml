@@ -49,10 +49,10 @@
 				<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Example_of_initialization_with_-EPF" label="Example of initialization with -EPF"></topic>
 			</topic>
 		</topic>
-		<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Melody_Project_specific_preferences" label="Capella Project specific preferences"></topic>
-		<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Melody_Configuration_Project" label="Capella Configuration Project">
-			<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Creating_Melody_Configuration_Project" label="Creating Capella Configuration Project"></topic>
-			<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Referencing_Melody_Configuration_Project" label="Referencing Capella Configuration Project"></topic>
+		<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Capella_Project_specific_preferences" label="Capella Project specific preferences"></topic>
+		<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Capella_Configuration_Project" label="Capella Configuration Project">
+			<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Creating_Capella_Configuration_Project" label="Creating Capella Configuration Project"></topic>
+			<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Referencing_Capella_Configuration_Project" label="Referencing Capella Configuration Project"></topic>
 		</topic>
 		<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Validation_Profiles" label="Validation Profiles">
 			<topic href="html/02. Workbench Basics/6.1. Configurability and Validation Profile.html#Creating_Validation_Profiles" label="Creating Validation Profiles"></topic>
