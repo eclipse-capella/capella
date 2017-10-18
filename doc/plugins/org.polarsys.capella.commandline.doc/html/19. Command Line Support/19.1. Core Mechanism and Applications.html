@@ -10,45 +10,70 @@
 		<h2 id="Overview">Overview</h2>
 		<p>Capella provides the capacity to launch actions from command line. Potential actions are Model Validation, HTML Production, XML Export, Export as ZIP and Migration.</p>
 		<p>The core mechanism provides the following parameters:</p>
-		<p>Mandatory parameters:</p>
-		<ul>
-			<li>appid: defines the id of the command line application to launch. Command line applications are plugins that extend the core mechanism (e.g. model validation).</li>
-		</ul>
-		<ul>
-			<li>filepath: defines the path to your aird file.</li>
-		</ul>
-		<ul>
-			<li>outputfolder: defines the path to the output folder.</li>
-		</ul>
-		<p>This behavior can be overridden by applications.</p>
-		<p>
-			<br/>
-		</p>
-		<p>Optional parameters:</p>
-		<ul>
-			<li>nosplash: launch Capella without the initial splash screen</li>
-		</ul>
-		<ul>
-			<li>consolelog: allows to log messages into the console output</li>
-		</ul>
-		<ul>
-			<li>data: defines the path to the workspace.</li>
-		</ul>
-		<ul>
-			<li>import: defines a list of the path of the Eclipse projects to import into the workspace before doing the actual job. The list have to be placed into quotes "" and separated by vertical bar '|'.</li>
-		</ul>
-		<ul>
-			<li>forceimport: unreference/delete exiting project from the workspace while importing projects using command line. Without this option, an error is logged if a project with the same name than the imported project exists already in the workspace.</li>
-		</ul>
-		<ul>
-			<li>forceoutputfoldercreation: automatically create the output folder. If the folder already exists, this one is deleted and a new output folder is created.</li>
-		</ul>
-		<ul>
-			<li>logfile: defines the path to the log file (if not specified, log file is created in the workspace directory).</li>
-		</ul>
-		<ul>
-			<li>help: prints the help message</li>
-		</ul>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Category</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>appid</td>
+				<td>mandatory</td>
+				<td>defines the id of the command line application to launch. Command line applications are plugins that extend the core mechanism (e.g. model validation)</td>
+			</tr>
+			<tr>
+				<td>filepath</td>
+				<td>mandatory</td>
+				<td>defines the path to your aird file</td>
+			</tr>
+			<tr>
+				<td>outputfolder</td>
+				<td>mandatory</td>
+				<td>defines the path to the output folder</td>
+			</tr>
+			<tr>
+				<td>nosplash</td>
+				<td>optional</td>
+				<td>launch Capella without the initial splash screen</td>
+			</tr>
+			<tr>
+				<td>consolelog</td>
+				<td>optional</td>
+				<td>allows to log messages into the console output</td>
+			</tr>
+			<tr>
+				<td>data</td>
+				<td>optional</td>
+				<td>defines the path to the workspace</td>
+			</tr>
+			<tr>
+				<td>import</td>
+				<td>optional</td>
+				<td>defines a list of the path of the Eclipse projects to import into the workspace before doing the actual job. The list have to be placed into quotes "" and separated by a 
+					<i>pipe</i> character
+				</td>
+			</tr>
+			<tr>
+				<td>forceimport</td>
+				<td>optional</td>
+				<td>unreference/delete exiting project from the workspace while importing projects using command line. Without this option, an error is logged if a project with the same name than the imported project exists already in the workspace</td>
+			</tr>
+			<tr>
+				<td>forceoutputfoldercreation</td>
+				<td>optional</td>
+				<td>automatically create the output folder. If the folder already exists, this one is deleted and a new output folder is created</td>
+			</tr>
+			<tr>
+				<td>logfile</td>
+				<td>optional</td>
+				<td>defines the path to the log file (if not specified, log file is created in the workspace directory)</td>
+			</tr>
+			<tr>
+				<td>help</td>
+				<td>optional</td>
+				<td>prints the help message</td>
+			</tr>
+		</table>
 		<p>
 			<br/>
 		</p>
@@ -505,14 +530,10 @@
 		<p>This command will migrate selected project(s). A workspace folder is created and located where the command is triggered or in a specified path given by the 
 			<i>-data</i> parameter. It contains a log file into .metadata folder. If the selected project is a folder, it will be backed up and migrated inside this folder, otherwise if the input is a zip file it will be unzipped and projects inside will be migrated into the workspace folder.
 		</p>
-		<p>If you migrate a project using libraries, project list order is not important but all libraries must be included.</p>
 		<p>The parameter 
 			<i>-import is mandatory</i>, but parameters 
 			<i>-filepath</i> and 
 			<i>-outputfolder</i> are not. 
-		</p>
-		<p>
-			<br/>
 		</p>
 		<p><u>
 			<b>Simple use case:</b></u>
@@ -536,6 +557,24 @@
 			<i>-data &lt;workspacePath&gt;</i>
 		</p>
 		<p>This command imports a .zip into the specified workspace and migrate all projects inside.</p>
+		<p>If you migrate a project using libraries, all dependent projects/libraries must be included and the sequence order is important.</p>
+		<p>Consider the example below:</p>
+		<ul>
+			<li>Project1 (references) Library1 &amp; Library2</li>
+			<li>Library1 (references) Library3</li>
+			<li>Library2 (references) Library3</li>
+		</ul>
+		<p>The migration process must be done according the following sequence:</p>
+		<ol>
+			<li>Library3</li>
+			<li>Library1</li>
+			<li>Library2</li>
+			<li>Project1</li>
+		</ol>
+		<p>In such a case, the migration sequence can be done either by launching several unary migration commands on each project/library or by giving the whole sequence through the 
+			<i>-import</i> parameter (using 
+			<i>|</i> separator).
+		</p>
 		<p><u>
 			<b>Complex use case:</b></u>
 		</p>
@@ -552,7 +591,7 @@
 			<i>org.polarsys.capella.migration</i>
 		</p>
 		<p>
-			<i>-import "D:/Projects/sysmodelLibrary_Super | D:/Projects/sysmodelLibrary_Sub | D:/Projects/sysmodel"</i>
+			<i>-import "D:/Projects/Library3 | D:/Projects/Library1 | D:/Projects/Library2 | D:/Projects/Project1"</i>
 		</p>
 		<p>
 			<i>-data &lt;workspacePath&gt;</i>
@@ -560,6 +599,6 @@
 		<p>
 			<i>-logfile D:\CommandLineLog\log.html</i>
 		</p>
-		<p>This command migrate the given projects and create a log.html at the specified location.</p>
+		<p>This command migrates the given project/libraries and create a log.html at the specified location.</p>
 	</body>
 </html>

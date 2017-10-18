@@ -5,45 +5,59 @@
  
 Capella provides the capacity to launch actions from command line. Potential actions are Model Validation, HTML Production, XML Export, Export as ZIP and Migration.
 
- 
 The core mechanism provides the following parameters:
 
- 
-Mandatory parameters:
+{|
+!Name
+!Category
+!Description
+|-
+|appid
+|mandatory
+|defines the id of the command line application to launch. Command line applications are plugins that extend the core mechanism (e.g. model validation)
+|-
+|filepath
+|mandatory
+|defines the path to your aird file
+|-
+|outputfolder
+|mandatory
+|defines the path to the output folder
+|-
+|nosplash
+|optional
+|launch Capella without the initial splash screen
+|-
+|consolelog
+|optional
+|allows to log messages into the console output
+|-
+|data
+|optional
+|defines the path to the workspace
+|-
+|import
+|optional
+|defines a list of the path of the Eclipse projects to import into the workspace before doing the actual job. The list have to be placed into quotes "" and separated by a ''pipe'' character
+|-
+|forceimport
+|optional
+|unreference/delete exiting project from the workspace while importing projects using command line. Without this option, an error is logged if a project with the same name than the imported project exists already in the workspace
+|-
+|forceoutputfoldercreation
+|optional
+|automatically create the output folder. If the folder already exists, this one is deleted and a new output folder is created
+|-
+|logfile
+|optional
+|defines the path to the log file (if not specified, log file is created in the workspace directory)
+|-
+|help
+|optional
+|prints the help message
+|}
 
-* appid: defines the id of the command line application to launch. Command line applications are plugins that extend the core mechanism (e.g. model validation).
- 
-* filepath: defines the path to your aird file.
-
-* outputfolder: defines the path to the output folder.
-
- 
-This behavior can be overridden by applications.
-
- 
 <br>
-
- 
-Optional parameters:
-
-* nosplash: launch Capella without the initial splash screen
-
-* consolelog: allows to log messages into the console output
-
-* data: defines the path to the workspace.
-
-* import: defines a list of the path of the Eclipse projects to import into the workspace before doing the actual job. The list have to be placed into quotes "" and separated by vertical bar '|'.
-
-* forceimport: unreference/delete exiting project from the workspace while importing projects using command line. Without this option, an error is logged if a project with the same name than the imported project exists already in the workspace.
-
-* forceoutputfoldercreation: automatically create the output folder. If the folder already exists, this one is deleted and a new output folder is created.
-
-* logfile: defines the path to the log file (if not specified, log file is created in the workspace directory).
-
-* help: prints the help message
-
-<br>
-
          
 {| border="1"
 |-
@@ -410,11 +424,7 @@ Mandatory parameters:
 
 This command will migrate selected project(s). A workspace folder is created and located where the command is triggered or in a specified path given by the ''-data'' parameter. It contains a log file into .metadata folder. If the selected project is a folder, it will be backed up and migrated inside this folder, otherwise if the input is a zip file it will be unzipped and projects inside will be migrated into the workspace folder.
 
-If you migrate a project using libraries, project list order is not important but all libraries must be included.
-
 The parameter ''-import is mandatory'', but parameters ''-filepath'' and ''-outputfolder'' are not. 
-
-<br>
 
 <u>'''Simple use case:'''</u>
 
@@ -430,6 +440,21 @@ The parameter ''-import is mandatory'', but parameters ''-filepath'' and ''-outp
 
 This command imports a .zip into the specified workspace and migrate all projects inside.
 
+If you migrate a project using libraries, all dependent projects/libraries must be included and the sequence order is important.
+
+Consider the example below:
+* Project1 (references) Library1 & Library2
+* Library1 (references) Library3
+* Library2 (references) Library3
+
+The migration process must be done according the following sequence:
+# Library3
+# Library1
+# Library2
+# Project1
+
+In such a case, the migration sequence can be done either by launching several unary migration commands on each project/library or by giving the whole sequence through the ''-import'' parameter (using ''|'' separator).
+
 <u>'''Complex use case:'''</u>
 
 ''&lt;''''CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
@@ -438,11 +463,11 @@ This command imports a .zip into the specified workspace and migrate all project
 
 ''-appid ''''org.polarsys.capella.migration''
  
-''-import "D:/Projects/sysmodelLibrary_Super | D:/Projects/sysmodelLibrary_Sub | D:/Projects/sysmodel"''
+''-import "D:/Projects/Library3 | D:/Projects/Library1 | D:/Projects/Library2 | D:/Projects/Project1"''
  
 ''-data &lt;workspacePath&gt;''
  
 ''-logfile D:\CommandLineLog\log.html''
 
-This command migrate the given projects and create a log.html at the specified location.
+This command migrates the given project/libraries and create a log.html at the specified location.
    
