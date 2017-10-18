@@ -422,7 +422,7 @@ Mandatory parameters:
 
 === Migration ===
 
-This command will migrate selected project(s). A workspace folder is created and located where the command is triggered or in a specified path given by the ''-data'' parameter. It contains a log file into .metadata folder. If the selected project is a folder, it will be backed up and migrated inside this folder, otherwise if the input is a zip file it will be unzipped and projects inside will be migrated into the workspace folder.
+This command will migrate the project(s) given as input. A workspace folder is created and located where the command is triggered or in a specified path given by the ''-data'' parameter. It creates a log file located in the .metadata folder of the workspace. If the input project is a folder, it will be backed up and migrated inside this folder, otherwise if the input is a zip file it will be unzipped and project(s) inside it will be migrated into the workspace folder.
 
 The parameter ''-import is mandatory'', but parameters ''-filepath'' and ''-outputfolder'' are not. 
 
@@ -440,14 +440,14 @@ The parameter ''-import is mandatory'', but parameters ''-filepath'' and ''-outp
 
 This command imports a .zip into the specified workspace and migrate all projects inside.
 
-If you migrate a project using libraries, all dependent projects/libraries must be included and the sequence order is important.
+If you migrate a project using libraries, all dependent projects/libraries must be included and the sequence order matters.
 
 Consider the example below:
 * Project1 (references) Library1 & Library2
 * Library1 (references) Library3
 * Library2 (references) Library3
 
-The migration process must be done according the following sequence:
+The migration process must be done according to the following sequence:
 # Library3
 # Library1
 # Library2
@@ -469,5 +469,5 @@ In such a case, the migration sequence can be done either by launching several u
  
 ''-logfile D:\CommandLineLog\log.html''
 
-This command migrates the given project/libraries and create a log.html at the specified location.
+This command migrates the given project/libraries and creates a log.html at the specified location.
    
