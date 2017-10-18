@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,8 +35,8 @@ public class DirectDataValueNameCheck extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
     if (eObj instanceof DataValue) {
       DataValue dataValue = (DataValue) eObj;
 
@@ -44,11 +44,11 @@ public class DirectDataValueNameCheck extends AbstractValidationRule {
         // the name should not be null or empty_string
         String dataValueName = dataValue.getName();
         if ((null == dataValueName) || dataValueName.equalsIgnoreCase(ICommonConstants.EMPTY_STRING)) {
-          return ctx_p.createFailureStatus("Data Value should be named"); //$NON-NLS-1$
+          return ctx.createFailureStatus("Data Value should be named"); //$NON-NLS-1$
         }
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
   class DataValueDefinedInItsNamespace implements Specification<DataValue> {
@@ -57,9 +57,9 @@ public class DirectDataValueNameCheck extends AbstractValidationRule {
      * {@inheritDoc}
      */
     @Override
-    public boolean isSatisfiedBy(DataValue candidate_p) {
+    public boolean isSatisfiedBy(DataValue candidate) {
       // consider [MultipilicityElement, DataType, Class, DataPkg]
-      Collection<Setting> inverseReferencesOfEObject = CapellaElementExt.getInverseReferencesOfEObject(candidate_p);
+      Collection<Setting> inverseReferencesOfEObject = CapellaElementExt.getInverseReferencesOfEObject(candidate);
       for (Setting setting : inverseReferencesOfEObject) {
         EStructuralFeature eStructuralFeature = setting.getEStructuralFeature();
         if (eStructuralFeature.equals(DatavaluePackage.Literals.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES)
@@ -75,7 +75,7 @@ public class DirectDataValueNameCheck extends AbstractValidationRule {
      * {@inheritDoc}
      */
     @Override
-    public Specification<DataValue> or(Specification<DataValue> specification_p) {
+    public Specification<DataValue> or(Specification<DataValue> specification) {
       return null;
     }
 
@@ -83,7 +83,7 @@ public class DirectDataValueNameCheck extends AbstractValidationRule {
      * {@inheritDoc}
      */
     @Override
-    public Specification<DataValue> and(Specification<DataValue> specification_p) {
+    public Specification<DataValue> and(Specification<DataValue> specification) {
       return null;
     }
 

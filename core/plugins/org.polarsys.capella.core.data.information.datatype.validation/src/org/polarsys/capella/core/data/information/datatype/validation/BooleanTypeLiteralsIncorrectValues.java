@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,10 +22,10 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 public class BooleanTypeLiteralsIncorrectValues extends AbstractValidationRule {
 
 	@Override
-	public IStatus validate(IValidationContext ctx_p) 
+	public IStatus validate(IValidationContext ctx) 
 	{
 		// Get the target
-		EObject eObj = ctx_p.getTarget();
+		EObject eObj = ctx.getTarget();
 		// if the target is a Boolean Type
 		if(eObj instanceof BooleanType){
 		  BooleanType booleanType = (BooleanType) eObj;
@@ -39,13 +39,13 @@ public class BooleanTypeLiteralsIncorrectValues extends AbstractValidationRule {
 	        // return failure message if  both values are either true or false
 	        if (literalBV1.isValue() == literalBV2.isValue()) {
 	          // return failure
-	          return createFailureStatus(ctx_p, new Object[] { booleanType.getName() });	          
+	          return ctx.createFailureStatus(new Object[] { booleanType.getName() });	          
 	        }  
         }
       }
 		}
 		// return success
-		return ctx_p.createSuccessStatus();
+		return ctx.createSuccessStatus();
 	}
 
 }

@@ -88,7 +88,7 @@ public class MDCHK_PartionableElementCyle extends AbstractValidationRule {
             if (innerType == alreadySawElem) {
               String alreadySawElemName = alreadySawElem.getName();
               // There is a cycle!!!
-              return createFailureStatus(ctx, new Object[] { alreadySawElemName, partitionName, innerPartitionInnerPartitionName });
+              return ctx.createFailureStatus(new Object[] { alreadySawElemName, partitionName, innerPartitionInnerPartitionName });
             }
           }
         }

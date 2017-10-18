@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,9 +45,9 @@ public class MDCHK_DataPkg_Naming_1 extends AbstractValidationRule {
   private static final String TYPE_PREFIX = " ("; //$NON-NLS-1$
 
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
     if (eType == EMFEventType.NULL) {
       // check "naming conflicts" under dataPkg
       if (eObj instanceof DataPkg) {
@@ -100,7 +100,7 @@ public class MDCHK_DataPkg_Naming_1 extends AbstractValidationRule {
             hasConflict = true;
             // Creates a conflict status
             String currentConflict = TYPE_PREFIX + conflictTypeNames + TYPE_SUFFIX + key;
-            IStatus failureStatus = createFailureStatus(ctx_p, new Object[] { elt.eClass().getName(), elt.getLabel(), currentConflict });
+            IStatus failureStatus = ctx.createFailureStatus(new Object[] { elt.eClass().getName(), elt.getLabel(), currentConflict });
             statuses.add(failureStatus);
           }
         }
@@ -108,26 +108,26 @@ public class MDCHK_DataPkg_Naming_1 extends AbstractValidationRule {
         if (hasConflict) {
           // There are conflicts
           // Returns them as a multi-statuses status
-          return ConstraintStatus.createMultiStatus(ctx_p, statuses);
+          return ConstraintStatus.createMultiStatus(ctx, statuses);
         }
       }
     }
     // No conflict found
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
-  public boolean containsIgnoredCaseString(Set<String> list_p, String str_p) {
-    for (String string : list_p) {
-      if (string.equalsIgnoreCase(str_p)) {
+  public boolean containsIgnoredCaseString(Set<String> list, String str) {
+    for (String string : list) {
+      if (string.equalsIgnoreCase(str)) {
         return true;
       }
     }
     return false;
   }
 
-  public String getIgnoredCaseString(Set<String> list_p, String str_p) {
-    for (String string : list_p) {
-      if (string.equalsIgnoreCase(str_p)) {
+  public String getIgnoredCaseString(Set<String> list, String str) {
+    for (String string : list) {
+      if (string.equalsIgnoreCase(str)) {
         return string;
       }
     }

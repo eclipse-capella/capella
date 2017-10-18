@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,10 +23,10 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 public class DataValueUnitconsistency extends AbstractValidationRule 
 {
   @Override
-  public IStatus validate(IValidationContext ctx_p) 
+  public IStatus validate(IValidationContext ctx) 
   {
     // Get the target
-    EObject eObj = ctx_p.getTarget();
+    EObject eObj = ctx.getTarget();
     if(eObj instanceof NumericValue)
     {
       // Typing the DataValue
@@ -52,11 +52,11 @@ public class DataValueUnitconsistency extends AbstractValidationRule
     	  }
       }
       if(failure){
-    	  return createFailureStatus(ctx_p, new Object[] {dataValue.getName()});
+    	  return ctx.createFailureStatus(new Object[] {dataValue.getName()});
       }
     }
     // Validation success
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
   

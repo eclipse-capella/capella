@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,25 +22,25 @@ import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMes
 // Keep the MVC pattern safe ! Do not add setters here (use the controller to set model attributes).
 public interface ISelectInvokedOperationModel {
 
-	public boolean doesElementMustBeCreated();
-	public boolean doesCommunicationLinksMustBeCreated();
-	public boolean doesCommunicationLinksCreationCanBeToggled();
-	public boolean doesPortsMustBeCreated();
-	public boolean doesPortsCreationCanBeToggled();
-	public boolean doesTheMessageReturnAValue();
-	public boolean doesHideTechnicalInterfaceNames();
-	public boolean doesRestrictToExistingStaticCommunicationCompatibility();
-	public boolean doesAllowSelectionOfExistingExchangeItems();
-	public List<AbstractCommunication> getSelectableElements();
-	public List<EObject> getSelectableElementContainers();
-	public List<AbstractCommunication> getPossibleElements();
-	public List<Interface> getInterfaces(boolean onlyStructural, boolean restrictToStaticCommunications);
-	public MessageKind getMessageKind();
-	public List<ExchangeMechanism> getCompatibleExchangeMechanism();
-	public CapellaElement createOrUpdateElement();
-	public boolean isValid();
-	public AbstractCommunication getSelectedElement();
-	public boolean doesInterfaceNameCanBeEdited();
-	public boolean doesInterfaceCanBeChosen();
-	public String getSelectedInterfaceName();
+	boolean doesElementMustBeCreated();
+	boolean doesCommunicationLinksMustBeCreated();
+	boolean doesCommunicationLinksCreationCanBeToggled();
+	boolean doesPortsMustBeCreated();
+	boolean doesPortsCreationCanBeToggled();
+	boolean doesTheMessageReturnAValue();
+	boolean doesHideTechnicalInterfaceNames();
+	boolean doesRestrictToExistingStaticCommunicationCompatibility();
+	boolean doesAllowSelectionOfExistingExchangeItems();
+	List<AbstractCommunication> getSelectableElements();
+	List<EObject> getSelectableElementContainers();
+	List<AbstractCommunication> getPossibleElements();
+	List<Interface> getInterfaces(boolean onlyStructural, boolean restrictToStaticCommunications);
+	MessageKind getMessageKind();
+	List<ExchangeMechanism> getCompatibleExchangeMechanism();
+	CapellaElement createOrUpdateElement();
+	boolean isValid();
+	AbstractCommunication getSelectedElement();
+	boolean doesInterfaceNameCanBeEdited();
+	boolean doesInterfaceCanBeChosen();
+	String getSelectedInterfaceName();
 }

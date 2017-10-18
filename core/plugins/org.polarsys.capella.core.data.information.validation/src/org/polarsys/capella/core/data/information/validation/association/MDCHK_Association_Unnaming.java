@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,18 +21,18 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 public class MDCHK_Association_Unnaming extends AbstractValidationRule {
 
 	@Override
-	public IStatus validate(IValidationContext ctx_p) {
+	public IStatus validate(IValidationContext ctx) {
 	    // Get the Target
-	    EObject eObj = ctx_p.getTarget();
+	    EObject eObj = ctx.getTarget();
         // Get the name of the element
         String currentElementName = ((NamedElement)eObj).getName();
         // If the name is empty or null
         if(currentElementName.equalsIgnoreCase(ICommonConstants.EMPTY_STRING) || currentElementName.equalsIgnoreCase("null")) //$NON-NLS-1$
         {
           // Failure
-          return createFailureStatus(ctx_p, new Object[] { eObj.eClass().getName() });
+          return ctx.createFailureStatus(new Object[] { eObj.eClass().getName() });
         }
-        return ctx_p.createSuccessStatus();
+        return ctx.createSuccessStatus();
 	}
 
 }

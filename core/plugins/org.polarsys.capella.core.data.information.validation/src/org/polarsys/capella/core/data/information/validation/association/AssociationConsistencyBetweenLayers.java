@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,9 +32,9 @@ public class AssociationConsistencyBetweenLayers extends AbstractValidationRule 
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
     Collection<IStatus> statuses = new ArrayList<IStatus>();
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof Association) {
@@ -42,16 +42,16 @@ public class AssociationConsistencyBetweenLayers extends AbstractValidationRule 
         Collection<Classifier> linkedClassifiers = AssociationExt.getLinkedClassifiers(ass);
         for (Classifier classifier : linkedClassifiers) {
           if (!CapellaLayerCheckingExt.isElementFromCurrentOrUpperLayer(classifier, ass)) {
-            IStatus status = ctx_p.createFailureStatus(ass.getName(), classifier.getName(), classifier.eClass().getName());
+            IStatus status = ctx.createFailureStatus(ass.getName(), classifier.getName(), classifier.eClass().getName());
             statuses.add(status);
           }
         }
       }
     }
     if (statuses.isEmpty()) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
-    return ConstraintStatus.createMultiStatus(ctx_p, statuses);
+    return ConstraintStatus.createMultiStatus(ctx, statuses);
   }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,9 +28,9 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 public class ClassAssociationConsistency extends AbstractValidationRule {
 
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
+  public IStatus validate(IValidationContext ctx) {
     Collection<IStatus> statuses = new ArrayList<IStatus>();
-    EObject eObj = ctx_p.getTarget();
+    EObject eObj = ctx.getTarget();
     if (eObj instanceof Association) {
     	Association assoc = (Association) eObj;
     	List<Property> propsToCheck = new ArrayList<Property>();
@@ -49,15 +49,15 @@ public class ClassAssociationConsistency extends AbstractValidationRule {
       for (Property property : propsToCheck) {
 		
       if (!PropertyExt.isTyped(property)) {
-          IStatus status = ctx_p.createFailureStatus(new Object[] { property.getName(), assoc.getName()});
+          IStatus status = ctx.createFailureStatus(new Object[] { property.getName(), assoc.getName()});
           statuses.add(status);
         }
       }
       
       if (!statuses.isEmpty()) {
-        return ConstraintStatus.createMultiStatus(ctx_p, statuses);
+        return ConstraintStatus.createMultiStatus(ctx, statuses);
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

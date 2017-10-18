@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ public class MDCHK_Parameter_Type_1 extends AbstractValidationRule {
         Parameter para = (Parameter) eObj;
 
         if ((para.getType() == null)) {
-          return createFailureStatus(ctx, new Object[] { para.getName() });
+          return ctx.createFailureStatus(new Object[] { para.getName() });
         }
       }
     }

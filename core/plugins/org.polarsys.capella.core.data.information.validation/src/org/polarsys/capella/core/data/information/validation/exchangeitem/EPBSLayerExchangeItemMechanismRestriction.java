@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,8 +22,8 @@ public class EPBSLayerExchangeItemMechanismRestriction extends AbstractExchangeI
    * {@inheritDoc}
    */
   @Override
-  public boolean isInCurrentLayer(CapellaElement element_p) {
-    return CapellaLayerCheckingExt.isAOrInEPBSLayer(element_p);
+  public boolean isInCurrentLayer(CapellaElement element) {
+    return CapellaLayerCheckingExt.isAOrInEPBSLayer(element);
   }
 
   /**

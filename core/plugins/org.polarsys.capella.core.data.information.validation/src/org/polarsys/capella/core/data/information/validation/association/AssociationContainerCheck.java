@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,9 +25,9 @@ public class AssociationContainerCheck extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
 
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof Association) {
@@ -39,7 +39,7 @@ public class AssociationContainerCheck extends AbstractValidationRule {
           if (null != sourceClass) {
             EObject sourceClassContainer = sourceClass.eContainer();
             if (!sourceClassContainer.equals(ass.eContainer())) {
-              return ctx_p.createFailureStatus(ass, sourceClassContainer);
+              return ctx.createFailureStatus(ass, sourceClassContainer);
             }
           }
 
@@ -47,11 +47,11 @@ public class AssociationContainerCheck extends AbstractValidationRule {
           // check that association container is source & target classe common ancestors
           boolean assoIsInLinkedClassifiersCommonAcestor = AssociationExt.isInCommonAncestorOf(ass, AssociationExt.getLinkedClassifiers(ass));
           if (!assoIsInLinkedClassifiersCommonAcestor) {
-            return ctx_p.createFailureStatus(ass, AssociationExt.getLinkedClassifiersCommonAncestor(ass));
+            return ctx.createFailureStatus(ass, AssociationExt.getLinkedClassifiersCommonAncestor(ass));
 
           }
         }
-        return ctx_p.createSuccessStatus();
+        return ctx.createSuccessStatus();
       }
     }
     return null;

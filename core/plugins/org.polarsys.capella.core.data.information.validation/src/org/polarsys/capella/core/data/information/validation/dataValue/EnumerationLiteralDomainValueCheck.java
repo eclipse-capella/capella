@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,8 +45,8 @@ public class EnumerationLiteralDomainValueCheck extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
 
     if (eObj instanceof Enumeration) {
       Enumeration enumeration = (Enumeration) eObj;
@@ -55,25 +55,25 @@ public class EnumerationLiteralDomainValueCheck extends AbstractValidationRule {
 
         if (!this.isSatisfiedBy(enumerationLiteral, enumeration)) {
 
-          return ctx_p.createFailureStatus(eObj, typingState(enumeration), computeDiagnosticMessage(enumeration));
+          return ctx.createFailureStatus(eObj, typingState(enumeration), computeDiagnosticMessage(enumeration));
         }
 
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
   /**
    * The rule is the following:</br> If the enumeration domain type is T, then the literal domain values are </br> - All defined and typed by T or a subtype of
    * T</br> - All defined and not typed</br> If the enumeration domain is untyped, then the literal domain values are</br> - All defined and are all numeric
    * values</br> - All undefined</br>
-   * @param enumerationLiteral_p
-   * @param enum_p
+   * @param enumerationLiteral
+   * @param enumeration
    * @return
    */
-  public boolean isSatisfiedBy(EnumerationLiteral enumerationLiteral_p, Enumeration enum_p) {
-    DataType domainType = enum_p.getDomainType();
-    EList<EnumerationLiteral> ownedLiterals = enum_p.getOwnedLiterals();
+  public boolean isSatisfiedBy(EnumerationLiteral enumerationLiteral, Enumeration enumeration) {
+    DataType domainType = enumeration.getDomainType();
+    EList<EnumerationLiteral> ownedLiterals = enumeration.getOwnedLiterals();
 
     if (ownedLiterals.isEmpty()) {
       return true;
@@ -96,13 +96,13 @@ public class EnumerationLiteralDomainValueCheck extends AbstractValidationRule {
   }
 
   /**
-   * Checks that ownedLiterals_p are all defined (expected_p=true) or all undefined (expected_p==false)
-   * @param ownedLiterals_p
-   * @param expected_p
+   * Checks that ownedLiterals are all defined (expected=true) or all undefined (expected==false)
+   * @param ownedLiterals
+   * @param expected
    * @return
    */
-  private boolean checkDefined(EList<EnumerationLiteral> ownedLiterals_p) {
-    for (EnumerationLiteral literal : ownedLiterals_p) { // expected=true => all defined
+  private boolean checkDefined(EList<EnumerationLiteral> ownedLiterals) {
+    for (EnumerationLiteral literal : ownedLiterals) { // expected=true => all defined
       DataValue domainValue = literal.getDomainValue();
       if (null == domainValue) {
         return false;
@@ -130,8 +130,8 @@ public class EnumerationLiteralDomainValueCheck extends AbstractValidationRule {
     return true;
   }
 
-  private boolean checkUndefined(EList<EnumerationLiteral> ownedLiterals_p) {
-    for (EnumerationLiteral literal : ownedLiterals_p) {
+  private boolean checkUndefined(EList<EnumerationLiteral> ownedLiterals) {
+    for (EnumerationLiteral literal : ownedLiterals) {
       DataValue domainValue = literal.getDomainValue();
       // prod00118670:START
       if (null == domainValue) {
@@ -159,11 +159,11 @@ public class EnumerationLiteralDomainValueCheck extends AbstractValidationRule {
   }
 
   /**
-   * @param ownedLiterals_p
+   * @param ownedLiterals
    * @return
    */
-  private boolean areNumericValues(EList<EnumerationLiteral> ownedLiterals_p) {
-    for (EnumerationLiteral literal : ownedLiterals_p) {
+  private boolean areNumericValues(EList<EnumerationLiteral> ownedLiterals) {
+    for (EnumerationLiteral literal : ownedLiterals) {
       DataValue domainValue = literal.getDomainValue();
 
       DataValue value = getReferencedLiteralValue(domainValue);
@@ -177,14 +177,14 @@ public class EnumerationLiteralDomainValueCheck extends AbstractValidationRule {
   }
 
   /**
-   * @param firstLiteral_p
-   * @param domainType_p
+   * @param firstLiteral
+   * @param domainType
    */
-  private TypeRelationship getRelationShip(EnumerationLiteral firstLiteral_p, DataType domainType_p) {
-    if (ownedLiteralTypeIsConcordantWithEnumDomainType(firstLiteral_p, domainType_p, TypeRelationship.FIRST_UNTYPED)) {
+  private TypeRelationship getRelationShip(EnumerationLiteral firstLiteral, DataType domainType) {
+    if (ownedLiteralTypeIsConcordantWithEnumDomainType(firstLiteral, domainType, TypeRelationship.FIRST_UNTYPED)) {
       return TypeRelationship.FIRST_UNTYPED;
     }
-    if (ownedLiteralTypeIsConcordantWithEnumDomainType(firstLiteral_p, domainType_p, TypeRelationship.SUBTYPE)) {
+    if (ownedLiteralTypeIsConcordantWithEnumDomainType(firstLiteral, domainType, TypeRelationship.SUBTYPE)) {
       return TypeRelationship.SUBTYPE;
     }
     return null;
@@ -192,25 +192,25 @@ public class EnumerationLiteralDomainValueCheck extends AbstractValidationRule {
   }
 
   /**
-   * Checks that owned literals are eighter all untyped or all typed by domainType_p or a sub type
-   * @param ownedLiterals_p
-   * @param domainType_p
+   * Checks that owned literals are eighter all untyped or all typed by domainType or a sub type
+   * @param ownedLiterals
+   * @param domainType
    */
-  private boolean ownedLiteralTypesAreConcordantWithEnumDomainType(EList<EnumerationLiteral> ownedLiterals_p, DataType domainType_p) {
-    if (ownedLiterals_p.isEmpty()) {
+  private boolean ownedLiteralTypesAreConcordantWithEnumDomainType(EList<EnumerationLiteral> ownedLiterals, DataType domainType) {
+    if (ownedLiterals.isEmpty()) {
       return true;
     }
 
-    EnumerationLiteral firstLiteral = ownedLiterals_p.get(0);
+    EnumerationLiteral firstLiteral = ownedLiterals.get(0);
     // check if the relationship of the first literal with the domain type of the enumration
-    TypeRelationship firstLiteralRelationShip = getRelationShip(firstLiteral, domainType_p);
+    TypeRelationship firstLiteralRelationShip = getRelationShip(firstLiteral, domainType);
     if (firstLiteralRelationShip == null) { // first literal is not in concordance with Enum domain type
       return false;
     }
-    List<EnumerationLiteral> ownedLiteralsTail = ownedLiterals_p.subList(1, ownedLiterals_p.size());
+    List<EnumerationLiteral> ownedLiteralsTail = ownedLiterals.subList(1, ownedLiterals.size());
     for (EnumerationLiteral literal : ownedLiteralsTail) {
 
-      if (!ownedLiteralTypeIsConcordantWithEnumDomainType(literal, domainType_p, firstLiteralRelationShip)) {
+      if (!ownedLiteralTypeIsConcordantWithEnumDomainType(literal, domainType, firstLiteralRelationShip)) {
         return false;
       }
 
@@ -219,18 +219,18 @@ public class EnumerationLiteralDomainValueCheck extends AbstractValidationRule {
   }
 
   /**
-   * Checks that literal domain type and domainType_p have relationship_p as relationship
-   * @param literal_p
-   * @param domainType_p
-   * @param relationship_p
+   * Checks that literal domain type and domainType have relationship as relationship
+   * @param literal
+   * @param domainType
+   * @param relationship
    */
-  private boolean ownedLiteralTypeIsConcordantWithEnumDomainType(EnumerationLiteral literal_p, DataType domainType_p, TypeRelationship relationship_p) {
-    DataValue domainValue = literal_p.getDomainValue();
+  private boolean ownedLiteralTypeIsConcordantWithEnumDomainType(EnumerationLiteral literal, DataType domainType, TypeRelationship relationship) {
+    DataValue domainValue = literal.getDomainValue();
     DataValue value = getReferencedLiteralValue(domainValue);
 
     if ((value instanceof LiteralBooleanValue) || (value instanceof LiteralNumericValue) || (value instanceof LiteralStringValue)) {
       AbstractType type = value.getAbstractType();
-      if (areConcordantTypes(type, domainType_p, relationship_p)) {
+      if (areConcordantTypes(type, domainType, relationship)) {
         return true;
       }
     }
@@ -239,18 +239,18 @@ public class EnumerationLiteralDomainValueCheck extends AbstractValidationRule {
   }
 
   /**
-   * Check that the relationship btw type_p and domainType_p is the one specified by relationshipCheck_p
-   * @param type_p
-   * @param domainType_p
-   * @param relationshipCheck_p
+   * Check that the relationship btw type and domainType is the one specified by relationshipCheck
+   * @param type
+   * @param domainType
+   * @param relationshipCheck
    * @return
    */
-  private boolean areConcordantTypes(AbstractType type_p, DataType domainType_p, TypeRelationship relationshipCheck_p) {
-    switch (relationshipCheck_p) {
+  private boolean areConcordantTypes(AbstractType type, DataType domainType, TypeRelationship relationshipCheck) {
+    switch (relationshipCheck) {
       case FIRST_UNTYPED:
-        return null == type_p;
+        return null == type;
       case SUBTYPE:
-        return isEqualOrSubtypeOf(type_p, domainType_p);
+        return isEqualOrSubtypeOf(type, domainType);
       default:
         return false;
     }
@@ -258,30 +258,30 @@ public class EnumerationLiteralDomainValueCheck extends AbstractValidationRule {
   }
 
   /**
-   * @param domainValue_p
+   * @param domainValue
    * @return
    */
-  private DataValue getReferencedLiteralValue(DataValue domainValue_p) {
-    if (domainValue_p instanceof BooleanReference) {
-      return getReferencedLiteralBooleanValue(domainValue_p);
+  private DataValue getReferencedLiteralValue(DataValue domainValue) {
+    if (domainValue instanceof BooleanReference) {
+      return getReferencedLiteralBooleanValue(domainValue);
     }
-    if (domainValue_p instanceof NumericReference) {
-      return getReferencedLiteralNumericValue(domainValue_p);
+    if (domainValue instanceof NumericReference) {
+      return getReferencedLiteralNumericValue(domainValue);
     }
-    if (domainValue_p instanceof StringReference) {
-      return getReferencedLiteralStringValue(domainValue_p);
+    if (domainValue instanceof StringReference) {
+      return getReferencedLiteralStringValue(domainValue);
     }
     // datavalue is not a reference => return the datavalue
-    return domainValue_p;
+    return domainValue;
   }
 
   /**
    * Recursively navigate through references to the referenced Boolean literal value
-   * @param domainValue_p
+   * @param domainValue
    * @return
    */
-  private LiteralBooleanValue getReferencedLiteralBooleanValue(DataValue domainValue_p) {
-    Object ref = domainValue_p.eGet(DatavaluePackage.eINSTANCE.getBooleanReference_ReferencedValue());
+  private LiteralBooleanValue getReferencedLiteralBooleanValue(DataValue domainValue) {
+    Object ref = domainValue.eGet(DatavaluePackage.eINSTANCE.getBooleanReference_ReferencedValue());
     while ((ref instanceof BooleanReference) && (((BooleanReference) ref).eGet(DatavaluePackage.eINSTANCE.getBooleanReference_ReferencedValue()) != null)) {
       ref = ((BooleanReference) ref).eGet(DatavaluePackage.eINSTANCE.getBooleanReference_ReferencedValue());
     }
@@ -293,11 +293,11 @@ public class EnumerationLiteralDomainValueCheck extends AbstractValidationRule {
 
   /**
    * Recursively navigate through references to the referenced String literal value
-   * @param domainValue_p
+   * @param domainValue
    * @return
    */
-  private LiteralStringValue getReferencedLiteralStringValue(DataValue domainValue_p) {
-    Object ref = domainValue_p.eGet(DatavaluePackage.eINSTANCE.getStringReference_ReferencedValue());
+  private LiteralStringValue getReferencedLiteralStringValue(DataValue domainValue) {
+    Object ref = domainValue.eGet(DatavaluePackage.eINSTANCE.getStringReference_ReferencedValue());
     while ((ref instanceof StringReference) && (((StringReference) ref).eGet(DatavaluePackage.eINSTANCE.getStringReference_ReferencedValue()) != null)) {
       ref = ((StringReference) ref).eGet(DatavaluePackage.eINSTANCE.getStringReference_ReferencedValue());
     }
@@ -309,11 +309,11 @@ public class EnumerationLiteralDomainValueCheck extends AbstractValidationRule {
 
   /**
    * Recursively navigate through references to the referenced Numeric literal value
-   * @param domainValue_p
+   * @param domainValue
    * @return
    */
-  private LiteralNumericValue getReferencedLiteralNumericValue(DataValue domainValue_p) {
-    Object ref = domainValue_p.eGet(DatavaluePackage.eINSTANCE.getNumericReference_ReferencedValue());
+  private LiteralNumericValue getReferencedLiteralNumericValue(DataValue domainValue) {
+    Object ref = domainValue.eGet(DatavaluePackage.eINSTANCE.getNumericReference_ReferencedValue());
     while ((ref instanceof NumericReference) && (((NumericReference) ref).eGet(DatavaluePackage.eINSTANCE.getNumericReference_ReferencedValue()) != null)) {
       ref = ((NumericReference) ref).eGet(DatavaluePackage.eINSTANCE.getNumericReference_ReferencedValue());
     }
@@ -324,48 +324,48 @@ public class EnumerationLiteralDomainValueCheck extends AbstractValidationRule {
   }
 
   /**
-   * @param enum_p
+   * @param enumeration
    * @return
    */
-  private String computeDiagnosticMessage(Enumeration enum_p) {
-    if (isTyped(enum_p)) {
+  private String computeDiagnosticMessage(Enumeration enumeration) {
+    if (isTyped(enumeration)) {
       return Messages.EnumerationLiteralDomainValueCheck_typedEnum_diagnostic;
     }
     return Messages.EnumerationLiteralDomainValueCheck_unTypedEnum_diagnostic;
   }
 
   /**
-   * @param enum_p
+   * @param enumeration
    * @return
    */
-  private String typingState(Enumeration enum_p) {
+  private String typingState(Enumeration enumeration) {
 
-    return isTyped(enum_p) ? "typed" : "not typed"; //$NON-NLS-1$ //$NON-NLS-2$
+    return isTyped(enumeration) ? "typed" : "not typed"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   /**
-   * @param enum_p
+   * @param enumeration
    * @return
    */
-  private boolean isTyped(Enumeration enum_p) {
-    return null != enum_p.getDomainType();
+  private boolean isTyped(Enumeration enumeration) {
+    return null != enumeration.getDomainType();
   }
 
-  private boolean isNull(Object elt_p, boolean expected_p) {
-    if (elt_p == null) {
-      return expected_p;
+  private boolean isNull(Object elt, boolean expected) {
+    if (elt == null) {
+      return expected;
     }
-    return !expected_p;
+    return !expected;
   }
 
-  private boolean isEqualOrSubtypeOf(AbstractType type_p, DataType domainType_p) {
-    if ((null == domainType_p) || (null == type_p)) {
+  private boolean isEqualOrSubtypeOf(AbstractType type, DataType domainType) {
+    if ((null == domainType) || (null == type)) {
       return false;
     }
-    List<GeneralizableElement> subTypes = GeneralizableElementExt.getAllSubGeneralizableElements(domainType_p);
-    if (subTypes.contains(type_p)) {
+    List<GeneralizableElement> subTypes = GeneralizableElementExt.getAllSubGeneralizableElements(domainType);
+    if (subTypes.contains(type)) {
       return true;
-    } else if (type_p.equals(domainType_p)) {
+    } else if (type.equals(domainType)) {
       return true;
     }
     return false;

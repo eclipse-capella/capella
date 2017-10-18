@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,8 +34,8 @@ public class DataValueReferenceReferencedValue extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
     if (eObj instanceof BooleanReference
     		|| eObj instanceof NumericReference
     		|| eObj instanceof StringReference
@@ -47,12 +47,12 @@ public class DataValueReferenceReferencedValue extends AbstractValidationRule {
         if (null != referencedValue) {
         	// if referenced value is not named raise a failure status.
 			if (null == referencedValue.getName() || referencedValue.getName().equals(ICommonConstants.EMPTY_STRING)) {
-				return createFailureStatus(ctx_p, new Object[] {((DataValue)eObj).getName(),eObj.eClass().getName()});
+				return ctx.createFailureStatus(new Object[] {((DataValue)eObj).getName(),eObj.eClass().getName()});
 			}
 		}
     }
 
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
 }

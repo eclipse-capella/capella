@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,9 +30,9 @@ public abstract class AbstractPropertyTypeRule extends AbstractValidationRule {
 	   * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
 	   */
 	  @Override
-	  public IStatus validate(IValidationContext ctx_p) {
-	    EObject eObj = ctx_p.getTarget();
-	    EMFEventType eType = ctx_p.getEventType();
+	  public IStatus validate(IValidationContext ctx) {
+	    EObject eObj = ctx.getTarget();
+	    EMFEventType eType = ctx.getEventType();
 
 	    if (eType == EMFEventType.NULL) {
 	      if (eObj instanceof Property) {
@@ -41,7 +41,7 @@ public abstract class AbstractPropertyTypeRule extends AbstractValidationRule {
 	        // decide weather to continue the validation rule: based on primitive type check 
 	        // of a container
 	        if(isParentPrimitiveCheckApplied(eContainer))
-	        	return  ctx_p.createSuccessStatus();
+	        	return  ctx.createSuccessStatus();
 	        
 	        // Filter the property bound to an Association
 	        if (PropertyExt.getRegardingAssociation(property) == null) {
@@ -49,24 +49,24 @@ public abstract class AbstractPropertyTypeRule extends AbstractValidationRule {
 	          if (abstractType instanceof Class) {
 	            Class cls = (Class) abstractType;
 	            if (!cls.isIsPrimitive()) {
-	              return createFailureStatus(ctx_p, new Object[] { property.getName(), cls.getName(),cls.eClass().getName() });
+	              return ctx.createFailureStatus(new Object[] { property.getName(), cls.getName(),cls.eClass().getName() });
 	            }
 	          }else if (abstractType instanceof Collection) {
 	            Collection collection = (Collection) abstractType;
 	            if (!collection.isIsPrimitive()) {
-	              return createFailureStatus(ctx_p, new Object[] { property.getName(), collection.getName(),collection.eClass().getName()});
+	              return ctx.createFailureStatus(new Object[] { property.getName(), collection.getName(),collection.eClass().getName()});
 	            }
 	          }
 	        }
 	      }
 	    }
-	    return ctx_p.createSuccessStatus();
+	    return ctx.createSuccessStatus();
 	  }
 
 	/**
-	 * @param ctx_p
-	 * @param eContainer_p
+	 * @param ctx
+	 * @param eContainer
 	 * @return
 	 */
-	public abstract boolean isParentPrimitiveCheckApplied(EObject eContainer_p);
+	public abstract boolean isParentPrimitiveCheckApplied(EObject eContainer);
 }

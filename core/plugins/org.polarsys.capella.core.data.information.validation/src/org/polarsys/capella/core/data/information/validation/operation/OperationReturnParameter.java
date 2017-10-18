@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,7 @@ public class OperationReturnParameter extends AbstractValidationRule {
             count++;
         }
         if (count > 1) {
-          return createFailureStatus(ctx, new Object[] { operation.getName() });
+          return ctx.createFailureStatus(new Object[] { operation.getName() });
         }
       }
     }

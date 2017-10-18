@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,9 +42,9 @@ public class UnionPropertyQualifierConsistency extends AbstractValidationRule {
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
     if (eType == EMFEventType.NULL) {
       // Handles <code>Union</code> instances
       if (eObj instanceof UnionProperty) {
@@ -54,17 +54,17 @@ public class UnionPropertyQualifierConsistency extends AbstractValidationRule {
         // get Union
         if (container != null && container instanceof Union) {
           Union union = (Union) container;
-          // get discriminant_union_property
+          // get discriminant_unionroperty
           UnionProperty discrPro = union.getDiscriminant();
           if (null !=  discrPro) {
-            // get desiriminant_union_property Type
+            // get desiriminant_unionroperty Type
             AbstractType discrProType = discrPro.getAbstractType();
             if (null != discrProType && discrProType instanceof DataType) {
               // get all the sub type of the 'discrProType'
               List<GeneralizableElement> allSubGeneralizableElements = GeneralizableElementExt.getAllSubGeneralizableElements((DataType)discrProType);
               allSubGeneralizableElements.add((DataType)discrProType);
               
-              // get desiriminant_union_property Type EClass
+              // get desiriminant_unionroperty Type EClass
               EClass discrProTypeEClass = discrProType.eClass();
               // get qualifiers
               EList<DataValue> qualifier = unionPro.getQualifier();
@@ -83,13 +83,13 @@ public class UnionPropertyQualifierConsistency extends AbstractValidationRule {
                   
                   if(!typeCheck){
                     // create failure message
-                    statuses.add(createFailureStatus(ctx_p, new Object[] { dataValue.getName(), dataValue.eClass().getName(),
+                    statuses.add(ctx.createFailureStatus(new Object[] { dataValue.getName(), dataValue.eClass().getName(),
                                                                            unionPro.getName(), 
                                                                            discrProTypeEClass.getName()}));
                   }
                 }else{
                   if(!DataValueExt.isDataValueConsitantWithDataType(dataValue, (DataType)discrProType)){
-                    statuses.add(createFailureStatus(ctx_p, new Object[] { dataValue.getName(), dataValue.eClass().getName(),
+                    statuses.add(ctx.createFailureStatus(new Object[] { dataValue.getName(), dataValue.eClass().getName(),
                                                                            unionPro.getName(), 
                                                                            discrProTypeEClass.getName()}));
                   }
@@ -101,12 +101,12 @@ public class UnionPropertyQualifierConsistency extends AbstractValidationRule {
         }
         if (statuses.size() > 0) {
           // problem encountered
-          return ConstraintStatus.createMultiStatus(ctx_p, statuses);
+          return ConstraintStatus.createMultiStatus(ctx, statuses);
         }
       }
     }
     // No problem encountered
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
 }

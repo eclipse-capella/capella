@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,9 +34,9 @@ public class MDCHK_Union_DiscriminantUnionPropertyQualifier extends AbstractVali
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof Union) {
     	// Typing by Union  
@@ -51,16 +51,16 @@ public class MDCHK_Union_DiscriminantUnionPropertyQualifier extends AbstractVali
 	        // if any qualifier is set return failure status
 	        // because the union property which is discriminant of union can not have any qualifier 
 	        if (!discriminantQualifiers.isEmpty()) {
-	          statuses.add(createFailureStatus(ctx_p, new Object[] { discriminant.getName(), unionName }));
+	          statuses.add(ctx.createFailureStatus(new Object[] { discriminant.getName(), unionName }));
 	        }
 	        if (statuses.size() > 0) {
-	          return ConstraintStatus.createMultiStatus(ctx_p, statuses);
+	          return ConstraintStatus.createMultiStatus(ctx, statuses);
 	        }
         }
       }
     }
     // No problem encountered
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
 }

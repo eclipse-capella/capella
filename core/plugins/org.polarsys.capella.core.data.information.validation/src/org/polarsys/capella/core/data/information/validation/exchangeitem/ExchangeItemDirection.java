@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,9 +29,9 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 public class ExchangeItemDirection extends AbstractValidationRule {
 
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
     if (eType == EMFEventType.NULL) {
       // filter ExchangeItem
       if (eObj instanceof ExchangeItem) {
@@ -47,20 +47,20 @@ public class ExchangeItemDirection extends AbstractValidationRule {
               ParameterDirection direction = exchangeItemElement.getDirection();
               if (!direction.equals(ParameterDirection.UNSET)) {
                 //(ExchangeItem) of kind OPERATION should not have (ExchangeItemElement) other than PARAMETER kind
-                IStatus status =  createFailureStatus(ctx_p, new Object[] { exchangeItem.getName(), exchangeItemElement.getName() });
+                IStatus status =  ctx.createFailureStatus(new Object[] { exchangeItem.getName(), exchangeItemElement.getName() });
                 statuses.add(status);
               }
             }
           }  
         }
         if(statuses.size()>0){
-          return ConstraintStatus.createMultiStatus(ctx_p, statuses);
+          return ConstraintStatus.createMultiStatus(ctx, statuses);
         }
       }
     }
     
     // No conflict found
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
 }

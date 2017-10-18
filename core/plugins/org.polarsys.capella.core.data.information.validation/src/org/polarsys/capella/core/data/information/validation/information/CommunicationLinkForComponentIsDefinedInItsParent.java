@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,8 +31,8 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 public class CommunicationLinkForComponentIsDefinedInItsParent extends AbstractValidationRule {
 
 	@Override
-	public IStatus validate(IValidationContext ctx_p) {	
-      EObject eObj = ctx_p.getTarget();
+	public IStatus validate(IValidationContext ctx) {	
+      EObject eObj = ctx.getTarget();
       if (eObj instanceof CommunicationLink) {
     	  CommunicationLink link = (CommunicationLink) eObj;
     	  ExchangeItem item = link.getExchangeItem();
@@ -51,10 +51,10 @@ public class CommunicationLinkForComponentIsDefinedInItsParent extends AbstractV
 					  b.append(", "); //$NON-NLS-1$
 				  }
 			  }    		  
-    		  return ctx_p.createFailureStatus(link.getKind(), CapellaElementExt.getCapellaExplorerLabel(component), CapellaElementExt.getCapellaExplorerLabel(item),  b.toString()); 
+    		  return ctx.createFailureStatus(link.getKind(), CapellaElementExt.getCapellaExplorerLabel(component), CapellaElementExt.getCapellaExplorerLabel(item),  b.toString()); 
     	  }
 	  }        
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
 	}
 	private List<ExchangeItem> getExchangeItemsForLinks(Component component, CommunicationLink link) {
 		List<ExchangeItem> exchangeItems = new ArrayList<ExchangeItem>();

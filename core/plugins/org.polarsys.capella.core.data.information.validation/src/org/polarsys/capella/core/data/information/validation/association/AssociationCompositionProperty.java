@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,7 +53,7 @@ public class AssociationCompositionProperty extends AbstractValidationRule {
                 if (!(min.equalsIgnoreCase("0") || min.equalsIgnoreCase("1")) || !max.equalsIgnoreCase("1")) { //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
                   String actual = "{" + min + ICommonConstants.COMMA_CHARACTER + max + "}"; //$NON-NLS-1$//$NON-NLS-2$
                   String expected = "{0,1} or {1,1}"; //$NON-NLS-1$
-                  return createFailureStatus(ctx, new Object[] {ass.getName(), property.getName(), actual, expected });
+                  return ctx.createFailureStatus(new Object[] {ass.getName(), property.getName(), actual, expected });
                 }
               }
             }

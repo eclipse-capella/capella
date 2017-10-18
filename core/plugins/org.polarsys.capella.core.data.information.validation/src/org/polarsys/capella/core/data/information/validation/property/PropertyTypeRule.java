@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,14 +25,14 @@ public class PropertyTypeRule extends AbstractPropertyTypeRule {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean isParentPrimitiveCheckApplied(EObject eContainer_p) {
+	public boolean isParentPrimitiveCheckApplied(EObject eContainer) {
 		// if container primitive: the rule will always return success status
-		if (null != eContainer_p) {
-			if (eContainer_p instanceof Class) {
-				Class cls = (Class) eContainer_p;
+		if (null != eContainer) {
+			if (eContainer instanceof Class) {
+				Class cls = (Class) eContainer;
 				if(cls.isIsPrimitive()) return true;
-			}else if (eContainer_p instanceof Collection) {
-				Collection cls = (Collection) eContainer_p;
+			}else if (eContainer instanceof Collection) {
+				Collection cls = (Collection) eContainer;
 				if(cls.isIsPrimitive()) return true;
 			}
 		}

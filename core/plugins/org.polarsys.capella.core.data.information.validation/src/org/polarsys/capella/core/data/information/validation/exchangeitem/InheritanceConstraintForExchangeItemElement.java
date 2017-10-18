@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 public class InheritanceConstraintForExchangeItemElement extends AbstractValidationRule {
 
 	@Override
-	public IStatus validate(IValidationContext ctx_p) {	
+	public IStatus validate(IValidationContext ctx) {	
 		// get information
 		ExchangeItem ei2 = null;  
 		ExchangeItemElement eie2 = null;
@@ -37,7 +37,7 @@ public class InheritanceConstraintForExchangeItemElement extends AbstractValidat
 		ExchangeItem ei1 = null;
 		ExchangeItemElement eie1 = null;
 		AbstractType t1 = null;
-		EObject eObj = ctx_p.getTarget();
+		EObject eObj = ctx.getTarget();
     if (eObj instanceof ExchangeItem) {
     	ei2 = (ExchangeItem) eObj;
     	List<ExchangeItemElement> elements = ei2.getOwnedElements();
@@ -60,27 +60,27 @@ public class InheritanceConstraintForExchangeItemElement extends AbstractValidat
     // check information
     if (ei1 != null && ei2 != null) {
     	if (t2 != null && !(t2 instanceof GeneralizableElement) &&  eie2.getKind() == ElementKind.TYPE) {
-    		return ctx_p.createFailureStatus(
+    		return ctx.createFailureStatus(
     				CapellaElementExt.getCapellaExplorerLabel(ei2), 
     				"Exchange Item Element of "+CapellaElementExt.getCapellaExplorerLabel(ei2)+" must be a Generalizable Element"); //$NON-NLS-1$ //$NON-NLS-2$    		
     	} else if (t2 != null &&  eie2.getKind() == ElementKind.TYPE && t1 != null &&  eie1.getKind() == ElementKind.TYPE) {
     		GeneralizableElement t2Gen = (GeneralizableElement) t2;
     		if (!t1.equals(t2Gen) && !isInSuperType(t1, t2Gen)) {
-    			return ctx_p.createFailureStatus(
+    			return ctx.createFailureStatus(
     					CapellaElementExt.getCapellaExplorerLabel(ei2),
     					"Type of Exchange Item Element of "+CapellaElementExt.getCapellaExplorerLabel(ei2)+" must be a subtype of "+CapellaElementExt.getCapellaExplorerLabel(t1)); //$NON-NLS-1$ //$NON-NLS-2$
     		}
     	} else if (t2 == null && t1 != null && eie2 != null) {
-  			return ctx_p.createFailureStatus(
+  			return ctx.createFailureStatus(
   					CapellaElementExt.getCapellaExplorerLabel(ei2),
   					"Type of Exchange Item Element of "+CapellaElementExt.getCapellaExplorerLabel(ei2)+" is not defined (must be a subtype of "+CapellaElementExt.getCapellaExplorerLabel(t1)+")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$    		
     	} else if (t1 == null && t2 != null && eie1 != null) {
-  			return ctx_p.createFailureStatus(
+  			return ctx.createFailureStatus(
   					CapellaElementExt.getCapellaExplorerLabel(ei2),
   					"Type of Exchange Item Element of "+CapellaElementExt.getCapellaExplorerLabel(ei1)+" must be defined"); //$NON-NLS-1$ //$NON-NLS-2$    		
     	}
 		}
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
 	}
 	
 	private boolean isInSuperType(AbstractType element, GeneralizableElement typeLeaf) {

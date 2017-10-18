@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,19 +22,18 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  */
 public interface SimplifiedCapellaMetadata {
 
-	public static final SimplifiedCapellaMetadata INSTANCE 
-	  = new FilteredSimplifiedCapellaMetaData(new BasicSimplifiedCapellaMetaData());
+	SimplifiedCapellaMetadata INSTANCE = new FilteredSimplifiedCapellaMetaData(new BasicSimplifiedCapellaMetaData());
 	
 	/**
 	 * The annotation details key used to indicate containment semantics.
 	 * Presence of the key alone is not sufficient, see {@code VALUE_DETAILS_CONTAINMENT}.
 	 */
-	public static final String KEY_DETAILS_FEATURE = "feature"; //$NON-NLS-1$
+	String KEY_DETAILS_FEATURE = "feature"; //$NON-NLS-1$
 	
 	/**
 	 * The annotation source for 'semantic' elements.
 	 */
-	public static final String SOURCE_SEMANTIC = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$
+	String SOURCE_SEMANTIC = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$
 	
 	/**
 	 * The annotation details key that maps to the 'simplified' namespace uri of an EPackage
@@ -42,22 +41,22 @@ public interface SimplifiedCapellaMetadata {
 	 * namespace uri of the package with {@code DEFAULT_SEMANTIC_NS_URI} appended
 	 * as an additional segment.
 	 */
-	public static final String KEY_DETAILS_NS_URI = "nsURI"; //$NON-NLS-1$
+	String KEY_DETAILS_NS_URI = "nsURI"; //$NON-NLS-1$
 	
 	/**
 	 * The annotation details key that indicates the 'simplified' namespace prefix of an EPackage
 	 */
-	public static final String KEY_DETAILS_NS_PREFIX = "nsPrefix"; //$NON-NLS-1$
+	String KEY_DETAILS_NS_PREFIX = "nsPrefix"; //$NON-NLS-1$
 	
 	/**
 	 * The annotation details key for the exclude from semantics.
 	 */
-	public static final String KEY_DETAILS_EXCLUDEFROM = "excludefrom"; //$NON-NLS-1$
+	String KEY_DETAILS_EXCLUDEFROM = "excludefrom"; //$NON-NLS-1$
 	
 	/**
 	 * The string that's appended as an additional segment to an EPackages namespace uri.
 	 */
-	public static final String DEFAULT_SEMANTIC_NS_URI_SUFFIX = "semantic"; //$NON-NLS-1$
+	String DEFAULT_SEMANTIC_NS_URI_SUFFIX = "semantic"; //$NON-NLS-1$
 	
 	
 	/**
@@ -65,7 +64,7 @@ public interface SimplifiedCapellaMetadata {
 	 * @param reference
 	 * @return
 	 */
-	public boolean isNavigable(EStructuralFeature feature);
+	boolean isNavigable(EStructuralFeature feature);
 	
 	/**
 	 * Is the given reference a containment reference? 
@@ -77,7 +76,7 @@ public interface SimplifiedCapellaMetadata {
 	 *       defined in the arguments eClass or any of its superclasses.
 	 * </ul>
 	 */
-	public boolean isContainment(EReference eReference);
+	boolean isContainment(EReference eReference);
 	
 	/**
 	 * Returns the "true" containment reference for the given reference. This is either the reference itself if it is
@@ -85,7 +84,7 @@ public interface SimplifiedCapellaMetadata {
 	 * if the argument is neither a true nor a semantic containment reference.
 	 * @param reference_p
 	 */
-	public EReference getContainment(EReference eReference);
+	EReference getContainment(EReference eReference);
 
 	/**
 	 * Set/clear containment semantics on the given reference. To clear the containment
@@ -97,12 +96,12 @@ public interface SimplifiedCapellaMetadata {
 	 * @param feature the name of the original containment feature from which 'reference' is derived
 	 * @throws IllegalArgumentException if the reference is not derived
 	 */
-	public void setContainment(EReference eReference, EReference eContainmentReference);
+	void setContainment(EReference eReference, EReference eContainmentReference);
 	
 	/**
 	 * Is the given classifier a 'semantic' classifier?
 	 */
-	public boolean isSemantic(EClassifier eClassifier);
+	boolean isSemantic(EClassifier eClassifier);
 
 	/**
    * Is the given structural feature a 'semantic' structural feature?
@@ -111,29 +110,29 @@ public interface SimplifiedCapellaMetadata {
 	/**
 	 * Set/clear the 'semantic' state for the given classifier.
 	 */
-	public void setSemantic(EClassifier eClassifier, boolean semantic);
+	void setSemantic(EClassifier eClassifier, boolean semantic);
 
 	/**
 	 * Set/clear the 'navigable' state for the given reference.
 	 */
-	public void setNavigable(EStructuralFeature feature, boolean navigable);
+	void setNavigable(EStructuralFeature feature, boolean navigable);
 	
   /**
    * Get the simplified namespace prefix for the given EPackage.
    */
-  public String getSimplifiedNsPrefix(EPackage ePackage);
+  String getSimplifiedNsPrefix(EPackage ePackage);
 
   /**
    * Get the simplified namespace URI for the given EPackage.
    */
-  public String getSimplifiedNsURI(EPackage ePackage);
+  String getSimplifiedNsURI(EPackage ePackage);
 
   /**
    * Get the simplified name fore a named technical model element.
    * @param technical_p
    * @return
    */
-  public String getSimplifiedName(ENamedElement eNamedElement);
+  String getSimplifiedName(ENamedElement eNamedElement);
 
   /**
    * Should semantic annotations be processed on the given package. 
@@ -142,12 +141,12 @@ public interface SimplifiedCapellaMetadata {
    * semantic and the packages EStructuralFeatures are by definition
    * navigable. 
    */
-  public boolean isProcessAnnotations(EPackage ePackage);
+  boolean isProcessAnnotations(EPackage ePackage);
 
   /**
    * Set/clear the semantic annotation processor flag on the given package. 
    */
-  public void setProcessAnnotations(EPackage ePackage, boolean semantic);
+  void setProcessAnnotations(EPackage ePackage, boolean semantic);
 
   /**
    * Should the given processor exclude the given feature? Attention: Always returns false for non-navigable features.
@@ -155,7 +154,7 @@ public interface SimplifiedCapellaMetadata {
    * @param feature the feature to query
    * @param processor a processor id
    */
-  public boolean isExcludeFrom(EStructuralFeature feature, String processor);
+  boolean isExcludeFrom(EStructuralFeature feature, String processor);
 
 
 

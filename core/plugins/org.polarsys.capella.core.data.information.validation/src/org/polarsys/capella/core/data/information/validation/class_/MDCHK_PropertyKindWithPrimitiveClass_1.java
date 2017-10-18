@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,22 +36,22 @@ public class MDCHK_PropertyKindWithPrimitiveClass_1 extends AbstractValidationRu
 
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof Class) {
-        Class currentClass_p = (Class) eObj;
+        Class currentClass = (Class) eObj;
 
-        for (Property property : currentClass_p.getContainedProperties()) {
+        for (Property property : currentClass.getContainedProperties()) {
           Type targetType = property.getType();
 
           if (targetType instanceof Class) {
             Class targetClass = (Class) targetType;
 
-            if (currentClass_p.isIsPrimitive() && !property.getAggregationKind().equals(AggregationKind.COMPOSITION)) {
+            if (currentClass.isIsPrimitive() && !property.getAggregationKind().equals(AggregationKind.COMPOSITION)) {
               // Case : current class is primitive -> Relation kind should be 'Composition' only
-              return createFailureStatus(ctx, new Object[] { currentClass_p.getName(), property.getName()});
-            } else if (!currentClass_p.isIsPrimitive()) {
+              return createFailureStatus(ctx, new Object[] { currentClass.getName(), property.getName()});
+            } else if (!currentClass.isIsPrimitive()) {
               // Case : current class is non primitive // -> Relation kind should be 'Composition' only in case of TargetClass type is primitive
               if (targetClass.isIsPrimitive() && !property.getAggregationKind().equals(AggregationKind.COMPOSITION)) {
                 String str = "(because its property type is primitive)"; //$NON-NLS-1$
-                return createFailureStatus(ctx, new Object[] { currentClass_p.getName(), property.getName(),"not",str }); //$NON-NLS-1$
+                return createFailureStatus(ctx, new Object[] { currentClass.getName(), property.getName(),"not",str }); //$NON-NLS-1$
               }
             }
           }

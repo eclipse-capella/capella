@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,7 @@ public class MDCHK_Class_Generalization_1 extends AbstractValidationRule {
         while (iterator.hasNext()) {
           GeneralizableElement superClass = iterator.next();
           if (superClass == clz) {
-            return createFailureStatus(ctx, new Object[] { clz.getName() });
+            return ctx.createFailureStatus(new Object[] { clz.getName() });
           }
         }
       }

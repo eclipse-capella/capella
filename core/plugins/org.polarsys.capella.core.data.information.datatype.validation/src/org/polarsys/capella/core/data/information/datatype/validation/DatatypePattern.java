@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,10 +23,10 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 public class DatatypePattern extends AbstractValidationRule {
 
 	@Override
-	public IStatus validate(IValidationContext ctx_p) 
+	public IStatus validate(IValidationContext ctx) 
 	{
 		// Get the target
-		EObject eObj = ctx_p.getTarget();
+		EObject eObj = ctx.getTarget();
 		// if the target is a DataType
 		if(eObj instanceof DataType)
 		{
@@ -45,12 +45,12 @@ public class DatatypePattern extends AbstractValidationRule {
 				catch (PatternSyntaxException e)
 				{
 					// return error
-					return createFailureStatus(ctx_p, new Object[] { pattern, ((DataType)eObj).getName(), eObj.eClass().getName() });
+					return ctx.createFailureStatus(new Object[] { pattern, ((DataType)eObj).getName(), eObj.eClass().getName() });
 				}
 			}
 		}
 		// return success
-		return ctx_p.createSuccessStatus();
+		return ctx.createSuccessStatus();
 	}
 
 }

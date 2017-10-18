@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,22 +35,22 @@ public class MDCHK_DWF_D16 extends AbstractValidationRule {
    */
   @SuppressWarnings("boxing")
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
+  public IStatus validate(IValidationContext ctx) {
     IStatus result = null;
-    DataPkg pack = (DataPkg) ctx_p.getTarget();
+    DataPkg pack = (DataPkg) ctx.getTarget();
     List<List<EObject>> sccs = findSCC(pack).getValue();
     if ((sccs != null) && (sccs.size() > 0)) {
-      result = ctx_p.createFailureStatus(pack, sccs.size());
+      result = ctx.createFailureStatus(pack, sccs.size());
     } else {
-      result = ctx_p.createSuccessStatus();
+      result = ctx.createSuccessStatus();
     }
     return result;
   }
 
-  public Couple<IDirectedGraph<EObject>, List<List<EObject>>> findSCC(DataPkg pack_p) {
+  public Couple<IDirectedGraph<EObject>, List<List<EObject>>> findSCC(DataPkg pack) {
     BasicDirectedGraph<EObject> graph = new BasicDirectedGraph<EObject>();
-    for (Class clz : pack_p.getOwnedClasses()) {
-      Collection<EObject> dependencies = ClassExt.getClassDependencies2(clz).get(pack_p);
+    for (Class clz : pack.getOwnedClasses()) {
+      Collection<EObject> dependencies = ClassExt.getClassDependencies2(clz).get(pack);
       if (dependencies != null) {
         for (EObject dependency : dependencies) {
           graph.addEdge(clz, dependency);

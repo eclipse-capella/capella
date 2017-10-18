@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,9 +34,9 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
  */
 public class DataValuePattern extends AbstractValidationRule {
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
+  public IStatus validate(IValidationContext ctx) {
     // Get the target
-    EObject eObj = ctx_p.getTarget();
+    EObject eObj = ctx.getTarget();
     if ((eObj instanceof LiteralNumericValue) || (eObj instanceof LiteralStringValue)) {
       // Typing the DataValue
       DataValue dataValue = (DataValue) eObj;
@@ -44,7 +44,7 @@ public class DataValuePattern extends AbstractValidationRule {
       String value = getTargetValue(dataValue);
       // if dataValue is null or void return failure message
       if ((null == value) || value.trim().equalsIgnoreCase(ICommonConstants.EMPTY_STRING)) {
-        return ctx_p
+        return ctx
             .createFailureStatus("value is not set for " + "\"" + CapellaElementExt.getCapellaExplorerLabel(dataValue) + "\"" + " (" + dataValue.eClass().getName() //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
                                  + ")"); //$NON-NLS-1$
       }
@@ -73,7 +73,7 @@ public class DataValuePattern extends AbstractValidationRule {
             }
           }
           // If the value don't match with the type => Validation Failure
-          return ctx_p
+          return ctx
               .createFailureStatus(value
                                    + " value of " + "\"" + CapellaElementExt.getCapellaExplorerLabel(dataValue) + "\"" + " (" + dataValue.eClass().getName() + ")" //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
                                    + " does not match the patten " + pattern.toString()); //$NON-NLS-1$
@@ -83,34 +83,34 @@ public class DataValuePattern extends AbstractValidationRule {
         if (!parseInteger(value)) {
           // If the value don't match the default pattern
           pattern = "INTEGER [+-]?[1-9][0-9]*|0"; //$NON-NLS-1$
-          return ctx_p.createFailureStatus(value + " value of " + "\"" + CapellaElementExt.getCapellaExplorerLabel(dataValue) + "\"" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+          return ctx.createFailureStatus(value + " value of " + "\"" + CapellaElementExt.getCapellaExplorerLabel(dataValue) + "\"" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                                            + " (" + dataValue.eClass().getName() + ")" + " does not match the default patten " + pattern.toString()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
       }
     }
     // Validation success
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
   /**
    * <b>Check the Value function of its Type</b>
    * <p>
    * Check if the value of the DataValue targeted match with its DataType
-   * @param pattern_p
-   * @param value_p
+   * @param pattern
+   * @param value
    * @return
    */
-  private boolean checkDataValueFunctionOfDataType(String pattern_p, String value_p, DataType dataType_p) {
+  private boolean checkDataValueFunctionOfDataType(String pattern, String value, DataType dataType) {
     // Check if the Value is not null
     // Check if the pattern is not null or empty
-    if ((null != pattern_p) && !pattern_p.trim().equals(ICommonConstants.EMPTY_STRING) && (pattern_p.length() > 1)) {
+    if ((null != pattern) && !pattern.trim().equals(ICommonConstants.EMPTY_STRING) && (pattern.length() > 1)) {
       // Return if the Value match with the pattern
-      return tryToMatchWithPattern(value_p, pattern_p);
+      return tryToMatchWithPattern(value, pattern);
     }
     // If the Type is a NumericType
-    else if ((null != dataType_p) && (dataType_p instanceof NumericType)) {
+    else if ((null != dataType) && (dataType instanceof NumericType)) {
       // Return if the value is match with the Type Kind
-      return tryToMatchWithKind(value_p, dataType_p);
+      return tryToMatchWithKind(value, dataType);
     }
     // TODO consider other kind of dataType with null pattern
     return false;
@@ -120,20 +120,20 @@ public class DataValuePattern extends AbstractValidationRule {
    * <b>Try to match value without the Pattern</b>
    * <p>
    * Try to match value of the DataValue Targeted with the Kind of its DataType
-   * @param value_p
-   * @param dataType_p
+   * @param value
+   * @param dataType
    * @return match
    */
-  private boolean tryToMatchWithKind(String value_p, DataType dataType_p) {
+  private boolean tryToMatchWithKind(String value, DataType dataType) {
     // Get the Kind of the DataType
-    NumericTypeKind kind = ((NumericType) dataType_p).getKind();
+    NumericTypeKind kind = ((NumericType) dataType).getKind();
     // Function of the Kind
     switch (kind) {
       // If it's FLOAT
       case FLOAT:
         // Try to parse the value to Float
         try {
-          Float.parseFloat(value_p);
+          Float.parseFloat(value);
         } catch (NumberFormatException e) {
           // Return false in the case of Parsing Exception
           return false;
@@ -142,14 +142,14 @@ public class DataValuePattern extends AbstractValidationRule {
       // If it's INTEGER
       case INTEGER:
         // Try to parse the value to Integer
-        return parseInteger(value_p);
+        return parseInteger(value);
     }
     return true;
   }
 
-  private boolean parseInteger(String value_p) {
+  private boolean parseInteger(String value) {
     try {
-      Integer.parseInt(value_p);
+      Integer.parseInt(value);
     } catch (NumberFormatException e) {
       // Return false in the case of Parsing Exception
       return false;
@@ -162,16 +162,16 @@ public class DataValuePattern extends AbstractValidationRule {
    * <b>Try to match value with the Pattern</b>
    * <p>
    * Try to match value of the DataValue Targeted with the Pattern of its DataType
-   * @param value_p
-   * @param pattern_p
+   * @param value
+   * @param pattern
    * @return match
    */
-  private boolean tryToMatchWithPattern(String value_p, String pattern_p) {
+  private boolean tryToMatchWithPattern(String value, String pattern) {
     try {
       // try to compile the pattern
-      Pattern p = Pattern.compile(pattern_p);
+      Pattern p = Pattern.compile(pattern);
       // Create the Matcher between the value and the pattern
-      Matcher m = p.matcher(value_p);
+      Matcher m = p.matcher(value);
       // If the value don't respect the pattern
       if (!m.matches()) {
         // Return error
@@ -190,16 +190,16 @@ public class DataValuePattern extends AbstractValidationRule {
    * Get the Value of the DataValue Targeted or null
    * @return
    */
-  private String getTargetValue(DataValue datavalue_p) {
+  private String getTargetValue(DataValue datavalue) {
     // If the value is a LiteralNumericValue
-    if (datavalue_p instanceof LiteralNumericValue) {
+    if (datavalue instanceof LiteralNumericValue) {
       // Return its Value
-      return ((LiteralNumericValue) datavalue_p).getValue();
+      return ((LiteralNumericValue) datavalue).getValue();
     }
     // If the value is a LiteralStringValue
-    else if (datavalue_p instanceof LiteralStringValue) {
+    else if (datavalue instanceof LiteralStringValue) {
       // Return its Value
-      return ((LiteralStringValue) datavalue_p).getValue();
+      return ((LiteralStringValue) datavalue).getValue();
     }
     // Else return null
     return null;
