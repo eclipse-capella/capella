@@ -4,7 +4,7 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
-org.polarsys.capella.doc/html/*/Images
+org.polarsys.capella.preferences.doc/html/*/Images
 
 logo_capella_big.png
 

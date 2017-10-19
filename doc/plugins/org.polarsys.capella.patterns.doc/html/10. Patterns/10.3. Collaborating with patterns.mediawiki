@@ -34,17 +34,6 @@ Example project storage layout (shared directory or SCM only):
  
 [[Image:Images/10.3.%20Collaborating%20with%20patterns_html_7d2bdf03.png|846x370px]]
 
- 
-<br>
-<br>
-
- 
-Example project storage layout with Capella Team:
-
- 
-[[Image:Images/10.3.%20Collaborating%20with%20patterns_html_m520e298a.png|846x469px]]
-
- 
 <br>
 <br>
 

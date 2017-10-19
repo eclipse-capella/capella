@@ -4,49 +4,11 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
-org.polarsys.capella.doc/html/*/Images
+org.polarsys.capella.patterns.doc/html/*/Images
 
-logo_capella_big.png
-
-3.1. Starting Capella_html_15a02c99.png
-3.1. Starting Capella_html_59ef72a4.png
-3.1. Starting Capella_html_m292ffacc.png
-3.1. Starting Capella_html_m39d6061f.png
-3.1. Starting Capella_html_m73a6ba84.png
-3.2. How to create a new Capella Project_html_19372ef5.png
-3.2. How to create a new Capella Project_html_1c3d37be.png
-3.2. How to create a new Capella Project_html_3c78e109.png
-3.2. How to create a new Capella Project_html_7de602d5.png
-3.2. How to create a new Capella Project_html_a409509.png
-3.2. How to create a new Capella Project_html_m156d26b.png
-3.2. How to create a new Capella Project_html_m2f6e72b2.png
-3.2. How to create a new Capella Project_html_m873f5a6.png
-3.3. How to import an existing Capella Project_html_1e9ba319.png
-3.3. How to import an existing Capella Project_html_78863ecb.png
-3.3. How to import an existing Capella Project_html_m2c1e06a6.png
-3.3. How to import an existing Capella Project_html_m43239c7f.png
-3.3. How to import an existing Capella Project_html_m618030b9.png
-3.4. How to copy or export a Capella Project_html_124dd150.png
-3.4. How to copy or export a Capella Project_html_156e45ae.png
-3.4. How to copy or export a Capella Project_html_5a54683d.png
-3.4. How to copy or export a Capella Project_html_66c97782.png
-3.4. How to copy or export a Capella Project_html_723ed3f9.png
-3.4. How to copy or export a Capella Project_html_m2db46078.png
-3.4. How to copy or export a Capella Project_html_m2e64895e.png
-3.4. How to copy or export a Capella Project_html_m3e0740fc.png
-3.5. How to migrate Capella projects_html_3c78e109.png
-3.5. How to migrate Capella projects_html_m381b2efb.png
-3.5. How to migrate Capella projects_html_m55692da5.png
-3.6. How to detach viewpoints_html_187c5aee.png
-3.6. How to detach viewpoints_html_723ed3f9.png
-3.6. How to detach viewpoints_html_m5a4bf1ab.png
-warning.png
-
-2.1. Definitions_html_3c78e109.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_2e93d00b.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_32efc2f5.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_723ed3f9.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_7bdda0fe.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_m7438dc9.png
-2.2. Understanding the difference between Models Projects and Workspaces_html_m78be4302.png
+10.1. Introduction to patterns_html_m262394d3.png
+10.1. Introduction to patterns_html_m30d236ec.png
+10.3. Collaborating with patterns_html_723ed3f9.png
+10.3. Collaborating with patterns_html_7d2bdf03.png
+10.3. Collaborating with patterns_html_me1487f8.png
 warning.png
