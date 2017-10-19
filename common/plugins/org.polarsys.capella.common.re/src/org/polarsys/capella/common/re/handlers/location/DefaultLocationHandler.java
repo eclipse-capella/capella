@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -51,9 +51,9 @@ public class DefaultLocationHandler implements ILocationHandler {
    * {@inheritDoc}
    */
   @Override
-  public EObject getCurrentLocation(CatalogElementLink object, IContext context) {
-    if (currentLocation.containsKey(object)) {
-      return currentLocation.get(object);
+  public EObject getCurrentLocation(CatalogElementLink link, IContext context) {
+    if (currentLocation.containsKey(link)) {
+      return currentLocation.get(link);
     }
     return null;
   }
@@ -117,8 +117,8 @@ public class DefaultLocationHandler implements ILocationHandler {
    * {@inheritDoc}
    */
   @Override
-  public void setCurrentLocation(CatalogElementLink object, EObject container, IContext context) {
-    currentLocation.put(object, container);
+  public void setCurrentLocation(CatalogElementLink link, EObject container, IContext context) {
+    currentLocation.put(link, container);
   }
 
   protected CatalogElementLink getLink(CatalogElement element, EObject target, IContext context) {
@@ -154,6 +154,7 @@ public class DefaultLocationHandler implements ILocationHandler {
     return null;
   }
 
+  @Override
   public void cleanLocations(IContext context) {
     currentLocation.clear();
     locations.clear();
@@ -164,9 +165,8 @@ public class DefaultLocationHandler implements ILocationHandler {
    * {@inheritDoc}
    */
   @Override
-  public EObject getLocation(CatalogElementLink object, CatalogElementLink origin, IContext context) {
+  public EObject getLocation(CatalogElementLink link, CatalogElementLink oppositeLink, IContext context) {
 
-    CatalogElementLink link = object;
     EObject target = link.getTarget();
 
     if (target == null) {
@@ -191,10 +191,10 @@ public class DefaultLocationHandler implements ILocationHandler {
       return relatedElement;
     }
 
-    if (((target instanceof CatalogElement)) || !ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.CREATED_LINKS, object, context)) {
-      if (!isInvalidResourceLocation(link, object.getTarget().eContainer(), context)) {
-        locations.put(link, object.getTarget().eContainer());
-        return object.getTarget().eContainer();
+    if (((target instanceof CatalogElement)) || !ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.CREATED_LINKS, link, context)) {
+      if (!isInvalidResourceLocation(link, link.getTarget().eContainer(), context)) {
+        locations.put(link, link.getTarget().eContainer());
+        return link.getTarget().eContainer();
       }
     }
 
@@ -255,70 +255,69 @@ public class DefaultLocationHandler implements ILocationHandler {
    * {@inheritDoc}
    */
   @Override
-  public EObject getDefaultLocation(CatalogElementLink source, CatalogElementLink origin, IContext context) {
-    CatalogElementLink linkSource = source;
-    if ((linkSource == null) || (linkSource.getTarget() == null)) {
+  public EObject getDefaultLocation(CatalogElementLink link, CatalogElementLink oppositeLink, IContext context) {
+    if ((link == null) || (link.getTarget() == null)) {
       return null;
     }
 
-    if (defaultLocations.containsKey(source)) {
-      return defaultLocations.get(source);
+    if (defaultLocations.containsKey(link)) {
+      return defaultLocations.get(link);
     }
 
     // Retrieve default containers
-    Collection<EObject> elementsContainers = retrieveDefaultContainers(source, origin, context);
+    Collection<EObject> elementsContainers = retrieveDefaultContainers(link, oppositeLink, context);
 
     // Now we are looking for a feature according to related rule and if we can add element to one of the retrieve possible container, we return it
-    IRuleAttachment arule = getRule(linkSource.getTarget(), context);
+    IRuleAttachment arule = getRule(link.getTarget(), context);
 
     for (EObject targetContainer : elementsContainers) {
 
       // If REC and RPL are not located in the same resource, we exclude all containers not located in the targetElement's resource.
-      if (isInvalidResourceLocation(linkSource, targetContainer, context)) {
+      if (isInvalidResourceLocation(link, targetContainer, context)) {
         continue;
       }
-      if (!isValidContainement(targetContainer, linkSource.getTarget())) {
+      if (!isValidContainement(targetContainer, link.getTarget())) {
         continue;
       }
 
-      EStructuralFeature sourceFeature = linkSource.getTarget().eContainingFeature();
+      EStructuralFeature sourceFeature = link.getTarget().eContainingFeature();
       EStructuralFeature targetFeature = sourceFeature;
       if (arule != null) {
         // If we have a rule, we use with priority rule information
-        targetFeature = getFeature(arule, linkSource.getTarget(), linkSource.getTarget(), targetContainer, context);
-        if (((targetFeature == null) || (targetFeature == sourceFeature)) && (linkSource.getOrigin() != null) && (linkSource.getOrigin().getTarget() != null)) {
-          targetFeature = getFeature(arule, linkSource.getOrigin().getTarget(), linkSource.getTarget(), targetContainer, context);
+        targetFeature = getFeature(arule, link.getTarget(), link.getTarget(), targetContainer, context);
+        if (((targetFeature == null) || (targetFeature == sourceFeature)) && (link.getOrigin() != null) && (link.getOrigin().getTarget() != null)) {
+          targetFeature = getFeature(arule, link.getOrigin().getTarget(), link.getTarget(), targetContainer, context);
         }
       }
 
       if (targetFeature != null) {
         if (AttachmentHelper.getInstance(context).isApplicable(targetContainer.eClass(), targetFeature)) {
-          defaultLocations.put(source, targetContainer);
+          defaultLocations.put(link, targetContainer);
           return targetContainer;
         }
       }
     }
 
     try {
-      CatalogElementLink linkSourceOrigin = linkSource.getOrigin();
-      EObject other = TraceabilityHandlerHelper.getInstance(context).retrieveSourceElements(linkSource.getTarget(), context).iterator().next();
+      CatalogElementLink linkOrigin = link.getOrigin();
+      EObject other = TraceabilityHandlerHelper.getInstance(context).retrieveSourceElements(link.getTarget(), context).iterator().next();
 
       if (arule != null) {
-        EObject result = arule.retrieveDefaultContainer(linkSourceOrigin == null ? other : linkSourceOrigin.getTarget(), linkSource.getTarget(), context);
+        EObject result = arule.retrieveDefaultContainer(linkOrigin == null ? other : linkOrigin.getTarget(), link.getTarget(), context);
 
         if (result != null) {
-          if (!isValidContainement(result, linkSource.getTarget())) {
-            defaultLocations.put(source, null);
+          if (!isValidContainement(result, link.getTarget())) {
+            defaultLocations.put(link, null);
             return null;
           }
           // If REC and RPL are not located in the same resource, we exclude all containers not located in the destination's resource.
-          if (isInvalidResourceLocation(linkSource, result, context)) {
-            defaultLocations.put(source, null);
+          if (isInvalidResourceLocation(link, result, context)) {
+            defaultLocations.put(link, null);
             return null;
           }
         }
 
-        defaultLocations.put(source, result);
+        defaultLocations.put(link, result);
         return result;
       }
 
@@ -326,7 +325,7 @@ public class DefaultLocationHandler implements ILocationHandler {
       exception.printStackTrace();
     }
 
-    defaultLocations.put(source, null);
+    defaultLocations.put(link, null);
     return null;
   }
 
@@ -336,6 +335,7 @@ public class DefaultLocationHandler implements ILocationHandler {
    * @param currentLocation
    * @return
    */
+  @Override
   public EStructuralFeature getFeature(EObject source, EObject target, EObject currentLocation, IContext context) {
     if (source == null) {
       return null;
@@ -360,15 +360,14 @@ public class DefaultLocationHandler implements ILocationHandler {
   }
 
   /**
-   * @param target
-   * @param source
+   * @param link
+   * @param oppositeLink
    * @param context
    * @return
    */
-  protected Collection<EObject> retrieveDefaultContainers(CatalogElementLink target, CatalogElementLink source, IContext context) {
+  protected Collection<EObject> retrieveDefaultContainers(CatalogElementLink link, CatalogElementLink oppositeLink, IContext context) {
 
     CatalogElement element = ReplicableElementHandlerHelper.getInstance(context).getInitialTarget(context);
-    CatalogElementLink linkSource = target;
 
     Collection<EObject> elementsContainers = new LinkedHashSet<EObject>(); // order is important!
 
@@ -378,7 +377,7 @@ public class DefaultLocationHandler implements ILocationHandler {
     // For a link stored in catalogElement used "somewhere", if the TARGET catalogElement is used in replica of "somewhere", we can
     // find a container for the source which is source.target.eContainer<-replicaOfSomewhere
     for (CatalogElement referencingElement : ReplicableElementHandlerHelper.getInstance(context).getLinkingReplicableElements(context,
-        Collections.singletonList((Object) linkSource.getSource()))) {
+        Collections.singletonList((Object) link.getSource()))) {
       for (CatalogElement referencingElement2 : ReplicableElementHandlerHelper.getInstance(context).getLinkingReplicableElements(context,
           Collections.singletonList((Object) element.getOrigin()))) {
         if (referencingElement.getOrigin().equals(referencingElement2)) {
@@ -388,15 +387,14 @@ public class DefaultLocationHandler implements ILocationHandler {
         }
       }
     }
-    CatalogElementLink linkToLocate = linkSource;
     if ((recUsingSource != null) && (recUsingTarget != null)) {
-      for (CatalogElementLink linke : (Collection<CatalogElementLink>) (Collection) ReplicableElementHandlerHelper.getInstance(context).getElementsLinks(
+      for (CatalogElementLink sLink : (Collection<CatalogElementLink>) (Collection) ReplicableElementHandlerHelper.getInstance(context).getElementsLinks(
           recUsingSource)) {
-        if (((linkToLocate.getTarget() != null) && (linkToLocate.getTarget().eContainer() != null))
-            && linkToLocate.getTarget().eContainer().equals(linke.getTarget())) {
-          for (CatalogElementLink link : recUsingTarget.getOwnedLinks()) {
-            if ((link != null) && ((link.getOrigin() != null) && link.getOrigin().equals(linke))) {
-              elementsContainers.add(link.getTarget());
+        if (((link.getTarget() != null) && (link.getTarget().eContainer() != null))
+            && link.getTarget().eContainer().equals(sLink.getTarget())) {
+          for (CatalogElementLink tLink : recUsingTarget.getOwnedLinks()) {
+            if ((tLink != null) && ((tLink.getOrigin() != null) && tLink.getOrigin().equals(sLink))) {
+              elementsContainers.add(tLink.getTarget());
             }
           }
         }
@@ -409,7 +407,7 @@ public class DefaultLocationHandler implements ILocationHandler {
       for (EObject ppp : elements) {
 
         for (EObject item : getRelatedElements(ppp)) {
-          if (isInvalidResourceLocation(linkSource, item, context)) {
+          if (isInvalidResourceLocation(link, item, context)) {
             continue;
           }
           // if the selection is a REC, we add the container of the type (thus in the REC) of the RPL element as a possible location
@@ -417,14 +415,14 @@ public class DefaultLocationHandler implements ILocationHandler {
               String value = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
               // specific case when parameters are reversed
               if (IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(value)) {
-              	elementsContainers.add(source.getTarget().eContainer());                            	
+              	elementsContainers.add(oppositeLink.getTarget().eContainer());
               }
               // nominal case
               else {
-              	elementsContainers.add(target.getOrigin().getTarget().eContainer());              
+              	elementsContainers.add(link.getOrigin().getTarget().eContainer());
               }
           } else {
-            if (isInitialSelectionValidContainer(item, linkSource, context)) {
+            if (isInitialSelectionValidContainer(item, link, context)) {
               elementsContainers.add(item);
             }
           }
@@ -439,13 +437,13 @@ public class DefaultLocationHandler implements ILocationHandler {
       if ((linkA == null) || ((linkA.getOrigin() == null) || (linkA.getOrigin().getTarget() == null)) || (linkA.getOrigin().getTarget().eContainer() == null)) {
         continue; // invalid link
       }
-      if ((linkSource == null) || ((linkSource.getOrigin() == null) || (linkSource.getOrigin().getTarget() == null))) {
+      if ((link == null) || ((link.getOrigin() == null) || (link.getOrigin().getTarget() == null))) {
         continue; // invalid link
       }
-      if ((linkA.equals(linkSource))) {
+      if ((linkA.equals(link))) {
         continue; // not a brother
       }
-      if (!linkA.getOrigin().getTarget().eContainer().equals(linkSource.getOrigin().getTarget().eContainer())) {
+      if (!linkA.getOrigin().getTarget().eContainer().equals(link.getOrigin().getTarget().eContainer())) {
         continue; // not a brother
       }
 
@@ -456,9 +454,9 @@ public class DefaultLocationHandler implements ILocationHandler {
     String scope = (String) context.get(ITransitionConstants.OPTIONS_SCOPE);
     IPropertyContext propertyContext = ((IPropertyHandler) OptionsHandlerHelper.getInstance(context)).getPropertyContext(context, scope);
 
-    if (linkSource.getTarget() instanceof CatalogElement) {
+    if (link.getTarget() instanceof CatalogElement) {
       CatalogElement sourceElement = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
-      if ((sourceElement != null) && sourceElement.equals(linkSource.getSource())) {
+      if ((sourceElement != null) && sourceElement.equals(link.getSource())) {
         IProperty property = propertyContext.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_SOURCE);
         if (property != null) {
           Object value = propertyContext.getCurrentValue(property);
@@ -468,7 +466,7 @@ public class DefaultLocationHandler implements ILocationHandler {
         }
       }
       CatalogElement targetElement = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
-      if ((targetElement != null) && targetElement.equals(linkSource.getSource())) {
+      if ((targetElement != null) && targetElement.equals(link.getSource())) {
 
         IProperty property = propertyContext.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_TARGET);
         if (property != null) {
