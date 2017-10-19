@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -20,28 +20,28 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public interface ILocationHandler extends IHandler {
 
   /**
-   * The location of element after choices made by user 
+   * Get the location of the link's target element as chosen by the user
    */
-  public EObject getCurrentLocation(CatalogElementLink object, IContext context);
+  public EObject getCurrentLocation(CatalogElementLink link, IContext context);
 
   /**
-   * Set the location of element after choices made by user 
+   * Set the location of the link's target element as chosen by the user
    */
-  public void setCurrentLocation(CatalogElementLink object, EObject container, IContext context);
+  public void setCurrentLocation(CatalogElementLink link, EObject container, IContext context);
 
   /**
-   * Retrieve the location for the given object.
-   * Such location are locations were there is no choice, for instance a port will be contained in its parent.
+   * Get the location of the  link's target element. Such locations are locations were there is no choice,
+   * for instance a port will be contained in its parent.
    */
-  public EObject getLocation(CatalogElementLink object, CatalogElementLink origin, IContext context);
+  public EObject getLocation(CatalogElementLink link, CatalogElementLink oppositeLink, IContext context);
 
   /**
-   * The default location which can be used to store the link
+   * Get the default location which can be used to store the link's target element.
    */
-  public EObject getDefaultLocation(CatalogElementLink object, CatalogElementLink origin, IContext context);
+  public EObject getDefaultLocation(CatalogElementLink link, CatalogElementLink oppositeLink, IContext context);
 
   /**
-   * Remove all locations which have been computed 
+   * Remove all locations which have been computed
    */
   public void cleanLocations(IContext context);
 
