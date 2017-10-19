@@ -1,13 +1,13 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
-Contexts: _77dBkJ6NEeWcU-ojRg-Rxw,_C_OB0MEVEeWqb6y2_gGIKQ,_9ikm0J6BEeWcU-ojRg-Rxw
+Contexts: _77dBkJ6NEeWcU-ojRg-Rxw,_B04OMLPoEeeOYuzMOkGHGQ,_C_OB0MEVEeWqb6y2_gGIKQ,_9ikm0J6BEeWcU-ojRg-Rxw
 Element-Name: DragnDropCapellaElement
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _mqfJ4GIsEeeQB6qYkFOmxQ
-Runtime-Version: 2.1.0.201606221726
-Save-Time: 7/6/17 1:17 PM
+Runtime-Version: 2.1.0.201605312320
+Save-Time: 10/18/17 1:33 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
