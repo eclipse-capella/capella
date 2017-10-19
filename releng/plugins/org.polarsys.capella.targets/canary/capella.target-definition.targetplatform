@@ -44,7 +44,7 @@ location "http://download.eclipse.org/sirius/updates/nightly/latest/neon" {
 	org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group
 }
 
-location "http://download.polarsys.org/kitalpha/updates/milestone/runtime/1.2.0rc3/" {
+location "http://download.polarsys.org/kitalpha/updates/stable/runtime/1.2.0" {
 	org.polarsys.kitalpha.ad.runtime.feature.feature.group lazy
 	org.polarsys.kitalpha.cadence.feature.feature.group lazy
 	org.polarsys.kitalpha.common.feature.feature.group lazy
