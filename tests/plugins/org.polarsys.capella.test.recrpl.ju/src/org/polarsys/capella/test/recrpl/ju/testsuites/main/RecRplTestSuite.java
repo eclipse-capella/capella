@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,13 @@ import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SharedElements_Ex
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SharedElements_ExternalResource;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SharedElements_Interface;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SimpleCase;
+import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SpecificPackages_Combined;
+import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SpecificPackages_Data;
+import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SpecificPackages_Interfaces;
+import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SpecificPackages_LA;
+import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SpecificPackages_OA;
+import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SpecificPackages_PA;
+import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SpecificPackages_SA;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_WithSuffix;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_onREC;
 import org.polarsys.capella.test.recrpl.ju.testcases.DeleteDetachRPL_RelatedElements;
@@ -88,6 +95,13 @@ public class RecRplTestSuite extends BasicTestSuite {
     tests.add(new BlackboxComplianceTest2());
     tests.add(new BlackboxComplianceTest3());
     tests.add(new BatchBlackboxComplianceTest1());
+    tests.add(new CreateRPL_SpecificPackages_Data());
+    tests.add(new CreateRPL_SpecificPackages_OA());
+    tests.add(new CreateRPL_SpecificPackages_SA());
+    tests.add(new CreateRPL_SpecificPackages_LA());
+    tests.add(new CreateRPL_SpecificPackages_PA());
+    tests.add(new CreateRPL_SpecificPackages_Interfaces());
+    tests.add(new CreateRPL_SpecificPackages_Combined());
     return tests;
   }
 

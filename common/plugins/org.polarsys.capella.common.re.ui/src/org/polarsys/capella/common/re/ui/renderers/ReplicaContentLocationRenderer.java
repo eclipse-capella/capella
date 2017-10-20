@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -19,7 +19,6 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.jface.util.LocalSelectionTransfer;
@@ -191,23 +190,20 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
           }
           location = LocationHandlerHelper.getInstance(ctx).getLocation(link, link.getOrigin(), ctx);
           if (location == null) {
-            EObject defaultLocation = LocationHandlerHelper.getInstance(ctx).getDefaultLocation(link, link.getOrigin(), ctx);
-            if (defaultLocation != null) {
-              Object value =
-                  context.getPropertyContext().getCurrentValue(
-                      context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__USE_DEFAULT_LOCATION));
-              if (Boolean.FALSE.equals(value)) {
-                return null;
-              }
+            Object parentLocator =
+                context.getPropertyContext().getCurrentValue(
+                    context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__PARENT_LOCATOR));
 
+            EObject defaultLocation = null;
+            if (!IReConstants.LOCATOR_OPTION_MANUAL.equals(parentLocator)) {
+              defaultLocation = LocationHandlerHelper.getInstance(ctx).getDefaultLocation(link, link.getOrigin(), ctx);
               if (defaultLocation instanceof CatalogElementLink) {
                 if (!ContextScopeHandlerHelper.getInstance(ctx).contains(IReConstants.VIRTUAL_LINKS, defaultLocation, ctx)) {
                   return ((CatalogElementLink) defaultLocation).getTarget();
                 }
               }
-              return defaultLocation;
             }
-            return null;
+            return defaultLocation;
           }
 
           // For all links referencing a catalogElement, we put it in the link instead of the element

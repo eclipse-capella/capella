@@ -32,7 +32,12 @@ public class IReConstants {
 
   public static final String PROPERTY__SCOPE = "source.scopeElements"; //$NON-NLS-1$
   public static final String PROPERTY__ALL_SCOPE = "source.allScopeElements"; //$NON-NLS-1$
-  public static final String PROPERTY__USE_DEFAULT_LOCATION = "useDefaultLocation"; //$NON-NLS-1$
+
+  public static final String PROPERTY__PARENT_LOCATOR = "parentLocatorOption"; //$NON-NLS-1$
+  public static final String LOCATOR_OPTION_DEFAULT = "defaultLocator"; //$NON-NLS-1$
+  public static final String LOCATOR_OPTION_SPECIFIC_PACKAGES = "packageLocator"; //$NON-NLS-1$
+  public static final String LOCATOR_OPTION_MANUAL = "manualLocator"; //$NON-NLS-1$
+
   public static final String PROPERTY__MERGE_SOURCE_SCOPE = "merge_sourceScope"; //$NON-NLS-1$
   public static final String PROPERTY__MERGE_TARGET_SCOPE = "merge_targetScope"; //$NON-NLS-1$
 
