@@ -605,17 +605,6 @@
                name="Compliancy">
          </property>
          
-         <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
-               enabled="true"
-               group="org.polarsys.capella.common.re.description.replicableElementGroup"
-               id="useDefaultLocation"
-               name="Use default location for RPL elements">
-               
-               <parameter
-                     id="scope" value="org.polarsys.capella.common.re">
-               </parameter>
-         </property>
          
          
          
@@ -657,6 +646,39 @@
                group="org.polarsys.capella.common.re.description.replicableElementGroup"
                id="readOnly"
                name="Enforce RPL Compliance On The Fly">
+         </property>
+         <property
+               class="org.polarsys.capella.common.re.properties.ParentLocatorProperty"
+               enabled="true"
+               group="replicableElementGroup"
+               id="parentLocatorOption"
+               name="Parent Location">
+            <option
+                  enabled="true"
+                  id="defaultLocator"
+                  name="Use default locations"
+                  value="defaultLocator">
+            </option>
+            <option
+                  enabled="true"
+                  id="packageLocator"
+                  name="Create specific packages"
+                  value="packageLocator">
+            </option>
+            <option
+                  enabled="true"
+                  id="manualLocator"
+                  name="Locate parents manually"
+                  value="manualLocator">
+            </option>
+            <parameter
+                  id="default"
+                  value="defaultLocator">
+            </parameter>
+            <parameter
+                  id="scope"
+                  value="org.polarsys.capella.common.re">
+            </parameter>
          </property>
          
      </properties>
@@ -730,20 +752,7 @@
                id="currentCompliancy"
                name="Compliancy">
          </property>
-         
-         <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
-               enabled="true"
-               group="org.polarsys.capella.common.re.description.replicableElementGroup"
-               id="useDefaultLocation"
-               name="Use default location for RPL elements">
-               
-               <parameter
-                     id="scope" value="org.polarsys.capella.common.re">
-               </parameter>
-               
-         </property>
-         
+
          <property
                class="org.polarsys.capella.common.re.re2rpl.update.properties.ReplicaProperty"
                enabled="true"
@@ -775,6 +784,41 @@
                id="readOnly"
                name="Enforce RPL Compliance On The Fly">
          </property>
+         
+         <property
+               class="org.polarsys.capella.common.re.properties.ParentLocatorProperty"
+               enabled="true"
+               group="replicableElementGroup"
+               id="parentLocatorOption"
+               name="Parent Location">
+            <option
+                  enabled="true"
+                  id="defaultLocator"
+                  name="Use default locations"
+                  value="defaultLocator">
+            </option>
+            <option
+                  enabled="true"
+                  id="packageLocator"
+                  name="Create specific packages"
+                  value="packageLocator">
+            </option>
+            <option
+                  enabled="true"
+                  id="manualLocator"
+                  name="Locate parents manually"
+                  value="manualLocator">
+            </option>
+            <parameter
+                  id="default"
+                  value="defaultLocator">
+            </parameter>
+            <parameter
+                  id="scope"
+                  value="org.polarsys.capella.common.re">
+            </parameter>
+         </property>
+         
          
      </properties>
         

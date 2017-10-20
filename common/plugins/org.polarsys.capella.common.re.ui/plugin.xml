@@ -385,10 +385,6 @@
             renderer="targetTextRenderer">
         </propertyBinding>
         
-        <propertyBinding 
-            property="useDefaultLocation"
-            renderer="checkboxRenderer">
-        </propertyBinding>
         
         <propertyBinding 
             property="targetContent"
@@ -403,6 +399,10 @@
               property="readOnly"
               renderer="checkboxRenderer">
         </propertyBinding>
+        <propertyBinding
+              property="parentLocatorOption"
+              renderer="optionRenderer">
+        </propertyBinding>
         
       </bindings>       
       
@@ -415,10 +415,6 @@
             <!-- ReplicableElement, name edit not allowed -->
         </propertyBinding>
       
-        <propertyBinding 
-            property="useDefaultLocation"
-            renderer="checkboxRenderer">
-        </propertyBinding>
         
         <propertyBinding 
             property="itarget"
@@ -458,7 +454,11 @@
               property="readOnly"
               renderer="checkboxRenderer">
         </propertyBinding>
-      </bindings>     
+        <propertyBinding
+              property="parentLocatorOption"
+              renderer="optionRenderer">
+        </propertyBinding>
+      </bindings>
             
    </extension>
    
