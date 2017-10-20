@@ -38,7 +38,7 @@ When working on 			a fragmented model, the user shall still '''always 			open th
 Fragments are parts of model stored in external files, stored inside &ldquo;fragments&rdquo; sub folder. The main model fragment is stored in a head file. It references fragments. A fragment can also be split in multiple sub-fragments.
 
  
-[[Image:Images/FragmentManagement_m1d9aa67f.png|385x444px]]
+[[Image:Images/FragmentManagement_m1d9aa67f.png|396x411px]]
 
  
 == Why splitting Models into Fragments? ==
@@ -83,19 +83,19 @@ On other elements or if the Control&hellip; command is not supported on the sele
 Here, '''&ldquo;Fragment&hellip;&rdquo;''' is executed on the Physical Architecture.
 
  
-[[Image:Images/FragmentManagement_m44b065ba.png|381x645px]]
+[[Image:Images/FragmentManagement_m44b065ba.png|467x757px]]
 
  
 The first step is to define the business model fragment, &lsquo;.melodyfragment&rsquo; file, (fragment that will contain the Physical Architecture).
 
  
-[[Image:Images/FragmentManagement_m48d4e4f4.png|392x140px]]
+[[Image:Images/FragmentManagement_m48d4e4f4.png|369x157px]]
 
  
 The .airdfragment file (new fragment resource for diagram) is also asked to the user. Then the representation wizard is displayed if some diagrams are attached to related fragment. By default all attached diagrams are proposed to be included in new airdframent file. End User can selected the ones to exclude.
 
  
-[[Image:Images/FragmentManagement_m574ef48f.png|458x579px]]
+[[Image:Images/FragmentManagement_m574ef48f.png|518x557px]]
 
  
 <br>
@@ -124,7 +124,7 @@ The end-user 			must '''not''' 			delete a fragment (aird or melodyfragment) thr
 To unfragment, please use contextual &ldquo;'''unFragment&hellip;'''&rdquo; command.
 
  
-[[Image:Images/FragmentManagement_mc4d218c.png|399x626px]]
+[[Image:Images/FragmentManagement_mc4d218c.png|484x760px]]
 
  
 Running &lsquo;Unfragment&rsquo; command (for instance System Analysis):
@@ -134,10 +134,10 @@ Running &lsquo;Unfragment&rsquo; command (for instance System Analysis):
 # Will check out aird file to move 	representation data from the aird fragment to the main aird.
 # Remove related 	fragments files: ''airdfragment'' 	and ''melodyfragment''.
  
-[[Image:Images/FragmentManagement_bc471b5.png|430x165px]]
+[[Image:Images/FragmentManagement_bc471b5.png|528x174px]]
 
  
-[[Image:Images/FragmentManagement_m75358a0a.png|251x290px]]
+[[Image:Images/FragmentManagement_m75358a0a.png|241x294px]]
 
 
 
