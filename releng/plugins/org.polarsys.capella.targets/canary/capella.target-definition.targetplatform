@@ -61,6 +61,7 @@ location "http://download.polarsys.org/kitalpha/updates/stable/runtime/1.2.0" {
 	org.polarsys.kitalpha.report.ui.feature.feature.group lazy
 	org.polarsys.kitalpha.transposer.feature.feature.group lazy
 	org.polarsys.kitalpha.richtext.widget.feature.feature.group lazy
+	org.polarsys.kitalpha.doc.feature.feature.group lazy
 }
 
 location "http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site" {

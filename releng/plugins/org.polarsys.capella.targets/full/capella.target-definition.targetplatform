@@ -65,6 +65,7 @@ location kitalpha-runtime-master "https://hudson.polarsys.org/kitalpha/job/Kital
 	org.polarsys.kitalpha.richtext.widget.source.feature.feature.group lazy
 	org.polarsys.kitalpha.richtext.widget.ext.feature.feature.group lazy
 	org.polarsys.kitalpha.richtext.widget.ext.source.feature.feature.group lazy
+	org.polarsys.kitalpha.doc.feature.feature.group lazy
 }
 
 location kitalpha-sdk-master "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/525/artifact/result/publish/kitalpha_sdk/site.p2" {

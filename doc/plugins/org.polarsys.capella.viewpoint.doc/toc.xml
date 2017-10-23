@@ -14,11 +14,7 @@
 <toc label="Viewpoints" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution">
 	<topic label="Viewpoints">
    		<topic href="html/introduction/index.html" label="Introduction"/>
-   		<topic href="html/lifecycle/index.html" label="Lifecycle"/>
-   		<topic label="Migration">
-   			<topic href="html/migration/overview.html" label="Overview"/>
-   			<topic href="html/migration/details.html" label="Details"/>
-   		</topic>
+   		<topic href="html/migration/overview.html" label="Migration"/>
    		<anchor id="contribution"/>
    	</topic>
 </toc>
