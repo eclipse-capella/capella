@@ -1031,9 +1031,9 @@
         <repositoryList
             name="Neon">
           <repository
-              url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/525/artifact/result/publish/kitalpha_runtime/site.p2"/>
+              url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/528/artifact/result/publish/kitalpha_runtime/site.p2"/>
           <repository
-              url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/525/artifact/result/publish/kitalpha_sdk/site.p2"/>
+              url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/528/artifact/result/publish/kitalpha_sdk/site.p2"/>
         </repositoryList>
       </targlet>
       <targlet
