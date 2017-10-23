@@ -1028,6 +1028,8 @@
             name="org.polarsys.kitalpha.richtext.widget.ext.feature.feature.group"/>
         <requirement
             name="org.polarsys.kitalpha.emde.sdk.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.doc.feature.feature.group"/>
         <repositoryList
             name="Neon">
           <repository
