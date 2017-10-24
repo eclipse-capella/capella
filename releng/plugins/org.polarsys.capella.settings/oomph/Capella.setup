@@ -880,7 +880,7 @@
         <repositoryList
             name="Mars">
           <repository
-              url="http://download.eclipse.org/sirius/updates/stable/4.1.6-S20170628-064814/mars"/>
+              url="http://download.eclipse.org/sirius/updates/milestones/4.1.7rc1/mars/"/>
           <repository
               url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
           <repository
@@ -1085,6 +1085,37 @@
         </repositoryList>
       </targlet>
       <targlet
+          name="EGF SDK">
+        <requirement
+            name="org.eclipse.egf.sdk.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="https://hudson.eclipse.org/egf/job/buckminster-egf-neon/lastSuccessfulBuild/artifact/result/publish/org.eclipse.egf.site/site.p2"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Nebula">
+        <requirement
+            name="org.eclipse.nebula.widgets.richtext.feature.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/nebula/releases/1.2.0"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Eclipse License"
+          activeRepositoryList="">
+        <requirement
+            name="org.eclipse.license.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/cbi/updates/license"/>
+        </repositoryList>
+      </targlet>
+      <targlet
           name="Orbit 2013">
         <requirement
             name="org.apache.log4j"
@@ -1138,27 +1169,6 @@
             name="org.polarsys.capella.core.data.def"/>
         <requirement
             name="org.polarsys.capella.common.data.def"/>
-      </targlet>
-      <targlet
-          name="Eclipse License"
-          activeRepositoryList="">
-        <requirement
-            name="org.eclipse.license.feature.group"/>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="EGF SDK">
-        <requirement
-            name="org.eclipse.egf.sdk.feature.group"/>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="https://hudson.eclipse.org/egf/job/buckminster-egf-neon/lastSuccessfulBuild/artifact/result/publish/org.eclipse.egf.site/site.p2"/>
-        </repositoryList>
       </targlet>
       <description>Capella Dependencies, copied from org.polarsys.capella.rcp.target/full</description>
     </setupTask>
