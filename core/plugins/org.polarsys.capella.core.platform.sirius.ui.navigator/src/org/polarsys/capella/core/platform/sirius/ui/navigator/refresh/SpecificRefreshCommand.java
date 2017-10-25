@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,10 +25,9 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
-import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
+import org.eclipse.sirius.diagram.ui.internal.refresh.SiriusDiagramSessionEventBroker;
 import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -42,56 +41,56 @@ import org.eclipse.swt.widgets.Shell;
  */
 public final class SpecificRefreshCommand extends RecordingCommand {
 
-  protected final Session _session;
+  protected final Session session;
 
-  private final Collection<DRepresentation> _representationsToRefresh;
+  private final Collection<DRepresentation> representationsToRefresh;
 
-  protected Collection<Object> impactedElements = new LinkedHashSet<Object>();
+  protected Collection<Object> impactedElements = new LinkedHashSet<>();
 
-  private Collection<DRepresentation> modifiedRepresentations = new LinkedHashSet<DRepresentation>();
+  private Collection<DRepresentation> modifiedRepresentations = new LinkedHashSet<>();
 
   private ModificationListener modificationListener;
 
-  private IProgressMonitor _monitor;
+  private IProgressMonitor monitor;
 
-  private Display _display;
-
-  private void reInitImpactedElements() {
-    impactedElements.clear();
-    impactedElements = new LinkedHashSet<Object>();
-  }
+  private Display display;
 
   /**
    * Constructor.
-   * @param session_p the session which need the refresh.
-   * @param representationsToRefresh_p the representations to refresh.
-   * @param monitor_p
-   * @param display_p
+   * @param session the session which need the refresh.
+   * @param representationsToRefresh the representations to refresh.
+   * @param monitor
+   * @param display
    */
-  public SpecificRefreshCommand(Session session_p, Collection<DRepresentation> representationsToRefresh_p, IProgressMonitor monitor_p, Display display_p) {
-    super(session_p.getTransactionalEditingDomain(), Messages.SpecificRefreshCommand_0);
-    _session = session_p;
-    _representationsToRefresh = representationsToRefresh_p;
+  public SpecificRefreshCommand(Session session, Collection<DRepresentation> representationsToRefresh, IProgressMonitor monitor, Display display) {
+    super(session.getTransactionalEditingDomain(), Messages.SpecificRefreshCommand_0);
+    this.session = session;
+    this.representationsToRefresh = representationsToRefresh;
     this.modificationListener = new ModificationListener();
-    _monitor = monitor_p;
-    _display = display_p;
+    this.monitor = monitor;
+    this.display = display;
   }
 
+  private void reInitImpactedElements() {
+    impactedElements.clear();
+    impactedElements = new LinkedHashSet<>();
+  }
+  
   /**
    * Create and execute a {@link SpecificRefreshCommand}. Refresh a selection of {@link DRepresentation}s of the given {@link Session}. Synchronize gmf models
    * for modified {@link DDiagram} and layout created views.
-   * @param session_p
-   * @param representationsToRefresh_p
-   * @param monitor_p
-   * @param _display
+   * @param session
+   * @param representationsToRefresh
+   * @param monitor
+   * @param display
    * @return the modified representations.
    */
-  public static Collection<DRepresentation> refreshRepresentations(final Session session_p, Collection<DRepresentation> representationsToRefresh_p,
-      IProgressMonitor monitor_p, Display display_p) {
-    final Collection<DRepresentation> modifiedRepresentations = new LinkedHashSet<DRepresentation>();
-    final SpecificRefreshCommand refreshCommand = new SpecificRefreshCommand(session_p, representationsToRefresh_p, monitor_p, display_p);
-    if (session_p != null) {
-      session_p.getTransactionalEditingDomain().getCommandStack().execute(refreshCommand);
+  public static Collection<DRepresentation> refreshRepresentations(final Session session, Collection<DRepresentation> representationsToRefresh,
+      IProgressMonitor monitor, Display display) {
+    final Collection<DRepresentation> modifiedRepresentations = new LinkedHashSet<>();
+    final SpecificRefreshCommand refreshCommand = new SpecificRefreshCommand(session, representationsToRefresh, monitor, display);
+    if (session != null) {
+      session.getTransactionalEditingDomain().getCommandStack().execute(refreshCommand);
       modifiedRepresentations.addAll(refreshCommand.getModifiedRepresentations());
     }
 
@@ -103,19 +102,21 @@ public final class SpecificRefreshCommand extends RecordingCommand {
    */
   @Override
   protected void doExecute() {
-    for (DRepresentation representation : _representationsToRefresh) {
+    for (DRepresentation representation : representationsToRefresh) {
       if (DialectManager.INSTANCE.canRefresh(representation)) {
         modificationListener.activate(representation);
-        DialectManager.INSTANCE.refresh(representation, _monitor);
+        // Initialize the synchronizer of GMF model
+        SiriusDiagramSessionEventBroker.getInstance(session);
+        DialectManager.INSTANCE.refresh(representation, monitor);
         modificationListener.deactivate(representation);
       }
     }
     populateModifiedRepresentations();
     // mandatory threadUI
-    _display.asyncExec(new Runnable() {
+    display.asyncExec(new Runnable() {
       @Override
       public void run() {
-        _session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(_session.getTransactionalEditingDomain()) {
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
           @SuppressWarnings("synthetic-access")
           @Override
           protected void doExecute() {
@@ -178,13 +179,11 @@ public final class SpecificRefreshCommand extends RecordingCommand {
   }
 
   private void synchronizeAndLayoutGMFModels() {
-    Collection<Diagram> diagsToRefreshLayout = new LinkedHashSet<Diagram>();
+    Collection<Diagram> diagsToRefreshLayout = new LinkedHashSet<>();
     for (DRepresentation rep : modifiedRepresentations) {
       if (rep instanceof DDiagram) {
         DDiagram diag = (DDiagram) rep;
-        Diagram gmfDiagram = SiriusGMFHelper.getGmfDiagram(diag, _session);
-        CanonicalSynchronizer canonicalSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(gmfDiagram);
-        canonicalSynchronizer.synchronize();
+        Diagram gmfDiagram = SiriusGMFHelper.getGmfDiagram(diag, session);
         diagsToRefreshLayout.add(gmfDiagram);
       }
     }
@@ -206,7 +205,7 @@ public final class SpecificRefreshCommand extends RecordingCommand {
       }
     }
 
-    _display.asyncExec(new Runnable() {
+    display.asyncExec(new Runnable() {
       @Override
       public void run() {
         shell.dispose();
