@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -20,6 +20,7 @@ import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.polarsys.capella.common.flexibility.properties.property.PropertyContext;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.ui.util.ExecutionEventUtil;
@@ -43,13 +44,15 @@ public class SuffixableHandler extends SubCommandHandler {
       IStructuredSelection structuredSelection = (IStructuredSelection)selection;
       IRendererContext rcontext = ExecutionEventUtil.getRendererContext(event);
       IContext context = (IContext) rcontext.getPropertyContext().getSource();
-      
+
       for (Object selectedItem : structuredSelection.toList()) {
         AttributesHandlerHelper.getInstance(context).setManualSuffixable((EObject) selectedItem,
             !AttributesHandlerHelper.getInstance(context).isSuffixable(selectedItem, context), context);
       }
       IProperty property = rcontext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIXES);
-      rcontext.getPropertyContext().setCurrentValue(property, rcontext.getPropertyContext().getCurrentValue(property));      
+
+      // FIXME https://bugs.polarsys.org/show_bug.cgi?id=1808 make API
+      ((PropertyContext)rcontext.getPropertyContext()).notifyListeners(property);
     }
     return null;
   }
