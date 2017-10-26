@@ -13,7 +13,7 @@ package org.polarsys.capella.test.progressmonitoring.ju.util;
 public class SetProgressTestContants {
   
   public static final String DRAFT = "DRAFT";
-  public static final String MODEL_NAME = "SetProgress";
+  public static final String MODEL_NAME = "setProgress";
   public static final String STRINGTYPE_STRING_ID = "55bc6d72-67bf-430b-bd3e-6f53453c5b08";
   public static final String SYSTEMFUNCTION_SF1_ID = "e543b7f1-618e-45a3-b73c-4876f14e72e0";
   public static final String SYSTEMFUNCTION_SF2_ID = "326c0742-f560-422e-af2e-ab40186c7484";
