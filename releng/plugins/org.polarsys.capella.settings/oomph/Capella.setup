@@ -888,9 +888,9 @@
           <repository
               url="http://download.eclipse.org/diffmerge/releases/0.7.1/edm-patterns-site"/>
           <repository
-              url="https://hudson.polarsys.org/kitalpha/job/kitalpha-v1.1.x/269/artifact/result/publish/kitalpha_runtime/site.p2"/>
+              url="https://hudson.polarsys.org/kitalpha/job/kitalpha-v1.1.x/571/artifact/result/publish/kitalpha_runtime/site.p2"/>
           <repository
-              url="https://hudson.polarsys.org/kitalpha/job/kitalpha-v1.1.x/269/artifact/result/publish/kitalpha_sdk/site.p2"/>
+              url="https://hudson.polarsys.org/kitalpha/job/kitalpha-v1.1.x/571/artifact/result/publish/kitalpha_sdk/site.p2"/>
           <repository
               url="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20170307-051244/mars"/>
           <repository
