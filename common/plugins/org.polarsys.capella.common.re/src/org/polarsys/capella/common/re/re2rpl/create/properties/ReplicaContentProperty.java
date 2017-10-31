@@ -13,6 +13,7 @@ package org.polarsys.capella.common.re.re2rpl.create.properties;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -28,9 +29,10 @@ import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.location.LocationHandlerHelper;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
-import org.polarsys.capella.core.transition.common.capellaHelpers.HashMapSet;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
+
+import com.google.common.collect.LinkedHashMultimap;
 
 /**
  *
@@ -52,7 +54,7 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
     if (ctx.get(LINKS) != null) {
       return ctx.get(LINKS);
     }
-    Collection<EObject> links = new HashSet<EObject>();
+    Collection<CatalogElementLink> links = new LinkedHashSet<CatalogElementLink>();
 
     CatalogElement source =
         (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
@@ -74,7 +76,7 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
       }
     }
 
-    HashMapSet<CatalogElement, CatalogElementLink> toCreate = new HashMapSet<CatalogElement, CatalogElementLink>();
+    LinkedHashMultimap<CatalogElement, CatalogElementLink> toCreate = LinkedHashMultimap.create();
 
     Collection<CatalogElement> usedSource = new ArrayList<CatalogElement>();
     usedSource.add(source);

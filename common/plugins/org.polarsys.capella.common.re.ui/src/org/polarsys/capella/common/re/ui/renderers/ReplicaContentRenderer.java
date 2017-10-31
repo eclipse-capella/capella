@@ -13,7 +13,7 @@ package org.polarsys.capella.common.re.ui.renderers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
@@ -178,16 +178,26 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
   @Override
   protected Object createInput(IProperty property, final IRendererContext context) {
     Object value = context.getPropertyContext().getCurrentValue(property);
-    if ((value != null) && (value instanceof Collection)) {
-      Collection<EObject> scopeElements = new HashSet<EObject>((Collection) value);
+    if (value instanceof Collection<?>) {
+      Collection<Object> scopeElements = new LinkedHashSet<Object>((Collection<?>) value);
 
       if (!scopeElements.isEmpty()) {
         IProperty prop = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
         Object replica = context.getPropertyContext().getCurrentValue(prop);
-        scopeElements.add((EObject) replica);
+        scopeElements.add(replica);
       }
 
       TreeData data = new TreeData(scopeElements, null) {
+
+        @Override
+        protected Collection<Object> createChildrenCollection() {
+          return new LinkedHashSet<Object>();
+        }
+
+        @Override
+        protected Collection<Object> initializeRootElementCollection() {
+          return new LinkedHashSet<Object>();
+        }
 
         /**
          * {@inheritDoc}
