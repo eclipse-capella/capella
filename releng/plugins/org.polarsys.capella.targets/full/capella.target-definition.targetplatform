@@ -68,7 +68,7 @@ location kitalpha-runtime-master "https://hudson.polarsys.org/kitalpha/job/Kital
 	org.polarsys.kitalpha.doc.feature.feature.group lazy
 }
 
-location kitalpha-sdk-master "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/528/artifact/result/publish/kitalpha_sdk/site.p2" {
+location kitalpha-sdk-master "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/545/artifact/result/publish/kitalpha_sdk/site.p2" {
 	org.polarsys.kitalpha.emde.sdk.feature.feature.group lazy
 }
 
