@@ -58,7 +58,7 @@ public class SiriusPlugin extends AbstractUIPlugin {
 
     // Deactivate by default Sirius Auto-scale preference
     DiagramUIPlugin.getPlugin().getPreferenceStore()
-        .setValue(SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT.name(), false);
+        .setDefault(SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT.name(), false);
   }
 
   /**
