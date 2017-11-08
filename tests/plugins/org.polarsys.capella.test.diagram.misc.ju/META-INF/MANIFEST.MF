@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.navigator,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.ui.semantic.browser,
- org.polarsys.capella.core.ui.semantic.browser.sirius
+ org.polarsys.capella.core.ui.semantic.browser.sirius,
+ org.eclipse.sirius.diagram
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %providerName

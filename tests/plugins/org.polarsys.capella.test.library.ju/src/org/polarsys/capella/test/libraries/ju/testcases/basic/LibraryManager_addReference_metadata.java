@@ -38,7 +38,8 @@ public class LibraryManager_addReference_metadata extends BasicTestCase {
     CapellaModel maLibrairie1 = getTestModel("MyLibrary1");
     ResourceSet resourceSet = monProjet1.getEditingDomain().getResourceSet();
     // -- ORACLE -- //
-    Metadata metadata = (Metadata)resourceSet.getEObject(URI.createURI("platform:/resource/MyProject1/MyProject1.afm#_UzLqMHnGEea0Df0HniJfuA"), true);
+    String metaDataURI = monProjet1.getUriSemanticFile().toString().replace(".melodymodeller", ".afm#_UzLqMHnGEea0Df0HniJfuA");
+    Metadata metadata = (Metadata)resourceSet.getEObject(URI.createURI(metaDataURI), true);
     assertTrue(metadata.getAdditionalMetadata().isEmpty());
     monProjet1.addReference(maLibrairie1);
     assertFalse(metadata.getAdditionalMetadata().isEmpty());

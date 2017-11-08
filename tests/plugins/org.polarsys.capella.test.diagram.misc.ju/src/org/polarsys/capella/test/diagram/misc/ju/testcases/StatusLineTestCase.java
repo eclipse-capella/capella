@@ -106,7 +106,7 @@ public class StatusLineTestCase extends BasicTestCase {
     DRepresentationDescriptor sdfb = null;
     Session session = getSession(projectTestName);
     for (DView entry : session.getOwnedViews()) {
-      if (entry.getViewpoint().getName().equals("System Analysis")) {
+      if (entry.getViewpoint().getName().equals("System Analysis") && entry.getOwnedRepresentationDescriptors().size() > 0) {
         sdfb = entry.getOwnedRepresentationDescriptors().get(0);
       }
     }
