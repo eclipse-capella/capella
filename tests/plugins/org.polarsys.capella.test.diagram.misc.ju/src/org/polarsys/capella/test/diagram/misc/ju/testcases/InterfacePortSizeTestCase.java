@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,9 +14,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DEdgeSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeSpec;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
@@ -58,17 +58,17 @@ public class InterfacePortSizeTestCase extends BasicTestCase {
   private void checkPortSize(SessionContext context, String diagramName) {
     DiagramContext diagramContext = new OpenDiagramStep(context, diagramName).run();
     DSemanticDecorator requiredPortView = diagramContext.getView(LA__CP_1);
-    assertTrue("View of required port not found", requiredPortView != null && requiredPortView instanceof DEdgeSpec);
-    DEdgeSpec requiredPortEdge = (DEdgeSpec) requiredPortView;
+    assertTrue("View of required port not found", requiredPortView != null && requiredPortView instanceof DEdge);
+    DEdge requiredPortEdge = (DEdge) requiredPortView;
     EdgeTarget requiredPort = requiredPortEdge.getSourceNode();
-    assertTrue("Size of port is not correct", requiredPort instanceof DNodeSpec
-        && ((DNodeSpec) requiredPort).getHeight() == 3 && ((DNodeSpec) requiredPort).getWidth() == 3);
+    assertTrue("Size of port is not correct", requiredPort instanceof DNode
+        && ((DNode) requiredPort).getHeight() == 3 && ((DNode) requiredPort).getWidth() == 3);
 
     DSemanticDecorator providedPortView = diagramContext.getView(LA__CP_2);
-    assertTrue("View of provided port not found", requiredPortView != null && requiredPortView instanceof DEdgeSpec);
-    DEdgeSpec providedPortEdge = (DEdgeSpec) providedPortView;
+    assertTrue("View of provided port not found", requiredPortView != null && requiredPortView instanceof DEdge);
+    DEdge providedPortEdge = (DEdge) providedPortView;
     EdgeTarget providedPort = providedPortEdge.getSourceNode();
-    assertTrue("Size of port is not correct", providedPort instanceof DNodeSpec
-        && ((DNodeSpec) providedPort).getHeight() == 3 && ((DNodeSpec) providedPort).getWidth() == 3);
+    assertTrue("Size of port is not correct", providedPort instanceof DNode
+        && ((DNode) providedPort).getHeight() == 3 && ((DNode) providedPort).getWidth() == 3);
   }
 }
