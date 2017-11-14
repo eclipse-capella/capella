@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,7 +50,7 @@ public class PreDeleteStructureCommand extends DeleteStructureCommand {
   @Override
   protected void doPrepare() {
     // Fake deleting representations according to semantic elements.
-    Collection<? extends EObject> allContainedRepresentationsFor = RepresentationHelper.getAllRepresentationsTargetedBy(getElementsToDelete());
+    Collection<? extends EObject> allContainedRepresentationsFor = RepresentationHelper.getAllRepresentationDescriptorsTargetedBy(getElementsToDelete());
     append(new PreRemoveCommand((Collection<EObject>) allContainedRepresentationsFor, handler));
     append(new PreRemoveCommand((Collection<EObject>) getElementsToDelete(), handler));
   }

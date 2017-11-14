@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,33 +10,20 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.interfaces.generateInterfaces;
 
-import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.ComponentExchange;
-import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
-import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
-import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.projection.common.CommonRule;
+import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.tiger.ITransfo;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
-/**
- */
 public class Rule_Component extends CommonRule {
 
-  /**
-   * @param eclass_p
-   */
   public Rule_Component() {
     super(CsPackage.Literals.COMPONENT, CsPackage.Literals.INTERFACE);
   }
@@ -45,78 +32,45 @@ public class Rule_Component extends CommonRule {
    * @see org.polarsys.capella.core.tiger.impl.TransfoRule#attach_(org.eclipse.emf.ecore.EObject, org.polarsys.capella.core.tiger.ITransfo)
    */
   @Override
-  public void firstAttach(EObject element_p, ITransfo transfo_p) {
+  public void firstAttach(EObject element, ITransfo transfo) {
     // Nothing to do
   }
 
   @Override
-  protected void doAddContainer(EObject element_p, List<EObject> result_p) {
+  protected void doAddContainer(EObject element, List<EObject> result) {
     // Nothing to do
   }
 
   @Override
-  protected void doGoDeep(EObject element_p, List<EObject> result_p) {
+  public void update_(EObject element_p, ITransfo transfo_p) {
+    // nothing to do here
+  }
 
-    Component component = (Component) element_p;
-    Collection<Component> components = ComponentExt.getAllSubUsedComponents(component);
+  @Override
+  public IStatus transformRequired(EObject element_p, IContext context_p) {
+    return Status.OK_STATUS;
+  }
 
-    components.add(component);
+  @Override
+  protected boolean transformIsRequired(EObject element_p, ITransfo transfo_p) {
+    return true;
+  }
 
-    for (ComponentExchange connection : ComponentExt.getAllRelatedComponentExchange(component)) {
-      Component sourceComponent = ComponentExchangeExt.getSourceComponent(connection);
-      Component targetComponent = ComponentExchangeExt.getTargetComponent(connection);
+  @Override
+  public boolean requireTransformation(EObject element, ITransfo transfo) {
+    return true;
+  }
 
-      if (sourceComponent != null && targetComponent != null) {
-        if ((sourceComponent.equals(component) || targetComponent.equals(component))) {
-          result_p.add(connection);
-          InterfaceGenerationFinalizer.register(connection, sourceComponent, targetComponent);
-        }
-      }
-    }
-
-    for (Component subComponent : components) {
-      for (AbstractFunction function : subComponent.getAllocatedFunctions()) {
-
-        // Process outgoing exchanges
-        for (FunctionalExchange exchange : FunctionExt.getOutGoingExchange(function)) {
-          AbstractFunction targetF = getFunctionContainer(exchange.getTarget());
-          if (targetF != null) {
-            for (ComponentFunctionalAllocation componentFunctionalAllocation : targetF.getComponentFunctionalAllocations()) {
-              TraceableElement allocating = componentFunctionalAllocation.getSourceElement();
-              result_p.add(exchange);
-              InterfaceGenerationFinalizer.register(exchange, subComponent, (Component) allocating);
-            }
-          }
-        }
-
-        // Process incoming exchanges
-        for (FunctionalExchange exchange : FunctionExt.getIncomingExchange(function)) {
-          AbstractFunction targetF = getFunctionContainer(exchange.getSource());
-          if (targetF != null) {
-            for (ComponentFunctionalAllocation componentFunctionalAllocation : targetF.getComponentFunctionalAllocations()) {
-              TraceableElement allocating = componentFunctionalAllocation.getSourceElement();
-              result_p.add(exchange);
-              InterfaceGenerationFinalizer.register(exchange, (Component) allocating, subComponent);
-            }
-          }
-        }
-      }
-    }
+  @Override
+  protected void doGoDeep(EObject element, List<EObject> result) {
+    Component component = (Component) element;
+    result.addAll(((Component)element).getContainedComponentPorts());
+    result.addAll(ComponentExt.getAllSubUsedComponents(component));
   }
 
   @Override
   protected Object transformElement(EObject element_p, ITransfo transfo_p) {
     return null;
-  }
-
-  /**
-   * Retrieve the first function containing the object, or the object himself if it's a function
-   */
-  private AbstractFunction getFunctionContainer(EObject object) {
-    if (object instanceof AbstractFunction) {
-      return (AbstractFunction) object;
-    }
-    return (AbstractFunction) EObjectExt.getFirstContainer(object, FaPackage.Literals.ABSTRACT_FUNCTION);
   }
 
 }

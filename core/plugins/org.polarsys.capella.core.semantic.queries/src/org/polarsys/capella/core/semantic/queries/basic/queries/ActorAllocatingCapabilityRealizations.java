@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,13 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.la.CapabilityRealization;
-import org.polarsys.capella.core.data.capellacore.Involvement;
-import org.polarsys.capella.core.data.capellacore.InvolverElement;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
+import org.polarsys.capella.core.data.capellacore.InvolverElement;
+import org.polarsys.capella.core.data.cs.AbstractActor;
+import org.polarsys.capella.core.data.cs.SystemComponent;
+import org.polarsys.capella.core.data.la.CapabilityRealization;
 
 /**
  * Returns allocating Capability Realizations of current Actor.
@@ -32,16 +31,13 @@ public class ActorAllocatingCapabilityRealizations implements IQuery {
    */
   public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    // gets the Semantic Editing Domain
-    if (object instanceof Actor) {
-      Actor actor = (Actor) object;
-      EList<Involvement> involvingInvolvements = actor.getInvolvingInvolvements();
-      for (Involvement involvement : involvingInvolvements) {
-        if (involvement instanceof ActorCapabilityRealizationInvolvement) {
-          InvolverElement involver = involvement.getInvolver();
-          if (involver instanceof CapabilityRealization) {
-            result.add(involver);
-          }
+    if (object instanceof AbstractActor && !(object instanceof SystemComponent)) {
+      AbstractActor actor = (AbstractActor) object;
+      EList<CapabilityRealizationInvolvement> involvements = actor.getInvolvingCapabilityRealizationInvolvements();
+      for (CapabilityRealizationInvolvement involvement : involvements) {
+        InvolverElement involver = involvement.getInvolver();
+        if (involver instanceof CapabilityRealization) {
+          result.add(involver);
         }
       }
     }

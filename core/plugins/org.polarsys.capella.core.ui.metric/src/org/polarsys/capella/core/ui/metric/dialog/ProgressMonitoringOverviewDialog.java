@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -132,8 +133,9 @@ public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
             	if(null != ((CapellaElement)eobj).getStatus() && ((CapellaElement)eobj).getStatus().equals(lit) ) {
               		list.add(eobj); 
               }
-            } else if (eobj instanceof DRepresentation) {
-            	DAnnotation dAnnotation= RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) eobj);
+            } else if (eobj instanceof DRepresentationDescriptor) {
+            	DRepresentationDescriptor representationDes = (DRepresentationDescriptor) eobj;
+            	DAnnotation dAnnotation= RepresentationHelper.getAnnotation(eAnnot, representationDes.getRepresentation());
             	if (null != dAnnotation && dAnnotation.getDetails().get("value").equals(lit.getName())) {
             	list.add(eobj);
             	}
@@ -196,14 +198,15 @@ public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
         result.add(new String[] { ce.eClass().getName(), ce.getFullLabel(), ce.getLabel(), 
         		null == ce.getStatus() ? "" : ce.getStatus().getLabel(),
     			null == ce.getReview() ? "" : ce.getReview() });
-      } else if (current instanceof DRepresentation) {
-    	  DRepresentation dRepresentation = (DRepresentation) current;
+      } else if (current instanceof DRepresentationDescriptor) {
+    	  DRepresentationDescriptor representationDesc = (DRepresentationDescriptor) current;
+    	  DRepresentation dRepresentation = representationDesc.getRepresentation();
 
     	  String eAnnotStatus= IRepresentationAnnotationConstants.ProgressStatus;
-    	  DAnnotation dAnnotationStatus= RepresentationHelper.getAnnotation(eAnnotStatus, (DRepresentation) current);
+    	  DAnnotation dAnnotationStatus= RepresentationHelper.getAnnotation(eAnnotStatus, dRepresentation);
 
     	  String eAnnotReview= IRepresentationAnnotationConstants.StatusReview;
-    	  DAnnotation dAnnotationReview= RepresentationHelper.getAnnotation(eAnnotReview, (DRepresentation) current);
+    	  DAnnotation dAnnotationReview= RepresentationHelper.getAnnotation(eAnnotReview, dRepresentation);
 
     	  EObject target = Utils.getTarget(dRepresentation);
     	  if (target != null) {

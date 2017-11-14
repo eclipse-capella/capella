@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.cs.provider;
 
-import org.eclipse.emf.edit.provider.DecoratorAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemProviderDecorator;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.gen.edit.decorators.CustomDecoratorAdapterFactory;
 import org.polarsys.capella.core.data.gen.edit.decorators.ForwardingItemProviderAdapterDecorator;
 
-public class CsItemProviderDecoratorAdapterFactory extends DecoratorAdapterFactory {
+public class CsItemProviderDecoratorAdapterFactory extends CustomDecoratorAdapterFactory {
 
 	public CsItemProviderDecoratorAdapterFactory() {
 		super(new CsItemProviderAdapterFactory());

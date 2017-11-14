@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,8 +20,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 
-public class SemanticCrossReferencer extends ECrossReferenceAdapter {
+public class SemanticCrossReferencer extends ECrossReferenceAdapter implements SiriusCrossReferenceAdapter {
+  
+  private boolean resolveProxyEnabled = true;
 
   public Collection<EStructuralFeature.Setting> getInverseReferences(EObject eObject, EStructuralFeature feature, boolean resolve) {
     Collection<EStructuralFeature.Setting> result = new ArrayList<EStructuralFeature.Setting>();
@@ -64,7 +67,27 @@ public class SemanticCrossReferencer extends ECrossReferenceAdapter {
         }
       }
     }
-
     return result;
   }
+  
+  /**
+   * Disable the resolution of the proxy.
+   */
+  @Override
+  public void disableResolveProxy() {
+    resolveProxyEnabled = false;
+  }
+
+  /**
+   * Enable the resolution of the proxy.
+   */
+  @Override
+  public void enableResolveProxy() {
+    resolveProxyEnabled = true;
+  }
+  
+  public boolean isResolveProxyEnabled(){
+    return resolveProxyEnabled;
+  }
+
 }

@@ -132,6 +132,28 @@
                      name="StateTransition">
                </defaultMappingPossibility>
             </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacommon.TimeEvent"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.common.TimeEventRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.common.TimeEventRule"
+                     enabled="true"
+                     name="TimeEvent">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacommon.ChangeEvent"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.common.ChangeEventRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.common.ChangeEventRule"
+                     enabled="true"
+                     name="ChangeEvent">
+               </defaultMappingPossibility>
+            </mappingElement>
         </mappingPackage>
             
             

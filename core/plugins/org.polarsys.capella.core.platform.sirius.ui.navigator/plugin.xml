@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -440,6 +440,11 @@
                         value="org.eclipse.core.resources.IFile">
                   </instanceof>
                   <or>
+                     <test
+                           forcePluginActivation="true"
+                           property="org.eclipse.core.resources.extension"
+                           value="afm">
+                     </test>
                      <test
                            forcePluginActivation="true"
                            property="org.eclipse.core.resources.extension"
@@ -1080,24 +1085,24 @@
       <key
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.moveDown"
             sequence="CTRL+PAGE_DOWN"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+            schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"/>
       <key
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.moveUp"
             sequence="CTRL+PAGE_UP"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+            schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"/>
       <key
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
             sequence="F8">
       </key>
       <key
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showInDiagramCommand"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
             sequence="F10">
       </key>
       <key
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementsCommand"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
             sequence="F7">
       </key>
    </extension>

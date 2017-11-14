@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,15 +16,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.helpers.query.MDEQueries;
 import org.polarsys.capella.common.menu.dynamic.CreationHelper;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
@@ -36,7 +35,6 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
 import org.polarsys.capella.core.model.helpers.refmap.CapellaRefMap;
 import org.polarsys.capella.core.model.helpers.refmap.KPair;
@@ -55,28 +53,20 @@ public class CapellaEngine extends TransfoEngine {
    */
   public static final String TRANSFO_TARGET_CONTAINER = "transfoTargetContainer"; //$NON-NLS-1$
 
+  public CapellaEngine(Logger logger) {
+    super(logger);
+  }
+
+  public CapellaEngine() {
+    super();
+  }
+
   /**
    * @see org.polarsys.capella.core.tiger.impl.TransfoEngine#doProcessDependingModels (java.util.List)
    */
   @Override
   public void doProcessDependingModels(List<EObject> dependingModels_p) throws TransfoException {
     // do nothing
-  }
-
-  @Override
-  public void execute(ITransfo transfo_p) throws TransfoException {
-    boolean resolution = CrossReferencerHelper.resolutionEnabled();
-
-    try {
-      if (resolution) {
-        EcoreUtil.resolveAll(TransactionHelper.getEditingDomain((EObject) transfo_p.get(TRANSFO_SOURCE)).getResourceSet());
-      }
-      CrossReferencerHelper.enableResolution(false);
-      super.execute(transfo_p);
-
-    } finally {
-      CrossReferencerHelper.enableResolution(resolution);
-    }
   }
 
   /**

@@ -158,16 +158,18 @@ public class CommandLineApp extends AbstractApplication {
   private ICommandLine geInstanceFromId(String id, IConfigurationElement[] inputConfigElt) {
     for (IConfigurationElement configElt : inputConfigElt) {
       String eltId = configElt.getAttribute(CommandLineExtensionConstants.ATT_ID);
-      if (eltId.equals(id)) {
-        try {
-          ICommandLine obj = (ICommandLine) configElt
-              .createExecutableExtension(CommandLineExtensionConstants.ATT_CLASS);
-          return obj;
-        } catch (CoreException exception) {
-          StringBuilder loggerMessage = new StringBuilder(Messages.could_not_create_exec);
-          __logger.error(loggerMessage);
-        }
-      }
+      if(null != eltId){
+    	  if (eltId.equals(id)) {
+    	        try {
+    	          ICommandLine obj = (ICommandLine) configElt
+    	              .createExecutableExtension(CommandLineExtensionConstants.ATT_CLASS);
+    	          return obj;
+    	        } catch (CoreException exception) {
+    	          StringBuilder loggerMessage = new StringBuilder(Messages.could_not_create_exec);
+    	          __logger.error(loggerMessage);
+    	        }
+    	  }  
+      } 
     }
     return null;
   }

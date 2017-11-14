@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,9 @@ import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescripti
 import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointItem;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionWrapperContentProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.ui.ISaveablePart2;
 import org.eclipse.ui.navigator.SaveablesProvider;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
@@ -595,13 +597,26 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
         // Capella Project parent.
         localNotification = new ViewerNotification(localNotification, ((EObject) notifier).eContainer());
       }
+      
       if (((notifier instanceof Component) && (((EObject) notifier).eContainer() instanceof Part))
           && isImplicitView(notifier)) {
         // Capella Project is not refresh, forward the notification on
         // parent part.
         localNotification = new ViewerNotification(localNotification, ((EObject) notifier).eContainer());
       }
+      
+      if (notifier instanceof DRepresentationDescriptor) {
+        if (notification.getFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__TARGET) {
 
+          //We perform a notification on the old target semantic element
+          localNotification = new ViewerNotification(notification, notification.getOldValue(), true, true);
+          super.notifyChanged(localNotification);
+
+          //and an additional notification on the new target semantic element
+          localNotification = new ViewerNotification(notification, notification.getNewValue(), true, true);
+        }
+      }
+      
       super.notifyChanged(localNotification);
 
       // Search for additional updates, indeed elements that reference an

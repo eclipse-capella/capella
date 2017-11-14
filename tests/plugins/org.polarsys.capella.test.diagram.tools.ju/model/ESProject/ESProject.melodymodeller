@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.1.0-->
+<!--Capella_Version_1.1.2-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.1.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.1.0"
@@ -250,6 +250,17 @@
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
                 id="bc347bb0-929b-46c2-87bc-70d3701c83e3" name="LA 2" representedInstance="#69673244-f2c1-42e3-b785-15fb57769abd"/>
           </ownedScenarios>
+          <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
+              id="6b68f673-d089-4055-83fd-73b9d2dd7ade" name="[ES] Scenario 2" kind="DATA_FLOW">
+            <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
+                id="81b3d151-3d8e-4da3-86f2-2c117977a49b" name="LA 2" representedInstance="#69673244-f2c1-42e3-b785-15fb57769abd"/>
+          </ownedScenarios>
+          <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
+              id="537eb0f6-7ab4-4191-be4d-65bcd190dae9" involver="#a8143c88-483c-45b5-86b1-31b493a464e8"
+              involved="#a8b70a5e-4d0f-4ac3-a18d-80130e939cab"/>
+          <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
+              id="a7bce5c5-f02b-455a-baa8-5d314ec7609a" involver="#a8143c88-483c-45b5-86b1-31b493a464e8"
+              involved="#184a357a-93d9-41bc-8bba-9ea367724f67"/>
         </ownedCapabilityRealizations>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,11 +19,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EContentsEList.FeatureIterator;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticCrossReferencer;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
@@ -64,16 +67,56 @@ public class CrossReferencerHelper {
 
   /**
    * Allows to enable or disable crossReferencer resolution
-   * @param enabled
+   * @param editingDomain
+   * @param enablement
+   * 
    */
+  public static void enableResolveProxy(TransactionalEditingDomain editingDomain) {
+    if (editingDomain instanceof SemanticEditingDomain) {
+      SemanticEditingDomain domain = (SemanticEditingDomain)editingDomain;
+      domain.getCrossReferencer().enableResolveProxy();
+    }
+  }
+  
+  public static void disableResolveProxy(TransactionalEditingDomain editingDomain) {
+    if (editingDomain instanceof SemanticEditingDomain) {
+      SemanticEditingDomain domain = (SemanticEditingDomain)editingDomain;
+      domain.getCrossReferencer().disableResolveProxy();
+    }
+  }
+  
+  /**
+   * Returns whether crossReferencer is allowed to perform resolution
+   *
+   */
+  public static boolean isResolveProxyEnabled(EditingDomain editingDomain) {
+    if (editingDomain instanceof SemanticEditingDomain) {
+      return ((SemanticEditingDomain)editingDomain).getCrossReferencer().isResolveProxyEnabled();
+    }
+    return true;
+  }
+  
+  /**
+   * <p>
+   * Use {@link#enableResolveProxy(TransactionalEditingDomain)} or {@link SemanticCrossReferencer#enableResolveProxy()}
+   * </p>
+   * Allows to enable or disable crossReferencer resolution
+   * @param enabled
+   * 
+   */
+  @Deprecated
   public static void enableResolution(boolean enabled) {
     enabledResolution = enabled;
   }
 
   /**
+   * <p>
+   * Use {@link #isResolveProxyEnabled(TransactionalEditingDomain)} or {@link SemanticCrossReferencer#isResolveProxyEnabled()}
+   * </p>
    * Returns whether crossReferencer is allowed to perform resolution
    * @return
    */
+  @Deprecated
   public static boolean resolutionEnabled() {
     return enabledResolution;
   }

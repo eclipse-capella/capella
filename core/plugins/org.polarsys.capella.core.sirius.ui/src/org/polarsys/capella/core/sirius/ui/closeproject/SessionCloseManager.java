@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,34 +13,25 @@ package org.polarsys.capella.core.sirius.ui.closeproject;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.sirius.business.api.query.AirDResouceQuery;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
-import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.business.internal.session.danalysis.ResourceSaveDiagnose;
-import org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability;
-import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
-import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  */
@@ -206,28 +197,25 @@ public class SessionCloseManager {
   // resource.
   // Workaround until TIG will be aligned on Sirius
   public static void cleanSession(Session session) {
-    boolean value = CrossReferencerHelper.resolutionEnabled();
+    TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(session);
 
     if (session instanceof DAnalysisSessionImpl) {
-      ECrossReferenceAdapterWithUnproxyCapability cross = (((DAnalysisSessionImpl) session).getSemanticCrossReferencer());
+      SiriusCrossReferenceAdapter cross = (((DAnalysisSessionImpl) session).getSemanticCrossReferencer());
       cross.disableResolveProxy();
     }
 
     try {
-      CrossReferencerHelper.enableResolution(false);
       for (Resource resource : session.getAllSessionResources()) {
         resource.unload();
-        TransactionHelper.getEditingDomain(session).getResourceSet().getResources().remove(resource);
+        editingDomain.getResourceSet().getResources().remove(resource);
       }
       for (Resource resource : session.getSemanticResources()) {
         resource.unload();
-        TransactionHelper.getEditingDomain(session).getResourceSet().getResources().remove(resource);
+        editingDomain.getResourceSet().getResources().remove(resource);
       }
     } finally {
-      CrossReferencerHelper.enableResolution(value);
-
       if (session instanceof DAnalysisSessionImpl) {
-        ECrossReferenceAdapterWithUnproxyCapability cross = (((DAnalysisSessionImpl) session).getSemanticCrossReferencer());
+        SiriusCrossReferenceAdapter cross = (((DAnalysisSessionImpl) session).getSemanticCrossReferencer());
         cross.enableResolveProxy();
       }
     }

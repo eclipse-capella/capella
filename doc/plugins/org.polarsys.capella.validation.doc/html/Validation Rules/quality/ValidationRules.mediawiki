@@ -2,14 +2,14 @@
 = > Validation Rules > capella.category > quality =
             
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../Images/warning.gif|WARNING]]
 |   Q_01 - Mandatory summaries 
 |-
 | colspan="2" |This rule checks that Functions, Components, Actors, Functional Exchanges and Component Exchanges must have a summary. 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../Images/warning.gif|WARNING]]
 |    Q_02 - Mandatory descriptions 
 |-
@@ -17,7 +17,7 @@
 
 |}            
 <br> 
-  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
+  {| class="VALIDATION-RULE"|-
 ! |[[Image:../../Images/warning.gif|WARNING]]
 |   Q_03 - Review Field Not Empty 
 |-

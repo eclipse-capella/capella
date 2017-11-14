@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,8 +35,10 @@ import org.polarsys.capella.common.libraries.IModelIdentifier;
 import org.polarsys.capella.common.libraries.LibrariesFactory;
 import org.polarsys.capella.common.libraries.LibraryReference;
 import org.polarsys.capella.common.libraries.ModelInformation;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.libraries.Activator;
+import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 
 public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
@@ -115,6 +117,9 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
 
   @Override
   public void addReference(final IModel referencedLibrary_p) {
+    // Enable proxy resolution before adding the referenced library
+    CrossReferencerHelper.enableResolveProxy(_domain);
+
     ExecutionManagerRegistry.getInstance().getExecutionManager(_domain).execute(new AbstractReadWriteCommand() {
       @Override
       public void run() {
@@ -136,7 +141,8 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
 
         // Sirius session requires the semantic target resource to be added to the <semanticResources> reference
         // we can't use session.addSemanticResources unload the resource if already loaded.......
-        // new AddSemanticResourceCommand(session, ((CapellaModel) referencedLibrary_p).uriSemanticFile, new NullProgressMonitor()).execute();
+        // new AddSemanticResourceCommand(session, ((CapellaModel) referencedLibrary_p).uriSemanticFile, new
+        // NullProgressMonitor()).execute();
 
         Resource toAdd = target.eResource();
         Session session = SessionManager.INSTANCE.getSession(source);
@@ -145,7 +151,8 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
             analysis.getSemanticResources().add(new ResourceDescriptor(toAdd.getURI()));
           }
         }
-        // we ensure that sirius crossreferencer is correctly registered on it (just in case, like the AddSemanticResourceCommand did)
+        // we ensure that sirius crossreferencer is correctly registered on it (just in case, like the
+        // AddSemanticResourceCommand did)
         if (!toAdd.eAdapters().contains(session.getSemanticCrossReferencer())) {
           toAdd.eAdapters().add(session.getSemanticCrossReferencer());
         }
@@ -153,10 +160,16 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
         notifyLibraryChange(source);
       }
     });
+
+    // Disable proxy resolution after adding the referenced library
+    CrossReferencerHelper.disableResolveProxy(_domain);
   }
 
   @Override
   public void removeReference(final IModel referencedLibrary_p) {
+    // Enable proxy resolution before removing the referenced library
+    CrossReferencerHelper.enableResolveProxy(_domain);
+
     ExecutionManagerRegistry.getInstance().getExecutionManager(_domain).execute(new AbstractReadWriteCommand() {
       @Override
       public void run() {
@@ -171,8 +184,8 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
             if (reference.getLibrary().equals(target)) {
               toDelete = reference;
               break;
-            } else if (reference.getLibrary().eIsProxy()
-                       && referencedLibrary_p.getIdentifier().getId().equals(((InternalEObject) reference.getLibrary()).eProxyURI().fragment())) {
+            } else if (reference.getLibrary().eIsProxy() && referencedLibrary_p.getIdentifier().getId()
+                .equals(((InternalEObject) reference.getLibrary()).eProxyURI().fragment())) {
               toDelete = reference;
               break;
             }
@@ -185,13 +198,14 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
           Resource toRemove = toDelete.getLibrary().eResource();
           Session session = SessionManager.INSTANCE.getSession(source);
           if (session instanceof DAnalysisSessionImpl) {
-            for (final DAnalysis analysis : ((DAnalysisSessionImpl)session).allAnalyses()) {
-              analysis.getSemanticResources().remove(new ResourceDescriptor(toDelete.getLibrary().eResource().getURI()));
+            for (final DAnalysis analysis : ((DAnalysisSessionImpl) session).allAnalyses()) {
+              analysis.getSemanticResources()
+                  .remove(new ResourceDescriptor(toDelete.getLibrary().eResource().getURI()));
             }
           }
 
-          new CapellaDeleteCommand(ExecutionManagerRegistry.getInstance().getExecutionManager(_domain), Collections.singleton(toDelete), false, false, false)
-              .execute();
+          new CapellaDeleteCommand(ExecutionManagerRegistry.getInstance().getExecutionManager(_domain),
+              Collections.singleton(toDelete), false, false, false).execute();
           if (toRemove != null) {
             toRemove.unload();
             toRemove.eAdapters().removeAll(toRemove.eAdapters());
@@ -204,6 +218,8 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
 
     });
 
+    // Disable proxy resolution after removing the referenced library
+    CrossReferencerHelper.disableResolveProxy(_domain);
   }
 
   /**

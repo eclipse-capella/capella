@@ -90,8 +90,6 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
    */
   @Override
   public Object start(IApplicationContext appContext) throws Exception {
-    super.start(appContext);
-
     Display display = createDisplay();
 
     try {
@@ -107,6 +105,9 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
           shell.dispose();
         }
       }
+
+      // Run extensions from org.polarsys.capella.core.application.AppStart when the workbench is properly loaded
+      super.start(appContext);
 
       // create the workbench with this advisor and run it until it exits
       // N.B. createWorkbench remembers the advisor, and also registers

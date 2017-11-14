@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -126,6 +126,35 @@ public class RepresentationHelper {
           EObject child = allChildrenOfCurrentElement.next();
 
           representations.addAll(DialectManager.INSTANCE.getRepresentations(child, session));
+        }
+      }
+    }
+
+    return representations;
+  }
+  
+  /**
+   * Get all representation descriptors targeted by specified semantic elements.<br>
+   * Default implementation loops over specified elements and search for all representation descriptorss in a specified element
+   * containment subtree.
+   *
+   * @return a not <code>null</code> collection.
+   */
+  public static Collection<DRepresentationDescriptor> getAllRepresentationDescriptorsTargetedBy(Collection<?> semanticElements) {
+    Set<DRepresentationDescriptor> representations = new HashSet<DRepresentationDescriptor>();
+    // Go through EObjects only.
+    Iterable<EObject> semanticEObjects = Iterables.filter(semanticElements, EObject.class);
+    for (EObject semanticEObject : semanticEObjects) {
+      Session session = SessionManager.INSTANCE.getSession(semanticEObject);
+      if (session != null) { // can happen during tests
+        representations.addAll(DialectManager.INSTANCE.getRepresentationDescriptors(semanticEObject, session));
+        // Go trough element's subtree (sub elements have the same session as their parent).
+        TreeIterator<EObject> allChildrenOfCurrentElement = semanticEObject.eAllContents();
+
+        while (allChildrenOfCurrentElement.hasNext()) {
+          EObject child = allChildrenOfCurrentElement.next();
+
+          representations.addAll(DialectManager.INSTANCE.getRepresentationDescriptors(child, session));
         }
       }
     }

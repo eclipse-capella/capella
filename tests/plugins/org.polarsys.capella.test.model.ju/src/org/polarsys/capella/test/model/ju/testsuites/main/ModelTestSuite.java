@@ -13,6 +13,8 @@ package org.polarsys.capella.test.model.ju.testsuites.main;
 import java.util.ArrayList;
 import java.util.List;
 
+import junit.framework.Test;
+
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.model.ju.obfuscate.ObfuscateModelTestCase;
@@ -24,9 +26,9 @@ import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecompositi
 import org.polarsys.capella.test.model.ju.testcase.copyPasteModel.CopyPasteModelWithAppliedPVGandPV;
 import org.polarsys.capella.test.model.ju.testcase.copyPasteModel.CopyPasteModelWithFunctionalAllocation;
 import org.polarsys.capella.test.model.ju.testcase.dialoglabel.NewDiagramDialogLabel;
+import org.polarsys.capella.test.model.ju.testcases.datalisteners.DataListenerTestSuite;
+import org.polarsys.capella.test.model.ju.testcases.delete.DeleteElementTestSuite;
 import org.polarsys.capella.test.model.ju.testcases.interfacescenario.message.ISMessage;
-
-import junit.framework.Test;
 
 /**
  * @author Hakim Sellou
@@ -53,6 +55,8 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new NewDiagramDialogLabel());
     tests.add(new RenameModelTestSuite());
     tests.add(new ObfuscateModelTestCase());
+    tests.add(new DeleteElementTestSuite());
+    tests.add(new DataListenerTestSuite());
     return tests;
   }
 

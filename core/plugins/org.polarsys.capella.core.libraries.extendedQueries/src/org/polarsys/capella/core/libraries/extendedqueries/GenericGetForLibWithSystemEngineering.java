@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
@@ -37,7 +37,7 @@ public class GenericGetForLibWithSystemEngineering extends AbstractQuery {
       if (currentProject != null) {
         Collection<IModel> libraries = LibraryManagerExt.getActivesReferences(currentProject);
         for (IModel library : libraries) {
-          EObject correspondingInput = QueryExt.getSystemEngineeringFromLibrary(TransactionUtil.getEditingDomain(in), (CapellaModel) library);
+          EObject correspondingInput = QueryExt.getSystemEngineeringFromLibrary(TransactionHelper.getEditingDomain(in), (CapellaModel) library);
           if (correspondingInput != null) {
             result.addAll(QueryInterpretor.executeQuery(getIdentifier(), correspondingInput, context));
           }

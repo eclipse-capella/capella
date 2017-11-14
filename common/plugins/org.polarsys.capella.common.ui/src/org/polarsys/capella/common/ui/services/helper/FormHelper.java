@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,8 @@ import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTException;
+import org.eclipse.swt.custom.CCombo;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.SelectionListener;
@@ -34,8 +36,10 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Layout;
+import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolBar;
+import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.forms.IFormColors;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.events.ExpansionAdapter;
@@ -423,30 +427,42 @@ public class FormHelper {
    * @param color
    * @param ignoreEditableTextField <code>true</code> means editable text field won't be modified.
    */
+  @Deprecated
   public static void adaptBackgroundColor(Composite composite, Color color, boolean ignoreEditableTextField) {
-    // Preconditions.
-    if ((null == composite) || (null == color)) {
-      return;
+    adaptBackgroundColor((Control)composite, color, ignoreEditableTextField);
+  }
+
+  public static void adaptBackgroundColor(Control composite, Color color, boolean ignoreEditableTextField) {
+    boolean applyColor = true;
+    if ((composite instanceof Text) && !ignoreEditableTextField && ((Text) composite).getEditable()) {
+      applyColor = false;
     }
-    composite.setBackground(color);
-    Control[] children = composite.getChildren();
-    for (Control control : children) {
-      if (null != control) {
-        boolean applyColor = true;
-        if ((control instanceof Text) && !ignoreEditableTextField && ((Text) control).getEditable()) {
-          applyColor = false;
-        }
-        if (control instanceof Label) {
-          if (((Label) control).getImage() != null) {
-            applyColor = false;
-          }
-        }
-        if (applyColor) {
-          control.setBackground(color);
-        }
-        if (control instanceof Composite) {
-          adaptBackgroundColor((Composite) control, color, ignoreEditableTextField);
-        }
+    if ((composite instanceof StyledText && !ignoreEditableTextField && ((StyledText) composite).getEditable())) {
+      applyColor = false;
+    }
+    if (composite instanceof Table && composite.isEnabled()) {
+      applyColor = false;
+    }
+    if (composite instanceof Tree && composite.isEnabled()) {
+      applyColor = false;
+    }
+    if ((composite instanceof CCombo)) {
+      applyColor = false;
+    }
+    if (composite instanceof Label) {
+      if (((Label) composite).getImage() != null) {
+        applyColor = false;
+      }
+    }
+
+    if (applyColor) {
+      composite.setBackground(color);
+    }
+
+    if (composite instanceof Composite) {
+      Control[] children = ((Composite) composite).getChildren();
+      for (Control control : children) {
+        adaptBackgroundColor(control, color, ignoreEditableTextField);
       }
     }
   }

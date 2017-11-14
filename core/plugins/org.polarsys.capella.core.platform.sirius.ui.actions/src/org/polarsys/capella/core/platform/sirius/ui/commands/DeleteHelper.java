@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,21 +68,11 @@ import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.CombinedFragment;
-import org.polarsys.capella.core.data.interaction.ConstraintDuration;
-import org.polarsys.capella.core.data.interaction.Event;
-import org.polarsys.capella.core.data.interaction.Execution;
-import org.polarsys.capella.core.data.interaction.ExecutionEnd;
-import org.polarsys.capella.core.data.interaction.FragmentEnd;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionFragment;
-import org.polarsys.capella.core.data.interaction.InteractionOperand;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
-import org.polarsys.capella.core.data.interaction.InteractionState;
 import org.polarsys.capella.core.data.interaction.MessageEnd;
-import org.polarsys.capella.core.data.interaction.MessageKind;
-import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
-import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
 import org.polarsys.capella.core.model.handler.command.IDeleteHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
@@ -281,261 +271,75 @@ public class DeleteHelper implements IDeleteHelper {
     elementsToDelete.addAll(result);
   }
 
-  /**
-   * return the other side of the sequence message, the message and the related event
-   * 
-   * @param interactionFragment
-   * @return
-   */
-  protected Collection<? extends EObject> getAllObjectsFromAbstractEnd(InteractionFragment interactionFragment) {
-    List<EObject> objectsToDelete = new ArrayList<EObject>();
-    List<Event> eventsToDelete = new ArrayList<Event>();
-    if (interactionFragment instanceof MessageEnd) {
-      MessageEnd messageEnd = (MessageEnd) interactionFragment;
-      SequenceMessage message = messageEnd.getMessage();
-      objectsToDelete.add(messageEnd);
-      if (message != null) {
-        objectsToDelete.add(message);
-        if ((message.getSendingEnd() != null) && !objectsToDelete.contains(message.getSendingEnd())) {
-          objectsToDelete.add(message.getSendingEnd());
-        }
-        if ((message.getReceivingEnd() != null) && !objectsToDelete.contains(message.getReceivingEnd())) {
-          objectsToDelete.add(message.getReceivingEnd());
-        }
-      }
-    } else if (interactionFragment instanceof ExecutionEnd) {
-      ExecutionEnd execEnd = (ExecutionEnd) interactionFragment;
-      objectsToDelete.add(execEnd);
-    } else if (interactionFragment instanceof FragmentEnd) {
-      objectsToDelete.add(interactionFragment);
-    } else if (interactionFragment instanceof InteractionState) {
-      objectsToDelete.add(interactionFragment);
-      // new interaction states and stateFragment
-    }
+  protected void addElementsForScenario(Collection<Object> elementsToDelete) {
 
-    for (EObject eObject : objectsToDelete) {
-      if (eObject instanceof AbstractEnd) {
-        AbstractEnd ae = (AbstractEnd) eObject;
-        if (ae.getEvent() != null) {
-          eventsToDelete.add(ae.getEvent());
-        }
-      }
-    }
+    Collection<EObject> result = Collections.emptyList();
+    result = new ArrayList<EObject>();
 
-    objectsToDelete.addAll(eventsToDelete);
-    return objectsToDelete;
-  }
+    for (Object object : elementsToDelete) {
 
-  /**
-   * @param sourceObject
-   * @return
-   */
-  protected Collection<? extends EObject> getExecutionFromScenarioElement(Collection<?> elementsToDelete) {
-    Collection<EObject> result = new ArrayList<EObject>(elementsToDelete.size());
-    for (Object sourceObject : elementsToDelete) {
-      TimeLapse exec = null;
-      Scenario s = (Scenario) ((EObject) sourceObject).eContainer();
+      if (object instanceof TimeLapse) {
+        TimeLapse exec = (TimeLapse) object;
+        result.add(exec.getStart());
+        result.add(exec.getFinish());
 
-      if (sourceObject instanceof AbstractEnd) {
-        for (TimeLapse exec2 : s.getOwnedTimeLapses()) {
-          if (exec2.getStart() == sourceObject) {
-            exec = exec2;
-          }
-          if (exec2.getFinish() == sourceObject) {
-            exec = exec2;
-          }
-        }
-      }
-
-      if (sourceObject instanceof ConstraintDuration) {
-        result.add((EObject) sourceObject);
-      }
-
-      if (sourceObject instanceof SequenceMessage) {
-        SequenceMessage sm = (SequenceMessage) sourceObject;
-        // looking for an execution from a sequence message.
-        List<AbstractEnd> messageEnds = new ArrayList<AbstractEnd>(2);
-        messageEnds.add(sm.getSendingEnd());
-        messageEnds.add(sm.getReceivingEnd());
-        for (TimeLapse exec2 : s.getOwnedTimeLapses()) {
-          if (messageEnds.contains(exec2.getStart())) {
-            exec = exec2;
-          }
-          if (messageEnds.contains(exec2.getFinish())) {
-            exec = exec2;
-          }
-        }
-        // create and delete message are not connected to execution.
-        // so we must manage them manually
-        if ((sm.getKind() == MessageKind.CREATE) || (sm.getKind() == MessageKind.DELETE)
-            || (sm.getSendingEnd() == null) || (sm.getReceivingEnd() == null)) {
-          result.add(sm);
-        }
-      }
-
-      if (sourceObject instanceof TimeLapse) {
-        exec = (TimeLapse) sourceObject;
-        result.add(exec);
-      }
-      if (sourceObject instanceof InstanceRole) {
-        InstanceRole ir = (InstanceRole) sourceObject;
-        if (!result.contains(ir)) {
-          result.add(ir);
-        }
-        for (TimeLapse exec2 : s.getOwnedTimeLapses()) {
-          if ((exec2 instanceof Execution) && (((Execution) exec2).getCovered() == ir)) {
-            result.add(exec2);
-          }
-          if ((exec2 instanceof StateFragment)
-              && (((StateFragment) exec2).getStart().getCoveredInstanceRoles().contains(ir))) {
-            result.add(exec2);
-          }
-        }
-
-        // there is also the case of messages starting from this instanceRole
-        for (AbstractEnd ae : ir.getAbstractEnds()) {
-          if (ae instanceof MessageEnd) {
-            MessageEnd me = (MessageEnd) ae;
-            MessageEnd end = me.getMessage().getReceivingEnd();
-            for (TimeLapse exec2 : s.getOwnedTimeLapses()) {
-              if (exec2.getStart() == end) {
-                if (!result.contains(exec2)) {
-                  result.add(exec2);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    return result;
-  }
-
-  protected void globalizeElementsForScenario(Set<? super EObject> toDelete) {
-    Collection<Object> sequenceElements = new ArrayList<Object>();
-    for (Object object : toDelete) {
-      if (isSequenceDiagramObject(object)) {
-        sequenceElements.add(object);
-      }
-    }
-
-    Collection<EObject> elementsToDelete = Collections.emptyList();
-
-    if (sequenceElements.size() != 0) {
-      // propagate elementsToDelete to every elements impacted
-      Collection<? extends EObject> executions = getExecutionFromScenarioElement(sequenceElements);
-      elementsToDelete = new ArrayList<EObject>();
-      for (EObject object : executions) {
-        if (object instanceof TimeLapse) {
-          TimeLapse exec = (TimeLapse) object;
-          for (EObject object2 : propagageSequenceDeletion(exec)) {
-            elementsToDelete.add(object2);
-          }
-        }
-        if (object instanceof ConstraintDuration) {
-          elementsToDelete.add(object);
-        }
-        if (object instanceof InstanceRole) {
-          elementsToDelete.add(object);
-        }
-        if (object instanceof SequenceMessage) {
-          SequenceMessage sm = (SequenceMessage) object;
-          if (sm.getSendingEnd() != null) {
-            elementsToDelete.add(sm.getSendingEnd());
-            elementsToDelete.add(sm.getSendingEnd().getEvent());
-          }
-
-          if (sm.getReceivingEnd() != null) {
-            elementsToDelete.add(sm.getReceivingEnd());
-            elementsToDelete.add(sm.getReceivingEnd().getEvent());
-          }
-          elementsToDelete.add(sm);
-          if ((sm.getKind() == MessageKind.CREATE) || (sm.getKind() == MessageKind.DELETE)) {
-            elementsToDelete.add(sm.getSendingEnd().getEvent());
-            elementsToDelete.add(sm.getReceivingEnd().getEvent());
-          }
-        }
         if (object instanceof CombinedFragment) {
           CombinedFragment cf = (CombinedFragment) object;
-          elementsToDelete.addAll(cf.getReferencedOperands());
+          result.addAll(cf.getReferencedOperands());
         }
-      }
-    }
 
-    // adding ConstraintDuration pointing to a deleted element
-    List<ConstraintDuration> durationsToDelete = new ArrayList<ConstraintDuration>();
-    for (Object object : elementsToDelete) {
-      if (object instanceof InteractionFragment) {
-        InteractionFragment if_ = (InteractionFragment) object;
-        if (if_.eContainer() instanceof Scenario) {
-          Scenario scenario = (Scenario) if_.eContainer();
-          for (ConstraintDuration duration : scenario.getOwnedConstraintDurations()) {
-            if ((duration.getStart() != null && duration.getStart().equals(if_))
-                || (duration.getFinish() != null && duration.getFinish().equals(if_))) {
-              durationsToDelete.add(duration);
-            }
+      } else if (object instanceof InstanceRole) {
+        result
+            .addAll(EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.EXECUTION__COVERED));
+
+        for (EObject fragment : EObjectExt.getReferencers((EObject) object,
+            InteractionPackage.Literals.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES)) {
+          if (((InteractionFragment) fragment).getCoveredInstanceRoles().size() == 1) {
+            result.add(fragment);
           }
         }
-      }
-    }
-    elementsToDelete.addAll(durationsToDelete);
 
-    for (EObject object : elementsToDelete) {
+      } else if (object instanceof SequenceMessage) {
+        result.add(((SequenceMessage) object).getSendingEnd());
+        result.add(((SequenceMessage) object).getReceivingEnd());
+      }
+
+      if (object instanceof InteractionFragment) {
+        result
+            .addAll(EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.TIME_LAPSE__START));
+        result
+            .addAll(EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.TIME_LAPSE__FINISH));
+
+        if (object instanceof AbstractEnd) {
+          result.add(((AbstractEnd) object).getEvent());
+        }
+        if (object instanceof MessageEnd) {
+
+          result.add(((MessageEnd) object).getMessage());
+        }
+
+        result.addAll(
+            EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.CONSTRAINT_DURATION__START));
+        result.addAll(
+            EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.CONSTRAINT_DURATION__FINISH));
+      }
+
+    }
+
+    for (EObject object : result) {
       if (object != null) {
-        toDelete.add(object);
+        elementsToDelete.add(object);
       }
     }
 
-  }
-
-  /**
-   * @param elementsToDelete
-   * @return
-   */
-  protected boolean isSequenceDiagramObject(Object elementsToDelete) {
-    if (elementsToDelete instanceof InteractionState) {
-      return false; // no propagation in this case.
-    }
-    if (elementsToDelete instanceof InteractionOperand) {
-      return false; // TODO
-    }
-    if (elementsToDelete instanceof InteractionFragment) {
-      return true;
-    }
-    if (elementsToDelete instanceof SequenceMessage) {
-      return true;
-    }
-    if (elementsToDelete instanceof TimeLapse) {
-      return true;
-    }
-    if (elementsToDelete instanceof InstanceRole) {
-      return true;
-    }
-    if (elementsToDelete instanceof ConstraintDuration) {
-      return true;
-    }
-
-    return false;
-  }
-
-  protected List<? extends EObject> propagageSequenceDeletion(TimeLapse exec) {
-    InteractionFragment start = exec.getStart();
-    InteractionFragment finish = exec.getFinish();
-
-    List<EObject> objectsToDelete = new ArrayList<EObject>();
-
-    objectsToDelete.add(exec);
-    objectsToDelete.addAll(getAllObjectsFromAbstractEnd(start));
-    objectsToDelete.addAll(getAllObjectsFromAbstractEnd(finish));
-    return objectsToDelete;
   }
 
   /**
    * Should we delete the type of the argument Part if that Part is deleted. {@inheritDoc}
    */
   protected boolean shouldDeleteTypeOf(Part deletedPart) {
-    boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper
-        .isReusableComponentsDriven(deletedPart));
+    boolean allowMultiplePart = TriStateBoolean.True
+        .equals(CapellaProjectHelper.isReusableComponentsDriven(deletedPart));
     return (!allowMultiplePart || IDeletePreferences.INSTANCE.isDeletingPartType());
   }
 
@@ -563,7 +367,7 @@ public class DeleteHelper implements IDeleteHelper {
     // targeted elements.
     addElementsForAssociation(expandedSelection);
     // Get all elements for a scenario.
-    globalizeElementsForScenario(expandedSelection);
+    addElementsForScenario(expandedSelection);
     // Special case for property values.
     addPendingPropertyValues(expandedSelection);
     // Special case for property value groups.
@@ -596,8 +400,8 @@ public class DeleteHelper implements IDeleteHelper {
         ComponentExchangeAllocator allocator = ((ComponentExchangeAllocation) elementToDelete)
             .getComponentExchangeAllocator();
         if (allocator instanceof PhysicalLink) {
-          elementsToAddToDeletion.addAll(PhysicalLinkExt.evaluateImpactsOfUnsynchronizeAllocations(
-              (PhysicalLink) allocator, exchange, true));
+          elementsToAddToDeletion.addAll(
+              PhysicalLinkExt.evaluateImpactsOfUnsynchronizeAllocations((PhysicalLink) allocator, exchange, true));
         }
       } else if (elementToDelete instanceof PhysicalLink) {
         elementsToAddToDeletion.addAll(getRelatedElements((PhysicalLink) elementToDelete));
@@ -625,8 +429,8 @@ public class DeleteHelper implements IDeleteHelper {
         ComponentExchangeAllocator allocator = ((ComponentExchangeAllocation) elementToDelete)
             .getComponentExchangeAllocator();
         if (allocator instanceof PhysicalPath) {
-          elementsToAddToDeletion.addAll(PhysicalPathExt.evaluateImpactsOfUnsynchronizeAllocations(
-              (PhysicalPath) allocator, exchange, true));
+          elementsToAddToDeletion.addAll(
+              PhysicalPathExt.evaluateImpactsOfUnsynchronizeAllocations((PhysicalPath) allocator, exchange, true));
         }
       } else if (elementToDelete instanceof PhysicalPath) {
         elementsToAddToDeletion.addAll(getRelatedElements((PhysicalPath) elementToDelete));
@@ -650,8 +454,8 @@ public class DeleteHelper implements IDeleteHelper {
             .getAllocatingComponentExchange();
         FunctionalExchange fctExchange = ((ComponentExchangeFunctionalExchangeAllocation) elementToDelete)
             .getAllocatedFunctionalExchange();
-        elementsToAddToDeletion.addAll(ComponentExchangeExt.evaluateImpactsOfUnsynchronizeAllocations(cptExchange,
-            fctExchange, true));
+        elementsToAddToDeletion
+            .addAll(ComponentExchangeExt.evaluateImpactsOfUnsynchronizeAllocations(cptExchange, fctExchange, true));
       } else if (elementToDelete instanceof ComponentExchange) {
         elementsToAddToDeletion.addAll(getRelatedElements((ComponentExchange) elementToDelete));
       } else if (elementToDelete instanceof ComponentPort) {
@@ -698,12 +502,12 @@ public class DeleteHelper implements IDeleteHelper {
     for (ComponentExchangeFunctionalExchangeAllocation allocation : exchange
         .getOwnedComponentExchangeFunctionalExchangeAllocations()) {
       FunctionalExchange fctExchange = allocation.getAllocatedFunctionalExchange();
-      elementsToAddToDeletion.addAll(ComponentExchangeExt.evaluateImpactsOfUnsynchronizeAllocations(exchange,
-          fctExchange, true));
+      elementsToAddToDeletion
+          .addAll(ComponentExchangeExt.evaluateImpactsOfUnsynchronizeAllocations(exchange, fctExchange, true));
 
       for (PhysicalLink link : exchange.getAllocatorPhysicalLinks()) {
-        elementsToAddToDeletion.addAll(PhysicalLinkExt
-            .evaluateImpactsOfUnsynchronizeAllocations(link, exchange, true));
+        elementsToAddToDeletion
+            .addAll(PhysicalLinkExt.evaluateImpactsOfUnsynchronizeAllocations(link, exchange, true));
       }
     }
     return elementsToAddToDeletion;
@@ -824,14 +628,14 @@ public class DeleteHelper implements IDeleteHelper {
 
     // Test feature against traceable element incoming or outgoing traces.
     if (testTraceFeature) {
-      result = !(ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES.equals(feature) || ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES
-          .equals(feature));
+      result = !(ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES.equals(feature)
+          || ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES.equals(feature));
     }
-
+    
     if (CapellacommonPackage.Literals.STATE_TRANSITION__GUARD.equals(feature)){
       result = false;
     }
-
+    
     return result;
   }
 
@@ -851,8 +655,8 @@ public class DeleteHelper implements IDeleteHelper {
     // They point to a trace that should not be deleted.
     // Just make sure this as to do with the incoming or outgoing trace stuff too.
     if ((referencingElement instanceof TransfoLink)
-        && (ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES.equals(referencingFeature) || ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES
-            .equals(referencingFeature))) {
+        && (ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES.equals(referencingFeature)
+            || ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES.equals(referencingFeature))) {
       result = false;
     }
     return result;
@@ -871,8 +675,9 @@ public class DeleteHelper implements IDeleteHelper {
     boolean result = false;
     if (sourceObject instanceof Part) {
       // Remove type if we are singleton driven or if preference is enabled
-      boolean shouldDelete = (!TriStateBoolean.False.equals(CapellaProjectHelper
-          .isSingletonComponentsDriven(sourceObject))) || IDeletePreferences.INSTANCE.isDeletingPartType();
+      boolean shouldDelete = (!TriStateBoolean.False
+          .equals(CapellaProjectHelper.isSingletonComponentsDriven(sourceObject)))
+          || IDeletePreferences.INSTANCE.isDeletingPartType();
       result = shouldDelete && (linkedObject instanceof Component)
           && ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE.equals(feature);
 
@@ -939,5 +744,30 @@ public class DeleteHelper implements IDeleteHelper {
       EStructuralFeature feature) {
     // Nothing here
     return null;
+  }
+
+  @Deprecated
+  protected Collection<? extends EObject> getAllObjectsFromAbstractEnd(InteractionFragment interactionFragment) {
+    return Collections.emptyList();
+  }
+
+  @Deprecated
+  protected Collection<? extends EObject> getExecutionFromScenarioElement(Collection<?> elementsToDelete) {
+    return Collections.emptyList();
+  }
+
+  @Deprecated
+  protected void globalizeElementsForScenario(Set<? super EObject> elementsToDelete) {
+    // Nothing here
+  }
+
+  @Deprecated
+  protected boolean isSequenceDiagramObject(Object elementsToDelete) {
+    return false;
+  }
+
+  @Deprecated
+  protected List<? extends EObject> propagageSequenceDeletion(TimeLapse exec) {
+    return Collections.emptyList();
   }
 }

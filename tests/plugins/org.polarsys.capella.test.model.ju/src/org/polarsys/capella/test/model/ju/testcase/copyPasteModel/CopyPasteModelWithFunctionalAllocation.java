@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,6 @@
 package org.polarsys.capella.test.model.ju.testcase.copyPasteModel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -49,19 +48,10 @@ import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.FaServices;
 import org.polarsys.capella.core.transition.system.topdown.commands.TransitionCommandHelper;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
-import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
+import org.polarsys.capella.test.model.ju.model.MiscModel;
 
-public class CopyPasteModelWithFunctionalAllocation extends BasicTestCase {
-  public static final String MODEL_NAME = "miscmodel"; //$NON-NLS-1$
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public List<String> getRequiredTestModels() {
-    return Arrays.asList(MODEL_NAME);
-  }
+public class CopyPasteModelWithFunctionalAllocation extends MiscModel {
 
   /**
    * {@inheritDoc}
@@ -71,8 +61,8 @@ public class CopyPasteModelWithFunctionalAllocation extends BasicTestCase {
     //
     // Data creation.
     //
-    ICapellaModel model = getTestModel(MODEL_NAME);
-    Session session = getSessionForTestModel(MODEL_NAME);
+    ICapellaModel model = getTestModel();
+    Session session = getSessionForTestModel(getRequiredTestModels().get(0));
     TransactionalEditingDomain ted = session.getTransactionalEditingDomain();
     final Project project = ((ICapellaModel) model).getProject(ted);
     // Create an OperationalActivity and an OperationalActor allocating this OperationalActivity.

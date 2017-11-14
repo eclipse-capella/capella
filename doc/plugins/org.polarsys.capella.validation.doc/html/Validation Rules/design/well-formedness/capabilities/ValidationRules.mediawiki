@@ -2,7 +2,7 @@
 = > Validation Rules > capella.category > design > well-formedness > capabilities =
             
 <br>         
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_CA_01 - Capability location 
 |-
@@ -10,7 +10,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_CA_02 - Capability self extension  
 |-
@@ -18,7 +18,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_CA_03 - Capability self generalization 
 |-
@@ -26,7 +26,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_CA_04 - Capability self inclusion 
 |-
@@ -34,7 +34,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_CA_05 - Actor self generalization  
 |-
@@ -42,7 +42,7 @@
 |}     
 <br> 
 
-{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+{| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_CA_06 - Actor involvement in capabilities related to a mission in which it is involved check  
 |-

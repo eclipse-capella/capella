@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,7 +73,7 @@ public class ImpactAnalysisAction extends BaseSelectionListenerAction {
     final EObject modelElement = (EObject) getStructuredSelection().getFirstElement();
     List<EObject> referencingElements = CrossReferencerHelper.getReferencingElements(modelElement);
     // Add representations that reference selected element.
-    referencingElements.addAll(RepresentationHelper.getAllRepresentationsTargetedBy(Collections.singletonList(modelElement)));
+    referencingElements.addAll(RepresentationHelper.getAllRepresentationDescriptorsTargetedBy(Collections.singletonList(modelElement)));
     // Create a formatted message.
     String formattedMessage =
         StringHelper.formatMessage(Messages.ImpactAnalysisDialog_Message, new String[] { EObjectLabelProviderHelper.getText(modelElement) });
