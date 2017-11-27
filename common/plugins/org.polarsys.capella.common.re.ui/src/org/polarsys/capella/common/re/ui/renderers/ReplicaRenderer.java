@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -226,6 +226,11 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
 
   @Override
   public void initialize(IProperty property, IRendererContext rendererContext) {
+
+    // fix for https://bugs.polarsys.org/show_bug.cgi?id=1845
+    rendererContext.getPropertyContext().getCurrentValue(
+        rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIXES));
+
     super.initialize(property, rendererContext);
     rendererContext.getPropertyContext().registerListener(this,
         rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIXES));
