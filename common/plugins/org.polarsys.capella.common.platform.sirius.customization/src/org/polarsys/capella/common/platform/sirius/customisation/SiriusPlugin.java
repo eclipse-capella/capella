@@ -11,8 +11,7 @@
 package org.polarsys.capella.common.platform.sirius.customisation;
 
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IWorkbenchPreferenceConstants;
 import org.eclipse.ui.PlatformUI;
@@ -43,7 +42,8 @@ public class SiriusPlugin extends AbstractUIPlugin {
    * 
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
    */
-  public void start(BundleContext context) throws Exception {
+  @Override
+public void start(BundleContext context) throws Exception {
     super.start(context);
     plugin = this;
     // Initialize the preferences for Sirius
@@ -56,9 +56,9 @@ public class SiriusPlugin extends AbstractUIPlugin {
     SiriusEditPlugin.getPlugin().getPreferenceStore()
         .setValue(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
 
-    // Deactivate by default Sirius Auto-scale preference
-    DiagramUIPlugin.getPlugin().getPreferenceStore()
-        .setDefault(SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT.name(), false);
+    // Deactivate by default Sirius scale option (Use 0 to have similar
+    // behavior as before).
+    SiriusEditPlugin.getPlugin().getPreferenceStore().setDefault(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(), 0);
   }
 
   /**
@@ -66,7 +66,8 @@ public class SiriusPlugin extends AbstractUIPlugin {
    * 
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
    */
-  public void stop(BundleContext context) throws Exception {
+  @Override
+public void stop(BundleContext context) throws Exception {
     plugin = null;
     super.stop(context);
   }
