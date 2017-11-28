@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,7 +56,7 @@ public class ManifestModificationTask implements ITaskProduction {
                 	
                 	bundlePluginModelBase.getPluginBase().setProviderName("%pluginName");
                 	bundlePluginModelBase.getPluginBase().setProviderName("%providerName");
-                	bundlePluginModelBase.getPluginBase().setVersion("1.2.0.qualifier");
+                	bundlePluginModelBase.getPluginBase().setVersion("1.3.0.qualifier");
                 	
                 	IPluginImport[] imports = bundlePluginModelBase.getPluginBase().getImports();
                 	boolean extension_xmi_found = false;
