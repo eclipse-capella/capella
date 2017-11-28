@@ -39,6 +39,7 @@
 		<targetPlatform.repository>http://mbarbero.github.com/fr.obeo.releng.targetplatform/p2/latest</targetPlatform.repository>
 		<targetPlatform.name>capella.target-definition.targetplatform</targetPlatform.name>
 		<converterApplication.name>fr.obeo.releng.targetplatform.targetPlatform.converter</converterApplication.name>
+		<targetPlatform.id>full</targetPlatform.id>
 	</properties>
 
 	<build>
@@ -74,52 +75,16 @@
 				</configuration>
 				<executions>
 					<execution>
-						<id>generate.canary.target</id>
+						<id>generate.target</id>
 						<phase>validate</phase>
 						<configuration>
 							<applicationsArgs>
-								<args>-application ${converterApplication.name} canary/${targetPlatform.name}</args>
+								<args>-application ${converterApplication.name} ${targetPlatform.id}/${targetPlatform.name}</args>
 							</applicationsArgs>
 						</configuration>
 						<goals>
 							<goal>eclipse-run</goal>
 						</goals>
-					</execution>
-					<execution>
-						<id>generate.full.target</id>
-						<phase>validate</phase>
-						<configuration>
-							<applicationsArgs>
-								<args>-application ${converterApplication.name} full/${targetPlatform.name}</args>
-							</applicationsArgs>
-						</configuration>
-						<goals>
-							<goal>eclipse-run</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>generate.headless.target</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>eclipse-run</goal>
-						</goals>
-						<configuration>
-							<applicationsArgs>
-								<args>-application ${converterApplication.name} headless/${targetPlatform.name}</args>
-							</applicationsArgs>
-						</configuration>
-					</execution>
-					<execution>
-						<id>generate.nightly.target</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>eclipse-run</goal>
-						</goals>
-						<configuration>
-							<applicationsArgs>
-								<args>-application ${converterApplication.name} nightly/${targetPlatform.name}</args>
-							</applicationsArgs>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
