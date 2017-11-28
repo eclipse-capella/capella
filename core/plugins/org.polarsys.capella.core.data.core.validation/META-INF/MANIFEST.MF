@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.core.validation;singleton:=true
-Bundle-Version: 1.2.0.qualifier
+Bundle-Version: 1.2.1.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.polarsys.capella.core.validation,
@@ -10,9 +10,9 @@ Require-Bundle: org.polarsys.capella.core.validation,
  org.polarsys.capella.common.helpers,
  org.polarsys.capella.common.ui,
  org.polarsys.capella.core.model.helpers,
- org.polarsys.capella.common.libraries;bundle-version="0.8.0",
- org.eclipse.sirius;bundle-version="2.0.0",
- org.polarsys.capella.core.data.business.queries;bundle-version="1.2.0"
+ org.polarsys.capella.common.libraries,
+ org.eclipse.sirius,
+ org.polarsys.capella.core.data.business.queries
 Export-Package: org.polarsys.capella.core.data.capellamodeller.validation,
  org.polarsys.capella.core.data.core.validation.capellaelement,
  org.polarsys.capella.core.data.core.validation.capellaelement.nameconflict,

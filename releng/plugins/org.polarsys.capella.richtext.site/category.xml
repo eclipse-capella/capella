@@ -13,10 +13,10 @@
    <description url="http://www.polarsys.org/capella">
       Capella
    </description>
-   <feature id="org.polarsys.capella.core.properties.richtext.feature" version="1.2.0.qualifier">
+   <feature id="org.polarsys.capella.core.properties.richtext.feature" version="1.2.1.qualifier">
       <category name="org.polarsys.capella.richtext"/>
    </feature>
-   <feature id="org.polarsys.capella.core.properties.richtext.feature.source" version="1.2.0.qualifier">
+   <feature id="org.polarsys.capella.core.properties.richtext.feature.source" version="1.2.1.qualifier">
       <category name="org.polarsys.capella.richtext"/>
    </feature>
    <category-def name="org.polarsys.capella.richtext" label="Capella Richtext"/>
