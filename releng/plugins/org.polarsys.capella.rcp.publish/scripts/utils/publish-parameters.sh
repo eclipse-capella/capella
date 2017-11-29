@@ -35,7 +35,7 @@ export BUILD_TYPE=$2
 export BUILD_TYPE_PREFIX=$3
 
 # The full version (should be taken as an argument)
-export VERSION="1.2.0"
+export VERSION=${version}
 
 # Streams are of the form 1.0.x: only keep major and minor version number parts
 export STREAM=$(echo "$VERSION" | sed -r -e 's/^([0-9]+\.[0-9]+\.).*$/\1x/')
