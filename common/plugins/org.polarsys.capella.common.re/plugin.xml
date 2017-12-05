@@ -324,18 +324,7 @@
                name="Dependencies"
                description="Select elements from model">
         </property>
-        
-        
-         <property
-               class="org.polarsys.capella.common.re.rpl2re.create.properties.SuffixesProperty"
-               enabled="true"
-               group="org.polarsys.capella.common.re.description.replicableElementGroup"
-               id="suffixes"
-               name="Suffixes">
-         </property>
-         
-         
-         
+
         <property
                class="org.polarsys.capella.common.re.rpl2re.create.properties.MergeSourceScopeProperty"
                enabled="true"
