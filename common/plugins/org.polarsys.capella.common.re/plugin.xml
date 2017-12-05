@@ -792,8 +792,8 @@
     
     <command id="org.polarsys.capella.common.re.createRec"
           categoryId="org.polarsys.capella.common.re"
-          description="Create a REC from selection"
-          name="Create a REC from selection">
+          description="Create REC from selection"
+          name="Create REC from selection">
     </command>
     
     <command id="org.polarsys.capella.common.re.updateCur"
@@ -810,8 +810,8 @@
     
     <command id="org.polarsys.capella.common.re.createReplica"
           categoryId="org.polarsys.capella.common.re"
-          description="Instantiate a RPL from a REC"
-          name="Instantiate a RPL from a REC">
+          description="Instantiate RPL from REC"
+          name="Instantiate RPL from REC">
     </command>
     
     <command id="org.polarsys.capella.common.re.updateReplica"
@@ -835,13 +835,7 @@
    </extension>
 
    <extension point="org.eclipse.ui.commandImages"> <!-- should be named org.eclipse.core.commandImages -->
-        <image commandId="org.polarsys.capella.common.re.createRec"
-               icon="icons/full/etool16/ReplicableElement.gif">
-        </image>
         
-        <image commandId="org.polarsys.capella.common.re.updateCur"
-               icon="icons/full/etool16/ReplicableElement.gif">
-        </image>
         
         <image commandId="org.polarsys.capella.common.re.updateDef"
                icon="icons/full/etool16/ReplicableElement.gif">
