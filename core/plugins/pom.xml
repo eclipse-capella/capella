@@ -141,6 +141,7 @@
         <module>org.polarsys.capella.core.projection.systemfunction</module>
         <module>org.polarsys.capella.core.queries.helpers</module>
         <module>org.polarsys.capella.core.re</module>
+        <module>org.polarsys.capella.core.re.project</module>
         <module>org.polarsys.capella.core.re.ui</module>
         <module>org.polarsys.capella.core.re.ui.quickfix</module>
         <module>org.polarsys.capella.core.re.updateconnections.ui</module>
