@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
 import org.eclipse.core.runtime.IStatus;
@@ -644,7 +645,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
    */
   @Override
   public Collection<CatalogElementLink> createTargetLinks(CatalogElement replicable, Collection<CatalogElementLink> setLinks, IContext context) {
-    HashSet<CatalogElementLink> newLinks = new HashSet<CatalogElementLink>();
+    HashSet<CatalogElementLink> newLinks = new LinkedHashSet<CatalogElementLink>();
 
     for (CatalogElementLink link : setLinks) {
       CatalogElementLink link2 = ReFactory.eINSTANCE.createCatalogElementLink();
