@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -105,7 +105,7 @@ public class RePropertyTester extends PropertyTester {
     if (receiver instanceof EObject) {
       for (CatalogElementLink link : EObjectExt.<CatalogElementLink> getReferencers((EObject) receiver,
           RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET)) {
-        if (isRecCatalogElement(link.getOrigin())) {
+        if (isRecCatalogElement(link.getSource())) {
           return true;
         }
       }
@@ -125,7 +125,7 @@ public class RePropertyTester extends PropertyTester {
     if (receiver instanceof EObject) {
       for (CatalogElementLink link : EObjectExt.<CatalogElementLink> getReferencers((EObject) receiver,
           RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET)) {
-        if (isRplCatalogElement(link.getOrigin())) {
+        if (isRplCatalogElement(link.getSource())) {
           return true;
         }
       }
