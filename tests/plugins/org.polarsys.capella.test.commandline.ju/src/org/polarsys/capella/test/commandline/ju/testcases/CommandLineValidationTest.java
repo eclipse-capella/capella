@@ -32,17 +32,15 @@ public class CommandLineValidationTest extends BasicTestCase {
   @Override
   public void test() throws Exception { 
     IPath workspaceLocation = ResourcesPlugin.getWorkspace().getRoot().getRawLocation();
-    String projectName = "TestCommandLineValidation";
+    String projectName = "Test Command Line Validation";
     File sourceFolder = getFolderInTestModelRepository(projectName);
-    File targetFolder = workspaceLocation.append(projectName).toFile();
     // Copy test project from the JUnit plugin to the workspace directory
     ModelProviderHelper.getInstance().importCapellaProject(projectName, sourceFolder);
     
     // Simulated validation command line
     String[] validationCommandLineArguments = {
         CommandLineConstants.ID, "org.polarsys.capella.core.validation.commandline",
-        CommandLineConstants.IMPORT, targetFolder.getAbsolutePath(),
-        CommandLineConstants.FILE_PATH, projectName + "/TestCommandLineValidation.aird",
+        CommandLineConstants.FILE_PATH, projectName + "/Test Command Line Validation.aird",
         CommandLineConstants.OUTPUTFOLDER, projectName + "/ValidationResult",
         CommandLineConstants.FORCEOUTPUTFOLDERCREATION
     };
@@ -51,7 +49,7 @@ public class CommandLineValidationTest extends BasicTestCase {
     // Simulate launching from command line
     ValidationCommandLine validationCommandLine = new ValidationCommandLine();
     validationCommandLine.parseContext(mockApplicationContext);
-    validationCommandLine.setMode(CommandLineMode.IMPORT);
+    validationCommandLine.setMode(CommandLineMode.NO_IMPORT);
 
     // precondition: check parameters validity
     validationCommandLine.checkArgs(mockApplicationContext);

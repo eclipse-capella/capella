@@ -17,7 +17,7 @@
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.2.0"
     xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.2.0"
     id="2230ee6f-81c6-4d56-9aad-bf8a4e09da3e"
-    name="TestCommandLineValidation">
+    name="Test Command Line Validation">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="465f017d-2988-44a6-8b2b-ade34fb73ff7"/>
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
       id="9a50ad60-7c76-4b7f-a79a-a045e75e95bf" name="ProgressStatus">
