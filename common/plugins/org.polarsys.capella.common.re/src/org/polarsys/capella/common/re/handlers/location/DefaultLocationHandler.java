@@ -359,49 +359,79 @@ public class DefaultLocationHandler implements ILocationHandler {
     return source.eContainingFeature();
   }
 
-  /**
-   * @param link
-   * @param oppositeLink
-   * @param context
-   * @return
-   */
-  protected Collection<EObject> retrieveDefaultContainers(CatalogElementLink link, CatalogElementLink oppositeLink, IContext context) {
 
-    CatalogElement element = ReplicableElementHandlerHelper.getInstance(context).getInitialTarget(context);
+  protected Collection<EObject> retrieveDefaultContainers(CatalogElementLink link, CatalogElementLink oppositeLink, IContext context) {
 
     Collection<EObject> elementsContainers = new LinkedHashSet<EObject>(); // order is important!
 
-    CatalogElement recUsingSource = null;
-    CatalogElement recUsingTarget = null;
+    retrieveDefaultContainersForComposite(link, elementsContainers, context);
+    retrieveDefaultContainersFromSelection(link, oppositeLink, elementsContainers, context);
+    retrieveDefaultContainersFromSiblingLinks(link, elementsContainers, context);
+    retrieveDefaultContainersFromLocationSourceProperty(link, elementsContainers, context);
 
-    // For a link stored in catalogElement used "somewhere", if the TARGET catalogElement is used in replica of "somewhere", we can
-    // find a container for the source which is source.target.eContainer<-replicaOfSomewhere
-    for (CatalogElement referencingElement : ReplicableElementHandlerHelper.getInstance(context).getLinkingReplicableElements(context,
-        Collections.singletonList((Object) link.getSource()))) {
-      for (CatalogElement referencingElement2 : ReplicableElementHandlerHelper.getInstance(context).getLinkingReplicableElements(context,
-          Collections.singletonList((Object) element.getOrigin()))) {
-        if (referencingElement.getOrigin().equals(referencingElement2)) {
-          recUsingSource = referencingElement2;
-          recUsingTarget = referencingElement;
-          break;
+    return elementsContainers;
+  }
+
+
+  // We also add for a CatalogElementLink to a CatalogElement, link.getSource().eContainer()
+  private void retrieveDefaultContainersFromLocationSourceProperty(CatalogElementLink link, Collection<EObject> elementsContainers,
+      IContext context) {
+    String scope = (String) context.get(ITransitionConstants.OPTIONS_SCOPE);
+    IPropertyContext propertyContext = ((IPropertyHandler) OptionsHandlerHelper.getInstance(context)).getPropertyContext(context, scope);
+
+    if (link.getTarget() instanceof CatalogElement) {
+      CatalogElement sourceElement = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
+      if ((sourceElement != null) && sourceElement.equals(link.getSource())) {
+        IProperty property = propertyContext.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_SOURCE);
+        if (property != null) {
+          Object value = propertyContext.getCurrentValue(property);
+          if ((value != null) && (value instanceof EObject)) {
+            elementsContainers.add((EObject) propertyContext.getCurrentValue(property));
+          }
         }
       }
-    }
-    if ((recUsingSource != null) && (recUsingTarget != null)) {
-      for (CatalogElementLink sLink : (Collection<CatalogElementLink>) (Collection) ReplicableElementHandlerHelper.getInstance(context).getElementsLinks(
-          recUsingSource)) {
-        if (((link.getTarget() != null) && (link.getTarget().eContainer() != null))
-            && link.getTarget().eContainer().equals(sLink.getTarget())) {
-          for (CatalogElementLink tLink : recUsingTarget.getOwnedLinks()) {
-            if ((tLink != null) && ((tLink.getOrigin() != null) && tLink.getOrigin().equals(sLink))) {
-              elementsContainers.add(tLink.getTarget());
-            }
+      CatalogElement targetElement = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
+      if ((targetElement != null) && targetElement.equals(link.getSource())) {
+
+        IProperty property = propertyContext.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_TARGET);
+        if (property != null) {
+          Object value = propertyContext.getCurrentValue(property);
+          if ((value != null) && (value instanceof EObject)) {
+            elementsContainers.add((EObject) propertyContext.getCurrentValue(property));
           }
         }
       }
     }
+  }
 
-    // We look in the selection if there is a compatible element to store the linkSource (the rack when instanciating the card)
+  private void retrieveDefaultContainersFromSiblingLinks(CatalogElementLink link, Collection<EObject> elementsContainers,
+      IContext context) {
+    // We look for a Link of a brother of linkSource (same eContainer) in the target, and then, we retrieve its container
+    CatalogElement element = ReplicableElementHandlerHelper.getInstance(context).getInitialTarget(context);
+    Collection<CatalogElementLink> links = ReplicableElementHandlerHelper.getInstance(context).getElementsLinks(element);
+
+    for (CatalogElementLink linkA : links) {
+      if ((linkA == null) || ((linkA.getOrigin() == null) || (linkA.getOrigin().getTarget() == null)) || (linkA.getOrigin().getTarget().eContainer() == null)) {
+        continue; // invalid link
+      }
+      if ((link == null) || ((link.getOrigin() == null) || (link.getOrigin().getTarget() == null))) {
+        continue; // invalid link
+      }
+      if ((linkA.equals(link))) {
+        continue; // not a brother
+      }
+      if (!linkA.getOrigin().getTarget().eContainer().equals(link.getOrigin().getTarget().eContainer())) {
+        continue; // not a brother
+      }
+
+      elementsContainers.add(linkA.getTarget().eContainer()); // retrieve the container
+    }
+  }
+
+
+  // We look in the selection if there is a compatible element to store the linkSource (the rack when instanciating the card)
+  private void retrieveDefaultContainersFromSelection(CatalogElementLink link, CatalogElementLink oppositeLink,
+      Collection<EObject> elementsContainers, IContext context) {
     Collection<EObject> elements = (Collection<EObject>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     if (elements != null) {
       for (EObject ppp : elements) {
@@ -429,56 +459,41 @@ public class DefaultLocationHandler implements ILocationHandler {
         }
       }
     }
+  }
 
-    // We look for a Link of a brother of linkSource (same eContainer) in the target, and then, we retrieve its container
-    Collection<CatalogElementLink> links = ReplicableElementHandlerHelper.getInstance(context).getElementsLinks(element);
+  private void retrieveDefaultContainersForComposite(CatalogElementLink link, Collection<EObject> elementsContainers,
+      IContext context) {
+    CatalogElement element = ReplicableElementHandlerHelper.getInstance(context).getInitialTarget(context);
 
-    for (CatalogElementLink linkA : links) {
-      if ((linkA == null) || ((linkA.getOrigin() == null) || (linkA.getOrigin().getTarget() == null)) || (linkA.getOrigin().getTarget().eContainer() == null)) {
-        continue; // invalid link
-      }
-      if ((link == null) || ((link.getOrigin() == null) || (link.getOrigin().getTarget() == null))) {
-        continue; // invalid link
-      }
-      if ((linkA.equals(link))) {
-        continue; // not a brother
-      }
-      if (!linkA.getOrigin().getTarget().eContainer().equals(link.getOrigin().getTarget().eContainer())) {
-        continue; // not a brother
-      }
+    CatalogElement recUsingSource = null;
+    CatalogElement recUsingTarget = null;
 
-      elementsContainers.add(linkA.getTarget().eContainer()); // retrieve the container
-    }
-
-    // We also add for a CatalogElementLink to a CatalogElement, link.getSource().eContainer()
-    String scope = (String) context.get(ITransitionConstants.OPTIONS_SCOPE);
-    IPropertyContext propertyContext = ((IPropertyHandler) OptionsHandlerHelper.getInstance(context)).getPropertyContext(context, scope);
-
-    if (link.getTarget() instanceof CatalogElement) {
-      CatalogElement sourceElement = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
-      if ((sourceElement != null) && sourceElement.equals(link.getSource())) {
-        IProperty property = propertyContext.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_SOURCE);
-        if (property != null) {
-          Object value = propertyContext.getCurrentValue(property);
-          if ((value != null) && (value instanceof EObject)) {
-            elementsContainers.add((EObject) propertyContext.getCurrentValue(property));
-          }
+    // For a link stored in catalogElement used "somewhere", if the TARGET catalogElement is used in replica of "somewhere", we can
+    // find a container for the source which is source.target.eContainer<-replicaOfSomewhere
+    for (CatalogElement referencingElement : ReplicableElementHandlerHelper.getInstance(context).getLinkingReplicableElements(context,
+        Collections.singletonList((Object) link.getSource()))) {
+      for (CatalogElement referencingElement2 : ReplicableElementHandlerHelper.getInstance(context).getLinkingReplicableElements(context,
+          Collections.singletonList((Object) element.getOrigin()))) {
+        if (referencingElement.getOrigin().equals(referencingElement2)) {
+          recUsingSource = referencingElement2;
+          recUsingTarget = referencingElement;
+          break;
         }
       }
-      CatalogElement targetElement = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
-      if ((targetElement != null) && targetElement.equals(link.getSource())) {
-
-        IProperty property = propertyContext.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_TARGET);
-        if (property != null) {
-          Object value = propertyContext.getCurrentValue(property);
-          if ((value != null) && (value instanceof EObject)) {
-            elementsContainers.add((EObject) propertyContext.getCurrentValue(property));
+    }
+    if ((recUsingSource != null) && (recUsingTarget != null)) {
+      for (CatalogElementLink sLink : ReplicableElementHandlerHelper.getInstance(context).getElementsLinks(recUsingSource)) {
+        if (((link.getTarget() != null) && (link.getTarget().eContainer() != null))
+            && link.getTarget().eContainer().equals(sLink.getTarget())) {
+          for (CatalogElementLink tLink : recUsingTarget.getOwnedLinks()) {
+            if ((tLink != null) && ((tLink.getOrigin() != null) && tLink.getOrigin().equals(sLink))) {
+              elementsContainers.add(tLink.getTarget());
+            }
           }
         }
       }
     }
 
-    return elementsContainers;
   }
 
   /**
