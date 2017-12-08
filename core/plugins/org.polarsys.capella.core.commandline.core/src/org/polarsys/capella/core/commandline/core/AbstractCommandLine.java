@@ -94,7 +94,7 @@ public class AbstractCommandLine implements ICommandLine {
     } catch (CoreException exception) {
       logErrorAndThrowException(Messages.refresh_problem);
     }
-
+    
     // is filepath empty ?
     if (isEmtyOrNull(argHelper.getFilePath())) {
       logErrorAndThrowException(Messages.representation_mandatory);
@@ -526,7 +526,7 @@ public class AbstractCommandLine implements ICommandLine {
     URI uri = URI.createFileURI(segments.get(0));
     for (int i = 1; i < segments.size(); i++)
       uri = uri.appendSegment(segments.get(i));
-    return uri.toFileString();
+    return URI.decode(uri.toFileString());
   }
 
   public List<String> getImportedProjects() {

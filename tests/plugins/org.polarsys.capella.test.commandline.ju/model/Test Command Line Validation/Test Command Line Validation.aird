@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_FJLoYAmCEeef3_qOfMmJQw" selectedViews="_GT_OoAmCEeef3_qOfMmJQw _Gprx0AmCEeef3_qOfMmJQw _Gp50QAmCEeef3_qOfMmJQw _Gp-swAmCEeef3_qOfMmJQw _GqMIIAmCEeef3_qOfMmJQw _GqOkYAmCEeef3_qOfMmJQw _GqbYsAmCEeef3_qOfMmJQw" version="12.1.0.201708031200">
-  <semanticResources>TestCommandLineValidation.afm</semanticResources>
-  <semanticResources>TestCommandLineValidation.melodymodeller</semanticResources>
+  <semanticResources>Test%20Command%20Line%20Validation.afm</semanticResources>
+  <semanticResources>Test%20Command%20Line%20Validation.melodymodeller</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_GT_OoAmCEeef3_qOfMmJQw">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
   </ownedViews>
