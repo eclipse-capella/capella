@@ -124,8 +124,8 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
   public IStatus validate(Object newValue, IPropertyContext context) {
     IContext ctx = (IContext) context.getSource();
 
-    Object useDefault = context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__USE_DEFAULT_LOCATION));
-    boolean isUseDefault = !(Boolean.FALSE.equals(useDefault));
+    Object useDefault = context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__PARENT_LOCATOR));
+    boolean isUseDefault = !IReConstants.LOCATOR_OPTION_MANUAL.equals(useDefault);
 
     HashSet<CatalogElementLink> links = (HashSet<CatalogElementLink>) newValue;
     HashSet<CatalogElementLink> linksInvalid = new HashSet<CatalogElementLink>();
@@ -180,9 +180,9 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
     //Nothing yet+
     IContext ctx = (IContext) context.getSource();
 
-    HashSet<CatalogElementLink> links = (HashSet) context.getCurrentValue(this);
-    Object useDefault = context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__USE_DEFAULT_LOCATION));
-    boolean isUseDefault = !(Boolean.FALSE.equals(useDefault));
+    HashSet<CatalogElementLink> links = (HashSet<CatalogElementLink>) context.getCurrentValue(this);
+    Object useDefault = context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__PARENT_LOCATOR));
+    boolean isUseDefault = !IReConstants.LOCATOR_OPTION_MANUAL.equals(useDefault);
 
     if (links != null) {
 
@@ -224,7 +224,7 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, IReConstants.PROPERTY__USE_DEFAULT_LOCATION,
+    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, IReConstants.PROPERTY__PARENT_LOCATOR,
                          IReConstants.PROPERTY__LOCATION_TARGET };
   }
 
@@ -234,7 +234,8 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
   @Override
   public void updatedValue(IProperty property, IPropertyContext context) {
     if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET.equals(property.getId())
-     || IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE.equals(property.getId()))
+     || IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE.equals(property.getId())
+     || IReConstants.PROPERTY__PARENT_LOCATOR.equals(property.getId()))
     {
       IContext ctx = (IContext) context.getSource();
       ctx.put(LINKS, null);
