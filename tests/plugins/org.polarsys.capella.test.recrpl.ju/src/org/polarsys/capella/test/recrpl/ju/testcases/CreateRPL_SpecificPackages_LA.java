@@ -23,7 +23,7 @@ import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
-import org.polarsys.capella.core.re.handlers.location.CapellaModelSkeleton;
+import org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton;
 
 public class CreateRPL_SpecificPackages_LA extends CreateRPL_SpecificPackages {
 

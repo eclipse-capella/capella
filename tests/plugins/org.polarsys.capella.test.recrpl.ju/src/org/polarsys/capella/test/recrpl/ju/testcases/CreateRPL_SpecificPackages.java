@@ -17,11 +17,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.runtime.preferences.InstanceScope;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.helpers.EObjectExt;
@@ -31,8 +29,6 @@ import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.RePackage;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
-import org.polarsys.capella.core.data.capellamodeller.CapellamodellerFactory;
-import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
@@ -50,10 +46,7 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.skeleton.EngineeringDomain;
-import org.polarsys.capella.core.model.skeleton.ISkeletonServices;
-import org.polarsys.capella.core.model.skeleton.impl.SkeletonServicesImpl;
-import org.polarsys.capella.core.re.handlers.location.CapellaModelSkeleton;
+import org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton;
 import org.polarsys.capella.test.recrpl.ju.RecRplCommandManager;
 import org.polarsys.capella.test.recrpl.ju.RecRplTestCase;
 
@@ -123,18 +116,8 @@ public abstract class CreateRPL_SpecificPackages extends RecRplTestCase {
     InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).put(IReConstants.PROPERTY__PARENT_LOCATOR, IReConstants.LOCATOR_OPTION_SPECIFIC_PACKAGES);
 
     manager = ExecutionManagerRegistry.getInstance().addNewManager();
-    URI uri = URI.createURI("CreateRPL_SpecificPackages.melodymodeller", true); //$NON-NLS-1$
-    resource = manager.getEditingDomain().getResourceSet().createResource(uri);
-    manager.getEditingDomain().getCommandStack().execute(new RecordingCommand(manager.getEditingDomain()) {
-      @Override
-      protected void doExecute() {
-        Project p = CapellamodellerFactory.eINSTANCE.createProject("test"); //$NON-NLS-1$
-        resource.getContents().add(p);
-        project = CapellaModelSkeleton.asSkeleton(p);
-      }
-    });
-    ISkeletonServices s = new SkeletonServicesImpl();
-    s.doSystemEngineering(project.getProject(), "test", EngineeringDomain.System, true);
+    project = new CapellaModelSkeleton.Builder(manager).build();
+    resource = project.getProject().eResource();
 
   }
 

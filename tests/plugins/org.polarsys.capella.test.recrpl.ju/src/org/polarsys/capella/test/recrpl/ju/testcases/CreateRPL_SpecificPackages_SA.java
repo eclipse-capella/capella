@@ -23,7 +23,7 @@ import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
-import org.polarsys.capella.core.re.handlers.location.CapellaModelSkeleton;
+import org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton;
 
 public class CreateRPL_SpecificPackages_SA extends CreateRPL_SpecificPackages {
 

@@ -24,7 +24,7 @@ import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
-import org.polarsys.capella.core.re.handlers.location.CapellaModelSkeleton;
+import org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton;
 
 public class CreateRPL_SpecificPackages_PA extends CreateRPL_SpecificPackages {
 
