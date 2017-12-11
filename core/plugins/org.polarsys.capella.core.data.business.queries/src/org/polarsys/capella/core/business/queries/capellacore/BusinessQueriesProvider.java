@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,48 +10,51 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.capellacore;
 
+import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
+import org.polarsys.capella.core.business.queries.BusinessQueriesPlugin;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 
-/**
- * 
- */
+
 public class BusinessQueriesProvider {
 
-  /**
-	 * 
-	 */
   private static BusinessQueriesProvider _instance = null;
   public static final String BUSINESS_QUERIES_EXTENSION_ID = "MDEBusinessQueries"; //$NON-NLS-1$
 
   /**
-	 * 
-	 */
-  public static final String BUSINESS_QUERIES_PLUGIN_ID = "org.polarsys.capella.core.data.business.queries"; //$NON-NLS-1$
-  private List<IBusinessQuery> _businessQueriesCache = null;
+   * @deprecated Use {@link BusinessQueriesPlugin#PLUGIN_ID} instead
+   */
+  @Deprecated
+  public static final String BUSINESS_QUERIES_PLUGIN_ID = BusinessQueriesPlugin.PLUGIN_ID;
 
-  /**
-	 * 
-	 */
+  private List<IBusinessQuery> _businessQueriesCache = null;
+  private Map<SimpleEntry<EClass, EStructuralFeature>, IBusinessQuery> businessQueriesMap;
+
+
   private BusinessQueriesProvider() {
     // do nothing
   }
 
-  /**
-	 * 
-	 */
+
   public List<IBusinessQuery> getAllContributions() {
     if (null == _businessQueriesCache) {
       _businessQueriesCache = new ArrayList<IBusinessQuery>();
       List<IConfigurationElement> BQProvider =
-          Arrays.asList(ExtensionPointHelper.getConfigurationElements(BUSINESS_QUERIES_PLUGIN_ID, BUSINESS_QUERIES_EXTENSION_ID));
+          Arrays.asList(ExtensionPointHelper.getConfigurationElements(BusinessQueriesPlugin.PLUGIN_ID, BUSINESS_QUERIES_EXTENSION_ID));
       for (IConfigurationElement configurationElement : BQProvider) {
         IBusinessQuery contrib = (IBusinessQuery) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
         if (contrib != null) {
@@ -62,24 +65,42 @@ public class BusinessQueriesProvider {
     return _businessQueriesCache;
   }
 
-  /**
-	 * 
-	 */
+
   public IBusinessQuery getContribution(EClass cls, EStructuralFeature feature) {
-    List<IBusinessQuery> lst = getAllContributions();
-    for (IBusinessQuery contrib : lst) {
-      if (contrib.getEStructuralFeatures() != null) {
-        if (cls.equals(contrib.getEClass()) && contrib.getEStructuralFeatures().contains(feature)) {
-          return contrib;
-        }
-      }
-    }
-    return null;
+    return getAllContributionsMap().get(new SimpleEntry<EClass, EStructuralFeature>(cls, feature));
   }
 
   /**
-	 * 
-	 */
+   * Returns an unmodifiable cached map view of all known business query contributions.
+   */
+  public Map<SimpleEntry<EClass, EStructuralFeature>, IBusinessQuery> getAllContributionsMap(){
+    if (businessQueriesMap == null) {
+      businessQueriesMap = new HashMap<SimpleEntry<EClass,EStructuralFeature>, IBusinessQuery>();
+      for (IBusinessQuery query : getAllContributions()) {
+
+        // there are deprecated queries around that return null, filter them here
+        if (query.getEClass() != null && query.getEStructuralFeatures() != null) {
+
+          for (EStructuralFeature f : query.getEStructuralFeatures()) {
+            SimpleEntry<EClass, EStructuralFeature> key = new SimpleEntry<EClass, EStructuralFeature>(query.getEClass(), f);
+            IBusinessQuery dup = businessQueriesMap.get(key);
+            if (dup == null) {
+              businessQueriesMap.put(key, query);
+            } else {
+              // keep the existing key and log error.
+              ILog log = BusinessQueriesPlugin.getDefault().getLog();
+              log.log(new Status(IStatus.WARNING, BusinessQueriesPlugin.PLUGIN_ID,
+                  NLS.bind(Messages.BusinessQueriesProvider_duplicateQueryContributionKey,
+                      new Object[] { key.getKey(), key.getValue(), query.getClass().getName(), dup.getClass().getName() })));
+            }
+          }
+        }
+      }
+    }
+    return Collections.unmodifiableMap(businessQueriesMap);
+  }
+
+
   public static BusinessQueriesProvider getInstance() {
     if (_instance == null) {
       _instance = new BusinessQueriesProvider();
