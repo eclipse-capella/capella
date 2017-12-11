@@ -17,6 +17,8 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__ABSTRACT_EXPRESSION_VALUE__OPERAND___LIB = "GetAvailable_AbstractExpressionValue_Operand__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ABSTRACT_EXPRESSION_VALUE__TYPE___LIB = "GetAvailable_AbstractExpressionValue_Type__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ABSTRACT_STATE_PROPERTIES___LIB = "GetAvailable_AbstractStateProperties__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__ACTIVITY_EDGE__SOURCE = "GetAvailable_ActivityEdge_Source"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__ACTIVITY_EDGE__TARGET = "GetAvailable_ActivityEdge_Target"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ACTOR__FUNCTIONAL_ALLOCATION = "GetAvailable_Actor_FunctionalAllocation"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ACTOR__IMPLEMENTED_INTERFACES___LIB = "GetAvailable_Actor_ImplementedInterfaces__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ACTOR__INHERITED_ACTORS = "GetAvailable_Actor_InheritedActors"; //$NON-NLS-1$
@@ -121,6 +123,8 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS = "GetAvailable_FunctionalChain_RealizedFunctionalChains"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__CATEGORIES = "GetAvailable_FunctionalExchange_Categories"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__EXCHANGE_ITEMS___LIB = "GetAvailable_FunctionalExchange_ExchangeItems__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__SOURCE = "GetAvailable_FunctionalExchange_Source"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__TARGET = "GetAvailable_FunctionalExchange_Target"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__FUNCTIONAL_EXCHANGE_REALIZATIONS = "GetAvailable_FunctionalExchange_FunctionalExchangeRealizations"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__GENERIC__REFERENCED_PROPERTY___LIB = "GetAvailable_Generic_ReferencedProperty__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__GENERIC__REFERENCED_VALUE___LIB = "GetAvailable_Generic_ReferencedValue__Lib"; //$NON-NLS-1$
@@ -255,6 +259,8 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__VALUE_PART__REFERENCED_PROPERTY = "GetAvailable_ValuePart_ReferencedProperty"; //$NON-NLS-1$
 
   public static final String GET_CURRENT__ABSTRACT_STATE_PROPERTIES = "GetCurrent_AbstractStateProperties"; //$NON-NLS-1$
+  public static final String GET_CURRENT__ACTIVITY_EDGE__SOURCE = "GetCurrent_ActivityEdge_Source"; //$NON-NLS-1$
+  public static final String GET_CURRENT__ACTIVITY_EDGE__TARGET = "GetCurrent_ActivityEdge_Target"; //$NON-NLS-1$
   public static final String GET_CURRENT__ACTOR__FUNCTIONAL_ALLOCATION = "GetCurrent_Actor_FunctionalAllocation"; //$NON-NLS-1$
   public static final String GET_CURRENT__ACTOR__IMPLEMENTED_INTERFACES = "GetCurrent_Actor_ImplementedInterfaces"; //$NON-NLS-1$
   public static final String GET_CURRENT__ACTOR__INHERITED_ACTORS = "GetCurrent_Actor_InheritedActors"; //$NON-NLS-1$
@@ -548,5 +554,5 @@ public class QueryConstants {
   public static final String GET_CURRENT__UNION__DISCRIMINANT = "GetCurrent_Union_Discriminant"; //$NON-NLS-1$
   public static final String GET_CURRENT__UNION__DISCRIMINANT_TYPE = "GetCurrent_Union_DiscriminantType"; //$NON-NLS-1$
   public static final String GET_CURRENT__UNION__INHERITED_CLASSES = "GetCurrent_Union_InheritedClasses"; //$NON-NLS-1$
-  public static final String GET_CURRENT__VALUE_PART__REFERENCED_PROPERTY = "GetCurrent_ValuePart_ReferencedProperty"; //$NON-NLS-1$	
+  public static final String GET_CURRENT__VALUE_PART__REFERENCED_PROPERTY = "GetCurrent_ValuePart_ReferencedProperty"; //$NON-NLS-1$
 }

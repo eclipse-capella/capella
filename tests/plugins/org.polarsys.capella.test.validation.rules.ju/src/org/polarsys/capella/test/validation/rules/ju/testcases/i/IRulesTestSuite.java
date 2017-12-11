@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+
+import junit.framework.Test;
 
 public class IRulesTestSuite extends BasicTestSuite {
 
@@ -31,6 +31,7 @@ public class IRulesTestSuite extends BasicTestSuite {
   /**
    * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
    */
+  @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new Rule_I_01());
@@ -64,11 +65,15 @@ public class IRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_I_34_OnFragment());
     tests.add(new Rule_I_35());
     tests.add(new Rule_I_36());
+    tests.add(new Rule_I_37_38_ComponentExchange());
+    tests.add(new Rule_I_37_38_FunctionalExchange());
+    tests.add(new Rule_I_37_38_PhysicalLink());
+
     return tests;
   }
 
   @Override
-  public List<String> getRequiredTestModels() {   
+  public List<String> getRequiredTestModels() {
     return Arrays.asList(new String [] {"RulesOnIntegrityTest"});  //$NON-NLS-1$
   }
 }

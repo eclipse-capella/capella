@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.PhysicalPort_AllocatedFunctionPorts" id="org.polarsys.capella.core.business.queries.cs.PhysicalPort_AllocatedFunctionPorts" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.PhysicalPort_RealizedPhysicalPorts" id="org.polarsys.capella.core.business.queries.cs.PhysicalPort_RealizedPhysicalPorts" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.PhysicalLink_Categories" id="org.polarsys.capella.core.business.queries.cs.PhysicalLink_Categories" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.PhysicalLink_LinkEnds" id="org.polarsys.capella.core.business.queries.cs.PhysicalLink_LinkEnds" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.PhysicalLinkCategory_Links" id="org.polarsys.capella.core.business.queries.cs.PhysicalLinkCategory_Links" />
   </extension>
   <extension name="ctx" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
@@ -76,6 +77,8 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalChain_AvailableInStates" id="org.polarsys.capella.core.business.queries.fa.FunctionalChain_AvailableInStates" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalChainInvolvement_ExchangeItems" id="org.polarsys.capella.core.business.queries.fa.FunctionalChainInvolvement_ExchangeItems" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_FunctionalExchangeRealizations" id="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_FunctionalExchangeRealizations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Source" id="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Source" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Target" id="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Target" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.Connection_ConvoyedInformation" id="org.polarsys.capella.core.business.queries.fa.Connection_ConvoyedInformation" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_InComingExchangeItems" id="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_InComingExchangeItems" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionOutputPort_OutGoingExchangeItems" id="org.polarsys.capella.core.business.queries.fa.FunctionOutputPort_OutGoingExchangeItems" />
@@ -83,6 +86,8 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionOutputPort_RealizedFunctionOutputPort" id="org.polarsys.capella.core.business.queries.fa.FunctionOutputPort_RealizedFunctionOutputPort" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories" id="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentExchange_Categories" id="org.polarsys.capella.core.business.queries.fa.ComponentExchange_Categories" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentExchange_Source" id="org.polarsys.capella.core.business.queries.fa.ComponentExchange_Source" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentExchange_Target" id="org.polarsys.capella.core.business.queries.fa.ComponentExchange_Target" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_RealizedComponentPort" id="org.polarsys.capella.core.business.queries.fa.ComponentPorts_RealizedComponentPort" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_ConnectedPorts" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_ConnectedPorts" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_AllocatedPort" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_AllocatedPort" />
