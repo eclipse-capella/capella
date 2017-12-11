@@ -23,7 +23,7 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
 import org.polarsys.capella.core.data.oa.RolePkg;
-import org.polarsys.capella.core.re.handlers.location.CapellaModelSkeleton;
+import org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton;
 
 public class CreateRPL_SpecificPackages_OA extends CreateRPL_SpecificPackages {
 
