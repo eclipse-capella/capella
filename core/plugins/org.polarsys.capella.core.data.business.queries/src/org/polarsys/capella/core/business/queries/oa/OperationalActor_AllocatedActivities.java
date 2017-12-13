@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,7 @@ public class OperationalActor_AllocatedActivities extends Component_FunctionalAl
 	 */
 	@Override
 	public List<EReference> getEStructuralFeatures() {
-		return Collections.singletonList(FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
+		return Collections.singletonList(FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS);
 	}
 
 	@Override
@@ -58,5 +58,5 @@ public class OperationalActor_AllocatedActivities extends Component_FunctionalAl
 		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
 		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__ENTITY__ALLOCATED_ACTIVITIES, element, context);
 	}
-  
+
 }

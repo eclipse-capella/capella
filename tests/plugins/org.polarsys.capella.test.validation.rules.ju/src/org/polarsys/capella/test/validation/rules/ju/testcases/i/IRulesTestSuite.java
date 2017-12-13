@@ -68,6 +68,7 @@ public class IRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_I_37_38_ComponentExchange());
     tests.add(new Rule_I_37_38_FunctionalExchange());
     tests.add(new Rule_I_37_38_PhysicalLink());
+    tests.add(new Rule_I_37_38_ComponentFunctionalAllocation());
 
     return tests;
   }
