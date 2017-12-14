@@ -60,6 +60,10 @@ public class SemanticLocateInCapellaExplorerAction extends LocateInCapellaExplor
     // If the navigation returns something else, select it.
     if (!navigableElements.isEmpty()) {
       selectElementInCapellaExplorer(new StructuredSelection(navigableElements.toArray()));
+    } else {
+      LocatedElementsNotFoundInCapellaExplorerHandlingAction locatedElementsNotFoundInCapellaExplorerHandlingAction = new LocatedElementsNotFoundInCapellaExplorerHandlingAction();
+      locatedElementsNotFoundInCapellaExplorerHandlingAction.run(new StructuredSelection(navigableElements.toArray()));
+      selectElementInCapellaExplorer(new StructuredSelection(navigableElements.toArray()));
     }
   }
 

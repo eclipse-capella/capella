@@ -12,14 +12,15 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 
 /**
  */
 public/**
-* Allow to select an object in a viewer.
-*/
+       * Allow to select an object in a viewer.
+       */
 class NavigateAction extends Action {
   /**
    * Element to select.
@@ -32,6 +33,7 @@ class NavigateAction extends Action {
 
   /**
    * Constructor.
+   * 
    * @param element_p
    * @param viewer_p
    */
@@ -45,6 +47,12 @@ class NavigateAction extends Action {
    */
   @Override
   public void run() {
-    _viewer.setSelection(new StructuredSelection(_element), true);
+    IStructuredSelection selection = new StructuredSelection(_element);
+    _viewer.setSelection(selection, true);
+    if (((StructuredSelection) _viewer.getSelection()).toArray().length == 0) {
+      LocatedElementsNotFoundInCapellaExplorerHandlingAction locatedElementsNotFoundInCapellaExplorerHandlingAction = new LocatedElementsNotFoundInCapellaExplorerHandlingAction();
+      locatedElementsNotFoundInCapellaExplorerHandlingAction.run(selection);
+      _viewer.setSelection(selection, true);
+    }
   }
 }

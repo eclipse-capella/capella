@@ -275,6 +275,8 @@ AllocatingFunctions_RepresentParentFunction_LF_A.png
 4.04. Project Explorer_html_m50c8ab23.png
 4.04. Project Explorer_html_m5da49805.png
 4.04. Project Explorer_html_m6179049.png
+4.04. Project Explorer_ShowInCapellaExplorer_NotFound.PNG
+4.04. Project Explorer_ShowInCapellaExplorer_QuickFix.PNG
 4.05. Diagram Editor_html_39791356.png
 4.05. Diagram Editor_html_3a2f0e04.jpg
 4.05. Diagram Editor_html_3c78e109.png

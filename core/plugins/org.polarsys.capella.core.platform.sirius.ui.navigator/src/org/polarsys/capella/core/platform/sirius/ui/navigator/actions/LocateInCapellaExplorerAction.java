@@ -127,6 +127,11 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
         explorerView = (CapellaCommonNavigator) activePage.showView(CapellaCommonNavigator.ID);
       }
       explorerView.selectReveal(selection);
+      if (((StructuredSelection) explorerView.getCommonViewer().getSelection()).toArray().length == 0) {
+        LocatedElementsNotFoundInCapellaExplorerHandlingAction locatedElementsNotFoundInCapellaExplorerHandlingAction = new LocatedElementsNotFoundInCapellaExplorerHandlingAction();
+        locatedElementsNotFoundInCapellaExplorerHandlingAction.run((IStructuredSelection) selection);
+        explorerView.selectReveal(selection);
+      }
     } catch (PartInitException exception) {
       __logger.warn(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI), exception);
     }

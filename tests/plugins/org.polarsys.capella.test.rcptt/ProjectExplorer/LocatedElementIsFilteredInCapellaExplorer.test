@@ -1,0 +1,88 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _77dBkJ6NEeWcU-ojRg-Rxw,_4Zi_gEkPEeaoOLXB8A2oPA
+Element-Name: LocatedElementIsFilteredInCapellaExplorer
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _r_UEYOSgEeeF_6848eoV8Q
+Runtime-Version: 2.3.0.201712190725
+Save-Time: 12/19/17 2:38 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-button "View Menu" | click
+get-view "Capella Project Explorer" | get-menu -path "Customize View..." | click
+with [get-window "Available Customizations"] {
+    get-tab-folder | get-tab-item Filters | click
+    get-editbox -after [get-label "Select the filters to apply (matching items will be hidden):"] | set-text comp
+    get-table | select "Component Exchanges"
+}
+get-window "Available Customizations" | get-table | get-item -path "Component Exchanges" | get-property checked 
+    | equals true | verify-true
+    
+get-window "Available Customizations" | get-button OK | click
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
+    select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/IFE System/\\[LAB\\] IFE System - All Components, CEs" 
+        | double-click
+}
+
+with [get-editor "[LAB] IFE System - All Components, CEs"] {
+    get-palette | get-palette-entry "Component Exchange" | mouse-move 105 2 -height 37 -width 125
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "[LAB] IFE System - All Components, CEs" | get-edit-part -name "IFE System" 
+            | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 202 67 -height 501 -width 811
+            mouse-move 266 72 -height 501 -width 811
+            with [get-edit-part -name "Cabin Screen" | get-edit-part -name "CP 1" | get-target-connection -path 0] {
+                mouse-move 61 69 button1 -height 256 -width 135
+                mouse-press 61 69 button1 -height 256 -width 135
+                mouse-release 62 70 button1 524288 -height 259 -width 137
+                mouse-hover 62 70 -height 259 -width 137
+                mouse-press 62 70 button3 -height 259 -width 137
+                mouse-release 62 70 button3 2097152 -height 259 -width 137
+            }
+        }
+        get-menu -path "Show in Capella Explorer" | click
+    }
+}
+
+get-window "Show in Capella Project Explorer" | get-button Yes | click
+with [get-editor "[LAB] IFE System - All Components, CEs" | get-diagram -index 1 | get-edit-part 
+    -name "[LAB] IFE System - All Components, CEs" | get-edit-part -name "IFE System" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+    with [get-edit-part -name "Seat TV" | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart 
+        | get-edit-part -name "Seat TV Interactions Manager" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+        mouse-hover 171 78 -height 182 -width 191
+        mouse-move 171 77 -height 182 -width 191
+        mouse-hover 171 77 -height 182 -width 191
+    }
+    mouse-move 286 139 -height 501 -width 811
+    get-edit-part -name "Aircraft Front Servers" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart | get-edit-part -name "Aircraft Interface" 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart | get-edit-part 
+        -name "Aircraft-Specific Aircraft Interface" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart | mouse-move 104 7 -height 40 -width 131
+}
+
+
+get-view "Capella Project Explorer" | get-tree | get-item 
+    -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/IFE System/Streaming Protocol" 
+    | get-property selected | equals true | verify-true
+    
+get-view "Capella Project Explorer" | click
+get-button "View Menu" | click
+get-view "Capella Project Explorer" | get-menu -path "Customize View..." | click
+with [get-window "Available Customizations"] {
+    get-tab-folder | get-tab-item Filters | click
+    get-editbox -after [get-label "Select the filters to apply (matching items will be hidden):"] | set-text co
+}
+get-window "Available Customizations" | get-table | get-item -path "Component Exchanges" | get-property checked 
+    | equals false | verify-true
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

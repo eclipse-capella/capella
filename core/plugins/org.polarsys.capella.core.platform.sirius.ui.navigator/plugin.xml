@@ -811,7 +811,7 @@
          </filterExpression>
       </commonFilter>
       <commonFilter
-            activeByDefault="false"
+            activeByDefault="true"
             description="Hides all Capella parts."
             id="capella.project.explorer.filters.part"
             name="Parts">

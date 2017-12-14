@@ -23,6 +23,11 @@ public class Messages extends NLS {
   public static String ShowInDiagramAction_Title;
   public static String ImpactAnalysisDialog_Title;
   public static String ImpactAnalysisDialog_Message;
+  public static String LocateInCapellaExplorerAction_SelectedElementNotVisible_0;
+  public static String LocateInCapellaExplorerAction_SelectedElementNotVisible_4;
+  public static String LocateInCapellaExplorerAction_SelectedElementNotVisible_5;
+  public static String LocateInCapellaExplorerAction_SelectedElementNotVisible_Message;
+  public static String LocateInCapellaExplorerAction_SelectedElementNotVisible_Title;
   public static String SortContentAction_Label;
   public static String SortSelectionAction_Label;
 
