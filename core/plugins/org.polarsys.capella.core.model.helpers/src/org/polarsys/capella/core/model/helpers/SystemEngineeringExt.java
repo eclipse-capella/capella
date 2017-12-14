@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -261,9 +261,9 @@ public class SystemEngineeringExt {
   public static List<Interface> getAllInterfaces(ModellingArchitecture architecture) {
     final Set<Interface> result = new LinkedHashSet<Interface>();
     final Set<InterfacePkg> itfPkgs = new LinkedHashSet<InterfacePkg>();
-    
+
     if(null == architecture) return (new ArrayList<Interface>());
-    
+
     if ((architecture instanceof SystemAnalysis) && (((SystemAnalysis) architecture).getOwnedInterfacePkg() != null)) {
       itfPkgs.add(((SystemAnalysis) architecture).getOwnedInterfacePkg());
       itfPkgs.addAll(getAllInterfacePkgs(((SystemAnalysis) architecture).getOwnedInterfacePkg()));
@@ -500,7 +500,7 @@ public class SystemEngineeringExt {
     }
     return null;
   }
-  
+
   public static LogicalArchitecture getLogicalArchitecture(SystemEngineering currentElement) {
     if (currentElement != null) {
       for (ModellingArchitecture block : currentElement.getOwnedArchitectures()) {
@@ -522,7 +522,7 @@ public class SystemEngineeringExt {
     }
     return null;
   }
-  
+
   public static OperationalAnalysis getOperationalAnalysis(SystemEngineering currentElement) {
     if (currentElement != null) {
       for (ModellingArchitecture block : currentElement.getOwnedArchitectures()) {
@@ -532,8 +532,8 @@ public class SystemEngineeringExt {
       }
     }
     return null;
-  }  
-  
+  }
+
   public static EPBSArchitecturePkg getEPBSArchitecturePkg(SystemEngineering currentElement) {
     if (currentElement != null) {
       for (ModellingArchitecturePkg block : currentElement.getOwnedArchitecturePkgs()) {
@@ -577,7 +577,7 @@ public class SystemEngineeringExt {
         result.addAll(getInterfaces(logArchitecture));
       }
       result.addAll(architecture.getOwnedInterfacePkg() != null ? getAllInterfaces(architecture) : Collections
-          .<Interface> emptyList());      
+          .<Interface> emptyList());
     }
     return new ArrayList<Interface>(result);
   }
@@ -588,7 +588,7 @@ public class SystemEngineeringExt {
   }
 
   /**
-   * Gets all the logical architectures from the system, filtering out the allocated LAs of the current Physical Architecture
+   * Gets all the logical architectures from the system
    * @param systemEngineering the parent System of the PA
    * @param physicalArchitecture the PhysicalArchitecture
    * @return List of LogicalArchitectures
@@ -596,17 +596,16 @@ public class SystemEngineeringExt {
   static public List<LogicalArchitecture> getLogicalArchitecturesFiltered(SystemEngineering systemEngineering, PhysicalArchitecture physicalArchitecture) {
     List<LogicalArchitecture> list = new ArrayList<LogicalArchitecture>(1);
     if ((null != systemEngineering) && (null != physicalArchitecture)) {
-      List<BlockArchitecture> allocated = physicalArchitecture.getAllocatedArchitectures();
 
       LogicalArchitecture la = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
-      if ((la != null) && !allocated.contains(la)) {
+      if (la != null) {
         list.add(la);
       }
 
       LogicalArchitecturePkg laPkg = getOwnedLogicalArchitecturePkg(systemEngineering);
       if (null != laPkg) {
         for (LogicalArchitecture arch : laPkg.getOwnedLogicalArchitectures()) {
-          if ((null != arch) && !allocated.contains(arch)) {
+          if (null != arch) {
             list.add(arch);
           }
         }
@@ -763,8 +762,8 @@ public class SystemEngineeringExt {
 
     return null;
   }
-  
-  
+
+
   /**
    * @param systemEn SystemEngineering
    * @return all DataPkgs which are in SystemEngineering
@@ -893,7 +892,7 @@ public class SystemEngineeringExt {
 				return (SystemEngineering) root;
     return null;
   }
-  
+
   public static void setEPBSArchitecturePkg(SystemEngineering currentElement, EPBSArchitecturePkg epbsArchitecturePkg) {
     currentElement.getOwnedArchitecturePkgs().add(epbsArchitecturePkg);
 
