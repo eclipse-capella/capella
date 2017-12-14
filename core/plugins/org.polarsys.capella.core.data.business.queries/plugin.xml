@@ -230,6 +230,8 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.StateFragment_RelatedAbstractFunction" id="org.polarsys.capella.core.business.queries.interaction.StateFragment_RelatedAbstractFunction" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.StateFragment_RelatedAbstractState" id="org.polarsys.capella.core.business.queries.interaction.StateFragment_RelatedAbstractState" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.Scenario_RealizedScenario" id="org.polarsys.capella.core.business.queries.interaction.Scenario_RealizedScenario" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.AbstractCapabilityInclude_Included" id="org.polarsys.capella.core.business.queries.interaction.AbstractCapabilityInclude_Included" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.AbstractCapabilityExtend_Extended" id="org.polarsys.capella.core.business.queries.interaction.AbstractCapabilityExtend_Extended" />
   </extension>
   <extension name="la" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.CapabilityRealization_ActorCapabilityRealization" id="org.polarsys.capella.core.business.queries.la.CapabilityRealization_ActorCapabilityRealization" />
