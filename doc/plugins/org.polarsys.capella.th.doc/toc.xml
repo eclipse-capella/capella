@@ -10,7 +10,17 @@
 	</topic>
 	<topic href="html/Performance Recommandations/Performance Recommandations.html" label="Performance Recommandations"> 
 	</topic>
-	<topic href="html/Interfaces and Data Modeling/Interfaces and Data Modeling.html" label="Interfaces and Data Modeling in Capella">	
+	<topic label="Interfaces and Data Modeling in Capella">
+    <topic href="html/Interfaces and Data Modeling/Introduction.html" label="Introduction">
+    </topic>
+    <topic href="html/Interfaces and Data Modeling/Basic Constructs.html" label="Basic Constructs">
+    </topic>
+    <topic href="html/Interfaces and Data Modeling/Advanced Constructs.html" label="Advanced Constructs">
+    </topic>
+    <topic href="html/Interfaces and Data Modeling/Methodological Recommendations.html" label="Methodological Recommendation">
+    </topic>
+    <topic href="html/Interfaces and Data Modeling/Appendix.html" label="Appendix">
+    </topic>
    </topic>
  <anchor id="Thematic Highlights"/>
 </toc>

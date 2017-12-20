@@ -1,0 +1,76 @@
+
+=Introduction=
+==Why Data Modeling?==
+
+
+
+A significant part of system engineering consists in ensuring proper definition and coherency between data & information inside the system, and those exchanged with external actors (including interface & I/O management).
+
+In order to describe un-ambiguously what is exchanged between functions, activities, components, and external actors, a specific formalization of data, information, material flow… used in the system is usually performed.
+
+
+
+Beyond this description need, one important engineering task consists in avoiding multiple definitions of a same data in different places of the system. Hence the need to indicate that several exchanges should carry the same kind of data, without having to re-define these common data for each exchange.
+
+
+
+Rationalizing and mastering data definition and use is a major stake of engineering;
+
+* to structure them in an intelligible manner, reducing complexity of their definition and use,
+* to bring out a semantics coherency, independently from their use – or common to all their uses,
+* to avoid ambiguity, redundancy, incoherency in their different uses.
+
+
+
+The main benefits derived from this improved data definition are:
+
+* better consistency and completeness of component interfaces,
+* detection of hidden dependencies between components (for instance when the same piece of data is produced or consumed by several components),
+* global architecture optimization (to remove dependencies),
+* less rework during IVVQ,
+* easier impact analysis in the case of engineering evolutions.
+
+
+
+An efficient means to ensure these properties is to formalize a ‘data model’ (also known as ‘information model’ in information processing dominant systems), describing the kind of data to be used by the system; at least, for each kind of data:
+
+* data name and semantics,
+* their definition, contents and properties (unit, value domain…),
+* their relationships with other data (‘is composed of’, ‘is kind of’, ‘uses’, semantic reference …)
+
+
+
+==Main Concepts Overview==
+
+
+
+Interfaces, Exchanges and Exchange Items are contracts specifying how components can interact with each other. Exchange Items specify the communications between components and Interfaces or Exchanges allow structuring these communications. Interfaces and/or Exchanges are defined by grouping (referencing) Exchange Items: they can share Exchange Items definitions.
+
+
+
+An [ Exchange Item] defines a communication media and a set of Data semantically coherent with regards to their usage in a given context:
+
+* same communication principles
+* simultaneity of transportation
+* same non functional properties (e.g. security level, integrity requirement, expected performance...)
+* indivisibility (an Exchange Item is atomic)
+
+
+
+Possible communication mechanisms for Exchange Items are: OPERATION, EVENT, FLOW, and SHARED DATA.
+
+
+
+Exchange Items are structured through Exchange Items Elements in the same way as classes are structured in Properties. These elements are in turn defined by classes, complex types and simple types.
+
+<center>[[image:Images\image001.png]]</center>
+
+
+
+<center>[[image:Images\image002.jpg]]</center>
+
+Definitions of Interfaces, Exchange Items, Exchange Item Elements and Types, are mostly done in Capella through Class Diagrams. These CDBs (Class Diagram Blank) are available at each Arcadia abstraction level, and can be found under the ''Transverse Modeling'' topic.
+
+
+
+<center>[[image:Images\image003.jpg]]</center>

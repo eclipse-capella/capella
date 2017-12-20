@@ -1,0 +1,23 @@
+=Appendix=
+
+
+
+==Car Data Model example==
+
+
+
+===Package Dependencies===
+
+<center>[[image:Images\image161.png]]</center>
+
+===Domain Concepts===
+
+<center>[[image:Images\image162.jpg]]</center>
+
+<center>[[image:Images\image163.png]]</center>
+
+
+
+===Complex and Simple Types===
+
+<center>[[image:Images\image164.png]]</center>
