@@ -22,6 +22,7 @@ Export-Package: org.polarsys.capella.common,
  org.polarsys.capella.common.helpers.export,
  org.polarsys.capella.common.helpers.export.utils,
  org.polarsys.capella.common.helpers.query,
+ org.polarsys.capella.common.helpers.transaction,
  org.polarsys.capella.common.utils,
  org.polarsys.capella.common.utils.graph
 Bundle-Localization: plugin
