@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,10 +84,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
-import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.FormToolkit;
@@ -97,6 +95,7 @@ import org.eclipse.ui.statushandlers.StatusManager;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+import org.polarsys.capella.common.flexibility.wizards.ui.FlexibilityColors;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManager;
@@ -104,6 +103,7 @@ import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.model.helpers.move.Stage;
 import org.polarsys.capella.core.model.helpers.move.StageListener;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.drop.ExplorerDropAdapterAssistant;
 
 import com.google.common.collect.Lists;
@@ -381,11 +381,9 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
           stageViewer.setFilters(new CollectionTreeFilter(stage.getElements(), false));
           tooltipSupport = new ColumnViewerInformationControlToolTipSupport(stageViewer, new DiagnosticDecorator.EditingDomainLocationListener(stage.getEditingDomain(), stageViewer) {
             @Override
-            protected void setSelection(Object object) {
-              IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("capella.project.explorer");
-              if (view != null) {
-                view.getSite().getSelectionProvider().setSelection(new StructuredSelection(object));
-              }
+            protected void setSelection(final Object object) {
+              MyLocateInCapellaExplorerAction action = new MyLocateInCapellaExplorerAction();
+              action.selectElementInCapellaExplorer(new StructuredSelection(object));
             }
           });
 
@@ -835,7 +833,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       if (stage.hasBackreferences((EObject) object)) {
         return Display.getCurrent().getSystemColor(SWT.COLOR_RED);
       } else if (stage.getNewParent((EObject) object) != null) {
-        return Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
+        return FlexibilityColors.getColorRegistry().get(FlexibilityColors.FG_GREEN);
       }
       if (!EcoreUtil.isAncestor(stage.getElements(), (EObject) object)) {
         return Display.getCurrent().getSystemColor(SWT.COLOR_DARK_GRAY);
@@ -900,6 +898,13 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     @Override
     public void handleException(Exception e) {
       handledException = e;
+    }
+  }
+
+  private static class MyLocateInCapellaExplorerAction extends LocateInCapellaExplorerAction {
+    @Override
+    public void selectElementInCapellaExplorer(ISelection selection) {
+      super.selectElementInCapellaExplorer(selection);
     }
   }
 
