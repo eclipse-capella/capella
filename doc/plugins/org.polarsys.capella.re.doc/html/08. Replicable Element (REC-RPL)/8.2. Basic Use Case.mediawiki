@@ -24,7 +24,7 @@ The REC creation dialog appears. A name shall be given to the REC. The Catalog f
 The scope (content) of the REC is displayed. This dialog helps modifying this scope (for example adding or removing elements). By default, the tool applies a set of business rules to include elements (for example, allocations between Component and Functions, children of an element, Etc.). Note here that despite Functional Exchange &ldquo;fe23&rdquo; is carrying Exchange Items, these Exchange Items are not included by default in the REC. In most of the cases, they shoud not be, as references are kept.
 
  
-It is possible at this stage to define which elements will have to be renamed when the REC will be instantiated (label '''&#91;+SUFFIX&#93;'''). By default, the root elements (elements with no included container) are set as having to be renamed.
+It is possible at this stage to define which elements will have to be renamed when the REC will be instantiated (label '''&#91;+SUFFIX&#93;''').
 
                                      
 {| border="1"
@@ -101,35 +101,24 @@ Include All 				Requirement Dependencies
 
  
 |}  
-<br>
+
 <br>
 
- 
-The compliancy field allows defining how REC would be instantiated (is it possible to modify content of the replica? add external interfaces? add ports? add more functions?) <br>
-See the RPL Validation part for further description of any kind of compliancy''' (This feature is not fully available yet)'''
+The compliancy field allows defining how REC would be instantiated (is it possible to modify content of the replica? add external interfaces? add ports? add more functions?).<br>
+See the RPL Validation part for further description of any kind of compliancy (This feature is not fully available yet).
 
- 
-<br>
 <br>
 
- 
 Notice the message at the bottom of the dialog, selected elements are linked to some elements which are not included in the REC (many exchange items, visible by clicking on the browse button on the right). When the REC will be instanciated, elements of the newly RPL will be linked to these exchange items too.
 
  
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_56e383b9.png|627x51px]]
 
- 
-<br>
 <br>
 
- 
-<br>
-<br>
-
- 
 Close the dialog and check the result.
  
-In the Project Explorer, the newly created REC appears. The Semantic Browser also show REC-related information
+In the Project Explorer, the newly created REC appears. The Semantic Browser also show REC-related information:
 
  
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_707f60f9.png|208x108px]]
@@ -138,7 +127,7 @@ In the Project Explorer, the newly created REC appears. The Semantic Browser als
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_m76b1c545.png|626x180px]]
 
  
-And from the Function F2 included in the REC,
+And from the Function F2 included in the REC:
 
  
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_mf6bfd89.png|627x181px]]
@@ -146,24 +135,24 @@ And from the Function F2 included in the REC,
  
 == Instantiation of a REC ==
  
-From anywhere in the model, use the contextual command &ldquo;Instantiate a RPL from a REC&rdquo;
+From anywhere in the model, use the contextual command &ldquo;Instantiate a RPL from a REC&rdquo;:
 
  
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_17699e08.png|627x85px]]
 
  
-The instantiation dialog opens.
+The instantiation dialog opens:
 
  
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_3f98bee7.png|627x502px]]
 
  
-This dialog allows
+This dialog allows:
 
  
 * The selection of the REC to instantiate (click on &ldquo;Browse&rdquo;)
 * The definition of a target container (Catalog) for the RPL going to 	be created.
-* The definition of a suffix for each element of the REC that was 	marked as having to be renamed.
+* The definition of a suffix for each element of the REC that was marked as having to be renamed.
 * The compliancy field allows defining how RPL can be modified 	according to its REC (is it possible to modify content of the 	replica? add external interfaces? add ports? add more functions?) 	See the RPL Validation part for further description of any kind of 	compliancy''' (This feature is not fully available yet)'''
 * To enable live compliancy validation for this RPL select &ldquo;Enforce RPL Compliance on the fly&rdquo;.
  
@@ -184,19 +173,19 @@ It is possible to create on-the-fly new elements in the right tree, using the co
  
 Close the dialog.
  
-The new RPL can be seen in the Project Explorer. The type of the RPL is displayed in brackets. 
+The new RPL can be seen in the Project Explorer. The type of the RPL is displayed in brackets:
 
  
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_m2d869e08.png|199x70px]]
 
  
-A good practice is to manage REC and RPLs in different folders
+A good practice is to manage REC and RPLs in different folders:
 
  
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_m62402328.png|215x107px]]
 
  
-On a diagram, insert the newly created elements (here, the Component and its Functions).
+On a diagram, insert the newly created elements (here, the Component and its Functions):
 
  
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_4627cc64.png|203x120px]]
@@ -211,13 +200,13 @@ The Semantic Browser display RPL- and REC-related information:
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_3464e2e1.png|752x323px]]
 
  
-The Semantic Browser also shows the Functional Exchange &ldquo;fe2&rdquo;, part of the RPL, is also carrying the Exchange Items EI1 and EI2, even though these two Exchange Items were not included in the REC.
+The Semantic Browser also shows the Functional Exchange &ldquo;fe2&rdquo;, part of the RPL, is also carrying the Exchange Items EI1 and EI2, even though these two Exchange Items were not included in the REC:
 
  
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_5877aab1.png|850x200px]]
 
  
-It is now possible to use this RPL in the model. For example, by connecting it also to other elements
+It is now possible to use this RPL in the model. For example, by connecting it also to other elements:
 
  
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_2eecec59.png|627x139px]]
@@ -225,19 +214,19 @@ It is now possible to use this RPL in the model. For example, by connecting it a
  
 == Copy-Paste Layout ==
  
-On a diagram showing the source elements of the REC, select all elements and copy the layout.
+On a diagram showing the source elements of the REC, select all elements and copy the layout:
 
  
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_m35487b8e.png|627x199px]]
 
  
-On a diagram when the RPL is displayed, paste the layout
+On a diagram when the RPL is displayed, paste the layout:
 
  
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_c008666.png|627x211px]]
 
  
-The layout is synchronized between the REC and the RPL
+The layout is synchronized between the REC and the RPL:
 
  
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_m3dbcc481.png|627x160px]]
