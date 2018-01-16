@@ -32,7 +32,7 @@
          version="0.0.0"/>
 
    <includes
-         id="org.polarsys.capella.core.properties.description.feature"
+         id="org.polarsys.capella.core.properties.richtext.feature"
          version="0.0.0"/>
 
 </feature>
