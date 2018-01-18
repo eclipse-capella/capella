@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" name="General" version="11.1.1.201610211630">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" name="General" version="12.0.0.2017041100">
   <ownedViewpoints name="Common" modelFileExtension="melodymodeller" icon="">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer']" name="Modes &amp; States" label="Modes and States [DEPRECATED]" titleExpression="[M&amp;S] &lt;%current.name%>" domainClass="Region">
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
@@ -11305,6 +11305,8 @@
       </ownedLineMappings>
       <ownedColumnMappings name="Name" headerLabelExpression="Name" featureName="name" labelExpression="feature:name">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
@@ -11315,6 +11317,8 @@
       </ownedColumnMappings>
       <ownedColumnMappings name="Requirement Id" headerLabelExpression="Requirement Id" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="requirementId" labelExpression="feature:requirementId">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
@@ -11325,6 +11329,8 @@
       </ownedColumnMappings>
       <ownedColumnMappings name="Summary" headerLabelExpression="Summary" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="summary" labelExpression="feature:summary">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
@@ -11335,6 +11341,8 @@
       </ownedColumnMappings>
       <ownedColumnMappings name="Description" headerLabelExpression="Description" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="description" labelExpression="feature:description">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
@@ -11345,6 +11353,8 @@
       </ownedColumnMappings>
       <ownedColumnMappings name="Additional Information" headerLabelExpression="Additional Information" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="additionalInformation" labelExpression="feature:additionalInformation">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
@@ -11355,6 +11365,8 @@
       </ownedColumnMappings>
       <ownedColumnMappings name="Verification Method" headerLabelExpression="Verification Method" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="verificationMethod" labelExpression="feature:verificationMethod">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
@@ -11365,6 +11377,8 @@
       </ownedColumnMappings>
       <ownedColumnMappings name="Verification Phase" headerLabelExpression="Verification Phase" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="verificationPhase" labelExpression="feature:verificationPhase">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
@@ -18428,6 +18442,8 @@
       </ownedColumnMappings>
       <intersection name="SAM FunctionalChains Active in State" lineMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='SAM%20Components']/@ownedSubLines[name='SAM%20State%20Machine']/@ownedSubLines[name='SAM%20Sub%20States%20And%20Modes%201'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='SAM%20Components']/@ownedSubLines[name='SAM%20State%20Machine']/@ownedSubLines[name='SAM%20Sub%20States%20And%20Modes%201']/@ownedSubLines[name='SAM%20Sub%20State%20and%20Mode']" columnMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='State%20And%20Mode%20-%20Matrix']/@ownedColumnMappings.0" labelExpression="&lt;%$columnSemantic.displayCharX($lineSemantic)%>" columnFinderExpression="&lt;%getAllFunctionalChainsActiveInStates(current)%>">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
@@ -18454,6 +18470,8 @@
       </intersection>
       <intersection name="SAM Functions Active in State" lineMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='SAM%20Components']/@ownedSubLines[name='SAM%20State%20Machine']/@ownedSubLines[name='SAM%20Sub%20States%20And%20Modes%201'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='SAM%20Components']/@ownedSubLines[name='SAM%20State%20Machine']/@ownedSubLines[name='SAM%20Sub%20States%20And%20Modes%201']/@ownedSubLines[name='SAM%20Sub%20State%20and%20Mode']" columnMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='State%20And%20Mode%20-%20Matrix']/@ownedColumnMappings.1" labelExpression="&lt;%$columnSemantic.displayCharX($lineSemantic)%>" columnFinderExpression="&lt;%getAllFunctionsActiveInStates(current)%>">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
@@ -18480,6 +18498,8 @@
       </intersection>
       <intersection name="SAM Capabilities Active in State" lineMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='SAM%20Components']/@ownedSubLines[name='SAM%20State%20Machine']/@ownedSubLines[name='SAM%20Sub%20States%20And%20Modes%201'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='SAM%20Components']/@ownedSubLines[name='SAM%20State%20Machine']/@ownedSubLines[name='SAM%20Sub%20States%20And%20Modes%201']/@ownedSubLines[name='SAM%20Sub%20State%20and%20Mode']" columnMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='State%20And%20Mode%20-%20Matrix']/@ownedColumnMappings.2" labelExpression="&lt;%$columnSemantic.displayCharX($lineSemantic)%>" columnFinderExpression="&lt;% getCapabilityFromStateAndMode(current) %>">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
@@ -18559,6 +18579,8 @@
       </ownedColumnMappings>
       <intersection name="CSAM Capabilities Active in State" lineMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20AbstractCapPkg']/@ownedSubLines[name='CSAM%20Sub%20AbstractCap']" columnMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedColumnMappings.0" labelExpression="&lt;%$lineSemantic.displayCharX($columnSemantic)%>" columnFinderExpression="&lt;% getAvailableStateAndMode()%>">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
@@ -18587,6 +18609,8 @@
       </intersection>
       <intersection name="CSAM FunctionalChains Active in State" lineMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20FunctionalChains%201'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20AbstractCapPkg']/@ownedSubLines[name='CSAM%20Sub%20AbstractCap']/@ownedSubLines[name='CSAM%20Sub%20FunctionalChains%202']" columnMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedColumnMappings.0" labelExpression="&lt;%$lineSemantic.displayCharX($columnSemantic)%>" columnFinderExpression="&lt;% getAvailableStateAndMode()%>">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
@@ -18615,6 +18639,8 @@
       </intersection>
       <intersection name="CSAM Functions Active in State" lineMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']" columnMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedColumnMappings.0" labelExpression="&lt;%$lineSemantic.displayCharX($columnSemantic)%>" columnFinderExpression="&lt;% getAvailableStateAndMode()%>">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" version="12.0.0.2017041100">
   <ownedViewpoints name="EPBS architecture" modelFileExtension="melodymodeller">
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Configuration Items - Requirements" domainClass="EPBSArchitecture">
       <ownedLineMappings name="Configuration Item 2" domainClass="ConfigurationItem" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;ConfigurationItem&quot;)[! current.eContainer().isA(&quot;EPBSArchitecture&quot;)]%>" headerLabelExpression="&lt;%computeComponentLabel()%>">
@@ -16,6 +16,8 @@
       </ownedColumnMappings>
       <intersection name="Trace 7" lineMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20-%20Requirements']/@ownedLineMappings[name='Configuration%20Item%202']" columnMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20-%20Requirements']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="feature:targetElement" lineFinderExpression="feature:sourceElement" domainClass="RequirementsTrace">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
@@ -58,6 +60,8 @@
       </ownedColumnMappings>
       <intersection name="Physical Component Allocation" lineMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20-%20Physical%20Artifacts']/@ownedLineMappings[name='Configuration%20Item%201']" columnMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20-%20Physical%20Artifacts']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="feature:targetElement" lineFinderExpression="feature:sourceElement" domainClass="PhysicalArtifactRealization">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
@@ -108,6 +112,8 @@
       </ownedColumnMappings>
       <intersection name="Trace 8" lineMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Requirement%20Refinements']/@ownedLineMappings[name='ERR%20RequirementsPkg']/@ownedSubLines[name='Requirements%202']" columnMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Requirement%20Refinements']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="feature:targetElement" lineFinderExpression="feature:sourceElement" domainClass="RequirementsTrace">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>

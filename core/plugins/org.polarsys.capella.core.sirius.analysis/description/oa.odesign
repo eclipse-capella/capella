@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" version="11.0.0.201601261200">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" version="12.0.0.2017041100">
   <ownedViewpoints name="Operational Analysis" modelFileExtension="melodymodeller">
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Operational Activities - Requirements" domainClass="OperationalAnalysis">
       <ownedLineMappings name="Operational Activity" domainClass="OperationalActivity" semanticCandidatesExpression="&lt;%getTableRootAbstractFunctions()%>" headerLabelExpression="feature:name">
@@ -34,6 +34,8 @@
       </ownedColumnMappings>
       <intersection name="Trace 3" canEdit="true" lineMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity']" columnMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="feature:targetElement" lineFinderExpression="feature:sourceElement" domainClass="RequirementsTrace">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
@@ -5522,6 +5524,8 @@
       </ownedColumnMappings>
       <intersection name="Trace Function" semanticElements="&lt;%current+current.eContainer()%>" lineMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" columnMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedColumnMappings.0" labelExpression="&lt;%getRFLabel($lineSemantic, $columnSemantic)%>" useDomainClass="true" columnFinderExpression="feature:sourceElement" lineFinderExpression="feature:targetElement" semanticCandidatesExpression="&lt;%getRFColumnCandidates().outgoingTraces()[isA(&quot;RequirementsTrace&quot;)]%>" domainClass="RequirementsTrace">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
