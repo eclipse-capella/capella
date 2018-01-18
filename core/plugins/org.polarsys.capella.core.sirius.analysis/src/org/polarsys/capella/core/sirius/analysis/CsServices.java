@@ -5437,8 +5437,9 @@ public class CsServices {
    */
 
   public EObject showHideActors(EObject context, List<CapellaElement> selectedOperations, DDiagram diagram) {
-    // This method is used in IDB and capability diagrams
-
+	    // This method is used in IDB and capability diagrams
+	if (selectedOperations == null) // for acceleo2aql
+	  selectedOperations = new ArrayList<CapellaElement>();
     Map<CapellaElement, AbstractDNode> visibleElements = new HashMap<CapellaElement, AbstractDNode>();
     // collect all the visible abstractActor element from the diagram
     for (DDiagramElement aNode : DiagramServices.getDiagramServices().getDiagramElements(diagram)) {
@@ -5747,8 +5748,9 @@ public class CsServices {
    *          = true if (Diagram), false if (Scenario)
    */
   public void createConstraintWithConstaintedElementInDiagram(EObject context, EObject constraint, DDiagram dDiagram,
-      List<Constraint> constraintsInDiagram, boolean kindDiagram) {
-
+    List<Constraint> constraintsInDiagram, boolean kindDiagram) {
+	if (constraintsInDiagram == null) // for acceleo2aql
+	  constraintsInDiagram = new ArrayList<Constraint>();
     if ((null == context) || (null == constraint) || (null == dDiagram)) {
       return;
     }
