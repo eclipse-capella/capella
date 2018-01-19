@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -15,16 +15,18 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.kitalpha.emde.model.ElementExtension;
-import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.exceptions.QueryException;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.common.re.CatalogElementPkg;
+import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.kitalpha.emde.model.ElementExtension;
 
 /**
  * Returns a
@@ -58,6 +60,15 @@ public class GetAllCatalogPkgQuery extends AbstractQuery {
     } else {
       eng = (SystemEngineering) EcoreUtil2.getFirstContainer(object_p, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
     }
+
+    // https://bugs.polarsys.org/show_bug.cgi?id=1915
+    if (eng == null) {
+      EObject e = EcoreUtil.getRootContainer(object_p);
+      if (e instanceof Project) {
+        eng = SystemEngineeringExt.getSystemEngineering((Project) e);
+      }
+    }
+
     if (eng != null) {
       for (ElementExtension extension : eng.getOwnedExtensions()) {
         if (extension instanceof CatalogElementPkg) {
