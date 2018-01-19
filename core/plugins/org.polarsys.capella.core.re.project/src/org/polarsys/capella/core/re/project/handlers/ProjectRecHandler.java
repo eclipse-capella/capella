@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,8 +19,10 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -65,7 +67,11 @@ public abstract class ProjectRecHandler extends CommandHandler {
       if (cmd instanceof LauncherCommand) {
         ((LauncherCommand) cmd).setName(name);
       }
-      TransactionHelper.getExecutionManager(getSemanticObjects(selection)).execute(cmd);
+      if (cmd != null) {
+        TransactionHelper.getExecutionManager(getSemanticObjects(selection)).execute(cmd);
+      } else {
+        handleNullCommand();
+      }
     } finally {
       LongRunningListenersRegistry.getInstance().operationEnded(getClass());
     }
@@ -73,8 +79,21 @@ public abstract class ProjectRecHandler extends CommandHandler {
     return null;
   }
 
+  protected void handleNullCommand() {
+    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+    if (window != null) {
+      MessageDialog.openInformation(window.getShell(),
+          Messages.ProjectRecHandler_emptyLibraryDialogTitle, Messages.ProjectRecHandler_emtpyLibraryDialogMessage);
+    }
+  }
+
   protected ICommand createInterruptableCommand(Collection<?> selection, IProgressMonitor progressMonitor) throws InterruptedException {
-    return createRecProjectCommand(ReProjectScope.getScope((EObject) selection.iterator().next(), progressMonitor));
+    Collection<EObject> scope = ReProjectScope.getScope((EObject) selection.iterator().next(), progressMonitor);
+    ICommand result = null;
+    if (scope.size() > 0) {
+      result = createRecProjectCommand(scope);
+    }
+    return result;
   }
 
   @Override
