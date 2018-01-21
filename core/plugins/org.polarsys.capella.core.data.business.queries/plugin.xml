@@ -347,6 +347,12 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalFunction_AvailableInstates" id="org.polarsys.capella.core.business.queries.pa.PhysicalFunction_AvailableInstates" />
   </extension>
   <extension point="org.polarsys.capella.common.queries.query">
+  	<querySpecification queryIdentifier="GetAvailable_AbstractFunctionalBlock_AllocatedFunctions">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_AbstractFunctionalBlock_AllocatedFunctions" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_AbstractFunctionalBlock_AllocatedFunctions">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_AbstractFunctionalBlock_AllocatedFunctions" />
+    </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_ComponentPort_ProvidedInterfaces">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentPort_ProvidedInterfaces" />
     </querySpecification>
@@ -908,12 +914,6 @@
     <querySpecification queryIdentifier="GetCurrent_Part_TypePorts">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Part_TypePorts" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_Actor_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Actor_FunctionalAllocation" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetCurrent_Actor_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Actor_FunctionalAllocation" />
-    </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_Actor_InheritedActors">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Actor_InheritedActors" />
     </querySpecification>
@@ -1016,41 +1016,11 @@
     <querySpecification queryIdentifier="GetCurrent_SystemFunction_FunctionRealization">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_SystemFunction_FunctionRealization" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_System_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_System_FunctionalAllocation" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetCurrent_System_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_System_FunctionalAllocation" />
-    </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_System_RealizedOperationalEntities">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_System_RealizedOperationalEntities" />
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_System_RealizedOperationalEntities">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_System_RealizedOperationalEntities" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_LogicalActor_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalActor_FunctionalAllocation" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetCurrent_LogicalActor_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalActor_FunctionalAllocation" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_PhysicalActor_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalActor_FunctionalAllocation" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetCurrent_PhysicalActor_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalActor_FunctionalAllocation" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_PhysicalComponent_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComponent_FunctionalAllocation" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetCurrent_PhysicalComponent_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComponent_FunctionalAllocation" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_Entity_AllocatedActivities">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_Entity_AllocatedActivities" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetCurrent_Entity_AllocatedActivities">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_Entity_AllocatedActivities" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_ConfigurationItem_ImplementedPC">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.epbs.GetAvailable_ConfigurationItem_ImplementedPC" />
@@ -1870,12 +1840,6 @@
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_LogicalComponentShortcut_ReferencedLC">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalComponentShortcut_ReferencedLC" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_LogicalComponent_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalComponent_FunctionalAllocation" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetCurrent_LogicalComponent_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalComponent_FunctionalAllocation" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_LogicalComponent_InvolvedRealizations">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalComponent_InvolvedRealizations" />
