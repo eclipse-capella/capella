@@ -133,6 +133,12 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
     // org.polarsys.capella.common.tools.report.appenders.usage so that default preferences will be initialized by the
     // org.polarsys.capella.common.tools.report.appenders.usage.preferences.PreferencesInitializer
     UsageMonitoringLogger.getInstance();
+    
+    // FIXME Workaround for Eclipse Bug 467000 (Too many refreshes when building Dynamic Menus), Capella Bug 1916
+    String workaround = "eclipse.workaround.bug467000"; //$NON-NLS-1$
+    if (System.getProperty(workaround) == null) { // Only change the value if it is not explicitly set already (Don't override user-defined value)
+      System.setProperty(workaround, Boolean.TRUE.toString());
+    }
   }
 
   /**
