@@ -62,6 +62,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.query.legacy.business.internal.interpreter.EObjectServices;
 import org.eclipse.sirius.query.legacy.ecore.factories.EFactory;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -182,7 +183,147 @@ import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
  * Basic Services For Capella models.
  */
 public class CapellaServices {
-
+	
+	@SuppressWarnings("restriction")
+	protected static EObjectServices EOBJECT_SERVICES = new EObjectServices();
+	
+	@SuppressWarnings("restriction")
+	public EObject getRootContainer(EObject eObject) {		
+		return EOBJECT_SERVICES.getRootContainer(eObject);
+	}
+	
+	/** used by aql queries */ 
+	public List<DDiagramElementContainer> getAllContainersNew(EObject container) {
+		return getAllContainers(container);
+	}
+	
+	@SuppressWarnings("rawtypes")
+	/** used by aql queries */
+	public Object void2Null(EObject eObject, Object object) {
+		if (object instanceof Collection && ((Collection)object).size() == 0)
+			return null;
+		else if (object instanceof Set && ((Set)object).size() == 0)
+			return null;
+		return object;
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	/** used by aql queries */
+	public Object makeIntersection(EObject eObject, Object obj1, Object obj2) {
+		try {
+			List<Object> result = new ArrayList<Object>();
+			if (obj1 instanceof Collection)
+				result.addAll((Collection) obj1);
+			else if (obj1 != null)
+				result.add(obj1);
+			if (obj2 instanceof Collection)
+				result.retainAll((Collection) obj2);
+			else if (obj2 != null && !result.contains(obj2))
+				result.remove(obj2);
+//			if (result.size() == 1)
+//				return result.get(0);
+			return result;
+		} catch (Exception e) {
+			throw new UnsupportedOperationException();
+		}			
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	/** used by aql queries */
+	public Object makeDiff(EObject eObject, Object obj1, Object obj2) {
+		try {
+			List<Object> result = new ArrayList<Object>();			
+			if (obj1 instanceof Collection)
+				result.addAll((Collection) obj1);
+			else if (obj1 != null)
+				result.add(obj1);
+			if (obj2 instanceof Collection)
+				result.removeAll((Collection) obj2);
+			else if (obj2 != null)
+				result.remove(obj2);
+//			if (result.size() == 1)
+//				return result.get(0);
+			return result;
+		} catch (Exception e) {
+			throw new UnsupportedOperationException();
+		}			
+	}	
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	/** used by aql queries */
+	public Object makeUnion(EObject eObject, Object obj1, Object obj2) {
+		try {
+			List<Object> result = new ArrayList<Object>();			
+			if (obj1 instanceof Collection)
+				result.addAll((Collection) obj1);
+			else if (obj1 != null)
+				result.add(obj1);
+			if (obj2 instanceof Collection)
+				result.addAll((Collection) obj2);
+			else if (obj2 != null)
+				result.add(obj2);
+//			if (result.size() == 1)
+//				return result.get(0);
+			return result;
+		} catch (Exception e) {
+			throw new UnsupportedOperationException();
+		}			
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	/** used by aql queries */
+	public Object makeUnion(EObject eObject, Object obj1, Object obj2, Object obj3) {
+		try {
+			List<Object> result = new ArrayList<Object>();			
+			if (obj1 instanceof Collection)
+				result.addAll((Collection) obj1);
+			else if (obj1 != null)
+				result.add(obj1);
+			if (obj2 instanceof Collection)
+				result.addAll((Collection) obj2);
+			else if (obj2 != null)
+				result.add(obj2);
+			if (obj3 instanceof Collection)
+				result.addAll((Collection) obj3);
+			else if (obj3 != null)
+				result.add(obj3);			
+//			if (result.size() == 1)
+//				return result.get(0);
+			return result;			
+		} catch (Exception e) {
+			throw new UnsupportedOperationException();
+		}			
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	/** used by aql queries */
+	public Object makeUnion(EObject eObject, Object obj1, Object obj2, Object obj3, Object obj4) {
+		try {
+			List<Object> result = new ArrayList<Object>();			
+			if (obj1 instanceof Collection)
+				result.addAll((Collection) obj1);
+			else if (obj1 != null)
+				result.add(obj1);
+			if (obj2 instanceof Collection)
+				result.addAll((Collection) obj2);
+			else if (obj2 != null)
+				result.add(obj2);
+			if (obj3 instanceof Collection)
+				result.addAll((Collection) obj3);
+			else if (obj3 != null)
+				result.add(obj3);
+			if (obj4 instanceof Collection)
+				result.addAll((Collection) obj4);
+			else if (obj4 != null)
+				result.add(obj4);
+//			if (result.size() == 1)
+//				return result.get(0);
+			return result;			
+		} catch (Exception e) {
+			throw new UnsupportedOperationException();
+		}			
+	}	
+	
   public List<EObject> selectOnlyCreatedView(EObject eObject) {
     return Collections.singletonList((EObject) InterpreterUtil.getInterpreter(eObject).getVariable("view"));
   }
@@ -1599,7 +1740,9 @@ public class CapellaServices {
    * @return
    */
   public List<?> getIntersection(EObject eObject, List<?> first, List<?> second) {
-    List<Object> first2 = new LinkedList<Object>(first);
+    if (first == null) // for acceleo2aql
+    	first = new ArrayList<Object>();
+	List<Object> first2 = new LinkedList<Object>(first);
     first2.retainAll(second);
     return first2;
   }

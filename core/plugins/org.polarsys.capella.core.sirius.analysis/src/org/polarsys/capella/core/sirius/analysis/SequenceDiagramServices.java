@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
@@ -391,6 +392,19 @@ public class SequenceDiagramServices {
     return null;
   }
 
+  // for acceleo2aql
+  public static boolean allowCreateMessageCreation2(EObject current, EObject preTarget, EObject preSource, EObject eventEndBefore, EObject eventEndAfter) {
+	  EObject preMessageEndBefore = null;
+	  EventEnd eventEndBefore_ = (EventEnd) eventEndBefore;
+	  if (eventEndBefore_ != null)
+		  preMessageEndBefore = eventEndBefore_.getSemanticEnd();
+	  EObject preMessageEndAfter = null;
+	  EventEnd eventEndAfter_ = (EventEnd) eventEndAfter;
+	  if (eventEndAfter_ != null)
+		  preMessageEndAfter = eventEndAfter_.getSemanticEnd();	 
+	  return allowCreateMessageCreation(current, preTarget, preSource, preMessageEndBefore, preMessageEndAfter);
+  }  
+  
   public static boolean allowCreateMessageCreation(EObject current, EObject preTarget, EObject preSource,
       EObject preMessageEndBefore, EObject preMessageEndAfter) {
 
@@ -424,6 +438,19 @@ public class SequenceDiagramServices {
     return true;
   }
 
+  //for acceleo2aql
+  public static boolean allowDeleteMessageCreation2(EObject current, EObject preTarget, EObject preSource, EObject eventEndBefore, EObject eventEndAfter) {
+	  EObject preMessageEndBefore = null;
+	  EventEnd eventEndBefore_ = (EventEnd) eventEndBefore;
+	  if (eventEndBefore_ != null)
+		  preMessageEndBefore = eventEndBefore_.getSemanticEnd();
+	  EObject preMessageEndAfter = null;
+	  EventEnd eventEndAfter_ = (EventEnd) eventEndAfter;
+	  if (eventEndAfter_ != null)
+		  preMessageEndAfter = eventEndAfter_.getSemanticEnd();	 
+	  return allowDeleteMessageCreation(current, preTarget, preSource, preMessageEndBefore, preMessageEndAfter);
+  }  
+  
   public static boolean allowDeleteMessageCreation(EObject current, EObject preTarget, EObject preSource,
       EObject preMessageEndBefore, EObject preMessageEndAfter) {
     if (preSource.equals(preTarget)) {
