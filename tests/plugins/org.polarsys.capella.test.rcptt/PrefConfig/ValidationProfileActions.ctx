@@ -5,8 +5,8 @@ Element-Name: ValidationProfileActions
 Element-Type: context
 Element-Version: 2.0
 Id: _ZR3fQKKHEeaAAPJPtfviTA
-Runtime-Version: 2.1.0.201606221726
-Save-Time: 9/26/17 6:26 PM
+Runtime-Version: 2.3.0.201712190725
+Save-Time: 1/23/18 1:55 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -584,10 +584,9 @@ proc checkValidationProfile {
 	
 	with [get-view Information | get-tree] {
 	    get-column-header Message | click
-	    select "Capella \\(8 items\\)" | double-click
-	    get-item "Capella \\(8 items\\)" | get-property childCount | equals 2 | verify-true
-		get-item "Capella \\(8 items\\)" | get-property "getItems().TreeItem[0].getText()" | equals "Design \\(4 items\\)" | verify-true
-		get-item "Capella \\(8 items\\)" | get-property "getItems().TreeItem[1].getText()" | equals "Integrity \\(4 items\\)" | verify-true
+	    select "Capella \\(4 items\\)" | double-click
+	    get-item "Capella \\(4 items\\)" | get-property childCount | equals 1 | verify-true
+		get-item "Capella \\(4 items\\)" | get-property "getItems().TreeItem[0].getText()" | equals "Design \\(4 items\\)" | verify-true
 	}
 }
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
