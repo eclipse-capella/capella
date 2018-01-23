@@ -12,15 +12,15 @@ Create a library
 In the Logical Architecture, create some elements and create a REC from them.
 
  
-[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_4777aa1e.png|435x149px]]
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_4777aa1e.png|414x142px]]<!--LibraryREC/[LAB] Logical System-->
 
  
-[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_7bfa792f.png|627x266px]]
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_7bfa792f.png|627x442px]]
 
- 
-The dialog display the content of the REC
+Alternatively, select &ldquo;REC/RPL->Create REC->With whole library contents...&rdquo; from the project explorer context menu to automatically add all library elements to the REC.
 
- 
+The dialog displays the content of the REC.
+
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_488a3e08.png|627x732px]]
 
  
@@ -35,7 +35,7 @@ After creation, the REC is available In the library.
  
 [[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_2fad9421.png|235x95px]]
 
- 
+
 Ensure your library is saved.
 
  
