@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,7 @@ import org.polarsys.capella.core.data.oa.OaPackage;
 
 /**
  */
-public class OperationalCapability_InheritedClasses implements IBusinessQuery {
+public class OperationalCapability_InheritedCapabilities implements IBusinessQuery {
 
 	@Override
 	public EClass getEClass() {
@@ -34,21 +34,21 @@ public class OperationalCapability_InheritedClasses implements IBusinessQuery {
 
 	@Override
 	public List<EReference> getEStructuralFeatures() {
-		return Collections.singletonList(InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUPER_GENERALIZATIONS);
+		return Collections.singletonList(InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUPER);
 	}
 
 	@Override
 	public List<EObject> getAvailableElements(EObject element) {
 		QueryContext context = new QueryContext();
 		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__OPERATIONAL_CAPABILITY__INHERITED_CLASSES, element, context);
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__OPERATIONAL_CAPABILITY__INHERITED_CAPABILITIES, element, context);
 	}
 
 	@Override
 	public List<EObject> getCurrentElements(EObject element, boolean onlyGenerated) {
 		QueryContext context = new QueryContext();
 		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__OPERATIONAL_CAPABILITY__INHERITED_CLASSES, element, context);
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__OPERATIONAL_CAPABILITY__INHERITED_CAPABILITIES, element, context);
 	}
 
 }

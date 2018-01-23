@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -166,7 +166,7 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__NUMERIC_VALUE__UNIT___LIB = "GetAvailable_NumericValue_Unit__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__OPERATIONAL_ACTIVITY__AVAILABLE_INSTATES = "GetAvailable_OperationalActivity_AvailableInstates"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__AVAILABLE_IN_STATES = "GetAvailable_OperationalCapability_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INHERITED_CLASSES = "GetAvailable_OperationalCapability_InheritedClasses"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INHERITED_CAPABILITIES = "GetAvailable_OperationalCapability_InheritedCapabilities"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INVOLVED_ACTIVITY = "GetAvailable_OperationalCapability_InvolvedActivity"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INVOLVED_ENTITIES = "GetAvailable_OperationalCapability_InvolvedEntities"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INVOLVED_OPERATIONAL_PROCESS = "GetAvailable_OperationalCapability_InvolvedOperationalProcess"; //$NON-NLS-1$
@@ -431,7 +431,7 @@ public class QueryConstants {
   public static final String GET_CURRENT__NUMERIC_VALUE__TYPE = "GetCurrent_NumericValue_Type"; //$NON-NLS-1$
   public static final String GET_CURRENT__OPERATIONAL_ACTIVITY__AVAILABLE_INSTATES = "GetCurrent_OperationalActivity_AvailableInstates"; //$NON-NLS-1$
   public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__AVAILABLE_IN_STATES = "GetCurrent_OperationalCapability_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__INHERITED_CLASSES = "GetCurrent_OperationalCapability_InheritedClasses"; //$NON-NLS-1$
+  public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__INHERITED_CAPABILITIES = "GetCurrent_OperationalCapability_InheritedCapabilities"; //$NON-NLS-1$
   public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__INVOLVED_ACTIVITY = "GetCurrent_OperationalCapability_InvolvedActivity"; //$NON-NLS-1$
   public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__INVOLVED_ENTITIES = "GetCurrent_OperationalCapability_InvolvedEntities"; //$NON-NLS-1$
   public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__INVOLVED_OPERATIONAL_PROCESS = "GetCurrent_OperationalCapability_InvolvedOperationalProcess"; //$NON-NLS-1$
