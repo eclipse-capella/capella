@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.model.utils.ListExt;
 
-public class GetAvailable_OperationalCapability_InheritedClasses extends AbstractQuery {
+public class GetAvailable_OperationalCapability_InheritedCapabilities extends AbstractQuery {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -237,6 +237,7 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.Scenario_RealizedScenario" id="org.polarsys.capella.core.business.queries.interaction.Scenario_RealizedScenario" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.AbstractCapabilityInclude_Included" id="org.polarsys.capella.core.business.queries.interaction.AbstractCapabilityInclude_Included" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.AbstractCapabilityExtend_Extended" id="org.polarsys.capella.core.business.queries.interaction.AbstractCapabilityExtend_Extended" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.AbstractCapabilityGeneralization_Super" id="org.polarsys.capella.core.business.queries.interaction.AbstractCapabilityGeneralization_Super" />
   </extension>
   <extension name="la" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.CapabilityRealization_ActorCapabilityRealization" id="org.polarsys.capella.core.business.queries.la.CapabilityRealization_ActorCapabilityRealization" />
@@ -307,7 +308,7 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.CommunicationMean_FunctionalExchanges" id="org.polarsys.capella.core.business.queries.oa.CommunicationMenu_FunctionalExchanges" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalActivity_AvailableInstates" id="org.polarsys.capella.core.business.queries.oa.OperationalActivity_AvailableInstates" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalActor_AllocatedRoles" id="org.polarsys.capella.core.business.queries.oa.OperationalActor_AllocatedRoles" />
-    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalCapability_InheritedClasses" id="org.polarsys.capella.core.business.queries.oa.OperationalCapability_InheritedClasses" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalCapability_InheritedCapabilities" id="org.polarsys.capella.core.business.queries.oa.OperationalCapability_InheritedCapabilities" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalCapability_InvolvedEntities" id="org.polarsys.capella.core.business.queries.oa.OperationalCapability_InvolvedEntities" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalActor_AllocatedActivities" id="org.polarsys.capella.core.business.queries.oa.OperationalActor_AllocatedActivities" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalProcess_AvailableInStates" id="org.polarsys.capella.core.business.queries.oa.OperationalProcess_AvailableInStates" />
@@ -1093,11 +1094,11 @@
     <querySpecification queryIdentifier="GetCurrent_OperationalCapability_AvailableInStates">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalCapability_AvailableInStates" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_OperationalCapability_InheritedClasses">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalCapability_InheritedClasses" />
+    <querySpecification queryIdentifier="GetAvailable_OperationalCapability_InheritedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalCapability_InheritedCapabilities" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetCurrent_OperationalCapability_InheritedClasses">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalCapability_InheritedClasses" />
+    <querySpecification queryIdentifier="GetCurrent_OperationalCapability_InheritedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalCapability_InheritedCapabilities" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_OperationalCapability_InvolvedActivity">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalCapability_InvolvedActivity" />

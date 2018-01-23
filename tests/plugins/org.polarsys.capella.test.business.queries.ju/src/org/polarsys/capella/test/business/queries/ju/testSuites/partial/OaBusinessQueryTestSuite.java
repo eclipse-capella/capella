@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,7 @@ import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.oa.Opera
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.oa.OperationalActor_AllocatedActivities;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.oa.OperationalActor_AllocatedRoles;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.oa.OperationalCapability_AvailableInStates;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.oa.OperationalCapability_InheritedClasses;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.oa.OperationalCapability_InheritedCapabilities;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.oa.OperationalCapability_InvolvedActivity;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.oa.OperationalCapability_InvolvedEntities;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.oa.OperationalCapability_InvolvedOperationalProcess;
@@ -56,7 +56,7 @@ public class OaBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new OperationalActor_AllocatedActivities());
     tests.add(new OperationalActor_AllocatedRoles());
     tests.add(new OperationalCapability_AvailableInStates());
-    tests.add(new OperationalCapability_InheritedClasses());
+    tests.add(new OperationalCapability_InheritedCapabilities());
     tests.add(new OperationalCapability_InvolvedActivity());
     tests.add(new OperationalCapability_InvolvedEntities());
     tests.add(new OperationalCapability_InvolvedOperationalProcess());
