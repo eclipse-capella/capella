@@ -1,12 +1,12 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Context-Type: org.eclipse.rcptt.ctx.ecl
-Element-Name: RestoreDefaultCapellaExplorerFilters
+Element-Name: CapellaExplorerFilters
 Element-Type: context
 Element-Version: 2.0
-Id: _B04OMLPoEeeOYuzMOkGHGQ
-Runtime-Version: 2.1.0.201605312320
-Save-Time: 10/18/17 2:35 PM
+Id: _l_hsIAA_EeimXaiNP7dJhg
+Runtime-Version: 2.3.0.201712190725
+Save-Time: 1/23/18 2:17 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -49,7 +49,7 @@ with [get-window "Available Customizations"] {
     get-item "Merged Scenario" | check
     get-item "Message Ends" | check
     get-item "Naming Rules" | uncheck
-    get-item "Parts" | uncheck
+    get-item "Parts" | check
     get-item "Physical Links" | check
     get-item "Physical Path Involvements" | check
     get-item "Physical Port" | check

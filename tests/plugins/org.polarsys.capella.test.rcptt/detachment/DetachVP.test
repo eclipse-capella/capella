@@ -1,13 +1,13 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
-Contexts: _0ljJcEkPEeaoOLXB8A2oPA,_9o7v8OxqEea_u7BES20LoQ
+Contexts: _9o7v8OxqEea_u7BES20LoQ
 Element-Name: DetachVP
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _zy85YBhIEee-A_RTBZbvjg
-Runtime-Version: 2.1.0.201605312320
-Save-Time: 9/25/17 5:46 PM
+Runtime-Version: 2.3.0.201712190725
+Save-Time: 1/23/18 2:27 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
