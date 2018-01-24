@@ -267,7 +267,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Constraints">
@@ -700,7 +700,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit2">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Constraints">
@@ -1179,7 +1179,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit3">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Capability" precondition="&lt;%isInLib()%>" titleExpression="[CC] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']">
@@ -1724,7 +1724,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Constraints">
@@ -2231,7 +2231,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -2883,7 +2883,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -4195,7 +4195,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="change name">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Architecture Blank" precondition="&lt;%isInLib() &amp;&amp; getComponentType.isA(&quot;System&quot;)%>" titleExpression="[SAB] &lt;%current.name%>" browseExpression="&lt;%getComponentType()%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
@@ -4942,7 +4942,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="Context Rename Part">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="capellaElement" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
