@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -111,7 +111,7 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
   protected List<EObject> mustBeMultiTransitioned(EObject element, int nb) {
     assertNotNull(NLS.bind(Messages.NullElement, EObjectLabelProviderHelper.getText(element)));
     List<EObject> a4t = getAllocatingElements(element);
-    assertTrue(NLS.bind("Should be equals to ''{0}''", "" + nb), a4t.size() == nb); //$NON-NLS-1$ //$NON-NLS-2$
+    assertTrue(NLS.bind("Should be equals to ''{0}'' but was ''{1}''", nb, a4t.size()), a4t.size() == nb); //$NON-NLS-1$ //$NON-NLS-2$
     return a4t;
   }
 
