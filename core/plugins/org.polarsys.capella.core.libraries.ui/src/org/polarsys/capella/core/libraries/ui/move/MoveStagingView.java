@@ -86,6 +86,7 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.FormToolkit;
@@ -356,22 +357,22 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
             @Override
             public void stageChanged(Stage s) {
-              handleStageChanged(s);
+              PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageChanged(s));
             }
 
             @Override
             public void elementsAdded(Collection<EObject> elements) {
-              handleStageElementsAdded(elements);
+              PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageElementsAdded(elements));
             }
 
             @Override
             public void parentChanged(EObject staged, EObject oldParent, EObject newParent) {
-              handleStageParentChanged(staged, oldParent, newParent);
+              PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageParentChanged(staged, oldParent, newParent));
             }
 
             @Override
             public void elementsRemoved(Collection<? extends EObject> elements) {
-              handleStageElementsRemoved(elements);
+              PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageElementsRemoved(elements));
             }
           };
           stage.addStageListener(listener);

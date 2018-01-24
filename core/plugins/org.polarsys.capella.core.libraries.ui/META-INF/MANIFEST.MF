@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.core.expressions,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.eclipse.ui.views.properties.tabbed,
  org.eclipse.debug.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.libraries.ui,
  org.polarsys.capella.core.libraries.ui.handlers,
