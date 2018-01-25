@@ -1,12 +1,12 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Context-Type: org.eclipse.rcptt.ctx.ecl
-Element-Name: ClearInformationView
+Element-Name: CapellaClearInformationView
 Element-Type: context
 Element-Version: 2.0
-Id: _0alKwJ6FEeWcU-ojRg-Rxw
-Runtime-Version: 2.0.1.201508250612
-Save-Time: 12/9/15 4:02 PM
+Id: _a9P1AABAEeimXaiNP7dJhg
+Runtime-Version: 2.3.0.201712190725
+Save-Time: 1/23/18 2:22 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl

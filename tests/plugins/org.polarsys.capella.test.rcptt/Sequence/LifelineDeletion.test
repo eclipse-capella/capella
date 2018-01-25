@@ -1,13 +1,13 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
-Contexts: _77dBkJ6NEeWcU-ojRg-Rxw,_icg1MDWYEeeWUYFkeZvpdw
+Contexts: _icg1MDWYEeeWUYFkeZvpdw
 Element-Name: LifelineDeletion
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _JamzwDWUEeeWUYFkeZvpdw
-Runtime-Version: 2.1.0.201606221726
-Save-Time: 5/30/17 10:06 PM
+Runtime-Version: 2.3.0.201712190725
+Save-Time: 1/23/18 2:29 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
